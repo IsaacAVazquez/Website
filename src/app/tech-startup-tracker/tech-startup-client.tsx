@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   Activity,
   ArrowDownUp,
@@ -14,11 +13,15 @@ import {
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import {
+  Catalog97HeroReadouts,
+  Catalog97ProjectHero,
+} from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { useClientNow } from "@/hooks/useClientNow";
 import { formatUsdCompact, sortTechStartups } from "@/lib/techStartups";
 import { relativeAge } from "@/lib/utils";
-import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
+import { DATE_ONLY_TIME_ZONE, formatDateTime } from "@/lib/date-formatters";
 import type {
   TechStartup,
   TechStartupRouteState,
@@ -54,12 +57,28 @@ const ROUND_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZone: DATE_ONLY_TIME_ZONE,
 });
 
+// asOf is a date-only "YYYY-MM-DD" value, pinned to UTC for the same reason.
+const AS_OF_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
+});
+
 const DATA_NOTICE_ID = "startup-data-notice";
+const REVIEW_WINDOW_MS = 180 * 24 * 60 * 60 * 1000;
 
 function formatRoundDate(yearMonth: string): string {
   const date = new Date(`${yearMonth.slice(0, 7)}-01T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return yearMonth;
   return ROUND_FORMATTER.format(date);
+}
+
+/** The full as-of date, or the value as given when it is not a date. */
+function formatAsOf(asOf: string): string {
+  const date = new Date(`${asOf}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) return asOf;
+  return AS_OF_FORMATTER.format(date);
 }
 
 function getSegments(snapshot: TechStartupSnapshot, kind: TechStartupSegmentKind): TechStartupSegment[] {
@@ -102,24 +121,15 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
 
   const pushHref = useRouteSync(TECH_STARTUP_ROUTE, desiredHref);
 
-  // relativeAge() reads Date.now(), so the SSR markup and the first client
-  // render can disagree by a minute. Compute it only after mount and render a
-  // stable placeholder pre-mount so the hero meta stays hydration-safe.
-  const [relativeUpdated, setRelativeUpdated] = useState("recently");
-  const [sourceIsOverdue, setSourceIsOverdue] = useState(!snapshot.verified);
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Compute the relative timestamp only after mount to avoid SSR/client hydration drift
-    setRelativeUpdated(relativeAge(snapshot.generatedAt, Date.now()));
-  }, [snapshot.generatedAt]);
-  useEffect(() => {
-    const sourceAgeMs = Date.now() - Date.parse(snapshot.asOf);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Freshness depends on the browser clock and must not create unstable SSR markup
-    setSourceIsOverdue(
-      !snapshot.verified ||
-        !Number.isFinite(sourceAgeMs) ||
-        sourceAgeMs > 180 * 24 * 60 * 60 * 1000
-    );
-  }, [snapshot.asOf, snapshot.verified]);
+  // `now` is null on the server and during hydration, so the age prints as
+  // an absolute time first and the review window reads as still open until
+  // the browser clock can say otherwise.
+  const now = useClientNow();
+  const relativeUpdated =
+    now === null ? formatDateTime(snapshot.generatedAt) : relativeAge(snapshot.generatedAt, now);
+  const sourceIsOverdue =
+    !snapshot.verified ||
+    (now !== null && !(now - Date.parse(snapshot.asOf) <= REVIEW_WINDOW_MS));
 
   function navigate(nextState: TechStartupRouteState) {
     const resolvedNext = resolveTechStartupState(nextState, snapshot);
@@ -158,8 +168,9 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
 
   const lead = PROJECT_PRESS[TECH_STARTUP_ROUTE].lead;
   const standfirst =
-    "I keep a curated, unverified read on notable private tech companies, grouped by sector and funding stage, and I wanted the treemap to do what a sorted table never can, which is show how concentrated the valuations actually are. The few companies valued above $100B take up most of the space, and everything else shrinks down next to them.";
-  const meta = `${snapshot.sourceLabel} · figures as of ${formatRoundDate(snapshot.asOf)} · updated ${relativeUpdated}`;
+    "I keep a curated, unverified read on notable private tech companies, grouped by sector and funding stage, and the treemap shows how concentrated the valuations actually are, since the few companies valued above $100B take up most of the space.";
+  const meta = `${snapshot.sourceLabel} · figures as of ${formatAsOf(snapshot.asOf)} · updated ${relativeUpdated}`;
+  const disclosedValuations = snapshot.startups.filter((startup) => startup.valuation !== null).length;
 
   return (
     <>
@@ -168,27 +179,12 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
         title="Tech Startup Tracker"
         standfirst={standfirst}
         meta={meta}
-        readouts={[
-          {
-            label: "Startups tracked",
-            value: `${snapshot.totals.startups}`,
-            detail: `${snapshot.totals.sectors} sectors, ${snapshot.totals.stages} stages`,
-          },
-          {
-            label: "Combined valuation",
-            value: formatUsdCompact(snapshot.totals.totalValuation),
-            detail: `${formatUsdCompact(snapshot.totals.totalRaised)} total raised`,
-          },
-          {
-            label: "Unicorns",
-            value: `${snapshot.totals.unicornCount}`,
-            detail: "valued at $1B or more",
-          },
-        ]}
       >
         {/* The sector and stage filters sit above the treemap they redraw, so
             a choice shows its result in the same view. Sort only reorders the
-            table, so it stays with the table below. */}
+            table, so it stays with the table below. The three figures print
+            after the treemap, which keeps the first filter a screen higher on
+            a phone. */}
         <div className="flex flex-col" style={{ gap: "var(--c97-sp-4)" }}>
           <section
             aria-label="Startup filters"
@@ -244,6 +240,26 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
             onSelect={toggleStartup}
             sectorLabels={Object.fromEntries([...segmentLookup].map(([id, segment]) => [id, segment.label]))}
           />
+
+          <Catalog97HeroReadouts
+            readouts={[
+              {
+                label: "Startups tracked",
+                value: `${snapshot.totals.startups}`,
+                detail: `${snapshot.totals.sectors} sectors, ${snapshot.totals.stages} stages`,
+              },
+              {
+                label: "Combined valuation",
+                value: formatUsdCompact(snapshot.totals.totalValuation),
+                detail: `across the ${disclosedValuations} of ${snapshot.totals.startups} with a disclosed valuation · ${formatUsdCompact(snapshot.totals.totalRaised)} total raised`,
+              },
+              {
+                label: "Unicorns",
+                value: `${snapshot.totals.unicornCount}`,
+                detail: "valued at $1B or more",
+              },
+            ]}
+          />
         </div>
       </Catalog97ProjectHero>
 
@@ -282,11 +298,13 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
                 role="status"
                 style={{ color: "var(--c97-warning)", fontSize: "var(--c97-fs-small)" }}
               >
-                These figures are past the review window or still unverified.
+                {snapshot.verified
+                  ? "These figures are past their six-month review window."
+                  : "These figures are curated and unverified."}
               </p>
             ) : (
               <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                Curated figures as of {formatRoundDate(snapshot.asOf)}.
+                Curated figures as of {formatAsOf(snapshot.asOf)}.
               </p>
             )}
             <a href={`#${DATA_NOTICE_ID}`} className="c97-btn-ghost">
@@ -324,9 +342,9 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
             <h2 className="c97-serif c97-h3">About these figures</h2>
             {sourceIsOverdue ? (
               <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                These private-company figures are past the review window or still
-                unverified. I keep them visible as directional research, not current
-                financial facts.
+                These private-company figures are{" "}
+                {snapshot.verified ? "past their six-month review window" : "unverified"}. I keep
+                them visible as directional research, not current financial facts.
               </p>
             ) : null}
             <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
@@ -583,7 +601,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                 <div className="col-span-2">
                   <dt className="c97-stat-label">Round led by</dt>
                   <dd style={{ color: "var(--c97-ink)", margin: "0", marginTop: "var(--c97-sp-0)" }}>
-                    {startup.lastRound.leadInvestors.join(", ") || "Undisclosed"}
+                    {startup.lastRound.leadInvestors.join(", ") || "No lead named"}
                   </dd>
                 </div>
                 {startup.lastRound.sourceUrl ? (

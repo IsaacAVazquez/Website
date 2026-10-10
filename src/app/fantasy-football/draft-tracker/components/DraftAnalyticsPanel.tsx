@@ -92,7 +92,7 @@ function PickValueRow({
 
 /**
  * Live sidebar card while the draft runs, full summary once it completes.
- * Every number measures pick position against a pre-draft baseline — it is a
+ * Every number measures pick position against a pre-draft baseline, so it is a
  * read on draft-day process, not a prediction of how the season goes.
  */
 export function DraftAnalyticsPanel({

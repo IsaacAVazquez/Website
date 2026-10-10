@@ -302,7 +302,7 @@ export default function ApplicationEditDialog({
             onClick={() => onSave(form, application)}
             disabled={!canSave}
             aria-describedby={canSave ? undefined : "application-dialog-hint"}
-            className="c97-btn disabled:opacity-50"
+            className="c97-btn"
           >
             Save application
           </button>

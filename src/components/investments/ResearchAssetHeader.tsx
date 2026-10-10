@@ -7,7 +7,12 @@ import { useStockData } from "@/hooks/useStockData";
 import { useClientNow } from "@/hooks/useClientNow";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { formatHistoryAsOf } from "@/lib/investmentsHistory";
-import { formatMinutesAgo, formatPercent } from "@/lib/investmentFormatting";
+import {
+  formatBalance,
+  formatMinutesAgo,
+  formatPercent,
+  formatSignedCurrency,
+} from "@/lib/investmentFormatting";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   BetaData,
@@ -26,27 +31,6 @@ interface Props {
   isInPortfolio?: boolean;
   portfolioShares?: number | null;
   portfolioSymbols?: readonly string[];
-}
-
-
-
-function formatBalance(n: number | undefined): { whole: string; cents: string } {
-  if (n === undefined || !Number.isFinite(n)) return { whole: "—", cents: "" };
-  const sign = n < 0 ? "−" : "";
-  const abs = Math.abs(n);
-  const whole = Math.floor(abs);
-  const cents = Math.round((abs - whole) * 100);
-  return {
-    whole: `${sign}$${whole.toLocaleString("en-US")}`,
-    cents: `.${cents.toString().padStart(2, "0")}`,
-  };
-}
-
-function formatSignedCurrency(n: number | undefined): string {
-  if (n === undefined || !Number.isFinite(n)) return "—";
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  const abs = Math.abs(n);
-  return `${sign}$${abs.toFixed(2)}`;
 }
 
 // `now` is the caller's `useClientNow()` reading (null on the server and
@@ -250,7 +234,7 @@ export function ResearchAssetHeader({
     },
   ];
 
-  // 52-week range as a positioned dot on a track, not text — the trailing
+  // 52-week range as a positioned dot on a track, not text, the trailing
   // low/high and the current display price already come from the same
   // trailingYear price series computed above.
   const rangeDisplayPrice = quote && !quote.error ? quote.price : savedClose;
@@ -378,7 +362,7 @@ export function ResearchAssetHeader({
             {livePrice !== undefined ? (
               <>
                 <span className={`chip ${positive ? "pos" : "neg"}`}>
-                  {formatSignedCurrency(dayChange)}
+                  {formatSignedCurrency(dayChange ?? 0)}
                 </span>
                 <span className={positive ? "pos" : "neg"}>
                   {formatPercent(dayChangePct)} latest session

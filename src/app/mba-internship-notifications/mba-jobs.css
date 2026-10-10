@@ -59,7 +59,8 @@
   color: var(--c97-ink);
 }
 
-.mba-disclosure:hover .c97-meta {
+.mba-disclosure:hover .c97-meta,
+.mba-disclosure:focus-visible .c97-meta {
   text-decoration: underline;
   text-underline-offset: 4px;
 }

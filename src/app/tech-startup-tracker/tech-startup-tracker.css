@@ -30,7 +30,13 @@
   cursor: pointer;
 }
 
-.c97-startup-treemap-tile[data-selected="true"] rect {
+/* The tile's own rect only; the label backdrop inside the group keeps no stroke. */
+.c97-startup-treemap-tile > rect {
+  stroke: var(--c97-surface);
+  stroke-width: 1.5;
+}
+
+.c97-startup-treemap-tile[data-selected="true"] > rect {
   stroke: var(--c97-ink);
   stroke-width: 2.5;
 }

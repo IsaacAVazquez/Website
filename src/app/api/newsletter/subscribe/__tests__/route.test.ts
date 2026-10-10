@@ -163,6 +163,25 @@ describe("newsletter subscribe route", () => {
     expect(mockFetch).toHaveBeenCalledTimes(5);
   });
 
+  it.each([401, 403])(
+    "tells the visitor the form is off when Resend rejects the key with %d",
+    async (status) => {
+      mockFetch.mockImplementation(() =>
+        Promise.resolve(jsonResponse({ statusCode: status, message: "restricted_api_key" }, status))
+      );
+
+      const response = await POST(
+        request({ email: "reader@example.com", source: "agent_build_index" })
+      );
+
+      expect(response.status).toBe(503);
+      await expect(response.json()).resolves.toMatchObject({
+        success: false,
+        message: expect.stringMatching(/down on my side, so nothing was saved/),
+      });
+    }
+  );
+
   it("fails closed when Resend is not configured", async () => {
     delete process.env.RESEND_API_KEY;
 

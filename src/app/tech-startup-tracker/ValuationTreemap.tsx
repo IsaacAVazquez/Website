@@ -87,15 +87,16 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                 onClick={() => onSelect(tile.id)}
               >
                 <title>{`${tile.name}, ${formatUsdCompact(tile.valuation)}`}</title>
+                {/* Tokens go through `style`, since an SVG presentation
+                    attribute cannot substitute var(). The stroke lives in
+                    the route CSS so the selected rule can outrank it. */}
                 <rect
                   x={tile.x0}
                   y={tile.y0}
                   width={width}
                   height={height}
-                  fill={CHART_TOKENS[sectorIndex % CHART_TOKENS.length]}
                   fillOpacity={isSelected ? 1 : 0.85}
-                  stroke="var(--c97-surface)"
-                  strokeWidth={1.5}
+                  style={{ fill: CHART_TOKENS[sectorIndex % CHART_TOKENS.length] }}
                 />
                 {showLabel ? (
                   <g className="c97-startup-treemap-tile-label">
@@ -112,8 +113,8 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                       y={tile.y0 + 6}
                       width={backdropWidth}
                       height={40}
-                      fill="var(--c97-surface)"
                       fillOpacity={0.88}
+                      style={{ fill: "var(--c97-surface)" }}
                     />
                     <text x={tile.x0 + 10} y={tile.y0 + 22} className="c97-startup-treemap-tile-name">
                       {fitLabel(tile.name, backdropWidth - 12, NAME_CHAR_WIDTH)}
@@ -137,8 +138,8 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                       y={sector.y0}
                       width={Math.min(sectorWidth, label.length * SECTOR_CHAR_WIDTH + 8)}
                       height={18}
-                      fill="var(--c97-surface)"
                       fillOpacity={0.85}
+                      style={{ fill: "var(--c97-surface)" }}
                     />
                     <text x={sector.x0 + 4} y={sector.y0 + 13} className="c97-startup-treemap-sector-label">
                       {label}

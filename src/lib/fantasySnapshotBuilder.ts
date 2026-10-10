@@ -52,7 +52,7 @@ const VORP_TOP_BOARD_MIN_RATE = 0.9;
 
 /**
  * The NFL season a snapshot belongs to. The season is named for the year it
- * kicks off in, but it runs into the next calendar year — a snapshot built in
+ * kicks off in, but it runs into the next calendar year, so a snapshot built in
  * January is the *previous* year's season (championship weeks, playoffs), not
  * a brand-new "Preseason". Roll to the new season in March, matching the
  * draft tracker's `getCurrentDraftSeason`.

@@ -50,7 +50,7 @@ function buildFormula1Summary(): Formula1Summary {
 /**
  * Slim view of the committed snapshot: hero stats, standings, the meetings
  * list as metadata only, plus the full next/last-completed meeting for first
- * paint. This is the only shape the pages should serialize to the client —
+ * paint. This is the only shape the pages should serialize to the client,
  * per-meeting classifications load on demand via getFormula1Meeting.
  */
 export async function getFormula1Summary(): Promise<Formula1Summary> {

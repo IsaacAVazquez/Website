@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Interactive platform enablement tool that recommends a standard test stack, builds an onboarding plan, answers setup questions, and tracks documentation gaps.",
   canonicalUrl: "/enablement-assistant",
-  dateModified: "2026-07-30",
+  dateModified: "2026-10-09",
 });
 
 export default function EnablementAssistantPage() {

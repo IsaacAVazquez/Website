@@ -126,15 +126,16 @@ function SourceDropdown({
   return (
     <label
       className="inline-flex min-h-[44px] cursor-pointer items-center border text-sm font-semibold focus-within:outline focus-within:outline-2 focus-within:outline-offset-2"
-      style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }}
+      style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }}
     >
       <span className="c97-kicker" style={{ marginBottom: 0 }}>
         Source
       </span>
+      {/* The select itself is the touch target, so it fills the label's height rather than sitting 20px tall inside it. */}
       <select
         value={value}
         onChange={(event) => onValueChange(event.target.value as NewsSource)}
-        className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit"
+        className="min-h-[44px] cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit"
         style={{ fontFamily: "var(--c97-font-body)" }}
       >
         {SOURCE_OPTIONS.map((source) => (

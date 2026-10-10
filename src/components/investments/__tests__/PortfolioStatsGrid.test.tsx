@@ -53,8 +53,8 @@ describe("PortfolioStatsGrid", () => {
     expect(cell("Top holding").value).toBe("—");
     expect(cell("Best performer").value).toBe("—");
     expect(cell("Biggest day move").value).toBe("—");
-    expect(cell("Top-3 concentration").value).toBe("0.0%");
-    expect(cell("Top-3 concentration").sub).toBe("Whole book");
+    expect(cell("Top-3 concentration").value).toBe("—");
+    expect(cell("Top-3 concentration").sub.trim()).toBe("");
 
     expect(screen.queryByRole("link", { name: "Allocation breakdown" })).toBeNull();
     expect(screen.queryByRole("link", { name: "Per-position detail" })).toBeNull();
@@ -107,6 +107,12 @@ describe("PortfolioStatsGrid", () => {
     const holdings = ["A", "B", "C", "D", "E"].map((symbol) => holding({ symbol, allocationPercent: 20 }));
     render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
     expect(cell("Top-3 concentration").sub).toBe("2 more positions");
+  });
+
+  it("says one more position, not positions, for a four-holding book", () => {
+    const holdings = ["A", "B", "C", "D"].map((symbol) => holding({ symbol, allocationPercent: 25 }));
+    render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
+    expect(cell("Top-3 concentration").sub).toBe("1 more position");
   });
 
   it("keeps cost-basis holdings out of the rankings and non-live quotes out of the day move", () => {

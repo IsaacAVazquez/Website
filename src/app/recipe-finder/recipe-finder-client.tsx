@@ -3,7 +3,6 @@
 import {
   type FormEvent,
   type KeyboardEvent,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -17,7 +16,9 @@ import {
 } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { RECIPES } from "@/data/recipesSnapshot";
-import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
+import { useIsClient } from "@/hooks/useIsClient";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { getBrowserStorageSnapshot, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   formatTotalTime,
   getIngredientCatalog,
@@ -88,12 +89,33 @@ const QUICK_PICKS = [
   "lemon",
 ];
 
+/** Caps on what a saved pantry can hold, so a damaged store never prints a novel as one tag. */
+const MAX_PANTRY_ITEMS = 200;
+const MAX_PANTRY_ITEM_LENGTH = 60;
+
+/** Trimmed, lowercased, capped, deduplicated, blanks dropped: the one shape a pantry item takes, typed or restored. */
+function cleanPantryItems(values: unknown[]): string[] {
+  const items = values
+    .filter((value): value is string => typeof value === "string")
+    .map((value) => value.trim().toLowerCase().slice(0, MAX_PANTRY_ITEM_LENGTH))
+    .filter(Boolean);
+  return Array.from(new Set(items)).slice(0, MAX_PANTRY_ITEMS);
+}
+
+/** The saved pantry, or an empty one when the store holds anything but a JSON list. */
+function parsePantry(raw: string): string[] {
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed) ? cleanPantryItems(parsed) : [];
+  } catch {
+    return [];
+  }
+}
+
+// Reads go through the shared memory-mirrored store, so a write that another
+// tab or this one just made is what the next edit builds on.
 function loadPantry(): string[] {
-  return readValidatedBrowserStorage<string[]>(
-    PANTRY_STORAGE_KEY,
-    (parsed) => (Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : []),
-    () => [],
-  ).value;
+  return parsePantry(getBrowserStorageSnapshot(PANTRY_STORAGE_KEY, "[]"));
 }
 
 function savePantry(items: string[]) {
@@ -105,8 +127,11 @@ function totalMinutes(recipe: Recipe): number {
 }
 
 export function RecipeFinderClient() {
-  const [pantry, setPantry] = useState<string[]>([]);
-  const [hydrated, setHydrated] = useState(false);
+  // The pantry is read from the shared store, which also carries another
+  // tab's edits in, and the server render sees an empty shelf.
+  const pantrySnapshot = useLocalStorageString(PANTRY_STORAGE_KEY, "[]");
+  const pantry = useMemo(() => parsePantry(pantrySnapshot), [pantrySnapshot]);
+  const hydrated = useIsClient();
   const [pantryDraft, setPantryDraft] = useState("");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<RecipeCategory | "all">("all");
@@ -114,19 +139,6 @@ export function RecipeFinderClient() {
   const [diet, setDiet] = useState<DietTag | "all">("all");
   const [openRecipeId, setOpenRecipeId] = useState<string | null>(null);
   const pantryInputRef = useRef<HTMLInputElement>(null);
-
-  // Load the saved pantry after mount so the server and first client render
-  // match (both start empty), then flip `hydrated` so the save effect can run.
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-time hydration: read the saved pantry after mount so SSR and the first client render match
-    setPantry(loadPantry());
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    savePantry(pantry);
-  }, [pantry, hydrated]);
 
   const ingredientCatalog = useMemo(() => getIngredientCatalog(RECIPES), []);
 
@@ -173,20 +185,20 @@ export function RecipeFinderClient() {
   const totalRecipes = RECIPES.length;
 
   function addIngredient(rawValue: string) {
-    const values = rawValue.split(",").map((value) => value.trim().toLowerCase()).filter(Boolean);
+    const values = cleanPantryItems(rawValue.split(","));
     if (values.length === 0) return;
-    setPantry((current) => Array.from(new Set([...current, ...values])));
+    savePantry(cleanPantryItems([...loadPantry(), ...values]));
     setPantryDraft("");
     pantryInputRef.current?.focus();
   }
 
   function removeIngredient(value: string) {
-    setPantry((current) => current.filter((item) => item !== value));
+    savePantry(loadPantry().filter((item) => item !== value));
     pantryInputRef.current?.focus();
   }
 
   function clearPantry() {
-    setPantry([]);
+    savePantry([]);
     pantryInputRef.current?.focus();
   }
 

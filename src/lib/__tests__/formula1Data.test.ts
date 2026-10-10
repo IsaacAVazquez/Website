@@ -757,6 +757,9 @@ describe("buildFormula1SnapshotData with responses shaped like OpenF1's", () => 
       classification: [],
       resultPublished: false,
     });
+    // The weekend in progress is the next one, not the round after it.
+    expect(snapshot.nextMeeting?.key).toBe("1292");
+    expect(snapshot.defaultMeetingKey).toBe("1292");
   });
 
   it("falls back to the Sprint standings while the Grand Prix standings are unpublished", async () => {

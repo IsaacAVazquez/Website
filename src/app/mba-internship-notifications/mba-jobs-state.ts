@@ -17,6 +17,11 @@ import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const MBA_JOBS_ROUTE = "/mba-internship-notifications";
 
+// Cards rendered per "Show more" step on the live grid, and the slice the page
+// serializes for the first paint. A job card runs about 800px tall on a phone,
+// so 60 at once printed a 46,000px page there.
+export const JOB_PAGE_SIZE = 12;
+
 export const VIEW_OPTIONS = ["feed", "applications", "candidates"] as const;
 export const EXTERNAL_OPTIONS = ["off", "on"] as const;
 export const SORT_OPTIONS = ["relevance", "newest", "oldest"] as const;

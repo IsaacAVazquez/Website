@@ -17,7 +17,8 @@ async function main() {
   const contents = JSON.stringify(snapshot, null, 2) + "\n";
   writeFileAtomic(SNAPSHOT_PATH, contents);
   console.log(
-    `Polling snapshot written with ${snapshot.approvalPolls.length} approval and ${snapshot.genericBallotPolls.length} generic ballot polls.`
+    `Polling snapshot written with ${snapshot.approvalPolls.length} approval and ${snapshot.genericBallotPolls.length} generic ballot polls, ` +
+      `${snapshot.senateRaces.length} Senate and ${snapshot.governorRaces.length} governor races.`
   );
 }
 

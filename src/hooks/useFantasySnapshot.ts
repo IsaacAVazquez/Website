@@ -118,8 +118,8 @@ async function loadFantasySnapshot(scoring: FantasyRouteScoring): Promise<Fantas
     return inflightRequest;
   }
 
-  // Try the static JSON first (cheap, CDN-cacheable). On any failure — typically
-  // a missing snapshot file during a botched deploy — fall back to the API
+  // Try the static JSON first (cheap, CDN-cacheable). On any failure, typically
+  // a missing snapshot file during a botched deploy, fall back to the API
   // route, which reads the same files server-side and so should agree on shape.
   // Only surface a user-visible error when both paths fail.
   // The API fallback is worth attempting even when normalization fails: the

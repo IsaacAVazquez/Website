@@ -185,7 +185,7 @@ export function LaLigaClient({
   }
   // Mirrors a genuinely resolvable explicit `?club=` on first render (an
   // unknown/unaliasable value shouldn't pop the overlay just because the
-  // query string carried something) — `handleClubChange` sets this on every
+  // query string carried something), `handleClubChange` sets this on every
   // subsequent selection. It holds the club that was asked for and waits for
   // the route to reach that club, so the drawer never shows the last one.
   const [drawerClubId, setDrawerClubId] = useState(() => {
@@ -243,7 +243,7 @@ export function LaLigaClient({
   // Club drawer
   const drawerClub: ClubDrawerClub | null = isDrawerOpen
     ? {
-      // Must match recentFixtures/upcomingFixtures' homeTeam/awayTeam ids —
+      // Must match recentFixtures/upcomingFixtures' homeTeam/awayTeam ids,
       // those come from the team snapshot's numeric football-data.org id,
       // not `selectedClub.id` (the TLA-based standings/routing id).
       id: teamSnapshot?.team?.id ?? selectedClub.id,
@@ -649,7 +649,7 @@ export function LaLigaClient({
 
 /**
  * Builds a club's top-scorer list for the drawer by cross-referencing the
- * separate goals (`scorers`) and assists (`assists`) boards by player name —
+ * separate goals (`scorers`) and assists (`assists`) boards by player name,
  * La Liga's scorer entries don't carry a per-player assists count the way
  * Premier League's do, but both boards share `clubId`, so a name match
  * backfills assists when the player also appears on the assists board.
@@ -688,11 +688,11 @@ function getClubStoryline(
   }
 
   if (club.position <= 4) {
-    return `${club.shortName} are ${leader.points - club.points} points off the pace and ${club.points - fifthPlace.points} clear of the Europa line below them.`;
+    return `${club.shortName} are ${leader.points - club.points} points off the pace and ${club.points - fifthPlace.points} clear of the top-four cutoff below them.`;
   }
 
   if (club.position <= 6) {
-    return `${club.shortName} currently occupy a European spot and have a ${club.points - seventhPlace.points}-point buffer over the first club outside qualification.`;
+    return `${club.shortName} currently occupy a European spot and have a buffer of ${club.points - seventhPlace.points} points over the first club outside qualification.`;
   }
 
   if (club.position <= 17) {

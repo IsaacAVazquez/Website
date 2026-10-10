@@ -92,13 +92,15 @@ function emptyJournalDraft(date: string): JournalDraft {
   return { date, title: "", body: "", mood: "good" };
 }
 
+/** US dollars, whole when the value is whole and with both cents otherwise, so 1250.5 reads $1,250.50 and never $1,250.5. */
 function formatBudget(value: number) {
   if (!value) return "$0";
+  const digits = value % 1 === 0 ? 0 : 2;
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
   });
 }
 

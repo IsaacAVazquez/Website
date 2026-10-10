@@ -2,7 +2,6 @@
 
 import { Search } from "lucide-react";
 import {
-  startTransition,
   useEffect,
   useMemo,
   useRef,
@@ -10,7 +9,7 @@ import {
   type RefObject,
 } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   FOOD_MAP_AS_OF,
@@ -642,8 +641,16 @@ function getFoodMapPlaceInCity(
   return place && place.city === city ? place : undefined;
 }
 
+/**
+ * The filters live in the URL, and every chip is a plain history replace. The
+ * router syncs useSearchParams from the native call, so a chip never waits on
+ * a server render of this page the way router.replace did.
+ */
+function replaceHref(href: string) {
+  window.history.replaceState(null, "", href);
+}
+
 export function FoodMapClient({ initialState }: FoodMapClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
 
@@ -659,18 +666,14 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
   const routeState = hasManagedParams ? normalizedRouteState : initialState;
 
   useEffect(() => {
-    if (hasManagedParams && currentHref !== canonicalHref) {
-      startTransition(() => {
-        router.replace(canonicalHref, { scroll: false });
-      });
-    }
-  }, [canonicalHref, currentHref, hasManagedParams, router]);
+    if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);
+  }, [canonicalHref, currentHref, hasManagedParams]);
 
   return (
     <FoodMapWorkbench
       routeState={routeState}
       reduceMotion={shouldReduceMotion}
-      onCommit={(next) => router.replace(buildFoodMapHref(next), { scroll: false })}
+      onCommit={(next) => replaceHref(buildFoodMapHref(next))}
     />
   );
 }

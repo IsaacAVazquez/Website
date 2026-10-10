@@ -13,7 +13,7 @@ import { setTimeout as sleep } from "node:timers/promises";
  * the FantasyPros consensus refresh, so this script never fails the
  * `update:fantasy` chain: a failed or thin fetch keeps the previous generated
  * data (its own asOf stays disclosed) or, with nothing to fall back to,
- * leaves the empty seed in place — the snapshots then simply ship without ADP.
+ * leaves the empty seed in place, and the snapshots then simply ship without ADP.
  */
 
 const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyAdpData.generated.json");

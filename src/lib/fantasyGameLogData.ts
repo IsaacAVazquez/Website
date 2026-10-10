@@ -20,7 +20,7 @@ const EMPTY_DATASET: FantasyGameLogDataset = {
 
 /**
  * Reads the generated per-game scoring dataset for a scoring format, tolerating
- * an out-of-shape module the same way `fantasyAdpData.ts` does — a thin or
+ * an out-of-shape module the same way `fantasyAdpData.ts` does, a thin or
  * missing dataset degrades to "no scoring history" rather than throwing at
  * build time, and the drawer simply omits the panel.
  */

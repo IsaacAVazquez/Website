@@ -45,8 +45,8 @@ describe("score-pools formatting", () => {
 
   it("labels empty and sample leagues in the league picker", () => {
     expect(leagueOptionLabel(league({ name: "Cup" }))).toBe("Cup");
-    expect(leagueOptionLabel(league({ name: "Cup", sample: true }))).toBe("Cup (sample data)");
-    expect(leagueOptionLabel(league({ name: "Cup", fixtures: [] }))).toBe("Cup · no fixtures yet");
+    expect(leagueOptionLabel(league({ name: "Cup", sample: true }))).toBe("Cup (sample)");
+    expect(leagueOptionLabel(league({ name: "Cup", fixtures: [] }))).toBe("Cup · no fixtures");
   });
 });
 

@@ -72,10 +72,10 @@ export const CAPITAL_GAINS_EXCLUSION: Record<FilingStatus, number> = {
 };
 
 // Freddie Mac Primary Mortgage Market Survey, 30 year fixed rate average as of
-// 2026-09-24. Source, read 2026-09-27: https://www.freddiemac.com/pmms
+// 2026-10-08. Source, read 2026-10-09: https://www.freddiemac.com/pmms
 // The survey publishes every Thursday, so this default ages weekly.
-export const DEFAULT_MORTGAGE_RATE_PERCENT = 7.03;
-export const DEFAULT_MORTGAGE_RATE_AS_OF = "2026-09-24";
+export const DEFAULT_MORTGAGE_RATE_PERCENT = 7.4;
+export const DEFAULT_MORTGAGE_RATE_AS_OF = "2026-10-08";
 
 const dollars = (value: number) => `$${value.toLocaleString("en-US")}`;
 

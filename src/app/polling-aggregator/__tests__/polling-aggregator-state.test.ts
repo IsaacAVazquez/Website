@@ -1,27 +1,24 @@
-import type { Race, RaceRating } from "@/types/polling";
+import type { Race } from "@/types/polling";
 import {
   buildPollingHref,
-  countSeatsByParty,
   DEFAULT_POLLING_STATE,
   normalizePollingState,
-  ratingScore,
-  sortRacesByCompetitiveness,
+  sortRacesByMargin,
 } from "../polling-aggregator-state";
 
-function makeRace(id: string, state: string, rating: RaceRating): Race {
+function makeRace(id: string, state: string, margin: number): Race {
   return {
     id,
     state,
     stateAbbr: state.slice(0, 2).toUpperCase(),
     office: "Senate",
     year: 2026,
-    rating,
-    incumbentParty: null,
-    openSeat: true,
-    demAvg: 48,
-    repAvg: 48,
-    marginLabel: "Even",
-    pollCount: 0,
+    candidates: [
+      { name: "Leader", support: 48 + margin },
+      { name: "Runner-up", support: 48 },
+    ],
+    margin,
+    pollCount: 1,
     lastPolled: "2026-01-01",
     polls: [],
   };
@@ -29,19 +26,19 @@ function makeRace(id: string, state: string, rating: RaceRating): Race {
 
 describe("polling-aggregator-state", () => {
   it("normalizes valid URLSearchParams and record inputs", () => {
-    expect(normalizePollingState(new URLSearchParams("view=senate&race=pa-senate"))).toEqual({
+    expect(normalizePollingState(new URLSearchParams("view=senate&race=senate-pa"))).toEqual({
       view: "senate",
-      race: "pa-senate",
+      race: "senate-pa",
     });
 
     expect(
       normalizePollingState({
         view: ["governors"],
-        race: ["ga-governor"],
+        race: ["governor-ga"],
       })
     ).toEqual({
       view: "governors",
-      race: "ga-governor",
+      race: "governor-ga",
     });
   });
 
@@ -59,41 +56,35 @@ describe("polling-aggregator-state", () => {
       buildPollingHref(
         {
           view: "governors",
-          race: "ga-governor",
+          race: "governor-ga",
         },
         new URLSearchParams("ref=home&view=approval&race=old")
       )
-    ).toBe("/polling-aggregator?ref=home&view=governors&race=ga-governor");
+    ).toBe("/polling-aggregator?ref=home&view=governors&race=governor-ga");
 
     expect(
       buildPollingHref(
         DEFAULT_POLLING_STATE,
-        new URLSearchParams("ref=home&view=senate&race=pa-senate")
+        new URLSearchParams("ref=home&view=senate&race=senate-pa")
       )
     ).toBe("/polling-aggregator?ref=home");
   });
 
-  it("scores, groups, and sorts race ratings by competitiveness", () => {
+  it("sorts races closest first and breaks a tie on the state name", () => {
     const races = [
-      makeRace("safe-d", "Alaska", "Safe D"),
-      makeRace("lean-r", "Arizona", "Lean R"),
-      makeRace("toss-up", "Georgia", "Toss-up"),
-      makeRace("likely-r", "Ohio", "Likely R"),
-      makeRace("lean-d", "Nevada", "Lean D"),
+      makeRace("ohio", "Ohio", 7.3),
+      makeRace("maine", "Maine", 0.5),
+      makeRace("georgia", "Georgia", 3),
+      makeRace("alaska", "Alaska", 3),
     ];
 
-    expect(ratingScore("Toss-up")).toBe(3);
-    expect(countSeatsByParty(races)).toEqual({
-      demLeading: 2,
-      repLeading: 2,
-      tossup: 1,
-    });
-    expect(sortRacesByCompetitiveness(races).map((race) => race.id)).toEqual([
-      "toss-up",
-      "lean-r",
-      "lean-d",
-      "likely-r",
-      "safe-d",
+    expect(sortRacesByMargin(races).map((race) => race.id)).toEqual([
+      "maine",
+      "alaska",
+      "georgia",
+      "ohio",
     ]);
+    // The input order is left alone.
+    expect(races[0].id).toBe("ohio");
   });
 });

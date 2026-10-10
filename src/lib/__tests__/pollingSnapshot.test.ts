@@ -31,6 +31,37 @@ function blobSnapshot(): PollingSnapshot {
   return { ...pollingSnapshot, generatedAt: AFTER_SEED };
 }
 
+const racePoll = {
+  id: "us-1",
+  pollster: "A Pollster",
+  startDate: "2026-09-28",
+  endDate: "2026-10-01",
+  sampleSize: 600,
+  sampleType: "LV" as const,
+  moe: null,
+  methodology: "unknown" as const,
+  candidates: [
+    { name: "Leader", support: 49 },
+    { name: "Runner-up", support: 44 },
+  ],
+};
+
+const race: PollingSnapshot["senateRaces"][number] = {
+  id: "senate-mi",
+  state: "Michigan",
+  stateAbbr: "MI",
+  office: "Senate",
+  year: 2026,
+  candidates: [
+    { name: "Leader", support: 49 },
+    { name: "Runner-up", support: 44 },
+  ],
+  margin: 5,
+  pollCount: 1,
+  lastPolled: "2026-10-01",
+  polls: [racePoll],
+};
+
 describe("getPollingSnapshot", () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -81,6 +112,12 @@ describe("getPollingSnapshot", () => {
     ["a generic ballot average without a margin", { genericBallotAvg: { dem: 44, rep: 41 } }],
     ["no approval trend", { approvalTrend: undefined }],
     ["no race arrays", { senateRaces: undefined }],
+    ["a race row without its two candidates", { senateRaces: [{ ...race, candidates: [race.candidates[0]] }] }],
+    ["a race row with no polls behind it", { governorRaces: [{ ...race, polls: [] }] }],
+    [
+      "a race poll under another schema's field names",
+      { senateRaces: [{ ...race, polls: [{ ...racePoll, candidates: undefined, answers: racePoll.candidates }] }] },
+    ],
     [
       "poll rows without a sample size",
       {
@@ -112,6 +149,18 @@ describe("getPollingSnapshot", () => {
       expect.stringContaining("failed its shape check"),
       expect.anything()
     );
+  });
+
+  it("serves a blob whose race rows carry what the page reads, and one with none", async () => {
+    mockRead.mockResolvedValue({
+      value: { ...blobSnapshot(), senateRaces: [race], governorRaces: [] },
+      savedAt: AFTER_SEED,
+    });
+
+    const snapshot = await getPollingSnapshot();
+
+    expect(snapshot.generatedAt).toBe(AFTER_SEED);
+    expect(snapshot.senateRaces).toEqual([race]);
   });
 
   it("serves a blob whose newest poll is months old, since that is the source's state", async () => {

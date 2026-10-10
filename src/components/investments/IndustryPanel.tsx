@@ -49,6 +49,8 @@ function Indicator({ metric, value, avg }: { metric: string; value: number | und
       style={{ marginLeft: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-0)" }}
     >
       {sign}{Math.abs(pct).toFixed(1)}% vs industry
+      {/* The verdict was colour alone; the text only says the direction. */}
+      {pct !== 0 ? <span className="sr-only">{favorable ? ", favorable" : ", unfavorable"}</span> : null}
     </span>
   );
 }

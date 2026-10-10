@@ -36,7 +36,6 @@ describe("frontier-models-state", () => {
   it("normalizes invalid params to defaults and trims selected models", () => {
     expect(
       normalizeFrontierModelsState({
-        view: "grid",
         provider: "unknown",
         modality: "video",
         tier: "enterprise",
@@ -54,7 +53,6 @@ describe("frontier-models-state", () => {
         new URLSearchParams("view=chart&provider=openai&modality=text&tier=premium")
       )
     ).toEqual({
-      view: "chart",
       provider: "openai",
       modality: "text",
       priceTier: "premium",
@@ -66,7 +64,6 @@ describe("frontier-models-state", () => {
     expect(
       resolveFrontierModelsState(
         {
-          view: "chart",
           provider: "anthropic",
           modality: "vision",
           priceTier: "budget",
@@ -75,7 +72,6 @@ describe("frontier-models-state", () => {
         snapshot
       )
     ).toEqual({
-      view: "chart",
       provider: "all",
       modality: "vision",
       priceTier: "budget",
@@ -85,7 +81,6 @@ describe("frontier-models-state", () => {
     expect(
       resolveFrontierModelsState(
         {
-          view: "list",
           provider: "openai",
           modality: "text",
           priceTier: "premium",
@@ -94,7 +89,6 @@ describe("frontier-models-state", () => {
         snapshot
       )
     ).toEqual({
-      view: "list",
       provider: "openai",
       modality: "text",
       priceTier: "premium",
@@ -106,7 +100,6 @@ describe("frontier-models-state", () => {
     expect(
       buildFrontierModelsHref(
         {
-          view: "chart",
           provider: "openai",
           modality: "text",
           priceTier: "premium",
@@ -115,7 +108,7 @@ describe("frontier-models-state", () => {
         new URLSearchParams("ref=nav")
       )
     ).toBe(
-      "/frontier-models?ref=nav&view=chart&provider=openai&modality=text&tier=premium&model=gpt-fixture"
+      "/frontier-models?ref=nav&provider=openai&modality=text&tier=premium&model=gpt-fixture"
     );
 
     expect(

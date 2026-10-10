@@ -133,10 +133,13 @@ export function escapeCsvValue(value: string | number): string {
 
 /** US dollars, with cents only when the value has them. */
 export function formatDollars(value: number): string {
+  // Whole dollars print without cents; anything else prints both cent digits,
+  // so 48.5 reads "$48.50" and not "$48.5".
+  const digits = value % 1 === 0 ? 0 : 2;
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
   });
 }

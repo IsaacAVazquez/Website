@@ -1,8 +1,11 @@
 export const MARCH_MADNESS_TITLE = "March Madness 2026 Bracket Analysis";
 export const MARCH_MADNESS_DESCRIPTION =
   "Interactive 2026 March Madness bracket analysis with best upset picks, Final Four predictions, KenPom rankings, S-curve seed errors, injury notes, and a custom time-zone travel penalty model.";
+// The day the picks were locked, which is the page's published date.
 export const MARCH_MADNESS_UPDATED_AT = "2026-03-17";
-export const MARCH_MADNESS_UPDATED_LABEL = "Updated March 17, 2026";
+// The page's last content change: the tournament results added below.
+export const MARCH_MADNESS_RESULTS_ADDED_AT = "2026-09-28";
+export const MARCH_MADNESS_UPDATED_LABEL = "Picks made March 17, 2026";
 export const MARCH_MADNESS_THESIS =
   "The edge in this bracket is time zones plus seed errors, not just chalk.";
 export const MARCH_MADNESS_ARTICLE_SLUG = "2026-march-madness-bracket-analysis";

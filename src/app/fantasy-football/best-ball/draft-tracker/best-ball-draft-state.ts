@@ -1,6 +1,7 @@
-import type {
-  BestBallCompetitionFormat,
-  BestBallLineupVariant,
+import {
+  getSnakeTeamNumber,
+  type BestBallCompetitionFormat,
+  type BestBallLineupVariant,
 } from "@/lib/bestBall";
 import type { Player } from "@/types";
 
@@ -105,9 +106,7 @@ export function getBestBallTeamForPick(pickNumber: number, teams: number): numbe
   if (!Number.isInteger(pickNumber) || pickNumber < 1 || !Number.isInteger(teams) || teams < 2) {
     return 1;
   }
-  const round = Math.ceil(pickNumber / teams);
-  const position = ((pickNumber - 1) % teams) + 1;
-  return round % 2 === 1 ? position : teams - position + 1;
+  return getSnakeTeamNumber(pickNumber, teams);
 }
 
 export function createBestBallDraftState(

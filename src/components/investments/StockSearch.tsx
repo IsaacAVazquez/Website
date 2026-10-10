@@ -233,7 +233,8 @@ export function StockSearch({ value, onChange }: Props) {
       <div className="relative">
         <Search
           size={16}
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--c97-label)]"
+          className="pointer-events-none absolute top-1/2 -translate-y-1/2 text-[var(--c97-label)]"
+          style={{ left: "var(--c97-sp-2)" }}
         />
 
         <input

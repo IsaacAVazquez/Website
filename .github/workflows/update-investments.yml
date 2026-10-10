@@ -42,11 +42,15 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v7
         with:
-          python-version: "3.11"
+          # The pins in scripts/requirements-investments.txt are compiled for
+          # 3.12. Dependabot's 2026-10-02 bumps of contourpy (1.4.0) and numpy
+          # (2.5.3) both require >=3.12, and on 3.11 pip found no matching
+          # distribution, which failed every run from 2026-10-03 (issue #562).
+          python-version: "3.12"
 
       # Cache the entire venv so we skip both the python -m venv and the
       # pip install on subsequent runs. Keyed on the exact resolved python
-      # version (e.g. 3.11.16) + the hash of the requirements file, which pins
+      # version (e.g. 3.12.12) + the hash of the requirements file, which pins
       # defeatbeta-api and every package it brings in. The venv's
       # bin/python3 is a symlink into the runner's toolcache, so a key on the
       # minor version alone restored a venv pointing at a removed 3.11.15

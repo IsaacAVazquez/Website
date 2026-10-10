@@ -1,5 +1,5 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
-import type { PollingRouteState, PollingView, Race, RaceRating } from "@/types/polling";
+import type { PollingRouteState, PollingView, Race } from "@/types/polling";
 import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const POLLING_ROUTE = "/polling-aggregator";
@@ -66,40 +66,11 @@ export function buildPollingHref(
   return `${POLLING_ROUTE}${query ? `?${query}` : ""}`;
 }
 
-// ─── Rating helpers ────────────────────────────────────────────────────────────
+// ─── Race helpers ──────────────────────────────────────────────────────────────
 
-export const RATING_ORDER: RaceRating[] = [
-  "Safe D",
-  "Likely D",
-  "Lean D",
-  "Toss-up",
-  "Lean R",
-  "Likely R",
-  "Safe R",
-];
-
-export function ratingScore(rating: RaceRating): number {
-  return RATING_ORDER.indexOf(rating); // 0 = safest D, 6 = safest R
-}
-
-export function sortRacesByCompetitiveness(races: Race[]): Race[] {
-  return [...races].sort((a, b) => {
-    const aDist = Math.abs(ratingScore(a.rating) - 3); // distance from Toss-up
-    const bDist = Math.abs(ratingScore(b.rating) - 3);
-    if (aDist !== bDist) return aDist - bDist; // toss-ups first
-    return a.state.localeCompare(b.state);
-  });
-}
-
-export function countSeatsByParty(races: Race[]): { demLeading: number; repLeading: number; tossup: number } {
-  let demLeading = 0;
-  let repLeading = 0;
-  let tossup = 0;
-  for (const race of races) {
-    const score = ratingScore(race.rating);
-    if (score <= 2) demLeading++;
-    else if (score >= 4) repLeading++;
-    else tossup++;
-  }
-  return { demLeading, repLeading, tossup };
+/** Closest race first, then by state name, so a tie in the margin is still stable. */
+export function sortRacesByMargin(races: Race[]): Race[] {
+  return [...races].sort(
+    (left, right) => left.margin - right.margin || left.state.localeCompare(right.state)
+  );
 }

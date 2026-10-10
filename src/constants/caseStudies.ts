@@ -459,7 +459,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "mba-role-tracker",
     title: "Job Search",
     description:
-      "Full-time job search tracker that polls public tech company job boards for business roles across Greenhouse, Ashby, Lever, and manual career-page fallbacks, with an application pipeline and fit scoring.",
+      "Full-time job search tracker that polls public tech company job boards for business roles across Greenhouse, Ashby, Lever, SmartRecruiters, and manual career-page fallbacks, with an application pipeline and fit scoring.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Job board parsing", "Notification UX"],

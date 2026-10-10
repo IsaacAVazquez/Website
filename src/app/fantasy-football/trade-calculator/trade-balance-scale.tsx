@@ -64,7 +64,7 @@ export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation |
           </text>
         ))}
         <g
-          className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out"
+          className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-[var(--c97-ease)]"
           style={{ transform: `translateX(${markerOffset}px)` }}
         >
           <path d="M120 15V40" stroke="var(--c97-accent)" strokeWidth="2" />

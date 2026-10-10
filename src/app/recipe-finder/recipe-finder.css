@@ -119,6 +119,7 @@
 .c97-recipe-search input {
   flex: 1;
   min-width: 0;
+  min-height: 44px;
   border: 0;
   background: none;
   color: var(--c97-ink);
@@ -146,7 +147,8 @@
   position: absolute;
   inset-inline: 0;
   top: calc(100% + 2px);
-  z-index: 2;
+  /* It floats over the shelf below the field, so it reads the tray step of the stacking ladder. */
+  z-index: var(--c97-z-tray);
   margin: 0;
   padding: 0;
   list-style: none;

@@ -35,7 +35,7 @@ function points() {
 }
 
 describe("FrontierCostContextChart", () => {
-  it("plots each priced model as a labelled, focusable point", () => {
+  it("plots each priced model as a titled, pointer-only point", () => {
     render(<FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={jest.fn()} />);
 
     const svg = document.querySelector("svg") as SVGSVGElement;
@@ -44,14 +44,12 @@ describe("FrontierCostContextChart", () => {
 
     expect(points()).toHaveLength(3);
     // Alpha blends (1.25 + 3 * 10) / 4 = 7.8125; Bravo has only an output price.
-    expect(
-      screen.getByRole("button", {
-        name: "Anthropic Alpha, context 1M, blended price $7.81 per 1M tokens",
-      })
-    ).toHaveAttribute("tabindex", "0");
-    expect(
-      screen.getByRole("button", { name: "OpenAI Bravo, context 128K, blended price $0.40 per 1M tokens" })
-    ).toBeInTheDocument();
+    const titles = points().map((point) => point.querySelector("title")?.textContent);
+    expect(titles).toContain("Anthropic Alpha\nContext: 1M\nBlended price: $7.81 / 1M");
+    expect(titles).toContain("OpenAI Bravo\nContext: 128K\nBlended price: $0.40 / 1M");
+    // The spec sheet is the keyboard path, so no mark is a tab stop.
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    expect(points().every((point) => !point.hasAttribute("tabindex"))).toBe(true);
     expect(svg.textContent).toContain("CONTEXT WINDOW (TOKENS, LOG)");
     expect(svg.textContent).toContain("BLENDED PRICE / 1M (USD, LOG)");
   });
@@ -85,27 +83,21 @@ describe("FrontierCostContextChart", () => {
     expect(document.querySelector("svg")).toBeNull();
   });
 
-  it("selects a point by click or keyboard and clears the selected one", () => {
+  it("selects a point by click and clears the selected one", () => {
     const onSelect = jest.fn();
     const { rerender } = render(
       <FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={onSelect} />
     );
 
-    const charlie = () => screen.getByRole("button", { name: /Google Charlie/ });
-    fireEvent.click(charlie());
+    const point = (name: string) =>
+      points().find((circle) => circle.querySelector("title")?.textContent?.includes(name)) as SVGCircleElement;
+    fireEvent.click(point("Google Charlie"));
     expect(onSelect).toHaveBeenLastCalledWith("charlie");
-
-    fireEvent.keyDown(charlie(), { key: "Enter" });
-    expect(onSelect).toHaveBeenLastCalledWith("charlie");
-    fireEvent.keyDown(charlie(), { key: "a" });
-    expect(onSelect).toHaveBeenCalledTimes(2);
 
     rerender(<FrontierCostContextChart models={MODELS} selectedModelId="charlie" onSelectModel={onSelect} />);
-    expect(charlie()).toHaveAttribute("r", "11");
-    expect(screen.getByRole("button", { name: /Anthropic Alpha/ })).toHaveAttribute("r", "8");
-    fireEvent.keyDown(charlie(), { key: " " });
-    expect(onSelect).toHaveBeenLastCalledWith(null);
-    fireEvent.click(charlie());
+    expect(point("Google Charlie")).toHaveAttribute("r", "11");
+    expect(point("Anthropic Alpha")).toHaveAttribute("r", "8");
+    fireEvent.click(point("Google Charlie"));
     expect(onSelect).toHaveBeenLastCalledWith(null);
   });
 

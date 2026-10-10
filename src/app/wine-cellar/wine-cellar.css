@@ -112,6 +112,7 @@
 .c97-wine-search input {
   flex: 1;
   min-width: 0;
+  min-height: 44px;
   border: 0;
   background: transparent;
   padding: 0;

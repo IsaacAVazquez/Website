@@ -83,7 +83,6 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       .attr("y", (d) => (d.growth >= 0 ? y(d.growth) : y(0)))
       .attr("width", x.bandwidth())
       .attr("height", (d) => Math.abs(y(d.growth) - y(0)))
-      .attr("rx", 3)
       .attr("fill", (d) =>
         d.growth >= 0 ? "var(--c97-positive)" : "var(--c97-negative)"
       );

@@ -10,6 +10,7 @@ import {
   TeamResultPill,
   FixtureCard,
   LeaderList,
+  type LeaderEntry,
 } from "@/components/football";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and the two league pages do not use this drawer.
@@ -157,9 +158,17 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const routeState = hasManagedParams
+  const linkedState = hasManagedParams
     ? normalizeState(searchParams, defaultState, aliasMap)
     : initialState;
+  // A link that names a team outside its view (a West team on the default
+  // East view) opens that team in its own conference, the way a pick does.
+  // Until 2026-10-09 the team was dropped and the URL rewritten without it.
+  const linkedTeam = teamById.get(linkedState.team);
+  const routeState: NbaRouteState =
+    linkedTeam && !filterTeams(east, west, linkedState.view).some((team) => team.id === linkedTeam.id)
+      ? { ...linkedState, view: linkedTeam.conference }
+      : linkedState;
   const visibleTeams = filterTeams(east, west, routeState.view);
   const selectedTeamId = visibleTeams.some((team) => team.id === routeState.team)
     ? routeState.team
@@ -325,6 +334,13 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
               );
             })}
           </div>
+
+          {isFinal ? (
+            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+              The {summary.season} regular season is complete, so this is the final table.
+              Standings, the schedule, and the leaders pick up again once the new season tips off.
+            </p>
+          ) : null}
 
           <div
             role="region"
@@ -660,23 +676,15 @@ function groupLeadersByTeam(leaders: NbaLeader[]) {
   return groupBy(leaders, (entry) => entry.teamId);
 }
 
-function toLeaderEntries(
-  leaders: NbaLeader[]
-): Array<{
-  rank: number;
-  name: string;
-  clubId: string;
-  clubCode: string;
-  total: number;
-  appearances: number;
-  perMatch: number;
-}> {
+function toLeaderEntries(leaders: NbaLeader[]): LeaderEntry[] {
   return leaders.map((leader) => ({
     rank: leader.rank,
     name: leader.name,
     clubId: leader.teamId,
     clubCode: leader.teamAbbreviation,
-    total: Number.isFinite(leader.total) ? Number(leader.total.toFixed(1)) : 0,
+    // The list is labelled per game (ppg, rpg, apg), so it prints the average
+    // and not the season total, which read as "539 PPG" until 2026-10-09.
+    total: Number.isFinite(leader.perGame) ? leader.perGame.toFixed(1) : "—",
     appearances: leader.appearances,
     perMatch: leader.perGame,
   }));
@@ -774,7 +782,7 @@ function getTeamStoryline(team: NbaTeam, context: ConferenceContext): string {
   if (seed <= 6) {
     const aheadOfPlayIn = seventhSeed ? team.wins - seventhSeed.wins : null;
     return `${team.shortName} are locked into a playoff seed${
-      aheadOfPlayIn !== null ? ` with a ${aheadOfPlayIn}-game cushion over the play-in line` : ""
+      aheadOfPlayIn !== null ? ` with a cushion of ${aheadOfPlayIn} games over the play-in line` : ""
     }.`;
   }
   if (seed <= 10) {

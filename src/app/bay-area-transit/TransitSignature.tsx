@@ -87,8 +87,16 @@ function departureLabel(departure: TransitDeparture): string {
  * BART counts minutes from the moment it answered, so a board that has been
  * held for a while overstates every wait by its own age.
  *
- * ponytail: trusts the viewer's clock. Send the server's time with the board
- * if skewed clocks turn up.
+ * The age is the viewer's clock against the board's own `generatedAt`, for
+ * every board, the one the page was served with and the ones fetched after.
+ * The page and the station route are both CDN-cached, so a stamp the server
+ * adds when it renders cannot say how long the copy then sat in the cache,
+ * and the data's own stamp is the only one that can.
+ *
+ * ponytail: trusts the viewer's clock against the server's. A viewer clock
+ * that runs fast drops trains early, and one that runs slow leaves the board
+ * as it was read. If skew turns up, the repair is the Age header on a client
+ * fetch, not a stamp written at render time.
  */
 export function upcomingDepartures(
   board: TransitStationBoard,

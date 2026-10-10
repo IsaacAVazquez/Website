@@ -61,7 +61,7 @@ describe("FrontierModelsTable", () => {
 
     const bravoRow = screen.getByRole("button", { name: "Bravo" }).closest("tr") as HTMLElement;
     expect(within(bravoRow).getByText("128K")).toBeInTheDocument();
-    expect(within(bravoRow).getByText("—")).toBeInTheDocument();
+    expect(within(bravoRow).getByText("Not listed")).toBeInTheDocument();
     expect(within(bravoRow).getByText("$0.40")).toBeInTheDocument();
     expect(within(bravoRow).getByText("Audio")).toBeInTheDocument();
     expect(within(bravoRow).queryByText("Reasoning")).toBeNull();
@@ -128,8 +128,8 @@ describe("FrontierModelsTable", () => {
 
     const toggle = screen.getByRole("button", { name: "Bravo" });
     const detail = document.getElementById(toggle.getAttribute("aria-controls") as string) as HTMLElement;
-    expect(within(detail).getByText("Not published")).toBeInTheDocument();
-    expect(within(detail).getByText("—")).toBeInTheDocument();
+    // Max output and the knowledge cutoff both read as unpublished.
+    expect(within(detail).getAllByText("Not published")).toHaveLength(2);
     expect(within(detail).queryByRole("link")).toBeNull();
     expect(screen.getByRole("button", { name: "Alpha" })).not.toHaveAttribute("aria-controls");
   });

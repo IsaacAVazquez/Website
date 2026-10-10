@@ -113,7 +113,7 @@ describe("SettingsClient pool settings", () => {
     await user.type(within(basics).getByLabelText("Pool name"), "!");
     expect(stored().name).toBe("Office pool!");
 
-    expect(within(basics).getByRole("option", { name: "Empty League · no fixtures yet" })).toBeDisabled();
+    expect(within(basics).getByRole("option", { name: "Empty League · no fixtures" })).toBeDisabled();
     await user.selectOptions(within(basics).getByLabelText("League"), "sample-cup");
     expect(stored().leagueKey).toBe("sample-cup");
 

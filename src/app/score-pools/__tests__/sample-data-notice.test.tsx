@@ -119,13 +119,13 @@ describe("score pools league choice", () => {
     [
       "the pick sheet",
       <ScorePoolsClient key="p" snapshot={snapshot([])} initialFixtureId={null} />,
-      "Sample Cup (sample data) · 1 fixtures",
+      "Sample Cup (sample)",
     ],
-    ["settings", <SettingsClient key="s" snapshot={snapshot([])} />, "Sample Cup (sample data)"],
+    ["settings", <SettingsClient key="s" snapshot={snapshot([])} />, "Sample Cup (sample)"],
   ])("does not offer a league with no fixtures on %s", (_name, element, sampleLabel) => {
     render(element);
 
-    expect(screen.getByRole("option", { name: "Premier League · no fixtures yet" })).toBeDisabled();
+    expect(screen.getByRole("option", { name: "Premier League · no fixtures" })).toBeDisabled();
     expect(screen.getByRole("option", { name: sampleLabel })).toBeEnabled();
     expect(screen.getByLabelText("League")).toHaveValue("sample-cup");
   });

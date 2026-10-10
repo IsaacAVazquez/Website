@@ -132,7 +132,7 @@ describe("SEO page sitemap freshness", () => {
     ["/about", "2026-10-01T00:00:00.000Z"],
     ["/contact", "2026-10-01T00:00:00.000Z"],
     ["/resume", "2026-09-29T00:00:00.000Z"],
-    ["/portfolio", "2026-09-14T00:00:00.000Z"],
+    ["/portfolio", "2026-10-09T00:00:00.000Z"],
   ])("records the latest copy change for %s", (pathname, lastmod) => {
     const entry = getPublicSitemapEntries().find(
       ({ loc }: { loc: string }) => loc === pathname
@@ -172,7 +172,7 @@ describe("SEO page sitemap freshness", () => {
     );
 
     expect(entry).toMatchObject({
-      lastmod: "2026-09-14T00:00:00.000Z",
+      lastmod: "2026-10-05T00:00:00.000Z",
       changefreq: "weekly",
       priority: 0.8,
     });

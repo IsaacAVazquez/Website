@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Recipe aggregator and ingredient-based search. Add the ingredients you have on hand and surface recipes you can actually cook tonight, ranked by what you're missing.",
   canonicalUrl: "/recipe-finder",
-  dateModified: "2026-04-29",
+  dateModified: "2026-10-09",
 });
 
 export default function RecipeFinderPage() {

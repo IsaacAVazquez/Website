@@ -2,15 +2,6 @@
 
 export type SampleType = "LV" | "RV" | "A"; // Likely Voters, Registered Voters, Adults
 export type PollMethodology = "online" | "phone" | "mixed" | "ivr" | "unknown";
-export type Party = "D" | "R" | "I" | "L";
-export type RaceRating =
-  | "Safe D"
-  | "Likely D"
-  | "Lean D"
-  | "Toss-up"
-  | "Lean R"
-  | "Likely R"
-  | "Safe R";
 
 export interface BasePoll {
   id: string;
@@ -59,34 +50,30 @@ export interface GenericBallotAverage {
 }
 
 // ─── Race polls ───────────────────────────────────────────────────────────────
+// VoteHub publishes a race poll as candidate names with a share each and no
+// party, incumbency, or rating, so a race carries only what the source does.
 
 export interface RaceCandidate {
   name: string;
-  party: Party;
-  incumbent: boolean;
   support: number;
 }
 
 export interface RacePoll extends BasePoll {
-  raceId: string;
-  candidates: RaceCandidate[];
+  candidates: RaceCandidate[]; // every answer the pollster published, highest first
 }
 
 export interface Race {
-  id: string;
+  id: string; // "senate-mi"
   state: string;
   stateAbbr: string;
   office: "Senate" | "Governor";
   year: number;
-  rating: RaceRating;
-  incumbentParty: Party | null;
-  openSeat: boolean;
-  demAvg: number;  // polling average
-  repAvg: number;
-  marginLabel: string; // e.g. "D+3" | "R+2" | "Even"
+  /** The two leading names in the newest poll, each averaged over `polls`, leader first. */
+  candidates: [RaceCandidate, RaceCandidate];
+  margin: number; // leader average minus runner-up average
   pollCount: number;
   lastPolled: string; // ISO date
-  polls: RacePoll[];
+  polls: RacePoll[]; // the polls behind the averages, newest first
 }
 
 // ─── Full snapshot ─────────────────────────────────────────────────────────────

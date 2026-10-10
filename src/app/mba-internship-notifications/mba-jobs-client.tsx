@@ -74,6 +74,7 @@ import type {
   MBAJobsApiResponse,
   MBAJobsSearchState,
   MBAJobsSourceStatus,
+  MBAJobsView,
   MBATrackedApplication,
   MBARoleFamilyFilter,
   MBARoleTypeFilter,
@@ -85,6 +86,7 @@ import {
   CATEGORY_OPTIONS,
   DEFAULT_MBA_JOBS_STATE,
   EXTERNAL_LABELS,
+  JOB_PAGE_SIZE,
   normalizeMBAJobsState,
   ROLE_FAMILY_LABELS,
   ROLE_FAMILY_OPTIONS,
@@ -113,7 +115,16 @@ const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"), {
 });
 
 const ROUTE = "/mba-internship-notifications";
-const JOB_PAGE_SIZE = 60;
+// A pipeline card is tall (facts, rounds, history, and a row of controls), and
+// a status column is one card wide on a big screen, so a column pages too.
+const PIPELINE_COLUMN_PAGE_SIZE = 6;
+
+// Where the hero's one action lands, per view: the working area of that view.
+const VIEW_ACTIONS: Record<MBAJobsView, { href: string; label: string }> = {
+  feed: { href: "#mba-role-tracker-filters-heading", label: "Search roles" },
+  applications: { href: "#mba-application-pipeline-heading", label: "Open the pipeline" },
+  candidates: { href: "#mba-candidates-heading", label: "Open the candidates" },
+};
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -209,6 +220,11 @@ const ATTENTION_KIND_ACCENTS: Record<MBAAttentionKind, string> = {
 
 function formatRate(value: number | null): string {
   return value === null ? "—" : `${Math.round(value * 100)}%`;
+}
+
+/** Whole counts with thousands separators, since the feed runs past 1,000 roles. */
+function formatCount(value: number): string {
+  return value.toLocaleString("en-US");
 }
 
 /** Fit score descending with unscored applications last; ties keep the column's own order. */
@@ -769,7 +785,7 @@ function JobCard({
             <CardActionLink
               href={job.applyUrl}
               label="Apply now"
-              ariaLabel={`Apply for ${job.title} at ${job.companyName}`}
+              ariaLabel={`Apply now, ${job.title} at ${job.companyName}`}
               variant="primary"
               trailingIcon
               onClick={onMarkSeen}
@@ -810,11 +826,8 @@ function ManualCompanyCard({
           <CategoryChip category={company.category} />
         </div>
 
-        <p className="c97-prose">
-          I do not have a stable public feed for this company yet, so I keep the career page and
-          a role-aware LinkedIn search here instead.
-        </p>
-
+        {/* The section lead explains these cards once, so eleven copies of the
+            same paragraph no longer add 1,000px to a phone. */}
         <div
           className="mt-auto border-t border-[var(--c97-rule)]"
           style={{ paddingTop: "var(--c97-sp-3)" }}
@@ -848,7 +861,7 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
       <SectionLead
         kicker="Search elsewhere"
         title="Open the same search on outside boards."
-        description="These are outbound searches only. LinkedIn stays a shortcut here, not a server-side source."
+        description="These are outbound searches only, so LinkedIn is a shortcut here and nothing from it is fetched by the server."
         id="mba-search-elsewhere-heading"
       />
       <div className="c97-panel">
@@ -1030,7 +1043,7 @@ function CompanyFilterStrip({
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        className="mba-toggle flex w-full items-start justify-between border text-left transition-[border-color,color] duration-200 ease sm:items-center"
+        className="mba-toggle flex w-full items-start justify-between border text-left transition-[border-color,color] duration-200 sm:items-center"
         style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)" }}
         aria-expanded={isExpanded}
         aria-controls="tracked-companies-controls"
@@ -1042,7 +1055,7 @@ function CompanyFilterStrip({
               className="block text-sm"
               style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
             >
-              {watchedLiveCount} of {totalLiveCount} live boards are in your scan right now.
+              {watchedLiveCount} of {totalLiveCount} live boards are in the scan right now.
             </span>
           </span>
           <span className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
@@ -1067,7 +1080,7 @@ function CompanyFilterStrip({
             aria-hidden="true"
           >
             <ChevronDown
-              className={`h-4 w-4 transition-transform duration-150 ease ${
+              className={`h-4 w-4 transition-transform duration-150 ${
                 isExpanded ? "rotate-180" : ""
               }`}
               style={{ color: "var(--c97-ink-2)" }}
@@ -1136,7 +1149,7 @@ function CompanyFilterStrip({
                       </span>
                     </span>
                     <ChevronDown
-                      className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
+                      className={`h-4 w-4 shrink-0 transition-transform duration-150 ${
                         isGroupExpanded ? "rotate-180" : ""
                       }`}
                       style={{ color: "var(--c97-ink-2)" }}
@@ -1156,7 +1169,7 @@ function CompanyFilterStrip({
                             key={company.id}
                             type="button"
                             onClick={() => onToggle(company.id)}
-                            className="mba-toggle inline-flex min-h-[44px] w-full items-center border text-left text-xs font-semibold transition-[border-color,color] duration-150 ease"
+                            className="mba-toggle inline-flex min-h-[44px] w-full items-center border text-left text-xs font-semibold transition-[border-color,color] duration-150"
                             style={{ ...getTrackedCompanyButtonStyle(company, active), gap: "var(--c97-sp-1)", padding: "var(--c97-sp-2)" }}
                             aria-pressed={active}
                           >
@@ -1326,7 +1339,7 @@ function NeedsAttentionPanel({
       <SectionLead
         kicker="Needs attention"
         title="What to chase today."
-        description="Overdue and same-day follow-ups plus deadlines closing on roles you have not submitted yet, pulled straight from your tracked pipeline."
+        description="Overdue and same-day follow-ups, plus deadlines closing on roles I have not submitted yet, pulled from the tracked pipeline."
         id="mba-attention-heading"
       />
       <div>
@@ -1341,11 +1354,11 @@ function NeedsAttentionPanel({
             </span>
             <div>
               <p className="text-sm font-semibold" style={{ margin: 0, color: "var(--c97-ink)" }}>
-                You&rsquo;re all caught up.
+                All caught up.
               </p>
               <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
-                No follow-ups or deadlines need action right now. Add a follow-up date when you
-                apply and it will surface here on the day.
+                No follow-ups or deadlines need action right now. A follow-up date set when I
+                apply surfaces here on its day.
               </p>
             </div>
           </div>
@@ -1511,7 +1524,7 @@ function ApplicationCard({
           <CardActionLink
             href={application.jobSnapshot.applyUrl}
             label="Apply"
-            ariaLabel={`Open application for ${application.jobSnapshot.title}`}
+            ariaLabel={`Apply for ${application.jobSnapshot.title} at ${application.jobSnapshot.companyName}`}
             variant="primary"
             trailingIcon
           />
@@ -1572,6 +1585,9 @@ function ApplicationPipeline({
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<MBAApplicationStatus | "all">("all");
   const [sortByFit, setSortByFit] = useState(false);
+  // One limit per status column, so "Show more" on one column leaves the rest
+  // at their first page.
+  const [columnLimits, setColumnLimits] = useState<Partial<Record<MBAApplicationStatus, number>>>({});
   const [importMessage, setImportMessage] = useState<string | null>(null);
   const importInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -1616,13 +1632,13 @@ function ApplicationPipeline({
   return (
     <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-application-pipeline-heading">
       <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-      <UpcomingInterviews applications={applications} todayKey={todayKey} onEdit={onEdit} />
       <SectionLead
         kicker="Applications"
         title="Work the full-time pipeline in one place."
         description="I track roles from the live feed, add the ones I find elsewhere by hand, and keep follow-ups, interview rounds, and fit notes visible without sending any of it to the server."
         id="mba-application-pipeline-heading"
       />
+      <UpcomingInterviews applications={applications} todayKey={todayKey} onEdit={onEdit} />
       <div className="c97-panel" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
         <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
           <div className="grid md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]" style={{ gap: "var(--c97-sp-2)" }}>
@@ -1706,7 +1722,7 @@ function ApplicationPipeline({
         {applications.length === 0 ? (
           <StatusPanel
             title="No applications tracked yet."
-            message="Track a role from the feed or add one manually to start building your pipeline."
+            message="Track a role from the feed or add one by hand to start the pipeline."
             icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
           />
         ) : filteredApplications.length === 0 ? (
@@ -1716,8 +1732,15 @@ function ApplicationPipeline({
             icon={<Search className="h-5 w-5" aria-hidden="true" />}
           />
         ) : (
-          <div className="grid xl:grid-cols-5" style={{ gap: "var(--c97-sp-2)" }}>
+          // Status columns at least 18rem wide, so a card's title, facts, and
+          // control row do not wrap line by line. Five fixed columns on the
+          // page's ~1,000px panel were 210px each.
+          <div
+            className="grid md:grid-cols-[repeat(auto-fit,minmax(18rem,1fr))]"
+            style={{ gap: "var(--c97-sp-2)" }}
+          >
             {columns.map(({ status, applications: statusApplications }) => {
+              const columnLimit = columnLimits[status] ?? PIPELINE_COLUMN_PAGE_SIZE;
               return (
                 <div key={status} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
                   <div className="c97-panel flex items-center justify-between">
@@ -1736,7 +1759,7 @@ function ApplicationPipeline({
                       Nothing here.
                     </div>
                   ) : (
-                    statusApplications.map((application) => (
+                    statusApplications.slice(0, columnLimit).map((application) => (
                       <ApplicationCard
                         key={application.id}
                         application={application}
@@ -1751,6 +1774,21 @@ function ApplicationPipeline({
                         onRemove={() => onRemove(application.id)}
                       />
                     ))
+                  )}
+                  {statusApplications.length > columnLimit && (
+                    <button
+                      type="button"
+                      className="c97-btn-ghost"
+                      onClick={() =>
+                        setColumnLimits((limits) => ({
+                          ...limits,
+                          [status]: (limits[status] ?? PIPELINE_COLUMN_PAGE_SIZE) + PIPELINE_COLUMN_PAGE_SIZE,
+                        }))
+                      }
+                    >
+                      Show more ({columnLimit} of {statusApplications.length}{" "}
+                      {MBA_APPLICATION_STATUS_LABELS[status].toLowerCase()})
+                    </button>
                   )}
                 </div>
               );
@@ -1831,11 +1869,14 @@ function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceSt
 
 interface MBAJobsClientProps {
   initialData?: MBAJobsApiResponse;
+  /** The feed's full size at render time; `initialData.jobs` is only its first page. */
+  initialJobCount?: number;
   initialState: MBAJobsSearchState;
 }
 
 export function MBAJobsClient({
   initialData,
+  initialJobCount,
   initialState,
 }: MBAJobsClientProps) {
   const now = useClientNow();
@@ -1866,6 +1907,7 @@ export function MBAJobsClient({
   const {
     jobs,
     isLoading,
+    hasFetched,
     error,
     fetchErrors,
     sourceStatuses,
@@ -2029,7 +2071,13 @@ export function MBAJobsClient({
     : lastFetchedAt
       ? `Updated ${formatFetchedAt(lastFetchedAt)}`
       : "Not yet fetched";
-
+  // Until the browser's fetch lands, `jobs` is the server's first page, so the
+  // feed size comes from the server's own count of the full list.
+  const liveRoleCount = hasFetched ? jobs.length : initialJobCount ?? jobs.length;
+  const countsReady = !isLoading && hasFetched;
+  // Boards that failed by name. A feed-level error (no board behind it) is the
+  // page's error state instead, so it never prints as an empty name here.
+  const failedBoards = fetchErrors.map((item) => item.companyName).filter(Boolean);
 
   const hasApplications = applications.length > 0;
   const showSourceHealth = !isLoading && sourceStatuses.length > 0;
@@ -2143,24 +2191,21 @@ export function MBAJobsClient({
       <Catalog97ProjectHero
         ink={PROJECT_PRESS[ROUTE].lead}
         title="Job search"
+        // Two sentences, so the action under it still lands on a phone's first screen.
         standfirst={
           <>
             I monitor {totalTracked} public job boards across {totalCompanies} target companies
-            for full-time product, PMM, strategy, operations, growth, finance, analytics, chief of
-            staff, and MBA leadership program roles. External leads stay opt-in, and LinkedIn stays
-            an outbound search shortcut instead of a scraped feed. The board below narrows by role
-            and company type, and any role I track from it lands in the pipeline so follow-ups,
-            interview rounds, and deadlines surface on their own.
+            for full-time business roles, from product and strategy to finance and MBA leadership
+            programs. Any role I track from the board lands in a pipeline that keeps its
+            follow-ups, interview rounds, and deadlines in view.
           </>
         }
         meta={refreshLabel}
-        // The hero fills a phone's first screen, so one link goes straight to the search.
+        // One link into the view's working area, ahead of the figures.
         action={
-          view === "applications" ? undefined : (
-            <a href="#mba-role-tracker-filters-heading" className="c97-btn-ghost">
-              Search roles
-            </a>
-          )
+          <a href={VIEW_ACTIONS[view].href} className="c97-btn-ghost">
+            {VIEW_ACTIONS[view].label}
+          </a>
         }
         // The two pipeline figures and the funnel are all zeros until a role
         // is tracked, and on a phone they stood between the visitor and the
@@ -2168,11 +2213,11 @@ export function MBAJobsClient({
         readouts={
           hasApplications
             ? [
-                { label: "Live roles tracked", value: isLoading ? "—" : jobs.length },
-                { label: "Active applications", value: activeApplications.length },
-                { label: "Needs attention", value: attentionItems.length },
+                { label: "Live roles tracked", value: isLoading ? "—" : formatCount(liveRoleCount) },
+                { label: "Active applications", value: formatCount(activeApplications.length) },
+                { label: "Needs attention", value: formatCount(attentionItems.length) },
               ]
-            : [{ label: "Live roles tracked", value: isLoading ? "—" : jobs.length }]
+            : [{ label: "Live roles tracked", value: isLoading ? "—" : formatCount(liveRoleCount) }]
         }
       >
         {hasApplications ? (
@@ -2206,7 +2251,7 @@ export function MBAJobsClient({
               type="button"
               onClick={refresh}
               disabled={isLoading}
-              className="c97-btn-ghost mba-ghost disabled:opacity-50"
+              className="c97-btn-ghost mba-ghost"
             >
               <RefreshCcw
                 className={`h-4 w-4 ${isLoading ? "motion-safe:animate-spin" : ""}`}
@@ -2220,15 +2265,15 @@ export function MBAJobsClient({
               onRequest={requestNotificationPermission}
             />
 
-            {!isLoading && newJobCount > 0 && (
-              <button type="button" onClick={markAllSeen} className="c97-btn-ghost mba-ghost">
-                Mark all seen
-              </button>
-            )}
-            {!isLoading && newJobCount > 0 && (
-              <p className="c97-meta" style={{ margin: 0 }}>
-                {newJobCount} new since last visit
-              </p>
+            {countsReady && newJobCount > 0 && (
+              <>
+                <button type="button" onClick={markAllSeen} className="c97-btn-ghost mba-ghost">
+                  Mark all seen
+                </button>
+                <p className="c97-meta" style={{ margin: 0 }}>
+                  {formatCount(newJobCount)} new since last visit
+                </p>
+              </>
             )}
           </div>
 
@@ -2296,7 +2341,7 @@ export function MBAJobsClient({
 
           <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-filters-heading">
             <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-              {fetchErrors.length > 0 && !isLoading && (
+              {failedBoards.length > 0 && !isLoading && (
                 <div
                   className="c97-panel"
                   role="status"
@@ -2305,7 +2350,7 @@ export function MBAJobsClient({
                   <span className="c97-chip c97-chip-warning">Partial results</span>
                   <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink)" }}>
                     Some companies could not be reached:{" "}
-                    {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
+                    {failedBoards.join(", ")}. Results shown are partial.
                   </p>
                 </div>
               )}
@@ -2418,7 +2463,7 @@ export function MBAJobsClient({
                     {`${showRefinements ? "Hide" : "Show"} location, role, company, and source filters`}
                   </span>
                   <ChevronDown
-                    className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
+                    className={`h-4 w-4 shrink-0 transition-transform duration-150 ${
                       showRefinements ? "rotate-180" : ""
                     }`}
                     aria-hidden="true"
@@ -2622,20 +2667,20 @@ export function MBAJobsClient({
               description="This is the fastest way I have found to scan full-time business roles without bouncing across dozens of career pages."
               id="mba-role-tracker-roles-heading"
             />
-            {!isLoading && (
+            {countsReady && (
               <div
                 className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}
                 role="status"
                 aria-live="polite"
                 aria-atomic="true"
               >
-                <span className="c97-chip">{displayJobs.length} matching roles</span>
+                <span className="c97-chip">{formatCount(displayJobs.length)} matching roles</span>
                 <span className="c97-chip">{watchedCompanyIds.size} watched feeds active</span>
                 {uiState.external === "on" && (
-                  <span className="c97-chip">{externalLeadCount} external leads</span>
+                  <span className="c97-chip">{formatCount(externalLeadCount)} external leads</span>
                 )}
                 {uiState.location.trim() && (
-                  <span className="c97-chip">{matchingRoleCount} before location filter</span>
+                  <span className="c97-chip">{formatCount(matchingRoleCount)} before location filter</span>
                 )}
                 {uiState.location.trim() && (
                   <span className="c97-chip">
@@ -2702,7 +2747,7 @@ export function MBAJobsClient({
                       className="c97-btn"
                       onClick={() => setVisibleJobCount((n) => n + JOB_PAGE_SIZE)}
                     >
-                      Show more ({visibleJobs.length} of {displayJobs.length} shown)
+                      Show more ({formatCount(visibleJobs.length)} of {formatCount(displayJobs.length)} shown)
                     </button>
                   </div>
                 )}
@@ -2710,12 +2755,17 @@ export function MBAJobsClient({
             )}
             {!isLoading && !error && (
               <p className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
-                {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                {hasFetched
+                  ? `${formatCount(visibleJobs.length)} of ${formatCount(displayJobs.length)} role${displayJobs.length !== 1 ? "s" : ""} shown · `
+                  : ""}
                 {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
                 {showSourceHealth && (
-                  <a href="#mba-source-health-heading" className="c97-link">
-                    Source health
-                  </a>
+                  <>
+                    {" · "}
+                    <a href="#mba-source-health-heading" className="c97-link">
+                      Source health
+                    </a>
+                  </>
                 )}
               </p>
             )}
@@ -2752,7 +2802,7 @@ export function MBAJobsClient({
               <SectionLead
                 kicker="Manual checks"
                 title="Fallback paths for companies without stable public feeds."
-                description="These LinkedIn and career-page shortcuts preserve your current role intent so you can still move quickly when a direct feed is unavailable."
+                description="These LinkedIn and career page shortcuts carry the current role filters, so I can still move quickly when a direct feed is unavailable."
                 id="mba-role-tracker-manual-heading"
               />
               <div

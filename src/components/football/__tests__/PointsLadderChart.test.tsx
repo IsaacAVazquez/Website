@@ -26,6 +26,19 @@ function renderWide(onSelect = jest.fn()) {
 
 const num = (el: Element, attr: string) => Number(el.getAttribute(attr));
 
+describe("PointsLadder slots", () => {
+  it("puts each ladder in its own slot, which the stylesheet shows one at a time", () => {
+    const { container } = render(
+      <PointsLadder clubs={clubs} selectedId={null} onSelect={jest.fn()} title="Points ladder" />
+    );
+
+    for (const variant of ["wide", "narrow"]) {
+      const svg = container.querySelector(`svg[data-variant="${variant}"]`)!;
+      expect(svg.parentElement).toHaveClass("c97-points-ladder-slot", `c97-points-ladder-slot--${variant}`);
+    }
+  });
+});
+
 describe("PointsLadder click targets", () => {
   it("selects the club whose dot was clicked", () => {
     const { onSelect, hits } = renderWide();

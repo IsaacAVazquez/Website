@@ -271,7 +271,7 @@ export function DraftBoard({
     return groups;
   }, [windowedPlayers]);
 
-  // Watchlist players still on the board — the "is my guy still here?" glance.
+  // Watchlist players still on the board, the "is my guy still here?" glance.
   const queuedAvailable = useMemo(() => {
     const byId = new Map(availablePlayers.map((player) => [player.id, player]));
     return queue.queue

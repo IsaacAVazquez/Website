@@ -125,7 +125,7 @@ export function PortfolioStatsGrid({
     <section
       id="portfolio-stats"
       aria-label="Portfolio stats"
-      className={styles.statsPanel + " scroll-mt-12 min-[901px]:scroll-mt-0"}
+      className={styles.statsPanel + " invest-rail-target"}
     >
       <div className={styles.statsCap}>
         <span>Portfolio stats</span>
@@ -200,11 +200,13 @@ export function PortfolioStatsGrid({
         <StatCell
           label="Top-3 concentration"
           hint="Combined allocation of your three largest positions, a quick read on portfolio shape."
-          value={`${stats.concentration.toFixed(1)}%`}
+          value={stats.positions === 0 ? "—" : `${stats.concentration.toFixed(1)}%`}
           sub={
-            stats.positions <= 3
-              ? "Whole book"
-              : `${stats.positions - 3} more positions`
+            stats.positions === 0
+              ? undefined
+              : stats.positions <= 3
+                ? "Whole book"
+                : `${stats.positions - 3} more ${stats.positions === 4 ? "position" : "positions"}`
           }
         />
       </div>

@@ -20,7 +20,7 @@ const EMPTY_DATASET: FantasyAdpDataset = {
 
 /**
  * Reads the generated ADP dataset for a scoring format, tolerating an
- * out-of-shape module the same way `fantasyPositionData.ts` does — a thin or
+ * out-of-shape module the same way `fantasyPositionData.ts` does, a thin or
  * missing dataset degrades to "no ADP" rather than throwing at build time.
  */
 export function getFantasyAdpDataset(scoringFormat: ScoringFormat): FantasyAdpDataset {

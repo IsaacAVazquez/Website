@@ -917,8 +917,10 @@ function RecommendationCard({
           <dd style={termStyle}>{result.toolchain.reporting}</dd>
         </div>
       </dl>
-      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-        <span style={{ fontWeight: 600 }}>The tradeoff I would keep visible.</span>{" "}
+      <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
+        The tradeoff I would keep visible
+      </p>
+      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
         {result.toolchain.tradeoff}
       </p>
       <ScoreLedger result={result} defaultOpen={primary} />
@@ -1545,7 +1547,9 @@ function TeamOnboarding() {
                         gap: "var(--c97-sp-1)",
                         textAlign: "left",
                         color: current ? "var(--c97-ink)" : "var(--c97-label)",
-                        textDecoration: current ? "underline" : "none",
+                        // The longhand, since React warns when the shorthand
+                        // changes beside its own longhands.
+                        textDecorationLine: current ? "underline" : "none",
                         textDecorationThickness: 2,
                         textUnderlineOffset: 6,
                         textDecorationColor: "var(--c97-accent)",
@@ -1627,7 +1631,7 @@ export function EnablementAssistantClient() {
       <Catalog97ProjectHero
         ink={PROJECT_PRESS[ROUTE].lead}
         title="Automation Enablement Assistant"
-        standfirst="I built this to help a small central tooling team support many independent product teams without repeating the same onboarding work one team at a time. It recommends a standard stack, writes the adoption plan, answers the common setup questions, and turns every failure into a clearer documentation backlog."
+        standfirst="I built this so a small central tooling team can support many product teams without repeating the same onboarding work one team at a time, from the standard stack, to the adoption plan, to the setup answers and the documentation backlog they leave behind."
         meta="Internal platform enablement · deterministic demo"
       >
         {/* The two ways in sit right under the opening explanation, ahead of the model boundary note. */}

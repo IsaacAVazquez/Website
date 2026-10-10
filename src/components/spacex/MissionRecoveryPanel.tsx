@@ -31,10 +31,9 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
           No recovery data in the current snapshot.
         </p>
         <p className="mx-auto max-w-[54ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-          Launch Library&apos;s booster/landing records aren&apos;t populated for any mission this
-          snapshot currently hydrates. The normalizer already maps that data whenever upstream
-          provides it, so this panel will fill in on its own the next time a refresh picks up
-          populated core records, and nothing here is fabricated in the meantime.
+          Launch Library&apos;s booster and landing records are empty for every mission this
+          snapshot carries detail for, so there is nothing to chart yet. The panel fills in on
+          its own once a refresh picks up populated core records.
         </p>
       </div>
     );

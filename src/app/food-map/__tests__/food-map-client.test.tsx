@@ -2,15 +2,13 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { FoodMapClient } from "../food-map-client";
 import { DEFAULT_FOOD_MAP_STATE } from "../food-map-state";
 
-const mockReplace = jest.fn();
-const mockPush = jest.fn();
 let currentSearchParams = new URLSearchParams();
+// The page writes its state with the native history API, which the router
+// syncs into useSearchParams; here the mock is fed by hand where a test needs it.
+let replaceState: jest.SpyInstance;
+const lastHref = () => String(replaceState.mock.calls.at(-1)?.[2]);
 
 jest.mock("next/navigation", () => ({
-  useRouter: () => ({
-    push: mockPush,
-    replace: mockReplace,
-  }),
   useSearchParams: () => currentSearchParams,
 }));
 
@@ -26,8 +24,10 @@ describe("FoodMapClient", () => {
   });
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
-    mockReplace.mockReset();
-    mockPush.mockReset();
+    replaceState = jest.spyOn(window.history, "replaceState").mockImplementation(() => {});
+  });
+  afterEach(() => {
+    replaceState.mockRestore();
   });
 
   it("renders the default Austin surface with the curator legend", () => {
@@ -50,9 +50,7 @@ describe("FoodMapClient", () => {
 
     fireEvent.click(screen.getByRole("radio", { name: /tokyo/i }));
 
-    expect(mockReplace).toHaveBeenCalledWith("/food-map?city=tokyo", {
-      scroll: false,
-    });
+    expect(replaceState).toHaveBeenCalledWith(null, "", "/food-map?city=tokyo");
   });
 
   it("moves and selects city radios with arrow keys, including wrapping", () => {
@@ -63,19 +61,19 @@ describe("FoodMapClient", () => {
     austin.focus();
     fireEvent.keyDown(austin, { key: "ArrowRight" });
     expect(screen.getByRole("radio", { name: /san francisco/i })).toHaveFocus();
-    expect(mockReplace).toHaveBeenLastCalledWith("/food-map?city=sf", { scroll: false });
+    expect(lastHref()).toBe("/food-map?city=sf");
 
     currentSearchParams = new URLSearchParams("city=sf");
     view.rerender(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
     expect(screen.getByRole("radio", { name: /san francisco/i })).toHaveAttribute("tabindex", "0");
     fireEvent.keyDown(austin, { key: "ArrowLeft" });
     expect(screen.getByRole("radio", { name: /san sebastián/i })).toHaveFocus();
-    expect(mockReplace).toHaveBeenLastCalledWith("/food-map?city=san-sebastian", { scroll: false });
+    expect(lastHref()).toBe("/food-map?city=san-sebastian");
   });
 
   it("focuses the chosen stop and returns to the index when cleared", () => {
-    mockReplace.mockImplementation((href: string) => {
-      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    replaceState.mockImplementation((_state: unknown, _title: string, href?: string | URL | null) => {
+      currentSearchParams = new URLSearchParams(String(href).split("?")[1] ?? "");
     });
     const ui = () => <FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />;
     const view = render(ui());
@@ -98,7 +96,7 @@ describe("FoodMapClient", () => {
     expect(screen.getByRole("heading", { name: "The stops" })).toHaveFocus();
     expect(Element.prototype.scrollIntoView).toHaveBeenLastCalledWith({ behavior: "smooth", block: "start" });
     // Jumping to the list is a scroll, so the URL and the selection stay as they were.
-    expect(mockReplace).not.toHaveBeenCalled();
+    expect(replaceState).not.toHaveBeenCalled();
   });
 
   it("toggles a curator chip into the URL", () => {
@@ -106,9 +104,14 @@ describe("FoodMapClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /anthony bourdain/i }));
 
-    expect(mockReplace).toHaveBeenCalledWith("/food-map?curator=bourdain", {
-      scroll: false,
-    });
+    expect(replaceState).toHaveBeenCalledWith(null, "", "/food-map?curator=bourdain");
+  });
+
+  it("rewrites a non-canonical query in place without a navigation", () => {
+    currentSearchParams = new URLSearchParams("city=austin&curator=bourdain,bourdain");
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+
+    expect(replaceState).toHaveBeenCalledWith(null, "", "/food-map?curator=bourdain");
   });
 
   it("selects a place from the URL and clears it again", () => {
@@ -122,7 +125,7 @@ describe("FoodMapClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /clear pick/i }));
 
-    expect(mockReplace).toHaveBeenLastCalledWith("/food-map", { scroll: false });
+    expect(lastHref()).toBe("/food-map");
   });
 
   it("shows the empty-state copy when filters exclude every spot", () => {

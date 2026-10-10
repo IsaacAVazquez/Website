@@ -124,7 +124,7 @@ export function AddStockForm({ onAdd }: Props) {
   if (!open) {
     return (
       <ModernButton variant="accent" size="md" onClick={() => setOpen(true)} ariaLabel="Add holding">
-        <Plus size={16} /> Add Holding
+        <Plus size={16} /> Add holding
       </ModernButton>
     );
   }

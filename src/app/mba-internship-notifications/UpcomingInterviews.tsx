@@ -13,7 +13,8 @@ export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
   const interviews = todayKey ? getUpcomingInterviews(applications, todayKey) : [];
   return (
     <section aria-labelledby="upcoming-interviews-heading">
-      <h2 id="upcoming-interviews-heading" className="c97-serif c97-h2">Interviews in the next seven days</h2>
+      {/* A subsection of the pipeline band, so it steps down from the band's h2. */}
+      <h3 id="upcoming-interviews-heading" className="c97-serif c97-h3">Interviews in the next seven days</h3>
       {!todayKey ? (
         <p className="c97-prose">Loading interview dates…</p>
       ) : interviews.length === 0 ? (
@@ -31,9 +32,9 @@ export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
                 {round.notes && <p className="c97-prose">{round.notes}</p>}
               </div>
               <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                <button className="c97-btn-ghost" onClick={() => onEdit(application)}>Edit application</button>
+                <button type="button" className="c97-btn-ghost" onClick={() => onEdit(application)}>Edit application</button>
                 {application.materialsDir && (
-                  <button className="c97-btn-ghost" onClick={async () => {
+                  <button type="button" className="c97-btn-ghost" onClick={async () => {
                     const prepPath = `${application.materialsDir}/prep.md`;
                     try {
                       await navigator.clipboard.writeText(prepPath);

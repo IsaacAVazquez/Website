@@ -55,7 +55,7 @@ function normalizeEntry(entry: StockPrice & { report_date?: string; symbol?: str
   };
 }
 
-/** Rebase a close-price series so its first point reads 100 — for the
+/** Rebase a close-price series so its first point reads 100, for the
  * vs-SPY overlay, where absolute dollars would put two different stocks on
  * incomparable scales. */
 function indexToHundred(values: number[]): number[] {
@@ -183,7 +183,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     // the visible MA. Cost basis is deliberately excluded so a far-out-of-
     // range entry price can't squash the price line; the cost line is instead
     // clamped to the chart edge below. Neither MA nor cost basis apply in
-    // vs-SPY mode — they're dollar figures, meaningless mixed with an index.
+    // vs-SPY mode, they're dollar figures, meaningless mixed with an index.
     const domainValues = [...closes];
     if (spyIndexed) domainValues.push(...spyIndexed);
     if (showMA && !vsSpyActive) {
@@ -220,7 +220,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("font-size", "10px")
       .text(vsSpyActive ? "Indexed (start = 100)" : "Price (USD)");
 
-    // SPY comparison line (muted, drawn beneath the primary series) — only
+    // SPY comparison line (muted, drawn beneath the primary series), only
     // in vs-SPY mode, both series already rebased to 100 at the window start.
     if (spyIndexed) {
       const spyLine = d3Line<number>()
@@ -263,7 +263,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .style("stroke", "var(--c97-accent)")
       .attr("stroke-width", 1.5);
 
-    // 50-day moving average (dashed, neutral) — only the points that have a
+    // 50-day moving average (dashed, neutral), only the points that have a
     // warmed-up average are drawn. Not shown in vs-SPY (indexed) mode.
     if (showMA && !vsSpyActive) {
       const maLine = d3Line<(typeof entries)[0]>()
@@ -347,14 +347,25 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         const parent = priceRef.current.parentElement;
         if (!parent) return;
         const rect = parent.getBoundingClientRect();
-        tooltipRef.current.style.left = `${event.clientX - rect.left + 12}px`;
-        tooltipRef.current.style.top = `${event.clientY - rect.top - 40}px`;
-        tooltipRef.current.style.display = "block";
-        tooltipRef.current.innerHTML = vsSpyActive
-          ? `<span class="font-medium">${pt.date}</span><br/>${symbol.toUpperCase()}: ${closes[idx].toFixed(1)}${
-              spyIndexed ? `<br/>SPY: ${spyIndexed[idx].toFixed(1)}` : ""
-            }`
-          : `<span class="font-medium">${pt.date}</span><br/>Close: $${pt.close.toFixed(2)}`;
+        const tooltip = tooltipRef.current;
+        tooltip.style.left = `${event.clientX - rect.left + 12}px`;
+        tooltip.style.top = `${event.clientY - rect.top - 40}px`;
+        tooltip.style.display = "block";
+        // Text nodes, not markup. The symbol and the date are data, and
+        // innerHTML would run anything that reached it through them.
+        const dateLabel = document.createElement("span");
+        dateLabel.className = "font-medium";
+        dateLabel.textContent = pt.date;
+        const lines = vsSpyActive
+          ? [
+              `${symbol.toUpperCase()}: ${closes[idx].toFixed(1)}`,
+              ...(spyIndexed ? [`SPY: ${spyIndexed[idx].toFixed(1)}`] : []),
+            ]
+          : [`Close: $${pt.close.toFixed(2)}`];
+        tooltip.replaceChildren(
+          dateLabel,
+          ...lines.flatMap((line) => [document.createElement("br"), document.createTextNode(line)]),
+        );
       })
       .on("mouseleave", function () {
         hairline.attr("opacity", 0);

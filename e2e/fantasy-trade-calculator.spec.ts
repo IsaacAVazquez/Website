@@ -44,8 +44,17 @@ test.describe("Fantasy football trade calculator", () => {
     await expect(reloaded.getByLabel("You give players").getByRole("listitem")).toHaveCount(1);
     await expect(reloaded.getByLabel("You get players").getByRole("listitem")).toHaveCount(1);
 
+    // Below lg the league settings sit behind a disclosure, so a phone opens
+    // it first, the way a visitor does. From lg up the toggle is not rendered.
+    const settingsToggle = reloaded.getByRole("button", { name: "Change league settings" });
+    if (await settingsToggle.isVisible()) {
+      await settingsToggle.click();
+    }
     await reloaded.getByRole("radio", { name: "Half PPR" }).click();
     await expect(page).toHaveURL(/scoring=half_ppr/);
+    // The scoring change reloads the board, and the settings used to close
+    // with it on a phone. They stay open, with the new choice checked.
+    await expect(reloaded.getByRole("radio", { name: "Half PPR" })).toBeChecked();
     await expect(reloaded.getByText(/players available in Half PPR/i)).toBeVisible();
     await expect(reloaded.getByLabel("You give players")).toContainText(
       "Search the overall board and add the first player."

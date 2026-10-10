@@ -177,6 +177,8 @@
 .terminalScope :global(.invest-search) input {
   all: unset;
   flex: 1;
+  /* The field itself is the 44px target, not only the label around it. */
+  min-height: 44px;
   color: var(--c97-ink);
   font-family: var(--c97-font-mono);
   font-size: var(--invest-fs-small);
@@ -299,7 +301,7 @@
   display: flex; gap: var(--c97-sp-1); flex-wrap: wrap;
 }
 
-/* Right side of the hero — chart wrapper */
+/* Right side of the hero, chart wrapper */
 .terminalScope :global(.invest-chart-wrap) {
   position: relative;
   align-self: stretch;
@@ -442,6 +444,8 @@
   border: 0;
   background: var(--c97-surface);
   min-height: 44px;
+  /* The links fill the row. Two of them left the rule-coloured remainder reading as an empty third cell. */
+  flex: 1 1 auto;
 }
 
 /* ---- Holdings ledger ------------------------------------------------------ */
@@ -637,7 +641,7 @@
   min-width: 200px;
 }
 
-/* Research view — asset header */
+/* Research view, asset header */
 .terminalScope :global(.research-asset-card) {
   position: relative;
   border-bottom: 1px solid var(--c97-rule);
@@ -807,7 +811,7 @@
   color: var(--c97-ink-2) !important;
 }
 
-/* 52-week range — positioned dot on a track */
+/* 52-week range, positioned dot on a track */
 .weekRange {
   display: flex;
   flex-direction: column;
@@ -1779,6 +1783,8 @@
   .sectionRail a:hover,
   .sectionRail a[aria-current="true"] { color: var(--c97-ink); background: var(--c97-panel); }
   .sectionRail a svg { width: 15px; height: 15px; flex: 0 0 auto; }
+  /* A section link's target scrolls clear of the sticky rail: its 44px links plus the rule under them. */
+  .terminalScope :global(.invest-rail-target) { scroll-margin-top: 45px; }
   .sectionRailPill {
     font-family: var(--c97-font-mono);
     font-size: var(--invest-fs-micro);

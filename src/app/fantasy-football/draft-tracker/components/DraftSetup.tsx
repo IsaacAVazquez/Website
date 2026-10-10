@@ -262,7 +262,7 @@ export function DraftSetup({
       onSaveSettings(formState);
       onStartDraft();
     } finally {
-      // Re-enable after a short tick — startDraft is synchronous, but the
+      // Re-enable after a short tick, since startDraft is synchronous, but the
       // brief disable prevents double-click submission.
       setTimeout(() => setIsStarting(false), 400);
     }

@@ -17,6 +17,10 @@ const TRIAGE_LABELS: Record<MBACandidateTriage, string> = {
   dismissed: "Dismissed",
 };
 
+// Cards per "Show more" step. A sourcing run leaves hundreds in the sourced
+// list, and all of them at once printed a 144,000px page on a phone.
+const CANDIDATE_PAGE_SIZE = 12;
+
 export default function CandidatesView({
   candidates,
   onPromote,
@@ -29,6 +33,7 @@ export default function CandidatesView({
   onRestore: (id: string) => void;
 }) {
   const [triage, setTriage] = useState<MBACandidateTriage>("sourced");
+  const [limit, setLimit] = useState(CANDIDATE_PAGE_SIZE);
 
   const counts = useMemo(() => {
     const next: Record<MBACandidateTriage, number> = { sourced: 0, reviewed: 0, dismissed: 0 };
@@ -72,7 +77,10 @@ export default function CandidatesView({
               type="button"
               key={option}
               aria-pressed={triage === option}
-              onClick={() => setTriage(option)}
+              onClick={() => {
+                setTriage(option);
+                setLimit(CANDIDATE_PAGE_SIZE);
+              }}
               style={{ minHeight: 44 }}
             >
               {TRIAGE_LABELS[option]}
@@ -94,8 +102,9 @@ export default function CandidatesView({
             icon={<Search className="h-5 w-5" aria-hidden="true" />}
           />
         ) : (
+          <>
           <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-2)" }} data-testid="candidates-grid">
-            {visible.map((candidate) => (
+            {visible.slice(0, limit).map((candidate) => (
               <article key={candidate.id} className="c97-panel flex h-full flex-col" style={{ gap: "var(--c97-sp-2)" }}>
                 <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
                   <div className="min-w-0">
@@ -159,6 +168,18 @@ export default function CandidatesView({
               </article>
             ))}
           </div>
+          {visible.length > limit && (
+            <div className="flex justify-center">
+              <button
+                type="button"
+                className="c97-btn"
+                onClick={() => setLimit((current) => current + CANDIDATE_PAGE_SIZE)}
+              >
+                Show more ({limit} of {visible.length} shown)
+              </button>
+            </div>
+          )}
+          </>
         )}
       </div>
     </section>

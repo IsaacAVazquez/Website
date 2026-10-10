@@ -1,7 +1,7 @@
 /**
  * Browser-local stores shared by the fantasy rankings board and the draft
  * assistant. Both surfaces read the same FantasyPros snapshot, so a player id
- * is stable across them — which lets a single watchlist, a single notes map,
+ * is stable across them, which lets a single watchlist, a single notes map,
  * and a single compare tray power both pages at once.
  *
  * The storage glue mirrors `src/lib/wineCellar.ts`: pure parse/serialize plus
@@ -18,7 +18,7 @@ export const FANTASY_COMPARE_STORAGE_KEY = "fantasy-compare-v1";
 
 /** A player can sit in the compare tray alongside at most two others. */
 export const FANTASY_COMPARE_LIMIT = 3;
-/** Notes stay short on purpose — a draft-day reminder, not an essay. */
+/** Notes stay short on purpose, a draft-day reminder, not an essay. */
 export const FANTASY_NOTE_MAX_LENGTH = 280;
 
 function isStringArray(value: unknown): value is string[] {

@@ -5,11 +5,9 @@ import {
   formatMargin,
   formatNet,
   formatShortDate,
-  getRatingPillStyle,
   getRowStyle,
   isStalePollDate,
   newestPollDate,
-  partyColor,
 } from "../polling-aggregator-helpers";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -83,20 +81,7 @@ describe("polling-aggregator-helpers", () => {
     });
   });
 
-  it("returns fallback party colors", () => {
-    expect(partyColor("D")).toBe("var(--c97-party-d-mark)");
-    expect(partyColor("R")).toBe("var(--c97-party-r-mark)");
-    expect(partyColor("I")).toBe("var(--c97-ink-2)");
-  });
-
-  it("builds rating and view styles from helper branches", () => {
-    expect(getRatingPillStyle("Lean D")).toEqual({
-      background: "color-mix(in srgb, var(--c97-party-d) 25%, var(--c97-field))",
-      color: "var(--c97-ink)",
-      borderColor: "color-mix(in srgb, var(--c97-party-d) 25%, var(--c97-field))",
-    });
-    expect(getRatingPillStyle("Safe D").color).toBe("var(--c97-print-bone)");
-    expect(getRatingPillStyle("Safe R").color).toBe("var(--c97-print-black)");
+  it("builds the selected row style from helper branches", () => {
     expect(getRowStyle(true)).toMatchObject({
       borderColor: "color-mix(in srgb, var(--c97-accent) 35%, var(--c97-rule))",
     });

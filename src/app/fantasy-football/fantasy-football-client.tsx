@@ -197,7 +197,7 @@ function formatExpertRange(player: Player): string {
 /**
  * Signed pick delta ("+12" / "−4") with the tone the value/reach gate assigns.
  * `judged` is false when the ADP sample is too thin for the gate to evaluate
- * the gap at all — a different situation from a gap inside the noise band,
+ * the gap at all, a different situation from a gap inside the noise band,
  * and one no surface may describe as market agreement.
  */
 function describeVsAdp(player: Player): { text: string; color: string; judged: boolean } | null {
@@ -667,7 +667,7 @@ function DraftPlayerDrawer({
   const verdict = value
     ? !hasReliableAdpSample(player)
       ? {
-          // signal:null can also mean "sample too thin to judge" — never call
+          // signal:null can also mean "sample too thin to judge", so never call
           // that market agreement (fantasyUtils gates at 20 mock selections).
           text: "Too few mock selections behind his ADP to judge the market gap yet, so no market read.",
           color: "var(--c97-ink-2)",

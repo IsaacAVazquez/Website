@@ -8,7 +8,7 @@ export const metadata = constructMetadata({
   description:
     "A curated, deep-linkable map of where to eat across ten cities, from Austin, San Francisco, and New York to Tokyo, Copenhagen, and San Sebastián, filterable by city, curator (Anthony Bourdain, Isaac's picks, top-rated on Google), and cuisine.",
   canonicalUrl: "/food-map",
-  dateModified: "2026-06-08",
+  dateModified: "2026-10-09",
 });
 
 interface FoodMapPageProps {

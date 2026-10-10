@@ -3,7 +3,7 @@ import type { Player } from "@/types";
 
 /**
  * Matches ADP entries from the mock-draft source onto FantasyPros consensus
- * players at build time. Matching is deliberately tiered and exact — name,
+ * players at build time. Matching is deliberately tiered and exact, name,
  * team, and position normalization only, never fuzzy string distance. A
  * player without an ADP reading stays blank; a wrong reading would quietly
  * mislead every value signal downstream.
@@ -155,7 +155,7 @@ function findTeamAbbrInName(name: string): string | null {
 
 /**
  * The fields matching actually reads. Kept structural so other build-time
- * sources keyed on the same player identity — per-game scoring, for one — reuse
+ * sources keyed on the same player identity, per-game scoring, for one, reuse
  * this tiering instead of growing a second, subtly different normalizer.
  */
 export interface MatchablePlayerEntry {

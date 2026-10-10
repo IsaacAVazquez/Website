@@ -26,12 +26,14 @@ interface IndustryRow {
 function CompareRow({ label, value, industryAvg }: { label: string; value: number | undefined; industryAvg: number | undefined }) {
   const hasComparison = value !== undefined && industryAvg !== undefined && !isNaN(value) && !isNaN(industryAvg);
   const isAbove = hasComparison && value > industryAvg;
+  // A value equal to the average is neither side. It read "Below" before.
+  const isEqual = hasComparison && value === industryAvg;
   // Favorable side depends on the metric: below-average P/E reads cheap, but
   // below-average ROE or margin is a weakness.
-  const favorable = hasComparison
+  const favorable = hasComparison && !isEqual
     ? isLowerBetterMetric(label)
       ? !isAbove
-      : value >= industryAvg
+      : value > industryAvg
     : null;
   return (
     <div className="flex items-center border-b border-[var(--c97-rule)] last:border-0" style={{ gap: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
@@ -46,16 +48,24 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
           <p className="text-sm text-[var(--c97-ink-2)]">{formatComparisonMetricValue(label, industryAvg)}</p>
         </div>
         {hasComparison && (
-          <span
-            style={{ paddingInline: "var(--c97-sp-0)" }}
-            className={`text-xs font-medium py-0.5 ${
-              favorable
-                ? "bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
-                : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]"
-            }`}
-          >
-            {isAbove ? "Above" : "Below"}
-          </span>
+          <>
+            <span
+              style={{ paddingInline: "var(--c97-sp-0)" }}
+              className={`text-xs font-medium py-0.5 ${
+                favorable === null
+                  ? "bg-[var(--c97-panel)] text-[var(--c97-ink-2)]"
+                  : favorable
+                    ? "bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
+                    : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]"
+              }`}
+            >
+              {isEqual ? "Matches" : isAbove ? "Above" : "Below"}
+            </span>
+            {/* The verdict was colour alone; the badge's text only says which side. */}
+            {favorable !== null ? (
+              <span className="sr-only">{favorable ? "Favorable" : "Unfavorable"}</span>
+            ) : null}
+          </>
         )}
       </div>
     </div>

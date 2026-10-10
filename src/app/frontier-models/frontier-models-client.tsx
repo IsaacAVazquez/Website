@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
+import { useClientNow } from "@/hooks/useClientNow";
 import {
   filterFrontierModels,
   formatPriceUsd,
@@ -45,6 +46,7 @@ const MODALITY_FILTERS: FrontierModalityFilter[] = [
 ];
 
 const SPEC_SHEET_ID = "frontier-spec-sheet";
+const REVIEW_WINDOW_MS = 45 * 24 * 60 * 60 * 1000;
 
 const TIER_FILTERS: FrontierTierFilter[] = [
   "all",
@@ -60,7 +62,6 @@ export function FrontierModelsClient({
   const searchParams = useSearchParams();
 
   const hasManagedParams =
-    searchParams.get("view") !== null ||
     searchParams.get("provider") !== null ||
     searchParams.get("modality") !== null ||
     searchParams.get("tier") !== null ||
@@ -98,18 +99,13 @@ export function FrontierModelsClient({
 
   const readouts = useMemo(() => frontierReadouts(snapshot.models), [snapshot.models]);
 
+  const asOf = snapshot.asOf ?? snapshot.generatedAt.slice(0, 10);
   const updatedAt = formatLongUtcDate(snapshot.generatedAt);
-  const [reviewIsOverdue, setReviewIsOverdue] = useState(!snapshot.verified);
-  useEffect(() => {
-    const reviewAgeMs =
-      Date.now() - Date.parse(snapshot.asOf ?? snapshot.generatedAt);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Freshness depends on the browser clock and must not create unstable SSR markup
-    setReviewIsOverdue(
-      !snapshot.verified ||
-        !Number.isFinite(reviewAgeMs) ||
-        reviewAgeMs > 45 * 24 * 60 * 60 * 1000
-    );
-  }, [snapshot.asOf, snapshot.generatedAt, snapshot.verified]);
+  // `now` is null on the server and during hydration, so the review window
+  // reads as still open until the browser clock can say otherwise.
+  const now = useClientNow();
+  const reviewIsOverdue =
+    !snapshot.verified || (now !== null && !(now - Date.parse(asOf) <= REVIEW_WINDOW_MS));
 
   function handleSelectModel(id: string | null) {
     navigate({ ...resolvedState, selectedModelId: id });
@@ -127,7 +123,7 @@ export function FrontierModelsClient({
   const liveFactsNote = snapshot.liveFacts
     ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")} · ${snapshot.liveFacts.updated} changed by the check, ${snapshot.liveFacts.confirmed} matched, ${snapshot.liveFacts.curatedOnly} not found in either catalog`
     : "";
-  const dateMeta = `Curated by Isaac · data as of ${snapshot.asOf ?? snapshot.generatedAt.slice(0, 10)} · updated ${updatedAt}${!snapshot.verified ? " · independent review pending" : ""}${liveFactsNote}`;
+  const dateMeta = `Curated by hand · facts as of ${formatLongUtcDate(asOf)} · snapshot built ${updatedAt}${!snapshot.verified ? " · independent review pending" : ""}${liveFactsNote}`;
 
   return (
     <div>
@@ -149,14 +145,14 @@ export function FrontierModelsClient({
           },
           {
             label: "Cheapest input price",
-            value: readouts.cheapest ? formatPriceUsd(readouts.cheapest.inputPricePerMTokens) : "—",
+            value: readouts.cheapest ? formatPriceUsd(readouts.cheapest.inputPricePerMTokens) : "None",
             detail: readouts.cheapest
               ? `${readouts.cheapest.providerLabel} ${readouts.cheapest.name}`
               : "No priced models",
           },
           {
             label: "Largest context window",
-            value: readouts.largestContext ? formatTokenCount(readouts.largestContext.contextWindow) : "—",
+            value: readouts.largestContext ? formatTokenCount(readouts.largestContext.contextWindow) : "None",
             detail: readouts.largestContext
               ? `${readouts.largestContext.providerLabel} ${readouts.largestContext.name}`
               : "No models tracked",

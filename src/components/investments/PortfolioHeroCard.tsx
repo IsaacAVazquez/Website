@@ -76,7 +76,7 @@ export function PortfolioHeroCard({
     // `snapshots` is always [] until a client-only effect loads it (never
     // seeded during SSR), and every `s.date` in it was written with
     // `toLocalDateKey` in the visitor's own zone, so this cutoff has to stay
-    // in that same local zone to compare correctly — it never runs against
+    // in that same local zone to compare correctly, it never runs against
     // real data before hydration completes, so there's nothing to mismatch.
     for (const r of RANGES) {
       if (r.days === Infinity) break;
@@ -309,7 +309,7 @@ export function PortfolioHeroCard({
 
   if (isLoading && snapshots.length === 0 && summary.totalValue === 0) {
     return (
-      <div id="performance" className="invest-hero scroll-mt-12 min-[901px]:scroll-mt-0">
+      <div id="performance" className="invest-hero invest-rail-target">
         <div className="invest-hero-left">
           <span className="invest-hero-eyebrow" role="status">
             <span className="invest-hero-livedot" aria-hidden="true" />
@@ -329,7 +329,7 @@ export function PortfolioHeroCard({
   const dayPositive = summary.dayChange >= 0;
 
   return (
-    <section id="performance" className="invest-hero scroll-mt-12 min-[901px]:scroll-mt-0" aria-label="Portfolio total value">
+    <section id="performance" className="invest-hero invest-rail-target" aria-label="Portfolio total value">
       <div className="invest-hero-left">
         <span className="invest-hero-eyebrow">
           {hasLiveQuotes ? <span className="invest-hero-livedot" aria-hidden="true" /> : null}

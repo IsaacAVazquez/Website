@@ -67,10 +67,15 @@ async function renderMarkdown(content: string): Promise<string> {
 function getChangelogSlugs(): string[] {
   ensureChangelogDirectory();
   try {
-    return fs
-      .readdirSync(changelogDirectory)
-      .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
-      .map((file) => file.replace(/\.(mdx|md)$/, ""));
+    // A slug with both .mdx and .md files is listed once; readChangelogSource prefers .mdx.
+    return Array.from(
+      new Set(
+        fs
+          .readdirSync(changelogDirectory)
+          .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
+          .map((file) => file.replace(/\.(mdx|md)$/, "")),
+      ),
+    );
   } catch (error) {
     console.warn("Changelog directory not found or empty:", error);
     return [];

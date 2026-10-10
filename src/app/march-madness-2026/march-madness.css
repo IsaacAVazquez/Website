@@ -79,7 +79,8 @@
   cursor: pointer;
 }
 
-.mm-pick-toggle:hover {
+.mm-pick-toggle:hover,
+.mm-pick-toggle:focus-visible {
   color: var(--c97-action);
 }
 

@@ -35,7 +35,6 @@ interface Props {
   datasetFreshCount?: number;
   datasetStaleCount?: number;
   datasetFailedCount?: number;
-  datasetPriceHealth?: InvestmentsPriceHealth | null;
 }
 
 interface NavItem {
@@ -134,7 +133,7 @@ export function InvestmentsDashboard({
   const filterInputRef = useRef<HTMLInputElement | null>(null);
 
   // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
-  // Leave the shortcut alone while the user is typing somewhere else — other
+  // Leave the shortcut alone while the user is typing somewhere else, other
   // inputs keep their own behavior and the browser keeps its default.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -196,7 +195,7 @@ export function InvestmentsDashboard({
           key: h.symbol,
           content: (
             <span className={styles.quote}>
-              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol, portfolioSymbols)}`, paddingLeft: 8 }}>
+              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol, portfolioSymbols)}`, paddingLeft: "var(--c97-sp-1)" }}>
                 {h.symbol}
               </span>
               <span className={styles.quotePx}>
@@ -375,7 +374,9 @@ export function InvestmentsDashboard({
               </span>
             </>
           ) : null}
-          {priceHealth && priceHealth.pricedCount > 0 ? (
+          {/* The delayed count alone carries the whole universe when nothing
+              is recent, so the chip never reads "0 recent price histories". */}
+          {priceHealth && priceHealth.recentCount > 0 ? (
             <>
               <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
               <span>{priceHealth.recentCount} recent price histories</span>
@@ -522,7 +523,7 @@ export function InvestmentsDashboard({
               ref={addHoldingRef}
               id="add-holding"
               aria-label="Add a holding"
-              className="scroll-mt-12 min-[901px]:scroll-mt-0"
+              className="invest-rail-target"
             >
               <p className="invest-rail-section-label">
                 <Wallet size={12} aria-hidden="true" className="inline align-middle" style={{ marginRight: "var(--c97-sp-0)" }} />
@@ -532,7 +533,7 @@ export function InvestmentsDashboard({
             </section>
 
             {!isEmpty ? (
-              <section id="allocation" className="scroll-mt-12 min-[901px]:scroll-mt-0">
+              <section id="allocation" className="invest-rail-target">
                 <p className="invest-rail-section-label">Allocation</p>
                 <AllocationChart holdings={enhancedHoldings} />
               </section>
@@ -591,7 +592,7 @@ export function InvestmentsDashboard({
         </div>
       </section>
     ),
-    // Research deep-dive — its own sheet below the terminal body. Symbol
+    // Research deep-dive, its own sheet below the terminal body. Symbol
     // comes from clicking "Research" on a holding row or the picker below.
     research: (
       <section
@@ -639,7 +640,7 @@ export function InvestmentsDashboard({
         </div>
       </div>
     ),
-    // Retirement planner — projects whether the portfolio + savings last
+    // Retirement planner, projects whether the portfolio + savings last
     // through retirement, with allocation-derived Monte Carlo. Offers the
     // live portfolio value as a one-click starting balance.
     retirement: (

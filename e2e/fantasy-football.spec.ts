@@ -420,7 +420,7 @@ test.describe("Fantasy football rankings", () => {
 test.describe("Fantasy football draft tracker", () => {
   test("loads the correct board for every scoring format", async ({ page }) => {
     // The expected first pick is read from the same committed snapshot the
-    // board renders, not hardcoded — scheduled data refreshes reorder the
+    // board renders, not hardcoded, since scheduled data refreshes reorder the
     // rankings and a name literal goes stale within days.
     // The setup screen abbreviates the scoring segments ("Half", "Std") while
     // the live room's header chip spells the format out, so each format carries
@@ -735,10 +735,19 @@ test.describe("Fantasy redirects", () => {
   });
 });
 
+// The server also inlines the seeded rows as RSC data inside <script> tags, so
+// a name search over the raw HTML would pass on that payload even if no row
+// rendered. Only the markup outside the scripts counts.
+function withoutScripts(html: string): string {
+  return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+}
+
 test.describe("server-rendered rankings", () => {
   test("ships the first page of the board in the HTML for clients that do not run JavaScript", async ({ page }) => {
     const snapshot = await (await page.request.get("/data/fantasy/ppr.json")).json();
-    const html = await (await page.request.get("/fantasy-football?position=wr&scoring=ppr")).text();
+    const html = withoutScripts(
+      await (await page.request.get("/fantasy-football?position=wr&scoring=ppr")).text()
+    );
 
     // One "Open <name> detail" control per seeded row; React escapes apostrophes,
     // so the name check uses a receiver without one.
@@ -766,7 +775,9 @@ test.describe("server-rendered fantasy tools", () => {
     const board = await page.request.get("/data/fantasy/weekly.json");
     test.skip(board.status() === 404, "the weekly board publishes from Week 1");
     const weekly = await board.json();
-    const html = await (await page.request.get("/fantasy-football/weekly?scoring=ppr")).text();
+    const html = withoutScripts(
+      await (await page.request.get("/fantasy-football/weekly?scoring=ppr")).text()
+    );
 
     const plainName = weekly.boards.ppr.flex
       .slice(0, 20)

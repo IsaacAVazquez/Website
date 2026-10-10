@@ -24,6 +24,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { swatchStyle, TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 
 interface BayAreaTransitClientProps {
   initialState: TransitRouteState;
@@ -316,6 +317,7 @@ export function BayAreaTransitClient({
     });
   }
 
+  const onViewTabKey = useTablistKeyboard(TRANSIT_VIEW_OPTIONS, handleViewChange);
   const lead = PROJECT_PRESS[TRANSIT_ROUTE].lead;
   // The hero carries no readouts, so the map and board sit higher; the alert
   // count, the one number a rider acts on, rides on the Alerts tab instead.
@@ -385,25 +387,7 @@ export function BayAreaTransitClient({
                 aria-selected={routeState.view === view}
                 tabIndex={routeState.view === view ? 0 : -1}
                 onClick={() => handleViewChange(view)}
-                onKeyDown={(event) => {
-                  let nextIndex: number | null = null;
-                  if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-                    nextIndex = (index + 1) % TRANSIT_VIEW_OPTIONS.length;
-                  } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-                    nextIndex =
-                      (index - 1 + TRANSIT_VIEW_OPTIONS.length) %
-                      TRANSIT_VIEW_OPTIONS.length;
-                  } else if (event.key === "Home") {
-                    nextIndex = 0;
-                  } else if (event.key === "End") {
-                    nextIndex = TRANSIT_VIEW_OPTIONS.length - 1;
-                  }
-                  if (nextIndex === null) return;
-                  event.preventDefault();
-                  const nextView = TRANSIT_VIEW_OPTIONS[nextIndex];
-                  handleViewChange(nextView);
-                  document.getElementById(`transit-tab-${nextView}`)?.focus();
-                }}
+                onKeyDown={(event) => onViewTabKey(event, index)}
                 className="min-h-[44px]"
               >
                 {TRANSIT_VIEW_LABELS[view]}

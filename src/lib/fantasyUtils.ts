@@ -6,7 +6,7 @@ import type { Player, RedraftLineupSettings } from "@/types";
 /**
  * Plain-language explanation of the "Avg" value shown next to each player.
  * Shared by the rankings board and the draft tracker so both surfaces tell the
- * same story. The number is FantasyPros' `rank_ave` — the mean of every
+ * same story. The number is FantasyPros' `rank_ave`, the mean of every
  * expert's individual ranking, distinct from the consensus rank in the
  * headline.
  */
@@ -743,8 +743,8 @@ export function getPositionTone(position: string): CSSProperties {
 type FantasyConsensusSpread = "tight" | "mixed" | "volatile";
 
 /**
- * Expert disagreement (`standardDeviation`) naturally grows with rank — the
- * top of the board is settled, the deep pool is noisy — so a flat threshold
+ * Expert disagreement (`standardDeviation`) naturally grows with rank, the
+ * top of the board is settled, the deep pool is noisy, so a flat threshold
  * would mislabel almost every late pick as "volatile". Normalizing the spread
  * against the player's own rank (with a floor that tames the very top) yields a
  * scale-aware read on how much the experts actually agree. Thresholds were

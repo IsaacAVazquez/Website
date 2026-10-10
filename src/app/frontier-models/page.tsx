@@ -15,7 +15,6 @@ export const metadata = constructMetadata({
 
 interface FrontierModelsPageProps {
   searchParams: Promise<{
-    view?: string;
     provider?: string;
     modality?: string;
     tier?: string;

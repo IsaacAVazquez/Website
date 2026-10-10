@@ -43,16 +43,22 @@
   background: var(--c97-rule);
 }
 
+/*
+ * One column on paper and on a phone. The stub comes first there, since it
+ * carries the only action on a first visit (Start a trip) and the trip's
+ * numbers after that, and a phone's first screen ended before it otherwise.
+ */
 @media print, screen and (max-width: 639px) {
   .c97-boarding-pass {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .c97-boarding-pass-stub {
+    order: -1;
     padding-left: 0;
     border-left: 0;
-    padding-top: var(--c97-sp-3);
-    border-top: 2px dashed var(--c97-rule);
+    padding-bottom: var(--c97-sp-3);
+    border-bottom: 2px dashed var(--c97-rule);
   }
 }
 

@@ -170,7 +170,7 @@ describe("frontierModels", () => {
     expect(formatTokenCount(1000)).toBe("1K");
     expect(formatTokenCount(1500000)).toBe("1.5M");
 
-    expect(formatPriceUsd(null)).toBe("\u2014");
+    expect(formatPriceUsd(null)).toBe("Not listed");
     expect(formatPriceUsd(0.25)).toBe("$0.25");
     expect(formatPriceUsd(2)).toBe("$2");
     expect(formatPriceUsd(2.5)).toBe("$2.50");

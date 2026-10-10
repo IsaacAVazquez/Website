@@ -1,4 +1,4 @@
-export type TransitView = "lines" | "stations" | "advisories";
+export type TransitView = "lines" | "advisories";
 
 export interface TransitRouteState {
   view: TransitView;

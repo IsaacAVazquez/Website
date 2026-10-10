@@ -34,6 +34,14 @@ describe("MarchMadnessClient", () => {
     expect(screen.getAllByText("Duke").length).toBeGreaterThan(0);
   });
 
+  it("explains every badge the picks board uses, CONFIRM included", () => {
+    render(
+      <MarchMadnessClient initialState={{ view: "picks", region: "east", analytics: "rankings" }} />
+    );
+
+    expect(screen.getByText("Analytics confirms the seed")).toBeVisible();
+  });
+
   it("links straight into the workspace from the opening lines, on the view the reader is in", () => {
     render(
       <MarchMadnessClient

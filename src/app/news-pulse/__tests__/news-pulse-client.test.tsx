@@ -167,7 +167,7 @@ describe("NewsPulseClient", () => {
       ).toBeVisible(),
     );
 
-    await user.click(screen.getByRole("tab", { name: "Coverage Map" }));
+    await user.click(screen.getByRole("tab", { name: "Coverage map" }));
 
     expect(mockPush).toHaveBeenCalledWith("/news-pulse?view=coverage", {
       scroll: false,
@@ -181,7 +181,7 @@ describe("NewsPulseClient", () => {
     render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
 
     await waitFor(() =>
-      expect(screen.getByRole("tab", { name: "Coverage Map" })).toHaveAttribute(
+      expect(screen.getByRole("tab", { name: "Coverage map" })).toHaveAttribute(
         "aria-selected",
         "true",
       ),

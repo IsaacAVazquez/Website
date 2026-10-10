@@ -3,7 +3,7 @@
 import { useIsClient } from "@/hooks/useIsClient";
 import { ArrowLeftRight, RotateCcw, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useMemo, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
@@ -103,15 +103,22 @@ function LeagueSelect({
 
 function LeagueSettings({
   state,
+  open,
+  onToggle,
   onChange,
 }: {
   state: TradeCalculatorSearchState;
+  /**
+   * Below lg the settings stack under the ledger, so they open on request and a
+   * one-line summary stands in for them. From lg up they sit in their own
+   * column and always show. The open state lives in the parent because a
+   * scoring change swaps this whole panel for the loading skeleton, and a
+   * phone visitor who had just opened the settings found them shut again.
+   */
+  open: boolean;
+  onToggle: () => void;
   onChange: (state: TradeCalculatorSearchState) => void;
 }) {
-  // Below lg the settings stack above the ledger, so they open on request and a
-  // one-line summary stands in for them, which keeps both packages near the top.
-  // From lg up they sit in their own column and always show.
-  const [open, setOpen] = useState(false);
   const fieldsId = useId();
   const lineupLabel =
     REDRAFT_LINEUP_PRESETS.find((preset) => preset.id === state.lineup)?.label ?? state.lineup;
@@ -135,7 +142,7 @@ function LeagueSettings({
           className="c97-btn-ghost lg:hidden"
           aria-expanded={open}
           aria-controls={fieldsId}
-          onClick={() => setOpen((current) => !current)}
+          onClick={onToggle}
         >
           {open ? "Hide league settings" : "Change league settings"}
         </button>
@@ -242,9 +249,9 @@ function LoadingCard({ className }: { className: string }) {
 }
 
 export function TradeCalculatorClient() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const isHydrated = useIsClient();
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const routeState = useMemo(
     () => normalizeTradeCalculatorState(searchParams),
     [searchParams]
@@ -292,6 +299,10 @@ export function TradeCalculatorClient() {
     setPendingShare(null);
   }, [pendingShare, players, replaceDeal, snapshot]);
 
+  // The route is force-dynamic so the server can render the real query, which
+  // made every router.replace a server round trip per player added. The native
+  // history call updates the URL and useSearchParams without one; Next syncs
+  // its router from it.
   // Keep the deal sendable: mirror the selected players into the give/get
   // params once the initial import settles, touching nothing else in the query.
   useEffect(() => {
@@ -305,13 +316,13 @@ export function TradeCalculatorClient() {
       ? `/fantasy-football/trade-calculator?${query}`
       : "/fantasy-football/trade-calculator";
     if (nextHref !== currentHref) {
-      router.replace(nextHref, { scroll: false });
+      window.history.replaceState(null, "", nextHref);
     }
-  }, [pendingShare, router, searchParams, trade.getPlayerIds, trade.givePlayerIds]);
+  }, [pendingShare, searchParams, trade.getPlayerIds, trade.givePlayerIds]);
 
   const updateRouteState = (next: TradeCalculatorSearchState) => {
     setResetArmed(false);
-    router.replace(buildTradeCalculatorHref(next, searchParams), { scroll: false });
+    window.history.replaceState(null, "", buildTradeCalculatorHref(next, searchParams));
   };
 
   const lineup = useMemo(
@@ -530,9 +541,17 @@ export function TradeCalculatorClient() {
             <TradeVerdictStrip result={result} hasBothSides={hasBothSides} />
 
             <div className="grid items-start lg:grid-cols-[15rem_minmax(0,1fr)_20rem]" style={{ gap: "var(--c97-sp-2)" }}>
-              <LeagueSettings state={routeState} onChange={updateRouteState} />
+              <LeagueSettings
+                state={routeState}
+                open={settingsOpen}
+                onToggle={() => setSettingsOpen((current) => !current)}
+                onChange={updateRouteState}
+              />
 
-              <section aria-labelledby="trade-ledger-title" className="min-w-0">
+              {/* Below lg the packages lead and the collapsed settings follow,
+                  so the first field a phone visitor needs is not under the
+                  settings card. From lg the three columns keep source order. */}
+              <section aria-labelledby="trade-ledger-title" className="order-first min-w-0 lg:order-none">
                 <div className="flex flex-wrap items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <div>
                     <h2 id="trade-ledger-title" className="c97-serif c97-h3">

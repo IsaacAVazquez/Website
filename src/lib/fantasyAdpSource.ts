@@ -5,7 +5,7 @@ export const FANTASY_ADP_PROVIDER_URL = "https://fantasyfootballcalculator.com/a
 
 /**
  * A single player's ADP reading from the upstream mock-draft sample. Kept
- * deliberately small — only what the matcher and the published snapshot need.
+ * deliberately small, only what the matcher and the published snapshot need.
  */
 export interface FantasyAdpEntry {
   name: string;
@@ -118,7 +118,7 @@ export function getFantasyAdpUrl(scoringFormat: ScoringFormat, season: number): 
 /**
  * Parses the upstream ADP payload into a board. Pure so tests can run it
  * against fixtures. Unknown positions are skipped rather than guessed, and an
- * entry without a finite ADP or a name is dropped — a missing reading is
+ * entry without a finite ADP or a name is dropped, since a missing reading is
  * honest, a fabricated one is not.
  */
 export function parseFantasyAdpPayload(

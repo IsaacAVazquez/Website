@@ -44,11 +44,17 @@ describe("ValuationRatiosPanel with industry comparison", () => {
         { metric: "Gross margin", value: 46.1, industryAvg: 38 },
         { metric: "ROE", value: 10, industryAvg: 20 },
         { metric: "P/S ratio", value: 9, industryAvg: 4 },
+        { metric: "P/B ratio", value: 3, industryAvg: 3 },
       ],
     };
     render(<ValuationRatiosPanel symbol="AAPL" />);
 
     expect(screen.getByText("Valuation vs industry")).toBeInTheDocument();
+
+    // A value equal to the industry average is neither side (it read "Below").
+    const pb = compareRow("P/B ratio");
+    expect(pb.badge).toBe("Matches");
+    expect(pb.badgeClass).not.toContain("--c97-negative");
 
     const pe = compareRow("P/E (TTM)");
     expect(pe.values).toEqual(["28.40", "31.20"]);

@@ -3058,6 +3058,17 @@ select.c97-field {
 .dark .c97-basemap .leaflet-tile-pane {
   filter: invert(1) hue-rotate(180deg) grayscale(0.85) brightness(0.82) contrast(0.95);
 }
+/* On paper in Firefox's engine the wash comes off, since that engine prints
+   nothing for an element under a CSS filter (see .c97-slot-img above). The
+   dark rule is listed too because it is the more specific of the pair. */
+@media print {
+  @supports (-moz-appearance: none) {
+    .c97-basemap .leaflet-tile-pane,
+    .dark .c97-basemap .leaflet-tile-pane {
+      filter: none;
+    }
+  }
+}
 
 /*
  * Leaflet chrome, restyled to match. Leaflet's own stylesheet loads from a

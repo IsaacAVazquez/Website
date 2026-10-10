@@ -5,15 +5,11 @@ import type {
   FrontierModelsSnapshot,
   FrontierProviderFilter,
   FrontierTierFilter,
-  FrontierView,
 } from "@/types/frontierModels";
 import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const FRONTIER_MODELS_ROUTE = "/frontier-models";
 
-export const FRONTIER_MODELS_VIEW_OPTIONS = ["list", "chart"] as const;
-
-const VALID_VIEWS = new Set<FrontierView>(FRONTIER_MODELS_VIEW_OPTIONS);
 const VALID_PROVIDERS = new Set([
   "anthropic",
   "openai",
@@ -27,7 +23,6 @@ const VALID_MODALITIES = new Set(["text", "vision", "audio"]);
 const VALID_TIERS = new Set(["budget", "standard", "premium"]);
 
 export const DEFAULT_FRONTIER_MODELS_STATE: FrontierModelsRouteState = {
-  view: "list",
   provider: "all",
   modality: "all",
   priceTier: "all",
@@ -46,16 +41,12 @@ export const FRONTIER_MODALITY_LABELS: Record<
 export function normalizeFrontierModelsState(
   input: SearchParamInput
 ): FrontierModelsRouteState {
-  const view = readParam(input, "view");
   const provider = readParam(input, "provider");
   const modality = readParam(input, "modality");
   const tier = readParam(input, "tier");
   const model = readParam(input, "model");
 
   return {
-    view: VALID_VIEWS.has((view ?? "") as FrontierView)
-      ? (view as FrontierView)
-      : DEFAULT_FRONTIER_MODELS_STATE.view,
     provider: VALID_PROVIDERS.has(provider ?? "")
       ? (provider as FrontierProviderFilter)
       : DEFAULT_FRONTIER_MODELS_STATE.provider,
@@ -77,9 +68,6 @@ export function resolveFrontierModelsState(
   const validModelIds = new Set(snapshot.models.map((entry) => entry.id));
 
   return {
-    view: VALID_VIEWS.has(state.view)
-      ? state.view
-      : DEFAULT_FRONTIER_MODELS_STATE.view,
     provider:
       state.provider === "all" || validProviders.has(state.provider)
         ? state.provider
@@ -101,11 +89,9 @@ export function buildFrontierModelsHref(
     baseSearchParams ? Array.from(baseSearchParams.entries()) : []
   );
 
-  if (state.view === DEFAULT_FRONTIER_MODELS_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
+  // The page once had a list/chart switch, and the chart now prints in the
+  // hero above the sheet, so a stale ?view= drops out of the URL.
+  params.delete("view");
 
   if (state.provider === DEFAULT_FRONTIER_MODELS_STATE.provider) {
     params.delete("provider");

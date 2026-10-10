@@ -11,8 +11,6 @@ export type FrontierModality = "text" | "vision" | "audio";
 
 export type FrontierPriceTier = "budget" | "standard" | "premium";
 
-export type FrontierView = "list" | "chart";
-
 /**
  * Outcome of the daily automated fact check against models.dev and
  * OpenRouter. "confirmed" means the checkable numbers matched the curated
@@ -96,7 +94,6 @@ export type FrontierModalityFilter = FrontierModality | "all";
 export type FrontierTierFilter = FrontierPriceTier | "all";
 
 export interface FrontierModelsRouteState {
-  view: FrontierView;
   provider: FrontierProviderFilter;
   modality: FrontierModalityFilter;
   priceTier: FrontierTierFilter;

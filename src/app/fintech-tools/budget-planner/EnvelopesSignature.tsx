@@ -45,9 +45,15 @@ export function EnvelopesSignature({ categories }: EnvelopesSignatureProps) {
             <div className="c97-envelope-flap" aria-hidden="true" />
             <div className="c97-envelope-body">
               <p className="c97-serif c97-envelope-name">{displayName}</p>
-              <p className="c97-mono c97-envelope-amount">
-                {spentLabel} of {budgetLabel}
-              </p>
+              {/* A first visit seeds seven categories with nothing budgeted or
+                  spent, which printed "$0 of $0" seven times. */}
+              {category.budgetedAmount === 0 && category.spent === 0 ? (
+                <p className="c97-envelope-amount">Set a budget below</p>
+              ) : (
+                <p className="c97-mono c97-envelope-amount">
+                  {spentLabel} of {budgetLabel}
+                </p>
+              )}
               {torn ? (
                 <p className="c97-mono c97-envelope-over">Over by {formatDollars(overBy)}</p>
               ) : null}

@@ -14,8 +14,8 @@ const board = (delay: number, status = "fresh") =>
     status,
   }) as never;
 
-function renderSignature(props: Partial<Parameters<typeof TransitSignature>[0]> = {}) {
-  return render(
+function signature(props: Partial<Parameters<typeof TransitSignature>[0]> = {}) {
+  return (
     <TransitSignature
       stations={stations}
       lines={lines}
@@ -26,8 +26,12 @@ function renderSignature(props: Partial<Parameters<typeof TransitSignature>[0]> 
       onSelect={() => {}}
       onRetry={() => {}}
       {...props}
-    />,
+    />
   );
+}
+
+function renderSignature(props: Partial<Parameters<typeof TransitSignature>[0]> = {}) {
+  return render(signature(props));
 }
 
 it("keeps the station dots out of the tab order, since the station list is the keyboard path", () => {
@@ -157,6 +161,36 @@ describe("the platform board's clock", () => {
     });
 
     expect(screen.getByText("1 min")).toBeInTheDocument();
+  });
+
+  // The page is CDN-cached, so the copy a viewer gets can be much older than
+  // the moment the server rendered it. A stamp the server adds at render time
+  // says that copy is seconds old; the board's own stamp says how old it is.
+  it("ages a copy the CDN held from when BART answered, not from when the server rendered it", () => {
+    // Rendered the moment the board was read, then held for 40 minutes.
+    jest.useFakeTimers({ now: minutesAfterRead(40) });
+    const held = { ...servedBoard([4, 12, 47], READ_AT), servedAt: READ_AT };
+    renderSignature({ stationBoard: held });
+
+    expect(screen.getByText("7 min")).toBeInTheDocument();
+    expect(screen.queryByText("4 min")).not.toBeInTheDocument();
+    expect(screen.queryByText("12 min")).not.toBeInTheDocument();
+  });
+
+  it("ages a board that arrives later from its own stamp, not from when the page opened", () => {
+    // The page has been open for 30 minutes when the viewer picks another
+    // station and a board read seconds ago comes in.
+    jest.useFakeTimers({ now: minutesAfterRead(0) });
+    const { rerender } = renderSignature({ stationBoard: servedBoard([4], READ_AT) });
+    act(() => {
+      jest.advanceTimersByTime(30 * 60_000);
+    });
+    const readNow = new Date(minutesAfterRead(30)).toISOString();
+    const fresh = { ...servedBoard([4, 12], readNow), servedAt: readNow };
+    rerender(signature({ stationBoard: fresh }));
+
+    expect(screen.getByText("4 min")).toBeInTheDocument();
+    expect(screen.getByText("12 min")).toBeInTheDocument();
   });
 
   // The server has no viewer clock to read, so it prints the board as it was

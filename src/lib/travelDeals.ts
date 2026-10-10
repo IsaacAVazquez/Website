@@ -1,5 +1,5 @@
 /**
- * Travel Deal Lab — the pure optimization engine.
+ * Travel Deal Lab, the pure optimization engine.
  *
  * Framework-free, dependency-free, and fully unit-tested so the client UI and
  * any future surface share one source of truth. Nothing here calls a network:
@@ -176,7 +176,7 @@ interface FareScore {
   quoted: number;
   /** benchmark - quoted; positive means you are under the typical fare. */
   savings: number;
-  /** savings / benchmark, clamped to a sane range for display. */
+  /** savings / benchmark, unclamped, so a quote far above the band reads as the large negative share it is. */
   savingsPct: number;
   rating: FareRating;
   message: string;

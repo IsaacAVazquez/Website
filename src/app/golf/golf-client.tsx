@@ -258,6 +258,9 @@ function PlayerCards({
     <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
       {rows.map((row) => {
         const isSelected = row.playerId === selectedPlayerId;
+        // The latest round is a partial stroke count while the player is on
+        // the course, so its tone borrows the live to-par figure, as the slats do.
+        const latestIsPartial = row.thru !== "F" && row.thru !== "—";
 
         return (
           <button
@@ -286,7 +289,15 @@ function PlayerCards({
 
             <span className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
               {row.roundScores.map((score, index) => (
-                <span key={index} className="c97-mono" style={{ color: scoreColor(score - coursePar) }}>
+                <span
+                  key={index}
+                  className="c97-mono"
+                  style={{
+                    color: scoreColor(
+                      latestIsPartial && index === row.roundScores.length - 1 ? row.today : score - coursePar
+                    ),
+                  }}
+                >
                   {score}
                 </span>
               ))}

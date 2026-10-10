@@ -169,6 +169,30 @@ describe("GitHubTrendingClient", () => {
     );
   });
 
+  it("folds a long table after 25 rows and opens the rest on one button", () => {
+    const repos = Array.from({ length: 30 }, (_, index) => ({
+      ...repo,
+      id: 100 + index,
+      fullName: `owner/repo-${index}`,
+    }));
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          repositories: repos,
+          languages: [segment({ repoIds: repos.map((entry) => entry.id), repoCount: 30 })],
+        }}
+      />
+    );
+
+    const table = screen.getByRole("region", { name: /repository table/i });
+    expect(within(table).getAllByRole("row")).toHaveLength(26);
+    fireEvent.click(screen.getByRole("button", { name: "Show all 30 repositories" }));
+    expect(within(table).getAllByRole("row")).toHaveLength(31);
+    expect(screen.queryByRole("button", { name: /show all/i })).toBeNull();
+  });
+
   it("names the pool behind the leading language share", () => {
     render(
       <GitHubTrendingClient

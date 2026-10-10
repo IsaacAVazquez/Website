@@ -1,7 +1,47 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { pollingSnapshot } from "@/data/pollingSnapshot";
+import type { Race } from "@/types/polling";
 import { PollingAggregatorClient } from "../polling-aggregator-client";
 import { DEFAULT_POLLING_STATE } from "../polling-aggregator-state";
+
+function makeRace(state: string, stateAbbr: string, margin: number, pollCount: number): Race {
+  const id = `senate-${stateAbbr.toLowerCase()}`;
+  return {
+    id,
+    state,
+    stateAbbr,
+    office: "Senate",
+    year: 2026,
+    candidates: [
+      { name: `${state} Leader`, support: 48 + margin },
+      { name: `${state} Runner-up`, support: 48 },
+    ],
+    margin,
+    pollCount,
+    lastPolled: "2026-10-01",
+    polls: Array.from({ length: pollCount }, (_, index) => ({
+      id: `${id}-${index}`,
+      pollster: `Pollster ${index + 1}`,
+      sponsor: index === 0 ? "A Sponsor" : undefined,
+      startDate: "2026-09-28",
+      endDate: index === 0 ? "2026-10-01" : "2026-09-20",
+      sampleSize: 600,
+      sampleType: "LV",
+      moe: null,
+      methodology: "unknown",
+      candidates: [
+        { name: `${state} Leader`, support: 48 + margin },
+        { name: `${state} Runner-up`, support: 48 },
+        { name: "Someone Else", support: 2 },
+      ],
+    })),
+  };
+}
+
+const ohio = makeRace("Ohio", "OH", 7.3, 3);
+const maine = makeRace("Maine", "ME", 0.5, 4);
+const noRaces = { ...pollingSnapshot, senateRaces: [], governorRaces: [] };
+const senateOnly = { ...noRaces, senateRaces: [ohio, maine] };
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
@@ -80,7 +120,7 @@ describe("PollingAggregatorClient", () => {
       />
     );
 
-    expect(screen.getByRole("note")).not.toHaveTextContent(/newest/i);
+    expect(screen.getByRole("note")).not.toHaveTextContent(/The newest approval poll I have/);
   });
 
   it("prints each series' newest poll date beside its headline average, with the stale state", () => {
@@ -123,7 +163,9 @@ describe("PollingAggregatorClient", () => {
       "href",
       "https://votehub.com/polls/api/"
     );
-    expect(screen.getByText(/candidate-party metadata/i)).toBeVisible();
+    expect(screen.getByRole("note")).toHaveTextContent(
+      /without a party or an incumbency flag, so I print the names as the pollsters gave them/
+    );
   });
 
   it("renders the overview and navigates view tabs", () => {
@@ -144,15 +186,81 @@ describe("PollingAggregatorClient", () => {
     });
   });
 
-  it("does not offer race tabs without verified candidate-party metadata", () => {
-    render(
-      <PollingAggregatorClient
-        initialState={DEFAULT_POLLING_STATE}
-        snapshot={pollingSnapshot}
-      />
+  it("offers a race tab only when the snapshot has races for it", () => {
+    const { rerender } = render(
+      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={noRaces} />
     );
 
     expect(screen.queryByRole("button", { name: "Senate" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Governors" })).not.toBeInTheDocument();
+    expect(screen.getByText(/Senate: VoteHub has published no senate poll/)).toBeVisible();
+
+    rerender(
+      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+    );
+
+    expect(screen.getByRole("button", { name: "Senate" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Governors" })).not.toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Senate: 2 races polled, 1 within 3 points\. The closest is Maine, where Maine Leader leads Maine Runner-up by 0\.5 points across 4 polls\./
+      )
+    ).toBeVisible();
+    // The hero counts the race polls with the national ones.
+    expect(screen.getByText(/polls tracked/i)).toHaveTextContent(
+      `${noRaces.approvalPolls.length + noRaces.genericBallotPolls.length + 7} polls tracked`
+    );
+  });
+
+  it("renders the Senate view closest race first, with the selected race's polls beside it", () => {
+    currentSearchParams = new URLSearchParams("view=senate");
+    const { rerender } = render(
+      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+    );
+
+    const table = screen.getByRole("table", { name: "Senate race averages" });
+    const rows = within(table).getAllByRole("row").slice(1);
+    expect(rows[0]).toHaveTextContent("Maine");
+    expect(rows[0]).toHaveTextContent("Maine Leader");
+    expect(rows[0]).toHaveTextContent("+0.5");
+    expect(rows[1]).toHaveTextContent("Ohio");
+    expect(within(rows[0]).getByRole("button", { name: "Show the Maine Senate race" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByRole("heading", { level: 3, name: "Maine" })).toBeVisible();
+    expect(
+      screen.getByText(
+        "Average of the 4 polls from Sep 20, 2026 to Oct 1, 2026 that asked about both names."
+      )
+    ).toBeVisible();
+    expect(screen.getByText("for A Sponsor")).toBeVisible();
+    expect(screen.getAllByText("Someone Else 2%")).toHaveLength(4);
+
+    fireEvent.click(within(rows[1]).getByRole("button", { name: "Show the Ohio Senate race" }));
+    expect(mockPush).toHaveBeenLastCalledWith("/polling-aggregator?view=senate&race=senate-oh", {
+      scroll: false,
+    });
+
+    currentSearchParams = new URLSearchParams("view=senate&race=senate-oh");
+    rerender(
+      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+    );
+    expect(screen.getByRole("heading", { level: 3, name: "Ohio" })).toBeVisible();
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "Ohio Senate race selected. Ohio Leader 55.3 percent, Ohio Runner-up 48.0 percent, margin +7.3 over 3 polls."
+    );
+  });
+
+  it("says so when a deep-linked race view has no polls", () => {
+    currentSearchParams = new URLSearchParams("view=governors");
+    render(
+      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+    );
+
+    expect(screen.queryByRole("table", { name: /race averages/ })).not.toBeInTheDocument();
+    expect(
+      screen.getByText(/VoteHub has published no governor poll from the last four months/)
+    ).toBeVisible();
   });
 });

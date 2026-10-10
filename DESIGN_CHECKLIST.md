@@ -42,9 +42,11 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] D3 and SVG charts resolve series colours at render time via
       `getComputedStyle(svgElement).getPropertyValue('--c97-…')`, read from the chart's own element
       because the document root resolves no Catalog 97 token, and re-resolved on theme change
-      (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant,
-      and never pass `var()`/`color-mix()` into SVG *presentation attributes* (they don't resolve
-      there, so use resolved values or `.style()`). References: `ComparisonRadarChart` and
+      (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant.
+      Chromium resolves `var()` in SVG *presentation attributes* (the investments growth bars and
+      the retirement band computed to the token's colour on 2026-10-09), and WebKit and Gecko were
+      not checked, so resolve the token at render time whenever the colour feeds a computation or
+      has to hold in every engine, and use `.style()` otherwise. References: `ComparisonRadarChart` and
       `FrontierCostContextChart`. Investments visuals share one categorical
       palette: `src/components/investments/holdingPalette.ts`.
 - [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles, since they vanish on dark paper.

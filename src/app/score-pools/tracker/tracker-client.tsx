@@ -199,6 +199,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
   }, [activePool, league, nowIso]);
 
   const selectedRival = activePool?.rivals.find((rival) => rival.id === selectedRivalId) ?? null;
+  const scoredCount = myScoring?.rows.filter((row) => row.score).length ?? 0;
 
   return (
     <section className="c97-band min-h-dvh" data-c97-surface="paper">
@@ -256,7 +257,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                 <p className="c97-stat-label">Tracked points</p>
                 <p className="c97-stat-value c97-mono">{myScoring?.total ?? 0}</p>
                 <p className="c97-stat-delta">
-                  computed here from {myScoring?.rows.filter((row) => row.score).length ?? 0} scored picks
+                  computed here from {scoredCount} scored {scoredCount === 1 ? "pick" : "picks"}
                 </p>
               </div>
               <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
@@ -318,7 +319,9 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   {row.result.afterExtraTime
                                     ? ` (aet ${formatScoreline(row.result.afterExtraTime)})`
                                     : ""}
-                                  {row.result.penaltyWinner ? " p" : ""}
+                                  {row.result.penaltyWinner
+                                    ? ` · pens ${row.result.penaltyWinner === "home" ? row.fixture.homeTeam : row.fixture.awayTeam}`
+                                    : ""}
                                   {activePool.manualResults[row.fixture.id] && !row.fixture.result ? (
                                     <span className="flex items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)", fontFamily: "var(--c97-font-body)" }}>
                                       <span className="c97-chip">manual</span>

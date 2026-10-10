@@ -199,7 +199,7 @@ export function BestBallDraftTrackerClient({
                   compact, and the live state below leads. Freshness survives the
                   collapse on purpose; it is a credibility feature. */}
               <h1 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
-                Track every pick and see what your build still needs.
+                Best Ball Draft Tracker
               </h1>
               <p className="text-xs" style={{ color: "var(--c97-ink-2)" }}>
                 {preset.teams} teams · {preset.rounds} rounds · Half PPR · Rankings updated{" "}
@@ -214,9 +214,10 @@ export function BestBallDraftTrackerClient({
           ) : (
             <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Best ball draft assistant</p>
-              <h1 className="c97-poster">
-                Track every pick and see what your build still needs.
-              </h1>
+              {/* The tool's name, as on the redraft tracker. The sentence that
+                  stood here wrapped to four poster lines on a phone and pushed
+                  the slot picker to a third screen. */}
+              <h1 className="c97-poster">Best Ball Draft Tracker</h1>
               {/* Setup leads with the contest and the slot. The news-feed limit
                   stays in view because it applies to every pick, and the longer
                   account of what the room does opens on request. */}
