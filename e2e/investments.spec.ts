@@ -408,6 +408,19 @@ test.describe("Investments", () => {
 
   test("prints the retirement projection when the planner was never scrolled to", async ({ page }) => {
     await routeInvestmentsFixtures(page);
+    // Since the 2026-10-11 redesign the planner starts about a screen down, so
+    // a first load can already sit inside its lazy window. An observer that
+    // never reports holds it out of view whatever the page's height.
+    await page.addInitScript(() => {
+      window.IntersectionObserver = class {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+        takeRecords() {
+          return [];
+        }
+      } as unknown as typeof IntersectionObserver;
+    });
 
     await page.goto("/investments");
     await expectInvestmentsShell(page);
