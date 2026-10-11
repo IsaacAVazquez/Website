@@ -475,10 +475,13 @@
   grid-column: 1 / -1;
 }
 
+/* The stars wrap under the label when the column is a phone's half width. */
 .wc-rating-label {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 0 var(--c97-sp-1);
 }
 
 .wc-rating-label .wc-rating {
