@@ -1,9 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
-import { Building2, Home, Landmark, RotateCcw } from "lucide-react";
-import { Catalog97HeroReadouts, Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { RENT_VS_BUY_BOUNDS, RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
@@ -13,20 +10,12 @@ import { fitLabel } from "@/app/travel-deals/fareGauge";
 import { netWorthChart } from "./netWorthChart";
 import "./rent-vs-buy.css";
 
-const ROUTE = "/fintech-tools/rent-vs-buy";
-
-function formatCurrency(value: number, fractionDigits = 0) {
+function formatCurrency(value: number) {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
-    minimumFractionDigits: fractionDigits,
-    maximumFractionDigits: fractionDigits,
+    maximumFractionDigits: 0,
   });
-}
-
-function formatSignedCurrency(value: number) {
-  const sign = value < 0 ? "-" : "+";
-  return `${sign}${formatCurrency(Math.abs(value))}`;
 }
 
 const plural = (count: number, unit: string) => `${count} ${unit}${count === 1 ? "" : "s"}`;
@@ -44,16 +33,18 @@ function formatBreakEven(result: RentVsBuyResult) {
   return `Buying pulls ahead after about ${plural(years, "year")} and ${plural(months, "month")}`;
 }
 
-/** A short form for the hero readout: "4y 6m" or "Not within 7 years". */
-function formatBreakEvenShort(result: RentVsBuyResult) {
-  if (result.breakEvenYears === null) {
-    return `Not within ${plural(result.horizonYears, "year")}`;
-  }
-  const years = Math.floor(result.breakEvenYears);
-  const months = Math.round((result.breakEvenYears - years) * 12);
+/** The chart's marker label: "4y 6m". */
+function formatBreakEvenShort(breakEvenYears: number) {
+  const years = Math.floor(breakEvenYears);
+  const months = Math.round((breakEvenYears - years) * 12);
   if (years === 0) return `${months}m`;
   if (months === 0) return `${years}y`;
   return `${years}y ${months}m`;
+}
+
+function formatLead(result: RentVsBuyResult) {
+  const leader = result.netWorthDeltaAtHorizon >= 0 ? "buying" : "renting";
+  return `At year ${result.horizonYears}, ${leader} leads by ${formatCurrency(Math.abs(result.netWorthDeltaAtHorizon))}`;
 }
 
 const VERDICT_TITLE: Record<RentVsBuyResult["verdict"], string> = {
@@ -62,114 +53,89 @@ const VERDICT_TITLE: Record<RentVsBuyResult["verdict"], string> = {
   close: "It's close to a wash",
 };
 
-// ── Net-worth signature ─────────────────────────────────────────────────────
-function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
-  const chart = useMemo(() => netWorthChart(result), [result]);
+// ── Net-worth chart ─────────────────────────────────────────────────────────
+// The chart draws at its container's measured width, so its 13px labels are
+// real pixels at every size. Colours come from the route stylesheet's
+// --rvb-* properties, which re-resolve on a theme change with no script.
+function NetWorthChart({ result }: { result: RentVsBuyResult }) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(640);
 
-  // Nudge the two end-of-line labels apart when the lines finish close
-  // together, so "Buyer" and "Renter" don't print on top of each other. The
-  // threshold and offset are sized for the larger mobile type (the same
-  // viewBox coordinates render both sizes), so they're generous at desktop.
-  const endGap = Math.abs(chart.buyerEndY - chart.renterEndY);
-  const nudge = endGap < 40 ? 16 : 0;
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(([entry]) => setWidth(Math.max(260, Math.round(entry.contentRect.width))));
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, []);
+
+  const height = Math.round(Math.min(230, Math.max(210, width * 0.4)));
+  const chart = useMemo(() => netWorthChart(result, width, height), [result, width, height]);
+
+  // The end labels only fit beside the lines on a chart this wide; on a phone
+  // the table under the chart names the two lines instead.
+  const showEndLabels = width >= 480;
+  // Nudge the two end labels apart when the lines finish close together.
+  const nudge = Math.abs(chart.buyerEndY - chart.renterEndY) < 18 ? 9 : 0;
   const buyerLabelY = chart.buyerEndY <= chart.renterEndY ? chart.buyerEndY - nudge : chart.buyerEndY + nudge;
   const renterLabelY = chart.renterEndY <= chart.buyerEndY ? chart.renterEndY - nudge : chart.renterEndY + nudge;
 
-  // The label prints twice, fitted inside the frame for each type size
-  // (mono glyphs advance about 0.62em; 15 units wide, 30 on phones), and the
-  // stylesheet shows the one that matches the screen.
-  const breakEvenText = `Break-even ${formatBreakEvenShort(result)}`;
-  const fitBreakEven = (unit: number) =>
-    chart.breakEvenX === null ? 0 : fitLabel(chart.breakEvenX, breakEvenText.length * unit * 0.62 + 8, 0, chart.width);
+  const breakEvenText = result.breakEvenYears === null ? "" : `Break-even ${formatBreakEvenShort(result.breakEvenYears)}`;
+  // Body-face digits advance a little over half an em, so 0.62em per glyph is a safe width.
+  const breakEvenLabelX =
+    chart.breakEvenX === null ? 0 : fitLabel(chart.breakEvenX, breakEvenText.length * 13 * 0.62 + 8, 0, chart.width);
 
-  const description = `Net worth by year, buyer versus renter. ${formatBreakEven(result)}. At year ${result.horizonYears}, ${
-    result.netWorthDeltaAtHorizon >= 0 ? "buying" : "renting"
-  } leads by ${formatCurrency(Math.abs(result.netWorthDeltaAtHorizon))}.`;
+  const description = `Net worth by year, buyer versus renter. ${formatBreakEven(result)}. ${formatLead(result)}.`;
 
   return (
-    <>
-      <svg
-        viewBox={`0 0 ${chart.width} ${chart.height}`}
-        role="img"
-        aria-label={description}
-        className="c97-rvb-signature"
-      >
+    <div ref={frameRef} className="rvb-chart">
+      <svg viewBox={`0 0 ${chart.width} ${chart.height}`} role="img" aria-label={description}>
         {chart.yTicks.map((tick) => (
           <g key={tick.value}>
-            <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} style={{ stroke: "var(--c97-rule)" }} strokeWidth={1} />
-            <text x={4} y={tick.y - 4} className="c97-rvb-axis">
+            <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} className="rvb-grid" />
+            <text x={0} y={tick.y - 5} className="rvb-axis">
               {formatCompactCurrency(tick.value)}
             </text>
           </g>
         ))}
 
-        {chart.zeroY !== null ? (
-          <line x1={0} x2={chart.width} y1={chart.zeroY} y2={chart.zeroY} style={{ stroke: "var(--c97-ink-2)" }} strokeWidth={1.5} />
-        ) : null}
+        {chart.zeroY !== null ? <line x1={0} x2={chart.width} y1={chart.zeroY} y2={chart.zeroY} className="rvb-zero" /> : null}
 
         {chart.breakEvenX !== null ? (
           <>
-            <line
-              x1={chart.breakEvenX}
-              x2={chart.breakEvenX}
-              y1={0}
-              y2={chart.height - 20}
-              style={{ stroke: "var(--c97-ink)" }}
-              strokeWidth={1.5}
-              strokeDasharray="4 4"
-            />
-            <text x={fitBreakEven(15)} y={32} textAnchor="middle" className="c97-rvb-label c97-rvb-wide">
-              {breakEvenText}
-            </text>
-            <text x={fitBreakEven(30)} y={32} textAnchor="middle" className="c97-rvb-label c97-rvb-narrow">
+            <line x1={chart.breakEvenX} x2={chart.breakEvenX} y1={20} y2={chart.height - 22} className="rvb-breakeven" />
+            <text x={breakEvenLabelX} y={13} textAnchor="middle" className="rvb-label">
               {breakEvenText}
             </text>
           </>
         ) : null}
 
-        <polyline
-          points={chart.renterLine}
-          fill="none"
-          style={{ stroke: "var(--c97-chart-3)" }}
-          strokeWidth={2.5}
-          strokeDasharray="7 5"
-          strokeLinejoin="round"
-        />
-        <polyline points={chart.buyerLine} fill="none" style={{ stroke: "var(--c97-chart-1)" }} strokeWidth={2.5} strokeLinejoin="round" />
+        <polyline points={chart.renterLine} className="rvb-line" data-series="renter" />
+        <polyline points={chart.buyerLine} className="rvb-line" data-series="buyer" />
 
-        <text x={chart.buyerEndX - 20} y={buyerLabelY} textAnchor="end" className="c97-rvb-label c97-rvb-end">
-          Buyer
-        </text>
-        <text x={chart.renterEndX - 20} y={renterLabelY} textAnchor="end" className="c97-rvb-label c97-rvb-end">
-          Renter
-        </text>
+        {showEndLabels ? (
+          <>
+            <text x={chart.buyerEndX - 10} y={buyerLabelY - 8} textAnchor="end" className="rvb-label">
+              Buyer
+            </text>
+            <text x={chart.renterEndX - 10} y={renterLabelY - 8} textAnchor="end" className="rvb-label">
+              Renter
+            </text>
+          </>
+        ) : null}
 
-        <text x={chart.xForYear(0)} y={chart.height - 6} className="c97-rvb-axis">
+        <text x={chart.xForYear(0)} y={chart.height - 6} className="rvb-axis">
           Today
         </text>
-        <text x={chart.xForYear(result.horizonYears)} y={chart.height - 6} textAnchor="end" className="c97-rvb-axis">
+        <text x={chart.xForYear(result.horizonYears)} y={chart.height - 6} textAnchor="end" className="rvb-axis">
           {`Year ${result.horizonYears}`}
         </text>
       </svg>
-      <div style={{ display: "flex", gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-2)", flexWrap: "wrap" }}>
-        <span className="c97-rvb-swatch">
-          <span className="c97-rvb-swatch-mark" data-series="buyer" aria-hidden="true" />
-          <span className="c97-kicker" style={{ color: "var(--c97-ink)" }}>
-            Buyer
-          </span>
-        </span>
-        <span className="c97-rvb-swatch">
-          <span className="c97-rvb-swatch-mark" data-series="renter" aria-hidden="true" />
-          <span className="c97-kicker" style={{ color: "var(--c97-ink)" }}>
-            Renter
-          </span>
-        </span>
-      </div>
-    </>
+    </div>
   );
 }
 
-// ── Field primitives ───────────────────────────────────────────────────────
+// ── Input row ───────────────────────────────────────────────────────────────
 interface FieldProps {
   label: string;
   suffix?: string;
@@ -181,6 +147,8 @@ interface FieldProps {
   onChange: (value: number) => void;
   disabled?: boolean;
   hint?: string;
+  /** The five headline inputs print larger than the rest. */
+  large?: boolean;
 }
 
 function NumberField({
@@ -194,6 +162,7 @@ function NumberField({
   onChange,
   disabled = false,
   hint,
+  large = false,
 }: FieldProps) {
   const id = useId();
   // The typed text stays local until it parses, so clearing a field to retype it
@@ -207,27 +176,14 @@ function NumberField({
   const rangeId = `${id}-range`;
   const describedBy = [hint ? hintId : null, outOfRange ? rangeId : null].filter(Boolean).join(" ") || undefined;
   return (
-    <label htmlFor={id} className="block">
-      <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
+    <div className="rvb-row" data-size={large ? "large" : undefined}>
+      <label htmlFor={id} className="rvb-row-label">
         {label}
-      </span>
-      <span
-        className="c97-field"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "var(--c97-sp-1)",
-          ...(disabled ? { background: "none", borderBottom: "1px dashed var(--c97-ink-2)" } : null),
-        }}
-      >
-        {prefix ? (
-          <span aria-hidden="true" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}>
-            {prefix}
-          </span>
-        ) : null}
+      </label>
+      <span className="rvb-cell" data-disabled={disabled || undefined}>
+        {prefix ? <span aria-hidden="true">{prefix}</span> : null}
         <input
           id={id}
-          aria-label={label}
           type="number"
           inputMode="decimal"
           min={min}
@@ -243,37 +199,22 @@ function NumberField({
             if (next.trim() !== "" && Number.isFinite(Number(next))) onChange(Number(next));
           }}
           onBlur={() => setDraft(null)}
-          className="c97-mono"
-          style={{
-            flex: 1,
-            minWidth: 0,
-            minHeight: "44px",
-            border: 0,
-            background: "transparent",
-            padding: 0,
-            color: "var(--c97-ink)",
-            fontSize: "var(--c97-fs-body)",
-          }}
         />
-        {suffix ? (
-          <span aria-hidden="true" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}>
-            {suffix}
-          </span>
-        ) : null}
+        {suffix ? <span aria-hidden="true">{suffix}</span> : null}
       </span>
       {hint ? (
-        <span id={hintId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+        <span id={hintId} className="rvb-row-note">
           {hint}
         </span>
       ) : null}
       {outOfRange ? (
-        <span id={rangeId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+        <span id={rangeId} className="rvb-row-note">
           {max !== undefined
             ? `Between ${min.toLocaleString("en-US")} and ${max.toLocaleString("en-US")}`
             : `At least ${min.toLocaleString("en-US")}`}
         </span>
       ) : null}
-    </label>
+    </div>
   );
 }
 
@@ -283,110 +224,141 @@ export function RentVsBuyClient() {
   // Each NumberField keeps a local draft while typing, so Reset remounts the
   // fields to drop any draft still showing a value the store no longer holds.
   const [resetKey, setResetKey] = useState(0);
+  const ids = useId();
+
+  // A printed scenario needs every input on it, so the closed groups open for the print.
+  useEffect(() => {
+    const openGroups = () => {
+      document.querySelectorAll<HTMLDetailsElement>(".rvb-group").forEach((group) => {
+        group.open = true;
+      });
+    };
+    window.addEventListener("beforeprint", openGroups);
+    return () => window.removeEventListener("beforeprint", openGroups);
+  }, []);
 
   const num = <K extends keyof RentVsBuyInput>(key: K) =>
     (value: number) => setField(key, value as RentVsBuyInput[K]);
 
-  const lead = PROJECT_PRESS[ROUTE].lead;
-  const standfirst =
-    "Most rent-vs-buy comparisons stop at the monthly payment, but the honest question is what you are worth years from now on each path. This tool runs a month-by-month model that credits the renter the money a buyer sinks into a down payment and closing costs, invests every month's cost difference on whichever side spends less, and then finds the year buying finally pulls ahead.";
-
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Rent vs. Buy Calculator"
-        standfirst={standfirst}
-      >
-        {/* The five inputs that move the result most come first, so the figures and the chart they drive sit right under them. */}
-        <div
-          data-c97-surface="paper"
-          className="c97-offset flex flex-col"
-          style={{ padding: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}
-        >
-          <h2 className="sr-only">Your numbers</h2>
-          {/* Keyed on the grid and not the plate, so Reset keeps keyboard focus when the fields remount. */}
-          <div key={resetKey} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" style={{ gap: "var(--c97-sp-1)" }}>
-            <NumberField {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
-            <NumberField {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
-            <NumberField {...RENT_VS_BUY_BOUNDS.yearsStaying} label="Years staying" suffix="yrs" step={1} value={input.yearsStaying} onChange={num("yearsStaying")} />
-            <NumberField {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
-            <NumberField {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              reset();
-              setResetKey((current) => current + 1);
-            }}
-            className="c97-btn-ghost"
-            style={{ alignSelf: "flex-start" }}
-          >
-            <RotateCcw size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
-            Reset
-          </button>
-        </div>
-
-        <Catalog97HeroReadouts
-          readouts={[
-            {
-              label: "Break-even",
-              value: formatBreakEvenShort(result),
-              detail:
-                result.breakEvenYears === null
-                  ? undefined
-                  : `Staying ${plural(result.horizonYears, "year")}`,
-            },
-            {
-              label: "Net worth gap",
-              value: formatSignedCurrency(result.netWorthDeltaAtHorizon),
-              detail: `Buyer minus renter at year ${result.horizonYears}`,
-            },
-            {
-              label: "Cash to buy",
-              value: formatCurrency(result.upfrontCash),
-              detail: "Down payment + closing costs",
-            },
-          ]}
-        />
-
-        <div
-          data-c97-surface="paper"
-          className="c97-offset"
-          style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}
-        >
-          <p role="status" aria-live="polite" className="c97-serif c97-h3" style={{ margin: 0 }}>
-            <span>{VERDICT_TITLE[result.verdict]}</span>
-            {". "}
-            <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-              {formatBreakEven(result)}.
-            </span>
+    <div className="rvb">
+      <div className="rvb-page c97-shell c97-frame">
+        <header className="rvb-title">
+          <h1>Rent vs. Buy Calculator</h1>
+          <p>
+            This compares your net worth on each path month by month, crediting the renter with the cash a buyer puts
+            down and investing whatever the cheaper side saves each month.
           </p>
-
-          <div style={{ marginTop: "var(--c97-sp-3)" }}>
-            <NetWorthChartSignature result={result} />
-          </div>
-
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-3)" }}>
-            Educational only, not financial or tax advice.
-          </p>
-          <a href="#assumptions-and-limits" className="c97-btn-ghost">
+          <a href="#assumptions-and-limits" className="rvb-link">
             Assumptions and limits
           </a>
-        </div>
-      </Catalog97ProjectHero>
+        </header>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <p className="c97-kicker">The rest of the model</p>
+        <div className="rvb-calc">
+          <section className="rvb-inputs" aria-labelledby={`${ids}-numbers`}>
+            <div className="rvb-section-head">
+              <h2 id={`${ids}-numbers`}>Your numbers</h2>
+              <button
+                type="button"
+                className="rvb-reset"
+                onClick={() => {
+                  reset();
+                  setResetKey((current) => current + 1);
+                }}
+              >
+                Reset
+              </button>
+            </div>
+            {/* Keyed on the rows and not the section, so Reset keeps keyboard focus when the fields remount. */}
+            <div key={resetKey}>
+              <NumberField large {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
+              <NumberField large {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
+              <NumberField large {...RENT_VS_BUY_BOUNDS.yearsStaying} label="Years staying" suffix="yrs" step={1} value={input.yearsStaying} onChange={num("yearsStaying")} />
+              <NumberField large {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
+              <NumberField large {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
+            </div>
+          </section>
 
-          <div key={resetKey} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-5)", marginTop: "var(--c97-sp-4)" }}>
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
-                <Home size={18} aria-hidden="true" />
-                <h2 className="c97-poster-sm">The home you&apos;d buy</h2>
-              </div>
-              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
+          {/* On a phone this wrapper becomes display: contents, so the result can print first and the fine print last. */}
+          <div className="rvb-aside">
+            <section className="rvb-result" aria-labelledby={`${ids}-result`}>
+              <h2 id={`${ids}-result`} className="sr-only">
+                Result
+              </h2>
+              <p role="status" aria-live="polite" className="rvb-verdict">
+                <span>{VERDICT_TITLE[result.verdict]}</span>
+                {". "}
+                <span className="rvb-verdict-detail">
+                  {formatBreakEven(result)}. {formatLead(result)}.
+                </span>
+              </p>
+
+              <NetWorthChart result={result} />
+
+              <table className="rvb-table">
+                <caption className="sr-only">Buying and renting compared</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <span className="sr-only">Figure</span>
+                    </th>
+                    <th scope="col">
+                      <span className="rvb-swatch" data-series="buyer" aria-hidden="true" />
+                      Buying
+                    </th>
+                    <th scope="col">
+                      <span className="rvb-swatch" data-series="renter" aria-hidden="true" />
+                      Renting
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      Cash at the start
+                      <span>Down payment and closing costs, which the renter keeps invested</span>
+                    </th>
+                    <td>{formatCurrency(result.upfrontCash)}</td>
+                    <td>{formatCurrency(result.upfrontCash)}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">
+                      Monthly cost, year 1<span>All in, after any tax benefit</span>
+                    </th>
+                    <td>{formatCurrency(result.monthlyBuyingCostYear1)}</td>
+                    <td>{formatCurrency(result.monthlyRentingCostYear1)}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Mortgage payment, monthly</th>
+                    <td>{formatCurrency(result.monthlyPaymentYear1)}</td>
+                    <td className="rvb-none">None</td>
+                  </tr>
+                  <tr className="rvb-total">
+                    <th scope="row">Net worth at year {result.horizonYears}</th>
+                    <td>{formatCurrency(result.buyerNetWorthAtHorizon)}</td>
+                    <td>{formatCurrency(result.renterNetWorthAtHorizon)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <p id="assumptions-and-limits" className="rvb-fine">
+              <span className="rvb-fine-label">Assumptions and limits</span>{" "}
+              Educational only, not financial or tax advice. Figures are nominal dollars. {result.assumptions.taxNote} Tax
+              figures are for tax year {result.assumptions.taxYear}, were read from the IRS and the text of the law on{" "}
+              {result.assumptions.asOf}, and have not had an independent review. The default mortgage rate of{" "}
+              {result.assumptions.defaultMortgageRatePercent}% is the Freddie Mac 30 year fixed average as of{" "}
+              {result.assumptions.mortgageRateAsOf}.
+            </p>
+          </div>
+
+          <section className="rvb-more" aria-labelledby={`${ids}-more`}>
+            <h2 id={`${ids}-more`}>The rest of the model</h2>
+            <div key={resetKey}>
+              <details className="rvb-group">
+                <summary>
+                  The home you&apos;d buy <span>8 inputs</span>
+                </summary>
                 <NumberField {...RENT_VS_BUY_BOUNDS.loanTermYears} label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.propertyTaxPercent} label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.homeInsuranceAnnual} label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
@@ -395,28 +367,26 @@ export function RentVsBuyClient() {
                 <NumberField {...RENT_VS_BUY_BOUNDS.closingCostPercent} label="Closing costs" suffix="%" step={0.5} value={input.closingCostPercent} onChange={num("closingCostPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.sellingCostPercent} label="Selling costs" suffix="%" step={0.5} value={input.sellingCostPercent} onChange={num("sellingCostPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.homeAppreciationPercent} label="Home appreciation" suffix="%/yr" step={0.25} value={input.homeAppreciationPercent} onChange={num("homeAppreciationPercent")} />
-              </div>
-            </div>
+              </details>
 
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
-                <Building2 size={18} aria-hidden="true" />
-                <h2 className="c97-poster-sm">The rent you&apos;d pay</h2>
-              </div>
-              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
+              <details className="rvb-group">
+                <summary>
+                  The rent you&apos;d pay <span>2 inputs</span>
+                </summary>
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentGrowthPercent} label="Rent growth" suffix="%/yr" step={0.25} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentersInsuranceMonthly} label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
-              </div>
-            </div>
+              </details>
 
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
-                <Landmark size={18} aria-hidden="true" />
-                <h2 className="c97-poster-sm">Assumptions</h2>
-              </div>
-              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
+              <details className="rvb-group">
+                <summary>
+                  Returns and taxes <span>4 inputs</span>
+                </summary>
                 <NumberField {...RENT_VS_BUY_BOUNDS.investmentReturnPercent} label="Investment return" suffix="%/yr" step={0.25} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.generalInflationPercent} label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
+                <label className="rvb-row rvb-check">
+                  <span className="rvb-row-label">Itemize deductions</span>
+                  <input type="checkbox" checked={input.itemizes} onChange={(event) => setField("itemizes", event.target.checked)} />
+                </label>
                 <NumberField
                   {...RENT_VS_BUY_BOUNDS.marginalTaxRatePercent}
                   label="Marginal tax rate"
@@ -427,104 +397,19 @@ export function RentVsBuyClient() {
                   disabled={!input.itemizes}
                   hint="Used only when you itemize deductions."
                 />
-                <label
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "var(--c97-sp-2)",
-                    minHeight: "44px",
-                  }}
-                >
-                  <span className="c97-kicker">Itemize deductions</span>
-                  <input
-                    type="checkbox"
-                    className="c97-check"
-                    checked={input.itemizes}
-                    onChange={(event) => setField("itemizes", event.target.checked)}
-                  />
-                </label>
-              </div>
+              </details>
             </div>
-          </div>
 
-          <p id="assumptions-and-limits" style={{ marginTop: "var(--c97-sp-4)", scrollMarginTop: "var(--c97-sp-6)" }}>
-            <span className="c97-kicker">Assumptions &amp; limits</span>
-            <span
-              className="c97-prose"
-              style={{ display: "block", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}
-            >
-              Educational only, not financial or tax advice. Figures are nominal dollars. {result.assumptions.taxNote} Tax figures are for tax year{" "}
-              {result.assumptions.taxYear}, were read from the IRS and the text of the law on{" "}
-              {result.assumptions.asOf}, and have not had an independent review. The default mortgage rate of{" "}
-              {result.assumptions.defaultMortgageRatePercent}% is the Freddie Mac 30 year fixed average as of{" "}
-              {result.assumptions.mortgageRateAsOf}.
-            </span>
-          </p>
-
-          {persistenceStatus === "memory-only" ? (
-            <p role="status" className="c97-panel c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
-              Browser storage is unavailable, so changes last only while this tab is open.
-            </p>
-          ) : (
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
-              Saved in your browser. No account, no server.
-            </p>
-          )}
+            {persistenceStatus === "memory-only" ? (
+              <p role="status" className="rvb-storage">
+                Browser storage is unavailable, so changes last only while this tab is open.
+              </p>
+            ) : (
+              <p className="rvb-storage">Saved in your browser. No account, no server.</p>
+            )}
+          </section>
         </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">What the numbers say</h2>
-          <table className="c97-table" style={{ marginTop: "var(--c97-sp-3)" }}>
-            <thead>
-              <tr>
-                <th>Figure</th>
-                <th data-align="end">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Buy, monthly (year 1)</td>
-                <td data-align="end" className="c97-mono">
-                  {formatCurrency(result.monthlyBuyingCostYear1)}
-                </td>
-              </tr>
-              <tr>
-                <td>Rent, monthly (year 1)</td>
-                <td data-align="end" className="c97-mono">
-                  {formatCurrency(result.monthlyRentingCostYear1)}
-                </td>
-              </tr>
-              <tr>
-                <td>Cash to buy</td>
-                <td data-align="end" className="c97-mono">
-                  {formatCurrency(result.upfrontCash)}
-                </td>
-              </tr>
-              <tr>
-                <td>Monthly P&amp;I</td>
-                <td data-align="end" className="c97-mono">
-                  {formatCurrency(result.monthlyPaymentYear1)}
-                </td>
-              </tr>
-              <tr>
-                <td>Buyer net worth, year {result.horizonYears}</td>
-                <td data-align="end" className="c97-mono">
-                  {formatCurrency(result.buyerNetWorthAtHorizon)}
-                </td>
-              </tr>
-              <tr>
-                <td>Renter net worth, year {result.horizonYears}</td>
-                <td data-align="end" className="c97-mono">
-                  {formatCurrency(result.renterNetWorthAtHorizon)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
