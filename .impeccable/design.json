@@ -332,7 +332,7 @@
     "dos": [
       "Set data-c97-surface on the section and read var(--c97-ink), var(--c97-ink-2), var(--c97-label), var(--c97-action), var(--c97-accent), and var(--c97-rule) inside it.",
       "Keep every gap, margin, and band padding on the --c97-sp-1 through --c97-sp-7 ladder.",
-      "Keep radii at zero everywhere outside the one sanctioned identity exception (/arcade), and let the one hard .c97-offset shadow stand in for every other shadow.",
+      "Keep radii at zero in the frame and on the seven designed pages, and let the one hard .c97-offset shadow stand in for every other shadow there; since 2026-10-11 a project route decides for itself in its own route CSS.",
       "Keep Fragment Mono at weight 400 and set tabular numerals on anything measured or counted.",
       "Keep Newsreader at weight 400, and reserve Anton poster type for h1s, section h2s, and closing statements.",
       "Confirm a status color clears 4.5:1 as body-size text on its surface before shipping it that way; several surfaces are large-text-or-mark only and fall back to ink.",
@@ -340,7 +340,7 @@
     ],
     "donts": [
       "Don't hardcode a hex in a component; read the token for the surface the component sits inside.",
-      "Don't round a corner or add a blurred shadow anywhere outside /arcade, the one sanctioned exception.",
+      "Don't round a corner or add a blurred shadow in the frame or on a designed page; a project route decides for itself since 2026-10-11.",
       "Don't fake a bold Fragment Mono weight, and don't bold Newsreader.",
       "Don't give a print run a third lead ink. A page picks exactly two, and peach counts as a vermilion tint, not a seventh ink.",
       "Don't read a --home-*, --surface-*, --text-*, --border-*, --color-*, --radius-*, or --shadow-* token, and don't reach for HomeStatsPanel, WarmCard, Badge, Chip, Kicker, SectionIntro, Heading, Paragraph, or InlineSectionLead; all were deleted with the Working Instrument on 2026-09-27."

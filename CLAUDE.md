@@ -250,11 +250,14 @@ separate tabs do not overwrite unseen picks. Reference: `PERSONAL_INTEREST_TOOLS
 
 ## Styling Rules
 
-Catalog 97 is the only design language on the site, apart from one sanctioned palette
-exception: `/arcade` keeps its CRT palette, because each project keeps an identity that fits
-it (see `STYLING.md`). Formula 1's old scoped red is gone, and its module reads `--c97-*`. Every
-route renders inside `Catalog97Shell` or `Catalog97ToolShell`, and its
-tokens and classes live in
+Catalog 97 is the design language of the site frame (the header, the one `main`, the footer)
+and the seven designed pages. Since 2026-10-11 each project route owns its design inside that
+frame (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`): the `--c97-*` tokens
+are available there as a default and never required, the rules below bind the frame and the
+designed pages, and the contract for a project route is the "Project routes" section of
+`DESIGN_CHECKLIST.md`. `/arcade` was the first route to work that way. Formula 1's old scoped
+red is gone, and its module reads `--c97-*`. Every route renders inside `Catalog97Shell` or
+`Catalog97ToolShell`, and the frame's tokens and classes live in
 `src/app/catalog97.css`. `STYLING.md` is the reference for it. `DESIGN.md` describes
 Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
 **Before merging any UI, run the single pre-merge `DESIGN_CHECKLIST.md`.**
@@ -271,12 +274,13 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   `.c97-poster`/`.c97-poster-sm` Anton headings with the
   `--c97-overprint` offset, `.c97-halftone` for tone, and `.c97-offset` as the only shadow. The
   method and its rules are in `STYLING.md` under "Print shop layout"; Home is the reference build.
-- Project routes print the same way (2026-09-25). Each takes its ink pair from
-  `src/constants/projectPress.ts` (six inks now, green, teal, and pink added), opens on
-  `Catalog97ProjectHero` with its signature visual as the child.
-  Anything inside the hero that paints a field needs its own `data-c97-surface`.
-  `node scripts/contrastSweep.mjs <baseUrl> <routes…>` measures text contrast in both themes.
-  Spec: `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
+- Project routes printed the same way from 2026-09-25 until 2026-10-11 and move off it as each
+  redesign lands. Until then a route takes its ink pair from `src/constants/projectPress.ts`
+  and opens on `Catalog97ProjectHero` with its signature visual as the child, and anything
+  inside that hero that paints a field needs its own `data-c97-surface`.
+  `node scripts/contrastSweep.mjs <baseUrl> <routes…>` measures text contrast in both themes
+  on any palette. Specs: `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`
+  (the old pattern) and `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`.
 - A route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
   each carrying its own `data-c97-surface`, and it uses only the `catalog97.css`
   vocabulary: `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,

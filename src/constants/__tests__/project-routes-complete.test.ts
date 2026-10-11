@@ -1,10 +1,12 @@
 /**
- * Inventory guard for the project UI redesign. Every portfolio project that
- * links to a live route must print in its own inks, open on its lead-ink hero,
- * leave the one `main` to the shell, and never bring back the generic stats
- * panel. It also classifies every page route on the site, so a new route has
- * to be placed on purpose. `e2e/project-routes.spec.ts` checks the rendered
- * side (one h1, one main, the hero on its lead ink, no hydration errors).
+ * Inventory guard for the project routes. Every portfolio project that links
+ * to a live route must exist, leave the one `main` to the shell, and never
+ * bring back the generic stats panel. It also classifies every page route on
+ * the site, so a new route has to be placed on purpose. Since the 2026-10-11
+ * project-sovereign spec a project route owns its own design inside the site
+ * frame, so nothing here requires the Catalog 97 hero, the poster h1, or a
+ * press row; `DASHBOARD_ROUTES` is the registry. `e2e/project-routes.spec.ts`
+ * checks the rendered side (one h1, one main, no hydration errors).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -86,19 +88,15 @@ describe("project route inventory", () => {
   });
 
   it.each(liveProjects.map((study) => [study.slug, study.link as string]))("%s (%s)", (_slug, link) => {
-    // (a) a press row, so the shell prints the route's own ink pair
-    expect(PROJECT_PRESS[link]).toBeDefined();
     // the route exists and is wrapped by Catalog97ToolShell, which owns the one main
     expect(fs.existsSync(path.join(APP, ...link.split("/").filter(Boolean), "page.tsx"))).toBe(true);
     expect(isCatalog97Route(link)).toBe(false);
 
     const sources = routeSources(link);
     const all = [...sources.values()].join("\n");
-    // (c) the hero: the shared project hero, or a lead-ink sheet with the poster h1
-    expect(all).toMatch(/Catalog97ProjectHero|c97-project-hero|<h1 className="c97-poster/);
-    // (b) no route-level main, since the shell renders the only one
+    // no route-level main, since the shell renders the only one
     expect(all).not.toMatch(/<main[\s>]/);
-    // (d) the deleted generic stats panel stays gone (name split so the close-out guard's text scan skips this file)
+    // the deleted generic stats panel stays gone (name split so the close-out guard's text scan skips this file)
     expect(all).not.toContain("Home" + "StatsPanel");
   });
 
@@ -110,7 +108,7 @@ describe("project route inventory", () => {
   it("places every page route as designed, project, or utility, with no orphans", () => {
     const designed = new Set(catalog97NavLinks.map((link) => link.href));
     const orphans = pageRoutes().filter(
-      (route) => !designed.has(route) && !(route in PROJECT_PRESS) && !UTILITY_ROUTES.has(route)
+      (route) => !designed.has(route) && !isDashboardRoute(route) && !UTILITY_ROUTES.has(route)
     );
     expect(orphans).toEqual([]);
   });
