@@ -199,6 +199,24 @@ const EXAMPLE_BOTTLE: WineEntry = {
   createdAt: "2026-09-20T00:00:00.000Z",
 };
 
+/*
+ * The title row's one sentence. A region is named only when the data supports
+ * the claim: the one bottle's region, a single region holding every bottle, or
+ * a region that leads outright. A tie for the lead names no region.
+ */
+function cellarSummary(entries: WineEntry[], rack: WineRackRow[], averageRating: number) {
+  const named = rack.filter((row) => entries.some((entry) => entry.region.trim() === row.region));
+  const [top, next] = named;
+  if (entries.length === 1) {
+    return `1 bottle logged, rated ${averageRating.toFixed(1)} stars${top ? `, from ${top.region}` : ""}.`;
+  }
+  const lead = `${entries.length.toLocaleString("en-US")} bottles logged, averaging ${averageRating.toFixed(1)} stars`;
+  if (!top) return `${lead}.`;
+  if (top.slots.length === entries.length) return `${lead}, all from ${top.region}.`;
+  if (!next || top.slots.length > next.slots.length) return `${lead}, with ${top.region} the most logged region.`;
+  return `${lead}, across ${named.length} regions.`;
+}
+
 /* The rack, compact: one strip of cells per region, one bottle end per bottle, coloured by type. */
 const RACK_COLUMNS = 6;
 
@@ -207,6 +225,7 @@ function WineRack({ rows }: { rows: WineRackRow[] }) {
   return (
     <div
       className="wc-rack"
+      style={{ ["--wc-cols" as string]: RACK_COLUMNS }}
       role="img"
       aria-label={`The cellar rack. ${totalBottles} bottle${totalBottles === 1 ? "" : "s"} across ${rows.length} region${
         rows.length === 1 ? "" : "s"
@@ -318,12 +337,10 @@ export function WineCellarClient() {
     filters.sortDirection !== DEFAULT_WINE_FILTERS.sortDirection;
 
   const rack = useMemo(() => wineRack(entries), [entries]);
-  const typesInCellar = WINE_TYPES.filter((type) => entries.some((entry) => entry.type === type));
-  const bottleCount = `${summary.totalWines.toLocaleString("en-US")} bottle${summary.totalWines === 1 ? "" : "s"}`;
   const formHeading = editingId ? "Edit bottle" : hasEntries ? "Log a bottle" : "Log your first bottle";
 
   return (
-    <div className="wc-root">
+    <div className="wc-root" data-empty={hasEntries ? undefined : "true"}>
       <div className="c97-shell c97-frame wc-page">
         <header className="wc-head">
           <div className="wc-title">
@@ -333,17 +350,14 @@ export function WineCellarClient() {
               you actually thought of it.
             </p>
             {hasEntries ? (
-              <p className="wc-summary">
-                {bottleCount} logged, averaging {summary.averageRating.toFixed(1)} stars
-                {summary.topRegion ? `, most of them from ${summary.topRegion}` : ""}.
-              </p>
+              <p className="wc-summary">{cellarSummary(entries, rack, summary.averageRating)}</p>
             ) : null}
           </div>
           {hasEntries ? (
             <div className="wc-rack-wrap">
               <WineRack rows={rack} />
               <ul className="wc-legend" aria-label="Wine type legend">
-                {typesInCellar.map((type) => (
+                {summary.typeBreakdown.map(({ type }) => (
                   <li key={type} className="wc-type">
                     <TypeSwatch type={type} />
                     {WINE_TYPE_LABELS[type]}
@@ -373,7 +387,7 @@ export function WineCellarClient() {
                   <input
                     type="search"
                     aria-label="Search wines"
-                    placeholder="Search by name, region, or notes"
+                    placeholder="Search by name, producer, region, grape, or notes"
                     value={filters.search}
                     onChange={(event) => updateFilters((current) => ({ ...current, search: event.target.value }))}
                   />

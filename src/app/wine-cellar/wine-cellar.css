@@ -118,7 +118,7 @@
 
 .wc-cubby-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1.125rem);
+  grid-template-columns: repeat(var(--wc-cols), 1.125rem);
   border-top: 1px solid var(--wc-ink-2);
   border-left: 1px solid var(--wc-ink-2);
 }
@@ -146,6 +146,7 @@
 }
 
 .wc-cubby-label {
+  overflow-wrap: anywhere;
   font-size: var(--c97-fs-label);
   letter-spacing: 0.04em;
   color: var(--wc-ink-2);
@@ -201,10 +202,20 @@
     grid-column: 2;
     grid-row: 1;
     align-self: start;
-    position: sticky;
-    top: var(--c97-sp-2);
     padding-left: var(--c97-sp-4);
     border-left: 1px solid var(--wc-rule);
+  }
+}
+
+/*
+ * The form follows the list down only when the window is tall enough to show
+ * all of it, error line included (about 750px measured at 1440 and 1024), so
+ * Add tasting never pins below the fold on a short laptop or a tablet on its side.
+ */
+@media screen and (min-width: 900px) and (min-height: 820px) {
+  .wc-form-col {
+    position: sticky;
+    top: var(--c97-sp-2);
   }
 }
 
@@ -360,6 +371,7 @@
 }
 
 .wc-producer {
+  overflow-wrap: anywhere;
   font-size: var(--c97-fs-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -374,6 +386,7 @@
 }
 
 .wc-origin {
+  overflow-wrap: anywhere;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -383,6 +396,7 @@
 }
 
 .wc-notes {
+  overflow-wrap: anywhere;
   margin-top: var(--c97-sp-0);
   font-family: var(--c97-font-display);
   font-style: italic;
@@ -520,9 +534,13 @@
   color: var(--wc-ink-2);
 }
 
-/* On paper the book prints its lines; the form and the filters stay on screen. */
+/*
+ * On paper an empty cellar prints the sample line and the form, so the sheet
+ * still shows how to add a bottle. A cellar with bottles prints its lines and
+ * the storage note, and leaves the form, the filters, and the actions on screen.
+ */
 @media print {
-  .wc-form-col,
+  .wc-root:not([data-empty]) .wc-form-col :is(h2, form),
   .wc-toolbar,
   .wc-actions {
     display: none;
