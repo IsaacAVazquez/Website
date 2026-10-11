@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import { ExternalLink } from "lucide-react";
 import { ResultsTape, type ResultsTapeFixture } from "./ResultsTape";
 import { GoalsPulseStrip, type GoalsPulseEntry } from "./GoalsPulseStrip";
@@ -52,15 +52,15 @@ export interface LeagueTableConfig {
 
 export type LeagueDetailTab = "fixtures" | "scorers";
 
-interface LeagueTableBoardProps {
+interface LeagueTableBoardProps<V extends string> {
   config: LeagueTableConfig;
   /** Every club in table order. */
   rows: LeagueTableRow[];
   /** The ids the active view shows, in table order. */
   visibleIds: ReadonlySet<string>;
-  views: ReadonlyArray<{ id: string; label: string; count: number }>;
-  activeView: string;
-  onViewChange: (view: string) => void;
+  views: ReadonlyArray<{ id: V; label: string; count: number }>;
+  activeView: V;
+  onViewChange: (view: V) => void;
   selectedId: string | null;
   onSelect: (id: string) => void;
   detail: LeagueDetailTab;
@@ -91,7 +91,7 @@ function formatGoalDifference(value: number): string {
  * the points ladder beside it, and the fixtures and scorers tabs under it.
  * Each route owns its URL state and maps its snapshot into these props.
  */
-export function LeagueTableBoard({
+export function LeagueTableBoard<V extends string>({
   config,
   rows,
   visibleIds,
@@ -110,18 +110,26 @@ export function LeagueTableBoard({
   scorers,
   assists,
   drawer,
-}: LeagueTableBoardProps) {
+}: LeagueTableBoardProps<V>) {
   const clubCount = rows.length;
   const visibleRows = rows.filter((row) => visibleIds.has(row.id));
   // The locale is named so the server and the browser sort alike.
-  const lookupClubs = rows.toSorted((a, b) => a.name.localeCompare(b.name, "en"));
-  const ladderClubs = rows.map((row) => ({
-    id: row.id,
-    position: row.position,
-    points: row.points,
-    label: row.code || row.shortName,
-    accentColor: row.accentColor,
-  }));
+  const lookupClubs = useMemo(() => rows.toSorted((a, b) => a.name.localeCompare(b.name, "en")), [rows]);
+  // Memoized on the rows, so the ladder's own layout memo holds across drawer
+  // opens, tab switches, and the club snapshot loading.
+  const ladderClubs = useMemo(
+    () =>
+      rows.map((row) => ({
+        id: row.id,
+        position: row.position,
+        points: row.points,
+        label: row.code || row.shortName,
+        accentColor: row.accentColor,
+      })),
+    [rows]
+  );
+  const tableScrollRef = useRef<HTMLDivElement>(null);
+  const tableOverflows = useOverflowX(tableScrollRef);
   const lastMatchday = goalsPerMatchday.at(-1)?.matchday;
   const statusLine = [
     matchday ? `Matchday ${matchday} of 38` : null,
@@ -207,11 +215,14 @@ export function LeagueTableBoard({
 
               <div className="lt-board-grid">
                 <div className="lt-table-column">
+                  {/* A scroll stop only while the table is wider than its column,
+                      so a keyboard on a wide screen goes straight to the rows. */}
                   <div
+                    ref={tableScrollRef}
                     className="lt-table-scroll"
-                    role="region"
-                    tabIndex={0}
-                    aria-label={`${config.leagueName} standings (scrollable)`}
+                    {...(tableOverflows
+                      ? { role: "region", tabIndex: 0, "aria-label": `${config.leagueName} standings (scrollable)` }
+                      : {})}
                   >
                     <table className="lt-table" aria-label={`${config.leagueName} standings`}>
                       <thead>
@@ -289,12 +300,18 @@ export function LeagueTableBoard({
                                 {row.form.length > 0 ? (
                                   <span className="lt-form">
                                     {row.form.map((result, index) => (
-                                      <span key={index} className="lt-form-mark" data-result={result} aria-hidden="true">
+                                      <span
+                                        key={index}
+                                        className="lt-form-mark"
+                                        data-result={result}
+                                        data-latest={index === row.form.length - 1 || undefined}
+                                        aria-hidden="true"
+                                      >
                                         {result}
                                       </span>
                                     ))}
                                     <span className="sr-only">
-                                      {`Last ${row.form.length}, oldest first: ${row.form.map((result) => RESULT_WORD[result]).join(", ")}`}
+                                      {`Last ${row.form.length}, oldest first, latest last: ${row.form.map((result) => RESULT_WORD[result]).join(", ")}`}
                                     </span>
                                   </span>
                                 ) : (
@@ -409,4 +426,24 @@ export function LeagueTableBoard({
       {drawer}
     </div>
   );
+}
+
+/**
+ * True while the element is wider inside than out, measured on mount and on
+ * every resize. It starts false on the server and the first client render, so
+ * the markup hydrates the same either way.
+ */
+function useOverflowX(ref: RefObject<HTMLElement | null>): boolean {
+  const [overflows, setOverflows] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const measure = () => setOverflows(el.scrollWidth > el.clientWidth + 1);
+    measure();
+    if (typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [ref]);
+  return overflows;
 }

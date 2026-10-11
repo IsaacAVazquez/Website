@@ -48,11 +48,13 @@ const CONFIG: LeagueTableConfig = {
   officialLabel: "Premier League goals leaderboard",
 };
 
+const NO_FORM: Record<string, FormResult[]> = {};
+
 export function PremierLeagueClient({
   initialState,
   summary,
   initialTeamSnapshot,
-  formByTeam = {},
+  formByTeam = NO_FORM,
 }: PremierLeagueClientProps) {
   const searchParams = useSearchParams();
   const hasManagedParams =
@@ -132,7 +134,8 @@ export function PremierLeagueClient({
       .map((s) => ({ name: s.name, goals: s.goals, assists: s.assists }))
     : [];
 
-  const rows: LeagueTableRow[] = summary.standings.map((row) => ({
+  // Memoized so the board's ladder layout and lookup sort run once per snapshot.
+  const rows: LeagueTableRow[] = useMemo(() => summary.standings.map((row) => ({
     id: row.team.id,
     position: row.position,
     name: row.team.name,
@@ -149,7 +152,7 @@ export function PremierLeagueClient({
     goalDifference: row.goalDifference,
     points: row.points,
     form: formByTeam[row.team.id] ?? [],
-  }));
+  })), [summary.standings, formByTeam]);
 
   const shortNameById = new Map(summary.teams.map((t) => [t.id, t.shortName]));
   const scorers = summary.scorers.slice(0, 10).map((s) => ({
@@ -185,7 +188,7 @@ export function PremierLeagueClient({
         count: filterStandingsForView(summary.standings, id).length,
       }))}
       activeView={routeState.view}
-      onViewChange={(view) => handleViewChange(view as PremierLeagueView)}
+      onViewChange={handleViewChange}
       selectedId={selectedTeamId}
       onSelect={handleTeamChange}
       detail={routeState.detail}

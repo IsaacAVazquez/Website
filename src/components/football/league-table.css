@@ -490,7 +490,7 @@ tr[data-selected] .lt-club-name {
   position: relative;
 }
 
-.lt-form-mark:nth-last-child(2)::after {
+.lt-form-mark[data-latest]::after {
   content: "";
   position: absolute;
   inset-inline: 3px;
@@ -530,6 +530,17 @@ tr[data-selected] .lt-club-name {
   padding-top: var(--c97-sp-2);
   font-size: 0.8125rem;
   color: var(--pl-ink-2);
+}
+
+/* The form key only prints where the Last 5 column does. */
+.lt-legend .lt-legend-form {
+  display: none;
+}
+
+@media (min-width: 640px), print {
+  .lt-legend .lt-legend-form {
+    display: block;
+  }
 }
 
 .lt-legend li[data-zone] {

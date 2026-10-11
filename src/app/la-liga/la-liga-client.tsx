@@ -58,11 +58,13 @@ const CONFIG: LeagueTableConfig = {
   officialLabel: "LALIGA scorers leaderboard",
 };
 
+const NO_FORM: Record<string, FormResult[]> = {};
+
 export function LaLigaClient({
   initialState,
   summary,
   initialTeamSnapshot,
-  formByClub = {},
+  formByClub = NO_FORM,
 }: LaLigaClientProps) {
   const searchParams = useSearchParams();
   const clubs = summary.clubs;
@@ -170,7 +172,8 @@ export function LaLigaClient({
     }
     : null;
 
-  const rows: LeagueTableRow[] = hasTable
+  // Memoized so the board's ladder layout and lookup sort run once per snapshot.
+  const rows: LeagueTableRow[] = useMemo(() => hasTable
     ? clubs.map((club) => ({
       id: club.id,
       position: club.position,
@@ -189,7 +192,7 @@ export function LaLigaClient({
       points: club.points,
       form: formByClub[club.id] ?? [],
     }))
-    : [];
+    : [], [hasTable, clubs, crestByClubId, formByClub]);
 
   const shortNameById = new Map(clubs.map((club) => [club.id, club.shortName]));
   const toLedger = (entry: LaLigaLeader) => ({
@@ -210,7 +213,7 @@ export function LaLigaClient({
         count: filterClubs(summary.clubs, option.id).length,
       }))}
       activeView={routeState.view}
-      onViewChange={(view) => handleViewChange(view as LaLigaView)}
+      onViewChange={handleViewChange}
       selectedId={selectedClub?.id ?? null}
       onSelect={handleClubChange}
       detail={routeState.detail}
