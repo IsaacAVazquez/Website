@@ -43,7 +43,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/changelog": "2026-07-23",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/tech-startup-tracker": readTechStartupLastmod(),
-  "/investments": readInvestmentsLastmod(),
+  "/investments": latestIso(readInvestmentsLastmod(), "2026-10-11"),
   "/investments/before-you-buy": "2026-10-01",
   "/news-pulse": "2026-10-09",
   "/spacex-mission-control": readSpaceXLastmod(),
