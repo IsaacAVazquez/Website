@@ -6,6 +6,10 @@ export function formatCurrency(value: number, maximumFractionDigits = 0): string
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
+    // Set together: with only a maximum, USD's default minimum of 2 exceeds a
+    // maximum of 0, which throws a RangeError before Intl.NumberFormat v3
+    // (Chrome 106, Safari 15.4, Firefox 116).
+    minimumFractionDigits: 0,
     maximumFractionDigits,
   }).format(Math.round(value * 10 ** maximumFractionDigits) / 10 ** maximumFractionDigits);
 }
