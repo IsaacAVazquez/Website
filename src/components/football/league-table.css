@@ -612,6 +612,11 @@ tr[data-selected] .lt-club-name {
     position: static;
   }
 
+  /* The ladder keeps its heading and caption on the same sheet as the plot. */
+  .lt-ladder-column {
+    break-inside: avoid;
+  }
+
   .lt-switch > button:not([aria-pressed="true"]):not([aria-selected="true"]) {
     display: none;
   }
