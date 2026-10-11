@@ -394,6 +394,7 @@
   font-size: 1.0625rem;
   line-height: 1.45;
   letter-spacing: 0;
+  text-wrap: pretty;
 }
 
 .rvb-chart svg {
