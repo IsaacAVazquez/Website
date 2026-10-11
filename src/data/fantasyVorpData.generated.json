@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-10T20:35:25.662Z",
+  "generatedAt": "2026-10-11T16:47:04.253Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-10T20:35:26.145Z",
+        "accessedAt": "2026-10-11T16:47:04.735Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -4654,7 +4654,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 517,
@@ -5347,7 +5347,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-10T20:35:26.811Z",
+        "accessedAt": "2026-10-11T16:47:05.521Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -9683,7 +9683,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 480,
@@ -10709,7 +10709,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-10T20:35:27.258Z",
+        "accessedAt": "2026-10-11T16:47:06.028Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -15234,7 +15234,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -16071,7 +16071,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-10T20:35:28.112Z",
+        "accessedAt": "2026-10-11T16:47:07.001Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -20895,7 +20895,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 534,
@@ -21435,7 +21435,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-10T20:35:28.539Z",
+        "accessedAt": "2026-10-11T16:47:07.901Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -25852,7 +25852,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 489,
@@ -26797,7 +26797,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-10T20:35:29.152Z",
+        "accessedAt": "2026-10-11T16:47:08.598Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -31322,7 +31322,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -32159,7 +32159,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-10T20:35:29.790Z",
+        "accessedAt": "2026-10-11T16:47:09.435Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -36884,7 +36884,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 523,
@@ -37523,7 +37523,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-10T20:35:30.492Z",
+        "accessedAt": "2026-10-11T16:47:09.859Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42264,7 +42264,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 525,
@@ -42885,7 +42885,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-10T20:35:30.884Z",
+        "accessedAt": "2026-10-11T16:47:10.728Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -47347,7 +47347,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 494,
@@ -48247,7 +48247,7 @@
           {
             "playerId": "fp-27161",
             "name": "Brady Cook",
-            "team": "MIA",
+            "team": "FA",
             "position": "QB",
             "positionRank": 74,
             "rank": 594,

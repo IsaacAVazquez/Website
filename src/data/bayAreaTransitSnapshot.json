@@ -4,8 +4,8 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "10/10/2026 11:21:32 PM PDT",
-      "generatedAt": "2026-10-11T06:21:40.514Z",
+      "feedTime": "10/11/2026 02:06:46 AM PDT",
+      "generatedAt": "2026-10-11T13:26:22.980Z",
       "seed": false
     },
     "heroStats": {
@@ -824,14 +824,14 @@
     "elevator": [
       {
         "id": "elevator-0",
-        "description": "There are 2 elevators out of service at this time: 24TH: Station; CIVC: Station",
+        "description": "There is 1 elevator out of service at this time: 24TH: Station",
         "posted": ""
       }
     ],
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
-      "departures": "fresh"
+      "departures": "stale-fallback"
     },
     "defaultStation": "embr"
   },
