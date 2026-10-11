@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { RENT_VS_BUY_BOUNDS, RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
@@ -14,6 +14,9 @@ function formatCurrency(value: number) {
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
+    // Both bounds, since an engine before Intl.NumberFormat v3 throws when the
+    // maximum falls under the currency's default minimum of two.
+    minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
 }
@@ -103,7 +106,7 @@ function NetWorthChart({ result }: { result: RentVsBuyResult }) {
 
         {chart.breakEvenX !== null ? (
           <>
-            <line x1={chart.breakEvenX} x2={chart.breakEvenX} y1={20} y2={chart.height - 22} className="rvb-breakeven" />
+            <line x1={chart.breakEvenX} x2={chart.breakEvenX} y1={18} y2={chart.height - 22} className="rvb-breakeven" />
             <text x={breakEvenLabelX} y={13} textAnchor="middle" className="rvb-label">
               {breakEvenText}
             </text>
@@ -226,15 +229,28 @@ export function RentVsBuyClient() {
   const [resetKey, setResetKey] = useState(0);
   const ids = useId();
 
-  // A printed scenario needs every input on it, so the closed groups open for the print.
+  // A printed scenario needs every input on it, so the closed groups open for
+  // the print and close again afterwards, including after a cancelled print.
   useEffect(() => {
+    let opened: HTMLDetailsElement[] = [];
     const openGroups = () => {
-      document.querySelectorAll<HTMLDetailsElement>(".rvb-group").forEach((group) => {
+      opened = [...document.querySelectorAll<HTMLDetailsElement>(".rvb-group:not([open])")];
+      opened.forEach((group) => {
         group.open = true;
       });
     };
+    const restoreGroups = () => {
+      opened.forEach((group) => {
+        group.open = false;
+      });
+      opened = [];
+    };
     window.addEventListener("beforeprint", openGroups);
-    return () => window.removeEventListener("beforeprint", openGroups);
+    window.addEventListener("afterprint", restoreGroups);
+    return () => {
+      window.removeEventListener("beforeprint", openGroups);
+      window.removeEventListener("afterprint", restoreGroups);
+    };
   }, []);
 
   const num = <K extends keyof RentVsBuyInput>(key: K) =>
@@ -354,11 +370,12 @@ export function RentVsBuyClient() {
 
           <section className="rvb-more" aria-labelledby={`${ids}-more`}>
             <h2 id={`${ids}-more`}>The rest of the model</h2>
-            <div key={resetKey}>
-              <details className="rvb-group">
-                <summary>
-                  The home you&apos;d buy <span>8 inputs</span>
-                </summary>
+            {/* The rows are keyed and not the groups, so Reset drops a typed draft and keeps open groups open. */}
+            <details className="rvb-group">
+              <summary>
+                The home you&apos;d buy <span>8 inputs</span>
+              </summary>
+              <Fragment key={resetKey}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.loanTermYears} label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.propertyTaxPercent} label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.homeInsuranceAnnual} label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
@@ -367,20 +384,24 @@ export function RentVsBuyClient() {
                 <NumberField {...RENT_VS_BUY_BOUNDS.closingCostPercent} label="Closing costs" suffix="%" step={0.5} value={input.closingCostPercent} onChange={num("closingCostPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.sellingCostPercent} label="Selling costs" suffix="%" step={0.5} value={input.sellingCostPercent} onChange={num("sellingCostPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.homeAppreciationPercent} label="Home appreciation" suffix="%/yr" step={0.25} value={input.homeAppreciationPercent} onChange={num("homeAppreciationPercent")} />
-              </details>
+              </Fragment>
+            </details>
 
-              <details className="rvb-group">
-                <summary>
-                  The rent you&apos;d pay <span>2 inputs</span>
-                </summary>
+            <details className="rvb-group">
+              <summary>
+                The rent you&apos;d pay <span>2 inputs</span>
+              </summary>
+              <Fragment key={resetKey}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentGrowthPercent} label="Rent growth" suffix="%/yr" step={0.25} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentersInsuranceMonthly} label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
-              </details>
+              </Fragment>
+            </details>
 
-              <details className="rvb-group">
-                <summary>
-                  Returns and taxes <span>4 inputs</span>
-                </summary>
+            <details className="rvb-group">
+              <summary>
+                Returns and taxes <span>4 inputs</span>
+              </summary>
+              <Fragment key={resetKey}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.investmentReturnPercent} label="Investment return" suffix="%/yr" step={0.25} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.generalInflationPercent} label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
                 <label className="rvb-row rvb-check">
@@ -397,8 +418,8 @@ export function RentVsBuyClient() {
                   disabled={!input.itemizes}
                   hint="Used only when you itemize deductions."
                 />
-              </details>
-            </div>
+              </Fragment>
+            </details>
 
             {persistenceStatus === "memory-only" ? (
               <p role="status" className="rvb-storage">

@@ -261,9 +261,12 @@
   margin: 0;
 }
 
-/* The ring goes around the whole cell, prefix and suffix included. */
-.rvb .rvb-cell input:focus-visible {
-  outline: none;
+/* The ring goes around the whole cell, prefix and suffix included. An
+ * engine without :has() keeps the input's own ring instead. */
+@supports selector(:has(a)) {
+  .rvb .rvb-cell input:focus-visible {
+    outline: none;
+  }
 }
 
 .rvb-cell:has(input:focus-visible) {
@@ -278,10 +281,6 @@
 .rvb-cell[data-disabled] input {
   color: var(--rvb-ink-2);
   font-weight: 400;
-}
-
-.rvb-row[data-size="large"] {
-  padding-block: var(--c97-sp-0);
 }
 
 .rvb-row[data-size="large"] .rvb-row-label {
