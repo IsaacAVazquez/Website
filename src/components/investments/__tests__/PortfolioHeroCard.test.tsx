@@ -111,32 +111,6 @@ describe("PortfolioHeroCard summary", () => {
     expect(container.querySelector(".chip")).toBeNull();
     expect(container.querySelector(".invest-hero-livedot")).toBeNull();
   });
-
-  it("wires the add and refresh actions", () => {
-    const onAddHolding = jest.fn();
-    const onRefresh = jest.fn();
-    render(<PortfolioHeroCard {...baseProps} onAddHolding={onAddHolding} onRefresh={onRefresh} />);
-
-    fireEvent.click(screen.getByRole("button", { name: "Add holding" }));
-    expect(onAddHolding).toHaveBeenCalledTimes(1);
-    fireEvent.click(screen.getByRole("button", { name: "Refresh data" }));
-    expect(onRefresh).toHaveBeenCalledTimes(1);
-  });
-
-  it("omits the actions it was not given", () => {
-    render(<PortfolioHeroCard {...baseProps} />);
-    expect(screen.queryByRole("button", { name: "Add holding" })).toBeNull();
-    expect(screen.queryByRole("button", { name: /Refresh data/ })).toBeNull();
-  });
-
-  it("says how long ago the data refreshed and disables refresh while loading", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("2026-10-03T12:00:30Z"));
-    const lastUpdated = new Date("2026-10-03T11:55:00Z");
-    render(<PortfolioHeroCard {...baseProps} isLoading lastUpdated={lastUpdated} onRefresh={jest.fn()} />);
-    const refresh = screen.getByRole("button", { name: "Refresh data · 5m ago" });
-    expect(refresh).toBeDisabled();
-  });
 });
 
 describe("PortfolioHeroCard chart", () => {

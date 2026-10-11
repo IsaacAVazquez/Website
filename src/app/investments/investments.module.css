@@ -39,9 +39,11 @@
   --invest-fs-lead: 14px;    /* emphasis and section leads */
   --invest-fs-value: 17px;   /* prominent data readouts */
   font-variant-numeric: tabular-nums;
-  /* The espresso field without the riso grain, which is the print shop's
-     paper and not a terminal's. */
-  background-image: none;
+  /* The espresso and chocolate fields without the riso grain, which is the
+     print shop's paper and not a terminal's. The surface rule in catalog97.css
+     (.c97-page [data-c97-surface], 0,2,0) outranks a module class, so this
+     clears the token every grain rule reads rather than the property. */
+  --c97-grain-soft: none;
   padding-bottom: var(--c97-sp-4);
 }
 /* What the site frame leaks into a project root. The base layer sets the body
@@ -120,7 +122,6 @@
 .workspaces { min-width: 0; border-left: 1px solid var(--c97-rule); }
 .workspace + .workspace { border-top: 1px solid var(--c97-rule); }
 .researchPane {
-  background-image: none;
   padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
 }
 .notice {
@@ -209,13 +210,7 @@
   flex: 1 1 320px;
   display: flex; align-items: center; justify-content: flex-end; gap: var(--c97-sp-1);
 }
-/* On a phone the stats row follows the table, the way a brokerage app puts
-   the positions straight under the balance. Nothing in the row takes focus,
-   so the reading order is the only thing that moves. */
-@media screen and (max-width: 900px) {
-  .terminalScope :global(.invest-main) { display: flex; flex-direction: column; }
-  .terminalScope :global(.invest-main) > .statsPanel { order: 1; }
-}
+
 .terminalScope :global(.invest-search) {
   flex: 0 1 260px;
   min-width: 0;
@@ -357,11 +352,6 @@
 }
 .terminalScope :global(.invest-hero-delta .muted) {
   color: var(--c97-ink-2); font-weight: 400;
-}
-.terminalScope :global(.invest-hero-actions) {
-  margin-top: auto;
-  padding-top: var(--c97-sp-2);
-  display: flex; gap: var(--c97-sp-1); flex-wrap: wrap;
 }
 
 /* Right side of the hero, chart wrapper */
@@ -617,15 +607,6 @@
   flex-wrap: wrap;
   padding: var(--c97-sp-1) 0;
   border-bottom: 1px solid var(--c97-rule);
-}
-.terminalScope :global(.invest-section-kicker) {
-  margin: 0;
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-micro);
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c97-ink-2);
 }
 .terminalScope :global(.invest-section-title) {
   margin: var(--c97-sp-0) 0 0;

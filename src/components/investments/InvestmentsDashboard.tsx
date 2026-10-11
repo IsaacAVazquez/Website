@@ -16,7 +16,7 @@ import type { InvestmentsTask, ResearchTab } from "@/app/investments/investments
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
-import { buildInvestmentsPriceHealth } from "@/lib/investmentsPriceHealth";
+import { buildInvestmentsPriceHealth, countQuoteSources } from "@/lib/investmentsPriceHealth";
 import { holdingColor } from "./holdingPalette";
 import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
@@ -284,11 +284,9 @@ export function InvestmentsDashboard({
     }, 80);
   }
 
-  const quoteState = enhancedHoldings.some((h) => h.priceSource === "live")
-    ? "Live quotes"
-    : enhancedHoldings.some((h) => h.priceSource === "saved")
-      ? "Last saved prices"
-      : "Prices unavailable";
+  const quoteSources = useMemo(() => countQuoteSources(enhancedHoldings), [enhancedHoldings]);
+  const quoteState =
+    quoteSources.live > 0 ? "Live quotes" : quoteSources.saved > 0 ? "Last saved prices" : "Prices unavailable";
 
   // Keyed, so React moves a workspace when the task changes and keeps its state.
   const workspaces = {
@@ -303,6 +301,7 @@ export function InvestmentsDashboard({
               holdings={enhancedHoldings}
               snapshots={snapshots}
               isLoading={isLoading}
+              quoteSources={quoteSources}
             />
 
             <HoldingsTable
@@ -430,7 +429,9 @@ export function InvestmentsDashboard({
         </div>
         <button type="button" className={`invest-ghost ${styles.titleAdd}`} onClick={focusAddHolding}>
           <Plus size={14} aria-hidden="true" />
-          Add holding
+          {/* Its own name, since the form's toggle owns "Add holding" and the
+              two share the desktop first screen. */}
+          Add a holding
         </button>
       </header>
 

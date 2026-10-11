@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import type { QuoteSourceCounts } from "@/lib/investmentsPriceHealth";
 import type {
   EnhancedHolding,
   PortfolioSnapshot,
@@ -14,21 +15,22 @@ interface Props {
   holdings: EnhancedHolding[];
   isLoading: boolean;
   snapshots: PortfolioSnapshot[];
+  /** Counted once by the dashboard, which reads the same numbers for the tape. */
+  quoteSources: QuoteSourceCounts;
 }
 
-export function PortfolioSummary({ summary, holdings, isLoading, snapshots }: Props) {
-  const liveCount = holdings.filter((holding) => holding.priceSource === "live").length;
-  const savedCount = holdings.filter((holding) => holding.priceSource === "saved").length;
+export function PortfolioSummary({ summary, holdings, isLoading, snapshots, quoteSources }: Props) {
+  const { total, live: liveCount, saved: savedCount } = quoteSources;
   const hasLiveQuotes = liveCount > 0;
-  const allQuotesLive = holdings.length > 0 && liveCount === holdings.length;
+  const allQuotesLive = total > 0 && liveCount === total;
   const marketStatus =
-    holdings.length === 0
+    total === 0
       ? "No positions"
       : allQuotesLive
         ? "Latest quotes"
         : liveCount > 0
-          ? `${liveCount} of ${holdings.length} current quotes`
-          : savedCount === holdings.length
+          ? `${liveCount} of ${total} current quotes`
+          : savedCount === total
             ? "Saved quotes"
             : savedCount > 0
               ? "Saved quotes + cost basis"

@@ -16,10 +16,8 @@ import {
 } from "d3";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { parseLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
-import { useClientNow } from "@/hooks/useClientNow";
 import {
   formatBalance,
-  formatMinutesAgo,
   formatPercent,
   formatSignedCurrency,
 } from "@/lib/investmentFormatting";
@@ -29,9 +27,6 @@ interface Props {
   summary: PortfolioSummaryType;
   snapshots: PortfolioSnapshot[];
   isLoading: boolean;
-  onAddHolding?: () => void;
-  onRefresh?: () => void;
-  lastUpdated?: Date | null;
   marketStatus: string;
   hasLiveQuotes: boolean;
   allQuotesLive: boolean;
@@ -47,27 +42,14 @@ const RANGES = [
 
 type RangeLabel = (typeof RANGES)[number]["label"];
 
-// `now` is the caller's `useClientNow()` reading (null on the server and
-// during hydration): `lastUpdated` is a live-fetched instant, so computing
-// "ago" straight from `Date.now()` at render time would print different text
-// on the server than the client's first render and break hydration.
-function formatRefreshLabel(lastUpdated: Date | null | undefined, now: number | null): string {
-  if (!lastUpdated || now === null) return "Refresh data";
-  return `Refresh data · ${formatMinutesAgo(lastUpdated, now)}`;
-}
-
 export function PortfolioHeroCard({
   summary,
   snapshots,
   isLoading,
-  onAddHolding,
-  onRefresh,
-  lastUpdated,
   marketStatus,
   hasLiveQuotes,
   allQuotesLive,
 }: Props) {
-  const now = useClientNow();
   // null = automatic: the narrowest range with at least two saved points.
   // History only records a point on days the page is visited, so a fixed 1M
   // default rendered an empty chart on arrival for sparse histories.
@@ -378,21 +360,6 @@ export function PortfolioHeroCard({
             ))}
           </div>
         </div>
-
-        {onAddHolding || onRefresh ? (
-          <div className="invest-hero-actions">
-            {onAddHolding ? (
-              <button type="button" className="invest-ghost is-primary" onClick={onAddHolding}>
-                Add holding
-              </button>
-            ) : null}
-            {onRefresh ? (
-              <button type="button" className="invest-ghost" onClick={onRefresh} disabled={isLoading}>
-                {formatRefreshLabel(lastUpdated, now)}
-              </button>
-            ) : null}
-          </div>
-        ) : null}
       </div>
 
       <div className="invest-chart-wrap" ref={containerRef}>

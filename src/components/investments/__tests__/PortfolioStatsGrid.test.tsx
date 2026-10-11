@@ -89,7 +89,6 @@ describe("PortfolioStatsGrid", () => {
       <PortfolioStatsGrid
         summary={summary}
         holdings={[holding({ symbol: "AAPL", allocationPercent: 100, gainLossPercent: -8 })]}
-       
       />
     );
     expect(cell("Cost basis").sub).toBe("Across 1 position");

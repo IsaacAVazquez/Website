@@ -1,4 +1,24 @@
-import type { InvestmentsPriceHealth } from "@/types/investment";
+import type { EnhancedHolding, InvestmentsPriceHealth } from "@/types/investment";
+
+export interface QuoteSourceCounts {
+  total: number;
+  live: number;
+  saved: number;
+}
+
+/**
+ * Where the portfolio's prices came from, counted once so the quote tape and
+ * the balance read the same numbers. Cost basis is the remainder.
+ */
+export function countQuoteSources(holdings: ReadonlyArray<Pick<EnhancedHolding, "priceSource">>): QuoteSourceCounts {
+  let live = 0;
+  let saved = 0;
+  for (const holding of holdings) {
+    if (holding.priceSource === "live") live += 1;
+    else if (holding.priceSource === "saved") saved += 1;
+  }
+  return { total: holdings.length, live, saved };
+}
 
 const DEFAULT_MAX_PRICE_AGE_DAYS = 7;
 

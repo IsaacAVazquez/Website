@@ -356,7 +356,8 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
         <div>
           <h2>Holdings</h2>
           <div className="invest-panel-head-meta">
-            {holdings.length} {holdings.length === 1 ? "position" : "positions"} · sorted by allocation
+            {holdings.length} {holdings.length === 1 ? "position" : "positions"}
+            {holdings.length > 0 ? " · sorted by allocation" : null}
           </div>
         </div>
         <div className="invest-panel-tools">
