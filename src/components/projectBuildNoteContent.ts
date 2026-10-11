@@ -136,4 +136,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     method:
       "The page turns a stored snapshot of ESPN's public tournament data into group, bracket, schedule, and team views. The update time stays with the data, and the selected view and team live in the URL so a specific tournament state can be shared.",
   },
+  "/wine-cellar": {
+    purpose:
+      "I wanted a cellar book I would actually keep, with one line per bottle carrying the producer, the vintage, where it is from, and what I thought of it on a half-star scale. The log is the page, so adding a bottle and finding the one I opened last month happen in the same place.",
+    method:
+      "Everything is saved in this browser under one key, with no account or server behind it, and each entry is cleaned up when it is read back, from snapping the rating to half stars, to dropping a vintage outside 1800 to 2100, to discarding a negative price. Each save reads the latest copy first and other open tabs pick up the change through the browser's storage event, so two tabs do not overwrite each other.",
+  },
 };
