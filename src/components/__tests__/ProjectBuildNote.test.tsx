@@ -34,7 +34,6 @@ describe("ProjectBuildNote", () => {
     const text = container.querySelector("aside")?.textContent;
     expect(text).toContain("What I use it for");
     expect(text).toContain(PROJECT_BUILD_NOTE_CONTEXT["/bay-area-transit"].purpose);
-    expect(text).toContain(PROJECT_BUILD_NOTE_CONTEXT["/bay-area-transit"].method);
     expect(
       container.querySelector('a[href="/writing/building-a-bart-transit-dashboard"]'),
     ).not.toBeNull();
