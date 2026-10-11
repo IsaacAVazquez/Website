@@ -112,6 +112,12 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     method:
       "The figures in this version are illustrative sample data, so no one should read the averages as current polling or a race forecast. The page demonstrates the aggregation and drilldown model, including how a selected view and race can be shared through the URL.",
   },
+  "/fintech-tools/rent-vs-buy": {
+    purpose:
+      "I built this because most rent versus buy comparisons stop at the monthly payment, and the question I actually care about is what I would be worth years from now on each path. It keeps the five inputs that move the answer most beside the verdict and the net-worth chart, with the other thirteen one click away.",
+    method:
+      "The engine runs a month-by-month model in nominal dollars. It credits the renter with the down payment and closing costs a buyer would spend, invests each month's cost difference on whichever side spends less, and finds the month buying pulls ahead. Investment growth is untaxed on both sides, the standard deduction is not modeled, and the tax figures are dated assumptions, so the result is educational and not advice.",
+  },
   "/premier-league": {
     purpose:
       "I use this dashboard to connect the Premier League table with the fixtures that produced it and the matches coming next. Club drilldowns make recent form easier to read without turning the overview into a wall of match data.",
