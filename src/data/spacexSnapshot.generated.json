@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T15:28:38.994Z",
+  "generatedAt": "2026-10-11T00:16:46.196Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-10T15:28:33.393Z"
+    "generatedAt": "2026-10-11T00:16:38.959Z"
   },
   "upcomingLaunches": [
     {
@@ -354,6 +354,46 @@
       }
     },
     {
+      "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
+      "name": "Flight 15",
+      "flightNumber": 779,
+      "upcoming": true,
+      "success": null,
+      "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 2,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
+        ]
+      }
+    },
+    {
       "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
       "name": "Griffin Mission One",
       "flightNumber": 779,
@@ -430,46 +470,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
-      "name": "Flight 15",
-      "flightNumber": 779,
-      "upcoming": true,
-      "success": null,
-      "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Starship V3",
-      "launchpadName": "Orbital Launch Pad 2",
-      "launchpadLocation": "SpaceX Starbase, TX, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 2,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       }
     },
@@ -954,6 +954,46 @@
       }
     },
     {
+      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+      "name": "SDA Tranche 2 Tracking Layer B",
+      "flightNumber": 779,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
       "name": "USSF-75",
       "flightNumber": 779,
@@ -1061,46 +1101,6 @@
         "webcast": null,
         "article": null,
         "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
-      "flightNumber": 779,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2177,105 +2177,6 @@
       "capsules": [],
       "cores": []
     },
-    "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67": {
-      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-      "name": "Griffin Mission One",
-      "flightNumber": 779,
-      "upcoming": true,
-      "success": null,
-      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Astrobotic_Technology",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 0,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "1267",
-          "name": "Griffin Mission One",
-          "type": "Lunar Exploration",
-          "customers": [
-            "Astrobotic Technology"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Lunar Orbit",
-          "regime": "LO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
     "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
       "name": "Flight 15",
@@ -2368,6 +2269,105 @@
           ],
           "orbit": "Low Earth Orbit",
           "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67": {
+      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+      "name": "Griffin Mission One",
+      "flightNumber": 779,
+      "upcoming": true,
+      "success": null,
+      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 3,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Astrobotic_Technology",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 0,
+      "failures": [],
+      "rocket": {
+        "id": "161",
+        "name": "Falcon Heavy",
+        "type": "Heavy",
+        "active": true,
+        "boosters": 2,
+        "stages": 3,
+        "costPerLaunch": 90000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-02-06",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
+        "heightMeters": 70,
+        "diameterMeters": 12.2,
+        "massKg": 1400000,
+        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
+        "flickrImages": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "87",
+        "name": "Launch Complex 39A",
+        "fullName": "Launch Complex 39A",
+        "locality": "Kennedy Space Center, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "1267",
+          "name": "Griffin Mission One",
+          "type": "Lunar Exploration",
+          "customers": [
+            "Astrobotic Technology"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Lunar Orbit",
+          "regime": "LO",
           "massKg": null,
           "massLbs": null
         }
@@ -2937,6 +2937,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-10T15:28:38.311Z"
+    "generatedAt": "2026-10-11T00:16:45.776Z"
   }
 }
