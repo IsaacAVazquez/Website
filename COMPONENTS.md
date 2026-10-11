@@ -129,8 +129,8 @@ Shared components for the `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`,
 | `FixtureCard` | `src/components/football/FixtureCard.tsx` | Single fixture result or upcoming match card |
 | `FixtureGroupSection` | `src/components/football/FixtureGroupSection.tsx` | Grouped fixture list by matchday or date |
 | `LeaderList` | `src/components/football/LeaderList.tsx` | Scorers and assists leaderboard |
-| `PointsLadder` | `src/components/football/PointsLadderChart.tsx` | Premier League and La Liga hero signature, clubs on a vertical points axis with the zone lines, geometry from `ladderGeometry.ts` |
-| `LeagueProgrammeTable` | `src/components/football/LeagueProgrammeTable.tsx` | Premier League and La Liga standings table with the zones printed as row bands |
+| `PointsLadder` | `src/components/football/PointsLadderChart.tsx` | Premier League and La Liga points ladder beside the table, clubs on a vertical points axis with the zone lines, geometry from `ladderGeometry.ts` |
+| `LeagueTableBoard` | `src/components/football/LeagueTableBoard.tsx`, `league-table.css` | The page both Premier League and La Liga render, meaning the title row with the club lookup, the results ticker, the standings with zone bands and each club's last five, the points ladder, and the fixtures and scorers tabs |
 | `SeedLadder` | `src/components/football/SeedLadderPanel.tsx` | NBA and NFL hero signature, each conference as a seed ladder with the games-clear gap at each line, from `seedLadder.ts` |
 | `MetricCard` | `src/components/football/MetricCard.tsx` | Metric highlight card with optional trend |
 | `InfoChip` | `src/components/football/InfoChip.tsx` | Inline label chip for league/competition context |
