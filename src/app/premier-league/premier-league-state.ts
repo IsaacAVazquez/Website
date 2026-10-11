@@ -10,7 +10,7 @@ import { readParam, type SearchParamInput } from "@/lib/searchParams";
 export const PREMIER_LEAGUE_ROUTE = "/premier-league";
 
 export const PREMIER_LEAGUE_VIEW_OPTIONS = ["table", "title-race", "europe", "relegation"] as const;
-export const PREMIER_LEAGUE_DETAIL_OPTIONS = ["club", "fixtures", "scorers"] as const;
+export const PREMIER_LEAGUE_DETAIL_OPTIONS = ["fixtures", "scorers"] as const;
 
 const VALID_VIEWS = new Set<PremierLeagueView>(PREMIER_LEAGUE_VIEW_OPTIONS);
 const VALID_DETAILS = new Set<PremierLeagueDetailTab>(PREMIER_LEAGUE_DETAIL_OPTIONS);
@@ -18,7 +18,7 @@ const VALID_DETAILS = new Set<PremierLeagueDetailTab>(PREMIER_LEAGUE_DETAIL_OPTI
 export const DEFAULT_PREMIER_LEAGUE_STATE: PremierLeagueRouteState = {
   view: "table",
   team: null,
-  detail: "club",
+  detail: "fixtures",
 };
 
 export const PREMIER_LEAGUE_VIEW_LABELS: Record<PremierLeagueView, string> = {

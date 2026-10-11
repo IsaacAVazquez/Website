@@ -42,7 +42,7 @@ export interface PointsLadderResult {
   lines: PointsLadderZoneLine[];
 }
 
-/** Display name for each zone, shared by the ladder's line labels and the table's zone chips. */
+/** Display name for each zone, shared by the ladder's line labels and the table's legend. */
 export const LEAGUE_ZONE_LABEL: Record<LeagueZone, string> = {
   champions: "Champions League",
   europa: "Europa League",
@@ -50,21 +50,6 @@ export const LEAGUE_ZONE_LABEL: Record<LeagueZone, string> = {
   midtable: "Midtable",
   relegation: "Relegation",
 };
-
-/** Chip ink for a zone: accent for the title places, positive for Europe, negative for the drop. */
-export function zoneChipStyle(zone: LeagueZone): { color: string } {
-  switch (zone) {
-    case "champions":
-      return { color: "var(--c97-accent)" };
-    case "europa":
-    case "conference":
-      return { color: "var(--c97-positive)" };
-    case "relegation":
-      return { color: "var(--c97-negative)" };
-    default:
-      return { color: "var(--c97-ink-2)" };
-  }
-}
 
 /** 1-4 Champions League, 5 Europa League, 6 Conference League, bottom three relegation. */
 export function leagueZone(position: number, clubCount: number): LeagueZone {

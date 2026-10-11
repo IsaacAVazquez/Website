@@ -42,8 +42,8 @@ describe("PremierLeagueClient", () => {
       />
     );
 
-    // The club drawer only opens for an explicit ?team= selection — a bare
-    // visit renders the standings and Club detail tab inline, no overlay.
+    // The club drawer only opens for an explicit ?team= selection, so a bare
+    // visit renders the standings with no overlay.
     expect(screen.getByRole("heading", { name: "Standings" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
@@ -70,7 +70,7 @@ describe("PremierLeagueClient", () => {
     await user.keyboard("{Escape}");
 
     // Closing hides the overlay and leaves the selection in the URL, so the
-    // ladder, the table, and Club detail stay on the club that was open.
+    // ladder and the table stay on the club that was open.
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(mockPush).not.toHaveBeenCalled();
   });
@@ -93,8 +93,14 @@ describe("PremierLeagueClient", () => {
       return { settle: () => view.rerender(ui()) };
     }
 
-    it.each(["Fixtures", "Top scorers"])("switching to the %s tab opens no drawer", async (name) => {
+    // Fixtures is the default tab since the Club detail tab was cut, so the
+    // Fixtures case starts from the scorers tab to have somewhere to switch from.
+    it.each([
+      ["Fixtures", "detail=scorers"],
+      ["Top scorers", ""],
+    ])("switching to the %s tab opens no drawer", async (name, start) => {
       const user = userEvent.setup();
+      currentSearchParams = new URLSearchParams(start);
       const { settle } = renderFollowingPushes();
 
       await user.click(screen.getByRole("tab", { name }));
@@ -127,7 +133,7 @@ describe("PremierLeagueClient", () => {
       expect(screen.getByRole("dialog", { name: `${club.team.name} detail` })).toBeInTheDocument();
     });
 
-    it("opens a club from the lookup under the readouts", async () => {
+    it("opens a club from the lookup in the title row", async () => {
       const user = userEvent.setup();
       const { settle } = renderFollowingPushes();
       const club = premierLeagueSnapshot.summary.standings[9]!;

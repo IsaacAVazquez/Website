@@ -32,6 +32,13 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
   );
   const summary = await getLaLigaSummarySnapshot();
   const initialTeamSnapshot = await getLaLigaTeamSnapshot(initialState.club).catch(() => null);
+  // The team snapshots list results newest first; the table reads oldest first.
+  const formByClub = Object.fromEntries(
+    Object.entries(laLigaSnapshot.teamSnapshots).map(([id, team]) => [
+      id,
+      team.form.sequence.slice(0, 5).toReversed(),
+    ])
+  );
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "La Liga Pulse", url: "/la-liga" },
@@ -69,6 +76,7 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
         initialState={initialState}
         summary={summary}
         initialTeamSnapshot={initialTeamSnapshot}
+        formByClub={formByClub}
       />
     </>
   );
