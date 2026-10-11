@@ -45,6 +45,7 @@ The surfaces are `paper`, `bone`, `stone`, `chocolate`, and `espresso`, plus the
 | `--c97-panel` | `.c97-panel`, a tint of the sheet held at 4.5:1 for ink, ink-2, and label |
 | `--c97-positive`, `--c97-negative`, `--c97-warning` | status text, measured at 4.5:1 on the surface |
 | `--c97-accent-soft`, `--c97-overlay` | a 16% accent tint and an 8% ink overlay, derived per surface |
+| `--c97-scrim` | the wash behind a drawer or sheet, fixed per theme so it darkens the page in dark mode too |
 | `--c97-chart-up`, `--c97-chart-down` | aliases of positive and negative for charts |
 | `--c97-overprint` | the page's second ink, set through the shell's `press` |
 

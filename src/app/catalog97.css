@@ -115,6 +115,13 @@
   --c97-chart-5: #6e4e2e;
   --c97-chart-6: #2b211a;
 
+  /*
+   * The wash behind a drawer or a sheet. Fixed inks rather than --c97-ink, so
+   * it darkens the page in both themes; a wash mixed from the ink went pale
+   * in dark mode, where the ink is ivory.
+   */
+  --c97-scrim: rgb(43 33 26 / 0.34);
+
   --c97-container: 1080px;
   /*
    * The dense tools' column (the trade calculator, the best ball draft room,
@@ -268,6 +275,7 @@
   --c97-chart-4: #a79e8f;
   --c97-chart-5: #e4dbc9;
   --c97-chart-6: #8a6642;
+  --c97-scrim: rgb(20 16 12 / 0.62);
 }
 
 /*

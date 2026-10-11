@@ -53,7 +53,7 @@ export function MissionDrawer({
             aria-label="Close mission detail"
             onClick={onClose}
             className="absolute inset-0 h-full w-full cursor-default"
-            style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
+            style={{ background: "var(--c97-scrim)" }}
             tabIndex={-1}
           />
           <aside

@@ -33,7 +33,7 @@ export function BestBallBuildSheet({
       <button
         type="button"
         className="absolute inset-0 h-full w-full"
-        style={{ background: "color-mix(in srgb, var(--c97-ink) 48%, transparent)" }}
+        style={{ background: "var(--c97-scrim)" }}
         onClick={close}
         tabIndex={-1}
         aria-hidden="true"
