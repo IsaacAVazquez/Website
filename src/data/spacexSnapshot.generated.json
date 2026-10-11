@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T00:16:46.196Z",
+  "generatedAt": "2026-10-11T15:49:45.173Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-11T00:16:38.959Z"
+    "generatedAt": "2026-10-11T15:49:40.318Z"
   },
   "upcomingLaunches": [
     {
@@ -380,7 +380,7 @@
       "links": {
         "webcast": null,
         "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -1302,7 +1302,7 @@
       "links": {
         "webcast": null,
         "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2937,6 +2937,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-11T00:16:45.776Z"
+    "generatedAt": "2026-10-11T15:49:44.643Z"
   }
 }
