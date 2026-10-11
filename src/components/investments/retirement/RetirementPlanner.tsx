@@ -53,10 +53,7 @@ export function RetirementPlanner({ portfolioValue }: Props) {
       aria-label="Retirement planner"
     >
       <div className="invest-section-header">
-        <div>
-          <p className="invest-section-kicker">Plan ahead</p>
-          <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>Retirement planner</h2>
-        </div>
+        <h2 className="invest-section-title">Retirement planner</h2>
         <span className="invest-retire-band-tag">
           <ChartColumn size={14} aria-hidden="true" />
           {result ? `${result.monteCarlo.simulations.toLocaleString("en-US")} Monte Carlo scenarios` : "Monte Carlo"}

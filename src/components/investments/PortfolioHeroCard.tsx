@@ -120,7 +120,9 @@ export function PortfolioHeroCard({
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg || width === 0) return;
-    const HEIGHT = 220;
+    // Shorter on a phone, where the chart stacks under the balance and every
+    // pixel pushes the holdings table further down.
+    const HEIGHT = width < 600 ? 150 : 190;
     const MARGIN = { top: 12, right: 60, bottom: 22, left: 8 };
     const innerW = Math.max(40, width - MARGIN.left - MARGIN.right);
     const innerH = HEIGHT - MARGIN.top - MARGIN.bottom;
@@ -377,21 +379,20 @@ export function PortfolioHeroCard({
           </div>
         </div>
 
-        <div className="invest-hero-actions">
-          {onAddHolding ? (
-            <button type="button" className="invest-ghost is-primary" onClick={onAddHolding}>
-              Add holding
-            </button>
-          ) : null}
-          {onRefresh ? (
-            <button type="button" className="invest-ghost" onClick={onRefresh} disabled={isLoading}>
-              {formatRefreshLabel(lastUpdated, now)}
-            </button>
-          ) : null}
-          <a href="#research-section" className="invest-ghost">
-            Open research
-          </a>
-        </div>
+        {onAddHolding || onRefresh ? (
+          <div className="invest-hero-actions">
+            {onAddHolding ? (
+              <button type="button" className="invest-ghost is-primary" onClick={onAddHolding}>
+                Add holding
+              </button>
+            ) : null}
+            {onRefresh ? (
+              <button type="button" className="invest-ghost" onClick={onRefresh} disabled={isLoading}>
+                {formatRefreshLabel(lastUpdated, now)}
+              </button>
+            ) : null}
+          </div>
+        ) : null}
       </div>
 
       <div className="invest-chart-wrap" ref={containerRef}>

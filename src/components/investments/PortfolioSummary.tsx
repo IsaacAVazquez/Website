@@ -14,20 +14,9 @@ interface Props {
   holdings: EnhancedHolding[];
   isLoading: boolean;
   snapshots: PortfolioSnapshot[];
-  onAddHolding?: () => void;
-  onRefresh?: () => void;
-  lastUpdated?: Date | null;
 }
 
-export function PortfolioSummary({
-  summary,
-  holdings,
-  isLoading,
-  snapshots,
-  onAddHolding,
-  onRefresh,
-  lastUpdated,
-}: Props) {
+export function PortfolioSummary({ summary, holdings, isLoading, snapshots }: Props) {
   const liveCount = holdings.filter((holding) => holding.priceSource === "live").length;
   const savedCount = holdings.filter((holding) => holding.priceSource === "saved").length;
   const hasLiveQuotes = liveCount > 0;
@@ -46,23 +35,18 @@ export function PortfolioSummary({
               : "Cost basis";
 
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
+    <>
       <PortfolioHeroCard
         summary={summary}
         snapshots={snapshots}
         isLoading={isLoading}
-        onAddHolding={onAddHolding}
-        onRefresh={onRefresh}
-        lastUpdated={lastUpdated}
         marketStatus={marketStatus}
         hasLiveQuotes={hasLiveQuotes}
         allQuotesLive={allQuotesLive}
       />
-      <PortfolioStatsGrid
-        summary={summary}
-        holdings={holdings}
-        marketStatus={marketStatus}
-      />
-    </div>
+      {/* The balance's second line. Six dashes summarize nothing, so the row
+          waits for the first position. */}
+      {holdings.length > 0 ? <PortfolioStatsGrid summary={summary} holdings={holdings} /> : null}
+    </>
   );
 }

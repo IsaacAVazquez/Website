@@ -112,7 +112,7 @@ describe("PortfolioHeroCard summary", () => {
     expect(container.querySelector(".invest-hero-livedot")).toBeNull();
   });
 
-  it("wires the add and refresh actions and links to research", () => {
+  it("wires the add and refresh actions", () => {
     const onAddHolding = jest.fn();
     const onRefresh = jest.fn();
     render(<PortfolioHeroCard {...baseProps} onAddHolding={onAddHolding} onRefresh={onRefresh} />);
@@ -121,7 +121,6 @@ describe("PortfolioHeroCard summary", () => {
     expect(onAddHolding).toHaveBeenCalledTimes(1);
     fireEvent.click(screen.getByRole("button", { name: "Refresh data" }));
     expect(onRefresh).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole("link", { name: "Open research" })).toHaveAttribute("href", "#research-section");
   });
 
   it("omits the actions it was not given", () => {
