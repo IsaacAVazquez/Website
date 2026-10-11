@@ -38,7 +38,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/nba": readNbaLastmod(),
   "/now": "2026-10-01",
   "/recipe-finder": "2026-10-09",
-  "/wine-cellar": "2026-10-09",
+  "/wine-cellar": "2026-10-11",
   "/bay-area-transit": readBayAreaTransitLastmod(),
   "/changelog": "2026-07-23",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
