@@ -44,13 +44,13 @@ export interface NetWorthChartGeometry {
 // sit inside it, so the plotted lines never start underneath their own axis
 // text. The top pad is two rows: the break-even label owns the first (its
 // baseline at y=13), and an end label above a line that finishes at the plot
-// top, nudged up 9 and lifted 8 more, still keeps its glyphs below y=18, so
+// top, nudged up 9 and lifted 8 more, still keeps its glyphs below y=22, so
 // the two can never collide. The bottom pad clears the $0 tick's label and
 // the Today / Year N row under it.
 const PAD_LEFT = 52;
 const PAD_RIGHT = 8;
 const PAD_Y_BOTTOM = 34;
-const PAD_Y_TOP = 46;
+const PAD_Y_TOP = 52;
 const Y_TICK_COUNT = 4;
 
 /** Round a step up to a "nice" 1/2/5-times-a-power-of-ten number. */

@@ -232,11 +232,12 @@ export function RentVsBuyClient() {
   // A printed scenario needs every input on it, so the closed groups open for
   // the print and close again afterwards, including after a cancelled print.
   useEffect(() => {
+    // Accumulated, since a second beforeprint can arrive before the afterprint.
     let opened: HTMLDetailsElement[] = [];
     const openGroups = () => {
-      opened = [...document.querySelectorAll<HTMLDetailsElement>(".rvb-group:not([open])")];
-      opened.forEach((group) => {
+      document.querySelectorAll<HTMLDetailsElement>(".rvb-group:not([open])").forEach((group) => {
         group.open = true;
+        opened.push(group);
       });
     };
     const restoreGroups = () => {
