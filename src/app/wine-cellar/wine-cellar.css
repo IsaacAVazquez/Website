@@ -1,280 +1,527 @@
-/* Wine Cellar: the rack signature, the bottle-label log rows, and the rail. */
+/*
+ * Wine Cellar, drawn as a cellar book. The route paints its own paper and
+ * redeclares the Catalog 97 tokens the borrowed field, range, and button
+ * classes read, so they print in the book's palette. Nothing is boxed; each
+ * bottle is a ruled line.
+ */
 
-.c97-wine-rack-plate {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-3);
+.wc-root {
+  --wc-paper: #f7f2e8;
+  --wc-field: #ece4d4;
+  --wc-ink: #241a17;
+  --wc-ink-2: #5a4a42;
+  --wc-wine: #74233a;
+  --wc-rule: rgba(116, 35, 58, 0.24);
+  --wc-rule-strong: #74233a;
+
+  --c97-surface: var(--wc-paper);
+  --c97-field: var(--wc-field);
+  --c97-ink: var(--wc-ink);
+  --c97-ink-2: var(--wc-ink-2);
+  --c97-label: var(--wc-ink-2);
+  --c97-rule: var(--wc-rule);
+  --c97-accent: var(--wc-wine);
+
+  background: var(--wc-paper);
+  color: var(--wc-ink);
+  font-family: var(--c97-font-body);
 }
 
-/* The rack: region cubbies side by side, each a lattice of cells. */
-.c97-wine-rack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-4) var(--c97-sp-3);
+.dark .wc-root {
+  --wc-paper: #161012;
+  --wc-field: #261c1f;
+  --wc-ink: #f1e8de;
+  --wc-ink-2: #c9b9ad;
+  --wc-wine: #e3949f;
+  --wc-rule: rgba(227, 148, 159, 0.22);
+  --wc-rule-strong: #e3949f;
 }
 
-.c97-wine-cubby {
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.wc-root h1,
+.wc-root h2 {
+  font-family: var(--c97-font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--wc-ink);
   margin: 0;
-  display: grid;
-  gap: var(--c97-sp-2);
-  justify-items: start;
 }
 
-.c97-wine-cubby-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 2.25rem);
-  border-top: 2px solid var(--c97-ink);
-  border-left: 2px solid var(--c97-ink);
-}
-
-.c97-wine-cell {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-right: 2px solid var(--c97-ink);
-  border-bottom: 2px solid var(--c97-ink);
-  background: var(--c97-field);
-}
-
-/* The empty rack's first cubby, where the first bottle goes. */
-.c97-wine-cell[data-first="true"] {
-  background-image: radial-gradient(circle, var(--c97-ink-2) 1px, transparent 1.5px);
-  background-size: 5px 5px;
-}
-
-.c97-wine-end {
-  box-sizing: border-box;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  background: var(--wine-mark);
-}
-
-.c97-wine-end[data-hollow="true"] {
-  background: none;
-  border: 4px solid var(--wine-mark);
-}
-
-.c97-wine-cubby-label {
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink);
-}
-
-.c97-wine-rack-empty {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: var(--c97-sp-3) var(--c97-sp-5);
-}
-
-.c97-wine-rack-empty-link {
-  margin-bottom: var(--c97-sp-1);
-}
-
-.c97-wine-rack-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-3);
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.wc-root :where(p, ul, li, figure) {
   margin: 0;
   padding: 0;
+  max-inline-size: none;
+  line-height: 1.5;
+}
+
+.wc-root :where(ul) {
   list-style: none;
 }
 
-.c97-wine-rack-legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink);
+.wc-page {
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
 }
 
-.c97-wine-swatch {
+/* Title row: name, one sentence, and once there are bottles, the summary and the rack. */
+.wc-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+  padding-bottom: var(--c97-sp-3);
+  border-bottom: 3px double var(--wc-rule-strong);
+}
+
+.wc-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  flex: 1 1 22rem;
+}
+
+.wc-root h1 {
+  font-size: var(--c97-fs-h1);
+  line-height: 1.05;
+}
+
+.wc-lede {
+  max-inline-size: 52ch;
+  font-size: var(--c97-fs-body);
+  color: var(--wc-ink-2);
+}
+
+.wc-summary {
+  font-size: var(--c97-fs-body);
+  color: var(--wc-ink);
+}
+
+.wc-rack-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  flex: 0 1 auto;
+}
+
+.wc-rack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.wc-cubby {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+}
+
+.wc-cubby-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1.125rem);
+  border-top: 1px solid var(--wc-ink-2);
+  border-left: 1px solid var(--wc-ink-2);
+}
+
+.wc-cell {
+  display: grid;
+  place-items: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-right: 1px solid var(--wc-ink-2);
+  border-bottom: 1px solid var(--wc-ink-2);
+}
+
+.wc-end {
+  box-sizing: border-box;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--wc-mark);
+}
+
+.wc-end[data-hollow="true"] {
+  background: none;
+  border: 2px solid var(--wc-mark);
+}
+
+.wc-cubby-label {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.04em;
+  color: var(--wc-ink-2);
+}
+
+.wc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  font-size: var(--c97-fs-label);
+  color: var(--wc-ink-2);
+}
+
+.wc-swatch {
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
 }
 
-.c97-wine-type {
+.wc-type {
   display: inline-flex;
   align-items: center;
-  gap: var(--c97-sp-1);
+  gap: var(--c97-sp-0);
 }
 
-.c97-wine-search {
+.wc-figure {
+  font-family: var(--c97-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The book: the log on the left, the form on the right from 900px up. */
+.wc-book {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+  padding-top: var(--c97-sp-3);
+}
+
+@media screen and (min-width: 900px) {
+  .wc-book {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(300px, 1fr);
+    gap: 0;
+  }
+
+  .wc-list-col {
+    grid-column: 1;
+    grid-row: 1;
+    padding-right: var(--c97-sp-4);
+  }
+
+  .wc-form-col {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    position: sticky;
+    top: var(--c97-sp-2);
+    padding-left: var(--c97-sp-4);
+    border-left: 1px solid var(--wc-rule);
+  }
+}
+
+.wc-list-col,
+.wc-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+
+.wc-root h2 {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.2;
+}
+
+.wc-list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+}
+
+.wc-count {
+  font-size: var(--c97-fs-small);
+  color: var(--wc-ink-2);
+}
+
+.wc-label {
+  display: block;
+  margin-bottom: var(--c97-sp-0);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wc-ink-2);
+}
+
+.wc-toolbar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  align-items: end;
+}
+
+.wc-search {
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
-  gap: var(--c97-sp-2);
+  gap: var(--c97-sp-1);
   min-height: 48px;
-  background: var(--c97-field);
   padding: 0 var(--c97-sp-2);
+  background: var(--wc-field);
+  border-bottom: 1px solid var(--wc-ink-2);
+  color: var(--wc-ink-2);
 }
 
-.c97-wine-search input {
+.wc-search input {
   flex: 1;
   min-width: 0;
   min-height: 44px;
   border: 0;
   background: transparent;
   padding: 0;
-  font-family: inherit;
-  font-size: var(--c97-fs-body);
-  color: var(--c97-ink);
-}
-
-/*
- * The log is a shelf of bottle labels: producer over the name, the vintage,
- * then region, varietal, type, and the rating, framed in a double rule.
- */
-.c97-wine-log {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
-  gap: var(--c97-sp-4);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.c97-wine-log-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  padding: var(--c97-sp-4) var(--c97-sp-3) var(--c97-sp-2);
-  border: 4px double var(--c97-ink);
-  background: var(--c97-surface);
-  color: var(--c97-ink);
-  text-align: center;
-}
-
-.c97-wine-log-row[aria-current="true"] {
-  outline: 2px solid var(--c97-ink);
-  outline-offset: 3px;
-}
-
-.c97-wine-log-row p {
-  margin: 0;
-}
-
-.c97-wine-label-producer {
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c97-ink-2);
-}
-
-.c97-wine-label-name {
-  font-size: var(--c97-fs-h3);
-  line-height: 1.15;
-  overflow-wrap: anywhere;
-}
-
-.c97-wine-label-vintage {
-  font-size: var(--c97-fs-small);
-  padding-bottom: var(--c97-sp-2);
-  border-bottom: 1px solid var(--c97-rule);
-  min-width: 4rem;
-}
-
-.c97-wine-label-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: var(--c97-sp-1) var(--c97-sp-3);
-  padding-top: var(--c97-sp-1);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
-}
-
-.c97-wine-label-rating {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--c97-sp-2);
-}
-
-.c97-wine-label-notes {
-  font-size: var(--c97-fs-small);
-  font-style: italic;
-  white-space: pre-line;
-}
-
-/* Pins the date, price, and actions to the bottom so they line up across a
- * row. Scoped under the row so it outranks the row's `p { margin: 0 }`. */
-.c97-wine-log-row .c97-wine-label-foot {
-  margin-top: auto;
-}
-
-.c97-wine-label-foot {
-  display: flex;
-  gap: var(--c97-sp-3);
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.06em;
-  color: var(--c97-ink-2);
-}
-
-.c97-wine-log-actions {
-  display: flex;
-  gap: var(--c97-sp-2);
-}
-
-.c97-wine-log-actions .c97-btn-ghost {
-  gap: var(--c97-sp-1);
-}
-
-.c97-wine-recent-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--c97-sp-2);
-  align-items: center;
-  width: 100%;
-  min-height: 44px;
-  padding: var(--c97-sp-1) var(--c97-sp-2);
-  border: 0;
-  background: transparent;
-  text-align: left;
   font: inherit;
-  color: var(--c97-ink);
-  cursor: pointer;
+  font-size: var(--c97-fs-body);
+  color: var(--wc-ink);
 }
 
-.c97-wine-recent-row:hover,
-.c97-wine-recent-row:focus-visible {
-  background: var(--c97-field);
+.wc-control {
+  display: block;
+  min-width: 0;
 }
 
-/* The track is a hairline box, since the panel it sits on shares the field tint. */
-.c97-wine-bar-track {
-  height: 8px;
-  border: 1px solid var(--c97-rule);
+.wc-control-sort {
+  grid-column: 1 / -1;
 }
 
-.c97-wine-bar-fill {
-  height: 100%;
-  border-width: 0;
-  box-sizing: border-box;
+.wc-sort {
+  display: flex;
+  gap: var(--c97-sp-0);
+}
+
+.wc-reset {
+  justify-self: start;
+}
+
+@media screen and (min-width: 640px) {
+  .wc-toolbar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .wc-control-sort {
+    grid-column: auto;
+  }
 }
 
 /* The sort direction toggle, a square the height of the field beside it. */
-.c97-wine-icon-btn {
+.wc-icon-btn {
   flex: 0 0 48px;
   display: inline-grid;
   place-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid var(--c97-ink-2);
+  border: 1px solid var(--wc-ink-2);
   background: none;
-  color: var(--c97-ink);
+  color: var(--wc-ink);
   font-size: var(--c97-fs-body);
   cursor: pointer;
 }
 
-.c97-wine-icon-btn:hover,
-.c97-wine-icon-btn:focus-visible {
-  background: var(--c97-ink);
-  color: var(--c97-surface);
+.wc-icon-btn:hover,
+.wc-icon-btn:focus-visible {
+  background: var(--wc-ink);
+  color: var(--wc-paper);
 }
 
-.c97-wine-icon-btn:active,
-.c97-wine-recent-row:active {
-  transform: translateY(1px);
+/*
+ * A line in the book. The vintage sits in the margin, the wine in the middle,
+ * and the rating, date, price, and actions at the right edge. On a phone the
+ * right edge drops under the wine.
+ */
+.wc-lines {
+  margin-top: var(--c97-sp-1);
+  border-top: 1px solid var(--wc-rule-strong);
+}
+
+.wc-line {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  padding: var(--c97-sp-2) 0;
+  border-bottom: 1px solid var(--wc-rule);
+}
+
+.wc-line[aria-current="true"] {
+  box-shadow: inset 3px 0 0 var(--wc-wine);
+  padding-left: var(--c97-sp-1);
+}
+
+.wc-vintage {
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-h3);
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.1;
+  color: var(--wc-wine);
+}
+
+.wc-line-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.wc-producer {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wc-ink-2);
+}
+
+.wc-name {
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-lead);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.wc-origin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--wc-ink-2);
+}
+
+.wc-notes {
+  margin-top: var(--c97-sp-0);
+  font-family: var(--c97-font-display);
+  font-style: italic;
+  font-size: var(--c97-fs-small);
+  white-space: pre-line;
+}
+
+.wc-line-side {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-2);
+}
+
+.wc-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.wc-stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--wc-wine);
+}
+
+.wc-when {
+  display: flex;
+  gap: var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  color: var(--wc-ink-2);
+}
+
+.wc-actions {
+  display: flex;
+  gap: var(--c97-sp-1);
+  margin-left: auto;
+}
+
+@media screen and (min-width: 1100px) {
+  .wc-line {
+    grid-template-columns: 4.25rem minmax(0, 1fr) auto;
+  }
+
+  .wc-line-side {
+    grid-column: 3;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .wc-actions {
+    margin-left: 0;
+  }
+}
+
+/* The first visit's example, ruled in dashes so it reads as a sample line rather than a bottle. */
+.wc-example .wc-line {
+  border-top: 1px dashed var(--wc-ink-2);
+  border-bottom: 1px dashed var(--wc-ink-2);
+}
+
+.wc-example-caption {
+  padding-bottom: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--wc-ink-2);
+  max-inline-size: 52ch;
+}
+
+.wc-empty {
+  font-size: var(--c97-fs-body);
+  color: var(--wc-ink-2);
+}
+
+/* The form, two fields to a row where they are short. */
+.wc-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  margin-top: var(--c97-sp-2);
+}
+
+.wc-field {
+  display: block;
+  min-width: 0;
+}
+
+.wc-wide {
+  grid-column: 1 / -1;
+}
+
+.wc-rating-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wc-rating-label .wc-rating {
+  letter-spacing: normal;
+  color: var(--wc-ink);
+}
+
+.wc-error {
+  font-size: var(--c97-fs-small);
+  color: var(--wc-wine);
+}
+
+.wc-submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-1);
+}
+
+.wc-root .wc-add {
+  flex: 1;
+  justify-content: center;
+  gap: var(--c97-sp-1);
+  background: var(--wc-wine);
+  color: var(--wc-paper);
+}
+
+.wc-root .wc-add:hover {
+  background: var(--wc-ink);
+}
+
+.wc-note {
+  margin-top: var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  color: var(--wc-ink-2);
+}
+
+/* On paper the book prints its lines; the form and the filters stay on screen. */
+@media print {
+  .wc-form-col,
+  .wc-toolbar,
+  .wc-actions {
+    display: none;
+  }
 }
