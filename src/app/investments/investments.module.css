@@ -1591,11 +1591,14 @@
   margin-top: var(--c97-sp-0);
 }
 .terminalScope :global(.invest-retire-cma) > summary {
+  /* A list item still, so it keeps its disclosure triangle; the padding makes the 44px target. */
+  min-height: 44px;
+  box-sizing: border-box;
   cursor: pointer;
   font-size: var(--invest-fs-label);
   font-weight: 600;
   color: var(--c97-ink);
-  padding: var(--c97-sp-0) 0;
+  padding: 13px 0;
 }
 .terminalScope :global(.invest-retire-cma) table {
   width: 100%;
@@ -1733,18 +1736,19 @@
   align-items: center;
   gap: var(--c97-sp-1);
   min-height: 44px;
-  padding: 0 var(--c97-sp-1);
+  /* Flush left, so the labels share the h1's edge. */
+  padding: 0 var(--c97-sp-1) 0 0;
   color: var(--c97-ink-2);
   text-decoration: none;
   font-family: var(--c97-font-mono);
   font-size: var(--invest-fs-small);
   transition: color 140ms var(--c97-ease), background-color 140ms var(--c97-ease);
 }
-.sectionRail a:hover { color: var(--c97-ink); background: var(--c97-panel); }
+.sectionRail a:hover { color: var(--c97-ink); }
+/* The current section's marker sits on the side that faces its pane. */
 .sectionRail a[aria-current="true"] {
   color: var(--c97-ink);
-  background: var(--c97-panel);
-  box-shadow: inset 2px 0 0 var(--c97-accent);
+  box-shadow: inset -2px 0 0 var(--c97-accent);
 }
 .sectionRail a svg { width: 16px; height: 16px; flex: 0 0 auto; }
 .sectionRailPill {
@@ -1772,6 +1776,7 @@
     background: var(--c97-surface);
   }
   .sectionRail::-webkit-scrollbar { display: none; }
+  .sectionRail a:hover { background: var(--c97-panel); }
   .sectionRail a {
     flex: 0 0 auto;
     white-space: nowrap;
