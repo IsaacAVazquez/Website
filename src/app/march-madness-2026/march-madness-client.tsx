@@ -3,21 +3,15 @@
 import Link from "next/link";
 import { startTransition, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
-import { regionBracket } from "./bracketLayout";
 import { RegionBracket } from "./RegionBracket";
 import {
-  BEST_UPSET_SHARE,
   BRACKET,
-  BRACKET_THESIS_SHARE,
   FINAL_FOUR_SUMMARY,
   INJURIES,
   MARCH_MADNESS_ARTICLE_SLUG,
   MARCH_MADNESS_FAQ,
   MARCH_MADNESS_POSTMORTEM_SLUG,
   MARCH_MADNESS_RESULT_NOTE,
-  MARCH_MADNESS_THESIS,
   MARCH_MADNESS_UPDATED_LABEL,
   MODEL_PILLARS,
   PICKS,
@@ -32,7 +26,6 @@ import {
 import {
   ANALYTICS_LABELS,
   buildMarchMadnessHref,
-  MARCH_MADNESS_ROUTE,
   REGION_LABELS,
   VIEW_LABELS,
   type MarchMadnessAnalytics,
@@ -77,61 +70,20 @@ function Tag({ children, color = "gray" }: { children: ReactNode; color?: "red" 
   return <span className={CHIP_CLASS[color]}>{children}</span>;
 }
 
-function SectionIntro({
-  eyebrow,
-  title,
-  description,
-  titleId,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  titleId?: string;
-}) {
+/** One of the column's upset picks: the call, why, and where the picks board picks it up. */
+function UpsetCard({ card }: { card: EditorialCard }) {
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-      <p className="c97-kicker">
-        {eyebrow}
+    <li className="mm-upset">
+      <Tag color={EDITORIAL_TONE[card.color]}>{card.eyebrow}</Tag>
+      <h3 className="mm-h3">{card.title}</h3>
+      <p className="mm-body">{card.reason}</p>
+      <p className="mm-meta">
+        {card.note} ·{" "}
+        <Link href={card.href} className="mm-link">
+          {card.cta}
+        </Link>
       </p>
-      <h2 id={titleId} className="c97-poster-sm">
-        {title}
-      </h2>
-      <p className="c97-prose">{description}</p>
-    </div>
-  );
-}
-
-function EditorialLinkCard({ card }: { card: EditorialCard }) {
-  return (
-    <Link
-      href={card.href}
-      className="c97-panel"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        position: "relative",
-        padding: "var(--c97-sp-4)",
-        textDecoration: "none",
-      }}
-    >
-      <div style={{ marginBottom: "var(--c97-sp-3)" }}>
-        <Tag color={EDITORIAL_TONE[card.color]}>{card.eyebrow}</Tag>
-      </div>
-      <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>
-        {card.title}
-      </h3>
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginBottom: "var(--c97-sp-3)" }}>
-        {card.reason}
-      </p>
-      <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)", marginTop: "auto" }}>
-        <p className="c97-kicker" style={{ margin: 0 }}>
-          {card.note}
-        </p>
-        <span className="c97-kicker" style={{ margin: 0, color: "var(--c97-ink)" }}>
-          {card.cta} <span className="c97-arrow" aria-hidden="true">&rarr;</span>
-        </span>
-      </div>
-    </Link>
+    </li>
   );
 }
 
@@ -206,32 +158,11 @@ function Matchup2({
 }
 
 function RoundLabel({ children }: { children: ReactNode }) {
-  return (
-    <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-4)", marginBottom: "var(--c97-sp-2)" }}>
-      {children}
-    </p>
-  );
+  return <p className="mm-round">{children}</p>;
 }
 
 function SiteLabel({ children }: { children: ReactNode }) {
-  return (
-    <p
-      className="c97-prose"
-      style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic", color: "var(--c97-ink-2)", marginBottom: "var(--c97-sp-1)" }}
-    >
-      {children}
-    </p>
-  );
-}
-
-function NoteBox({ children }: { children: ReactNode }) {
-  return (
-    <div style={{ marginTop: "var(--c97-sp-3)", paddingTop: "var(--c97-sp-3)", borderTop: "1px solid var(--c97-rule)" }}>
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-        {children}
-      </p>
-    </div>
-  );
+  return <p className="mm-site">{children}</p>;
 }
 
 function TabBar<T extends string>({
@@ -278,7 +209,7 @@ function TabBar<T extends string>({
 
   return (
     // Every TabBar sits in a flex stack, which spaces it with its gap.
-    <div className="c97-segmented" role="tablist" aria-label={label}>
+    <div className="mm-tabs" role="tablist" aria-label={label}>
       {items.map((item, index) => (
         <button
           key={item.value}
@@ -288,7 +219,6 @@ function TabBar<T extends string>({
           tabIndex={active === item.value ? 0 : -1}
           onKeyDown={(event) => handleKeyDown(event, index)}
           onClick={() => onChange(item.value)}
-          className="min-h-[44px]"
         >
           {item.label}
         </button>
@@ -308,7 +238,7 @@ function StatCell({ val, isRank, highlight }: { val: number; isRank?: boolean; h
   return (
     <td
       data-align="end"
-      className="c97-mono"
+      className="mm-num"
       style={{ color: isStrong ? "var(--c97-positive)" : "var(--c97-ink-2)" }}
       title={title}
       aria-label={title ? `${val} (${title})` : undefined}
@@ -339,8 +269,8 @@ const RANKINGS_COLUMNS = [
 
 function RankingsSection() {
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+    <div className="mm-stack-tight">
+      <p className="mm-meta">
         Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, and WAB, excluding the
         minimum and maximum system values.
       </p>
@@ -358,10 +288,10 @@ function RankingsSection() {
           <tbody>
             {RANKINGS.map((ranking) => (
               <tr key={ranking.team}>
-                <td className="c97-mono">{ranking.rank}</td>
+                <td className="mm-num">{ranking.rank}</td>
                 <td style={{ fontWeight: 600 }}>{ranking.team}</td>
                 <td>{ranking.conf}</td>
-                <td className="c97-mono">{ranking.record}</td>
+                <td className="mm-num">{ranking.record}</td>
                 <StatCell val={ranking.avg} highlight={ranking.avg <= 3} />
                 {[ranking.bpi, ranking.em, ranking.kpi, ranking.net, ranking.pom, ranking.sor, ranking.tr, ranking.wab].map(
                   (value, statIndex) => (
@@ -381,10 +311,10 @@ function RankingsSection() {
                     {ranking.trap}
                   </span>
                 </td>
-                <td data-align="end" className="c97-mono">
+                <td data-align="end" className="mm-num">
                   {ranking.seed}
                 </td>
-                <td data-align="end" className="c97-mono" style={{ fontWeight: 600 }}>
+                <td data-align="end" className="mm-num" style={{ fontWeight: 600 }}>
                   {ranking.odds}
                 </td>
               </tr>
@@ -398,31 +328,28 @@ function RankingsSection() {
 
 function SCurveSection() {
   return (
-    <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
+    <div className="mm-pair">
       {[
         { label: "Underseeded teams", data: SCURVE.under, positive: true },
         { label: "Overseeded teams", data: SCURVE.over, positive: false },
       ].map(({ label, data, positive }) => (
-        <div key={label} className="c97-panel">
-          <p
-            className="c97-kicker"
-            style={{ marginBottom: "var(--c97-sp-3)", color: positive ? "var(--c97-positive)" : "var(--c97-negative)" }}
-          >
+        <div key={label}>
+          <p className="mm-label" style={{ color: positive ? "var(--c97-positive)" : "var(--c97-negative)" }}>
             {label}
           </p>
-          <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
+          <ul className="mm-rows">
             {data.map((item) => (
-              <div key={item.team} className="flex flex-wrap items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
-                <span style={{ minWidth: "7rem", fontWeight: 600 }}>{item.team}</span>
-                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              <li key={item.team} className="mm-scurve-row">
+                <span className="mm-strong">{item.team}</span>
+                <span className="mm-num mm-muted">
                   {item.seed}-seed &middot; {item.exp}&rarr;{item.act}
                 </span>
                 <span className={positive ? "c97-chip c97-chip-positive" : "c97-chip c97-chip-negative"}>
                   {item.diff}
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       ))}
     </div>
@@ -431,28 +358,33 @@ function SCurveSection() {
 
 function InjuriesSection() {
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-      {INJURIES.map((injury) => (
-        <div key={injury.player} className="c97-panel" style={{ display: "flex", gap: "var(--c97-sp-3)" }}>
-          <span className="c97-chip" style={{ minWidth: "2.5rem", justifyContent: "center" }}>
-            {injury.seed}
-          </span>
-          <div style={{ minWidth: 0 }}>
-            <p style={{ fontWeight: 600, margin: 0 }}>
-              {injury.team}, {injury.player}
-            </p>
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
-              {injury.line}
-            </p>
-            <p
-              className="c97-prose"
-              style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-            >
-              {injury.note}
-            </p>
-          </div>
-        </div>
-      ))}
+    <div className="mm-bracket-scroll" role="region" aria-label="Injury notes (scrollable)" tabIndex={0}>
+      <table className="c97-table mm-table">
+        <thead>
+          <tr>
+            <th scope="col" data-align="end">
+              Seed
+            </th>
+            <th scope="col">Team and player</th>
+            <th scope="col">Line</th>
+            <th scope="col">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {INJURIES.map((injury) => (
+            <tr key={injury.player}>
+              <td data-align="end" className="mm-num">
+                {injury.seed}
+              </td>
+              <td className="mm-strong">
+                {injury.team}, {injury.player}
+              </td>
+              <td>{injury.line}</td>
+              <td className="mm-muted">{injury.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -462,66 +394,56 @@ function TZSection() {
   const others = TZ_IMPACTS.filter((impact) => !impact.note.startsWith("FLIP"));
 
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
+    <div className="mm-stack">
       <div>
-        <p className="c97-kicker" style={{ color: "var(--c97-negative)", marginBottom: "var(--c97-sp-3)" }}>
+        <p className="mm-label" style={{ color: "var(--c97-negative)" }}>
           Bracket flips
         </p>
-        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
+        <ul className="mm-rows">
           {flips.map((impact) => (
-            <div
-              key={`${impact.team}-${impact.site}`}
-              className="c97-panel"
-              style={{ display: "grid", gap: "var(--c97-sp-2)", gridTemplateColumns: "minmax(0,120px) minmax(0,1fr) auto" }}
-            >
-              <span style={{ fontWeight: 600, color: "var(--c97-negative)" }}>{impact.team}</span>
-              <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+            <li key={`${impact.team}-${impact.site}`} className="mm-tz-row">
+              <span className="mm-strong" style={{ color: "var(--c97-negative)" }}>
+                {impact.team}
+              </span>
+              <span className="mm-body">
                 {impact.home} to {impact.site} &middot; {impact.zones} zone{impact.zones > 1 ? "s" : ""}{" "}
                 {impact.direction}
                 {impact.final ? " · final slot" : ""}
               </span>
-              <span className="c97-mono" style={{ fontWeight: 600, color: "var(--c97-negative)" }}>
+              <span className="mm-num mm-strong" style={{ color: "var(--c97-negative)" }}>
                 {impact.pct}%
               </span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
-          Other impacts
-        </p>
-        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
+        <p className="mm-label">Other impacts</p>
+        <ul className="mm-rows">
           {others.map((impact) => (
-            <div key={`${impact.team}-${impact.site}`} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-              <div className="flex flex-wrap items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
-                <span style={{ fontWeight: 600 }}>{impact.team}</span>
-                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                  {impact.home} to {impact.site.split(" ")[0]}
-                </span>
-                <span
-                  className="c97-mono"
-                  style={{
-                    marginLeft: "auto",
-                    fontWeight: 600,
-                    color:
-                      impact.pct <= -6
-                        ? "var(--c97-negative)"
-                        : impact.pct <= -3
-                          ? "var(--c97-accent)"
-                          : "var(--c97-ink-2)",
-                  }}
-                >
-                  {impact.pct}%
-                </span>
-              </div>
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+            <li key={`${impact.team}-${impact.site}`} className="mm-tz-row">
+              <span className="mm-strong">{impact.team}</span>
+              <span className="mm-body">
+                <span className="mm-num mm-muted">{impact.home} to {impact.site.split(" ")[0]}</span>{" "}
                 {impact.note}
-              </p>
-            </div>
+              </span>
+              <span
+                className="mm-num mm-strong"
+                style={{
+                  color:
+                    impact.pct <= -6
+                      ? "var(--c97-negative)"
+                      : impact.pct <= -3
+                        ? "var(--c97-accent)"
+                        : "var(--c97-ink-2)",
+                }}
+              >
+                {impact.pct}%
+              </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
@@ -556,26 +478,21 @@ const SITE_MAP: Record<string, { r1a: string; r1b: string; r1c: string; r1d: str
 
 /**
  * The full matchup-by-matchup record of a region, round by round. This is the
- * keyboard and screen-reader path to everything the hero's bracket signature
- * draws, and the only place the region's site name and every tag renders as
- * running text.
+ * keyboard and screen-reader path to everything the bracket above draws, and
+ * the only place the region's site name and every tag renders as running text.
  */
 function RegionBracketDetail({ data }: { data: RegionData }) {
   const sites = SITE_MAP[data.region.toLowerCase()] ?? { r1a: "", r1b: "", r1c: "", r1d: "" };
 
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-      <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-        <Tag>{data.region}</Tag>
-        <span>Regional site:</span>
-        <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{data.site}</span>
-        <span>&middot;</span>
-        <span>Advancing:</span>
-        <span style={{ fontWeight: 600, color: "var(--c97-positive)" }}>{data.winner}</span>
-      </div>
+    <div className="mm-stack">
+      <p className="mm-meta">
+        <Tag>{data.region}</Tag> Regional site: <span className="mm-strong">{data.site}</span> &middot;
+        Advancing: <span className="mm-strong" style={{ color: "var(--c97-positive)" }}>{data.winner}</span>
+      </p>
 
-      <div className="grid xl:grid-cols-[1.2fr_1fr_0.84fr]" style={{ gap: "var(--c97-sp-2)" }}>
-        <div className="c97-panel">
+      <div className="mm-rounds">
+        <div>
           <RoundLabel>Round 1</RoundLabel>
           <SiteLabel>{sites.r1a}</SiteLabel>
           {data.r1.slice(0, 2).map((matchup, index) => (
@@ -595,7 +512,7 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
           ))}
         </div>
 
-        <div className="c97-panel">
+        <div>
           <RoundLabel>Round 2</RoundLabel>
           {data.r2.map((matchup, index) => (
             <Matchup2 key={`r2-${index}`} {...matchup} />
@@ -606,10 +523,10 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
           ))}
         </div>
 
-        <div className="c97-panel">
+        <div>
           <RoundLabel>Elite Eight</RoundLabel>
           <Matchup2 t1={data.e8.t1} t2={data.e8.t2} w={data.e8.w} tags={["Final Four"]} />
-          <NoteBox>{data.e8.note}</NoteBox>
+          <p className="mm-body mm-note">{data.e8.note}</p>
         </div>
       </div>
     </div>
@@ -656,87 +573,66 @@ function PicksSection({ initialPick }: { initialPick: string | null }) {
   };
 
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
+    <div className="mm-stack">
       {(["tz", "analytics", "confirm"] as const).map((group) => {
         const meta = groupMeta[group];
         const items = PICKS.filter((pick) => pick.group === group);
 
         return (
-          <div key={group} className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
+          <div key={group} className="mm-stack-tight">
             <div>
-              <p className="c97-kicker" style={{ color: meta.tone }}>
+              <p className="mm-label" style={{ color: meta.tone }}>
                 {meta.label}
               </p>
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
-                {meta.sublabel}
-              </p>
+              <p className="mm-meta">{meta.sublabel}</p>
             </div>
 
-            {items.map((item, index) => {
-              const id = `${group}-${index}`;
-              const isOpen = expanded === id;
+            <ul className="mm-picks">
+              {items.map((item, index) => {
+                const id = `${group}-${index}`;
+                const isOpen = expanded === id;
 
-              return (
-                <div
-                  key={id}
-                  className="c97-panel"
-                  style={{ border: isOpen ? "1px solid var(--c97-ink-2)" : "1px solid transparent" }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => togglePick(id, isOpen)}
-                    className="mm-pick-toggle flex flex-wrap items-start" style={{ gap: "var(--c97-sp-1)" }}
-                    aria-expanded={isOpen}
-                    aria-controls={`pick-body-${id}`}
-                  >
-                    <Tag color={BADGE_TONE[item.badge]}>{item.badge}</Tag>
-                    <Tag>{item.round}</Tag>
-                    <Tag>{item.region}</Tag>
-                    <span style={{ minWidth: 0, flex: "1 1 0%", fontWeight: 600 }}>{item.pick}</span>
-                    <span aria-hidden="true" style={{ color: "var(--c97-ink-2)" }}>
-                      {isOpen ? "▾" : "▸"}
-                    </span>
-                  </button>
-
-                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
-                    {item.reason}
-                  </p>
-
-                  {isOpen ? (
-                    <p
-                      id={`pick-body-${id}`}
-                      className="c97-prose"
-                      style={{
-                        fontSize: "var(--c97-fs-small)",
-                        marginTop: "var(--c97-sp-3)",
-                        paddingTop: "var(--c97-sp-3)",
-                        borderTop: "1px solid var(--c97-rule)",
-                      }}
+                return (
+                  <li key={id} className="mm-pick" data-open={isOpen ? "true" : undefined}>
+                    <button
+                      type="button"
+                      onClick={() => togglePick(id, isOpen)}
+                      className="mm-pick-toggle"
+                      aria-expanded={isOpen}
+                      aria-controls={`pick-body-${id}`}
                     >
-                      {item.body}
-                    </p>
-                  ) : null}
-                </div>
-              );
-            })}
+                      <Tag color={BADGE_TONE[item.badge]}>{item.badge}</Tag>
+                      <Tag>{item.round}</Tag>
+                      <Tag>{item.region}</Tag>
+                      <span className="mm-pick-name">{item.pick}</span>
+                      <span aria-hidden="true" className="mm-muted">
+                        {isOpen ? "▾" : "▸"}
+                      </span>
+                    </button>
+
+                    <p className="mm-body">{item.reason}</p>
+
+                    {isOpen ? (
+                      <p id={`pick-body-${id}`} className="mm-body mm-note">
+                        {item.body}
+                      </p>
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         );
       })}
 
-      <div className="c97-panel">
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
-          Legend
-        </p>
-        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-2)" }}>
-          {(["FLIP", "UPGRADE", "DOWNGRADE", "CONFIRM", "WATCH", "LOCKED"] as const).map((badge) => (
-            <div key={badge} className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-              <Tag color={BADGE_TONE[badge]}>{badge}</Tag>
-              <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                {LEGEND_COPY[badge]}
-              </span>
-            </div>
-          ))}
-        </div>
+      <div className="mm-legend">
+        <p className="mm-label">Legend</p>
+        {(["FLIP", "UPGRADE", "DOWNGRADE", "CONFIRM", "WATCH", "LOCKED"] as const).map((badge) => (
+          <span key={badge} className="mm-legend-item">
+            <Tag color={BADGE_TONE[badge]}>{badge}</Tag>
+            <span className="mm-meta">{LEGEND_COPY[badge]}</span>
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -775,13 +671,9 @@ export function MarchMadnessClient({
   const [analytics, setAnalytics] = useState(initialState.analytics);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
 
-  const lead = PROJECT_PRESS[MARCH_MADNESS_ROUTE].lead;
   const articleHref = `/writing/${MARCH_MADNESS_ARTICLE_SLUG}`;
-  const regionLayout = regionBracket(BRACKET[region]);
-  const upsetsInRegion = regionLayout.games.filter((game) => game.isUpset).length;
   const championshipWinner = FINAL_FOUR_SUMMARY[FINAL_FOUR_SUMMARY.length - 1]?.winner ?? null;
   const championRanking = RANKINGS.find((ranking) => ranking.team === championshipWinner) ?? null;
-  const flipCount = PICKS.filter((pick) => pick.badge === "FLIP").length;
 
   const updateRouteState = (
     nextState: Partial<MarchMadnessSearchState>,
@@ -830,249 +722,138 @@ export function MarchMadnessClient({
   };
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="March Madness Bracket Analysis"
-        standfirst="I built this bracket on the consensus ratings and then moved picks for the two things seed lines miss, the travel penalty a team pays when it plays across time zones and the seeds the committee got wrong."
-        meta={
-          <>
-            {`2026 NCAA Tournament · ${MARCH_MADNESS_UPDATED_LABEL}`}
-            {/* A returning reader's way past the introduction. It sits in the
-                as-of line because that is the last slot above the readouts,
-                which is what keeps it in the first phone screen. */}
-            <span className="block">
-              <Link
-                href={buildMarchMadnessHref({ view, region, analytics, hash: "analysis-workspace" })}
-                className="c97-btn-ghost"
-              >
-                Open the analysis workspace
-              </Link>
-            </span>
-          </>
-        }
-        readouts={[
-          {
-            label: "Champion pick",
-            value: <span className="c97-serif">{championshipWinner ?? "TBD"}</span>,
-            detail: championRanking ? `${championRanking.odds} title odds` : undefined,
-          },
-          {
-            label: "Time-zone flips",
-            value: `${flipCount}`,
-            detail: "picks reversed by the travel-penalty model",
-          },
-          {
-            label: `Upsets, ${REGION_LABELS[region]} region`,
-            value: `${upsetsInRegion}`,
-            detail: `of ${regionLayout.games.length} matchups drawn`,
-          },
-        ]}
-      >
-        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-4)" }}>
-          <Link
-            href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
-            className="c97-btn c97-offset"
-          >
-            See best upsets
-          </Link>
-          <Link
-            href={buildMarchMadnessHref({ view, region, analytics, hash: "why-this-model-is-different" })}
-            className="c97-btn-ghost"
-          >
-            How the model works
-          </Link>
-          <Link href={articleHref} className="c97-btn-ghost">
-            Read the companion article
-          </Link>
-        </div>
-
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <div className="mm-bracket-scroll" role="region" aria-label="Region bracket (scrolls sideways)" tabIndex={0}>
-            <RegionBracket data={BRACKET[region]} />
-          </div>
-        </div>
-      </Catalog97ProjectHero>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
-          <p className="c97-kicker">
-            National champion pick
+    <div className="mm-root">
+      <div className="c97-shell c97-frame mm-page">
+        <header className="mm-head">
+          <p className="mm-kicker">{`2026 NCAA Tournament · ${MARCH_MADNESS_UPDATED_LABEL}`}</p>
+          <h1 className="mm-title">March Madness Bracket Analysis</h1>
+          <p className="mm-standfirst">
+            I built this bracket on the consensus ratings and then moved picks for the two things
+            seed lines miss, the travel penalty a team pays when it plays across time zones and the
+            seeds the committee got wrong.
           </p>
-          <h2 className="c97-serif c97-h2">{championshipWinner ?? "TBD"}</h2>
-          <p className="c97-prose">{MARCH_MADNESS_RESULT_NOTE}</p>
-          <p className="c97-prose">
-            I thought {championshipWinner} was the cleanest title pick in the field. The team ranked
-            first across the blended metric set on this page, and it carried zero total travel
-            penalty through every round, the same edge the Final Four summary below tracks.
-            {championRanking
-              ? ` Its record sat at ${championRanking.record} going in, with the best adjusted defensive efficiency in the bracket at 90.8, and that is a big part of why the championship odds landed at ${championRanking.odds}.`
-              : null}
-          </p>
-          <Link href={`/writing/${MARCH_MADNESS_POSTMORTEM_SLUG}`} className="c97-btn-ghost self-start">
-            Read the postmortem
-          </Link>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-          <SectionIntro
-            eyebrow="Against the seed line"
-            title="Top upset picks for the 2026 March Madness bracket"
-            description="These are the three upset calls I would point to first, from one pure time-zone flip, to one seed-line correction, to one late-bracket upset built on travel math."
-          />
-          <div className="c97-columns">
-            {TOP_UPSET_PICKS.map((card) => (
-              <EditorialLinkCard key={card.title} card={card} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="why-this-model-is-different"
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-      >
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-          <SectionIntro
-            eyebrow="The method"
-            title="Why this model is different"
-            description="Most brackets stop at seed lines and generic power ratings. This one blends consensus analytics with committee errors, roster context, and travel penalties that change game-day output."
-          />
-          <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-            {MODEL_PILLARS.map((card) => (
-              <EditorialLinkCard key={card.title} card={card} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
-          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <div>
-              <p className="c97-kicker" style={{ margin: 0 }}>
-                The short version
-              </p>
-              <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
-                The bracket in two lines
-              </h2>
-            </div>
-            <Link href={articleHref} className="c97-btn-ghost">
-              Read the written breakdown
+          <p className="mm-actions">
+            <Link
+              href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
+              className="c97-btn"
+            >
+              See best upsets
             </Link>
-          </div>
-
-          <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="c97-panel">
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
-                Bracket thesis
-              </p>
-              <p className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-3)" }}>
-                &ldquo;{MARCH_MADNESS_THESIS}&rdquo;
-              </p>
-              <p className="c97-prose">{BRACKET_THESIS_SHARE}</p>
-            </div>
-
-            <div className="c97-panel">
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)", color: "var(--c97-negative)" }}>
-                Best upset
-              </p>
-              <p className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-3)" }}>
-                UCF over UCLA
-              </p>
-              <p className="c97-prose">{BEST_UPSET_SHARE}</p>
-              <Link
-                href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
-                className="c97-btn-ghost"
-                style={{ marginTop: "var(--c97-sp-3)" }}
-              >
-                Open the picks board
-              </Link>
-            </div>
-          </div>
-
-          <div
-            className="flex flex-wrap items-center"
-            style={{ gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
-          >
-            <button type="button" onClick={handleCopyLink} className="c97-btn-ghost">
-              Copy current view link
-            </button>
-            <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", wordBreak: "break-all" }}>
-              {copyStatus === "idle" ? currentHref : null}
-              {/* The live region holds only the copy result, so a view change never announces the URL. */}
-              <span role="status" aria-live="polite">
-                {copyStatus === "copied"
-                  ? "Deep link copied."
-                  : copyStatus === "error"
-                    ? "Clipboard blocked. Copy the URL from the address bar."
-                    : null}
-              </span>
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-          <p className="c97-kicker">
-            Final Four &middot; Indianapolis, IN (ET)
+            <Link
+              href={buildMarchMadnessHref({ view, region, analytics, hash: "why-this-model-is-different" })}
+              className="mm-link"
+            >
+              How the model works
+            </Link>
+            <Link href={articleHref} className="mm-link">
+              Read the companion article
+            </Link>
+            <Link
+              href={buildMarchMadnessHref({ view, region, analytics, hash: "analysis-workspace" })}
+              className="mm-link"
+            >
+              Open the analysis workspace
+            </Link>
           </p>
-          <div className="c97-columns">
-            {FINAL_FOUR_SUMMARY.map((item) => (
-              <div key={item.label} className="c97-panel">
-                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                  {item.label}
-                </p>
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  {item.matchup}
-                </p>
-                <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-positive)" }}>
-                  {item.winner}
-                </p>
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  {item.note}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </header>
 
-      <section
-        id="analysis-workspace"
-        className="c97-band c97-sheet"
-        data-c97-surface="bone"
-        data-seam="deckle"
-      >
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-          <h2 className="c97-poster-sm">The analysis workspace</h2>
-          <TabBar items={MAIN_TAB_ITEMS} active={view} onChange={(nextView) => updateRouteState({ view: nextView })} label="March Madness primary sections" />
-
-          {view === "bracket" ? (
-            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
+        <div className="mm-lead">
+          <section className="mm-bracket-block" aria-labelledby="mm-region-heading">
+            <div className="mm-bracket-bar">
+              <h2 id="mm-region-heading" className="mm-h2">
+                {REGION_LABELS[region]} region
+              </h2>
               <TabBar
                 items={REGION_TAB_ITEMS}
                 active={region}
                 onChange={(nextRegion) => updateRouteState({ region: nextRegion })}
                 label="March Madness regions"
               />
-              <RegionBracketDetail data={BRACKET[region]} />
             </div>
-          ) : null}
+            <div className="mm-bracket-scroll" role="region" aria-label="Region bracket (scrolls sideways)" tabIndex={0}>
+              <RegionBracket data={BRACKET[region]} />
+            </div>
+          </section>
 
-          {view === "picks" ? (
-            <div>
-              <PicksSection initialPick={initialPick} />
-            </div>
-          ) : null}
+          <aside className="mm-column" aria-label="Champion pick and top upsets">
+            <section className="mm-stack-tight" aria-labelledby="mm-champion-heading">
+              <p className="mm-label">Final Four &middot; Indianapolis, IN (ET)</p>
+              <h2 id="mm-champion-heading" className="mm-h2">
+                Champion pick, {championshipWinner ?? "TBD"}
+                {championRanking ? (
+                  <span className="mm-num mm-muted mm-odds"> {championRanking.odds} title odds</span>
+                ) : null}
+              </h2>
+              <ol className="mm-rows">
+                {FINAL_FOUR_SUMMARY.map((item) => (
+                  <li key={item.label} className="mm-ff-row">
+                    <span className="mm-meta">{item.label}</span>
+                    <span className="mm-body">
+                      {item.matchup}, <span className="mm-strong">{item.winner}</span>
+                    </span>
+                    <span className="mm-meta">{item.note}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="mm-body">
+                I thought {championshipWinner} was the cleanest title pick in the field. The team
+                ranked first across the blended metric set on this page and carried zero total
+                travel penalty through every round
+                {championRanking
+                  ? `, with a ${championRanking.record} record going in and the best adjusted defensive efficiency in the bracket at 90.8.`
+                  : "."}
+              </p>
+              <p className="mm-body mm-result">{MARCH_MADNESS_RESULT_NOTE}</p>
+              <Link href={`/writing/${MARCH_MADNESS_POSTMORTEM_SLUG}`} className="mm-link">
+                Read the postmortem
+              </Link>
+            </section>
+
+            <section className="mm-stack-tight" aria-labelledby="mm-upsets-heading">
+              <h2 id="mm-upsets-heading" className="mm-h2">
+                Top upset picks
+              </h2>
+              <ul className="mm-upsets">
+                {TOP_UPSET_PICKS.map((card) => (
+                  <UpsetCard key={card.title} card={card} />
+                ))}
+              </ul>
+            </section>
+          </aside>
+        </div>
+
+        <section id="analysis-workspace" className="mm-workspace" aria-labelledby="mm-workspace-heading">
+          <div className="mm-workspace-bar">
+            <h2 id="mm-workspace-heading" className="mm-h2">
+              The analysis workspace
+            </h2>
+            <TabBar
+              items={MAIN_TAB_ITEMS}
+              active={view}
+              onChange={(nextView) => updateRouteState({ view: nextView })}
+              label="March Madness primary sections"
+            />
+            <p className="mm-copy">
+              <button type="button" onClick={handleCopyLink} className="c97-btn-ghost">
+                Copy current view link
+              </button>
+              {/* The live region holds only the copy result, so a view change never announces the URL. */}
+              <span role="status" aria-live="polite" className="mm-meta">
+                {copyStatus === "copied"
+                  ? "Deep link copied."
+                  : copyStatus === "error"
+                    ? "Clipboard blocked. Copy the URL from the address bar."
+                    : null}
+              </span>
+            </p>
+          </div>
+
+          {view === "bracket" ? <RegionBracketDetail data={BRACKET[region]} /> : null}
+
+          {view === "picks" ? <PicksSection initialPick={initialPick} /> : null}
 
           {view === "analytics" ? (
-            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
+            <div className="mm-stack">
               <TabBar
                 items={ANALYTICS_TAB_ITEMS}
                 active={analytics}
@@ -1085,51 +866,53 @@ export function MarchMadnessClient({
             </div>
           ) : null}
 
-          {view === "time-zones" ? (
-            <div>
-              <TZSection />
-            </div>
-          ) : null}
-        </div>
-      </section>
+          {view === "time-zones" ? <TZSection /> : null}
+        </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-          <section aria-labelledby="march-madness-questions">
-            <SectionIntro
-              eyebrow="Method questions"
-              title="March Madness bracket questions"
-              description="The short version of how the model reaches its picks and where it differs from a seed-only bracket."
-              titleId="march-madness-questions"
-            />
-            <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-5)" }}>
-              {MARCH_MADNESS_FAQ.map((item) => (
-                <div key={item.question} className="c97-panel">
-                  <h3 className="c97-h3" style={{ fontWeight: 600, marginBottom: "var(--c97-sp-2)" }}>
-                    {item.question}
-                  </h3>
-                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <div
-            className="flex flex-wrap items-center justify-between"
-            style={{ gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
-          >
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
-              Sources: KenPom &middot; ESPN BPI &middot; T-Rank &middot; NCAA NET &middot; Evan Miya &middot; SOR
-              &middot; WAB &middot; VSIN Lines
-            </p>
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
-              2026 NCAA Tournament &middot; Isaac Vazquez
-            </p>
+        <section id="why-this-model-is-different" className="mm-prose" aria-labelledby="mm-method-heading">
+          <h2 id="mm-method-heading" className="mm-h2">
+            Why this model is different
+          </h2>
+          <p className="mm-body">
+            Most brackets stop at seed lines and generic power ratings. This one blends consensus
+            analytics with committee errors, roster context, and travel penalties that change
+            game-day output.
+          </p>
+          <div className="mm-prose-grid">
+            {MODEL_PILLARS.map((card) => (
+              <div key={card.title} className="mm-stack-tight">
+                <h3 className="mm-h3">{card.title}</h3>
+                <p className="mm-body">{card.reason}</p>
+                <p className="mm-meta">
+                  {card.note} ·{" "}
+                  <Link href={card.href} className="mm-link">
+                    {card.cta}
+                  </Link>
+                </p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
-    </>
+        </section>
+
+        <section className="mm-prose" aria-labelledby="march-madness-questions">
+          <h2 id="march-madness-questions" className="mm-h2">
+            March Madness bracket questions
+          </h2>
+          <div className="mm-prose-grid">
+            {MARCH_MADNESS_FAQ.map((item) => (
+              <div key={item.question} className="mm-stack-tight">
+                <h3 className="mm-h3">{item.question}</h3>
+                <p className="mm-body">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <p className="mm-sources">
+          Sources: KenPom &middot; ESPN BPI &middot; T-Rank &middot; NCAA NET &middot; Evan Miya &middot; SOR
+          &middot; WAB &middot; VSIN Lines
+        </p>
+      </div>
+    </div>
   );
 }
