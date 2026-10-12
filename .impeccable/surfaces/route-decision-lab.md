@@ -11,7 +11,7 @@ Scope. The `/decision-lab` route, rendered by `src/app/decision-lab/decision-lab
 
 Visitor mode. Operate. The visitor picks a preset or moves the four sliders and reads the call, ship, test, or hold, and why.
 
-Audience. A product team member or a reviewer who wants to see the weights and the gates behind a call rather than a single score.
+Audience. A product team member or a reviewer who wants to see the weights and the gates behind a call as well as its score.
 
 Visual world. Since 2026-10-12 the route owns its design inside the site frame (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Calculator), so judge it against the "Project routes" section of `DESIGN_CHECKLIST.md`. The header, the footer, and the build-note strip are the shell's.
 
