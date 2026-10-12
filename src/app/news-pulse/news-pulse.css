@@ -272,6 +272,15 @@
   border-top: 1px solid var(--np-rule);
 }
 
+/* Block links padded so even a one-line headline is a 44px target. */
+.np-lead-outlets a,
+.np-more-headline,
+.np-cluster-headlines a {
+  display: block;
+  min-height: 44px;
+  padding-block: 10px;
+}
+
 .np-more-headline {
   font-family: var(--c97-font-display);
   font-size: 1.125rem;
