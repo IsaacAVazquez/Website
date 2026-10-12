@@ -118,7 +118,7 @@ export function FrontierModelsClient({
   const liveFactsNote = snapshot.liveFacts
     ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")} · ${snapshot.liveFacts.updated} changed by the check, ${snapshot.liveFacts.confirmed} matched, ${snapshot.liveFacts.curatedOnly} not found in either catalog`
     : "";
-  const asOfLine = `Facts as of ${formatLongUtcDate(asOf)} · snapshot built ${updatedAt}${liveFactsNote}`;
+  const asOfLine = `Snapshot built ${updatedAt}${liveFactsNote}`;
 
   return (
     <div className="fm-root">
@@ -134,9 +134,8 @@ export function FrontierModelsClient({
           </p>
           <p className="fm-asof">{asOfLine}</p>
           <p className="fm-disclosure">
-            {snapshot.verified
-              ? "Curated by hand, with each model's row linking to its provider's documentation."
-              : "Curated by hand, with each model's row linking to its provider's documentation, and the independent review is still pending."}{" "}
+            {/* The disclosure keeps the original meta line's words, as one sentence. */}
+            {`Curated by hand, facts as of ${formatLongUtcDate(asOf)}${snapshot.verified ? "" : ", independent review pending"}.`}{" "}
             <a href={`#${SPEC_SHEET_ID}`} className="fm-jump">
               Jump to the spec sheet
             </a>

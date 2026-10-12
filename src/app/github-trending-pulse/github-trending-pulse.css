@@ -278,6 +278,11 @@
   background: var(--gt-add);
 }
 
+/* The strip's grey, for every language without a colour of its own. */
+.gt-root .gt-key--other {
+  background: var(--gt-other);
+}
+
 /* Bars */
 
 .gt-track {

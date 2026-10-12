@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink, RotateCcw, Search, X } from "lucide-react";
 import { BrandGithub } from "@/components/ui/ServerIcons";
@@ -141,6 +141,27 @@ function replaceHref(href: string) {
   window.history.replaceState(null, "", href);
 }
 
+const WIDE_MAP_QUERY = "(min-width: 960px)";
+
+function subscribeWideMap(onChange: () => void) {
+  const query = window.matchMedia(WIDE_MAP_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+/**
+ * Whether the window is wide enough for the map's two-axis grid. The server
+ * and the first hydration pass read false, which is safe because the Map view
+ * only renders after a click.
+ */
+function useWideMap(): boolean {
+  return useSyncExternalStore(
+    subscribeWideMap,
+    () => window.matchMedia(WIDE_MAP_QUERY).matches,
+    () => false
+  );
+}
+
 /** Opening a tool's drawer is the one change that gets a history entry, so Back closes it. */
 function pushHref(href: string) {
   if (href === `${window.location.pathname}${window.location.search}`) return;
@@ -235,6 +256,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   }
 
   const [view, setView] = useState<"list" | "map">("list");
+  const wideMap = useWideMap();
   const handleSelectTool = (toolId: string) =>
     pushHref(buildAiDevToolsHref({ ...state, query, selectedToolId: toolId }));
   const surfaceMapProps = {
@@ -316,10 +338,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
               {filteredTools.length} of {aiDevTools.length} tools shown
             </p>
             <p className="adt-disclosure">
-              Curated by hand, figures as of {updatedAt}
-              {AI_DEV_TOOLS_VERIFIED
-                ? "."
-                : ", not yet independently verified, so treat them as directional."}
+              {`Curated by hand · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so directional"}`}
             </p>
             <div className="adt-view">
               <FilterSelect
@@ -355,9 +374,8 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
           ) : (
             <div className="adt-map">
               {/* The two-axis grid needs about 960px, so a narrower screen gets the
-                  same map as a list grouped by category, and the stylesheet shows one. */}
-              <SurfaceMap layout="grid" {...surfaceMapProps} />
-              <SurfaceMap layout="list" {...surfaceMapProps} />
+                  same map as a list grouped by category. Only one layout mounts. */}
+              <SurfaceMap layout={wideMap ? "grid" : "list"} {...surfaceMapProps} />
             </div>
           )}
         </section>

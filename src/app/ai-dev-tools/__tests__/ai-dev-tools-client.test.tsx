@@ -148,9 +148,28 @@ describe("AiDevToolsClient", () => {
     expect(within(views).getByRole("button", { name: "List" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.queryByRole("table", { name: /by category and pricing model/i })).toBeNull();
 
+    // The jest matchMedia mock reports a narrow window, so the map mounts as
+    // the stacked list, and only that one layout mounts.
     fireEvent.click(within(views).getByRole("button", { name: "Map" }));
     expect(within(views).getByRole("button", { name: "Map" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("table", { name: /by category and pricing model/i })).toBeInTheDocument();
+    expect(screen.queryByRole("table", { name: /by category and pricing model/i })).toBeNull();
+    expect(screen.getAllByRole("button", { name: /^Cursor/ })).toHaveLength(1);
+  });
+
+  it("mounts the map's two-axis grid alone on a wide window", () => {
+    const original = window.matchMedia;
+    window.matchMedia = ((query: string) => ({
+      ...original(query),
+      matches: query === "(min-width: 960px)",
+    })) as typeof window.matchMedia;
+    try {
+      render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+      fireEvent.click(screen.getByRole("button", { name: "Map" }));
+      expect(screen.getByRole("table", { name: /by category and pricing model/i })).toBeInTheDocument();
+      expect(screen.getAllByRole("button", { name: /^Cursor/ })).toHaveLength(1);
+    } finally {
+      window.matchMedia = original;
+    }
   });
 
   it("opens no drawer until a tool is picked, then names it in the URL", () => {

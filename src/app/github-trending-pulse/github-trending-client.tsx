@@ -288,7 +288,9 @@ function LanguageStrip({
 }) {
   const languages = languageShares(repos.map(toLogRepo));
   const leader = languages[0];
-  const count = repos.length;
+  // The shares count only repositories that gained stars this week, so the caption names that base.
+  const count = repos.filter((repo) => repo.weeklyStars > 0).length;
+  const hasOther = languages.some((entry) => !(entry.language in LANGUAGE_COLORS));
 
   return (
     <div className="gt-strip-row">
@@ -321,10 +323,17 @@ function LanguageStrip({
         {leader ? (
           <p className="gt-caption">
             {leader.language} has {Math.round(leader.share * 100)}% of this week&apos;s star
-            gain across the {count} {count === 1 ? "repository" : "repositories"} in this view.
+            gain, counted across the {count} {count === 1 ? "repository" : "repositories"} in this
+            view that gained stars.
           </p>
         ) : null}
         <p className="gt-legend">
+          {hasOther ? (
+            <span>
+              <span className="gt-key gt-key--other" aria-hidden="true" />
+              Other languages
+            </span>
+          ) : null}
           <span>
             <span className="gt-key" data-status="measured" aria-hidden="true" />
             {windowDays}d measured

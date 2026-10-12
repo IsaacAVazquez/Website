@@ -485,20 +485,6 @@
   padding-top: var(--c97-sp-2);
 }
 
-.c97-surface-map-sheet[data-layout="list"] {
-  display: none;
-}
-
-@media print, screen and (max-width: 959px) {
-  .c97-surface-map-sheet[data-layout="grid"] {
-    display: none;
-  }
-
-  .c97-surface-map-sheet[data-layout="list"] {
-    display: block;
-  }
-}
-
 .c97-surface-map-row-header,
 .c97-surface-map-list-title {
   font-size: 0.875rem;

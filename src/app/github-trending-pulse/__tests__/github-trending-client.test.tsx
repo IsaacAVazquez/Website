@@ -170,6 +170,28 @@ describe("GitHubTrendingClient", () => {
     );
   });
 
+  it("counts only the repositories that gained stars in the strip's base and names the grey", () => {
+    const flat = { ...repo, id: 43, fullName: "openai/flat", weeklyStars: 0 };
+    const other = { ...repo, id: 44, fullName: "openai/kotlin", primaryLanguage: "Kotlin", weeklyStars: 40 };
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          repositories: [repo, flat, other],
+          languages: [segment({ repoIds: [42, 43, 44], repoCount: 3 })],
+        }}
+      />
+    );
+
+    expect(
+      screen.getByText(
+        "TypeScript has 75% of this week's star gain, counted across the 2 repositories in this view that gained stars."
+      )
+    ).toBeVisible();
+    expect(screen.getByText("Other languages")).toBeVisible();
+  });
+
   it("folds a long table after 25 rows and opens the rest on one button", () => {
     const repos = Array.from({ length: 30 }, (_, index) => ({
       ...repo,
@@ -205,7 +227,7 @@ describe("GitHubTrendingClient", () => {
     // The language strip's caption replaced the "Leading language" readout.
     expect(
       screen.getByText(
-        "TypeScript has 100% of this week's star gain across the 1 repository in this view."
+        "TypeScript has 100% of this week's star gain, counted across the 1 repository in this view that gained stars."
       )
     ).toBeVisible();
   });
