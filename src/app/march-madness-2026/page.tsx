@@ -114,7 +114,6 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
       />
 
       <MarchMadnessClient
-        key={`${initialState.view}-${initialState.region}-${initialState.analytics}`}
         initialState={initialState}
         initialPick={typeof resolvedSearchParams.pick === "string" ? resolvedSearchParams.pick : null}
       />

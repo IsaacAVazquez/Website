@@ -462,12 +462,6 @@
   gap: var(--c97-sp-2);
 }
 
-@media screen and (min-width: 700px) and (max-width: 1099px) {
-  .ea-drift {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 .ea-card {
   display: flex;
   flex-direction: column;

@@ -670,6 +670,21 @@ export function MarchMadnessClient({
   const [region, setRegion] = useState(initialState.region);
   const [analytics, setAnalytics] = useState(initialState.analytics);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  // A link or the back button can change the URL under the client, so its
+  // state follows the server's reading. The page used to remount the whole
+  // client on every change, which dropped keyboard focus off the tab that
+  // made it.
+  const [synced, setSynced] = useState(initialState);
+  if (
+    synced.view !== initialState.view ||
+    synced.region !== initialState.region ||
+    synced.analytics !== initialState.analytics
+  ) {
+    setSynced(initialState);
+    setView(initialState.view);
+    setRegion(initialState.region);
+    setAnalytics(initialState.analytics);
+  }
 
   const articleHref = `/writing/${MARCH_MADNESS_ARTICLE_SLUG}`;
   const championshipWinner = FINAL_FOUR_SUMMARY[FINAL_FOUR_SUMMARY.length - 1]?.winner ?? null;
