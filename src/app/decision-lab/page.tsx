@@ -8,7 +8,7 @@ export const metadata = constructMetadata({
   description:
     "Product-bet triage tool for scoring impact, confidence, effort, and reversibility before calling ship, test, or hold.",
   canonicalUrl: "/decision-lab",
-  dateModified: "2026-10-09",
+  dateModified: "2026-10-12",
 });
 
 interface DecisionLabPageProps {
