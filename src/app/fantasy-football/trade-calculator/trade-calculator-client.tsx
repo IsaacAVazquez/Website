@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useMemo, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
-import { FantasyRouteHeader } from "@/components/fantasy/FantasyRouteHeader";
+import { FantasyRouteHeader, FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { useFantasyTradeCalculator } from "@/hooks/useFantasyTradeCalculator";
 import { FANTASY_SCORING_LABELS } from "@/lib/fantasy";
@@ -137,15 +137,19 @@ function LeagueSettings({
         <p className="text-sm text-[var(--c97-ink)] lg:hidden" style={{ marginTop: "var(--c97-sp-1)" }}>
           {FANTASY_SCORING_LABELS[state.scoring]}, {state.teams} teams, {state.rosterSize} roster spots, {lineupLabel}
         </p>
-        <button
-          type="button"
-          className="c97-btn-ghost lg:hidden"
-          aria-expanded={open}
-          aria-controls={fieldsId}
-          onClick={onToggle}
-        >
-          {open ? "Hide league settings" : "Change league settings"}
-        </button>
+        {/* .c97-btn-ghost sets display outside any layer and beat lg:hidden on
+            the button, so the wrapper carries the breakpoint. */}
+        <div className="lg:hidden">
+          <button
+            type="button"
+            className="c97-btn-ghost"
+            aria-expanded={open}
+            aria-controls={fieldsId}
+            onClick={onToggle}
+          >
+            {open ? "Hide league settings" : "Change league settings"}
+          </button>
+        </div>
       </div>
 
       <div id={fieldsId} className={`${open ? "" : "hidden "}lg:block`}>
@@ -401,15 +405,16 @@ export function TradeCalculatorClient() {
         title="Build a Trade Offer"
         lead="Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin."
         freshness={
-          <>
-            <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
-            <span aria-hidden="true"> · </span>
-            <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
-            <span aria-hidden="true"> · </span>
-            <span style={{ color: sourceFreshness === "stale" ? "var(--c97-negative)" : undefined }}>
-              {sourceFreshness} sources
-            </span>
-          </>
+          <FreshnessParts
+            parts={[
+              { label: `Expert board ${formatUpdatedAt(snapshot?.upstreamUpdatedAt)}` },
+              { label: `Draft market ${formatUpdatedAt(snapshot?.adpSource?.asOf)}` },
+              {
+                label: `${sourceFreshness} sources`,
+                tone: sourceFreshness === "stale" ? "negative" : undefined,
+              },
+            ]}
+          />
         }
         aside={
           <>
