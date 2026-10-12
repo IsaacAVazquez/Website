@@ -174,15 +174,15 @@ function StationFinder({
   }
 
   return (
-    <div className="c97-transit-finder" data-c97-surface="paper">
-      <label className="c97-kicker" htmlFor="transit-station-search">
+    <div className="c97-transit-finder">
+      <label className="bt-kicker" htmlFor="transit-station-search">
         Find a station
       </label>
       <input
         ref={inputRef}
         id="transit-station-search"
         type="search"
-        className="c97-field"
+        className="bt-field"
         autoComplete="off"
         placeholder="Station or city"
         value={query}
@@ -192,8 +192,7 @@ function StationFinder({
         <button
           ref={toggleRef}
           type="button"
-          className="c97-btn-ghost"
-          style={{ justifySelf: "start" }}
+          className="bt-text-button"
           aria-expanded={showAll}
           onClick={() => setShowAll((open) => !open)}
         >
@@ -212,10 +211,10 @@ function StationFinder({
                 className="c97-transit-station-row"
               >
                 <span className="min-w-0">
-                  <span className="block c97-serif truncate" style={{ fontWeight: 600 }}>
+                  <span className="block truncate bt-strong">
                     {station.name}
                   </span>
-                  <span className="block text-sm" style={{ color: "var(--c97-ink-2)" }}>
+                  <span className="block bt-muted bt-small">
                     {station.city || "Bay Area"}
                   </span>
                 </span>
@@ -238,7 +237,7 @@ function StationFinder({
           ))}
         </ul>
       ) : needle ? (
-        <p className="c97-meta" role="status">
+        <p className="bt-muted bt-small" role="status">
           No station matches that search.
         </p>
       ) : null}
@@ -282,20 +281,20 @@ function PlatformBoard({
     board && now !== null ? upcomingDepartures(board, now) : board?.departures ?? [];
 
   return (
-    <div className="c97-transit-board" data-c97-surface="espresso">
+    <div className="c97-transit-board">
       {finder}
-      {/* Padded only, so the espresso surface is the board itself. */}
+      {/* The display over the platform, dark in both themes. */}
       <div className="c97-transit-board-inner">
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next trains</p>
+        <p className="bt-board-kicker">Next trains</p>
         {!station ? (
-          <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
+          <p className="bt-board-note">
             No station is available in the current snapshot.
           </p>
         ) : (
           <>
-            <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-1)" }}>{station.name}</h2>
+            <h2 className="bt-board-station">{station.name}</h2>
             {board?.generatedAt ? (
-              <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>
+              <p className="bt-board-note">
                 Read from BART {formatUpdatedAt(board.generatedAt)}
               </p>
             ) : null}
@@ -308,17 +307,17 @@ function PlatformBoard({
             ) : null}
 
             {isLoading ? (
-              <p className="text-sm" role="status" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
+              <p className="bt-board-note" role="status">
                 Loading departures…
               </p>
             ) : null}
 
             {error ? (
               <div role="alert">
-                <p className="text-sm leading-6" style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-negative)" }}>
+                <p className="bt-board-error">
                   {error}
                 </p>
-                <button type="button" className="c97-btn-ghost" onClick={onRetry}>
+                <button type="button" className="bt-board-button" onClick={onRetry}>
                   Try again
                 </button>
               </div>
@@ -348,7 +347,7 @@ function PlatformBoard({
                           aria-hidden="true"
                         />
                         <span className="c97-transit-departure-dest">{departure.destination}</span>
-                        <span className="c97-mono c97-transit-departure-min">
+                        <span className="c97-transit-departure-min">
                           {formatMinutes(departure.minutes)}
                         </span>
                         <span className="c97-transit-departure-detail">
@@ -364,7 +363,7 @@ function PlatformBoard({
                   ))}
                 </ul>
               ) : (
-                <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
+                <p className="bt-board-note">
                   {departuresStatus === "fresh" && board.departures.length === 0
                     ? `No trains are scheduled at ${station.name} right now.`
                     : `No upcoming departures in this snapshot for ${station.name}.`}
@@ -452,7 +451,7 @@ export function TransitSignature({
 
   return (
     <div className="c97-transit-signature">
-      <div className="c97-transit-map" data-c97-surface="paper">
+      <div className="c97-transit-map">
         <div className="c97-transit-map-head">
           <div className="c97-transit-line-toggles" role="group" aria-label="Show a line on the map">
             {lines.map((line) => {
@@ -461,7 +460,7 @@ export function TransitSignature({
                 <button
                   key={line.id}
                   type="button"
-                  className="c97-btn-ghost"
+                  className="bt-line"
                   // "Blue" means little outside the Bay, so the name carries the route.
                   aria-label={line.name ? `${line.colorName} line, ${line.name}` : undefined}
                   title={line.name || undefined}
@@ -477,28 +476,28 @@ export function TransitSignature({
                 >
                   <span
                     className="c97-transit-swatch"
-                    style={{ background: line.hexColor, marginInlineEnd: "var(--c97-sp-1)" }}
+                    style={swatchStyle(line.hexColor)}
                     aria-hidden="true"
                   />
-                  {line.colorName}
+                  {lineName(line.colorName)}
                 </button>
               );
             })}
           </div>
-          <button type="button" className="c97-btn-ghost c97-transit-locate" onClick={handleLocate}>
-            <LocateFixed className="h-4 w-4" aria-hidden="true" style={{ marginInlineEnd: "var(--c97-sp-1)" }} />
+          <button type="button" className="bt-line c97-transit-locate" onClick={handleLocate}>
+            <LocateFixed className="h-4 w-4" aria-hidden="true" />
             Nearest station
           </button>
         </div>
         {locateNote ? (
-          <p className="c97-meta c97-transit-locate-note" role="status">
+          <p className="bt-muted bt-small c97-transit-locate-note" role="status">
             {locateNote}
           </p>
         ) : null}
 
         <div className="c97-transit-map-frame">
           {points.length === 0 ? (
-            <p className="c97-meta">No stations in the current snapshot.</p>
+            <p className="bt-muted">No stations in the current snapshot.</p>
           ) : (
             <svg
               className="c97-transit-drawn-map"

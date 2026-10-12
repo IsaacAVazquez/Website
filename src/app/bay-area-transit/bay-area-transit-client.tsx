@@ -3,10 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { formatUpdatedAt } from "@/lib/date-formatters";
-import { CircleAlert, Navigation, ShieldCheck, TriangleAlert } from "lucide-react";
+import { ChevronDown, CircleAlert, ShieldCheck, TriangleAlert } from "lucide-react";
 import type {
-  TransitLine,
   TransitRouteState,
+  TransitSectionStatus,
   TransitStationBoard,
   TransitSummary,
   TransitView,
@@ -15,16 +15,11 @@ import {
   buildTransitHref,
   DEFAULT_TRANSIT_STATE,
   TRANSIT_ROUTE,
-  TRANSIT_VIEW_LABELS,
-  TRANSIT_VIEW_OPTIONS,
   normalizeTransitState,
 } from "./bay-area-transit-state";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
-import { swatchStyle, TransitSignature } from "./TransitSignature";
+import { TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
-import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 
 interface BayAreaTransitClientProps {
   initialState: TransitRouteState;
@@ -72,37 +67,20 @@ async function fetchTransitSummary(signal: AbortSignal): Promise<TransitSummary>
   return payload;
 }
 
-function LineCard({ line }: { line: TransitLine }) {
-  return (
-    <div className="c97-transit-line-card">
-      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-        <span
-          className="c97-transit-swatch shrink-0"
-          style={{ ...swatchStyle(line.hexColor), width: 22, height: 22 }}
-          aria-hidden="true"
-        />
-        <div className="min-w-0">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{line.colorName} line</p>
-          <h3
-            className="c97-serif truncate"
-            style={{ fontWeight: 600, fontSize: "var(--c97-fs-h3)" }}
-            title={line.name}
-          >
-            {line.name}
-          </h3>
-        </div>
-      </div>
+const STATUS_LABEL: Record<TransitSectionStatus, string> = {
+  fresh: "Live",
+  "stale-fallback": "Last good copy",
+  unavailable: "Unavailable",
+};
 
-      <div className="flex items-center justify-between" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-        <p className="c97-prose flex items-center" style={{ gap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-          <Navigation className="h-4 w-4 shrink-0" aria-hidden="true" />
-          <span>
-            {line.origin || "—"} → {line.destination || "—"}
-          </span>
-        </p>
-        <span className="c97-chip">{line.stationCount} stops</span>
-      </div>
-    </div>
+/** One feed's state, in words and a mark, so it never rests on colour alone. */
+function FeedBadge({ label, status }: { label: string; status: TransitSectionStatus | undefined }) {
+  const state = status ?? "fresh";
+  return (
+    <span className="bt-badge" data-status={state}>
+      <span className="bt-badge-mark" aria-hidden="true" />
+      {label} <span className="bt-badge-state">{STATUS_LABEL[state]}</span>
+    </span>
   );
 }
 
@@ -317,34 +295,104 @@ export function BayAreaTransitClient({
     });
   }
 
-  const onViewTabKey = useTablistKeyboard(TRANSIT_VIEW_OPTIONS, handleViewChange);
-  const lead = PROJECT_PRESS[TRANSIT_ROUTE].lead;
-  // The hero carries no readouts, so the map and board sit higher; the alert
-  // count, the one number a rider acts on, rides on the Alerts tab instead.
+  // The alerts strip opens from the status strip. ?view=advisories is its open
+  // state, and the default view (no param, or an old ?view=lines) is closed.
+  const alertsOpen = routeState.view === "advisories";
   const alertCount = summary.advisories.length + summary.elevator.length;
-  const standfirst =
-    "I wanted a BART map I could actually read, with the next trains and any service alerts on the same screen instead of across three apps.";
+  const title = (
+    <div className="bt-title-text">
+      <h1 className="bt-title">Bay Area Transit Pulse</h1>
+      <p className="bt-standfirst">
+        The BART map, the next trains at a station, and the service alerts on one screen.
+      </p>
+    </div>
+  );
 
   if (!system) {
     return (
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Bay Area Transit Pulse"
-        standfirst={standfirst}
-        meta="The transit snapshot is not available yet."
-      />
+      <div className="bt-root">
+        <div className="c97-shell c97-frame bt-page">
+          <header className="bt-head">{title}</header>
+          <p className="bt-muted">The transit snapshot is not available yet.</p>
+        </div>
+      </div>
     );
   }
 
-
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Bay Area Transit Pulse"
-        standfirst={standfirst}
-        meta={`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}${staleSections.length > 0 ? ` · ${staleSections.join(", ")} from the last good snapshot` : ""}`}
-      >
+    <div className="bt-root">
+      <div className="c97-shell c97-frame bt-page">
+        <header className="bt-head">
+          {title}
+          <div className="bt-status">
+            <div className="bt-badges">
+              <FeedBadge label="Departures" status={summary.sectionStatus?.departures} />
+              <FeedBadge label="Advisories" status={summary.sectionStatus?.advisories} />
+              <FeedBadge label="Elevators" status={summary.sectionStatus?.elevator} />
+              <button
+                type="button"
+                className="bt-alerts-toggle"
+                aria-expanded={alertsOpen}
+                aria-controls="transit-alerts"
+                data-has-alerts={alertCount > 0 || undefined}
+                onClick={() => handleViewChange(alertsOpen ? DEFAULT_TRANSIT_STATE.view : "advisories")}
+              >
+                {`Alerts${alertCount > 0 ? ` · ${alertCount}` : ""}`}
+                <ChevronDown className="bt-chevron h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
+            <p className="bt-stamp">
+              {`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}${staleSections.length > 0 ? ` · ${staleSections.join(", ")} from the last good snapshot` : ""}`}
+            </p>
+            <p className="bt-stamp">
+              {system.seed
+                ? "This is a hand-authored seed shipped with the app. The first refresh from the BART public API replaces it with the full network and real-time departures."
+                : "Lines and stations come from the checked-in snapshot, and departures, advisories, and elevator outages refresh from BART every minute while the page is open."}
+            </p>
+          </div>
+        </header>
+
+        {alertsOpen ? (
+          <section id="transit-alerts" className="bt-alerts" aria-label="Service alerts">
+            {staleSections.length > 0 ? (
+              <p className="bt-alert" role="status">
+                BART did not return fresh {staleSections.join(", ")} data on this pass, so I kept
+                the last good result instead of showing a false zero.
+              </p>
+            ) : null}
+
+            {summary.advisories.length === 0 &&
+            summary.elevator.length === 0 &&
+            staleSections.length === 0 ? (
+              <p className="bt-alert">
+                <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
+                No delays reported and all elevators in service at the last refresh.
+              </p>
+            ) : (
+              <ul className="bt-alert-list">
+                {summary.advisories.map((advisory) => (
+                  <li key={advisory.id} className="bt-alert">
+                    <TriangleAlert className="bt-alert-icon" data-tone="warn" aria-hidden="true" />
+                    <span>
+                      <span className="bt-strong bt-block">
+                        {advisory.type || "Advisory"}
+                        {advisory.station ? ` · ${advisory.station}` : ""}
+                      </span>
+                      <span className="bt-muted bt-block">{advisory.description}</span>
+                    </span>
+                  </li>
+                ))}
+                {summary.elevator.map((entry) => (
+                  <li key={entry.id} className="bt-alert">
+                    <CircleAlert className="bt-alert-icon" aria-hidden="true" />
+                    <span className="bt-muted">{entry.description}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ) : null}
+
         <TransitSignature
           departuresStatus={summary.sectionStatus?.departures}
           advisoryStations={advisoryStations}
@@ -357,161 +405,7 @@ export function BayAreaTransitClient({
           onSelect={handleStationChange}
           onRetry={handleRetryStationBoard}
         />
-      </Catalog97ProjectHero>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>The network</h2>
-
-          <dl className="flex flex-wrap" style={{ gap: "var(--c97-sp-4)", margin: "0 0 var(--c97-sp-3)" }}>
-            <div className="c97-stat">
-              <dt className="c97-stat-label">Lines</dt>
-              <dd className="c97-stat-value">{summary.heroStats.lineCount}</dd>
-            </div>
-            <div className="c97-stat">
-              <dt className="c97-stat-label">Stations</dt>
-              <dd className="c97-stat-value">{summary.heroStats.stationCount}</dd>
-            </div>
-          </dl>
-
-          <div className="c97-segmented" role="tablist" aria-label="Transit view switcher">
-            {TRANSIT_VIEW_OPTIONS.map((view, index) => (
-              <button
-                key={view}
-                type="button"
-                role="tab"
-                id={`transit-tab-${view}`}
-                aria-controls={
-                  routeState.view === view ? `transit-tabpanel-${view}` : undefined
-                }
-                aria-selected={routeState.view === view}
-                tabIndex={routeState.view === view ? 0 : -1}
-                onClick={() => handleViewChange(view)}
-                onKeyDown={(event) => onViewTabKey(event, index)}
-                className="min-h-[44px]"
-              >
-                {TRANSIT_VIEW_LABELS[view]}
-                {view === "advisories" && alertCount > 0 ? ` · ${alertCount}` : ""}
-              </button>
-            ))}
-          </div>
-
-          <div
-            className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}
-            role="tabpanel"
-            id={`transit-tabpanel-${routeState.view}`}
-            aria-labelledby={`transit-tab-${routeState.view}`}
-          >
-            {routeState.view === "lines" ? (
-              <>
-                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-                  <p className="c97-kicker">Lines</p>
-                  <p className="c97-prose">
-                    Every BART line with its official color and end-to-end
-                    route. The line buttons on the map above show where each
-                    one runs.
-                  </p>
-                </div>
-                <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-                  {summary.lines.map((line) => (
-                    <LineCard key={line.id} line={line} />
-                  ))}
-                </div>
-              </>
-            ) : null}
-
-            {routeState.view === "advisories" ? (
-              <>
-                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-                  <p className="c97-kicker">Service alerts</p>
-                  <p className="c97-prose">
-                    Advisories and elevator outages posted by BART at the
-                    last refresh.
-                  </p>
-                </div>
-
-                {staleSections.length > 0 ? (
-                  <div
-                    className="c97-transit-advisory text-sm leading-6"
-                    style={{ color: "var(--c97-ink)" }}
-                    role="status"
-                  >
-                    BART did not return fresh {staleSections.join(", ")} data on
-                    this pass, so I kept the last good result instead of showing
-                    a false zero.
-                  </div>
-                ) : null}
-
-                {summary.advisories.length === 0 &&
-                summary.elevator.length === 0 &&
-                staleSections.length === 0 ? (
-                  <div className="c97-transit-advisory flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                    <ShieldCheck
-                      className="h-5 w-5 shrink-0"
-                      style={{ color: "var(--c97-positive)" }}
-                      aria-hidden="true"
-                    />
-                    <p className="text-sm leading-6" style={{ color: "var(--c97-ink)", marginBottom: "0" }}>
-                      No delays reported and all elevators in service at the
-                      last refresh.
-                    </p>
-                  </div>
-                ) : summary.advisories.length > 0 ||
-                  summary.elevator.length > 0 ? (
-                  <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-                    {summary.advisories.map((advisory) => (
-                      <div key={advisory.id} className="c97-transit-advisory">
-                        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                          <TriangleAlert
-                            className="mt-0.5 h-4 w-4 shrink-0"
-                            style={{ color: "var(--c97-warning)" }}
-                            aria-hidden="true"
-                          />
-                          <div className="min-w-0">
-                            <p className="text-sm font-semibold" style={{ color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
-                              {advisory.type || "Advisory"}
-                              {advisory.station ? ` · ${advisory.station}` : ""}
-                            </p>
-                            <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
-                              {advisory.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-
-                    {summary.elevator.map((entry) => (
-                      <div key={entry.id} className="c97-transit-advisory">
-                        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                          <CircleAlert
-                            className="mt-0.5 h-4 w-4 shrink-0"
-                            style={{ color: "var(--c97-ink-2)" }}
-                            aria-hidden="true"
-                          />
-                          <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
-                            {entry.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </>
-            ) : null}
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data note</p>
-          <p className="c97-prose">
-            {system.seed
-              ? "This is a hand-authored seed shipped with the app. The first refresh from the BART public API replaces it with the full network and real-time departures."
-              : "The route catalog comes from the checked-in snapshot. Departures, advisories, and elevator outages refresh from BART in the browser, with the last good snapshot held back as a fallback."}
-          </p>
-        </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
