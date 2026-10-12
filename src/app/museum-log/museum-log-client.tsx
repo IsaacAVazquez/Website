@@ -1278,7 +1278,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   // ─── Resolve detail entity ────────────────────────────────────────────────
   const selectedMuseum = routeState.museum ? museumBySlug[routeState.museum] : null;
 
-  // ─── Hero: the most recently visited museums, or a blank "log your first visit" stub ──
+  // ─── Title row: the last three visited museums, empty until the log has loaded and holds a visit ──
   const heroVisits = useMemo(() => {
     if (!hydrated) return [];
     return [...userState.visited]
@@ -1355,7 +1355,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               Curated by {snapshot.curatorName} · updated {lastUpdated}
             </p>
           </div>
-          {hydrated ? <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} /> : null}
+          <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />
         </header>
 
         <div className="mlog-bar">

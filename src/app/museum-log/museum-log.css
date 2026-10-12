@@ -636,8 +636,9 @@
   line-height: 1.15;
 }
 
-.mlog-history-row {
-  flex-direction: row !important;
+/* A past visit reads as one row, date left and rating right. */
+.mlog-ruled > li.mlog-history-row {
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;

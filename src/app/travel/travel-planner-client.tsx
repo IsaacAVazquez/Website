@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, type ReactNode, useMemo, useRef, useState } from "react";
+import { type FormEvent, type ReactNode, type SetStateAction, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import {
   AlertTriangle,
@@ -113,7 +113,15 @@ function formatBudget(value: number) {
 const EMPTY_TRIP_DRAFT = { name: "", destination: "", startDate: "", endDate: "" };
 
 export function TravelPlannerClient() {
-  const planner = useTravelPlanner();
+  // Today is the browser's day, read after mount. The server's day and the
+  // browser's differ whenever their clocks sit either side of midnight, so a
+  // render-time read printed one date into the server HTML and another into
+  // the first client render, and hydration failed. The hook takes the same
+  // day, so the status, the countdown, and the Today marker share one clock.
+  const now = useClientNow();
+  const today = now === null ? "" : getTodayKey(new Date(now));
+
+  const planner = useTravelPlanner(today);
   const persistenceStatus = useLocalStoragePersistenceStatus(TRAVEL_PLANNER_STORAGE_KEY);
   const {
     trips,
@@ -132,13 +140,6 @@ export function TravelPlannerClient() {
     updateJournal,
     removeJournal,
   } = planner;
-
-  // Today is the browser's day, read after mount. The server's day and the
-  // browser's differ whenever their clocks sit either side of midnight, so a
-  // render-time read printed one date into the server HTML and another into
-  // the first client render, and hydration failed.
-  const now = useClientNow();
-  const today = now === null ? "" : getTodayKey(new Date(now));
 
   const tripNameInputRef = useRef<HTMLInputElement>(null);
   const [tripDraft, setTripDraft] = useState(EMPTY_TRIP_DRAFT);
@@ -203,28 +204,27 @@ export function TravelPlannerClient() {
     setJournalDraft(emptyJournalDraft(defaultActivityDate));
   }
 
-  /** Moves the one stop form under a day and puts the cursor in its title. */
-  function openStopFormOn(date: string) {
+  /** Moves the one stop form under a day with its draft and puts the cursor in its title. */
+  function moveStopForm(date: string, draft: SetStateAction<ActivityDraft>, editingId: string | null) {
     // flushSync so the form has moved before focus goes to it.
     flushSync(() => {
       setFormDay(date);
+      setEditingActivityId(editingId);
       setActivityTitleMissing(false);
-      if (editingActivityId) {
-        setEditingActivityId(null);
-        setActivityDraft(emptyActivityDraft(date));
-      } else {
-        setActivityDraft((draft) => ({ ...draft, date }));
-      }
+      setActivityDraft(draft);
     });
     activityTitleInputRef.current?.focus();
   }
 
+  // A new stop keeps what was typed and takes the day's date; leaving an edit starts blank.
+  function openStopFormOn(date: string) {
+    moveStopForm(date, editingActivityId ? emptyActivityDraft(date) : (draft) => ({ ...draft, date }), null);
+  }
+
   function handleEditActivity(activity: TripActivity) {
-    flushSync(() => {
-      setFormDay(activity.date);
-      setEditingActivityId(activity.id);
-      setActivityTitleMissing(false);
-      setActivityDraft({
+    moveStopForm(
+      activity.date,
+      {
         date: activity.date,
         time: activity.time,
         endTime: activity.endTime,
@@ -232,9 +232,9 @@ export function TravelPlannerClient() {
         location: activity.location,
         category: activity.category,
         notes: activity.notes,
-      });
-    });
-    activityTitleInputRef.current?.focus();
+      },
+      activity.id,
+    );
   }
 
   function handleEditJournal(entry: JournalEntry) {

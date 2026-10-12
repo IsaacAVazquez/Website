@@ -520,6 +520,28 @@ describe("TravelPlannerClient", () => {
     expect(stored()[0].activities.find((activity) => activity.title === "Tram 28")?.date).toBe(dayKey(1));
   });
 
+  it("runs the countdown and the Today marker on one clock across midnight", () => {
+    // Render on the evening before the trip, then cross midnight. The keys are
+    // taken before the clock is faked, since dayKey reads the clock.
+    const tomorrow = dayKey(1);
+    const after = dayKey(2);
+    jest.useFakeTimers({ now: new Date(`${TODAY}T23:59:30`) });
+    try {
+      seed([makeTrip({ id: "trip-next", name: "Tomorrow", startDate: tomorrow, endDate: after })]);
+      render(<TravelPlannerClient />);
+      expect(screen.getByText("1 day to go")).toBeInTheDocument();
+      expect(within(itinerary()).queryByRole("heading", { name: / · Today$/ })).toBeNull();
+
+      act(() => {
+        jest.advanceTimersByTime(60_000);
+      });
+      expect(screen.getByText("Day 1 of 2")).toBeInTheDocument();
+      expect(within(itinerary()).getByRole("heading", { name: `${formatDayHeading(tomorrow)} · Today` })).toBeInTheDocument();
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
   it("caps a very long trip's itinerary and offers a scroll cue", () => {
     seed([makeTrip({ id: "trip-long", name: "Sabbatical", startDate: dayKey(0), endDate: dayKey(399) })]);
     render(<TravelPlannerClient />);

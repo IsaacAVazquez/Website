@@ -106,6 +106,7 @@
 .fm-citybar {
   position: sticky;
   top: 0;
+  /* No --c97-z-* step names a sticky bar inside the page yet, so this matches the Premier League toolbar's 2. */
   z-index: 2;
   margin-inline: calc(-1 * var(--c97-sp-1));
   padding: var(--c97-sp-1);

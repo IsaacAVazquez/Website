@@ -39,7 +39,12 @@ export interface JournalDraft {
   mood: JournalEntry["mood"];
 }
 
-export function useTravelPlanner() {
+/**
+ * `today` is the caller's day key, read after mount, so the summary's status
+ * and countdown run on the same clock as the page that prints them. Left
+ * out, the summary reads the clock itself.
+ */
+export function useTravelPlanner(today?: string) {
   const snapshot = useLocalStorageString(TRAVEL_PLANNER_STORAGE_KEY, "[]");
   const trips = useMemo(() => parseTrips(snapshot), [snapshot]);
 
@@ -55,8 +60,8 @@ export function useTravelPlanner() {
 
   const activeTrip = trips.find((trip) => trip.id === activeTripId) ?? null;
   const summary = useMemo(
-    () => (activeTrip ? calculateTripSummary(activeTrip) : null),
-    [activeTrip]
+    () => (activeTrip ? calculateTripSummary(activeTrip, today || undefined) : null),
+    [activeTrip, today]
   );
 
   function commit(nextTrips: Trip[]) {
