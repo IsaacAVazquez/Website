@@ -90,6 +90,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this dashboard to connect the Premier League table with the fixtures that produced it and the matches coming next. Club drilldowns make recent form easier to read without turning the overview into a wall of match data.",
   },
+  "/recipe-finder": {
+    purpose:
+      "I built this around the question I actually have at dinner, which is what I can make with what's already in the kitchen. The recipes reorder by how many ingredients the pantry is missing, staples like salt and oil never count against a recipe, and the pantry stays saved in this browser for the next night.",
+  },
   "/spacex-mission-control": {
     purpose:
       "I use this board to answer what SpaceX is launching next, what has already flown, and how a mission connects to its rocket, payload, crew, capsule, and pad. Keeping those relationships together makes the launch list more useful than a calendar alone.",

@@ -1,373 +1,594 @@
-/* Recipe Finder: the pantry shelf and the ruled index card grid. */
+/*
+ * Recipe Finder, drawn as a pantry-first recipe box: the pantry shelf on the
+ * left, and on the right the filters as chips over a box of index cards,
+ * ranked by what the pantry is missing. The route paints its own kitchen
+ * paper, and each recipe is an index card with a red head rule and blue
+ * ruled lines, since the card is the object.
+ */
 
-/* The hero holds the shelf only. Its closest match is the first card in the grid below. */
-.c97-recipe-hero-grid {
-  display: grid;
-  /* A column that can shrink; an implicit one grew to the shelf's widest row and pushed a phone sideways. */
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 48rem;
+.rf-root {
+  --rf-paper: #f6f3ec;
+  --rf-card: #fffdf8;
+  --rf-field: #ebe6db;
+  --rf-ink: #2a2420;
+  --rf-ink-2: #5d534a;
+  --rf-red: #a8321f;
+  --rf-blue: rgba(58, 98, 160, 0.32);
+  --rf-rule: rgba(42, 36, 32, 0.16);
+
+  --c97-surface: var(--rf-paper);
+  --c97-field: var(--rf-field);
+  --c97-ink: var(--rf-ink);
+  --c97-ink-2: var(--rf-ink-2);
+  --c97-label: var(--rf-ink-2);
+  --c97-rule: var(--rf-rule);
+  --c97-accent: var(--rf-red);
+
+  background: var(--rf-paper);
+  color: var(--rf-ink);
+  font-family: var(--c97-font-body);
 }
 
-/* --------------------------------------------------------------------------
- * The pantry shelf
- * ------------------------------------------------------------------------ */
-
-.c97-recipe-shelf-plate {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-4);
+.dark .rf-root {
+  --rf-paper: #161311;
+  --rf-card: #221d1a;
+  --rf-field: #2a2420;
+  --rf-ink: #f1eadf;
+  --rf-ink-2: #c3b7a9;
+  --rf-red: #f2917e;
+  --rf-blue: rgba(140, 172, 226, 0.26);
+  --rf-rule: rgba(241, 234, 223, 0.16);
 }
 
-.c97-recipe-shelf-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-2);
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.rf-root h1,
+.rf-root h2,
+.rf-root h3 {
+  font-family: var(--c97-font-display);
+  font-weight: 400;
+  color: var(--rf-ink);
+  margin: 0;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.rf-root :where(p, ul, ol, li) {
   margin: 0;
   padding: 0;
+  max-inline-size: none;
+}
+
+.rf-root :where(ul, ol) {
   list-style: none;
 }
 
-/* A labelled shelf tag: a bracketed tab rather than a rounded chip, so the
-   shelf reads as printed labels and not as the old pill filters. */
-.c97-recipe-tag {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
-  color: var(--c97-ink);
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-small);
-}
-
-.c97-recipe-tag:hover,
-.c97-recipe-tag:focus-visible {
-  border-color: var(--c97-ink);
-}
-
-.c97-recipe-quickadds {
+.rf-page {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
+}
+
+.rf-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.rf-root h1 {
+  font-size: var(--c97-fs-h1);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.rf-lede {
+  max-inline-size: 64ch;
+  color: var(--rf-ink-2);
+}
+
+.rf-note {
+  font-size: var(--c97-fs-small);
+  color: var(--rf-ink-2);
+}
+
+/* The shelf and the box, side by side from 1024px up. */
+.rf-book {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+  align-items: start;
+}
+
+@media screen and (min-width: 1024px) {
+  .rf-book {
+    grid-template-columns: minmax(17rem, 21rem) minmax(0, 1fr);
+    gap: var(--c97-sp-5);
+  }
+
+  .rf-shelf {
+    position: sticky;
+    top: var(--c97-sp-3);
+  }
+}
+
+.rf-shelf,
+.rf-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+
+.rf-shelf h2,
+.rf-results h2 {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.1;
+}
+
+.rf-shelf h2 {
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--rf-ink);
+}
+
+.rf-shelf-body {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-2);
 }
 
-.c97-recipe-quickadd {
-  display: inline-flex;
-  min-height: 44px;
-  /* The icon-only "add ingredient" submit button reuses this class and needs
-     a floor on both axes; the text quick-picks are already wider than this. */
-  min-width: 44px;
-  justify-content: center;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  padding: 0 var(--c97-sp-2);
-  border: 1px dashed var(--c97-rule);
-  background: transparent;
-  color: var(--c97-ink-2);
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-small);
-}
-
-.c97-recipe-quickadd:not(:disabled):hover,
-.c97-recipe-quickadd:focus-visible {
-  border-color: var(--c97-ink);
-  color: var(--c97-ink);
-}
-
-.c97-recipe-quickadd:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.c97-recipe-tag:active,
-.c97-recipe-quickadd:not(:disabled):active,
-.c97-recipe-card-steps-toggle:active {
-  transform: translateY(1px);
-}
-
-.c97-recipe-pantry-form {
+.rf-pantry-form {
   display: flex;
-  gap: var(--c97-sp-2);
+  gap: var(--c97-sp-1);
 }
 
-/* A bordered field, shared by the pantry input, the diet select, and the
-   search box, so one rule sets the box for every control on the page. */
-.c97-recipe-field {
+/* One field style for the pantry input, the diet select, and the search box. */
+.rf-field {
   flex: 1;
+  width: 100%;
   min-width: 0;
   min-height: 44px;
-  padding: 0 var(--c97-sp-3);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
-  color: var(--c97-ink);
-  font-size: var(--c97-fs-body);
-}
-
-.c97-recipe-search {
-  display: flex;
-  align-items: center;
-  gap: var(--c97-sp-2);
-  min-height: 44px;
-  padding: 0 var(--c97-sp-3);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
-  color: var(--c97-ink-2);
-}
-
-.c97-recipe-search input {
-  flex: 1;
-  min-width: 0;
-  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
   border: 0;
-  background: none;
-  color: var(--c97-ink);
+  border-bottom: 1px solid var(--rf-ink-2);
+  background: var(--rf-field);
+  color: var(--rf-ink);
   font-size: var(--c97-fs-body);
 }
 
-/* The ring goes on the whole field, icon included, so the input's own outline steps aside. */
-.c97-recipe-search:focus-within {
-  outline: 2px solid var(--c97-accent);
-  outline-offset: 3px;
+.rf-select {
+  flex: 0 0 auto;
+  width: auto;
 }
 
-.c97-recipe-search input:focus,
-.c97-recipe-search input:focus-visible {
-  outline: none;
+.rf-field:focus-visible {
+  outline: 2px solid var(--rf-red);
+  outline-offset: 2px;
 }
 
-.c97-recipe-pantry-suggestions {
+.rf-suggest {
   position: relative;
   flex: 1;
   min-width: 0;
 }
 
-.c97-recipe-suggestion-list {
+.rf-suggest-list {
   position: absolute;
   inset-inline: 0;
   top: calc(100% + 2px);
   /* It floats over the shelf below the field, so it reads the tray step of the stacking ladder. */
   z-index: var(--c97-z-tray);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
+  border: 1px solid var(--rf-rule);
+  background: var(--rf-card);
 }
 
-.c97-recipe-suggestion-list button {
+.rf-suggest-list button {
   display: flex;
   width: 100%;
   min-height: 44px;
   align-items: center;
   gap: var(--c97-sp-2);
-  padding: 0 var(--c97-sp-3);
+  padding: 0 var(--c97-sp-2);
   border: 0;
   background: none;
-  color: var(--c97-ink);
+  color: var(--rf-ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
 }
 
-.c97-recipe-suggestion-list button:hover,
-.c97-recipe-suggestion-list button:focus-visible {
-  background: var(--c97-overlay);
+.rf-suggest-list button:hover,
+.rf-suggest-list button:focus-visible {
+  background: var(--rf-field);
 }
 
-/* --------------------------------------------------------------------------
- * The index card grid
- * ------------------------------------------------------------------------ */
+.rf-skeleton {
+  display: block;
+  height: 1.25rem;
+  width: 60%;
+}
 
-.c97-recipe-grid {
+.rf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+/* A pantry item is a jar label: mono, on the field, with its remove mark. */
+.rf-tag {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--rf-rule);
+  background: var(--rf-card);
+  color: var(--rf-ink);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  cursor: pointer;
+}
+
+.rf-tag:hover,
+.rf-tag:focus-visible {
+  border-color: var(--rf-ink);
+}
+
+.rf-quickadds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+.rf-quickadd {
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding: 0 var(--c97-sp-2);
+  border: 1px dashed var(--rf-rule);
+  background: transparent;
+  color: var(--rf-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  cursor: pointer;
+}
+
+.rf-quickadd:not(:disabled):hover,
+.rf-quickadd:focus-visible {
+  border-color: var(--rf-ink);
+  color: var(--rf-ink);
+}
+
+.rf-quickadd:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.rf-clear {
+  align-self: flex-start;
+}
+
+.rf-tag:active,
+.rf-quickadd:not(:disabled):active,
+.rf-card-toggle:active,
+.rf-chip:active {
+  transform: translateY(1px);
+}
+
+/* The results: a heading with the search, the chips, the count, the cards. */
+.rf-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--rf-ink);
+}
+
+.rf-search {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  flex: 0 1 20rem;
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border-bottom: 1px solid var(--rf-ink-2);
+  background: var(--rf-field);
+  color: var(--rf-ink-2);
+}
+
+.rf-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--rf-ink);
+  font-size: var(--c97-fs-body);
+}
+
+/* The ring goes on the whole field, icon included, so the input's own outline steps aside. */
+.rf-search:focus-within {
+  outline: 2px solid var(--rf-red);
+  outline-offset: 2px;
+}
+
+.rf-search input:focus,
+.rf-search input:focus-visible {
+  outline: none;
+}
+
+.rf-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.rf-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+.rf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--rf-rule);
+  background: none;
+  color: var(--rf-ink);
+  font-size: var(--c97-fs-small);
+  cursor: pointer;
+}
+
+.rf-chip:hover:not([aria-pressed="true"]) {
+  border-color: var(--rf-ink-2);
+}
+
+.rf-chip[aria-pressed="true"] {
+  border-color: var(--rf-ink);
+  background: var(--rf-ink);
+  color: var(--rf-paper);
+}
+
+.rf-chip:focus-visible {
+  outline: 2px solid var(--rf-red);
+  outline-offset: 2px;
+}
+
+.rf-diet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.rf-count {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--rf-ink-2);
+}
+
+.rf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-3);
+}
+
+/* The card box. */
+.rf-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--c97-sp-5);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: var(--c97-sp-3);
 }
 
-@media screen and (min-width: 780px) {
-  .c97-recipe-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/*
- * The ruled index card itself. The header carries a hard rule in the page's
- * second ink, the body is ruled paper for the ingredient ticks, and the
- * whole card sits on its own paper plate with the print shop's one shadow.
- */
-.c97-recipe-card {
+/* An index card: card stock, a red head rule, blue rules for the ingredient lines. */
+.rf-card {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: var(--c97-sp-2) var(--c97-sp-3) var(--c97-sp-3);
+  border: 1px solid var(--rf-rule);
+  background: var(--rf-card);
 }
 
-.c97-recipe-card-header {
+.rf-card-head {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  gap: var(--c97-sp-3);
-  padding-bottom: var(--c97-sp-3);
-  border-bottom: 3px solid var(--c97-overprint);
+  gap: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 2px solid var(--rf-red);
 }
 
-.c97-recipe-card-title {
+.rf-card-title {
   font-size: var(--c97-fs-h3);
-  margin: 0 0 var(--c97-sp-1);
+  line-height: 1.1;
 }
 
-.c97-recipe-card-meta {
-  margin: 0;
+.rf-card-meta {
+  margin-top: var(--c97-sp-1);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rf-ink-2);
 }
 
-.c97-recipe-card-corner {
+.rf-card-corner {
   flex-shrink: 0;
   display: grid;
   gap: 2px;
   text-align: right;
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
+  color: var(--rf-ink-2);
   white-space: nowrap;
 }
 
-.c97-recipe-card-corner strong {
-  color: var(--c97-ink);
+.rf-card-corner strong {
+  color: var(--rf-ink);
   font-weight: 400;
 }
 
-/* Ruled paper for the ingredient ticks: a hairline every 28px in the sheet's
-   rule colour, offset so the first rule lands under the first line. */
-.c97-recipe-ingredients {
-  flex: 1;
-  margin: 0;
-  padding: var(--c97-sp-1) 0 0;
-  list-style: none;
+.rf-card-need {
+  margin-top: var(--c97-sp-2);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--rf-ink-2);
+}
+
+.rf-card-need[data-complete] {
+  color: var(--rf-ink);
+  font-weight: 700;
+}
+
+.rf-card-toggle {
+  align-self: flex-start;
+  margin-top: var(--c97-sp-2);
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rf-ink);
+  font-size: var(--c97-fs-small);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.rf-card-toggle:hover {
+  color: var(--rf-red);
+}
+
+.rf-card-toggle:focus-visible {
+  outline: 2px solid var(--rf-red);
+  outline-offset: 2px;
+}
+
+.rf-card-detail {
+  margin-top: var(--c97-sp-2);
+}
+
+/* Ruled lines every 28px in the card's blue, offset so the first lands under the first line. */
+.rf-ingredients {
+  padding-top: var(--c97-sp-1);
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 0,
     transparent 27px,
-    var(--c97-rule) 27px,
-    var(--c97-rule) 28px
+    var(--rf-blue) 27px,
+    var(--rf-blue) 28px
   );
 }
 
-.c97-recipe-line {
+.rf-line {
   display: flex;
   align-items: baseline;
   gap: var(--c97-sp-2);
   min-height: 28px;
   font-size: var(--c97-fs-small);
-  color: var(--c97-ink);
+  color: var(--rf-ink);
 }
 
-.c97-recipe-line[data-have="false"] {
-  color: var(--c97-ink-2);
+.rf-line[data-have="false"] {
+  color: var(--rf-ink-2);
 }
 
-/* The tick box. A filled check mark ticks a line; an empty outline does not.
-   The shapes differ, not only the colour, so the mark reads without colour. */
-.c97-recipe-tick {
+/* The tick box. The shapes differ, not only the colour, so the mark reads without colour. */
+.rf-tick {
   flex-shrink: 0;
   display: inline-flex;
   width: 14px;
   height: 14px;
 }
 
-.c97-recipe-tick-box {
+.rf-tick-box {
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: var(--c97-ink-2);
+  stroke: var(--rf-ink-2);
   stroke-width: 1.5;
 }
 
-.c97-recipe-line[data-have="true"] .c97-recipe-tick-box {
-  stroke: var(--c97-ink);
+.rf-line[data-have="true"] .rf-tick-box {
+  stroke: var(--rf-ink);
 }
 
-.c97-recipe-tick-check {
+.rf-tick-check {
   fill: none;
-  stroke: var(--c97-ink);
+  stroke: var(--rf-red);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.c97-recipe-staple-mark {
+.rf-staple {
   margin-left: var(--c97-sp-1);
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-label);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c97-ink-2);
+  color: var(--rf-ink-2);
 }
 
-.c97-recipe-card-steps-toggle {
-  align-self: flex-start;
+.rf-card-steps {
   margin-top: var(--c97-sp-3);
-  min-height: 44px;
-  padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--c97-rule);
-  background: transparent;
-  color: var(--c97-ink);
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-small);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  cursor: pointer;
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--rf-rule);
 }
 
-.c97-recipe-card-steps-toggle:hover,
-.c97-recipe-card-steps-toggle:focus-visible {
-  border-color: var(--c97-ink);
-}
-
-.c97-recipe-card-steps {
-  margin-top: var(--c97-sp-3);
-  padding-top: var(--c97-sp-3);
-  border-top: 1px solid var(--c97-rule);
-}
-
-.c97-recipe-card-steps ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.rf-card-steps ol {
   display: grid;
   gap: var(--c97-sp-2);
 }
 
-.c97-recipe-card-steps li {
+.rf-card-steps li {
   display: flex;
   gap: var(--c97-sp-2);
-  font-size: var(--c97-fs-body);
-  color: var(--c97-ink);
+  line-height: 1.45;
 }
 
-.c97-recipe-card-steps li > span:first-child {
+.rf-card-steps li > span:first-child {
   flex-shrink: 0;
   font-family: var(--c97-font-mono);
-  font-weight: 400;
-  color: var(--c97-ink-2);
+  color: var(--rf-ink-2);
 }
 
-.c97-recipe-card-tags {
+.rf-card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--c97-sp-1);
+  gap: var(--c97-sp-1) var(--c97-sp-2);
   margin-top: var(--c97-sp-3);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rf-ink-2);
 }
 
 @media print, screen and (max-width: 639px) {
-  .c97-recipe-card-header {
+  .rf-card-head {
     flex-direction: column;
   }
 
-  .c97-recipe-card-corner {
+  .rf-card-corner {
     text-align: left;
+  }
+}
+
+@media print {
+  .rf-pantry-form,
+  .rf-quickadds,
+  .rf-clear,
+  .rf-search,
+  .rf-toolbar,
+  .rf-card-toggle {
+    display: none;
   }
 }
