@@ -53,6 +53,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/fintech-tools/interchange-iq": {
     purpose:
       "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It prices the same month of volume, ticket size, and card mix across seven processors' public rates and shows the ticket size where Stripe's interchange plus starts costing less than its flat rate.",
+  },
   "/fantasy-football/best-ball": {
     purpose:
       "I built this to read one best ball board through the rules of each Underdog contest I might enter, from Best Ball Mania VII to Superflex. Each lens shows the room, how I read it, and a build range, and the board under it follows Underdog ADP, or a sourced Superflex consensus, with the expert ranks printed beside it.",
@@ -68,6 +69,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/fantasy-football/trade-calculator": {
     purpose:
       "I built this to check a one-QB redraft trade against something steadier than my gut, turning expert consensus and mock-draft ADP into values for my league's scoring, size, and lineup. It withholds the verdict when a source is stale or a player has no current market reading, because I would rather it say nothing than say something I cannot support.",
+  },
   "/food-map": {
     purpose:
       "I built this to keep the places I actually send people to on one map, next to Anthony Bourdain's picks and the ones the crowd rates highest on Google, with each pin colored by who is vouching for it. Every filter and pick lives in the URL, so a link I send opens on the exact city and stop with what to order already showing.",
@@ -147,6 +149,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/score-pools/tracker": {
     purpose:
       "I use the tracker after the games, when the question changes from what to pick to how the picks actually scored. It scores my saved picks against the results under the pool's rules, keeps a running total, and lets me enter a result by hand or a rival's picks when no feed has them.",
+  },
   "/recipe-finder": {
     purpose:
       "I built this around the question I actually have at dinner, which is what I can make with what's already in the kitchen. The recipes reorder by how many ingredients the pantry is missing, staples like salt and oil never count against a recipe, and the pantry stays saved in this browser for the next night.",
