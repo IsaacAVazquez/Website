@@ -783,3 +783,32 @@
 .timelineDate {
   text-align: right;
 }
+
+/* On paper the tower drops its carbon, since a print without backgrounds
+   would otherwise leave light figures on white, and the lamps print lit. */
+@media print {
+  .tower {
+    --f1-tower-ink: var(--f1-ink);
+    --f1-tower-ink-2: var(--f1-ink-2);
+    background: none;
+    border: 1px solid var(--f1-rule-strong);
+  }
+
+  .towerRow {
+    background: none;
+    border-bottom: 1px solid var(--f1-rule);
+  }
+
+  .towerHead {
+    border-bottom: 0;
+  }
+
+  .toolbar {
+    position: static;
+  }
+
+  .light {
+    animation: none;
+    background: var(--f1-lamp);
+  }
+}

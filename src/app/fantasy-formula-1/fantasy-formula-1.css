@@ -866,3 +866,9 @@
     white-space: nowrap;
   }
 }
+
+@media print {
+  .ff1-slate-toolbar {
+    position: static;
+  }
+}

@@ -129,7 +129,7 @@
 }
 
 /* Where the tabs wrap under the title, the first one's text sits on the column edge like the title. */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 839px) {
   .sp-tabs a:first-child {
     padding-left: 0;
   }
