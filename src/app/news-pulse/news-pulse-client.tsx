@@ -245,14 +245,14 @@ export function NewsPulseClient({
         <header className="np-masthead">
           <h1 className="np-nameplate">News Pulse</h1>
           <p className="np-standfirst">
-            What six newsrooms are leading with right now, which stories cross outlet lines, and
-            how the headlines read, pulled from their RSS feeds.
+            What {trackedSourceCount} newsrooms are leading with right now, which stories cross
+            outlet lines, and how the headlines read, pulled from their RSS feeds.
           </p>
           <p className="np-dateline">
             <span>{dateline}</span>
             <span>
               {loading
-                ? "Six outlets tracked"
+                ? `${trackedSourceCount} outlets tracked`
                 : `${articles.length} headlines from ${articleSourceCount} of ${trackedSourceCount} outlets`}
             </span>
           </p>

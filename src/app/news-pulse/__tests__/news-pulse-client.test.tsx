@@ -110,7 +110,7 @@ describe("NewsPulseClient", () => {
       ).toBeVisible(),
     );
 
-    expect(screen.getByText(/What six newsrooms are leading with right now/i)).toBeVisible();
+    expect(screen.getByText(/What 6 newsrooms are leading with right now/i)).toBeVisible();
     // The dateline carries the pull and the outlet count that the readouts used to repeat.
     expect(screen.getByText("2 headlines from 2 of 6 outlets")).toBeVisible();
     expect(
@@ -204,6 +204,8 @@ describe("NewsPulseClient", () => {
     const { unmount } = render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
 
     expect(screen.getByRole("status")).toHaveTextContent("Refreshing live feeds");
+    // The dateline counts the tracked outlets from the source list, not a hard-coded six.
+    expect(screen.getByText("6 outlets tracked")).toBeInTheDocument();
 
     unmount();
   });
