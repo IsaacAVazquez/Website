@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "A product concept for Google Finance that shows what a stock would do to your portfolio before you buy it. An independent concept, not affiliated with Google.",
   canonicalUrl: "/investments/before-you-buy",
-  dateModified: "2026-10-01",
+  dateModified: "2026-10-12",
   image: "/investments/before-you-buy/opengraph-image",
 });
 

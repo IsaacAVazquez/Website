@@ -1,142 +1,622 @@
-/* Budget Planner: the envelope signature and the expenses check register. */
+/*
+ * Budget Planner. The route owns its design inside the site frame
+ * (docs/superpowers/specs/2026-10-11-project-sovereign-design.md), drawn as
+ * an envelope budget: one month bar, the envelopes as the page's main grid,
+ * and a check register under them. The envelope is the only box, because it
+ * is the object and carries its own name, budget, and balance. Everything
+ * here is scoped to the .bp root.
+ */
 
-.c97-envelope-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--c97-sp-3);
+.bp {
+  --bp-paper: #fbfaf6;
+  --bp-ink: #1d1b17;
+  --bp-ink-2: #5b564d;
+  --bp-rule: #ddd8cc;
+  --bp-field: #f0ece2;
+  /* Kraft paper for the envelopes, and a deeper fold for the flap. */
+  --bp-kraft: #ece0c8;
+  --bp-kraft-fold: #dccbaa;
+  --bp-kraft-rule: #c9b48c;
+  --bp-funded: #1f7a4c;
+  --bp-over: #b3261e;
+  --bp-action: #1f5f8b;
+
+  /* The frame's focus ring and any borrowed rule read these. */
+  --c97-ink: var(--bp-ink);
+  --c97-ink-2: var(--bp-ink-2);
+  --c97-surface: var(--bp-paper);
+  --c97-rule: var(--bp-rule);
+  --c97-field: var(--bp-field);
+  --c97-accent: var(--bp-action);
+
+  background: var(--bp-paper);
+  color: var(--bp-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-@media screen and (min-width: 640px) {
-  .c97-envelope-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+.dark .bp {
+  --bp-paper: #15130f;
+  --bp-ink: #efeae0;
+  --bp-ink-2: #b4ac9e;
+  --bp-rule: #38332b;
+  --bp-field: #221f19;
+  --bp-kraft: #2b251b;
+  --bp-kraft-fold: #3a3224;
+  --bp-kraft-rule: #5a4c35;
+  --bp-funded: #5fcf94;
+  --bp-over: #ff8a80;
+  --bp-action: #8cc4f0;
+}
+
+/* The frame's base layer puts a measure and margin on paragraphs and padding on lists. */
+.bp :where(p, ul, li, dl, dd) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.bp :where(ul) {
+  list-style: none;
+}
+
+.bp h1,
+.bp h2 {
+  margin: 0;
+  color: var(--bp-ink);
+  font-family: var(--c97-font-body);
+}
+
+.bp-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+/* ── Title row ──────────────────────────────────────────────────────────── */
+
+.bp-title {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+
+.bp-title h1 {
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.bp-title p {
+  max-inline-size: 70ch;
+  color: var(--bp-ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.bp-title .bp-storage {
+  font-size: 0.875rem;
+}
+
+/* ── Shared controls ────────────────────────────────────────────────────── */
+
+.bp-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--bp-ink-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.bp-field {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border: 0;
+  border-bottom: 1px solid var(--bp-ink-2);
+  background: var(--bp-field);
+  color: var(--bp-ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.bp-field::placeholder {
+  color: var(--bp-ink-2);
+  opacity: 1;
+}
+
+/* A dollar field: the prefix and the input share one tinted cell. */
+.bp-field-money {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--bp-ink-2);
+}
+
+.bp-field-money input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--bp-ink);
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* A dollar cell's ring goes around the whole cell, prefix included. An engine
+ * without :has() keeps the input's own ring instead. */
+@supports selector(:has(a)) {
+  .bp .bp-field-money input:focus-visible,
+  .bp .bp-envelope-budget input:focus-visible {
+    outline: none;
   }
+
+  .bp-field-money:has(input:focus-visible),
+  .bp-envelope-budget:has(input:focus-visible) {
+    outline: 2px solid var(--bp-action);
+    outline-offset: 2px;
+  }
+}
+
+.bp-btn,
+.bp-link,
+.bp-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.bp-btn {
+  padding: 0 var(--c97-sp-2);
+  border: 0;
+  border-radius: 4px;
+  background: var(--bp-ink);
+  color: var(--bp-paper);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.bp-btn:disabled {
+  background: var(--bp-rule);
+  color: var(--bp-ink-2);
+  cursor: not-allowed;
+}
+
+.bp-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bp-action);
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.bp-link:hover:not(:disabled) {
+  text-decoration-thickness: 2px;
+}
+
+.bp-link:disabled {
+  color: var(--bp-ink-2);
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+.bp-link[data-danger] {
+  color: var(--bp-over);
+  font-weight: 700;
+}
+
+.bp-icon-btn {
+  width: 44px;
+  padding: 0;
+  border: 1px solid var(--bp-rule);
+  border-radius: 4px;
+  background: none;
+  color: var(--bp-ink);
+}
+
+.bp-icon-btn:hover {
+  border-color: var(--bp-ink-2);
+}
+
+.bp-note {
+  display: block;
+  margin-top: 4px;
+  color: var(--bp-ink-2);
+  font-size: 0.8125rem;
+}
+
+.bp-num {
+  font-weight: 600;
+}
+
+/* ── Month bar ──────────────────────────────────────────────────────────── */
+
+.bp-month {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 2px solid var(--bp-ink);
+}
+
+.bp-stepper {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: end;
+  gap: var(--c97-sp-1);
+}
+
+.bp-month-field .bp-field {
+  font-weight: 700;
+}
+
+.bp-sum {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-2);
+}
+
+.bp-sum dt {
+  color: var(--bp-ink-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.bp-sum-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.bp-sum-value[data-negative] {
+  color: var(--bp-over);
+}
+
+.bp-sum-note {
+  color: var(--bp-ink-2);
+  font-size: 0.8125rem;
+}
+
+.bp-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
 }
 
 @media screen and (min-width: 1024px) {
-  .c97-envelope-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .bp-month {
+    grid-template-columns: minmax(0, 17.5rem) minmax(0, 10rem) minmax(0, 10rem) minmax(0, 1fr) auto;
+    column-gap: var(--c97-sp-3);
+  }
+
+  .bp-stepper,
+  .bp-sum,
+  .bp-actions {
+    grid-column: auto;
+  }
+
+  .bp-sum {
+    column-gap: var(--c97-sp-3);
+  }
+
+  .bp-actions {
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
   }
 }
 
-/* The top padding keeps the name below the flap, sealed or torn, however many lines the body wraps to. */
-.c97-envelope {
+/* ── Envelopes ──────────────────────────────────────────────────────────── */
+
+.bp-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  margin-bottom: var(--c97-sp-2);
+}
+
+.bp-section-head h2 {
+  font-size: 1.375rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.bp-section-head p {
+  color: var(--bp-ink-2);
+  font-size: 0.9375rem;
+}
+
+.bp-envelope-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  gap: var(--c97-sp-2);
+}
+
+@media screen and (min-width: 640px) {
+  .bp-envelope-grid {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--c97-sp-3);
+  }
+}
+
+/* The envelope itself: kraft paper, a folded flap across the top, the name
+ * and budget written on its face, and a fill strip along its bottom edge. */
+.bp-envelope {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 40px var(--c97-sp-2) calc(var(--c97-sp-2) + 6px);
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--bp-kraft);
+  color: var(--bp-ink);
+}
+
+.bp-envelope-flap {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 32px;
+  background: var(--bp-kraft-fold);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* Over budget, the flap is torn open: a jagged rip in the overspent colour. */
+.bp-envelope[data-torn="true"] .bp-envelope-flap {
+  height: 18px;
+  background: var(--bp-over);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 70%, 94% 25%, 88% 80%, 81% 30%, 75% 85%, 69% 25%, 62% 80%, 56% 30%,
+    50% 85%, 44% 25%, 38% 80%, 31% 30%, 25% 85%, 19% 25%, 12% 80%, 6% 30%, 0% 75%
+  );
+}
+
+.bp-envelope-name {
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--bp-ink);
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+}
+
+.bp-envelope-name:hover,
+.bp-envelope-name:focus {
+  border-bottom-color: var(--bp-kraft-rule);
+}
+
+.bp-envelope-budget {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border-bottom: 1px solid var(--bp-kraft-rule);
+  background: var(--bp-paper);
+  color: var(--bp-ink-2);
+  font-size: 1.125rem;
+}
+
+.bp-envelope-budget input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--bp-ink);
+  font: inherit;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.bp-envelope-reading {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.bp-envelope-reading[data-over] {
+  color: var(--bp-over);
+}
+
+.bp-envelope-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1);
+}
+
+.bp-envelope-meta {
+  min-width: 0;
+  color: var(--bp-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.bp-envelope-foot .bp-link {
+  flex: none;
+  font-size: 0.875rem;
+}
+
+/* The fill strip, spent against budgeted, along the envelope's bottom edge. */
+.bp-envelope-fill {
+  position: absolute;
+  inset: auto 0 0;
+  height: 6px;
+  background: var(--bp-kraft-fold);
+}
+
+.bp-envelope-fill > span {
+  display: block;
+  height: 100%;
+  background: var(--bp-funded);
+}
+
+.bp-envelope[data-torn="true"] .bp-envelope-fill > span {
+  background: var(--bp-over);
+}
+
+/* The last tile is not an envelope, it is where a new one starts. */
+.bp-envelope-new form {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: var(--c97-sp-1);
-  min-height: 148px;
-  padding: calc(var(--envelope-flap) + var(--c97-sp-1)) var(--c97-sp-2) var(--c97-sp-2);
-  --envelope-flap: 52px;
-  overflow: hidden;
-  border: 1px solid var(--c97-rule);
+  height: 100%;
+  min-height: 8rem;
+  padding: var(--c97-sp-2);
+  border: 1px dashed var(--bp-kraft-rule);
+  border-radius: 3px;
 }
 
-/* The fill bar, anchored to the bottom, its height set inline from `envelope().fill`. */
-.c97-envelope-fill {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--c97-positive);
-  opacity: 0.28;
+.bp-envelope-new .bp-btn {
+  align-self: flex-start;
 }
 
-.c97-envelope[data-torn="true"] .c97-envelope-fill {
-  background: var(--c97-negative);
-  opacity: 0.32;
+/* ── Ledger ─────────────────────────────────────────────────────────────── */
+
+.bp-ledger {
+  margin-top: var(--c97-sp-2);
 }
 
-/* The closed flap, a plain fold when sealed. */
-.c97-envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--envelope-flap);
-  background: var(--c97-rule);
-  opacity: 0.4;
-  clip-path: polygon(0 0, 50% 62%, 100% 0);
+.bp-expense-form {
+  display: grid;
+  gap: var(--c97-sp-2);
+  align-items: end;
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 2px solid var(--bp-ink);
 }
 
-/* Torn open: the flap is gone and a jagged rip takes its place, in the mark colour. */
-.c97-envelope[data-torn="true"] .c97-envelope-flap {
-  height: calc(var(--envelope-flap) * 0.7);
-  background: var(--c97-negative);
-  opacity: 0.55;
-  clip-path: polygon(
-    0% 100%,
-    6% 35%,
-    13% 88%,
-    19% 30%,
-    26% 82%,
-    32% 25%,
-    39% 90%,
-    45% 32%,
-    52% 86%,
-    58% 28%,
-    65% 88%,
-    71% 30%,
-    78% 84%,
-    84% 25%,
-    91% 90%,
-    97% 30%,
-    100% 100%
-  );
+@media screen and (min-width: 768px) {
+  .bp-expense-form {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 9rem) minmax(0, 10rem) minmax(0, 1.4fr) auto;
+  }
 }
 
-.c97-envelope-body {
-  position: relative;
-  z-index: 1;
-  padding-top: var(--c97-sp-1);
+.bp-expense-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
 }
 
-/* Two envelopes across a 320px phone leave about 97px for the name, less than
-   "Entertainment" needs, so a long category name hyphenates instead of being cut. */
-.c97-envelope-name {
-  margin: 0;
-  hyphens: auto;
-  overflow-wrap: break-word;
+.bp-empty {
+  padding-block: var(--c97-sp-3);
+  color: var(--bp-ink-2);
 }
 
-.c97-envelope-amount,
-.c97-envelope-over {
-  margin: var(--c97-sp-1) 0 0;
-  font-size: var(--c97-fs-small);
+.bp-register {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
 }
 
-/* The check register. `.c97-table` handles the desktop layout; below 640px it
-   stacks each row into a labelled block so five columns never force a page
-   scroll on a phone. */
+.bp-register th,
+.bp-register td {
+  padding: var(--c97-sp-1) var(--c97-sp-2) var(--c97-sp-1) 0;
+  border-bottom: 1px solid var(--bp-rule);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.bp-register thead th {
+  color: var(--bp-ink-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.bp-register [data-align="end"] {
+  text-align: right;
+}
+
+.bp-register td[data-label="Amount"],
+.bp-register td[data-label="Balance"] {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bp-register td[data-negative] {
+  color: var(--bp-over);
+}
+
+.bp-register td[data-empty] {
+  color: var(--bp-ink-2);
+}
+
+.bp-register-actions {
+  padding-right: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.bp-register-actions .bp-link + .bp-link {
+  margin-left: var(--c97-sp-2);
+}
+
+/* Below 640px and on paper each row stacks into a labelled block, so six
+ * columns never force a page scroll on a phone. */
 @media print, screen and (max-width: 639px) {
-  .c97-checkregister thead {
+  .bp-register thead {
     display: none;
   }
 
-  .c97-checkregister,
-  .c97-checkregister tbody,
-  .c97-checkregister tr,
-  .c97-checkregister td {
+  .bp-register,
+  .bp-register tbody,
+  .bp-register tr,
+  .bp-register td {
     display: block;
     width: 100%;
   }
 
-  .c97-checkregister tr {
-    padding: var(--c97-sp-2) 0;
-    border-bottom: 1px solid var(--c97-rule);
+  .bp-register tr {
+    padding: var(--c97-sp-1) 0;
+    border-bottom: 1px solid var(--bp-rule);
   }
 
-  .c97-checkregister td {
+  .bp-register td {
     padding: 1px 0;
-    border-bottom: none;
+    border-bottom: 0;
     text-align: left !important;
   }
 
-  .c97-checkregister td[data-label]::before {
+  .bp-register td[data-label]::before {
     content: attr(data-label) ": ";
-    font-size: var(--c97-fs-label);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--c97-label);
+    color: var(--bp-ink-2);
+    font-size: 0.8125rem;
+  }
+}
+
+@media print {
+  .bp-actions,
+  .bp-envelope-new,
+  .bp-expense-form,
+  .bp-register-actions,
+  .bp-envelope-foot .bp-link,
+  .bp-stepper .bp-icon-btn {
+    display: none;
   }
 }

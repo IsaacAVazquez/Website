@@ -1,72 +1,370 @@
-/* Decision Lab: the four sliders, and beside them the confidence/impact
- * matrix with its rubber-stamp verdict. */
+/*
+ * Decision Lab. The route owns its design inside the site frame
+ * (docs/superpowers/specs/2026-10-11-project-sovereign-design.md), drawn as a
+ * scoring worksheet: the presets as a row of chips, the four sliders with the
+ * weighted ledger under them, and the confidence and impact matrix with its
+ * rubber-stamp verdict beside them. No boxes. The matrix reads the --c97-*
+ * tokens through inline style, so the root redeclares those from its own
+ * --dl-* properties. Everything here is scoped to the .dl root.
+ */
 
-.c97-decision-signature {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--c97-sp-5);
-  align-items: start;
+.dl {
+  --dl-paper: #f6f7f4;
+  --dl-ink: #18233a;
+  --dl-ink-2: #4d586b;
+  --dl-rule: #d3d8e0;
+  --dl-field: #e6eaf0;
+  --dl-input: #2747a8;
+  --dl-stamp: #b42318;
+
+  --c97-ink: var(--dl-ink);
+  --c97-ink-2: var(--dl-ink-2);
+  --c97-surface: var(--dl-paper);
+  --c97-rule: var(--dl-rule);
+  --c97-field: var(--dl-field);
+  --c97-overprint: var(--dl-stamp);
+  --c97-accent: var(--dl-input);
+
+  background: var(--dl-paper);
+  color: var(--dl-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-@media print, screen and (max-width: 840px) {
-  .c97-decision-signature {
-    grid-template-columns: minmax(0, 1fr);
+.dark .dl {
+  --dl-paper: #10141c;
+  --dl-ink: #e5e9f0;
+  --dl-ink-2: #a3adbd;
+  --dl-rule: #2e3747;
+  --dl-field: #1b2230;
+  --dl-input: #9bb4ff;
+  --dl-stamp: #ff7a6b;
+}
+
+.dl :where(p, ol, li, figure) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.dl :where(ol) {
+  list-style: none;
+}
+
+.dl h1,
+.dl h2 {
+  margin: 0;
+  color: var(--dl-ink);
+  font-family: var(--c97-font-body);
+}
+
+.dl-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+/* ── Title row ──────────────────────────────────────────────────────────── */
+
+.dl-title {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+
+.dl-title h1 {
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.dl-title p {
+  max-inline-size: 70ch;
+  color: var(--dl-ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+/* ── Presets ────────────────────────────────────────────────────────────── */
+
+.dl-presets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 2px solid var(--dl-ink);
+}
+
+.dl-preset-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--c97-sp-3);
+}
+
+.dl-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+/* On a phone the six presets stay one row that scrolls sideways, so they do
+ * not stack five rows deep above the sliders. */
+@media screen and (max-width: 639px) {
+  /* The scroll box clips, so it carries 5px of room on every side for the
+   * 2px focus ring at its 3px offset, and a matching negative margin keeps the
+   * first chip on the page's edge. */
+  .dl-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: -5px;
+    padding: 5px;
+    scroll-padding-inline: 5px;
+    scrollbar-width: thin;
+  }
+
+  .dl-chip {
+    flex: none;
   }
 }
 
-.c97-decision-matrix {
-  display: block;
-  width: 100%;
+.dl-chip {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--dl-rule);
+  border-radius: 999px;
+  background: none;
+  color: var(--dl-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.c97-decision-axis-label {
+.dl-chip:hover {
+  border-color: var(--dl-ink-2);
+}
+
+.dl-chip[aria-pressed="true"] {
+  border-color: var(--dl-ink);
+  background: var(--dl-ink);
+  color: var(--dl-paper);
+}
+
+.dl-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-3);
+}
+
+.dl-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--dl-input);
+  font: inherit;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.dl-link:hover:not(:disabled) {
+  text-decoration-thickness: 2px;
+}
+
+.dl-link:disabled {
+  color: var(--dl-ink-2);
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+.dl-copy {
+  color: var(--dl-ink-2);
+  font-size: 0.875rem;
+}
+
+.dl-preset-note {
+  color: var(--dl-ink-2);
+  font-size: 0.9375rem;
+}
+
+.dl-preset-note span {
+  color: var(--dl-ink);
+  font-weight: 600;
+}
+
+/* ── Worksheet ──────────────────────────────────────────────────────────── */
+
+/* Phone and paper: the sliders, the matrix, then the ledger. */
+.dl-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 960px) {
+  .dl-sheet {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+    grid-template-rows: auto 1fr;
+    align-items: start;
+    column-gap: var(--c97-sp-5);
+    row-gap: var(--c97-sp-4);
+  }
+
+  .dl-inputs {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .dl-figure {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    position: sticky;
+    top: var(--c97-sp-2);
+  }
+
+  .dl-why {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+.dl-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.dl-caption {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 2px solid var(--dl-ink);
+  font-family: var(--c97-font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dl-slider {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--dl-rule);
+}
+
+.dl-slider-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--c97-sp-2);
+}
+
+.dl-slider-head label {
+  margin-right: auto;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.dl-slider-value {
+  min-width: 2.5ch;
+  color: var(--dl-input);
+  font-family: var(--c97-font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.dl-slider-delta {
+  min-width: 9ch;
+  color: var(--dl-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  text-align: right;
+}
+
+.dl-slider-delta[data-changed] {
+  color: var(--dl-ink);
+  font-weight: 600;
+}
+
+.dl-range {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  accent-color: var(--dl-input);
+  cursor: pointer;
+}
+
+.dl-helper {
+  color: var(--dl-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* ── Matrix ─────────────────────────────────────────────────────────────── */
+
+.dl-matrix {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dl-axis-label {
   font-family: var(--c97-font-mono);
   font-size: 19px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  fill: var(--c97-ink-2);
+  fill: var(--dl-ink-2);
 }
 
-
-.c97-decision-point-label {
+.dl-point-label {
   font-family: var(--c97-font-mono);
   font-size: 16px;
-  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  fill: var(--c97-ink);
+  fill: var(--dl-ink);
 }
 
 /* The matrix scales to about 0.6 at phone width, which took the label to 10px.
  * Screen only, since paper prints the matrix on a 740px layout. */
 @media screen and (max-width: 639px) {
-  .c97-decision-point-label {
+  .dl-point-label {
     font-size: 20px;
   }
 }
 
-.c97-decision-stamp-word {
+/* A rubber stamp is the one place a poster face is the object. */
+.dl-stamp-word {
   font-family: var(--c97-font-poster);
   font-size: 52px;
   letter-spacing: 0.02em;
-  fill: var(--c97-overprint);
+  fill: var(--dl-stamp);
 }
 
 /* The stamp's own group, so its stamp-down animation never touches the rest
- * of the SVG (and never the page, which is what the blank-body bug did). */
-.c97-decision-stamp {
+ * of the SVG (and never the page). */
+.dl-stamp {
   transform-box: fill-box;
   transform-origin: center;
   opacity: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .c97-decision-stamp {
-    animation: c97-decision-stamp-down 260ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  .dl-stamp {
+    animation: dl-stamp-down 260ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
   }
 }
 
-@keyframes c97-decision-stamp-down {
+@keyframes dl-stamp-down {
   from {
     opacity: 0;
     transform: scale(1.35);
@@ -77,54 +375,96 @@
   }
 }
 
-.c97-decision-caption {
-  margin: 0;
-  font-size: var(--c97-fs-small);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--c97-ink-2);
-}
+/* ── Ledger ─────────────────────────────────────────────────────────────── */
 
-.c97-decision-contribution-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--c97-sp-3);
-  align-items: center;
-  padding: var(--c97-sp-2) 0;
-  border-bottom: 1px solid var(--c97-rule);
-}
-
-.c97-decision-contribution-row:last-child {
-  border-bottom: 0;
-}
-
-.c97-decision-body-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
-  gap: var(--c97-sp-5);
-}
-
-@media print, screen and (max-width: 700px) {
-  .c97-decision-body-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.c97-decision-preset-grid {
-  display: grid;
+.dl-why {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-2);
 }
 
-/* One 2px border in every state, so pressing a preset changes its colour and
- * never its size. */
-.c97-decision-preset-grid > button {
-  border: 2px solid var(--c97-rule);
+.dl-why h2 {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 2px solid var(--dl-ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.c97-decision-preset-grid > button[aria-pressed="true"] {
-  border-color: var(--c97-ink);
+.dl-contribution {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  padding-block: 6px;
+  border-bottom: 1px solid var(--dl-rule);
+  font-size: 0.9375rem;
 }
 
-.c97-decision-preset-grid > button:not([aria-pressed="true"]):hover {
-  border-color: var(--c97-ink-2);
+.dl-contribution-label {
+  font-weight: 600;
+}
+
+.dl-contribution-bar {
+  height: 6px;
+  background: var(--dl-field);
+}
+
+.dl-contribution-bar span {
+  display: block;
+  height: 100%;
+  background: var(--dl-ink-2);
+}
+
+.dl-contribution-math {
+  font-family: var(--c97-font-mono);
+  font-size: 0.875rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* The accounting mark for a bottom line: a rule above, a double rule below. */
+.dl-contribution-total {
+  border-top: 1px solid var(--dl-ink);
+  border-bottom: 3px double var(--dl-ink);
+}
+
+.dl-contribution-total .dl-contribution-math {
+  grid-column: 3;
+}
+
+@media screen and (max-width: 479px) {
+  .dl-contribution {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .dl-contribution-bar {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  .dl-contribution-total .dl-contribution-math {
+    grid-column: 2;
+  }
+}
+
+.dl-rationale {
+  max-inline-size: 70ch;
+  line-height: 1.55;
+}
+
+.dl-fine {
+  max-inline-size: 70ch;
+  color: var(--dl-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+@media print {
+  .dl-tools {
+    display: none;
+  }
 }

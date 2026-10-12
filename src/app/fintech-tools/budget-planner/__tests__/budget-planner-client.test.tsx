@@ -32,7 +32,7 @@ describe("BudgetPlannerClient", () => {
     expect(months["2026-04"].categories.length).toBeGreaterThan(1);
   });
 
-  it("ends the check register on the same amount the hero calls left to spend", async () => {
+  it("ends the check register on the same amount the month bar calls left to spend", async () => {
     localStorage.setItem(
       BUDGET_PLANNER_STORAGE_KEY,
       JSON.stringify({
@@ -53,7 +53,7 @@ describe("BudgetPlannerClient", () => {
 
     // 7200 income, 1000 set aside, 165 spent.
     const matches = await screen.findAllByText("$6,035");
-    expect(matches.some((el) => el.classList.contains("c97-stat-value"))).toBe(true);
+    expect(matches.some((el) => el.classList.contains("bp-sum-value"))).toBe(true);
     const balances = screen.getAllByRole("cell").filter((cell) => cell.getAttribute("data-label") === "Balance");
     expect(balances[balances.length - 1]).toHaveTextContent("$6,035");
   });
@@ -186,7 +186,7 @@ describe("BudgetPlannerClient", () => {
 
     expect(follows(screen.getByLabelText("Budget month"))).toBe(false);
     expect(follows(screen.getByLabelText("Monthly income"))).toBe(false);
-    expect(follows(container.querySelector(".c97-stat-value"))).toBe(true);
-    expect(follows(container.querySelector(".c97-envelope-grid"))).toBe(true);
+    expect(follows(container.querySelector(".bp-sum-value"))).toBe(true);
+    expect(follows(container.querySelector(".bp-envelope-grid"))).toBe(true);
   });
 });

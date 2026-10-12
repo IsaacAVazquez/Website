@@ -26,6 +26,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I built this around the questions I usually have before taking BART, from which line serves a station, to what is leaving next, to whether an alert changes the trip. It puts the system map, station board, and service context on one screen.",
   },
+  "/decision-lab": {
+    purpose:
+      "I built this to score a product bet on impact, confidence, effort, and reversibility one at a time, before anyone argues for it as a whole, and then let a weighted score and three plain rules call it ship, test, or hold. Every slider lives in the URL, so a scored bet can be shared as a link and argued about on the same numbers.",
+  },
   "/earthquake-pulse": {
     purpose:
       "I built this to make a busy earthquake feed easier to scan. It answers where meaningful activity happened, how strong and deep the events were, and which regions have been most active without requiring someone to sort through the raw event list first.",
@@ -37,6 +41,14 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/fantasy-football": {
     purpose:
       "I use this board to turn one large fantasy ranking into the decisions I actually make on draft day, including position runs, scoring changes, tier breaks, and where average draft position disagrees with expert consensus.",
+  },
+  "/fintech-tools/budget-planner": {
+    purpose:
+      "I built this to plan a month of spending before it happens, the way envelope budgeting works, where income minus a savings target is the money that gets split across the categories. Every expense I log comes out of its envelope and out of a running balance in the register, and each month saves in the browser and exports as a CSV when I want it in a spreadsheet.",
+  },
+  "/fintech-tools/interchange-iq": {
+    purpose:
+      "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It prices the same month of volume, ticket size, and card mix across seven processors' public rates and shows the ticket size where Stripe's interchange plus starts costing less than its flat rate.",
   },
   "/formula-1": {
     purpose:

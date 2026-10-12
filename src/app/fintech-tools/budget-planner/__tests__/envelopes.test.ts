@@ -20,8 +20,6 @@ describe("envelope", () => {
       fill: 0,
       torn: false,
       overBy: 0,
-      spentLabel: "$0",
-      budgetLabel: "$0",
     });
   });
 
