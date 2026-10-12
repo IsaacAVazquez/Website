@@ -24,7 +24,8 @@ import type {
   FantasyFormula1OptimizationCandidate,
 } from "@/types/fantasyFormula1";
 import { GarageSignature } from "./GarageSignature";
-import { formatMoney, normaliseTeamColor } from "./garage";
+import { normaliseTeamColor } from "@/lib/formula1TeamColor";
+import { formatMoney } from "./garage";
 import "./fantasy-formula-1.css";
 import {
   buildFantasyFormula1Href,
@@ -398,7 +399,7 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
   const router = useRouter();
   const searchParams = useSearchParams();
   const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("sort") !== null || searchParams.get("focus") !== null;
+    searchParams.get("sort") !== null || searchParams.get("focus") !== null;
   const routeState = useMemo(
     () => (hasManagedParams ? normalizeFantasyFormula1State(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
@@ -484,10 +485,11 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
   }
 
   function applyCandidate(candidate: FantasyFormula1OptimizationCandidate) {
-    updateLineup(() => ({
+    // The locks come from the newest save too, so a lock made in another tab survives.
+    updateLineup((current) => ({
       driverIds: candidate.drivers.map((asset) => asset.id),
       constructorIds: candidate.constructors.map((asset) => asset.id),
-      lockedAssetIds: lineup.lockedAssetIds.filter((id) => candidate.assets.some((asset) => asset.id === id)),
+      lockedAssetIds: current.lockedAssetIds.filter((id) => candidate.assets.some((asset) => asset.id === id)),
     }));
   }
 

@@ -1,3 +1,5 @@
+import { normaliseTeamColor } from "@/lib/formula1TeamColor";
+
 /** The subset of a driver or constructor standing the timing tower needs. */
 export interface TimingTowerEntry {
   position: number;
@@ -16,13 +18,6 @@ export interface TimingTowerRow {
   livery: string | null;
 }
 
-function normaliseLivery(color: string | null): string | null {
-  if (!color) return null;
-  const trimmed = color.trim();
-  if (trimmed.length === 0) return null;
-  return trimmed.startsWith("#") ? trimmed : `#${trimmed}`;
-}
-
 /**
  * The broadcast timing tower: each row's gap to the leader (its full points
  * deficit), the interval to the car directly ahead (the deficit to the next
@@ -39,7 +34,7 @@ export function timingTower<T extends TimingTowerEntry>(standings: T[]): (T & Ti
     gapToLeader: Math.max(0, leaderPoints - row.points),
     intervalToAhead: index === 0 ? null : Math.max(0, sorted[index - 1].points - row.points),
     movement: row.previousPosition === null ? null : row.previousPosition - row.position,
-    livery: normaliseLivery(row.teamColor),
+    livery: normaliseTeamColor(row.teamColor),
   }));
 }
 

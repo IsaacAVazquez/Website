@@ -3,7 +3,8 @@
 import { useMemo, type CSSProperties } from "react";
 import { Lock, RefreshCcw, Trash2, Unlock } from "lucide-react";
 import type { FantasyFormula1Asset, FantasyFormula1LineupSummary } from "@/types/fantasyFormula1";
-import { formatMoney, garageSlots, normaliseTeamColor, type GarageSlot } from "./garage";
+import { normaliseTeamColor } from "@/lib/formula1TeamColor";
+import { formatMoney, garageSlots, type GarageSlot } from "./garage";
 
 interface GarageProps {
   summary: FantasyFormula1LineupSummary;

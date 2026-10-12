@@ -381,6 +381,24 @@ describe("Formula1Client", () => {
     expect(mockPush).toHaveBeenCalledWith("/formula-1?view=calendar", { scroll: false });
   });
 
+  it("prints a row level on points with the leader as Level in the standings table", () => {
+    currentSearchParams = new URLSearchParams("view=constructors");
+    const level: Formula1Summary = {
+      ...summaryFixture,
+      constructorStandings: summaryFixture.constructorStandings.map((row) => ({ ...row, points: 132 })),
+    };
+
+    render(
+      <Formula1Client initialState={DEFAULT_FORMULA1_STATE} summary={level} initialMeeting={defaultMeetingDetail} />
+    );
+
+    const mercedes = within(screen.getByRole("table", { name: "Constructor championship" }))
+      .getByText("Mercedes")
+      .closest("tr") as HTMLElement;
+    expect(within(mercedes).getByText("Level")).toBeInTheDocument();
+    expect(within(mercedes).queryByText("−0")).not.toBeInTheDocument();
+  });
+
   it("fetches a deep-linked meeting's detail on demand and renders its classification", async () => {
     currentSearchParams = new URLSearchParams("meeting=1281");
 

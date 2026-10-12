@@ -21,6 +21,8 @@ import {
   resolveFormula1State,
 } from "./formula-1-state";
 import { TimingTowerSignature } from "./TimingTowerSignature";
+import { formatDeficit } from "./timingTower";
+import { normaliseTeamColor } from "@/lib/formula1TeamColor";
 import styles from "./formula-1.module.css";
 import {
   DATE_TIME_FORMATTER,
@@ -69,8 +71,7 @@ function formatGmtOffset(value: string | null): string | null {
 }
 
 function liveryOf(color: string | null): string {
-  if (!color) return "var(--f1-ink-2)";
-  return color.startsWith("#") ? color : `#${color}`;
+  return normaliseTeamColor(color) ?? "var(--f1-ink-2)";
 }
 
 async function fetchFormula1Meeting(
@@ -356,7 +357,7 @@ function StandingsTable({
                 {row.pointsDelta > 0 ? `+${formatPoints(row.pointsDelta)}` : "0"}
               </td>
               <td className={`${styles.num} ${styles.muted}`}>
-                {row.position === 1 ? "Leader" : `−${formatPoints(Math.max(0, leaderPoints - row.points))}`}
+                {row.position === 1 ? "Leader" : formatDeficit(Math.max(0, Math.round(leaderPoints - row.points)))}
               </td>
               <td className={styles.num}>
                 <PositionChangeIndicator currentPosition={row.position} previousPosition={row.previousPosition} />
@@ -420,7 +421,9 @@ function MeetingDetailPanel({ meeting, named }: { meeting: Formula1MeetingSummar
   const gmt = formatGmtOffset(meeting.gmtOffset);
   return (
     <article className={styles.detail} aria-label={`${meeting.name} weekend`}>
-      {named ? null : (
+      {named ? (
+        <h3 className="sr-only">{meeting.name} weekend</h3>
+      ) : (
         <>
           <p className={styles.kicker}>{getMeetingStatusCopy(meeting)}</p>
           <h3 className={styles.h3}>

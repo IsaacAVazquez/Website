@@ -29,13 +29,6 @@ export const FORMULA1_VIEW_LABELS: Record<Formula1View, string> = {
   calendar: "Calendar",
 };
 
-export const FORMULA1_VIEW_DESCRIPTIONS: Record<Formula1View, string> = {
-  overview: "Season pulse with the next race, title leaders, and the latest swing.",
-  drivers: "Full driver championship table with last-race point gains.",
-  constructors: "Full constructor table with last-race team movement.",
-  calendar: "Season timeline with weekend schedules and race classifications.",
-};
-
 function normalizeMeetingParam(meeting: string | null): string | null {
   if (!meeting) {
     return null;
