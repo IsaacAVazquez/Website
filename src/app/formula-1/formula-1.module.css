@@ -175,12 +175,13 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--c97-sp-4);
-  scroll-margin-top: var(--c97-sp-6);
+  /* Clears the sticky view switch, which is one 44px row plus its rule. */
+  scroll-margin-top: 56px;
 }
 
 @media screen and (min-width: 960px) {
   .board {
-    grid-template-columns: minmax(20rem, 22rem) minmax(0, 1fr);
+    grid-template-columns: minmax(22rem, 24rem) minmax(0, 1fr);
     align-items: start;
   }
 }
@@ -269,7 +270,7 @@
 }
 
 .anchor {
-  scroll-margin-top: var(--c97-sp-6);
+  scroll-margin-top: 56px;
 }
 
 /* ---- Timing tower ----------------------------------------------------- */
