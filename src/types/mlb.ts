@@ -71,6 +71,7 @@ export interface MlbStandingsRow {
   leagueRank: number;
   wildCardRank: number | null;
   gamesBack: number;
+  /** Games behind the last wild card slot; negative is a slot holder's lead (the API's "+N"). Snapshots built before 2026-10-12 print that lead unsigned. */
   wildCardGamesBack: number | null;
   wins: number;
   losses: number;

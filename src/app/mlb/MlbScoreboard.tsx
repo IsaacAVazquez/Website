@@ -31,9 +31,9 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
         return (
           <div key={board.name} className="mlb-division">
             <h3 id={headingId} className="mlb-division-name">
-              {board.name}
+              {board.name} <span className="sr-only">standings</span>
             </h3>
-            <table className="mlb-table" aria-label={`${board.name} standings`}>
+            <table className="mlb-table" aria-labelledby={headingId}>
               <thead>
                 <tr>
                   <th scope="col" className="mlb-col-team">Team</th>
@@ -41,7 +41,11 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
                     <abbr title="Wins and losses">W-L</abbr>
                   </th>
                   <th scope="col" className="mlb-num">
-                    <abbr title={board.kind === "wildcard" ? "Games back of the last wild card slot" : "Games back"}>GB</abbr>
+                    <abbr title={
+                        board.kind === "wildcard"
+                          ? "Games back of the last wild card slot, or a slot holder's lead over the first team out"
+                          : "Games back"
+                      }>GB</abbr>
                   </th>
                   <th scope="col" className="mlb-col-ten">
                     <abbr title="Last ten games, wins lit">L10</abbr>

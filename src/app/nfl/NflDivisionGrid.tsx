@@ -49,7 +49,7 @@ export function NflDivisionGrid({
                   className="nfl-division-row"
                   onClick={() => onSelect(team.id)}
                   aria-haspopup="dialog"
-                  aria-current={team.id === selectedId ? "true" : undefined}
+                  aria-pressed={team.id === selectedId}
                 >
                   <span
                     className="nfl-division-stripe"

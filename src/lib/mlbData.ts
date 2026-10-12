@@ -273,6 +273,16 @@ function parseGamesBack(value: string | null | undefined): number {
   return Number.isFinite(num) ? num : 0;
 }
 
+/**
+ * The API prints a wild card slot holder's lead over the first team out as
+ * "+9.5", so the sign is kept as a negative number (ahead of the line), where
+ * `parseGamesBack` would read it as 9.5 games behind.
+ */
+function parseWildCardGamesBack(value: string): number {
+  const games = parseGamesBack(value);
+  return value.trim().startsWith("+") ? -Math.abs(games) : games;
+}
+
 function parseRank(value: string | null | undefined): number | null {
   if (!value) return null;
   const trimmed = value.trim();
@@ -311,7 +321,7 @@ function normalizeStanding(
     leagueRank: parseRank(record.leagueRank) ?? 0,
     wildCardRank: parseRank(record.wildCardRank),
     gamesBack: parseGamesBack(record.divisionGamesBack),
-    wildCardGamesBack: record.wildCardGamesBack ? parseGamesBack(record.wildCardGamesBack) : null,
+    wildCardGamesBack: record.wildCardGamesBack ? parseWildCardGamesBack(record.wildCardGamesBack) : null,
     wins,
     losses,
     pct: Number.isFinite(pct) ? pct : wins / Math.max(wins + losses, 1),

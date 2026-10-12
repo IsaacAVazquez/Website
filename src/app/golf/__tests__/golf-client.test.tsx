@@ -333,4 +333,29 @@ describe("GolfClient", () => {
     await user.click(screen.getByRole("button", { name: "Show the top 20" }));
     expect(within(board()).getAllByRole("button")).toHaveLength(20);
   });
+
+  it("opens the whole field when a later link names a player below the first 20", () => {
+    const field = Array.from({ length: 25 }, (_, index) => ({
+      ...testSummary.leaderboard[0]!,
+      playerId: `player-${index + 1}`,
+      playerName: `Player ${index + 1}`,
+      position: `${index + 1}`,
+    }));
+    const summary = {
+      ...testSummary,
+      leaderboard: field,
+      players: field.map((row) => ({ id: row.playerId, name: row.playerName, country: row.country, position: row.position })),
+    };
+    const ui = () => <GolfClient initialState={DEFAULT_GOLF_STATE} summary={summary} initialPlayerSnapshot={null} />;
+    mockFetch.mockResolvedValue(makeOkResponse(getPlayerSnapshot("justin-thomas")));
+    const view = render(ui());
+    expect(within(screen.getByRole("region", { name: /full leaderboard/i })).getAllByRole("button")).toHaveLength(20);
+
+    currentSearchParams = new URLSearchParams("player=player-24");
+    view.rerender(ui());
+
+    const board = screen.getByRole("region", { name: /full leaderboard/i });
+    expect(within(board).getAllByRole("button")).toHaveLength(25);
+    expect(within(board).getByRole("row", { name: /Player 24/ })).toHaveAttribute("aria-current", "true");
+  });
 });

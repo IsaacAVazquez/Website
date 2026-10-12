@@ -333,9 +333,16 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
   const isDrawerOpen = drawerPlayerId !== null && drawerPlayerId === selectedPlayerId;
   // The board prints its first BOARD_LIMIT players. A link to a player further
   // down starts on the whole field, so their row is on the board.
-  const [showAllPlayers, setShowAllPlayers] = useState(
-    () => summary.leaderboard.findIndex((row) => row.playerId === selectedPlayerId) >= BOARD_LIMIT
-  );
+  const selectedIndex = summary.leaderboard.findIndex((row) => row.playerId === selectedPlayerId);
+  const [showAllPlayers, setShowAllPlayers] = useState(() => selectedIndex >= BOARD_LIMIT);
+  // A later client-side link can name a player further down too, so each new
+  // selection below the limit opens the whole field, while the toggle still
+  // works for the player already chosen.
+  const [expandedFor, setExpandedFor] = useState(selectedPlayerId);
+  if (expandedFor !== selectedPlayerId) {
+    setExpandedFor(selectedPlayerId);
+    if (selectedIndex >= BOARD_LIMIT) setShowAllPlayers(true);
+  }
   const boardRows = showAllPlayers ? summary.leaderboard : summary.leaderboard.slice(0, BOARD_LIMIT);
 
   useEffect(() => {

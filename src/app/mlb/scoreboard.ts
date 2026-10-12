@@ -105,10 +105,17 @@ export function divisionBoard(standings: readonly MlbStandingsRow[]): Scoreboard
   }));
 }
 
-function formatWildCardGamesBack(row: MlbStandingsRow): string {
+/**
+ * A slot holder prints its lead over the first team out as "+N" (the last
+ * slot, level with the line, prints "—"), and a chaser prints the games it
+ * trails the last slot by. The lead is read by rank rather than sign, since
+ * snapshots built before 2026-10-12 stored it unsigned.
+ */
+export function formatWildCardGamesBack(row: MlbStandingsRow): string {
   const gap = row.wildCardGamesBack;
-  if (gap === null || !Number.isFinite(gap) || gap <= 0) return "—";
-  return gap.toFixed(1);
+  if (gap === null || !Number.isFinite(gap) || gap === 0) return "—";
+  if (row.wildCardRank !== null && row.wildCardRank <= WILD_CARD_SLOTS) return `+${Math.abs(gap).toFixed(1)}`;
+  return gap > 0 ? gap.toFixed(1) : "—";
 }
 
 /**

@@ -63,6 +63,13 @@ const DIVISION_ORDER = [
   "NFC West",
 ] as const;
 
+const PLAYOFF_ROUND_LABELS: Record<string, string> = {
+  WC: "Wild Card round",
+  DIV: "Divisional round",
+  CON: "Conference championships",
+  SB: "Super Bowl",
+};
+
 const VIEW_OPTIONS: Array<{ id: NFLView; label: string }> = [
   { id: "league", label: "Both conferences" },
   { id: "afc", label: "AFC" },
@@ -322,8 +329,11 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const activeLeaderMeta = LEADER_TABS.find((tab) => tab.id === activeLeaderTab) ?? LEADER_TABS[0];
   const activeLeaders = summary.leaders[activeLeaderTab] ?? [];
-  const weekLabel = (fixture: { matchday: number | null }) =>
-    fixture.matchday ? `Week ${fixture.matchday}` : "Postseason";
+  // nflverse numbers the playoff rounds as weeks 19 to 22, so the label keys
+  // off the game type and only a regular-season game prints its week.
+  const weekLabel = (fixture: { matchday: number | null; gameType?: string | null }) =>
+    PLAYOFF_ROUND_LABELS[fixture.gameType ?? ""] ??
+    (fixture.matchday ? `Week ${fixture.matchday}` : "Unscheduled");
   const conferences = [
     ...(routeState.view !== "nfc" ? [{ id: "nfl-afc", label: "AFC", ladder: afcLadder }] : []),
     ...(routeState.view !== "afc" ? [{ id: "nfl-nfc", label: "NFC", ladder: nfcLadder }] : []),

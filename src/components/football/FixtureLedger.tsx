@@ -54,28 +54,27 @@ function FixtureLedgerRow({
 }) {
   const isFinal = fixture.status === "FINISHED";
   const hasShootout = fixture.score.shootoutHome != null && fixture.score.shootoutAway != null;
+  const finalScore = (
+    <span className="flex items-center justify-center text-base font-bold tabular-nums text-[var(--c97-ink)]">
+      {fixture.score.home ?? "–"}
+      <span className="px-0.5 text-[var(--c97-ink-2)]">–</span>
+      {fixture.score.away ?? "–"}
+    </span>
+  );
 
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-stretch border-b border-[var(--c97-rule)] transition-colors hover:bg-[var(--c97-field)]" style={{ paddingBlock: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
       <TeamCell team={fixture.homeTeam} onOpenTeam={onOpenTeam} />
       {isFinal && hasShootout ? (
         // A knockout tie settled on penalties (the World Cup) prints the shootout under the score.
-        <span className="flex flex-col items-center justify-center tabular-nums">
-          <span className="text-base font-bold text-[var(--c97-ink)]">
-            {fixture.score.home ?? "–"}
-            <span className="px-0.5 text-[var(--c97-ink-2)]">–</span>
-            {fixture.score.away ?? "–"}
-          </span>
-          <span className="text-2xs text-[var(--c97-ink-2)]">
+        <span className="flex flex-col justify-center">
+          {finalScore}
+          <span className="text-center text-2xs tabular-nums text-[var(--c97-ink-2)]">
             {fixture.score.shootoutHome}–{fixture.score.shootoutAway} pens
           </span>
         </span>
       ) : isFinal ? (
-        <span className="flex items-center justify-center text-base font-bold tabular-nums text-[var(--c97-ink)]">
-          {fixture.score.home ?? "–"}
-          <span className="px-0.5 text-[var(--c97-ink-2)]">–</span>
-          {fixture.score.away ?? "–"}
-        </span>
+        finalScore
       ) : (
         <span className="flex items-center justify-center text-center text-2xs text-[var(--c97-ink-2)]">
           {/* A placeholder clock (MLB's unset start times) prints the day and "time TBD" instead. */}

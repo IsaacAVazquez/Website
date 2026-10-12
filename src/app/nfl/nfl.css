@@ -84,7 +84,7 @@
   text-underline-offset: 3px;
 }
 
-.nfl-division-row[aria-current="true"] {
+.nfl-division-row[aria-pressed="true"] {
   background: color-mix(in srgb, var(--sb-ink) 8%, transparent);
 }
 

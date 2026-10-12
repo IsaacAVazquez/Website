@@ -64,6 +64,15 @@ const postseasonRoundLabels: Record<string, string> = {
   W: "World Series",
 };
 
+// The rest of the API's gameType codes, so a spring training or All-Star
+// game never groups under the regular season.
+const otherGameLabels: Record<string, string> = {
+  R: "Regular season",
+  S: "Spring training",
+  E: "Exhibition",
+  A: "All-Star Game",
+};
+
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
   return `${games.toFixed(1)} GB`;
@@ -222,7 +231,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     const team = canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team;
     // A game card can name a team the current view leaves out, so that team
     // opens in the full league, where it can be selected.
-    const view = filterStandings(standings, routeState.view).some((row) => row.id === team)
+    const view = visibleStandings.some((row) => row.id === team)
       ? routeState.view
       : defaultState.view;
     setDrawerTeamId(team);
@@ -274,7 +283,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   const updatedLabel =
     summary.updatedAt && summary.updatedAt > "1970-01-02" ? ` · updated ${snapshotDateLabel}` : "";
-  const roundLabel = (game: { stage: string | null }) => postseasonRoundLabels[game.stage ?? ""] ?? "Regular season";
+  const roundLabel = (game: { stage: string | null }) =>
+    postseasonRoundLabels[game.stage ?? ""] ?? otherGameLabels[game.stage ?? ""] ?? "Other games";
   const teamRecent = (teamSnapshot?.recentGames ?? []).slice(0, 3);
   const teamUpcoming = (teamSnapshot?.upcomingGames ?? []).slice(0, 3);
 

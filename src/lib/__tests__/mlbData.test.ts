@@ -94,7 +94,8 @@ function standingsPayload() {
             leagueRank: "3",
             wildCardRank: "1",
             divisionGamesBack: "4.0",
-            wildCardGamesBack: "-",
+            // A slot holder's lead over the first team out, as the API prints it.
+            wildCardGamesBack: "+2.0",
             wins: 50,
             losses: 40,
             winningPercentage: ".556",
@@ -394,6 +395,8 @@ describe("getMlbSummary", () => {
       "BOS",
       "LAD",
     ]);
+    // The "+2.0" lead keeps its sign, so it never reads as two games behind.
+    expect(summary.standings[1].wildCardGamesBack).toBe(-2);
     const yankeesRow = summary.standings[0];
     expect(yankeesRow.wins).toBe(55);
     expect(yankeesRow.losses).toBe(35);
