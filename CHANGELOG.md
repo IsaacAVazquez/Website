@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-12
+
+- Let project routes own their design inside the site frame ([#582](https://github.com/IsaacAVazquez/Website/pull/582)).
+
+---
+
 ## 2026-10-10
 
 - Project sweep across every dashboard and tool ([#581](https://github.com/IsaacAVazquez/Website/pull/581)).
