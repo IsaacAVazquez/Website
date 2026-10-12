@@ -14,6 +14,10 @@ describe("InterchangeIQClient", () => {
     expect(screen.getByText("Monthly fee breakdown")).toBeVisible();
     expect(screen.getByText("7 options · 588 transactions a month · sorted cheapest first")).toBeVisible();
     expect(screen.getAllByText("Cheapest")).toHaveLength(2);
+    // The breakdown is the statement itself, one expandable row per processor.
+    const statement = screen.getByRole("list");
+    expect(within(statement).getAllByRole("listitem")).toHaveLength(7);
+    expect(within(statement).getAllByText("Effective rate")).toHaveLength(7);
   });
 
   it("updates the live summary and processor ranking when inputs change", () => {
@@ -33,16 +37,10 @@ describe("InterchangeIQClient", () => {
     expect(screen.queryByText(/tx\/mo/)).toBeNull();
   });
 
-  it("switches in-page views, expands card-mix help, and resets inputs", () => {
+  // The in-page nav and its view filter were cut in the 2026-10-12 redesign, since
+  // its three filter links all pointed at one anchor; the statement shows every processor.
+  it("expands card-mix help and resets inputs", () => {
     render(<InterchangeIQClient />);
-
-    fireEvent.click(
-      within(screen.getByRole("navigation", { name: "In-page sections" })).getByRole(
-        "link",
-        { name: /breakeven/i }
-      )
-    );
-    expect(screen.getByText(/Interchange IQ \//)).toHaveTextContent("Breakeven");
 
     fireEvent.click(screen.getByRole("button", { name: /learn about card mix/i }));
     expect(screen.getByText(/different card types carry different interchange rates/i)).toBeVisible();
@@ -80,14 +78,14 @@ describe("InterchangeIQClient", () => {
     expect(screen.getAllByText("$12.50")[0]).toBeVisible();
   });
 
-  it("puts the four inputs ahead of the figures and the fee comparison", () => {
+  it("puts the four inputs ahead of the verdict and the fee statement", () => {
     const { container } = render(<InterchangeIQClient />);
     const lastInput = screen.getByLabelText("Amex share of credit in percent");
     const follows = (node: Element | null) =>
       Boolean(node && lastInput.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING);
 
     expect(follows(screen.getByLabelText("Monthly volume"))).toBe(false);
-    expect(follows(container.querySelector(".c97-stat-value"))).toBe(true);
-    expect(follows(container.querySelector(".c97-iq-statement"))).toBe(true);
+    expect(follows(container.querySelector(".iq-verdict"))).toBe(true);
+    expect(follows(container.querySelector(".iq-statement"))).toBe(true);
   });
 });
