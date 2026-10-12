@@ -19,7 +19,6 @@ export const metadata = constructMetadata({
 
 interface FantasyFormula1PageProps {
   searchParams: Promise<{
-    view?: string;
     sort?: string;
     focus?: string;
   }>;
