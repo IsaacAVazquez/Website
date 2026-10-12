@@ -21,6 +21,10 @@ interface Props {
   onResearch: (symbol: string) => void;
   /** Every symbol in the portfolio, so a filtered table keeps each holding's colour. */
   portfolioSymbols?: readonly string[];
+  /** Controls printed in the table head beside Export CSV, such as the filter. */
+  toolbar?: React.ReactNode;
+  /** The empty row, when the table is empty for a reason other than the filter. */
+  emptyMessage?: string;
 }
 
 
@@ -328,7 +332,7 @@ function buildHoldingsCsv(holdings: EnhancedHolding[]): string {
   return `\uFEFF${[header.join(","), ...rows].join("\r\n")}`;
 }
 
-export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfolioSymbols }: Props) {
+export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfolioSymbols, toolbar, emptyMessage }: Props) {
   const sorted = React.useMemo(
     () =>
       [...holdings].sort(
@@ -352,19 +356,23 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
         <div>
           <h2>Holdings</h2>
           <div className="invest-panel-head-meta">
-            {holdings.length} {holdings.length === 1 ? "position" : "positions"} · sorted by allocation
+            {holdings.length} {holdings.length === 1 ? "position" : "positions"}
+            {holdings.length > 0 ? " · sorted by allocation" : null}
           </div>
         </div>
-        {holdings.length > 0 ? (
-          <button
-            type="button"
-            className="invest-ghost"
-            onClick={handleExportCsv}
-            aria-label="Export holdings as a CSV file"
-          >
-            Export CSV
-          </button>
-        ) : null}
+        <div className="invest-panel-tools">
+          {toolbar}
+          {holdings.length > 0 ? (
+            <button
+              type="button"
+              className="invest-ghost"
+              onClick={handleExportCsv}
+              aria-label="Export holdings as a CSV file"
+            >
+              Export CSV
+            </button>
+          ) : null}
+        </div>
       </div>
       <div className="overflow-x-auto" role="region" tabIndex={0} aria-label="Holdings table">
         <table className="invest-holdings">
@@ -385,10 +393,9 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
               <tr>
                 <td
                   colSpan={8}
-                  className="c97-meta"
-                  style={{ padding: "var(--c97-sp-4) var(--c97-sp-3)" }}
+                  className="invest-empty-row"
                 >
-                  No holdings match this filter. Clear the search box to see every position.
+                  {emptyMessage ?? "No holdings match this filter. Clear the search box to see every position."}
                 </td>
               </tr>
             ) : null}

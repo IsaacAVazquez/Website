@@ -81,8 +81,6 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/fintech-tools/rent-vs-buy": {
     purpose:
       "I built this because most rent versus buy comparisons stop at the monthly payment, and the question I actually care about is what I would be worth years from now on each path. It keeps the five inputs that move the answer most beside the verdict and the net-worth chart, with the rest one click away.",
-    method:
-      "The engine runs a month-by-month model in nominal dollars. It credits the renter with the down payment and closing costs a buyer would spend, invests each month's cost difference on whichever side spends less, and finds the month buying pulls ahead. Investment growth is untaxed on both sides, the standard deduction is not modeled, and the tax figures are dated assumptions, so the result is educational and not advice.",
   },
   "/premier-league": {
     purpose:
@@ -103,7 +101,5 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/wine-cellar": {
     purpose:
       "I wanted a cellar book I would actually keep, with one line per bottle carrying the producer, the vintage, where it is from, and what I thought of it on a half-star scale. The log is the page, so adding a bottle and finding the one I opened last month happen in the same place.",
-    method:
-      "Everything is saved in this browser under one key, with no account or server behind it, and each entry is cleaned up when it is read back, from snapping the rating to half stars, to dropping a vintage outside 1800 to 2100, to discarding a negative price. Each save reads the latest copy first and other open tabs pick up the change through the browser's storage event, so two tabs do not overwrite each other.",
   },
 };

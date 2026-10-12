@@ -3,7 +3,6 @@
 import { Plus, X } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { ModernButton } from "@/components/ui/ModernButton";
-import { TerminalPanel } from "./TerminalPanel";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentIndexEntry, PortfolioHolding } from "@/types/investment";
 
@@ -123,21 +122,16 @@ export function AddStockForm({ onAdd }: Props) {
 
   if (!open) {
     return (
-      <ModernButton variant="accent" size="md" onClick={() => setOpen(true)} ariaLabel="Add holding">
+      <ModernButton variant="accent" size="sm" className="w-full" onClick={() => setOpen(true)} ariaLabel="Add holding">
         <Plus size={16} /> Add holding
       </ModernButton>
     );
   }
 
   return (
-    <TerminalPanel padding="sm" ariaLabel="Add stock form">
-      <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)" }}>
-        <div>
-          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Add position</h3>
-          <p className="text-xs text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-            Save a holding locally to include it in portfolio analytics.
-          </p>
-        </div>
+    <div role="group" aria-label="Add stock form">
+      <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)" }}>
+        <h3 className="invest-rail-heading">New position</h3>
         <button
           onClick={() => { setOpen(false); clearError(); }}
           className="text-[var(--c97-label)] hover:text-[var(--c97-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -224,6 +218,6 @@ export function AddStockForm({ onAdd }: Props) {
           </ModernButton>
         </div>
       </form>
-    </TerminalPanel>
+    </div>
   );
 }

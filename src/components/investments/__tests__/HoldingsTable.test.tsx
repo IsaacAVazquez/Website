@@ -200,7 +200,9 @@ describe("HoldingsTable", () => {
 
   it("renders an empty table body when given no holdings", () => {
     renderTable([]);
-    expect(screen.getByText(/0 positions · sorted by allocation/)).toBeInTheDocument();
+    // Nothing to sort, so the head says only the count.
+    expect(screen.getByText(/^0 positions$/)).toBeInTheDocument();
+    expect(screen.queryByText(/sorted by allocation/)).not.toBeInTheDocument();
     const table = screen.getByRole("table");
     // only the header row is present
     expect(within(table).queryByText("AAPL")).not.toBeInTheDocument();

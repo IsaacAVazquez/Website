@@ -408,6 +408,19 @@ test.describe("Investments", () => {
 
   test("prints the retirement projection when the planner was never scrolled to", async ({ page }) => {
     await routeInvestmentsFixtures(page);
+    // Since the 2026-10-11 redesign the planner starts about a screen down, so
+    // a first load can already sit inside its lazy window. An observer that
+    // never reports holds it out of view whatever the page's height.
+    await page.addInitScript(() => {
+      window.IntersectionObserver = class {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+        takeRecords() {
+          return [];
+        }
+      } as unknown as typeof IntersectionObserver;
+    });
 
     await page.goto("/investments");
     await expectInvestmentsShell(page);
@@ -466,7 +479,7 @@ test.describe("Investments", () => {
           style(selector)?.gridTemplateColumns.split(" ").length ?? null;
         return {
           shellColumns: columns(".invest-shell"),
-          sidebar: style(".invest-sidebar")?.display ?? null,
+          // One section navigation since 2026-10-11, and links do nothing on paper.
           sectionRail: style("[class*='sectionRail']")?.display ?? null,
           heroColumns: columns(".invest-hero"),
           statColumns: columns("[class*='statsGrid']"),
@@ -481,8 +494,7 @@ test.describe("Investments", () => {
     // so the read repeats until every piece is on the page.
     await expect.poll(readLayout).toEqual({
       shellColumns: 1,
-      sidebar: "none",
-      sectionRail: "flex",
+      sectionRail: "none",
       heroColumns: 1,
       statColumns: 2,
       trendColumn: "none",
@@ -558,9 +570,9 @@ const savedHoldings = [
 ];
 
 test.describe("Investments links that name a section", () => {
-  // The targets the sidebar links to on an empty portfolio, plus the form the
-  // stats panel links to.
-  for (const id of ["hero", "performance", "portfolio-stats", "add-holding", "research-section", "retirement"]) {
+  // The targets the section rail links to on an empty portfolio, plus the
+  // add-holding form the title bar scrolls to.
+  for (const id of ["hero", "performance", "holdings-list", "add-holding", "research-section", "retirement"]) {
     test(`a fresh load of #${id} lands on it`, async ({ page }) => {
       await routeInvestmentsFixtures(page);
 
@@ -576,9 +588,9 @@ test.describe("Investments links that name a section", () => {
     });
   }
 
-  // The holdings ledger and the allocation chart only render once the saved
+  // The stats row and the allocation chart only render once the saved
   // positions load, which is after the page has hydrated.
-  for (const id of ["holdings-list", "allocation"]) {
+  for (const id of ["portfolio-stats", "allocation"]) {
     test(`a fresh load of #${id} lands on it once the saved holdings render`, async ({ page }) => {
       await page.addInitScript((holdings) => {
         window.localStorage.setItem("portfolio_holdings", JSON.stringify(holdings));

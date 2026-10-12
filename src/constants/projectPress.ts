@@ -36,7 +36,6 @@ export const PROJECT_PRESS: Readonly<Record<string, ProjectPress>> = {
   "/march-madness-2026": { lead: "blue", second: "vermilion" },
   "/fintech-tools/budget-planner": { lead: "green", second: "saffron" },
   "/fintech-tools/interchange-iq": { lead: "blue", second: "saffron" },
-  "/investments": { lead: "blue", second: "saffron" },
   "/investments/before-you-buy": { lead: "blue", second: "saffron" },
   "/decision-lab": { lead: "pink", second: "blue" },
   "/enablement-assistant": { lead: "blue", second: "saffron" },

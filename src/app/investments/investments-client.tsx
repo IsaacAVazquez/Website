@@ -93,6 +93,7 @@ export function InvestmentsClient({
   return (
     <div
       className={styles.terminalScope}
+      data-c97-surface="espresso"
       data-testid="investments-shell"
     >
       <InvestmentsDashboard

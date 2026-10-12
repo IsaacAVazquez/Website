@@ -89,8 +89,9 @@ describe("investments date labels", () => {
       );
     });
 
+    // The title bar prints the date once; the footer's source line no longer repeats it.
     expect(container.textContent).toContain("Research data as of Sep 15, 2026");
-    expect(container.textContent).toContain("Curated snapshot · Sep 15, 2026");
+    expect(container.textContent.match(/Sep 15, 2026/g)).toHaveLength(1);
     expectEveryDateInUtc();
   });
 
