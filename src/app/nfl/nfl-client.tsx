@@ -366,7 +366,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
           <h2 id="nfl-divisions-heading" className="sb-h2">
             Divisions
           </h2>
-          <p className="sb-muted">Each team striped in its own colours, leaders marked.</p>
+          <p className="sb-muted">Each team is striped in its own colours, and the division leaders are marked.</p>
         </div>
         <NflDivisionGrid divisions={divisionGroups} selectedId={selectedTeam.id} onSelect={handleTeamChange} />
       </section>

@@ -284,8 +284,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         <div className="sb-titlebar">
           <h1 className="sb-title">MLB Pulse</h1>
           <p className="sb-standfirst">
-            The division and wild card races laid out the way the out-of-town scoreboard at the ballpark shows them,
-            team by team, with the games back and each club&apos;s last ten easy to scan.
+            I lay the division and wild card races out the way the out-of-town scoreboard at the ballpark shows
+            them, team by team, so the games back and each club&apos;s last ten are easy to scan.
           </p>
           <p className="sb-status">
             <span className="sb-state" data-state={isPostseason ? "post" : "live"}>
