@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 
 export interface DivisionGridTeam {
   id: string;
+  name: string;
   shortName: string;
   record: string;
   primaryColor: string | null;
@@ -15,35 +16,52 @@ export interface DivisionGridGroup {
 }
 
 function stripeStyle(primary: string | null, secondary: string | null): CSSProperties {
-  const top = primary ?? "var(--c97-ink-2)";
+  const top = primary ?? "var(--sb-ink-2)";
   const bottom = secondary ?? top;
   return { background: `linear-gradient(180deg, ${top} 0 50%, ${bottom} 50% 100%)` };
 }
 
 /**
- * The eight divisions as a grid, each team a row striped in its own
- * primary and secondary colour. Colour stays in the stripe; the team name
- * and record print in ink.
+ * The eight divisions as a ruled grid, each team a row striped in its own
+ * primary and secondary colour that opens the team drawer. Colour stays in
+ * the stripe; the team name and record print in ink, and the leader is
+ * marked in words.
  */
-export function NflDivisionGrid({ divisions }: { divisions: DivisionGridGroup[] }) {
+export function NflDivisionGrid({
+  divisions,
+  selectedId,
+  onSelect,
+}: {
+  divisions: DivisionGridGroup[];
+  selectedId: string | null;
+  onSelect: (teamId: string) => void;
+}) {
   return (
-    <div className="c97-nfl-divisions">
+    <div className="nfl-divisions">
       {divisions.map((division) => (
-        <div key={division.name} className="c97-nfl-division">
-          <p className="c97-kicker">{division.name}</p>
-          <ol className="c97-nfl-division-rows">
+        <div key={division.name} className="nfl-division">
+          <h3 className="nfl-division-name">{division.name}</h3>
+          <ol className="nfl-division-rows">
             {division.teams.map((team) => (
-              <li key={team.id} className="c97-nfl-division-row">
-                <span
-                  className="c97-nfl-division-stripe"
-                  style={stripeStyle(team.primaryColor, team.secondaryColor)}
-                  aria-hidden="true"
-                />
-                <span className="c97-serif c97-nfl-division-name">
-                  {team.shortName}
-                  {team.isLeader ? <span className="c97-nfl-division-leader">Leads</span> : null}
-                </span>
-                <span className="c97-mono c97-nfl-division-record">{team.record}</span>
+              <li key={team.id}>
+                <button
+                  type="button"
+                  className="nfl-division-row"
+                  onClick={() => onSelect(team.id)}
+                  aria-haspopup="dialog"
+                  aria-current={team.id === selectedId ? "true" : undefined}
+                >
+                  <span
+                    className="nfl-division-stripe"
+                    style={stripeStyle(team.primaryColor, team.secondaryColor)}
+                    aria-hidden="true"
+                  />
+                  <span className="nfl-division-team">
+                    <span className="sb-team-name">{team.shortName}</span>
+                    {team.isLeader ? <span className="nfl-division-leader">Leads</span> : null}
+                  </span>
+                  <span className="nfl-division-record">{team.record}</span>
+                </button>
               </li>
             ))}
           </ol>

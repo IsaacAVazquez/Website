@@ -10,7 +10,8 @@ export const metadata = constructMetadata({
   description:
     "Interactive NFL dashboard with conference seedings, division leaders, playoff cutoffs, point differential context, and snapshot stat leaders for passing, rushing, receiving, and sacks.",
   canonicalUrl: "/nfl",
-  dateModified: nflSnapshot.updatedAt,
+  // The redesign shipped on 2026-10-12, so the page is at least that new.
+  dateModified: nflSnapshot.updatedAt > "2026-10-12" ? nflSnapshot.updatedAt : "2026-10-12",
 });
 
 interface NflPageProps {
@@ -62,7 +63,7 @@ export default async function NflPage({ searchParams }: NflPageProps) {
             "Snapshot standings, point differential context, and stat leaders",
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
-          dateModified: nflSnapshot.updatedAt,
+          dateModified: nflSnapshot.updatedAt > "2026-10-12" ? nflSnapshot.updatedAt : "2026-10-12",
           offers: freeApplicationOffer,
         }}
       />

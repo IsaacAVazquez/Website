@@ -1,68 +1,118 @@
-/* NFL Pulse: the division grid below the hero. */
+/*
+ * NFL Pulse, the playoff picture on a cool stats sheet with navy rules. The
+ * colour that means anything is data: the in and out bands, the team colour
+ * chips, and the division stripes. The skeleton is sports-board.css.
+ */
 
-.c97-nfl-divisions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: var(--c97-sp-4);
+.nfl-root {
+  --sb-bg: #f7f8fa;
+  --sb-ink: #0f1a2c;
+  --sb-ink-2: #4c5668;
+  --sb-rule: rgba(15, 26, 44, 0.13);
+  --sb-rule-strong: rgba(15, 26, 44, 0.36);
+  --sb-raise: #e9edf3;
+  --sb-focus: #1d4ed8;
+  --sb-pos: #1e7a3c;
+  --sb-neg: #b3261e;
+  --sl-band-0: #1d4ed8;
+  --sl-band-1: #8a93a3;
 }
 
-.c97-nfl-division-rows {
-  display: grid;
-  border-top: 1px solid var(--c97-rule);
-  margin: var(--c97-sp-2) 0 0;
-  padding: 0;
-  list-style: none;
+.dark .nfl-root {
+  --sb-bg: #0d131d;
+  --sb-ink: #e8edf5;
+  --sb-ink-2: #a2acbd;
+  --sb-rule: rgba(232, 237, 245, 0.12);
+  --sb-rule-strong: rgba(232, 237, 245, 0.32);
+  --sb-raise: #18202d;
+  --sb-focus: #8ab4ff;
+  --sb-pos: #6fcf8f;
+  --sb-neg: #f08a80;
+  --sl-band-0: #8ab4ff;
+  --sl-band-1: #5d6677;
 }
 
-.c97-nfl-division-row {
+.nfl-root .sb-state[data-state="live"] { --sb-state: var(--sl-band-0); }
+.nfl-root .sb-state[data-state="final"] { --sb-state: var(--sb-ink); }
+
+/* The division grid, the second screen. */
+
+.sb-board-second {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-3);
+}
+
+.nfl-divisions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+}
+
+.sb-root .nfl-division-name {
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--sb-rule-strong);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sb-ink-2);
+}
+
+.nfl-division-row {
   display: grid;
   grid-template-columns: 10px minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--c97-sp-2);
-  min-height: 34px;
-  padding: var(--c97-sp-1) 0;
-  border-bottom: 1px solid var(--c97-rule);
-  font-size: var(--c97-fs-small);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--sb-rule);
+  background: none;
+  color: var(--sb-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  text-align: left;
+  cursor: pointer;
 }
 
-.c97-nfl-division-stripe {
+.nfl-division-row:hover .sb-team-name,
+.nfl-division-row:focus-visible .sb-team-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nfl-division-row[aria-current="true"] {
+  background: color-mix(in srgb, var(--sb-ink) 8%, transparent);
+}
+
+.nfl-division-stripe {
   width: 10px;
-  height: 22px;
-  border: 1px solid var(--c97-ink-2);
+  height: 24px;
+  border: 1px solid var(--sb-rule-strong);
+  border-radius: 2px;
 }
 
-.c97-nfl-division-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--c97-ink);
+.nfl-division-team {
+  display: flex;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+  font-weight: 600;
 }
 
-.c97-nfl-division-leader {
-  margin-left: var(--c97-sp-2);
-  font-family: var(--c97-font-body);
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.08em;
+.nfl-division-leader {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--c97-label);
+  color: var(--sb-ink-2);
 }
 
-.c97-nfl-division-record {
-  text-align: right;
-  color: var(--c97-ink-2);
-}
-
-/* The standings table on a phone. The full table is 525px wide and a phone's
- * column is 334px. Below 640px it keeps the seed, the team, the record, and
- * the point differential in tighter cells, and the columns it drops are in
- * the team drawer. */
-@media print, screen and (max-width: 639px) {
-  .c97-table.c97-nfl-table th,
-  .c97-table.c97-nfl-table td {
-    padding-inline: var(--c97-sp-1);
-  }
-
-  .c97-table.c97-nfl-table [data-wide] {
-    display: none;
-  }
+.nfl-division-record {
+  font-family: var(--c97-font-mono);
+  font-size: 0.875rem;
+  color: var(--sb-ink-2);
 }
