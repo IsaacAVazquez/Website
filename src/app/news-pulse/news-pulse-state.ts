@@ -7,27 +7,19 @@ import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const NEWS_PULSE_ROUTE = "/news-pulse";
 
-export const VIEW_OPTIONS = ["headlines", "coverage", "analysis"] as const;
-
-export type NewsPulseView = (typeof VIEW_OPTIONS)[number];
 export type NewsSource = "all" | NewsFeedId;
 
+// The page is one front page since the 2026-10-12 redesign, so the old
+// ?view=coverage and ?view=analysis links land on it and only the headline
+// source filter lives in the URL.
 export interface NewsPulseSearchState {
-  view: NewsPulseView;
   source: NewsSource;
 }
 
 export const SOURCE_OPTIONS: readonly NewsSource[] = ["all", ...NEWS_SOURCE_IDS];
 
 export const DEFAULT_NEWS_PULSE_STATE: NewsPulseSearchState = {
-  view: "headlines",
   source: "all",
-};
-
-export const VIEW_LABELS: Record<NewsPulseView, string> = {
-  headlines: "Headlines",
-  coverage: "Coverage map",
-  analysis: "Analysis",
 };
 
 export const SOURCE_LABELS: Record<NewsSource, string> = {
@@ -37,48 +29,18 @@ export const SOURCE_LABELS: Record<NewsSource, string> = {
   ),
 } as Record<NewsSource, string>;
 
-function isValidOption<T extends string>(
-  value: string | null,
-  options: readonly T[],
-): value is T {
-  return !!value && options.includes(value as T);
-}
-
-function normalizeRouteState(state: NewsPulseSearchState): NewsPulseSearchState {
-  if (state.view !== "headlines") {
-    return { ...state, source: DEFAULT_NEWS_PULSE_STATE.source };
-  }
-
-  return state;
-}
-
 export function normalizeNewsPulseState(input: SearchParamInput): NewsPulseSearchState {
-  const rawView = readParam(input, "view");
   const rawSource = readParam(input, "source");
-
-  return normalizeRouteState({
-    view: isValidOption(rawView, VIEW_OPTIONS)
-      ? rawView
-      : DEFAULT_NEWS_PULSE_STATE.view,
-    source: isValidOption(rawSource, SOURCE_OPTIONS)
-      ? rawSource
-      : DEFAULT_NEWS_PULSE_STATE.source,
-  });
+  return {
+    source:
+      rawSource && SOURCE_OPTIONS.includes(rawSource as NewsSource)
+        ? (rawSource as NewsSource)
+        : DEFAULT_NEWS_PULSE_STATE.source,
+  };
 }
 
 export function buildNewsPulseHref(state: NewsPulseSearchState): string {
-  const normalizedState = normalizeRouteState(state);
-  const params = new URLSearchParams();
-
-  if (normalizedState.view !== DEFAULT_NEWS_PULSE_STATE.view) {
-    params.set("view", normalizedState.view);
-  }
-
-  if (normalizedState.source !== DEFAULT_NEWS_PULSE_STATE.source) {
-    params.set("source", normalizedState.source);
-  }
-
-  const queryString = params.toString();
-  return queryString ? `${NEWS_PULSE_ROUTE}?${queryString}` : NEWS_PULSE_ROUTE;
+  return state.source === DEFAULT_NEWS_PULSE_STATE.source
+    ? NEWS_PULSE_ROUTE
+    : `${NEWS_PULSE_ROUTE}?source=${state.source}`;
 }
-

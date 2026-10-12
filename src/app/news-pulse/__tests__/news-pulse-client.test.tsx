@@ -110,22 +110,22 @@ describe("NewsPulseClient", () => {
       ).toBeVisible(),
     );
 
-    expect(screen.getByText(/I built News Pulse to get a fast read/i)).toBeVisible();
-    expect(screen.getByText("6 outlets tracked")).toBeVisible();
+    expect(screen.getByText(/What six newsrooms are leading with right now/i)).toBeVisible();
+    // The dateline carries the pull and the outlet count that the readouts used to repeat.
+    expect(screen.getByText("2 headlines from 2 of 6 outlets")).toBeVisible();
     expect(
       screen.getByRole("combobox", { name: /Source/i }),
     ).toBeVisible();
-    expect(screen.queryByText(/Story clusters across outlets/i)).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "Headlines" })).toBeVisible();
+    expect(screen.getByRole("heading", { level: 2, name: "Tone and density" })).toBeVisible();
   });
 
-  it("keeps every view tab reachable from the keyboard", () => {
+  it("prints one front page with no view tabs", () => {
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
     render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
-    const tabs = screen.getAllByRole("tab");
-    expect(tabs.length).toBeGreaterThan(1);
-    for (const tab of tabs) {
-      expect(tab).not.toHaveAttribute("tabindex", "-1");
-    }
+    // The Headlines, Coverage map, and Analysis tabs merged into sections in the 2026-10-12 redesign.
+    expect(screen.queryAllByRole("tab")).toHaveLength(0);
+    expect(screen.queryByRole("link", { name: "Jump to the desk" })).toBeNull();
   });
 
   it("renders server-provided headlines before the browser refresh resolves", () => {
@@ -154,9 +154,8 @@ describe("NewsPulseClient", () => {
     unmount();
   });
 
-  it("clears a stale source filter when switching away from headlines", async () => {
-    const user = userEvent.setup();
-    currentSearchParams = new URLSearchParams("source=guardian");
+  it("keeps the source filter from an old view link and filters the headlines", async () => {
+    currentSearchParams = new URLSearchParams("view=coverage&source=guardian");
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
 
     render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
@@ -166,51 +165,10 @@ describe("NewsPulseClient", () => {
         screen.getByRole("heading", { level: 3, name: sampleArticles[1].title }),
       ).toBeVisible(),
     );
-
-    await user.click(screen.getByRole("tab", { name: "Coverage map" }));
-
-    expect(mockPush).toHaveBeenCalledWith("/news-pulse?view=coverage", {
-      scroll: false,
-    });
-  });
-
-  it("only shows the source dropdown on the headlines view", async () => {
-    currentSearchParams = new URLSearchParams("view=coverage&source=guardian");
-    mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
-
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
-
-    await waitFor(() =>
-      expect(screen.getByRole("tab", { name: "Coverage map" })).toHaveAttribute(
-        "aria-selected",
-        "true",
-      ),
-    );
-
     expect(
-      screen.queryByRole("combobox", { name: /Source/i }),
+      screen.queryByRole("heading", { level: 3, name: sampleArticles[0].title }),
     ).not.toBeInTheDocument();
-  });
-
-  it("ignores stale source params on deep-linked non-headline views", async () => {
-    const user = userEvent.setup();
-    currentSearchParams = new URLSearchParams("view=analysis&source=guardian");
-    mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
-
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
-
-    await waitFor(() =>
-      expect(screen.getByRole("tab", { name: "Analysis" })).toHaveAttribute(
-        "aria-selected",
-        "true",
-      ),
-    );
-
-    await user.click(screen.getByRole("tab", { name: "Headlines" }));
-
-    expect(mockPush).toHaveBeenCalledWith("/news-pulse", {
-      scroll: false,
-    });
+    expect(screen.getByRole("combobox", { name: /Source/i })).toHaveValue("guardian");
   });
 
   it("updates the route when a source is selected from the dropdown", async () => {
@@ -293,37 +251,44 @@ describe("NewsPulseClient", () => {
     expect(screen.queryByText(/No headlines match this filter/i)).not.toBeInTheDocument();
   });
 
-  it("renders story clusters on the coverage view", async () => {
-    currentSearchParams = new URLSearchParams("view=coverage");
-    mockFetch.mockResolvedValue(
-      makeOkResponse({
-        articles: clusteredArticles,
-        fetchedAt: "2026-04-08T16:30:00.000Z",
-        errors: [],
-      }),
-    );
+  it("prints tone, length, and readability as one ruled table by outlet", async () => {
+    mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
 
     render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
 
-    await waitFor(() =>
-      expect(screen.getByText("Story clusters across outlets")).toBeVisible(),
-    );
-
-    const clusterTable = screen.getByRole("table", { name: "Story clusters by outlet" });
-    expect(within(clusterTable).getByRole("columnheader", { name: "Story cluster" })).toBeVisible();
-    expect(
-      within(clusterTable).getByRole("columnheader", { name: "Representative headline" }),
-    ).toBeVisible();
-    expect(
-      within(clusterTable).getByRole("link", { name: clusteredArticles[0].title }),
-    ).toBeVisible();
+    const table = await screen.findByRole("table", { name: "Tone and density by outlet" });
+    for (const name of ["Outlet", "Headlines", "Positive", "Neutral", "Negative", "Words per headline", "Readability"]) {
+      expect(within(table).getByRole("columnheader", { name })).toBeInTheDocument();
+    }
+    expect(within(table).getByRole("rowheader", { name: SOURCE_META.atlantic.name })).toBeInTheDocument();
   });
 
-  it("prints each story cluster as a card with outlet counts and its headlines", async () => {
-    currentSearchParams = new URLSearchParams("view=coverage");
+  it("runs the other cross-outlet stories down the front page with their outlet counts", async () => {
+    const floods: NewsArticle[] = [
+      {
+        title: "Coastal flood warnings widen as hurricane storm surge nears Gulf",
+        link: "https://example.com/floods-npr",
+        description: "Forecasters extend hurricane storm surge flood warnings along the Gulf coast.",
+        pubDate: "2026-04-08T15:00:00.000Z",
+        category: "Weather",
+        source: "npr",
+        sourceName: SOURCE_META.npr.name,
+        sourceColor: SOURCE_META.npr.color,
+      },
+      {
+        title: "Hurricane storm surge prompts wider Gulf coast flood warnings",
+        link: "https://example.com/floods-nyt",
+        description: "Gulf coast flood warnings widen as the hurricane storm surge nears.",
+        pubDate: "2026-04-08T14:50:00.000Z",
+        category: "Weather",
+        source: "nyt",
+        sourceName: SOURCE_META.nyt.name,
+        sourceColor: SOURCE_META.nyt.color,
+      },
+    ];
     mockFetch.mockResolvedValue(
       makeOkResponse({
-        articles: clusteredArticles,
+        articles: [...clusteredArticles, ...floods],
         fetchedAt: "2026-04-08T16:30:00.000Z",
         errors: [],
       }),
@@ -331,19 +296,16 @@ describe("NewsPulseClient", () => {
 
     render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
 
-    const cards = await screen.findByRole("list", { name: "Story clusters" });
-    const card = within(cards).getAllByRole("listitem")[0];
-    expect(card).toHaveTextContent("3 headlines across 3 outlets.");
-    for (const article of clusteredArticles) {
-      expect(card).toHaveTextContent(`${article.sourceName} 1`);
-    }
-
-    const coverage = within(card).getByText("Show all 3 headlines").closest("details") as HTMLElement;
-    expect(coverage).not.toHaveAttribute("open");
-    for (const article of clusteredArticles) {
-      expect(
-        within(coverage).getByRole("link", { name: article.title, hidden: true }),
-      ).toHaveAttribute("href", article.link);
+    const stories = await screen.findByRole("list", { name: "Story clusters" });
+    const story = within(stories).getAllByRole("listitem")[0];
+    expect(story).toHaveTextContent("2 headlines across 2 outlets.");
+    const all = within(story).getByText("Show all 2 headlines").closest("details") as HTMLElement;
+    expect(all).not.toHaveAttribute("open");
+    for (const article of floods) {
+      expect(within(all).getByRole("link", { name: article.title, hidden: true })).toHaveAttribute(
+        "href",
+        article.link,
+      );
     }
   });
 
@@ -371,9 +333,5 @@ describe("NewsPulseClient", () => {
     ).getAllByRole("listitem", { hidden: true });
     expect(topics.length).toBeGreaterThan(0);
     expect(topics[0]).toHaveTextContent(/\w+ \d+/);
-
-    const link = screen.getByRole("link", { name: "Jump to the desk" });
-    const desk = document.getElementById((link.getAttribute("href") as string).slice(1));
-    expect(desk).toContainElement(screen.getByRole("tablist", { name: "News Pulse tabs" }));
   });
 });

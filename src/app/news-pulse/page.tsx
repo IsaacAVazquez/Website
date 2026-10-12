@@ -9,13 +9,12 @@ export const metadata = constructMetadata({
   description:
     "Live news media analytics dashboard aggregating RSS feeds from 6 major outlets. Visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis.",
   canonicalUrl: "/news-pulse",
-  dateModified: "2026-10-09",
+  dateModified: "2026-10-12",
   image: "/news-pulse/opengraph-image",
 });
 
 interface NewsPulsePageProps {
   searchParams: Promise<{
-    view?: string;
     source?: string;
   }>;
 }
@@ -45,7 +44,7 @@ export default async function NewsPulsePage({ searchParams }: NewsPulsePageProps
             "Live news media analytics dashboard aggregating RSS feeds from major outlets with coverage pattern visualization, topic extraction, and sentiment analysis.",
           url: "https://isaacvazquez.com/news-pulse",
           image: "https://isaacvazquez.com/news-pulse/opengraph-image",
-          dateModified: "2026-10-09",
+          dateModified: "2026-10-12",
           applicationCategory: "NewsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

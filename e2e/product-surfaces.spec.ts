@@ -152,15 +152,17 @@ test.describe("Product surfaces", () => {
     await expectNoHorizontalOverflow(page);
   });
 
-  test("news pulse dashboard boots and switches editorial views", async ({
+  test("news pulse dashboard boots as one front page with its sections", async ({
     page,
   }) => {
     await expectHealthyRoute(page, "/news-pulse", /News Pulse/i);
     await expect(page.getByTestId("news-pulse-shell")).toBeVisible();
 
-    const coverageTab = page.getByRole("tab", { name: /Coverage Map/i });
-    await coverageTab.click();
-    await expect(coverageTab).toHaveAttribute("aria-selected", "true");
+    // The Coverage map and Analysis tabs merged into the front page and the
+    // tone table in the 2026-10-12 redesign, so the sections are all on the page.
+    await expect(page.getByRole("region", { name: "Front page" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 2, name: "Headlines" })).toBeVisible();
+    await expect(page.getByRole("combobox", { name: /Source/i })).toBeVisible();
     await expectNoHorizontalOverflow(page);
   });
 });
