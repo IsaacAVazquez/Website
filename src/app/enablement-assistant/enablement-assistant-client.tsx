@@ -1,15 +1,7 @@
 "use client";
 
-import {
-  useMemo,
-  useState,
-  type CSSProperties,
-  type FormEvent,
-  type ReactNode,
-} from "react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { useMemo, useState, type FormEvent } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   CI_OPTIONS,
   DEFAULT_TEAM_INTAKE,
@@ -42,127 +34,11 @@ import {
   updateIntake,
   type IntakeStep,
 } from "./enablement-state";
+import "./enablement.css";
 
 type WorkspaceView = "program" | "team";
 
-const ROUTE = "/enablement-assistant";
-
-/*
- * Every section on this route is a Catalog 97 band. The shared styles below
- * are the few compositions the vocabulary has no class for: a fieldset drawn
- * as a panel, a check-plus-text option row, the small helper line under an
- * option, a fixed-pitch snippet block, and the wrapping header row that puts
- * an action beside a section heading.
- */
-const fieldsetStyle: CSSProperties = {
-  border: 0,
-  margin: 0,
-  minWidth: 0,
-};
-
-/*
- * A legend sits in the fieldset's border area, above its padding, so on a
- * panel it would hug the top edge. Floating it puts it back in normal flow
- * inside the padding; the block after it clears the float.
- */
-const legendStyle: CSSProperties = {
-  float: "left",
-  width: "100%",
-  padding: 0,
-};
-
-const optionStyle: CSSProperties = {
-  display: "flex",
-  alignItems: "flex-start",
-  gap: "var(--c97-sp-2)",
-  minHeight: 44,
-  paddingBlock: "var(--c97-sp-1)",
-  cursor: "pointer",
-};
-
-const optionLabelStyle: CSSProperties = {
-  display: "block",
-  fontSize: "var(--c97-fs-body)",
-  lineHeight: "var(--c97-lh-tight)",
-  color: "var(--c97-ink)",
-};
-
-const helperStyle: CSSProperties = {
-  display: "block",
-  marginTop: "var(--c97-sp-1)",
-  fontSize: "var(--c97-fs-small)",
-  lineHeight: "var(--c97-lh-body)",
-  color: "var(--c97-ink-2)",
-};
-
-const smallTextStyle: CSSProperties = {
-  fontSize: "var(--c97-fs-small)",
-  lineHeight: "var(--c97-lh-body)",
-  color: "var(--c97-ink-2)",
-  margin: 0,
-};
-
-const snippetStyle: CSSProperties = {
-  margin: 0,
-  padding: "var(--c97-sp-2)",
-  fontSize: "var(--c97-fs-small)",
-  lineHeight: "var(--c97-lh-body)",
-  color: "var(--c97-ink)",
-  background: "var(--c97-field)",
-  overflowX: "auto",
-};
-
-const headerRowStyle: CSSProperties = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "space-between",
-  alignItems: "flex-end",
-  gap: "var(--c97-sp-3)",
-};
-
-const fullWidthButtonStyle: CSSProperties = {
-  width: "100%",
-  justifyContent: "center",
-  marginTop: "var(--c97-sp-2)",
-};
-
-const termStyle: CSSProperties = {
-  margin: 0,
-  marginTop: "var(--c97-sp-1)",
-  fontSize: "var(--c97-fs-small)",
-  lineHeight: "var(--c97-lh-body)",
-  color: "var(--c97-ink)",
-};
-
-function SectionHeading({
-  id,
-  kicker,
-  title,
-  children,
-}: {
-  id?: string;
-  kicker: string;
-  title: string;
-  children?: ReactNode;
-}) {
-  return (
-    <div style={{ maxWidth: "var(--c97-column)" }}>
-      <p className="c97-kicker">{kicker}</p>
-      <h2 id={id} className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
-        {title}
-      </h2>
-      {children ? (
-        <div
-          className="c97-prose"
-          style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-        >
-          {children}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
+/** A label above its value; the label comes first so a reader meets the name before the number. */
 function MetricCard({
   value,
   label,
@@ -173,10 +49,10 @@ function MetricCard({
   detail: string;
 }) {
   return (
-    <div className="c97-stat">
-      <p className="c97-stat-label">{label}</p>
-      <p className="c97-stat-value c97-tabular">{value}</p>
-      <p className="c97-stat-delta">{detail}</p>
+    <div className="ea-metric">
+      <p className="ea-label">{label}</p>
+      <p className="ea-metric-value">{value}</p>
+      <p className="ea-small">{detail}</p>
     </div>
   );
 }
@@ -189,32 +65,27 @@ function WorkspaceTabs({
   onChange: (view: WorkspaceView) => void;
 }) {
   return (
-    <div
-      className="c97-segmented"
-      role="group"
-      aria-label="Enablement workspace views"
-    >
+    <div className="ea-switch" role="group" aria-label="Enablement workspace views">
       {(
         [
           ["program", "Program dashboard"],
           ["team", "Onboard a team"],
         ] as const
-      ).map(([id, label]) => {
-        const active = view === id;
-        return (
-          <button
-            key={id}
-            type="button"
-            aria-pressed={active}
-            onClick={() => onChange(id)}
-            className="c97-microlink"
-          >
-            {label}
-          </button>
-        );
-      })}
+      ).map(([id, label]) => (
+        <button key={id} type="button" aria-pressed={view === id} onClick={() => onChange(id)}>
+          {label}
+        </button>
+      ))}
     </div>
   );
+}
+
+function statusChipClass(status: "standard" | "partial" | "drift"): string {
+  return status === "standard"
+    ? "c97-chip c97-chip-positive"
+    : status === "partial"
+      ? "c97-chip c97-chip-warning"
+      : "c97-chip c97-chip-negative";
 }
 
 function ProgramDashboard({ onStart }: { onStart: () => void }) {
@@ -225,32 +96,26 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
   );
 
   return (
-    <div>
-      <section
-        aria-labelledby="program-metrics-heading"
-        className="c97-band c97-sheet"
-        data-c97-surface="bone"
-        data-seam="deckle"
-      >
-        <div className="c97-shell">
-          <div style={headerRowStyle}>
-            <SectionHeading
-              id="program-metrics-heading"
-              kicker="Portfolio signal"
-              title="See where the standard is holding"
-            >
-              <p>
-                This simulated view covers twelve independent teams. I care about the resolution
-                rate, but the more useful output is the failure log because it tells the central
-                team where documentation and integrations still break down.
-              </p>
-            </SectionHeading>
-            <button type="button" className="c97-btn" onClick={onStart}>
-              Onboard a team
-            </button>
+    <div className="ea-program">
+      <section aria-labelledby="program-metrics-heading" className="ea-section">
+        <div className="ea-section-head">
+          <div>
+            <h2 id="program-metrics-heading" className="ea-h2">
+              See where the standard is holding
+            </h2>
+            <p className="ea-lede">
+              This is twelve simulated teams on one standard, with the stack each one runs, the
+              setup questions it resolves on its own, and where it has drifted.
+            </p>
           </div>
+          <button type="button" className="c97-btn" onClick={onStart}>
+            Onboard a team
+          </button>
+        </div>
 
-          <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
+        {/* The program's own summary is the table's header row. */}
+        <div className="ea-table-block">
+          <div className="ea-metrics">
             <MetricCard
               value={`${metrics.resolutionRate}%`}
               label="Resolved without a human"
@@ -272,116 +137,22 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
               detail="Questions tied to shared test environment access"
             />
           </div>
-        </div>
-      </section>
-
-      <section
-        aria-labelledby="feedback-loop-heading"
-        className="c97-band c97-sheet c97-band-tall"
-        data-c97-surface="ink-blue"
-        data-seam="torn"
-      >
-        <div className="c97-shell c97-columns">
-          <div>
-            <p className="c97-kicker">Feedback loop</p>
-            <h2
-              id="feedback-loop-heading"
-              className="c97-poster-sm"
-              style={{ marginTop: "var(--c97-sp-2)" }}
-            >
-              The failure log becomes the documentation roadmap.
-            </h2>
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-3)",
-                color: "var(--c97-ink-2)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              Every low-confidence answer is a trace of where the platform failed to transfer
-              knowledge. Ranked across teams, those traces show which guide, integration, or
-              policy clarification should be written next.
-            </p>
-          </div>
-
-          <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
-            {DOCUMENTATION_GAPS.map((gap, index) => (
-              <li
-                key={gap.question}
-                className="c97-row c97-row-numbered"
-                style={{
-                  borderTop: "1px solid var(--c97-rule)",
-                  paddingBlock: "var(--c97-sp-3)",
-                  rowGap: "var(--c97-sp-2)",
-                }}
-              >
-                <span
-                  className="c97-mono"
-                  style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-label)" }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <p className="c97-prose">{gap.question}</p>
-                  <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
-                    {gap.teams} teams · owner {gap.owner}
-                  </p>
-                </div>
-                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  {gap.count} asks
-                </span>
-                <span
-                  className="c97-meter"
-                  style={{ gridColumn: "2 / -1" }}
-                  role="progressbar"
-                  aria-valuenow={gap.count}
-                  aria-valuemin={0}
-                  aria-valuemax={maxGapCount}
-                  aria-label={`${gap.question}: ${gap.count} unanswered questions`}
-                >
-                  <span
-                    style={{ width: `${Math.round((gap.count / maxGapCount) * 100)}%` }}
-                  />
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section
-        aria-labelledby="adoption-heading"
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          <SectionHeading
-            id="adoption-heading"
-            kicker="Team adoption"
-            title="One standard, twelve local realities"
-          >
-            <p>
-              The useful comparison is visible by team, from the stack each team runs, to the
-              questions it resolves, to the exact point where it has drifted.
-            </p>
-          </SectionHeading>
-
           <div
             role="region"
             aria-label="Standard adoption by team"
             tabIndex={0}
-            style={{ overflowX: "auto", marginTop: "var(--c97-sp-4)" }}
+            className="ea-table-scroll"
           >
-            <table className="c97-table" style={{ minWidth: 760 }}>
+            <table className="ea-table">
               <thead>
                 <tr>
                   <th scope="col">Team</th>
                   <th scope="col">Surface</th>
                   <th scope="col">Toolchain</th>
                   <th scope="col">Adoption</th>
-                  <th scope="col" data-align="end">Resolved</th>
+                  <th scope="col" data-align="end">
+                    Resolved
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -393,42 +164,15 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
                   );
                   return (
                     <tr key={team.name}>
-                      {/*
-                       * A row header, not a column header, so the sticky
-                       * uppercase label treatment `.c97-table th` gives column
-                       * headings is undone here.
-                       */}
-                      <th
-                        scope="row"
-                        style={{
-                          position: "static",
-                          fontSize: "var(--c97-fs-small)",
-                          letterSpacing: 0,
-                          textTransform: "none",
-                          color: "var(--c97-ink)",
-                          background: "none",
-                        }}
-                      >
-                        {team.name}
-                      </th>
-                      <td style={{ color: "var(--c97-ink-2)" }}>
-                        {LABELS.surfaces[team.surface]}
-                      </td>
-                      <td style={{ color: "var(--c97-ink-2)" }}>{team.toolchain}</td>
+                      <th scope="row">{team.name}</th>
+                      <td>{LABELS.surfaces[team.surface]}</td>
+                      <td>{team.toolchain}</td>
                       <td>
-                        <span
-                          className={`c97-chip ${
-                            team.standardStatus === "standard"
-                              ? "c97-chip-positive"
-                              : team.standardStatus === "partial"
-                                ? "c97-chip-warning"
-                                : "c97-chip-negative"
-                          }`}
-                        >
+                        <span className={statusChipClass(team.standardStatus)}>
                           {team.standardStatus}
                         </span>
                       </td>
-                      <td data-align="end" className="c97-mono">
+                      <td data-align="end" className="ea-num">
                         {rate}%
                       </td>
                     </tr>
@@ -437,100 +181,74 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
               </tbody>
             </table>
           </div>
-        </div>
-      </section>
-
-      <section
-        aria-labelledby="drift-heading"
-        className="c97-band c97-sheet"
-        data-c97-surface="bone"
-        data-seam="deckle"
-      >
-        <div className="c97-shell">
-          <SectionHeading
-            id="drift-heading"
-            kicker="Standards drift"
-            title="Where teams are leaving the shared path"
-          >
-            <p>
-              Partial adoption matters because a team can use the recommended framework and still
-              preserve the reporting and maintenance differences that made the portfolio hard to
-              support.
-            </p>
-          </SectionHeading>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "var(--c97-sp-3)",
-              marginTop: "var(--c97-sp-4)",
-            }}
-          >
-            {driftTeams.map((team) => (
-              <article key={team.name} className="c97-panel">
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    justifyContent: "space-between",
-                    gap: "var(--c97-sp-2)",
-                  }}
-                >
-                  <div>
-                    <p className="c97-kicker">
-                      {LABELS.surfaces[team.surface]} · {team.standardStatus}
-                    </p>
-                    <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
-                      {team.name}
-                    </h3>
-                  </div>
-                  <span
-                    style={{
-                      flexShrink: 0,
-                      marginTop: 4,
-                      width: 10,
-                      height: 10,
-                      background:
-                        team.standardStatus === "drift"
-                          ? "var(--c97-negative)"
-                          : "var(--c97-warning)",
-                    }}
-                    aria-hidden="true"
-                  />
-                </div>
-                <p
-                  className="c97-prose"
-                  style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
-                >
-                  {team.driftReason}
-                </p>
-                <p
-                  className="c97-kicker"
-                  style={{
-                    marginTop: "var(--c97-sp-3)",
-                    paddingTop: "var(--c97-sp-2)",
-                    borderTop: "1px solid var(--c97-rule)",
-                  }}
-                >
-                  Current stack · {team.toolchain}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <p
-            style={{
-              ...smallTextStyle,
-              marginTop: "var(--c97-sp-5)",
-              paddingTop: "var(--c97-sp-3)",
-              borderTop: "1px solid var(--c97-rule)",
-            }}
-          >
+          <p className="ea-small">
             This dashboard uses invented, committed seed data for a portfolio demo. It does not
             describe a real organization or production program.
           </p>
         </div>
       </section>
+
+      <div className="ea-split">
+        <section aria-labelledby="feedback-loop-heading" className="ea-section">
+          <h2 id="feedback-loop-heading" className="ea-h2">
+            The failure log becomes the documentation roadmap.
+          </h2>
+          <p className="ea-lede">
+            Every low-confidence answer is a trace of where the platform failed to transfer
+            knowledge, so ranked across teams the traces say which guide or integration to write
+            next.
+          </p>
+          <ol className="ea-gaps">
+            {DOCUMENTATION_GAPS.map((gap, index) => (
+              <li key={gap.question}>
+                <span className="ea-rank">{String(index + 1).padStart(2, "0")}</span>
+                <div className="ea-gap-body">
+                  <p className="ea-gap-question">{gap.question}</p>
+                  <p className="ea-small">
+                    {gap.teams} teams · owner {gap.owner}
+                  </p>
+                  <span
+                    className="ea-meter"
+                    role="progressbar"
+                    aria-valuenow={gap.count}
+                    aria-valuemin={0}
+                    aria-valuemax={maxGapCount}
+                    aria-label={`${gap.question}: ${gap.count} unanswered questions`}
+                  >
+                    <span style={{ width: `${Math.round((gap.count / maxGapCount) * 100)}%` }} />
+                  </span>
+                </div>
+                <span className="ea-num ea-gap-count">{gap.count} asks</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section aria-labelledby="drift-heading" className="ea-section">
+          <h2 id="drift-heading" className="ea-h2">
+            Where teams are leaving the shared path
+          </h2>
+          <p className="ea-lede">
+            A team can use the recommended framework and still keep the reporting and maintenance
+            differences that made the portfolio hard to support.
+          </p>
+          <ul className="ea-drift">
+            {driftTeams.map((team) => (
+              <li key={team.name} className="ea-card">
+                <div className="ea-card-head">
+                  <h3 className="ea-h3">{team.name}</h3>
+                  <span className={statusChipClass(team.standardStatus)}>
+                    {team.standardStatus}
+                  </span>
+                </div>
+                <p className="ea-small">{LABELS.surfaces[team.surface]}</p>
+                <p className="ea-body">{team.driftReason}</p>
+                <p className="ea-small ea-card-foot">Current stack · {team.toolchain}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
@@ -551,19 +269,11 @@ function RadioOption({
   onChange: () => void;
 }) {
   return (
-    <label style={optionStyle}>
-      <input
-        type="radio"
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        className="c97-check"
-        style={{ flexShrink: 0, marginTop: 2 }}
-      />
+    <label className="ea-option">
+      <input type="radio" name={name} value={value} checked={checked} onChange={onChange} />
       <span>
-        <span style={optionLabelStyle}>{label}</span>
-        {helper ? <span style={helperStyle}>{helper}</span> : null}
+        <span className="ea-option-label">{label}</span>
+        {helper ? <span className="ea-option-helper">{helper}</span> : null}
       </span>
     </label>
   );
@@ -580,67 +290,45 @@ function IntakeForm({
 }) {
   if (step === 0) {
     return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-          gap: "var(--c97-sp-3)",
-        }}
-      >
-        <fieldset className="c97-panel" style={fieldsetStyle}>
-          <legend className="c97-serif c97-h3" style={legendStyle}>
-            Primary surface
-          </legend>
-          <div style={{ clear: "both", display: "grid", gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-            {SURFACE_OPTIONS.map((option) => (
-              <RadioOption
-                key={option.value}
-                name="surface"
-                value={option.value}
-                checked={intake.surface === option.value}
-                label={option.label}
-                onChange={() =>
-                  onIntakeChange(updateIntake(intake, "surface", option.value))
-                }
-              />
-            ))}
-          </div>
+      <div className="ea-fields">
+        <fieldset className="ea-fieldset">
+          <legend>Primary surface</legend>
+          {SURFACE_OPTIONS.map((option) => (
+            <RadioOption
+              key={option.value}
+              name="surface"
+              value={option.value}
+              checked={intake.surface === option.value}
+              label={option.label}
+              onChange={() => onIntakeChange(updateIntake(intake, "surface", option.value))}
+            />
+          ))}
         </fieldset>
-        <fieldset className="c97-panel" style={fieldsetStyle}>
-          <legend className="c97-serif c97-h3" style={legendStyle}>
-            Primary language
-          </legend>
-          <div style={{ clear: "both", display: "grid", gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-            {LANGUAGE_OPTIONS.map((option) => (
-              <RadioOption
-                key={option.value}
-                name="language"
-                value={option.value}
-                checked={intake.language === option.value}
-                label={option.label}
-                onChange={() =>
-                  onIntakeChange(updateIntake(intake, "language", option.value))
-                }
-              />
-            ))}
-          </div>
+        <fieldset className="ea-fieldset">
+          <legend>Primary language</legend>
+          {LANGUAGE_OPTIONS.map((option) => (
+            <RadioOption
+              key={option.value}
+              name="language"
+              value={option.value}
+              checked={intake.language === option.value}
+              label={option.label}
+              onChange={() => onIntakeChange(updateIntake(intake, "language", option.value))}
+            />
+          ))}
         </fieldset>
-        <fieldset className="c97-panel" style={fieldsetStyle}>
-          <legend className="c97-serif c97-h3" style={legendStyle}>
-            CI system
-          </legend>
-          <div style={{ clear: "both", display: "grid", gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-            {CI_OPTIONS.map((option) => (
-              <RadioOption
-                key={option.value}
-                name="ci"
-                value={option.value}
-                checked={intake.ci === option.value}
-                label={option.label}
-                onChange={() => onIntakeChange(updateIntake(intake, "ci", option.value))}
-              />
-            ))}
-          </div>
+        <fieldset className="ea-fieldset">
+          <legend>CI system</legend>
+          {CI_OPTIONS.map((option) => (
+            <RadioOption
+              key={option.value}
+              name="ci"
+              value={option.value}
+              checked={intake.ci === option.value}
+              label={option.label}
+              onChange={() => onIntakeChange(updateIntake(intake, "ci", option.value))}
+            />
+          ))}
         </fieldset>
       </div>
     );
@@ -648,53 +336,30 @@ function IntakeForm({
 
   if (step === 1) {
     return (
-      <fieldset className="c97-panel" style={fieldsetStyle}>
-        <legend className="c97-serif c97-h3" style={legendStyle}>
-          Which test layers does the team need?
-        </legend>
-        <p
-          className="c97-prose"
-          style={{ clear: "both", marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-        >
+      <fieldset className="ea-fieldset">
+        <legend>Which test layers does the team need?</legend>
+        <p className="ea-small">
           Pick every layer the standard needs to cover. The score drops when a stack leaves a
           selected layer unsupported.
         </p>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))",
-            gap: "var(--c97-sp-2)",
-            marginTop: "var(--c97-sp-3)",
-          }}
-        >
-          {TEST_LAYER_OPTIONS.map((option) => {
-            const checked = intake.layers.includes(option.value);
-            return (
-              <label key={option.value} style={optionStyle}>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  onChange={() => onIntakeChange(toggleTestLayer(intake, option.value))}
-                  className="c97-check"
-                  style={{ flexShrink: 0, marginTop: 2 }}
-                />
-                <span>
-                  <span style={optionLabelStyle}>{option.label}</span>
-                  <span style={helperStyle}>{option.helper}</span>
-                </span>
-              </label>
-            );
-          })}
-        </div>
+        {TEST_LAYER_OPTIONS.map((option) => {
+          const checked = intake.layers.includes(option.value);
+          return (
+            <label key={option.value} className="ea-option">
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={() => onIntakeChange(toggleTestLayer(intake, option.value))}
+              />
+              <span>
+                <span className="ea-option-label">{option.label}</span>
+                <span className="ea-option-helper">{option.helper}</span>
+              </span>
+            </label>
+          );
+        })}
         {intake.layers.length === 0 ? (
-          <p
-            role="alert"
-            style={{
-              ...smallTextStyle,
-              marginTop: "var(--c97-sp-3)",
-              color: "var(--c97-negative)",
-            }}
-          >
+          <p role="alert" className="ea-alert">
             Select at least one layer so the engine has something real to score.
           </p>
         ) : null}
@@ -703,74 +368,52 @@ function IntakeForm({
   }
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-        gap: "var(--c97-sp-3)",
-      }}
-    >
-      <fieldset className="c97-panel" style={fieldsetStyle}>
-        <legend className="c97-serif c97-h3" style={legendStyle}>
-          Current automation maturity
-        </legend>
-        <div style={{ clear: "both", display: "grid", gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-          {MATURITY_OPTIONS.map((option) => (
-            <RadioOption
-              key={option.value}
-              name="maturity"
-              value={option.value}
-              checked={intake.maturity === option.value}
-              label={option.label}
-              helper={option.helper}
-              onChange={() =>
-                onIntakeChange(updateIntake(intake, "maturity", option.value))
-              }
-            />
-          ))}
-        </div>
-      </fieldset>
-      <fieldset className="c97-panel" style={fieldsetStyle}>
-        <legend className="c97-serif c97-h3" style={legendStyle}>
-          Team size
-        </legend>
-        <div style={{ clear: "both", display: "grid", gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-          {TEAM_SIZE_OPTIONS.map((option) => (
-            <RadioOption
-              key={option.value}
-              name="team-size"
-              value={option.value}
-              checked={intake.teamSize === option.value}
-              label={option.label}
-              onChange={() =>
-                onIntakeChange(updateIntake(intake, "teamSize", option.value))
-              }
-            />
-          ))}
-        </div>
-      </fieldset>
-      <fieldset className="c97-panel" style={fieldsetStyle}>
-        <legend className="c97-serif c97-h3" style={legendStyle}>
-          Quality ownership
-        </legend>
-        <div style={{ clear: "both", display: "grid", gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
+    <div className="ea-fields">
+      <fieldset className="ea-fieldset">
+        <legend>Current automation maturity</legend>
+        {MATURITY_OPTIONS.map((option) => (
           <RadioOption
-            name="quality-engineer"
-            value="yes"
-            checked={intake.hasQualityEngineer}
-            label="Dedicated quality engineer"
-            helper="A named person owns the suite day to day"
-            onChange={() => onIntakeChange(updateIntake(intake, "hasQualityEngineer", true))}
+            key={option.value}
+            name="maturity"
+            value={option.value}
+            checked={intake.maturity === option.value}
+            label={option.label}
+            helper={option.helper}
+            onChange={() => onIntakeChange(updateIntake(intake, "maturity", option.value))}
           />
+        ))}
+      </fieldset>
+      <fieldset className="ea-fieldset">
+        <legend>Team size</legend>
+        {TEAM_SIZE_OPTIONS.map((option) => (
           <RadioOption
-            name="quality-engineer"
-            value="no"
-            checked={!intake.hasQualityEngineer}
-            label="Shared team ownership"
-            helper="Developers maintain the suite together"
-            onChange={() => onIntakeChange(updateIntake(intake, "hasQualityEngineer", false))}
+            key={option.value}
+            name="team-size"
+            value={option.value}
+            checked={intake.teamSize === option.value}
+            label={option.label}
+            onChange={() => onIntakeChange(updateIntake(intake, "teamSize", option.value))}
           />
-        </div>
+        ))}
+      </fieldset>
+      <fieldset className="ea-fieldset">
+        <legend>Quality ownership</legend>
+        <RadioOption
+          name="quality-engineer"
+          value="yes"
+          checked={intake.hasQualityEngineer}
+          label="Dedicated quality engineer"
+          helper="A named person owns the suite day to day"
+          onChange={() => onIntakeChange(updateIntake(intake, "hasQualityEngineer", true))}
+        />
+        <RadioOption
+          name="quality-engineer"
+          value="no"
+          checked={!intake.hasQualityEngineer}
+          label="Shared team ownership"
+          helper="Developers maintain the suite together"
+          onChange={() => onIntakeChange(updateIntake(intake, "hasQualityEngineer", false))}
+        />
       </fieldset>
     </div>
   );
@@ -784,54 +427,22 @@ function ScoreLedger({
   defaultOpen?: boolean;
 }) {
   return (
-    <details
-      open={defaultOpen}
-      style={{
-        marginTop: "var(--c97-sp-3)",
-        paddingTop: "var(--c97-sp-2)",
-        borderTop: "1px solid var(--c97-rule)",
-      }}
-    >
-      <summary
-        className="c97-kicker"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          minHeight: 44,
-          cursor: "pointer",
-          color: "var(--c97-ink)",
-        }}
-      >
-        Show the score ledger
-      </summary>
-      <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-1)" }}>
+    <details open={defaultOpen} className="ea-ledger">
+      <summary>Show the score ledger</summary>
+      <ul>
         {result.factors.map((factor) => (
-          <li
-            key={factor.label}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "auto auto minmax(0, 1fr)",
-              gap: "var(--c97-sp-2)",
-              alignItems: "baseline",
-              paddingBlock: "var(--c97-sp-1)",
-              borderTop: "1px solid var(--c97-rule)",
-            }}
-          >
-            <span style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink)" }}>
-              {factor.label}
-            </span>
+          <li key={factor.label}>
+            <span>{factor.label}</span>
             <span
-              className="c97-mono"
+              className="ea-num"
               style={{
-                fontSize: "var(--c97-fs-small)",
-                color:
-                  factor.points >= 0 ? "var(--c97-positive)" : "var(--c97-negative)",
+                color: factor.points >= 0 ? "var(--c97-positive)" : "var(--c97-negative)",
               }}
             >
               {factor.points >= 0 ? "+" : ""}
               {factor.points}
             </span>
-            <span style={smallTextStyle}>{factor.detail}</span>
+            <span className="ea-small">{factor.detail}</span>
           </li>
         ))}
       </ul>
@@ -849,30 +460,15 @@ function RecommendationCard({
   primary: boolean;
 }) {
   return (
-    <article
-      className="c97-panel"
-      style={primary ? { borderLeft: "2px solid var(--c97-ink)" } : undefined}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: "var(--c97-sp-3)",
-        }}
-      >
+    <article className="ea-card" data-primary={primary ? "true" : undefined}>
+      <div className="ea-card-head">
         <div>
-          <p className="c97-kicker">{label}</p>
-          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {result.toolchain.name}
-          </h3>
+          <p className="ea-label">{label}</p>
+          <h3 className="ea-h3">{result.toolchain.name}</h3>
         </div>
         <div
-          className="c97-mono"
+          className="ea-score"
           style={{
-            flexShrink: 0,
-            fontSize: "var(--c97-fs-h2)",
-            lineHeight: "var(--c97-lh-tight)",
             color:
               result.score >= 70
                 ? "var(--c97-positive)"
@@ -886,43 +482,23 @@ function RecommendationCard({
           {result.score}%
         </div>
       </div>
-      <p
-        className="c97-prose"
-        style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-      >
-        {result.toolchain.summary}
-      </p>
-      <dl
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 140px), 1fr))",
-          gap: "var(--c97-sp-2)",
-          margin: 0,
-          marginTop: "var(--c97-sp-3)",
-          paddingBlock: "var(--c97-sp-2)",
-          borderTop: "1px solid var(--c97-rule)",
-          borderBottom: "1px solid var(--c97-rule)",
-        }}
-      >
+      <p className="ea-body">{result.toolchain.summary}</p>
+      <dl className="ea-terms">
         <div>
-          <dt className="c97-kicker">Framework</dt>
-          <dd style={termStyle}>{result.toolchain.framework}</dd>
+          <dt>Framework</dt>
+          <dd>{result.toolchain.framework}</dd>
         </div>
         <div>
-          <dt className="c97-kicker">Runner</dt>
-          <dd style={termStyle}>{result.toolchain.runner}</dd>
+          <dt>Runner</dt>
+          <dd>{result.toolchain.runner}</dd>
         </div>
         <div>
-          <dt className="c97-kicker">Reporting</dt>
-          <dd style={termStyle}>{result.toolchain.reporting}</dd>
+          <dt>Reporting</dt>
+          <dd>{result.toolchain.reporting}</dd>
         </div>
       </dl>
-      <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-        The tradeoff I would keep visible
-      </p>
-      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-        {result.toolchain.tradeoff}
-      </p>
+      <p className="ea-label">The tradeoff I would keep visible</p>
+      <p className="ea-body">{result.toolchain.tradeoff}</p>
       <ScoreLedger result={result} defaultOpen={primary} />
     </article>
   );
@@ -990,466 +566,226 @@ function RecommendationSection({
     .join("\n\n");
 
   return (
-    <div>
-      <section
-        id="recommendation"
-        aria-labelledby="recommendation-heading"
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="deckle"
-        style={{ scrollMarginTop: "var(--c97-sp-6)" }}
-      >
-        <div className="c97-shell">
-          <SectionHeading
-            id="recommendation-heading"
-            kicker="Scored recommendation"
-            title="A recommendation you can inspect"
-          >
-            <p>
-              The score is a committed set of readable rules. Change one answer in the intake and
-              the recommendation moves because the surface, language, coverage, CI fit, migration
-              work, or ownership score moved with it.
+    <div className="ea-results">
+      <section id="recommendation" aria-labelledby="recommendation-heading" className="ea-section">
+        <h2 id="recommendation-heading" className="ea-h2">
+          A recommendation you can inspect
+        </h2>
+        <p className="ea-lede">
+          The score is a committed set of readable rules, so changing one answer in the intake
+          moves the recommendation through the surface, language, coverage, CI fit, migration
+          work, or ownership score.
+        </p>
+
+        {recommendation.shouldEscalate ? (
+          <div className="ea-callout" role="status">
+            <p className="ea-label" style={{ color: "var(--c97-negative)" }}>
+              Human review needed
             </p>
-          </SectionHeading>
-
-          {recommendation.shouldEscalate ? (
-            <div
-              className="c97-panel"
-              style={{
-                marginTop: "var(--c97-sp-4)",
-                borderLeft: "2px solid var(--c97-negative)",
-              }}
-              role="status"
-            >
-              <p className="c97-kicker" style={{ color: "var(--c97-negative)" }}>
-                Human review needed
-              </p>
-              <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
-                I do not have enough confidence to recommend this setup.
-              </h3>
-              <p
-                className="c97-prose"
-                style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-              >
-                The best catalog match scored {recommendation.primary.score}%, below the{" "}
-                {recommendation.threshold}% threshold. I would route the intake to the central team
-                instead of making the missing language or CI integration sound supported.
-              </p>
-            </div>
-          ) : null}
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "var(--c97-sp-3)",
-              marginTop: "var(--c97-sp-4)",
-            }}
-          >
-            <RecommendationCard
-              result={recommendation.primary}
-              label={recommendation.shouldEscalate ? "Closest catalog match" : "Top recommendation"}
-              primary
-            />
-            <RecommendationCard
-              result={recommendation.runnerUp}
-              label="Runner-up"
-              primary={false}
-            />
+            <h3 className="ea-h3">I do not have enough confidence to recommend this setup.</h3>
+            <p className="ea-body">
+              The best catalog match scored {recommendation.primary.score}%, below the{" "}
+              {recommendation.threshold}% threshold. I would route the intake to the central team
+              instead of making the missing language or CI integration sound supported.
+            </p>
           </div>
+        ) : null}
+
+        <div className="ea-pair">
+          <RecommendationCard
+            result={recommendation.primary}
+            label={recommendation.shouldEscalate ? "Closest catalog match" : "Top recommendation"}
+            primary
+          />
+          <RecommendationCard result={recommendation.runnerUp} label="Runner-up" primary={false} />
         </div>
       </section>
 
       {!recommendation.shouldEscalate ? (
-        <section
-          id="plan"
-          aria-labelledby="plan-heading"
-          className="c97-band c97-sheet"
-          data-c97-surface="bone"
-          data-seam="deckle"
-          style={{ scrollMarginTop: "var(--c97-sp-6)" }}
-        >
-          <div className="c97-shell">
-            <div style={headerRowStyle}>
-              <SectionHeading
-                id="plan-heading"
-                kicker="Onboarding plan"
-                title={
-                  intake.maturity === "none" || intake.maturity === "manual"
-                    ? "Start with one workflow and build the habit"
-                    : "Migrate the suite without dropping coverage"
-                }
-              >
-                <p>
-                  The checklist changes with maturity. This team gets a{" "}
-                  {intake.maturity === "none" || intake.maturity === "manual"
-                    ? "first setup"
-                    : "parallel migration"}{" "}
-                  plan, with an owner, effort, prerequisite, and copyable configuration in every
-                  step.
-                </p>
-              </SectionHeading>
-              <button
-                type="button"
-                className="c97-btn-ghost"
-                onClick={() => copyText(planText, "plan")}
-              >
-                {planCopyLabel}
-              </button>
-              <p className="sr-only" role="status">
-                {copied === "plan" || copied === "plan-error" ? planCopyLabel : ""}
+        <section id="plan" aria-labelledby="plan-heading" className="ea-section">
+          <div className="ea-section-head">
+            <div>
+              <h2 id="plan-heading" className="ea-h2">
+                {intake.maturity === "none" || intake.maturity === "manual"
+                  ? "Start with one workflow and build the habit"
+                  : "Migrate the suite without dropping coverage"}
+              </h2>
+              <p className="ea-lede">
+                This team gets a{" "}
+                {intake.maturity === "none" || intake.maturity === "manual"
+                  ? "first setup"
+                  : "parallel migration"}{" "}
+                plan, with an owner, effort, prerequisite, and copyable configuration in every
+                step.
               </p>
             </div>
-
-            <ol
-              style={{
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                marginTop: "var(--c97-sp-4)",
-                borderBottom: "1px solid var(--c97-rule)",
-              }}
-            >
-              {plan.map((step) => (
-                <li
-                  key={step.id}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "auto minmax(0, 1fr)",
-                    gap: "var(--c97-sp-3)",
-                    alignItems: "baseline",
-                    paddingBlock: "var(--c97-sp-3)",
-                    borderTop: "1px solid var(--c97-rule)",
-                  }}
-                >
-                  <span
-                    className="c97-mono"
-                    style={{
-                      fontSize: "var(--c97-fs-small)",
-                      color: "var(--c97-label)",
-                      minWidth: "2.5rem",
-                    }}
-                  >
-                    {String(step.order).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="c97-serif c97-h3">{step.title}</h3>
-                    <p
-                      className="c97-prose"
-                      style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-                    >
-                      {step.description}
-                    </p>
-                    <dl
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "var(--c97-sp-3)",
-                        margin: 0,
-                        marginTop: "var(--c97-sp-2)",
-                      }}
-                    >
-                      <div>
-                        <dt className="c97-kicker">Owner</dt>
-                        <dd style={termStyle}>{step.owner}</dd>
-                      </div>
-                      <div>
-                        <dt className="c97-kicker">Rough effort</dt>
-                        <dd style={termStyle}>{step.effort}</dd>
-                      </div>
-                      <div style={{ flexBasis: "100%" }}>
-                        <dt className="c97-kicker">Prerequisite</dt>
-                        <dd style={termStyle}>{step.prerequisites}</dd>
-                      </div>
-                    </dl>
-                    <pre className="c97-mono" style={{ ...snippetStyle, marginTop: "var(--c97-sp-2)" }}>
-                      <code>{step.snippet}</code>
-                    </pre>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <button type="button" className="c97-btn-ghost" onClick={() => copyText(planText, "plan")}>
+              {planCopyLabel}
+            </button>
+            <p className="sr-only" role="status">
+              {copied === "plan" || copied === "plan-error" ? planCopyLabel : ""}
+            </p>
           </div>
+
+          <ol className="ea-plan">
+            {plan.map((step) => (
+              <li key={step.id}>
+                <span className="ea-rank">{String(step.order).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="ea-h3">{step.title}</h3>
+                  <p className="ea-body">{step.description}</p>
+                  <dl className="ea-terms ea-terms-inline">
+                    <div>
+                      <dt>Owner</dt>
+                      <dd>{step.owner}</dd>
+                    </div>
+                    <div>
+                      <dt>Rough effort</dt>
+                      <dd>{step.effort}</dd>
+                    </div>
+                    <div>
+                      <dt>Prerequisite</dt>
+                      <dd>{step.prerequisites}</dd>
+                    </div>
+                  </dl>
+                  <pre className="ea-snippet">
+                    <code>{step.snippet}</code>
+                  </pre>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
       ) : null}
 
-      <section
-        id="troubleshooting"
-        aria-labelledby="troubleshooting-heading"
-        /*
-         * The plan band only renders when the recommendation clears the
-         * confidence threshold, so this band's previous surface changes with
-         * it: bone when the plan showed, the same paper as the recommendation
-         * band above when it was skipped. Seam only when the surface actually
-         * changes.
-         */
-        className={
-          recommendation.shouldEscalate ? "c97-band" : "c97-band c97-sheet"
-        }
-        data-c97-surface="paper"
-        data-seam={recommendation.shouldEscalate ? undefined : "deckle"}
-        style={{ scrollMarginTop: "var(--c97-sp-6)" }}
-      >
-        <div className="c97-shell">
-          <SectionHeading
-            id="troubleshooting-heading"
-            kicker="Troubleshooting desk"
-            title="Ask a setup or integration question"
-          >
-            <p>
-              This search retrieves from a small committed knowledge base. It reports its
-              confidence and gives up when the question does not match the material it has.
+      <section id="troubleshooting" aria-labelledby="troubleshooting-heading" className="ea-section">
+        <h2 id="troubleshooting-heading" className="ea-h2">
+          Ask a setup or integration question
+        </h2>
+        <p className="ea-lede">
+          The search retrieves from a small committed knowledge base, reports its confidence, and
+          gives up when the question does not match the material it has.
+        </p>
+
+        <div className="ea-pair">
+          <div>
+            <form onSubmit={runTroubleshooting} className="ea-form">
+              <label htmlFor="troubleshooting-question" className="ea-label">
+                What is going wrong?
+              </label>
+              <textarea
+                id="troubleshooting-question"
+                value={question}
+                onChange={(event) => setQuestion(event.target.value)}
+                rows={4}
+                required
+                placeholder="For example, Playwright cannot find Chromium in CI"
+                className="c97-field"
+              />
+              <button type="submit" className="c97-btn ea-wide">
+                Find an answer
+              </button>
+            </form>
+
+            <p className="ea-label" style={{ marginTop: "var(--c97-sp-3)" }}>
+              Seeded demo questions
             </p>
-          </SectionHeading>
+            <ul className="ea-prompts">
+              {TROUBLESHOOTING_PROMPTS.map((prompt) => (
+                <li key={prompt.question}>
+                  <button type="button" onClick={() => setQuestion(prompt.question)}>
+                    <span>{prompt.question}</span>
+                    {!prompt.answerable ? <span className="c97-chip">Outside scope</span> : null}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: "var(--c97-sp-3)",
-              marginTop: "var(--c97-sp-4)",
-            }}
-          >
-            <div>
-              <form onSubmit={runTroubleshooting}>
-                <label
-                  htmlFor="troubleshooting-question"
-                  className="c97-kicker"
-                  style={{ display: "block" }}
-                >
-                  What is going wrong?
-                </label>
-                <textarea
-                  id="troubleshooting-question"
-                  value={question}
-                  onChange={(event) => setQuestion(event.target.value)}
-                  rows={5}
-                  required
-                  placeholder="For example, Playwright cannot find Chromium in CI"
-                  className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)", minHeight: 132 }}
-                />
-                <button type="submit" className="c97-btn" style={fullWidthButtonStyle}>
-                  Find an answer
-                </button>
-              </form>
-
-              <div
-                style={{
-                  marginTop: "var(--c97-sp-4)",
-                  paddingTop: "var(--c97-sp-3)",
-                  borderTop: "1px solid var(--c97-rule)",
-                }}
-              >
-                <p className="c97-kicker">Seeded demo questions</p>
-                <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-1)" }}>
-                  {TROUBLESHOOTING_PROMPTS.map((prompt) => (
-                    <li key={prompt.question} style={{ borderTop: "1px solid var(--c97-rule)" }}>
-                      <button
-                        type="button"
-                        onClick={() => setQuestion(prompt.question)}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          gap: "var(--c97-sp-2)",
-                          width: "100%",
-                          minHeight: 44,
-                          paddingBlock: "var(--c97-sp-1)",
-                          paddingInline: 0,
-                          background: "none",
-                          border: 0,
-                          font: "inherit",
-                          fontSize: "var(--c97-fs-small)",
-                          lineHeight: "var(--c97-lh-body)",
-                          textAlign: "left",
-                          color: "var(--c97-ink)",
-                          cursor: "pointer",
-                        }}
-                      >
-                        <span>{prompt.question}</span>
-                        {!prompt.answerable ? (
-                          <span className="c97-chip">Outside scope</span>
-                        ) : null}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="c97-panel" aria-live="polite">
-              {match ? (
-                <>
-                  <div
+          <div className="ea-answer" aria-live="polite">
+            {match ? (
+              <>
+                <div className="ea-card-head">
+                  <p className="ea-label">Retrieval confidence</p>
+                  <span
+                    className="ea-num"
                     style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      justifyContent: "space-between",
-                      gap: "var(--c97-sp-3)",
+                      color: match.shouldEscalate ? "var(--c97-negative)" : "var(--c97-positive)",
                     }}
                   >
-                    <p className="c97-kicker">Retrieval confidence</p>
-                    <span
-                      className="c97-mono"
-                      style={{
-                        fontSize: "var(--c97-fs-small)",
-                        color: match.shouldEscalate
-                          ? "var(--c97-negative)"
-                          : "var(--c97-positive)",
-                      }}
-                    >
-                      {Math.round(match.confidence * 100)}%
-                    </span>
-                  </div>
-                  {match.article ? (
-                    <div style={{ marginTop: "var(--c97-sp-3)" }}>
-                      <h3 className="c97-serif c97-h3">{match.article.title}</h3>
-                      <p
-                        className="c97-prose"
-                        style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-                      >
-                        {match.article.answer}
-                      </p>
-                      <pre
-                        className="c97-mono"
-                        style={{
-                          ...snippetStyle,
-                          marginTop: "var(--c97-sp-3)",
-                          background: "var(--c97-surface)",
-                        }}
-                      >
-                        <code>{match.article.snippet}</code>
-                      </pre>
-                      <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-2)" }}>
-                        Matched terms · {match.matchedTerms.join(", ")}
-                      </p>
-                    </div>
-                  ) : (
-                    <div style={{ marginTop: "var(--c97-sp-3)" }}>
-                      <h3 className="c97-serif c97-h3">
-                        I do not have a reliable answer for this.
-                      </h3>
-                      <p
-                        className="c97-prose"
-                        style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-                      >
-                        The best match stayed below the{" "}
-                        {Math.round(TROUBLESHOOTING_CONFIDENCE_THRESHOLD * 100)}% threshold. I would
-                        send the question and the team context to a person instead of guessing.
-                      </p>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div
-                  style={{
-                    display: "grid",
-                    minHeight: 320,
-                    placeItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <div style={{ maxWidth: "var(--c97-measure-body)" }}>
-                    <p
-                      className="c97-serif"
-                      style={{ fontSize: "var(--c97-fs-h1)", color: "var(--c97-label)" }}
-                    >
-                      ?
-                    </p>
-                    <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-3)" }}>
-                      No question searched yet
-                    </h3>
-                    <p
-                      className="c97-prose"
-                      style={{
-                        marginTop: "var(--c97-sp-1)",
-                        color: "var(--c97-ink-2)",
-                        marginInline: "auto",
-                      }}
-                    >
-                      Try a known setup problem or one of the deliberately unsupported questions
-                      to see the confidence boundary.
-                    </p>
-                  </div>
+                    {Math.round(match.confidence * 100)}%
+                  </span>
                 </div>
-              )}
-            </div>
+                {match.article ? (
+                  <>
+                    <h3 className="ea-h3">{match.article.title}</h3>
+                    <p className="ea-body">{match.article.answer}</p>
+                    <pre className="ea-snippet">
+                      <code>{match.article.snippet}</code>
+                    </pre>
+                    <p className="ea-small">Matched terms · {match.matchedTerms.join(", ")}</p>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="ea-h3">I do not have a reliable answer for this.</h3>
+                    <p className="ea-body">
+                      The best match stayed below the{" "}
+                      {Math.round(TROUBLESHOOTING_CONFIDENCE_THRESHOLD * 100)}% threshold. I would
+                      send the question and the team context to a person instead of guessing.
+                    </p>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <h3 className="ea-h3">No question searched yet</h3>
+                <p className="ea-body">
+                  Try a known setup problem or one of the deliberately unsupported questions to see
+                  the confidence boundary.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>
 
       {handoffNeeded ? (
-        <section
-          id="handoff"
-          aria-labelledby="handoff-heading"
-          style={{ scrollMarginTop: "var(--c97-sp-6)" }}
-        >
-          <div className="c97-band c97-sheet" data-c97-surface="ink-blue" data-seam="torn">
-            <div className="c97-shell">
-              <p className="c97-kicker">Escalation handoff</p>
-              <h2
-                id="handoff-heading"
-                className="c97-poster-sm"
-                style={{ marginTop: "var(--c97-sp-2)" }}
+        <section id="handoff" aria-labelledby="handoff-heading" className="ea-section">
+          <h2 id="handoff-heading" className="ea-h2">
+            Give the central team the context up front.
+          </h2>
+          <p className="ea-lede">
+            The handoff carries the intake, the recommendation, the exact question, and what the
+            team already tried, so support can start with the failure instead of repeating
+            discovery.
+          </p>
+          <div className="ea-pair">
+            <div className="ea-form">
+              <label htmlFor="attempted" className="ea-label">
+                What has the team already tried?
+              </label>
+              <textarea
+                id="attempted"
+                value={attempted}
+                onChange={(event) => setAttempted(event.target.value)}
+                rows={6}
+                placeholder="Add commands, links, errors, or changes already attempted"
+                className="c97-field"
+              />
+              <button
+                type="button"
+                className="c97-btn ea-wide"
+                onClick={() => copyText(escalationDraft, "handoff")}
               >
-                Give the central team the context up front.
-              </h2>
-              <p
-                className="c97-prose"
-                style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-              >
-                The handoff carries the intake, the recommendation, the exact question, and what
-                the team already tried so support can start with the failure instead of repeating
-                discovery.
+                {handoffCopyLabel}
+              </button>
+              <p className="sr-only" role="status">
+                {copied === "handoff" || copied === "handoff-error" ? handoffCopyLabel : ""}
               </p>
             </div>
-          </div>
-          <div className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
-            <div
-              className="c97-shell"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-                gap: "var(--c97-sp-4)",
-              }}
-            >
-              <div>
-                <label htmlFor="attempted" className="c97-kicker" style={{ display: "block" }}>
-                  What has the team already tried?
-                </label>
-                <textarea
-                  id="attempted"
-                  value={attempted}
-                  onChange={(event) => setAttempted(event.target.value)}
-                  rows={7}
-                  placeholder="Add commands, links, errors, or changes already attempted"
-                  className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)", minHeight: 180 }}
-                />
-                <button
-                  type="button"
-                  className="c97-btn"
-                  style={fullWidthButtonStyle}
-                  onClick={() => copyText(escalationDraft, "handoff")}
-                >
-                  {handoffCopyLabel}
-                </button>
-                <p className="sr-only" role="status">
-                  {copied === "handoff" || copied === "handoff-error" ? handoffCopyLabel : ""}
-                </p>
-              </div>
-              <pre
-                className="c97-mono"
-                style={{
-                  ...snippetStyle,
-                  padding: "var(--c97-sp-3)",
-                  whiteSpace: "pre-wrap",
-                }}
-              >
-                <code>{escalationDraft}</code>
-              </pre>
-            </div>
+            <pre className="ea-snippet ea-snippet-wrap">
+              <code>{escalationDraft}</code>
+            </pre>
           </div>
         </section>
       ) : null}
@@ -1491,124 +827,70 @@ function TeamOnboarding() {
   const advanceDisabled = step === 1 && intake.layers.length === 0;
 
   return (
-    <div>
-      <section
-        aria-labelledby="intake-heading"
-        className="c97-band c97-sheet"
-        data-c97-surface="bone"
-        data-seam="deckle"
-      >
-        <div className="c97-shell">
-          <div style={headerRowStyle}>
-            <SectionHeading
-              id="intake-heading"
-              kicker="Guided intake"
-              title="Start with the team that needs help"
-            >
-              <p>
-                The intake keeps the parts that change the recommendation separate. Move backward
-                and forward freely, and every answer stays in place.
-              </p>
-            </SectionHeading>
-            <button type="button" onClick={reset} className="c97-btn-ghost">
-              Reset intake
-            </button>
-          </div>
+    <div className="ea-team">
+      <section aria-labelledby="intake-heading" className="ea-stepper">
+        <div className="ea-section-head">
+          <h2 id="intake-heading" className="ea-h2">
+            Start with the team that needs help
+          </h2>
+          <button type="button" onClick={reset} className="c97-btn-ghost">
+            Reset intake
+          </button>
+        </div>
+        <p className="ea-small">
+          Move backward and forward freely, and every answer stays in place.
+        </p>
 
-          <nav aria-label="Intake progress" style={{ marginTop: "var(--c97-sp-4)" }}>
-            <ol
-              style={{
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                display: "flex",
-                flexWrap: "wrap",
-                columnGap: "var(--c97-sp-3)",
-                /* .c97-microlink buys its 44px target with negative margins; sp-5 keeps wrapped rows' hit boxes apart. */
-                rowGap: "var(--c97-sp-5)",
-              }}
-            >
-              {stepLabels.map((label, index) => {
-                const current = step === index;
-                const completed = step > index || showResults;
-                return (
-                  <li key={label}>
-                    <button
-                      type="button"
-                      onClick={() => setStep(index as IntakeStep)}
-                      aria-current={current ? "step" : undefined}
-                      className="c97-microlink"
-                      style={{
-                        background: "none",
-                        border: 0,
-                        cursor: "pointer",
-                        display: "inline-flex",
-                        alignItems: "baseline",
-                        gap: "var(--c97-sp-1)",
-                        textAlign: "left",
-                        color: current ? "var(--c97-ink)" : "var(--c97-label)",
-                        // The longhand, since React warns when the shorthand
-                        // changes beside its own longhands.
-                        textDecorationLine: current ? "underline" : "none",
-                        textDecorationThickness: 2,
-                        textUnderlineOffset: 6,
-                        textDecorationColor: "var(--c97-accent)",
-                      }}
-                    >
-                      <span
-                        className="c97-mono"
-                        style={{
-                          color:
-                            completed && !current ? "var(--c97-positive)" : undefined,
-                        }}
-                      >
-                        {completed && !current ? "✓" : index + 1}
-                      </span>
-                      <span>{label}</span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ol>
-          </nav>
+        <nav aria-label="Intake progress">
+          <ol className="ea-steps">
+            {stepLabels.map((label, index) => {
+              const current = step === index;
+              const completed = step > index || showResults;
+              return (
+                <li key={label}>
+                  <button
+                    type="button"
+                    onClick={() => setStep(index as IntakeStep)}
+                    aria-current={current ? "step" : undefined}
+                    data-done={completed && !current ? "true" : undefined}
+                  >
+                    <span className="ea-step-mark">{completed && !current ? "✓" : index + 1}</span>
+                    <span>{label}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
 
-          <div style={{ marginTop: "var(--c97-sp-4)" }}>
-            <IntakeForm intake={intake} step={step} onIntakeChange={setIntake} />
-          </div>
+        <IntakeForm intake={intake} step={step} onIntakeChange={setIntake} />
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "var(--c97-sp-2)",
-              marginTop: "var(--c97-sp-4)",
-            }}
+        <div className="ea-step-actions">
+          <button
+            type="button"
+            className="c97-btn-ghost"
+            onClick={() => setStep(moveIntakeStep(step, -1))}
+            disabled={backDisabled}
           >
-            <button
-              type="button"
-              className="c97-btn-ghost"
-              style={backDisabled ? { opacity: 0.5, cursor: "not-allowed" } : undefined}
-              onClick={() => setStep(moveIntakeStep(step, -1))}
-              disabled={backDisabled}
-            >
-              Back
-            </button>
-            <button
-              type="button"
-              className="c97-btn"
-              style={advanceDisabled ? { opacity: 0.5, cursor: "not-allowed" } : undefined}
-              onClick={advance}
-              disabled={advanceDisabled}
-            >
-              {step === INTAKE_STEP_COUNT - 1 ? "Build recommendation" : "Continue"}
-            </button>
-          </div>
+            Back
+          </button>
+          <button type="button" className="c97-btn" onClick={advance} disabled={advanceDisabled}>
+            {step === INTAKE_STEP_COUNT - 1 ? "Build recommendation" : "Continue"}
+          </button>
         </div>
       </section>
 
-      {showResults ? <RecommendationSection intake={intake} /> : null}
+      <div className="ea-team-results">
+        {showResults ? (
+          <RecommendationSection intake={intake} />
+        ) : (
+          <p className="ea-empty">
+            <strong>The recommendation fills in here.</strong>
+            Answer the three steps and this side shows the scored stack with its runner-up, the
+            onboarding plan, and a troubleshooting desk for the setup questions that follow.
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -1627,46 +909,34 @@ export function EnablementAssistantClient() {
   }
 
   return (
-    <div>
-      <Catalog97ProjectHero
-        ink={PROJECT_PRESS[ROUTE].lead}
-        title="Automation Enablement Assistant"
-        standfirst="I built this so a small central tooling team can support many product teams without repeating the same onboarding work one team at a time, from the standard stack, to the adoption plan, to the setup answers and the documentation backlog they leave behind."
-        meta="Internal platform enablement · deterministic demo"
-      >
-        {/* The two ways in sit right under the opening explanation, ahead of the model boundary note. */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "var(--c97-sp-3)",
-          }}
-        >
-          <WorkspaceTabs view={view} onChange={changeView} />
-          <p className="c97-kicker">
-            {view === "program" ? "Portfolio view · 12 seeded teams" : "Team view · 3 intake steps"}
+    <div className="ea-root">
+      <div className="c97-shell c97-frame ea-page">
+        <section className="ea-titlebar" aria-labelledby="ea-title">
+          <div className="ea-title-row">
+            <h1 id="ea-title" className="ea-h1">Automation Enablement Assistant</h1>
+            <WorkspaceTabs view={view} onChange={changeView} />
+            <p className="ea-small ea-title-status">
+              {view === "program" ? "Portfolio view · 12 seeded teams" : "Team view · 3 intake steps"}
+            </p>
+          </div>
+          <p className="ea-lede">
+            I built this so a small central tooling team can support many product teams without
+            repeating the same onboarding work one team at a time.
           </p>
-        </div>
-        <div className="c97-panel" style={{ marginTop: "var(--c97-sp-3)" }}>
-          <p className="c97-kicker">Model boundary</p>
-          <p
-            className="c97-prose"
-            style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-          >
-            No credentials, live model, or hidden service. The scoring, retrieval, plans,
-            and program data all run from committed TypeScript rules and invented seed data.
+          <p className="ea-small ea-boundary">
+            <span className="ea-boundary-tag">Model boundary</span> No credentials, live model, or
+            hidden service. The scoring, retrieval, plans, and program data all run from committed
+            TypeScript rules and invented seed data.
           </p>
-        </div>
-      </Catalog97ProjectHero>
+        </section>
 
-      <div id="workspace" style={{ scrollMarginTop: "var(--c97-sp-6)" }}>
-        {view === "program" ? (
-          <ProgramDashboard onStart={() => changeView("team")} />
-        ) : (
-          <TeamOnboarding />
-        )}
+        <div id="workspace" className="ea-workspace">
+          {view === "program" ? (
+            <ProgramDashboard onStart={() => changeView("team")} />
+          ) : (
+            <TeamOnboarding />
+          )}
+        </div>
       </div>
     </div>
   );

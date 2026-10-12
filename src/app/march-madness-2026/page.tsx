@@ -7,7 +7,7 @@ import {
 import {
   MARCH_MADNESS_DESCRIPTION,
   MARCH_MADNESS_FAQ,
-  MARCH_MADNESS_RESULTS_ADDED_AT,
+  MARCH_MADNESS_MODIFIED_AT,
   MARCH_MADNESS_THESIS,
   MARCH_MADNESS_TITLE,
   MARCH_MADNESS_UPDATED_AT,
@@ -19,7 +19,7 @@ export const metadata = constructMetadata({
   title: "March Madness 2026 Bracket Analysis",
   description: MARCH_MADNESS_DESCRIPTION,
   canonicalUrl: "/march-madness-2026",
-  dateModified: MARCH_MADNESS_RESULTS_ADDED_AT,
+  dateModified: MARCH_MADNESS_MODIFIED_AT,
   image: "/march-madness-2026/opengraph-image",
 });
 
@@ -67,7 +67,7 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
           url: "https://isaacvazquez.com/march-madness-2026",
           image: "https://isaacvazquez.com/march-madness-2026/opengraph-image",
           datePublished: MARCH_MADNESS_UPDATED_AT,
-          dateModified: MARCH_MADNESS_RESULTS_ADDED_AT,
+          dateModified: MARCH_MADNESS_MODIFIED_AT,
           authorName: "Isaac Vazquez",
           keywords: [
             "March Madness bracket analysis",
@@ -115,7 +115,6 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
       />
 
       <MarchMadnessClient
-        key={`${initialState.view}-${initialState.region}-${initialState.analytics}`}
         initialState={initialState}
         initialPick={typeof resolvedSearchParams.pick === "string" ? resolvedSearchParams.pick : null}
       />

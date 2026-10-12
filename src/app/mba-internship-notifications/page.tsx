@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
   title: "Full-Time Job Search Tracker | Tech Business Roles",
   description: PAGE_DESCRIPTION,
   canonicalUrl: "/mba-internship-notifications",
-  dateModified: "2026-10-09",
+  dateModified: "2026-10-12",
 });
 
 interface MBAJobsPageProps {
@@ -67,7 +67,7 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
           name: "Job Search",
           description: PAGE_DESCRIPTION,
           url: "https://isaacvazquez.com/mba-internship-notifications",
-          dateModified: "2026-10-09",
+          dateModified: "2026-10-12",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",
