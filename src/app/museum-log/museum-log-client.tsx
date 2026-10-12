@@ -124,7 +124,7 @@ function RatingPill({ rating, label }: { rating: number; label?: string }) {
       <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
         {rating.toFixed(1)}
       </span>
-      {label ? <span className="ml-meta">· {label}</span> : null}
+      {label ? <span className="mlog-meta">· {label}</span> : null}
     </span>
   );
 }
@@ -142,23 +142,23 @@ function TagChip({ children }: { children: ReactNode }) {
 function AdmissionStub({ museum, today }: { museum: Museum; today: string | null }) {
   const stub = admissionStub(museum, today);
   return (
-    <div className="ml-stub">
-      <span className="ml-stub-admit" aria-hidden="true">
+    <div className="mlog-stub">
+      <span className="mlog-stub-admit" aria-hidden="true">
         Admit one
       </span>
-      <div className="ml-stub-body">
-      <p className="c97-serif ml-stub-name">{stub.name}</p>
-      <p className="ml-meta">
+      <div className="mlog-stub-body">
+      <p className="c97-serif mlog-stub-name">{stub.name}</p>
+      <p className="mlog-meta">
         {stub.city}
         {stub.founded ? ` · ${stub.founded}` : ""}
       </p>
-      <div className="ml-stub-tear">
-        <span className="ml-stub-price">{stub.admission}</span>
+      <div className="mlog-stub-tear">
+        <span className="mlog-stub-price">{stub.admission}</span>
         {/* Labelled, since the hero prints this ticket for the reader's own visit and bare stars read as their rating. */}
         <RatingPill rating={stub.curatorRating} label="curator" />
       </div>
       {stub.exhibitNow ? (
-        <span className="c97-chip c97-chip-positive ml-chip-start">On view now</span>
+        <span className="c97-chip c97-chip-positive mlog-chip-start">On view now</span>
       ) : null}
       </div>
     </div>
@@ -177,15 +177,15 @@ function VisitStrip({
 }) {
   if (museums.length === 0) return null;
   return (
-    <div className="ml-strip-wrap">
-      <p className="ml-meta">Your last visits</p>
-      <ul className="ml-strip" aria-label="Your last visits">
+    <div className="mlog-strip-wrap">
+      <p className="mlog-meta">Your last visits</p>
+      <ul className="mlog-strip" aria-label="Your last visits">
         {museums.map((museum) => (
           <li key={museum.id}>
             <button
               type="button"
               onClick={() => onOpen(museum.slug)}
-              className="ml-stub-trigger"
+              className="mlog-stub-trigger"
               aria-label={`Open ${museum.name}`}
             >
               <AdmissionStub museum={museum} today={today} />
@@ -232,7 +232,7 @@ function QuickActions({
         }}
         aria-pressed={isVisited}
         aria-label={isVisited ? `Mark ${museum.name} as not visited` : `Log a visit to ${museum.name}`}
-        className="ml-action"
+        className="mlog-action"
       >
         {isVisited ? <Check size={16} aria-hidden="true" /> : <Plus size={16} aria-hidden="true" />}
         {isVisited ? "Visited" : "Log visit"}
@@ -245,7 +245,7 @@ function QuickActions({
         }}
         aria-pressed={isWatchlisted}
         aria-label={isWatchlisted ? `Remove ${museum.name} from watchlist` : `Save ${museum.name} to watchlist`}
-        className="ml-action"
+        className="mlog-action"
       >
         {isWatchlisted ? <BookmarkCheck size={16} aria-hidden="true" /> : <Bookmark size={16} aria-hidden="true" />}
         {isWatchlisted ? "Saved" : "Watchlist"}
@@ -257,7 +257,7 @@ function QuickActions({
           onToggleLiked();
         }}
         aria-pressed={isLiked}
-        className="ml-action"
+        className="mlog-action"
       >
         <Heart size={16} aria-hidden="true" fill={isLiked ? "var(--c97-ink)" : "none"} />
         {isLiked ? "Liked" : "Like"}
@@ -294,26 +294,26 @@ function MuseumCard({
   onClearVisit,
 }: MuseumCardProps) {
   return (
-    <article className="ml-card">
+    <article className="mlog-card">
       <button
         type="button"
         onClick={onOpen}
-        className="ml-stub-trigger"
+        className="mlog-stub-trigger"
         aria-label={`Open ${museum.name} detail`}
       >
         <AdmissionStub museum={museum} today={today} />
       </button>
 
       {visit ? (
-        <p className="ml-meta">
+        <p className="mlog-meta">
           Your visit {formatShortDate(visit.date)} ·{" "}
           {visit.rating === undefined ? "not rated" : `${visit.rating.toFixed(1)} stars`}
         </p>
       ) : null}
 
-      <p className="ml-card-blurb">{museum.blurb}</p>
+      <p className="mlog-card-blurb">{museum.blurb}</p>
 
-      <div className="ml-card-actions">
+      <div className="mlog-card-actions">
         <QuickActions
           museum={museum}
           visit={visit}
@@ -386,9 +386,9 @@ function DiscoverView({
   );
 
   return (
-    <div className="ml-stack">
-      <div className="ml-toolbar" role="group" aria-label="Search and filters">
-        <label className="ml-search">
+    <div className="mlog-stack">
+      <div className="mlog-toolbar" role="group" aria-label="Search and filters">
+        <label className="mlog-search">
           <Search size={14} aria-hidden="true" />
           <input
             type="search"
@@ -410,14 +410,14 @@ function DiscoverView({
           options={REGION_FILTER_OPTIONS}
           onChange={(value) => onChangeFilter({ region: value as MuseumRegionFilter })}
         />
-        <div className="ml-sort" role="group" aria-label="Sort">
+        <div className="mlog-sort" role="group" aria-label="Sort">
           {SORT_OPTIONS.map((sortKey) => (
             <button
               key={sortKey}
               type="button"
               onClick={() => onChangeFilter({ sort: sortKey as MuseumSort })}
               aria-pressed={state.sort === sortKey}
-              className="ml-sort-btn"
+              className="mlog-sort-btn"
             >
               {SORT_LABEL[sortKey]}
             </button>
@@ -425,7 +425,7 @@ function DiscoverView({
         </div>
       </div>
 
-      <p className="ml-meta ml-count">
+      <p className="mlog-meta mlog-count">
         {sorted.length} {sorted.length === 1 ? "museum" : "museums"} in the catalog
         {state.type !== "all" && ` · ${TYPE_LABEL[state.type]}`}
         {state.region !== "all" && ` · ${REGION_LABEL[state.region]}`}
@@ -433,9 +433,9 @@ function DiscoverView({
       </p>
 
       {sorted.length === 0 ? (
-        <p className="ml-empty">No museums match the current filters. Adjust type, region, or your search to see more.</p>
+        <p className="mlog-empty">No museums match the current filters. Adjust type, region, or your search to see more.</p>
       ) : (
-        <div className="ml-grid">
+        <div className="mlog-grid">
           {sorted.map((museum) => {
             const visit = visitByMuseumId[museum.id];
             return (
@@ -473,9 +473,9 @@ function FilterSelect({
 }) {
   const id = `filter-${label.toLowerCase()}`;
   return (
-    <label htmlFor={id} className="ml-filter">
+    <label htmlFor={id} className="mlog-filter">
       <span className="c97-kicker">{label}</span>
-      <select id={id} value={value} onChange={(e) => onChange(e.target.value)} className="c97-field ml-select">
+      <select id={id} value={value} onChange={(e) => onChange(e.target.value)} className="c97-field mlog-select">
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}
@@ -580,8 +580,8 @@ function ReviewCard({
         >
           {museum.name}
         </button>
-        <span className="ml-meta">{museum.city}</span>
-        <span className="ml-meta" style={{ marginLeft: "auto" }}>
+        <span className="mlog-meta">{museum.city}</span>
+        <span className="mlog-meta" style={{ marginLeft: "auto" }}>
           {formatDate(review.dateVisited)}
         </span>
       </div>
@@ -592,7 +592,7 @@ function ReviewCard({
         </span>
         {review.liked && <Heart size={14} aria-label="Liked" fill="var(--c97-ink)" stroke="var(--c97-ink)" />}
         {review.exhibitTitle && (
-          <span className="ml-meta" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-0)" }}>
+          <span className="mlog-meta" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-0)" }}>
             <Ticket size={12} aria-hidden="true" /> {review.exhibitTitle}
           </span>
         )}
@@ -632,15 +632,15 @@ function VisitStampCard({
   const stamp = visitStamp(entry.date);
   return (
     <li
-      className="ml-stamp-row"
+      className="mlog-stamp-row"
       style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-3)" }}
     >
       {stamp ? (
-        <time dateTime={entry.date} className="ml-visit-stamp">
+        <time dateTime={entry.date} className="mlog-visit-stamp">
           <span className="sr-only">Visited {formatDate(entry.date)}</span>
-          <span className="ml-visit-stamp-month" aria-hidden="true">{stamp.month}</span>
-          <span className="ml-visit-stamp-day" aria-hidden="true">{stamp.day}</span>
-          <span className="ml-visit-stamp-year" aria-hidden="true">{stamp.year}</span>
+          <span className="mlog-visit-stamp-month" aria-hidden="true">{stamp.month}</span>
+          <span className="mlog-visit-stamp-day" aria-hidden="true">{stamp.day}</span>
+          <span className="mlog-visit-stamp-year" aria-hidden="true">{stamp.year}</span>
         </time>
       ) : (
         <div />
@@ -659,7 +659,7 @@ function VisitStampCard({
           <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
             {entry.rating.toFixed(1)}
           </span>
-          {entry.exhibitTitle && <span className="ml-meta">{entry.exhibitTitle}</span>}
+          {entry.exhibitTitle && <span className="mlog-meta">{entry.exhibitTitle}</span>}
         </div>
         {entry.note && (
           <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic", marginTop: "var(--c97-sp-1)" }}>
@@ -728,7 +728,7 @@ function ListsView({
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
             {selectedList.description}
           </p>
-          <p className="ml-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+          <p className="mlog-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
             Curated by {selectedList.curator} · Updated {formatShortDate(selectedList.updatedAt)}
           </p>
         </header>
@@ -755,7 +755,7 @@ function ListsView({
   }
 
   return (
-    <div className="ml-lists">
+    <div className="mlog-lists">
       {snapshot.lists.map((list) => (
         <ListPreviewCard
           key={list.id}
@@ -782,16 +782,16 @@ function ListPreviewCard({
     <button
       type="button"
       onClick={onOpen}
-      className="ml-list-card"
+      className="mlog-list-card"
     >
       <span className="c97-kicker">
         Exhibition catalogue · {count} {count === 1 ? "museum" : "museums"}
       </span>
-      <span className="ml-list-title">{list.title}</span>
+      <span className="mlog-list-title">{list.title}</span>
       <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
         {list.description}
       </span>
-      <span className="ml-meta" style={{ marginTop: "auto" }}>
+      <span className="mlog-meta" style={{ marginTop: "auto" }}>
         Curated by {list.curator} · Updated {formatShortDate(list.updatedAt)}
       </span>
     </button>
@@ -834,7 +834,7 @@ function CatalogueEntry({
         >
           {stub.name}
         </button>
-        <p className="ml-meta">
+        <p className="mlog-meta">
           {stub.city}
           {stub.founded ? ` · ${stub.founded}` : ""} · {stub.admission}
           {stub.exhibitNow ? " · On view now" : ""}
@@ -904,26 +904,26 @@ function MuseumDetailView({
     .sort((a, b) => b.date.localeCompare(a.date));
 
   return (
-    <div className="ml-detail">
-      <button type="button" onClick={onBack} className="c97-btn-ghost ml-back">
+    <div className="mlog-detail">
+      <button type="button" onClick={onBack} className="c97-btn-ghost mlog-back">
         ← Back to catalog
       </button>
 
-      <header className="ml-detail-head">
-        <div className="ml-detail-stub">
+      <header className="mlog-detail-head">
+        <div className="mlog-detail-stub">
           <AdmissionStub museum={museum} today={today} />
         </div>
-        <div className="ml-stack">
+        <div className="mlog-stack">
           <p className="c97-kicker">
             {TYPE_LABEL[museum.type]} · {REGION_LABEL[museum.region]}
           </p>
-          <h2 ref={headingRef} tabIndex={-1} className="ml-detail-name">
+          <h2 ref={headingRef} tabIndex={-1} className="mlog-detail-name">
             {museum.name}
           </h2>
-          <p className="ml-meta">
+          <p className="mlog-meta">
             {museum.country} · {formatRuntime(museum.visitMinutesAvg)} average visit
           </p>
-          <div className="ml-row-wrap">
+          <div className="mlog-row-wrap">
             <RatingPill rating={museum.curatorRating} label="curator" />
             {visit?.rating !== undefined && <RatingPill rating={visit.rating} label="you" />}
           </div>
@@ -939,7 +939,7 @@ function MuseumDetailView({
             onClearVisit={onClearVisit}
           />
           {museum.websiteUrl && (
-            <p className="ml-meta">
+            <p className="mlog-meta">
               <a className="c97-btn-ghost" href={museum.websiteUrl} target="_blank" rel="noopener noreferrer">
                 Visit official site
               </a>
@@ -949,19 +949,19 @@ function MuseumDetailView({
       </header>
 
       {review && (
-        <section className="ml-detail-part" aria-labelledby={`ml-review-${museum.id}`}>
-          <h3 id={`ml-review-${museum.id}`} className="ml-part-title">Curator review</h3>
-          <div className="ml-row-wrap">
+        <section className="mlog-detail-part" aria-labelledby={`mlog-review-${museum.id}`}>
+          <h3 id={`mlog-review-${museum.id}`} className="mlog-part-title">Curator review</h3>
+          <div className="mlog-row-wrap">
             <StarRow rating={review.rating} size={18} />
-            <span className="c97-mono ml-small">{review.rating.toFixed(1)} / 5</span>
-            <span className="ml-meta">Visited {formatDate(review.dateVisited)}</span>
+            <span className="c97-mono mlog-small">{review.rating.toFixed(1)} / 5</span>
+            <span className="mlog-meta">Visited {formatDate(review.dateVisited)}</span>
             {review.liked && <Heart size={14} fill="var(--c97-ink)" stroke="var(--c97-ink)" aria-label="Liked" />}
           </div>
-          <p className="ml-review-headline">{review.headline}</p>
+          <p className="mlog-review-headline">{review.headline}</p>
           <p>{review.body}</p>
-          {review.recommendedFor && <p className="ml-small ml-italic">Recommended for: {review.recommendedFor}</p>}
+          {review.recommendedFor && <p className="mlog-small mlog-italic">Recommended for: {review.recommendedFor}</p>}
           {review.tags.length > 0 && (
-            <div className="ml-row-wrap">
+            <div className="mlog-row-wrap">
               {review.tags.map((tag) => (
                 <TagChip key={tag}>{tag}</TagChip>
               ))}
@@ -970,9 +970,9 @@ function MuseumDetailView({
         </section>
       )}
 
-      <section className="ml-detail-part" aria-labelledby={`ml-highlights-${museum.id}`}>
-        <h3 id={`ml-highlights-${museum.id}`} className="ml-part-title">What to actually see</h3>
-        <ul className="ml-highlights">
+      <section className="mlog-detail-part" aria-labelledby={`mlog-highlights-${museum.id}`}>
+        <h3 id={`mlog-highlights-${museum.id}`} className="mlog-part-title">What to actually see</h3>
+        <ul className="mlog-highlights">
           {museum.highlights.map((h) => (
             <li key={h}>{h}</li>
           ))}
@@ -980,27 +980,27 @@ function MuseumDetailView({
       </section>
 
       {museum.exhibits.length > 0 && (
-        <section className="ml-detail-part" aria-labelledby={`ml-exhibits-${museum.id}`}>
-          <h3 id={`ml-exhibits-${museum.id}`} className="ml-part-title">Exhibition calendar</h3>
-          <ol className="ml-ruled">
+        <section className="mlog-detail-part" aria-labelledby={`mlog-exhibits-${museum.id}`}>
+          <h3 id={`mlog-exhibits-${museum.id}`} className="mlog-part-title">Exhibition calendar</h3>
+          <ol className="mlog-ruled">
             {museum.exhibits.map((ex) => {
               const status = getMuseumExhibitStatus(ex, today);
               const chipTone =
                 status === "current" ? " c97-chip-positive" : status === "upcoming" ? " c97-chip-warning" : "";
               return (
                 <li key={ex.id}>
-                  <div className="ml-exhibit-head">
-                    <div className="ml-row-wrap">
-                      <p className="ml-exhibit-title">{ex.title}</p>
+                  <div className="mlog-exhibit-head">
+                    <div className="mlog-row-wrap">
+                      <p className="mlog-exhibit-title">{ex.title}</p>
                       {status && <span className={`c97-chip${chipTone}`}>{status}</span>}
                     </div>
-                    <span className="ml-meta">
+                    <span className="mlog-meta">
                       {formatShortDate(ex.startDate)} – {ex.endDate ? formatShortDate(ex.endDate) : "Permanent"}
                     </span>
                   </div>
-                  <p className="ml-small">{ex.blurb}</p>
+                  <p className="mlog-small">{ex.blurb}</p>
                   {ex.ticketed && (
-                    <span className="c97-chip ml-chip-start">
+                    <span className="c97-chip mlog-chip-start">
                       <Ticket size={12} aria-hidden="true" /> Timed entry
                     </span>
                   )}
@@ -1011,18 +1011,18 @@ function MuseumDetailView({
         </section>
       )}
 
-      <section className="ml-detail-part" aria-labelledby={`ml-activity-${museum.id}`}>
-        <h3 id={`ml-activity-${museum.id}`} ref={activityRef} tabIndex={-1} className="ml-part-title">
+      <section className="mlog-detail-part" aria-labelledby={`mlog-activity-${museum.id}`}>
+        <h3 id={`mlog-activity-${museum.id}`} ref={activityRef} tabIndex={-1} className="mlog-part-title">
           Your activity
         </h3>
         {visit ? (
           <>
             <p>Visited on {formatDate(visit.date)}</p>
             {visit.rating !== undefined && <RatingPill rating={visit.rating} />}
-            {visit.note && <p className="ml-small ml-italic">&ldquo;{visit.note}&rdquo;</p>}
+            {visit.note && <p className="mlog-small mlog-italic">&ldquo;{visit.note}&rdquo;</p>}
             {visit.rating === undefined && (
               <>
-                <p className="ml-small">You have not rated this visit. Move the slider to your rating and save it.</p>
+                <p className="mlog-small">You have not rated this visit. Move the slider to your rating and save it.</p>
                 <RateAndLogForm
                   logged
                   onSubmit={(rating, note) => {
@@ -1038,14 +1038,14 @@ function MuseumDetailView({
                 pendingActivityFocus.current = true;
                 onClearVisit();
               }}
-              className="ml-action ml-chip-start"
+              className="mlog-action mlog-chip-start"
             >
               <Trash2 size={12} aria-hidden="true" /> Remove visit
             </button>
           </>
         ) : (
           <>
-            <p className="ml-small">
+            <p className="mlog-small">
               No visit logged yet. Use the buttons above to mark this one done without a rating, save it for later, or
               like it. To log it with a rating, move the slider here to your own and save.
             </p>
@@ -1065,12 +1065,12 @@ function MuseumDetailView({
       </section>
 
       {visitLogEntries.length > 0 && (
-        <section className="ml-detail-part" aria-labelledby={`ml-history-${museum.id}`}>
-          <h3 id={`ml-history-${museum.id}`} className="ml-part-title">Past visits</h3>
-          <ol className="ml-ruled">
+        <section className="mlog-detail-part" aria-labelledby={`mlog-history-${museum.id}`}>
+          <h3 id={`mlog-history-${museum.id}`} className="mlog-part-title">Past visits</h3>
+          <ol className="mlog-ruled">
             {visitLogEntries.map((entry) => (
-              <li key={entry.id} className="ml-history-row">
-                <span className="ml-meta ml-row-wrap">
+              <li key={entry.id} className="mlog-history-row">
+                <span className="mlog-meta mlog-row-wrap">
                   <Calendar size={12} aria-hidden="true" /> {formatShortDate(entry.date)}
                 </span>
                 <RatingPill rating={entry.rating} />
@@ -1081,9 +1081,9 @@ function MuseumDetailView({
       )}
 
       {inLists.length > 0 && (
-        <section className="ml-detail-part" aria-labelledby={`ml-lists-${museum.id}`}>
-          <h3 id={`ml-lists-${museum.id}`} className="ml-part-title">Appears in</h3>
-          <ul className="ml-stack-tight">
+        <section className="mlog-detail-part" aria-labelledby={`mlog-lists-${museum.id}`}>
+          <h3 id={`mlog-lists-${museum.id}`} className="mlog-part-title">Appears in</h3>
+          <ul className="mlog-stack-tight">
             {inLists.map((list) => (
               <li key={list.id}>
                 <button type="button" onClick={() => onOpenList(list.slug)} className="c97-btn-ghost">
@@ -1342,25 +1342,25 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
         : `${exhibitsNowCount} museums have an exhibit on view today.`;
 
   return (
-    <div className="ml-root">
-      <div className="c97-shell c97-frame ml-page">
-        <header className="ml-head">
-          <div className="ml-title">
+    <div className="mlog-root">
+      <div className="c97-shell c97-frame mlog-page">
+        <header className="mlog-head">
+          <div className="mlog-title">
             <h1>Museum Log</h1>
-            <p className="ml-lede">
+            <p className="mlog-lede">
               A Letterboxd for museums, meaning a catalog of the ones I&rsquo;d actually recommend with curator reviews and
               themed lists, and a log of your own visits with a rating and a note.
             </p>
-            <p className="ml-meta">
+            <p className="mlog-meta">
               Curated by {snapshot.curatorName} · updated {lastUpdated}
             </p>
           </div>
           {hydrated ? <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} /> : null}
         </header>
 
-        <div className="ml-bar">
+        <div className="mlog-bar">
           <nav aria-label="Section navigation">
-            <div className="ml-switch">
+            <div className="mlog-switch">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = item.id === activeView;
@@ -1370,7 +1370,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     type="button"
                     aria-pressed={isActive}
                     onClick={() => handleViewChange(item.id)}
-                    className="ml-switch-btn"
+                    className="mlog-switch-btn"
                   >
                     <Icon size={16} aria-hidden />
                     {item.label}
@@ -1379,7 +1379,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               })}
             </div>
           </nav>
-          <p className="ml-meta ml-summary">
+          <p className="mlog-meta mlog-summary">
             {snapshot.museums.length} museums catalogued, {snapshot.reviews.length}{" "}
             {snapshot.reviews.length === 1 ? "curator review" : "curator reviews"}, and {snapshot.visitLog.length}{" "}
             {snapshot.visitLog.length === 1 ? "visit" : "visits"} in the curator&rsquo;s diary. {exhibitsLine}{" "}
@@ -1391,19 +1391,19 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
         </div>
 
         {persistenceStatus === "memory-only" ? (
-          <p className="ml-meta" role="status">
+          <p className="mlog-meta" role="status">
             Museum log changes are available in this tab, but browser storage is unavailable, so they may not remain
             after you close it.
           </p>
         ) : null}
 
-        <div className="ml-body">
-          <div className="ml-main">
+        <div className="mlog-body">
+          <div className="mlog-main">
             <h2
               id="museum-log-catalog"
               ref={catalogHeadingRef}
               tabIndex={-1}
-              className={selectedMuseum || routeState.view === "museum" ? "sr-only" : "ml-section-title"}
+              className={selectedMuseum || routeState.view === "museum" ? "sr-only" : "mlog-section-title"}
             >
               {navItems.find((item) => item.id === activeView)?.label}
             </h2>
@@ -1481,24 +1481,24 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             )}
           </div>
 
-          <aside aria-label="Museum Log side panel" className="ml-rail">
+          <aside aria-label="Museum Log side panel" className="mlog-rail">
             {selectedMuseum ? (
               <section>
-                <h2 className="ml-rail-title">Other museums in {REGION_LABEL[selectedMuseum.region]}</h2>
+                <h2 className="mlog-rail-title">Other museums in {REGION_LABEL[selectedMuseum.region]}</h2>
                 {contextualMuseums.length === 0 ? (
-                  <p className="ml-small">No other museums catalogued in this region yet.</p>
+                  <p className="mlog-small">No other museums catalogued in this region yet.</p>
                 ) : (
-                  <ul className="ml-rail-list">
+                  <ul className="mlog-rail-list">
                     {contextualMuseums.map((m) => (
                       <li key={m.id}>
-                        <button type="button" onClick={() => handleOpenMuseum(m.slug)} className="ml-rail-item">
-                          <span className="ml-rail-item-text">
-                            <span className="ml-rail-item-name">{m.name}</span>
-                            <span className="ml-meta">
+                        <button type="button" onClick={() => handleOpenMuseum(m.slug)} className="mlog-rail-item">
+                          <span className="mlog-rail-item-text">
+                            <span className="mlog-rail-item-name">{m.name}</span>
+                            <span className="mlog-meta">
                               {m.city} · {TYPE_LABEL[m.type]}
                             </span>
                           </span>
-                          <span className="c97-mono ml-small ml-row-wrap">
+                          <span className="c97-mono mlog-small mlog-row-wrap">
                             <Star size={10} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                             {m.curatorRating.toFixed(1)}
                           </span>
@@ -1510,26 +1510,26 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               </section>
             ) : (
               <section>
-                <h2 className="ml-rail-title">
+                <h2 className="mlog-rail-title">
                   <Heart size={14} aria-hidden="true" /> Top liked
                 </h2>
                 {likedFromCurator && topLiked.length > 0 ? (
-                  <p className="ml-meta">You haven&rsquo;t liked a museum yet, so these are the curator&rsquo;s favorites.</p>
+                  <p className="mlog-meta">You haven&rsquo;t liked a museum yet, so these are the curator&rsquo;s favorites.</p>
                 ) : null}
                 {topLiked.length === 0 ? (
-                  <p className="ml-small">Heart a museum to surface it here.</p>
+                  <p className="mlog-small">Heart a museum to surface it here.</p>
                 ) : (
-                  <ul className="ml-rail-list">
+                  <ul className="mlog-rail-list">
                     {topLiked.map((m) => (
                       <li key={m.id}>
-                        <button type="button" onClick={() => handleOpenMuseum(m.slug)} className="ml-rail-item">
-                          <span className="ml-rail-item-text">
-                            <span className="ml-rail-item-name">{m.name}</span>
-                            <span className="ml-meta">
+                        <button type="button" onClick={() => handleOpenMuseum(m.slug)} className="mlog-rail-item">
+                          <span className="mlog-rail-item-text">
+                            <span className="mlog-rail-item-name">{m.name}</span>
+                            <span className="mlog-meta">
                               {TYPE_LABEL[m.type]} · {m.city}
                             </span>
                           </span>
-                          <span className="c97-mono ml-small ml-row-wrap">
+                          <span className="c97-mono mlog-small mlog-row-wrap">
                             <Star size={10} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                             {m.curatorRating.toFixed(1)}
                           </span>
@@ -1541,7 +1541,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               </section>
             )}
 
-            <p className="ml-small ml-row-wrap ml-storage">
+            <p className="mlog-small mlog-row-wrap mlog-storage">
               <HelpCircle size={14} aria-hidden="true" />
               Visits, watchlist, and likes live only in your browser, with no login or cloud sync behind them.
             </p>

@@ -8,40 +8,40 @@
  * button, and label classes read.
  */
 
-.ml-root {
-  --ml-wall: #f3f1ec;
-  --ml-ticket: #fbfaf7;
-  --ml-field: #e7e3da;
-  --ml-ink: #1d1c1a;
-  --ml-ink-2: #55514b;
-  --ml-blue: #284785;
-  --ml-rule: rgba(29, 28, 26, 0.16);
+.mlog-root {
+  --mlog-wall: #f3f1ec;
+  --mlog-ticket: #fbfaf7;
+  --mlog-field: #e7e3da;
+  --mlog-ink: #1d1c1a;
+  --mlog-ink-2: #55514b;
+  --mlog-blue: #284785;
+  --mlog-rule: rgba(29, 28, 26, 0.16);
 
-  --c97-surface: var(--ml-wall);
-  --c97-panel: var(--ml-ticket);
-  --c97-field: var(--ml-field);
-  --c97-ink: var(--ml-ink);
-  --c97-ink-2: var(--ml-ink-2);
-  --c97-label: var(--ml-ink-2);
-  --c97-rule: var(--ml-rule);
-  --c97-accent: var(--ml-blue);
+  --c97-surface: var(--mlog-wall);
+  --c97-panel: var(--mlog-ticket);
+  --c97-field: var(--mlog-field);
+  --c97-ink: var(--mlog-ink);
+  --c97-ink-2: var(--mlog-ink-2);
+  --c97-label: var(--mlog-ink-2);
+  --c97-rule: var(--mlog-rule);
+  --c97-accent: var(--mlog-blue);
   --c97-positive: #24663a;
   --c97-warning: #7d5300;
   --c97-negative: #a1302a;
 
-  background: var(--ml-wall);
-  color: var(--ml-ink);
+  background: var(--mlog-wall);
+  color: var(--mlog-ink);
   font-family: var(--c97-font-body);
 }
 
-.dark .ml-root {
-  --ml-wall: #14181c;
-  --ml-ticket: #1c2228;
-  --ml-field: #232a31;
-  --ml-ink: #e7e9eb;
-  --ml-ink-2: #a2abb5;
-  --ml-blue: #93b3ef;
-  --ml-rule: rgba(231, 233, 235, 0.16);
+.dark .mlog-root {
+  --mlog-wall: #14181c;
+  --mlog-ticket: #1c2228;
+  --mlog-field: #232a31;
+  --mlog-ink: #e7e9eb;
+  --mlog-ink-2: #a2abb5;
+  --mlog-blue: #93b3ef;
+  --mlog-rule: rgba(231, 233, 235, 0.16);
 
   --c97-positive: #8fd19e;
   --c97-warning: #e6c172;
@@ -49,73 +49,73 @@
 }
 
 /* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
-.ml-root h1,
-.ml-root h2,
-.ml-root h3 {
+.mlog-root h1,
+.mlog-root h2,
+.mlog-root h3 {
   font-family: var(--c97-font-display);
   font-weight: 400;
-  color: var(--ml-ink);
+  color: var(--mlog-ink);
   margin: 0;
 }
 
 /* :where keeps this reset at one class of weight, so every route class below outranks it. */
-.ml-root :where(p, ul, ol, li) {
+.mlog-root :where(p, ul, ol, li) {
   margin: 0;
   padding: 0;
   max-inline-size: none;
   line-height: 1.5;
 }
 
-.ml-root :where(ul, ol) {
+.mlog-root :where(ul, ol) {
   list-style: none;
 }
 
-.ml-page {
+.mlog-page {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-3);
   padding-block: var(--c97-sp-4) var(--c97-sp-5);
 }
 
-.ml-stack {
+.mlog-stack {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
   min-width: 0;
 }
 
-.ml-stack-tight {
+.mlog-stack-tight {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
 }
 
-.ml-row-wrap {
+.mlog-row-wrap {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--c97-sp-1);
 }
 
-.ml-meta {
+.mlog-meta {
   font-size: var(--c97-fs-small);
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
-.ml-small {
+.mlog-small {
   font-size: var(--c97-fs-small);
 }
 
-.ml-italic {
+.mlog-italic {
   font-style: italic;
 }
 
-.ml-chip-start {
+.mlog-chip-start {
   align-self: flex-start;
 }
 
 /* Title row: the name, one sentence, the curator line, and your last visits once there are any. */
-.ml-head {
+.mlog-head {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -123,25 +123,25 @@
   gap: var(--c97-sp-3) var(--c97-sp-4);
 }
 
-.ml-title {
+.mlog-title {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
   flex: 1 1 26rem;
 }
 
-.ml-root h1 {
+.mlog-root h1 {
   font-size: var(--c97-fs-h1);
   line-height: 1.02;
   letter-spacing: -0.02em;
 }
 
-.ml-lede {
+.mlog-lede {
   max-inline-size: 60ch;
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
-.ml-strip-wrap {
+.mlog-strip-wrap {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
@@ -149,29 +149,29 @@
   min-width: 0;
 }
 
-.ml-strip {
+.mlog-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
   gap: var(--c97-sp-2);
 }
 
 /* The switch and the summary line, on one rule. */
-.ml-bar {
+.mlog-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--c97-sp-2) var(--c97-sp-4);
   padding-block: var(--c97-sp-1);
-  border-block: 2px solid var(--ml-ink);
+  border-block: 2px solid var(--mlog-ink);
 }
 
-.ml-switch {
+.mlog-switch {
   display: flex;
   flex-wrap: wrap;
   gap: 0;
 }
 
-.ml-switch-btn {
+.mlog-switch-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
@@ -180,7 +180,7 @@
   border: 0;
   border-bottom: 3px solid transparent;
   background: none;
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
   font-size: var(--c97-fs-small);
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -188,31 +188,31 @@
   cursor: pointer;
 }
 
-.ml-switch-btn:hover {
-  color: var(--ml-ink);
+.mlog-switch-btn:hover {
+  color: var(--mlog-ink);
 }
 
-.ml-switch-btn[aria-pressed="true"] {
-  color: var(--ml-ink);
-  border-bottom-color: var(--ml-blue);
+.mlog-switch-btn[aria-pressed="true"] {
+  color: var(--mlog-ink);
+  border-bottom-color: var(--mlog-blue);
 }
 
-.ml-switch-btn:focus-visible,
-.ml-sort-btn:focus-visible,
-.ml-stub-trigger:focus-visible,
-.ml-list-card:focus-visible,
-.ml-rail-item:focus-visible,
-.ml-action:focus-visible {
-  outline: 2px solid var(--ml-blue);
+.mlog-switch-btn:focus-visible,
+.mlog-sort-btn:focus-visible,
+.mlog-stub-trigger:focus-visible,
+.mlog-list-card:focus-visible,
+.mlog-rail-item:focus-visible,
+.mlog-action:focus-visible {
+  outline: 2px solid var(--mlog-blue);
   outline-offset: 2px;
 }
 
-.ml-summary {
+.mlog-summary {
   flex: 1 1 24rem;
 }
 
 /* The catalog with the rail beside it. */
-.ml-body {
+.mlog-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--c97-sp-4);
@@ -220,33 +220,33 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .ml-body {
+  .mlog-body {
     grid-template-columns: minmax(0, 1fr) minmax(15rem, 18rem);
     gap: var(--c97-sp-5);
   }
 }
 
-.ml-main {
+.mlog-main {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-3);
   min-width: 0;
 }
 
-.ml-section-title {
+.mlog-section-title {
   font-size: var(--c97-fs-h3);
   line-height: 1.1;
 }
 
 /* Search and filters, out of their box, as one toolbar over the grid. */
-.ml-toolbar {
+.mlog-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--c97-sp-2) var(--c97-sp-3);
 }
 
-.ml-search {
+.mlog-search {
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-2);
@@ -254,102 +254,102 @@
   max-width: 22rem;
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
-  border-bottom: 1px solid var(--ml-ink-2);
-  background: var(--ml-field);
+  border-bottom: 1px solid var(--mlog-ink-2);
+  background: var(--mlog-field);
 }
 
-.ml-search svg {
+.mlog-search svg {
   flex-shrink: 0;
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
-.ml-search input {
+.mlog-search input {
   flex: 1;
   min-width: 0;
   min-height: 44px;
   border: 0;
   background: none;
   font: inherit;
-  color: var(--ml-ink);
+  color: var(--mlog-ink);
 }
 
 /* The ring goes on the whole field, icon included, so the input's own outline steps aside. */
-.ml-search:focus-within {
-  outline: 2px solid var(--ml-blue);
+.mlog-search:focus-within {
+  outline: 2px solid var(--mlog-blue);
   outline-offset: 2px;
 }
 
-.ml-search input:focus,
-.ml-search input:focus-visible {
+.mlog-search input:focus,
+.mlog-search input:focus-visible {
   outline: none;
 }
 
-.ml-filter {
+.mlog-filter {
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
 }
 
-.ml-select {
+.mlog-select {
   width: auto;
   min-height: 44px;
 }
 
-.ml-sort {
+.mlog-sort {
   display: inline-flex;
   flex-wrap: wrap;
   margin-inline-start: auto;
 }
 
-.ml-sort-btn {
+.mlog-sort-btn {
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--ml-rule);
+  border: 1px solid var(--mlog-rule);
   background: none;
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
   font-size: var(--c97-fs-small);
   cursor: pointer;
 }
 
-.ml-sort-btn + .ml-sort-btn {
+.mlog-sort-btn + .mlog-sort-btn {
   border-left: 0;
 }
 
-.ml-sort-btn[aria-pressed="true"] {
-  background: var(--ml-ink);
-  border-color: var(--ml-ink);
-  color: var(--ml-wall);
+.mlog-sort-btn[aria-pressed="true"] {
+  background: var(--mlog-ink);
+  border-color: var(--mlog-ink);
+  color: var(--mlog-wall);
 }
 
-.ml-count {
+.mlog-count {
   font-family: var(--c97-font-mono);
 }
 
-.ml-empty {
+.mlog-empty {
   padding-block: var(--c97-sp-3);
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
 /* The catalog grid: each museum is its admission ticket, then its blurb and actions, with no box around the pair. */
-.ml-grid {
+.mlog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
   gap: var(--c97-sp-4) var(--c97-sp-3);
 }
 
-.ml-card {
+.mlog-card {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
   min-width: 0;
 }
 
-.ml-card-blurb {
+.mlog-card-blurb {
   font-size: var(--c97-fs-small);
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
-.ml-card-actions {
+.mlog-card-actions {
   margin-top: auto;
 }
 
@@ -358,9 +358,9 @@
  * dotted perforation between the header and the ticket's numbers. The ticket
  * is the object, so it is the one box.
  */
-.ml-stub {
-  background: var(--ml-ticket);
-  border: 1px solid var(--ml-ink-2);
+.mlog-stub {
+  background: var(--mlog-ticket);
+  border: 1px solid var(--mlog-ink-2);
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   width: 100%;
@@ -368,20 +368,20 @@
   text-align: left;
 }
 
-.ml-stub-admit {
+.mlog-stub-admit {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   padding: var(--c97-sp-3) var(--c97-sp-1);
-  border-left: 2px dotted var(--ml-ink-2);
+  border-left: 2px dotted var(--mlog-ink-2);
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-align: center;
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
-.ml-stub-body {
+.mlog-stub-body {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
@@ -389,17 +389,17 @@
   padding: var(--c97-sp-2) var(--c97-sp-3);
 }
 
-.ml-stub-name {
+.mlog-stub-name {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-h3);
   line-height: 1.1;
   overflow-wrap: break-word;
-  color: var(--ml-ink);
+  color: var(--mlog-ink);
 }
 
-.ml-stub-tear {
+.mlog-stub-tear {
   margin-top: auto;
-  border-top: 1px dotted var(--ml-ink-2);
+  border-top: 1px dotted var(--mlog-ink-2);
   padding-top: var(--c97-sp-1);
   display: flex;
   align-items: center;
@@ -409,32 +409,32 @@
 }
 
 /* The rating and its "curator" label wrap inside the ticket rather than past its edge. */
-.ml-stub-tear > span {
+.mlog-stub-tear > span {
   flex-wrap: wrap;
   min-width: 0;
 }
 
-.ml-stub-price {
+.mlog-stub-price {
   font-family: var(--c97-font-mono);
   font-variant-numeric: tabular-nums;
 }
 
 /* The strip's stubs are small: the name and the city only. */
-.ml-strip .ml-stub-name {
+.mlog-strip .mlog-stub-name {
   font-size: var(--c97-fs-body);
 }
 
-.ml-strip .ml-stub-tear,
-.ml-strip .c97-chip {
+.mlog-strip .mlog-stub-tear,
+.mlog-strip .c97-chip {
   display: none;
 }
 
-.ml-strip .ml-stub-body {
+.mlog-strip .mlog-stub-body {
   padding: var(--c97-sp-1) var(--c97-sp-2);
 }
 
 /* Wraps a stub so the whole ticket opens the museum. */
-.ml-stub-trigger {
+.mlog-stub-trigger {
   display: block;
   width: 100%;
   height: 100%;
@@ -447,75 +447,75 @@
   text-align: left;
 }
 
-.ml-stub-trigger:hover .ml-stub,
-.ml-stub-trigger:focus-visible .ml-stub {
-  border-color: var(--ml-ink);
+.mlog-stub-trigger:hover .mlog-stub,
+.mlog-stub-trigger:focus-visible .mlog-stub {
+  border-color: var(--mlog-ink);
 }
 
 /* Log, watchlist, and like. */
-.ml-action {
+.mlog-action {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
   padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--ml-rule);
+  border: 1px solid var(--mlog-rule);
   background: none;
-  color: var(--ml-ink);
+  color: var(--mlog-ink);
   font-family: inherit;
   font-size: var(--c97-fs-small);
   cursor: pointer;
 }
 
-.ml-action:not([aria-pressed="true"]):hover {
-  border-color: var(--ml-ink);
+.mlog-action:not([aria-pressed="true"]):hover {
+  border-color: var(--mlog-ink);
 }
 
-.ml-action:active {
+.mlog-action:active {
   transform: translateY(1px);
 }
 
-.ml-action[aria-pressed="true"] {
-  background: var(--ml-ink);
-  border-color: var(--ml-ink);
-  color: var(--ml-wall);
+.mlog-action[aria-pressed="true"] {
+  background: var(--mlog-ink);
+  border-color: var(--mlog-ink);
+  color: var(--mlog-wall);
 }
 
 /* Lists: catalogue covers as whole-card buttons. */
-.ml-lists {
+.mlog-lists {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
   gap: var(--c97-sp-3);
 }
 
-.ml-list-card {
+.mlog-list-card {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
   width: 100%;
   padding: var(--c97-sp-3);
-  border: 1px solid var(--ml-rule);
-  border-top: 3px solid var(--ml-ink);
-  background: var(--ml-ticket);
-  color: var(--ml-ink);
+  border: 1px solid var(--mlog-rule);
+  border-top: 3px solid var(--mlog-ink);
+  background: var(--mlog-ticket);
+  color: var(--mlog-ink);
   text-align: left;
   font: inherit;
   cursor: pointer;
 }
 
-.ml-list-card:hover {
-  border-color: var(--ml-ink);
+.mlog-list-card:hover {
+  border-color: var(--mlog-ink);
 }
 
-.ml-list-title {
+.mlog-list-title {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-h3);
   line-height: 1.1;
 }
 
 /* The journal's stamped visits. */
-.ml-visit-stamp {
-  border: 2px solid var(--ml-ink-2);
+.mlog-visit-stamp {
+  border: 2px solid var(--mlog-ink-2);
   padding: var(--c97-sp-1) var(--c97-sp-2);
   display: flex;
   flex-direction: column;
@@ -524,26 +524,26 @@
   min-width: 4.5rem;
   transform: rotate(-2deg);
   font-family: var(--c97-font-mono);
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
   text-align: center;
 }
 
-.ml-visit-stamp-month {
+.mlog-visit-stamp-month {
   font-size: var(--c97-fs-label);
   letter-spacing: 0.08em;
 }
 
-.ml-visit-stamp-day {
+.mlog-visit-stamp-day {
   font-size: var(--c97-fs-h2);
   line-height: var(--c97-lh-tight);
-  color: var(--ml-ink);
+  color: var(--mlog-ink);
 }
 
-.ml-visit-stamp-year {
+.mlog-visit-stamp-year {
   font-size: var(--c97-fs-label);
 }
 
-.ml-stamp-row {
+.mlog-stamp-row {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--c97-sp-3);
@@ -551,78 +551,78 @@
 }
 
 /* A museum opened: one ruled column. */
-.ml-detail {
+.mlog-detail {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-3);
   max-inline-size: 52rem;
 }
 
-.ml-back {
+.mlog-back {
   align-self: flex-start;
 }
 
-.ml-detail-head {
+.mlog-detail-head {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--c97-sp-3);
 }
 
 @media screen and (min-width: 640px) {
-  .ml-detail-head {
+  .mlog-detail-head {
     grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
   }
 }
 
-.ml-detail-name {
+.mlog-detail-name {
   font-size: var(--c97-fs-h1);
   line-height: 1.05;
 }
 
-.ml-detail-part {
+.mlog-detail-part {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
   padding-top: var(--c97-sp-3);
-  border-top: 1px solid var(--ml-rule);
+  border-top: 1px solid var(--mlog-rule);
 }
 
-.ml-part-title {
+.mlog-part-title {
   font-size: var(--c97-fs-h3);
   line-height: 1.1;
 }
 
-.ml-review-headline {
+.mlog-review-headline {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-h3);
   line-height: 1.2;
 }
 
-.ml-highlights {
+.mlog-highlights {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
 }
 
-.ml-highlights li {
+.mlog-highlights li {
   padding-inline-start: var(--c97-sp-3);
-  border-inline-start: 2px solid var(--ml-blue);
+  border-inline-start: 2px solid var(--mlog-blue);
 }
 
-.ml-ruled > li {
+.mlog-ruled > li {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
   padding-block: var(--c97-sp-2);
-  border-top: 1px solid var(--ml-rule);
+  border-top: 1px solid var(--mlog-rule);
 }
 
-.ml-ruled > li:first-child {
+.mlog-ruled > li:first-child {
   border-top: 0;
   padding-top: 0;
 }
 
-.ml-exhibit-head {
+.mlog-exhibit-head {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -630,13 +630,13 @@
   gap: var(--c97-sp-1);
 }
 
-.ml-exhibit-title {
+.mlog-exhibit-title {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-h3);
   line-height: 1.15;
 }
 
-.ml-history-row {
+.mlog-history-row {
   flex-direction: row !important;
   flex-wrap: wrap;
   align-items: baseline;
@@ -644,7 +644,7 @@
 }
 
 /* The rail: top liked, or the museum's neighbours, and the storage note, ruled rather than boxed. */
-.ml-rail {
+.mlog-rail {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-3);
@@ -652,33 +652,33 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .ml-rail {
+  .mlog-rail {
     position: sticky;
     top: var(--c97-sp-3);
     padding-inline-start: var(--c97-sp-3);
-    border-inline-start: 1px solid var(--ml-rule);
+    border-inline-start: 1px solid var(--mlog-rule);
   }
 }
 
-.ml-rail section {
+.mlog-rail section {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
 }
 
-.ml-rail-title {
+.mlog-rail-title {
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
   font-size: var(--c97-fs-body);
 }
 
-.ml-rail-list {
+.mlog-rail-list {
   display: flex;
   flex-direction: column;
 }
 
-.ml-rail-item {
+.mlog-rail-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
@@ -687,47 +687,47 @@
   min-height: 44px;
   padding: var(--c97-sp-1) 0;
   border: 0;
-  border-bottom: 1px solid var(--ml-rule);
+  border-bottom: 1px solid var(--mlog-rule);
   background: none;
-  color: var(--ml-ink);
+  color: var(--mlog-ink);
   text-align: left;
   font: inherit;
   cursor: pointer;
 }
 
-.ml-rail-item-text {
+.mlog-rail-item-text {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.ml-rail-item-name {
+.mlog-rail-item-name {
   font-family: var(--c97-font-display);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.ml-rail-item:hover .ml-rail-item-name {
+.mlog-rail-item:hover .mlog-rail-item-name {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.ml-storage {
+.mlog-storage {
   align-items: flex-start;
-  color: var(--ml-ink-2);
+  color: var(--mlog-ink-2);
 }
 
-.ml-storage svg {
+.mlog-storage svg {
   flex-shrink: 0;
   margin-top: 3px;
 }
 
 @media print {
-  .ml-toolbar,
-  .ml-switch,
-  .ml-card-actions,
-  .ml-back {
+  .mlog-toolbar,
+  .mlog-switch,
+  .mlog-card-actions,
+  .mlog-back {
     display: none;
   }
 }
