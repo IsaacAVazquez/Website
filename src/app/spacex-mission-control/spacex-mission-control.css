@@ -1,0 +1,552 @@
+/*
+ * SpaceX Mission Control, drawn as a launch operations board. The masthead
+ * band (the title row, the next launch, and the launch tape) is one dark
+ * display surface in both themes, the way a mission control wall reads, and
+ * the manifest under it sits on the route's own paper with a light and a dark
+ * story. The status colours (success, failure, upcoming, pending) are data
+ * and the only colour that means anything. The components under
+ * src/components/spacex read the Catalog 97 tokens, so both surfaces point
+ * those tokens at the route's values.
+ */
+
+.sx-root {
+  --sx-paper: #f5f6f8;
+  --sx-raise: #eaecf0;
+  --sx-ink: #12161c;
+  --sx-ink-2: #4c5561;
+  --sx-rule: rgba(18, 22, 28, 0.13);
+  --sx-rule-strong: rgba(18, 22, 28, 0.3);
+  --sx-blue: #1f5fbf;
+  --sx-go: #2e7d32;
+  --sx-fail: #b3261e;
+  --sx-hold: #8a5600;
+
+  --c97-surface: var(--sx-paper);
+  --c97-field: var(--sx-raise);
+  --c97-panel: var(--sx-raise);
+  --c97-ink: var(--sx-ink);
+  --c97-ink-2: var(--sx-ink-2);
+  --c97-label: var(--sx-ink-2);
+  --c97-rule: var(--sx-rule);
+  --c97-action: var(--sx-ink);
+  --c97-accent: var(--sx-blue);
+  --c97-positive: var(--sx-go);
+  --c97-negative: var(--sx-fail);
+  --c97-warning: var(--sx-hold);
+
+  background: var(--sx-paper);
+  color: var(--sx-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .sx-root {
+  --sx-paper: #0f1216;
+  --sx-raise: #1a1e24;
+  --sx-ink: #e8ecf1;
+  --sx-ink-2: #a0a9b5;
+  --sx-rule: rgba(232, 236, 241, 0.13);
+  --sx-rule-strong: rgba(232, 236, 241, 0.3);
+  --sx-blue: #8db4f5;
+  --sx-go: #7cc47f;
+  --sx-fail: #f28b80;
+  --sx-hold: #f0b04a;
+}
+
+/* The display band keeps one surface in both themes. */
+.sx-console {
+  --c97-surface: #0b0f14;
+  --c97-field: #161c24;
+  --c97-panel: #161c24;
+  --c97-ink: #e8edf3;
+  --c97-ink-2: #9ca8b6;
+  --c97-label: #9ca8b6;
+  --c97-rule: rgba(232, 237, 243, 0.16);
+  --c97-action: #e8edf3;
+  --c97-accent: #8db4f5;
+  --c97-positive: #6fd08c;
+  --c97-negative: #ff8a7a;
+  --c97-warning: #ffc35a;
+
+  background: #0b0f14;
+  color: #e8edf3;
+  border-bottom: 1px solid rgba(232, 237, 243, 0.16);
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.sx-root :where(h1, h2, h3, h4) {
+  font-family: var(--c97-font-body);
+  color: var(--c97-ink);
+  margin: 0;
+}
+
+.sx-root :where(p, dl, dd) {
+  margin: 0;
+  max-inline-size: none;
+}
+
+.sx-console-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-3) var(--c97-sp-2);
+}
+
+/* Title row and the status strip */
+
+.sx-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--c97-rule);
+}
+
+.sx-head-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  flex: 1 1 24rem;
+  min-width: 0;
+}
+
+.sx-title {
+  font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.375rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.sx-root .sx-standfirst {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.sx-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  flex: 1 1 26rem;
+  min-width: 0;
+}
+
+.sx-root .sx-status-line {
+  flex: 1 1 18rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.sx-live {
+  font-family: var(--c97-font-mono);
+  color: var(--c97-ink);
+}
+
+.sx-live::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-inline-end: var(--c97-sp-1);
+  border-radius: 50%;
+  background: var(--c97-positive);
+  vertical-align: 1px;
+}
+
+.sx-live[data-state="busy"]::before {
+  background: var(--c97-warning);
+}
+
+.sx-root .sx-degraded {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.sx-degraded svg {
+  margin-top: 3px;
+  color: var(--c97-warning);
+}
+
+/* Buttons */
+
+.sx-button,
+.sx-button-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sx-button {
+  border: 0;
+  background: var(--c97-ink);
+  color: var(--c97-surface);
+}
+
+.sx-button-ghost {
+  border: 1px solid var(--c97-rule);
+  background: none;
+  color: var(--c97-ink);
+}
+
+.sx-button-ghost:hover {
+  border-color: var(--c97-ink-2);
+}
+
+/* The masthead row for the next launch */
+
+.sx-mast {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3);
+}
+
+@media (min-width: 768px) {
+  .sx-mast {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    align-items: start;
+  }
+}
+
+.sx-mast-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.sx-root .sx-mast-kicker {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c97-accent);
+}
+
+.sx-mast-name {
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.sx-mast-clock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--c97-sp-0) var(--c97-sp-3);
+  margin-block: var(--c97-sp-1);
+}
+
+.sx-countdown {
+  font-family: var(--c97-font-mono);
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  letter-spacing: 0.02em;
+  color: var(--c97-positive);
+}
+
+.sx-root .sx-mast-schedule,
+.sx-root .sx-mast-facts,
+.sx-root .sx-mast-message {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.sx-root .sx-mast-facts {
+  color: var(--c97-ink);
+}
+
+.sx-root .sx-mast-fleet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0) var(--c97-sp-3);
+  font-size: 0.8125rem;
+  color: var(--c97-ink-2);
+}
+
+.sx-mast-fleet strong {
+  font-family: var(--c97-font-mono);
+  font-weight: 400;
+  color: var(--c97-ink);
+}
+
+.sx-mast-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  margin-top: var(--c97-sp-1);
+}
+
+.sx-mast-photo {
+  height: 220px;
+  min-height: 220px;
+  border-radius: 6px;
+}
+
+.sx-root .sx-liftoff-note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--c97-ink);
+}
+
+/* The tape under the masthead */
+
+.sx-tape {
+  overflow: hidden;
+  border-top: 1px solid var(--c97-rule);
+  padding-top: var(--c97-sp-1);
+}
+
+.sx-root .sx-muted {
+  color: var(--c97-ink-2);
+}
+
+/* The manifest */
+
+.sx-manifest {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-3) var(--c97-sp-6);
+}
+
+.sx-h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sx-cadence {
+  min-width: 12rem;
+}
+
+.sx-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  border-bottom: 1px solid var(--sx-rule-strong);
+}
+
+.sx-toolbar .sx-cadence {
+  padding-bottom: var(--c97-sp-1);
+}
+
+.sx-tabs,
+.sx-switch,
+.sx-filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sx-tabs {
+  gap: var(--c97-sp-3);
+}
+
+.sx-tabs button {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--sx-ink-2);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sx-tabs button[aria-selected="true"] {
+  color: var(--sx-ink);
+  border-bottom-color: var(--sx-ink);
+}
+
+.sx-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-2);
+}
+
+.sx-board-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-block: var(--c97-sp-1);
+  background: var(--sx-paper);
+}
+
+@media screen and (min-width: 640px) {
+  .sx-board-tools {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border-bottom: 1px solid var(--sx-rule);
+  }
+}
+
+.sx-switch {
+  border: 1px solid var(--sx-rule-strong);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sx-switch button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 0;
+  background: none;
+  color: var(--sx-ink-2);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sx-switch button[aria-pressed="true"] {
+  background: var(--sx-ink);
+  color: var(--sx-paper);
+}
+
+.sx-filters {
+  gap: var(--c97-sp-1);
+}
+
+.sx-filters button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--sx-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.sx-filters button[aria-pressed="true"] {
+  color: var(--sx-ink);
+  border-bottom-color: var(--sx-ink);
+}
+
+.sx-root .sx-board-count {
+  margin-inline-start: auto;
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sx-ink-2);
+}
+
+.sx-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-2);
+}
+
+@media (min-width: 640px) {
+  .sx-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .sx-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sx-root .sx-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-3);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.sx-strong {
+  font-weight: 700;
+  color: var(--c97-ink);
+}
+
+/* Sections inside the drawer, the vehicle catalog, and recovery: ruled, not boxed. */
+
+.sx-root .sx-sect {
+  padding-block: var(--c97-sp-2);
+  border-top: 1px solid var(--c97-rule);
+}
+
+.sx-root .sx-row {
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--c97-rule);
+}
+
+.sx-spec {
+  overflow: hidden;
+  border: 1px solid var(--sx-rule-strong);
+  border-radius: 6px;
+}
+
+.sx-spec-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding: var(--c97-sp-2);
+}
+
+@media (min-width: 640px) {
+  .sx-spec-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sx-spec-list dt {
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sx-ink-2);
+}
+
+.sx-spec-list dd {
+  font-family: var(--c97-font-mono);
+  font-size: 0.9375rem;
+}
+
+@media print {
+  .sx-board-tools {
+    position: static;
+  }
+
+  .sx-console {
+    border-bottom: 1px solid #000;
+  }
+}

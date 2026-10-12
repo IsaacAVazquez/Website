@@ -22,7 +22,7 @@ export function MissionCadenceStrip({ cadence }: MissionCadenceStripProps) {
 
   return (
     <div
-      className="max-[760px]:hidden print:hidden"
+      className="sx-cadence max-[760px]:hidden print:hidden"
       role="img"
       aria-label={`Launches per month, ${cadence.rangeLabel}`}
     >

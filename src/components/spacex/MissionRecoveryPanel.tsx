@@ -26,11 +26,11 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
 
   if (!recovery) {
     return (
-      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)" }}>
-        <p className="text-lg font-semibold text-[var(--c97-ink)]">
+      <div className="sx-empty">
+        <p className="sx-strong">
           No recovery data in the current snapshot.
         </p>
-        <p className="mx-auto max-w-[54ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <p>
           Launch Library&apos;s booster and landing records are empty for every mission this
           snapshot carries detail for, so there is nothing to chart yet. The panel fills in on
           its own once a refresh picks up populated core records.
@@ -41,8 +41,8 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
 
   return (
     <div className="grid lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start" style={{ gap: "var(--c97-sp-2)" }}>
-      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
-        <h3 className="c97-serif c97-h3" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)" }}>
+      <div className="sx-sect">
+        <h3 className="sx-h3">
           Recovery split
         </h3>
         <p className="font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-0)" }}>
@@ -71,8 +71,8 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
         </div>
       </div>
 
-      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
-        <h3 className="c97-serif c97-h3" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)" }}>
+      <div className="sx-sect">
+        <h3 className="sx-h3">
           Fleet leaders
         </h3>
         <p className="font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-0)" }}>

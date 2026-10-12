@@ -70,11 +70,11 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
 
   if (rockets.length === 0) {
     return (
-      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)" }}>
-        <p className="text-lg font-semibold text-[var(--c97-ink)]">
+      <div className="sx-empty">
+        <p className="sx-strong">
           No vehicle records are hydrated yet.
         </p>
-        <p className="mx-auto max-w-[52ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <p>
           The snapshot only carries full rocket specs for the handful of missions it hydrates
           detail for on each refresh. Check back after the next refresh.
         </p>
@@ -100,14 +100,14 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         {rockets.map((rocket) => (
           <article
             key={rocket.name}
-            className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
+            className="sx-spec"
           >
             <div className="flex items-center border-b border-[var(--c97-rule)]" style={{ gap: "var(--c97-sp-2)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
-              <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] font-mono text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
+              <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center font-mono text-sm text-[var(--c97-ink)]">
                 {rocket.type ?? "—"}
               </span>
               <div className="min-w-0">
-                <h3 className="c97-serif c97-h3 truncate">
+                <h3 className="sx-h3 truncate">
                   {rocket.name}
                 </h3>
                 <p className="mt-0.5 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]">
@@ -125,18 +125,14 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
               ) : null}
             </div>
 
-            <div className="grid grid-cols-2 gap-px bg-[var(--c97-rule)] sm:grid-cols-3">
+            <dl className="sx-spec-list">
               {specRows(rocket).map(([key, value]) => (
-                <div key={key} className="min-w-0 bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
-                  <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
-                    {key}
-                  </div>
-                  <div className="font-mono text-base tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                    {value}
-                  </div>
+                <div key={key}>
+                  <dt>{key}</dt>
+                  <dd>{value}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
 
             {rocket.description ? (
               <p className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
@@ -147,7 +143,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         ))}
       </div>
 
-      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] lg:sticky lg:top-6" style={{ padding: "var(--c97-sp-2)" }}>
+      <div className="lg:sticky lg:top-6">
         <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Scale · to height
         </h3>

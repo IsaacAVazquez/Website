@@ -75,12 +75,7 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
   ];
 
   return (
-    <section
-      aria-label="Launch tape"
-      className="overflow-hidden border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-field)_62%,var(--c97-surface))]"
-      // InstrumentTape takes no style prop and its band has no padding or fill of its own, so the inset sits here.
-      style={{ paddingInline: "var(--c97-sp-1)" }}
-    >
+    <section aria-label="Launch tape" className="sx-tape">
       <InstrumentTape
         ariaLabel="Recent launch outcomes and upcoming launch windows"
         label={
@@ -91,7 +86,7 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
         }
         items={items}
         emptyFallback={
-          <p className="text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
+          <p className="sx-muted">
             No recent outcomes or upcoming windows are available from the current snapshot.
           </p>
         }

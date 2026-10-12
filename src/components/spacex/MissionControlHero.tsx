@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
-import { Activity, ArrowUpRight, CalendarDays, Clock3, Radar, Rocket } from "lucide-react";
+import { Activity, ArrowUpRight, Rocket } from "lucide-react";
 import type { MissionControlSummary } from "@/types/spacex";
 import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatMissionScheduleLabel } from "./formatters";
 import { crossedScheduledT0 } from "./liftoff";
 import liftoffStyles from "./MissionLiftoff.module.css";
 
+/** One fleet figure, printed as text in the masthead's fleet line. */
+export interface MissionFleetFigure {
+  label: string;
+  value: string;
+}
+
 interface MissionControlHeroProps {
   summary: MissionControlSummary | null;
+  /** The fleet figures from the summary's insights, printed as one line of text. */
+  fleet?: MissionFleetFigure[];
   isLoading: boolean;
   error: string | null;
   initialRenderTimestampMs?: number;
@@ -106,12 +114,8 @@ function MissionCountdown({
     return (
       <>
         <MissionLiftoff />
-        <p
-          data-testid="mission-liftoff-note"
-          role="status"
-          className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
-        >
-          <Rocket aria-hidden="true" className="h-4 w-4 text-[var(--c97-accent)]" />
+        <p data-testid="mission-liftoff-note" role="status" className="sx-liftoff-note">
+          <Rocket aria-hidden="true" className="h-4 w-4" />
           T-0 by the schedule. The snapshot can&apos;t tell me whether it flew.
         </p>
       </>
@@ -124,9 +128,8 @@ function MissionCountdown({
       role="timer"
       aria-live="polite"
       aria-label={`Time to launch: ${countdown}`}
-      className="inline-flex min-h-[44px] items-center border border-[color-mix(in_srgb,var(--c97-positive)_38%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-field))] font-mono text-sm font-semibold tracking-[0.16em] text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
+      className="sx-countdown"
     >
-      <Radar aria-hidden="true" className="h-4 w-4 text-[color-mix(in_srgb,var(--c97-positive)_60%,var(--c97-ink))]" />
       {countdown}
     </div>
   );
@@ -134,6 +137,7 @@ function MissionCountdown({
 
 export function MissionControlHero({
   summary,
+  fleet = [],
   isLoading,
   error,
   initialRenderTimestampMs,
@@ -145,19 +149,11 @@ export function MissionControlHero({
 
   if (isLoading && !heroLaunch) {
     return (
-      <section
-        data-testid="mission-hero"
-        aria-label="Next launch hero"
-        className="c97-panel"
-      >
-        <div className="grid lg:grid-cols-[minmax(0,1.25fr)_220px]" style={{ gap: "var(--c97-sp-3)" }}>
-          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-            <span className="c97-skeleton" style={{ height: 16, width: 128 }} />
-            <span className="c97-skeleton" style={{ height: 48 }} />
-            <span className="c97-skeleton" style={{ height: 20, width: "75%" }} />
-            <span className="c97-skeleton" style={{ height: 20, width: "66%" }} />
-          </div>
-          <span className="c97-skeleton" style={{ height: 220 }} />
+      <section data-testid="mission-hero" aria-label="Next launch hero" className="sx-mast">
+        <div className="sx-mast-main">
+          <span className="c97-skeleton" style={{ height: 16, width: 128 }} />
+          <span className="c97-skeleton" style={{ height: 48 }} />
+          <span className="c97-skeleton" style={{ height: 20, width: "66%" }} />
         </div>
       </section>
     );
@@ -165,31 +161,19 @@ export function MissionControlHero({
 
   if (!heroLaunch) {
     return (
-      <section
-        data-testid="mission-hero"
-        aria-label="Next launch hero"
-        className="c97-panel"
-      >
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-            <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]" style={{ marginBottom: 0 }}>
-              Mission control unavailable
-            </p>
-            <h2 className="c97-serif c97-h2">
-              Live launch data is temporarily unavailable.
-            </h2>
-            <p className="max-w-[68ch] text-sm leading-7 text-[var(--c97-ink-2)]" style={{ marginBottom: 0 }}>
-              {error ??
-                "The local SpaceX API layer could not retrieve an upcoming mission summary. Retry to check whether the upstream feed has recovered."}
-            </p>
+      <section data-testid="mission-hero" aria-label="Next launch hero" className="sx-mast">
+        <div className="sx-mast-main">
+          <p className="sx-mast-kicker">Mission control unavailable</p>
+          <h2 className="sx-mast-name">Live launch data is temporarily unavailable.</h2>
+          <p className="sx-mast-facts">
+            {error ??
+              "The local SpaceX API layer could not retrieve an upcoming mission summary. Retry to check whether the upstream feed has recovered."}
+          </p>
+          <div className="sx-mast-actions">
+            <button type="button" onClick={onRetry} className="sx-button-ghost">
+              Retry live data
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onRetry}
-            className="tap-target inline-flex border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
-          >
-            Retry live data
-          </button>
         </div>
       </section>
     );
@@ -200,137 +184,65 @@ export function MissionControlHero({
     { href: heroLaunch.links.article, label: "Read article" },
     { href: heroLaunch.links.wikipedia, label: "Open Wikipedia" },
   ].filter((item): item is { href: string; label: string } => Boolean(item.href));
+  const facts = [
+    heroLaunch.rocketName ?? "Rocket unspecified",
+    [heroLaunch.launchpadName, heroLaunch.launchpadLocation].filter(Boolean).join(", ") || "Pad pending",
+    `${heroLaunch.payloadCount} payload${heroLaunch.payloadCount === 1 ? "" : "s"}`,
+  ];
 
   return (
-    <section
-      data-testid="mission-hero"
-      aria-label="Next launch hero"
-      className="c97-panel overflow-hidden"
-    >
-      <div className="grid lg:grid-cols-[minmax(0,1.24fr)_220px]" style={{ gap: "var(--c97-sp-2)" }}>
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-            <span className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}>
-              {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
-            </span>
-            <span className="border border-[var(--c97-rule)] bg-[var(--c97-field)] text-xs font-medium text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}>
-              Flight #{heroLaunch.flightNumber}
-            </span>
-          </div>
+    <section data-testid="mission-hero" aria-label="Next launch hero" className="sx-mast">
+      <div className="sx-mast-main">
+        <p className="sx-mast-kicker">
+          {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"} · Flight #
+          {heroLaunch.flightNumber}
+        </p>
+        <h2 className="sx-mast-name">{heroLaunch.name}</h2>
 
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            {heroLaunch.name}
-          </h2>
-
-          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            {heroLaunch.hasExactTime ? (
-              <MissionCountdown
-                dateUtc={heroLaunch.dateUtc}
-                initialNow={renderTimestampMs}
-              />
-            ) : (
-              <div className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                <Clock3 className="h-4 w-4 text-[var(--c97-accent)]" />
-                {formatMissionScheduleLabel(heroLaunch)}
-              </div>
-            )}
-          </div>
-
-          <div className="grid sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
-              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
-                Rocket
-              </p>
-              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-                {heroLaunch.rocketName ?? "Unspecified"}
-              </p>
-            </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
-              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
-                Launchpad
-              </p>
-              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-                {heroLaunch.launchpadName ?? "Unspecified"}
-              </p>
-            </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
-              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
-                Payloads
-              </p>
-              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-                {heroLaunch.payloadCount}
-              </p>
-            </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
-              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
-                Location
-              </p>
-              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-                {heroLaunch.launchpadLocation ?? "Pending"}
-              </p>
-            </div>
-          </div>
-
-          {summary?.heroMessage && (
-            <div className="border border-[color-mix(in_srgb,var(--c97-warning)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-surface))] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-              {summary.heroMessage}
-            </div>
-          )}
-
-          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-1)" }}>
-            <button
-              type="button"
-              onClick={onInspect}
-              className="c97-btn"
-              style={{ gap: "var(--c97-sp-1)" }}
-            >
-              Inspect mission
-              <Activity aria-hidden="true" className="h-4 w-4" />
-            </button>
-            {primaryLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="tap-target inline-flex items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
-              >
-                {link.label}
-                <ArrowUpRight className="c97-arrow-out h-4 w-4" aria-hidden="true" />
-              </a>
-            ))}
-          </div>
+        <div className="sx-mast-clock">
+          {heroLaunch.hasExactTime ? (
+            <MissionCountdown dateUtc={heroLaunch.dateUtc} initialNow={renderTimestampMs} />
+          ) : null}
+          <p className="sx-mast-schedule">{formatMissionScheduleLabel(heroLaunch)}</p>
         </div>
 
-        <div className="grid" style={{ gap: "var(--c97-sp-2)" }}>
-          <MissionVehiclePhoto
-            name={heroLaunch.rocketName ?? heroLaunch.name}
-            image={heroLaunch.vehicleImage}
-            fallbackImage={heroLaunch.patchImage}
-            className="h-[220px] min-h-[220px]"
-            label="Vehicle view"
-            dataTestId="mission-hero-visual"
-            // The 220px column from 1024px up. Below that the frame measured
-            // 277px on a 375px screen and 626px on a 768px one.
-            sizes="(min-width: 1024px) 220px, 85vw"
-          />
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
-            <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-              <CalendarDays className="h-4 w-4 text-[var(--c97-accent)]" />
-              <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
-                Mission timing
-              </p>
-            </div>
-            <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-              {formatMissionScheduleLabel(heroLaunch)}
-            </p>
-            <div className="flex items-center text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-              <Rocket aria-hidden="true" className="h-4 w-4 text-[var(--c97-accent)]" />
-              {heroLaunch.rocketName ?? "Rocket TBD"}
-            </div>
-          </div>
+        <p className="sx-mast-facts">{facts.join(" · ")}</p>
+        {fleet.length > 0 ? (
+          <p className="sx-mast-fleet">
+            {fleet.map((figure) => (
+              <span key={figure.label}>
+                {figure.label} <strong>{figure.value}</strong>
+              </span>
+            ))}
+          </p>
+        ) : null}
+
+        {summary?.heroMessage ? <p className="sx-mast-message">{summary.heroMessage}</p> : null}
+
+        <div className="sx-mast-actions">
+          <button type="button" onClick={onInspect} className="sx-button">
+            Inspect mission
+            <Activity aria-hidden="true" className="h-4 w-4" />
+          </button>
+          {primaryLinks.map((link) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="sx-button-ghost">
+              {link.label}
+              <ArrowUpRight className="c97-arrow-out h-4 w-4" aria-hidden="true" />
+            </a>
+          ))}
         </div>
       </div>
+
+      <MissionVehiclePhoto
+        name={heroLaunch.rocketName ?? heroLaunch.name}
+        image={heroLaunch.vehicleImage}
+        fallbackImage={heroLaunch.patchImage}
+        className="sx-mast-photo"
+        label="Vehicle view"
+        dataTestId="mission-hero-visual"
+        // The 240px column from 768px up, and the full column under it.
+        sizes="(min-width: 768px) 240px, 90vw"
+      />
     </section>
   );
 }
