@@ -196,11 +196,6 @@
   text-decoration-thickness: 1px;
 }
 
-.mm-meta .mm-link,
-.mm-body .mm-link {
-  min-height: 0;
-}
-
 .mm-link:hover {
   color: var(--mm-ink);
 }
