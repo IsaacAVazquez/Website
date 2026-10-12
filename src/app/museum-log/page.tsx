@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
   description:
     "A Letterboxd-style museum tracker. Browse a curated catalog, read curator reviews, save museums to your watchlist, and log visits with personal ratings.",
   canonicalUrl: "/museum-log",
-  dateModified: museumSnapshot.generatedAt.slice(0, 10),
+  dateModified: "2026-10-12",
 });
 
 interface MuseumLogPageProps {

@@ -142,9 +142,10 @@ function renderClient(snapshot: MuseumSnapshot = SNAPSHOT) {
   return render(<MuseumLogClient initialState={DEFAULT_MUSEUM_STATE} snapshot={snapshot} />);
 }
 
-function readout(label: string) {
-  return screen.getByText(label, { selector: "dt" }).parentElement as HTMLElement;
-}
+/** The reader's own count, printed once in the catalog's summary line. */
+const visited = () => screen.getByTestId("museum-log-visited");
+const summary = () => visited().parentElement as HTMLElement;
+const lastVisits = () => screen.queryByRole("list", { name: "Your last visits" });
 
 const sidePanel = () => screen.getByRole("complementary", { name: "Museum Log side panel" });
 
@@ -174,24 +175,21 @@ describe("MuseumLogClient interactions", () => {
     jest.restoreAllMocks();
   });
 
-  it("opens on a first visit with catalog totals and the curator's lists as fallbacks", () => {
+  it("opens on a first visit with the catalog's summary line and the curator's favorites as the fallback", () => {
     renderClient();
 
-    expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
-    expect(readout("Cities")).toHaveTextContent("3");
-    expect(readout("Exhibits on now")).toHaveTextContent("1museum has one running");
-    // The figures print after the stub plate they describe.
-    expect(
-      screen.getByText("Log your first visit").compareDocumentPosition(readout("Cities")) & Node.DOCUMENT_POSITION_FOLLOWING
-    ).toBeTruthy();
-    expect(screen.getByText("Log your first visit")).toBeInTheDocument();
+    expect(visited()).toHaveTextContent("You’ve visited 0 of the 3.");
+    expect(summary()).toHaveTextContent("1 museum has an exhibit on view today.");
     expect(screen.getByText("3 museums catalogued, 3 curator reviews, and 3 visits in the curator’s diary.", { exact: false })).toBeInTheDocument();
+    expect(summary()).toHaveTextContent("I would verify admission and exhibitions before visiting.");
+    // The strip of last visits prints only once there is one.
+    expect(lastVisits()).toBeNull();
 
     const panel = sidePanel();
-    expect(within(panel).getByText(/these come from the curator.s diary/)).toBeInTheDocument();
     expect(within(panel).getByText(/these are the curator.s favorites/)).toBeInTheDocument();
-    // The diary entry for a museum outside the catalog is skipped.
-    expect(within(panel).getByRole("button", { name: /Beacon Science Center/ })).toBeInTheDocument();
+    // The liked review for a museum outside the catalog is skipped.
+    expect(within(panel).getByRole("button", { name: /Atlas Art Museum/ })).toBeInTheDocument();
+    expect(within(panel).queryByRole("button", { name: /Ghost/ })).toBeNull();
     expect(screen.queryByRole("status")).toBeNull();
   });
 
@@ -248,13 +246,13 @@ describe("MuseumLogClient interactions", () => {
     expect(stored().watchlist).toEqual([]);
     expect(within(actions()).getByRole("button", { name: "Mark Atlas Art Museum as not visited" })).toHaveTextContent("Visited");
     expect(screen.getByText(/^Your visit .* · not rated$/)).toBeInTheDocument();
-    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
-    expect(screen.queryByText("Log your first visit")).toBeNull();
-    expect(within(sidePanel()).queryByText(/curator.s diary/)).toBeNull();
+    expect(visited()).toHaveTextContent("You’ve visited 1 of the 3.");
+    expect(within(lastVisits() as HTMLElement).getByRole("button", { name: "Open Atlas Art Museum" })).toBeInTheDocument();
 
     fireEvent.click(within(actions()).getByRole("button", { name: "Mark Atlas Art Museum as not visited" }));
     expect(stored().visited).toEqual([]);
-    expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
+    expect(visited()).toHaveTextContent("You’ve visited 0 of the 3.");
+    expect(lastVisits()).toBeNull();
   });
 
   it("puts liked museums in the side panel instead of the curator's picks", () => {
@@ -283,7 +281,7 @@ describe("MuseumLogClient interactions", () => {
     } as unknown as UserMuseumState);
     renderClient();
 
-    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
+    expect(visited()).toHaveTextContent("You’ve visited 1 of the 3.");
     expect(screen.getByRole("button", { name: "Mark Beacon Science Center as not visited" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Log a visit to Atlas Art Museum" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Remove Corvid History House from watchlist" })).toBeInTheDocument();
@@ -292,8 +290,8 @@ describe("MuseumLogClient interactions", () => {
   it("falls back to an empty log when the store is unreadable", () => {
     seed("{broken");
     renderClient();
-    expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
-    expect(screen.getByText("Log your first visit")).toBeInTheDocument();
+    expect(visited()).toHaveTextContent("You’ve visited 0 of the 3.");
+    expect(lastVisits()).toBeNull();
   });
 
   it("picks up a visit logged in another tab", () => {
@@ -303,7 +301,7 @@ describe("MuseumLogClient interactions", () => {
     act(() => {
       window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY, newValue: payload }));
     });
-    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
+    expect(visited()).toHaveTextContent("You’ve visited 1 of the 3.");
     expect(screen.getByRole("button", { name: "Mark Corvid History House as not visited" })).toBeInTheDocument();
   });
 
@@ -315,7 +313,7 @@ describe("MuseumLogClient interactions", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Log a visit to Beacon Science Center" }));
     expect(screen.getByRole("status")).toHaveTextContent(/browser storage is unavailable/);
-    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
+    expect(visited()).toHaveTextContent("You’ve visited 1 of the 3.");
   });
 
   it("lists curator reviews and the stamped diary, newest first, skipping unknown museums", () => {
@@ -394,7 +392,7 @@ describe("MuseumLogClient interactions", () => {
   it("says in words when no exhibit in the catalog is running", () => {
     const quiet = { ...SNAPSHOT, museums: SNAPSHOT.museums.map((m) => ({ ...m, exhibits: [] })) };
     renderClient(quiet);
-    expect(readout("Exhibits on now")).toHaveTextContent("0none listed as running");
+    expect(summary()).toHaveTextContent("None lists an exhibit running today.");
   });
 
   it("says so when a museum has no neighbours in its region", () => {
@@ -472,7 +470,7 @@ describe("MuseumLogClient interactions", () => {
       JSON.stringify({ visited: [{ museumId: "atlas", date: "2026-03-01" }], watchlist: [], liked: [] }),
     );
     renderClient();
-    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
+    expect(visited()).toHaveTextContent("You’ve visited 1 of the 3.");
     expect(screen.getByText(/^Your visit .* · not rated$/)).toBeInTheDocument();
     expect(screen.queryByText(/NaN/)).toBeNull();
   });
@@ -484,9 +482,8 @@ describe("MuseumLogClient interactions", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log", { scroll: false });
   });
 
-  it("offers a jump from the hero to the catalog heading", () => {
+  it("heads the catalog with the active view's name, the target the back button returns focus to", () => {
     renderClient();
-    expect(screen.getByRole("link", { name: "Browse the catalog" })).toHaveAttribute("href", "#museum-log-catalog");
     expect(screen.getByRole("heading", { level: 2, name: "Discover" })).toHaveAttribute("id", "museum-log-catalog");
   });
 

@@ -66,6 +66,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this dashboard to move between division standings, the AL and NL races, and the wild card picture without treating them as separate products. Team drilldowns connect the table to recent results and the league's hitting and pitching leaders.",
   },
+  "/museum-log": {
+    purpose:
+      "I wanted a Letterboxd for museums, so this is the catalog of the ones I'd actually send a friend to, each drawn as its admission ticket with my rating, the admission price, and whether an exhibit is on today. Logging a visit takes one press, the rating and a note come from the museum's own page, and the journal and the themed lists are there for planning a trip around a city's museums.",
+  },
   "/nba": {
     purpose:
       "I use this dashboard to read the NBA standings through the decisions that matter late in the season, including playoff seeds, the play in line, and the gap between neighboring teams. It also keeps points, rebounds, and assists leaders close to the team picture.",
