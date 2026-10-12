@@ -135,8 +135,8 @@ export function FrontierModelsClient({
           <p className="fm-asof">{asOfLine}</p>
           <p className="fm-disclosure">
             {snapshot.verified
-              ? "Curated by hand from each provider's own pages."
-              : "Curated by hand from each provider's own pages, and the independent review is still pending."}{" "}
+              ? "Curated by hand, with each model's row linking to its provider's documentation."
+              : "Curated by hand, with each model's row linking to its provider's documentation, and the independent review is still pending."}{" "}
             <a href={`#${SPEC_SHEET_ID}`} className="fm-jump">
               Jump to the spec sheet
             </a>
