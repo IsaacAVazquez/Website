@@ -261,3 +261,13 @@
     --mlb-lamp-off: rgba(0, 0, 0, 0.35);
   }
 }
+
+/* At 320px even the short marks do not fit beside the code, so they sit under it inside the same 44px row. */
+@media screen and (max-width: 359px) {
+  .mlb-team {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+  }
+}
