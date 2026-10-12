@@ -6,7 +6,6 @@ export { CrestAvatar } from "./CrestAvatar";
 export { EmptyPanel } from "./EmptyPanel";
 export { FixtureCard } from "./FixtureCard";
 export type { GenericFixture } from "./FixtureCard";
-export { FixtureGroupSection } from "./FixtureGroupSection";
 export { LeaderList } from "./LeaderList";
 export type { LeaderEntry } from "./LeaderList";
 export { LeaderLedger } from "./LeaderLedger";

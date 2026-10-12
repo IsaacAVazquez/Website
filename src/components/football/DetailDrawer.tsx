@@ -3,14 +3,17 @@
 import { X } from "lucide-react";
 import { useRef, type ReactNode } from "react";
 import { useModal } from "@/hooks/useModal";
+import "./detail-drawer.css";
 
 /**
  * The named drawer a selected team or player opens in on the golf, MLB, NBA,
  * and NFL routes, so the result of a tap shows in the current view. It is the
  * same overlay as `ClubDrawer` (a sheet from the bottom on a phone and a side
- * panel from `sm`, `role="dialog"`, with focus, Escape, scroll lock, and the
+ * panel from 640px, `role="dialog"`, with focus, Escape, scroll lock, and the
  * return of focus to the opener all from `useModal`), with the body left to
- * the route because the four detail shapes share nothing past a name.
+ * the route because the four detail shapes share nothing past a name. It sets
+ * no surface of its own, so it prints in the palette of the route root it is
+ * rendered inside.
  */
 export function DetailDrawer({
   open,
@@ -39,13 +42,12 @@ export function DetailDrawer({
   if (!open) return null;
 
   return (
-    <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex items-end justify-center sm:items-stretch sm:justify-end">
+    <div className="dd-overlay c97-enter-fade">
       <button
         type="button"
         aria-label={`Close ${title} detail`}
         onClick={onClose}
-        className="absolute inset-0 h-full w-full cursor-default"
-        style={{ background: "var(--c97-scrim)" }}
+        className="dd-backdrop"
         tabIndex={-1}
       />
       <div
@@ -54,21 +56,13 @@ export function DetailDrawer({
         aria-modal="true"
         aria-label={`${title} detail`}
         data-testid={testId}
-        data-c97-surface="paper"
         tabIndex={-1}
-        className="c97-enter-slide-x relative max-h-[88dvh] w-full overflow-y-auto border outline-none sm:h-full sm:max-h-none sm:w-[27rem]"
-        style={{ borderColor: "var(--c97-rule)", padding: "var(--c97-sp-3)" }}
+        className="dd-panel c97-enter-slide-x"
       >
-        <div className="flex items-start" style={{ gap: "var(--c97-sp-2)" }}>
+        <div className="dd-head">
           {lead}
-          <h2 className="c97-serif c97-h3 min-w-0 flex-1">{title}</h2>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
-          >
+          <h2 className="dd-title">{title}</h2>
+          <button type="button" onClick={onClose} aria-label="Close" className="dd-close">
             <X size={16} aria-hidden="true" />
           </button>
         </div>

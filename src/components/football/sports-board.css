@@ -1,0 +1,354 @@
+/*
+ * The board skeleton the MLB, NBA, and NFL routes share: a title row with a
+ * status strip, the board under a sticky toolbar, the games and leaders tabs,
+ * and one source line. Each route declares its palette as --sb-* on its own
+ * root class (mlb.css, nba.css, nfl.css) with a light and a dark story, and
+ * this file points the Catalog 97 tokens the borrowed parts read (the fixture
+ * ledger, the leader ledger, the result pills, the drawer) at it.
+ */
+
+.sb-root {
+  --c97-surface: var(--sb-bg);
+  --c97-ink: var(--sb-ink);
+  --c97-ink-2: var(--sb-ink-2);
+  --c97-label: var(--sb-ink-2);
+  --c97-action: var(--sb-ink);
+  --c97-accent: var(--sb-focus);
+  --c97-rule: var(--sb-rule);
+  --c97-field: var(--sb-raise);
+  --c97-panel: var(--sb-raise);
+  --c97-print-bone: var(--sb-raise);
+  --c97-positive: var(--sb-pos);
+  --c97-negative: var(--sb-neg);
+
+  background: var(--sb-bg);
+  color: var(--sb-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.sb-root :where(h1, h2, h3) {
+  margin: 0;
+  font-family: var(--c97-font-body);
+  color: var(--sb-ink);
+}
+
+.sb-root :where(h3) {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sb-root :where(p, ul, ol, li, dl, dd, figure) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.sb-root :where(ul, ol) {
+  list-style: none;
+}
+
+.sb-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+/* Title row */
+
+.sb-titlebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.sb-title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.625rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.sb-root .sb-standfirst {
+  max-inline-size: 66ch;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--sb-ink-2);
+}
+
+.sb-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-0) var(--c97-sp-1);
+  font-size: 0.8125rem;
+  color: var(--sb-ink-2);
+}
+
+/* The fresh, final, or off-season word that leads the strip. */
+.sb-state {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  font-weight: 700;
+  color: var(--sb-ink);
+}
+
+.sb-state::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sb-state, var(--sb-ink-2));
+}
+
+/* Toolbars and switches */
+
+.sb-board,
+.sb-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.sb-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--sb-rule);
+  background: var(--sb-bg);
+}
+
+/* The board's switch stays in reach while the board scrolls under it. */
+@media screen and (min-width: 640px) {
+  .sb-board > .sb-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.sb-h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sb-summary {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--sb-ink-2);
+}
+
+.sb-summary strong {
+  font-weight: 700;
+  color: var(--sb-ink);
+}
+
+.sb-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+.sb-switch > button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--sb-rule-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sb-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms var(--c97-ease), color 160ms var(--c97-ease);
+}
+
+.sb-switch > button:hover {
+  background: var(--sb-raise);
+}
+
+.sb-switch > button:is([aria-pressed="true"], [aria-selected="true"]) {
+  border-color: var(--sb-ink);
+  background: var(--sb-ink);
+  color: var(--sb-bg);
+}
+
+.sb-switch-count {
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+/* On a phone the board's switch scrolls sideways in one row, the way the genre does it. */
+@media screen and (max-width: 639px) {
+  .sb-board .sb-switch {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sb-board .sb-switch > button {
+    flex: none;
+  }
+}
+
+.sb-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  font-size: 0.8125rem;
+  color: var(--sb-ink-2);
+}
+
+.sb-legend > li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+/* A team in a table: the crest or colour chip, then the name, as one button. */
+.sb-team {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sb-team:hover .sb-team-name,
+.sb-team:focus-visible .sb-team-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sb-team[aria-pressed="true"] .sb-team-name {
+  font-weight: 800;
+}
+
+.sb-team-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Games and leaders */
+
+.sb-detail {
+  padding-top: var(--c97-sp-3);
+}
+
+.sb-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 768px) {
+  .sb-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.sb-trio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 768px) {
+  .sb-trio {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .sb-trio {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sb-pair .sb-h3,
+.sb-trio .sb-h3 {
+  margin-bottom: var(--c97-sp-1);
+}
+
+/* The fixture ledger borrows the shared crest tile and prints it at the table's size, unboxed. */
+.sb-detail img,
+.dd-panel .sb-games img {
+  width: 22px;
+  height: 22px;
+  padding: 1px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  object-fit: contain;
+}
+
+.sb-muted {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--sb-ink-2);
+}
+
+.sb-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  color: var(--sb-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sb-link-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.sb-detail-leaders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+/* The one source line, after the data. */
+.sb-root .sb-source {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--sb-rule);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--sb-ink-2);
+}
+
+@media print {
+  .sb-board > .sb-toolbar {
+    position: static;
+  }
+
+  .sb-switch > button:not([aria-pressed="true"]):not([aria-selected="true"]) {
+    display: none;
+  }
+}

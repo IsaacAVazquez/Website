@@ -3,6 +3,8 @@ import { formatGamesGap, type SeedLadderResult } from "./seedLadder";
 
 export interface LadderTeam {
   id: string;
+  /** The full name, for the button's accessible name. */
+  name: string;
   seed: number;
   wins: number;
   losses: number;
@@ -14,72 +16,139 @@ export interface LadderTeam {
   color: string | null;
 }
 
-export interface SeedLadderConference {
+export interface LadderColumn<T extends LadderTeam> {
+  key: string;
+  /** The header text, short. */
   label: string;
-  ladder: SeedLadderResult<LadderTeam>;
+  /** The header's full meaning, read out and shown on hover. */
+  title: string;
+  /** Printed only from 640px, where the ladder has the room. */
+  wide?: boolean;
+  value: (team: T) => string;
+}
+
+export interface SeedLadderConference<T extends LadderTeam> {
+  id: string;
+  label: string;
+  ladder: SeedLadderResult<T>;
 }
 
 function formatGamesClear(gap: number | null): string | null {
   if (gap === null) return null;
-  if (gap === 0) return "Tied at the line";
+  if (gap === 0) return "tied at the line";
   return `${formatGamesGap(gap)} clear`;
 }
 
 /**
- * The playoff picture for one or more conferences: seeds grouped into bands,
- * with the games-clear gap printed at each line. A colour swatch carries the
- * team's colour, since the same colour as small text fails 4.5:1; the name
- * and record stay in ink. Presentational only, since the standings table
- * below is the keyboard path to the same teams.
+ * The playoff picture as the standings: one ruled table per conference,
+ * split into bands (in, play-in, out) with the games-clear gap printed on
+ * each line between them. The team colour sits in a small chip, since the
+ * same colour as small text fails 4.5:1, and every team is a button that
+ * opens the route's drawer. Band membership prints as the band's own label
+ * row, so it never rests on colour alone.
  */
-export function SeedLadder({
+export function SeedLadder<T extends LadderTeam>({
   conferences,
-  note,
+  columns,
+  lineLabels,
+  selectedId,
+  onSelect,
+  isBandVisible = () => true,
+  seedLabel = (team) => String(team.seed),
 }: {
-  conferences: SeedLadderConference[];
-  /** A short caveat under the ladder, e.g. that a mid-season seed is derived. */
-  note?: string;
+  conferences: SeedLadderConference<T>[];
+  columns: LadderColumn<T>[];
+  /** One label per line between bands, e.g. "Playoff line". */
+  lineLabels: string[];
+  selectedId: string | null;
+  onSelect: (teamId: string) => void;
+  isBandVisible?: (bandIndex: number) => boolean;
+  seedLabel?: (team: T) => string;
 }) {
+  const span = 3 + columns.length;
+
   return (
-    <div
-      data-c97-surface="paper"
-      className="c97-seed-ladder c97-offset"
-      style={{ padding: "var(--c97-sp-3)" }}
-    >
+    <div className="sl-ladders" data-count={conferences.length}>
       {conferences.map((conference) => {
         const { bands, lines } = conference.ladder;
         return (
-          <div key={conference.label} className="c97-seed-ladder-conf">
-            <p className="c97-kicker">{conference.label}</p>
-            {bands.map((band, index) => {
-              const gapLabel = index < lines.length ? formatGamesClear(lines[index].gamesClear) : null;
-              return (
-                <div key={band.label} className="c97-seed-ladder-band">
-                  {band.teams.length > 0 ? (
-                    <p className="c97-seed-ladder-band-label">{band.label}</p>
-                  ) : null}
-                  <ol className="c97-seed-ladder-rows">
-                    {band.teams.map((team) => (
-                      <li key={team.id} className="c97-seed-ladder-row">
-                        <span
-                          className="c97-seed-ladder-swatch"
-                          style={{ background: team.color ?? "var(--c97-ink-2)" }}
-                          aria-hidden="true"
-                        />
-                        <span className="c97-seed-ladder-seed c97-mono">{team.seed}</span>
-                        <span className="c97-seed-ladder-name">{team.shortName}</span>
-                        <span className="c97-seed-ladder-record c97-mono">{team.record}</span>
-                      </li>
-                    ))}
-                  </ol>
-                  {gapLabel ? <p className="c97-seed-ladder-gap">{gapLabel}</p> : null}
-                </div>
-              );
-            })}
+          <div key={conference.id} className="sl-conference">
+            <h3 className="sl-conference-name" id={`sl-${conference.id}`}>
+              {conference.label}
+            </h3>
+            <table className="sl-table" aria-labelledby={`sl-${conference.id}`}>
+              <thead>
+                <tr>
+                  <th scope="col" className="sl-col-seed">
+                    <abbr title="Seed">#</abbr>
+                  </th>
+                  <th scope="col" className="sl-col-team">Team</th>
+                  <th scope="col" className="sl-num">
+                    <abbr title="Wins and losses">W-L</abbr>
+                  </th>
+                  {columns.map((column) => (
+                    <th key={column.key} scope="col" className={column.wide ? "sl-num sl-wide" : "sl-num"}>
+                      <abbr title={column.title}>{column.label}</abbr>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              {bands.map((band, index) => {
+                if (!isBandVisible(index) || band.teams.length === 0) return null;
+                const line = index < lines.length && isBandVisible(index + 1) ? lines[index] : null;
+                const gap = line ? formatGamesClear(line.gamesClear) : null;
+                return (
+                  <tbody key={band.label} data-band={index}>
+                    <tr className="sl-band">
+                      <th scope="rowgroup" colSpan={span}>
+                        {band.label}
+                      </th>
+                    </tr>
+                    {band.teams.map((team) => {
+                      const isSelected = team.id === selectedId;
+                      return (
+                        <tr key={team.id} data-selected={isSelected || undefined}>
+                          <td className="sl-col-seed">{seedLabel(team)}</td>
+                          <td className="sl-col-team">
+                            <button
+                              type="button"
+                              className="sb-team"
+                              onClick={() => onSelect(team.id)}
+                              aria-pressed={isSelected}
+                              aria-haspopup="dialog"
+                              aria-label={`Show ${team.name} details`}
+                            >
+                              <span
+                                className="sl-chip"
+                                style={team.color ? { background: team.color } : undefined}
+                                aria-hidden="true"
+                              />
+                              <span className="sb-team-name">{team.shortName}</span>
+                            </button>
+                          </td>
+                          <td className="sl-num sl-record">{team.record}</td>
+                          {columns.map((column) => (
+                            <td key={column.key} className={column.wide ? "sl-num sl-wide" : "sl-num"}>
+                              {column.value(team)}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                    {gap && line ? (
+                      <tr className="sl-line">
+                        <td colSpan={span}>
+                          {lineLabels[index] ? `${lineLabels[index]}, ${gap}` : gap}
+                        </td>
+                      </tr>
+                    ) : null}
+                  </tbody>
+                );
+              })}
+            </table>
           </div>
         );
       })}
-      {note ? <p className="c97-seed-ladder-note">{note}</p> : null}
     </div>
   );
 }
