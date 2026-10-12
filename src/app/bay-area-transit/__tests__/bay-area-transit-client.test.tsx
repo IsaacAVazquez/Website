@@ -165,8 +165,17 @@ describe("BayAreaTransitClient", () => {
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
   });
 
+  it("says a feed is not reported when the summary carries no section statuses", () => {
+    renderClient({ summary: { ...SUMMARY, sectionStatus: undefined } });
+    expect(screen.getByText("Departures").parentElement).toHaveTextContent("Departures Not reported");
+    expect(screen.queryByText("Live")).toBeNull();
+  });
+
   it("opens and closes the alerts strip from the status strip, keeping the station", () => {
     const { rerenderWith } = renderClient();
+    // The strip is in the DOM but hidden while closed, so aria-controls always resolves.
+    const closed = screen.getByRole("button", { name: "Alerts" });
+    expect(document.getElementById(closed.getAttribute("aria-controls") as string)).toHaveAttribute("hidden");
 
     fireEvent.click(screen.getByRole("button", { name: "Alerts" }));
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });

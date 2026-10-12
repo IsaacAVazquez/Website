@@ -4,7 +4,7 @@ import {
   getTransitStationBoard,
   getTransitSummary,
 } from "@/lib/bayAreaTransitSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { BayAreaTransitClient } from "./bay-area-transit-client";
 import { normalizeTransitState } from "./bay-area-transit-state";
 
@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
   canonicalUrl: "/bay-area-transit",
   image: "/bay-area-transit/opengraph-image",
   // The later of the redesign and the committed fallback snapshot.
-  dateModified: [bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10) ?? "", "2026-10-12"].sort()[1],
+  dateModified: laterDate(bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10), "2026-10-12"),
 });
 
 interface TransitPageProps {

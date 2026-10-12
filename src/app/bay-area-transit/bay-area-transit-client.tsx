@@ -67,15 +67,20 @@ async function fetchTransitSummary(signal: AbortSignal): Promise<TransitSummary>
   return payload;
 }
 
-const STATUS_LABEL: Record<TransitSectionStatus, string> = {
+const STATUS_LABEL: Record<TransitSectionStatus | "unreported", string> = {
   fresh: "Live",
   "stale-fallback": "Last good copy",
   unavailable: "Unavailable",
+  unreported: "Not reported",
 };
 
-/** One feed's state, in words and a mark, so it never rests on colour alone. */
+/**
+ * One feed's state, in words and a mark, so it never rests on colour alone. A
+ * summary without section statuses gets "Not reported" rather than a "Live"
+ * it has no evidence for.
+ */
 function FeedBadge({ label, status }: { label: string; status: TransitSectionStatus | undefined }) {
-  const state = status ?? "fresh";
+  const state = status ?? "unreported";
   return (
     <span className="bt-badge" data-status={state}>
       <span className="bt-badge-mark" aria-hidden="true" />
@@ -352,46 +357,45 @@ export function BayAreaTransitClient({
           </div>
         </header>
 
-        {alertsOpen ? (
-          <section id="transit-alerts" className="bt-alerts" aria-label="Service alerts">
-            {staleSections.length > 0 ? (
-              <p className="bt-alert" role="status">
-                BART did not return fresh {staleSections.join(", ")} data on this pass, so I kept
-                the last good result instead of showing a false zero.
-              </p>
-            ) : null}
+        {/* Always in the DOM so the toggle's aria-controls resolves; hidden while closed. */}
+        <section id="transit-alerts" className="bt-alerts" aria-label="Service alerts" hidden={!alertsOpen}>
+          {staleSections.length > 0 ? (
+            <p className="bt-alert" role="status">
+              BART did not return fresh {staleSections.join(", ")} data on this pass, so I kept
+              the last good result instead of showing a false zero.
+            </p>
+          ) : null}
 
-            {summary.advisories.length === 0 &&
-            summary.elevator.length === 0 &&
-            staleSections.length === 0 ? (
-              <p className="bt-alert">
-                <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
-                No delays reported and all elevators in service at the last refresh.
-              </p>
-            ) : (
-              <ul className="bt-alert-list">
-                {summary.advisories.map((advisory) => (
-                  <li key={advisory.id} className="bt-alert">
-                    <TriangleAlert className="bt-alert-icon" data-tone="warn" aria-hidden="true" />
-                    <span>
-                      <span className="bt-strong bt-block">
-                        {advisory.type || "Advisory"}
-                        {advisory.station ? ` · ${advisory.station}` : ""}
-                      </span>
-                      <span className="bt-muted bt-block">{advisory.description}</span>
+          {summary.advisories.length === 0 &&
+          summary.elevator.length === 0 &&
+          staleSections.length === 0 ? (
+            <p className="bt-alert">
+              <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
+              No delays reported and all elevators in service at the last refresh.
+            </p>
+          ) : (
+            <ul className="bt-alert-list">
+              {summary.advisories.map((advisory) => (
+                <li key={advisory.id} className="bt-alert">
+                  <TriangleAlert className="bt-alert-icon" data-tone="warn" aria-hidden="true" />
+                  <span>
+                    <span className="bt-strong bt-block">
+                      {advisory.type || "Advisory"}
+                      {advisory.station ? ` · ${advisory.station}` : ""}
                     </span>
-                  </li>
-                ))}
-                {summary.elevator.map((entry) => (
-                  <li key={entry.id} className="bt-alert">
-                    <CircleAlert className="bt-alert-icon" aria-hidden="true" />
-                    <span className="bt-muted">{entry.description}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
-        ) : null}
+                    <span className="bt-muted bt-block">{advisory.description}</span>
+                  </span>
+                </li>
+              ))}
+              {summary.elevator.map((entry) => (
+                <li key={entry.id} className="bt-alert">
+                  <CircleAlert className="bt-alert-icon" aria-hidden="true" />
+                  <span className="bt-muted">{entry.description}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
 
         <TransitSignature
           departuresStatus={summary.sectionStatus?.departures}

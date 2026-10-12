@@ -148,6 +148,11 @@
   border-radius: 0;
 }
 
+.bt-badge[data-status="unreported"] .bt-badge-mark {
+  background: transparent;
+  border: 2px solid var(--bt-ink-2);
+}
+
 .bt-badge[data-status="unavailable"] .bt-badge-mark {
   background: transparent;
   border: 2px solid var(--bt-down);
