@@ -279,7 +279,6 @@
   gap: var(--c97-sp-1);
   max-inline-size: 72ch;
   padding-top: var(--c97-sp-3);
-  scroll-margin-top: var(--c97-sp-6);
   font-size: 0.8125rem;
   line-height: 1.55;
   color: var(--ts-ink-2);

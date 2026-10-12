@@ -121,7 +121,7 @@
 .adt-search input {
   flex: 1;
   min-width: 0;
-  min-height: 42px;
+  min-height: 44px;
   border: 0;
   background: transparent;
   color: var(--adt-ink);
@@ -172,7 +172,7 @@
 }
 
 .adt-select select {
-  min-height: 42px;
+  min-height: 44px;
   min-width: 0;
   max-width: 14rem;
   padding-inline: var(--c97-sp-0) var(--c97-sp-1);
@@ -243,7 +243,7 @@
 }
 
 .adt-switch > button {
-  min-height: 42px;
+  min-height: 44px;
   padding-inline: var(--c97-sp-2);
   border: 0;
   border-radius: 6px;

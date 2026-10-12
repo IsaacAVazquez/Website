@@ -127,7 +127,9 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
               </g>
             );
           })}
-          {sector.y1 - sector.y0 >= SECTOR_LABEL_MIN_HEIGHT
+          {/* A sliver too narrow for three letters gets no label, since one
+              letter and an ellipsis ran past the chart's right edge. */}
+          {sector.y1 - sector.y0 >= SECTOR_LABEL_MIN_HEIGHT && sector.x1 - sector.x0 >= 3 * SECTOR_CHAR_WIDTH + 8
             ? (() => {
                 const sectorWidth = sector.x1 - sector.x0;
                 const label = fitLabel(sectorLabels?.[sector.sector] ?? sector.sector, sectorWidth - 8, SECTOR_CHAR_WIDTH);
