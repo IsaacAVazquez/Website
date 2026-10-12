@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-12
 
 - Let project routes own their design inside the site frame ([#582](https://github.com/IsaacAVazquez/Website/pull/582)).
+- Stage 2, the remaining project routes on their own designs ([#595](https://github.com/IsaacAVazquez/Website/pull/595)).
 
 ---
 
