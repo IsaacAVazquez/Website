@@ -13,7 +13,8 @@ export const metadata = constructMetadata({
   description:
     "Interactive NBA dashboard with conference standings, playoff seeding, play-in race context, and snapshot leaderboards for points, rebounds, and assists.",
   canonicalUrl: "/nba",
-  dateModified: nbaSnapshot.updatedAt,
+  // The redesign shipped on 2026-10-12, so the page is at least that new.
+  dateModified: nbaSnapshot.updatedAt > "2026-10-12" ? nbaSnapshot.updatedAt : "2026-10-12",
 });
 
 interface NbaPageProps {
@@ -69,7 +70,7 @@ export default async function NbaPage({ searchParams }: NbaPageProps) {
             "Snapshot standings and league leader context",
             "Fast local-first rendering without a live runtime dependency",
           ],
-          dateModified: nbaSnapshot.updatedAt,
+          dateModified: nbaSnapshot.updatedAt > "2026-10-12" ? nbaSnapshot.updatedAt : "2026-10-12",
           offers: freeApplicationOffer,
         }}
       />

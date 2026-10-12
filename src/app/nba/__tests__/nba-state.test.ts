@@ -37,6 +37,8 @@ describe("nba-state", () => {
   });
 
   it("maps views to conference slices", () => {
+    expect(DEFAULT_NBA_STATE.view).toBe("league");
+    expect(filterTeamsForView("league")).toEqual([...east, ...west]);
     expect(filterTeamsForView("east")).toEqual(nbaSnapshot.teamsByConference.east);
     expect(filterTeamsForView("west")).toEqual(nbaSnapshot.teamsByConference.west);
     expect(filterTeamsForView("playoff")).toHaveLength(12);

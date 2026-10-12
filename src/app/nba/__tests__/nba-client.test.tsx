@@ -134,7 +134,8 @@ describe("NbaClient", () => {
     view.rerender(ui());
 
     expect(mockPush).toHaveBeenLastCalledWith(
-      buildNbaHref({ view: "east", team: team.id }),
+      // The default view prints both conferences, so the pick stays on it.
+      buildNbaHref({ view: DEFAULT_NBA_STATE.view, team: team.id }),
       { scroll: false }
     );
     const drawer = await screen.findByRole("dialog", { name: `${team.name} detail` });

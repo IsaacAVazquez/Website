@@ -1,15 +1,39 @@
-/* NBA Pulse: the standings table on a phone. */
+/*
+ * NBA Pulse, drawn as the playoff picture on a plain stats sheet. The only
+ * colour that means anything is data: the three bands (in, play-in, out) and
+ * the team colour chips. The skeleton is sports-board.css.
+ */
 
-/* The full table is 509px wide and a phone's column is 334px. Below 640px it
- * keeps the seed, the team, the record, and the games back in tighter cells,
- * and the columns it drops are in the team drawer. */
-@media print, screen and (max-width: 639px) {
-  .c97-table.c97-nba-table th,
-  .c97-table.c97-nba-table td {
-    padding-inline: var(--c97-sp-1);
-  }
-
-  .c97-table.c97-nba-table [data-wide] {
-    display: none;
-  }
+.nba-root {
+  --sb-bg: #fbfbfa;
+  --sb-ink: #16171a;
+  --sb-ink-2: #55585f;
+  --sb-rule: rgba(22, 23, 26, 0.12);
+  --sb-rule-strong: rgba(22, 23, 26, 0.34);
+  --sb-raise: #eff0f1;
+  --sb-focus: #1d4ed8;
+  --sb-pos: #1e7a3c;
+  --sb-neg: #b3261e;
+  --sl-band-0: #1e7a3c;
+  --sl-band-1: #b45309;
+  --sl-band-2: #8a8f98;
 }
+
+.dark .nba-root {
+  --sb-bg: #111214;
+  --sb-ink: #ececee;
+  --sb-ink-2: #a3a7ae;
+  --sb-rule: rgba(236, 236, 238, 0.12);
+  --sb-rule-strong: rgba(236, 236, 238, 0.32);
+  --sb-raise: #1d1f23;
+  --sb-focus: #8ab4ff;
+  --sb-pos: #6fcf8f;
+  --sb-neg: #f08a80;
+  --sl-band-0: #6fcf8f;
+  --sl-band-1: #f0a050;
+  --sl-band-2: #6b7079;
+}
+
+.nba-root .sb-state[data-state="live"] { --sb-state: var(--sl-band-0); }
+.nba-root .sb-state[data-state="final"] { --sb-state: var(--sb-ink); }
+.nba-root .sb-state[data-state="off"] { --sb-state: var(--sl-band-1); }

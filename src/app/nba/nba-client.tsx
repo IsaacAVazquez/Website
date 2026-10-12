@@ -1,27 +1,20 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
-import { CircleAlert, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
-import {
-  MetricCard,
-  CrestAvatar,
-  TeamResultPill,
-  FixtureCard,
-  LeaderList,
-  type LeaderEntry,
-} from "@/components/football";
+import { CrestAvatar } from "@/components/football/CrestAvatar";
+import { TeamResultPill } from "@/components/football/TeamResultPill";
+import { FixtureLedgerSection } from "@/components/football/FixtureLedger";
+import { LeaderLedger, type LeaderLedgerEntry } from "@/components/football/LeaderLedger";
+import { SegmentedTabs } from "@/components/football/SegmentedTabs";
+import { groupFixtures } from "@/components/football/fixtureGroups";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and the two league pages do not use this drawer.
 import { DetailDrawer } from "@/components/football/DetailDrawer";
-import {
-  Catalog97ProjectHero,
-  type Catalog97Readout,
-} from "@/components/catalog97/Catalog97ProjectHero";
-import { SeedLadder, type LadderTeam } from "@/components/football/SeedLadderPanel";
-import { formatGamesGap, seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
-import { PROJECT_PRESS } from "@/constants/projectPress";
+import { SeedLadder, type LadderColumn, type LadderTeam } from "@/components/football/SeedLadderPanel";
+import { seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
 import type {
   NbaLeader,
   NbaRouteState,
@@ -42,7 +35,7 @@ import {
 } from "./nba-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
-import { groupBy } from "@/lib/utils";
+import "@/components/football/sports-board.css";
 import "./nba.css";
 
 interface NbaClientProps {
@@ -62,15 +55,49 @@ const NBA_BANDS: SeedBandSpec[] = [
 ];
 
 const viewOptions: Array<{ id: NbaView; label: string }> = [
+  { id: "league", label: "Both conferences" },
   { id: "east", label: "Eastern Conference" },
   { id: "west", label: "Western Conference" },
   { id: "playoff", label: "Playoff seeds" },
   { id: "play-in", label: "Play-in race" },
 ];
 
-function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | null>): LadderTeam[] {
+type NbaLadderTeam = LadderTeam & { team: NbaTeam };
+
+/** Which bands each view prints; the conference filter is separate. */
+const VIEW_BANDS: Record<NbaView, number[]> = {
+  league: [0, 1, 2],
+  east: [0, 1, 2],
+  west: [0, 1, 2],
+  playoff: [0],
+  "play-in": [1],
+};
+
+const LADDER_COLUMNS: LadderColumn<NbaLadderTeam>[] = [
+  {
+    key: "pct",
+    label: "W%",
+    title: "Win percentage",
+    wide: true,
+    value: ({ team }) => (Number.isFinite(team.winPercent) ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"),
+  },
+  { key: "gb", label: "GB", title: "Games back of the conference leader", value: ({ team }) => formatGamesBack(team.gamesBack) },
+  { key: "l10", label: "L10", title: "Last ten games", wide: true, value: ({ team }) => team.lastTen ?? "—" },
+  { key: "strk", label: "Strk", title: "Current streak", wide: true, value: ({ team }) => team.streak ?? "—" },
+  {
+    key: "diff",
+    label: "Diff",
+    title: "Point differential per game",
+    wide: true,
+    value: ({ team }) => formatPointDiff(perGameDifferential(team)),
+  },
+];
+
+function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | null>): NbaLadderTeam[] {
   return teams.map((team) => ({
+    team,
     id: team.id,
+    name: team.name,
     seed: team.conferenceSeed,
     wins: team.wins,
     losses: team.losses,
@@ -82,9 +109,8 @@ function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | nul
 
 export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColors }: NbaClientProps) {
   const searchParams = useSearchParams();
-  const lead = PROJECT_PRESS[NBA_ROUTE].lead;
   const standfirst =
-    "I wanted the playoff picture in one glance, from who leads each conference, to how many games separate the cutoff, to who's already out, so this sorts every team into a band, in, play-in, or out, with the gap at each line written right on it.";
+    "I sort every team into the top six, the play-in, or out, and print the games between each line right on it, so the playoff picture reads in one glance.";
 
   const east = summary.teamsByConference.east;
   const west = summary.teamsByConference.west;
@@ -94,10 +120,6 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   const aliasMap = useMemo(() => buildTeamAliasMap(allTeams), [allTeams]);
   const defaultState = useMemo(() => resolveDefaultState(east, west), [east, west]);
   const teamById = useMemo(() => new Map(allTeams.map((team) => [team.id, team])), [allTeams]);
-  const teamLookup = useMemo(
-    () => new Map(allTeams.map((team) => [team.id, team.shortName])),
-    [allTeams]
-  );
   const offenseRankByTeam = useMemo(
     () =>
       new Map(
@@ -116,9 +138,6 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
       ),
     [allTeams]
   );
-  const scorersByTeam = useMemo(() => groupLeadersByTeam(summary.scorers), [summary.scorers]);
-  const reboundersByTeam = useMemo(() => groupLeadersByTeam(summary.rebounders), [summary.rebounders]);
-  const assistsByTeam = useMemo(() => groupLeadersByTeam(summary.assistLeaders), [summary.assistLeaders]);
   const logoByTeamId = useMemo(
     () =>
       new Map(
@@ -149,12 +168,6 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     () => seedLadder(toLadderTeams(west, teamColors), NBA_BANDS),
     [west, teamColors]
   );
-  const tightestGap = useMemo(() => {
-    const gaps = [...eastLadder.lines, ...westLadder.lines]
-      .map((line) => line.gamesClear)
-      .filter((gap): gap is number => gap !== null);
-    return gaps.length > 0 ? Math.min(...gaps) : null;
-  }, [eastLadder, westLadder]);
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
@@ -186,7 +199,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     { id: selectedTeamId, snapshot: initialTeamSnapshot },
     "Unable to load team snapshot."
   );
-  const [activeDetailTab, setActiveDetailTab] = useState<"team" | "schedule" | "leaders">("team");
+  const [activeDetailTab, setActiveDetailTab] = useState<"schedule" | "leaders">("schedule");
   // The team drawer is its own state, because every view writes its first
   // team into ?team= and the URL alone cannot say a team was opened. It starts
   // open only for a link to a team other than the view's first, and after
@@ -232,59 +245,53 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     navigate({ view, team });
   }
 
-  const eastTop = east[0];
-  const westTop = west[0];
-
-  const heroReadouts: [Catalog97Readout, Catalog97Readout, Catalog97Readout] = [
-    {
-      label: "East leader",
-      value: eastTop ? `${eastTop.wins}-${eastTop.losses}` : "—",
-      detail: eastTop?.shortName,
-    },
-    {
-      label: "West leader",
-      value: westTop ? `${westTop.wins}-${westTop.losses}` : "—",
-      detail: westTop?.shortName,
-    },
-    {
-      label: "Tightest line",
-      value: tightestGap !== null ? formatGamesGap(tightestGap) : "—",
-      detail: "separates the closest cutoff across both conferences",
-    },
-  ];
-
-  const isFinal = allTeams.every((team) => team.gamesPlayed >= REGULAR_SEASON_GAMES);
-  const heroMeta = `${summary.sourceLabel} · Season ${summary.season}${
+  const isFinal = allTeams.length > 0 && allTeams.every((team) => team.gamesPlayed >= REGULAR_SEASON_GAMES);
+  const statusMeta = `${summary.sourceLabel} · Season ${summary.season}${
     isFinal ? " · final regular season standings" : ""
   } · ${allTeams.length} teams · snapshot ${snapshotDateLabel}`;
+  const hasGames = summary.recentFixtures.length > 0 || summary.upcomingFixtures.length > 0;
+  const isOffSeason = isFinal && summary.upcomingFixtures.length === 0;
 
-  const heroSignature = (
-    <SeedLadder
-      conferences={[
-        { label: "Eastern Conference", ladder: eastLadder },
-        { label: "Western Conference", ladder: westLadder },
-      ]}
-    />
+  const titleRow = (
+    <div className="sb-titlebar">
+      <h1 className="sb-title">NBA Pulse</h1>
+      <p className="sb-standfirst">{standfirst}</p>
+      <p className="sb-status">
+        <span className="sb-state" data-state={isOffSeason ? "off" : isFinal ? "final" : "live"}>
+          {isOffSeason ? "Off-season" : isFinal ? "Final" : "In season"}
+        </span>
+        <span>{statusMeta}</span>
+      </p>
+      {isOffSeason ? (
+        <p className="sb-status">
+          The {summary.season} regular season is over, so this is the final table. Standings, the schedule, and
+          the leaders pick up again once the new season tips off and the refresh lane resumes.
+        </p>
+      ) : null}
+    </div>
   );
-  // The hero fills a phone's first screen and the signature runs long under
-  // it, so one link goes straight to the working table.
-  const heroAction = <a href="#nba-standings" className="c97-btn-ghost">Jump to standings</a>;
 
   if (!selectedTeam) {
     return (
-      <Catalog97ProjectHero
-        ink={lead}
-        title="NBA Pulse"
-        standfirst={`${standfirst} Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.`}
-      >
-        {heroSignature}
-      </Catalog97ProjectHero>
+      <Root>
+        {titleRow}
+        <p className="sb-muted">
+          Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is
+          published.
+        </p>
+      </Root>
     );
   }
 
-  const eastTeams = east;
-  const westTeams = west;
-  const conferenceTeams = selectedTeam.conference === "east" ? eastTeams : westTeams;
+  const showsEast = routeState.view !== "west";
+  const showsWest = routeState.view !== "east";
+  const visibleBands = VIEW_BANDS[routeState.view];
+  const conferences = [
+    ...(showsEast ? [{ id: "nba-east", label: "Eastern Conference", ladder: eastLadder }] : []),
+    ...(showsWest ? [{ id: "nba-west", label: "Western Conference", ladder: westLadder }] : []),
+  ];
+
+  const conferenceTeams = selectedTeam.conference === "east" ? east : west;
   const conferenceContext = buildConferenceContext(conferenceTeams);
   const selectedZone = getTeamZone(selectedTeam.conferenceSeed);
   const teamRanks = {
@@ -292,336 +299,132 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     defense: defenseRankByTeam.get(selectedTeam.id) ?? selectedTeam.position,
   };
   const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext);
-  const teamPressurePoints = getTeamPressurePoints(selectedTeam, conferenceContext, teamRanks);
-  const teamScorers = scorersByTeam.get(selectedTeam.id) ?? [];
-  const teamRebounders = reboundersByTeam.get(selectedTeam.id) ?? [];
-  const teamAssists = assistsByTeam.get(selectedTeam.id) ?? [];
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const remainingGames = Math.max(0, REGULAR_SEASON_GAMES - selectedTeam.gamesPlayed);
+  const stageLabel = (fixture: { stage?: string | null }) => fixture.stage || "Regular season";
 
   return (
-    <>
-      <Catalog97ProjectHero ink={lead} title="NBA Pulse" standfirst={standfirst} meta={heroMeta}
-        action={heroAction} readouts={heroReadouts}>
-        {heroSignature}
-      </Catalog97ProjectHero>
+    <Root>
+      {titleRow}
 
-      <section id="nba-standings" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <h2 className="c97-poster-sm">Standings</h2>
-            <p className="c97-meta">{visibleTeams.length} teams</p>
+      <section className="sb-board" aria-label="NBA standings">
+        <div className="sb-toolbar">
+          <h2 className="sb-h2">Standings</h2>
+          <div role="group" aria-label="Conference and seeding view" className="sb-switch">
+            {viewOptions.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => handleViewChange(option.id)}
+                aria-pressed={option.id === routeState.view}
+              >
+                {option.label} <span className="sb-switch-count">{filterTeams(east, west, option.id).length}</span>
+              </button>
+            ))}
           </div>
+        </div>
 
-          <div role="group" aria-label="Conference and seeding view" className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }}>
-            {viewOptions.map((option) => {
-              const isActive = option.id === routeState.view;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => handleViewChange(option.id)}
-                  aria-pressed={isActive}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {option.label}{" "}
-                  <span className="c97-mono" style={{ color: "var(--c97-label)" }}>
-                    {filterTeams(east, west, option.id).length}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+        <SeedLadder
+          conferences={conferences}
+          columns={LADDER_COLUMNS}
+          lineLabels={["Playoff line", "Play-in line"]}
+          selectedId={selectedTeam.id}
+          onSelect={handleTeamChange}
+          isBandVisible={(index) => visibleBands.includes(index)}
+        />
+      </section>
 
-          {isFinal ? (
-            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-              The {summary.season} regular season is complete, so this is the final table.
-              Standings, the schedule, and the leaders pick up again once the new season tips off.
-            </p>
-          ) : null}
+      <section className="sb-detail" aria-labelledby="nba-detail-heading">
+        <div className="sb-toolbar">
+          <h2 id="nba-detail-heading" className="sb-h2">
+            Games and leaders
+          </h2>
+          <SegmentedTabs
+            tabs={[
+              { id: "schedule", label: "Schedule" },
+              { id: "leaders", label: "Stat leaders" },
+            ]}
+            activeId={activeDetailTab}
+            onChange={(id) => setActiveDetailTab(id as "schedule" | "leaders")}
+            ariaLabel="Team and league details"
+            idPrefix="nba-detail-tab"
+            panelId="nba-detail-panel"
+            className="sb-switch"
+          />
+        </div>
 
-          <div
-            role="region"
-            aria-label="NBA standings (scrollable)"
-            tabIndex={0}
-            style={{ marginTop: "var(--c97-sp-3)", overflowX: "auto" }}
-          >
-            <table className="c97-table c97-nba-table" aria-label="NBA standings">
-              <thead>
-                <tr>
-                  <th scope="col">Seed</th>
-                  <th scope="col">Team</th>
-                  <th scope="col">Record</th>
-                  <th scope="col" data-align="end" data-wide>W%</th>
-                  <th scope="col" data-align="end">GB</th>
-                  <th scope="col" data-align="end" data-wide>PF</th>
-                  <th scope="col" data-align="end" data-wide>PA</th>
-                  <th scope="col" data-align="end" data-wide>Diff</th>
-                </tr>
-              </thead>
-              <tbody>
-                {visibleTeams.map((team) => {
-                  const isSelected = team.id === selectedTeam.id;
-                  const zone = getTeamZone(team.conferenceSeed);
-                  return (
-                    <tr
-                      key={`${team.conference}-${team.id}`}
-                      style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
-                    >
-                      <td>
-                        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                          <span
-                            aria-hidden="true"
-                            style={{
-                              width: 8,
-                              height: 8,
-                              display: "inline-block",
-                              background: zoneDotColor(zone),
-                            }}
-                          />
-                          {team.conferenceSeed}
-                        </span>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          onClick={() => handleTeamChange(team.id)}
-                          aria-pressed={isSelected}
-                          aria-haspopup="dialog"
-                          aria-label={`Show ${team.name} details`}
-                          className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
-                        >
-                          <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
-                          <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
-                          <span className="c97-mono" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-label)" }}>
-                            {team.conference === "east" ? "E" : "W"}
-                          </span>
-                        </button>
-                      </td>
-                      <td>{team.wins}-{team.losses}</td>
-                      <td data-align="end" data-wide>
-                        {Number.isFinite(team.winPercent) ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"}
-                      </td>
-                      <td data-align="end">{formatGamesBack(team.gamesBack)}</td>
-                      <td data-align="end" data-wide>{team.pointsFor.toFixed(1)}</td>
-                      <td data-align="end" data-wide>{team.pointsAgainst.toFixed(1)}</td>
-                      <td data-align="end" data-wide>{formatPointDiff(perGameDifferential(team))}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+        <div id="nba-detail-panel" role="tabpanel" aria-labelledby={`nba-detail-tab-${activeDetailTab}`}>
+          {activeDetailTab === "schedule" ? (
+            hasGames ? (
+              <div className="sb-pair">
+                <div>
+                  <h3 className="sb-h3">Latest results</h3>
+                  <FixtureLedgerSection
+                    groups={groupFixtures(summary.recentFixtures, stageLabel)}
+                    onOpenTeam={handleTeamChange}
+                    emptyLabel="No results are in this snapshot."
+                  />
+                </div>
+                <div>
+                  <h3 className="sb-h3">Upcoming games</h3>
+                  <FixtureLedgerSection
+                    groups={groupFixtures(summary.upcomingFixtures, stageLabel)}
+                    onOpenTeam={handleTeamChange}
+                    emptyLabel={
+                      isFinal
+                        ? "No games until the next season's schedule is published."
+                        : "No upcoming games are in this snapshot."
+                    }
+                  />
+                </div>
+              </div>
+            ) : (
+              <p className="sb-muted">
+                No games are on the schedule right now. Recent results and upcoming matchups will appear here once
+                the next snapshot is published.
+              </p>
+            )
+          ) : (
+            <div className="sb-detail-leaders">
+              <div className="sb-trio">
+                <LeaderLedger title="Points per game" unit="ppg" entries={toLedgerEntries(summary.scorers)} />
+                <LeaderLedger title="Rebounds per game" unit="rpg" entries={toLedgerEntries(summary.rebounders)} />
+                <LeaderLedger title="Assists per game" unit="apg" entries={toLedgerEntries(summary.assistLeaders)} />
+              </div>
+              <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="sb-link">
+                Official
+                <span className="sr-only"> NBA stat leaders (opens in a new tab)</span>
+                <span aria-hidden="true"> stats</span>
+                <ExternalLink className="sb-link-icon" aria-hidden="true" />
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
-        <div className="c97-shell">
-          <div role="tablist" aria-label="Team and league details" className="c97-segmented">
-            {(["team", "schedule", "leaders"] as const).map((tab) => {
-              const labels = { team: "Team detail", schedule: "Schedule", leaders: "Stat leaders" } as const;
-              return (
-                <button
-                  key={tab}
-                  id={`nba-detail-tab-${tab}`}
-                  role="tab"
-                  type="button"
-                  aria-selected={activeDetailTab === tab}
-                  aria-controls="nba-detail-panel"
-                  onClick={() => setActiveDetailTab(tab)}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {labels[tab]}
-                </button>
-              );
-            })}
-          </div>
-
-          <div id="nba-detail-panel" role="tabpanel" aria-labelledby={`nba-detail-tab-${activeDetailTab}`} style={{ marginTop: "var(--c97-sp-3)" }}>
-            {activeDetailTab === "team" && (
-              <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
-                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Performance</p>
-                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                      <MetricCard
-                        label="Win %"
-                        value={Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"}
-                      />
-                      <MetricCard label="Record" value={`${selectedTeam.wins}-${selectedTeam.losses}`} />
-                      <MetricCard label="Offense rank" value={`#${teamRanks.offense}`} />
-                      <MetricCard label="Defense rank" value={`#${teamRanks.defense}`} />
-                      <MetricCard label="PF / game" value={selectedTeam.pointsFor.toFixed(1)} />
-                      <MetricCard label="PA / game" value={selectedTeam.pointsAgainst.toFixed(1)} />
-                    </div>
-                  </div>
-
-                  <div className="c97-panel">
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
-                    <ul className="c97-prose" style={{ margin: 0, paddingLeft: "1.1em" }}>
-                      {teamPressurePoints.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="grid sm:grid-cols-3 md:grid-cols-1" style={{ gap: "var(--c97-sp-1)" }}>
-                    <TeamLeaderCard
-                      title="Top scorer"
-                      leader={teamScorers[0]}
-                      statLabel="Points"
-                      emptyLabel="No top-10 scorer for this team in the latest snapshot."
-                    />
-                    <TeamLeaderCard
-                      title="Top rebounder"
-                      leader={teamRebounders[0]}
-                      statLabel="Rebounds"
-                      emptyLabel="No top-10 rebounder for this team in the latest snapshot."
-                    />
-                    <TeamLeaderCard
-                      title="Top playmaker"
-                      leader={teamAssists[0]}
-                      statLabel="Assists"
-                      emptyLabel="No top-10 playmaker for this team in the latest snapshot."
-                    />
-                  </div>
-
-                  <p className="c97-prose">{teamStoryline}</p>
-                </div>
-
-                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
-                  <div className="c97-panel" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
-                    <p className="c97-prose">{isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}</p>
-                  </div>
-                )}
-
-                {recentFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {recentFixtures.map((fixture) => (
-                        <FixtureCard
-                          key={fixture.id}
-                          fixture={fixture}
-                          contextTeamId={teamSnapshot?.team?.id ?? undefined}
-                          compact
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {upcomingFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {upcomingFixtures.map((fixture) => (
-                        <FixtureCard
-                          key={fixture.id}
-                          fixture={fixture}
-                          contextTeamId={teamSnapshot?.team?.id ?? undefined}
-                          compact
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {activeDetailTab === "schedule" && (
-              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
-                {summary.recentFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Latest results</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {summary.recentFixtures.map((f) => (
-                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {summary.upcomingFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {summary.upcomingFixtures.map((f) => (
-                        <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {summary.recentFixtures.length === 0 && summary.upcomingFixtures.length === 0 && (
-                  <p className="c97-prose md:col-span-2">
-                    No games are on the schedule right now. Recent results and upcoming
-                    matchups will appear here once the next snapshot is published.
-                  </p>
-                )}
-              </div>
-            )}
-
-            {activeDetailTab === "leaders" && (
-              <div className="grid md:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
-                <div>
-                  <div className="flex min-h-[48px] items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                    <p className="c97-kicker">Top scorers</p>
-                    <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
-                      Official
-                      <span className="sr-only"> NBA stat leaders (opens in a new tab)</span>
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </div>
-                  <LeaderList leaders={toLeaderEntries(summary.scorers.slice(0, 5))} statLabel="ppg" clubLookup={teamLookup} />
-                </div>
-                <div>
-                  <div className="min-h-[48px]">
-                    <p className="c97-kicker">Top rebounders</p>
-                  </div>
-                  <LeaderList leaders={toLeaderEntries(summary.rebounders.slice(0, 5))} statLabel="rpg" clubLookup={teamLookup} />
-                </div>
-                <div>
-                  <div className="min-h-[48px]">
-                    <p className="c97-kicker">Top playmakers</p>
-                  </div>
-                  <LeaderList leaders={toLeaderEntries(summary.assistLeaders.slice(0, 5))} statLabel="apg" clubLookup={teamLookup} />
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: "var(--c97-ink-2)" }} aria-hidden="true" />
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-              This page is a curated snapshot, refreshed on a schedule. Standings,
-              scoreboard, and stat leaders are pulled from ESPN&apos;s public NBA
-              endpoints and committed back into the repo on each refresh.
-            </p>
-          </div>
-        </div>
-      </section>
+      <p className="sb-source">
+        Standings, scores, and stat leaders come from ESPN&apos;s public NBA endpoints, checked in as a snapshot that
+        refreshes on a schedule, so nothing here is live.
+      </p>
 
       <DetailDrawer
         open={isDrawerOpen}
         title={selectedTeam.name}
-        lead={<CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />}
+        lead={<CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="md" />}
         onClose={() => setDrawerTeamId(null)}
         resetKey={selectedTeam.id}
         testId="nba-selected-team"
       >
-        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-          <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
-          <span className="c97-chip">Seed {selectedTeam.conferenceSeed}</span>
-          <span className="c97-chip">{selectedTeam.wins}-{selectedTeam.losses}</span>
-          <span className="c97-chip">{remainingGames} left</span>
-        </div>
+        <p className="dd-tags">
+          <span>{getZoneLabel(selectedZone)}</span>
+          <span>Seed {selectedTeam.conferenceSeed}</span>
+          <span>{selectedTeam.wins}-{selectedTeam.losses}</span>
+          <span>{remainingGames} left</span>
+        </p>
 
-        <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
+        <dl className="dd-stats dd-section">
           {(
             [
               ["Win %", Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"],
@@ -635,58 +438,63 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
               ["Diff/g", formatPointDiff(perGameDifferential(selectedTeam))],
             ] as const
           ).map(([label, value]) => (
-            <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <dt className="c97-kicker">{label}</dt>
-              <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
             </div>
           ))}
         </dl>
 
-        {formSequence.length > 0 && (
-          <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
-            <p className="c97-kicker">Form</p>
-            <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+        {formSequence.length > 0 ? (
+          <div className="dd-section">
+            <p className="dd-label">Form</p>
+            <div className="dd-form">
               {formSequence.slice(-5).map((result, i) => (
                 <TeamResultPill key={i} result={result} />
               ))}
             </div>
           </div>
-        )}
+        ) : null}
 
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-          {teamStoryline}
-        </p>
+        <p className="dd-note">{teamStoryline}</p>
+
+        {recentFixtures.length > 0 || upcomingFixtures.length > 0 ? (
+          <div className="dd-section sb-games">
+            <FixtureLedgerSection
+              groups={[
+                ...(recentFixtures.length > 0 ? [{ key: "recent", label: "Recent results", fixtures: recentFixtures }] : []),
+                ...(upcomingFixtures.length > 0 ? [{ key: "upcoming", label: "Upcoming games", fixtures: upcomingFixtures }] : []),
+              ]}
+            />
+          </div>
+        ) : null}
 
         {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-          <p
-            className="c97-prose border-t"
-            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
-            role={teamSnapshotError ? "alert" : "status"}
-            aria-live="polite"
-          >
+          <p className="dd-note" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
             {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
           </p>
         ) : null}
       </DetailDrawer>
-    </>
+    </Root>
   );
 }
 
-function groupLeadersByTeam(leaders: NbaLeader[]) {
-  return groupBy(leaders, (entry) => entry.teamId);
+/** The route's root and its one centred column. */
+function Root({ children }: { children: ReactNode }) {
+  return (
+    <div className="sb-root nba-root">
+      <div className="c97-shell c97-frame sb-column">{children}</div>
+    </div>
+  );
 }
 
-function toLeaderEntries(leaders: NbaLeader[]): LeaderEntry[] {
-  return leaders.map((leader) => ({
+/** The per-game average, since the leaders are listed per game, not as season totals. */
+function toLedgerEntries(leaders: NbaLeader[]): LeaderLedgerEntry[] {
+  return leaders.slice(0, 5).map((leader) => ({
     rank: leader.rank,
     name: leader.name,
-    clubId: leader.teamId,
     clubCode: leader.teamAbbreviation,
-    // The list is labelled per game (ppg, rpg, apg), so it prints the average
-    // and not the season total, which read as "539 PPG" until 2026-10-09.
-    total: Number.isFinite(leader.perGame) ? leader.perGame.toFixed(1) : "—",
-    appearances: leader.appearances,
-    perMatch: leader.perGame,
+    value: Number.isFinite(leader.perGame) ? leader.perGame.toFixed(1) : "—",
   }));
 }
 
@@ -726,30 +534,6 @@ function getZoneLabel(zone: NbaZone): string {
     case "lottery":
     default:
       return "Lottery";
-  }
-}
-
-function zoneChipClass(zone: NbaZone): string {
-  switch (zone) {
-    case "playoff":
-      return "c97-chip c97-chip-positive";
-    case "play-in":
-      return "c97-chip c97-chip-warning";
-    case "lottery":
-    default:
-      return "c97-chip";
-  }
-}
-
-function zoneDotColor(zone: NbaZone): string {
-  switch (zone) {
-    case "playoff":
-      return "var(--c97-positive)";
-    case "play-in":
-      return "var(--c97-warning)";
-    case "lottery":
-    default:
-      return "var(--c97-ink-2)";
   }
 }
 
@@ -796,73 +580,4 @@ function getTeamStoryline(team: NbaTeam, context: ConferenceContext): string {
   return `${team.shortName} are outside the play-in${
     behindPlayIn !== null ? ` and ${behindPlayIn} games short of the tenth seed` : ""
   }.`;
-}
-
-function getTeamPressurePoints(
-  team: NbaTeam,
-  context: ConferenceContext,
-  ranks: { offense: number; defense: number }
-): string[] {
-  const { topSeed, sixthSeed, seventhSeed, tenthSeed, eleventhSeed } = context;
-  const seed = team.conferenceSeed;
-  const remaining = Math.max(0, REGULAR_SEASON_GAMES - team.gamesPlayed);
-  if (seed === 1 && topSeed && sixthSeed) {
-    return [
-      `${team.wins - sixthSeed.wins} games clear of the playoff cutoff.`,
-      `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
-      `${remaining} games remain on the schedule.`,
-      `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
-    ];
-  }
-  if (seed <= 6 && topSeed && seventhSeed) {
-    return [
-      `${topSeed.wins - team.wins} games back from the conference top seed.`,
-      `${team.wins - seventhSeed.wins} games clear of the play-in line.`,
-      `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
-      `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
-    ];
-  }
-  if (seed <= 10 && sixthSeed && eleventhSeed) {
-    return [
-      `${sixthSeed.wins - team.wins} games short of a top-six seed.`,
-      `${team.wins - eleventhSeed.wins} games above the lottery line.`,
-      `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
-      `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
-    ];
-  }
-  return [
-    tenthSeed ? `${tenthSeed.wins - team.wins} games back of the play-in.` : "Outside the play-in field.",
-    `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
-    `${remaining} games remain to climb the seeding.`,
-    `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
-  ];
-}
-
-function TeamLeaderCard({
-  title,
-  leader,
-  statLabel,
-  emptyLabel,
-}: {
-  title: string;
-  leader?: NbaLeader;
-  statLabel: string;
-  emptyLabel: string;
-}) {
-  return (
-    <div className="c97-panel">
-      <p className="c97-kicker">{title}</p>
-      {leader ? (
-        <>
-          <p className="c97-h3 c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.name}</p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-            {leader.perGame.toFixed(1)} {statLabel.toLowerCase()} per game
-          </p>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.teamAbbreviation}</p>
-        </>
-      ) : (
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
-      )}
-    </div>
-  );
 }
