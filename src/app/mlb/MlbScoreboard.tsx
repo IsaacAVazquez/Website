@@ -1,65 +1,116 @@
-import type { ScoreboardDivision } from "./scoreboard";
+import { WILD_CARD_SLOTS, type ScoreboardDivision } from "./scoreboard";
 
 interface MlbScoreboardProps {
-  divisions: ScoreboardDivision[];
+  boards: ScoreboardDivision[];
+  selectedId: string | null;
+  onSelect: (teamId: string) => void;
+}
+
+function lastTenLabel(squares: readonly string[]): string {
+  if (squares.length === 0) return "No recent games recorded";
+  const wins = squares.filter((square) => square === "W").length;
+  return `${wins} win${wins === 1 ? "" : "s"} in the last ${squares.length}`;
 }
 
 /**
- * The page's signature: an out-of-town scoreboard, six division panels each
- * listing a team, its record, its games back, and a lit/hollow run of last-10
- * squares. It sits on its own paper plate inside the hero, since the panel
- * grid and squares are fields the ink sheet can't carry. Squares are plain
- * (no click, no tab stop); the standings table below is the only way to open
- * a team's detail.
+ * The out-of-town scoreboard, which is the page: one ruled table per race
+ * (the six divisions, or the two wild card races), each row a team with its
+ * record, games back, last ten as lit squares, and streak. Every team is a
+ * button into the drawer. A division leader and a wild card slot print as a
+ * word beside the code, so status never rests on the lit colour alone.
  */
-export function MlbScoreboard({ divisions }: MlbScoreboardProps) {
-  if (divisions.length === 0) {
-    return <p className="c97-meta">Standings for this season aren&apos;t loaded yet.</p>;
+export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardProps) {
+  if (boards.length === 0) {
+    return <p className="sb-muted">Standings for this season aren&apos;t loaded yet.</p>;
   }
 
   return (
-    <div data-c97-surface="paper" className="c97-offset c97-mlb-scoreboard">
-      {divisions.map((division) => (
-        <div key={division.name} className="c97-mlb-scoreboard-panel">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{division.name}</p>
-          <ul className="c97-mlb-scoreboard-list">
-            {division.teams.map((team) => (
-              <li key={team.id} className="c97-mlb-scoreboard-row">
-                <span className="c97-mono c97-mlb-scoreboard-code">{team.code}</span>
-                <span className="c97-mono c97-mlb-scoreboard-record">{team.record}</span>
-                <span className="c97-mono c97-mlb-scoreboard-gb">{team.gamesBack}</span>
-                <span
-                  className="c97-mlb-scoreboard-squares"
-                  role="img"
-                  aria-label={
-                    team.squares.length > 0
-                      ? `${team.squares.filter((s) => s === "W").length} win${
-                          team.squares.filter((s) => s === "W").length === 1 ? "" : "s"
-                        } in the last ${team.squares.length}`
-                      : "No recent games recorded"
-                  }
-                  title={
-                    team.squares.length > 0
-                      ? `${team.squares.filter((s) => s === "W").length} win${
-                          team.squares.filter((s) => s === "W").length === 1 ? "" : "s"
-                        } in the last ${team.squares.length}`
-                      : undefined
-                  }
-                >
-                  {team.squares.map((square, index) => (
-                    <span
-                      key={index}
-                      aria-hidden="true"
-                      className="c97-mlb-scoreboard-square"
-                      data-square={square}
-                    />
-                  ))}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+    <div className="mlb-boards" data-kind={boards[0].kind}>
+      {boards.map((board) => {
+        const headingId = `mlb-board-${board.name.toLowerCase().replaceAll(" ", "-")}`;
+        return (
+          <div key={board.name} className="mlb-division">
+            <h3 id={headingId} className="mlb-division-name">
+              {board.name}
+            </h3>
+            <table className="mlb-table" aria-label={`${board.name} standings`}>
+              <thead>
+                <tr>
+                  <th scope="col" className="mlb-col-team">Team</th>
+                  <th scope="col" className="mlb-num">
+                    <abbr title="Wins and losses">W-L</abbr>
+                  </th>
+                  <th scope="col" className="mlb-num">
+                    <abbr title={board.kind === "wildcard" ? "Games back of the last wild card slot" : "Games back"}>GB</abbr>
+                  </th>
+                  <th scope="col" className="mlb-col-ten">
+                    <abbr title="Last ten games, wins lit">L10</abbr>
+                  </th>
+                  <th scope="col" className="mlb-num mlb-col-streak">
+                    <abbr title="Current streak">Strk</abbr>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {board.teams.map((team, index) => {
+                  const isSelected = team.id === selectedId;
+                  const mark =
+                    board.kind === "division"
+                      ? team.divisionRank === 1
+                        ? "Leads"
+                        : team.holdsWildCard
+                          ? "WC"
+                          : null
+                      : index < WILD_CARD_SLOTS
+                        ? "In"
+                        : null;
+                  const markTitle =
+                    mark === "Leads" ? "Leads the division" : mark === "WC" || mark === "In" ? "Holds a wild card slot" : undefined;
+                  const label = lastTenLabel(team.squares);
+                  return (
+                    <tr
+                      key={team.id}
+                      data-selected={isSelected || undefined}
+                      data-line={board.kind === "wildcard" && index === WILD_CARD_SLOTS - 1 ? "" : undefined}
+                    >
+                      <td className="mlb-col-team">
+                        <button
+                          type="button"
+                          className="mlb-team"
+                          onClick={() => onSelect(team.id)}
+                          aria-pressed={isSelected}
+                          aria-haspopup="dialog"
+                          aria-label={`Show ${team.fullName} details`}
+                        >
+                          <span className="mlb-code">{team.code}</span>
+                          <span className="mlb-name">{team.name}</span>
+                          {mark ? (
+                            <abbr className="mlb-mark" title={markTitle} data-mark={mark}>
+                              {mark}
+                            </abbr>
+                          ) : null}
+                        </button>
+                      </td>
+                      <td className="mlb-num">{team.record}</td>
+                      <td className="mlb-num">{team.gamesBack}</td>
+                      <td className="mlb-col-ten">
+                        <span className="mlb-squares" role="img" aria-label={label} title={label}>
+                          {team.squares.map((square, squareIndex) => (
+                            <span key={squareIndex} className="mlb-square" data-square={square} aria-hidden="true" />
+                          ))}
+                        </span>
+                      </td>
+                      <td className="mlb-num mlb-col-streak" data-streak={team.streak.charAt(0) || undefined}>
+                        {team.streak || "—"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        );
+      })}
     </div>
   );
 }

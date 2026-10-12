@@ -10,7 +10,8 @@ export const metadata = constructMetadata({
   description:
     "Interactive Major League Baseball dashboard with division standings, AL and NL splits, wild card race, recent results, and league-wide hitting and pitching leaders.",
   canonicalUrl: "/mlb",
-  dateModified: mlbSnapshot.updatedAt,
+  // The redesign shipped on 2026-10-12, so the page is at least that new.
+  dateModified: mlbSnapshot.updatedAt > "2026-10-12" ? mlbSnapshot.updatedAt : "2026-10-12",
 });
 
 interface MlbPageProps {
@@ -57,7 +58,7 @@ export default async function MlbPage({ searchParams }: MlbPageProps) {
             "Snapshot-driven standings, schedule, and league-leader context",
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
-          dateModified: mlbSnapshot.updatedAt,
+          dateModified: mlbSnapshot.updatedAt > "2026-10-12" ? mlbSnapshot.updatedAt : "2026-10-12",
           offers: freeApplicationOffer,
         }}
       />

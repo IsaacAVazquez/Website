@@ -1,112 +1,228 @@
-/* MLB Pulse: the out-of-town scoreboard signature and the standings bands. */
+/*
+ * MLB Pulse, drawn as the out-of-town scoreboard at the ballpark. A display
+ * board keeps one surface in both themes (the shell still switches): deep
+ * scoreboard green with cream lettering, amber lamps for the last-ten wins,
+ * and Fragment Mono for every figure. The skeleton is sports-board.css.
+ */
 
-.c97-mlb-scoreboard {
+.mlb-root {
+  --sb-bg: #173f2c;
+  --sb-ink: #f4eedb;
+  --sb-ink-2: #c3ccb8;
+  --sb-rule: rgba(244, 238, 219, 0.16);
+  --sb-rule-strong: rgba(244, 238, 219, 0.42);
+  --sb-raise: #1f4c37;
+  --sb-focus: #ffd166;
+  --sb-pos: #a7e3b2;
+  --sb-neg: #ffb9ad;
+  --mlb-lamp: #f2b632;
+  --mlb-lamp-off: rgba(244, 238, 219, 0.34);
+  /* The scrim over a green board reads darker than the frame's warm one. */
+  --c97-scrim: rgb(6 20 13 / 0.6);
+}
+
+.mlb-root .sb-state[data-state="post"] { --sb-state: var(--mlb-lamp); }
+.mlb-root .sb-state[data-state="live"] { --sb-state: var(--sb-pos); }
+
+/* Club logos are drawn for a white ground, so each sits on a cream chip. */
+.mlb-root .sb-detail img,
+.mlb-root .dd-panel img {
+  background: #f4eedb;
+}
+
+.mlb-boards {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--c97-sp-4);
-  padding: var(--c97-sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: var(--c97-sp-4) var(--c97-sp-5);
 }
 
-/* A division panel needs about 260px for the code, record, games back, and
- * ten squares on one line. From 760px the board splits by league the way a
- * ballpark's out-of-town board does, the American League down the left and
- * the National League down the right, since DIVISION_ORDER lists AL first. */
-@media screen and (min-width: 760px) {
-  .c97-mlb-scoreboard {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(3, auto);
-    grid-auto-flow: column;
-  }
-}
-
-.c97-mlb-scoreboard-panel {
-  border: 1px solid var(--c97-rule);
-  padding: var(--c97-sp-3);
+.mlb-division {
   min-width: 0;
 }
 
-.c97-mlb-scoreboard-list {
-  display: grid;
-  gap: var(--c97-sp-2);
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.sb-root .mlb-division-name {
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--sb-rule-strong);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.c97-mlb-scoreboard-row {
-  display: grid;
-  grid-template-columns: 2.6rem 3.6rem 2.6rem minmax(0, 1fr);
-  align-items: center;
-  gap: var(--c97-sp-2);
-  font-size: var(--c97-fs-small);
-  min-width: 0;
+.mlb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--c97-font-mono);
+  font-size: 0.9375rem;
 }
 
-.c97-mlb-scoreboard-code {
-  font-weight: 600;
+.mlb-table thead th {
+  padding: var(--c97-sp-1) var(--c97-sp-1);
+  border-bottom: 1px solid var(--sb-rule);
+  font-family: var(--c97-font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--sb-ink-2);
 }
 
-.c97-mlb-scoreboard-record,
-.c97-mlb-scoreboard-gb {
-  color: var(--c97-ink-2);
+.mlb-table abbr {
+  text-decoration: none;
+}
+
+.mlb-table td {
+  padding: 0 var(--c97-sp-1);
+  border-bottom: 1px solid var(--sb-rule);
   white-space: nowrap;
 }
 
-/* Ten fixed tracks keep the squares on one row at a size that reads, and
- * the row's last column is wide enough for them at every breakpoint. */
-.c97-mlb-scoreboard-squares {
-  display: grid;
-  grid-template-columns: repeat(10, 7px);
-  justify-content: end;
-  gap: 2px;
+.mlb-table tbody tr:hover td {
+  background: rgba(244, 238, 219, 0.05);
 }
 
-@media screen and (min-width: 1200px) {
-  .c97-mlb-scoreboard-squares {
-    grid-template-columns: repeat(10, 9px);
-  }
+.mlb-table tr[data-selected] td {
+  background: rgba(244, 238, 219, 0.1);
 }
 
-.c97-mlb-scoreboard-square {
+/* The wild card races draw their line under the third slot. */
+.mlb-table tr[data-line] td {
+  border-bottom: 2px dashed var(--mlb-lamp);
+}
+
+.mlb-col-team {
   width: 100%;
-  aspect-ratio: 1;
-  border: 1px solid var(--c97-ink);
-  background: transparent;
+  max-width: 0;
+  padding-left: 0;
 }
 
-.c97-mlb-scoreboard-square[data-square="W"] {
-  background: var(--c97-ink);
+.mlb-table th.mlb-col-team {
+  padding-left: 0;
 }
 
-/* Postseason status dot in the standings table (division leader, wild card
- * slot, out) and the selected-row highlight, both driven by data attributes
- * rather than inline color-mix noise. */
-.c97-mlb-zone-dot {
-  display: inline-block;
+.mlb-num {
+  text-align: right;
+}
+
+.mlb-table th.mlb-num {
+  text-align: right;
+}
+
+.mlb-team {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mlb-code {
+  flex: none;
+  width: 2.6em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.mlb-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--c97-font-body);
+  font-size: 0.875rem;
+  color: var(--sb-ink-2);
+}
+
+.mlb-team:hover .mlb-code,
+.mlb-team:focus-visible .mlb-code,
+.mlb-team[aria-pressed="true"] .mlb-code {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mlb-mark {
+  flex: none;
+  padding: 1px 5px;
+  border: 1px solid var(--mlb-lamp);
+  border-radius: 3px;
+  font-family: var(--c97-font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mlb-lamp);
+}
+
+.mlb-mark[data-mark="WC"],
+.mlb-mark[data-mark="In"] {
+  border-color: var(--sb-ink-2);
+  color: var(--sb-ink-2);
+}
+
+.mlb-col-ten {
+  width: 1%;
+}
+
+.mlb-squares {
+  display: grid;
+  grid-template-columns: repeat(10, 8px);
+  gap: 2px;
+  justify-content: end;
+}
+
+.mlb-square {
   width: 8px;
   height: 8px;
-  flex-shrink: 0;
+  border: 1px solid var(--mlb-lamp-off);
 }
 
-.c97-mlb-table tbody tr[data-selected] {
-  background: var(--c97-panel);
+.mlb-square[data-square="W"] {
+  border-color: var(--mlb-lamp);
+  background: var(--mlb-lamp);
 }
 
-/* A phone's column is 328px. The plate and the panel padding come down to
- * the sp-2 step so the row keeps about 278px, since at the sp-4 and sp-3
- * steps it had 226px and the games-back figure printed over the squares. */
+.mlb-col-streak {
+  width: 3.25rem;
+}
+
+/* A phone's column is about 358px, so the club name gives way to the code. */
 @media screen and (max-width: 479px) {
-  .c97-mlb-scoreboard {
-    gap: var(--c97-sp-2);
-    padding: var(--c97-sp-2);
+  .mlb-name {
+    display: none;
   }
 
-  .c97-mlb-scoreboard-panel {
-    padding: var(--c97-sp-2);
+  .mlb-squares {
+    grid-template-columns: repeat(10, 6px);
   }
 
-  .c97-mlb-scoreboard-row {
-    grid-template-columns: 2.2rem 3.2rem 2.3rem minmax(0, 1fr);
-    gap: var(--c97-sp-1);
+  .mlb-square {
+    width: 6px;
+    height: 6px;
+  }
+
+  .mlb-table td,
+  .mlb-table thead th {
+    padding-inline: 4px;
+  }
+}
+
+@media print {
+  .mlb-root {
+    --sb-bg: #ffffff;
+    --sb-ink: #111111;
+    --sb-ink-2: #444444;
+    --sb-rule: rgba(0, 0, 0, 0.18);
+    --sb-rule-strong: rgba(0, 0, 0, 0.5);
+    --mlb-lamp: #111111;
+    --mlb-lamp-off: rgba(0, 0, 0, 0.35);
   }
 }
