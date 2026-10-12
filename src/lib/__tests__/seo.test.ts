@@ -5,6 +5,7 @@ import {
   fitMetaDescription,
   fitSearchTitle,
   generateAIOptimizedMetadata,
+  laterDate,
   safeJsonLd,
   siteConfig,
 } from "../seo";
@@ -264,5 +265,14 @@ describe("search metadata fitting", () => {
 
     expect(description.length).toBeLessThanOrEqual(160);
     expect(description.endsWith("…")).toBe(true);
+  });
+});
+
+describe("laterDate", () => {
+  it("keeps the later ISO date and lets a missing first date lose", () => {
+    expect(laterDate("2026-10-13", "2026-10-12")).toBe("2026-10-13");
+    expect(laterDate("2026-10-11", "2026-10-12")).toBe("2026-10-12");
+    expect(laterDate(undefined, "2026-10-12")).toBe("2026-10-12");
+    expect(laterDate("", "2026-10-12")).toBe("2026-10-12");
   });
 });
