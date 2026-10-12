@@ -5,7 +5,6 @@ import {
   formatMargin,
   formatNet,
   formatShortDate,
-  getRowStyle,
   isStalePollDate,
   newestPollDate,
 } from "../polling-aggregator-helpers";
@@ -78,15 +77,6 @@ describe("polling-aggregator-helpers", () => {
       expect(isStalePollDate("2026-09-08", newest + 14 * DAY_MS)).toBe(false);
       expect(isStalePollDate("2026-09-08", newest + 14 * DAY_MS + 1)).toBe(true);
       expect(isStalePollDate(null, now)).toBe(false);
-    });
-  });
-
-  it("builds the selected row style from helper branches", () => {
-    expect(getRowStyle(true)).toMatchObject({
-      borderColor: "color-mix(in srgb, var(--c97-accent) 35%, var(--c97-rule))",
-    });
-    expect(getRowStyle(false)).toMatchObject({
-      borderColor: "var(--c97-rule)",
     });
   });
 

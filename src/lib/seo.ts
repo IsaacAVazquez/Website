@@ -127,6 +127,15 @@ const composeSocialTitle = (title: string) => {
     : `${title} | ${siteConfig.name}`;
 };
 
+/**
+ * The later of two ISO dates (YYYY-MM-DD compares as text), with a missing
+ * first date losing. A page whose data refreshes on a schedule uses it to
+ * keep its dateModified at the later of the data's date and its last redesign.
+ */
+export function laterDate(a: string | null | undefined, b: string): string {
+  return a && a > b ? a : b;
+}
+
 export function constructMetadata({
   title,
   description = siteConfig.description,

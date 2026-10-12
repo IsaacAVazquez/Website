@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 
 // ─── Formatting ────────────────────────────────────────────────────────────────
@@ -83,21 +82,6 @@ export function formatNet(net: number): string {
 // poll's candidates without a party.
 export const DEM_COLOR = "var(--c97-party-d-mark)";
 export const REP_COLOR = "var(--c97-party-r-mark)";
-
-// ─── Row styles ────────────────────────────────────────────────────────────────
-
-export function getRowStyle(isSelected: boolean): CSSProperties {
-  if (isSelected) {
-    return {
-      borderColor: "color-mix(in srgb, var(--c97-accent) 35%, var(--c97-rule))",
-      background: "color-mix(in srgb, var(--c97-accent) 8%, var(--c97-field))",
-    };
-  }
-  return {
-    borderColor: "var(--c97-rule)",
-    background: "var(--c97-field)",
-  };
-}
 
 // ─── SVG trend chart helpers ───────────────────────────────────────────────────
 

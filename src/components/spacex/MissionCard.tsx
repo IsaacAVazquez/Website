@@ -61,27 +61,23 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
         </span>
       </div>
 
-      <div className="flex flex-col border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-0)" }}>
+      <div className="flex flex-col" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
         <span className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           Flight #{launch.flightNumber} · {launch.rocketName ?? "Rocket TBD"}
         </span>
-        <h4 className="c97-serif c97-h3">
+        <h3 className="sx-h3">
           {launch.name}
-        </h4>
+        </h3>
       </div>
 
-      <div className="grid grid-cols-2 gap-px bg-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]">
+      <dl className="sx-card-meta">
         {metaCells.map((cell) => (
-          <div key={cell.key} className="min-w-0 bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
-            <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
-              {cell.key}
-            </div>
-            <div className="truncate text-sm font-semibold tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-              {cell.value}
-            </div>
+          <div key={cell.key} className="min-w-0">
+            <dt>{cell.key}</dt>
+            <dd className="truncate">{cell.value}</dd>
           </div>
         ))}
-      </div>
+      </dl>
 
       <div className="mt-auto flex items-center justify-between font-mono text-3xs text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <span className="truncate">{formatMissionScheduleLabel(launch)}</span>

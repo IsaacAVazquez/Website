@@ -93,7 +93,7 @@ export interface PollingSnapshot {
 
 // ─── UI state ─────────────────────────────────────────────────────────────────
 
-export type PollingView = "overview" | "approval" | "senate" | "governors";
+export type PollingView = "senate" | "governors" | "approval";
 
 export interface PollingRouteState {
   view: PollingView;

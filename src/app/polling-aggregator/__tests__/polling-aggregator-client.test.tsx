@@ -123,32 +123,26 @@ describe("PollingAggregatorClient", () => {
     expect(screen.getByRole("note")).not.toHaveTextContent(/The newest approval poll I have/);
   });
 
-  it("prints each series' newest poll date beside its headline average, with the stale state", () => {
-    currentSearchParams = new URLSearchParams("view=approval");
+  it("prints the national averages on the chart's summary, with the poll dates in its source line", () => {
     render(
       <PollingAggregatorClient
         initialState={DEFAULT_POLLING_STATE}
         snapshot={datedSnapshot}
-        staleSeries={{ approval: true, genericBallot: false }}
       />
     );
 
-    const readout = (label: string) =>
+    // The averages are the tracker's own summary beside the chart, printed once.
+    const figure = (label: string) =>
       screen.getByText(label, { selector: "dt" }).parentElement as HTMLElement;
-    expect(readout("Approval net")).toHaveTextContent(
-      "Newest poll Aug 28, 2026, which is more than 14 days old"
+    expect(figure("Approval net")).toHaveTextContent(
+      `${datedSnapshot.approvalAvg.approve.toFixed(1)}% approve`
     );
-    expect(readout("Generic ballot margin")).toHaveTextContent(/Newest poll Sep 8, 2026$/);
-    // Days to election is a count, so it carries no poll date.
-    expect(readout("Days to election")).not.toHaveTextContent(/Newest poll/);
-
-    // The approval view's two averages carry the same line under their headings.
-    const underHeading = (name: RegExp) =>
-      screen.getByRole("heading", { level: 3, name }).nextElementSibling as HTMLElement;
-    expect(underHeading(/Presidential approval/)).toHaveTextContent(
-      "Newest poll Aug 28, 2026, which is more than 14 days old"
+    expect(figure("Generic ballot margin")).toHaveTextContent(
+      `D ${datedSnapshot.genericBallotAvg.dem.toFixed(1)}% vs R`
     );
-    expect(underHeading(/Generic ballot/)).toHaveTextContent(/^Newest poll Sep 8, 2026$/);
+    // Days to the election moved into the source line, so no third figure is printed.
+    expect(screen.queryByText("Days to election", { selector: "dt" })).toBeNull();
+    expect(screen.getByRole("note")).toHaveTextContent(/midterms/);
   });
 
   it("attributes the polling source and explains the race-data limit", () => {
@@ -163,12 +157,13 @@ describe("PollingAggregatorClient", () => {
       "href",
       "https://votehub.com/polls/api/"
     );
-    expect(screen.getByRole("note")).toHaveTextContent(
-      /without a party or an incumbency flag, so I print the names as the pollsters gave them/
-    );
+    // The race-data limit qualifies the race rows, so it prints under the race table.
+    expect(
+      screen.getByText(/without a party or an incumbency flag, so I print the names as the pollsters gave them/)
+    ).toBeVisible();
   });
 
-  it("renders the overview and navigates view tabs", () => {
+  it("opens on the Senate races and navigates view tabs", () => {
     render(
       <PollingAggregatorClient
         initialState={DEFAULT_POLLING_STATE}
@@ -179,6 +174,8 @@ describe("PollingAggregatorClient", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: /polling aggregator/i })
     ).toBeVisible();
+    expect(screen.getByRole("button", { name: "Senate" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.queryByRole("button", { name: "Overview" })).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Approval" }));
     expect(mockPush).toHaveBeenLastCalledWith("/polling-aggregator?view=approval", {
@@ -193,7 +190,9 @@ describe("PollingAggregatorClient", () => {
 
     expect(screen.queryByRole("button", { name: "Senate" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Governors" })).not.toBeInTheDocument();
-    expect(screen.getByText(/Senate: VoteHub has published no senate poll/)).toBeVisible();
+    // With no race polls the board opens on the approval and ballot poll tables.
+    expect(screen.getByRole("button", { name: "Approval" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("table", { name: "Presidential approval polls" })).toBeVisible();
 
     rerender(
       <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
@@ -201,12 +200,8 @@ describe("PollingAggregatorClient", () => {
 
     expect(screen.getByRole("button", { name: "Senate" })).toBeVisible();
     expect(screen.queryByRole("button", { name: "Governors" })).not.toBeInTheDocument();
-    expect(
-      screen.getByText(
-        /Senate: 2 races polled, 1 within 3 points\. The closest is Maine, where Maine Leader leads Maine Runner-up by 0\.5 points across 4 polls\./
-      )
-    ).toBeVisible();
-    // The hero counts the race polls with the national ones.
+    expect(screen.getByText(/2 polled, closest first\. 1 of 2 within 3 points\./)).toBeVisible();
+    // The source line counts the race polls with the national ones.
     expect(screen.getByText(/polls tracked/i)).toHaveTextContent(
       `${noRaces.approvalPolls.length + noRaces.genericBallotPolls.length + 7} polls tracked`
     );
@@ -238,7 +233,8 @@ describe("PollingAggregatorClient", () => {
     expect(screen.getAllByText("Someone Else 2%")).toHaveLength(4);
 
     fireEvent.click(within(rows[1]).getByRole("button", { name: "Show the Ohio Senate race" }));
-    expect(mockPush).toHaveBeenLastCalledWith("/polling-aggregator?view=senate&race=senate-oh", {
+    // Senate is the default view, so the URL carries only the race.
+    expect(mockPush).toHaveBeenLastCalledWith("/polling-aggregator?race=senate-oh", {
       scroll: false,
     });
 
@@ -252,15 +248,34 @@ describe("PollingAggregatorClient", () => {
     );
   });
 
-  it("says so when a deep-linked race view has no polls", () => {
-    currentSearchParams = new URLSearchParams("view=governors");
-    render(
-      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
-    );
+  it("falls back to the first view with polls when the requested one has none", () => {
+    // A governors link with no governor polls, and a legacy Overview link, land on Senate.
+    for (const query of ["view=governors", "view=overview"]) {
+      currentSearchParams = new URLSearchParams(query);
+      const { unmount } = render(
+        <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+      );
+      expect(screen.getByRole("button", { name: "Senate" })).toHaveAttribute("aria-pressed", "true");
+      expect(screen.getByRole("table", { name: "Senate race averages" })).toBeVisible();
+      unmount();
+    }
 
-    expect(screen.queryByRole("table", { name: /race averages/ })).not.toBeInTheDocument();
-    expect(
-      screen.getByText(/VoteHub has published no governor poll from the last four months/)
-    ).toBeVisible();
+    // With no Senate polls, the default view opens on Governors from the first render.
+    currentSearchParams = new URLSearchParams();
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={{ ...noRaces, governorRaces: [{ ...ohio, id: "governor-oh", office: "Governor" }] }}
+      />
+    );
+    expect(screen.getByRole("button", { name: "Governors" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("table", { name: "Governor race averages" })).toBeVisible();
+  });
+
+  it("counts a single day to the election in the singular", () => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-11-02T00:00:00Z"));
+    render(<PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={datedSnapshot} />);
+    expect(screen.getByRole("note")).toHaveTextContent("1 day to the Nov 3 midterms.");
+    jest.restoreAllMocks();
   });
 });

@@ -1,5 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
 import { SpaceXMissionControlClient } from "./spacex-mission-control-client";
 import { loadMissionControlInitialData } from "./spacex-mission-control-data";
@@ -12,7 +12,8 @@ export const metadata = constructMetadata({
   canonicalUrl: "/spacex-mission-control",
   image: "/spacex-mission-control/opengraph-image",
   // The page changes with every snapshot refresh, so it is dated by the snapshot.
-  dateModified: getSpaceXSnapshot().generatedAt?.slice(0, 10),
+  // The later of the redesign and the committed snapshot.
+  dateModified: laterDate(getSpaceXSnapshot().generatedAt?.slice(0, 10), "2026-10-12"),
 });
 
 interface SpaceXMissionControlPageProps {

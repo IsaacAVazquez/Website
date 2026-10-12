@@ -4,7 +4,7 @@ import {
   getTransitStationBoard,
   getTransitSummary,
 } from "@/lib/bayAreaTransitSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { BayAreaTransitClient } from "./bay-area-transit-client";
 import { normalizeTransitState } from "./bay-area-transit-state";
 
@@ -14,7 +14,8 @@ export const metadata = constructMetadata({
     "BART dashboard for the Bay Area with a stable line directory, frequently refreshed departure boards, and active service alerts in one calm screen.",
   canonicalUrl: "/bay-area-transit",
   image: "/bay-area-transit/opengraph-image",
-  dateModified: bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10),
+  // The later of the redesign and the committed fallback snapshot.
+  dateModified: laterDate(bayAreaTransitSnapshot.summary.system?.generatedAt?.slice(0, 10), "2026-10-12"),
 });
 
 interface TransitPageProps {
@@ -66,7 +67,7 @@ export default async function BayAreaTransitPage({
           applicationCategory: "TravelApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [
-            "Line directory with official BART colors and end-to-end routes",
+            "Street map of every BART line in its official color",
             "Per-station departure boards backed by shareable URL state",
             "Active service alerts and elevator outages",
             "Last-good snapshot fallback when a BART feed is unavailable",

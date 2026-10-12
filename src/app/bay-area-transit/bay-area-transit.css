@@ -1,40 +1,393 @@
-/* Bay Area Transit Pulse: the street map, platform board, and log rows. */
+/*
+ * Bay Area Transit Pulse, drawn as a transit app around a platform display.
+ * The page paints its own paper with a light and a dark story, and the
+ * departure board is one dark display in both themes, warm white
+ * destinations and amber minutes, the way the sign over a BART platform
+ * reads. Line colours are BART's own and stay data. The Catalog 97 tokens the
+ * map's Leaflet layer reads are pointed at the route's values on the root.
+ */
+
+.bt-root {
+  --bt-paper: #f3f4f2;
+  --bt-raise: #e7e9e5;
+  --bt-ink: #15181b;
+  --bt-ink-2: #4f565d;
+  --bt-rule: rgba(21, 24, 27, 0.13);
+  --bt-rule-strong: rgba(21, 24, 27, 0.32);
+  --bt-ok: #2e7d32;
+  --bt-warn: #8a5600;
+  --bt-down: #b3261e;
+  --bt-board: #0e1012;
+  --bt-board-ink: #f4efe6;
+  --bt-board-ink-2: #b7afa2;
+  --bt-board-rule: rgba(244, 239, 230, 0.14);
+  --bt-amber: #ffb340;
+  --bt-board-alert: #ff9d8a;
+
+  --c97-surface: var(--bt-paper);
+  --c97-field: var(--bt-raise);
+  --c97-panel: var(--bt-raise);
+  --c97-ink: var(--bt-ink);
+  --c97-ink-2: var(--bt-ink-2);
+  --c97-label: var(--bt-ink-2);
+  --c97-rule: var(--bt-rule);
+  --c97-action: var(--bt-ink);
+  --c97-accent: var(--bt-ink);
+  --c97-warning: var(--bt-warn);
+
+  background: var(--bt-paper);
+  color: var(--bt-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .bt-root {
+  --bt-paper: #0f1113;
+  --bt-raise: #1b1e21;
+  --bt-ink: #e9ecee;
+  --bt-ink-2: #a3abb3;
+  --bt-rule: rgba(233, 236, 238, 0.13);
+  --bt-rule-strong: rgba(233, 236, 238, 0.3);
+  --bt-ok: #7cc47f;
+  --bt-warn: #f0b04a;
+  --bt-down: #f28b80;
+  /* The board keeps one surface, so it takes an edge to stand off the dark page. */
+  --bt-board: #08090a;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.bt-root :where(h1, h2) {
+  font-family: var(--c97-font-body);
+  margin: 0;
+}
+
+.bt-root :where(p, ul, li) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.bt-root :where(ul) {
+  list-style: none;
+}
+
+.bt-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-3) var(--c97-sp-6);
+}
+
+/* Title row with the status strip on its right from 1024px. */
+
+.bt-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--bt-rule-strong);
+}
+
+.bt-title-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  flex: 1 1 22rem;
+  min-width: 0;
+}
+
+.bt-title {
+  font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.375rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--bt-ink);
+}
+
+.bt-root .bt-standfirst {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--bt-ink-2);
+}
+
+.bt-status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  flex: 1 1 30rem;
+  min-width: 0;
+}
+
+.bt-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+}
+
+.bt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 32px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.bt-badge-mark {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bt-ok);
+}
+
+.bt-badge[data-status="stale-fallback"] .bt-badge-mark {
+  background: var(--bt-warn);
+  border-radius: 0;
+}
+
+.bt-badge[data-status="unreported"] .bt-badge-mark {
+  background: transparent;
+  border: 2px solid var(--bt-ink-2);
+}
+
+.bt-badge[data-status="unavailable"] .bt-badge-mark {
+  background: transparent;
+  border: 2px solid var(--bt-down);
+  border-radius: 0;
+}
+
+.bt-badge-state {
+  font-weight: 400;
+  color: var(--bt-ink-2);
+}
+
+.bt-alerts-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  margin-inline-start: auto;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--bt-rule-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--bt-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bt-alerts-toggle[data-has-alerts] {
+  border-color: var(--bt-warn);
+}
+
+.bt-alerts-toggle[aria-expanded="true"] .bt-chevron {
+  transform: rotate(180deg);
+}
+
+.bt-root .bt-stamp {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--bt-ink-2);
+}
+
+/* The alerts strip, opened from the status strip. */
+
+.bt-alerts {
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--bt-rule-strong);
+}
+
+.bt-alert-list {
+  display: grid;
+}
+
+.bt-root .bt-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-1);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.bt-alert-list > .bt-alert + .bt-alert {
+  border-top: 1px solid var(--bt-rule);
+}
+
+.bt-alert-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--bt-ink-2);
+}
+
+.bt-alert-icon[data-tone="ok"] {
+  color: var(--bt-ok);
+}
+
+.bt-alert-icon[data-tone="warn"] {
+  color: var(--bt-warn);
+}
+
+.bt-strong {
+  font-weight: 600;
+}
+
+.bt-block {
+  display: block;
+}
+
+.bt-root .bt-muted {
+  color: var(--bt-ink-2);
+}
+
+.bt-root .bt-small {
+  font-size: 0.8125rem;
+}
+
+.bt-kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bt-ink-2);
+}
+
+.bt-field {
+  width: 100%;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--bt-rule-strong);
+  border-radius: 6px;
+  background: var(--bt-paper);
+  color: var(--bt-ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.bt-text-button {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--bt-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* Map line chips and Nearest station */
+
+.bt-line {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--bt-ink);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bt-line:hover,
+.bt-line[aria-pressed="true"] {
+  border-bottom-color: var(--bt-ink);
+}
+
 
 /* The map leads, so it comes first in the source and takes the wide column. */
 .c97-transit-signature {
   display: grid;
-  grid-template-columns: minmax(0, 2.2fr) minmax(300px, 1fr);
-  gap: var(--c97-sp-4);
+  grid-template-columns: minmax(0, 2.2fr) minmax(320px, 1fr);
+  gap: var(--c97-sp-3);
   align-items: stretch;
 }
 
 .c97-transit-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
   min-height: 100%;
 }
 
-/*
- * Padding only, so the board's own espresso surface is the background. It was
- * kept off `.c97-panel` when panels painted the pale field tint; panels now
- * paint `--c97-panel`, which is dark on espresso, so either would read.
- */
+/* The display itself, one dark surface in both themes. */
 .c97-transit-board-inner {
-  height: 100%;
+  flex: 1 1 auto;
   padding: var(--c97-sp-3);
+  border-radius: 8px;
+  background: var(--bt-board);
+  color: var(--bt-board-ink);
+  box-shadow: inset 0 0 0 1px var(--bt-board-rule);
+  --c97-accent: var(--bt-amber);
 }
 
-/*
- * Station search and its list print on a paper plate set into the board,
- * because a field paints the pale field tint and the board is espresso.
- */
+.bt-board-kicker {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bt-amber);
+}
+
+.bt-board-station {
+  margin-block: var(--c97-sp-1) var(--c97-sp-0);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--bt-board-ink);
+}
+
+.bt-root .bt-board-note {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--bt-board-ink-2);
+}
+
+.bt-root .bt-board-error {
+  margin-bottom: var(--c97-sp-1);
+  font-size: 0.875rem;
+  color: var(--bt-board-alert);
+}
+
+.bt-board-button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--bt-board-ink-2);
+  border-radius: 6px;
+  background: none;
+  color: var(--bt-board-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Station search and its list, on the page's paper above the display. */
 .c97-transit-finder {
   display: grid;
   gap: var(--c97-sp-1);
-  padding: var(--c97-sp-3);
 }
 
 .c97-transit-station-list {
   display: grid;
-  gap: var(--c97-sp-1);
+  max-height: 22rem;
+  overflow-y: auto;
+  border-top: 1px solid var(--bt-rule);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -42,8 +395,7 @@
 
 .c97-transit-departures {
   display: grid;
-  gap: var(--c97-sp-2);
-  margin: var(--c97-sp-3) 0 0;
+  margin: var(--c97-sp-2) 0 0;
   padding: 0;
   list-style: none;
 }
@@ -63,10 +415,11 @@
   column-gap: var(--c97-sp-3);
   width: 100%;
   min-height: 44px;
-  padding: 0;
+  padding: var(--c97-sp-1) 0;
   border: 0;
+  border-top: 1px solid var(--bt-board-rule);
   background: none;
-  color: inherit;
+  color: var(--bt-board-ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -90,6 +443,8 @@
 
 .c97-transit-departure-dest {
   grid-area: dest;
+  font-size: 1.0625rem;
+  font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -98,24 +453,25 @@
 .c97-transit-departure-detail {
   grid-area: detail;
   font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-label);
-  color: var(--c97-label);
+  font-size: 0.75rem;
+  color: var(--bt-board-ink-2);
 }
 
 .c97-transit-departure-min {
   grid-area: min;
-  font-size: var(--c97-fs-h2);
+  font-family: var(--c97-font-mono);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  color: var(--bt-amber);
   white-space: nowrap;
 }
 
-/* The map plate: its own paper surface inside the teal hero. */
+/* The map column: the line chips and Nearest station on the map's top edge. */
 .c97-transit-map {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
   min-width: 0;
-  padding: var(--c97-sp-2);
-  color: var(--c97-ink);
+  color: var(--bt-ink);
 }
 
 .c97-transit-map-head {
@@ -129,6 +485,7 @@
 .c97-transit-line-toggles {
   display: flex;
   flex-wrap: wrap;
+  column-gap: var(--c97-sp-1);
 }
 
 .c97-transit-locate-note {
@@ -141,6 +498,8 @@
   flex: 1 1 auto;
   min-height: clamp(360px, 64vh, 620px);
   overflow: hidden;
+  border-radius: 8px;
+  background: var(--bt-raise);
 }
 
 /* The drawn map: the server render, the print copy, and the fallback. */
@@ -222,16 +581,6 @@
   fill: var(--c97-ink);
 }
 
-.c97-transit-line-card {
-  display: block;
-  /* A grid item's default min-width is its content's min-content size, which
-   * lets a nowrap child (the chip, the truncated name) push the card wider
-   * than its track. Zero it so the card shrinks to the grid column instead. */
-  min-width: 0;
-  border: 1px solid var(--c97-rule);
-  padding: var(--c97-sp-3);
-}
-
 .c97-transit-station-row {
   display: flex;
   min-width: 0;
@@ -240,25 +589,22 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--c97-sp-3);
-  border: 1px solid var(--c97-rule);
-  padding: var(--c97-sp-2) var(--c97-sp-3);
+  border: 0;
+  border-bottom: 1px solid var(--bt-rule);
+  padding: var(--c97-sp-1) var(--c97-sp-1);
   text-align: left;
   font: inherit;
-  color: var(--c97-ink);
-  background: var(--c97-field);
+  color: var(--bt-ink);
+  background: none;
   cursor: pointer;
 }
 
-.c97-transit-station-row:hover {
-  border-color: var(--c97-ink-2);
-}
-
-.c97-transit-station-row:hover .c97-serif {
-  color: var(--c97-action);
+.c97-transit-station-row:hover .bt-strong {
+  text-decoration: underline;
 }
 
 .c97-transit-station-row[aria-current="true"] {
-  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+  box-shadow: inset 3px 0 0 0 var(--bt-ink);
 }
 
 .c97-transit-swatch {
@@ -266,11 +612,6 @@
   width: 12px;
   height: 12px;
   border: 1px solid color-mix(in srgb, var(--c97-ink) 20%, transparent);
-}
-
-.c97-transit-advisory {
-  border: 1px solid var(--c97-rule);
-  padding: var(--c97-sp-3);
 }
 
 /* Below 1050px the map and board stack at full shell width, board first,
@@ -314,12 +655,18 @@
 .c97-transit-departure-late {
   grid-area: late;
   display: block;
-  font-size: var(--c97-fs-small);
-  color: var(--c97-warning);
+  font-size: 0.8125rem;
+  color: var(--bt-board-alert);
 }
 
-.c97-transit-board-status {
-  margin: 0 0 var(--c97-sp-2);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-warning);
+.bt-root .c97-transit-board-status {
+  margin: var(--c97-sp-1) 0;
+  font-size: 0.8125rem;
+  color: var(--bt-amber);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bt-chevron {
+    transition: transform 160ms ease;
+  }
 }

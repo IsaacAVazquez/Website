@@ -178,7 +178,7 @@ test("developer tool search handles no results and resets", async ({ page }) => 
   await expect(page.getByText("No tools match those filters", { exact: true })).toHaveCount(0);
 });
 
-for (const route of ["/earthquake-pulse", "/bay-area-transit"]) {
+for (const route of ["/earthquake-pulse"]) {
   test(`${route} switches every operational tab`, async ({ page }) => {
     await openTool(page, route);
     const tabs = page.getByRole("tab");
@@ -190,6 +190,18 @@ for (const route of ["/earthquake-pulse", "/bay-area-transit"]) {
     }
   });
 }
+
+// Transit lost its Lines and Alerts tabs in the 2026-10-12 redesign; the map
+// carries the lines and the alerts open from the status strip.
+test("/bay-area-transit opens and closes the alerts strip", async ({ page }) => {
+  await openTool(page, "/bay-area-transit");
+  const alerts = page.getByRole("button", { name: /^Alerts/ });
+  await alerts.click();
+  await expect(alerts).toHaveAttribute("aria-expanded", "true");
+  await expect(page.getByRole("region", { name: "Service alerts" })).toBeVisible();
+  await alerts.click();
+  await expect(alerts).toHaveAttribute("aria-expanded", "false");
+});
 
 test("enablement assistant switches between program and team views", async ({ page }) => {
   await openTool(page, "/enablement-assistant");

@@ -6,19 +6,16 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
 } from "react";
-import { ChevronDown, CircleAlert, ExternalLink } from "lucide-react";
+import { ChevronDown, CircleAlert } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   NEWS_SOURCE_IDS,
   SOURCE_META,
   type NewsFeedId,
 } from "@/lib/news-pulse-sources";
 import type { NewsPulseFeedResponse } from "@/lib/newsPulseServer";
-import type { NewsArticle, TopicCluster } from "@/lib/news-pulse-utils";
+import type { NewsArticle } from "@/lib/news-pulse-utils";
 import {
   analyzeSentiment,
   calculateReadingLevel,
@@ -27,21 +24,16 @@ import {
   getOrderedSourcesForArticles,
 } from "@/lib/news-pulse-utils";
 import { NewsFrontPage } from "./NewsFrontPage";
-import type { StoryCluster } from "./front-page";
 import {
   buildNewsPulseHref,
-  NEWS_PULSE_ROUTE,
   normalizeNewsPulseState,
   SOURCE_LABELS,
   SOURCE_OPTIONS,
-  VIEW_LABELS,
-  VIEW_OPTIONS,
   type NewsPulseSearchState,
   type NewsSource,
 } from "./news-pulse-state";
 import { DATE_TIME_FORMATTER, formatStableDateTime } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
-import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./news-pulse.css";
 import { groupBy } from "@/lib/utils";
 
@@ -84,20 +76,6 @@ function formatFetchedAt(value: string): string {
     : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
-function getSourceBadgeStyle(sourceColor: string): CSSProperties {
-  return {
-    color: "var(--c97-ink)",
-    borderColor: `color-mix(in srgb, ${sourceColor} 58%, var(--c97-rule))`,
-    background: `color-mix(in srgb, ${sourceColor} 12%, var(--c97-surface))`,
-  };
-}
-
-function getReadabilityTone(score: number): CSSProperties {
-  if (score >= 70) return { color: "var(--c97-positive)" };
-  if (score >= 50) return { color: "var(--c97-accent)" };
-  return { color: "var(--c97-ink-2)" };
-}
-
 function buildFeedErrorMessage(status: number, payload: FeedResponse | null): string {
   const parts = [
     payload?.message,
@@ -124,19 +102,12 @@ function SourceDropdown({
   onValueChange: (value: NewsSource) => void;
 }) {
   return (
-    <label
-      className="inline-flex min-h-[44px] cursor-pointer items-center border text-sm font-semibold focus-within:outline focus-within:outline-2 focus-within:outline-offset-2"
-      style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }}
-    >
-      <span className="c97-kicker" style={{ marginBottom: 0 }}>
-        Source
-      </span>
+    <label className="np-select">
+      <span className="np-kicker">Source</span>
       {/* The select itself is the touch target, so it fills the label's height rather than sitting 20px tall inside it. */}
       <select
         value={value}
         onChange={(event) => onValueChange(event.target.value as NewsSource)}
-        className="min-h-[44px] cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit"
-        style={{ fontFamily: "var(--c97-font-body)" }}
       >
         {SOURCE_OPTIONS.map((source) => (
           <option key={source} value={source}>
@@ -156,8 +127,7 @@ export function NewsPulseClient({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("source") !== null;
+  const hasManagedParams = searchParams.get("source") !== null;
   const routeState = useMemo(
     () => (hasManagedParams ? normalizeNewsPulseState(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams],
@@ -255,194 +225,97 @@ export function NewsPulseClient({
     () => new Set(articles.map((article) => article.source)).size,
     [articles],
   );
-  const updatedLabel = loading
-    ? "Refreshing now"
-    : error
-      ? "Feed unavailable"
-      : `Updated ${formatFetchedAt(fetchedAt)}`;
-
   const storyClusters = useMemo(
     () => (articles.length === 0 ? [] : clusterArticlesByStory(articles)),
     [articles],
   );
-  const topClusterSize = useMemo(
-    () => storyClusters.reduce((largest, cluster) => Math.max(largest, cluster.articles.length), 0),
-    [storyClusters],
-  );
   const topicClusters = useMemo(() => extractTopics(articles), [articles]);
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
-
-  const onViewTabKey = useTablistKeyboard(VIEW_OPTIONS, (view) => updateRouteState({ view }));
-  const lead = PROJECT_PRESS[NEWS_PULSE_ROUTE].lead;
-  const standfirst =
-    "I built News Pulse to get a fast read on what major outlets are choosing to emphasize right now. It pulls six RSS feeds into one editorial desk, then layers on lightweight topic, tone, readability, and story-cluster signals so I can compare framing before I read deeply.";
+  const dateline = loading
+    ? "Refreshing now"
+    : error
+      ? "Feed unavailable"
+      : fetchedAt
+        ? `Pulled ${formatFetchedAt(fetchedAt)}`
+        : "Waiting on a refresh";
 
   return (
-    <div data-testid="news-pulse-shell">
-      <Catalog97ProjectHero
-        ink={lead}
-        title="News Pulse"
-        standfirst={standfirst}
-        meta={updatedLabel}
-        action={
-          <a href={`#${DESK_ID}`} className="c97-btn-ghost">
-            Jump to the desk
-          </a>
-        }
-        readouts={[
-          {
-            label: "Headlines in pull",
-            value: loading ? "—" : `${articles.length}`,
-            detail: "From the most recent fetch",
-          },
-          {
-            label: "Outlets reporting",
-            value: loading ? "—" : `${articleSourceCount}`,
-            detail: `${trackedSourceCount} outlets tracked`,
-          },
-          {
-            label: "Largest story cluster",
-            value: loading ? "—" : `${topClusterSize}`,
-            detail: "Headlines on the same story",
-          },
-        ]}
-      >
-        <NewsFrontPage
-          clusters={storyClusters}
-          topics={topicClusters}
-          outlets={sourceIds}
-          dateline={
-            loading ? "Refreshing now" : fetchedAt ? formatFetchedAt(fetchedAt) : "Waiting on a refresh"
-          }
-        />
-      </Catalog97ProjectHero>
+    <div className="np-root" data-testid="news-pulse-shell">
+      <div className="c97-shell c97-frame np-page">
+        <header className="np-masthead">
+          <h1 className="np-nameplate">News Pulse</h1>
+          <p className="np-standfirst">
+            What {trackedSourceCount} newsrooms are leading with right now, which stories cross
+            outlet lines, and how the headlines read, pulled from their RSS feeds.
+          </p>
+          <p className="np-dateline">
+            <span>{dateline}</span>
+            <span>
+              {loading
+                ? `${trackedSourceCount} outlets tracked`
+                : `${articles.length} headlines from ${articleSourceCount} of ${trackedSourceCount} outlets`}
+            </span>
+          </p>
+        </header>
 
-      <section id={DESK_ID} className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">The desk</h2>
-
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            <div className="c97-segmented" role="tablist" aria-label="News Pulse tabs">
-              {VIEW_OPTIONS.map((view, index) => (
-                <button
-                  key={view}
-                  type="button"
-                  role="tab"
-                  id={`news-pulse-tab-${view}`}
-                  aria-controls={routeState.view === view ? `news-pulse-tabpanel-${view}` : undefined}
-                  aria-selected={routeState.view === view}
-                  onKeyDown={(event) => onViewTabKey(event, index)}
-                  onClick={() => updateRouteState({ view })}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {VIEW_LABELS[view]}
-                </button>
-              ))}
+        {feedErrors.length > 0 && !loading && !error ? (
+          <div role="status" aria-live="polite" className="np-feed-errors">
+            <CircleAlert className="np-feed-errors-icon" aria-hidden="true" />
+            <div>
+              <p className="np-strong">Some feeds did not come through on this refresh.</p>
+              <p className="np-muted">{feedErrors.join("; ")}</p>
             </div>
-
-            {routeState.view === "headlines" ? (
-              <SourceDropdown
-                value={routeState.source}
-                onValueChange={(source) => updateRouteState({ source })}
-              />
-            ) : null}
           </div>
+        ) : null}
 
-          {feedErrors.length > 0 && !loading && !error ? (
-            <div
-              role="status"
-              aria-live="polite"
-              className="flex items-start"
-              style={{
-                paddingInline: "var(--c97-sp-2)",
-                paddingBlock: "var(--c97-sp-2)",
-                marginTop: "var(--c97-sp-2)",
-                gap: "var(--c97-sp-1)",
-                border: "1px solid var(--c97-warning)",
-                background: "var(--c97-panel)",
-              }}
-            >
-              <CircleAlert
-                className="mt-0.5 h-5 w-5 shrink-0"
-                style={{ color: "var(--c97-warning)" }}
-                aria-hidden="true"
-              />
-              <div>
-                <p className="text-sm font-semibold" style={{ color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
-                  Some feeds did not come through on this refresh.
-                </p>
-                <p className="text-sm leading-7" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
-                  {feedErrors.join("; ")}
+        {loading ? (
+          <div role="status" className="np-state">
+            <p className="np-kicker">Refreshing live feeds</p>
+            <p>
+              I am pulling the latest RSS headlines now so the front page, the headlines, and the
+              tone table can rebuild.
+            </p>
+          </div>
+        ) : error ? (
+          <div role="alert" className="np-state">
+            <p className="np-kicker">I could not load the feeds.</p>
+            <p>{error}</p>
+            <button type="button" onClick={() => setReloadKey((k) => k + 1)} className="np-button">
+              Try again
+            </button>
+          </div>
+        ) : (
+          <>
+            <NewsFrontPage clusters={storyClusters} topics={topicClusters} outlets={sourceIds} />
+
+            <section className="np-section" aria-labelledby="np-headlines-title">
+              <div className="np-section-head">
+                <h2 id="np-headlines-title" className="np-section-title">Headlines</h2>
+                <SourceDropdown
+                  value={routeState.source}
+                  onValueChange={(source) => updateRouteState({ source })}
+                />
+              </div>
+              <HeadlinesView articles={filteredArticles} />
+            </section>
+
+            <section className="np-section" aria-labelledby="np-tone-title">
+              <div className="np-section-head">
+                <h2 id="np-tone-title" className="np-section-title">Tone and density</h2>
+                <p className="np-muted np-small">
+                  Headline sentiment read as directional framing, not article-level sentiment.
+                  Higher readability scans faster.
                 </p>
               </div>
-            </div>
-          ) : null}
-
-          <div
-            style={{ marginTop: "var(--c97-sp-3)" }}
-            role="tabpanel"
-            id={`news-pulse-tabpanel-${routeState.view}`}
-            aria-labelledby={`news-pulse-tab-${routeState.view}`}
-          >
-            {loading ? (
-              <LoadingState />
-            ) : error ? (
-              <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
-            ) : routeState.view === "headlines" ? (
-              <HeadlinesView articles={filteredArticles} />
-            ) : routeState.view === "coverage" ? (
-              <CoverageView articles={articles} topics={topicClusters} />
-            ) : (
-              <AnalysisView articles={articles} />
-            )}
-          </div>
-
-          {fetchedAt && !loading && !error ? (
-            <p className="c97-meta" style={{ marginTop: "var(--c97-sp-6)", justifyContent: "center" }}>
-              Last fetched {formatFetchedAt(fetchedAt)} · {articles.length} headlines across{" "}
-              {articleSourceCount || trackedSourceCount} sources
-            </p>
-          ) : null}
-        </div>
-      </section>
+              <ToneTable articles={articles} />
+            </section>
+          </>
+        )}
+      </div>
     </div>
   );
 }
 
-function LoadingState() {
-  return (
-    <div role="status" className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-        Refreshing live feeds
-      </p>
-      <p className="c97-prose">
-        I am pulling the latest RSS headlines now so the dashboard can rebuild the digest and
-        comparison views.
-      </p>
-    </div>
-  );
-}
-
-function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
-  return (
-    <div role="alert" className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-        I could not load the feeds.
-      </p>
-      <p className="c97-prose">{message}</p>
-      <button
-        type="button"
-        onClick={onRetry}
-        className="c97-btn-outline"
-        style={{ marginTop: "var(--c97-sp-3)" }}
-      >
-        Try again
-      </button>
-    </div>
-  );
-}
-
-const DESK_ID = "news-desk";
 const HEADLINES_PAGE_SIZE = 24;
 
 function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: NewsArticle[] }[] {
@@ -464,11 +337,9 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
 
   if (articles.length === 0) {
     return (
-      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-          No headlines match this filter.
-        </p>
-        <p className="c97-prose">
+      <div className="np-state">
+        <p className="np-kicker">No headlines match this filter.</p>
+        <p>
           That source did not return any articles in the current pull, so there is nothing to
           compare yet.
         </p>
@@ -482,64 +353,23 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
 
   return (
     <>
-      <div
-        data-testid="news-headlines-grid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
-          gap: "var(--c97-sp-6)",
-        }}
-      >
+      <div data-testid="news-headlines-grid" className="np-columns">
         {columns.map(({ source, items }) => (
-          <div key={source} style={{ minWidth: 0 }}>
-            <p
-              className="c97-kicker"
-              style={{
-                marginBottom: "var(--c97-sp-3)",
-                borderBottom: "1px solid var(--c97-rule)",
-                paddingBottom: "var(--c97-sp-2)",
-              }}
-            >
+          <div key={source} className="np-column">
+            <p className="np-column-head">
+              <span className="np-swatch" style={{ background: SOURCE_META[source].color }} aria-hidden="true" />
               {SOURCE_META[source].name}
             </p>
-            <ul
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                gap: "var(--c97-sp-4)",
-                margin: 0,
-                padding: 0,
-                listStyle: "none",
-              }}
-            >
+            <ul className="np-column-list">
               {items.map((article) => (
-                <li key={article.link} style={{ minWidth: 0 }}>
-                  <a
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c97-news-headline"
-                    style={{ display: "block", textDecoration: "none" }}
-                  >
-                    <h3 className="c97-serif c97-h3" style={{ overflowWrap: "anywhere" }}>
-                      {article.title}
-                    </h3>
-                    <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                <li key={article.link}>
+                  <a href={article.link} target="_blank" rel="noopener noreferrer" className="np-headline">
+                    <h3 className="np-headline-title">{article.title}</h3>
+                    <p className="np-muted np-small">
                       {now === null ? formatAbsolutePubDate(article.pubDate) : timeAgo(article.pubDate, now)}
                       {article.category && article.category !== "General" ? ` · ${article.category}` : ""}
                     </p>
-                    {article.description ? (
-                      <p
-                        className="c97-prose"
-                        style={{
-                          marginTop: "var(--c97-sp-2)",
-                          fontSize: "var(--c97-fs-small)",
-                          overflowWrap: "anywhere",
-                        }}
-                      >
-                        {article.description}
-                      </p>
-                    ) : null}
+                    {article.description ? <p className="np-dek">{article.description}</p> : null}
                   </a>
                 </li>
               ))}
@@ -548,15 +378,14 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
         ))}
       </div>
       {hasMore ? (
-        <div style={{ marginTop: "var(--c97-sp-6)", textAlign: "center" }}>
-          <p className="c97-meta" style={{ justifyContent: "center" }}>
+        <div className="np-more-button">
+          <p className="np-muted np-small">
             Showing {visibleCount} of {articles.length} headlines.
           </p>
           <button
             type="button"
             onClick={() => setVisibleCount((current) => current + HEADLINES_PAGE_SIZE)}
-            className="c97-btn-outline"
-            style={{ marginTop: "var(--c97-sp-2)" }}
+            className="np-button"
           >
             Show more
           </button>
@@ -566,259 +395,7 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
   );
 }
 
-function CoverageView({
-  articles,
-  topics,
-}: {
-  articles: NewsArticle[];
-  topics: TopicCluster[];
-}) {
-  const now = useClientNow();
-  const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
-  const storyClusters = useMemo(() => clusterArticlesByStory(articles), [articles]);
-  const maxTopicCount = topics.reduce((max, topic) => Math.max(max, topic.count), 0);
-
-  if (topics.length === 0 && storyClusters.length === 0) {
-    return (
-      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-          The cross-outlet overlap is thin right now.
-        </p>
-        <p className="c97-prose">
-          I need at least two outlets on the same storyline before this view becomes useful.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: "var(--c97-sp-6)" }}>
-      {topics.length > 0 ? (
-        <div>
-          <h2 className="c97-poster-sm">Trending topics</h2>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
-            What the newsrooms keep saying
-          </p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-            The words showing up across multiple outlets right now, ranked by how many headlines
-            mention them. The dots show which outlets are on each.
-          </p>
-          <ol style={{ marginTop: "var(--c97-sp-4)", display: "grid", gap: "var(--c97-sp-2)", padding: 0, listStyle: "none" }}>
-            {topics.map((topic, index) => {
-              const pct =
-                maxTopicCount > 0
-                  ? Math.max(8, Math.round((topic.count / maxTopicCount) * 100))
-                  : 0;
-              const coveringSources = sourceIds.filter(
-                (source) => (topic.sources[source] ?? 0) > 0,
-              );
-              return (
-                <li
-                  key={topic.topic}
-                  className="grid items-center border sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
-                  style={{ padding: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-                >
-                  <span className="c97-mono text-sm font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0">
-                    <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                      <span className="truncate text-sm font-semibold capitalize" style={{ color: "var(--c97-ink)" }}>
-                        {topic.topic}
-                      </span>
-                      <span className="c97-mono shrink-0 text-xs" style={{ color: "var(--c97-ink-2)" }}>
-                        {topic.count} headlines
-                      </span>
-                    </div>
-                    <span className="block h-1.5 overflow-hidden" style={{ background: "var(--c97-rule)", marginTop: "var(--c97-sp-0)" }}>
-                      <span className="block h-full" style={{ width: `${pct}%`, background: "var(--c97-accent)" }} />
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap items-center sm:justify-end" style={{ gap: "var(--c97-sp-0)" }}>
-                    {coveringSources.map((source) => (
-                      <span
-                        key={source}
-                        className="h-2.5 w-2.5"
-                        style={{ background: SOURCE_META[source].color }}
-                        title={`${SOURCE_META[source].name} · ${topic.sources[source]} headlines`}
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      ) : null}
-
-      {storyClusters.length > 0 ? (
-        <div>
-          <h2 className="c97-poster-sm">Story clusters across outlets</h2>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
-            Coverage map
-          </p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-            This view groups similar headlines into storylines so I can compare overlap, not just
-            repeated vocabulary.
-          </p>
-
-          {/* Under lg each storyline prints as a card with its outlet counts,
-              and its headlines open in place. The comparison table is wider
-              than a phone column, so it prints from lg up. */}
-          <div className="lg:hidden" style={{ marginTop: "var(--c97-sp-3)" }}>
-            <ul
-              aria-label="Story clusters"
-              style={{ display: "grid", gap: "var(--c97-sp-2)", margin: 0, padding: 0, listStyle: "none" }}
-            >
-              {storyClusters.map((cluster) => (
-                <li key={cluster.id} className="c97-panel">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>
-                    {cluster.label}
-                  </p>
-                  <ClusterHeadline cluster={cluster} now={now} />
-                  <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-                    {cluster.totalCount} headlines across {Object.keys(cluster.sources).length} outlets.{" "}
-                    {sourceIds
-                      .filter((source) => (cluster.sources[source] ?? 0) > 0)
-                      .map((source) => `${SOURCE_META[source].name} ${cluster.sources[source]}`)
-                      .join(" · ")}
-                  </p>
-                  <details className="c97-disclosure">
-                    <summary className="c97-btn-ghost">
-                      <span data-when="closed">Show all {cluster.totalCount} headlines</span>
-                      <span data-when="open">Hide the headlines</span>
-                    </summary>
-                    <ul style={{ display: "grid", gap: "var(--c97-sp-1)", margin: 0, padding: 0, listStyle: "none" }}>
-                      {cluster.articles.map((article) => (
-                        <li key={`${article.source}-${article.link}`}>
-                          <p className="c97-kicker">{article.sourceName}</p>
-                          <a
-                            href={article.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="c97-link inline-flex min-h-[44px] items-center"
-                            style={{ fontSize: "var(--c97-fs-small)", overflowWrap: "anywhere" }}
-                          >
-                            {article.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div
-            className="hidden overflow-x-auto lg:block" style={{ marginTop: "var(--c97-sp-3)" }}
-            role="region"
-            aria-label="Story clusters by outlet (scrollable)"
-            tabIndex={0}
-          >
-            <table className="c97-table" style={{ minWidth: "920px" }} aria-label="Story clusters by outlet">
-              <thead>
-                <tr>
-                  <th scope="col">Story cluster</th>
-                  {sourceIds.map((source) => (
-                    <th key={source} scope="col" style={{ textAlign: "center" }}>
-                      <span className="c97-chip" style={getSourceBadgeStyle(SOURCE_META[source].color)}>
-                        <span
-                          className="h-2.5 w-2.5"
-                          style={{ background: SOURCE_META[source].color }}
-                          aria-hidden="true"
-                        />
-                        {SOURCE_META[source].name}
-                      </span>
-                    </th>
-                  ))}
-                  <th scope="col" style={{ textAlign: "center" }}>
-                    Total
-                  </th>
-                  <th scope="col">Representative headline</th>
-                </tr>
-              </thead>
-              <tbody>
-                {storyClusters.map((cluster) => (
-                  <tr key={cluster.id}>
-                    <td style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{cluster.label}</td>
-                    {sourceIds.map((source) => {
-                      const count = cluster.sources[source] ?? 0;
-                      return (
-                        <td key={source} style={{ textAlign: "center" }}>
-                          {count > 0 ? (
-                            <span
-                              className="c97-mono"
-                              style={{ color: "var(--c97-ink)", opacity: Math.min(0.42 + count * 0.14, 1) }}
-                            >
-                              {count}
-                            </span>
-                          ) : (
-                            <span style={{ color: "var(--c97-ink-2)" }}>—</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                    <td className="c97-mono" style={{ textAlign: "center", fontWeight: 700, color: "var(--c97-ink)" }}>
-                      {cluster.totalCount}
-                    </td>
-                    <td>
-                      <ClusterHeadline cluster={cluster} now={now} />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-/** A storyline's representative headline with its outlet and age, shared by
- * the comparison table and the phone story cards. */
-function ClusterHeadline({
-  cluster,
-  now,
-}: {
-  cluster: StoryCluster;
-  now: number | null;
-}) {
-  return (
-    <>
-      <a
-        href={cluster.representative.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="c97-news-headline inline-flex min-h-[44px] items-start"
-        style={{ gap: "var(--c97-sp-1)", textDecoration: "none" }}
-      >
-        <span className="text-sm font-semibold">
-          {cluster.representative.title}
-        </span>
-        <ExternalLink
-          className="mt-0.5 h-3.5 w-3.5 shrink-0"
-          style={{ color: "var(--c97-accent)" }}
-          aria-hidden="true"
-        />
-      </a>
-      <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-        {cluster.representative.sourceName}
-        {cluster.representative.pubDate
-          ? ` · ${
-              now === null
-                ? formatAbsolutePubDate(cluster.representative.pubDate)
-                : timeAgo(cluster.representative.pubDate, now)
-            }`
-          : ""}
-      </p>
-    </>
-  );
-}
-
-function AnalysisView({ articles }: { articles: NewsArticle[] }) {
+function ToneTable({ articles }: { articles: NewsArticle[] }) {
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
 
   const sentimentBySource = useMemo(() => {
@@ -885,172 +462,74 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
   );
 
   if (sourceIds.length === 0) {
-    return (
-      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-          There is no analysis to compare yet.
-        </p>
-        <p className="c97-prose">
-          The dashboard needs headline data before it can calculate tone, length, and readability
-          by outlet.
-        </p>
-      </div>
-    );
+    return <p className="np-muted">There is no headline data to compare yet.</p>;
   }
 
   return (
-    <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
-      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-        <h2 className="c97-poster-sm">Tone distribution by outlet</h2>
-        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
-          Headline sentiment
-        </p>
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-          I read this as directional framing pressure, not article-level sentiment.
-        </p>
-
-        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
+    <div className="np-scroll" role="region" aria-label="Tone and density by outlet (scrollable)" tabIndex={0}>
+      <table className="np-table np-tone">
+        <caption className="sr-only">Tone and density by outlet</caption>
+        <thead>
+          <tr>
+            <th scope="col">Outlet</th>
+            <th scope="col" data-align="end">Headlines</th>
+            <th scope="col">Tone</th>
+            <th scope="col" data-align="end">Positive</th>
+            <th scope="col" data-align="end">Neutral</th>
+            <th scope="col" data-align="end">Negative</th>
+            <th scope="col" data-align="end">Words per headline</th>
+            <th scope="col" data-align="end">Readability</th>
+          </tr>
+        </thead>
+        <tbody>
           {sourceIds.map((source) => {
-            const sourceData = sentimentBySource[source];
-            if (!sourceData) return null;
-
-            const positivePercent = Math.round((sourceData.positive / sourceData.total) * 100);
-            const negativePercent = Math.round((sourceData.negative / sourceData.total) * 100);
-            const neutralPercent = 100 - positivePercent - negativePercent;
-
+            const tone = sentimentBySource[source];
+            const length = headlineLengthBySource[source];
+            const readability = readabilityBySource[source];
+            if (!tone || !length || !readability) return null;
+            const positive = Math.round((tone.positive / tone.total) * 100);
+            const negative = Math.round((tone.negative / tone.total) * 100);
+            const neutral = 100 - positive - negative;
+            const words = length.totalLength / length.count;
+            const score = Math.round(readability.totalScore / readability.count);
+            const label = score >= 70 ? "Easy" : score >= 50 ? "Moderate" : "Advanced";
             return (
-              <div key={source}>
-                <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                  <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+              <tr key={source}>
+                <th scope="row">
+                  <span className="np-outlet">
+                    <span className="np-swatch" style={{ background: SOURCE_META[source].color }} aria-hidden="true" />
                     {SOURCE_META[source].name}
                   </span>
-                  <span className="c97-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                    {sourceData.total} headlines
+                </th>
+                <td data-align="end">{tone.total}</td>
+                <td>
+                  <span className="np-tone-bar" aria-hidden="true">
+                    <span style={{ width: `${positive}%`, background: "var(--np-positive)" }} />
+                    <span style={{ width: `${neutral}%`, background: "var(--np-rule-strong)" }} />
+                    <span style={{ width: `${negative}%`, background: "var(--np-negative)" }} />
                   </span>
-                </div>
-
-                <div className="flex h-5 w-full overflow-hidden" style={{ background: "var(--c97-field)" }}>
-                  <div style={{ width: `${positivePercent}%`, background: "var(--c97-positive)" }} title={`Positive ${positivePercent}%`} />
-                  <div style={{ width: `${neutralPercent}%`, background: "var(--c97-rule)" }} title={`Neutral ${neutralPercent}%`} />
-                  <div style={{ width: `${negativePercent}%`, background: "var(--c97-negative)" }} title={`Negative ${negativePercent}%`} />
-                </div>
-
-                <div
-                  className="flex flex-wrap text-2xs font-semibold uppercase tracking-[0.12em]"
-                  style={{ marginTop: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-                >
-                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                    <span className="h-2.5 w-2.5" style={{ background: "var(--c97-positive)" }} aria-hidden="true" />
-                    {positivePercent}% positive
+                </td>
+                <td data-align="end">{positive}%</td>
+                <td data-align="end">{neutral}%</td>
+                <td data-align="end">{negative}%</td>
+                <td data-align="end">
+                  <span className="np-length">
+                    <span
+                      className="np-length-bar"
+                      style={{ width: `${(words / maxAverageHeadlineLength) * 100}%` }}
+                      aria-hidden="true"
+                    />
+                    {words.toFixed(1)}
                   </span>
-                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                    <span className="h-2.5 w-2.5" style={{ background: "var(--c97-rule)" }} aria-hidden="true" />
-                    {neutralPercent}% neutral
-                  </span>
-                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                    <span className="h-2.5 w-2.5" style={{ background: "var(--c97-negative)" }} aria-hidden="true" />
-                    {negativePercent}% negative
-                  </span>
-                </div>
-              </div>
+                </td>
+                <td data-align="end">
+                  {score} <span className="np-muted">{label}</span>
+                </td>
+              </tr>
             );
           })}
-        </div>
-      </div>
-
-      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
-        <h2 className="c97-poster-sm">Average words per headline</h2>
-        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
-          Headline length
-        </p>
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-          Longer headlines usually signal more context, but sometimes they just mean more hedging.
-        </p>
-
-        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
-          {sourceIds.map((source) => {
-            const sourceData = headlineLengthBySource[source];
-            if (!sourceData) return null;
-
-            const averageLength = sourceData.totalLength / sourceData.count;
-            const widthPercent = (averageLength / maxAverageHeadlineLength) * 100;
-
-            return (
-              <div key={source}>
-                <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                  <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
-                    {SOURCE_META[source].name}
-                  </span>
-                  <span className="c97-mono text-sm" style={{ color: "var(--c97-ink-2)" }}>
-                    {averageLength.toFixed(1)} words
-                  </span>
-                </div>
-
-                <div className="h-4 w-full overflow-hidden" style={{ background: "var(--c97-field)" }}>
-                  <div className="h-full" style={{ width: `${widthPercent}%`, background: SOURCE_META[source].color }} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="c97-panel lg:col-span-2" style={{ padding: "var(--c97-sp-5)" }}>
-        <h2 className="c97-poster-sm">How dense the headline writing feels</h2>
-        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
-          Readability
-        </p>
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-          Higher scores are easier to scan quickly. Lower scores usually mean denser wording or
-          more clauses packed into the headline.
-        </p>
-
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
-          {sourceIds.map((source) => {
-            const sourceData = readabilityBySource[source];
-            if (!sourceData) return null;
-
-            const averageScore = Math.round(sourceData.totalScore / sourceData.count);
-            const readabilityLabel =
-              averageScore >= 70 ? "Easy" : averageScore >= 50 ? "Moderate" : "Advanced";
-
-            return (
-              <div
-                key={source}
-                className="border"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-              >
-                <div className="flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
-                  {/* The outlet colour is data with no contrast promise, so it
-                      rides on a swatch by the name and the score stays in ink. */}
-                  <span
-                    className="c97-mono flex h-12 w-12 items-center justify-center text-base font-semibold"
-                    style={{ color: "var(--c97-ink)" }}
-                  >
-                    {averageScore}
-                  </span>
-
-                  <div>
-                    <p className="inline-flex items-center text-sm font-semibold" style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
-                      <span
-                        aria-hidden="true"
-                        style={{ width: 10, height: 10, background: SOURCE_META[source].color, display: "inline-block", flexShrink: 0 }}
-                      />
-                      {SOURCE_META[source].name}
-                    </p>
-                    <p
-                      className="text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={{ ...getReadabilityTone(averageScore), marginBottom: 0 }}
-                    >
-                      {readabilityLabel}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -338,7 +338,7 @@ describe("SpaceXMissionControlClient", () => {
     ).not.toBeNull();
   });
 
-  it("repeats the mission action and a manifest jump above the hero card", async () => {
+  it("leads with the masthead, then the tape, then the manifest, with the actions in the masthead", async () => {
     await act(async () => {
       root.render(
         <SpaceXMissionControlClient
@@ -349,27 +349,30 @@ describe("SpaceXMissionControlClient", () => {
     });
     await flushPromises();
 
-    const actions = container.querySelector('[data-testid="mission-quick-actions"]') as HTMLElement;
-    // The actions print before the card, which is what puts them in a phone's first screen.
-    const card = container.querySelector('[data-testid="mission-hero"]') as HTMLElement;
-    expect(actions.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // The quick-actions row above the old hero card is gone, since the masthead now opens the page.
+    expect(container.querySelector('[data-testid="mission-quick-actions"]')).toBeNull();
+    const masthead = container.querySelector('[data-testid="mission-hero"]') as HTMLElement;
+    const tape = container.querySelector('[aria-label="Launch tape"]') as HTMLElement;
+    const board = container.querySelector("#mission-manifest [data-testid='mission-board']") as HTMLElement;
+    expect(masthead.compareDocumentPosition(tape) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(tape.compareDocumentPosition(board) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 
-    const jump = actions.querySelector("a") as HTMLAnchorElement;
-    expect(jump.textContent).toBe("Jump to the manifest");
-    expect(jump.getAttribute("href")).toBe("#mission-manifest");
-    expect(container.querySelector("#mission-manifest [data-testid='mission-board']")).not.toBeNull();
+    // The four fleet figures fold into the masthead as one line of text.
+    expect(container.querySelector('[aria-label="Mission control stat fascia"]')).toBeNull();
 
-    // Vehicles is open, and the jump brings the manifest tab back.
+    // This snapshot carries no recovery records, so there is no Recovery tab.
+    const tabs = Array.from(container.querySelectorAll('button[role="tab"]')).map((tab) => tab.textContent);
+    expect(tabs).toEqual(["Manifest", "Vehicles"]);
+
     const vehicles = Array.from(container.querySelectorAll('button[role="tab"]')).find((tab) =>
       tab.textContent?.includes("Vehicles")
     ) as HTMLButtonElement;
     await act(async () => vehicles.click());
     expect(container.querySelector('[data-testid="mission-board"]')).toBeNull();
-    await act(async () => jump.click());
-    expect(container.querySelector('[data-testid="mission-board"]')).not.toBeNull();
 
-    const inspect = actions.querySelector("button") as HTMLButtonElement;
-    expect(inspect.textContent).toBe("Inspect the next mission");
+    const inspect = Array.from(masthead.querySelectorAll("button")).find((button) =>
+      button.textContent?.includes("Inspect mission")
+    ) as HTMLButtonElement;
     await act(async () => inspect.click());
     expect(mockPush).toHaveBeenLastCalledWith(
       `/spacex-mission-control?launch=${upcomingLaunch.id}`,
