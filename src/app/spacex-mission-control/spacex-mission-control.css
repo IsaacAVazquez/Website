@@ -299,6 +299,14 @@
   border-radius: 6px;
 }
 
+/* On a phone the photo would push the manifest a screen down, and the
+ * masthead already names the rocket, so it prints from 640px. */
+@media screen and (max-width: 639px) {
+  .sx-mast-photo {
+    display: none;
+  }
+}
+
 .sx-root .sx-liftoff-note {
   display: inline-flex;
   align-items: center;
