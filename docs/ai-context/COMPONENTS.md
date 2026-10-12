@@ -35,7 +35,7 @@ The seven designed routes each render one page component from `src/components/ca
 | `/resume` | `Catalog97Resume` |
 | `/contact` | `Catalog97Contact` |
 
-`Catalog97Primitives.tsx` holds the shared `Catalog97Plate` and `Catalog97Slot` pieces. Tool routes open on their own band or on `Catalog97ProjectHero`, since `SectionIntro` was deleted on 2026-09-27.
+`Catalog97Primitives.tsx` holds the shared `Catalog97Plate` and `Catalog97Slot` pieces. Tool routes open on their own root, since `SectionIntro` was deleted on 2026-09-27 and `Catalog97ProjectHero` on 2026-10-12, once every project route owned its design.
 
 The earlier homepage and portfolio components (`ModernHero`, `FeaturedWorkSection`, `PortfolioProjectCard`, `ThinkingPreview`, `ContactSection`, `About`, `ContactContent`, `ProjectsContent`, `WritingPreview`) no longer exist. See the root `COMPONENTS.md` and `AGENTS.md` for the wider component map.
 

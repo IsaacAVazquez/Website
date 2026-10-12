@@ -787,10 +787,10 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "earthquake-pulse",
     title: "Earthquake Pulse",
     description:
-      "Snapshot-backed global earthquake monitor: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
+      "Live global earthquake monitor that polls the USGS feed every five minutes and falls back to a checked-in snapshot: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
-    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Snapshot pipeline"],
+    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Live feed with snapshot fallback"],
     metrics: "24h seismic pulse · Significant worldwide quakes · Region & magnitude breakdowns",
     github: "https://github.com/IsaacAVazquez",
     link: "/earthquake-pulse",
@@ -798,7 +798,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a global earthquake dashboard that turns checked-in USGS GeoJSON snapshots into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
+        "I built a global earthquake dashboard that polls the USGS GeoJSON feed every five minutes, falls back to a checked-in snapshot when the feed is down, and turns it into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
       impact:
         "Makes the planet's last day of seismic activity legible at a glance, what just moved, what was big enough to matter, and where the ground is busiest, without juggling separate live feeds.",
     },

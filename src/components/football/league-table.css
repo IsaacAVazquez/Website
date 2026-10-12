@@ -226,7 +226,7 @@
   .lt-board > .lt-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
     border-bottom: 1px solid var(--pl-rule);
   }
 }

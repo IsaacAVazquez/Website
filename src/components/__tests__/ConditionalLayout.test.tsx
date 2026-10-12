@@ -13,18 +13,15 @@ jest.mock("@/components/catalog97/Catalog97ToolShell", () => ({
     children,
     route,
     buildNoteHref,
-    press,
   }: {
     children: React.ReactNode;
     route: string;
     buildNoteHref?: string;
-    press?: { lead: string; second: string };
   }) => (
     <div
       data-testid="tool-shell"
       data-route={route}
       data-build-note={buildNoteHref ?? ""}
-      data-press={press ? `${press.lead}/${press.second}` : ""}
     >
       {children}
     </div>
@@ -93,10 +90,4 @@ describe("ConditionalLayout", () => {
     expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-build-note")).toBe("");
   });
 
-  it("hands a project route its ink pair and leaves other routes on the default", () => {
-    renderAt("/earthquake-pulse");
-    expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-press")).toBe("teal/vermilion");
-    renderAt("/now");
-    expect(container.querySelector('[data-testid="tool-shell"]')?.getAttribute("data-press")).toBe("");
-  });
 });

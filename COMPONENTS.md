@@ -169,7 +169,7 @@ Core UI primitives live under `src/components/ui/`.
 
 The ones still in use are `ModernButton` (admin and the investments forms), `ThemeToggle` and `DeferredThemeToggle` (the header), `AuthorBio` (articles), and `ServerIcons` (inline SVG icons for server components). Most UI is composed from the `catalog97.css` classes, so a new block usually wants a `.c97-panel`, `.c97-chip`, or `.c97-btn` before it wants a component.
 
-The editorial components under `src/components/editorial/` are `StatusPanel` (used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
+The editorial components under `src/components/editorial/` are `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape); `StatusPanel` was deleted on 2026-10-12 once Job Search stopped rendering it. Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
 
 Styling guidance for these lives in `STYLING.md`.
 

@@ -56,6 +56,7 @@
  * Leaflet's map panes keep their own scale (food map).
  */
 :root {
+  --c97-z-sticky: 5;
   --c97-z-tray: 50;
   --c97-z-toast: 55;
   --c97-z-drawer: 60;
@@ -907,21 +908,6 @@ body {
 .dark .c97-page [data-c97-surface="ink-pink"] {
   --c97-overprint: var(--c97-riso-saffron);
 }
-
-/*
- * A route's press (src/constants/projectPress.ts) sets the second ink for
- * every sheet inside the tool shell, outranking the per-surface defaults
- * above. A blue offset vanishes on near-black dark paper, so it prints
- * saffron there.
- */
-.c97-page [data-c97-press-second="blue"] [data-c97-surface] { --c97-overprint: var(--c97-riso-blue); }
-.c97-page [data-c97-press-second="saffron"] [data-c97-surface] { --c97-overprint: var(--c97-riso-saffron); }
-.c97-page [data-c97-press-second="vermilion"] [data-c97-surface] { --c97-overprint: var(--c97-riso-vermilion); }
-.c97-page [data-c97-press-second="green"] [data-c97-surface] { --c97-overprint: var(--c97-riso-green); }
-.c97-page [data-c97-press-second="teal"] [data-c97-surface] { --c97-overprint: var(--c97-riso-teal); }
-.c97-page [data-c97-press-second="pink"] [data-c97-surface] { --c97-overprint: var(--c97-riso-pink); }
-.dark .c97-page [data-c97-press-second="blue"] [data-c97-surface="paper"],
-.dark .c97-page [data-c97-press-second="blue"] [data-c97-surface="bone"] { --c97-overprint: var(--c97-riso-saffron); }
 
 /* --------------------------------------------------------------------------
  * Layout primitives
@@ -2979,57 +2965,6 @@ select.c97-field {
 
 .c97-page [data-reveal="shown"] {
   transition: transform 900ms var(--c97-ease-slow);
-}
-
-/* --------------------------------------------------------------------------
- * Project hero: the headline sheet of a project route (Catalog97ProjectHero).
- * ------------------------------------------------------------------------ */
-
-.c97-project-hero-readouts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: var(--c97-sp-4);
-  margin: var(--c97-sp-5) 0 0;
-  max-width: 48rem;
-}
-
-.c97-project-hero-readouts dd {
-  margin: 0;
-}
-
-/*
- * Three readouts on a phone printed two across with the third alone under
- * them on every project route. Below 560px the first now runs across the
- * column as the lead figure and the other two sit side by side under it.
- * From 560px the auto-fit above puts all three on one line.
- */
-@media screen and (max-width: 559px) {
-  .c97-project-hero-readouts:has(> :nth-child(3):last-child) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .c97-project-hero-readouts > :first-child:nth-last-child(3) {
-    grid-column: 1 / -1;
-  }
-}
-
-.c97-project-hero-signature {
-  margin-top: var(--c97-sp-5);
-}
-
-/* The signature chart fills the slot; icons inside it keep their own size, and
- * so does a street map, whose vector layer and attribution flag Leaflet sizes
- * itself. */
-.c97-project-hero-signature svg:not(.lucide):not(.leaflet-container svg) {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* A hero's as-of line is one run of text, so it flows as a block. */
-.c97-project-hero .c97-meta {
-  display: block;
-  max-width: var(--c97-column);
 }
 
 /*

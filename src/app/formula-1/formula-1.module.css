@@ -124,8 +124,7 @@
 .toolbar {
   position: sticky;
   top: 0;
-  /* No --c97-z-* token names a sticky in-page bar yet; the close-out adds one and this reads it. */
-  z-index: 1;
+  z-index: var(--c97-z-sticky);
   display: flex;
   align-items: center;
   background: var(--f1-bg);

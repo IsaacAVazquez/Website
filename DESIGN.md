@@ -215,9 +215,9 @@ Vertical rhythm comes entirely off a seven-step spacing ladder, and nothing in a
 
 Two more constants, `--c97-touch-y` (16px) and `--c97-touch-x` (8px), sit deliberately outside the ladder. They are solved backward from the 44px touch-target floor against an 11px label, not chosen for rhythm, and only `.c97-microlink` and the header brand lockup use them.
 
-A route is a sequence of `.c97-band` sections, each carrying its own `data-c97-surface`. A band that changes surface from the one above it carries `.c97-sheet` with `data-seam="torn"` for a rough edge or `data-seam="deckle"` for a softer one, and a band that continues the same surface carries neither. The seven designed routes and the 33 project routes take the full print shop treatment with a poster hero; the utility pages and Score Pools use the same bands and vocabulary without the poster hero.
+A route is a sequence of `.c97-band` sections, each carrying its own `data-c97-surface`. A band that changes surface from the one above it carries `.c97-sheet` with `data-seam="torn"` for a rough edge or `data-seam="deckle"` for a softer one, and a band that continues the same surface carries neither. The seven designed routes take the full print shop treatment with a poster hero, the project routes own their design inside the frame (the section below), and the utility pages use the same bands and vocabulary without the poster hero.
 
-Every project route reads its own pair of lead inks from `src/constants/projectPress.ts`, keyed by pathname, and `ConditionalLayout` hands that pair to `Catalog97ToolShell`, which sets the second ink as the overprint (`data-c97-press-second`) on every sheet in the route. The route opens on `Catalog97ProjectHero`, a lead-ink sheet holding the poster h1, an optional standfirst and as-of line, at most three readouts, and the route's own signature visual as its child.
+A project route renders its own root inside `Catalog97ToolShell` and owns everything from there down, which "Project routes own their design" below describes.
 
 ## Elevation and depth
 
@@ -258,7 +258,7 @@ Sections are sheets. A band that changes surface from the one above it carries `
 
 Display type is poster type. Anton caps carry the sheet's own ink with the second ink printed a few hundredths of an em off register, on every h1 (`.c97-poster`) and every section h2 or closing statement (`.c97-poster-sm`). Project and article titles stay in Newsreader because they name a specific thing, and body text stays in Archivo. Tone is a halftone screen, and printed things, plates, thumbnails, and primary buttons, sit on the one allowed shadow, the hard offset in the second ink.
 
-Project routes printed the same way from 2026-09-25 until 2026-10-11, with the ink pair in `src/constants/projectPress.ts`, the second ink as the overprint on every sheet below the hero, and `Catalog97ProjectHero` as the lead-ink headline sheet. The spec for that pattern is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`. A route that still renders the hero follows it until its redesign lands; the section below is what replaces it.
+Project routes printed the same way from 2026-09-25 until 2026-10-11, with an ink pair per route and `Catalog97ProjectHero` as the lead-ink headline sheet (`docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`). Every route had moved to its own design by 2026-10-12 and the close-out deleted that pattern's code, so the section below is what replaced it.
 
 ## Project routes own their design
 

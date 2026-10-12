@@ -67,9 +67,11 @@ describe("public sitemap", () => {
       JSON.parse(fs.readFileSync("src/data/spacexSnapshot.generated.json", "utf8"))
         .generatedAt,
     ],
-  ])("tracks the current snapshot timestamp for %s", (pathname, generatedAt) => {
+  ])("never lags the current snapshot timestamp for %s", (pathname, generatedAt) => {
+    // A redesign may date a route past its snapshot, so the floor is the snapshot, not the exact value.
     const entry = getPublicSitemapEntries().find(({ loc }) => loc === pathname);
-    expect(entry?.lastmod).toBe(new Date(generatedAt as string).toISOString());
+    expect(entry?.lastmod).toBeDefined();
+    expect(entry!.lastmod >= new Date(generatedAt as string).toISOString()).toBe(true);
   });
 
   it("keeps the existing fantasy date before a weekly snapshot is published", () => {

@@ -20,6 +20,8 @@ These are the open items that need Isaac, either because they need an account, a
 
 ## Open calls, not blocked
 
+- [ ] Decide whether `/march-madness-2026` joins `WIDE_TOOL_ROUTES`. Its champion and upsets column sits under the bracket until the frame is 1340px or wider, because the bracket is 984px at full size and the standard frame is 1080px at 1440; on the wide column the column would sit beside the bracket at 1440.
+
 - [ ] The editorial notes on the frontier models added in #497 mostly restate the provider's own description, and could say what's actually different about each model.
 
 - [ ] Decide whether the other dashboards should keep a link's fragment through their mount rewrite. 22 routes drop it when they canonicalize their query, measured on 2026-09-29 on a local production build by giving one managed parameter a value the route rejects, so `/golf?view=zzz-invalid#golf-tabpanel-leaderboard` ends at `/golf`. `/investments` keeps it, by adding `window.location.hash` back onto the href in its mount effect. The page lands on the section either way, because `FragmentScrollOnLoad` reads the fragment before the rewrite runs, and all 22 landed in Chromium, Firefox, and WebKit. What is lost is the fragment in the address bar and in a link copied from it. Finishing it is that same one-line change in each client's mount effect, with a test for each.

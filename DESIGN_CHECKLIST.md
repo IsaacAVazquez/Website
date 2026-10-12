@@ -7,8 +7,8 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 **Last updated:** 2026-10-11 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
-> the print shop reference, `Catalog97ProjectHero` plus any project route shows the hero and signature
-> pattern, `ComparisonRadarChart` shows themeable D3, and `tech-startup-tracker` shows the
+> the print shop reference, `wine-cellar.css` and `league-table.css` show a project route on its own
+> design inside the frame, `ComparisonRadarChart` shows themeable D3, and `tech-startup-tracker` shows the
 > error, loading, and verified disclosure with correct row semantics.
 
 ---
@@ -194,13 +194,12 @@ genre, the first screen, what is cut, and what is pinned. Before merging a redes
 
 ## Print shop layout
 
-See `STYLING.md` for the method. Before merging a change to one of the seven designed routes, or to a
-project route that has not yet moved to its own design (one still rendering `Catalog97ProjectHero`); the
-utility pages and Score Pools use the bands and vocabulary without the poster hero:
+See `STYLING.md` for the method. Before merging a change to one of the seven designed routes (a project
+route follows the "Project routes" section above, and the utility pages use the bands and vocabulary
+without the poster hero):
 
 - [ ] The page prints in two lead inks (blue, saffron, vermilion, green, teal, pink, with peach as a
-      vermilion tint), a project route takes its pair from `src/constants/projectPress.ts`, and nothing on
-      the page labels or names the inks.
+      vermilion tint), and nothing on the page labels or names the inks.
 - [ ] Every band that changes surface from the one above carries `c97-sheet` and a `data-seam`, and no
       band that continues the same surface does.
 - [ ] The h1 uses `.c97-poster` and section h2s use `.c97-poster-sm`; project and article titles stay in

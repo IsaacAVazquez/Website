@@ -1,7 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { caseStudiesData } from "../src/constants/caseStudies";
 import { catalog97NavLinks, DASHBOARD_ROUTES } from "../src/constants/catalog97Nav";
-import { PROJECT_PRESS } from "../src/constants/projectPress";
 import { expectAlignedLayout } from "./layoutChecks";
 
 // The rendered half of src/constants/__tests__/project-routes-complete.test.ts.
@@ -76,11 +75,20 @@ test.describe("designed routes", () => {
 
 // Every project route (the fantasy sub-routes included), score pools, a topic,
 // and a post line up with the header at a phone, a laptop, and a big monitor.
-// DASHBOARD_ROUTES is the registry; the press keys add the fantasy sub-routes
-// for as long as they keep a row. Chromium only, since the edges don't differ
-// by engine and the full matrix runs every spec in five browsers.
+// DASHBOARD_ROUTES is the registry and the fantasy sub-routes are listed here,
+// since the press rows that used to add them are gone. Chromium only, since the
+// edges don't differ by engine and the full matrix runs every spec in five browsers.
+const FANTASY_SUB_ROUTES = [
+  "/fantasy-football/best-ball",
+  "/fantasy-football/best-ball/draft-tracker",
+  "/fantasy-football/draft-tracker",
+  "/fantasy-football/mock-draft",
+  "/fantasy-football/trade-calculator",
+  "/fantasy-football/waivers",
+  "/fantasy-football/weekly",
+];
 const LAYOUT_ROUTES = [
-  ...new Set([...DASHBOARD_ROUTES, ...Object.keys(PROJECT_PRESS)]),
+  ...new Set([...DASHBOARD_ROUTES, ...FANTASY_SUB_ROUTES]),
   "/score-pools",
   "/writing/topics/sports-fantasy",
   "/writing/complete-guide-qa-engineering",
