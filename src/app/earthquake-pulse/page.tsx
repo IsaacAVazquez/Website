@@ -1,7 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
 import { getEarthquakeSummary } from "@/lib/earthquakeSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { EarthquakeClient } from "./earthquake-client";
 import { normalizeEarthquakeState } from "./earthquake-state";
 
@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
   canonicalUrl: "/earthquake-pulse",
   image: "/earthquake-pulse/opengraph-image",
   // The later of the redesign and the committed fallback snapshot.
-  dateModified: [earthquakeSnapshot.summary.generatedAt?.slice(0, 10) ?? "", "2026-10-12"].sort()[1],
+  dateModified: laterDate(earthquakeSnapshot.summary.generatedAt?.slice(0, 10), "2026-10-12"),
 });
 
 interface EarthquakePageProps {

@@ -180,6 +180,11 @@
     align-items: start;
   }
 
+  /* With no quake in the window there is no plot, and the log takes the row. */
+  .eq-board[data-plot="none"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .eq-plot {
     position: sticky;
     top: var(--c97-sp-2);

@@ -2,13 +2,13 @@
 
 import { useMemo } from "react";
 import { EARTHQUAKE_RECENT_LIMIT, type QuakeEvent } from "@/types/earthquake";
-import { epicentres, seismogramSpikes } from "./seismogram";
+import { epicentres, type Spike } from "./seismogram";
 
 interface EarthquakeSignatureProps {
   /** The past day's notable quakes, the same set the Recent log lists. */
   quakes: QuakeEvent[];
-  /** The feed time the 24-hour window ends at. */
-  windowEnd: Date;
+  /** The quakes inside the 24-hour window as trace spikes, from `seismogramSpikes`, computed once by the page. */
+  spikes: Spike[];
   /** The day's strongest quake from the hero stats, which count every quake rather than the capped log. */
   strongest: { magnitude: number | null; place: string | null };
   selectedId: string | null;
@@ -40,8 +40,7 @@ const DEPTH_OPACITY = { shallow: 0.9, intermediate: 0.6, deep: 0.35 } as const;
  * Marks respond to a pointer; the log is the keyboard path to the same
  * selection.
  */
-export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest, selectedId, onSelect }: EarthquakeSignatureProps) {
-  const spikes = useMemo(() => seismogramSpikes(quakes, windowEnd), [quakes, windowEnd]);
+export function EarthquakeSignature({ quakes, spikes, strongest: dayStrongest, selectedId, onSelect }: EarthquakeSignatureProps) {
 
   if (spikes.length === 0) {
     return <p className="c97-meta">No quakes of magnitude 2.5 or more in the past 24 hours.</p>;
@@ -159,7 +158,8 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
 
 interface EpicentrePlotProps {
   quakes: QuakeEvent[];
-  windowEnd: Date;
+  /** The same spikes the trace draws, so the plot shows exactly the trace's quakes. */
+  spikes: Spike[];
   selectedId: string | null;
   onSelect: (id: string) => void;
 }
@@ -169,11 +169,11 @@ interface EpicentrePlotProps {
  * is no coastline in the repo, and none is needed, because the dots trace the
  * plate boundaries on their own.
  */
-export function EpicentrePlot({ quakes, windowEnd, selectedId, onSelect }: EpicentrePlotProps) {
+export function EpicentrePlot({ quakes, spikes, selectedId, onSelect }: EpicentrePlotProps) {
   const points = useMemo(() => {
-    const inWindow = new Set(seismogramSpikes(quakes, windowEnd).map((spike) => spike.id));
+    const inWindow = new Set(spikes.map((spike) => spike.id));
     return epicentres(quakes.filter((quake) => inWindow.has(quake.id)));
-  }, [quakes, windowEnd]);
+  }, [quakes, spikes]);
   if (points.length === 0) return null;
   const byId = new Map(quakes.map((quake) => [quake.id, quake]));
   const selectedPoint = points.find((point) => point.id === selectedId) ?? null;

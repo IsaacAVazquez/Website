@@ -24,6 +24,7 @@ import {
   normalizeEarthquakeState,
 } from "./earthquake-state";
 import { EarthquakeSignature, EpicentrePlot } from "./EarthquakeSignature";
+import { seismogramSpikes } from "./seismogram";
 import { useClientNow } from "@/hooks/useClientNow";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./earthquake-pulse.css";
@@ -509,6 +510,11 @@ export function EarthquakeClient({
       ? summary.regions.some((region) => region.strongestId === canonicalQuakeParam)
       : listForView.some((quake) => quake.id === canonicalQuakeParam);
   const feedTime = summary.feedUpdated ?? summary.generatedAt;
+  // One set of spikes for the trace and the plot, rebuilt only when the feed moves.
+  const spikes = useMemo(
+    () => seismogramSpikes(summary.recent, new Date(feedTime)),
+    [summary.recent, feedTime]
+  );
   const onViewTabKey = useTablistKeyboard(EARTHQUAKE_VIEW_OPTIONS, handleViewChange);
   const stats = summary.heroStats;
   const strongestLine =
@@ -547,7 +553,7 @@ export function EarthquakeClient({
               </div>
               <EarthquakeSignature
                 quakes={summary.recent}
-                windowEnd={new Date(feedTime)}
+                spikes={spikes}
                 strongest={{ magnitude: stats.strongest24hMag, place: stats.strongest24hPlace }}
                 selectedId={selectedQuakeId}
                 onSelect={handleSelectQuake}
@@ -558,19 +564,21 @@ export function EarthquakeClient({
               </p>
             </section>
 
-            <div className="eq-board">
-              <figure className="eq-plot">
-                <EpicentrePlot
-                  quakes={summary.recent}
-                  windowEnd={new Date(feedTime)}
-                  selectedId={selectedQuakeId}
-                  onSelect={handleSelectQuake}
-                />
-                <figcaption className="eq-muted eq-small">
-                  Epicentres from the trace above, solid for shallow quakes and fainter for
-                  deeper ones, and the plate boundaries draw themselves.
-                </figcaption>
-              </figure>
+            <div className="eq-board" data-plot={spikes.length > 0 ? undefined : "none"}>
+              {spikes.length > 0 ? (
+                <figure className="eq-plot">
+                  <EpicentrePlot
+                    quakes={summary.recent}
+                    spikes={spikes}
+                    selectedId={selectedQuakeId}
+                    onSelect={handleSelectQuake}
+                  />
+                  <figcaption className="eq-muted eq-small">
+                    Epicentres from the trace above, solid for shallow quakes and fainter for
+                    deeper ones, and the plate boundaries draw themselves.
+                  </figcaption>
+                </figure>
+              ) : null}
 
               <section className="eq-log" aria-label="Earthquake log">
                 <div className="eq-toolbar">

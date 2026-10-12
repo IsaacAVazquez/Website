@@ -173,4 +173,10 @@ describe("EarthquakeClient", () => {
     fireEvent.click(within(tablist).getByRole("tab", { name: "Significant" }));
     expect(mockPush).toHaveBeenLastCalledWith("/earthquake-pulse?view=significant", { scroll: false });
   });
+  it("leaves the epicentre plot and its caption out when no quake falls in the trace's window", () => {
+    // The fixture quake's origin time is after the feed time, so the 24-hour window is empty.
+    renderClient();
+    expect(screen.queryByText(/Epicentres from the trace above/)).toBeNull();
+    expect(screen.getByRole("tablist", { name: "Earthquake view switcher" })).toBeInTheDocument();
+  });
 });
