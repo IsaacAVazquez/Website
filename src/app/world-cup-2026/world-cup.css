@@ -1,20 +1,544 @@
-/* World Cup Pulse: the knockout bracket signature and the body bands. */
+/*
+ * World Cup Pulse, drawn as a tournament record: the bracket poster printed
+ * straight on the page and ending at the champion, then the group tables as
+ * a ruled grid, the schedule, the Golden Boot, and the venues as a list. The
+ * route owns its paper with a light and a dark story and points the --c97-*
+ * tokens the borrowed parts read (the fixture ledger and cards, the result
+ * pills, the empty panels) at it. Pitch green for qualifying and amber for
+ * the third-place race are data.
+ */
 
-.c97-bracket-plate {
-  padding: var(--c97-sp-4);
+.wcup-root {
+  --wcup-bg: #f8f6f1;
+  --wcup-ink: #1a1a17;
+  --wcup-ink-2: #57544c;
+  --wcup-rule: rgba(26, 26, 23, 0.13);
+  --wcup-rule-strong: rgba(26, 26, 23, 0.4);
+  --wcup-raise: #eeebe3;
+  --wcup-focus: #0b5cad;
+  --wcup-through: #1f7a3d;
+  --wcup-third: #a15c00;
+
+  --c97-surface: var(--wcup-bg);
+  --c97-ink: var(--wcup-ink);
+  --c97-ink-2: var(--wcup-ink-2);
+  --c97-label: var(--wcup-ink-2);
+  --c97-action: var(--wcup-ink);
+  --c97-accent: var(--wcup-focus);
+  --c97-rule: var(--wcup-rule);
+  --c97-field: var(--wcup-raise);
+  --c97-panel: var(--wcup-raise);
+  --c97-print-bone: var(--wcup-raise);
+  --c97-positive: var(--wcup-through);
+  --c97-negative: #b3261e;
+
+  background: var(--wcup-bg);
+  color: var(--wcup-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-/* Qualification and wildcard zone markers on the group and third-place tables. */
-.c97-wc-zone-dot {
+.dark .wcup-root {
+  --wcup-bg: #131311;
+  --wcup-ink: #eeece6;
+  --wcup-ink-2: #aaa69c;
+  --wcup-rule: rgba(238, 236, 230, 0.13);
+  --wcup-rule-strong: rgba(238, 236, 230, 0.36);
+  --wcup-raise: #201f1b;
+  --wcup-focus: #8ab4ff;
+  --wcup-through: #7cc995;
+  --wcup-third: #f0a050;
+  --c97-negative: #f08a80;
+}
+
+.wcup-root :where(h1, h2, h3) {
+  margin: 0;
+  font-family: var(--c97-font-body);
+  color: var(--wcup-ink);
+}
+
+.wcup-root :where(p, ul, li, dl, dd) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.wcup-root :where(ul) {
+  list-style: none;
+}
+
+.wcup-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+/* The title row: a display title, one sentence, and the record line. */
+
+.wcup-titlebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+.wcup-titletext {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
+.wcup-root .wcup-title {
+  font-family: var(--c97-font-display);
+  font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.wcup-root .wcup-standfirst {
+  max-inline-size: 60ch;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--c97-sp-1);
+  font-size: 0.8125rem;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-meta > span + span::before {
+  content: "·";
+  margin-right: var(--c97-sp-1);
+}
+
+.wcup-record {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+}
+
+.wcup-record > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--c97-sp-2);
+  border-left: 1px solid var(--wcup-rule-strong);
+}
+
+.wcup-record dt,
+.wcup-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-record-value {
+  font-family: var(--c97-font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.wcup-record-detail {
+  font-size: 0.8125rem;
+  color: var(--wcup-ink-2);
+}
+
+/* Shared parts */
+
+.wcup-h2 {
+  font-family: var(--c97-font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.wcup-root .wcup-h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.wcup-muted {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-mono {
+  font-family: var(--c97-font-mono);
+}
+
+.wcup-strong {
+  font-weight: 700;
+}
+
+.wcup-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+}
+
+.wcup-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--wcup-rule-strong);
+}
+
+.wcup-toolbar--plain {
+  padding-block: 0 var(--c97-sp-1);
+  border-bottom-color: var(--wcup-rule);
+}
+
+.wcup-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+.wcup-switch > button,
+.wcup-more,
+.wcup-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--wcup-rule-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--wcup-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.wcup-switch > button[aria-selected="true"] {
+  border-color: var(--wcup-ink);
+  background: var(--wcup-ink);
+  color: var(--wcup-bg);
+}
+
+.wcup-clear {
+  flex-shrink: 0;
+  padding: 0;
+  border-radius: 6px;
+}
+
+.wcup-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  font-size: 0.8125rem;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.wcup-zone {
   display: inline-block;
+  flex: none;
   width: 8px;
   height: 8px;
-  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--wcup-rule-strong);
+}
+
+.wcup-zone[data-zone="through"] { background: var(--wcup-through); }
+.wcup-zone[data-zone="third"] { background: var(--wcup-third); }
+
+/* The bracket, unplated, full width. */
+
+.wcup-bracket {
+  padding-block: var(--c97-sp-2);
+  border-block: 1px solid var(--wcup-rule-strong);
+}
+
+.wcup-bracket-board {
+  display: flex;
+  justify-content: center;
+}
+
+.wcup-bracket-board > .c97-bracket-scroll {
+  max-width: 100%;
+}
+
+/* The explore section: the lookup and its card beside the view. */
+
+.wcup-explore {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.wcup-explore-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 1280px) {
+  .wcup-explore-grid {
+    grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.92fr);
+  }
+
+  .wcup-aside {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: var(--c97-sp-4);
+    align-self: start;
+  }
+
+  .wcup-panel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+.wcup-lookup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.wcup-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+}
+
+.wcup-select {
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--wcup-rule-strong);
+  border-radius: 6px;
+  background: var(--wcup-bg);
+  color: var(--wcup-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+}
+
+/* The team card is the one box on the page, since the card is the team. */
+.wcup-card {
+  padding: var(--c97-sp-2);
+  border: 1px solid var(--wcup-rule-strong);
+  border-radius: 6px;
+  background: var(--wcup-bg);
+}
+
+.wcup-card-section {
+  margin-top: var(--c97-sp-2);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--wcup-rule);
+}
+
+.wcup-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--c97-sp-1);
+}
+
+.wcup-card-stats > div:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Group tables: twelve ruled tables, two across from lg. */
+
+.wcup-groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+}
+
+@media screen and (min-width: 1024px) {
+  .wcup-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.wcup-root .wcup-group-name {
+  padding-bottom: var(--c97-sp-0);
+  border-bottom: 2px solid var(--wcup-ink);
+}
+
+.wcup-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.wcup-table th {
+  padding: var(--c97-sp-0) var(--c97-sp-1);
+  border-bottom: 1px solid var(--wcup-rule-strong);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-table td {
+  padding: 0 var(--c97-sp-1);
+  border-bottom: 1px solid var(--wcup-rule);
+}
+
+.wcup-table tbody tr[data-selected] td {
+  background: color-mix(in srgb, var(--wcup-ink) 8%, transparent);
+}
+
+.wcup-table .wcup-num {
+  text-align: right;
+  font-family: var(--c97-font-mono);
+}
+
+.wcup-pos {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  font-family: var(--c97-font-mono);
+}
+
+.wcup-team {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.wcup-team:hover > span,
+.wcup-team:focus-visible > span,
+.wcup-team[aria-pressed="true"] > span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wcup-crest {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* Flags and crests drawn for a light ground sit on a pale chip in the dark. */
+.dark .wcup-crest,
+.dark .wcup-root .wcup-panel img {
+  border-radius: 3px;
+  background: #eeece6;
+}
+
+.wcup-race {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.wcup-more {
+  align-self: flex-start;
+}
+
+/* The fixture ledger borrows the shared crest tile and prints it at the table's size, unboxed. */
+.wcup-panel img {
+  width: 22px;
+  height: 22px;
+  padding: 1px;
+  border: 0;
+  background: transparent;
+}
+
+.wcup-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.wcup-scroll {
+  overflow-x: auto;
+}
+
+.wcup-sm {
+  display: none;
+}
+
+@media (min-width: 640px), print {
+  .wcup-sm {
+    display: table-cell;
+  }
+}
+
+/* Venues, a plain list by host nation. */
+.wcup-venues {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+}
+
+.wcup-venue-list {
+  margin-top: var(--c97-sp-1);
+}
+
+.wcup-venue-list li {
+  padding-block: var(--c97-sp-0);
+  border-bottom: 1px solid var(--wcup-rule);
+  font-size: 0.875rem;
+  color: var(--wcup-ink-2);
+}
+
+.wcup-venue-list .wcup-strong {
+  color: var(--wcup-ink);
+}
+
+.wcup-root .wcup-source {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--wcup-rule);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--wcup-ink-2);
+}
+
+@media print {
+  .wcup-aside {
+    position: static;
+  }
+
+  .wcup-switch > button:not([aria-selected="true"]) {
+    display: none;
+  }
 }
 
 /*
  * The bracket is drawn at a fixed pixel size rather than scaled to the
- * plate's width, so at phone width it scrolls sideways inside this wrapper
+ * column's width, so at phone width it scrolls sideways inside this wrapper
  * instead of shrinking its type below a legible size. The ::after is a
  * standing hint that there is more bracket to the right; it stays pinned to
  * the wrapper's own edge (not the scrolled content) because the wrapper is
@@ -42,8 +566,8 @@
   );
 }
 
-/* From here the whole bracket fits its plate, so the scroll hint goes. */
-@media screen and (min-width: 1180px) {
+/* From here the whole bracket fits the column, so the scroll hint goes. */
+@media screen and (min-width: 1100px) {
   .c97-bracket-scroll::after {
     display: none;
   }
@@ -51,11 +575,8 @@
 
 .c97-bracket-svg {
   display: block;
-  /* Overrides the shared project-hero rule that scales a signature's SVG to
-   * the slot's full width; this one keeps its own pixel size so it scrolls
-   * instead of shrinking. */
-  width: auto !important;
-  height: auto !important;
+  width: auto;
+  height: auto;
   max-width: none;
 }
 
@@ -124,7 +645,14 @@
   fill: var(--c97-ink);
 }
 
-/* The selected team's rows in the group and third-place tables. */
-.c97-wc-table tbody tr[data-selected] {
-  background: var(--c97-panel);
+/* On a wide screen the poster takes the column's full width, type and all. */
+@media screen and (min-width: 1100px) {
+  .wcup-bracket-board > .c97-bracket-scroll {
+    width: 100%;
+  }
+
+  .c97-bracket-svg {
+    width: 100%;
+    height: auto;
+  }
 }

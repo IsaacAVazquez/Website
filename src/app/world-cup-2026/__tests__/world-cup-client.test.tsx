@@ -85,8 +85,7 @@ describe("WorldCupClient", () => {
     });
     mockPush.mockClear();
 
-    // Format card in the aside, since no team is picked.
-    expect(screen.getByText("A bigger, three-country World Cup")).toBeInTheDocument();
+    // The tournament window prints once, in the title row's meta line.
     expect(screen.getByText("June 11 to July 19, 2026")).toBeInTheDocument();
     expect(screen.getByText("16 stadiums · 3 nations")).toBeInTheDocument();
 
@@ -248,7 +247,6 @@ describe("WorldCupClient", () => {
     expect(within(card).getByText("Recent results")).toBeInTheDocument();
     expect(within(card).queryByText("Upcoming")).toBeNull();
     expect(screen.getByRole("button", { name: "Show Mexico details" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.queryByText("A bigger, three-country World Cup")).toBeNull();
 
     fireEvent.click(within(card).getByRole("button", { name: "Clear selected team" }));
     expect(mockPush).toHaveBeenLastCalledWith("/world-cup-2026", { scroll: false });

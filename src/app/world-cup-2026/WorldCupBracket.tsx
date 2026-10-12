@@ -25,9 +25,8 @@ function scoreLabel(fixture: WorldCupFixture, side: "home" | "away"): string {
 
 /**
  * The page's signature: the 32-team knockout drawn as a bracket tree, from
- * the Round of 32 to the final, ending at the champion. It sits on its own
- * paper plate because the fixture tickets and connecting lines are fields
- * the ink hero sheet can't carry. The plate is fixed-width rather than
+ * the Round of 32 to the final, ending at the champion, printed straight on
+ * the page the way a bracket poster is. It is fixed-width rather than
  * scaled, so it scrolls sideways inside itself at phone width instead of
  * shrinking its type. Team names are pointer-only marks; the round-by-round
  * fixture lists further down the page are the keyboard path to the same
@@ -35,7 +34,7 @@ function scoreLabel(fixture: WorldCupFixture, side: "home" | "away"): string {
  */
 export function WorldCupBracket({ tree, onOpenTeam }: WorldCupBracketProps) {
   if (tree.columns.length === 0 || tree.columns.every((column) => column.fixtures.length === 0)) {
-    return <p className="c97-meta">The bracket fills in once the knockout stage is drawn.</p>;
+    return <p className="wcup-muted">The bracket fills in once the knockout stage is drawn.</p>;
   }
 
   const leafCount = tree.columns[0].fixtures.length || 1;
@@ -64,7 +63,7 @@ export function WorldCupBracket({ tree, onOpenTeam }: WorldCupBracketProps) {
   );
 
   return (
-    <div data-c97-surface="paper" className="c97-offset c97-bracket-plate">
+    <div className="wcup-bracket-board">
       <div className="c97-bracket-scroll" role="region" aria-label="Knockout bracket (scrolls sideways)" tabIndex={0}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
