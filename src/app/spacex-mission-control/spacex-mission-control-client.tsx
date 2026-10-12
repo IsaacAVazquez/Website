@@ -497,7 +497,12 @@ export function SpaceXMissionControlClient({
   }, [summary]);
 
   // Recovery has a tab only when the snapshot carries booster and landing records.
-  const hasRecovery = aggregateMissionRecovery(vehicleCatalogDetails) !== null;
+  // Keyed on the server snapshot's details, which never change after the first render.
+  const launchDetails = initialData?.launchDetails;
+  const hasRecovery = useMemo(
+    () => aggregateMissionRecovery(launchDetails ?? {}) !== null,
+    [launchDetails]
+  );
   const sectionOptions = hasRecovery
     ? SECTION_OPTIONS
     : SECTION_OPTIONS.filter((option) => option.key !== "recovery");
