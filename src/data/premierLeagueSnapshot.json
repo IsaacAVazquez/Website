@@ -1138,7 +1138,7 @@
         "totalGoals": 31
       }
     ],
-    "generatedAt": "2026-10-12T06:01:54.401Z"
+    "generatedAt": "2026-10-12T17:57:56.826Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1154,7 +1154,7 @@
         "clubColors": "Red / White",
         "website": "http://www.arsenal.com",
         "address": "75 Drayton Park London N5 1BU",
-        "manager": null
+        "manager": "Mikel Arteta"
       },
       "recentFixtures": [
         {
@@ -1435,7 +1435,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "58": {
       "team": {
@@ -1450,7 +1450,7 @@
         "clubColors": "Claret / Sky Blue",
         "website": "http://www.avfc.co.uk",
         "address": "Villa Park Birmingham B6 6HE",
-        "manager": null
+        "manager": "Unai Emery"
       },
       "recentFixtures": [
         {
@@ -1731,7 +1731,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "61": {
       "team": {
@@ -1746,7 +1746,7 @@
         "clubColors": "Royal Blue / White",
         "website": "http://www.chelseafc.com",
         "address": "Fulham Road London SW6 1HS",
-        "manager": null
+        "manager": "Xabi Alonso"
       },
       "recentFixtures": [
         {
@@ -2027,7 +2027,7 @@
         "goalsFor": 12,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "62": {
       "team": {
@@ -2042,7 +2042,7 @@
         "clubColors": "Blue / White",
         "website": "http://www.evertonfc.com",
         "address": "Goodison Park Liverpool L4 4EL",
-        "manager": null
+        "manager": "David Moyes"
       },
       "recentFixtures": [
         {
@@ -2323,7 +2323,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "63": {
       "team": {
@@ -2338,7 +2338,7 @@
         "clubColors": "White / Black",
         "website": "http://www.fulhamfc.com",
         "address": "Craven Cottage, Stevenage Road London SW6 6HH",
-        "manager": null
+        "manager": "Arbeloa"
       },
       "recentFixtures": [
         {
@@ -2619,7 +2619,7 @@
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "64": {
       "team": {
@@ -2634,7 +2634,7 @@
         "clubColors": "Red / White",
         "website": "http://www.liverpoolfc.tv",
         "address": "Anfield Road Liverpool L4 0TH",
-        "manager": null
+        "manager": "Andoni Iraola"
       },
       "recentFixtures": [
         {
@@ -2915,7 +2915,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "65": {
       "team": {
@@ -2930,7 +2930,7 @@
         "clubColors": "Sky Blue / White",
         "website": "https://www.mancity.com",
         "address": "SportCity Manchester M11 3FF",
-        "manager": null
+        "manager": "Enzo Maresca"
       },
       "recentFixtures": [
         {
@@ -3211,7 +3211,7 @@
         "goalsFor": 14,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "66": {
       "team": {
@@ -3226,7 +3226,7 @@
         "clubColors": "Red / White",
         "website": "http://www.manutd.com",
         "address": "Sir Matt Busby Way Manchester M16 0RA",
-        "manager": null
+        "manager": "Michael Carrick"
       },
       "recentFixtures": [
         {
@@ -3507,7 +3507,7 @@
         "goalsFor": 9,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "67": {
       "team": {
@@ -3522,7 +3522,7 @@
         "clubColors": "Black / White",
         "website": "http://www.nufc.co.uk",
         "address": "Sports Direct Arena Newcastle upon Tyne NE1 4ST",
-        "manager": null
+        "manager": "Matthias Jaissle"
       },
       "recentFixtures": [
         {
@@ -3803,7 +3803,7 @@
         "goalsFor": 9,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "71": {
       "team": {
@@ -3818,7 +3818,7 @@
         "clubColors": "Red / White",
         "website": "http://www.safc.com",
         "address": "The Sunderland Stadium of Light Sunderland SR5 1SU",
-        "manager": null
+        "manager": "Regis Le Bris"
       },
       "recentFixtures": [
         {
@@ -4099,7 +4099,7 @@
         "goalsFor": 5,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "73": {
       "team": {
@@ -4114,7 +4114,7 @@
         "clubColors": "Navy Blue / White",
         "website": "http://www.tottenhamhotspur.com",
         "address": "Bill Nicholson Way, 748 High Road London N17 0AP",
-        "manager": null
+        "manager": "Roberto De Zerbi"
       },
       "recentFixtures": [
         {
@@ -4395,7 +4395,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "322": {
       "team": {
@@ -4410,7 +4410,7 @@
         "clubColors": "Orange / Black",
         "website": "http://www.hullcitytigers.com",
         "address": "Walton Street Hull HU3 6HU",
-        "manager": null
+        "manager": "Sergej Jakirović"
       },
       "recentFixtures": [
         {
@@ -4691,7 +4691,7 @@
         "goalsFor": 6,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "341": {
       "team": {
@@ -4706,7 +4706,7 @@
         "clubColors": "White / Blue",
         "website": "http://www.leedsunited.com",
         "address": "Elland Road Leeds LS11 0ES",
-        "manager": null
+        "manager": "Daniel Farke"
       },
       "recentFixtures": [
         {
@@ -4987,7 +4987,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "349": {
       "team": {
@@ -5002,7 +5002,7 @@
         "clubColors": "Blue / White",
         "website": "http://www.itfc.co.uk",
         "address": "Portman Road Ipswich IP1 2DA",
-        "manager": null
+        "manager": "Gary O'Neil"
       },
       "recentFixtures": [
         {
@@ -5283,7 +5283,7 @@
         "goalsFor": 7,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "351": {
       "team": {
@@ -5298,7 +5298,7 @@
         "clubColors": "Red / White",
         "website": "http://www.nottinghamforest.co.uk",
         "address": "Pavilion Road, West Bridgeford Nottingham NG2 5GJ",
-        "manager": null
+        "manager": "Oliver Glasner"
       },
       "recentFixtures": [
         {
@@ -5579,7 +5579,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "354": {
       "team": {
@@ -5594,7 +5594,7 @@
         "clubColors": "Red / Blue",
         "website": "http://www.cpfc.co.uk",
         "address": "Whitehorse Lane London SE25 6PU",
-        "manager": null
+        "manager": "Pierre Sage"
       },
       "recentFixtures": [
         {
@@ -5875,7 +5875,7 @@
         "goalsFor": 9,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "397": {
       "team": {
@@ -5890,7 +5890,7 @@
         "clubColors": "Blue / White",
         "website": "http://www.seagulls.co.uk",
         "address": "44 North Road Brighton & Hove BN1 1YR",
-        "manager": null
+        "manager": "Fabian Hürzeler"
       },
       "recentFixtures": [
         {
@@ -6171,7 +6171,7 @@
         "goalsFor": 14,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "402": {
       "team": {
@@ -6186,7 +6186,7 @@
         "clubColors": "Red / White / Black",
         "website": "http://www.brentfordfc.co.uk",
         "address": "Braemar Road Brentford TW8 0NT",
-        "manager": null
+        "manager": "Keith Andrews"
       },
       "recentFixtures": [
         {
@@ -6467,7 +6467,7 @@
         "goalsFor": 9,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "1044": {
       "team": {
@@ -6482,7 +6482,7 @@
         "clubColors": "Red / Black",
         "website": "http://www.afcb.co.uk",
         "address": "Dean Court, Kings Park Bournemouth BH7 7AF",
-        "manager": null
+        "manager": "Marco Rose"
       },
       "recentFixtures": [
         {
@@ -6763,7 +6763,7 @@
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     },
     "1076": {
       "team": {
@@ -6778,7 +6778,7 @@
         "clubColors": "Sky Blue / White",
         "website": "http://www.ccfc.co.uk",
         "address": "Judds Lane Coventry CV6 6GE",
-        "manager": null
+        "manager": "Frank Lampard"
       },
       "recentFixtures": [
         {
@@ -7059,7 +7059,7 @@
         "goalsFor": 1,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-12T06:01:54.401Z"
+      "generatedAt": "2026-10-12T17:57:56.826Z"
     }
   }
 }
