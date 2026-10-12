@@ -11,7 +11,8 @@ export const metadata = constructMetadata({
     "Frequently refreshed global earthquake monitor covering the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions.",
   canonicalUrl: "/earthquake-pulse",
   image: "/earthquake-pulse/opengraph-image",
-  dateModified: earthquakeSnapshot.summary.generatedAt?.slice(0, 10),
+  // The later of the redesign and the committed fallback snapshot.
+  dateModified: [earthquakeSnapshot.summary.generatedAt?.slice(0, 10) ?? "", "2026-10-12"].sort()[1],
 });
 
 interface EarthquakePageProps {

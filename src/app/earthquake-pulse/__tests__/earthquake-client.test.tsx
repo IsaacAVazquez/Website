@@ -76,19 +76,20 @@ describe("EarthquakeClient", () => {
     expect(
       screen.getByText(/feed updated Sep 27, 12:05\sPM UTC/)
     ).toBeInTheDocument();
-    expect(screen.getByText(/Sep 27, 1:30\sPM UTC/)).toBeInTheDocument();
+    // The log row prints the quake's clock time; the full date opens with its detail.
+    expect(screen.getByText(/13:30 UTC/)).toBeInTheDocument();
   });
 
-  it("labels both quake counts as M2.5 and above", () => {
+  it("labels both quake counts as M2.5 and above in the trace's caption", () => {
     renderClient();
 
-    expect(screen.getByText("M2.5+ quakes in 24h")).toBeInTheDocument();
     expect(
-      screen.getByText("319 M2.5+ over the past week")
+      screen.getByText(
+        "42 quakes of M2.5 or more in the past 24 hours and 319 over the past week. 17 of any magnitude drew a Did You Feel It? report."
+      )
     ).toBeInTheDocument();
-    expect(
-      screen.getByText("of any magnitude, with a Did You Feel It? report")
-    ).toBeInTheDocument();
+    // The day's strongest quake is labelled on the trace and, at phone width, in the caption.
+    expect(screen.getByText(/The strongest was M5\.1, 90 km ENE of Tadine, New Caledonia\./)).toBeInTheDocument();
   });
 
   it("says when the API served the committed snapshot in place of USGS", async () => {
@@ -113,7 +114,6 @@ describe("EarthquakeClient", () => {
   it("describes the page as a live read with a daily snapshot behind it", () => {
     renderClient();
 
-    expect(screen.getByText("Data note")).toBeInTheDocument();
     expect(
       screen.getByText(
         /reads the public USGS Earthquake Hazards Program feeds each time it loads/
@@ -158,21 +158,19 @@ describe("EarthquakeClient", () => {
     expect(screen.getByText("No significant quakes in the past 30 days.")).toBeInTheDocument();
   });
 
-  it("offers the log's views under the summary, and a jump lands on the matching tab", () => {
+  it("puts the log's tabs right after the trace, and a tab pushes its view", () => {
     renderClient();
 
-    const jumps = screen.getByRole("group", { name: "Jump to a log view" });
-    expect(within(jumps).getAllByRole("button").map((button) => button.textContent)).toEqual([
+    const trace = screen.getByRole("region", { name: "The past 24 hours" });
+    const tablist = screen.getByRole("tablist", { name: "Earthquake view switcher" });
+    expect(trace.compareDocumentPosition(tablist) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(within(tablist).getAllByRole("tab").map((tab) => tab.textContent)).toEqual([
       "Recent",
       "Significant",
       "Regions",
     ]);
-    // The jumps sit in the hero's action slot, so they print ahead of the figures and the seismogram.
-    const figures = document.querySelector(".c97-project-hero-readouts") as HTMLElement;
-    expect(jumps.compareDocumentPosition(figures) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 
-    fireEvent.click(within(jumps).getByRole("button", { name: "Significant" }));
+    fireEvent.click(within(tablist).getByRole("tab", { name: "Significant" }));
     expect(mockPush).toHaveBeenLastCalledWith("/earthquake-pulse?view=significant", { scroll: false });
-    expect(screen.getByRole("tab", { name: "Significant" })).toHaveFocus();
   });
 });

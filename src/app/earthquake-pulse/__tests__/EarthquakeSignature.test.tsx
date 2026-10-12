@@ -24,7 +24,7 @@ it("labels the trace with the day's strongest quake even when the log no longer 
       onSelect={() => {}}
     />,
   );
-  expect(container.querySelector(".c97-quake-label")?.textContent).toMatch(/M6\.4 Kermadec Islands/);
+  expect(container.querySelector(".eq-trace-label")?.textContent).toMatch(/M6\.4 Kermadec Islands/);
 });
 
 it("marks the part of the day a capped log cannot show", () => {

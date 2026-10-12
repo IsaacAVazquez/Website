@@ -16,14 +16,15 @@ interface EarthquakeSignatureProps {
 }
 
 const W = 1000;
-const TRACE_BASE = 138;
+const TRACE_BASE = 128;
 const TRACE_AMP = 112;
-const PLOT_TOP = 196;
-const PLOT_H = 360;
+const TRACE_H = 204;
+const PLOT_TOP = 6;
+const PLOT_H = 440;
 /** The plot crops to 75°N to 60°S, where nearly every recorded quake falls. */
 const LAT_NORTH = 75;
 const LAT_SPAN = 135;
-const H = PLOT_TOP + PLOT_H + 8;
+const PLOT_VIEW_H = PLOT_TOP + PLOT_H + 6;
 
 function plotY(fractionFromNorthPole: number): number {
   const degreesFromTop = fractionFromNorthPole * 180 - (90 - LAT_NORTH);
@@ -34,18 +35,13 @@ function plotY(fractionFromNorthPole: number): number {
 const DEPTH_OPACITY = { shallow: 0.9, intermediate: 0.6, deep: 0.35 } as const;
 
 /**
- * The page's signature. A day of shaking drawn as one seismograph trace, and
- * the same quakes plotted where they struck on a bare graticule. There is no
- * coastline in the repo, and none is needed, because the dots trace the plate
- * boundaries on their own. Marks respond to a pointer; the log below is the
- * keyboard path to the same selection.
+ * The page's signature, a day of shaking drawn as one seismograph trace across
+ * the full width of the page, with the day's strongest quake labelled on it.
+ * Marks respond to a pointer; the log is the keyboard path to the same
+ * selection.
  */
 export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest, selectedId, onSelect }: EarthquakeSignatureProps) {
   const spikes = useMemo(() => seismogramSpikes(quakes, windowEnd), [quakes, windowEnd]);
-  const points = useMemo(() => {
-    const inWindow = new Set(spikes.map((spike) => spike.id));
-    return epicentres(quakes.filter((quake) => inWindow.has(quake.id)));
-  }, [quakes, spikes]);
 
   if (spikes.length === 0) {
     return <p className="c97-meta">No quakes of magnitude 2.5 or more in the past 24 hours.</p>;
@@ -55,7 +51,6 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
   const strongest = spikes.reduce((top, spike) => (spike.magnitude > top.magnitude ? spike : top));
   const strongestQuake = byId.get(strongest.id);
   const selectedSpike = spikes.find((spike) => spike.id === selectedId) ?? null;
-  const selectedPoint = points.find((point) => point.id === selectedId) ?? null;
   const trace = [
     `M0 ${TRACE_BASE}`,
     ...[...spikes]
@@ -85,14 +80,14 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
 
   return (
     <svg
-      viewBox={`0 0 ${W} ${H}`}
+      viewBox={`0 0 ${W} ${TRACE_H}`}
       role="img"
       aria-labelledby="quake-signature-title quake-signature-desc"
-      className="c97-quake-signature"
+      className="eq-trace-svg"
     >
       <title id="quake-signature-title">The past 24 hours of earthquakes</title>
       <desc id="quake-signature-desc">
-        {`${capped ? `The ${spikes.length} most recent` : spikes.length} quakes of magnitude 2.5 or more in the past 24 hours, drawn as a seismograph trace across the day and as epicentres on a latitude and longitude grid. The strongest of the day was ${label}.`}
+        {`${capped ? `The ${spikes.length} most recent` : spikes.length} quakes of magnitude 2.5 or more in the past 24 hours, drawn as a seismograph trace across the day. The strongest of the day was ${label}.`}
       </desc>
 
       {capped && oldestX > 0.04 ? (
@@ -103,7 +98,7 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
             </pattern>
           </defs>
           <rect x={0} y={TRACE_BASE - TRACE_AMP} width={oldestX * W - 6} height={TRACE_AMP + 12} fill="url(#quake-uncovered)" />
-          <text x={8} y={TRACE_BASE - TRACE_AMP + 16} className="c97-quake-axis">
+          <text x={8} y={TRACE_BASE - TRACE_AMP + 16} className="eq-axis">
             Older quakes are outside the log
           </text>
         </g>
@@ -113,9 +108,9 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
         <text
           key={hour}
           x={(hour / 24) * W}
-          y={TRACE_BASE + 44}
+          y={TRACE_BASE + 66}
           textAnchor={hour === 0 ? "start" : hour === 24 ? "end" : "middle"}
-          className="c97-quake-axis"
+          className="eq-axis"
           // The 6h/18h ticks sit close enough to their neighbours that the
           // larger phone-width type (needed to clear the 11px floor) makes
           // them collide, so they're dropped there; 0/12/24 still span the
@@ -153,11 +148,43 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
         x={labelSpike ? (labelEnd ? labelSpike.x * W - 8 : labelSpike.x * W + 8) : W - 4}
         y={labelSpike ? TRACE_BASE - labelSpike.height * TRACE_AMP + 4 : TRACE_BASE - TRACE_AMP + 16}
         textAnchor={labelSpike && !labelEnd ? "start" : "end"}
-        className="c97-quake-label"
+        className="eq-trace-label"
       >
         {labelSpike ? label : `Strongest today ${label}`}
       </text>
 
+    </svg>
+  );
+}
+
+interface EpicentrePlotProps {
+  quakes: QuakeEvent[];
+  windowEnd: Date;
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+}
+
+/**
+ * The same day's quakes plotted where they struck on a bare graticule. There
+ * is no coastline in the repo, and none is needed, because the dots trace the
+ * plate boundaries on their own.
+ */
+export function EpicentrePlot({ quakes, windowEnd, selectedId, onSelect }: EpicentrePlotProps) {
+  const points = useMemo(() => {
+    const inWindow = new Set(seismogramSpikes(quakes, windowEnd).map((spike) => spike.id));
+    return epicentres(quakes.filter((quake) => inWindow.has(quake.id)));
+  }, [quakes, windowEnd]);
+  if (points.length === 0) return null;
+  const byId = new Map(quakes.map((quake) => [quake.id, quake]));
+  const selectedPoint = points.find((point) => point.id === selectedId) ?? null;
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${PLOT_VIEW_H}`}
+      role="img"
+      aria-label={`Epicentres of the past day's ${points.length} quakes on a latitude and longitude grid, shaded by depth`}
+      className="eq-plot-svg"
+    >
       {[-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150].map((lon) => (
         <line
           key={`lon${lon}`}
@@ -174,7 +201,7 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
         return (
           <g key={`lat${lat}`}>
             <line x1={0} x2={W} y1={y} y2={y} stroke="var(--c97-rule)" strokeWidth={lat === 0 ? 1 : 0.6} />
-            <text x={4} y={y - 4} className="c97-quake-axis">
+            <text x={4} y={y - 4} className="eq-axis">
               {lat === 0 ? "Equator" : `${Math.abs(lat)}°${lat > 0 ? "N" : "S"}`}
             </text>
           </g>

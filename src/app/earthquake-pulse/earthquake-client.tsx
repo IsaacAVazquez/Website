@@ -4,19 +4,11 @@ import {
   Fragment,
   useEffect,
   useMemo,
-  useRef,
   useState,
   type CSSProperties,
 } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  ExternalLink,
-  Gauge,
-  Layers3,
-} from "lucide-react";
+import { Activity, AlertTriangle, ExternalLink, Layers3 } from "lucide-react";
 import type {
   EarthquakeRouteState,
   EarthquakeSummary,
@@ -31,9 +23,7 @@ import {
   EARTHQUAKE_VIEW_OPTIONS,
   normalizeEarthquakeState,
 } from "./earthquake-state";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
-import { EarthquakeSignature } from "./EarthquakeSignature";
+import { EarthquakeSignature, EpicentrePlot } from "./EarthquakeSignature";
 import { useClientNow } from "@/hooks/useClientNow";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./earthquake-pulse.css";
@@ -143,7 +133,7 @@ function getRowStyle(isSelected: boolean, mag: number): CSSProperties {
   }
 
   return {
-    background: "var(--c97-field)",
+    background: "transparent",
     borderColor: "var(--c97-rule)",
   };
 }
@@ -196,20 +186,20 @@ function QuakeRow({
       type="button"
       onClick={() => onSelect(quake.id)}
       aria-current={isSelected ? "true" : undefined}
-      className="c97-quake-log-row"
+      className="eq-quake-log-row"
       style={getRowStyle(isSelected, quake.magnitude)}
     >
-      <span className="c97-mono c97-quake-log-time">
+      <span className="eq-quake-log-time">
         {CLOCK_FORMATTER.format(new Date(quake.time))} UTC
         {now !== null ? (
-          <span className="c97-quake-log-ago">{formatTimeAgo(quake.time, now)}</span>
+          <span className="eq-quake-log-ago">{formatTimeAgo(quake.time, now)}</span>
         ) : null}
       </span>
       <MagnitudeBadge mag={quake.magnitude} />
-      <span className="c97-quake-log-place">
-        <span className="c97-quake-log-name">{quake.place}</span>
+      <span className="eq-quake-log-place">
+        <span className="eq-quake-log-name">{quake.place}</span>
         {quake.tsunami || quake.felt ? (
-          <span className="c97-quake-log-flags">
+          <span className="eq-quake-log-flags">
             {quake.tsunami ? (
               <span className="inline-flex items-center" style={{ color: "var(--c97-negative)", fontWeight: 600, gap: "var(--c97-sp-0)" }}>
                 <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
@@ -225,7 +215,7 @@ function QuakeRow({
           </span>
         ) : null}
       </span>
-      <span className="c97-mono c97-quake-log-depth">
+      <span className="eq-quake-log-depth">
         <Layers3 className="h-3.5 w-3.5" aria-hidden="true" />
         {formatDepth(quake.depthKm)}
       </span>
@@ -298,11 +288,11 @@ function RegionList({
   now: number | null;
 }) {
   if (summary.regions.length === 0) {
-    return <p className="c97-meta">No region logged a magnitude 2.5 or larger quake in the past seven days.</p>;
+    return <p className="eq-muted">No region logged a magnitude 2.5 or larger quake in the past seven days.</p>;
   }
   const maxCount = Math.max(1, ...summary.regions.map((r) => r.count));
   return (
-    <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+    <div className="eq-regions">
       {summary.regions.map((region) => {
         const widthPct = Math.round((region.count / maxCount) * 100);
         const clickable = Boolean(region.strongestId);
@@ -310,7 +300,7 @@ function RegionList({
           <>
             <span className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <span
-                className="c97-quake-region-name truncate text-base font-semibold"
+                className="eq-region-name truncate text-base font-semibold"
                 style={{ fontFamily: "var(--c97-font-body)" }}
               >
                 {region.region}
@@ -352,8 +342,7 @@ function RegionList({
               type="button"
               onClick={() => onSelect(region.strongestId!)}
               aria-current={region.strongestId === openQuakeId ? "true" : undefined}
-              className="c97-quake-region block w-full border text-left"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+              className="eq-region"
             >
               {content}
             </button>
@@ -362,11 +351,7 @@ function RegionList({
             ) : null}
           </Fragment>
         ) : (
-          <div
-            key={region.region}
-            className="border"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-          >
+          <div key={region.region} className="eq-region">
             {content}
           </div>
         );
@@ -375,117 +360,44 @@ function RegionList({
   );
 }
 
-function DetailStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div
-      className="border"
-      style={{
-        paddingInline: "var(--c97-sp-2)",
-        paddingBlock: "var(--c97-sp-1)",
-        borderColor: "var(--c97-rule)",
-        background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
-      }}
-    >
-      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{label}</p>
-      <p
-        className="text-base font-semibold"
-        style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
-      >
-        {value}
-      </p>
-    </div>
-  );
-}
-
-function QuakeDetailPanel({
-  quake,
-  now,
-  inline = false,
-}: {
-  quake: QuakeEvent | null;
-  now: number | null;
-  /** Printed under a log row, where the place name sits below the log's own heading. */
-  inline?: boolean;
-}) {
-  const Heading = inline ? "h3" : "h2";
+function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: number | null }) {
   if (!quake) {
-    return (
-      <p
-        className="text-sm leading-6"
-        style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
-      >
-        Select a quake to see depth, felt reports, and coordinates.
-      </p>
-    );
+    return <p className="eq-muted">Select a quake to see depth, felt reports, and coordinates.</p>;
   }
 
   return (
     <>
-      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+      <div className="eq-detail-head">
         <div className="min-w-0">
-          <Heading className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)" }}>
-            {quake.place}
-          </Heading>
-          <p
-            className="text-sm"
-            style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
-          >
+          <h3 className="eq-detail-title">{quake.place}</h3>
+          <p className="eq-muted eq-small">
             {formatTimestamp(quake.time)}
             {now !== null ? <> · {formatTimeAgo(quake.time, now)}</> : null}
           </p>
         </div>
-        <span
-          className="shrink-0 text-3xl"
-          style={{
-            color: magnitudeColor(quake.magnitude),
-            fontFamily: "var(--c97-font-body)",
-            fontWeight: 700,
-            letterSpacing: "-0.05em",
-          }}
-        >
+        <span className="eq-detail-mag" style={{ color: magnitudeColor(quake.magnitude) }}>
           {formatMagnitude(quake.magnitude)}
         </span>
       </div>
 
       {quake.tsunami ? (
-        <div
-          className="flex items-center border text-sm font-semibold"
-          style={{
-            paddingInline: "var(--c97-sp-2)",
-            paddingBlock: "var(--c97-sp-1)",
-            marginTop: "var(--c97-sp-2)",
-            gap: "var(--c97-sp-1)",
-            borderColor: "color-mix(in srgb, var(--c97-negative) 28%, var(--c97-rule))",
-            background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-field))",
-            color: "var(--c97-negative)",
-          }}
-          role="note"
-        >
+        <p className="eq-tsunami" role="note">
           <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden="true" />
           Tsunami evaluation issued for this event
-        </div>
+        </p>
       ) : null}
 
-      <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-        <DetailStat label="Depth" value={`${formatDepth(quake.depthKm)} · ${depthLabel(quake.depthKm)}`} />
-        <DetailStat label="Region" value={quake.region} />
-        <DetailStat
-          label="Felt reports"
-          value={quake.felt ? quake.felt.toLocaleString("en-US") : "None yet"}
-        />
-        <DetailStat label="Mag type" value={quake.magType ? quake.magType.toUpperCase() : "—"} />
-        <DetailStat label="Coordinates" value={formatCoordinates(quake.latitude, quake.longitude)} />
-        <DetailStat label="Significance" value={quake.significance.toLocaleString("en-US")} />
-      </div>
+      <dl className="eq-detail-list">
+        <div><dt>Depth</dt><dd>{`${formatDepth(quake.depthKm)} · ${depthLabel(quake.depthKm)}`}</dd></div>
+        <div><dt>Region</dt><dd>{quake.region}</dd></div>
+        <div><dt>Felt reports</dt><dd>{quake.felt ? quake.felt.toLocaleString("en-US") : "None yet"}</dd></div>
+        <div><dt>Mag type</dt><dd>{quake.magType ? quake.magType.toUpperCase() : "—"}</dd></div>
+        <div><dt>Coordinates</dt><dd>{formatCoordinates(quake.latitude, quake.longitude)}</dd></div>
+        <div><dt>Significance</dt><dd>{quake.significance.toLocaleString("en-US")}</dd></div>
+      </dl>
 
       {quake.url ? (
-        <a
-          href={quake.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="c97-btn-ghost"
-          style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-1)" }}
-        >
+        <a href={quake.url} target="_blank" rel="noopener noreferrer" className="eq-link">
           View on USGS
           <ExternalLink className="h-4 w-4" aria-hidden="true" />
         </a>
@@ -494,15 +406,11 @@ function QuakeDetailPanel({
   );
 }
 
-/**
- * The picked quake's detail, printed right under the row or region that was
- * pressed. From 1280px the sticky rail beside the log carries the same detail,
- * so this copy stays off the page there.
- */
+/** The picked quake's detail, printed right under the row or region that was pressed. */
 function InlineQuakeDetail({ quake, now }: { quake: QuakeEvent | null; now: number | null }) {
   return (
-    <div className="c97-panel xl:hidden" data-testid="quake-inline-detail">
-      <QuakeDetailPanel quake={quake} now={now} inline />
+    <div className="eq-detail" data-testid="quake-inline-detail">
+      <QuakeDetailPanel quake={quake} now={now} />
     </div>
   );
 }
@@ -592,175 +500,135 @@ export function EarthquakeClient({
     navigate({ view: routeState.view, quake: id === canonicalQuakeParam ? null : id });
   }
 
-  const logRef = useRef<HTMLHeadingElement>(null);
-
-  function jumpToLog(view: EarthquakeView) {
-    handleViewChange(view);
-    logRef.current?.scrollIntoView?.();
-    document.getElementById(`earthquake-tab-${view}`)?.focus({ preventScroll: true });
-  }
-
   const listForView =
     routeState.view === "significant" ? summary.significant : summary.recent;
   // A picked quake that the open view does not list, such as one picked on the
-  // seismogram or linked from another view, still needs its detail on a phone.
+  // seismogram or linked from another view, still needs its detail.
   const openQuakeIsListed =
     routeState.view === "regions"
       ? summary.regions.some((region) => region.strongestId === canonicalQuakeParam)
       : listForView.some((quake) => quake.id === canonicalQuakeParam);
   const feedTime = summary.feedUpdated ?? summary.generatedAt;
   const onViewTabKey = useTablistKeyboard(EARTHQUAKE_VIEW_OPTIONS, handleViewChange);
-  const lead = PROJECT_PRESS[EARTHQUAKE_ROUTE].lead;
-  const standfirst =
-    "I wanted the planet's last day of shaking on one calm screen, from what just moved, to what was big enough to matter, to where the ground is busiest. The browser checks USGS every five minutes and keeps the last good snapshot visible if the feed drops.";
-
-  if (!hasData) {
-    return (
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Earthquake Pulse"
-        standfirst={standfirst}
-        meta="The first snapshot is still being generated from the USGS feeds. The dashboard fills in on the next successful read of USGS."
-      />
-    );
-  }
+  const stats = summary.heroStats;
+  const strongestLine =
+    stats.strongest24hMag !== null
+      ? `The strongest was ${formatMagnitude(stats.strongest24hMag)}${stats.strongest24hPlace ? `, ${stats.strongest24hPlace}` : ""}.`
+      : null;
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Earthquake Pulse"
-        standfirst={standfirst}
-        meta={`USGS Earthquake Hazards Program · feed updated ${formatTimestamp(feedTime)}${
-          summary.feedStatus === "stale-fallback"
-            ? " · USGS could not be reached, so this is the last saved snapshot"
-            : ""
-        }`}
-        // The log's three views, offered ahead of the figures. The seismogram is
-        // a full phone screen tall, so the tabs themselves sit below it.
-        action={
-          <div
-            role="group"
-            aria-label="Jump to a log view"
-            className="flex flex-wrap items-center"
-            style={{ gap: "var(--c97-sp-1)" }}
-          >
-            <span className="c97-kicker" style={{ marginInlineEnd: "var(--c97-sp-1)" }}>Jump to the log</span>
-            {EARTHQUAKE_VIEW_OPTIONS.map((view) => (
-              <button key={view} type="button" className="c97-btn-ghost" onClick={() => jumpToLog(view)}>
-                {EARTHQUAKE_VIEW_LABELS[view]}
-              </button>
-            ))}
-          </div>
-        }
-        readouts={[
-          {
-            label: "Strongest in 24h",
-            value: formatMagnitude(summary.heroStats.strongest24hMag),
-            detail: summary.heroStats.strongest24hPlace ?? "No notable quake yet",
-          },
-          {
-            label: "M2.5+ quakes in 24h",
-            value: `${summary.heroStats.total24h}`,
-            detail: `${summary.heroStats.total7d} M2.5+ over the past week`,
-          },
-          {
-            label: "Felt in 24h",
-            value: `${summary.heroStats.felt24h}`,
-            detail: "of any magnitude, with a Did You Feel It? report",
-          },
-        ]}
-      >
-        <EarthquakeSignature
-          quakes={summary.recent}
-          windowEnd={new Date(feedTime)}
-          strongest={{
-            magnitude: summary.heroStats.strongest24hMag,
-            place: summary.heroStats.strongest24hPlace,
-          }}
-          selectedId={selectedQuakeId}
-          onSelect={handleSelectQuake}
-        />
-      </Catalog97ProjectHero>
+    <div className="eq-root">
+      <div className="c97-shell c97-frame eq-page">
+        <header className="eq-head">
+          <h1 className="eq-title">Earthquake Pulse</h1>
+          <p className="eq-standfirst">
+            The planet&apos;s last day of shaking, from what just moved, to what was big enough to
+            matter, to where the ground is busiest.
+          </p>
+        </header>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-3)" }}>
-            <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-              <h2 ref={logRef} className="c97-poster-sm">The log</h2>
-              <div className="c97-segmented" role="tablist" aria-label="Earthquake view switcher">
-                {EARTHQUAKE_VIEW_OPTIONS.map((view, index) => (
-                  <button
-                    key={view}
-                    type="button"
-                    role="tab"
-                    id={`earthquake-tab-${view}`}
-                    aria-controls={routeState.view === view ? `earthquake-tabpanel-${view}` : undefined}
-                    aria-selected={routeState.view === view}
-                    onKeyDown={(event) => onViewTabKey(event, index)}
-                    onClick={() => handleViewChange(view)}
-                    className="min-h-[44px] text-sm font-semibold"
-                  >
-                    {EARTHQUAKE_VIEW_LABELS[view]}
-                  </button>
-                ))}
+        {!hasData ? (
+          <p className="eq-muted">
+            The first snapshot is still being generated from the USGS feeds. The dashboard fills in
+            on the next successful read of USGS.
+          </p>
+        ) : (
+          <>
+            <section className="eq-trace" aria-label="The past 24 hours">
+              <div className="eq-trace-head">
+                <p className="eq-kicker">Past 24 hours, M2.5 and up</p>
+                <p className="eq-stamp">
+                  {`USGS Earthquake Hazards Program · feed updated ${formatTimestamp(feedTime)}${
+                    summary.feedStatus === "stale-fallback"
+                      ? " · USGS could not be reached, so this is the last saved snapshot"
+                      : ""
+                  }`}
+                </p>
               </div>
+              <EarthquakeSignature
+                quakes={summary.recent}
+                windowEnd={new Date(feedTime)}
+                strongest={{ magnitude: stats.strongest24hMag, place: stats.strongest24hPlace }}
+                selectedId={selectedQuakeId}
+                onSelect={handleSelectQuake}
+              />
+              <p className="eq-caption">
+                {`${stats.total24h} quakes of M2.5 or more in the past 24 hours and ${stats.total7d} over the past week. ${stats.felt24h} of any magnitude drew a Did You Feel It? report.`}
+                {strongestLine ? <span className="eq-phone-only"> {strongestLine}</span> : null}
+              </p>
+            </section>
 
-              <div
-                className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}
-                role="tabpanel"
-                id={`earthquake-tabpanel-${routeState.view}`}
-                aria-labelledby={`earthquake-tab-${routeState.view}`}
-              >
-                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-                  <p className="c97-kicker">
+            <div className="eq-board">
+              <figure className="eq-plot">
+                <EpicentrePlot
+                  quakes={summary.recent}
+                  windowEnd={new Date(feedTime)}
+                  selectedId={selectedQuakeId}
+                  onSelect={handleSelectQuake}
+                />
+                <figcaption className="eq-muted eq-small">
+                  Epicentres from the trace above, darker for shallower quakes. The plate
+                  boundaries draw themselves.
+                </figcaption>
+              </figure>
+
+              <section className="eq-log" aria-label="Earthquake log">
+                <div className="eq-toolbar">
+                  <div className="eq-tabs" role="tablist" aria-label="Earthquake view switcher">
+                    {EARTHQUAKE_VIEW_OPTIONS.map((view, index) => (
+                      <button
+                        key={view}
+                        type="button"
+                        role="tab"
+                        id={`earthquake-tab-${view}`}
+                        aria-controls={routeState.view === view ? `earthquake-tabpanel-${view}` : undefined}
+                        aria-selected={routeState.view === view}
+                        onKeyDown={(event) => onViewTabKey(event, index)}
+                        onClick={() => handleViewChange(view)}
+                      >
+                        {EARTHQUAKE_VIEW_LABELS[view]}
+                      </button>
+                    ))}
+                  </div>
+                  <p className="eq-muted eq-small">
                     {routeState.view === "recent"
-                      ? "Last 24 hours"
+                      ? "Newest first, by origin time"
                       : routeState.view === "significant"
-                      ? "Significant, past 30 days"
-                      : "Where the ground is busiest"}
-                  </p>
-                  <p className="c97-prose">
-                    {routeState.view === "recent"
-                      ? "The most recent notable quakes worldwide (M2.5 and up), newest first, logged by origin time. Tap one for depth, felt reports, and coordinates, and tap it again to close the detail."
-                      : routeState.view === "significant"
-                      ? "USGS-flagged significant events from the past month, strongest first, which are the ones that actually made news."
-                      : "Magnitude distribution and the busiest regions across the past seven days."}
+                      ? "USGS-flagged, past 30 days, strongest first"
+                      : "Past seven days"}
                   </p>
                 </div>
 
-                {canonicalQuakeParam && !openQuakeIsListed ? (
-                  <InlineQuakeDetail quake={selectedQuake} now={now} />
-                ) : null}
+                <div
+                  className="eq-panel"
+                  role="tabpanel"
+                  id={`earthquake-tabpanel-${routeState.view}`}
+                  aria-labelledby={`earthquake-tab-${routeState.view}`}
+                >
+                  {canonicalQuakeParam && !openQuakeIsListed ? (
+                    <InlineQuakeDetail quake={selectedQuake} now={now} />
+                  ) : null}
 
-                {routeState.view === "regions" ? (
-                  <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-                    <div className="c97-panel">
-                      <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-                        <BarChart3 className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                        <p className="c97-kicker">Magnitude distribution · 7 days</p>
-                      </div>
+                  {routeState.view === "regions" ? (
+                    <>
+                      <h2 className="eq-h2">Magnitude distribution</h2>
                       <DistributionBars summary={summary} />
-                    </div>
-                    <div>
-                      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Busiest regions · 7 days</p>
+                      <h2 className="eq-h2">Busiest regions</h2>
                       <RegionList
                         summary={summary}
                         onSelect={handleSelectQuake}
                         openQuakeId={canonicalQuakeParam}
                         now={now}
                       />
-                    </div>
-                  </div>
-                ) : (
-                  listForView.length === 0 ? (
-                    <p className="c97-meta">
+                    </>
+                  ) : listForView.length === 0 ? (
+                    <p className="eq-muted">
                       {routeState.view === "significant"
                         ? "No significant quakes in the past 30 days."
                         : "No quakes of magnitude 2.5 or more in the past 24 hours."}
                     </p>
                   ) : (
-                    <div className="c97-quake-log">
+                    <div className="eq-quake-log">
                       {listForView.map((quake) => (
                         <Fragment key={quake.id}>
                           <QuakeRow
@@ -775,36 +643,20 @@ export function EarthquakeClient({
                         </Fragment>
                       ))}
                     </div>
-                  )
-                )}
-              </div>
-            </div>
-
-            {/* Below 1280px the detail prints under the picked row instead. */}
-            <aside className="hidden flex-col xl:flex" style={{ gap: "var(--c97-sp-2)" }}>
-              <div className="c97-panel xl:sticky xl:top-6">
-                <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                  <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                  <p className="c97-kicker">Selected quake</p>
+                  )}
                 </div>
-                <QuakeDetailPanel quake={selectedQuake} now={now} />
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
+              </section>
+            </div>
+          </>
+        )}
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data note</p>
-          <p className="c97-prose">
-            This page reads the public USGS Earthquake Hazards Program feeds each time it loads
-            and falls back to a snapshot saved once a day when USGS cannot be reached, and it is
-            not an emergency alert feed. For official alerts and the latest data, always defer to
-            USGS and your local authorities.
-          </p>
-        </div>
-      </section>
-    </>
+        <p className="eq-source">
+          This page reads the public USGS Earthquake Hazards Program feeds each time it loads,
+          checks again every five minutes while it is open, and falls back to a snapshot saved once
+          a day when USGS cannot be reached. It is not an emergency alert feed. For official alerts
+          and the latest data, always defer to USGS and your local authorities.
+        </p>
+      </div>
+    </div>
   );
 }
