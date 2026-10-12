@@ -26,6 +26,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I built this to make a busy earthquake feed easier to scan. It answers where meaningful activity happened, how strong and deep the events were, and which regions have been most active without requiring someone to sort through the raw event list first.",
   },
+  "/enablement-assistant": {
+    purpose:
+      "I built this to show how a small central tooling team could support many product teams without repeating the same onboarding work for each one. The program view ranks the setup questions the knowledge base could not answer and shows which teams have drifted from the standard, and the team view turns a three-step intake into a scored stack, an onboarding plan, and a handoff to a person when the confidence is too low.",
+  },
   "/fantasy-formula-1": {
     purpose:
       "I use this optimizer to test how five drivers and two constructors fit under a model budget, especially when I want to lock a few picks and see what the remaining roster can support. It makes the cost of each lineup choice explicit.",
