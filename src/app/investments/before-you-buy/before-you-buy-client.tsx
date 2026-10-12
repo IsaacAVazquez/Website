@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useMemo, useState, type CSSProperties, type ReactNode } from "react";
-import { Catalog97HeroReadouts, Catalog97ProjectHero, type Catalog97Readout } from "@/components/catalog97/Catalog97ProjectHero";
+import { useEffect, useId, useMemo, useState, type ReactNode } from "react";
 import { StockSearch } from "@/components/investments/StockSearch";
 import { HOLDING_PALETTE } from "@/components/investments/holdingPalette";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { loadHoldings } from "@/hooks/useInvestments";
 import {
   analyzeBuy,
@@ -22,8 +20,8 @@ import {
 } from "@/lib/beforeYouBuy";
 import { getClientInvestmentSnapshot } from "@/lib/investmentsClientData";
 import type { PortfolioHolding, StockPrice } from "@/types/investment";
+import "./before-you-buy.css";
 
-const ROUTE = "/investments/before-you-buy";
 const BENCHMARK = "SPY";
 const DISCLAIMER = "An independent concept by Isaac Vazquez, not affiliated with or endorsed by Google.";
 
@@ -43,7 +41,11 @@ const DISTINCT_COLORS = 4;
 
 type Loaded = { history: SymbolHistory; name: string } | "missing";
 
-const note = { fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" } as const;
+interface Figure {
+  label: string;
+  value: string;
+  was?: string;
+}
 
 function toLoaded(symbol: string, sections: Record<string, unknown>): Loaded {
   const prices = (Array.isArray(sections.price) ? (sections.price as StockPrice[]) : []).filter(
@@ -56,9 +58,9 @@ function toLoaded(symbol: string, sections: Record<string, unknown>): Loaded {
 }
 
 /** A table that can scroll sideways on a phone, reachable and labelled for a keyboard. */
-function TableScroll({ label, style, children }: { label: string; style?: CSSProperties; children: ReactNode }) {
+function TableScroll({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div role="region" aria-label={`${label} (scrollable)`} tabIndex={0} style={{ overflowX: "auto", ...style }}>
+    <div role="region" aria-label={`${label} (scrollable)`} tabIndex={0} className="byb-scroll">
       {children}
     </div>
   );
@@ -83,16 +85,14 @@ function SectorBars({ result }: { result: BeforeYouBuyResult }) {
   ];
 
   return (
-    <div style={{ marginTop: "var(--c97-sp-3)", display: "grid", gap: "var(--c97-sp-2)" }}>
+    <div className="byb-bars">
       {rows.map((row) => (
-        <div key={row.label}>
-          <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
-            {row.label}
-          </span>
+        <div key={row.label} className="byb-bar-row">
+          <span className="byb-bar-label">{row.label}</span>
           <div
             role="img"
             aria-label={`${row.label}: ${row.parts.map((part) => `${part.sector} ${formatWeight(part.weight)}`).join(", ") || "nothing held"}`}
-            style={{ display: "flex", height: "28px", gap: "2px" }}
+            className="byb-bar"
           >
             {row.parts.map((part) => (
               <span key={part.sector} style={{ flexGrow: part.weight, flexBasis: 0, background: part.color }} />
@@ -100,13 +100,10 @@ function SectorBars({ result }: { result: BeforeYouBuyResult }) {
           </div>
         </div>
       ))}
-      <ul
-        aria-hidden="true"
-        style={{ display: "flex", flexWrap: "wrap", gap: "var(--c97-sp-1) var(--c97-sp-3)", margin: 0, padding: 0, listStyle: "none", ...note }}
-      >
+      <ul aria-hidden="true" className="byb-legend">
         {rows[1].parts.map((part) => (
-          <li key={part.sector} style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-            <span style={{ width: "10px", height: "10px", background: part.color, display: "inline-block" }} />
+          <li key={part.sector}>
+            <span style={{ background: part.color }} />
             {part.sector}
           </li>
         ))}
@@ -116,9 +113,10 @@ function SectorBars({ result }: { result: BeforeYouBuyResult }) {
 }
 
 export function BeforeYouBuyClient() {
-  const amountId = useId();
-  const amountErrorId = `${amountId}-error`;
-  const portfolioLabelId = `${amountId}-portfolio`;
+  const ids = useId();
+  const amountId = `${ids}-amount`;
+  const amountErrorId = `${ids}-amount-error`;
+  const portfolioLabelId = `${ids}-portfolio`;
   const [saved, setSaved] = useState<PortfolioHolding[] | null>(null);
   const [source, setSource] = useState<"sample" | "saved" | null>(null);
   const [symbol, setSymbol] = useState("NVDA");
@@ -175,28 +173,29 @@ export function BeforeYouBuyClient() {
         ? `Prices for ${unavailable} aren't available right now, so there's nothing to compare yet.`
         : "Loading a year of prices for the portfolio and the buy…";
 
-  const readouts: Catalog97Readout[] = result
+  // The panel's own summary: the three numbers the buy moves, as the bars' caption.
+  const figures: Figure[] = result
     ? [
         {
           label: `${result.buySector} share`,
           value: formatWeight(weightIn(result.after.sectors, result.buySector)),
-          detail: `Was ${formatWeight(weightIn(result.before.sectors, result.buySector))}`,
+          was: `Was ${formatWeight(weightIn(result.before.sectors, result.buySector))}`,
         },
         ...(result.after.beta !== null
           ? [
               {
                 label: "Beta",
                 value: formatRatio(result.after.beta),
-                detail: result.before.beta !== null ? `Was ${formatRatio(result.before.beta)}` : undefined,
+                was: result.before.beta !== null ? `Was ${formatRatio(result.before.beta)}` : undefined,
               },
             ]
           : []),
         ...(result.correlation !== null
-          ? [{ label: "Correlation", value: formatRatio(result.correlation), detail: "With what you hold" }]
+          ? [{ label: "Correlation", value: formatRatio(result.correlation), was: "With what you hold" }]
           : []),
       ]
     : amountValid && !unavailable
-      ? // Placeholders while prices load, so the hero doesn't jump when they land.
+      ? // Placeholders while prices load, so the panel doesn't jump when they land.
         ["Sector share", "Beta", "Correlation"].map((label) => ({ label, value: "…" }))
       : [];
 
@@ -205,113 +204,80 @@ export function BeforeYouBuyClient() {
     : [];
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={PROJECT_PRESS[ROUTE].lead}
-        title="Before You Buy"
-        standfirst="A product concept for Google Finance, built on my own investment data. Pick a stock and an amount to see what the buy would do to your portfolio before you make it."
-        meta={
-          <>
-            {DISCLAIMER} {result?.window ? `Prices through ${formatDay(result.window.to)}. ` : ""}Not investment advice.
-          </>
-        }
-      >
-        {/* The inputs and what they change sit on one plate, so a new stock or
-            amount rewrites the sentence under it without a scroll between. */}
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))",
-              gap: "var(--c97-sp-3)",
-              alignItems: "end",
-            }}
-          >
-            <div>
-              <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
-                Stock
-              </span>
-              <StockSearch value={symbol} onChange={(next) => setSymbol(next.toUpperCase())} />
+    <div className="byb">
+      <div className="byb-page c97-shell c97-frame">
+        <header className="byb-title">
+          <h1>Before You Buy</h1>
+          <p>
+            A product concept for Google Finance, built on my own investment data. Pick a stock and an amount to see
+            what the buy would do to your portfolio before you make it.
+          </p>
+          <p className="byb-disclaimer">{DISCLAIMER}</p>
+        </header>
+
+        <div className="byb-calc">
+          <section className="byb-buy" aria-labelledby={`${ids}-buy`}>
+            <h2 id={`${ids}-buy`}>The buy</h2>
+            <div className="byb-buy-fields">
+              <div>
+                <span className="byb-label">Stock</span>
+                <StockSearch value={symbol} onChange={(next) => setSymbol(next.toUpperCase())} />
+              </div>
+              <label htmlFor={amountId}>
+                <span className="byb-label">Amount</span>
+                <span className="byb-money">
+                  <span aria-hidden="true">$</span>
+                  <input
+                    id={amountId}
+                    aria-label="Amount in dollars"
+                    aria-invalid={!amountValid || undefined}
+                    aria-describedby={amountValid ? undefined : amountErrorId}
+                    type="number"
+                    inputMode="decimal"
+                    min={0}
+                    step={500}
+                    value={amountText}
+                    onChange={(event) => setAmountText(event.target.value)}
+                  />
+                </span>
+                {amountValid ? null : (
+                  <span id={amountErrorId} className="byb-note">
+                    Enter an amount above zero.
+                  </span>
+                )}
+              </label>
             </div>
-            <label htmlFor={amountId} style={{ display: "block" }}>
-              <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
-                Amount
-              </span>
-              <span className="c97-field" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                <span aria-hidden="true" style={note}>
-                  $
-                </span>
-                <input
-                  id={amountId}
-                  aria-label="Amount in dollars"
-                  aria-invalid={!amountValid || undefined}
-                  aria-describedby={amountValid ? undefined : amountErrorId}
-                  type="number"
-                  inputMode="decimal"
-                  min={0}
-                  step={500}
-                  value={amountText}
-                  onChange={(event) => setAmountText(event.target.value)}
-                  className="c97-mono"
-                  style={{
-                    flex: 1,
-                    minWidth: 0,
-                    minHeight: "44px",
-                    border: 0,
-                    background: "transparent",
-                    padding: 0,
-                    color: "var(--c97-ink)",
-                    fontSize: "var(--c97-fs-body)",
-                  }}
-                />
-              </span>
-              {amountValid ? null : (
-                <span id={amountErrorId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
-                  Enter an amount above zero.
-                </span>
-              )}
-            </label>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-2)" }}>
-            <span className="c97-kicker" style={{ margin: 0 }}>
-              Or try
-            </span>
-            {EXAMPLES.map((example) => (
-              <button
-                key={example}
-                type="button"
-                className="c97-btn-ghost"
-                aria-pressed={symbol === example}
-                onClick={() => setSymbol(example)}
-                style={symbol === example ? { color: "var(--c97-ink)", textDecorationThickness: "2px" } : undefined}
-              >
-                {example}
-              </button>
-            ))}
-          </div>
-          <div style={{ marginTop: "var(--c97-sp-3)" }}>
-            <span id={portfolioLabelId} className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
-              Portfolio
-            </span>
-            <div className="c97-segmented" role="group" aria-labelledby={portfolioLabelId}>
-              <button type="button" aria-pressed={!usingSaved} onClick={() => setSource("sample")} style={{ minHeight: "44px" }}>
+            <div className="byb-examples">
+              <span className="byb-label">Or try</span>
+              {EXAMPLES.map((example) => (
+                <button
+                  key={example}
+                  type="button"
+                  className="byb-chip"
+                  aria-pressed={symbol === example}
+                  onClick={() => setSymbol(example)}
+                >
+                  {example}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="byb-portfolio" aria-labelledby={portfolioLabelId}>
+            <h2 id={portfolioLabelId}>Portfolio</h2>
+            <div className="byb-switch" role="group" aria-labelledby={portfolioLabelId}>
+              <button type="button" aria-pressed={!usingSaved} onClick={() => setSource("sample")}>
                 Sample portfolio
               </button>
-              <button
-                type="button"
-                aria-pressed={usingSaved}
-                disabled={!saved?.length}
-                onClick={() => setSource("saved")}
-                style={{ minHeight: "44px" }}
-              >
+              <button type="button" aria-pressed={usingSaved} disabled={!saved?.length} onClick={() => setSource("saved")}>
                 Your saved holdings
               </button>
             </div>
-            <p className="c97-prose" style={{ ...note, marginTop: "var(--c97-sp-2)" }}>
+            <p className="byb-note">
               {usingSaved ? (
                 <>
-                  Your holdings from the <Link href="/investments" className="c97-link">investments page</Link>, valued at the last close. Edit them
-                  there.
+                  Your holdings from the <Link href="/investments">investments page</Link>, valued at the last close.
+                  Edit them there.
                 </>
               ) : (
                 <>
@@ -319,183 +285,174 @@ export function BeforeYouBuyClient() {
                   {saved?.length === 0 ? (
                     <>
                       {" "}
-                      Save holdings on the <Link href="/investments" className="c97-link">investments page</Link> to try your own.
+                      Save holdings on the <Link href="/investments">investments page</Link> to try your own.
                     </>
                   ) : null}
                 </>
               )}
               {leftOut.length > 0 ? ` Left out because my data doesn't cover them: ${leftOut.join(", ")}.` : null}
             </p>
-          </div>
-          <p
-            role="status"
-            aria-live="polite"
-            className="c97-prose"
-            style={{ margin: 0, marginTop: "var(--c97-sp-3)", paddingTop: "var(--c97-sp-3)", borderTop: "1px solid var(--c97-rule)" }}
-          >
-            {summary}
-          </p>
-          {result ? <SectorBars result={result} /> : null}
-        </div>
-        {/* Printed here and not through the hero's own prop, which would put
-            the figures above the inputs that drive them. */}
-        {readouts.length > 0 ? <Catalog97HeroReadouts readouts={readouts} /> : null}
-      </Catalog97ProjectHero>
-
-      {result ? (
-        <>
-          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-            <div className="c97-shell">
-              <h2 className="c97-poster-sm">The portfolio</h2>
-              <TableScroll label="Portfolio holdings" style={{ marginTop: "var(--c97-sp-3)" }}>
-                <table className="c97-table">
+            {result ? (
+              <TableScroll label="Portfolio holdings">
+                <table className="byb-table">
+                  <caption className="sr-only">The portfolio before the buy</caption>
                   <thead>
                     <tr>
-                      <th>Holding</th>
-                      <th data-align="end">Value</th>
-                      <th data-align="end">Share</th>
+                      <th scope="col">Holding</th>
+                      <th scope="col" data-align="end">
+                        Value
+                      </th>
+                      <th scope="col" data-align="end">
+                        Share
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {result.before.holdings.map((holding) => (
                       <tr key={holding.symbol}>
                         <td>{holding.symbol}</td>
-                        <td data-align="end" className="c97-mono">
-                          {formatMoney(holding.value)}
-                        </td>
-                        <td data-align="end" className="c97-mono">
-                          {formatWeight(holding.weight)}
-                        </td>
+                        <td data-align="end">{formatMoney(holding.value)}</td>
+                        <td data-align="end">{formatWeight(holding.weight)}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </TableScroll>
-            </div>
+            ) : null}
           </section>
 
-          <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-            <div className="c97-shell">
-              <h2 className="c97-poster-sm">Before and after</h2>
-              <TableScroll label="Sector weights before and after" style={{ marginTop: "var(--c97-sp-3)" }}>
-                <table className="c97-table">
-                  <thead>
-                    <tr>
-                      <th>Sector</th>
-                      <th data-align="end">Now</th>
-                      <th data-align="end">With the buy</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sectorRows.map((sector) => (
-                      <tr key={sector}>
-                        <td>{sector}</td>
-                        <td data-align="end" className="c97-mono">
-                          {formatWeight(weightIn(result.before.sectors, sector))}
+          <section className="byb-result" aria-labelledby={`${ids}-result`}>
+            <h2 id={`${ids}-result`} className="sr-only">
+              What the buy changes
+            </h2>
+            <p role="status" aria-live="polite" className="byb-summary">
+              {summary}
+            </p>
+            {result ? <SectorBars result={result} /> : null}
+            {figures.length > 0 ? (
+              <dl className="byb-figures">
+                {figures.map((figure) => (
+                  <div key={figure.label} className="byb-figure">
+                    <dt>{figure.label}</dt>
+                    <dd className="byb-figure-value">{figure.value}</dd>
+                    {figure.was ? <dd className="byb-figure-was">{figure.was}</dd> : null}
+                  </div>
+                ))}
+              </dl>
+            ) : null}
+            {result?.window ? <p className="byb-note">Prices through {formatDay(result.window.to)}.</p> : null}
+            {result ? (
+              <details className="byb-detail">
+                <summary>Before and after, sector by sector</summary>
+                <TableScroll label="Sector weights before and after">
+                  <table className="byb-table">
+                    <caption className="sr-only">Sector weights before and after the buy</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Sector</th>
+                        <th scope="col" data-align="end">
+                          Now
+                        </th>
+                        <th scope="col" data-align="end">
+                          With the buy
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sectorRows.map((sector) => (
+                        <tr key={sector}>
+                          <td>{sector}</td>
+                          <td data-align="end">{formatWeight(weightIn(result.before.sectors, sector))}</td>
+                          <td data-align="end">{formatWeight(weightIn(result.after.sectors, sector))}</td>
+                        </tr>
+                      ))}
+                      <tr>
+                        <td>Largest holding</td>
+                        <td data-align="end">
+                          {result.before.holdings[0]
+                            ? `${result.before.holdings[0].symbol} ${formatWeight(result.before.holdings[0].weight)}`
+                            : "None"}
                         </td>
-                        <td data-align="end" className="c97-mono">
-                          {formatWeight(weightIn(result.after.sectors, sector))}
+                        <td data-align="end">
+                          {`${result.after.holdings[0].symbol} ${formatWeight(result.after.holdings[0].weight)}`}
                         </td>
                       </tr>
-                    ))}
-                    <tr>
-                      <td>Largest holding</td>
-                      <td data-align="end" className="c97-mono">
-                        {result.before.holdings[0]
-                          ? `${result.before.holdings[0].symbol} ${formatWeight(result.before.holdings[0].weight)}`
-                          : "None"}
-                      </td>
-                      <td data-align="end" className="c97-mono">
-                        {`${result.after.holdings[0].symbol} ${formatWeight(result.after.holdings[0].weight)}`}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Beta against SPY</td>
-                      <td data-align="end" className="c97-mono">
-                        {result.before.beta !== null ? formatRatio(result.before.beta) : "None"}
-                      </td>
-                      <td data-align="end" className="c97-mono">
-                        {result.after.beta !== null ? formatRatio(result.after.beta) : "None"}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </TableScroll>
-              {result.correlation !== null ? (
-                <p className="c97-prose" style={{ ...note, marginTop: "var(--c97-sp-2)" }}>
-                  Over the same year, {symbol}&apos;s daily moves had a correlation of {formatRatio(result.correlation)} with the
-                  current portfolio&apos;s, where 1 means they always moved together and 0 means no relationship.
-                </p>
-              ) : null}
-            </div>
-          </section>
-
-          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-            <div className="c97-shell">
-              <h2 className="c97-poster-sm">The market&apos;s five worst days</h2>
-              {result.window ? (
-                <p className="c97-prose" style={{ ...note, marginTop: "var(--c97-sp-2)" }}>
-                  The days SPY fell most between {formatDay(result.window.from)} and {formatDay(result.window.to)}, with each mix
-                  held at today&apos;s weights.
-                </p>
-              ) : null}
-              <TableScroll label="The market's five worst days" style={{ marginTop: "var(--c97-sp-3)" }}>
-                <table className="c97-table">
-                  <thead>
-                    <tr>
-                      <th>Day</th>
-                      <th data-align="end">SPY</th>
-                      <th data-align="end">Now</th>
-                      <th data-align="end">With the buy</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {result.worstDays.map((day) => (
-                      <tr key={day.date}>
-                        <td className="c97-tabular">{formatDay(day.date)}</td>
-                        <td data-align="end" className="c97-mono">
-                          {formatReturn(day.benchmark)}
-                        </td>
-                        <td data-align="end" className="c97-mono">
-                          {day.before !== null ? formatReturn(day.before) : "None"}
-                        </td>
-                        <td data-align="end" className="c97-mono">
-                          {formatReturn(day.after)}
-                        </td>
+                      <tr>
+                        <td>Beta against SPY</td>
+                        <td data-align="end">{result.before.beta !== null ? formatRatio(result.before.beta) : "None"}</td>
+                        <td data-align="end">{result.after.beta !== null ? formatRatio(result.after.beta) : "None"}</td>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </TableScroll>
-            </div>
+                    </tbody>
+                  </table>
+                </TableScroll>
+                {result.correlation !== null ? (
+                  <p className="byb-note">
+                    Over the same year, {symbol}&apos;s daily moves had a correlation of {formatRatio(result.correlation)}{" "}
+                    with the current portfolio&apos;s, where 1 means they always moved together and 0 means no
+                    relationship.
+                  </p>
+                ) : null}
+              </details>
+            ) : null}
           </section>
-        </>
-      ) : null}
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">How this works</h2>
-          <div className="c97-prose" style={{ marginTop: "var(--c97-sp-3)", maxWidth: "var(--c97-column)" }}>
-            <p>
-              Every number on this page comes from the same year of daily closing prices in my{" "}
-              <Link href="/investments" className="c97-link">investments data</Link>, so two readings can&apos;t disagree just because they were
-              measured over different periods. Both versions of the portfolio hold today&apos;s weights fixed through that
-              year, which shows what each mix would have done and is not a record of any real account.
-            </p>
-            <p>
-              Beta compares the portfolio&apos;s daily moves with SPY&apos;s on the same days, so 1 means it tends to move
-              with the market and anything above 1 means it tends to move more. The correlation compares the stock&apos;s
-              daily moves with the current portfolio&apos;s.
-            </p>
-            <p>
-              Index funds show as one slice because the data doesn&apos;t say what they hold, the prices are the last close
-              and not live quotes, and a year is a short window that a calmer or rougher year could change. The page
-              describes what a buy would change and doesn&apos;t say whether to make it, and nothing here is investment
-              advice.
-            </p>
-          </div>
         </div>
-      </section>
-    </>
+
+        {result ? (
+          <section className="byb-worst" aria-labelledby={`${ids}-worst`}>
+            <h2 id={`${ids}-worst`}>The market&apos;s five worst days</h2>
+            {result.window ? (
+              <p className="byb-note">
+                The days SPY fell most between {formatDay(result.window.from)} and {formatDay(result.window.to)}, with
+                each mix held at today&apos;s weights.
+              </p>
+            ) : null}
+            <TableScroll label="The market's five worst days">
+              <table className="byb-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Day</th>
+                    <th scope="col" data-align="end">
+                      SPY
+                    </th>
+                    <th scope="col" data-align="end">
+                      Now
+                    </th>
+                    <th scope="col" data-align="end">
+                      With the buy
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {result.worstDays.map((day) => (
+                    <tr key={day.date}>
+                      <td>{formatDay(day.date)}</td>
+                      <td data-align="end">{formatReturn(day.benchmark)}</td>
+                      <td data-align="end">{day.before !== null ? formatReturn(day.before) : "None"}</td>
+                      <td data-align="end">{formatReturn(day.after)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </TableScroll>
+          </section>
+        ) : null}
+
+        <section className="byb-how" aria-labelledby={`${ids}-how`}>
+          <h2 id={`${ids}-how`}>How this works</h2>
+          <p>
+            Every number on this page comes from the same year of daily closing prices in my{" "}
+            <Link href="/investments">investments data</Link>, so two readings can&apos;t disagree just because they
+            were measured over different periods. Both versions of the portfolio hold today&apos;s weights fixed through
+            that year, which shows what each mix would have done and is not a record of any real account. Beta compares
+            the portfolio&apos;s daily moves with SPY&apos;s on the same days, so 1 means it tends to move with the
+            market and anything above 1 means it tends to move more, and the correlation compares the stock&apos;s
+            daily moves with the current portfolio&apos;s. Index funds show as one slice because the data doesn&apos;t
+            say what they hold, the prices are the last close and not live quotes, and a year is a short window that a
+            calmer or rougher year could change. The page describes what a buy would change and doesn&apos;t say
+            whether to make it. Not investment advice.
+          </p>
+        </section>
+      </div>
+    </div>
   );
 }

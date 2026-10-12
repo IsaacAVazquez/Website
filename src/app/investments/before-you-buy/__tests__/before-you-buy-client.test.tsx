@@ -81,10 +81,10 @@ function summary() {
 }
 
 function readouts() {
-  return Array.from(document.querySelectorAll(".c97-stat")).map((stat) => ({
-    label: stat.querySelector("dt")?.textContent,
-    value: stat.querySelector(".c97-stat-value")?.textContent,
-    detail: stat.querySelector(".c97-stat-delta")?.textContent ?? null,
+  return Array.from(document.querySelectorAll(".byb-figure")).map((figure) => ({
+    label: figure.querySelector("dt")?.textContent,
+    value: figure.querySelector(".byb-figure-value")?.textContent,
+    detail: figure.querySelector(".byb-figure-was")?.textContent ?? null,
   }));
 }
 
@@ -137,14 +137,20 @@ describe("BeforeYouBuyClient", () => {
   });
 
   // The 2026-10-05 audit measured the stock field at y1525 on a 390x844 phone, a band below the sentence it changes.
-  it("keeps the stock, the amount, and the portfolio choice on the plate with the summary", async () => {
+  // Since the 2026-10-12 redesign the inputs sit beside the result in one calculator, ahead of it in the DOM.
+  it("keeps the stock, the amount, and the portfolio choice in the calculator ahead of the summary", async () => {
     useUniverse();
     await renderPage();
 
-    const plate = within(summary().parentElement as HTMLElement);
-    expect(plate.getByLabelText("Search stock symbol")).toBeInTheDocument();
-    expect(plate.getByRole("spinbutton", { name: "Amount in dollars" })).toBeInTheDocument();
-    expect(within(plate.getByRole("group", { name: "Portfolio" })).getAllByRole("button")).toHaveLength(2);
+    const calc = summary().closest(".byb-calc") as HTMLElement;
+    const panel = within(calc);
+    const precedes = (node: Element) =>
+      Boolean(node.compareDocumentPosition(summary()) & Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(precedes(panel.getByLabelText("Search stock symbol"))).toBe(true);
+    expect(precedes(panel.getByRole("spinbutton", { name: "Amount in dollars" }))).toBe(true);
+    const group = panel.getByRole("group", { name: "Portfolio" });
+    expect(within(group).getAllByRole("button")).toHaveLength(2);
+    expect(precedes(group)).toBe(true);
   });
 
   it("lists the sample holdings and the sector weights before and after", async () => {
