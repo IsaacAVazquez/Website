@@ -10,14 +10,7 @@ import {
   Compass,
   ExternalLink,
   Plane,
-  Sparkles,
 } from "lucide-react";
-import {
-  Catalog97HeroReadouts,
-  Catalog97ProjectHero,
-  type Catalog97Readout,
-} from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useClientNow } from "@/hooks/useClientNow";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import {
@@ -47,7 +40,6 @@ import {
 } from "@/lib/travelDeals";
 import { clamp } from "@/lib/utils";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
-import { fareGauge } from "./fareGauge";
 import { FareGaugeSignature } from "./FareGaugeSignature";
 import "./travel-deals.css";
 
@@ -58,7 +50,6 @@ const MAX_PARTY_FARE = 100_000;
 const TACTIC_PREVIEW = 6;
 
 const STORAGE_KEY = "travel-deals:v1";
-const ROUTE = "/travel-deals";
 
 const REGION_IDS = new Set<string>(DESTINATION_REGIONS.map((region) => region.id));
 const TACTIC_IDS = new Set<string>(DEAL_TACTICS.map((tactic) => tactic.id));
@@ -145,17 +136,6 @@ const CATEGORY_ICON: Record<TacticCategory, typeof Plane> = {
   ground: Bus,
 };
 
-type CategoryFilter = TacticCategory | "all";
-
-const FILTER_OPTIONS: { value: CategoryFilter; label: string }[] = [
-  { value: "all", label: "Everything" },
-  { value: "flights", label: "Flights" },
-  { value: "hotels", label: "Hotels" },
-  { value: "points", label: "Points & miles" },
-  { value: "timing", label: "Timing" },
-  { value: "ground", label: "On the ground" },
-];
-
 const IMPACT_LABEL: Record<DealTactic["impact"], string> = {
   high: "High impact",
   medium: "Medium impact",
@@ -199,10 +179,8 @@ function RatingChip({ tone, label }: { tone: "positive" | "negative" | null; lab
 export function TravelDealLabClient() {
   const rawState = useLocalStorageString(STORAGE_KEY);
   const state = useMemo(() => parseState(rawState), [rawState]);
-  const [filter, setFilter] = useState<CategoryFilter>("all");
 
   const [showAllTactics, setShowAllTactics] = useState(false);
-  const tripLabelId = useId();
   const quotedFare = state.quotedFare;
 
   // The points check is a quick calculation, so its inputs are not saved with the trip.
@@ -230,25 +208,9 @@ export function TravelDealLabClient() {
   );
   // The quote is for the whole party and the region's band is per seat, so the gauge reads the per-seat fare.
   const perTravelerFare = quotedFare / Math.max(1, state.travelers);
-  const gauge = useMemo(() => fareGauge(perTravelerFare, region), [perTravelerFare, region]);
   const points = useMemo(
     () => (pointsUsed > 0 ? valuePoints(cashPrice, taxesFees, pointsUsed) : null),
     [cashPrice, taxesFees, pointsUsed],
-  );
-
-  const visibleTactics = useMemo(
-    () =>
-      filter === "all"
-        ? DEAL_TACTICS
-        : DEAL_TACTICS.filter((tactic) => tactic.category === filter),
-    [filter],
-  );
-  const visibleTools = useMemo(
-    () =>
-      filter === "all"
-        ? RECOMMENDED_TOOLS
-        : RECOMMENDED_TOOLS.filter((tool) => tool.category === filter),
-    [filter],
   );
 
   const appliedCount = state.checkedTactics.length;
@@ -268,157 +230,176 @@ export function TravelDealLabClient() {
     });
   }
 
-  const lead = PROJECT_PRESS[ROUTE].lead;
-  const standfirst =
-    "Enter a trip and the fare you were quoted, and I will place that fare on the gauge for the region and mark where you sit in the booking window.";
   const disclosure = `Fare bands and the points baseline are curated, unverified estimates as of ${TRAVEL_DEALS_AS_OF}, and none of them is a live quote, so I'd use them to judge a price you've already found.`;
-  const shownTactics = showAllTactics ? visibleTactics : visibleTactics.slice(0, TACTIC_PREVIEW);
-
-  // The figures print after the trip and fare fields that drive them, which
-  // keeps the first field inside a phone's opening screen.
-  const heroReadouts: Catalog97Readout[] = [
-    {
-      label: "Your fare per seat",
-      value: quotedFare > 0 ? formatUsd(Math.round(perTravelerFare)) : "—",
-      detail:
-        quotedFare > 0
-          ? `${FARE_RATING_LABEL[gauge.rating]} vs ${formatUsd(region.typicalFare)} typical`
-          : "Add a fare below",
-    },
-    {
-      label: "Booking window",
-      value:
-        booking.daysUntilDeparture === null
-          ? "—"
-          : booking.daysUntilDeparture < 0
-          ? "Past"
-          : `${booking.daysUntilDeparture}d out`,
-      detail: booking.headline,
-    },
-    {
-      label: "Points value",
-      value: points ? `${points.centsPerPoint.toFixed(2)}¢/pt` : `${POINTS_BASELINE_CENTS.toFixed(1)}¢ baseline`,
-      detail: points ? POINTS_RATING_LABEL[points.rating] : "Add points below",
-    },
-  ];
+  const shownTactics = showAllTactics ? DEAL_TACTICS : DEAL_TACTICS.slice(0, TACTIC_PREVIEW);
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Travel Deal Lab"
-        standfirst={standfirst}
-      >
-        <div
-          data-c97-surface="paper"
-          className="c97-offset"
-          style={{ padding: "var(--c97-sp-3)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
-        >
-          <div role="group" aria-labelledby={tripLabelId} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-            <p id={tripLabelId} className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-              <Compass size={14} aria-hidden="true" />
-              Your trip and fare
-            </p>
+    <div className="td-root">
+      <div className="c97-shell c97-frame td-page">
+        <header className="td-head">
+          <h1>Travel Deal Lab</h1>
+          <p className="td-lede">
+            Enter a trip and the fare you were quoted, and I place that fare against the region&rsquo;s typical band and
+            mark where today sits in the booking window.
+          </p>
+        </header>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: "var(--c97-sp-3)", alignItems: "end" }}>
-              <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
-                <span className="c97-kicker">Destination region</span>
-                <select
-                  value={state.regionId}
-                  onChange={(event) => updateTrip({ regionId: event.target.value as RegionId })}
-                  className="c97-field"
-                >
-                  {DESTINATION_REGIONS.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
+        <div className="td-calc" data-testid="travel-deals-shell">
+          <div className="td-inputs" role="group" aria-label="Your trip and fare">
+            <label className="td-field">
+              <span className="c97-kicker">Destination region</span>
+              <select
+                value={state.regionId}
+                onChange={(event) => updateTrip({ regionId: event.target.value as RegionId })}
+                className="c97-field"
+              >
+                {DESTINATION_REGIONS.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
 
-              <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
-                <span className="c97-kicker">Departure date</span>
-                <input
-                  type="date"
-                  value={state.departureDate}
-                  onChange={(event) => updateTrip({ departureDate: event.target.value })}
-                  className="c97-field"
-                />
-              </label>
-
-              <NumberField
-                label="Quoted fare, whole party (USD)"
-                value={quotedFare}
-                min={0}
-                max={MAX_PARTY_FARE}
-                step={25}
-                onChange={(next) => updateTrip({ quotedFare: next })}
+            <label className="td-field">
+              <span className="c97-kicker">Departure date</span>
+              <input
+                type="date"
+                value={state.departureDate}
+                onChange={(event) => updateTrip({ departureDate: event.target.value })}
+                className="c97-field"
               />
+            </label>
 
-              <NumberField
-                label="Travelers"
-                value={state.travelers}
-                min={1}
-                max={12}
-                onChange={(travelers) => updateTrip({ travelers })}
-              />
-            </div>
+            <NumberField
+              label="Quoted fare, whole party (USD)"
+              value={quotedFare}
+              min={0}
+              max={MAX_PARTY_FARE}
+              step={25}
+              onChange={(next) => updateTrip({ quotedFare: next })}
+            />
+
+            <NumberField
+              label="Travelers"
+              value={state.travelers}
+              min={1}
+              max={12}
+              onChange={(travelers) => updateTrip({ travelers })}
+            />
+
+            <p className="td-note">Your trip, fare, and budget are saved in this browser.</p>
           </div>
 
-          {fare ? (
-            <div className="c97-fare-row" style={{ alignItems: "start" }}>
-              <p className="c97-prose" style={{ margin: 0 }}>
-                {fare.message}
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "var(--c97-sp-1)" }}>
-                <RatingChip tone={FARE_CHIP_TONE[fare.rating]} label={FARE_RATING_LABEL[fare.rating]} />
-                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  {fare.savings >= 0 ? "Save " : "Over by "}
-                  {formatUsd(Math.abs(fare.savings))} ({formatSignedPercent(fare.savingsPct)})
-                </span>
+          <section className="td-result" aria-label="Fare check">
+            <div className="td-verdict">
+              <h2 className="c97-kicker">Your fare · {region.label}</h2>
+              {fare ? (
+                <>
+                  <p className="td-verdict-line">
+                    <span className="td-verdict-fare">{formatUsd(Math.round(perTravelerFare))}</span>
+                    <span className="td-verdict-unit">a seat, against {formatUsd(region.typicalFare)} typical</span>
+                    <RatingChip tone={FARE_CHIP_TONE[fare.rating]} label={FARE_RATING_LABEL[fare.rating]} />
+                  </p>
+                  <p className="td-savings">
+                    {fare.savings >= 0 ? "Save " : "Over by "}
+                    {formatUsd(Math.abs(fare.savings))} for the party ({formatSignedPercent(fare.savingsPct)})
+                  </p>
+                  <p>{fare.message}</p>
+                </>
+              ) : (
+                <p className="td-prompt">Add a quoted fare to score it against the typical band for {region.label}.</p>
+              )}
+            </div>
+
+            <FareGaugeSignature
+              quoted={perTravelerFare}
+              region={region}
+              departureDate={state.departureDate}
+              today={today}
+            />
+
+            <div className="td-row">
+              <h3>
+                <CalendarClock size={16} aria-hidden="true" />
+                Booking window
+              </h3>
+              <div>
+                <p className="td-row-lead">{booking.headline}</p>
+                <p>{booking.message}</p>
               </div>
             </div>
-          ) : (
-            <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
-              Add a quoted fare to score it against the typical band for {region.label}.
-            </p>
-          )}
 
-          <FareGaugeSignature
-            quoted={perTravelerFare}
-            region={region}
-            departureDate={state.departureDate}
-            today={today}
-          />
-
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-            <Sparkles size={14} aria-hidden="true" style={{ flexShrink: 0 }} />
-            Your trip, fare, and budget are saved in this browser.
-          </p>
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-            {disclosure}
-          </p>
-        </div>
-        <Catalog97HeroReadouts readouts={heroReadouts} />
-      </Catalog97ProjectHero>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" data-testid="travel-deals-shell">
-        <div className="c97-shell">
-          <div className="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-4)" }}>
-            <div>
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                Booking window
-              </p>
-              <h2 className="c97-serif c97-h3">{booking.headline}</h2>
-              <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-                {booking.message}
-              </p>
+            <div className="td-row">
+              <h3>
+                <Compass size={16} aria-hidden="true" />
+                Budget split
+              </h3>
+              <div>
+                <table className="c97-table td-table">
+                  <caption className="sr-only">Budget split</caption>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Flights</th>
+                      <td data-align="end">{formatUsd(budget.flights)}</td>
+                      <td>≈35% of budget</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Lodging</th>
+                      <td data-align="end">{formatUsd(budget.lodging)}</td>
+                      <td>{formatUsd(budget.lodgingPerNight)} a night</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Food</th>
+                      <td data-align="end">{formatUsd(budget.food)}</td>
+                      <td>{formatUsd(budget.foodPerDayPerPerson)} a day per traveler</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Activities</th>
+                      <td data-align="end">{formatUsd(budget.activities)}</td>
+                      <td>≈10% of budget</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Buffer</th>
+                      <td data-align="end">{formatUsd(budget.buffer)}</td>
+                      <td>Fees, tips, surprises</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="td-note">
+                  {formatUsd(state.budget)} over {budget.days} days for {budget.travelers} traveler
+                  {budget.travelers === 1 ? "" : "s"}
+                </p>
+              </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
-              <h2 className="c97-serif c97-h3">The budget, split to spend</h2>
+            <div className="td-row">
+              <h3>
+                <Coins size={16} aria-hidden="true" />
+                Points value
+              </h3>
+              <div>
+                {points ? (
+                  <>
+                    <p className="td-row-lead">
+                      {points.centsPerPoint.toFixed(2)}¢ per point, against a {points.baseline.toFixed(1)}¢ baseline{" "}
+                      <RatingChip tone={POINTS_CHIP_TONE[points.rating]} label={POINTS_RATING_LABEL[points.rating]} />
+                    </p>
+                    <p>{points.message}</p>
+                  </>
+                ) : (
+                  <p>Enter how many points the award costs to see the value.</p>
+                )}
+              </div>
+            </div>
 
-              <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-3)", alignItems: "start" }}>
+            <p className="td-note td-disclosure">{disclosure}</p>
+          </section>
+
+          <div className="td-more">
+            <details className="td-disclose" open>
+              <summary>Budget</summary>
+              <div className="td-disclose-body">
                 <NumberField
                   label="Nights"
                   value={state.nights}
@@ -432,77 +413,19 @@ export function TravelDealLabClient() {
                   min={0}
                   max={1_000_000}
                   step={100}
-                  onChange={(budget) => updateTrip({ budget })}
+                  onChange={(nextBudget) => updateTrip({ budget: nextBudget })}
                 />
               </div>
+            </details>
 
-              <div>
-                <div
-                  className="overflow-x-auto"
-                  role="region"
-                  aria-label="Budget split (scrolls sideways)"
-                  tabIndex={0}
-                >
-                  <table className="c97-table">
-                    <thead>
-                      <tr>
-                        <th>Category</th>
-                        <th data-align="end">Amount</th>
-                        <th>Note</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Flights</td>
-                        <td data-align="end">{formatUsd(budget.flights)}</td>
-                        <td>≈35% of budget</td>
-                      </tr>
-                      <tr>
-                        <td>Lodging</td>
-                        <td data-align="end">{formatUsd(budget.lodging)}</td>
-                        <td>{formatUsd(budget.lodgingPerNight)} a night</td>
-                      </tr>
-                      <tr>
-                        <td>Food</td>
-                        <td data-align="end">{formatUsd(budget.food)}</td>
-                        <td>{formatUsd(budget.foodPerDayPerPerson)} a day per traveler</td>
-                      </tr>
-                      <tr>
-                        <td>Activities</td>
-                        <td data-align="end">{formatUsd(budget.activities)}</td>
-                        <td>≈10% of budget</td>
-                      </tr>
-                      <tr>
-                        <td>Buffer</td>
-                        <td data-align="end">{formatUsd(budget.buffer)}</td>
-                        <td>Fees, tips, surprises</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p className="c97-meta c97-tabular" style={{ marginTop: "var(--c97-sp-2)" }}>
-                  {budget.days} days · {budget.travelers} traveler{budget.travelers === 1 ? "" : "s"}
+            <details className="td-disclose" open>
+              <summary>Cash or points</summary>
+              <div className="td-disclose-body">
+                <p className="td-note">
+                  I net out the taxes and fees an award still charges in cash, then value the rest per point against a{" "}
+                  {POINTS_BASELINE_CENTS.toFixed(1)}¢ baseline for a transferable point. These three numbers are a quick
+                  check and are not saved.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-4)" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                <Coins size={14} aria-hidden="true" />
-                Cash or points
-              </p>
-              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                I net out the taxes and fees an award still charges in cash, then value the rest per
-                point against a {POINTS_BASELINE_CENTS.toFixed(1)}¢ baseline for a transferable point.
-              </p>
-
-              <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 <NumberField
                   label="Cash price (USD)"
                   value={cashPrice}
@@ -519,144 +442,62 @@ export function TravelDealLabClient() {
                   step={5}
                   onChange={setTaxesFees}
                 />
+                <NumberField
+                  label="Points required"
+                  value={pointsUsed}
+                  min={0}
+                  max={5_000_000}
+                  step={1000}
+                  onChange={setPointsUsed}
+                />
               </div>
-              <NumberField
-                label="Points required"
-                value={pointsUsed}
-                min={0}
-                max={5_000_000}
-                step={1000}
-                onChange={setPointsUsed}
-              />
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                These three numbers are a quick check and are not saved.
-              </p>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-              {points && pointsUsed > 0 ? (
-                <>
-                  <dl className="c97-stat">
-                    <dt className="c97-stat-label">Redemption value</dt>
-                    <dd className="c97-stat-value">{points.centsPerPoint.toFixed(2)}¢ per point</dd>
-                    <dd className="c97-stat-delta" data-tone={POINTS_CHIP_TONE[points.rating] ?? undefined}>
-                      vs {points.baseline.toFixed(1)}¢ baseline
-                    </dd>
-                  </dl>
-                  <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
-                    <RatingChip tone={POINTS_CHIP_TONE[points.rating]} label={POINTS_RATING_LABEL[points.rating]} />
-                  </div>
-                  <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>{points.message}</p>
-                </>
-              ) : (
-                <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
-                  Enter how many points the award costs to see the value.
-                </p>
-              )}
-            </div>
+            </details>
           </div>
         </div>
-      </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <div>
-              <p className="c97-kicker">The playbook</p>
-              <h2 className="c97-poster-sm">How to actually find the deals</h2>
-            </div>
-            <span className="c97-meta c97-tabular">
+        <section className="td-playbook" aria-labelledby="td-playbook-title">
+          <div className="td-section-head">
+            <h2 id="td-playbook-title">How I find a better fare</h2>
+            <p className="td-count">
               {appliedCount} of {DEAL_TACTICS.length} applied
-            </span>
+            </p>
           </div>
-
-          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="group" aria-label="Filter tactics and tools">
-            {FILTER_OPTIONS.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                aria-pressed={filter === option.value}
-                onClick={() => setFilter(option.value)}
-                className="min-h-[44px]"
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-
-          <ul className="c97-columns" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          <ol className="td-tactics">
             {shownTactics.map((tactic) => (
-              <li key={tactic.id}>
-                <TacticCard
-                  tactic={tactic}
-                  checked={state.checkedTactics.includes(tactic.id)}
-                  onToggle={() => toggleTactic(tactic.id)}
-                />
+              <TacticRow
+                key={tactic.id}
+                tactic={tactic}
+                checked={state.checkedTactics.includes(tactic.id)}
+                onToggle={() => toggleTactic(tactic.id)}
+              />
+            ))}
+          </ol>
+          <button
+            type="button"
+            className="c97-btn-ghost td-more-tactics"
+            aria-expanded={showAllTactics}
+            onClick={() => setShowAllTactics((current) => !current)}
+          >
+            {showAllTactics ? "Show fewer tactics" : `Show all ${DEAL_TACTICS.length} tactics`}
+          </button>
+
+          <h3 className="td-tools-title">Where I actually search</h3>
+          <ul className="td-tools">
+            {RECOMMENDED_TOOLS.map((tool) => (
+              <li key={tool.id}>
+                <a href={tool.url} target="_blank" rel="noopener noreferrer">
+                  {tool.name}
+                  <ExternalLink size={13} aria-hidden="true" />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+                <span className="td-tool-for">{tool.bestFor}</span>
               </li>
             ))}
           </ul>
-
-          {visibleTactics.length > TACTIC_PREVIEW ? (
-            <button
-              type="button"
-              className="c97-btn-ghost"
-              aria-expanded={showAllTactics}
-              onClick={() => setShowAllTactics((current) => !current)}
-              style={{ alignSelf: "flex-start" }}
-            >
-              {showAllTactics ? "Show fewer tactics" : `Show all ${visibleTactics.length} tactics`}
-            </button>
-          ) : null}
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>The toolkit</p>
-          <h2 className="c97-poster-sm">Where I actually search</h2>
-
-          {visibleTools.length === 0 ? (
-            <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
-              No tools tagged for this category. The tactics above still apply, and switching the
-              filter back to Everything brings back the full toolkit.
-            </p>
-          ) : (
-            <ul style={{ display: "grid", gap: "var(--c97-sp-1)", padding: 0, margin: "0 0 var(--c97-sp-2)", listStyle: "none" }}>
-              {visibleTools.map((tool) => (
-                <li key={tool.id}>
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="c97-fare-row"
-                    style={{ textDecoration: "none", color: "var(--c97-ink)" }}
-                  >
-                    <span style={{ minWidth: 0 }}>
-                      <span className="c97-serif" style={{ display: "block" }}>
-                        {tool.name}
-                      </span>
-                      <span className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        {tool.bestFor}
-                      </span>
-                      <span className="c97-prose" style={{ display: "block", fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
-                        {tool.note}
-                      </span>
-                    </span>
-                    <ExternalLink size={16} aria-hidden="true" style={{ flexShrink: 0 }} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-            {filter === "all"
-              ? "Links open the tool's own site. I have no affiliate relationship with any of them."
-              : "Showing tools for this category. Links open the tool's own site."}
-          </p>
-        </div>
-      </section>
-    </>
+          <p className="td-note">Links open the tool&rsquo;s own site. I have no affiliate relationship with any of them.</p>
+        </section>
+      </div>
+    </div>
   );
 }
 
@@ -688,8 +529,8 @@ function NumberField({ label, value, min, max, step = 1, onChange }: NumberField
   const noteId = useId();
 
   return (
-    <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
-      <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
+    <div className="td-field">
+      <label className="td-field">
         <span className="c97-kicker">{label}</span>
         <input
           type="number"
@@ -713,7 +554,7 @@ function NumberField({ label, value, min, max, step = 1, onChange }: NumberField
         />
       </label>
       {clamped ? (
-        <p id={noteId} className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+        <p id={noteId} className="td-note">
           This runs from {min.toLocaleString("en-US")} to {max.toLocaleString("en-US")}, so I&rsquo;m using{" "}
           {value.toLocaleString("en-US")}.
         </p>
@@ -722,33 +563,28 @@ function NumberField({ label, value, min, max, step = 1, onChange }: NumberField
   );
 }
 
-interface TacticCardProps {
+interface TacticRowProps {
   tactic: DealTactic;
   checked: boolean;
   onToggle: () => void;
 }
 
-function TacticCard({ tactic, checked, onToggle }: TacticCardProps) {
+function TacticRow({ tactic, checked, onToggle }: TacticRowProps) {
   const Icon = CATEGORY_ICON[tactic.category];
   return (
-    <article className="c97-panel" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)", height: "100%" }}>
-      <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-        <span className="c97-meta" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-          <Icon size={14} aria-hidden="true" />
-          {CATEGORY_LABELS[tactic.category]}
-        </span>
-        <span className="c97-chip">{IMPACT_LABEL[tactic.impact]}</span>
+    <li className="td-tactic" data-applied={checked || undefined}>
+      <div className="td-tactic-body">
+        <h3>{tactic.title}</h3>
+        <p>{tactic.body}</p>
+        <p className="td-tactic-meta">
+          <Icon size={13} aria-hidden="true" />
+          {CATEGORY_LABELS[tactic.category]} · {IMPACT_LABEL[tactic.impact]}
+        </p>
       </div>
-
-      <h3 className="c97-serif c97-h3">{tactic.title}</h3>
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", flex: 1 }}>
-        {tactic.body}
-      </p>
-
-      <button type="button" onClick={onToggle} aria-pressed={checked} className="c97-btn-ghost" style={{ alignSelf: "flex-start" }}>
-        <Check size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+      <button type="button" onClick={onToggle} aria-pressed={checked} className="c97-btn-ghost td-apply">
+        <Check size={14} aria-hidden="true" />
         {checked ? "Applied" : "Mark applied"}
       </button>
-    </article>
+    </li>
   );
 }

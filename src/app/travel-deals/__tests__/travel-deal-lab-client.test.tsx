@@ -72,7 +72,7 @@ describe("TravelDealLabClient number fields", () => {
   it("opens a first visit with no fare and asks for one", () => {
     render(<TravelDealLabClient />);
     expect(screen.getByLabelText("Quoted fare, whole party (USD)")).toHaveValue(0);
-    expect(screen.getByText("Add a fare below")).toBeInTheDocument();
+    expect(screen.getByText("Add a quoted fare to score it against the typical band for Western Europe.")).toBeInTheDocument();
     expect(screen.getByText("Your trip, fare, and budget are saved in this browser.")).toBeInTheDocument();
   });
 
@@ -81,7 +81,7 @@ describe("TravelDealLabClient number fields", () => {
     fireEvent.change(screen.getByLabelText("Quoted fare, whole party (USD)"), { target: { value: "600" } });
 
     expect(JSON.parse(window.localStorage.getItem(STORAGE_KEY)!).quotedFare).toBe(600);
-    // Two travelers by default, so the readout is the per-seat fare.
+    // Two travelers by default, so the verdict is the per-seat fare.
     expect(screen.getAllByText("$300").length).toBeGreaterThan(0);
 
     first.unmount();
@@ -89,7 +89,7 @@ describe("TravelDealLabClient number fields", () => {
     render(<TravelDealLabClient />);
     expect(screen.getByLabelText("Quoted fare, whole party (USD)")).toHaveValue(600);
     expect(screen.getAllByText("$300").length).toBeGreaterThan(0);
-    expect(screen.queryByText("Add a fare below")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Add a quoted fare to score it/)).not.toBeInTheDocument();
   });
 
   it("reads a saved fare that is missing or out of range as a bounded number", () => {

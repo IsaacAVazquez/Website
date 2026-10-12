@@ -55,10 +55,10 @@ const CHAR_NARROW = 32 * 0.62;
 function FittedLabel({ x, y, text, className }: { x: number; y: number; text: string; className: string }) {
   return (
     <>
-      <text x={fitLabel(x, text.length * CHAR_WIDE, 0, W)} y={y} textAnchor="middle" className={`${className} c97-fare-wide`}>
+      <text x={fitLabel(x, text.length * CHAR_WIDE, 0, W)} y={y} textAnchor="middle" className={`${className} td-fare-wide`}>
         {text}
       </text>
-      <text x={fitLabel(x, text.length * CHAR_NARROW, 0, W)} y={y} textAnchor="middle" className={`${className} c97-fare-narrow`}>
+      <text x={fitLabel(x, text.length * CHAR_NARROW, 0, W)} y={y} textAnchor="middle" className={`${className} td-fare-narrow`}>
         {text}
       </text>
     </>
@@ -75,7 +75,7 @@ const RATING_LABEL: Record<FareRating, string> = {
 /**
  * The page's signature. A fare gauge, the region's typical band with a
  * needle at the quoted fare, and a booking strip marking the sweet-spot
- * window against today. Both read straight off the trip form below, which
+ * window against today. Both read straight off the trip form beside it, which
  * stays the keyboard path since this SVG carries no interactive marks.
  */
 export function FareGaugeSignature({ quoted, region, departureDate, today }: FareGaugeSignatureProps) {
@@ -112,12 +112,12 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
       : "Today is past the sweet spot window.";
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby="fare-signature-title fare-signature-desc" className="c97-fare-signature">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby="fare-signature-title fare-signature-desc" className="td-fare-signature">
       <title id="fare-signature-title">{`Fare gauge and booking window for ${region.label}`}</title>
       <desc id="fare-signature-desc">{`${fareDesc} ${bookingDesc}`}</desc>
 
       {/* Fare gauge */}
-      <text x={X_LEFT} y={GAUGE_KICKER_Y} className="c97-fare-kicker">
+      <text x={X_LEFT} y={GAUGE_KICKER_Y} className="td-fare-kicker">
         Fare gauge · {region.label}
       </text>
 
@@ -125,12 +125,12 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
         <FittedLabel
           x={needleX}
           y={GAUGE_RATING_Y}
-          className="c97-fare-label"
+          className="td-fare-label"
           text={`${gauge.clamped === "low" ? "‹ " : ""}${formatUsd(quoted)} a seat · ${RATING_LABEL[gauge.rating]}${gauge.clamped === "high" ? " ›" : ""}`}
         />
       ) : (
-        <text x={W / 2} y={GAUGE_RATING_Y} textAnchor="middle" className="c97-fare-axis c97-fare-prompt">
-          Add a quoted fare below to place it on the gauge
+        <text x={W / 2} y={GAUGE_RATING_Y} textAnchor="middle" className="td-fare-axis td-fare-prompt">
+          Add a quoted fare to place it on the gauge
         </text>
       )}
 
@@ -148,26 +148,26 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
         </>
       ) : null}
 
-      <text x={X_LEFT} y={GAUGE_DOMAIN_ROW_Y} textAnchor="start" className="c97-fare-axis">
+      <text x={X_LEFT} y={GAUGE_DOMAIN_ROW_Y} textAnchor="start" className="td-fare-axis">
         {formatUsd(gauge.domain.low)}
       </text>
-      <text x={typicalX} y={GAUGE_DOMAIN_ROW_Y} textAnchor="middle" className="c97-fare-axis">
+      <text x={typicalX} y={GAUGE_DOMAIN_ROW_Y} textAnchor="middle" className="td-fare-axis">
         Typical {formatUsd(region.typicalFare)}
       </text>
-      <text x={X_RIGHT} y={GAUGE_DOMAIN_ROW_Y} textAnchor="end" className="c97-fare-axis">
+      <text x={X_RIGHT} y={GAUGE_DOMAIN_ROW_Y} textAnchor="end" className="td-fare-axis">
         {formatUsd(gauge.domain.high)}
       </text>
 
       {/* Booking strip */}
-      <text x={X_LEFT} y={STRIP_KICKER_Y} className="c97-fare-kicker">
+      <text x={X_LEFT} y={STRIP_KICKER_Y} className="td-fare-kicker">
         Booking window
       </text>
       {sweetLabelsFit ? (
         <>
-          <text x={sweetX} y={STRIP_ABOVE_ROW_Y} textAnchor="start" className="c97-fare-axis c97-fare-axis-minor">
+          <text x={sweetX} y={STRIP_ABOVE_ROW_Y} textAnchor="start" className="td-fare-axis td-fare-axis-minor">
             {sweetMaxLabel}
           </text>
-          <text x={sweetX + sweetW} y={STRIP_ABOVE_ROW_Y} textAnchor="end" className="c97-fare-axis c97-fare-axis-minor">
+          <text x={sweetX + sweetW} y={STRIP_ABOVE_ROW_Y} textAnchor="end" className="td-fare-axis td-fare-axis-minor">
             {sweetMinLabel}
           </text>
         </>
@@ -176,12 +176,12 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
           x={fitLabel(sweetX + sweetW / 2, `${region.sweetSpotMaxDays} to ${sweetMinLabel}`.length * CHAR_WIDE, 0, W)}
           y={STRIP_ABOVE_ROW_Y}
           textAnchor="middle"
-          className="c97-fare-axis c97-fare-axis-minor"
+          className="td-fare-axis td-fare-axis-minor"
         >
           {`${region.sweetSpotMaxDays} to ${sweetMinLabel}`}
         </text>
       )}
-      <text x={X_RIGHT} y={STRIP_KICKER_Y} textAnchor="end" className="c97-fare-axis">
+      <text x={X_RIGHT} y={STRIP_KICKER_Y} textAnchor="end" className="td-fare-axis">
         Departure
       </text>
 
@@ -203,15 +203,15 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
           <FittedLabel
             x={todayX}
             y={STRIP_BELOW_ROW_Y}
-            className="c97-fare-label"
+            className="td-fare-label"
             text={`Today, ${strip.daysOut !== null && strip.daysOut < 0 ? "past" : `${strip.daysOut}d out`}`}
           />
         </>
       ) : (
-        <text x={W / 2} y={STRIP_BELOW_ROW_Y} textAnchor="middle" className="c97-fare-axis c97-fare-prompt">
+        <text x={W / 2} y={STRIP_BELOW_ROW_Y} textAnchor="middle" className="td-fare-axis td-fare-prompt">
           {departureIsSet
             ? "Checking today's date"
-            : "Add a departure date below to place today on the strip"}
+            : "Add a departure date to place today on the strip"}
         </text>
       )}
     </svg>

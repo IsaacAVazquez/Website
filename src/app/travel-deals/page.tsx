@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Optimize a trip's cost without the busywork. Get booking-window timing, a fare deal-score, a cash-vs-points check, a budget split, and the playbook and tools for finding deals on flights and hotels. Browser-persisted, no account required.",
   canonicalUrl: "/travel-deals",
-  dateModified: "2026-07-07",
+  dateModified: "2026-10-12",
 });
 
 export default function TravelDealLabPage() {
