@@ -656,3 +656,25 @@
     height: auto;
   }
 }
+
+/* On a phone the record line stays one row of three, so the bracket comes up sooner. */
+@media screen and (max-width: 639px) {
+  .wcup-record {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--c97-sp-1);
+    width: 100%;
+  }
+
+  .wcup-record > div {
+    padding-left: var(--c97-sp-1);
+  }
+
+  .wcup-record-value {
+    font-size: 1rem;
+  }
+
+  .wcup-record-detail {
+    font-size: 0.75rem;
+  }
+}

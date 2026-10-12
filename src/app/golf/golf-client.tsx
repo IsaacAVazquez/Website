@@ -543,9 +543,11 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
           {playerSnapshot?.player ? (
             <>
+              {/* A finished event has no next round, whatever tee time the feed still carries. */}
               <p className="dd-note">
-                Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}.{" "}
-                {playerSnapshot.tournamentStatus.status}
+                {tournament.completed
+                  ? playerSnapshot.tournamentStatus.status
+                  : `Next round tee time ${playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}. ${playerSnapshot.tournamentStatus.status}`}
               </p>
 
               <div className="dd-section">
