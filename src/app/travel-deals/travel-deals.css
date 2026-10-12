@@ -259,7 +259,10 @@
   width: 100%;
 }
 
+/* Row headers, so the borrowed sticky header rule comes off them. */
 .td-table th {
+  position: static;
+  background: none;
   font-weight: 400;
   text-align: left;
 }
@@ -459,6 +462,12 @@
 }
 
 @media print {
+  .td-fare-signature,
+  .td-verdict,
+  .td-row {
+    break-inside: avoid;
+  }
+
   .td-apply,
   .td-more-tactics {
     display: none;

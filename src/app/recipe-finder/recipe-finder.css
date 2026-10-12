@@ -103,7 +103,10 @@
     grid-template-columns: minmax(17rem, 21rem) minmax(0, 1fr);
     gap: var(--c97-sp-5);
   }
+}
 
+/* The shelf rides along only on a window tall enough to hold it. A pantry long enough to outgrow even that window loses its foot until the box ends, the cost of not clipping the suggestion list. */
+@media screen and (min-width: 1024px) and (min-height: 820px) {
   .rf-shelf {
     position: sticky;
     top: var(--c97-sp-3);

@@ -743,6 +743,7 @@
 
   .tp-postcard-stamp {
     align-self: start;
+    justify-self: start;
     order: -1;
     flex-direction: row;
   }
@@ -750,6 +751,7 @@
 
 /* On paper the plan prints without its forms and controls. */
 @media print {
+  .tp-grid-cue,
   .tp-new-trip,
   .tp-manage,
   .tp-stop-form,
