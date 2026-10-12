@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { startTransition, useState, type ReactNode } from "react";
+import { startTransition, useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { RegionBracket } from "./RegionBracket";
 import {
@@ -34,6 +34,12 @@ import {
   type MarchMadnessView,
 } from "./march-madness-state";
 import "./march-madness.css";
+
+type RouteReading = MarchMadnessSearchState & { pick: string | null };
+
+function sameReading(a: RouteReading, b: RouteReading): boolean {
+  return a.view === b.view && a.region === b.region && a.analytics === b.analytics && a.pick === b.pick;
+}
 
 const BADGE_TONE: Record<PickEntry["badge"], "red" | "green" | "amber" | "gray"> = {
   FLIP: "red",
@@ -533,25 +539,19 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
   );
 }
 
-function PicksSection({ initialPick }: { initialPick: string | null }) {
-  // Hydrate the open pick from `?pick=...` so a shared link lands with the
-  // referenced pick already expanded. The server reads the same param and
-  // passes it in, so the first paint matches what hydration reads from the
-  // URL. We use replaceState below to keep the URL in sync without spamming
-  // history.
-  const [expanded, setExpanded] = useState<string | null>(() => {
-    if (typeof window === "undefined") return initialPick;
-    return new URL(window.location.href).searchParams.get("pick");
-  });
-
+/**
+ * The picks board. The open pick belongs to the client, which keeps it in the
+ * URL as `?pick=`, so a copied link, a reload, and Back all land on it.
+ */
+function PicksSection({
+  expanded,
+  onToggle,
+}: {
+  expanded: string | null;
+  onToggle: (id: string | null) => void;
+}) {
   function togglePick(id: string, isOpen: boolean) {
-    const next = isOpen ? null : id;
-    setExpanded(next);
-    if (typeof window === "undefined") return;
-    const url = new URL(window.location.href);
-    if (next) url.searchParams.set("pick", next);
-    else url.searchParams.delete("pick");
-    window.history.replaceState(null, "", url.toString());
+    onToggle(isOpen ? null : id);
   }
 
   const groupMeta: Record<PickEntry["group"], { label: string; sublabel: string; tone: string }> = {
@@ -669,22 +669,34 @@ export function MarchMadnessClient({
   const [view, setView] = useState(initialState.view);
   const [region, setRegion] = useState(initialState.region);
   const [analytics, setAnalytics] = useState(initialState.analytics);
+  const [pick, setPick] = useState<string | null>(initialPick);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   // A link or the back button can change the URL under the client, so its
   // state follows the server's reading. The page used to remount the whole
   // client on every change, which dropped keyboard focus off the tab that
-  // made it.
-  const [synced, setSynced] = useState(initialState);
-  if (
-    synced.view !== initialState.view ||
-    synced.region !== initialState.region ||
-    synced.analytics !== initialState.analytics
-  ) {
-    setSynced(initialState);
-    setView(initialState.view);
-    setRegion(initialState.region);
-    setAnalytics(initialState.analytics);
+  // made it. While a tab change of ours is still on its way, only the reading
+  // for the state we last pushed is adopted, so an earlier response arriving
+  // late never flips the board back under a newer choice.
+  const serverReading: RouteReading = { ...initialState, pick: initialPick };
+  const [synced, setSynced] = useState<RouteReading>(serverReading);
+  const [pushed, setPushed] = useState<RouteReading | null>(null);
+  if (!sameReading(synced, serverReading)) {
+    setSynced(serverReading);
+    if (pushed === null || sameReading(pushed, serverReading)) {
+      if (pushed !== null) setPushed(null);
+      setView(serverReading.view);
+      setRegion(serverReading.region);
+      setAnalytics(serverReading.analytics);
+      setPick(serverReading.pick);
+    }
   }
+
+  useEffect(() => {
+    // Back and forward are the reader's navigation, not ours, so the next server reading wins.
+    const forget = () => setPushed(null);
+    window.addEventListener("popstate", forget);
+    return () => window.removeEventListener("popstate", forget);
+  }, []);
 
   const articleHref = `/writing/${MARCH_MADNESS_ARTICLE_SLUG}`;
   const championshipWinner = FINAL_FOUR_SUMMARY[FINAL_FOUR_SUMMARY.length - 1]?.winner ?? null;
@@ -700,6 +712,11 @@ export function MarchMadnessClient({
       analytics,
       ...nextState,
     };
+    const nextPick = mergedState.view === "picks" ? pick : null;
+    if (nextPick !== pick) setPick(nextPick);
+    const nextReading = { ...mergedState, pick: nextPick };
+    // Pushing the state the server already shows changes nothing, so nothing is pending.
+    setPushed(sameReading(nextReading, synced) ? null : nextReading);
 
     if (nextState.view) {
       setView(nextState.view);
@@ -717,6 +734,7 @@ export function MarchMadnessClient({
 
     const href = buildMarchMadnessHref({
       ...mergedState,
+      pick: nextPick,
       hash: options?.hash,
     });
 
@@ -725,7 +743,14 @@ export function MarchMadnessClient({
     });
   };
 
-  const currentHref = buildMarchMadnessHref({ view, region, analytics });
+  const currentHref = buildMarchMadnessHref({ view, region, analytics, pick });
+
+  // Opening a pick rewrites the address in place, without a server round trip.
+  const handleTogglePick = (next: string | null) => {
+    setPick(next);
+    setCopyStatus("idle");
+    window.history.replaceState(null, "", buildMarchMadnessHref({ view, region, analytics, pick: next }));
+  };
 
   const handleCopyLink = async () => {
     try {
@@ -737,7 +762,13 @@ export function MarchMadnessClient({
   };
 
   return (
-    <div className="mm-root">
+    <div
+      className="mm-root"
+      // A link click is the reader's navigation too, so it clears our pending tab change.
+      onClickCapture={(event) => {
+        if ((event.target as Element).closest?.("a[href]")) setPushed(null);
+      }}
+    >
       <div className="c97-shell c97-frame mm-page">
         <header className="mm-head">
           <p className="mm-kicker">{`2026 NCAA Tournament · ${MARCH_MADNESS_UPDATED_LABEL}`}</p>
@@ -865,7 +896,7 @@ export function MarchMadnessClient({
 
           {view === "bracket" ? <RegionBracketDetail data={BRACKET[region]} /> : null}
 
-          {view === "picks" ? <PicksSection initialPick={initialPick} /> : null}
+          {view === "picks" ? <PicksSection expanded={pick} onToggle={handleTogglePick} /> : null}
 
           {view === "analytics" ? (
             <div className="mm-stack">

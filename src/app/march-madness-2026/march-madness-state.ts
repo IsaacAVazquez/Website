@@ -64,7 +64,7 @@ export function normalizeMarchMadnessState(searchParams?: {
 }
 
 export function buildMarchMadnessHref(
-  state: Partial<MarchMadnessSearchState> & { hash?: string } = {}
+  state: Partial<MarchMadnessSearchState> & { hash?: string; pick?: string | null } = {}
 ): string {
   const nextState = {
     ...DEFAULT_MARCH_MADNESS_STATE,
@@ -83,6 +83,11 @@ export function buildMarchMadnessHref(
 
   if (nextState.analytics !== DEFAULT_MARCH_MADNESS_STATE.analytics) {
     params.set("analytics", nextState.analytics);
+  }
+
+  // An open pick only means something on the picks board.
+  if (state.pick && nextState.view === "picks") {
+    params.set("pick", state.pick);
   }
 
   const query = params.toString();

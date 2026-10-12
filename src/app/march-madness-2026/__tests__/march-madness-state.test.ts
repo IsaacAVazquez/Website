@@ -42,4 +42,9 @@ describe("march-madness-state", () => {
       "/march-madness-2026?view=analytics&region=west&analytics=injuries#analysis-workspace"
     );
   });
+
+  it("carries an open pick only on the picks board", () => {
+    expect(buildMarchMadnessHref({ view: "picks", pick: "tz-0" })).toBe("/march-madness-2026?view=picks&pick=tz-0");
+    expect(buildMarchMadnessHref({ view: "bracket", pick: "tz-0" })).toBe("/march-madness-2026");
+  });
 });

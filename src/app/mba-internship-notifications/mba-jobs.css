@@ -548,6 +548,13 @@
   font-weight: 700;
 }
 
+.mba-job-id {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+}
+
 .mba-job-company {
   font-size: 0.8125rem;
   color: var(--mba-ink-2);

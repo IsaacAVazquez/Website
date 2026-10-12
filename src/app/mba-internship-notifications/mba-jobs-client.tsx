@@ -619,7 +619,7 @@ function JobCard({
     <article className="mba-job" onMouseEnter={onMarkSeen} onFocus={onMarkSeen}>
       <div className="mba-job-head">
         <CompanyAvatar company={company} />
-        <div style={{ minWidth: 0, display: "flex", flexDirection: "column", gap: 2 }}>
+        <div className="mba-job-id">
           <p className="mba-job-company">
             <strong>{job.companyName}</strong>
             {job.department ? ` · ${job.department}` : ""}
@@ -1977,6 +1977,19 @@ export function MBAJobsClient({
           )}
         </header>
 
+        {/* Under the title bar on every view, so the live-roles count above it
+            carries its context on the pipeline too, where source health no
+            longer prints. */}
+        {failedBoards.length > 0 && !isLoading && (
+          <p className="mba-notice" role="status">
+            <span className="mba-notice-tag">Partial results.</span>
+            <span>
+              Some companies could not be reached: {failedBoards.join(", ")}. Results shown and the
+              live-roles count are partial.
+            </span>
+          </p>
+        )}
+
         {view === "candidates" ? (
           <CandidatesView
             candidates={candidates.candidates}
@@ -2189,16 +2202,6 @@ export function MBAJobsClient({
                   </div>
                 </div>
               </div>
-
-              {failedBoards.length > 0 && !isLoading && (
-                <p className="mba-notice" role="status">
-                  <span className="mba-notice-tag">Partial results.</span>
-                  <span>
-                    Some companies could not be reached: {failedBoards.join(", ")}. Results shown
-                    are partial.
-                  </span>
-                </p>
-              )}
 
               <div className="mba-results-head">
                 <h2 id="mba-live-roles-heading" className="mba-h2">

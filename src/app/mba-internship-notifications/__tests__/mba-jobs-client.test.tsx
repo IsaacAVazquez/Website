@@ -278,6 +278,18 @@ describe("MBAJobsClient", () => {
     expect(applyButton).toHaveClass("c97-btn");
   });
 
+  it("keeps the partial-results notice under the title bar on the pipeline view", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      fetchErrors: [{ companyId: "stripe", companyName: "Stripe", message: "timeout" }],
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByLabelText("Search applications")).toBeVisible();
+    expect(screen.getByText(/Some companies could not be reached: Stripe\./)).toBeVisible();
+  });
+
   it("shows the fetched date of the list it displays, however old the list is", () => {
     const fetchedAt = new Date("2026-09-20T18:30:00.000Z");
     mockUseMBAJobs.mockReturnValue(buildHookValue({ lastFetchedAt: fetchedAt }));
