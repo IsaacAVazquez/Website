@@ -34,6 +34,22 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this board to turn one large fantasy ranking into the decisions I actually make on draft day, including position runs, scoring changes, tier breaks, and where average draft position disagrees with expert consensus.",
   },
+  "/fantasy-football/best-ball": {
+    purpose:
+      "I built this to read one best ball board through the rules of each Underdog contest I might enter, from Best Ball Mania VII to Superflex. Each lens shows the room, how I read it, and a build range, and the board under it follows Underdog ADP, or a sourced Superflex consensus, with the expert ranks printed beside it.",
+  },
+  "/fantasy-football/best-ball/draft-tracker": {
+    purpose:
+      "I use this room to log a manual best ball draft pick by pick on Underdog or a similar site. It keeps the snake order straight, checks my build against the contest's roster targets and the rest of the room, and saves each contest's room separately in this browser so one set of picks never overwrites another.",
+  },
+  "/fantasy-football/draft-tracker": {
+    purpose:
+      "I use this to follow a redraft room as it happens, logging every pick in the room against the consensus board so I can see reaches, steals, position runs, and what my roster still needs on each turn. The room saves in this browser, and the recap afterward replays each of my turns against what the board suggested.",
+  },
+  "/fantasy-football/trade-calculator": {
+    purpose:
+      "I built this to check a one-QB redraft trade against something steadier than my gut, turning expert consensus and mock-draft ADP into values for my league's scoring, size, and lineup. It withholds the verdict when a source is stale or a player has no current market reading, because I would rather it say nothing than say something I cannot support.",
+  },
   "/formula-1": {
     purpose:
       "I use this dashboard to move between the next Grand Prix, the driver and constructor standings, and the result of each race without losing the season context. The point is a clean answer to where the championship stands and what changed at the last meeting.",
