@@ -846,7 +846,7 @@ export function MockDraftClient() {
             Mock <TitleAccent>Draft</TitleAccent>
           </>
         }
-        lead="A seeded practice room where the other teams pick from the published consensus board and market ADP, so the simulated picks rehearse a draft rather than predict one."
+        lead="A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board and market ADP."
         freshness={<FreshnessParts parts={[{ label: kicker }, ...headerChips]} />}
       />
 
