@@ -1,73 +1,493 @@
-/* PGA Tour Pulse: the manual leaderboard signature and its slats. */
+/*
+ * PGA Tour Pulse, drawn as a tournament leaderboard: white name slats on a
+ * deep green ground, the way the Masters board stands by the eighteenth, and
+ * golf's red for every score under par. The ground and the slats each have a
+ * light and a dark story. The --c97-* tokens the drawer reads point at the
+ * slat, since the drawer is a slat of its own.
+ */
 
-.c97-golf-board {
-  padding: var(--c97-sp-3);
+.golf-root {
+  --golf-ground: #134330;
+  --golf-on-ground: #f3f1e6;
+  --golf-on-ground-2: #c6d2c4;
+  --golf-ground-rule: rgba(243, 241, 230, 0.24);
+  --golf-slat: #fbfaf4;
+  --golf-ink: #12261c;
+  --golf-ink-2: #4d5b52;
+  --golf-rule: rgba(18, 38, 28, 0.14);
+  --golf-red: #c01f2f;
+  --golf-gold: #f2c94c;
+  --golf-focus-slat: #0b5cad;
+
+  --c97-surface: var(--golf-slat);
+  --c97-ink: var(--golf-ink);
+  --c97-ink-2: var(--golf-ink-2);
+  --c97-label: var(--golf-ink-2);
+  --c97-action: var(--golf-ink);
+  --c97-rule: var(--golf-rule);
+  --c97-field: var(--golf-slat);
+  --c97-panel: var(--golf-slat);
+  --c97-negative: var(--golf-red);
+  /* Focus on the green ground; the slats and the drawer set their own below. */
+  --c97-accent: var(--golf-gold);
+  --c97-scrim: rgb(5 20 13 / 0.6);
+
+  background: var(--golf-ground);
+  color: var(--golf-on-ground);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-.c97-golf-name-btn {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  width: 100%;
-  background: none;
-  border: 0;
+.dark .golf-root {
+  --golf-ground: #0a2117;
+  --golf-on-ground: #eef0e6;
+  --golf-on-ground-2: #b4c2b5;
+  --golf-ground-rule: rgba(238, 240, 230, 0.2);
+  --golf-slat: #142c20;
+  --golf-ink: #eef0e6;
+  --golf-ink-2: #b0bdb2;
+  --golf-rule: rgba(238, 240, 230, 0.14);
+  --golf-red: #ff8f86;
+  --golf-focus-slat: #8ab4ff;
+}
+
+.golf-root :where(h1, h2, h3) {
+  margin: 0;
+  font-family: var(--c97-font-body);
+}
+
+.golf-root :where(p, ul, li, dl, dd) {
+  margin: 0;
   padding: 0;
-  text-align: left;
+  max-inline-size: none;
+}
+
+.golf-root :where(ul) {
+  list-style: none;
+}
+
+.golf-root [data-tone="under"] {
+  color: var(--golf-red);
+}
+
+.golf-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+/* The tournament header */
+
+.golf-titlebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.golf-root .golf-title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.625rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--golf-on-ground);
+}
+
+.golf-event {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+}
+
+.golf-root .golf-event-name {
+  font-family: var(--c97-font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--golf-on-ground);
+}
+
+.golf-event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--c97-sp-1);
+  font-size: 0.8125rem;
+  color: var(--golf-on-ground-2);
+}
+
+.golf-event-meta > span + span::before {
+  content: "·";
+  margin-right: var(--c97-sp-1);
+}
+
+.golf-on-ground {
+  font-size: 0.875rem;
+  color: var(--golf-on-ground-2);
+}
+
+/* The board */
+
+.golf-board,
+.golf-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.golf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--golf-ground-rule);
+  background: var(--golf-ground);
+}
+
+@media screen and (min-width: 640px) {
+  .golf-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.golf-checked {
+  font-size: 0.8125rem;
+}
+
+.golf-switch {
+  display: flex;
+  gap: var(--c97-sp-1);
+}
+
+.golf-switch > button,
+.golf-more {
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--golf-ground-rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--golf-on-ground);
   font: inherit;
-  color: var(--c97-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
-.c97-golf-name-btn:hover .c97-serif {
+.golf-switch > button[aria-selected="true"] {
+  border-color: var(--golf-on-ground);
+  background: var(--golf-on-ground);
+  color: var(--golf-ground);
+}
+
+.golf-more {
+  align-self: flex-start;
+}
+
+/* The slats: each player a white board on the green, rounds across. */
+.golf-scroll {
+  overflow-x: auto;
+}
+
+.golf-slats {
+  --c97-accent: var(--golf-gold);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 3px;
+  font-size: 0.9375rem;
+}
+
+.golf-slats thead th {
+  padding: var(--c97-sp-0) var(--c97-sp-1);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--golf-on-ground-2);
+}
+
+.golf-slats abbr {
+  text-decoration: none;
+}
+
+.golf-slats tbody th,
+.golf-slats tbody td {
+  padding: 0 var(--c97-sp-1);
+  background: var(--golf-slat);
+  color: var(--golf-ink);
+  white-space: nowrap;
+}
+
+.golf-slats tbody tr > :first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.golf-slats tbody tr > :last-child {
+  border-radius: 0 3px 3px 0;
+}
+
+.golf-slats tbody tr[aria-current="true"] > :first-child {
+  box-shadow: inset 4px 0 0 var(--golf-red);
+}
+
+.golf-slats tbody tr[data-made-cut="false"] td,
+.golf-slats tbody tr[data-made-cut="false"] th {
+  color: var(--golf-ink-2);
+}
+
+.golf-col-pos {
+  width: 3rem;
+  font-family: var(--c97-font-mono);
+  font-weight: 600;
+}
+
+.golf-col-player {
+  width: 100%;
+  max-width: 0;
+}
+
+.golf-num {
+  text-align: right;
+  font-family: var(--c97-font-mono);
+}
+
+.golf-slats th.golf-num {
+  text-align: right;
+  font-family: var(--c97-font-body);
+}
+
+.golf-total {
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.golf-name {
+  display: flex;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  align-items: center;
+}
+
+.golf-name-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.golf-name:hover .golf-name-text,
+.golf-name:focus-visible .golf-name-text {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.c97-golf-cutline td {
-  border-top: 2px solid var(--c97-ink);
-  padding-top: var(--c97-sp-2);
-  padding-bottom: var(--c97-sp-2);
-  text-align: center;
+.golf-country {
+  flex: none;
+  font-size: 0.75rem;
+  color: var(--golf-ink-2);
 }
 
-/* The full-field table below the hero: a selected row gets the same ink bar
- * every other selectable row in the system uses (earthquake's log, transit's
- * station list). */
-.c97-golf-full-table tbody tr[aria-current="true"] {
-  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+@media screen and (max-width: 479px) {
+  .golf-country {
+    display: none;
+  }
+
+  .golf-slats tbody th,
+  .golf-slats tbody td,
+  .golf-slats thead th {
+    padding-inline: 6px;
+  }
+}
+
+.golf-move {
+  font-size: 0.8125rem;
+  color: var(--golf-ink-2);
+}
+
+.golf-move[data-move="up"] {
+  color: var(--golf-ink);
+  font-weight: 700;
+}
+
+/* The cut line, drawn across the board between the last player through and the first out. */
+.golf-cutline td {
+  padding: var(--c97-sp-1) 0;
+  border-block: 2px solid var(--golf-gold);
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--golf-on-ground);
+}
+
+.golf-wide {
+  display: none;
+}
+
+@media (min-width: 640px), print {
+  .golf-wide {
+    display: table-cell;
+  }
+}
+
+/* The cards: one slat-coloured card per player, the card is the player. */
+.golf-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--c97-sp-1);
 }
 
 .c97-golf-card {
-  display: block;
+  --c97-accent: var(--golf-focus-slat);
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
   width: 100%;
   min-height: 44px;
-  text-align: left;
+  padding: var(--c97-sp-2);
+  border: 0;
+  border-radius: 4px;
+  background: var(--golf-slat);
+  color: var(--golf-ink);
   font: inherit;
-  color: var(--c97-ink);
-  background: var(--c97-field);
-  border: 1px solid var(--c97-rule);
-  padding: var(--c97-sp-3);
+  text-align: left;
   cursor: pointer;
 }
 
-.c97-golf-card:hover {
-  border-color: var(--c97-ink-2);
-}
-
 .c97-golf-card[aria-current="true"] {
-  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+  box-shadow: inset 4px 0 0 var(--golf-red);
 }
 
-/* The same table on a phone. Below 640px it keeps the position, the player,
- * the total, and today's score in tighter cells, and the columns it drops
- * are in the player drawer. */
-@media print, screen and (max-width: 639px) {
-  .c97-table.c97-golf-full-table th,
-  .c97-table.c97-golf-full-table td {
-    padding-inline: var(--c97-sp-1);
+.golf-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+}
+
+.golf-card-pos {
+  width: 2.5rem;
+  font-family: var(--c97-font-mono);
+  color: var(--golf-ink-2);
+}
+
+.golf-card-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.golf-card-total {
+  font-family: var(--c97-font-mono);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.golf-card-line {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--c97-sp-1);
+  font-size: 0.8125rem;
+  color: var(--golf-ink-2);
+}
+
+.golf-card-rounds {
+  display: flex;
+  gap: var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+}
+
+.golf-source {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--golf-ground-rule);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--golf-on-ground-2);
+}
+
+/* The drawer is a slat of its own. */
+.golf-root .dd-panel {
+  --c97-accent: var(--golf-focus-slat);
+}
+
+.golf-root .dd-panel [data-tone="under"] {
+  color: var(--golf-red);
+}
+
+.golf-rounds {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.golf-rounds th {
+  padding: var(--c97-sp-0) 0;
+  border-bottom: 1px solid var(--golf-rule);
+  font-size: 0.75rem;
+  text-align: left;
+  color: var(--golf-ink-2);
+}
+
+.golf-rounds td {
+  padding: var(--c97-sp-0) 0;
+  border-bottom: 1px solid var(--golf-rule);
+}
+
+.golf-rounds th.golf-num {
+  text-align: right;
+}
+
+.golf-error {
+  display: flex;
+  gap: var(--c97-sp-1);
+}
+
+.golf-error-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--golf-red);
+}
+
+@media print {
+  .golf-root {
+    --golf-ground: #ffffff;
+    --golf-on-ground: #111111;
+    --golf-on-ground-2: #444444;
+    --golf-ground-rule: rgba(0, 0, 0, 0.3);
+    --golf-slat: #ffffff;
   }
 
-  .c97-table.c97-golf-full-table [data-wide] {
+  .golf-toolbar {
+    position: static;
+  }
+
+  .golf-slats tbody td,
+  .golf-slats tbody th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .golf-switch > button:not([aria-selected="true"]),
+  .golf-more {
     display: none;
   }
 }

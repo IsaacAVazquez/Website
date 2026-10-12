@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { CircleAlert, Flag, Gauge, MapPin, Trophy, UserRound } from "lucide-react";
+import { CircleAlert } from "lucide-react";
 import type {
   GolfLeaderboardEntry,
   GolfPlayerSnapshot,
   GolfRouteState,
   GolfSummary,
+  GolfTournament,
   GolfView,
 } from "@/types/golf";
 import {
@@ -18,10 +19,7 @@ import {
   GOLF_VIEW_OPTIONS,
   normalizeGolfState,
 } from "./golf-state";
-import { Catalog97ProjectHero, type Catalog97Readout } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
-import { GolfLeaderboard } from "./GolfLeaderboard";
-import { formatScoreToPar } from "./leaderboard";
+import { formatScoreToPar, leaderboardSlats, type ParTone } from "./leaderboard";
 import "./golf.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { formatStableDateTime } from "@/lib/date-formatters";
@@ -63,32 +61,23 @@ const DATE_RANGE_END_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 
-/** Under par prints in golf's red; even and over stay ink, matching the leaderboard signature. */
-function scoreColor(value: number | null | undefined): string {
-  if (value === null || value === undefined || value >= 0) {
-    return "var(--c97-ink)";
-  }
-  return "var(--c97-negative)";
+/** Under par prints in golf's red; even and over stay ink. */
+function toneOf(value: number | null | undefined): ParTone | undefined {
+  if (value === null || value === undefined) return undefined;
+  return value < 0 ? "under" : value > 0 ? "over" : "even";
 }
 
-function MovementGlyph({ movement }: { movement: number }) {
-  if (movement > 0) return <span aria-hidden="true">&uarr;</span>;
-  if (movement < 0) return <span aria-hidden="true">&darr;</span>;
-  return <span aria-hidden="true">&minus;</span>;
-}
-
-function getMovementLabel(movement: number): string {
-  if (movement > 0) return `Up ${movement}`;
-  if (movement < 0) return `Down ${Math.abs(movement)}`;
-  return "Steady";
-}
-
-function MovementPill({ movement }: { movement: number }) {
-  const tone = movement > 0 ? "c97-chip-positive" : movement < 0 ? "c97-chip-negative" : "";
+/** Movement as the board prints it: an arrow and the places, with the words for a screen reader. */
+function Movement({ movement }: { movement: number }) {
+  const glyph = movement > 0 ? "\u2191" : movement < 0 ? "\u2193" : "\u2013";
+  const label = movement > 0 ? `Up ${movement}` : movement < 0 ? `Down ${Math.abs(movement)}` : "Steady";
   return (
-    <span className={`c97-chip ${tone}`.trim()}>
-      <MovementGlyph movement={movement} />
-      {getMovementLabel(movement)}
+    <span className="golf-move" data-move={movement > 0 ? "up" : movement < 0 ? "down" : "flat"}>
+      <span aria-hidden="true">
+        {glyph}
+        {movement !== 0 ? Math.abs(movement) : ""}
+      </span>
+      <span className="sr-only">{label}</span>
     </span>
   );
 }
@@ -139,102 +128,103 @@ async function fetchGolfPlayerSnapshot(
   return payload;
 }
 
-function StatBlock({
-  label,
-  value,
-  detail,
-  valueColor,
-}: {
-  label: string;
-  value: string;
-  detail?: string;
-  valueColor?: string;
-}) {
-  return (
-    <div className="c97-stat">
-      <p className="c97-stat-label">{label}</p>
-      <p className="c97-stat-value" style={valueColor ? { color: valueColor } : undefined}>
-        {value}
-      </p>
-      {detail ? <p className="c97-stat-delta">{detail}</p> : null}
-    </div>
-  );
-}
-
 function LeaderboardTable({
   rows,
   selectedPlayerId,
   onSelectPlayer,
+  coursePar,
+  cutLine,
+  cutState,
+  cutCount,
 }: {
   rows: GolfLeaderboardEntry[];
   selectedPlayerId: string | null;
   onSelectPlayer: (playerId: string) => void;
+  coursePar: number;
+  cutLine: number | null;
+  cutState: GolfTournament["cutState"];
+  cutCount: number | null;
 }) {
   const roundCount = Math.min(
     4,
     rows.reduce((max, row) => Math.max(max, row.roundScores.length), 0)
   );
   const roundLabels = Array.from({ length: roundCount }, (_, i) => `R${i + 1}`);
+  // The slats carry each round's tone and where the cut line falls on the rows shown.
+  const { slats, cutIndex } = leaderboardSlats(rows, { cutLine, cutState, coursePar, rounds: roundCount });
+  const span = 5 + roundCount;
 
   return (
-    <div
-      className="overflow-x-auto"
-      role="region"
-      aria-label="Full leaderboard (scrollable)"
-      tabIndex={0}
-    >
-      <table className="c97-table c97-golf-full-table">
+    <div className="golf-scroll" role="region" aria-label="Full leaderboard (scrollable)" tabIndex={0}>
+      <table className="golf-slats">
         <caption className="sr-only">
-          PGA Tour Pulse leaderboard with position, total, today&apos;s score, holes played, round
-          scores, and movement.
+          PGA Tour Pulse leaderboard with position, total, today&apos;s score, holes played, round scores, and
+          movement.
         </caption>
         <thead>
           <tr>
-            <th scope="col">Pos</th>
-            <th scope="col">Player</th>
-            <th scope="col" data-align="end">Total</th>
-            <th scope="col" data-align="end">Today</th>
-            <th scope="col" data-wide>Thru</th>
-            {roundLabels.map((label) => (
-              <th key={label} scope="col" data-align="end" data-wide>{label}</th>
+            <th scope="col" className="golf-col-pos">Pos</th>
+            <th scope="col" className="golf-col-player">Player</th>
+            <th scope="col" className="golf-num">
+              <abbr title="Total to par">Total</abbr>
+            </th>
+            <th scope="col" className="golf-num">Today</th>
+            <th scope="col" className="golf-num golf-wide">Thru</th>
+            {roundLabels.map((label, i) => (
+              <th key={label} scope="col" className="golf-num golf-wide">
+                <abbr title={`Round ${i + 1}`}>{label}</abbr>
+              </th>
             ))}
-            <th scope="col" data-wide>Move</th>
+            <th scope="col" className="golf-num golf-wide">
+              <abbr title="Places moved today">Move</abbr>
+            </th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => {
+          {rows.map((row, index) => {
             const isSelected = row.playerId === selectedPlayerId;
-
+            const slat = slats[index];
             return (
-              <tr key={row.playerId} aria-current={isSelected ? "true" : undefined}>
-                <th scope="row" className="c97-mono">{row.position}</th>
-                <td>
-                  <button
-                    type="button"
-                    onClick={() => onSelectPlayer(row.playerId)}
-                    aria-haspopup="dialog"
-                    className="c97-golf-name-btn"
-                  >
-                    <span className="c97-serif">{row.playerName}</span>
-                    <span className="c97-stat-delta" data-wide style={{ marginLeft: "var(--c97-sp-2)" }}>
-                      {row.country}
-                    </span>
-                  </button>
-                </td>
-                <td className="c97-mono" data-align="end" style={{ color: scoreColor(row.totalToPar), fontWeight: 600 }}>
-                  {formatScoreToPar(row.totalToPar)}
-                </td>
-                <td className="c97-mono" data-align="end" style={{ color: scoreColor(row.today) }}>
-                  {formatScoreToPar(row.today)}
-                </td>
-                <td className="c97-mono" data-wide>{row.thru}</td>
-                {roundLabels.map((label, i) => (
-                  <td key={label} className="c97-mono" data-align="end" data-wide>
-                    {row.roundScores[i] != null ? String(row.roundScores[i]) : "—"}
+              <Fragment key={row.playerId}>
+                <tr aria-current={isSelected ? "true" : undefined} data-made-cut={slat?.madeCut === false ? "false" : undefined}>
+                  <th scope="row" className="golf-col-pos">
+                    {row.position}
+                  </th>
+                  <td className="golf-col-player">
+                    <button
+                      type="button"
+                      onClick={() => onSelectPlayer(row.playerId)}
+                      aria-haspopup="dialog"
+                      className="golf-name"
+                    >
+                      <span className="golf-name-text">{row.playerName}</span>
+                      <span className="golf-country">{row.country}</span>
+                    </button>
                   </td>
-                ))}
-                <td data-wide><MovementPill movement={row.movement} /></td>
-              </tr>
+                  <td className="golf-num golf-total" data-tone={toneOf(row.totalToPar)}>
+                    {formatScoreToPar(row.totalToPar)}
+                  </td>
+                  <td className="golf-num" data-tone={toneOf(row.today)}>
+                    {formatScoreToPar(row.today)}
+                  </td>
+                  <td className="golf-num golf-wide">{row.thru}</td>
+                  {roundLabels.map((label, i) => (
+                    <td key={label} className="golf-num golf-wide" data-tone={slat?.rounds[i]?.tone ?? undefined}>
+                      {row.roundScores[i] != null ? String(row.roundScores[i]) : "—"}
+                    </td>
+                  ))}
+                  <td className="golf-num golf-wide">
+                    <Movement movement={row.movement} />
+                  </td>
+                </tr>
+                {cutIndex === index && index < rows.length - 1 ? (
+                  <tr className="golf-cutline">
+                    <td colSpan={span}>
+                      {`Cut line ${formatScoreToPar(cutLine)}${cutCount !== null ? `, ${cutCount} players advanced` : ""}`}
+                    </td>
+                  </tr>
+                ) : null}
+              </Fragment>
             );
           })}
         </tbody>
@@ -255,7 +245,7 @@ function PlayerCards({
   coursePar: number;
 }) {
   return (
-    <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
+    <ul className="golf-cards">
       {rows.map((row) => {
         const isSelected = row.playerId === selectedPlayerId;
         // The latest round is a partial stroke count while the player is on
@@ -263,54 +253,49 @@ function PlayerCards({
         const latestIsPartial = row.thru !== "F" && row.thru !== "—";
 
         return (
-          <button
-            key={row.playerId}
-            type="button"
-            onClick={() => onSelectPlayer(row.playerId)}
-            aria-current={isSelected ? "true" : undefined}
-            aria-haspopup="dialog"
-            className="c97-golf-card"
-          >
-            <span className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-              <span style={{ display: "block" }}>
-                <span className="c97-kicker" style={{ display: "block" }}>{row.position}</span>
-                <span className="c97-serif c97-h3" style={{ display: "block" }}>{row.playerName}</span>
-                <span className="c97-stat-delta" style={{ display: "block" }}>{row.country}</span>
-              </span>
-              <span className="text-right" style={{ display: "block" }}>
-                <span className="c97-mono" style={{ display: "block", fontSize: "var(--c97-fs-h2)", color: scoreColor(row.totalToPar) }}>
+          <li key={row.playerId}>
+            <button
+              type="button"
+              onClick={() => onSelectPlayer(row.playerId)}
+              aria-current={isSelected ? "true" : undefined}
+              aria-haspopup="dialog"
+              className="c97-golf-card"
+            >
+              <span className="golf-card-head">
+                <span className="golf-card-pos">{row.position}</span>
+                <span className="golf-card-name">{row.playerName}</span>
+                <span className="golf-card-total" data-tone={toneOf(row.totalToPar)}>
                   {formatScoreToPar(row.totalToPar)}
                 </span>
-                <span className="c97-stat-delta" style={{ display: "block" }}>
-                  Today <span style={{ color: scoreColor(row.today), fontWeight: 600 }}>{formatScoreToPar(row.today)}</span>
+              </span>
+              <span className="golf-card-line">
+                <span>{row.country}</span>
+                <span>
+                  Today <span data-tone={toneOf(row.today)}>{formatScoreToPar(row.today)}</span>
                 </span>
               </span>
-            </span>
-
-            <span className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-              {row.roundScores.map((score, index) => (
-                <span
-                  key={index}
-                  className="c97-mono"
-                  style={{
-                    color: scoreColor(
-                      latestIsPartial && index === row.roundScores.length - 1 ? row.today : score - coursePar
-                    ),
-                  }}
-                >
-                  {score}
+              <span className="golf-card-line">
+                <span className="golf-card-rounds">
+                  {row.roundScores.map((score, index) => (
+                    <span
+                      key={index}
+                      data-tone={toneOf(
+                        latestIsPartial && index === row.roundScores.length - 1 ? row.today : score - coursePar
+                      )}
+                    >
+                      {score}
+                    </span>
+                  ))}
                 </span>
-              ))}
-            </span>
-
-            <span className="flex items-center justify-between" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-              <span className="c97-stat-delta">{row.status}</span>
-              <MovementPill movement={row.movement} />
-            </span>
-          </button>
+                <span>
+                  {row.status} <Movement movement={row.movement} />
+                </span>
+              </span>
+            </button>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
 
@@ -338,8 +323,6 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
   const isPlayerSnapshotLoading = Boolean(selectedPlayerId && !playerSnapshot && !playerSnapshotError);
   const tournament = summary.tournament;
   const selectedRow = summary.leaderboard.find((row) => row.playerId === selectedPlayerId) ?? null;
-  const roundCount = Math.max(1, ...summary.leaderboard.map((row) => row.roundScores.length));
-  const lead = PROJECT_PRESS[GOLF_ROUTE].lead;
 
   const pushHref = useRouteSync(GOLF_ROUTE, desiredHref);
   // The player drawer starts open only for a link that names a player, and
@@ -406,93 +389,49 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
   if (!tournament) {
     return (
-      <Catalog97ProjectHero
-        ink={lead}
-        title="PGA Tour Pulse"
-        standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. The snapshot for this tournament is not available yet."
-      />
+      <div className="golf-root">
+        <div className="c97-shell c97-frame golf-column">
+          <div className="golf-titlebar">
+            <h1 className="golf-title">PGA Tour Pulse</h1>
+            <p className="golf-on-ground">
+              The leaderboard for this tournament is not in the snapshot yet, so it fills in after the next refresh.
+            </p>
+          </div>
+        </div>
+      </div>
     );
   }
 
-  const heroReadouts: [Catalog97Readout, Catalog97Readout, Catalog97Readout] = [
-    {
-      label: "Leader",
-      value: summary.heroStats.leaderName ?? "—",
-      detail: formatScoreToPar(summary.heroStats.leaderScore),
-    },
-    {
-      label: "Cut line",
-      value:
-        summary.heroStats.cutLine !== null
-          ? formatScoreToPar(summary.heroStats.cutLine)
-          : summary.heroStats.cutState === "none"
-            ? "No cut"
-            : "TBD",
-      detail:
-        summary.heroStats.cutState === "none"
-          ? "Full field plays all rounds"
-          : summary.heroStats.cutCount !== null
-            ? `${summary.heroStats.cutCount} advanced`
-            : undefined,
-    },
-    {
-      label: "Field",
-      value: `${summary.heroStats.fieldSize}`,
-      detail: "players",
-    },
-  ];
+  const cutSummary =
+    tournament.cutState === "none"
+      ? "No cut, the full field plays every round"
+      : tournament.cutLine !== null
+        ? `Cut ${formatScoreToPar(tournament.cutLine)}${tournament.cutCount !== null ? `, ${tournament.cutCount} advanced` : ""}`
+        : "Cut to come";
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="PGA Tour Pulse"
-        standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. It reads from a checked-in snapshot of the PGA Tour leaderboard that refreshes on a schedule."
-        meta={`${tournament.tour} · last checked ${formatGeneratedAt(tournament.generatedAt)}`}
-        // The hero fills a phone's first screen and the signature runs long
-        // under it, so one link goes straight to the board.
-        action={<a href="#golf-board" className="c97-btn-ghost">Jump to the full board</a>}
-        readouts={heroReadouts}
-      >
-        <div className="c97-panel" style={{ marginBottom: "var(--c97-sp-4)" }}>
-          <h2 className="c97-serif c97-h2" style={{ marginBottom: "var(--c97-sp-2)" }}>
-            {tournament.name}
-          </h2>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-            {formatRoundStatus(tournament.roundLabel, tournament.status)}
-          </p>
-          <div className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-            <p className="flex items-start" style={{ marginBottom: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+    <div className="golf-root">
+      <div className="c97-shell c97-frame golf-column">
+        <div className="golf-titlebar">
+          <h1 className="golf-title">PGA Tour Pulse</h1>
+          <div className="golf-event">
+            <h2 className="golf-event-name">{tournament.name}</h2>
+            <p className="golf-event-meta">
+              <span>{formatRoundStatus(tournament.roundLabel, tournament.status)}</span>
               <span>
-                {tournament.course}
-                <br />
-                {tournament.location}
+                {tournament.course}, {tournament.location}
+              </span>
+              <span>{formatDateRange(tournament.startDate, tournament.endDate)}</span>
+              <span>
+                {tournament.fieldSize} players · {cutSummary}
               </span>
             </p>
-            <p className="mb-0 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-              <Flag className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>{formatDateRange(tournament.startDate, tournament.endDate)}</span>
-            </p>
-
           </div>
         </div>
 
-        <GolfLeaderboard
-          entries={summary.leaderboard}
-          cutLine={tournament.cutLine}
-          cutState={tournament.cutState}
-          cutCount={tournament.cutCount}
-          coursePar={tournament.coursePar}
-          rounds={roundCount}
-        />
-      </Catalog97ProjectHero>
-
-      <section id="golf-board" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
-            <h2 className="c97-poster-sm">The board</h2>
-            <div className="c97-segmented" role="tablist" aria-label="Golf view switcher">
+        <section className="golf-board" aria-label="Leaderboard">
+          <div className="golf-toolbar">
+            <div className="golf-switch" role="tablist" aria-label="Golf view switcher">
               {GOLF_VIEW_OPTIONS.map((view) => (
                 <button
                   key={view}
@@ -502,80 +441,62 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                   aria-controls={`golf-tabpanel-${view}`}
                   aria-selected={routeState.view === view}
                   onClick={() => handleViewChange(view)}
-                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {GOLF_VIEW_LABELS[view]}
                 </button>
               ))}
             </div>
-
-            <div
-              className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}
-              role="tabpanel"
-              id={`golf-tabpanel-${routeState.view}`}
-              aria-labelledby={`golf-tab-${routeState.view}`}
-            >
-              <p className="c97-prose">
-                {routeState.view === "leaderboard"
-                  ? "The table when you want the fastest read on score, round splits, and movement."
-                  : "The player cards when you want a softer scan that still keeps score and momentum visible."}
-              </p>
-
-              {summary.leaderboard.length === 0 ? (
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  No player is available in the current snapshot.
-                </p>
-              ) : null}
-
-              {routeState.view === "leaderboard" ? (
-                <LeaderboardTable
-                  rows={boardRows}
-                  selectedPlayerId={selectedPlayerId}
-                  onSelectPlayer={handlePlayerChange}
-                />
-              ) : (
-                <PlayerCards
-                  rows={boardRows}
-                  selectedPlayerId={selectedPlayerId}
-                  onSelectPlayer={handlePlayerChange}
-                  coursePar={tournament.coursePar}
-                />
-              )}
-
-              {summary.leaderboard.length > BOARD_LIMIT ? (
-                <button
-                  type="button"
-                  className="c97-btn-ghost"
-                  style={{ alignSelf: "flex-start" }}
-                  aria-expanded={showAllPlayers}
-                  onClick={() => setShowAllPlayers((current) => !current)}
-                >
-                  {showAllPlayers
-                    ? `Show the top ${BOARD_LIMIT}`
-                    : `Show all ${summary.leaderboard.length} players`}
-                </button>
-              ) : null}
-            </div>
+            <p className="golf-on-ground golf-checked">
+              {tournament.tour} · last checked {formatGeneratedAt(tournament.generatedAt)}
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
-          <p className="c97-kicker">Snapshot note</p>
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-            This page is a checked-in tournament snapshot that refreshes on a schedule.
-            Scores, movement, and player drilldowns reflect the local dataset shipped with the app.
-          </p>
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-            The leaderboard, cut line, and player movement come from ESPN&apos;s public golf
-            leaderboard API and refresh on a schedule, so figures can trail the broadcast.
-            Between tournaments, and during team events like the Presidents Cup, I keep the
-            last finished leaderboard up, since there is no individual board to show. Last
-            checked {formatGeneratedAt(tournament.generatedAt)}.
-          </p>
-        </div>
-      </section>
+          <div
+            className="golf-panel"
+            role="tabpanel"
+            id={`golf-tabpanel-${routeState.view}`}
+            aria-labelledby={`golf-tab-${routeState.view}`}
+          >
+            {summary.leaderboard.length === 0 ? (
+              <p className="golf-on-ground">No player is available in the current snapshot.</p>
+            ) : routeState.view === "leaderboard" ? (
+              <LeaderboardTable
+                rows={boardRows}
+                selectedPlayerId={selectedPlayerId}
+                onSelectPlayer={handlePlayerChange}
+                coursePar={tournament.coursePar}
+                cutLine={tournament.cutLine}
+                cutState={tournament.cutState}
+                cutCount={tournament.cutCount}
+              />
+            ) : (
+              <PlayerCards
+                rows={boardRows}
+                selectedPlayerId={selectedPlayerId}
+                onSelectPlayer={handlePlayerChange}
+                coursePar={tournament.coursePar}
+              />
+            )}
+
+            {summary.leaderboard.length > BOARD_LIMIT ? (
+              <button
+                type="button"
+                className="golf-more"
+                aria-expanded={showAllPlayers}
+                onClick={() => setShowAllPlayers((current) => !current)}
+              >
+                {showAllPlayers ? `Show the top ${BOARD_LIMIT}` : `Show all ${summary.leaderboard.length} players`}
+              </button>
+            ) : null}
+          </div>
+        </section>
+
+        <p className="golf-source">
+          This page is a checked-in tournament snapshot of ESPN&apos;s public golf leaderboard API that refreshes on a
+          schedule, so figures can trail the broadcast. Between tournaments, and during team events like the
+          Presidents Cup, I keep the last finished leaderboard up, since there is no individual board to show.
+        </p>
+      </div>
 
       {selectedRow ? (
         <DetailDrawer
@@ -585,77 +506,65 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
           resetKey={selectedRow.playerId}
           testId="golf-selected-player"
         >
-          <div className="flex items-end justify-between" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-2)" }}>
-            <p className="c97-stat-delta" style={{ margin: 0 }}>{selectedRow.country}</p>
-            <div className="text-right">
-              <p className="c97-mono" style={{ margin: 0, fontSize: "var(--c97-fs-h1)", color: scoreColor(selectedRow.totalToPar) }}>
-                {formatScoreToPar(selectedRow.totalToPar)}
-              </p>
-              <MovementPill movement={selectedRow.movement} />
-            </div>
-          </div>
+          <p className="dd-tags">
+            <span>{selectedRow.country}</span>
+            <span>{selectedRow.status}</span>
+            <Movement movement={selectedRow.movement} />
+          </p>
 
-          <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            <StatBlock label="Position" value={selectedRow.position} detail={selectedRow.status} />
-            <StatBlock
-              label="Today"
-              value={formatScoreToPar(selectedRow.today)}
-              detail={`Thru ${selectedRow.thru}`}
-              valueColor={scoreColor(selectedRow.today)}
-            />
-          </div>
+          <dl className="dd-stats dd-section">
+            {(
+              [
+                ["Position", selectedRow.position, undefined],
+                ["Total", formatScoreToPar(selectedRow.totalToPar), toneOf(selectedRow.totalToPar)],
+                ["Today", formatScoreToPar(selectedRow.today), toneOf(selectedRow.today)],
+                ["Thru", selectedRow.thru, undefined],
+              ] as const
+            ).map(([label, value, tone]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd data-tone={tone}>{value}</dd>
+              </div>
+            ))}
+          </dl>
 
           {isPlayerSnapshotLoading ? (
-            <p className="c97-prose" role="status" style={{ marginTop: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+            <p className="dd-note" role="status">
               Loading player detail…
             </p>
           ) : null}
 
           {playerSnapshotError ? (
-            <div style={{ marginTop: "var(--c97-sp-2)" }} role="alert">
-              <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  {playerSnapshotError}
-                </p>
-              </div>
-            </div>
+            <p className="dd-note golf-error" role="alert">
+              <CircleAlert className="golf-error-icon" aria-hidden="true" />
+              {playerSnapshotError}
+            </p>
           ) : null}
 
           {playerSnapshot?.player ? (
-            <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)" }}>
-              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-                <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                  <UserRound className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  <span>{playerSnapshot.player.country}</span>
-                </p>
-                <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                  <Gauge className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  <span>Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}</span>
-                </p>
-                <p className="mb-0 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                  <Trophy className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  <span>{playerSnapshot.tournamentStatus.status}</span>
-                </p>
-              </div>
+            <>
+              <p className="dd-note">
+                Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}.{" "}
+                {playerSnapshot.tournamentStatus.status}
+              </p>
 
-              <div>
-                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Round by round</p>
-                <table className="c97-table">
+              <div className="dd-section">
+                <p className="dd-label">Round by round</p>
+                <table className="golf-rounds">
                   <caption className="sr-only">Round by round scoring for {selectedRow.playerName}</caption>
                   <thead>
                     <tr>
                       <th scope="col">Round</th>
-                      <th scope="col" data-align="end">Score</th>
-                      <th scope="col" data-align="end">To par</th>
+                      <th scope="col" className="golf-num">Score</th>
+                      <th scope="col" className="golf-num">To par</th>
                     </tr>
                   </thead>
                   <tbody>
                     {playerSnapshot.roundByRound.map((round) => (
                       <tr key={round.round}>
                         <td>{round.round}</td>
-                        <td className="c97-mono" data-align="end">{round.score}</td>
-                        <td className="c97-mono" data-align="end" style={{ color: scoreColor(round.relativeToPar) }}>
+                        <td className="golf-num">{round.score}</td>
+                        <td className="golf-num" data-tone={toneOf(round.relativeToPar)}>
                           {formatScoreToPar(round.relativeToPar)}
                         </td>
                       </tr>
@@ -664,30 +573,39 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                 </table>
               </div>
 
-              <div>
-                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Scoring split</p>
+              <div className="dd-section">
+                <p className="dd-label">Scoring split</p>
                 {/* The feed sends zeros when it has no hole data, and a winner with no birdies is not a real reading. */}
                 {playerSnapshot.scoring.birdies +
                   playerSnapshot.scoring.bogeys +
                   playerSnapshot.scoring.pars +
                   playerSnapshot.scoring.eagles >
                 0 ? (
-                  <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                    <StatBlock label="Birdies" value={`${playerSnapshot.scoring.birdies}`} detail="Opportunities converted" />
-                    <StatBlock label="Bogeys" value={`${playerSnapshot.scoring.bogeys}`} detail="Dropped shots" />
-                    <StatBlock label="Pars" value={`${playerSnapshot.scoring.pars}`} detail="Steady holes" />
-                    <StatBlock label="Eagles" value={`${playerSnapshot.scoring.eagles}`} detail="Round-changing swings" />
-                  </div>
+                  <dl className="dd-stats">
+                    {(
+                      [
+                        ["Eagles", playerSnapshot.scoring.eagles],
+                        ["Birdies", playerSnapshot.scoring.birdies],
+                        ["Pars", playerSnapshot.scoring.pars],
+                        ["Bogeys", playerSnapshot.scoring.bogeys],
+                      ] as const
+                    ).map(([label, value]) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 ) : (
-                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  <p className="dd-note">
                     The snapshot carries no birdie, par, or bogey counts for this event, so I only show the rounds.
                   </p>
                 )}
               </div>
-            </div>
+            </>
           ) : null}
         </DetailDrawer>
       ) : null}
-    </>
+    </div>
   );
 }
