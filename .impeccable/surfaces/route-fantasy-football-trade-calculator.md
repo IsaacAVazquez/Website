@@ -156,3 +156,9 @@ vertical margins so the sentence keeps its line rhythm, measured at 94x44 and 93
 sibling notes on the other surfaces keep their inline links under the 2.5.8 prose exemption,
 because their specs do not hold anchors to the floor and their briefs recorded the exemption;
 this route's brief says 44px controls, so here the floor wins.
+
+## Frame removal, 2026-10-12
+
+Part of the project sovereign design's fantasy group (G3), frame removal only, so the deal desk, its rails, the balance scale, and every invariant above stand. The green lead-ink hero with the Anton h1, its torn seam, and the paper plate that held the source line came off. The breadcrumb now sits over the shared compact header (`src/components/fantasy/FantasyRouteHeader.tsx`), with "Build a Trade Offer" on the title ramp, the existing orienting sentence, the expert board and draft market dates as one muted line, and the "Preseason redraft · Model v1" tag with the View rankings link to the right from md up. The line turns "stale sources" in the negative colour in place, so the plate that used to rescue it from the green sheet is gone, and `trade-calculator-client.test.tsx` now asserts that colour, a header ancestor, and no plate or surface wrapper, where it used to assert the paper plate.
+
+Verified on a production build on 2026-10-12. The first input is at y724 at 1440 (from y1040, which was off screen) and y1068 at 390 (from 1337, past a screen and a half). No contrast failures in either theme, 0 layout fails at every width, the first combobox takes a typed search and Enter adds the player, and `e2e/fantasy-trade-calculator.spec.ts` passes against the dev server and the production build.

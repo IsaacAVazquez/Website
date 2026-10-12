@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useId, useMemo, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
-import { PROJECT_PRESS } from "@/constants/projectPress";
+import { FantasyRouteHeader, FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { useFantasyTradeCalculator } from "@/hooks/useFantasyTradeCalculator";
 import { FANTASY_SCORING_LABELS } from "@/lib/fantasy";
@@ -137,15 +137,19 @@ function LeagueSettings({
         <p className="text-sm text-[var(--c97-ink)] lg:hidden" style={{ marginTop: "var(--c97-sp-1)" }}>
           {FANTASY_SCORING_LABELS[state.scoring]}, {state.teams} teams, {state.rosterSize} roster spots, {lineupLabel}
         </p>
-        <button
-          type="button"
-          className="c97-btn-ghost lg:hidden"
-          aria-expanded={open}
-          aria-controls={fieldsId}
-          onClick={onToggle}
-        >
-          {open ? "Hide league settings" : "Change league settings"}
-        </button>
+        {/* .c97-btn-ghost sets display outside any layer and beat lg:hidden on
+            the button, so the wrapper carries the breakpoint. */}
+        <div className="lg:hidden">
+          <button
+            type="button"
+            className="c97-btn-ghost"
+            aria-expanded={open}
+            aria-controls={fieldsId}
+            onClick={onToggle}
+          >
+            {open ? "Hide league settings" : "Change league settings"}
+          </button>
+        </div>
       </div>
 
       <div id={fieldsId} className={`${open ? "" : "hidden "}lg:block`}>
@@ -397,54 +401,39 @@ export function TradeCalculatorClient() {
         <Breadcrumbs customItems={BREADCRUMBS} />
       </div>
 
-      <section
-        className="c97-sheet"
-        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/trade-calculator"].lead}`}
-        data-seam="torn"
-      >
-        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="max-w-3xl">
-              <h1 className="c97-poster">Build a Trade Offer</h1>
-              <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "68ch" }}>
-                Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
-              </p>
-            </div>
-            {/* Every status colour is ink on the green sheet, so the source
-                line, which turns stale in the negative ink, prints on paper. */}
-            <div
-              data-c97-surface="paper"
-              className="c97-offset lg:max-w-[28rem]"
-              style={{ padding: "var(--c97-sp-3)" }}
+      <FantasyRouteHeader
+        title="Build a Trade Offer"
+        lead="Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin."
+        freshness={
+          <FreshnessParts
+            parts={[
+              { label: `Expert board ${formatUpdatedAt(snapshot?.upstreamUpdatedAt)}` },
+              { label: `Draft market ${formatUpdatedAt(snapshot?.adpSource?.asOf)}` },
+              {
+                label: `${sourceFreshness} sources`,
+                tone: sourceFreshness === "stale" ? "negative" : undefined,
+              },
+            ]}
+          />
+        }
+        aside={
+          <>
+            <span className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)" }}>
+              <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
+              Preseason redraft · Model v1
+            </span>
+            <Link
+              href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
+              className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-[var(--c97-sp-2)] text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
             >
-              <p className="c97-meta" style={{ display: "block", lineHeight: 1.8 }}>
-                <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
-                <span aria-hidden="true"> · </span>
-                <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
-                <span aria-hidden="true"> · </span>
-                <span style={{ color: sourceFreshness === "stale" ? "var(--c97-negative)" : undefined }}>
-                  {sourceFreshness} sources
-                </span>
-              </p>
-              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-                <span className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)" }}>
-                  <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
-                  Preseason redraft · Model v1
-                </span>
-                <Link
-                  href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
-                  className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-[var(--c97-sp-2)] text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
-                >
-                  View rankings
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              View rankings
+            </Link>
+          </>
+        }
+      />
 
-      <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className={`${SHELL_CLASS} flex flex-col`} style={{ paddingBlock: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
+      <div>
+        <div className={`${SHELL_CLASS} flex flex-col`} style={{ paddingBottom: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (
@@ -650,7 +639,7 @@ export function TradeCalculatorClient() {
           </>
         )}
       </div>
-      </section>
+      </div>
     </section>
   );
 }

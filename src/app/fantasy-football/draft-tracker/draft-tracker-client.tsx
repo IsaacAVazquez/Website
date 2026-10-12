@@ -11,6 +11,7 @@ import {
   type CSSProperties,
 } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import { FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import Link from "next/link";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
 import { DraftBoard } from "./components/DraftBoard";
@@ -52,7 +53,6 @@ import {
 } from "@/lib/fantasy";
 import {
   FASCIA_TOP_CLASS,
-  HEADER_CHIP_CLASS,
   MONO_LABEL_CLASS,
   PILL_BUTTON_CLASS,
   POSITION_CHIP_CLASS,
@@ -807,7 +807,7 @@ export function DraftTrackerClient() {
       ? "Draft assistant · Complete"
       : `Draft assistant · Live · Pick #${draftState.currentPick}`;
 
-  const headerChips: { label: string; tone?: CSSProperties }[] = [
+  const headerChips: { label: string; tone?: "warning" }[] = [
     { label: draftState.settings.leagueName?.trim() || "Draft room" },
     { label: `${draftState.settings.totalTeams}-team ${draftState.settings.draftType}` },
     { label: `${FANTASY_SCORING_LABELS[scoringKey]} scoring` },
@@ -821,11 +821,7 @@ export function DraftTrackerClient() {
       label: adpStatusLabel,
       tone:
         adpSourceStale || sourceCapabilities.market.freshness === "prior-season"
-          ? {
-              background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
-              borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
-              color: "var(--c97-ink)",
-            }
+          ? ("warning" as const)
           : undefined,
     },
   ];
@@ -1123,7 +1119,7 @@ export function DraftTrackerClient() {
       data-testid="fantasy-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className="c97-sheet" data-c97-surface="paper">
+      <div>
         <header
           className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between`} style={{ paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-1)" }}
         >
@@ -1141,23 +1137,7 @@ export function DraftTrackerClient() {
             </span>
             <h1 className={showSetup ? "c97-poster" : "c97-serif c97-h3"}>Draft Tracker</h1>
           </div>
-          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
-            {headerChips.map((chip) => (
-              <span
-                key={chip.label}
-                className={HEADER_CHIP_CLASS}
-                style={
-                  chip.tone ?? {
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink-2)",
-                  }
-                }
-              >
-                {chip.label}
-              </span>
-            ))}
-          </div>
+          <FreshnessParts parts={headerChips} />
         </header>
 
         {seasonalWeek >= 1 ? (
@@ -1203,7 +1183,7 @@ export function DraftTrackerClient() {
         )}
       </div>
 
-      <div className="c97-sheet" data-c97-surface="paper">
+      <div>
       {showSetup ? (
         <div className="c97-shell c97-frame" style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)", maxWidth: 740 }}>
           <DraftSetup

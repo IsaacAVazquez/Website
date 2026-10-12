@@ -49,6 +49,21 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/fintech-tools/interchange-iq": {
     purpose:
       "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It prices the same month of volume, ticket size, and card mix across seven processors' public rates and shows the ticket size where Stripe's interchange plus starts costing less than its flat rate.",
+  "/fantasy-football/best-ball": {
+    purpose:
+      "I built this to read one best ball board through the rules of each Underdog contest I might enter, from Best Ball Mania VII to Superflex. Each lens shows the room, how I read it, and a build range, and the board under it follows Underdog ADP, or a sourced Superflex consensus, with the expert ranks printed beside it.",
+  },
+  "/fantasy-football/best-ball/draft-tracker": {
+    purpose:
+      "I use this room to log a manual best ball draft pick by pick on Underdog or a similar site. It keeps the snake order straight, checks my build against the contest's roster targets and the rest of the room, and saves each contest's room separately in this browser so one set of picks never overwrites another.",
+  },
+  "/fantasy-football/draft-tracker": {
+    purpose:
+      "I use this to follow a redraft room as it happens, logging every pick in the room against the consensus board so I can see reaches, steals, position runs, and what my roster still needs on each turn. The room saves in this browser, and the recap afterward replays each of my turns against what the board suggested.",
+  },
+  "/fantasy-football/trade-calculator": {
+    purpose:
+      "I built this to check a one-QB redraft trade against something steadier than my gut, turning expert consensus and mock-draft ADP into values for my league's scoring, size, and lineup. It withholds the verdict when a source is stale or a player has no current market reading, because I would rather it say nothing than say something I cannot support.",
   },
   "/formula-1": {
     purpose:
