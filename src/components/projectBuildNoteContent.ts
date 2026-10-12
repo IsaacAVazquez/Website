@@ -86,6 +86,18 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this dashboard to connect the Premier League table with the fixtures that produced it and the matches coming next. Club drilldowns make recent form easier to read without turning the overview into a wall of match data.",
   },
+  "/score-pools": {
+    purpose:
+      "I run exact-score prediction pools, and this page does the part I used to do by hand, which is working out which exact score should earn the most points under my pool's own rules and my place in the standings. It prices each match from betting-market odds, and each match's detail shows the working behind the pick.",
+  },
+  "/score-pools/settings": {
+    purpose:
+      "Every recommendation depends on the pool's own rules, so this is where I set the points for an exact score, a correct goal difference, and a correct outcome, and whether the 90-minute or the final result counts. The standing, the risk approach, and the guess at what the rest of the pool picks sit under advanced settings, since their defaults work for a new pool.",
+  },
+  "/score-pools/tracker": {
+    purpose:
+      "I use the tracker after the games, when the question changes from what to pick to how the picks actually scored. It scores my saved picks against the results under the pool's rules, keeps a running total, and lets me enter a result by hand or a rival's picks when no feed has them.",
+  },
   "/spacex-mission-control": {
     purpose:
       "I use this board to answer what SpaceX is launching next, what has already flown, and how a mission connects to its rocket, payload, crew, capsule, and pad. Keeping those relationships together makes the launch list more useful than a calendar alone.",

@@ -3,6 +3,8 @@
 // Shared presentational bits for the score-pools surfaces: formatting,
 // chips, and the small token-styled controls the three pages reuse.
 
+import Link from "next/link";
+import type { ReactNode } from "react";
 import type { ConfidenceLevel, Scoreline } from "@/lib/scorePools";
 import { hasLiveScorePoolsData } from "@/lib/scorePoolsSnapshot";
 import type { ScorePoolLeagueSnapshot, ScorePoolsSnapshot } from "@/types/scorePools";
@@ -98,9 +100,44 @@ export function EpMeter({ value, max }: { value: number; max: number }) {
   );
 }
 
-export const SAMPLE_NOTICE =
-  "border border-[var(--c97-rule)] bg-[var(--c97-overlay)] text-2xs text-[var(--c97-ink-2)]";
-export const SAMPLE_NOTICE_STYLE = { padding: "var(--c97-sp-1) var(--c97-sp-2)" };
+/** A data-honesty line: same words wherever it prints, as a ruled note rather than a box. */
+export const SAMPLE_NOTICE = "sp-notice";
+
+const SCORE_POOLS_PAGES = [
+  { key: "sheet", href: "/score-pools", label: "Pick sheet" },
+  { key: "tracker", href: "/score-pools/tracker", label: "Tracker" },
+  { key: "settings", href: "/score-pools/settings", label: "Settings" },
+] as const;
+
+/**
+ * The console's title bar, shared by the three pages: the page name, one
+ * orienting sentence, and the product's own tabs between them.
+ */
+export function ScorePoolsTitleBar({
+  title,
+  current,
+  children,
+}: {
+  title: string;
+  current: (typeof SCORE_POOLS_PAGES)[number]["key"];
+  children: ReactNode;
+}) {
+  return (
+    <header className="sp-titlebar">
+      <div className="sp-titlebar-text">
+        <h1 className="sp-title">{title}</h1>
+        <p className="sp-sentence">{children}</p>
+      </div>
+      <nav className="sp-tabs" aria-label="Score Pools pages">
+        {SCORE_POOLS_PAGES.map((page) => (
+          <Link key={page.key} href={page.href} aria-current={page.key === current ? "page" : undefined}>
+            {page.label}
+          </Link>
+        ))}
+      </nav>
+    </header>
+  );
+}
 
 // UTC, so the server render and the browser print the same day.
 const SNAPSHOT_DATE = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" });
@@ -115,7 +152,7 @@ export function SampleDataNotice({ snapshot }: { snapshot: ScorePoolsSnapshot })
     (league) => league.sample || league.fixtures.length === 0,
   );
   return (
-    <p className={SAMPLE_NOTICE} style={SAMPLE_NOTICE_STYLE}>
+    <p className={SAMPLE_NOTICE}>
       {sampleOnly
         ? `This page is showing sample data only. The sample was built on ${builtOn}, and no live odds feed is connected.`
         : `No live odds feed is connected. The odds on this page were entered by hand, and the snapshot was built on ${builtOn}.`}

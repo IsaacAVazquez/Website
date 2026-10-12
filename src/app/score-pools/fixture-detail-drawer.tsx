@@ -55,8 +55,8 @@ const FLAG_LABELS: Array<{ key: ContextFlagKey; label: string; hint: string }> =
   { key: "rotationRiskAway", label: "Rotation risk (away)", hint: "Expect a weakened away eleven." },
 ];
 
-const SECTION = "c97-panel";
-const SECTION_TITLE = "c97-serif c97-h3";
+const SECTION = "sp-section";
+const SECTION_TITLE = "sp-h3";
 
 function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
   const grid = analysis.distribution.grid;
@@ -245,14 +245,12 @@ export function FixtureDetailDrawer({
         className="absolute inset-0 cursor-default"
         style={{ background: "var(--c97-scrim)" }}
       />
-      <aside
-        data-c97-surface="paper"
-        className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto border-l border-[var(--c97-rule)]" style={{ padding: "var(--c97-sp-2)" }}
+      <aside className="sp-drawer absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto"
       >
         <header className="flex items-start justify-between border-b border-[var(--c97-rule)]" style={{ gap: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{fixture.stage ?? fixture.round ?? "Fixture"}</p>
-            <h2 className="c97-serif c97-h2">
+            <h2 className="sp-h2">
               {fixture.homeTeam} vs {fixture.awayTeam}
             </h2>
             <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
