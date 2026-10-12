@@ -34,6 +34,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this board to turn one large fantasy ranking into the decisions I actually make on draft day, including position runs, scoring changes, tier breaks, and where average draft position disagrees with expert consensus.",
   },
+  "/food-map": {
+    purpose:
+      "I built this to keep the places I actually send people to on one map, next to Anthony Bourdain's picks and the ones the crowd rates highest on Google, with each pin colored by who is vouching for it. Every filter and pick lives in the URL, so a link I send opens on the exact city and stop with what to order already showing.",
+  },
   "/formula-1": {
     purpose:
       "I use this dashboard to move between the next Grand Prix, the driver and constructor standings, and the result of each race without losing the season context. The point is a clean answer to where the championship stands and what changed at the last meeting.",
