@@ -7,7 +7,6 @@
 // provenance.
 
 import { useId, useRef, useState } from "react";
-import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
 import type { StoredPool } from "@/lib/scorePools/persistence";
 import type { DevigMethod, Posture, ScoringBasis } from "@/lib/scorePools";
