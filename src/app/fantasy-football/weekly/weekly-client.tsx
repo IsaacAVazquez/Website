@@ -38,7 +38,13 @@ import {
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
 } from "@/lib/fantasyUtils";
-import { FantasyRouteHeader, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
+import {
+  FantasyRouteHeader,
+  FantasySectionHeading,
+  FreshnessParts,
+  TitleAccent,
+  type FreshnessPart,
+} from "@/components/fantasy/FantasyRouteHeader";
 import { formatStableDateTime } from "@/lib/date-formatters";
 
 export type WeeklyView = "rankings" | "waivers";
@@ -351,6 +357,11 @@ export function WeeklyBoardClient({
   const waiversCaption =
     "Weekly waiver targets ranked by the gap between board percentile and rostered percentage";
 
+  const stalenessPart: FreshnessPart = {
+    label: getSnapshotStalenessLabel(staleness),
+    tone: staleness === "stale" ? "negative" : undefined,
+  };
+
   function renderSourceHost(boardSource: FantasyWeeklyBoardSource) {
     const host = getFantasyWeeklySourceHost(boardSource);
     return host ? ` at ${host}` : "";
@@ -398,54 +409,26 @@ export function WeeklyBoardClient({
       }
         freshness={
           snapshot && activeBoard && source ? (
-            <>
-              <span>
-                {snapshot.season} Week {snapshot.week}
-              </span>
-              <span aria-hidden="true"> · </span>
-              {view === "waivers" ? (
-                <>
-                  <span>
-                    Flex updated {formatSourceStamp(activeBoard.flexSource.asOf, isHydrated)},{" "}
-                    {activeBoard.flexSource.expertCount} experts
-                  </span>
-                  <span aria-hidden="true"> · </span>
-                  <span>
-                    QB updated{" "}
-                    {formatSourceStamp(activeBoard.quarterbackSource.asOf, isHydrated)},{" "}
-                    {activeBoard.quarterbackSource.expertCount} experts
-                  </span>
-                  <span aria-hidden="true"> · </span>
-                  <span
-                    style={{
-                      color:
-                        staleness === "stale"
-                          ? "var(--c97-negative)"
-                          : undefined,
-                    }}
-                  >
-                    {getSnapshotStalenessLabel(staleness)}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span>Source updated {formatSourceStamp(source.asOf, isHydrated)}</span>
-                  <span aria-hidden="true"> · </span>
-                  <span
-                    style={{
-                      color:
-                        staleness === "stale"
-                          ? "var(--c97-negative)"
-                          : undefined,
-                    }}
-                  >
-                    {getSnapshotStalenessLabel(staleness)}
-                  </span>
-                  <span aria-hidden="true"> · </span>
-                  <span>{source.expertCount} experts</span>
-                </>
-              )}
-            </>
+            <FreshnessParts
+              parts={[
+                { label: `${snapshot.season} Week ${snapshot.week}` },
+                ...(view === "waivers"
+                  ? [
+                      {
+                        label: `Flex updated ${formatSourceStamp(activeBoard.flexSource.asOf, isHydrated)}, ${activeBoard.flexSource.expertCount} experts`,
+                      },
+                      {
+                        label: `QB updated ${formatSourceStamp(activeBoard.quarterbackSource.asOf, isHydrated)}, ${activeBoard.quarterbackSource.expertCount} experts`,
+                      },
+                      stalenessPart,
+                    ]
+                  : [
+                      { label: `Source updated ${formatSourceStamp(source.asOf, isHydrated)}` },
+                      stalenessPart,
+                      { label: `${source.expertCount} experts` },
+                    ]),
+              ]}
+            />
           ) : null
         }
       />
@@ -551,12 +534,9 @@ export function WeeklyBoardClient({
                 aria-labelledby="weekly-waivers"
                 className="border-t border-[var(--c97-ink)]" style={{ paddingTop: "var(--c97-sp-2)" }}
               >
-                <h2
-                  id="weekly-waivers"
-                  className="m-0 text-xl font-semibold" style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}
-                >
+                <FantasySectionHeading id="weekly-waivers">
                   This week&rsquo;s list
-                </h2>
+                </FantasySectionHeading>
                 <p className="max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                   Players the experts rank ahead of where the rostering rate
                   puts them. The gap is the player&rsquo;s percentile on this
@@ -742,12 +722,9 @@ export function WeeklyBoardClient({
               </section>
             ) : (
               <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)]" style={{ paddingTop: "var(--c97-sp-2)" }}>
-                <h2
-                  id="weekly-board"
-                  className="m-0 text-xl font-semibold" style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}
-                >
+                <FantasySectionHeading id="weekly-board">
                   {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
-                </h2>
+                </FantasySectionHeading>
                 <p className="max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                   Consensus rank within this board only. A flex rank and a
                   quarterback rank are not comparable, because FantasyPros

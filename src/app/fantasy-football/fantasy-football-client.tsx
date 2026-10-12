@@ -69,7 +69,7 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
-import { FantasyRouteHeader, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
+import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import {
@@ -2275,9 +2275,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           array feeds the page's FAQ schema, so the text stays as written. */}
       <section aria-labelledby="fantasy-rankings-questions" className={SHELL_CLASS} style={{ paddingBottom: "var(--c97-sp-5)" }}>
         <div className="border-t" style={{ borderColor: "var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
-          <h2 id="fantasy-rankings-questions" className="m-0 text-xl font-semibold" style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}>
+          <FantasySectionHeading id="fantasy-rankings-questions">
             Fantasy rankings questions
-          </h2>
+          </FantasySectionHeading>
           <div className="grid lg:grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-4)", rowGap: "var(--c97-sp-3)" }}>
             {FANTASY_FOOTBALL_FAQ.map((item) => (
               <div key={item.question} className="min-w-0">

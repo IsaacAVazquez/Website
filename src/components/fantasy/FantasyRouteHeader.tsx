@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { SHELL_CLASS } from "@/lib/fantasyUtils";
 
 /**
@@ -48,11 +48,7 @@ export function FantasyRouteHeader({
               {lead}
             </p>
           ) : null}
-          {freshness ? (
-            <p className="m-0 font-mono text-2xs uppercase leading-relaxed tracking-[0.08em]" style={{ color: "var(--c97-ink-2)" }}>
-              {freshness}
-            </p>
-          ) : null}
+          {freshness ?? null}
         </div>
         {aside ? <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>{aside}</div> : null}
       </div>
@@ -68,16 +64,39 @@ export function TitleAccent({ children }: { children: ReactNode }) {
   );
 }
 
-/** One muted freshness line from labelled parts, with a status colour on the parts that carry one. */
-export function FreshnessParts({
-  parts,
+/** The console's section heading on the fantasy routes, in the body face. */
+export function FantasySectionHeading({
+  id,
+  children,
+  style,
 }: {
-  parts: { label: string; shortLabel?: string; tone?: "warning" | "negative" }[];
+  id?: string;
+  children: ReactNode;
+  style?: CSSProperties;
 }) {
   return (
-    <>
+    <h2
+      id={id}
+      className="m-0 text-xl font-semibold"
+      style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em", ...style }}
+    >
+      {children}
+    </h2>
+  );
+}
+
+export type FreshnessPart = { label: string; shortLabel?: string; tone?: "warning" | "negative" };
+
+/**
+ * One muted freshness line from labelled parts, with a status colour on the
+ * parts that carry one; the label itself still says stale or aging. Keyed by
+ * position, since a part can be user text (a league name) that repeats another.
+ */
+export function FreshnessParts({ parts }: { parts: FreshnessPart[] }) {
+  return (
+    <p className="m-0 font-mono text-2xs uppercase leading-relaxed tracking-[0.08em]" style={{ color: "var(--c97-ink-2)" }}>
       {parts.map((part, index) => (
-        <span key={part.label}>
+        <span key={index}>
           {index > 0 ? <span aria-hidden="true"> · </span> : null}
           <span style={part.tone ? { color: `var(--c97-${part.tone})` } : undefined}>
             {part.shortLabel ? (
@@ -91,6 +110,6 @@ export function FreshnessParts({
           </span>
         </span>
       ))}
-    </>
+    </p>
   );
 }

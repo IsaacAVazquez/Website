@@ -11,7 +11,7 @@ import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerD
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
-import { FantasyRouteHeader, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
+import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
 import {
   getBestBallConsensusIssue,
   getContestPreset,
@@ -1209,9 +1209,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
           Field notes
         </p>
-        <h2 id="field-notes-heading" className="m-0 text-xl font-semibold" style={{ marginTop: "var(--c97-sp-1)", fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}>
+        <FantasySectionHeading id="field-notes-heading" style={{ marginTop: "var(--c97-sp-1)" }}>
           What has worked, and how I would use it
-        </h2>
+        </FantasySectionHeading>
         <p className="mb-0 max-w-[70ch] text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
           The findings below describe past drafts and are not proof that one construction will win the
           next tournament. I use them to set boundaries, then let the current room and the selected

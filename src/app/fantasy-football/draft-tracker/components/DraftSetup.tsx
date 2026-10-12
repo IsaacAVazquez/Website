@@ -1,5 +1,6 @@
 "use client";
 
+import { FantasySectionHeading } from "@/components/fantasy/FantasyRouteHeader";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { prefixedId } from "@/lib/utils";
 import { useEffect, useId, useState, type CSSProperties } from "react";
@@ -288,7 +289,7 @@ export function DraftSetup({
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Room setup
           </p>
-          <h2 className="m-0 text-xl font-semibold" style={{ marginTop: "var(--c97-sp-1)", fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}>One screen, then draft.</h2>
+          <FantasySectionHeading style={{ marginTop: "var(--c97-sp-1)" }}>One screen, then draft.</FantasySectionHeading>
         </div>
         {canResume && onResume ? (
           <button

@@ -1137,9 +1137,7 @@ export function DraftTrackerClient() {
             </span>
             <h1 className={showSetup ? "c97-poster" : "c97-serif c97-h3"}>Draft Tracker</h1>
           </div>
-          <p className="m-0 font-mono text-2xs uppercase leading-relaxed tracking-[0.08em]" style={{ color: "var(--c97-ink-2)" }}>
-            <FreshnessParts parts={headerChips} />
-          </p>
+          <FreshnessParts parts={headerChips} />
         </header>
 
         {seasonalWeek >= 1 ? (

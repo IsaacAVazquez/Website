@@ -2,7 +2,7 @@
 
 import { useIsClient } from "@/hooks/useIsClient";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
-import { FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
+import { FantasySectionHeading, FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -262,21 +262,19 @@ export function BestBallDraftTrackerClient({
           </div>
 
           {!roomOpen ? (
-            <p className="m-0 font-mono text-2xs uppercase leading-relaxed tracking-[0.08em]" style={{ color: "var(--c97-ink-2)" }}>
-              <FreshnessParts
-                parts={[
-                  { label: `${preset.teams} teams · ${preset.rounds} rounds` },
-                  { label: "Half PPR · best ball scoring" },
-                  {
-                    label: `Rankings updated ${formatSnapshotDate(
-                      contestId === "superflex"
-                        ? snapshot?.superflexSource?.asOf
-                        : snapshot?.rankingSource.asOf
-                    )}`,
-                  },
-                ]}
-              />
-            </p>
+            <FreshnessParts
+              parts={[
+                { label: `${preset.teams} teams · ${preset.rounds} rounds` },
+                { label: "Half PPR · best ball scoring" },
+                {
+                  label: `Rankings updated ${formatSnapshotDate(
+                    contestId === "superflex"
+                      ? snapshot?.superflexSource?.asOf
+                      : snapshot?.rankingSource.asOf
+                  )}`,
+                },
+              ]}
+            />
           ) : null}
         </header>
 
@@ -610,9 +608,9 @@ function BestBallDraftRoom({
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]" style={{ gap: "var(--c97-sp-2)" }}>
         <section className="c97-panel" aria-labelledby="best-ball-room-setup-heading">
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Room setup</p>
-          <h2 id="best-ball-room-setup-heading" className="m-0 text-xl font-semibold" style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}>
+          <FantasySectionHeading id="best-ball-room-setup-heading">
             Choose your draft slot
-          </h2>
+          </FantasySectionHeading>
           <p className="max-w-[58ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
             This room is saved under the {snapshot.season} season and {preset.shortName} contest. Changing formats opens a separate saved room, so one set of picks never overwrites another.
           </p>

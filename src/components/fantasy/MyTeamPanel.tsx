@@ -1,5 +1,6 @@
 "use client";
 
+import { FantasySectionHeading } from "@/components/fantasy/FantasyRouteHeader";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Search } from "@/components/ui/ServerIcons";
 import styles from "./MyTeamPanel.module.css";
@@ -114,7 +115,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
     <section id="my-team" aria-labelledby="my-team-title" className={styles.workspace}>
       <header className={styles.header}>
         <div>
-          <h2 id="my-team-title" className="m-0 text-xl font-semibold" style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em" }}>My team</h2>
+          <FantasySectionHeading id="my-team-title">My team</FantasySectionHeading>
           <p className={styles.description}>Your saved roster, weekly lineup, and waiver decisions.</p>
         </div>
         <div className={styles.week}><span>Week</span><span>{snapshot.week}</span><span>{snapshot.season}</span></div>
