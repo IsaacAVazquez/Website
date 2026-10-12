@@ -1,7 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { pollingSnapshot } from "@/data/pollingSnapshot";
 import { getPollingSnapshot } from "@/lib/pollingSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { PollingAggregatorClient } from "./polling-aggregator-client";
 import { describeStaleSource, newestPollDate } from "./polling-aggregator-helpers";
 import { normalizePollingState } from "./polling-aggregator-state";
@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
     "Interactive polling dashboard using VoteHub data for presidential approval, the 2026 generic congressional ballot, and the 2026 Senate and governor races.",
   canonicalUrl: "/polling-aggregator",
   // The later of the redesign and the committed seed, which a daily job refreshes.
-  dateModified: [pollingSnapshot.generatedAt.slice(0, 10), "2026-10-12"].sort()[1],
+  dateModified: laterDate(pollingSnapshot.generatedAt.slice(0, 10), "2026-10-12"),
 });
 
 interface PollingPageProps {

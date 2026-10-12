@@ -248,15 +248,34 @@ describe("PollingAggregatorClient", () => {
     );
   });
 
-  it("says so when a deep-linked race view has no polls", () => {
-    currentSearchParams = new URLSearchParams("view=governors");
-    render(
-      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
-    );
+  it("falls back to the first view with polls when the requested one has none", () => {
+    // A governors link with no governor polls, and a legacy Overview link, land on Senate.
+    for (const query of ["view=governors", "view=overview"]) {
+      currentSearchParams = new URLSearchParams(query);
+      const { unmount } = render(
+        <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+      );
+      expect(screen.getByRole("button", { name: "Senate" })).toHaveAttribute("aria-pressed", "true");
+      expect(screen.getByRole("table", { name: "Senate race averages" })).toBeVisible();
+      unmount();
+    }
 
-    expect(screen.queryByRole("table", { name: /race averages/ })).not.toBeInTheDocument();
-    expect(
-      screen.getByText(/VoteHub has published no governor poll from the last four months/)
-    ).toBeVisible();
+    // With no Senate polls, the default view opens on Governors from the first render.
+    currentSearchParams = new URLSearchParams();
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={{ ...noRaces, governorRaces: [{ ...ohio, id: "governor-oh", office: "Governor" }] }}
+      />
+    );
+    expect(screen.getByRole("button", { name: "Governors" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("table", { name: "Governor race averages" })).toBeVisible();
+  });
+
+  it("counts a single day to the election in the singular", () => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-11-02T00:00:00Z"));
+    render(<PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={datedSnapshot} />);
+    expect(screen.getByRole("note")).toHaveTextContent("1 day to the Nov 3 midterms.");
+    jest.restoreAllMocks();
   });
 });

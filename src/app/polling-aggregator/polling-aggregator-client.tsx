@@ -489,9 +489,10 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
         ? snapshot.governorRaces.length > 0
         : true;
   const tabs = POLLING_VIEW_OPTIONS.filter(hasRaces);
-  // A view named in the URL is honoured, and says so when it has no polls.
-  // Without one, the board opens on the first view that has something in it.
-  const view: PollingView = searchParams.get("view") !== null ? routeState.view : tabs[0];
+  // The board shows the requested view when it has polls, and otherwise the
+  // first view that does, so an empty race list, a legacy ?view=overview, and
+  // the default Senate after useRouteSync drops it all land on the same tab.
+  const view: PollingView = tabs.includes(routeState.view) ? routeState.view : tabs[0];
 
   const approvalDate = newestPollDate(snapshot.approvalPolls);
   const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
@@ -510,7 +511,7 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
       ? "midterms Nov 3, 2026"
       : daysToElection === 0
         ? "election day, Nov 3, 2026"
-        : `${daysToElection} days to the Nov 3 midterms`;
+        : `${daysToElection} ${daysToElection === 1 ? "day" : "days"} to the Nov 3 midterms`;
 
   return (
     <div className="pa-root">
