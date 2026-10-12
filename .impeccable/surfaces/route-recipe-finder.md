@@ -23,7 +23,7 @@ The first screen is a title row (the h1 and one sentence that carries the staple
 
 The results open on "Find something to cook" with the search box, then the filters as chips (the four views, then the eight meal times) and the diet select, then one live count, "N of 26 recipes", which adds ", ranked by what your pantry is missing" once the pantry has something in it.
 
-Each recipe is an index card, and the card is the one box, since it carries the recipe's own data: card stock with a hairline edge, the title with cuisine and meal type, the time and servings in the corner, a red head rule, "Missing N of M ingredients" or "You have every ingredient", and the Ingredients and steps toggle, which opens the ingredient lines on blue rules with tick boxes and the numbered steps. The cards fill a grid of columns at least 19rem wide.
+Each recipe is an index card, and the card is the one box, since it carries the recipe's own data. It has card stock with a hairline edge, the title with cuisine and meal type, the time and servings in the corner, a red head rule, "Missing N of M ingredients" or "You have every ingredient", and the Ingredients and steps toggle, which opens the ingredient lines on blue rules with tick boxes and the numbered steps. The cards fill a grid of columns at least 19rem wide.
 
 Print hides the pantry form, the quick adds, Clear, the search, the filters, and the card toggles, and keeps the pantry labels and the cards.
 
@@ -37,4 +37,6 @@ The hero sheet and poster h1, the shelf plate with its offset shadow, the three 
 
 ## Verified state, 2026-10-12
 
-Filled in after the production pass, below.
+First field and first card, page coordinates including the header. The pantry input sits at y420 at 1440x900 and y485 at 390x844, against y642 and y649 before, and the first card at y702 at 1440 and y1281 at 390 (y1381 with six pantry items), against y1828 and y2046 (y1980 and y2113) before.
+
+Checked against a production build (`next build --webpack`, served with `next start` on 3810) in Chromium. `scripts/contrastSweep.mjs` reported no failures in either theme, and its `measurePage` run on the seeded states (a saved collection, an opened detail, a filtered view, with every disclosure opened) found none in either theme either. `scripts/layoutSweep.mjs` reported 0 fails across the five G7 routes (the sticky-offset review is the shelf's `top`, which only applies on a window at least 820px tall). The route's e2e specs passed against both the dev server and the production build. A scripted keyboard walk from the page top reached the pantry input first; typing egg and Enter added it with focus kept in the input, and Space on a card's toggle opened its ingredients and steps. Under `prefers-reduced-motion` the shared button transition collapsed to 1e-05s. A Chromium print with `page.pdf()` hid the pantry form, quick adds, search, filters, and toggles, and kept the pantry labels and the cards. I did not check Safari's and Firefox's engines, touch devices, or a screen reader.

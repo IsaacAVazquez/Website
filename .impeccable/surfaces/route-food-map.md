@@ -39,4 +39,6 @@ The vermilion hero sheet and poster h1, the 148px rotated stamp as a masthead fe
 
 ## Verified state, 2026-10-12
 
-Filled in after the production pass, below.
+The board, page coordinates including the header. The first city tab sits at y361 at 1440x900 and y443 at 390x844, the map at y682 and y931, and the first stop at y1341 and y1613, against y1212 and y1464, y1490 and y1902, and y2581 and y2984 before.
+
+Checked against a production build (`next build --webpack`, served with `next start` on 3810) in Chromium. `scripts/contrastSweep.mjs` reported no failures in either theme, and its `measurePage` run on the seeded states (a saved collection, an opened detail, a filtered view, with every disclosure opened) found none in either theme either. `scripts/layoutSweep.mjs` reported 0 fails across the five G7 routes (the one sticky-offset review is the rail's `top: 4.5rem` under the city bar, which is intended). The route's e2e specs passed against both the dev server and the production build. A scripted keyboard walk from the page top reached the checked city tab, then the curator stamps and cuisine pills; ArrowRight moved to and selected San Francisco, Enter on a stop moved focus to its h2, and Enter on Clear pick returned focus to "The stops". Under `prefers-reduced-motion` the shared button transition collapsed to 1e-05s. A Chromium print with `page.pdf()` printed the title row, the city bar unstuck, the status line, the chips, and the map tiles. I did not check Safari's and Firefox's engines, touch devices, or a screen reader.
