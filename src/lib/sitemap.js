@@ -66,7 +66,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/waivers": readWeeklyFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-10-09",
   "/fintech-tools/interchange-iq": "2026-10-09",
-  "/fintech-tools/rent-vs-buy": "2026-10-09",
+  "/fintech-tools/rent-vs-buy": "2026-10-11",
   "/food-map": "2026-10-09",
   "/travel": "2026-10-09",
   "/travel-deals": "2026-07-07",
