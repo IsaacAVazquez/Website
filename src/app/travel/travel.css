@@ -1,278 +1,766 @@
-/* Travel Planner: the boarding pass and the itinerary timeline. */
+/*
+ * Travel Planner, drawn as a trip planner: a title row, a compact trip
+ * header, the days as a ruled itinerary with the time grid beside them, and
+ * the journal as postcards. The route paints its own paper and redeclares the
+ * Catalog 97 tokens the borrowed field, button, chip, and label classes read.
+ */
 
-.c97-boarding-pass {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+.tp-root {
+  --tp-paper: #f5f3ee;
+  --tp-field: #e9e5dc;
+  --tp-ink: #17222a;
+  --tp-ink-2: #4a5761;
+  --tp-teal: #0c6468;
+  --tp-rule: rgba(23, 34, 42, 0.16);
+  --tp-rule-strong: #17222a;
+
+  --c97-surface: var(--tp-paper);
+  --c97-field: var(--tp-field);
+  --c97-ink: var(--tp-ink);
+  --c97-ink-2: var(--tp-ink-2);
+  --c97-label: var(--tp-ink-2);
+  --c97-rule: var(--tp-rule);
+  --c97-accent: var(--tp-teal);
+  --c97-positive: #2a6537;
+  --c97-negative: #9e3027;
+  --c97-warning: #7d5300;
+
+  background: var(--tp-paper);
+  color: var(--tp-ink);
+  font-family: var(--c97-font-body);
+}
+
+.dark .tp-root {
+  --tp-paper: #0f1619;
+  --tp-field: #1b252a;
+  --tp-ink: #e8edef;
+  --tp-ink-2: #a7b4ba;
+  --tp-teal: #74cbc6;
+  --tp-rule: rgba(232, 237, 239, 0.16);
+  --tp-rule-strong: #e8edef;
+
+  --c97-positive: #8fd19e;
+  --c97-negative: #f2a49b;
+  --c97-warning: #e6c172;
+}
+
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.tp-root h1,
+.tp-root h2,
+.tp-root h3 {
+  font-family: var(--c97-font-body);
+  color: var(--tp-ink);
+  margin: 0;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.tp-root :where(p, ul, li, figure, dl, dd) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+  line-height: 1.45;
+}
+
+.tp-root :where(ul) {
+  list-style: none;
+}
+
+.tp-page {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-4);
-  padding: var(--c97-sp-4);
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
 }
 
-.c97-boarding-pass-stub {
-  display: grid;
-  align-content: start;
+/* Title row: the name, one sentence, and the storage note. */
+.tp-head {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-1);
-  padding-left: var(--c97-sp-4);
-  border-left: 2px dashed var(--c97-rule);
-  min-width: 9rem;
 }
 
-.c97-boarding-pass-trip-select {
-  display: block;
-  max-width: 22rem;
-  margin-top: var(--c97-sp-2);
+.tp-root h1 {
+  font-size: var(--c97-fs-h1);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
 }
 
-.c97-boarding-pass-destination {
-  margin-top: var(--c97-sp-2);
+.tp-lede {
+  max-inline-size: 60ch;
+  color: var(--tp-ink-2);
 }
 
-/* A printed field with nothing in it yet, drawn as a blank rule instead of text. */
-.c97-boarding-pass-blank {
-  display: inline-block;
-  width: 12rem;
-  height: 1px;
-  margin-top: 0.6em;
-  background: var(--c97-rule);
+.tp-note {
+  font-size: var(--c97-fs-small);
+  color: var(--tp-ink-2);
 }
 
-.c97-boarding-pass-blank-sm {
-  display: inline-block;
-  width: 7rem;
-  height: 1px;
-  margin-top: 0.5em;
-  background: var(--c97-rule);
+.tp-error {
+  font-size: var(--c97-fs-small);
+  color: var(--c97-negative);
 }
 
-/*
- * One column on paper and on a phone. The stub comes first there, since it
- * carries the only action on a first visit (Start a trip) and the trip's
- * numbers after that, and a phone's first screen ended before it otherwise.
- */
-@media print, screen and (max-width: 639px) {
-  .c97-boarding-pass {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .c97-boarding-pass-stub {
-    order: -1;
-    padding-left: 0;
-    border-left: 0;
-    padding-bottom: var(--c97-sp-3);
-    border-bottom: 2px dashed var(--c97-rule);
-  }
-}
-
-/*
- * The itinerary timeline: one column per day, each a vertical track with
- * stops placed by time. The row scrolls inside itself at phone width so the
- * page never gains horizontal scroll.
- */
-/* Hour marks down the left, the same window the stops sit on. */
-.c97-travel-timeline-frame {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--c97-sp-2);
-}
-
-/* The axis is a column of its own, so its track lines up with the day tracks. */
-.c97-travel-timeline-col.c97-travel-timeline-axis {
-  width: 3.25rem;
-}
-
-.c97-travel-timeline-axis .c97-travel-timeline-track {
-  background: none;
-}
-
-.c97-travel-timeline-axis span {
-  position: absolute;
-  right: 0;
-  transform: translateY(-50%);
+.tp-count {
   font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-label);
-  color: var(--c97-ink-2);
+  font-size: var(--c97-fs-small);
+  color: var(--tp-ink-2);
   white-space: nowrap;
 }
 
-.c97-travel-timeline-rule {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--c97-rule);
+/* Forms: a two-column grid of labelled fields, no panel around them. */
+.tp-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-2);
 }
 
-.c97-travel-timeline-legend {
+.tp-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.tp-span-2 {
+  grid-column: 1 / -1;
+}
+
+.tp-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--c97-sp-2) var(--c97-sp-4);
-  margin: var(--c97-sp-3) 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink);
-}
-
-.c97-travel-timeline-legend li {
-  display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
 }
 
-.c97-travel-timeline-swatch {
-  display: inline-block;
-  width: 0.9rem;
-  height: 0.9rem;
-  background: var(--mark-color, var(--c97-ink-2));
+.tp-icon-btn {
+  min-width: 44px;
+  justify-content: center;
 }
 
-/* The key's overlap swatch is the same hatch over an ink fill. */
-.c97-travel-timeline-swatch[data-conflict="true"] {
-  background-color: var(--c97-ink);
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--c97-surface) 0,
-    var(--c97-surface) 3px,
-    transparent 3px,
-    transparent 6px
-  );
+.tp-root [data-armed] {
+  color: var(--c97-negative);
 }
 
-/* Six day columns fit a desktop plate, so the cue only shows when they can't. */
-@media screen and (min-width: 1024px) {
-  .c97-travel-timeline-cue:not([data-many]) {
-    display: none;
+/* First visit: the trip form, with the sample day beside it from 900px up. */
+.tp-first {
+  display: grid;
+  gap: var(--c97-sp-4);
+}
+
+.tp-form-trip {
+  max-inline-size: 36rem;
+}
+
+.tp-sample {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-inline-start: var(--c97-sp-3);
+  border-inline-start: 2px dashed var(--tp-rule);
+}
+
+@media screen and (min-width: 900px) {
+  .tp-first {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
   }
 }
 
-.c97-travel-timeline {
+/* The trip header: which trip, where, when, how far along. */
+.tp-trip {
   display: flex;
-  gap: var(--c97-sp-3);
-  overflow-x: auto;
-  padding-bottom: var(--c97-sp-1);
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-2) var(--c97-sp-1);
+  border-block: 3px solid var(--tp-rule-strong);
 }
 
-.c97-travel-timeline-col {
-  flex: 0 0 auto;
-  width: 6.5rem;
-  display: grid;
-  align-content: start;
-  gap: var(--c97-sp-1);
+.tp-trip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--c97-sp-2) var(--c97-sp-5);
 }
 
-.c97-travel-timeline-day {
+.tp-trip-name {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.tp-trip-select {
+  display: block;
+  max-inline-size: 20rem;
+}
+
+.tp-destination {
+  font-size: var(--c97-fs-h2);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+
+.tp-dates {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--tp-ink-2);
+}
+
+.tp-figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-2) var(--c97-sp-5);
+}
+
+.tp-figures dt {
   font-size: var(--c97-fs-label);
-  font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c97-ink-2);
-  margin: 0;
+  color: var(--tp-ink-2);
+}
+
+.tp-figures dd {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-body);
+  color: var(--tp-ink);
   white-space: nowrap;
 }
 
-.c97-travel-timeline-track {
-  position: relative;
-  height: clamp(220px, 30vw, 320px);
-  background: var(--c97-field);
+.tp-new-trip-form {
+  padding-block: var(--c97-sp-2);
+  border-top: 1px solid var(--tp-rule);
+  max-inline-size: 40rem;
 }
 
-.c97-travel-timeline-mark {
-  position: absolute;
-  left: 2px;
-  right: 2px;
-  min-height: 4px;
-  background: var(--mark-color, var(--c97-ink-2));
+/* Trip management: a disclosure under the header. */
+.tp-manage summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--c97-fs-small);
+  color: var(--tp-ink-2);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-.c97-travel-timeline-mark[data-done="true"] {
-  opacity: 0.5;
+.tp-manage summary:hover,
+.tp-manage[open] summary {
+  color: var(--tp-ink);
 }
 
-/*
- * The overlap flag is a hatch in the plate's own paper, so it reads without
- * relying on hue. Paper stripes clear 3.6:1 on every category fill in both
- * themes, where ink stripes matched the darkest fill in light mode.
- */
-.c97-travel-timeline-mark[data-conflict="true"] {
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--c97-surface) 0,
-    var(--c97-surface) 3px,
-    var(--mark-color, var(--c97-ink-2)) 3px,
-    var(--mark-color, var(--c97-ink-2)) 6px
-  );
+.tp-manage summary:focus-visible {
+  outline: 2px solid var(--tp-teal);
+  outline-offset: 2px;
 }
 
-.c97-travel-timeline-untimed {
-  font-size: var(--c97-fs-label);
-  color: var(--c97-ink-2);
-  margin: var(--c97-sp-1) 0 0;
-}
-
-/*
- * A postcard for a journal entry: the note on the left, a stamp corner
- * carrying the mood and date on the right, torn free of the sheet below it.
- */
-.c97-postcard {
+.tp-manage-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--c97-sp-3);
-  padding: var(--c97-sp-3);
+  padding-block: var(--c97-sp-2) var(--c97-sp-3);
 }
 
-.c97-postcard-stamp {
+.tp-details {
+  max-inline-size: 44rem;
+}
+
+.tp-trip-list {
+  margin-top: var(--c97-sp-1);
+  max-inline-size: 44rem;
+}
+
+.tp-trip-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  min-height: 44px;
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--tp-rule);
+}
+
+.tp-trip-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  min-height: 44px;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--tp-ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.tp-trip-pick-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tp-trip-pick:hover .tp-trip-pick-name,
+.tp-trip-pick:focus-visible .tp-trip-pick-name,
+.tp-trip-pick[aria-current="true"] .tp-trip-pick-name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tp-trip-pick:focus-visible {
+  outline: 2px solid var(--tp-teal);
+  outline-offset: 2px;
+}
+
+/* Sections: the itinerary and the journal. */
+.tp-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.tp-section h2 {
+  font-size: var(--c97-fs-h3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tp-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+}
+
+.tp-itinerary {
   display: grid;
-  align-content: start;
+  gap: var(--c97-sp-4);
+}
+
+.tp-days {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  min-width: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .tp-itinerary {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
+    align-items: start;
+  }
+
+  .tp-grid-col {
+    position: sticky;
+    top: var(--c97-sp-3);
+  }
+}
+
+/* One day: a heading rule, the stops, then Add a stop or the stop form. */
+.tp-day {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-1);
-  min-width: 6.5rem;
-  padding: var(--c97-sp-2);
-  border: 2px dotted var(--c97-rule);
-  text-align: center;
 }
 
-@media print, screen and (max-width: 639px) {
-  .c97-postcard {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .c97-postcard-stamp {
-    justify-self: start;
-  }
+.tp-day-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--tp-rule-strong);
 }
 
-/* The done toggle on a stop: a 44px hit box that darkens on hover and nudges on press. */
-.c97-travel-toggle {
+.tp-day-number {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--tp-teal);
+  white-space: nowrap;
+}
+
+.tp-day-heading {
+  font-size: var(--c97-fs-body);
+  font-weight: 700;
+}
+
+.tp-day[data-today] .tp-day-head {
+  border-bottom-color: var(--tp-teal);
+}
+
+.tp-sample .tp-day-heading {
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--tp-rule);
+}
+
+/* A stop: time in the margin, the done toggle on the day's rail, then the stop. */
+.tp-stop {
+  display: grid;
+  grid-template-columns: 9rem 44px minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--tp-rule);
+}
+
+.tp-stop-time {
+  padding-top: 0.7rem;
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--tp-ink-2);
+}
+
+.tp-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
-  border: 0;
-  background: none;
-  color: var(--c97-ink-2);
-  cursor: pointer;
-}
-
-.c97-travel-toggle:hover,
-.c97-travel-toggle:focus-visible {
-  color: var(--c97-ink);
-}
-
-.c97-travel-toggle:active {
-  transform: translateY(1px);
-}
-
-/* A trip in the All trips list: the name underlines on hover and focus, like a link. */
-.c97-travel-trip-pick {
-  border: 0;
-  background: none;
   padding: 0;
+  border: 0;
+  background: none;
+  color: var(--mark-color, var(--tp-ink-2));
   cursor: pointer;
-  color: var(--c97-ink);
 }
 
-.c97-travel-trip-pick:hover .c97-serif,
-.c97-travel-trip-pick:focus-visible .c97-serif,
-.c97-travel-trip-pick[aria-current="true"] .c97-serif {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.tp-toggle:hover {
+  color: var(--tp-ink);
+}
+
+.tp-toggle:focus-visible {
+  outline: 2px solid var(--tp-teal);
+  outline-offset: -2px;
+}
+
+.tp-stop-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 0.6rem;
+  min-width: 0;
+}
+
+.tp-stop-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.tp-stop-title {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tp-stop[data-done] .tp-stop-title {
+  color: var(--tp-ink-2);
+  text-decoration: line-through;
+}
+
+.tp-stop-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--tp-ink-2);
+  overflow-wrap: anywhere;
+}
+
+.tp-stop-notes {
+  font-size: var(--c97-fs-small);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.tp-stop-actions {
+  display: flex;
+  align-items: center;
+}
+
+.tp-add-stop {
+  align-self: flex-start;
+  margin-inline-start: 0;
+}
+
+.tp-stop-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-2) 0 var(--c97-sp-1);
+}
+
+@media screen and (min-width: 640px) {
+  .tp-form-stop {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .tp-form-stop > label.tp-span-2 {
+    grid-column: span 2;
+  }
+
+  .tp-form-stop > label.tp-span-2:first-child,
+  .tp-form-stop > .tp-actions,
+  .tp-form-stop > .tp-error {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .tp-stop {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+  }
+
+  .tp-stop-time {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    padding-top: var(--c97-sp-1);
+  }
+
+  .tp-stop .tp-toggle {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .tp-stop-body {
+    grid-column: 2;
+    grid-row: 2;
+    padding-top: 0;
+  }
+
+  .tp-stop-actions {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+/* The time grid: one column per day, stops placed by time. It scrolls inside itself, so the page never does. */
+.tp-grid-frame {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--c97-sp-1);
+}
+
+.tp-grid {
+  display: flex;
+  gap: var(--c97-sp-1);
+  overflow-x: auto;
+  padding-bottom: var(--c97-sp-1);
+}
+
+.tp-grid-day-col {
+  flex: 0 0 auto;
+  width: 4.75rem;
+  display: grid;
+  align-content: start;
+  gap: var(--c97-sp-1);
+}
+
+.tp-grid-day-col.tp-grid-axis {
+  width: 2.75rem;
+}
+
+.tp-grid-day {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tp-ink-2);
+  white-space: nowrap;
+}
+
+.tp-grid-track {
+  position: relative;
+  height: clamp(200px, 26vw, 300px);
+  background: var(--tp-field);
+}
+
+.tp-grid-axis .tp-grid-track {
+  background: none;
+}
+
+.tp-grid-axis span {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  color: var(--tp-ink-2);
+  white-space: nowrap;
+}
+
+.tp-grid-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--tp-rule);
+}
+
+.tp-grid-mark {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  min-height: 4px;
+  background: var(--mark-color, var(--tp-ink-2));
+}
+
+.tp-grid-mark[data-done="true"] {
+  opacity: 0.45;
+}
+
+/* The overlap flag is a hatch in the page's own paper, so it reads without relying on hue. */
+.tp-grid-mark[data-conflict="true"] {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--tp-paper) 0,
+    var(--tp-paper) 3px,
+    var(--mark-color, var(--tp-ink-2)) 3px,
+    var(--mark-color, var(--tp-ink-2)) 6px
+  );
+}
+
+.tp-grid-untimed {
+  font-size: var(--c97-fs-label);
+  color: var(--tp-ink-2);
+}
+
+.tp-grid-cue {
+  margin-bottom: var(--c97-sp-1);
+}
+
+@media screen and (min-width: 1024px) {
+  .tp-grid-cue:not([data-many]) {
+    display: none;
+  }
+}
+
+.tp-grid-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  margin-top: var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+}
+
+.tp-grid-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.tp-grid-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  background: var(--mark-color, var(--tp-ink-2));
+}
+
+.tp-grid-swatch[data-conflict="true"] {
+  background-color: var(--tp-ink);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--tp-paper) 0,
+    var(--tp-paper) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+/* The journal: postcards on the left, the entry form on the right from 1024px up. */
+.tp-journal {
+  display: grid;
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 1024px) {
+  .tp-journal {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem);
+    align-items: start;
+  }
+}
+
+.tp-journal-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.tp-postcards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+/* A postcard is the one box on the page, since it is the object: the note left, the stamp right. */
+.tp-postcard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--c97-sp-3);
+  padding: var(--c97-sp-2) var(--c97-sp-3);
+  border: 1px solid var(--tp-rule);
+  background: var(--tp-paper);
+}
+
+.tp-postcard-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.tp-postcard-title {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.tp-postcard-text {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.tp-postcard-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-width: 6.5rem;
+  padding: var(--c97-sp-1);
+  border: 2px dotted var(--tp-rule);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  color: var(--tp-ink-2);
+  text-align: center;
+}
+
+@media print, screen and (max-width: 639px) {
+  .tp-postcard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tp-postcard-stamp {
+    align-self: start;
+    order: -1;
+    flex-direction: row;
+  }
+}
+
+/* On paper the plan prints without its forms and controls. */
+@media print {
+  .tp-new-trip,
+  .tp-manage,
+  .tp-stop-form,
+  .tp-add-stop,
+  .tp-journal-form,
+  .tp-stop-actions,
+  .tp-postcard .tp-actions {
+    display: none;
+  }
+
+  .tp-grid-col {
+    break-inside: avoid;
+  }
 }

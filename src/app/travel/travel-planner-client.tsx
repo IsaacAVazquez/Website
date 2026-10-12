@@ -1,6 +1,7 @@
 "use client";
 
-import { type FormEvent, useMemo, useRef, useState } from "react";
+import { type FormEvent, type ReactNode, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import {
   AlertTriangle,
   BedDouble,
@@ -20,8 +21,6 @@ import {
   Trash2,
   UtensilsCrossed,
 } from "lucide-react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   ACTIVITY_CATEGORIES,
   ACTIVITY_CATEGORY_LABELS,
@@ -41,12 +40,11 @@ import {
   type JournalDraft,
   useTravelPlanner,
 } from "@/hooks/useTravelPlanner";
+import { useClientNow } from "@/hooks/useClientNow";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { boardingPass, itineraryColumns, timelineTicks, type ItineraryColumn, type TimelineTick } from "./itinerary";
 import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types/travel";
 import "./travel.css";
-
-const ROUTE = "/travel";
 
 const CATEGORY_ICON: Record<ActivityCategory, LucideIcon> = {
   transit: Train,
@@ -84,6 +82,13 @@ const MOOD_CHIP_TONE: Record<JournalEntry["mood"], string> = {
   tired: "c97-chip-negative",
 };
 
+/** The first-visit illustration of what a planned day looks like. Never stored, never counted. */
+const SAMPLE_DAY: { time: string; title: string; category: ActivityCategory; place: string; done: boolean }[] = [
+  { time: "9:00 AM – 11:00 AM", title: "Jerónimos Monastery", category: "sight", place: "Belém", done: true },
+  { time: "12:30 PM", title: "Lunch by the river", category: "food", place: "Cais do Sodré", done: false },
+  { time: "7:00 PM", title: "Sunset at the miradouro", category: "activity", place: "Graça", done: false },
+];
+
 function emptyActivityDraft(date: string): ActivityDraft {
   return { date, time: "", endTime: "", title: "", location: "", category: "activity", notes: "" };
 }
@@ -103,6 +108,9 @@ function formatBudget(value: number) {
     maximumFractionDigits: digits,
   });
 }
+
+/** An empty date in the new-trip draft means "today", which is only known once the page has mounted. */
+const EMPTY_TRIP_DRAFT = { name: "", destination: "", startDate: "", endDate: "" };
 
 export function TravelPlannerClient() {
   const planner = useTravelPlanner();
@@ -125,12 +133,17 @@ export function TravelPlannerClient() {
     removeJournal,
   } = planner;
 
-
-  const today = getTodayKey();
-  const lead = PROJECT_PRESS[ROUTE].lead;
+  // Today is the browser's day, read after mount. The server's day and the
+  // browser's differ whenever their clocks sit either side of midnight, so a
+  // render-time read printed one date into the server HTML and another into
+  // the first client render, and hydration failed.
+  const now = useClientNow();
+  const today = now === null ? "" : getTodayKey(new Date(now));
 
   const tripNameInputRef = useRef<HTMLInputElement>(null);
-  const [tripDraft, setTripDraft] = useState({ name: "", destination: "", startDate: today, endDate: today });
+  const [tripDraft, setTripDraft] = useState(EMPTY_TRIP_DRAFT);
+  const draftStart = tripDraft.startDate || today;
+  const draftEnd = tripDraft.endDate || today;
   const [showTripForm, setShowTripForm] = useState(false);
   // Which delete button is armed, as "active:<id>" or "row:<id>". A second
   // click deletes, "Keep it" disarms, and focus returns to a control that stays.
@@ -139,7 +152,7 @@ export function TravelPlannerClient() {
   const confirmDeleteTrip = (id: string) => {
     removeTrip(id);
     setConfirmingDelete(null);
-    // Deleting the last trip takes the manage section with it, so focus goes to the form that replaces it.
+    // Deleting the last trip takes the trip header with it, so focus goes to the form that replaces it.
     if (trips.length <= 1) requestAnimationFrame(() => tripNameInputRef.current?.focus());
     else newTripButtonRef.current?.focus();
   };
@@ -150,7 +163,7 @@ export function TravelPlannerClient() {
   }
 
   const defaultActivityDate = useMemo(
-    () => (activeTrip ? getDefaultActivityDate(activeTrip, today) : today),
+    () => (activeTrip ? getDefaultActivityDate(activeTrip, today || activeTrip.startDate) : today),
     [activeTrip, today]
   );
 
@@ -158,6 +171,8 @@ export function TravelPlannerClient() {
   const [editingActivityId, setEditingActivityId] = useState<string | null>(null);
   const [activityTitleMissing, setActivityTitleMissing] = useState(false);
   const activityTitleInputRef = useRef<HTMLInputElement>(null);
+  // The day the stop form sits under. Null follows the default day.
+  const [formDay, setFormDay] = useState<string | null>(null);
 
   const [journalDraft, setJournalDraft] = useState<JournalDraft>(() => emptyJournalDraft(defaultActivityDate));
   const [editingJournalId, setEditingJournalId] = useState<string | null>(null);
@@ -169,6 +184,7 @@ export function TravelPlannerClient() {
     setLastTripContext({ tripId: activeTripId, date: defaultActivityDate });
     setEditingActivityId(null);
     setEditingJournalId(null);
+    if (lastTripContext.tripId !== activeTripId) setFormDay(null);
     setActivityDraft((draft) =>
       draft.title || draft.location || draft.notes || draft.time ? draft : emptyActivityDraft(defaultActivityDate)
     );
@@ -178,7 +194,7 @@ export function TravelPlannerClient() {
   function resetActivityDraft() {
     setEditingActivityId(null);
     setActivityTitleMissing(false);
-    setActivityDraft(emptyActivityDraft(defaultActivityDate));
+    setActivityDraft(emptyActivityDraft(formDay ?? defaultActivityDate));
   }
 
   function resetJournalDraft() {
@@ -187,17 +203,36 @@ export function TravelPlannerClient() {
     setJournalDraft(emptyJournalDraft(defaultActivityDate));
   }
 
+  /** Moves the one stop form under a day and puts the cursor in its title. */
+  function openStopFormOn(date: string) {
+    // flushSync so the form has moved before focus goes to it.
+    flushSync(() => {
+      setFormDay(date);
+      setActivityTitleMissing(false);
+      if (editingActivityId) {
+        setEditingActivityId(null);
+        setActivityDraft(emptyActivityDraft(date));
+      } else {
+        setActivityDraft((draft) => ({ ...draft, date }));
+      }
+    });
+    activityTitleInputRef.current?.focus();
+  }
+
   function handleEditActivity(activity: TripActivity) {
-    setEditingActivityId(activity.id);
-    setActivityTitleMissing(false);
-    setActivityDraft({
-      date: activity.date,
-      time: activity.time,
-      endTime: activity.endTime,
-      title: activity.title,
-      location: activity.location,
-      category: activity.category,
-      notes: activity.notes,
+    flushSync(() => {
+      setFormDay(activity.date);
+      setEditingActivityId(activity.id);
+      setActivityTitleMissing(false);
+      setActivityDraft({
+        date: activity.date,
+        time: activity.time,
+        endTime: activity.endTime,
+        title: activity.title,
+        location: activity.location,
+        category: activity.category,
+        notes: activity.notes,
+      });
     });
     activityTitleInputRef.current?.focus();
   }
@@ -211,14 +246,14 @@ export function TravelPlannerClient() {
 
   function handleCreateTrip(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!tripDraft.name.trim() || !tripDraft.startDate) return;
+    if (!tripDraft.name.trim() || !draftStart) return;
     addTrip({
       name: tripDraft.name.trim(),
       destination: tripDraft.destination.trim(),
-      startDate: tripDraft.startDate,
-      endDate: tripDraft.endDate || tripDraft.startDate,
+      startDate: draftStart,
+      endDate: draftEnd || draftStart,
     });
-    setTripDraft({ name: "", destination: "", startDate: today, endDate: today });
+    setTripDraft(EMPTY_TRIP_DRAFT);
     setShowTripForm(false);
   }
 
@@ -260,16 +295,19 @@ export function TravelPlannerClient() {
     resetJournalDraft();
   }
 
-  const passData = activeTrip && summary ? boardingPass(activeTrip, summary, today) : null;
+  const passData = activeTrip && summary ? boardingPass(activeTrip, summary, today || undefined) : null;
   const conflictIds = summary ? summary.dayBuckets.flatMap((bucket) => bucket.conflictIds) : [];
   const columns = summary ? itineraryColumns(summary.dayBuckets, conflictIds) : [];
+  const dayKeys = summary ? summary.dayBuckets.map((bucket) => bucket.date) : [];
+  const anchorDay =
+    [formDay, defaultActivityDate].find((day): day is string => !!day && dayKeys.includes(day)) ??
+    dayKeys[dayKeys.length - 1] ??
+    null;
 
-  // One set of fields, printed beside the boarding pass before the first trip
-  // exists and under "New trip" in the manage section after that.
   const hasTrips = trips.length > 0;
   const tripFormFields = (
     <>
-      <label className="block sm:col-span-2">
+      <label className="tp-span-2">
         <span className="c97-kicker">Trip name</span>
         <input
           ref={tripNameInputRef}
@@ -278,11 +316,10 @@ export function TravelPlannerClient() {
           onChange={(e) => setTripDraft((d) => ({ ...d, name: e.target.value }))}
           placeholder="Lisbon long weekend"
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
           required
         />
       </label>
-      <label className="block sm:col-span-2">
+      <label className="tp-span-2">
         <span className="c97-kicker">Destination</span>
         <input
           type="text"
@@ -290,39 +327,36 @@ export function TravelPlannerClient() {
           onChange={(e) => setTripDraft((d) => ({ ...d, destination: e.target.value }))}
           placeholder="Lisbon, Portugal"
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
         />
       </label>
-      <label className="block">
+      <label>
         <span className="c97-kicker">Start date</span>
         <input
           type="date"
-          value={tripDraft.startDate}
-          onChange={(e) =>
-            setTripDraft((d) => ({
-              ...d,
-              startDate: e.target.value,
-              endDate: !d.endDate || d.endDate < e.target.value ? e.target.value : d.endDate,
-            }))
-          }
+          value={draftStart}
+          onChange={(e) => {
+            const startDate = e.target.value;
+            setTripDraft((d) => {
+              const end = d.endDate || today;
+              return { ...d, startDate, endDate: !end || end < startDate ? startDate : end };
+            });
+          }}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
           required
         />
       </label>
-      <label className="block">
+      <label>
         <span className="c97-kicker">End date</span>
         <input
           type="date"
-          value={tripDraft.endDate}
-          min={tripDraft.startDate}
+          value={draftEnd}
+          min={draftStart || undefined}
           onChange={(e) => setTripDraft((d) => ({ ...d, endDate: e.target.value }))}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
           required
         />
       </label>
-      <div className="flex flex-wrap sm:col-span-2" style={{ gap: "var(--c97-sp-1)" }}>
+      <div className="tp-span-2 tp-actions">
         <button type="submit" className="c97-btn">
           <Plus className="h-3.5 w-3.5" aria-hidden="true" />
           Save trip
@@ -336,267 +370,371 @@ export function TravelPlannerClient() {
     </>
   );
 
-  const standfirst =
-    "I wanted one dated plan per trip, laid out by day, with the stops I've done ticked off and a journal for what actually happened along the way.";
+  const stopForm = (
+    <div className="tp-stop-form">
+      <p className="c97-kicker">{editingActivityId ? "Edit stop" : "Add stop"}</p>
+      <form onSubmit={handleSubmitActivity} className="tp-form tp-form-stop">
+        <label className="tp-span-2">
+          <span className="c97-kicker">Title</span>
+          <input
+            ref={activityTitleInputRef}
+            type="text"
+            value={activityDraft.title}
+            onChange={(e) => {
+              setActivityTitleMissing(false);
+              setActivityDraft((d) => ({ ...d, title: e.target.value }));
+            }}
+            aria-invalid={activityTitleMissing || undefined}
+            aria-describedby={activityTitleMissing ? "travel-stop-title-error" : undefined}
+            placeholder="Sunset at Miradouro"
+            className="c97-field"
+          />
+        </label>
+        {activityTitleMissing ? (
+          <p id="travel-stop-title-error" role="alert" className="tp-span-2 tp-error">
+            Give the stop a title to add it.
+          </p>
+        ) : null}
+        <label>
+          <span className="c97-kicker">Date</span>
+          <input
+            type="date"
+            value={activityDraft.date}
+            min={activeTrip?.startDate}
+            max={activeTrip?.endDate}
+            onChange={(e) => setActivityDraft((d) => ({ ...d, date: e.target.value }))}
+            className="c97-field"
+          />
+        </label>
+        <label>
+          <span className="c97-kicker">Category</span>
+          <select
+            value={activityDraft.category}
+            onChange={(e) => setActivityDraft((d) => ({ ...d, category: e.target.value as ActivityDraft["category"] }))}
+            className="c97-field"
+          >
+            {ACTIVITY_CATEGORIES.map((category) => (
+              <option key={category} value={category}>
+                {ACTIVITY_CATEGORY_LABELS[category]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span className="c97-kicker">Starts</span>
+          <input
+            type="time"
+            value={activityDraft.time}
+            onChange={(e) =>
+              setActivityDraft((d) => {
+                const time = e.target.value;
+                return { ...d, time, endTime: time && d.endTime > time ? d.endTime : "" };
+              })
+            }
+            className="c97-field"
+          />
+        </label>
+        <label>
+          <span className="c97-kicker">Ends</span>
+          <input
+            type="time"
+            value={activityDraft.endTime}
+            min={activityDraft.time || undefined}
+            disabled={!activityDraft.time}
+            aria-invalid={endTimeInvalid || undefined}
+            onChange={(e) => setActivityDraft((d) => ({ ...d, endTime: e.target.value }))}
+            className="c97-field"
+          />
+        </label>
+        {endTimeInvalid ? (
+          <p role="alert" className="tp-span-2 tp-error">
+            The end time has to come after the start. Overnight stops need one entry per day.
+          </p>
+        ) : null}
+        <label className="tp-span-2">
+          <span className="c97-kicker">Location</span>
+          <input
+            type="text"
+            value={activityDraft.location}
+            onChange={(e) => setActivityDraft((d) => ({ ...d, location: e.target.value }))}
+            placeholder="Alfama"
+            className="c97-field"
+          />
+        </label>
+        <label className="tp-span-2">
+          <span className="c97-kicker">Notes</span>
+          <textarea
+            value={activityDraft.notes}
+            onChange={(e) => setActivityDraft((d) => ({ ...d, notes: e.target.value }))}
+            placeholder="Reservation, what to bring, etc."
+            className="c97-field"
+            rows={2}
+          />
+        </label>
+        <div className="tp-span-2 tp-actions">
+          <button type="submit" className="c97-btn">
+            <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+            {editingActivityId ? "Save stop" : "Add stop"}
+          </button>
+          {editingActivityId ? (
+            <button type="button" onClick={resetActivityDraft} className="c97-btn-ghost">
+              Cancel
+            </button>
+          ) : null}
+        </div>
+      </form>
+    </div>
+  );
 
   return (
-    <div data-testid="travel-planner-shell">
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Travel Planner"
-        standfirst={standfirst}
-      >
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: "var(--c97-sp-4)" }}>
-          <div data-c97-surface="paper" className="c97-offset c97-boarding-pass">
-            <BoardingPassMain
-              trips={trips}
-              activeTripId={activeTripId}
-              destination={passData?.destination ?? null}
-              dateRange={passData?.dateRange ?? null}
-              onSelectTrip={selectTrip}
-            />
-            <BoardingPassStub pass={passData} onStartTrip={openTripForm} />
-          </div>
-
-          {hasTrips ? null : (
-            <form
-              onSubmit={handleCreateTrip}
-              data-c97-surface="paper"
-              className="c97-offset grid sm:grid-cols-2"
-              style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-3)" }}
-              aria-label="Create a new trip"
-            >
-              <p className="c97-kicker sm:col-span-2">Your first trip</p>
-              {tripFormFields}
-              <p className="c97-prose sm:col-span-2" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                The day-by-day itinerary and the journal open once a trip is saved.
-              </p>
-            </form>
-          )}
-
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: 0 }}>
-            Your trips are saved in this browser only, so they never leave this device.
+    <div data-testid="travel-planner-shell" className="tp-root" data-empty={activeTrip ? undefined : "true"}>
+      <div className="c97-shell c97-frame tp-page">
+        <header className="tp-head">
+          <h1>Travel Planner</h1>
+          <p className="tp-lede">
+            One dated plan per trip, laid out by day, with the stops ticked off as they happen and a journal for
+            what the day was actually like.
           </p>
-
+          <p className="tp-note">Your trips are saved in this browser only, so they never leave this device.</p>
           {persistenceStatus === "memory-only" ? (
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }} role="status">
+            <p className="tp-note" role="status">
               Your trips are available in this tab, but browser storage is unavailable, so changes may not last
               after you close it.
             </p>
           ) : null}
+        </header>
 
-          {activeTrip && summary ? (
-            <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-              <ItineraryTimeline columns={columns} ticks={summary ? timelineTicks(summary.dayBuckets) : []} />
-            </div>
-          ) : null}
-        </div>
-      </Catalog97ProjectHero>
+        {hasTrips ? null : (
+          <div className="tp-first">
+            <form onSubmit={handleCreateTrip} className="tp-form tp-form-trip" aria-label="Create a new trip">
+              <p className="c97-kicker tp-span-2">Your first trip</p>
+              {tripFormFields}
+              <p className="tp-span-2 tp-note">The day-by-day itinerary and the journal open once a trip is saved.</p>
+            </form>
+            <figure className="tp-sample">
+              <figcaption className="c97-kicker">A sample day, to show what the plan turns into</figcaption>
+              <p className="tp-day-heading">Day 1 · Sat, Oct 10</p>
+              <ul className="tp-stops">
+                {SAMPLE_DAY.map((stop) => {
+                  const Icon = CATEGORY_ICON[stop.category];
+                  return (
+                    <li key={stop.title} className="tp-stop" data-done={stop.done || undefined}>
+                      <span className="tp-stop-time">{stop.time}</span>
+                      <span className="tp-toggle" style={{ ["--mark-color" as string]: CATEGORY_CHART[stop.category] }} aria-hidden="true">
+                        {stop.done ? <CheckCircle2 className="h-5 w-5" /> : <Circle className="h-5 w-5" />}
+                      </span>
+                      <span className="tp-stop-body">
+                        <span className="tp-stop-title">{stop.title}</span>
+                        <span className="tp-stop-meta">
+                          <Icon className="h-3.5 w-3.5" aria-hidden="true" style={{ color: CATEGORY_CHART[stop.category] }} />
+                          <span>{ACTIVITY_CATEGORY_LABELS[stop.category]}</span>
+                          <span>· {stop.place}</span>
+                          {stop.done ? <span>· Done</span> : null}
+                        </span>
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </figure>
+          </div>
+        )}
 
-      {/* The itinerary, the journal, and trip management open once a trip exists. */}
-      {activeTrip ? (
-        <>
-          <section
-            id="section-itinerary"
-            className="c97-band c97-sheet"
-            data-c97-surface="paper"
-            data-seam="torn"
-            aria-label="Day-by-day itinerary"
-          >
-            <div className="c97-shell">
-              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-                <div>
-                  <p className="c97-kicker">Day by day</p>
-                  <h2 className="c97-poster-sm">Itinerary</h2>
-                </div>
-                {summary ? (
-                  <p className="c97-meta c97-tabular">
-                    {summary.activitiesCompleted}/{summary.activitiesTotal} stops checked off
-                  </p>
+        {activeTrip && passData ? (
+          <section className="tp-trip" aria-label="Trip management">
+            <div className="tp-trip-row">
+              <div className="tp-trip-name">
+                {trips.length > 1 ? (
+                  <label className="tp-trip-select">
+                    <span className="sr-only">Trip</span>
+                    <select value={activeTripId ?? ""} onChange={(e) => selectTrip(e.target.value)} className="c97-field">
+                      {trips.map((trip) => (
+                        <option key={trip.id} value={trip.id}>
+                          {trip.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                ) : activeTrip.destination ? (
+                  <p className="c97-kicker">{activeTrip.name}</p>
                 ) : null}
+                <p className="tp-destination">{passData.destination}</p>
+                <p className="tp-dates">{passData.dateRange}</p>
               </div>
+              <dl className="tp-figures">
+                <div>
+                  <dt>Countdown</dt>
+                  <dd>{passData.countdown}</dd>
+                </div>
+                <div>
+                  <dt>Stops</dt>
+                  <dd>
+                    {passData.stopsDone}/{passData.stopsTotal}
+                  </dd>
+                </div>
+              </dl>
+              <button
+                ref={newTripButtonRef}
+                type="button"
+                onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())}
+                className="c97-btn tp-new-trip"
+                aria-expanded={showTripForm}
+              >
+                <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+                New trip
+              </button>
+            </div>
 
-              {summary?.itineraryTruncated ? (
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
+            {showTripForm ? (
+              <form onSubmit={handleCreateTrip} className="tp-form tp-form-trip tp-new-trip-form" aria-label="Create a new trip">
+                {tripFormFields}
+              </form>
+            ) : null}
+
+            <details className="tp-manage">
+              <summary>Trip details and all trips ({trips.length})</summary>
+              <div className="tp-manage-body">
+                <TripDetailsFields trip={activeTrip} onUpdateField={(fields) => updateTripFields(activeTrip.id, fields)} />
+                <div className="tp-actions">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      confirmingDelete === `active:${activeTrip.id}`
+                        ? confirmDeleteTrip(activeTrip.id)
+                        : setConfirmingDelete(`active:${activeTrip.id}`)
+                    }
+                    className="c97-btn-ghost"
+                    data-armed={confirmingDelete === `active:${activeTrip.id}` || undefined}
+                  >
+                    <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    {confirmingDelete === `active:${activeTrip.id}` ? "Confirm delete" : "Delete trip"}
+                  </button>
+                  {confirmingDelete === `active:${activeTrip.id}` ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        setConfirmingDelete(null);
+                        (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                      }}
+                      className="c97-btn-ghost"
+                    >
+                      Keep it
+                    </button>
+                  ) : null}
+                </div>
+
+                <div>
+                  <p className="c97-kicker">All trips ({trips.length})</p>
+                  <ul className="tp-trip-list">
+                    {trips.map((other) => (
+                      <li key={other.id}>
+                        <button
+                          type="button"
+                          onClick={() => selectTrip(other.id)}
+                          aria-current={other.id === activeTrip.id ? "true" : undefined}
+                          className="tp-trip-pick"
+                        >
+                          <span className="tp-trip-pick-name">
+                            {other.name}
+                            {other.id === activeTrip.id ? " (active)" : ""}
+                          </span>
+                          <span className="tp-stop-meta">
+                            {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
+                          </span>
+                        </button>
+                        <div className="tp-actions">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              confirmingDelete === `row:${other.id}`
+                                ? confirmDeleteTrip(other.id)
+                                : setConfirmingDelete(`row:${other.id}`)
+                            }
+                            aria-label={
+                              confirmingDelete === `row:${other.id}`
+                                ? `Confirm delete trip ${other.name}`
+                                : `Delete trip ${other.name}`
+                            }
+                            className="c97-btn-ghost tp-icon-btn"
+                            data-armed={confirmingDelete === `row:${other.id}` || undefined}
+                          >
+                            <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                            {confirmingDelete === `row:${other.id}` ? "Confirm delete" : null}
+                          </button>
+                          {confirmingDelete === `row:${other.id}` ? (
+                            <button
+                              type="button"
+                              onClick={(event) => {
+                                setConfirmingDelete(null);
+                                (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                              }}
+                              className="c97-btn-ghost"
+                            >
+                              Keep it
+                            </button>
+                          ) : null}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </section>
+        ) : null}
+
+        {/* The itinerary and the journal open once a trip exists. */}
+        {activeTrip && summary ? (
+          <>
+            <section id="section-itinerary" className="tp-section" aria-label="Day-by-day itinerary">
+              <h2>Itinerary</h2>
+              {summary.itineraryTruncated ? (
+                <p className="tp-note">
                   This trip spans {summary.daysTotal.toLocaleString("en-US")} days, so the itinerary shows the first{" "}
                   {MAX_ITINERARY_DAYS}. Double-check the trip dates if that looks off.
                 </p>
               ) : null}
-
-              <div className="grid" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
-                <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)" }}>
-                  <div>
-                    {summary && summary.activitiesTotal === 0 ? (
-                      <p className="c97-prose">No stops yet. Add the first one with the Add stop form.</p>
-                    ) : (
-                      <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-                        {summary?.dayBuckets.map((bucket) => (
-                          <DayList key={bucket.date} bucket={bucket} today={today} onToggle={(id) => activeTrip && toggleActivity(activeTrip.id, id)} onEdit={handleEditActivity} onRemove={(id) => {
-                            if (!activeTrip) return;
-                            removeActivity(activeTrip.id, id);
-                            if (editingActivityId === id) resetActivityDraft();
-                          }} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                      {editingActivityId ? "Edit stop" : "Add stop"}
-                    </p>
-                    <form onSubmit={handleSubmitActivity} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-                      <fieldset disabled={!activeTrip} className="contents">
-                        <label className="block">
-                          <span className="c97-kicker">Title</span>
-                          <input
-                            ref={activityTitleInputRef}
-                            type="text"
-                            value={activityDraft.title}
-                            onChange={(e) => {
-                              setActivityTitleMissing(false);
-                              setActivityDraft((d) => ({ ...d, title: e.target.value }));
-                            }}
-                            aria-invalid={activityTitleMissing || undefined}
-                            aria-describedby={activityTitleMissing ? "travel-stop-title-error" : undefined}
-                            placeholder="Sunset at Miradouro"
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)" }}
-                          />
-                        </label>
-                        {activityTitleMissing ? (
-                          <p id="travel-stop-title-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
-                            Give the stop a title to add it.
-                          </p>
-                        ) : null}
-                        <label className="block">
-                          <span className="c97-kicker">Date</span>
-                          <input
-                            type="date"
-                            value={activityDraft.date}
-                            min={activeTrip?.startDate}
-                            max={activeTrip?.endDate}
-                            onChange={(e) => setActivityDraft((d) => ({ ...d, date: e.target.value }))}
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)" }}
-                          />
-                        </label>
-                        <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                          <label className="block">
-                            <span className="c97-kicker">Starts</span>
-                            <input
-                              type="time"
-                              value={activityDraft.time}
-                              onChange={(e) =>
-                                setActivityDraft((d) => {
-                                  const time = e.target.value;
-                                  return { ...d, time, endTime: time && d.endTime > time ? d.endTime : "" };
-                                })
-                              }
-                              className="c97-field"
-                              style={{ marginTop: "var(--c97-sp-1)" }}
-                            />
-                          </label>
-                          <label className="block">
-                            <span className="c97-kicker">Ends</span>
-                            <input
-                              type="time"
-                              value={activityDraft.endTime}
-                              min={activityDraft.time || undefined}
-                              disabled={!activityDraft.time}
-                              aria-invalid={endTimeInvalid || undefined}
-                              onChange={(e) => setActivityDraft((d) => ({ ...d, endTime: e.target.value }))}
-                              className="c97-field"
-                              style={{ marginTop: "var(--c97-sp-1)" }}
-                            />
-                          </label>
-                        </div>
-                        {endTimeInvalid ? (
-                          <p role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
-                            The end time has to come after the start. Overnight stops need one entry per day.
-                          </p>
-                        ) : null}
-                        <label className="block">
-                          <span className="c97-kicker">Category</span>
-                          <select
-                            value={activityDraft.category}
-                            onChange={(e) => setActivityDraft((d) => ({ ...d, category: e.target.value as ActivityDraft["category"] }))}
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)" }}
-                          >
-                            {ACTIVITY_CATEGORIES.map((category) => (
-                              <option key={category} value={category}>
-                                {ACTIVITY_CATEGORY_LABELS[category]}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                        <label className="block">
-                          <span className="c97-kicker">Location</span>
-                          <input
-                            type="text"
-                            value={activityDraft.location}
-                            onChange={(e) => setActivityDraft((d) => ({ ...d, location: e.target.value }))}
-                            placeholder="Alfama"
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)" }}
-                          />
-                        </label>
-                        <label className="block">
-                          <span className="c97-kicker">Notes</span>
-                          <textarea
-                            value={activityDraft.notes}
-                            onChange={(e) => setActivityDraft((d) => ({ ...d, notes: e.target.value }))}
-                            placeholder="Reservation, what to bring, etc."
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
-                          />
-                        </label>
-                        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                          <button type="submit" className="c97-btn">
-                            <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                            {editingActivityId ? "Save stop" : "Add stop"}
-                          </button>
-                          {editingActivityId ? (
-                            <button type="button" onClick={resetActivityDraft} className="c97-btn-ghost">
-                              Cancel
-                            </button>
-                          ) : null}
-                        </div>
-                      </fieldset>
-                    </form>
-                  </aside>
+              <div className="tp-itinerary">
+                <div className="tp-days">
+                  {summary.activitiesTotal === 0 ? (
+                    <p className="tp-note">No stops yet. Add the first one with the Add stop form.</p>
+                  ) : null}
+                  {summary.dayBuckets.map((bucket, index) => (
+                    <DayList
+                      key={bucket.date}
+                      dayNumber={index + 1}
+                      bucket={bucket}
+                      today={today}
+                      onToggle={(id) => toggleActivity(activeTrip.id, id)}
+                      onEdit={handleEditActivity}
+                      onRemove={(id) => {
+                        removeActivity(activeTrip.id, id);
+                        if (editingActivityId === id) resetActivityDraft();
+                      }}
+                      onAddStop={() => openStopFormOn(bucket.date)}
+                      form={bucket.date === anchorDay ? stopForm : null}
+                    />
+                  ))}
+                </div>
+                <div className="tp-grid-col">
+                  <ItineraryTimeline columns={columns} ticks={timelineTicks(summary.dayBuckets)} />
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section
-            id="section-journal"
-            className="c97-band c97-sheet"
-            data-c97-surface="bone"
-            data-seam="deckle"
-            aria-label="Trip journal"
-          >
-            <div className="c97-shell">
-              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-                <div>
-                  <p className="c97-kicker">Reflection</p>
-                  <h2 className="c97-poster-sm">Journal</h2>
-                </div>
-                {activeTrip ? (
-                  <p className="c97-meta c97-tabular">
-                    {activeTrip.journal.length} {activeTrip.journal.length === 1 ? "entry" : "entries"}
-                  </p>
-                ) : null}
+            <section id="section-journal" className="tp-section" aria-label="Trip journal">
+              <div className="tp-section-head">
+                <h2>Journal</h2>
+                <p className="tp-count">
+                  {activeTrip.journal.length} {activeTrip.journal.length === 1 ? "entry" : "entries"}
+                </p>
               </div>
-
-              <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
+              <div className="tp-journal">
                 <div>
                   {activeTrip.journal.length === 0 ? (
-                    <p className="c97-prose">Journal is empty. Capture a moment with the Journal entry form.</p>
+                    <p className="tp-note">Journal is empty. Capture a moment with the Journal entry form.</p>
                   ) : (
-                    <ul className="flex flex-col" style={{ gap: "var(--c97-sp-2)", listStyle: "none", padding: 0, margin: 0 }}>
+                    <ul className="tp-postcards">
                       {[...activeTrip.journal]
                         .sort((left, right) =>
                           left.date !== right.date ? right.date.localeCompare(left.date) : right.id.localeCompare(left.id)
@@ -607,7 +745,6 @@ export function TravelPlannerClient() {
                             entry={entry}
                             onEdit={handleEditJournal}
                             onRemove={(id) => {
-                              if (!activeTrip) return;
                               removeJournal(activeTrip.id, id);
                               if (editingJournalId === id) resetJournalDraft();
                             }}
@@ -617,267 +754,86 @@ export function TravelPlannerClient() {
                   )}
                 </div>
 
-                <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                    {editingJournalId ? "Edit entry" : "Journal entry"}
-                  </p>
-                  <form onSubmit={handleSubmitJournal} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-                    <fieldset disabled={!activeTrip} className="contents">
-                      <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                        <label className="block">
-                          <span className="c97-kicker">Date</span>
-                          <input
-                            type="date"
-                            value={journalDraft.date}
-                            min={activeTrip?.startDate}
-                            max={activeTrip?.endDate}
-                            onChange={(e) => setJournalDraft((d) => ({ ...d, date: e.target.value }))}
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)" }}
-                          />
-                        </label>
-                        <label className="block">
-                          <span className="c97-kicker">Mood</span>
-                          <select
-                            value={journalDraft.mood}
-                            onChange={(e) => setJournalDraft((d) => ({ ...d, mood: e.target.value as JournalDraft["mood"] }))}
-                            className="c97-field"
-                            style={{ marginTop: "var(--c97-sp-1)" }}
-                          >
-                            {JOURNAL_MOODS.map((mood) => (
-                              <option key={mood} value={mood}>
-                                {JOURNAL_MOOD_LABELS[mood]}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                      </div>
-                      <label className="block">
-                        <span className="c97-kicker">Title</span>
-                        <input
-                          ref={journalTitleInputRef}
-                          type="text"
-                          value={journalDraft.title}
-                          onChange={(e) => {
-                            setJournalEmpty(false);
-                            setJournalDraft((d) => ({ ...d, title: e.target.value }));
-                          }}
-                          aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
-                          placeholder="A long walk in Alfama"
-                          className="c97-field"
-                          style={{ marginTop: "var(--c97-sp-1)" }}
-                        />
-                      </label>
-                      <label className="block">
-                        <span className="c97-kicker">Notes</span>
-                        <textarea
-                          value={journalDraft.body}
-                          onChange={(e) => {
-                            setJournalEmpty(false);
-                            setJournalDraft((d) => ({ ...d, body: e.target.value }));
-                          }}
-                          aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
-                          placeholder="What stood out today"
-                          className="c97-field"
-                          style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
-                        />
-                      </label>
-                      {journalEmpty ? (
-                        <p id="travel-journal-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
-                          Add a title or a note to save the entry.
-                        </p>
-                      ) : null}
-                      <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                        <button type="submit" className="c97-btn">
-                          <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                          {editingJournalId ? "Save entry" : "Add entry"}
+                <div className="tp-journal-form">
+                  <p className="c97-kicker">{editingJournalId ? "Edit entry" : "Journal entry"}</p>
+                  <form onSubmit={handleSubmitJournal} className="tp-form">
+                    <label>
+                      <span className="c97-kicker">Date</span>
+                      <input
+                        type="date"
+                        value={journalDraft.date}
+                        min={activeTrip.startDate}
+                        max={activeTrip.endDate}
+                        onChange={(e) => setJournalDraft((d) => ({ ...d, date: e.target.value }))}
+                        className="c97-field"
+                      />
+                    </label>
+                    <label>
+                      <span className="c97-kicker">Mood</span>
+                      <select
+                        value={journalDraft.mood}
+                        onChange={(e) => setJournalDraft((d) => ({ ...d, mood: e.target.value as JournalDraft["mood"] }))}
+                        className="c97-field"
+                      >
+                        {JOURNAL_MOODS.map((mood) => (
+                          <option key={mood} value={mood}>
+                            {JOURNAL_MOOD_LABELS[mood]}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="tp-span-2">
+                      <span className="c97-kicker">Title</span>
+                      <input
+                        ref={journalTitleInputRef}
+                        type="text"
+                        value={journalDraft.title}
+                        onChange={(e) => {
+                          setJournalEmpty(false);
+                          setJournalDraft((d) => ({ ...d, title: e.target.value }));
+                        }}
+                        aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
+                        placeholder="A long walk in Alfama"
+                        className="c97-field"
+                      />
+                    </label>
+                    <label className="tp-span-2">
+                      <span className="c97-kicker">Notes</span>
+                      <textarea
+                        value={journalDraft.body}
+                        onChange={(e) => {
+                          setJournalEmpty(false);
+                          setJournalDraft((d) => ({ ...d, body: e.target.value }));
+                        }}
+                        aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
+                        placeholder="What stood out today"
+                        className="c97-field"
+                        rows={3}
+                      />
+                    </label>
+                    {journalEmpty ? (
+                      <p id="travel-journal-error" role="alert" className="tp-span-2 tp-error">
+                        Add a title or a note to save the entry.
+                      </p>
+                    ) : null}
+                    <div className="tp-span-2 tp-actions">
+                      <button type="submit" className="c97-btn">
+                        <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+                        {editingJournalId ? "Save entry" : "Add entry"}
+                      </button>
+                      {editingJournalId ? (
+                        <button type="button" onClick={resetJournalDraft} className="c97-btn-ghost">
+                          Cancel
                         </button>
-                        {editingJournalId ? (
-                          <button type="button" onClick={resetJournalDraft} className="c97-btn-ghost">
-                            Cancel
-                          </button>
-                        ) : null}
-                      </div>
-                    </fieldset>
+                      ) : null}
+                    </div>
                   </form>
-                </aside>
-              </div>
-            </div>
-          </section>
-
-          <section id="section-trip" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="Trip management">
-            <div className="c97-shell">
-              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-                <div>
-                  <p className="c97-kicker">Manage</p>
-                  <h2 className="c97-poster-sm">Trip</h2>
-                </div>
-                <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                  {activeTrip ? (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          confirmingDelete === `active:${activeTrip.id}`
-                            ? confirmDeleteTrip(activeTrip.id)
-                            : setConfirmingDelete(`active:${activeTrip.id}`)
-                        }
-                        className="c97-btn-ghost"
-                        style={confirmingDelete === `active:${activeTrip.id}` ? { color: "var(--c97-negative)" } : undefined}
-                      >
-                        <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                        {confirmingDelete === `active:${activeTrip.id}` ? "Confirm delete" : "Delete trip"}
-                      </button>
-                      {confirmingDelete === `active:${activeTrip.id}` ? (
-                        <button
-                          type="button"
-                          onClick={(event) => {
-                            setConfirmingDelete(null);
-                            (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
-                          }}
-                          className="c97-btn-ghost"
-                        >
-                          Keep it
-                        </button>
-                      ) : null}
-                    </>
-                  ) : null}
-                  <button ref={newTripButtonRef} type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
-                    <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                    New trip
-                  </button>
                 </div>
               </div>
-
-              {showTripForm ? (
-                <form onSubmit={handleCreateTrip} className="c97-panel grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)" }} aria-label="Create a new trip">
-                  {tripFormFields}
-                </form>
-              ) : null}
-
-              {activeTrip ? (
-                <div style={{ marginTop: "var(--c97-sp-4)" }}>
-                  <TripDetailsFields trip={activeTrip} onUpdateField={(fields) => updateTripFields(activeTrip.id, fields)} />
-                </div>
-              ) : null}
-
-              <div style={{ marginTop: "var(--c97-sp-5)" }}>
-                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                  All trips ({trips.length})
-                </p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {trips.map((other) => (
-                    <li key={other.id} className="c97-row" style={{ minHeight: "44px", borderBottom: "1px solid var(--c97-rule)", padding: "var(--c97-sp-1) 0" }}>
-                      <button
-                        type="button"
-                        onClick={() => selectTrip(other.id)}
-                        aria-current={other.id === activeTrip?.id ? "true" : undefined}
-                        className="c97-travel-trip-pick text-left min-w-0"
-                      >
-                        <span className="c97-serif" style={{ display: "block", fontSize: "var(--c97-fs-body)" }}>
-                          {other.name}
-                          {other.id === activeTrip?.id ? " (active)" : ""}
-                        </span>
-                        <span className="c97-meta" style={{ display: "block", marginTop: "2px" }}>
-                          {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
-                        </span>
-                      </button>
-                      <div className="flex flex-wrap justify-end" style={{ gap: "var(--c97-sp-1)" }}>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            confirmingDelete === `row:${other.id}`
-                              ? confirmDeleteTrip(other.id)
-                              : setConfirmingDelete(`row:${other.id}`)
-                          }
-                          aria-label={
-                            confirmingDelete === `row:${other.id}`
-                              ? `Confirm delete trip ${other.name}`
-                              : `Delete trip ${other.name}`
-                          }
-                          className="c97-btn-ghost"
-                          style={{
-                            minWidth: 44,
-                            justifyContent: "center",
-                            ...(confirmingDelete === `row:${other.id}` ? { color: "var(--c97-negative)" } : {}),
-                          }}
-                        >
-                          <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                          {confirmingDelete === `row:${other.id}` ? "Confirm delete" : null}
-                        </button>
-                        {confirmingDelete === `row:${other.id}` ? (
-                          <button
-                            type="button"
-                            onClick={(event) => {
-                              setConfirmingDelete(null);
-                              (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
-                            }}
-                            className="c97-btn-ghost"
-                          >
-                            Keep it
-                          </button>
-                        ) : null}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </section>
-        </>
-      ) : null}
-    </div>
-  );
-}
-
-interface BoardingPassMainProps {
-  trips: Trip[];
-  activeTripId: string | null;
-  destination: string | null;
-  dateRange: string | null;
-  onSelectTrip: (id: string) => void;
-}
-
-function BoardingPassMain({ trips, activeTripId, destination, dateRange, onSelectTrip }: BoardingPassMainProps) {
-  return (
-    <div>
-      <p className="c97-kicker">Boarding pass</p>
-      {trips.length > 0 ? (
-        <label className="block c97-boarding-pass-trip-select">
-          <span className="sr-only">Trip</span>
-          <select value={activeTripId ?? ""} onChange={(e) => onSelectTrip(e.target.value)} className="c97-field">
-            {trips.map((trip) => (
-              <option key={trip.id} value={trip.id}>
-                {trip.name}
-              </option>
-            ))}
-          </select>
-        </label>
-      ) : null}
-      <p className="c97-serif c97-h2 c97-boarding-pass-destination">
-        {destination ?? <span className="c97-boarding-pass-blank" aria-hidden="true" />}
-      </p>
-      {destination ? null : <p className="c97-stat-label">Destination</p>}
-      <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-        {dateRange ?? <span className="c97-boarding-pass-blank-sm" aria-hidden="true" />}
-      </p>
-      {dateRange ? null : <p className="c97-stat-label">Dates</p>}
-    </div>
-  );
-}
-
-function BoardingPassStub({ pass, onStartTrip }: { pass: ReturnType<typeof boardingPass> | null; onStartTrip: () => void }) {
-  return (
-    <div className="c97-boarding-pass-stub">
-      <p className="c97-stat-label">{pass ? "Stops" : "No trip yet"}</p>
-      <p className="c97-stat-value">{pass ? `${pass.stopsDone}/${pass.stopsTotal}` : "—"}</p>
-      <p className="c97-stat-delta">{pass ? pass.countdown : "Nothing planned"}</p>
-      {!pass ? (
-        <button type="button" onClick={onStartTrip} className="c97-btn c97-offset" style={{ marginTop: "var(--c97-sp-2)" }}>
-          <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-          Start a trip
-        </button>
-      ) : null}
+            </section>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -893,7 +849,7 @@ function describeTimeline(columns: ItineraryColumn[]): string {
 
 function ItineraryTimeline({ columns, ticks }: { columns: ItineraryColumn[]; ticks: TimelineTick[] }) {
   if (columns.length === 0) {
-    return <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>No days yet.</p>;
+    return <p className="tp-note">No days yet.</p>;
   }
   const categories = ACTIVITY_CATEGORIES.filter((category) =>
     columns.some((column) => column.stops.some((stop) => stop.category === category)),
@@ -902,14 +858,14 @@ function ItineraryTimeline({ columns, ticks }: { columns: ItineraryColumn[]; tic
   return (
     <div>
       {columns.length > 3 ? (
-        <p className="c97-meta c97-travel-timeline-cue" data-many={columns.length > 8 || undefined} style={{ marginBottom: "var(--c97-sp-2)" }}>
+        <p className="c97-meta tp-grid-cue" data-many={columns.length > 8 || undefined}>
           Scroll to see every day
         </p>
       ) : null}
-      <div className="c97-travel-timeline-frame">
-        <div className="c97-travel-timeline-col c97-travel-timeline-axis" aria-hidden="true">
-          <p className="c97-travel-timeline-day">&nbsp;</p>
-          <div className="c97-travel-timeline-track">
+      <div className="tp-grid-frame">
+        <div className="tp-grid-day-col tp-grid-axis" aria-hidden="true">
+          <p className="tp-grid-day">&nbsp;</p>
+          <div className="tp-grid-track">
             {ticks.map((tick) => (
               <span key={tick.label} style={{ top: `${tick.top * 100}%` }}>
                 {tick.label}
@@ -917,18 +873,18 @@ function ItineraryTimeline({ columns, ticks }: { columns: ItineraryColumn[]; tic
             ))}
           </div>
         </div>
-        <div className="c97-travel-timeline" role="img" aria-label={describeTimeline(columns)}>
+        <div className="tp-grid" role="img" aria-label={describeTimeline(columns)}>
           {columns.map((column) => (
-            <div key={column.dateKey} className="c97-travel-timeline-col">
-              <p className="c97-travel-timeline-day">{column.label}</p>
-              <div className="c97-travel-timeline-track">
+            <div key={column.dateKey} className="tp-grid-day-col">
+              <p className="tp-grid-day">{column.label}</p>
+              <div className="tp-grid-track">
                 {ticks.map((tick) => (
-                  <span key={tick.label} className="c97-travel-timeline-rule" style={{ top: `${tick.top * 100}%` }} />
+                  <span key={tick.label} className="tp-grid-rule" style={{ top: `${tick.top * 100}%` }} />
                 ))}
                 {column.stops.map((stop) => (
                   <div
                     key={stop.id}
-                    className="c97-travel-timeline-mark"
+                    className="tp-grid-mark"
                     data-conflict={stop.conflict || undefined}
                     data-done={stop.done || undefined}
                     style={{ top: `${stop.top * 100}%`, height: `${stop.height * 100}%`, ["--mark-color" as string]: CATEGORY_CHART[stop.category] }}
@@ -936,26 +892,22 @@ function ItineraryTimeline({ columns, ticks }: { columns: ItineraryColumn[]; tic
                   />
                 ))}
               </div>
-              {column.untimed.length > 0 ? (
-                <p className="c97-travel-timeline-untimed">
-                  {column.untimed.length} untimed
-                </p>
-              ) : null}
+              {column.untimed.length > 0 ? <p className="tp-grid-untimed">{column.untimed.length} untimed</p> : null}
             </div>
           ))}
         </div>
       </div>
       {categories.length > 0 ? (
-        <ul className="c97-travel-timeline-legend" aria-label="Timeline key">
+        <ul className="tp-grid-legend" aria-label="Timeline key">
           {categories.map((category) => (
             <li key={category}>
-              <span className="c97-travel-timeline-swatch" style={{ ["--mark-color" as string]: CATEGORY_CHART[category] }} aria-hidden="true" />
+              <span className="tp-grid-swatch" style={{ ["--mark-color" as string]: CATEGORY_CHART[category] }} aria-hidden="true" />
               {ACTIVITY_CATEGORY_LABELS[category]}
             </li>
           ))}
           {hasConflict ? (
             <li>
-              <span className="c97-travel-timeline-swatch" data-conflict="true" aria-hidden="true" />
+              <span className="tp-grid-swatch" data-conflict="true" aria-hidden="true" />
               Overlaps another stop
             </li>
           ) : null}
@@ -966,88 +918,79 @@ function ItineraryTimeline({ columns, ticks }: { columns: ItineraryColumn[]; tic
 }
 
 function DayList({
+  dayNumber,
   bucket,
   today,
   onToggle,
   onEdit,
   onRemove,
+  onAddStop,
+  form,
 }: {
+  dayNumber: number;
   bucket: NonNullable<ReturnType<typeof useTravelPlanner>["summary"]>["dayBuckets"][number];
   today: string;
   onToggle: (id: string) => void;
   onEdit: (activity: TripActivity) => void;
   onRemove: (id: string) => void;
+  onAddStop: () => void;
+  form: ReactNode;
 }) {
+  const heading = formatDayHeading(bucket.date);
+  const isToday = bucket.date === today;
   return (
-    <div>
-      <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-        <h3 className="c97-kicker" style={{ margin: 0, color: bucket.date === today ? "var(--c97-ink)" : undefined }}>
-          {formatDayHeading(bucket.date)}
-          {bucket.date === today ? " · Today" : ""}
+    <div className="tp-day" data-today={isToday || undefined}>
+      <div className="tp-day-head">
+        <p className="tp-day-number" aria-hidden="true">
+          Day {dayNumber}
+        </p>
+        <h3 className="tp-day-heading">
+          {heading}
+          {isToday ? " · Today" : ""}
         </h3>
-        <span className="c97-meta c97-tabular">
+        <span className="tp-count">
           {bucket.activities.length === 0 ? "0 stops" : `${bucket.completed}/${bucket.activities.length} done`}
         </span>
       </div>
       {bucket.activities.length === 0 ? (
-        <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
-          Nothing planned yet.
-        </p>
+        <p className="tp-note">Nothing planned yet.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0, margin: "var(--c97-sp-2) 0 0" }}>
+        <ul className="tp-stops">
           {bucket.activities.map((activity) => {
             const Icon = CATEGORY_ICON[activity.category];
             const hasConflict = bucket.conflictIds.includes(activity.id);
             return (
-              <li
-                key={activity.id}
-                className="flex items-start"
-                style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2) 0", borderBottom: "1px solid var(--c97-rule)" }}
-              >
+              <li key={activity.id} className="tp-stop" data-done={activity.completed || undefined}>
+                <span className="tp-stop-time">
+                  {activity.time ? formatActivityTimeRange(activity.time, activity.endTime) : "Any time"}
+                </span>
                 <button
                   type="button"
                   onClick={() => onToggle(activity.id)}
                   aria-label={activity.completed ? `Mark ${activity.title} as not done` : `Mark ${activity.title} as done`}
-                  className="c97-travel-toggle"
+                  className="tp-toggle"
+                  style={{ ["--mark-color" as string]: CATEGORY_CHART[activity.category] }}
                 >
-                  {activity.completed ? (
-                    <CheckCircle2 className="h-5 w-5" style={{ color: "var(--c97-positive)" }} />
-                  ) : (
-                    <Circle className="h-5 w-5" />
-                  )}
+                  {activity.completed ? <CheckCircle2 className="h-5 w-5" /> : <Circle className="h-5 w-5" />}
                 </button>
-                <Icon className="h-4 w-4 shrink-0" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category], marginTop: "var(--c97-sp-0)" }} />
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
-                    <p
-                      className="c97-serif"
-                      style={{
-                        fontSize: "var(--c97-fs-body)",
-                        color: activity.completed ? "var(--c97-ink-2)" : "var(--c97-ink)",
-                        textDecoration: activity.completed ? "line-through" : "none",
-                      }}
-                    >
-                      {activity.title}
-                    </p>
+                <span className="tp-stop-body">
+                  <span className="tp-stop-title-row">
+                    <span className="tp-stop-title">{activity.title}</span>
                     {hasConflict ? (
                       <span className="c97-chip c97-chip-warning">
                         <AlertTriangle className="h-3 w-3" aria-hidden="true" />
                         Overlap
                       </span>
                     ) : null}
-                  </div>
-                  <p className="c97-meta" style={{ marginTop: "2px" }}>
+                  </span>
+                  <span className="tp-stop-meta">
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category] }} />
                     <span>{ACTIVITY_CATEGORY_LABELS[activity.category]}</span>
-                    {activity.time ? <span>{formatActivityTimeRange(activity.time, activity.endTime)}</span> : null}
-                    {activity.location ? <span style={{ textTransform: "none", letterSpacing: 0 }}>{activity.location}</span> : null}
-                  </p>
-                  {activity.notes ? (
-                    <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)", whiteSpace: "pre-line" }}>
-                      {activity.notes}
-                    </p>
-                  ) : null}
-                </div>
-                <div className="flex flex-col" style={{ gap: "var(--c97-sp-0)" }}>
+                    {activity.location ? <span>· {activity.location}</span> : null}
+                  </span>
+                  {activity.notes ? <span className="tp-stop-notes">{activity.notes}</span> : null}
+                </span>
+                <span className="tp-stop-actions">
                   <button type="button" onClick={() => onEdit(activity)} className="c97-btn-ghost">
                     Edit
                   </button>
@@ -1055,16 +998,21 @@ function DayList({
                     type="button"
                     onClick={() => onRemove(activity.id)}
                     aria-label={`Delete ${activity.title}`}
-                    className="c97-btn-ghost"
-                    style={{ minWidth: 44, justifyContent: "center" }}
+                    className="c97-btn-ghost tp-icon-btn"
                   >
                     <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
                   </button>
-                </div>
+                </span>
               </li>
             );
           })}
         </ul>
+      )}
+      {form ?? (
+        <button type="button" onClick={onAddStop} className="c97-btn-ghost tp-add-stop" aria-label={`Add a stop on ${heading}`}>
+          <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+          Add a stop
+        </button>
       )}
     </div>
   );
@@ -1082,38 +1030,27 @@ function JournalPostcard({
   const MoodIcon = MOOD_ICON[entry.mood];
   const tone = MOOD_CHIP_TONE[entry.mood];
   return (
-    <li data-c97-surface="paper" className="c97-offset c97-postcard">
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-          <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
-            {entry.title}
-          </p>
-          <div className="flex" style={{ gap: "var(--c97-sp-1)" }}>
-            <button type="button" onClick={() => onEdit(entry)} className="c97-btn-ghost">
-              Edit
-            </button>
-            <button
-              type="button"
-              onClick={() => onRemove(entry.id)}
-              aria-label={`Delete journal entry ${entry.title}`}
-              className="c97-btn-ghost"
-              style={{ minWidth: 44, justifyContent: "center" }}
-            >
-              <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-            </button>
-          </div>
+    <li className="tp-postcard">
+      <div className="tp-postcard-body">
+        <p className="tp-postcard-title">{entry.title}</p>
+        {entry.body ? <p className="tp-postcard-text">{entry.body}</p> : null}
+        <div className="tp-actions">
+          <button type="button" onClick={() => onEdit(entry)} className="c97-btn-ghost">
+            Edit
+          </button>
+          <button
+            type="button"
+            onClick={() => onRemove(entry.id)}
+            aria-label={`Delete journal entry ${entry.title}`}
+            className="c97-btn-ghost tp-icon-btn"
+          >
+            <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
         </div>
-        {entry.body ? (
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", whiteSpace: "pre-line" }}>
-            {entry.body}
-          </p>
-        ) : null}
       </div>
-      <div className="c97-postcard-stamp">
-        <p className="c97-meta" style={{ justifyContent: "center" }}>
-          {formatDayHeading(entry.date)}
-        </p>
-        <span className={`c97-chip ${tone}`} style={{ justifyContent: "center" }}>
+      <div className="tp-postcard-stamp">
+        <p>{formatDayHeading(entry.date)}</p>
+        <span className={`c97-chip ${tone}`}>
           <MoodIcon className="h-3.5 w-3.5" aria-hidden="true" />
           {JOURNAL_MOOD_LABELS[entry.mood]}
         </span>
@@ -1166,8 +1103,8 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
   }
 
   return (
-    <div className="c97-panel grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-      <label className="block">
+    <div className="tp-form tp-details">
+      <label>
         <span className="c97-kicker">Trip name</span>
         <input
           type="text"
@@ -1175,10 +1112,9 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onChange={(e) => setDraftField("name", e.target.value)}
           onBlur={() => onUpdateField({ name: draft.name })}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
         />
       </label>
-      <label className="block">
+      <label>
         <span className="c97-kicker">Destination</span>
         <input
           type="text"
@@ -1186,10 +1122,9 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onChange={(e) => setDraftField("destination", e.target.value)}
           onBlur={() => onUpdateField({ destination: draft.destination })}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
         />
       </label>
-      <label className="block">
+      <label>
         <span className="c97-kicker">Start date</span>
         <input
           type="date"
@@ -1197,10 +1132,9 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onChange={(e) => handleDateChange("startDate", e.target.value)}
           onBlur={() => handleDateBlur("startDate")}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
         />
       </label>
-      <label className="block">
+      <label>
         <span className="c97-kicker">End date</span>
         <input
           type="date"
@@ -1209,10 +1143,9 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onChange={(e) => handleDateChange("endDate", e.target.value)}
           onBlur={() => handleDateBlur("endDate")}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
         />
       </label>
-      <label className="block">
+      <label>
         <span className="c97-kicker">Budget (USD)</span>
         <input
           type="number"
@@ -1222,11 +1155,10 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onChange={(e) => setDraftField("budget", e.target.value)}
           onBlur={() => onUpdateField({ budget: Number(draft.budget) || 0 })}
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)" }}
         />
         <span className="sr-only">{formatBudget(Number(draft.budget) || 0)}</span>
       </label>
-      <label className="block sm:col-span-2">
+      <label className="tp-span-2">
         <span className="c97-kicker">Trip notes</span>
         <textarea
           value={draft.notes}
@@ -1234,7 +1166,7 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onBlur={() => onUpdateField({ notes: draft.notes })}
           placeholder="Hotels, packing list, must-see places"
           className="c97-field"
-          style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
+          rows={3}
         />
       </label>
     </div>

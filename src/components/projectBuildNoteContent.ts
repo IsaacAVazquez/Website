@@ -94,6 +94,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this tracker to compare notable startups across sector, funding stage, valuation, capital raised, and recent financing without pretending that one number explains momentum. The goal is a research shortlist that can be sorted and inspected, not a definitive company ranking.",
   },
+  "/travel": {
+    purpose:
+      "I wanted one dated plan per trip that reads the way the trip happens, a day at a time, with each stop under its time and ticked off once it's done. The time grid beside the days shows when a day is overloaded or two stops overlap, and the journal keeps a note of what each day was actually like. Everything stays in this browser, so there is no account to make before planning a weekend.",
+  },
   "/world-cup-2026": {
     purpose:
       "I use this dashboard to move from the 2026 World Cup groups to the expanded knockout bracket, then down to the schedule and host venues. It keeps the tournament structure visible while making a specific team or stage easy to inspect.",
