@@ -976,6 +976,9 @@
 }
 
 @media print {
+  .mba-refine-toggle {
+    display: none;
+  }
   .mba-searchbar,
   .mba-rail {
     position: static;

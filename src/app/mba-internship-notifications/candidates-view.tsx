@@ -69,8 +69,8 @@ export default function CandidatesView({
           ))}
         </div>
         <p className="mba-count-line">
-          Sourced roles waiting on a decision, sorted by fit, before any of them reaches the
-          pipeline.
+          These are sourced roles waiting on a decision, sorted by fit, before any of them reaches
+          the pipeline.
         </p>
       </div>
 

@@ -732,8 +732,8 @@ function SearchElsewhere({ currentState }: { currentState: MBAJobsSearchState })
         Search elsewhere
       </h3>
       <p>
-        The same search on outside boards. These are outbound links only, so nothing from them is
-        fetched by the server.
+        These open the same search on outside boards, and they are outbound links only, so nothing
+        from them is fetched by the server.
       </p>
       <div className="mba-wrap-row">
         {links.map((link) => (
@@ -763,8 +763,8 @@ function ManualChecks({
         Manual checks
       </h3>
       <p>
-        Companies without a stable public feed. The LinkedIn search carries the current role
-        filters.
+        These companies have no stable public feed, so the LinkedIn search here carries the current
+        role filters.
       </p>
       <ul className="mba-manual" data-testid="manual-checks-grid">
         {companies.map((company) => {

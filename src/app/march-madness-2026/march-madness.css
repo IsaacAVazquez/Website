@@ -663,3 +663,15 @@
   max-width: 100%;
   white-space: normal;
 }
+
+/* On paper the bracket fits the page instead of clipping at the Elite Eight.
+   The SVG's pixel width is inline, so only an important rule overrides it. */
+@media print {
+  .mm-bracket-svg {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .mm-bracket-scroll {
+    overflow: visible;
+  }
+}

@@ -104,8 +104,8 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
               See where the standard is holding
             </h2>
             <p className="ea-lede">
-              Twelve simulated teams on one standard, with the stack each runs, the setup
-              questions it resolves on its own, and where it has drifted.
+              This is twelve simulated teams on one standard, with the stack each one runs, the
+              setup questions it resolves on its own, and where it has drifted.
             </p>
           </div>
           <button type="button" className="c97-btn" onClick={onStart}>
