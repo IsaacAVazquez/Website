@@ -14,6 +14,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I built this independent product concept around the question I want answered before adding a stock, which is how the purchase changes what I already own. It compares the current portfolio with the proposed mix, keeping concentration and historical market behavior in the same view.",
   },
+  "/agent-build-index": {
+    purpose:
+      "I built this as a focused read on the agents slice of my GitHub trending snapshot, since the full board mixes agent repositories in with every other language and topic I track. It ranks them by measured star movement over the week, keeps each figure labeled as measured, partial, or a new baseline, and sets agents beside the other topic groups so the number has something to be compared against.",
+  },
   "/ai-dev-tools": {
     purpose:
       "I use this directory to compare coding assistants and agents against the constraints that actually shape a product decision, including model access, price, source availability, and release pace. The filters keep those tradeoffs in one view instead of reducing the choice to a popularity ranking.",
