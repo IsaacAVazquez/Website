@@ -39,13 +39,130 @@
   --invest-fs-lead: 14px;    /* emphasis and section leads */
   --invest-fs-value: 17px;   /* prominent data readouts */
   font-variant-numeric: tabular-nums;
+  /* The espresso and chocolate fields without the riso grain, which is the
+     print shop's paper and not a terminal's. The surface rule in catalog97.css
+     (.c97-page [data-c97-surface], 0,2,0) outranks a module class, so this
+     clears the token every grain rule reads rather than the property. */
+  --c97-grain-soft: none;
+  padding-bottom: var(--c97-sp-4);
+}
+/* What the site frame leaks into a project root. The base layer sets the body
+   face on every heading and a 65ch measure on every paragraph; the terminal's
+   headings are mono and its columns set their own measure. */
+.terminalScope :where(h1, h2, h3, h4) { font-family: var(--c97-font-mono); font-weight: 400; }
+.terminalScope :where(p) { max-inline-size: none; }
+
+/* ---- Title bar ------------------------------------------------------------ */
+/* The app's own chrome: name, workspace switch, data date and quote status,
+   and the one Add holding. A row, never a sheet. */
+.titleBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-block: var(--c97-sp-2);
+  border-bottom: 1px solid var(--c97-rule);
+  scroll-margin-top: 0;
+}
+.title {
+  margin: 0;
+  /* Settled at 24px in the route's surface brief. */
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--c97-ink);
+}
+.taskSwitch {
+  display: inline-flex;
+  gap: 1px;
+  background: var(--c97-rule);
+  border: 1px solid var(--c97-rule);
+}
+.taskSwitch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: var(--c97-surface);
+  color: var(--c97-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: var(--invest-fs-small);
+  letter-spacing: 0.04em;
+  padding: 0 var(--c97-sp-2);
+  min-height: 44px;
+  cursor: pointer;
+  transition: color 140ms var(--c97-ease), background-color 140ms var(--c97-ease);
+}
+.taskSwitch button:hover { color: var(--c97-ink); background: var(--c97-panel); }
+.taskSwitch button:focus-visible { position: relative; z-index: 1; }
+.taskSwitch button[aria-pressed="true"] { background: var(--c97-ink); color: var(--c97-surface); }
+.titleStatus {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-2);
+  font-family: var(--c97-font-mono);
+  font-size: var(--invest-fs-label);
+  color: var(--c97-ink-2);
+}
+.titleAdd { white-space: nowrap; }
+@media screen and (max-width: 640px) {
+  .title { flex: 1 0 100%; }
+  .taskSwitch { flex: 1 1 100%; }
+  .taskSwitch button { flex: 1 1 0; padding: 0 var(--c97-sp-1); }
+  .titleStatus { margin-left: 0; flex: 1 1 0; min-width: 0; }
+}
+
+/* ---- Terminal grid: one section rail beside the workspaces ---------------- */
+.terminal {
+  display: grid;
+  grid-template-columns: 184px minmax(0, 1fr);
+}
+.workspaces { min-width: 0; border-left: 1px solid var(--c97-rule); }
+.workspace + .workspace { border-top: 1px solid var(--c97-rule); }
+.researchPane {
+  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
+}
+.notice {
+  margin: var(--c97-sp-1) 0 0;
+  padding: var(--c97-sp-1) 0;
+  border-bottom: 1px solid var(--c97-rule);
+  font-size: var(--invest-fs-small);
+  color: var(--c97-ink-2);
+}
+.noticeTag {
+  margin-right: var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+  font-size: var(--invest-fs-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c97-warning);
+}
+.terminalFoot {
+  border-top: 1px solid var(--c97-rule);
+  padding-top: var(--c97-sp-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  font-size: var(--invest-fs-small);
+  line-height: 1.55;
+  color: var(--c97-ink-2);
+}
+.terminalFoot p { margin: 0; max-width: 90ch; }
+@media print, screen and (max-width: 900px) {
+  .terminal { grid-template-columns: minmax(0, 1fr); }
+  .workspaces { border-left: 0; }
+  .researchPane {
+    margin-inline: calc(var(--c97-gutter) * -1);
+    padding-inline: var(--c97-gutter);
+  }
 }
 
 /* ---- Terminal primitives ------------------------------------------------ */
 .terminalScope :global(.invest-research-band) {
-  border-top: 1px solid var(--c97-rule);
   background: var(--c97-surface);
-  padding: var(--c97-sp-2) var(--c97-sp-3) var(--c97-sp-3);
+  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
@@ -53,15 +170,15 @@
 
 .terminalScope :global(.invest-shell) {
   display: grid;
-  grid-template-columns: 224px minmax(0, 1fr) 296px;
+  grid-template-columns: minmax(0, 1fr) 296px;
   gap: 0;
-  background: var(--c97-surface);
 }
 @media print, screen and (max-width: 1280px) {
-  .terminalScope :global(.invest-shell) { grid-template-columns: 200px minmax(0, 1fr); }
+  .terminalScope :global(.invest-shell) { grid-template-columns: minmax(0, 1fr); }
 }
 /*
- * On paper the page takes its narrow layout, whatever the window. Safari's
+ * On paper the page takes its narrow layout, whatever the window (the print
+ * and max-width pairs throughout this file). Safari's
  * engine answers a width query with the window's width while it lays the print
  * out at the paper's, about 700px, so from a desktop window the desktop columns
  * would print squeezed onto the page. Chrome's and Firefox's engines answer
@@ -69,10 +186,6 @@
  * print of its own because this one replaces it, and the rules for windows
  * narrower than the paper stay off it.
  */
-@media print, screen and (max-width: 900px) {
-  .terminalScope :global(.invest-shell) { grid-template-columns: 1fr; }
-  .terminalScope :global(.invest-sidebar) { display: none !important; }
-}
 /*
  * An empty portfolio has one job, adding a holding, and on a phone the form sat
  * under the empty total, the empty chart, and the empty stats. While nothing is
@@ -88,84 +201,19 @@
   .terminalScope :global(.invest-holdings .col-trend) { display: none; }
 }
 
-/* ---- Sidebar ------------------------------------------------------------- */
-.terminalScope :global(.invest-sidebar) {
-  align-self: stretch;
-  padding: 0;
-  border-right: 1px solid var(--c97-rule);
-  background: var(--c97-surface);
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.terminalScope :global(.invest-nav-label) {
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-micro); font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--c97-ink-2);
-  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-1);
-}
-.terminalScope :global(.invest-nav-link) {
-  display: flex; align-items: center; gap: var(--c97-sp-1);
-  padding: 0 var(--c97-sp-2);
-  min-height: 44px;
-  color: var(--c97-ink-2);
-  text-decoration: none;
-  font-size: var(--invest-fs-body); font-weight: 500;
-  border-left: 3px solid transparent;
-  transition: background-color 140ms var(--c97-ease), color 140ms var(--c97-ease), border-color 140ms var(--c97-ease);
-  background: transparent;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-}
-.terminalScope :global(.invest-nav-link):hover {
-  background: var(--c97-panel);
-  color: var(--c97-ink);
-}
-.terminalScope :global(.invest-nav-link[aria-current="true"]),
-.terminalScope :global(.invest-nav-link.is-active) {
-  background: var(--c97-panel);
-  color: var(--c97-ink);
-  border-left-color: var(--c97-accent);
-}
-.terminalScope :global(.invest-nav-link svg) { width: 18px; height: 18px; flex: 0 0 auto; }
-.terminalScope :global(.invest-nav-pill) {
-  margin-left: auto;
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-label); font-weight: 400; letter-spacing: 0.02em;
-  border: 1px solid var(--c97-rule);
-  color: var(--c97-ink-2);
-  padding: 1px var(--c97-sp-0);
-}
-.terminalScope :global(.invest-nav-link[aria-current="true"] .invest-nav-pill),
-.terminalScope :global(.invest-nav-link.is-active .invest-nav-pill) {
-  border-color: var(--c97-surface);
-  color: var(--c97-ink);
-}
-.terminalScope :global(.invest-sidebar-footer) {
-  margin-top: auto;
-  padding: var(--c97-sp-1) var(--c97-sp-2);
-  border-top: 1px solid var(--c97-rule);
-  display: flex; align-items: center; gap: var(--c97-sp-1);
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-label); letter-spacing: 0.02em;
-  color: var(--c97-ink-2);
-}
-
-/* ---- Main column / topbar ------------------------------------------------ */
+/* ---- Main column ---------------------------------------------------------- */
 .terminalScope :global(.invest-main) {
   padding: 0;
   min-width: 0;
 }
-.terminalScope :global(.invest-topbar) {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--c97-sp-2); padding: var(--c97-sp-1) var(--c97-sp-2); flex-wrap: wrap;
-  border-bottom: 1px solid var(--c97-rule);
-  min-height: 57px;
-  box-sizing: border-box;
+.terminalScope :global(.invest-panel-tools) {
+  flex: 1 1 320px;
+  display: flex; align-items: center; justify-content: flex-end; gap: var(--c97-sp-1);
 }
+
 .terminalScope :global(.invest-search) {
-  flex: 0 1 300px;
+  flex: 0 1 260px;
+  min-width: 0;
   display: flex; align-items: center; gap: var(--c97-sp-1);
   background: var(--c97-panel);
   border: 0;
@@ -195,8 +243,26 @@
   padding: 1px var(--c97-sp-0);
 }
 /* ---- Quote tape ---------------------------------------------------------- */
-.quoteTape {
+.tapeStrip {
   border-bottom: 1px solid var(--c97-rule);
+  min-height: 37px;
+}
+.tapeEmpty {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  min-height: 37px;
+  font-family: var(--c97-font-mono);
+  font-size: var(--invest-fs-small);
+  color: var(--c97-ink-2);
+}
+.tapeEmpty .quoteTapeTag {
+  font-size: var(--invest-fs-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-right: var(--c97-sp-2);
+  border-right: 1px solid var(--c97-rule);
 }
 .quoteTapeTag {
   color: var(--c97-accent) !important;
@@ -216,14 +282,6 @@
 }
 .quoteSym { color: var(--c97-ink); font-weight: 500; }
 .quotePx { color: var(--c97-ink-2); }
-.quoteEmpty {
-  padding: var(--c97-sp-1) var(--c97-sp-2);
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-label);
-  color: var(--c97-ink-2);
-  border-bottom: 1px solid var(--c97-rule);
-}
-
 /* ---- Hero: balance + chart ------------------------------------------------ */
 .terminalScope :global(.invest-hero) {
   position: relative;
@@ -232,7 +290,7 @@
   padding: 0;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: stretch;
 }
 @media print, screen and (max-width: 1100px) {
@@ -242,7 +300,7 @@
   position: relative; z-index: 2;
   display: flex; flex-direction: column;
   min-width: 0;
-  padding: var(--c97-sp-2) var(--c97-sp-3) var(--c97-sp-3);
+  padding: var(--c97-sp-2);
 }
 .terminalScope :global(.invest-hero-eyebrow) {
   font-family: var(--c97-font-mono);
@@ -295,11 +353,6 @@
 .terminalScope :global(.invest-hero-delta .muted) {
   color: var(--c97-ink-2); font-weight: 400;
 }
-.terminalScope :global(.invest-hero-actions) {
-  margin-top: auto;
-  padding-top: var(--c97-sp-2);
-  display: flex; gap: var(--c97-sp-1); flex-wrap: wrap;
-}
 
 /* Right side of the hero, chart wrapper */
 .terminalScope :global(.invest-chart-wrap) {
@@ -314,7 +367,7 @@
   background: var(--c97-surface);
   border-left: 1px solid var(--c97-rule);
   padding: var(--c97-sp-1) var(--c97-sp-1) var(--c97-sp-0) var(--c97-sp-1);
-  min-height: 240px;
+  min-height: 0;
   display: flex; flex-direction: column;
   z-index: 1;
 }
@@ -323,7 +376,6 @@
   background: var(--c97-rule);
   border: 1px solid var(--c97-rule);
   width: fit-content;
-  margin-top: var(--c97-sp-2);
 }
 .terminalScope :global(.invest-timeframe) button {
   border: 0; background: var(--c97-surface);
@@ -373,35 +425,21 @@
   border-bottom: 1px solid var(--c97-rule);
   background: var(--c97-surface);
 }
-.statsCap {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--c97-sp-1); padding: var(--c97-sp-1) var(--c97-sp-2);
-  border-bottom: 1px solid var(--c97-rule);
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-micro); letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--c97-ink-2);
-}
-.statsLive {
-  display: inline-flex; align-items: center; gap: var(--c97-sp-0);
-  color: var(--c97-positive);
-}
-.statsLive::before {
-  content: "";
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--c97-positive);
-}
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 1px;
   background: var(--c97-rule);
+}
+@media screen and (max-width: 1100px) {
+  .statsGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media print, screen and (max-width: 900px) {
   .statsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .statCell {
   background: var(--c97-surface);
-  padding: var(--c97-sp-1) var(--c97-sp-2) var(--c97-sp-2);
+  padding: var(--c97-sp-1) var(--c97-sp-2);
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -409,7 +447,7 @@
 }
 .statLabel {
   font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-micro); letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: var(--invest-fs-micro); letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--c97-ink-2);
   cursor: help;
   width: fit-content;
@@ -435,19 +473,6 @@
 }
 .statPos { color: var(--c97-positive) !important; }
 .statNeg { color: var(--c97-negative) !important; }
-.statsFoot {
-  display: flex; flex-wrap: wrap; gap: 1px;
-  background: var(--c97-rule);
-  border-top: 1px solid var(--c97-rule);
-}
-.statsFoot :global(.invest-ghost) {
-  border: 0;
-  background: var(--c97-surface);
-  min-height: 44px;
-  /* The links fill the row. Two of them left the rule-coloured remainder reading as an empty third cell. */
-  flex: 1 1 auto;
-}
-
 /* ---- Holdings ledger ------------------------------------------------------ */
 .terminalScope :global(.invest-panel) {
   border-bottom: 1px solid var(--c97-rule);
@@ -508,6 +533,12 @@
   background: var(--c97-panel);
   box-shadow: inset 3px 0 0 var(--c97-accent);
 }
+.terminalScope :global(.invest-holdings) tbody td:global(.invest-empty-row) {
+  padding: var(--c97-sp-3) var(--c97-sp-2);
+  font-size: var(--invest-fs-body);
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
 .terminalScope :global(.invest-holdings) td.num {
   text-align: right;
   font-family: var(--c97-font-mono);
@@ -567,43 +598,6 @@
   min-width: 220px;
 }
 
-/* Compact dataset freshness chip */
-.terminalScope :global(.invest-dataset-chip) {
-  display: flex;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  flex-wrap: wrap;
-  padding: var(--c97-sp-1) var(--c97-sp-2);
-  border-bottom: 1px solid var(--c97-rule);
-  background: var(--c97-surface);
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-label);
-  color: var(--c97-ink-2);
-}
-.terminalScope :global(.invest-dataset-chip strong) {
-  color: var(--c97-ink);
-  font-weight: 400;
-  letter-spacing: 0.04em;
-}
-.terminalScope :global(.invest-dataset-chip-dot) {
-  width: 6px; height: 6px;
-  border-radius: 999px;
-  background: var(--c97-positive);
-}
-.terminalScope :global(.invest-dataset-chip-divider) { color: var(--c97-label); /* was half-opacity muted ink, 2.46:1 */ }
-.terminalScope :global(.invest-dataset-chip-spacer) { flex: 1; min-width: 8px; }
-.terminalScope :global(.invest-dataset-chip-meta) {
-  font-family: var(--c97-font-mono);
-  color: var(--c97-ink-2);
-  letter-spacing: 0.04em;
-}
-.terminalScope :global(.invest-dataset-chip-warn) {
-  color: var(--c97-warning);
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 /* In-page section header (Research / etc) */
 .terminalScope :global(.invest-section-header) {
   display: flex;
@@ -611,17 +605,8 @@
   justify-content: space-between;
   gap: var(--c97-sp-2);
   flex-wrap: wrap;
-  padding: var(--c97-sp-1) var(--c97-sp-2);
+  padding: var(--c97-sp-1) 0;
   border-bottom: 1px solid var(--c97-rule);
-}
-.terminalScope :global(.invest-section-kicker) {
-  margin: 0;
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-micro);
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c97-ink-2);
 }
 .terminalScope :global(.invest-section-title) {
   margin: var(--c97-sp-0) 0 0;
@@ -892,48 +877,17 @@
   color: var(--c97-ink-2);
   margin: 0 0 var(--c97-sp-1);
 }
-
-.terminalScope :global(.invest-rail-mover-list) {
-  list-style: none; margin: 0; padding: 0;
-  display: flex; flex-direction: column;
+.terminalScope :global(.invest-rail-heading) {
+  margin: 0;
+  font-size: var(--invest-fs-micro); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--c97-ink-2);
 }
-.terminalScope :global(.invest-rail-mover) {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: var(--c97-sp-1);
-  align-items: center;
-  width: 100%;
-  padding: var(--c97-sp-1) var(--c97-sp-0);
-  border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--c97-rule) 55%, transparent);
-  background: transparent;
-  cursor: pointer;
-  transition: background-color 130ms var(--c97-ease), box-shadow 130ms var(--c97-ease);
-  font: inherit;
-  text-align: left;
-  color: var(--c97-ink);
+.terminalScope :global(.invest-rail-note) {
+  margin: var(--c97-sp-2) 0 0;
+  font-size: var(--invest-fs-label);
+  line-height: 1.5;
+  color: var(--c97-ink-2);
 }
-.terminalScope :global(.invest-rail-mover-list) li:last-child :global(.invest-rail-mover) { border-bottom: 0; }
-.terminalScope :global(.invest-rail-mover):hover {
-  background: var(--c97-panel);
-  box-shadow: inset 3px 0 0 var(--c97-accent);
-}
-.terminalScope :global(.invest-rail-mover-sym) {
-  font-family: var(--c97-font-mono);
-  font-weight: 400; font-size: var(--invest-fs-body); letter-spacing: -0.01em;
-}
-.terminalScope :global(.invest-rail-mover-name) {
-  font-size: var(--invest-fs-label); color: var(--c97-ink-2);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  max-width: 12ch;
-}
-.terminalScope :global(.invest-rail-mover-delta) {
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-label); font-weight: 400;
-  font-variant-numeric: tabular-nums;
-}
-.terminalScope :global(.invest-rail-mover-delta.pos) { color: var(--c97-positive); }
-.terminalScope :global(.invest-rail-mover-delta.neg) { color: var(--c97-negative); }
 
 /* ============================================================
    Retirement planner (/investments #retirement)
@@ -943,9 +897,8 @@
    ============================================================ */
 
 .terminalScope :global(.invest-retire-band) {
-  border-top: 1px solid var(--c97-rule);
   background: var(--c97-surface);
-  padding: var(--c97-sp-2) var(--c97-sp-3) var(--c97-sp-3);
+  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
@@ -979,7 +932,8 @@
   grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
   gap: 0;
   align-items: start;
-  border: 1px solid var(--c97-rule);
+  /* Rules above and below rather than a box, since the page around it is the pane. */
+  border-block: 1px solid var(--c97-rule);
 }
 @media print, screen and (max-width: 1024px) {
   .terminalScope :global(.invest-retire-layout) {
@@ -1618,11 +1572,14 @@
   margin-top: var(--c97-sp-0);
 }
 .terminalScope :global(.invest-retire-cma) > summary {
+  /* A list item still, so it keeps its disclosure triangle; the padding makes the 44px target. */
+  min-height: 44px;
+  box-sizing: border-box;
   cursor: pointer;
   font-size: var(--invest-fs-label);
   font-weight: 600;
   color: var(--c97-ink);
-  padding: var(--c97-sp-0) 0;
+  padding: 13px 0;
 }
 .terminalScope :global(.invest-retire-cma) table {
   width: 100%;
@@ -1738,59 +1695,97 @@
   }
 }
 
-/* ---- Mobile section rail -------------------------------------------------- */
-/* Below 900px the sidebar is hidden, and that also removed the only way to move
-   between the seven sections of a route that runs about nine phone screens. This
-   is that navigation rebuilt for the narrow context rather than the sidebar
-   scaled down: one horizontally scrollable row of the same targets, pinned under
-   the site header so it stays reachable deep into the page. Hidden above 900px,
-   so the sidebar stays the single navigation in the accessibility tree on
-   desktop and the two never both appear. The Catalog 97 header is
-   `position: relative` and scrolls away, so the rail pins at 0. `--invest-rail-top`
-   is the one place to change if the site header ever becomes sticky again. */
-.sectionRail { display: none; }
+/* ---- Section rail ------------------------------------------------------- */
+/* The one section navigation. On a wide screen it is the terminal's function
+   column, sticky beside every workspace; at 900px and under the same element
+   turns into one horizontally scrollable row pinned to the top of the viewport.
+   There is no second copy, so nothing has to hide one from assistive tech.
+   The Catalog 97 header is position: relative and scrolls away, so both forms
+   pin at 0. */
+.sectionRail {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  max-height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--c97-sp-1);
+}
+.sectionRail a {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  /* Flush left, so the labels share the h1's edge. */
+  padding: 0 var(--c97-sp-1) 0 0;
+  color: var(--c97-ink-2);
+  text-decoration: none;
+  font-family: var(--c97-font-mono);
+  font-size: var(--invest-fs-small);
+  transition: color 140ms var(--c97-ease), background-color 140ms var(--c97-ease);
+}
+.sectionRail a:hover { color: var(--c97-ink); }
+/* The current section's marker sits on the side that faces its pane. */
+.sectionRail a[aria-current="true"] {
+  color: var(--c97-ink);
+  box-shadow: inset -2px 0 0 var(--c97-accent);
+}
+.sectionRail a svg { width: 16px; height: 16px; flex: 0 0 auto; }
+.sectionRailPill {
+  margin-left: auto;
+  font-size: var(--invest-fs-micro);
+  letter-spacing: 0.02em;
+  border: 1px solid var(--c97-rule);
+  padding: 0 var(--c97-sp-0);
+  color: var(--c97-ink-2);
+}
 
-@media print, screen and (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .sectionRail {
-    --invest-rail-top: 0px;
-    display: flex;
-    position: sticky;
-    top: var(--invest-rail-top);
     z-index: 4;
+    max-height: none;
+    flex-direction: row;
     overflow-x: auto;
+    overflow-y: visible;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
-    background: var(--c97-surface);
+    padding-block: 0;
+    margin-inline: calc(var(--c97-gutter) * -1);
+    padding-inline: var(--c97-gutter);
     border-bottom: 1px solid var(--c97-rule);
+    background: var(--c97-surface);
   }
   .sectionRail::-webkit-scrollbar { display: none; }
+  .sectionRail a:hover { background: var(--c97-panel); }
   .sectionRail a {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--c97-sp-0);
+    flex: 0 0 auto;
     white-space: nowrap;
     padding: 0 var(--c97-sp-2);
-    min-height: 44px;
-    border-right: 1px solid var(--c97-rule);
-    color: var(--c97-ink-2);
-    text-decoration: none;
-    font-family: var(--c97-font-mono);
     font-size: var(--invest-fs-label);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: color 140ms var(--c97-ease), background-color 140ms var(--c97-ease);
   }
-  .sectionRail a:hover,
-  .sectionRail a[aria-current="true"] { color: var(--c97-ink); background: var(--c97-panel); }
-  .sectionRail a svg { width: 15px; height: 15px; flex: 0 0 auto; }
+  .sectionRail a[aria-current="true"] { box-shadow: inset 0 -2px 0 var(--c97-accent); }
+  .sectionRailPill { margin-left: var(--c97-sp-0); }
   /* A section link's target scrolls clear of the sticky rail: its 44px links plus the rule under them. */
   .terminalScope :global(.invest-rail-target) { scroll-margin-top: 45px; }
-  .sectionRailPill {
-    font-family: var(--c97-font-mono);
-    font-size: var(--invest-fs-micro);
-    letter-spacing: 0.02em;
-    border: 1px solid var(--c97-rule);
-    padding: 0 var(--c97-sp-0);
-    color: var(--c97-ink-2);
-  }
+}
+
+/* Links do nothing on paper. */
+@media print {
+  .sectionRail { display: none; }
+}
+
+/* The column is the page edge on a phone, so the panes sit on it. Last in the
+   file so it outranks the padding each pane sets for itself. */
+@media screen and (max-width: 900px) {
+  .terminalScope :global(.invest-hero-left),
+  .terminalScope :global(.invest-panel-head),
+  .terminalScope :global(.invest-research-band),
+  .terminalScope :global(.invest-rail) > section { padding-inline: 0; }
+}
+/* Stacked under the balance, the chart takes a rule above it instead of beside it. */
+@media print, screen and (max-width: 1100px) {
+  .terminalScope :global(.invest-chart-wrap) { border-left: 0; border-top: 1px solid var(--c97-rule); }
 }

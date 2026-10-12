@@ -1,11 +1,11 @@
 /*
- * Fused hairline plate for the /investments terminal. No shadow, no radius,
- * a single 1px --c97-rule border. Tokens resolve against whatever scope this
- * panel renders inside (the route's always-dark .terminalScope), so this
- * file needs no token overrides of its own.
+ * A ruled section of the /investments terminal. A single top rule, since a
+ * panel sits on its pane and the rule only separates it from the one above
+ * (2026-10-11, the project-sovereign pass; it was a four-sided box). Tokens
+ * resolve against whatever surface the panel renders inside.
  */
 .panel {
-  border: 1px solid var(--c97-rule);
+  border-top: 1px solid var(--c97-rule);
   background: var(--c97-surface);
   overflow: hidden;
 }

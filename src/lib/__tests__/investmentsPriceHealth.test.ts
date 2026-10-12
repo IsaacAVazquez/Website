@@ -1,5 +1,6 @@
 import {
   buildInvestmentsPriceHealth,
+  countQuoteSources,
   isRecentInvestmentPrice,
 } from "../investmentsPriceHealth";
 
@@ -33,5 +34,12 @@ describe("investmentsPriceHealth", () => {
     expect(isRecentInvestmentPrice("not-a-date", assessedAt)).toBe(false);
     expect(isRecentInvestmentPrice("2026-02-30", assessedAt)).toBe(false);
     expect(isRecentInvestmentPrice("2026-07-15", assessedAt)).toBe(false);
+  });
+
+  it("counts live and saved prices and leaves cost basis as the remainder", () => {
+    expect(countQuoteSources([])).toEqual({ total: 0, live: 0, saved: 0 });
+    expect(
+      countQuoteSources([{ priceSource: "live" }, { priceSource: "saved" }, { priceSource: "costBasis" }, { priceSource: "live" }]),
+    ).toEqual({ total: 4, live: 2, saved: 1 });
   });
 });

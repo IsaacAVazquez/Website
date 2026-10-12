@@ -1,6 +1,6 @@
 "use client";
 
-import { Bookmark, ChartLine, ChartPie, CircleQuestionMark, Contrast, House, List, PiggyBank, ReceiptText, Search, Wallet } from "lucide-react";
+import { ChartLine, Contrast, House, List, PiggyBank, Plus, ReceiptText, Search } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { PortfolioSummary } from "./PortfolioSummary";
 import { AddStockForm } from "./AddStockForm";
@@ -14,10 +14,9 @@ import { useInvestments } from "@/hooks/useInvestments";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { InvestmentsTask, ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
-import { buildInvestmentsPriceHealth } from "@/lib/investmentsPriceHealth";
+import { buildInvestmentsPriceHealth, countQuoteSources } from "@/lib/investmentsPriceHealth";
 import { holdingColor } from "./holdingPalette";
 import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
@@ -52,9 +51,7 @@ const TASKS: { id: InvestmentsTask; label: string }[] = [
 ];
 
 // The chosen workspace prints first and the other two follow it, so every
-// section link and a print of the page still reach all three. The order of the
-// two that follow keeps the espresso sheets (portfolio and retirement) apart,
-// with the chocolate research sheet or the paper note between them.
+// section link and a print of the page still reach all three.
 const TASK_ORDER: Record<InvestmentsTask, InvestmentsTask[]> = {
   portfolio: ["portfolio", "research", "retirement"],
   research: ["research", "portfolio", "retirement"],
@@ -66,7 +63,7 @@ const TASK_ORDER: Record<InvestmentsTask, InvestmentsTask[]> = {
 // server and every browser agree on. Unpinned, this was the "Sep 15" (server,
 // UTC) vs "Sep 14" (a Pacific browser) hydration mismatch.
 function formatDatasetDate(raw: string | null | undefined): string {
-  if (!raw) return "—";
+  if (!raw) return "an unknown date";
   const d = new Date(raw);
   if (Number.isNaN(d.getTime())) return raw;
   return d.toLocaleDateString("en-US", {
@@ -128,16 +125,17 @@ export function InvestmentsDashboard({
       cancelled = true;
     };
   }, []);
-  const addHoldingRef = useRef<HTMLDivElement | null>(null);
-  const researchSectionRef = useRef<HTMLDivElement | null>(null);
+  const addHoldingRef = useRef<HTMLElement | null>(null);
+  const researchSectionRef = useRef<HTMLElement | null>(null);
   const filterInputRef = useRef<HTMLInputElement | null>(null);
 
   // ⌘K / Ctrl+K focuses the holdings filter (matching the keyboard hint).
-  // Leave the shortcut alone while the user is typing somewhere else, other
-  // inputs keep their own behavior and the browser keeps its default.
+  // Leave the shortcut alone while the user is typing somewhere else, and on
+  // an empty portfolio, where there is no filter and site search keeps it.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== "k") return;
+      if (!filterInputRef.current) return;
       const target = e.target as HTMLElement | null;
       const isEditable =
         !!target &&
@@ -149,15 +147,12 @@ export function InvestmentsDashboard({
       if (isEditable) return;
       e.preventDefault();
       // Catalog97Header binds Cmd/Ctrl+K on window as well, for the site-wide
-      // search overlay. Both listeners sat on window in the bubble phase, so
-      // registration order decided the winner and the header won: pressing the
-      // shortcut printed inside this filter opened site search on top of the
-      // dashboard instead. A capture listener on window runs before every
-      // bubble listener on window, so claiming the event here makes the badge
-      // beside the input tell the truth.
+      // search overlay. A capture listener on window runs before every bubble
+      // listener on window, so claiming the event here makes the badge beside
+      // the filter tell the truth.
       e.stopPropagation();
-      filterInputRef.current?.focus();
-      filterInputRef.current?.select();
+      filterInputRef.current.focus();
+      filterInputRef.current.select();
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
@@ -214,27 +209,23 @@ export function InvestmentsDashboard({
   );
 
   // The links follow the page, so they list the chosen workspace's sections
-  // first, in the order TASK_ORDER prints the sheets.
+  // first, in the order TASK_ORDER prints them.
   const navItems: NavItem[] = useMemo(() => {
     const sections: Record<InvestmentsTask, NavItem[]> = {
       portfolio: [
         { id: "performance", label: "Performance", href: "#performance", icon: ChartLine },
-        { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: Contrast },
-        // The holdings ledger and the allocation chart only render once there is
-        // at least one position, so on an empty portfolio these two jumped to
-        // nothing. That is the exact state a first-time visitor arrives in.
-        ...(enhancedHoldings.length > 0
-          ? ([
-              {
-                id: "holdings",
-                label: "Holdings",
-                href: "#holdings-list",
-                icon: List,
-                pill: String(enhancedHoldings.length),
-              },
-              { id: "allocation", label: "Allocation", href: "#allocation", icon: ChartPie },
-            ] as NavItem[])
-          : []),
+        // The stats row and the allocation chart only render once there is a
+        // position, so on an empty portfolio these would jump to nothing.
+        ...(isEmpty
+          ? []
+          : ([{ id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: Contrast }] as NavItem[])),
+        {
+          id: "holdings",
+          label: "Holdings",
+          href: "#holdings-list",
+          icon: List,
+          pill: isEmpty ? undefined : String(enhancedHoldings.length),
+        },
       ],
       research: [{ id: "research", label: "Research", href: "#research-section", icon: ReceiptText }],
       retirement: [{ id: "retirement", label: "Retirement", href: "#retirement", icon: PiggyBank }],
@@ -243,27 +234,27 @@ export function InvestmentsDashboard({
       { id: "home", label: "Overview", href: "#hero", icon: House },
       ...TASK_ORDER[task].flatMap((id) => sections[id]),
     ];
-  }, [enhancedHoldings.length, task]);
+  }, [enhancedHoldings.length, isEmpty, task]);
 
-  // Marks the section under the upper middle of the viewport as current in
-  // both navigations (aria-current). The hero card swaps its target element
-  // once loading settles, so it re-observes then. Research is watched through
-  // its outer band, because the inner #research-section is replaced when the
-  // lazy workspace chunk resolves.
+  // Marks the section under the upper middle of the viewport as current
+  // (aria-current). The hero card swaps its target element once loading
+  // settles, so it re-observes then. Research is watched through its outer
+  // pane, because the inner #research-section is replaced when the lazy
+  // workspace chunk resolves.
   const [activeSection, setActiveSection] = useState<string | null>(null);
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    const researchBand = researchSectionRef.current;
+    const researchPane = researchSectionRef.current;
     const targets = navItems
       .map((item) =>
-        item.href === "#research-section" ? researchBand : document.getElementById(item.href.slice(1)),
+        item.href === "#research-section" ? researchPane : document.getElementById(item.href.slice(1)),
       )
       .filter((el): el is HTMLElement => el !== null);
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          setActiveSection(entry.target === researchBand ? "research-section" : entry.target.id);
+          setActiveSection(entry.target === researchPane ? "research-section" : entry.target.id);
         }
       },
       { rootMargin: "-35% 0px -60% 0px" },
@@ -293,32 +284,191 @@ export function InvestmentsDashboard({
     }, 80);
   }
 
-  function handleSymbolPick(symbol: string) {
-    onResearchSymbolChange(symbol);
-    setTimeout(() => {
-      researchSectionRef.current?.scrollIntoView({ behavior: scrollBehavior, block: "start" });
-    }, 80);
-  }
+  const quoteSources = useMemo(() => countQuoteSources(enhancedHoldings), [enhancedHoldings]);
+  const quoteState =
+    quoteSources.live > 0 ? "Live quotes" : quoteSources.saved > 0 ? "Last saved prices" : "Prices unavailable";
 
-  // Keyed, so React moves a sheet when the task changes and keeps its state.
-  const sheets = {
+  // Keyed, so React moves a workspace when the task changes and keeps its state.
+  const workspaces = {
     portfolio: (
+      <section key="portfolio" data-task="portfolio" aria-label="Portfolio" className={styles.workspace}>
+        {/* data-empty lets the stylesheet print the add form first on a
+            phone while there is nothing to summarize yet. */}
+        <div className="invest-shell" data-testid="invest-shell" data-empty={isEmpty ? "" : undefined}>
+          <div className="invest-main">
+            <PortfolioSummary
+              summary={summary}
+              holdings={enhancedHoldings}
+              snapshots={snapshots}
+              isLoading={isLoading}
+              quoteSources={quoteSources}
+            />
+
+            <HoldingsTable
+              holdings={filteredHoldings}
+              onUpdate={updateHolding}
+              onRemove={removeHolding}
+              onResearch={handleResearch}
+              portfolioSymbols={portfolioSymbols}
+              emptyMessage={
+                isEmpty
+                  ? "No positions yet. Add one with Add holding and it lands here, priced from the latest quote."
+                  : undefined
+              }
+              toolbar={
+                isEmpty ? null : (
+                  <label className="invest-search">
+                    <Search size={14} aria-hidden="true" />
+                    <input
+                      ref={filterInputRef}
+                      type="search"
+                      aria-label="Filter holdings"
+                      placeholder="Filter holdings…"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                    <span className="invest-search-kbd" aria-hidden="true">⌘K</span>
+                  </label>
+                )
+              }
+            />
+          </div>
+
+          <aside className="invest-rail" aria-label="Portfolio side panel">
+            <section ref={addHoldingRef} id="add-holding" aria-label="Add a holding" className="invest-rail-target">
+              <AddStockForm onAdd={addHolding} />
+              <p className="invest-rail-note">
+                Holdings save only in this browser, with no login and no cloud sync.
+              </p>
+            </section>
+
+            {!isEmpty ? (
+              <section id="allocation" className="invest-rail-target">
+                <AllocationChart holdings={enhancedHoldings} />
+              </section>
+            ) : null}
+          </aside>
+        </div>
+      </section>
+    ),
+    // Research deep dive. The symbol comes from Research on a holding row or
+    // the picker in this pane's header.
+    research: (
       <section
-        key="portfolio"
-        data-task="portfolio"
-        data-c97-surface="espresso"
-        className="c97-band c97-sheet"
-        data-seam="torn"
+        key="research"
+        data-task="research"
+        ref={researchSectionRef}
+        data-c97-surface="chocolate"
+        className={`${styles.workspace} ${styles.researchPane}`}
+        aria-label="Research deep dive"
       >
-        {/* The terminal's sidebar, main column, and rail need more than the
-            1080px page measure, so /investments is in WIDE_TOOL_ROUTES and
-            every shell on the page, this one included, prints wide. */}
-        <div className="c97-shell">
-        {/* Section jumps for narrow viewports, where the sidebar is hidden.
-            Same targets in the same order, so `navItems` stays the one source
-            of truth and the two navigations cannot drift apart. Only one of the
-            two is ever in the accessibility tree, since each is display:none at
-            the other's widths. */}
+        <div className="invest-section-header">
+          <h2 className="invest-section-title">Research</h2>
+          <div className="invest-section-search">
+            <StockSearch value={researchSymbol} onChange={handleResearch} />
+          </div>
+        </div>
+
+        <ResearchSection
+          symbol={researchSymbol}
+          activeTab={researchTab}
+          onTabChange={onResearchTabChange}
+          portfolioSymbols={portfolioSymbols}
+          position={researchPosition}
+        />
+      </section>
+    ),
+    // Retirement planner, projects whether the portfolio + savings last
+    // through retirement, with allocation-derived Monte Carlo. Offers the
+    // live portfolio value as a one-click starting balance.
+    retirement: (
+      <section key="retirement" data-task="retirement" className={styles.workspace} aria-label="Retirement">
+        <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
+      </section>
+    ),
+  };
+
+  const sourceParts = [
+    datasetSymbolCount > 0
+      ? `Curated research snapshot of ${datasetSymbolCount} ${datasetSymbolCount === 1 ? "security" : "securities"}`
+      : "Curated research snapshot",
+    datasetFreshCount > 0 ? `${datasetFreshCount} refreshed` : null,
+    datasetStaleCount > 0 ? `${datasetStaleCount} using earlier snapshots` : null,
+    datasetFailedCount > 0 ? `${datasetFailedCount} unavailable` : null,
+    // The delayed count alone carries the whole universe when nothing is
+    // recent, so the line never reads "0 recent price histories".
+    priceHealth && priceHealth.recentCount > 0 ? `${priceHealth.recentCount} recent price histories` : null,
+    priceHealth && priceHealth.delayedCount > 0 ? `${priceHealth.delayedCount} delayed histories` : null,
+    "market quotes via Finnhub",
+  ].filter(Boolean);
+
+  return (
+    <div className="c97-shell c97-frame">
+      <header id="hero" className={styles.titleBar}>
+        <h1 className={styles.title}>Investments</h1>
+        {/* The three jobs this page does. The choice decides which workspace
+            prints first, straight under the quotes. */}
+        <span id="invest-task-label" className="sr-only">Start with</span>
+        <div role="group" aria-labelledby="invest-task-label" className={styles.taskSwitch}>
+          {TASKS.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              aria-pressed={task === option.id}
+              onClick={() => onTaskChange?.(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+        <div className={styles.titleStatus}>
+          <span>Research data as of {formatDatasetDate(datasetLastUpdated)}</span>
+          {isEmpty ? null : (
+            <DataFreshnessIndicator lastUpdated={lastUpdated} onRefresh={refetch} isRefreshing={isLoading} />
+          )}
+        </div>
+        <button type="button" className={`invest-ghost ${styles.titleAdd}`} onClick={focusAddHolding}>
+          <Plus size={14} aria-hidden="true" />
+          {/* Its own name, since the form's toggle owns "Add holding" and the
+              two share the desktop first screen. */}
+          Add a holding
+        </button>
+      </header>
+
+      <div className={styles.tapeStrip}>
+        {isEmpty ? (
+          <p className={styles.tapeEmpty}>
+            <span className={styles.quoteTapeTag}>Quotes</span>
+            Quotes for your holdings print here once you add one.
+          </p>
+        ) : (
+          <InstrumentTape
+            label={<span className={styles.quoteTapeTag}>{quoteState}</span>}
+            items={tapeItems}
+            ariaLabel="Holdings quote tape"
+          />
+        )}
+      </div>
+
+      {error ? (
+        <p role="alert" className={styles.notice}>
+          <span className={styles.noticeTag}>Quotes</span>
+          {error}
+        </p>
+      ) : null}
+
+      {persistenceStatus === "memory-only" ? (
+        <p role="status" className={styles.notice}>
+          <span className={styles.noticeTag}>Storage</span>
+          Portfolio changes are available in this tab, but browser storage is
+          unavailable, so they may not remain after you close it.
+        </p>
+      ) : null}
+
+      <div className={styles.terminal}>
+        {/* One navigation. A column beside the workspaces on a wide screen and
+            a sticky scroll rail on a phone, from the same element, so there is
+            never a second copy to drift or to hide from assistive tech. */}
         <nav className={styles.sectionRail} aria-label="Section navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -328,396 +478,24 @@ export function InvestmentsDashboard({
                 href={item.href}
                 aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
               >
-                <Icon size={15} aria-hidden="true" />
+                <Icon size={16} aria-hidden="true" />
                 {item.label}
-                {item.pill ? (
-                  <span className={styles.sectionRailPill}>{item.pill}</span>
-                ) : null}
+                {item.pill ? <span className={styles.sectionRailPill}>{item.pill}</span> : null}
               </a>
             );
           })}
         </nav>
 
-        {/* Compact dataset freshness chip */}
-        <div className="invest-dataset-chip" role="status" aria-live="polite">
-          <span className="invest-dataset-chip-dot" aria-hidden="true" />
-          <span>
-            <strong>Curated snapshot</strong> · {formatDatasetDate(datasetLastUpdated)}
-          </span>
-          {datasetSymbolCount > 0 ? (
-            <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-          ) : null}
-          {datasetSymbolCount > 0 ? (
-            <span>
-              {datasetSymbolCount} {datasetSymbolCount === 1 ? "security" : "securities"}
-            </span>
-          ) : null}
-          {datasetFreshCount > 0 ? (
-            <>
-              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-              <span>{datasetFreshCount} refreshed</span>
-            </>
-          ) : null}
-          {datasetStaleCount > 0 ? (
-            <>
-              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-              <span className="invest-dataset-chip-warn">
-                {datasetStaleCount} using earlier snapshots
-              </span>
-            </>
-          ) : null}
-          {datasetFailedCount > 0 ? (
-            <>
-              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-              <span className="invest-dataset-chip-warn">
-                {datasetFailedCount} unavailable
-              </span>
-            </>
-          ) : null}
-          {/* The delayed count alone carries the whole universe when nothing
-              is recent, so the chip never reads "0 recent price histories". */}
-          {priceHealth && priceHealth.recentCount > 0 ? (
-            <>
-              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-              <span>{priceHealth.recentCount} recent price histories</span>
-            </>
-          ) : null}
-          {priceHealth && priceHealth.delayedCount > 0 ? (
-            <>
-              <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-              <span className="invest-dataset-chip-warn">
-                {priceHealth.delayedCount} delayed histories
-              </span>
-            </>
-          ) : null}
-          <span className="invest-dataset-chip-spacer" />
-          <span className="invest-dataset-chip-meta">Market quotes via Finnhub</span>
-        </div>
-
-        {error ? (
-          <div
-            role="alert"
-            className="c97-panel text-sm"
-            style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
-          >
-            {/* A paper plate: on light espresso the chip's pale field and the pale warning ink measure about 1.1:1. */}
-            <span data-c97-surface="paper" style={{ display: "contents" }}>
-              <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
-                Quotes
-              </span>
-            </span>
-            {error}
-          </div>
-        ) : null}
-
-        {persistenceStatus === "memory-only" ? (
-          <div
-            role="status"
-            className="c97-panel text-sm"
-            style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
-          >
-            {/* A paper plate: on light espresso the chip's pale field and the pale warning ink measure about 1.1:1. */}
-            <span data-c97-surface="paper" style={{ display: "contents" }}>
-              <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
-                Storage
-              </span>
-            </span>
-            Portfolio changes are available in this tab, but browser storage is
-            unavailable, so they may not remain after you close it.
-          </div>
-        ) : null}
-
-        {/* data-empty lets the stylesheet print the add form first on a
-            phone while there is nothing to summarize yet. */}
-        <div className="invest-shell" data-testid="invest-shell" data-empty={isEmpty ? "" : undefined}>
-          <aside className="invest-sidebar" aria-label="Investments navigation">
-            <nav className="flex flex-col" style={{ gap: "var(--c97-sp-0)" }} aria-label="Section navigation">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    className="invest-nav-link"
-                    aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
-                  >
-                    <Icon size={18} aria-hidden="true" />
-                    {item.label}
-                    {item.pill ? <span className="invest-nav-pill">{item.pill}</span> : null}
-                  </a>
-                );
-              })}
-            </nav>
-
-            <div className="invest-sidebar-footer">
-              <Bookmark size={16} aria-hidden="true" />
-              <span>Local browser storage</span>
-            </div>
-          </aside>
-
-          <div className="invest-main">
-            <div className="invest-topbar">
-              <label className="invest-search">
-                <Search size={14} aria-hidden="true" />
-                <input
-                  ref={filterInputRef}
-                  type="search"
-                  aria-label="Filter holdings"
-                  placeholder="Filter holdings…"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <span className="invest-search-kbd" aria-hidden="true">⌘K</span>
-              </label>
-
-              <DataFreshnessIndicator
-                lastUpdated={lastUpdated}
-                onRefresh={refetch}
-                isRefreshing={isLoading}
-              />
-            </div>
-
-            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-              <PortfolioSummary
-                summary={summary}
-                holdings={enhancedHoldings}
-                snapshots={snapshots}
-                isLoading={isLoading}
-                onAddHolding={focusAddHolding}
-                onRefresh={refetch}
-                lastUpdated={lastUpdated}
-              />
-
-              {!isEmpty ? (
-                <HoldingsTable
-                  holdings={filteredHoldings}
-                  onUpdate={updateHolding}
-                  onRemove={removeHolding}
-                  onResearch={handleResearch}
-                  portfolioSymbols={portfolioSymbols}
-                />
-              ) : (
-                <div
-                  className="c97-panel"
-                  style={{ padding: "var(--c97-sp-6) var(--c97-sp-4)", textAlign: "center" }}
-                >
-                  <h2
-                    className="text-sm font-semibold"
-                    style={{ margin: "0 0 var(--c97-sp-2)", color: "var(--c97-ink)" }}
-                  >
-                    No positions yet
-                  </h2>
-                  <p
-                    className="text-sm"
-                    style={{ margin: "0 auto", maxInlineSize: "20rem", color: "var(--c97-label)" }}
-                  >
-                    Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          <aside className="invest-rail" aria-label="Portfolio side panel">
-            <section
-              ref={addHoldingRef}
-              id="add-holding"
-              aria-label="Add a holding"
-              className="invest-rail-target"
-            >
-              <p className="invest-rail-section-label">
-                <Wallet size={12} aria-hidden="true" className="inline align-middle" style={{ marginRight: "var(--c97-sp-0)" }} />
-                Add a holding
-              </p>
-              <AddStockForm onAdd={addHolding} />
-            </section>
-
-            {!isEmpty ? (
-              <section id="allocation" className="invest-rail-target">
-                <p className="invest-rail-section-label">Allocation</p>
-                <AllocationChart holdings={enhancedHoldings} />
-              </section>
-            ) : null}
-
-            {enhancedHoldings.some((holding) => holding.priceSource === "live") ? (
-              <section className="invest-rail-movers">
-                <p className="invest-rail-section-label">Latest movers</p>
-                <ul className="invest-rail-mover-list">
-                  {[...enhancedHoldings]
-                    .filter((holding) => holding.priceSource === "live")
-                    .sort(
-                      (a, b) =>
-                        Math.abs(b.dayChangePercent) - Math.abs(a.dayChangePercent),
-                    )
-                    .slice(0, 4)
-                    .map((h) => {
-                      const positive = h.dayChangePercent >= 0;
-                      const showName =
-                        h.name && h.name.toUpperCase() !== h.symbol.toUpperCase();
-                      return (
-                        <li key={h.symbol}>
-                          <button
-                            type="button"
-                            className="invest-rail-mover"
-                            onClick={() => handleResearch(h.symbol)}
-                          >
-                            <span className="invest-rail-mover-sym">{h.symbol}</span>
-                            <span className="invest-rail-mover-name">
-                              {showName ? h.name : ""}
-                            </span>
-                            <span
-                              className={
-                                positive
-                                  ? "invest-rail-mover-delta pos"
-                                  : "invest-rail-mover-delta neg"
-                              }
-                            >
-                              {positive ? "+" : "−"}
-                              {Math.abs(h.dayChangePercent).toFixed(2)}%
-                            </span>
-                          </button>
-                        </li>
-                      );
-                    })}
-                </ul>
-              </section>
-            ) : null}
-
-            <p className="mt-auto flex items-center text-2xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
-              <CircleQuestionMark size={14} aria-hidden="true" />
-              Holdings live only in your browser. No logins, no cloud sync.
-            </p>
-          </aside>
-        </div>
-        </div>
-      </section>
-    ),
-    // Research deep-dive, its own sheet below the terminal body. Symbol
-    // comes from clicking "Research" on a holding row or the picker below.
-    research: (
-      <section
-        key="research"
-        data-task="research"
-        ref={researchSectionRef}
-        data-c97-surface="chocolate"
-        className="c97-band c97-sheet"
-        data-seam="torn"
-        aria-label="Research deep dive"
-      >
-        <div className="c97-shell">
-          <div className="invest-section-header">
-            <div>
-              <p className="invest-section-kicker">Deep dive</p>
-              <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>Research</h2>
-            </div>
-            <div className="invest-section-search">
-              <StockSearch value={researchSymbol} onChange={handleSymbolPick} />
-            </div>
-          </div>
-
-          <ResearchSection
-            symbol={researchSymbol}
-            activeTab={researchTab}
-            onTabChange={onResearchTabChange}
-            portfolioSymbols={portfolioSymbols}
-            position={researchPosition}
-          />
-        </div>
-      </section>
-    ),
-    note: (
-      <div key="note" data-c97-surface="paper" className="c97-band c97-band-tight c97-sheet" data-seam="torn">
-        <div className="c97-shell">
-          <p
-            role="note"
-            className="c97-prose flex items-start text-2xs leading-6"
-            style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-          >
-            <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
-            Research, valuations, and portfolio figures here are for general information
-            and education only and are not investment, tax, or financial advice.
-          </p>
-        </div>
-      </div>
-    ),
-    // Retirement planner, projects whether the portfolio + savings last
-    // through retirement, with allocation-derived Monte Carlo. Offers the
-    // live portfolio value as a one-click starting balance.
-    retirement: (
-      <section
-        key="retirement"
-        data-task="retirement"
-        data-c97-surface="espresso"
-        className="c97-band c97-sheet"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
-        </div>
-      </section>
-    ),
-  };
-  const [first, second, third] = TASK_ORDER[task];
-
-  return (
-    <>
-      <div id="hero">
-        <Catalog97ProjectHero
-          ink="blue"
-          title="Investments"
-          standfirst="I built this to track a portfolio, look into a curated set of companies, and run a retirement plan off the same allocation math. Holdings and plan inputs save only to your browser."
-          meta={`Research data as of ${formatDatasetDate(datasetLastUpdated)} · Market quotes via Finnhub`}
-        >
-          <div
-            data-c97-surface="espresso"
-            className="c97-offset flex flex-col gap-[var(--c97-sp-2)] p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]"
-          >
-            {/* The three jobs this page does. The choice decides which
-                workspace prints first, straight under this sheet. */}
-            <div>
-              <p id="invest-task-label" className="c97-kicker">
-                Start with
-              </p>
-              <div role="group" aria-labelledby="invest-task-label" className="c97-segmented">
-                {TASKS.map((option) => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    aria-pressed={task === option.id}
-                    onClick={() => onTaskChange?.(option.id)}
-                    className="text-sm font-semibold"
-                    style={{ minHeight: 44 }}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            {!isEmpty ? (
-              <InstrumentTape
-                className={styles.quoteTape}
-                label={
-                  <span className={styles.quoteTapeTag}>
-                    {enhancedHoldings.some((h) => h.priceSource === "live")
-                      ? "Live quotes"
-                      : enhancedHoldings.some((h) => h.priceSource === "saved")
-                        ? "Last saved prices"
-                        : "Prices unavailable"}
-                  </span>
-                }
-                items={tapeItems}
-                ariaLabel="Holdings quote tape"
-              />
-            ) : (
-              <p className="c97-mono" style={{ margin: 0, color: "var(--c97-ink-2)" }}>
-                Add a holding below to see live quotes here.
-              </p>
-            )}
-          </div>
-        </Catalog97ProjectHero>
+        <div className={styles.workspaces}>{TASK_ORDER[task].map((id) => workspaces[id])}</div>
       </div>
 
-      {[sheets[first], sheets[second], sheets.note, sheets[third]]}
-    </>
+      <footer className={styles.terminalFoot}>
+        <p role="note">
+          Research, valuations, and portfolio figures here are for general information
+          and education only and are not investment, tax, or financial advice.
+        </p>
+        <p>{sourceParts.join(", ")}.</p>
+      </footer>
+    </div>
   );
 }

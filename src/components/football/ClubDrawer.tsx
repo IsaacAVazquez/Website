@@ -98,6 +98,7 @@ export function ClubDrawer({
   testId,
 }: {
   club: ClubDrawerClub | null;
+  /** The last few league results, oldest first; the last one is marked as the latest. */
   formSequence: Array<"W" | "D" | "L">;
   topScorers: ClubDrawerScorer[];
   recentFixtures: GenericFixture[];
@@ -134,7 +135,7 @@ export function ClubDrawer({
         aria-label="Close club detail"
         onClick={onClose}
         className="absolute inset-0 h-full w-full cursor-default"
-        style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
+        style={{ background: "var(--c97-scrim)" }}
         tabIndex={-1}
       />
       <div
@@ -171,10 +172,25 @@ export function ClubDrawer({
               </p>
               <h2 className="truncate text-xl font-bold tracking-tight text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>{club.name}</h2>
               {formSequence.length > 0 ? (
-                <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
-                  {formSequence.map((result, index) => (
-                    <TeamResultPill key={`${result}-${index}`} result={result} />
-                  ))}
+                // Oldest first, the same direction as the table's Last 5, with
+                // the latest result underlined the way the table marks it.
+                <div className="flex" style={{ marginTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+                  <span className="sr-only">{`Last ${formSequence.length} results, oldest first, latest last:`}</span>
+                  {formSequence.map((result, index) => {
+                    const isLatest = index === formSequence.length - 1;
+                    return (
+                      <span key={`${result}-${index}`} className="relative inline-flex" data-latest={isLatest || undefined}>
+                        <TeamResultPill result={result} />
+                        {isLatest ? (
+                          <span
+                            aria-hidden="true"
+                            className="absolute bg-[var(--c97-ink)]"
+                            style={{ insetInline: "var(--c97-sp-0)", bottom: "-5px", height: "2px" }}
+                          />
+                        ) : null}
+                      </span>
+                    );
+                  })}
                 </div>
               ) : null}
             </div>

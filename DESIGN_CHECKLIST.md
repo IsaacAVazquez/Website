@@ -4,7 +4,7 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-10-02 · The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-10-11 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
 > the print shop reference, `Catalog97ProjectHero` plus any project route shows the hero and signature
@@ -149,11 +149,54 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
       on-page (mirror `tech-startup-tracker`).
 - [ ] Compliance disclaimers (retirement/investments) stay intact.
 
+## Project routes
+
+Since 2026-10-11 a project route (the 34 in `DASHBOARD_ROUTES`, the fantasy sub-routes, Score Pools, and
+`/agent-build-index`) owns its design inside the site frame. The spec is
+`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, and its brief for the route names the
+genre, the first screen, what is cut, and what is pinned. Before merging a redesigned project route:
+
+- [ ] The frame is untouched. `Catalog97Shell` keeps the header, the one `main`, and the footer; the route
+      renders its own root inside `main`, with one `h1` and no nested `main`, and the build-note strip at
+      the foot stays the shell's.
+- [ ] The page passes the genre test. The brief names the kind of real product this is and two or three
+      references, and the page borrows the genre's conventions, never its branding.
+- [ ] The first screen holds the tool. At 1440x900 the first data row, the first input, or the board is on
+      screen without scrolling; at 390x844 it is within one and a half screens, header included. A hero,
+      where the route keeps one, is a title row and one orienting sentence, never a sheet.
+- [ ] No plate. Nothing wraps the primary content in a bordered or shadowed rectangle; a box exists only
+      where the box is the object (a ticket, a card in a list, a label) and carries its own data; at most
+      two levels of visible containment anywhere; no border around a chart.
+- [ ] No repeats. Readouts exist only as the product's own summary and never restate the first row, the
+      first field, or the chart below; the source, the as-of date, and the storage note each print once,
+      near the data; the data, snapshot, method, and attribution bands are one source line plus the
+      build-notes link. Compliance text (fintech and investments disclaimers, "curated, unverified"
+      disclosures, model boundary notes) stays word for word, once, beside the result it qualifies.
+- [ ] Colour and type are the route's call. Catalog 97 tokens as the default, or the route's own
+      `--<abbr>-*` custom properties with a light and a dark story (a terminal or a display board may keep
+      one surface in both themes while the shell still switches). Token names avoid the dead patterns
+      `catalog97-closeout.test.ts` bans. Data colours stay data. One added typeface at most, loaded with
+      `next/font` on the route only and kept out of `public/humans.txt`.
+- [ ] The root handles what the frame leaks, so it sets its heading `font-family` (the base layer puts the
+      body face on `h1` to `h6`), resets the `p` measure and list padding it does not want, redeclares
+      `--c97-ink`, `--c97-surface`, and `--c97-rule` (or nests its own `data-c97-surface`) before borrowing
+      any `c97-*` class, and sets `--c97-accent` to its focus colour, because `.c97-page button:focus-visible`
+      paints that token with no radius. `.c97-page button { min-width: 44px }` stays.
+- [ ] Everything pinned stays. Every e2e test id, exact string, URL parameter, and keyboard path a spec or
+      a route test names is kept, and where a redesign has to change one the PR changes the test in the
+      same commit and says why. Nothing in the route's `.impeccable/surfaces/` brief's "do not
+      re-litigate" list reopens, and the brief is updated with the decisions and the verified state.
+- [ ] The unchanged rules hold, meaning the accessibility, dark mode, motion, responsive, and print sections above,
+      `scripts/contrastSweep.mjs` with zero failures in both themes, `scripts/layoutSweep.mjs` with zero
+      fails (the h1 and the footer still start on the header's content edge), `WRITING_VOICE.md` for every
+      string, and the `lastmod` for the route bumped in `src/lib/sitemap.js` with `public/sitemap.xml`
+      regenerated.
+
 ## Print shop layout
 
-See `STYLING.md` for the method. Before merging a change to one of the seven designed routes or a project
-route (the ones in `src/constants/projectPress.ts`); the utility pages and Score Pools use the
-bands and vocabulary without the poster hero:
+See `STYLING.md` for the method. Before merging a change to one of the seven designed routes, or to a
+project route that has not yet moved to its own design (one still rendering `Catalog97ProjectHero`); the
+utility pages and Score Pools use the bands and vocabulary without the poster hero:
 
 - [ ] The page prints in two lead inks (blue, saffron, vermilion, green, teal, pink, with peach as a
       vermilion tint), a project route takes its pair from `src/constants/projectPress.ts`, and nothing on

@@ -39,14 +39,16 @@ function cell(label: string) {
 }
 
 describe("PortfolioStatsGrid", () => {
-  it("is a named landmark that shows the market status", () => {
-    render(<PortfolioStatsGrid summary={summary} holdings={[]} marketStatus="Market closed" />);
+  // The market status prints once, on the balance above this row, and the
+  // section rail carries the jumps the row's own links used to repeat.
+  it("is a named landmark with no links of its own", () => {
+    render(<PortfolioStatsGrid summary={summary} holdings={[]} />);
     const region = screen.getByRole("region", { name: "Portfolio stats" });
-    expect(within(region).getByText("Market closed")).toBeInTheDocument();
+    expect(within(region).queryAllByRole("link")).toHaveLength(0);
   });
 
-  it("shows dashes and hides the allocation links for an empty book", () => {
-    render(<PortfolioStatsGrid summary={{ ...summary, totalCost: 0 }} holdings={[]} marketStatus="Open" />);
+  it("shows dashes for an empty book", () => {
+    render(<PortfolioStatsGrid summary={{ ...summary, totalCost: 0 }} holdings={[]} />);
 
     expect(cell("Cost basis").value).toBe("$0.00");
     expect(cell("Positions").value).toBe("0");
@@ -55,11 +57,6 @@ describe("PortfolioStatsGrid", () => {
     expect(cell("Biggest day move").value).toBe("—");
     expect(cell("Top-3 concentration").value).toBe("—");
     expect(cell("Top-3 concentration").sub.trim()).toBe("");
-
-    expect(screen.queryByRole("link", { name: "Allocation breakdown" })).toBeNull();
-    expect(screen.queryByRole("link", { name: "Per-position detail" })).toBeNull();
-    expect(screen.getByRole("link", { name: "Performance over time" })).toHaveAttribute("href", "#performance");
-    expect(screen.getByRole("link", { name: "Add a holding" })).toHaveAttribute("href", "#add-holding");
   });
 
   it("ranks holdings and formats each stat", () => {
@@ -69,7 +66,7 @@ describe("PortfolioStatsGrid", () => {
       holding({ symbol: "V", allocationPercent: 20, gainLossPercent: -5, dayChangePercent: 0.5 }),
       holding({ symbol: "KO", allocationPercent: 10, gainLossPercent: 2, dayChangePercent: 0.1 }),
     ];
-    render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
+    render(<PortfolioStatsGrid summary={summary} holdings={holdings} />);
 
     expect(cell("Cost basis").value).toBe("$10,234.50");
     expect(cell("Cost basis").sub).toBe("Across 4 positions");
@@ -85,8 +82,6 @@ describe("PortfolioStatsGrid", () => {
     expect(cell("Best performer").subEl.className).toContain("statPos");
     expect(cell("Top-3 concentration").value).toBe("90.0%");
 
-    expect(screen.getByRole("link", { name: "Allocation breakdown" })).toHaveAttribute("href", "#allocation");
-    expect(screen.getByRole("link", { name: "Per-position detail" })).toHaveAttribute("href", "#holdings-list");
   });
 
   it("uses the singular for one position and calls a small book the whole book", () => {
@@ -94,7 +89,6 @@ describe("PortfolioStatsGrid", () => {
       <PortfolioStatsGrid
         summary={summary}
         holdings={[holding({ symbol: "AAPL", allocationPercent: 100, gainLossPercent: -8 })]}
-        marketStatus="Open"
       />
     );
     expect(cell("Cost basis").sub).toBe("Across 1 position");
@@ -105,13 +99,13 @@ describe("PortfolioStatsGrid", () => {
 
   it("counts the positions beyond the top three", () => {
     const holdings = ["A", "B", "C", "D", "E"].map((symbol) => holding({ symbol, allocationPercent: 20 }));
-    render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
+    render(<PortfolioStatsGrid summary={summary} holdings={holdings} />);
     expect(cell("Top-3 concentration").sub).toBe("2 more positions");
   });
 
   it("says one more position, not positions, for a four-holding book", () => {
     const holdings = ["A", "B", "C", "D"].map((symbol) => holding({ symbol, allocationPercent: 25 }));
-    render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
+    render(<PortfolioStatsGrid summary={summary} holdings={holdings} />);
     expect(cell("Top-3 concentration").sub).toBe("1 more position");
   });
 
@@ -121,7 +115,7 @@ describe("PortfolioStatsGrid", () => {
       holding({ symbol: "SAVED", priceSource: "saved", allocationPercent: 15, gainLossPercent: 4, dayChangePercent: 7 }),
       holding({ symbol: "LIVE", priceSource: "live", allocationPercent: 5, gainLossPercent: 1, dayChangePercent: 0.25 }),
     ];
-    render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
+    render(<PortfolioStatsGrid summary={summary} holdings={holdings} />);
 
     expect(cell("Top holding").value).toBe("SAVED");
     expect(cell("Best performer").value).toBe("SAVED");
@@ -135,7 +129,7 @@ describe("PortfolioStatsGrid", () => {
       holding({ symbol: "NULL", allocationPercent: null }),
       holding({ symbol: "REAL", allocationPercent: 12 }),
     ];
-    render(<PortfolioStatsGrid summary={summary} holdings={holdings} marketStatus="Open" />);
+    render(<PortfolioStatsGrid summary={summary} holdings={holdings} />);
     expect(cell("Top holding").value).toBe("REAL");
   });
 });

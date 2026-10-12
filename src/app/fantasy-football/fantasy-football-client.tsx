@@ -771,7 +771,7 @@ function DraftPlayerDrawer({
         aria-label="Close player detail"
         tabIndex={-1}
         className="absolute inset-0 cursor-default"
-        style={{ background: "color-mix(in srgb, var(--c97-ink) 38%, transparent)" }}
+        style={{ background: "var(--c97-scrim)" }}
       />
       <aside
         ref={panelRef}

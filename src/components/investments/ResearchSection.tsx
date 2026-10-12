@@ -22,13 +22,12 @@ export function ResearchSection(props: ResearchSectionProps) {
       <section
         id="research-section"
         aria-label="Stock research"
-        className="invest-rail-target border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] text-center" style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-5)" }}
+        className="invest-rail-target" style={{ paddingBlock: "var(--c97-sp-3)" }}
       >
-        <p className="invest-rail-section-label">Research</p>
-        <p className="text-sm font-semibold text-[var(--c97-ink)]">
+        <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ margin: 0 }}>
           Pick a holding to research
         </p>
-        <p className="max-w-md text-sm text-[var(--c97-ink-2)]" style={{ marginInline: "auto", marginTop: "var(--c97-sp-1)" }}>
+        <p className="text-sm text-[var(--c97-ink-2)]" style={{ margin: "var(--c97-sp-1) 0 0", maxInlineSize: "60ch" }}>
           Search for a company in the box above, or use Research on any holding in your
           portfolio, to load fundamentals, valuation, growth, and a price chart.
         </p>

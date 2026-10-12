@@ -22,22 +22,27 @@ interface PointsLadderProps {
   title: string;
 }
 
-/** The wide ladder, and a narrow one for phones so the plot keeps its height and type. */
-const WIDE_W = 640;
-const NARROW_W = 360;
+/**
+ * The wide ladder for a tablet, where it sits under the table, and a narrow
+ * one that sits beside the table on a wide screen and under it on a phone.
+ * Each prints at the size it is drawn, so the type stays at 14px.
+ */
+const GEOMETRY = {
+  wide: { W: 640, AXIS_X: 96, LABEL_X: 118 },
+  narrow: { W: 300, AXIS_X: 22, LABEL_X: 44 },
+} as const;
 const ROW_HEIGHT = 34;
 const AXIS_TOP = 44;
 const AXIS_BOTTOM_PAD = 36;
-const AXIS_X = 96;
-const LABEL_X = 118;
 const DOT_HIT_RADIUS = 10;
 
+/** The league table page's zone colours, for a club with no livery in the snapshot. */
 const ZONE_TONE: Record<LeagueZone, string> = {
-  champions: "var(--c97-accent)",
-  europa: "var(--c97-positive)",
-  conference: "var(--c97-positive)",
+  champions: "var(--pl-ucl, var(--c97-accent))",
+  europa: "var(--pl-uel, var(--c97-positive))",
+  conference: "var(--pl-uecl, var(--c97-positive))",
   midtable: "var(--c97-ink-2)",
-  relegation: "var(--c97-negative)",
+  relegation: "var(--pl-drop, var(--c97-negative))",
 };
 
 function normalizeHex(hex: string | null | undefined): string | null {
@@ -66,7 +71,7 @@ function zoneLineLabel(afterPosition: number, clubCount: number, short: boolean)
  * vertical points axis with every club placed by its points total, so the
  * gaps to the title race, the European lines, and the drop read as real
  * distance. Each mark supports pointer and keyboard selection, and the
- * standings table below provides the same selection in a tabular view.
+ * standings table beside it provides the same selection in a tabular view.
  */
 export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadderProps) {
   const plotHeight = Math.max(360, clubs.length * ROW_HEIGHT);
@@ -105,12 +110,9 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
     onSelect(clubId);
   };
 
-  // Each ladder sits in its own slot, and the slot is what shows or hides,
-  // because the hero's signature rule sets every chart svg to display block
-  // at a specificity a route class cannot outrank. Hiding the svg itself lost
-  // that contest and printed both ladders at every width.
+  // Each ladder sits in its own slot, and the slot is what shows or hides.
   const renderLadder = (variant: "wide" | "narrow") => {
-    const W = variant === "wide" ? WIDE_W : NARROW_W;
+    const { W, AXIS_X, LABEL_X } = GEOMETRY[variant];
     return (
       <div className={`c97-points-ladder-slot c97-points-ladder-slot--${variant}`}>
       <svg
@@ -257,11 +259,7 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
   };
 
   return (
-    <div
-      data-c97-surface="paper"
-      className="c97-offset c97-points-ladder-plate"
-      style={{ padding: "var(--c97-sp-3)" }}
-    >
+    <div className="c97-points-ladder-frame">
       {renderLadder("wide")}
       {renderLadder("narrow")}
     </div>

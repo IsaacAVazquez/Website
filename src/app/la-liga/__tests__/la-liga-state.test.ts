@@ -33,7 +33,7 @@ describe("la-liga-state", () => {
     ).toEqual({
       view: "europe",
       club: "bet",
-      detail: "club",
+      detail: "fixtures",
     });
   });
 
@@ -43,6 +43,9 @@ describe("la-liga-state", () => {
     expect(normalizeLaLigaState({ detail: "nope" }).detail).toBe(
       DEFAULT_LA_LIGA_STATE.detail
     );
+    // The Club detail tab was cut on 2026-10-11 (the drawer is the club
+    // detail), so an old ?detail=club link lands on the default tab.
+    expect(normalizeLaLigaState({ detail: "club" }).detail).toBe("fixtures");
   });
 
   it("canonicalizes football-data team ids back to the shareable club ids", () => {
@@ -55,7 +58,7 @@ describe("la-liga-state", () => {
     ).toEqual({
       view: "table",
       club: "fcb",
-      detail: "club",
+      detail: "fixtures",
     });
   });
 
@@ -72,7 +75,7 @@ describe("la-liga-state", () => {
         {
           view: "europe",
           club: "90",
-          detail: "club",
+          detail: "fixtures",
         },
         new URLSearchParams("ref=portfolio")
       )
@@ -97,7 +100,7 @@ describe("la-liga-state", () => {
 
     expect(
       buildLaLigaHref(
-        { view: "table", club: DEFAULT_LA_LIGA_STATE.club, detail: "club" },
+        { view: "table", club: DEFAULT_LA_LIGA_STATE.club, detail: "fixtures" },
         new URLSearchParams("detail=scorers")
       )
     ).toBe("/la-liga");

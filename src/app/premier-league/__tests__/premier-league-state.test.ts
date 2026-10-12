@@ -23,7 +23,7 @@ describe("premier-league-state", () => {
     ).toEqual({
       view: "title-race",
       team: "57",
-      detail: "club",
+      detail: "fixtures",
     });
   });
 
@@ -32,9 +32,14 @@ describe("premier-league-state", () => {
       normalizePremierLeagueState({
         view: "table",
         team: "57",
-        detail: "fixtures",
+        detail: "scorers",
       }).detail
-    ).toBe("fixtures");
+    ).toBe("scorers");
+  });
+
+  it("sends a link to the removed Club detail tab to the default tab", () => {
+    // The Club detail tab was cut on 2026-10-11, since the drawer is the club detail.
+    expect(normalizePremierLeagueState({ detail: "club" }).detail).toBe("fixtures");
   });
 
   it("builds clean hrefs while preserving unrelated query params", () => {

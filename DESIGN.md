@@ -258,17 +258,17 @@ Sections are sheets. A band that changes surface from the one above it carries `
 
 Display type is poster type. Anton caps carry the sheet's own ink with the second ink printed a few hundredths of an em off register, on every h1 (`.c97-poster`) and every section h2 or closing statement (`.c97-poster-sm`). Project and article titles stay in Newsreader because they name a specific thing, and body text stays in Archivo. Tone is a halftone screen, and printed things, plates, thumbnails, and primary buttons, sit on the one allowed shadow, the hard offset in the second ink.
 
-Project routes print the same way. A route's ink pair lives in `src/constants/projectPress.ts`, and `Catalog97ToolShell` sets the second ink as the overprint on every sheet below the hero. The hero itself is `Catalog97ProjectHero`, a lead-ink sheet with the poster h1, the as-of line, and at most three readouts. Anything inside that hero that paints a field, an input, a chip, or a code block, or that draws a data color, gets its own `data-c97-surface`, usually a paper plate with `.c97-offset`. The spec for this pattern is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
+Project routes printed the same way from 2026-09-25 until 2026-10-11, with the ink pair in `src/constants/projectPress.ts`, the second ink as the overprint on every sheet below the hero, and `Catalog97ProjectHero` as the lead-ink headline sheet. The spec for that pattern is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`. A route that still renders the hero follows it until its redesign lands; the section below is what replaces it.
 
-## Identity exceptions
+## Project routes own their design
 
-Isaac's decision is that a project keeps an identity that fits it, and one route prints outside the shared ink system as of 2026-09-27.
+Isaac's decision on 2026-10-10 is that each project route owns its design inside the site frame. The header, the one `main`, and the footer stay Catalog 97, and everything a project renders inside them is the project's, from the layout and whether there is a hero at all to the type scale, the density, and its own color system where the genre calls for it. The `--c97-*` tokens stay available there as a default and are never required. The contract a project route follows, including the shared rules that leak into a project root and how to handle them, is the "Project routes" section of `DESIGN_CHECKLIST.md`, and the spec is `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`.
 
-`/arcade` (`src/app/arcade/arcade.module.css`) is a fully self-contained synthwave CRT palette, deliberately scoped and never referencing a `--c97-*` token. Its swatches are a deep-indigo void (`#06010f`, `#11052b`), neon cyan (`#21e6ff`), magenta (`#ff2e97`), acid green (`#d6ff3f`), amber (`#ffb000`), and green (`#19f7a3`), against an off-white text color (`#ece4ff`). Keep it scoped and off the shared palette.
+`/arcade` (`src/app/arcade/arcade.module.css`) was the first route to work this way, as a fully self-contained synthwave CRT palette that paints its own root, writes its own focus rules, and borrows no `c97-*` class beyond `c97-shell c97-frame`. Its swatches are a deep-indigo void (`#06010f`, `#11052b`), neon cyan (`#21e6ff`), magenta (`#ff2e97`), acid green (`#d6ff3f`), amber (`#ffb000`), and green (`#19f7a3`), against an off-white text color (`#ece4ff`). It is the model for how a project root reaches independence.
 
-Formula 1 Pulse (`src/app/formula-1/formula-1.module.css`) used to be a second exception, for a scoped racing red. Since the sports pass (#478) the module reads only `--c97-*` tokens for its gantry, timing tower, podium, and race strip, and each team's livery arrives inline from the standings data, so it is no longer an exception.
+Formula 1 Pulse (`src/app/formula-1/formula-1.module.css`) used to be a scoped-red exception. Since the sports pass (#478) the module reads only `--c97-*` tokens for its gantry, timing tower, podium, and race strip, and each team's livery arrives inline from the standings data.
 
-Outside `/arcade`, data colors, team liveries, BART line colors, and party colors, stay data and never become inks. A route whose data already speaks in blue and red, for instance, prints its own two lead inks in neither, and because those colors used as small text routinely fail 4.5:1, the color goes on a swatch or a mark and the label text prints in the surface's own ink.
+Everywhere, data colors, team liveries, BART line colors, and party colors, stay data and never become inks. A route whose data already speaks in blue and red, for instance, prints its own two lead inks in neither, and because those colors used as small text routinely fail 4.5:1, the color goes on a swatch or a mark and the label text prints in the surface's own ink.
 
 ## Held by tests
 
@@ -280,7 +280,7 @@ Outside `/arcade`, data colors, team liveries, BART line colors, and party color
 
 - Set `data-c97-surface` on the section and read `var(--c97-ink)`, `var(--c97-ink-2)`, `var(--c97-label)`, `var(--c97-action)`, `var(--c97-accent)`, and `var(--c97-rule)` inside it, and never set a color directly on a component.
 - Keep every gap, margin, and band padding on the `--c97-sp-0` through `--c97-sp-7` ladder, with `sp-0` as the hairline step and only an optical nudge of 2px or less off it.
-- Keep radii at zero everywhere outside `/arcade`, and let the one hard `.c97-offset` shadow stand in for every other shadow.
+- Keep radii at zero in the frame and on the designed pages, and let the one hard `.c97-offset` shadow stand in for every other shadow there; a project route decides for itself in its own route CSS.
 - Keep Fragment Mono at weight 400 and set tabular numerals on anything measured or counted.
 - Keep Newsreader at weight 400, and reserve Anton poster type for h1s, section h2s, and closing statements.
 - Confirm a status color clears 4.5:1 as body-size text on its surface before shipping it that way; several surfaces are large-text-or-mark only and fall back to ink.
@@ -289,7 +289,7 @@ Outside `/arcade`, data colors, team liveries, BART line colors, and party color
 ### Don't
 
 - Don't hardcode a hex in a component; read the token for the surface the component sits inside.
-- Don't round a corner or add a blurred shadow anywhere outside `/arcade`.
+- Don't round a corner or add a blurred shadow in the frame or on a designed page.
 - Don't fake a bold Fragment Mono weight, and don't bold Newsreader.
 - Don't give a print run a third lead ink. A page picks exactly two, and peach counts as a vermilion tint, not a seventh ink.
 - Don't read a `--home-*`, `--surface-*`, `--text-*`, `--border-*`, `--color-*`, `--radius-*`, or `--shadow-*` token, and don't reach for `HomeStatsPanel`, `WarmCard`, `Badge`, `Chip`, `Kicker`, `SectionIntro`, `Heading`, `Paragraph`, or `InlineSectionLead`; all were deleted with the Working Instrument on 2026-09-27.

@@ -1,0 +1,634 @@
+/*
+ * The league table page shared by /premier-league and /la-liga. The route owns
+ * its palette, set on its root with a light and a dark story, and points the
+ * Catalog 97 tokens the borrowed parts read (the ticker, the ledgers, the
+ * club drawer) at it. The only saturated colour is data: the four zones, the
+ * form marks, and the club liveries on the ladder.
+ */
+
+.lt-root {
+  --pl-bg: #fbfaf6;
+  --pl-ink: #1b1915;
+  --pl-ink-2: #5c574f;
+  --pl-rule: rgba(27, 25, 21, 0.13);
+  --pl-rule-strong: rgba(27, 25, 21, 0.34);
+  --pl-raise: #f0eee7;
+  --pl-tint: 7%;
+  --pl-focus: #1f5fbf;
+  --pl-ucl: #1f5fbf;
+  --pl-uel: #a64f00;
+  --pl-uecl: #2e7d32;
+  --pl-drop: #b3261e;
+  /* Form marks carry white letters, so these fills hold in both themes. */
+  --pl-win: #2e7d32;
+  --pl-draw: #6b665e;
+  --pl-loss: #b3261e;
+
+  --c97-surface: var(--pl-bg);
+  --c97-ink: var(--pl-ink);
+  --c97-ink-2: var(--pl-ink-2);
+  --c97-label: var(--pl-ink-2);
+  --c97-action: var(--pl-ink);
+  --c97-accent: var(--pl-focus);
+  --c97-rule: var(--pl-rule);
+  --c97-field: var(--pl-raise);
+  --c97-panel: var(--pl-raise);
+  --c97-print-bone: var(--pl-raise);
+  --c97-positive: var(--pl-win);
+  --c97-negative: var(--pl-loss);
+
+  background: var(--pl-bg);
+  color: var(--pl-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .lt-root {
+  --pl-bg: #15130f;
+  --pl-ink: #eeeae2;
+  --pl-ink-2: #a9a297;
+  --pl-rule: rgba(238, 234, 226, 0.13);
+  --pl-rule-strong: rgba(238, 234, 226, 0.32);
+  --pl-raise: #221f1a;
+  --pl-tint: 12%;
+  --pl-focus: #8db4f5;
+  --pl-ucl: #8db4f5;
+  --pl-uel: #f0a050;
+  --pl-uecl: #7cc47f;
+  --pl-drop: #f08a80;
+  /* The drawer and the ticker print a score in these, so they lift on dark. */
+  --c97-positive: #7cc47f;
+  --c97-negative: #f08a80;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.lt-root h1,
+.lt-root h2,
+.lt-root h3 {
+  font-family: var(--c97-font-body);
+  color: var(--pl-ink);
+  margin: 0;
+}
+
+.lt-root p {
+  margin: 0;
+  max-inline-size: none;
+}
+
+.lt-root ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lt-root li {
+  margin: 0;
+}
+
+.lt-root [data-zone="champions"] { --zone: var(--pl-ucl); }
+.lt-root [data-zone="europa"] { --zone: var(--pl-uel); }
+.lt-root [data-zone="conference"] { --zone: var(--pl-uecl); }
+.lt-root [data-zone="relegation"] { --zone: var(--pl-drop); }
+
+.lt-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+/* Title row */
+
+.lt-titlebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-3);
+}
+
+.lt-titlebar-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  flex: 1 1 30rem;
+  min-width: 0;
+}
+
+.lt-title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.625rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.lt-root .lt-standfirst {
+  max-inline-size: 64ch;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--pl-ink-2);
+}
+
+.lt-status,
+.lt-empty {
+  font-size: 0.8125rem;
+  color: var(--pl-ink-2);
+}
+
+.lt-lookup {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--c97-sp-1);
+  flex: 0 1 24rem;
+  min-width: 0;
+}
+
+.lt-lookup-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pl-ink-2);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.lt-select {
+  width: 100%;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--pl-rule-strong);
+  border-radius: 6px;
+  background: var(--pl-bg);
+  color: var(--pl-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.lt-button {
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 0;
+  border-radius: 6px;
+  background: var(--pl-ink);
+  color: var(--pl-bg);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.lt-button:hover {
+  background: var(--pl-ink-2);
+}
+
+/* The table's header strip: the results ticker and the goals sparkline. */
+
+.lt-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  border-block: 1px solid var(--pl-rule);
+  padding-block: var(--c97-sp-1);
+}
+
+.lt-strip-tape {
+  flex: 1 1 24rem;
+  min-width: 0;
+}
+
+.lt-strip-pulse {
+  flex: 0 0 auto;
+}
+
+/* Toolbars and switches */
+
+.lt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  padding-block: var(--c97-sp-1);
+  background: var(--pl-bg);
+}
+
+/* The board's switches stay in reach while the table scrolls under them. */
+@media screen and (min-width: 640px) {
+  .lt-board > .lt-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border-bottom: 1px solid var(--pl-rule);
+  }
+}
+
+.lt-h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.lt-h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.lt-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+}
+
+.lt-switch > button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--pl-rule-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--pl-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms var(--c97-ease), color 160ms var(--c97-ease);
+}
+
+.lt-switch > button:hover {
+  background: var(--pl-raise);
+}
+
+.lt-switch > button:is([aria-pressed="true"], [aria-selected="true"]) {
+  border-color: var(--pl-ink);
+  background: var(--pl-ink);
+  color: var(--pl-bg);
+}
+
+/* On a phone the view switches scroll sideways in one row, the way the genre does it. */
+@media screen and (max-width: 639px) {
+  .lt-board .lt-switch {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .lt-board .lt-switch > button {
+    flex: none;
+  }
+}
+
+.lt-switch-count {
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+/* The board: the table, with the ladder beside it on a wide screen. */
+
+.lt-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.lt-board-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 1100px) {
+  .lt-board-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: var(--c97-sp-4);
+  }
+}
+
+.lt-table-scroll {
+  overflow-x: auto;
+}
+
+.lt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.lt-table th {
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--pl-rule-strong);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--pl-ink-2);
+}
+
+.lt-table abbr {
+  text-decoration: none;
+}
+
+.lt-table td {
+  height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border-bottom: 1px solid var(--pl-rule);
+  white-space: nowrap;
+}
+
+/* The zones print behind the rows, with an edge on the position that names them. */
+.lt-table tr[data-zone] td {
+  background-color: color-mix(in srgb, var(--zone, transparent) var(--pl-tint), var(--pl-bg));
+}
+
+.lt-table tr[data-zone="midtable"] td {
+  background-color: transparent;
+}
+
+.lt-table tr[data-zone] .lt-col-pos {
+  box-shadow: inset 3px 0 0 var(--zone, transparent);
+}
+
+.lt-table tbody tr:hover td {
+  background-image: linear-gradient(color-mix(in srgb, var(--pl-ink) 4%, transparent), color-mix(in srgb, var(--pl-ink) 4%, transparent));
+}
+
+.lt-table tr[data-selected] td {
+  background-image: linear-gradient(color-mix(in srgb, var(--pl-ink) 8%, transparent), color-mix(in srgb, var(--pl-ink) 8%, transparent));
+}
+
+.lt-col-pos {
+  width: 2.5rem;
+  padding-left: var(--c97-sp-2);
+  text-align: left;
+  color: var(--pl-ink-2);
+}
+
+.lt-table th.lt-col-pos {
+  padding-left: var(--c97-sp-2);
+}
+
+.lt-num {
+  width: 2.75rem;
+  text-align: right;
+}
+
+.lt-table th.lt-num {
+  text-align: right;
+}
+
+.lt-points {
+  font-weight: 800;
+}
+
+.lt-club {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lt-club:hover .lt-club-name,
+.lt-club:focus-visible .lt-club-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+tr[data-selected] .lt-club-name {
+  font-weight: 800;
+}
+
+.lt-crest {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  padding: 1px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Navy and black crests disappear on the dark surface, so each sits on a pale chip there. */
+.dark .lt-crest {
+  background: #eeeae2;
+}
+
+/* The fixture rows borrow the shared crest tile and print it at the table's size, unboxed. */
+.lt-detail-panel img {
+  width: 22px;
+  height: 22px;
+  padding: 1px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.dark .lt-detail-panel img {
+  background: #eeeae2;
+}
+
+.lt-col-form {
+  width: 8.5rem;
+  text-align: right;
+}
+
+.lt-table th.lt-col-form {
+  text-align: right;
+}
+
+.lt-form {
+  display: inline-flex;
+  gap: 3px;
+  vertical-align: middle;
+}
+
+.lt-form-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--pl-draw);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lt-form-mark[data-result="W"] {
+  background: var(--pl-win);
+}
+
+.lt-form-mark[data-result="L"] {
+  background: var(--pl-loss);
+}
+
+/* The latest result is the last mark, underlined the way the genre marks it. */
+.lt-form-mark {
+  position: relative;
+}
+
+.lt-form-mark[data-latest]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 3px;
+  bottom: -5px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--pl-ink);
+}
+
+.lt-muted {
+  font-size: 0.8125rem;
+  color: var(--pl-ink-2);
+}
+
+/* Progressive columns: Pos, Club, P, GD, and Pts on a phone. */
+.lt-sm,
+.lt-md {
+  display: none;
+}
+
+@media (min-width: 640px), print {
+  .lt-sm {
+    display: table-cell;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .lt-md {
+    display: table-cell;
+  }
+}
+
+.lt-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-top: var(--c97-sp-2);
+  font-size: 0.8125rem;
+  color: var(--pl-ink-2);
+}
+
+/* The form key only prints where the Last 5 column does. */
+.lt-legend .lt-legend-form {
+  display: none;
+}
+
+@media (min-width: 640px), print {
+  .lt-legend .lt-legend-form {
+    display: block;
+  }
+}
+
+.lt-legend li[data-zone] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.lt-legend li[data-zone]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--zone);
+}
+
+.lt-ladder-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.lt-caption {
+  max-width: 36ch;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--pl-ink-2);
+}
+
+/* Fixtures and scorers */
+
+.lt-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-4);
+}
+
+.lt-detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.lt-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 768px) {
+  .lt-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.lt-pair .lt-h3 {
+  margin-bottom: var(--c97-sp-1);
+}
+
+.lt-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  color: var(--pl-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.lt-link-icon {
+  width: 14px;
+  height: 14px;
+}
+
+@media print {
+  .lt-board > .lt-toolbar {
+    position: static;
+  }
+
+  /* The ladder keeps its heading and caption on the same sheet as the plot. */
+  .lt-ladder-column {
+    break-inside: avoid;
+  }
+
+  .lt-switch > button:not([aria-pressed="true"]):not([aria-selected="true"]) {
+    display: none;
+  }
+}

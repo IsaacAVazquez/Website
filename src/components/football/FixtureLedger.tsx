@@ -55,16 +55,16 @@ function FixtureLedgerRow({
   const isFinal = fixture.status === "FINISHED";
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-center border-b border-[var(--c97-rule)] transition-colors last:border-b-0 hover:bg-[var(--c97-field)] " style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+    <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-stretch border-b border-[var(--c97-rule)] transition-colors hover:bg-[var(--c97-field)]" style={{ paddingBlock: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
       <TeamCell team={fixture.homeTeam} onOpenTeam={onOpenTeam} />
       {isFinal ? (
-        <span className="text-center font-mono text-lg tabular-nums text-[var(--c97-ink)]">
+        <span className="flex items-center justify-center text-base font-bold tabular-nums text-[var(--c97-ink)]">
           {fixture.score.home ?? "–"}
           <span className="px-0.5 text-[var(--c97-ink-2)]">–</span>
           {fixture.score.away ?? "–"}
         </span>
       ) : (
-        <span className="text-center font-mono text-2xs text-[var(--c97-ink-2)]">
+        <span className="flex items-center justify-center text-center text-2xs text-[var(--c97-ink-2)]">
           {formatKickoff(fixture.utcDate)}
         </span>
       )}
@@ -74,9 +74,9 @@ function FixtureLedgerRow({
 }
 
 /**
- * The scoreboard ledger: fixtures grouped by matchday inside a bordered
- * panel per group, each fixture a single 3-column row (home | score-or-time
- * | away) rather than `FixtureCard`'s stacked two-row layout.
+ * The scoreboard ledger: fixtures grouped by matchday under a ruled label,
+ * each fixture a single 3-column row (home, score or kickoff, away) on a
+ * hairline, with no box around the group.
  */
 export function FixtureLedgerSection({
   groups,
@@ -93,11 +93,8 @@ export function FixtureLedgerSection({
   return (
     <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       {groups.map((group) => (
-        <div
-          key={group.key}
-          className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
-        >
-          <div className="flex items-center justify-between border-b border-[var(--c97-rule)] font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+        <div key={group.key}>
+          <div className="flex items-center justify-between border-b border-[var(--c97-ink-2)] text-2xs font-semibold uppercase tracking-[0.06em] text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             <span>{group.label}</span>
             <span>{group.fixtures.length} {group.fixtures.length === 1 ? "game" : "games"}</span>
           </div>

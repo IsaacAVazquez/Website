@@ -3,7 +3,6 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import { select, pie as d3Pie, arc as d3Arc } from "d3";
 import type { PieArcDatum } from "d3";
-import { TerminalPanel } from "./TerminalPanel";
 import type { EnhancedHolding } from "@/types/investment";
 
 interface Props {
@@ -135,15 +134,13 @@ export function AllocationChart({ holdings }: Props) {
   if (data.length === 0) return null;
 
   return (
-    <TerminalPanel padding="sm" ariaLabel="Portfolio allocation chart">
-      <div style={{ marginBottom: "var(--c97-sp-2)" }}>
-        <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Allocation</h3>
-        <p className="text-xs text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-          Position weights based on current market value.
-        </p>
-      </div>
-      <div className="flex flex-col items-center gap-[var(--c97-sp-2)] xl:flex-row xl:items-center xl:gap-[var(--c97-sp-3)]">
-        <div className="relative aspect-square w-[200px] shrink-0 sm:w-[220px]">
+    <div role="group" aria-label="Portfolio allocation chart">
+      <h3 className="invest-rail-heading">Allocation</h3>
+      <p className="invest-rail-note" style={{ margin: "0 0 var(--c97-sp-2)" }}>
+        Position weights based on current market value.
+      </p>
+      <div className="flex flex-col items-center gap-[var(--c97-sp-2)]">
+        <div className="relative aspect-square w-[168px] shrink-0">
           <svg ref={svgRef} className="h-full w-full" />
           <div
             ref={tooltipRef}
@@ -157,7 +154,7 @@ export function AllocationChart({ holdings }: Props) {
           aria-label="Holdings legend with allocation percentages"
         >
           {data.map((h) => (
-            <li key={h.symbol} className="flex items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
+            <li key={h.symbol} className="flex items-center border-b border-[var(--c97-rule)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
               <span
                 className="w-2.5 h-2.5 shrink-0"
                 style={{ backgroundColor: holdingColor(h.symbol, portfolio) }}
@@ -187,6 +184,6 @@ export function AllocationChart({ holdings }: Props) {
           ))}
         </ol>
       </div>
-    </TerminalPanel>
+    </div>
   );
 }

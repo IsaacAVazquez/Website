@@ -39,15 +39,18 @@ export interface NetWorthChartGeometry {
   yTicks: NetWorthChartTick[];
 }
 
-// The left pad is wide enough to clear the $ tick labels, which sit inside
-// it, so the plotted lines never start underneath their own axis text.
-const PAD_LEFT = 56;
+// The chart draws at its measured pixel width with one 13px type size, so
+// these pads are real pixels. The left pad clears the $ tick labels, which
+// sit inside it, so the plotted lines never start underneath their own axis
+// text. The top pad is two rows: the break-even label owns the first (its
+// baseline at y=13), and an end label above a line that finishes at the plot
+// top, nudged up 9 and lifted 8 more, still keeps its glyphs below y=22, so
+// the two can never collide. The bottom pad clears the $0 tick's label and
+// the Today / Year N row under it.
+const PAD_LEFT = 52;
 const PAD_RIGHT = 8;
-// Generous because the $0 tick sits right on the plot floor, and the x-axis
-// row below it has to clear that tick's own label at the larger mobile type
-// size, not just the desktop one.
-const PAD_Y_BOTTOM = 46;
-const PAD_Y_TOP = 32;
+const PAD_Y_BOTTOM = 34;
+const PAD_Y_TOP = 52;
 const Y_TICK_COUNT = 4;
 
 /** Round a step up to a "nice" 1/2/5-times-a-power-of-ten number. */

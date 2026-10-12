@@ -113,6 +113,39 @@ describe("WineCellarClient", () => {
     );
     expect(screen.queryByText("Updated Barolo")).not.toBeInTheDocument();
   });
+  it("names a region in the summary only when the data supports it", () => {
+    const bottle = (id: string, region: string) => ({
+      id,
+      name: `Wine ${id}`,
+      producer: "",
+      vintage: 2020,
+      region,
+      varietal: "",
+      type: "red",
+      price: null,
+      rating: 4,
+      notes: "",
+      tastedOn: "2026-06-01",
+      createdAt: "2026-06-01T12:00:00.000Z",
+    });
+    const cases: Array<[ReturnType<typeof bottle>[], string]> = [
+      [[bottle("a", "Tuscany")], "1 bottle logged, rated 4.0 stars, from Tuscany."],
+      [[bottle("a", "Tuscany"), bottle("b", "Piedmont")], "2 bottles logged, averaging 4.0 stars, across 2 regions."],
+      [
+        [bottle("a", "Tuscany"), bottle("b", "Tuscany"), bottle("c", "Piedmont")],
+        "3 bottles logged, averaging 4.0 stars, with Tuscany the most logged region.",
+      ],
+      [[bottle("a", "Tuscany"), bottle("b", "Tuscany")], "2 bottles logged, averaging 4.0 stars, all from Tuscany."],
+      [[bottle("a", ""), bottle("b", "")], "2 bottles logged, averaging 4.0 stars."],
+    ];
+    for (const [entries, sentence] of cases) {
+      window.localStorage.setItem(WINE_CELLAR_STORAGE_KEY, JSON.stringify(entries));
+      const { unmount } = render(<WineCellarClient />);
+      expect(screen.getByText(sentence)).toBeVisible();
+      unmount();
+    }
+  });
+
   it("explains a missing name inline instead of disabling the button", () => {
     render(<WineCellarClient />);
 

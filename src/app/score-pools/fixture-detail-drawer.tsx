@@ -243,7 +243,7 @@ export function FixtureDetailDrawer({
         aria-label="Close match detail"
         onClick={onClose}
         className="absolute inset-0 cursor-default"
-        style={{ background: "color-mix(in srgb, var(--c97-ink) 32%, transparent)" }}
+        style={{ background: "var(--c97-scrim)" }}
       />
       <aside
         data-c97-surface="paper"

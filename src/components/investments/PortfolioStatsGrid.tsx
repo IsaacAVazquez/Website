@@ -14,7 +14,6 @@ import styles from "@/app/investments/investments.module.css";
 interface Props {
   summary: PortfolioSummaryType;
   holdings: EnhancedHolding[];
-  marketStatus: string;
 }
 
 interface ComputedStats {
@@ -110,28 +109,19 @@ function StatCell({ label, hint, value, sub, tone = "default", subTone = "defaul
   );
 }
 
-export function PortfolioStatsGrid({
-  summary,
-  holdings,
-  marketStatus,
-}: Props) {
+export function PortfolioStatsGrid({ summary, holdings }: Props) {
   const stats = computeStats(holdings);
 
   return (
     // A section with no accessible name is not exposed as a landmark at all,
     // and this one is a sidebar jump target, so anyone arriving by navigation
     // landed in an unnamed region. Literal label rather than aria-labelledby,
-    // because the visible cap text is a span rather than a heading.
+    // because the row has no visible heading of its own.
     <section
       id="portfolio-stats"
       aria-label="Portfolio stats"
       className={styles.statsPanel + " invest-rail-target"}
     >
-      <div className={styles.statsCap}>
-        <span>Portfolio stats</span>
-        <span className={styles.statsLive}>{marketStatus}</span>
-      </div>
-
       <div className={styles.statsGrid}>
         <StatCell
           label="Cost basis"
@@ -209,29 +199,6 @@ export function PortfolioStatsGrid({
                 : `${stats.positions - 3} more ${stats.positions === 4 ? "position" : "positions"}`
           }
         />
-      </div>
-
-      <div className={styles.statsFoot}>
-        {/* The allocation chart and the holdings ledger only render once there
-            is a position, so on an empty portfolio these two scrolled nowhere
-            and said nothing. Same predicate the sidebar and mobile rail use;
-            this second link row was missed when those were fixed. */}
-        {holdings.length > 0 ? (
-          <>
-            <a href="#allocation" className="invest-ghost">
-              Allocation breakdown
-            </a>
-            <a href="#holdings-list" className="invest-ghost">
-              Per-position detail
-            </a>
-          </>
-        ) : null}
-        <a href="#performance" className="invest-ghost">
-          Performance over time
-        </a>
-        <a href="#add-holding" className="invest-ghost">
-          Add a holding
-        </a>
       </div>
     </section>
   );
