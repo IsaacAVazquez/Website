@@ -64,7 +64,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/march-madness-2026": {
     purpose:
-      "I built this to make my 2026 bracket something I could inspect rather than just a filled-in sheet. It starts from consensus ratings and shows every place I moved a pick for a time-zone travel penalty, a committee seeding error, or an injury, and it keeps the picks as I made them on March 17 next to how the tournament actually went.",
+      "I built this so I could inspect my 2026 bracket pick by pick. It starts from consensus ratings and shows every place I moved a pick for a time-zone travel penalty, a committee seeding error, or an injury, and it keeps the picks as I made them on March 17 next to how the tournament actually went.",
   },
   "/mba-internship-notifications": {
     purpose:
