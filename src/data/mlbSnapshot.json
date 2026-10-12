@@ -1,7 +1,7 @@
 {
   "season": "2026",
-  "generatedAt": "2026-10-11T20:11:52.611Z",
-  "updatedAt": "2026-10-11",
+  "generatedAt": "2026-10-12T05:46:55.364Z",
+  "updatedAt": "2026-10-12",
   "sourceLabel": "MLB Stats API",
   "sourceUrls": {
     "standings": "https://statsapi.mlb.com/api/v1/standings?leagueId=103,104&season=2026",
@@ -944,6 +944,34 @@
   ],
   "recentGames": [
     {
+      "id": "849809",
+      "utcDate": "2026-10-11T23:59:59Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "L",
+      "startTimeTbd": true,
+      "ifNecessary": false,
+      "homeTeam": {
+        "id": "158",
+        "name": "Milwaukee Brewers",
+        "shortName": "Brewers",
+        "abbreviation": "MIL",
+        "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+      },
+      "awayTeam": {
+        "id": "119",
+        "name": "Los Angeles Dodgers",
+        "shortName": "Dodgers",
+        "abbreviation": "LAD",
+        "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 2,
+        "away": 1
+      }
+    },
+    {
       "id": "849831",
       "utcDate": "2026-10-10T23:59:59Z",
       "status": "FINISHED",
@@ -1194,65 +1222,9 @@
         "home": 5,
         "away": 2
       }
-    },
-    {
-      "id": "849834",
-      "utcDate": "2026-10-05T21:00:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "D",
-      "startTimeTbd": false,
-      "ifNecessary": false,
-      "homeTeam": {
-        "id": "114",
-        "name": "Cleveland Guardians",
-        "shortName": "Guardians",
-        "abbreviation": "CLE",
-        "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-      },
-      "awayTeam": {
-        "id": "145",
-        "name": "Chicago White Sox",
-        "shortName": "White Sox",
-        "abbreviation": "CWS",
-        "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 3,
-        "away": 4
-      }
     }
   ],
   "upcomingGames": [
-    {
-      "id": "849809",
-      "utcDate": "2026-10-11T23:59:59Z",
-      "status": "Pre-Game",
-      "matchday": null,
-      "stage": "L",
-      "startTimeTbd": true,
-      "ifNecessary": false,
-      "homeTeam": {
-        "id": "158",
-        "name": "Milwaukee Brewers",
-        "shortName": "Brewers",
-        "abbreviation": "MIL",
-        "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-      },
-      "awayTeam": {
-        "id": "119",
-        "name": "Los Angeles Dodgers",
-        "shortName": "Dodgers",
-        "abbreviation": "LAD",
-        "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "849812",
       "utcDate": "2026-10-12T21:00:00Z",
@@ -1498,6 +1470,34 @@
         "shortName": "Rays",
         "abbreviation": "TB",
         "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "849806",
+      "utcDate": "2026-10-18T23:59:59Z",
+      "status": "Scheduled",
+      "matchday": null,
+      "stage": "L",
+      "startTimeTbd": true,
+      "ifNecessary": true,
+      "homeTeam": {
+        "id": "158",
+        "name": "Milwaukee Brewers",
+        "shortName": "Brewers",
+        "abbreviation": "MIL",
+        "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+      },
+      "awayTeam": {
+        "id": "119",
+        "name": "Los Angeles Dodgers",
+        "shortName": "Dodgers",
+        "abbreviation": "LAD",
+        "crest": "https://www.mlbstatic.com/team-logos/119.svg"
       },
       "score": {
         "winner": null,
@@ -2104,48 +2104,19 @@
             "home": 7,
             "away": 3
           }
-        },
-        {
-          "id": "823083",
-          "utcDate": "2026-09-27T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 4
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
           "L"
         ],
         "wins": 0,
-        "losses": 2,
-        "runsFor": 7,
-        "runsAgainst": 15
+        "losses": 1,
+        "runsFor": 3,
+        "runsAgainst": 7
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "109": {
       "team": {
@@ -2188,48 +2159,19 @@
             "home": 9,
             "away": 4
           }
-        },
-        {
-          "id": "823245",
-          "utcDate": "2026-09-27T00:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "135",
-            "name": "San Diego Padres",
-            "shortName": "Padres",
-            "abbreviation": "SD",
-            "crest": "https://www.mlbstatic.com/team-logos/135.svg"
-          },
-          "awayTeam": {
-            "id": "109",
-            "name": "Arizona Diamondbacks",
-            "shortName": "D-backs",
-            "abbreviation": "AZ",
-            "crest": "https://www.mlbstatic.com/team-logos/109.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 10,
-            "away": 7
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
           "L"
         ],
         "wins": 0,
-        "losses": 2,
-        "runsFor": 11,
-        "runsAgainst": 19
+        "losses": 1,
+        "runsFor": 4,
+        "runsAgainst": 9
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "110": {
       "team": {
@@ -2253,7 +2195,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "111": {
       "team": {
@@ -2366,7 +2308,7 @@
         "runsFor": 4,
         "runsAgainst": 24
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "112": {
       "team": {
@@ -2479,7 +2421,7 @@
         "runsFor": 7,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "113": {
       "team": {
@@ -2522,48 +2464,19 @@
             "home": 5,
             "away": 1
           }
-        },
-        {
-          "id": "822759",
-          "utcDate": "2026-09-26T19:07:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "losses": 1,
-        "runsFor": 6,
-        "runsAgainst": 6
+        "runsFor": 1,
+        "runsAgainst": 5
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "114": {
       "team": {
@@ -2875,7 +2788,7 @@
         "runsFor": 23,
         "runsAgainst": 15
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "115": {
       "team": {
@@ -2918,48 +2831,19 @@
             "home": 4,
             "away": 2
           }
-        },
-        {
-          "id": "824543",
-          "utcDate": "2026-09-26T23:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "awayTeam": {
-            "id": "115",
-            "name": "Colorado Rockies",
-            "shortName": "Rockies",
-            "abbreviation": "COL",
-            "crest": "https://www.mlbstatic.com/team-logos/115.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 6,
-            "away": 9
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "losses": 1,
-        "runsFor": 11,
-        "runsAgainst": 10
+        "runsFor": 2,
+        "runsAgainst": 4
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "116": {
       "team": {
@@ -3002,48 +2886,19 @@
             "home": 2,
             "away": 4
           }
-        },
-        {
-          "id": "824219",
-          "utcDate": "2026-09-26T17:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 3
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "losses": 1,
-        "runsFor": 6,
-        "runsAgainst": 7
+        "runsFor": 2,
+        "runsAgainst": 4
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "117": {
       "team": {
@@ -3142,34 +2997,6 @@
             "home": 0,
             "away": 9
           }
-        },
-        {
-          "id": "824949",
-          "utcDate": "2026-09-27T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 13
-          }
         }
       ],
       "upcomingGames": [],
@@ -3177,15 +3004,14 @@
         "sequence": [
           "L",
           "L",
-          "W",
           "W"
         ],
-        "wins": 2,
+        "wins": 1,
         "losses": 2,
-        "runsFor": 28,
-        "runsAgainst": 15
+        "runsFor": 15,
+        "runsAgainst": 13
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "118": {
       "team": {
@@ -3228,48 +3054,19 @@
             "home": 3,
             "away": 2
           }
-        },
-        {
-          "id": "824057",
-          "utcDate": "2026-09-26T23:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "118",
-            "name": "Kansas City Royals",
-            "shortName": "Royals",
-            "abbreviation": "KC",
-            "crest": "https://www.mlbstatic.com/team-logos/118.svg"
-          },
-          "awayTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 5,
-            "away": 11
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
-          "L"
+          "W"
         ],
         "wins": 1,
-        "losses": 1,
-        "runsFor": 8,
-        "runsAgainst": 13
+        "losses": 0,
+        "runsFor": 3,
+        "runsAgainst": 2
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "119": {
       "team": {
@@ -3285,6 +3082,34 @@
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "849809",
+          "utcDate": "2026-10-11T23:59:59Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "L",
+          "startTimeTbd": true,
+          "ifNecessary": false,
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
         {
           "id": "849822",
           "utcDate": "2026-10-07T22:00:00Z",
@@ -3396,65 +3221,9 @@
             "home": 5,
             "away": 3
           }
-        },
-        {
-          "id": "823164",
-          "utcDate": "2026-09-27T19:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
         }
       ],
       "upcomingGames": [
-        {
-          "id": "849809",
-          "utcDate": "2026-10-11T23:59:59Z",
-          "status": "Pre-Game",
-          "matchday": null,
-          "stage": "L",
-          "startTimeTbd": true,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "849812",
           "utcDate": "2026-10-12T21:00:00Z",
@@ -3566,22 +3335,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "849806",
+          "utcDate": "2026-10-18T23:59:59Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "L",
+          "startTimeTbd": true,
+          "ifNecessary": true,
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "W",
           "L",
-          "W",
           "W"
         ],
-        "wins": 4,
-        "losses": 1,
-        "runsFor": 19,
-        "runsAgainst": 9
+        "wins": 3,
+        "losses": 2,
+        "runsFor": 15,
+        "runsAgainst": 10
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "120": {
       "team": {
@@ -3624,48 +3421,19 @@
             "home": 6,
             "away": 4
           }
-        },
-        {
-          "id": "822678",
-          "utcDate": "2026-09-26T16:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 7
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
-          "L"
+          "W"
         ],
         "wins": 1,
-        "losses": 1,
-        "runsFor": 7,
-        "runsAgainst": 11
+        "losses": 0,
+        "runsFor": 6,
+        "runsAgainst": 4
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "121": {
       "team": {
@@ -3708,48 +3476,19 @@
             "home": 6,
             "away": 4
           }
-        },
-        {
-          "id": "822678",
-          "utcDate": "2026-09-26T16:35:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "120",
-            "name": "Washington Nationals",
-            "shortName": "Nationals",
-            "abbreviation": "WSH",
-            "crest": "https://www.mlbstatic.com/team-logos/120.svg"
-          },
-          "awayTeam": {
-            "id": "121",
-            "name": "New York Mets",
-            "shortName": "Mets",
-            "abbreviation": "NYM",
-            "crest": "https://www.mlbstatic.com/team-logos/121.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 7
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "losses": 1,
-        "runsFor": 11,
-        "runsAgainst": 7
+        "runsFor": 4,
+        "runsAgainst": 6
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "133": {
       "team": {
@@ -3792,48 +3531,19 @@
             "home": 0,
             "away": 9
           }
-        },
-        {
-          "id": "824949",
-          "utcDate": "2026-09-27T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "133",
-            "name": "Athletics",
-            "shortName": "Athletics",
-            "abbreviation": "ATH",
-            "crest": "https://www.mlbstatic.com/team-logos/133.svg"
-          },
-          "awayTeam": {
-            "id": "117",
-            "name": "Houston Astros",
-            "shortName": "Astros",
-            "abbreviation": "HOU",
-            "crest": "https://www.mlbstatic.com/team-logos/117.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 13
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
           "L"
         ],
         "wins": 0,
-        "losses": 2,
-        "runsFor": 2,
-        "runsAgainst": 22
+        "losses": 1,
+        "runsFor": 0,
+        "runsAgainst": 9
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "134": {
       "team": {
@@ -3876,48 +3586,19 @@
             "home": 2,
             "away": 4
           }
-        },
-        {
-          "id": "824219",
-          "utcDate": "2026-09-26T17:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "116",
-            "name": "Detroit Tigers",
-            "shortName": "Tigers",
-            "abbreviation": "DET",
-            "crest": "https://www.mlbstatic.com/team-logos/116.svg"
-          },
-          "awayTeam": {
-            "id": "134",
-            "name": "Pittsburgh Pirates",
-            "shortName": "Pirates",
-            "abbreviation": "PIT",
-            "crest": "https://www.mlbstatic.com/team-logos/134.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 4,
-            "away": 3
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
-          "L"
+          "W"
         ],
         "wins": 1,
-        "losses": 1,
-        "runsFor": 7,
-        "runsAgainst": 6
+        "losses": 0,
+        "runsFor": 4,
+        "runsAgainst": 2
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "135": {
       "team": {
@@ -4088,7 +3769,7 @@
         "runsFor": 14,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "136": {
       "team": {
@@ -4131,48 +3812,19 @@
             "home": 7,
             "away": 3
           }
-        },
-        {
-          "id": "823083",
-          "utcDate": "2026-09-27T01:40:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "136",
-            "name": "Seattle Mariners",
-            "shortName": "Mariners",
-            "abbreviation": "SEA",
-            "crest": "https://www.mlbstatic.com/team-logos/136.svg"
-          },
-          "awayTeam": {
-            "id": "108",
-            "name": "Los Angeles Angels",
-            "shortName": "Angels",
-            "abbreviation": "LAA",
-            "crest": "https://www.mlbstatic.com/team-logos/108.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 8,
-            "away": 4
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
           "W"
         ],
-        "wins": 2,
+        "wins": 1,
         "losses": 0,
-        "runsFor": 15,
-        "runsAgainst": 7
+        "runsFor": 7,
+        "runsAgainst": 3
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "137": {
       "team": {
@@ -4215,48 +3867,19 @@
             "home": 1,
             "away": 5
           }
-        },
-        {
-          "id": "823165",
-          "utcDate": "2026-09-26T20:05:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "137",
-            "name": "San Francisco Giants",
-            "shortName": "Giants",
-            "abbreviation": "SF",
-            "crest": "https://www.mlbstatic.com/team-logos/137.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 4
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
           "L"
         ],
         "wins": 0,
-        "losses": 2,
-        "runsFor": 4,
-        "runsAgainst": 9
+        "losses": 1,
+        "runsFor": 1,
+        "runsAgainst": 5
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "138": {
       "team": {
@@ -4299,48 +3922,19 @@
             "home": 6,
             "away": 4
           }
-        },
-        {
-          "id": "823733",
-          "utcDate": "2026-09-26T23:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 3,
-            "away": 2
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
           "L"
         ],
         "wins": 0,
-        "losses": 2,
-        "runsFor": 6,
-        "runsAgainst": 9
+        "losses": 1,
+        "runsFor": 4,
+        "runsAgainst": 6
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "139": {
       "team": {
@@ -4466,34 +4060,6 @@
             "winner": "HOME_TEAM",
             "home": 7,
             "away": 3
-          }
-        },
-        {
-          "id": "823407",
-          "utcDate": "2026-09-26T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 12
           }
         }
       ],
@@ -4644,15 +4210,14 @@
           "W",
           "W",
           "W",
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 4,
+        "wins": 3,
         "losses": 1,
-        "runsFor": 25,
-        "runsAgainst": 13
+        "runsFor": 13,
+        "runsAgainst": 12
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "140": {
       "team": {
@@ -4695,48 +4260,19 @@
             "home": 6,
             "away": 4
           }
-        },
-        {
-          "id": "823653",
-          "utcDate": "2026-09-26T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 6
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "losses": 1,
-        "runsFor": 10,
-        "runsAgainst": 8
+        "runsFor": 4,
+        "runsAgainst": 6
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "141": {
       "team": {
@@ -4779,48 +4315,19 @@
             "home": 5,
             "away": 1
           }
-        },
-        {
-          "id": "822759",
-          "utcDate": "2026-09-26T19:07:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "141",
-            "name": "Toronto Blue Jays",
-            "shortName": "Blue Jays",
-            "abbreviation": "TOR",
-            "crest": "https://www.mlbstatic.com/team-logos/141.svg"
-          },
-          "awayTeam": {
-            "id": "113",
-            "name": "Cincinnati Reds",
-            "shortName": "Reds",
-            "abbreviation": "CIN",
-            "crest": "https://www.mlbstatic.com/team-logos/113.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 5
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
-          "L"
+          "W"
         ],
         "wins": 1,
-        "losses": 1,
-        "runsFor": 6,
-        "runsAgainst": 6
+        "losses": 0,
+        "runsFor": 5,
+        "runsAgainst": 1
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "142": {
       "team": {
@@ -4863,48 +4370,19 @@
             "home": 6,
             "away": 4
           }
-        },
-        {
-          "id": "823653",
-          "utcDate": "2026-09-26T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "142",
-            "name": "Minnesota Twins",
-            "shortName": "Twins",
-            "abbreviation": "MIN",
-            "crest": "https://www.mlbstatic.com/team-logos/142.svg"
-          },
-          "awayTeam": {
-            "id": "140",
-            "name": "Texas Rangers",
-            "shortName": "Rangers",
-            "abbreviation": "TEX",
-            "crest": "https://www.mlbstatic.com/team-logos/140.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 2,
-            "away": 6
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
-          "L"
+          "W"
         ],
         "wins": 1,
-        "losses": 1,
-        "runsFor": 8,
-        "runsAgainst": 10
+        "losses": 0,
+        "runsFor": 6,
+        "runsAgainst": 4
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "143": {
       "team": {
@@ -5031,34 +4509,6 @@
             "home": 7,
             "away": 3
           }
-        },
-        {
-          "id": "823407",
-          "utcDate": "2026-09-26T23:15:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "143",
-            "name": "Philadelphia Phillies",
-            "shortName": "Phillies",
-            "abbreviation": "PHI",
-            "crest": "https://www.mlbstatic.com/team-logos/143.svg"
-          },
-          "awayTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 1,
-            "away": 12
-          }
         }
       ],
       "upcomingGames": [],
@@ -5067,15 +4517,14 @@
           "L",
           "W",
           "L",
-          "W",
-          "L"
+          "W"
         ],
         "wins": 2,
-        "losses": 3,
-        "runsFor": 17,
-        "runsAgainst": 29
+        "losses": 2,
+        "runsFor": 16,
+        "runsAgainst": 17
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "144": {
       "team": {
@@ -5246,7 +4695,7 @@
         "runsFor": 14,
         "runsAgainst": 16
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "145": {
       "team": {
@@ -5417,7 +4866,7 @@
         "runsFor": 15,
         "runsAgainst": 23
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "146": {
       "team": {
@@ -5460,48 +4909,19 @@
             "home": 5,
             "away": 3
           }
-        },
-        {
-          "id": "823813",
-          "utcDate": "2026-09-26T20:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "146",
-            "name": "Miami Marlins",
-            "shortName": "Marlins",
-            "abbreviation": "MIA",
-            "crest": "https://www.mlbstatic.com/team-logos/146.svg"
-          },
-          "awayTeam": {
-            "id": "144",
-            "name": "Atlanta Braves",
-            "shortName": "Braves",
-            "abbreviation": "ATL",
-            "crest": "https://www.mlbstatic.com/team-logos/144.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 8
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "W",
-          "L"
+          "W"
         ],
         "wins": 1,
-        "losses": 1,
-        "runsFor": 8,
-        "runsAgainst": 11
+        "losses": 0,
+        "runsFor": 5,
+        "runsAgainst": 3
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "147": {
       "team": {
@@ -5672,7 +5092,7 @@
         "runsFor": 23,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     },
     "158": {
       "team": {
@@ -5688,6 +5108,34 @@
         "primaryColor": null
       },
       "recentGames": [
+        {
+          "id": "849809",
+          "utcDate": "2026-10-11T23:59:59Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "L",
+          "startTimeTbd": true,
+          "ifNecessary": false,
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 2,
+            "away": 1
+          }
+        },
         {
           "id": "849827",
           "utcDate": "2026-10-08T02:00:00Z",
@@ -5799,65 +5247,9 @@
             "home": 3,
             "away": 2
           }
-        },
-        {
-          "id": "823731",
-          "utcDate": "2026-09-27T19:10:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "R",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "138",
-            "name": "St. Louis Cardinals",
-            "shortName": "Cardinals",
-            "abbreviation": "STL",
-            "crest": "https://www.mlbstatic.com/team-logos/138.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 6,
-            "away": 4
-          }
         }
       ],
       "upcomingGames": [
-        {
-          "id": "849809",
-          "utcDate": "2026-10-11T23:59:59Z",
-          "status": "Pre-Game",
-          "matchday": null,
-          "stage": "L",
-          "startTimeTbd": true,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "158",
-            "name": "Milwaukee Brewers",
-            "shortName": "Brewers",
-            "abbreviation": "MIL",
-            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
-          },
-          "awayTeam": {
-            "id": "119",
-            "name": "Los Angeles Dodgers",
-            "shortName": "Dodgers",
-            "abbreviation": "LAD",
-            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "849812",
           "utcDate": "2026-10-12T21:00:00Z",
@@ -5969,22 +5361,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "849806",
+          "utcDate": "2026-10-18T23:59:59Z",
+          "status": "Scheduled",
+          "matchday": null,
+          "stage": "L",
+          "startTimeTbd": true,
+          "ifNecessary": true,
+          "homeTeam": {
+            "id": "158",
+            "name": "Milwaukee Brewers",
+            "shortName": "Brewers",
+            "abbreviation": "MIL",
+            "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+          },
+          "awayTeam": {
+            "id": "119",
+            "name": "Los Angeles Dodgers",
+            "shortName": "Dodgers",
+            "abbreviation": "LAD",
+            "crest": "https://www.mlbstatic.com/team-logos/119.svg"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
-          "L",
           "W",
+          "L",
           "W",
           "W"
         ],
         "wins": 4,
         "losses": 1,
-        "runsFor": 19,
-        "runsAgainst": 14
+        "runsFor": 15,
+        "runsAgainst": 11
       },
-      "generatedAt": "2026-10-11T20:11:52.611Z"
+      "generatedAt": "2026-10-12T05:46:55.364Z"
     }
   }
 }
