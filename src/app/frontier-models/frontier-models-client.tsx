@@ -2,9 +2,6 @@
 
 import { useId, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
-import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { useClientNow } from "@/hooks/useClientNow";
 import {
   filterFrontierModels,
@@ -32,6 +29,7 @@ import type {
 } from "@/types/frontierModels";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { formatLongUtcDate } from "@/lib/date-formatters";
+import "./frontier-models.css";
 
 interface FrontierModelsClientProps {
   initialState: FrontierModelsRouteState;
@@ -117,80 +115,44 @@ export function FrontierModelsClient({
   const hasExtraFilter = resolvedState.modality !== "all" || resolvedState.priceTier !== "all";
   const [extraFiltersOpen, setExtraFiltersOpen] = useState(hasExtraFilter);
 
-  const lead = PROJECT_PRESS[FRONTIER_MODELS_ROUTE].lead;
-  const standfirst =
-    "A curated table of leading large language models with context windows, pricing, and modality coverage. Side-by-side facts, no marketing.";
   const liveFactsNote = snapshot.liveFacts
     ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")} · ${snapshot.liveFacts.updated} changed by the check, ${snapshot.liveFacts.confirmed} matched, ${snapshot.liveFacts.curatedOnly} not found in either catalog`
     : "";
-  const dateMeta = `Curated by hand · facts as of ${formatLongUtcDate(asOf)} · snapshot built ${updatedAt}${!snapshot.verified ? " · independent review pending" : ""}${liveFactsNote}`;
+  const asOfLine = `Facts as of ${formatLongUtcDate(asOf)} · snapshot built ${updatedAt}${liveFactsNote}`;
 
   return (
-    <div>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Frontier Model Tracker"
-        standfirst={standfirst}
-        meta={dateMeta}
-        action={
-          <a href={`#${SPEC_SHEET_ID}`} className="c97-btn-ghost">
-            Jump to the spec sheet
-          </a>
-        }
-        readouts={[
-          {
-            label: "Models tracked",
-            value: `${readouts.count}`,
-            detail: `${snapshot.providers.length} providers`,
-          },
-          {
-            label: "Cheapest input price",
-            value: readouts.cheapest ? formatPriceUsd(readouts.cheapest.inputPricePerMTokens) : "None",
-            detail: readouts.cheapest
-              ? `${readouts.cheapest.providerLabel} ${readouts.cheapest.name}`
-              : "No priced models",
-          },
-          {
-            label: "Largest context window",
-            value: readouts.largestContext ? formatTokenCount(readouts.largestContext.contextWindow) : "None",
-            detail: readouts.largestContext
-              ? `${readouts.largestContext.providerLabel} ${readouts.largestContext.name}`
-              : "No models tracked",
-          },
-        ]}
-      >
-        {/* Provider colours are data and several vanish on pink, so the chart prints on a paper plate. */}
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+    <div className="fm-root">
+      <div className="c97-shell c97-frame fm-page">
+        <header className="fm-head">
+          <h1 className="fm-title">Frontier Model Tracker</h1>
+          <p className="fm-lede">
+            A curated table of leading large language models with context windows, pricing, and
+            modality coverage, set side by side without the marketing.
+            {readouts.cheapest && readouts.largestContext
+              ? ` The cheapest input price is ${formatPriceUsd(readouts.cheapest.inputPricePerMTokens)} per million tokens (${readouts.cheapest.providerLabel} ${readouts.cheapest.name}), and the largest context window is ${formatTokenCount(readouts.largestContext.contextWindow)} tokens (${readouts.largestContext.providerLabel} ${readouts.largestContext.name}).`
+              : ""}
+          </p>
+          <p className="fm-asof">{asOfLine}</p>
+          <p className="fm-disclosure">
+            {snapshot.verified
+              ? "Curated by hand from each provider's own pages."
+              : "Curated by hand from each provider's own pages, and the independent review is still pending."}{" "}
+            <a href={`#${SPEC_SHEET_ID}`} className="fm-jump">
+              Jump to the spec sheet
+            </a>
+          </p>
+        </header>
+
+        <section className="fm-chart" aria-label="Price against context window">
           <FrontierCostContextChart
             models={filteredModels}
             selectedModelId={resolvedState.selectedModelId}
             onSelectModel={handleSelectModel}
           />
-        </div>
-      </Catalog97ProjectHero>
+        </section>
 
-      <section
-        id={SPEC_SHEET_ID}
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          {reviewIsOverdue ? (
-            <p
-              className="c97-prose"
-              role="status"
-              style={{ marginBottom: "var(--c97-sp-5)", color: "var(--c97-warning)" }}
-            >
-              This dataset is outside its 45-day review window or still unverified. I would not
-              use its prices or model availability for a purchase decision until the source list
-              is reviewed.
-            </p>
-          ) : null}
-
-          <h2 className="c97-poster-sm">The spec sheet</h2>
-
-          <div style={{ marginTop: "var(--c97-sp-4)", display: "grid", gap: "var(--c97-sp-3)" }}>
+        <section id={SPEC_SHEET_ID} className="fm-sheet" aria-labelledby="fm-sheet-heading">
+          <div className="fm-toolbar">
             <FilterGroup
               label="Provider"
               options={[
@@ -210,15 +172,15 @@ export function FrontierModelsClient({
               }
             />
             <details
-              className="c97-disclosure"
+              className="fm-more"
               open={extraFiltersOpen || hasExtraFilter}
               onToggle={(event) => setExtraFiltersOpen(event.currentTarget.open)}
             >
-              <summary className="c97-btn-ghost">
+              <summary>
                 <span data-when="closed">More filters</span>
                 <span data-when="open">Fewer filters</span>
               </summary>
-              <div style={{ marginTop: "var(--c97-sp-2)", display: "grid", gap: "var(--c97-sp-3)" }}>
+              <div className="fm-more-body">
                 <FilterGroup
                   label="Modality"
                   options={MODALITY_FILTERS.map((modality) => ({
@@ -259,28 +221,37 @@ export function FrontierModelsClient({
             </details>
           </div>
 
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-4)" }}>
-            {filteredModels.length} of {snapshot.models.length} models shown
-          </p>
+          <div className="fm-sheet-head">
+            <h2 id="fm-sheet-heading" className="fm-h2">
+              The spec sheet
+            </h2>
+            <p className="fm-count">
+              {filteredModels.length} of {snapshot.models.length} models shown
+            </p>
+          </div>
+
+          {reviewIsOverdue ? (
+            <p className="fm-warn" role="status">
+              This dataset is outside its 45-day review window or still unverified. I would not
+              use its prices or model availability for a purchase decision until the source list
+              is reviewed.
+            </p>
+          ) : null}
 
           {filteredModels.length === 0 ? (
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
-              <EmptyPanel
-                title="No models match those filters"
-                description="Try widening the provider, modality, or price-tier filters to see more options."
-              />
+            <div className="fm-empty">
+              <p className="fm-empty-title">No models match those filters</p>
+              <p>Try widening the provider, modality, or price-tier filters to see more options.</p>
             </div>
           ) : (
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
-              <FrontierModelsTable
-                models={filteredModels}
-                selectedModelId={resolvedState.selectedModelId}
-                onSelectModel={handleSelectModel}
-              />
-            </div>
+            <FrontierModelsTable
+              models={filteredModels}
+              selectedModelId={resolvedState.selectedModelId}
+              onSelectModel={handleSelectModel}
+            />
           )}
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
@@ -295,18 +266,17 @@ interface FilterGroupProps {
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
   const labelId = useId();
   return (
-    <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-      <span id={labelId} className="c97-kicker" style={{ minWidth: "88px" }}>
+    <div className="fm-group">
+      <span id={labelId} className="fm-label">
         {label}
       </span>
-      <div role="group" aria-labelledby={labelId} className="c97-segmented">
+      <div role="group" aria-labelledby={labelId} className="fm-switch">
         {options.map((option) => (
           <button
             key={option.id}
             type="button"
             aria-pressed={option.id === value}
             onClick={() => onChange(option.id)}
-            className="min-h-[44px]"
           >
             {option.label}
           </button>

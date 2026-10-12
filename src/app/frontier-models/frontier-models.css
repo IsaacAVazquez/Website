@@ -1,4 +1,261 @@
-/* Frontier Model Tracker: the spec sheet at phone width. */
+/*
+ * Frontier Model Tracker, drawn as a spec sheet. The route paints a white
+ * sheet with near-black ink and points the Catalog 97 tokens its table,
+ * chips, and chart axes read at it. The chart prints with no plate, and the
+ * provider colours are the only colour that means anything.
+ */
+
+.fm-root {
+  --fm-bg: #fcfcfb;
+  --fm-raise: #f0f0ee;
+  --fm-ink: #121212;
+  --fm-ink-2: #55555a;
+  --fm-rule: rgba(18, 18, 18, 0.12);
+  --fm-rule-strong: rgba(18, 18, 18, 0.34);
+  --fm-focus: #c2410c;
+  --fm-warn: #8a4b00;
+
+  --c97-surface: var(--fm-bg);
+  --c97-field: var(--fm-raise);
+  --c97-panel: var(--fm-raise);
+  --c97-ink: var(--fm-ink);
+  --c97-ink-2: var(--fm-ink-2);
+  --c97-label: var(--fm-ink-2);
+  --c97-rule: var(--fm-rule);
+  --c97-action: var(--fm-ink);
+  --c97-accent: var(--fm-focus);
+
+  background: var(--fm-bg);
+  color: var(--fm-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .fm-root {
+  --fm-bg: #141416;
+  --fm-raise: #212125;
+  --fm-ink: #ededee;
+  --fm-ink-2: #a7a7ad;
+  --fm-rule: rgba(237, 237, 238, 0.13);
+  --fm-rule-strong: rgba(237, 237, 238, 0.34);
+  --fm-focus: #fb923c;
+  --fm-warn: #f0b35a;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.fm-root h1,
+.fm-root h2 {
+  font-family: var(--c97-font-body);
+  color: var(--fm-ink);
+  margin: 0;
+}
+
+.fm-root :where(p) {
+  margin: 0;
+  max-inline-size: none;
+}
+
+.fm-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+.fm-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.fm-title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.625rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.fm-lede {
+  max-inline-size: 72ch;
+  font-size: var(--c97-fs-body);
+  line-height: 1.5;
+  color: var(--fm-ink-2);
+}
+
+.fm-asof {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--fm-ink-2);
+}
+
+.fm-disclosure {
+  font-size: 0.8125rem;
+  color: var(--fm-ink-2);
+}
+
+.fm-jump {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--fm-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fm-chart {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--fm-rule-strong);
+}
+
+/* The filter toolbar and the sheet */
+
+.fm-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  scroll-margin-top: var(--c97-sp-3);
+}
+
+.fm-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--fm-rule);
+}
+
+.fm-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.fm-label {
+  min-width: 5.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fm-ink-2);
+}
+
+.fm-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+}
+
+.fm-switch > button {
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border: 1px solid var(--fm-rule-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fm-ink);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms var(--c97-ease), color 160ms var(--c97-ease);
+}
+
+.fm-switch > button:hover {
+  background: var(--fm-raise);
+}
+
+.fm-switch > button[aria-pressed="true"] {
+  border-color: var(--fm-ink);
+  background: var(--fm-ink);
+  color: var(--fm-bg);
+}
+
+.fm-more > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border-radius: 6px;
+  color: var(--fm-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.fm-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.fm-more:not([open]) [data-when="open"],
+.fm-more[open] [data-when="closed"] {
+  display: none;
+}
+
+.fm-more-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-1);
+}
+
+.fm-sheet-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+}
+
+.fm-h2 {
+  font-size: var(--c97-fs-h3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.fm-count {
+  font-size: 0.875rem;
+  color: var(--fm-ink-2);
+}
+
+.fm-root .fm-warn {
+  max-inline-size: 72ch;
+  color: var(--fm-warn);
+  font-weight: 600;
+}
+
+.fm-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-4);
+  border-bottom: 1px solid var(--fm-rule);
+  color: var(--fm-ink-2);
+}
+
+.fm-root .fm-empty-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--fm-ink);
+}
+
+@media print {
+  .fm-jump,
+  .fm-more > summary,
+  .fm-switch > button:not([aria-pressed="true"]) {
+    display: none;
+  }
+}
+
+/* The spec sheet at phone width */
+
 
 /* Under md the sheet prints four columns in a 334px measure, so its cells take
  * the smaller inline step. Two classes, so the rule outranks `.c97-table td`
