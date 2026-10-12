@@ -353,8 +353,10 @@ describe("WeeklyBoardClient waivers view", () => {
     expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveTextContent(
       "This week’s list",
     );
-    // A section h2 that heads the board prints in poster type.
-    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveClass("c97-poster-sm");
+    // The section h2 is the console's own heading since the poster type came
+    // off on 2026-10-12, in the body face rather than Anton.
+    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).not.toHaveClass("c97-poster-sm");
+    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveClass("font-semibold");
     expect(screen.getByRole("status")).toHaveTextContent(
       "2 players clear the gap in PPR scoring",
     );
