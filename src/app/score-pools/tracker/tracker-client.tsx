@@ -15,9 +15,11 @@ import {
   PILL_BUTTON,
   SCORE_FIELD_STYLE,
   SampleDataNotice,
+  ScorePoolsTitleBar,
   formatKickoff,
   formatScoreline,
 } from "../score-pools-ui";
+import "../score-pools.css";
 
 interface TrackerClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -202,32 +204,17 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
   const scoredCount = myScoring?.rows.filter((row) => row.score).length ?? 0;
 
   return (
-    <section className="c97-band min-h-dvh" data-c97-surface="paper">
-      <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-        <header>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction tools</p>
-          <h1 className="c97-display">
-            Score{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
-              Tracker
-            </em>
-          </h1>
-          <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            Submitted picks scored against results under your pool&apos;s rules as games finish,
-            with a running total and rival comparisons where you know their picks. Back to the{" "}
-            <Link className="c97-link" href="/score-pools">
-              pick sheet
-            </Link>{" "}
-            or the{" "}
-            <Link className="c97-link" href="/score-pools/settings">
-              settings
-            </Link>
-            .
-          </p>
-        </header>
+    <div className="sp-root">
+      <div className="c97-shell c97-frame sp-page">
+        <ScorePoolsTitleBar title="Score Pools Tracker" current="tracker">
+          Your saved picks scored against results under the pool&apos;s rules as games finish, with
+          a running total and the gap to each rival whose picks you know.
+        </ScorePoolsTitleBar>
 
-        <SampleDataNotice snapshot={snapshot} />
-        <p role="status" aria-live="polite" className="text-sm text-[var(--c97-ink-2)]">{status}</p>
+        <div className="sp-status">
+          <SampleDataNotice snapshot={snapshot} />
+          <p role="status" aria-live="polite">{status}</p>
+        </div>
 
         {!activePool || !league ? (
           <p className="text-sm text-[var(--c97-ink-2)]">
@@ -237,7 +224,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
         ) : (
           <>
             {pools.length > 1 ? (
-              <nav className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} aria-label="Pools">
+              <nav className="c97-segmented sp-toolbar" aria-label="Pools">
                 {pools.map((pool) => (
                   <button
                     key={pool.id}
@@ -252,15 +239,15 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
               </nav>
             ) : null}
 
-            <section className="grid sm:grid-cols-3" style={{ gap: "var(--c97-sp-1)" }} aria-label="Totals">
-              <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
+            <section className="sp-totals" aria-label="Totals">
+              <div className="c97-stat">
                 <p className="c97-stat-label">Tracked points</p>
                 <p className="c97-stat-value c97-mono">{myScoring?.total ?? 0}</p>
                 <p className="c97-stat-delta">
                   computed here from {scoredCount} scored {scoredCount === 1 ? "pick" : "picks"}
                 </p>
               </div>
-              <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
+              <div className="c97-stat">
                 <p className="c97-stat-label">Entered standing</p>
                 <p className="c97-stat-value c97-mono">{activePool.standing.myPoints}</p>
                 <p className="c97-stat-delta">
@@ -270,7 +257,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                   the tracked points.
                 </p>
               </div>
-              <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
+              <div className="c97-stat">
                 <p className="c97-stat-label">Rules</p>
                 <p className="c97-stat-value c97-mono">
                   {activePool.rules.exact}/{activePool.rules.correctDifference}/{activePool.rules.correctOutcome}
@@ -284,7 +271,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
 
             {myScoring && myScoring.rows.length > 0 ? (
               <section aria-label="My scored picks">
-                <h2 className="c97-serif c97-h2">My picks</h2>
+                <h2 className="sp-h2">My picks</h2>
                 <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="My scored picks (scrollable)" tabIndex={0}>
                   <table className="c97-table" aria-label="My picks scored against results">
                     <thead>
@@ -366,14 +353,14 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
 
             {needsResult.length > 0 ? (
               <section aria-label="Missing results">
-                <h2 className="c97-serif c97-h2">Missing results</h2>
+                <h2 className="sp-h2">Missing results</h2>
                 <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   These games have picks but no result from the data feed. Enter the result by hand
                   and the scoring uses it until a feed result shows up.
                 </p>
-                <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+                <ul className="sp-rows">
                   {needsResult.map((fixture) => (
-                    <li key={fixture.id} className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
+                    <li key={fixture.id} className="sp-row sp-row-stack">
                       <p className="font-semibold">
                         {fixture.homeTeam} vs {fixture.awayTeam}
                       </p>
@@ -392,7 +379,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             ) : null}
 
             <section aria-label="Rivals">
-              <h2 className="c97-serif c97-h2">Rivals</h2>
+              <h2 className="sp-h2">Rivals</h2>
               {activePool.rivals.length === 0 ? (
                 <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   Add rivals on the{" "}
@@ -435,7 +422,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                   </div>
 
                   <div style={{ marginTop: "var(--c97-sp-2)" }}>
-                    <h3 className="c97-serif c97-h3">Enter rival picks</h3>
+                    <h3 className="sp-h3">Enter rival picks</h3>
                     <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {activePool.rivals.map((rival) => (
                         <button
@@ -452,7 +439,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                       ))}
                     </div>
                     {selectedRival ? (
-                      <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+                      <ul className="sp-rows">
                         {league.fixtures.map((fixture) => {
                           const existing = selectedRival.picks[fixture.id];
                           const draftKey = JSON.stringify([activePool.id, selectedRival.id, fixture.id]);
@@ -462,7 +449,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                             away: existing ? String(existing.away) : "",
                           };
                           return (
-                            <li key={fixture.id} className="flex flex-wrap items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
+                            <li key={fixture.id} className="sp-row">
                               <span className="min-w-48 font-semibold">
                                 {fixture.homeTeam} vs {fixture.awayTeam}
                               </span>
@@ -577,6 +564,6 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
           </>
         )}
       </div>
-    </section>
+    </div>
   );
 }

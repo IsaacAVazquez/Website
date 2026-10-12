@@ -7,7 +7,6 @@
 // provenance.
 
 import { useId, useRef, useState } from "react";
-import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
 import type { StoredPool } from "@/lib/scorePools/persistence";
 import type { DevigMethod, Posture, ScoringBasis } from "@/lib/scorePools";
@@ -18,9 +17,11 @@ import {
   FIELD_LABEL,
   PILL_BUTTON,
   SampleDataNotice,
+  ScorePoolsTitleBar,
   formatAge,
   leagueOptionLabel,
 } from "../score-pools-ui";
+import "../score-pools.css";
 
 interface SettingsClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -37,7 +38,7 @@ const TIMEZONES = [
   "UTC",
 ];
 
-const SECTION = "c97-panel";
+const SECTION = "sp-section";
 const HINT_STYLE = {
   display: "block" as const,
   marginTop: "var(--c97-sp-1)",
@@ -184,31 +185,19 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
   };
 
   return (
-    <section className="c97-band min-h-dvh" data-c97-surface="paper">
-      <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-        <header>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction tools</p>
-          <h1 className="c97-display">
-            Pool{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
-              Settings
-            </em>
-          </h1>
-          <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            The scoring rules decide which picks get recommended, so set those first. The pool
-            name, league, and rivals come next, and the standing and risk settings sit under
-            advanced settings with defaults that work. Back to the{" "}
-            <Link className="c97-link" href="/score-pools">
-              pick sheet
-            </Link>
-            .
-          </p>
-        </header>
+    <div className="sp-root">
+      <div className="c97-shell c97-frame sp-page">
+        <ScorePoolsTitleBar title="Score Pools Settings" current="settings">
+          The scoring rules decide which picks get recommended, so set those first, and the standing
+          and risk settings under advanced settings have defaults that work.
+        </ScorePoolsTitleBar>
 
-        <SampleDataNotice snapshot={snapshot} />
+        <div className="sp-status">
+          <SampleDataNotice snapshot={snapshot} />
+        </div>
 
         <section className={SECTION} aria-label="Pools">
-          <h2 className="c97-serif c97-h2">Pools</h2>
+          <h2 className="sp-h2">Pools</h2>
           <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
             {pools.map((entry) => (
               <button
@@ -280,7 +269,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
         {pool ? (
           <>
             <section className={SECTION} aria-label="Scoring rules">
-              <h2 className="c97-serif c97-h2">Scoring rules</h2>
+              <h2 className="sp-h2">Scoring rules</h2>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Set these to match your pool&apos;s own rules, since every recommendation is ranked by
                 the points it should earn under them. The scoring basis matters most in knockouts,
@@ -336,7 +325,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     patch((current) => ({ ...current, rules: { ...current.rules, basis } }))
                   }
                 />
-                <label className="flex min-h-[44px] cursor-pointer items-center self-end border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
+                <label className="sp-check">
                   <input
                     type="checkbox"
                     checked={pool.rules.penaltiesCountAsWin}
@@ -356,7 +345,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Pool basics">
-              <h2 className="c97-serif c97-h2">
+              <h2 className="sp-h2">
                 {pool.name}
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
@@ -408,14 +397,14 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Rivals">
-              <h2 className="c97-serif c97-h2">Rivals</h2>
+              <h2 className="sp-h2">Rivals</h2>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 The people you&apos;re actually racing. Their picks go in on the tracker page; the
                 adjustment covers points they banked before you started tracking.
               </p>
-              <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+              <ul className="sp-rows">
                 {pool.rivals.map((rival) => (
-                  <li key={rival.id} className="flex flex-wrap items-end border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
+                  <li key={rival.id} className="sp-row sp-row-form">
                     <label className="block">
                       <span className={FIELD_LABEL}>Name</span>
                       <input
@@ -509,14 +498,14 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 <span data-when="closed">Show advanced settings</span>
                 <span data-when="open">Hide advanced settings</span>
               </summary>
-              <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>Advanced settings</h2>
+              <h2 className="sp-h2">Advanced settings</h2>
               <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 These three groups shape the recommendation and all of them have working defaults,
                 so a new pool can skip them.
               </p>
               <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-2)" }}>
                 <section className={SECTION} aria-label="Standing and risk">
-                  <h3 className="c97-serif c97-h3">Your standing and how much risk to take</h3>
+                  <h3 className="sp-h3">Your standing and how much risk to take</h3>
                   <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     The gap to whoever sits nearest above and below you, against the games remaining,
                     sets how much risk the recommendation takes. Auto works that out from these numbers,
@@ -603,7 +592,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 </section>
 
                 <section className={SECTION} aria-label="Rest of the pool">
-                  <h3 className="c97-serif c97-h3">What the rest of the pool picks</h3>
+                  <h3 className="sp-h3">What the rest of the pool picks</h3>
                   <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     An estimate of what everyone else in the pool submits, which is mostly the favorite
                     at its single most likely score. It is a rule of thumb, and these shares were not
@@ -643,7 +632,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 </section>
 
                 <section className={SECTION} aria-label="Odds conversion">
-                  <h3 className="c97-serif c97-h3">How the odds become probabilities</h3>
+                  <h3 className="sp-h3">How the odds become probabilities</h3>
                   <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                     <SelectSetting<DevigMethod>
                       label="Bookmaker margin removal"
@@ -661,7 +650,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </details>
 
             <section className={SECTION} aria-label="Data status">
-              <h2 className="c97-serif c97-h2">Data status</h2>
+              <h2 className="sp-h2">Data status</h2>
               <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="League data status (scrollable)" tabIndex={0}>
                 <table className="c97-table" aria-label="Snapshot status per league">
                   <thead>
@@ -705,7 +694,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Delete pool">
-              <h2 className="c97-serif c97-h2">Delete this pool</h2>
+              <h2 className="sp-h2">Delete this pool</h2>
               <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Removes the pool, its picks, rivals, flags, and hand-entered odds from this
                 browser. There is no undo.
@@ -742,6 +731,6 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
           </p>
         )}
       </div>
-    </section>
+    </div>
   );
 }

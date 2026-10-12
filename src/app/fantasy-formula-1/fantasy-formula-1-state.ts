@@ -1,38 +1,27 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export type FantasyFormula1View = "builder" | "assets" | "rules";
 export type FantasyFormula1Sort = "value" | "projection" | "price" | "form";
 export type FantasyFormula1Focus = "drivers" | "constructors" | null;
 
 export interface FantasyFormula1RouteState {
-  view: FantasyFormula1View;
   sort: FantasyFormula1Sort;
   focus: FantasyFormula1Focus;
 }
 
 export const FANTASY_FORMULA1_ROUTE = "/fantasy-formula-1";
 
-export const FANTASY_FORMULA1_VIEW_OPTIONS = ["builder", "assets", "rules"] as const;
 export const FANTASY_FORMULA1_SORT_OPTIONS = ["value", "projection", "price", "form"] as const;
 export const FANTASY_FORMULA1_FOCUS_OPTIONS = ["drivers", "constructors"] as const;
 
-const VALID_VIEWS = new Set<FantasyFormula1View>(FANTASY_FORMULA1_VIEW_OPTIONS);
 const VALID_SORTS = new Set<FantasyFormula1Sort>(FANTASY_FORMULA1_SORT_OPTIONS);
 const VALID_FOCUS = new Set<Exclude<FantasyFormula1Focus, null>>(
   FANTASY_FORMULA1_FOCUS_OPTIONS
 );
 
 export const DEFAULT_FANTASY_FORMULA1_STATE: FantasyFormula1RouteState = {
-  view: "builder",
   sort: "value",
   focus: null,
-};
-
-export const FANTASY_FORMULA1_VIEW_LABELS: Record<FantasyFormula1View, string> = {
-  builder: "Builder",
-  assets: "Assets",
-  rules: "Rules",
 };
 
 export const FANTASY_FORMULA1_SORT_LABELS: Record<FantasyFormula1Sort, string> = {
@@ -41,12 +30,6 @@ export const FANTASY_FORMULA1_SORT_LABELS: Record<FantasyFormula1Sort, string> =
   price: "Price",
   form: "Form",
 };
-
-function normalizeView(value: string | null): FantasyFormula1View {
-  return VALID_VIEWS.has((value ?? "") as FantasyFormula1View)
-    ? (value as FantasyFormula1View)
-    : DEFAULT_FANTASY_FORMULA1_STATE.view;
-}
 
 function normalizeSort(value: string | null): FantasyFormula1Sort {
   return VALID_SORTS.has((value ?? "") as FantasyFormula1Sort)
@@ -64,7 +47,6 @@ export function normalizeFantasyFormula1State(
   input: SearchParamInput
 ): FantasyFormula1RouteState {
   return {
-    view: normalizeView(readParam(input, "view")),
     sort: normalizeSort(readParam(input, "sort")),
     focus: normalizeFocus(readParam(input, "focus")),
   };
@@ -78,11 +60,9 @@ export function buildFantasyFormula1Href(
     baseSearchParams ? Array.from(baseSearchParams.entries()) : []
   );
 
-  if (state.view === DEFAULT_FANTASY_FORMULA1_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
+  // The page had builder, assets, and rules views until 2026-10-12, when the
+  // slate became one list. An old link's view param is dropped, not kept.
+  params.delete("view");
 
   if (state.sort === DEFAULT_FANTASY_FORMULA1_STATE.sort) {
     params.delete("sort");

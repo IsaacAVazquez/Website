@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowDown, ArrowUp, CircleAlert, Clock, Flag, Minus } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { ArrowDown, ArrowUp, CircleAlert, Minus } from "lucide-react";
 import type {
   Formula1ConstructorStanding,
   Formula1DriverStanding,
@@ -16,16 +15,14 @@ import type {
 } from "@/types/formula1";
 import {
   buildFormula1Href,
-  FORMULA1_ROUTE,
-  FORMULA1_VIEW_DESCRIPTIONS,
   FORMULA1_VIEW_LABELS,
   FORMULA1_VIEW_OPTIONS,
   normalizeFormula1State,
   resolveFormula1State,
 } from "./formula-1-state";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { TimingTowerSignature } from "./TimingTowerSignature";
+import { formatDeficit } from "./timingTower";
+import { normaliseTeamColor } from "@/lib/formula1TeamColor";
 import styles from "./formula-1.module.css";
 import {
   DATE_TIME_FORMATTER,
@@ -42,6 +39,9 @@ interface Formula1ClientProps {
   summary: Formula1Summary;
   initialMeeting: Formula1MeetingSummary | null;
 }
+
+/** The board's anchor, where the tower's phone link and a race lookup land. */
+const BOARD_ID = "f1-board";
 
 function formatDateLabel(value: string): string {
   const date = new Date(value);
@@ -62,24 +62,16 @@ function formatPoints(value: number): string {
   return Number.isFinite(value) ? value.toFixed(0) : "0";
 }
 
-const DELTA_FORMATTER = new Intl.NumberFormat("en-US", {
-  signDisplay: "exceptZero",
-  maximumFractionDigits: 0,
-});
-
-function formatDelta(value: number): string {
-  if (!Number.isFinite(value) || value === 0) {
-    return "No gain";
-  }
-  return DELTA_FORMATTER.format(value);
-}
-
 function formatGmtOffset(value: string | null): string | null {
   if (!value) return null;
   const match = value.trim().match(/^([+-]?)(\d{1,2}):(\d{2})/);
   if (!match) return null;
   const sign = match[1] === "-" ? "-" : "+";
   return `UTC${sign}${match[2].padStart(2, "0")}:${match[3]}`;
+}
+
+function liveryOf(color: string | null): string {
+  return normaliseTeamColor(color) ?? "var(--f1-ink-2)";
 }
 
 async function fetchFormula1Meeting(
@@ -116,14 +108,6 @@ function getMeetingStatusCopy(meeting: Formula1MeetingMeta): string {
   return "Latest result";
 }
 
-function getSessionAccent(type: string): string {
-  const value = type.toLowerCase();
-  if (value.includes("race") && !value.includes("sprint")) return "var(--c97-accent)";
-  if (value.includes("sprint")) return "var(--c97-warning)";
-  if (value.includes("qualif")) return "var(--c97-accent)";
-  return "var(--c97-ink-2)";
-}
-
 function pad2(value: number): string {
   return String(Math.max(0, value)).padStart(2, "0");
 }
@@ -136,10 +120,8 @@ function PositionChangeIndicator({
   previousPosition: number | null;
 }) {
   if (previousPosition === null || previousPosition === currentPosition) {
-    // The dash alone, like the arrow and number a mover gets, so a phone row
-    // keeps its width for the name.
     return (
-      <span className="inline-flex items-center text-sm" style={{ color: "var(--c97-ink-2)" }}>
+      <span className={styles.move}>
         <Minus size={14} aria-hidden="true" />
         <span className="sr-only">No change</span>
       </span>
@@ -148,30 +130,18 @@ function PositionChangeIndicator({
 
   const delta = previousPosition - currentPosition;
   const isUp = delta > 0;
-  const absoluteDelta = Math.abs(delta);
-  const accent = isUp ? "var(--c97-positive)" : "var(--c97-negative)";
   const Icon = isUp ? ArrowUp : ArrowDown;
-  const label = `${isUp ? "Up" : "Down"} ${absoluteDelta}`;
 
   return (
-    <span
-      className="inline-flex items-center text-sm font-semibold"
-      style={{ gap: "var(--c97-sp-0)", color: accent }}
-    >
+    <span className={styles.move} data-dir={isUp ? "up" : "down"}>
       <Icon size={14} aria-hidden="true" />
-      <span aria-hidden="true">{absoluteDelta}</span>
-      <span className="sr-only">{label}</span>
+      <span aria-hidden="true">{Math.abs(delta)}</span>
+      <span className="sr-only">{`${isUp ? "Up" : "Down"} ${Math.abs(delta)}`}</span>
     </span>
   );
 }
 
-function CountryFlag({
-  flagUrl,
-  countryName,
-}: {
-  flagUrl: string | null;
-  countryName: string;
-}) {
+function CountryFlag({ flagUrl, countryName }: { flagUrl: string | null; countryName: string }) {
   if (!flagUrl) {
     return null;
   }
@@ -182,71 +152,8 @@ function CountryFlag({
       alt={`${countryName} flag`}
       loading="lazy"
       decoding="async"
-      className="h-4 w-7 flex-shrink-0 object-cover"
+      className={styles.flag}
     />
-  );
-}
-
-function DriverHeadshot({
-  url,
-  name,
-  teamColor,
-  size = 36,
-}: {
-  url: string | null;
-  name: string;
-  teamColor: string | null;
-  size?: number;
-}) {
-  const dimension = { width: size, height: size };
-
-  if (!url) {
-    return (
-      <div
-        className="flex flex-shrink-0 items-center justify-center border text-3xs font-semibold uppercase"
-        style={{
-          borderColor: teamColor ?? "var(--c97-ink-2)",
-          background: "var(--c97-field)",
-          color: "var(--c97-ink-2)",
-          letterSpacing: "0.08em",
-          ...dimension,
-        }}
-        aria-hidden="true"
-      >
-        {name
-          .split(/\s+/)
-          .slice(0, 2)
-          .map((part) => part.charAt(0))
-          .join("")
-          .toUpperCase()}
-      </div>
-    );
-  }
-
-  return (
-    <img
-      src={url}
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="flex-shrink-0 border object-cover object-top"
-      style={{ borderColor: teamColor ?? "var(--c97-ink-2)", background: "var(--c97-field)", ...dimension }}
-    />
-  );
-}
-
-function TeamSwatch({ color }: { color: string | null }) {
-  return (
-    <span
-      className="flex h-9 w-9 flex-shrink-0 items-center justify-center border"
-      style={{
-        borderColor: color ?? "var(--c97-ink-2)",
-        background: color ? `color-mix(in srgb, ${color} 18%, var(--c97-field))` : "var(--c97-field)",
-      }}
-      aria-hidden="true"
-    >
-      <span style={{ height: "12px", width: "12px", background: color ?? "var(--c97-ink-2)" }} />
-    </span>
   );
 }
 
@@ -309,35 +216,11 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
   return parts;
 }
 
-function CountdownCell({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="text-center" style={{ padding: "var(--c97-sp-1)", border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
-      <p className="c97-mono mb-0 leading-none" style={{ fontSize: "var(--c97-fs-h2)", color: "var(--c97-ink)" }}>
-        {value}
-      </p>
-      <p className="c97-stat-label" style={{ marginTop: "var(--c97-sp-1)" }}>
-        {label}
-      </p>
-    </div>
-  );
-}
-
 function RaceCountdown({ targetIso }: { targetIso: string | null }) {
   const parts = useCountdown(targetIso);
 
   if (parts?.isPast) {
-    return (
-      <div className="flex items-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
-        <span
-          className="h-2.5 w-2.5 flex-shrink-0"
-          style={{ background: "var(--c97-positive)" }}
-          aria-hidden="true"
-        />
-        <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
-          Lights out. The race weekend is underway.
-        </p>
-      </div>
-    );
+    return <p className={styles.countdownPast}>Lights out. The race weekend is underway.</p>;
   }
 
   const cells = [
@@ -348,336 +231,264 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
   ];
 
   return (
-    <div>
-      <p className="c97-kicker flex items-center" style={{ gap: "var(--c97-sp-0)", marginBottom: "var(--c97-sp-1)" }}>
-        <Clock size={13} aria-hidden="true" />
-        Lights out in
-      </p>
-      <div className="grid grid-cols-4" style={{ gap: "var(--c97-sp-1)" }}>
-        {cells.map((cell) => (
-          <CountdownCell key={cell.label} value={cell.value} label={cell.label} />
-        ))}
-      </div>
-    </div>
+    <dl className={styles.countdown} aria-label="Lights out in">
+      {cells.map((cell) => (
+        <div key={cell.label} className={styles.countdownCell}>
+          <dt>{cell.label}</dt>
+          <dd>{cell.value}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
-interface LeaderboardRowData {
+/** The right column's masthead: the next (or latest) Grand Prix, its lights, and its clock. */
+function NextRace({ meeting, round, total }: { meeting: Formula1MeetingMeta; round: number; total: number }) {
+  const isUpcoming = meeting.status === "upcoming" || meeting.status === "live";
+  const gmt = formatGmtOffset(meeting.gmtOffset);
+
+  return (
+    <section className={styles.next} aria-labelledby="f1-next-heading">
+      <div className={styles.nextHead}>
+        <p className={styles.kicker}>
+          {getMeetingStatusCopy(meeting)} · Round {round} of {total}
+        </p>
+        {isUpcoming ? <StartLights /> : null}
+      </div>
+      <h2 id="f1-next-heading" className={styles.nextName}>
+        <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+        {meeting.name}
+      </h2>
+      <p className={styles.nextMeta}>
+        <span>{describeVenue(meeting)}</span>
+        <span>
+          {meeting.raceStartsAt ? formatDateTimeLabel(meeting.raceStartsAt) : formatDateLabel(meeting.startAt)}
+        </span>
+        {meeting.circuitType ? <span>{meeting.circuitType}</span> : null}
+        {meeting.hasSprint ? <span className={styles.sprint}>Sprint weekend</span> : null}
+        {gmt ? <span>{gmt} track time</span> : null}
+      </p>
+      {isUpcoming ? <RaceCountdown targetIso={meeting.raceStartsAt ?? meeting.startAt} /> : null}
+    </section>
+  );
+}
+
+type StandingRow = {
+  key: string;
   position: number;
   previousPosition: number | null;
-  primary: string;
-  secondary: string | null;
-  badge: string | null;
-  headshotUrl: string | null;
+  name: string;
+  team: string | null;
   teamColor: string | null;
   points: number;
   pointsDelta: number;
+};
+
+function driverRows(standings: Formula1DriverStanding[]): StandingRow[] {
+  return standings.map((standing) => ({
+    key: `${standing.driverNumber}-${standing.position}`,
+    position: standing.position,
+    previousPosition: standing.previousPosition,
+    name: standing.driverName,
+    team: standing.teamName,
+    teamColor: standing.teamColor,
+    points: standing.points,
+    pointsDelta: standing.pointsDelta,
+  }));
 }
 
-function LeaderboardRow({
-  row,
-  leaderPoints,
-  showHeadshot,
-}: {
-  row: LeaderboardRowData;
-  leaderPoints: number;
-  showHeadshot: boolean;
-}) {
-  const ratio = leaderPoints > 0 ? row.points / leaderPoints : 0;
-  const pct = row.points <= 0 ? 0 : Math.max(4, Math.round(ratio * 100));
-  const gap = Math.max(0, Math.round(leaderPoints - row.points));
-  const isLeader = row.position === 1;
-  const accent = row.teamColor ?? "var(--c97-ink-2)";
-
-  return (
-    <li
-      className="flex flex-col"
-      style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
-    >
-      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-        <span className="c97-mono w-6 flex-shrink-0 text-center text-sm" style={{ color: "var(--c97-ink)" }}>
-          {row.position}
-        </span>
-        {showHeadshot ? (
-          <DriverHeadshot url={row.headshotUrl} name={row.primary} teamColor={row.teamColor} />
-        ) : (
-          <TeamSwatch color={row.teamColor} />
-        )}
-        {/* Names wrap rather than truncate, since a phone row cut every surname. */}
-        <div className="min-w-0 flex-1">
-          <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
-            {row.primary}
-          </p>
-          {row.secondary || row.badge ? (
-            <p className="c97-kicker">
-              {row.secondary ?? row.badge}
-            </p>
-          ) : null}
-        </div>
-        <PositionChangeIndicator currentPosition={row.position} previousPosition={row.previousPosition} />
-        <div className="w-12 flex-shrink-0 text-right">
-          <p className="c97-mono mb-0 text-base" style={{ color: "var(--c97-ink)" }}>
-            {formatPoints(row.points)}
-          </p>
-          <p className="c97-stat-label">
-            pts
-          </p>
-        </div>
-      </div>
-      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-        <div className="relative h-1.5 flex-1" style={{ background: "var(--c97-rule)" }}>
-          <span className="absolute inset-y-0 left-0" style={{ width: `${pct}%`, background: accent }} />
-        </div>
-        {row.pointsDelta > 0 ? (
-          <span
-            className="inline-flex flex-shrink-0 items-center gap-0.5 text-2xs font-semibold"
-            style={{ color: "var(--c97-positive)" }}
-            title="Points gained at the last race"
-          >
-            <ArrowUp size={11} aria-hidden="true" />
-            {formatDelta(row.pointsDelta)}
-            <span className="sr-only"> points at the last race</span>
-          </span>
-        ) : null}
-        <span className="w-[6.5ch] flex-shrink-0 text-right text-2xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
-          {isLeader ? "Leader" : `−${gap}`}
-        </span>
-      </div>
-    </li>
-  );
+function constructorRows(standings: Formula1ConstructorStanding[]): StandingRow[] {
+  return standings.map((standing) => ({
+    key: `${standing.teamName}-${standing.position}`,
+    position: standing.position,
+    previousPosition: standing.previousPosition,
+    name: standing.teamName,
+    team: null,
+    teamColor: standing.teamColor,
+    points: standing.points,
+    pointsDelta: standing.pointsDelta,
+  }));
 }
 
-function DriverLeaderboard({
-  standings,
-  limit,
+/** The championship in real table markup, with what the tower leaves out. */
+function StandingsTable({
+  caption,
+  rows,
+  nameHeading,
+  emptyLabel,
 }: {
-  standings: Formula1DriverStanding[];
-  limit?: number;
+  caption: string;
+  rows: StandingRow[];
+  nameHeading: string;
+  emptyLabel: string;
 }) {
-  const rows = typeof limit === "number" ? standings.slice(0, limit) : standings;
-  const leaderPoints = standings[0]?.points ?? 0;
-
   if (rows.length === 0) {
-    return (
-      <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
-        OpenF1 has not published a race-backed championship table yet.
-      </p>
-    );
+    return <p className={styles.empty}>{emptyLabel}</p>;
   }
+  const leaderPoints = rows[0]?.points ?? 0;
+  const showTeam = rows.some((row) => row.team);
 
   return (
-    <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
-      {rows.map((standing) => (
-        <LeaderboardRow
-          key={`${standing.driverNumber}-${standing.position}`}
-          showHeadshot
-          leaderPoints={leaderPoints}
-          row={{
-            position: standing.position,
-            previousPosition: standing.previousPosition,
-            primary: standing.driverName,
-            secondary: standing.teamName,
-            badge: standing.acronym ?? String(standing.driverNumber),
-            headshotUrl: standing.headshotUrl,
-            teamColor: standing.teamColor,
-            points: standing.points,
-            pointsDelta: standing.pointsDelta,
-          }}
-        />
-      ))}
-    </ol>
-  );
-}
-
-function ConstructorLeaderboard({
-  standings,
-  limit,
-}: {
-  standings: Formula1ConstructorStanding[];
-  limit?: number;
-}) {
-  const rows = typeof limit === "number" ? standings.slice(0, limit) : standings;
-  const leaderPoints = standings[0]?.points ?? 0;
-
-  if (rows.length === 0) {
-    return (
-      <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
-        Constructor standings will show up after OpenF1 publishes a race-backed table.
-      </p>
-    );
-  }
-
-  return (
-    <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
-      {rows.map((standing) => (
-        <LeaderboardRow
-          key={`${standing.teamName}-${standing.position}`}
-          showHeadshot={false}
-          leaderPoints={leaderPoints}
-          row={{
-            position: standing.position,
-            previousPosition: standing.previousPosition,
-            primary: standing.teamName,
-            secondary: null,
-            badge: null,
-            headshotUrl: null,
-            teamColor: standing.teamColor,
-            points: standing.points,
-            pointsDelta: standing.pointsDelta,
-          }}
-        />
-      ))}
-    </ol>
-  );
-}
-
-function SectionHeader({
-  kicker,
-  title,
-  description,
-}: {
-  kicker: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-      <div>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{kicker}</p>
-        <h3 className="c97-serif c97-h3">{title}</h3>
-      </div>
-      <p className="mb-0 sm:max-w-[32ch] sm:text-right" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-        {description}
-      </p>
+    <div className={styles.tableScroll}>
+      <table className={styles.table}>
+        <caption className="sr-only">{caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col" className={styles.num}>Pos</th>
+            <th scope="col">{nameHeading}</th>
+            {showTeam ? <th scope="col" className={styles.wideOnly}>Team</th> : null}
+            <th scope="col" className={styles.num}>Pts</th>
+            <th scope="col" className={`${styles.num} ${styles.wideOnly}`}>Last race</th>
+            <th scope="col" className={styles.num}>Gap</th>
+            <th scope="col" className={styles.num}>Move</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.key}>
+              <td className={styles.num}>{row.position}</td>
+              <td>
+                <span className={styles.livery} style={{ background: liveryOf(row.teamColor) }} aria-hidden="true" />
+                {row.name}
+              </td>
+              {showTeam ? <td className={`${styles.muted} ${styles.wideOnly}`}>{row.team}</td> : null}
+              <td className={`${styles.num} ${styles.strong}`}>{formatPoints(row.points)}</td>
+              <td className={`${styles.num} ${styles.wideOnly}`}>
+                {row.pointsDelta > 0 ? `+${formatPoints(row.pointsDelta)}` : "0"}
+              </td>
+              <td className={`${styles.num} ${styles.muted}`}>
+                {row.position === 1 ? "Leader" : formatDeficit(Math.max(0, Math.round(leaderPoints - row.points)))}
+              </td>
+              <td className={styles.num}>
+                <PositionChangeIndicator currentPosition={row.position} previousPosition={row.previousPosition} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
 function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
-  const accent = entry.teamColor ?? "var(--c97-ink-2)";
   return (
-    <li style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}>
-      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-        <div className="min-w-0">
-          <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
-            {entry.position ?? "NC"} · {entry.driverName}
-          </p>
-          <p className="mb-0 text-sm" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-            {entry.teamName ?? "Unknown team"} · {entry.statusLabel}
-          </p>
-        </div>
-        <div className="text-right">
-          <p className="c97-mono mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
-            {formatPoints(entry.points)}
-          </p>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
-            points
-          </p>
-        </div>
+    <li className={styles.result} style={{ borderLeftColor: liveryOf(entry.teamColor) }}>
+      <div className={styles.resultMain}>
+        <p className={styles.strong}>
+          {entry.position ?? "NC"} · {entry.driverName}
+        </p>
+        <p className={styles.muted}>
+          {entry.teamName ?? "Unknown team"} · {entry.statusLabel}
+          {entry.gapToLeaderLabel ? ` · ${entry.gapToLeaderLabel}` : ""}
+        </p>
       </div>
-      <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-        <span className="c97-chip">{entry.lapsCompleted} laps</span>
-        {entry.gapToLeaderLabel ? <span className="c97-chip">{entry.gapToLeaderLabel}</span> : null}
-        {entry.durationLabel ? <span className="c97-chip">{entry.durationLabel}</span> : null}
-      </div>
+      <p className={styles.resultPoints}>
+        {formatPoints(entry.points)}
+        <span className="sr-only"> points</span>
+        <span aria-hidden="true"> pts</span>
+      </p>
     </li>
   );
 }
 
 function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
   if (meeting.sessions.length === 0) {
-    return (
-      <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
-        Session times have not landed in the snapshot yet.
-      </p>
-    );
+    return <p className={styles.empty}>Session times have not landed in the snapshot yet.</p>;
   }
 
   return (
-    <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
-      {meeting.sessions.map((session) => {
-        const accent = getSessionAccent(session.type);
-        return (
-          <li
-            key={session.key}
-            className="min-h-[44px]"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
-          >
-            <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
-              {session.name}
-              {session.type !== session.name ? (
-                <span className="font-normal" style={{ marginLeft: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                  {session.type}
-                </span>
-              ) : null}
-            </p>
-            <p className="mb-0 text-sm" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-              {formatLongDateTimeLabel(session.startAt)} to {formatLongDateTimeLabel(session.endAt)}
-            </p>
-          </li>
-        );
-      })}
+    <ol className={styles.schedule}>
+      {meeting.sessions.map((session) => (
+        <li key={session.key}>
+          <p className={styles.strong}>
+            {session.name}
+            {session.type !== session.name ? <span className={styles.muted}> {session.type}</span> : null}
+          </p>
+          <p className={styles.muted}>
+            {formatLongDateTimeLabel(session.startAt)} to {formatLongDateTimeLabel(session.endAt)}
+          </p>
+        </li>
+      ))}
     </ol>
   );
 }
 
-function MeetingDetailPanel({
-  meeting,
-  compact = false,
-}: {
-  meeting: Formula1MeetingSummary;
-  compact?: boolean;
-}) {
+/**
+ * One weekend's schedule and classification. When the weekend is the one the
+ * masthead already names, its name and venue are not printed a second time.
+ */
+function MeetingDetailPanel({ meeting, named }: { meeting: Formula1MeetingSummary; named: boolean }) {
+  const gmt = formatGmtOffset(meeting.gmtOffset);
   return (
-    <div className="c97-panel">
-      <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-        <div className="min-w-0">
-          <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-            <p className="c97-kicker">{getMeetingStatusCopy(meeting)}</p>
+    <article className={styles.detail} aria-label={`${meeting.name} weekend`}>
+      {named ? (
+        <h3 className="sr-only">{meeting.name} weekend</h3>
+      ) : (
+        <>
+          <p className={styles.kicker}>{getMeetingStatusCopy(meeting)}</p>
+          <h3 className={styles.h3}>
             <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-          </div>
-          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
-          <p className="mb-0 max-w-[48ch] text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-            {describeVenue(meeting)}. I keep the schedule and the classification in one place
-            so the weekend reads cleanly.
+            {meeting.name}
+          </h3>
+          <p className={styles.nextMeta}>
+            <span>{describeVenue(meeting)}</span>
+            <span>{formatDateLabel(meeting.startAt)}</span>
+            {meeting.circuitType ? <span>{meeting.circuitType}</span> : null}
+            {meeting.hasSprint ? <span className={styles.sprint}>Sprint weekend</span> : null}
+            {gmt ? <span>{gmt} track time</span> : null}
           </p>
-        </div>
-        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-          <span className="c97-chip">{formatDateLabel(meeting.startAt)}</span>
-          {meeting.circuitType ? <span className="c97-chip">{meeting.circuitType}</span> : null}
-          {meeting.hasSprint ? <span className="c97-chip c97-chip-warning">Sprint weekend</span> : null}
-          {formatGmtOffset(meeting.gmtOffset) ? <span className="c97-chip">{formatGmtOffset(meeting.gmtOffset)}</span> : null}
-        </div>
-      </div>
+        </>
+      )}
 
-      <div className={`grid grid-cols-1 ${compact ? "lg:grid-cols-[1.1fr_0.9fr]" : "xl:grid-cols-[1.05fr_0.95fr]"}`} style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
+      <div className={styles.detailGrid}>
         <div>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Weekend schedule</p>
+          <h4 className={styles.h4}>Weekend schedule</h4>
           <MeetingSchedule meeting={meeting} />
-          <p className="mb-0 text-xs leading-6" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-            Times print in Pacific time. The UTC offset chip shows the track&apos;s own time zone.
-          </p>
+          <p className={styles.note}>Times print in Pacific time.</p>
         </div>
-
         <div>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-            {meeting.resultPublished ? "Race classification" : "Result status"}
-          </p>
+          <h4 className={styles.h4}>{meeting.resultPublished ? "Race classification" : "Result status"}</h4>
           {meeting.resultPublished ? (
-            <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
-              {meeting.classification.slice(0, compact ? 6 : meeting.classification.length).map((entry) => (
+            <ol className={styles.results}>
+              {meeting.classification.map((entry) => (
                 <ResultRow key={`${meeting.key}-${entry.driverNumber}`} entry={entry} />
               ))}
             </ol>
           ) : (
-            <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+            <p className={styles.empty}>
               OpenF1 has not published the official classification for this race yet. I still keep
               the weekend here so the calendar stays intact.
             </p>
           )}
         </div>
       </div>
-    </div>
+    </article>
+  );
+}
+
+/**
+ * Placeholder while a meeting's full detail (schedule + classification)
+ * loads from /api/formula-1/meetings/[meetingId], or when that fetch fails.
+ */
+function MeetingDetailFallback({ meeting, error }: { meeting: Formula1MeetingMeta; error: string | null }) {
+  return (
+    <article className={styles.detail}>
+      <p className={styles.kicker}>{getMeetingStatusCopy(meeting)}</p>
+      <h3 className={styles.h3}>
+        <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+        {meeting.name}
+      </h3>
+      {error ? (
+        <p role="alert" className={styles.alert}>
+          <CircleAlert size={16} aria-hidden="true" />
+          {error}
+        </p>
+      ) : (
+        <p role="status" className={styles.empty}>
+          Loading race weekend detail…
+        </p>
+      )}
+    </article>
   );
 }
 
@@ -686,54 +497,24 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
     return null;
   }
 
-  const slots = meeting.podium.slice(0, 3);
-
   return (
-    <div>
-      <SectionHeader
-        kicker="Podium"
-        title={meeting.name}
-        description="Top three from the last published classification."
-      />
-
-      <ol className={`pl-0 ${styles.podiumRow}`}>
-        {slots.map((entry, index) => {
-          const accent = entry.teamColor ?? "var(--c97-ink-2)";
-          return (
-            <li
-              key={`${meeting.key}-podium-${entry.driverNumber}`}
-              className="c97-panel"
-              style={{ borderTop: `4px solid ${accent}` }}
-            >
-              <div className="flex items-center justify-between">
-                <span className={`c97-mono ${styles.podiumRank}`} style={{ color: "var(--c97-ink-2)" }}>
-                  P{index + 1}
-                </span>
-                <span className="c97-mono text-sm" style={{ color: "var(--c97-ink)" }}>
-                  {formatPoints(entry.points)} pts
-                </span>
-              </div>
-              <div className="flex items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                <DriverHeadshot url={entry.headshotUrl} name={entry.driverName} teamColor={entry.teamColor} size={44} />
-                <div className="min-w-0">
-                  <p className="mb-0 truncate font-semibold" style={{ color: "var(--c97-ink)" }}>
-                    {entry.driverName}
-                  </p>
-                  <p className="mb-0 truncate text-xs uppercase" style={{ color: "var(--c97-ink-2)" }}>
-                    {entry.teamName ?? "Unknown team"}
-                  </p>
-                </div>
-              </div>
-              {entry.gapToLeaderLabel ? (
-                <p className="mb-0 text-xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                  {entry.gapToLeaderLabel}
-                </p>
-              ) : null}
-            </li>
-          );
-        })}
+    <section className={styles.section} aria-labelledby="f1-podium-heading">
+      <h2 id="f1-podium-heading" className={styles.h2}>
+        Podium <span className={styles.muted}>· {meeting.name}</span>
+      </h2>
+      <ol className={styles.podium}>
+        {meeting.podium.slice(0, 3).map((entry, index) => (
+          <li key={`${meeting.key}-podium-${entry.driverNumber}`} style={{ borderLeftColor: liveryOf(entry.teamColor) }}>
+            <span className={styles.podiumRank}>P{index + 1}</span>
+            <span className={styles.podiumName}>
+              <span className={styles.strong}>{entry.driverName}</span>
+              <span className={styles.muted}>{entry.teamName ?? "Unknown team"}</span>
+            </span>
+            <span className={styles.podiumGap}>{entry.gapToLeaderLabel ?? `${formatPoints(entry.points)} pts`}</span>
+          </li>
+        ))}
       </ol>
-    </div>
+    </section>
   );
 }
 
@@ -748,29 +529,21 @@ function MeetingStrip({
 }) {
   return (
     <div className={styles.raceStrip}>
-      {meetings.map((meeting) => {
-        const isSelected = meeting.key === selectedMeetingKey;
-        return (
-          <button
-            key={meeting.key}
-            type="button"
-            onClick={() => onSelect(meeting.key)}
-            className={styles.raceStripItem}
-            aria-pressed={isSelected}
-          >
-            <span className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <span className="c97-kicker">{meeting.status}</span>
-              <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-            </span>
-            <span className="c97-serif" style={{ display: "block", marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-body)" }}>
-              {meeting.name}
-            </span>
-            <span className="mb-0 text-sm" style={{ marginTop: "var(--c97-sp-0)", display: "block", color: "var(--c97-ink-2)" }}>
-              {formatDateLabel(meeting.startAt)} · {meeting.circuitShortName}
-            </span>
-          </button>
-        );
-      })}
+      {meetings.map((meeting) => (
+        <button
+          key={meeting.key}
+          type="button"
+          onClick={() => onSelect(meeting.key)}
+          className={styles.raceStripItem}
+          aria-pressed={meeting.key === selectedMeetingKey}
+        >
+          <span className={styles.kicker}>{meeting.status}</span>
+          <span className={styles.raceStripName}>{meeting.name}</span>
+          <span className={styles.muted}>
+            {formatDateLabel(meeting.startAt)} · {meeting.circuitShortName}
+          </span>
+        </button>
+      ))}
     </div>
   );
 }
@@ -785,67 +558,34 @@ function CalendarTimeline({
   onSelect: (meetingKey: string) => void;
 }) {
   return (
-    <ol className="flex flex-col pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
-      {meetings.map((meeting, index) => {
-        const isSelected = meeting.key === selectedMeetingKey;
-
-        return (
-          <li key={meeting.key}>
-            <button
-              type="button"
-              onClick={() => onSelect(meeting.key)}
-              aria-pressed={isSelected}
-              className={`c97-row ${styles.timelineRow} min-h-[44px] w-full text-left`}
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderBottom: "1px solid var(--c97-rule)" }}
-            >
-              <span className="min-w-0" style={{ display: "block" }}>
-                <span className="c97-kicker" style={{ display: "block" }}>
-                  Round {index + 1}
-                </span>
-                <span className="flex items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                  <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-                  <span className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
-                    {meeting.name}
-                  </span>
-                </span>
-                <span className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", display: "block", color: "var(--c97-ink-2)" }}>
-                  {meeting.location}, {meeting.countryName}
-                </span>
+    <ol className={styles.timeline}>
+      {meetings.map((meeting, index) => (
+        <li key={meeting.key}>
+          <button
+            type="button"
+            onClick={() => onSelect(meeting.key)}
+            aria-pressed={meeting.key === selectedMeetingKey}
+            className={styles.timelineRow}
+          >
+            <span className={styles.timelineRound}>R{index + 1}</span>
+            <span className={styles.timelineName}>
+              <span className={styles.strong}>{meeting.name}</span>
+              <span className={styles.muted}>
+                {meeting.location}, {meeting.countryName}
               </span>
-              <span className="text-right text-sm" style={{ display: "block", color: "var(--c97-ink-2)" }}>
-                <span style={{ display: "block" }}>{formatDateLabel(meeting.startAt)}</span>
-                <span style={{ marginTop: "var(--c97-sp-0)", display: "block" }}>{meeting.status}</span>
-              </span>
-            </button>
-          </li>
-        );
-      })}
+            </span>
+            <span className={styles.timelineDate}>
+              <span>{formatDateLabel(meeting.startAt)}</span>
+              <span className={styles.muted}>{meeting.status}</span>
+            </span>
+          </button>
+        </li>
+      ))}
     </ol>
   );
 }
 
-function ViewToggle({
-  view,
-  activeView,
-  onSelect,
-}: {
-  view: Formula1View;
-  activeView: Formula1View;
-  onSelect: (view: Formula1View) => void;
-}) {
-  const isActive = view === activeView;
-
-  return (
-    <button type="button" onClick={() => onSelect(view)} aria-pressed={isActive} className="min-h-[44px] text-sm font-semibold">
-      {FORMULA1_VIEW_LABELS[view]}
-    </button>
-  );
-}
-
-function getRaceStripMeetings(
-  summary: Formula1Summary,
-  selectedMeeting: Formula1MeetingMeta | null
-) {
+function getRaceStripMeetings(summary: Formula1Summary, selectedMeeting: Formula1MeetingMeta | null) {
   const completed = summary.meetings.filter((meeting) => meeting.status === "completed").slice(-3);
   const live = summary.meetings.filter((meeting) => meeting.status === "live");
   const upcoming = summary.meetings.filter((meeting) => meeting.status === "upcoming").slice(0, 3);
@@ -858,87 +598,33 @@ function getRaceStripMeetings(
   return raceStrip.slice(0, 6);
 }
 
-/**
- * Placeholder card while a meeting's full detail (schedule + classification)
- * loads from /api/formula-1/meetings/[meetingId], or when that fetch fails.
- * Mirrors the async states the golf drilldown uses.
- */
-function MeetingDetailFallback({
-  meeting,
-  error,
-}: {
-  meeting: Formula1MeetingMeta;
-  error: string | null;
-}) {
-  return (
-    <div className="c97-panel">
-      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-        <p className="c97-kicker">{getMeetingStatusCopy(meeting)}</p>
-        <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-      </div>
-      <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
-      {error ? (
-        <div
-          role="alert"
-          style={{ padding: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", background: "var(--c97-field)", borderLeft: "3px solid var(--c97-negative)" }}
-        >
-          <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-            <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
-            <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink)" }}>
-              {error}
-            </p>
-          </div>
-        </div>
-      ) : (
-        <p className="mb-0 text-sm leading-6" role="status" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-          Loading race weekend detail…
-        </p>
-      )}
-    </div>
-  );
-}
-
 export function Formula1Client({ initialState, summary, initialMeeting }: Formula1ClientProps) {
   const searchParams = useSearchParams();
-  const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("meeting") !== null;
+  const hasManagedParams = searchParams.get("view") !== null || searchParams.get("meeting") !== null;
   const routeState = hasManagedParams ? normalizeFormula1State(searchParams) : initialState;
   const resolvedState = resolveFormula1State(routeState, summary);
-  const desiredHref = buildFormula1Href(
-    resolvedState,
-    searchParams,
-    summary.defaultMeetingKey
-  );
+  const desiredHref = buildFormula1Href(resolvedState, searchParams, summary.defaultMeetingKey);
 
   // Full meeting detail cache, keyed by meeting key. Seeded with everything
   // the summary already carries in full so the default paint needs no fetch;
   // other meetings load on demand from /api/formula-1/meetings/[meetingId].
-  const [meetingDetails, setMeetingDetails] = useState<Record<string, Formula1MeetingSummary>>(
-    () => {
-      const seeded: Record<string, Formula1MeetingSummary> = {};
-      for (const meeting of [summary.nextMeeting, summary.lastCompletedMeeting, initialMeeting]) {
-        if (meeting) {
-          seeded[meeting.key] = meeting;
-        }
+  const [meetingDetails, setMeetingDetails] = useState<Record<string, Formula1MeetingSummary>>(() => {
+    const seeded: Record<string, Formula1MeetingSummary> = {};
+    for (const meeting of [summary.nextMeeting, summary.lastCompletedMeeting, initialMeeting]) {
+      if (meeting) {
+        seeded[meeting.key] = meeting;
       }
-      return seeded;
     }
-  );
+    return seeded;
+  });
   const [meetingDetailErrors, setMeetingDetailErrors] = useState<Record<string, string>>({});
 
   const pushHref = useRouteSync("/formula-1", desiredHref);
-  const router = useRouter();
   const reduceMotion = useReducedMotion();
 
   function navigate(nextState: Formula1RouteState) {
     const resolvedNextState = resolveFormula1State(nextState, summary);
-    const href = buildFormula1Href(
-      resolvedNextState,
-      searchParams,
-      summary.defaultMeetingKey
-    );
-
-    pushHref(href);
+    pushHref(buildFormula1Href(resolvedNextState, searchParams, summary.defaultMeetingKey));
   }
 
   const selectedMeetingMeta = useMemo(
@@ -951,12 +637,8 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
     [resolvedState.meeting, summary]
   );
   const selectedMeetingKey = selectedMeetingMeta?.key ?? null;
-  const selectedMeeting = selectedMeetingKey
-    ? meetingDetails[selectedMeetingKey] ?? null
-    : null;
-  const selectedMeetingError = selectedMeetingKey
-    ? meetingDetailErrors[selectedMeetingKey] ?? null
-    : null;
+  const selectedMeeting = selectedMeetingKey ? meetingDetails[selectedMeetingKey] ?? null : null;
+  const selectedMeetingError = selectedMeetingKey ? meetingDetailErrors[selectedMeetingKey] ?? null : null;
 
   useEffect(() => {
     if (!selectedMeetingKey) {
@@ -1006,363 +688,173 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
   const highlightMeeting: Formula1MeetingMeta | null =
     summary.nextMeeting ?? summary.lastCompletedMeeting ?? selectedMeetingMeta;
-  const highlightIsUpcoming =
-    highlightMeeting?.status === "upcoming" || highlightMeeting?.status === "live";
-  const driverLeader = summary.driverStandings[0] ?? null;
-  const driverRunnerUp = summary.driverStandings[1] ?? null;
-  const constructorLeader = summary.constructorStandings[0] ?? null;
-  const constructorRunnerUp = summary.constructorStandings[1] ?? null;
-  const driverGap = driverLeader && driverRunnerUp ? driverLeader.points - driverRunnerUp.points : null;
-  const constructorGap =
-    constructorLeader && constructorRunnerUp ? constructorLeader.points - constructorRunnerUp.points : null;
   const raceStripMeetings = useMemo(
     () => getRaceStripMeetings(summary, selectedMeetingMeta),
     [selectedMeetingMeta, summary]
   );
-
-  const lead = PROJECT_PRESS[FORMULA1_ROUTE].lead;
-  const standfirst =
-    "I wanted the season readable at a glance, from who's leading the title race, to who gained ground at the last Grand Prix, to when lights go out next. I pull OpenF1's historical feeds into a checked-in snapshot on a schedule, so the page stays fast and never depends on a live session mid-race.";
   const hasData = summary.meetings.length > 0;
+  const { completedRaces, totalRaces } = summary.seasonMetrics;
+  const statusLine = `${completedRaces} of ${totalRaces} rounds complete · OpenF1 snapshot checked ${formatUpdatedAt(summary.generatedAt)}`;
+
+  const titleRow = (
+    <header className={styles.titleRow}>
+      <h1 className={styles.title}>Formula 1 Pulse</h1>
+      <p className={styles.standfirst}>
+        The {summary.season} championship as a timing tower, with the next Grand Prix beside it and
+        every race weekend a click away.
+      </p>
+      {hasData ? <p className={styles.status}>{statusLine}</p> : null}
+    </header>
+  );
 
   if (!hasData) {
     return (
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Formula 1 Pulse"
-        standfirst={`${standfirst} The season snapshot has not generated yet. The dashboard fills in on the next scheduled refresh.`}
-      />
+      <div className={styles.root}>
+        <div className={`c97-shell c97-frame ${styles.page}`}>
+          {titleRow}
+          <p className={styles.empty}>
+            The season snapshot has not generated yet. The board fills in on the next scheduled refresh.
+          </p>
+        </div>
+      </div>
     );
   }
 
   const towerKind: "drivers" | "constructors" = resolvedState.view === "constructors" ? "constructors" : "drivers";
   const towerStandings = towerKind === "constructors" ? summary.constructorStandings : summary.driverStandings;
-  // The hero's controls are links into the season band, since that is where a
-  // view or a race shows its result. The band keeps the real view switch.
-  const seasonHref = (view: Formula1View) =>
-    `${buildFormula1Href(
-      { view, meeting: selectedMeetingKey ?? summary.defaultMeetingKey },
-      searchParams,
-      summary.defaultMeetingKey
-    )}#season`;
+  const fullTableHref = `${buildFormula1Href(
+    { view: towerKind, meeting: selectedMeetingKey ?? summary.defaultMeetingKey },
+    searchParams,
+    summary.defaultMeetingKey
+  )}#${BOARD_ID}`;
+  const highlightRound = highlightMeeting
+    ? summary.meetings.findIndex((meeting) => meeting.key === highlightMeeting.key) + 1
+    : 0;
+
+  const detail = selectedMeeting ? (
+    <MeetingDetailPanel meeting={selectedMeeting} named={selectedMeeting.key === highlightMeeting?.key} />
+  ) : selectedMeetingMeta ? (
+    <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
+  ) : null;
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Formula 1 Pulse"
-        standfirst={standfirst}
-        meta={`${summary.sourceLabel} · checked ${formatUpdatedAt(summary.generatedAt)}`}
-        action={
-          <>
-        <div
-          data-c97-surface="paper"
-          className="c97-offset flex flex-col"
-          style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)", flex: "1 1 100%", maxWidth: "36rem" }}
-        >
-          <nav aria-label="Season views" className="flex flex-wrap items-center">
-            {FORMULA1_VIEW_OPTIONS.map((view) => {
-              const isCurrent = view === resolvedState.view;
-              return (
-                <Link
-                  key={view}
-                  href={seasonHref(view)}
-                  className="c97-btn-ghost"
-                  aria-current={isCurrent ? "true" : undefined}
-                  // The same ink and heavier rule a pressed ghost button takes.
-                  style={isCurrent ? { color: "var(--c97-ink)", textDecorationThickness: "2px" } : undefined}
-                >
-                  {FORMULA1_VIEW_LABELS[view]}
-                </Link>
-              );
-            })}
-          </nav>
-          {/* It opens on the button and not on the select, because a keyboard
-              walks a closed select one race at a time. */}
-          <form
-            className="flex flex-wrap items-end"
-            style={{ gap: "var(--c97-sp-2)" }}
-            onSubmit={(event) => {
-              event.preventDefault();
-              const meeting = new FormData(event.currentTarget).get("meeting");
-              if (typeof meeting !== "string" || !meeting) return;
-              const href = buildFormula1Href(
-                resolveFormula1State({ view: "calendar", meeting }, summary),
-                searchParams,
-                summary.defaultMeetingKey
-              );
-              router.push(`${href}#race-weekend-detail`);
-            }}
-          >
-            {/* The basis is wider than a phone's plate leaves beside the button,
-                so there the button wraps under and the race name keeps its room. */}
-            <label className="flex min-w-0 flex-col" style={{ gap: "var(--c97-sp-1)", flex: "1 1 14rem" }}>
-              <span className="c97-kicker">Race weekend</span>
-              <select name="meeting" className="c97-field" defaultValue={selectedMeetingKey ?? undefined}>
-                {summary.meetings.map((meeting) => (
-                  <option key={meeting.key} value={meeting.key}>
-                    {meeting.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button type="submit" className="c97-btn">
-              Open race
-            </button>
-          </form>
-        </div>
-          </>
-        }
-        readouts={[
-          {
-            label: "Driver leader",
-            value: driverLeader ? driverLeader.driverName : "TBD",
-            detail: driverLeader
-              ? driverGap !== null && driverRunnerUp
-                ? `+${formatPoints(driverGap)} over ${driverRunnerUp.driverName}`
-                : `${formatPoints(driverLeader.points)} pts`
-              : "Not published yet",
-          },
-          {
-            label: "Constructor leader",
-            value: constructorLeader ? constructorLeader.teamName : "TBD",
-            detail: constructorLeader
-              ? constructorGap !== null && constructorRunnerUp
-                ? `+${formatPoints(constructorGap)} over ${constructorRunnerUp.teamName}`
-                : `${formatPoints(constructorLeader.points)} pts`
-              : "Not published yet",
-          },
-          {
-            label: "Season",
-            value: `${summary.seasonMetrics.completedRaces} / ${summary.seasonMetrics.totalRaces}`,
-            detail: "rounds complete",
-          },
-        ]}
-      >
-        <TimingTowerSignature
-          standings={towerStandings}
-          kind={towerKind}
-          fullTableHref={seasonHref(towerKind)}
-        />
-      </Catalog97ProjectHero>
+    <div className={styles.root}>
+      <div className={`c97-shell c97-frame ${styles.page}`}>
+        {titleRow}
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Race weekend</h2>
-
-          {highlightMeeting ? (
-            <div className="c97-panel" style={{ marginTop: "var(--c97-sp-4)" }}>
-              <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-                <div>
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{getMeetingStatusCopy(highlightMeeting)}</p>
-                  <h3 className="c97-serif c97-h3 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                    <CountryFlag flagUrl={highlightMeeting.countryFlag} countryName={highlightMeeting.countryName} />
-                    {highlightMeeting.name}
-                  </h3>
-                  <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                    {describeVenue(highlightMeeting)}
-                  </p>
-                </div>
-                {highlightIsUpcoming ? (
-                  <StartLights />
-                ) : (
-                  <Flag aria-hidden="true" size={18} style={{ color: "var(--c97-ink-2)" }} />
-                )}
-              </div>
-
-              {highlightIsUpcoming ? (
-                <div style={{ marginTop: "var(--c97-sp-4)" }}>
-                  <RaceCountdown targetIso={highlightMeeting.raceStartsAt ?? highlightMeeting.startAt} />
-                </div>
-              ) : null}
-
-              <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
-                <span className="c97-chip">
-                  {highlightMeeting.raceStartsAt
-                    ? formatDateTimeLabel(highlightMeeting.raceStartsAt)
-                    : formatDateLabel(highlightMeeting.startAt)}
-                </span>
-                {highlightMeeting.circuitType ? <span className="c97-chip">{highlightMeeting.circuitType}</span> : null}
-                {highlightMeeting.hasSprint ? (
-                  <span className="c97-chip c97-chip-warning">Sprint weekend</span>
-                ) : null}
-                {formatGmtOffset(highlightMeeting.gmtOffset) ? (
-                  <span className="c97-chip">{formatGmtOffset(highlightMeeting.gmtOffset)}</span>
-                ) : null}
-              </div>
-            </div>
-          ) : (
-            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
-              The current snapshot does not include a published season schedule yet.
-            </p>
-          )}
-        </div>
-      </section>
-
-      <section id="season" className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">The season</h2>
-
-          <div className="c97-segmented" role="group" aria-label="Season view" style={{ marginTop: "var(--c97-sp-4)" }}>
-            {FORMULA1_VIEW_OPTIONS.map((view) => (
-              <ViewToggle
+        <div className={styles.toolbar}>
+          <div className={styles.switch} role="group" aria-label="Season view">
+            {FORMULA1_VIEW_OPTIONS.map((view: Formula1View) => (
+              <button
                 key={view}
-                view={view}
-                activeView={resolvedState.view}
-                onSelect={(nextView) =>
-                  navigate({
-                    view: nextView,
-                    meeting: selectedMeetingKey ?? summary.defaultMeetingKey,
-                  })
-                }
-              />
+                type="button"
+                aria-pressed={view === resolvedState.view}
+                onClick={() => navigate({ view, meeting: selectedMeetingKey ?? summary.defaultMeetingKey })}
+              >
+                {FORMULA1_VIEW_LABELS[view]}
+              </button>
             ))}
           </div>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-            {FORMULA1_VIEW_DESCRIPTIONS[resolvedState.view]}
-          </p>
+        </div>
 
-          {resolvedState.view === "overview" ? (
-            <div className="grid grid-cols-1 xl:grid-cols-2" style={{ gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}>
-              <div>
-                <SectionHeader
-                  kicker="Title race"
-                  title="Drivers"
-                  description="Bars scale to the leader so the championship spread reads in one look."
+        <div id={BOARD_ID} className={styles.board}>
+          <div className={styles.towerColumn}>
+            <TimingTowerSignature standings={towerStandings} kind={towerKind} fullTableHref={fullTableHref} />
+          </div>
+
+          <div className={styles.main}>
+            {highlightMeeting ? (
+              <NextRace meeting={highlightMeeting} round={highlightRound} total={totalRaces} />
+            ) : null}
+
+            {resolvedState.view === "overview" ? (
+              <>
+                <section className={styles.section} aria-labelledby="f1-constructors-heading">
+                  <h2 id="f1-constructors-heading" className={styles.h2}>
+                    Constructors
+                  </h2>
+                  <StandingsTable
+                    caption="Constructor championship"
+                    nameHeading="Team"
+                    rows={constructorRows(summary.constructorStandings)}
+                    emptyLabel="Constructor standings will show up after OpenF1 publishes a race-backed table."
+                  />
+                </section>
+
+                {summary.lastCompletedMeeting ? <PodiumDisplay meeting={summary.lastCompletedMeeting} /> : null}
+
+                <section className={styles.section} aria-labelledby="f1-weekends-heading">
+                  <h2 id="f1-weekends-heading" className={styles.h2}>
+                    Recent and upcoming weekends
+                  </h2>
+                  <MeetingStrip
+                    meetings={raceStripMeetings}
+                    selectedMeetingKey={selectedMeetingKey}
+                    onSelect={(meetingKey) => navigate({ view: "overview", meeting: meetingKey })}
+                  />
+                  {detail}
+                </section>
+              </>
+            ) : null}
+
+            {resolvedState.view === "drivers" ? (
+              <section className={styles.section} aria-labelledby="f1-drivers-heading">
+                <h2 id="f1-drivers-heading" className={styles.h2}>
+                  Driver championship
+                </h2>
+                <StandingsTable
+                  caption="Driver championship"
+                  nameHeading="Driver"
+                  rows={driverRows(summary.driverStandings)}
+                  emptyLabel="OpenF1 has not published a race-backed championship table yet."
                 />
-                <DriverLeaderboard standings={summary.driverStandings} limit={8} />
-              </div>
+              </section>
+            ) : null}
 
-              <div>
-                <SectionHeader
-                  kicker="Title race"
-                  title="Constructors"
-                  description="Team points against the garage out front, colored by livery."
+            {resolvedState.view === "constructors" ? (
+              <section className={styles.section} aria-labelledby="f1-constructors-heading">
+                <h2 id="f1-constructors-heading" className={styles.h2}>
+                  Constructor championship
+                </h2>
+                <StandingsTable
+                  caption="Constructor championship"
+                  nameHeading="Team"
+                  rows={constructorRows(summary.constructorStandings)}
+                  emptyLabel="Constructor standings will show up after OpenF1 publishes a race-backed table."
                 />
-                <ConstructorLeaderboard standings={summary.constructorStandings} limit={8} />
-              </div>
-            </div>
-          ) : null}
+              </section>
+            ) : null}
 
-          {resolvedState.view === "drivers" ? (
-            <div style={{ marginTop: "var(--c97-sp-5)" }}>
-              <SectionHeader
-                kicker="Standings"
-                title="Driver championship"
-                description="Point bars reflect the latest race-backed snapshot, refreshed on a schedule."
-              />
-              <DriverLeaderboard standings={summary.driverStandings} />
-            </div>
-          ) : null}
-
-          {resolvedState.view === "constructors" ? (
-            <div style={{ marginTop: "var(--c97-sp-5)" }}>
-              <SectionHeader
-                kicker="Standings"
-                title="Constructor championship"
-                description="Team-first so you can read race-to-race movement without hunting through both garage lineups."
-              />
-              <ConstructorLeaderboard standings={summary.constructorStandings} />
-            </div>
-          ) : null}
-
-          {resolvedState.view === "calendar" ? (
-            <div className="grid grid-cols-1 xl:grid-cols-[0.88fr_1.12fr]" style={{ gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}>
-              <div>
-                <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>Full season timeline</h3>
+            {resolvedState.view === "calendar" ? (
+              <section className={styles.section} aria-labelledby="f1-calendar-heading">
+                <h2 id="f1-calendar-heading" className={styles.h2}>
+                  Season calendar
+                </h2>
+                <div id="race-weekend-detail" className={styles.anchor}>
+                  {detail}
+                </div>
                 <CalendarTimeline
                   meetings={summary.meetings}
                   selectedMeetingKey={selectedMeetingKey}
                   onSelect={(meetingKey) => {
                     navigate({ view: "calendar", meeting: meetingKey });
-                    // Below the two-column width the detail sits under the whole
-                    // timeline, so the tap brings it into view.
-                    if (window.matchMedia("(max-width: 1279px)").matches) {
-                      document
-                        .getElementById("race-weekend-detail")
-                        ?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-                    }
+                    // The detail sits above the timeline, so a pick brings it into view.
+                    document
+                      .getElementById("race-weekend-detail")
+                      ?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
                   }}
                 />
-              </div>
-
-              {/* Where the hero's race lookup lands, since on a phone this
-                  panel sits under the whole timeline. */}
-              <div id="race-weekend-detail" style={{ scrollMarginTop: "var(--c97-sp-3)" }}>
-                {selectedMeeting ? (
-                  <MeetingDetailPanel meeting={selectedMeeting} />
-                ) : selectedMeetingMeta ? (
-                  <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
-                ) : null}
-              </div>
-            </div>
-          ) : null}
-
-          {resolvedState.view === "overview" && summary.lastCompletedMeeting ? (
-            <div style={{ marginTop: "var(--c97-sp-6)" }}>
-              <PodiumDisplay meeting={summary.lastCompletedMeeting} />
-            </div>
-          ) : null}
-
-          {resolvedState.view === "overview" ? (
-            <div style={{ marginTop: "var(--c97-sp-6)" }}>
-              <SectionHeader
-                kicker="Race strip"
-                title="Recent and upcoming weekends"
-                description="The latest results mixed with the next stops so the season never feels frozen in the past."
-              />
-
-              <MeetingStrip
-                meetings={raceStripMeetings}
-                selectedMeetingKey={selectedMeetingKey}
-                onSelect={(meetingKey) =>
-                  navigate({
-                    view: "overview",
-                    meeting: meetingKey,
-                  })
-                }
-              />
-
-              <div style={{ marginTop: "var(--c97-sp-4)" }}>
-                {selectedMeeting ? (
-                  <MeetingDetailPanel meeting={selectedMeeting} compact />
-                ) : selectedMeetingMeta ? (
-                  <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
-                ) : null}
-              </div>
-            </div>
-          ) : null}
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
-        <div className="c97-shell grid grid-cols-1 lg:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
-          <div>
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data notes</p>
-            <p className="c97-prose">
-              I pull OpenF1&apos;s historical endpoints for this route, then freeze the result into a
-              checked-in snapshot. That keeps the page fast and predictable while still letting the
-              calendar, standings, and classifications move with the season.
-            </p>
-          </div>
-
-          <div>
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Attribution</p>
-            <p className="c97-prose">
-              OpenF1 is community-run and unofficial. This dashboard is not affiliated with Formula 1,
-              the FIA, or Formula One Management. Read the{" "}
-              <a href={summary.sourceUrls.docs} className="c97-link">
-                docs
-              </a>{" "}
-              or the{" "}
-              <a href="https://openf1.org/" className="c97-link">
-                project FAQ
-              </a>
-              .
-            </p>
+              </section>
+            ) : null}
           </div>
         </div>
-      </section>
-    </>
+
+        <p className={styles.source}>
+          From OpenF1&apos;s community-run historical feeds (
+          <a href={summary.sourceUrls.docs}>docs</a>), frozen into a checked-in snapshot on a schedule.
+          This dashboard is not affiliated with Formula 1, the FIA, or Formula One Management.
+        </p>
+      </div>
+    </div>
   );
 }

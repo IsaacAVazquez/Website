@@ -19,8 +19,8 @@ import {
   LockBadge,
   PILL_BUTTON,
   SAMPLE_NOTICE,
-  SAMPLE_NOTICE_STYLE,
   SampleDataNotice,
+  ScorePoolsTitleBar,
   formatAge,
   formatKickoff,
   formatPoints,
@@ -28,6 +28,7 @@ import {
   leagueOptionLabel,
 } from "./score-pools-ui";
 import { groupBy } from "@/lib/utils";
+import "./score-pools.css";
 
 interface ScorePoolsClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -184,55 +185,37 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
       : null;
 
   return (
-    <section className="c97-band min-h-dvh" data-c97-surface="paper">
-      <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-        <header>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction tools</p>
-          <h1 className="c97-display">
-            Score{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
-              Pools
-            </em>
-          </h1>
-          <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            I run exact-score prediction pools, and this does the work I used to do by hand. It
-            suggests the exact score that should earn the most points under my pool&apos;s own
-            rules and my place in the standings. It&apos;s a decision aid built on betting-market
-            prices, so it carries the market&apos;s uncertainty, and each match&apos;s Detail shows
-            the working.
-          </p>
-          <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            Data as of {formatAge(snapshot.generatedAt, now)} · picks recompute whenever the
-            snapshot, the odds, or your settings change ·{" "}
-            <Link className="c97-link" href="/score-pools/tracker">
-              tracker
-            </Link>{" "}
-            ·{" "}
-            <Link className="c97-link" href="/score-pools/settings">
-              settings
-            </Link>
-          </p>
-        </header>
+    <div className="sp-root">
+      <div className="c97-shell c97-frame sp-page">
+        <ScorePoolsTitleBar title="Score Pools" current="sheet">
+          It suggests the exact score that should earn the most points under your pool&apos;s own
+          rules and your place in the standings, worked out from betting-market prices.
+        </ScorePoolsTitleBar>
 
-        <SampleDataNotice snapshot={snapshot} />
+        <div className="sp-status">
+          <p>
+            Data as of {formatAge(snapshot.generatedAt, now)} · picks recompute whenever the
+            snapshot, the odds, or your settings change
+          </p>
+          <SampleDataNotice snapshot={snapshot} />
+        </div>
 
         {pools.length === 0 || !activePool ? (
-          <section className="bg-[var(--c97-panel)]" style={{ padding: "var(--c97-sp-2)" }} aria-label="Create your first pool">
-            <h2 className="c97-serif c97-h2">Set up your first pool</h2>
-            <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
+          <section className="sp-section" aria-label="Create your first pool">
+            <h2 className="sp-h2">Set up your first pool</h2>
+            <p className="sp-muted">
               A pool is a league plus your scoring rules and your standing. Everything stays in
               this browser; nothing gets an account.
             </p>
             {/* The form sits ahead of the defaults note so a phone reaches the
                 create control sooner. */}
-            <div className="flex flex-wrap items-end" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
-              <label className="block">
-                <span className="c97-kicker">League</span>
+            <div className="sp-form-row">
+              <label className="sp-label">
+                <span>League</span>
                 <select
                   value={newPoolLeague}
                   onChange={(event) => setNewPoolLeague(event.target.value)}
                   className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
                 >
                   {snapshot.leagues.map((entry) => (
                     <option key={entry.key} value={entry.key} disabled={entry.fixtures.length === 0}>
@@ -241,15 +224,14 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   ))}
                 </select>
               </label>
-              <label className="block">
-                <span className="c97-kicker">Pool name</span>
+              <label className="sp-label">
+                <span>Pool name</span>
                 <input
                   type="text"
                   value={newPoolName}
                   onChange={(event) => setNewPoolName(event.target.value)}
                   placeholder="Office pool"
                   className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
                 />
               </label>
               <button
@@ -264,7 +246,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                 Create pool
               </button>
             </div>
-            <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+            <p className="sp-muted">
               A new pool starts at {DEFAULT_SCORING_RULES.exact} points for the exact score,{" "}
               {DEFAULT_SCORING_RULES.correctDifference} for the right winner and goal difference, and{" "}
               {DEFAULT_SCORING_RULES.correctOutcome} for the right winner or draw only, and you can
@@ -273,7 +255,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           </section>
         ) : (
           <>
-            <nav className="c97-segmented items-center" style={{ marginBottom: "var(--c97-sp-3)" }} aria-label="Pools and rounds">
+            <nav className="c97-segmented sp-toolbar" aria-label="Pools and rounds">
               {pools.map((pool) => (
                 <button
                   key={pool.id}
@@ -288,7 +270,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   {pool.name}
                 </button>
               ))}
-              <span className="hidden h-5 w-px bg-[var(--c97-rule)] sm:inline-block" style={{ marginInline: "var(--c97-sp-0)" }} aria-hidden="true" />
+              <span className="sp-divider" aria-hidden="true" />
               {rounds.map((round) => (
                 <button
                   key={round.label}
@@ -305,7 +287,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
               ))}
             </nav>
 
-            <p className="text-sm text-[var(--c97-ink-2)]">
+            <p className="sp-muted">
               {activePool.name} scores {activePool.rules.exact} points for the exact score,{" "}
               {activePool.rules.correctDifference} for the right winner and goal difference, and{" "}
               {activePool.rules.correctOutcome} for the right winner or draw only, counted on the{" "}
@@ -314,7 +296,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             </p>
 
             {league?.sample ? (
-              <p className={SAMPLE_NOTICE} style={SAMPLE_NOTICE_STYLE}>
+              <p className={SAMPLE_NOTICE}>
                 This league is sample data with fictional teams and hand-set odds, so you can try
                 the whole flow before wiring up a real competition.
                 {snapshot.leagues.some((entry) => !entry.sample && entry.fixtures.length > 0)
@@ -323,9 +305,9 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
               </p>
             ) : null}
             {league && league.notes.length > 0 && !league.sample ? (
-              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-0)" }}>
+              <div className="sp-notes">
                 {league.notes.map((note) => (
-                  <p key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</p>
+                  <p key={note} className={SAMPLE_NOTICE}>{note}</p>
                 ))}
               </div>
             ) : null}
@@ -341,7 +323,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {/* The pick sheet */}
             {analysisResult.analyzed.length > 0 ? (
               <section aria-label="Pick sheet">
-                <h2 className="c97-serif c97-h2">Pick sheet</h2>
+                <h2 className="sp-h2">Pick sheet</h2>
                 <div
                   className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }}
                   role="region"
@@ -440,10 +422,10 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
 
             {analysisResult.missingOdds.length > 0 ? (
               <section aria-label="Games without odds">
-                <h2 className="c97-serif c97-h2">Waiting on odds</h2>
-                <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+                <h2 className="sp-h2">Waiting on odds</h2>
+                <ul className="sp-rows">
                   {analysisResult.missingOdds.map((fixture) => (
-                    <li key={fixture.id} className="flex flex-wrap items-center justify-between border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
+                    <li key={fixture.id} className="sp-row sp-row-split">
                       <span>
                         {fixture.homeTeam} vs {fixture.awayTeam}
                         <span className="text-2xs text-[var(--c97-ink-2)]" style={{ marginLeft: "var(--c97-sp-1)" }}>
@@ -462,7 +444,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {/* Copyable submission table */}
             {submissionRows.length > 0 ? (
               <section aria-label="Submission table">
-                <h2 className="c97-serif c97-h2">Submission</h2>
+                <h2 className="sp-h2">Submission</h2>
                 <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   Just the match and the score, ready to paste into the pool. Rows marked mine are
                   picks you set yourself; the rest follow the recommendation.
@@ -515,12 +497,12 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {/* Played games in this round */}
             {played.length > 0 && activePool ? (
               <section aria-label="Played games">
-                <h2 className="c97-serif c97-h2">Played</h2>
-                <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+                <h2 className="sp-h2">Played</h2>
+                <ul className="sp-rows">
                   {played.map((fixture) => {
                     const submission = activePool.submissions[fixture.id];
                     return (
-                      <li key={fixture.id} className="flex flex-wrap items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
+                      <li key={fixture.id} className="sp-row">
                         <span className="font-semibold">
                           {fixture.homeTeam} vs {fixture.awayTeam}
                         </span>
@@ -563,7 +545,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           </>
         )}
 
-        <p className="border-t border-[var(--c97-rule)] text-3xs leading-relaxed text-[var(--c97-ink-2)]" style={{ paddingTop: "var(--c97-sp-2)" }}>
+        <p className="sp-disclaimer">
           This is a decision aid for prediction pools, not betting advice. The scorelines come from
           a market-calibrated model with real uncertainty; on any single game the modal pick is
           still probably wrong, and the edge only shows up across a lot of picks.
@@ -585,6 +567,6 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           onSaveManualOdds={(fixtureId, odds) => setManualOdds(activePool.id, fixtureId, odds)}
         />
       ) : null}
-    </section>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Formula1Snapshot, Formula1Summary } from "@/types/formula1";
 import { Formula1Client } from "../formula-1-client";
@@ -358,28 +358,7 @@ describe("Formula1Client", () => {
     });
   });
 
-  it("links from the hero into each season view, keeping the selected race", async () => {
-    currentSearchParams = new URLSearchParams("meeting=1281");
-
-    render(
-      <Formula1Client
-        initialState={DEFAULT_FORMULA1_STATE}
-        summary={summaryFixture}
-        initialMeeting={defaultMeetingDetail}
-      />
-    );
-    // The deep-linked race loads its detail, so that settles first.
-    await screen.findByText(/1 · George RUSSELL/);
-
-    expect(screen.getByRole("link", { name: "Overview" })).toHaveAttribute("aria-current", "true");
-    expect(screen.getByRole("link", { name: "Drivers" })).toHaveAttribute(
-      "href",
-      "/formula-1?meeting=1281&view=drivers#season"
-    );
-    expect(screen.getByRole("link", { name: "Calendar" })).not.toHaveAttribute("aria-current");
-  });
-
-  it("opens a race from the hero lookup in the calendar, on its detail", async () => {
+  it("switches the board with one view switch and leaves the tower link on the board", async () => {
     const user = userEvent.setup();
 
     render(
@@ -390,14 +369,34 @@ describe("Formula1Client", () => {
       />
     );
 
-    await user.selectOptions(screen.getByRole("combobox", { name: "Race weekend" }), "1281");
-    // Choosing alone goes nowhere, so a keyboard can walk the list.
-    expect(mockPush).not.toHaveBeenCalled();
-    await user.click(screen.getByRole("button", { name: "Open race" }));
+    const views = screen.getByRole("group", { name: "Season view" });
+    expect(within(views).getAllByRole("button").map((button) => button.textContent)).toEqual([
+      "Overview",
+      "Drivers",
+      "Constructors",
+      "Calendar",
+    ]);
+    expect(within(views).getByRole("button", { name: "Overview" })).toHaveAttribute("aria-pressed", "true");
+    await user.click(within(views).getByRole("button", { name: "Calendar" }));
+    expect(mockPush).toHaveBeenCalledWith("/formula-1?view=calendar", { scroll: false });
+  });
 
-    expect(mockPush).toHaveBeenCalledWith(
-      "/formula-1?view=calendar&meeting=1281#race-weekend-detail"
+  it("prints a row level on points with the leader as Level in the standings table", () => {
+    currentSearchParams = new URLSearchParams("view=constructors");
+    const level: Formula1Summary = {
+      ...summaryFixture,
+      constructorStandings: summaryFixture.constructorStandings.map((row) => ({ ...row, points: 132 })),
+    };
+
+    render(
+      <Formula1Client initialState={DEFAULT_FORMULA1_STATE} summary={level} initialMeeting={defaultMeetingDetail} />
     );
+
+    const mercedes = within(screen.getByRole("table", { name: "Constructor championship" }))
+      .getByText("Mercedes")
+      .closest("tr") as HTMLElement;
+    expect(within(mercedes).getByText("Level")).toBeInTheDocument();
+    expect(within(mercedes).queryByText("−0")).not.toBeInTheDocument();
   });
 
   it("fetches a deep-linked meeting's detail on demand and renders its classification", async () => {

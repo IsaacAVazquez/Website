@@ -1,173 +1,647 @@
-/* Fantasy Formula 1: the garage signature and the builder's small controls. */
+/*
+ * Fantasy Formula 1, drawn as a team builder. The route paints its own page
+ * with a light and a dark story, close to Formula 1 Pulse's so the two read
+ * as siblings. The garage slots and the lineup cards are the only boxes,
+ * since each is a pick or a team with its own figures. Liveries come from
+ * data and are the only saturated colour besides the risk labels.
+ */
 
-.c97-ff1-garage {
-  display: grid;
-  gap: var(--c97-sp-4);
-  padding: var(--c97-sp-3);
+.ff1-root {
+  --ff1-bg: #f4f4f1;
+  --ff1-raise: #e8e8e3;
+  --ff1-ink: #15151e;
+  --ff1-ink-2: #55555f;
+  --ff1-rule: rgba(21, 21, 30, 0.13);
+  --ff1-rule-strong: rgba(21, 21, 30, 0.42);
+  --ff1-focus: #1f5fbf;
+  --ff1-fill: #15151e;
+  --ff1-over: #c0261d;
+  --ff1-low: #1b6b34;
+  --ff1-medium: #8a5a00;
+  --ff1-high: #b3261e;
+
+  --c97-surface: var(--ff1-bg);
+  --c97-ink: var(--ff1-ink);
+  --c97-ink-2: var(--ff1-ink-2);
+  --c97-label: var(--ff1-ink-2);
+  --c97-rule: var(--ff1-rule);
+  --c97-field: var(--ff1-raise);
+  --c97-accent: var(--ff1-focus);
+
+  background: var(--ff1-bg);
+  color: var(--ff1-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-.c97-ff1-garage-tier {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(7.5rem, 100%), 1fr));
+.dark .ff1-root {
+  --ff1-bg: #101015;
+  --ff1-raise: #1c1c24;
+  --ff1-ink: #ececf1;
+  --ff1-ink-2: #a9a9b6;
+  --ff1-rule: rgba(236, 236, 241, 0.13);
+  --ff1-rule-strong: rgba(236, 236, 241, 0.4);
+  --ff1-focus: #8db4f5;
+  --ff1-fill: #ececf1;
+  --ff1-over: #ff8a80;
+  --ff1-low: #7cc47f;
+  --ff1-medium: #f0b450;
+  --ff1-high: #ff8a80;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.ff1-root :where(h1, h2, h3) {
+  font-family: var(--c97-font-body);
+  color: var(--ff1-ink);
+  margin: 0;
+}
+
+.ff1-root :where(p, ol, ul, li, dl, dt, dd) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.ff1-root :where(ol, ul) {
+  list-style: none;
+}
+
+.ff1-root :where(button:focus-visible, summary:focus-visible, [tabindex]:focus-visible) {
+  outline: 2px solid var(--ff1-focus);
+  outline-offset: 2px;
+}
+
+.ff1-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+.ff1-titlerow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.ff1-title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.ff1-standfirst {
+  max-inline-size: none;
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-status {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-h2 {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ff1-strong {
+  font-weight: 700;
+}
+
+.ff1-mono {
+  font-family: var(--c97-font-mono);
+}
+
+.ff1-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--ff1-ink-2);
+}
+
+/* ---- Builder: the garage, with the three lineups beside it ------------ */
+
+.ff1-builder {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-2);
 }
 
-.c97-ff1-box {
-  position: relative;
+.ff1-garage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.ff1-garage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2) var(--c97-sp-3);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--ff1-rule-strong);
+}
+
+.ff1-summary {
+  display: flex;
+  gap: var(--c97-sp-4);
+  order: 3;
+  flex-basis: 100%;
+}
+
+.ff1-garage-head .ff1-btn {
+  order: 2;
+}
+
+@media screen and (min-width: 640px) {
+  .ff1-summary {
+    order: 0;
+    flex-basis: auto;
+    margin-left: auto;
+  }
+
+  .ff1-garage-head .ff1-btn {
+    order: 0;
+  }
+}
+
+.ff1-summary > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.ff1-summary dt {
+  order: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-summary dd {
+  font-size: 0.75rem;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-summary .ff1-summary-value {
+  font-family: var(--c97-font-mono);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--ff1-ink);
+}
+
+/* On a phone a pick takes a full row and an open slot half of one, so an empty team stays short. */
+.ff1-slots {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--c97-sp-1);
-  min-height: 96px;
-  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-panel);
 }
 
-.c97-ff1-box[data-empty="true"] {
-  border-style: dashed;
-  align-content: center;
+.ff1-slot:not([data-empty]) {
+  grid-column: span 2;
 }
 
-.c97-ff1-box-stripe {
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  width: 5px;
+@media screen and (min-width: 640px) {
+  .ff1-slots {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .ff1-slot:not([data-empty]) {
+    grid-column: auto;
+  }
+
+  .ff1-slots-constructors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.c97-ff1-box-name {
-  font-size: var(--c97-fs-body);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* From 960px the two tiers share one row, five drivers then two constructors. */
+.ff1-slot-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
 }
 
-/* The short form a phone's driver box prints. */
-.c97-ff1-box-code {
+@media screen and (min-width: 960px) {
+  .ff1-slot-row {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 2fr);
+  }
+}
+
+/* A slot is a pick: livery across the top, its figures, and its two controls. */
+.ff1-slot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name actions"
+    "kind actions";
+  align-items: center;
+  column-gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding: var(--c97-sp-1) var(--c97-sp-1) var(--c97-sp-1) var(--c97-sp-2);
+  border: 1px solid var(--ff1-rule);
+  border-left: 4px solid var(--ff1-ink-2);
+  background: var(--ff1-raise);
+  font-size: 0.8125rem;
+}
+
+.ff1-slot[data-empty="true"] .ff1-slot-kind {
   display: none;
 }
 
-.c97-ff1-box-figures {
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
+.ff1-slot[data-empty="true"] {
+  border-style: dashed;
+  border-left-style: solid;
+  border-left-color: var(--ff1-rule-strong);
+  background: none;
 }
 
-.c97-ff1-box-empty {
-  margin: 0;
-  font-size: var(--c97-fs-small);
-  color: var(--c97-label);
+@media screen and (min-width: 640px) {
+  .ff1-slot {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "kind"
+      "name"
+      "figures"
+      "actions";
+    align-content: start;
+    row-gap: 2px;
+    min-height: 6.25rem;
+    padding: var(--c97-sp-1);
+    border-left-width: 1px;
+    border-top: 4px solid var(--ff1-ink-2);
+  }
+
+  .ff1-slot[data-empty="true"] .ff1-slot-kind {
+    display: block;
+  }
+
+  .ff1-slot[data-empty="true"] {
+    min-height: 4rem;
+    border-left-style: dashed;
+    border-left-color: var(--ff1-rule);
+    border-top-style: solid;
+    border-top-color: var(--ff1-rule-strong);
+    align-content: center;
+  }
 }
 
-.c97-ff1-box-lock {
-  position: absolute;
-  top: var(--c97-sp-1);
-  right: var(--c97-sp-1);
-  display: inline-flex;
-  color: var(--c97-ink-2);
+/* A phone draws the livery down the left edge, where a row reads it, and a wider screen across the top. */
+.ff1-slot:not([data-empty]) {
+  border-left-color: var(--ff1-livery);
 }
 
-.c97-ff1-budget {
+@media screen and (min-width: 640px) {
+  .ff1-slot:not([data-empty]) {
+    border-left-color: var(--ff1-rule);
+    border-top-color: var(--ff1-livery);
+  }
+}
+
+.ff1-slot-kind {
+  grid-area: kind;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-slot-locked {
+  color: var(--ff1-ink);
+}
+
+.ff1-slot-name {
+  grid-area: name;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.ff1-slot-empty {
+  grid-area: name;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-slot-figures {
+  display: none;
+  grid-area: figures;
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-slot-actions {
+  grid-area: actions;
+  display: flex;
+  gap: var(--c97-sp-0);
+}
+
+@media screen and (min-width: 640px) {
+  .ff1-slot-figures {
+    display: block;
+  }
+
+  .ff1-slot-actions {
+    margin-top: auto;
+    padding-top: var(--c97-sp-1);
+  }
+}
+
+.ff1-budget-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.ff1-budget {
   position: relative;
-  height: 14px;
-  background: var(--c97-field);
+  height: 12px;
+  background: var(--ff1-raise);
+  box-shadow: inset 0 0 0 1px var(--ff1-rule);
 }
 
-.c97-ff1-budget-fill {
+.ff1-budget-fill {
   position: absolute;
   inset-block: 0;
   left: 0;
-  background: var(--c97-ink);
+  background: var(--ff1-fill);
 }
 
-.c97-ff1-budget-over {
+.ff1-budget-over {
   position: absolute;
   inset-block: 0;
-  background: var(--c97-negative);
+  background: var(--ff1-over);
 }
 
-.c97-ff1-budget-line {
+.ff1-budget-line {
   position: absolute;
   inset-block: -3px;
   width: 2px;
-  background: var(--c97-ink-2);
+  background: var(--ff1-ink-2);
 }
 
-.c97-ff1-avatar {
+.ff1-budget-text {
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+}
+
+.ff1-garage-foot {
   display: flex;
-  height: 40px;
-  width: 40px;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
-  font-size: var(--c97-fs-small);
-  font-weight: 600;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+@media screen and (min-width: 960px) {
+  .ff1-garage-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: var(--c97-sp-3);
+  }
+}
+
+.ff1-disclaimer {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ff1-ink-2);
+}
+
+/* ---- The three optimizer lineups --------------------------------------- */
+
+.ff1-lineups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+
+.ff1-lineups .ff1-h2 {
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--ff1-rule-strong);
+}
+
+.ff1-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--c97-sp-1);
+}
+
+/* On a phone the three lineups are one swipeable row, so the slate stays close. */
+@media screen and (max-width: 767px) {
+  .ff1-cards {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: var(--c97-sp-1);
+  }
+
+  .ff1-card {
+    flex: 0 0 min(19rem, 86%);
+  }
+}
+
+.ff1-card {
+  row-gap: 2px;
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  border: 1px solid var(--ff1-rule);
+  font-size: 0.8125rem;
+}
+
+.ff1-card[data-current="true"] {
+  border-color: var(--ff1-ink);
+}
+
+/* A card is its figures with the button beside them, so the row stays short. */
+.ff1-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--c97-sp-2);
+}
+
+.ff1-card > :not(.ff1-btn, .ff1-card-current) {
+  grid-column: 1;
+}
+
+.ff1-card .ff1-btn,
+.ff1-card .ff1-card-current {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  align-self: center;
+}
+
+.ff1-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--c97-sp-2);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--c97-ink-2);
+  color: var(--ff1-ink-2);
 }
 
-.c97-ff1-avatar img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
+.ff1-card-head > span {
+  white-space: nowrap;
 }
 
-.c97-ff1-btn {
+.ff1-card-points {
+  font-family: var(--c97-font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  color: var(--ff1-ink);
+}
+
+.ff1-card-drivers {
+  font-weight: 700;
+}
+
+.ff1-card-meta {
+  color: var(--ff1-ink-2);
+}
+
+.ff1-card-meta.ff1-mono {
+  font-size: 0.75rem;
+}
+
+.ff1-card-current {
+  font-weight: 700;
+}
+
+.ff1-card-current {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ---- Controls ---------------------------------------------------------- */
+
+.ff1-btn {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
   gap: var(--c97-sp-1);
-  border: 1px solid var(--c97-ink-2);
+  border: 1px solid var(--ff1-rule-strong);
   background: none;
-  padding: 0 var(--c97-sp-3);
-  color: var(--c97-ink);
+  padding: 0 var(--c97-sp-2);
+  color: var(--ff1-ink);
   font: inherit;
-  font-size: var(--c97-fs-small);
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 700;
   cursor: pointer;
-}
-
-.c97-ff1-btn,
-.c97-ff1-icon-btn {
   transition:
     background-color 160ms var(--c97-ease),
     border-color 150ms var(--c97-ease),
-    color 150ms var(--c97-ease),
     transform 120ms var(--c97-ease);
 }
 
-.c97-ff1-btn:where(:not(:disabled)):hover {
-  background: var(--c97-field);
+.ff1-btn:where(:not(:disabled)):hover {
+  background: var(--ff1-raise);
 }
 
-/* A press answers the way the shared .c97-btn does. */
-.c97-ff1-btn:where(:not(:disabled)):active,
-.c97-ff1-icon-btn:active {
+.ff1-btn-add:where(:not(:disabled)) {
+  border-color: var(--ff1-ink);
+}
+
+.ff1-btn:where(:not(:disabled)):active,
+.ff1-icon-btn:active {
   transform: translateY(1px);
 }
 
-.c97-ff1-btn:disabled {
+.ff1-btn:disabled {
   border-style: dashed;
-  color: var(--c97-ink-2);
+  color: var(--ff1-ink-2);
   cursor: not-allowed;
 }
 
-.c97-ff1-icon-btn {
+.ff1-icon-btn {
   display: inline-flex;
   min-height: 44px;
   min-width: 44px;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--c97-ink-2);
+  border: 1px solid var(--ff1-rule);
+  background: var(--ff1-bg);
+  color: var(--ff1-ink);
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--c97-ease),
+    transform 120ms var(--c97-ease);
+}
+
+.ff1-icon-btn:hover {
+  background: var(--ff1-raise);
+}
+
+.ff1-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-2);
+}
+
+
+
+.ff1-switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.ff1-switch button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 0;
+  border-bottom: 3px solid transparent;
   background: none;
-  color: var(--c97-ink);
+  color: var(--ff1-ink-2);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
   cursor: pointer;
 }
 
-.c97-ff1-icon-btn:hover {
-  background: var(--c97-field);
+.ff1-switch button:hover {
+  color: var(--ff1-ink);
+}
+
+.ff1-switch button[aria-pressed="true"] {
+  color: var(--ff1-ink);
+  border-bottom-color: var(--ff1-ink);
+}
+
+/* ---- The slate --------------------------------------------------------- */
+
+.ff1-slate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.ff1-slate-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--c97-sp-3);
+  background: var(--ff1-bg);
+  border-bottom: 1px solid var(--ff1-rule-strong);
 }
 
 /*
@@ -177,72 +651,151 @@
  * scrolls (window.scrollX stays 0), which reads as a false horizontal
  * overflow to a scrollWidth-based probe.
  */
-.c97-ff1-table-scroll {
+.ff1-table-scroll {
   overflow-x: auto;
   contain: layout;
 }
 
-/* The one suggested lineup, under the budget bar in the garage plate. */
-.c97-ff1-suggest {
+.ff1-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.ff1-table th {
+  padding: var(--c97-sp-1);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--ff1-ink-2);
+  border-bottom: 1px solid var(--ff1-rule-strong);
+}
+
+.ff1-table td {
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--ff1-rule);
+  vertical-align: middle;
+}
+
+.ff1-table [data-align="end"] {
+  text-align: right;
+  font-family: var(--c97-font-mono);
+}
+
+.ff1-table td:first-child {
+  padding-left: var(--c97-sp-2);
+}
+
+.ff1-table tr[data-selected="true"] td {
+  background: var(--ff1-raise);
+}
+
+.ff1-asset {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.ff1-asset-text {
+  min-width: 0;
+}
+
+.ff1-asset-meta {
+  font-size: 0.75rem;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-avatar {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--ff1-raise);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ff1-ink-2);
+}
+
+.ff1-avatar img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.ff1-risk {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.ff1-risk::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ff1-risk-low { color: var(--ff1-low); }
+.ff1-risk-medium { color: var(--ff1-medium); }
+.ff1-risk-high { color: var(--ff1-high); }
+
+/* A phone row's disclosure: price and projection always, the rest on open. */
+.ff1-more summary {
+  display: flex;
+  min-height: 44px;
   align-items: center;
   justify-content: space-between;
-  gap: var(--c97-sp-2);
-  border-top: 1px solid var(--c97-rule);
-  padding-top: var(--c97-sp-3);
+  gap: var(--c97-sp-1);
+  cursor: pointer;
+  list-style: none;
 }
 
-.c97-ff1-suggest p {
-  margin: 0;
+.ff1-more summary::-webkit-details-marker {
+  display: none;
 }
 
-/* The asset board. From 640px it is the full eight-column table. */
-.c97-ff1-table {
-  min-width: 760px;
+.ff1-more-toggle {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-underline-offset: 4px;
 }
 
-/*
- * At phone width the garage is a strip: five driver codes across and the two
- * constructors under them, with no price or points. Five full boxes two
- * across ran about 560px and repeated the Current team list that follows the
- * hero, which has every pick's figures and its controls.
- */
-@media screen and (max-width: 479px) {
-  .c97-ff1-garage {
-    gap: var(--c97-sp-2);
-    padding: var(--c97-sp-2);
-  }
+.ff1-more:not([open]) [data-when="open"],
+.ff1-more[open] [data-when="closed"] {
+  display: none;
+}
 
-  .c97-ff1-garage-tier {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--c97-sp-1);
-  }
+.ff1-more-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-1);
+}
 
-  .c97-ff1-box {
-    min-height: 44px;
-    align-content: center;
-    padding: var(--c97-sp-1) var(--c97-sp-0) var(--c97-sp-1) var(--c97-sp-2);
-  }
+.ff1-more-list dt {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ff1-ink-2);
+}
 
-  .c97-ff1-box .c97-kicker,
-  .c97-ff1-box-figures,
-  .c97-ff1-box-full {
-    display: none;
-  }
-
-  .c97-ff1-box-code {
-    display: inline;
-  }
-
-  .c97-ff1-box-name {
-    font-size: var(--c97-fs-small);
-  }
-
-  .c97-ff1-box-lock {
-    top: 2px;
-    right: 2px;
-  }
+.ff1-more-wide {
+  grid-column: 1 / -1;
 }
 
 /*
@@ -253,21 +806,69 @@
  * sideways.
  */
 @media print, screen and (max-width: 639px) {
-  .c97-ff1-table {
+  .ff1-table {
     min-width: 0;
     table-layout: fixed;
   }
 
-  .c97-ff1-table th,
-  .c97-ff1-table td {
+  .ff1-table th,
+  .ff1-table td {
     padding-inline: var(--c97-sp-1);
   }
 
-  .c97-ff1-table .c97-ff1-col-action {
-    width: 8rem;
+  .ff1-table .ff1-col-action {
+    width: 7.5rem;
   }
 
-  .c97-ff1-table .c97-ff1-btn {
-    padding-inline: var(--c97-sp-2);
+  .ff1-table .ff1-btn {
+    padding-inline: var(--c97-sp-1);
+  }
+}
+
+/* ---- How the model scores, in prose ---------------------------------- */
+
+.ff1-rules {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--ff1-rule);
+}
+
+.ff1-rules p {
+  max-inline-size: 72ch;
+  font-size: var(--c97-fs-small);
+  line-height: 1.55;
+  color: var(--ff1-ink-2);
+}
+
+@media screen and (min-width: 640px) {
+  .ff1-slot-phone-price {
+    display: none;
+  }
+}
+
+/* Last, so it outranks the switch rules above: a phone scrolls the slate controls in one row. */
+@media screen and (max-width: 639px) {
+  .ff1-controls {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    gap: var(--c97-sp-1);
+  }
+
+  .ff1-switch {
+    flex-wrap: nowrap;
+  }
+
+  .ff1-switch button {
+    padding: 0 var(--c97-sp-1);
+    white-space: nowrap;
+  }
+}
+
+@media print {
+  .ff1-slate-toolbar {
+    position: static;
   }
 }

@@ -242,16 +242,18 @@ describe("FantasyFormula1Client", () => {
     });
   });
 
-  it("prints the unofficial-model qualifier with the projected points", () => {
+  it("prints the projection with the one not-the-official-game line beside it", () => {
     render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={createSummary()} />);
 
-    const readout = screen.getByText("Projected points", { selector: "dt" }).parentElement as HTMLElement;
-    expect(within(readout).getByText("Unofficial model estimate · 0/7 picked")).toBeInTheDocument();
-    // The longer note stays under the hero.
-    expect(screen.getByText(/It is\s+not the official F1 Fantasy game\./)).toBeInTheDocument();
+    const garage = screen.getByTestId("fantasy-formula-1-lineup");
+    const readout = within(garage).getByText("Projected points", { selector: "dt" }).parentElement as HTMLElement;
+    expect(within(readout).getByText("0 of 7 picked")).toBeInTheDocument();
+    // The page says it is not the official game once, in the garage beside the projection.
+    expect(screen.getAllByText(/not the official F1 Fantasy game/)).toHaveLength(1);
+    expect(within(garage).getByText(/It is\s+not the official F1 Fantasy game\./)).toBeInTheDocument();
   });
 
-  it("offers one suggested lineup in the hero and makes it the team", async () => {
+  it("offers three model lineups beside the garage and makes one the team", async () => {
     const user = userEvent.setup();
     // The optimizer returns no lineup for the base slate's six drivers, so
     // this one adds three more for it to fill a team from.
@@ -266,14 +268,15 @@ describe("FantasyFormula1Client", () => {
     });
     render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={deeperSlate} />);
 
-    const suggestion = screen.getByTestId("fantasy-formula-1-suggestion");
-    expect(within(suggestion).getByText(/unofficial model estimate/)).toBeInTheDocument();
-    await user.click(within(suggestion).getByRole("button", { name: "Use this lineup" }));
+    const lineups = screen.getByTestId("fantasy-formula-1-lineups");
+    const first = within(lineups).getByRole("button", { name: "Use option 1" });
+    await user.click(first);
 
-    const lineup = screen.getByTestId("fantasy-formula-1-lineup");
-    expect(within(lineup).getAllByRole("button", { name: /^Remove / })).toHaveLength(7);
-    expect(within(suggestion).getByText("This is your current team.")).toBeInTheDocument();
-    expect(within(suggestion).queryByRole("button")).not.toBeInTheDocument();
+    const garage = screen.getByTestId("fantasy-formula-1-lineup");
+    expect(within(garage).getAllByRole("button", { name: /^Remove / })).toHaveLength(7);
+    const card = within(lineups).getByText("Option 1").closest("li") as HTMLElement;
+    expect(within(card).getByText("Your team")).toBeInTheDocument();
+    expect(within(card).queryByRole("button")).not.toBeInTheDocument();
   });
 
   it("keeps an asset's price and projection in its own cell for a phone, with the rest behind More", () => {
