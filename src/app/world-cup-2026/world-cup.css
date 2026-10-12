@@ -678,3 +678,24 @@
     font-size: 0.75rem;
   }
 }
+
+/* On paper the whole poster fits the sheet's width, so it never clips at the champion. */
+@media print {
+  .wcup-bracket-board > .c97-bracket-scroll {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .c97-bracket-scroll::after {
+    display: none;
+  }
+
+  .c97-bracket-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .wcup-bracket {
+    break-inside: avoid;
+  }
+}

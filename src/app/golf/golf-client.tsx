@@ -197,7 +197,7 @@ function LeaderboardTable({
                       aria-haspopup="dialog"
                       className="golf-name"
                     >
-                      <span className="golf-name-text">{row.playerName}</span>
+                      <span className="golf-name-text">{row.playerName}</span>{" "}
                       <span className="golf-country">{row.country}</span>
                     </button>
                   </td>

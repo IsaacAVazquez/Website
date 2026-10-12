@@ -115,6 +115,8 @@
   align-items: center;
   gap: var(--c97-sp-1);
   width: 100%;
+  min-width: 0;
+  overflow: hidden;
   min-height: 44px;
   padding: 0;
   border: 0;
@@ -133,9 +135,11 @@
 }
 
 .mlb-name {
+  flex: 0 1 auto;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: var(--c97-font-body);
   font-size: 0.875rem;
   color: var(--sb-ink-2);
@@ -194,7 +198,13 @@
   width: 3.25rem;
 }
 
-/* A phone's column is about 358px, so the club name gives way to the code. */
+/* A phone's column is about 358px, and a printed column about as narrow, so the club name gives way to the code. */
+@media print {
+  .mlb-name {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 479px) {
   .mlb-name {
     display: none;

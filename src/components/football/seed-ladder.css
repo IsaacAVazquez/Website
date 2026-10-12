@@ -154,7 +154,8 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .sl-conference {
+  /* A conference runs longer than a sheet, so its table breaks between bands and keeps each row whole. */
+  .sl-table tr {
     break-inside: avoid;
   }
 }
