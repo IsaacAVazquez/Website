@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { EarthquakeSignature } from "../EarthquakeSignature";
 import { EARTHQUAKE_RECENT_LIMIT, type QuakeEvent } from "@/types/earthquake";
+import { seismogramSpikes } from "../seismogram";
 
 const end = new Date("2026-09-24T12:00:00Z");
 const quake = (id: string, hoursAgo: number, magnitude: number, place = `${id} place`): QuakeEvent =>
@@ -18,13 +19,13 @@ it("labels the trace with the day's strongest quake even when the log no longer 
   const { container } = render(
     <EarthquakeSignature
       quakes={[quake("a", 1, 3.1), quake("b", 2, 2.9)]}
-      windowEnd={end}
+      spikes={seismogramSpikes([quake("a", 1, 3.1), quake("b", 2, 2.9)], end)}
       strongest={{ magnitude: 6.4, place: "Kermadec Islands" }}
       selectedId={null}
       onSelect={() => {}}
     />,
   );
-  expect(container.querySelector(".c97-quake-label")?.textContent).toMatch(/M6\.4 Kermadec Islands/);
+  expect(container.querySelector(".eq-trace-label")?.textContent).toMatch(/M6\.4 Kermadec Islands/);
 });
 
 it("marks the part of the day a capped log cannot show", () => {
@@ -32,7 +33,7 @@ it("marks the part of the day a capped log cannot show", () => {
   const { container } = render(
     <EarthquakeSignature
       quakes={quakes}
-      windowEnd={end}
+      spikes={seismogramSpikes(quakes, end)}
       strongest={{ magnitude: 3, place: "q0 place" }}
       selectedId={null}
       onSelect={() => {}}

@@ -2,7 +2,7 @@
 
 import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { AlertTriangle, DatabaseZap, RefreshCcw } from "lucide-react";
+import { AlertTriangle, RefreshCcw } from "lucide-react";
 import type {
   MissionControlInitialData,
   MissionControlSearchState,
@@ -11,24 +11,22 @@ import type {
   MissionLaunchDetail,
   MissionControlStatus,
 } from "@/types/spacex";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { formatUpdatedAt } from "@/lib/date-formatters";
-import { MissionControlHero } from "@/components/spacex/MissionControlHero";
+import { MissionControlHero, type MissionFleetFigure } from "@/components/spacex/MissionControlHero";
 import { MissionLaunchBoard } from "@/components/spacex/MissionLaunchBoard";
 import { MissionLaunchTape } from "@/components/spacex/MissionLaunchTape";
 import { MissionCadenceStrip } from "@/components/spacex/MissionCadenceStrip";
-import { MissionStatFascia, type MissionStatFasciaCell } from "@/components/spacex/MissionStatFascia";
 import { MissionVehicleCatalog } from "@/components/spacex/MissionVehicleCatalog";
 import { MissionRecoveryPanel } from "@/components/spacex/MissionRecoveryPanel";
 import { DeferredMissionDrawer } from "@/components/spacex/DeferredMissionDrawer";
+import { aggregateMissionRecovery } from "@/lib/spacexRecovery";
 import {
   buildMissionControlHref,
   DEFAULT_MISSION_CONTROL_STATE,
-  MISSION_CONTROL_ROUTE,
   normalizeMissionControlState,
 } from "./spacex-mission-control-state";
+import "./spacex-mission-control.css";
 
 interface SpaceXMissionControlClientProps {
   initialState: MissionControlSearchState;
@@ -474,13 +472,10 @@ export function SpaceXMissionControlClient({
       ? "Refreshing SpaceX feed"
       : "SpaceX data cached locally";
 
-  // Fused stat fascia — four cells, all computed from the same
-  // `buildInsights()` aggregate the board already relies on elsewhere. Only
-  // fields that are actually populated today are shown (see the mission
-  // control audit: "boosters landed"/"fleet leader" have no backing data
-  // until Recovery's core records are populated upstream), so nothing here
-  // is fabricated.
-  const statFasciaCells: MissionStatFasciaCell[] = useMemo(() => {
+  // The fleet figures, all from the same `buildInsights()` aggregate the board
+  // relies on elsewhere, printed as one line of text in the masthead. Only
+  // fields that are populated today are shown, so nothing here is fabricated.
+  const fleetFigures: MissionFleetFigure[] = useMemo(() => {
     const insightByLabel = new Map((summary?.insights ?? []).map((insight) => [
       insight.label.toLowerCase(),
       insight,
@@ -496,11 +491,21 @@ export function SpaceXMissionControlClient({
     return rows
       .map(({ key, label }) => {
         const insight = insightByLabel.get(key);
-        if (!insight) return null;
-        return { label, value: insight.value, detail: insight.description };
+        return insight ? { label, value: insight.value } : null;
       })
-      .filter((cell): cell is MissionStatFasciaCell => Boolean(cell));
+      .filter((figure): figure is MissionFleetFigure => Boolean(figure));
   }, [summary]);
+
+  // Recovery has a tab only when the snapshot carries booster and landing records.
+  // Keyed on the server snapshot's details, which never change after the first render.
+  const launchDetails = initialData?.launchDetails;
+  const hasRecovery = useMemo(
+    () => aggregateMissionRecovery(launchDetails ?? {}) !== null,
+    [launchDetails]
+  );
+  const sectionOptions = hasRecovery
+    ? SECTION_OPTIONS
+    : SECTION_OPTIONS.filter((option) => option.key !== "recovery");
 
   function handleCloseDrawer() {
     setDetailLoading(false);
@@ -509,43 +514,48 @@ export function SpaceXMissionControlClient({
     updateRouteState({ launch: null, panel: DEFAULT_MISSION_CONTROL_STATE.panel });
   }
 
-  const onSectionTabKey = useTablistKeyboard(SECTION_OPTIONS, (option) => setSection(option.key));
-  const lead = PROJECT_PRESS[MISSION_CONTROL_ROUTE].lead;
-  const standfirst =
-    "I built this launch board like an operations room, with the next mission, the launch queue, and a detail panel for rockets, crew, payloads, capsules, and pads. Everything stays connected so I don't lose the thread when I drill in.";
+  const onSectionTabKey = useTablistKeyboard(sectionOptions, (option) => setSection(option.key));
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="SpaceX Mission Control"
-        standfirst={standfirst}
-        meta={`Launch Library 2 data from The Space Devs · ${
-          summary ? `snapshot from ${formatUpdatedAt(summary.generatedAt)}` : liveStatusLabel
-        }`}
-      >
-        {/*
-          The card's own Inspect button and the manifest both sit more than a
-          phone screen down, so the two actions repeat here above the card.
-        */}
-        <div
-          data-testid="mission-quick-actions"
-          className="flex flex-wrap items-center"
-          style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-3)" }}
-        >
-          {summary?.heroLaunch ? (
-            <button type="button" className="c97-btn" onClick={handleHeroInspect}>
-              {summary.heroMode === "fallback" ? "Inspect the latest mission" : "Inspect the next mission"}
-            </button>
+    <div className="sx-root">
+      <div className="sx-console">
+        <div className="c97-shell c97-frame sx-console-inner">
+          <header className="sx-head">
+            <div className="sx-head-text">
+              <h1 className="sx-title">SpaceX Mission Control</h1>
+              <p className="sx-standfirst">
+                The next launch, the launch queue, and every mission&apos;s rocket, payload, crew,
+                capsule, and pad, from one board.
+              </p>
+            </div>
+            <div className="sx-status">
+              <p className="sx-status-line">
+                <span className="sx-live" data-state={summaryLoading || launchesLoading ? "busy" : "idle"}>
+                  {liveStatusLabel}
+                </span>
+                {` · Launch Library 2 data from The Space Devs${
+                  summary ? `, snapshot from ${formatUpdatedAt(summary.generatedAt)}` : ""
+                }, served through this site's own routes. An independent project, not affiliated with SpaceX.`}
+              </p>
+              <button type="button" onClick={handleRetryAll} className="sx-button-ghost">
+                <RefreshCcw aria-hidden="true" className="h-4 w-4" />
+                Refresh data
+              </button>
+            </div>
+          </header>
+
+          {hasPartialDataIssue ? (
+            <p role="status" className="sx-degraded">
+              <AlertTriangle aria-hidden="true" className="h-4 w-4 shrink-0" />
+              One or more requests degraded, but the workspace is still usable. Countdown timers are
+              intentionally suppressed when the provider&apos;s scheduled timestamp is already in the
+              past or not precise enough to trust as an exact launch time.
+            </p>
           ) : null}
-          <a href="#mission-manifest" className="c97-btn-ghost" onClick={() => setSection("manifest")}>
-            Jump to the manifest
-          </a>
-        </div>
-        {/* The card paints the field tint, which is pale on the blue sheet, so it prints on its own paper plate. */}
-        <div data-c97-surface="paper" className="c97-offset">
+
           <MissionControlHero
             summary={summary}
+            fleet={fleetFigures}
             isLoading={summaryLoading}
             error={summaryError}
             initialRenderTimestampMs={renderedAtMs}
@@ -556,129 +566,63 @@ export function SpaceXMissionControlClient({
               setSummaryFetchKey((value) => value + 1);
             }}
           />
+
+          <MissionLaunchTape
+            recentLaunches={tapeRecentLaunches}
+            upcomingLaunches={tapeUpcomingLaunches}
+          />
         </div>
-      </Catalog97ProjectHero>
+      </div>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>The launch record</h2>
-          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-            <button
-              type="button"
-              onClick={handleRetryAll}
-              className="tap-target inline-flex items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
-            >
-              <RefreshCcw aria-hidden="true" className="h-4 w-4" />
-              Refresh data
-            </button>
-            <div className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-              <DatabaseZap aria-hidden="true" className="h-4 w-4 text-[var(--c97-accent)]" />
-              {liveStatusLabel}
-            </div>
+      <section id="mission-manifest" className="c97-shell c97-frame sx-manifest" aria-labelledby="mission-manifest-title">
+        <h2 id="mission-manifest-title" className="sr-only">Launch manifest</h2>
+        <div className="sx-toolbar">
+          <div role="tablist" aria-label="Mission control sections" className="sx-tabs">
+            {sectionOptions.map((option, index) => (
+              <button
+                key={option.key}
+                type="button"
+                role="tab"
+                id={`mission-section-tab-${option.key}`}
+                aria-selected={section === option.key}
+                aria-controls="mission-section-panel"
+                onKeyDown={(event) => onSectionTabKey(event, index)}
+                onClick={() => setSection(option.key)}
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
+          <MissionCadenceStrip cadence={cadence} />
+        </div>
 
-          {hasPartialDataIssue ? (
-            <div
-              role="status"
-              className="flex items-start text-sm leading-6 text-[var(--c97-ink-2)]"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", border: "1px solid var(--c97-warning)", background: "var(--c97-panel)" }}
-            >
-              <AlertTriangle
-                aria-hidden="true"
-                className="mt-0.5 h-5 w-5 shrink-0"
-                style={{ color: "var(--c97-warning)" }}
-              />
-              <p>
-                One or more requests degraded, but the workspace is still usable.
-                Countdown timers are intentionally suppressed when the provider&apos;s
-                scheduled timestamp is already in the past or not precise enough to trust
-                as an exact launch time.
-              </p>
-            </div>
-          ) : null}
-
-          <div style={{ marginTop: "var(--c97-sp-2)" }}>
-            <MissionLaunchTape
-              recentLaunches={tapeRecentLaunches}
-              upcomingLaunches={tapeUpcomingLaunches}
+        <div role="tabpanel" id="mission-section-panel" aria-labelledby={`mission-section-tab-${section}`}>
+          {section === "manifest" ? (
+            <MissionLaunchBoard
+              launches={launches}
+              status={routeState.status}
+              selectedLaunchId={routeState.launch}
+              isLoading={launchesLoading || detailLoading}
+              error={launchesError}
+              onStatusChange={handleStatusChange}
+              onSelectLaunch={(id) => {
+                setDetailLoading(true);
+                setDetailError(null);
+                setDetail(null);
+                updateRouteState({ launch: id, panel: "overview" });
+              }}
+              onRetry={() => {
+                setLaunchesLoading(true);
+                setLaunchesError(null);
+                setLaunches([]);
+                setLaunchesFetchKey((value) => value + 1);
+              }}
             />
-          </div>
-
-          <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
-            <MissionStatFascia cells={statFasciaCells} />
-            <MissionCadenceStrip cadence={cadence} />
-          </div>
-        </div>
-      </section>
-
-      <section id="mission-manifest" className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Manifest, vehicles, and recovery</h2>
-          <div>
-            <div role="tablist" aria-label="Mission control sections" className="c97-segmented">
-              {SECTION_OPTIONS.map((option, index) => (
-                <button
-                  key={option.key}
-                  type="button"
-                  role="tab"
-                  id={`mission-section-tab-${option.key}`}
-                  aria-selected={section === option.key}
-                  aria-controls="mission-section-panel"
-                  onKeyDown={(event) => onSectionTabKey(event, index)}
-                  onClick={() => setSection(option.key)}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div
-            style={{ marginTop: "var(--c97-sp-2)" }}
-            role="tabpanel"
-            id="mission-section-panel"
-            aria-labelledby={`mission-section-tab-${section}`}
-          >
-            {section === "manifest" ? (
-              <MissionLaunchBoard
-                launches={launches}
-                status={routeState.status}
-                selectedLaunchId={routeState.launch}
-                isLoading={launchesLoading || detailLoading}
-                error={launchesError}
-                onStatusChange={handleStatusChange}
-                onSelectLaunch={(id) => {
-                  setDetailLoading(true);
-                  setDetailError(null);
-                  setDetail(null);
-                  updateRouteState({ launch: id, panel: "overview" });
-                }}
-                onRetry={() => {
-                  setLaunchesLoading(true);
-                  setLaunchesError(null);
-                  setLaunches([]);
-                  setLaunchesFetchKey((value) => value + 1);
-                }}
-              />
-            ) : section === "vehicles" ? (
-              <MissionVehicleCatalog launchDetails={vehicleCatalogDetails} />
-            ) : (
-              <MissionRecoveryPanel launchDetails={vehicleCatalogDetails} />
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Data source</h2>
-          <p className="c97-prose">
-            This dashboard runs on a checked-in snapshot of Launch Library 2
-            data from The Space Devs, served through this site&apos;s own API
-            routes rather than live upstream calls. It is an independent
-            project and is not affiliated with SpaceX.
-          </p>
+          ) : section === "vehicles" ? (
+            <MissionVehicleCatalog launchDetails={vehicleCatalogDetails} />
+          ) : (
+            <MissionRecoveryPanel launchDetails={vehicleCatalogDetails} />
+          )}
         </div>
       </section>
 
@@ -691,6 +635,6 @@ export function SpaceXMissionControlClient({
         onPanelChange={(panel) => updateRouteState({ panel })}
         onClose={handleCloseDrawer}
       />
-    </>
+    </div>
   );
 }

@@ -1,109 +1,566 @@
-/* Interchange IQ: the fee statement bars, the view nav, and the breakeven scale. */
+/*
+ * Interchange IQ. The route owns its design inside the site frame
+ * (docs/superpowers/specs/2026-10-11-project-sovereign-design.md), drawn as a
+ * processor pricing calculator: the business inputs on the left, and on the
+ * right a merchant statement with every processor on one scale, cheapest
+ * first and marked, and the breakeven track under it. No boxes. Everything
+ * here is scoped to the .iq root.
+ */
 
-/* One grid for every row, so the value column is as wide as its widest
- * entry in all rows and every bar's track is the same length. Per-row grids
- * sized the track around each row's own value and broke the shared scale. */
-.c97-iq-statement {
-  display: grid;
-  grid-template-columns: minmax(0, 160px) minmax(0, 1fr) auto;
-  gap: var(--c97-sp-3);
+.iq {
+  --iq-paper: #f8fafc;
+  --iq-ink: #121c26;
+  --iq-ink-2: #4c5a68;
+  --iq-rule: #d8dfe6;
+  --iq-field: #e9eff5;
+  --iq-track: #cfd8e1;
+  /* A value you can change, and the focus ring. */
+  --iq-input: #0b57d0;
+  --iq-cheap: #11704a;
+  --iq-mark: #9a4a00;
+
+  --c97-ink: var(--iq-ink);
+  --c97-ink-2: var(--iq-ink-2);
+  --c97-surface: var(--iq-paper);
+  --c97-rule: var(--iq-rule);
+  --c97-field: var(--iq-field);
+  --c97-accent: var(--iq-input);
+
+  background: var(--iq-paper);
+  color: var(--iq-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-.c97-iq-row {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: subgrid;
-  align-items: center;
+.dark .iq {
+  --iq-paper: #0f151b;
+  --iq-ink: #e6edf3;
+  --iq-ink-2: #a0b0bf;
+  --iq-rule: #2a3642;
+  --iq-field: #19232d;
+  --iq-track: #33414f;
+  --iq-input: #8ab4f8;
+  --iq-cheap: #5fd3a0;
+  --iq-mark: #f2a65e;
 }
 
-@media print, screen and (max-width: 639px) {
-  .c97-iq-statement {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .c97-iq-row {
-    row-gap: var(--c97-sp-1);
-  }
+.iq :where(p, ol, li, dl, dd, figure) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
 }
 
-.c97-iq-row-label {
+.iq :where(ol) {
+  list-style: none;
+}
+
+.iq h1,
+.iq h2,
+.iq h3 {
+  margin: 0;
+  color: var(--iq-ink);
+  font-family: var(--c97-font-body);
+}
+
+.iq-page {
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  gap: var(--c97-sp-4);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+/* ── Title row ──────────────────────────────────────────────────────────── */
+
+.iq-title {
+  display: grid;
   gap: var(--c97-sp-1);
 }
 
-.c97-iq-tag {
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c97-label);
+.iq-title h1 {
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
-.c97-iq-row-value {
+.iq-title p {
+  max-inline-size: 72ch;
+  color: var(--iq-ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+
+/* Phone and paper: the verdict, then the inputs, then the statement. */
+.iq-calc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+}
+
+.iq-aside {
+  display: contents;
+}
+
+.iq-verdict {
+  order: -1;
+}
+
+@media screen and (min-width: 960px) {
+  .iq-calc {
+    display: grid;
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    align-items: start;
+    column-gap: var(--c97-sp-5);
+  }
+
+  .iq-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--c97-sp-3);
+  }
+}
+
+.iq-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--iq-ink);
+}
+
+.iq h2 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.iq-section-head h2,
+.iq-statement-section h2,
+.iq-breakeven h2 {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.iq-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--iq-input);
+  font: inherit;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.iq-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ── Inputs ─────────────────────────────────────────────────────────────── */
+
+.iq-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.iq-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--iq-rule);
+}
+
+.iq-slider-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1);
+}
+
+.iq-slider-head label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.iq-slider-value {
+  color: var(--iq-input);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.iq-slider-row {
   display: flex;
   align-items: center;
   gap: var(--c97-sp-2);
+}
+
+/* A 44px touch row around the native track. */
+.iq-range {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  accent-color: var(--iq-input);
+  cursor: pointer;
+}
+
+.iq-exact {
+  flex: none;
+  width: 6.5rem;
+  min-height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border: 0;
+  border-bottom: 1px solid var(--iq-ink-2);
+  background: var(--iq-field);
+  color: var(--iq-input);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.iq-hint {
+  color: var(--iq-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.iq-hint[data-invalid] {
+  color: var(--iq-ink);
+  font-weight: 600;
+}
+
+.iq-mix {
+  padding-top: var(--c97-sp-1);
+}
+
+.iq-mix-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.iq-mix-head h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.iq-info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--iq-ink-2);
+  cursor: pointer;
+}
+
+.iq-info:hover,
+.iq-info[aria-expanded="true"] {
+  color: var(--iq-input);
+}
+
+.iq-mix-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--c97-sp-2);
+  padding-block: 6px;
+  font-size: 0.875rem;
+}
+
+.iq-mix-row dt {
+  font-weight: 600;
+}
+
+.iq-mix-pct {
+  text-align: right;
+  font-weight: 600;
+}
+
+.iq-mix-rate {
+  grid-column: 1 / -1;
+  color: var(--iq-ink-2);
+  font-size: 0.8125rem;
+}
+
+.iq-mix-bar {
+  grid-column: 1 / -1;
+  height: 4px;
+  margin-top: 4px;
+  background: var(--iq-track);
+}
+
+.iq-mix-bar span {
+  display: block;
+  height: 100%;
+  background: var(--iq-ink-2);
+}
+
+/* ── Verdict ────────────────────────────────────────────────────────────── */
+
+.iq-verdict {
+  font-size: clamp(1.5rem, 1.15rem + 1vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.iq-verdict-detail {
+  display: block;
+  margin-top: var(--c97-sp-1);
+  color: var(--iq-ink-2);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-wrap: pretty;
+}
+
+/* ── Statement ──────────────────────────────────────────────────────────── */
+
+.iq-statement-section h2 {
+  border-bottom: 2px solid var(--iq-ink);
+}
+
+.iq-meta {
+  padding-block: var(--c97-sp-1);
+  color: var(--iq-ink-2);
+  font-size: 0.8125rem;
+}
+
+/* Every row shares one set of columns, so every bar's track is the same
+ * length and the fees line up as a statement column. */
+.iq-statement summary {
+  display: grid;
+  grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr) 6.5rem 5.5rem 16px;
+  align-items: center;
+  column-gap: var(--c97-sp-2);
+  min-height: 52px;
+  border-top: 1px solid var(--iq-rule);
+  list-style: none;
+  cursor: pointer;
+}
+
+.iq-statement summary::-webkit-details-marker {
+  display: none;
+}
+
+.iq-statement summary::after {
+  content: "";
+  justify-self: end;
+  width: 7px;
+  height: 7px;
+  margin-bottom: 3px;
+  border-right: 2px solid var(--iq-ink-2);
+  border-bottom: 2px solid var(--iq-ink-2);
+  transform: rotate(45deg);
+  transition: transform 150ms var(--c97-ease);
+}
+
+.iq-statement details[open] > summary::after {
+  margin-bottom: -3px;
+  transform: rotate(-135deg);
+}
+
+.iq-row-name {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.iq-statement li[data-cheapest] .iq-row-name {
+  font-weight: 800;
+}
+
+.iq-tag {
+  color: var(--iq-ink-2);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.iq-bar {
+  height: 12px;
+  background: var(--iq-field);
+}
+
+.iq-bar span {
+  display: block;
+  height: 100%;
+  background: var(--iq-ink-2);
+}
+
+.iq-statement li[data-cheapest] .iq-bar span {
+  background: var(--iq-cheap);
+}
+
+.iq-row-fee {
+  font-family: var(--c97-font-mono);
+  font-size: 0.9375rem;
+  text-align: right;
   white-space: nowrap;
 }
 
-.c97-iq-row-mark {
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.08em;
+.iq-row-mark span {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid var(--iq-cheap);
+  color: var(--iq-cheap);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  border: 1px solid var(--c97-ink);
-  padding: 0 var(--c97-sp-1);
-  color: var(--c97-ink);
 }
 
-/* View filter nav: plain links styled like a segmented control. The e2e
- * regression pins `role="link"`, so these stay anchors rather than buttons. */
-.c97-iq-nav {
+.iq-row-detail {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--c97-sp-3);
-  padding: 0;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding: 0 0 var(--c97-sp-2);
+  font-size: 0.875rem;
 }
 
-.c97-iq-nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--c97-label);
-  text-decoration: none;
-  font-size: var(--c97-fs-small);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.iq-row-detail dt {
+  color: var(--iq-ink-2);
+  font-size: 0.75rem;
 }
 
-.c97-iq-nav a:hover {
-  color: var(--c97-ink);
+.iq-row-detail dd {
+  font-weight: 600;
 }
 
-.c97-iq-nav a[aria-current="true"] {
-  color: var(--c97-ink);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
-  text-decoration-color: var(--c97-accent);
+/* Below 640px the bar takes its own line under the name and the fee. */
+@media screen and (max-width: 639px) {
+  .iq-statement summary {
+    grid-template-columns: minmax(0, 1fr) auto auto 16px;
+    row-gap: 6px;
+    padding-block: var(--c97-sp-1);
+  }
+
+  .iq-bar {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
 }
 
-/* Breakeven scale, $5 to $500. */
-.c97-iq-breakeven-track {
+/* ── Breakeven ──────────────────────────────────────────────────────────── */
+
+.iq-breakeven {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.iq-breakeven h2 {
+  border-bottom: 2px solid var(--iq-ink);
+}
+
+.iq-breakeven > p {
+  max-inline-size: 70ch;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.iq-fig {
+  font-family: var(--c97-font-mono);
+  font-weight: 600;
+}
+
+.iq-track {
   position: relative;
   height: 8px;
-  background: var(--c97-rule);
-  margin-top: var(--c97-sp-2);
+  margin-block: 8px;
+  background: var(--iq-track);
 }
 
-.c97-iq-breakeven-mark {
+.iq-track-mark {
   position: absolute;
-  top: -6px;
-  bottom: -6px;
-  width: 2px;
-  background: var(--c97-ink);
+  top: -8px;
+  bottom: -8px;
+  width: 3px;
+  margin-left: -1px;
+  background: var(--iq-ink);
 }
 
-.c97-iq-breakeven-mark[data-kind="breakeven"] {
-  background: var(--c97-overprint);
+.iq-track-mark[data-kind="breakeven"] {
+  background: var(--iq-mark);
+}
+
+.iq-track-figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--c97-sp-1);
+  margin-top: var(--c97-sp-1);
+  color: var(--iq-ink-2);
+  font-size: 0.8125rem;
+}
+
+.iq-track-figure figcaption > span:nth-child(2) {
+  color: var(--iq-ink);
+  text-align: center;
+}
+
+.iq-key {
+  display: inline-block;
+  width: 3px;
+  height: 12px;
+  margin-right: 5px;
+  vertical-align: -1px;
+  background: var(--iq-ink);
+}
+
+.iq-key[data-kind="breakeven"] {
+  background: var(--iq-mark);
+}
+
+.iq-fine {
+  color: var(--iq-ink-2);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+/* ── Primer ─────────────────────────────────────────────────────────────── */
+
+.iq-primer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  max-inline-size: var(--c97-column);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--iq-rule);
+}
+
+.iq-primer h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.iq-primer p {
+  line-height: 1.6;
+}
+
+@media print {
+  .iq-link,
+  .iq-info,
+  .iq-range {
+    display: none;
+  }
 }

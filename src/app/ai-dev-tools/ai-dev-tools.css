@@ -1,11 +1,671 @@
-/* AI Dev Tool Ecosystem: the category-by-pricing surface map. */
+/*
+ * AI Dev Tool Ecosystem, drawn as a tool directory. The route paints a cool
+ * white with a violet accent and points the Catalog 97 tokens the map and the
+ * drawer read at it. Each tool is one ruled row, the drawer is the one box,
+ * and the category by pricing map is the directory's second view.
+ */
 
-/* The map sits on its own paper plate inset into the hero ink, because a
- * field tint or a plate's hover state only clears contrast against paper,
- * not against every ink's own (sometimes inverted) ink colour. */
-.c97-surface-map-sheet {
-  padding: var(--c97-sp-3);
+.adt-root {
+  --adt-bg: #f7f8fa;
+  --adt-raise: #eceef2;
+  --adt-ink: #15171c;
+  --adt-ink-2: #4f5560;
+  --adt-rule: rgba(21, 23, 28, 0.12);
+  --adt-rule-strong: rgba(21, 23, 28, 0.32);
+  --adt-accent: #5b3fd1;
+  --adt-positive: #1d7a3e;
+  --adt-warn: #8a5200;
+
+  --c97-surface: var(--adt-bg);
+  --c97-field: var(--adt-raise);
+  --c97-panel: var(--adt-raise);
+  --c97-ink: var(--adt-ink);
+  --c97-ink-2: var(--adt-ink-2);
+  --c97-label: var(--adt-ink-2);
+  --c97-rule: var(--adt-rule);
+  --c97-action: var(--adt-ink);
+  --c97-accent: var(--adt-accent);
+
+  background: var(--adt-bg);
+  color: var(--adt-ink);
+  font-family: var(--c97-font-body);
 }
+
+.dark .adt-root {
+  --adt-bg: #121318;
+  --adt-raise: #1e2028;
+  --adt-ink: #e8e9ee;
+  --adt-ink-2: #a3a7b2;
+  --adt-rule: rgba(232, 233, 238, 0.12);
+  --adt-rule-strong: rgba(232, 233, 238, 0.32);
+  --adt-accent: #a996ff;
+  --adt-positive: #6fcf8e;
+  --adt-warn: #f0b35a;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.adt-root h1,
+.adt-root h2 {
+  font-family: var(--c97-font-body);
+  color: var(--adt-ink);
+  margin: 0;
+}
+
+.adt-root :where(p, ul, li, dl, dd, dt) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.adt-root :where(ul) {
+  list-style: none;
+}
+
+.adt-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+.adt-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.adt-title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.625rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.adt-lede {
+  max-inline-size: 62ch;
+  font-size: var(--c97-fs-body);
+  line-height: 1.5;
+  color: var(--adt-ink-2);
+}
+
+/* Toolbar */
+
+.adt-directory {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.adt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-1);
+  border-top: 1px solid var(--adt-rule-strong);
+}
+
+.adt-search {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  flex: 1 1 18rem;
+  min-width: 0;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border: 1px solid var(--adt-rule-strong);
+  border-radius: 6px;
+  background: var(--adt-bg);
+  color: var(--adt-ink-2);
+}
+
+.adt-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--adt-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  outline: none;
+}
+
+.adt-search:focus-within {
+  outline: 2px solid var(--adt-accent);
+  outline-offset: 1px;
+}
+
+.adt-search input::placeholder {
+  color: var(--adt-ink-2);
+}
+
+.adt-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.adt-select {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  max-width: 100%;
+  padding-left: var(--c97-sp-1);
+  border: 1px solid var(--adt-rule-strong);
+  border-radius: 6px;
+  background: var(--adt-bg);
+}
+
+.adt-select:focus-within {
+  outline: 2px solid var(--adt-accent);
+  outline-offset: 1px;
+}
+
+.adt-select-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--adt-ink-2);
+}
+
+.adt-select select {
+  min-height: 44px;
+  min-width: 0;
+  max-width: 14rem;
+  padding-inline: var(--c97-sp-0) var(--c97-sp-1);
+  border: 0;
+  background: transparent;
+  color: var(--adt-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  outline: none;
+  text-overflow: ellipsis;
+}
+
+.adt-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--adt-ink-2);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.adt-reset:hover {
+  background: var(--adt-raise);
+  color: var(--adt-ink);
+}
+
+.adt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--adt-ink);
+}
+
+.adt-count {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.adt-disclosure {
+  flex: 1 1 20rem;
+  font-size: 0.8125rem;
+  color: var(--adt-ink-2);
+}
+
+.adt-view {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.adt-switch {
+  display: flex;
+  padding: 1px;
+  border: 1px solid var(--adt-rule-strong);
+  border-radius: 8px;
+}
+
+.adt-switch > button {
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--adt-ink-2);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.adt-switch > button[aria-pressed="true"] {
+  background: var(--adt-ink);
+  color: var(--adt-bg);
+}
+
+/* The rows */
+
+.adt-list-head,
+.adt-row {
+  display: grid;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.adt-list-head {
+  display: none;
+}
+
+.adt-row {
+  width: 100%;
+  padding: var(--c97-sp-2) var(--c97-sp-1);
+  border: 0;
+  border-bottom: 1px solid var(--adt-rule);
+  background: transparent;
+  color: var(--adt-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 160ms var(--c97-ease);
+}
+
+.adt-row:hover {
+  background: var(--adt-raise);
+}
+
+.adt-row[aria-pressed="true"] {
+  background: var(--adt-raise);
+  box-shadow: inset 3px 0 0 0 var(--adt-accent);
+}
+
+.adt-cell {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.adt-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.adt-badge {
+  padding: 1px var(--c97-sp-1);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--adt-ink-2);
+}
+
+.adt-badge[data-status="active"] {
+  color: var(--adt-positive);
+}
+
+.adt-badge[data-status="transition"] {
+  color: var(--adt-warn);
+}
+
+.adt-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--adt-ink-2);
+}
+
+.adt-cell-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--adt-ink-2);
+}
+
+.adt-fact {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.adt-note {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--adt-ink-2);
+}
+
+.adt-date {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  font-family: var(--c97-font-mono);
+}
+
+.adt-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--adt-rule-strong);
+}
+
+.adt-dot[data-tone="recent"] {
+  background: var(--adt-positive);
+}
+
+.adt-dot[data-tone="steady"] {
+  background: var(--adt-ink-2);
+}
+
+.adt-dot[data-tone="stale"] {
+  background: var(--adt-warn);
+}
+
+.adt-stars {
+  font-family: var(--c97-font-mono);
+  font-size: 0.9375rem;
+}
+
+.adt-meter {
+  display: block;
+  width: 4.5rem;
+  height: 4px;
+  margin-top: var(--c97-sp-0);
+  background: var(--adt-raise);
+}
+
+.adt-meter > span {
+  display: block;
+  height: 100%;
+  background: var(--adt-accent);
+}
+
+@media screen and (min-width: 640px) and (max-width: 899px) {
+  .adt-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .adt-cell--name,
+  .adt-cell--stars {
+    grid-column: 1 / -1;
+  }
+
+  .adt-cell--stars {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--c97-sp-1);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .adt-list-head,
+  .adt-row {
+    grid-template-columns: minmax(13rem, 1.3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.8fr) 7rem;
+  }
+
+  .adt-list-head {
+    display: grid;
+    padding: var(--c97-sp-1);
+    border-bottom: 1px solid var(--adt-rule-strong);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--adt-ink-2);
+  }
+
+  .adt-end,
+  .adt-cell--stars {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  /* The header row names each column, so the per-cell labels stay for screen readers only. */
+  .adt-row .adt-cell-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .adt-cell--stars {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--c97-sp-1);
+  }
+}
+
+.adt-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-4);
+  border-bottom: 1px solid var(--adt-rule);
+  color: var(--adt-ink-2);
+}
+
+.adt-root .adt-empty-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--adt-ink);
+}
+
+/* The map view */
+
+.adt-map {
+  padding-top: var(--c97-sp-2);
+}
+
+.c97-surface-map-row-header,
+.c97-surface-map-list-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--adt-ink);
+}
+
+/* The drawer */
+
+.adt-drawer-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--c97-z-drawer);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.adt-scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--c97-scrim);
+  cursor: default;
+}
+
+.adt-drawer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  width: 100%;
+  max-height: 88dvh;
+  overflow-y: auto;
+  padding: var(--c97-sp-3);
+  border-top: 1px solid var(--adt-rule-strong);
+  background: var(--adt-bg);
+  color: var(--adt-ink);
+  outline: none;
+}
+
+@media screen and (min-width: 640px) {
+  .adt-drawer-layer {
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  .adt-drawer {
+    width: 27rem;
+    height: 100%;
+    max-height: none;
+    border-top: 0;
+    border-left: 1px solid var(--adt-rule-strong);
+  }
+}
+
+.adt-drawer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+}
+
+.adt-drawer-title {
+  min-width: 0;
+}
+
+.adt-h2 {
+  font-size: var(--c97-fs-h3);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.adt-drawer-actions {
+  display: flex;
+  gap: var(--c97-sp-0);
+}
+
+.adt-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--adt-rule-strong);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--adt-ink);
+  cursor: pointer;
+}
+
+.adt-icon-button:hover {
+  background: var(--adt-raise);
+}
+
+.adt-tagline {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--adt-ink-2);
+}
+
+.adt-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.adt-detail {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-1);
+  border-top: 1px solid var(--adt-rule);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.adt-detail dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: var(--adt-ink-2);
+}
+
+.adt-surfaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0);
+}
+
+.adt-surface {
+  padding: 2px var(--c97-sp-1);
+  border: 1px solid var(--adt-rule-strong);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--adt-ink-2);
+}
+
+.adt-sources {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--c97-sp-1);
+  border-top: 1px solid var(--adt-rule-strong);
+}
+
+.adt-sources-label {
+  margin-bottom: var(--c97-sp-0);
+}
+
+.adt-source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  color: var(--adt-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.adt-source:hover {
+  color: var(--adt-accent);
+}
+
+.adt-source-icon {
+  width: 16px;
+  height: 16px;
+}
+
+@media print {
+  .adt-toolbar,
+  .adt-view {
+    display: none;
+  }
+}
+
+/* The category by pricing map, the directory's Map view */
 
 .c97-surface-map {
   display: grid;
@@ -52,7 +712,8 @@
   gap: var(--c97-sp-1);
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--c97-rule);
+  border: 1px solid var(--adt-rule-strong);
+  border-radius: 999px;
   background: var(--c97-surface);
   color: var(--c97-ink);
   font-family: var(--c97-font-body);
@@ -65,9 +726,10 @@
   background: var(--c97-field);
 }
 
-/* Selected state paints through the shared .c97-offset hard shadow. */
 .c97-surface-map-plate[aria-pressed="true"] {
   border-color: var(--c97-ink);
+  background: var(--c97-ink);
+  color: var(--c97-surface);
 }
 
 .c97-surface-map-list {
@@ -91,23 +753,3 @@
   margin-top: var(--c97-sp-1);
 }
 
-/*
- * The grid needs about 960px for its five pricing columns, so it prints in
- * the hero from there up. Narrower screens get the stacked list after the
- * directory instead, which puts search and the directory right under the
- * summary on a phone. The hero's signature slot goes with the grid so it
- * leaves no empty gap behind.
- */
-.c97-surface-map-narrow {
-  display: none;
-}
-
-@media print, screen and (max-width: 959px) {
-  .c97-project-hero-signature:has(> .c97-surface-map-sheet[data-layout="grid"]) {
-    display: none;
-  }
-
-  .c97-surface-map-narrow {
-    display: flex;
-  }
-}

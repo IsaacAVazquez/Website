@@ -131,33 +131,33 @@ describe("BayAreaTransitClient", () => {
     global.fetch = originalFetch;
   });
 
-  it("shows only the hero when there is no transit snapshot yet", () => {
+  it("shows only the title row when there is no transit snapshot yet", () => {
     renderClient({ summary: { ...SUMMARY, system: null } });
     expect(screen.getByText("The transit snapshot is not available yet.")).toBeInTheDocument();
     expect(screen.queryByRole("tablist")).toBeNull();
   });
 
-  it("prints the network totals, the default station's board, and every line", async () => {
+  it("prints the status strip, the default station's board, and every line on the map", async () => {
     renderClient();
 
     expect(screen.getByRole("heading", { level: 1, name: "Bay Area Transit Pulse" })).toBeInTheDocument();
-    // The hero carries no readouts; the alert count rides on the Alerts tab, bare at zero.
-    expect(screen.getByRole("tab", { name: "Alerts" })).toBeInTheDocument();
+    // The alert count rides on the Alerts control in the status strip, bare at zero.
+    expect(screen.getByRole("button", { name: "Alerts" })).toHaveAttribute("aria-expanded", "false");
     expect(screen.getByText(/^BART API · feed 12:00:00 PM PDT · refreshed /)).toBeInTheDocument();
     expect(screen.queryByText(/seed data/)).toBeNull();
+    // Each feed's state prints in words beside its mark.
+    expect(screen.getByText("Departures").parentElement).toHaveTextContent("Departures Live");
+    expect(screen.getByText("Elevators").parentElement).toHaveTextContent("Elevators Live");
 
     expect(screen.getByRole("heading", { level: 2, name: "Embarcadero" })).toBeInTheDocument();
     expect(screen.getByText("Antioch")).toBeInTheDocument();
     expect(screen.getByText("4 min")).toBeInTheDocument();
 
-    const panel = screen.getByRole("tabpanel");
-    expect(panel).toHaveAttribute("id", "transit-tabpanel-lines");
-    expect(within(panel).getByRole("heading", { name: "Antioch to SFO" })).toBeInTheDocument();
-    expect(within(panel).getByText("Yellow line")).toBeInTheDocument();
-    expect(within(panel).getByText("ANTC → SFIA")).toBeInTheDocument();
-    expect(within(panel).getByText("12 stops")).toBeInTheDocument();
-    // A line without endpoints prints dashes rather than an empty arrow.
-    expect(within(panel).getByText("— → —")).toBeInTheDocument();
+    // The line cards are gone; the map's line chips name each line and its route.
+    const chips = screen.getByRole("group", { name: "Show a line on the map" });
+    expect(within(chips).getByRole("button", { name: "Yellow line, Antioch to SFO" })).toBeInTheDocument();
+    expect(within(chips).getByRole("button", { name: "Orange line, Richmond to Berryessa" })).toBeInTheDocument();
+    expect(screen.queryByRole("tablist")).toBeNull();
 
     // The server board covers the default station, so only the summary refresh goes out.
     expect(global.fetch).toHaveBeenCalledTimes(1);
@@ -165,39 +165,29 @@ describe("BayAreaTransitClient", () => {
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
   });
 
-  it("switches views by click and by arrow, Home, and End keys", () => {
-    renderClient();
+  it("says a feed is not reported when the summary carries no section statuses", () => {
+    renderClient({ summary: { ...SUMMARY, sectionStatus: undefined } });
+    expect(screen.getByText("Departures").parentElement).toHaveTextContent("Departures Not reported");
+    expect(screen.queryByText("Live")).toBeNull();
+  });
 
-    expect(screen.getAllByRole("tab").map((tab) => tab.textContent)).toEqual(["Lines", "Alerts"]);
+  it("opens and closes the alerts strip from the status strip, keeping the station", () => {
+    const { rerenderWith } = renderClient();
+    // The strip is in the DOM but hidden while closed, so aria-controls always resolves.
+    const closed = screen.getByRole("button", { name: "Alerts" });
+    expect(document.getElementById(closed.getAttribute("aria-controls") as string)).toHaveAttribute("hidden");
 
-    fireEvent.click(screen.getByRole("tab", { name: "Alerts" }));
+    fireEvent.click(screen.getByRole("button", { name: "Alerts" }));
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
 
-    const lines = screen.getByRole("tab", { name: "Lines" });
-    expect(lines).toHaveAttribute("tabindex", "0");
-    expect(screen.getByRole("tab", { name: "Alerts" })).toHaveAttribute("tabindex", "-1");
+    currentSearchParams = new URLSearchParams("view=advisories&station=mont");
+    rerenderWith();
+    const toggle = screen.getByRole("button", { name: "Alerts" });
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("region", { name: "Service alerts" })).toHaveAttribute("id", "transit-alerts");
 
-    mockPush.mockClear();
-    fireEvent.keyDown(lines, { key: "ArrowRight" });
-    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
-    expect(screen.getByRole("tab", { name: "Alerts" })).toHaveFocus();
-
-    lines.focus();
-    mockPush.mockClear();
-    fireEvent.keyDown(lines, { key: "ArrowLeft" });
-    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
-    expect(screen.getByRole("tab", { name: "Alerts" })).toHaveFocus();
-
-    mockPush.mockClear();
-    fireEvent.keyDown(lines, { key: "End" });
-    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
-
-    mockPush.mockClear();
-    fireEvent.keyDown(lines, { key: "Home" });
-    // Home lands on the view already in the URL, so nothing is pushed.
-    expect(mockPush).not.toHaveBeenCalled();
-    fireEvent.keyDown(lines, { key: "a" });
-    expect(mockPush).not.toHaveBeenCalled();
+    fireEvent.click(toggle);
+    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=mont", { scroll: false });
   });
 
   it("lists every station on the board with its line dots, and closes the list on a pick", () => {
@@ -371,7 +361,7 @@ describe("BayAreaTransitClient", () => {
       },
     });
 
-    expect(screen.getByRole("tab", { name: "Alerts · 3" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Alerts · 3" })).toBeInTheDocument();
     expect(screen.getByText("DELAY · EMBR")).toBeInTheDocument();
     expect(screen.getByText("Ten minute delay in the Transbay Tube.")).toBeInTheDocument();
     expect(screen.getByText("Advisory")).toBeInTheDocument();
@@ -416,7 +406,7 @@ describe("BayAreaTransitClient", () => {
     );
 
     renderClient();
-    expect(await screen.findByRole("tab", { name: "Alerts · 1" })).toBeInTheDocument();
+    expect(await screen.findByRole("button", { name: "Alerts · 1" })).toBeInTheDocument();
     // The refresh clears the held boards, so the default station's board is fetched fresh.
     expect(await screen.findByText("Pittsburg/Bay Point")).toBeInTheDocument();
 
@@ -438,7 +428,7 @@ describe("BayAreaTransitClient", () => {
     renderClient();
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     await act(async () => {});
-    expect(screen.getByRole("tab", { name: "Alerts" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Alerts" })).toBeInTheDocument();
     expect(screen.getByText("Antioch")).toBeInTheDocument();
   });
 

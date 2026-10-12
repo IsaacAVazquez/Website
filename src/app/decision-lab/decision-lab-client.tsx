@@ -1,13 +1,8 @@
 "use client";
 
-import { Link as LinkIcon, RefreshCw, Target } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Link as LinkIcon, RefreshCw } from "lucide-react";
+import { useEffect, useId, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-  Catalog97HeroReadouts,
-  Catalog97ProjectHero,
-} from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   DECISION_PRESETS,
   evaluateDecision,
@@ -132,7 +127,7 @@ function DecisionMatrix({
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
       role="img"
       aria-label={`Confidence ${metrics.confidence}, impact ${metrics.impact}, for ${pointLabel}. Verdict stamped ${stamp.word}.`}
-      className="c97-decision-matrix"
+      className="dl-matrix"
     >
       {/* Tokens go through `style`, since an SVG presentation attribute
           cannot substitute var(). */}
@@ -197,13 +192,13 @@ function DecisionMatrix({
           strokeWidth={2}
           style={{ fill: "var(--c97-ink)", stroke: "var(--c97-surface)" }}
         />
-        <text x={activeLabelX} y={activeLabelY} textAnchor="middle" className="c97-decision-point-label">
+        <text x={activeLabelX} y={activeLabelY} textAnchor="middle" className="dl-point-label">
           ACTIVE
         </text>
       </g>
 
       <g
-        className="c97-decision-stamp"
+        className="dl-stamp"
         transform={`rotate(-9 ${stampCx} ${stampCy})`}
         aria-hidden="true"
       >
@@ -225,18 +220,18 @@ function DecisionMatrix({
           style={{ stroke: "var(--c97-overprint)" }}
           strokeWidth={1.5}
         />
-        <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="c97-decision-stamp-word">
+        <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="dl-stamp-word">
           {stamp.word}
         </text>
       </g>
 
-      <text x={PAD_L + PLOT_SIZE / 2} y={VIEW_H - 8} textAnchor="middle" className="c97-decision-axis-label">
+      <text x={PAD_L + PLOT_SIZE / 2} y={VIEW_H - 8} textAnchor="middle" className="dl-axis-label">
         Confidence
       </text>
       {/* A rotated label reads a getScreenCTM 'a' of ~0 to the route probe
           (its horizontal scale term drops out at 90deg), so this sits
           horizontal above the y-axis instead of running along it. */}
-      <text x={PAD_L} y={PAD_T - 10} textAnchor="start" className="c97-decision-axis-label">
+      <text x={PAD_L} y={PAD_T - 10} textAnchor="start" className="dl-axis-label">
         Impact
       </text>
     </svg>
@@ -245,52 +240,49 @@ function DecisionMatrix({
 
 function ContributionRow({ row }: { row: VerdictContribution }) {
   return (
-    <div className="c97-decision-contribution-row">
-      <div>
-        <p className="c97-serif" style={{ margin: 0, fontSize: "var(--c97-fs-h3)" }}>
-          {row.label}
-        </p>
-        <span className="c97-meter" style={{ marginTop: "var(--c97-sp-1)" }}>
-          <span style={{ width: `${row.raw}%` }} />
-        </span>
-      </div>
-      <p className="c97-mono c97-tabular" style={{ margin: 0, color: "var(--c97-ink)" }}>
+    <li className="dl-contribution">
+      <span className="dl-contribution-label">{row.label}</span>
+      <span className="dl-contribution-bar" aria-hidden="true">
+        <span style={{ width: `${row.raw}%` }} />
+      </span>
+      <span className="dl-contribution-math">
         {row.raw} × {row.weight.toFixed(2)} = <strong>{row.contribution.toFixed(1)}</strong>
-      </p>
-    </div>
+      </span>
+    </li>
   );
 }
 
 function WhyThisVerdict({
   metrics,
   evaluation,
+  headingId,
 }: {
   metrics: DecisionMetrics;
   evaluation: DecisionEvaluation;
+  headingId: string;
 }) {
   const contributions = verdictContributions(metrics);
 
   return (
-    <div>
-      <div>
+    <section className="dl-why" aria-labelledby={headingId}>
+      <h2 id={headingId}>Why this verdict</h2>
+      <ol className="dl-contributions">
         {contributions.map((row) => (
           <ContributionRow key={row.axis} row={row} />
         ))}
-      </div>
-      <p
-        className="c97-prose"
-        style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-3)" }}
-      >
-        Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when impact ≥
-        60 or score ≥ 50. Otherwise it holds.
+        <li className="dl-contribution dl-contribution-total">
+          <span className="dl-contribution-label">Weighted score</span>
+          <span className="dl-contribution-math">
+            <strong>{evaluation.weightedScore}</strong>
+          </span>
+        </li>
+      </ol>
+      <p className="dl-rationale">{evaluation.rationale}</p>
+      <p className="dl-fine">
+        Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when impact ≥ 60 or score ≥ 50.
+        Otherwise it holds. Decision Lab keeps those axes separate, then forces a plain call.
       </p>
-      <p className="c97-prose" style={{ color: "var(--c97-ink)", marginTop: "var(--c97-sp-2)" }}>
-        {evaluation.rationale}
-      </p>
-      <p className="c97-prose" style={{ color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}>
-        Decision Lab keeps those axes separate, then forces a plain call.
-      </p>
-    </div>
+    </section>
   );
 }
 
@@ -312,17 +304,13 @@ function MetricSlider({
   const deltaLabel = delta === 0 ? "Preset" : `${delta > 0 ? "+" : ""}${delta} vs preset`;
 
   return (
-    <div style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "var(--c97-sp-3)" }}>
-        <label htmlFor={inputId} className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
-          {label}
-        </label>
-        <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
-          <span className="c97-chip c97-tabular">{value}</span>
-          <span className="c97-mono c97-tabular" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-            {deltaLabel}
-          </span>
-        </div>
+    <div className="dl-slider">
+      <div className="dl-slider-head">
+        <label htmlFor={inputId}>{label}</label>
+        <span className="dl-slider-value">{value}</span>
+        <span className="dl-slider-delta" data-changed={delta !== 0 || undefined}>
+          {deltaLabel}
+        </span>
       </div>
       <input
         id={inputId}
@@ -333,9 +321,9 @@ function MetricSlider({
         value={value}
         onChange={(event) => onChange(Number.parseInt(event.target.value, 10))}
         aria-describedby={`${inputId}-helper`}
-        className="c97-range"
+        className="dl-range"
       />
-      <p id={`${inputId}-helper`} className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+      <p id={`${inputId}-helper`} className="dl-helper">
         {helper}
       </p>
     </div>
@@ -349,6 +337,7 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
   // the URL lags a commit by a transition, so it is never read back.
   const [draftState, setDraftState] = useState(routeState);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  const ids = useId();
   useEffect(() => {
     const id = window.setTimeout(
       () => replaceHref(buildDecisionLabHref(draftState)),
@@ -373,12 +362,8 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
     draftState.effort !== activePreset.effort ||
     draftState.reversibility !== activePreset.reversibility;
   const crumbLabel = hasPresetOverride ? "Custom" : activePreset.name;
-  const presetDelta =
-    draftState.impact -
-    activePreset.impact +
-    (draftState.confidence - activePreset.confidence) +
-    (draftState.effort - activePreset.effort) +
-    (draftState.reversibility - activePreset.reversibility);
+  const copyMessage =
+    copyStatus === "copied" ? "Link copied" : copyStatus === "error" ? "Copy failed, so copy the address bar instead" : "";
 
   function commitState(nextState: DecisionLabState) {
     setDraftState(nextState);
@@ -422,151 +407,87 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
     }
   }
 
-  const lead = PROJECT_PRESS[DECISION_LAB_ROUTE].lead;
-  const standfirst =
-    "I built this to pressure-test product bets before a confident story outruns the actual tradeoff.";
-
   return (
-    <>
-      <Catalog97ProjectHero ink={lead} title="Decision Lab" standfirst={standfirst}>
-        {/* The sliders drive the three figures, so the figures print after
-            the sliders, which also keeps the first slider on a phone's first
-            screen. */}
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          {/* The verdict line and the four sliders come first, so on a phone the call changes right above the control that moved it. */}
-          <div className="c97-decision-signature">
-            <div style={{ display: "grid", gap: "var(--c97-sp-4)" }}>
-              <h2 className="sr-only">Score the tradeoff</h2>
-              <p className="c97-decision-caption" role="status" aria-live="polite">
-                Score {evaluation.weightedScore} · {stamp.word}
-              </p>
-              {metricDefinitions.map((metric) => (
-                <MetricSlider
-                  key={metric.key}
-                  label={metric.label}
-                  helper={metric.helper}
-                  value={draftState[metric.key]}
-                  baseValue={activePreset[metric.key]}
-                  onChange={(value) => handleMetricChange(metric.key, value)}
-                />
-              ))}
-            </div>
-            <DecisionMatrix metrics={draftState} evaluation={evaluation} pointLabel={crumbLabel} />
-          </div>
-        </div>
-        <Catalog97HeroReadouts
-          readouts={[
-            { label: "Weighted score", value: evaluation.weightedScore },
-            { label: "Active preset", value: crumbLabel },
-            {
-              label: "Vs preset",
-              value: hasPresetOverride ? `${presetDelta > 0 ? "+" : ""}${presetDelta}` : "0",
-              detail: hasPresetOverride ? "Sum across axes" : "Matches preset",
-            },
-          ]}
-        />
-      </Catalog97ProjectHero>
+    <div className="dl" data-testid="decision-lab-shell">
+      <div className="dl-page c97-shell c97-frame">
+        <header className="dl-title">
+          <h1>Decision Lab</h1>
+          <p>I built this to pressure-test product bets before a confident story outruns the actual tradeoff.</p>
+        </header>
 
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-        data-testid="decision-lab-shell"
-      >
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Why this verdict</h2>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-            Active: {activePreset.name}
-          </p>
-
-          <div className="c97-decision-body-grid" style={{ marginTop: "var(--c97-sp-4)" }}>
-            <WhyThisVerdict metrics={draftState} evaluation={evaluation} />
-
-            <div>
-              <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                <Target size={12} aria-hidden="true" />
-                Presets
-              </p>
-              <div className="c97-decision-preset-grid" style={{ marginTop: "var(--c97-sp-2)" }}>
-                {DECISION_PRESETS.map((preset) => {
-                  const isActive = preset.id === draftState.preset;
-                  return (
-                    <button
-                      key={preset.id}
-                      type="button"
-                      aria-pressed={isActive}
-                      onClick={() => handlePresetChange(preset.id)}
-                      className="c97-panel"
-                      style={{
-                        textAlign: "left",
-                        minHeight: 44,
-                        cursor: "pointer",
-                      }}
-                    >
-                      <span className="c97-serif" style={{ display: "block" }}>
-                        {preset.name}
-                      </span>
-                      <span
-                        className="c97-mono"
-                        style={{
-                          display: "block",
-                          fontSize: "var(--c97-fs-small)",
-                          color: "var(--c97-ink-2)",
-                          marginTop: "var(--c97-sp-1)",
-                        }}
-                      >
-                        {preset.outcomeHint}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
+        <section className="dl-presets" aria-labelledby={`${ids}-presets`}>
+          <h2 id={`${ids}-presets`} className="sr-only">
+            Presets
+          </h2>
+          <div className="dl-chips" role="group" aria-labelledby={`${ids}-presets`}>
+            {DECISION_PRESETS.map((preset) => (
               <button
+                key={preset.id}
                 type="button"
-                onClick={handleResetToPreset}
-                disabled={!hasPresetOverride}
-                className="c97-btn-ghost"
-                style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-1)" }}
+                aria-pressed={preset.id === draftState.preset}
+                onClick={() => handlePresetChange(preset.id)}
+                className="dl-chip"
               >
+                {preset.name}
+              </button>
+            ))}
+          </div>
+          <div className="dl-preset-row">
+            <p className="dl-preset-note">
+              <span>{crumbLabel}.</span> {activePreset.outcomeHint}
+            </p>
+            <div className="dl-tools">
+              <button type="button" onClick={handleResetToPreset} disabled={!hasPresetOverride} className="dl-link">
                 <RefreshCw size={14} aria-hidden="true" />
                 Reset to preset
               </button>
-
-              <div style={{ marginTop: "var(--c97-sp-4)" }}>
-                <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                  <LinkIcon size={12} aria-hidden="true" />
-                  URL state
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    void handleCopyLink();
-                  }}
-                  className="c97-btn"
-                  style={{ marginTop: "var(--c97-sp-2)" }}
-                >
-                  Copy link
-                </button>
-                <p
-                  className="c97-prose"
-                  style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-2)" }}
-                >
-                  {copyStatus === "copied"
-                    ? "Link copied"
-                    : copyStatus === "error"
-                      ? "Copy failed, so copy the address bar instead"
-                      : "Copy to share. Every slider change is encoded."}
-                </p>
-                <p className="sr-only" role="status">
-                  {copyStatus === "copied" ? "Link copied" : copyStatus === "error" ? "Copy failed, so copy the address bar instead" : ""}
-                </p>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  void handleCopyLink();
+                }}
+                className="dl-link"
+              >
+                <LinkIcon size={14} aria-hidden="true" />
+                Copy link
+              </button>
+              {copyMessage ? (
+                <span className="dl-copy" aria-hidden="true">
+                  {copyMessage}
+                </span>
+              ) : null}
+              <span className="sr-only" role="status">
+                {copyMessage}
+              </span>
             </div>
           </div>
+        </section>
+
+        <div className="dl-sheet">
+          <div className="dl-inputs">
+            <h2 className="sr-only">Score the tradeoff</h2>
+            {/* The verdict line and the four sliders come first, so on a phone the call changes right above the control that moved it. */}
+            <p className="dl-caption" role="status" aria-live="polite">
+              Score {evaluation.weightedScore} · {stamp.word}
+            </p>
+            {metricDefinitions.map((metric) => (
+              <MetricSlider
+                key={metric.key}
+                label={metric.label}
+                helper={metric.helper}
+                value={draftState[metric.key]}
+                baseValue={activePreset[metric.key]}
+                onChange={(value) => handleMetricChange(metric.key, value)}
+              />
+            ))}
+          </div>
+          <figure className="dl-figure">
+            <DecisionMatrix metrics={draftState} evaluation={evaluation} pointLabel={crumbLabel} />
+          </figure>
+          <WhyThisVerdict metrics={draftState} evaluation={evaluation} headingId={`${ids}-why`} />
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
 

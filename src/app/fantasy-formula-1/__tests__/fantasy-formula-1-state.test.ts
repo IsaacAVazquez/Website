@@ -15,7 +15,7 @@ describe("fantasy-formula-1-state", () => {
     ).toEqual(DEFAULT_FANTASY_FORMULA1_STATE);
   });
 
-  it("normalizes supported view, sort, and focus params", () => {
+  it("normalizes supported sort and focus params and drops the retired view param", () => {
     expect(
       normalizeFantasyFormula1State({
         view: "assets",
@@ -23,7 +23,6 @@ describe("fantasy-formula-1-state", () => {
         focus: "drivers",
       })
     ).toEqual({
-      view: "assets",
       sort: "projection",
       focus: "drivers",
     });
@@ -33,13 +32,12 @@ describe("fantasy-formula-1-state", () => {
     expect(
       buildFantasyFormula1Href(
         {
-          view: "assets",
           sort: "form",
           focus: "constructors",
         },
-        new URLSearchParams("ref=portfolio")
+        new URLSearchParams("ref=portfolio&view=assets")
       )
-    ).toBe("/fantasy-formula-1?ref=portfolio&view=assets&sort=form&focus=constructors");
+    ).toBe("/fantasy-formula-1?ref=portfolio&sort=form&focus=constructors");
 
     expect(
       buildFantasyFormula1Href(

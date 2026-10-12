@@ -1,13 +1,529 @@
-/* March Madness Bracket Analysis: the region bracket signature and the
- * matchup list below it. The SVG is drawn at a fixed pixel size (see the
- * inline width/minWidth on the element) rather than stretched to its
- * container, so it scrolls sideways inside its own plate instead of
- * shrinking its type below legibility on a phone. */
+/*
+ * March Madness Bracket Analysis, drawn as a bracketology column with its
+ * bracket (the ESPN Bracketology and The Athletic bracket breakdown kind): a
+ * display title and one standfirst, the region bracket with its switch as the
+ * first screen, the champion pick and the top upsets as one editorial column,
+ * the workspace tabs, and the method and questions as prose at the end. The
+ * route paints its own paper and redeclares the Catalog 97 tokens the borrowed
+ * table, chip, and button classes read. The bracket SVG is drawn at a fixed
+ * pixel size rather than stretched, so it scrolls sideways inside its own
+ * region instead of shrinking its type below legibility on a phone.
+ */
+
+.mm-root {
+  --mm-paper: #f8f6f1;
+  --mm-field: #ece8de;
+  --mm-ink: #1b1b1d;
+  --mm-ink-2: #55535a;
+  --mm-rule: rgba(27, 27, 29, 0.15);
+  --mm-rule-strong: rgba(27, 27, 29, 0.34);
+  --mm-navy: #1f3d7a;
+  --mm-navy-ink: #ffffff;
+  --mm-upset: #b23a12;
+  --mm-positive: #1d6a37;
+  --mm-negative: #a3302a;
+  --mm-warning: #855700;
+
+  --c97-surface: var(--mm-paper);
+  --c97-panel: var(--mm-paper);
+  --c97-field: var(--mm-field);
+  --c97-ink: var(--mm-ink);
+  --c97-ink-2: var(--mm-ink-2);
+  --c97-label: var(--mm-ink-2);
+  --c97-rule: var(--mm-rule);
+  --c97-accent: var(--mm-navy);
+  --c97-action: var(--mm-navy);
+  --c97-positive: var(--mm-positive);
+  --c97-negative: var(--mm-negative);
+  --c97-warning: var(--mm-warning);
+  --c97-grain-soft: none;
+
+  background: var(--mm-paper);
+  color: var(--mm-ink);
+  font-family: var(--c97-font-body);
+}
+
+.dark .mm-root {
+  --mm-paper: #131416;
+  --mm-field: #22242a;
+  --mm-ink: #ece9e2;
+  --mm-ink-2: #aeaaa2;
+  --mm-rule: rgba(236, 233, 226, 0.15);
+  --mm-rule-strong: rgba(236, 233, 226, 0.34);
+  --mm-navy: #a3bdf0;
+  --mm-navy-ink: #0e1830;
+  --mm-upset: #f3a07a;
+  --mm-positive: #74cf90;
+  --mm-negative: #f28b82;
+  --mm-warning: #e6b450;
+}
+
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.mm-root :where(h1, h2, h3) {
+  font-family: var(--c97-font-display);
+  font-weight: 500;
+  color: var(--mm-ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.mm-root :where(p, ul, ol, li) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.mm-root :where(ul, ol) {
+  list-style: none;
+}
+
+.mm-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-5);
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
+  /* The editorial column moves beside the bracket only where the frame is wide enough to hold both at full size. */
+  container-type: inline-size;
+}
+
+/* ---- Borrowed controls ---------------------------------------------------- */
+.mm-root .c97-btn,
+.mm-root .c97-btn-ghost {
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.mm-root .c97-btn {
+  padding: 0 var(--c97-sp-2);
+  background: var(--mm-navy);
+  color: var(--mm-navy-ink);
+}
+
+.mm-root .c97-btn:hover {
+  background: var(--mm-ink);
+  color: var(--mm-paper);
+}
+
+.mm-root .c97-chip {
+  min-height: 22px;
+  padding: 0 var(--c97-sp-1);
+  font-size: 0.6875rem;
+}
+
+/* ---- Type ----------------------------------------------------------------- */
+.mm-kicker {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--mm-ink-2);
+}
+
+/* A reference piece keeps its display title. */
+.mm-root .mm-title {
+  font-size: clamp(2rem, 1.2rem + 3vw, 3.25rem);
+  line-height: 1.05;
+}
+
+.mm-root .mm-h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.mm-root .mm-h3 {
+  font-size: 1.125rem;
+  line-height: 1.25;
+}
+
+.mm-standfirst {
+  font-family: var(--c97-font-display);
+  font-size: 1.1875rem;
+  line-height: 1.45;
+  color: var(--mm-ink);
+  max-inline-size: 62ch;
+}
+
+.mm-body {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--mm-ink);
+}
+
+.mm-meta {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--mm-ink-2);
+}
+
+.mm-label {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mm-ink-2);
+}
+
+.mm-num {
+  font-family: var(--c97-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.mm-root .mm-odds {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.mm-strong {
+  font-weight: 600;
+  color: var(--mm-ink);
+}
+
+.mm-muted {
+  color: var(--mm-ink-2);
+}
+
+.mm-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--mm-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.mm-link:hover {
+  color: var(--mm-ink);
+}
+
+/* ---- Head ----------------------------------------------------------------- */
+.mm-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.mm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-3);
+  margin-top: var(--c97-sp-1);
+}
+
+/* ---- Bracket and the editorial column --------------------------------------- */
+.mm-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@container (min-width: 1340px) {
+  .mm-lead {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.mm-bracket-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+
+.mm-bracket-bar,
+.mm-workspace-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--mm-ink);
+}
 
 .mm-bracket-scroll {
   overflow-x: auto;
 }
 
+/* Tabs: one pressed underline in the accent, the rest plain. */
+.mm-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--c97-sp-1);
+}
+
+.mm-tabs > button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border: 0;
+  background: none;
+  color: var(--mm-ink-2);
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.mm-tabs > button:hover {
+  color: var(--mm-ink);
+}
+
+.mm-tabs > button[aria-selected="true"] {
+  color: var(--mm-ink);
+  font-weight: 600;
+  box-shadow: inset 0 -3px 0 var(--mm-navy);
+}
+
+.mm-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+  min-width: 0;
+}
+
+@media screen and (min-width: 900px) {
+  .mm-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+@container (min-width: 1340px) {
+  .mm-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mm-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  min-width: 0;
+}
+
+.mm-stack-tight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.mm-rows > li {
+  border-top: 1px solid var(--mm-rule);
+  padding-block: var(--c97-sp-1);
+}
+
+.mm-rows > li:last-child {
+  border-bottom: 1px solid var(--mm-rule);
+}
+
+.mm-ff-row {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0 var(--c97-sp-2);
+  align-items: baseline;
+}
+
+.mm-ff-row > :last-child {
+  grid-column: 2;
+}
+
+.mm-result {
+  padding-left: var(--c97-sp-2);
+  border-left: 3px solid var(--mm-upset);
+}
+
+/* An upset pick is the column's object: a ruled entry, not a boxed card. */
+.mm-upsets {
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-upset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--c97-sp-0);
+  padding-block: var(--c97-sp-2);
+  border-top: 1px solid var(--mm-rule);
+}
+
+/* ---- Workspace -------------------------------------------------------------- */
+.mm-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  scroll-margin-top: var(--c97-sp-2);
+}
+
+.mm-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.mm-rounds {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 1000px) {
+  .mm-rounds {
+    grid-template-columns: 1.2fr 1fr 0.84fr;
+  }
+}
+
+.mm-round {
+  margin-top: var(--c97-sp-2);
+  margin-bottom: var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mm-ink-2);
+}
+
+.mm-round:first-child {
+  margin-top: 0;
+}
+
+.mm-site {
+  margin-top: var(--c97-sp-1);
+  font-family: var(--c97-font-display);
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--mm-ink-2);
+}
+
+.mm-note {
+  margin-top: var(--c97-sp-2);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--mm-rule);
+}
+
+.mm-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media screen and (min-width: 900px) {
+  .mm-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mm-scurve-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+}
+
+.mm-scurve-row > .mm-strong {
+  min-width: 7rem;
+}
+
+.mm-tz-row {
+  display: grid;
+  grid-template-columns: minmax(0, 8rem) minmax(0, 1fr) auto;
+  gap: var(--c97-sp-2);
+  align-items: baseline;
+}
+
+.mm-table {
+  min-width: 640px;
+}
+
+/* A pick is a card in a list, and it carries its own call, badges, and reasoning. */
+.mm-picks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-1);
+}
+
+@media screen and (min-width: 900px) {
+  .mm-picks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.mm-pick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-2);
+  border: 1px solid var(--mm-rule);
+  background: var(--mm-paper);
+}
+
+.mm-pick[data-open="true"] {
+  border-color: var(--mm-ink-2);
+}
+
+.mm-pick-name {
+  min-width: 0;
+  flex: 1 1 0%;
+  font-weight: 600;
+}
+
+.mm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--mm-rule);
+}
+
+.mm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+/* ---- Prose at the end ----------------------------------------------------- */
+.mm-prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-3);
+  border-top: 2px solid var(--mm-ink);
+  scroll-margin-top: var(--c97-sp-2);
+}
+
+.mm-prose > .mm-body {
+  max-inline-size: 68ch;
+}
+
+.mm-prose-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+@media screen and (min-width: 800px) {
+  .mm-prose-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mm-sources {
+  font-size: 0.8125rem;
+  color: var(--mm-ink-2);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--mm-rule);
+}
+
+/* ---- The bracket SVG -------------------------------------------------------- */
 .mm-bracket-round-label {
   font-family: var(--c97-font-mono);
   font-size: 11px;
@@ -38,7 +554,7 @@
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  fill: var(--c97-ink);
+  fill: var(--mm-upset);
 }
 
 .mm-bracket-champion-name {
@@ -62,12 +578,16 @@
 }
 
 .mm-bracket-upset-mark {
-  fill: var(--c97-ink);
+  fill: var(--mm-upset);
 }
 
 /* A pick's header row: the disclosure button. The reason and body sit
  * outside it, so the button's name stays the pick itself. */
 .mm-pick-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
   width: 100%;
   min-height: 44px;
   text-align: left;
@@ -137,4 +657,16 @@
 .mm-matchup-tags .c97-chip {
   max-width: 100%;
   white-space: normal;
+}
+
+/* On paper the bracket fits the page instead of clipping at the Elite Eight.
+   The SVG's pixel width is inline, so only an important rule overrides it. */
+@media print {
+  .mm-bracket-svg {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .mm-bracket-scroll {
+    overflow: visible;
+  }
 }

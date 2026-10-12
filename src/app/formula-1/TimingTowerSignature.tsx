@@ -39,18 +39,18 @@ function movementGlyph(movement: number | null): string {
  * The page's signature. A broadcast-style timing tower: position, a livery
  * stripe, the gap to the leader, the interval to the car ahead, and this
  * round's movement. It follows whichever of the Drivers or Constructors
- * views is active, and drivers otherwise. It is a read-only picture of the
- * standings, pointer- and glance-only; the full driver or constructor list
- * below, in real markup, is the keyboard and screen-reader path to the same
- * numbers. A phone prints the top ten and links to that list, so the tower
- * stays about one screen tall there.
+ * views is active, and drivers otherwise. It prints as a carbon broadcast
+ * graphic in both themes, and the Drivers and Constructors views beside it
+ * carry the same numbers in table markup with the columns the tower leaves
+ * out. A phone prints the top ten and links to that view, so the tower stays
+ * about one screen tall there.
  */
 export function TimingTowerSignature({ standings, kind, fullTableHref }: TimingTowerSignatureProps) {
   const rows = useMemo(() => timingTower(standings), [standings]);
   const shortOnPhone = rows.length > PHONE_ROWS + 2;
 
   if (rows.length === 0) {
-    return <p className="c97-meta">Standings have not published for this season yet.</p>;
+    return <p className={styles.empty}>Standings have not published for this season yet.</p>;
   }
 
   const summaryLabel =
@@ -59,13 +59,10 @@ export function TimingTowerSignature({ standings, kind, fullTableHref }: TimingT
       : `Constructor championship timing tower, ${rows.length} teams, leader ${rowLabel(rows[0]).name}`;
 
   return (
-    <div
-      data-c97-surface="paper"
-      className="c97-offset"
-      style={{ padding: "var(--c97-sp-3)" }}
-    >
-      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-        {kind === "drivers" ? "Driver timing tower" : "Constructor timing tower"}
+    <div className={styles.tower}>
+      <p className={styles.towerTitle}>
+        <span>{kind === "drivers" ? "Drivers" : "Constructors"}</span>
+        <span className={styles.towerTitleNote}>Championship</span>
       </p>
       <ol className={styles.towerList} aria-label={summaryLabel}>
         <li className={`${styles.towerRow} ${styles.towerHead}`} aria-hidden="true">
@@ -85,11 +82,11 @@ export function TimingTowerSignature({ standings, kind, fullTableHref }: TimingT
                   ? `${styles.towerRow} ${styles.towerRowPastPhone}`
                   : styles.towerRow
               }
-              style={{ borderLeftColor: row.livery ?? "var(--c97-ink-2)" }}
+              style={{ borderLeftColor: row.livery ?? "var(--f1-tower-ink-2)" }}
             >
-              <span className={`c97-mono ${styles.towerPosition}`}>{row.position}</span>
+              <span className={styles.towerPosition}>{row.position}</span>
               {/* On a phone the tower prints the three-letter code, as the broadcast graphic does. */}
-              <span className={`c97-serif ${styles.towerName}`}>
+              <span className={styles.towerName}>
                 <span className={code ? styles.towerNameFull : undefined}>{name}</span>
                 {code ? <span className={styles.towerCode}> {code}</span> : null}
               </span>
@@ -111,7 +108,7 @@ export function TimingTowerSignature({ standings, kind, fullTableHref }: TimingT
           <span>
             Top {PHONE_ROWS} of {rows.length}
           </span>
-          <Link href={fullTableHref} className="c97-btn-ghost">
+          <Link href={fullTableHref} className={styles.towerMoreLink}>
             See all {rows.length} {kind === "drivers" ? "drivers" : "teams"}
           </Link>
         </p>

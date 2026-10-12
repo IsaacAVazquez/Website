@@ -1,12 +1,121 @@
-/* Polling Aggregator: the approval and ballot hero marks. The party inks
- * (--c97-party-d, --c97-party-r, through DEM_COLOR and REP_COLOR in
- * polling-aggregator-helpers.ts) colour the national series only, since
- * VoteHub publishes a race poll's candidates without a party. The route's own
- * inks are saffron and teal on purpose so neither can be mistaken for D or R. */
+/*
+ * Polling Aggregator, drawn as a polling tracker. The route paints its own
+ * newsprint and ink with a light and a dark story, and points the Catalog 97
+ * tokens it still reads at them. The only colour that means anything is the
+ * party marks (--c97-party-*-mark, through DEM_COLOR and REP_COLOR in
+ * polling-aggregator-helpers.ts), which colour the national series only,
+ * since VoteHub publishes a race poll's candidates without a party. The route
+ * ink and the focus colour are a neutral graphite so nothing reads as D or R.
+ */
 
-/* The trend chart and ballot bar's own paper plate inset into the hero. */
-.c97-polling-hero-chart {
-  padding: var(--c97-sp-4);
+.pa-root {
+  --pa-paper: #f7f6f2;
+  --pa-raise: #eeece6;
+  --pa-ink: #1b1d21;
+  --pa-ink-2: #555a62;
+  --pa-rule: rgba(27, 29, 33, 0.12);
+  --pa-rule-strong: rgba(27, 29, 33, 0.3);
+  --pa-select: rgba(27, 29, 33, 0.06);
+
+  --c97-surface: var(--pa-paper);
+  --c97-field: var(--pa-raise);
+  --c97-ink: var(--pa-ink);
+  --c97-ink-2: var(--pa-ink-2);
+  --c97-label: var(--pa-ink-2);
+  --c97-rule: var(--pa-rule);
+  --c97-accent: var(--pa-ink);
+
+  background: var(--pa-paper);
+  color: var(--pa-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .pa-root {
+  --pa-paper: #131518;
+  --pa-raise: #1d2024;
+  --pa-ink: #eceef1;
+  --pa-ink-2: #a5abb4;
+  --pa-rule: rgba(236, 238, 241, 0.12);
+  --pa-rule-strong: rgba(236, 238, 241, 0.3);
+  --pa-select: rgba(236, 238, 241, 0.07);
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.pa-root :where(h1, h2, h3, h4) {
+  font-family: var(--c97-font-body);
+  color: var(--pa-ink);
+  margin: 0;
+}
+
+.pa-root :where(p, ul, li, dl, dd, figure) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.pa-root :where(ul) {
+  list-style: none;
+}
+
+.pa-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+/* Title row */
+
+.pa-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.pa-title {
+  font-family: var(--c97-font-display);
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.pa-root .pa-standfirst {
+  max-inline-size: 66ch;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--pa-ink-2);
+}
+
+/* The national strip: the trend chart, with the averages and the ballot bar beside it from 1024px. */
+
+.pa-national {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  padding-block: var(--c97-sp-2) var(--c97-sp-2);
+  border-block: 1px solid var(--pa-rule-strong);
+}
+
+@media (min-width: 1024px) {
+  .pa-national {
+    grid-template-columns: minmax(0, 1fr) 19rem;
+  }
+
+  .pa-source {
+    grid-column: 1 / -1;
+  }
+}
+
+.pa-chart {
+  min-width: 0;
+}
+
+.pa-chart-svg {
+  display: block;
+  width: 100%;
+  max-height: 320px;
 }
 
 /* The trend chart scales to about half at phone width, so its type is set
@@ -16,17 +125,368 @@
  * month label would collide with its neighbour, so every other one is
  * dropped; the visible ones still span the full trend window. */
 @media print, screen and (max-width: 639px) {
-  .c97-polling-chart-text {
+  .pa-chart-text {
     font-size: 25px;
   }
 
-  [data-tick-parity="odd"] {
+  .pa-chart [data-tick-parity="odd"] {
     display: none;
   }
 }
 
-/* Both poll tables sit inside a .c97-panel, so the sticky header takes the
- * panel's tint instead of the sheet's and no stripe shows above the rows. */
-.c97-panel .c97-polling-table th {
-  background: var(--c97-panel);
+.pa-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0) var(--c97-sp-3);
+  margin-top: var(--c97-sp-1);
+  font-size: 0.75rem;
+  color: var(--pa-ink-2);
+}
+
+.pa-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.pa-legend-line {
+  display: inline-block;
+  width: 20px;
+  height: 3px;
+}
+
+.pa-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  align-self: center;
+}
+
+.pa-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-2);
+}
+
+.pa-figures dt,
+.pa-kicker,
+.pa-race-figures dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pa-ink-2);
+}
+
+.pa-big {
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.pa-ballot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.pa-ballot-bar {
+  display: flex;
+  height: 14px;
+  overflow: hidden;
+}
+
+.pa-ballot-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pa-ballot-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.pa-swatch {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  vertical-align: baseline;
+}
+
+.pa-root .pa-source {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--pa-ink-2);
+}
+
+.pa-source a {
+  color: var(--pa-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* The board: the view switch is a sticky toolbar over the race tables. */
+
+.pa-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.pa-toolbar {
+  background: var(--pa-paper);
+  border-bottom: 1px solid var(--pa-rule-strong);
+}
+
+@media screen and (min-width: 640px) {
+  .pa-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.pa-tabs {
+  display: flex;
+  gap: var(--c97-sp-3);
+}
+
+.pa-tabs button {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--pa-ink-2);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pa-tabs button:hover {
+  color: var(--pa-ink);
+}
+
+.pa-tabs button[aria-pressed="true"] {
+  color: var(--pa-ink);
+  border-bottom-color: var(--pa-ink);
+}
+
+.pa-races {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media (min-width: 1024px) {
+  .pa-races {
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+    align-items: start;
+  }
+
+  .pa-race-detail {
+    position: sticky;
+    top: 60px;
+  }
+}
+
+.pa-board-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  margin-bottom: var(--c97-sp-1);
+}
+
+.pa-board-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.pa-scroll {
+  overflow-x: auto;
+}
+
+.pa-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.pa-table th {
+  padding: var(--c97-sp-1) var(--c97-sp-1);
+  border-bottom: 1px solid var(--pa-rule-strong);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--pa-ink-2);
+}
+
+.pa-table td {
+  padding: var(--c97-sp-1) var(--c97-sp-1);
+  border-bottom: 1px solid var(--pa-rule);
+  vertical-align: middle;
+}
+
+.pa-table [data-align="end"] {
+  text-align: right;
+}
+
+.pa-race-row {
+  cursor: pointer;
+}
+
+.pa-race-row:hover {
+  background: var(--pa-select);
+}
+
+.pa-race-row[data-selected] {
+  background: var(--pa-select);
+  box-shadow: inset 3px 0 0 var(--pa-ink);
+}
+
+.pa-race-button {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pa-state-abbr {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--pa-ink-2);
+}
+
+.pa-strong {
+  font-weight: 600;
+}
+
+.pa-block {
+  display: block;
+}
+
+.pa-root .pa-muted {
+  color: var(--pa-ink-2);
+}
+
+.pa-root .pa-small {
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.pa-figure {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pa-figure .pa-swatch {
+  margin-inline-end: var(--c97-sp-0);
+}
+
+.pa-root .pa-method {
+  max-inline-size: 72ch;
+  margin-top: var(--c97-sp-2);
+}
+
+@media (max-width: 639px) {
+  .pa-hide-sm {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .pa-hide-md {
+    display: none;
+  }
+}
+
+/* The selected race, a ruled column beside the table. */
+
+.pa-race-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-1);
+  border-top: 3px solid var(--pa-ink);
+}
+
+.pa-race-title {
+  font-family: var(--c97-font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.pa-race-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.pa-race-figures dd {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.pa-poll-list > li {
+  padding-block: var(--c97-sp-1);
+  border-top: 1px solid var(--pa-rule);
+  font-size: 0.875rem;
+}
+
+.pa-poll-answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  margin-top: var(--c97-sp-0);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pa-poll-tables {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media (min-width: 1024px) {
+  .pa-poll-tables {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pa-poll-tables .pa-board-title {
+  margin-bottom: var(--c97-sp-1);
+}
+
+@media print {
+  .pa-toolbar {
+    position: static;
+  }
 }

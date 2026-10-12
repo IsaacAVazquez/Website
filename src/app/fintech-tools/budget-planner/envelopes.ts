@@ -5,7 +5,7 @@
  */
 
 import type { BudgetExpenseLine } from "@/types/budget";
-import { formatDollars, roundTo } from "@/lib/utils";
+import { roundTo } from "@/lib/utils";
 
 export interface Envelope {
   /** Spent against budgeted, clamped at one so an outlier never blows out the fill. */
@@ -14,8 +14,6 @@ export interface Envelope {
   torn: boolean;
   /** How far over budget, zero when not torn. */
   overBy: number;
-  spentLabel: string;
-  budgetLabel: string;
 }
 
 /** A zero budget with any spend reads as torn, never as a division by zero. */
@@ -29,8 +27,6 @@ export function envelope(spent: number, budgeted: number): Envelope {
     fill,
     torn,
     overBy: torn ? roundTo(safeSpent - safeBudgeted, 2) : 0,
-    spentLabel: formatDollars(safeSpent),
-    budgetLabel: formatDollars(safeBudgeted),
   };
 }
 

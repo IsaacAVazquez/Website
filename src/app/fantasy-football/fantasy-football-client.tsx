@@ -7,7 +7,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type ReactNode,
 } from "react";
 import Link from "next/link";
@@ -43,7 +42,6 @@ import {
   FANTASY_VALUE_TOOLTIP,
   FANTASY_VORP_TOOLTIP,
   FANTASY_VS_ADP_TOOLTIP,
-  HEADER_CHIP_CLASS,
   MONO_LABEL_CLASS,
   SHELL_CLASS,
   formatAdp,
@@ -71,7 +69,7 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
-import { PROJECT_PRESS } from "@/constants/projectPress";
+import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import {
@@ -119,22 +117,11 @@ const FANTASY_TOOLS = [
   { href: "/fantasy-football/waivers", label: "Waiver targets" },
 ];
 
-const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
-  fresh: {
-    background: "color-mix(in srgb, var(--c97-positive) 16%, var(--c97-surface))",
-    borderColor: "color-mix(in srgb, var(--c97-positive) 30%, var(--c97-rule))",
-    color: "var(--c97-ink)",
-  },
-  aging: {
-    background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
-    borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
-    color: "var(--c97-ink)",
-  },
-  stale: {
-    background: "color-mix(in srgb, var(--c97-negative) 16%, var(--c97-surface))",
-    borderColor: "color-mix(in srgb, var(--c97-negative) 30%, var(--c97-rule))",
-    color: "var(--c97-ink)",
-  },
+/** Status colour on the freshness line; the label itself says aging or stale. */
+const STALENESS_TONE: Record<FantasySnapshotStaleness, "warning" | "negative" | undefined> = {
+  fresh: undefined,
+  aging: "warning",
+  stale: "negative",
 };
 
 /**
@@ -1396,7 +1383,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   // Format and source share one chip, and the ADP chip drops its provider
   // name below md: at 390 the strip ran four lines and pushed the first row
   // to y=709, and the provider is still named in the footer and the drawer.
-  const headerChips: { label: string; shortLabel?: string; tone?: CSSProperties }[] = [
+  const headerChips: { label: string; shortLabel?: string; tone?: "warning" | "negative" }[] = [
     {
       label: vorpMode
         ? `${routeState.teams}-team ${selectedScoringLabel} VORP · ${snapshot?.vorpSource?.provider ?? "Projected VORP"}`
@@ -1789,51 +1776,28 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
       data-testid="fantasy-football-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <section className="c97-sheet" data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football"].lead}`}>
-        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
-          <h1 className="c97-poster">Fantasy Football Rankings</h1>
-          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "62ch" }}>
-            {vorpMode
-              ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
-              : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."}
-          </p>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Draft rankings{metadata?.season ? ` · ${metadata.season}` : ""}
-          </p>
-          <div
-            data-c97-surface="paper"
-            className="c97-offset"
-            style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
-          >
-            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
-              {headerChips.map((chip) => (
-                <span
-                  key={chip.label}
-                  className={HEADER_CHIP_CLASS}
-                  style={
-                    chip.tone ?? {
-                      borderColor: "var(--c97-rule)",
-                      background: "var(--c97-field)",
-                      color: "var(--c97-ink-2)",
-                    }
-                  }
-                >
-                  {chip.shortLabel ? (
-                    <>
-                      <span className="md:hidden">{chip.shortLabel}</span>
-                      <span className="hidden md:inline">{chip.label}</span>
-                    </>
-                  ) : (
-                    chip.label
-                  )}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FantasyRouteHeader
+        title={
+          <>
+            Fantasy Football <TitleAccent>Rankings</TitleAccent>
+          </>
+        }
+        lead={
+          vorpMode
+            ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
+            : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."
+        }
+        freshness={
+          <FreshnessParts
+            parts={[
+              { label: `Draft rankings${metadata?.season ? ` · ${metadata.season}` : ""}` },
+              ...headerChips,
+            ]}
+          />
+        }
+      />
 
-      <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <div>
         {seasonalWeek >= 1 ? (
           <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
@@ -2305,24 +2269,23 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             </nav>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="c97-sheet" data-c97-surface="bone" data-seam="torn" aria-labelledby="fantasy-rankings-questions">
-        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
-          <div className="max-w-3xl">
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>How the board works</p>
-            <h2 id="fantasy-rankings-questions" className="c97-poster-sm">
-              Fantasy rankings questions
-            </h2>
-          </div>
-          <div className="grid lg:grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
+      {/* Plain prose under a rule, with the answers in reading columns. The same
+          array feeds the page's FAQ schema, so the text stays as written. */}
+      <section aria-labelledby="fantasy-rankings-questions" className={SHELL_CLASS} style={{ paddingBottom: "var(--c97-sp-5)" }}>
+        <div className="border-t" style={{ borderColor: "var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
+          <FantasySectionHeading id="fantasy-rankings-questions">
+            Fantasy rankings questions
+          </FantasySectionHeading>
+          <div className="grid lg:grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-4)", rowGap: "var(--c97-sp-3)" }}>
             {FANTASY_FOOTBALL_FAQ.map((item) => (
-              <article key={item.question} className="c97-panel">
-                <h3 className="c97-serif c97-h3">{item.question}</h3>
-                <p className="text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+              <div key={item.question} className="min-w-0">
+                <h3 className="m-0 text-base font-semibold" style={{ fontFamily: "var(--c97-font-body)" }}>{item.question}</h3>
+                <p className="text-sm leading-7" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                   {item.answer}
                 </p>
-              </article>
+              </div>
             ))}
           </div>
         </div>

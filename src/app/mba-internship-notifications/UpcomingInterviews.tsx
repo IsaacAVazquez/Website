@@ -12,26 +12,23 @@ export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
   const [message, setMessage] = useState("");
   const interviews = todayKey ? getUpcomingInterviews(applications, todayKey) : [];
   return (
-    <section aria-labelledby="upcoming-interviews-heading">
-      {/* A subsection of the pipeline band, so it steps down from the band's h2. */}
-      <h3 id="upcoming-interviews-heading" className="c97-serif c97-h3">Interviews in the next seven days</h3>
+    <section className="mba-rail-section" aria-labelledby="upcoming-interviews-heading">
+      <h3 id="upcoming-interviews-heading" className="mba-h3">Interviews in the next seven days</h3>
       {!todayKey ? (
-        <p className="c97-prose">Loading interview dates…</p>
+        <p>Loading interview dates…</p>
       ) : interviews.length === 0 ? (
-        <p className="c97-prose">No scheduled interviews in the next seven days.</p>
+        <p>No scheduled interviews in the next seven days.</p>
       ) : (
-        <ul className="c97-list" aria-label="Upcoming interviews">
+        <ul className="mba-attention" aria-label="Upcoming interviews">
           {interviews.map(({ application, round, roundIndex, daysFromToday }) => (
-            <li key={`${application.id}-${roundIndex}`} className="c97-row c97-row-stack-sm">
-              <div style={{ minWidth: 0 }}>
-                <p className="c97-serif">{application.jobSnapshot.companyName} · {round.label}</p>
-                <p className="c97-meta">
-                  <time dateTime={round.date!}>{round.date}</time>
-                  {daysFromToday === 0 ? " · Today" : ""} · {application.jobSnapshot.title}
-                </p>
-                {round.notes && <p className="c97-prose">{round.notes}</p>}
-              </div>
-              <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
+            <li key={`${application.id}-${roundIndex}`}>
+              <p className="mba-attention-what">{application.jobSnapshot.companyName} · {round.label}</p>
+              <p className="mba-job-meta">
+                <time dateTime={round.date!}>{round.date}</time>
+                {daysFromToday === 0 ? " · Today" : ""} · {application.jobSnapshot.title}
+              </p>
+              {round.notes && <p className="mba-snippet">{round.notes}</p>}
+              <div className="mba-wrap-row">
                 <button type="button" className="c97-btn-ghost" onClick={() => onEdit(application)}>Edit application</button>
                 {application.materialsDir && (
                   <button type="button" className="c97-btn-ghost" onClick={async () => {
@@ -49,7 +46,7 @@ export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
           ))}
         </ul>
       )}
-      {message && <p className="c97-meta" role="status">{message}</p>}
+      {message && <p className="mba-small" role="status">{message}</p>}
     </section>
   );
 }

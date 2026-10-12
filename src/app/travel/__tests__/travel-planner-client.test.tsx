@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { toLocalDateKey } from "@/lib/date-formatters";
 import { TRAVEL_PLANNER_STORAGE_KEY, formatDayHeading } from "@/lib/travelPlanner";
@@ -84,24 +85,25 @@ describe("TravelPlannerClient", () => {
     jest.restoreAllMocks();
   });
 
-  // On a first visit the only task is creating a trip, so its form sits open
-  // beside the boarding pass and nothing that needs a trip is on the page.
+  // On a first visit the only task is creating a trip, so its form is the
+  // page and nothing that needs a trip is on it.
   function expectFirstVisit() {
-    expect(screen.getByText("No trip yet")).toBeInTheDocument();
     expect(screen.getByRole("form", { name: "Create a new trip" })).toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Day-by-day itinerary" })).toBeNull();
     expect(screen.queryByRole("region", { name: "Trip journal" })).toBeNull();
     expect(screen.queryByRole("region", { name: "Trip management" })).toBeNull();
   }
 
-  it("starts empty, with the trip form beside the pass and nothing else until a trip exists", () => {
+  it("starts empty, with one trip form and a sample day, and nothing else until a trip exists", () => {
     render(<TravelPlannerClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: "Travel Planner" })).toBeInTheDocument();
-    expect(screen.getByText("Nothing planned")).toBeInTheDocument();
     expectFirstVisit();
     const form = screen.getByRole("form", { name: "Create a new trip" });
-    expect(form.compareDocumentPosition(screen.getByText("No trip yet")) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();
+    expect(screen.getAllByRole("form")).toHaveLength(1);
+    // The sample day illustrates the itinerary and has no controls of its own.
+    const sample = screen.getByText(/A sample day/).closest("figure") as HTMLElement;
+    expect(within(sample).queryAllByRole("button")).toHaveLength(0);
     expect(within(form).getByText("The day-by-day itinerary and the journal open once a trip is saved.")).toBeInTheDocument();
     // There is nothing to cancel back to before the first trip.
     expect(within(form).queryByRole("button", { name: "Cancel" })).toBeNull();
@@ -130,20 +132,12 @@ describe("TravelPlannerClient", () => {
     expectFirstVisit();
   });
 
-  it("creates a trip from the start button and saves it to this browser", () => {
-    const frames: FrameRequestCallback[] = [];
-    jest.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
-      frames.push(callback);
-      return frames.length;
-    });
+  it("creates a trip from the first-visit form and saves it to this browser", () => {
     render(<TravelPlannerClient />);
 
-    // The form is already open beside the pass, so the start button only moves focus into it.
     const form = screen.getByRole("form", { name: "Create a new trip" });
-    fireEvent.click(screen.getByRole("button", { name: "Start a trip" }));
-    act(() => frames.forEach((frame) => frame(0)));
-    expect(within(form).getByRole("textbox", { name: "Trip name" })).toHaveFocus();
-
+    // The dates default to today once the page has mounted.
+    expect(within(form).getByLabelText("Start date")).toHaveValue(TODAY);
     change(within(form).getByRole("textbox", { name: "Trip name" }), "  Kyoto  ");
     change(within(form).getByRole("textbox", { name: "Destination" }), "Kyoto, Japan");
     change(within(form).getByLabelText("End date"), dayKey(1));
@@ -158,7 +152,7 @@ describe("TravelPlannerClient", () => {
     ]);
     expect(within(manage()).getByText("All trips (1)")).toBeInTheDocument();
     expect(within(manage()).getByText("Kyoto (active)")).toBeInTheDocument();
-    expect(screen.getByText("Kyoto, Japan", { selector: ".c97-boarding-pass-destination" })).toBeInTheDocument();
+    expect(screen.getByText("Kyoto, Japan", { selector: ".tp-destination" })).toBeInTheDocument();
     expect(screen.getByText("3 days to go")).toBeInTheDocument();
     expect(within(itinerary()).getByText("No stops yet. Add the first one with the Add stop form.")).toBeInTheDocument();
     expect(within(journal()).getByText(/Journal is empty/)).toBeInTheDocument();
@@ -191,10 +185,9 @@ describe("TravelPlannerClient", () => {
     seed([LISBON]);
     render(<TravelPlannerClient />);
 
-    expect(screen.getByText("Lisbon, Portugal", { selector: ".c97-boarding-pass-destination" })).toBeInTheDocument();
+    expect(screen.getByText("Lisbon, Portugal", { selector: ".tp-destination" })).toBeInTheDocument();
     expect(screen.getByText("Stops").nextElementSibling).toHaveTextContent("1/3");
     expect(screen.getByText("Day 1 of 3")).toBeInTheDocument();
-    expect(within(itinerary()).getByText("1/3 stops checked off")).toBeInTheDocument();
 
     expect(within(itinerary()).getByRole("heading", { name: `${formatDayHeading(TODAY)} · Today` })).toBeInTheDocument();
     expect(within(itinerary()).getByText("0/2 done")).toBeInTheDocument();
@@ -262,7 +255,7 @@ describe("TravelPlannerClient", () => {
     expect(added).toEqual(
       expect.objectContaining({ date: dayKey(2), time: "21:00", endTime: "23:00", category: "food", location: "Bairro Alto", notes: "Book a table" })
     );
-    expect(within(itinerary()).getByText("1/4 stops checked off")).toBeInTheDocument();
+    expect(screen.getByText("Stops").nextElementSibling).toHaveTextContent("1/4");
     expect(within(form).getByRole("textbox", { name: "Title" })).toHaveValue("");
   });
 
@@ -297,7 +290,7 @@ describe("TravelPlannerClient", () => {
     fireEvent.click(within(itinerary()).getByRole("button", { name: "Mark Museum as done" }));
     expect(within(itinerary()).getByRole("button", { name: "Mark Museum as not done" })).toBeInTheDocument();
     expect(stored()[0].activities.find((activity) => activity.id === "act-museum")?.completed).toBe(true);
-    expect(within(itinerary()).getByText("2/3 stops checked off")).toBeInTheDocument();
+    expect(screen.getByText("Stops").nextElementSibling).toHaveTextContent("2/3");
 
     const lunchRow = within(itinerary()).getByText("Lunch").closest("li") as HTMLElement;
     fireEvent.click(within(lunchRow).getByRole("button", { name: "Edit" }));
@@ -314,7 +307,7 @@ describe("TravelPlannerClient", () => {
 
     expect(within(journal()).getByText("2 entries")).toBeInTheDocument();
     const cards = within(journal()).getAllByRole("listitem");
-    expect(cards.map((card) => card.querySelector(".c97-serif")?.textContent)).toEqual(["Tram 28", "Arrival"]);
+    expect(cards.map((card) => card.querySelector(".tp-postcard-title")?.textContent)).toEqual(["Tram 28", "Arrival"]);
     expect(within(cards[0]).getByText("Amazing")).toHaveClass("c97-chip-positive");
     expect(within(cards[1]).getByText("Long flight.")).toBeInTheDocument();
 
@@ -358,7 +351,7 @@ describe("TravelPlannerClient", () => {
     expect(within(journalForm()).getByRole("textbox", { name: "Title" })).toHaveValue("");
   });
 
-  it("switches the active trip from the list and the boarding pass", () => {
+  it("switches the active trip from the list and the trip header", () => {
     seed([LISBON, PORTO]);
     render(<TravelPlannerClient />);
 
@@ -367,8 +360,8 @@ describe("TravelPlannerClient", () => {
 
     fireEvent.click(within(manage()).getByRole("button", { name: /^Porto/ }));
     expect(within(manage()).getByRole("button", { name: /^Porto \(active\)/ })).toHaveAttribute("aria-current", "true");
-    // With no destination the pass prints the trip name.
-    expect(screen.getByText("Porto", { selector: ".c97-boarding-pass-destination" })).toBeInTheDocument();
+    // With no destination the header prints the trip name.
+    expect(screen.getByText("Porto", { selector: ".tp-destination" })).toBeInTheDocument();
     expect(screen.getByText("10 days to go")).toBeInTheDocument();
 
     change(screen.getByRole("combobox", { name: "Trip" }), "trip-lisbon");
@@ -428,7 +421,7 @@ describe("TravelPlannerClient", () => {
   it("commits trip details on blur and keeps stored dates valid", () => {
     seed([LISBON]);
     render(<TravelPlannerClient />);
-    const details = within(manage()).getByRole("spinbutton", { name: /Budget/ }).closest(".c97-panel") as HTMLElement;
+    const details = within(manage()).getByRole("spinbutton", { name: /Budget/ }).closest(".tp-details") as HTMLElement;
 
     const name = within(details).getByRole("textbox", { name: "Trip name" });
     change(name, "Lisbon long weekend");
@@ -498,6 +491,55 @@ describe("TravelPlannerClient", () => {
 
     expect(screen.getByRole("status")).toHaveTextContent(/browser storage is unavailable/);
     expect(within(manage()).getByText("Offline trip (active)")).toBeInTheDocument();
+  });
+
+  it("prints no date in the server render, so a browser a day ahead of the server still hydrates", () => {
+    // Today is read after mount; the first-trip form's dates fill in on the client.
+    const html = renderToString(<TravelPlannerClient />);
+    expect(html).toContain("Create a new trip");
+    expect(html).not.toContain(TODAY);
+  });
+
+  it("moves the one stop form to the day whose Add a stop was pressed", () => {
+    seed([LISBON]);
+    render(<TravelPlannerClient />);
+    // It starts under today, the trip's first day.
+    expect(itinerary().querySelectorAll("form")).toHaveLength(1);
+    fireEvent.click(within(itinerary()).getByRole("button", { name: `Add a stop on ${formatDayHeading(dayKey(1))}` }));
+
+    const form = stopForm();
+    expect(within(form).getByRole("textbox", { name: "Title" })).toHaveFocus();
+    expect(within(form).getByLabelText("Date")).toHaveValue(dayKey(1));
+    // Today now ends with its own Add a stop button, and the form sits after the Walk stop.
+    expect(within(itinerary()).getByRole("button", { name: `Add a stop on ${formatDayHeading(TODAY)}` })).toBeInTheDocument();
+    const walk = within(itinerary()).getByText("Walk");
+    expect(walk.compareDocumentPosition(form) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    change(within(form).getByRole("textbox", { name: "Title" }), "Tram 28");
+    fireEvent.click(within(form).getByRole("button", { name: "Add stop" }));
+    expect(stored()[0].activities.find((activity) => activity.title === "Tram 28")?.date).toBe(dayKey(1));
+  });
+
+  it("runs the countdown and the Today marker on one clock across midnight", () => {
+    // Render on the evening before the trip, then cross midnight. The keys are
+    // taken before the clock is faked, since dayKey reads the clock.
+    const tomorrow = dayKey(1);
+    const after = dayKey(2);
+    jest.useFakeTimers({ now: new Date(`${TODAY}T23:59:30`) });
+    try {
+      seed([makeTrip({ id: "trip-next", name: "Tomorrow", startDate: tomorrow, endDate: after })]);
+      render(<TravelPlannerClient />);
+      expect(screen.getByText("1 day to go")).toBeInTheDocument();
+      expect(within(itinerary()).queryByRole("heading", { name: / · Today$/ })).toBeNull();
+
+      act(() => {
+        jest.advanceTimersByTime(60_000);
+      });
+      expect(screen.getByText("Day 1 of 2")).toBeInTheDocument();
+      expect(within(itinerary()).getByRole("heading", { name: `${formatDayHeading(tomorrow)} · Today` })).toBeInTheDocument();
+    } finally {
+      jest.useRealTimers();
+    }
   });
 
   it("caps a very long trip's itinerary and offers a scroll cue", () => {

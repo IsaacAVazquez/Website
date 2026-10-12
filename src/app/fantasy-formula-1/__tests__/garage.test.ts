@@ -1,5 +1,6 @@
 import type { FantasyFormula1Asset, FantasyFormula1LineupSummary } from "@/types/fantasyFormula1";
-import { garageSlots, normaliseTeamColor } from "../garage";
+import { normaliseTeamColor } from "@/lib/formula1TeamColor";
+import { garageSlots } from "../garage";
 
 function asset(kind: "driver" | "constructor", id: string, name: string, teamColor: string | null): FantasyFormula1Asset {
   return {

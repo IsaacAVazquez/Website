@@ -14,11 +14,6 @@ export const DEFAULT_TRANSIT_STATE: TransitRouteState = {
   station: null,
 };
 
-export const TRANSIT_VIEW_LABELS: Record<TransitView, string> = {
-  lines: "Lines",
-  advisories: "Alerts",
-};
-
 function normalizeStationParam(station: string | null): string | null {
   if (!station) {
     return null;

@@ -63,7 +63,6 @@ export function MissionDrawer({
             aria-label={detail ? `${detail.name} detail` : "Mission detail"}
             tabIndex={-1}
             data-testid="mission-detail-panel"
-            data-c97-surface="paper"
             className="c97-enter-slide-x relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
           >
             <div className="relative border-b border-[var(--c97-rule)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)" }}>
@@ -93,7 +92,7 @@ export function MissionDrawer({
                     <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                       Flight #{detail.flightNumber} · {detail.launchpadName ?? "Pad TBD"}
                     </p>
-                    <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>
+                    <h2 className="sx-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {detail.name}
                     </h2>
                     {status ? (

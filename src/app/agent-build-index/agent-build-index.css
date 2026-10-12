@@ -1,0 +1,353 @@
+/*
+ * Agent Build Index, a weekly ranked page on the agents slice of the GitHub
+ * trending snapshot. It shares the trending board's graphite paper, since it
+ * is a view of the same data, and sets its title and names in Newsreader the
+ * way an index or almanac page does. Nothing is boxed; each repository is a
+ * ruled line, and the form keeps its own fields.
+ */
+
+.abi-root {
+  --abi-bg: #fbfbf9;
+  --abi-raise: #eef0ec;
+  --abi-ink: #1d2227;
+  --abi-ink-2: #565e66;
+  --abi-rule: rgba(29, 34, 39, 0.12);
+  --abi-rule-strong: rgba(29, 34, 39, 0.34);
+  --abi-add: #1a7f37;
+  --abi-focus: #0b5cd5;
+
+  --c97-surface: var(--abi-bg);
+  --c97-field: var(--abi-raise);
+  --c97-panel: var(--abi-raise);
+  --c97-ink: var(--abi-ink);
+  --c97-ink-2: var(--abi-ink-2);
+  --c97-label: var(--abi-ink-2);
+  --c97-rule: var(--abi-rule);
+  --c97-action: var(--abi-ink);
+  --c97-accent: var(--abi-focus);
+
+  background: var(--abi-bg);
+  color: var(--abi-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .abi-root {
+  --abi-bg: #101317;
+  --abi-raise: #1d2126;
+  --abi-ink: #e4e8ec;
+  --abi-ink-2: #a0a8b1;
+  --abi-rule: rgba(228, 232, 236, 0.12);
+  --abi-rule-strong: rgba(228, 232, 236, 0.32);
+  --abi-add: #3fb950;
+  --abi-focus: #6ea8ff;
+  --c97-positive: #3fb950;
+  --c97-negative: #ff8a80;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.abi-root h1,
+.abi-root h2,
+.abi-root h3 {
+  font-family: var(--c97-font-display);
+  font-weight: 500;
+  color: var(--abi-ink);
+  margin: 0;
+}
+
+.abi-root :where(p, ol, ul, li) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.abi-root :where(ol, ul) {
+  list-style: none;
+}
+
+.abi-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-5);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+.abi-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.abi-title {
+  font-size: var(--c97-fs-display);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.abi-lede {
+  max-inline-size: 60ch;
+  margin-top: var(--c97-sp-1);
+  font-size: var(--c97-fs-lead);
+  line-height: 1.45;
+  color: var(--abi-ink);
+}
+
+.abi-status {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--abi-ink-2);
+}
+
+.abi-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--c97-sp-3);
+}
+
+.abi-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--abi-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--abi-rule-strong);
+  text-underline-offset: 4px;
+}
+
+.abi-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* The ranking */
+
+.abi-ranking {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.abi-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--abi-ink);
+}
+
+.abi-h2 {
+  font-size: var(--c97-fs-h2);
+  line-height: 1.15;
+}
+
+.abi-h3 {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.2;
+}
+
+.abi-note {
+  max-inline-size: 70ch;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--abi-ink-2);
+}
+
+.abi-prose {
+  max-inline-size: 62ch;
+  font-size: var(--c97-fs-body);
+  line-height: 1.55;
+  color: var(--abi-ink-2);
+}
+
+.abi-row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-2);
+  border-bottom: 1px solid var(--abi-rule);
+}
+
+.abi-rank {
+  padding-top: 0.6rem;
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  color: var(--abi-ink-2);
+}
+
+.abi-repo {
+  min-width: 0;
+}
+
+.abi-name {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.abi-name a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--abi-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--abi-rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.abi-name a:hover {
+  text-decoration-color: currentColor;
+}
+
+.abi-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-inline-size: 70ch;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--abi-ink-2);
+}
+
+.abi-move {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 0.45rem;
+  text-align: right;
+}
+
+.abi-move-value {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-lead);
+  line-height: 1.1;
+  color: var(--abi-add);
+}
+
+.abi-move-status {
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--abi-ink-2);
+}
+
+/* Topic comparison and the meaning note */
+
+.abi-context {
+  display: grid;
+  gap: var(--c97-sp-4);
+  padding-top: var(--c97-sp-3);
+  border-top: 1px solid var(--abi-rule-strong);
+}
+
+.abi-context > section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.abi-topics {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+
+.abi-topic {
+  display: grid;
+  grid-template-columns: minmax(7rem, 9rem) minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  font-size: 0.875rem;
+}
+
+.abi-topic-label {
+  color: var(--abi-ink);
+}
+
+.abi-topic[data-current] .abi-topic-label {
+  font-weight: 700;
+}
+
+.abi-topic-track {
+  display: block;
+  height: 8px;
+  background: var(--abi-raise);
+}
+
+.abi-topic-track > span {
+  display: block;
+  height: 100%;
+  background: var(--abi-ink-2);
+}
+
+.abi-topic[data-current] .abi-topic-track > span {
+  background: var(--abi-add);
+}
+
+.abi-topic-value {
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  text-align: right;
+  color: var(--abi-ink-2);
+}
+
+/* The signup sits under a rule at the foot, never louder than the list. */
+
+.abi-signup {
+  display: grid;
+  gap: var(--c97-sp-3);
+  padding-top: var(--c97-sp-3);
+  border-top: 1px solid var(--abi-rule-strong);
+}
+
+.abi-signup-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.abi-signup-form {
+  max-inline-size: 28rem;
+}
+
+@media screen and (min-width: 900px) {
+  .abi-context,
+  .abi-signup {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    column-gap: var(--c97-sp-5);
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .abi-row {
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+  }
+
+  .abi-move {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--c97-sp-1);
+    padding-top: 0;
+  }
+
+  .abi-move-value {
+    font-size: 1rem;
+  }
+
+  .abi-topic {
+    grid-template-columns: 6.5rem minmax(0, 1fr) 4rem;
+    gap: var(--c97-sp-1);
+  }
+}
+
+@media print {
+  .abi-signup {
+    display: none;
+  }
+}

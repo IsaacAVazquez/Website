@@ -76,3 +76,9 @@ lead sentence between the title and the h2, and the preload that Chrome logs as 
 credentials-mode mismatch are recorded, not fixed. The cap needs a product decision about
 whether the list is "everyone who clears the gap" or "the top twenty", and the copy currently
 promises the former.
+
+## Frame removal, 2026-10-12
+
+Part of the project sovereign design's fantasy group (G3), frame removal only, and the waiver reading above stands. The route shares `weekly-client.tsx` with the weekly board, so the hero, plate, seam, and poster heads came off both together, and the weekly brief's section of the same date has the detail. The waiver header keeps its orienting copy and prints the flex and quarterback dates and expert counts as one muted line, with the staleness label in the negative colour when it is stale.
+
+Verified on a production build on 2026-10-12. The scoring toggle is at y343 at 1440 (from y855) and y483 at 390 (from 810), and the first waiver row at y1396 at 1440 (from 1938). No contrast failures, 0 layout fails, and the `project-workflows.spec.ts` waivers test passes on dev and production.

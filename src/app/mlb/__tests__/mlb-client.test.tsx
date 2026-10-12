@@ -134,11 +134,12 @@ describe("MlbClient", () => {
     );
     fireEvent.click(screen.getByRole("tab", { name: "Games" }));
 
+    // The games print under their round, and a regular season game under its own label.
     expect(screen.getByText("Division Series")).toBeVisible();
-    expect(screen.getByText("League fixture")).toBeVisible();
+    expect(screen.getByText("Regular season")).toBeVisible();
   });
 
-  it("shows one division board at a time and opens the picked team in a drawer", async () => {
+  it("prints all six divisions on one board and opens a picked team in a drawer", async () => {
     const user = userEvent.setup();
     const summary = await getMlbSummarySnapshot();
     const team = summary.standings.find((row) => row.division === "NL West" && row.divisionRank === 2)!;
@@ -156,14 +157,9 @@ describe("MlbClient", () => {
     );
     const view = render(ui());
 
-    // The board starts on the selected club's division and prints no other.
-    expect(screen.getAllByRole("table")).toHaveLength(1);
-    expect(screen.queryByRole("button", { name: `Show ${team.name} details` })).not.toBeInTheDocument();
-
-    const divisions = screen.getByRole("group", { name: "Division" });
-    await user.click(within(divisions).getByRole("button", { name: "NL West" }));
+    // The scoreboard is the page: every division is its own table, every team a button.
+    expect(screen.getAllByRole("table", { name: /^(AL|NL) (East|Central|West) standings$/ })).toHaveLength(6);
     expect(screen.getByRole("table", { name: "NL West standings" })).toBeInTheDocument();
-    expect(screen.getAllByRole("table")).toHaveLength(1);
 
     const opener = screen.getByRole("button", { name: `Show ${team.name} details` });
     await user.click(opener);
@@ -175,5 +171,19 @@ describe("MlbClient", () => {
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(opener).toHaveFocus();
+  });
+
+  it("opens a bare wild card link on the wild card races", async () => {
+    currentSearchParams = new URLSearchParams("view=wildcard");
+    render(
+      <MlbClient
+        initialState={{ ...DEFAULT_MLB_STATE, view: "wildcard" }}
+        summary={await getMlbSummarySnapshot()}
+        initialTeamSnapshot={null}
+      />
+    );
+
+    expect(screen.getByRole("button", { name: /wild card/i })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("table", { name: "AL Wild Card standings" })).toBeInTheDocument();
   });
 });

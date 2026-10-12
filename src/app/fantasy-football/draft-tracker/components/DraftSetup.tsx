@@ -1,5 +1,6 @@
 "use client";
 
+import { FantasySectionHeading } from "@/components/fantasy/FantasyRouteHeader";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { prefixedId } from "@/lib/utils";
 import { useEffect, useId, useState, type CSSProperties } from "react";
@@ -288,7 +289,7 @@ export function DraftSetup({
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Room setup
           </p>
-          <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>One screen, then draft.</h2>
+          <FantasySectionHeading style={{ marginTop: "var(--c97-sp-1)" }}>One screen, then draft.</FantasySectionHeading>
         </div>
         {canResume && onResume ? (
           <button
@@ -452,7 +453,7 @@ export function DraftSetup({
         <div className="grid" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
           <div
             className="grid"
-            style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
+            style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}
           >
             <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-league-name">
               <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
@@ -654,8 +655,8 @@ export function DraftSetup({
                 : undefined
           }
           // .c97-btn:disabled prints the unprinted state (no fill, dashed ink-2
-          // edge, ink-2 text, no offset), so only the armed fill stays inline.
-          className="c97-btn c97-btn-invert c97-offset justify-center"
+          // edge, ink-2 text), so only the armed fill stays inline.
+          className="c97-btn c97-btn-invert justify-center"
           style={
             startArmed && !startDisabled
               ? { background: "var(--c97-negative)", color: "var(--c97-surface)" }

@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
-import { PROJECT_PRESS } from "@/constants/projectPress";
+import { FantasyRouteHeader, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
 import Link from "next/link";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
@@ -10,7 +10,6 @@ import { readValidatedBrowserStorage } from "@/lib/browserStorage";
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 import {
   FASCIA_TOP_CLASS,
-  HEADER_CHIP_CLASS,
   MONO_LABEL_CLASS,
   PILL_BUTTON_CLASS,
   SHELL_CLASS,
@@ -54,12 +53,6 @@ import {
  */
 const SOLID_BUTTON_CLASS =
   "inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]";
-
-const WARNING_CHIP_TONE: CSSProperties = {
-  background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
-  borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
-  color: "var(--c97-ink)",
-};
 
 /**
  * Below `md` the column-label row is hidden, so each board value carries its
@@ -671,8 +664,8 @@ export function MockDraftClient() {
         rounds: setupForm.rounds,
       }
     : { teams: settings.totalTeams, draftType: settings.draftType, rounds: settings.rounds };
-  const headerChips: { label: string; tone?: CSSProperties }[] = [
-    ...(archivedPractice ? [{ label: "Dated preseason practice", tone: WARNING_CHIP_TONE }] : []),
+  const headerChips: { label: string; tone?: "warning" }[] = [
+    ...(archivedPractice ? [{ label: "Dated preseason practice", tone: "warning" as const }] : []),
     ...(state.status !== "setup" ? [{ label: `Room #${roomLabel(state.seed)}` }] : []),
     { label: `${chipSettings.teams}-team ${chipSettings.draftType}` },
     { label: `${scoringLabel} scoring` },
@@ -681,12 +674,12 @@ export function MockDraftClient() {
       ? [
           {
             label: `Board ${getSnapshotStalenessLabel(boardStaleness)} · ${formatStampDate(boardUpdatedAt)}`,
-            tone: boardStaleness === "stale" ? WARNING_CHIP_TONE : undefined,
+            tone: boardStaleness === "stale" ? "warning" as const : undefined,
           },
         ]
       : []),
     ...(boardReady && !adpAvailable
-      ? [{ label: adpStatusLabel, tone: WARNING_CHIP_TONE }]
+      ? [{ label: adpStatusLabel, tone: "warning" as const }]
       : []),
   ];
 
@@ -847,43 +840,22 @@ export function MockDraftClient() {
       aria-label="Fantasy football mock draft"
       data-testid="fantasy-mock-draft-shell"
     >
-      <section
-        className="c97-sheet"
-        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/mock-draft"].lead}`}
-      >
-        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
-          <h1 className="c97-poster m-0">Mock Draft</h1>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>{kicker}</p>
-          <div
-            data-c97-surface="paper"
-            className="c97-offset flex flex-wrap"
-            style={{ gap: "var(--c97-sp-0)", padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
-          >
-            {headerChips.map((chip) => (
-              <span
-                key={chip.label}
-                className={HEADER_CHIP_CLASS}
-                style={
-                  chip.tone ?? {
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink-2)",
-                  }
-                }
-              >
-                {chip.label}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FantasyRouteHeader
+        title={
+          <>
+            Mock <TitleAccent>Draft</TitleAccent>
+          </>
+        }
+        lead="A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board and market ADP."
+        freshness={<FreshnessParts parts={[{ label: kicker }, ...headerChips]} />}
+      />
 
       <p role="status" aria-live="polite" className="sr-only">
         {draftAnnouncement}
       </p>
 
       {showScopeNote ? (
-        <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div>
           <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
               This is a preseason draft practice room. I keep the source dates visible, and the room pauses simulated picks
@@ -912,7 +884,7 @@ export function MockDraftClient() {
       ) : null}
 
       {showSetup && (
-        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
+        <div>
         <div className="c97-shell c97-frame" style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)", maxWidth: 700 }}>
           <div
             className="overflow-hidden border"
@@ -1180,7 +1152,7 @@ export function MockDraftClient() {
       )}
 
       {isLive && (
-        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
+        <div>
           <section
             ref={stripRef}
             aria-label="Live mock draft status"
@@ -1728,7 +1700,7 @@ export function MockDraftClient() {
       )}
 
       {isRecap && (
-        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
+        <div>
         <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-4)" }}>
           <section
             ref={valueReportRef}

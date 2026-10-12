@@ -135,3 +135,9 @@ zero sub-44px targets, one `main`, one `h1`, zero unnamed `section` landmarks, 9
 rings at 1440. One instrument note for the next run: the sweep's "scrolled" driver looked for a
 `region` role containing a table, which matched nothing here, so it scrolled the window rather
 than the box; the box is gone now, so the window scroll is the right measurement.
+
+## Frame removal, 2026-10-12
+
+Part of the project sovereign design's fantasy group (G3), frame removal only, and the decisions above stand (the preseason empty state, the separate flex and quarterback rank spaces, the waiver reading). The weekly and waiver routes share `weekly-client.tsx`, so both lost the green lead-ink hero with the Anton h1, the paper plate around the source line, and the torn seam. They now open on the shared compact header (`src/components/fantasy/FantasyRouteHeader.tsx`), with the existing orienting copy and the week, source, staleness, and expert counts as one muted line. The "Flex rankings", "Quarterback rankings", "This week’s list", and "My team" heads moved from `c97-poster-sm` to the body face at `text-xl` semibold, and `weekly-client.test.tsx` changed with them, from asserting the poster class to asserting it is gone and the heading is semibold.
+
+Verified on a production build on 2026-10-12. The scoring toggle is at y343 at 1440 (from y818) and y441 at 390 (from 726), and the first board row at y1314 at 1440 (from 1819), still under the My team workspace, whose place above the list was already settled. No contrast failures, 0 layout fails, the scoring toggle works with Space, and the `project-workflows.spec.ts` weekly test passes on dev and production.

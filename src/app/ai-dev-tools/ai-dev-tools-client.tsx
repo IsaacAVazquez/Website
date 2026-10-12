@@ -1,15 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink, RotateCcw, Search, X } from "lucide-react";
-import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { BrandGithub } from "@/components/ui/ServerIcons";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useClientNow } from "@/hooks/useClientNow";
 import { formatLongUtcDate } from "@/lib/date-formatters";
-import { SurfaceMap, ToolCategoryIcon } from "./SurfaceMap";
+import { SurfaceMap } from "./SurfaceMap";
 import {
   AI_DEV_TOOL_CADENCE_LABELS,
   AI_DEV_TOOL_CATEGORY_LABELS,
@@ -87,27 +84,12 @@ const SORT_OPTIONS: FilterOption[] = [
   { id: "name", label: "Name (A to Z)" },
 ];
 
-// Lifecycle signal surfaced as a small badge so a tool that's mid-pivot or
-// enterprise-gated reads at a glance, not just in the detail panel.
-const STATUS_BADGES: Record<
-  AiDevTool["status"],
-  { label: string; bg: string; fg: string }
-> = {
-  active: {
-    label: "Active",
-    bg: "color-mix(in srgb, var(--c97-positive) 14%, var(--c97-surface))",
-    fg: "color-mix(in srgb, var(--c97-positive) 55%, var(--c97-ink))",
-  },
-  transition: {
-    label: "In transition",
-    bg: "color-mix(in srgb, var(--c97-warning) 16%, var(--c97-surface))",
-    fg: "color-mix(in srgb, var(--c97-warning) 50%, var(--c97-ink))",
-  },
-  "enterprise-focused": {
-    label: "Enterprise",
-    bg: "var(--c97-field)",
-    fg: "var(--c97-ink-2)",
-  },
+// Lifecycle signal printed as a word beside the name, so a tool that's
+// mid-pivot or enterprise-gated reads at a glance, not just in the drawer.
+const STATUS_LABELS: Record<AiDevTool["status"], string> = {
+  active: "Active",
+  transition: "In transition",
+  "enterprise-focused": "Enterprise",
 };
 
 function releaseTimeMs(tool: AiDevTool): number {
@@ -136,16 +118,16 @@ function sortTools(tools: AiDevTool[], sort: SortKey): AiDevTool[] {
 // useClientNow() hasn't resolved yet (server render and first hydration
 // pass), so the dot stays neutral and the title shows the absolute date
 // instead of a day count that could disagree between server and client.
-function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: string; title: string } {
+function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: "none" | "recent" | "steady" | "stale"; title: string } {
   const ms = releaseTimeMs(tool);
-  if (!ms) return { dot: "var(--c97-rule)", title: "No dated release" };
+  if (!ms) return { dot: "none", title: "No dated release" };
   if (nowMs === null) {
-    return { dot: "var(--c97-rule)", title: `Released ${formatReleaseDate(tool.latestRelease)}` };
+    return { dot: "none", title: `Released ${formatReleaseDate(tool.latestRelease)}` };
   }
   const days = Math.max(0, Math.round((nowMs - ms) / 86_400_000));
-  if (days <= 30) return { dot: "var(--c97-positive)", title: `Shipped ${days}d ago` };
-  if (days <= 120) return { dot: "var(--c97-ink-2)", title: `Shipped ${days}d ago` };
-  return { dot: "var(--c97-warning)", title: `Last ship ${days}d ago` };
+  if (days <= 30) return { dot: "recent", title: `Shipped ${days}d ago` };
+  if (days <= 120) return { dot: "steady", title: `Shipped ${days}d ago` };
+  return { dot: "stale", title: `Last ship ${days}d ago` };
 }
 
 /**
@@ -157,6 +139,27 @@ function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: string;
 function replaceHref(href: string) {
   if (href === `${window.location.pathname}${window.location.search}`) return;
   window.history.replaceState(null, "", href);
+}
+
+const WIDE_MAP_QUERY = "(min-width: 960px)";
+
+function subscribeWideMap(onChange: () => void) {
+  const query = window.matchMedia(WIDE_MAP_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+/**
+ * Whether the window is wide enough for the map's two-axis grid. The server
+ * and the first hydration pass read false, which is safe because the Map view
+ * only renders after a click.
+ */
+function useWideMap(): boolean {
+  return useSyncExternalStore(
+    subscribeWideMap,
+    () => window.matchMedia(WIDE_MAP_QUERY).matches,
+    () => false
+  );
 }
 
 /** Opening a tool's drawer is the one change that gets a history entry, so Back closes it. */
@@ -240,30 +243,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     () => aiDevTools.find((tool) => tool.id === state.selectedToolId) ?? null,
     [state.selectedToolId]
   );
-  const openSourceCount = aiDevTools.filter((tool) => tool.sourceStatus === "open-source").length;
-
   const now = useClientNow();
-  const mostRecentTool = useMemo(
-    () =>
-      aiDevTools.reduce<AiDevTool | null>((newest, tool) => {
-        if (!tool.latestRelease) return newest;
-        if (!newest || releaseTimeMs(tool) > releaseTimeMs(newest)) return tool;
-        return newest;
-      }, null),
-    []
-  );
-  const latestReleaseAge = useMemo(() => {
-    if (!mostRecentTool) return "None";
-    if (now === null) return formatReleaseDate(mostRecentTool.latestRelease);
-    const days = Math.max(
-      0,
-      Math.round((now - releaseTimeMs(mostRecentTool)) / (1000 * 60 * 60 * 24))
-    );
-    if (days === 0) return "Today";
-    if (days === 1) return "1d ago";
-    return `${days}d ago`;
-  }, [mostRecentTool, now]);
-
   const updatedAt = formatLongUtcDate(AI_DEV_TOOLS_GENERATED_AT);
 
   function updateFilter(partial: Partial<AiDevToolsRouteState>) {
@@ -275,13 +255,12 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     navigate(DEFAULT_AI_DEV_TOOLS_STATE);
   }
 
-  const lead = PROJECT_PRESS["/ai-dev-tools"].lead;
-  const standfirst =
-    "I wanted a cleaner way to compare the coding-agent market, so this directory tracks the tools people argue about, with pricing, model access, GitHub traction, and release cadence in one place, every entry kept by hand and linked to the pages it came from.";
+  const [view, setView] = useState<"list" | "map">("list");
+  const wideMap = useWideMap();
   const handleSelectTool = (toolId: string) =>
     pushHref(buildAiDevToolsHref({ ...state, query, selectedToolId: toolId }));
   const surfaceMapProps = {
-    tools: aiDevTools,
+    tools: sortedTools,
     categories: categoryOptions.slice(1).map((option) => option.id),
     pricing: pricingOptions.slice(1).map((option) => option.id),
     selectedToolId: selectedTool?.id ?? null,
@@ -289,53 +268,32 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   };
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="AI Dev Tool Ecosystem"
-        standfirst={standfirst}
-        meta={`Curated by hand · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so directional"}`}
-        // The standfirst and figures fill a phone's first screen, so one link goes straight to the directory.
-        action={<a href="#dev-tools-directory" className="c97-btn-ghost">Jump to the directory</a>}
-        readouts={[
-          {
-            label: "Tools tracked",
-            value: `${aiDevTools.length}`,
-            detail: "Across categories and pricing tiers",
-          },
-          {
-            label: "Open source",
-            value: `${openSourceCount}`,
-            detail: "No proprietary license",
-          },
-          {
-            label: "Most recent release",
-            value: latestReleaseAge,
-            detail: mostRecentTool?.name ?? "No dated release yet",
-          },
-        ]}
-      >
-        {/* The two-axis grid. Below 960px the same map prints as a list after the directory. */}
-        <SurfaceMap layout="grid" {...surfaceMapProps} />
-      </Catalog97ProjectHero>
+    <div className="adt-root">
+      <div className="c97-shell c97-frame adt-page">
+        <header className="adt-head">
+          <h1 className="adt-title">AI Dev Tool Ecosystem</h1>
+          <p className="adt-lede">
+            A hand-kept directory of the coding assistants and agents people argue about, with
+            pricing, model access, GitHub traction, and release cadence side by side.
+          </p>
+        </header>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="flex flex-col c97-shell" style={{ gap: "var(--c97-sp-3)" }}>
-          <h2 id="dev-tools-directory" className="c97-poster-sm" style={{ scrollMarginTop: "var(--c97-sp-4)" }}>The directory</h2>
-
-          <div className="grid lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]" style={{ gap: "var(--c97-sp-2)" }}>
-            <label className="flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-              <Search aria-hidden="true" className="h-4 w-4 text-[var(--c97-ink-2)]" />
+        <section className="adt-directory" aria-labelledby="dev-tools-directory">
+          <h2 id="dev-tools-directory" className="sr-only">
+            The directory
+          </h2>
+          <div className="adt-toolbar">
+            <label className="adt-search">
+              <Search aria-hidden="true" size={16} />
               <span className="sr-only">Search tools</span>
               <input
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search tools, models, surfaces"
-                className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
               />
             </label>
-            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
+            <div className="adt-filters">
               <FilterSelect
                 label="Category"
                 value={state.category}
@@ -368,58 +326,66 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
                   updateFilter({ source: value as AiDevToolSourceStatus | "all" })
                 }
               />
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
-              >
-                <RotateCcw aria-hidden="true" className="h-4 w-4" />
+              <button type="button" onClick={resetFilters} className="adt-reset">
+                <RotateCcw aria-hidden="true" size={16} />
                 Reset
               </button>
             </div>
           </div>
 
-          <div className="flex flex-col min-w-0" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <p className="text-sm font-semibold text-[var(--c97-ink-2)]" style={{ marginBottom: "0" }}>
-                {filteredTools.length} of {aiDevTools.length} tools shown
-              </p>
+          <div className="adt-meta">
+            <p className="adt-count">
+              {filteredTools.length} of {aiDevTools.length} tools shown
+            </p>
+            <p className="adt-disclosure">
+              {`Curated by hand · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so directional"}`}
+            </p>
+            <div className="adt-view">
               <FilterSelect
                 label="Sort"
                 value={sort}
                 options={SORT_OPTIONS}
                 onChange={(value) => setSort(value as SortKey)}
               />
+              <div role="group" aria-label="Directory view" className="adt-switch">
+                <button type="button" aria-pressed={view === "list"} onClick={() => setView("list")}>
+                  List
+                </button>
+                <button type="button" aria-pressed={view === "map"} onClick={() => setView("map")}>
+                  Map
+                </button>
+              </div>
             </div>
-
-            {sortedTools.length === 0 ? (
-              <EmptyPanel
-                title="No tools match those filters"
-                description="Try a wider category, pricing model, or search term."
-              />
-            ) : (
-              <ToolDirectoryList
-                tools={sortedTools}
-                maxStars={maxStars}
-                nowMs={now}
-                selectedToolId={selectedTool?.id ?? null}
-                onSelect={handleSelectTool}
-              />
-            )}
           </div>
 
-          <div className="c97-surface-map-narrow flex-col" style={{ gap: "var(--c97-sp-2)" }}>
-            <h2 className="c97-poster-sm">By category and pricing</h2>
-            <SurfaceMap layout="list" {...surfaceMapProps} />
-          </div>
-        </div>
-      </section>
+          {sortedTools.length === 0 ? (
+            <div className="adt-empty">
+              <p className="adt-empty-title">No tools match those filters</p>
+              <p>Try a wider category, pricing model, or search term.</p>
+            </div>
+          ) : view === "list" ? (
+            <ToolDirectoryList
+              tools={sortedTools}
+              maxStars={maxStars}
+              nowMs={now}
+              selectedToolId={selectedTool?.id ?? null}
+              onSelect={handleSelectTool}
+            />
+          ) : (
+            <div className="adt-map">
+              {/* The two-axis grid needs about 960px, so a narrower screen gets the
+                  same map as a list grouped by category. Only one layout mounts. */}
+              <SurfaceMap layout={wideMap ? "grid" : "list"} {...surfaceMapProps} />
+            </div>
+          )}
+        </section>
+      </div>
 
       <ToolDrawer
         tool={selectedTool}
         onClose={() => navigate({ selectedToolId: null })}
       />
-    </>
+    </div>
   );
 }
 
@@ -432,13 +398,9 @@ interface FilterSelectProps {
 
 function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   return (
-    <label className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-      <span className="text-2xs uppercase tracking-[0.16em]">{label}</span>
-      <select
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="min-h-[44px] bg-transparent text-sm font-semibold text-[var(--c97-ink)]"
-      >
+    <label className="adt-select">
+      <span className="adt-select-label">{label}</span>
+      <select value={value} onChange={(event) => onChange(event.target.value)}>
         {options.map((option) => (
           <option key={option.id} value={option.id}>
             {option.label}
@@ -457,10 +419,8 @@ interface ToolDirectoryListProps {
   onSelect: (toolId: string) => void;
 }
 
-// A responsive directory of row-cards (replaces the old horizontally-scrolling
-// table). Each card reflows from a single column on mobile to a three-up facts
-// grid on larger screens, and encodes GitHub traction (relative bar), release
-// freshness (dot), and lifecycle (badge) so the market is scannable at a glance.
+// One ruled row per tool, each row a button that opens the drawer. From 900px
+// the facts line up under one header; below that each fact carries its label.
 function ToolDirectoryList({
   tools,
   maxStars,
@@ -469,114 +429,73 @@ function ToolDirectoryList({
   onSelect,
 }: ToolDirectoryListProps) {
   return (
-    <ul className="grid min-w-0" style={{ gap: "var(--c97-sp-1)" }}>
-      {tools.map((tool) => {
-        const isSelected = selectedToolId === tool.id;
-        const badge = STATUS_BADGES[tool.status];
-        const freshness = releaseFreshness(tool, nowMs);
-        const starPct =
-          maxStars > 0 && tool.githubStars
-            ? Math.max(6, Math.round((tool.githubStars / maxStars) * 100))
-            : 0;
-        return (
-          <li key={tool.id}>
-            <button
-              type="button"
-              onClick={() => onSelect(tool.id)}
-              aria-pressed={isSelected}
-              className="w-full border bg-[var(--c97-surface)] text-left transition-colors hover:bg-[var(--c97-field)]"
-              style={{
-                padding: "var(--c97-sp-2)",
-                borderColor: isSelected ? "var(--c97-ink)" : "var(--c97-rule)",
-                boxShadow: isSelected ? "inset 3px 0 0 0 var(--c97-accent)" : undefined,
-              }}
-            >
-              <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)]">
-                    <ToolCategoryIcon category={tool.category} />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                      <span className="text-base font-semibold text-[var(--c97-ink)]">
-                        {tool.name}
-                      </span>
-                      <span
-                        className="inline-flex py-0.5 text-3xs font-semibold uppercase tracking-[0.12em]"
-                        style={{ paddingInline: "var(--c97-sp-1)", background: badge.bg, color: badge.fg }}
-                      >
-                        {badge.label}
-                      </span>
-                    </div>
-                    <span className="mt-0.5 block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
-                      {AI_DEV_TOOL_CATEGORY_LABELS[tool.category]} · {tool.company}
+    <div className="adt-list">
+      <div className="adt-list-head" aria-hidden="true">
+        <span>Tool</span>
+        <span>Pricing</span>
+        <span>Models</span>
+        <span>Release</span>
+        <span className="adt-end">GitHub stars</span>
+      </div>
+      <ul className="adt-rows">
+        {tools.map((tool) => {
+          const freshness = releaseFreshness(tool, nowMs);
+          const starPct =
+            maxStars > 0 && tool.githubStars
+              ? Math.max(6, Math.round((tool.githubStars / maxStars) * 100))
+              : 0;
+          return (
+            <li key={tool.id}>
+              <button
+                type="button"
+                onClick={() => onSelect(tool.id)}
+                aria-pressed={selectedToolId === tool.id}
+                className="adt-row"
+              >
+                <span className="adt-cell adt-cell--name">
+                  <span className="adt-name">
+                    {tool.name}
+                    <span className="adt-badge" data-status={tool.status}>
+                      {STATUS_LABELS[tool.status]}
                     </span>
-                  </div>
-                </div>
-                <div className="shrink-0 text-right">
-                  <span className="block font-mono text-sm font-semibold text-[var(--c97-ink)]">
-                    {formatGithubStars(tool.githubStars)}
                   </span>
-                  <span className="mt-0.5 block text-3xs uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
-                    GH stars
+                  <span className="adt-sub">
+                    {AI_DEV_TOOL_CATEGORY_LABELS[tool.category]} · {tool.company}
                   </span>
-                  {starPct > 0 ? (
-                    <span className="ml-auto block h-1 w-16 overflow-hidden bg-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                      <span
-                        className="block h-full"
-                        style={{ width: `${starPct}%`, background: "var(--c97-accent)" }}
-                      />
-                    </span>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="grid border-t border-[var(--c97-rule)] sm:grid-cols-3" style={{ paddingTop: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                <div className="min-w-0">
-                  <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
-                    Pricing
-                  </span>
-                  <span className="block text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                    {AI_DEV_TOOL_PRICING_LABELS[tool.pricingModel]}
-                  </span>
-                  <span className="mt-0.5 block line-clamp-2 text-xs leading-5 text-[var(--c97-ink-2)]">
-                    {tool.pricingSummary}
-                  </span>
-                </div>
-                <div className="min-w-0">
-                  <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
-                    Models
-                  </span>
-                  <span className="block text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                    {AI_DEV_TOOL_MODEL_LABELS[tool.modelSupport]}
-                  </span>
-                  <span className="mt-0.5 block line-clamp-2 text-xs leading-5 text-[var(--c97-ink-2)]">
-                    {tool.modelSummary}
-                  </span>
-                </div>
-                <div className="min-w-0">
-                  <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
-                    Release
-                  </span>
-                  <span className="block text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                    {AI_DEV_TOOL_CADENCE_LABELS[tool.releaseCadence]}
-                  </span>
-                  <span className="mt-0.5 flex items-center text-xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-0)" }}>
-                    <span
-                      className="inline-block h-1.5 w-1.5 shrink-0"
-                      style={{ background: freshness.dot }}
-                      title={freshness.title}
-                      aria-hidden="true"
-                    />
+                </span>
+                <span className="adt-cell">
+                  <span className="adt-cell-label">Pricing</span>
+                  <span className="adt-fact">{AI_DEV_TOOL_PRICING_LABELS[tool.pricingModel]}</span>
+                  <span className="adt-note">{tool.pricingSummary}</span>
+                </span>
+                <span className="adt-cell">
+                  <span className="adt-cell-label">Models</span>
+                  <span className="adt-fact">{AI_DEV_TOOL_MODEL_LABELS[tool.modelSupport]}</span>
+                  <span className="adt-note">{tool.modelSummary}</span>
+                </span>
+                <span className="adt-cell">
+                  <span className="adt-cell-label">Release</span>
+                  <span className="adt-fact">{AI_DEV_TOOL_CADENCE_LABELS[tool.releaseCadence]}</span>
+                  <span className="adt-note adt-date">
+                    <span className="adt-dot" data-tone={freshness.dot} title={freshness.title} aria-hidden="true" />
                     {formatReleaseDate(tool.latestRelease)}
                   </span>
-                </div>
-              </div>
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+                </span>
+                <span className="adt-cell adt-cell--stars">
+                  <span className="adt-cell-label">GitHub stars</span>
+                  <span className="adt-stars">{formatGithubStars(tool.githubStars)}</span>
+                  {starPct > 0 ? (
+                    <span className="adt-meter" aria-hidden="true">
+                      <span style={{ width: `${starPct}%` }} />
+                    </span>
+                  ) : null}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
@@ -593,13 +512,12 @@ function ToolDrawer({ tool, onClose }: { tool: AiDevTool | null; onClose: () => 
   if (!tool) return null;
 
   return (
-    <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex items-end justify-center sm:items-stretch sm:justify-end">
+    <div className="c97-enter-fade adt-drawer-layer">
       <button
         type="button"
         aria-label="Close tool detail"
         onClick={onClose}
-        className="absolute inset-0 h-full w-full cursor-default"
-        style={{ background: "var(--c97-scrim)" }}
+        className="adt-scrim"
         tabIndex={-1}
       />
       <div
@@ -608,96 +526,70 @@ function ToolDrawer({ tool, onClose }: { tool: AiDevTool | null; onClose: () => 
         aria-modal="true"
         aria-label={`${tool.name} detail`}
         tabIndex={-1}
-        data-c97-surface="paper"
-        className="c97-enter-slide-x relative max-h-[88dvh] w-full overflow-y-auto border border-[var(--c97-rule)] outline-none sm:h-full sm:max-h-none sm:w-[27rem]"
-        style={{ padding: "var(--c97-sp-2)" }}
+        className="c97-enter-slide-x adt-drawer"
       >
-        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-          <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-1)" }}>
-            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)]">
-              <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
-            </span>
-            <div className="min-w-0">
-              <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
-                {tool.company}
-              </p>
-              <h2 className="c97-serif c97-h3">{tool.name}</h2>
-            </div>
+        <div className="adt-drawer-head">
+          <div className="adt-drawer-title">
+            <p className="adt-sub">
+              {AI_DEV_TOOL_CATEGORY_LABELS[tool.category]} · {tool.company}
+            </p>
+            <h2 className="adt-h2">{tool.name}</h2>
           </div>
-          <div className="flex shrink-0" style={{ gap: "var(--c97-sp-1)" }}>
+          <div className="adt-drawer-actions">
             <a
               href={tool.website}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Open ${tool.name}`}
-              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
+              className="adt-icon-button"
             >
-              <ExternalLink aria-hidden="true" className="h-4 w-4" />
+              <ExternalLink aria-hidden="true" size={16} />
             </a>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
-            >
-              <X aria-hidden="true" className="h-4 w-4" />
+            <button type="button" onClick={onClose} aria-label="Close" className="adt-icon-button">
+              <X aria-hidden="true" size={16} />
             </button>
           </div>
         </div>
 
-        <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)", marginBottom: "0" }}>
-          {tool.tagline}
-        </p>
+        <p className="adt-tagline">{tool.tagline}</p>
 
-        <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+        <dl className="adt-details">
           <DetailRow label="Pricing" value={tool.pricingSummary} />
           <DetailRow label="Models" value={tool.modelSummary} />
           <DetailRow label="Stars" value={formatGithubStars(tool.githubStars)} />
           <DetailRow label="Release" value={tool.releaseSummary} />
           <DetailRow label="Best for" value={tool.bestFor} />
           <DetailRow label="Watch" value={tool.watchOut} />
-        </div>
+        </dl>
 
-        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+        <p className="adt-surfaces">
           {tool.surfaces.map((surface) => (
-            <span
-              key={surface}
-              className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] text-xs font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
-            >
+            <span key={surface} className="adt-surface">
               {surface}
             </span>
           ))}
-        </div>
+        </p>
 
-        <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
-            Sources
-          </p>
-          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-            {tool.githubRepo ? (
-              <a
-                href={tool.githubRepo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
-              >
-                <BrandGithub aria-hidden="true" className="h-4 w-4" />
-                GitHub repo
-              </a>
-            ) : null}
-            {tool.sourceUrls.map((source) => (
-              <a
-                key={source.url}
-                href={source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
-              >
-                <ExternalLink aria-hidden="true" className="h-4 w-4" />
-                {source.label}
-              </a>
-            ))}
-          </div>
+        <div className="adt-sources">
+          <p className="adt-cell-label adt-sources-label">Sources</p>
+          {tool.githubRepo ? (
+            <a href={tool.githubRepo} target="_blank" rel="noopener noreferrer" className="adt-source">
+              <BrandGithub aria-hidden="true" className="adt-source-icon" />
+              GitHub repo
+            </a>
+          ) : null}
+          {tool.sourceUrls.map((source) => (
+            <a
+              key={source.url}
+              href={source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="adt-source"
+            >
+              <ExternalLink aria-hidden="true" size={16} />
+              {source.label}
+            </a>
+          ))}
         </div>
       </div>
     </div>
@@ -706,11 +598,9 @@ function ToolDrawer({ tool, onClose }: { tool: AiDevTool | null; onClose: () => 
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)" }}>
-      <p className="text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
-        {label}
-      </p>
-      <p className="text-sm leading-6 text-[var(--c97-ink)]" style={{ marginBottom: "0" }}>{value}</p>
+    <div className="adt-detail">
+      <dt>{label}</dt>
+      <dd>{value}</dd>
     </div>
   );
 }

@@ -42,7 +42,7 @@ describe("ProjectBuildNote", () => {
   it("keeps the existing build note for routes without added context", () => {
     act(() => {
       root.render(
-        <ProjectBuildNote href="/writing/building-decision-lab" route="/decision-lab" />,
+        <ProjectBuildNote href="/writing/building-reactor-arcade" route="/arcade" />,
       );
     });
 

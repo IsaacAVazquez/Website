@@ -32,7 +32,7 @@ function FormField({
 }) {
   return (
     <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
-      <span className="c97-kicker">{label}</span>
+      <span className="mba-refine-label" style={{ paddingTop: 0 }}>{label}</span>
       {children}
     </label>
   );
@@ -70,7 +70,7 @@ export default function ApplicationEditDialog({
   return (
     <div
       className="fixed inset-0 z-[var(--c97-z-modal)] flex items-center justify-center overflow-y-auto"
-      style={{ padding: "var(--c97-sp-2)", background: "color-mix(in srgb, var(--c97-print-black) 45%, transparent)" }}
+      style={{ padding: "var(--c97-sp-2)", background: "var(--c97-scrim)" }}
       role="presentation"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
@@ -81,15 +81,12 @@ export default function ApplicationEditDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="application-dialog-title"
-        className="c97-panel c97-offset w-full max-w-2xl overflow-y-auto"
-        style={{ background: "var(--c97-surface)", maxHeight: "90dvh" }}
+        className="mba-dialog w-full max-w-2xl overflow-y-auto"
+        style={{ maxHeight: "90dvh" }}
       >
         <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
           <div>
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-              Application tracker
-            </p>
-            <h2 id="application-dialog-title" className="c97-serif c97-h3">
+            <h2 id="application-dialog-title" className="mba-h2">
               {application ? "Edit application" : "Add application"}
             </h2>
           </div>
@@ -293,7 +290,7 @@ export default function ApplicationEditDialog({
             Cancel
           </button>
           {!canSave && (
-            <p id="application-dialog-hint" className="c97-meta" style={{ alignSelf: "center" }}>
+            <p id="application-dialog-hint" className="mba-small" style={{ alignSelf: "center" }}>
               Add a company and a role to save
             </p>
           )}

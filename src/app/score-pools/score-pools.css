@@ -1,0 +1,317 @@
+/*
+ * Score Pools, the three pages of one console: the pick sheet, the tracker,
+ * and the settings. The route paints its own cool paper with a light and a
+ * dark story and points the Catalog 97 tokens its borrowed controls read
+ * (the tables, fields, buttons, chips, meters, and the match drawer) at it.
+ * Sections are ruled, not boxed; the only boxes left are controls and the
+ * drawer's three pick cards, each a pick with its own button.
+ */
+
+.sp-root {
+  --sp-bg: #f6f7f6;
+  --sp-raise: #eaedeb;
+  --sp-ink: #151a1d;
+  --sp-ink-2: #4d5960;
+  --sp-rule: rgba(21, 26, 29, 0.14);
+  --sp-rule-strong: rgba(21, 26, 29, 0.42);
+  --sp-accent: #0b6b4c;
+  --sp-positive: #1b6b34;
+  --sp-negative: #b3261e;
+  --sp-warning: #8a5a00;
+
+  --c97-surface: var(--sp-bg);
+  --c97-field: var(--sp-raise);
+  --c97-panel: var(--sp-raise);
+  --c97-overlay: var(--sp-raise);
+  --c97-ink: var(--sp-ink);
+  --c97-ink-2: var(--sp-ink-2);
+  --c97-label: var(--sp-ink-2);
+  --c97-action: var(--sp-ink);
+  --c97-rule: var(--sp-rule);
+  --c97-accent: var(--sp-accent);
+  --c97-positive: var(--sp-positive);
+  --c97-negative: var(--sp-negative);
+  --c97-warning: var(--sp-warning);
+  --c97-chip-ink: var(--sp-ink);
+
+  background: var(--sp-bg);
+  color: var(--sp-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .sp-root {
+  --sp-bg: #0f1314;
+  --sp-raise: #1a2022;
+  --sp-ink: #e7ecec;
+  --sp-ink-2: #a3aeb2;
+  --sp-rule: rgba(231, 236, 236, 0.14);
+  --sp-rule-strong: rgba(231, 236, 236, 0.4);
+  --sp-accent: #5fd0a3;
+  --sp-positive: #7cc47f;
+  --sp-negative: #ff8a80;
+  --sp-warning: #f0b450;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.sp-root :where(h1, h2, h3) {
+  font-family: var(--c97-font-body);
+  color: var(--sp-ink);
+  margin: 0;
+}
+
+.sp-root :where(p, ul, li) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.sp-root :where(ul) {
+  list-style: none;
+}
+
+.sp-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+/* ---- Title bar: the page name, one sentence, and the console's tabs ---- */
+
+.sp-titlebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--sp-rule-strong);
+}
+
+.sp-titlebar-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
+.sp-title {
+  font-size: clamp(1.625rem, 1.2rem + 1.2vw, 2.125rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.sp-sentence {
+  max-inline-size: 70ch;
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--sp-ink-2);
+}
+
+.sp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sp-tabs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border-bottom: 3px solid transparent;
+  color: var(--sp-ink-2);
+  font-size: var(--c97-fs-small);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Where the tabs wrap under the title, the first one's text sits on the column edge like the title. */
+@media screen and (max-width: 839px) {
+  .sp-tabs a:first-child {
+    padding-left: 0;
+  }
+}
+
+.sp-tabs a:hover {
+  color: var(--sp-ink);
+}
+
+.sp-tabs a[aria-current="page"] {
+  color: var(--sp-ink);
+  border-bottom-color: var(--sp-accent);
+}
+
+.sp-tabs a:focus-visible {
+  outline: 2px solid var(--sp-accent);
+  outline-offset: -2px;
+}
+
+/* ---- The data line: as-of, sample or hand-entered notice, and status --- */
+
+.sp-status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--sp-ink-2);
+}
+
+.sp-status:empty {
+  display: none;
+}
+
+.sp-notice {
+  padding-left: var(--c97-sp-1);
+  border-left: 3px solid var(--sp-warning);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--sp-ink);
+}
+
+.sp-notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+}
+
+/* ---- Sections, rows, and forms ---------------------------------------- */
+
+.sp-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--sp-rule);
+}
+
+.sp-h2 {
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.sp-h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.sp-muted {
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--sp-ink-2);
+}
+
+.sp-toolbar {
+  align-items: center;
+  column-gap: var(--c97-sp-2);
+  row-gap: 0;
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--sp-rule);
+}
+
+.sp-divider {
+  align-self: stretch;
+  width: 1px;
+  margin-block: var(--c97-sp-1);
+  background: var(--sp-rule-strong);
+}
+
+.sp-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.sp-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+}
+
+.sp-label > span:first-child {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sp-ink-2);
+}
+
+.sp-rows {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--c97-sp-1);
+  border-top: 1px solid var(--sp-rule);
+}
+
+.sp-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  min-height: 44px;
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--sp-rule);
+  font-size: var(--c97-fs-small);
+}
+
+.sp-row-split {
+  justify-content: space-between;
+}
+
+.sp-row-stack {
+  display: block;
+}
+
+.sp-row-form {
+  align-items: flex-end;
+}
+
+.sp-check {
+  display: flex;
+  align-items: center;
+  align-self: end;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+/* The tracker's own summary: three figures in one ruled row. */
+.sp-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-2);
+  border-block: 1px solid var(--sp-rule);
+}
+
+@media screen and (min-width: 640px) {
+  .sp-totals {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sp-totals > * + * {
+    padding-left: var(--c97-sp-2);
+    border-left: 1px solid var(--sp-rule);
+  }
+}
+
+.sp-disclaimer {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--sp-rule);
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--sp-ink-2);
+}
+
+/* The match drawer prints on the console's own paper. */
+.sp-drawer {
+  padding: var(--c97-sp-2);
+  background: var(--sp-bg);
+  color: var(--sp-ink);
+  border-left: 1px solid var(--sp-rule-strong);
+}

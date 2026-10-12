@@ -123,7 +123,7 @@ export function MissionDetailPanel({
       ) : null}
 
       {!isLoading && !error && !launch ? (
-        <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)", marginTop: "var(--c97-sp-2)" }}>
+        <div className="sx-empty">
           <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[var(--c97-field)]">
             <Rocket aria-hidden="true" className="h-6 w-6 text-[var(--c97-accent)]" />
           </div>
@@ -140,7 +140,7 @@ export function MissionDetailPanel({
       {!isLoading && !error && launch && activePanel === "overview" ? (
         <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
           <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
+            <div className="sx-sect">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Launch status
               </p>
@@ -154,7 +154,7 @@ export function MissionDetailPanel({
                       : "Status pending"}
               </p>
             </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
+            <div className="sx-sect">
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Launch site
               </p>
@@ -167,8 +167,8 @@ export function MissionDetailPanel({
             </div>
           </div>
 
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
-            <h3 className="c97-serif c97-h3">
+          <div className="sx-sect">
+            <h3 className="sx-h3">
               Mission brief
             </h3>
             <p className="text-sm leading-7 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
@@ -178,14 +178,14 @@ export function MissionDetailPanel({
 
           {launch.failures.length > 0 ? (
             <div className="border border-[color-mix(in_srgb,var(--c97-warning)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_9%,var(--c97-surface))]" style={{ padding: "var(--c97-sp-2)" }}>
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Failure log
               </h3>
               <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                 {launch.failures.map((failure, index) => (
                   <div
                     key={`${failure.reason}-${index}`}
-                    className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}
+                    className="sx-sect"
                   >
                     <p className="text-sm font-semibold text-[var(--c97-ink)]">
                       {failure.reason ?? "Failure cause unavailable"}
@@ -214,10 +214,10 @@ export function MissionDetailPanel({
             sizes="(min-width: 480px) 440px, 90vw"
           />
 
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
+          <div className="sx-sect">
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Rocket aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Rocket
               </h3>
             </div>
@@ -253,10 +253,10 @@ export function MissionDetailPanel({
             )}
           </div>
 
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
+          <div className="sx-sect">
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <MapPin aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Launchpad
               </h3>
             </div>
@@ -280,10 +280,10 @@ export function MissionDetailPanel({
             )}
           </div>
 
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
+          <div className="sx-sect">
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Users aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Crew and cores
               </h3>
             </div>
@@ -297,7 +297,7 @@ export function MissionDetailPanel({
                     {launch.crew.map((member) => (
                       <div
                         key={member.id}
-                        className="border border-[var(--c97-rule)] bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}
+                        className="sx-row"
                       >
                         <p className="text-sm font-semibold text-[var(--c97-ink)]">
                           {member.name}
@@ -325,7 +325,7 @@ export function MissionDetailPanel({
                     {launch.cores.map((core, index) => (
                       <div
                         key={`${core.id ?? "core"}-${index}`}
-                        className="border border-[var(--c97-rule)] bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}
+                        className="sx-row"
                       >
                         <p className="text-sm font-semibold text-[var(--c97-ink)]">
                           {core.serial ?? "Unnamed core"} • Flight {core.flight ?? "?"}
@@ -355,7 +355,7 @@ export function MissionDetailPanel({
               {launch.payloads.map((payload) => (
                 <article
                   key={payload.id}
-                  className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}
+                  className="sx-sect"
                 >
                   <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                     <div>
@@ -389,7 +389,7 @@ export function MissionDetailPanel({
               ))}
             </div>
           ) : (
-            <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)" }}>
+            <div className="sx-empty">
               <p className="text-lg font-semibold text-[var(--c97-ink)]">
                 No payloads listed.
               </p>
@@ -399,8 +399,8 @@ export function MissionDetailPanel({
             </div>
           )}
 
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-            <h3 className="c97-serif c97-h3">
+          <div className="sx-sect">
+            <h3 className="sx-h3">
               Capsules
             </h3>
             {launch.capsules.length > 0 ? (
@@ -408,7 +408,7 @@ export function MissionDetailPanel({
                 {launch.capsules.map((capsule) => (
                   <div
                     key={capsule.id}
-                    className="border border-[var(--c97-rule)] bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}
+                    className="sx-row"
                   >
                     <p className="text-sm font-semibold text-[var(--c97-ink)]">
                       {capsule.serial ?? "Unnamed capsule"}
@@ -431,8 +431,8 @@ export function MissionDetailPanel({
 
       {!isLoading && !error && launch && activePanel === "links" ? (
         <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
-            <h3 className="c97-serif c97-h3">
+          <div className="sx-sect">
+            <h3 className="sx-h3">
               Mission references
             </h3>
             <div style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -449,8 +449,8 @@ export function MissionDetailPanel({
             </div>
           </div>
 
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
-            <h3 className="c97-serif c97-h3">
+          <div className="sx-sect">
+            <h3 className="sx-h3">
               Data completeness
             </h3>
             <div className="grid sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>

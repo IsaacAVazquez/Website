@@ -96,3 +96,9 @@ failures, zero horizontal overflow, zero sub-44px targets, one `main`, one `h1`,
 sections, 38 of 38 focus rings. Still open: `getFantasyAdpFreshness` hides the ADP columns on
 the same four-day rule (shared `fantasyUtils.ts`), and the "Sim to end" fill in light is nearly
 the same tone as the signal wash beside it (P2).
+
+## Frame removal, 2026-10-12
+
+Part of the project sovereign design's fantasy group (G3), frame removal only, and the decisions above stand. The green lead-ink hero with the Anton h1 and the paper plate of chips came off, along with the torn seam on every state's sheet. The room now opens on the shared compact header (`src/components/fantasy/FantasyRouteHeader.tsx`), with "Mock *Draft*" on the title ramp, one orienting sentence that keeps the honesty framing ("A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board and market ADP."), and the old chips as one muted line where the stale board and the missing ADP keep the warning colour and their words. The board and ADP dates print in that line and again in the seasonal note, and I left both because `mock-draft-client.test.tsx` pins each one.
+
+Verified on a production build on 2026-10-12. The first setup input is at y450 at 1440 (from y680) and y682 at 390 (from 816). No contrast failures in either theme, 0 layout fails, the consent checkbox, Start mock, and the live strip all work from the keyboard, nothing infinite runs under reduced motion, and a Chromium print kept the header and the setup card. The three `project-workflows.spec.ts` mock draft tests pass against the dev server and the production build.

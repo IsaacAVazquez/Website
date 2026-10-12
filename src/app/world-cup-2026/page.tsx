@@ -15,9 +15,9 @@ export const metadata = constructMetadata({
   canonicalUrl: "/world-cup-2026",
   image: "/world-cup-2026/opengraph-image",
   dateModified:
-    worldCupSnapshot.tournament.generatedAt.slice(0, 10) > "2026-10-09"
+    worldCupSnapshot.tournament.generatedAt.slice(0, 10) > "2026-10-12"
       ? worldCupSnapshot.tournament.generatedAt.slice(0, 10)
-      : "2026-10-09",
+      : "2026-10-12",
 });
 
 interface WorldCupPageProps {
@@ -67,9 +67,9 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
           dateModified:
-            worldCupSnapshot.tournament.generatedAt > "2026-07-23T00:00:00.000Z"
+            worldCupSnapshot.tournament.generatedAt > "2026-10-12T00:00:00.000Z"
               ? worldCupSnapshot.tournament.generatedAt
-              : "2026-07-23T00:00:00.000Z",
+              : "2026-10-12T00:00:00.000Z",
           offers: freeApplicationOffer,
         }}
       />

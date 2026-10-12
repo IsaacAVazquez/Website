@@ -2,6 +2,7 @@
 
 import { useIsClient } from "@/hooks/useIsClient";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import { FantasySectionHeading, FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -183,13 +184,8 @@ export function BestBallDraftTrackerClient({
       data-hydrated={isHydrated ? "true" : "false"}
     >
       <div className={`${SHELL_CLASS} flex flex-col`} style={{ paddingBlock: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
-      <section className="c97-sheet flex flex-col" data-c97-surface="paper" style={{ paddingBlock: "var(--c97-sp-4)", gap: "var(--c97-sp-2)" }}>
+      <section className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-[var(--c97-sp-1)]" />
-        {seasonalWeek >= 1 ? (
-          <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
-            Best ball drafts are a preseason event and this board is the preseason board, so nothing here refreshes against the games being played now. Your saved rooms are untouched. In-season ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-          </SeasonalScopeNote>
-        ) : null}
 
         <header className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
           {roomOpen ? (
@@ -266,23 +262,29 @@ export function BestBallDraftTrackerClient({
           </div>
 
           {!roomOpen ? (
-            <div className="flex flex-wrap text-xs" style={{ gap: "var(--c97-sp-1)" }}>
-              <span className="border border-[var(--c97-rule)] font-semibold" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(OUTLINE_ACTION_STYLE) }}>
-                {preset.teams} teams · {preset.rounds} rounds
-              </span>
-              <span className="border border-[var(--c97-rule)] font-semibold" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(OUTLINE_ACTION_STYLE) }}>
-                Half PPR · best ball scoring
-              </span>
-              <span className="border border-[var(--c97-rule)] font-semibold" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(OUTLINE_ACTION_STYLE) }}>
-                Rankings updated {formatSnapshotDate(
-                  contestId === "superflex"
-                    ? snapshot?.superflexSource?.asOf
-                    : snapshot?.rankingSource.asOf
-                )}
-              </span>
-            </div>
+            <FreshnessParts
+              parts={[
+                { label: `${preset.teams} teams · ${preset.rounds} rounds` },
+                { label: "Half PPR · best ball scoring" },
+                {
+                  label: `Rankings updated ${formatSnapshotDate(
+                    contestId === "superflex"
+                      ? snapshot?.superflexSource?.asOf
+                      : snapshot?.rankingSource.asOf
+                  )}`,
+                },
+              ]}
+            />
           ) : null}
         </header>
+
+        {/* After the title, as on the redraft tracker, so the h1 leads the page. */}
+        {seasonalWeek >= 1 ? (
+          <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
+            Best ball drafts are a preseason event and this board is the preseason board, so nothing here refreshes against the games being played now. Your saved rooms are untouched. In-season ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
+          </SeasonalScopeNote>
+        ) : null}
+
       </section>
 
         {sourceIssue ? (
@@ -338,7 +340,7 @@ export function BestBallDraftTrackerClient({
         ) : null}
 
         {snapshot ? (
-          <section className="c97-sheet" data-c97-surface="paper" style={{ paddingBlock: "var(--c97-sp-4)" }}>
+          <section>
             <BestBallDraftRoom
               key={`${snapshot.season}-${contestId}`}
               snapshot={snapshot}
@@ -606,9 +608,9 @@ function BestBallDraftRoom({
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]" style={{ gap: "var(--c97-sp-2)" }}>
         <section className="c97-panel" aria-labelledby="best-ball-room-setup-heading">
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Room setup</p>
-          <h2 id="best-ball-room-setup-heading" className="c97-poster-sm">
+          <FantasySectionHeading id="best-ball-room-setup-heading">
             Choose your draft slot
-          </h2>
+          </FantasySectionHeading>
           <p className="max-w-[58ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
             This room is saved under the {snapshot.season} season and {preset.shortName} contest. Changing formats opens a separate saved room, so one set of picks never overwrites another.
           </p>
@@ -665,7 +667,7 @@ function BestBallDraftRoom({
           <button
             type="button"
             onClick={openRoom}
-            className="c97-btn c97-btn-invert c97-offset w-full justify-center sm:w-auto" style={{ marginTop: "var(--c97-sp-3)" }}
+            className="c97-btn c97-btn-invert w-full justify-center sm:w-auto" style={{ marginTop: "var(--c97-sp-3)" }}
           >
             Open draft room from slot {draft.state.userSlot}
           </button>

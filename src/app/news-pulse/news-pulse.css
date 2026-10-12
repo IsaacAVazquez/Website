@@ -1,59 +1,539 @@
-/* News Pulse: the front-page signature (lead story list and coverage matrix). */
+/*
+ * News Pulse, set as a broadsheet front page over a monitoring desk. The
+ * route paints its own newsprint and ink with a light and a dark story,
+ * Newsreader carries the nameplate and the headlines, and hairline column
+ * rules divide the page. Outlet colours stay data on small swatches, and the
+ * tone colours stay data on the tone bars with the percentages in ink.
+ */
 
-.c97-news-lead-outlets {
-  display: grid;
-  gap: var(--c97-sp-2);
-  margin: var(--c97-sp-3) 0 0;
+.np-root {
+  --np-paper: #f6f3ec;
+  --np-raise: #ece7dc;
+  --np-ink: #1a1816;
+  --np-ink-2: #57524b;
+  --np-rule: rgba(26, 24, 22, 0.14);
+  --np-rule-strong: rgba(26, 24, 22, 0.34);
+  --np-positive: #2e7d32;
+  --np-negative: #b3261e;
+  --np-warn: #8a5600;
+
+  --c97-surface: var(--np-paper);
+  --c97-field: var(--np-raise);
+  --c97-ink: var(--np-ink);
+  --c97-ink-2: var(--np-ink-2);
+  --c97-label: var(--np-ink-2);
+  --c97-rule: var(--np-rule);
+  --c97-action: var(--np-ink);
+  --c97-accent: var(--np-ink);
+
+  background: var(--np-paper);
+  color: var(--np-ink);
+  font-family: var(--c97-font-body);
+}
+
+.dark .np-root {
+  --np-paper: #141312;
+  --np-raise: #201e1c;
+  --np-ink: #efebe4;
+  --np-ink-2: #aaa39a;
+  --np-rule: rgba(239, 235, 228, 0.14);
+  --np-rule-strong: rgba(239, 235, 228, 0.34);
+  --np-positive: #7cc47f;
+  --np-negative: #f28b80;
+  --np-warn: #f0b04a;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.np-root :where(h1, h2, h3) {
+  font-family: var(--c97-font-display);
+  color: var(--np-ink);
+  margin: 0;
+}
+
+.np-root :where(p, ul, li) {
+  margin: 0;
   padding: 0;
+  max-inline-size: none;
+}
+
+.np-root :where(ul) {
   list-style: none;
 }
 
-.c97-news-lead-outlets li {
+.np-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-3) var(--c97-sp-6);
+}
+
+.np-kicker {
+  font-family: var(--c97-font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--np-ink-2);
+}
+
+.np-root .np-muted {
+  color: var(--np-ink-2);
+}
+
+.np-root .np-small {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.np-strong {
+  font-weight: 700;
+}
+
+/* The nameplate, between a heavy rule and a dateline rule. */
+
+.np-masthead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-1);
+  border-top: 3px solid var(--np-ink);
+}
+
+.np-nameplate {
+  font-size: clamp(2.25rem, 1.4rem + 3vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.np-root .np-standfirst {
+  max-inline-size: 70ch;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--np-ink-2);
+}
+
+.np-root .np-dateline {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--c97-sp-2);
+  justify-content: space-between;
+  gap: var(--c97-sp-0) var(--c97-sp-3);
+  padding-block: var(--c97-sp-1);
+  border-block: 1px solid var(--np-rule-strong);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.c97-news-lead-outlets a {
-  color: var(--c97-ink);
-  text-decoration-color: var(--c97-rule);
+.np-feed-errors {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--np-rule);
+  font-size: 0.875rem;
 }
 
-.c97-news-coverage-matrix caption {
-  caption-side: top;
+.np-feed-errors-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--np-warn);
 }
 
-/* A cell is a square whose opacity carries the count, with the number in ink
- * beside it. Printing the number on the fill failed contrast at middle
- * intensities, where neither ink clears 4.5:1 against the mix. */
-.c97-news-coverage-cell {
+.np-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-3);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.np-button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--np-rule-strong);
+  border-radius: 4px;
+  background: none;
+  color: var(--np-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* The front page */
+
+.np-front {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+}
+
+.np-front-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+}
+
+@media (min-width: 1024px) {
+  .np-front-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+
+  .np-more {
+    padding-inline-start: var(--c97-sp-4);
+    border-inline-start: 1px solid var(--np-rule);
+  }
+}
+
+.np-lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.np-banner {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.np-lead-outlets {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  margin-top: var(--c97-sp-2);
+}
+
+@media (min-width: 1024px) {
+  .np-lead-outlets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.np-lead-outlets li,
+.np-cluster-headlines li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  padding-top: var(--c97-sp-1);
+  border-top: 1px solid var(--np-rule);
+}
+
+.np-lead-outlets a {
+  font-family: var(--c97-font-display);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  color: var(--np-ink);
+  text-decoration: none;
+}
+
+.np-lead-outlets a:hover,
+.np-cluster-headlines a:hover,
+.np-more-headline:hover {
+  text-decoration: underline;
+}
+
+.np-outlet {
   display: inline-flex;
   align-items: center;
   gap: var(--c97-sp-1);
-  min-height: 28px;
+  font-family: var(--c97-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--np-ink-2);
 }
 
-.c97-news-coverage-fill {
+.np-swatch {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+}
+
+.np-more {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.np-more-list > li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  padding-block: var(--c97-sp-2);
+  border-top: 1px solid var(--np-rule);
+}
+
+/* Block links padded so even a one-line headline is a 44px target. */
+.np-lead-outlets a,
+.np-more-headline,
+.np-cluster-headlines a {
+  display: block;
+  min-height: 44px;
+  padding-block: 10px;
+}
+
+.np-more-headline {
+  font-family: var(--c97-font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--np-ink);
+  text-decoration: none;
+}
+
+.np-cluster-headlines a {
+  font-size: 0.875rem;
+  color: var(--np-ink);
+}
+
+/* Disclosures: the summary carries an open and a closed label. */
+
+.np-disclosure > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.np-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.np-disclosure:not([open]) [data-when="open"],
+.np-disclosure[open] [data-when="closed"] {
+  display: none;
+}
+
+.np-topic-list {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+
+@media (min-width: 1024px) {
+  .np-sm-only {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .np-lg-only {
+    display: none;
+  }
+}
+
+/* Tables: the matrix and the tone table, ruled like a stock table. */
+
+.np-scroll {
+  overflow-x: auto;
+}
+
+.np-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.np-table caption {
+  text-align: left;
+  padding-bottom: var(--c97-sp-1);
+}
+
+.np-table th,
+.np-table td {
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--np-rule);
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.np-table thead th {
+  border-bottom-color: var(--np-rule-strong);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--np-ink-2);
+}
+
+.np-table tbody th {
+  font-weight: 600;
+}
+
+.np-table [data-align="end"] {
+  text-align: right;
+}
+
+.np-matrix thead th:not(:first-child) {
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+
+.np-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+}
+
+.np-cell-fill {
   display: inline-block;
   width: 14px;
   height: 14px;
-  background: var(--c97-ink);
+  background: var(--np-ink);
 }
 
-.c97-news-coverage-count {
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink);
+/* The sections under the front page */
+
+.np-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-2);
+  border-top: 3px double var(--np-rule-strong);
 }
 
-/* Headline and cluster links drop the underline at rest, so hover brings it
- * back with the action colour as the only pointer cue besides the cursor.
- * The cluster title's ink lives here rather than inline so hover can win. */
-.c97-news-headline > span {
-  color: var(--c97-ink);
+.np-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
 }
 
-.c97-news-headline:hover :is(h3, span) {
-  color: var(--c97-action);
+.np-section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.np-select {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--np-rule-strong);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.np-select:focus-within {
+  outline: 2px solid var(--np-ink);
+  outline-offset: 2px;
+}
+
+.np-select select {
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+
+.np-select select:focus-visible {
+  outline: none;
+}
+
+.np-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--c97-sp-4);
+}
+
+.np-column {
+  min-width: 0;
+}
+
+.np-column-head {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-1);
+  margin-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--np-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.np-column-list {
+  display: grid;
+  gap: var(--c97-sp-3);
+}
+
+.np-headline {
+  display: block;
+  color: var(--np-ink);
+  text-decoration: none;
+}
+
+.np-headline-title {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.np-headline:hover .np-headline-title {
   text-decoration: underline;
+}
+
+.np-root .np-dek {
+  margin-top: var(--c97-sp-1);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--np-ink-2);
+  overflow-wrap: anywhere;
+}
+
+.np-more-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  margin-top: var(--c97-sp-3);
+}
+
+.np-tone-bar {
+  display: flex;
+  width: 10rem;
+  height: 10px;
+  overflow: hidden;
+}
+
+.np-length {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--c97-sp-1);
+  min-width: 7rem;
+}
+
+.np-length-bar {
+  display: inline-block;
+  max-width: 4rem;
+  height: 6px;
+  background: var(--np-ink-2);
 }
