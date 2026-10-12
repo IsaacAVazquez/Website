@@ -13,7 +13,7 @@ interface ValuationTreemapProps {
 }
 
 const W = 1000;
-const H = 520;
+const H = 440;
 const CHART_TOKENS = [
   "var(--c97-chart-1)",
   "var(--c97-chart-2)",

@@ -142,13 +142,13 @@ describe("TechStartupClient", () => {
     jest.restoreAllMocks();
   });
 
-  it("shows the totals and the snapshot's age once mounted", async () => {
+  it("prints the source line once and the snapshot's age once mounted", async () => {
     renderClient();
 
+    // The totals readouts were cut in the 2026-10-12 redesign; the treemap and
+    // the source line beside its filters carry the page's summary now.
     expect(screen.getByRole("heading", { level: 1, name: "Tech Startup Tracker" })).toBeInTheDocument();
-    expect(screen.getByText("Startups tracked").parentElement).toHaveTextContent("3");
-    expect(screen.getByText("3 sectors, 2 stages")).toBeInTheDocument();
-    expect(screen.getByText("Unicorns").parentElement).toHaveTextContent("2");
+    expect(screen.queryByText("Startups tracked")).toBeNull();
     expect(
       await screen.findByText("Curated research · figures as of Sep 15, 2026 · updated 2h ago")
     ).toBeInTheDocument();
@@ -208,16 +208,17 @@ describe("TechStartupClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/tech-startup-tracker?segment=sector-fintech", { scroll: false });
   });
 
-  it("lists stage segments with counts and leaders in the stage view", () => {
+  it("lists stage segments in the stage view", () => {
     currentSearchParams = new URLSearchParams("view=stage");
     renderClient();
 
-    expect(within(group("Filter by segment")).getByRole("button", { name: "All stages" })).toBeInTheDocument();
-    const leaders = screen.getByRole("complementary", { name: "Snapshot leaders" });
-    expect(within(leaders).getByRole("button", { name: /Late stage.*2 companies · Orbit/ })).toBeInTheDocument();
-    expect(within(leaders).getByRole("button", { name: /Growth.*1 company · Ledger/ })).toBeInTheDocument();
+    // The "Snapshot leaders" rail repeated this switch and was cut on 2026-10-12.
+    expect(screen.queryByRole("complementary", { name: "Snapshot leaders" })).toBeNull();
+    const segmentsGroup = group("Filter by segment");
+    expect(within(segmentsGroup).getByRole("button", { name: "All stages" })).toBeInTheDocument();
+    expect(within(segmentsGroup).getByRole("button", { name: "Late stage" })).toBeInTheDocument();
 
-    fireEvent.click(within(leaders).getByRole("button", { name: /Growth/ }));
+    fireEvent.click(within(segmentsGroup).getByRole("button", { name: "Growth" }));
     expect(mockPush).toHaveBeenLastCalledWith("/tech-startup-tracker?view=stage&segment=stage-growth", {
       scroll: false,
     });
@@ -230,8 +231,10 @@ describe("TechStartupClient", () => {
     expect(screen.getByText("No startups match this filter")).toBeInTheDocument();
     expect(screen.queryByRole("table")).toBeNull();
     expect(screen.getByText("No disclosed valuations in this filter.")).toBeInTheDocument();
-    const leaders = screen.getByRole("complementary", { name: "Snapshot leaders" });
-    expect(within(leaders).getByRole("button", { name: /Robotics.*0 companies$/ })).toBeInTheDocument();
+    expect(within(group("Filter by segment")).getByRole("button", { name: "Robotics" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
   });
 
   it("opens a startup from its name or its row, but not from the Visit link", () => {
