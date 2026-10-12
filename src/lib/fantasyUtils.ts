@@ -676,11 +676,6 @@ export const SHELL_CLASS = "c97-shell c97-frame";
 
 export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 
-/** Square-cornered mono chip from the template header (distinct from the shared pill chip).
-    It wraps inside itself instead of running past the screen edge when text is enlarged. */
-export const HEADER_CHIP_CLASS =
-  "inline-flex max-w-full items-center border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
-
 /** Square-cornered mono position chip from the template (not the shared pill chip). */
 export const POSITION_CHIP_CLASS =
   "inline-flex flex-none items-center border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
