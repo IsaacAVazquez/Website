@@ -139,13 +139,17 @@ describe("AiDevToolsClient", () => {
     expect(replaceState).not.toHaveBeenCalled();
   });
 
-  it("prints search and the directory before the phone's category map", () => {
+  it("opens the directory as a list and switches to the category map", () => {
     render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
 
-    const search = screen.getByLabelText("Search tools");
-    const phoneMap = screen.getByRole("heading", { level: 2, name: "By category and pricing" });
-    expect(search.compareDocumentPosition(phoneMap) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    // The hero keeps the wide grid, which the stylesheet hides below 960px.
+    // The map moved out of the hero on 2026-10-12 and became the directory's
+    // second view, so the list prints first and the map waits for the switch.
+    const views = screen.getByRole("group", { name: "Directory view" });
+    expect(within(views).getByRole("button", { name: "List" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.queryByRole("table", { name: /by category and pricing model/i })).toBeNull();
+
+    fireEvent.click(within(views).getByRole("button", { name: "Map" }));
+    expect(within(views).getByRole("button", { name: "Map" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("table", { name: /by category and pricing model/i })).toBeInTheDocument();
   });
 
@@ -153,11 +157,16 @@ describe("AiDevToolsClient", () => {
     render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
 
     expect(screen.queryByRole("dialog")).toBeNull();
-    // Each tool has a directory row and a plate on each map, and any of them opens it.
-    const cursorButtons = screen.getAllByRole("button", { name: /^Cursor/ });
-    expect(cursorButtons.length).toBeGreaterThan(1);
-    fireEvent.click(cursorButtons[0]);
+    fireEvent.click(screen.getAllByRole("button", { name: /^Cursor/ })[0]);
     // The drawer is the one change that gets a history entry, so Back closes it.
+    expect(lastPushedHref()).toBe("/ai-dev-tools?tool=cursor");
+
+    // A plate on the map opens the same drawer.
+    replaceBar(null, "", "/ai-dev-tools");
+    pushState.mockClear();
+    fireEvent.click(screen.getByRole("button", { name: "Map" }));
+    fireEvent.click(screen.getAllByRole("button", { name: /^Cursor/ })[0]);
+    expect(pushState).toHaveBeenCalledTimes(1);
     expect(lastPushedHref()).toBe("/ai-dev-tools?tool=cursor");
   });
 
