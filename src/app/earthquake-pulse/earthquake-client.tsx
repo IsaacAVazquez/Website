@@ -567,8 +567,8 @@ export function EarthquakeClient({
                   onSelect={handleSelectQuake}
                 />
                 <figcaption className="eq-muted eq-small">
-                  Epicentres from the trace above, darker for shallower quakes. The plate
-                  boundaries draw themselves.
+                  Epicentres from the trace above, solid for shallow quakes and fainter for
+                  deeper ones, and the plate boundaries draw themselves.
                 </figcaption>
               </figure>
 
