@@ -36,6 +36,16 @@
   gap: var(--c97-sp-4) var(--c97-sp-5);
 }
 
+/* All six divisions split by league the way a ballpark's board does, the AL
+ * down the left and the NL down the right, since the divisions come AL first. */
+@media screen and (min-width: 760px) {
+  .mlb-boards[data-count="6"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+  }
+}
+
 .mlb-division {
   min-width: 0;
 }

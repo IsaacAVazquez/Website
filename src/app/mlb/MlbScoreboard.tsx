@@ -25,7 +25,7 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
   }
 
   return (
-    <div className="mlb-boards" data-kind={boards[0].kind}>
+    <div className="mlb-boards" data-kind={boards[0].kind} data-count={boards.length}>
       {boards.map((board) => {
         const headingId = `mlb-board-${board.name.toLowerCase().replaceAll(" ", "-")}`;
         return (
