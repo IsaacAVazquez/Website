@@ -713,7 +713,7 @@ describe("MBAJobsClient", () => {
 
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
-    const heading = screen.getByRole("heading", { name: "Know which feeds answered." });
+    const heading = screen.getByRole("heading", { name: "Source health" });
     expect(heading).toBeVisible();
     expect(screen.getByText("1 healthy")).toBeVisible();
     expect(screen.getByText("1 manual-only")).toBeVisible();
@@ -727,7 +727,7 @@ describe("MBAJobsClient", () => {
     expect(screen.getByText(/Adzuna leads · external-disabled/)).toBeVisible();
 
     // Source health prints after the roles, with a link to it beside them.
-    const roles = screen.getByRole("heading", { name: "Current openings across the tracked boards." });
+    const roles = screen.getByRole("heading", { name: "Live roles" });
     expect(roles.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(screen.getByRole("link", { name: "Source health" })).toHaveAttribute(
       "href",
@@ -744,8 +744,8 @@ describe("MBAJobsClient", () => {
       screen.getByRole("group", { name: "Job tracker view" }),
       screen.getByRole("textbox", { name: "Search roles" }),
       screen.getByTestId("live-jobs-grid"),
-      screen.getByRole("heading", { name: "Choose which live feeds stay in view." }),
-      screen.getByRole("heading", { name: "Open the same search on outside boards." }),
+      screen.getByRole("heading", { name: "Tracked feeds" }),
+      screen.getByRole("heading", { name: "Search elsewhere" }),
     ];
     order.slice(1).forEach((element, index) => {
       expect(order[index].compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -768,24 +768,24 @@ describe("MBAJobsClient", () => {
     expect(filters).not.toHaveClass("hidden");
   });
 
-  it("holds the pipeline funnel back to a short prompt until a role is tracked", () => {
+  it("keeps the funnel out of the feed and prints it over the pipeline once a role is tracked", () => {
     const { unmount } = render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
-    expect(screen.getByText("Track a role below to start filling this in.")).toBeVisible();
-    expect(screen.queryByText("Response rate")).not.toBeInTheDocument();
+    // The feed's title bar carries the live count, and no placeholder funnel stands above the search.
     expect(screen.getByText("Live roles tracked")).toBeVisible();
-    expect(screen.queryByText("Active applications")).not.toBeInTheDocument();
+    expect(screen.queryByText("Pipeline funnel")).not.toBeInTheDocument();
+    expect(screen.queryByText("Response rate")).not.toBeInTheDocument();
     unmount();
 
+    currentSearchParams = new URLSearchParams("view=applications");
     const applications = [buildApplication({ id: "a1", jobId: "j1", status: "applied" })];
     mockUseMBAApplications.mockReturnValue(
       buildApplicationsHookValue({ applications, activeApplications: applications })
     );
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
-    expect(screen.queryByText("Track a role below to start filling this in.")).not.toBeInTheDocument();
+    expect(screen.getByText("Pipeline funnel")).toBeVisible();
     expect(screen.getByText("Response rate")).toBeVisible();
-    expect(screen.getByText("Active applications")).toBeVisible();
   });
 
   it("deep-links into the application pipeline and updates application status", () => {

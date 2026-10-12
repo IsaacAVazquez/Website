@@ -1,66 +1,988 @@
-/* Job Search: route-local rules the shared catalog97.css vocabulary doesn't
-   already cover: the pipeline/attention signature grid and the stage-to-stage
-   connector between pipeline columns. Everything else composes c97-* classes
-   with inline --c97-sp-* spacing. */
+/*
+ * Job search, drawn as a job-search tracker (the Huntr, Teal, and LinkedIn
+ * Jobs kind): an app bar, a search bar that stays in reach, a list of
+ * postings, a kanban pipeline with its counts in the column heads, and a
+ * pinned to-do rail. The route paints its own work surface and redeclares the
+ * Catalog 97 tokens the borrowed field, button, chip, and list classes read,
+ * so they print in this palette. Boxes are only the postings, the pipeline
+ * cards, and the dialog.
+ */
 
-.mba-signature-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--c97-sp-5);
+.mba-root {
+  --mba-bg: #f4f5f2;
+  --mba-card: #ffffff;
+  --mba-field: #e8eae5;
+  --mba-ink: #1b2220;
+  --mba-ink-2: #4d5853;
+  --mba-rule: rgba(27, 34, 32, 0.14);
+  --mba-rule-strong: rgba(27, 34, 32, 0.32);
+  --mba-teal: #0d6a60;
+  --mba-teal-ink: #ffffff;
+  --mba-positive: #1d6b35;
+  --mba-negative: #a8322a;
+  --mba-warning: #8a5a00;
+  --mba-radius: 6px;
+
+  --c97-surface: var(--mba-card);
+  --c97-panel: var(--mba-card);
+  --c97-field: var(--mba-field);
+  --c97-ink: var(--mba-ink);
+  --c97-ink-2: var(--mba-ink-2);
+  --c97-label: var(--mba-ink-2);
+  --c97-rule: var(--mba-rule);
+  --c97-accent: var(--mba-teal);
+  --c97-action: var(--mba-teal);
+  --c97-positive: var(--mba-positive);
+  --c97-negative: var(--mba-negative);
+  --c97-warning: var(--mba-warning);
+  --c97-grain-soft: none;
+
+  background: var(--mba-bg);
+  color: var(--mba-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-@media screen and (min-width: 800px) {
-  .mba-signature-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+.dark .mba-root {
+  --mba-bg: #111513;
+  --mba-card: #1a1f1d;
+  --mba-field: #252b28;
+  --mba-ink: #e8ece9;
+  --mba-ink-2: #a9b4ae;
+  --mba-rule: rgba(232, 236, 233, 0.14);
+  --mba-rule-strong: rgba(232, 236, 233, 0.34);
+  --mba-teal: #62c7b8;
+  --mba-teal-ink: #0b1f1c;
+  --mba-positive: #6fcf8a;
+  --mba-negative: #f08a80;
+  --mba-warning: #e6b450;
+}
+
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.mba-root :where(h1, h2, h3) {
+  font-family: var(--c97-font-body);
+  color: var(--mba-ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.mba-root :where(p, ul, ol, li) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.mba-root :where(ul, ol) {
+  list-style: none;
+}
+
+.mba-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+/* ---- Borrowed controls, in the tracker's voice ---------------------------- */
+/* Sentence case, small radius, and the tracker's teal for the primary action. */
+.mba-root .c97-btn,
+.mba-root .c97-btn-ghost {
+  min-height: 44px;
+  gap: var(--c97-sp-1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  border-radius: var(--mba-radius);
+}
+
+.mba-root .c97-btn {
+  padding: 0 var(--c97-sp-2);
+  background: var(--mba-teal);
+  color: var(--mba-teal-ink);
+}
+
+.mba-root .c97-btn:hover {
+  background: var(--mba-ink);
+  color: var(--mba-bg);
+}
+
+.mba-root .c97-btn-ghost {
+  color: var(--mba-ink-2);
+  text-decoration-color: var(--mba-rule-strong);
+}
+
+.mba-root .c97-btn-ghost:hover {
+  color: var(--mba-ink);
+  text-decoration-color: currentColor;
+}
+
+.mba-root .c97-btn:disabled,
+.mba-root .c97-btn-ghost:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.mba-root .c97-field {
+  min-height: 44px;
+  border-radius: var(--mba-radius);
+  border: 1px solid var(--mba-rule-strong);
+  background: var(--mba-card);
+  font-size: 0.9375rem;
+}
+
+.mba-root .c97-chip {
+  min-height: 24px;
+  padding: 0 var(--c97-sp-1);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--mba-ink);
+}
+
+/* ---- Title bar ------------------------------------------------------------ */
+.mba-titlebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--mba-rule);
+}
+
+.mba-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-2) var(--c97-sp-3);
+}
+
+.mba-root .mba-h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* The orienting sentence on the left, the app's own status on the right. */
+.mba-title-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+}
+
+.mba-lede {
+  flex: 1 1 28rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--mba-ink-2);
+  max-inline-size: 72ch;
+}
+
+/* The view switch: fused buttons, the pressed one filled. */
+.mba-switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--mba-rule-strong);
+  border-radius: var(--mba-radius);
+  overflow: hidden;
+}
+
+.mba-switch > button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 0;
+  background: transparent;
+  color: var(--mba-ink-2);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 140ms var(--c97-ease), color 140ms var(--c97-ease);
+}
+
+.mba-switch > button + button {
+  border-left: 1px solid var(--mba-rule-strong);
+}
+
+.mba-switch > button:hover {
+  color: var(--mba-ink);
+  background: var(--mba-field);
+}
+
+.mba-switch > button[aria-pressed="true"] {
+  background: var(--mba-ink);
+  color: var(--mba-bg);
+}
+
+.mba-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.mba-stat {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.mba-stat-value {
+  font-family: var(--c97-font-mono);
+  font-size: 1.125rem;
+  color: var(--mba-ink);
+}
+
+.mba-stat-label,
+.mba-small {
+  font-size: 0.75rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  font-size: 0.8125rem;
+  color: var(--mba-ink-2);
+}
+
+@media screen and (max-width: 720px) {
+  .mba-switch {
+    display: flex;
+    width: 100%;
+  }
+  .mba-switch > button {
+    flex: 1 1 0;
+    padding: 0 var(--c97-sp-1);
   }
 }
 
-.mba-pipeline-stages {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--c97-sp-4);
+/* ---- Feed: search bar, refinements, results ------------------------------ */
+.mba-feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
 }
 
-@media screen and (min-width: 480px) {
-  .mba-pipeline-stages {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+.mba-searchbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-1);
+  background: var(--mba-bg);
+}
+
+@media screen and (min-width: 768px) {
+  .mba-searchbar {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+    align-items: center;
   }
 }
 
-/* The rate readout sits between two stage columns on wide layouts and drops
-   under the stage it belongs to once the grid stacks to one column. */
-.mba-pipeline-rate {
-  border-top: 1px solid var(--c97-rule);
+/* The search stays in reach while the list scrolls under it. */
+@media screen and (min-width: 640px) {
+  .mba-searchbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border-bottom: 1px solid var(--mba-rule);
+  }
+}
+
+.mba-input {
+  position: relative;
+}
+
+.mba-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  color: var(--mba-ink-2);
+  pointer-events: none;
+}
+
+.mba-input .c97-field {
+  padding-left: 2.5rem;
+  padding-right: 2.75rem;
+}
+
+.mba-input-clear {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--mba-ink-2);
+  cursor: pointer;
+}
+
+.mba-searchbar-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.mba-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: 0.8125rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-sort .c97-field {
+  width: auto;
+  cursor: pointer;
+}
+
+.mba-disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-bottom: 1px solid var(--mba-rule);
+  background: none;
+  color: var(--mba-ink);
+  font: inherit;
+  font-size: 0.875rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .mba-refine-toggle {
+    display: none;
+  }
+}
+
+.mba-chevron {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 150ms var(--c97-ease);
+}
+
+[aria-expanded="true"] .mba-chevron {
+  transform: rotate(180deg);
+}
+
+/* Each refinement is a label beside its buttons, ruled from the next. */
+.mba-refine {
+  flex-direction: column;
+}
+
+.mba-refine-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  padding-block: var(--c97-sp-0);
+  border-bottom: 1px solid var(--mba-rule);
+}
+
+@media screen and (min-width: 900px) {
+  .mba-refine-row {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.mba-refine-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--mba-ink);
+  padding-top: 0.75rem;
+}
+
+.mba-refine-label .mba-small {
+  display: block;
+  font-weight: 400;
+}
+
+/* Pill toggles for a single choice. aria-pressed carries the state; the fill and the underline say it again. */
+.mba-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--c97-sp-0);
+}
+
+.mba-pills > button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-1);
+  border: 0;
+  background: none;
+  color: var(--mba-ink-2);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  border-radius: var(--mba-radius);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  transition: background-color 140ms var(--c97-ease), color 140ms var(--c97-ease);
+}
+
+.mba-pills > button:hover {
+  color: var(--mba-ink);
+  background: var(--mba-field);
+}
+
+.mba-pills > button[aria-pressed="true"] {
+  color: var(--mba-ink);
+  font-weight: 600;
+  background: var(--mba-field);
+  box-shadow: inset 0 -2px 0 var(--mba-teal);
+}
+
+.mba-notice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  align-items: baseline;
+  padding: var(--c97-sp-1) 0 var(--c97-sp-1) var(--c97-sp-2);
+  border-left: 3px solid var(--mba-warning);
+  font-size: 0.875rem;
+}
+
+.mba-notice-tag {
+  font-weight: 600;
+  color: var(--mba-ink);
+}
+
+.mba-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
   padding-top: var(--c97-sp-1);
 }
 
-@media screen and (min-width: 480px) {
-  .mba-pipeline-rate {
-    border-top: 0;
-    padding-top: 0;
-  }
+.mba-root .mba-h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
 }
 
-/* This page's ghost buttons carry a leading icon, so give it room from the label. */
-.mba-ghost {
+.mba-root .mba-h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.mba-count-line {
+  font-size: 0.875rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-tags {
+  display: flex;
+  align-items: center;
   gap: var(--c97-sp-1);
 }
 
-/* The tracked-feed toggles: a field-tinted box whose rule darkens on hover. A
-   watched company's own colour arrives inline on the border. */
+.mba-swatch {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+/* ---- Postings ---------------------------------------------------------- */
+/* A posting is the object, so it gets a card: company, title, tags, and its
+   own actions. Two to a row on desktop. */
+.mba-jobs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-2);
+}
+
+@media screen and (min-width: 1000px) {
+  .mba-jobs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mba-job,
+.mba-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-2);
+  background: var(--mba-card);
+  border: 1px solid var(--mba-rule);
+  border-radius: var(--mba-radius);
+  min-width: 0;
+}
+
+.mba-job-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+
+.mba-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--mba-radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.mba-job-company {
+  font-size: 0.8125rem;
+  color: var(--mba-ink-2);
+  overflow-wrap: anywhere;
+}
+
+.mba-job-company strong {
+  color: var(--mba-ink);
+  font-weight: 600;
+}
+
+.mba-root .mba-job-title {
+  font-size: 1.0625rem;
+  font-weight: 650;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.mba-job-meta {
+  font-size: 0.8125rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-snippet {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--mba-ink-2);
+  overflow-wrap: anywhere;
+}
+
+.mba-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-1);
+  margin-top: auto;
+  padding-top: var(--c97-sp-1);
+  border-top: 1px solid var(--mba-rule);
+}
+
+.mba-root .mba-actions > .c97-btn:last-child {
+  margin-left: auto;
+}
+
+.mba-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--mba-rule-strong);
+  text-underline-offset: 3px;
+}
+
+.mba-more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-2);
+}
+
+.mba-foot {
+  font-size: 0.8125rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-empty {
+  padding: var(--c97-sp-2) 0;
+  font-size: 0.9375rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-empty strong {
+  display: block;
+  color: var(--mba-ink);
+  font-weight: 600;
+}
+
+/* ---- Sources ------------------------------------------------------------ */
+.mba-sources {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-top: var(--c97-sp-3);
+  border-top: 1px solid var(--mba-rule-strong);
+}
+
+.mba-sources-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3);
+}
+
+@media screen and (min-width: 900px) {
+  .mba-sources-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mba-source-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.mba-source-block > p {
+  font-size: 0.875rem;
+  color: var(--mba-ink-2);
+  max-inline-size: 70ch;
+}
+
+.mba-groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-1);
+}
+
+@media screen and (min-width: 1100px) {
+  .mba-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.mba-group-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-0);
+}
+
+@media screen and (min-width: 520px) {
+  .mba-group-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* A watched feed's own colour arrives inline on its border. */
 .mba-toggle {
-  background: var(--c97-field);
-  border-color: var(--c97-rule);
-  color: var(--c97-ink-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  width: 100%;
+  padding: 0 var(--c97-sp-1);
+  border: 1px solid var(--mba-rule);
+  border-radius: var(--mba-radius);
+  background: var(--mba-card);
+  color: var(--mba-ink-2);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms var(--c97-ease), color 150ms var(--c97-ease);
 }
 
 .mba-toggle:hover {
-  border-color: var(--c97-ink-2);
-  color: var(--c97-ink);
+  border-color: var(--mba-ink-2);
+  color: var(--mba-ink);
 }
 
-.mba-disclosure:hover .c97-meta,
-.mba-disclosure:focus-visible .c97-meta {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.mba-health-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  font-size: 0.875rem;
+}
+
+.mba-wrap-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+}
+
+.mba-manual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 var(--c97-sp-3);
+}
+
+@media screen and (min-width: 700px) {
+  .mba-manual {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .mba-manual {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.mba-manual > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-2);
+  padding-block: var(--c97-sp-0);
+  border-bottom: 1px solid var(--mba-rule);
+}
+
+.mba-manual-name {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-1);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  min-width: 0;
+}
+
+/* ---- Pipeline ----------------------------------------------------------- */
+.mba-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.mba-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--mba-rule);
+}
+
+.mba-toolbar > .mba-input {
+  flex: 1 1 18rem;
+}
+
+.mba-toolbar > select.c97-field {
+  flex: 0 1 14rem;
+}
+
+.mba-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--c97-sp-2);
+}
+
+/* The rail comes first in the source, so a phone reads the to-do list before
+   the board; from 1100px it pins to the right of the board. */
+.mba-pipeline-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3);
+}
+
+.mba-rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  min-width: 0;
+}
+
+@media screen and (min-width: 1100px) {
+  .mba-pipeline-layout {
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    align-items: start;
+  }
+  .mba-rail {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: var(--c97-sp-2);
+  }
+  .mba-board-wrap {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+.mba-rail-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.mba-rail-section > p {
+  font-size: 0.875rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-attention > li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--mba-rule);
+}
+
+.mba-attention-what {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.mba-board-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+}
+
+/* The funnel is the strip of heads over the board. */
+.mba-funnel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--c97-sp-1) var(--c97-sp-4);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--mba-rule);
+}
+
+.mba-funnel-label {
+  flex: 1 0 100%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--mba-ink-2);
+}
+
+.mba-funnel-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mba-funnel-count {
+  font-family: var(--c97-font-mono);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.mba-funnel-rate {
+  font-size: 0.75rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-funnel-rate strong {
+  font-family: var(--c97-font-mono);
+  font-weight: 400;
+  color: var(--mba-ink);
+}
+
+.mba-funnel-foot {
+  flex: 1 0 100%;
+  font-size: 0.75rem;
+  color: var(--mba-ink-2);
+}
+
+/* Kanban columns scroll sideways inside the board, never the page. */
+.mba-board {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(16.5rem, 1fr);
+  gap: var(--c97-sp-2);
+  overflow-x: auto;
+  padding-bottom: var(--c97-sp-1);
+  scroll-snap-type: x proximity;
+}
+
+@media screen and (max-width: 640px) {
+  .mba-board {
+    grid-auto-columns: 85%;
+  }
+}
+
+.mba-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.mba-column-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1);
+  padding-bottom: 2px;
+  border-bottom: 2px solid var(--mba-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.mba-column-count {
+  font-family: var(--c97-font-mono);
+  font-weight: 400;
+}
+
+.mba-column-empty {
+  padding-block: var(--c97-sp-1);
+  font-size: 0.8125rem;
+  color: var(--mba-ink-2);
+}
+
+.mba-card-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  margin-top: var(--c97-sp-1);
+  padding-top: var(--c97-sp-1);
+  border-top: 1px solid var(--mba-rule);
+}
+
+.mba-card-controls > .c97-field {
+  width: auto;
+  flex: 1 1 100%;
+}
+
+/* ---- Dialog --------------------------------------------------------------- */
+.mba-dialog {
+  background: var(--mba-card);
+  border: 1px solid var(--mba-rule-strong);
+  border-radius: var(--mba-radius);
+  padding: var(--c97-sp-3);
+}
+
+@media print {
+  .mba-searchbar,
+  .mba-rail {
+    position: static;
+  }
+  .mba-board {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
 }

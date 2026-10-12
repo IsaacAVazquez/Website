@@ -58,6 +58,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
     purpose:
       "I use this dashboard to see the pressure inside the La Liga table, from the title race, to European qualification, to relegation. Those cuts make the standings more useful than a single rank order and make it easier to understand what a club is playing for.",
   },
+  "/mba-internship-notifications": {
+    purpose:
+      "I built this because the fastest way I have found to scan full-time business roles is to stop bouncing across dozens of career pages. It polls the public job boards of the companies I am targeting and filters them down to the roles I care about, and anything I track moves into a pipeline that keeps follow-ups, interview rounds, and deadlines in my own browser.",
+  },
   "/mlb": {
     purpose:
       "I use this dashboard to move between division standings, the AL and NL races, and the wild card picture without treating them as separate products. Team drilldowns connect the table to recent results and the league's hitting and pitching leaders.",

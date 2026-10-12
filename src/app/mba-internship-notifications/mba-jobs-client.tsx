@@ -16,7 +16,7 @@ import {
   BriefcaseBusiness,
   CalendarClock,
   CheckCircle2,
-  CircleAlert,
+  ChevronDown,
   Clock,
   Download,
   Edit3,
@@ -29,10 +29,6 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import { StatusPanel } from "@/components/editorial/StatusPanel";
-import { ChevronDown } from "lucide-react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { pipelineStages } from "./pipelineStages";
 import {
   MBA_APPLICATION_PRIORITIES,
@@ -74,7 +70,6 @@ import type {
   MBAJobsApiResponse,
   MBAJobsSearchState,
   MBAJobsSourceStatus,
-  MBAJobsView,
   MBATrackedApplication,
   MBARoleFamilyFilter,
   MBARoleTypeFilter,
@@ -114,17 +109,10 @@ const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"), {
   loading: () => null,
 });
 
-const ROUTE = "/mba-internship-notifications";
 // A pipeline card is tall (facts, rounds, history, and a row of controls), and
 // a status column is one card wide on a big screen, so a column pages too.
 const PIPELINE_COLUMN_PAGE_SIZE = 6;
 
-// Where the hero's one action lands, per view: the working area of that view.
-const VIEW_ACTIONS: Record<MBAJobsView, { href: string; label: string }> = {
-  feed: { href: "#mba-role-tracker-filters-heading", label: "Search roles" },
-  applications: { href: "#mba-application-pipeline-heading", label: "Open the pipeline" },
-  candidates: { href: "#mba-candidates-heading", label: "Open the candidates" },
-};
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -512,46 +500,22 @@ function formatDateKey(value: string | null): string {
 // Sub-components
 // ---------------------------------------------------------------------------
 
-function SectionLead({
-  kicker,
-  title,
-  description,
-  id,
-}: {
-  kicker: string;
-  title: string;
-  description: string;
-  id?: string;
-}) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-        <p className="c97-kicker">{kicker}</p>
-        <h2 id={id} className="c97-poster-sm" style={{ maxWidth: "18ch" }}>
-          {title}
-        </h2>
-      </div>
-      <p className="c97-prose" style={{ maxWidth: "40rem" }}>{description}</p>
-    </div>
-  );
-}
-
 function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
   const color = company?.color ?? "var(--c97-accent)";
   const initials = company?.logoInitials ?? "??";
   return (
-    <div
-      className="flex h-9 w-9 shrink-0 items-center justify-center text-xs font-bold"
-      style={{ background: color }}
+    <span
+      className="mba-avatar"
+      style={{ background: color, color: "var(--c97-surface)" }}
       aria-hidden="true"
     >
-      <span style={{ color: "var(--c97-surface)" }}>{initials}</span>
-    </div>
+      {initials}
+    </span>
   );
 }
 
 function NewBadge() {
-  return <span className="c97-chip" style={{ color: "var(--c97-ink)" }}>New</span>;
+  return <span className="c97-chip">New</span>;
 }
 
 function CategoryChip({ category }: { category: MBACategory }) {
@@ -614,7 +578,6 @@ function CardActionLink({
       target="_blank"
       rel="noopener noreferrer"
       className={variant === "primary" ? "c97-btn" : "c97-btn-ghost"}
-      style={{ gap: "var(--c97-sp-1)" }}
       onClick={onClick}
       aria-label={ariaLabel}
     >
@@ -624,6 +587,7 @@ function CardActionLink({
   );
 }
 
+/** One posting: company, title, where and when, its tags, and its own actions. */
 function JobCard({
   job,
   isNew,
@@ -652,64 +616,17 @@ function JobCard({
   const relativePostedAt = timeAgo(job.postedAt, now);
 
   return (
-    <article
-      className="c97-panel flex h-full flex-col"
-      onMouseEnter={onMarkSeen}
-      onFocus={onMarkSeen}
-    >
-      <div className="flex h-full flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-        <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-          <div className="min-w-0 flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
-            <CompanyAvatar company={company} />
-            <div className="min-w-0">
-              <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>{job.companyName}</p>
-              <p className="text-sm" style={{ margin: 0, marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                {job.department}
-                {job.sourceName ? ` · via ${job.sourceName}` : ""}
-              </p>
-            </div>
-          </div>
-          <div
-            data-testid={`job-card-${job.id}-chips`}
-            className="flex max-w-full flex-wrap items-center sm:justify-end"
-            style={{ gap: "var(--c97-sp-1)" }}
-          >
-            {isNew && <NewBadge />}
-            {application && <ApplicationStatusChip status={application.status} />}
-            {application?.fit && (
-              <FitTag score={application.fit.score} scoredAt={application.fit.scoredAt} />
-            )}
-            {job.atsType === "external-api" && (
-              <ExternalLeadChip sourceName={job.sourceName} />
-            )}
-            <RoleTypeChip roleType={job.roleType} />
-            <CategoryChip category={job.category} />
-          </div>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-          <h3 className="c97-serif c97-h3">
-            {job.title}
-          </h3>
-
-          {job.snippet && (
-            <p className="c97-prose line-clamp-3 break-words">{job.snippet}</p>
-          )}
-        </div>
-
-        {job.roleFamilies.length > 0 && (
-          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-            {job.roleFamilies.map((family) => (
-              <RoleFamilyChip key={`${job.id}-${family}`} family={family} />
-            ))}
-          </div>
-        )}
-
-        <div
-          className="mt-auto border-t border-[var(--c97-rule)]"
-          style={{ paddingTop: "var(--c97-sp-3)" }}
-        >
-          <p className="c97-meta">
+    <article className="mba-job" onMouseEnter={onMarkSeen} onFocus={onMarkSeen}>
+      <div className="mba-job-head">
+        <CompanyAvatar company={company} />
+        <div style={{ minWidth: 0, display: "flex", flexDirection: "column", gap: 2 }}>
+          <p className="mba-job-company">
+            <strong>{job.companyName}</strong>
+            {job.department ? ` · ${job.department}` : ""}
+            {job.sourceName ? ` · via ${job.sourceName}` : ""}
+          </p>
+          <h3 className="mba-job-title">{job.title}</h3>
+          <p className="mba-job-meta">
             {relativePostedAt ? (
               <>
                 {job.location} ·{" "}
@@ -724,190 +641,174 @@ function JobCard({
               job.location
             )}
           </p>
-          {job.sourceName && (
-            <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
-              Found through {job.sourceName}
-              {job.sourceUrl ? (
-                <>
-                  {" "}
-                  ·{" "}
-                  <a
-                    href={job.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-[var(--c97-rule)] underline-offset-4"
-                  >
-                    Source
-                  </a>
-                </>
-              ) : null}
-            </p>
-          )}
-          <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
-            <button
-              type="button"
-              onClick={() => {
-                onTrack();
-                onMarkSeen();
-              }}
-              className="c97-btn-ghost mba-ghost"
-            >
-              <Save className="h-3.5 w-3.5" aria-hidden="true" />
-              {application ? "Tracked" : "Track"}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                onMarkApplied();
-                onMarkSeen();
-              }}
-              className="c97-btn-ghost mba-ghost"
-            >
-              <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
-              Mark applied
-            </button>
-            {application && (
-              <button
-                type="button"
-                onClick={onEditApplication}
-                className="c97-btn-ghost mba-ghost"
-              >
-                <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
-                Edit
-              </button>
-            )}
-            <CardActionLink
-              href={linkedinUrl}
-              label="LinkedIn search"
-              ariaLabel={`LinkedIn search for ${job.title} at ${job.companyName}`}
-              onClick={onMarkSeen}
-            />
-            <CardActionLink
-              href={job.applyUrl}
-              label="Apply now"
-              ariaLabel={`Apply now, ${job.title} at ${job.companyName}`}
-              variant="primary"
-              trailingIcon
-              onClick={onMarkSeen}
-            />
-          </div>
         </div>
       </div>
-    </article>
-  );
-}
 
-function ManualCompanyCard({
-  company,
-  currentState,
-}: {
-  company: MBACompany;
-  currentState: MBAJobsSearchState;
-}) {
-  const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
-    buildManualLinkedInQuery(company.name, currentState)
-  )}`;
+      <div data-testid={`job-card-${job.id}-chips`} className="mba-tags flex-wrap">
+        {isNew && <NewBadge />}
+        {application && <ApplicationStatusChip status={application.status} />}
+        {application?.fit && (
+          <FitTag score={application.fit.score} scoredAt={application.fit.scoredAt} />
+        )}
+        {job.atsType === "external-api" && <ExternalLeadChip sourceName={job.sourceName} />}
+        <RoleTypeChip roleType={job.roleType} />
+        <CategoryChip category={job.category} />
+        {job.roleFamilies.map((family) => (
+          <RoleFamilyChip key={`${job.id}-${family}`} family={family} />
+        ))}
+      </div>
 
-  return (
-    <article
-      className="c97-panel flex h-full flex-col"
-    >
-      <div className="flex h-full flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-          <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-2)" }}>
-            <CompanyAvatar company={company} />
-            <div className="min-w-0">
-              <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>{company.name}</p>
-              <p className="text-sm" style={{ margin: 0, marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                Manual fallback
-              </p>
-            </div>
-          </div>
-          <CategoryChip category={company.category} />
-        </div>
+      {job.snippet && <p className="mba-snippet line-clamp-2">{job.snippet}</p>}
 
-        {/* The section lead explains these cards once, so eleven copies of the
-            same paragraph no longer add 1,000px to a phone. */}
-        <div
-          className="mt-auto border-t border-[var(--c97-rule)]"
-          style={{ paddingTop: "var(--c97-sp-3)" }}
+      {job.sourceName && (
+        <p className="mba-job-meta">
+          Found through {job.sourceName}
+          {job.sourceUrl ? (
+            <>
+              {" "}
+              ·{" "}
+              <a href={job.sourceUrl} target="_blank" rel="noopener noreferrer" className="mba-link">
+                Source
+              </a>
+            </>
+          ) : null}
+        </p>
+      )}
+
+      <div className="mba-actions">
+        <button
+          type="button"
+          onClick={() => {
+            onTrack();
+            onMarkSeen();
+          }}
+          className="c97-btn-ghost"
         >
-          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
-            <CardActionLink
-              href={linkedinUrl}
-              label="LinkedIn search"
-              ariaLabel={`LinkedIn search for ${company.name}`}
-            />
-            <CardActionLink
-              href={company.jobsUrl ?? company.careersUrl}
-              label="Career page"
-              ariaLabel={`Career page for ${company.name}`}
-              variant="primary"
-              trailingIcon
-            />
-          </div>
-        </div>
+          <Save className="h-3.5 w-3.5" aria-hidden="true" />
+          {application ? "Tracked" : "Track"}
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            onMarkApplied();
+            onMarkSeen();
+          }}
+          className="c97-btn-ghost"
+        >
+          <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
+          Mark applied
+        </button>
+        {application && (
+          <button type="button" onClick={onEditApplication} className="c97-btn-ghost">
+            <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+            Edit
+          </button>
+        )}
+        <CardActionLink
+          href={linkedinUrl}
+          label="LinkedIn search"
+          ariaLabel={`LinkedIn search for ${job.title} at ${job.companyName}`}
+          onClick={onMarkSeen}
+        />
+        <CardActionLink
+          href={job.applyUrl}
+          label="Apply now"
+          ariaLabel={`Apply now, ${job.title} at ${job.companyName}`}
+          variant="primary"
+          trailingIcon
+          onClick={onMarkSeen}
+        />
       </div>
     </article>
   );
 }
 
-function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchState }) {
+function SearchElsewhere({ currentState }: { currentState: MBAJobsSearchState }) {
   const links = buildExternalSearchLinks(currentState);
 
   return (
-    <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-search-elsewhere-heading">
-      <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-      <SectionLead
-        kicker="Search elsewhere"
-        title="Open the same search on outside boards."
-        description="These are outbound searches only, so LinkedIn is a shortcut here and nothing from it is fetched by the server."
-        id="mba-search-elsewhere-heading"
-      />
-      <div className="c97-panel">
-        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-2)" }}>
-          {links.map((link) => (
-            <CardActionLink
-              key={link.label}
-              href={link.href}
-              label={link.label}
-              ariaLabel={link.ariaLabel}
-              trailingIcon
-            />
-          ))}
-        </div>
+    <section className="mba-source-block" aria-labelledby="mba-search-elsewhere-heading">
+      <h3 id="mba-search-elsewhere-heading" className="mba-h3">
+        Search elsewhere
+      </h3>
+      <p>
+        The same search on outside boards. These are outbound links only, so nothing from them is
+        fetched by the server.
+      </p>
+      <div className="mba-wrap-row">
+        {links.map((link) => (
+          <CardActionLink
+            key={link.label}
+            href={link.href}
+            label={link.label}
+            ariaLabel={link.ariaLabel}
+            trailingIcon
+          />
+        ))}
       </div>
-      </div>
+    </section>
+  );
+}
+
+function ManualChecks({
+  companies,
+  currentState,
+}: {
+  companies: MBACompany[];
+  currentState: MBAJobsSearchState;
+}) {
+  return (
+    <section className="mba-source-block" aria-labelledby="mba-role-tracker-manual-heading">
+      <h3 id="mba-role-tracker-manual-heading" className="mba-h3">
+        Manual checks
+      </h3>
+      <p>
+        Companies without a stable public feed. The LinkedIn search carries the current role
+        filters.
+      </p>
+      <ul className="mba-manual" data-testid="manual-checks-grid">
+        {companies.map((company) => {
+          const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
+            buildManualLinkedInQuery(company.name, currentState)
+          )}`;
+          return (
+            <li key={company.id}>
+              <span className="mba-manual-name">
+                <span className="mba-swatch" style={{ background: company.color }} aria-hidden="true" />
+                {company.name}
+              </span>
+              <CardActionLink
+                href={linkedinUrl}
+                label="LinkedIn search"
+                ariaLabel={`LinkedIn search for ${company.name}`}
+              />
+              <CardActionLink
+                href={company.jobsUrl ?? company.careersUrl}
+                label="Career page"
+                ariaLabel={`Career page for ${company.name}`}
+                variant="primary"
+                trailingIcon
+              />
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }
 
 function JobGridSkeleton() {
   return (
-    <div
-      className="grid md:grid-cols-2 xl:grid-cols-3"
-      style={{ gap: "var(--c97-sp-3)" }}
-      role="status"
-      aria-live="polite"
-      aria-label="Loading jobs"
-    >
+    <div className="mba-jobs" role="status" aria-live="polite" aria-label="Loading jobs">
       {Array.from({ length: 6 }, (_, i) => (
-        <div
-          key={i}
-          className="c97-panel"
-          style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
-          aria-hidden="true"
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
+        <div key={i} className="mba-job" aria-hidden="true">
+          <div className="mba-job-head">
             <span className="c97-skeleton" style={{ height: 36, width: 36 }} />
-            <div style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
-              <span className="c97-skeleton" style={{ height: 10, width: 80 }} />
-              <span className="c97-skeleton" style={{ height: 8, width: 56 }} />
+            <div style={{ display: "grid", gap: "var(--c97-sp-1)", flex: 1 }}>
+              <span className="c97-skeleton" style={{ height: 10, width: 120 }} />
+              <span className="c97-skeleton" style={{ height: 16, width: "70%" }} />
+              <span className="c97-skeleton" style={{ height: 10, width: "40%" }} />
             </div>
-          </div>
-          <div style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
-            <span className="c97-skeleton" style={{ height: 16, width: "75%" }} />
-            <span className="c97-skeleton" style={{ height: 12, width: "50%" }} />
           </div>
         </div>
       ))}
@@ -926,13 +827,12 @@ function SortDropdown({
   // control gives keyboard support, type-ahead, and the OS picker on mobile
   // for free. The wrapping <label> supplies the accessible name ("Sort").
   return (
-    <label style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-      <span className="c97-kicker">Sort</span>
+    <label className="mba-sort">
+      <span>Sort</span>
       <select
         value={value}
         onChange={(event) => onValueChange(event.target.value as MBASortOrder)}
         className="c97-field"
-        style={{ width: "auto", cursor: "pointer" }}
       >
         {SORT_OPTIONS.map((opt) => (
           <option key={opt} value={opt}>
@@ -954,43 +854,22 @@ function NotificationBell({
   if (permission === "unsupported") return null;
   if (permission === "granted") {
     return (
-      <div
-        className="inline-flex min-h-[48px] items-center border text-sm font-semibold"
-        style={{
-          gap: "var(--c97-sp-1)",
-          padding: "var(--c97-sp-1) var(--c97-sp-2)",
-          color: "color-mix(in srgb, var(--c97-accent) 78%, var(--c97-ink))",
-          borderColor: "color-mix(in srgb, var(--c97-accent) 40%, var(--c97-rule))",
-          background: "color-mix(in srgb, var(--c97-accent) 18%, var(--c97-surface))",
-        }}
-      >
+      <p className="mba-note">
         <Bell className="h-4 w-4" aria-hidden="true" />
         Notifications on
-      </div>
+      </p>
     );
   }
   if (permission === "denied") {
     return (
-      <div
-        className="inline-flex min-h-[48px] items-center border text-sm"
-        style={{
-          gap: "var(--c97-sp-1)",
-          padding: "var(--c97-sp-1) var(--c97-sp-2)",
-          color: "var(--c97-ink-2)",
-          borderColor: "var(--c97-rule)",
-        }}
-      >
+      <p className="mba-note">
         <BellOff className="h-4 w-4" aria-hidden="true" />
         Notifications blocked in browser
-      </div>
+      </p>
     );
   }
   return (
-    <button
-      type="button"
-      onClick={onRequest}
-      className="c97-btn-ghost mba-ghost"
-    >
+    <button type="button" onClick={onRequest} className="c97-btn-ghost">
       <Bell className="h-4 w-4" aria-hidden="true" />
       Enable notifications
     </button>
@@ -998,7 +877,7 @@ function NotificationBell({
 }
 
 // ---------------------------------------------------------------------------
-// Company filter strip
+// Tracked feeds
 // ---------------------------------------------------------------------------
 
 function CompanyFilterStrip({
@@ -1006,13 +885,11 @@ function CompanyFilterStrip({
   onToggle,
   onSelectAll,
   onClearAll,
-  style,
 }: {
   watchedIds: Set<string>;
   onToggle: (id: string) => void;
   onSelectAll: () => void;
   onClearAll: () => void;
-  style?: CSSProperties;
 }) {
   const nonManual = MBA_COMPANIES.filter((c) => c.atsType !== "manual");
   const watchedLiveCount = nonManual.filter((company) => watchedIds.has(company.id)).length;
@@ -1039,97 +916,40 @@ function CompanyFilterStrip({
   }, [totalLiveCount, watchedLiveCount]);
 
   return (
-    <div className="c97-panel" style={style}>
+    <div>
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        className="mba-toggle flex w-full items-start justify-between border text-left transition-[border-color,color] duration-200 sm:items-center"
-        style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)" }}
+        className="mba-disclosure"
         aria-expanded={isExpanded}
         aria-controls="tracked-companies-controls"
       >
-        <span style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-          <span className="block">
-            <span className="c97-meta" style={{ display: "block" }}>Tracked company feeds</span>
-            <span
-              className="block text-sm"
-              style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-            >
-              {watchedLiveCount} of {totalLiveCount} live boards are in the scan right now.
-            </span>
-          </span>
-          <span className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-            <span className="c97-chip">{totalLiveCount} live feeds</span>
-            <span className="c97-chip">{watchedLiveCount} watched now</span>
-            <span className="c97-chip">{groups.length} company groups</span>
-          </span>
+        <span>
+          Tracked company feeds, {watchedLiveCount} of {totalLiveCount} live boards in the scan
         </span>
-        <span className="flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
-          <span
-            className="hidden text-2xs font-semibold uppercase tracking-[0.12em] sm:inline"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            {isExpanded ? "Hide list" : "Show list"}
-          </span>
-          <span
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center border"
-            style={{
-              borderColor: "var(--c97-rule)",
-              background: "var(--c97-field)",
-            }}
-            aria-hidden="true"
-          >
-            <ChevronDown
-              className={`h-4 w-4 transition-transform duration-150 ${
-                isExpanded ? "rotate-180" : ""
-              }`}
-              style={{ color: "var(--c97-ink-2)" }}
-            />
-          </span>
-        </span>
+        <ChevronDown className="mba-chevron" aria-hidden="true" />
       </button>
 
       {isExpanded && (
-        <div id="tracked-companies-controls" style={{ marginTop: "var(--c97-sp-3)" }}>
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-end" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-              <button
-                type="button"
-                onClick={onSelectAll}
-                disabled={allOn}
-                className="c97-btn-ghost"
-              >
-                All on
-              </button>
-              <button
-                type="button"
-                onClick={onClearAll}
-                disabled={allOff}
-                className="c97-btn-ghost"
-              >
-                All off
-              </button>
-            </div>
+        <div id="tracked-companies-controls">
+          <div className="mba-wrap-row">
+            <button type="button" onClick={onSelectAll} disabled={allOn} className="c97-btn-ghost">
+              All on
+            </button>
+            <button type="button" onClick={onClearAll} disabled={allOff} className="c97-btn-ghost">
+              All off
+            </button>
           </div>
-          <div className="grid xl:grid-cols-3" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
+          <div className="mba-groups">
             {groups.map((group) => {
               const watchedCount = group.companies.filter((company) => watchedIds.has(company.id)).length;
               const isGroupExpanded = expandedGroups[group.category];
 
               return (
-                <div
-                  key={group.category}
-                  data-testid={`tracked-companies-${group.category}`}
-                  className="border p-[var(--c97-sp-1)] sm:p-[var(--c97-sp-2)]"
-                  style={{
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                  }}
-                >
+                <div key={group.category} data-testid={`tracked-companies-${group.category}`}>
                   <button
                     type="button"
-                    className="mba-disclosure flex min-h-[44px] w-full items-center justify-between text-left"
-                    style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
+                    className="mba-disclosure"
                     aria-expanded={isGroupExpanded}
                     aria-controls={`tracked-companies-panel-${group.category}`}
                     onClick={() =>
@@ -1139,28 +959,19 @@ function CompanyFilterStrip({
                       }))
                     }
                   >
-                    <span className="block min-w-0">
-                      <span className="c97-meta" style={{ display: "block" }}>{group.label}</span>
-                      <span
-                        className="block text-xs"
-                        style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-                      >
+                    <span>
+                      <strong>{group.label}</strong>{" "}
+                      <span className="mba-small">
                         {watchedCount} / {group.companies.length} watched
                       </span>
                     </span>
-                    <ChevronDown
-                      className={`h-4 w-4 shrink-0 transition-transform duration-150 ${
-                        isGroupExpanded ? "rotate-180" : ""
-                      }`}
-                      style={{ color: "var(--c97-ink-2)" }}
-                      aria-hidden="true"
-                    />
+                    <ChevronDown className="mba-chevron" aria-hidden="true" />
                   </button>
                   {isGroupExpanded && (
                     <div
                       id={`tracked-companies-panel-${group.category}`}
-                      className="grid sm:grid-cols-2"
-                      style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
+                      className="mba-group-list"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     >
                       {group.companies.map((company) => {
                         const active = watchedIds.has(company.id);
@@ -1169,12 +980,12 @@ function CompanyFilterStrip({
                             key={company.id}
                             type="button"
                             onClick={() => onToggle(company.id)}
-                            className="mba-toggle inline-flex min-h-[44px] w-full items-center border text-left text-xs font-semibold transition-[border-color,color] duration-150"
-                            style={{ ...getTrackedCompanyButtonStyle(company, active), gap: "var(--c97-sp-1)", padding: "var(--c97-sp-2)" }}
+                            className="mba-toggle"
+                            style={getTrackedCompanyButtonStyle(company, active)}
                             aria-pressed={active}
                           >
                             <span
-                              className="h-2.5 w-2.5 shrink-0"
+                              className="mba-swatch"
                               style={{ background: active ? company.color : "var(--c97-rule)" }}
                               aria-hidden="true"
                             />
@@ -1195,48 +1006,102 @@ function CompanyFilterStrip({
 }
 
 /**
- * The four-column pipeline signature: applied, responded, interview, offer,
- * each a big mono count with the conversion rate from the stage before it.
- * The first stage has nothing before it, so it carries no rate.
+ * Which feeds answered. The counts stay in view and the per-feed list, one tag
+ * for every board, opens on request.
+ */
+function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceStatus[] }) {
+  const okCount = sourceStatuses.filter((status) => status.status === "ok").length;
+  const failedCount = sourceStatuses.filter((status) => status.status === "failed").length;
+  const skippedCount = sourceStatuses.filter((status) => status.status === "skipped").length;
+  const externalDisabledCount = sourceStatuses.filter(
+    (status) => status.status === "external-disabled"
+  ).length;
+
+  return (
+    <section className="mba-source-block" aria-labelledby="mba-source-health-heading">
+      <h3 id="mba-source-health-heading" className="mba-h3">
+        Source health
+      </h3>
+      <p className="mba-health-counts">
+        <span>{okCount} healthy</span>
+        <span>{failedCount} failed</span>
+        <span>{skippedCount} manual-only</span>
+        {externalDisabledCount > 0 && <span>{externalDisabledCount} external disabled</span>}
+      </p>
+      <details className="c97-disclosure">
+        <summary className="c97-btn-ghost">
+          <span data-when="closed">Show all {sourceStatuses.length} sources</span>
+          <span data-when="open">Hide the source list</span>
+        </summary>
+        <div className="mba-tags flex-wrap" style={{ marginTop: "var(--c97-sp-1)" }}>
+          {sourceStatuses.map((source) => {
+            const accent =
+              source.status === "ok"
+                ? "var(--c97-positive)"
+                : source.status === "failed"
+                  ? "var(--c97-negative)"
+                  : source.status === "external-disabled"
+                    ? "var(--c97-warning)"
+                    : "var(--c97-ink-2)";
+            return (
+              <ColorTag
+                key={`${source.companyId}-${source.status}`}
+                accent={accent}
+                title={source.message}
+                label={`${source.companyName} · ${
+                  source.status === "ok" ? `${source.jobCount} roles` : source.status
+                }`}
+              />
+            );
+          })}
+        </div>
+      </details>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Pipeline
+// ---------------------------------------------------------------------------
+
+/**
+ * The funnel as the strip of heads over the board: applications, responses,
+ * interviews, and offers, each with its count and the conversion rate from
+ * the stage before it. The first stage has nothing before it, so it carries
+ * no rate.
  */
 function PipelineSignature({ insights }: { insights: MBAApplicationInsights }) {
   const stages = pipelineStages(insights);
 
   return (
-    <div>
-      <p className="c97-kicker">Pipeline funnel</p>
-      <div className="mba-pipeline-stages" style={{ marginTop: "var(--c97-sp-3)" }}>
-        {stages.map((stage, index) => (
-          <div key={stage.key} className={index > 0 ? "mba-pipeline-rate" : undefined}>
-            <p className="c97-stat-value c97-mono" style={{ margin: 0 }}>
-              {stage.count}
-            </p>
-            <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-              {stage.label}
-            </p>
-            {index > 0 && (
-              <div style={{ marginTop: "var(--c97-sp-2)" }}>
-                <p className="c97-meta">{stage.rateLabel}</p>
-                <p className="c97-mono" style={{ margin: 0, fontSize: "var(--c97-fs-h3)" }}>
-                  {formatRate(stage.rateFromPrevious)}
-                </p>
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                  {stage.count} of {stages[index - 1].count}{" "}
-                  {stage.key === "responded"
-                    ? "heard back"
-                    : stage.key === "interview"
-                      ? "reached interview"
-                      : "got an offer"}
-                </p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
-        {insights.funnel.rejected} rejected · {insights.archived} archived
+    <div className="mba-funnel" role="group" aria-labelledby="mba-funnel-label">
+      <p id="mba-funnel-label" className="mba-funnel-label">
+        Pipeline funnel
       </p>
-      <p className="c97-meta">Rates include previous stages and archived applications with recorded progress.</p>
+      {stages.map((stage, index) => (
+        <div key={stage.key} className="mba-funnel-stage">
+          <span className="mba-funnel-count">{stage.count}</span>
+          <span className="mba-small">{stage.label}</span>
+          {index > 0 && (
+            <span className="mba-funnel-rate">
+              <span>{stage.rateLabel}</span> <strong>{formatRate(stage.rateFromPrevious)}</strong>
+              <br />
+              <span>
+                {stage.count} of {stages[index - 1].count}{" "}
+                {stage.key === "responded"
+                  ? "heard back"
+                  : stage.key === "interview"
+                    ? "reached interview"
+                    : "got an offer"}
+              </span>
+            </span>
+          )}
+        </div>
+      ))}
+      <p className="mba-funnel-foot">
+        {insights.funnel.rejected} rejected · {insights.archived} archived. Rates include previous
+        stages and archived applications with recorded progress.
+      </p>
     </div>
   );
 }
@@ -1258,36 +1123,21 @@ function AttentionRow({
   const Icon = isFollowUp ? Clock : CalendarClock;
 
   return (
-    <div
-      className="c97-panel flex flex-col" style={{ gap: "var(--c97-sp-2)" }}
-    >
-      <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-2)" }}>
-        {/* The colour is a swatch/mark only, and every word beside it prints in ink. */}
-        <span
-          className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center"
-          style={{ background: accent, color: "var(--c97-surface)" }}
-          aria-hidden="true"
-        >
-          <Icon className="h-4 w-4" />
-        </span>
-        <div className="min-w-0">
-          <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
-            {application.jobSnapshot.companyName}
-          </p>
-          <p className="text-sm font-semibold" style={{ margin: 0, marginTop: "var(--c97-sp-1)", color: "var(--c97-ink)" }}>
-            {application.jobSnapshot.title}
-          </p>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {describeAttentionItem(item)}
-          </p>
-        </div>
-      </div>
-      <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
+    <>
+      {/* The colour is a mark only, and every word beside it prints in ink. */}
+      <p className="mba-attention-what">
+        <Icon className="h-3.5 w-3.5 shrink-0" style={{ color: accent }} aria-hidden="true" />
+        {describeAttentionItem(item)}
+      </p>
+      <p className="mba-job-company">
+        <strong>{application.jobSnapshot.companyName}</strong> · {application.jobSnapshot.title}
+      </p>
+      <div className="mba-wrap-row">
         {isFollowUp ? (
           <button
             type="button"
             onClick={() => onClearFollowUp(application.id)}
-            className="c97-btn-ghost mba-ghost"
+            className="c97-btn-ghost"
           >
             <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             Mark done
@@ -1296,17 +1146,13 @@ function AttentionRow({
           <button
             type="button"
             onClick={() => onMarkApplied(application.id)}
-            className="c97-btn-ghost mba-ghost"
+            className="c97-btn-ghost"
           >
             <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
             Mark applied
           </button>
         )}
-        <button
-          type="button"
-          onClick={() => onEdit(application)}
-          className="c97-btn-ghost mba-ghost"
-        >
+        <button type="button" onClick={() => onEdit(application)} className="c97-btn-ghost">
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
         </button>
@@ -1319,7 +1165,7 @@ function AttentionRow({
           />
         )}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -1335,48 +1181,30 @@ function NeedsAttentionPanel({
   onClearFollowUp: (id: string) => void;
 }) {
   return (
-    <section aria-labelledby="mba-attention-heading" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-      <SectionLead
-        kicker="Needs attention"
-        title="What to chase today."
-        description="Overdue and same-day follow-ups, plus deadlines closing on roles I have not submitted yet, pulled from the tracked pipeline."
-        id="mba-attention-heading"
-      />
-      <div>
-        {items.length === 0 ? (
-          <div className="c97-panel flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
-            <span
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center"
-              style={{ background: "var(--c97-positive)", color: "var(--c97-surface)" }}
-              aria-hidden="true"
-            >
-              <CheckCircle2 className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="text-sm font-semibold" style={{ margin: 0, color: "var(--c97-ink)" }}>
-                All caught up.
-              </p>
-              <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
-                No follow-ups or deadlines need action right now. A follow-up date set when I
-                apply surfaces here on its day.
-              </p>
-            </div>
-          </div>
-        ) : (
-          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-            {items.map((item) => (
-              <li key={`${item.application.id}-${item.kind}`}>
-                <AttentionRow
-                  item={item}
-                  onEdit={onEdit}
-                  onMarkApplied={onMarkApplied}
-                  onClearFollowUp={onClearFollowUp}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+    <section className="mba-rail-section" aria-labelledby="mba-attention-heading">
+      <h3 id="mba-attention-heading" className="mba-h3">
+        What to chase today.
+      </h3>
+      {items.length === 0 ? (
+        <p>
+          <strong style={{ color: "var(--c97-ink)" }}>All caught up.</strong>{" "}
+          No follow-ups or deadlines need action right now. A follow-up date set when I apply
+          surfaces here on its day.
+        </p>
+      ) : (
+        <ul className="mba-attention">
+          {items.map((item) => (
+            <li key={`${item.application.id}-${item.kind}`}>
+              <AttentionRow
+                item={item}
+                onEdit={onEdit}
+                onMarkApplied={onMarkApplied}
+                onClearFollowUp={onClearFollowUp}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }
@@ -1404,28 +1232,20 @@ function ApplicationCard({
   const rounds = application.interviewRounds ?? [];
   const facts = application.facts ?? [];
   return (
-    <article className="c97-panel">
-      <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-        <div className="min-w-0">
-          <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
-            {application.jobSnapshot.companyName}
-          </p>
-          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {application.jobSnapshot.title}
-          </h3>
-        </div>
-        <ApplicationPriorityChip priority={application.priority} />
-      </div>
-      <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
+    <article className="mba-card">
+      <p className="mba-job-company">
+        <strong>{application.jobSnapshot.companyName}</strong>
+      </p>
+      <h3 className="mba-job-title">{application.jobSnapshot.title}</h3>
+      <p className="mba-job-meta">
         {application.jobSnapshot.department} · {application.jobSnapshot.location}
       </p>
       {application.appliedVia && (
-        <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-          Applied via {application.appliedVia}
-        </p>
+        <p className="mba-job-meta">Applied via {application.appliedVia}</p>
       )}
-      <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-        <ApplicationStatusChip status={application.status} />
+      {/* The column head already names the status, so the card carries the rest. */}
+      <div className="mba-tags flex-wrap">
+        <ApplicationPriorityChip priority={application.priority} />
         {application.fit && (
           <FitTag score={application.fit.score} scoredAt={application.fit.scoredAt} />
         )}
@@ -1440,28 +1260,26 @@ function ApplicationCard({
         )}
       </div>
       {application.fit?.rationale && (
-        <details className="c97-disclosure" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <details className="c97-disclosure">
           <summary className="c97-btn-ghost">Why this fit</summary>
-          <p className="c97-meta" style={{ margin: 0 }}>{application.fit.rationale}</p>
+          <p className="mba-snippet">{application.fit.rationale}</p>
         </details>
       )}
-      {application.notes && (
-        <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
-      )}
+      {application.notes && <p className="mba-snippet line-clamp-3">{application.notes}</p>}
       <ApplicationHistory events={application.statusHistory ?? []} />
       {facts.length > 0 && (
-        <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Posting facts">
+        <ul className="mba-snippet" aria-label="Posting facts">
           {facts.map((fact, index) => (
-            <li key={`${fact.label}-${index}`} className="c97-meta">
+            <li key={`${fact.label}-${index}`}>
               {fact.label} · {fact.value}
             </li>
           ))}
         </ul>
       )}
       {rounds.length > 0 && (
-        <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Interview rounds">
+        <ul className="mba-snippet" aria-label="Interview rounds">
           {rounds.map((round, index) => (
-            <li key={`${round.label}-${index}`} className="c97-meta">
+            <li key={`${round.label}-${index}`}>
               {round.label}
               {round.date ? ` · ${formatDateKey(round.date)}` : ""}
               {` · ${round.outcome}`}
@@ -1470,12 +1288,11 @@ function ApplicationCard({
         </ul>
       )}
       {application.materialsDir && (
-        <p className="c97-meta flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+        <p className="mba-job-meta mba-wrap-row">
           <code className="font-mono break-all">{application.materialsDir}</code>
           <button
             type="button"
             className="c97-btn-ghost"
-            style={{ minHeight: 44 }}
             onClick={() => {
               const dir = application.materialsDir;
               if (!dir || !navigator.clipboard) return;
@@ -1486,13 +1303,11 @@ function ApplicationCard({
           </button>
         </p>
       )}
-      <div className="flex flex-wrap items-center border-t border-[var(--c97-rule)]"
-        style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", paddingTop: "var(--c97-sp-2)" }}>
+      <div className="mba-card-controls">
         <select
           value={application.status}
           onChange={(event) => onStatusChange(event.target.value as MBAApplicationStatus)}
           className="c97-field"
-          style={{ width: "auto" }}
           aria-label={`Application status for ${application.jobSnapshot.title}`}
         >
           {MBA_APPLICATION_STATUSES.map((status) => (
@@ -1503,11 +1318,8 @@ function ApplicationCard({
         </select>
         <select
           value={application.priority}
-          onChange={(event) =>
-            onPriorityChange(event.target.value as MBAApplicationPriority)
-          }
+          onChange={(event) => onPriorityChange(event.target.value as MBAApplicationPriority)}
           className="c97-field"
-          style={{ width: "auto" }}
           aria-label={`Priority for ${application.jobSnapshot.title}`}
         >
           {MBA_APPLICATION_PRIORITIES.map((priority) => (
@@ -1516,7 +1328,7 @@ function ApplicationCard({
             </option>
           ))}
         </select>
-        <button type="button" onClick={onEdit} className="c97-btn-ghost mba-ghost">
+        <button type="button" onClick={onEdit} className="c97-btn-ghost">
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
         </button>
@@ -1525,30 +1337,25 @@ function ApplicationCard({
             href={application.jobSnapshot.applyUrl}
             label="Apply"
             ariaLabel={`Apply for ${application.jobSnapshot.title} at ${application.jobSnapshot.companyName}`}
-            variant="primary"
             trailingIcon
           />
         )}
         {application.status !== "archived" && (
-          <button type="button" onClick={onArchive} className="c97-btn-ghost mba-ghost">
+          <button type="button" onClick={onArchive} className="c97-btn-ghost">
             Archive
           </button>
         )}
         <button
           type="button"
           onClick={() => (confirmingDelete ? onRemove() : setConfirmingDelete(true))}
-          className="c97-btn-ghost mba-ghost"
+          className="c97-btn-ghost"
           style={confirmingDelete ? { color: "var(--c97-negative)" } : undefined}
         >
           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
           {confirmingDelete ? "Confirm delete" : "Delete"}
         </button>
         {confirmingDelete && (
-          <button
-            type="button"
-            onClick={() => setConfirmingDelete(false)}
-            className="c97-btn-ghost"
-          >
+          <button type="button" onClick={() => setConfirmingDelete(false)} className="c97-btn-ghost">
             Keep it
           </button>
         )}
@@ -1559,6 +1366,8 @@ function ApplicationCard({
 
 function ApplicationPipeline({
   applications,
+  insights,
+  attentionItems,
   todayKey,
   onCreate,
   onEdit,
@@ -1566,11 +1375,14 @@ function ApplicationPipeline({
   onPriorityChange,
   onArchive,
   onRemove,
+  onClearFollowUp,
   onExportJson,
   onExportCsv,
   onImport,
 }: {
   applications: MBATrackedApplication[];
+  insights: MBAApplicationInsights;
+  attentionItems: MBAAttentionItem[];
   todayKey: string | null;
   onCreate: () => void;
   onEdit: (application: MBATrackedApplication) => void;
@@ -1578,6 +1390,7 @@ function ApplicationPipeline({
   onPriorityChange: (id: string, priority: MBAApplicationPriority) => void;
   onArchive: (id: string) => void;
   onRemove: (id: string) => void;
+  onClearFollowUp: (id: string) => void;
   onExportJson: () => void;
   onExportCsv: () => void;
   onImport: (content: string) => { imported: number; total: number };
@@ -1630,236 +1443,153 @@ function ApplicationPipeline({
   }
 
   return (
-    <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-application-pipeline-heading">
-      <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-      <SectionLead
-        kicker="Applications"
-        title="Work the full-time pipeline in one place."
-        description="I track roles from the live feed, add the ones I find elsewhere by hand, and keep follow-ups, interview rounds, and fit notes visible without sending any of it to the server."
-        id="mba-application-pipeline-heading"
-      />
-      <UpcomingInterviews applications={applications} todayKey={todayKey} onEdit={onEdit} />
-      <div className="c97-panel" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
-        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-          <div className="grid md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="relative">
-              <Search
-                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                style={{ color: "var(--c97-ink-2)" }}
-                aria-hidden="true"
-              />
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search roles, posting facts, notes…"
-                aria-label="Search applications"
-                className="c97-field"
-                style={{ paddingLeft: "2.5rem" }}
-              />
-            </div>
-            <select
-              value={statusFilter}
-              onChange={(event) =>
-                setStatusFilter(event.target.value as MBAApplicationStatus | "all")
-              }
-              className="c97-field"
-              aria-label="Filter applications by status"
-            >
-              <option value="all">All active statuses</option>
-              {MBA_APPLICATION_STATUSES.map((status) => (
-                <option key={status} value={status}>
-                  {MBA_APPLICATION_STATUS_LABELS[status]}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-            <button type="button" onClick={onCreate} className="c97-btn">
-              Add application
-            </button>
-            <button
-              type="button"
-              aria-pressed={sortByFit}
-              onClick={() => setSortByFit((current) => !current)}
-              className="c97-btn-ghost"
-            >
-              By fit
-            </button>
-            <button type="button" onClick={onExportJson} className="c97-btn-ghost mba-ghost">
-              <Download className="h-4 w-4" aria-hidden="true" />
-              JSON backup
-            </button>
-            <button type="button" onClick={onExportCsv} className="c97-btn-ghost mba-ghost">
-              <Download className="h-4 w-4" aria-hidden="true" />
-              CSV
-            </button>
-            <button
-              type="button"
-              onClick={() => importInputRef.current?.click()}
-              className="c97-btn-ghost mba-ghost"
-            >
-              <Upload className="h-4 w-4" aria-hidden="true" />
-              Import
-            </button>
-            <input
-              ref={importInputRef}
-              type="file"
-              accept="application/json,.json"
-              className="sr-only"
-              onChange={(event) => handleImportFile(event.target.files?.[0])}
-              aria-label="Import applications JSON"
-            />
-          </div>
+    <section className="mba-pipeline" aria-labelledby="mba-application-pipeline-heading">
+      <h2 id="mba-application-pipeline-heading" className="sr-only">
+        Application pipeline
+      </h2>
+      <div className="mba-toolbar">
+        <div className="mba-input">
+          <Search className="mba-input-icon" aria-hidden="true" />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search roles, posting facts, notes…"
+            aria-label="Search applications"
+            className="c97-field"
+          />
         </div>
-
-        {importMessage && (
-          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)" }} role="status">
-            {importMessage}
-          </p>
-        )}
-
-        {applications.length === 0 ? (
-          <StatusPanel
-            title="No applications tracked yet."
-            message="Track a role from the feed or add one by hand to start the pipeline."
-            icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
-          />
-        ) : filteredApplications.length === 0 ? (
-          <StatusPanel
-            title="No applications match."
-            message="Try a different search or status filter."
-            icon={<Search className="h-5 w-5" aria-hidden="true" />}
-          />
-        ) : (
-          // Status columns at least 18rem wide, so a card's title, facts, and
-          // control row do not wrap line by line. Five fixed columns on the
-          // page's ~1,000px panel were 210px each.
-          <div
-            className="grid md:grid-cols-[repeat(auto-fit,minmax(18rem,1fr))]"
-            style={{ gap: "var(--c97-sp-2)" }}
+        <select
+          value={statusFilter}
+          onChange={(event) => setStatusFilter(event.target.value as MBAApplicationStatus | "all")}
+          className="c97-field"
+          aria-label="Filter applications by status"
+        >
+          <option value="all">All active statuses</option>
+          {MBA_APPLICATION_STATUSES.map((status) => (
+            <option key={status} value={status}>
+              {MBA_APPLICATION_STATUS_LABELS[status]}
+            </option>
+          ))}
+        </select>
+        <div className="mba-toolbar-actions">
+          <button type="button" onClick={onCreate} className="c97-btn">
+            Add application
+          </button>
+          <button
+            type="button"
+            aria-pressed={sortByFit}
+            onClick={() => setSortByFit((current) => !current)}
+            className="c97-btn-ghost"
           >
-            {columns.map(({ status, applications: statusApplications }) => {
-              const columnLimit = columnLimits[status] ?? PIPELINE_COLUMN_PAGE_SIZE;
-              return (
-                <div key={status} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-                  <div className="c97-panel flex items-center justify-between">
-                    <p className="c97-meta">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
-                    <span className="c97-chip">{statusApplications.length}</span>
+            By fit
+          </button>
+          <button type="button" onClick={onExportJson} className="c97-btn-ghost">
+            <Download className="h-4 w-4" aria-hidden="true" />
+            JSON backup
+          </button>
+          <button type="button" onClick={onExportCsv} className="c97-btn-ghost">
+            <Download className="h-4 w-4" aria-hidden="true" />
+            CSV
+          </button>
+          <button
+            type="button"
+            onClick={() => importInputRef.current?.click()}
+            className="c97-btn-ghost"
+          >
+            <Upload className="h-4 w-4" aria-hidden="true" />
+            Import
+          </button>
+          <input
+            ref={importInputRef}
+            type="file"
+            accept="application/json,.json"
+            className="sr-only"
+            onChange={(event) => handleImportFile(event.target.files?.[0])}
+            aria-label="Import applications JSON"
+          />
+        </div>
+      </div>
+
+      {importMessage && (
+        <p className="mba-count-line" role="status">
+          {importMessage}
+        </p>
+      )}
+
+      <div className="mba-pipeline-layout">
+        <aside className="mba-rail" aria-label="Pipeline to-do">
+          <UpcomingInterviews applications={applications} todayKey={todayKey} onEdit={onEdit} />
+          <NeedsAttentionPanel
+            items={attentionItems}
+            onEdit={onEdit}
+            onMarkApplied={(id) => onStatusChange(id, "applied")}
+            onClearFollowUp={onClearFollowUp}
+          />
+        </aside>
+
+        <div className="mba-board-wrap">
+          {applications.length > 0 && <PipelineSignature insights={insights} />}
+          {applications.length === 0 ? (
+            <p className="mba-empty">
+              <strong>No applications tracked yet.</strong>
+              Track a role from the feed or add one by hand to start the pipeline. Everything here
+              stays in this browser.
+            </p>
+          ) : filteredApplications.length === 0 ? (
+            <p className="mba-empty">
+              <strong>No applications match.</strong>
+              Try a different search or status filter.
+            </p>
+          ) : (
+            <div className="mba-board" role="region" aria-label="Pipeline columns" tabIndex={0}>
+              {columns.map(({ status, applications: statusApplications }) => {
+                const columnLimit = columnLimits[status] ?? PIPELINE_COLUMN_PAGE_SIZE;
+                return (
+                  <div key={status} className="mba-column">
+                    <p className="mba-column-head">
+                      <span>{MBA_APPLICATION_STATUS_LABELS[status]}</span>
+                      <span className="mba-column-count">{statusApplications.length}</span>
+                    </p>
+                    {statusApplications.length === 0 ? (
+                      <p className="mba-column-empty">Nothing here.</p>
+                    ) : (
+                      statusApplications.slice(0, columnLimit).map((application) => (
+                        <ApplicationCard
+                          key={application.id}
+                          application={application}
+                          onStatusChange={(nextStatus) => onStatusChange(application.id, nextStatus)}
+                          onPriorityChange={(nextPriority) =>
+                            onPriorityChange(application.id, nextPriority)
+                          }
+                          onEdit={() => onEdit(application)}
+                          onArchive={() => onArchive(application.id)}
+                          onRemove={() => onRemove(application.id)}
+                        />
+                      ))
+                    )}
+                    {statusApplications.length > columnLimit && (
+                      <button
+                        type="button"
+                        className="c97-btn-ghost"
+                        onClick={() =>
+                          setColumnLimits((limits) => ({
+                            ...limits,
+                            [status]: (limits[status] ?? PIPELINE_COLUMN_PAGE_SIZE) + PIPELINE_COLUMN_PAGE_SIZE,
+                          }))
+                        }
+                      >
+                        Show more ({columnLimit} of {statusApplications.length}{" "}
+                        {MBA_APPLICATION_STATUS_LABELS[status].toLowerCase()})
+                      </button>
+                    )}
                   </div>
-                  {statusApplications.length === 0 ? (
-                    <div
-                      className="border border-dashed text-sm"
-                      style={{
-                        padding: "var(--c97-sp-2)",
-                        borderColor: "var(--c97-rule)",
-                        color: "var(--c97-ink-2)",
-                      }}
-                    >
-                      Nothing here.
-                    </div>
-                  ) : (
-                    statusApplications.slice(0, columnLimit).map((application) => (
-                      <ApplicationCard
-                        key={application.id}
-                        application={application}
-                        onStatusChange={(nextStatus) =>
-                          onStatusChange(application.id, nextStatus)
-                        }
-                        onPriorityChange={(nextPriority) =>
-                          onPriorityChange(application.id, nextPriority)
-                        }
-                        onEdit={() => onEdit(application)}
-                        onArchive={() => onArchive(application.id)}
-                        onRemove={() => onRemove(application.id)}
-                      />
-                    ))
-                  )}
-                  {statusApplications.length > columnLimit && (
-                    <button
-                      type="button"
-                      className="c97-btn-ghost"
-                      onClick={() =>
-                        setColumnLimits((limits) => ({
-                          ...limits,
-                          [status]: (limits[status] ?? PIPELINE_COLUMN_PAGE_SIZE) + PIPELINE_COLUMN_PAGE_SIZE,
-                        }))
-                      }
-                    >
-                      Show more ({columnLimit} of {statusApplications.length}{" "}
-                      {MBA_APPLICATION_STATUS_LABELS[status].toLowerCase()})
-                    </button>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-      </div>
-    </section>
-  );
-}
-
-/**
- * Which feeds answered. The counts stay in view and the per-feed list, one tag
- * for every board, opens on request. It prints inside a band its caller owns.
- */
-function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceStatus[] }) {
-  const okCount = sourceStatuses.filter((status) => status.status === "ok").length;
-  const failedCount = sourceStatuses.filter((status) => status.status === "failed").length;
-  const skippedCount = sourceStatuses.filter((status) => status.status === "skipped").length;
-  const externalDisabledCount = sourceStatuses.filter(
-    (status) => status.status === "external-disabled"
-  ).length;
-
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-      <SectionLead
-        kicker="Source health"
-        title="Know which feeds answered."
-        description="The tracker separates healthy feeds, failed requests, and manual-only sources so partial results are easier to trust."
-        id="mba-source-health-heading"
-      />
-      <div className="c97-panel">
-        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-          <span className="c97-chip">{okCount} healthy</span>
-          <span className="c97-chip">{failedCount} failed</span>
-          <span className="c97-chip">{skippedCount} manual-only</span>
-          {externalDisabledCount > 0 && (
-            <span className="c97-chip">{externalDisabledCount} external disabled</span>
+                );
+              })}
+            </div>
           )}
         </div>
-        <details className="c97-disclosure" style={{ marginTop: "var(--c97-sp-1)" }}>
-          <summary className="c97-btn-ghost">
-            <span data-when="closed">Show all {sourceStatuses.length} sources</span>
-            <span data-when="open">Hide the source list</span>
-          </summary>
-          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-            {sourceStatuses.map((source) => {
-              const accent =
-                source.status === "ok"
-                  ? "var(--c97-positive)"
-                  : source.status === "failed"
-                    ? "var(--c97-negative)"
-                    : source.status === "external-disabled"
-                      ? "var(--c97-warning)"
-                      : "var(--c97-ink-2)";
-              return (
-                <ColorTag
-                  key={`${source.companyId}-${source.status}`}
-                  accent={accent}
-                  title={source.message}
-                  label={`${source.companyName} · ${
-                    source.status === "ok" ? `${source.jobCount} roles` : source.status
-                  }`}
-                />
-              );
-            })}
-          </div>
-        </details>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -1932,7 +1662,6 @@ export function MBAJobsClient({
     useState<MBATrackedApplication | null>(null);
   const {
     applications,
-    activeApplications,
     getApplicationForJob,
     trackJob,
     addManualApplication,
@@ -2079,7 +1808,6 @@ export function MBAJobsClient({
   // page's error state instead, so it never prints as an empty name here.
   const failedBoards = fetchErrors.map((item) => item.companyName).filter(Boolean);
 
-  const hasApplications = applications.length > 0;
   const showSourceHealth = !isLoading && sourceStatuses.length > 0;
 
   function openApplicationDialog(application: MBATrackedApplication | null) {
@@ -2175,123 +1903,71 @@ export function MBAJobsClient({
   }
 
   return (
-    <>
-      {applicationDialogOpen && (
-        <ApplicationEditDialog
-          isOpen
-          application={editingApplication}
-          onClose={() => {
-            setApplicationDialogOpen(false);
-            setEditingApplication(null);
-          }}
-          onSave={handleSaveApplication}
-        />
-      )}
+    <div className="mba-root">
+      <div className="c97-shell c97-frame mba-page">
+        {applicationDialogOpen && (
+          <ApplicationEditDialog
+            isOpen
+            application={editingApplication}
+            onClose={() => {
+              setApplicationDialogOpen(false);
+              setEditingApplication(null);
+            }}
+            onSave={handleSaveApplication}
+          />
+        )}
 
-      <Catalog97ProjectHero
-        ink={PROJECT_PRESS[ROUTE].lead}
-        title="Job search"
-        // Two sentences, so the action under it still lands on a phone's first screen.
-        standfirst={
-          <>
-            I monitor {totalTracked} public job boards across {totalCompanies} target companies
-            for full-time business roles, from product and strategy to finance and MBA leadership
-            programs. Any role I track from the board lands in a pipeline that keeps its
-            follow-ups, interview rounds, and deadlines in view.
-          </>
-        }
-        meta={refreshLabel}
-        // One link into the view's working area, ahead of the figures.
-        action={
-          <a href={VIEW_ACTIONS[view].href} className="c97-btn-ghost">
-            {VIEW_ACTIONS[view].label}
-          </a>
-        }
-        // The two pipeline figures and the funnel are all zeros until a role
-        // is tracked, and on a phone they stood between the visitor and the
-        // search. They print once there is something to count.
-        readouts={
-          hasApplications
-            ? [
-                { label: "Live roles tracked", value: isLoading ? "—" : formatCount(liveRoleCount) },
-                { label: "Active applications", value: formatCount(activeApplications.length) },
-                { label: "Needs attention", value: formatCount(attentionItems.length) },
-              ]
-            : [{ label: "Live roles tracked", value: isLoading ? "—" : formatCount(liveRoleCount) }]
-        }
-      >
-        {hasApplications ? (
-          <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-4)" }}>
-            <div className="mba-signature-grid">
-              <PipelineSignature insights={applicationInsights} />
-              <NeedsAttentionPanel
-                items={attentionItems}
-                onEdit={openApplicationDialog}
-                onMarkApplied={(id) => updateStatus(id, "applied")}
-                onClearFollowUp={handleClearFollowUp}
-              />
+        <header className="mba-titlebar">
+          <div className="mba-title-row">
+            <h1 className="mba-h1">Job search</h1>
+            <div role="group" aria-label="Job tracker view" className="mba-switch">
+              {VIEW_OPTIONS.filter((option) => option !== "candidates" || candidates.enabled).map((option) => (
+                <button
+                  type="button"
+                  key={option}
+                  aria-pressed={view === option}
+                  onClick={() => updateRouteState({ view: option })}
+                >
+                  {VIEW_LABELS[option]}
+                </button>
+              ))}
             </div>
           </div>
-        ) : (
-          <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-            <p className="c97-kicker">Pipeline funnel</p>
-            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-              Track a role below to start filling this in.
+          <div className="mba-title-sub">
+            <p className="mba-lede">
+              I poll {totalTracked} public job boards across {totalCompanies} target companies for
+              full-time business roles, and anything I track moves into a pipeline that keeps its
+              follow-ups, interviews, and deadlines in this browser.
             </p>
-          </div>
-        )}
-      </Catalog97ProjectHero>
-
-      {/* Bone, because the band under it is paper in both views now that
-          source health prints after the results. */}
-      <section className="c97-band c97-band-tight c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-4)" }}>
-          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
-            <button
-              type="button"
-              onClick={refresh}
-              disabled={isLoading}
-              className="c97-btn-ghost mba-ghost"
-            >
-              <RefreshCcw
-                className={`h-4 w-4 ${isLoading ? "motion-safe:animate-spin" : ""}`}
-                aria-hidden="true"
-              />
-              {isLoading ? "Loading…" : "Refresh now"}
-            </button>
-
-            <NotificationBell
-              permission={notificationPermission}
-              onRequest={requestNotificationPermission}
-            />
-
-            {countsReady && newJobCount > 0 && (
-              <>
-                <button type="button" onClick={markAllSeen} className="c97-btn-ghost mba-ghost">
-                  Mark all seen
-                </button>
-                <p className="c97-meta" style={{ margin: 0 }}>
-                  {formatCount(newJobCount)} new since last visit
-                </p>
-              </>
-            )}
-          </div>
-
-          <div role="group" aria-label="Job tracker view" className="c97-segmented">
-            {VIEW_OPTIONS.filter((option) => option !== "candidates" || candidates.enabled).map((option) => (
-              <button
-                type="button"
-                key={option}
-                aria-pressed={view === option}
-                onClick={() => updateRouteState({ view: option })}
-                style={{ minHeight: 44 }}
-              >
-                {VIEW_LABELS[option]}
+            <div className="mba-status">
+              <p className="mba-stat">
+                <span className="mba-stat-value">{isLoading ? "—" : formatCount(liveRoleCount)}</span>
+                <span className="mba-stat-label">Live roles tracked</span>
+              </p>
+              <p className="mba-stat-label">{refreshLabel}</p>
+              <button type="button" onClick={refresh} disabled={isLoading} className="c97-btn-ghost">
+                <RefreshCcw
+                  className={`h-4 w-4 ${isLoading ? "motion-safe:animate-spin" : ""}`}
+                  aria-hidden="true"
+                />
+                {isLoading ? "Loading…" : "Refresh"}
               </button>
-            ))}
+              <NotificationBell
+                permission={notificationPermission}
+                onRequest={requestNotificationPermission}
+              />
+              {countsReady && newJobCount > 0 && (
+                <>
+                  <p className="mba-stat-label">{formatCount(newJobCount)} new since last visit</p>
+                  <button type="button" onClick={markAllSeen} className="c97-btn-ghost">
+                    Mark all seen
+                  </button>
+                </>
+              )}
+            </div>
           </div>
           {privateSync && view === "applications" && (
-            <p className="c97-meta" style={{ margin: 0 }} role="status">
+            <p className="mba-small" role="status">
               {privateSync.error
                 ? `The private sync hit a problem. ${privateSync.error}`
                 : privateSync.lastSyncedAt
@@ -2299,24 +1975,24 @@ export function MBAJobsClient({
                   : "Syncing with private/job-search/pipeline.json, no pull has finished yet."}
             </p>
           )}
-        </div>
-      </section>
+        </header>
 
-      {view === "candidates" ? (
-        <CandidatesView
-          candidates={candidates.candidates}
-          onPromote={(candidate) => {
-            const tracked = trackJob(candidate.job);
-            if (tracked && candidate.fit) updateApplication(tracked.id, { fit: candidate.fit });
-            candidates.removeCandidate(candidate.id);
-          }}
-          onDismiss={(id) => candidates.setTriage(id, "dismissed")}
-          onRestore={(id) => candidates.setTriage(id, "reviewed")}
-        />
-      ) : view === "applications" ? (
-        <>
+        {view === "candidates" ? (
+          <CandidatesView
+            candidates={candidates.candidates}
+            onPromote={(candidate) => {
+              const tracked = trackJob(candidate.job);
+              if (tracked && candidate.fit) updateApplication(tracked.id, { fit: candidate.fit });
+              candidates.removeCandidate(candidate.id);
+            }}
+            onDismiss={(id) => candidates.setTriage(id, "dismissed")}
+            onRestore={(id) => candidates.setTriage(id, "reviewed")}
+          />
+        ) : view === "applications" ? (
           <ApplicationPipeline
             applications={applications}
+            insights={applicationInsights}
+            attentionItems={attentionItems}
             todayKey={now === null ? null : applicationTodayKey}
             onCreate={() => openApplicationDialog(null)}
             onEdit={openApplicationDialog}
@@ -2324,314 +2000,228 @@ export function MBAJobsClient({
             onPriorityChange={updatePriority}
             onArchive={archiveApplication}
             onRemove={removeApplication}
+            onClearFollowUp={handleClearFollowUp}
             onExportJson={handleExportJson}
             onExportCsv={handleExportCsv}
             onImport={importApplications}
           />
-          {showSourceHealth && (
-            <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-source-health-heading">
-              <div className="c97-shell">
-                <SourceHealthPanel sourceStatuses={sourceStatuses} />
-              </div>
-            </section>
-          )}
-        </>
-      ) : (
-        <>
-
-          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-filters-heading">
-            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-              {failedBoards.length > 0 && !isLoading && (
-                <div
-                  className="c97-panel"
-                  role="status"
-                  style={{ borderLeft: "2px solid var(--c97-warning)" }}
-                >
-                  <span className="c97-chip c97-chip-warning">Partial results</span>
-                  <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink)" }}>
-                    Some companies could not be reached:{" "}
-                    {failedBoards.join(", ")}. Results shown are partial.
-                  </p>
-                </div>
-              )}
-            <SectionLead
-              kicker="Filters"
-              title="Search and narrow the board."
-              description="Search roles, narrow by location, sort the feed, and filter by role type, role family, and company category without leaving the page."
-              id="mba-role-tracker-filters-heading"
-            />
-            <div
-              className="c97-panel"
-            >
-              <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
-                <div className="grid xl:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)_auto] xl:items-center"
-                  style={{ gap: "var(--c97-sp-2)" }}>
-                  <div className="relative">
-                    <Search
-                      className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                      style={{ color: "var(--c97-ink-2)" }}
-                      aria-hidden="true"
-                    />
-                    <input
-                      ref={searchInputRef}
-                      type="text"
-                      value={uiState.q}
-                      onChange={(event) => updateRouteState({ q: event.target.value })}
-                      placeholder="Search PM, PMM, strategy, ops, growth, finance…"
-                      aria-label="Search roles"
-                      className="c97-field"
-                      style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                    />
-                    {uiState.q && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          updateRouteState({ q: "" });
-                          searchInputRef.current?.focus();
-                        }}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center"
-                        aria-label="Clear search"
-                        style={{ color: "var(--c97-ink-2)" }}
-                      >
-                        <X className="h-4 w-4" aria-hidden="true" />
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="relative">
-                    <MapPin
-                      className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                      style={{ color: "var(--c97-ink-2)" }}
-                      aria-hidden="true"
-                    />
-                    <input
-                      ref={locationInputRef}
-                      type="text"
-                      value={uiState.location}
-                      onChange={(event) => updateRouteState({ location: event.target.value })}
-                      placeholder="Remote, New York, San Francisco…"
-                      aria-label="Filter by location"
-                      className="c97-field"
-                      style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
-                    />
-                    {uiState.location && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          updateRouteState({ location: "" });
-                          locationInputRef.current?.focus();
-                        }}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center"
-                        aria-label="Clear location filter"
-                        style={{ color: "var(--c97-ink-2)" }}
-                      >
-                        <X className="h-4 w-4" aria-hidden="true" />
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                    <SortDropdown
-                      value={uiState.sort}
-                      onValueChange={(sort) => updateRouteState({ sort })}
-                    />
-                    {activeFilters && (
-                      <button
-                        type="button"
-                        onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
-                        className="c97-btn-ghost"
-                      >
-                        Clear filters
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                {/* On a phone these five groups stack between the search field
-                    and the first role. Below 768px they open on request, and
-                    from there up they always print. The tags under them still
-                    name every filter in force. */}
-                <button
-                  type="button"
-                  className="mba-disclosure flex min-h-[44px] w-full items-center justify-between text-left md:hidden"
-                  style={{ gap: "var(--c97-sp-2)", color: "var(--c97-ink)" }}
-                  aria-expanded={showRefinements}
-                  aria-controls="mba-role-refinements"
-                  onClick={() => setShowRefinements((open) => !open)}
-                >
-                  <span className="c97-meta" style={{ display: "block" }}>
-                    {`${showRefinements ? "Hide" : "Show"} location, role, company, and source filters`}
-                  </span>
-                  <ChevronDown
-                    className={`h-4 w-4 shrink-0 transition-transform duration-150 ${
-                      showRefinements ? "rotate-180" : ""
-                    }`}
-                    aria-hidden="true"
+        ) : (
+          <>
+            <section className="mba-feed" aria-labelledby="mba-live-roles-heading">
+              <div className="mba-searchbar">
+                <div className="mba-input">
+                  <Search className="mba-input-icon" aria-hidden="true" />
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    value={uiState.q}
+                    onChange={(event) => updateRouteState({ q: event.target.value })}
+                    placeholder="Search PM, PMM, strategy, ops, growth, finance…"
+                    aria-label="Search roles"
+                    className="c97-field"
                   />
-                </button>
-                <div
-                  id="mba-role-refinements"
-                  className={`flex-col gap-[var(--c97-sp-3)] md:flex ${showRefinements ? "flex" : "hidden"}`}
-                >
-                  {locationOptions.length > 0 && (
-                    <div
-                      className="border"
-                      style={{
-                        padding: "var(--c97-sp-2)",
-                        borderColor: "var(--c97-rule)",
-                        background: "var(--c97-field)",
+                  {uiState.q && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateRouteState({ q: "" });
+                        searchInputRef.current?.focus();
                       }}
+                      className="mba-input-clear"
+                      aria-label="Clear search"
                     >
-                      <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                        <p className="c97-meta">Popular locations</p>
-                        <p
-                          className="text-1xs"
-                          style={{ margin: 0, color: "var(--c97-ink-2)" }}
-                        >
-                          {matchingRoleCount} roles before location filtering
-                        </p>
-                      </div>
-                      <div
-                        className="c97-segmented"
-                        role="group"
-                        aria-label="Suggested locations"
-                        style={{ marginTop: "var(--c97-sp-2)" }}
+                      <X className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  )}
+                </div>
+
+                <div className="mba-input">
+                  <MapPin className="mba-input-icon" aria-hidden="true" />
+                  <input
+                    ref={locationInputRef}
+                    type="text"
+                    value={uiState.location}
+                    onChange={(event) => updateRouteState({ location: event.target.value })}
+                    placeholder="Remote, New York, San Francisco…"
+                    aria-label="Filter by location"
+                    className="c97-field"
+                  />
+                  {uiState.location && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateRouteState({ location: "" });
+                        locationInputRef.current?.focus();
+                      }}
+                      className="mba-input-clear"
+                      aria-label="Clear location filter"
+                    >
+                      <X className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  )}
+                </div>
+
+                <div className="mba-searchbar-end">
+                  <SortDropdown value={uiState.sort} onValueChange={(sort) => updateRouteState({ sort })} />
+                  {activeFilters && (
+                    <button
+                      type="button"
+                      onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
+                      className="c97-btn-ghost"
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* On a phone these groups stack between the search field and
+                  the first role, so below 768px they open on request, and from
+                  there up they always print. The tags above the list still name
+                  every filter in force. */}
+              <button
+                type="button"
+                className="mba-disclosure mba-refine-toggle"
+                aria-expanded={showRefinements}
+                aria-controls="mba-role-refinements"
+                onClick={() => setShowRefinements((open) => !open)}
+              >
+                <span>
+                  {`${showRefinements ? "Hide" : "Show"} location, role, company, and source filters`}
+                </span>
+                <ChevronDown className="mba-chevron" aria-hidden="true" />
+              </button>
+              <div
+                id="mba-role-refinements"
+                className={`mba-refine md:flex ${showRefinements ? "flex" : "hidden"}`}
+              >
+                {locationOptions.length > 0 && (
+                  <div className="mba-refine-row">
+                    <p className="mba-refine-label">
+                      Location
+                      <span className="mba-small">
+                        {formatCount(matchingRoleCount)} roles before location filtering
+                      </span>
+                    </p>
+                    <div className="mba-pills" role="group" aria-label="Suggested locations">
+                      <button
+                        type="button"
+                        aria-pressed={uiState.location.trim().length === 0}
+                        onClick={() => updateRouteState({ location: "" })}
                       >
+                        All locations
+                      </button>
+                      {locationOptions.map((option) => (
                         <button
                           type="button"
-                          aria-pressed={uiState.location.trim().length === 0}
-                          onClick={() => updateRouteState({ location: "" })}
-                          style={{ minHeight: 44 }}
+                          key={option.normalizedValue}
+                          aria-pressed={normalizedLocationFilter === option.normalizedValue}
+                          onClick={() => updateRouteState({ location: option.label })}
                         >
-                          All locations
+                          {option.label} · {option.count}
                         </button>
-                        {locationOptions.map((option) => (
-                          <button
-                            type="button"
-                            key={option.normalizedValue}
-                            aria-pressed={normalizedLocationFilter === option.normalizedValue}
-                            onClick={() => updateRouteState({ location: option.label })}
-                            style={{ minHeight: 44 }}
-                          >
-                            {option.label} · {option.count}
-                          </button>
-                        ))}
-                      </div>
+                      ))}
                     </div>
-                  )}
+                  </div>
+                )}
 
-                  <div
-                    className="border-t border-[var(--c97-rule)]"
-                    style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)" }}
-                  >
-                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                      <p className="c97-meta">Role type</p>
-                      <div className="c97-segmented" role="group" aria-label="Filter by role type">
-                        {ROLE_TYPE_OPTIONS.map((roleType) => (
-                          <button
-                            type="button"
-                            key={roleType}
-                            aria-pressed={uiState.roleType === roleType}
-                            onClick={() =>
-                              updateRouteState({ roleType: roleType as MBARoleTypeFilter })
-                            }
-                            style={{ minHeight: 44 }}
-                          >
-                            {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                      <p className="c97-meta">Role family</p>
-                      <div
-                        className="c97-segmented"
-                        role="group"
-                        aria-label="Filter by role family"
+                <div className="mba-refine-row">
+                  <p className="mba-refine-label">Role type</p>
+                  <div className="mba-pills" role="group" aria-label="Filter by role type">
+                    {ROLE_TYPE_OPTIONS.map((roleType) => (
+                      <button
+                        type="button"
+                        key={roleType}
+                        aria-pressed={uiState.roleType === roleType}
+                        onClick={() => updateRouteState({ roleType: roleType as MBARoleTypeFilter })}
                       >
-                        {ROLE_FAMILY_OPTIONS.map((family) => (
-                          <button
-                            type="button"
-                            key={family}
-                            aria-pressed={uiState.roleFamily === family}
-                            onClick={() =>
-                              updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
-                            }
-                            style={{ minHeight: 44 }}
-                          >
-                            {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                      <p className="c97-meta">Company category</p>
-                      <div
-                        className="c97-segmented"
-                        role="group"
-                        aria-label="Filter by company category"
-                      >
-                        {CATEGORY_OPTIONS.map((category) => (
-                          <button
-                            type="button"
-                            key={category}
-                            aria-pressed={uiState.category === category}
-                            onClick={() =>
-                              updateRouteState({ category: category as MBACategoryFilter })
-                            }
-                            style={{ minHeight: 44 }}
-                          >
-                            {CATEGORY_LABELS[category as MBACategoryFilter]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                      <p className="c97-meta">Sources</p>
-                      <div className="c97-segmented" role="group" aria-label="External lead sources">
-                        {(["off", "on"] as const).map((external) => (
-                          <button
-                            type="button"
-                            key={external}
-                            aria-pressed={uiState.external === external}
-                            onClick={() => updateRouteState({ external })}
-                            style={{ minHeight: 44 }}
-                          >
-                            {EXTERNAL_LABELS[external]}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                        {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
+                <div className="mba-refine-row">
+                  <p className="mba-refine-label">Role family</p>
+                  <div className="mba-pills" role="group" aria-label="Filter by role family">
+                    {ROLE_FAMILY_OPTIONS.map((family) => (
+                      <button
+                        type="button"
+                        key={family}
+                        aria-pressed={uiState.roleFamily === family}
+                        onClick={() => updateRouteState({ roleFamily: family as MBARoleFamilyFilter })}
+                      >
+                        {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mba-refine-row">
+                  <p className="mba-refine-label">Company category</p>
+                  <div className="mba-pills" role="group" aria-label="Filter by company category">
+                    {CATEGORY_OPTIONS.map((category) => (
+                      <button
+                        type="button"
+                        key={category}
+                        aria-pressed={uiState.category === category}
+                        onClick={() => updateRouteState({ category: category as MBACategoryFilter })}
+                      >
+                        {CATEGORY_LABELS[category as MBACategoryFilter]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mba-refine-row">
+                  <p className="mba-refine-label">Sources</p>
+                  <div className="mba-pills" role="group" aria-label="External lead sources">
+                    {(["off", "on"] as const).map((external) => (
+                      <button
+                        type="button"
+                        key={external}
+                        aria-pressed={uiState.external === external}
+                        onClick={() => updateRouteState({ external })}
+                      >
+                        {EXTERNAL_LABELS[external]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {failedBoards.length > 0 && !isLoading && (
+                <p className="mba-notice" role="status">
+                  <span className="mba-notice-tag">Partial results.</span>
+                  <span>
+                    Some companies could not be reached: {failedBoards.join(", ")}. Results shown
+                    are partial.
+                  </span>
+                </p>
+              )}
+
+              <div className="mba-results-head">
+                <h2 id="mba-live-roles-heading" className="mba-h2">
+                  Live roles
+                </h2>
+                {countsReady && (
+                  <p className="mba-count-line" role="status" aria-live="polite" aria-atomic="true">
+                    {formatCount(displayJobs.length)} matching roles
+                    {uiState.external === "on" ? `, ${formatCount(externalLeadCount)} external leads` : ""}
+                  </p>
+                )}
                 {activeFilters && (
-                  <div className="flex flex-wrap items-center border-t border-[var(--c97-rule)]"
-                    style={{ gap: "var(--c97-sp-1)", paddingTop: "var(--c97-sp-3)" }}>
+                  <div className="mba-tags flex-wrap">
                     {uiState.q.trim() && (
                       <ColorTag accent="var(--c97-ink)" label={`Search: ${uiState.q.trim()}`} />
                     )}
                     {uiState.location.trim() && (
-                      <ColorTag
-                        accent="var(--c97-ink-2)"
-                        label={`Location: ${uiState.location.trim()}`}
-                      />
+                      <ColorTag accent="var(--c97-ink-2)" label={`Location: ${uiState.location.trim()}`} />
                     )}
                     {uiState.roleType !== DEFAULT_MBA_JOBS_STATE.roleType && (
                       <ColorTag
-                        accent={
-                          uiState.roleType === "all"
-                            ? "var(--c97-ink-2)"
-                            : ROLE_TYPE_ACCENTS[uiState.roleType]
-                        }
-                        label={
-                          uiState.roleType === "all"
-                            ? "All role types"
-                            : ROLE_TYPE_LABELS[uiState.roleType]
-                        }
+                        accent={uiState.roleType === "all" ? "var(--c97-ink-2)" : ROLE_TYPE_ACCENTS[uiState.roleType]}
+                        label={uiState.roleType === "all" ? "All role types" : ROLE_TYPE_LABELS[uiState.roleType]}
                       />
                     )}
                     {uiState.roleFamily !== "all" && (
@@ -2641,10 +2231,7 @@ export function MBAJobsClient({
                       />
                     )}
                     {uiState.category !== "all" && (
-                      <ColorTag
-                        accent={CATEGORY_COLOR[uiState.category]}
-                        label={CATEGORY_LABELS[uiState.category]}
-                      />
+                      <ColorTag accent={CATEGORY_COLOR[uiState.category]} label={CATEGORY_LABELS[uiState.category]} />
                     )}
                     {uiState.sort !== DEFAULT_MBA_JOBS_STATE.sort && (
                       <ColorTag accent="var(--c97-ink-2)" label={SORT_LABELS[uiState.sort]} />
@@ -2655,70 +2242,28 @@ export function MBAJobsClient({
                   </div>
                 )}
               </div>
-            </div>
-            </div>
-          </section>
 
-          <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-role-tracker-roles-heading">
-            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-            <SectionLead
-              kicker="Live roles"
-              title="Current openings across the tracked boards."
-              description="This is the fastest way I have found to scan full-time business roles without bouncing across dozens of career pages."
-              id="mba-role-tracker-roles-heading"
-            />
-            {countsReady && (
-              <div
-                className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                <span className="c97-chip">{formatCount(displayJobs.length)} matching roles</span>
-                <span className="c97-chip">{watchedCompanyIds.size} watched feeds active</span>
-                {uiState.external === "on" && (
-                  <span className="c97-chip">{formatCount(externalLeadCount)} external leads</span>
-                )}
-                {uiState.location.trim() && (
-                  <span className="c97-chip">{formatCount(matchingRoleCount)} before location filter</span>
-                )}
-                {uiState.location.trim() && (
-                  <span className="c97-chip">
-                    Location: {uiState.location.trim()}
-                  </span>
-                )}
-              </div>
-            )}
-            {isLoading ? (
-              <JobGridSkeleton />
-            ) : error ? (
-              <>
-                <StatusPanel
-                  title="Could not load jobs."
-                  message={error}
-                  tone="error"
-                  icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
-                />
-                <div className="flex justify-center">
-                  <button type="button" onClick={refresh} className="c97-btn-ghost mba-ghost">
-                    <RefreshCcw className="h-4 w-4" aria-hidden="true" />
-                    Try again
-                  </button>
+              {isLoading ? (
+                <JobGridSkeleton />
+              ) : error ? (
+                <div className="mba-empty" role="alert">
+                  <strong>Could not load jobs.</strong>
+                  <span>{error}</span>
+                  <div>
+                    <button type="button" onClick={refresh} className="c97-btn-ghost">
+                      <RefreshCcw className="h-4 w-4" aria-hidden="true" />
+                      Try again
+                    </button>
+                  </div>
                 </div>
-              </>
-            ) : displayJobs.length === 0 ? (
-              <StatusPanel
-                title="No roles found right now."
-                message="No tracked postings matched the current search, location, or role filters. Try broadening the role family, switching role type, or clearing the filters."
-                icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
-              />
-            ) : (
-              <>
-                <div
-                  className="grid md:grid-cols-2 xl:grid-cols-3"
-      style={{ gap: "var(--c97-sp-3)" }}
-                  data-testid="live-jobs-grid"
-                >
+              ) : displayJobs.length === 0 ? (
+                <p className="mba-empty">
+                  <strong>No roles found right now.</strong>
+                  No tracked postings matched the current search, location, or role filters. Try
+                  broadening the role family, switching role type, or clearing the filters.
+                </p>
+              ) : (
+                <div className="mba-jobs" data-testid="live-jobs-grid">
                   {visibleJobs.map((job) => {
                     const application = getApplicationForJob(job);
                     return (
@@ -2740,8 +2285,11 @@ export function MBAJobsClient({
                     );
                   })}
                 </div>
-                {displayJobs.length > visibleJobs.length && (
-                  <div className="flex justify-center" style={{ marginTop: "var(--c97-sp-4)" }}>
+              )}
+
+              {!isLoading && !error && (
+                <div className="mba-more">
+                  {displayJobs.length > visibleJobs.length && (
                     <button
                       type="button"
                       className="c97-btn"
@@ -2749,77 +2297,52 @@ export function MBAJobsClient({
                     >
                       Show more ({formatCount(visibleJobs.length)} of {formatCount(displayJobs.length)} shown)
                     </button>
-                  </div>
-                )}
-              </>
-            )}
-            {!isLoading && !error && (
-              <p className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
-                {hasFetched
-                  ? `${formatCount(visibleJobs.length)} of ${formatCount(displayJobs.length)} role${displayJobs.length !== 1 ? "s" : ""} shown · `
-                  : ""}
-                {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
-                {showSourceHealth && (
-                  <>
-                    {" · "}
-                    <a href="#mba-source-health-heading" className="c97-link">
-                      Source health
-                    </a>
-                  </>
-                )}
-              </p>
-            )}
-            </div>
-          </section>
-
-          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-companies-heading">
-            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-            <SectionLead
-              kicker="Tracked companies"
-              title="Choose which live feeds stay in view."
-              description="Toggle the companies I can poll directly. Manual-only targets stay separate in Manual checks below."
-              id="mba-role-tracker-companies-heading"
-            />
-            <CompanyFilterStrip
-              watchedIds={watchedCompanyIds}
-              onToggle={toggleCompany}
-              onSelectAll={() => setAllCompanies(true)}
-              onClearAll={() => setAllCompanies(false)}
-            />
-            {showSourceHealth && (
-              <div style={{ marginTop: "var(--c97-sp-4)" }}>
-                <SourceHealthPanel sourceStatuses={sourceStatuses} />
-              </div>
-            )}
-            </div>
-          </section>
-
-          <SearchElsewhereStrip currentState={uiState} />
-
-          {manualCompanies.length > 0 && (
-            <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-manual-heading">
-              <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-              <SectionLead
-                kicker="Manual checks"
-                title="Fallback paths for companies without stable public feeds."
-                description="These LinkedIn and career page shortcuts carry the current role filters, so I can still move quickly when a direct feed is unavailable."
-                id="mba-role-tracker-manual-heading"
-              />
-              <div
-                className="grid md:grid-cols-2 xl:grid-cols-3"
-      style={{ gap: "var(--c97-sp-3)" }}
-                data-testid="manual-checks-grid"
-              >
-                {manualCompanies.map((c) => (
-                  <ManualCompanyCard key={c.id} company={c} currentState={uiState} />
-                ))}
-              </div>
-              </div>
+                  )}
+                  <p className="mba-foot">
+                    Polls every 30 min
+                    {showSourceHealth && (
+                      <>
+                        {" · "}
+                        <a href="#mba-source-health-heading" className="mba-link">
+                          Source health
+                        </a>
+                      </>
+                    )}
+                  </p>
+                </div>
+              )}
             </section>
-          )}
 
-        </>
-      )}
-    </>
+            <section className="mba-sources" aria-labelledby="mba-sources-heading">
+              <h2 id="mba-sources-heading" className="mba-h2">
+                Sources
+              </h2>
+              <section className="mba-source-block" aria-labelledby="mba-role-tracker-companies-heading">
+                <h3 id="mba-role-tracker-companies-heading" className="mba-h3">
+                  Tracked feeds
+                </h3>
+                <p>
+                  Toggle the companies I can poll directly. Manual-only targets stay separate in
+                  Manual checks below.
+                </p>
+                <CompanyFilterStrip
+                  watchedIds={watchedCompanyIds}
+                  onToggle={toggleCompany}
+                  onSelectAll={() => setAllCompanies(true)}
+                  onClearAll={() => setAllCompanies(false)}
+                />
+              </section>
+              <div className="mba-sources-pair">
+                {showSourceHealth && <SourceHealthPanel sourceStatuses={sourceStatuses} />}
+                <SearchElsewhere currentState={uiState} />
+              </div>
+              {manualCompanies.length > 0 && (
+                <ManualChecks companies={manualCompanies} currentState={uiState} />
+              )}
+            </section>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
