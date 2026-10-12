@@ -3,7 +3,7 @@ import { pollingSnapshot } from "@/data/pollingSnapshot";
 import { getPollingSnapshot } from "@/lib/pollingSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { PollingAggregatorClient } from "./polling-aggregator-client";
-import { describeStaleSource, isStalePollDate, newestPollDate } from "./polling-aggregator-helpers";
+import { describeStaleSource, newestPollDate } from "./polling-aggregator-helpers";
 import { normalizePollingState } from "./polling-aggregator-state";
 
 export const metadata = constructMetadata({
@@ -11,7 +11,8 @@ export const metadata = constructMetadata({
   description:
     "Interactive polling dashboard using VoteHub data for presidential approval, the 2026 generic congressional ballot, and the 2026 Senate and governor races.",
   canonicalUrl: "/polling-aggregator",
-  dateModified: pollingSnapshot.generatedAt.slice(0, 10),
+  // The later of the redesign and the committed seed, which a daily job refreshes.
+  dateModified: [pollingSnapshot.generatedAt.slice(0, 10), "2026-10-12"].sort()[1],
 });
 
 interface PollingPageProps {
@@ -27,11 +28,6 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
   const approvalDate = newestPollDate(snapshot.approvalPolls);
   const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
   const staleSourceNote = describeStaleSource(approvalDate, genericBallotDate);
-  // The same 14-day rule as the note, kept per series so each average can carry its own.
-  const staleSeries = {
-    approval: isStalePollDate(approvalDate),
-    genericBallot: isStalePollDate(genericBallotDate),
-  };
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Polling Aggregator", url: "/polling-aggregator" },
@@ -60,7 +56,7 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
             "Generic congressional ballot average",
             "Senate and governor race averages by state",
             "VoteHub source attribution and field-date freshness",
-            "Deep-linkable overview, approval, Senate, and governor views",
+            "Deep-linkable Senate, governor, and approval poll views",
           ],
         }}
       />
@@ -68,7 +64,6 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
         initialState={initialState}
         snapshot={snapshot}
         staleSourceNote={staleSourceNote}
-        staleSeries={staleSeries}
       />
     </>
   );

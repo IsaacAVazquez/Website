@@ -4,24 +4,20 @@ import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const POLLING_ROUTE = "/polling-aggregator";
 
-export const POLLING_VIEW_OPTIONS = [
-  "overview",
-  "approval",
-  "senate",
-  "governors",
-] as const;
+// The race tables lead, then the national approval and ballot polls. The old
+// Overview view is gone, so ?view=overview falls back to the default.
+export const POLLING_VIEW_OPTIONS = ["senate", "governors", "approval"] as const;
 
 export const POLLING_VIEW_LABELS: Record<PollingView, string> = {
-  overview: "Overview",
-  approval: "Approval",
   senate: "Senate",
   governors: "Governors",
+  approval: "Approval",
 };
 
 const VALID_VIEWS = new Set<PollingView>(POLLING_VIEW_OPTIONS);
 
 export const DEFAULT_POLLING_STATE: PollingRouteState = {
-  view: "overview",
+  view: "senate",
   race: null,
 };
 

@@ -79,7 +79,12 @@ test.describe("Product surfaces", () => {
     page,
   }) => {
     await expectHealthyRoute(page, "/polling-aggregator?view=senate", /Polling Aggregator/i);
-    await expect(page).toHaveURL(/view=senate/);
+    // Senate is the default view since the 2026-10-12 redesign, so the page
+    // drops view=senate from the URL and the pressed tab carries the state.
+    await expect(page.getByRole("button", { name: "Senate", exact: true })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
     await expect(page.getByRole("heading", { level: 3, name: /Senate races/i })).toBeVisible();
     await expect(page.getByRole("table", { name: /Senate race averages/i })).toBeVisible();
     await expectNoHorizontalOverflow(page);
