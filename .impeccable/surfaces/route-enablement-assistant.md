@@ -1,0 +1,26 @@
+---
+version: 1
+slug: "route-enablement-assistant"
+primary_target: "route:/enablement-assistant"
+related_targets: ["src/app/enablement-assistant/page.tsx","src/app/enablement-assistant/enablement-assistant-client.tsx","src/app/enablement-assistant/enablement.css","src/app/enablement-assistant/enablement-engine.ts","src/app/enablement-assistant/enablement-data.ts"]
+---
+
+## Redesign, 2026-10-12 (project-sovereign stage 2, Console archetype)
+
+This is the first brief for the route, written when it took its own design inside the site frame (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, G8).
+
+The genre is an internal platform dashboard, the kind a Backstage or Datadog service catalog is, so the page is a compact title bar, a team table with the program's summary as its header row, a ranked failure log, and per-team cards, with the team intake as a stepper beside its results.
+
+What the page is now. The client root is `.ea-root`, which paints its own surface with `--ea-*` properties (a cool grey with white cards in light, a blue-black in dark) and redeclares the `--c97-*` tokens the borrowed `c97-btn`, `c97-btn-ghost`, `c97-field`, and `c97-chip` classes read, so the primary action and the focus ring are the route's blue. Archivo is the face throughout, with Fragment Mono for figures and snippets, and no typeface was added. Inside a `c97-shell c97-frame` column the title bar is a `section` holding the h1 "Automation Enablement Assistant", the fused "Enablement workspace views" switch, the view's own status line ("Portfolio view · 12 seeded teams" or "Team view · 3 intake steps"), one orienting sentence, and the model boundary note on one line, word for word.
+
+The program view opens on "See where the standard is holding" with its Onboard a team button, then the four program figures as the table's header row (label above value, which the route test reads), the twelve-team table in its scroll region, and the seed-data disclosure word for word under it. Below that, from 1100px, the ranked failure log with its meters sits beside "Where teams are leaving the shared path", where each drifting team is a card, since the card is that team's own record.
+
+The team view is a stepper down the left at 21rem from 1000px (the heading, Reset intake, the three steps as a vertical list with a check on finished steps, the current step's fieldsets as ruled option lists, and Back and Continue), with the right side holding a teaching line until the recommendation is built and then the recommendation pair, the plan, the troubleshooting desk, and the handoff when one is needed.
+
+Cut, and not to be restored. The poster hero sheet and the model boundary panel (the note itself stays), the four stat cards as their own band, the kicker, poster headline, and description openers, the blue and bone sheets and their seams, the panel boxes around every fieldset, the boxed troubleshooting answer and its large question-mark empty state, the plan's separate band, the handoff's blue sheet, and the two-column drift grid that left one card alone on a row.
+
+Pinned and kept. Every heading the tests and e2e name ("See where the standard is holding", "The failure log becomes the documentation roadmap.", "Start with the team that needs help", "A recommendation you can inspect", both plan headings, "Ask a setup or integration question", "Give the central team the context up front."), the regions those headings label, `#recommendation`, `#plan`, `#troubleshooting`, `#handoff`, `#workspace`, the progressbars and their names, the "Standard adoption by team" region with its row headers, the `c97-chip-positive`, `-warning`, and `-negative` classes on adoption status, "Current stack · " on each drift card, the intake radios and checkboxes by name, "Intake progress" with `aria-current="step"` and the check marks, "Continue", "Back", "Build recommendation", "Copy full plan", the copy statuses, "Human review needed" as the section's only status, "Show the score ledger" open on the top pick, "Outside scope", "Find an answer", "Matched terms · ", and both copy-failure messages. The title bar stayed a `section` so the route test that looks for the switch inside the opening section still passes, and no test changed.
+
+Verified state on 2026-10-12, production build. At 1440x900 the first table row is at y590 (before, y3104) and the first failure-log meter at y1441 (before, y1907). At 390x844 the first table row is at y1021 (before, y3436), inside the 1266 budget. `scripts/contrastSweep.mjs` found no failures in either theme and `scripts/layoutSweep.mjs` reported 0 fails, with the scroll-margin reviews being the anchors' deliberate 12px. Route Jest and the e2e specs naming the route passed against dev and production. A keyboard walk reached the view switch seven tabs after the header, Enter opened the team view, and Enter and Space through Continue, Continue, and Build recommendation showed `#recommendation`. Reduced motion left nothing moving, and a Chromium print came out as the title bar, the summary row, and the table.
+
+Not checked. Safari's and Firefox's engines, a screen reader, and touch devices.
