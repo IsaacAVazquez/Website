@@ -131,7 +131,7 @@ describe("GitHubTrendingClient", () => {
     );
   });
 
-  it("prints the filters ahead of the star log they redraw", () => {
+  it("prints the filters ahead of the list they redraw", () => {
     render(
       <GitHubTrendingClient
         initialState={DEFAULT_GITHUB_TRENDING_STATE}
@@ -139,10 +139,11 @@ describe("GitHubTrendingClient", () => {
       />
     );
 
+    // The star log and the table are one list now, with the gain drawn in each row.
     const filters = screen.getByRole("region", { name: "GitHub trending filters" });
-    const starLog = screen.getByRole("list", { name: /weekly star movement/i });
+    const list = screen.getByRole("region", { name: /repository table/i });
     expect(
-      filters.compareDocumentPosition(starLog) & Node.DOCUMENT_POSITION_FOLLOWING
+      filters.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING
     ).toBeTruthy();
   });
 
@@ -201,9 +202,10 @@ describe("GitHubTrendingClient", () => {
       />
     );
 
+    // The language strip's caption replaced the "Leading language" readout.
     expect(
       screen.getByText(
-        "100% of the stars the 1 tracked repos gained over the past week"
+        "TypeScript has 100% of this week's star gain across the 1 repository in this view."
       )
     ).toBeVisible();
   });
