@@ -1,136 +1,395 @@
 /*
- * Formula 1 Pulse, the start-light gantry, the timing tower's row grid, the
- * podium, and the race strip. Everything else in the route comes from the
- * shared Catalog 97 vocabulary (catalog97.css); this file only holds the
- * layout the shared classes don't cover, and every colour is a `--c97-*`
- * token or, for a livery, the team's own colour applied inline from data.
+ * Formula 1 Pulse, drawn as a race hub with a broadcast timing tower. The
+ * route paints its own track-grey page with a light and a dark story, and the
+ * tower prints as a carbon graphic in both themes, the way the broadcast
+ * draws it. The only saturated colour is data: team liveries, the start
+ * lights, and the movement arrows.
  */
 
-/* ---- Start-light gantry --------------------------------------------------
-   Five lights arm left to right once on load and hold lit. Reduced motion
-   sees the same held-lit state with no animation. The lamps are square like
-   everything else on the site, so they read as lights from the housing: an
-   ink bar with each lamp set apart inside it, dark until it arms. */
+.root {
+  --f1-bg: #f3f3f0;
+  --f1-raise: #e7e7e2;
+  --f1-ink: #15151e;
+  --f1-ink-2: #55555f;
+  --f1-rule: rgba(21, 21, 30, 0.13);
+  --f1-rule-strong: rgba(21, 21, 30, 0.42);
+  --f1-focus: #1f5fbf;
+  --f1-lamp: #d51b1b;
+  --f1-lamp-off: #3a3a44;
+  --f1-up: #1b7f3b;
+  --f1-down: #c0261d;
+  --f1-sprint: #8a5a00;
+  --f1-tower-bg: #15151e;
+  --f1-tower-row: #1e1e29;
+  --f1-tower-ink: #f3f3f5;
+  --f1-tower-ink-2: #b4b4c0;
 
-.gantry {
-  display: inline-flex;
+  /* What the borrowed shell and focus ring read. */
+  --c97-surface: var(--f1-bg);
+  --c97-ink: var(--f1-ink);
+  --c97-ink-2: var(--f1-ink-2);
+  --c97-label: var(--f1-ink-2);
+  --c97-rule: var(--f1-rule);
+  --c97-field: var(--f1-raise);
+  --c97-accent: var(--f1-focus);
+
+  background: var(--f1-bg);
+  color: var(--f1-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+:global(.dark) .root {
+  --f1-bg: #101015;
+  --f1-raise: #1c1c24;
+  --f1-ink: #ececf1;
+  --f1-ink-2: #a9a9b6;
+  --f1-rule: rgba(236, 236, 241, 0.13);
+  --f1-rule-strong: rgba(236, 236, 241, 0.4);
+  --f1-focus: #8db4f5;
+  --f1-lamp: #ff4b45;
+  --f1-up: #6fd08c;
+  --f1-down: #ff8a80;
+  --f1-sprint: #f0b450;
+  --f1-tower-bg: #1a1a23;
+  --f1-tower-row: #23232e;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.root :where(h1, h2, h3, h4) {
+  font-family: var(--c97-font-body);
+  color: var(--f1-ink);
+  margin: 0;
+}
+
+.root :where(p, ol, ul, li, dl, dd, dt) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.root :where(ol, ul) {
+  list-style: none;
+}
+
+.root :where(a) {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.root :where(button:focus-visible, a:focus-visible) {
+  outline: 2px solid var(--f1-focus);
+  outline-offset: 2px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
+}
+
+/* ---- Title row ---------------------------------------------------------- */
+
+.titleRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.title {
+  font-size: clamp(1.875rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.standfirst {
+  max-inline-size: 62ch;
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--f1-ink-2);
+}
+
+.status {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  color: var(--f1-ink-2);
+}
+
+/* ---- The one view switch, sticky on the board ------------------------- */
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
   align-items: center;
-  gap: var(--c97-sp-0);
-  padding: var(--c97-sp-0);
-  background: var(--c97-ink);
+  background: var(--f1-bg);
+  border-bottom: 1px solid var(--f1-rule-strong);
 }
 
-.light {
-  width: 11px;
-  height: 11px;
-  background: color-mix(in srgb, var(--c97-field) 22%, var(--c97-ink));
-  animation: f1-light-arm 1.4s linear 1 forwards;
+.switch {
+  display: flex;
+  overflow-x: auto;
 }
 
-.light:nth-child(1) {
-  animation-delay: 0s;
-}
-.light:nth-child(2) {
-  animation-delay: 0.5s;
-}
-.light:nth-child(3) {
-  animation-delay: 1s;
-}
-.light:nth-child(4) {
-  animation-delay: 1.5s;
-}
-.light:nth-child(5) {
-  animation-delay: 2s;
+.switch button {
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--f1-ink-2);
+  font: inherit;
+  font-size: var(--c97-fs-small);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-@keyframes f1-light-arm {
-  0%,
-  70% {
-    background: color-mix(in srgb, var(--c97-field) 22%, var(--c97-ink));
-  }
-  85%,
-  100% {
-    background: var(--c97-accent);
+.switch button:hover {
+  color: var(--f1-ink);
+}
+
+@media screen and (max-width: 479px) {
+  .switch button {
+    padding: 0 var(--c97-sp-1);
+    font-size: 0.75rem;
+    letter-spacing: 0;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .light {
-    animation: none;
-    background: var(--c97-accent);
+.switch button[aria-pressed="true"] {
+  color: var(--f1-ink);
+  border-bottom-color: var(--f1-ink);
+}
+
+/* ---- Board: the tower beside the race hub ----------------------------- */
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+  scroll-margin-top: var(--c97-sp-6);
+}
+
+@media screen and (min-width: 960px) {
+  .board {
+    grid-template-columns: minmax(20rem, 22rem) minmax(0, 1fr);
+    align-items: start;
   }
 }
 
-/* ---- Timing tower ---------------------------------------------------- */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+  min-width: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.h2 {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--f1-rule-strong);
+}
+
+.h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--f1-ink-2);
+  margin-bottom: var(--c97-sp-1);
+}
+
+.kicker {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--f1-ink-2);
+}
+
+.muted {
+  color: var(--f1-ink-2);
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.empty,
+.note {
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--f1-ink-2);
+}
+
+.note {
+  margin-top: var(--c97-sp-1);
+  font-size: 0.75rem;
+}
+
+.flag {
+  width: 28px;
+  height: 16px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.source {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--f1-rule);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--f1-ink-2);
+}
+
+.anchor {
+  scroll-margin-top: var(--c97-sp-6);
+}
+
+/* ---- Timing tower ----------------------------------------------------- */
+
+.tower {
+  background: var(--f1-tower-bg);
+  color: var(--f1-tower-ink);
+  padding: var(--c97-sp-1);
+}
+
+@media screen and (min-width: 960px) {
+  .towerColumn {
+    position: sticky;
+    top: 52px;
+  }
+}
+
+.towerTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--c97-sp-1) var(--c97-sp-1) var(--c97-sp-2);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.towerTitleNote {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--f1-tower-ink-2);
+}
 
 .towerList {
   display: flex;
   flex-direction: column;
-  gap: var(--c97-sp-1);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  gap: 2px;
 }
 
 .towerRow {
   display: grid;
   grid-template-columns: 2.4ch minmax(0, 1fr) 5.5ch 5.5ch 1.4ch;
-  align-items: baseline;
-  gap: var(--c97-sp-2);
-  padding: var(--c97-sp-1) var(--c97-sp-2);
-  border-left: 4px solid var(--c97-ink-2);
-  background: var(--c97-field);
-  font-size: var(--c97-fs-small);
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 30px;
+  padding: 0 var(--c97-sp-1);
+  border-left: 4px solid var(--f1-tower-ink-2);
+  background: var(--f1-tower-row);
+  font-size: 0.8125rem;
 }
 
 .towerPosition {
-  color: var(--c97-ink-2);
+  font-family: var(--c97-font-mono);
+  font-weight: 600;
+  text-align: right;
 }
 
 .towerName {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .towerCode {
-  color: var(--c97-ink-2);
-  font-size: var(--c97-fs-label);
+  color: var(--f1-tower-ink-2);
+  font-size: 0.6875rem;
 }
 
 .towerGap,
 .towerInterval {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
   text-align: right;
-  font-variant-numeric: tabular-nums;
-  color: var(--c97-ink-2);
+  color: var(--f1-tower-ink-2);
 }
 
 .towerMovement {
   text-align: center;
+  font-size: 0.625rem;
+  color: var(--f1-tower-ink-2);
 }
 
 .towerHead {
+  min-height: 22px;
   background: transparent;
   border-left-color: transparent;
-  font-size: var(--c97-fs-label);
+  font-size: 0.625rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c97-label);
+  color: var(--f1-tower-ink-2);
 }
 
 .towerHead .towerGap,
 .towerHead .towerInterval {
-  color: var(--c97-label);
+  font-family: var(--c97-font-body);
+  font-size: 0.625rem;
 }
 
-/* The line under a phone's shortened tower. It is hidden from 640px here and
-   not with a utility, since the hero's own rules outrank a display utility. */
+/* The line under a phone's shortened tower. */
 .towerMore {
   display: none;
 }
 
+.towerMoreLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--f1-tower-ink);
+  font-weight: 700;
+}
+
+.root .towerMoreLink:focus-visible {
+  outline-color: var(--f1-tower-ink);
+}
+
 @media print, screen and (max-width: 639px) {
-  /* A phone prints the top of the tower and links to the full table. */
   .towerRowPastPhone {
     display: none;
   }
@@ -139,10 +398,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: var(--c97-sp-2);
-    margin: var(--c97-sp-1) 0 0;
-    font-size: var(--c97-fs-small);
-    color: var(--c97-ink-2);
+    padding: 0 var(--c97-sp-1);
+    font-size: 0.8125rem;
+    color: var(--f1-tower-ink-2);
   }
 
   .towerNameFull {
@@ -150,64 +410,375 @@
   }
 
   .towerNameFull + .towerCode {
-    color: var(--c97-ink);
-    font-size: var(--c97-fs-small);
+    color: var(--f1-tower-ink);
+    font-size: 0.8125rem;
   }
 }
 
-/* ---- Podium ------------------------------------------------------------ */
+/* ---- Next race masthead ----------------------------------------------- */
 
-.podiumRow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
+.next {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-3);
+  border-bottom: 3px solid var(--f1-ink);
+}
+
+.nextHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+}
+
+.nextName {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.nextMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  color: var(--f1-ink-2);
+}
+
+.sprint {
+  color: var(--f1-sprint);
+  font-weight: 700;
+}
+
+.countdown {
+  display: flex;
   gap: var(--c97-sp-3);
+  margin-top: var(--c97-sp-1);
 }
 
-@media screen and (min-width: 640px) {
-  .podiumRow {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+.countdownCell {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.countdownCell dd {
+  font-family: var(--c97-font-mono);
+  font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
+  line-height: 1;
+}
+
+.countdownCell dt {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--f1-ink-2);
+}
+
+.countdownPast {
+  font-weight: 700;
+}
+
+/* Start-light gantry. Five lamps arm left to right once on load and hold
+   lit. Reduced motion sees the same held-lit state with no animation. */
+.gantry {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px 6px;
+  background: var(--f1-tower-bg);
+}
+
+.light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--f1-lamp-off);
+  animation: f1-light-arm 1.4s linear 1 forwards;
+}
+
+.light:nth-child(2) { animation-delay: 0.5s; }
+.light:nth-child(3) { animation-delay: 1s; }
+.light:nth-child(4) { animation-delay: 1.5s; }
+.light:nth-child(5) { animation-delay: 2s; }
+
+@keyframes f1-light-arm {
+  0%,
+  70% {
+    background: var(--f1-lamp-off);
   }
+  85%,
+  100% {
+    background: var(--f1-lamp);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light {
+    animation: none;
+    background: var(--f1-lamp);
+  }
+}
+
+/* ---- Standings tables ------------------------------------------------- */
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--c97-fs-small);
+}
+
+.table th {
+  padding: var(--c97-sp-1);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--f1-ink-2);
+  border-bottom: 1px solid var(--f1-rule-strong);
+}
+
+.table td {
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--f1-rule);
+  vertical-align: middle;
+}
+
+.table .num {
+  text-align: right;
+  font-family: var(--c97-font-mono);
+  white-space: nowrap;
+}
+
+.livery {
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  margin-right: var(--c97-sp-1);
+  vertical-align: -0.15em;
+}
+
+.move {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--f1-ink-2);
+}
+
+.move[data-dir="up"] {
+  color: var(--f1-up);
+  font-weight: 700;
+}
+
+.move[data-dir="down"] {
+  color: var(--f1-down);
+  font-weight: 700;
+}
+
+@media screen and (max-width: 559px) {
+  .wideOnly {
+    display: none;
+  }
+}
+
+/* ---- Podium ----------------------------------------------------------- */
+
+.podium {
+  display: flex;
+  flex-direction: column;
+}
+
+.podium li {
+  display: grid;
+  grid-template-columns: 3ch minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  border-left: 4px solid var(--f1-ink-2);
+  border-bottom: 1px solid var(--f1-rule);
 }
 
 .podiumRank {
-  font-family: var(--c97-font-numeral);
-  font-size: var(--c97-fs-h3);
+  font-family: var(--c97-font-mono);
+  font-weight: 700;
 }
 
-/* ---- Race strip --------------------------------------------------------- */
+.podiumName {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.podiumGap {
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  color: var(--f1-ink-2);
+}
+
+/* ---- Race strip -------------------------------------------------------- */
 
 .raceStrip {
   display: flex;
-  gap: var(--c97-sp-2);
+  gap: var(--c97-sp-1);
   overflow-x: auto;
   padding-bottom: var(--c97-sp-1);
 }
 
 .raceStripItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   min-height: 44px;
-  min-width: 220px;
+  min-width: 11rem;
   flex-shrink: 0;
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  border: 1px solid var(--f1-rule);
+  border-top: 3px solid var(--f1-rule);
+  background: none;
+  color: var(--f1-ink);
+  font: inherit;
+  font-size: 0.8125rem;
   text-align: left;
-  padding: var(--c97-sp-2) var(--c97-sp-3);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
+  cursor: pointer;
 }
 
 .raceStripItem:hover {
-  border-color: var(--c97-ink-2);
+  border-color: var(--f1-rule-strong);
 }
 
 .raceStripItem[aria-pressed="true"] {
-  border-color: var(--c97-accent);
+  border-top-color: var(--f1-ink);
+  background: var(--f1-raise);
 }
 
-/* ---- Calendar timeline -------------------------------------------------- */
+.raceStripName {
+  font-weight: 700;
+}
+
+/* ---- Weekend detail ---------------------------------------------------- */
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-2);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-3);
+  margin-top: var(--c97-sp-2);
+}
+
+@media screen and (min-width: 1200px) {
+  .detailGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule li {
+  padding: var(--c97-sp-1) 0;
+  border-bottom: 1px solid var(--f1-rule);
+  font-size: var(--c97-fs-small);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  padding: var(--c97-sp-1) var(--c97-sp-1) var(--c97-sp-1) var(--c97-sp-2);
+  border-left: 4px solid var(--f1-ink-2);
+  border-bottom: 1px solid var(--f1-rule);
+  font-size: var(--c97-fs-small);
+}
+
+.resultMain {
+  min-width: 0;
+}
+
+.resultPoints {
+  font-family: var(--c97-font-mono);
+  white-space: nowrap;
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--c97-sp-1);
+  padding-left: var(--c97-sp-2);
+  border-left: 3px solid var(--f1-down);
+  font-size: var(--c97-fs-small);
+}
+
+/* ---- Calendar timeline ------------------------------------------------- */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--c97-sp-3);
+}
 
 .timelineRow {
-  background: transparent;
+  display: grid;
+  grid-template-columns: 4ch minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--c97-sp-1);
+  border: 0;
+  border-bottom: 1px solid var(--f1-rule);
+  background: none;
+  color: var(--f1-ink);
+  font: inherit;
+  font-size: var(--c97-fs-small);
+  text-align: left;
+  cursor: pointer;
 }
 
 .timelineRow:hover,
 .timelineRow[aria-pressed="true"] {
-  background: var(--c97-field);
+  background: var(--f1-raise);
+}
+
+.timelineRow[aria-pressed="true"] {
+  box-shadow: inset 4px 0 0 var(--f1-ink);
+}
+
+.timelineRound {
+  font-family: var(--c97-font-mono);
+  color: var(--f1-ink-2);
+}
+
+.timelineName,
+.timelineDate {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.timelineDate {
+  text-align: right;
 }
