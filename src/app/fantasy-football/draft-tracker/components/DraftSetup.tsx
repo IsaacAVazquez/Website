@@ -452,7 +452,7 @@ export function DraftSetup({
         <div className="grid" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
           <div
             className="grid"
-            style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
+            style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}
           >
             <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-league-name">
               <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>

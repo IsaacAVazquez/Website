@@ -791,9 +791,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               {activeContest.format}
             </span>
           </div>
+          {/* Four cells, so two by two until there is room for all four in one
+              row. The auto-fit track left a lone cell under three at 844 and 1024. */}
           <div
-            className="grid"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}
+            className="grid sm:grid-cols-2 xl:grid-cols-4"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)" }}
           >
             {/* The room is the compact summary. The three build notes show
                 from md up and open on request below it, so a phone reaches
