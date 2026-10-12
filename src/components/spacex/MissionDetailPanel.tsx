@@ -168,7 +168,7 @@ export function MissionDetailPanel({
           </div>
 
           <div className="sx-sect">
-            <h3 className="c97-serif c97-h3">
+            <h3 className="sx-h3">
               Mission brief
             </h3>
             <p className="text-sm leading-7 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
@@ -178,7 +178,7 @@ export function MissionDetailPanel({
 
           {launch.failures.length > 0 ? (
             <div className="border border-[color-mix(in_srgb,var(--c97-warning)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_9%,var(--c97-surface))]" style={{ padding: "var(--c97-sp-2)" }}>
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Failure log
               </h3>
               <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
@@ -217,7 +217,7 @@ export function MissionDetailPanel({
           <div className="sx-sect">
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Rocket aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Rocket
               </h3>
             </div>
@@ -256,7 +256,7 @@ export function MissionDetailPanel({
           <div className="sx-sect">
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <MapPin aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Launchpad
               </h3>
             </div>
@@ -283,7 +283,7 @@ export function MissionDetailPanel({
           <div className="sx-sect">
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Users aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="c97-serif c97-h3">
+              <h3 className="sx-h3">
                 Crew and cores
               </h3>
             </div>
@@ -400,7 +400,7 @@ export function MissionDetailPanel({
           )}
 
           <div className="sx-sect">
-            <h3 className="c97-serif c97-h3">
+            <h3 className="sx-h3">
               Capsules
             </h3>
             {launch.capsules.length > 0 ? (
@@ -432,7 +432,7 @@ export function MissionDetailPanel({
       {!isLoading && !error && launch && activePanel === "links" ? (
         <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
           <div className="sx-sect">
-            <h3 className="c97-serif c97-h3">
+            <h3 className="sx-h3">
               Mission references
             </h3>
             <div style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -450,7 +450,7 @@ export function MissionDetailPanel({
           </div>
 
           <div className="sx-sect">
-            <h3 className="c97-serif c97-h3">
+            <h3 className="sx-h3">
               Data completeness
             </h3>
             <div className="grid sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>

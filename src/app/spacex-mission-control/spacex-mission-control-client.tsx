@@ -569,7 +569,8 @@ export function SpaceXMissionControlClient({
         </div>
       </div>
 
-      <section id="mission-manifest" className="c97-shell c97-frame sx-manifest" aria-label="Manifest, vehicles, and recovery">
+      <section id="mission-manifest" className="c97-shell c97-frame sx-manifest" aria-labelledby="mission-manifest-title">
+        <h2 id="mission-manifest-title" className="sr-only">Launch manifest</h2>
         <div className="sx-toolbar">
           <div role="tablist" aria-label="Mission control sections" className="sx-tabs">
             {sectionOptions.map((option, index) => (

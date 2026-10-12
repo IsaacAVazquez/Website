@@ -497,6 +497,26 @@
   color: var(--c97-ink);
 }
 
+.sx-card-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.sx-card-meta dt {
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sx-ink-2);
+}
+
+.sx-card-meta dd {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 /* Sections inside the drawer, the vehicle catalog, and recovery: ruled, not boxed. */
 
 .sx-root .sx-sect {
