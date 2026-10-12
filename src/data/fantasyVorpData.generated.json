@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-11T20:59:20.057Z",
+  "generatedAt": "2026-10-12T23:39:11.863Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-11T20:59:20.821Z",
+        "accessedAt": "2026-10-12T23:39:12.264Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -622,7 +622,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 69,
@@ -3988,7 +3988,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 443,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-11T20:59:21.525Z",
+        "accessedAt": "2026-10-12T23:39:12.800Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -6047,7 +6047,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 76,
@@ -9188,7 +9188,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 425,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-11T20:59:22.086Z",
+        "accessedAt": "2026-10-12T23:39:13.686Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -11454,7 +11454,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 81,
@@ -14613,7 +14613,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 151,
             "rank": 432,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-11T20:59:23.027Z",
+        "accessedAt": "2026-10-12T23:39:14.415Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -16863,7 +16863,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 86,
@@ -20319,7 +20319,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 152,
             "rank": 470,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-11T20:59:23.992Z",
+        "accessedAt": "2026-10-12T23:39:15.084Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -22135,7 +22135,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 76,
@@ -25303,7 +25303,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 152,
             "rank": 428,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-11T20:59:24.470Z",
+        "accessedAt": "2026-10-12T23:39:15.824Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -27551,7 +27551,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 82,
@@ -30692,7 +30692,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 152,
             "rank": 431,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-11T20:59:26.165Z",
+        "accessedAt": "2026-10-12T23:39:16.759Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -32915,7 +32915,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 82,
@@ -36308,7 +36308,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 152,
             "rank": 459,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-11T20:59:27.047Z",
+        "accessedAt": "2026-10-12T23:39:17.593Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -38277,7 +38277,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 82,
@@ -41697,7 +41697,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 152,
             "rank": 462,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-11T20:59:27.744Z",
+        "accessedAt": "2026-10-12T23:39:18.067Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -43621,7 +43621,7 @@
           {
             "playerId": "fp-23064",
             "name": "Marvin Harrison Jr.",
-            "team": "ARI",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 33,
             "rank": 80,
@@ -46762,7 +46762,7 @@
           {
             "playerId": "fp-25495",
             "name": "Jared Wayne",
-            "team": "HOU",
+            "team": "FA",
             "position": "WR",
             "positionRank": 152,
             "rank": 429,
