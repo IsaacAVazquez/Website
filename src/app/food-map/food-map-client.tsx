@@ -10,7 +10,6 @@ import {
 } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useSearchParams } from "next/navigation";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   FOOD_MAP_AS_OF,
   FOOD_MAP_CITIES,
@@ -48,41 +47,6 @@ interface FoodMapClientProps {
   initialState: FoodMapState;
 }
 
-const FOOD_MAP_INK = PROJECT_PRESS[FOOD_MAP_ROUTE].lead;
-
-/* -------------------------------------------------------------------------- */
-/* Masthead ticker                                                            */
-/* -------------------------------------------------------------------------- */
-
-function HeroTicker() {
-  // A printed line of the cities and a few flagship cuisines. It sits still,
-  // since nothing on the site loops, and wraps onto a second line when narrow.
-  const words = useMemo(() => {
-    const cities = FOOD_MAP_CITIES.map((c) => c.name);
-    const cuisines = [
-      "Barbecue",
-      "Tacos",
-      "Ramen",
-      "Oysters",
-      "Pintxos",
-      "New Nordic",
-      "Pastrami",
-      "Wood-fired pizza",
-    ];
-    return [...cities, ...cuisines];
-  }, []);
-
-  return (
-    <div className="fm-ticker" aria-hidden="true">
-      <div className="fm-ticker-track">
-        {words.map((word) => (
-          <span key={word}>{word}</span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* -------------------------------------------------------------------------- */
 /* Filter chips                                                               */
 /* -------------------------------------------------------------------------- */
@@ -97,7 +61,7 @@ function CityTabs({
   onSelect: (id: FoodMapCityId) => void;
 }) {
   return (
-    <div id="food-map-city" role="radiogroup" aria-label="Choose a city" className="fm-chiprow" style={{ scrollMarginTop: "var(--c97-sp-5)" }}>
+    <div id="food-map-city" role="radiogroup" aria-label="Choose a city" className="fm-tabs">
       {FOOD_MAP_CITIES.map((city, index) => {
         const isActive = state.city === city.id;
         return (
@@ -306,8 +270,7 @@ function PlaceDossier({
           href={mapsLink(place)}
           target="_blank"
           rel="noopener noreferrer"
-          className="c97-btn c97-offset"
-          style={{ marginTop: "var(--c97-sp-3)" }}
+          className="c97-btn fm-dossier-maps"
         >
           Open in Google Maps <span className="c97-arrow-out" aria-hidden="true">↗</span>
         </a>
@@ -418,214 +381,121 @@ function FoodMapWorkbench({
   }
 
   return (
-    <section className="fm" aria-label="Food Map" data-testid="food-map-shell">
-      <div>
-        {/* Masthead */}
-        <header
-          className="c97-band c97-sheet c97-project-hero"
-          data-c97-surface={`ink-${FOOD_MAP_INK}`}
-          id="food-map-main"
-        >
-          <div className="c97-shell">
-            <div className="fm-masthead-top">
-              <div>
-                <p className="c97-kicker">A field guide · where to eat</p>
-                <h1 className="c97-poster">Food Map</h1>
-                <p className="fm-lede c97-lead">
-                  The spots I actually send people to, plus the ones the late Anthony
-                  Bourdain and the crowd swear by, plotted across ten cities from Austin
-                  to Tokyo. Pick a city, filter by who is vouching for it, and pull up
-                  what to order before you go.
-                </p>
-                {/* The hero fills a phone's first screen, so one link goes straight to the city choice. */}
-                <a href="#food-map-city" className="c97-btn-ghost">
-                  Choose a city
-                </a>
-              </div>
-
-              <div className="fm-stamp-badge" aria-hidden="true">
-                <span className="fm-stamp-small">Est. now</span>
-                <span className="fm-stamp-big">EAT HERE</span>
-                <span className="fm-stamp-small">no reservations</span>
-              </div>
-            </div>
-
-            <HeroTicker />
-
-            <dl className="c97-project-hero-readouts fm-masthead-stats">
-              <div className="c97-stat">
-                <dt className="c97-stat-label">Curated stops</dt>
-                <dd className="c97-stat-value">{FOOD_MAP_PLACES.length}</dd>
-                <dd className="c97-stat-delta">across {FOOD_MAP_CITIES.length} cities</dd>
-              </div>
-              <div className="c97-stat">
-                <dt className="c97-stat-label">In {activeCity.name}</dt>
-                <dd className="c97-stat-value">{visiblePlaces.length}</dd>
-                <dd className="c97-stat-delta">of {cityCount} total</dd>
-              </div>
-              <div className="c97-stat">
-                <dt className="c97-stat-label">Cities mapped</dt>
-                <dd className="c97-stat-value">{FOOD_MAP_CITIES.length}</dd>
-                <dd className="c97-stat-delta">Austin to Tokyo</dd>
-              </div>
-            </dl>
+    <section className="fm" aria-label="Food Map" data-testid="food-map-shell" data-c97-surface="paper">
+      <div className="c97-shell c97-frame fm-page">
+        <header className="fm-head">
+          <div className="fm-title">
+            <h1>Food Map</h1>
+            <p className="fm-lede">
+              The spots I actually send people to, plus the ones the late Anthony Bourdain and the crowd swear by, across
+              ten cities from Austin to Tokyo. Pick a city, filter by who is vouching for it, and pull up what to order
+              before you go.
+            </p>
+          </div>
+          <div className="fm-stamp-badge" aria-hidden="true">
+            <span className="fm-stamp-big">EAT HERE</span>
+            <span className="fm-stamp-small">no reservations</span>
           </div>
         </header>
 
-        <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-          <div className="c97-shell">
-            <p className="fm-status c97-tabular" role="status" aria-live="polite">
-              <span className="fm-status-dot" aria-hidden="true" />
-              <span>
-                Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} ·
-                Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
-              </span>
-            </p>
+        {/* City comes first, since the map, the filters, and the list all follow from it. */}
+        <div className="fm-citybar">
+          <CityTabs state={routeState} counts={cityCounts} onSelect={handleSelectCity} />
+        </div>
 
-            {/* Main grid */}
-            <div className="fm-grid">
-              <div className="fm-col">
-                {/* City comes first, since the map, the filters, and the list all follow from it. */}
-                <div className="fm-fieldset">
-                  <span className="c97-kicker">City</span>
-                  <CityTabs
-                    state={routeState}
-                    counts={cityCounts}
-                    onSelect={handleSelectCity}
-                  />
-                  {/* On one column the list sits under the map and the filters, so this goes straight to it. */}
-                  <div className="min-[1001px]:hidden print:hidden">
-                    <button type="button" onClick={handleJumpToList} className="c97-btn-ghost">
-                      Go to the list of stops
-                    </button>
-                  </div>
-                </div>
+        <p className="fm-status c97-tabular" role="status" aria-live="polite">
+          <span className="fm-status-dot" aria-hidden="true" />
+          <span>
+            Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} ·
+            Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
+          </span>
+        </p>
 
-                {/* Map */}
-                <div className="fm-mapwrap c97-panel">
-                  <div className="fm-mapwrap-head">
-                    <p className="c97-kicker">The map · {activeCity.name}</p>
-                    <span className="fm-map-legend" aria-hidden="true">
-                      {FOOD_MAP_CURATORS.map((c) => (
-                        <i key={c.id}>
-                          <b style={{ background: c.accent }} />
-                          {c.name.split(" ")[0]}
-                        </i>
-                      ))}
-                    </span>
-                  </div>
-                  <FoodMapLeaflet
-                    spots={visiblePlaces}
-                    activeSpotId={routeState.pick}
-                    onSelectSpot={handleSelectPlace}
-                    center={activeCity.center}
-                    zoom={activeCity.zoom}
-                    reduceMotion={reduceMotion}
-                  />
-                </div>
-
-                {/* Filters */}
-                <div className="c97-panel">
-                  <div className="fm-deck-head">
-                    <p className="c97-kicker">Filters</p>
-                    <button
-                      type="button"
-                      onClick={handleResetFilters}
-                      disabled={!hasFilters}
-                      className="c97-btn-ghost"
-                    >
-                      Reset
-                    </button>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "var(--c97-sp-3)",
-                      marginTop: "var(--c97-sp-3)",
-                    }}
-                  >
-                    <div className="fm-fieldset">
-                      <span className="c97-kicker">Curator</span>
-                      <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
-                    </div>
-
-                    <div className="fm-fieldset">
-                      <span className="c97-kicker">Cuisine</span>
-                      <CuisinePills
-                        cuisines={cityCuisines}
-                        state={routeState}
-                        onToggle={handleToggleCuisine}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Index */}
-                <div className="fm-index-head">
-                  <h2 ref={indexHeadingRef} tabIndex={-1} className="c97-poster-sm">The stops</h2>
-                  <label className="fm-search">
-                    <Search size={15} aria-hidden="true" />
-                    <input
-                      type="search"
-                      aria-label="Filter by name or cuisine"
-                      placeholder="Filter by name or cuisine…"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                  </label>
-                </div>
-
-                {visiblePlaces.length === 0 ? (
-                  <div className="fm-empty">
-                    <p className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
-                      Nothing matches that combination yet.
-                    </p>
-                    <p className="c97-prose">
-                      The list intentionally stays short, so a few filters can rule it out
-                      entirely. Loosen one and it comes back.
-                    </p>
-                    <button type="button" onClick={handleResetFilters} className="c97-btn-ghost">
-                      Reset filters
-                    </button>
-                  </div>
-                ) : (
-                  <div className="fm-index">
-                    {visiblePlaces.map((place, i) => (
-                      <PlaceTicket
-                        key={place.id}
-                        place={place}
-                        index={i}
-                        isSelected={routeState.pick === place.id}
-                        onSelect={handleSelectPlace}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Rail */}
-              <aside aria-label="Food map side panel" className="fm-rail">
-                {selectedPlace ? (
-                  <PlaceDossier place={selectedPlace} onClear={handleClearPick} headingRef={dossierHeadingRef} />
-                ) : (
-                  <>
-                    <p className="c97-kicker">The curators</p>
-                    <p className="fm-rail-lede c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                      Pins are colored by who recommends them. Tap a pin or a stop to see
-                      what to order and why it earns the spot.
-                    </p>
-                    <CuratorPassport />
-                  </>
-                )}
-                <p className="fm-rail-foot">
-                  These are the spots I actually send people to.
-                </p>
-              </aside>
+        <div className="fm-mapwrap">
+          <div className="fm-filters">
+            <div className="fm-fieldset" role="group" aria-label="Curator">
+              <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
             </div>
+            <div className="fm-fieldset" role="group" aria-label="Cuisine">
+              <CuisinePills cuisines={cityCuisines} state={routeState} onToggle={handleToggleCuisine} />
+            </div>
+            <button type="button" onClick={handleResetFilters} disabled={!hasFilters} className="c97-btn-ghost fm-reset">
+              Reset
+            </button>
           </div>
-        </section>
+          <FoodMapLeaflet
+            spots={visiblePlaces}
+            activeSpotId={routeState.pick}
+            onSelectSpot={handleSelectPlace}
+            center={activeCity.center}
+            zoom={activeCity.zoom}
+            reduceMotion={reduceMotion}
+          />
+          {/* On one column the list sits well under the map, so this goes straight to it. */}
+          <div className="fm-jump">
+            <button type="button" onClick={handleJumpToList} className="c97-btn-ghost">
+              Go to the list of stops
+            </button>
+          </div>
+        </div>
+
+        <div className="fm-grid">
+          <div className="fm-col">
+            <div className="fm-index-head">
+              <h2 ref={indexHeadingRef} tabIndex={-1}>The stops</h2>
+              <label className="fm-search">
+                <Search size={15} aria-hidden="true" />
+                <input
+                  type="search"
+                  aria-label="Filter by name or cuisine"
+                  placeholder="Filter by name or cuisine…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </label>
+            </div>
+
+            {visiblePlaces.length === 0 ? (
+              <div className="fm-empty">
+                <p className="fm-empty-title">Nothing matches that combination yet.</p>
+                <p>
+                  The list intentionally stays short, so a few filters can rule it out entirely. Loosen one and it comes
+                  back.
+                </p>
+                <button type="button" onClick={handleResetFilters} className="c97-btn-ghost">
+                  Reset filters
+                </button>
+              </div>
+            ) : (
+              <div className="fm-index">
+                {visiblePlaces.map((place, i) => (
+                  <PlaceTicket
+                    key={place.id}
+                    place={place}
+                    index={i}
+                    isSelected={routeState.pick === place.id}
+                    onSelect={handleSelectPlace}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          <aside aria-label="Food map side panel" className="fm-rail">
+            {selectedPlace ? (
+              <PlaceDossier place={selectedPlace} onClear={handleClearPick} headingRef={dossierHeadingRef} />
+            ) : (
+              <>
+                <h2 className="fm-rail-title">The curators</h2>
+                <p className="fm-rail-lede">
+                  Pins are colored by who recommends them. Tap a pin or a stop to see what to order and why it earns the
+                  spot.
+                </p>
+                <CuratorPassport />
+              </>
+            )}
+          </aside>
+        </div>
       </div>
     </section>
   );

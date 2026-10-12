@@ -34,7 +34,7 @@ describe("RecipeFinderClient", () => {
     expect(screen.getByRole("heading", { level: 1, name: "Recipe Finder" })).toBeVisible();
     expect(screen.getByRole("button", { name: /all recipes/i, pressed: true })).toBeVisible();
     expect(screen.getByLabelText("Matching recipes")).toBeVisible();
-    expect(screen.getByText(/ingredient[s]? in pantry/i)).toBeVisible();
+    expect(screen.getByRole("status")).toHaveTextContent(/^\d+ of \d+ recipes$/);
   });
 
   it("adds, persists, removes, and clears pantry ingredients", () => {

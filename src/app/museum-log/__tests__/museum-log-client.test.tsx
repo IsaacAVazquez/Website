@@ -40,10 +40,10 @@ describe("MuseumLogClient", () => {
       scroll: false,
     });
 
-    expect(screen.getAllByText("0")[0]).toBeVisible();
+    expect(screen.getByTestId("museum-log-visited")).toHaveTextContent("You’ve visited 0 of the");
 
     const search = screen.getByRole("searchbox", { name: "Filter museums" });
-    fireEvent.change(search, { target: { value: "moma" } });
+    fireEvent.change(search, { target: { value: "modern" } });
     expect(screen.getByText("Museum of Modern Art")).toBeVisible();
   });
 

@@ -1,56 +1,85 @@
 /* ==========================================================================
-   Food Map: Catalog 97 print shop layout
-   --------------------------------------------------------------------------
-   Family 8 migration: the route's old self-contained "--fm-*" palette is
-   gone. Every colour now reads from the shared --c97-* tokens declared on
-   whichever [data-c97-surface] a piece of markup sits inside (ink-vermilion
-   for the masthead, paper for the workbench below). Curator colours come
-   from the chart ramp (food-map-data.ts) and arrive through the inline
-   `--fm-accent`/`background` the component sets per curator or place.
-   This file only ever *reads* `var(--fm-accent)`. It never
-   declares it, and only ever paints that data colour onto a swatch, dot, or
-   border, never onto running text (categorical colour on small text falls
-   under 4.5:1).
+   Food Map, drawn as a field guide and a city eats map: a title row with the
+   stamp as a small mark, the city tabs as a sticky bar, the map full width
+   with the curator and cuisine chips on its top edge, then the stops as
+   ticket stubs beside the curators or the chosen stop's detail.
+
+   Every colour reads the Catalog 97 paper tokens (the section sets its own
+   data-c97-surface). Curator colours come from the chart ramp
+   (food-map-data.ts) and arrive through the inline `--fm-accent` or
+   `background` the component sets per curator or place. This file only ever
+   reads `var(--fm-accent)`, never declares it, and only paints that data
+   colour onto a swatch, dot, or border, never onto running text.
    ========================================================================== */
 
 .fm {
   position: relative;
 }
 
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs. */
+.fm h1,
+.fm h2 {
+  font-family: var(--c97-font-display);
+  font-weight: 400;
+  color: var(--c97-ink);
+  margin: 0;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.fm :where(p) {
+  margin: 0;
+  max-inline-size: none;
+}
+
+.fm-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
+}
+
 /* ==========================================================================
-   Masthead (the hero sheet, data-c97-surface="ink-vermilion")
+   Title row
    ========================================================================== */
 
-.fm-masthead-top {
+.fm-head {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--c97-sp-4);
+  gap: var(--c97-sp-3);
+}
+
+.fm-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.fm h1 {
+  font-size: var(--c97-fs-h1);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }
 
 .fm-lede {
-  margin: var(--c97-sp-3) 0 0;
-  max-width: var(--c97-measure-body);
+  max-inline-size: 64ch;
+  color: var(--c97-ink-2);
 }
 
-/* Passport stamp, top-right of the masthead. A true circle, so 50% radius is
-   allowed. No fill, no shadow, just an ink-bordered mark, rotated. */
+/* The passport stamp, now a small mark at the end of the title row. A true circle, so 50% radius is allowed. */
 .fm-stamp-badge {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  /* Sized for the 11px label floor, so the longest line stays inside the ring. */
-  width: 148px;
-  height: 148px;
   align-content: center;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   border: 2px solid var(--c97-ink);
   color: var(--c97-ink);
   transform: rotate(-9deg);
   text-align: center;
   font-family: var(--c97-font-mono);
-  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .fm-stamp-badge span {
@@ -59,160 +88,68 @@
 }
 .fm-stamp-badge .fm-stamp-big {
   font-size: var(--c97-fs-small);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  margin-top: 2px;
+  letter-spacing: 0.1em;
 }
 .fm-stamp-badge .fm-stamp-small {
   font-size: var(--c97-fs-label);
-  letter-spacing: 0.04em;
-  margin-top: 3px;
-  opacity: 0.8;
+  letter-spacing: 0.02em;
+  margin-top: 2px;
 }
-
-/* A still, printed line of cuisines and cities. Nothing on the site loops. */
-.fm-ticker {
-  margin-top: var(--c97-sp-4);
-  border-top: 1px solid var(--c97-rule);
-  border-bottom: 1px solid var(--c97-rule);
-}
-.fm-ticker-track {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--c97-sp-0) var(--c97-sp-3);
-  padding: var(--c97-sp-2) 0;
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--c97-ink-2);
-}
-.fm-ticker-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--c97-sp-3);
-  white-space: nowrap;
-}
-.fm-ticker-track span:not(:last-child)::after {
-  content: "◆";
-  font-size: 7px;
-  opacity: 0.6;
-}
-
-.fm-masthead-stats {
-  margin-top: var(--c97-sp-4);
+@media print, screen and (max-width: 639px) {
+  .fm-stamp-badge { display: none; }
 }
 
 /* ==========================================================================
-   Search
+   City bar: one row of tabs, sticky above the map, scrolling inside itself
    ========================================================================== */
 
-.fm-search {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--c97-sp-2);
-  min-width: min(300px, 100%);
-  min-height: 44px;
-  padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--c97-rule);
-  background: var(--c97-field);
-  color: var(--c97-ink-2);
-}
-.fm-search input {
-  all: unset;
-  flex: 1;
-  min-width: 0;
-  min-height: 44px;
-  font-size: var(--c97-fs-body);
-  color: var(--c97-ink);
-}
-.fm-search input::placeholder {
-  color: var(--c97-label);
-}
-
-/* ==========================================================================
-   Live status line
-   ========================================================================== */
-
-.fm-status {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  margin-top: var(--c97-sp-3);
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
-}
-.fm-status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--c97-accent);
-}
-
-/* ==========================================================================
-   Layout grid
-   ========================================================================== */
-
-.fm-grid {
-  display: grid;
-  gap: var(--c97-sp-4);
-  margin-top: var(--c97-sp-4);
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 340px);
-}
-@media print, screen and (max-width: 1000px) {
-  .fm-grid { grid-template-columns: minmax(0, 1fr); }
-}
-.fm-col { display: flex; flex-direction: column; gap: var(--c97-sp-4); min-width: 0; }
-
-.fm-rail {
+.fm-citybar {
   position: sticky;
   top: 0;
-  align-self: start;
+  /* No --c97-z-* step names a sticky bar inside the page yet, so this matches the Premier League toolbar's 2. */
+  z-index: 2;
+  margin-inline: calc(-1 * var(--c97-sp-1));
+  padding: var(--c97-sp-1);
+  /* The paper's own grain, so the bar reads as the page while it rides over the map. */
+  background-color: var(--c97-surface);
+  background-image: var(--c97-grain-soft);
+  background-size: 180px 180px;
+  border-bottom: 2px solid var(--c97-ink);
+}
+@media print {
+  .fm-citybar { position: static; }
+}
+
+.fm-tabs {
   display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-3);
+  gap: var(--c97-sp-1);
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
-@media print, screen and (max-width: 1000px) {
-  .fm-rail { position: static; }
-}
-
-/* ==========================================================================
-   Filter deck
-   ========================================================================== */
-
-.fm-deck-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-2);
+@media screen and (min-width: 1200px) {
+  .fm-tabs { flex-wrap: wrap; overflow-x: visible; }
 }
 
-.fm-fieldset { display: flex; flex-direction: column; gap: var(--c97-sp-2); }
-.fm-chiprow { display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
-
-/* City = destination tab (radiogroup). */
 .fm-tab {
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: baseline;
   gap: var(--c97-sp-1);
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--c97-rule);
+  border: 1px solid transparent;
   background: none;
   color: var(--c97-ink);
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-body);
+  white-space: nowrap;
   cursor: pointer;
+  align-items: center;
 }
-.fm-tab:hover:not([aria-checked="true"]),
-.fm-stamp:hover:not([aria-pressed="true"]) {
-  border-color: var(--c97-ink-2);
+.fm-tab:hover:not([aria-checked="true"]) {
+  border-color: var(--c97-rule);
 }
 .fm-tab[aria-checked="true"] {
-  border-color: transparent;
   background: var(--c97-ink);
   color: var(--c97-surface);
 }
@@ -223,12 +160,53 @@
 }
 .fm-tab[aria-checked="true"] .fm-tab-count {
   color: var(--c97-surface);
-  opacity: 0.75;
 }
 
-/* Curator = passport-stamp toggle. --fm-accent arrives as an inline style
-   from the curator's data colour (food-map-data.ts) and is only ever read
-   here, never declared. It paints a small mark, never the label text. */
+/* ==========================================================================
+   Status line: the count, the review date, and the caveat, once
+   ========================================================================== */
+
+.fm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+.fm-status-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c97-accent);
+}
+
+/* ==========================================================================
+   The map, full width, with the filter chips on its top edge
+   ========================================================================== */
+
+/* Isolated, so Leaflet's pane z-indexes stay inside the map and the sticky city bar passes over it. */
+.fm-mapwrap {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+}
+
+.fm-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-block: var(--c97-sp-1);
+}
+
+.fm-fieldset { display: flex; flex-wrap: wrap; gap: var(--c97-sp-1); }
+.fm-chiprow { display: flex; flex-wrap: wrap; gap: var(--c97-sp-1); }
+.fm-reset { margin-inline-start: auto; }
+
+/* Curator = passport-stamp toggle. --fm-accent paints a small mark, never the label text. */
 .fm-stamp {
   display: inline-flex;
   align-items: center;
@@ -236,12 +214,13 @@
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
   border: 1px solid var(--c97-rule);
-  background: none;
+  background: var(--c97-surface);
   color: var(--c97-ink);
   font-size: var(--c97-fs-small);
   font-weight: 600;
   cursor: pointer;
 }
+.fm-stamp:hover:not([aria-pressed="true"]) { border-color: var(--c97-ink-2); }
 .fm-stamp-dot {
   width: 9px;
   height: 9px;
@@ -249,8 +228,8 @@
   background: var(--fm-accent);
 }
 .fm-stamp[aria-pressed="true"] {
-  border-color: var(--fm-accent);
-  background: color-mix(in srgb, var(--fm-accent) 16%, transparent);
+  border-color: var(--c97-ink);
+  box-shadow: inset 0px -3px 0px var(--fm-accent);
 }
 
 /* Cuisine = plain toggle pill (square-cornered). */
@@ -258,7 +237,7 @@
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
   border: 1px solid var(--c97-rule);
-  background: none;
+  background: var(--c97-surface);
   color: var(--c97-ink-2);
   font-size: var(--c97-fs-small);
   font-weight: 500;
@@ -267,54 +246,12 @@
 .fm-pill:hover { color: var(--c97-ink); border-color: var(--c97-ink-2); }
 .fm-pill[aria-pressed="true"] {
   border-color: var(--c97-ink);
-  background: var(--c97-panel);
-  color: var(--c97-ink);
-}
-
-/* ==========================================================================
-   Map frame
-   ========================================================================== */
-
-.fm-mapwrap {
-  position: relative;
-  overflow: hidden;
-}
-.fm-mapwrap-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-2);
-  padding-bottom: var(--c97-sp-2);
-}
-
-/* Curator legend: a small dot (the curator's data colour, a swatch, not
-   text) plus their name printed in ink. */
-.fm-map-legend {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-3);
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--c97-label);
-}
-.fm-map-legend i {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  font-style: normal;
-}
-.fm-map-legend b {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
+  background: var(--c97-ink);
+  color: var(--c97-surface);
 }
 
 .fm-map {
-  height: clamp(360px, 52vh, 520px);
+  height: clamp(360px, 58vh, 600px);
   width: 100%;
   overflow: hidden;
 }
@@ -323,11 +260,9 @@
  * Leaflet's own default CSS paints this element (`.leaflet-container`) an
  * opaque light grey while tiles load, at the same specificity as a bare
  * `.fm-map` rule, and since that stylesheet is injected into <head> at
- * runtime (leaflet.ts), whichever rule lands last in the cascade wins, which
- * raced depending on load timing. `.fm .fm-map` is one class more specific,
- * so it always wins regardless of injection order. Left unthemed, that grey
- * (not the panel underneath) is what a dark-mode reader's eye, and the
- * contrast sweep, composite the control chrome against.
+ * runtime (leaflet.ts), whichever rule lands last in the cascade wins.
+ * `.fm .fm-map` is one class more specific, so it always wins regardless of
+ * injection order.
  */
 .fm .fm-map {
   background: var(--c97-panel);
@@ -338,7 +273,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--c97-sp-2);
-  height: clamp(360px, 52vh, 520px);
+  height: clamp(360px, 58vh, 600px);
   text-align: center;
   padding: var(--c97-sp-4);
   color: var(--c97-ink-2);
@@ -359,8 +294,7 @@
   z-index: 600;
 }
 
-/* The tile wash and Leaflet chrome are shared with the transit map as
-   `.c97-basemap` in catalog97.css. */
+/* The tile wash and Leaflet chrome are shared with the transit map as `.c97-basemap` in catalog97.css. */
 .fm-map .fm-popup-title {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-body);
@@ -373,12 +307,9 @@
   color: var(--c97-label);
 }
 
-/* A plain ink dot, coloured by the curator's data colour. No teardrop shape
-   (that needed an asymmetric border-radius the print shop system bans). A
-   circle plus a theme-invariant keyline reads just as well as a map pin. */
 /* The 44px hit box Leaflet sizes from the icon, with the dot centred in it.
    Scoped under .fm so it outranks the `display: block` Leaflet's runtime
-   stylesheet puts on every marker icon (the same race as `.fm .fm-map`). */
+   stylesheet puts on every marker icon. */
 .fm-pin-el { background: transparent; border: 0; }
 .fm .fm-pin-el { display: grid; place-items: center; }
 /* A bone edge inside a black ring, so a pin separates from light and dark
@@ -393,9 +324,38 @@
   outline: 3px solid var(--c97-print-black);
 }
 
+/* On one column, a direct path from the map to the list. */
+.fm-jump { display: none; }
+@media screen and (max-width: 1000px) {
+  .fm-jump { display: block; }
+}
+
 /* ==========================================================================
-   Place index: ticket stubs
+   The stops beside the curators, or the chosen stop
    ========================================================================== */
+
+.fm-grid {
+  display: grid;
+  gap: var(--c97-sp-4);
+  margin-top: var(--c97-sp-2);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  align-items: start;
+}
+@media print, screen and (max-width: 1000px) {
+  .fm-grid { grid-template-columns: minmax(0, 1fr); }
+}
+.fm-col { display: flex; flex-direction: column; gap: var(--c97-sp-3); min-width: 0; }
+
+.fm-rail {
+  position: sticky;
+  top: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+@media print, screen and (max-width: 1000px) {
+  .fm-rail { position: static; }
+}
 
 .fm-index-head {
   display: flex;
@@ -403,7 +363,42 @@
   justify-content: space-between;
   gap: var(--c97-sp-2);
   flex-wrap: wrap;
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--c97-rule);
 }
+.fm-index-head h2,
+.fm-rail-title {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.1;
+}
+
+.fm-search {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  min-width: min(300px, 100%);
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border-bottom: 1px solid var(--c97-ink-2);
+  background: var(--c97-field);
+  color: var(--c97-ink-2);
+}
+.fm-search input {
+  all: unset;
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  font-size: var(--c97-fs-body);
+  color: var(--c97-ink);
+}
+.fm-search input::placeholder {
+  color: var(--c97-label);
+}
+.fm-search:focus-within {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 2px;
+}
+
 .fm-index {
   display: grid;
   gap: var(--c97-sp-2);
@@ -413,9 +408,8 @@
   .fm-index { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* --fm-accent is set inline per place from its first curator's colour
-   (food-map-data.ts) and only ever painted onto the left border stripe and
-   the selected-state tint here, never onto text. */
+/* A ticket stub is the object, so it keeps its box: the curator's colour on the
+   left edge and the selected tint only, never on text. */
 .fm-ticket {
   position: relative;
   display: block;
@@ -425,6 +419,7 @@
   border: 1px solid var(--c97-rule);
   border-left: 4px solid var(--fm-accent);
   background: none;
+  color: var(--c97-ink);
   cursor: pointer;
   transition: transform 160ms var(--c97-ease);
 }
@@ -471,37 +466,35 @@
 
 /* Empty state. */
 .fm-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--c97-sp-1);
   border: 1px dashed var(--c97-rule);
   padding: var(--c97-sp-4);
   text-align: center;
 }
-.fm-empty p { margin: var(--c97-sp-1) auto 0; max-width: 40ch; }
-.fm-empty button { margin-top: var(--c97-sp-3); }
+.fm-empty p { max-inline-size: 40ch; }
+.fm-empty-title {
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-h3);
+}
 
 /* ==========================================================================
-   Rail: dossier + curator passport
+   Rail: the curator cards, or the chosen stop's detail
    ========================================================================== */
 
 .fm-rail-lede {
-  margin: 0;
-}
-.fm-rail-foot {
-  margin-top: auto;
-  padding-top: var(--c97-sp-2);
-  border-top: 1px dashed var(--c97-rule);
-  font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-label);
-  color: var(--c97-label);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
 }
 
 .fm-passport { display: flex; flex-direction: column; gap: var(--c97-sp-2); }
 .fm-passport-card {
-  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
-  border: 1px solid var(--c97-rule);
+  padding: var(--c97-sp-1) 0 var(--c97-sp-1) var(--c97-sp-2);
   border-left: 3px solid var(--fm-accent);
 }
 .fm-passport-name {
-  margin: 0;
   display: flex;
   align-items: center;
   gap: var(--c97-sp-1);
@@ -510,37 +503,34 @@
   color: var(--c97-ink);
 }
 .fm-passport-blurb {
-  margin: var(--c97-sp-1) 0 0;
+  margin-top: var(--c97-sp-1);
   font-size: var(--c97-fs-small);
   color: var(--c97-ink-2);
 }
 
-/* Dossier for a selected place. */
-.fm-dossier { display: flex; flex-direction: column; gap: var(--c97-sp-3); }
+/* The chosen stop: a ruled column under the curator's colour. */
+.fm-dossier { display: flex; flex-direction: column; gap: var(--c97-sp-2); }
 
 .fm-dossier-head {
-  padding: var(--c97-sp-3);
-  border: 1px solid color-mix(in srgb, var(--fm-accent) 30%, var(--c97-rule));
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--c97-sp-2);
   border-top: 4px solid var(--fm-accent);
-  background: color-mix(in srgb, var(--fm-accent) 9%, var(--c97-panel));
 }
 .fm-dossier-cuisine {
-  margin: 0 0 var(--c97-sp-1);
+  margin-bottom: var(--c97-sp-1);
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-label);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  /* ink-2, not label: this sits on the accent-tinted dossier head, and
-     --c97-label's 4.5:1 guarantee is only measured against the flat panel. */
   color: var(--c97-ink-2);
 }
 .fm-dossier-name {
-  margin: 0;
   font-size: var(--c97-fs-h2);
   line-height: 1.05;
 }
 .fm-dossier-locale {
-  margin: var(--c97-sp-1) 0 0;
+  margin-top: var(--c97-sp-1);
   font-size: var(--c97-fs-small);
   color: var(--c97-ink-2);
 }
@@ -551,7 +541,7 @@
   border-bottom: 1px solid var(--c97-rule);
 }
 .fm-dossier-row-label {
-  margin: 0 0 2px;
+  margin-bottom: 2px;
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-label);
   letter-spacing: 0.16em;
@@ -559,13 +549,16 @@
   color: var(--c97-ink-2);
 }
 .fm-dossier-row-val {
-  margin: 0;
   font-size: var(--c97-fs-small);
   font-weight: 600;
   color: var(--c97-ink);
 }
 .fm-dossier-why {
-  margin: var(--c97-sp-3) 0 0;
+  margin-top: var(--c97-sp-3);
+}
+.fm-dossier-maps {
+  align-self: flex-start;
+  margin-top: var(--c97-sp-3);
 }
 
 /* ==========================================================================

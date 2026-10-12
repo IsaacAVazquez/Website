@@ -4,12 +4,20 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { MuseumLogClient } from "./museum-log-client";
 import { normalizeMuseumState } from "./museum-log-state";
 
+/** The day the page's own design last changed; a later snapshot refresh moves the date past it. */
+const REDESIGNED_ON = "2026-10-12";
+
+/** The later of two ISO day keys, which compare as strings. */
+function latestDate(a: string, b: string) {
+  return a > b ? a : b;
+}
+
 export const metadata = constructMetadata({
   title: "Museum Log | A Letterboxd for museums",
   description:
     "A Letterboxd-style museum tracker. Browse a curated catalog, read curator reviews, save museums to your watchlist, and log visits with personal ratings.",
   canonicalUrl: "/museum-log",
-  dateModified: museumSnapshot.generatedAt.slice(0, 10),
+  dateModified: latestDate(museumSnapshot.generatedAt.slice(0, 10), REDESIGNED_ON),
 });
 
 interface MuseumLogPageProps {

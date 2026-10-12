@@ -9,12 +9,6 @@ import {
   type RefObject,
 } from "react";
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
-import {
-  Catalog97HeroReadouts,
-  Catalog97ProjectHero,
-  type Catalog97Readout,
-} from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import { RECIPES } from "@/data/recipesSnapshot";
 import { useIsClient } from "@/hooks/useIsClient";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
@@ -31,7 +25,6 @@ import {
 import { indexCardLines } from "./indexCard";
 import "./recipe-finder.css";
 
-const RECIPE_FINDER_ROUTE = "/recipe-finder";
 const PANTRY_STORAGE_KEY = "recipe-finder:pantry:v1";
 
 type ViewId = "all" | "quick" | "vegetarian" | "pantry";
@@ -150,19 +143,13 @@ export function RecipeFinderClient() {
       .slice(0, 6);
   }, [pantryDraft, ingredientCatalog, pantry]);
 
-  // The hero's readouts describe the whole corpus, independent of whatever
-  // meal, diet, or search filter is active below, the same way Earthquake
-  // Pulse's hero stats don't move when the log's view tab changes.
+  // The pantry view's count describes the whole corpus, independent of
+  // whatever meal, diet, or search filter is active.
   const overallMatches = useMemo(() => searchRecipes(RECIPES, pantry, {}), [pantry]);
   const hasPantry = pantry.some((item) => item.trim().length > 0);
   const cookableNow = useMemo(
     () => overallMatches.filter((match) => match.missing.length === 0).length,
     [overallMatches],
-  );
-  const bestMatch = hasPantry ? overallMatches[0] ?? null : null;
-  const bestMatchCard = useMemo(
-    () => (bestMatch ? indexCardLines(bestMatch.recipe, pantry) : null),
-    [bestMatch, pantry],
   );
 
   const baseMatches = useMemo<RecipeMatch[]>(() => {
@@ -232,43 +219,21 @@ export function RecipeFinderClient() {
     }
   }
 
-  const lead = PROJECT_PRESS[RECIPE_FINDER_ROUTE].lead;
-  const standfirst =
-    "Add the ingredients you have on hand and the recipes below reorder by what you're missing, so the ones you can actually cook tonight come first. I assume a few staples like salt, pepper, and oil are already in every kitchen, so those tick on their own.";
-
-  // The figures print after the pantry shelf that drives them, which keeps the
-  // first field inside a phone's opening screen.
-  const heroReadouts: Catalog97Readout[] = [
-    {
-      label: "Pantry items",
-      value: hydrated ? pantry.length : "—",
-      detail: hasPantry ? "saved in your browser" : "add what's in your kitchen",
-    },
-    {
-      label: "Recipes you can make now",
-      value: hasPantry ? cookableNow : "—",
-      detail: hasPantry ? `of ${totalRecipes} in the corpus` : "add pantry items to rank",
-    },
-    {
-      label: "Closest match",
-      value: bestMatch ? bestMatch.recipe.title : "—",
-      detail:
-        bestMatch && bestMatchCard
-          ? `${bestMatchCard.lines.filter((line) => line.have).length} of ${bestMatchCard.lines.length} ingredients ticked, first in the list below`
-          : undefined,
-    },
-  ];
-
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Recipe Finder"
-        standfirst={standfirst}
-      >
-        <div className="c97-recipe-hero-grid">
-          <div data-c97-surface="paper" className="c97-offset c97-recipe-shelf-plate" style={{ padding: "var(--c97-sp-4)" }}>
-            <p className="c97-kicker">Pantry shelf</p>
+    <div className="rf-root">
+      <div className="c97-shell c97-frame rf-page">
+        <header className="rf-head">
+          <h1>Recipe Finder</h1>
+          <p className="rf-lede">
+            Add the ingredients you have on hand and the recipes reorder by what you&rsquo;re missing, so the ones you
+            can cook tonight come first. Salt, pepper, oil, and water count as already in every kitchen, so those tick
+            on their own.
+          </p>
+        </header>
+
+        <div className="rf-book">
+          <section className="rf-shelf" aria-labelledby="rf-shelf-title">
+            <h2 id="rf-shelf-title">Pantry</h2>
             <PantryShelf
               pantry={pantry}
               hydrated={hydrated}
@@ -282,147 +247,106 @@ export function RecipeFinderClient() {
               onKeyDown={handlePantryKeyDown}
               inputRef={pantryInputRef}
             />
-            <p className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-              I put the recipe corpus together by hand, and your pantry is saved in this browser only.
+            <p className="rf-note">
+              I added every recipe here by hand, which keeps the ingredient names consistent enough for the matcher to
+              work, and your pantry is saved in this browser only.
             </p>
-          </div>
+          </section>
 
-        </div>
-        <Catalog97HeroReadouts readouts={heroReadouts} />
-      </Catalog97ProjectHero>
+          <section className="rf-results" aria-labelledby="rf-results-title">
+            <div className="rf-results-head">
+              <h2 id="rf-results-title">Find something to cook</h2>
+              <label className="rf-search">
+                <Search size={16} aria-hidden="true" />
+                <input
+                  type="search"
+                  aria-label="Search recipes"
+                  placeholder="Search by name or ingredient…"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                />
+              </label>
+            </div>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <h2 className="c97-poster-sm">Find something to cook</h2>
-            <label className="c97-recipe-search">
-              <Search size={16} aria-hidden="true" />
-              <input
-                type="search"
-                aria-label="Search recipes"
-                placeholder="Search by name or ingredient…"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-              />
-            </label>
-          </div>
+            <div className="rf-toolbar">
+              <div className="rf-chips" role="group" aria-label="Recipe views">
+                {(Object.keys(VIEW_LABELS) as ViewId[]).map((id) => {
+                  const isActive = view === id;
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => selectView(id)}
+                      aria-pressed={isActive}
+                      className="rf-chip"
+                    >
+                      {id === "quick" && <Sparkles size={14} aria-hidden="true" />}
+                      {id === "vegetarian" && <ChefHat size={14} aria-hidden="true" />}
+                      {id === "pantry" && <Plus size={14} aria-hidden="true" />}
+                      <span>{VIEW_LABELS[id]}</span>
+                      {id === "pantry" && hasPantry ? <span>({cookableNow})</span> : null}
+                    </button>
+                  );
+                })}
+              </div>
 
-          <div
-            className="c97-segmented"
-            role="group"
-            aria-label="Recipe views"
-            style={{ marginTop: "var(--c97-sp-4)" }}
-          >
-            {(Object.keys(VIEW_LABELS) as ViewId[]).map((id) => {
-              const isActive = view === id;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => selectView(id)}
-                  aria-pressed={isActive}
-                  className="min-h-[44px]"
+              <div className="rf-chips" role="group" aria-label="Meal time">
+                {CATEGORY_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={category === option.value}
+                    onClick={() => setCategory(option.value)}
+                    className="rf-chip"
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="rf-diet">
+                <label htmlFor="recipe-diet-select" className="c97-kicker">
+                  Diet
+                </label>
+                <select
+                  id="recipe-diet-select"
+                  aria-label="Filter by diet"
+                  value={diet}
+                  onChange={(event) => setDiet(event.target.value as DietTag | "all")}
+                  disabled={view === "vegetarian"}
+                  className="rf-field rf-select"
                 >
-                  {id === "all" && <Search size={16} aria-hidden="true" />}
-                  {id === "quick" && <Sparkles size={16} aria-hidden="true" />}
-                  {id === "vegetarian" && <ChefHat size={16} aria-hidden="true" />}
-                  {id === "pantry" && <Plus size={16} aria-hidden="true" />}
-                  <span>{VIEW_LABELS[id]}</span>
-                  {id === "pantry" && hasPantry ? <span>({cookableNow})</span> : null}
-                </button>
-              );
-            })}
-          </div>
+                  {DIET_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                {view === "vegetarian" ? (
+                  <p className="rf-note">Vegetarian view is active. Switch to All recipes to use other diets.</p>
+                ) : null}
+              </div>
+            </div>
 
-          <div
-            className="c97-segmented"
-            role="group"
-            aria-label="Meal time"
-            style={{ marginTop: "var(--c97-sp-3)" }}
-          >
-            {CATEGORY_OPTIONS.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                aria-pressed={category === option.value}
-                onClick={() => setCategory(option.value)}
-                className="min-h-[44px]"
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
+            <p className="rf-count" role="status" aria-live="polite">
+              {visibleMatches.length} of {totalRecipes} recipes
+              {hasPantry ? ", ranked by what your pantry is missing" : ""}
+            </p>
 
-          <div
-            className="flex flex-wrap items-center"
-            style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}
-          >
-            <label htmlFor="recipe-diet-select" className="c97-kicker" style={{ margin: 0 }}>
-              Diet
-            </label>
-            <select
-              id="recipe-diet-select"
-              aria-label="Filter by diet"
-              value={diet}
-              onChange={(event) => setDiet(event.target.value as DietTag | "all")}
-              disabled={view === "vegetarian"}
-              className="c97-recipe-field"
-              style={{ flex: "0 0 auto" }}
-            >
-              {DIET_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-            {view === "vegetarian" ? (
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
-                Vegetarian view is active. Switch to All recipes to use other diets.
-              </p>
-            ) : null}
-          </div>
-
-          <p
-            className="c97-meta c97-tabular"
-            role="status"
-            aria-live="polite"
-            style={{ marginTop: "var(--c97-sp-3)" }}
-          >
-            <span>{totalRecipes} recipes</span>
-            <span aria-hidden="true">·</span>
-            <span>
-              {pantry.length} ingredient{pantry.length === 1 ? "" : "s"} in pantry
-            </span>
-            <span aria-hidden="true">·</span>
-            <span>ranking by pantry match</span>
-          </p>
-
-          <ResultsGrid
-            matches={visibleMatches}
-            pantry={pantry}
-            pantryIsEmpty={hydrated && !hasPantry && view === "pantry"}
-            onReset={resetFilters}
-            openRecipeId={openRecipeId}
-            onToggleRecipe={(id) =>
-              setOpenRecipeId((current) => (current === id ? null : id))
-            }
-          />
+            <ResultsGrid
+              matches={visibleMatches}
+              pantry={pantry}
+              pantryIsEmpty={hydrated && !hasPantry && view === "pantry"}
+              onReset={resetFilters}
+              openRecipeId={openRecipeId}
+              onToggleRecipe={(id) =>
+                setOpenRecipeId((current) => (current === id ? null : id))
+              }
+            />
+          </section>
         </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-            About this corpus
-          </p>
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-            Every recipe here is one I added by hand, which keeps the ingredient list consistent
-            enough for the matcher to work. Pantry staples like salt, pepper, oil, and water are
-            assumed and never count against a recipe&rsquo;s missing ingredients.
-          </p>
-        </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
 
@@ -454,12 +378,12 @@ function PantryShelf({
   onKeyDown,
 }: PantryShelfProps) {
   return (
-    <div>
-      <form onSubmit={onSubmit} className="c97-recipe-pantry-form">
+    <div className="rf-shelf-body">
+      <form onSubmit={onSubmit} className="rf-pantry-form">
         <label htmlFor="pantry-input" className="sr-only">
           Add an ingredient
         </label>
-        <div className="c97-recipe-pantry-suggestions">
+        <div className="rf-suggest">
           <input
             ref={inputRef}
             id="pantry-input"
@@ -469,10 +393,10 @@ function PantryShelf({
             onKeyDown={onKeyDown}
             placeholder="e.g. chicken, lemon"
             autoComplete="off"
-            className="c97-recipe-field"
+            className="rf-field"
           />
           {suggestions.length > 0 ? (
-            <ul className="c97-recipe-suggestion-list">
+            <ul className="rf-suggest-list">
               {suggestions.map((suggestion) => (
                 <li key={suggestion}>
                   <button type="button" onClick={() => onAdd(suggestion)}>
@@ -488,7 +412,7 @@ function PantryShelf({
           type="submit"
           disabled={!pantryDraft.trim()}
           aria-label="Add ingredient"
-          className="c97-recipe-quickadd"
+          className="rf-quickadd"
         >
           <Plus size={16} aria-hidden="true" />
         </button>
@@ -498,28 +422,19 @@ function PantryShelf({
         // Neither "empty" nor a returning visitor's saved pantry is known
         // yet, so show a neutral placeholder instead of flashing the empty
         // prompt in ahead of the real list.
-        <span
-          className="c97-skeleton"
-          style={{ display: "block", height: "1.25rem", width: "60%", marginTop: "var(--c97-sp-3)" }}
-        />
+        <span className="c97-skeleton rf-skeleton" />
       ) : pantry.length === 0 ? (
-        <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
-          Add what&rsquo;s in your kitchen.
-        </p>
+        <p className="rf-note">Add what&rsquo;s in your kitchen, or tap a quick add below.</p>
       ) : (
         <>
-          <ul
-            className="c97-recipe-shelf-tags"
-            aria-label="Pantry ingredients"
-            style={{ marginTop: "var(--c97-sp-3)" }}
-          >
+          <ul className="rf-tags" aria-label="Pantry ingredients">
             {pantry.map((item) => (
               <li key={item}>
                 <button
                   type="button"
                   onClick={() => onRemove(item)}
                   aria-label={`Remove ${item}`}
-                  className="c97-recipe-tag"
+                  className="rf-tag"
                 >
                   <span>{item}</span>
                   <X size={12} aria-hidden="true" />
@@ -530,8 +445,7 @@ function PantryShelf({
           <button
             type="button"
             onClick={onClear}
-            className="c97-recipe-quickadd"
-            style={{ marginTop: "var(--c97-sp-2)" }}
+            className="rf-quickadd rf-clear"
           >
             <Trash2 size={14} aria-hidden="true" />
             Clear
@@ -539,9 +453,9 @@ function PantryShelf({
         </>
       )}
 
-      <div className="c97-recipe-quickadds" style={{ marginTop: "var(--c97-sp-3)" }}>
+      <div className="rf-quickadds" aria-label="Quick adds" role="group">
         {QUICK_PICKS.filter((pick) => !pantry.includes(pick)).map((pick) => (
-          <button key={pick} type="button" onClick={() => onAdd(pick)} className="c97-recipe-quickadd">
+          <button key={pick} type="button" onClick={() => onAdd(pick)} className="rf-quickadd">
             + {pick}
           </button>
         ))}
@@ -563,23 +477,23 @@ interface ResultsGridProps {
 function ResultsGrid({ matches, pantry, pantryIsEmpty, onReset, openRecipeId, onToggleRecipe }: ResultsGridProps) {
   if (matches.length === 0) {
     return (
-      <div className="c97-prose" style={{ marginTop: "var(--c97-sp-5)" }}>
+      <div className="rf-empty">
         {pantryIsEmpty ? (
           <>
             <p>Your pantry shelf is empty, so there is nothing to suggest yet.</p>
-            <p style={{ fontSize: "var(--c97-fs-small)" }}>
-              Add a few ingredients on the shelf above and the recipes that use them show up here.
+            <p className="rf-note">
+              Add a few ingredients to the pantry and the recipes that use them show up here.
             </p>
           </>
         ) : (
           <>
             <p>No recipes match these filters.</p>
-            <p style={{ fontSize: "var(--c97-fs-small)" }}>
+            <p className="rf-note">
               Try removing the meal type or adding more pantry items.
             </p>
           </>
         )}
-        <button type="button" onClick={onReset} className="c97-btn-ghost" style={{ marginTop: "var(--c97-sp-2)" }}>
+        <button type="button" onClick={onReset} className="c97-btn-ghost">
           {pantryIsEmpty ? "Show all recipes" : "Reset filters"}
         </button>
       </div>
@@ -587,7 +501,7 @@ function ResultsGrid({ matches, pantry, pantryIsEmpty, onReset, openRecipeId, on
   }
 
   return (
-    <ul className="c97-recipe-grid" aria-label="Matching recipes" style={{ marginTop: "var(--c97-sp-5)" }}>
+    <ul className="rf-grid" aria-label="Matching recipes">
       {matches.map((match) => (
         <li key={match.recipe.id}>
           <RecipeIndexCard
@@ -620,15 +534,15 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
   const detailId = `recipe-detail-${recipe.id}`;
 
   return (
-    <article data-c97-surface="paper" className="c97-offset c97-recipe-card" style={{ padding: "var(--c97-sp-4)" }}>
-      <header className="c97-recipe-card-header">
+    <article className="rf-card">
+      <header className="rf-card-head">
         <div>
-          <h3 className="c97-serif c97-recipe-card-title">{recipe.title}</h3>
-          <p className="c97-kicker c97-recipe-card-meta">
+          <h3 className="rf-card-title">{recipe.title}</h3>
+          <p className="rf-card-meta">
             {recipe.cuisine} · {CATEGORY_LABELS[recipe.category]}
           </p>
         </div>
-        <div className="c97-recipe-card-corner">
+        <div className="rf-card-corner">
           <span>
             <strong>{formatTotalTime(recipe)}</strong>
           </span>
@@ -636,7 +550,7 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
         </div>
       </header>
 
-      <p className="c97-meta c97-tabular" style={{ margin: "var(--c97-sp-3) 0 0" }}>
+      <p className="rf-card-need" data-complete={card.counts.need === 0 || undefined}>
         {card.counts.need === 0
           ? "You have every ingredient"
           : `Missing ${card.counts.need} of ${card.lines.length} ingredients`}
@@ -644,7 +558,7 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
 
       <button
         type="button"
-        className="c97-recipe-card-steps-toggle"
+        className="rf-card-toggle"
         onClick={onToggleSteps}
         aria-expanded={isOpen}
         aria-controls={detailId}
@@ -653,28 +567,28 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
       </button>
 
       {isOpen ? (
-        <div id={detailId} style={{ marginTop: "var(--c97-sp-3)" }}>
-          <ul className="c97-recipe-ingredients" aria-label={`Ingredients for ${recipe.title}`}>
+        <div id={detailId} className="rf-card-detail">
+          <ul className="rf-ingredients" aria-label={`Ingredients for ${recipe.title}`}>
             {card.lines.map((line, index) => (
-              <li key={`${recipe.id}-${index}`} className="c97-recipe-line" data-have={line.have}>
-                <span className="c97-recipe-tick" aria-hidden="true">
+              <li key={`${recipe.id}-${index}`} className="rf-line" data-have={line.have}>
+                <span className="rf-tick" aria-hidden="true">
                   <svg viewBox="0 0 14 14">
-                    <rect x="1" y="1" width="12" height="12" className="c97-recipe-tick-box" />
+                    <rect x="1" y="1" width="12" height="12" className="rf-tick-box" />
                     {line.have ? (
-                      <path d="M3 7.5L6 10.5L11 4" className="c97-recipe-tick-check" />
+                      <path d="M3 7.5L6 10.5L11 4" className="rf-tick-check" />
                     ) : null}
                   </svg>
                 </span>
                 <span>
                   <span className="sr-only">{line.have ? "In your pantry: " : "Still need: "}</span>
                   {line.name}
-                  {line.staple ? <span className="c97-recipe-staple-mark">staple</span> : null}
+                  {line.staple ? <span className="rf-staple">staple</span> : null}
                 </span>
               </li>
             ))}
           </ul>
 
-          <div className="c97-recipe-card-steps">
+          <div className="rf-card-steps">
             <ol>
               {recipe.instructions.map((step, index) => (
                 <li key={index}>
@@ -684,9 +598,9 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
               ))}
             </ol>
             {recipe.tags.length > 0 ? (
-              <div className="c97-recipe-card-tags">
+              <div className="rf-card-tags">
                 {recipe.tags.map((tag) => (
-                  <span key={tag} className="c97-chip">
+                  <span key={tag} className="rf-card-tag">
                     {tag}
                   </span>
                 ))}

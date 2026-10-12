@@ -64,6 +64,9 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/fantasy-football/trade-calculator": {
     purpose:
       "I built this to check a one-QB redraft trade against something steadier than my gut, turning expert consensus and mock-draft ADP into values for my league's scoring, size, and lineup. It withholds the verdict when a source is stale or a player has no current market reading, because I would rather it say nothing than say something I cannot support.",
+  "/food-map": {
+    purpose:
+      "I built this to keep the places I actually send people to on one map, next to Anthony Bourdain's picks and the ones the crowd rates highest on Google, with each pin colored by who is vouching for it. Every filter and pick lives in the URL, so a link I send opens on the exact city and stop with what to order already showing.",
   },
   "/formula-1": {
     purpose:
@@ -92,6 +95,10 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/mlb": {
     purpose:
       "I use this dashboard to move between division standings, the AL and NL races, and the wild card picture without treating them as separate products. Team drilldowns connect the table to recent results and the league's hitting and pitching leaders.",
+  },
+  "/museum-log": {
+    purpose:
+      "I wanted a Letterboxd for museums, so this is the catalog of the ones I'd actually send a friend to, each drawn as its admission ticket with my rating, the admission price, and whether an exhibit is on today. Logging a visit takes one press, the rating and a note come from the museum's own page, and the journal and the themed lists are there for planning a trip around a city's museums.",
   },
   "/nba": {
     purpose:
@@ -128,6 +135,9 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/score-pools/tracker": {
     purpose:
       "I use the tracker after the games, when the question changes from what to pick to how the picks actually scored. It scores my saved picks against the results under the pool's rules, keeps a running total, and lets me enter a result by hand or a rival's picks when no feed has them.",
+  "/recipe-finder": {
+    purpose:
+      "I built this around the question I actually have at dinner, which is what I can make with what's already in the kitchen. The recipes reorder by how many ingredients the pantry is missing, staples like salt and oil never count against a recipe, and the pantry stays saved in this browser for the next night.",
   },
   "/spacex-mission-control": {
     purpose:
@@ -136,6 +146,14 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   "/tech-startup-tracker": {
     purpose:
       "I use this tracker to compare notable startups across sector, funding stage, valuation, capital raised, and recent financing without pretending that one number explains momentum. The goal is a research shortlist that can be sorted and inspected, not a definitive company ranking.",
+  },
+  "/travel": {
+    purpose:
+      "I wanted one dated plan per trip that reads the way the trip happens, a day at a time, with each stop under its time and ticked off once it's done. The time grid beside the days shows when a day is overloaded or two stops overlap, and the journal keeps a note of what each day was actually like. Everything stays in this browser, so there is no account to make before planning a weekend.",
+  },
+  "/travel-deals": {
+    purpose:
+      "I built this to judge a fare I've already found, since the harder part of booking travel is knowing whether a quote is any good. It places the quote against a typical band for the region, marks where today sits in the booking window, splits the rest of the budget, and checks whether points beat cash. The playbook under it is the short list of tactics and search tools I actually use.",
   },
   "/world-cup-2026": {
     purpose:

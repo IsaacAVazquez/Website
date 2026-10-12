@@ -1,79 +1,475 @@
-/* Travel Deal Lab: the fare gauge / booking strip signature and its rows. */
+/*
+ * Travel Deal Lab, drawn as a one-page calculator: the trip and fare inputs on
+ * the left, one fare check on the right (the verdict, the gauge, and the
+ * booking, budget, and points rows), then the playbook as one ruled list with
+ * the search links. The route paints its own paper and redeclares the Catalog
+ * 97 tokens the borrowed field, button, chip, table, and label classes read.
+ */
 
-.c97-fare-signature {
+.td-root {
+  --td-paper: #f6f5f1;
+  --td-field: #eae8e1;
+  --td-ink: #172033;
+  --td-ink-2: #4a5468;
+  --td-orange: #a83a0b;
+  --td-rule: rgba(23, 32, 51, 0.16);
+  --td-rule-strong: #172033;
+
+  --c97-surface: var(--td-paper);
+  --c97-field: var(--td-field);
+  --c97-ink: var(--td-ink);
+  --c97-ink-2: var(--td-ink-2);
+  --c97-label: var(--td-ink-2);
+  --c97-rule: var(--td-rule);
+  --c97-accent: var(--td-orange);
+  --c97-overprint: var(--td-orange);
+  --c97-positive: #24663a;
+  --c97-negative: #a1302a;
+
+  background: var(--td-paper);
+  color: var(--td-ink);
+  font-family: var(--c97-font-body);
+}
+
+.dark .td-root {
+  --td-paper: #11151d;
+  --td-field: #1c2230;
+  --td-ink: #ebeef3;
+  --td-ink-2: #a9b2c3;
+  --td-orange: #ff9b6a;
+  --td-rule: rgba(235, 238, 243, 0.16);
+  --td-rule-strong: #ebeef3;
+
+  --c97-positive: #8fd19e;
+  --c97-negative: #f2a49b;
+}
+
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.td-root h1,
+.td-root h2,
+.td-root h3 {
+  font-family: var(--c97-font-body);
+  color: var(--td-ink);
+  margin: 0;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.td-root :where(p, ul, ol, li) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+  line-height: 1.45;
+}
+
+.td-root :where(ul, ol) {
+  list-style: none;
+}
+
+.td-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-5);
+  padding-block: var(--c97-sp-4) var(--c97-sp-5);
+}
+
+.td-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.td-root h1 {
+  font-size: var(--c97-fs-h1);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.td-lede {
+  max-inline-size: 62ch;
+  color: var(--td-ink-2);
+}
+
+.td-note {
+  font-size: var(--c97-fs-small);
+  color: var(--td-ink-2);
+}
+
+.td-count {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--td-ink-2);
+  white-space: nowrap;
+}
+
+/* The calculator: inputs, the fare check, then the secondary inputs. */
+.td-calc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "inputs" "result" "more";
+  gap: var(--c97-sp-4);
+  align-items: start;
+}
+
+@media screen and (min-width: 1024px) {
+  .td-calc {
+    grid-template-columns: minmax(18rem, 22rem) minmax(0, 1fr);
+    grid-template-areas: "inputs result" "more result";
+    grid-template-rows: auto 1fr;
+    column-gap: var(--c97-sp-5);
+  }
+}
+
+.td-inputs {
+  grid-area: inputs;
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.td-more {
+  grid-area: more;
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.td-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.td-root .c97-field[type="number"] {
+  font-family: var(--c97-font-mono);
+}
+
+/* Secondary inputs sit under disclosure headings in the input column. */
+.td-disclose {
+  border-top: 1px solid var(--td-rule);
+}
+
+.td-disclose summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.td-disclose summary:focus-visible {
+  outline: 2px solid var(--td-orange);
+  outline-offset: 2px;
+}
+
+.td-disclose-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-3);
+}
+
+/* The fare check is the one box on the page, since the result is the object. */
+.td-result {
+  grid-area: result;
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding: var(--c97-sp-3);
+  border: 1px solid var(--td-rule-strong);
+  min-width: 0;
+}
+
+.td-verdict {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.td-verdict-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.td-verdict-fare {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-h1);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.td-verdict-unit {
+  color: var(--td-ink-2);
+}
+
+.td-savings {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+}
+
+.td-prompt {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.25;
+  color: var(--td-ink-2);
+}
+
+/* Each result row: a label in the margin, the reading beside it. */
+.td-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--td-rule);
+}
+
+@media screen and (min-width: 640px) {
+  .td-row {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: var(--c97-sp-3);
+  }
+}
+
+.td-row h3 {
+  display: flex;
+  padding-top: 2px;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.td-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.td-row-lead {
+  font-weight: 700;
+}
+
+.td-table {
   width: 100%;
 }
 
-.c97-fare-kicker {
+/* Row headers, so the borrowed sticky header rule comes off them. */
+.td-table th {
+  position: static;
+  background: none;
+  font-weight: 400;
+  text-align: left;
+}
+
+.td-table td[data-align="end"] {
+  font-family: var(--c97-font-mono);
+  white-space: nowrap;
+}
+
+.td-disclosure {
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--td-rule);
+}
+
+/* The gauge and booking strip. */
+.td-fare-signature {
+  width: 100%;
+}
+
+.td-fare-kicker {
   font-family: var(--c97-font-mono);
   font-size: 15px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  fill: var(--c97-ink-2);
+  fill: var(--td-ink-2);
 }
 
-.c97-fare-axis {
+.td-fare-axis {
   font-family: var(--c97-font-mono);
   font-size: 15px;
-  fill: var(--c97-ink);
+  fill: var(--td-ink);
 }
 
-.c97-fare-label {
+.td-fare-label {
   font-family: var(--c97-font-mono);
   font-size: 15px;
   font-weight: 400;
-  fill: var(--c97-ink);
+  fill: var(--td-ink);
 }
 
-.c97-fare-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--c97-sp-3);
-  align-items: baseline;
-  min-height: 44px;
-  padding: var(--c97-sp-2) 0;
-  border-bottom: 1px solid var(--c97-rule);
-}
-
-.c97-fare-row:last-child {
-  border-bottom: 0;
-}
-
-a.c97-fare-row:hover .c97-serif,
-a.c97-fare-row:focus-visible .c97-serif {
-  color: var(--c97-action);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-/* At phone width the SVG scales to roughly a third, so its type is set
- * larger in viewBox units, and the sweet-spot day labels drop since the
- * shaded band and the body copy below already carry that number. */
 /* Each fitted label prints twice, one fitted per type size, and only one shows. */
-.c97-fare-narrow {
+.td-fare-narrow {
   display: none;
 }
 
+/* At phone width the SVG scales to roughly a third, so its type is set larger
+ * in viewBox units, and the sweet-spot day labels drop since the shaded band
+ * and the booking row already carry that number. */
 @media print, screen and (max-width: 639px) {
-  .c97-fare-wide {
+  .td-fare-wide {
     display: none;
   }
 
-  .c97-fare-narrow {
+  .td-fare-narrow {
     display: inline;
   }
 
-  .c97-fare-kicker,
-  .c97-fare-axis-minor,
-  .c97-fare-prompt {
+  .td-fare-kicker,
+  .td-fare-axis-minor,
+  .td-fare-prompt {
     display: none;
   }
 
-  .c97-fare-axis {
+  .td-fare-axis {
     font-size: 30px;
   }
 
-  .c97-fare-label {
+  .td-fare-label {
     font-size: 32px;
+  }
+}
+
+/* The playbook: one ruled list of tactics, then the search links. */
+.td-playbook {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  max-inline-size: 60rem;
+}
+
+.td-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 3px solid var(--td-rule-strong);
+}
+
+.td-playbook h2 {
+  font-size: var(--c97-fs-h2);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.td-tactic {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-2);
+  border-bottom: 1px solid var(--td-rule);
+}
+
+@media screen and (max-width: 639px) {
+  .td-tactic {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .td-apply {
+    justify-self: start;
+  }
+}
+
+.td-tactic-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+
+.td-tactic h3 {
+  font-size: var(--c97-fs-body);
+  font-weight: 700;
+}
+
+.td-tactic-body p {
+  max-inline-size: 70ch;
+}
+
+.td-tactic-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--td-ink-2);
+}
+
+.td-apply {
+  gap: var(--c97-sp-1);
+}
+
+.td-tactic[data-applied] .td-apply {
+  color: var(--c97-positive);
+}
+
+.td-more-tactics {
+  align-self: flex-start;
+  margin-inline-start: 0;
+}
+
+.td-tools-title {
+  margin-top: var(--c97-sp-3);
+  font-size: var(--c97-fs-body);
+  font-weight: 700;
+}
+
+.td-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  column-gap: var(--c97-sp-4);
+}
+
+.td-tools li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--td-rule);
+}
+
+.td-tools a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  color: var(--td-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.td-tools a:hover {
+  color: var(--td-orange);
+}
+
+.td-tools a:focus-visible {
+  outline: 2px solid var(--td-orange);
+  outline-offset: 2px;
+}
+
+.td-tool-for {
+  font-size: var(--c97-fs-small);
+  color: var(--td-ink-2);
+}
+
+@media print {
+  .td-fare-signature,
+  .td-verdict,
+  .td-row {
+    break-inside: avoid;
+  }
+
+  .td-apply,
+  .td-more-tactics {
+    display: none;
   }
 }
