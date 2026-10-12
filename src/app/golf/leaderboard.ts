@@ -57,7 +57,7 @@ export function formatScoreToPar(value: number | null | undefined): string {
 }
 
 /**
- * Lays the leaderboard out as slats for the manual-board signature: each
+ * Lays the leaderboard out as slats for the board: each
  * player's rounds padded to a common column count and toned by par, plus
  * where (if anywhere) the cut line falls.
  */
@@ -105,23 +105,4 @@ export function leaderboardSlats(
   }
 
   return { slats, cutIndex };
-}
-
-export type BoardRow = { kind: "slat"; slat: LeaderboardSlat } | { kind: "cutline" } | { kind: "gap" };
-
-/**
- * The hero board's rows: the top of the field, then the cut line under the
- * last player who made it. When that player sits below the top, a gap row
- * stands for the players between, and the player prints above the line.
- */
-export function boardRows(slats: LeaderboardSlat[], cutIndex: number | null, topCount: number): BoardRow[] {
-  const rows: BoardRow[] = slats.slice(0, topCount).map((slat) => ({ kind: "slat", slat }));
-  if (cutIndex === null || cutIndex >= slats.length) return rows;
-  if (cutIndex < topCount) {
-    rows.splice(cutIndex + 1, 0, { kind: "cutline" });
-    return rows;
-  }
-  if (cutIndex > topCount) rows.push({ kind: "gap" });
-  rows.push({ kind: "slat", slat: slats[cutIndex] }, { kind: "cutline" });
-  return rows;
 }

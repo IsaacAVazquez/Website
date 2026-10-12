@@ -1,25 +1,18 @@
 "use client";
 
-import {
-  useMemo,
-  useState,
-  type CSSProperties,
-} from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
-import {
-  CrestAvatar,
-  TeamResultPill,
-  FixtureCard,
-  LeaderList,
-  type LeaderEntry,
-} from "@/components/football";
+import { CrestAvatar } from "@/components/football/CrestAvatar";
+import { TeamResultPill } from "@/components/football/TeamResultPill";
+import { FixtureLedgerSection } from "@/components/football/FixtureLedger";
+import { LeaderLedger, type LeaderLedgerEntry } from "@/components/football/LeaderLedger";
+import { SegmentedTabs } from "@/components/football/SegmentedTabs";
+import { groupFixtures } from "@/components/football/fixtureGroups";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and the two league pages do not use this drawer.
 import { DetailDrawer } from "@/components/football/DetailDrawer";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
-import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
   MlbHittingLeaders,
   MlbLeader,
@@ -40,13 +33,13 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./mlb-state.core";
-import { divisionBoard } from "./scoreboard";
+import { divisionBoard, wildCardBoard } from "./scoreboard";
 import { MlbScoreboard } from "./MlbScoreboard";
+import "@/components/football/sports-board.css";
 import "./mlb.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 import { formatFixed, formatRank } from "@/components/football/fixtureFormat";
-import { groupBy } from "@/lib/utils";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -54,13 +47,13 @@ interface MlbClientProps {
   initialTeamSnapshot: MlbTeamSnapshot | null;
 }
 
-type DetailTab = "team" | "games" | "leaders";
+type DetailTab = "games" | "leaders";
 
-const viewOptions: Array<{ id: MlbView; label: string; description: string }> = [
-  { id: "all", label: "All divisions", description: "All 30 clubs grouped by AL and NL division." },
-  { id: "al", label: "American League", description: "AL East, Central, and West divisions." },
-  { id: "nl", label: "National League", description: "NL East, Central, and West divisions." },
-  { id: "wildcard", label: "Wild card", description: "Top wild card contenders in both leagues." },
+const viewOptions: Array<{ id: MlbView; label: string }> = [
+  { id: "all", label: "All divisions" },
+  { id: "al", label: "American League" },
+  { id: "nl", label: "National League" },
+  { id: "wildcard", label: "Wild card" },
 ];
 
 // Keyed by the API's gameType, which the snapshot carries as `stage`.
@@ -71,14 +64,18 @@ const postseasonRoundLabels: Record<string, string> = {
   W: "World Series",
 };
 
+// The rest of the API's gameType codes, so a spring training or All-Star
+// game never groups under the regular season.
+const otherGameLabels: Record<string, string> = {
+  R: "Regular season",
+  S: "Spring training",
+  E: "Exhibition",
+  A: "All-Star Game",
+};
+
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
   return `${games.toFixed(1)} GB`;
-}
-
-/** The board a club prints on, which is its league's race in the wild card view and its division otherwise. */
-function boardName(row: MlbStandingsRow, view: MlbView) {
-  return view === "wildcard" ? `${row.league} Wild Card` : row.division;
 }
 
 function formatRecord(row: MlbStandingsRow) {
@@ -92,15 +89,12 @@ function formatLeaderTotal(total: number, statLabel: string): string | number {
   return Math.round(total);
 }
 
-function leadersToEntries(leaders: MlbLeader[], statLabel: string): LeaderEntry[] {
-  return leaders.map((leader) => ({
+function leadersToEntries(leaders: MlbLeader[], statLabel: string): LeaderLedgerEntry[] {
+  return leaders.slice(0, 5).map((leader) => ({
     rank: leader.rank,
     name: leader.name,
-    clubId: leader.teamId,
     clubCode: leader.teamCode,
-    total: formatLeaderTotal(leader.total, statLabel),
-    appearances: leader.games,
-    perMatch: leader.perGame,
+    value: formatLeaderTotal(leader.total, statLabel),
   }));
 }
 
@@ -122,10 +116,6 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   const standingsById = useMemo(
     () => new Map(standings.map((row) => [row.id, row])),
     [standings]
-  );
-  const teamShortNameLookup = useMemo(
-    () => new Map(summary.teams.map((team) => [team.id, team.shortName])),
-    [summary.teams]
   );
   const logoByTeamId = useMemo(
     () => new Map(summary.teams.map((team) => [team.id, team.logo])),
@@ -179,7 +169,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   // A link that names a team outside its view (an NL club on the AL view)
   // opens that team in the full league, the way a game card's pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
+  // Only a link that names a team moves the view; a bare ?view= fills in the
+  // view's own first team instead of the default one, which may sit outside it.
   const routeState: MlbRouteState =
+    searchParams.get("team") !== null &&
     standingsById.has(linkedState.team) &&
     !filterStandings(standings, linkedState.view).some((row) => row.id === linkedState.team)
       ? { ...linkedState, view: defaultState.view }
@@ -201,7 +194,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     { id: selectedRow?.id ?? null, snapshot: initialTeamSnapshot },
     "Unable to load team snapshot."
   );
-  const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("team");
+  const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("games");
   // The team drawer is its own state, because every view writes its first
   // team into ?team= and the URL alone cannot say a team was opened. It starts
   // open only for a link to a team other than the view's first, and after
@@ -214,9 +207,6 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
       : null
   );
   const isDrawerOpen = drawerTeamId !== null && drawerTeamId === selectedTeamId;
-  // The board the reader picked, or the one they last opened a team on. Until
-  // then the board is the selected team's.
-  const [boardChoice, setBoardChoice] = useState<string | null>(null);
 
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
@@ -244,419 +234,212 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     const team = canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team;
     // A game card can name a team the current view leaves out, so that team
     // opens in the full league, where it can be selected.
-    const view = filterStandings(standings, routeState.view).some((row) => row.id === team)
+    const view = visibleStandings.some((row) => row.id === team)
       ? routeState.view
       : defaultState.view;
-    const row = standingsById.get(team);
     setDrawerTeamId(team);
-    setBoardChoice(row ? boardName(row, view) : null);
     navigate({ view, team });
   }
 
-  const groupedStandings = useMemo(() => {
-    const groups = groupBy(visibleStandings, (row) => boardName(row, routeState.view));
-    return Array.from(groups.entries());
-  }, [visibleStandings, routeState.view]);
-  const activeGroup =
-    groupedStandings.find(([groupName]) => groupName === boardChoice) ??
-    groupedStandings.find(([, rows]) => rows.some((row) => row.id === selectedRow?.id)) ??
-    groupedStandings[0];
-
   const leagueLeader = useMemo(
-    () =>
-      [...standings].sort(
-        (a, b) => b.pct - a.pct || b.wins - a.wins
-      )[0] ?? null,
+    () => [...standings].sort((a, b) => b.pct - a.pct || b.wins - a.wins)[0] ?? null,
     [standings]
   );
   const hottest = useMemo(() => {
     const pool = [...standings].filter((row) => /^W\d+/i.test(row.streak));
-    pool.sort((a, b) => {
-      const aRun = Number.parseInt(a.streak.slice(1), 10) || 0;
-      const bRun = Number.parseInt(b.streak.slice(1), 10) || 0;
-      return bRun - aRun;
-    });
+    pool.sort((a, b) => (Number.parseInt(b.streak.slice(1), 10) || 0) - (Number.parseInt(a.streak.slice(1), 10) || 0));
     return pool[0] ?? null;
   }, [standings]);
-
   // Tightest division: smallest games-back among 2nd-place teams
   const tightestDivision = useMemo(() => {
     const seconds = standings.filter(
       (row) => row.divisionRank === 2 && Number.isFinite(row.gamesBack) && row.gamesBack >= 0
     );
-    if (seconds.length === 0) return null;
-    return [...seconds].sort((a, b) => a.gamesBack - b.gamesBack)[0] ?? null;
+    return seconds.toSorted((a, b) => a.gamesBack - b.gamesBack)[0] ?? null;
   }, [standings]);
 
   const hasStandings = standings.length > 0 && standings.some((row) => row.wins + row.losses > 0);
   // Postseason games on the slate mean the regular season table is final, so
-  // the division readout reads as a finish and not a race still being chased.
+  // the board reads as a finish and not a race still being chased.
   const isPostseason = [...summary.recentGames, ...summary.upcomingGames].some((game) =>
     Object.hasOwn(postseasonRoundLabels, game.stage ?? "")
   );
 
-  const scoreboard = useMemo(() => divisionBoard(standings), [standings]);
+  const divisions = useMemo(() => divisionBoard(standings), [standings]);
+  const wildCards = useMemo(() => wildCardBoard(standings), [standings]);
+  const boards =
+    routeState.view === "wildcard"
+      ? wildCards
+      : routeState.view === "all"
+        ? divisions
+        : divisions.filter((board) => board.name.startsWith(routeState.view === "al" ? "AL" : "NL"));
 
-  const lead = PROJECT_PRESS[MLB_ROUTE].lead;
-  const standfirst =
-    "I wanted the division and wild card races laid out the way the out-of-town scoreboard at the ballpark shows them, team by team, with the games back and each club's last ten games easy to scan. It reads from a curated MLB Stats API snapshot that refreshes on a schedule, so tonight's games show up after the next refresh.";
+  // The three readouts the old hero printed, folded into the board's header line.
+  const summaryParts = [
+    leagueLeader ? `${leagueLeader.shortName} have the best record at ${formatRecord(leagueLeader)}` : null,
+    tightestDivision
+      ? `the ${tightestDivision.division} ${isPostseason ? "finished closest" : "is the closest race"}, with the ${tightestDivision.shortName} ${tightestDivision.gamesBack.toFixed(1)} games back`
+      : null,
+    hottest ? `the ${hottest.shortName} are on the longest win streak at ${hottest.streak}` : null,
+  ].filter(Boolean);
+  const boardSummary = summaryParts.length > 0 ? `${summaryParts.join(", ")}.`.replace(/^./, (c) => c.toUpperCase()) : null;
+
+  const updatedLabel =
+    summary.updatedAt && summary.updatedAt > "1970-01-02" ? ` · updated ${snapshotDateLabel}` : "";
+  const roundLabel = (game: { stage: string | null }) =>
+    postseasonRoundLabels[game.stage ?? ""] ?? otherGameLabels[game.stage ?? ""] ?? "Other games";
+  const teamRecent = (teamSnapshot?.recentGames ?? []).slice(0, 3);
+  const teamUpcoming = (teamSnapshot?.upcomingGames ?? []).slice(0, 3);
 
   return (
-    <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="MLB Pulse"
-        standfirst={standfirst}
-        meta={`${summary.sourceLabel} · Season ${summary.season}${
-          summary.updatedAt && summary.updatedAt > "1970-01-02"
-            ? ` · updated ${snapshotDateLabel}`
-            : ""
-        }`}
-        // The hero fills a phone's first screen and the scoreboard runs long
-        // under it, so one link goes straight to the table.
-        action={<a href="#mlb-standings" className="c97-btn-ghost">Jump to standings</a>}
-        readouts={[
-          {
-            label: "Best record",
-            value: leagueLeader ? formatRecord(leagueLeader) : "—",
-            detail: leagueLeader ? `${leagueLeader.shortName}, ${formatFixed(leagueLeader.pct, 3)} W%` : undefined,
-          },
-          {
-            label: isPostseason ? "Closest division finish" : "Closest division race",
-            value: tightestDivision ? `${tightestDivision.gamesBack.toFixed(1)} GB` : "—",
-            detail: tightestDivision
-              ? `${tightestDivision.division}, ${tightestDivision.shortName} ${isPostseason ? "finished second" : "chasing"}`
-              : undefined,
-          },
-          {
-            label: "Hottest streak",
-            value: hottest ? hottest.streak : "—",
-            detail: hottest ? `${hottest.shortName}, ${hottest.last10} in the last 10` : "No active win streaks",
-          },
-        ]}
-      >
-        <MlbScoreboard divisions={scoreboard} />
-      </Catalog97ProjectHero>
-
-      <section id="mlb-standings" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Standings</h2>
-
-          <div className="c97-segmented" role="group" aria-label="Standings view">
-            {viewOptions.map((option) => (
-              <button
-                key={option.id}
-                type="button"
-                aria-pressed={option.id === routeState.view}
-                onClick={() => handleViewChange(option.id)}
-                className="min-h-[44px] text-sm font-semibold"
-              >
-                {option.label}
-                <span style={{ marginLeft: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                  {filterStandings(standings, option.id).length}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
-            {(["division", "wildcard", "out"] as const).map((zone) => (
-              <span key={zone} className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                <span
-                  className="c97-mlb-zone-dot"
-                  style={{ backgroundColor: getZoneDotColor(zone) }}
-                  aria-hidden="true"
-                />
-                {getZoneLabel(zone)}
-              </span>
-            ))}
+    <div className="sb-root mlb-root">
+      <div className="c97-shell c97-frame sb-column">
+        <div className="sb-titlebar">
+          <h1 className="sb-title">MLB Pulse</h1>
+          <p className="sb-standfirst">
+            I lay the division and wild card races out the way the out-of-town scoreboard at the ballpark shows
+            them, team by team, so the games back and each club&apos;s last ten are easy to scan.
           </p>
+          <p className="sb-status">
+            <span className="sb-state" data-state={isPostseason ? "post" : "live"}>
+              {isPostseason ? "Postseason" : "Regular season"}
+            </span>
+            <span>
+              {summary.sourceLabel} · Season {summary.season}
+              {updatedLabel}
+            </span>
+          </p>
+        </div>
 
-          {!hasStandings && (
-            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
-              The clubs are listed below by division. Win and loss data will appear once the
-              next snapshot is published.
-            </p>
-          )}
-
-          {groupedStandings.length > 1 && activeGroup ? (
-            <div className="c97-segmented" role="group" aria-label={routeState.view === "wildcard" ? "League" : "Division"} style={{ marginTop: "var(--c97-sp-3)" }}>
-              {groupedStandings.map(([groupName]) => (
+        <section id="mlb-standings" className="sb-board" aria-label="MLB standings">
+          <div className="sb-toolbar">
+            <h2 className="sb-h2">{isPostseason ? "Final standings" : "Standings"}</h2>
+            <div className="sb-switch" role="group" aria-label="Standings view">
+              {viewOptions.map((option) => (
                 <button
-                  key={groupName}
+                  key={option.id}
                   type="button"
-                  aria-pressed={groupName === activeGroup[0]}
-                  onClick={() => setBoardChoice(groupName)}
-                  className="min-h-[44px] text-sm font-semibold"
+                  aria-pressed={option.id === routeState.view}
+                  onClick={() => handleViewChange(option.id)}
                 >
-                  {groupName}
+                  {option.label} <span className="sb-switch-count">{filterStandings(standings, option.id).length}</span>
                 </button>
               ))}
             </div>
-          ) : null}
-
-          {activeGroup ? (
-            <div
-              className="overflow-x-auto"
-              style={{ marginTop: "var(--c97-sp-3)" }}
-              role="region"
-              aria-label="MLB standings (scrollable)"
-              tabIndex={0}
-            >
-              <table className="c97-table c97-mlb-table" aria-label={`${activeGroup[0]} standings`}>
-                <thead>
-                  <tr>
-                    <th scope="col">Pos</th>
-                    <th scope="col">Team</th>
-                    <th scope="col">W-L</th>
-                    <th scope="col" className="hidden sm:table-cell" data-align="end">PCT</th>
-                    <th scope="col" className="hidden md:table-cell" data-align="end">GB</th>
-                    <th scope="col" className="hidden lg:table-cell" data-align="end">RS</th>
-                    <th scope="col" className="hidden lg:table-cell" data-align="end">RA</th>
-                    <th scope="col" className="hidden xl:table-cell">L10</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {activeGroup[1].map((row) => {
-                    const isSelected = row.id === selectedRow?.id;
-                    const positionLabel =
-                      routeState.view === "wildcard"
-                        ? row.wildCardRank ?? row.divisionRank
-                        : row.divisionRank;
-                    const zone = getTeamZone(row);
-                    return (
-                      <tr key={row.id} data-selected={isSelected || undefined}>
-                        <td>
-                          <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                            <span
-                              className="c97-mlb-zone-dot"
-                              style={{ backgroundColor: getZoneDotColor(zone) }}
-                              title={getZoneLabel(zone)}
-                              aria-hidden="true"
-                            />
-                            <span className="c97-mono">{positionLabel}</span>
-                            <span className="sr-only">{getZoneLabel(zone)}</span>
-                          </div>
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            onClick={() => handleTeamChange(row.id)}
-                            aria-pressed={isSelected}
-                            aria-haspopup="dialog"
-                            aria-label={`Show ${row.name} details`}
-                            className="flex min-h-[44px] w-full items-center text-left"
-                            style={{ gap: "var(--c97-sp-1)", background: "none", border: 0, padding: 0 }}
-                          >
-                            <CrestAvatar
-                              crest={logoByTeamId.get(row.id) ?? null}
-                              name={row.shortName}
-                              size="sm"
-                            />
-                            <span className="c97-serif" style={{ fontWeight: 600 }}>
-                              {row.shortName}
-                            </span>
-                          </button>
-                        </td>
-                        <td className="c97-mono">{formatRecord(row)}</td>
-                        <td className="c97-mono hidden sm:table-cell" data-align="end">{formatFixed(row.pct, 3)}</td>
-                        <td className="c97-mono hidden md:table-cell" data-align="end">{formatGamesBack(row.gamesBack)}</td>
-                        <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsScored}</td>
-                        <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsAllowed}</td>
-                        <td className="c97-mono hidden xl:table-cell">{row.last10}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          ) : null}
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
-          <div className="c97-segmented" role="tablist" aria-label="Team and league details">
-            {(["team", "games", "leaders"] as const).map((tab) => {
-              const labels = {
-                team: "Team detail",
-                games: "Games",
-                leaders: "League leaders",
-              } as const;
-              return (
-                <button
-                  key={tab}
-                  id={`mlb-detail-tab-${tab}`}
-                  role="tab"
-                  type="button"
-                  aria-selected={activeDetailTab === tab}
-                  aria-controls="mlb-detail-panel"
-                  onClick={() => setActiveDetailTab(tab)}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {labels[tab]}
-                </button>
-              );
-            })}
           </div>
 
-          <div
-            id="mlb-detail-panel"
-            role="tabpanel"
-            aria-labelledby={`mlb-detail-tab-${activeDetailTab}`}
-            style={{ marginTop: "var(--c97-sp-3)" }}
-          >
-            {activeDetailTab === "team" && selectedRow && (
-              <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
-                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-                  <div className="c97-panel">
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
-                    <ul className="c97-list">
-                      {getPressurePoints(selectedRow).map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+          {boardSummary && hasStandings ? <p className="sb-summary">{boardSummary}</p> : null}
+          {!hasStandings ? (
+            <p className="sb-muted">
+              The clubs are listed below by division. Win and loss data will appear once the next snapshot is
+              published.
+            </p>
+          ) : null}
 
-                  {selectedTeam?.venue && (
-                    <p className="c97-prose">
-                      Home park is {selectedTeam.venue}.
-                    </p>
-                  )}
+          <MlbScoreboard boards={boards} selectedId={selectedRow?.id ?? null} onSelect={handleTeamChange} />
+
+          <ul className="sb-legend">
+            {routeState.view === "wildcard" ? (
+              <>
+                <li>
+                  <abbr className="mlb-mark" data-mark="In">In</abbr> holds one of three wild card slots, above the
+                  dashed line
+                </li>
+                <li>A plus is a slot holder&apos;s lead over the first team out</li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <abbr className="mlb-mark" data-mark="Leads">Leads</abbr> the division
+                </li>
+                <li>
+                  <abbr className="mlb-mark" data-mark="WC">WC</abbr> holds one of three wild card slots
+                </li>
+              </>
+            )}
+            <li>Lit squares are wins in the last ten</li>
+          </ul>
+        </section>
+
+        <section className="sb-detail" aria-labelledby="mlb-detail-heading">
+          <div className="sb-toolbar">
+            <h2 id="mlb-detail-heading" className="sb-h2">
+              Games and leaders
+            </h2>
+            <SegmentedTabs
+              tabs={[
+                { id: "games", label: "Games" },
+                { id: "leaders", label: "League leaders" },
+              ]}
+              activeId={activeDetailTab}
+              onChange={(id) => setActiveDetailTab(id as DetailTab)}
+              ariaLabel="Team and league details"
+              idPrefix="mlb-detail-tab"
+              panelId="mlb-detail-panel"
+              className="sb-switch"
+            />
+          </div>
+
+          <div id="mlb-detail-panel" role="tabpanel" aria-labelledby={`mlb-detail-tab-${activeDetailTab}`}>
+            {activeDetailTab === "games" ? (
+              summary.recentGames.length === 0 && summary.upcomingGames.length === 0 ? (
+                <p className="sb-muted">
+                  No games are on the schedule right now. Recent results and upcoming games will appear here once
+                  the next snapshot is published.
+                </p>
+              ) : (
+                <div className="sb-pair">
+                  <div>
+                    <h3 className="sb-h3">Latest results</h3>
+                    <FixtureLedgerSection
+                      groups={groupFixtures(summary.recentGames, roundLabel)}
+                      onOpenTeam={handleTeamChange}
+                      emptyLabel="No results are in this snapshot."
+                    />
+                  </div>
+                  <div>
+                    <h3 className="sb-h3">Upcoming games</h3>
+                    <FixtureLedgerSection
+                      groups={groupFixtures(summary.upcomingGames, roundLabel)}
+                      onOpenTeam={handleTeamChange}
+                      emptyLabel="No upcoming games are in this snapshot."
+                    />
+                  </div>
                 </div>
-
-                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
-                  <div
-                    className="c97-panel"
-                    role={teamSnapshotError ? "alert" : "status"}
-                    aria-live="polite"
-                  >
-                    <p className="c97-prose">
-                      {isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}
-                    </p>
-                  </div>
-                )}
-
-                {(teamSnapshot?.recentGames.length ?? 0) > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Recent results</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {(teamSnapshot?.recentGames ?? []).slice(0, 3).map((game) => (
-                        <FixtureCard
-                          key={game.id}
-                          fixture={game}
-                          contextTeamId={teamSnapshot?.team?.id ?? undefined}
-                          compact
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {(teamSnapshot?.upcomingGames.length ?? 0) > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming games</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {(teamSnapshot?.upcomingGames ?? []).slice(0, 3).map((game) => (
-                        <FixtureCard
-                          key={game.id}
-                          fixture={game}
-                          contextTeamId={teamSnapshot?.team?.id ?? undefined}
-                          compact
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {activeDetailTab === "games" && (
-              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
-                {summary.recentGames.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent slate</p>
-                    <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Latest results</h3>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {summary.recentGames.map((game) => (
-                        <FixtureCard
-                          key={game.id}
-                          fixture={game}
-                          onOpenTeam={handleTeamChange}
-                          fallbackLabel={postseasonRoundLabels[game.stage ?? ""]}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {summary.upcomingGames.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next up</p>
-                    <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Upcoming games</h3>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {summary.upcomingGames.map((game) => (
-                        <FixtureCard
-                          key={game.id}
-                          fixture={game}
-                          onOpenTeam={handleTeamChange}
-                          fallbackLabel={postseasonRoundLabels[game.stage ?? ""]}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {summary.recentGames.length === 0 && summary.upcomingGames.length === 0 && (
-                  <p className="c97-prose">
-                    No games are on the schedule right now. Recent results and upcoming games will appear here once the next snapshot is published.
-                  </p>
-                )}
-              </div>
-            )}
-
-            {activeDetailTab === "leaders" && (
+              )
+            ) : (
               <LeagueLeaders
                 hitting={summary.hittingLeaders}
                 pitching={summary.pitchingLeaders}
-                teamLookup={teamShortNameLookup}
                 sourceUrl={summary.sourceUrls.leaders}
               />
             )}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Snapshot note</p>
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-            This page reads from a curated snapshot of the {summary.sourceLabel} endpoints.
-            Standings, schedule, and league leaders all refresh on the regular update cadence.
-          </p>
-        </div>
-      </section>
+        <p className="sb-source">
+          Standings, the schedule, and the league leaders come from a curated snapshot of the {summary.sourceLabel}{" "}
+          endpoints that refreshes on a schedule, so tonight&apos;s games show up after the next refresh.
+        </p>
+      </div>
 
       {selectedRow ? (
         <DetailDrawer
           open={isDrawerOpen}
           title={selectedRow.name}
-          lead={<CrestAvatar crest={logoByTeamId.get(selectedRow.id) ?? null} name={selectedRow.name} size="lg" />}
+          lead={<CrestAvatar crest={logoByTeamId.get(selectedRow.id) ?? null} name={selectedRow.name} size="md" />}
           onClose={() => setDrawerTeamId(null)}
           resetKey={selectedRow.id}
           testId="mlb-selected-team"
         >
-          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            <span className="c97-chip">
-              {selectedRow.division || `${selectedRow.league} club`}
-            </span>
-            <span className="c97-chip">Div {selectedRow.divisionRank || "—"}</span>
-            <span className="c97-chip">{formatRecord(selectedRow)}</span>
-            {selectedRow.streak && <span className="c97-chip">{selectedRow.streak}</span>}
-          </div>
+          <p className="dd-tags">
+            <span>{selectedRow.division || `${selectedRow.league} club`}</span>
+            <span>{ordinal(selectedRow.divisionRank || 0)} in the division</span>
+            <span>{formatRecord(selectedRow)}</span>
+            {selectedRow.streak ? <span>{selectedRow.streak}</span> : null}
+          </p>
 
-          <dl
-            className="grid grid-cols-2"
-            style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
-          >
+          <dl className="dd-stats dd-section">
             {(
               [
                 ["W%", formatFixed(selectedRow.pct, 3)],
@@ -669,104 +452,97 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 ["Defense", formatRank(defenseRankByTeam.get(selectedRow.id))],
               ] as const
             ).map(([label, value]) => (
-              <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                <dt className="c97-kicker">{label}</dt>
-                <dd className="c97-mono mb-0" style={{ fontWeight: 600 }}>{value}</dd>
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
               </div>
             ))}
           </dl>
 
-          {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
-            <div style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Last 5</p>
-              <div className="flex" style={{ gap: "var(--c97-sp-0)" }}>
+          {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 ? (
+            <div className="dd-section">
+              <p className="dd-label">Last 5</p>
+              <div className="dd-form">
                 {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
                   <TeamResultPill key={idx} result={result} />
                 ))}
               </div>
             </div>
-          )}
+          ) : null}
+
+          {selectedTeam?.venue ? <p className="dd-note">Home park is {selectedTeam.venue}.</p> : null}
+
+          {teamRecent.length > 0 || teamUpcoming.length > 0 ? (
+            <div className="dd-section sb-games">
+              <FixtureLedgerSection
+                groups={[
+                  ...(teamRecent.length > 0 ? [{ key: "recent", label: "Recent results", fixtures: teamRecent }] : []),
+                  ...(teamUpcoming.length > 0 ? [{ key: "upcoming", label: "Upcoming games", fixtures: teamUpcoming }] : []),
+                ]}
+              />
+            </div>
+          ) : null}
 
           {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-            <p
-              className="c97-prose"
-              style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
-              role={teamSnapshotError ? "alert" : "status"}
-              aria-live="polite"
-            >
+            <p className="dd-note" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
               {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
             </p>
           ) : null}
         </DetailDrawer>
       ) : null}
-    </>
+    </div>
   );
 }
 
 function LeagueLeaders({
   hitting,
   pitching,
-  teamLookup,
   sourceUrl,
 }: {
   hitting: MlbHittingLeaders;
   pitching: MlbPitchingLeaders;
-  teamLookup: Map<string, string>;
   sourceUrl: string;
 }) {
-  const groups: Array<{
-    side: "Hitting" | "Pitching";
-    title: string;
-    statLabel: string;
-    leaders: MlbLeader[];
-  }> = [
-    { side: "Hitting", title: "Home runs", statLabel: "HR", leaders: hitting.homeRuns },
-    { side: "Hitting", title: "RBIs", statLabel: "RBI", leaders: hitting.runsBattedIn },
-    { side: "Hitting", title: "Batting average", statLabel: "AVG", leaders: hitting.battingAverage },
-    { side: "Pitching", title: "ERA", statLabel: "ERA", leaders: pitching.earnedRunAverage },
-    { side: "Pitching", title: "Wins", statLabel: "W", leaders: pitching.wins },
-    { side: "Pitching", title: "Strikeouts", statLabel: "K", leaders: pitching.strikeouts },
+  const groups: Array<{ title: string; statLabel: string; leaders: MlbLeader[] }> = [
+    { title: "Home runs", statLabel: "HR", leaders: hitting.homeRuns },
+    { title: "RBIs", statLabel: "RBI", leaders: hitting.runsBattedIn },
+    { title: "Batting average", statLabel: "AVG", leaders: hitting.battingAverage },
+    { title: "ERA", statLabel: "ERA", leaders: pitching.earnedRunAverage },
+    { title: "Wins", statLabel: "W", leaders: pitching.wins },
+    { title: "Strikeouts", statLabel: "K", leaders: pitching.strikeouts },
   ];
-
   const populated = groups.filter((group) => group.leaders.length > 0);
+  const source = (
+    <a href={sourceUrl} target="_blank" rel="noreferrer" className="sb-link">
+      Official
+      <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
+      <span aria-hidden="true"> leaders</span>
+      <ExternalLink className="sb-link-icon" aria-hidden="true" />
+    </a>
+  );
 
   if (populated.length === 0) {
     return (
-      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-        <p className="c97-prose">
-          League leaders will appear here once the next snapshot is published.
-        </p>
-        <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
-          Source
-          <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
-          <ExternalLink className="h-4 w-4" />
-        </a>
+      <div className="sb-detail-leaders">
+        <p className="sb-muted">League leaders will appear here once the next snapshot is published.</p>
+        {source}
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-      <div className="flex flex-wrap items-center justify-end" style={{ gap: "var(--c97-sp-1)" }}>
-        <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
-          Official
-          <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
-          <ExternalLink className="h-4 w-4" />
-        </a>
-      </div>
-      <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
+    <div className="sb-detail-leaders">
+      <div className="sb-trio">
         {populated.map((group) => (
-          <div key={group.title}>
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{group.side}</p>
-            <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-h3)" }}>{group.title}</h3>
-            <LeaderList
-              leaders={leadersToEntries(group.leaders, group.statLabel)}
-              statLabel={group.statLabel}
-              clubLookup={teamLookup}
-            />
-          </div>
+          <LeaderLedger
+            key={group.title}
+            title={group.title}
+            unit={group.statLabel}
+            entries={leadersToEntries(group.leaders, group.statLabel)}
+          />
         ))}
       </div>
+      {source}
     </div>
   );
 }
@@ -776,71 +552,10 @@ function formatRunDiff(diff: number): string {
   return diff > 0 ? `+${diff}` : `${diff}`;
 }
 
-type MlbZone = "division" | "wildcard" | "out";
-
-function getTeamZone(row: MlbStandingsRow): MlbZone {
-  if (row.divisionRank === 1) return "division";
-  if (row.wildCardRank !== null && row.wildCardRank <= 3) return "wildcard";
-  return "out";
-}
-
-function getZoneLabel(zone: MlbZone): string {
-  switch (zone) {
-    case "division":
-      return "Division leader";
-    case "wildcard":
-      return "Wild card slot";
-    case "out":
-    default:
-      return "Out of postseason";
-  }
-}
-
-function getZoneDotColor(zone: MlbZone): CSSProperties["backgroundColor"] {
-  switch (zone) {
-    case "division":
-      return "var(--c97-positive)";
-    case "wildcard":
-      return "color-mix(in srgb, var(--c97-positive) 55%, var(--c97-ink))";
-    case "out":
-    default:
-      return "var(--c97-ink-2)";
-  }
-}
-
 const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });
 const ORDINAL_SUFFIX: Partial<Record<Intl.LDMLPluralRule, string>> = { one: "st", two: "nd", few: "rd" };
 
 /** 2 → "2nd", so a standing reads as a place rather than a bare count. */
 function ordinal(n: number): string {
   return `${n}${ORDINAL_SUFFIX[ORDINAL_RULES.select(n)] ?? "th"}`;
-}
-
-function getPressurePoints(row: MlbStandingsRow): string[] {
-  const points: string[] = [];
-  if (row.divisionRank === 1) {
-    points.push(`Lead the ${row.division} with a ${formatRecord(row)} record.`);
-  } else {
-    points.push(
-      `${ordinal(row.divisionRank)} in the ${row.division || `${row.league}`}, ${
-        row.gamesBack > 0 ? `${row.gamesBack.toFixed(1)} games back of the leader.` : "tied at the top of the division."
-      }`
-    );
-  }
-  if (row.wildCardRank !== null) {
-    points.push(
-      row.wildCardRank <= 3
-        ? `Holding a ${row.league} wild card slot at #${row.wildCardRank}.`
-        : `${ordinal(row.wildCardRank)} in the ${row.league} wild card chase${
-            row.wildCardGamesBack && row.wildCardGamesBack > 0
-              ? `, ${row.wildCardGamesBack.toFixed(1)} games out.`
-              : "."
-          }`
-    );
-  }
-  points.push(`Run differential: ${formatRunDiff(row.runDifferential)}.`);
-  if (row.last10) {
-    points.push(`Last 10: ${row.last10}${row.streak ? ` (current ${row.streak}).` : "."}`);
-  }
-  return points;
 }

@@ -1,22 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
-import { CircleAlert, ExternalLink, Flag } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
-import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
+import { CrestAvatar } from "@/components/football/CrestAvatar";
+import { TeamResultPill } from "@/components/football/TeamResultPill";
+import { FixtureLedgerSection } from "@/components/football/FixtureLedger";
+import { LeaderLedger, type LeaderLedgerEntry } from "@/components/football/LeaderLedger";
+import { SegmentedTabs } from "@/components/football/SegmentedTabs";
+import { groupFixtures } from "@/components/football/fixtureGroups";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and the two league pages do not use this drawer.
 import { DetailDrawer } from "@/components/football/DetailDrawer";
 import { formatRank } from "@/components/football/fixtureFormat";
-import {
-  Catalog97ProjectHero,
-  type Catalog97Readout,
-} from "@/components/catalog97/Catalog97ProjectHero";
-import { SeedLadder, type LadderTeam, type SeedLadderConference } from "@/components/football/SeedLadderPanel";
-import { formatGamesGap, seedLadder, nflSeeds, type SeedBandSpec, type SeedLadderResult } from "@/components/football/seedLadder";
-import { PROJECT_PRESS } from "@/constants/projectPress";
+import { SeedLadder, type LadderColumn, type LadderTeam } from "@/components/football/SeedLadderPanel";
+import { seedLadder, nflSeeds, type SeedBandSpec } from "@/components/football/seedLadder";
 import { NflDivisionGrid, type DivisionGridGroup } from "./NflDivisionGrid";
+import "@/components/football/sports-board.css";
 import "./nfl.css";
 import type {
   NFLLeader,
@@ -62,8 +63,15 @@ const DIVISION_ORDER = [
   "NFC West",
 ] as const;
 
+const PLAYOFF_ROUND_LABELS: Record<string, string> = {
+  WC: "Wild Card round",
+  DIV: "Divisional round",
+  CON: "Conference championships",
+  SB: "Super Bowl",
+};
+
 const VIEW_OPTIONS: Array<{ id: NFLView; label: string }> = [
-  { id: "league", label: "Full league" },
+  { id: "league", label: "Both conferences" },
   { id: "afc", label: "AFC" },
   { id: "nfc", label: "NFC" },
   { id: "playoffs", label: "Playoff field" },
@@ -76,25 +84,36 @@ const LEADER_TABS: Array<{ id: LeaderCategory; label: string; unit: string; unit
   { id: "sacks", label: "Sacks", unit: "sk", unitLong: "sacks" },
 ];
 
+type NflLadderTeam = LadderTeam & { team: NFLTeamStanding; seeded: boolean };
+
+const LADDER_COLUMNS: LadderColumn<NflLadderTeam>[] = [
+  { key: "pct", label: "Pct", title: "Win percentage", wide: true, value: ({ team }) => team.winPct.toFixed(3).replace(/^0/, "") },
+  { key: "pf", label: "PF", title: "Points for", wide: true, value: ({ team }) => String(team.pointsFor) },
+  { key: "pa", label: "PA", title: "Points against", wide: true, value: ({ team }) => String(team.pointsAgainst) },
+  { key: "diff", label: "Diff", title: "Point differential", value: ({ team }) => formatDifferential(team.pointDifferential) },
+];
+
 /**
  * The NFL only has a real seed for the top seven per conference; everyone
  * else gets a stable tiebreak order (win pct, then point differential) so
  * the "first team out" in the gap calculation is the actual closest team,
- * not an arbitrary one. That order never reaches the UI, since the ladder
- * only displays the seeded band.
+ * not an arbitrary one. The ladder prints that order but never as a seed.
  */
 function toLadderTeams(
   teams: NFLTeamStanding[],
   seeds: Map<string, number>,
   optionsById: Map<string, NFLTeamOption>
-): LadderTeam[] {
+): NflLadderTeam[] {
   const unseededByTiebreak = teams
     .filter((team) => !seeds.has(team.id))
     .toSorted((a, b) => b.winPct - a.winPct || b.pointDifferential - a.pointDifferential);
   const outOrder = new Map(unseededByTiebreak.map((team, index) => [team.id, 8 + index] as const));
 
   return teams.map((team) => ({
+    team,
+    seeded: seeds.has(team.id),
     id: team.id,
+    name: team.name,
     seed: seeds.get(team.id) ?? outOrder.get(team.id) ?? 99,
     wins: team.wins,
     losses: team.losses,
@@ -103,16 +122,6 @@ function toLadderTeams(
     record: formatRecord(team),
     color: optionsById.get(team.id)?.primaryColor ?? null,
   }));
-}
-
-/** Hides the unseeded "Out" band's rows without touching the computed gap. */
-function seededOnly(ladder: SeedLadderResult<LadderTeam>): SeedLadderResult<LadderTeam> {
-  return {
-    bands: ladder.bands.map((band, index) =>
-      index === ladder.bands.length - 1 ? { ...band, teams: [] } : band
-    ),
-    lines: ladder.lines,
-  };
 }
 
 function buildDivisionGroups(
@@ -126,6 +135,7 @@ function buildDivisionGroups(
       .toSorted((a, b) => a.divisionRank - b.divisionRank)
       .map((team) => ({
         id: team.id,
+        name: team.name,
         shortName: team.shortName,
         record: formatRecord(team),
         primaryColor: optionsById.get(team.id)?.primaryColor ?? null,
@@ -137,18 +147,13 @@ function buildDivisionGroups(
 
 export function NflClient({ initialState, summary, initialTeamSnapshot }: NflClientProps) {
   const searchParams = useSearchParams();
-  const lead = PROJECT_PRESS[NFL_ROUTE].lead;
   const standfirst =
-    "I wanted the playoff picture as it would stand if the season ended today. The snapshot carries no seeds, so I derive them from the standings, the four division leaders first and then the three best of the rest, and draw the line where the field ends.";
+    "I draw the playoff picture as it would stand if the season ended today, the four division leaders first and then the three best of the rest, with the line where the field ends.";
 
   const teams = summary.teams;
   const aliasMap = useMemo(() => buildTeamAliasMap(summary.teams), [summary.teams]);
   const defaultState = useMemo(() => resolveDefaultState(summary.teams), [summary.teams]);
   const teamById = useMemo(() => new Map(teams.map((team) => [team.id, team])), [teams]);
-  const teamShortNameById = useMemo(
-    () => new Map(teams.map((team) => [team.id, team.shortName])),
-    [teams]
-  );
   const optionsById = useMemo(
     () => new Map(summary.teamOptions.map((option) => [option.id, option])),
     [summary.teamOptions]
@@ -202,12 +207,6 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     () => seedLadder(toLadderTeams(nfcTeams, seeds, optionsById), NFL_BANDS),
     [nfcTeams, seeds, optionsById]
   );
-  const tightestGap = useMemo(() => {
-    const gaps = [...afcLadder.lines, ...nfcLadder.lines]
-      .map((line) => line.gamesClear)
-      .filter((gap): gap is number => gap !== null);
-    return gaps.length > 0 ? Math.min(...gaps) : null;
-  }, [afcLadder, nfcLadder]);
   const divisionGroups = useMemo(() => buildDivisionGroups(teams, optionsById), [teams, optionsById]);
 
   const hasManagedParams =
@@ -218,7 +217,10 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   // A link that names a team outside its view (an NFC team on the AFC view)
   // opens that team in the full league, the way a schedule card's pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
+  // Only a link that names a team moves the view; a bare ?view= fills in the
+  // view's own first team instead of the default one, which may sit outside it.
   const routeState: NFLRouteState =
+    searchParams.get("team") !== null &&
     teamById.has(linkedState.team) &&
     !filterTeams(summary.teams, linkedState.view).some((team) => team.id === linkedState.team)
       ? { ...linkedState, view: defaultState.view }
@@ -285,399 +287,208 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
   const conferenceContext = useMemo(() => buildConferenceContext(teams, seeds), [teams, seeds]);
 
-  const [activeDetailTab, setActiveDetailTab] = useState<"team" | "fixtures" | "leaders">("team");
+  const [activeDetailTab, setActiveDetailTab] = useState<"fixtures" | "leaders">("fixtures");
   const [activeLeaderTab, setActiveLeaderTab] = useState<LeaderCategory>("passing");
 
-  const afcTop = conferenceContext.AFC.topSeed;
-  const nfcTop = conferenceContext.NFC.topSeed;
   const totalRegSeasonWeeks = 18;
-  const heroReadouts: [Catalog97Readout, Catalog97Readout, Catalog97Readout] = [
-    { label: "AFC leader", value: afcTop ? formatRecord(afcTop) : "—", detail: afcTop?.shortName },
-    { label: "NFC leader", value: nfcTop ? formatRecord(nfcTop) : "—", detail: nfcTop?.shortName },
-    {
-      label: "Tightest line",
-      value: tightestGap !== null ? formatGamesGap(tightestGap) : "—",
-      detail: "separates the seventh seed from the closest team out",
-    },
-  ];
-  const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${
+  const isFinal = summary.week >= totalRegSeasonWeeks && summary.upcomingFixtures.length === 0;
+  const statusMeta = `${summary.sourceLabel} · Season ${summary.season} · ${
     summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "week 1 in progress"
   } · snapshot ${snapshotDateLabel}`;
 
-  const ladderConferences: SeedLadderConference[] = [
-    { label: "AFC", ladder: seededOnly(afcLadder) },
-    { label: "NFC", ladder: seededOnly(nfcLadder) },
-  ];
-  const heroSignature = (
-    <SeedLadder
-      conferences={ladderConferences}
-      note="These seeds come from each team's division rank and conference rank in the snapshot, so they read as the picture if the season ended today."
-    />
+  const titleRow = (
+    <div className="sb-titlebar">
+      <h1 className="sb-title">NFL Pulse</h1>
+      <p className="sb-standfirst">{standfirst}</p>
+      <p className="sb-status">
+        <span className="sb-state" data-state={isFinal ? "final" : "live"}>
+          {isFinal ? "Regular season over" : "If the season ended today"}
+        </span>
+        <span>{statusMeta}</span>
+      </p>
+      <p className="sb-status">
+        The snapshot carries no seeds, so these come from each team&apos;s division rank and conference rank.
+      </p>
+    </div>
   );
-  // The hero fills a phone's first screen and the signature runs long under
-  // it, so one link goes straight to the working table.
-  const heroAction = <a href="#nfl-standings" className="c97-btn-ghost">Jump to standings</a>;
 
   if (!selectedTeam) {
     return (
-      <Catalog97ProjectHero
-        ink={lead}
-        title="NFL Pulse"
-        standfirst={`${standfirst} Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.`}
-      >
-        {heroSignature}
-      </Catalog97ProjectHero>
+      <Root>
+        {titleRow}
+        <p className="sb-muted">
+          Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is
+          published.
+        </p>
+      </Root>
     );
   }
 
   const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext, seeds);
-  const teamPressurePoints = getTeamPressurePoints(selectedTeam, {
-    conferenceContext,
-    offenseRankByTeam,
-    defenseRankByTeam,
-    seeds,
-  });
   const selectedZone = getTeamZone(selectedTeam, seeds);
   const selectedSeed = seeds.get(selectedTeam.id) ?? null;
-  const selectedTeamLeaders = collectLeadersForTeam(selectedTeam.id, summary.leaders);
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
-
   const activeLeaderMeta = LEADER_TABS.find((tab) => tab.id === activeLeaderTab) ?? LEADER_TABS[0];
   const activeLeaders = summary.leaders[activeLeaderTab] ?? [];
+  // nflverse numbers the playoff rounds as weeks 19 to 22, so the label keys
+  // off the game type and only a regular-season game prints its week.
+  const weekLabel = (fixture: { matchday: number | null; gameType?: string | null }) =>
+    PLAYOFF_ROUND_LABELS[fixture.gameType ?? ""] ??
+    (fixture.matchday ? `Week ${fixture.matchday}` : "Unscheduled");
+  const conferences = [
+    ...(routeState.view !== "nfc" ? [{ id: "nfl-afc", label: "AFC", ladder: afcLadder }] : []),
+    ...(routeState.view !== "afc" ? [{ id: "nfl-nfc", label: "NFC", ladder: nfcLadder }] : []),
+  ];
 
   return (
-    <>
-      <Catalog97ProjectHero ink={lead} title="NFL Pulse" standfirst={standfirst} meta={heroMeta}
-        action={heroAction} readouts={heroReadouts}>
-        {heroSignature}
-      </Catalog97ProjectHero>
+    <Root>
+      {titleRow}
 
-      <section id="nfl-standings" className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
-        <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <h2 className="c97-poster-sm">Standings</h2>
-            <p className="c97-meta">{visibleTeams.length} teams</p>
-          </div>
-
-          <div role="group" aria-label="Conference and seeding view" className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }}>
-            {VIEW_OPTIONS.map((option) => {
-              const isActive = option.id === routeState.view;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => handleViewChange(option.id)}
-                  aria-pressed={isActive}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {option.label}{" "}
-                  <span className="c97-mono" style={{ color: "var(--c97-label)" }}>
-                    {filterTeams(summary.teams, option.id).length}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div
-            role="region"
-            aria-label="NFL standings (scrollable)"
-            tabIndex={0}
-            style={{ marginTop: "var(--c97-sp-3)", overflowX: "auto" }}
-          >
-            <table className="c97-table c97-nfl-table" aria-label="NFL standings">
-              <thead>
-                <tr>
-                  <th scope="col">Seed</th>
-                  <th scope="col">Team</th>
-                  <th scope="col">Record</th>
-                  <th scope="col" data-align="end" data-wide>Pct</th>
-                  <th scope="col" data-wide>Division</th>
-                  <th scope="col" data-align="end" data-wide>PF</th>
-                  <th scope="col" data-align="end" data-wide>PA</th>
-                  <th scope="col" data-align="end">Diff</th>
-                </tr>
-              </thead>
-              <tbody>
-                {visibleTeams.map((team) => {
-                  const isSelected = team.id === selectedTeam.id;
-                  const zone = getTeamZone(team, seeds);
-                  return (
-                    <tr
-                      key={team.id}
-                      style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
-                    >
-                      <td>
-                        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                          <span
-                            aria-hidden="true"
-                            style={{
-                              width: 8,
-                              height: 8,
-                              display: "inline-block",
-                              background: zoneDotColor(zone),
-                            }}
-                          />
-                          {seeds.get(team.id) ?? "—"}
-                        </span>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          onClick={() => handleTeamChange(team.id)}
-                          aria-pressed={isSelected}
-                          aria-haspopup="dialog"
-                          aria-label={`Show ${team.name} details`}
-                          className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
-                        >
-                          <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
-                          <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
-                        </button>
-                      </td>
-                      <td>{formatRecord(team)}</td>
-                      <td data-align="end" data-wide>{team.winPct.toFixed(3).replace(/^0/, "")}</td>
-                      <td data-wide>{team.division}</td>
-                      <td data-align="end" data-wide>{team.pointsFor}</td>
-                      <td data-align="end" data-wide>{team.pointsAgainst}</td>
-                      <td data-align="end">{formatDifferential(team.pointDifferential)}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+      <section className="sb-board" aria-label="NFL standings">
+        <div className="sb-toolbar">
+          <h2 className="sb-h2">Standings</h2>
+          <div role="group" aria-label="Conference and seeding view" className="sb-switch">
+            {VIEW_OPTIONS.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => handleViewChange(option.id)}
+                aria-pressed={option.id === routeState.view}
+              >
+                {option.label} <span className="sb-switch-count">{filterTeams(summary.teams, option.id).length}</span>
+              </button>
+            ))}
           </div>
         </div>
+
+        <SeedLadder
+          conferences={conferences}
+          columns={LADDER_COLUMNS}
+          lineLabels={["Playoff line"]}
+          selectedId={selectedTeam.id}
+          onSelect={handleTeamChange}
+          isBandVisible={(index) => routeState.view !== "playoffs" || index === 0}
+          seedLabel={(team) => (team.seeded ? String(team.seed) : "–")}
+        />
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Divisions</h2>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-            Each team striped in its own colours, division leaders marked.
-          </p>
-          <div style={{ marginTop: "var(--c97-sp-2)" }}>
-            <NflDivisionGrid divisions={divisionGroups} />
-          </div>
+      <section className="sb-board-second" aria-labelledby="nfl-divisions-heading">
+        <div className="sb-toolbar">
+          <h2 id="nfl-divisions-heading" className="sb-h2">
+            Divisions
+          </h2>
+          <p className="sb-muted">Each team is striped in its own colours, and the division leaders are marked.</p>
         </div>
+        <NflDivisionGrid divisions={divisionGroups} selectedId={selectedTeam.id} onSelect={handleTeamChange} />
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
-        <div className="c97-shell">
-          <div
-            role="tablist"
-            aria-label="Team and league details"
-            className="c97-segmented"
-          >
-            {(
-              [
-                { id: "team", label: "Team detail" },
-                { id: "fixtures", label: "Schedule" },
-                { id: "leaders", label: "Stat leaders" },
-              ] as const
-            ).map((tab) => {
-              const isActive = activeDetailTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  id={`nfl-detail-tab-${tab.id}`}
-                  role="tab"
-                  type="button"
-                  aria-selected={isActive}
-                  aria-controls="nfl-detail-panel"
-                  onClick={() => setActiveDetailTab(tab.id)}
-                  className="min-h-[44px] text-sm font-semibold"
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
+      <section className="sb-detail" aria-labelledby="nfl-detail-heading">
+        <div className="sb-toolbar">
+          <h2 id="nfl-detail-heading" className="sb-h2">
+            Games and leaders
+          </h2>
+          <SegmentedTabs
+            tabs={[
+              { id: "fixtures", label: "Schedule" },
+              { id: "leaders", label: "Stat leaders" },
+            ]}
+            activeId={activeDetailTab}
+            onChange={(id) => setActiveDetailTab(id as "fixtures" | "leaders")}
+            ariaLabel="Team and league details"
+            idPrefix="nfl-detail-tab"
+            panelId="nfl-detail-panel"
+            className="sb-switch"
+          />
+        </div>
 
-          <div id="nfl-detail-panel" role="tabpanel" aria-labelledby={`nfl-detail-tab-${activeDetailTab}`} style={{ marginTop: "var(--c97-sp-3)" }}>
-            {activeDetailTab === "team" && (
-              <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
-                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Performance</p>
-                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                      <MetricCard label="Win %" value={selectedTeam.winPct.toFixed(3).replace(/^0/, "")} />
-                      <MetricCard label="Record" value={formatRecord(selectedTeam)} />
-                      <MetricCard label="Offense rank" value={formatRank(offenseRankByTeam.get(selectedTeam.id))} />
-                      <MetricCard label="Defense rank" value={formatRank(defenseRankByTeam.get(selectedTeam.id))} />
-                      <MetricCard label="Points for" value={`${selectedTeam.pointsFor}`} />
-                      <MetricCard label="Points against" value={`${selectedTeam.pointsAgainst}`} />
-                    </div>
-                  </div>
-
-                  <div className="c97-panel">
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
-                    <ul className="c97-prose" style={{ margin: 0, paddingLeft: "1.1em" }}>
-                      {teamPressurePoints.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                    <TeamLeaderCard title="Top passer" leader={selectedTeamLeaders.passing} unitLong="passing yards" emptyLabel="No passer in the league top 10." />
-                    <TeamLeaderCard title="Top rusher" leader={selectedTeamLeaders.rushing} unitLong="rushing yards" emptyLabel="No rusher in the league top 10." />
-                    <TeamLeaderCard title="Top receiver" leader={selectedTeamLeaders.receiving} unitLong="receiving yards" emptyLabel="No receiver in the league top 10." />
-                    <TeamLeaderCard title="Sacks leader" leader={selectedTeamLeaders.sacks} unitLong="sacks" emptyLabel="No defender in the league top 10." />
-                  </div>
-
-                  <p className="c97-prose">{teamStoryline}</p>
-                </div>
-
-                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
-                  <div className="c97-panel" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
-                    <p className="c97-prose">{isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}</p>
-                  </div>
-                )}
-
-                {recentFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {recentFixtures.map((fixture) => (
-                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {upcomingFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {upcomingFixtures.map((fixture) => (
-                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
-                      ))}
-                    </div>
-                  </div>
-                )}
+        <div id="nfl-detail-panel" role="tabpanel" aria-labelledby={`nfl-detail-tab-${activeDetailTab}`}>
+          {activeDetailTab === "fixtures" ? (
+            <div className="sb-pair">
+              <div>
+                <h3 className="sb-h3">Latest results</h3>
+                <FixtureLedgerSection
+                  groups={groupFixtures(summary.recentFixtures, weekLabel)}
+                  onOpenTeam={handleTeamChange}
+                  emptyLabel="No results are in this snapshot yet."
+                />
               </div>
-            )}
-
-            {activeDetailTab === "fixtures" && (
-              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
-                {summary.recentFixtures.length > 0 && (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Latest results</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {summary.recentFixtures.map((fixture) => (
-                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {summary.upcomingFixtures.length > 0 ? (
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
-                      {summary.upcomingFixtures.map((fixture) => (
-                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
-                      ))}
-                    </div>
-                  </div>
-                ) : (
+              <div>
+                <h3 className="sb-h3">Upcoming games</h3>
+                <FixtureLedgerSection
+                  groups={groupFixtures(summary.upcomingFixtures, weekLabel)}
+                  onOpenTeam={handleTeamChange}
                   // An empty list mid-season is a snapshot gap, so only the last
                   // regular-season week calls the season complete.
-                  summary.week >= totalRegSeasonWeeks ? (
-                    <div className="c97-panel">
-                      <p className="flex items-center" style={{ gap: "var(--c97-sp-1)", fontWeight: 600, color: "var(--c97-ink)" }}>
-                        <Flag className="h-4 w-4" aria-hidden="true" />
-                        Offseason
-                      </p>
-                      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        The {summary.season} regular season is complete. New fixtures will appear when the next season&apos;s schedule is published.
-                      </p>
-                    </div>
-                  ) : (
-                    <p className="c97-prose">
-                      No upcoming games are in this snapshot. They will appear after the next scheduled refresh.
-                    </p>
-                  )
-                )}
+                  emptyLabel={
+                    summary.week >= totalRegSeasonWeeks
+                      ? `The ${summary.season} regular season is complete. New fixtures will appear when the next season's schedule is published.`
+                      : "No upcoming games are in this snapshot. They will appear after the next scheduled refresh."
+                  }
+                />
               </div>
-            )}
-
-            {activeDetailTab === "leaders" && (
-              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-                <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                  <div className="c97-segmented" role="group" aria-label="Leader category">
-                    {LEADER_TABS.map((tab) => {
-                      const isActive = tab.id === activeLeaderTab;
-                      return (
-                        <button
-                          key={tab.id}
-                          type="button"
-                          onClick={() => setActiveLeaderTab(tab.id)}
-                          aria-pressed={isActive}
-                          className="min-h-[44px] text-sm font-semibold"
-                        >
-                          {tab.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
-                    NFLverse source
-                    <span className="sr-only"> (opens in a new tab)</span>
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-
-                <div>
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
-                  <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
-                    <div>
-                      <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
-                    </div>
-                    {activeLeaders.length > 5 && (
-                      <div>
-                        <NflLeaderList leaders={activeLeaders.slice(5, 10)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
-                      </div>
-                    )}
-                  </div>
-                </div>
+            </div>
+          ) : (
+            <div className="sb-detail-leaders">
+              <div className="sb-switch" role="group" aria-label="Leader category">
+                {LEADER_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveLeaderTab(tab.id)}
+                    aria-pressed={tab.id === activeLeaderTab}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
               </div>
-            )}
-          </div>
+              <div className="sb-pair">
+                <LeaderLedger
+                  title={`Top ${activeLeaderMeta.unitLong}`}
+                  unit={activeLeaderMeta.unit}
+                  entries={toLedgerEntries(activeLeaders.slice(0, 5))}
+                  emptyLabel="No leaders are in this snapshot yet."
+                />
+                {activeLeaders.length > 5 ? (
+                  <LeaderLedger
+                    title="Sixth to tenth"
+                    unit={activeLeaderMeta.unit}
+                    entries={toLedgerEntries(activeLeaders.slice(5, 10))}
+                  />
+                ) : null}
+              </div>
+              <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="sb-link">
+                NFLverse source
+                <span className="sr-only"> (opens in a new tab)</span>
+                <ExternalLink className="sb-link-icon" aria-hidden="true" />
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: "var(--c97-ink-2)" }} aria-hidden="true" />
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-              This page is a curated NFLverse snapshot, refreshed on a schedule. Standings come
-              from the public NFLverse standings dataset, schedule and scores from the NFLverse
-              games table, and stat leaders from the regular-season player stats release linked
-              above.
-            </p>
-          </div>
-        </div>
-      </section>
+      <p className="sb-source">
+        Standings come from the public NFLverse standings dataset, scores from its games table, and the leaders
+        from its regular-season player stats release, checked in as a snapshot that refreshes on a schedule.
+      </p>
 
       <DetailDrawer
         open={isDrawerOpen}
         title={selectedTeam.name}
-        lead={<CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />}
+        lead={<CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="md" />}
         onClose={() => setDrawerTeamId(null)}
         resetKey={selectedTeam.id}
         testId="nfl-selected-team"
       >
-        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-          <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
-          <span className="c97-chip">Seed {selectedSeed ?? "—"}</span>
-          <span className="c97-chip">{formatRecord(selectedTeam)}</span>
-          <span className="c97-chip">{selectedTeam.division}</span>
-        </div>
+        <p className="dd-tags">
+          <span>{getZoneLabel(selectedZone)}</span>
+          <span>Seed {selectedSeed ?? "–"}</span>
+          <span>{formatRecord(selectedTeam)}</span>
+          <span>{selectedTeam.division}</span>
+        </p>
 
-        <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
+        <dl className="dd-stats dd-section">
           {(
             [
               ["Win %", selectedTeam.winPct.toFixed(3).replace(/^0/, "")],
@@ -689,124 +500,77 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
               [
                 "PF / game",
                 formatPerGame(
-                  selectedTeam.pointsFor /
-                    Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
+                  selectedTeam.pointsFor / Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
                 ),
               ],
               [
                 "PA / game",
                 formatPerGame(
-                  selectedTeam.pointsAgainst /
-                    Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
+                  selectedTeam.pointsAgainst / Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
                 ),
               ],
             ] as const
           ).map(([label, value]) => (
-            <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <dt className="c97-kicker">{label}</dt>
-              <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
             </div>
           ))}
         </dl>
 
-        {formSequence.length > 0 && (
-          <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
-            <p className="c97-kicker">Form (last 5)</p>
-            <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+        {formSequence.length > 0 ? (
+          <div className="dd-section">
+            <p className="dd-label">Form (last 5)</p>
+            <div className="dd-form">
               {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
                 <TeamResultPill key={i} result={result} />
               ))}
             </div>
           </div>
-        )}
+        ) : null}
 
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-          {teamStoryline}
-        </p>
+        <p className="dd-note">{teamStoryline}</p>
+        {selectedTeam.playoffResult ? (
+          <p className="dd-note">Postseason result: {formatPlayoffResult(selectedTeam.playoffResult)}.</p>
+        ) : null}
+
+        {recentFixtures.length > 0 || upcomingFixtures.length > 0 ? (
+          <div className="dd-section sb-games">
+            <FixtureLedgerSection
+              groups={[
+                ...(recentFixtures.length > 0 ? [{ key: "recent", label: "Recent results", fixtures: recentFixtures }] : []),
+                ...(upcomingFixtures.length > 0 ? [{ key: "upcoming", label: "Upcoming games", fixtures: upcomingFixtures }] : []),
+              ]}
+            />
+          </div>
+        ) : null}
 
         {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-          <p
-            className="c97-prose border-t"
-            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
-            role={teamSnapshotError ? "alert" : "status"}
-            aria-live="polite"
-          >
+          <p className="dd-note" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
             {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
           </p>
         ) : null}
       </DetailDrawer>
-    </>
+    </Root>
   );
 }
 
-function TeamLeaderCard({
-  title,
-  leader,
-  unitLong,
-  emptyLabel,
-}: {
-  title: string;
-  leader?: NFLLeader;
-  unitLong: string;
-  emptyLabel: string;
-}) {
+/** The route's root and its one centred column. */
+function Root({ children }: { children: ReactNode }) {
   return (
-    <div className="c97-panel">
-      <p className="c97-kicker">{title}</p>
-      {leader ? (
-        <>
-          <p className="c97-h3 c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {leader.name}
-            <span className="c97-kicker" style={{ marginLeft: "var(--c97-sp-2)" }}>{leader.position}</span>
-          </p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-            {formatLeaderTotal(leader)} {unitLong} in {leader.games} games
-          </p>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>{formatPerGame(leader.perGame)} per game</p>
-        </>
-      ) : (
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
-      )}
+    <div className="sb-root nfl-root">
+      <div className="c97-shell c97-frame sb-column">{children}</div>
     </div>
   );
 }
 
-function NflLeaderList({
-  leaders,
-  unit,
-  teamLookup,
-}: {
-  leaders: NFLLeader[];
-  unit: string;
-  teamLookup: Map<string, string>;
-}) {
-  return (
-    <ol className="flex flex-col pl-0" style={{ marginTop: "var(--c97-sp-1)", rowGap: "var(--c97-sp-1)" }}>
-      {leaders.map((leader) => {
-        const teamName = teamLookup.get(leader.teamId) ?? leader.teamCode;
-        return (
-          <li key={`${unit}-${leader.rank}-${leader.name}`} className="c97-panel flex items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
-              <span className="c97-mono" style={{ color: "var(--c97-ink-2)" }}>{leader.rank}</span>
-              <div className="min-w-0">
-                <p className="truncate" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
-                  {leader.name}
-                  <span className="c97-kicker" style={{ marginLeft: "var(--c97-sp-2)" }}>{leader.position}</span>
-                </p>
-                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                  {teamName} · {leader.games} games
-                </p>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="c97-tabular" style={{ fontWeight: 700, color: "var(--c97-ink)", margin: 0 }}>{formatLeaderTotal(leader)}</p>
-              <p className="c97-kicker">{unit}</p>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
-  );
+function toLedgerEntries(leaders: NFLLeader[]): LeaderLedgerEntry[] {
+  return leaders.map((leader) => ({
+    rank: leader.rank,
+    name: `${leader.name} (${leader.position})`,
+    clubCode: leader.teamCode,
+    value: formatLeaderTotal(leader),
+  }));
 }
 
 interface ConferenceSlice {
@@ -844,15 +608,6 @@ function buildConferenceSlice(
   return { topSeed, lastIn, firstOut };
 }
 
-function collectLeadersForTeam(teamId: string, leaders: NFLLeaderboards) {
-  return {
-    passing: leaders.passing.find((leader) => leader.teamId === teamId),
-    rushing: leaders.rushing.find((leader) => leader.teamId === teamId),
-    receiving: leaders.receiving.find((leader) => leader.teamId === teamId),
-    sacks: leaders.sacks.find((leader) => leader.teamId === teamId),
-  };
-}
-
 type NflZone = "top-seed" | "division" | "wildcard" | "outside";
 
 function getTeamZone(team: NFLTeamStanding, seeds: Map<string, number>): NflZone {
@@ -874,30 +629,6 @@ function getZoneLabel(zone: NflZone): string {
     case "outside":
     default:
       return "Outside the picture";
-  }
-}
-
-function zoneChipClass(zone: NflZone): string {
-  switch (zone) {
-    case "top-seed":
-    case "division":
-    case "wildcard":
-      return "c97-chip c97-chip-positive";
-    case "outside":
-    default:
-      return "c97-chip";
-  }
-}
-
-function zoneDotColor(zone: NflZone): string {
-  switch (zone) {
-    case "top-seed":
-    case "division":
-    case "wildcard":
-      return "var(--c97-positive)";
-    case "outside":
-    default:
-      return "var(--c97-ink-2)";
   }
 }
 
@@ -925,54 +656,6 @@ function getTeamStoryline(
     return `${team.shortName} sit ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division} at ${record}, ${winsBack === 0 ? "tied with the last team in the picture on wins" : `${winsBack} win${winsBack === 1 ? "" : "s"} short of the seventh seed`}.`;
   }
   return `${team.shortName} sit ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division} at ${record}.`;
-}
-
-function getTeamPressurePoints(
-  team: NFLTeamStanding,
-  context: {
-    conferenceContext: ConferenceContext;
-    offenseRankByTeam: Map<string, number>;
-    defenseRankByTeam: Map<string, number>;
-    seeds: Map<string, number>;
-  }
-): string[] {
-  const { conferenceContext, offenseRankByTeam, defenseRankByTeam, seeds } = context;
-  const slice = conferenceContext[team.conference];
-  const offenseRank = offenseRankByTeam.get(team.id) ?? 0;
-  const defenseRank = defenseRankByTeam.get(team.id) ?? 0;
-  const zone = getTeamZone(team, seeds);
-  const seed = seeds.get(team.id);
-  const points: string[] = [];
-
-  if (zone === "top-seed") {
-    points.push(
-      `${team.wins}-${team.losses}${team.ties ? `-${team.ties}` : ""} for the conference's #1 seed.`,
-      `${team.pointsFor} points scored, ${team.pointsAgainst} allowed (${formatDifferential(team.pointDifferential)} differential).`
-    );
-  } else if (zone === "division") {
-    points.push(
-      `Leads the ${team.division} as the #${seed} seed (${formatRecord(team)}).`,
-      `${formatDifferential(team.pointDifferential)} point differential this season.`
-    );
-  } else if (zone === "wildcard") {
-    points.push(
-      `Wild card #${seed} at ${formatRecord(team)}.`,
-      `${team.pointsFor} PF / ${team.pointsAgainst} PA (${formatDifferential(team.pointDifferential)}).`
-    );
-  } else {
-    const lastInWins = slice.lastIn?.wins ?? team.wins;
-    const winsBack = Math.max(0, lastInWins - team.wins);
-    points.push(
-      `${winsBack === 0 ? "Equal" : `${winsBack} win${winsBack === 1 ? "" : "s"} short`} on wins to the last ${team.conference} team in the picture.`,
-      `${team.pointsFor} PF / ${team.pointsAgainst} PA (${formatDifferential(team.pointDifferential)}).`
-    );
-  }
-
-  points.push(`Offense rank #${offenseRank}; defense rank #${defenseRank}.`);
-  if (team.playoffResult) {
-    points.push(`Postseason result: ${formatPlayoffResult(team.playoffResult)}.`);
-  }
-  return points;
 }
 
 const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });

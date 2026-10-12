@@ -13,6 +13,7 @@ const NBA_FALLBACK_TEAM = "bos";
 
 export { canonicalizeId as canonicalizeTeamId } from "@/lib/searchParams";
 export const { normalizeState, buildHref } = createTeamRouteState<NbaView>(NBA_ROUTE, [
+  "league",
   "east",
   "west",
   "playoff",
@@ -36,6 +37,7 @@ export function filterTeams(
       return [...east.slice(0, 6), ...west.slice(0, 6)];
     case "play-in":
       return [...east.slice(6, 10), ...west.slice(6, 10)];
+    case "league":
     default:
       return [...east, ...west];
   }
@@ -54,8 +56,9 @@ export function resolveDefaultState(
   east: readonly NbaTeam[],
   west: readonly NbaTeam[]
 ): NbaRouteState {
+  // Both conferences, side by side, since the playoff picture is the board.
   return {
-    view: "east",
+    view: "league",
     team: east[0]?.id ?? west[0]?.id ?? NBA_FALLBACK_TEAM,
   };
 }

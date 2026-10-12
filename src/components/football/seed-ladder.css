@@ -1,91 +1,161 @@
-/* SeedLadder: the shared NBA/NFL playoff-picture signature. */
+/*
+ * SeedLadder, the NBA and NFL standings drawn as the playoff picture. It
+ * reads the --sb-* palette of the route root, and the band colours come from
+ * --sl-band-0, --sl-band-1, and --sl-band-2, which each route sets as data.
+ */
 
-.c97-seed-ladder {
+.sl-ladders {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--c97-sp-5);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
 }
 
-@media print, screen and (max-width: 639px) {
-  .c97-seed-ladder {
-    grid-template-columns: minmax(0, 1fr);
+@media screen and (min-width: 1100px) {
+  .sl-ladders[data-count="2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.c97-seed-ladder-conf {
-  display: grid;
+.sl-conference {
+  display: flex;
+  flex-direction: column;
   gap: var(--c97-sp-1);
-  align-content: start;
+  min-width: 0;
 }
 
-.c97-seed-ladder-band-label {
-  margin: var(--c97-sp-3) 0 var(--c97-sp-1);
-  font-size: var(--c97-fs-label);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c97-label);
+.sb-root .sl-conference-name {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
-.c97-seed-ladder-rows {
-  display: grid;
-  border-top: 1px solid var(--c97-rule);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.sl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
 }
 
-.c97-seed-ladder-row {
-  display: grid;
-  grid-template-columns: 14px 2ch minmax(0, 1fr) auto;
-  align-items: center;
-  gap: var(--c97-sp-2);
-  min-height: 30px;
-  padding: var(--c97-sp-1) 0;
-  border-bottom: 1px solid var(--c97-rule);
-  font-size: var(--c97-fs-small);
-}
-
-/* The ink-2 edge keeps a black or navy team colour visible on the dark plate. */
-.c97-seed-ladder-swatch {
-  width: 14px;
-  height: 14px;
-  border: 1px solid var(--c97-ink-2);
-}
-
-.c97-seed-ladder-seed {
-  color: var(--c97-ink-2);
-}
-
-.c97-seed-ladder-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.sl-table th {
   white-space: nowrap;
-  color: var(--c97-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sb-ink-2);
+  text-align: left;
+}
+
+.sl-table thead th {
+  padding: var(--c97-sp-1) var(--c97-sp-1);
+  border-bottom: 1px solid var(--sb-rule-strong);
+}
+
+.sl-table abbr {
+  text-decoration: none;
+}
+
+.sl-table td {
+  padding: 0 var(--c97-sp-1);
+  border-bottom: 1px solid var(--sb-rule);
+  white-space: nowrap;
+}
+
+.sl-table tbody[data-band="0"] { --band: var(--sl-band-0); }
+.sl-table tbody[data-band="1"] { --band: var(--sl-band-1); }
+.sl-table tbody[data-band="2"] { --band: var(--sl-band-2); }
+
+/* The band's colour runs down the seed cell as a bar, the way a standings app marks a zone. */
+.sl-table tbody .sl-col-seed {
+  box-shadow: inset 3px 0 0 var(--band, transparent);
+}
+
+.sl-band th {
+  padding: var(--c97-sp-2) var(--c97-sp-1) var(--c97-sp-0);
+  color: var(--sb-ink);
+}
+
+.sl-band th::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: var(--c97-sp-1);
+  border-radius: 2px;
+  background: var(--band, transparent);
+  vertical-align: -1px;
+}
+
+.sl-line td {
+  padding-block: var(--c97-sp-1);
+  border-bottom: 2px dashed var(--sb-rule-strong);
+  font-size: 0.8125rem;
   font-weight: 600;
+  color: var(--sb-ink-2);
+  white-space: normal;
 }
 
-.c97-seed-ladder-record {
+.sl-table tbody tr:not(.sl-band, .sl-line):hover td {
+  background: color-mix(in srgb, var(--sb-ink) 4%, transparent);
+}
+
+.sl-table tr[data-selected] td {
+  background: color-mix(in srgb, var(--sb-ink) 8%, transparent);
+}
+
+.sl-col-seed {
+  width: 2.5rem;
+  padding-left: var(--c97-sp-2);
+  color: var(--sb-ink-2);
+}
+
+.sl-table th.sl-col-seed {
+  padding-left: var(--c97-sp-2);
+}
+
+.sl-col-team {
+  width: 100%;
+  max-width: 0;
+}
+
+.sl-num {
   text-align: right;
-  color: var(--c97-ink-2);
 }
 
-.c97-seed-ladder-gap {
-  margin: var(--c97-sp-1) 0 0;
-  padding-bottom: var(--c97-sp-2);
-  border-bottom: 2px dashed var(--c97-rule);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
+.sl-table th.sl-num {
+  text-align: right;
 }
 
-.c97-seed-ladder-note {
-  grid-column: 1 / -1;
-  margin: var(--c97-sp-3) 0 0;
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
+.sl-record {
+  font-weight: 700;
 }
 
-@media print, screen and (max-width: 639px) {
-  .c97-seed-ladder-row {
-    font-size: 15px;
+/* Black and navy colours stay visible on the dark sheet through the edge. */
+.sl-chip {
+  flex: none;
+  width: 12px;
+  height: 22px;
+  border-radius: 3px;
+  border: 1px solid var(--sb-rule-strong);
+  background: var(--sb-ink-2);
+}
+
+.sl-wide {
+  display: none;
+}
+
+@media (min-width: 640px), print {
+  .sl-wide {
+    display: table-cell;
+  }
+}
+
+@media print {
+  .sl-ladders {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* A conference runs longer than a sheet, so its table breaks between bands and keeps each row whole. */
+  .sl-table tr {
+    break-inside: avoid;
   }
 }

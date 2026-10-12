@@ -1,4 +1,4 @@
-import { divisionBoard, last10Squares } from "../scoreboard";
+import { divisionBoard, formatWildCardGamesBack, last10Squares, wildCardBoard } from "../scoreboard";
 import type { MlbStandingsRow } from "@/types/mlb";
 
 function row(overrides: Partial<MlbStandingsRow>): MlbStandingsRow {
@@ -97,5 +97,39 @@ describe("divisionBoard", () => {
       record: "91-59",
       squares: ["W", "W", "W", "W", "W", "W", "L", "L", "L", "L"],
     });
+  });
+});
+
+describe("wildCardBoard", () => {
+  // The first slot holder carries the API's lead unsigned, the way snapshots
+  // built before 2026-10-12 store it, and the second carries it signed.
+  const standings = [
+    row({ id: "nyy", code: "NYY", division: "AL East", divisionRank: 2, wildCardRank: 1, wildCardGamesBack: 9.5 }),
+    row({ id: "bos", code: "BOS", division: "AL East", divisionRank: 3, wildCardRank: 2, wildCardGamesBack: -3 }),
+    row({ id: "cws", code: "CWS", division: "AL Central", divisionRank: 2, wildCardRank: 3, wildCardGamesBack: 0 }),
+    row({ id: "tex", code: "TEX", division: "AL West", divisionRank: 2, wildCardRank: 4, wildCardGamesBack: 4 }),
+    row({ id: "tb", code: "TB", division: "AL East", divisionRank: 1, wildCardRank: null }),
+  ];
+
+  it("prints a slot holder's lead as a lead and a chaser's deficit as games back", () => {
+    const [al] = wildCardBoard(standings);
+    expect(al.name).toBe("AL Wild Card");
+    expect(al.kind).toBe("wildcard");
+    expect(al.teams.map((team) => [team.code, team.gamesBack])).toEqual([
+      ["NYY", "+9.5"],
+      ["BOS", "+3.0"],
+      ["CWS", "—"],
+      ["TEX", "4.0"],
+    ]);
+  });
+
+  it("marks only the three non-leaders in the slots as holding a wild card", () => {
+    const board = divisionBoard(standings);
+    const holds = board.flatMap((division) => division.teams).filter((team) => team.holdsWildCard);
+    expect(holds.map((team) => team.code).sort()).toEqual(["BOS", "CWS", "NYY"]);
+  });
+
+  it("formats an unknown gap as a dash", () => {
+    expect(formatWildCardGamesBack(row({ wildCardRank: 5, wildCardGamesBack: null }))).toBe("—");
   });
 });

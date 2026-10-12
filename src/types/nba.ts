@@ -1,6 +1,6 @@
 export type NbaConference = "east" | "west";
 
-export type NbaView = "east" | "west" | "playoff" | "play-in";
+export type NbaView = "league" | "east" | "west" | "playoff" | "play-in";
 
 export interface NbaTeamOption {
   id: string;
