@@ -32,13 +32,13 @@
 
 .mlb-boards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: var(--c97-sp-4) var(--c97-sp-5);
 }
 
 /* All six divisions split by league the way a ballpark's board does, the AL
  * down the left and the NL down the right, since the divisions come AL first. */
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 1000px) {
   .mlb-boards[data-count="6"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(3, auto);
@@ -208,30 +208,45 @@
   width: 3.25rem;
 }
 
-/* A phone's column is about 358px, and a printed column about as narrow, so the club name gives way to the code. */
-@media print {
+/* A phone's column is 288 to 398px, and a printed column about as narrow, so
+ * the club name gives way to the code and the row tightens until the code,
+ * its mark, and the four figures fit without clipping. */
+@media print, screen and (max-width: 479px) {
   .mlb-name {
     display: none;
   }
-}
 
-@media screen and (max-width: 479px) {
-  .mlb-name {
-    display: none;
+  .mlb-table {
+    font-size: 0.875rem;
+  }
+
+  .mlb-code {
+    width: 2.3em;
+  }
+
+  .mlb-mark {
+    padding: 0 3px;
+    font-size: 0.5625rem;
+    letter-spacing: 0.04em;
   }
 
   .mlb-squares {
-    grid-template-columns: repeat(10, 6px);
+    grid-template-columns: repeat(10, 5px);
+    gap: 1px;
   }
 
   .mlb-square {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .mlb-col-streak {
+    width: auto;
   }
 
   .mlb-table td,
   .mlb-table thead th {
-    padding-inline: 4px;
+    padding-inline: 3px;
   }
 }
 
