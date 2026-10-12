@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "I built a monthly budgeting tool for planning income, category budgets, savings targets, and manual expense tracking, all kept in a browser-persisted ledger.",
   canonicalUrl: "/fintech-tools/budget-planner",
-  dateModified: "2026-10-09",
+  dateModified: "2026-10-12",
   image: "/fintech-tools/budget-planner/opengraph-image",
 });
 
