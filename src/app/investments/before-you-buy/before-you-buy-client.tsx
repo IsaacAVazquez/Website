@@ -204,7 +204,7 @@ export function BeforeYouBuyClient() {
     : [];
 
   return (
-    <div className="byb">
+    <div className="byb" data-stock-search-portal="">
       <div className="byb-page c97-shell c97-frame">
         <header className="byb-title">
           <h1>Before You Buy</h1>
@@ -340,7 +340,10 @@ export function BeforeYouBuyClient() {
                 ))}
               </dl>
             ) : null}
-            {result?.window ? <p className="byb-note">Prices through {formatDay(result.window.to)}.</p> : null}
+            {/* The as-of date and the not-advice line print once, beside the figures they qualify. */}
+            <p className="byb-note">
+              {result?.window ? `Prices through ${formatDay(result.window.to)}. ` : ""}Not investment advice.
+            </p>
             {result ? (
               <details className="byb-detail">
                 <summary>Before and after, sector by sector</summary>
@@ -449,7 +452,7 @@ export function BeforeYouBuyClient() {
             daily moves with the current portfolio&apos;s. Index funds show as one slice because the data doesn&apos;t
             say what they hold, the prices are the last close and not live quotes, and a year is a short window that a
             calmer or rougher year could change. The page describes what a buy would change and doesn&apos;t say
-            whether to make it. Not investment advice.
+            whether to make it.
           </p>
         </section>
       </div>

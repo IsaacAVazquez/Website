@@ -308,7 +308,9 @@ export function StockSearch({ value, onChange }: Props) {
             ))}
           </ul>
           </div>,
-          document.querySelector(".c97-page") ?? document.body
+          // A route that paints its own palette marks its root, so the list
+          // inherits that palette; everywhere else it portals to the page.
+          document.querySelector("[data-stock-search-portal]") ?? document.querySelector(".c97-page") ?? document.body
         )}
 
       {shouldShowCuratedOnlyHint && (

@@ -148,12 +148,16 @@
   font-weight: 700;
 }
 
+/* A dollar cell's ring goes around the whole cell, prefix included. An engine
+ * without :has() keeps the input's own ring instead. */
 @supports selector(:has(a)) {
-  .bp .bp-field-money input:focus-visible {
+  .bp .bp-field-money input:focus-visible,
+  .bp .bp-envelope-budget input:focus-visible {
     outline: none;
   }
 
-  .bp-field-money:has(input:focus-visible) {
+  .bp-field-money:has(input:focus-visible),
+  .bp-envelope-budget:has(input:focus-visible) {
     outline: 2px solid var(--bp-action);
     outline-offset: 2px;
   }
@@ -429,17 +433,6 @@
   font: inherit;
   font-size: 1.375rem;
   font-weight: 700;
-}
-
-@supports selector(:has(a)) {
-  .bp .bp-envelope-budget input:focus-visible {
-    outline: none;
-  }
-
-  .bp-envelope-budget:has(input:focus-visible) {
-    outline: 2px solid var(--bp-action);
-    outline-offset: 2px;
-  }
 }
 
 .bp-envelope-reading {

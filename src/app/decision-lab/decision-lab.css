@@ -113,10 +113,15 @@
 /* On a phone the six presets stay one row that scrolls sideways, so they do
  * not stack five rows deep above the sliders. */
 @media screen and (max-width: 639px) {
+  /* The scroll box clips, so it carries 5px of room on every side for the
+   * 2px focus ring at its 3px offset, and a matching negative margin keeps the
+   * first chip on the page's edge. */
   .dl-chips {
     flex-wrap: nowrap;
     overflow-x: auto;
-    padding-bottom: 4px;
+    margin: -5px;
+    padding: 5px;
+    scroll-padding-inline: 5px;
     scrollbar-width: thin;
   }
 

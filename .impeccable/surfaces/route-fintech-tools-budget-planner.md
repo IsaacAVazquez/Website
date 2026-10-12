@@ -55,7 +55,7 @@ Colour is the route's own `--bp-*` properties on `.bp`, a warm white page, near-
 
 ### Cut, and not to be restored
 
-The poster hero sheet and its standfirst, the plate around the month controls, the readout trio (Income repeated the field above it, and Spent and Left to spend now sit in the month bar), the second plate around the envelopes, the separate "Categories" band of rows with its own budget fields, the torn and deckle seams, and `EnvelopesSignature.tsx`, whose envelopes now live in the client.
+The poster hero sheet and its standfirst, the plate around the month controls, the readout trio (Income repeated the field above it, and Spent and Left to spend now sit in the month bar), the second plate around the envelopes, the separate "Categories" band of rows with its own budget fields, the torn and deckle seams, and `EnvelopesSignature.tsx`, whose envelopes now live in the client. `envelope()` in `envelopes.ts` no longer returns the `spentLabel` and `budgetLabel` strings only that component read.
 
 ### Pinned, and kept
 

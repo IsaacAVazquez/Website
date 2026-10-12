@@ -16,7 +16,8 @@
   --byb-field: #f1f2f3;
   --byb-action: #155ea8;
 
-  /* StockSearch and any borrowed rule read these. */
+  /* StockSearch and any borrowed rule read these. Its suggestion list portals
+   * to the element marked data-stock-search-portal, which is this root. */
   --c97-ink: var(--byb-ink);
   --c97-ink-2: var(--byb-ink-2);
   --c97-label: var(--byb-ink-2);
@@ -39,6 +40,20 @@
   --byb-rule: #2e3135;
   --byb-field: #1d1f22;
   --byb-action: #8fbcef;
+}
+
+/* StockSearch wraps its portalled list in a paper surface, which resets the
+ * frame tokens to Catalog 97's paper, so that surface gets this route's
+ * palette back. The .dark selector outweighs the frame's dark paper rule. */
+.c97-page .byb [data-c97-surface],
+.dark .c97-page .byb [data-c97-surface] {
+  --c97-ink: var(--byb-ink);
+  --c97-ink-2: var(--byb-ink-2);
+  --c97-label: var(--byb-ink-2);
+  --c97-surface: var(--byb-paper);
+  --c97-panel: var(--byb-field);
+  --c97-rule: var(--byb-rule);
+  --c97-accent: var(--byb-action);
 }
 
 .byb :where(p, ul, li, dl, dd) {
@@ -98,19 +113,12 @@
 
 /* ── Layout ─────────────────────────────────────────────────────────────── */
 
-/* Phone and paper: the buy, then what it changes, then the portfolio it lands in. */
+/* Phone and paper: the buy, the portfolio it lands in, then what it changes,
+ * which is the DOM order, so the visual order and the tab order agree. */
 .byb-calc {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-4);
-}
-
-.byb-result {
-  order: 1;
-}
-
-.byb-portfolio {
-  order: 2;
 }
 
 @media screen and (min-width: 960px) {
