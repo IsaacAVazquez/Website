@@ -298,7 +298,7 @@
 
 @media screen and (min-width: 1024px) {
   .bp-month {
-    grid-template-columns: minmax(0, 17.5rem) minmax(0, 11rem) minmax(0, 11rem) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 17.5rem) minmax(0, 10rem) minmax(0, 10rem) minmax(0, 1fr) auto;
     column-gap: var(--c97-sp-3);
   }
 

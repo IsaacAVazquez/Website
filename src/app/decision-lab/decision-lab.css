@@ -110,6 +110,21 @@
   gap: var(--c97-sp-1);
 }
 
+/* On a phone the six presets stay one row that scrolls sideways, so they do
+ * not stack five rows deep above the sliders. */
+@media screen and (max-width: 639px) {
+  .dl-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+  }
+
+  .dl-chip {
+    flex: none;
+  }
+}
+
 .dl-chip {
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
