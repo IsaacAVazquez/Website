@@ -424,14 +424,17 @@ describe("TradeCalculatorClient", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("prints the stale source line on a paper plate, since every status colour is ink on the green hero", () => {
+  it("prints the stale source line in the negative ink in the compact header, with no plate around it", () => {
     useSnapshot(buildSnapshot({ stale: true }));
     render(<TradeCalculatorClient />);
 
-    expect(screen.getByText(/stale sources/i).closest("[data-c97-surface]")).toHaveAttribute(
-      "data-c97-surface",
-      "paper"
-    );
+    // The green hero and its paper plate came off on 2026-10-12. The page is
+    // one paper surface now, so the status colour reads as itself in place.
+    const line = screen.getByText(/stale sources/i);
+    expect(line).toHaveStyle({ color: "var(--c97-negative)" });
+    expect(line.closest("header")).not.toBeNull();
+    expect(line.closest(".c97-offset")).toBeNull();
+    expect(line.closest("[data-c97-surface]")).toBeNull();
   });
 
   it("withholds the verdict and exact values when the expert snapshot is stale", async () => {
