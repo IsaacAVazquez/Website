@@ -169,7 +169,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   // A link that names a team outside its view (an NL club on the AL view)
   // opens that team in the full league, the way a game card's pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
+  // Only a link that names a team moves the view; a bare ?view= fills in the
+  // view's own first team instead of the default one, which may sit outside it.
   const routeState: MlbRouteState =
+    searchParams.get("team") !== null &&
     standingsById.has(linkedState.team) &&
     !filterStandings(standings, linkedState.view).some((row) => row.id === linkedState.team)
       ? { ...linkedState, view: defaultState.view }
@@ -336,12 +339,24 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           <MlbScoreboard boards={boards} selectedId={selectedRow?.id ?? null} onSelect={handleTeamChange} />
 
           <ul className="sb-legend">
-            <li>
-              <abbr className="mlb-mark" data-mark="Leads">Leads</abbr> the division
-            </li>
-            <li>
-              <abbr className="mlb-mark" data-mark="WC">WC</abbr> holds one of three wild card slots
-            </li>
+            {routeState.view === "wildcard" ? (
+              <>
+                <li>
+                  <abbr className="mlb-mark" data-mark="In">In</abbr> holds one of three wild card slots, above the
+                  dashed line
+                </li>
+                <li>A plus is a slot holder&apos;s lead over the first team out</li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <abbr className="mlb-mark" data-mark="Leads">Leads</abbr> the division
+                </li>
+                <li>
+                  <abbr className="mlb-mark" data-mark="WC">WC</abbr> holds one of three wild card slots
+                </li>
+              </>
+            )}
             <li>Lit squares are wins in the last ten</li>
           </ul>
         </section>

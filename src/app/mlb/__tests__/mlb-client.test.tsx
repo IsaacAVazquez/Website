@@ -172,4 +172,18 @@ describe("MlbClient", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(opener).toHaveFocus();
   });
+
+  it("opens a bare wild card link on the wild card races", async () => {
+    currentSearchParams = new URLSearchParams("view=wildcard");
+    render(
+      <MlbClient
+        initialState={{ ...DEFAULT_MLB_STATE, view: "wildcard" }}
+        summary={await getMlbSummarySnapshot()}
+        initialTeamSnapshot={null}
+      />
+    );
+
+    expect(screen.getByRole("button", { name: /wild card/i })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("table", { name: "AL Wild Card standings" })).toBeInTheDocument();
+  });
 });

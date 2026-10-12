@@ -178,8 +178,12 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   // East view) opens that team in its own conference, the way a pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
   const linkedTeam = teamById.get(linkedState.team);
+  // Only a link that names a team moves the view; a bare ?view= fills in the
+  // view's own first team instead of the default one, which may sit outside it.
   const routeState: NbaRouteState =
-    linkedTeam && !filterTeams(east, west, linkedState.view).some((team) => team.id === linkedTeam.id)
+    searchParams.get("team") !== null &&
+    linkedTeam &&
+    !filterTeams(east, west, linkedState.view).some((team) => team.id === linkedTeam.id)
       ? { ...linkedState, view: linkedTeam.conference }
       : linkedState;
   const visibleTeams = filterTeams(east, west, routeState.view);

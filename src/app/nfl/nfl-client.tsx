@@ -217,7 +217,10 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   // A link that names a team outside its view (an NFC team on the AFC view)
   // opens that team in the full league, the way a schedule card's pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
+  // Only a link that names a team moves the view; a bare ?view= fills in the
+  // view's own first team instead of the default one, which may sit outside it.
   const routeState: NFLRouteState =
+    searchParams.get("team") !== null &&
     teamById.has(linkedState.team) &&
     !filterTeams(summary.teams, linkedState.view).some((team) => team.id === linkedState.team)
       ? { ...linkedState, view: defaultState.view }
