@@ -1,4 +1,298 @@
-/* Tech Startup Tracker: the valuation treemap signature. */
+/*
+ * Tech Startup Tracker, drawn as a funding list. The route paints a ledger
+ * paper with navy ink and points the Catalog 97 tokens its borrowed table,
+ * chips, and labels read at it, including the chart ramp the treemap tiles
+ * fill from. The treemap is the comparison and the table is the record, and
+ * nothing around either is boxed.
+ */
+
+.ts-root {
+  --ts-bg: #f8f6f1;
+  --ts-raise: #edeae2;
+  --ts-ink: #182132;
+  --ts-ink-2: #4f5868;
+  --ts-rule: rgba(24, 33, 50, 0.13);
+  --ts-rule-strong: rgba(24, 33, 50, 0.36);
+  --ts-focus: #1f5fbf;
+  --ts-warn: #8a4b00;
+
+  --c97-surface: var(--ts-bg);
+  --c97-field: var(--ts-raise);
+  --c97-panel: var(--ts-raise);
+  --c97-ink: var(--ts-ink);
+  --c97-ink-2: var(--ts-ink-2);
+  --c97-label: var(--ts-ink-2);
+  --c97-rule: var(--ts-rule);
+  --c97-action: var(--ts-ink);
+  --c97-accent: var(--ts-focus);
+  --c97-chart-1: #2f5d8a;
+  --c97-chart-2: #7a9cc6;
+  --c97-chart-3: #3f7f6e;
+  --c97-chart-4: #9cb87a;
+  --c97-chart-5: #b07a3c;
+  --c97-chart-6: #8a5a8c;
+
+  background: var(--ts-bg);
+  color: var(--ts-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark .ts-root {
+  --ts-bg: #0f141c;
+  --ts-raise: #1a212c;
+  --ts-ink: #e6e9ef;
+  --ts-ink-2: #a3abb8;
+  --ts-rule: rgba(230, 233, 239, 0.13);
+  --ts-rule-strong: rgba(230, 233, 239, 0.34);
+  --ts-focus: #8db4f5;
+  --ts-warn: #f0b35a;
+  --c97-chart-1: #4a7fb5;
+  --c97-chart-2: #8fb0d9;
+  --c97-chart-3: #5aa58f;
+  --c97-chart-4: #b5cf93;
+  --c97-chart-5: #d39a58;
+  --c97-chart-6: #b07fb3;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.ts-root h1,
+.ts-root h2 {
+  font-family: var(--c97-font-display);
+  font-weight: 500;
+  color: var(--ts-ink);
+  margin: 0;
+}
+
+.ts-root :where(p, dl, dd) {
+  margin: 0;
+  max-inline-size: none;
+}
+
+.ts-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+.ts-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.ts-title {
+  font-size: var(--c97-fs-h1);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.ts-lede {
+  max-inline-size: 64ch;
+  font-size: var(--c97-fs-body);
+  line-height: 1.5;
+  color: var(--ts-ink-2);
+}
+
+/* The treemap and its header */
+
+.ts-map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.ts-map-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  padding-block: var(--c97-sp-1);
+  border-block: 1px solid var(--ts-rule-strong);
+}
+
+.ts-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  flex: 1 1 36rem;
+  min-width: 0;
+}
+
+.ts-source {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 22rem;
+  min-width: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.ts-source-line {
+  color: var(--ts-ink-2);
+}
+
+.ts-root .ts-warn {
+  color: var(--ts-warn);
+  font-weight: 600;
+}
+
+.ts-notice-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ts-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ts-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+}
+
+.ts-switch > button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ts-ink-2);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms var(--c97-ease), color 160ms var(--c97-ease);
+}
+
+.ts-switch > button:hover {
+  background: var(--ts-raise);
+  color: var(--ts-ink);
+}
+
+.ts-switch > button[aria-pressed="true"] {
+  background: var(--ts-ink);
+  color: var(--ts-bg);
+  font-weight: 600;
+}
+
+.ts-switch--pair {
+  padding: 1px;
+  border: 1px solid var(--ts-rule-strong);
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .ts-switch--scroll {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .ts-switch--scroll > button {
+    flex: none;
+  }
+}
+
+/* The table */
+
+.ts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-3);
+}
+
+.ts-list-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 2px solid var(--ts-ink);
+}
+
+.ts-h2 {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.2;
+}
+
+.ts-root .ts-h3 {
+  font-family: var(--c97-font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.ts-sort {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.ts-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ts-ink-2);
+}
+
+.ts-table tbody tr[id] {
+  background: var(--ts-raise);
+}
+
+@media screen and (min-width: 1024px) {
+  .ts-table {
+    min-width: 820px;
+  }
+}
+
+.ts-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-4);
+  border-bottom: 1px solid var(--ts-rule);
+  color: var(--ts-ink-2);
+}
+
+.ts-root .ts-empty-title {
+  font-family: var(--c97-font-display);
+  font-size: 1.25rem;
+  color: var(--ts-ink);
+}
+
+.ts-notice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  max-inline-size: 72ch;
+  padding-top: var(--c97-sp-3);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--ts-ink-2);
+}
+
+@media print {
+  .ts-switch > button:not([aria-pressed="true"]),
+  .ts-sort,
+  .ts-notice-link {
+    display: none;
+  }
+}
+
+/* The valuation treemap */
 
 .c97-startup-treemap {
   color: var(--c97-ink);
@@ -50,16 +344,4 @@
   .c97-startup-treemap-sector-label-group {
     display: none;
   }
-}
-
-/* The segment leader buttons set their fill and border inline, so hover and
- * keyboard focus cue on the name, as the earthquake log rows do. */
-.c97-segment-leader-name {
-  color: var(--c97-ink);
-}
-
-.c97-segment-leader:hover .c97-segment-leader-name,
-.c97-segment-leader:focus-visible .c97-segment-leader-name {
-  color: var(--c97-action);
-  text-decoration: underline;
 }

@@ -131,7 +131,7 @@ describe("GitHubTrendingClient", () => {
     );
   });
 
-  it("prints the filters ahead of the star log they redraw", () => {
+  it("prints the filters ahead of the list they redraw", () => {
     render(
       <GitHubTrendingClient
         initialState={DEFAULT_GITHUB_TRENDING_STATE}
@@ -139,10 +139,11 @@ describe("GitHubTrendingClient", () => {
       />
     );
 
+    // The star log and the table are one list now, with the gain drawn in each row.
     const filters = screen.getByRole("region", { name: "GitHub trending filters" });
-    const starLog = screen.getByRole("list", { name: /weekly star movement/i });
+    const list = screen.getByRole("region", { name: /repository table/i });
     expect(
-      filters.compareDocumentPosition(starLog) & Node.DOCUMENT_POSITION_FOLLOWING
+      filters.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING
     ).toBeTruthy();
   });
 
@@ -167,6 +168,28 @@ describe("GitHubTrendingClient", () => {
       "href",
       "https://github.com/openai/fixture"
     );
+  });
+
+  it("counts only the repositories that gained stars in the strip's base and names the grey", () => {
+    const flat = { ...repo, id: 43, fullName: "openai/flat", weeklyStars: 0 };
+    const other = { ...repo, id: 44, fullName: "openai/kotlin", primaryLanguage: "Kotlin", weeklyStars: 40 };
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          repositories: [repo, flat, other],
+          languages: [segment({ repoIds: [42, 43, 44], repoCount: 3 })],
+        }}
+      />
+    );
+
+    expect(
+      screen.getByText(
+        "TypeScript has 75% of this week's star gain, counted across the 2 repositories in this view that gained stars."
+      )
+    ).toBeVisible();
+    expect(screen.getByText("Other languages")).toBeVisible();
   });
 
   it("folds a long table after 25 rows and opens the rest on one button", () => {
@@ -201,9 +224,10 @@ describe("GitHubTrendingClient", () => {
       />
     );
 
+    // The language strip's caption replaced the "Leading language" readout.
     expect(
       screen.getByText(
-        "100% of the stars the 1 tracked repos gained over the past week"
+        "TypeScript has 100% of this week's star gain, counted across the 1 repository in this view that gained stars."
       )
     ).toBeVisible();
   });

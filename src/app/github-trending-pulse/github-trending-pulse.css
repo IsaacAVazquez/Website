@@ -1,204 +1,639 @@
-/* GitHub Trending Pulse: the star log board and language strip. */
+/*
+ * GitHub Trending Pulse, drawn as a git log --stat. The route paints its own
+ * paper and points the Catalog 97 tokens the frame reads (the focus ring, the
+ * sr-only helpers) at it. Every row is a ruled line, the gain is a bar in a
+ * diff-addition green, and the only other colour is the language strip, which
+ * keeps each language's own colour.
+ */
 
-.c97-star-log {
-  display: grid;
-  gap: var(--c97-sp-4);
+.gt-root {
+  --gt-bg: #fbfbf9;
+  --gt-raise: #f0f1ee;
+  --gt-ink: #1d2227;
+  --gt-ink-2: #565e66;
+  --gt-rule: rgba(29, 34, 39, 0.12);
+  --gt-rule-strong: rgba(29, 34, 39, 0.32);
+  --gt-add: #1a7f37;
+  --gt-focus: #0b5cd5;
+  --gt-other: #8c959f;
+  --gt-warn: #8a5300;
+
+  --c97-surface: var(--gt-bg);
+  --c97-field: var(--gt-raise);
+  --c97-panel: var(--gt-raise);
+  --c97-ink: var(--gt-ink);
+  --c97-ink-2: var(--gt-ink-2);
+  --c97-label: var(--gt-ink-2);
+  --c97-rule: var(--gt-rule);
+  --c97-action: var(--gt-ink);
+  --c97-accent: var(--gt-focus);
+
+  background: var(--gt-bg);
+  color: var(--gt-ink);
+  font-family: var(--c97-font-body);
+  font-variant-numeric: tabular-nums;
 }
 
-.c97-star-log-strip {
+.dark .gt-root {
+  --gt-bg: #101317;
+  --gt-raise: #1b1f24;
+  --gt-ink: #e4e8ec;
+  --gt-ink-2: #a0a8b1;
+  --gt-rule: rgba(228, 232, 236, 0.12);
+  --gt-rule-strong: rgba(228, 232, 236, 0.3);
+  --gt-add: #3fb950;
+  --gt-focus: #6ea8ff;
+  --gt-other: #6e7681;
+  --gt-warn: #e3b341;
+}
+
+/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
+.gt-root h1 {
+  font-family: var(--c97-font-mono);
+  font-weight: 400;
+  color: var(--gt-ink);
+  margin: 0;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.gt-root :where(p, dl, dd) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+}
+
+.gt-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+  padding-block: var(--c97-sp-4) var(--c97-sp-6);
+}
+
+/* Title row */
+
+.gt-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.gt-title {
+  font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.gt-lede {
+  max-inline-size: 62ch;
+  font-size: var(--c97-fs-body);
+  line-height: 1.5;
+  color: var(--gt-ink-2);
+}
+
+.gt-status {
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--gt-ink-2);
+}
+
+.gt-root .gt-warn {
+  color: var(--gt-warn);
+}
+
+/* The board: toolbar, language strip, and the list */
+
+.gt-board {
+  display: flex;
+  flex-direction: column;
+}
+
+.gt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-block: var(--c97-sp-1);
+  border-block: 1px solid var(--gt-rule-strong);
+  background: var(--gt-bg);
+}
+
+/* The switches stay in reach while the list scrolls under them. */
+@media screen and (min-width: 768px) {
+  .gt-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.gt-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  flex: 1 1 32rem;
+  min-width: 0;
+}
+
+.gt-sort {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.gt-label {
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gt-ink-2);
+}
+
+.gt-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+}
+
+.gt-switch > button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-1);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--gt-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms var(--c97-ease), color 160ms var(--c97-ease);
+}
+
+.gt-switch > button:hover {
+  background: var(--gt-raise);
+  color: var(--gt-ink);
+}
+
+.gt-switch > button[aria-pressed="true"] {
+  border-color: var(--gt-ink);
+  background: var(--gt-ink);
+  color: var(--gt-bg);
+}
+
+/* The kind switch reads as one control, so its pair sits in a ruled capsule. */
+.gt-filters > .gt-switch:first-child {
+  border: 1px solid var(--gt-rule-strong);
+  border-radius: 8px;
+  padding: 1px;
+}
+
+/* On a phone the segment switch scrolls sideways in one row, the way the genre does it. */
+@media screen and (max-width: 767px) {
+  .gt-switch--scroll {
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .gt-switch--scroll > button {
+    flex: none;
+  }
+}
+
+/* Language strip */
+
+.gt-strip-row {
+  display: grid;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-2);
+}
+
+.gt-strip {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  margin-bottom: var(--c97-sp-5);
 }
 
-.c97-star-log-strip-segment {
+.gt-strip-segment {
   display: flex;
   flex-direction: column;
-  min-width: 2px;
+  min-width: 3px;
+  border-right: 2px solid var(--gt-bg);
 }
 
-.c97-star-log-strip-swatch {
+.gt-strip-segment:last-child {
+  border-right: 0;
+}
+
+.gt-strip-swatch {
   display: block;
-  height: 28px;
+  height: 12px;
   width: 100%;
 }
 
-.c97-star-log-strip-label {
-  margin-top: var(--c97-sp-1);
+.gt-strip-label {
+  margin-top: var(--c97-sp-0);
   font-family: var(--c97-font-mono);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
+  font-size: 0.6875rem;
+  color: var(--gt-ink-2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.c97-star-log-legend {
+.gt-strip-notes {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--c97-sp-2) var(--c97-sp-4);
-  font-size: var(--c97-fs-small);
-  color: var(--c97-ink-2);
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
 }
 
-.c97-star-log-swatch {
+.gt-caption {
+  font-size: 0.8125rem;
+  color: var(--gt-ink-2);
+}
+
+.gt-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  color: var(--gt-ink-2);
+}
+
+.gt-key {
   display: inline-block;
-  width: 20px;
-  height: 10px;
+  width: 18px;
+  height: 9px;
   margin-right: var(--c97-sp-1);
   vertical-align: middle;
-  background: var(--c97-ink);
+  background: var(--gt-add);
 }
 
-.c97-star-log-swatch[data-status="partial"] {
+/* The strip's grey, for every language without a colour of its own. */
+.gt-root .gt-key--other {
+  background: var(--gt-other);
+}
+
+/* Bars */
+
+.gt-track {
+  display: block;
+  height: 10px;
+  background: var(--gt-raise);
+}
+
+.gt-bar {
+  display: block;
+  height: 100%;
+  background: var(--gt-add);
+}
+
+.gt-bar[data-status="partial"],
+.gt-key[data-status="partial"] {
   background-color: transparent;
   background-image: repeating-linear-gradient(
     45deg,
-    var(--c97-ink),
-    var(--c97-ink) 2px,
+    var(--gt-add),
+    var(--gt-add) 2px,
     transparent 2px,
     transparent 5px
   );
-  border: 1px solid var(--c97-ink);
+  box-shadow: inset 0 0 0 1px var(--gt-add);
 }
 
-.c97-star-log-swatch[data-status="baseline"] {
+.gt-bar[data-status="baseline"],
+.gt-key[data-status="baseline"] {
   background: transparent;
-  border: 1.5px solid var(--c97-ink);
+  box-shadow: inset 0 0 0 1.5px var(--gt-add);
 }
 
-.c97-star-log-rows {
+/* The list */
+
+.gt-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.gt-scroll {
+  overflow-x: auto;
+}
+
+.gt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.gt-table th {
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--gt-rule-strong);
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--gt-ink-2);
+  white-space: nowrap;
+}
+
+.gt-table td {
+  padding: var(--c97-sp-1);
+  border-bottom: 1px solid var(--gt-rule);
+  vertical-align: top;
+}
+
+.gt-table [data-align="end"] {
+  text-align: right;
+}
+
+.gt-row {
+  cursor: pointer;
+}
+
+.gt-row:hover,
+.gt-row[data-open],
+.gt-detail-row {
+  background: var(--gt-raise);
+}
+
+.gt-row[data-open] > td {
+  border-bottom-color: transparent;
+}
+
+.gt-repo {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: start;
+}
+
+.gt-rank {
+  padding-top: 13px;
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  color: var(--gt-ink-2);
+}
+
+.gt-repo-text {
+  min-width: 0;
+}
+
+.gt-name {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gt-ink);
+  font-family: var(--c97-font-mono);
+  font-size: 0.9375rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.gt-name:hover,
+.gt-row:hover .gt-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.gt-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  max-inline-size: 64ch;
+  margin-top: calc(var(--c97-sp-0) * -1);
+  color: var(--gt-ink-2);
+  line-height: 1.45;
+}
+
+.gt-row[data-open] .gt-desc {
+  -webkit-line-clamp: unset;
+}
+
+.gt-root .gt-table td.gt-delta {
+  padding-top: 13px;
+  white-space: nowrap;
+}
+
+.gt-delta-value {
+  display: block;
+  font-family: var(--c97-font-mono);
+  font-size: 0.9375rem;
+  color: var(--gt-ink);
+}
+
+.gt-delta-status {
+  display: block;
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  color: var(--gt-ink-2);
+}
+
+.gt-root .gt-table td.gt-col-bar {
+  width: 24%;
+  min-width: 8rem;
+  padding-top: 18px;
+}
+
+.gt-track--inline {
+  display: none;
+}
+
+.gt-num {
+  font-family: var(--c97-font-mono);
+}
+
+.gt-root .gt-table td.gt-num,
+.gt-root .gt-table td.gt-muted,
+.gt-root .gt-table td:last-child {
+  padding-top: 13px;
+}
+
+.gt-muted {
+  color: var(--gt-ink-2);
+  white-space: nowrap;
+}
+
+.gt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+  min-height: 44px;
+  margin-top: -13px;
+  color: var(--gt-ink);
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  text-underline-offset: 3px;
+}
+
+.gt-facts .gt-link {
+  margin-top: 0;
+}
+
+.gt-more {
+  align-self: flex-start;
+  min-height: 44px;
+  padding-inline: var(--c97-sp-2);
+  border: 1px solid var(--gt-rule-strong);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--gt-ink);
+  font-family: var(--c97-font-mono);
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.gt-more:hover {
+  background: var(--gt-raise);
+}
+
+/* The open row */
+
+.gt-root .gt-detail-row > td {
+  padding: 0 var(--c97-sp-1) var(--c97-sp-3) calc(2rem + var(--c97-sp-1));
+}
+
+.gt-detail {
   display: grid;
   gap: var(--c97-sp-2);
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.c97-star-log-row {
-  display: grid;
-  grid-template-columns: 5rem minmax(6rem, 1fr) minmax(0, 2fr) 4.5rem;
-  align-items: center;
-  gap: var(--c97-sp-3);
-  min-height: 44px;
-}
-
-.c97-star-log-delta {
-  font-size: var(--c97-fs-small);
-  text-align: right;
-  white-space: nowrap;
-}
-
-.c97-star-log-bar-track {
-  display: block;
-  height: 14px;
-  background: var(--c97-field);
-}
-
-.c97-star-log-bar {
-  display: block;
-  height: 100%;
-  background: var(--c97-ink);
-}
-
-.c97-star-log-bar[data-status="partial"] {
-  background-color: transparent;
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--c97-ink),
-    var(--c97-ink) 3px,
-    transparent 3px,
-    transparent 7px
-  );
-  border: 1px solid var(--c97-ink);
-}
-
-.c97-star-log-bar[data-status="baseline"] {
-  background: transparent;
-  border: 1.5px solid var(--c97-ink);
-}
-
-.c97-star-log-name {
+.gt-detail-tags {
   display: flex;
-  align-items: center;
-  min-width: 0;
-  min-height: 44px;
-  color: var(--c97-ink);
-  font-weight: 600;
-  text-decoration: none;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
 }
 
-.c97-star-log-name-text {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.gt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-0);
 }
 
-.c97-star-log-name:hover,
-.c97-star-log-name:focus-visible {
-  text-decoration: underline;
+.gt-tag {
+  padding: 2px var(--c97-sp-1);
+  border: 1px solid var(--gt-rule-strong);
+  border-radius: 999px;
+  font-family: var(--c97-font-mono);
+  font-size: 0.75rem;
+  color: var(--gt-ink);
 }
 
-.c97-star-log-total {
-  text-align: right;
-  color: var(--c97-ink-2);
-  font-size: var(--c97-fs-small);
-  white-space: nowrap;
+.gt-tag--topic {
+  border-color: var(--gt-rule);
+  color: var(--gt-ink-2);
 }
 
-/* At phone width the row wraps into two lines instead of squeezing four
- * columns into 390px. */
+.gt-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+}
+
+.gt-facts dt {
+  font-family: var(--c97-font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gt-ink-2);
+}
+
+.gt-facts dd {
+  font-family: var(--c97-font-mono);
+  font-size: 0.875rem;
+  color: var(--gt-ink);
+}
+
+.gt-empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-block: var(--c97-sp-4);
+  border-bottom: 1px solid var(--gt-rule);
+  color: var(--gt-ink-2);
+}
+
+.gt-root .gt-empty-title {
+  font-family: var(--c97-font-mono);
+  font-size: 1rem;
+  color: var(--gt-ink);
+}
+
+/* Columns by width. A phone keeps the repository and the gain, with the bar
+ * under the name; 640px adds the bar column; 1024px adds stars, language,
+ * pushed, and the link, which the open row carries until then. */
 @media print, screen and (max-width: 639px) {
-  .c97-star-log-row {
-    grid-template-columns: 4.5rem minmax(3rem, 1fr) auto;
-    grid-template-areas:
-      "delta bar bar"
-      "name name total";
-    row-gap: var(--c97-sp-1);
-  }
-
-  .c97-star-log-delta {
-    grid-area: delta;
-    text-align: left;
-  }
-
-  .c97-star-log-bar-track {
-    grid-area: bar;
-  }
-
-  .c97-star-log-name {
-    grid-area: name;
-  }
-
-  .c97-star-log-total {
-    grid-area: total;
-  }
-
-  /* The table under the board lists every repository with the same name and
-   * gain, so a phone prints the first five bars as opening context and the
-   * table carries the rest. */
-  .c97-star-log-row:nth-child(n + 6) {
+  .gt-col-bar {
     display: none;
   }
 
-  /* A narrow strip has no room for per-language labels without them
-   * crowding into each other; the "leading language" readout under the
-   * board already carries the top one. */
-  .c97-star-log-strip-label {
+  .gt-track--inline {
+    display: block;
+    max-inline-size: 16rem;
+    margin-block: var(--c97-sp-1) var(--c97-sp-0);
+  }
+
+  .gt-strip-label {
     display: none;
   }
 }
 
-/* The segment leader buttons set their fill and border inline, so hover and
- * keyboard focus cue on the name, as the earthquake log rows do. */
-.c97-segment-leader-name {
-  color: var(--c97-ink);
+@media screen and (max-width: 1023px) {
+  .gt-wide {
+    display: none;
+  }
 }
 
-.c97-segment-leader:hover .c97-segment-leader-name,
-.c97-segment-leader:focus-visible .c97-segment-leader-name {
-  color: var(--c97-action);
-  text-decoration: underline;
+@media screen and (min-width: 1024px) {
+  .gt-narrow {
+    display: none;
+  }
+
+  .gt-desc {
+    -webkit-line-clamp: 2;
+  }
+
+  .gt-detail {
+    grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.6fr);
+  }
+}
+
+@media print {
+  .gt-toolbar {
+    position: static;
+  }
+
+  .gt-switch > button:not([aria-pressed="true"]),
+  .gt-sort,
+  .gt-more {
+    display: none;
+  }
+
+  .gt-row:hover {
+    background: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .gt-name {
+    font-size: 0.875rem;
+  }
+
+  .gt-repo {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+  }
 }
