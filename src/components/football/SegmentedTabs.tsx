@@ -23,7 +23,7 @@ export function SegmentedTabs({
   ariaLabel,
   idPrefix,
   panelId,
-  className = "",
+  className = "c97-segmented",
 }: {
   tabs: SegmentedTabItem[];
   activeId: string;
@@ -37,8 +37,8 @@ export function SegmentedTabs({
 
   return (
     <div
-      // Its callers stack it in a flex column, so the parent's gap spaces it.
-      className={`c97-segmented ${className}`.trim()}
+      // The league table page passes its own switch style in place of the default.
+      className={className}
       role="tablist"
       aria-label={ariaLabel}
     >

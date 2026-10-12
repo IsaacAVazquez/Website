@@ -23,7 +23,7 @@ const LA_LIGA_FALLBACK_CLUB = "barcelona";
 
 const VALID_VIEWS = new Set<LaLigaView>(["table", "title-race", "europe", "relegation"]);
 
-const VALID_DETAILS = new Set<LaLigaDetailTab>(["club", "fixtures", "scorers"]);
+const VALID_DETAILS = new Set<LaLigaDetailTab>(["fixtures", "scorers"]);
 
 type ClubAliasSource = { id: string; tla: string | null };
 
@@ -67,7 +67,7 @@ export function resolveDefaultState(clubs: readonly LaLigaClub[]): LaLigaRouteSt
   return {
     view: "table",
     club: clubs[0]?.id ?? LA_LIGA_FALLBACK_CLUB,
-    detail: "club",
+    detail: "fixtures",
   };
 }
 

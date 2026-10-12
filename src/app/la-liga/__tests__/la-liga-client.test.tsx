@@ -74,8 +74,7 @@ describe("LaLigaClient", () => {
       laLigaSnapshot.clubs[0];
 
     // The pinned id is an explicit, resolvable ?club= selection, so it opens
-    // the club drawer (the standings-row click target) rather than only
-    // updating the inline "Club detail" tab as before.
+    // the club drawer, the standings row's click target.
     expect(
       screen.getByRole("dialog", { name: `${expectedClub.name} detail` })
     ).toBeInTheDocument();
@@ -171,7 +170,7 @@ describe("LaLigaClient", () => {
       expect(screen.getByRole("dialog", { name: `${club.name} detail` })).toBeInTheDocument();
     });
 
-    it("opens a club from the lookup under the readouts", async () => {
+    it("opens a club from the lookup in the title row", async () => {
       const user = userEvent.setup();
       followPushes();
       const club = byPosition[9]!;
@@ -206,9 +205,10 @@ describe("LaLigaClient", () => {
 
   it("canonicalizes hidden club selections for a focused view", async () => {
     const defaultRelegationClub = getDefaultClubForView("relegation");
-    const defaultRelegationTeam =
-      laLigaSnapshot.teamSnapshots[defaultRelegationClub]?.team?.name;
-    expect(defaultRelegationTeam).toBeDefined();
+    const defaultRelegationName = laLigaSnapshot.clubs.find(
+      (club) => club.id === defaultRelegationClub
+    )?.name;
+    expect(defaultRelegationName).toBeDefined();
     currentSearchParams = new URLSearchParams("view=relegation&club=barcelona");
 
     render(
@@ -241,9 +241,11 @@ describe("LaLigaClient", () => {
       )
     );
 
+    // The Club detail tab that printed the selected club as a heading was cut
+    // on 2026-10-11, so the selection is read off the table row instead.
     expect(
-      screen.getByRole("heading", { name: defaultRelegationTeam as string })
-    ).toBeInTheDocument();
+      screen.getByRole("button", { name: `Show ${defaultRelegationName} details` })
+    ).toHaveAttribute("aria-pressed", "true");
   });
 
   it("links to the LALIGA stats page and credits football-data.org for the data", () => {

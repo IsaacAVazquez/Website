@@ -37,6 +37,13 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
   const initialTeamSnapshot = selectedTeamId
     ? await getPremierLeagueTeamSnapshot(selectedTeamId).catch(() => null)
     : null;
+  // The team snapshots list results newest first; the table reads oldest first.
+  const formByTeam = Object.fromEntries(
+    Object.entries(premierLeagueSnapshot.teamSnapshots).map(([id, team]) => [
+      id,
+      team.form.sequence.slice(0, 5).toReversed(),
+    ])
+  );
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Premier League Pulse", url: "/premier-league" },
@@ -73,6 +80,7 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
         initialState={initialState}
         summary={summary}
         initialTeamSnapshot={initialTeamSnapshot}
+        formByTeam={formByTeam}
       />
     </>
   );

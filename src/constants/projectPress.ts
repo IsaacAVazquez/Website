@@ -26,8 +26,6 @@ export const PROJECT_PRESS: Readonly<Record<string, ProjectPress>> = {
   "/travel": { lead: "teal", second: "saffron" },
   "/travel-deals": { lead: "blue", second: "saffron" },
   "/food-map": { lead: "vermilion", second: "saffron" },
-  "/premier-league": { lead: "green", second: "blue" },
-  "/la-liga": { lead: "green", second: "vermilion" },
   "/mlb": { lead: "green", second: "vermilion" },
   "/nba": { lead: "saffron", second: "blue" },
   "/nfl": { lead: "vermilion", second: "blue" },
