@@ -346,7 +346,7 @@ describe("BestBallClient", () => {
     const gibbs = screen.getByRole("button", { name: "Open Jahmyr Gibbs details" }).closest("li") as HTMLElement;
     expect(gibbs).toHaveTextContent("Withheld");
     expect(gibbs).not.toHaveTextContent("54");
-    expect(gibbs).not.toHaveTextContent("-53.0");
+    expect(gibbs).not.toHaveTextContent("\u221253.0");
     expect(gibbs).not.toHaveTextContent("RB19");
     expect(
       within(gibbs)
@@ -643,7 +643,7 @@ describe("BestBallClient", () => {
     expect(within(bijan).getByTitle("Priced about even with the PPR reference")).toHaveClass("ffb-is-flat");
 
     const allen = screen.getByRole("button", { name: "Open Josh Allen details" }).closest("li") as HTMLElement;
-    expect(cells(allen)).toEqual(["2", "QB1", "Josh Allen", "BUF", "ADP 47", "ECR 50", "Value -3.0", "Bye 7", "W17 MIA"]);
+    expect(cells(allen)).toEqual(["2", "QB1", "Josh Allen", "BUF", "ADP 47", "ECR 50", "Value \u22123.0", "Bye 7", "W17 MIA"]);
     const gap = within(allen).getByTitle("The market takes him 3.0 picks before the PPR reference");
     expect(gap).toHaveClass("ffb-is-strong", "ffb-warn");
     // A phone row keeps ADP over value on a lens with a current ADP.

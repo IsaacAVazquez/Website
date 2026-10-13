@@ -330,7 +330,8 @@ function formatAdpDelta(value: number | null): string {
   if (value === null) return "NA";
   const rounded = Math.round(value * 10) / 10;
   if (Math.abs(rounded) < 0.05) return "Even";
-  return rounded > 0 ? `+${rounded.toFixed(1)}` : rounded.toFixed(1);
+  // The same minus sign the rankings and redraft boards print, so a negative reads alike on every board.
+  return `${rounded > 0 ? "+" : "\u2212"}${Math.abs(rounded).toFixed(1)}`;
 }
 
 function describeAdpDelta(value: number | null): string {
