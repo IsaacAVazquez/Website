@@ -101,8 +101,16 @@ export function isDashboardRoute(pathname: string): boolean {
  */
 export const WIDE_TOOL_ROUTES: ReadonlySet<string> = new Set([
   "/bay-area-transit",
-  "/fantasy-football/trade-calculator",
+  // All eight fantasy routes share the wide column, so the product bar, the
+  // boards, and the draft rooms keep one edge from page to page.
+  "/fantasy-football",
+  "/fantasy-football/best-ball",
   "/fantasy-football/best-ball/draft-tracker",
+  "/fantasy-football/draft-tracker",
+  "/fantasy-football/mock-draft",
+  "/fantasy-football/trade-calculator",
+  "/fantasy-football/waivers",
+  "/fantasy-football/weekly",
   "/investments",
   "/score-pools",
 ]);

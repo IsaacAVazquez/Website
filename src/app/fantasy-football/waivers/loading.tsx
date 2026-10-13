@@ -1,5 +1,5 @@
-import { RouteLoadingState } from "@/components/RouteLoadingState";
+import { FantasyLoadingState } from "@/components/fantasy/FantasyLoadingState";
 
 export default function WaiversLoading() {
-  return <RouteLoadingState surfaceName="the waiver targets" />;
+  return <FantasyLoadingState surfaceName="the waiver targets" />;
 }

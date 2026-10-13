@@ -1,5 +1,5 @@
-import { RouteLoadingState } from "@/components/RouteLoadingState";
+import { FantasyLoadingState } from "@/components/fantasy/FantasyLoadingState";
 
 export default function BestBallLoading() {
-  return <RouteLoadingState surfaceName="the best ball rankings" />;
+  return <FantasyLoadingState surfaceName="the best ball rankings" />;
 }
