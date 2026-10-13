@@ -239,6 +239,26 @@ describe("FantasyFootballClient", () => {
     // The number is its own element there, so read the line it sits in.
     expect(screen.getByText("4.4").closest("p")).toHaveTextContent("4.4 avg-rank cliff");
     expect(screen.getByRole("region", { name: /^Tier 2, 1 player, ranks 2 to 2, 4\.4 average-rank cliff above$/ })).toBeInTheDocument();
+    // The heading's three parts are separate words, not one run of text.
+    expect(screen.getByRole("heading", { level: 3, name: "Tier 01 1 player Rank 1" })).toHaveTextContent(
+      "Tier 01 1 player Rank 1"
+    );
+    // Each tier draws on a scale of its own, and prints that scale's labels in its head.
+    const tierLabels = (name: RegExp) =>
+      Array.from(screen.getByRole("region", { name }).querySelectorAll(".ffb-rk-scale > span")).map(
+        (label) => label.textContent
+      );
+    expect(tierLabels(/^Tier 1,/)).toEqual(["RB1", "RB13", "RB25"]);
+    expect(tierLabels(/^Tier 2,/)).toEqual(["RB1", "RB13", "RB25"]);
+    // The plot is named for its range, with no pronoun. The average is in the column beside it.
+    expect(screen.getByRole("img", { name: "Expert rank range 1 to 3" })).toHaveAttribute(
+      "title",
+      "Expert rank range 1 to 3"
+    );
+    // The full name rides in a title, for the widths where the cell can still cut it.
+    expect(screen.getByText("Christian McCaffrey")).toHaveAttribute("title", "Christian McCaffrey");
+    // The phone's position label hides with its select, so a desktop does not read the name twice.
+    expect(screen.getByText("Position board", { selector: "label" })).toHaveClass("sr-only", "md:hidden");
 
     // No ADP source in this snapshot, so no ADP surfaces anywhere.
     expect(screen.queryByText("ADP")).not.toBeInTheDocument();
@@ -258,6 +278,8 @@ describe("FantasyFootballClient", () => {
     // "1.2" appears in the stat card and again in the board-neighborhood row.
     expect(within(dialog).getAllByText("1.2").length).toBeGreaterThan(0);
     expect(within(dialog).getByText("Expert range")).toBeVisible();
+    // No average column sits beside the drawer's plot, so its name carries the average.
+    expect(within(dialog).getByRole("img", { name: "Expert rank range 1 to 3, average 1.2" })).toBeInTheDocument();
     // Without an ADP source the market cards stay hidden in the drawer too.
     expect(within(dialog).queryByText("Market ADP")).not.toBeInTheDocument();
   });
@@ -331,16 +353,19 @@ describe("FantasyFootballClient", () => {
     const chaseRow = chaseButton.closest("li") as HTMLElement;
     // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is heavy
     // and takes the good ink.
-    expect(within(chaseRow).getByText("+18")).toHaveClass("ffb-is-strong", "ffb-good");
+    // The gap prints one decimal on every row, so the column's decimal points line up.
+    expect(within(chaseRow).getByText("+18.0")).toHaveClass("ffb-is-strong", "ffb-good");
     // The word rides in the same cell, since the signed delta alone is what a
     // drafter has to translate.
     expect(within(chaseRow).getByText("Value")).toBeVisible();
-    expect(within(chaseRow).getByText("+18")).toContainElement(within(chaseRow).getByText("Value"));
+    expect(within(chaseRow).getByText("+18.0")).toContainElement(within(chaseRow).getByText("Value"));
+    // A real space sits between the number and the word, so the pair reads as two words aloud.
+    expect(within(chaseRow).getByText("+18.0")).toHaveTextContent("versus ADP +18.0 Value");
     // Higgins: one pick of separation stays inside the noise band, muted.
     const higginsRow = screen
       .getByRole("button", { name: "Open Tee Higgins detail" })
       .closest("li") as HTMLElement;
-    const higginsDelta = within(higginsRow).getByText("+1");
+    const higginsDelta = within(higginsRow).getByText("+1.0");
     expect(higginsDelta).toHaveClass("ffb-is-flat");
     expect(higginsDelta).not.toHaveClass("ffb-is-strong");
     expect(higginsDelta).not.toHaveClass("ffb-good");
@@ -452,7 +477,7 @@ describe("FantasyFootballClient", () => {
     // The kicker leads with the rank the board is sorted by, and the consensus
     // rank stays on the next line rather than disappearing.
     expect(within(dialog).getByText("VORP #1 · 12-team")).toBeVisible();
-    expect(within(dialog).getByText("R2 overall · Tier 1 of 1")).toBeVisible();
+    expect(within(dialog).getByText("Rank 2 overall · Tier 1 of 1")).toBeVisible();
     // The VORP card reuses the column definition and rounds like the row does.
     expect(within(dialog).getByRole("button", { name: "What is VORP?" })).toBeInTheDocument();
     expect(within(dialog).getByText("VORP · 12-team")).toBeVisible();
@@ -486,7 +511,7 @@ describe("FantasyFootballClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Open Consensus First detail" }));
     const dialog = screen.getByRole("dialog", { name: "Consensus First detail" });
-    expect(within(dialog).getByText("R1 overall · Tier 1 of 1")).toBeVisible();
+    expect(within(dialog).getByText("Rank 1 overall · Tier 1 of 1")).toBeVisible();
     expect(within(dialog).queryByText(/VORP #/)).not.toBeInTheDocument();
     // The row shows VORP in both modes, so the drawer carries the card in both.
     expect(within(dialog).getByText("VORP · 12-team")).toBeVisible();
@@ -653,6 +678,40 @@ describe("FantasyFootballClient", () => {
     const counts = screen.getAllByText("1 of 1 shown");
     expect(counts.some((count) => count.getAttribute("aria-live") === "polite")).toBe(true);
     expect(counts.every((count) => !count.className.includes("sr-only"))).toBe(true);
+  });
+
+  it("says VORP is not published only once the snapshot has loaded without it, and never presses a disabled button", () => {
+    // Still loading: the button is disabled and claims nothing.
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: null,
+      sliceMetadataMap: null,
+      isLoading: true,
+      error: null,
+      retry: jest.fn(),
+    });
+    const loading = renderClient();
+    const method = () => within(screen.getByRole("group", { name: "Ranking method" }));
+    expect(method().getByRole("button", { name: "VORP" })).toBeDisabled();
+    expect(method().getByRole("button", { name: "VORP" })).toHaveTextContent(/^VORP$/);
+    expect(screen.queryByRole("button", { name: "VORP, not published in the current snapshot" })).not.toBeInTheDocument();
+    loading.unmount();
+
+    // Loaded with no VORP source, on a link that asks for VORP: the board is
+    // consensus, so Consensus is the pressed one and the disabled VORP is not.
+    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr&ranking=vorp");
+    mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
+    renderClient({ ranking: "vorp" });
+    const unpublished = method().getByRole("button", { name: "VORP, not published in the current snapshot" });
+    expect(unpublished).toBeDisabled();
+    expect(unpublished).toHaveTextContent("VORPNA");
+    expect(unpublished).toHaveAttribute("aria-pressed", "false");
+    expect(method().getByRole("button", { name: "Consensus" })).toHaveAttribute("aria-pressed", "true");
+    // The league size select and the phone select keep the URL's choice, as before.
+    expect(screen.getByRole("combobox", { name: "VORP league size" })).toHaveValue("12");
+    expect(screen.getByRole("combobox", { name: "Ranking method" })).toHaveValue("vorp-12");
   });
 
   it("disables the VORP options on the phone select when no VORP is published", () => {
@@ -1050,13 +1109,29 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByRole("region", { name: "Tier 1, 45 players, ranks 1 to 45" })).toBeInTheDocument();
     expect(screen.getByText("45 players")).toBeVisible();
     expect(screen.getByText("Ranks 1–45")).toBeVisible();
-    // Every spread plot shares one scale, cut into ten divisions of twelve
-    // ranks while the mounted rows fit inside it.
-    expect(screen.getByText("RB109")).toBeInTheDocument();
-    expect(screen.queryByText("RB121")).not.toBeInTheDocument();
+    // The tier's plots share one scale, fitted to all 45 players of the tier and
+    // not to the 40 mounted. Their experts run from 1 to 49, which is five
+    // divisions of twelve ranks, labelled by the rank each starts at.
+    const tier = screen.getByRole("region", { name: "Tier 1, 45 players, ranks 1 to 45" });
+    expect(Array.from(tier.querySelectorAll(".ffb-rk-scale > span")).map((label) => label.textContent)).toEqual([
+      "RB1",
+      "RB13",
+      "RB25",
+      "RB37",
+      "RB49",
+    ]);
+    // Player 1's experts run 1 to 5 on a scale of 1 to 60.
+    const firstPlot = screen.getByRole("img", { name: "Expert rank range 1 to 5" });
+    expect(firstPlot.style.getPropertyValue("--ffb-min")).toBe("0.00%");
+    expect(firstPlot.style.getPropertyValue("--ffb-max")).toBe("8.33%");
+    expect(firstPlot.style.getPropertyValue("--ffb-rounds")).toBe("5");
+    const drawnBeforeLoad = firstPlot.getAttribute("style");
 
     fireEvent.click(screen.getByRole("button", { name: "Load more (5 left)" }));
     expect(screen.getByText("Player 45")).toBeVisible();
+    // Loading the rest of the tier moves nothing that was already drawn.
+    expect(screen.getByRole("img", { name: "Expert rank range 1 to 5" }).getAttribute("style")).toBe(drawnBeforeLoad);
+    expect(tier.querySelectorAll(".ffb-rk-scale > span")).toHaveLength(5);
   });
 
   it("offers an in-place retry when rankings fail to load", () => {
@@ -1096,8 +1171,64 @@ describe("FantasyFootballClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Remove Bijan Robinson from queue" }));
     expect(screen.getByText("No queued players on this board.")).toBeVisible();
+    // The star left with its row, so focus goes to the Queued toggle and not to the page body.
+    const queuedToggle = screen.getByRole("button", { name: "Show only queued players (0 on this board)" });
+    expect(queuedToggle).toHaveFocus();
     fireEvent.click(screen.getByRole("button", { name: "Show all players" }));
     expect(screen.getByText("Jahmyr Gibbs")).toBeVisible();
+    expect(queuedToggle).toHaveFocus();
+  });
+
+  it("moves focus to the next queued row when one is unqueued from the queued view", () => {
+    mockSnapshot({
+      players: [
+        makePlayer({ id: "p-1", name: "Bijan Robinson" }),
+        makePlayer({ id: "p-2", name: "Jahmyr Gibbs", rankEcr: 2, averageRank: 2, positionRank: 2 }),
+      ],
+    });
+
+    renderClient();
+
+    fireEvent.click(screen.getByRole("button", { name: "Queue Bijan Robinson" }));
+    fireEvent.click(screen.getByRole("button", { name: "Queue Jahmyr Gibbs" }));
+    fireEvent.click(screen.getByRole("button", { name: "Show only queued players (2 on this board)" }));
+    fireEvent.click(screen.getByRole("button", { name: "Remove Bijan Robinson from queue" }));
+
+    expect(screen.queryByText("Bijan Robinson")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Remove Jahmyr Gibbs from queue" })).toHaveFocus();
+  });
+
+  it("returns focus to the search after Clear, and to the search button after Done", () => {
+    mockSnapshot({
+      players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],
+    });
+
+    renderClient();
+
+    // The empty state's Clear removes itself, and focus goes back to the field it cleared.
+    const desktopSearch = document.getElementById("fantasy-search") as HTMLInputElement;
+    fireEvent.change(desktopSearch, { target: { value: "nobody" } });
+    fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
+    expect(desktopSearch).toHaveValue("");
+    expect(desktopSearch).toHaveFocus();
+
+    // The phone's search: its own Clear keeps focus in its input.
+    const searchButton = screen.getByRole("button", { name: "Search the current rankings board" });
+    fireEvent.click(searchButton);
+    const phoneSearch = document.getElementById("fantasy-search-compact") as HTMLInputElement;
+    fireEvent.change(phoneSearch, { target: { value: "mcc" } });
+    const phoneClear = phoneSearch.parentElement?.querySelector("button") as HTMLButtonElement;
+    expect(phoneClear).toHaveAccessibleName("Clear search");
+    phoneClear.focus();
+    fireEvent.click(phoneClear);
+    expect(phoneSearch).toHaveValue("");
+    expect(phoneSearch).toHaveFocus();
+
+    // Done closes the search row, and focus goes to the button that reopens it.
+    fireEvent.change(phoneSearch, { target: { value: "mcc" } });
+    fireEvent.click(screen.getByRole("button", { name: "Done searching, keep the filter" }));
+    expect(document.getElementById("fantasy-search-compact")).toBeNull();
+    expect(screen.getByRole("button", { name: "Search the current rankings board, filtering by mcc" })).toHaveFocus();
   });
 
   it("queues a player and saves a note from the drawer", () => {
@@ -1121,6 +1252,72 @@ describe("FantasyFootballClient", () => {
       target: { value: "target round 6" },
     });
     expect(within(dialog).getByText(/14\/280 · saved on this device/)).toBeVisible();
+    // This player has no game log, so the footnote says nothing about per-game scoring.
+    expect(
+      within(dialog).getByText(
+        "Ranks, tiers, and expert ranges come from the published snapshot. Queue and notes stay on this device."
+      )
+    ).toBeVisible();
+
+    // The queue action leads the drawer, right after Close, and the note is the last control.
+    const controls = Array.from(dialog.querySelectorAll<HTMLElement>("button, textarea"));
+    expect(controls[0]).toHaveAccessibleName("Close");
+    expect(controls[1]).toHaveAccessibleName("Queued");
+    expect(controls[1]).toHaveClass("ffb-btn", "ffb-btn-toggle");
+    expect(controls[controls.length - 1]).toBe(within(dialog).getByLabelText("Private note"));
+  });
+
+  it("names the season's per-game source in the footnote only when the drawer prints a per-game block", () => {
+    mockSnapshot({
+      players: [
+        makePlayer({
+          id: "rb-1",
+          name: "Christian McCaffrey",
+          gameLog: { season: 2025, throughWeek: 18, games: 17, low: 2.4, median: 12.5, average: 11.9, high: 22.6 },
+        } as Partial<Player> & { id: string; name: string }),
+      ],
+    });
+
+    renderClient();
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
+    const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });
+    expect(within(dialog).getByText("2025 season · PPR · 17 games")).toBeVisible();
+    expect(
+      within(dialog).getByText(
+        "Ranks, tiers, and expert ranges come from the published snapshot, and per-game scoring comes from nflverse for the season named beside it. Queue and notes stay on this device."
+      )
+    ).toBeVisible();
+  });
+
+  it("says the note is kept in this tab only when browser storage is blocked", () => {
+    const blocked = jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+      throw new Error("denied");
+    });
+    try {
+      mockSnapshot({
+        players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],
+      });
+
+      renderClient();
+
+      expect(screen.getByRole("status")).toHaveTextContent("Browser storage is unavailable.");
+      fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
+      const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });
+      fireEvent.change(within(dialog).getByLabelText("Private note"), {
+        target: { value: "target round 6" },
+      });
+
+      expect(within(dialog).getByText("14/280 · kept in this tab only")).toBeVisible();
+      expect(within(dialog).queryByText(/saved on this device/)).not.toBeInTheDocument();
+      expect(
+        within(dialog).getByText(
+          "Ranks, tiers, and expert ranges come from the published snapshot. Queue and notes last only in this tab."
+        )
+      ).toBeVisible();
+    } finally {
+      blocked.mockRestore();
+    }
   });
 
   it("walks the board neighborhood from the drawer", () => {
