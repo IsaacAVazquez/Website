@@ -84,7 +84,12 @@ describe("DraftBoard rows and tiers", () => {
     expect(
       screen.getByRole("region", { name: "No published tier, 1 player, ranks 5 to 5, 143.0 average-rank cliff above" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("↓ 5.3 avg-rank cliff")).toBeInTheDocument();
+    // The break prints the cliff beside the kit's ledge-and-drop mark.
+    expect(
+      screen
+        .getByRole("region", { name: "Tier 2, 2 players, ranks 3 to 4, 5.3 average-rank cliff above" })
+        .querySelector(".ffb-tier-cliff"),
+    ).toHaveTextContent("5.3 avg-rank cliff");
   });
 
   it("prints rank, position rank, team, and bye on each row", () => {
@@ -92,7 +97,9 @@ describe("DraftBoard rows and tiers", () => {
     const row = rowOf("Bijan Robinson");
     expect(within(row).getByTitle("Overall board rank")).toHaveTextContent("1");
     expect(within(row).getByText("RB1")).toBeInTheDocument();
-    expect(within(row).getByText("ATL · Bye 5")).toBeInTheDocument();
+    // Team and bye are their own columns, so bye weeks scan down the board.
+    expect(within(row).getByText("ATL")).toHaveClass("ffb-c-team");
+    expect(row.querySelector(".ffb-c-bye")).toHaveTextContent("Bye 5");
   });
 
   it("reads each ADP gap against the current pick", () => {
@@ -226,7 +233,12 @@ describe("DraftBoard picks", () => {
     const { props, rerender } = renderBoard();
     await user.click(screen.getByRole("button", { name: "Add Travis Kelce to queue" }));
     expect(JSON.parse(window.localStorage.getItem(FANTASY_QUEUE_STORAGE_KEY) ?? "[]")).toEqual(["p4"]);
-    expect(screen.getByRole("button", { name: "Remove Travis Kelce from queue", pressed: true })).toHaveTextContent("★");
+    // The star is the kit's icon, and its filled state follows aria-pressed.
+    expect(
+      screen
+        .getByRole("button", { name: "Remove Travis Kelce from queue", pressed: true })
+        .querySelector(".ffb-star-icon"),
+    ).toBeInTheDocument();
     expect(screen.getByText("★ Queue · still on the board")).toBeInTheDocument();
 
     await user.click(screen.getByTitle("Log Travis Kelce"));

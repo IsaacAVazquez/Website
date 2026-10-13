@@ -33,9 +33,3 @@ export function useDraftClock(): DraftClock {
 export function formatClock(seconds: number): string {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 }
-
-/** The clock as it reads inside a sentence, as in "Pick #4 of 180 · 1:12 advisory". */
-export function DraftClockInline() {
-  const { secondsLeft } = useDraftClock();
-  return <>{` · ${formatClock(Math.max(0, secondsLeft))} advisory`}</>;
-}

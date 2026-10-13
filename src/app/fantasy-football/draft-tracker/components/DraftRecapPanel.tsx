@@ -1,6 +1,5 @@
 "use client";
 
-import { MONO_LABEL_CLASS } from "@/lib/fantasyUtils";
 import type {
   DraftTelemetryRecap,
   DraftTurnOutcome,
@@ -117,87 +116,49 @@ export function DraftRecapPanel({
   ];
 
   return (
-    <article className="c97-panel" aria-labelledby="draft-recap-heading">
-      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Model recap</p>
-      <h3 id="draft-recap-heading" className="c97-serif c97-h3">
-        How the recommendations held up
-      </h3>
-      <p
-        className="m-0 max-w-[72ch] text-xs leading-5"
-        style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}
-      >
+    <section className="ffb-dt-recap" aria-labelledby="draft-recap-heading">
+      <div className="ffb-sechead">
+        <h3 id="draft-recap-heading" className="ffb-h3">
+          How the recommendations held up
+        </h3>
+      </div>
+      <p className="ffb-method">
         Scored against this room&apos;s final pick log and the board saved with each
         recommendation. {recap.totalTurns} of your {totalUserTurns} turns carried
         a recorded recommendation; turns logged before recording existed stay
         unscored.
       </p>
 
-      <div
-        className="grid gap-px overflow-hidden border"
-        style={{
-          marginTop: "var(--c97-sp-2)",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
-          borderColor: "var(--c97-rule)",
-          background: "var(--c97-rule)",
-        }}
-      >
+      <dl className="ffb-stats ffb-dt-recap-stats">
         {cells.map((cell) => (
-          <div key={cell.key} style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-surface)" }}>
-            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-              {cell.label}
-            </p>
-            <p className="m-0 font-mono text-lg leading-tight tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>{cell.value}</p>
-            <p className="m-0 mt-0.5 font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
-              {cell.sub}
-            </p>
+          <div key={cell.key} className="ffb-stat">
+            <dt>{cell.label}</dt>
+            <dd>{cell.value}</dd>
+            <dd className="ffb-stat-note">{cell.sub}</dd>
           </div>
         ))}
-      </div>
+      </dl>
 
-      <div style={{ marginTop: "var(--c97-sp-2)" }}>
-        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-          Turn replay
-        </p>
-        <ul className="m-0 list-none p-0" style={{ marginTop: "var(--c97-sp-0)" }}>
+      <div>
+        <h4 className="ffb-label ffb-dt-replay-head">Turn replay</h4>
+        <ol className="ffb-dt-entries">
           {recap.outcomes.map((outcome) => {
             const summary = describeOutcome(outcome);
             return (
-            <li
-              key={`turn-${outcome.record.pick}`}
-              className="border-t"
-              style={{ paddingBlock: "var(--c97-sp-1)", borderColor: "color-mix(in srgb, var(--c97-rule) 70%, transparent)" }}
-            >
-              <div className="flex flex-wrap items-baseline gap-y-0.5" style={{ columnGap: "var(--c97-sp-1)" }}>
-                <span className="w-10 flex-none font-mono text-sm" style={{ color: "var(--c97-ink-2)" }}>
-                  #{outcome.record.pick}
-                </span>
-                <span className="text-sm font-semibold tracking-[-0.01em]">
-                  You took {outcome.record.chosenPlayerName}
-                </span>
-                <span
-                  className="font-mono text-3xs uppercase tracking-[0.08em]"
-                  style={{
-                    color: outcome.followedRecommendation
-                      ? "var(--c97-positive)"
-                      : "var(--c97-ink-2)",
-                  }}
-                >
-                  {outcome.followedRecommendation ? "recommended" : "off the card"}
-                </span>
-              </div>
-              {summary ? (
-                <p
-                  className="m-0 mt-0.5 pl-[calc(2.5rem+var(--c97-sp-1))] font-mono text-3xs leading-5"
-                  style={{ color: "var(--c97-ink-2)" }}
-                >
-                  {summary}
-                </p>
-              ) : null}
-            </li>
+              <li key={`turn-${outcome.record.pick}`} className="ffb-dt-entry">
+                <div className="ffb-dt-entry-line">
+                  <span className="ffb-dt-replay-pick">#{outcome.record.pick}</span>{" "}
+                  <span className="ffb-h4">You took {outcome.record.chosenPlayerName}</span>{" "}
+                  <span className={`ffb-badge ${outcome.followedRecommendation ? "ffb-good" : "ffb-muted"}`}>
+                    {outcome.followedRecommendation ? "recommended" : "off the card"}
+                  </span>
+                </div>
+                {summary ? <p className="ffb-dt-entry-note ffb-dt-replay-note">{summary}</p> : null}
+              </li>
             );
           })}
-        </ul>
+        </ol>
       </div>
-    </article>
+    </section>
   );
 }
