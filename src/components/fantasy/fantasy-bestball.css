@@ -30,6 +30,8 @@
     scrollbar-width: none;
   }
   .ffb-bb-lens > .ffb-bb-contests > .ffb-seg-btn { flex: none; padding-inline: 12px; }
+  /* The date sits under the switch's left edge, where the switch starts. */
+  .ffb-bb-lens > .ffb-count { text-align: left; }
 }
 
 /* ==========================================================================
@@ -47,17 +49,39 @@
    pair reads as one notice in two paragraphs. */
 .ffb-bb-pair > .ffb-notice + .ffb-notice { padding-top: 6px; }
 
+/* On a tablet the rail is above the board at full width, so its notices take a second column
+   beside the contest and the board starts sooner. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .ffb-bb-format:has(> .ffb-bb-notices) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: var(--ffb-s6);
+  }
+  .ffb-bb-format > :not(.ffb-bb-notices) { grid-column: 1; }
+  .ffb-bb-format > .ffb-bb-notices { grid-column: 2; grid-row: 1 / span 4; }
+}
+
 /* ==========================================================================
  * The board
  * Rank, chip, name, team, Underdog ADP, the PPR consensus rank, value, bye, and the
  * Week 17 opponent. The name keeps 168px before any other column gives.
  * ======================================================================== */
-.ffb-bb-board { --ffb-cols: 30px 46px minmax(168px, 1fr) 36px 68px 64px 56px 30px 44px; }
+.ffb-bb-board {
+  --ffb-cols: 30px 46px minmax(168px, 1fr) 36px 68px 64px 56px 30px 44px;
+  /* What is pinned over the list, which the kit reads to stop a focused row under it: the
+     toolbar block (its measured height) on a phone, and a round's head with it from 768px. */
+  --ffb-pinned-top: calc(var(--ffb-bb-bar, 148px) + var(--ffb-s1));
+}
 
 /* The cells sit above the row's opener, so a hover title fires and a name can be selected.
    The row's own click still opens the player. */
 .ffb-bb-board .ffb-row { cursor: pointer; }
 .ffb-bb-board .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
+/* A failed load disables the whole position switch. The kit keeps the checked button's fill under
+   the muted label of a disabled one, which reads at 2.76:1, so here it prints unfilled like its
+   neighbours until the kit has a rule for the pair. */
+.ffb-bb-tools .ffb-seg-btn:disabled[aria-checked="true"] { background: transparent; }
 /* "Undrafted" and "Withheld" are words in a number's place. */
 .ffb-bb-word { font-size: 10.5px; }
 .ffb-bb-method { display: grid; gap: var(--ffb-s1); margin-top: var(--ffb-s4); }
@@ -83,6 +107,7 @@
     box-shadow: -4px 0 0 var(--ffb-surface), 4px 0 0 var(--ffb-surface);
   }
   .ffb-bb-board > .ffb-tier:first-of-type > .ffb-tier-head { top: var(--ffb-bb-bar, 88px); }
+  .ffb-bb-board { --ffb-pinned-top: calc(var(--ffb-bb-bar, 88px) + 30px + var(--ffb-s1)); }
 }
 
 /* ==========================================================================
@@ -93,9 +118,12 @@
   .ffb-bb-tools > .ffb-count { order: 2; flex: 1 1 56px; min-width: 0; line-height: 1.3; }
   .ffb-bb-tools > .ffb-search { order: 3; flex: 1 1 100%; }
 }
-/* Under 360px the count has no room beside the switch, so it takes a short line under the search. */
+/* Under 360px the count has no room beside the switch, so it takes a short line under the search.
+   A row's second line has no room for the Week 17 opponent after a two-digit bye, so it is the
+   one value those screens leave to the wider layouts. */
 @media (max-width: 359.98px) {
   .ffb-bb-tools > .ffb-count { order: 4; flex-basis: 100%; }
+  .ffb-bb-board .ffb-row > .ffb-m-meta { display: none; }
 }
 
 /* ==========================================================================
@@ -107,8 +135,9 @@
 .ffb-bb-findings > .ffb-note > * { grid-column: 1; }
 
 @media print {
-  /* Paper has no toggle to press, so the three build notes print open and the toggle is left off. */
+  /* Paper has no toggle to press, so the three build notes print open, and the toggle and the
+     two links beside the contest's name are left off. */
   .ffb-root .ffb-bb-notes > .ffb-bb-note { display: block; }
-  .ffb-root .ffb-bb-guide { display: none; }
+  .ffb-root :is(.ffb-bb-guide, .ffb-bb-actions) { display: none; }
   .ffb-bb-board .ffb-tier-head { position: static; box-shadow: none; }
 }

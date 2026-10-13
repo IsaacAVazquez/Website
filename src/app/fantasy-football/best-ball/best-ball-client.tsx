@@ -238,12 +238,13 @@ const PAGE_SIZE = 80;
 
 // Pinned to UTC so a date-only value like "2026-08-09" is not parsed as UTC
 // midnight and then rendered a day earlier for viewers west of UTC.
-function formatDate(value: string | null | undefined): string {
+// The head's line names the season once, so its dates leave the year off.
+function formatDate(value: string | null | undefined, withYear = true): string {
   if (!value || Number.isNaN(Date.parse(value))) return "Not published";
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
-    year: "numeric",
+    ...(withYear ? { year: "numeric" as const } : {}),
     timeZone: "UTC",
   }).format(new Date(value));
 }
@@ -674,16 +675,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
   // A round's head pins under the toolbar block, so it needs that block's
   // height, which changes when the controls wrap. Written straight to the
-  // board's style, so a resize renders nothing. The kit reads the second
-  // property to stop a focused row under everything pinned over the list.
+  // board's style, so a resize renders nothing. The area sheet builds the
+  // kit's scroll margin for a focused row from the same number.
   useEffect(() => {
     const bar = barRef.current;
     const board = boardRef.current;
     if (!bar || !board || typeof ResizeObserver === "undefined") return;
-    const write = () => {
-      board.style.setProperty("--ffb-bb-bar", `${bar.offsetHeight}px`);
-      board.style.setProperty("--ffb-pinned-top", `${bar.offsetHeight + 34}px`);
-    };
+    const write = () => board.style.setProperty("--ffb-bb-bar", `${bar.offsetHeight}px`);
     write();
     const observer = new ResizeObserver(write);
     observer.observe(bar);
@@ -727,14 +725,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     { label: `${CONTESTS.length} contest lenses` },
     ...(snapshot
       ? [
-          { label: `${snapshot.season} season` },
+          { label: String(snapshot.season) },
           ...(snapshot.adpSource
-            ? [{ label: `${snapshot.adpSource.provider.split(" ")[0]} ADP ${formatDate(snapshot.adpSource.asOf)}` }]
+            ? [{ label: `${snapshot.adpSource.provider.split(" ")[0]} ADP ${formatDate(snapshot.adpSource.asOf, false)}` }]
             : []),
           {
-            label: `${snapshot.rankingSource.provider.split(" ")[0]} consensus ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt)}`,
+            label: `${snapshot.rankingSource.provider.split(" ")[0]} consensus ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt, false)}`,
           },
-          { label: `${snapshot.players.length} ranked` },
         ]
       : []),
   ];
@@ -789,12 +786,12 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             1200px the area sheet puts it in the second column. */}
         <div className="ffb-work ffb-bb-work">
           <div className="ffb-rail ffb-rail-scroll ffb-bb-rail">
-            <section aria-label="Selected format" className="ffb-stack">
+            <section aria-label="Selected format" className="ffb-stack ffb-bb-format">
               <div className="ffb-bb-format-head">
                 <h2 className="ffb-h2">{activeContest.label}</h2>
                 <p className="ffb-fine">{activeContest.format}</p>
               </div>
-              <div className="ffb-cluster">
+              <div className="ffb-cluster ffb-bb-actions">
                 <Link href={trackerHref} className="ffb-btn ffb-btn-primary">
                   Draft with this lens
                 </Link>
@@ -807,6 +804,52 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   Scoring rules
                 </a>
               </div>
+              {/* The notices sit under the action they qualify and above the
+                  notes, so a dated or frozen board says so on the first screen. */}
+              {seasonalWeek >= 1 || freshnessWarning || consensusIssue ? (
+                <div className="ffb-bb-notices">
+                  {seasonalWeek >= 1 || freshnessWarning ? (
+                    <div className="ffb-bb-pair">
+                      {seasonalWeek >= 1 ? (
+                        <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
+                          Best ball is drafted before the season and scored through it, so this board
+                          describes a market that closed at kickoff. Rankings and ADP here are the
+                          preseason readings your drafts were made against, kept for reference rather
+                          than refreshed. Ranks that still move are on the{" "}
+                          <Link href="/fantasy-football/weekly">weekly board</Link>.
+                        </SeasonalScopeNote>
+                      ) : null}
+                      {freshnessWarning ? (
+                        <p role="status" className="ffb-notice ffb-notice-warn">
+                          {freshnessWarning}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+
+                  {/* The provider's own numbers disagreeing with each other. The
+                      sentence carries the consensus date, and the rows it names
+                      print no ECR, value, tier, or position rank while the
+                      expert band stays. */}
+                  {consensusIssue ? (
+                    <div
+                      role="note"
+                      data-testid="best-ball-consensus-note"
+                      className="ffb-notice ffb-notice-held"
+                    >
+                      <p>
+                        <strong>Consensus withheld.</strong> {consensusIssue.charAt(0).toUpperCase()}
+                        {consensusIssue.slice(1)}.
+                      </p>
+                      <p className="ffb-muted">
+                        {withheldCount} of {orderedPlayers.length} rows on this board print no ECR,
+                        value, tier, or position rank. Each one keeps its best, average, and worst
+                        expert rank, which agree with each other. Board order is unchanged.
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
               <div className="ffb-stack ffb-stack-tight">
                 {/* The room is the short summary. The three build notes sit
                     behind the toggle wherever the rail is above the board
@@ -850,51 +893,6 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 </div>
               ) : null}
             </section>
-
-            {seasonalWeek >= 1 || freshnessWarning || consensusIssue ? (
-              <div className="ffb-bb-notices">
-                {seasonalWeek >= 1 || freshnessWarning ? (
-                  <div className="ffb-bb-pair">
-                    {seasonalWeek >= 1 ? (
-                      <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
-                        Best ball is drafted before the season and scored through it, so this board
-                        describes a market that closed at kickoff. Rankings and ADP here are the
-                        preseason readings your drafts were made against, kept for reference rather
-                        than refreshed. Ranks that still move are on the{" "}
-                        <Link href="/fantasy-football/weekly">weekly board</Link>.
-                      </SeasonalScopeNote>
-                    ) : null}
-                    {freshnessWarning ? (
-                      <p role="status" className="ffb-notice ffb-notice-warn">
-                        {freshnessWarning}
-                      </p>
-                    ) : null}
-                  </div>
-                ) : null}
-
-                {/* The provider's own numbers disagreeing with each other. The
-                    sentence carries the consensus date, and the rows it names
-                    print no ECR, value, tier, or position rank while the
-                    expert band stays. */}
-                {consensusIssue ? (
-                  <div
-                    role="note"
-                    data-testid="best-ball-consensus-note"
-                    className="ffb-notice ffb-notice-held"
-                  >
-                    <p>
-                      <strong>Consensus withheld.</strong> {consensusIssue.charAt(0).toUpperCase()}
-                      {consensusIssue.slice(1)}.
-                    </p>
-                    <p className="ffb-muted">
-                      {withheldCount} of {orderedPlayers.length} rows on this board print no ECR,
-                      value, tier, or position rank. Each one keeps its best, average, and worst
-                      expert rank, which agree with each other. Board order is unchanged.
-                    </p>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
           </div>
 
           <div className="ffb-bb-main">

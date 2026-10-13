@@ -487,6 +487,14 @@ describe("BestBallClient", () => {
       screen.getByText(/^Board order follows current Underdog ADP via Hayden Winks · value is ADP minus/),
     ).toBeInTheDocument();
     expect(screen.queryByText(/Hayden Winks ADP/)).not.toBeInTheDocument();
+    // The head names the season once and each source by its brand word, with the date it was read.
+    const head = screen.getByText("8 contest lenses").closest("p") as HTMLElement;
+    expect(Array.from(head.querySelectorAll(".ffb-fresh-part > span:first-child")).map((part) => part.textContent)).toEqual([
+      "8 contest lenses",
+      "2026",
+      "Underdog ADP Aug 19",
+      "FantasyPros consensus Aug 19",
+    ]);
     expect(screen.getByRole("link", { name: "Underdog via Hayden Winks standard slate" })).toBeInTheDocument();
     const sourceLine = screen.getByText(/^Snapshot built Aug 20, 2026/);
     expect(sourceLine).toHaveTextContent(
@@ -525,7 +533,7 @@ describe("BestBallClient", () => {
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
     // The head line holds its place with the one part that needs no snapshot.
     expect(screen.getByText("8 contest lenses")).toBeInTheDocument();
-    expect(screen.queryByText(/ranked$/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/FantasyPros consensus/)).not.toBeInTheDocument();
   });
 
   it("says the rankings are unavailable after a failed load, with no count of zero and no ADP claim", () => {
