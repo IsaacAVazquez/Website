@@ -311,11 +311,10 @@
   }
 }
 
+/* The line wraps, since it also carries the Locked word and a phone's price, and one clipped row would cut them off. */
 .ff1-slot-kind {
   grid-area: kind;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -519,14 +518,18 @@
   font-size: 0.75rem;
 }
 
-.ff1-card-current {
-  font-weight: 700;
-}
-
+/* The card's button once its lineup is the team. It keeps its place and its focus, and does nothing. */
 .ff1-card-current {
   display: flex;
   align-items: center;
   min-height: 44px;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: default;
 }
 
 /* ---- Controls ---------------------------------------------------------- */
@@ -634,7 +637,7 @@
 .ff1-slate-toolbar {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: var(--c97-z-sticky);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -691,6 +694,11 @@
 
 .ff1-table tr[data-selected="true"] td {
   background: var(--ff1-raise);
+}
+
+/* A row focused by the keyboard scrolls clear of the sticky toolbar, which is about 62px where it wraps. */
+.ff1-table :where(button, summary) {
+  scroll-margin-top: 5rem;
 }
 
 .ff1-asset {
@@ -864,6 +872,11 @@
   .ff1-switch button {
     padding: 0 var(--c97-sp-1);
     white-space: nowrap;
+  }
+
+  /* A row that scrolls clips a ring drawn outside it, so the ring sits inside the button. */
+  .ff1-root .ff1-switch button:focus-visible {
+    outline-offset: -3px;
   }
 }
 

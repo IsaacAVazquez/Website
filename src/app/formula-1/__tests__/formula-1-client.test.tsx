@@ -1,4 +1,4 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Formula1Snapshot, Formula1Summary } from "@/types/formula1";
 import { Formula1Client } from "../formula-1-client";
@@ -234,6 +234,14 @@ const summaryFixture: Formula1Summary = {
 const defaultMeetingDetail =
   snapshotFixture.meetings.find((meeting) => meeting.key === "1283") ?? null;
 
+// The fixture names no next or latest race, so the masthead follows the pick.
+// This one seeds both, as the live snapshot does.
+const seededSummary: Formula1Summary = {
+  ...summaryFixture,
+  nextMeeting: snapshotFixture.meetings[2],
+  lastCompletedMeeting: snapshotFixture.meetings[0],
+};
+
 function createMeetingFetchMock() {
   return jest.fn(async (input: RequestInfo | URL) => {
     const key = String(input).split("/").pop() ?? "";
@@ -358,7 +366,173 @@ describe("Formula1Client", () => {
     });
   });
 
-  it("switches the board with one view switch and leaves the tower link on the board", async () => {
+  it("links a phone's shortened tower to the full table's heading", () => {
+    const grid: Formula1Summary = {
+      ...summaryFixture,
+      driverStandings: Array.from({ length: 14 }, (_, index) => ({
+        ...summaryFixture.driverStandings[0],
+        position: index + 1,
+        driverNumber: index + 1,
+        driverName: `Driver ${index + 1}`,
+      })),
+    };
+
+    const { unmount } = render(
+      <Formula1Client initialState={DEFAULT_FORMULA1_STATE} summary={grid} initialMeeting={defaultMeetingDetail} />
+    );
+    expect(screen.getByRole("link", { name: "See all 14 drivers" })).toHaveAttribute(
+      "href",
+      "/formula-1?view=drivers#f1-drivers-heading"
+    );
+    unmount();
+
+    currentSearchParams = new URLSearchParams("view=drivers");
+    render(<Formula1Client initialState={DEFAULT_FORMULA1_STATE} summary={grid} initialMeeting={defaultMeetingDetail} />);
+    expect(document.getElementById("f1-drivers-heading")).toHaveTextContent("Driver championship");
+    // The class carries the scroll margin that lands the heading below the sticky switch.
+    expect(document.getElementById("f1-drivers-heading")).toHaveClass("anchor");
+  });
+
+  it("brings a race strip button that takes focus fully into the strip", () => {
+    const scrollIntoView = jest.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+
+    try {
+      render(
+        <Formula1Client
+          initialState={DEFAULT_FORMULA1_STATE}
+          summary={summaryFixture}
+          initialMeeting={defaultMeetingDetail}
+        />
+      );
+      const japan = screen.getByRole("button", { name: /Japanese Grand Prix/i });
+
+      act(() => japan.focus());
+
+      expect(scrollIntoView).toHaveBeenCalledWith({ block: "nearest", inline: "nearest" });
+      expect(scrollIntoView.mock.contexts).toEqual([japan]);
+    } finally {
+      delete (Element.prototype as Partial<Element>).scrollIntoView;
+    }
+  });
+
+  describe("a view switch from further down the page", () => {
+    const scrollIntoView = jest.fn();
+
+    beforeEach(() => {
+      scrollIntoView.mockClear();
+      Element.prototype.scrollIntoView = scrollIntoView;
+    });
+
+    afterEach(() => {
+      delete (Element.prototype as Partial<Element>).scrollIntoView;
+    });
+
+    function renderWithBoardAt(top: number) {
+      render(
+        <Formula1Client
+          initialState={DEFAULT_FORMULA1_STATE}
+          summary={summaryFixture}
+          initialMeeting={defaultMeetingDetail}
+        />
+      );
+      const board = document.getElementById("f1-board") as HTMLElement;
+      jest.spyOn(board, "getBoundingClientRect").mockReturnValue({ top } as DOMRect);
+      return board;
+    }
+
+    it("brings the board back to the top when it has scrolled past", async () => {
+      const user = userEvent.setup();
+      const board = renderWithBoardAt(-900);
+
+      await user.click(screen.getByRole("button", { name: "Drivers" }));
+
+      expect(scrollIntoView).toHaveBeenCalledWith(expect.objectContaining({ block: "start" }));
+      expect(scrollIntoView.mock.contexts[0]).toBe(board);
+    });
+
+    it("leaves the page where it is while the board's top is on screen", async () => {
+      const user = userEvent.setup();
+      renderWithBoardAt(200);
+
+      await user.click(screen.getByRole("button", { name: "Drivers" }));
+
+      expect(mockPush).toHaveBeenCalled();
+      expect(scrollIntoView).not.toHaveBeenCalled();
+    });
+  });
+
+  it("prints a driver's team and last-race gain outside the columns a phone hides", () => {
+    currentSearchParams = new URLSearchParams("view=drivers");
+
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
+
+    const norris = within(screen.getByRole("table", { name: "Driver championship" }))
+      .getByText("Lando NORRIS")
+      .closest("tr") as HTMLElement;
+    // The stylesheet hides .wideOnly under 560px, so the copy outside it is what a phone reads.
+    const onPhone = (text: string | RegExp) =>
+      within(norris)
+        .queryAllByText(text)
+        .filter((node) => !node.closest(".wideOnly"));
+    expect(onPhone("McLaren")).toHaveLength(1);
+    expect(onPhone(/^\+25/)).toHaveLength(1);
+  });
+
+  it("labels a picked weekend by its own status", () => {
+    currentSearchParams = new URLSearchParams("meeting=1281");
+
+    render(
+      <Formula1Client
+        initialState={{ view: "overview", meeting: "1281" }}
+        summary={seededSummary}
+        initialMeeting={snapshotFixture.meetings[0]}
+      />
+    );
+
+    // Japan is one of two finished rounds here and not the latest of them.
+    const detail = screen.getByRole("article", { name: "Japanese Grand Prix weekend" });
+    expect(within(detail).getByText("completed")).toBeInTheDocument();
+    expect(within(detail).queryByText("Latest result")).not.toBeInTheDocument();
+  });
+
+  it("prints laps completed and the finishing time on a classification row", () => {
+    currentSearchParams = new URLSearchParams("meeting=1281");
+
+    render(
+      <Formula1Client
+        initialState={{ view: "overview", meeting: "1281" }}
+        summary={seededSummary}
+        initialMeeting={snapshotFixture.meetings[0]}
+      />
+    );
+
+    const row = screen.getByText(/1 · George RUSSELL/).closest("li") as HTMLElement;
+    expect(row).toHaveTextContent("Mercedes · Finished · 53 laps · Leader · 1:28:03.403");
+  });
+
+  it("names the next race's weekend in the calendar and leaves it to the masthead in the overview", () => {
+    const { unmount } = render(
+      <Formula1Client initialState={DEFAULT_FORMULA1_STATE} summary={seededSummary} initialMeeting={defaultMeetingDetail} />
+    );
+    expect(screen.getByRole("heading", { level: 3, name: "Saudi Arabian Grand Prix weekend" })).toHaveClass("sr-only");
+    unmount();
+
+    // A calendar pick scrolls the detail to the top, past the masthead that names the race.
+    currentSearchParams = new URLSearchParams("view=calendar");
+    render(
+      <Formula1Client initialState={DEFAULT_FORMULA1_STATE} summary={seededSummary} initialMeeting={defaultMeetingDetail} />
+    );
+    expect(screen.getByRole("heading", { level: 3, name: "Saudi Arabian Grand Prix" })).not.toHaveClass("sr-only");
+  });
+
+  it("switches the board with one view switch", async () => {
     const user = userEvent.setup();
 
     render(
@@ -440,5 +614,8 @@ describe("Formula1Client", () => {
     await waitFor(() =>
       expect(screen.getByRole("alert")).toHaveTextContent(/unable to load/i)
     );
+    // The placeholder labels the weekend by its own status, as the loaded detail does.
+    const fallback = screen.getByRole("alert").closest("article") as HTMLElement;
+    expect(within(fallback).getByText("completed")).toBeInTheDocument();
   });
 });

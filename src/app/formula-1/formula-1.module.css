@@ -169,6 +169,26 @@
   border-bottom-color: var(--f1-ink);
 }
 
+/* Four tabs need about 350px in one row, so a narrower phone prints them two by two. */
+@media screen and (max-width: 399px) {
+  .switch {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+}
+
+/*
+ * The switch and the race strip scroll sideways, and a box that scrolls clips
+ * whatever is drawn outside it, so their rings sit inside the button. The
+ * root is in the selector to outrank the shell's ring.
+ */
+.root .switch button:focus-visible,
+.root .raceStripItem:focus-visible {
+  outline-offset: -3px;
+}
+
 /* ---- Board: the tower beside the race hub ----------------------------- */
 
 .board {
@@ -271,6 +291,20 @@
 
 .anchor {
   scroll-margin-top: 56px;
+}
+
+/* A row or link focused by the keyboard scrolls clear of the sticky switch too. */
+.board :where(button, a) {
+  scroll-margin-top: 56px;
+}
+
+/* Where the switch is two rows, an anchor has about 90px of it to clear. */
+@media screen and (max-width: 399px) {
+  .board,
+  .anchor,
+  .board :where(button, a) {
+    scroll-margin-top: 100px;
+  }
 }
 
 /* ---- Timing tower ----------------------------------------------------- */
@@ -574,6 +608,12 @@
   vertical-align: -0.15em;
 }
 
+/* A name that wraps starts its second line under the first, clear of the livery swatch. */
+.table td:has(> .livery) {
+  padding-left: calc(var(--c97-sp-1) + 4px + var(--c97-sp-1));
+  text-indent: calc(-4px - var(--c97-sp-1));
+}
+
 .move {
   display: inline-flex;
   align-items: center;
@@ -591,9 +631,38 @@
   font-weight: 700;
 }
 
+/* Under 560px the Team and Last race columns go, and each prints as a second line in the cell beside it. */
+.narrowOnly {
+  display: none;
+}
+
 @media screen and (max-width: 559px) {
   .wideOnly {
     display: none;
+  }
+
+  .narrowOnly {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--f1-ink-2);
+  }
+
+  /* The team sits under the name, so it takes the cell's padding without the first line's pull back to the swatch. */
+  .livery ~ .narrowOnly {
+    text-indent: 0;
+  }
+}
+
+/* Under 360px the five columns fit the page only with half the cell padding. */
+@media screen and (max-width: 359px) {
+  .table th,
+  .table td {
+    padding-inline: var(--c97-sp-0);
+  }
+
+  .table td:has(> .livery) {
+    padding-left: calc(var(--c97-sp-0) + 4px + var(--c97-sp-1));
   }
 }
 
@@ -815,5 +884,12 @@
   .light {
     animation: none;
     background: var(--f1-lamp);
+  }
+
+  /* The lamps and the table's livery swatches are background colours, which a print leaves out unless told to keep them. */
+  .light,
+  .livery {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
