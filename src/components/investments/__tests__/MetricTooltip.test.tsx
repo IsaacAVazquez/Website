@@ -89,3 +89,36 @@ describe("MetricTooltip text trigger", () => {
     expect(trigger).not.toHaveAttribute("tabindex");
   });
 });
+
+describe("MetricTooltip token scope", () => {
+  it("carries the nearest data-tooltip-scope onto the element it portals, so a route's tokens reach the bubble", async () => {
+    render(
+      <div data-tooltip-scope="ffb-scope">
+        <section>
+          <MetricTooltip term="Market ADP" definition="Where the market drafts him." />
+        </section>
+      </div>
+    );
+
+    fireEvent.focus(screen.getByRole("button", { name: "What is Market ADP?" }));
+
+    const bubble = await screen.findByRole("tooltip");
+    const portalled = bubble.parentElement as HTMLElement;
+    await waitFor(() => expect(portalled).toHaveClass("ffb-scope"));
+    // The bubble sits outside the scope's own subtree, which is why the class has to travel with it.
+    expect(bubble.closest("[data-tooltip-scope]")).toBeNull();
+    expect(portalled).toHaveAttribute("data-c97-surface", "paper");
+  });
+
+  it("adds no class when nothing above the trigger names a scope, so an Investments tooltip is unchanged", async () => {
+    render(<MetricTooltip term="Beta 5Y" />);
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "What is Beta 5Y?" }));
+
+    const bubble = await screen.findByRole("tooltip");
+    const portalled = bubble.parentElement as HTMLElement;
+    await waitFor(() => expect(bubble).toHaveStyle({ opacity: "1" }));
+    expect(portalled).not.toHaveAttribute("class");
+    expect(portalled).toHaveAttribute("data-c97-surface", "paper");
+  });
+});

@@ -85,6 +85,13 @@ interface BubblePosition {
   top: number;
   placement: "top" | "bottom";
   arrowLeft: number;
+  /**
+   * The value of the nearest `data-tooltip-scope` above the trigger, added as
+   * a class on the portalled wrapper. The bubble renders on the page root,
+   * outside a route that keeps its own tokens, so the route names a class that
+   * carries those tokens with it (the fantasy layout sets `ffb-scope`).
+   */
+  scope: string | null;
 }
 
 /**
@@ -136,7 +143,9 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
     // Keep the arrow pointing at the trigger even after the bubble is clamped.
     const arrowLeft = Math.max(10, Math.min(triggerCenter - left, bw - 10));
 
-    setPos({ left, top, placement, arrowLeft });
+    const scope = trigger.closest("[data-tooltip-scope]")?.getAttribute("data-tooltip-scope") || null;
+
+    setPos({ left, top, placement, arrowLeft, scope });
   }, []);
 
   // Measure once the bubble is in the DOM, and keep it pinned to the trigger
@@ -165,7 +174,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
   const bubble =
     portalTarget && open
       ? createPortal(
-          <span data-c97-surface="paper" style={{ display: "contents" }}>
+          <span data-c97-surface="paper" className={pos?.scope ?? undefined} style={{ display: "contents" }}>
           <span
             ref={bubbleRef}
             role="tooltip"
