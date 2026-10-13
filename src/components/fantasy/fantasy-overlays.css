@@ -130,8 +130,9 @@
  * One ruled row per position, laid out from the list's own width. Under 544px a row is one
  * column. From 544px the player and the tier reading share the first column and the next-turn
  * sentence takes the second across both, since that sentence is the reading the panel is for.
- * From 828px the three sit side by side. Off the clock there is no sentence per row (it prints
- * once under the list), so the player and the tier reading take a column each.
+ * From 1100px the three sit side by side. Below that a third column is narrow enough to make
+ * the sentence taller than the two-column row it replaces. Off the clock there is no sentence
+ * per row (it prints once under the list), so the player and the tier reading take a column each.
  * The list holds no fixed overlay, so it can be a container.
  * ------------------------------------------------------------------------ */
 .ffb-ov-wait { display: grid; container: ffb-ov-wait / inline-size; }
@@ -150,7 +151,7 @@
   .ffb-ov-wait-next { grid-area: 1 / 2 / 3 / 3; }
   .ffb-ov-wait-shared .ffb-ov-wait-tier { grid-area: 1 / 2; }
 }
-@container ffb-ov-wait (min-width: 828px) {
+@container ffb-ov-wait (min-width: 1100px) {
   .ffb-ov-wait:not(.ffb-ov-wait-shared) .ffb-ov-wait-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ffb-ov-wait-tier { grid-area: 1 / 2; }
   .ffb-ov-wait-next { grid-area: 1 / 3; }

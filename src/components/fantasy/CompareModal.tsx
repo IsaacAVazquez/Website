@@ -190,7 +190,7 @@ export function CompareModal({
   ];
 
   return (
-    <div className="ffb-overlay ffb-overlay-modal ffb-enter-fade">
+    <div className="ffb-overlay ffb-overlay-modal ffb-enter-fade" data-compare-own>
       <button type="button" aria-label="Close compare" onClick={onClose} className="ffb-scrim" tabIndex={-1} />
       <div
         ref={panelRef}
