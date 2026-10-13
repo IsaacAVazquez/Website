@@ -51,12 +51,14 @@ function renderBoard(
     onOpenDetail?: jest.Mock;
     players?: Player[];
     currentPick?: number;
+    nextUserPick?: number | null;
   } = {}
 ) {
   return render(
     <BestBallDraftBoard
       players={sortBestBallRankings(overrides.players ?? [player], "bbm-vii")}
       currentPick={overrides.currentPick ?? 1}
+      nextUserPick={overrides.nextUserPick}
       isComplete={false}
       adpAvailable
       onDraftPlayer={overrides.onDraftPlayer ?? jest.fn()}
@@ -110,6 +112,26 @@ describe("BestBallDraftBoard", () => {
       .closest("li") as HTMLElement;
     expect(within(withheld).getByText("RB")).toBeInTheDocument();
     expect(within(withheld).queryByText("RB1")).not.toBeInTheDocument();
+  });
+
+  it("marks where the board stands when the user's turn comes back, on the whole board only", () => {
+    renderBoard({ players: brokenBoard(), currentPick: 2, nextUserPick: 5 });
+
+    // Three picks come first (2, 3, and 4), so the line sits above the fourth row.
+    const line = screen.getByText("Your turn #5").closest("li") as HTMLElement;
+    expect(line).toHaveTextContent("Your turn #5 if picks follow this board");
+    const items = Array.from(line.parentElement?.children ?? []);
+    expect(items.indexOf(line)).toBe(3);
+    expect(within(items[4] as HTMLElement).getByTestId("best-ball-board-draft")).toBeInTheDocument();
+
+    // A filtered board is not the order the room drafts in.
+    fireEvent.click(screen.getByRole("radio", { name: "WR" }));
+    expect(screen.queryByText("Your turn #5")).not.toBeInTheDocument();
+  });
+
+  it("draws no turn line while the user is on the clock", () => {
+    renderBoard({ players: brokenBoard(), currentPick: 5, nextUserPick: 5 });
+    expect(screen.queryByText(/^Your turn #/)).not.toBeInTheDocument();
   });
 
   it("counts what is available and what a filter leaves", () => {

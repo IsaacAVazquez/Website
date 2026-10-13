@@ -992,6 +992,7 @@ function BestBallDraftRoom({
           <BestBallDraftBoard
             players={rankedAvailablePlayers}
             currentPick={draft.currentPick}
+            nextUserPick={nextUserPick}
             isComplete={draft.isComplete}
             adpAvailable={adpAvailable}
             onDraftPlayer={draft.draftPlayer}

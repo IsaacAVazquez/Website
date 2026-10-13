@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Search, X } from "lucide-react";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { positionClass } from "@/components/fantasy/positionClass";
@@ -26,6 +26,7 @@ function formatBoardAdp(player: RankedBestBallPlayer, missingLabel: string): str
 export function BestBallDraftBoard({
   players,
   currentPick,
+  nextUserPick = null,
   isComplete,
   adpAvailable,
   onDraftPlayer,
@@ -33,6 +34,8 @@ export function BestBallDraftBoard({
 }: {
   players: readonly RankedBestBallPlayer[];
   currentPick: number;
+  /** The user's next pick, at or after the current one. The board marks where it would land. */
+  nextUserPick?: number | null;
   isComplete: boolean;
   adpAvailable: boolean;
   onDraftPlayer: (player: Player) => void;
@@ -116,6 +119,14 @@ export function BestBallDraftBoard({
 
   const shownPlayers = filteredPlayers.slice(0, visibleCount);
   const marketLabel = adpAvailable ? "Underdog ADP" : "Source rank";
+  // Where the board stands when the user's turn comes back, if every pick until
+  // then follows this board. A filter or a search breaks that reading, so the
+  // line shows on the whole board only, as it does in the redraft room.
+  const picksBeforeTurn =
+    nextUserPick !== null && position === "ALL" && debouncedQuery.trim() === ""
+      ? nextUserPick - currentPick
+      : 0;
+  const turnPlayerId = picksBeforeTurn > 0 ? shownPlayers[picksBeforeTurn]?.id : undefined;
 
   return (
     <section
@@ -210,7 +221,14 @@ export function BestBallDraftBoard({
             const explainsOrder = player.isUndraftedAtContestFloor || player.consensusWithheld;
             const hasReason = player.rankAdjustment !== 0 || explainsOrder;
             return (
-              <li key={player.id} className="ffb-row">
+              <Fragment key={player.id}>
+              {player.id === turnPlayerId ? (
+                <li className="ffb-turnline">
+                  <span className="ffb-turn-tab">Your turn #{nextUserPick}</span>{" "}
+                  <span className="ffb-turn-note">if picks follow this board</span>
+                </li>
+              ) : null}
+              <li className="ffb-row">
                 <span className="ffb-c-rank">
                   <span className="ffb-vh">Board rank </span>
                   {player.bestBallRank}
@@ -236,7 +254,8 @@ export function BestBallDraftBoard({
                   <span className="ffb-vh">Team </span>
                   {player.team}
                 </span>
-                <span className="ffb-c-bye">
+                {/* A phone row has no room to say a bye is unknown, so it leaves the cell out. */}
+                <span className={player.byeWeek == null ? "ffb-c-bye ffb-not-phone" : "ffb-c-bye"}>
                   {/* A phone row prints the word, and a desktop row has it in the column head. */}
                   <span className="ffb-br-vh-desk">Bye </span>
                   {player.byeWeek ?? "Unknown"}
@@ -282,6 +301,7 @@ export function BestBallDraftBoard({
                   </span>
                 ) : null}
               </li>
+              </Fragment>
             );
           })}
         </ol>

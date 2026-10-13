@@ -112,7 +112,7 @@ export function BestBallRecommendations({
                     onClick={() => onDraftPlayer(player)}
                     aria-label="Log for my team"
                     title={`Log ${player.name} for my team`}
-                    className={index === 0 ? "ffb-btn ffb-btn-now" : "ffb-log"}
+                    className={index === 0 ? "ffb-btn ffb-btn-now ffb-br-noprint" : "ffb-log"}
                   >
                     Log
                   </button>
