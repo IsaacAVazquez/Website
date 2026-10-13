@@ -953,9 +953,12 @@ function BestBallDraftRoom({
       />
       {lastPick ? (
         <p id="best-ball-undo-target" className="ffb-fine ffb-br-undo-note ffb-br-noprint">
-          Undo removes pick {lastPick.pickNumber}, {lastPick.player.name}. The picks above reach
-          further back. Choosing one takes back that pick and everything logged after it, and Redo
-          pick restores the removed picks in order.
+          Undo removes pick {lastPick.pickNumber}, {lastPick.player.name}.{" "}
+          {/* A phone keeps the sentence that names the pick. The note beside the last picks says the rest there. */}
+          <span className="ffb-not-phone">
+            The picks above reach further back. Choosing one takes back that pick and everything
+            logged after it, and Redo pick restores the removed picks in order.
+          </span>
         </p>
       ) : null}
 

@@ -115,8 +115,8 @@
 .ffb-br-fit > .ffb-details { border-top: 0; }
 .ffb-br-fit > .ffb-details > summary { justify-content: flex-start; font-size: 13px; }
 .ffb-br-fit-why { display: grid; gap: var(--ffb-s1); margin: 0; padding: 0; list-style: none; }
-.ffb-br-fit > .ffb-btn { margin-top: auto; }
-.ffb-br-recnote { padding-block: var(--ffb-s2) var(--ffb-s4); }
+.ffb-br-fit-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--ffb-s1) var(--ffb-s3); }
+.ffb-br-recnote { max-width: none; padding-block: var(--ffb-s2) var(--ffb-s4); }
 .ffb-br-recline { padding-bottom: var(--ffb-s4); }
 
 /* The board. Board rank, chip, name, team, bye, the market's number, and Draft. */
@@ -163,9 +163,13 @@
   min-width: 0;
 }
 .ffb-br-sheet-head { justify-content: flex-end; padding-block: var(--ffb-s2); border-bottom: 0; }
-.ffb-br-sheet-body { padding-top: 0; }
+/* One column that cannot be wider than the sheet, whatever its widest block wants. */
+.ffb-br-sheet-body { grid-template-columns: minmax(0, 1fr); padding-top: 0; }
 
 @media (min-width: 768px) {
+  /* On a tablet the sheet is wide, so the build takes one column and the rest stack beside it. */
+  .ffb-br-sheet-body { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--ffb-s6); align-items: start; }
+  .ffb-br-sheet-body > .ffb-br-build { grid-row: span 3; }
   /* Read out, not shown: the column head already says it. */
   .ffb-br-vh-desk {
     position: absolute;

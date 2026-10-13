@@ -48,6 +48,10 @@ export function BestBallBuildPanel({
   const completion = Math.min(100, Math.round((currentPick - 1) / totalPicks * 100));
   const usesWeek17Correlation =
     preset.strategyProfileId === "standard-tournament";
+  // A reason that already prints beside its position does not print again under the four.
+  const otherReasons = analysis.targets.reasons.filter(
+    (reason) => !POSITIONS.some((position) => analysis.targets.targets[position].reason === reason)
+  );
 
   return (
     <div className="ffb-br-build">
@@ -97,9 +101,9 @@ export function BestBallBuildPanel({
             );
           })}
         </dl>
-        {analysis.targets.reasons.length > 0 ? (
+        {otherReasons.length > 0 ? (
           <ul className="ffb-br-list ffb-fact-foot">
-            {analysis.targets.reasons.map((reason) => (
+            {otherReasons.map((reason) => (
               <li key={reason}>{reason}</li>
             ))}
           </ul>

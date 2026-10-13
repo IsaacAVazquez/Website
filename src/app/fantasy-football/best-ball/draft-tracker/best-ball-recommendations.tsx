@@ -104,16 +104,30 @@ export function BestBallRecommendations({
                   >
                     {player.name}
                   </button>
+                  {/* The top fit is the action that is mine to take now, so it alone takes the
+                      highlighter. The button's name is the full phrase, and what shows is its
+                      first word, as on the redraft room's strip. */}
+                  <button
+                    type="button"
+                    onClick={() => onDraftPlayer(player)}
+                    aria-label="Log for my team"
+                    title={`Log ${player.name} for my team`}
+                    className={index === 0 ? "ffb-btn ffb-btn-now" : "ffb-log"}
+                  >
+                    Log
+                  </button>
+                </div>
+                <p className="ffb-br-fit-meta">
                   <span className="ffb-br-fit-score">
                     <span className="ffb-label ffb-muted">Score</span>{" "}
                     <span className="ffb-heavy">{recommendation.score.toFixed(1)}</span>
+                  </span>{" "}
+                  <span className="ffb-strip-note">
+                    {player.team}
+                    {adpAvailable
+                      ? ` · ADP ${player.adp?.toFixed(1) ?? "not available"}`
+                      : " · Matching ADP not sourced"}
                   </span>
-                </div>
-                <p className="ffb-strip-note">
-                  {player.team}
-                  {adpAvailable
-                    ? ` · ADP ${player.adp?.toFixed(1) ?? "not available"}`
-                    : " · Matching ADP not sourced"}
                 </p>
 
                 {componentScores.length > 0 ? (
@@ -139,15 +153,6 @@ export function BestBallRecommendations({
                     ))}
                   </ul>
                 </details>
-
-                {/* The top fit is the action that is mine to take now, so it alone takes the highlighter. */}
-                <button
-                  type="button"
-                  onClick={() => onDraftPlayer(player)}
-                  className={index === 0 ? "ffb-btn ffb-btn-now ffb-btn-block" : "ffb-btn ffb-btn-block"}
-                >
-                  Log for my team
-                </button>
               </article>
             );
           })}
@@ -187,15 +192,15 @@ export function BestBallRecommendations({
           but it will not present an unsupported board as a current recommendation.
         </p>
       ) : isComplete ? (
-        <p className="ffb-copy">The draft is complete, so there is no next pick to fit.</p>
+        <p className="ffb-fine">The draft is complete, so there is no next pick to fit.</p>
       ) : !isUserPick ? (
-        <p className="ffb-copy">
+        <p className="ffb-fine">
           Exact player cards stay hidden until your turn because this model does not estimate the
           chance that each player survives the intervening picks. Use the board and roster targets
           to plan the position or tier you want next.
         </p>
       ) : (
-        <p className="ffb-copy">Recommendations will appear when the room has available players.</p>
+        <p className="ffb-fine">Recommendations will appear when the room has available players.</p>
       )}
     </section>
   );
