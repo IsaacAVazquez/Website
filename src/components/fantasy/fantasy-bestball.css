@@ -65,10 +65,12 @@
 /* ==========================================================================
  * The board
  * Rank, chip, name, team, Underdog ADP, the PPR consensus rank, value, bye, and the
- * Week 17 opponent. The name keeps 168px before any other column gives.
+ * Week 17 opponent. The name keeps 168px before any other column gives. The last track
+ * is empty, so the opponent stands one column gap in from the row's edge and the focus
+ * ring, which the kit draws inside the row, does not cross it.
  * ======================================================================== */
 .ffb-bb-board {
-  --ffb-cols: 30px 46px minmax(168px, 1fr) 36px 68px 64px 56px 30px 44px;
+  --ffb-cols: 30px 46px minmax(168px, 1fr) 36px 68px 64px 56px 30px 44px 0px;
   /* What is pinned over the list, which the kit reads to stop a focused row under it: the
      toolbar block (its measured height) on a phone, and a round's head with it from 768px. */
   --ffb-pinned-top: calc(var(--ffb-bb-bar, 148px) + var(--ffb-s1));
