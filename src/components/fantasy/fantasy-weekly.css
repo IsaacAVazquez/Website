@@ -1,0 +1,281 @@
+/*
+ * The weekly board, the waiver list, and the My team panel they share.
+ *
+ * Area sheet for /fantasy-football/weekly and /fantasy-football/waivers, drawn with the kit
+ * in fantasy.css. It is unlayered, so a rule here beats a kit class on the same element
+ * whatever order the two sheets load in. Every selector starts with an `ffb-wk-` class or
+ * with `.ffb-root`, because the sheet stays loaded after in-app navigation.
+ */
+
+/* ==========================================================================
+ * The page column and the rail
+ * ======================================================================== */
+/* The kit's rail scrolls by itself when My team is taller than the screen. A scroller clips
+   what crosses its edge, so this gives the focus rings inside room on both sides. */
+.ffb-wk-rail {
+  margin-inline: -6px;
+  padding-inline: 6px;
+  padding-bottom: var(--ffb-s2);
+  scrollbar-width: thin;
+}
+@media (max-width: 1199.98px) {
+  .ffb-wk-rail {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+/* On a phone the search takes a row to itself, and the My team link shares the last row with the count. */
+@media (max-width: 767.98px) {
+  .ffb-wk-toolbar > .ffb-search { flex-basis: 100%; }
+  .ffb-wk-toolbar > .ffb-count { flex: 1 1 120px; }
+}
+
+/* The kit rings a search input inside its own edge, where the ring crosses the first letter
+   typed. Here the whole field takes the ring. */
+.ffb-root :is(.ffb-wk-toolbar, .ffb-wk-team) .ffb-search-input:focus-visible { outline: none; }
+.ffb-root :is(.ffb-wk-toolbar, .ffb-wk-team) .ffb-search:has(.ffb-search-input:focus-visible) {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 3px;
+}
+
+/* The status sentence while a board loads. */
+.ffb-wk-loading {
+  color: var(--ffb-muted);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+ * The board column
+ * ======================================================================== */
+.ffb-wk-main {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+}
+/* The note that sits with the heading, and the method under the list. */
+.ffb-wk-main > .ffb-method { max-width: none; padding-bottom: var(--ffb-s2); }
+.ffb-wk-main > .ffb-wk-foot-note { padding-block: var(--ffb-s3) 0; }
+.ffb-wk-main > .ffb-wk-foot-note + .ffb-wk-foot-note { padding-top: var(--ffb-s2); }
+/* The live count on the heading's rule (waivers). */
+.ffb-wk-main .ffb-sechead-note:focus-visible { outline-offset: 3px; }
+
+/* The player in a row: chip, name, team, and on waivers the opponent. */
+.ffb-wk-player {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px var(--ffb-s2);
+  min-width: 0;
+}
+.ffb-wk-name { overflow-wrap: anywhere; }
+.ffb-wk-opp {
+  color: var(--ffb-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+/* The tables size their columns once, from the head, and the player takes the rest. */
+.ffb-wk-table { table-layout: fixed; }
+.ffb-wk-table .ffb-wk-h-rank { width: 44px; }
+.ffb-wk-table .ffb-wk-h-opp { width: 17%; }
+.ffb-wk-table .ffb-wk-h-range { width: 19%; }
+.ffb-wk-table .ffb-wk-h-num { width: 84px; }
+.ffb-wk-table .ffb-wk-h-num-wide { width: 104px; }
+.ffb-wk-table tbody td { font-variant-numeric: tabular-nums; }
+.ffb-wk-table td.ffb-wk-rank { color: var(--ffb-ink); font-size: 15px; font-weight: 700; font-stretch: 88%; }
+.ffb-wk-table td.ffb-wk-strong { font-size: 15px; font-weight: 700; }
+.ffb-wk-table td.ffb-wk-flat { color: var(--ffb-muted); }
+/* A collapsed table loses a stuck cell's border, so the head's ink rule is drawn as an inset edge. */
+.ffb-wk-table.ffb-table-sticky thead th {
+  border-bottom-color: transparent;
+  box-shadow: inset 0 -2px 0 var(--ffb-ink);
+}
+
+/* Load more beside Show all. */
+.ffb-wk-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ffb-s2);
+  margin-top: var(--ffb-s4);
+}
+.ffb-wk-more > .ffb-more {
+  flex: 1 1 200px;
+  width: auto;
+  margin-top: 0;
+}
+
+/* The phone list is the table reflowed. Each row is the player over his values, the values
+   sit in columns that hold their place down the list, and one head names the columns and
+   stays on screen. The labels stay in each row for assistive tech, visually hidden. */
+.ffb-wk-listhead {
+  --ffb-cols: 28px minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  column-gap: var(--ffb-s2);
+  border-bottom: 2px solid var(--ffb-ink);
+}
+.ffb-wk-listhead-5 { --ffb-cols: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.45fr) minmax(0, 1.2fr); }
+.ffb-wk-listhead + .ffb-rows > .ffb-row:first-child { border-top: 0; }
+.ffb-wk-row {
+  --ffb-cols: 28px minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--ffb-s2);
+  padding-block: var(--ffb-s2);
+}
+.ffb-wk-row-plain { --ffb-cols: minmax(0, 1fr); }
+.ffb-wk-row > .ffb-c-rank { line-height: 22px; }
+.ffb-wk-row .ffb-wk-player { min-height: 22px; font-size: 15px; font-weight: 600; }
+.ffb-wk-readout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 0 var(--ffb-s2);
+  margin-top: var(--ffb-s1);
+}
+.ffb-wk-readout-5 { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.45fr) minmax(0, 1.2fr); }
+.ffb-wk-readout > div { display: block; min-width: 0; }
+.ffb-wk-readout dd { font-size: 14px; font-weight: 500; line-height: 18px; }
+.ffb-wk-readout dd.ffb-wk-strong { font-weight: 700; }
+
+/* ==========================================================================
+ * My team
+ * ======================================================================== */
+.ffb-wk-team {
+  min-width: 0;
+  scroll-margin-top: var(--ffb-s2);
+}
+.ffb-wk-team-notice { margin-bottom: var(--ffb-s3); }
+/* The tabs sit on the first block's ink rule, so they carry no rule of their own. */
+.ffb-wk-tabs { border-bottom: 0; }
+
+/* A view's blocks. One column in the rail and on a phone, two where My team has the
+   width of the page (below 1200px it sits under the board). */
+.ffb-wk-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: var(--ffb-s7);
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .ffb-wk-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .ffb-wk-rail .ffb-wk-cols { grid-template-columns: minmax(0, 1fr); }
+}
+.ffb-wk-block {
+  display: grid;
+  align-content: start;
+  gap: var(--ffb-s3);
+  min-width: 0;
+  padding-bottom: var(--ffb-s5);
+}
+.ffb-wk-block > .ffb-sechead { padding-bottom: 0; }
+/* A view with one block takes both columns. */
+.ffb-wk-block-wide { grid-column: 1 / -1; }
+/* The kit's toggle leaves room for a count at its right, which this one does not carry. */
+.ffb-wk-entry .ffb-toggle { padding-inline: 12px; }
+.ffb-wk-copy {
+  max-width: 62ch;
+  color: var(--ffb-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.ffb-wk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ffb-s2);
+}
+
+/* A player in a list of My team: who it is, then what can be done with him. */
+.ffb-wk-entries { display: grid; }
+.ffb-wk-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px var(--ffb-s3);
+  min-height: 44px;
+  padding-block: 6px;
+  border-top: 1px solid var(--ffb-rule);
+}
+.ffb-wk-entry > .ffb-wk-player { flex: 1 1 160px; font-size: 15px; font-weight: 600; }
+.ffb-wk-entry-note { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
+
+/* League settings and the manual add form. */
+.ffb-wk-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 128px), 1fr));
+  align-items: end;
+  gap: var(--ffb-s3);
+}
+
+/* The weekly lineup: the kit's roster slots in one column. A filled slot is a sticker with
+   the team and opponent under the name and the board rank at its right. These rules hold
+   at every width, so the kit's five-across phone roster does not apply here. */
+.ffb-wk-lineup {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: none;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(46px, auto);
+  gap: var(--ffb-s1);
+}
+.ffb-wk-lineup > .ffb-slot {
+  grid-template-columns: 50px minmax(0, 1fr) auto;
+  align-content: center;
+  row-gap: 3px;
+  padding-inline: 12px 10px;
+  line-height: 1.1;
+}
+.ffb-wk-lineup .ffb-slot-code { grid-row: 1 / span 2; font-size: 13px; }
+.ffb-wk-lineup .ffb-slot-name { grid-column: 2; font-size: 13px; }
+.ffb-wk-lineup .ffb-is-filled .ffb-slot-name { font-size: 16px; }
+.ffb-wk-lineup .ffb-slot .ffb-slot-meta {
+  display: block;
+  grid-column: 2;
+  overflow: hidden;
+  font-size: 10.5px;
+  text-overflow: ellipsis;
+}
+.ffb-wk-slot-rank {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  font-size: 16px;
+  font-weight: 800;
+  font-stretch: 78%;
+}
+.ffb-wk-slot-rank small {
+  margin-inline-start: 3px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* The result of an add and drop comparison. */
+.ffb-wk-result {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.ffb-wk-result > p:first-child { font-size: 16px; font-weight: 700; line-height: 1.3; }
+.ffb-wk-result > .ffb-btn { justify-self: start; margin-top: var(--ffb-s1); }
+
+.ffb-wk-foot {
+  max-width: none;
+  padding-top: var(--ffb-s3);
+  border-top: 1px solid var(--ffb-rule);
+}
+
+/* ==========================================================================
+ * Print: the controls that do nothing on paper
+ * ======================================================================== */
+@media print {
+  .ffb-root .ffb-wk-more,
+  .ffb-root .ffb-wk-team :is(.ffb-tabs, .ffb-btn, .ffb-toggle, .ffb-details, .ffb-field:has(.ffb-search)) {
+    display: none;
+  }
+  .ffb-root .ffb-wk-rail {
+    max-height: none;
+    overflow: visible;
+  }
+}

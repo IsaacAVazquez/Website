@@ -210,11 +210,12 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(screen.queryByRole("button", { name: /Show all/ })).not.toBeInTheDocument();
   });
 
-  it("keeps the board in a card that does not lift under the pointer", () => {
+  it("keeps the board a ruled section and not a panel", () => {
     renderClient("rankings");
-    const card = screen.getByRole("region", { name: "Flex rankings" });
-    expect(card).toHaveClass("border-t");
-    expect(card).not.toHaveClass("c97-panel");
+    const region = screen.getByRole("region", { name: "Flex rankings" });
+    // The top rule is the kit's section rule under the heading, and nothing boxes the region.
+    expect(within(region).getByRole("heading", { level: 2 }).closest(".ffb-sechead")).not.toBeNull();
+    expect(region).not.toHaveClass("c97-panel");
   });
 
   it("uses the quarterback depth on the quarterback board", () => {
@@ -353,18 +354,19 @@ describe("WeeklyBoardClient waivers view", () => {
     expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveTextContent(
       "This week’s list",
     );
-    // The section h2 is the console's own heading since the poster type came
-    // off on 2026-10-12, in the body face rather than Anton.
+    // The section h2 is the kit's section heading, never the poster type that
+    // came off on 2026-10-12.
     expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).not.toHaveClass("c97-poster-sm");
-    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveClass("font-semibold");
+    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveClass("ffb-h2");
     expect(screen.getByRole("status")).toHaveTextContent(
       "2 players clear the gap in PPR scoring",
     );
     const region = screen.getByRole("region", { name: "Waiver targets table" });
     expect(region).toHaveAttribute("tabindex", "0");
-    expect(screen.getByRole("region", { name: "This week’s list" })).toHaveClass(
-      "border-t",
-    );
+    // The list is a ruled section, its top rule the kit's section rule under the heading, and not a panel.
+    const list = screen.getByRole("region", { name: "This week’s list" });
+    expect(within(list).getByRole("heading", { level: 2 }).closest(".ffb-sechead")).not.toBeNull();
+    expect(list).not.toHaveClass("c97-panel");
     const headers = within(screen.getByRole("table"))
       .getAllByRole("columnheader")
       .map((cell) => cell.textContent?.trim());
