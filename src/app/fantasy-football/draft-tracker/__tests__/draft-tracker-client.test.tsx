@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { DraftTrackerClient } from "../draft-tracker-client";
 
 const mockUseDraftState = jest.fn();
@@ -53,17 +53,24 @@ jest.mock("../components/DraftSetup", () => ({
   DraftSetup: ({
     onPreviewScoring,
     onResume,
+    onStartDraft,
+    focusHeadingOnMount,
   }: {
     onPreviewScoring?: (scoring: "STANDARD") => void;
     onResume?: () => void;
+    onStartDraft?: () => void;
+    focusHeadingOnMount?: boolean;
   }) => (
-    <div>
+    <div data-testid="draft-setup-mock" data-focus-heading={String(Boolean(focusHeadingOnMount))}>
       Draft setup mock
       <button type="button" onClick={() => onPreviewScoring?.("STANDARD")}>
         Preview Standard
       </button>
       <button type="button" onClick={onResume}>
         Resume room
+      </button>
+      <button type="button" onClick={onStartDraft}>
+        Start mock draft
       </button>
     </div>
   ),
@@ -180,14 +187,16 @@ describe("DraftTrackerClient", () => {
     // The client renders one top-level node, the route's shell.
     expect(container.firstChild).toHaveAttribute("data-testid", "fantasy-draft-tracker-shell");
     // This fixture is a running draft (one pick logged, isActive), so the
-    // head is the kit's one-line running head, its hidden state line reads
-    // live state, and the scorebug carries the pick number, the team on the
-    // clock, and the advisory clock.
+    // head is the kit's one-line running head, and the scorebug carries the
+    // pick number, the team on the clock, and the advisory clock.
     const title = screen.getByRole("heading", { level: 1, name: /Draft Tracker/i });
     expect(title).toBeVisible();
     expect(title.closest("header")).toHaveClass("ffb-head-run");
     expect(title.closest("header")).not.toHaveClass("ffb-head-setup");
-    expect(screen.getByText(/Draft assistant · Live · Pick #2/i)).toBeVisible();
+    // The scorebug is the room's one statement of where the draft is.
+    expect(screen.queryByText(/Draft assistant ·/)).not.toBeInTheDocument();
+    // The pinned bar names the pick just logged, under the team on the clock.
+    expect(within(screen.getByText("On the clock").closest("div") as HTMLElement).getByText(/^Prev · .*#1$/)).toBeVisible();
     expect(screen.getByText("#2 / 150")).toBeVisible();
     expect(screen.getByText("On the clock")).toBeVisible();
     expect(screen.getByText("You")).toBeVisible();
@@ -468,13 +477,19 @@ describe("DraftTrackerClient", () => {
 
     const toggle = screen.getByRole("button", { name: /Why these picks/i });
     expect(toggle).toHaveAttribute("aria-controls", "draft-decision-strip draft-decision-detail");
-    // The column floor is the width a card needs to print a long name beside its
-    // chip and Log button, so the cards the disclosure appends wrap to a new row
-    // instead of squeezing the first three. The floor is static, so it lives in
-    // the route's stylesheet on the strip's class and not in an inline style.
-    expect(document.querySelector("#draft-decision-strip")).toHaveClass("ffb-dt-strip");
+    // The column floor is the width a card needs to print a chip, a name, and
+    // its Log button, so the cards the disclosure appends wrap to a new row
+    // instead of squeezing the first three. The floor is 248px, which holds
+    // three cards in the list column at 1440. It is the kit's strip rule, and a
+    // name that 248px cannot hold takes a second line (the route's own rule).
+    expect(document.querySelector("#draft-decision-strip")).toHaveClass("ffb-strip", "ffb-dt-strip");
+    expect(fs.readFileSync("src/components/fantasy/fantasy.css", "utf8")).toContain(
+      `.ffb-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 248px), 1fr));`
+    );
     expect(fs.readFileSync("src/components/fantasy/fantasy-draft.css", "utf8")).toMatch(
-      /\.ffb-dt-strip \{[^}]*grid-template-columns: repeat\(auto-fit, minmax\(min\(100%, \d+px\), 1fr\)\);/
+      /\.ffb-dt-strip \.ffb-strip-line > \.ffb-c-name \{[^}]*white-space: normal;/
     );
     expect(screen.queryByText(/^Board #1 · Tier 1/)).not.toBeInTheDocument();
     expect(screen.queryByText("Fills WR1")).not.toBeInTheDocument();
@@ -514,5 +529,95 @@ describe("DraftTrackerClient", () => {
     render(<DraftTrackerClient />);
 
     expect(screen.getByRole("button", { name: "Undo last pick" })).toBeEnabled();
+    // Nobody is on the clock and there is no next turn, so the bar is the
+    // counter and the pool, and the counter's cell is the focus target.
+    expect(screen.getByText("Done").closest("div")).toHaveAttribute("tabindex", "-1");
+    expect(screen.queryByRole("timer")).not.toBeInTheDocument();
+    expect(screen.queryByText("On the clock")).not.toBeInTheDocument();
+    expect(screen.queryByText(/next turn/i)).not.toBeInTheDocument();
+    expect(screen.getByText("Every pick is logged in this room. Start a new room to run it back.")).toBeVisible();
+  });
+
+  it("moves focus to the on-the-clock cell after Start draft", () => {
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getByRole("button", { name: "New room" }));
+    const start = screen.getByRole("button", { name: "Start mock draft" });
+    start.focus();
+    fireEvent.click(start);
+
+    // The setup screen left with its Start button, and focus did not fall to the page.
+    expect(screen.queryByTestId("draft-setup-mock")).not.toBeInTheDocument();
+    expect(screen.getByText("On the clock").closest("div")).toHaveFocus();
+  });
+
+  it("asks the setup screen to take focus when New room opens it", () => {
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getByRole("button", { name: "New room" }));
+
+    expect(screen.getByTestId("draft-setup-mock")).toHaveAttribute("data-focus-heading", "true");
+  });
+
+  it("moves focus to the on-the-clock cell when Redo disables itself", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({ ...state, canRedo: true });
+    render(<DraftTrackerClient />);
+
+    const redo = screen.getByRole("button", { name: "Redo the last undone pick" });
+    redo.focus();
+    // The redo empties the stack, so the next render disables the button it was pressed on.
+    mockUseDraftState.mockReturnValue({ ...state, canRedo: false });
+    fireEvent.click(redo);
+
+    expect(redo).toBeDisabled();
+    expect(screen.getByText("On the clock").closest("div")).toHaveFocus();
+  });
+
+  it("keeps focus on Redo while there is more to redo", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({ ...state, canRedo: true });
+    render(<DraftTrackerClient />);
+
+    const redo = screen.getByRole("button", { name: "Redo the last undone pick" });
+    redo.focus();
+    fireEvent.click(redo);
+
+    expect(redo).toHaveFocus();
+  });
+
+  it("moves focus to the on-the-clock cell after an undo back to a pick", () => {
+    const state = mockUseDraftState();
+    const undoToPick = jest.fn();
+    mockUseDraftState.mockReturnValue({ ...state, undoToPick });
+    render(<DraftTrackerClient />);
+
+    const sticker = screen.getByRole("button", { name: /^Undo back to pick 1 / });
+    sticker.focus();
+    // The undo takes the pick, and its sticker, out of the room.
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      undoToPick,
+      draftState: { ...state.draftState, picks: [], currentPick: 1 },
+    });
+    fireEvent.click(sticker);
+
+    expect(undoToPick).toHaveBeenCalledWith(1);
+    expect(screen.queryByRole("button", { name: /^Undo back to pick / })).not.toBeInTheDocument();
+    expect(screen.getByText("On the clock").closest("div")).toHaveFocus();
+  });
+
+  it("offers a way past the board that lands on the rail", () => {
+    render(<DraftTrackerClient />);
+
+    const skip = screen.getByRole("link", { name: "Skip to your roster" });
+    // It comes before the board, so a keyboard meets it first.
+    expect(
+      skip.compareDocumentPosition(screen.getByRole("region", { name: "Draft board" })) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
+    fireEvent.click(skip);
+
+    expect(screen.getByRole("complementary", { name: "Your draft" })).toHaveFocus();
   });
 });
