@@ -493,7 +493,7 @@ export const FANTASY_REACH_TOOLTIP =
  * the player drawer so the width of the bar means the same thing on both.
  */
 export const FANTASY_EXPERT_SPREAD_TOOLTIP =
-  "The best and worst rank any contributing expert gave this player. A wider band means the experts disagree more about him, so the consensus rank is a weaker guide on its own.";
+  "The best and worst rank any contributing expert gave this player. A wider band means the experts disagree more about him, so the consensus rank is a weaker guide on its own. On the plot, the thicker part covers one standard deviation either side of the average, and the tick marks the average.";
 
 /**
  * Hover copy for the "vs ADP" cell. The board also has narrower variants for
