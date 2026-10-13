@@ -661,78 +661,67 @@ export function getFantasySourceCapabilities({
 }
 
 /**
- * Natural-height label chip shared across fantasy surfaces (matches the /nfl
- * badge recipe). Interactive pills keep min-h-[44px] separately for touch targets.
+ * The presentation exports below point at the fantasy kit
+ * (src/components/fantasy/fantasy.css). They keep markup that has not been
+ * rebuilt yet in the kit's palette and type, and a rebuilt page writes the kit
+ * classes itself.
  */
-export const FANTASY_CHIP_CLASS =
-  "inline-flex items-center border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
+
+/** A natural-width label in an outline (the kit's badge). A position tone fills it. */
+export const FANTASY_CHIP_CLASS = "ffb-badge";
 
 /**
  * The site column with its own gutter, so fantasy content that sits outside a
- * `.c97-band` shares the header's edges. It widens on the wide tool routes
- * (the trade calculator and the best ball draft room) with every other shell.
+ * `.c97-band` shares the header's edges. All eight fantasy routes are wide
+ * tool routes, so it is the 1376px column on each.
  */
 export const SHELL_CLASS = "c97-shell c97-frame";
 
-export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
+/** The kit's label type: 700 at 80% width, capitals, 11 to 12px. */
+export const MONO_LABEL_CLASS = "ffb-label";
 
-/** Square-cornered mono position chip from the template (not the shared pill chip). */
-export const POSITION_CHIP_CLASS =
-  "inline-flex flex-none items-center border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
+/** The kit's position chip. Pair it with `getPositionTone` or an `ffb-pos-*` class. */
+export const POSITION_CHIP_CLASS = "ffb-chip";
 
-/**
- * Disabled prints unfilled with a dashed edge; an opacity fade dropped its label to 3.02:1.
- * The resting colours live in the class rather than inline so the hover can apply.
- */
-export const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink)] enabled:hover:border-[var(--c97-ink)] disabled:cursor-not-allowed disabled:border-dashed";
+/** The kit's secondary button at the 44px size. Disabled prints unfilled with a dashed edge. */
+export const PILL_BUTTON_CLASS = "ffb-btn ffb-btn-lg";
 
-/** Sticky offset that clears the site header on the draft surfaces. */
+/** Sticky offset of the draft surfaces' status bars. The site header is not sticky, so it is the top. */
 export const FASCIA_TOP_CLASS = "top-0";
 
+/** A warning edge with no fill. A rebuilt page uses the kit's notice instead. */
 export const WARNING_CARD_STYLE: CSSProperties = {
-  borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
-  background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
+  borderColor: "var(--ffb-warn)",
+  background: "transparent",
 };
 
+const POSITION_FILL: Record<string, string> = {
+  QB: "var(--ffb-qb)",
+  RB: "var(--ffb-rb)",
+  WR: "var(--ffb-wr)",
+  TE: "var(--ffb-te)",
+  K: "var(--ffb-k)",
+  DST: "var(--ffb-dst)",
+};
+
+/**
+ * The sticker colours of a position as inline styles: the solid fill, the same
+ * colour as the edge, and the dark on-fill text, which is the same in both
+ * themes. The two custom properties make any bridged Catalog 97 ink inside the
+ * fill resolve to that text colour too, so older child markup stays readable.
+ */
 export function getPositionTone(position: string): CSSProperties {
-  switch (position) {
-    case "QB":
-      return {
-        background: "color-mix(in srgb, var(--c97-accent) 14%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))",
-      };
-    case "RB":
-      return {
-        background: "color-mix(in srgb, var(--c97-positive) 14%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-positive) 24%, var(--c97-rule))",
-      };
-    case "WR":
-      return {
-        background: "color-mix(in srgb, var(--c97-ink) 10%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-ink) 24%, var(--c97-rule))",
-      };
-    case "TE":
-      return {
-        background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-warning) 26%, var(--c97-rule))",
-      };
-    case "K":
-      return {
-        background: "color-mix(in srgb, var(--c97-rule) 45%, var(--c97-surface))",
-        borderColor: "var(--c97-rule)",
-      };
-    case "DST":
-      return {
-        background: "color-mix(in srgb, var(--c97-ink) 16%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-ink) 34%, var(--c97-rule))",
-      };
-    default:
-      return {
-        background: "var(--c97-field)",
-        borderColor: "var(--c97-rule)",
-      };
+  const fill = POSITION_FILL[position];
+  if (!fill) {
+    return { background: "var(--ffb-sunk)", borderColor: "var(--ffb-rule)", color: "var(--ffb-ink)" };
   }
+  return {
+    background: fill,
+    borderColor: fill,
+    color: "var(--ffb-on-fill)",
+    "--c97-ink": "var(--ffb-on-fill)",
+    "--c97-ink-2": "var(--ffb-on-fill)",
+  } as CSSProperties;
 }
 
 type FantasyConsensusSpread = "tight" | "mixed" | "volatile";

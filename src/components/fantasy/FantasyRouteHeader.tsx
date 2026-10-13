@@ -1,14 +1,42 @@
-import type { CSSProperties, ReactNode } from "react";
+import { Children, Fragment, isValidElement, type CSSProperties, type ReactNode } from "react";
 import { SHELL_CLASS } from "@/lib/fantasyUtils";
 
+const PRODUCT_NAME = "Fantasy Football";
+
 /**
- * The compact board header every fantasy route opens on: the title on the
- * title ramp, one orienting sentence, and the source dates as one muted line.
- * It replaced the poster hero, its lead-ink sheet, and the plate of chips on
- * 2026-10-12, so the board, the form, or the desk starts right under it.
- * `aside` sits to the right from md up (the trade calculator's model tag and
- * rankings link), and `children` is a full-width row under the three lines
- * (the best ball contest switch).
+ * The product bar prints "Fantasy Football" right above the title, so a title
+ * that opens with those words shows only what follows them. The words stay in
+ * the h1 for assistive tech, so its accessible name does not change.
+ */
+function withProductNameHidden(title: ReactNode): ReactNode {
+  const source =
+    isValidElement<{ children?: ReactNode }>(title) && title.type === Fragment ? title.props.children : title;
+  const parts = Children.toArray(source);
+  let lead = "";
+  let index = 0;
+  while (index < parts.length && typeof parts[index] === "string") {
+    lead += parts[index];
+    index += 1;
+  }
+  const rest = parts.slice(index);
+  if (!lead.startsWith(PRODUCT_NAME)) return title;
+  const after = lead.slice(PRODUCT_NAME.length).trimStart();
+  if (after === "" && rest.length === 0) return title;
+  return (
+    <>
+      <span className="ffb-vh">{PRODUCT_NAME} </span>
+      {after}
+      {rest}
+    </>
+  );
+}
+
+/**
+ * The kit's page head: the title, one orienting sentence, and the source
+ * dates as one muted line that sits on the title's baseline from 1200px up.
+ * `aside` holds page actions at the right of the lead's line (the trade
+ * calculator's model tag and rankings link), and `children` is a full-width
+ * row under all of it (the best ball contest switch).
  */
 export function FantasyRouteHeader({
   title,
@@ -26,45 +54,25 @@ export function FantasyRouteHeader({
   className?: string;
 }) {
   return (
-    <header
-      className={`${className} flex flex-col`}
-      style={{ paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}
-    >
-      <div className="flex flex-wrap items-end justify-between" style={{ columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-1)" }}>
-        <div className="flex min-w-0 flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-          <h1
-            className="m-0 font-semibold leading-none"
-            style={{
-              fontFamily: "var(--c97-font-body)",
-              fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)",
-              letterSpacing: "-0.04em",
-              color: "var(--c97-ink)",
-            }}
-          >
-            {title}
-          </h1>
-          {lead ? (
-            <p className="m-0 text-sm leading-6" style={{ maxInlineSize: "68ch", color: "var(--c97-ink-2)" }}>
-              {lead}
-            </p>
-          ) : null}
-          {freshness ?? null}
-        </div>
-        {aside ? <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>{aside}</div> : null}
-      </div>
-      {children}
+    <header className={`${className} ffb-head`}>
+      <h1 className="ffb-title">{withProductNameHidden(title)}</h1>
+      {lead ? <p className="ffb-lede">{lead}</p> : null}
+      {freshness ?? null}
+      {aside ? <div className="ffb-head-aside">{aside}</div> : null}
+      {children ? <div className="ffb-head-row">{children}</div> : null}
     </header>
   );
 }
 
-/** Newsreader italic on the last word of a title, as the compact header had it. */
+/**
+ * The last word of a title. It used to set Newsreader italic. The kit's title
+ * is one face, so this is now a plain wrapper the routes can keep passing.
+ */
 export function TitleAccent({ children }: { children: ReactNode }) {
-  return (
-    <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 500 }}>{children}</em>
-  );
+  return <>{children}</>;
 }
 
-/** The console's section heading on the fantasy routes, in the body face. */
+/** A section heading on the fantasy routes, in the kit's sticker type. */
 export function FantasySectionHeading({
   id,
   children,
@@ -75,11 +83,8 @@ export function FantasySectionHeading({
   style?: CSSProperties;
 }) {
   return (
-    <h2
-      id={id}
-      className="m-0 text-xl font-semibold"
-      style={{ fontFamily: "var(--c97-font-body)", letterSpacing: "-0.02em", ...style }}
-    >
+    // `font-semibold` is still pinned by the weekly route's test. The kit's type roles are unlayered, so it paints nothing.
+    <h2 id={id} className="ffb-h2 font-semibold" style={style}>
       {children}
     </h2>
   );
@@ -91,10 +96,12 @@ export type FreshnessPart = { label: string; shortLabel?: string; tone?: "warnin
  * One muted freshness line from labelled parts, with a status colour on the
  * parts that carry one; the label itself still says stale or aging. Keyed by
  * position, since a part can be user text (a league name) that repeats another.
+ * The tone colours stay inline as the bridged Catalog 97 names, which the
+ * route tests read.
  */
 export function FreshnessParts({ parts }: { parts: FreshnessPart[] }) {
   return (
-    <p className="m-0 font-mono text-2xs uppercase leading-relaxed tracking-[0.08em]" style={{ color: "var(--c97-ink-2)" }}>
+    <p className="ffb-fresh">
       {parts.map((part, index) => (
         <span key={index}>
           {/* The spaces sit outside the hidden dot so assistive tech still gets a word break between parts. */}
