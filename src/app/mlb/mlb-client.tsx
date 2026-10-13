@@ -345,7 +345,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   <abbr className="mlb-mark" data-mark="In">In</abbr> holds one of three wild card slots, above the
                   dashed line
                 </li>
-                <li>A plus is a slot holder&apos;s lead over the first team out</li>
+                <li>A plus is a slot holder&apos;s lead over the last wild card slot</li>
               </>
             ) : (
               <>

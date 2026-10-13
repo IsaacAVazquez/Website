@@ -274,7 +274,7 @@ function parseGamesBack(value: string | null | undefined): number {
 }
 
 /**
- * The API prints a wild card slot holder's lead over the first team out as
+ * The API prints a wild card slot holder's lead with a plus, such as
  * "+9.5", so the sign is kept as a negative number (ahead of the line), where
  * `parseGamesBack` would read it as 9.5 games behind.
  */

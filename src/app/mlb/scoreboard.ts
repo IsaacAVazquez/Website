@@ -106,7 +106,7 @@ export function divisionBoard(standings: readonly MlbStandingsRow[]): Scoreboard
 }
 
 /**
- * A slot holder prints its lead over the first team out as "+N" (the last
+ * A slot holder prints its lead over the last wild card slot as "+N" (the last
  * slot, level with the line, prints "—"), and a chaser prints the games it
  * trails the last slot by. The lead is read by rank rather than sign, since
  * snapshots built before 2026-10-12 stored it unsigned.

@@ -1,7 +1,7 @@
 import { CrestAvatar } from "./CrestAvatar";
 import type { GenericFixture } from "./FixtureCard";
 import type { FixtureLedgerGroup } from "./fixtureLedgerUtils";
-import { formatFixtureDateTime, formatKickoff } from "./fixtureFormat";
+import { formatFixtureDateTime } from "./fixtureFormat";
 
 function TeamCell({
   team,
@@ -65,31 +65,25 @@ function FixtureLedgerRow({
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-stretch border-b border-[var(--c97-rule)] transition-colors hover:bg-[var(--c97-field)]" style={{ paddingBlock: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
       <TeamCell team={fixture.homeTeam} onOpenTeam={onOpenTeam} />
-      {isFinal && hasShootout ? (
-        // A knockout tie settled on penalties (the World Cup) prints the shootout under the score.
-        <span className="flex flex-col justify-center">
-          {finalScore}
+      <div className="flex flex-col justify-center text-center">
+        {isFinal ? finalScore : null}
+        {isFinal && hasShootout ? (
           <span className="text-center text-2xs tabular-nums text-[var(--c97-ink-2)]">
             {fixture.score.shootoutHome}–{fixture.score.shootoutAway} pens
           </span>
+        ) : null}
+        <span className="text-2xs text-[var(--c97-ink-2)]">
+          {formatFixtureDateTime(fixture)}
         </span>
-      ) : isFinal ? (
-        finalScore
-      ) : (
-        <span className="flex items-center justify-center text-center text-2xs text-[var(--c97-ink-2)]">
-          {/* A placeholder clock (MLB's unset start times) prints the day and "time TBD" instead. */}
-          {fixture.startTimeTbd ? formatFixtureDateTime(fixture) : formatKickoff(fixture.utcDate)}
-        </span>
-      )}
+      </div>
       <TeamCell team={fixture.awayTeam} align="end" onOpenTeam={onOpenTeam} />
     </div>
   );
 }
 
 /**
- * The scoreboard ledger: fixtures grouped by matchday under a ruled label,
- * each fixture a single 3-column row (home, score or kickoff, away) on a
- * hairline, with no box around the group.
+ * Fixtures sit under a caller-supplied group label, with home team, dated
+ * score or kickoff, and away team in one three-column row.
  */
 export function FixtureLedgerSection({
   groups,

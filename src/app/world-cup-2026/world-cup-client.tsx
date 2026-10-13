@@ -764,7 +764,7 @@ function ScheduleView({
     return (
       <EmptyPanel
         title="The full schedule lands here"
-        description="Once ESPN publishes the fixtures, results and upcoming matches show up in this view, grouped by day and linked to each team."
+        description="Once ESPN publishes the fixtures, results and upcoming matches show up here with dates and links to each team."
       />
     );
   }

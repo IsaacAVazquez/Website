@@ -43,7 +43,7 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
                   <th scope="col" className="mlb-num">
                     <abbr title={
                         board.kind === "wildcard"
-                          ? "Games back of the last wild card slot, or a slot holder's lead over the first team out"
+                          ? "Games behind or ahead of the last wild card slot"
                           : "Games back"
                       }>GB</abbr>
                   </th>
