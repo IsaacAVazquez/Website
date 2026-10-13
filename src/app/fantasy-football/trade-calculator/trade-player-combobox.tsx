@@ -1,7 +1,7 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { useId, useMemo, useRef, useState } from "react";
+import { useId, useImperativeHandle, useMemo, useRef, useState, type Ref } from "react";
 import { normalizeAdpPlayerName, normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 import type { Player } from "@/types";
 
@@ -45,7 +45,18 @@ function searchPlayers(players: readonly Player[], query: string): Player[] {
     .map((entry) => entry.player);
 }
 
+/** What a parent can ask of the search field. */
+export interface TradeSearchHandle {
+  /**
+   * Puts focus in the field without opening its list. After a remove or a
+   * clear the visitor needs somewhere to carry on from, and a list opening
+   * over the rows they were just working in would be in the way.
+   */
+  focusClosed: () => void;
+}
+
 interface TradePlayerComboboxProps {
+  ref?: Ref<TradeSearchHandle>;
   sideLabel: string;
   players: readonly Player[];
   excludedPlayerIds: ReadonlySet<string>;
@@ -54,6 +65,7 @@ interface TradePlayerComboboxProps {
 }
 
 export function TradePlayerCombobox({
+  ref,
   sideLabel,
   players,
   excludedPlayerIds,
@@ -67,6 +79,18 @@ export function TradePlayerCombobox({
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  // Set for the one focus event a parent asks for, so that focus does not open the list.
+  const quietFocus = useRef(false);
+
+  useImperativeHandle(ref, () => ({
+    focusClosed: () => {
+      const input = inputRef.current;
+      if (!input || input.disabled || document.activeElement === input) return;
+      quietFocus.current = true;
+      input.focus();
+      quietFocus.current = false;
+    },
+  }));
 
   const results = useMemo(() => searchPlayers(players, query), [players, query]);
   const selectableIndexes = useMemo(
@@ -138,7 +162,9 @@ export function TradePlayerCombobox({
           autoComplete="off"
           disabled={disabled}
           value={query}
-          onFocus={() => setOpen(true)}
+          onFocus={() => {
+            if (!quietFocus.current) setOpen(true);
+          }}
           onChange={(event) => {
             setQuery(event.target.value);
             setOpen(true);
@@ -207,7 +233,9 @@ export function TradePlayerCombobox({
                     className="ffb-tr-option"
                   >
                     <span className={chip.className}>{chip.label}</span>
-                    <span className="ffb-c-name">{player.name}</span>
+                    <span className="ffb-c-name" title={player.name}>
+                      {player.name}
+                    </span>
                     <span className="ffb-c-team">
                       {excluded ? "Already added" : `${player.team} · ECR ${playerRank(player)}`}
                     </span>

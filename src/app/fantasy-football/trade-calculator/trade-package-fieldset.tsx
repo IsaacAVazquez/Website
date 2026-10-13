@@ -1,10 +1,25 @@
 "use client";
 
 import { X } from "lucide-react";
-import type { FantasyTradeSideEvaluation } from "@/lib/fantasyTrade";
+import { useEffect, useRef, type RefObject } from "react";
+import type { FantasyTradePlayerEvaluation, FantasyTradeSideEvaluation } from "@/lib/fantasyTrade";
 import { FANTASY_TRADE_MAX_PLAYERS_PER_SIDE } from "@/lib/fantasyTradePersistence";
 import type { Player } from "@/types";
-import { positionChip, TradePlayerCombobox } from "./trade-player-combobox";
+import { positionChip, TradePlayerCombobox, type TradeSearchHandle } from "./trade-player-combobox";
+
+const NO_SAMPLE_WARNING = /no ADP sample/;
+
+/**
+ * The short status for a player whose own reading is why the verdict is
+ * withheld, or null. The engine's sentences stay in the rail's list as they
+ * are. This only says which row they are about.
+ */
+function heldStatus(player: FantasyTradePlayerEvaluation | undefined): string | null {
+  if (!player || player.marketValue !== null) return null;
+  return player.warnings.some((warning) => NO_SAMPLE_WARNING.test(warning))
+    ? "No ADP sample"
+    : "No market reading";
+}
 
 function formatTradeValue(value: number | null | undefined): string {
   return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "—";
@@ -18,6 +33,13 @@ interface TradePackageFieldsetProps {
   excludedPlayerIds: ReadonlySet<string>;
   evaluation: FantasyTradeSideEvaluation | null;
   exactValuesAvailable: boolean;
+  /**
+   * True when the verdict is withheld while the draft market itself is
+   * current, which is the case where one player's reading is the cause.
+   */
+  marksHeldPlayers: boolean;
+  /** The side's search field, for a parent that has to send focus there. */
+  searchRef?: RefObject<TradeSearchHandle | null>;
   onAdd: (playerId: string) => void;
   onRemove: (playerId: string) => void;
 }
@@ -30,9 +52,21 @@ export function TradePackageFieldset({
   excludedPlayerIds,
   evaluation,
   exactValuesAvailable,
+  marksHeldPlayers,
+  searchRef,
   onAdd,
   onRemove,
 }: TradePackageFieldsetProps) {
+  const ownSearchRef = useRef<TradeSearchHandle>(null);
+  const search = searchRef ?? ownSearchRef;
+  // A remove unmounts the button that had focus. Once the row is gone, focus
+  // goes to this side's search, so it never falls to the page body.
+  const refocusAfterRemove = useRef(false);
+  useEffect(() => {
+    if (!refocusAfterRemove.current) return;
+    refocusAfterRemove.current = false;
+    search.current?.focusClosed();
+  }, [playerIds, search]);
   const playersById = new Map(players.map((player) => [player.id, player]));
   const evaluatedById = new Map(evaluation?.players.map((player) => [player.id, player]) ?? []);
   const atLimit = playerIds.length >= FANTASY_TRADE_MAX_PLAYERS_PER_SIDE;
@@ -42,13 +76,14 @@ export function TradePackageFieldset({
 
   return (
     <fieldset className="ffb-tr-side">
-      <legend className="ffb-h3">{legend}</legend>
+      <legend className="ffb-sticker-name">{legend}</legend>
       <span className="ffb-field-count ffb-tr-count" aria-live="polite">
         {playerIds.length}/{FANTASY_TRADE_MAX_PLAYERS_PER_SIDE}
       </span>
       <div className="ffb-stack ffb-stack-tight">
         <p className="ffb-sechead-note">{description}</p>
         <TradePlayerCombobox
+          ref={search}
           sideLabel={legend.toLowerCase()}
           players={players}
           excludedPlayerIds={excludedPlayerIds}
@@ -74,15 +109,24 @@ export function TradePackageFieldset({
                 const position = player?.position ?? valued?.position;
                 const team = player?.team ?? valued?.team ?? "";
                 const chip = position ? positionChip(position, player?.positionRank) : null;
+                const held = marksHeldPlayers ? heldStatus(valued) : null;
                 return (
-                  <li key={playerId} className="ffb-row ffb-tr-row">
+                  <li key={playerId} className="ffb-row ffb-row-two">
                     {chip ? <span className={chip.className}>{chip.label}</span> : null}
-                    <span className="ffb-c-name">{name}</span>
+                    <span className="ffb-c-name" title={name}>
+                      {name}
+                    </span>
                     <span className="ffb-c-team">
                       {team || "Not on this scoring board"}
                       {exactValuesAvailable && valued?.marketAdp
                         ? ` · ADP ${valued.marketAdp.toFixed(1)}`
                         : ""}
+                      {held ? (
+                        <>
+                          {" · "}
+                          <span className="ffb-warn">{held}</span>
+                        </>
+                      ) : null}
                     </span>
                     {evaluated ? (
                       <span className="ffb-c-num ffb-is-strong">
@@ -92,7 +136,10 @@ export function TradePackageFieldset({
                     ) : null}
                     <button
                       type="button"
-                      onClick={() => onRemove(playerId)}
+                      onClick={() => {
+                        refocusAfterRemove.current = true;
+                        onRemove(playerId);
+                      }}
                       aria-label={`Remove ${name} from players ${legend.toLowerCase()}`}
                       className="ffb-iconbtn"
                     >
