@@ -37,7 +37,7 @@
 
 /* The division grid, the second screen. */
 
-.sb-board-second {
+.nfl-board-second {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);

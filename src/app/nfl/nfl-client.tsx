@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
@@ -16,6 +16,7 @@ import { DetailDrawer } from "@/components/football/DetailDrawer";
 import { formatRank } from "@/components/football/fixtureFormat";
 import { SeedLadder, type LadderColumn, type LadderTeam } from "@/components/football/SeedLadderPanel";
 import { seedLadder, nflSeeds, type SeedBandSpec } from "@/components/football/seedLadder";
+import { useKeepPressedInView } from "@/components/football/useKeepPressedInView";
 import { NflDivisionGrid, type DivisionGridGroup } from "./NflDivisionGrid";
 import "@/components/football/sports-board.css";
 import "./nfl.css";
@@ -209,11 +210,10 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   );
   const divisionGroups = useMemo(() => buildDivisionGroups(teams, optionsById), [teams, optionsById]);
 
-  const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const linkedState = hasManagedParams
-    ? normalizeState(searchParams, defaultState, aliasMap)
-    : initialState;
+  // The URL alone says which view and team are showing. `initialState` is the
+  // server's reading of the last link it rendered, and Back to plain /nfl
+  // leaves that prop on the team the drawer had pushed.
+  const linkedState = normalizeState(searchParams, defaultState, aliasMap);
   // A link that names a team outside its view (an NFC team on the AFC view)
   // opens that team in the full league, the way a schedule card's pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
@@ -237,7 +237,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   } = useCachedSnapshot<NFLTeamSnapshot>(
     "/api/nfl/teams",
     selectedTeam?.id ?? null,
-    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    // Filed under the team the server loaded. A link that names only a view
+    // leaves that at the default team while the view selects its own first.
+    { id: initialState.team, snapshot: initialTeamSnapshot },
     "Unable to load team snapshot."
   );
   // The team drawer is its own state, because every view writes its first
@@ -260,6 +262,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   );
 
   const pushHref = useRouteSync(NFL_ROUTE, desiredHref);
+  const switchRef = useRef<HTMLDivElement>(null);
+  useKeepPressedInView(switchRef, routeState.view);
 
   function navigate(nextState: NFLRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
@@ -267,6 +271,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   }
 
   function handleViewChange(view: NFLView) {
+    // Back shuts the drawer without its own close, so the team it held is
+    // dropped here, or a view that selects that team would open it again.
+    setDrawerTeamId(null);
     const nextTeams = filterTeams(summary.teams, view);
     const nextTeam = nextTeams.some((team) => team.id === selectedTeamId)
       ? selectedTeamId
@@ -291,7 +298,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   const [activeLeaderTab, setActiveLeaderTab] = useState<LeaderCategory>("passing");
 
   const totalRegSeasonWeeks = 18;
-  const isFinal = summary.week >= totalRegSeasonWeeks && summary.upcomingFixtures.length === 0;
+  // `week` counts regular-season weeks only, so it reaches 18 when the last
+  // one is complete and holds there while the playoff games are still listed.
+  const isFinal = summary.week >= totalRegSeasonWeeks;
   const statusMeta = `${summary.sourceLabel} · Season ${summary.season} · ${
     summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "week 1 in progress"
   } · snapshot ${snapshotDateLabel}`;
@@ -307,7 +316,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
         <span>{statusMeta}</span>
       </p>
       <p className="sb-status">
-        The snapshot carries no seeds, so these come from each team&apos;s division rank and conference rank.
+        These seeds come from each team&apos;s division rank and conference rank in the snapshot.
       </p>
     </div>
   );
@@ -327,6 +336,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext, seeds);
   const selectedZone = getTeamZone(selectedTeam, seeds);
   const selectedSeed = seeds.get(selectedTeam.id) ?? null;
+  // A row is marked only while its team's drawer is open, since the page
+  // shows the selected team nowhere else.
+  const pressedTeamId = isDrawerOpen ? selectedTeam.id : null;
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
@@ -349,7 +361,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       <section className="sb-board" aria-label="NFL standings">
         <div className="sb-toolbar">
           <h2 className="sb-h2">Standings</h2>
-          <div role="group" aria-label="Conference and seeding view" className="sb-switch">
+          <div ref={switchRef} role="group" aria-label="Conference and seeding view" className="sb-switch">
             {VIEW_OPTIONS.map((option) => (
               <button
                 key={option.id}
@@ -367,21 +379,21 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
           conferences={conferences}
           columns={LADDER_COLUMNS}
           lineLabels={["Playoff line"]}
-          selectedId={selectedTeam.id}
+          selectedId={pressedTeamId}
           onSelect={handleTeamChange}
           isBandVisible={(index) => routeState.view !== "playoffs" || index === 0}
           seedLabel={(team) => (team.seeded ? String(team.seed) : "–")}
         />
       </section>
 
-      <section className="sb-board-second" aria-labelledby="nfl-divisions-heading">
+      <section className="nfl-board-second" aria-labelledby="nfl-divisions-heading">
         <div className="sb-toolbar">
           <h2 id="nfl-divisions-heading" className="sb-h2">
             Divisions
           </h2>
           <p className="sb-muted">Each team is striped in its own colours, and the division leaders are marked.</p>
         </div>
-        <NflDivisionGrid divisions={divisionGroups} selectedId={selectedTeam.id} onSelect={handleTeamChange} />
+        <NflDivisionGrid divisions={divisionGroups} selectedId={pressedTeamId} onSelect={handleTeamChange} />
       </section>
 
       <section className="sb-detail" aria-labelledby="nfl-detail-heading">
