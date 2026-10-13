@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
@@ -10,6 +10,7 @@ import { FixtureLedgerSection } from "@/components/football/FixtureLedger";
 import { LeaderLedger, type LeaderLedgerEntry } from "@/components/football/LeaderLedger";
 import { SegmentedTabs } from "@/components/football/SegmentedTabs";
 import { groupFixtures } from "@/components/football/fixtureGroups";
+import { useKeepPressedInView } from "@/components/football/useKeepPressedInView";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and the two league pages do not use this drawer.
 import { DetailDrawer } from "@/components/football/DetailDrawer";
@@ -73,6 +74,9 @@ const otherGameLabels: Record<string, string> = {
   A: "All-Star Game",
 };
 
+/** Joins the summary's clauses as "a, b, and c", and reads right with one or two. */
+const SUMMARY_CLAUSES = new Intl.ListFormat("en-US", { type: "conjunction" });
+
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
   return `${games.toFixed(1)} GB`;
@@ -89,8 +93,9 @@ function formatLeaderTotal(total: number, statLabel: string): string | number {
   return Math.round(total);
 }
 
+/** The top five places, so players tied for fifth all print. */
 function leadersToEntries(leaders: MlbLeader[], statLabel: string): LeaderLedgerEntry[] {
-  return leaders.slice(0, 5).map((leader) => ({
+  return leaders.filter((leader) => leader.rank <= 5).map((leader) => ({
     rank: leader.rank,
     name: leader.name,
     clubCode: leader.teamCode,
@@ -161,11 +166,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     [summary.updatedAt]
   );
 
-  const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const linkedState = hasManagedParams
-    ? normalizeState(searchParams, defaultState, aliasMap)
-    : initialState;
+  // The URL alone says which view and team are showing, and a bare one is the
+  // default state. `initialState` belongs to whichever URL the server rendered
+  // last, and after Back that is the page being left.
+  const linkedState = normalizeState(searchParams, defaultState, aliasMap);
   // A link that names a team outside its view (an NL club on the AL view)
   // opens that team in the full league, the way a game card's pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
@@ -191,7 +195,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   } = useCachedSnapshot<MlbTeamSnapshot>(
     "/api/mlb/teams",
     selectedRow?.id ?? null,
-    { id: selectedRow?.id ?? null, snapshot: initialTeamSnapshot },
+    // Keyed by the team the server loaded, which a bare ?view= link leaves
+    // on the default team while the view selects its own first team.
+    { id: initialState.team, snapshot: initialTeamSnapshot },
     "Unable to load team snapshot."
   );
   const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("games");
@@ -207,6 +213,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
       : null
   );
   const isDrawerOpen = drawerTeamId !== null && drawerTeamId === selectedTeamId;
+  const switchRef = useRef<HTMLDivElement>(null);
+  useKeepPressedInView(switchRef, routeState.view);
 
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
@@ -223,6 +231,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }
 
   function handleViewChange(view: MlbView) {
+    // A drawer that Back closed still holds its team, and the next view's
+    // first team can be that one, so a view switch never reopens it.
+    setDrawerTeamId(null);
     const next = filterStandings(standings, view);
     const nextTeam = next.some((row) => row.id === selectedTeamId)
       ? selectedTeamId
@@ -230,8 +241,13 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     navigate({ view, team: nextTeam });
   }
 
+  // A bracket placeholder such as "NL Champion" is no club, so the games
+  // ledger prints it as plain text and it opens nothing.
+  const isClub = (teamId: string) => standingsById.has(canonicalizeTeamId(teamId, aliasMap) ?? "");
+
   function handleTeamChange(teamId: string) {
-    const team = canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team;
+    const team = canonicalizeTeamId(teamId, aliasMap);
+    if (!team || !standingsById.has(team)) return;
     // A game card can name a team the current view leaves out, so that team
     // opens in the full league, where it can be selected.
     const view = visibleStandings.some((row) => row.id === team)
@@ -274,15 +290,25 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         ? divisions
         : divisions.filter((board) => board.name.startsWith(routeState.view === "al" ? "AL" : "NL"));
 
-  // The three readouts the old hero printed, folded into the board's header line.
+  const streakGames = hottest ? Number.parseInt(hottest.streak.slice(1), 10) : 0;
+  // The three readouts the old hero printed, folded into the board's header
+  // line. The streak is the regular season's, so in the postseason every
+  // clause reads as a finish.
   const summaryParts = [
-    leagueLeader ? `${leagueLeader.shortName} have the best record at ${formatRecord(leagueLeader)}` : null,
-    tightestDivision
-      ? `the ${tightestDivision.division} ${isPostseason ? "finished closest" : "is the closest race"}, with the ${tightestDivision.shortName} ${tightestDivision.gamesBack.toFixed(1)} games back`
+    leagueLeader
+      ? `the ${leagueLeader.shortName} ${isPostseason ? "finished with" : "have"} the best record at ${formatRecord(leagueLeader)}`
       : null,
-    hottest ? `the ${hottest.shortName} are on the longest win streak at ${hottest.streak}` : null,
-  ].filter(Boolean);
-  const boardSummary = summaryParts.length > 0 ? `${summaryParts.join(", ")}.`.replace(/^./, (c) => c.toUpperCase()) : null;
+    tightestDivision
+      ? `the ${tightestDivision.division} ${isPostseason ? "finished closest" : "is the closest race"} with the ${tightestDivision.shortName} ${tightestDivision.gamesBack.toFixed(1)} games back`
+      : null,
+    hottest
+      ? `the ${hottest.shortName} ${isPostseason ? "ended the regular season on" : "are on"} the longest win streak at ${streakGames} game${streakGames === 1 ? "" : "s"}`
+      : null,
+  ].filter((part): part is string => part !== null);
+  const boardSummary =
+    summaryParts.length > 0
+      ? `${SUMMARY_CLAUSES.format(summaryParts)}.`.replace(/^./, (c) => c.toUpperCase())
+      : null;
 
   const updatedLabel =
     summary.updatedAt && summary.updatedAt > "1970-01-02" ? ` · updated ${snapshotDateLabel}` : "";
@@ -314,7 +340,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         <section id="mlb-standings" className="sb-board" aria-label="MLB standings">
           <div className="sb-toolbar">
             <h2 className="sb-h2">{isPostseason ? "Final standings" : "Standings"}</h2>
-            <div className="sb-switch" role="group" aria-label="Standings view">
+            <div ref={switchRef} className="sb-switch" role="group" aria-label="Standings view">
               {viewOptions.map((option) => (
                 <button
                   key={option.id}
@@ -336,7 +362,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             </p>
           ) : null}
 
-          <MlbScoreboard boards={boards} selectedId={selectedRow?.id ?? null} onSelect={handleTeamChange} />
+          {/* A row reads as pressed only while its drawer is open, since nothing else on the page shows a selected team. */}
+          <MlbScoreboard boards={boards} selectedId={isDrawerOpen ? drawerTeamId : null} onSelect={handleTeamChange} />
 
           <ul className="sb-legend">
             {routeState.view === "wildcard" ? (
@@ -394,6 +421,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     <FixtureLedgerSection
                       groups={groupFixtures(summary.recentGames, roundLabel)}
                       onOpenTeam={handleTeamChange}
+                      canOpenTeam={isClub}
                       emptyLabel="No results are in this snapshot."
                     />
                   </div>
@@ -402,6 +430,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     <FixtureLedgerSection
                       groups={groupFixtures(summary.upcomingGames, roundLabel)}
                       onOpenTeam={handleTeamChange}
+                      canOpenTeam={isClub}
                       emptyLabel="No upcoming games are in this snapshot."
                     />
                   </div>
@@ -434,7 +463,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         >
           <p className="dd-tags">
             <span>{selectedRow.division || `${selectedRow.league} club`}</span>
-            <span>{ordinal(selectedRow.divisionRank || 0)} in the division</span>
+            {selectedRow.divisionRank > 0 ? <span>{ordinal(selectedRow.divisionRank)} in the division</span> : null}
             <span>{formatRecord(selectedRow)}</span>
             {selectedRow.streak ? <span>{selectedRow.streak}</span> : null}
           </p>
