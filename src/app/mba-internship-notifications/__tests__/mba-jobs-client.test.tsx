@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
@@ -426,6 +427,29 @@ describe("MBAJobsClient", () => {
     );
   });
 
+  it("keeps typed search text when an earlier push lands, and follows the URL on a back step", () => {
+    const { rerender } = render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    const search = screen.getByLabelText("Search roles");
+
+    fireEvent.change(search, { target: { value: "pr" } });
+    fireEvent.change(search, { target: { value: "product " } });
+
+    // The push for "pr" lands after the visitor has typed on.
+    currentSearchParams = new URLSearchParams("q=pr");
+    rerender(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    expect(search).toHaveValue("product ");
+
+    // The latest push lands with the trimmed query, and the trailing space stays.
+    currentSearchParams = new URLSearchParams("q=product");
+    rerender(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    expect(search).toHaveValue("product ");
+
+    fireEvent(window, new PopStateEvent("popstate"));
+    currentSearchParams = new URLSearchParams("q=pr");
+    rerender(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    expect(search).toHaveValue("pr");
+  });
+
   it("hydrates location from the URL and filters jobs independently from keyword search", () => {
     currentSearchParams = new URLSearchParams("q=finance&location=remote");
 
@@ -467,6 +491,73 @@ describe("MBAJobsClient", () => {
       "/mba-internship-notifications?q=finance&location=New+York",
       { scroll: false }
     );
+  });
+
+  it("lists every role a location pill counts, whichever name the posting used for the place", () => {
+    currentSearchParams = new URLSearchParams("location=New+York");
+
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      jobs: [
+        buildJob({ id: "ny-long", title: "Strategy Manager", location: "New York, NY" }),
+        buildJob({ id: "ny-short", title: "Growth Manager", location: "NYC, SF" }),
+        buildJob({ id: "austin", title: "Operations Manager", location: "Austin, TX" }),
+      ],
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByRole("button", { name: "New York · 2", pressed: true })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Strategy Manager" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Growth Manager" })).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "Operations Manager" })).not.toBeInTheDocument();
+    expect(screen.getByText("2 matching roles")).toBeVisible();
+  });
+
+  it("prints a single match, source role, and import in the singular", async () => {
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      sourceStatuses: [
+        { companyId: "stripe", companyName: "Stripe", atsType: "greenhouse", status: "ok", jobCount: 1 },
+      ],
+    }));
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      importApplications: jest.fn(() => ({ imported: 1, total: 1 })),
+    }));
+
+    const { unmount } = render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("1 matching role")).toBeVisible();
+    expect(screen.getByText("1 role before location filtering")).toBeVisible();
+    expect(screen.getByText("Stripe · 1 role")).toBeInTheDocument();
+    unmount();
+
+    currentSearchParams = new URLSearchParams("view=applications");
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    fireEvent.change(screen.getByLabelText("Import applications JSON"), {
+      target: { files: [{ text: async () => "{}" }] },
+    });
+
+    expect(await screen.findByText("Imported 1 application. 1 total now.")).toBeVisible();
+  });
+
+  it("sorts a role with no readable date last under oldest first", () => {
+    currentSearchParams = new URLSearchParams("sort=oldest");
+
+    mockUseMBAJobs.mockReturnValue(buildHookValue({
+      jobs: [
+        buildJob({ id: "undated", title: "Undated Role", postedAt: "" }),
+        buildJob({ id: "newer", title: "Newer Role", postedAt: "2026-04-14T10:00:00.000Z" }),
+        buildJob({ id: "older", title: "Older Role", postedAt: "2026-04-01T10:00:00.000Z" }),
+      ],
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const liveJobsGrid = screen.getByTestId("live-jobs-grid");
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 }).map((node) => node.textContent)).toEqual([
+      "Older Role",
+      "Newer Role",
+      "Undated Role",
+    ]);
   });
 
   it("filters by career type and role family, hides unclear roles, and clears filters", () => {
@@ -562,7 +653,7 @@ describe("MBAJobsClient", () => {
 
     expect(screen.getByText("1,870")).toBeVisible();
     // Counts taken from the first page would be counts of the slice.
-    expect(screen.queryByText(/matching roles/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/matching role/)).not.toBeInTheDocument();
     expect(screen.queryByText(/new since last visit/)).not.toBeInTheDocument();
   });
 
@@ -732,7 +823,7 @@ describe("MBAJobsClient", () => {
     expect(screen.getByText("1 external disabled")).toBeVisible();
 
     // The counts stay in view. The tag for each source opens on request.
-    const stripe = screen.getByText(/Stripe · 1 roles/);
+    const stripe = screen.getByText("Stripe · 1 role");
     expect(stripe).not.toBeVisible();
     fireEvent.click(screen.getByText("Show all 3 sources"));
     expect(stripe).toBeVisible();
@@ -996,5 +1087,45 @@ describe("MBAJobsClient", () => {
       { target: { value: "high" } }
     );
     expect(updatePriority).toHaveBeenCalledWith("app-1", "high");
+  });
+
+  it("does not call the to-do list clear in the server HTML, before the saved applications are read", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+
+    const markup = renderToStaticMarkup(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(markup).toContain("Loading interview dates…");
+    expect(markup).toContain("Loading follow-ups…");
+    expect(markup).not.toContain("All caught up.");
+  });
+
+  it("prints a pipeline card's location alone when the application has no department", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      jobSnapshot: { ...buildApplication().jobSnapshot, department: "", location: "Remote" },
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ applications: [application] }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Remote")).toBeVisible();
+  });
+
+  it("says where the pipeline is kept once on the empty pipeline view", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+
+    const { container } = render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("No applications tracked yet.")).toBeVisible();
+    expect(container.textContent?.match(/in this browser/g)).toHaveLength(1);
+  });
+
+  it("keeps the hidden import file input out of the tab order, since Import opens it", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByRole("button", { name: "Import" })).toBeVisible();
+    expect(screen.getByLabelText("Import applications JSON")).toHaveAttribute("tabindex", "-1");
   });
 });

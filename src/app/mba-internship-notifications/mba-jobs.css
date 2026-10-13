@@ -118,17 +118,24 @@
   text-decoration-color: currentColor;
 }
 
+/* A ghost used as a toggle (By fit) reads as pressed in ink, over the heavier rule the frame gives it. */
+.mba-root .c97-btn-ghost[aria-pressed="true"] {
+  color: var(--mba-ink);
+  text-decoration-color: currentColor;
+}
+
 .mba-root .c97-btn:disabled,
 .mba-root .c97-btn-ghost:disabled {
   cursor: default;
   opacity: 0.6;
 }
 
+/* The colour only, never the background shorthand, which would clear the arrow the frame draws on a select. */
 .mba-root .c97-field {
   min-height: 44px;
   border-radius: var(--mba-radius);
   border: 1px solid var(--mba-rule-strong);
-  background: var(--mba-card);
+  background-color: var(--mba-card);
   font-size: 0.9375rem;
 }
 
@@ -217,6 +224,14 @@
   color: var(--mba-bg);
 }
 
+/* The group clips to its radius, so the ring sits inside the button, in the
+   button's own text colour so it shows on the pressed fill too. The root is in
+   the selector to outrank the shell's ring. */
+.mba-root .mba-switch > button:focus-visible {
+  outline-offset: -4px;
+  outline-color: currentColor;
+}
+
 .mba-status {
   display: flex;
   flex-wrap: wrap;
@@ -277,20 +292,21 @@
   background: var(--mba-bg);
 }
 
+/* From 768px the bar is one row, and it stays in reach while the list scrolls
+   under it. Below that it stacks to three rows, which is too tall to pin. */
 @media screen and (min-width: 768px) {
   .mba-searchbar {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
     align-items: center;
-  }
-}
-
-/* The search stays in reach while the list scrolls under it. */
-@media screen and (min-width: 640px) {
-  .mba-searchbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
     border-bottom: 1px solid var(--mba-rule);
+  }
+
+  /* A control that takes focus under the pinned bar scrolls out from behind it. */
+  .mba-feed > :not(.mba-searchbar) :is(a, button) {
+    scroll-margin-top: 5.5rem;
   }
 }
 
@@ -819,11 +835,21 @@
     grid-template-columns: minmax(0, 1fr) 19rem;
     align-items: start;
   }
+  /* A to-do list taller than the window scrolls inside the rail, so its last
+     rows stay in reach while the board scrolls. The inline padding, cancelled
+     by the margin, is room for the focus rings, which the scroll box would
+     clip: a ghost button starts one step left of the column and its ring
+     stands 5px outside it. */
   .mba-rail {
     grid-column: 2;
     grid-row: 1;
     position: sticky;
     top: var(--c97-sp-2);
+    max-height: calc(100dvh - 2 * var(--c97-sp-2));
+    margin-inline: calc(-1 * (var(--c97-sp-1) + 5px));
+    padding-inline: calc(var(--c97-sp-1) + 5px);
+    overflow-y: auto;
+    scroll-padding-block: var(--c97-sp-1);
   }
   .mba-board-wrap {
     grid-column: 1;

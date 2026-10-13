@@ -128,7 +128,10 @@ function cleanIsoDate(value: unknown): string | null {
     return null;
   }
   const parsed = new Date(`${value}T00:00:00.000Z`);
-  return Number.isNaN(parsed.getTime()) ? null : value;
+  if (Number.isNaN(parsed.getTime())) return null;
+  // The engine rolls February 30 over to March 2, so a date that does not
+  // print back as itself was never on the calendar.
+  return parsed.toISOString().slice(0, 10) === value ? value : null;
 }
 
 function cleanTimestamp(value: unknown, fallback: string): string {

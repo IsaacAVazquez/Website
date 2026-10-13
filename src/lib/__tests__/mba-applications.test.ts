@@ -95,6 +95,21 @@ describe("mba applications storage helpers", () => {
     );
   });
 
+  it("drops an imported date that is not on the calendar and keeps a real leap day", () => {
+    const application = createMBAApplicationFromJob(job);
+    const [parsed] = parseMBAApplications(
+      JSON.stringify(
+        buildMBAApplicationsExport([
+          { ...application, followUpDate: "2026-02-30", deadline: "2028-02-29" },
+        ])
+      )
+    );
+
+    // The engine reads February 30 as March 2, so the card and the to-do list would disagree on the day.
+    expect(parsed.followUpDate).toBeNull();
+    expect(parsed.deadline).toBe("2028-02-29");
+  });
+
   it("merges duplicate applications by job id and keeps the newest update", () => {
     const older = createMBAApplicationFromJob(
       job,

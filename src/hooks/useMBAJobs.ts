@@ -53,10 +53,26 @@ function safeParseStringArray(raw: string | null): string[] {
   }
 }
 
-function saveSeenIds(ids: Set<string>) {
+// Every id still in the feed is kept, since the feed runs to thousands of
+// roles and a cap on the whole list would leave most of them new for good.
+// Only ids that have left the feed are trimmed, and a null feed (the browser's
+// own fetch has not landed) trims nothing.
+// ponytail: a company switched off takes its roles out of the feed, so they
+// count against the cap too and can read as new again when it comes back.
+// Trim against the unfiltered feed if that turns up.
+function saveSeenIds(ids: Set<string>, feed: MBAJob[] | null) {
   if (typeof window === "undefined") return;
-  const compacted = Array.from(ids).slice(-MAX_SEEN_IDS);
-  writeBrowserStorageJson(SEEN_IDS_KEY, compacted);
+  const all = Array.from(ids);
+  if (!feed) {
+    writeBrowserStorageJson(SEEN_IDS_KEY, all);
+    return;
+  }
+  const feedIds = new Set(feed.map((job) => job.id));
+  const offFeed = all.filter((id) => !feedIds.has(id)).slice(-MAX_SEEN_IDS);
+  writeBrowserStorageJson(
+    SEEN_IDS_KEY,
+    offFeed.concat(all.filter((id) => feedIds.has(id)))
+  );
 }
 
 function loadWatchedCompanies(): Set<string> {
@@ -139,14 +155,28 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   }, [seenIds]);
 
   // ── Watched companies ──────────────────────────────────────────────────
+  // Start on the default set on both the server and the first client render
+  // so hydration matches. The saved set is restored in an effect after mount.
   const [watchedCompanyIds, setWatchedCompanyIds] = useState<Set<string>>(
-    () => loadWatchedCompanies()
+    () => new Set(DEFAULT_WATCHED_IDS)
   );
   // Use a ref so fetchJobs can read latest watched without re-triggering
   const watchedRef = useRef(watchedCompanyIds);
   useEffect(() => {
     watchedRef.current = watchedCompanyIds;
   }, [watchedCompanyIds]);
+  // Declared after the ref sync above and before the initial fetch below, so
+  // that fetch already asks for the saved set. The set is kept so the
+  // watched-change effect can tell it from a toggle and skip a second fetch.
+  const restoredWatchedRef = useRef<Set<string> | null>(null);
+  useEffect(() => {
+    const saved = loadWatchedCompanies();
+    const current = watchedRef.current;
+    if (saved.size === current.size && Array.from(saved).every((id) => current.has(id))) return;
+    restoredWatchedRef.current = saved;
+    watchedRef.current = saved;
+    setWatchedCompanyIds(saved);
+  }, []);
   const externalLeadsRef = useRef(externalLeadsEnabled);
   useEffect(() => {
     externalLeadsRef.current = externalLeadsEnabled;
@@ -330,13 +360,14 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   }, [fetchJobs]);
 
   // ── Re-fetch when watched companies change ─────────────────────────────
-  // (but not on mount, initial fetch handles that)
+  // (but not on mount or for the restored set, initial fetch handles both)
   const isFirstRender = useRef(true);
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
+    if (watchedCompanyIds === restoredWatchedRef.current) return;
     fetchJobs({ showLoading: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watchedCompanyIds]);
@@ -359,14 +390,20 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   );
 
   // ── Actions ────────────────────────────────────────────────────────────
+  // Until the browser's fetch lands, `jobs` is the server's first page and
+  // says nothing about which seen ids have left the feed.
+  const feed = hasFetched ? jobs : null;
+
   function markJobSeen(id: string) {
+    // Cards call this on every hover and focus, so a seen id writes nothing.
+    if (seenIds.has(id)) return;
     const next = new Set(Array.from(seenIds).concat(id));
-    saveSeenIds(next);
+    saveSeenIds(next, feed);
   }
 
   function markAllSeen() {
     const next = new Set(Array.from(seenIds).concat(jobs.map((j) => j.id)));
-    saveSeenIds(next);
+    saveSeenIds(next, feed);
   }
 
   function toggleCompany(id: string) {
