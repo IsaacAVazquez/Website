@@ -1566,9 +1566,13 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   <div className="ffb-colhead">
                     <span className={`ffb-h-num ffb-m-show${vorpMode ? "" : " ffb-is-sorted"}`}>Rk</span>
                     <span className="ffb-h-pos">Pos</span>
+                    {/* The help triggers are for a pointer or a keyboard. A phone's head
+                        prints the plain word, and the drawer carries the definitions.
+                        These two use the kit's helpers, which follow the paper's width
+                        in print, where the site holds Tailwind's breakpoints to screens. */}
                     <span className="ffb-m-show">
-                      <span className="md:hidden">Player</span>
-                      <span className="max-md:hidden">
+                      <span className="ffb-only-phone">Player</span>
+                      <span className="ffb-not-phone">
                         <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
                           Player
                         </MetricTooltip>
@@ -1630,7 +1634,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         Avg
                       </MetricTooltip>
                     </span>
-                    <span className="ffb-m-show md:hidden">{phoneNumbersLabel}</span>
+                    <span className="ffb-m-show ffb-only-phone">{phoneNumbersLabel}</span>
                   </div>
                 )}
               </div>
@@ -1717,7 +1721,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 at the right of the source line. */}
             <div className="ffb-footlinks ffb-rk-footlinks">
               <p>{footLine}</p>
-              <Link href="/fantasy-football/weekly#my-team" className="ffb-link ffb-link-arrow">
+              <Link href="/fantasy-football/weekly#my-team" className="ffb-link">
                 My team
               </Link>
             </div>

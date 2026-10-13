@@ -706,6 +706,49 @@ describe("FantasyFootballClient", () => {
     expect(screen.queryByText(/Refreshes daily/)).not.toBeInTheDocument();
   });
 
+  it("dates the frozen board by the consensus source in the VORP view, not by the VORP check", () => {
+    jest.setSystemTime(new Date("2026-09-11T10:00:00.000Z"));
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr&ranking=vorp&teams=12");
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-09-10T00:00:00.000Z",
+        urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "12": 1 },
+      },
+      vorpRankings: { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] },
+      players: [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })],
+    });
+
+    renderClient({ position: "overall", ranking: "vorp", teams: 12 });
+
+    // The consensus source is dated Aug 16 and the VORP check Sep 10. What
+    // froze at kickoff is the consensus, and the VORP date has its own part.
+    expect(screen.getByText("VORP checked Sep 10")).toBeVisible();
+    expect(screen.getByText("Frozen since Aug 16")).toBeVisible();
+    expect(screen.queryByText("Frozen since Sep 10")).not.toBeInTheDocument();
+  });
+
+  it("does not grade a board that has not loaded as stale", () => {
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: null,
+      sliceMetadataMap: null,
+      isLoading: true,
+      error: null,
+      retry: jest.fn(),
+    });
+
+    renderClient();
+
+    expect(screen.getByText("Loading players…")).toBeVisible();
+    expect(screen.queryByText(/^Stale/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/source date unknown/)).not.toBeInTheDocument();
+  });
+
   it("suppresses the value chip on a position board, where the rank is not overall scale", () => {
     currentSearchParams = new URLSearchParams("position=wr&scoring=ppr");
     mockSnapshot({
@@ -1003,6 +1046,14 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByText("Player 40")).toBeVisible();
     expect(screen.queryByText("Player 41")).not.toBeInTheDocument();
     expect(screen.getAllByText("40 of 45 shown")[0]).toBeVisible();
+    // The tier break describes the whole tier, not the 40 rows mounted so far.
+    expect(screen.getByRole("region", { name: "Tier 1, 45 players, ranks 1 to 45" })).toBeInTheDocument();
+    expect(screen.getByText("45 players")).toBeVisible();
+    expect(screen.getByText("Ranks 1–45")).toBeVisible();
+    // Every spread plot shares one scale, cut into ten divisions of twelve
+    // ranks while the mounted rows fit inside it.
+    expect(screen.getByText("RB109")).toBeInTheDocument();
+    expect(screen.queryByText("RB121")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Load more (5 left)" }));
     expect(screen.getByText("Player 45")).toBeVisible();
