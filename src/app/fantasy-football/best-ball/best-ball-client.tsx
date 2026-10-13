@@ -1,33 +1,35 @@
 "use client";
 
-import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Search } from "lucide-react";
-import { startTransition, useCallback, useEffect, useMemo, useOptimistic, useState } from "react";
+import { Search, X } from "lucide-react";
+import { startTransition, useCallback, useEffect, useMemo, useOptimistic, useRef, useState } from "react";
 
 import { DeferredCompareTray } from "@/components/fantasy/DeferredCompareTray";
 import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
+import {
+  FantasyRouteHeader,
+  FantasySectionHeading,
+  FreshnessParts,
+  type FreshnessPart,
+} from "@/components/fantasy/FantasyRouteHeader";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
+import { positionClass } from "@/components/fantasy/positionClass";
+import { scrollChildIntoViewX } from "@/components/fantasy/scrollChildIntoViewX";
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import "@/components/fantasy/fantasy-bestball.css";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
-import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
 import {
   getBestBallConsensusIssue,
+  getBestBallModelSourceIssue,
   getContestPreset,
   hasSupportedBestBallAdp,
   sortBestBallRankings,
   type BestBallContestId,
   type RankedBestBallPlayer,
 } from "@/lib/bestBall";
-import {
-  MONO_LABEL_CLASS,
-  SHELL_CLASS,
-  getNflRegularSeasonWeek,
-  getPositionTone,
-  getSnapshotStaleness,
-  getTierRailIntensity,
-} from "@/lib/fantasyUtils";
+import { SHELL_CLASS, getNflRegularSeasonWeek, getSnapshotStaleness } from "@/lib/fantasyUtils";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
@@ -230,26 +232,30 @@ const RECOMMENDATIONS = [
 
 const PAGE_SIZE = 80;
 
-// Round plates are one draft round wide, so the plate size is the selected contest's
+// A round break is one draft round wide, so its size is the selected contest's
 // team count rather than a constant. 6-Man drafts the same 18-round roster with half
-// the room, so a 12-pick plate would put its players two rounds off their real one.
-
-const PILL_ACTION_CLASS =
-  "inline-flex min-h-touch items-center border px-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.06em] no-underline";
-
-/** Phone rows carry their own value labels, since the column-label row is md-and-up. */
-const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
+// the room, so a 12-pick round would put its players two rounds off their real one.
 
 // Pinned to UTC so a date-only value like "2026-08-09" is not parsed as UTC
 // midnight and then rendered a day earlier for viewers west of UTC.
-function formatDate(value: string | null | undefined): string {
+// The head's line names the season once, so its dates leave the year off.
+function formatDate(value: string | null | undefined, withYear = true): string {
   if (!value || Number.isNaN(Date.parse(value))) return "Not published";
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
-    year: "numeric",
+    ...(withYear ? { year: "numeric" as const } : {}),
     timeZone: "UTC",
   }).format(new Date(value));
+}
+
+/**
+ * A source's name with the word for what it supplies, added only when the name does
+ * not already carry it. "Underdog ADP via Hayden Winks" is already an ADP, so it does
+ * not become "Underdog ADP via Hayden Winks ADP".
+ */
+function nameWith(provider: string, word: string): string {
+  return provider.toLowerCase().includes(word.toLowerCase()) ? provider : `${provider} ${word}`;
 }
 
 function getFreshnessWarning(
@@ -270,7 +276,7 @@ function getFreshnessWarning(
   // The four-day band still trips in season, and it should, because the
   // sources are dated. But "refresh window" and "live room" are August words:
   // the market closed at kickoff and the builder keeps the snapshot frozen
-  // from Week 1, so the card names the dates and what stays paused instead.
+  // from Week 1, so the note names the dates and what stays paused instead.
   if (getNflRegularSeasonWeek(snapshot.season) >= 1) {
     const adpDate =
       hasSupportedBestBallAdp(contest) && snapshot.adpSource
@@ -343,7 +349,7 @@ function describeAdpDelta(value: number | null): string {
 const SCORING_BASIS_NOTE =
   "ECR is full PPR while these contests score half PPR, so it reads pass catchers a little high and is a reference rather than a price.";
 
-/** The one live copy of the board-order policy, shown in the contest lens footer. */
+/** The one live copy of the board-order policy, shown with the selected contest. */
 function getBoardPolicyLine(
   contest: ContestCopy,
   adpAvailable: boolean,
@@ -362,13 +368,17 @@ function describeBoardOrder(
   }
   if (hasSupportedBestBallAdp(contest.id)) {
     return adpAvailable
-      ? `Board order follows current ${adpProvider ?? "Underdog"} ADP · value is ADP minus PPR best ball ECR, so a positive number means the market usually lets him go later.`
+      ? `Board order follows current ${nameWith(adpProvider ?? "Underdog", "ADP")} · value is ADP minus PPR best ball ECR, so a positive number means the market usually lets him go later.`
       : "Current ADP is unavailable or stale in this snapshot · board order falls back to PPR best ball ECR, and ADP and value stay NA.";
   }
   if (!contest.showsWeek17) {
     return "No matching ADP for this slate in the snapshot · board order follows PPR best ball ECR · the Week 17 column is dimmed because playoff correlation does not apply here.";
   }
   return "No matching ADP for this slate in the snapshot · board order follows PPR best ball ECR, and ADP and value stay NA instead of borrowing another slate's price.";
+}
+
+function countOf(count: number, one: string, many: string): string {
+  return `${count} ${count === 1 ? one : many}`;
 }
 
 interface RoundGroup {
@@ -398,139 +408,106 @@ function BestBallPlayerRow({
   // rank the board just declined to print.
   const withheld = player.consensusWithheld;
   const delta = playerAdpAvailable && !withheld ? getAdpDelta(player) : null;
-  const tone = getPositionTone(player.position);
+  // A gap of three picks or more is weighted and toned, and the sign says which way it runs.
+  const valueTone =
+    delta !== null && delta >= 3
+      ? "ffb-is-strong ffb-good"
+      : delta !== null && delta <= -3
+        ? "ffb-is-strong ffb-warn"
+        : "ffb-is-flat";
 
   return (
+    // The opener overlays the row instead of wrapping it: an aria-label on a
+    // wrapping button would override every cell for screen readers. The cells
+    // sit above it so the per-cell explanations fire on hover and the numbers
+    // stay selectable, and the row's own click still opens the drawer unless
+    // the visitor is selecting text. The opener is the keyboard path.
     <li
-      className="relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
-      style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
+      className="ffb-row"
+      onClick={(event) => {
+        if (window.getSelection()?.toString()) return;
+        // Pointer clicks land on the cells above the opener. Focus the opener
+        // so closing the drawer returns to this player.
+        event.currentTarget.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
+        onOpenDetail(player);
+      }}
     >
-      {/* The open control overlays the row instead of wrapping it: an aria-label
-          on a wrapping button would override every cell for screen readers.
-          The content div sits above it so the per-cell explanations fire on
-          hover and the numbers stay selectable; its own click still opens the
-          drawer unless the user is selecting text. */}
       <button
         type="button"
         aria-label={`Open ${player.name} details`}
-        onClick={() => onOpenDetail(player)}
-        className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
-      />
-      <div
-        className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center text-left" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}
-        onClick={() => {
-          if (window.getSelection()?.toString()) return;
+        onClick={(event) => {
+          event.stopPropagation();
           onOpenDetail(player);
         }}
+        className="ffb-row-open"
+      />
+      <span className="ffb-c-rank" title="Board rank under this contest lens">
+        {player.bestBallRank}
+      </span>
+      <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+        {player.position}
+        {!withheld && Number.isFinite(player.positionRank) ? player.positionRank : ""}
+      </span>
+      <span className="ffb-c-name" title={player.name}>
+        {player.name}
+      </span>
+      <span className="ffb-c-team">{player.team || "FA"}</span>
+      {/* Each value's name is inside its own cell, so it hides when the cell
+          does. A phone prints two numbers at the right of a row: ADP over
+          value where the lens has a current ADP, and the consensus rank alone
+          where it does not. */}
+      <span
+        className={`ffb-c-num${adpAvailable ? " ffb-m-top" : " ffb-is-flat"}`}
+        title={
+          atUndraftedFloor
+            ? "At the contest-floor placeholder, not a literal price"
+            : "Current Underdog average draft position"
+        }
       >
-        <span
-          className="w-[34px] shrink-0 text-right font-mono text-sm font-medium"
-          title="Board rank under this contest lens"
-        >
-          {player.bestBallRank}
-        </span>
-        <span className="flex min-w-0 flex-[1_1_180px] items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
-          <span className="truncate text-sm font-semibold tracking-tight">{player.name}</span>
-          <span
-            className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs tracking-[0.06em]"
-            style={{ paddingInline: "var(--c97-sp-0)", ...tone, color: "var(--c97-ink)" }}
-          >
-            {player.position}
-            {!withheld && Number.isFinite(player.positionRank) ? player.positionRank : ""}
-          </span>
-          <span
-            className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            {player.team || "FA"}
-          </span>
-        </span>
-        <span className="flex max-w-full flex-wrap items-center" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-          <span className="sr-only">Underdog ADP</span>
-          <span
-            className={`w-auto font-mono md:w-14 md:text-right ${atUndraftedFloor ? "text-3xs uppercase" : "text-xs"}`}
-            title={
-              atUndraftedFloor
-                ? "At the contest-floor placeholder, not a literal price"
-                : "Current Underdog average draft position"
-            }
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-              ADP{" "}
-            </span>
-            {atUndraftedFloor ? "Undrafted" : adpAvailable ? formatRank(player.adp) : "NA"}
-          </span>
-          <span className="sr-only">PPR best ball consensus</span>
-          <span
-            className={`w-auto font-mono md:w-14 md:text-right ${withheld ? "text-3xs uppercase" : "text-xs font-medium"}`}
-            title={withheld ? WITHHELD_CELL_TITLE : "PPR best ball expert consensus rank"}
-            style={withheld ? { color: "var(--c97-ink-2)" } : undefined}
-          >
-            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-              ECR{" "}
-            </span>
-            {withheld ? "Withheld" : formatRank(getConsensusRank(player))}
-          </span>
-          <span className="sr-only">Value versus ADP</span>
-          <span
-            className="w-auto font-mono text-xs md:w-14 md:text-right"
-            title={withheld ? WITHHELD_CELL_TITLE : describeAdpDelta(delta)}
-            style={{
-              color:
-                delta !== null && delta >= 3
-                  ? "var(--c97-positive)"
-                  : delta !== null && delta <= -3
-                    ? "var(--c97-warning)"
-                    : "var(--c97-ink-2)",
-            }}
-          >
-            <span
-              aria-hidden="true"
-              className={ROW_MICRO_LABEL_CLASS}
-              style={{ color: "var(--c97-ink-2)" }}
-            >
-              Value{" "}
-            </span>
-            {formatAdpDelta(delta)}
-          </span>
-          <span className="sr-only">Bye week</span>
-          <span
-            className="w-auto font-mono text-xs md:w-8 md:text-right"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-              Bye{" "}
-            </span>
-            {player.byeWeek ?? "NA"}
-          </span>
-          <span className="sr-only">Week 17 opponent</span>
-          <span
-            className="w-auto font-mono text-xs md:w-10 md:text-right"
-            title={
-              showsWeek17
-                ? `Week 17: ${player.team || "FA"} vs ${opponent ?? "TBD"}`
-                : `Week 17 correlation does not move this board in ${contestLabel}`
-            }
-            style={{
-              color: showsWeek17
-                ? "var(--c97-ink-2)"
-                : "color-mix(in srgb, var(--c97-ink-2) 40%, transparent)",
-            }}
-          >
-            {/* The dimmed lens keeps its whole cell dim, label included, so the
-                label never reads louder than the value it names. */}
-            <span
-              aria-hidden="true"
-              className={ROW_MICRO_LABEL_CLASS}
-              style={showsWeek17 ? undefined : { color: "inherit" }}
-            >
-              W17{" "}
-            </span>
-            {opponent ?? "NA"}
-          </span>
-        </span>
-      </div>
+        <span className="ffb-vh">ADP </span>
+        {atUndraftedFloor ? (
+          <span className="ffb-label ffb-bb-word">Undrafted</span>
+        ) : adpAvailable ? (
+          formatRank(player.adp)
+        ) : (
+          "NA"
+        )}
+      </span>
+      <span
+        className={`ffb-c-num${adpAvailable ? "" : " ffb-m-top"}${withheld ? " ffb-is-flat" : ""}`}
+        title={withheld ? WITHHELD_CELL_TITLE : "PPR best ball expert consensus rank"}
+      >
+        <span className="ffb-vh">ECR </span>
+        {withheld ? (
+          <span className="ffb-label ffb-bb-word">Withheld</span>
+        ) : (
+          formatRank(getConsensusRank(player))
+        )}
+      </span>
+      <span
+        className={`ffb-c-num ${valueTone}${adpAvailable ? " ffb-m-sub" : ""}`}
+        title={withheld ? WITHHELD_CELL_TITLE : describeAdpDelta(delta)}
+      >
+        <span className="ffb-vh">Value </span>
+        {formatAdpDelta(delta)}
+      </span>
+      <span className="ffb-c-bye">
+        <span className="ffb-bb-vh-desk">Bye </span>
+        {player.byeWeek ?? "NA"}
+      </span>
+      {/* Sit and Go has no playoff bracket, so its Week 17 opponent prints
+          muted, with a title that says why. */}
+      <span
+        className={`ffb-c-num ffb-m-meta${showsWeek17 ? "" : " ffb-is-flat"}`}
+        title={
+          showsWeek17
+            ? `Week 17: ${player.team || "FA"} vs ${opponent ?? "TBD"}`
+            : `Week 17 correlation does not move this board in ${contestLabel}`
+        }
+      >
+        <span className="ffb-bb-vh-desk">W17 </span>
+        {opponent ?? "NA"}
+      </span>
     </li>
   );
 }
@@ -543,6 +520,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const [detailPlayer, setDetailPlayer] = useState<RankedBestBallPlayer | null>(null);
   const [searchQuery, setSearchQuery] = useState(initialState.query);
   const [guidanceOpen, setGuidanceOpen] = useState(false);
+  const contestRef = useRef<HTMLDivElement>(null);
+  const boardRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const retriedRef = useRef(false);
   const canonicalState = useMemo(() => {
     const fromUrl = normalizeBestBallState(searchParams);
     return searchParams.size > 0 ? fromUrl : initialState;
@@ -611,8 +593,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const visiblePlayers = filteredPlayers.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPlayers.length;
 
-  // Group the windowed rows into one-round plates keyed off the lens rank, so a
-  // filtered board still shows each player inside his real round.
+  // Group the windowed rows into rounds keyed off the lens rank, so a filtered
+  // board still shows each player inside his real round. A round's count comes
+  // from the whole filtered board, so a round cut by the window says how many
+  // players it holds and not how many have mounted.
   const roundSize = activePreset.teams;
   const roundGroups = useMemo<RoundGroup[]>(() => {
     const groups: RoundGroup[] = [];
@@ -624,6 +608,14 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     }
     return groups;
   }, [visiblePlayers, roundSize]);
+  const roundCounts = useMemo(() => {
+    const counts = new Map<number, number>();
+    for (const player of filteredPlayers) {
+      const round = Math.ceil(player.bestBallRank / roundSize);
+      counts.set(round, (counts.get(round) ?? 0) + 1);
+    }
+    return counts;
+  }, [filteredPlayers, roundSize]);
 
   function updateRouteState(patch: Partial<BestBallSearchState>) {
     // The typed query is the live one, so a contest or position tap carries it
@@ -633,6 +625,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       setOptimisticRouteState(next);
       router.replace(buildBestBallHref(next, searchParams), { scroll: false });
     });
+  }
+
+  function clearSearch() {
+    setSearchQuery("");
+    updateRouteState({ query: "" });
+    // Either Clear button leaves the page once the field is empty, so focus goes back to the field.
+    searchRef.current?.focus();
   }
 
   // Reset the window whenever the lens, position, or search changes so a
@@ -666,6 +665,37 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery, routeState.query]);
 
+  // On a phone the contest switch scrolls sideways, so the pressed contest is
+  // brought into view when the page opens on it and whenever it changes.
+  useEffect(() => {
+    const group = contestRef.current;
+    const pressed = group?.querySelector<HTMLElement>('[aria-pressed="true"]');
+    if (group && pressed) scrollChildIntoViewX(group, pressed);
+  }, [routeState.contest]);
+
+  // A round's head pins under the toolbar block, so it needs that block's
+  // height, which changes when the controls wrap. Written straight to the
+  // board's style, so a resize renders nothing. The area sheet builds the
+  // kit's scroll margin for a focused row from the same number.
+  useEffect(() => {
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board || typeof ResizeObserver === "undefined") return;
+    const write = () => board.style.setProperty("--ffb-bb-bar", `${bar.offsetHeight}px`);
+    write();
+    const observer = new ResizeObserver(write);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, []);
+
+  // Retry leaves the page with the alert it sits in, so once the error clears
+  // focus goes to the search field, which is enabled again by then.
+  useEffect(() => {
+    if (error || !retriedRef.current) return;
+    retriedRef.current = false;
+    searchRef.current?.focus();
+  }, [error]);
+
   const trackerHref = `/fantasy-football/best-ball/draft-tracker?contest=${routeState.contest}`;
   const freshnessWarning = getFreshnessWarning(snapshot, routeState.contest);
   // The provider's self-consistency test on the PPR consensus. Every lens
@@ -675,666 +705,518 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const boardReady = !isLoading && !error && visiblePlayers.length > 0;
   const policyLine = getBoardPolicyLine(activeContest, adpAvailable, snapshot?.adpSource?.provider);
 
-  // Chips carry only the brand word ("Underdog ADP via Hayden Winks" → "Underdog");
-  // the full provider names stay linked in the board footnote.
-  const adpBrand = snapshot?.adpSource?.provider.split(" ")[0];
-  const ecrBrand = snapshot?.rankingSource.provider.split(" ")[0];
-  const headerChips = [
-    `${CONTESTS.length} contest lenses`,
-    ...(snapshot?.adpSource
-      ? [`ADP ${adpBrand} · ${formatDate(snapshot.adpSource.asOf)}`]
-      : []),
-    ...(snapshot
-      ? [
-          `ECR ${ecrBrand} · ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt)}`,
-          `${snapshot.players.length} ranked`,
-        ]
-      : []),
-  ];
-
   // A best ball board is a preseason artifact by construction. Once the season is
   // under way, say so instead of serving August ranks with no date on them.
   const seasonalWeek = getNflRegularSeasonWeek(snapshot?.season ?? 0);
 
+  // The drawer's market sentence is pick advice ("Take him on schedule"), so it
+  // prints only while this board would stand behind a pick: every source the
+  // lens uses is current, and the season has not started.
+  const verdictAvailable =
+    snapshot !== null &&
+    !freshnessWarning &&
+    seasonalWeek < 1 &&
+    getBestBallModelSourceIssue(snapshot, activePreset) === null;
+
+  // The head carries only the brand word ("Underdog ADP via Hayden Winks" → "Underdog");
+  // the full provider names stay linked in the line under the board. The first
+  // part is there before the snapshot is, so the line holds its place.
+  const freshnessParts: FreshnessPart[] = [
+    { label: `${CONTESTS.length} contest lenses` },
+    ...(snapshot
+      ? [
+          { label: String(snapshot.season) },
+          ...(snapshot.adpSource
+            ? [{ label: `${snapshot.adpSource.provider.split(" ")[0]} ADP ${formatDate(snapshot.adpSource.asOf, false)}` }]
+            : []),
+          {
+            label: `${snapshot.rankingSource.provider.split(" ")[0]} consensus ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt, false)}`,
+          },
+        ]
+      : []),
+  ];
+
+  const countLine = isLoading
+    ? "Loading players"
+    : error
+      ? "Rankings unavailable"
+      : `${filteredPlayers.length} of ${orderedPlayers.length} on this board`;
+
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-dvh"
+      className="relative min-h-dvh overflow-x-clip"
       aria-label="Best ball rankings and strategy"
       data-testid="best-ball-shell"
     >
       <FantasyRouteHeader
-        title={
-          <>
-            Best <TitleAccent>Ball</TitleAccent>
-          </>
-        }
-        lead="Pick a contest lens, and the card below gives its room, how I read it, and a build range before the board."
-        freshness={
-          <FreshnessParts
-            parts={[{ label: `Best ball${snapshot?.season ? ` · ${snapshot.season}` : ""}` }, ...headerChips.map((label) => ({ label }))]}
-          />
-        }
+        title="Best Ball"
+        lead="Pick a contest lens for its room, how I read it, a build range, and the board I would draft from."
+        freshness={<FreshnessParts parts={freshnessParts} />}
       >
-        <div className="flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-1)" }}>
-          <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-            Contest
-          </span>
-          {/* Eight choices wrapped to four rows on a phone and pushed the
-              board down, so below md they ride one scrolling row, the way
-              the draft tracker's contest row does. */}
-          <div role="group" aria-label="Best ball contest" className="scroll-shadow-x scrollbar-thin flex min-w-0 max-w-full overflow-x-auto md:flex-wrap md:overflow-visible" style={{ gap: "var(--c97-sp-0)" }}>
-            {CONTESTS.map((contest) => {
-              const active = contest.id === routeState.contest;
-              return (
-                <button
-                  key={contest.id}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => updateRouteState({ contest: contest.id })}
-                  className={`min-h-touch shrink-0 cursor-pointer border font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150 ${
-                    active ? "" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
-                  }`}
-                  style={
-                    { paddingInline: "var(--c97-sp-2)", ...(active
-                      ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                      : {
-                          background: "var(--c97-field)",
-                          color: "var(--c97-ink)",
-                        }) }
-                  }
-                >
-                  {contest.shortLabel}
-                </button>
-              );
-            })}
-          </div>
-          <span
-            className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--c97-ink-2)" }}
+        {/* Eight contests do not fit a phone, so there the switch is one row
+            that scrolls sideways, and a contest that takes focus half off
+            screen is brought into view. */}
+        <div className="ffb-toolbar ffb-bb-lens">
+          <div
+            ref={contestRef}
+            role="group"
+            aria-label="Best ball contest"
+            className="ffb-seg ffb-bb-contests"
+            onFocus={(event) => scrollChildIntoViewX(event.currentTarget, event.target)}
           >
-            Rules checked {formatDate(activePreset.rulesAsOf)}
-          </span>
+            {CONTESTS.map((contest) => (
+              <button
+                key={contest.id}
+                type="button"
+                aria-pressed={contest.id === routeState.contest}
+                onClick={() => updateRouteState({ contest: contest.id })}
+                className="ffb-seg-btn"
+              >
+                {contest.shortLabel}
+              </button>
+            ))}
+          </div>
+          <p className="ffb-count">Rules checked {formatDate(activePreset.rulesAsOf)}</p>
         </div>
       </FantasyRouteHeader>
 
-      {/* Wrapped in the shell like the rankings board's note, so it sits in
-          the content column rather than running edge to edge as an alert. */}
-      {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS}`} style={{ paddingBottom: "var(--c97-sp-2)" }}>
-          <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
-            Best ball is drafted before the season and scored through it, so this board describes a
-            market that closed at kickoff. Rankings and ADP here are the preseason readings your
-            drafts were made against, kept for reference rather than refreshed. Ranks that still
-            move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-          </SeasonalScopeNote>
-        </div>
-      ) : null}
-
-      <section aria-label="Selected format" className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
-        <div
-          className="overflow-hidden border"
-          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-        >
-          <div
-            className="flex flex-wrap items-baseline justify-between border-b"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}
-          >
-            <div className="flex min-w-0 flex-wrap items-baseline" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
-              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-                Contest lens
-              </p>
-              <h2 className="c97-serif c97-h3">
-                {activeContest.label}
-              </h2>
-            </div>
-            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              {activeContest.format}
-            </span>
-          </div>
-          {/* Four cells, so two by two until there is room for all four in one
-              row. The auto-fit track left a lone cell under three at 844 and 1024. */}
-          <div
-            className="grid sm:grid-cols-2 xl:grid-cols-4"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)" }}
-          >
-            {/* The room is the compact summary. The three build notes show
-                from md up and open on request below it, so a phone reaches
-                the board without reading them first. */}
-            {[
-              { label: "The room", body: activeContest.structure, guidance: false },
-              { label: "How I read it", body: activeContest.brief, guidance: true },
-              { label: "2026 build range", body: activeContest.build, guidance: true },
-              { label: "What I would watch", body: activeContest.risk, guidance: true },
-            ].map((cell) => (
-              <div
-                key={cell.label}
-                className={`min-w-0 ${cell.guidance && !guidanceOpen ? "hidden md:block" : ""}`}
-              >
-                <p className={`mt-0 ${MONO_LABEL_CLASS}`} style={{ marginBottom: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                  {cell.label}
-                </p>
-                <p className="m-0 text-sm leading-6">{cell.body}</p>
+      <div className={`${SHELL_CLASS} ffb-stack ffb-stack-page`}>
+        {/* The rail is first in the markup, so a phone and a tablet draw the
+            selected contest above the board with nothing reordered. From
+            1200px the area sheet puts it in the second column. */}
+        <div className="ffb-work ffb-bb-work">
+          <div className="ffb-rail ffb-rail-scroll ffb-bb-rail">
+            <section aria-label="Selected format" className="ffb-stack ffb-bb-format">
+              <div className="ffb-bb-format-head">
+                <h2 className="ffb-h2">{activeContest.label}</h2>
+                <p className="ffb-fine">{activeContest.format}</p>
               </div>
-            ))}
-            {/* .c97-btn-ghost sets display outside any layer, so md:hidden on the
-                button itself lost and the toggle printed at 1440 with every
-                cell already open. The wrapper carries the breakpoint instead. */}
-            <div className="justify-self-start md:hidden">
-              <button
-                type="button"
-                className="c97-btn-ghost"
-                aria-expanded={guidanceOpen}
-                onClick={() => setGuidanceOpen((current) => !current)}
-              >
-                {guidanceOpen ? "Hide build guidance" : "Show build guidance"}
-              </button>
-            </div>
-          </div>
-          <div
-            className="flex flex-wrap items-center justify-between border-t"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
-          >
-            <p
-              className="m-0 min-w-0 flex-[1_1_260px] font-mono text-2xs leading-relaxed"
-              style={{ color: "var(--c97-ink-2)" }}
-            >
-              {policyLine}
-            </p>
-            {/* No shrink-0 here. With it the span took its two-pill max-content
-                width (352px) inside a 324px footer and the card's overflow
-                clipped the rules pill; letting it shrink lets its own wrap put
-                the second pill on a new line at 390. */}
-            <span className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-              <Link
-                href={trackerHref}
-                className={`${PILL_ACTION_CLASS} border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)]`}
-              >
-                Draft with this lens&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-              </Link>
-              <a
-                href={activePreset.officialRulesUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${PILL_ACTION_CLASS} border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
-                style={{ color: "var(--c97-ink)" }}
-              >
-                Scoring rules&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-              </a>
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {freshnessWarning ? (
-        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
-          <div
-            role="status"
-            className="max-w-[70ch] border text-sm leading-6"
-            style={{
-              paddingInline: "var(--c97-sp-2)",
-              paddingBlock: "var(--c97-sp-1)",
-              borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
-              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-            }}
-          >
-            {freshnessWarning}
-          </div>
-        </div>
-      ) : null}
-
-      {/* The provider's own numbers disagreeing with each other. The sentence
-          carries the consensus date, and the rows it names print no ECR,
-          value, tier, or position rank while the expert band stays. */}
-      {consensusIssue ? (
-        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
-          <div
-            role="note"
-            data-testid="best-ball-consensus-note"
-            className="max-w-[70ch] border text-sm leading-6"
-            style={{
-              paddingInline: "var(--c97-sp-2)",
-              paddingBlock: "var(--c97-sp-1)",
-              borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
-              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-            }}
-          >
-            <p className="m-0">
-              <span className="font-semibold">Consensus withheld.</span>{" "}
-              {consensusIssue.charAt(0).toUpperCase()}
-              {consensusIssue.slice(1)}.
-            </p>
-            <p className="m-0" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-              {withheldCount} of {orderedPlayers.length} rows on this board print no ECR, value,
-              tier, or position rank. Each one keeps its best, average, and worst expert rank, which
-              agree with each other. Board order is unchanged.
-            </p>
-          </div>
-        </div>
-      ) : null}
-
-      <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }} data-testid="best-ball-board">
-        <h2 className="sr-only">{activeContest.shortLabel} board</h2>
-        {/* One pinned control line at every width. The board runs hundreds of
-            rows, so position, search, and the count have to stay reachable
-            mid-scroll rather than only at the top. The negative margin matches
-            the shell padding so rows pass under a full-width band. */}
-        <div
-          data-testid="best-ball-board-controls"
-          className="sticky top-0 z-30 border-b"
-          style={{
-            marginBottom: "var(--c97-sp-1)",
-            marginInline: "calc(-1 * var(--c97-gutter))",
-            paddingInline: "var(--c97-gutter)",
-            borderColor: "var(--c97-rule)",
-            background: "var(--c97-surface)",
-          }}
-        >
-          <div className="flex flex-wrap items-center" style={{ paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
-            <PositionFilterBar
-              ariaLabel="Best ball position"
-              options={POSITION_OPTIONS}
-              value={routeState.position}
-              onChange={(position) => updateRouteState({ position })}
-              disabled={Boolean(error)}
-            />
-            <div className="relative">
-              <label htmlFor="best-ball-search" className="sr-only">
-                Search best ball rankings
-              </label>
-              <Search
-                className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                style={{ color: "var(--c97-ink-2)" }}
-                aria-hidden="true"
-              />
-              <input
-                id="best-ball-search"
-                name="best-ball-search"
-                type="search"
-                value={searchQuery}
-                maxLength={80}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                disabled={Boolean(error)}
-                autoComplete="off"
-                placeholder="Search player or team"
-                className="min-h-touch w-[200px] border font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
-                style={
-                  { paddingLeft: "calc(24px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)", ...(error
-                    ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-                    : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }) }
-                }
-              />
-            </div>
-            <span
-              aria-live={error ? undefined : "polite"}
-              className="ml-auto whitespace-nowrap font-mono text-2xs"
-              style={{ color: "var(--c97-ink-2)" }}
-            >
-              {isLoading
-                ? "Loading players"
-                : `${filteredPlayers.length} of ${orderedPlayers.length} on this board`}
-            </span>
-          </div>
-          {/* Column labels ride in the sticky bar so the numbers keep their
-              names mid-scroll, as on the rankings board; phones carry per-value
-              micro-labels in each row instead. Rendered only once the board has
-              rows, so the loading, error, and empty states show no headings for
-              columns that are not there. The row cells carry sr-only labels, so
-              this row stays aria-hidden and nothing is read twice. */}
-          {boardReady && (
-            <div
-              aria-hidden="true"
-              className="hidden items-center border-t font-mono text-3xs uppercase tracking-[0.12em] md:flex"
-              style={{
-                paddingInline: "var(--c97-sp-2)",
-                paddingBlock: "var(--c97-sp-0)",
-                columnGap: "var(--c97-sp-2)",
-                color: "var(--c97-ink-2)",
-                borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
-              }}
-            >
-              <span className="w-[34px] shrink-0" />
-              <span className="min-w-0 flex-[1_1_180px]">Player</span>
-              <span className="flex shrink-0 items-center" style={{ columnGap: "var(--c97-sp-2)" }}>
-                <span className="w-14 text-right">UD ADP</span>
-                <span className="w-14 text-right whitespace-nowrap">PPR ECR</span>
-                <span className="w-14 text-right" title="ADP minus PPR best ball ECR">
-                  Value
-                </span>
-                <span className="w-8 text-right">Bye</span>
-                <span className="w-10 text-right">W17</span>
-              </span>
-            </div>
-          )}
-        </div>
-
-        {error ? (
-          <div
-            role="alert"
-            className="border"
-            style={{
-              paddingInline: "var(--c97-sp-2)",
-              paddingBlock: "var(--c97-sp-3)",
-              borderColor: "var(--c97-negative)",
-              background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
-            }}
-          >
-            <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
-              {error}
-            </p>
-            <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-              The strategy notes are still available while the published board reloads.
-            </p>
-            <button
-              type="button"
-              onClick={retry}
-              className="inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] text-sm font-semibold" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
-            >
-              Retry rankings
-            </button>
-          </div>
-        ) : isLoading ? (
-          // The count line in the sticky bar is the live region that says
-          // "Loading players", so the placeholder rows stay silent.
-          <div className="grid" style={{ gap: "var(--c97-sp-1)" }} aria-hidden="true">
-            {Array.from({ length: 10 }, (_, index) => (
-              <div key={`best-ball-loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
-            ))}
-          </div>
-        ) : visiblePlayers.length > 0 ? (
-          <>
-            {roundGroups.map((group, index) => {
-              const fullRound = group.rows.length === roundSize;
-              return (
-                <section
-                  key={`round-${group.round}`}
-                  style={{ marginTop: index === 0 ? 0 : "var(--c97-sp-2)" }}
-                  aria-label={`Round ${group.round}`}
-                >
-                  <div
-                    className="overflow-hidden border border-l-[3px]"
-                    style={{
-                      borderColor: "var(--c97-rule)",
-                      borderLeftColor: `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.round)}%, var(--c97-rule))`,
-                      background: "var(--c97-field)",
-                    }}
-                  >
-                    <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-                      <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
-                        {String(group.round).padStart(2, "0")}
-                      </span>
-                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                        Round
-                      </span>
-                      <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                        {fullRound ? "full round on this board" : `${group.rows.length} shown`}
-                      </span>
-                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                        picks {group.round * roundSize - (roundSize - 1)}–{group.round * roundSize}
-                      </span>
-                    </div>
-                    <ul className="m-0 list-none p-0">
-                      {group.rows.map((player) => (
-                        <BestBallPlayerRow
-                          key={player.id}
-                          player={player}
-                          opponent={snapshot?.week17Opponents[player.team]}
-                          adpAvailable={adpAvailable}
-                          showsWeek17={activeContest.showsWeek17}
-                          contestLabel={activeContest.label}
-                          onOpenDetail={setDetailPlayer}
-                        />
-                      ))}
-                    </ul>
-                  </div>
-                </section>
-              );
-            })}
-            {hasMore && (
-              <button
-                type="button"
-                onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                className="inline-flex min-h-touch w-full items-center justify-center border border-[var(--c97-rule)] hover:border-[var(--c97-ink)] text-sm font-semibold transition-colors"
-                style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", color: "var(--c97-ink)" }}
-              >
-                Show the next {Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount)} players
-              </button>
-            )}
-          </>
-        ) : (
-          <div
-            className="border border-dashed text-center"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)", borderColor: "var(--c97-rule)" }}
-          >
-            <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
-              No players match on this board.
-            </p>
-            {/* Each control clears only itself, so the way out never resets a
-                filter the visitor still wants. */}
-            {searchQuery ? (
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery("");
-                  updateRouteState({ query: "" });
-                }}
-                className="inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-2xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
-              >
-                Clear search
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => updateRouteState({ position: "all" })}
-                className="inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-2xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
-              >
-                Show all positions
-              </button>
-            )}
-          </div>
-        )}
-
-        <div
-          className="max-w-[70ch] font-mono text-2xs leading-relaxed"
-          style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-        >
-          {adpAvailable && (
-            <p className="m-0">
-              Players labeled Undrafted are at the contest-floor placeholder, not a literal price, so
-              their board order falls back to PPR best ball ECR and value stays blank.
-            </p>
-          )}
-          {snapshot && (
-            <p className="m-0" style={{ marginTop: "var(--c97-sp-0)" }}>
-              Snapshot built {formatDate(snapshot.generatedAt)} · rankings{" "}
-              <a
-                className="underline underline-offset-2"
-                href={snapshot.rankingSource.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {snapshot.rankingSource.provider} PPR best ball
-                {snapshot.rankingSource.expertCount
-                  ? ` · ${snapshot.rankingSource.expertCount} experts`
-                  : ""}
-              </a>
-              {snapshot.adpSource && (
-                <>
-                  {" "}
-                  · ADP{" "}
-                  <a
-                    className="underline underline-offset-2"
-                    href={snapshot.adpSource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {snapshot.adpSource.provider} standard slate
-                  </a>
-                </>
-              )}
-              {routeState.contest === "superflex" && snapshot.superflexSource && (
-                <>
-                  {" "}
-                  · Superflex order{" "}
-                  <a
-                    className="underline underline-offset-2"
-                    href={snapshot.superflexSource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {snapshot.superflexSource.provider}
-                  </a>
-                </>
-              )}
-              {snapshot.scheduleSource && (
-                <>
-                  {" "}
-                  · Week 17{" "}
-                  <a
-                    className="underline underline-offset-2"
-                    href={snapshot.scheduleSource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {snapshot.scheduleSource.provider}
-                  </a>
-                </>
-              )}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <section aria-labelledby="field-notes-heading" style={{ paddingTop: "var(--c97-sp-4)" }}>
-      <div className={SHELL_CLASS}>
-        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-          Field notes
-        </p>
-        <FantasySectionHeading id="field-notes-heading" style={{ marginTop: "var(--c97-sp-1)" }}>
-          What has worked, and how I would use it
-        </FantasySectionHeading>
-        <p className="mb-0 max-w-[70ch] text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-          The findings below describe past drafts and are not proof that one construction will win the
-          next tournament. I use them to set boundaries, then let the current room and the selected
-          contest decide the roster.
-        </p>
-        <div
-          className="grid"
-          style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-4)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))" }}
-        >
-          <div className="min-w-0">
-            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-              Observed in past drafts
-            </p>
-            {OBSERVED_FINDINGS.map((finding) => (
-              <div key={finding.title} className="border-t" style={{ paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
-                <p className="m-0 text-sm font-semibold tracking-tight">{finding.title}</p>
-                <p className="m-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                  {finding.body}
-                </p>
-                {/* A standalone link line rather than a link inside a sentence,
-                    so it takes the 44px floor like the footer tool links. The
-                    negative margin keeps the card's rhythm close to the 13px
-                    line it replaces. */}
+              <div className="ffb-cluster ffb-bb-actions">
+                <Link href={trackerHref} className="ffb-btn ffb-btn-primary">
+                  Draft with this lens
+                </Link>
                 <a
-                  href={finding.href}
+                  href={activePreset.officialRulesUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2" style={{ marginBottom: "calc(var(--c97-sp-1) * -1)" }}
+                  className="ffb-link ffb-link-out"
                 >
-                  {finding.source}&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
+                  Scoring rules
                 </a>
               </div>
-            ))}
-          </div>
-          <div className="min-w-0">
-            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-              2026 recommendation
-            </p>
-            {RECOMMENDATIONS.map((recommendation) => (
-              <div
-                key={recommendation.number}
-                className="flex border-t"
-                style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-              >
-                <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
-                  {recommendation.number}
-                </span>
-                <div className="min-w-0">
-                  <p className="m-0 text-sm font-semibold tracking-tight">{recommendation.title}</p>
-                  <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                    {recommendation.body}
-                  </p>
-                  {recommendation.href && (
-                    <a
-                      href={recommendation.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2" style={{ marginBottom: "calc(var(--c97-sp-1) * -1)" }}
+              {/* The notices sit under the action they qualify and above the
+                  notes, so a dated or frozen board says so on the first screen. */}
+              {seasonalWeek >= 1 || freshnessWarning || consensusIssue ? (
+                <div className="ffb-bb-notices">
+                  {seasonalWeek >= 1 || freshnessWarning ? (
+                    <div className="ffb-bb-pair">
+                      {seasonalWeek >= 1 ? (
+                        <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
+                          Best ball is drafted before the season and scored through it, so this board
+                          describes a market that closed at kickoff. Rankings and ADP here are the
+                          preseason readings your drafts were made against, kept for reference rather
+                          than refreshed. Ranks that still move are on the{" "}
+                          <Link href="/fantasy-football/weekly">weekly board</Link>.
+                        </SeasonalScopeNote>
+                      ) : null}
+                      {freshnessWarning ? (
+                        <p role="status" className="ffb-notice ffb-notice-warn">
+                          {freshnessWarning}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+
+                  {/* The provider's own numbers disagreeing with each other. The
+                      sentence carries the consensus date, and the rows it names
+                      print no ECR, value, tier, or position rank while the
+                      expert band stays. */}
+                  {consensusIssue ? (
+                    <div
+                      role="note"
+                      data-testid="best-ball-consensus-note"
+                      className="ffb-notice ffb-notice-held"
                     >
-                      4for4 draft date study&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-                    </a>
+                      <p>
+                        <strong>Consensus withheld.</strong> {consensusIssue.charAt(0).toUpperCase()}
+                        {consensusIssue.slice(1)}.
+                      </p>
+                      <p className="ffb-muted">
+                        {withheldCount} of {orderedPlayers.length} rows on this board print no ECR,
+                        value, tier, or position rank. Each one keeps its best, average, and worst
+                        expert rank, which agree with each other. Board order is unchanged.
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+              <div className="ffb-stack ffb-stack-tight">
+                {/* The room is the short summary. The three build notes sit
+                    behind the toggle wherever the rail is above the board
+                    (below 1200px), so a phone reaches the board without
+                    reading them first, and they are open beside it. */}
+                <dl className="ffb-bb-notes">
+                  {[
+                    { label: "The room", body: activeContest.structure, guidance: false },
+                    { label: "How I read it", body: activeContest.brief, guidance: true },
+                    { label: "2026 build range", body: activeContest.build, guidance: true },
+                    { label: "What I would watch", body: activeContest.risk, guidance: true },
+                  ].map((cell) => (
+                    <div
+                      key={cell.label}
+                      className={`ffb-bb-note${cell.guidance && !guidanceOpen ? " hidden min-[1200px]:block" : ""}`}
+                    >
+                      <dt className="ffb-label ffb-muted">{cell.label}</dt>
+                      <dd>{cell.body}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <button
+                  type="button"
+                  className="ffb-btn ffb-bb-guide self-start min-[1200px]:hidden"
+                  aria-expanded={guidanceOpen}
+                  onClick={() => setGuidanceOpen((current) => !current)}
+                >
+                  {guidanceOpen ? "Hide build guidance" : "Show build guidance"}
+                </button>
+              </div>
+              {/* The sentence describes the loaded snapshot, so it prints once
+                  there is one. Until then its place is held, and after a
+                  failed load the alert on the board says what happened. */}
+              {snapshot ? (
+                <p className="ffb-fine">{policyLine}</p>
+              ) : isLoading ? (
+                <div className="ffb-bb-order-skel" aria-hidden="true">
+                  <span className="ffb-skel" />
+                  <span className="ffb-skel" />
+                  <span className="ffb-skel" />
+                </div>
+              ) : null}
+            </section>
+          </div>
+
+          <div className="ffb-bb-main">
+            <h2 className="sr-only">{activeContest.shortLabel} board</h2>
+            <div
+              ref={boardRef}
+              className="ffb-board ffb-board-ruled ffb-board-plain ffb-bb-board"
+              data-testid="best-ball-board"
+            >
+              {/* The toolbar and the column heads pin as one block. The board
+                  runs hundreds of rows, so position, search, and the count
+                  stay reachable mid-scroll and the numbers keep their names. */}
+              <div
+                ref={barRef}
+                className="ffb-sticky ffb-sticky-ruled"
+                data-testid="best-ball-board-controls"
+              >
+                <div className="ffb-toolbar ffb-bb-tools">
+                  <PositionFilterBar
+                    ariaLabel="Best ball position"
+                    options={POSITION_OPTIONS}
+                    value={routeState.position}
+                    onChange={(position) => updateRouteState({ position })}
+                    disabled={Boolean(error)}
+                  />
+                  <div className="ffb-search">
+                    <Search size={15} aria-hidden="true" />
+                    <label htmlFor="best-ball-search" className="ffb-vh">
+                      Search best ball rankings
+                    </label>
+                    <input
+                      id="best-ball-search"
+                      name="best-ball-search"
+                      type="search"
+                      ref={searchRef}
+                      value={searchQuery}
+                      maxLength={80}
+                      onChange={(event) => setSearchQuery(event.target.value)}
+                      disabled={Boolean(error)}
+                      autoComplete="off"
+                      placeholder="Search player or team"
+                      className="ffb-search-input"
+                    />
+                    {searchQuery && !error ? (
+                      <button
+                        type="button"
+                        aria-label="Clear search"
+                        onClick={clearSearch}
+                        className="ffb-search-clear"
+                      >
+                        <X size={16} aria-hidden="true" />
+                      </button>
+                    ) : null}
+                  </div>
+                  {/* The route's one live region. On an error the alert below
+                      is the announcement, so this line stops being one. */}
+                  <p className="ffb-count" aria-live={error ? undefined : "polite"}>
+                    {countLine}
+                  </p>
+                </div>
+                {/* Rendered only once the board has rows, so the loading,
+                    error, and empty states show no heads for columns that are
+                    not there. Each cell carries its own hidden name, so this
+                    row stays aria-hidden and nothing is read twice. */}
+                {boardReady && (
+                  <div className="ffb-colhead" aria-hidden="true">
+                    <span className="ffb-h-num ffb-is-sorted ffb-m-show">Rk</span>
+                    <span className="ffb-h-pos">Pos</span>
+                    <span className="ffb-m-show">Player</span>
+                    <span>Team</span>
+                    <span className="ffb-h-num">UD ADP</span>
+                    <span className="ffb-h-num">PPR ECR</span>
+                    <span className="ffb-h-num" title="ADP minus PPR best ball ECR">
+                      Value
+                    </span>
+                    <span className="ffb-h-num">Bye</span>
+                    <span className="ffb-h-num">W17</span>
+                    <span className="ffb-only-phone ffb-m-show">{adpAvailable ? "ADP, value" : "ECR"}</span>
+                  </div>
+                )}
+              </div>
+
+              {error ? (
+                <div role="alert" className="ffb-notice ffb-notice-bad">
+                  <p>
+                    <strong>{error}</strong> The strategy notes are still available while the
+                    published board reloads.
+                  </p>
+                  <div className="ffb-notice-actions">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        retriedRef.current = true;
+                        retry();
+                      }}
+                      className="ffb-btn"
+                    >
+                      Retry rankings
+                    </button>
+                  </div>
+                </div>
+              ) : isLoading ? (
+                // The count line in the pinned block is the live region that
+                // says "Loading players", so the placeholder rows stay silent.
+                <div aria-hidden="true">
+                  {Array.from({ length: 10 }, (_, index) => (
+                    <div key={`best-ball-loading-${index}`} className="ffb-skel-row">
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                    </div>
+                  ))}
+                </div>
+              ) : visiblePlayers.length > 0 ? (
+                <>
+                  {roundGroups.map((group) => {
+                    const count = roundCounts.get(group.round) ?? group.rows.length;
+                    return (
+                      <section key={`round-${group.round}`} className="ffb-tier" aria-label={`Round ${group.round}`}>
+                        <header className="ffb-tier-head">
+                          <h3 className="ffb-tier-name">
+                            <span className="ffb-tier-tab">Round {group.round}</span>{" "}
+                            {/* A full round needs no count. A filter that leaves
+                                part of one says how many of its players match. */}
+                            {count !== roundSize ? (
+                              <>
+                                <span className="ffb-tier-count">{countOf(count, "player", "players")}</span>{" "}
+                              </>
+                            ) : null}
+                            <span className="ffb-tier-range">
+                              Picks {group.round * roundSize - (roundSize - 1)}–{group.round * roundSize}
+                            </span>
+                          </h3>
+                        </header>
+                        <ul className="ffb-rows">
+                          {group.rows.map((player) => (
+                            <BestBallPlayerRow
+                              key={player.id}
+                              player={player}
+                              opponent={snapshot?.week17Opponents[player.team]}
+                              adpAvailable={adpAvailable}
+                              showsWeek17={activeContest.showsWeek17}
+                              contestLabel={activeContest.label}
+                              onOpenDetail={setDetailPlayer}
+                            />
+                          ))}
+                        </ul>
+                      </section>
+                    );
+                  })}
+                  {hasMore && (
+                    <button
+                      type="button"
+                      onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                      className="ffb-more"
+                    >
+                      Show the next{" "}
+                      {countOf(Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount), "player", "players")}
+                    </button>
+                  )}
+                </>
+              ) : (
+                <div className="ffb-empty">
+                  <p className="ffb-empty-title">No players match on this board.</p>
+                  {/* Each control clears only itself, so the way out never
+                      resets a filter the visitor still wants. Either button
+                      leaves with the empty state, so focus goes to the control
+                      it just reset. */}
+                  {searchQuery ? (
+                    <button type="button" onClick={clearSearch} className="ffb-btn">
+                      Clear search
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateRouteState({ position: "all" });
+                        boardRef.current?.querySelector<HTMLElement>('[role="radio"]')?.focus();
+                      }}
+                      className="ffb-btn"
+                    >
+                      Show all positions
+                    </button>
                   )}
                 </div>
-              </div>
-            ))}
+              )}
+            </div>
+
+            <div className="ffb-method ffb-bb-method">
+              {adpAvailable && (
+                <p>
+                  Players labeled Undrafted are at the contest-floor placeholder, not a literal
+                  price, so their board order falls back to PPR best ball ECR and value stays blank.
+                </p>
+              )}
+              {snapshot && (
+                <p>
+                  Snapshot built {formatDate(snapshot.generatedAt)} · rankings{" "}
+                  <a href={snapshot.rankingSource.url} target="_blank" rel="noopener noreferrer">
+                    {nameWith(snapshot.rankingSource.provider, "PPR best ball")}
+                    {snapshot.rankingSource.expertCount
+                      ? ` · ${countOf(snapshot.rankingSource.expertCount, "expert", "experts")}`
+                      : ""}
+                  </a>
+                  {snapshot.adpSource && (
+                    <>
+                      {" "}
+                      · ADP{" "}
+                      <a href={snapshot.adpSource.url} target="_blank" rel="noopener noreferrer">
+                        {/* The label before the link already says ADP. */}
+                        {snapshot.adpSource.provider.replace(/\s+ADP\b/, "")} standard slate
+                      </a>
+                    </>
+                  )}
+                  {routeState.contest === "superflex" && snapshot.superflexSource && (
+                    <>
+                      {" "}
+                      · Superflex order{" "}
+                      <a href={snapshot.superflexSource.url} target="_blank" rel="noopener noreferrer">
+                        {snapshot.superflexSource.provider}
+                      </a>
+                    </>
+                  )}
+                  {snapshot.scheduleSource && (
+                    <>
+                      {" "}
+                      · Week 17{" "}
+                      <a href={snapshot.scheduleSource.url} target="_blank" rel="noopener noreferrer">
+                        {snapshot.scheduleSource.provider}
+                      </a>
+                    </>
+                  )}
+                </p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      </section>
 
-      <div>
-      <section aria-label="Format reference" className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
-        <div
-          className="flex flex-wrap items-start justify-between border"
-          style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-        >
-          <div className="min-w-0 max-w-[68ch] flex-[1_1_380px]">
-            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-              Format reference
-            </p>
-            <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
-              The baseline Underdog roster
-            </h3>
-            <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+        <section aria-labelledby="field-notes-heading">
+          <div className="ffb-sechead ffb-sechead-lg">
+            <FantasySectionHeading id="field-notes-heading">
+              What has worked, and how I would use it
+            </FantasySectionHeading>
+          </div>
+          <p className="ffb-copy">
+            The findings below describe past drafts and are not proof that one construction will win
+            the next tournament. I use them to set boundaries, then let the current room and the
+            selected contest decide the roster.
+          </p>
+          <div className="ffb-columns ffb-bb-fieldnotes">
+            <div className="ffb-stack ffb-stack-tight">
+              <h3 className="ffb-h3">Observed in past drafts</h3>
+              <ul className="ffb-notes ffb-bb-findings">
+                {OBSERVED_FINDINGS.map((finding) => (
+                  <li key={finding.title} className="ffb-note">
+                    <h4 className="ffb-h4">{finding.title}</h4>
+                    <p>{finding.body}</p>
+                    <p>
+                      <a
+                        href={finding.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ffb-link ffb-link-out"
+                      >
+                        {finding.source}
+                      </a>
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="ffb-stack ffb-stack-tight">
+              <h3 className="ffb-h3">2026 recommendation</h3>
+              <ol className="ffb-notes">
+                {RECOMMENDATIONS.map((recommendation) => (
+                  <li key={recommendation.number} className="ffb-note">
+                    <span className="ffb-note-num" aria-hidden="true">
+                      {recommendation.number}
+                    </span>
+                    <h4 className="ffb-h4">{recommendation.title}</h4>
+                    <p>{recommendation.body}</p>
+                    {recommendation.href && (
+                      <p>
+                        <a
+                          href={recommendation.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ffb-link ffb-link-out"
+                        >
+                          4for4 draft date study
+                        </a>
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section aria-label="Format reference">
+          <div className="ffb-sechead ffb-sechead-lg">
+            <h2 className="ffb-h2">The baseline Underdog roster</h2>
+          </div>
+          <div className="ffb-prose">
+            <p>
               Standard NFL best ball drafts use 12 teams and 18 rounds with one quarterback, two
               running backs, three receivers, one tight end, one flex, and ten bench spots. The site
               sets the strongest lineup each week, and there are no waivers, trades, or manual lineup
               decisions. Scoring is half PPR unless the contest says otherwise.
             </p>
+            <p>
+              <a href={RULES_URL} target="_blank" rel="noopener noreferrer" className="ffb-link ffb-link-out">
+                Official scoring and lineup rules
+              </a>
+            </p>
           </div>
-          <a
-            href={RULES_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${PILL_ACTION_CLASS} max-w-full border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
-            style={{ color: "var(--c97-ink)" }}
-          >
-            Official scoring and lineup rules&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </section>
+        </section>
 
-      <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
-        <div
-          className="flex flex-wrap items-baseline justify-between border-t"
-          style={{ paddingTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-        >
-          <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-            Working ranges, not quotas, and nothing here guarantees a result
-          </span>
-          <span className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-            <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Rankings board&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-            </Link>
-            <Link href={trackerHref} className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Draft tracker&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-            </Link>
-            <Link href="/fantasy-football/mock-draft" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Mock draft&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
-            </Link>
-          </span>
-        </div>
-      </div>
+        <p className="ffb-method ffb-method-ruled">
+          Working ranges, not quotas, and nothing here guarantees a result
+        </p>
       </div>
 
       {/* bestBallRank is the board order under the lens, which on the ADP
@@ -1349,7 +1231,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         adpAvailable={
           adpAvailable && !detailPlayer?.isUndraftedAtContestFloor
         }
-        valueSignalAvailable={adpAvailable}
+        valueSignalAvailable={adpAvailable && !detailPlayer?.consensusWithheld}
+        verdictAvailable={verdictAvailable}
+        consensusWithheld={detailPlayer?.consensusWithheld ?? false}
         onClose={() => setDetailPlayer(null)}
       />
       <DeferredCompareTray
