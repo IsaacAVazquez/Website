@@ -1,0 +1,148 @@
+/*
+ * The rankings board's own rules (/fantasy-football), on top of the kit in fantasy.css.
+ * Unlayered, so a rule here beats a kit class on the same element whatever loads first.
+ * Every selector starts with an `ffb-rk-` class, because this sheet stays loaded after
+ * in-app navigation and must not reach another route.
+ */
+
+/* ==========================================================================
+ * The column template
+ * Rank, chip, name, team, bye, then the columns the state allows, the spread, the
+ * average, and the star. A column the state hides has no track, so the row closes up.
+ * ======================================================================== */
+.ffb-rk-board {
+  --ffb-rk-lead: 30px 46px minmax(140px, 1fr) 36px 26px;
+  --ffb-rk-tail: minmax(180px, 2fr) 44px 36px;
+  --ffb-cols: var(--ffb-rk-lead) var(--ffb-rk-tail);
+}
+.ffb-rk-board.ffb-rk-vorp { --ffb-cols: var(--ffb-rk-lead) 48px var(--ffb-rk-tail); }
+.ffb-rk-board.ffb-rk-adp { --ffb-cols: var(--ffb-rk-lead) 60px var(--ffb-rk-tail); }
+.ffb-rk-board.ffb-rk-adp.ffb-rk-vorp { --ffb-cols: var(--ffb-rk-lead) 60px 48px var(--ffb-rk-tail); }
+.ffb-rk-board.ffb-rk-adp.ffb-rk-vs { --ffb-cols: var(--ffb-rk-lead) 60px 92px var(--ffb-rk-tail); }
+.ffb-rk-board.ffb-rk-adp.ffb-rk-vs.ffb-rk-vorp { --ffb-cols: var(--ffb-rk-lead) 60px 92px 48px var(--ffb-rk-tail); }
+
+/* The cells sit above the row's opener, so a hover title fires and a name can be selected.
+   The row's own click still opens the player. */
+.ffb-rk-board .ffb-row { cursor: pointer; }
+.ffb-rk-board .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
+
+/* ==========================================================================
+ * The sticky block: the toolbar and the column heads pin together
+ * It ends on the ink rule a table head ends on, and the first tier's tab hangs from it.
+ * ======================================================================== */
+.ffb-rk-bar { border-bottom: 2px solid var(--ffb-ink); }
+/* A queued rank's highlighter runs 4px past the column, so the block paints that much wider. */
+.ffb-rk-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 -4px;
+  z-index: -1;
+  background: var(--ffb-surface);
+}
+.ffb-rk-board > .ffb-tier:first-of-type > .ffb-tier-head { height: 28px; border-top: 0; }
+.ffb-rk-board > .ffb-rk-list > .ffb-row:first-child,
+.ffb-rk-board .ffb-empty,
+.ffb-rk-board .ffb-rk-skel > .ffb-skel-row:first-child { border-top: 0; }
+.ffb-rk-board > .ffb-notice { margin-block: var(--ffb-s4); }
+
+/* The league size rides against the ranking switch it belongs to. */
+.ffb-rk-rank > .ffb-select { width: auto; margin-inline-start: -1px; }
+.ffb-rk-tools > .ffb-search:has(:disabled) {
+  background: transparent;
+  box-shadow: none;
+  outline: 1px dashed var(--ffb-edge);
+  outline-offset: -1px;
+}
+/* The kit rings the bare input 3px inside itself, which lands on the first letter typed.
+   The field takes the ring here. */
+.ffb-rk-tools .ffb-search-input:focus-visible { outline: 0; }
+.ffb-rk-tools .ffb-search:focus-within { outline: 2px solid var(--c97-accent); outline-offset: 2px; }
+/* The phone's search button while a query is filtering the board. */
+.ffb-rk-find.ffb-rk-is-on { background: var(--ffb-ink); color: var(--ffb-board); }
+
+/* ==========================================================================
+ * Column heads and cells of this board
+ * ======================================================================== */
+/* A help trigger is a button. A button does not inherit its case, and the site frame gives
+   every button a 44px floor that would centre a short label away from its column's edge. */
+.ffb-rk-board .ffb-colhead button,
+.ffb-rk-drawer .ffb-stat dt button { min-width: 0; text-transform: inherit; }
+/* "ADP (overall)" takes two lines over a 60px column. */
+.ffb-rk-board .ffb-colhead > .ffb-rk-h-wrap { white-space: normal; }
+/* Only as wide as its words, so a wide column does not turn into one wide help target. */
+.ffb-rk-h-spread-name { justify-self: start; }
+.ffb-rk-word { font-size: 10.5px; text-align: left; }
+.ffb-rk-footlinks { margin-top: var(--ffb-s4); }
+
+@media (min-width: 768px) {
+  /* A phone hides this pair with a utility, so the display is set only where it shows. */
+  .ffb-rk-rank { display: inline-flex; flex: none; }
+  /* The number keeps its right edge and the word, when the gate fires, sits beside it. */
+  .ffb-rk-vsadp {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 40px;
+    align-items: baseline;
+    column-gap: 6px;
+  }
+  .ffb-rk-board .ffb-colhead > .ffb-rk-h-vs { padding-inline-end: 46px; }
+  /* Read out, not shown: the column head already says it. */
+  .ffb-rk-vh-desk {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* The spread's legend needs about 300px. Below that the head keeps its name and the scale. */
+@media (max-width: 1279.98px) {
+  .ffb-rk-board .ffb-spread-key { display: none; }
+}
+/* With the market columns on, a tablet has no room left for the plot. The range stays in the drawer. */
+@media (min-width: 768px) and (max-width: 899.98px) {
+  .ffb-rk-board.ffb-rk-adp { --ffb-rk-tail: 44px 36px; }
+  .ffb-rk-board.ffb-rk-adp :is(.ffb-spread, .ffb-h-spread) { display: none; }
+}
+
+/* ==========================================================================
+ * The drawer
+ * ======================================================================== */
+/* Three across in the drawer and in the phone's sheet, so three facts or five leave no fact alone on a row. */
+.ffb-rk-facts { --ffb-stat-min: 84px; }
+.ffb-rk-ppg { --ffb-stat-min: 60px; }
+.ffb-rk-plot { display: grid; height: 24px; }
+.ffb-rk-queue { justify-content: center; }
+.ffb-rk-ppg-head { display: flex; align-items: center; gap: var(--ffb-s1); }
+
+/* ==========================================================================
+ * Phones: two rows of controls
+ * Row one is position, search, the queue filter, and the count. Row two is scoring and ranking.
+ * ======================================================================== */
+@media (max-width: 767.98px) {
+  .ffb-rk-tools > .ffb-rk-pos { order: 1; flex: 0 1 auto; width: auto; }
+  .ffb-rk-tools > .ffb-rk-find { order: 2; }
+  .ffb-rk-tools > .ffb-toggle { order: 3; justify-content: center; padding-inline: var(--ffb-s2); }
+  .ffb-rk-tools > .ffb-count { order: 4; flex: 1 1 84px; }
+  .ffb-rk-tools > .ffb-seg { order: 5; }
+  .ffb-rk-tools > .ffb-rk-mode { order: 6; flex: 0 1 auto; width: auto; }
+  /* The open search takes row one, and the controls it replaces step aside. */
+  .ffb-rk-tools > .ffb-rk-findrow { order: 0; flex: 1 1 100%; gap: var(--ffb-s2); }
+  .ffb-rk-findrow > .ffb-search { flex: 1 1 0; min-width: 0; }
+  .ffb-rk-tools.ffb-rk-searching > .ffb-rk-yield { display: none; }
+  .ffb-rk-word { margin-inline-start: 6px; }
+  /* A help trigger in the drawer holds a 44px target, and the negative margin keeps its line. */
+  .ffb-rk-drawer .ffb-stat dt button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 44px;
+    min-height: 44px;
+    margin-block: -15px;
+  }
+}
+
+@media print {
+  .ffb-rk-footlinks a { display: none; }
+}
