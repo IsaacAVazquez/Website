@@ -281,6 +281,17 @@
   overflow-x: auto;
 }
 
+/* In one column the result sits under the portfolio, so a long list of saved
+ * holdings scrolls inside its region and the result stays within a screen of
+ * the inputs that change it. 22rem clears the seven-row sample, so only a
+ * longer list scrolls, and it cuts an eighth row through its text, which is
+ * the cue that the list goes on where the scrollbar is an overlay. */
+@media screen and (max-width: 959px) {
+  .byb-portfolio .byb-scroll {
+    max-block-size: 22rem;
+  }
+}
+
 .byb-table {
   width: 100%;
   border-collapse: collapse;
@@ -437,10 +448,10 @@
   transform: rotate(-135deg);
 }
 
-.byb-detail[open] {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-2);
+/* Margins and not a flex gap, since a browser lays the open content out in
+ * one box of its own, where a gap on the details never reaches the note. */
+.byb-detail > :not(summary) {
+  margin-top: var(--c97-sp-2);
 }
 
 /* ── Second screen and the close ────────────────────────────────────────── */

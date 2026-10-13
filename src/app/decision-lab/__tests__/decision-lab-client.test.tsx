@@ -74,10 +74,7 @@ describe("DecisionLabClient", () => {
     expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("44");
     expect(screen.getByText(/I would hold this for now\./i)).toBeVisible();
 
-    // Both the sidebar nav and the rail expose preset buttons with the
-    // same accessible name. Use the first match (sidebar), since either fires
-    // the same handler.
-    fireEvent.click(screen.getAllByRole("button", { name: /onboarding refresh/i })[0]);
+    fireEvent.click(screen.getByRole("button", { name: "Onboarding refresh" }));
     settleUrl();
 
     expect(replaceState).toHaveBeenCalledWith(null, "", "/decision-lab?preset=onboarding-refresh");
@@ -187,5 +184,58 @@ describe("DecisionLabClient", () => {
     }
     // The ledger still shows each axis's weighted contribution.
     expect(screen.getByTestId("decision-lab-shell")).toHaveTextContent(/82 × 0\.\d+ = /);
+  });
+
+  // Two of the pricing preset's rows end on a half (10.25 and 10.75), and the
+  // default state's total does (59.85), which a one-place total cannot print.
+  it.each([
+    ["the pricing experiment preset", "preset=pricing-experiment"],
+    ["the default state", ""],
+  ])("prints ledger rows that add up to the weighted score row under them for %s", (_state, query) => {
+    visit(query);
+    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+
+    const printed = (selector: string) =>
+      Array.from(document.querySelectorAll(selector)).map((figure) => Number(figure.textContent));
+    const rows = printed(".dl-contribution:not(.dl-contribution-total) strong");
+    const [total] = printed(".dl-contribution-total strong");
+
+    expect(rows).toHaveLength(4);
+    expect(rows.reduce((sum, value) => sum + value, 0)).toBeCloseTo(total, 5);
+  });
+
+  it("names the preset a custom state started from and drops that preset's hint", () => {
+    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    expect(screen.getByText(/High upside with thin proof/)).toBeVisible();
+
+    fireEvent.change(screen.getByLabelText("Impact"), { target: { value: "10" } });
+
+    expect(screen.queryByText(/High upside with thin proof/)).toBeNull();
+    expect(screen.getByText("Custom, from Support copilot rollout.")).toBeVisible();
+  });
+
+  it("scrolls the pressed chip into view when the page opens on a later preset", () => {
+    // jsdom lays nothing out, so the row reads as 300 wide and only the pressed chip sits past its edge.
+    const boxes = jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (
+      this: HTMLElement
+    ) {
+      const left = this.getAttribute("aria-pressed") === "true" ? 400 : 0;
+      const width = this.classList.contains("dl-chips") ? 300 : 120;
+      return { left, width, right: left + width } as DOMRect;
+    });
+    visit("preset=notification-rewrite");
+    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    boxes.mockRestore();
+
+    // The chip's centre is at 460 and the row's at 150.
+    expect(document.querySelector(".dl-chips")?.scrollLeft).toBe(310);
+  });
+
+  it("tilts the stamp from a group outside the one its animation transforms", () => {
+    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    const stamp = document.querySelector(".dl-stamp") as SVGGElement;
+
+    expect(stamp).not.toHaveAttribute("transform");
+    expect(stamp.parentElement).toHaveAttribute("transform", expect.stringMatching(/^rotate\(-9 /));
   });
 });

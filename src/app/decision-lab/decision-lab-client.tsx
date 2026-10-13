@@ -1,8 +1,9 @@
 "use client";
 
 import { Link as LinkIcon, RefreshCw } from "lucide-react";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useKeepPressedInView } from "@/components/football/useKeepPressedInView";
 import {
   DECISION_PRESETS,
   evaluateDecision,
@@ -104,8 +105,9 @@ function DecisionMatrix({
   const thresholdX = PAD_L + (SHIP_CONFIDENCE / 100) * PLOT_SIZE;
   const thresholdY = PAD_T + ((100 - SHIP_IMPACT) / 100) * PLOT_SIZE;
 
-  // The stamp prints in the quadrant the active point is not in, so it
-  // never covers the mark it is explaining.
+  // The stamp prints in the quadrant opposite the active point, so it stays
+  // clear of the mark it is explaining, except in a small band just under
+  // both gates where the tilted frame's corner reaches the point.
   const pointOnRight = metrics.confidence >= SHIP_CONFIDENCE;
   const pointOnTop = metrics.impact >= SHIP_IMPACT;
   const stampCx = PAD_L + (pointOnRight ? 0.25 : 0.75) * PLOT_SIZE;
@@ -197,32 +199,33 @@ function DecisionMatrix({
         </text>
       </g>
 
-      <g
-        className="dl-stamp"
-        transform={`rotate(-9 ${stampCx} ${stampCy})`}
-        aria-hidden="true"
-      >
-        <rect
-          x={stampCx - 86}
-          y={stampCy - 34}
-          width={172}
-          height={68}
-          fill="none"
-          style={{ stroke: "var(--c97-overprint)" }}
-          strokeWidth={3}
-        />
-        <rect
-          x={stampCx - 78}
-          y={stampCy - 26}
-          width={156}
-          height={52}
-          fill="none"
-          style={{ stroke: "var(--c97-overprint)" }}
-          strokeWidth={1.5}
-        />
-        <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="dl-stamp-word">
-          {stamp.word}
-        </text>
+      {/* The tilt sits on a group of its own, since the stamp-down animation
+          sets a CSS transform on .dl-stamp and that replaces a transform
+          attribute on the same element. */}
+      <g transform={`rotate(-9 ${stampCx} ${stampCy})`} aria-hidden="true">
+        <g className="dl-stamp">
+          <rect
+            x={stampCx - 86}
+            y={stampCy - 34}
+            width={172}
+            height={68}
+            fill="none"
+            style={{ stroke: "var(--c97-overprint)" }}
+            strokeWidth={3}
+          />
+          <rect
+            x={stampCx - 78}
+            y={stampCy - 26}
+            width={156}
+            height={52}
+            fill="none"
+            style={{ stroke: "var(--c97-overprint)" }}
+            strokeWidth={1.5}
+          />
+          <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="dl-stamp-word">
+            {stamp.word}
+          </text>
+        </g>
       </g>
 
       <text x={PAD_L + PLOT_SIZE / 2} y={VIEW_H - 8} textAnchor="middle" className="dl-axis-label">
@@ -246,7 +249,7 @@ function ContributionRow({ row }: { row: VerdictContribution }) {
         <span style={{ width: `${row.raw}%` }} />
       </span>
       <span className="dl-contribution-math">
-        {row.raw} × {row.weight.toFixed(2)} = <strong>{row.contribution.toFixed(1)}</strong>
+        {row.raw} × {row.weight.toFixed(2)} = <strong>{row.contribution.toFixed(2)}</strong>
       </span>
     </li>
   );
@@ -272,8 +275,11 @@ function WhyThisVerdict({
         ))}
         <li className="dl-contribution dl-contribution-total">
           <span className="dl-contribution-label">Weighted score</span>
+          {/* Every contribution is a multiple of 0.05, so the rows and their
+              sum print two places. At one place each row rounds on its own
+              and the rows stop adding up to this line. */}
           <span className="dl-contribution-math">
-            <strong>{evaluation.weightedScore}</strong>
+            <strong>{contributions.reduce((sum, row) => sum + row.contribution, 0).toFixed(2)}</strong>
           </span>
         </li>
       </ol>
@@ -338,6 +344,10 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
   const [draftState, setDraftState] = useState(routeState);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   const ids = useId();
+  // On a phone the chips are one row that scrolls sideways, so a shared link
+  // to a later preset would open with its pressed chip off screen.
+  const chipsRef = useRef<HTMLDivElement>(null);
+  useKeepPressedInView(chipsRef, draftState.preset);
   useEffect(() => {
     const id = window.setTimeout(
       () => replaceHref(buildDecisionLabHref(draftState)),
@@ -419,7 +429,7 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
           <h2 id={`${ids}-presets`} className="sr-only">
             Presets
           </h2>
-          <div className="dl-chips" role="group" aria-labelledby={`${ids}-presets`}>
+          <div ref={chipsRef} className="dl-chips" role="group" aria-labelledby={`${ids}-presets`}>
             {DECISION_PRESETS.map((preset) => (
               <button
                 key={preset.id}
@@ -433,8 +443,15 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
             ))}
           </div>
           <div className="dl-preset-row">
+            {/* The hint describes the preset's own numbers, so it goes once a slider leaves them. */}
             <p className="dl-preset-note">
-              <span>{crumbLabel}.</span> {activePreset.outcomeHint}
+              {hasPresetOverride ? (
+                <span>Custom, from {activePreset.name}.</span>
+              ) : (
+                <>
+                  <span>{activePreset.name}.</span> {activePreset.outcomeHint}
+                </>
+              )}
             </p>
             <div className="dl-tools">
               <button type="button" onClick={handleResetToPreset} disabled={!hasPresetOverride} className="dl-link">

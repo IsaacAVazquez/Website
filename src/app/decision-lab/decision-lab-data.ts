@@ -141,8 +141,16 @@ const riskAxisCopy: Record<DecisionAxis, string> = {
     "The move is still hard to unwind if it lands poorly, which raises the cost of being wrong.",
 };
 
-function selectStrongestSignal(signals: readonly DecisionAxisSignal[]): DecisionAxis {
-  return signals.reduce((winner, signal) => (signal.score > winner.score ? signal : winner)).axis;
+// The strongest axis only earns its sentence past these floors, since the
+// best of four weak scores is not a strength and the worst of four safe ones
+// is not a risk. They sum past 100, so one axis can never earn both.
+const STRENGTH_FLOOR = 60;
+const RISK_FLOOR = 50;
+const NO_STRENGTH_COPY = "None of the four axes is strong enough yet to carry the bet on its own.";
+const NO_RISK_COPY = "No single risk stands out at these levels.";
+
+function selectStrongestSignal(signals: readonly DecisionAxisSignal[]): DecisionAxisSignal {
+  return signals.reduce((winner, signal) => (signal.score > winner.score ? signal : winner));
 }
 
 export function isDecisionPresetId(value: string | null | undefined): value is DecisionPresetId {
@@ -164,14 +172,15 @@ export function getDecisionPresetMetrics(presetId: DecisionPresetId): DecisionMe
 }
 
 export function evaluateDecision(metrics: DecisionMetrics): DecisionEvaluation {
-  const weightedScore = Number(
-    (
-      metrics.impact * DECISION_WEIGHTS.impact +
-      metrics.confidence * DECISION_WEIGHTS.confidence +
-      (100 - metrics.effort) * DECISION_WEIGHTS.effort +
-      metrics.reversibility * DECISION_WEIGHTS.reversibility
-    ).toFixed(1)
-  );
+  const sum =
+    metrics.impact * DECISION_WEIGHTS.impact +
+    metrics.confidence * DECISION_WEIGHTS.confidence +
+    (100 - metrics.effort) * DECISION_WEIGHTS.effort +
+    metrics.reversibility * DECISION_WEIGHTS.reversibility;
+  // Half up from the exact hundredths. The float sum holds an x.x5 total on
+  // either side of the half, so toFixed(1) would send equal totals both ways,
+  // and the gates below would give one printed total two verdicts.
+  const weightedScore = Math.round(Math.round(sum * 100) / 10) / 10;
 
   let recommendation: DecisionRecommendation = "hold";
   if (weightedScore >= 68 && metrics.impact >= 65 && metrics.confidence >= 60) {
@@ -180,14 +189,14 @@ export function evaluateDecision(metrics: DecisionMetrics): DecisionEvaluation {
     recommendation = "test";
   }
 
-  const strongestPositiveAxis = selectStrongestSignal([
+  const strongestPositive = selectStrongestSignal([
     { axis: "impact", score: metrics.impact },
     { axis: "confidence", score: metrics.confidence },
     { axis: "effort", score: 100 - metrics.effort },
     { axis: "reversibility", score: metrics.reversibility },
   ]);
 
-  const strongestRiskAxis = selectStrongestSignal([
+  const strongestRisk = selectStrongestSignal([
     { axis: "impact", score: 100 - metrics.impact },
     { axis: "confidence", score: 100 - metrics.confidence },
     { axis: "effort", score: metrics.effort },
@@ -201,11 +210,15 @@ export function evaluateDecision(metrics: DecisionMetrics): DecisionEvaluation {
         ? "I would test this before I commit fully."
         : "I would hold this for now.";
 
+  const strength =
+    strongestPositive.score >= STRENGTH_FLOOR ? positiveAxisCopy[strongestPositive.axis] : NO_STRENGTH_COPY;
+  const risk = strongestRisk.score >= RISK_FLOOR ? riskAxisCopy[strongestRisk.axis] : NO_RISK_COPY;
+
   return {
     weightedScore,
     recommendation,
-    strongestPositiveAxis,
-    strongestRiskAxis,
-    rationale: `${opening} ${positiveAxisCopy[strongestPositiveAxis]} ${riskAxisCopy[strongestRiskAxis]}`,
+    strongestPositiveAxis: strongestPositive.axis,
+    strongestRiskAxis: strongestRisk.axis,
+    rationale: `${opening} ${strength} ${risk}`,
   };
 }

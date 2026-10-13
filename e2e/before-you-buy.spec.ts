@@ -41,4 +41,45 @@ test.describe("Before You Buy", () => {
     await expect(holdings).toHaveCount(1);
     await expect(holdings.first()).toContainText("AAPL");
   });
+
+  test("lists search suggestions in the route's own palette and picks one", async ({ page }) => {
+    await page.goto(ROUTE);
+    const summary = page.locator('.byb-result [role="status"]');
+    // The summary names the buy once the page has hydrated and the index has loaded.
+    await expect(summary).toContainText("(NVDA)");
+
+    const search = page.getByRole("combobox", { name: "Search stock symbol" });
+    await search.fill("xo");
+    // The list portals into the route root, so it reads the route's palette
+    // and paints the same field colour as the search above it.
+    const list = page.locator('.byb [role="listbox"]');
+    await expect(list).toBeVisible();
+    const fieldColour = await search.evaluate((field) => getComputedStyle(field).backgroundColor);
+    await expect(list).toHaveCSS("background-color", fieldColour);
+
+    await list.getByRole("option", { name: /^XOM/ }).click();
+    await expect(summary).toContainText("(XOM)");
+  });
+
+  test("keeps the result within a screen of the inputs on a phone with many saved holdings", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.addInitScript(() => {
+      const symbols = ["SPY", "AAPL", "MSFT", "GOOGL", "AMZN", "JPM", "COST", "NVDA", "XOM", "KO", "V", "ABBV", "ACN", "ADBE"];
+      window.localStorage.setItem(
+        "portfolio_holdings",
+        JSON.stringify(symbols.map((symbol) => ({ symbol, shares: 10, averageCost: 100 })))
+      );
+    });
+    await page.goto(ROUTE);
+
+    const summary = page.locator('.byb-result [role="status"]');
+    await expect(summary).toContainText(/to this \$[\d,]+ portfolio/);
+    await expect(page.getByRole("table").first().locator("tbody tr")).toHaveCount(14);
+
+    // The holdings scroll inside their own region, so fourteen rows do not
+    // push the summary a screen below the stock field that rewrites it.
+    const search = await page.getByRole("combobox", { name: "Search stock symbol" }).boundingBox();
+    const result = await summary.boundingBox();
+    expect(result!.y - search!.y).toBeLessThanOrEqual(844);
+  });
 });
