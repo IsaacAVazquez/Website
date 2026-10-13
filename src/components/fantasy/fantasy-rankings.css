@@ -9,10 +9,12 @@
  * The column template
  * Rank, chip, name, team, bye, then the columns the state allows, the spread, the
  * average, and the star. A column the state hides has no track, so the row closes up.
+ * The name keeps 168px before the spread takes any, since the name is the last thing
+ * a row can lose.
  * ======================================================================== */
 .ffb-rk-board {
-  --ffb-rk-lead: 30px 46px minmax(140px, 1fr) 36px 26px;
-  --ffb-rk-tail: minmax(180px, 2fr) 44px 36px;
+  --ffb-rk-lead: 30px 46px minmax(168px, 1fr) 36px 26px;
+  --ffb-rk-tail: minmax(150px, 2fr) 44px 36px;
   --ffb-cols: var(--ffb-rk-lead) var(--ffb-rk-tail);
 }
 .ffb-rk-board.ffb-rk-vorp { --ffb-cols: var(--ffb-rk-lead) 48px var(--ffb-rk-tail); }
@@ -25,56 +27,48 @@
    The row's own click still opens the player. */
 .ffb-rk-board .ffb-row { cursor: pointer; }
 .ffb-rk-board .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
+/* A row reached by keyboard stops below the pinned toolbar block (its measured height). */
+.ffb-rk-board .ffb-row-open { scroll-margin-top: calc(var(--ffb-rk-bar, 96px) + var(--ffb-s1)); }
 
-/* ==========================================================================
- * The sticky block: the toolbar and the column heads pin together
- * It ends on the ink rule a table head ends on, and the first tier's tab hangs from it.
- * ======================================================================== */
-.ffb-rk-bar { border-bottom: 2px solid var(--ffb-ink); }
-/* A queued rank's highlighter runs 4px past the column, so the block paints that much wider. */
-.ffb-rk-bar::before {
-  content: "";
-  position: absolute;
-  inset: 0 -4px;
-  z-index: -1;
-  background: var(--ffb-surface);
-}
-.ffb-rk-board > .ffb-tier:first-of-type > .ffb-tier-head { height: 28px; border-top: 0; }
-.ffb-rk-board > .ffb-rk-list > .ffb-row:first-child,
-.ffb-rk-board .ffb-empty,
-.ffb-rk-board .ffb-rk-skel > .ffb-skel-row:first-child { border-top: 0; }
 .ffb-rk-board > .ffb-notice { margin-block: var(--ffb-s4); }
 
 /* The league size rides against the ranking switch it belongs to. */
 .ffb-rk-rank > .ffb-select { width: auto; margin-inline-start: -1px; }
-.ffb-rk-tools > .ffb-search:has(:disabled) {
-  background: transparent;
-  box-shadow: none;
-  outline: 1px dashed var(--ffb-edge);
-  outline-offset: -1px;
-}
-/* The kit rings the bare input 3px inside itself, which lands on the first letter typed.
-   The field takes the ring here. */
-.ffb-rk-tools .ffb-search-input:focus-visible { outline: 0; }
-.ffb-rk-tools .ffb-search:focus-within { outline: 2px solid var(--c97-accent); outline-offset: 2px; }
-/* The phone's search button while a query is filtering the board. */
-.ffb-rk-find.ffb-rk-is-on { background: var(--ffb-ink); color: var(--ffb-board); }
 
 /* ==========================================================================
- * Column heads and cells of this board
+ * Column heads, tier heads, and cells of this board
  * ======================================================================== */
-/* A help trigger is a button. A button does not inherit its case, and the site frame gives
-   every button a 44px floor that would centre a short label away from its column's edge. */
-.ffb-rk-board .ffb-colhead button,
-.ffb-rk-drawer .ffb-stat dt button { min-width: 0; text-transform: inherit; }
 /* "ADP (overall)" takes two lines over a 60px column. */
 .ffb-rk-board .ffb-colhead > .ffb-rk-h-wrap { white-space: normal; }
 /* Only as wide as its words, so a wide column does not turn into one wide help target. */
 .ffb-rk-h-spread-name { justify-self: start; }
+/* What a division of the scale is, under the column's name. The labels ride on each tier. */
+.ffb-rk-h-unit { overflow: hidden; font-size: 10px; letter-spacing: 0.02em; text-overflow: ellipsis; }
 .ffb-rk-word { font-size: 10.5px; text-align: left; }
 .ffb-rk-footlinks { margin-top: var(--ffb-s4); }
 
+/* The tier's name and its cliff share the head's left part at every width. */
+.ffb-rk-tier-lead {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ffb-s4);
+  min-width: 0;
+}
+/* The scale's labels print only where the plot does. */
+.ffb-rk-scale { display: none; }
+/* A page of the VORP view is not a tier. Its break is a rule and a line of label type, with no gap. */
+.ffb-rk-board > .ffb-rk-page { --ffb-gap: 0px; }
+.ffb-rk-board > .ffb-rk-page:not(:first-of-type) > .ffb-tier-head {
+  height: 29px;
+  border-top: 1px solid var(--ffb-rule);
+}
+
 @media (min-width: 768px) {
+  /* The two control groups are rows on a phone only. Here their controls sit in the toolbar's one row. */
+  .ffb-rk-ctl-a,
+  .ffb-rk-ctl-b { display: contents; }
   /* A phone hides this pair with a utility, so the display is set only where it shows. */
   .ffb-rk-rank { display: inline-flex; flex: none; }
   /* The number keeps its right edge and the word, when the gate fires, sits beside it. */
@@ -94,16 +88,69 @@
     clip-path: inset(50%);
     white-space: nowrap;
   }
+
+  /* The plot, its column head, and the labels show together or not at all. The three
+     properties below are switched off as one where the plot's cell would be too narrow. */
+  .ffb-rk-board .ffb-spread { display: var(--ffb-rk-plot, block); }
+  .ffb-rk-board .ffb-h-spread { display: var(--ffb-rk-plot, grid); }
+  /* Where the plot shows, a tier's head is a row on the board's own columns, with the
+     labels of the tier's scale over the spread column, and it pins under the toolbar block
+     while its tier is on screen. Its ink rule slides under the block's, so a pinned head
+     hangs from that rule the way the first tier's does. */
+  .ffb-rk-board .ffb-tier-head {
+    position: var(--ffb-rk-pin, sticky);
+    top: calc(var(--ffb-rk-bar, 96px) - 2px);
+    z-index: 2;
+    display: var(--ffb-rk-head, grid);
+    grid-template-columns: var(--ffb-cols);
+    column-gap: var(--ffb-s3);
+    background: var(--ffb-surface);
+    box-shadow: -4px 0 0 var(--ffb-surface), 4px 0 0 var(--ffb-surface);
+  }
+  .ffb-rk-board > .ffb-tier:first-of-type > .ffb-tier-head { top: var(--ffb-rk-bar, 96px); }
+  .ffb-rk-board > .ffb-rk-page:not(:first-of-type) > .ffb-tier-head { top: calc(var(--ffb-rk-bar, 96px) - 1px); }
+  .ffb-rk-board .ffb-rk-tier-lead { grid-column: 1 / -4; }
+  .ffb-rk-board .ffb-rk-scale {
+    display: var(--ffb-rk-plot, grid);
+    grid-column: -4 / -3;
+    align-self: end;
+    padding-bottom: 3px;
+    line-height: 1.2;
+  }
+  /* The pinned tier head stands 30px under the toolbar block. */
+  .ffb-rk-board .ffb-row-open { scroll-margin-top: calc(var(--ffb-rk-bar, 96px) + var(--ffb-rk-pinned, 34px)); }
 }
 
-/* The spread's legend needs about 300px. Below that the head keeps its name and the scale. */
+/* Where the plot's cell would be under about 240px it is dropped, on every board. The width
+   that happens at depends on which columns the state shows, so there is one line per set. */
+@media (min-width: 768px) and (max-width: 823.98px) {
+  .ffb-rk-board { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+}
+@media (min-width: 768px) and (max-width: 891.98px) {
+  .ffb-rk-board.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+}
+@media (min-width: 768px) and (max-width: 905.98px) {
+  .ffb-rk-board.ffb-rk-adp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+}
+@media (min-width: 768px) and (max-width: 973.98px) {
+  .ffb-rk-board.ffb-rk-adp.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .ffb-rk-board.ffb-rk-vs { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+}
+@media (min-width: 768px) and (max-width: 1091.98px) {
+  .ffb-rk-board.ffb-rk-vs.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+}
+/* Below 1024px the plot is narrow enough that every other label is all that fits. */
+@media (max-width: 1023.98px) {
+  .ffb-rk-board .ffb-rk-scale > :nth-child(even) { visibility: hidden; }
+}
+/* The spread's legend needs about 300px. Below that the head keeps its name and the unit.
+   A scale of more than eight labels (a deep tier, a page of the VORP view) also prints
+   every other one there, since sixteen do not fit a 255px plot. */
 @media (max-width: 1279.98px) {
   .ffb-rk-board .ffb-spread-key { display: none; }
-}
-/* With the market columns on, a tablet has no room left for the plot. The range stays in the drawer. */
-@media (min-width: 768px) and (max-width: 899.98px) {
-  .ffb-rk-board.ffb-rk-adp { --ffb-rk-tail: 44px 36px; }
-  .ffb-rk-board.ffb-rk-adp :is(.ffb-spread, .ffb-h-spread) { display: none; }
+  .ffb-rk-board .ffb-rk-scale:has(> :nth-child(9)) > :nth-child(even) { visibility: hidden; }
 }
 
 /* ==========================================================================
@@ -113,36 +160,42 @@
 .ffb-rk-facts { --ffb-stat-min: 84px; }
 .ffb-rk-ppg { --ffb-stat-min: 60px; }
 .ffb-rk-plot { display: grid; height: 24px; }
-.ffb-rk-queue { justify-content: center; }
 .ffb-rk-ppg-head { display: flex; align-items: center; gap: var(--ffb-s1); }
 
 /* ==========================================================================
- * Phones: two rows of controls
- * Row one is position, search, the queue filter, and the count. Row two is scoring and ranking.
+ * Phones: two rows of controls, drawn in the order the keyboard walks them
+ * Row one is position and scoring with the count at its end. Row two is the ranking
+ * method, search, and the queue filter. The count is not a control, so it is the one
+ * thing drawn out of its place in the markup.
  * ======================================================================== */
 @media (max-width: 767.98px) {
-  .ffb-rk-tools > .ffb-rk-pos { order: 1; flex: 0 1 auto; width: auto; }
-  .ffb-rk-tools > .ffb-rk-find { order: 2; }
-  .ffb-rk-tools > .ffb-toggle { order: 3; justify-content: center; padding-inline: var(--ffb-s2); }
-  .ffb-rk-tools > .ffb-count { order: 4; flex: 1 1 84px; }
-  .ffb-rk-tools > .ffb-seg { order: 5; }
-  .ffb-rk-tools > .ffb-rk-mode { order: 6; flex: 0 1 auto; width: auto; }
-  /* The open search takes row one, and the controls it replaces step aside. */
-  .ffb-rk-tools > .ffb-rk-findrow { order: 0; flex: 1 1 100%; gap: var(--ffb-s2); }
+  .ffb-rk-ctl-a,
+  .ffb-rk-ctl-b { display: flex; align-items: center; gap: var(--ffb-s2); min-width: 0; }
+  .ffb-rk-ctl-a { order: 1; flex: none; }
+  .ffb-rk-tools > .ffb-count { order: 2; flex: 1 1 56px; min-width: 0; line-height: 1.3; }
+  .ffb-rk-ctl-b { order: 3; flex: 1 1 100%; }
+  .ffb-rk-pos { flex: none; width: auto; padding-inline-end: 26px; background-position: right 8px center; }
+  .ffb-rk-mode { flex: 1 1 0; width: auto; min-width: 0; }
+  .ffb-rk-ctl-b > .ffb-toggle { justify-content: center; padding-inline: var(--ffb-s2); }
+  /* The VORP view's count names the players it leaves out, which is a line of its own. */
+  .ffb-rk-tools > .ffb-rk-count-long { order: 4; flex-basis: 100%; }
+  /* The open search takes row one, and the controls it replaces step aside. The row may
+     shrink below its contents, or Done runs off a 320px screen once Clear appears. */
+  .ffb-rk-tools > .ffb-rk-findrow { flex: 1 1 100%; gap: var(--ffb-s2); min-width: 0; }
   .ffb-rk-findrow > .ffb-search { flex: 1 1 0; min-width: 0; }
-  .ffb-rk-tools.ffb-rk-searching > .ffb-rk-yield { display: none; }
-  .ffb-rk-word { margin-inline-start: 6px; }
-  /* A help trigger in the drawer holds a 44px target, and the negative margin keeps its line. */
-  .ffb-rk-drawer .ffb-stat dt button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    min-width: 44px;
-    min-height: 44px;
-    margin-block: -15px;
-  }
+  .ffb-rk-searching > :is(.ffb-rk-ctl-a, .ffb-rk-ctl-b) { display: none; }
+  /* A page break of the VORP view exists to carry its page's scale. A phone draws no plot,
+     so the list runs on without it. */
+  .ffb-rk-board > .ffb-rk-page > .ffb-tier-head { display: none; }
+  .ffb-rk-board > .ffb-rk-page:first-of-type .ffb-row:first-child { border-top: 0; }
+}
+/* Under 360px the count has no room beside position and scoring, so it takes a short line
+   under the two rows of controls. */
+@media (max-width: 359.98px) {
+  .ffb-rk-tools > .ffb-count { order: 4; flex-basis: 100%; }
 }
 
 @media print {
   .ffb-rk-footlinks a { display: none; }
+  .ffb-rk-board .ffb-tier-head { position: static; box-shadow: none; }
 }
