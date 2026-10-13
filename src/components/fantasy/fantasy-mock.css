@@ -351,8 +351,11 @@
   .ffb-mk-cell-between { min-inline-size: 0; }
   /* A quick pick's two labels take a line each where they do not fit one. */
   .ffb-mk-quick > .ffb-sticker-meta { flex-wrap: wrap; row-gap: 3px; }
-  /* The scorebug already pins two rows, so the board's bar scrolls with the list. */
+  /* The scorebug already pins two rows, so the board's bar scrolls with the list. That leaves
+     the scorebug as the whole pinned stack, three rows under 360px, so a focused row clears its
+     measured height and not the kit's fallback. */
   .ffb-mk-boardbar { position: static; }
+  .ffb-mk-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 0px) + var(--ffb-s2)); }
   /* The search and the count share a row, which starts the list 24px sooner. */
   .ffb-mk-board .ffb-toolbar > .ffb-search { flex: 1 1 0; min-width: 0; }
   .ffb-mk-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
@@ -370,4 +373,10 @@
   .ffb-root .ffb-mk-noprint,
   .ffb-root .ffb-mk-skip,
   .ffb-root .ffb-mk-quick-go { display: none; }
+  .ffb-root .ffb-mk-start { position: static; }
+}
+/* The column head leaves a phone through a screen-only utility, which also takes it off paper.
+   A sheet of paper is wide enough for the desktop row, whose numbers need their heads. */
+@media print and (min-width: 768px) {
+  .ffb-root .ffb-mk-colhead { display: grid; }
 }

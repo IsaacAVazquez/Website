@@ -563,7 +563,9 @@ describe("MockDraftClient", () => {
         ...ready.snapshot,
         overall: (ready.snapshot.overall as Player[]).map((player, index) => ({
           ...player,
-          tier: index < 6 ? 1 : 2,
+          // The room's early window is the top three left, so four simulated picks
+          // all come out of tier 1 and the lone tier 2 player stays on the board.
+          tier: index < 30 ? 1 : index === 30 ? 2 : 3,
           byeWeek: 9,
         })),
       },
@@ -590,6 +592,15 @@ describe("MockDraftClient", () => {
       .join(" ")
       .match(/P\. \d+/g);
     expect(goneNames).toHaveLength(4);
+
+    // The tab prints two digits and the section's name keeps the plain number,
+    // and a tier down to one player prints a rank and not a range.
+    const tierOne = within(board).getByRole("region", { name: /^Tier 1, 26 players, ranks \d+ to \d+$/ });
+    expect(tierOne.querySelector(".ffb-tier-tab")).toHaveTextContent(/^Tier 01$/);
+    expect(tierOne.querySelector(".ffb-tier-count")).toHaveTextContent(/^26 left$/);
+    const tierTwo = within(board).getByRole("region", { name: /^Tier 2, 1 player, rank \d+, / });
+    expect(tierTwo.querySelector(".ffb-tier-tab")).toHaveTextContent(/^Tier 02$/);
+    expect(tierTwo.querySelector(".ffb-tier-range")).toHaveTextContent(/^Rank \d+$/);
 
     // A filter breaks the reading, so the line leaves with it.
     fireEvent.click(within(board).getByRole("radio", { name: "RB" }));

@@ -408,16 +408,24 @@ export function MockDraftClient() {
     }
   }, [currentPick, focusClock, isLive, isRecap, showSetup]);
 
-  // The scorebug is two rows on a phone and can wrap between 768 and 1000px,
-  // so the board's bar and the rail pin under its measured height.
+  // The scorebug is two rows on a phone and three under 360px, so the board's
+  // bar and the rail pin under its measured height. The board's bar wraps where
+  // the list column is narrow, so the two together are what a focused row has
+  // to clear, and the kit's scroll margin reads that sum.
+  const boardbarRef = useRef<HTMLDivElement>(null);
   const [bugHeight, setBugHeight] = useState(0);
+  const [boardbarHeight, setBoardbarHeight] = useState(0);
   useEffect(() => {
-    const element = stripRef.current;
-    if (!element || typeof ResizeObserver === "undefined") return;
-    const measure = () => setBugHeight(element.offsetHeight);
+    const bug = stripRef.current;
+    if (!bug || typeof ResizeObserver === "undefined") return;
+    const measure = () => {
+      setBugHeight(bug.offsetHeight);
+      setBoardbarHeight(boardbarRef.current?.offsetHeight ?? 0);
+    };
     measure();
     const observer = new ResizeObserver(measure);
-    observer.observe(element);
+    observer.observe(bug);
+    if (boardbarRef.current) observer.observe(boardbarRef.current);
     return () => observer.disconnect();
   }, [isLive]);
 
@@ -1244,10 +1252,16 @@ export function MockDraftClient() {
               heading="Since your last pick"
             />
 
-            {/* The scorebug's measured height is where the board's bar and the rail pin. */}
+            {/* The scorebug's measured height is where the board's bar and the rail
+                pin, and the two bars together are what a focused row clears. */}
             <div
               className="ffb-work ffb-work-split"
-              style={{ "--ffb-sticky-top": `${bugHeight}px` } as CSSProperties}
+              style={
+                {
+                  "--ffb-sticky-top": `${bugHeight}px`,
+                  "--ffb-pinned-top": `${bugHeight + boardbarHeight + 8}px`,
+                } as CSSProperties
+              }
             >
               <div>
                 {/* focusClock sets this region's scroll margin to the scorebug's
@@ -1312,7 +1326,7 @@ export function MockDraftClient() {
                       hold their place under the scorebug while the list scrolls.
                       On a phone the scorebug already pins two rows, so the
                       stylesheet lets this bar scroll with the list there. */}
-                  <div className="ffb-sticky ffb-mk-boardbar">
+                  <div ref={boardbarRef} className="ffb-sticky ffb-mk-boardbar">
                     <div className="ffb-toolbar">
                       <PositionFilterBar
                         ariaLabel="Filter available players by position"
@@ -1349,7 +1363,7 @@ export function MockDraftClient() {
                     </div>
 
                     {windowedPlayers.length > 0 ? (
-                      <div aria-hidden="true" className="ffb-colhead hidden md:grid">
+                      <div aria-hidden="true" className="ffb-colhead ffb-mk-colhead hidden md:grid">
                         <span className="ffb-h-num ffb-is-sorted">Rk</span>
                         <span className="ffb-h-pos">Pos</span>
                         <span>Player</span>
@@ -1385,7 +1399,7 @@ export function MockDraftClient() {
                     const tierLabel = [
                       group.tier !== null ? `Tier ${group.tier}` : "Players with no published tier",
                       `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
-                      `ranks ${firstRank} to ${lastRank}`,
+                      firstRank === lastRank ? `rank ${firstRank}` : `ranks ${firstRank} to ${lastRank}`,
                       index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
                     ]
                       .filter(Boolean)
@@ -1414,8 +1428,9 @@ export function MockDraftClient() {
                                 : "No published tier"}
                             </span>{" "}
                             <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
+                            {/* A tier down to its last player has one rank, not a range. */}
                             <span className="ffb-tier-range">
-                              Ranks {firstRank}–{lastRank}
+                              {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
                             </span>
                           </h3>
                           {index > 0 && cliff > 0 ? (
