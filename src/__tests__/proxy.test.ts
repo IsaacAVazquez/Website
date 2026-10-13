@@ -61,6 +61,30 @@ describe("proxy security headers", () => {
     );
   });
 
+  // The transit page's Nearest station button is the one place the site asks
+  // for a location. An empty allowlist makes Chromium refuse the call with no
+  // prompt. The policy that governs the page after an in-app <Link> transition
+  // is the one served with the originating document, so the allowance must not
+  // be scoped to the /bay-area-transit path.
+  it("allows geolocation for the site itself on every route so client-side navigation to the transit page keeps working", () => {
+    for (const path of ["/bay-area-transit", "/", "/food-map"]) {
+      const response = proxy(new NextRequest(`https://example.com${path}`));
+
+      expect(response.headers.get("Permissions-Policy")).toBe(
+        "camera=(), microphone=(), geolocation=(self)",
+      );
+    }
+  });
+
+  it("keeps the deployment-level geolocation policy aligned with the proxy", () => {
+    const policies = [...nextConfig.matchAll(/key:\s*["']Permissions-Policy["'],\s*value:\s*["']([^"']+)["']/g)].map(
+      ([, value]) => value,
+    );
+    expect(policies).toHaveLength(1);
+    expect(policies[0]).toContain("geolocation=(self)");
+    expect(nextConfig).not.toContain("geolocation=()");
+  });
+
   it("only upgrades subresources for browser-facing HTTPS requests", () => {
     const localRequest = new NextRequest(
       "http://localhost:3000/fantasy-football",

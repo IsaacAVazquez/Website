@@ -115,4 +115,20 @@ describe("project route inventory", () => {
     expect(isDashboardRoute("/score-pools")).toBe(false);
     expect(isDashboardRoute("/nbax")).toBe(false);
   });
+
+  // The browser spec spreads DASHBOARD_ROUTES and names every other project
+  // page by hand, so a page added below a project gets no two-zone hydration
+  // check and no header-edge check until it is named there.
+  it("names every project page outside the registry in the browser spec", () => {
+    const spec = fs.readFileSync(path.join(ROOT, "e2e", "project-routes.spec.ts"), "utf8");
+    const outsideRegistry = [
+      ...pageRoutes().filter((route) => isDashboardRoute(route) && !DASHBOARD_ROUTES.includes(route)),
+      "/score-pools",
+      "/score-pools/tracker",
+      "/score-pools/settings",
+      "/agent-build-index",
+    ];
+    expect(spec).toContain("...DASHBOARD_ROUTES");
+    expect(outsideRegistry.filter((route) => !spec.includes(`"${route}"`))).toEqual([]);
+  });
 });

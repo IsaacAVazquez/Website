@@ -372,9 +372,12 @@ const nextConfig = {
         key: "Referrer-Policy",
         value: "strict-origin-when-cross-origin",
       },
+      // Geolocation is allowed for the site itself on every route, for the
+      // transit page's Nearest station button. src/proxy.ts sets the same
+      // allowance on the HTML response.
       {
         key: "Permissions-Policy",
-        value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        value: "camera=(), microphone=(), geolocation=(self), interest-cohort=()",
       },
       {
         key: "X-DNS-Prefetch-Control",

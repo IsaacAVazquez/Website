@@ -4,7 +4,7 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-10-11 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-10-12 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. Its line on class names, sticky bars, and maps was added on 2026-10-12. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
 > the print shop reference, `wine-cellar.css` and `league-table.css` show a project route on its own
@@ -39,15 +39,20 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 ## Dark mode
 
 - [ ] Every surface has a `.dark` story, so verify the page in both themes, not just light.
-- [ ] D3 and SVG charts resolve series colours at render time via
-      `getComputedStyle(svgElement).getPropertyValue('--c97-…')`, read from the chart's own element
-      because the document root resolves no Catalog 97 token, and re-resolved on theme change
-      (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant.
+- [ ] D3 and SVG charts put token colours on their marks as CSS variables through `.style()`
+      (`.style("fill", "var(--c97-…, currentColor)")`), which follows a theme change with no redraw.
+      Resolve a colour with `getComputedStyle(svgElement).getPropertyValue('--c97-…')` only where it
+      feeds a computation, read from the chart's own element because the document root resolves no
+      Catalog 97 token. An effect keyed on `useTheme().resolvedTheme` can read the old theme there,
+      since a child's effect runs before `next-themes` moves the class on `<html>`, so a manual
+      toggle keeps the old ink. Never bake a token's hex into a constant.
       Chromium resolves `var()` in SVG *presentation attributes* (the investments growth bars and
       the retirement band computed to the token's colour on 2026-10-09), and WebKit and Gecko were
-      not checked, so resolve the token at render time whenever the colour feeds a computation or
-      has to hold in every engine, and use `.style()` otherwise. References: `ComparisonRadarChart` and
-      `FrontierCostContextChart`. Investments visuals share one categorical
+      not checked, so resolve the token at render time whenever the colour feeds a computation,
+      and use `.style()` otherwise. References for `.style()`: `ComparisonRadarChart` and
+      `FrontierCostContextChart`. No chart reads a computed colour as of 2026-10-12, and
+      `logConsoleNote` in `Catalog97EasterEggs.tsx` is the one token read of that kind in the code.
+      Investments visuals share one categorical
       palette: `src/components/investments/holdingPalette.ts`.
 - [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles, since they vanish on dark paper.
 
@@ -182,6 +187,11 @@ genre, the first screen, what is cut, and what is pinned. Before merging a redes
       `--c97-ink`, `--c97-surface`, and `--c97-rule` (or nests its own `data-c97-surface`) before borrowing
       any `c97-*` class, and sets `--c97-accent` to its focus colour, because `.c97-page button:focus-visible`
       paints that token with no radius. `.c97-page button { min-width: 44px }` stays.
+- [ ] The route's class names are its own. A plain stylesheet stays on the page through every later
+      client-side navigation, so every class a route sheet names carries the route's prefix, and
+      `src/app/__tests__/route-stylesheets.test.ts` fails when two route folders name a class the same
+      way. A sticky bar inside the page reads `--c97-z-sticky`, and a Leaflet map takes `.c97-basemap`,
+      which keeps Leaflet's pane and control z-indexes inside the map.
 - [ ] Everything pinned stays. Every e2e test id, exact string, URL parameter, and keyboard path a spec or
       a route test names is kept, and where a redesign has to change one the PR changes the test in the
       same commit and says why. Nothing in the route's `.impeccable/surfaces/` brief's "do not

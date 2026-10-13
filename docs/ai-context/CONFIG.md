@@ -34,7 +34,7 @@ Important current behavior:
   - `/blog`, `/blog/:slug`, `/blog/posts/:slug`, `/articles/:slug` → `/writing`
   - contact variations (`/get-in-touch`, `/hire-me`) and resume variations (`/cv`, `/resume.pdf`)
 - `poweredByHeader = false`
-- site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options SAMEORIGIN, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control) plus a `Content-Security-Policy-Report-Only` header; the enforcing CSP is set in `src/proxy.ts`
+- site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options SAMEORIGIN, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control) plus a `Content-Security-Policy-Report-Only` header; the enforcing CSP is set in `src/proxy.ts`. Permissions-Policy turns the camera and the microphone off and allows geolocation for the site itself on every route. The one caller is the Nearest station button on `/bay-area-transit`, and the allowance is site-wide because the policy belongs to the document, so a visitor who lands on another page and follows an in-app link to the transit page keeps the policy of the page they landed on. The value is set in both `headers()` and `src/proxy.ts`, and `src/__tests__/proxy.test.ts` holds the two together
 - `compiler.removeConsole` in production, keeping `console.error` and `console.warn`
 - TypeScript build errors are enforced; `npm run typecheck` also runs explicitly in CI
 - `serverExternalPackages = ['better-sqlite3', 'sharp']`

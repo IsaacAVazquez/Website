@@ -43,6 +43,19 @@ describe("Catalog97Header utilities", () => {
     ).toBeVisible();
   });
 
+  it("marks the header while search is open, so the stylesheet can lift it over the page", () => {
+    render(<Catalog97Header />);
+    const header = screen.getByRole("banner");
+
+    expect(header).not.toHaveAttribute("data-search-open");
+
+    fireEvent.click(screen.getByRole("button", { name: /search the site/i }));
+    expect(header).toHaveAttribute("data-search-open");
+
+    fireEvent.click(screen.getByRole("button", { name: "Close search" }));
+    expect(header).not.toHaveAttribute("data-search-open");
+  });
+
   it("opens search from slash without swallowing slash inside an input", () => {
     render(<Catalog97Header />);
 

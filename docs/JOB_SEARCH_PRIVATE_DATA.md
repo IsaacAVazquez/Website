@@ -27,7 +27,7 @@ The wrapper is `{ "schema": "mba-applications-export", "version": 1, "exportedAt
 | `status` | `saved`, `applied`, `interviewing`, `offer`, `rejected`, `archived` | Pipeline stage |
 | `priority` | `low`, `medium`, `high` | Set from the fit score on promote |
 | `notes`, `contact`, `sourceUrl` | string | Free text, 2,000 characters for notes and 220 for the rest |
-| `followUpDate`, `deadline` | `YYYY-MM-DD` or null | Drive the attention list |
+| `followUpDate`, `deadline` | `YYYY-MM-DD` or null | Drive the attention list. A date that is not on the calendar, such as February 30, reads as null |
 | `createdAt`, `updatedAt`, `appliedAt`, `archivedAt` | ISO or null | Timestamps |
 | `fit` | `{ score, rationale, scoredAt }` or null | Score is an integer 0 to 100 |
 | `appliedVia` | string | The ATS or channel used to apply |
@@ -71,7 +71,7 @@ Every merge in `src/lib/mba-applications.ts` is newer wins, both for application
 
 ## The development-only route
 
-`src/app/api/job-search/route.ts` answers `GET` and `PUT` at `/api/job-search?file=pipeline` and `?file=candidates`. It returns 404 unless `NODE_ENV` is `development`, read inside the handler, so a production build never serves or accepts the files. `GET` returns `{ revision, items }`, with the revision being the file's modification time and `{ revision: "0", items: [] }` when the file is missing. `PUT` takes `{ revision, items }`, answers 409 with the current file when the revision is stale, and otherwise sanitizes the items through the parsers and writes the wrapper. The page's `usePrivatePipelineSync` hook pulls on mount, focus, visibility change, and every 30 seconds, and pushes shortly after a local edit, merging on 409 and retrying once.
+`src/app/api/job-search/route.ts` answers `GET` and `PUT` at `/api/job-search?file=pipeline` and `?file=candidates`. It returns 404 unless `NODE_ENV` is `development`, read inside the handler, so a production build never serves or accepts the files. `GET` returns `{ revision, items }`, with the revision being the file's modification time and `{ revision: "0", items: [] }` when the file is missing. `PUT` takes `{ revision, items }`, answers 409 with the current file when the revision is stale, and otherwise sanitizes the items through the parsers and writes the wrapper. The page's `usePrivatePipelineSync` hook pulls on mount, focus, visibility change, and every 30 seconds, and pushes shortly after a local edit, merging on 409 and retrying once. The candidates hook, `useMBAJobCandidates`, keeps no local copy to merge, so on a 409 it replays the page's edit on the server's copy and retries once, which keeps a candidate removed in the page removed.
 
 ## The dump command
 

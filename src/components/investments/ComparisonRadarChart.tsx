@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from "react";
 import { select, line } from "d3";
-import { useTheme } from "next-themes";
 
 export interface RadarDimension {
   dimension: string;
@@ -18,7 +17,6 @@ interface Props {
 
 export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (!svgRef.current || data.length === 0) return;
@@ -32,23 +30,15 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     const n = data.length;
     const angleSlice = (Math.PI * 2) / n;
 
-    // SVG presentation attributes can't substitute var(), so resolve the
-    // tokens at render time (re-resolved when resolvedTheme flips) — same
-    // idiom FrontierCostContextChart uses.
-    // Read from the svg itself rather than document.documentElement. The
-    // Catalog 97 tokens are scoped to the `[data-c97]` page root and its
-    // surfaces, so the document root resolves none of them.
-    const computedStyle = getComputedStyle(svgRef.current);
-    const colorA =
-      computedStyle.getPropertyValue("--c97-accent").trim() || "currentColor";
-    const colorB =
-      computedStyle.getPropertyValue("--c97-ink").trim() || "currentColor";
-    const inkMuted =
-      computedStyle.getPropertyValue("--c97-ink-2").trim() || "currentColor";
-    const rule =
-      computedStyle.getPropertyValue("--c97-rule").trim() || "currentColor";
-    const paper =
-      computedStyle.getPropertyValue("--c97-surface").trim() || "currentColor";
+    // SVG presentation attributes can't substitute var(), so each mark takes
+    // its token as a style and follows a theme change by itself. A colour
+    // resolved here would be the old theme's after a manual toggle, since a
+    // child's effect runs before the theme class moves on <html>.
+    const colorA = "var(--c97-accent, currentColor)";
+    const colorB = "var(--c97-ink, currentColor)";
+    const inkMuted = "var(--c97-ink-2, currentColor)";
+    const rule = "var(--c97-rule, currentColor)";
+    const paper = "var(--c97-surface, currentColor)";
 
     const svg = select(svgRef.current);
     svg.selectAll("*").remove();
@@ -61,7 +51,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
       g.append("circle")
         .attr("r", r)
         .attr("fill", "none")
-        .attr("stroke", rule)
+        .style("stroke", rule)
         .attr("stroke-width", 1)
         .attr("opacity", 0.6);
     }
@@ -76,7 +66,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("y1", 0)
         .attr("x2", x)
         .attr("y2", y)
-        .attr("stroke", rule)
+        .style("stroke", rule)
         .attr("stroke-width", 1)
         .attr("opacity", 0.5);
     });
@@ -92,7 +82,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("y", y)
         .attr("dy", "0.35em")
         .attr("text-anchor", Math.abs(x) < 5 ? "middle" : x > 0 ? "start" : "end")
-        .attr("fill", inkMuted)
+        .style("fill", inkMuted)
         .attr("font-size", "11px")
         .style("font-family", "var(--c97-font-body), system-ui")
         .text(d.dimension);
@@ -114,17 +104,17 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     // Stock B polygon (drawn first so A is on top)
     g.append("path")
       .attr("d", polygonPath(scoresB))
-      .attr("fill", colorB)
+      .style("fill", colorB)
       .attr("fill-opacity", 0.14)
-      .attr("stroke", colorB)
+      .style("stroke", colorB)
       .attr("stroke-width", 2);
 
     // Stock A polygon
     g.append("path")
       .attr("d", polygonPath(scoresA))
-      .attr("fill", colorA)
+      .style("fill", colorA)
       .attr("fill-opacity", 0.18)
-      .attr("stroke", colorA)
+      .style("stroke", colorA)
       .attr("stroke-width", 2);
 
     // Dots for A
@@ -135,8 +125,8 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("cx", r * Math.cos(angle))
         .attr("cy", r * Math.sin(angle))
         .attr("r", 4)
-        .attr("fill", colorA)
-        .attr("stroke", paper)
+        .style("fill", colorA)
+        .style("stroke", paper)
         .attr("stroke-width", 1.5);
     });
 
@@ -148,11 +138,11 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("cx", r * Math.cos(angle))
         .attr("cy", r * Math.sin(angle))
         .attr("r", 4)
-        .attr("fill", colorB)
-        .attr("stroke", paper)
+        .style("fill", colorB)
+        .style("stroke", paper)
         .attr("stroke-width", 1.5);
     });
-  }, [data, symbolA, symbolB, resolvedTheme]);
+  }, [data, symbolA, symbolB]);
 
   if (data.length < 3) {
     return (

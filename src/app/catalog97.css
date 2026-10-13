@@ -52,8 +52,9 @@
 /*
  * Stacking order for overlays. Declared on :root rather than [data-c97]
  * because the tooltip, search listbox, and easter-egg layers portal to the
- * body, outside the page root. The header sits at 2 inside the page, and
- * Leaflet's map panes keep their own scale (food map).
+ * body, outside the page root. The header sits at 2 inside the page and lifts
+ * to the tray level while its search is open, and Leaflet's map panes keep
+ * their own scale inside `.c97-basemap`.
  */
 :root {
   --c97-z-sticky: 5;
@@ -2628,6 +2629,18 @@ select.c97-field {
   padding: var(--c97-sp-3) var(--c97-gutter) var(--c97-sp-4);
 }
 
+/*
+ * The search panel and its scrim hang below the header, over the page, and
+ * they can stack no higher than the header does. So the header lifts to one
+ * step above the tray level for as long as its search is open, which puts the
+ * panel above everything a route stacks at that level or below, a sticky
+ * toolbar and the fantasy compare tray included, and leaves toasts, drawers,
+ * and modals above it.
+ */
+.c97-header[data-search-open] {
+  z-index: calc(var(--c97-z-tray) + 1);
+}
+
 /* The torn bottom edge, the seam mask flipped so it hangs below the header. */
 .c97-header::after {
   content: "";
@@ -2995,6 +3008,12 @@ select.c97-field {
    warm paper by day, a dim field map at night. Pins and lines sit above
    the tile pane and keep their own colours. Shared by /food-map and
    /bay-area-transit. */
+/* Leaflet stacks its panes at 400 and its controls at 1000. The map is its
+   own stacking context so those numbers stay inside it, and the header's
+   search panel and a route's sticky bar pass over the map. */
+.c97-basemap {
+  isolation: isolate;
+}
 .c97-basemap .leaflet-tile-pane {
   filter: grayscale(0.8) sepia(0.25) contrast(0.92) brightness(1.03);
 }
@@ -3003,12 +3022,18 @@ select.c97-field {
 }
 /* On paper in Firefox's engine the wash comes off, since that engine prints
    nothing for an element under a CSS filter (see .c97-slot-img above). The
-   dark rule is listed too because it is the more specific of the pair. */
+   dark rule is listed too because it is the more specific of the pair. A
+   blend mode drops an element the same way, and Leaflet's stylesheet blends
+   every tile from `.leaflet-container img.leaflet-tile`, so the tiles go back
+   to normal through a selector that names the pane and outranks it. */
 @media print {
   @supports (-moz-appearance: none) {
     .c97-basemap .leaflet-tile-pane,
     .dark .c97-basemap .leaflet-tile-pane {
       filter: none;
+    }
+    .c97-basemap .leaflet-tile-pane img.leaflet-tile {
+      mix-blend-mode: normal;
     }
   }
 }

@@ -303,6 +303,7 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
     data, or Blobs, add its path to `cdnCachedPages` in `next.config.mjs` and to
     `src/lib/__tests__/edge-cache-policy.test.ts`.
 
-Reuse the shared football components in `src/components/football/` (FixtureCard,
-LeaderList, StatCard, CrestAvatar, …) wherever the surface is a league/standings
-view — the soccer, NBA, NFL, MLB, and World Cup dashboards all do.
+Reuse the shared football components in `src/components/football/`
+(FixtureLedgerSection, LeaderLedger, DetailDrawer, CrestAvatar, …) wherever the
+surface is a league or standings view, as the soccer, NBA, NFL, MLB, and World
+Cup dashboards all do.

@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-12
 
 ---
 
@@ -88,10 +88,11 @@ Top-level ownership:
 Shared components for `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, and `/world-cup-2026` live in `src/components/football/`:
 
 - `FixtureCard`
-- `FixtureGroupSection`
-- `LeaderList`
-- `StatCard`
-- `MetricCard`
+- `FixtureLedgerSection` (in `FixtureLedger.tsx`)
+- `LeaderLedger`
+- `SeedLadder` (in `SeedLadderPanel.tsx`)
+- `DetailDrawer`, which the golf route opens its player detail in as well
+- `LeagueTableBoard`
 - `InfoChip`
 - `CrestAvatar`
 - `TeamResultPill`
