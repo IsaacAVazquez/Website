@@ -96,6 +96,57 @@ describe("recipes", () => {
     expect(formatTotalTime(recipes[1])).toBe("1 hr 5 min");
   });
 
+  it("finds every recipe by its own title, hyphens and ampersands included", () => {
+    const lost = RECIPES.filter(
+      (recipe) =>
+        !searchRecipes(RECIPES, [], { query: recipe.title }).some((match) => match.recipe.id === recipe.id)
+    ).map((recipe) => recipe.title);
+
+    expect(lost).toEqual([]);
+  });
+
+  it("finds a recipe by a hyphenated tag", () => {
+    const tagged = [{ ...recipes[0], tags: ["one-pan"] }, recipes[1]];
+
+    expect(searchRecipes(tagged, [], { query: "one-pan" }).map((match) => match.recipe.id)).toEqual([
+      "tomato-pasta",
+    ]);
+  });
+
+  it("orders an empty pantry the same way whatever language the browser runs in", () => {
+    const titles = RECIPES.map((recipe) => recipe.title);
+    const native = String.prototype.localeCompare;
+    const inEnglish = [...titles].sort((a, b) => native.call(a, b, "en"));
+    // Czech files "ch" as its own letter after "h", so its order differs from the server's.
+    expect([...titles].sort((a, b) => native.call(a, b, "cs"))).not.toEqual(inEnglish);
+
+    const spy = jest
+      .spyOn(String.prototype, "localeCompare")
+      .mockImplementation(function (this: string, that: string, locales?: Intl.LocalesArgument) {
+        return native.call(this, that, locales ?? "cs");
+      });
+    try {
+      expect(searchRecipes(RECIPES, []).map((match) => match.recipe.title)).toEqual(inEnglish);
+    } finally {
+      spy.mockRestore();
+    }
+  });
+
+  it("never counts an ingredient as a staple in one recipe and as missing in another", () => {
+    const stapleNames = new Set(
+      RECIPES.flatMap((recipe) => recipe.ingredients.filter((ingredient) => ingredient.staple)).map(
+        (ingredient) => ingredient.name
+      )
+    );
+    const mixed = RECIPES.flatMap((recipe) =>
+      recipe.ingredients
+        .filter((ingredient) => !ingredient.staple && stapleNames.has(ingredient.name))
+        .map((ingredient) => `${recipe.id}: ${ingredient.name}`)
+    );
+
+    expect(mixed).toEqual([]);
+  });
+
   it("does not include honey in recipes labeled vegan", () => {
     const violations = RECIPES.filter((recipe) => recipe.diet?.includes("vegan"))
       .filter((recipe) =>

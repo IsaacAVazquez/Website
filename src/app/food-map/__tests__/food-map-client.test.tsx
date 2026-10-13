@@ -99,6 +99,57 @@ describe("FoodMapClient", () => {
     expect(replaceState).not.toHaveBeenCalled();
   });
 
+  it("offers the path to the list ahead of the filters and the map it skips", () => {
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    const jump = screen.getByRole("button", { name: "Go to the list of stops" });
+    const curators = screen.getByRole("group", { name: "Curator" });
+    const map = screen.getByTestId("food-map-leaflet");
+    expect(jump.compareDocumentPosition(curators) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(jump.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  // The city bar scrolls sideways under 1200px. The boxes stand in for a 334px
+  // bar, as on a phone, with the checked tab at the given offset along it.
+  function renderWithCheckedTabAt(left: number) {
+    const boxes = jest.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
+      if (this.getAttribute("role") === "radiogroup") return new DOMRect(0, 0, 334, 44);
+      if (this.getAttribute("aria-checked") === "true") return new DOMRect(left, 0, 100, 44);
+      return new DOMRect();
+    });
+    currentSearchParams = new URLSearchParams("city=tokyo");
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    boxes.mockRestore();
+    return screen.getByRole("radiogroup", { name: "Choose a city" });
+  }
+
+  it("centres the checked city in the bar when a link opens on one that is scrolled away", () => {
+    // 832 + 100 / 2 - 334 / 2
+    expect(renderWithCheckedTabAt(832).scrollLeft).toBe(715);
+  });
+
+  it("leaves the bar where it is when the checked city is already in view", () => {
+    expect(renderWithCheckedTabAt(120).scrollLeft).toBe(0);
+  });
+
+  it("keeps a space between a city and its count, so a screen reader reads two words", () => {
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    // jsdom spaces every child of a name, so the text itself is the check.
+    expect(screen.getByRole("radio", { name: /austin/i }).textContent).toBe("Austin 12");
+  });
+
+  it("returns to the stop's detail when the chosen stop is picked again", () => {
+    currentSearchParams = new URLSearchParams("pick=franklin-barbecue");
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    const heading = screen.getByRole("heading", { level: 2, name: "Franklin Barbecue" });
+    expect(heading).not.toHaveFocus();
+
+    // The URL would not change, so nothing re-renders to move the focus.
+    fireEvent.click(screen.getByRole("button", { name: /barbecue franklin barbecue/i }));
+    expect(heading).toHaveFocus();
+    expect(Element.prototype.scrollIntoView).toHaveBeenLastCalledWith({ behavior: "smooth", block: "start" });
+    expect(replaceState).not.toHaveBeenCalled();
+  });
+
   it("toggles a curator chip into the URL", () => {
     render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
 

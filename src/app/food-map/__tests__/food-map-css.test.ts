@@ -50,3 +50,50 @@ describe("food-map.css: Catalog 97 token migration", () => {
     }
   });
 });
+
+// The city bar is sticky over the whole page and scrolls sideways under
+// 1200px. These pin the rules that keep it from clipping or covering things,
+// which no rendered unit test can see.
+describe("food-map.css: the sticky city bar", () => {
+  /** The declarations of the first rule that opens with `selector`. */
+  const rule = (selector: string) => css.split(`\n${selector} {`)[1]?.split("}")[0] ?? "";
+  /** Everything inside the `@media` block that opens with `query`. */
+  const media = (query: string) => css.split(`@media ${query} {`)[1]?.split("\n}")[0] ?? "";
+
+  it("pads the scroller itself, so a tab's focus ring is not clipped", () => {
+    expect(rule(".fm-tabs")).toMatch(/overflow-x:\s*auto/);
+    expect(rule(".fm-tabs")).toMatch(/padding:\s*var\(--c97-sp-1\)/);
+    expect(rule(".fm-tabs")).toMatch(/scroll-padding-inline:\s*var\(--c97-sp-1\)/);
+  });
+
+  it("wraps the tabs on paper as it does from 1200px, so every city prints", () => {
+    expect(media("print, screen and (min-width: 1200px)")).toMatch(/\.fm-tabs\s*\{[^}]*flex-wrap:\s*wrap/);
+  });
+
+  it("stops the two scroll targets short of the bar, at one row and at two", () => {
+    expect(css).toMatch(/\.fm-index-head h2,\s*\.fm-dossier-name\s*\{\s*scroll-margin-top:\s*5rem/);
+    expect(media("screen and (min-width: 1200px)")).toMatch(
+      /\.fm-index-head h2,\s*\.fm-dossier-name\s*\{\s*scroll-margin-top:\s*8\.5rem/
+    );
+  });
+
+  it("holds the sticky rail under the bar, at one row and at two", () => {
+    expect(rule(".fm-rail")).toMatch(/top:\s*5rem/);
+    expect(media("screen and (min-width: 1200px)")).toMatch(/\.fm-rail\s*\{\s*top:\s*8\.5rem/);
+  });
+
+  // A browser leaves backgrounds off paper by default, and the chosen city's
+  // name is paper-coloured type on an ink fill.
+  it("keeps the chosen city's and a pressed cuisine's fill on paper", () => {
+    expect(media("print")).toMatch(
+      /\.fm-tab\[aria-checked="true"\],\s*\.fm-pill\[aria-pressed="true"\] \{[^}]*[^-]print-color-adjust: exact;/
+    );
+  });
+});
+
+describe("food-map.css: the title row's stamp", () => {
+  // "NO RESERVATIONS" is 105px wide at the label size, so a smaller ring cuts through it.
+  it("draws the ring wide enough to hold its second line", () => {
+    expect(css).toMatch(/\.fm-stamp-badge \{[^}]*width:\s*132px;\s*height:\s*132px;/);
+  });
+});

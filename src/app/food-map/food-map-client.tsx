@@ -60,8 +60,24 @@ function CityTabs({
   counts: Record<FoodMapCityId, number>;
   onSelect: (id: FoodMapCityId) => void;
 }) {
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  // The bar scrolls sideways under 1200px, so a shared link or a reload can
+  // open with the checked city off screen. This centres it with the bar's own
+  // scroll, which scrollIntoView would not keep to, and leaves a tab that is
+  // already in view where it is.
+  useEffect(() => {
+    const tabs = tabsRef.current;
+    const checked = tabs?.querySelector<HTMLElement>('[aria-checked="true"]');
+    if (!tabs || !checked) return;
+    const bar = tabs.getBoundingClientRect();
+    const box = checked.getBoundingClientRect();
+    if (box.left >= bar.left && box.right <= bar.right) return;
+    tabs.scrollLeft += box.left + box.width / 2 - (bar.left + bar.width / 2);
+  }, [state.city]);
+
   return (
-    <div id="food-map-city" role="radiogroup" aria-label="Choose a city" className="fm-tabs">
+    <div ref={tabsRef} id="food-map-city" role="radiogroup" aria-label="Choose a city" className="fm-tabs">
       {FOOD_MAP_CITIES.map((city, index) => {
         const isActive = state.city === city.id;
         return (
@@ -84,7 +100,7 @@ function CityTabs({
             }}
             className="fm-tab"
           >
-            {city.name}
+            {city.name}{" "}
             <span className="fm-tab-count">{counts[city.id] ?? 0}</span>
           </button>
         );
@@ -359,7 +375,17 @@ function FoodMapWorkbench({
     onCommit(toggleCuisine(routeState, id));
   }
 
+  function revealHeading(heading: HTMLHeadingElement | null) {
+    heading?.focus({ preventScroll: true });
+    heading?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+
   function handleSelectPlace(id: string) {
+    // Picking the chosen stop again leaves the URL as it is, so no render follows to move the focus.
+    if (id === selectedPlace?.id) {
+      revealHeading(dossierHeadingRef.current);
+      return;
+    }
     pendingFocus.current = "detail";
     onCommit(setPick(routeState, id));
   }
@@ -370,9 +396,7 @@ function FoodMapWorkbench({
   }
 
   function handleJumpToList() {
-    const heading = indexHeadingRef.current;
-    heading?.focus({ preventScroll: true });
-    heading?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    revealHeading(indexHeadingRef.current);
   }
 
   function handleResetFilters() {
@@ -412,6 +436,12 @@ function FoodMapWorkbench({
         </p>
 
         <div className="fm-mapwrap">
+          {/* On one column the filters and the map sit between here and the list, so this goes straight to it. */}
+          <div className="fm-jump">
+            <button type="button" onClick={handleJumpToList} className="c97-btn-ghost">
+              Go to the list of stops
+            </button>
+          </div>
           <div className="fm-filters">
             <div className="fm-fieldset" role="group" aria-label="Curator">
               <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
@@ -431,12 +461,6 @@ function FoodMapWorkbench({
             zoom={activeCity.zoom}
             reduceMotion={reduceMotion}
           />
-          {/* On one column the list sits well under the map, so this goes straight to it. */}
-          <div className="fm-jump">
-            <button type="button" onClick={handleJumpToList} className="c97-btn-ghost">
-              Go to the list of stops
-            </button>
-          </div>
         </div>
 
         <div className="fm-grid">

@@ -187,14 +187,15 @@ export function searchRecipes(
     if (category !== "all" && recipe.category !== category) return false;
     if (diet !== "all" && !(recipe.diet ?? []).includes(diet)) return false;
     if (!normalizedQuery) return true;
-    const haystack = [
-      recipe.title,
-      recipe.cuisine,
-      ...recipe.tags,
-      ...recipe.ingredients.map((i) => i.name),
-    ]
-      .join(" ")
-      .toLowerCase();
+    // Both sides go through one normalizer, so "stir-fry" finds "Stir-Fry".
+    const haystack = normalizeIngredient(
+      [
+        recipe.title,
+        recipe.cuisine,
+        ...recipe.tags,
+        ...recipe.ingredients.map((i) => i.name),
+      ].join(" "),
+    );
     return haystack.includes(normalizedQuery);
   });
 
@@ -208,7 +209,8 @@ export function searchRecipes(
       }
       return a.missing.length - b.missing.length;
     }
-    return a.recipe.title.localeCompare(b.recipe.title);
+    // Pinned to one locale, so the browser's first render orders the cards as the server did.
+    return a.recipe.title.localeCompare(b.recipe.title, "en");
   });
 
   return scored;

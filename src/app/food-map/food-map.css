@@ -66,14 +66,15 @@
   color: var(--c97-ink-2);
 }
 
-/* The passport stamp, now a small mark at the end of the title row. A true circle, so 50% radius is allowed. */
+/* The passport stamp, now a small mark at the end of the title row. A true circle, so 50% radius is allowed.
+   132px is the ring the second line needs, 105px wide at the label size, to sit inside it. */
 .fm-stamp-badge {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
   align-content: center;
-  width: 96px;
-  height: 96px;
+  width: 132px;
+  height: 132px;
   border-radius: 50%;
   border: 2px solid var(--c97-ink);
   color: var(--c97-ink);
@@ -108,7 +109,6 @@
   top: 0;
   z-index: var(--c97-z-sticky);
   margin-inline: calc(-1 * var(--c97-sp-1));
-  padding: var(--c97-sp-1);
   /* The paper's own grain, so the bar reads as the page while it rides over the map. */
   background-color: var(--c97-surface);
   background-image: var(--c97-grain-soft);
@@ -117,22 +117,34 @@
 }
 @media print {
   .fm-citybar { position: static; }
+  /* A browser leaves backgrounds off paper by default, which would print the
+     chosen city and a pressed cuisine in paper-coloured type on white. */
+  .fm-tab[aria-checked="true"],
+  .fm-pill[aria-pressed="true"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 
+/* The bar's padding sits on the scroller, which clips at its own edge, so a
+   tab's focus ring has room inside it. The scroll padding keeps that room
+   when focus brings a tab in from the side. */
 .fm-tabs {
   display: flex;
   gap: var(--c97-sp-1);
+  padding: var(--c97-sp-1);
   overflow-x: auto;
+  scroll-padding-inline: var(--c97-sp-1);
   scrollbar-width: thin;
 }
-@media screen and (min-width: 1200px) {
+/* Paper has no sideways scroll, so it wraps as well. */
+@media print, screen and (min-width: 1200px) {
   .fm-tabs { flex-wrap: wrap; overflow-x: visible; }
 }
 
 .fm-tab {
   flex: 0 0 auto;
   display: inline-flex;
-  align-items: baseline;
   gap: var(--c97-sp-1);
   min-height: 44px;
   padding: 0 var(--c97-sp-2);
@@ -323,7 +335,7 @@
   outline: 3px solid var(--c97-print-black);
 }
 
-/* On one column, a direct path from the map to the list. */
+/* On one column, a direct path past the filters and the map to the list. */
 .fm-jump { display: none; }
 @media screen and (max-width: 1000px) {
   .fm-jump { display: block; }
@@ -347,13 +359,27 @@
 
 .fm-rail {
   position: sticky;
-  top: 4.5rem;
+  top: 5rem;
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
 }
 @media print, screen and (max-width: 1000px) {
   .fm-rail { position: static; }
+}
+
+/* The city bar stays stuck over all of this, so the rail and the two headings
+   the page scrolls to stop short of it. The bar is one row of tabs, 62 to 66px
+   and up to 11px more where its scrollbar takes room, and two rows, 120px,
+   once they wrap. */
+.fm-index-head h2,
+.fm-dossier-name {
+  scroll-margin-top: 5rem;
+}
+@media screen and (min-width: 1200px) {
+  .fm-rail { top: 8.5rem; }
+  .fm-index-head h2,
+  .fm-dossier-name { scroll-margin-top: 8.5rem; }
 }
 
 .fm-index-head {

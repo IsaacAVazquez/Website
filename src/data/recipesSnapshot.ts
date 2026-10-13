@@ -622,7 +622,7 @@ export const RECIPES: Recipe[] = [
       { name: "sugar", display: "3 tbsp sugar" },
       { name: "cocoa powder", display: "2 tbsp cocoa powder" },
       { name: "milk", display: "3 tbsp milk" },
-      { name: "vegetable oil", display: "2 tbsp neutral oil" },
+      { name: "vegetable oil", display: "2 tbsp neutral oil", staple: true },
       { name: "vanilla extract", display: "1/4 tsp vanilla extract" },
       { name: "chocolate chips", display: "1 tbsp chocolate chips (optional)" },
       { name: "baking powder", display: "1/4 tsp baking powder" },
