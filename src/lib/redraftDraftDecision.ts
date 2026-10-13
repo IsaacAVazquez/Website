@@ -680,7 +680,9 @@ export function describeRedraftTier(entry: RedraftPositionDecision): string {
     ? "No later published tier is available."
     : `The next tier begins at ${entry.position}${Math.round(tier.nextTierPositionRank)}${
         tier.overallBoardGap !== null
-          ? `, about ${Math.round(tier.overallBoardGap)} overall picks down the board`
+          ? `, about ${Math.round(tier.overallBoardGap)} overall ${
+              Math.round(tier.overallBoardGap) === 1 ? "pick" : "picks"
+            } down the board`
           : ""
       }.`;
   return `${entry.position}${Math.round(tier.positionRank)} sits in positional Tier ${tier.tier}, with ${tier.remaining} ${tier.remaining === 1 ? "player" : "players"} left. ${next}`;
