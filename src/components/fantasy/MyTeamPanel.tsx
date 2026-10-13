@@ -101,7 +101,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
         availableIds: current.availableIds.filter(id => !imported.players.some(player => player.id === id)) }));
       onScoringChange(imported.scoring);
       setSelectedView("lineup");
-      setNotice(`Imported ${imported.players.length} players and league settings. Existing roster players were kept. Review any moves made since the draft.`);
+      setNotice(`Imported ${imported.players.length} ${imported.players.length === 1 ? "player" : "players"} and league settings. Existing roster players were kept. Review any moves made since the draft.`);
     });
     noticeRef.current?.focus();
   }
@@ -149,7 +149,8 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
           flushSync(() => {
             update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
             setAddId(""); setDropId("");
-            setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);
+            // A name can end in a full stop of its own ("Aaron Jones Sr."), which then closes the sentence.
+            setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name.replace(/\.$/, "")}. Make the actual transaction in your league.`);
           });
           noticeRef.current?.focus();
         }}>Save this move to my roster</button>

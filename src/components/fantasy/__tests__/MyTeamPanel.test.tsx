@@ -83,7 +83,7 @@ it("imports a redraft roster without overwriting draft storage", () => {
   fireEvent.click(screen.getByRole("button", { name: "Import draft tracker roster" }));
   expect(localStorage.getItem(key)).toBe(raw);
   expect(scoring).toHaveBeenCalledWith("half_ppr");
-  expect(screen.getByText(/Imported 1 players/)).toBeInTheDocument();
+  expect(screen.getByText(/Imported 1 player and league settings/)).toBeInTheDocument();
 });
 
 it("retains edits in memory and explains when browser writes fail", () => {
@@ -145,13 +145,25 @@ describe("focus after an action that removes its own button", () => {
     expect(screen.queryByRole("button", { name: "Save this move to my roster" })).not.toBeInTheDocument();
   });
 
+  it("closes the sentence once when the dropped name ends in a full stop", () => {
+    const senior = { ...rb, name: "Roster Runner Sr." };
+    const seniorBoard = { ...board, flex: [senior, add] };
+    const seniorSnapshot = { ...snapshot, boards: { ppr: seniorBoard, half_ppr: seniorBoard, standard: seniorBoard } };
+    localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [senior], availableIds: [add.id] }));
+    render(<MyTeamPanel snapshot={seniorSnapshot} board={seniorSnapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+    fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+    fireEvent.click(screen.getByRole("button", { name: "Save this move to my roster" }));
+    expect(screen.getByText("Saved roster updated. Added Available Runner and removed Roster Runner Sr. Make the actual transaction in your league.")).toBeInTheDocument();
+  });
+
   it("moves to the notice after a draft import", () => {
     localStorage.setItem("fantasy-draft-tracker-v3-2026", JSON.stringify({ settings: { userTeam: 1, totalTeams: 12, scoringFormat: "PPR" }, picks: [{ teamNumber: 1, player: rb }] }));
     render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
     const importButton = screen.getByRole("button", { name: "Import draft tracker roster" });
     importButton.focus();
     fireEvent.click(importButton);
-    const notice = screen.getByText("Imported 1 players and league settings. Existing roster players were kept. Review any moves made since the draft.");
+    const notice = screen.getByText("Imported 1 player and league settings. Existing roster players were kept. Review any moves made since the draft.");
     expect(document.activeElement).toBe(notice);
     expect(screen.queryByRole("button", { name: "Import draft tracker roster" })).not.toBeInTheDocument();
   });
