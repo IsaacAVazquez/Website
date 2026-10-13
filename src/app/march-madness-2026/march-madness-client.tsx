@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { startTransition, useEffect, useState, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { RegionBracket } from "./RegionBracket";
 import {
   BRACKET,
@@ -77,7 +77,7 @@ function Tag({ children, color = "gray" }: { children: ReactNode; color?: "red" 
 }
 
 /** One of the column's upset picks: the call, why, and where the picks board picks it up. */
-function UpsetCard({ card }: { card: EditorialCard }) {
+function UpsetCard({ card, href }: { card: EditorialCard; href: string }) {
   return (
     <li className="mm-upset">
       <Tag color={EDITORIAL_TONE[card.color]}>{card.eyebrow}</Tag>
@@ -85,7 +85,7 @@ function UpsetCard({ card }: { card: EditorialCard }) {
       <p className="mm-body">{card.reason}</p>
       <p className="mm-meta">
         {card.note} ·{" "}
-        <Link href={card.href} className="mm-link">
+        <Link href={href} className="mm-link">
           {card.cta}
         </Link>
       </p>
@@ -431,7 +431,9 @@ function TZSection() {
             <li key={`${impact.team}-${impact.site}`} className="mm-tz-row">
               <span className="mm-strong">{impact.team}</span>
               <span className="mm-body">
-                <span className="mm-num mm-muted">{impact.home} to {impact.site.split(" ")[0]}</span>{" "}
+                <span className="mm-num mm-muted">
+                  {impact.home} to {impact.site.replace(/ \([A-Z]{2}\)$/, "")}
+                </span>{" "}
                 {impact.note}
               </span>
               <span
@@ -658,18 +660,15 @@ const ANALYTICS_TAB_ITEMS: { value: MarchMadnessAnalytics; label: string }[] = [
   { value: "injuries", label: ANALYTICS_LABELS.injuries },
 ];
 
-export function MarchMadnessClient({
-  initialState,
-  initialPick = null,
-}: {
-  initialState: MarchMadnessSearchState;
-  initialPick?: string | null;
-}) {
+export function MarchMadnessClient({ initialState }: { initialState: MarchMadnessSearchState }) {
   const router = useRouter();
+  // The open pick is read from the address and not from the page. A toggle writes the address
+  // at once, so an entry the reader left before the router answered names a pick its page lacks.
+  const addressPick = useSearchParams().get("pick");
   const [view, setView] = useState(initialState.view);
   const [region, setRegion] = useState(initialState.region);
   const [analytics, setAnalytics] = useState(initialState.analytics);
-  const [pick, setPick] = useState<string | null>(initialPick);
+  const [pick, setPick] = useState<string | null>(addressPick);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   // A link or the back button can change the URL under the client, so its
   // state follows the server's reading. The page used to remount the whole
@@ -677,7 +676,7 @@ export function MarchMadnessClient({
   // made it. While a tab change of ours is still on its way, only the reading
   // for the state we last pushed is adopted, so an earlier response arriving
   // late never flips the board back under a newer choice.
-  const serverReading: RouteReading = { ...initialState, pick: initialPick };
+  const serverReading: RouteReading = { ...initialState, pick: addressPick };
   const [synced, setSynced] = useState<RouteReading>(serverReading);
   const [pushed, setPushed] = useState<RouteReading | null>(null);
   if (!sameReading(synced, serverReading)) {
@@ -745,11 +744,31 @@ export function MarchMadnessClient({
 
   const currentHref = buildMarchMadnessHref({ view, region, analytics, pick });
 
-  // Opening a pick rewrites the address in place, without a server round trip.
+  // The upset and method links open a workspace view on the reader's region, and the upset
+  // links keep the open pick, which the builder drops off the picks board.
+  const cardHref = (card: EditorialCard) =>
+    buildMarchMadnessHref({
+      view: card.view,
+      region,
+      analytics: card.analytics ?? analytics,
+      pick,
+      hash: "analysis-workspace",
+    });
+
+  // A pick goes through the router as the tabs do, so the history entry holds the page with
+  // that pick. The address is written first, on the entry's own state so the router's record
+  // of the page stays on it, and a reader who leaves before the router answers still comes
+  // Back to the pick.
   const handleTogglePick = (next: string | null) => {
     setPick(next);
     setCopyStatus("idle");
-    window.history.replaceState(null, "", buildMarchMadnessHref({ view, region, analytics, pick: next }));
+    const nextReading = { view, region, analytics, pick: next };
+    setPushed(sameReading(nextReading, synced) ? null : nextReading);
+    const href = buildMarchMadnessHref(nextReading);
+    window.history.replaceState(window.history.state, "", href);
+    startTransition(() => {
+      router.replace(href, { scroll: false });
+    });
   };
 
   const handleCopyLink = async () => {
@@ -780,13 +799,13 @@ export function MarchMadnessClient({
           </p>
           <p className="mm-actions">
             <Link
-              href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
+              href={buildMarchMadnessHref({ view: "picks", region, analytics, pick, hash: "analysis-workspace" })}
               className="c97-btn"
             >
               See best upsets
             </Link>
             <Link
-              href={buildMarchMadnessHref({ view, region, analytics, hash: "why-this-model-is-different" })}
+              href={buildMarchMadnessHref({ view, region, analytics, pick, hash: "why-this-model-is-different" })}
               className="mm-link"
             >
               How the model works
@@ -795,7 +814,7 @@ export function MarchMadnessClient({
               Read the companion article
             </Link>
             <Link
-              href={buildMarchMadnessHref({ view, region, analytics, hash: "analysis-workspace" })}
+              href={buildMarchMadnessHref({ view, region, analytics, pick, hash: "analysis-workspace" })}
               className="mm-link"
             >
               Open the analysis workspace
@@ -861,7 +880,7 @@ export function MarchMadnessClient({
               </h2>
               <ul className="mm-upsets">
                 {TOP_UPSET_PICKS.map((card) => (
-                  <UpsetCard key={card.title} card={card} />
+                  <UpsetCard key={card.title} card={card} href={cardHref(card)} />
                 ))}
               </ul>
             </section>
@@ -931,7 +950,7 @@ export function MarchMadnessClient({
                 <p className="mm-body">{card.reason}</p>
                 <p className="mm-meta">
                   {card.note} ·{" "}
-                  <Link href={card.href} className="mm-link">
+                  <Link href={cardHref(card)} className="mm-link">
                     {card.cta}
                   </Link>
                 </p>

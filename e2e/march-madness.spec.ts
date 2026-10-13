@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { openTool } from "./browserReady";
 
 test.describe("March Madness", () => {
   test("loads the default route with metadata and no horizontal overflow", async ({ page }) => {
@@ -55,6 +56,50 @@ test.describe("March Madness", () => {
 
     await page.goto("/march-madness-2026?view=picks");
     await expect(page.getByText(/analytics upsets/i)).toBeVisible();
+  });
+
+  test("comes back to an open pick with Back", async ({ page }) => {
+    await openTool(page, "/march-madness-2026?view=picks");
+
+    const pick = page.locator('[aria-controls="pick-body-tz-0"]');
+    await pick.click();
+    await expect(pick).toHaveAttribute("aria-expanded", "true");
+    await expect(page).toHaveURL(/view=picks&pick=tz-0/);
+
+    await page.getByRole("link", { name: "Read the postmortem", exact: true }).click();
+    await expect(page).toHaveURL(/\/writing\/2026-march-madness-postmortem/);
+
+    await page.goBack();
+    await expect(page).toHaveURL(/view=picks&pick=tz-0/);
+    await expect(pick).toHaveAttribute("aria-expanded", "true");
+  });
+
+  test("comes back to an open pick when the reader leaves before the router answers", async ({ page }) => {
+    // A slow connection: the route's own navigation responses are held, prefetches are not.
+    await page.route(
+      (url) => url.pathname === "/march-madness-2026",
+      async (route) => {
+        const headers = route.request().headers();
+        if (headers["rsc"] && !headers["next-router-prefetch"] && !headers["next-router-segment-prefetch"]) {
+          await new Promise((resolve) => setTimeout(resolve, 900));
+        }
+        await route.fallback();
+      }
+    );
+    await openTool(page, "/march-madness-2026?view=picks");
+
+    const pick = page.locator('[aria-controls="pick-body-tz-0"]');
+    await pick.click();
+    // The address names the pick before the held response can have come back.
+    await expect(page).toHaveURL(/view=picks&pick=tz-0/, { timeout: 500 });
+
+    await page.getByRole("link", { name: "Read the postmortem", exact: true }).click();
+    await expect(page).toHaveURL(/\/writing\/2026-march-madness-postmortem/);
+
+    await page.goBack();
+    await expect(page).toHaveURL(/view=picks&pick=tz-0/);
+    await expect(pick).toHaveAttribute("aria-expanded", "true");
+    await page.unrouteAll({ behavior: "ignoreErrors" });
   });
 
   test("links to the companion article from the bracket tool", async ({ page }) => {

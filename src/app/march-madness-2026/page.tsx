@@ -28,7 +28,6 @@ interface MarchMadnessPageProps {
     view?: string;
     region?: string;
     analytics?: string;
-    pick?: string;
   }>;
 }
 
@@ -114,10 +113,7 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
         }}
       />
 
-      <MarchMadnessClient
-        initialState={initialState}
-        initialPick={typeof resolvedSearchParams.pick === "string" ? resolvedSearchParams.pick : null}
-      />
+      <MarchMadnessClient initialState={initialState} />
     </>
   );
 }

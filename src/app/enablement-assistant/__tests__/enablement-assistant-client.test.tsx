@@ -276,6 +276,54 @@ describe("EnablementAssistantClient", () => {
     expect(handoff.querySelector("pre")).toHaveTextContent(prompt.question);
   });
 
+  it("keeps a question out of the handoff until the desk has declined it", () => {
+    openTeamView();
+    fireEvent.click(screen.getByRole("radio", { name: "Other or mixed" }));
+    fireEvent.click(screen.getByRole("radio", { name: "Other or custom" }));
+    buildRecommendation();
+
+    const desk = screen.getByRole("region", { name: "Ask a setup or integration question" });
+    const draft = () =>
+      screen.getByRole("region", { name: "Give the central team the context up front." }).querySelector("pre");
+    const prompt = TROUBLESHOOTING_PROMPTS.find((entry) => entry.answerable)!;
+
+    fireEvent.click(within(desk).getByRole("button", { name: prompt.question }));
+    expect(draft()).not.toHaveTextContent(prompt.question);
+
+    fireEvent.click(within(desk).getByRole("button", { name: "Find an answer" }));
+    expect(within(desk).queryByRole("heading", { name: "I do not have a reliable answer for this." })).toBeNull();
+    expect(draft()).not.toHaveTextContent(prompt.question);
+    expect(draft()).toHaveTextContent("No troubleshooting question was captured.");
+  });
+
+  it("shows a ledger whose rows add up to the score", () => {
+    openTeamView();
+    buildRecommendation();
+
+    const { primary } = recommendToolchains(intake());
+    const top = screen.getByText("Top recommendation").closest("article") as HTMLElement;
+    const rows = [...top.querySelectorAll("details li")];
+    const total = rows.reduce((sum, row) => sum + Number(row.querySelector(".ea-num")?.textContent), 0);
+
+    expect(rows[0]).toHaveTextContent("Starting score");
+    expect(Math.min(100, Math.max(0, total))).toBe(primary.score);
+  });
+
+  it("will not build a recommendation with no test layer selected", () => {
+    openTeamView();
+    fireEvent.click(next());
+    for (const layer of ["Unit", "Integration", "End to end", "Accessibility"]) {
+      fireEvent.click(screen.getByRole("checkbox", { name: new RegExp(`^${layer}`) }));
+    }
+
+    const progress = screen.getByRole("navigation", { name: "Intake progress" });
+    fireEvent.click(within(progress).getByRole("button", { name: /Delivery reality/ }));
+
+    expect(next()).toHaveTextContent("Build recommendation");
+    expect(next()).toBeDisabled();
+    expect(screen.getByRole("alert")).toHaveTextContent("Select at least one layer on the Test layers step");
+  });
+
   it("resets the intake and hides the results", () => {
     openTeamView();
     fireEvent.click(screen.getByRole("radio", { name: "Go" }));
@@ -288,7 +336,7 @@ describe("EnablementAssistantClient", () => {
     expect(back()).toBeDisabled();
   });
 
-  it("puts the two workspace views under the opening explanation, ahead of the model boundary note", () => {
+  it("keeps the view switch in the opening section, ahead of the model boundary note", () => {
     render(<EnablementAssistantClient />);
     const tabs = screen.getByRole("group", { name: "Enablement workspace views" });
     const opening = screen.getByRole("heading", { level: 1 });

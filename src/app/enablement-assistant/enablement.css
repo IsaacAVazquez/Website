@@ -101,7 +101,8 @@
   color: var(--ea-blue-ink);
 }
 
-.ea-root .c97-btn:hover {
+/* These hovers outrank the frame's disabled rule, so they leave a disabled button alone. */
+.ea-root .c97-btn:not(:disabled):hover {
   background: var(--ea-ink);
   color: var(--ea-bg);
 }
@@ -111,7 +112,7 @@
   text-decoration-color: var(--ea-rule-strong);
 }
 
-.ea-root .c97-btn-ghost:hover {
+.ea-root .c97-btn-ghost:not(:disabled):hover {
   color: var(--ea-ink);
 }
 
@@ -255,6 +256,16 @@
 .ea-switch > button[aria-pressed="true"] {
   background: var(--ea-ink);
   color: var(--ea-bg);
+}
+
+/*
+ * The switch clips at its rounded border, which cuts off the frame's outset
+ * ring. Inset, the ring shows whole inside the button, in the button's own
+ * text colour, since the blue on the pressed fill is too faint to read.
+ */
+.ea-root .ea-switch > button:focus-visible {
+  outline-offset: -4px;
+  outline-color: currentColor;
 }
 
 @media screen and (max-width: 640px) {

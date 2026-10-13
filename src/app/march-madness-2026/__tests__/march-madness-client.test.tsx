@@ -3,16 +3,21 @@ import { MarchMadnessClient } from "../march-madness-client";
 import { DEFAULT_MARCH_MADNESS_STATE } from "../march-madness-state";
 
 const mockReplace = jest.fn();
+// The address the router holds, which is where the client reads the open pick.
+let mockSearch = "";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     replace: mockReplace,
   }),
+  useSearchParams: () => new URLSearchParams(mockSearch),
 }));
 
 describe("MarchMadnessClient", () => {
   beforeEach(() => {
     mockReplace.mockReset();
+    mockSearch = "";
+    window.history.replaceState(null, "", "/");
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
       value: {
@@ -117,14 +122,18 @@ describe("MarchMadnessClient", () => {
   });
 
   it("keeps the open pick in the address, the copied link, and the next tab change", async () => {
-    const replaceState = jest.spyOn(window.history, "replaceState");
     const picks = { view: "picks" as const, region: "east" as const, analytics: "rankings" as const };
+    window.history.replaceState({ entry: "kept" }, "", "/march-madness-2026?view=picks");
     const { rerender } = render(<MarchMadnessClient initialState={picks} />);
 
     const [first] = screen.getAllByRole("button", { expanded: false });
     fireEvent.click(first);
     expect(first).toHaveAttribute("aria-expanded", "true");
-    expect(replaceState).toHaveBeenLastCalledWith(null, "", "/march-madness-2026?view=picks&pick=tz-0");
+    // Written at once on the entry's own state, so leaving before the router answers keeps the pick.
+    expect(window.location.search).toBe("?view=picks&pick=tz-0");
+    expect(window.history.state).toEqual({ entry: "kept" });
+    // Through the router too, so the history entry Back returns to carries the pick.
+    expect(mockReplace).toHaveBeenLastCalledWith("/march-madness-2026?view=picks&pick=tz-0", { scroll: false });
 
     fireEvent.click(screen.getByRole("button", { name: /copy current view link/i }));
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
@@ -139,11 +148,81 @@ describe("MarchMadnessClient", () => {
     );
 
     // Back to a ?pick= address opens that pick.
-    rerender(<MarchMadnessClient initialState={{ ...picks, region: "west" }} initialPick="tz-0" />);
-    rerender(<MarchMadnessClient initialState={picks} initialPick="tz-1" />);
+    mockSearch = "view=picks&region=west&pick=tz-0";
+    rerender(<MarchMadnessClient initialState={{ ...picks, region: "west" }} />);
+    mockSearch = "view=picks&pick=tz-1";
+    rerender(<MarchMadnessClient initialState={picks} />);
     const toggles = screen.getAllByRole("button", { expanded: true });
     expect(toggles).toHaveLength(1);
     expect(toggles[0]).toHaveAttribute("aria-controls", "pick-body-tz-1");
-    replaceState.mockRestore();
+  });
+
+  it("keeps the newer pick when an earlier toggle's response lands late", () => {
+    const picks = { view: "picks" as const, region: "east" as const, analytics: "rankings" as const };
+    const { rerender } = render(<MarchMadnessClient initialState={picks} />);
+
+    const [first, second] = screen.getAllByRole("button", { expanded: false });
+    fireEvent.click(first);
+    fireEvent.click(second);
+
+    // The first pick's response arrives after the second click.
+    mockSearch = "view=picks&pick=tz-0";
+    rerender(<MarchMadnessClient initialState={picks} />);
+    expect(second).toHaveAttribute("aria-expanded", "true");
+    expect(first).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("carries the open pick on the opening links that stay on the picks board", () => {
+    mockSearch = "view=picks&pick=tz-0";
+    render(<MarchMadnessClient initialState={{ view: "picks", region: "east", analytics: "rankings" }} />);
+
+    expect(screen.getByRole("link", { name: "How the model works" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=picks&pick=tz-0#why-this-model-is-different"
+    );
+    expect(screen.getByRole("link", { name: "Open the analysis workspace" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=picks&pick=tz-0#analysis-workspace"
+    );
+    expect(screen.getByRole("link", { name: "See best upsets" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=picks&pick=tz-0#analysis-workspace"
+    );
+    expect(screen.getByRole("link", { name: "Open upset board" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=picks&pick=tz-0#analysis-workspace"
+    );
+  });
+
+  it("keeps the reader's region on the upset and method links", () => {
+    render(
+      <MarchMadnessClient initialState={{ view: "bracket", region: "west", analytics: "rankings" }} />
+    );
+
+    expect(screen.getByRole("link", { name: "Open upset board" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=picks&region=west#analysis-workspace"
+    );
+    expect(screen.getByRole("link", { name: "View S-curve" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=analytics&region=west&analytics=s-curve#analysis-workspace"
+    );
+    expect(screen.getByRole("link", { name: "View time zones" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=time-zones&region=west#analysis-workspace"
+    );
+  });
+
+  it("names the whole city on the other time zone impacts", () => {
+    render(
+      <MarchMadnessClient initialState={{ view: "time-zones", region: "east", analytics: "rankings" }} />
+    );
+    const workspace = screen.getByRole("region", { name: "The analysis workspace" });
+    const row = (team: string) => within(workspace).getByText(team).closest("li");
+
+    expect(row("Idaho")).toHaveTextContent("PT to Oklahoma City Doesn't affect outcome");
+    expect(row("Purdue")).toHaveTextContent("ET to San Jose Regional Sweet 16.");
+    expect(row("Santa Clara")).toHaveTextContent("PT to St. Louis Doesn't matter");
+    expect(row("Alabama")).toHaveTextContent("CT to Tampa Compounds");
   });
 });

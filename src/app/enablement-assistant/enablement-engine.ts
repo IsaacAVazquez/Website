@@ -15,6 +15,8 @@ import { clamp } from "@/lib/utils";
 
 export const RECOMMENDATION_CONFIDENCE_THRESHOLD = 56;
 export const TROUBLESHOOTING_CONFIDENCE_THRESHOLD = 0.55;
+/** Where every stack's score starts, before any factor adds to it or takes from it. */
+export const BASE_SCORE = 18;
 
 export interface ScoreFactor {
   label: string;
@@ -75,7 +77,7 @@ export function scoreToolchain(
   toolchain: ToolchainCatalogEntry
 ): ScoredToolchain {
   const factors: ScoreFactor[] = [];
-  let score = 18;
+  let score = BASE_SCORE;
 
   const surfaceMatch = toolchain.surfaces.includes(intake.surface);
   const surfacePoints = surfaceMatch ? 24 : -24;
@@ -113,11 +115,15 @@ export function scoreToolchain(
     label: "Needed test layers",
     points: layerPoints,
     detail:
-      missingLayers.length === 0
-        ? `It covers all ${matchedLayers.length} selected test layers.`
-        : `It covers ${matchedLayers.length} of ${intake.layers.length}; ${missingLayers
-            .map((layer) => LABELS.layers[layer].toLowerCase())
-            .join(", ")} would need a separate path.`,
+      intake.layers.length === 0
+        ? "No test layers are selected."
+        : missingLayers.length > 0
+          ? `It covers ${matchedLayers.length} of ${intake.layers.length}; ${missingLayers
+              .map((layer) => LABELS.layers[layer].toLowerCase())
+              .join(", ")} would need a separate path.`
+          : matchedLayers.length === 1
+            ? "It covers the one selected test layer."
+            : `It covers all ${matchedLayers.length} selected test layers.`,
   });
 
   const ciMatch = intake.ci !== "other" && toolchain.ciSystems.includes(intake.ci);
@@ -212,7 +218,8 @@ function greenfieldPlan(
   intake: TeamIntake,
   toolchain: ToolchainCatalogEntry
 ): OnboardingPlanStep[] {
-  const selectedLayers = intake.layers.map((layer) => LABELS.layers[layer]).join(", ");
+  const selectedLayers =
+    intake.layers.map((layer) => LABELS.layers[layer]).join(", ") || "None selected";
   return [
     {
       id: "scope",
