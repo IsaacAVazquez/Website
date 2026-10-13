@@ -6,37 +6,24 @@
  * with an `ffb-tr-` class or with `.ffb-root`. No rule here sets `display` on an element that
  * also carries a Tailwind display utility (the verdict strip, the settings fields, the
  * package-fit head), because an unlayered rule would beat the utility at every width.
+ *
+ * The desk's columns, the shared height of its three heads, the two-line package row, the
+ * disabled and focused search field, and the printed disclosures are the kit's own classes
+ * (`ffb-work-3`, `ffb-sechead-ctl`, `ffb-row-two`, `ffb-search`, `ffb-details-print`).
  */
 
 /* ==========================================================================
- * The desk: settings, the ledger, the evaluation
- * The kit's three-column layout gives the centre 617px at 1440, which is too narrow for two
- * packages side by side. These columns give it 690px, and the kit's own rule still drops the
- * desk to one column below 1200px.
+ * League settings
  * ======================================================================== */
-@media (min-width: 1200px) {
-  .ffb-tr-desk {
-    grid-template-columns: 200px minmax(0, 1fr) clamp(300px, 26%, 360px);
-    column-gap: var(--ffb-s5);
-  }
-  /* The three column heads share one height, so the ledger's buttons do not push its column down. */
-  .ffb-tr-colhead {
-    align-items: center;
-    min-height: calc(var(--ffb-control) + 17px);
-    padding-block: var(--ffb-s2);
-  }
-}
 @media screen and (min-width: 1200px) {
   .ffb-tr-settings {
     position: sticky;
     top: var(--ffb-s2);
   }
 }
-.ffb-tr-colhead { align-items: center; }
-
-/* League settings */
+/* The head's words give way to the Change button, so the summary wraps beside it. */
+.ffb-tr-headtext { min-width: 0; flex: 1 1 0; }
 .ffb-tr-summary { margin-top: var(--ffb-s1); font-size: 14px; font-weight: 500; line-height: 1.35; }
-.ffb-tr-colhead > :first-child { min-width: 0; flex: 1 1 0; }
 .ffb-tr-scoring { --ffb-choice-min: 200px; }
 .ffb-tr-selects {
   display: grid;
@@ -58,20 +45,21 @@
 /* ==========================================================================
  * The ledger: two packages, each a fieldset with no plate
  * ======================================================================== */
-.ffb-tr-sides { --ffb-col-min: 296px; column-gap: var(--ffb-s5); }
+/* Two packages sit side by side from 1256px, where the centre column reaches 556px. */
+.ffb-tr-sides { --ffb-col-min: 266px; column-gap: var(--ffb-s5); }
 .ffb-tr-side {
   position: relative;
   min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
-  /* Chip, name over team, the index value, remove. */
+  /* The list's column head sits on the same columns the kit's two-line row sets on itself. */
   --ffb-cols: 46px minmax(0, 1fr) 44px var(--ffb-control);
 }
 .ffb-tr-side > legend {
   float: none;
   width: auto;
-  margin-bottom: var(--ffb-s1);
+  margin-bottom: 6px;
   padding: 0;
 }
 /* The count sits at the right of the description's line. A fieldset's box starts under its legend. */
@@ -80,36 +68,21 @@
   inset: 0 0 auto auto;
   line-height: 1.5;
 }
-/* A disabled action with no deal to act on prints as its muted word, so an idle desk has no dashed boxes. */
-.ffb-root .ffb-tr-actions > .ffb-btn:disabled { border-color: transparent; }
 /* The two fields are where the page starts, so they keep the full target on a desktop too. */
 .ffb-tr-search { height: 44px; }
-.ffb-tr-search:has(> input:disabled) {
-  background: transparent;
-  box-shadow: none;
-  outline: 1px dashed var(--ffb-edge);
-  outline-offset: -1px;
-  cursor: not-allowed;
-}
-.ffb-tr-search > input:disabled { cursor: not-allowed; }
-/* The kit draws the ring inside the input, which starts after the icon. Here the whole field takes it. */
-.ffb-root .ffb-tr-search:focus-within { box-shadow: inset 0 0 0 2px var(--ffb-ink); }
-.ffb-root .ffb-tr-search > input:focus-visible { outline: none; }
 .ffb-tr-h-player { grid-column: 1 / 3; }
-.ffb-tr-row {
-  grid-template-rows: auto auto;
-  align-content: center;
-  row-gap: 3px;
-  min-height: 52px;
-  padding-block: 6px;
+/* A player's name is the last thing to be cut. In a package row and in a search option it
+   takes a second line first, and the full name is in its title where two lines are not enough. */
+.ffb-tr-side .ffb-c-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
-/* A package row is not a button, so it does not light up under the pointer. */
-.ffb-tr-row:hover { background-color: transparent; }
-.ffb-tr-row > .ffb-chip { grid-area: 1 / 1 / 3 / 2; justify-self: start; }
-.ffb-tr-row > .ffb-c-name { grid-area: 1 / 2; }
-.ffb-tr-row > .ffb-c-team { grid-area: 2 / 2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ffb-tr-row > .ffb-c-num { grid-area: 1 / 3 / 3 / 4; font-size: 15px; }
-.ffb-tr-row > .ffb-iconbtn { grid-area: 1 / 4 / 3 / 5; }
+/* The team line carries a held player's status, which wraps before it is cut. */
+.ffb-tr-side .ffb-row-two > .ffb-c-team { white-space: normal; }
 .ffb-tr-empty {
   display: flex;
   align-items: center;
@@ -165,17 +138,23 @@
 /* ==========================================================================
  * The evaluation rail
  * ======================================================================== */
-/* The withheld verdict wears the kit's held notice, and the notice's own type steps aside. */
-.ffb-tr-verdict.ffb-notice > * + * { margin-top: 0; }
+/* "Index" over both package values, on a rule, the way the ledger heads its own index column. */
+.ffb-tr-cap {
+  margin-bottom: var(--ffb-s2);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ffb-rule);
+  color: var(--ffb-muted);
+  font-size: 11px;
+}
 .ffb-tr-effect { font-size: 14px; line-height: 1.45; }
 .ffb-tr-effect > .ffb-label { display: block; margin-bottom: var(--ffb-s1); color: var(--ffb-muted); font-size: 10.5px; }
-.ffb-tr-facts dt { display: flex; align-items: center; gap: var(--ffb-s1); }
-.ffb-tr-evidence { display: grid; align-content: start; gap: var(--ffb-s5); min-width: 0; }
 .ffb-tr-limits { border-bottom: 1px solid var(--ffb-rule); }
 .ffb-tr-limits > .ffb-method { padding-block: var(--ffb-s3); border-top: 1px solid var(--ffb-rule); }
 .ffb-tr-warnings { font-size: 13.5px; }
 
-/* The balance scale. The track is drawn to the verdict thresholds in the component. */
+/* The balance scale. The track is drawn to the verdict thresholds in the component. Its type is
+   set in viewBox units, so the width is capped and the labels stay near 13px at every width. */
+.ffb-tr-eval .ffb-scale > svg { max-width: 340px; }
 .ffb-tr-scale-band { fill: var(--ffb-sunk); stroke: var(--ffb-rule); stroke-width: 1; }
 .ffb-tr-scale-track { stroke: var(--ffb-ink); stroke-width: 2; }
 .ffb-tr-scale-tick { stroke: var(--ffb-edge); stroke-width: 1; }
@@ -204,16 +183,16 @@
   padding: 6px var(--ffb-bleed);
   border-bottom: 2px solid var(--ffb-ink);
 }
-.ffb-tr-strip-title {
-  overflow: hidden;
-  font-size: 18px;
-  line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* The verdict is never cut. On a narrow phone the longest one takes a second line. */
+.ffb-tr-strip-title { font-size: 18px; line-height: 1.1; }
+@media (max-width: 419.98px) {
+  /* Below 412px a title can wrap, so the strip holds the two-line height for every verdict
+     and never changes height when the verdict does. */
+  .ffb-tr-strip { min-height: 70px; }
 }
 @media (max-width: 1199.98px) {
   /* The strip's link lands the rail's head under the strip, not behind it. */
-  .ffb-tr-eval { scroll-margin-top: 72px; }
+  .ffb-tr-eval { scroll-margin-top: 80px; }
 }
 
 /* ==========================================================================
@@ -271,9 +250,4 @@
   .ffb-root :is(.ffb-tr-toggle, .ffb-tr-actions, .ffb-tr-strip, .ffb-tr-pop) { display: none; }
   /* The site's md breakpoint is screen only, so paper gets each cell's own label at any width. */
   .ffb-root .ffb-tr-fit-row { align-items: end; }
-  /* A closed disclosure would leave the model's limits off the page, so paper prints both open. */
-  .ffb-root .ffb-tr-limits > details::details-content { content-visibility: visible; }
-  .ffb-root .ffb-tr-limits > details > summary::after { display: none; }
-  /* The kit takes the root's padding off on paper, and the site's next band then sits on the last line. */
-  .ffb-root .ffb-tr-page { padding-bottom: var(--ffb-s5); }
 }

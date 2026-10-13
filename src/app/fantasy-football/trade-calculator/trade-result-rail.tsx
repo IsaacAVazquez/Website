@@ -136,7 +136,7 @@ function ValueReadout({
       <dd>{valuesAvailable ? formatIndex(side?.value) : "—"}</dd>
       <dd className="ffb-stat-note">
         {valuesAvailable && side
-          ? `${formatIndex(side.range.low)} to ${formatIndex(side.range.high)}`
+          ? `Range ${formatIndex(side.range.low)} to ${formatIndex(side.range.high)}`
           : "Sensitivity unavailable"}
       </dd>
     </div>
@@ -180,7 +180,7 @@ export function TradeResultRail({
   return (
     <aside id="trade-evaluation" aria-label="Trade evaluation" className="ffb-rail ffb-tr-eval">
       <div className="ffb-stack">
-        <div className="ffb-sechead ffb-tr-colhead">
+        <div className="ffb-sechead ffb-sechead-ctl">
           <h2 className="ffb-h3">Evaluation</h2>
           <span className={`ffb-badge ${coverage ? COVERAGE_TONE[coverage] : "ffb-muted"}`}>
             {coverage ? `${coverage} coverage` : "Waiting"}
@@ -188,7 +188,7 @@ export function TradeResultRail({
         </div>
 
         <div
-          className={`ffb-verdict ffb-tr-verdict${copy.held ? " ffb-notice ffb-notice-held" : ""}`}
+          className={`ffb-verdict${copy.held ? " ffb-notice ffb-notice-held" : ""}`}
           aria-live="polite"
         >
           <p className={`ffb-verdict-title ${copy.tone}`}>{copy.title}</p>
@@ -201,10 +201,14 @@ export function TradeResultRail({
             idle desk shows the scale at rest and the line above it. */}
         {hasBothSides ? (
           <>
-            <dl className="ffb-stats">
-              <ValueReadout label="You give" side={result?.sideA ?? null} valuesAvailable={valuesAvailable} />
-              <ValueReadout label="You get" side={result?.sideB ?? null} valuesAvailable={valuesAvailable} />
-            </dl>
+            <div>
+              {/* The two values are index values, the same number the ledger's rows carry under "Index". */}
+              <p className="ffb-label ffb-tr-cap">Index</p>
+              <dl className="ffb-stats">
+                <ValueReadout label="You give" side={result?.sideA ?? null} valuesAvailable={valuesAvailable} />
+                <ValueReadout label="You get" side={result?.sideB ?? null} valuesAvailable={valuesAvailable} />
+              </dl>
+            </div>
             <p className="ffb-tr-effect">
               <span className="ffb-label">Roster-slot effect</span>
               {rosterDelta > 0
@@ -224,14 +228,14 @@ export function TradeResultRail({
       </div>
 
       {/* One block, so below 1200px the evidence and the limits share the column beside the verdict. */}
-      <div className="ffb-tr-evidence">
+      <div className="ffb-stack ffb-stack-mid">
         <div>
           <div className="ffb-sechead">
             <h3 className="ffb-h3">Evidence mix</h3>
           </div>
-          <dl className="ffb-facts ffb-facts-sm ffb-tr-facts">
+          <dl className="ffb-facts ffb-facts-sm">
             <div className="ffb-fact">
-              <dt>
+              <dt className="ffb-with-help">
                 Expert consensus
                 <MetricTooltip
                   term="Expert consensus"
@@ -248,7 +252,7 @@ export function TradeResultRail({
               </dd>
             </div>
             <div className="ffb-fact">
-              <dt>
+              <dt className="ffb-with-help">
                 Draft market
                 <MetricTooltip
                   term="Draft market"
@@ -281,7 +285,7 @@ export function TradeResultRail({
 
         <div className="ffb-tr-limits">
           {warnings.length > 0 ? (
-            <details className="ffb-details">
+            <details className="ffb-details ffb-details-print">
               {/* The panel mixes top-level and per-player notes, so its title
                   must match the coverage badge above it instead of asserting
                   "limited" beside a supported or insufficient result. */}
@@ -306,7 +310,7 @@ export function TradeResultRail({
             </p>
           ) : null}
 
-          <details className="ffb-details">
+          <details className="ffb-details ffb-details-print">
             <summary>How the estimate works</summary>
             <div className="ffb-details-body">
               <p className="ffb-method">

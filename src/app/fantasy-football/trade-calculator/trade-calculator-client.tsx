@@ -3,7 +3,7 @@
 import { useIsClient } from "@/hooks/useIsClient";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { FantasyRouteHeader, FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
@@ -29,6 +29,7 @@ import {
 } from "@/lib/fantasyUtils";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 import { TradePackageFieldset } from "./trade-package-fieldset";
+import type { TradeSearchHandle } from "./trade-player-combobox";
 import { formatMarketDate, TradeResultRail, TradeVerdictStrip } from "./trade-result-rail";
 import { TradeRosterImpact } from "./trade-roster-impact";
 import {
@@ -99,8 +100,8 @@ function LeagueSettings({
     REDRAFT_LINEUP_PRESETS.find((preset) => preset.id === state.lineup)?.label ?? state.lineup;
   return (
     <aside aria-label="League settings" className="ffb-stack ffb-stack-tight ffb-tr-settings">
-      <div className="ffb-sechead ffb-tr-colhead">
-        <div>
+      <div className="ffb-sechead ffb-sechead-ctl">
+        <div className="ffb-tr-headtext">
           <h2 className="ffb-h3">League settings</h2>
           <p className="ffb-tr-summary min-[1200px]:hidden">
             {FANTASY_SCORING_LABELS[state.scoring]}, {state.teams} teams, {state.rosterSize} roster spots, {lineupLabel}
@@ -326,6 +327,25 @@ export function TradeCalculatorClient() {
   );
 
   const clearDisabled = trade.givePlayerIds.length + trade.getPlayerIds.length === 0;
+  // The verdict can be withheld because the whole market is old, or because one
+  // player has no reading in a market that is current. Only the second is
+  // about a row, so only then do the rows say which player it is.
+  const marksHeldPlayers = Boolean(
+    result && result.coverage === "insufficient" && result.sources.market.usable
+  );
+  // A confirmed clear disables the button that had focus. Once the deal is
+  // empty, focus goes to the first field of the desk.
+  const giveSearchRef = useRef<TradeSearchHandle>(null);
+  const refocusAfterClear = useRef(false);
+  useEffect(() => {
+    if (!refocusAfterClear.current) return;
+    refocusAfterClear.current = false;
+    giveSearchRef.current?.focusClosed();
+  }, [trade.givePlayerIds, trade.getPlayerIds]);
+  // Route-level loading.tsx only covers navigation. Until the board is in, and
+  // while a shared link's deal is still being applied, the ledger and the rail
+  // are a skeleton, so the page never shows empty comboboxes.
+  const boardReady = !isLoading && !pendingShare;
 
   return (
     <section
@@ -368,7 +388,7 @@ export function TradeCalculatorClient() {
         }
       />
 
-      <div className={`${SHELL_CLASS} ffb-stack ffb-tr-page`}>
+      <div className={`${SHELL_CLASS} ffb-stack`}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (
@@ -423,31 +443,6 @@ export function TradeCalculatorClient() {
               </button>
             </div>
           </div>
-        ) : isLoading || pendingShare ? (
-          // Route-level loading.tsx only covers navigation. This keeps the
-          // page from rendering empty comboboxes while the snapshot loads or
-          // while a shared link's deal is still being applied.
-          <div
-            role="status"
-            aria-label="Loading the overall board"
-            className="ffb-work ffb-work-3 ffb-tr-desk"
-          >
-            <div className="ffb-stack" aria-hidden="true">
-              <span className="ffb-skel ffb-tr-skel-line" />
-              <span className="ffb-skel ffb-tr-skel-block" />
-            </div>
-            <div className="ffb-stack" aria-hidden="true">
-              <span className="ffb-skel ffb-tr-skel-line" />
-              <div className="ffb-columns ffb-tr-sides">
-                <span className="ffb-skel ffb-tr-skel-field" />
-                <span className="ffb-skel ffb-tr-skel-field" />
-              </div>
-            </div>
-            <div className="ffb-stack" aria-hidden="true">
-              <span className="ffb-skel ffb-tr-skel-line" />
-              <span className="ffb-skel ffb-tr-skel-block" />
-            </div>
-          </div>
         ) : (
           <>
             {/* Below 1200px the evaluation rail stacks under both ledgers, so on
@@ -455,9 +450,12 @@ export function TradeCalculatorClient() {
                 while focus stays in the combobox. This strip keeps the verdict
                 pinned at the top of the page instead of scrolling the visitor
                 away from the field they are typing in. */}
-            <TradeVerdictStrip result={result} hasBothSides={hasBothSides} />
+            {boardReady ? <TradeVerdictStrip result={result} hasBothSides={hasBothSides} /> : null}
 
-            <div className="ffb-work ffb-work-3 ffb-tr-desk">
+            {/* The settings stay mounted while a board loads. A scoring change
+                made with the arrow keys reloads the board on each press, and a
+                skeleton over the whole desk took the radio, and focus, with it. */}
+            <div className="ffb-work ffb-work-3">
               <LeagueSettings
                 state={routeState}
                 open={settingsOpen}
@@ -465,85 +463,106 @@ export function TradeCalculatorClient() {
                 onChange={updateRouteState}
               />
 
-              <section aria-labelledby="trade-ledger-title" className="ffb-stack ffb-stack-tight">
-                <div className="ffb-sechead ffb-tr-colhead">
-                  <h2 id="trade-ledger-title" className="ffb-h3">
-                    Trade ledger
-                  </h2>
-                  <div className="ffb-cluster ffb-tr-actions">
-                    <button
-                      type="button"
-                      onClick={trade.swapSides}
-                      disabled={!hasBothSides}
-                      className="ffb-btn"
-                    >
-                      Swap
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (resetArmed) {
-                          trade.clear();
-                          setResetArmed(false);
-                        } else {
-                          setResetArmed(true);
-                        }
-                      }}
-                      disabled={clearDisabled}
-                      aria-label={resetArmed ? "Confirm clear trade" : "Clear trade"}
-                      className={`ffb-btn ${resetArmed ? "ffb-btn-danger" : "ffb-btn-quiet"}`}
-                    >
-                      {resetArmed ? "Confirm clear" : "Clear"}
-                    </button>
+              {boardReady ? (
+                <section aria-labelledby="trade-ledger-title" className="ffb-stack ffb-stack-tight">
+                  <div className="ffb-sechead ffb-sechead-ctl">
+                    <h2 id="trade-ledger-title" className="ffb-h3">
+                      Trade ledger
+                    </h2>
+                    <div className="ffb-cluster ffb-tr-actions">
+                      <button
+                        type="button"
+                        onClick={trade.swapSides}
+                        disabled={!hasBothSides}
+                        className="ffb-btn"
+                      >
+                        Swap
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (resetArmed) {
+                            refocusAfterClear.current = true;
+                            trade.clear();
+                            setResetArmed(false);
+                          } else {
+                            setResetArmed(true);
+                          }
+                        }}
+                        disabled={clearDisabled}
+                        aria-label={resetArmed ? "Confirm clear trade" : "Clear trade"}
+                        className={`ffb-btn ${resetArmed ? "ffb-btn-danger" : "ffb-btn-quiet"}`}
+                      >
+                        {resetArmed ? "Confirm clear" : "Clear"}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="ffb-columns ffb-tr-sides">
+                    <TradePackageFieldset
+                      legend="You give"
+                      description="The players leaving your roster."
+                      playerIds={trade.givePlayerIds}
+                      players={players}
+                      excludedPlayerIds={allSelected}
+                      evaluation={result?.sideA ?? null}
+                      exactValuesAvailable={valuesAvailable}
+                      marksHeldPlayers={marksHeldPlayers}
+                      searchRef={giveSearchRef}
+                      onAdd={(playerId) => trade.addPlayer("give", playerId)}
+                      onRemove={(playerId) => trade.removePlayer("give", playerId)}
+                    />
+                    <TradePackageFieldset
+                      legend="You get"
+                      description="The players joining your roster."
+                      playerIds={trade.getPlayerIds}
+                      players={players}
+                      excludedPlayerIds={allSelected}
+                      evaluation={result?.sideB ?? null}
+                      exactValuesAvailable={valuesAvailable}
+                      marksHeldPlayers={marksHeldPlayers}
+                      onAdd={(playerId) => trade.addPlayer("get", playerId)}
+                      onRemove={(playerId) => trade.removePlayer("get", playerId)}
+                    />
+                  </div>
+
+                  <p className="ffb-method">
+                    {`${players.length} players available in ${FANTASY_SCORING_LABELS[routeState.scoring]}.`}{" "}
+                    Up to {FANTASY_TRADE_MAX_PLAYERS_PER_SIDE} players per side. Unequal offers assume each extra player displaces a replacement-level roster spot.
+                  </p>
+                </section>
+              ) : (
+                <div role="status" aria-label="Loading the overall board" className="ffb-stack">
+                  <span className="ffb-skel ffb-tr-skel-line" />
+                  <div className="ffb-columns ffb-tr-sides">
+                    <span className="ffb-skel ffb-tr-skel-field" />
+                    <span className="ffb-skel ffb-tr-skel-field" />
                   </div>
                 </div>
+              )}
 
-                <div className="ffb-columns ffb-tr-sides">
-                  <TradePackageFieldset
-                    legend="You give"
-                    description="The players leaving your roster."
-                    playerIds={trade.givePlayerIds}
-                    players={players}
-                    excludedPlayerIds={allSelected}
-                    evaluation={result?.sideA ?? null}
-                    exactValuesAvailable={valuesAvailable}
-                    onAdd={(playerId) => trade.addPlayer("give", playerId)}
-                    onRemove={(playerId) => trade.removePlayer("give", playerId)}
-                  />
-                  <TradePackageFieldset
-                    legend="You get"
-                    description="The players joining your roster."
-                    playerIds={trade.getPlayerIds}
-                    players={players}
-                    excludedPlayerIds={allSelected}
-                    evaluation={result?.sideB ?? null}
-                    exactValuesAvailable={valuesAvailable}
-                    onAdd={(playerId) => trade.addPlayer("get", playerId)}
-                    onRemove={(playerId) => trade.removePlayer("get", playerId)}
-                  />
+              {boardReady ? (
+                <TradeResultRail
+                  result={result}
+                  hasBothSides={hasBothSides}
+                  valuesAvailable={valuesAvailable}
+                  giveCount={trade.givePlayerIds.length}
+                  getCount={trade.getPlayerIds.length}
+                  teams={routeState.teams}
+                  rosterSize={routeState.rosterSize}
+                />
+              ) : (
+                <div className="ffb-stack" aria-hidden="true">
+                  <span className="ffb-skel ffb-tr-skel-line" />
+                  <span className="ffb-skel ffb-tr-skel-block" />
                 </div>
-
-                <p className="ffb-method">
-                  {`${players.length} players available in ${FANTASY_SCORING_LABELS[routeState.scoring]}.`}{" "}
-                  Up to {FANTASY_TRADE_MAX_PLAYERS_PER_SIDE} players per side. Unequal offers assume each extra player displaces a replacement-level roster spot.
-                </p>
-              </section>
-
-              <TradeResultRail
-                result={result}
-                hasBothSides={hasBothSides}
-                valuesAvailable={valuesAvailable}
-                giveCount={trade.givePlayerIds.length}
-                getCount={trade.getPlayerIds.length}
-                teams={routeState.teams}
-                rosterSize={routeState.rosterSize}
-              />
+              )}
             </div>
 
             {/* Inside the same shell as the verdict strip, so on a phone the
                 strip stays pinned down through the package table. The table
                 has nothing to compare until both sides hold a player. */}
-            {hasBothSides ? (
+            {boardReady && hasBothSides ? (
               <TradeRosterImpact
                 result={result}
                 valuesAvailable={valuesAvailable}
