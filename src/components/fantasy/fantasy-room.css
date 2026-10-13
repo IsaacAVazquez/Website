@@ -1,0 +1,84 @@
+/*
+ * What the shared room parts (DraftRoomParts.tsx) need past the kit.
+ *
+ * The parts file imports this sheet itself, so the redraft room, the mock room, and the best
+ * ball room all get it with the parts. It is unlayered like the area sheets, so a rule here
+ * beats a kit class on the same element whatever order the sheets load in, and it stays loaded
+ * after in-app navigation, so every selector starts with a class of this sheet's prefix
+ * (`ffb-rm-`) or with `.ffb-root`. Each rule is a candidate for the kit.
+ */
+
+/* The on-the-clock cell. Its width does not follow the name, so the bar's wrap point, and with
+   it the bar's height, is the same whoever is on the clock. A long name ends in an ellipsis. */
+.ffb-rm-live > .ffb-bug-value,
+.ffb-rm-bug-note {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .ffb-rm-live > .ffb-bug-value,
+  .ffb-rm-live > .ffb-rm-bug-note { inline-size: 8.5rem; }
+}
+/* A small second line under a cell's value (the pick just logged). */
+.ffb-rm-bug-note {
+  margin: 0;
+  color: var(--ffb-bug-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  font-stretch: 88%;
+  line-height: 1;
+}
+.ffb-rm-live > .ffb-rm-bug-note { color: var(--ffb-on-fill); }
+
+/* Last picks, where each sticker is a button. The heading carries a note that says what a
+   click does, and the button fills its list cell. */
+.ffb-rm-picks-head { display: grid; gap: 3px; }
+.ffb-rm-picks-note {
+  max-width: 16ch;
+  color: var(--ffb-muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.ffb-rm-pick-item { display: grid; min-width: 0; }
+.ffb-rm-pick { width: 100%; }
+.ffb-rm-pick:hover {
+  outline: 2px solid var(--ffb-on-fill);
+  outline-offset: -2px;
+}
+
+/* "All picks" under the pick grid: one ruled line per pick, by round. My own picks carry the
+   highlighter behind the pick number, and the line says "(you)". */
+.ffb-rm-allpicks-round { margin-block: var(--ffb-s3) var(--ffb-s1); }
+.ffb-rm-allpicks-round:first-child { margin-top: 0; }
+.ffb-rm-allpick {
+  padding-block: 5px;
+  border-top: 1px solid var(--ffb-rule);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.ffb-rm-allpick-num { font-weight: 700; }
+.ffb-rm-is-mine > .ffb-rm-allpick-num {
+  margin-inline: -3px;
+  padding: 1px 3px;
+  border-radius: var(--ffb-radius);
+  background: var(--ffb-hi);
+  color: var(--ffb-on-fill);
+}
+
+@media (max-width: 767.98px) {
+  .ffb-rm-bug-note { font-size: 10.5px; }
+  .ffb-rm-picks-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--ffb-s3);
+  }
+  .ffb-rm-picks-note { max-width: none; }
+}
+
+@media print {
+  .ffb-root .ffb-rm-noprint { display: none; }
+  /* The highlighter does not print, so my own pick keeps an underline. */
+  .ffb-root .ffb-rm-is-mine > .ffb-rm-allpick-num { text-decoration: underline; }
+}

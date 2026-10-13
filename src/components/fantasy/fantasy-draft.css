@@ -129,6 +129,9 @@
 
 /* ==========================================================================
  * The room
+ * The scorebug's frame, the last picks, the roster, and the pick grid are shared parts
+ * (DraftRoomParts.tsx), drawn with kit classes and fantasy-room.css. What is here is this
+ * room's own: the cells it puts in the scorebug, its strip, its board, and its rail blocks.
  * ======================================================================== */
 .ffb-dt-notices {
   display: grid;
@@ -136,34 +139,23 @@
   padding-bottom: var(--ffb-s3);
 }
 
-/* The pinned status band. The padding is the room the live cell needs to stand proud of the bar. */
-.ffb-dt-statusbar { padding-block: var(--ffb-s1); }
-/* Six cells and three buttons do not fit one line on a narrow desktop, so the bar may take a second. */
-.ffb-dt-bug { flex-wrap: wrap; }
-/* The clock is its own cell here, so the live cell is one column: a label over a value. */
-.ffb-dt-bug .ffb-bug-live { grid-template-columns: minmax(0, 1fr); }
-/* A team name can run to 40 characters. */
-.ffb-dt-onclock {
-  max-width: 18ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* The pinned bar keeps one height. A cell whose value changes from pick to pick holds the width
+   of its widest form ("#288 / 288", "18 of 18", "#288 in 30 picks", "551 left"), so the point
+   where the bar wraps depends on the screen and never on the pick. */
+.ffb-dt-cell-pick > .ffb-bug-value { min-inline-size: 101px; }
+.ffb-dt-cell-round > .ffb-bug-value { min-inline-size: 60px; }
+.ffb-dt-cell-next > .ffb-bug-value { min-inline-size: 115px; }
+.ffb-dt-cell-pool > .ffb-bug-value { min-inline-size: 63px; }
+/* The kit switches the bar to its short forms below 1300px. This room's six fixed cells and
+   three buttons need 1234px in their long forms, which the column has from 1440px, so the room
+   switches there. In the short forms the pool, which the board's own count repeats, fits from
+   1280px and leaves below it. One line then holds down to about 990px. */
+@media (max-width: 1439.98px) {
+  .ffb-dt-bug .ffb-bug-short { display: revert; }
+  .ffb-dt-bug .ffb-bug-long { display: none; }
 }
-/* The clock is advisory. It is muted while other teams pick, and it takes the highlighter only
-   in the last 15 seconds of my own pick. */
-.ffb-dt-clock.ffb-dt-is-quiet .ffb-bug-value { color: var(--ffb-bug-muted); }
-.ffb-dt-clock.ffb-dt-is-urgent {
-  margin-block: -6px;
-  border-inline-end: 0;
-  background: var(--ffb-hi);
-  color: var(--ffb-on-fill);
-}
-.ffb-dt-clock.ffb-dt-is-urgent :is(.ffb-bug-label, small) { color: var(--ffb-on-fill); }
-/* Below 1300px the bar is one line only if it is shorter: undo and redo keep their icons and
-   drop their words, and the clock's note takes its short form. */
-.ffb-dt-short { display: none; }
-@media (max-width: 1299.98px) {
-  .ffb-dt-short { display: revert; }
-  .ffb-dt-long { display: none; }
+@media (max-width: 1279.98px) {
+  .ffb-dt-bug .ffb-dt-cell-pool { display: none; }
 }
 /* At 320px the second row has room for the four values and nothing else. */
 @media (max-width: 359.98px) {
@@ -177,23 +169,6 @@
   gap: 6px;
 }
 
-/* Last picks. Each sticker is the button that undoes back to that pick. */
-.ffb-dt-picks-head { display: grid; gap: 3px; }
-.ffb-dt-picks-note {
-  max-width: 16ch;
-  color: var(--ffb-muted);
-  font-size: 11px;
-  line-height: 1.25;
-}
-.ffb-dt-picks .ffb-picks-list > li { display: grid; min-width: 0; }
-.ffb-dt-pick { width: 100%; }
-.ffb-dt-pick:hover {
-  outline: 2px solid var(--ffb-on-fill);
-  outline-offset: -2px;
-}
-
-/* The list column. Blocks carry their own bottom margin, because the note region stays mounted while empty. */
-.ffb-dt-block { margin-bottom: var(--ffb-s3); }
 .ffb-dt-note {
   display: flex;
   align-items: flex-start;
@@ -203,60 +178,28 @@
 }
 .ffb-dt-note > .ffb-iconbtn { margin-block: -6px; }
 
-/* "Your pick is live": a highlighter tab hanging from an ink rule, then the facts as ruled cards. */
-.ffb-dt-strip-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--ffb-s3);
-  border-top: 2px solid var(--ffb-ink);
-}
-.ffb-dt-strip-head > .ffb-turn-tab {
-  border-start-start-radius: 0;
-  border-start-end-radius: 0;
-  font-size: 13px;
-  line-height: 24px;
-}
-/* The floor is the width a card needs for a chip, a long name, and its Log button, so a card
-   the disclosure adds wraps to a new row and does not squeeze the first three. */
-.ffb-dt-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 248px), 1fr));
-  column-gap: var(--ffb-s5);
-  border-bottom: 1px solid var(--ffb-rule);
-}
-.ffb-dt-card {
-  display: grid;
-  align-content: start;
-  gap: 4px;
-  min-width: 0;
-  padding-block: var(--ffb-s2) var(--ffb-s3);
-}
-.ffb-dt-card-line {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: var(--ffb-s2);
-  min-height: var(--ffb-control);
-}
-.ffb-dt-card-line > .ffb-c-name { min-height: var(--ffb-control); }
-.ffb-dt-card-value {
-  display: flex;
-  align-items: center;
-  min-height: var(--ffb-control);
-  font-size: 24px;
-  font-weight: 800;
-  font-stretch: 78%;
-  line-height: 1;
-}
-.ffb-dt-card-note {
-  color: var(--ffb-muted);
-  font-size: 12.5px;
-  line-height: 1.4;
+/* A name on a strip card takes a second line before it is cut. */
+.ffb-dt-strip .ffb-strip-line > .ffb-c-name {
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .ffb-dt-waitrow {
   display: flex;
   justify-content: flex-end;
+}
+
+/* A way past the board for a keyboard. It is out of sight until it takes focus. */
+.ffb-dt-skip { margin-bottom: var(--ffb-s2); }
+.ffb-dt-skip:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* The board. Rank, chip, name, team, bye, then the numbers this room has, then the star and Log. */
@@ -278,56 +221,10 @@
   text-overflow: ellipsis;
 }
 .ffb-dt-vorp { padding-bottom: var(--ffb-s2); }
-/* The ring goes around the whole field, icon included, and not around the input inside it. */
-.ffb-dt-board .ffb-search-input:focus-visible { outline: none; }
-.ffb-dt-board .ffb-search:has(.ffb-search-input:focus-visible) {
-  outline: 2px solid var(--c97-accent);
-  outline-offset: 0;
-}
 /* A delta that reads as value at this pick takes the good ink, and keeps its sign. */
 .ffb-dt-board .ffb-c-num.ffb-dt-is-value { color: var(--ffb-good); }
 
-/* The rail scrolls by itself. The inset keeps a focus ring off its clipped edge. */
-.ffb-dt-rail {
-  margin-inline: -4px;
-  padding-inline: 4px;
-  scrollbar-width: thin;
-}
-/* A 14 or 16 team grid is wider than a narrow rail, so it scrolls sideways inside its own box. */
-.ffb-dt-gridwrap {
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-.ffb-dt-gridwrap > .ffb-grid { min-width: calc(var(--ffb-grid-lead) + var(--ffb-teams, 12) * 24px); }
-/* "WR10" needs 29px at the kit's size, and a cell is about 22px in a 14 or 16 team room and on
-   every phone. There the label sets at 10px on the face's narrowest width, which needs 20px. */
-.ffb-root .ffb-dt-grid-tight .ffb-cell.ffb-is-made {
-  font-size: 10px;
-  font-stretch: 62%;
-  letter-spacing: 0;
-}
-.ffb-dt-grid-tight .ffb-cell:not(.ffb-is-made) { font-size: 10px; }
-
-/* Draft signals and the recap: ruled entries, no tiles. */
-.ffb-dt-entries { display: grid; }
-.ffb-dt-entry {
-  display: grid;
-  gap: 4px;
-  padding-block: var(--ffb-s2);
-  border-top: 1px solid var(--ffb-rule);
-}
-.ffb-dt-entry:first-child { padding-top: 0; border-top: 0; }
-.ffb-dt-entry-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ffb-s1) var(--ffb-s2);
-}
-.ffb-dt-entry-note {
-  color: var(--ffb-muted);
-  font-size: 12.5px;
-  line-height: 1.45;
-}
+/* The recap. */
 .ffb-dt-recap { display: grid; gap: var(--ffb-s4); min-width: 0; }
 .ffb-dt-recap-stats { --ffb-stat-min: 168px; }
 .ffb-dt-replay-head { margin-bottom: var(--ffb-s2); }
@@ -350,16 +247,23 @@
   border-top: 1px solid var(--ffb-rule);
 }
 
-@media (max-width: 1199.98px) {
-  /* Under the list the rail is not a scroller, so it needs no inset. */
-  .ffb-dt-rail { margin-inline: 0; padding-inline: 0; }
+@media (min-width: 768px) {
+  /* Read out, not shown: the column head already says it. */
+  .ffb-dt-vh-desk {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 767.98px) {
   /* Two rows at most: the live cell with the three actions, then the other cells at their own widths. */
   .ffb-dt-bug .ffb-bug-live { flex-basis: 120px; }
   .ffb-dt-bug .ffb-bug-seg:not(.ffb-bug-live) { flex: 1 1 auto; }
-  .ffb-dt-clock.ffb-dt-is-urgent { margin-block: 0; }
+  .ffb-dt-bug .ffb-bug-seg > .ffb-bug-value { min-inline-size: 0; }
   /* A finished draft has no live cell, so "Done" takes its place beside the actions. */
   .ffb-dt-bug .ffb-dt-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }
   /* The scorebug already pins two rows, so the board's bar scrolls with the list. */
@@ -370,25 +274,25 @@
   .ffb-dt-board > :is(.ffb-dt-queue, .ffb-dt-boardbar, .ffb-empty) { order: 0; }
   .ffb-dt-board > section:first-of-type { order: 1; }
   .ffb-dt-board > .ffb-dt-vorp { order: 2; padding-block: var(--ffb-s3) 0; }
-  .ffb-dt-picks-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--ffb-s3);
-  }
-  .ffb-dt-picks-note { max-width: none; }
-  .ffb-root .ffb-dt-gridwrap .ffb-cell.ffb-is-made {
-    font-size: 10px;
-    font-stretch: 62%;
-    letter-spacing: 0;
-  }
-  /* A lineup can hold more than ten slots, so the rows keep their height past the kit's two. */
-  .ffb-dt-slots { grid-template-rows: none; grid-auto-rows: 44px; }
+  /* A phone row's second line holds the chip, the team, the bye, and one number with its label
+     ("±ADP −118.3" at its widest, 73px). The kit's row leaves that 67px at 390 and 37px at 360,
+     so this room takes 8px from the Log button's column, 2px from each gap, and 4px from the
+     chip. The name on the first line gets the same room back. */
+  .ffb-dt-board { --ffb-act-cols: 44px 44px; }
+  .ffb-dt-board .ffb-row { column-gap: 6px; }
+  .ffb-dt-board .ffb-row > .ffb-log { width: 44px; }
+  .ffb-dt-board .ffb-row > .ffb-chip { min-width: 42px; }
   .ffb-dt-replay-note { padding-inline-start: 0; }
   .ffb-dt-lineups > .ffb-choice { padding-inline: var(--ffb-s2); }
   .ffb-dt-lineups .ffb-choice-note { display: none; }
 }
 
+/* At 375px and under, the second line sets a size smaller, which is the last 12px it needs. */
+@media (max-width: 375.98px) {
+  .ffb-dt-board .ffb-row > :is(.ffb-c-team, .ffb-c-bye, .ffb-m-meta) { font-size: 11px; }
+}
+
 @media print {
-  .ffb-root .ffb-dt-noprint { display: none; }
+  .ffb-root .ffb-dt-noprint,
+  .ffb-root .ffb-dt-skip { display: none; }
 }

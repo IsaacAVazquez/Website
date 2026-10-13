@@ -18,17 +18,19 @@ import Link from "next/link";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
 import { DraftBoard } from "./components/DraftBoard";
 import { DraftRecapPanel } from "./components/DraftRecapPanel";
+import { Redo2, Undo2 } from "lucide-react";
 import {
   DraftLastPicks,
   DraftPickGrid,
   DraftRoster,
   DraftScorebug,
-  positionClass,
-} from "./components/DraftRoomParts";
+  DraftScorebugCell,
+} from "@/components/fantasy/DraftRoomParts";
+import { positionClass } from "@/components/fantasy/positionClass";
 import { DraftSetup } from "./components/DraftSetup";
 import { calculateDraftOrder, useDraftState } from "./hooks/useDraftState";
 import { useDraftTelemetry } from "./hooks/useDraftTelemetry";
-import { DraftClockProvider } from "./components/DraftClock";
+import { DraftClockCell, DraftClockProvider } from "./components/DraftClock";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { loadNotes } from "@/lib/fantasyLocal";
 import {
@@ -161,9 +163,9 @@ function StripPlayerCard({
   now?: boolean;
 }) {
   return (
-    <div className="ffb-dt-card">
+    <div className="ffb-strip-item">
       <span className={tone === "warn" ? "ffb-label ffb-warn" : "ffb-label"}>{label}</span>
-      <div className="ffb-dt-card-line">
+      <div className="ffb-strip-line">
         <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
           {player.position}
           {player.positionRank ?? ""}
@@ -172,6 +174,7 @@ function StripPlayerCard({
           type="button"
           onClick={onOpenDetail}
           aria-label={`Open ${player.name} detail`}
+          title={player.name}
           className="ffb-c-name"
         >
           {player.name}
@@ -187,7 +190,7 @@ function StripPlayerCard({
           </button>
         ) : null}
       </div>
-      <p className="ffb-dt-card-note">{detail ?? `#${publishedRank} · ${sub}`}</p>
+      <p className="ffb-strip-note">{detail ?? `#${publishedRank} · ${sub}`}</p>
     </div>
   );
 }
@@ -286,7 +289,10 @@ export function DraftTrackerClient() {
   // Focus target after a logged pick (the fascia's on-the-clock tile) and the
   // counter logPick bumps so the post-commit effect knows a pick just landed.
   const onClockRef = useRef<HTMLDivElement | null>(null);
-  const [loggedPickRequests, setLoggedPickRequests] = useState(0);
+  const [focusRequests, setFocusRequests] = useState(0);
+  const requestRoomFocus = () => setFocusRequests((count) => count + 1);
+  // The rail, which the skip link before the board moves focus to.
+  const railRef = useRef<HTMLElement | null>(null);
   const [showTeamEditor, setShowTeamEditor] = useState(false);
   // The compact strip answers "who now"; the four-position analysis and the
   // full recommendation cards sit behind this toggle so the board stays high.
@@ -673,12 +679,6 @@ export function DraftTrackerClient() {
       : "scarce before your next turn"
     : "No open position is at risk before your next turn.";
 
-  const kicker = showSetup
-    ? "Draft assistant · Setup"
-    : isDraftComplete
-      ? "Draft assistant · Complete"
-      : `Draft assistant · Live · Pick #${draftState.currentPick}`;
-
   // The running head's league line describes the room. Setup leaves it out,
   // because the form below is what describes the room being set up.
   const roomLineParts = [
@@ -768,7 +768,7 @@ export function DraftTrackerClient() {
       draftState.picks,
     );
     if (note) setSpecialistNote(note);
-    setLoggedPickRequests((count) => count + 1);
+    requestRoomFocus();
     draftPlayer(player);
   }
 
@@ -782,6 +782,8 @@ export function DraftTrackerClient() {
     startDraft();
     setSetupScoringFormat(null);
     setRoomSetupOpen(false);
+    // The Start button leaves with the setup screen.
+    requestRoomFocus();
   }
 
   function handleExport(format: "csv" | "recap-csv" | "json") {
@@ -820,23 +822,43 @@ export function DraftTrackerClient() {
       }${previousPick ? ` Last pick: ${previousPick.player.name}.` : ""}`;
 
   // A logged pick unmounts the control that logged it (a board row, a strip
-  // card, or the drawer's opener), so focus would fall to the document. After
-  // the commit, if nothing else claimed focus (the board refocuses its search
-  // when a query was active), move it to the on-the-clock cell, which exists
-  // in every running state. The mock draft carries the same pattern.
+  // card, or the drawer's opener), so focus would fall to the document. Start
+  // draft, Back to room, and an undo back to a pick take their control away
+  // the same way, and Redo and Undo disable themselves once there is nothing
+  // left to do. After the commit, if nothing else holds focus (the board
+  // refocuses its search when a query was active), move it to the on-the-clock
+  // cell, which exists in every running state, or to the "Done" cell once the
+  // draft is complete. The mock draft carries the same pattern.
   useEffect(() => {
-    if (loggedPickRequests === 0) return;
+    if (focusRequests === 0) return;
     const active = document.activeElement;
     // The drawer's "Log this pick" closes the drawer, whose panel stays in the
     // DOM through its exit animation, so focus inside a modal counts as lost.
+    // A button that just disabled itself is about to lose focus too.
     const focusHeld =
       active &&
       active !== document.body &&
       active.isConnected &&
+      !(active instanceof HTMLButtonElement && active.disabled) &&
       !active.closest('[aria-modal="true"]');
     if (focusHeld) return;
     onClockRef.current?.focus({ preventScroll: true });
-  }, [loggedPickRequests]);
+  }, [focusRequests]);
+
+  // The board is hundreds of rows and each row is three tab stops, so a
+  // keyboard gets a way past it. The rail is not a box where it drops under
+  // the list (the kit sets display: contents there), so the first block after
+  // the list takes the focus instead.
+  function skipToRail() {
+    const rail = railRef.current;
+    if (!rail) return;
+    rail.focus();
+    if (document.activeElement === rail) return;
+    const firstAfterList = rail.querySelector<HTMLElement>(":scope > :not(.ffb-rail-lead)");
+    if (!firstAfterList) return;
+    firstAfterList.tabIndex = -1;
+    firstAfterList.focus();
+  }
 
   // The board's bar and the rail pin underneath the scorebug, and the scorebug
   // takes a second row once the column is narrow, so measure it instead of
@@ -941,9 +963,6 @@ export function DraftTrackerClient() {
         {/* Setup keeps a headline and the pitch. A running draft gets one compact line. */}
         <header className={showSetup ? "ffb-head ffb-head-setup" : "ffb-head ffb-head-run"}>
           <h1 className="ffb-title">Draft Tracker</h1>
-          {/* The scorebug prints the pick, so the room's state is not drawn here
-              a second time. Assistive tech still gets it as one line. */}
-          <p className="ffb-vh">{kicker}</p>
           {showSetup ? (
             <p className="ffb-lede">
               Settings lock when the draft starts. The board logs every pick in the room, not just
@@ -1008,7 +1027,11 @@ export function DraftTrackerClient() {
             onResume={() => {
               setSetupScoringFormat(null);
               setRoomSetupOpen(false);
+              requestRoomFocus();
             }}
+            // New room swaps the view, so the setup heading takes the focus.
+            // On a first visit nothing was pressed, and nothing is moved.
+            focusHeadingOnMount={roomSetupOpen}
             parkedPickCount={draftState.picks.length}
           />
         ) : rankingsUnavailable ? (
@@ -1021,33 +1044,123 @@ export function DraftTrackerClient() {
           </div>
         ) : (
           <>
+            {/* The scorebug's cells are this room's own: Pick, Round, On the clock
+                with the pick just logged under it, the clock, Your next turn,
+                and Pool. A finished draft has nobody on the clock and no next
+                turn, so the bar is the pick counter and the pool, and the
+                counter's cell takes the focus. */}
             <DraftScorebug
+              label="Live draft status"
               sectionRef={fasciaRef}
-              onClockRef={onClockRef}
               announcement={roomAnnouncement}
-              isComplete={isDraftComplete}
-              currentPick={draftState.currentPick}
-              totalPicks={totalPicks}
-              currentRound={draftState.currentRound}
-              rounds={draftState.settings.rounds}
-              onClockLabel={onClockLabel}
-              clock={
-                clockVisible
-                  ? {
-                      secondsPerPick: draftState.settings.timerSeconds ?? 0,
-                      mine: isUserPick,
-                      canBeUrgent: timerEnabled && isUserPick,
+              className="ffb-dt-bug"
+              actions={
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      undoLastPick();
+                      requestRoomFocus();
+                    }}
+                    disabled={draftState.picks.length === 0}
+                    aria-label={
+                      draftState.picks.length === 0 ? "Undo last pick (no picks yet)" : "Undo last pick"
                     }
-                  : null
+                    title="Undo last pick"
+                    className="ffb-bug-btn"
+                  >
+                    <Undo2 size={15} aria-hidden="true" />
+                    <span className="ffb-bug-long">Undo pick</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      redoLastPick();
+                      requestRoomFocus();
+                    }}
+                    disabled={!canRedo}
+                    aria-label={canRedo ? "Redo the last undone pick" : "Redo (nothing to redo)"}
+                    title="Redo the last undone pick"
+                    className="ffb-bug-btn"
+                  >
+                    <Redo2 size={15} aria-hidden="true" />
+                    <span className="ffb-bug-long">Redo pick</span>
+                  </button>
+                  <button type="button" onClick={handleNewRoom} className="ffb-bug-btn ffb-bug-btn-quiet">
+                    New room
+                  </button>
+                </>
               }
-              nextTurn={nextTurn}
-              poolLeft={draftSnapshot ? availableBoardPlayers.length : null}
-              canUndo={draftState.picks.length > 0}
-              canRedo={canRedo}
-              onUndo={undoLastPick}
-              onRedo={redoLastPick}
-              onNewRoom={handleNewRoom}
-            />
+            >
+              <DraftScorebugCell
+                label="Pick"
+                ref={isDraftComplete ? onClockRef : undefined}
+                tabIndex={isDraftComplete ? -1 : undefined}
+                className={isDraftComplete ? "ffb-dt-done" : "ffb-dt-cell-pick"}
+              >
+                {isDraftComplete ? (
+                  "Done"
+                ) : (
+                  <>
+                    {/* A phone cell is too narrow for the spaced form, and the counter must never truncate. */}
+                    <span className="ffb-only-phone">{`#${draftState.currentPick}/${totalPicks}`}</span>
+                    <span className="ffb-not-phone">{`#${draftState.currentPick} / ${totalPicks}`}</span>
+                  </>
+                )}
+              </DraftScorebugCell>
+              {isDraftComplete ? null : (
+                <>
+                  <DraftScorebugCell label="Round" className="ffb-dt-cell-round">
+                    {draftState.currentRound} <small>of {draftState.settings.rounds}</small>
+                  </DraftScorebugCell>
+                  <DraftScorebugCell
+                    label="On the clock"
+                    live
+                    ref={onClockRef}
+                    tabIndex={-1}
+                    title={onClockLabel}
+                    note={
+                      previousPick
+                        ? `Prev · ${shortName(previousPick.player)} #${previousPick.pickNumber}`
+                        : "First overall pick"
+                    }
+                  >
+                    {onClockLabel}
+                  </DraftScorebugCell>
+                  {clockVisible ? (
+                    <DraftClockCell
+                      secondsPerPick={draftState.settings.timerSeconds ?? 0}
+                      mine={isUserPick}
+                      canBeUrgent={timerEnabled && isUserPick}
+                    />
+                  ) : null}
+                  <DraftScorebugCell
+                    label={
+                      <>
+                        <span className="ffb-only-phone">Next turn</span>
+                        <span className="ffb-not-phone">Your next turn</span>
+                      </>
+                    }
+                    className="ffb-dt-cell-next"
+                  >
+                    {nextTurn.value}
+                    {nextTurn.note ? <> <small>{nextTurn.note}</small></> : null}
+                  </DraftScorebugCell>
+                </>
+              )}
+              {/* The board's own count says the same thing, so the pinned band leaves this cell out on a phone. */}
+              <DraftScorebugCell label="Pool" className="ffb-not-phone ffb-dt-cell-pool">
+                {draftSnapshot ? (
+                  <>
+                    {availableBoardPlayers.length} <small>left</small>
+                  </>
+                ) : (
+                  <>
+                    — <small>board loading</small>
+                  </>
+                )}
+              </DraftScorebugCell>
+            </DraftScorebug>
 
             {/* The page goes from the h1 to the room's h3 headings with nothing
                 between, so name the room here the way the rankings board and the
@@ -1057,7 +1170,10 @@ export function DraftTrackerClient() {
             <DraftLastPicks
               picks={tapePicks}
               userTeam={draftState.settings.userTeam}
-              onUndoToPick={undoToPick}
+              onUndoToPick={(pickNumber) => {
+                undoToPick(pickNumber);
+                requestRoomFocus();
+              }}
             />
 
             {/* The scorebug's measured height is where the board's bar and the rail pin. */}
@@ -1084,8 +1200,8 @@ export function DraftTrackerClient() {
                 </div>
 
                 {stripVisible && bestAvailable && (
-                  <section aria-label="Your pick recommendations" className="ffb-dt-block">
-                    <div className="ffb-dt-strip-head">
+                  <section aria-label="Your pick recommendations" className="ffb-block">
+                    <div className="ffb-strip-head">
                       <h3 className="ffb-turn-tab">Your pick is live</h3>
                       <button
                         type="button"
@@ -1102,7 +1218,7 @@ export function DraftTrackerClient() {
                         this grid, so one Log button exists per player. The four-position
                         panel below carries the long-form reading. The grid's column floor
                         is in the route's stylesheet. */}
-                    <div id="draft-decision-strip" className="ffb-dt-strip">
+                    <div id="draft-decision-strip" className="ffb-strip ffb-dt-strip">
                       <StripPlayerCard
                         label="Best available"
                         player={bestAvailable}
@@ -1134,18 +1250,18 @@ export function DraftTrackerClient() {
                           logLabel={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
                         />
                       ) : (
-                        <div className="ffb-dt-card">
+                        <div className="ffb-strip-item">
                           <span className="ffb-label ffb-warn">Most at risk</span>
-                          <p className="ffb-dt-card-note">{riskStripSub}</p>
+                          <p className="ffb-strip-note">{riskStripSub}</p>
                         </div>
                       )}
 
-                      <div className="ffb-dt-card" title={stripWait.title}>
+                      <div className="ffb-strip-item" title={stripWait.title}>
                         <span className="ffb-label">
                           If you wait{stripWaitPosition ? ` · ${stripWaitPosition}` : ""}
                         </span>
-                        <p className="ffb-dt-card-value">{stripWait.value}</p>
-                        <p className="ffb-dt-card-note">{stripWait.sub}</p>
+                        <p className="ffb-strip-value">{stripWait.value}</p>
+                        <p className="ffb-strip-note">{stripWait.sub}</p>
                       </div>
 
                       {showDecisionDetail
@@ -1182,7 +1298,7 @@ export function DraftTrackerClient() {
                 ) : null}
 
                 {!isDraftComplete && redraftDecision.guidanceAvailable && showDecisionDetail ? (
-                  <div id="draft-decision-detail" className="ffb-dt-block">
+                  <div id="draft-decision-detail" className="ffb-block">
                     <RedraftDecisionPanel
                       report={redraftDecision}
                       onOpenPlayer={setDetailPlayer}
@@ -1191,19 +1307,19 @@ export function DraftTrackerClient() {
                 ) : null}
 
                 {isDraftComplete && (
-                  <div className="ffb-notice ffb-notice-good ffb-dt-block">
+                  <div className="ffb-notice ffb-notice-good ffb-block">
                     <p className="ffb-notice-title">Draft complete.</p>
                     <p>Every pick is logged in this room. Start a new room to run it back.</p>
                   </div>
                 )}
 
                 {isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
-                  <div className="ffb-dt-block">
+                  <div className="ffb-block">
                     <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
                   </div>
                 )}
                 {isDraftComplete && draftRecap && draftRecap.totalTurns === 0 && userTurnTotal > 0 && (
-                  <p className="ffb-method ffb-dt-block">
+                  <p className="ffb-method ffb-block">
                     No model recap. None of your turns carried a recorded recommendation, which
                     usually means draft guidance was unavailable while you picked, for example
                     when the ADP source was stale and the decision strip stayed hidden.
@@ -1231,6 +1347,17 @@ export function DraftTrackerClient() {
                     ) : null}
                   </div>
                 ) : !isDraftComplete ? (
+                  <>
+                  <a
+                    href="#your-draft"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      skipToRail();
+                    }}
+                    className="ffb-btn ffb-dt-skip"
+                  >
+                    Skip to your roster
+                  </a>
                   <DraftBoard
                     players={draftBoardPlayers}
                     draftedPlayerIds={draftedPlayerIds}
@@ -1244,6 +1371,7 @@ export function DraftTrackerClient() {
                     vorpTeamSize={vorpTeamSize}
                     nextUserPick={nextUserPick}
                   />
+                  </>
                 ) : analytics ? (
                   <DraftAnalyticsPanel
                     analytics={analytics}
@@ -1258,7 +1386,7 @@ export function DraftTrackerClient() {
                 ) : null}
               </div>
 
-              <aside className="ffb-rail ffb-rail-scroll ffb-dt-rail" aria-label="Your draft">
+              <aside ref={railRef} tabIndex={-1} className="ffb-rail ffb-rail-scroll" aria-label="Your draft">
                 <DraftRoster
                   assignment={lineupAssignment}
                   picked={userTeam?.picks.length ?? 0}
@@ -1266,7 +1394,12 @@ export function DraftTrackerClient() {
                 />
                 <DraftPickGrid
                   picks={picksForDisplay}
-                  settings={draftState.settings}
+                  totalTeams={draftState.settings.totalTeams}
+                  userTeam={draftState.settings.userTeam}
+                  rounds={draftState.settings.rounds}
+                  slotForPick={(pickNumber) =>
+                    calculateDraftOrder(pickNumber, draftState.settings.totalTeams, draftState.settings.draftType)
+                  }
                   currentPick={draftState.currentPick}
                   currentRound={draftState.currentRound}
                   isComplete={isDraftComplete}
