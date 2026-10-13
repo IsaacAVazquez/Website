@@ -226,7 +226,8 @@ describe("DraftValuePanel", () => {
 
     expect(screen.getByText("Best Ball Mania VII field baseline")).toBeInTheDocument();
     expect(screen.getByText("$22.31")).toBeInTheDocument();
-    expect(screen.getByText("-$2.69")).toHaveStyle({ color: "var(--c97-negative)" });
+    // The sign prints with the figure, and the kit status ink follows the sign.
+    expect(screen.getByText("-$2.69")).toHaveClass("ffb-bad");
     expect(screen.getByText("16.7%")).toBeInTheDocument();
     expect(screen.getByText("+12.1%")).toBeInTheDocument();
     // The entry count is the count on the capture date, so the date prints
@@ -248,7 +249,7 @@ describe("DraftValuePanel", () => {
     );
 
     expect(screen.getByText("Published field baseline")).toBeInTheDocument();
-    expect(screen.getByText("+$2.00")).toHaveStyle({ color: "var(--c97-positive)" });
+    expect(screen.getByText("+$2.00")).toHaveClass("ffb-good");
     expect(screen.queryByText(/Field figures as of/)).not.toBeInTheDocument();
   });
 

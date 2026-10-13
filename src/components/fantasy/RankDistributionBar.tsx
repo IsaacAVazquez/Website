@@ -1,7 +1,12 @@
 "use client";
 
-import { formatRankValue, getConsensusSpread } from "@/lib/fantasyUtils";
+import type { CSSProperties } from "react";
+
+import { formatRankValue } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
+
+import "./fantasy-overlays.css";
+import { positionClass } from "./positionClass";
 
 interface RankDistributionBarProps {
   player: Player;
@@ -12,20 +17,14 @@ interface RankDistributionBarProps {
   compact?: boolean;
 }
 
-const SPREAD_FILL: Record<string, string> = {
-  tight: "color-mix(in srgb, var(--c97-positive) 34%, var(--c97-surface))",
-  mixed: "color-mix(in srgb, var(--c97-accent) 46%, var(--c97-surface))",
-  volatile: "color-mix(in srgb, var(--c97-warning) 38%, var(--c97-surface))",
-};
-const UNKNOWN_SPREAD_FILL =
-  "color-mix(in srgb, var(--c97-ink) 22%, var(--c97-surface))";
-
 /**
- * Visualizes how widely the experts disagree about a player by plotting his
- * best-to-worst rank span as a filled track with the expert mean marked.
- * A wide fill = lots of disagreement; the fill color encodes the same
- * `standardDeviation`-derived consensus-spread bucket shown elsewhere. This is
- * the headline use of the otherwise-unsurfaced `standardDeviation` field.
+ * How widely the experts disagree about a player, drawn as the kit's spread
+ * plot: a thin line from his best to his worst rank, one standard deviation
+ * each side of the expert mean as the thicker segment, and the mean as an ink
+ * tick. Without a shared scale the line runs edge to edge and the segment
+ * shows where the middle of the experts sits inside it. With one (the compare
+ * modal) the plots share guides at the quarters, so a longer line means more
+ * disagreement.
  */
 export function RankDistributionBar({ player, scaleMin, scaleMax, compact = false }: RankDistributionBarProps) {
   const min = player.minRank;
@@ -36,53 +35,51 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
       : undefined;
 
   if (!Number.isFinite(min) || !Number.isFinite(max)) {
-    return (
-      <p className="text-xs" style={{ color: "var(--c97-ink-2)" }}>
-        Expert range unavailable for this board.
-      </p>
-    );
+    return <p className="ffb-ov-spread-none">Expert range unavailable for this board.</p>;
   }
 
-  const lo = scaleMin ?? (min as number);
-  const hi = scaleMax ?? (max as number);
-  const span = hi - lo || 1;
-  const pct = (value: number) => Math.max(0, Math.min(100, ((value - lo) / span) * 100));
-
-  const left = pct(min as number);
-  const right = pct(max as number);
-  const spread = getConsensusSpread(player);
-  const fill = spread ? SPREAD_FILL[spread.level] : UNKNOWN_SPREAD_FILL;
+  const rawLo = scaleMin ?? (min as number);
+  const rawHi = scaleMax ?? (max as number);
+  // A scale with no width (every expert agrees) gets a rank of room each side, so the mark sits mid-plot.
+  const lo = rawHi > rawLo ? rawLo : rawLo - 1;
+  const hi = rawHi > rawLo ? rawHi : rawHi + 1;
+  const pct = (value: number) => `${Math.max(0, Math.min(100, ((value - lo) / (hi - lo)) * 100)).toFixed(2)}%`;
+  const deviation =
+    avg !== undefined && typeof player.standardDeviation === "number" && player.standardDeviation > 0
+      ? player.standardDeviation
+      : undefined;
+  const shared = scaleMin !== undefined || scaleMax !== undefined;
 
   return (
-    <div className="w-full">
-      <div
-        className="relative h-2.5 w-full overflow-hidden"
-        style={{ background: "color-mix(in srgb, var(--c97-ink) 8%, var(--c97-surface))" }}
+    <div className={compact ? "ffb-ov-spread ffb-ov-spread-compact" : "ffb-ov-spread"}>
+      <span
+        className={`ffb-spread ${positionClass(player.position)}`}
         role="img"
         aria-label={`Expert rank range ${formatRankValue(min)} to ${formatRankValue(max)}${
           avg !== undefined ? `, average ${formatRankValue(avg)}` : ""
         }`}
+        style={
+          {
+            "--ffb-rounds": shared ? 4 : 1,
+            "--ffb-min": pct(min as number),
+            "--ffb-max": pct(max as number),
+            ...(avg !== undefined ? { "--ffb-avg": pct(avg) } : null),
+            ...(avg !== undefined && deviation !== undefined
+              ? { "--ffb-sd-lo": pct(avg - deviation), "--ffb-sd-hi": pct(avg + deviation) }
+              : null),
+          } as CSSProperties
+        }
       >
-        <span
-          className="absolute inset-y-0"
-          style={{ left: `${left}%`, width: `${Math.max(right - left, 2)}%`, background: fill }}
-        />
-        {avg !== undefined && (
-          <span
-            className="absolute inset-y-0 w-[2px]"
-            style={{ left: `calc(${pct(avg)}% - 1px)`, background: "var(--c97-ink)" }}
-          />
-        )}
-      </div>
+        <i className="ffb-spread-range" />
+        {deviation !== undefined && <i className="ffb-spread-sd" />}
+        {avg !== undefined && <i className="ffb-spread-avg" />}
+      </span>
       {!compact && (
-        <div
-          className="flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.1em]"
-          style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}
-        >
+        <p className="ffb-ov-spread-ends">
           <span>Best {formatRankValue(min)}</span>
-          {avg !== undefined && <span style={{ color: "var(--c97-ink)" }}>Avg {formatRankValue(avg)}</span>}
+          {avg !== undefined && <span className="ffb-ov-spread-avg">Avg {formatRankValue(avg)}</span>}
           <span>Worst {formatRankValue(max)}</span>
-        </div>
+        </p>
       )}
     </div>
   );
