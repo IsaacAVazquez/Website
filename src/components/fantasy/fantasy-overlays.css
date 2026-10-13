@@ -30,7 +30,8 @@
  * ------------------------------------------------------------------------ */
 .ffb-ov-drawer-body { padding-bottom: calc(var(--ffb-s5) + env(safe-area-inset-bottom)); }
 .ffb-ov-drawer-body > * { min-width: 0; }
-.ffb-ov-actions { display: flex; flex-wrap: wrap; gap: var(--ffb-s2); }
+/* The kit's cluster with an 8px gap both ways, and buttons that share the row's height. */
+.ffb-ov-actions { align-items: stretch; gap: var(--ffb-s2); }
 .ffb-ov-actions > .ffb-btn { flex: 1 1 auto; }
 /* Market ADP takes a line of its own under the short facts, with its reading and sample beside it. */
 .ffb-ov-stat-wide {
@@ -38,7 +39,7 @@
   padding-top: var(--ffb-s3);
   border-top: 1px solid var(--ffb-rule);
 }
-.ffb-ov-stat-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2); }
+.ffb-ov-stat-row { gap: var(--ffb-s2); }
 /* A label and its reading on one line (movement). */
 .ffb-ov-line {
   display: flex;
@@ -188,8 +189,6 @@
 }
 .ffb-ov-wait-tags { display: flex; flex-wrap: wrap; gap: var(--ffb-s1) var(--ffb-s3); }
 .ffb-ov-wait-tags > .ffb-label { font-size: 11px; }
-.ffb-ov-wait-lines,
-.ffb-ov-wait-tier { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
 .ffb-ov-wait-next { font-size: 14px; line-height: 1.45; }
 
 /* --------------------------------------------------------------------------

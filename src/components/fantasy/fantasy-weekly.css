@@ -86,7 +86,6 @@
 .ffb-wk-table-waivers .ffb-wk-h-short { width: 52px; }
 .ffb-wk-table-waivers .ffb-wk-h-pct { width: 80px; }
 .ffb-wk-table-waivers .ffb-wk-h-own { width: 76px; }
-.ffb-wk-table td.ffb-wk-rank { color: var(--ffb-ink); font-size: 15px; font-weight: 700; font-stretch: 88%; }
 
 /* The phone lists are the kit's reflowed table. These are the two column templates its head
    and its rows read. */
@@ -128,18 +127,8 @@
 .ffb-wk-block > .ffb-sechead { padding-bottom: 0; }
 /* A view with one block takes both columns. */
 .ffb-wk-block-wide { grid-column: 1 / -1; }
-.ffb-wk-copy {
-  max-width: 62ch;
-  color: var(--ffb-muted);
-  font-size: 14px;
-  line-height: 1.45;
-}
-.ffb-wk-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ffb-s2);
-}
+/* The kit's cluster with an 8px gap both ways. */
+.ffb-wk-actions { gap: var(--ffb-s2); }
 
 /* A player in a list of My team: who it is, then what can be done with him. */
 .ffb-wk-entries { display: grid; }
@@ -188,11 +177,7 @@
 .ffb-wk-result > p:first-child { font-size: 16px; font-weight: 700; line-height: 1.3; }
 .ffb-wk-result > .ffb-btn { justify-self: start; margin-top: var(--ffb-s1); }
 
-.ffb-wk-foot {
-  max-width: none;
-  padding-top: var(--ffb-s3);
-  border-top: 1px solid var(--ffb-rule);
-}
+.ffb-wk-foot { max-width: none; }
 
 /* ==========================================================================
  * Print: the controls that do nothing on paper

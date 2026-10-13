@@ -222,13 +222,8 @@
 /* The wrapper only groups the four cells for the phone layout. */
 .ffb-tr-fit-cells { display: contents; }
 .ffb-tr-fit-name { font-size: 15px; font-weight: 600; }
-.ffb-root .ffb-tr-fit-value {
-  font-size: 18px;
-  font-weight: 800;
-  font-stretch: 78%;
-  line-height: 1;
-  word-spacing: 0.12em;
-}
+/* The kit's heavy number, with room between a count and its arrow. */
+.ffb-tr-fit-value { word-spacing: 0.12em; }
 .ffb-tr-fit-label { margin-bottom: var(--ffb-s1); color: var(--ffb-muted); font-size: 10.5px; }
 .ffb-tr-fit-foot { margin-top: var(--ffb-s3); }
 @media (max-width: 767.98px) {

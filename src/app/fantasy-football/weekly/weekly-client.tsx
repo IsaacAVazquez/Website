@@ -795,7 +795,7 @@ export function WeeklyBoardClient({
                     <tbody>
                       {visiblePlayers.map((player) => (
                         <tr key={player.id}>
-                          <td className="ffb-num ffb-wk-rank">{player.rank}</td>
+                          <td className="ffb-num ffb-c-rank">{player.rank}</td>
                           <th scope="row">
                             <PlayerCell player={player} />
                           </th>

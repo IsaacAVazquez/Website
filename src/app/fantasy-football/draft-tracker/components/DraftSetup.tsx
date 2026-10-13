@@ -277,7 +277,7 @@ export function DraftSetup({
         {presets.length > 0 ? (
           <div className="ffb-field">
             <span className="ffb-field-label">League presets</span>
-            <div className="ffb-dt-presets">
+            <div className="ffb-cluster ffb-dt-presets">
               {presets.map((preset) => (
                 <span key={preset.id} className="ffb-dt-preset">
                   <button
@@ -545,7 +545,7 @@ export function DraftSetup({
 
           <div className="ffb-field">
             <span className="ffb-field-label">Save as a league preset</span>
-            <div className="ffb-dt-preset-save">
+            <div className="ffb-cluster ffb-dt-preset-save">
               <label htmlFor="draft-preset-name" className="sr-only">
                 Preset name
               </label>

@@ -1497,7 +1497,7 @@ export function DraftTrackerClient() {
               </aside>
             </div>
 
-            <p className="ffb-method ffb-dt-foot">
+            <p className="ffb-method ffb-method-ruled ffb-dt-foot">
               Advisory clock only, nothing auto-picks at zero · picks stay on this device
             </p>
           </>

@@ -246,7 +246,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
         </div>
 
         <div className="ffb-panel-body ffb-ov-drawer-body">
-          <div className="ffb-ov-actions">
+          <div className="ffb-cluster ffb-ov-actions">
             {onLogPick && (
               <button type="button" onClick={() => onLogPick(player)} className="ffb-btn ffb-btn-primary">
                 Log this pick
@@ -321,7 +321,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                     Market ADP
                   </MetricTooltip>
                 </dt>
-                <dd className="ffb-ov-stat-row">
+                <dd className="ffb-cluster ffb-ov-stat-row">
                   {formatAdp(player.adp)}{" "}
                   {valueSignal?.signal && (
                     <span

@@ -66,7 +66,7 @@ function MetricCell({ label, value }: { label: string; value: string | number })
       <span aria-hidden="true" className="ffb-label ffb-tr-fit-label block md:hidden">
         {label}
       </span>
-      <span className="ffb-tr-fit-value">{value}</span>
+      <span className="ffb-heavy ffb-tr-fit-value">{value}</span>
     </div>
   );
 }
