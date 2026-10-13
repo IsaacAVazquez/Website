@@ -10,6 +10,7 @@ import { groupFixturesByMatchday } from "./fixtureLedgerUtils";
 import { LeaderLedger, type LeaderLedgerEntry } from "./LeaderLedger";
 import { PointsLadder } from "./PointsLadderChart";
 import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone } from "./ladderGeometry";
+import { useKeepPressedInView } from "./useKeepPressedInView";
 import type { GenericFixture } from "./FixtureCard";
 import "./league-table.css";
 
@@ -130,6 +131,8 @@ export function LeagueTableBoard<V extends string>({
   );
   const tableScrollRef = useRef<HTMLDivElement>(null);
   const tableOverflows = useOverflowX(tableScrollRef);
+  const viewSwitchRef = useRef<HTMLDivElement>(null);
+  useKeepPressedInView(viewSwitchRef, activeView);
   const lastMatchday = goalsPerMatchday.at(-1)?.matchday;
   const statusLine = [
     matchday ? `Matchday ${matchday} of 38` : null,
@@ -199,7 +202,7 @@ export function LeagueTableBoard<V extends string>({
                 <h2 id={`${config.idPrefix}-standings-heading`} className="lt-h2">
                   Standings
                 </h2>
-                <div className="lt-switch" role="group" aria-label="Table view">
+                <div ref={viewSwitchRef} className="lt-switch" role="group" aria-label="Table view">
                   {views.map((view) => (
                     <button
                       key={view.id}

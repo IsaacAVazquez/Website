@@ -71,11 +71,11 @@ export function seedLadder<T extends SeedLadderTeam>(
 }
 
 /**
- * The NFL snapshot leaves `seed` null for every team, so seeds are derived
- * per conference: division leaders take one to four in conference-rank
- * order, the next three non-leaders by conference rank take five to seven,
- * and everyone else has no seed. This is the picture if the season ended
- * today, not a published seed.
+ * The NFL snapshot's `seed` is null until the feed publishes one, so seeds
+ * are derived per conference from the two ranks every team always has:
+ * division leaders take one to four in conference-rank order, the next three
+ * non-leaders by conference rank take five to seven, and everyone else has
+ * no seed. This is the picture if the season ended today.
  */
 export interface NflSeedTeam {
   id: string;

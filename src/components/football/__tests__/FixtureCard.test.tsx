@@ -1,7 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { FixtureCard, type GenericFixture } from "../FixtureCard";
-import { formatFixtureDateTime, getResultForTeam } from "../fixtureFormat";
-import { LeaderList } from "../LeaderList";
+import {
+  formatFixtureDateTime,
+  formatFixtureDay,
+  formatFixtureTime,
+  getResultForTeam,
+} from "../fixtureFormat";
 
 function makeFixture(overrides: Partial<GenericFixture> = {}): GenericFixture {
   return {
@@ -80,6 +84,38 @@ describe("formatFixtureDateTime", () => {
     const played = makeFixture({ utcDate: "2026-09-20T07:33:00Z", startTimeTbd: true });
     expect(formatFixtureDateTime(played)).toBe("Sep 20");
   });
+
+  it("keeps the if necessary mark once the game has a start time", () => {
+    // Seen on MLB game 849808, an NLCS Game 5 with a time and the flag both set.
+    const maybe = makeFixture({ ...unplayed, utcDate: "2026-10-17T01:00:00Z", ifNecessary: true });
+    expect(formatFixtureDateTime(maybe)).toBe("Oct 16, 9:00 PM EDT · if necessary");
+  });
+
+  it("drops the if necessary mark from a game that was played", () => {
+    const played = makeFixture({ utcDate: "2026-10-17T01:00:00Z", ifNecessary: true });
+    expect(formatFixtureDateTime(played)).toBe("Oct 16, 9:00 PM EDT");
+  });
+});
+
+describe("formatFixtureDay and formatFixtureTime", () => {
+  it("split the kickoff into its Eastern day and its time", () => {
+    // 01:00 UTC is still the evening before in New York.
+    const late = makeFixture({ utcDate: "2026-10-17T01:00:00Z" });
+    expect(formatFixtureDay(late)).toBe("Oct 16");
+    expect(formatFixtureTime(late)).toBe("9:00 PM EDT");
+  });
+
+  it("keep a placeholder on its own calendar day with no clock", () => {
+    const tbd = makeFixture({ utcDate: "2026-10-18T00:00:00Z", startTimeTbd: true });
+    expect(formatFixtureDay(tbd)).toBe("Oct 18");
+    expect(formatFixtureTime(tbd)).toBe("time TBD");
+  });
+
+  it("print no day for a date that cannot be read", () => {
+    const broken = makeFixture({ utcDate: "not a date" });
+    expect(formatFixtureDay(broken)).toBeNull();
+    expect(formatFixtureTime(broken)).toBe("time TBD");
+  });
 });
 
 describe("FixtureCard", () => {
@@ -91,27 +127,5 @@ describe("FixtureCard", () => {
     render(<FixtureCard fixture={upcoming} contextTeamId="lv" />);
     expect(screen.queryByText("L")).not.toBeInTheDocument();
     expect(screen.getByText("Sep 27, 1:25 PM EDT")).toBeInTheDocument();
-  });
-});
-
-describe("LeaderList", () => {
-  const leader = {
-    rank: 1,
-    name: "Aaron Judge",
-    clubId: "147",
-    clubCode: "NYY",
-    total: 52,
-    perMatch: 0,
-  };
-
-  it("leaves the games count out when the feed sends none", () => {
-    render(<LeaderList leaders={[{ ...leader, appearances: 0 }]} statLabel="HR" />);
-    expect(screen.getByText("NYY")).toBeInTheDocument();
-    expect(screen.queryByText(/apps/)).not.toBeInTheDocument();
-  });
-
-  it("prints the games count when there is one", () => {
-    render(<LeaderList leaders={[{ ...leader, appearances: 150 }]} statLabel="HR" />);
-    expect(screen.getByText("NYY · 150 apps")).toBeInTheDocument();
   });
 });

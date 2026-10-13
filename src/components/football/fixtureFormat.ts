@@ -26,6 +26,20 @@ const DATE_ONLY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 
+// The two halves of DATE_TIME_FORMATTER, for a row that stacks them.
+const DAY_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "America/New_York",
+});
+
+const TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: "America/New_York",
+  timeZoneName: "short",
+});
+
 /** A rate to fixed decimals, or an em dash when it divided by zero. */
 export function formatFixed(value: number, digits = 2): string {
   return Number.isFinite(value) ? value.toFixed(digits) : "—";
@@ -39,11 +53,27 @@ export function formatRank(rank: number | null | undefined): string {
 export function formatFixtureDateTime(fixture: GenericFixture): string {
   const date = new Date(fixture.utcDate);
   if (Number.isNaN(date.getTime())) return "Time TBD";
-  if (!fixture.startTimeTbd) return formatStableDateTime(DATE_TIME_FORMATTER, date);
-  const day = DATE_ONLY_FORMATTER.format(date);
-  // MLB leaves the flag on the second game of a doubleheader after it is played.
-  if (fixture.status === "FINISHED") return day;
-  return fixture.ifNecessary ? `${day} · time TBD · if necessary` : `${day} · time TBD`;
+  // MLB leaves both flags on a game after it is played.
+  const isFinal = fixture.status === "FINISHED";
+  if (fixture.startTimeTbd && isFinal) return DATE_ONLY_FORMATTER.format(date);
+  const when = fixture.startTimeTbd
+    ? `${DATE_ONLY_FORMATTER.format(date)} · time TBD`
+    : formatStableDateTime(DATE_TIME_FORMATTER, date);
+  return fixture.ifNecessary && !isFinal ? `${when} · if necessary` : when;
+}
+
+/** The fixture's calendar day, as "Oct 7", or null when the date cannot be read. */
+export function formatFixtureDay(fixture: GenericFixture): string | null {
+  const date = new Date(fixture.utcDate);
+  if (Number.isNaN(date.getTime())) return null;
+  return (fixture.startTimeTbd ? DATE_ONLY_FORMATTER : DAY_FORMATTER).format(date);
+}
+
+/** The start time alone, as "1:25 PM EDT", for a row whose day prints beside it. */
+export function formatFixtureTime(fixture: GenericFixture): string {
+  const date = new Date(fixture.utcDate);
+  if (fixture.startTimeTbd || Number.isNaN(date.getTime())) return "time TBD";
+  return formatStableDateTime(TIME_FORMATTER, date);
 }
 
 export function formatKickoff(utcDate: string): string {

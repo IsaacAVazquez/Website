@@ -7,7 +7,7 @@ import { CrestAvatar } from "./CrestAvatar";
 import { TeamResultPill } from "./TeamResultPill";
 import { StatFascia, type StatFasciaItem } from "./StatFascia";
 import type { GenericFixture } from "./FixtureCard";
-import { formatFixed, formatKickoff } from "./fixtureFormat";
+import { formatFixed, formatFixtureDateTime, formatFixtureDay } from "./fixtureFormat";
 
 export interface ClubDrawerScorer {
   name: string;
@@ -62,16 +62,20 @@ function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId
         {opponent.shortName}
       </span>
       {isFinal ? (
-        <span
-          className="font-mono text-sm tabular-nums"
-          style={{ color: win ? "var(--c97-positive)" : loss ? "var(--c97-negative)" : "var(--c97-ink)" }}
-        >
-          {goalsFor ?? "–"}
-          <span className="px-px text-[var(--c97-ink-2)]">–</span>
-          {goalsAgainst ?? "–"}
+        <span className="flex items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
+          <span className="font-mono text-2xs text-[var(--c97-ink-2)]">{formatFixtureDay(fixture)}</span>
+          <span
+            className="font-mono text-sm tabular-nums"
+            style={{ color: win ? "var(--c97-positive)" : loss ? "var(--c97-negative)" : "var(--c97-ink)" }}
+          >
+            {goalsFor ?? "–"}
+            <span className="px-px text-[var(--c97-ink-2)]">–</span>
+            {goalsAgainst ?? "–"}
+          </span>
         </span>
       ) : (
-        <span className="font-mono text-2xs text-[var(--c97-ink-2)]">{formatKickoff(fixture.utcDate)}</span>
+        // The full date, since a weekday alone reads the same two Sundays running.
+        <span className="font-mono text-2xs text-[var(--c97-ink-2)]">{formatFixtureDateTime(fixture)}</span>
       )}
     </div>
   );
