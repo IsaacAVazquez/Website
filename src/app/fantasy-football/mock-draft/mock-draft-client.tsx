@@ -976,8 +976,18 @@ export function MockDraftClient() {
               <div className="ffb-sechead ffb-mk-start-head">
                 <h3 className="ffb-h3">Room setup</h3>
               </div>
+              {/* Start leads its block, so the default room is one press from the
+                  top of the form. What it will start is the line under it, and
+                  why it is paused, when it is, comes straight after. */}
+              <button
+                type="button"
+                onClick={startRoom}
+                disabled={!simulationAvailable}
+                className="ffb-btn ffb-btn-primary ffb-btn-lg ffb-btn-block"
+              >
+                Start mock
+              </button>
               <p className="ffb-mk-start-summary">{summary}</p>
-              {/* Why Start is paused, kept against the button it explains. */}
               {boardStatusLine ? (
                 <div
                   role="status"
@@ -1000,14 +1010,6 @@ export function MockDraftClient() {
                   ) : null}
                 </div>
               ) : null}
-              <button
-                type="button"
-                onClick={startRoom}
-                disabled={!simulationAvailable}
-                className="ffb-btn ffb-btn-primary ffb-btn-lg ffb-btn-block"
-              >
-                Start mock
-              </button>
             </div>
 
             <div className="ffb-mk-setup-main">

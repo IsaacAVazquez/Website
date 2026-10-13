@@ -364,7 +364,16 @@
      says so, so the word "Draft" leaves and the name keeps the width. */
   .ffb-mk-quicks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ffb-s1); }
   .ffb-mk-quick { grid-template-columns: minmax(0, 1fr); }
-  .ffb-mk-quick > .ffb-mk-quick-go { display: none; }
+  /* Hidden from the eye and still read, so the button's name ends in "Draft" at every width. */
+  .ffb-mk-quick > .ffb-mk-quick-go {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: none;
+    clip-path: inset(50%);
+  }
   .ffb-mk-fullboard .ffb-cell { height: 34px; }
   .ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 10.5px; }
 }
