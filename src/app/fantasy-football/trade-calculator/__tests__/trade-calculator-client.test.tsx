@@ -170,7 +170,7 @@ async function addPlayerWithKeyboard(
 
   // A visitor cannot type into a field without being in it, and leaving the
   // other package's search is what closes its list.
-  input.focus();
+  act(() => input.focus());
   fireEvent.change(input, { target: { value: playerName } });
   expect(screen.getByRole("option", { name: new RegExp(playerName) })).toBeEnabled();
 
@@ -260,7 +260,7 @@ describe("TradeCalculatorClient", () => {
     function addEliteRunnerToYouGive() {
       render(<TradeCalculatorClient />);
       const giveInput = screen.getByRole("combobox", { name: "Add a player to you give" });
-      giveInput.focus();
+      act(() => giveInput.focus());
       fireEvent.change(giveInput, { target: { value: "Elite Runner" } });
       fireEvent.keyDown(giveInput, { key: "ArrowDown" });
       fireEvent.keyDown(giveInput, { key: "Enter" });
@@ -272,7 +272,7 @@ describe("TradeCalculatorClient", () => {
     it("leaves focus where the visitor has moved it", () => {
       addEliteRunnerToYouGive();
       const getInput = screen.getByRole("combobox", { name: "Add a player to you get" });
-      getInput.focus();
+      act(() => getInput.focus());
       fireEvent.change(getInput, { target: { value: "Depth" } });
 
       act(() => frames.forEach((frame) => frame(0)));
@@ -283,7 +283,7 @@ describe("TradeCalculatorClient", () => {
 
     it("returns focus to the search when the add left it nowhere", () => {
       const giveInput = addEliteRunnerToYouGive();
-      giveInput.blur();
+      act(() => giveInput.blur());
       expect(document.body).toHaveFocus();
 
       act(() => frames.forEach((frame) => frame(0)));
@@ -322,7 +322,7 @@ describe("TradeCalculatorClient", () => {
     ).toBeInTheDocument();
 
     const confirm = screen.getByRole("button", { name: "Confirm clear trade" });
-    confirm.focus();
+    act(() => confirm.focus());
     fireEvent.click(confirm);
     expect(screen.getAllByText("Search the overall board and add the first player.")).toHaveLength(
       2,
@@ -354,7 +354,7 @@ describe("TradeCalculatorClient", () => {
     await addPlayerWithKeyboard("you give", "Elite Runner");
     await addPlayerWithKeyboard("you get", "Depth Runner");
     const remove = screen.getByRole("button", { name: "Remove Elite Runner from players you give" });
-    remove.focus();
+    act(() => remove.focus());
     fireEvent.click(remove);
 
     const giveSearch = screen.getByRole("combobox", { name: "Add a player to you give" });
