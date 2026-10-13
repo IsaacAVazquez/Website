@@ -598,24 +598,27 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   // from the whole filtered board, so a round cut by the window says how many
   // players it holds and not how many have mounted.
   const roundSize = activePreset.teams;
+  // The contest drafts this many rounds. Everyone the board ranks past its last
+  // pick sits in one group after them, since a round past the last does not exist.
+  const lastRound = activePreset.rounds;
   const roundGroups = useMemo<RoundGroup[]>(() => {
     const groups: RoundGroup[] = [];
     for (const player of visiblePlayers) {
-      const round = Math.ceil(player.bestBallRank / roundSize);
+      const round = Math.min(Math.ceil(player.bestBallRank / roundSize), lastRound + 1);
       const current = groups[groups.length - 1];
       if (!current || current.round !== round) groups.push({ round, rows: [player] });
       else current.rows.push(player);
     }
     return groups;
-  }, [visiblePlayers, roundSize]);
+  }, [visiblePlayers, roundSize, lastRound]);
   const roundCounts = useMemo(() => {
     const counts = new Map<number, number>();
     for (const player of filteredPlayers) {
-      const round = Math.ceil(player.bestBallRank / roundSize);
+      const round = Math.min(Math.ceil(player.bestBallRank / roundSize), lastRound + 1);
       counts.set(round, (counts.get(round) ?? 0) + 1);
     }
     return counts;
-  }, [filteredPlayers, roundSize]);
+  }, [filteredPlayers, roundSize, lastRound]);
 
   function updateRouteState(patch: Partial<BestBallSearchState>) {
     // The typed query is the live one, so a contest or position tap carries it
@@ -1012,20 +1015,25 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 <>
                   {roundGroups.map((group) => {
                     const count = roundCounts.get(group.round) ?? group.rows.length;
+                    const past = group.round > lastRound;
+                    const roundName = past ? `Past round ${lastRound}` : `Round ${group.round}`;
                     return (
-                      <section key={`round-${group.round}`} className="ffb-tier" aria-label={`Round ${group.round}`}>
+                      <section key={`round-${group.round}`} className="ffb-tier" aria-label={roundName}>
                         <header className="ffb-tier-head">
                           <h3 className="ffb-tier-name">
-                            <span className="ffb-tier-tab">Round {group.round}</span>{" "}
+                            <span className="ffb-tier-tab">{roundName}</span>{" "}
                             {/* A full round needs no count. A filter that leaves
-                                part of one says how many of its players match. */}
-                            {count !== roundSize ? (
+                                part of one says how many of its players match,
+                                and so does the group past the last round. */}
+                            {past || count !== roundSize ? (
                               <>
                                 <span className="ffb-tier-count">{countOf(count, "player", "players")}</span>{" "}
                               </>
                             ) : null}
                             <span className="ffb-tier-range">
-                              Picks {group.round * roundSize - (roundSize - 1)}–{group.round * roundSize}
+                              {past
+                                ? `Ranks ${lastRound * roundSize + 1} and later`
+                                : `Picks ${group.round * roundSize - (roundSize - 1)}–${group.round * roundSize}`}
                             </span>
                           </h3>
                         </header>

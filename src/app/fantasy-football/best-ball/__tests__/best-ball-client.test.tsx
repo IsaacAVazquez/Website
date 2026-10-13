@@ -598,6 +598,39 @@ describe("BestBallClient", () => {
     );
   });
 
+  it("groups everyone past the contest's last pick under one head, with no round past the last", () => {
+    currentSearchParams = new URLSearchParams("contest=eliminator&position=te");
+    // Eliminator drafts 18 rounds of 12, so pick 216 is the last. Three tight ends sit at ranks 216, 217, and 240.
+    const many = Array.from({ length: 240 }, (_, index) => ({
+      id: `p-${index + 1}`,
+      name: `Player ${index + 1}`,
+      team: "BUF",
+      position: [215, 216, 239].includes(index) ? "TE" : "WR",
+      averageRank: index + 1,
+      rankEcr: index + 1,
+      positionRank: index + 1,
+      standardDeviation: 1,
+      byeWeek: 7,
+    }));
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: { ...snapshot, players: many },
+      isLoading: false,
+      error: null,
+      retry: mockRetry,
+    });
+    render(<BestBallClient initialState={{ contest: "eliminator", position: "TE", query: "" }} />);
+
+    expect(within(screen.getByRole("region", { name: "Round 18" })).getByRole("heading")).toHaveTextContent(
+      /^Round 18 1 player Picks 205–216$/,
+    );
+    const past = screen.getByRole("region", { name: "Past round 18" });
+    expect(within(past).getByRole("heading", { level: 3 })).toHaveTextContent(
+      /^Past round 18 2 players Ranks 217 and later$/,
+    );
+    expect(past.querySelectorAll("li")).toHaveLength(2);
+    expect(screen.queryByRole("region", { name: /^Round (19|20)$/ })).not.toBeInTheDocument();
+  });
+
   it("names each value inside its own cell and tones a gap of three picks or more", () => {
     currentSearchParams = new URLSearchParams("contest=bbm-vii");
     render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
