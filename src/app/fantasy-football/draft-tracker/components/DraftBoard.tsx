@@ -392,9 +392,11 @@ export function DraftBoard({
         {vorp ? (
           <>
             <span className="sr-only">Value over replacement player</span>
-            {/* VORP is a column of measured values, so it reads in ink like the rank. */}
+            {/* VORP is a column of measured values, so it reads in ink like the rank.
+                A phone row has room for one number beside the bye. That is the
+                ADP when the room has one, and VORP when it does not. */}
             <span
-              className={vorp.value > 0 ? "ffb-c-num" : "ffb-c-num ffb-is-flat"}
+              className={`ffb-c-num${vorp.value > 0 ? "" : " ffb-is-flat"}${adpAvailable ? "" : " ffb-m-meta"}`}
               title={FANTASY_VORP_TOOLTIP}
             >
               <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
