@@ -98,9 +98,10 @@ export function BestBallDraftBoard({
     const index = pendingMoreIndexRef.current;
     if (index === null) return;
     pendingMoreIndexRef.current = null;
-    rowsRef.current
-      ?.querySelectorAll<HTMLButtonElement>('button[data-testid="best-ball-board-player-name"]')
-      [index]?.focus({ preventScroll: true });
+    const names = rowsRef.current?.querySelectorAll<HTMLButtonElement>(
+      'button[data-testid="best-ball-board-player-name"]'
+    );
+    names?.[index]?.focus({ preventScroll: true });
   }, [visibleCount]);
 
   const filteredPlayers = useMemo(() => {
