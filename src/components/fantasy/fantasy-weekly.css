@@ -200,7 +200,17 @@
 .ffb-wk-entry > .ffb-wk-player { flex: 1 1 160px; font-size: 15px; font-weight: 600; }
 .ffb-wk-entry-note { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
 
-/* League settings and the manual add form. */
+/* The manual add form: the name beside the position, and the button on a row of its own. */
+.ffb-wk-manual {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--ffb-s3);
+}
+.ffb-wk-manual > .ffb-field { flex: 1 1 160px; }
+.ffb-wk-manual > .ffb-field:has(.ffb-select) { flex: 0 0 96px; }
+
+/* League settings. */
 .ffb-wk-fields {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 128px), 1fr));
@@ -227,6 +237,8 @@
 }
 .ffb-wk-lineup .ffb-slot-code { grid-row: 1 / span 2; font-size: 13px; }
 .ffb-wk-lineup .ffb-slot-name { grid-column: 2; font-size: 13px; }
+/* An open slot has one line, which sits in the middle of the socket. */
+.ffb-wk-lineup .ffb-slot:not(.ffb-is-filled) .ffb-slot-name { grid-row: 1 / span 2; }
 .ffb-wk-lineup .ffb-is-filled .ffb-slot-name { font-size: 16px; }
 .ffb-wk-lineup .ffb-slot .ffb-slot-meta {
   display: block;
@@ -277,5 +289,10 @@
   .ffb-root .ffb-wk-rail {
     max-height: none;
     overflow: visible;
+  }
+  /* On paper the head is not stuck, so it takes its real border back. An inset edge leaves seams in a PDF. */
+  .ffb-root .ffb-wk-table.ffb-table-sticky thead th {
+    border-bottom-color: var(--ffb-ink);
+    box-shadow: none;
   }
 }

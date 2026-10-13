@@ -362,7 +362,7 @@ export function WeeklyBoardClient({
   const rosteredCount = savedTeam.team.players.length;
 
   return (
-    <section className="relative overflow-x-clip" aria-label={viewConfig.ariaLabel}>
+    <section className="relative min-h-dvh overflow-x-clip print:min-h-0" aria-label={viewConfig.ariaLabel}>
       <FantasyRouteHeader
         title={
           <>

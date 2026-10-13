@@ -205,7 +205,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
           <details className="ffb-details">
             <summary>Add a player missing from the weekly board</summary>
             <div className="ffb-details-body ffb-stack ffb-stack-tight">
-              <form className="ffb-wk-fields" onSubmit={event => {
+              <form className="ffb-wk-manual" onSubmit={event => {
                 event.preventDefault();
                 const name = manualName.trim();
                 if (!name) return;
@@ -213,11 +213,11 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
                 addToRoster(known ?? { id: `manual-${manualPosition}-${name.toLowerCase()}`.slice(0, 100), name, team: "", position: manualPosition });
                 setManualName("");
               }}>
-                <label className="ffb-field"><span className="ffb-field-label">Player name</span><input required maxLength={80} className="ffb-input" value={manualName} onChange={event => setManualName(event.target.value)} /></label>
+                <label className="ffb-field"><span className="ffb-field-label">Player name</span><input required maxLength={80} placeholder="First and last name" className="ffb-input" value={manualName} onChange={event => setManualName(event.target.value)} /></label>
                 <label className="ffb-field"><span className="ffb-field-label">Position</span><select className="ffb-select" value={manualPosition} onChange={event => setManualPosition(event.target.value as MyTeamPlayer["position"])}>
                   {["QB", "RB", "WR", "TE", "K", "DST"].map(position => <option key={position}>{position}</option>)}
                 </select></label>
-                <button className="ffb-btn" type="submit">Add unranked player</button>
+                <button className="ffb-btn ffb-btn-block" type="submit">Add unranked player</button>
               </form>
               <p className="ffb-method">Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
             </div>
