@@ -123,9 +123,9 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
   const comparisonBlock = (
     <div className="ffb-wk-block">
       <div className="ffb-sechead"><h3 className="ffb-h3">Compare an add and a drop</h3></div>
-      <p className="ffb-wk-copy">See where an available player fits before changing your roster.</p>
-      {available.length === 0 && <div className="ffb-wk-actions">
-        <p className="ffb-wk-copy">No players marked available yet.</p>
+      <p className="ffb-copy">See where an available player fits before changing your roster.</p>
+      {available.length === 0 && <div className="ffb-cluster ffb-wk-actions">
+        <p className="ffb-copy">No players marked available yet.</p>
         <button type="button" className="ffb-btn" onClick={() => setSelectedView("roster")}>Find available players</button>
       </div>}
       <label className="ffb-field"><span className="ffb-field-label">Available player to add</span>
@@ -176,7 +176,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
       {activeView === "settings" && <div className="ffb-wk-cols">
         <div className="ffb-wk-block ffb-wk-block-wide">
           <div className="ffb-sechead"><h3 className="ffb-h3">League settings</h3></div>
-          <p className="ffb-wk-copy">Set the starting positions used to build your weekly lineup.</p>
+          <p className="ffb-copy">Set the starting positions used to build your weekly lineup.</p>
           <div className="ffb-wk-fields">
             <label className="ffb-field"><span className="ffb-field-label">League size</span>
               <select className="ffb-select" value={team.leagueSize} onChange={event => update(current => ({ ...current, leagueSize: Number(event.target.value) }))}>
@@ -205,8 +205,8 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
       {activeView === "roster" && <div className="ffb-wk-cols">
         <div className="ffb-wk-block">
           <div className="ffb-sechead"><h3 className="ffb-h3">{team.players.length ? "Manage your roster" : "Start with your roster"}</h3></div>
-          <p className="ffb-wk-copy">Import picks from your draft tracker or search for players. Mark available players to compare a possible add and drop.</p>
-          <div className="ffb-wk-actions">
+          <p className="ffb-copy">Import picks from your draft tracker or search for players. Mark available players to compare a possible add and drop.</p>
+          <div className="ffb-cluster ffb-wk-actions">
             <button type="button" className="ffb-btn ffb-btn-primary" onClick={importDraft}>Import draft tracker roster</button>
             {team.players.length > 0 && <button type="button" className="ffb-btn ffb-btn-quiet" onClick={() => setSelectedView("lineup")}>View weekly lineup</button>}
           </div>
@@ -220,7 +220,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
           {matches.length > 0 && <ul className="ffb-wk-entries">
             {matches.map(player => <li key={player.id} className="ffb-wk-entry">
               <TeamPlayer player={player} />
-              {team.players.some(p => p.id === player.id) ? <span className="ffb-wk-entry-note">On your roster</span> : <div className="ffb-wk-actions">
+              {team.players.some(p => p.id === player.id) ? <span className="ffb-wk-entry-note">On your roster</span> : <div className="ffb-cluster ffb-wk-actions">
                 <button type="button" className="ffb-btn" aria-label={`Roster ${player.name}`} onClick={() => {
                   // The button is gone once he is rostered, so the search field takes focus with its text selected, ready for the next name.
                   flushSync(() => addToRoster(player));
@@ -259,7 +259,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
 
         <div className="ffb-wk-block">
           <div className="ffb-sechead"><h3 className="ffb-h3">Saved roster</h3></div>
-          {team.players.length === 0 ? <p className="ffb-wk-copy">Search or import your redraft roster to get started.</p> : <ul ref={rosterRef} className="ffb-wk-entries">
+          {team.players.length === 0 ? <p className="ffb-copy">Search or import your redraft roster to get started.</p> : <ul ref={rosterRef} className="ffb-wk-entries">
             {team.players.map(player => <li key={player.id} className="ffb-wk-entry">
               <TeamPlayer player={player} />
               {!weekly.has(player.id) && <span className="ffb-wk-entry-note">No weekly rank</span>}
@@ -272,8 +272,8 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
       {activeView === "lineup" && (team.players.length === 0 ? <div className="ffb-wk-cols">
         <div className="ffb-wk-block ffb-wk-block-wide">
           <div className="ffb-sechead"><h3 className="ffb-h3">Add your players to see a weekly lineup</h3></div>
-          <p className="ffb-wk-copy">The lineup uses your league settings and the weekly consensus board.</p>
-          <div className="ffb-wk-actions"><button type="button" className="ffb-btn ffb-btn-primary" onClick={() => setSelectedView("roster")}>Build my roster</button></div>
+          <p className="ffb-copy">The lineup uses your league settings and the weekly consensus board.</p>
+          <div className="ffb-cluster ffb-wk-actions"><button type="button" className="ffb-btn ffb-btn-primary" onClick={() => setSelectedView("roster")}>Build my roster</button></div>
         </div>
       </div> : <div className="ffb-wk-cols">
         {lead === "waivers" && comparisonBlock}
@@ -309,7 +309,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
       </div>)}
       {persistenceStatus === "memory-only"
         ? <p className="ffb-notice ffb-notice-warn">Browser storage is unavailable. Changes last only in this tab.</p>
-        : <p className="ffb-method ffb-wk-foot">Saved in this browser. Your league roster changes only when you update it with your league provider.</p>}
+        : <p className="ffb-method ffb-method-ruled ffb-wk-foot">Saved in this browser. Your league roster changes only when you update it with your league provider.</p>}
     </section>
   );
 }

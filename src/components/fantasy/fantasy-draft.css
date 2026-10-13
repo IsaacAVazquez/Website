@@ -47,12 +47,8 @@
    summary line under them spells out the lineup in force. */
 .ffb-dt-lineups { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ffb-dt-lineups > .ffb-choice { align-content: start; }
-.ffb-dt-presets {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ffb-s2);
-}
+/* The kit's cluster with an 8px gap both ways. */
+.ffb-dt-presets { gap: var(--ffb-s2); }
 /* A preset is two buttons fused on one edge: apply it, or remove it. */
 .ffb-dt-preset { display: inline-flex; }
 .ffb-dt-preset > .ffb-iconbtn { margin-inline-start: -1px; }
@@ -88,12 +84,7 @@
   font-size: 14px;
   font-weight: 600;
 }
-.ffb-dt-preset-save {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ffb-s2);
-}
+.ffb-dt-preset-save { gap: var(--ffb-s2); }
 .ffb-dt-preset-save > .ffb-input { flex: 1 1 200px; width: auto; max-width: 320px; }
 
 @media (min-width: 480px) {
@@ -207,13 +198,7 @@
 .ffb-dt-board.ffb-dt-has-vorp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 40px 36px 56px; }
 .ffb-dt-board.ffb-dt-has-adp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 36px 56px; }
 .ffb-dt-board.ffb-dt-has-adp.ffb-dt-has-vorp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 40px 36px 56px; }
-.ffb-dt-queue {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ffb-s2);
-  padding-bottom: var(--ffb-s3);
-}
+.ffb-dt-queue { gap: var(--ffb-s2); padding-bottom: var(--ffb-s3); }
 .ffb-dt-queue-btn { gap: var(--ffb-s2); }
 .ffb-dt-queue-name {
   max-width: 22ch;
@@ -241,11 +226,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--ffb-s3);
 }
-.ffb-dt-foot {
-  margin-top: var(--ffb-s6);
-  padding-top: var(--ffb-s3);
-  border-top: 1px solid var(--ffb-rule);
-}
+.ffb-dt-foot { margin-top: var(--ffb-s6); }
 
 @media (min-width: 768px) {
   /* Read out, not shown: the column head already says it. */

@@ -78,14 +78,14 @@ export function RedraftDecisionPanel({
                   ) : null}
                 </p>
                 {best ? (
-                  <p className="ffb-ov-wait-lines">
+                  <p className="ffb-fine ffb-ov-wait-lines">
                     Starter line {best.starterCutoff === null ? "unavailable" : `overall #${Math.round(best.starterCutoff)}`} · Roster line {best.rosterCutoff === null ? "unavailable" : `overall #${Math.round(best.rosterCutoff)}`}{best.coverage === "limited" ? " · Limited coverage" : ""}
                   </p>
                 ) : null}
               </div>
               {best ? (
                 <>
-                  <p className="ffb-ov-wait-tier">{describeRedraftTier(entry)}</p>
+                  <p className="ffb-fine ffb-ov-wait-tier">{describeRedraftTier(entry)}</p>
                   {sharedWait ? null : <p className="ffb-ov-wait-next">{describeRedraftWait(entry.wait)}</p>}
                 </>
               ) : null}

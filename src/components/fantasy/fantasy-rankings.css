@@ -44,9 +44,6 @@
 /* ==========================================================================
  * Column heads, tier heads, and cells of this board
  * ======================================================================== */
-/* For a touch pointer the kit makes a help trigger a 44px target with its label at the left.
-   Over a column of numbers the label stays at the right, on the edge the numbers share. */
-.ffb-rk-board .ffb-colhead > .ffb-h-num [data-metric-trigger="text"] { justify-content: flex-end; }
 /* "ADP (overall)" takes two lines over a 60px column. */
 .ffb-rk-board .ffb-colhead > .ffb-rk-h-wrap { white-space: normal; }
 /* Only as wide as its words, so a wide column does not turn into one wide help target. */

@@ -544,7 +544,7 @@ export function DraftBoard({
       }`}
     >
       {queuedAvailable.length > 0 && (
-        <div className="ffb-dt-queue ffb-dt-noprint">
+        <div className="ffb-cluster ffb-dt-queue ffb-dt-noprint">
           <span className="ffb-turn-tab">★ Queue · still on the board</span>
           {queuedAvailable.slice(0, 8).map((player) => (
             <button

@@ -2446,6 +2446,8 @@ html.dark .ffb-scope {
     /* One more than half the difference from a label's line, so the label's line keeps its height. */
     margin-block: -16px;
   }
+  /* Over a column of numbers the label stays at the right of its target, on the edge the numbers share. */
+  .ffb-root .ffb-h-num [data-metric-trigger="text"] { justify-content: flex-end; }
 }
 @media (max-width: 767.98px) {
   /* A cell is about 23px on a phone, so a made cell's label takes the narrow form there too. */
