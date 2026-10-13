@@ -369,6 +369,8 @@ export function DraftBoard({
           type="button"
           onClick={() => onOpenDetail(player)}
           aria-label={`Open ${player.name} detail`}
+          // A narrow row can still cut a long name, and the title keeps it whole.
+          title={player.name}
           className="ffb-c-name"
         >
           {player.name}
@@ -394,7 +396,7 @@ export function DraftBoard({
                 its sign, and its tone. The ADP itself and the gap together
                 need up to 100px there, and a 390px row has 67. */}
             <span
-              className={`ffb-c-num ffb-dt-gap ffb-m-meta ${delta?.isValue ? "ffb-is-strong ffb-dt-is-value" : "ffb-is-flat"}`}
+              className={`ffb-c-num ffb-m-meta ${delta?.isValue ? "ffb-is-strong ffb-dt-is-value" : "ffb-is-flat"}`}
               title={delta?.title}
             >
               <span className="sr-only">versus ADP at pick {currentPick} </span>
