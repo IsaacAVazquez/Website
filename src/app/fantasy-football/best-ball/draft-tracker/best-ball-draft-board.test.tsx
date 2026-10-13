@@ -57,7 +57,6 @@ function renderBoard(
     <BestBallDraftBoard
       players={sortBestBallRankings(overrides.players ?? [player], "bbm-vii")}
       currentPick={overrides.currentPick ?? 1}
-      currentTeamNumber={1}
       isComplete={false}
       adpAvailable
       onDraftPlayer={overrides.onDraftPlayer ?? jest.fn()}
@@ -70,11 +69,11 @@ describe("BestBallDraftBoard", () => {
   it("labels the contest-floor placeholder as undrafted and explains the ECR fallback", () => {
     renderBoard();
 
-    // The row is a plain container now; its name button and Draft button carry
-    // the interactions, so find the row from the name button.
+    // The row is a list item; its name button and Draft button carry the
+    // interactions, so find the row from the name button.
     const row = screen
       .getByRole("button", { name: "Open Jaylin Noel detail" })
-      .closest("div") as HTMLElement;
+      .closest("li") as HTMLElement;
     expect(
       within(row).getByRole("button", { name: "Draft Jaylin Noel at pick 1" })
     ).toBeInTheDocument();
@@ -84,12 +83,81 @@ describe("BestBallDraftBoard", () => {
     expect(within(row).getByText(/sits at the undrafted floor/i)).toBeInTheDocument();
   });
 
+  it("keeps the order sentence in the market cell's title where the column already says it", () => {
+    renderBoard({ players: brokenBoard().slice(1, 2) });
+
+    const row = screen
+      .getByRole("button", { name: "Open Player 2 detail" })
+      .closest("li") as HTMLElement;
+    // The ADP prints once, in its cell, and the sentence that restates it is not row text.
+    expect(within(row).getByText("2.1")).toHaveAttribute(
+      "title",
+      "The current standard Underdog ADP is 2.1. The PPR best ball ECR is 2."
+    );
+    expect(within(row).queryByText(/The current standard Underdog ADP/)).not.toBeInTheDocument();
+    expect(within(row).getByText("ADP 2.1")).toBeInTheDocument();
+  });
+
+  it("prints the position rank on the chip and leaves it off a withheld row", () => {
+    renderBoard({ players: brokenBoard() });
+
+    const consistent = screen
+      .getByRole("button", { name: "Open Player 2 detail" })
+      .closest("li") as HTMLElement;
+    expect(within(consistent).getByText("WR2")).toBeInTheDocument();
+    const withheld = screen
+      .getByRole("button", { name: "Open Player 1 detail" })
+      .closest("li") as HTMLElement;
+    expect(within(withheld).getByText("RB")).toBeInTheDocument();
+    expect(within(withheld).queryByText("RB1")).not.toBeInTheDocument();
+  });
+
+  it("counts what is available and what a filter leaves", () => {
+    renderBoard({ players: brokenBoard() });
+
+    expect(screen.getByText("16 of 16 available")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("radio", { name: "WR" }));
+    expect(screen.getByText("8 of 16 available")).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: "WR" })).toBeChecked();
+  });
+
+  it("moves focus to the search when Clear search removes itself", () => {
+    renderBoard({ players: brokenBoard() });
+
+    fireEvent.click(screen.getByRole("radio", { name: "QB" }));
+    expect(screen.getByText("No available player matches this search.")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Clear search" }));
+
+    expect(screen.queryByRole("button", { name: "Clear search" })).not.toBeInTheDocument();
+    expect(screen.getByText("16 of 16 available")).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: "Search available players" })).toHaveFocus();
+  });
+
+  it("moves focus to the first added row when Show 100 more removes itself", () => {
+    const players = Array.from({ length: 130 }, (_, index) => ({
+      ...player,
+      id: `deep-${index + 1}`,
+      name: `Deep ${index + 1}`,
+      averageRank: index + 1,
+      rankEcr: index + 1,
+      adp: index + 1.5,
+    }));
+    renderBoard({ players });
+
+    expect(screen.getAllByTestId("best-ball-board-draft")).toHaveLength(120);
+    fireEvent.click(screen.getByRole("button", { name: "Show 100 more players" }));
+
+    expect(screen.getAllByTestId("best-ball-board-draft")).toHaveLength(130);
+    expect(screen.queryByRole("button", { name: "Show 100 more players" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Open Deep 121 detail" })).toHaveFocus();
+  });
+
   it("prints no consensus rank on a row the ranking layer has withheld", () => {
     renderBoard({ players: brokenBoard() });
 
     const withheld = screen
       .getByRole("button", { name: "Open Player 1 detail" })
-      .closest("div") as HTMLElement;
+      .closest("li") as HTMLElement;
     const provenance = withheld.querySelector("[data-consensus-withheld='true']");
     expect(provenance).not.toBeNull();
     expect(provenance?.getAttribute("title")).toMatch(/the ECR is withheld/);
@@ -98,7 +166,7 @@ describe("BestBallDraftBoard", () => {
 
     const consistent = screen
       .getByRole("button", { name: "Open Player 2 detail" })
-      .closest("div") as HTMLElement;
+      .closest("li") as HTMLElement;
     expect(consistent.querySelector("[data-consensus-withheld]")).toBeNull();
     expect(consistent.querySelector("span[title]")?.getAttribute("title")).toMatch(
       /The PPR best ball ECR is 2\./
@@ -116,7 +184,6 @@ describe("BestBallDraftBoard", () => {
       <BestBallDraftBoard
         players={sortBestBallRankings(players.slice(1), "bbm-vii")}
         currentPick={2}
-        currentTeamNumber={2}
         isComplete={false}
         adpAvailable
         onDraftPlayer={jest.fn()}

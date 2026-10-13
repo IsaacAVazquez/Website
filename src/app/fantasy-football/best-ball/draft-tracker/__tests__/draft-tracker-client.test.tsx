@@ -1,6 +1,11 @@
 import { execFileSync } from "node:child_process";
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { BestBallDraftTrackerClient } from "../draft-tracker-client";
+import {
+  addBestBallDraftPick,
+  getBestBallDraftStorageKey,
+  type BestBallDraftState,
+} from "../best-ball-draft-state";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
@@ -105,8 +110,8 @@ describe("BestBallDraftTrackerClient", () => {
     mockSourceDate = new Date().toISOString();
     mockScheduleDate = mockSourceDate;
     mockSnapshotOverride = null;
-    // jsdom does not implement scrolling; the room scrolls its status card
-    // under the live bar when it opens, so the call is what gets asserted.
+    // jsdom does not implement scrolling; the room scrolls its scorebug to
+    // the top of the screen when it opens, so the call is what gets asserted.
     window.scrollTo = jest.fn();
   });
 
@@ -114,7 +119,7 @@ describe("BestBallDraftTrackerClient", () => {
     jest.useRealTimers();
   });
 
-  it("scrolls the status card into view and focuses the on-the-clock heading when the room opens", async () => {
+  it("scrolls the room into view and focuses the on-the-clock heading when the room opens", async () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
     fireEvent.click(
       await screen.findByRole("button", { name: "Open draft room from slot 1" })
@@ -134,7 +139,7 @@ describe("BestBallDraftTrackerClient", () => {
     );
     (window.scrollTo as jest.Mock).mockClear();
 
-    // The card unmounts with the pick (the next turn is another slot's), so
+    // The fit unmounts with the pick (the next turn is another slot's), so
     // the heading that now reads the room state takes focus, without a scroll.
     fireEvent.click(screen.getAllByRole("button", { name: "Log for my team" })[0]);
     expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toHaveFocus();
@@ -181,7 +186,7 @@ describe("BestBallDraftTrackerClient", () => {
       // keeps him first on ADP and prints no rank for him.
       const gibbsRow = screen
         .getByRole("button", { name: "Open Jahmyr Gibbs detail" })
-        .closest("div") as HTMLElement;
+        .closest("li") as HTMLElement;
       const provenance = gibbsRow.querySelector("[data-consensus-withheld='true']");
       expect(provenance?.getAttribute("title")).toMatch(
         /The current standard Underdog ADP is 1\.0\. The published PPR best ball consensus rank for this player sits outside its own expert range, so the ECR is withheld\./
@@ -192,10 +197,12 @@ describe("BestBallDraftTrackerClient", () => {
       // from the same rank, so it gets none of the three on a withheld row.
       fireEvent.click(screen.getByRole("button", { name: "Open Jahmyr Gibbs detail" }));
       const dialog = await screen.findByRole("dialog", { name: "Jahmyr Gibbs detail" });
-      expect(within(dialog).getByText("Tier").nextElementSibling).toHaveTextContent(/^—$/);
+      expect(within(dialog).getByText("Tier").nextElementSibling).toHaveTextContent(/^Withheld$/);
       expect(within(dialog).getByText("Position rank").nextElementSibling).toHaveTextContent(
-        /^RB —$/
+        /^Withheld$/
       );
+      // The drawer's head names the rank it prints, since the board is ordered by the market.
+      expect(within(dialog).getByText("Board rank 1")).toBeInTheDocument();
       expect(within(dialog).queryByText(/reach|value/i)).not.toBeInTheDocument();
     }
   );
@@ -204,14 +211,16 @@ describe("BestBallDraftTrackerClient", () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
 
     expect(await screen.findByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
-    // Setup keeps the display headline, a full poster step above the setup panel's own heading.
-    expect(screen.getByRole("heading", { level: 1 })).toHaveClass("c97-poster");
+    // Setup keeps the headline and the pitch, in the kit's setup head.
+    expect(screen.getByRole("heading", { level: 1 }).closest("header")).toHaveClass("ffb-head-setup");
     fireEvent.click(screen.getByRole("button", { name: "Open draft room from slot 1" }));
 
     expect(
       screen.getByRole("heading", { name: "You are on the clock at pick 1" })
     ).toBeVisible();
-    expect(screen.getByRole("heading", { level: 1 })).not.toHaveClass("c97-poster");
+    // An open room gets the running head, one compact line.
+    expect(screen.getByRole("heading", { level: 1 }).closest("header")).toHaveClass("ffb-head-run");
+    expect(screen.getByRole("heading", { level: 1 }).closest("header")).not.toHaveClass("ffb-head-setup");
     expect(screen.getByRole("heading", { name: "Best fits for your next pick" })).toBeVisible();
     expect(screen.getAllByRole("button", { name: "Log for my team" }).length).toBeGreaterThan(0);
     // The score explainer is protected framing and prints with the cards it
@@ -463,6 +472,170 @@ describe("BestBallDraftTrackerClient", () => {
         startedAt: null,
       })
     );
+  });
+
+  it("prints the pick, the round, and the next turn in the scorebug", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("radio", { name: "3" }));
+    fireEvent.click(screen.getByRole("button", { name: "Open draft room from slot 3" }));
+
+    const bug = screen.getByRole("region", { name: "Live draft status" });
+    // The counter is the whole text of one element, which the e2e spec reads.
+    expect(within(bug).getByText((_, node) => node?.textContent === "Pick 1 of 216" && node.tagName === "P"))
+      .toBeInTheDocument();
+    expect(within(bug).getByText("Overall").nextElementSibling).toHaveTextContent(/^Pick 1 of 216$/);
+    expect(within(bug).getByText("Round").nextElementSibling).toHaveTextContent(/^1 of 18$/);
+    expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
+      .toHaveTextContent(/^#3 in 2 picks$/);
+    expect(screen.getByRole("heading", { name: "Slot 1 is on the clock" })).toHaveTextContent(
+      "Slot 1 is on the clockSlot 1"
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
+      .toHaveTextContent(/^#3 in 1 pick$/);
+    expect(within(bug).getByRole("status")).toHaveTextContent(
+      "Pick 2 of 216, round 1. Slot 2 is on the clock. Last pick: Ja'Marr Chase."
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
+    expect(within(bug).getByText("Overall").nextElementSibling).toHaveTextContent(/^Pick 3 of 216$/);
+    // Slot 3 picks 3 and then 22 in a twelve-team snake.
+    expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
+      .toHaveTextContent(/^Now then #22$/);
+    expect(screen.getByRole("heading", { name: "You are on the clock at pick 3" })).toHaveTextContent(
+      "You are on the clock at pick 3You"
+    );
+  });
+
+  it("names the pick Undo removes and describes the Undo button by it", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+
+    const undo = screen.getByRole("button", { name: "Undo last pick" });
+    expect(undo).toBeDisabled();
+    expect(undo).not.toHaveAttribute("aria-describedby");
+
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    expect(undo).toHaveAttribute("aria-describedby", "best-ball-undo-target");
+    expect(document.getElementById("best-ball-undo-target")).toHaveTextContent(
+      /^Undo removes pick 1, Ja'Marr Chase\. The picks above reach further back\./
+    );
+  });
+
+  it("sends focus to the status heading when Undo, Redo, or a last pick uses itself up", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
+
+    // The sticker leaves with the pick it undoes back to.
+    const sticker = screen.getByRole("button", { name: "Undo back to pick 2 (Bijan Robinson)" });
+    sticker.focus();
+    fireEvent.click(sticker);
+    expect(screen.getByRole("heading", { name: "Slot 2 is on the clock" })).toHaveFocus();
+
+    // Redo disables itself once nothing is left to redo.
+    const redo = screen.getByRole("button", { name: "Redo pick 2 (Bijan Robinson)" });
+    redo.focus();
+    fireEvent.click(redo);
+    expect(screen.getByRole("button", { name: "Redo pick (nothing to redo)" })).toBeDisabled();
+    expect(screen.getByRole("heading", { name: "Slot 3 is on the clock" })).toHaveFocus();
+
+    // Undo keeps the focus while it still has a pick to remove, and gives it up on the last one.
+    const undo = screen.getByRole("button", { name: "Undo last pick" });
+    undo.focus();
+    fireEvent.click(undo);
+    expect(undo).toHaveFocus();
+    fireEvent.click(undo);
+    expect(undo).toBeDisabled();
+    expect(screen.getByRole("heading", { name: "You are on the clock at pick 1" })).toHaveFocus();
+  });
+
+  it("sends focus to the setup heading after a reset, and back to Reset after Keep room", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+
+    fireEvent.click(screen.getByRole("button", { name: "Reset this room" }));
+    expect(screen.getByText("Reset this room and its 1 pick?")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Keep room" }));
+    expect(screen.getByRole("button", { name: "Reset this room" })).toHaveFocus();
+
+    fireEvent.click(screen.getByRole("button", { name: "Reset this room" }));
+    fireEvent.click(screen.getByRole("button", { name: "Confirm reset" }));
+    expect(screen.getByRole("heading", { name: "Choose your draft slot" })).toHaveFocus();
+  });
+
+  it("skips from before the board to the roster build", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+
+    fireEvent.click(screen.getByRole("link", { name: "Skip to your roster" }));
+    expect(screen.getByRole("complementary", { name: "Roster build" })).toHaveFocus();
+  });
+
+  it("lists every logged pick under the pick grid in place of a second recent-picks list", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
+
+    const rail = screen.getByRole("complementary", { name: "Roster build" });
+    expect(within(rail).getByRole("heading", { name: "Pick grid" })).toBeVisible();
+    expect(within(rail).getByRole("img", { name: "Pick 1, slot 1, yours, Ja'Marr Chase, WR" })).toBeVisible();
+    expect(within(rail).getByRole("img", { name: "Pick 3, slot 3, on the clock" })).toBeVisible();
+    expect(within(rail).getByText(/· Slot 2 · Bijan Robinson/)).toBeInTheDocument();
+    // The build comes first in the rail, and Draft Outlook after the pick grid.
+    const headings = within(rail).getAllByRole("heading").map((heading) => heading.textContent);
+    expect(headings.indexOf("1 of 18 players")).toBe(0);
+    expect(headings.indexOf("Roster")).toBeLessThan(headings.indexOf("Pick grid"));
+    expect(headings.indexOf("Pick grid")).toBeLessThan(
+      headings.findIndex((text) => /Draft Outlook|How this room reads/i.test(text ?? ""))
+    );
+  });
+
+  it("says a finished draft is complete and never tells the user to wait for a turn", async () => {
+    const firstView = render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+
+    // The room validates a save against its preset, so the finished draft is
+    // built on the state the room itself saved, with all 216 picks logged.
+    const key = getBestBallDraftStorageKey(2026, "bbm-vii");
+    await waitFor(() => expect(window.localStorage.getItem(key)).toMatch(/"startedAt":"/));
+    let state = JSON.parse(window.localStorage.getItem(key) as string) as BestBallDraftState;
+    const total = state.rules.teams * state.rules.rounds;
+    expect(total).toBe(216);
+    for (let index = 0; index < total; index += 1) {
+      state = addBestBallDraftPick(state, {
+        ...mockPlayers[index % mockPlayers.length],
+        id: `filled-${index + 1}`,
+        name: `Filled ${index + 1}`,
+      });
+    }
+    expect(state.picks).toHaveLength(216);
+    firstView.unmount();
+    window.localStorage.setItem(key, JSON.stringify(state));
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    const heading = await screen.findByRole("heading", { name: "Draft complete" });
+    expect(heading).toHaveTextContent("Draft completeComplete");
+    expect(heading).toHaveAttribute("tabindex", "-1");
+    expect(
+      screen.getByText("The draft is complete, so there is no next pick to fit.")
+    ).toBeVisible();
+    expect(screen.queryByText(/stay hidden until your turn/)).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Log for my team" })).not.toBeInTheDocument();
+
+    // Nobody is on the clock and no turn is left, so the bar drops those cells.
+    const bug = screen.getByRole("region", { name: "Live draft status" });
+    expect(within(bug).queryByText("Overall")).not.toBeInTheDocument();
+    expect(within(bug).queryByText("On the clock")).not.toBeInTheDocument();
+    expect(within(bug).queryByText("Your next turn")).not.toBeInTheDocument();
+    expect(within(bug).getByRole("status")).toHaveTextContent(/^Draft complete\.$/);
+    expect(screen.getByRole("button", { name: "Redo pick (nothing to redo)" })).toBeDisabled();
+    for (const button of screen.getAllByTestId("best-ball-board-draft")) expect(button).toBeDisabled();
+    expect(screen.getByRole("heading", { name: "18 of 18 players" })).toBeVisible();
   });
 
   it("keeps a legacy overloaded-format room as a local backup", async () => {
