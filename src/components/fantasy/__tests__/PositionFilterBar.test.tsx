@@ -61,6 +61,16 @@ describe("PositionFilterBar", () => {
   });
 });
 
+/** Renders one option whose value is the position and returns the class the switch gave it. */
+function positionClassOf(value: string): string {
+  const { container, unmount } = render(
+    <PositionFilterBar ariaLabel="One" value="none" onChange={jest.fn()} options={[{ value, label: "One option" }]} />,
+  );
+  const className = (container.querySelector("button") as HTMLElement).className.replace("ffb-seg-btn", "").trim();
+  unmount();
+  return className;
+}
+
 describe("PositionFilterBar as the kit's position switch", () => {
   const options = [
     { value: "ALL", label: "All" },
@@ -77,6 +87,8 @@ describe("PositionFilterBar as the kit's position switch", () => {
     expect(screen.getByRole("radio", { name: "QB" })).toHaveClass("ffb-seg-btn", "ffb-pos-qb");
     expect(screen.getByRole("radio", { name: "QB" })).toHaveAttribute("aria-checked", "true");
     expect(screen.getByRole("radio", { name: "Flex" })).toHaveClass("ffb-pos-flex");
+    // A lower-case value still finds its position, as the rankings route passes them.
+    expect(positionClassOf("qb")).toBe("ffb-pos-qb");
   });
 
   it("keeps the word on an unavailable position: NA in the button, the reason in its name and title", () => {
@@ -86,7 +98,8 @@ describe("PositionFilterBar as the kit's position switch", () => {
     const kicker = screen.getByRole("radio", { name: "K, No kicker board this week" });
     expect(kicker).toBeDisabled();
     expect(kicker).toHaveAttribute("title", "No kicker board this week");
-    expect(kicker).toHaveTextContent(/^KNA$/);
+    // Two words with a real space between them, so nothing reads "KNA".
+    expect(kicker).toHaveTextContent(/^K NA$/);
     fireEvent.click(kicker);
     expect(onChange).not.toHaveBeenCalled();
   });
