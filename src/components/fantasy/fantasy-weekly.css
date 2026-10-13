@@ -143,8 +143,12 @@
   scroll-margin-top: var(--ffb-s2);
 }
 .ffb-wk-team-notice { margin-bottom: var(--ffb-s3); }
-/* The tabs sit on the first block's ink rule, so they carry no rule of their own. */
-.ffb-wk-tabs { border-bottom: 0; }
+/* The tabs sit on the first block's ink rule, so they carry no rule of their own. The
+   gap is a step tighter than the kit's so all three fit a 320px screen without scrolling. */
+.ffb-wk-tabs {
+  gap: var(--ffb-s3);
+  border-bottom: 0;
+}
 
 /* A view's blocks. One column in the rail and on a phone, two where My team has the
    width of the page (below 1200px it sits under the board). */
