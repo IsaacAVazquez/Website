@@ -50,7 +50,9 @@ export function Catalog97Header() {
         !isTypingTarget &&
         !event.metaKey &&
         !event.ctrlKey &&
-        !event.altKey
+        !event.altKey &&
+        // Search opened over a page's modal dialog would take focus out of it.
+        !document.querySelector('[aria-modal="true"]')
       ) {
         event.preventDefault();
         setIsSearchOpen(true);

@@ -171,6 +171,21 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
   // stopped from bubbling to that parent.
   const swallow = (event: { stopPropagation: () => void }) => event.stopPropagation();
 
+  // Escape closes the bubble and leaves focus on the trigger, so a keyboard user keeps their
+  // place, and Enter or Space brings it back. An Escape with no bubble left to close is not
+  // stopped, so the dialog or row around the trigger gets it.
+  const onTriggerKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape" && !open) return;
+    swallow(event);
+    if (event.key === "Escape") {
+      setHovered(false);
+      setFocused(false);
+      setPos(null);
+    } else if (event.key === "Enter" || event.key === " ") {
+      setFocused(true);
+    }
+  };
+
   const bubble =
     portalTarget && open
       ? createPortal(
@@ -238,12 +253,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
               setFocused(false);
               if (!hovered) setPos(null);
             }}
-            onKeyDown={(event) => {
-              swallow(event);
-              if (event.key === "Escape") {
-                triggerRef.current?.blur();
-              }
-            }}
+            onKeyDown={onTriggerKeyDown}
             className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] after:absolute after:-inset-x-1 after:-inset-y-[14px] after:content-['']"
           >
             {children}
@@ -293,12 +303,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
           setFocused(false);
           if (!hovered) setPos(null);
         }}
-        onKeyDown={(event) => {
-          swallow(event);
-          if (event.key === "Escape") {
-            triggerRef.current?.blur();
-          }
-        }}
+        onKeyDown={onTriggerKeyDown}
         className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center"
       >
         <span className="flex h-4 w-4 items-center justify-center bg-[var(--c97-panel)] text-3xs font-bold leading-none text-[var(--c97-ink-2)] border border-[var(--c97-rule)]">
