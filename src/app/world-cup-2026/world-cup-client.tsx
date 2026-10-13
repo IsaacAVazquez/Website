@@ -12,7 +12,9 @@ import {
   TeamResultPill,
 } from "@/components/football";
 import { groupFixtures } from "@/components/football/fixtureGroups";
+import { formatFixtureDay } from "@/components/football/fixtureFormat";
 import type {
+  WorldCupFixture,
   WorldCupGroup,
   WorldCupRouteState,
   WorldCupSummarySnapshot,
@@ -38,6 +40,7 @@ import "./world-cup.css";
 import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { groupBy } from "@/lib/utils";
 
 interface WorldCupClientProps {
@@ -67,7 +70,7 @@ const VIEW_OPTIONS: Array<{
   {
     id: "schedule",
     label: "Match schedule",
-    description: "Every result across the tournament.",
+    description: "The latest results, day by day.",
   },
 ];
 
@@ -165,6 +168,8 @@ export function WorldCupClient({
     navigate({ view, team: selectedTeamId });
   }
 
+  const onViewTabKey = useTablistKeyboard(VIEW_OPTIONS, (option) => handleViewChange(option.id));
+
   function handleTeamChange(teamId: string) {
     const normalized = normalizeTeamParam(teamId);
     if (!normalized || !teamOptionById.has(normalized)) return;
@@ -174,6 +179,8 @@ export function WorldCupClient({
     // desktop's pinned column are already in view and stay where they are.
     const panel = teamPanelRef.current;
     if (panel) {
+      // The pinned column scrolls inside itself on a short window, and a new team starts at its top.
+      if (panel.parentElement) panel.parentElement.scrollTop = 0;
       const { top } = panel.getBoundingClientRect();
       if (top < 0 || top > window.innerHeight - 160) panel.scrollIntoView?.({ block: "start" });
     }
@@ -282,19 +289,25 @@ export function WorldCupClient({
               The tournament, stage by stage
             </h2>
             <div className="wcup-switch" role="tablist" aria-label="World Cup view switcher">
-              {VIEW_OPTIONS.map((option) => (
-                <button
-                  key={option.id}
-                  type="button"
-                  role="tab"
-                  id={`world-cup-tab-${option.id}`}
-                  aria-controls={`world-cup-tabpanel-${option.id}`}
-                  aria-selected={option.id === routeState.view}
-                  onClick={() => handleViewChange(option.id)}
-                >
-                  {option.label}
-                </button>
-              ))}
+              {VIEW_OPTIONS.map((option, index) => {
+                const isSelected = option.id === routeState.view;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    role="tab"
+                    id={`world-cup-tab-${option.id}`}
+                    // Only the open view's panel is rendered.
+                    aria-controls={isSelected ? `world-cup-tabpanel-${option.id}` : undefined}
+                    aria-selected={isSelected}
+                    tabIndex={isSelected ? 0 : -1}
+                    onKeyDown={(event) => onViewTabKey(event, index)}
+                    onClick={() => handleViewChange(option.id)}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <p className="wcup-muted">{VIEW_OPTIONS.find((option) => option.id === routeState.view)?.description}</p>
@@ -355,7 +368,7 @@ export function WorldCupClient({
                 <GroupsView groups={groups} selectedTeamId={selectedTeamId} onOpenTeam={handleTeamChange} />
               )}
               {routeState.view === "knockout" && (
-                <KnockoutView rounds={knockout} onOpenTeam={handleTeamChange} />
+                <KnockoutView rounds={knockout} selectedTeamId={selectedTeamId} onOpenTeam={handleTeamChange} />
               )}
               {routeState.view === "schedule" && (
                 <ScheduleView
@@ -428,11 +441,11 @@ export function WorldCupClient({
         </section>
 
         <p className="wcup-source">
-          The tournament ended on {formatLongDate(tournament.endDate)}. The group tables, fixtures, bracket, and
-          scorers come from ESPN&apos;s public World Cup endpoints, checked in on {snapshotDateLabel}, so nothing on
-          this page updates live.
+          The tournament ended on {formatLongDate(tournament.endDate)}. The group tables, fixtures, and bracket
+          come from ESPN&apos;s public World Cup endpoints, checked in on {snapshotDateLabel}, so nothing on this
+          page updates live.
           {scorers.length === 0
-            ? " ESPN's scorer feed carried no golden boot table when this snapshot was taken, so the page lists no top scorers."
+            ? " This snapshot carries no golden boot table, so the page lists no top scorers."
             : null}
         </p>
       </div>
@@ -457,7 +470,7 @@ function GroupsView({
     return (
       <EmptyPanel
         title="Group standings open with the first whistle"
-        description="All 12 group tables populate here once the group stage begins. Until then, browse the host venues and the tournament format below."
+        description="All 12 group tables populate here once the group stage begins. Until then, browse the host venues below."
       />
     );
   }
@@ -486,7 +499,7 @@ function GroupsView({
       {groups.length > PHONE_GROUP_LIMIT ? (
         // The hide is on a wrapper because the button sets its own
         // display, which is unlayered and beats a display utility.
-        <div className="lg:hidden">
+        <div className="lg:hidden print:hidden">
           <button
             type="button"
             className="wcup-more"
@@ -534,7 +547,8 @@ function GroupTable({
   heldOnPhone: boolean;
 }) {
   return (
-    <div className={heldOnPhone ? "wcup-group @container hidden lg:block" : "wcup-group @container"}>
+    // Paper is narrower than lg, so a held table shows itself in print.
+    <div className={heldOnPhone ? "wcup-group @container hidden lg:block print:block" : "wcup-group @container"}>
       <h3 className="wcup-h3 wcup-group-name">{group.name}</h3>
       <table className="wcup-table" aria-label={`${group.name} standings`}>
         <thead>
@@ -693,29 +707,14 @@ function ThirdPlaceRace({
   );
 }
 
-// The days a round was played over, in the zone the fixture rows print their kickoffs in.
-const ROUND_DAY_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  timeZone: "America/New_York",
-});
-
-function roundDays(fixtures: Array<{ utcDate: string }>): string {
-  const days = fixtures
-    .map((fixture) => new Date(fixture.utcDate))
-    .filter((date) => !Number.isNaN(date.getTime()))
-    .toSorted((a, b) => a.getTime() - b.getTime())
-    .map((date) => ROUND_DAY_FORMATTER.format(date));
-  if (days.length === 0) return "Dates TBD";
-  return days[0] === days.at(-1) ? days[0] : `${days[0]} to ${days.at(-1)}`;
-}
-
-/** The bracket's keyboard path: every round as a ruled list of ties, each team a button. */
+/** The bracket's keyboard path: every round as a ruled list of ties by day, each team a button. */
 function KnockoutView({
   rounds,
+  selectedTeamId,
   onOpenTeam,
 }: {
   rounds: WorldCupSummarySnapshot["knockout"];
+  selectedTeamId: string | null;
   onOpenTeam: (teamId: string) => void;
 }) {
   if (rounds.length === 0) {
@@ -733,11 +732,15 @@ function KnockoutView({
         <div key={round.id}>
           <div className="wcup-toolbar wcup-toolbar--plain">
             <h3 className="wcup-h3">{round.name}</h3>
-            <span className="wcup-muted">{round.fixtures.length} ties</span>
+            <span className="wcup-muted">
+              {round.fixtures.length} {round.fixtures.length === 1 ? "tie" : "ties"}
+            </span>
           </div>
           <FixtureLedgerSection
-            groups={[{ key: round.id, label: roundDays(round.fixtures), fixtures: round.fixtures }]}
+            groups={groupFixtures(round.fixtures, (fixture) => formatFixtureDay(fixture) ?? "Date TBD")}
             onOpenTeam={onOpenTeam}
+            contextTeamId={selectedTeamId}
+            dayInLabel
           />
         </div>
       ))}
@@ -745,10 +748,12 @@ function KnockoutView({
   );
 }
 
-function worldCupFixtureLabel(fixture: unknown): string {
-  const { stage, group } = fixture as { stage?: string | null; group?: string | null };
-  if (group) return `Group ${group}`;
-  return stage || "World Cup match";
+// The day leads the label because the page is sent only the latest results,
+// and a stage name alone over half a round would read as the whole round.
+function scheduleLabel(fixture: WorldCupFixture): string {
+  const day = formatFixtureDay(fixture);
+  const stage = fixture.group ? `Group ${fixture.group}` : fixture.stage || "World Cup match";
+  return day ? `${day} · ${stage}` : stage;
 }
 
 function ScheduleView({
@@ -774,13 +779,13 @@ function ScheduleView({
       {upcomingFixtures.length > 0 && (
         <div>
           <h3 className="wcup-h3">Next up</h3>
-          <FixtureLedgerSection groups={groupFixtures(upcomingFixtures, worldCupFixtureLabel)} onOpenTeam={onOpenTeam} />
+          <FixtureLedgerSection groups={groupFixtures(upcomingFixtures, scheduleLabel)} onOpenTeam={onOpenTeam} dayInLabel />
         </div>
       )}
       {recentFixtures.length > 0 && (
         <div>
           <h3 className="wcup-h3">Recent slate</h3>
-          <FixtureLedgerSection groups={groupFixtures(recentFixtures, worldCupFixtureLabel)} onOpenTeam={onOpenTeam} />
+          <FixtureLedgerSection groups={groupFixtures(recentFixtures, scheduleLabel)} onOpenTeam={onOpenTeam} dayInLabel />
         </div>
       )}
     </div>

@@ -165,11 +165,34 @@ describe("WorldCupClient", () => {
     for (const [round, ties] of [
       ["Round of 32", "16 ties"],
       ["Round of 16", "8 ties"],
-      ["Final", "1 ties"],
+      ["Third-place match", "1 tie"],
+      ["Final", "1 tie"],
     ]) {
       const heading = within(panel).getByRole("heading", { level: 3, name: round });
-      expect(heading.parentElement).toHaveTextContent(ties);
+      expect(heading.parentElement).toHaveTextContent(new RegExp(`${ties}$`));
     }
+  });
+
+  it("files each knockout round by day and marks the pinned team's ties", () => {
+    currentSearchParams = new URLSearchParams("view=knockout&team=spain");
+    renderClient({ initialTeamSnapshot: teamSnapshots.spain as WorldCupTeamSnapshot });
+
+    const panel = screen.getByRole("tabpanel");
+    const roundOf16 = within(panel).getByRole("heading", { level: 3, name: "Round of 16" }).parentElement
+      ?.parentElement as HTMLElement;
+    // Each day prints once, as a label, and no row repeats it.
+    for (const day of ["Jul 4", "Jul 5", "Jul 6", "Jul 7"]) {
+      expect(within(roundOf16).getByText(day)).toBeInTheDocument();
+    }
+
+    // Spain played five ties and won them all.
+    const pinned = Array.from(panel.querySelectorAll<HTMLElement>("[data-selected]"));
+    expect(pinned).toHaveLength(5);
+    for (const row of pinned) {
+      expect(within(row).getByRole("button", { name: "Spain" })).toBeInTheDocument();
+      expect(within(row).getByText("Win")).toBeInTheDocument();
+    }
+    expect(within(panel).getAllByText("Win")).toHaveLength(5);
   });
 
   it("shows the schedule's recent slate and the upcoming list when present", () => {
@@ -180,8 +203,23 @@ describe("WorldCupClient", () => {
     const panel = screen.getByRole("tabpanel");
     expect(within(panel).getByText("Recent slate")).toBeInTheDocument();
     expect(within(panel).getByText("Next up")).toBeInTheDocument();
-    // Group fixtures carry their group as the eyebrow label.
-    expect(within(panel).getAllByText(/^Group [A-L]$/).length).toBeGreaterThan(0);
+    // Group fixtures carry their day and their group as the label.
+    expect(within(panel).getAllByText(/^[A-Z][a-z]{2} \d{1,2} · Group [A-L]$/).length).toBeGreaterThan(0);
+  });
+
+  it("labels the schedule's results by day and stage", () => {
+    currentSearchParams = new URLSearchParams("view=schedule");
+    // The page is sent the latest twelve results, which stop halfway through the Round of 16.
+    renderClient({ summary: { ...SUMMARY, recentFixtures: SUMMARY.recentFixtures.slice(0, 12) } });
+
+    expect(screen.getByText("The latest results, day by day.")).toBeInTheDocument();
+    const panel = screen.getByRole("tabpanel");
+    expect(within(panel).getByText("Jul 19 · Final")).toBeInTheDocument();
+    expect(within(panel).getByText("Jul 7 · Round of 16")).toBeInTheDocument();
+    expect(within(panel).getByText("Jul 6 · Round of 16")).toBeInTheDocument();
+    expect(within(panel).queryByText("Round of 16")).toBeNull();
+    // The label names the day, so a row does not print it again.
+    expect(within(panel).queryByText("Jul 19")).toBeNull();
   });
 
   it("explains each view while the tournament has no data", () => {
@@ -223,12 +261,43 @@ describe("WorldCupClient", () => {
       assists: 1,
       penalties: 0,
     }));
-    renderClient({ summary: { ...SUMMARY, scorers } });
+    const { container } = renderClient({ summary: { ...SUMMARY, scorers } });
 
     const table = screen.getByRole("table", { name: "Top scorers" });
     expect(within(table).getAllByRole("row")).toHaveLength(11);
     expect(within(table).getByText("Scorer 10")).toBeInTheDocument();
     expect(within(table).queryByText("Scorer 11")).toBeNull();
+    expect(container.querySelector(".wcup-source")).not.toHaveTextContent(/golden boot/);
+  });
+
+  it("credits ESPN for what it supplied and says the snapshot has no scorers", () => {
+    const { container } = renderClient();
+    const source = container.querySelector(".wcup-source");
+
+    expect(source).toHaveTextContent(
+      "The group tables, fixtures, and bracket come from ESPN's public World Cup endpoints"
+    );
+    expect(source).not.toHaveTextContent(/scorers come from/);
+    expect(source).toHaveTextContent(
+      "This snapshot carries no golden boot table, so the page lists no top scorers."
+    );
+  });
+
+  it("moves between the views with the arrow keys, as one stop in the Tab order", () => {
+    renderClient();
+    const groups = screen.getByRole("tab", { name: "Group stage" });
+    const knockout = screen.getByRole("tab", { name: "Knockout bracket" });
+
+    expect(groups).toHaveAttribute("tabindex", "0");
+    expect(knockout).toHaveAttribute("tabindex", "-1");
+    // Only the open view's panel is on the page for a tab to point at.
+    expect(groups).toHaveAttribute("aria-controls", "world-cup-tabpanel-groups");
+    expect(knockout).not.toHaveAttribute("aria-controls");
+
+    groups.focus();
+    fireEvent.keyDown(groups, { key: "ArrowRight" });
+    expect(knockout).toHaveFocus();
+    expect(mockPush).toHaveBeenLastCalledWith("/world-cup-2026?view=knockout", { scroll: false });
   });
 
   it("pins a deep-linked team's standing, form, and results, and clears it", () => {
@@ -283,6 +352,9 @@ describe("WorldCupClient", () => {
 
     const toggle = screen.getByRole("button", { name: "Show all 12 groups" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
+    // Paper is narrower than lg, so it prints every table and leaves the button off.
+    expect(card(SUMMARY.groups[4])).toHaveClass("print:block");
+    expect(toggle.parentElement).toHaveClass("print:hidden");
     fireEvent.click(toggle);
 
     expect(card(SUMMARY.groups[4])).not.toHaveClass("hidden");
@@ -315,6 +387,18 @@ describe("WorldCupClient", () => {
       rect.mockRestore();
       Element.prototype.scrollIntoView = original;
     }
+  });
+
+  it("returns the pinned column to its top when another team is picked", () => {
+    currentSearchParams = new URLSearchParams("team=mexico");
+    renderClient({ initialTeamSnapshot: MEXICO });
+    // On a short window the column scrolls inside itself.
+    const column = screen.getByRole("complementary");
+    column.scrollTop = 240;
+    expect(column.scrollTop).toBe(240);
+
+    fireEvent.click(screen.getByRole("button", { name: `Show ${SUMMARY.groups[0].standings[1].name} details` }));
+    expect(column.scrollTop).toBe(0);
   });
 
   it("lists a team's upcoming fixtures, three at most", () => {
