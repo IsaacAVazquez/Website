@@ -37,7 +37,6 @@ import {
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_EXPERT_SPREAD_TOOLTIP,
   FANTASY_PLAYER_COLUMN_TOOLTIP,
-  getFantasyPointsPerGameTooltip,
   FANTASY_PRIOR_SEASON_ADP_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
@@ -72,7 +71,10 @@ import {
   FreshnessParts,
   type FreshnessPart,
 } from "@/components/fantasy/FantasyRouteHeader";
+import { PlayerNoteField } from "@/components/fantasy/PlayerNoteField";
+import { PlayerPointsPerGame } from "@/components/fantasy/PlayerPointsPerGame";
 import { positionClass } from "@/components/fantasy/positionClass";
+import { RankDistributionBar } from "@/components/fantasy/RankDistributionBar";
 import { fitSpreadScale, type SpreadScale } from "@/components/fantasy/spreadScale";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
@@ -202,10 +204,25 @@ function PositionChip({ player }: { player: Player }) {
 }
 
 /**
+ * Whether a board's expert ranks are overall ranks. The flex board is the
+ * overall board with three positions kept, and its best, worst, and average
+ * ranks are the overall ones (the snapshot marks both `rangeKind: "overall"`).
+ * Every other board ranks within its position.
+ */
+function ranksAreOverall(position: FantasyRoutePosition): boolean {
+  return position === "overall" || position === "flex";
+}
+
+/** On a position board a division of the spread scale is named for the position rank it starts at ("RB13"). */
+function positionRankLabel(position: FantasyRoutePosition): (rank: number) => string {
+  return (rank) => `${position.toUpperCase()}${rank}`;
+}
+
+/**
  * The scale for one group of rows (a tier, or a page of the VORP view), fitted
- * to the best and worst rank any expert gave any player in it. A division is a
- * round of the draft on the overall board and that many ranks of the position
- * on any other, where the label is the rank the division starts at.
+ * to the best and worst rank any expert gave any player in it. Where the ranks
+ * are overall ranks a division is a round of the draft. On a position board it
+ * is that many ranks of the position, labelled by the rank it starts at.
  */
 function fitGroupScale(rows: Player[], unit: number, position: FantasyRoutePosition): SpreadScale {
   let lo = Infinity;
@@ -219,9 +236,8 @@ function fitGroupScale(rows: Player[], unit: number, position: FantasyRoutePosit
     lo = 1;
     hi = 1;
   }
-  if (position === "overall") return fitSpreadScale(lo, hi, { unit });
-  const prefix = position === "flex" ? "#" : position.toUpperCase();
-  return fitSpreadScale(lo, hi, { unit, label: (rank) => `${prefix}${rank}` });
+  if (ranksAreOverall(position)) return fitSpreadScale(lo, hi, { unit });
+  return fitSpreadScale(lo, hi, { unit, label: positionRankLabel(position) });
 }
 
 /** The labels of a scale, one over each of its divisions. They are a caption for the plots under them. */
@@ -245,18 +261,10 @@ function SpreadScaleLabels({ scale, className }: { scale: SpreadScale; className
  * average, and an ink tick on the average. Every plot in a group shares
  * `scale`, so two rows can be compared by eye. The range rides in the
  * accessible name and the hover title, since the plot is its only print on the
- * row. `nameAverage` adds the average to that name where no column beside the
+ * row. The average is left out of that name, because the column beside the
  * plot prints it.
  */
-function ExpertSpread({
-  player,
-  scale,
-  nameAverage = false,
-}: {
-  player: Player;
-  scale: SpreadScale;
-  nameAverage?: boolean;
-}) {
+function ExpertSpread({ player, scale }: { player: Player; scale: SpreadScale }) {
   const lo = player.minRank;
   const hi = player.maxRank;
   const guides = { "--ffb-rounds": scale.ticks.length } as CSSProperties;
@@ -273,7 +281,7 @@ function ExpertSpread({
     typeof player.standardDeviation === "number" && Number.isFinite(player.standardDeviation) && player.standardDeviation > 0
       ? player.standardDeviation
       : null;
-  const label = `Expert rank range ${lo} to ${hi}${nameAverage && avg !== null ? `, average ${avg.toFixed(1)}` : ""}`;
+  const label = `Expert rank range ${lo} to ${hi}`;
 
   return (
     <span
@@ -359,8 +367,8 @@ interface DraftPlayerDrawerProps {
   vorpTeams: FantasyVorpTeamSize;
   /** The published VORP entries, keyed by player id, for this player and the neighbors. */
   vorpIndex: ReadonlyMap<string, FantasyVorpRankingEntry>;
-  /** The scale this player's row is drawn on, so the drawer's plot matches the row's. */
-  spreadScale: SpreadScale;
+  /** Picks in a round of the draft: twelve, or the league size the VORP view names. */
+  spreadUnit: number;
   onSelectNeighbor: (id: string) => void;
   onClose: () => void;
 }
@@ -386,7 +394,7 @@ function DraftPlayerDrawer({
   vorpMode,
   vorpTeams,
   vorpIndex,
-  spreadScale,
+  spreadUnit,
   onSelectNeighbor,
   onClose,
 }: DraftPlayerDrawerProps) {
@@ -441,11 +449,28 @@ function DraftPlayerDrawer({
   // nothing here may say "saved".
   const memoryOnly = queue.persistenceStatus === "memory-only" || notes.persistenceStatus === "memory-only";
 
+  // The plot is fitted to this player, as the shared drawer's is, and not to
+  // the tier his row is drawn with. Where the ranks are overall ranks the
+  // shared plot fits its own scale in rounds of twelve, so it gets one from
+  // here only when the VORP view names another league size. On a position
+  // board the divisions are position ranks, and the labels say so.
+  const overallRanks = ranksAreOverall(activePosition);
+  const plotScale = !hasRange
+    ? undefined
+    : !overallRanks
+      ? fitSpreadScale(player.minRank as number, player.maxRank as number, {
+          pad: 1,
+          label: positionRankLabel(activePosition),
+        })
+      : spreadUnit !== 12
+        ? fitSpreadScale(player.minRank as number, player.maxRank as number, { pad: 1, unit: spreadUnit })
+        : undefined;
+
   // Per-game scoring, present only when this player was matched to a game
   // log that cleared the games-played floor.
   const gameLog = player.gameLog;
 
-  const boardLabel = activePosition === "overall" || activePosition === "flex" ? "overall" : "on this board";
+  const boardLabel = ranksAreOverall(activePosition) ? "overall" : "on this board";
   const consensusLine = `Rank ${publishedRank} ${boardLabel}${
     Number.isFinite(player.tier) ? ` · Tier ${player.tier}${boardTierCount ? ` of ${boardTierCount}` : ""}` : ""
   }`;
@@ -485,7 +510,8 @@ function DraftPlayerDrawer({
   const facts: DrawerFactProps[] = [
     ...(vorpMode && vorpFact ? [vorpFact] : []),
     { label: "Consensus avg", value: formatAvg(player), title: FANTASY_AVG_RANK_TOOLTIP },
-    { label: "Expert range", value: formatExpertRange(player), title: FANTASY_EXPERT_SPREAD_TOOLTIP },
+    // The definition for the range is on the Expert spread heading below, where the plot it describes is.
+    { label: "Expert range", value: formatExpertRange(player) },
     ...(adpFact ? [adpFact] : []),
     ...(vsAdpFact ? [vsAdpFact] : []),
     ...(!vorpMode && vorpFact ? [vorpFact] : []),
@@ -556,50 +582,30 @@ function DraftPlayerDrawer({
             </div>
           )}
 
+          {/* The plot, points per game, and the note are the shared drawer's own
+              parts, so the two drawers draw them the same. The facts above
+              already print the range and the average, so the plot leaves its
+              Best, Avg, Worst line off and each number prints once. */}
           {hasRange && (
-            <section className="ffb-stack ffb-stack-tight">
+            <div className="ffb-stack ffb-stack-tight">
               <div className="ffb-sechead">
-                <h3 className="ffb-h3">Expert spread</h3>
+                <h3 className="ffb-h3" aria-label="Expert spread">
+                  <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} focusable>
+                    Expert spread
+                  </MetricTooltip>
+                </h3>
                 {spread && <p className="ffb-sechead-note">{spread.label}</p>}
               </div>
-              <SpreadScaleLabels scale={spreadScale} className="ffb-label ffb-muted" />
-              <div className="ffb-rk-plot">
-                <ExpertSpread player={player} scale={spreadScale} nameAverage />
-              </div>
-            </section>
+              <p className="ffb-sechead-note">
+                {overallRanks
+                  ? `Each division is a round of a ${spreadUnit}-team draft.`
+                  : `Each division is 12 ${activePosition.toUpperCase()} ranks.`}
+              </p>
+              <RankDistributionBar player={player} scale={plotScale} showEnds={false} />
+            </div>
           )}
 
-          {gameLog && (
-            <section className="ffb-stack ffb-stack-tight">
-              <div className="ffb-sechead">
-                <div className="ffb-rk-ppg-head">
-                  <h3 className="ffb-h3">Points per game</h3>
-                  <MetricTooltip term="Points per game" definition={getFantasyPointsPerGameTooltip(gameLog)} />
-                </div>
-                <p className="ffb-sechead-note">
-                  {`${gameLog.season} season · ${scoringLabel} · ${gameLog.games} ${gameLog.games === 1 ? "game" : "games"}`}
-                </p>
-              </div>
-              <dl className="ffb-stats ffb-rk-ppg">
-                <div className="ffb-stat">
-                  <dt>Low</dt>
-                  <dd>{gameLog.low.toFixed(1)}</dd>
-                </div>
-                <div className="ffb-stat">
-                  <dt>Median</dt>
-                  <dd>{gameLog.median.toFixed(1)}</dd>
-                </div>
-                <div className="ffb-stat">
-                  <dt>Avg</dt>
-                  <dd>{gameLog.average.toFixed(1)}</dd>
-                </div>
-                <div className="ffb-stat">
-                  <dt>High</dt>
-                  <dd>{gameLog.high.toFixed(1)}</dd>
-                </div>
-              </dl>
-            </section>
-          )}
+          {gameLog && <PlayerPointsPerGame gameLog={gameLog} scoringLabel={scoringLabel} />}
 
           {neighbors.length > 1 && (
             <section>
@@ -636,27 +642,16 @@ function DraftPlayerDrawer({
             </section>
           )}
 
-          <div className="ffb-field">
-            <label htmlFor="board-player-note" className="ffb-field-label">
-              Private note
-            </label>
-            <textarea
-              id="board-player-note"
-              name="board-player-note"
-              rows={2}
-              value={draftNote}
-              maxLength={notes.maxLength}
-              onChange={(event) => {
-                setDraftNote(event.target.value);
-                notes.setNote(player.id, event.target.value);
-              }}
-              placeholder="Handcuff for Hall… target round 6… avoid."
-              className="ffb-textarea"
-            />
-            <p className="ffb-field-count">
-              {`${draftNote.length}/${notes.maxLength} · ${memoryOnly ? "kept in this tab only" : "saved on this device"}`}
-            </p>
-          </div>
+          <PlayerNoteField
+            id="board-player-note"
+            value={draftNote}
+            maxLength={notes.maxLength}
+            onChange={(value) => {
+              setDraftNote(value);
+              notes.setNote(player.id, value);
+            }}
+            persistent={!memoryOnly}
+          />
 
           <p className="ffb-method">
             Ranks, tiers, and expert ranges come from the published snapshot
@@ -860,7 +855,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const adpTooltip = adpFreshness === "prior-season"
     ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP
     : FANTASY_ADP_TOOLTIP;
-  const vsAdpMeaningful = routeState.position === "overall" || routeState.position === "flex";
+  const vsAdpMeaningful = ranksAreOverall(routeState.position);
   // The vs ADP column, its head, and the Value or Reach word all show together or not at all.
   const showVsAdp = adpSignalsAvailable && vsAdpMeaningful;
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
@@ -1147,10 +1142,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     .join(" · ");
   // What a division of the spread scale is, said once, in the column head
   // where the name of the column is. The labels themselves ride on each tier.
-  const spreadUnitNote =
-    routeState.position === "overall"
-      ? `In rounds of a ${spreadUnit}-team draft`
-      : `In ${routeState.position === "flex" ? "flex" : routeState.position.toUpperCase()} ranks`;
+  const spreadUnitNote = ranksAreOverall(routeState.position)
+    ? `In rounds of a ${spreadUnit}-team draft`
+    : `In ${routeState.position.toUpperCase()} ranks`;
   // "Not published" is only true once the snapshot has arrived without a VORP
   // source. While it is loading, or failed, the button is disabled and says
   // nothing more.
@@ -1806,7 +1800,16 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     <strong>{error}</strong> Check your connection and try loading the published snapshot again.
                   </p>
                   <div className="ffb-notice-actions">
-                    <button type="button" onClick={retry} className="ffb-btn">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        retry();
+                        // The button leaves with the notice as soon as the retry starts, so
+                        // focus goes to the search, which stays put while the board loads.
+                        focusSearch();
+                      }}
+                      className="ffb-btn"
+                    >
                       Retry rankings
                     </button>
                   </div>
@@ -1923,7 +1926,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           vorpMode={vorpMode}
           vorpTeams={routeState.teams}
           vorpIndex={vorpIndex}
-          spreadScale={scaleFor([detailPlayer])}
+          spreadUnit={spreadUnit}
           onSelectNeighbor={(id) => setDetailPlayerId(id)}
           onClose={() => setDetailPlayerId(null)}
         />

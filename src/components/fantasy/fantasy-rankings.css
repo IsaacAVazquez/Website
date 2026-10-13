@@ -27,8 +27,14 @@
    The row's own click still opens the player. */
 .ffb-rk-board .ffb-row { cursor: pointer; }
 .ffb-rk-board .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
-/* A row reached by keyboard stops below the pinned toolbar block (its measured height). */
-.ffb-rk-board .ffb-row-open { scroll-margin-top: calc(var(--ffb-rk-bar, 96px) + var(--ffb-s1)); }
+/* The kit scrolls a focused row control clear of what is pinned over the list, by
+   --ffb-pinned-top. Here that is the toolbar block's measured height, plus the pinned tier
+   head where there is one, plus the 8px a phone row's star sits below its row's top edge.
+   The kit's own 152px stays the floor. */
+.ffb-rk-board {
+  --ffb-rk-pinned: 12px;
+  --ffb-pinned-top: max(152px, calc(var(--ffb-rk-bar, 96px) + var(--ffb-rk-pinned)));
+}
 
 .ffb-rk-board > .ffb-notice { margin-block: var(--ffb-s4); }
 
@@ -38,6 +44,9 @@
 /* ==========================================================================
  * Column heads, tier heads, and cells of this board
  * ======================================================================== */
+/* For a touch pointer the kit makes a help trigger a 44px target with its label at the left.
+   Over a column of numbers the label stays at the right, on the edge the numbers share. */
+.ffb-rk-board .ffb-colhead > .ffb-h-num [data-metric-trigger="text"] { justify-content: flex-end; }
 /* "ADP (overall)" takes two lines over a 60px column. */
 .ffb-rk-board .ffb-colhead > .ffb-rk-h-wrap { white-space: normal; }
 /* Only as wide as its words, so a wide column does not turn into one wide help target. */
@@ -66,6 +75,8 @@
 }
 
 @media (min-width: 768px) {
+  /* The pinned tier head stands 30px under the toolbar block. */
+  .ffb-rk-board { --ffb-rk-pinned: 38px; }
   /* The two control groups are rows on a phone only. Here their controls sit in the toolbar's one row. */
   .ffb-rk-ctl-a,
   .ffb-rk-ctl-b { display: contents; }
@@ -117,29 +128,27 @@
     padding-bottom: 3px;
     line-height: 1.2;
   }
-  /* The pinned tier head stands 30px under the toolbar block. */
-  .ffb-rk-board .ffb-row-open { scroll-margin-top: calc(var(--ffb-rk-bar, 96px) + var(--ffb-rk-pinned, 34px)); }
 }
 
 /* Where the plot's cell would be under about 240px it is dropped, on every board. The width
    that happens at depends on which columns the state shows, so there is one line per set. */
 @media (min-width: 768px) and (max-width: 823.98px) {
-  .ffb-rk-board { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+  .ffb-rk-board { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 12px; }
 }
 @media (min-width: 768px) and (max-width: 891.98px) {
-  .ffb-rk-board.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+  .ffb-rk-board.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 12px; }
 }
 @media (min-width: 768px) and (max-width: 905.98px) {
-  .ffb-rk-board.ffb-rk-adp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+  .ffb-rk-board.ffb-rk-adp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 12px; }
 }
 @media (min-width: 768px) and (max-width: 973.98px) {
-  .ffb-rk-board.ffb-rk-adp.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+  .ffb-rk-board.ffb-rk-adp.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 12px; }
 }
 @media (min-width: 768px) and (max-width: 1023.98px) {
-  .ffb-rk-board.ffb-rk-vs { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+  .ffb-rk-board.ffb-rk-vs { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 12px; }
 }
 @media (min-width: 768px) and (max-width: 1091.98px) {
-  .ffb-rk-board.ffb-rk-vs.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 4px; }
+  .ffb-rk-board.ffb-rk-vs.ffb-rk-vorp { --ffb-rk-tail: 44px 36px; --ffb-rk-plot: none; --ffb-rk-pin: static; --ffb-rk-head: flex; --ffb-rk-pinned: 12px; }
 }
 /* Below 1024px the plot is narrow enough that every other label is all that fits. */
 @media (max-width: 1023.98px) {
@@ -158,9 +167,6 @@
  * ======================================================================== */
 /* Three across in the drawer and in the phone's sheet, so three facts or five leave no fact alone on a row. */
 .ffb-rk-facts { --ffb-stat-min: 84px; }
-.ffb-rk-ppg { --ffb-stat-min: 60px; }
-.ffb-rk-plot { display: grid; height: 24px; }
-.ffb-rk-ppg-head { display: flex; align-items: center; gap: var(--ffb-s1); }
 
 /* ==========================================================================
  * Phones: two rows of controls, drawn in the order the keyboard walks them
