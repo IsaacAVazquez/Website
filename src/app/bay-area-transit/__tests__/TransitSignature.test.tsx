@@ -307,6 +307,19 @@ describe("the board's rows", () => {
     ).toBeInTheDocument();
   });
 
+  it("count a one-car train as one car, on the row and in its spoken sentence", () => {
+    const oneCar = servedBoard([5], new Date().toISOString());
+    oneCar.departures[0].length = 1;
+    renderSignature({ stationBoard: oneCar });
+
+    expect(screen.getByText("Yellow line · Platform 2 · 1 car")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", {
+        name: "Yellow line to Antioch, in 5 min, platform 2, 1 car. Show this line on the map.",
+      })
+    ).toBeInTheDocument();
+  });
+
   it("say when BART's times were read", () => {
     renderSignature({ stationBoard: servedBoard([5], "2026-10-03T21:18:00Z") });
     expect(screen.getByText(/read from bart oct 3, 2:18/i)).toBeInTheDocument();

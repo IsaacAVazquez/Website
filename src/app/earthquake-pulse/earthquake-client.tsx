@@ -4,6 +4,7 @@ import {
   Fragment,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
 } from "react";
@@ -17,7 +18,6 @@ import type {
 } from "@/types/earthquake";
 import {
   buildEarthquakeHref,
-  DEFAULT_EARTHQUAKE_STATE,
   EARTHQUAKE_ROUTE,
   EARTHQUAKE_VIEW_LABELS,
   EARTHQUAKE_VIEW_OPTIONS,
@@ -52,6 +52,13 @@ const CLOCK_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "2-digit",
   minute: "2-digit",
   hourCycle: "h23",
+  timeZone: "UTC",
+});
+
+// The UTC day the clock above belongs to, for a list that runs past one day.
+const DAY_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
   timeZone: "UTC",
 });
 
@@ -174,24 +181,34 @@ function MagnitudeBadge({ mag }: { mag: number }) {
 function QuakeRow({
   quake,
   isSelected,
+  isOpen,
+  showDate,
   onSelect,
   now,
 }: {
   quake: QuakeEvent;
+  /** The quake marked on the trace and the plot, which is the newest one until another is picked. */
   isSelected: boolean;
+  /** Whether this row's detail is printed under it. */
+  isOpen: boolean;
+  /** The 24-hour log reads on the clock alone; a longer list needs the day too. */
+  showDate: boolean;
   onSelect: (id: string) => void;
   now: number | null;
 }) {
+  const time = new Date(quake.time);
   return (
     <button
       type="button"
       onClick={() => onSelect(quake.id)}
-      aria-current={isSelected ? "true" : undefined}
+      aria-expanded={isOpen}
+      data-selected={isSelected || undefined}
       className="eq-quake-log-row"
       style={getRowStyle(isSelected, quake.magnitude)}
     >
       <span className="eq-quake-log-time">
-        {CLOCK_FORMATTER.format(new Date(quake.time))} UTC
+        {showDate ? <span>{DAY_FORMATTER.format(time)}</span> : null}
+        {CLOCK_FORMATTER.format(time)} UTC
         {now !== null ? (
           <span className="eq-quake-log-ago">{formatTimeAgo(quake.time, now)}</span>
         ) : null}
@@ -342,7 +359,7 @@ function RegionList({
             <button
               type="button"
               onClick={() => onSelect(region.strongestId!)}
-              aria-current={region.strongestId === openQuakeId ? "true" : undefined}
+              aria-expanded={region.strongestId === openQuakeId}
               className="eq-region"
             >
               {content}
@@ -443,8 +460,14 @@ export function EarthquakeClient({
     ? summary.quakeDetails[selectedQuakeId] ?? null
     : null;
 
+  // The page is served from the committed snapshot, which can be hours behind
+  // the feed. A linked quake it does not hold stays in the URL until the live
+  // read has answered and can say whether the quake exists.
+  const [liveSettled, setLiveSettled] = useState(false);
+  const urlQuake = canonicalQuakeParam ?? (liveSettled ? null : routeState.quake);
+
   const desiredHref = buildEarthquakeHref(
-    { view: routeState.view, quake: canonicalQuakeParam },
+    { view: routeState.view, quake: urlQuake },
     searchParams
   );
 
@@ -470,6 +493,8 @@ export function EarthquakeClient({
         }
       } catch {
         // Keep the last good summary visible through transient network errors. An abort lands here too.
+      } finally {
+        if (active) setLiveSettled(true);
       }
     }
 
@@ -492,14 +517,34 @@ export function EarthquakeClient({
     pushHref(href);
   }
 
+  const logRef = useRef<HTMLElement>(null);
+  // Set by a pick on the trace or the plot, whose detail opens down in the log.
+  const revealDetail = useRef(false);
+
   function handleViewChange(view: EarthquakeView) {
-    navigate({ view, quake: canonicalQuakeParam ?? DEFAULT_EARTHQUAKE_STATE.quake });
+    // The toolbar sticks, so a tab can be pressed from deep in a long list, and
+    // a shorter view would leave the page at its foot. The log's top comes back.
+    const log = logRef.current;
+    if (log && log.getBoundingClientRect().top < 0) log.scrollIntoView?.({ block: "start" });
+    navigate({ view, quake: urlQuake });
   }
 
-  function handleSelectQuake(id: string) {
+  function handleSelectQuake(id: string, reveal = false) {
+    revealDetail.current = reveal && id !== canonicalQuakeParam;
     // Pressing the open quake again closes it.
     navigate({ view: routeState.view, quake: id === canonicalQuakeParam ? null : id });
   }
+
+  // The push lands in a transition, so the detail is brought into view once it
+  // has rendered, and only when it is off screen or within 160px of the fold.
+  useEffect(() => {
+    if (!revealDetail.current) return;
+    revealDetail.current = false;
+    const detail = logRef.current?.querySelector(".eq-detail");
+    if (!detail) return;
+    const { top } = detail.getBoundingClientRect();
+    if (top < 0 || top > window.innerHeight - 160) detail.scrollIntoView?.({ block: "center" });
+  }, [canonicalQuakeParam]);
 
   const listForView =
     routeState.view === "significant" ? summary.significant : summary.recent;
@@ -556,7 +601,7 @@ export function EarthquakeClient({
                 spikes={spikes}
                 strongest={{ magnitude: stats.strongest24hMag, place: stats.strongest24hPlace }}
                 selectedId={selectedQuakeId}
-                onSelect={handleSelectQuake}
+                onSelect={(id) => handleSelectQuake(id, true)}
               />
               <p className="eq-caption">
                 {`${stats.total24h} quakes of M2.5 or more in the past 24 hours and ${stats.total7d} over the past week. ${stats.felt24h} of any magnitude drew a Did You Feel It? report.`}
@@ -571,7 +616,7 @@ export function EarthquakeClient({
                     quakes={summary.recent}
                     spikes={spikes}
                     selectedId={selectedQuakeId}
-                    onSelect={handleSelectQuake}
+                    onSelect={(id) => handleSelectQuake(id, true)}
                   />
                   <figcaption className="eq-muted eq-small">
                     Epicentres from the trace above, solid for shallow quakes and fainter for
@@ -580,7 +625,11 @@ export function EarthquakeClient({
                 </figure>
               ) : null}
 
-              <section className="eq-log" aria-label="Earthquake log">
+              <section ref={logRef} className="eq-log" aria-labelledby="earthquake-log-title">
+                {/* Unseen, so the outline runs h1, h2, then a picked quake's h3. */}
+                <h2 id="earthquake-log-title" className="sr-only">
+                  Earthquake log
+                </h2>
                 <div className="eq-toolbar">
                   <div className="eq-tabs" role="tablist" aria-label="Earthquake view switcher">
                     {EARTHQUAKE_VIEW_OPTIONS.map((view, index) => (
@@ -642,6 +691,8 @@ export function EarthquakeClient({
                           <QuakeRow
                             quake={quake}
                             isSelected={quake.id === selectedQuakeId}
+                            isOpen={quake.id === canonicalQuakeParam}
+                            showDate={routeState.view === "significant"}
                             onSelect={handleSelectQuake}
                             now={now}
                           />

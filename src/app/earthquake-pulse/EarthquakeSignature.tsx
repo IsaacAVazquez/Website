@@ -34,6 +34,8 @@ function plotY(fractionFromNorthPole: number): number {
 
 const DEPTH_OPACITY = { shallow: 0.9, intermediate: 0.6, deep: 0.35 } as const;
 
+const quakeWord = (count: number) => (count === 1 ? "quake" : "quakes");
+
 /**
  * The page's signature, a day of shaking drawn as one seismograph trace across
  * the full width of the page, with the day's strongest quake labelled on it.
@@ -86,7 +88,7 @@ export function EarthquakeSignature({ quakes, spikes, strongest: dayStrongest, s
     >
       <title id="quake-signature-title">The past 24 hours of earthquakes</title>
       <desc id="quake-signature-desc">
-        {`${capped ? `The ${spikes.length} most recent` : spikes.length} quakes of magnitude 2.5 or more in the past 24 hours, drawn as a seismograph trace across the day. The strongest of the day was ${label}.`}
+        {`${capped ? `The ${spikes.length} most recent` : spikes.length} ${quakeWord(spikes.length)} of magnitude 2.5 or more in the past 24 hours, drawn as a seismograph trace across the day. The strongest of the day was ${label}.`}
       </desc>
 
       {capped && oldestX > 0.04 ? (
@@ -177,12 +179,17 @@ export function EpicentrePlot({ quakes, spikes, selectedId, onSelect }: Epicentr
   if (points.length === 0) return null;
   const byId = new Map(quakes.map((quake) => [quake.id, quake]));
   const selectedPoint = points.find((point) => point.id === selectedId) ?? null;
+  // A full log holds only the newest quakes, so it cannot speak for the whole day.
+  const plotted =
+    quakes.length >= EARTHQUAKE_RECENT_LIMIT
+      ? `the ${points.length} most recent ${quakeWord(points.length)} of magnitude 2.5 or more`
+      : `the past day's ${points.length} ${quakeWord(points.length)}`;
 
   return (
     <svg
       viewBox={`0 0 ${W} ${PLOT_VIEW_H}`}
       role="img"
-      aria-label={`Epicentres of the past day's ${points.length} quakes on a latitude and longitude grid, shaded by depth`}
+      aria-label={`Epicentres of ${plotted} on a latitude and longitude grid, shaded by depth`}
       className="eq-plot-svg"
     >
       {[-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150].map((lon) => (

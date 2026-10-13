@@ -56,12 +56,18 @@ function lineName(colorName: string): string {
   return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
 }
 
+/** "8 cars", or "1 car" for the single-car eBART trains, or nothing when BART sent no length. */
+function carCount(departure: TransitDeparture): string | null {
+  if (!(departure.length > 0)) return null;
+  return `${departure.length} ${departure.length === 1 ? "car" : "cars"}`;
+}
+
 /** "Red line · Platform 2 · 8 cars", leaving out whatever BART didn't send. */
 function departureDetail(departure: TransitDeparture): string {
   return [
     `${lineName(departure.colorName)} line`,
     departure.platform ? `Platform ${departure.platform}` : null,
-    departure.length > 0 ? `${departure.length} cars` : null,
+    carCount(departure),
   ]
     .filter(Boolean)
     .join(" · ");
@@ -78,7 +84,8 @@ function departureLabel(departure: TransitDeparture): string {
   const late =
     departure.delaySeconds >= 60 ? `, ${Math.round(departure.delaySeconds / 60)} min late` : "";
   const platform = departure.platform ? `, platform ${departure.platform}` : "";
-  const cars = departure.length > 0 ? `, ${departure.length} cars` : "";
+  const count = carCount(departure);
+  const cars = count ? `, ${count}` : "";
   return `${lineName(departure.colorName)} line to ${departure.destination}, ${when}${late}${platform}${cars}. Show this line on the map.`;
 }
 
