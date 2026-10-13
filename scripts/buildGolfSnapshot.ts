@@ -32,7 +32,11 @@ const MAX_RESTAMP_DAYS = 45;
 function isRecentFinalBoard(snapshot: GolfSnapshot, now: Date): boolean {
   const tournament = snapshot.summary.tournament;
   if (!tournament) return false;
-  const completed = tournament.completed ?? /^(final|complete|completed)$/i.test(tournament.status.trim());
+  // `completed` is already true once a round's play ends or is suspended
+  // ("Round 3 - Play Complete", "Round 2 - Suspended"), so the flag can only
+  // rule a board out. The status text is what says the event itself is over.
+  const completed =
+    tournament.completed !== false && /^(final|complete|completed)$/i.test(tournament.status.trim());
   const endedAt = Date.parse(tournament.endDate);
   const ageMs = now.getTime() - endedAt;
   return (

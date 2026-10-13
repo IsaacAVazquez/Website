@@ -1,5 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { golfSnapshot } from "@/data/golfSnapshot";
+import { fillTodayToPar } from "@/lib/golfData";
 import { getGolfPlayerSnapshot, getGolfSummary } from "@/lib/golfSnapshot";
 import {
   constructMetadata,
@@ -28,7 +29,7 @@ interface GolfPageProps {
 
 export default async function GolfPage({ searchParams }: GolfPageProps) {
   const initialState = normalizeGolfState(await searchParams);
-  const summary = await getGolfSummary();
+  const summary = fillTodayToPar(await getGolfSummary());
   const defaultPlayerId = summary.leaderboard[0]?.playerId ?? null;
   const validPlayerIds = new Set(summary.players.map((player) => player.id));
   const selectedPlayerId = validPlayerIds.has(initialState.player ?? "")

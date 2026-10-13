@@ -40,6 +40,16 @@ export interface LeaderboardSlatsResult {
 // set after 36 holes, and a made-cut player who plays the weekend badly can
 // finish with a worse to-par total than the cut score itself.
 const MISSED_CUT_STATUS = /missed cut|^mc$|withdr|^wd$|disqualif|^dq$/i;
+const CUT_STATUS = /missed cut|^mc$/i;
+
+/**
+ * True once a player carries the missed-cut status. ESPN publishes a cut score
+ * through round two as a projection, with a count of the players inside it,
+ * and until the round ends nobody has advanced or gone home.
+ */
+export function isCutMade(entries: GolfLeaderboardEntry[]): boolean {
+  return entries.some((entry) => CUT_STATUS.test(entry.status));
+}
 
 function parTone(toPar: number): ParTone {
   return toPar < 0 ? "under" : toPar > 0 ? "over" : "even";
@@ -71,9 +81,9 @@ export function leaderboardSlats(
     // upstream) is still in progress, so its roundScores value is a partial
     // stroke count, not a full round. Comparing that partial total to the
     // full course par would show a wildly wrong tone (a front-nine 34 read
-    // against a par-72 course, say), so the in-progress round borrows ESPN's
-    // own live to-par figure (`today`, already shown as the "Today" stat)
-    // instead of `score - coursePar`.
+    // against a par-72 course, say), so the in-progress round borrows the
+    // live to-par figure (`today`, already shown as the "Today" stat)
+    // instead of `score - coursePar`, and carries no tone when there is none.
     const currentRoundIsPartial = entry.thru !== "F" && entry.thru !== "—";
     return {
       playerId: entry.playerId,
@@ -86,7 +96,7 @@ export function leaderboardSlats(
         }
         const isLatestRound = i === entry.roundScores.length - 1;
         const toPar = isLatestRound && currentRoundIsPartial ? entry.today : score - coursePar;
-        return { score, toPar, tone: parTone(toPar) };
+        return { score, toPar, tone: toPar === null ? null : parTone(toPar) };
       }),
       total: entry.totalToPar,
       totalTone: parTone(entry.totalToPar),
@@ -95,7 +105,7 @@ export function leaderboardSlats(
   });
 
   let cutIndex: number | null = null;
-  if (cutState === "made" && cutLine !== null) {
+  if (cutState === "made" && cutLine !== null && isCutMade(entries)) {
     for (let i = slats.length - 1; i >= 0; i--) {
       if (slats[i].madeCut) {
         cutIndex = i;

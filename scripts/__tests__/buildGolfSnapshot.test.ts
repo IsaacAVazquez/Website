@@ -57,6 +57,9 @@ describe("golf off-week verification", () => {
   it.each([
     { status: "Round 4 - In Progress" },
     { status: "Round 4 Complete" },
+    // The feed marks a finished or suspended round complete, days before the event is.
+    { status: "Round 3 - Play Complete", completed: true },
+    { status: "Round 2 - Suspended", completed: true },
     { status: "Final", completed: false },
     { status: "Final", completed: true, endDate: "2026-10-08" },
     { status: "Final", completed: true, endDate: "2026-08-01" },
@@ -70,7 +73,7 @@ describe("golf off-week verification", () => {
   });
 
   it.each([
-    { status: "Tournament ended", completed: true },
+    { status: "Final", completed: true },
     { status: "Final", completed: undefined },
   ])("re-verifies a recent final board without changing its scores (%j)", async (overrides) => {
     const outPath = await writePriorBoard(overrides);

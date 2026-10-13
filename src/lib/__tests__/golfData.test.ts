@@ -6,7 +6,10 @@ import {
   buildGolfSnapshotData,
   extractCutScore,
   deriveCutState,
+  fillTodayToPar,
+  todayToPar,
 } from "../golfData";
+import type { GolfLeaderboardEntry, GolfSummary } from "@/types/golf";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -22,8 +25,8 @@ interface CompetitorOptions {
   country?: string;
   state?: string; // "in" | "post" | "pre"
   completed?: boolean;
+  statusText?: string;
   score?: number | string | { value?: number; displayValue?: string } | null;
-  today?: number | string;
   thru?: number | string;
   movement?: number;
   rounds?: number[];
@@ -42,9 +45,12 @@ function makeCompetitor(opts: CompetitorOptions) {
     status: {
       position: { displayName: opts.position },
       thru: opts.thru ?? null,
-      today: opts.today ?? null,
       teeTime: opts.teeTime ?? null,
-      type: { state: opts.state ?? "in", completed: opts.completed ?? false },
+      type: {
+        state: opts.state ?? "in",
+        completed: opts.completed ?? false,
+        description: opts.statusText,
+      },
     },
     score: opts.score ?? null,
     movement: opts.movement ?? 0,
@@ -106,7 +112,6 @@ function fiveCompetitors() {
       country: "USA",
       score: 270,
       rounds: [66, 66],
-      today: -4,
       thru: 12,
       movement: 1,
       statistics: [
@@ -121,7 +126,6 @@ function fiveCompetitors() {
       country: "Northern Ireland",
       score: 272,
       rounds: [68, 66],
-      today: -2,
       thru: 18,
       completed: true,
     }),
@@ -211,6 +215,91 @@ describe("buildGolfSnapshotData", () => {
     const morikawa = playerSnapshots["collin-morikawa"];
     expect(morikawa.tournamentStatus.status).toBe("Scheduled");
     expect(morikawa.tournamentStatus.nextTeeTime).not.toBeNull();
+  });
+
+  it("works out Today and a round in progress from the line scores", async () => {
+    // ESPN's leaderboard carries no status.today. Thru 10 on 34 strokes is the
+    // shape a player on the course arrives in, with the live total as a stat.
+    const [, ...rest] = fiveCompetitors();
+    const onCourse = makeCompetitor({
+      id: "9",
+      name: "Steven Fisk",
+      position: "4",
+      rounds: [63, 34],
+      thru: 10,
+      statistics: [{ name: "scoreToPar", value: -13 }],
+    });
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([onCourse, ...rest], {
+          courses: [{ name: "Black Desert Resort", par: 71 }],
+        })
+      )
+    );
+
+    const { summary, playerSnapshots } = await buildGolfSnapshotData();
+    const todayOf = (name: string) =>
+      summary.leaderboard.find((entry) => entry.playerName === name)?.today;
+
+    expect(todayOf("Steven Fisk")).toBe(-5);
+    expect(playerSnapshots["steven-fisk"].tournamentStatus.today).toBe(-5);
+    expect(playerSnapshots["steven-fisk"].roundByRound).toEqual([
+      { round: 1, score: 63, relativeToPar: -8 },
+      { round: 2, score: 34, relativeToPar: -5 },
+    ]);
+    // A finished round is its strokes against par.
+    expect(todayOf("Rory McIlroy")).toBe(66 - 71);
+    // The feed gives these two no holes played, so there is no figure to print.
+    expect(todayOf("Jon Rahm")).toBeNull();
+    expect(todayOf("Collin Morikawa")).toBeNull();
+  });
+
+  it("scores a withdrawal from its strokes and orders the players the feed gives no position", async () => {
+    // ESPN's row for a player who withdrew after a 75 on a par 71: the to-par
+    // stat carries the strokes, and the row arrives ahead of the missed cuts.
+    const withdrawn = makeCompetitor({
+      id: "8",
+      name: "Vince Whaley",
+      position: "-",
+      state: "post",
+      statusText: "Withdrawn",
+      score: { value: 75, displayValue: "+4" },
+      rounds: [75, 0],
+      statistics: [{ name: "scoreToPar", value: 75 }],
+    });
+    const missedCut = (id: string, name: string, toPar: number) =>
+      makeCompetitor({
+        id,
+        name,
+        position: "-",
+        state: "post",
+        statusText: "Missed Cut",
+        score: { value: 142 + toPar },
+        rounds: [71, 71 + toPar],
+        statistics: [{ name: "scoreToPar", value: toPar }],
+      });
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard(
+          [
+            withdrawn,
+            missedCut("6", "Adam Schenk", -3),
+            missedCut("7", "Nick Hardy", -5),
+            ...fiveCompetitors(),
+          ],
+          { courses: [{ name: "Black Desert Resort", par: 71 }] }
+        )
+      )
+    );
+
+    const { summary, playerSnapshots } = await buildGolfSnapshotData();
+
+    expect(playerSnapshots["vince-whaley"].tournamentStatus.totalToPar).toBe(4);
+    expect(summary.leaderboard.slice(-3).map((entry) => [entry.playerName, entry.totalToPar])).toEqual([
+      ["Nick Hardy", -5],
+      ["Adam Schenk", -3],
+      ["Vince Whaley", 4],
+    ]);
   });
 
   it("throws when the leaderboard returns no events", async () => {
@@ -572,6 +661,95 @@ describe("buildGolfSnapshotData", () => {
 
     const { summary } = await buildGolfSnapshotData();
     expect(summary.tournament?.name).toBe("May Championship");
+  });
+});
+
+describe("todayToPar", () => {
+  const row = (overrides: Partial<Parameters<typeof todayToPar>[0]> = {}) => ({
+    roundScores: [63, 68],
+    thru: "F",
+    status: "Finish",
+    totalToPar: -11,
+    ...overrides,
+  });
+
+  it("scores a finished round against par", () => {
+    expect(todayToPar(row(), 71, 2)).toBe(-3);
+  });
+
+  it("scores a round in progress from the live total, not from its strokes so far", () => {
+    // Against the full par of 71 this card would read -37.
+    expect(
+      todayToPar(
+        row({ roundScores: [63, 34], thru: "10", status: "In Progress", totalToPar: -13 }),
+        71,
+        2
+      )
+    ).toBe(-5);
+  });
+
+  it("has no figure for a player who has not started the round", () => {
+    expect(
+      todayToPar(row({ roundScores: [63], thru: "—", status: "Scheduled", totalToPar: -8 }), 71, 2)
+    ).toBeNull();
+  });
+
+  it("has no figure for a player whose card stopped before the round the field is on", () => {
+    expect(
+      todayToPar(row({ roundScores: [69, 68], status: "Missed Cut", totalToPar: -5 }), 71, 4)
+    ).toBeNull();
+  });
+
+  it("has no figure for a withdrawal, whose last line score can be part of a round", () => {
+    expect(
+      todayToPar(row({ roundScores: [70, 40], status: "Withdrawn", totalToPar: 0 }), 71, 2)
+    ).toBeNull();
+  });
+
+  it("has no figure for a round in progress when the feed sent no live total", () => {
+    expect(
+      todayToPar(row({ roundScores: [63, 34], thru: "10", totalToPar: null }), 71, 2)
+    ).toBeNull();
+  });
+});
+
+describe("fillTodayToPar", () => {
+  const entry = (overrides: Partial<GolfLeaderboardEntry>): GolfLeaderboardEntry => ({
+    playerId: "player",
+    playerName: "Player",
+    country: "USA",
+    position: "1",
+    totalToPar: 0,
+    today: 0,
+    thru: "F",
+    status: "Finish",
+    roundScores: [],
+    movement: 0,
+    ...overrides,
+  });
+  const board = (leaderboard: GolfLeaderboardEntry[]): GolfSummary =>
+    ({ tournament: { coursePar: 71 }, leaderboard }) as never;
+
+  it("fills a board that carries zero for every player from its line scores", () => {
+    // The shape of the boards committed before the builder worked Today out.
+    const filled = fillTodayToPar(
+      board([
+        entry({ playerId: "a", totalToPar: -16, roundScores: [68, 67, 65, 68] }),
+        entry({ playerId: "b", totalToPar: -12, roundScores: [68, 69, 71, 64] }),
+        entry({ playerId: "c", totalToPar: -5, status: "Missed Cut", roundScores: [69, 68] }),
+      ])
+    );
+
+    expect(filled.leaderboard.map((row) => row.today)).toEqual([-3, -7, null]);
+  });
+
+  it("leaves a board the builder already scored as it is", () => {
+    const scored = board([
+      entry({ playerId: "a", today: -3, roundScores: [68] }),
+      entry({ playerId: "b", today: null, thru: "—", roundScores: [] }),
+    ]);
+
+    expect(fillTodayToPar(scored)).toBe(scored);
   });
 });
 

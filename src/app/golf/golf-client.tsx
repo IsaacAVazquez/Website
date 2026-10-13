@@ -19,9 +19,10 @@ import {
   GOLF_VIEW_OPTIONS,
   normalizeGolfState,
 } from "./golf-state";
-import { formatScoreToPar, leaderboardSlats, type ParTone } from "./leaderboard";
+import { formatScoreToPar, isCutMade, leaderboardSlats, type ParTone } from "./leaderboard";
 import "./golf.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { formatStableDateTime } from "@/lib/date-formatters";
 // Imported by path. The football barrel ships whatever it re-exports to every
 // route that reads it, and this route takes nothing else from it.
@@ -67,15 +68,19 @@ function toneOf(value: number | null | undefined): ParTone | undefined {
   return value < 0 ? "under" : value > 0 ? "over" : "even";
 }
 
-/** Movement as the board prints it: an arrow and the places, with the words for a screen reader. */
+/**
+ * Movement as the board prints it: an arrow and the places, with the words for a screen reader.
+ * The snapshot keeps ESPN's figure, the new place minus the old, so a climb arrives negative.
+ */
 function Movement({ movement }: { movement: number }) {
-  const glyph = movement > 0 ? "\u2191" : movement < 0 ? "\u2193" : "\u2013";
-  const label = movement > 0 ? `Up ${movement}` : movement < 0 ? `Down ${Math.abs(movement)}` : "Steady";
+  const gained = -movement;
+  const glyph = gained > 0 ? "\u2191" : gained < 0 ? "\u2193" : "\u2013";
+  const label = gained > 0 ? `Up ${gained}` : gained < 0 ? `Down ${-gained}` : "Steady";
   return (
-    <span className="golf-move" data-move={movement > 0 ? "up" : movement < 0 ? "down" : "flat"}>
+    <span className="golf-move" data-move={gained > 0 ? "up" : gained < 0 ? "down" : "flat"}>
       <span aria-hidden="true">
         {glyph}
-        {movement !== 0 ? Math.abs(movement) : ""}
+        {gained !== 0 ? Math.abs(gained) : ""}
       </span>
       <span className="sr-only">{label}</span>
     </span>
@@ -152,7 +157,8 @@ function LeaderboardTable({
   const roundLabels = Array.from({ length: roundCount }, (_, i) => `R${i + 1}`);
   // The slats carry each round's tone and where the cut line falls on the rows shown.
   const { slats, cutIndex } = leaderboardSlats(rows, { cutLine, cutState, coursePar, rounds: roundCount });
-  const span = 5 + roundCount;
+  // Pos, Player, Total, Today, Thru, and Move, around the rounds.
+  const span = 6 + roundCount;
 
   return (
     <div className="golf-scroll" role="region" aria-label="Full leaderboard (scrollable)" tabIndex={0}>
@@ -394,6 +400,8 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
     navigate({ view: routeState.view, player: playerId });
   }
 
+  const onViewTabKey = useTablistKeyboard(GOLF_VIEW_OPTIONS, handleViewChange);
+
   if (!tournament) {
     return (
       <div className="golf-root">
@@ -409,12 +417,19 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
     );
   }
 
+  // A cut score with nobody yet cut is ESPN's projection, and an unknown state is a feed that described no cut.
   const cutSummary =
     tournament.cutState === "none"
       ? "No cut, the full field plays every round"
-      : tournament.cutLine !== null
-        ? `Cut ${formatScoreToPar(tournament.cutLine)}${tournament.cutCount !== null ? `, ${tournament.cutCount} advanced` : ""}`
-        : "Cut to come";
+      : tournament.cutLine === null
+        ? tournament.cutState === "unknown"
+          ? "Cut TBD"
+          : "Cut to come"
+        : isCutMade(summary.leaderboard)
+          ? `Cut ${formatScoreToPar(tournament.cutLine)}${tournament.cutCount !== null ? `, ${tournament.cutCount} advanced` : ""}`
+          : `Projected cut ${formatScoreToPar(tournament.cutLine)}`;
+  // The builder writes an empty string for a course or a location the feed left out.
+  const venue = [tournament.course, tournament.location].filter(Boolean).join(", ");
 
   return (
     <div className="golf-root">
@@ -425,9 +440,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
             <h2 className="golf-event-name">{tournament.name}</h2>
             <p className="golf-event-meta">
               <span>{formatRoundStatus(tournament.roundLabel, tournament.status)}</span>
-              <span>
-                {tournament.course}, {tournament.location}
-              </span>
+              {venue ? <span>{venue}</span> : null}
               <span>{formatDateRange(tournament.startDate, tournament.endDate)}</span>
               <span>
                 {tournament.fieldSize} players · {cutSummary}
@@ -439,14 +452,17 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
         <section className="golf-board" aria-label="Leaderboard">
           <div className="golf-toolbar">
             <div className="golf-switch" role="tablist" aria-label="Golf view switcher">
-              {GOLF_VIEW_OPTIONS.map((view) => (
+              {GOLF_VIEW_OPTIONS.map((view, index) => (
                 <button
                   key={view}
                   type="button"
                   role="tab"
                   id={`golf-tab-${view}`}
-                  aria-controls={`golf-tabpanel-${view}`}
+                  // Only the selected view's panel is on the page.
+                  aria-controls={routeState.view === view ? `golf-tabpanel-${view}` : undefined}
                   aria-selected={routeState.view === view}
+                  tabIndex={routeState.view === view ? 0 : -1}
+                  onKeyDown={(event) => onViewTabKey(event, index)}
                   onClick={() => handleViewChange(view)}
                 >
                   {GOLF_VIEW_LABELS[view]}
@@ -550,12 +566,12 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
           {playerSnapshot?.player ? (
             <>
-              {/* A finished event has no next round, whatever tee time the feed still carries. */}
-              <p className="dd-note">
-                {tournament.completed
-                  ? playerSnapshot.tournamentStatus.status
-                  : `Next round tee time ${playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}. ${playerSnapshot.tournamentStatus.status}`}
-              </p>
+              {/* Only a player still to tee off has a next round. The feed keeps the last tee time on everyone else. */}
+              {playerSnapshot.tournamentStatus.thru === "—" ? (
+                <p className="dd-note">
+                  Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}
+                </p>
+              ) : null}
 
               <div className="dd-section">
                 <p className="dd-label">Round by round</p>
