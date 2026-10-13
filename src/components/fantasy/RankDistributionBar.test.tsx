@@ -123,16 +123,28 @@ describe("RankDistributionBar", () => {
     expect(marks()).toMatchObject({ min: "43.75%", max: "66.67%" });
   });
 
-  it("labels every other round once the scale passes ten", () => {
+  it("takes the shared fit's doubled ticks once the scale passes sixteen rounds", () => {
     const { container } = render(
       <RankDistributionBar player={player({ minRank: 10, maxRank: 230, rankAverage: 120 })} />
     );
 
-    // Rounds 1 to 20 hold 10 to 230, and a round after makes R1 to R21.
+    // Rounds 1 to 20 hold 10 to 230 and a round after makes 21. The ticks double, which rounds the window up to 22 rounds, ranks 1 to 264.
     expect(ticks(container).map((tick) => tick.split(" ")[0])).toEqual([
       "R1", "R3", "R5", "R7", "R9", "R11", "R13", "R15", "R17", "R19", "R21",
     ]);
-    expect(marks().max).toBe("91.27%"); // 230 / 252
+    expect(marks().max).toBe("87.12%"); // 230 / 264
+  });
+
+  it("draws every other tick where a full set of labels would crowd the plot", () => {
+    const { container } = render(
+      <RankDistributionBar player={player({ minRank: 1, maxRank: 170, rankAverage: 80 })} />
+    );
+
+    // Rounds 1 to 15 hold 1 to 170 and a round after makes sixteen, ranks 1 to 192. Sixteen labels do not fit, so eight print.
+    expect(ticks(container).map((tick) => tick.split(" ")[0])).toEqual([
+      "R1", "R3", "R5", "R7", "R9", "R11", "R13", "R15",
+    ]);
+    expect(marks().max).toBe("88.54%"); // 170 / 192
   });
 
   it("draws on the scale a caller passes, with a guide and a label at each of its ticks", () => {

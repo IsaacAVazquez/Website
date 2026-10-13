@@ -7,6 +7,7 @@ import type { Player } from "@/types";
 
 import "./fantasy-overlays.css";
 import { positionClass } from "./positionClass";
+import { fitSpreadScale, type SpreadScale } from "./spreadScale";
 
 interface RankDistributionBarProps {
   player: Player;
@@ -20,42 +21,15 @@ interface RankDistributionBarProps {
    * and off the compare modal's shared scale, the plot fits its own in rounds
    * of a 12-team draft.
    */
-  scale?: {
-    /** First and last rank the plot covers, inclusive. */
-    min: number;
-    max: number;
-    /** The start of each labelled division, in ranks, with the label printed over it. */
-    ticks: { at: number; label: string }[];
-  };
+  scale?: SpreadScale;
   /** Hide the best/avg/worst tick labels for a compact inline variant. */
   compact?: boolean;
   /** Leave out the Best, Avg, Worst line, for a caller that prints those numbers elsewhere. */
   showEnds?: boolean;
 }
 
-type Scale = NonNullable<RankDistributionBarProps["scale"]>;
-
-const ROUND = 12;
-
-/**
- * The scale a plot fits for itself: whole rounds of 12 ranks around the
- * player's best to worst rank, one round of room each side where it exists,
- * never fewer than three rounds, labelled by round number.
- * ponytail: private and small on purpose. The rankings board's fitSpreadScale
- * follows the same rule and replaces this once both branches merge, so nothing
- * else should call it.
- */
-function fitOwnScale(best: number, worst: number): Scale {
-  const first = Math.max(1, Math.ceil(best / ROUND) - 1);
-  const last = Math.max(Math.ceil(worst / ROUND) + 1, first + 2);
-  // Past ten rounds every other one is labelled, so the labels keep their room.
-  const step = last - first + 1 > 10 ? 2 : 1;
-  const ticks: Scale["ticks"] = [];
-  for (let round = first; round <= last; round += step) {
-    ticks.push({ at: (round - 1) * ROUND + 1, label: `R${round}` });
-  }
-  return { min: (first - 1) * ROUND + 1, max: last * ROUND, ticks };
-}
+/** A drawer's plot is about 330px wide on a phone, and past this many labels they would touch. */
+const MAX_LABELS = 12;
 
 const percent = (fraction: number) => `${(Math.max(0, Math.min(1, fraction)) * 100).toFixed(2)}%`;
 
@@ -93,7 +67,10 @@ export function RankDistributionBar({
       ? player.standardDeviation
       : undefined;
   const shared = scaleMin !== undefined || scaleMax !== undefined;
-  const axis = scale ?? (shared ? null : fitOwnScale(best, worst));
+  // Without a scale of its own the plot fits whole rounds of 12 around the range, with a round of room each side.
+  const axis = scale ?? (shared ? null : fitSpreadScale(best, worst, { pad: 1 }));
+  // The guides and labels thin to every other tick where a full set would crowd the drawer.
+  const ticks = axis ? axis.ticks.filter((_, index) => axis.ticks.length <= MAX_LABELS || index % 2 === 0) : [];
 
   // Where a rank's left edge, its right edge, and the middle of a value fall.
   let left: (rank: number) => string;
@@ -117,7 +94,7 @@ export function RankDistributionBar({
     <div className={`ffb-plot${compact ? " ffb-plot-compact" : ""}${axis ? " ffb-ov-axis" : ""}`}>
       {axis && !compact && (
         <div className="ffb-ov-axis-labels ffb-label ffb-muted" aria-hidden="true">
-          {axis.ticks.map((tick) => (
+          {ticks.map((tick) => (
             <span key={tick.at} style={{ "--ffb-ov-at": left(tick.at) } as CSSProperties}>
               {tick.label}
             </span>
@@ -142,7 +119,7 @@ export function RankDistributionBar({
           } as CSSProperties
         }
       >
-        {axis?.ticks.map((tick) => (
+        {ticks.map((tick) => (
           <i key={tick.at} className="ffb-ov-axis-guide" style={{ "--ffb-ov-at": left(tick.at) } as CSSProperties} />
         ))}
         <i className="ffb-spread-range" />
