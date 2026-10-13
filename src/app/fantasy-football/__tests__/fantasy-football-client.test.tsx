@@ -782,6 +782,19 @@ describe("FantasyFootballClient", () => {
     expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
   });
 
+  it("does not say the board pairs with market ADP on the line above the chip that hides it", () => {
+    mockSnapshot({
+      players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],
+      adpSource: { ...FRESH_ADP_SOURCE, asOf: "2026-08-01T00:00:00.000Z" },
+    });
+
+    renderClient();
+
+    expect(screen.getByText("ADP stale · signals hidden")).toBeVisible();
+    expect(screen.queryByText(/expert consensus with market ADP,/)).not.toBeInTheDocument();
+    expect(screen.getByText(/with market ADP when a current sample is published,/)).toBeInTheDocument();
+  });
+
   it("shows prior-season ADP only as a dated reference", () => {
     jest.setSystemTime(new Date("2027-05-01T10:00:00.000Z"));
     currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");

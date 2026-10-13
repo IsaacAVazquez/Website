@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
@@ -18,7 +18,7 @@ export const metadata: Metadata = constructMetadata({
     "In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered, with the rank, percentile, and rostered rate printed beside each gap.",
   canonicalUrl: "/fantasy-football/waivers",
   image: "/fantasy-football/waivers/opengraph-image",
-  dateModified: fantasySnapshotRevision.slice(0, 10),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
 });
 
 const breadcrumbs = [

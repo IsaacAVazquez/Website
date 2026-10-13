@@ -846,7 +846,9 @@ export function MockDraftClient() {
             Mock <TitleAccent>Draft</TitleAccent>
           </>
         }
-        lead="A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board and market ADP."
+        // Static on purpose, and worded to hold whether or not the ADP is in use,
+        // so the sentence never swaps when the snapshot loads.
+        lead="A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board, and from market ADP when a current sample is published."
         freshness={<FreshnessParts parts={[{ label: kicker }, ...headerChips]} />}
       />
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { BestBallDraftTrackerClient } from "./draft-tracker-client";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = constructMetadata({
     "A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.",
   canonicalUrl: "/fantasy-football/best-ball/draft-tracker",
   image: "/fantasy-football/best-ball/draft-tracker/opengraph-image",
-  dateModified: fantasySnapshotRevision.slice(0, 10),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
 });
 
 const breadcrumbs = [
