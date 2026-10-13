@@ -158,9 +158,6 @@
  * ======================================================================== */
 /* Three across in the drawer and in the phone's sheet, so three facts or five leave no fact alone on a row. */
 .ffb-rk-facts { --ffb-stat-min: 84px; }
-.ffb-rk-ppg { --ffb-stat-min: 60px; }
-.ffb-rk-plot { display: grid; height: 24px; }
-.ffb-rk-ppg-head { display: flex; align-items: center; gap: var(--ffb-s1); }
 
 /* ==========================================================================
  * Phones: two rows of controls, drawn in the order the keyboard walks them

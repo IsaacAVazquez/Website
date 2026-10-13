@@ -280,6 +280,19 @@ describe("FantasyFootballClient", () => {
     expect(within(dialog).getByText("Expert range")).toBeVisible();
     // No average column sits beside the drawer's plot, so its name carries the average.
     expect(within(dialog).getByRole("img", { name: "Expert rank range 1 to 3, average 1.2" })).toBeInTheDocument();
+    // The drawer's plot is the shared drawer's, fitted to this player. On a
+    // position board its divisions are position ranks, and the drawer says so once.
+    const axisLabels = (panel: HTMLElement) =>
+      Array.from(panel.querySelectorAll(".ffb-ov-axis-labels > span")).map((label) => label.textContent);
+    expect(axisLabels(dialog)).toEqual(["RB1", "RB13", "RB25"]);
+    expect(within(dialog).getByText("Each division is 12 RB ranks.")).toBeVisible();
+    // The range and the average print once, as facts, so the plot carries no Best, Avg, Worst line.
+    expect(within(dialog).queryByText(/^(Best|Avg|Worst) \d/)).not.toBeInTheDocument();
+    // The help for the range sits on the plot's heading and nowhere else in the drawer.
+    expect(within(dialog).getByRole("heading", { level: 3, name: "Expert spread" })).toContainElement(
+      within(dialog).getByRole("button", { name: "What is Expert spread?" })
+    );
+    expect(within(dialog).queryByRole("button", { name: "What is Expert range?" })).not.toBeInTheDocument();
     // Without an ADP source the market cards stay hidden in the drawer too.
     expect(within(dialog).queryByText("Market ADP")).not.toBeInTheDocument();
   });
@@ -376,6 +389,59 @@ describe("FantasyFootballClient", () => {
     const dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
     expect(within(dialog).getByText("Market ADP")).toBeVisible();
     expect(within(dialog).getByText(/picks after the consensus rank/)).toBeVisible();
+    // On the overall board the plot is in rounds. Chase's experts run 8 to 16,
+    // which is rounds one and two, with a round of room on the right.
+    expect(
+      Array.from(dialog.querySelectorAll(".ffb-ov-axis-labels > span")).map((label) => label.textContent)
+    ).toEqual(["R1", "R2", "R3"]);
+    expect(within(dialog).getByText("Each division is a round of a 12-team draft.")).toBeVisible();
+  });
+
+  it("reads the flex board's expert ranks as overall ranks, in rounds", () => {
+    currentSearchParams = new URLSearchParams("position=flex&scoring=ppr");
+    mockSnapshot({
+      position: "flex",
+      players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey", minRank: 2, maxRank: 30 })],
+    });
+
+    renderClient({ position: "flex" });
+
+    // The flex board carries the overall board's ranges, so its tiers are labelled in rounds.
+    expect(screen.getByText("In rounds of a 12-team draft")).toBeInTheDocument();
+    expect(
+      Array.from(document.querySelectorAll(".ffb-rk-scale > span")).map((label) => label.textContent)
+    ).toEqual(["R1", "R2", "R3"]);
+    fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
+    expect(
+      within(screen.getByRole("dialog")).getByText("Each division is a round of a 12-team draft.")
+    ).toBeVisible();
+  });
+
+  it("draws the drawer's plot in rounds of the VORP view's league size", () => {
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr&ranking=vorp&teams=14");
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-17T00:00:00.000Z",
+        urls: { "14": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "14": 1 },
+      },
+      vorpRankings: { "14": [{ playerId: "rb-1", rank: 1, value: 70 }] },
+      players: [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1, minRank: 1, maxRank: 20 })],
+    });
+
+    renderClient({ position: "overall", ranking: "vorp", teams: 14 });
+
+    fireEvent.click(screen.getByRole("button", { name: "Open Consensus First detail" }));
+    const dialog = screen.getByRole("dialog", { name: "Consensus First detail" });
+    expect(within(dialog).getByText("Each division is a round of a 14-team draft.")).toBeVisible();
+    // Ranks 1 to 20 are rounds one and two of fourteen picks, with a round of room on the right.
+    const plot = within(dialog).getByRole("img", { name: /^Expert rank range 1 to 20/ });
+    expect(plot.style.getPropertyValue("--ffb-max")).toBe("47.62%");
+    expect(
+      Array.from(dialog.querySelectorAll(".ffb-ov-axis-labels > span")).map((label) => label.textContent)
+    ).toEqual(["R1", "R2", "R3"]);
   });
 
   it("orders the VORP view by sourced points above replacement for the selected league size", () => {
@@ -1146,6 +1212,8 @@ describe("FantasyFootballClient", () => {
     expect(screen.getAllByText("Rankings unavailable")[0]).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
     expect(retry).toHaveBeenCalled();
+    // The button leaves with the notice once the retry starts, so focus goes to the search and not to the page body.
+    expect(document.getElementById("fantasy-search")).toHaveFocus();
   });
 
   it("queues from the row edge and filters the board to the queue", () => {
@@ -1283,6 +1351,16 @@ describe("FantasyFootballClient", () => {
     fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
     const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });
     expect(within(dialog).getByText("2025 season · PPR · 17 games")).toBeVisible();
+    // The block is the shared drawer's, with its help on the heading and the four numbers under it.
+    expect(within(dialog).getByRole("heading", { level: 3, name: "Points per game" })).toContainElement(
+      within(dialog).getByRole("button", { name: "What is Points per game?" })
+    );
+    expect(Array.from(dialog.querySelectorAll(".ffb-ov-ppg dd")).map((value) => value.textContent)).toEqual([
+      "2.4",
+      "12.5",
+      "11.9",
+      "22.6",
+    ]);
     expect(
       within(dialog).getByText(
         "Ranks, tiers, and expert ranges come from the published snapshot, and per-game scoring comes from nflverse for the season named beside it. Queue and notes stay on this device."
