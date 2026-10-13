@@ -507,7 +507,7 @@ export const FANTASY_VS_ADP_TOOLTIP =
  * carries more than a name, so the header says what else is in it.
  */
 export const FANTASY_PLAYER_COLUMN_TOOLTIP =
-  "The player, his team, and his rank within his own position, plus a Value or Reach label when the market and the experts disagree by enough to be worth a look. Click any row for the full detail panel.";
+  "The player. His position rank and team sit either side, and a Value or Reach label prints beside the vs ADP number when the market and the experts disagree by enough to be worth a look. Click any row for the full detail panel.";
 
 /**
  * Hover copy for the points-per-game panel. The panel is scoring history

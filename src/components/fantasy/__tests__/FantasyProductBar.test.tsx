@@ -48,13 +48,13 @@ describe("FantasyProductBar", () => {
     expect(starts).toEqual(["Best ball", "Weekly"]);
   });
 
-  it("brings the current link into view by moving the list, never the page", () => {
+  it("puts a current link that is off screen at the list's left edge by moving the list, never the page", () => {
     mockPathname.mockReturnValue("/fantasy-football/waivers");
     const scrollIntoView = jest.fn();
     Element.prototype.scrollIntoView = scrollIntoView;
     const rects = new Map<string, Partial<DOMRect>>([
       ["UL", { left: 0, right: 300 }],
-      ["A", { left: 520, right: 600 }],
+      ["LI", { left: 520, right: 600 }],
     ]);
     const rectSpy = jest.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
       return (rects.get(this.tagName) ?? { left: 0, right: 0 }) as DOMRect;
@@ -65,9 +65,33 @@ describe("FantasyProductBar", () => {
 
     render(<FantasyProductBar />);
 
-    // The link's right edge (600) is past the list's (300) less the 12px margin.
-    expect(screen.getByRole("list").scrollLeft).toBe(312);
+    // The item starts at 520 and the list at 0, so the list moves until the item sits 4px in,
+    // which is the list's own start padding and where the phone's scroll snapping rests.
+    expect(screen.getByRole("list").scrollLeft).toBe(516);
     expect(scrollIntoView).not.toHaveBeenCalled();
+
+    rectSpy.mockRestore();
+    scrollWidth.mockRestore();
+    clientWidth.mockRestore();
+  });
+});
+
+describe("FantasyProductBar when the current link is already on screen", () => {
+  it("leaves the list where it is", () => {
+    mockPathname.mockReturnValue("/fantasy-football/draft-tracker");
+    const rects = new Map<string, Partial<DOMRect>>([
+      ["UL", { left: 0, right: 300 }],
+      ["LI", { left: 90, right: 200 }],
+    ]);
+    const rectSpy = jest.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
+      return (rects.get(this.tagName) ?? { left: 0, right: 0 }) as DOMRect;
+    });
+    const scrollWidth = jest.spyOn(HTMLElement.prototype, "scrollWidth", "get").mockImplementation(() => 640);
+    const clientWidth = jest.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => 300);
+
+    render(<FantasyProductBar />);
+
+    expect(screen.getByRole("list").scrollLeft).toBe(0);
 
     rectSpy.mockRestore();
     scrollWidth.mockRestore();

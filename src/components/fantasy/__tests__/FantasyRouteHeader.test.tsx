@@ -109,3 +109,31 @@ describe("FantasySectionHeading", () => {
     expect(heading).toHaveStyle({ marginTop: "4px" });
   });
 });
+
+describe("FreshnessParts when the line wraps", () => {
+  it("keeps each dot inside the part before it, after a no-break space, so no line opens on a dot", () => {
+    const { container } = render(
+      <FreshnessParts parts={[{ label: "FantasyPros consensus Sep 9, 2026" }, { label: "ADP stale", tone: "warning" }, { label: "44 experts" }]} />,
+    );
+
+    const parts = [...container.querySelectorAll(".ffb-fresh-part")];
+    expect(parts.map((part) => part.textContent)).toEqual([
+      "FantasyPros consensus Sep 9, 2026\u00A0·",
+      "ADP stale\u00A0·",
+      "44 experts",
+    ]);
+    // The only places the line can break are the plain spaces between parts.
+    const line = container.querySelector("p") as HTMLElement;
+    const between = [...line.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).map((node) => node.textContent);
+    expect(between).toEqual([" ", " "]);
+    // The tone still sits on the label alone, so the dot stays the line's own colour.
+    expect(screen.getByText("ADP stale")).toHaveStyle({ color: "var(--c97-warning)" });
+    expect(parts[1].querySelector('[aria-hidden="true"]')).toHaveTextContent("·");
+  });
+
+  it("prints no dot after a single part", () => {
+    const { container } = render(<FreshnessParts parts={[{ label: "2026 Week 5" }]} />);
+    expect(container.querySelector("p")).toHaveTextContent(/^2026 Week 5$/);
+    expect(container.querySelector('[aria-hidden="true"]')).toBeNull();
+  });
+});

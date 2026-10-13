@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type KeyboardEvent } from "react";
 
+import { positionClass } from "./positionClass";
 import { scrollChildIntoViewX } from "./scrollChildIntoViewX";
 
 export interface PositionFilterOption<T extends string> {
@@ -23,20 +24,14 @@ interface PositionFilterBarProps<T extends string> {
   disabled?: boolean;
 }
 
-const POSITION_CLASSES: Record<string, string> = {
-  QB: "ffb-pos-qb",
-  RB: "ffb-pos-rb",
-  WR: "ffb-pos-wr",
-  TE: "ffb-pos-te",
-  K: "ffb-pos-k",
-  DST: "ffb-pos-dst",
-  FLEX: "ffb-pos-flex",
-};
-
-/** The kit class for an option: its position, or the flex thirds when the option is the flex board. */
-function positionClass(option: PositionFilterOption<string>): string {
+/**
+ * The kit class for an option: its position from the shared map, or the flex
+ * thirds when the option is the flex board, which is a switch button's look
+ * and not a position.
+ */
+function optionClass(option: PositionFilterOption<string>): string {
   const key = (option.position ?? option.value).toUpperCase();
-  return POSITION_CLASSES[key] ?? "";
+  return key === "FLEX" ? "ffb-pos-flex" : positionClass(key);
 }
 
 /**
@@ -121,10 +116,11 @@ export function PositionFilterBar<T extends string>({
             }}
             onClick={() => !isDisabled && onChange(option.value)}
             onKeyDown={(event) => handleRadioKeyDown(event, index)}
-            className={`ffb-seg-btn ${positionClass(option)}`.trimEnd()}
+            className={`ffb-seg-btn ${optionClass(option)}`.trimEnd()}
           >
             <span>{option.label}</span>
-            {isUnavailable && <span className="ffb-seg-na">NA</span>}
+            {/* The space is real, so anything that reads the text gets two words. */}
+            {isUnavailable && <> <span className="ffb-seg-na">NA</span></>}
           </button>
         );
       })}

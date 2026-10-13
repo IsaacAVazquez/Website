@@ -31,7 +31,8 @@ const FANTASY_PRODUCT_LINKS: ReadonlyArray<ReadonlyArray<{ label: string; href: 
 /**
  * The product bar above every fantasy route. One 40px row on a desktop. On a
  * phone the links scroll sideways and the current one is brought into view on
- * mount, by moving the list only, so the page does not jump. It is not sticky,
+ * mount, by moving the list only, so the page does not jump. A link that is not
+ * fully on screen goes to the list's left edge. It is not sticky,
  * because every page has measured sticky bars of its own at the top.
  */
 export function FantasyProductBar() {
@@ -40,8 +41,10 @@ export function FantasyProductBar() {
 
   useEffect(() => {
     const list = listRef.current;
-    const current = list?.querySelector<HTMLElement>('[aria-current="page"]');
-    if (list && current) scrollChildIntoViewX(list, current);
+    const current = list?.querySelector<HTMLElement>('[aria-current="page"]')?.closest("li");
+    // The list item goes to the left edge, which is where the phone's scroll snapping rests, so
+    // the name tab never cuts a word. The 4px is the list's own start padding.
+    if (list && current) scrollChildIntoViewX(list, current, 4, "start");
   }, [pathname]);
 
   return (

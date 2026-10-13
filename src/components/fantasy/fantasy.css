@@ -17,10 +17,11 @@
  * KIT.md (the build reference) documents each class with its markup.
  */
 
-/* The three column minimums do not inherit, so a grid inside a grid keeps its own. */
-@property --ffb-col-min { syntax: "<length>"; inherits: false; initial-value: 280px; }
-@property --ffb-choice-min { syntax: "<length>"; inherits: false; initial-value: 132px; }
-@property --ffb-stat-min { syntax: "<length>"; inherits: false; initial-value: 88px; }
+/* The three column minimums do not inherit, so a grid inside a grid keeps its own.
+   Each takes a length or a percentage (100% makes one column). */
+@property --ffb-col-min { syntax: "<length-percentage>"; inherits: false; initial-value: 280px; }
+@property --ffb-choice-min { syntax: "<length-percentage>"; inherits: false; initial-value: 132px; }
+@property --ffb-stat-min { syntax: "<length-percentage>"; inherits: false; initial-value: 88px; }
 
 /* ==========================================================================
  * 1. Tokens
@@ -240,7 +241,7 @@ html.dark .ffb-scope {
  * Sizes are set with each component, in the layer.
  * ======================================================================== */
 /* Label type: 700 at 80% width, capitals, lightly tracked, 10 to 12.5px. */
-.ffb-root :is(.ffb-label, .ffb-h3, .ffb-bar-link, .ffb-tab, .ffb-seg-btn, .ffb-btn, .ffb-toggle, .ffb-field-label, .ffb-choice-title, .ffb-colhead, .ffb-tier-count, .ffb-c-team, .ffb-more, .ffb-bug-label, .ffb-bug-btn, .ffb-sticker-meta, .ffb-slot-meta, .ffb-grid-slot, .ffb-grid-round, .ffb-tally-label, .ffb-turn-note, .ffb-badge, .ffb-best, .ffb-toast-btn),
+.ffb-root :is(.ffb-label, .ffb-h3, .ffb-bar-link, .ffb-tab, .ffb-seg-btn, .ffb-btn, .ffb-toggle, .ffb-field-label, .ffb-choice-title, .ffb-colhead, .ffb-tier-count, .ffb-c-team, .ffb-more, .ffb-bug-label, .ffb-bug-btn, .ffb-sticker-meta, .ffb-slot-meta, .ffb-grid-slot, .ffb-grid-round, .ffb-tally-label, .ffb-turn-note, .ffb-badge, .ffb-best, .ffb-toast-btn, .ffb-slot-value small),
 .ffb-root :is(.ffb-table thead th, .ffb-table-compare tbody th, .ffb-stat dt, .ffb-pairs dt),
 .ffb-root :is(.c97-btn, .c97-btn-ghost) {
   font-weight: 700;
@@ -256,7 +257,7 @@ html.dark .ffb-scope {
   letter-spacing: 0.02em;
 }
 /* A heavy number: 800 at 76 to 80% width, not capitals. */
-.ffb-root :is(.ffb-bug-value, .ffb-bug-clock, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num) {
+.ffb-root :is(.ffb-bug-value, .ffb-bug-clock, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num, .ffb-strip-value, .ffb-slot-value) {
   font-weight: 800;
   font-stretch: 78%;
   letter-spacing: 0;
@@ -302,6 +303,64 @@ html.dark .ffb-scope {
 /* On the scorebug the ring is the highlighter (light) or ink (dark). On a toast, which is ink in both themes, it is the board colour. */
 .ffb-root .ffb-bug { --c97-accent: var(--ffb-bug-focus); }
 .ffb-root .ffb-toast { --c97-accent: var(--ffb-board); }
+
+/* The two phone helpers are unlayered, so they beat every component's own display and every
+   utility. Each only hides. Where it does not apply, the element keeps the display its own class
+   gives it. On paper they follow the page's width like the rest of the kit, so one half prints. */
+@media (min-width: 768px) {
+  .ffb-root .ffb-only-phone { display: none; }
+}
+@media (max-width: 767.98px) {
+  .ffb-root .ffb-not-phone { display: none; }
+}
+
+/* A search field takes the ring around the whole field. Drawn on the input it started after the
+   icon and crossed the first letter typed. The selector has no weight, so a page's own ring wins.
+   The trade calculator draws its ring as an inset edge on its own class, so it is left out here until
+   that stand-in goes. */
+.ffb-root .ffb-search-input:focus-visible { outline: none; }
+:where(.ffb-root .ffb-search:not(.ffb-tr-search):has(.ffb-search-input:focus-visible)) {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 2px;
+}
+
+/* A help trigger (MetricTooltip) inside a kit label. A button does not inherit its case, and the
+   frame's 44px floor would centre a short label away from its column's edge. */
+.ffb-root [data-metric-trigger="text"] { min-width: 0; text-transform: inherit; }
+/* The "?" chip is a 16px mark inside a 44px target. The ring goes round the mark, so it does not
+   cover the end of the label beside it. */
+.ffb-root [data-metric-trigger="chip"]:focus-visible { outline: none; }
+.ffb-root [data-metric-trigger="chip"]:focus-visible > span { outline: 2px solid var(--c97-accent); outline-offset: 2px; }
+
+/* A required field with no placeholder is not an error before anyone types. The site marks every
+   empty required input that shows no placeholder, so the kit keeps its edge until the page sets aria-invalid. */
+.ffb-root :is(.ffb-input, .ffb-textarea):invalid:not(:focus):not([aria-invalid="true"]) { border-color: var(--ffb-edge); }
+
+/* A scrolling rail draws a thin scrollbar all the time, so a rail cut off at the foot of the
+   screen reads as "more below". A styled WebKit or Blink scrollbar is always drawn. Firefox
+   takes the standard properties and follows the system setting. */
+@supports selector(::-webkit-scrollbar) {
+  .ffb-root .ffb-rail-scroll { scrollbar-width: auto; }
+  /* The scrollbar keeps its 6px whether or not the rail overflows, so the rail does not change
+     width as a draft fills it. That room is taken from the page gutter at the rail's right, not
+     from the rail's content: the box runs 12px past the column, 6px of inset and 6px of scrollbar. */
+  @media (min-width: 1200px) {
+    .ffb-root .ffb-rail-scroll { margin-inline-end: -12px; padding-inline-end: 6px; scrollbar-gutter: stable; }
+  }
+  .ffb-root .ffb-rail-scroll::-webkit-scrollbar { width: 6px; }
+  .ffb-root .ffb-rail-scroll::-webkit-scrollbar-track { background: transparent; }
+  .ffb-root .ffb-rail-scroll::-webkit-scrollbar-thumb { background: var(--ffb-edge); }
+}
+@supports not selector(::-webkit-scrollbar) {
+  .ffb-root .ffb-rail-scroll { scrollbar-width: thin; scrollbar-color: var(--ffb-edge) transparent; }
+}
+
+/* A four-character label ("WR10") needs 29px at the grid's own size. In a 14 or 16 team room a
+   cell is about 22px, so the label sets at 10px on the face's narrowest width, which needs 20px.
+   The type roles are unlayered, so this is too. */
+.ffb-root .ffb-grid-tight .ffb-cell.ffb-is-made { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
+/* A remove button inside a sticker rings inside the fill, in the colour that reads on it. */
+.ffb-root .ffb-sticker-remove:focus-visible { outline-color: var(--ffb-on-fill); outline-offset: -3px; }
 
 /* The tooltip bubble is portalled outside the root with Tailwind classes on it, so its type is
    set here, unlayered. Its colours come through the bridge on `.ffb-scope`. */
@@ -364,7 +423,6 @@ html.dark .ffb-scope {
     clip-path: inset(50%);
     white-space: nowrap;
   }
-  .ffb-only-phone { display: none; }
   .ffb-muted { color: var(--ffb-muted); }
   .ffb-good { color: var(--ffb-good); }
   .ffb-bad { color: var(--ffb-bad); }
@@ -377,6 +435,7 @@ html.dark .ffb-scope {
   .ffb-stack { display: flex; flex-direction: column; gap: var(--ffb-s4); min-width: 0; }
   .ffb-stack > * { min-width: 0; }
   .ffb-stack-tight { gap: var(--ffb-s2); }
+  .ffb-stack-mid { gap: var(--ffb-s5); }
   .ffb-stack-loose { gap: var(--ffb-s6); }
   .ffb-stack-page { gap: var(--ffb-s7); }
   /* A wrapping row of small things. */
@@ -392,7 +451,12 @@ html.dark .ffb-scope {
     top: var(--ffb-sticky-top, 0px);
     z-index: var(--c97-z-sticky, 5);
     background: var(--ffb-surface);
+    box-shadow: -4px 0 0 var(--ffb-surface), 4px 0 0 var(--ffb-surface);
   }
+  /* Item 50: the live cell stands 4px proud of the bug, so a pinned wrapper leaves it that room. */
+  .ffb-sticky:has(> .ffb-bug) { padding-block: var(--ffb-s1); }
+  /* Item 9: a pinned block that holds the column heads ends on the 2px ink rule a table head ends on. */
+  .ffb-sticky-ruled { border-bottom: 2px solid var(--ffb-ink); }
 
   /* ========================================================================
    * 8. Shell: product bar, page head, section headings, working layout
@@ -495,6 +559,9 @@ html.dark .ffb-scope {
     align-self: center;
   }
   .ffb-head:has(> .ffb-head-aside) > .ffb-lede { grid-column: 1 / 3; }
+  @media (min-width: 1200px) {
+    .ffb-head:not(.ffb-head-setup, .ffb-head-run):not(:has(> .ffb-head-aside)) > .ffb-lede { text-wrap: balance; }
+  }
   /* A full-width row under the head (the best ball contest switch). */
   .ffb-head-row { grid-column: 1 / -1; min-width: 0; }
   /* The running head of a live room: one compact line. */
@@ -527,6 +594,8 @@ html.dark .ffb-scope {
     border-top: 1px solid var(--ffb-ink);
   }
   .ffb-sechead-lg { padding-block: var(--ffb-s3); border-top-width: 2px; }
+  /* A head that holds a control, and any head beside it on the same line: one height, so they share a rule. */
+  .ffb-sechead-ctl { align-items: center; min-height: calc(var(--ffb-control) + 17px); padding-block: var(--ffb-s2); }
   .ffb-sechead-note { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
 
   /* The working layout: the list beside a sticky rail. */
@@ -537,7 +606,7 @@ html.dark .ffb-scope {
     column-gap: var(--ffb-s6);
   }
   /* Settings, the work, and a result rail (the trade calculator). */
-  .ffb-work-3 { grid-template-columns: 232px minmax(0, 1fr) clamp(320px, 28%, 400px); }
+  .ffb-work-3 { grid-template-columns: 200px minmax(0, 1fr) clamp(300px, 26%, 360px); column-gap: var(--ffb-s5); }
   .ffb-work > * { min-width: 0; }
   .ffb-rail {
     position: sticky;
@@ -548,6 +617,9 @@ html.dark .ffb-scope {
   /* A rail taller than the screen scrolls by itself. */
   .ffb-rail-scroll {
     max-height: calc(100dvh - var(--ffb-sticky-top, 0px) - var(--ffb-s4));
+    /* A scroller clips what crosses its edge, so the inset gives the focus rings inside room on both sides. */
+    margin-inline: -6px;
+    padding-inline: 6px;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -666,6 +738,10 @@ html.dark .ffb-scope {
     color: var(--ffb-muted);
     cursor: not-allowed;
   }
+  /* A quiet button has no box when it is enabled, so it gains none when it is not. */
+  .ffb-btn.ffb-btn-quiet:is(:disabled, [aria-disabled="true"]) { border-color: transparent; }
+  /* Items 31 and 41: a labelled toggle with no count. Pressed, it takes the 2px ink edge the pressed .ffb-toggle takes. */
+  .ffb-btn-toggle[aria-pressed="true"] { border-color: var(--ffb-ink); box-shadow: inset 0 0 0 1px var(--ffb-ink); }
   /* A destructive step asks once: the question, a quiet way back, and the danger button. */
   .ffb-confirm { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2); }
   .ffb-confirm-q { font-size: 14px; font-weight: 600; }
@@ -704,6 +780,8 @@ html.dark .ffb-scope {
   .ffb-iconbtn:hover { background-color: var(--ffb-sunk); }
   .ffb-iconbtn-edge { border: 1px solid var(--ffb-edge); }
   .ffb-iconbtn:disabled { color: var(--ffb-muted); cursor: not-allowed; }
+  /* On: the phone's search button while a query is filtering the board. */
+  .ffb-iconbtn:is([aria-pressed="true"], .ffb-is-on) { background: var(--ffb-ink); color: var(--ffb-board); }
 
   /* Queue star. Queued is a highlighter sticker behind the star and behind the rank. */
   .ffb-star {
@@ -797,7 +875,8 @@ html.dark .ffb-scope {
   .ffb-affix-mark { flex: none; padding-inline: 10px; color: var(--ffb-muted); font-size: 14px; font-weight: 600; }
   .ffb-affix .ffb-input,
   .ffb-affix .ffb-input[aria-invalid="true"] { height: 100%; border: 0; background: transparent; box-shadow: none; }
-  .ffb-affix > .ffb-affix-mark:first-child + .ffb-input { padding-inline-start: 0; }
+  .ffb-affix > .ffb-affix-mark:first-child { padding-inline-end: 2px; }
+  .ffb-affix > .ffb-affix-mark:first-child + .ffb-input { padding-inline-start: 8px; }
 
   .ffb-search {
     display: flex;
@@ -809,6 +888,14 @@ html.dark .ffb-scope {
     box-shadow: inset 0 0 0 1px var(--ffb-edge);
   }
   .ffb-search:hover { box-shadow: inset 0 0 0 1px var(--ffb-ink); }
+  .ffb-search:has(> .ffb-search-input:disabled) {
+    background: transparent;
+    box-shadow: none;
+    outline: 1px dashed var(--ffb-edge);
+    outline-offset: -1px;
+    cursor: not-allowed;
+  }
+  .ffb-search-input:disabled { cursor: not-allowed; }
   .ffb-search > svg { flex: none; fill: none; stroke: var(--ffb-muted); stroke-width: 1.8; stroke-linecap: round; }
   .ffb-search-input {
     flex: 1 1 168px;
@@ -944,8 +1031,9 @@ html.dark .ffb-scope {
     cursor: pointer;
   }
   .ffb-link:hover { text-decoration-thickness: 2px; }
-  .ffb-link-arrow::after { content: "\00a0→"; }
-  .ffb-link-out::after { content: "\00a0↗"; }
+  /* The empty alternative text keeps the arrow out of the link's accessible name. */
+  .ffb-link-arrow::after { content: "\00a0→" / ""; }
+  .ffb-link-out::after { content: "\00a0↗" / ""; }
 
   /* ========================================================================
    * 10. The board: column head, tier break, row
@@ -1198,12 +1286,21 @@ html.dark .ffb-scope {
   .ffb-table :is(td, th).ffb-num { text-align: right; }
   .ffb-table tbody tr:hover > * { background-color: var(--ffb-sunk); }
   /* The head stays on screen while the page scrolls under it. Not inside .ffb-table-wrap. */
-  .ffb-table-sticky thead th { position: sticky; top: var(--ffb-sticky-top, 0px); z-index: 1; background: var(--ffb-surface); }
+  .ffb-table-sticky thead th {
+    position: sticky;
+    top: var(--ffb-sticky-top, 0px);
+    z-index: 1;
+    border-bottom-color: transparent;
+    background: var(--ffb-surface);
+    box-shadow: inset 0 -2px 0 var(--ffb-ink);
+  }
   /* Compare: a label column and one column per player. */
   .ffb-table-compare { table-layout: fixed; }
   .ffb-table-compare thead th { color: var(--ffb-ink); white-space: normal; vertical-align: top; }
   .ffb-table-compare tbody th { position: sticky; left: 0; z-index: 1; width: 7.5rem; background: var(--ffb-surface); color: var(--ffb-muted); font-size: 11px; }
   .ffb-table-compare tbody tr:hover > * { background-color: transparent; }
+  /* The corner stays with the label column, so a player's head never slides over the row labels. */
+  .ffb-table-compare thead :is(th, td):first-child { position: sticky; left: 0; z-index: 2; background: var(--ffb-surface); }
   /* The stronger value on a compare row. The word prints, and the tag is ink, never highlighter. */
   .ffb-best {
     display: inline-block;
@@ -1460,6 +1557,7 @@ html.dark .ffb-scope {
   /* The scorebug: one bar of four to six cells with the live cell in highlighter. */
   .ffb-bug {
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
     min-height: 60px;
     border-block: 2px solid var(--ffb-ink);
@@ -1608,6 +1706,7 @@ html.dark .ffb-scope {
 
   /* The trade verdict's head, and the frame of the balance scale. */
   .ffb-verdict { display: grid; gap: var(--ffb-s2); }
+  .ffb-verdict.ffb-notice > * + * { margin-top: 0; }
   .ffb-verdict-title { font-size: 26px; line-height: 0.95; }
   .ffb-verdict-body { font-size: 15px; line-height: 1.45; }
   .ffb-scale { margin: 0; padding-block: var(--ffb-s3); color: var(--ffb-ink); }
@@ -1681,7 +1780,7 @@ html.dark .ffb-scope {
     background: var(--ffb-surface);
     color: var(--ffb-ink);
   }
-  .ffb-tray-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2) var(--ffb-s3); min-height: 56px; padding-block: var(--ffb-s2); }
+  .ffb-tray-row { display: flex; flex-wrap: nowrap; align-items: center; gap: var(--ffb-s2) var(--ffb-s3); min-height: 56px; padding-block: var(--ffb-s2); }
   /* Room at the end of the page for the tray. */
   .ffb-tray-space { height: 80px; }
 
@@ -1809,6 +1908,208 @@ html.dark .ffb-scope {
   .ffb-footlinks a { color: var(--ffb-ink); }
 
   /* ========================================================================
+   * 15b. Round 2: parts the first five pages needed
+   * ====================================================================== */
+  /* A label with a help trigger beside it, on one line. */
+  .ffb-with-help { display: flex; align-items: center; gap: var(--ffb-s1); }
+  /* A block in a column that carries its own bottom margin, where the column cannot use a gap. */
+  .ffb-block { margin-bottom: var(--ffb-s3); }
+
+  /* A board whose column heads are pinned on the ink rule (.ffb-sticky-ruled). The first tier's tab
+     hangs from that rule, and whatever comes first under it drops its own rule. */
+  .ffb-board-ruled > .ffb-tier:first-of-type > .ffb-tier-head { height: 28px; border-top: 0; }
+  .ffb-board-ruled > * > .ffb-row:first-child,
+  .ffb-board-ruled .ffb-empty,
+  .ffb-board-ruled .ffb-skel-row:first-child { border-top: 0; }
+
+  /* A chip, a name, and a team in one cell of a table or a stacked row. */
+  .ffb-namecell { display: flex; flex-wrap: wrap; align-items: center; gap: 2px var(--ffb-s2); min-width: 0; }
+
+  /* A two-line row outside a board: the chip, the name over the team, one number, one action. */
+  .ffb-row-two {
+    --ffb-cols: 46px minmax(0, 1fr) 44px var(--ffb-control);
+    grid-template-rows: auto auto;
+    align-content: center;
+    row-gap: 3px;
+    min-height: 52px;
+    padding-block: 6px;
+  }
+  /* It is not a button, so it does not light up under the pointer. */
+  .ffb-row-two:hover { background-color: transparent; }
+  .ffb-row-two > .ffb-chip { grid-area: 1 / 1 / 3 / 2; justify-self: start; }
+  .ffb-row-two > .ffb-c-name { grid-area: 1 / 2; }
+  .ffb-row-two > .ffb-c-team { grid-area: 2 / 2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ffb-row-two > .ffb-c-num { grid-area: 1 / 3 / 3 / 4; font-size: 15px; }
+  .ffb-row-two > :is(.ffb-iconbtn, .ffb-btn, .ffb-log, .ffb-star) { grid-area: 1 / 4 / 3 / 5; }
+
+  /* A phone list that is a table reflowed. Each row is the player over his values, the values sit
+     in columns that hold their place down the list, and one head names the columns. Set
+     --ffb-pair-cols on the list's wrapper, and the head and every row read it. */
+  .ffb-listhead {
+    --ffb-cols: 28px var(--ffb-pair-cols, repeat(3, minmax(0, 1fr)));
+    column-gap: var(--ffb-s2);
+    border-bottom: 2px solid var(--ffb-ink);
+  }
+  .ffb-listhead + .ffb-rows > .ffb-row:first-child { border-top: 0; }
+  .ffb-row-stack {
+    --ffb-cols: 28px minmax(0, 1fr);
+    align-items: start;
+    column-gap: var(--ffb-s2);
+    padding-block: var(--ffb-s2);
+  }
+  /* A list with no rank column. */
+  .ffb-listhead-plain { --ffb-cols: var(--ffb-pair-cols, repeat(3, minmax(0, 1fr))); }
+  .ffb-row-stack-plain { --ffb-cols: minmax(0, 1fr); }
+  .ffb-row-stack > .ffb-c-rank { line-height: 22px; }
+  .ffb-row-stack .ffb-namecell { min-height: 22px; font-size: 15px; font-weight: 600; }
+  .ffb-pairs-cols {
+    display: grid;
+    grid-template-columns: var(--ffb-pair-cols, repeat(3, minmax(0, 1fr)));
+    gap: 0 var(--ffb-s2);
+    margin-top: var(--ffb-s1);
+  }
+  .ffb-pairs-cols > div { display: block; min-width: 0; }
+  /* The head names the columns for the eye. Each row keeps its labels for assistive tech. */
+  .ffb-pairs-cols dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .ffb-pairs-cols dd { font-size: 14px; font-weight: 500; line-height: 18px; }
+  .ffb-pairs-cols dd.ffb-is-strong { font-weight: 700; }
+
+  /* Load more beside a second button. */
+  .ffb-more-row { display: flex; flex-wrap: wrap; gap: var(--ffb-s2); margin-top: var(--ffb-s4); }
+  .ffb-more-row > .ffb-more { flex: 1 1 200px; width: auto; margin-top: 0; }
+
+  /* Four figures as two by two at every width. Auto-fit leaves three and one. */
+  .ffb-stats-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ffb-stats-2 .ffb-stat dd { overflow-wrap: anywhere; }
+
+  /* A line of short items joined by dots. The dot trails its item, so a wrapped line never starts with one. */
+  .ffb-dotlist { display: flex; flex-wrap: wrap; }
+  .ffb-dotlist > * { white-space: nowrap; }
+  .ffb-dotlist > :not(:last-child)::after { content: "·" / ""; margin-inline: 6px; }
+  /* The freshness line is built the same way: each part holds together and takes its dot with it. */
+  @media (min-width: 768px) {
+    .ffb-fresh-part { white-space: nowrap; }
+  }
+
+  /* The spread plot standing alone (a drawer, a compare column). In a board row the plot fills its
+     cell. Here it has a height of its own, larger marks, and a mark even for a range of one rank. */
+  .ffb-plot { display: grid; gap: 6px; min-width: 0; }
+  .ffb-plot .ffb-spread { height: 32px; }
+  .ffb-plot .ffb-spread-range { min-width: 4px; height: 3px; margin-top: -1.5px; }
+  .ffb-plot .ffb-spread-sd { height: 12px; margin-top: -6px; }
+  .ffb-plot .ffb-spread-avg { height: 24px; margin-top: -12px; }
+  /* The compact form keeps the board's marks at a 20px height. */
+  .ffb-plot-compact .ffb-spread { height: 20px; }
+  .ffb-plot-compact .ffb-spread-range { height: 2px; margin-top: -1px; }
+  .ffb-plot-compact .ffb-spread-sd { height: 8px; margin-top: -4px; }
+  .ffb-plot-compact .ffb-spread-avg { height: 16px; margin-top: -8px; }
+  /* Best, average, and worst under the plot. */
+  .ffb-plot-ends {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--ffb-s2);
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .ffb-plot-ends > .ffb-is-avg { color: var(--ffb-ink); font-weight: 600; }
+  .ffb-plot-none { color: var(--ffb-muted); font-size: 12.5px; }
+
+  /* A sticker with a remove button inside it (a pinned player in the compare tray). */
+  .ffb-sticker-pin {
+    flex: 0 1 auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: center;
+    column-gap: var(--ffb-s1);
+    min-height: var(--ffb-control);
+    padding-block: 0;
+    padding-inline-end: 0;
+  }
+  /* The button sets the height, and the two lines sit together in the middle of it. */
+  .ffb-sticker-pin > .ffb-sticker-meta { grid-column: 1; align-self: end; justify-content: flex-start; }
+  .ffb-sticker-pin > .ffb-sticker-name { grid-column: 1; align-self: start; max-width: 12rem; }
+  .ffb-sticker-remove { grid-area: 1 / 2 / 3 / 3; color: var(--ffb-on-fill); }
+  .ffb-sticker-remove:hover { background-color: transparent; box-shadow: inset 0 0 0 2px var(--ffb-on-fill); }
+
+  /* The scorebug's live cell with no clock in it: a label over a value. */
+  .ffb-bug-live:not(:has(> .ffb-bug-clock)) { grid-template-columns: minmax(0, 1fr); }
+  /* A clock in a cell of its own. The clock is advisory, so it is quiet while other teams pick,
+     and it takes the highlighter only when the page marks it urgent (the end of my own pick). */
+  .ffb-bug-seg.ffb-is-quiet .ffb-bug-value { color: var(--ffb-bug-muted); }
+  .ffb-bug-seg.ffb-is-urgent {
+    margin-block: -6px;
+    border-inline-end: 0;
+    background: var(--ffb-hi);
+    color: var(--ffb-on-fill);
+  }
+  .ffb-bug-seg.ffb-is-urgent :is(.ffb-bug-label, small) { color: var(--ffb-on-fill); }
+  /* A long and a short form of one text in the bar. Below 1300px six cells and three buttons fit
+     one line only with the short forms. */
+  .ffb-bug-short { display: none; }
+  @media (max-width: 1299.98px) {
+    .ffb-bug-short { display: revert; }
+    .ffb-bug-long { display: none; }
+  }
+
+  /* The pick grid in a box that scrolls sideways, for a 14 or 16 team room in a narrow rail. */
+  .ffb-gridwrap { overflow-x: auto; scrollbar-width: thin; }
+  .ffb-gridwrap > .ffb-grid { min-width: calc(var(--ffb-grid-lead) + var(--ffb-teams, 12) * 24px); }
+  .ffb-grid-tight .ffb-cell:not(.ffb-is-made) { font-size: 10px; }
+
+  /* "Your pick is live": a highlighter tab hanging from an ink rule, then the facts side by side
+     with no boxes. */
+  .ffb-strip-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--ffb-s3);
+    border-top: 2px solid var(--ffb-ink);
+  }
+  .ffb-strip-head > .ffb-turn-tab {
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    font-size: 13px;
+    line-height: 24px;
+  }
+  /* The floor is what one fact needs for a chip, a long name, and its Log button, so a fact a
+     disclosure adds wraps to a new row and does not squeeze the first three. */
+  .ffb-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 248px), 1fr));
+    column-gap: var(--ffb-s5);
+    border-bottom: 1px solid var(--ffb-rule);
+  }
+  .ffb-strip-item {
+    display: grid;
+    align-content: start;
+    gap: 4px;
+    min-width: 0;
+    padding-block: var(--ffb-s2) var(--ffb-s3);
+  }
+  .ffb-strip-line {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--ffb-s2);
+    min-height: var(--ffb-control);
+  }
+  .ffb-strip-line > .ffb-c-name { min-height: var(--ffb-control); }
+  .ffb-strip-value { display: flex; align-items: center; min-height: var(--ffb-control); font-size: 24px; line-height: 1; }
+  .ffb-strip-note { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.4; }
+
+  /* Ruled entries: a title line and a muted note between hairlines (signals, a turn replay, position runs). */
+  .ffb-entries { display: grid; }
+  .ffb-entry {
+    display: grid;
+    gap: 4px;
+    padding-block: var(--ffb-s2);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-entry:first-child { padding-top: 0; border-top: 0; }
+  .ffb-entry-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s1) var(--ffb-s2); }
+  .ffb-entry-note { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
+
+  /* ========================================================================
    * 16. Narrower desktops and tablets: the rail drops under the list
    * ====================================================================== */
   @media (max-width: 1199.98px) {
@@ -1822,6 +2123,7 @@ html.dark .ffb-scope {
       max-height: none;
       overflow: visible;
     }
+    .ffb-rail-scroll { margin-inline: 0; padding-inline: 0; }
     .ffb-bug-seg { padding-inline: var(--ffb-s3); }
     .ffb-bug-live { column-gap: var(--ffb-s3); }
     .ffb-head-run { grid-template-columns: auto minmax(0, 1fr) auto; }
@@ -1834,8 +2136,6 @@ html.dark .ffb-scope {
    * 17. Phones (below Tailwind's md)
    * ====================================================================== */
   @media (max-width: 767.98px) {
-    .ffb-only-phone { display: revert; }
-    .ffb-not-phone { display: none; }
 
     .ffb-bar { height: 45px; }
     .ffb-bar-links { margin-inline-end: calc(-1 * var(--ffb-bleed)); padding-inline: var(--ffb-s1) var(--ffb-bleed); }
@@ -1888,6 +2188,8 @@ html.dark .ffb-scope {
       margin-block: -13px;
     }
     .ffb-tab { height: 44px; }
+    /* Three labels fit a 320px screen at this gap. */
+    .ffb-tabs { gap: var(--ffb-s3); }
     .ffb-neighbor { min-height: 44px; }
     .ffb-log { width: 52px; height: 44px; }
 
@@ -1981,7 +2283,8 @@ html.dark .ffb-scope {
     .ffb-work-split > .ffb-rail { display: contents; }
     .ffb-work-split > .ffb-rail > .ffb-rail-lead { order: -1; }
     .ffb-work-split > .ffb-rail > :not(.ffb-rail-lead) { order: 1; }
-    .ffb-slots { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(2, 44px); grid-auto-flow: row; gap: var(--ffb-s1); }
+    /* Rows are added as the lineup needs them, so one of more than ten slots keeps its row height. */
+    .ffb-slots { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 44px; grid-auto-flow: row; gap: var(--ffb-s1); }
     .ffb-slot {
       grid-template-columns: minmax(0, 1fr);
       align-content: center;
@@ -2008,8 +2311,45 @@ html.dark .ffb-scope {
     .ffb-panel-foot { padding-inline: var(--ffb-s4); padding-bottom: calc(var(--ffb-s3) + env(safe-area-inset-bottom)); }
     .ffb-toast { inset-inline: var(--ffb-s4); translate: none; max-width: none; }
     .ffb-toast-btn { height: 44px; margin-block: -6px; }
+    /* On a phone the urgent clock sits in the bar's second row, so it does not stand proud. */
+    .ffb-bug-seg.ffb-is-urgent { margin-block: 0; }
+    /* The product bar rests with a whole link at its left edge, never a word cut by the name tab. */
+    .ffb-bar-links { scroll-snap-type: x mandatory; scroll-padding-inline-start: var(--ffb-s1); }
+    .ffb-bar-links > li { scroll-snap-align: start; }
+    .ffb-bar-links::after { content: ""; flex: none; width: 100%; }
     .ffb-note { grid-template-columns: 24px minmax(0, 1fr); }
   }
+
+  /* Slots in one column at every width, with a meta line under the name and a value at the right
+     (the weekly lineup). These come after the phone block and outrank it, so the five-across phone roster does not apply. */
+  .ffb-slots.ffb-slots-list {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(46px, auto);
+    gap: var(--ffb-s1);
+  }
+  .ffb-slots-list > .ffb-slot {
+    grid-template-columns: 50px minmax(0, 1fr) auto;
+    align-content: center;
+    row-gap: 3px;
+    padding-inline: 12px 10px;
+    line-height: 1.1;
+  }
+  .ffb-slots-list > .ffb-slot > .ffb-slot-code { grid-row: 1 / span 2; font-size: 13px; }
+  .ffb-slots-list > .ffb-slot > .ffb-slot-name { display: block; grid-column: 2; font-size: 13px; }
+  /* An open slot has one line, which sits in the middle of the socket. */
+  .ffb-slots-list > .ffb-slot:not(.ffb-is-filled) > .ffb-slot-name { grid-row: 1 / span 2; }
+  .ffb-slots-list > .ffb-slot.ffb-is-filled > .ffb-slot-name { font-size: 16px; }
+  .ffb-slots-list > .ffb-slot > .ffb-slot-meta {
+    display: block;
+    grid-column: 2;
+    overflow: hidden;
+    font-size: 10.5px;
+    text-overflow: ellipsis;
+  }
+  .ffb-slot-value { grid-column: 3; grid-row: 1 / span 2; font-size: 16px; }
+  .ffb-slot-value small { margin-inline-start: 3px; font-size: 10.5px; }
 
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     :is(.ffb-seg-btn, .ffb-btn, .ffb-log, .ffb-more, .ffb-bug-btn, .ffb-row, .ffb-iconbtn, .ffb-choice, .ffb-neighbor, .ffb-toggle) {
@@ -2024,6 +2364,18 @@ html.dark .ffb-scope {
   .ffb-root :is(.ffb-seg-btn, .ffb-iconbtn, .ffb-tab, .ffb-btn-quiet) { min-width: 44px; }
   .ffb-root .ffb-seg-pos > .ffb-seg-btn { min-width: 46px; }
   .ffb-root :is(.ffb-star, .ffb-h-sort, .ffb-search-clear) { min-width: 44px; }
+  /* A help trigger holds a 44px target, and the negative margin keeps its label's line. */
+  .ffb-root [data-metric-trigger="text"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 44px;
+    min-height: 44px;
+    /* One more than half the difference from a label's line, so the label's line keeps its height. */
+    margin-block: -16px;
+  }
+  /* A cell is about 23px on a phone, so a made cell's label takes the narrow form there too. */
+  .ffb-root .ffb-grid .ffb-cell.ffb-is-made { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
 }
 
 /* ==========================================================================
@@ -2058,7 +2410,8 @@ html.dark .ffb-scope {
     --ffb-hi: transparent;
     --ffb-hi-edge: #15191c;
     min-height: 0;
-    padding-block: 0;
+    /* The room at the foot keeps the site's next band off the page's last line. */
+    padding-block: 0 var(--ffb-s5);
   }
   .ffb-root :is(.ffb-chip, .ffb-sticker, .ffb-slot, .ffb-cell, .ffb-spread, .ffb-spread-range, .ffb-spread-sd, .ffb-spread-avg, .ffb-seg-btn, .ffb-tier-tab, .ffb-meter, .ffb-meter::before, .ffb-best, .ffb-bar-name) {
     print-color-adjust: exact;
@@ -2069,6 +2422,14 @@ html.dark .ffb-scope {
     display: none;
   }
   .ffb-root :is(.ffb-sticky, .ffb-rail, .ffb-table-sticky thead th) { position: static; }
+  .ffb-root .ffb-sticky { box-shadow: none; }
+  /* On paper the table head is not stuck, so it takes its real border back. An inset edge leaves seams between head cells in a PDF. */
+  .ffb-root .ffb-table-sticky thead th { border-bottom-color: var(--ffb-ink); box-shadow: none; }
+  /* A scrolling rail prints whole. */
+  .ffb-root.ffb-root .ffb-rail-scroll { max-height: none; margin-inline: 0; padding-inline: 0; overflow: visible; }
+  /* A disclosure marked to print opens on paper, so what it holds (a method, a model's limits) is on the page. */
+  .ffb-root .ffb-details-print::details-content { content-visibility: visible; }
+  .ffb-root .ffb-details-print > summary::after { display: none; }
   /* With the highlighter off, what was highlighted keeps an ink outline. */
   .ffb-root :is(.ffb-bug-live, .ffb-cell.ffb-is-live, .ffb-turn-tab, .ffb-countbadge) { outline: 2px solid #15191c; outline-offset: -2px; }
   .ffb-root .ffb-bug-live { margin-block: 0; }

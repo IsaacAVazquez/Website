@@ -122,3 +122,19 @@ describe("MetricTooltip token scope", () => {
     expect(portalled).toHaveAttribute("data-c97-surface", "paper");
   });
 });
+
+describe("MetricTooltip trigger kinds", () => {
+  it("marks the chip and the text trigger, so a route's stylesheet can fit each to its label", () => {
+    render(
+      <>
+        <MetricTooltip term="Market Cap" />
+        <MetricTooltip term="vs ADP" definition="Market ADP minus the consensus rank." focusable>
+          vs ADP
+        </MetricTooltip>
+      </>
+    );
+
+    expect(screen.getByRole("button", { name: "What is Market Cap?" })).toHaveAttribute("data-metric-trigger", "chip");
+    expect(screen.getByRole("button", { name: "What is vs ADP?" })).toHaveAttribute("data-metric-trigger", "text");
+  });
+});

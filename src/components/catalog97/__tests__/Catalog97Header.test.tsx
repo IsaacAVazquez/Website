@@ -56,6 +56,22 @@ describe("Catalog97Header utilities", () => {
     expect(header).not.toHaveAttribute("data-search-open");
   });
 
+  it("leaves slash alone when the page has already handled it", () => {
+    render(<Catalog97Header />);
+
+    // A page's own listener runs first and claims the key, as the redraft board does for its search.
+    const claim = (event: KeyboardEvent) => event.preventDefault();
+    document.addEventListener("keydown", claim);
+    fireEvent.keyDown(document.body, { key: "/" });
+    document.removeEventListener("keydown", claim);
+
+    expect(screen.queryByRole("dialog", { name: "Site search" })).not.toBeInTheDocument();
+
+    // The same key with nobody claiming it still opens the site search.
+    fireEvent.keyDown(document.body, { key: "/" });
+    expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
+  });
+
   it("opens search from slash without swallowing slash inside an input", () => {
     render(<Catalog97Header />);
 
