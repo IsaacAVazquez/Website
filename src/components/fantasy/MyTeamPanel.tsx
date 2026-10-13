@@ -1,11 +1,12 @@
 "use client";
 
 import { FantasySectionHeading } from "@/components/fantasy/FantasyRouteHeader";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import "./fantasy-weekly.css";
 import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
 import { readBrowserStorageString } from "@/lib/browserStorage";
-import type { FantasyRouteScoring } from "@/lib/fantasy";
+import { FANTASY_SCORING_LABELS, type FantasyRouteScoring } from "@/lib/fantasy";
 import {
   buildMyTeamLineup, compareMyTeamWaiver, importMyTeamDraft, readMyTeamPlayer,
   uniqueTeamPlayers, weeklyPlayerMap, type MyTeamPlayer,
@@ -22,10 +23,12 @@ const positionClass = (position: string) => `ffb-pos-${position.toLowerCase()}`;
 /** A player in one of My team's lists: the position chip, the name, and the team. */
 function TeamPlayer({ player }: { player: MyTeamPlayer }) {
   return (
-    <span className="ffb-wk-player">
-      <span className={`ffb-chip ffb-chip-sm ${positionClass(player.position)}`}>{player.position}</span>
-      <span className="ffb-wk-name">{player.name}</span>
-      {player.team ? <span className="ffb-c-team">{player.team}</span> : null}
+    <span className="ffb-namecell">
+      <span className="ffb-wk-who">
+        <span className={`ffb-chip ffb-chip-sm ${positionClass(player.position)}`}>{player.position}</span>{" "}
+        <span className="ffb-wk-name">{player.name}</span>
+      </span>
+      {player.team ? <>{" "}<span className="ffb-c-team">{player.team}</span></> : null}
     </span>
   );
 }
@@ -55,6 +58,12 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
   const [notice, setNotice] = useState("");
   const [manualName, setManualName] = useState("");
   const [manualPosition, setManualPosition] = useState<MyTeamPlayer["position"]>("RB");
+  // Several actions here remove the button that was pressed. Each one moves focus to where
+  // the reader carries on: the notice after a save or an import, the search field after a
+  // player is rostered from a result, and the next Remove button after a removal.
+  const noticeRef = useRef<HTMLParagraphElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const rosterRef = useRef<HTMLUListElement>(null);
   const weekly = useMemo(() => weeklyPlayerMap(board), [board]);
   const players = useMemo(() => [...weekly.values()].flatMap(player => {
     const parsed = readMyTeamPlayer(player);
@@ -87,11 +96,25 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
   function importDraft() {
     const imported = importMyTeamDraft(readBrowserStorageString(getFantasyDraftStorageKey(snapshot.season)).value);
     if (!imported) { setNotice(`No saved ${snapshot.season} redraft picks were found for your team in this browser.`); return; }
-    update(current => ({ ...current, ...imported, players: uniqueTeamPlayers([...current.players, ...imported.players]),
-      availableIds: current.availableIds.filter(id => !imported.players.some(player => player.id === id)) }));
-    onScoringChange(imported.scoring);
-    setSelectedView("lineup");
-    setNotice(`Imported ${imported.players.length} players and league settings. Existing roster players were kept. Review any moves made since the draft.`);
+    flushSync(() => {
+      update(current => ({ ...current, ...imported, players: uniqueTeamPlayers([...current.players, ...imported.players]),
+        availableIds: current.availableIds.filter(id => !imported.players.some(player => player.id === id)) }));
+      onScoringChange(imported.scoring);
+      setSelectedView("lineup");
+      setNotice(`Imported ${imported.players.length} players and league settings. Existing roster players were kept. Review any moves made since the draft.`);
+    });
+    noticeRef.current?.focus();
+  }
+
+  function removeFromRoster(player: MyTeamPlayer) {
+    const index = team.players.findIndex(p => p.id === player.id);
+    flushSync(() => {
+      update(current => ({ ...current, players: current.players.filter(p => p.id !== player.id) }));
+      setNotice(`${player.name} removed from your saved roster.`);
+    });
+    // The row is gone. Focus takes the Remove button that moved into its place, or the last one, or the search field once the roster is empty.
+    const buttons = rosterRef.current?.querySelectorAll<HTMLButtonElement>("button") ?? [];
+    (buttons[index] ?? buttons[buttons.length - 1] ?? searchRef.current)?.focus();
   }
 
   // The add and drop comparison works from the players marked available, which
@@ -123,9 +146,12 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
         {comparison.newGaps.length > 0 && <p>This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
         <p className="ffb-muted">This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
         <button className="ffb-btn ffb-btn-primary" type="button" onClick={() => {
-          update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
-          setAddId(""); setDropId("");
-          setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);
+          flushSync(() => {
+            update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
+            setAddId(""); setDropId("");
+            setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);
+          });
+          noticeRef.current?.focus();
         }}>Save this move to my roster</button>
       </div>}
       <p className="ffb-method">Availability is entered by you and stays saved until you change it.</p>
@@ -136,9 +162,9 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
     <section id="my-team" aria-labelledby="my-team-title" className="ffb-wk-team">
       <div className="ffb-sechead ffb-sechead-lg">
         <FantasySectionHeading id="my-team-title">My team</FantasySectionHeading>
-        <p className="ffb-sechead-note">{team.leagueSize} teams · {team.players.length} rostered · {available.length} marked available</p>
+        <p className="ffb-sechead-note">Week {snapshot.week} · {FANTASY_SCORING_LABELS[scoring]} · {team.leagueSize} teams · {team.players.length} rostered · {available.length} marked available</p>
       </div>
-      <p aria-live="polite" className={notice ? "ffb-notice ffb-wk-team-notice" : "sr-only"}>{notice}</p>
+      <p ref={noticeRef} tabIndex={-1} aria-live="polite" className={notice ? "ffb-notice ffb-wk-team-notice" : "sr-only"}>{notice}</p>
       <div className="ffb-tabs ffb-wk-tabs" role="group" aria-label="My team views">
         {([
           ["lineup", "Weekly lineup"], ["roster", "Roster"], ["settings", "League settings"],
@@ -186,7 +212,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
           <label className="ffb-field"><span className="ffb-field-label">Find a player to roster or mark available</span>
             <span className="ffb-search">
               <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" /><path d="M12.8 12.8L17 17" /></svg>
-              <input type="search" className="ffb-search-input" value={query} onChange={event => setQuery(event.target.value)} placeholder="Player, team, or position" />
+              <input ref={searchRef} type="search" className="ffb-search-input" value={query} onChange={event => setQuery(event.target.value)} placeholder="Player, team, or position" />
             </span>
           </label>
           {query.trim() && <p className="ffb-method">{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
@@ -194,8 +220,13 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
             {matches.map(player => <li key={player.id} className="ffb-wk-entry">
               <TeamPlayer player={player} />
               {team.players.some(p => p.id === player.id) ? <span className="ffb-wk-entry-note">On your roster</span> : <div className="ffb-wk-actions">
-                <button type="button" className="ffb-btn" onClick={() => addToRoster(player)} aria-label={`Roster ${player.name}`}>Roster</button>
-                <button type="button" className="ffb-toggle" aria-pressed={team.availableIds.includes(player.id)} aria-label={`Available in my league: ${player.name}`}
+                <button type="button" className="ffb-btn" aria-label={`Roster ${player.name}`} onClick={() => {
+                  // The button is gone once he is rostered, so the search field takes focus with its text selected, ready for the next name.
+                  flushSync(() => addToRoster(player));
+                  searchRef.current?.focus();
+                  searchRef.current?.select();
+                }}>Roster</button>
+                <button type="button" className="ffb-btn ffb-btn-toggle" aria-pressed={team.availableIds.includes(player.id)} aria-label={`Available in my league: ${player.name}`}
                   onClick={() => update(current => ({ ...current, availableIds: current.availableIds.includes(player.id) ? current.availableIds.filter(id => id !== player.id) : [...current.availableIds, player.id] }))}>
                   {team.availableIds.includes(player.id) ? "Marked available" : "Mark available"}
                 </button>
@@ -222,19 +253,16 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
               <p className="ffb-method">Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
             </div>
           </details>
-          <p className="ffb-method">Your roster stays saved as you add players.</p>
+          {persistenceStatus !== "memory-only" && <p className="ffb-method">Your roster stays saved as you add players.</p>}
         </div>
 
         <div className="ffb-wk-block">
           <div className="ffb-sechead"><h3 className="ffb-h3">Saved roster</h3></div>
-          {team.players.length === 0 ? <p className="ffb-wk-copy">Search or import your redraft roster to get started.</p> : <ul className="ffb-wk-entries">
+          {team.players.length === 0 ? <p className="ffb-wk-copy">Search or import your redraft roster to get started.</p> : <ul ref={rosterRef} className="ffb-wk-entries">
             {team.players.map(player => <li key={player.id} className="ffb-wk-entry">
               <TeamPlayer player={player} />
               {!weekly.has(player.id) && <span className="ffb-wk-entry-note">No weekly rank</span>}
-              <button className="ffb-btn ffb-btn-quiet" type="button" aria-label={`Remove ${player.name}`} onClick={() => {
-                update(current => ({ ...current, players: current.players.filter(p => p.id !== player.id) }));
-                setNotice(`${player.name} removed from your saved roster.`);
-              }}>Remove</button>
+              <button className="ffb-btn ffb-btn-quiet" type="button" aria-label={`Remove ${player.name}`} onClick={() => removeFromRoster(player)}>Remove</button>
             </li>)}
           </ul>}
         </div>
@@ -253,7 +281,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
             <h3 className="ffb-h3">Weekly lineup by consensus</h3>
             {!stale && <p className="ffb-sechead-note">{rankedStarters} ranked {rankedStarters === 1 ? "starter" : "starters"}</p>}
           </div>
-          {stale ? <p className="ffb-notice ffb-notice-warn">Weekly data is stale. Lineup and add/drop recommendations are paused until it refreshes.</p> : <ul className="ffb-slots ffb-wk-lineup">
+          {stale ? <p className="ffb-notice ffb-notice-warn">Weekly data is stale. Lineup and add/drop recommendations are paused until it refreshes.</p> : <ul className="ffb-slots ffb-slots-list">
             {lineup.map(slot => {
               const weeklyPlayer = slot.player ? weekly.get(slot.player.id) : undefined;
               // An open slot is keyed with the position that fits it, and a filled one is the player's own sticker.
@@ -262,7 +290,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
                 <span className="ffb-slot-code">{slot.slot}</span>
                 <span className="ffb-slot-name">{slot.player?.name ?? (/^(K|DST) /.test(slot.slot) ? "Weekly rankings unavailable" : "No ranked player")}</span>
                 {slot.player && <span className="ffb-slot-meta">{slot.player.position} · {slot.player.team}{weeklyPlayer?.opponent ? ` · ${weeklyPlayer.opponent}` : ""}</span>}
-                {slot.rank !== null && <span className="ffb-wk-slot-rank">#{slot.rank}<small>{slot.player?.position === "QB" ? "QB" : "Flex"}</small></span>}
+                {slot.rank !== null && <span className="ffb-slot-value">#{slot.rank}{" "}<small>{slot.player?.position === "QB" ? "QB" : "Flex"}</small></span>}
               </li>;
             })}
           </ul>}

@@ -62,6 +62,17 @@ const VIEWS = {
   },
 } as const;
 
+/**
+ * What a phone prints on the scoring switch, the same three the rankings board
+ * prints, so scoring shares a row with the search field. The full label stays
+ * each button's accessible name.
+ */
+const SCORING_SHORT_LABELS: Record<FantasyRouteScoring, string> = {
+  ppr: "PPR",
+  half_ppr: "Half",
+  standard: "Std",
+};
+
 /** Tailwind's `md`, the width at which the tables fit without clipping. */
 const TABLE_LAYOUT_QUERY = "(min-width: 768px)";
 
@@ -175,7 +186,9 @@ function SourceLink({ href, label }: { href: string; label: string }) {
 /**
  * The player as both views print him: the position chip with his position
  * rank, the name, and the team. The waiver list has no opponent column, so
- * there the matchup follows the team.
+ * there the matchup follows the team. The chip and the name are one group and
+ * the team and the matchup another, so a tight cell wraps between the two and
+ * never leaves the chip on a line by itself.
  */
 function PlayerCell({
   player,
@@ -185,29 +198,36 @@ function PlayerCell({
   withOpponent?: boolean;
 }) {
   return (
-    <span className="ffb-wk-player">
-      <span className={`ffb-chip ffb-pos-${player.position.toLowerCase()}`}>
-        {player.position}
-        {player.positionRank ?? ""}
+    <span className="ffb-namecell">
+      <span className="ffb-wk-who">
+        <span className={`ffb-chip ffb-pos-${player.position.toLowerCase()}`}>
+          {player.position}
+          {player.positionRank ?? ""}
+        </span>{" "}
+        <span className="ffb-wk-name">{player.name}</span>
+      </span>{" "}
+      <span className="ffb-wk-where">
+        <span className="ffb-c-team">{player.team}</span>
+        {withOpponent && player.opponent ? (
+          <>
+            {" "}
+            <span className="ffb-wk-opp">{player.opponent}</span>
+          </>
+        ) : null}
       </span>
-      <span className="ffb-wk-name">{player.name}</span>
-      <span className="ffb-c-team">{player.team}</span>
-      {withOpponent && player.opponent ? (
-        <span className="ffb-wk-opp">{player.opponent}</span>
-      ) : null}
     </span>
   );
 }
 
 /**
  * One value of a stacked row. The list's head names the column on screen, so
- * the label here is for assistive tech and is visually hidden.
+ * the label here is for assistive tech, and the kit's `ffb-pairs-cols` hides it.
  */
 function ReadoutPair({ label, value, emphasis = false }: { label: string; value: string; emphasis?: boolean }) {
   return (
     <div>
-      <dt className="ffb-vh">{label}</dt>
-      <dd className={emphasis ? "ffb-wk-strong" : undefined}>{value}</dd>
+      <dt>{label}</dt>
+      <dd className={emphasis ? "ffb-is-strong" : undefined}>{value}</dd>
     </div>
   );
 }
@@ -430,18 +450,20 @@ export function WeeklyBoardClient({
                 <div className="ffb-seg ffb-seg-pos" role="group" aria-label="Board">
                   {(
                     [
-                      ["flex", "Flex (RB, WR, TE)", "ffb-pos-flex"],
-                      ["quarterbacks", "Quarterback", "ffb-pos-qb"],
+                      ["flex", "Flex (RB, WR, TE)", "Flex", "ffb-pos-flex"],
+                      ["quarterbacks", "Quarterback", "QB", "ffb-pos-qb"],
                     ] as const
-                  ).map(([value, label, tone]) => (
+                  ).map(([value, label, shortLabel, tone]) => (
                     <button
                       key={value}
                       type="button"
                       aria-pressed={board === value}
+                      aria-label={label}
                       onClick={() => updateRouteState({ board: value })}
                       className={`ffb-seg-btn ${tone}`}
                     >
-                      {label}
+                      <span className="md:hidden">{shortLabel}</span>
+                      <span className="max-md:hidden">{label}</span>
                     </button>
                   ))}
                 </div>
@@ -464,16 +486,18 @@ export function WeeklyBoardClient({
                 ) : null}
               </>
             ) : null}
-            <div className="ffb-seg" role="group" aria-label="Scoring">
+            <div className="ffb-seg ffb-wk-scoring" role="group" aria-label="Scoring">
               {(Object.keys(FANTASY_SCORING_LABELS) as FantasyRouteScoring[]).map((option) => (
                 <button
                   key={option}
                   type="button"
                   aria-pressed={scoring === option}
+                  aria-label={FANTASY_SCORING_LABELS[option]}
                   onClick={() => updateRouteState({ scoring: option })}
                   className="ffb-seg-btn"
                 >
-                  {FANTASY_SCORING_LABELS[option]}
+                  <span className="md:hidden">{SCORING_SHORT_LABELS[option]}</span>
+                  <span className="max-md:hidden">{FANTASY_SCORING_LABELS[option]}</span>
                 </button>
               ))}
             </div>
@@ -495,22 +519,26 @@ export function WeeklyBoardClient({
                 />
               </label>
             ) : null}
-            {/* Below 1200px My team sits under the board, so this is the way
-                to it. From 1200px it is in the rail and the link is not needed. */}
+            {/* The last row of the toolbar on a phone: the way to My team and the
+                count. From 768px the wrapper has no box and both sit in the toolbar. */}
             {activeBoard ? (
-              <a href="#my-team" className="ffb-btn min-[1200px]:hidden">
-                My team, {rosteredCount} {rosteredCount === 1 ? "player" : "players"}
-              </a>
-            ) : null}
-            {/* The count is the page's live region. It stays mounted across
-                every filter change so a search that lands on one row is
-                announced rather than only seen. It is also where focus lands
-                after Show all, since that button unmounts itself and would
-                otherwise drop a keyboard user to the top of the document. */}
-            {activeBoard && view === "rankings" && players.length > 0 ? (
-              <p ref={countLineRef} role="status" tabIndex={-1} className="ffb-count">
-                {filteredPlayers.length === 0 ? emptyFilterLine : countLine}
-              </p>
+              <div className="ffb-wk-toolbar-end">
+                {/* Below 1200px My team sits under the board, so this is the way
+                    to it. From 1200px it is in the rail and the link is not needed. */}
+                <a href="#my-team" className="ffb-btn min-[1200px]:hidden">
+                  My team, {rosteredCount} {rosteredCount === 1 ? "player" : "players"}
+                </a>
+                {/* The count is the page's live region. It stays mounted across
+                    every filter change so a search that lands on one row is
+                    announced rather than only seen. It is also where focus lands
+                    after Show all, since that button unmounts itself and would
+                    otherwise drop a keyboard user to the top of the document. */}
+                {view === "rankings" && players.length > 0 ? (
+                  <p ref={countLineRef} role="status" tabIndex={-1} className="ffb-count">
+                    {filteredPlayers.length === 0 ? emptyFilterLine : countLine}
+                  </p>
+                ) : null}
+              </div>
             ) : null}
           </div>
         ) : null}
@@ -566,7 +594,7 @@ export function WeeklyBoardClient({
           // they are out of `ffb-wk-rail`.
           <div className="ffb-work">
             {view === "waivers" ? (
-              <section aria-labelledby="weekly-waivers" className="ffb-wk-main">
+              <section aria-labelledby="weekly-waivers" className="ffb-wk-main ffb-wk-main-waivers">
                 <div className="ffb-sechead ffb-sechead-lg">
                   <FantasySectionHeading id="weekly-waivers">
                     This week&rsquo;s list
@@ -583,7 +611,8 @@ export function WeeklyBoardClient({
                   ) : null}
                 </div>
                 <p className="ffb-method">
-                  The gap is the player&rsquo;s percentile on this board minus
+                  Players the experts rank ahead of where the rostering rate
+                  puts them. The gap is the player&rsquo;s percentile on this board minus
                   the percentage of leagues rostering him, so both numbers are
                   printed beside it and any row can be checked by hand.
                 </p>
@@ -601,16 +630,16 @@ export function WeeklyBoardClient({
                     role="region"
                     aria-label="Waiver targets table"
                   >
-                    <table className="ffb-table ffb-wk-table">
+                    <table className="ffb-table ffb-wk-table ffb-wk-table-waivers">
                       <caption className="sr-only">{waiversCaption}</caption>
                       <thead>
                         <tr>
                           <th scope="col">Player</th>
-                          <th scope="col" className="ffb-num ffb-wk-h-num">Gap</th>
-                          <th scope="col" className="ffb-num ffb-wk-h-num">Board</th>
-                          <th scope="col" className="ffb-num ffb-wk-h-num">Rank</th>
-                          <th scope="col" className="ffb-num ffb-wk-h-num-wide">Percentile</th>
-                          <th scope="col" className="ffb-num ffb-wk-h-num-wide">Rostered</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-gap">Gap</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-short">Board</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-short">Rank</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-pct">Percentile</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-own">Rostered</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -619,15 +648,15 @@ export function WeeklyBoardClient({
                             <th scope="row">
                               <PlayerCell player={candidate.player} withOpponent />
                             </th>
-                            <td className="ffb-num ffb-wk-strong">{candidate.gap.toFixed(1)}</td>
-                            <td className="ffb-num ffb-wk-flat">
+                            <td className="ffb-num ffb-c-num ffb-is-strong">{candidate.gap.toFixed(1)}</td>
+                            <td className="ffb-num ffb-c-num ffb-is-flat">
                               {candidate.board === "flex" ? "Flex" : "QB"}
                             </td>
                             <td className="ffb-num">{candidate.player.rank}</td>
-                            <td className="ffb-num ffb-wk-flat">
+                            <td className="ffb-num ffb-c-num ffb-is-flat">
                               {candidate.rankPercentile.toFixed(1)}
                             </td>
-                            <td className="ffb-num ffb-wk-flat">
+                            <td className="ffb-num ffb-c-num ffb-is-flat">
                               {formatOwnership(candidate.ownership)}
                             </td>
                           </tr>
@@ -637,7 +666,7 @@ export function WeeklyBoardClient({
                   </div>
                 ) : (
                   <>
-                  <div className="ffb-colhead ffb-sticky ffb-wk-listhead ffb-wk-listhead-5" aria-hidden="true">
+                  <div className="ffb-colhead ffb-sticky ffb-listhead ffb-listhead-plain" aria-hidden="true">
                     <span>Gap</span>
                     <span>Board</span>
                     <span>Rank</span>
@@ -648,11 +677,11 @@ export function WeeklyBoardClient({
                     {waivers.map((candidate) => (
                       <li
                         key={`${candidate.board}-${candidate.player.id}`}
-                        className="ffb-row ffb-wk-row ffb-wk-row-plain"
+                        className="ffb-row ffb-row-stack ffb-row-stack-plain"
                       >
                         <div>
                           <PlayerCell player={candidate.player} withOpponent />
-                          <dl className="ffb-pairs ffb-wk-readout ffb-wk-readout-5">
+                          <dl className="ffb-pairs ffb-pairs-cols">
                             <ReadoutPair label="Gap" value={candidate.gap.toFixed(1)} emphasis />
                             <ReadoutPair
                               label="Board"
@@ -712,7 +741,7 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="ffb-wk-main">
+              <section aria-labelledby="weekly-board" className="ffb-wk-main ffb-wk-main-weekly">
                 <div className="ffb-sechead ffb-sechead-lg">
                   <FantasySectionHeading id="weekly-board">
                     {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
@@ -735,7 +764,7 @@ export function WeeklyBoardClient({
                   </div>
                 ) : filteredPlayers.length === 0 ? (
                   <div className="ffb-empty">
-                    <p className="ffb-empty-title">No players match</p>
+                    <p className="ffb-empty-title">No players match on this board.</p>
                     <button
                       type="button"
                       onClick={() => {
@@ -779,7 +808,7 @@ export function WeeklyBoardClient({
                   </table>
                 ) : (
                   <>
-                  <div className="ffb-colhead ffb-sticky ffb-wk-listhead" aria-hidden="true">
+                  <div className="ffb-colhead ffb-sticky ffb-listhead" aria-hidden="true">
                     <span className="ffb-h-num">#</span>
                     <span>Opponent</span>
                     <span>Expert range</span>
@@ -787,14 +816,14 @@ export function WeeklyBoardClient({
                   </div>
                   <ol role="list" aria-label={rankingsCaption} className="ffb-rows">
                     {visiblePlayers.map((player) => (
-                      <li key={player.id} className="ffb-row ffb-wk-row">
+                      <li key={player.id} className="ffb-row ffb-row-stack">
                         <span className="ffb-c-rank">
                           <span className="sr-only">Rank </span>
                           {player.rank}
                         </span>
                         <div>
                           <PlayerCell player={player} />
-                          <dl className="ffb-pairs ffb-wk-readout">
+                          <dl className="ffb-pairs ffb-pairs-cols">
                             <ReadoutPair label="Opponent" value={player.opponent ?? "—"} />
                             <ReadoutPair label="Expert range" value={formatSpread(player)} />
                             <ReadoutPair
@@ -809,7 +838,7 @@ export function WeeklyBoardClient({
                   </>
                 )}
                 {remainingCount > 0 ? (
-                  <div className="ffb-wk-more">
+                  <div className="ffb-more-row">
                     <button
                       type="button"
                       onClick={() =>

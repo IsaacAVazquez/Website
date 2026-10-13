@@ -127,6 +127,13 @@ function renderClient(view: "rankings" | "waivers", snapshot = buildSnapshot()) 
   );
 }
 
+/** The labels of the visible head over a phone list, which is hidden from assistive tech. */
+function listHeadLabels(list: HTMLElement) {
+  const head = list.previousElementSibling;
+  expect(head).toHaveAttribute("aria-hidden", "true");
+  return Array.from(head?.children ?? []).map((cell) => cell.textContent?.trim());
+}
+
 function bodyRowCount() {
   const table = screen.getByRole("table");
   return within(table).getAllByRole("row").length - 1;
@@ -218,6 +225,18 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(region).not.toHaveClass("c97-panel");
   });
 
+  it("keeps the full name on each switch button while a phone prints a short one", () => {
+    renderClient("rankings");
+    const flex = screen.getByRole("button", { name: "Flex (RB, WR, TE)" });
+    expect(flex).toHaveAttribute("aria-pressed", "true");
+    expect(within(flex).getByText("Flex")).toBeInTheDocument();
+    expect(within(screen.getByRole("button", { name: "Quarterback" })).getByText("QB")).toBeInTheDocument();
+    const scoring = screen.getByRole("group", { name: "Scoring" });
+    expect(within(scoring).getByRole("button", { name: "PPR" })).toHaveAttribute("aria-pressed", "true");
+    expect(within(within(scoring).getByRole("button", { name: "Half PPR" })).getByText("Half")).toBeInTheDocument();
+    expect(within(within(scoring).getByRole("button", { name: "Standard" })).getByText("Std")).toBeInTheDocument();
+  });
+
   it("uses the quarterback depth on the quarterback board", () => {
     currentSearchParams = new URLSearchParams("board=quarterbacks");
     renderClient("rankings");
@@ -261,6 +280,7 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(screen.getByRole("status")).toHaveTextContent(
       "No players match your search or position filter.",
     );
+    expect(screen.getByText("No players match on this board.")).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Show all players" }));
     expect(screen.getByRole("status")).toHaveTextContent(
       `Showing ${FANTASY_WEEKLY_STARTABLE_DEPTH.flex} of ${FLEX_COUNT} players`,
@@ -287,6 +307,11 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(first.getByText("1 to 6")).toBeInTheDocument();
     expect(first.getByText("Rostered")).toBeInTheDocument();
     expect(first.getByText("99.0%")).toBeInTheDocument();
+    // The row's labels are for assistive tech. What a phone shows is the list head, which has
+    // to name the same columns in the same order, after the rank mark.
+    const rowLabels = first.getAllByRole("term").map((term) => term.textContent?.trim());
+    expect(rowLabels).toEqual(["Opponent", "Expert range", "Rostered"]);
+    expect(listHeadLabels(list)).toEqual(["#", ...rowLabels]);
     expect(screen.getByRole("status")).toHaveTextContent(
       `Showing ${FANTASY_WEEKLY_STARTABLE_DEPTH.flex} of ${FLEX_COUNT} players`,
     );
@@ -307,6 +332,31 @@ describe("WeeklyBoardClient with a server seed", () => {
 
     expect(screen.getByText("Loading the weekly board.")).toBeInTheDocument();
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
+  });
+
+  it("keeps the alert, Try again, and the scoring switch when the seed lacks the chosen scoring and the fetch failed", () => {
+    const { boards, ...rest } = buildSnapshot();
+    const retry = jest.fn();
+    currentSearchParams = new URLSearchParams("scoring=standard");
+    mockUseFantasyWeeklySnapshot.mockReturnValue({
+      snapshot: { ...rest, boards: { ppr: boards.ppr } },
+      notPublished: false,
+      isLoading: false,
+      error: "The weekly board is unavailable right now.",
+      retry,
+    });
+    render(<WeeklyBoardClient initialState={{ scoring: "ppr", board: "flex" }} view="rankings" />);
+
+    const alert = screen.getByRole("alert");
+    expect(alert).toHaveTextContent("The weekly board is unavailable right now.");
+    fireEvent.click(within(alert).getByRole("button", { name: "Try again" }));
+    expect(retry).toHaveBeenCalledTimes(1);
+    // Scoring stays up, so the reader can go back to the format the seed carries.
+    const scoring = screen.getByRole("group", { name: "Scoring" });
+    expect(within(scoring).getByRole("button", { name: "Standard" })).toHaveAttribute("aria-pressed", "true");
+    expect(within(scoring).getByRole("button", { name: "PPR" })).toBeInTheDocument();
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+    expect(screen.queryByText("Loading the weekly board.")).not.toBeInTheDocument();
   });
 
   it("server-renders the rows with a UTC stamp, since the visitor's timezone is unknown there", () => {
@@ -332,7 +382,38 @@ describe("WeeklyBoardClient with a server seed", () => {
   });
 });
 
+// Before Week 1 the builder publishes nothing, the fetch answers 404, and there is no seed.
+describe("WeeklyBoardClient before the board is published", () => {
+  it.each(["rankings", "waivers"] as const)("shows the note and no board on the %s view", (view) => {
+    mockUseFantasyWeeklySnapshot.mockReturnValue({
+      snapshot: null,
+      notPublished: true,
+      isLoading: false,
+      error: null,
+      retry: jest.fn(),
+    });
+    render(<WeeklyBoardClient initialState={{ scoring: "ppr", board: "flex" }} view={view} />);
+
+    const note = screen.getByRole("note");
+    expect(note).toHaveTextContent(
+      "The weekly board opens with Week 1. It is deliberately empty until then. Rostered percentages before leagues have drafted describe the preseason rather than a waiver wire, and publishing them now would make the add list say something I cannot support. Until kickoff, the draft rankings are the board that means anything.",
+    );
+    expect(within(note).getByRole("link", { name: "draft rankings" })).toHaveAttribute("href", "/fantasy-football");
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+    expect(screen.queryByRole("group", { name: "Scoring" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "My team" })).not.toBeInTheDocument();
+  });
+});
+
 describe("WeeklyBoardClient waivers view", () => {
+  it("opens the method with the sentence that says what the list is", () => {
+    renderClient("waivers");
+    expect(
+      screen.getByText(/^Players the experts rank ahead of where the rostering rate puts them\. The gap is the player’s percentile on this board minus the percentage of leagues rostering him/),
+    ).toBeInTheDocument();
+  });
+
   it("stamps both boards and lets the chip follow the worse of the two", () => {
     const { unmount } = renderClient("waivers");
     expect(screen.getByText(/Flex updated .*, 8 experts/)).toBeInTheDocument();
@@ -412,5 +493,7 @@ describe("WeeklyBoardClient waivers view", () => {
       .getAllByRole("term")
       .map((term) => term.textContent?.trim());
     expect(labels).toEqual(["Gap", "Board", "Rank", "Percentile", "Rostered"]);
+    // The visible head names the same columns in the same order, with no rank column.
+    expect(listHeadLabels(list)).toEqual(labels);
   });
 });
