@@ -112,11 +112,15 @@
   }
   .ffb-dt-setup > .ffb-dt-setup-head { grid-column: 1 / -1; }
   .ffb-dt-setup > :is(.ffb-dt-setup-main, .ffb-dt-optional) { grid-column: 1; }
+  /* It pins at the top of the screen. The padding is its breathing room there, and the
+     negative margin takes the same amount back so it still lines up with the fields. */
   .ffb-dt-setup > .ffb-dt-start {
     position: sticky;
-    top: var(--ffb-s4);
+    top: 0;
     grid-column: 2;
     grid-row: 2 / span 2;
+    margin-top: calc(-1 * var(--ffb-s4));
+    padding-top: var(--ffb-s4);
   }
 }
 @media (min-width: 1280px) {
@@ -278,7 +282,7 @@
 .ffb-dt-board .ffb-search-input:focus-visible { outline: none; }
 .ffb-dt-board .ffb-search:has(.ffb-search-input:focus-visible) {
   outline: 2px solid var(--c97-accent);
-  outline-offset: 2px;
+  outline-offset: 0;
 }
 /* A delta that reads as value at this pick takes the good ink, and keeps its sign. */
 .ffb-dt-board .ffb-c-num.ffb-dt-is-value { color: var(--ffb-good); }
@@ -295,6 +299,14 @@
   scrollbar-width: thin;
 }
 .ffb-dt-gridwrap > .ffb-grid { min-width: calc(var(--ffb-grid-lead) + var(--ffb-teams, 12) * 24px); }
+/* "WR10" needs 29px at the kit's size, and a cell is about 22px in a 14 or 16 team room and on
+   every phone. There the label sets at 10px on the face's narrowest width, which needs 20px. */
+.ffb-root .ffb-dt-grid-tight .ffb-cell.ffb-is-made {
+  font-size: 10px;
+  font-stretch: 62%;
+  letter-spacing: 0;
+}
+.ffb-dt-grid-tight .ffb-cell:not(.ffb-is-made) { font-size: 10px; }
 
 /* Draft signals and the recap: ruled entries, no tiles. */
 .ffb-dt-entries { display: grid; }
@@ -348,6 +360,8 @@
   .ffb-dt-bug .ffb-bug-live { flex-basis: 120px; }
   .ffb-dt-bug .ffb-bug-seg:not(.ffb-bug-live) { flex: 1 1 auto; }
   .ffb-dt-clock.ffb-dt-is-urgent { margin-block: 0; }
+  /* A finished draft has no live cell, so "Done" takes its place beside the actions. */
+  .ffb-dt-bug .ffb-dt-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }
   /* The scorebug already pins two rows, so the board's bar scrolls with the list. */
   .ffb-dt-boardbar { position: static; }
   /* The VORP note is five lines here, so it prints after the first tier and the board starts sooner. */
@@ -363,6 +377,11 @@
     gap: var(--ffb-s3);
   }
   .ffb-dt-picks-note { max-width: none; }
+  .ffb-root .ffb-dt-gridwrap .ffb-cell.ffb-is-made {
+    font-size: 10px;
+    font-stretch: 62%;
+    letter-spacing: 0;
+  }
   /* A lineup can hold more than ten slots, so the rows keep their height past the kit's two. */
   .ffb-dt-slots { grid-template-rows: none; grid-auto-rows: 44px; }
   .ffb-dt-replay-note { padding-inline-start: 0; }

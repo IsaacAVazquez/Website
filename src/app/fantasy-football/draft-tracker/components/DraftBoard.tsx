@@ -180,6 +180,10 @@ export function DraftBoard({
         return;
       }
       event.preventDefault();
+      // The site header listens for the same key on window and opens the site
+      // search without checking whether the key was already taken, which pulled
+      // focus off this field. This room has claimed the key, so it stops here.
+      event.stopPropagation();
       searchInputRef.current?.focus();
       searchInputRef.current?.select();
     }
@@ -473,10 +477,11 @@ export function DraftBoard({
       >
         <header className="ffb-tier-head">
           <h3 className="ffb-tier-name">
+            {/* The spaces keep the three parts apart when the heading is read as one string. */}
             <span className="ffb-tier-tab">
               {group.tier !== null ? `Tier ${group.tier}` : "No published tier"}
-            </span>
-            <span className="ffb-tier-count">{group.rows.length} left</span>
+            </span>{" "}
+            <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
             <span className="ffb-tier-range">
               Ranks {firstRank}–{lastRank}
             </span>
@@ -490,7 +495,7 @@ export function DraftBoard({
         </header>
         {gone ? (
           <p className="ffb-tier-gone">
-            <span className="ffb-label">Gone</span>
+            <span className="ffb-label">Gone</span>{" "}
             <span>{gone.join(", ")}</span>
           </p>
         ) : null}
@@ -499,7 +504,7 @@ export function DraftBoard({
             player.id === turnPlayerId ? (
               <Fragment key={player.id}>
                 <li className="ffb-turnline">
-                  <span className="ffb-turn-tab">Your turn #{nextUserPick}</span>
+                  <span className="ffb-turn-tab">Your turn #{nextUserPick}</span>{" "}
                   <span className="ffb-turn-note">if picks follow this board</span>
                 </li>
                 {renderRow(player)}
@@ -531,7 +536,7 @@ export function DraftBoard({
               title={`Log ${player.name}`}
               className="ffb-btn ffb-dt-queue-btn"
             >
-              <span className="ffb-muted">#{formatRankValue(player.rankEcr ?? player.averageRank)}</span>
+              <span className="ffb-muted">#{formatRankValue(player.rankEcr ?? player.averageRank)}</span>{" "}
               <span className="ffb-dt-queue-name">{player.name}</span>
             </button>
           ))}

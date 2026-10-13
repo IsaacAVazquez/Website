@@ -61,7 +61,7 @@ function ClockCell({
     >
       <span className="ffb-bug-label">Clock</span>
       <p className="ffb-bug-value">
-        {formatClock(Math.max(0, clock.secondsLeft))}
+        {formatClock(Math.max(0, clock.secondsLeft))}{" "}
         <small>
           <span className="ffb-dt-short">{secondsPerPick}s advisory</span>
           <span className="ffb-dt-long">advisory · {secondsPerPick}s per pick</span>
@@ -131,7 +131,7 @@ export function DraftScorebug({
         <div
           ref={isComplete ? onClockRef : undefined}
           tabIndex={isComplete ? -1 : undefined}
-          className="ffb-bug-seg"
+          className={isComplete ? "ffb-bug-seg ffb-dt-done" : "ffb-bug-seg"}
         >
           <span className="ffb-bug-label">Pick</span>
           <p className="ffb-bug-value">
@@ -150,8 +150,7 @@ export function DraftScorebug({
           <div className="ffb-bug-seg">
             <span className="ffb-bug-label">Round</span>
             <p className="ffb-bug-value">
-              {currentRound}
-              <small>of {rounds}</small>
+              {currentRound} <small>of {rounds}</small>
             </p>
           </div>
         )}
@@ -175,7 +174,7 @@ export function DraftScorebug({
               </span>
               <p className="ffb-bug-value">
                 {nextTurn.value}
-                {nextTurn.note ? <small>{nextTurn.note}</small> : null}
+                {nextTurn.note ? <> <small>{nextTurn.note}</small></> : null}
               </p>
             </div>
           </>
@@ -186,12 +185,11 @@ export function DraftScorebug({
           <p className="ffb-bug-value">
             {poolLeft === null ? (
               <>
-                —<small>board loading</small>
+                — <small>board loading</small>
               </>
             ) : (
               <>
-                {poolLeft}
-                <small>left</small>
+                {poolLeft} <small>left</small>
               </>
             )}
           </p>
@@ -271,7 +269,7 @@ export function DraftLastPicks({
     <div className="ffb-picks ffb-dt-picks">
       <div className="ffb-dt-picks-head">
         <h3 className="ffb-h3">Last picks</h3>
-        <p className="ffb-dt-picks-note">Select one to undo back to it</p>
+        <p className="ffb-dt-picks-note ffb-dt-noprint">Select one to undo back to it</p>
       </div>
       <ol ref={listRef} className="ffb-picks-list">
         {picks.map((pick, index) => {
@@ -316,7 +314,9 @@ export function DraftRoster({
   picked: number;
   rounds: number;
 }) {
-  const benchSize = Math.max(0, rounds - assignment.slots.length);
+  // A starting slot left open sends its pick to the bench, so the bench can outgrow the
+  // spots the lineup leaves for it. The count never prints past its own total.
+  const benchSize = Math.max(assignment.bench, rounds - assignment.slots.length);
   return (
     <section className="ffb-rail-lead" aria-labelledby="draft-roster-heading">
       <div className="ffb-sechead">
@@ -346,17 +346,20 @@ export function DraftRoster({
                   : `ffb-slot ${positionClass(slot.slot)}`.trimEnd()
               }
             >
-              <span className="ffb-slot-code">{slot.slot}</span>
+              <span className="ffb-slot-code">{slot.slot}</span>{" "}
               <span className="ffb-slot-name">{player ? shortName(player) : "Open"}</span>
               {player ? (
-                <span className="ffb-slot-meta">{[player.team, bye].filter(Boolean).join(" · ")}</span>
+                <>
+                  {" "}
+                  <span className="ffb-slot-meta">{[player.team, bye].filter(Boolean).join(" · ")}</span>
+                </>
               ) : null}
             </li>
           );
         })}
         <li className="ffb-slot ffb-slot-bench">
-          <span className="ffb-slot-code">BN</span>
-          <span className="ffb-slot-name">Bench</span>
+          <span className="ffb-slot-code">BN</span>{" "}
+          <span className="ffb-slot-name">Bench</span>{" "}
           <span className="ffb-slot-meta">
             {assignment.bench} of {benchSize}
           </span>
@@ -413,7 +416,8 @@ export function DraftPickGrid({
       </p>
       <div className="ffb-dt-gridwrap">
         <div
-          className="ffb-grid"
+          // Fourteen and sixteen columns leave a cell about 22px, so those rooms set the cell's type smaller.
+          className={totalTeams >= 14 ? "ffb-grid ffb-dt-grid-tight" : "ffb-grid"}
           style={{ "--ffb-teams": totalTeams, "--ffb-my-slot": userTeam } as CSSProperties}
         >
           <span />
@@ -478,12 +482,12 @@ export function DraftPickGrid({
         </div>
       </div>
       <p className="ffb-tally">
-        <span className="ffb-tally-label">Taken</span>
+        <span className="ffb-tally-label">Taken</span>{" "}
         {TALLY_POSITIONS.filter(
           (position) => (taken.get(position) ?? 0) > 0 || !["K", "DST"].includes(position)
         ).map((position) => (
           <span key={position} className="ffb-tally-item">
-            <span className={`ffb-chip ffb-chip-sm ${positionClass(position)}`}>{position}</span>
+            <span className={`ffb-chip ffb-chip-sm ${positionClass(position)}`}>{position}</span>{" "}
             {taken.get(position) ?? 0}
           </span>
         ))}
