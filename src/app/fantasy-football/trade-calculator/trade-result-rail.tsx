@@ -1,4 +1,3 @@
-import { AlertTriangle, Check, Info, Scale } from "lucide-react";
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { formatUpdatedAt } from "@/lib/fantasyUtils";
 import type {
@@ -8,10 +7,24 @@ import type {
 } from "@/lib/fantasyTrade";
 import { TradeBalanceScale } from "./trade-balance-scale";
 
+// The provider publishes the market window's end as a date, normalised to
+// midnight UTC by the builder. It prints as a date in UTC everywhere on the
+// page (the head, the season note, the evidence row), since a clock time is
+// something the source never gave and a US timezone rolls the date back a day.
+export function formatMarketDate(asOf: string | null | undefined): string | null {
+  if (!asOf) return null;
+  const parsed = new Date(asOf);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeZone: "UTC" }).format(parsed);
+}
+
 interface VerdictCopy {
   title: string;
   body: string;
-  tone: string;
+  /** The kit's status ink for the title. Status is an ink and a word, never a fill. */
+  tone: "" | "ffb-muted" | "ffb-good" | "ffb-bad" | "ffb-warn";
+  /** A withheld verdict is something the page is holding back, so it wears the held notice. */
+  held?: boolean;
 }
 
 function verdictCopy(
@@ -22,7 +35,7 @@ function verdictCopy(
     return {
       title: "Build both sides",
       body: "Add at least one player to each package to see an estimate.",
-      tone: "var(--c97-ink-2)",
+      tone: "ffb-muted",
     };
   }
   switch (result?.verdict) {
@@ -32,37 +45,38 @@ function verdictCopy(
       return {
         title: "Balanced offer",
         body: "The central values are within 5% of each other.",
-        tone: "var(--c97-ink)",
+        tone: "",
       };
     case "leans-side-a":
       return {
         title: "You are giving more",
         body: "The central estimate leans toward the package you would send.",
-        tone: "var(--c97-negative)",
+        tone: "ffb-bad",
       };
     case "leans-side-b":
       return {
         title: "Leans your way",
         body: "The central estimate leans toward the package you would receive.",
-        tone: "var(--c97-positive)",
+        tone: "ffb-good",
       };
     case "clear-edge-side-a":
       return {
         title: "Clear edge to the other side",
         body: "The sensitivity ranges do not overlap, and the package you send is higher.",
-        tone: "var(--c97-negative)",
+        tone: "ffb-bad",
       };
     case "clear-edge-side-b":
       return {
         title: "Clear edge your way",
         body: "The sensitivity ranges do not overlap, and the package you receive is higher.",
-        tone: "var(--c97-positive)",
+        tone: "ffb-good",
       };
     default:
       return {
         title: "Verdict withheld",
         body: "The available inputs are too old, incomplete, or unsupported for a verdict.",
-        tone: "var(--c97-warning)",
+        tone: "ffb-warn",
+        held: true,
       };
   }
 }
@@ -70,8 +84,8 @@ function verdictCopy(
 /**
  * Compact verdict for phones and tablets, where the evaluation rail stacks
  * under both ledgers. Rendered only once both sides hold a player, so it never
- * pins "Build both sides" over an empty ledger, and only below lg, where the
- * rail is not already in view. It carries no live region; the rail announces.
+ * pins "Build both sides" over an empty ledger, and only below 1200px, where
+ * the rail is not already in view. It carries no live region; the rail announces.
  */
 export function TradeVerdictStrip({
   result,
@@ -83,61 +97,25 @@ export function TradeVerdictStrip({
   if (!hasBothSides || !result) return null;
   const copy = verdictCopy(result, hasBothSides);
   return (
-    <div
-      data-testid="trade-verdict-strip"
-      className="sticky top-0 z-20 flex items-center justify-between border lg:hidden"
-      style={{
-        paddingInline: "var(--c97-sp-1)",
-        paddingBlock: "var(--c97-sp-0)",
-        gap: "var(--c97-sp-1)",
-        borderColor: "var(--c97-rule)",
-        background: "var(--c97-field)",
-      }}
-    >
+    <div data-testid="trade-verdict-strip" className="ffb-sticky ffb-tr-strip flex min-[1200px]:hidden">
       <div className="min-w-0">
-        <p className="truncate text-sm font-semibold tracking-[-0.02em]" style={{ color: copy.tone }}>
-          {copy.title}
-        </p>
-        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
-          {result.coverage} coverage
-        </p>
+        <p className={`ffb-verdict-title ffb-tr-strip-title ${copy.tone}`}>{copy.title}</p>
+        <p className="ffb-label ffb-muted">{result.coverage} coverage</p>
       </div>
-      <a
-        href="#trade-evaluation"
-        className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-xs font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)" }}
-      >
+      <a href="#trade-evaluation" className="ffb-btn">
         Evidence
       </a>
     </div>
   );
 }
 
-function coverageStyle(coverage: FantasyTradeCoverage | null) {
-  // Nothing has been evaluated yet, so the chip rests neutral. The warning tone
-  // belongs to a result that actually carries a coverage warning.
-  if (coverage === null) {
-    return {
-      borderColor: "var(--c97-rule)",
-      background: "var(--c97-surface)",
-    };
-  }
-  if (coverage === "supported") {
-    return {
-      borderColor: "color-mix(in srgb, var(--c97-positive) 35%, var(--c97-rule))",
-      background: "color-mix(in srgb, var(--c97-positive) 10%, var(--c97-surface))",
-    };
-  }
-  if (coverage === "insufficient") {
-    return {
-      borderColor: "color-mix(in srgb, var(--c97-negative) 35%, var(--c97-rule))",
-      background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
-    };
-  }
-  return {
-    borderColor: "color-mix(in srgb, var(--c97-warning) 35%, var(--c97-rule))",
-    background: "color-mix(in srgb, var(--c97-warning) 9%, var(--c97-surface))",
-  };
-}
+// Nothing has been evaluated yet, so the badge rests muted. A status ink
+// belongs to a result that actually carries that coverage.
+const COVERAGE_TONE: Record<FantasyTradeCoverage, string> = {
+  supported: "ffb-good",
+  limited: "ffb-warn",
+  insufficient: "ffb-bad",
+};
 
 function formatIndex(value: number | null | undefined): string {
   return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "—";
@@ -153,14 +131,10 @@ function ValueReadout({
   valuesAvailable: boolean;
 }) {
   return (
-    <div>
-      <dt className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-        {label}
-      </dt>
-      <dd className="font-mono text-xl tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-        {valuesAvailable ? formatIndex(side?.value) : "—"}
-      </dd>
-      <dd className="mt-0.5 text-2xs text-[var(--c97-ink-2)]">
+    <div className="ffb-stat">
+      <dt>{label}</dt>
+      <dd>{valuesAvailable ? formatIndex(side?.value) : "—"}</dd>
+      <dd className="ffb-stat-note">
         {valuesAvailable && side
           ? `${formatIndex(side.range.low)} to ${formatIndex(side.range.high)}`
           : "Sensitivity unavailable"}
@@ -175,12 +149,17 @@ export function TradeResultRail({
   valuesAvailable,
   giveCount,
   getCount,
+  teams,
+  rosterSize,
 }: {
   result: FantasyTradeEvaluation | null;
   hasBothSides: boolean;
   valuesAvailable: boolean;
   giveCount: number;
   getCount: number;
+  /** The league as it is set, so the League fit row has its reading before any player is chosen. */
+  teams: number;
+  rosterSize: number;
 }) {
   const copy = verdictCopy(result, hasBothSides);
   const coverage = hasBothSides ? result?.coverage ?? null : null;
@@ -199,160 +178,137 @@ export function TradeResultRail({
   );
 
   return (
-    <aside
-      id="trade-evaluation"
-      aria-label="Trade evaluation"
-      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] lg:sticky lg:top-0 lg:self-start" style={{ padding: "var(--c97-sp-2)" }}
-    >
-      <div className="flex items-center justify-between border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-        <span className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
-          <Scale className="h-4 w-4" aria-hidden="true" />
-          Evaluation
-        </span>
-        <span
-          className="border font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink)]"
-          style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", ...(coverageStyle(coverage)) }}
+    <aside id="trade-evaluation" aria-label="Trade evaluation" className="ffb-rail ffb-tr-eval">
+      <div className="ffb-stack">
+        <div className="ffb-sechead ffb-tr-colhead">
+          <h2 className="ffb-h3">Evaluation</h2>
+          <span className={`ffb-badge ${coverage ? COVERAGE_TONE[coverage] : "ffb-muted"}`}>
+            {coverage ? `${coverage} coverage` : "Waiting"}
+          </span>
+        </div>
+
+        <div
+          className={`ffb-verdict ffb-tr-verdict${copy.held ? " ffb-notice ffb-notice-held" : ""}`}
+          aria-live="polite"
         >
-          {coverage ? `${coverage} coverage` : "Waiting"}
-        </span>
-      </div>
+          <p className={`ffb-verdict-title ${copy.tone}`}>{copy.title}</p>
+          <p className="ffb-verdict-body">{copy.body}</p>
+        </div>
 
-      <div style={{ paddingTop: "var(--c97-sp-2)" }} aria-live="polite">
-        <p className="text-xl font-semibold tracking-[-0.03em]" style={{ color: copy.tone }}>
-          {copy.title}
-        </p>
-        <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{copy.body}</p>
-      </div>
-
-      <div className="border-y border-[var(--c97-rule)]" style={{ paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
         <TradeBalanceScale result={hasBothSides ? result : null} />
+
+        {/* Until both sides hold a player there is nothing to read here, so the
+            idle desk shows the scale at rest and the line above it. */}
+        {hasBothSides ? (
+          <>
+            <dl className="ffb-stats">
+              <ValueReadout label="You give" side={result?.sideA ?? null} valuesAvailable={valuesAvailable} />
+              <ValueReadout label="You get" side={result?.sideB ?? null} valuesAvailable={valuesAvailable} />
+            </dl>
+            <p className="ffb-tr-effect">
+              <span className="ffb-label">Roster-slot effect</span>
+              {rosterDelta > 0
+                ? `Receiving ${rosterDelta} extra ${rosterDelta === 1 ? "player" : "players"} assumes the same number of replacement-level cuts.`
+                : rosterDelta < 0
+                  ? `This offer opens ${Math.abs(rosterDelta)} roster ${Math.abs(rosterDelta) === 1 ? "spot" : "spots"}.`
+                  : "Both packages use the same number of roster spots."}
+            </p>
+          </>
+        ) : null}
+
+        {/* A disclaimer never sits inside a disclosure, so this prints in the
+            open beside the verdict it qualifies. */}
+        <p className="ffb-method">
+          This is a preseason one-QB redraft estimate. It is not projected points, win probability, dynasty value, or injury advice.
+        </p>
       </div>
 
-      <dl className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
-        <ValueReadout label="You give" side={result?.sideA ?? null} valuesAvailable={valuesAvailable} />
-        <ValueReadout label="You get" side={result?.sideB ?? null} valuesAvailable={valuesAvailable} />
-      </dl>
-
-      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-        <h2 className="text-sm font-semibold text-[var(--c97-ink)]">Evidence mix</h2>
-        <dl className="grid text-sm" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-          <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <dt className="inline-flex items-center text-[var(--c97-ink-2)]">
+      <div>
+        <div className="ffb-sechead">
+          <h3 className="ffb-h3">Evidence mix</h3>
+        </div>
+        <dl className="ffb-facts ffb-facts-sm ffb-tr-facts">
+          <div className="ffb-fact">
+            <dt>
               Expert consensus
               <MetricTooltip
                 term="Expert consensus"
                 definition="Aggregate preseason expert rankings on the overall board. This is not a named creator model or a points projection."
               />
             </dt>
-            <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
-              {expertPlayers}/{totalPlayers || 0}
-              <span className="mt-0.5 block text-[var(--c97-ink-2)]">
-                {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
-              </span>
+            {result ? (
+              <dd>
+                {expertPlayers}/{totalPlayers} players
+              </dd>
+            ) : null}
+            <dd className="ffb-fact-note">
+              {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
             </dd>
           </div>
-          <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <dt className="inline-flex items-center text-[var(--c97-ink-2)]">
+          <div className="ffb-fact">
+            <dt>
               Draft market
               <MetricTooltip
                 term="Draft market"
                 definition="Current mock-draft average position. It is a preseason price signal, not a database of completed trades."
               />
             </dt>
-            <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
-              {marketPlayers}/{totalPlayers || 0}
-              <span className="mt-0.5 block text-[var(--c97-ink-2)]">
-                {/* "Not current" is a staleness claim, so it waits for an
-                    evaluated result that actually found the market unusable.
-                    Before that the header already carries the source date. */}
-                {!result
-                  ? "Waiting for players"
-                  : result.sources.market.usable
-                    ? formatUpdatedAt(result.sources.market.asOf)
-                    : "Not current"}
-              </span>
+            {result ? (
+              <dd>
+                {marketPlayers}/{totalPlayers} players
+              </dd>
+            ) : null}
+            <dd className="ffb-fact-note">
+              {/* "Not current" is a staleness claim, so it waits for an
+                  evaluated result that actually found the market unusable.
+                  Before that the header already carries the source date. */}
+              {!result
+                ? "Waiting for players"
+                : result.sources.market.usable
+                  ? formatMarketDate(result.sources.market.asOf) ?? "Unavailable"
+                  : "Not current"}
             </dd>
           </div>
-          <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <dt className="text-[var(--c97-ink-2)]">League fit</dt>
-            <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
-              {result ? `${result.league.teams} teams` : "—"}
-              <span className="mt-0.5 block text-[var(--c97-ink-2)]">
-                {result ? `${result.league.rosterSize} roster spots` : "Set your league"}
-              </span>
-            </dd>
+          <div className="ffb-fact">
+            <dt>League fit</dt>
+            <dd>{result?.league.teams ?? teams} teams</dd>
+            <dd className="ffb-fact-note">{result?.league.rosterSize ?? rosterSize} roster spots</dd>
           </div>
         </dl>
       </div>
 
-      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-        <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-          Roster-slot effect
-        </p>
-        <p className="text-sm leading-6 text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-          {rosterDelta > 0
-            ? `Receiving ${rosterDelta} extra ${rosterDelta === 1 ? "player" : "players"} assumes the same number of replacement-level cuts.`
-            : rosterDelta < 0
-              ? `This offer opens ${Math.abs(rosterDelta)} roster ${Math.abs(rosterDelta) === 1 ? "spot" : "spots"}.`
-              : "Both packages use the same number of roster spots."}
-        </p>
-      </div>
-
-      <div className="border-y border-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-2)" }}>
+      <div className="ffb-tr-limits">
         {warnings.length > 0 ? (
-          <details>
-            <summary className="flex min-h-touch cursor-pointer list-none items-center text-sm font-semibold text-[var(--c97-ink)] marker:content-none" style={{ gap: "var(--c97-sp-1)" }}>
-              <AlertTriangle className="h-4 w-4 shrink-0 text-[var(--c97-warning)]" aria-hidden="true" />
-              {/* The panel mixes top-level and per-player notes, so its title
-                  must match the coverage chip above it instead of asserting
-                  "limited" beside a supported or insufficient result. */}
+          <details className="ffb-details">
+            {/* The panel mixes top-level and per-player notes, so its title
+                must match the coverage badge above it instead of asserting
+                "limited" beside a supported or insufficient result. */}
+            <summary>
               {coverage === "insufficient"
                 ? "Why there is no verdict"
                 : coverage === "limited"
                   ? "Why coverage is limited"
                   : "Notes on this result"}
             </summary>
-            <ul className="grid text-xs leading-5 text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
-              {warnings.map((warning) => (
-                <li key={warning} className="flex" style={{ gap: "var(--c97-sp-1)" }}>
-                  <span
-                    aria-hidden="true"
-                    className="h-1 w-1 shrink-0 bg-[var(--c97-warning)]"
-                    style={{ marginTop: "calc(0.5lh - 2px)" }}
-                  />
-                  <span>{warning}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="ffb-details-body">
+              <ul className="ffb-notice ffb-notice-warn ffb-tr-warnings">
+                {warnings.map((warning) => (
+                  <li key={warning}>{warning}</li>
+                ))}
+              </ul>
+            </div>
           </details>
         ) : hasBothSides ? (
-          <p className="flex min-h-touch items-center text-xs leading-5 text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
-            <Check className="h-3.5 w-3.5 shrink-0 text-[var(--c97-positive)]" aria-hidden="true" />
+          <p className="ffb-method">
             Both sources cover every selected player and the sensitivity range is available.
           </p>
         ) : null}
 
-        <details
-          className={warnings.length > 0 || hasBothSides ? "border-t border-[var(--c97-rule)]" : undefined}
-        >
-          <summary className="flex min-h-touch cursor-pointer list-none items-center text-sm font-semibold text-[var(--c97-ink)] marker:content-none" style={{ gap: "var(--c97-sp-1)" }}>
-            <Info className="h-4 w-4 shrink-0 text-[var(--c97-ink-2)]" aria-hidden="true" />
-            How the estimate works
-          </summary>
-          <div className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-1)" }}>
-            <p>
+        <details className="ffb-details">
+          <summary>How the estimate works</summary>
+          <div className="ffb-details-body">
+            <p className="ffb-method">
               Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range.
-            </p>
-            <p
-              className="text-sm leading-6"
-              style={{
-                marginTop: "var(--c97-sp-1)",
-                fontFamily: "var(--c97-font-display)",
-                fontStyle: "italic",
-                fontWeight: 400,
-              }}
-            >
-              This is a preseason one-QB redraft estimate. It is not projected points, win probability, dynasty value, or injury advice.
             </p>
           </div>
         </details>
