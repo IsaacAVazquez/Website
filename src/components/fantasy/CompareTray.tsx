@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown, GitCompareArrows, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useCompareTray } from "@/hooks/useCompareTray";
 import { SHELL_CLASS } from "@/lib/fantasyUtils";
@@ -29,6 +29,22 @@ interface CompareTrayProps {
 }
 
 /**
+ * Where focus goes after a control that takes itself away: the pill after
+ * minimize, the Compare button after expand, the pin that moved into a removed
+ * pin's place after a remove.
+ */
+type FocusMove = { to: "pill" } | { to: "compare" } | { to: "pin"; removedId: string; index: number };
+
+/** Focuses the first of these that can take focus. A disabled button and a hidden pin cannot. */
+function focusFirst(candidates: Array<HTMLElement | null | undefined>) {
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+    candidate.focus();
+    if (document.activeElement === candidate) return;
+  }
+}
+
+/**
  * A band pinned to the bottom of the screen that holds the compare selection
  * and opens the side by side modal. It renders nothing until a player is
  * pinned, so it takes no room during normal browsing.
@@ -53,6 +69,9 @@ export function CompareTray({
   const replaceCompare = compare.replace;
   const [open, setOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const bandRef = useRef<HTMLDivElement>(null);
+  const pillRef = useRef<HTMLButtonElement>(null);
+  const focusMove = useRef<FocusMove | null>(null);
 
   const players = useMemo(
     () =>
@@ -73,13 +92,42 @@ export function CompareTray({
   const trayVisible = players.length > 0 || showHiddenSelections;
   const isCollapsed = collapsed && !showHiddenSelections;
 
+  // Minimize, expand, and remove each unmount the control that was pressed,
+  // which would drop a keyboard user's focus onto the page. This runs after
+  // the render that follows and hands focus to the control that took its place.
+  useEffect(() => {
+    const move = focusMove.current;
+    if (!move) return;
+    // The compare store has not dropped the pin yet, so its button is still here.
+    if (move.to === "pin" && compareIds.includes(move.removedId)) return;
+    focusMove.current = null;
+    if (move.to === "pill") {
+      pillRef.current?.focus();
+      return;
+    }
+    const band = bandRef.current;
+    if (!band) return;
+    const all = (selector: string) => Array.from(band.querySelectorAll<HTMLElement>(selector));
+    const clear = all("[data-compare-clear]");
+    if (move.to === "compare") {
+      focusFirst([...all("[data-compare-open]"), ...clear]);
+      return;
+    }
+    const pins = all("[data-compare-remove]");
+    focusFirst([pins[move.index] ?? pins[pins.length - 1], ...clear]);
+  });
+
   return (
     <>
       {trayVisible && isCollapsed && (
         <div className="ffb-ov-tray-min ffb-enter-rise">
           <button
+            ref={pillRef}
             type="button"
-            onClick={() => setCollapsed(false)}
+            onClick={() => {
+              focusMove.current = { to: "compare" };
+              setCollapsed(false);
+            }}
             aria-expanded={false}
             aria-label={`Compare ${players.length}, show the tray`}
             className="ffb-btn ffb-ov-tray-pill"
@@ -91,16 +139,16 @@ export function CompareTray({
       )}
 
       {trayVisible && !isCollapsed && (
-        <div className="ffb-tray ffb-enter-rise">
+        <div ref={bandRef} className="ffb-tray ffb-enter-rise" role="group" aria-label="Compare">
           {/* The row sits on the page column (SHELL_CLASS), so the tray's ends
               land on the board's edges at every width. */}
-          <div className={`${SHELL_CLASS} ffb-tray-row ffb-ov-tray-row`}>
+          <div className={`${SHELL_CLASS} ffb-tray-row`}>
             {showHiddenSelections ? (
               <>
                 <p role="status" className="ffb-ov-tray-text">
                   {hiddenCount} {hiddenCount === 1 ? "player is" : "players are"} pinned on another fantasy board.
                 </p>
-                <button type="button" onClick={() => compare.clear()} className="ffb-btn">
+                <button type="button" onClick={() => compare.clear()} className="ffb-btn" data-compare-clear>
                   Clear compare
                 </button>
               </>
@@ -119,12 +167,12 @@ export function CompareTray({
                     : `${players.length} pinned`}
                 </p>
                 <ul className="ffb-ov-pins ffb-not-phone">
-                  {players.map((player) => (
-                    <li key={player.id} className={`ffb-sticker ffb-sticker-sm ffb-ov-pin ${positionClass(player.position)}`}>
+                  {players.map((player, index) => (
+                    <li key={player.id} className={`ffb-sticker ffb-sticker-sm ffb-sticker-pin ${positionClass(player.position)}`}>
                       <span className="ffb-sticker-meta">
                         {player.position}
                         {player.team ? ` · ${player.team}` : ""}
-                      </span>
+                      </span>{" "}
                       {/* The title carries the full name for whatever the
                           sticker has to cut. */}
                       <span className="ffb-sticker-name" title={player.name}>
@@ -132,9 +180,13 @@ export function CompareTray({
                       </span>
                       <button
                         type="button"
-                        onClick={() => compare.remove(player.id)}
+                        onClick={() => {
+                          focusMove.current = { to: "pin", removedId: player.id, index };
+                          compare.remove(player.id);
+                        }}
                         aria-label={`Remove ${player.name} from compare`}
-                        className="ffb-iconbtn ffb-ov-pin-remove"
+                        className="ffb-iconbtn ffb-sticker-remove"
+                        data-compare-remove
                       >
                         <X size={14} aria-hidden="true" />
                       </button>
@@ -142,7 +194,13 @@ export function CompareTray({
                   ))}
                   {hiddenCount > 0 ? <li className="ffb-ov-pins-note">{hiddenCount} pinned elsewhere</li> : null}
                 </ul>
-                <button type="button" onClick={() => compare.clear()} className="ffb-btn ffb-btn-quiet">
+                <button
+                  type="button"
+                  onClick={() => compare.clear()}
+                  aria-label="Clear compare"
+                  className="ffb-btn ffb-btn-quiet"
+                  data-compare-clear
+                >
                   Clear
                 </button>
                 <button
@@ -150,6 +208,7 @@ export function CompareTray({
                   onClick={() => setOpen(true)}
                   disabled={!canCompare}
                   className="ffb-btn ffb-btn-primary"
+                  data-compare-open
                   title={canCompare ? undefined : "Pin at least two players"}
                 >
                   <GitCompareArrows size={14} aria-hidden="true" />
@@ -157,7 +216,10 @@ export function CompareTray({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setCollapsed(true)}
+                  onClick={() => {
+                    focusMove.current = { to: "pill" };
+                    setCollapsed(true);
+                  }}
                   aria-expanded
                   aria-label="Minimize the compare tray"
                   className="ffb-iconbtn ffb-iconbtn-edge"
@@ -187,8 +249,13 @@ export function CompareTray({
           adpAvailable={adpAvailable}
           onClose={() => setOpen(false)}
           onRemove={(id) => {
+            // At two players a remove closes the modal, and the Compare button
+            // it opened from is disabled by then, so focus goes to the pin left.
+            if (players.length <= 2) {
+              focusMove.current = { to: "pin", removedId: id, index: 0 };
+              setOpen(false);
+            }
             compare.remove(id);
-            if (players.length <= 2) setOpen(false);
           }}
         />
       )}

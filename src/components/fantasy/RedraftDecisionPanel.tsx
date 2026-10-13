@@ -33,16 +33,16 @@ export function RedraftDecisionPanel({
   return (
     <section className="ffb-stack ffb-stack-tight" aria-labelledby="redraft-position-decision-heading">
       <div className="ffb-sechead">
-        <h2 id="redraft-position-decision-heading" className="ffb-h3">
+        <h3 id="redraft-position-decision-heading" className="ffb-h3">
           What changes if you wait
-        </h2>
+        </h3>
         <p className="ffb-sechead-note">Rank index and scarcity</p>
       </div>
       <p className="ffb-method">
         The replacement index is a 0 to 100 ordinal reading from published overall ranks and your league settings. VORP appears separately on the board because it comes from projected fantasy points. Tier counts use each position&apos;s own board, and the next-turn reading uses current ADP only while you are on the clock.
       </p>
 
-      <ul className="ffb-ov-wait">
+      <ul className={sharedWait ? "ffb-ov-wait ffb-ov-wait-shared" : "ffb-ov-wait"}>
         {report.positions.map((entry) => {
           const best = entry.bestAvailable;
           const mostAtRisk = report.mostAtRisk?.position === entry.position;
@@ -56,13 +56,13 @@ export function RedraftDecisionPanel({
                     className="ffb-ov-wait-open"
                     aria-label={`Open ${best.player.name} detail`}
                   >
-                    <span className={`ffb-chip ffb-chip-sm ${positionClass(entry.position)}`}>{entry.position}</span>
-                    <span className="ffb-c-name">{best.player.name}</span>
+                    <span className={`ffb-chip ffb-chip-sm ${positionClass(entry.position)}`}>{entry.position}</span>{" "}
+                    <span className="ffb-c-name ffb-ov-wait-name">{best.player.name}</span>{" "}
                     <span className="ffb-ov-wait-index">Index {best.value.toFixed(1)}</span>
                   </button>
                 ) : (
                   <p className="ffb-ov-wait-none">
-                    <span className={`ffb-chip ffb-chip-sm ${positionClass(entry.position)}`}>{entry.position}</span>
+                    <span className={`ffb-chip ffb-chip-sm ${positionClass(entry.position)}`}>{entry.position}</span>{" "}
                     No ranked player remains at this position.
                   </p>
                 )}
@@ -70,7 +70,12 @@ export function RedraftDecisionPanel({
                   <span className={`ffb-label ${entry.need === "filled" ? "ffb-muted" : "ffb-good"}`}>
                     {describeRedraftNeed(entry)}
                   </span>
-                  {mostAtRisk ? <span className="ffb-label ffb-warn">Most at risk</span> : null}
+                  {mostAtRisk ? (
+                    <>
+                      {" "}
+                      <span className="ffb-label ffb-warn">Most at risk</span>
+                    </>
+                  ) : null}
                 </p>
                 {best ? (
                   <p className="ffb-ov-wait-lines">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { Fragment, useState, type CSSProperties } from "react";
 import {
   calculateContestFieldEconomics,
   calculateExpectedReturn,
@@ -238,7 +238,7 @@ function ExpectedReturnCalculator({
         </p>
 
         {result ? (
-          <dl className="ffb-stats ffb-ov-quad" aria-live="polite">
+          <dl className="ffb-stats ffb-stats-2" aria-live="polite">
             <div className="ffb-stat">
               <dt>Gross return</dt>
               <dd>{CURRENCY.format(result.grossExpectedReturn)}</dd>
@@ -301,7 +301,7 @@ function ContestMath({
         </h4>
         <p className="ffb-sechead-note">Published contest math</p>
       </div>
-      <dl className="ffb-stats ffb-ov-quad">
+      <dl className="ffb-stats ffb-stats-2">
         <div className="ffb-stat">
           <dt>Field gross</dt>
           <dd>{CURRENCY.format(result.grossExpectedReturn)}</dd>
@@ -408,7 +408,7 @@ export function DraftValuePanel({
           </h3>
           {!unavailableReason ? (
             <p className="ffb-sechead-note ffb-cluster">
-              Draft Outlook
+              Draft Outlook{" "}
               {report ? <span className="ffb-badge">{confidenceLabel(report.confidence)}</span> : null}
             </p>
           ) : null}
@@ -457,7 +457,7 @@ export function DraftValuePanel({
             <div>
               {report.components.map((component) => (
                 <div key={component.id} className="ffb-score">
-                  <span className="ffb-score-label">{componentLabel(component, consensusOnly)}</span>
+                  <span className="ffb-score-label">{componentLabel(component, consensusOnly)}</span>{" "}
                   <span className="ffb-score-value">
                     {component.score} score · {Math.round(component.weight * 100)}% weight
                   </span>
@@ -474,14 +474,17 @@ export function DraftValuePanel({
                         "--ffb-weight": `${heaviest > 0 ? Math.round((component.weight / heaviest) * 100) : 100}%`,
                       } as CSSProperties
                     }
-                  />
+                  />{" "}
                   <span className="ffb-score-note">{component.detail}</span>
                 </div>
               ))}
-              <p className="ffb-method ffb-ov-provenance">
+              <p className="ffb-method ffb-dotlist ffb-ov-provenance">
                 {["Published ranks", "Calculated signals", "Modeled room rank", report.modelVersion.replace("draft-outlook-", "Model ")].map(
-                  (label) => (
-                    <span key={label}>{label}</span>
+                  (label, index) => (
+                    <Fragment key={label}>
+                      {index > 0 ? " " : null}
+                      <span>{label}</span>
+                    </Fragment>
                   )
                 )}
               </p>
