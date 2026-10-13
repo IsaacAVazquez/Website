@@ -223,6 +223,8 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
               triggerRef.current = element;
             }}
             type="button"
+            // A route's stylesheet reads this to fit the trigger to the label it sits in.
+            data-metric-trigger="text"
             aria-label={`What is ${term}?`}
             aria-describedby={open ? bubbleId : undefined}
             onClick={swallow}
@@ -277,6 +279,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
           triggerRef.current = element;
         }}
         type="button"
+        data-metric-trigger="chip"
         aria-label={`What is ${term}?`}
         aria-describedby={open ? bubbleId : undefined}
         onClick={swallow}
