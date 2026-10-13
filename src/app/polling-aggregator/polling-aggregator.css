@@ -98,7 +98,7 @@
   border-block: 1px solid var(--pa-rule-strong);
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .pa-national {
     grid-template-columns: minmax(0, 1fr) 19rem;
   }
@@ -118,12 +118,18 @@
   max-height: 320px;
 }
 
+/* The chart's type is set here in viewBox units, since the 678-unit drawing
+ * scales with its column. Beside the 19rem summary that column is 562px at
+ * 1024, where 14 units is the smallest whole size over the 11px floor. */
+.pa-chart-text {
+  font-size: 14px;
+}
+
 /* The trend chart scales to about half at phone width, so its type is set
- * larger in viewBox units there; CSS outranks the fontSize attribute. 22px
- * still rendered under the 11px floor (about 10.4px measured), so this is
- * tuned to clear it with a small margin. At that larger size every x-axis
- * month label would collide with its neighbour, so every other one is
- * dropped; the visible ones still span the full trend window. */
+ * larger there. 22px still rendered under the 11px floor (about 10.4px
+ * measured), so this is tuned to clear it with a small margin. At that larger
+ * size every x-axis month label would collide with its neighbour, so every
+ * other one is dropped; the visible ones still span the full trend window. */
 @media print, screen and (max-width: 639px) {
   .pa-chart-text {
     font-size: 25px;
@@ -249,6 +255,12 @@
     top: 0;
     z-index: 2;
   }
+
+  /* Focus moving up the table scrolls a race button to the top edge, which is
+   * under the stuck switch (44px), so the button asks for room above itself. */
+  .pa-race-button {
+    scroll-margin-top: 56px;
+  }
 }
 
 .pa-tabs {
@@ -285,7 +297,7 @@
   gap: var(--c97-sp-4);
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .pa-races {
     grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
     align-items: start;
@@ -413,13 +425,14 @@
   margin-top: var(--c97-sp-2);
 }
 
-@media (max-width: 639px) {
+/* Paper takes the narrow table, since a sheet cannot scroll a wide one sideways. */
+@media print, screen and (max-width: 639px) {
   .pa-hide-sm {
     display: none;
   }
 }
 
-@media (max-width: 767px) {
+@media print, screen and (max-width: 767px) {
   .pa-hide-md {
     display: none;
   }
@@ -475,7 +488,7 @@
   gap: var(--c97-sp-4);
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .pa-poll-tables {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -488,5 +501,13 @@
 @media print {
   .pa-toolbar {
     position: static;
+  }
+
+  /* Paper drops background fills by default, and these fills are the chart's keys and the ballot bar itself. */
+  .pa-legend-line,
+  .pa-ballot-bar > span,
+  .pa-swatch {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

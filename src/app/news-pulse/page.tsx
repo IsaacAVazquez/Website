@@ -2,7 +2,6 @@ import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { getNewsPulseData } from "@/lib/newsPulseServer";
 import { NewsPulseClient } from "./news-pulse-client";
-import { normalizeNewsPulseState } from "./news-pulse-state";
 
 export const metadata = constructMetadata({
   title: "News Pulse Dashboard",
@@ -20,7 +19,9 @@ interface NewsPulsePageProps {
 }
 
 export default async function NewsPulsePage({ searchParams }: NewsPulsePageProps) {
-  const initialState = normalizeNewsPulseState(await searchParams);
+  // The client reads the source filter from the address itself. Awaiting the
+  // params is what keeps this page rendered per request, so it can.
+  await searchParams;
   const initialFeed = (await getNewsPulseData()).body;
   const breadcrumbs = [
     { name: "Home", url: "/" },
@@ -57,7 +58,7 @@ export default async function NewsPulsePage({ searchParams }: NewsPulsePageProps
           ],
         }}
       />
-      <NewsPulseClient initialFeed={initialFeed} initialState={initialState} />
+      <NewsPulseClient initialFeed={initialFeed} />
     </>
   );
 }

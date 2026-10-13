@@ -42,7 +42,7 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
   return (
     <div className="grid lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start" style={{ gap: "var(--c97-sp-2)" }}>
       <div className="sx-sect">
-        <h3 className="sx-h3">
+        <h3 className="sx-h3" style={{ paddingInline: "var(--c97-sp-2)" }}>
           Recovery split
         </h3>
         <p className="font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-0)" }}>
@@ -72,7 +72,7 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
       </div>
 
       <div className="sx-sect">
-        <h3 className="sx-h3">
+        <h3 className="sx-h3" style={{ paddingInline: "var(--c97-sp-2)" }}>
           Fleet leaders
         </h3>
         <p className="font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-0)" }}>

@@ -3,16 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { SOURCE_META } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 import { NewsPulseClient } from "../news-pulse-client";
-import { DEFAULT_NEWS_PULSE_STATE } from "../news-pulse-state";
 
-const mockPush = jest.fn();
 let currentSearchParams = new URLSearchParams();
 
 jest.mock("next/navigation", () => ({
-  useRouter: () => ({
-    push: mockPush,
-    replace: jest.fn(),
-  }),
   useSearchParams: () => currentSearchParams,
 }));
 
@@ -92,14 +86,13 @@ function makeOkResponse(payload: object) {
 describe("NewsPulseClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
-    mockPush.mockReset();
     mockFetch.mockReset();
   });
 
   it("renders the editorial shell with one visible h1 after feeds load", async () => {
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
 
-    const { container } = render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    const { container } = render(<NewsPulseClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: "News Pulse" })).toBeVisible();
     expect(container.querySelectorAll("h1")).toHaveLength(1);
@@ -122,7 +115,7 @@ describe("NewsPulseClient", () => {
 
   it("prints one front page with no view tabs", () => {
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
     // The Headlines, Coverage map, and Analysis tabs merged into sections in the 2026-10-12 redesign.
     expect(screen.queryAllByRole("tab")).toHaveLength(0);
     expect(screen.queryByRole("link", { name: "Jump to the desk" })).toBeNull();
@@ -142,7 +135,6 @@ describe("NewsPulseClient", () => {
           ...baseResponse,
           dataStatus: "fresh",
         }}
-        initialState={DEFAULT_NEWS_PULSE_STATE}
       />,
     );
 
@@ -158,7 +150,7 @@ describe("NewsPulseClient", () => {
     currentSearchParams = new URLSearchParams("view=coverage&source=guardian");
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     await waitFor(() =>
       expect(
@@ -171,11 +163,12 @@ describe("NewsPulseClient", () => {
     expect(screen.getByRole("combobox", { name: /Source/i })).toHaveValue("guardian");
   });
 
-  it("updates the route when a source is selected from the dropdown", async () => {
+  it("writes the picked source to the address as a history entry, with no server navigation", async () => {
     const user = userEvent.setup();
+    const pushState = jest.spyOn(window.history, "pushState").mockImplementation(() => undefined);
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     await waitFor(() =>
       expect(
@@ -188,9 +181,8 @@ describe("NewsPulseClient", () => {
       "guardian",
     );
 
-    expect(mockPush).toHaveBeenCalledWith("/news-pulse?source=guardian", {
-      scroll: false,
-    });
+    expect(pushState).toHaveBeenCalledWith(null, "", "/news-pulse?source=guardian");
+    pushState.mockRestore();
   });
 
   it("shows the loading state before feeds resolve", () => {
@@ -201,7 +193,7 @@ describe("NewsPulseClient", () => {
         }),
     );
 
-    const { unmount } = render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    const { unmount } = render(<NewsPulseClient />);
 
     expect(screen.getByRole("status")).toHaveTextContent("Refreshing live feeds");
     // The dateline counts the tracked outlets from the source list, not a hard-coded six.
@@ -218,7 +210,7 @@ describe("NewsPulseClient", () => {
       }),
     );
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     await waitFor(() =>
       expect(screen.getByText(/Some feeds did not come through/i)).toBeVisible(),
@@ -242,7 +234,7 @@ describe("NewsPulseClient", () => {
       }),
     });
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     await waitFor(() =>
       expect(screen.getByRole("alert")).toHaveTextContent(
@@ -256,13 +248,34 @@ describe("NewsPulseClient", () => {
   it("prints tone, length, and readability as one ruled table by outlet", async () => {
     mockFetch.mockResolvedValue(makeOkResponse(baseResponse));
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     const table = await screen.findByRole("table", { name: "Tone and density by outlet" });
     for (const name of ["Outlet", "Headlines", "Positive", "Neutral", "Negative", "Words per headline", "Readability"]) {
       expect(within(table).getByRole("columnheader", { name })).toBeInTheDocument();
     }
     expect(within(table).getByRole("rowheader", { name: SOURCE_META.atlantic.name })).toBeInTheDocument();
+    expect(
+      screen.getByText(/I read this as directional framing pressure, not article-level sentiment\./),
+    ).toBeVisible();
+  });
+
+  it("draws each outlet's words-per-headline bar to scale against the longest", async () => {
+    mockFetch.mockResolvedValue(
+      makeOkResponse({
+        ...baseResponse,
+        articles: [
+          { ...sampleArticles[0], title: "one two three four five six seven eight nine ten" },
+          { ...sampleArticles[1], title: "one two three four five" },
+        ],
+      }),
+    );
+
+    const { container } = render(<NewsPulseClient />);
+
+    await screen.findByRole("table", { name: "Tone and density by outlet" });
+    const bars = Array.from(container.querySelectorAll<HTMLElement>(".np-length-bar"));
+    expect(bars.map((bar) => bar.style.width)).toEqual(["4rem", "2rem"]);
   });
 
   it("runs the other cross-outlet stories down the front page with their outlet counts", async () => {
@@ -296,11 +309,11 @@ describe("NewsPulseClient", () => {
       }),
     );
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     const stories = await screen.findByRole("list", { name: "Story clusters" });
     const story = within(stories).getAllByRole("listitem")[0];
-    expect(story).toHaveTextContent("2 headlines across 2 outlets.");
+    expect(story).toHaveTextContent("2 headlines across 2 outlets. NYT 1 · NPR 1");
     const all = within(story).getByText("Show all 2 headlines").closest("details") as HTMLElement;
     expect(all).not.toHaveAttribute("open");
     for (const article of floods) {
@@ -320,7 +333,7 @@ describe("NewsPulseClient", () => {
       }),
     );
 
-    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+    render(<NewsPulseClient />);
 
     const summary = await screen.findByText("Show 3 headlines from 3 outlets");
     const outlets = summary.closest("details") as HTMLElement;

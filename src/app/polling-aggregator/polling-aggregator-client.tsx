@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useClientNow } from "@/hooks/useClientNow";
+import { daysBetween, toLocalDateKey } from "@/lib/date-formatters";
 import type { PollingRouteState, PollingSnapshot, PollingView, Race } from "@/types/polling";
 import {
   buildPollingHref,
@@ -12,7 +13,8 @@ import {
 } from "./polling-aggregator-state";
 import {
   formatDate,
-  formatShortDate,
+  formatMonth,
+  formatMonthYear,
   formatMargin,
   formatNet,
   newestPollDate,
@@ -65,7 +67,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
 
   const first = trend[0];
   const last = trend[trend.length - 1];
-  const chartSummary = `Presidential approval trend from ${formatShortDate(first.date)} to ${formatShortDate(last.date)}. Approve: ${first.approve.toFixed(1)}% to ${last.approve.toFixed(1)}%. Disapprove: ${first.disapprove.toFixed(1)}% to ${last.disapprove.toFixed(1)}%.`;
+  const chartSummary = `Presidential approval trend from ${formatMonthYear(first.date)} to ${formatMonthYear(last.date)}. Approve: ${first.approve.toFixed(1)}% to ${last.approve.toFixed(1)}%. Disapprove: ${first.disapprove.toFixed(1)}% to ${last.disapprove.toFixed(1)}%.`;
   const ax = scaleX(trend.length - 1);
 
   return (
@@ -73,11 +75,12 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
       <svg
         // The y labels sit left of the plot and the end labels right of the last
         // point, so the box widens on both sides instead of clipping them. The
-        // margins fit the larger phone type (25 units, polling-aggregator.css),
-        // where a y label measured 53 units and an end label 73. The extra 8px
-        // of bottom margin keeps the minVal gridline label clear of the x-axis
-        // row at the larger phone font size.
-        viewBox={`-48 0 ${W + 118} ${H + 40}`}
+        // type size is set in polling-aggregator.css, and the margins fit the
+        // larger phone size (25 units), where a y label measured 53 units and
+        // an end label 73. The extra 8px of bottom margin keeps the minVal
+        // gridline label clear of the x-axis row at that size, and the 8 units
+        // above the plot hold the top gridline label, whose baseline sits at 16.
+        viewBox={`-48 -8 ${W + 118} ${H + 48}`}
         className="pa-chart-svg"
         aria-label={chartSummary}
         role="img"
@@ -87,7 +90,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
           return (
             <g key={val}>
               <line x1={PAD} y1={y} x2={W - PAD} y2={y} style={{ stroke: "var(--pa-rule-strong)" }} strokeWidth={1} strokeDasharray="3 3" />
-              <text x={PAD - 4} y={y + 4} textAnchor="end" fontSize={10} className="pa-chart-text" style={{ fill: "var(--pa-ink-2)" }}>{val}%</text>
+              <text x={PAD - 4} y={y + 4} textAnchor="end" className="pa-chart-text" style={{ fill: "var(--pa-ink-2)" }}>{val}%</text>
             </g>
           );
         })}
@@ -97,8 +100,8 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
 
         <circle cx={ax} cy={scaleY(last.approve)} r={4} style={{ fill: DEM_COLOR }} />
         <circle cx={ax} cy={scaleY(last.disapprove)} r={4} style={{ fill: REP_COLOR }} />
-        <text x={ax + 6} y={scaleY(last.approve) + 4} fontSize={10} className="pa-chart-text" style={{ fill: "var(--pa-ink)" }} fontWeight="600">{last.approve.toFixed(1)}%</text>
-        <text x={ax + 6} y={scaleY(last.disapprove) + 4} fontSize={10} className="pa-chart-text" style={{ fill: "var(--pa-ink)" }} fontWeight="600">{last.disapprove.toFixed(1)}%</text>
+        <text x={ax + 6} y={scaleY(last.approve) + 4} className="pa-chart-text" style={{ fill: "var(--pa-ink)" }} fontWeight="600">{last.approve.toFixed(1)}%</text>
+        <text x={ax + 6} y={scaleY(last.disapprove) + 4} className="pa-chart-text" style={{ fill: "var(--pa-ink)" }} fontWeight="600">{last.disapprove.toFixed(1)}%</text>
 
         {/* At phone width the larger type needed to clear the 11px floor makes
             every label collide with its neighbour, so every other one is
@@ -109,12 +112,11 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
             x={scaleX(i)}
             y={H + 28}
             textAnchor="middle"
-            fontSize={10}
             className="pa-chart-text"
             style={{ fill: "var(--pa-ink-2)" }}
             data-tick-parity={i % 2 === 0 ? "even" : "odd"}
           >
-            {formatShortDate(d.date)}
+            {formatMonth(d.date)}
           </text>
         ))}
       </svg>
@@ -122,7 +124,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
       <figcaption className="pa-legend">
         <span><span className="pa-legend-line" style={{ background: DEM_COLOR }} aria-hidden="true" />Approve</span>
         <span><span className="pa-legend-line" style={{ background: REP_COLOR }} aria-hidden="true" />Disapprove</span>
-        <span>Monthly averages, {formatShortDate(first.date)} to {formatShortDate(last.date)}</span>
+        <span>Monthly averages, {formatMonthYear(first.date)} to {formatMonthYear(last.date)}</span>
       </figcaption>
 
       <table className="sr-only">
@@ -137,7 +139,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
         <tbody>
           {trend.map((d) => (
             <tr key={d.date}>
-              <th scope="row">{formatShortDate(d.date)}</th>
+              <th scope="row">{formatMonthYear(d.date)}</th>
               <td>{d.approve.toFixed(1)}%</td>
               <td>{d.disapprove.toFixed(1)}%</td>
             </tr>
@@ -203,7 +205,9 @@ function RaceRow({
       </td>
       <td>
         <span className="pa-strong pa-block">{leader.name}</span>
-        <span className="pa-muted pa-small pa-block">over {runnerUp.name}</span>
+        <span className="pa-muted pa-small pa-block">
+          {race.margin === 0 ? "tied with" : "over"} {runnerUp.name}
+        </span>
       </td>
       <td data-align="end" className="pa-figure">{formatNet(race.margin)}</td>
       <td data-align="end" className="pa-muted pa-hide-sm">{race.pollCount}</td>
@@ -405,15 +409,6 @@ function RacesBoard({
   onSelectRace: (id: string) => void;
   label: string;
 }) {
-  if (races.length === 0) {
-    return (
-      <p className="pa-muted">
-        VoteHub has published no {label.toLowerCase()} poll from the last four months, so there
-        is nothing to average here yet.
-      </p>
-    );
-  }
-
   const sorted = sortRacesByMargin(races);
   const selectedRace = races.find((r) => r.id === selectedRaceId) ?? sorted[0];
   const close = races.filter((race) => race.margin < 3).length;
@@ -452,9 +447,9 @@ function RacesBoard({
         </div>
         <p className="pa-muted pa-small pa-method">
           A row averages the two leading names from that race&apos;s newest poll over the recent
-          polls that asked about both of them, and the panel beside it lists those polls. VoteHub
-          publishes candidate names without a party or an incumbency flag, so I print the names as
-          the pollsters gave them and do not colour the race rows by party.
+          polls that asked about both of them, and the selected race&apos;s panel lists those polls.
+          VoteHub publishes candidate names without a party or an incumbency flag, so I print the
+          names as the pollsters gave them and do not colour the race rows by party.
         </p>
       </section>
 
@@ -497,10 +492,12 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
   const approvalDate = newestPollDate(snapshot.approvalPolls);
   const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
   const now = useClientNow();
-  const daysToElection =
-    now === null
-      ? null
-      : Math.round((new Date("2026-11-03T00:00:00Z").getTime() - now) / (1000 * 60 * 60 * 24));
+  // Calendar days on the visitor's own date, so the count turns over at their
+  // midnight and election day reads as election day for the whole of Nov 3.
+  const daysToElection = daysBetween(
+    now === null ? null : toLocalDateKey(new Date(now)),
+    "2026-11-03"
+  );
   const racePolls = [...snapshot.senateRaces, ...snapshot.governorRaces].reduce(
     (count, race) => count + race.polls.length,
     0
@@ -559,7 +556,8 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
           </p>
         </section>
 
-        <section className="pa-board" aria-label="Races and polls">
+        <section className="pa-board" aria-labelledby="pa-board-heading">
+          <h2 id="pa-board-heading" className="sr-only">Races and polls</h2>
           <div className="pa-toolbar">
             <div role="group" className="pa-tabs" aria-label="Polling view switcher">
               {tabs.map((key) => (
@@ -574,6 +572,14 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
               ))}
             </div>
           </div>
+
+          {/* The view that was asked for has no polls, so the board says so over the one it fell back to. */}
+          {routeState.view !== view ? (
+            <p className="pa-muted">
+              VoteHub has published no {routeState.view === "senate" ? "senate" : "governor"} poll
+              from the last four months, so there is nothing to average here yet.
+            </p>
+          ) : null}
 
           {view === "approval" ? (
             <ApprovalPollsView snapshot={snapshot} />

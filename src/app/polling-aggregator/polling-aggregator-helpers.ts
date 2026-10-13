@@ -10,21 +10,30 @@ const DATE_FMT = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
   timeZone: DATE_ONLY_TIME_ZONE,
 });
-const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", {
+// A trend point is a month of polls that the builder stamps on the 15th, so it
+// prints as its month and never as that day.
+const MONTH_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
-  day: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
+});
+const MONTH_YEAR_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  year: "numeric",
   timeZone: DATE_ONLY_TIME_ZONE,
 });
 
-export function formatDate(iso: string): string {
+function formatWith(format: Intl.DateTimeFormat, iso: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : DATE_FMT.format(d);
+  return Number.isNaN(d.getTime()) ? iso : format.format(d);
 }
 
-export function formatShortDate(iso: string): string {
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : SHORT_DATE_FMT.format(d);
-}
+export const formatDate = (iso: string) => formatWith(DATE_FMT, iso);
+
+/** "Oct", for a tick on the trend's axis. */
+export const formatMonth = (iso: string) => formatWith(MONTH_FMT, iso);
+
+/** "Oct 2025", wherever the trend's span is named, since it runs a full year. */
+export const formatMonthYear = (iso: string) => formatWith(MONTH_YEAR_FMT, iso);
 
 // ─── Source freshness ──────────────────────────────────────────────────────────
 

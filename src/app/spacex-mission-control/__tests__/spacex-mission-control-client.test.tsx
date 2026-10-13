@@ -1002,4 +1002,84 @@ describe("SpaceXMissionControlClient", () => {
     expect(container.querySelector('[data-testid="mission-countdown"]')).toBeNull();
     expect(container.textContent).toContain("Scheduled for");
   });
+
+  describe("a launch opened across the Upcoming and Past switch", () => {
+    const pastState: MissionControlSearchState = { ...DEFAULT_MISSION_CONTROL_STATE, status: "past" };
+
+    async function renderPastBoard() {
+      // The upcoming list never arrives, so the board still holds the past cards.
+      mockFetch.mockImplementation(() => new Promise(() => undefined));
+      currentSearchParams = new URLSearchParams("status=past");
+      await act(async () => {
+        root.render(
+          <SpaceXMissionControlClient
+            initialState={pastState}
+            initialData={createInitialData({ launches: [pastLaunch] })}
+          />
+        );
+      });
+      await flushPromises();
+    }
+
+    async function moveToUpcomingLaunch() {
+      currentSearchParams = new URLSearchParams(`launch=${upcomingLaunch.id}`);
+      await act(async () => {
+        root.render(
+          <SpaceXMissionControlClient
+            initialState={pastState}
+            initialData={createInitialData({ launches: [pastLaunch] })}
+          />
+        );
+      });
+      await flushPromises();
+    }
+
+    it("keeps the masthead's mission in the URL when Inspect mission is pressed from the Past board", async () => {
+      await renderPastBoard();
+
+      const inspect = Array.from(container.querySelectorAll("button")).find((button) =>
+        button.textContent?.includes("Inspect mission")
+      ) as HTMLButtonElement;
+      await act(async () => inspect.click());
+      expect(mockPush).toHaveBeenLastCalledWith(
+        `/spacex-mission-control?launch=${upcomingLaunch.id}`,
+        { scroll: false }
+      );
+
+      await moveToUpcomingLaunch();
+
+      expect(mockReplace).not.toHaveBeenCalled();
+      // The past cards clear while the upcoming list loads, so none sits under the Upcoming tab.
+      expect(container.querySelector(`[data-testid="mission-card-${pastLaunch.id}"]`)).toBeNull();
+    });
+
+    it("keeps a launch that Back or Forward lands on while the other board's list is still loading", async () => {
+      await renderPastBoard();
+      await moveToUpcomingLaunch();
+
+      expect(mockReplace).not.toHaveBeenCalled();
+    });
+
+    it("drops a launch the other board's list does not hold once that list arrives", async () => {
+      await renderPastBoard();
+      mockFetch.mockImplementation((input: RequestInfo | URL) =>
+        String(input).includes("/api/spacex/launches?status=upcoming&limit=10")
+          ? Promise.resolve({ ok: true, json: async () => ({ launches: [upcomingLaunch] }) })
+          : new Promise(() => undefined)
+      );
+
+      currentSearchParams = new URLSearchParams(`launch=${pastLaunch.id}`);
+      await act(async () => {
+        root.render(
+          <SpaceXMissionControlClient
+            initialState={pastState}
+            initialData={createInitialData({ launches: [pastLaunch] })}
+          />
+        );
+      });
+      await flushPromises();
+
+      expect(mockReplace).toHaveBeenLastCalledWith("/spacex-mission-control", { scroll: false });
+    });
+  });
 });

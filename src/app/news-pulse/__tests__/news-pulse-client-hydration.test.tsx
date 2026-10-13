@@ -4,10 +4,8 @@ import { renderToString } from "react-dom/server";
 import { SOURCE_META } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 import { NewsPulseClient } from "../news-pulse-client";
-import { DEFAULT_NEWS_PULSE_STATE } from "../news-pulse-state";
 
 jest.mock("next/navigation", () => ({
-  useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
   useSearchParams: () => new URLSearchParams(),
 }));
 
@@ -37,7 +35,6 @@ function makeElement() {
         errors: [],
         dataStatus: "fresh",
       }}
-      initialState={DEFAULT_NEWS_PULSE_STATE}
     />
   );
 }

@@ -42,6 +42,23 @@ describe("MissionImageFrame", () => {
     );
   });
 
+  // The masthead hides its photo under 640px. An eager, high-priority image is
+  // preloaded from the document head whatever the layout, so a phone paid for
+  // a file it never painted. A lazy image in a hidden frame is not fetched.
+  it("leaves the masthead photo lazy, so a phone that hides it does not fetch it", () => {
+    const { container } = render(
+      <MissionVehiclePhoto
+        name="Falcon 9"
+        image="/data/spacex/images/abc123.jpg"
+        dataTestId="mission-hero-visual"
+      />
+    );
+    const image = container.querySelector("img");
+
+    expect(image).toHaveAttribute("loading", "lazy");
+    expect(image?.getAttribute("fetchpriority")).not.toBe("high");
+  });
+
   // Launch Library's hosts are not in next.config's remotePatterns, so the
   // optimizer would refuse them. next/image writes a protocol-relative source
   // out with the page's protocol, which is where the browser would send it.

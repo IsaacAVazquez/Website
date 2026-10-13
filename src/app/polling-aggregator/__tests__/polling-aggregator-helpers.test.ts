@@ -3,8 +3,9 @@ import {
   describeStaleSource,
   formatDate,
   formatMargin,
+  formatMonth,
+  formatMonthYear,
   formatNet,
-  formatShortDate,
   isStalePollDate,
   newestPollDate,
 } from "../polling-aggregator-helpers";
@@ -27,7 +28,13 @@ describe("polling-aggregator-helpers", () => {
     // A date-only string parsed as UTC midnight prints the day before in any
     // timezone west of Greenwich.
     expect(formatDate("2026-09-08")).toBe("Sep 8, 2026");
-    expect(formatShortDate("2026-08-15")).toBe("Aug 15");
+  });
+
+  it("prints a trend point as its month, with the year where two Octobers have to read apart", () => {
+    expect(formatMonth("2026-08-15")).toBe("Aug");
+    expect(formatMonthYear("2025-10-15")).toBe("Oct 2025");
+    expect(formatMonthYear("2026-10-15")).toBe("Oct 2026");
+    expect(formatMonthYear("not-a-date")).toBe("not-a-date");
   });
 
   it("finds the newest poll date in a series whatever the row order", () => {
