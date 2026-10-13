@@ -31,14 +31,24 @@ interface CompareTrayProps {
 /**
  * Where focus goes after a control that takes itself away: the pill after
  * minimize, the Compare button after expand, the pin that moved into a removed
- * pin's place after a remove.
+ * pin's place after a remove, and back out to the page once the tray has
+ * emptied itself.
  */
-type FocusMove = { to: "pill" } | { to: "compare" } | { to: "pin"; removedId: string; index: number };
+type FocusMove =
+  | { to: "pill" }
+  | { to: "compare" }
+  | { to: "pin"; removedId: string; index: number }
+  | { to: "outside" };
+
+/** The tray's own parts: the band, the pill, and the compare modal it opens. */
+const OWN = "[data-compare-own]";
 
 /** Focuses the first of these that can take focus. A disabled button and a hidden pin cannot. */
 function focusFirst(candidates: Array<HTMLElement | null | undefined>) {
   for (const candidate of candidates) {
-    if (!candidate) continue;
+    // A control that was disabled while it held focus can still be the active
+    // element, so it is ruled out by name and not by trying it.
+    if (!candidate || candidate.matches(":disabled")) continue;
     candidate.focus();
     if (document.activeElement === candidate) return;
   }
@@ -72,6 +82,22 @@ export function CompareTray({
   const bandRef = useRef<HTMLDivElement>(null);
   const pillRef = useRef<HTMLButtonElement>(null);
   const focusMove = useRef<FocusMove | null>(null);
+  // The last element outside the tray that held focus, which is where a
+  // keyboard user was before they came down to it.
+  const lastOutside = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const remember = (target: EventTarget | null) => {
+      if (target instanceof HTMLElement && target !== document.body && !target.closest(OWN)) {
+        lastOutside.current = target;
+      }
+    };
+    // The tray mounts late, so whatever holds focus at that moment counts.
+    remember(document.activeElement);
+    const onFocusIn = (event: FocusEvent) => remember(event.target);
+    document.addEventListener("focusin", onFocusIn);
+    return () => document.removeEventListener("focusin", onFocusIn);
+  }, []);
 
   const players = useMemo(
     () =>
@@ -100,27 +126,36 @@ export function CompareTray({
     if (!move) return;
     // The compare store has not dropped the pin yet, so its button is still here.
     if (move.to === "pin" && compareIds.includes(move.removedId)) return;
+    if (move.to === "outside" && compareIds.length > 0) return;
     focusMove.current = null;
     if (move.to === "pill") {
       pillRef.current?.focus();
       return;
     }
     const band = bandRef.current;
-    if (!band) return;
-    const all = (selector: string) => Array.from(band.querySelectorAll<HTMLElement>(selector));
-    const clear = all("[data-compare-clear]");
-    if (move.to === "compare") {
-      focusFirst([...all("[data-compare-open]"), ...clear]);
+    if (!band) {
+      // The tray emptied itself and is gone. Focus goes back to where the user
+      // was before it, or to the page's main when that element has left the
+      // document or cannot take focus. It never falls to the body.
+      if (move.to === "compare") return;
+      const before = lastOutside.current;
+      focusFirst([before?.isConnected ? before : null, document.getElementById("main-content")]);
       return;
     }
-    const pins = all("[data-compare-remove]");
-    focusFirst([pins[move.index] ?? pins[pins.length - 1], ...clear]);
+    const all = (selector: string) => Array.from(band.querySelectorAll<HTMLElement>(selector));
+    const clear = all("[data-compare-clear]");
+    if (move.to === "pin") {
+      const pins = all("[data-compare-remove]");
+      focusFirst([pins[move.index] ?? pins[pins.length - 1], ...clear]);
+      return;
+    }
+    focusFirst([...(move.to === "compare" ? all("[data-compare-open]") : []), ...clear]);
   });
 
   return (
     <>
       {trayVisible && isCollapsed && (
-        <div className="ffb-ov-tray-min ffb-enter-rise">
+        <div className="ffb-ov-tray-min ffb-enter-rise" data-compare-own>
           <button
             ref={pillRef}
             type="button"
@@ -139,7 +174,7 @@ export function CompareTray({
       )}
 
       {trayVisible && !isCollapsed && (
-        <div ref={bandRef} className="ffb-tray ffb-enter-rise" role="group" aria-label="Compare">
+        <div ref={bandRef} className="ffb-tray ffb-enter-rise" role="group" aria-label="Compare" data-compare-own>
           {/* The row sits on the page column (SHELL_CLASS), so the tray's ends
               land on the board's edges at every width. */}
           <div className={`${SHELL_CLASS} ffb-tray-row`}>
@@ -148,7 +183,15 @@ export function CompareTray({
                 <p role="status" className="ffb-ov-tray-text">
                   {hiddenCount} {hiddenCount === 1 ? "player is" : "players are"} pinned on another fantasy board.
                 </p>
-                <button type="button" onClick={() => compare.clear()} className="ffb-btn" data-compare-clear>
+                <button
+                  type="button"
+                  onClick={() => {
+                    focusMove.current = { to: "outside" };
+                    compare.clear();
+                  }}
+                  className="ffb-btn"
+                  data-compare-clear
+                >
                   Clear compare
                 </button>
               </>
@@ -196,7 +239,10 @@ export function CompareTray({
                 </ul>
                 <button
                   type="button"
-                  onClick={() => compare.clear()}
+                  onClick={() => {
+                    focusMove.current = { to: "outside" };
+                    compare.clear();
+                  }}
                   aria-label="Clear compare"
                   className="ffb-btn ffb-btn-quiet"
                   data-compare-clear

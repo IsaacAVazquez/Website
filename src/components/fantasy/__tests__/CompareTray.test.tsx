@@ -182,3 +182,125 @@ describe("CompareTray names and focus", () => {
     expect(screen.getByRole("dialog", { name: "Compare players" })).toBeInTheDocument();
   });
 });
+
+/**
+ * A page around the tray: a row's button the user was on before coming down
+ * to the tray, and the site's main, which takes focus for the skip link.
+ */
+function Page({ row = "enabled" }: { row?: "enabled" | "disabled" | "gone" }) {
+  return (
+    <main id="main-content" tabIndex={-1}>
+      {row === "gone" ? null : (
+        <button type="button" disabled={row === "disabled"}>
+          Open Alpha Receiver details
+        </button>
+      )}
+      <CompareTray resolvePlayer={resolvePinned} playerDataReady pruneUnresolvedIds={false} />
+    </main>
+  );
+}
+
+function pinIds(ids: string[]) {
+  window.localStorage.setItem(FANTASY_COMPARE_STORAGE_KEY, JSON.stringify(ids));
+}
+
+describe("CompareTray hands focus back when it empties itself", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    resetBrowserStorageMemory();
+  });
+
+  afterEach(() => {
+    window.localStorage.clear();
+    resetBrowserStorageMemory();
+  });
+
+  const rowButton = () => screen.getByRole("button", { name: "Open Alpha Receiver details" });
+
+  it("returns focus to the element the user was on before the tray after Clear compare", async () => {
+    pinIds(["wr-1", "rb-1"]);
+    render(<Page />);
+    rowButton().focus();
+
+    const clear = screen.getByRole("button", { name: "Clear compare" });
+    clear.focus();
+    fireEvent.click(clear);
+
+    await waitFor(() => expect(screen.queryByRole("group", { name: "Compare" })).not.toBeInTheDocument());
+    await waitFor(() => expect(rowButton()).toHaveFocus());
+  });
+
+  it("returns focus there after the last pin is removed", async () => {
+    pinIds(["wr-1"]);
+    render(<Page />);
+    rowButton().focus();
+
+    const remove = removeButton("Alpha Receiver");
+    remove.focus();
+    fireEvent.click(remove);
+
+    await waitFor(() => expect(screen.queryByRole("group", { name: "Compare" })).not.toBeInTheDocument());
+    await waitFor(() => expect(rowButton()).toHaveFocus());
+  });
+
+  it("returns focus there after Clear compare on pins that belong to another board", async () => {
+    pinIds(["other-1", "other-2"]);
+    render(<Page />);
+    rowButton().focus();
+
+    expect(screen.getByRole("status")).toHaveTextContent("2 players are pinned on another fantasy board.");
+    fireEvent.click(screen.getByRole("button", { name: "Clear compare" }));
+
+    await waitFor(() => expect(rowButton()).toHaveFocus());
+  });
+
+  it("does not count the tray's own controls, or the modal it opens, as where the user was", async () => {
+    pinIds(["wr-1", "rb-1"]);
+    render(<Page />);
+    rowButton().focus();
+
+    // Through the tray and the modal and back, then Clear.
+    const open = screen.getByRole("button", { name: "Compare 2" });
+    open.focus();
+    fireEvent.click(open);
+    within(screen.getByRole("dialog", { name: "Compare players" })).getByRole("button", { name: "Close" }).focus();
+    fireEvent.keyDown(document, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+    screen.getByRole("button", { name: "Minimize the compare tray" }).focus();
+    fireEvent.click(screen.getByRole("button", { name: "Clear compare" }));
+
+    await waitFor(() => expect(rowButton()).toHaveFocus());
+  });
+
+  it("falls back to the page's main when that element has left the document", async () => {
+    pinIds(["wr-1", "rb-1"]);
+    const { rerender } = render(<Page />);
+    rowButton().focus();
+    rerender(<Page row="gone" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear compare" }));
+
+    await waitFor(() => expect(screen.getByRole("main")).toHaveFocus());
+  });
+
+  it("falls back to the page's main when that element can no longer take focus", async () => {
+    pinIds(["wr-1", "rb-1"]);
+    const { rerender } = render(<Page />);
+    rowButton().focus();
+    rerender(<Page row="disabled" />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear compare" }));
+
+    await waitFor(() => expect(screen.getByRole("main")).toHaveFocus());
+    expect(document.body).not.toHaveFocus();
+  });
+
+  it("falls back to the page's main when nothing outside the tray ever held focus", async () => {
+    pinIds(["wr-1"]);
+    render(<Page row="gone" />);
+
+    fireEvent.click(removeButton("Alpha Receiver"));
+
+    await waitFor(() => expect(screen.getByRole("main")).toHaveFocus());
+  });
+});
