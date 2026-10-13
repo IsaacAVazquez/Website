@@ -72,6 +72,26 @@ describe("Catalog97Header utilities", () => {
     expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
   });
 
+  it("leaves slash alone while a modal dialog is open, and takes it again once the dialog has gone", () => {
+    render(<Catalog97Header />);
+
+    // A page's drawer, open over the page. Search on top of it would take focus out of the dialog.
+    const drawer = document.createElement("div");
+    drawer.setAttribute("role", "dialog");
+    drawer.setAttribute("aria-modal", "true");
+    document.body.appendChild(drawer);
+
+    const slash = new KeyboardEvent("keydown", { key: "/", bubbles: true, cancelable: true });
+    fireEvent(drawer, slash);
+
+    expect(slash.defaultPrevented).toBe(false);
+    expect(screen.queryByRole("dialog", { name: "Site search" })).not.toBeInTheDocument();
+
+    drawer.remove();
+    fireEvent.keyDown(document.body, { key: "/" });
+    expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
+  });
+
   it("opens search from slash without swallowing slash inside an input", () => {
     render(<Catalog97Header />);
 

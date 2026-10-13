@@ -254,7 +254,16 @@ export function DraftRoster({
               {player ? (
                 <>
                   {" "}
-                  <span className="ffb-slot-meta">{[player.team, bye].filter(Boolean).join(" · ")}</span>
+                  {/* A span each, so the kit's wrapping line drops the bye first and keeps the team while it fits. */}
+                  <span className="ffb-slot-meta">
+                    {player.team ? <span>{player.team}</span> : null}
+                    {bye ? (
+                      <span>
+                        {player.team ? <>&nbsp;· </> : null}
+                        {bye}
+                      </span>
+                    ) : null}
+                  </span>
                 </>
               ) : null}
             </li>

@@ -302,6 +302,11 @@ describe("DraftRoster", () => {
     expect(slots[0]).toHaveTextContent("QB Open");
     expect(slots[1]).toHaveClass("ffb-slot", "ffb-is-filled", "ffb-pos-wr");
     expect(slots[1]).toHaveTextContent("WR J. Chase CIN · Bye 6");
+    // The team and the bye are a span each, in that order, so the kit drops the bye first where the slot is narrow.
+    expect(Array.from(slots[1].querySelectorAll(".ffb-slot-meta > span"), (part) => part.textContent?.trim())).toEqual([
+      "CIN",
+      "· Bye 6",
+    ]);
     expect(slots[2]).toHaveClass("ffb-slot", "ffb-pos-flex");
     // The lineup leaves four bench spots, and a fifth player is there, so the total follows the count.
     expect(slots[3]).toHaveTextContent("BN Bench 5 of 5");

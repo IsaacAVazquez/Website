@@ -257,7 +257,7 @@ html.dark .ffb-scope {
   letter-spacing: 0.02em;
 }
 /* A heavy number: 800 at 76 to 80% width, not capitals. */
-.ffb-root :is(.ffb-bug-value, .ffb-bug-clock, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num, .ffb-strip-value, .ffb-slot-value) {
+.ffb-root :is(.ffb-heavy, .ffb-bug-value, .ffb-bug-clock, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num, .ffb-strip-value, .ffb-slot-value) {
   font-weight: 800;
   font-stretch: 78%;
   letter-spacing: 0;
@@ -315,11 +315,9 @@ html.dark .ffb-scope {
 }
 
 /* A search field takes the ring around the whole field. Drawn on the input it started after the
-   icon and crossed the first letter typed. The selector has no weight, so a page's own ring wins.
-   The trade calculator draws its ring as an inset edge on its own class, so it is left out here until
-   that stand-in goes. */
+   icon and crossed the first letter typed. The selector has no weight, so a page's own ring wins. */
 .ffb-root .ffb-search-input:focus-visible { outline: none; }
-:where(.ffb-root .ffb-search:not(.ffb-tr-search):has(.ffb-search-input:focus-visible)) {
+:where(.ffb-root .ffb-search:has(.ffb-search-input:focus-visible)) {
   outline: 2px solid var(--c97-accent);
   outline-offset: 2px;
 }
@@ -399,6 +397,13 @@ html.dark .ffb-scope {
     margin: 0;
     line-height: inherit;
   }
+  .ffb-root :where(fieldset) {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .ffb-root :where(legend) { padding: 0; }
   /* The site sets Newsreader italic on every bare em. */
   .ffb-root :where(em) { font-family: inherit; }
   .ffb-root :where(button, input, select, textarea) {
@@ -430,6 +435,12 @@ html.dark .ffb-scope {
   .ffb-num { text-align: right; white-space: nowrap; }
   .ffb-nowrap { white-space: nowrap; }
   .ffb-label { font-size: 12px; line-height: 1.2; }
+  /* A heavy number outside a stat or a fact: 18px, or 16 and 24px. */
+  .ffb-heavy { font-size: 18px; line-height: 1; }
+  .ffb-heavy-sm { font-size: 16px; }
+  .ffb-heavy-lg { font-size: 24px; }
+  /* A muted note under or beside something. The muted paragraph is .ffb-copy, with the empty state's body. */
+  .ffb-fine { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
 
   /* A column of blocks. The gap is the section rhythm, so pages do not set margins. */
   .ffb-stack { display: flex; flex-direction: column; gap: var(--ffb-s4); min-width: 0; }
@@ -620,8 +631,8 @@ html.dark .ffb-scope {
     /* A scroller clips what crosses its edge, so the inset gives the focus rings inside room on both sides. */
     margin-inline: -6px;
     padding-inline: 6px;
+    /* No overscroll containment: at the rail's end, and over a rail with nothing to scroll, the wheel moves the page. */
     overflow-y: auto;
-    overscroll-behavior: contain;
   }
 
   /* ========================================================================
@@ -1138,6 +1149,18 @@ html.dark .ffb-scope {
     border-top: 1px solid var(--ffb-rule);
   }
   .ffb-row:hover { background-color: var(--ffb-sunk); }
+  /* A row's control that takes focus is scrolled clear of what is pinned over the list. A page that
+     measures its pinned bars sets --ffb-pinned-top (and --ffb-pinned-bottom while a tray shows).
+     The fallbacks clear the tallest pinned stack in the first five pages (147px) and the compare tray (74px). */
+  :is(.ffb-row, .ffb-table tbody tr, .ffb-more-row) :is(a, button, select, input),
+  .ffb-more {
+    scroll-margin-block: var(--ffb-pinned-top, 152px) var(--ffb-pinned-bottom, 96px);
+  }
+  /* Nothing is pinned over a row inside a pinned bar, an overlay, or a rail that scrolls by itself. */
+  :is(.ffb-sticky, .ffb-overlay, .ffb-drawer, .ffb-modal, .ffb-sheet, .ffb-tray) { --ffb-pinned-top: 0px; --ffb-pinned-bottom: 0px; }
+  @media (min-width: 1200px) {
+    .ffb-rail { --ffb-pinned-top: 0px; --ffb-pinned-bottom: 0px; }
+  }
   /* The row the keyboard is on. */
   .ffb-row.ffb-is-active {
     outline: 2px solid var(--c97-accent);
@@ -1284,6 +1307,8 @@ html.dark .ffb-scope {
   .ffb-table tbody th { font-size: 15px; font-weight: 600; }
   .ffb-table :is(td, th):last-child { padding-inline-end: 0; }
   .ffb-table :is(td, th).ffb-num { text-align: right; }
+  /* The rank cell, which needs the table's own weight to beat the body cell's. */
+  .ffb-table tbody td.ffb-c-rank { color: var(--ffb-ink); font-size: 15px; font-weight: 700; text-align: right; }
   .ffb-table tbody tr:hover > * { background-color: var(--ffb-sunk); }
   /* The head stays on screen while the page scrolls under it. Not inside .ffb-table-wrap. */
   .ffb-table-sticky thead th {
@@ -1406,7 +1431,8 @@ html.dark .ffb-scope {
     color: var(--ffb-on-fill);
     text-align: left;
   }
-  button.ffb-sticker { cursor: pointer; }
+  /* As a button it takes a 1px edge in the on-fill ink, since no position fill reaches 3:1 on the light board. */
+  button.ffb-sticker { box-shadow: inset 0 0 0 1px var(--ffb-on-fill); cursor: pointer; }
   .ffb-sticker-meta {
     display: flex;
     justify-content: space-between;
@@ -1429,6 +1455,9 @@ html.dark .ffb-scope {
   /* My pick carries a highlighter band at its left edge. */
   .ffb-sticker.ffb-is-mine { padding-inline-start: 16px; box-shadow: inset 8px 0 0 var(--ffb-hi); }
   .ffb-sticker-sm.ffb-is-mine { padding-inline-start: 12px; box-shadow: inset 6px 0 0 var(--ffb-hi); }
+  /* My own sticker as a button keeps both, with the edge over the band. */
+  button.ffb-sticker.ffb-is-mine { box-shadow: inset 0 0 0 1px var(--ffb-on-fill), inset 8px 0 0 var(--ffb-hi); }
+  button.ffb-sticker-sm.ffb-is-mine { box-shadow: inset 0 0 0 1px var(--ffb-on-fill), inset 6px 0 0 var(--ffb-hi); }
 
   /* Last picks: one row of whole stickers. The older ones fall into zero-height rows and are clipped. */
   .ffb-picks {
@@ -1459,7 +1488,8 @@ html.dark .ffb-scope {
   .ffb-slot {
     position: relative;
     display: grid;
-    grid-template-columns: 34px minmax(0, 1fr) auto;
+    /* The name takes what it needs first, and the team and bye get what is left. */
+    grid-template-columns: 34px minmax(0, max-content) minmax(0, 1fr);
     align-items: center;
     column-gap: var(--ffb-s2);
     min-width: 0;
@@ -1479,7 +1509,19 @@ html.dark .ffb-scope {
   }
   .ffb-slot-code { font-size: 13px; letter-spacing: 0.04em; }
   .ffb-slot-name { overflow: hidden; color: var(--ffb-muted); font-size: 13px; font-weight: 500; text-overflow: ellipsis; }
-  .ffb-slot-meta { color: var(--ffb-muted); font-size: 10.5px; }
+  /* The team and bye sit at the slot's right and drop out whole when they do not fit, so a bye
+     week is never cut to its first digit. The line wraps under an empty first item and the
+     wrapped line is clipped. A list slot sets the meta back to a block, where none of this applies. */
+  .ffb-slot-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    height: 1lh;
+    overflow: hidden;
+    color: var(--ffb-muted);
+    font-size: 10.5px;
+  }
+  .ffb-slot-meta::before { content: ""; height: 1lh; }
   .ffb-slot.ffb-is-filled { background: var(--ffb-pos); box-shadow: none; color: var(--ffb-on-fill); }
   .ffb-slot.ffb-is-filled :is(.ffb-slot-name, .ffb-slot-meta) { color: inherit; }
   .ffb-slot.ffb-is-filled .ffb-slot-name { font-size: 16px; }
@@ -1863,6 +1905,8 @@ html.dark .ffb-scope {
     border-top: 1px solid var(--ffb-rule);
   }
   .ffb-empty-title { font-size: 18px; line-height: 1; }
+  /* A muted paragraph, in an empty state or anywhere else. */
+  .ffb-copy,
   .ffb-empty-body { max-width: 62ch; color: var(--ffb-muted); font-size: 14px; line-height: 1.45; }
 
   /* ========================================================================
@@ -1891,6 +1935,8 @@ html.dark .ffb-scope {
   .ffb-note p { color: var(--ffb-muted); font-size: 14px; line-height: 1.5; }
   /* The method footnote under a board. */
   .ffb-method { max-width: 96ch; color: var(--ffb-muted); font-size: 12.5px; line-height: 1.5; }
+  /* A page's last line: its source or method sentence on a rule. */
+  .ffb-method-ruled { padding-top: var(--ffb-s3); border-top: 1px solid var(--ffb-rule); }
   /* The last line of a page: one sentence and links to the sibling tools. */
   .ffb-footlinks {
     display: flex;
@@ -2124,6 +2170,41 @@ html.dark .ffb-scope {
       overflow: visible;
     }
     .ffb-rail-scroll { margin-inline: 0; padding-inline: 0; }
+    /* The section marked .ffb-rail-lead moves above the list and the rest of the rail follows the
+       list, in the columns the rail had. The rail is not a box here, so its sections are the grid's items. */
+    .ffb-work-split {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      column-gap: var(--ffb-s6);
+      row-gap: var(--ffb-s5);
+    }
+    .ffb-work-split > .ffb-rail { display: contents; }
+    .ffb-work-split > :not(.ffb-rail),
+    .ffb-work-split > .ffb-rail > .ffb-rail-lead { grid-column: 1 / -1; }
+    .ffb-work-split > .ffb-rail > * { order: 1; min-width: 0; }
+    .ffb-work-split > .ffb-rail > .ffb-rail-lead { order: -1; }
+    /* The lead roster is compact: the code over the name in sockets of 62px or more, so a lineup of
+       ten is one row from 768px, five across on a 390px phone, and four across under 382px. Rows
+       are added as the lineup needs them. */
+    .ffb-rail-lead .ffb-slots {
+      grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
+      grid-template-rows: none;
+      grid-auto-rows: 44px;
+      grid-auto-flow: row;
+      gap: var(--ffb-s1);
+    }
+    .ffb-rail-lead .ffb-slot {
+      grid-template-columns: minmax(0, 1fr);
+      align-content: center;
+      row-gap: 4px;
+      padding-inline: 10px 4px;
+      line-height: 1;
+    }
+    .ffb-rail-lead .ffb-slot-code { font-size: 12px; }
+    .ffb-rail-lead .ffb-slot-name,
+    .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name { font-size: 12px; }
+    .ffb-rail-lead .ffb-slot .ffb-slot-meta { display: none; }
+    .ffb-rail-lead .ffb-slot-bench .ffb-slot-name { display: none; }
+    .ffb-rail-lead .ffb-slot.ffb-slot-bench .ffb-slot-meta { display: block; font-size: 11px; }
     .ffb-bug-seg { padding-inline: var(--ffb-s3); }
     .ffb-bug-live { column-gap: var(--ffb-s3); }
     .ffb-head-run { grid-template-columns: auto minmax(0, 1fr) auto; }
@@ -2133,13 +2214,40 @@ html.dark .ffb-scope {
   }
 
   /* ========================================================================
+   * 16b. A phone, or a touch pointer at any width: the controls that do not read
+   * --ffb-control take their 44px here
+   * ====================================================================== */
+  @media (max-width: 767.98px), (pointer: coarse) {
+    .ffb-bar { height: 45px; }
+    .ffb-bar-link { min-width: 44px; justify-content: center; }
+    .ffb-seg-btn { height: 44px; }
+    .ffb-search-clear { width: 44px; height: 44px; }
+    .ffb-star { width: 44px; height: 44px; }
+    .ffb-h-sort { display: inline-flex; align-items: flex-end; min-width: 44px; min-height: 44px; }
+    .ffb-h-sort.ffb-h-num { justify-content: flex-end; }
+    /* A link holds a 44px target, and the negative margin keeps a sentence's line height. */
+    .ffb-link,
+    :is(.ffb-prose, .ffb-notice, .ffb-method, .ffb-footlinks, .ffb-lede, .ffb-fresh, .ffb-copy, .ffb-empty-body) a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      margin-block: -13px;
+    }
+    .ffb-tab { height: 44px; }
+    .ffb-neighbor { min-height: 44px; }
+    .ffb-log { height: 44px; }
+    .ffb-toast-btn { height: 44px; margin-block: -6px; }
+    button.ffb-c-name { min-height: 44px; }
+  }
+
+  /* ========================================================================
    * 17. Phones (below Tailwind's md)
    * ====================================================================== */
   @media (max-width: 767.98px) {
 
-    .ffb-bar { height: 45px; }
     .ffb-bar-links { margin-inline-end: calc(-1 * var(--ffb-bleed)); padding-inline: var(--ffb-s1) var(--ffb-bleed); }
-    .ffb-bar-link { min-width: 44px; justify-content: center; }
 
     .ffb-head,
     .ffb-head-run { grid-template-columns: minmax(0, 1fr); padding-block: var(--ffb-s4) var(--ffb-s2); }
@@ -2156,7 +2264,7 @@ html.dark .ffb-scope {
     .ffb-toolbar { gap: var(--ffb-s2); }
     .ffb-toolbar > .ffb-seg { flex: 1 1 auto; }
     .ffb-toolbar > .ffb-seg > .ffb-seg-btn { flex: 1 1 auto; }
-    .ffb-seg-btn { height: 44px; padding-inline: 6px; font-size: 11.5px; }
+    .ffb-seg-btn { padding-inline: 6px; font-size: 11.5px; }
     /* Eight 44px targets do not fit 334px, so the position switch scrolls sideways off the right edge. */
     .ffb-toolbar > .ffb-seg-pos,
     .ffb-seg-pos {
@@ -2170,28 +2278,12 @@ html.dark .ffb-scope {
     .ffb-seg-pos > .ffb-seg-btn { flex: none; padding-inline: 10px; }
     .ffb-toolbar > .ffb-search { flex: 1 1 160px; min-width: min(100%, 160px); }
     .ffb-search-input { width: auto; flex-basis: 0; font-size: 16px; }
-    .ffb-search-clear { width: 44px; height: 44px; }
-    .ffb-star { width: 44px; height: 44px; }
-    .ffb-h-sort { display: inline-flex; align-items: flex-end; min-width: 44px; min-height: 44px; }
-    .ffb-h-sort.ffb-h-num { justify-content: flex-end; }
     .ffb-count { flex-basis: 100%; text-align: right; }
     :is(.ffb-input, .ffb-select, .ffb-textarea) { font-size: 16px; }
     .ffb-btn-lg { height: 48px; }
-    /* A link holds a 44px target, and the negative margin keeps a sentence's line height. */
-    .ffb-link,
-    :is(.ffb-prose, .ffb-notice, .ffb-method, .ffb-footlinks, .ffb-lede, .ffb-fresh, .ffb-empty-body) a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 44px;
-      min-height: 44px;
-      margin-block: -13px;
-    }
-    .ffb-tab { height: 44px; }
     /* Three labels fit a 320px screen at this gap. */
     .ffb-tabs { gap: var(--ffb-s3); }
-    .ffb-neighbor { min-height: 44px; }
-    .ffb-log { width: 52px; height: 44px; }
+    .ffb-log { width: 52px; }
 
     /* A row is two lines: the name over the chip, team, and bye, with one or two numbers at
        the right and the action at the edge. Mark the numbers a phone keeps with .ffb-m-top,
@@ -2278,26 +2370,6 @@ html.dark .ffb-scope {
     .ffb-picks-list > * { flex: 0 0 150px; }
 
     .ffb-rail { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s5); }
-    /* The roster moves above the list as a compact lineup, and the rest of the rail follows the list. */
-    .ffb-work-split { display: flex; flex-direction: column; align-items: stretch; row-gap: var(--ffb-s5); }
-    .ffb-work-split > .ffb-rail { display: contents; }
-    .ffb-work-split > .ffb-rail > .ffb-rail-lead { order: -1; }
-    .ffb-work-split > .ffb-rail > :not(.ffb-rail-lead) { order: 1; }
-    /* Rows are added as the lineup needs them, so one of more than ten slots keeps its row height. */
-    .ffb-slots { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 44px; grid-auto-flow: row; gap: var(--ffb-s1); }
-    .ffb-slot {
-      grid-template-columns: minmax(0, 1fr);
-      align-content: center;
-      row-gap: 4px;
-      padding-inline: 10px 4px;
-      line-height: 1;
-    }
-    .ffb-slot-code { font-size: 12px; }
-    .ffb-slot-name,
-    .ffb-slot.ffb-is-filled .ffb-slot-name { font-size: 12px; }
-    .ffb-slot .ffb-slot-meta { display: none; }
-    .ffb-slot-bench .ffb-slot-name { display: none; }
-    .ffb-slot.ffb-slot-bench .ffb-slot-meta { display: block; font-size: 11px; }
     .ffb-grid { --ffb-grid-lead: 30px; }
     .ffb-cell.ffb-is-made { font-size: 10.5px; }
 
@@ -2310,7 +2382,6 @@ html.dark .ffb-scope {
     .ffb-panel-body { padding-inline: var(--ffb-s4); }
     .ffb-panel-foot { padding-inline: var(--ffb-s4); padding-bottom: calc(var(--ffb-s3) + env(safe-area-inset-bottom)); }
     .ffb-toast { inset-inline: var(--ffb-s4); translate: none; max-width: none; }
-    .ffb-toast-btn { height: 44px; margin-block: -6px; }
     /* On a phone the urgent clock sits in the bar's second row, so it does not stand proud. */
     .ffb-bug-seg.ffb-is-urgent { margin-block: 0; }
     /* The product bar rests with a whole link at its left edge, never a word cut by the name tab. */
@@ -2321,7 +2392,7 @@ html.dark .ffb-scope {
   }
 
   /* Slots in one column at every width, with a meta line under the name and a value at the right
-     (the weekly lineup). These come after the phone block and outrank it, so the five-across phone roster does not apply. */
+     (the weekly lineup). */
   .ffb-slots.ffb-slots-list {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
@@ -2358,8 +2429,9 @@ html.dark .ffb-scope {
   }
 }
 
-/* The phone sizes of the tokens and of the frame exceptions above (44px targets). */
-@media (max-width: 767.98px) {
+/* The 44px sizes of the tokens and of the frame exceptions above, on a phone and for a touch
+   pointer at any width. */
+@media (max-width: 767.98px), (pointer: coarse) {
   .ffb-root { --ffb-control: 44px; }
   .ffb-root :is(.ffb-seg-btn, .ffb-iconbtn, .ffb-tab, .ffb-btn-quiet) { min-width: 44px; }
   .ffb-root .ffb-seg-pos > .ffb-seg-btn { min-width: 46px; }
@@ -2374,8 +2446,33 @@ html.dark .ffb-scope {
     /* One more than half the difference from a label's line, so the label's line keeps its height. */
     margin-block: -16px;
   }
+}
+@media (max-width: 767.98px) {
   /* A cell is about 23px on a phone, so a made cell's label takes the narrow form there too. */
   .ffb-root .ffb-grid .ffb-cell.ffb-is-made { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
+}
+/* A compact roster's name takes the face's narrowest width, so the 50px a five-across socket leaves holds "G. Pickens".
+   The type roles are unlayered, so this is too. */
+@media (max-width: 1199.98px) {
+  .ffb-root .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name { font-stretch: 62%; letter-spacing: 0; }
+}
+
+/* ==========================================================================
+ * 17b. Forced colours (Windows high contrast)
+ * The system paints its own colours over every fill. The spread's marks and a queued star are
+ * drawn with fills alone, so they take the text colour, and what is pressed or chosen takes the
+ * system's selection pair. That pair needs forced-color-adjust: none, or the browser paints a
+ * plate in the page colour behind the label and the label disappears into it.
+ * ======================================================================== */
+@media (forced-colors: active) {
+  .ffb-root :is(.ffb-spread-range, .ffb-spread-sd, .ffb-spread-avg, .ffb-key-range, .ffb-key-sd, .ffb-key-avg) { background-color: CanvasText; }
+  .ffb-root .ffb-star[aria-pressed="true"] .ffb-star-icon { fill: CanvasText; stroke: CanvasText; }
+  .ffb-root :is(.ffb-seg-btn, .ffb-tab, .ffb-toggle, .ffb-iconbtn):is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]),
+  .ffb-root .ffb-choice:is(:has(input:checked), [aria-pressed="true"], [aria-checked="true"]) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
 }
 
 /* ==========================================================================
