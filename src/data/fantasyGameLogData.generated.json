@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T23:39:10.386Z",
+  "generatedAt": "2026-10-13T21:53:02.055Z",
   "data": {
     "PPR": {
       "entries": [
@@ -17,10 +17,10 @@
           "name": "Josh Allen",
           "team": "BUF",
           "position": "QB",
-          "games": 4,
+          "games": 5,
           "low": 17.5,
-          "median": 27.1,
-          "average": 28.1,
+          "median": 30.5,
+          "average": 28.6,
           "high": 40.8
         },
         {
@@ -107,10 +107,10 @@
           "name": "Kyren Williams",
           "team": "LA",
           "position": "RB",
-          "games": 4,
+          "games": 5,
           "low": 15.5,
-          "median": 18.8,
-          "average": 22.4,
+          "median": 19.6,
+          "average": 21.9,
           "high": 36.7
         },
         {
@@ -214,6 +214,16 @@
           "high": 31.3
         },
         {
+          "name": "Davante Adams",
+          "team": "LA",
+          "position": "WR",
+          "games": 5,
+          "low": 5.6,
+          "median": 20.7,
+          "average": 19,
+          "high": 39.5
+        },
+        {
           "name": "Dak Prescott",
           "team": "DAL",
           "position": "QB",
@@ -254,16 +264,6 @@
           "high": 22.6
         },
         {
-          "name": "Davante Adams",
-          "team": "LA",
-          "position": "WR",
-          "games": 4,
-          "low": 5.6,
-          "median": 13.9,
-          "average": 18.3,
-          "high": 39.5
-        },
-        {
           "name": "Christian McCaffrey",
           "team": "SF",
           "position": "RB",
@@ -292,6 +292,26 @@
           "median": 18.5,
           "average": 18,
           "high": 25.3
+        },
+        {
+          "name": "James Cook",
+          "team": "BUF",
+          "position": "RB",
+          "games": 5,
+          "low": 9.9,
+          "median": 19.4,
+          "average": 17.9,
+          "high": 22.8
+        },
+        {
+          "name": "Matthew Stafford",
+          "team": "LA",
+          "position": "QB",
+          "games": 5,
+          "low": 4.1,
+          "median": 20.9,
+          "average": 17.8,
+          "high": 27.3
         },
         {
           "name": "C.J. Stroud",
@@ -384,16 +404,6 @@
           "high": 22.7
         },
         {
-          "name": "James Cook",
-          "team": "BUF",
-          "position": "RB",
-          "games": 4,
-          "low": 9.9,
-          "median": 17.9,
-          "average": 16.6,
-          "high": 20.9
-        },
-        {
           "name": "Parker Washington",
           "team": "JAX",
           "position": "WR",
@@ -472,16 +482,6 @@
           "median": 15.5,
           "average": 15.7,
           "high": 21
-        },
-        {
-          "name": "Matthew Stafford",
-          "team": "LA",
-          "position": "QB",
-          "games": 4,
-          "low": 4.1,
-          "median": 15.3,
-          "average": 15.4,
-          "high": 27
         },
         {
           "name": "Mike Evans",
@@ -774,6 +774,16 @@
           "high": 18
         },
         {
+          "name": "Tyler Higbee",
+          "team": "LA",
+          "position": "TE",
+          "games": 4,
+          "low": 1.2,
+          "median": 12.5,
+          "average": 11.6,
+          "high": 20.2
+        },
+        {
           "name": "Jameson Williams",
           "team": "DET",
           "position": "WR",
@@ -782,16 +792,6 @@
           "median": 8.9,
           "average": 11.5,
           "high": 18.7
-        },
-        {
-          "name": "Dalton Kincaid",
-          "team": "BUF",
-          "position": "TE",
-          "games": 4,
-          "low": 1.7,
-          "median": 10.9,
-          "average": 11.5,
-          "high": 22.5
         },
         {
           "name": "Quinshon Judkins",
@@ -872,16 +872,6 @@
           "median": 8.3,
           "average": 10.4,
           "high": 22.9
-        },
-        {
-          "name": "Keon Coleman",
-          "team": "BUF",
-          "position": "WR",
-          "games": 4,
-          "low": 1.1,
-          "median": 8.5,
-          "average": 10.4,
-          "high": 23.6
         },
         {
           "name": "Wan'Dale Robinson",
@@ -982,6 +972,26 @@
           "median": 10.9,
           "average": 9.9,
           "high": 18.3
+        },
+        {
+          "name": "Dalton Kincaid",
+          "team": "BUF",
+          "position": "TE",
+          "games": 5,
+          "low": 1.7,
+          "median": 3.8,
+          "average": 9.9,
+          "high": 22.5
+        },
+        {
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "games": 5,
+          "low": 1.1,
+          "median": 7.7,
+          "average": 9.9,
+          "high": 23.6
         },
         {
           "name": "Omarion Hampton",
@@ -1324,6 +1334,16 @@
           "high": 14.3
         },
         {
+          "name": "Khalil Shakir",
+          "team": "BUF",
+          "position": "WR",
+          "games": 5,
+          "low": 1.6,
+          "median": 9,
+          "average": 8.3,
+          "high": 13.2
+        },
+        {
           "name": "Jordan Addison",
           "team": "MIN",
           "position": "WR",
@@ -1414,6 +1434,16 @@
           "high": 9.1
         },
         {
+          "name": "Blake Corum",
+          "team": "LA",
+          "position": "RB",
+          "games": 5,
+          "low": 3.1,
+          "median": 5.4,
+          "average": 7.7,
+          "high": 16.2
+        },
+        {
           "name": "Cody White",
           "team": "LV",
           "position": "WR",
@@ -1422,16 +1452,6 @@
           "median": 7.4,
           "average": 7.6,
           "high": 16.4
-        },
-        {
-          "name": "Khalil Shakir",
-          "team": "BUF",
-          "position": "WR",
-          "games": 4,
-          "low": 1.6,
-          "median": 7.9,
-          "average": 7.6,
-          "high": 13.2
         },
         {
           "name": "Tre Harris",
@@ -1764,16 +1784,6 @@
           "high": 6.8
         },
         {
-          "name": "Blake Corum",
-          "team": "LA",
-          "position": "RB",
-          "games": 4,
-          "low": 3.1,
-          "median": 4.5,
-          "average": 5.5,
-          "high": 10.2
-        },
-        {
           "name": "Isaac TeSlaa",
           "team": "DET",
           "position": "WR",
@@ -2084,16 +2094,6 @@
           "high": 7.4
         },
         {
-          "name": "Dawson Knox",
-          "team": "BUF",
-          "position": "TE",
-          "games": 4,
-          "low": 1.5,
-          "median": 2.5,
-          "average": 3.8,
-          "high": 8.5
-        },
-        {
           "name": "Kevin Coleman Jr.",
           "team": "MIA",
           "position": "WR",
@@ -2122,6 +2122,16 @@
           "median": 2.6,
           "average": 3.4,
           "high": 10.7
+        },
+        {
+          "name": "Dawson Knox",
+          "team": "BUF",
+          "position": "TE",
+          "games": 5,
+          "low": 1.5,
+          "median": 1.7,
+          "average": 3.3,
+          "high": 8.5
         },
         {
           "name": "Cole Kmet",
@@ -2254,6 +2264,16 @@
           "high": 5.3
         },
         {
+          "name": "Davis Allen",
+          "team": "LA",
+          "position": "TE",
+          "games": 5,
+          "low": 0,
+          "median": 2.3,
+          "average": 2.5,
+          "high": 4.4
+        },
+        {
           "name": "Myles Price",
           "team": "MIN",
           "position": "WR",
@@ -2334,16 +2354,6 @@
           "high": 4
         },
         {
-          "name": "Davis Allen",
-          "team": "LA",
-          "position": "TE",
-          "games": 4,
-          "low": 0,
-          "median": 2,
-          "average": 2,
-          "high": 3.9
-        },
-        {
           "name": "Seth McGowan",
           "team": "IND",
           "position": "RB",
@@ -2404,6 +2414,16 @@
           "high": 3
         },
         {
+          "name": "Colby Parkinson",
+          "team": "LA",
+          "position": "TE",
+          "games": 4,
+          "low": 0,
+          "median": 1.5,
+          "average": 1.6,
+          "high": 3.5
+        },
+        {
           "name": "AJ Dillon",
           "team": "CAR",
           "position": "RB",
@@ -2432,6 +2452,16 @@
           "median": 1.5,
           "average": 1.6,
           "high": 3.6
+        },
+        {
+          "name": "Ray Davis",
+          "team": "BUF",
+          "position": "RB",
+          "games": 4,
+          "low": 0,
+          "median": 1,
+          "average": 1.6,
+          "high": 4.3
         },
         {
           "name": "Sam Roush",
@@ -2747,7 +2777,7 @@
           "name": "Greg Dortch",
           "team": "BUF",
           "position": "WR",
-          "games": 4,
+          "games": 5,
           "low": 0,
           "median": 0,
           "average": 0,
@@ -2854,6 +2884,16 @@
           "high": 0
         },
         {
+          "name": "Keleki Latu",
+          "team": "BUF",
+          "position": "TE",
+          "games": 4,
+          "low": 0,
+          "median": 0,
+          "average": 0,
+          "high": 0
+        },
+        {
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
@@ -2925,10 +2965,10 @@
           "name": "Josh Allen",
           "team": "BUF",
           "position": "QB",
-          "games": 4,
+          "games": 5,
           "low": 17,
-          "median": 27.1,
-          "average": 28,
+          "median": 30.5,
+          "average": 28.5,
           "high": 40.8
         },
         {
@@ -3042,16 +3082,6 @@
           "high": 25
         },
         {
-          "name": "Kyren Williams",
-          "team": "LA",
-          "position": "RB",
-          "games": 4,
-          "low": 14,
-          "median": 16.8,
-          "average": 19.8,
-          "high": 31.7
-        },
-        {
           "name": "Christian Watson",
           "team": "GB",
           "position": "WR",
@@ -3060,6 +3090,16 @@
           "median": 19.1,
           "average": 19.3,
           "high": 29.7
+        },
+        {
+          "name": "Kyren Williams",
+          "team": "LA",
+          "position": "RB",
+          "games": 5,
+          "low": 14,
+          "median": 16.6,
+          "average": 19.2,
+          "high": 31.7
         },
         {
           "name": "CeeDee Lamb",
@@ -3122,6 +3162,16 @@
           "high": 25.3
         },
         {
+          "name": "Matthew Stafford",
+          "team": "LA",
+          "position": "QB",
+          "games": 5,
+          "low": 4.1,
+          "median": 20.9,
+          "average": 17.8,
+          "high": 27.3
+        },
+        {
           "name": "C.J. Stroud",
           "team": "HOU",
           "position": "QB",
@@ -3160,6 +3210,16 @@
           "median": 9.8,
           "average": 17.4,
           "high": 39.5
+        },
+        {
+          "name": "James Cook",
+          "team": "BUF",
+          "position": "RB",
+          "games": 5,
+          "low": 8.4,
+          "median": 19.4,
+          "average": 17.2,
+          "high": 22.3
         },
         {
           "name": "Zay Flowers",
@@ -3232,6 +3292,16 @@
           "high": 20.6
         },
         {
+          "name": "Davante Adams",
+          "team": "LA",
+          "position": "WR",
+          "games": 5,
+          "low": 4.1,
+          "median": 17.2,
+          "average": 16.3,
+          "high": 35.5
+        },
+        {
           "name": "Jalen Hurts",
           "team": "PHI",
           "position": "QB",
@@ -3240,16 +3310,6 @@
           "median": 13.5,
           "average": 16,
           "high": 24.7
-        },
-        {
-          "name": "James Cook",
-          "team": "BUF",
-          "position": "RB",
-          "games": 4,
-          "low": 8.4,
-          "median": 17.4,
-          "average": 15.9,
-          "high": 20.4
         },
         {
           "name": "Deshaun Watson",
@@ -3270,26 +3330,6 @@
           "median": 15.6,
           "average": 15.8,
           "high": 23.2
-        },
-        {
-          "name": "Davante Adams",
-          "team": "LA",
-          "position": "WR",
-          "games": 4,
-          "low": 4.1,
-          "median": 11.2,
-          "average": 15.5,
-          "high": 35.5
-        },
-        {
-          "name": "Matthew Stafford",
-          "team": "LA",
-          "position": "QB",
-          "games": 4,
-          "low": 4.1,
-          "median": 15.3,
-          "average": 15.4,
-          "high": 27
         },
         {
           "name": "Tetairoa McMillan",
@@ -3752,16 +3792,6 @@
           "high": 25.5
         },
         {
-          "name": "Dalton Kincaid",
-          "team": "BUF",
-          "position": "TE",
-          "games": 4,
-          "low": 1.2,
-          "median": 9.2,
-          "average": 9.6,
-          "high": 19
-        },
-        {
           "name": "Daniel Jones",
           "team": "IND",
           "position": "QB",
@@ -3802,6 +3832,16 @@
           "high": 14.1
         },
         {
+          "name": "Tyler Higbee",
+          "team": "LA",
+          "position": "TE",
+          "games": 4,
+          "low": 0.2,
+          "median": 10,
+          "average": 9.1,
+          "high": 16.2
+        },
+        {
           "name": "Jeremiyah Love",
           "team": "ARI",
           "position": "RB",
@@ -3830,16 +3870,6 @@
           "median": 8.1,
           "average": 8.8,
           "high": 16.7
-        },
-        {
-          "name": "Keon Coleman",
-          "team": "BUF",
-          "position": "WR",
-          "games": 4,
-          "low": 0.6,
-          "median": 6.8,
-          "average": 8.7,
-          "high": 20.6
         },
         {
           "name": "Emeka Egbuka",
@@ -3892,6 +3922,16 @@
           "high": 27.4
         },
         {
+          "name": "Keon Coleman",
+          "team": "BUF",
+          "position": "WR",
+          "games": 5,
+          "low": 0.6,
+          "median": 7.2,
+          "average": 8.4,
+          "high": 20.6
+        },
+        {
           "name": "Darren Waller",
           "team": "CAR",
           "position": "TE",
@@ -3900,6 +3940,16 @@
           "median": 6.3,
           "average": 8.3,
           "high": 16.8
+        },
+        {
+          "name": "Dalton Kincaid",
+          "team": "BUF",
+          "position": "TE",
+          "games": 5,
+          "low": 1.2,
+          "median": 3.2,
+          "average": 8.3,
+          "high": 19
         },
         {
           "name": "Braelon Allen",
@@ -4202,6 +4252,16 @@
           "high": 10.7
         },
         {
+          "name": "Blake Corum",
+          "team": "LA",
+          "position": "RB",
+          "games": 5,
+          "low": 2.5,
+          "median": 5.4,
+          "average": 7,
+          "high": 14.7
+        },
+        {
           "name": "Cody White",
           "team": "LV",
           "position": "WR",
@@ -4312,6 +4372,16 @@
           "high": 11.2
         },
         {
+          "name": "Khalil Shakir",
+          "team": "BUF",
+          "position": "WR",
+          "games": 5,
+          "low": 1.1,
+          "median": 7,
+          "average": 6.5,
+          "high": 9.7
+        },
+        {
           "name": "Kenyon Sadiq",
           "team": "NYJ",
           "position": "TE",
@@ -4390,16 +4460,6 @@
           "median": 6.1,
           "average": 5.8,
           "high": 7.3
-        },
-        {
-          "name": "Khalil Shakir",
-          "team": "BUF",
-          "position": "WR",
-          "games": 4,
-          "low": 1.1,
-          "median": 6.2,
-          "average": 5.8,
-          "high": 9.7
         },
         {
           "name": "Antonio Williams",
@@ -4570,16 +4630,6 @@
           "median": 2.4,
           "average": 5,
           "high": 12.4
-        },
-        {
-          "name": "Blake Corum",
-          "team": "LA",
-          "position": "RB",
-          "games": 4,
-          "low": 2.5,
-          "median": 4,
-          "average": 5,
-          "high": 9.7
         },
         {
           "name": "Eli Raridon",
@@ -4992,16 +5042,6 @@
           "high": 5.8
         },
         {
-          "name": "Dawson Knox",
-          "team": "BUF",
-          "position": "TE",
-          "games": 4,
-          "low": 1,
-          "median": 1.8,
-          "average": 3,
-          "high": 7.5
-        },
-        {
           "name": "Jerry Jeudy",
           "team": "CLE",
           "position": "WR",
@@ -5070,6 +5110,16 @@
           "median": 2.5,
           "average": 2.7,
           "high": 5.2
+        },
+        {
+          "name": "Dawson Knox",
+          "team": "BUF",
+          "position": "TE",
+          "games": 5,
+          "low": 1,
+          "median": 1.2,
+          "average": 2.6,
+          "high": 7.5
         },
         {
           "name": "KaVontae Turpin",
@@ -5192,6 +5242,16 @@
           "high": 3.2
         },
         {
+          "name": "Davis Allen",
+          "team": "LA",
+          "position": "TE",
+          "games": 5,
+          "low": 0,
+          "median": 1.8,
+          "average": 1.9,
+          "high": 3.4
+        },
+        {
           "name": "Myles Price",
           "team": "MIN",
           "position": "WR",
@@ -5272,16 +5332,6 @@
           "high": 7.8
         },
         {
-          "name": "Davis Allen",
-          "team": "LA",
-          "position": "TE",
-          "games": 4,
-          "low": 0,
-          "median": 1.5,
-          "average": 1.5,
-          "high": 2.9
-        },
-        {
           "name": "AJ Dillon",
           "team": "CAR",
           "position": "RB",
@@ -5332,6 +5382,16 @@
           "high": 2.5
         },
         {
+          "name": "Ray Davis",
+          "team": "BUF",
+          "position": "RB",
+          "games": 4,
+          "low": 0,
+          "median": 0.8,
+          "average": 1.3,
+          "high": 3.8
+        },
+        {
           "name": "Sam Roush",
           "team": "CHI",
           "position": "TE",
@@ -5350,6 +5410,16 @@
           "median": 0.2,
           "average": 1.1,
           "high": 3.7
+        },
+        {
+          "name": "Colby Parkinson",
+          "team": "LA",
+          "position": "TE",
+          "games": 4,
+          "low": 0,
+          "median": 1,
+          "average": 1.1,
+          "high": 2.5
         },
         {
           "name": "Brock Wright",
@@ -5665,7 +5735,7 @@
           "name": "Greg Dortch",
           "team": "BUF",
           "position": "WR",
-          "games": 4,
+          "games": 5,
           "low": 0,
           "median": 0,
           "average": 0,
@@ -5772,6 +5842,16 @@
           "high": 0
         },
         {
+          "name": "Keleki Latu",
+          "team": "BUF",
+          "position": "TE",
+          "games": 4,
+          "low": 0,
+          "median": 0,
+          "average": 0,
+          "high": 0
+        },
+        {
           "name": "Bauer Sharp",
           "team": "TB",
           "position": "TE",
@@ -5843,10 +5923,10 @@
           "name": "Josh Allen",
           "team": "BUF",
           "position": "QB",
-          "games": 4,
+          "games": 5,
           "low": 16.5,
-          "median": 27.1,
-          "average": 27.9,
+          "median": 30.5,
+          "average": 28.4,
           "high": 40.8
         },
         {
@@ -5990,6 +6070,16 @@
           "high": 25.3
         },
         {
+          "name": "Matthew Stafford",
+          "team": "LA",
+          "position": "QB",
+          "games": 5,
+          "low": 4.1,
+          "median": 20.9,
+          "average": 17.8,
+          "high": 27.3
+        },
+        {
           "name": "C.J. Stroud",
           "team": "HOU",
           "position": "QB",
@@ -6028,16 +6118,6 @@
           "median": 16.6,
           "average": 17.3,
           "high": 24.9
-        },
-        {
-          "name": "Kyren Williams",
-          "team": "LA",
-          "position": "RB",
-          "games": 4,
-          "low": 12.5,
-          "median": 14.8,
-          "average": 17.2,
-          "high": 26.7
         },
         {
           "name": "Tyler Shough",
@@ -6090,6 +6170,26 @@
           "high": 22.7
         },
         {
+          "name": "James Cook",
+          "team": "BUF",
+          "position": "RB",
+          "games": 5,
+          "low": 6.9,
+          "median": 19.4,
+          "average": 16.5,
+          "high": 21.8
+        },
+        {
+          "name": "Kyren Williams",
+          "team": "LA",
+          "position": "RB",
+          "games": 5,
+          "low": 12.5,
+          "median": 13.7,
+          "average": 16.5,
+          "high": 26.7
+        },
+        {
           "name": "Jalen Hurts",
           "team": "PHI",
           "position": "QB",
@@ -6120,16 +6220,6 @@
           "high": 26.3
         },
         {
-          "name": "Matthew Stafford",
-          "team": "LA",
-          "position": "QB",
-          "games": 4,
-          "low": 4.1,
-          "median": 15.3,
-          "average": 15.4,
-          "high": 27
-        },
-        {
           "name": "CeeDee Lamb",
           "team": "DAL",
           "position": "WR",
@@ -6138,16 +6228,6 @@
           "median": 13.2,
           "average": 15.2,
           "high": 27.3
-        },
-        {
-          "name": "James Cook",
-          "team": "BUF",
-          "position": "RB",
-          "games": 4,
-          "low": 6.9,
-          "median": 16.9,
-          "average": 15.1,
-          "high": 19.9
         },
         {
           "name": "Jaylen Warren",
@@ -6188,6 +6268,16 @@
           "median": 14.1,
           "average": 13.9,
           "high": 21
+        },
+        {
+          "name": "Davante Adams",
+          "team": "LA",
+          "position": "WR",
+          "games": 5,
+          "low": 2.6,
+          "median": 13.7,
+          "average": 13.6,
+          "high": 31.5
         },
         {
           "name": "Kyle Monangai",
@@ -6238,16 +6328,6 @@
           "median": 13.6,
           "average": 13,
           "high": 24.1
-        },
-        {
-          "name": "Davante Adams",
-          "team": "LA",
-          "position": "WR",
-          "games": 4,
-          "low": 2.6,
-          "median": 8.4,
-          "average": 12.8,
-          "high": 31.5
         },
         {
           "name": "Bucky Irving",
@@ -6700,16 +6780,6 @@
           "high": 16.7
         },
         {
-          "name": "Dalton Kincaid",
-          "team": "BUF",
-          "position": "TE",
-          "games": 4,
-          "low": 0.7,
-          "median": 7.4,
-          "average": 7.8,
-          "high": 15.5
-        },
-        {
           "name": "David Montgomery",
           "team": "HOU",
           "position": "RB",
@@ -6793,9 +6863,9 @@
           "name": "Keon Coleman",
           "team": "BUF",
           "position": "WR",
-          "games": 4,
+          "games": 5,
           "low": 0.1,
-          "median": 5,
+          "median": 6.3,
           "average": 6.9,
           "high": 17.6
         },
@@ -6820,6 +6890,16 @@
           "high": 15.3
         },
         {
+          "name": "Dalton Kincaid",
+          "team": "BUF",
+          "position": "TE",
+          "games": 5,
+          "low": 0.7,
+          "median": 2.7,
+          "average": 6.7,
+          "high": 15.5
+        },
+        {
           "name": "Harold Fannin Jr.",
           "team": "CLE",
           "position": "TE",
@@ -6828,6 +6908,16 @@
           "median": 5.4,
           "average": 6.7,
           "high": 17.1
+        },
+        {
+          "name": "Tyler Higbee",
+          "team": "LA",
+          "position": "TE",
+          "games": 4,
+          "low": -0.8,
+          "median": 7.5,
+          "average": 6.6,
+          "high": 12.2
         },
         {
           "name": "Tre Tucker",
@@ -6908,6 +6998,16 @@
           "median": 5,
           "average": 6.3,
           "high": 15.3
+        },
+        {
+          "name": "Blake Corum",
+          "team": "LA",
+          "position": "RB",
+          "games": 5,
+          "low": 1.5,
+          "median": 5.4,
+          "average": 6.3,
+          "high": 13.2
         },
         {
           "name": "Jaylin Noel",
@@ -7280,6 +7380,16 @@
           "high": 10.4
         },
         {
+          "name": "Khalil Shakir",
+          "team": "BUF",
+          "position": "WR",
+          "games": 5,
+          "low": 0.6,
+          "median": 5,
+          "average": 4.7,
+          "high": 8
+        },
+        {
           "name": "Xavier Hutchinson",
           "team": "HOU",
           "position": "WR",
@@ -7370,16 +7480,6 @@
           "high": 10.9
         },
         {
-          "name": "Blake Corum",
-          "team": "LA",
-          "position": "RB",
-          "games": 4,
-          "low": 1.5,
-          "median": 3.8,
-          "average": 4.5,
-          "high": 9.2
-        },
-        {
           "name": "Tre Harris",
           "team": "LAC",
           "position": "WR",
@@ -7468,16 +7568,6 @@
           "median": 4,
           "average": 3.9,
           "high": 5.8
-        },
-        {
-          "name": "Khalil Shakir",
-          "team": "BUF",
-          "position": "WR",
-          "games": 4,
-          "low": 0.6,
-          "median": 4.4,
-          "average": 3.9,
-          "high": 6.2
         },
         {
           "name": "Rashid Shaheed",
@@ -7910,16 +8000,6 @@
           "high": 7.4
         },
         {
-          "name": "Dawson Knox",
-          "team": "BUF",
-          "position": "TE",
-          "games": 4,
-          "low": 0.5,
-          "median": 1,
-          "average": 2.3,
-          "high": 6.5
-        },
-        {
           "name": "Cole Kmet",
           "team": "CHI",
           "position": "TE",
@@ -8018,6 +8098,16 @@
           "median": 2.3,
           "average": 2,
           "high": 3.5
+        },
+        {
+          "name": "Dawson Knox",
+          "team": "BUF",
+          "position": "TE",
+          "games": 5,
+          "low": 0.5,
+          "median": 0.7,
+          "average": 1.9,
+          "high": 6.5
         },
         {
           "name": "Kaleb Johnson",
@@ -8150,6 +8240,16 @@
           "high": 7.3
         },
         {
+          "name": "Davis Allen",
+          "team": "LA",
+          "position": "TE",
+          "games": 5,
+          "low": 0,
+          "median": 1.3,
+          "average": 1.3,
+          "high": 2.4
+        },
+        {
           "name": "AJ Dillon",
           "team": "CAR",
           "position": "RB",
@@ -8158,6 +8258,16 @@
           "median": 1,
           "average": 1.1,
           "high": 2.8
+        },
+        {
+          "name": "Ray Davis",
+          "team": "BUF",
+          "position": "RB",
+          "games": 4,
+          "low": 0,
+          "median": 0.5,
+          "average": 1.1,
+          "high": 3.3
         },
         {
           "name": "Chimere Dike",
@@ -8198,16 +8308,6 @@
           "median": 1,
           "average": 1,
           "high": 2
-        },
-        {
-          "name": "Davis Allen",
-          "team": "LA",
-          "position": "TE",
-          "games": 4,
-          "low": 0,
-          "median": 1,
-          "average": 1,
-          "high": 1.9
         },
         {
           "name": "CJ Donaldson",
@@ -8308,6 +8408,16 @@
           "median": 0.9,
           "average": 0.7,
           "high": 1.1
+        },
+        {
+          "name": "Colby Parkinson",
+          "team": "LA",
+          "position": "TE",
+          "games": 4,
+          "low": 0,
+          "median": 0.4,
+          "average": 0.6,
+          "high": 1.5
         },
         {
           "name": "Brock Wright",
@@ -8583,7 +8693,7 @@
           "name": "Greg Dortch",
           "team": "BUF",
           "position": "WR",
-          "games": 4,
+          "games": 5,
           "low": 0,
           "median": 0,
           "average": 0,
@@ -8684,6 +8794,16 @@
           "team": "CLE",
           "position": "WR",
           "games": 5,
+          "low": 0,
+          "median": 0,
+          "average": 0,
+          "high": 0
+        },
+        {
+          "name": "Keleki Latu",
+          "team": "BUF",
+          "position": "TE",
+          "games": 4,
           "low": 0,
           "median": 0,
           "average": 0,
