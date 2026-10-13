@@ -328,6 +328,10 @@ describe("TradeCalculatorClient", () => {
     expect(within(evaluation).getAllByText("Waiting for players")).toHaveLength(2);
     expect(within(evaluation).queryByText("Not current")).not.toBeInTheDocument();
     expect(screen.queryByTestId("trade-verdict-strip")).not.toBeInTheDocument();
+    // The model's limits print in the open on an idle desk too, never inside a disclosure.
+    expect(
+      within(evaluation).getByText(/It is not projected points, win probability, dynasty value, or injury advice\./).closest("details"),
+    ).toBeNull();
   });
 
   it("summarises the league in one line and opens the settings on request", async () => {
@@ -338,8 +342,8 @@ describe("TradeCalculatorClient", () => {
     const toggle = within(settings).getByRole("button", { name: "Change league settings" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     const fields = document.getElementById(toggle.getAttribute("aria-controls") as string) as HTMLElement;
-    // Closed below lg, always shown from lg up.
-    expect(fields).toHaveClass("hidden", "lg:block");
+    // Closed below 1200px, where the kit's desk is one column, and always shown from there up.
+    expect(fields).toHaveClass("hidden", "min-[1200px]:block");
     expect(fields).toContainElement(within(settings).getByLabelText("Teams"));
     // The supported-format scope stays outside the collapsed fields.
     expect(fields).not.toContainElement(within(settings).getByText(/Preseason managed redraft with one starting QB/));
@@ -413,6 +417,8 @@ describe("TradeCalculatorClient", () => {
       "last sampled real drafts on Sep 5, 2026, which is past the four-day window the estimate needs, so the verdict is withheld",
     );
     expect(within(note).getByRole("link", { name: "weekly board" })).toBeInTheDocument();
+    // The stamp is a date with no time, so the head prints the same date the note does.
+    expect(screen.getByText("Draft market Sep 5, 2026").closest("header")).not.toBeNull();
 
     await addPlayerWithKeyboard("you give", "Elite Runner");
     await addPlayerWithKeyboard("you get", "Depth Runner");

@@ -26,64 +26,49 @@ function markerPosition(result: FantasyTradeEvaluation | null): number {
 export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation | null }) {
   const markerX = markerPosition(result);
   const markerOffset = markerX - CENTRE;
-  const label =
-    !result || result.verdict === "insufficient"
-      ? "A directional trade estimate is unavailable."
-      : result.winner === "side-a"
+  const noEstimate = !result || result.verdict === "insufficient";
+  const label = noEstimate
+    ? "A directional trade estimate is unavailable."
+    : result.winner === "side-a"
       ? "The players you give carry the higher central estimate."
       : result.winner === "side-b"
         ? "The players you get carry the higher central estimate."
         : "The central estimates sit inside the 5% balanced band.";
 
   return (
-    <figure className="m-0" aria-label={label} role="img">
-      <svg viewBox="0 0 240 58" className="h-auto w-full text-[var(--c97-ink)]" aria-hidden="true">
+    <figure className="ffb-scale" aria-label={label} role="img">
+      <svg viewBox="0 0 240 58" aria-hidden="true">
         <rect
+          className="ffb-tr-scale-band"
           x={CENTRE - BALANCED_BAND}
           y="20"
           width={BALANCED_BAND * 2}
           height="15"
-          fill="currentColor"
-          opacity="0.1"
         />
-        <path d="M24 27.5H216" stroke="currentColor" strokeWidth="1" />
+        <path className="ffb-tr-scale-track" d="M24 27.5H216" />
         {[24, CENTRE - CLEAR_EDGE_OFFSET, CENTRE, CENTRE + CLEAR_EDGE_OFFSET, 216].map((x) => (
-          <path key={x} d={`M${x} 22V33`} stroke="currentColor" strokeWidth="1" opacity="0.42" />
+          <path key={x} className="ffb-tr-scale-tick" d={`M${x} 21V34`} />
         ))}
         {[CENTRE - CLEAR_EDGE_OFFSET, CENTRE + CLEAR_EDGE_OFFSET].map((x) => (
-          <text
-            key={x}
-            x={x}
-            y="11"
-            textAnchor="middle"
-            fontSize="9.5"
-            fill="currentColor"
-            opacity="0.62"
-          >
+          <text key={x} className="ffb-tr-scale-text" x={x} y="11" textAnchor="middle">
             15%
           </text>
         ))}
+        {/* With no estimate the marker is an open socket at rest, so it does not read as an even trade. */}
         <g
-          className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-[var(--c97-ease)]"
+          className={`ffb-tr-scale-marker${noEstimate ? " ffb-tr-scale-rest" : ""}`}
           style={{ transform: `translateX(${markerOffset}px)` }}
         >
-          <path d="M120 15V40" stroke="var(--c97-accent)" strokeWidth="2" />
-          <circle
-            cx="120"
-            cy="27.5"
-            r="5.5"
-            fill="var(--c97-surface)"
-            stroke="var(--c97-accent)"
-            strokeWidth="3"
-          />
+          <path className="ffb-tr-scale-stem" d="M120 15V40" />
+          <circle className="ffb-tr-scale-pin" cx="120" cy="27.5" r="6" />
         </g>
-        <text x="24" y="54" fontSize="9.5" fill="currentColor" opacity="0.62">
+        <text className="ffb-tr-scale-text" x="24" y="54">
           GIVE
         </text>
-        <text x="120" y="54" textAnchor="middle" fontSize="9.5" fill="currentColor" opacity="0.62">
+        <text className="ffb-tr-scale-text" x="120" y="54" textAnchor="middle">
           EVEN
         </text>
-        <text x="216" y="54" textAnchor="end" fontSize="9.5" fill="currentColor" opacity="0.62">
+        <text className="ffb-tr-scale-text" x="216" y="54" textAnchor="end">
           GET
         </text>
       </svg>

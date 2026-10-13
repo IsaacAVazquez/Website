@@ -3,10 +3,17 @@
 import { Search } from "lucide-react";
 import { useId, useMemo, useRef, useState } from "react";
 import { normalizeAdpPlayerName, normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
-import { FANTASY_CHIP_CLASS, getPositionTone } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 const RESULT_LIMIT = 8;
+
+/** The kit's position chip for a player: the position's colour class and its letters with the position rank. */
+export function positionChip(position: string, positionRank?: number | null) {
+  return {
+    className: `ffb-chip ffb-pos-${position.toLowerCase()}`,
+    label: `${position}${typeof positionRank === "number" && Number.isFinite(positionRank) ? positionRank : ""}`,
+  };
+}
 
 function playerRank(player: Player): number {
   const rank = [player.rankEcr, player.averageRank].find(
@@ -113,57 +120,52 @@ export function TradePlayerCombobox({
         }
       }}
     >
-      <label className="block" htmlFor={`${listboxId}-input`}>
+      <label className="ffb-search ffb-tr-search" htmlFor={`${listboxId}-input`}>
+        <Search width={15} height={15} aria-hidden="true" />
         <span className="sr-only">Add a player to {sideLabel}</span>
-        <span className="relative block">
-          <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--c97-ink-2)]"
-            aria-hidden="true"
-          />
-          <input
-            ref={inputRef}
-            id={`${listboxId}-input`}
-            type="search"
-            role="combobox"
-            aria-autocomplete="list"
-            aria-expanded={listOpen}
-            aria-controls={listboxId}
-            aria-activedescendant={
-              open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
-            }
-            aria-describedby={helpId}
-            autoComplete="off"
-            disabled={disabled}
-            value={query}
-            onFocus={() => setOpen(true)}
-            onChange={(event) => {
-              setQuery(event.target.value);
+        <input
+          ref={inputRef}
+          id={`${listboxId}-input`}
+          type="search"
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded={listOpen}
+          aria-controls={listboxId}
+          aria-activedescendant={
+            open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
+          }
+          aria-describedby={helpId}
+          autoComplete="off"
+          disabled={disabled}
+          value={query}
+          onFocus={() => setOpen(true)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setOpen(true);
+            setActiveIndex(-1);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowDown") {
+              event.preventDefault();
               setOpen(true);
+              moveActive(1);
+            } else if (event.key === "ArrowUp") {
+              event.preventDefault();
+              setOpen(true);
+              moveActive(-1);
+            } else if (event.key === "Enter" && open && activeIndex >= 0) {
+              event.preventDefault();
+              const player = results[activeIndex];
+              if (player) addPlayer(player);
+            } else if (event.key === "Escape") {
+              event.preventDefault();
+              setOpen(false);
               setActiveIndex(-1);
-            }}
-            onKeyDown={(event) => {
-              if (event.key === "ArrowDown") {
-                event.preventDefault();
-                setOpen(true);
-                moveActive(1);
-              } else if (event.key === "ArrowUp") {
-                event.preventDefault();
-                setOpen(true);
-                moveActive(-1);
-              } else if (event.key === "Enter" && open && activeIndex >= 0) {
-                event.preventDefault();
-                const player = results[activeIndex];
-                if (player) addPlayer(player);
-              } else if (event.key === "Escape") {
-                event.preventDefault();
-                setOpen(false);
-                setActiveIndex(-1);
-              }
-            }}
-            placeholder={disabled ? "Six-player limit reached" : "Search name, team, or position"}
-            className="min-h-[48px] w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-sm text-[var(--c97-ink)] transition-[border-color,background-color] placeholder:text-[var(--c97-ink-2)] hover:border-[var(--c97-ink)] focus:border-[var(--c97-accent)] focus:bg-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "calc(28px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)" }}
-          />
-        </span>
+            }
+          }}
+          placeholder={disabled ? "Six-player limit reached" : "Search name, team, or position"}
+          className="ffb-search-input"
+        />
       </label>
       <p id={helpId} className="sr-only">
         Use the arrow keys to move through players, Enter to add one, and Escape to close the list.
@@ -175,9 +177,7 @@ export function TradePlayerCombobox({
       </p>
 
       {listOpen ? (
-        <div
-          className="absolute inset-x-0 top-[calc(100%+0.35rem)] z-30 overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
-        >
+        <div className="ffb-tr-pop">
           {/* The listbox stays mounted for as long as the popup is open, so
               aria-controls always resolves and aria-expanded never reports
               collapsed over a popup the visitor can see. */}
@@ -185,11 +185,12 @@ export function TradePlayerCombobox({
             id={listboxId}
             role="listbox"
             aria-label={`Players for ${sideLabel}`}
-            className={results.length > 0 ? "max-h-80 overflow-y-auto py-[var(--c97-sp-0)]" : undefined}
+            className={results.length > 0 ? "ffb-tr-options" : undefined}
           >
             {results.map((player, index) => {
               const excluded = excludedPlayerIds.has(player.id);
               const active = index === activeIndex;
+              const chip = positionChip(player.position, player.positionRank);
               return (
                 <li key={player.id} role="presentation">
                   <button
@@ -203,21 +204,11 @@ export function TradePlayerCombobox({
                     onMouseEnter={() => !excluded && setActiveIndex(index)}
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => addPlayer(player)}
-                    className="flex min-h-touch w-full items-center text-left text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:text-[var(--c97-ink-2)]"
-                    style={
-                      { paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(active
-                        ? {
-                            background:
-                              "color-mix(in srgb, var(--c97-accent) 12%, var(--c97-surface))",
-                          }
-                        : undefined) }
-                    }
+                    className="ffb-tr-option"
                   >
-                    <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
-                      {player.position}
-                    </span>
-                    <span className="min-w-0 flex-1 truncate font-semibold">{player.name}</span>
-                    <span className="shrink-0 text-2xs text-[var(--c97-ink-2)]">
+                    <span className={chip.className}>{chip.label}</span>
+                    <span className="ffb-c-name">{player.name}</span>
+                    <span className="ffb-c-team">
                       {excluded ? "Already added" : `${player.team} · ECR ${playerRank(player)}`}
                     </span>
                   </button>
@@ -225,9 +216,7 @@ export function TradePlayerCombobox({
               );
             })}
           </ul>
-          {results.length === 0 ? (
-            <p className="text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>{emptyMessage}</p>
-          ) : null}
+          {results.length === 0 ? <p className="ffb-tr-nomatch">{emptyMessage}</p> : null}
         </div>
       ) : null}
     </div>
