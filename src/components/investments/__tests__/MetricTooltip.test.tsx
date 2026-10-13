@@ -24,6 +24,42 @@ describe("MetricTooltip", () => {
     });
   });
 
+  it.each([
+    ["the ? mark", <MetricTooltip key="chip" term="Beta 5Y" />],
+    [
+      "a label trigger",
+      <MetricTooltip key="text" term="Beta 5Y" focusable>
+        Beta
+      </MetricTooltip>,
+    ],
+  ])("closes on Escape from %s and leaves focus on the trigger", async (_kind, tooltip) => {
+    const onKeyDown = jest.fn();
+    render(<div onKeyDown={onKeyDown}>{tooltip}</div>);
+
+    const trigger = screen.getByRole("button", { name: "What is Beta 5Y?" });
+    trigger.focus();
+    expect(await screen.findByRole("tooltip")).toBeInTheDocument();
+
+    fireEvent.keyDown(trigger, { key: "Escape" });
+
+    await waitFor(() => {
+      expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+    });
+    expect(trigger).toHaveFocus();
+    expect(trigger).not.toHaveAttribute("aria-describedby");
+    // The Escape that closed the bubble stops there, so a dialog around the trigger stays open.
+    expect(onKeyDown).not.toHaveBeenCalled();
+
+    // With nothing left to close, the next Escape goes on to whatever holds the trigger.
+    fireEvent.keyDown(trigger, { key: "Escape" });
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+    // Enter on the trigger brings the bubble back without leaving it.
+    fireEvent.keyDown(trigger, { key: "Enter" });
+    expect(await screen.findByRole("tooltip")).toBeInTheDocument();
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+  });
+
   it("does not bubble clicks into a surrounding interactive row", () => {
     const onRowClick = jest.fn();
 
