@@ -1,124 +1,124 @@
 {
-  "generatedAt": "2026-10-13T02:38:03.742Z",
+  "generatedAt": "2026-10-13T17:02:16.928Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
-      "flightNumber": 738,
+      "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
+      "name": "USSF-481",
+      "flightNumber": 739,
       "upcoming": true,
       "success": null,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
-      "dateUtc": "2026-10-13T10:33:44Z",
-      "dateUnix": 1791887624,
-      "dateLocal": "2026-10-13T10:33:44Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
-        ]
-      }
-    },
-    "nextLaunch": {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
-      "flightNumber": 738,
-      "upcoming": true,
-      "success": null,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
-      "dateUtc": "2026-10-13T10:33:44Z",
-      "dateUnix": 1791887624,
-      "dateLocal": "2026-10-13T10:33:44Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
-        ]
-      }
-    },
-    "fallbackLaunch": {
-      "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
-      "name": "Starlink Group 15-25",
-      "flightNumber": 737,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-13T00:28:11Z",
-      "dateUnix": 1791851291,
-      "dateLocal": "2026-10-13T00:28:11Z",
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-10-15T23:44:00Z",
+      "dateUnix": 1792107840,
+      "dateLocal": "2026-10-15T23:44:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
       "crewCount": 0,
-      "payloadCount": 27,
+      "payloadCount": 1,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "patchSmall": null,
+        "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      }
+    },
+    "nextLaunch": {
+      "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
+      "name": "USSF-481",
+      "flightNumber": 739,
+      "upcoming": true,
+      "success": null,
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-10-15T23:44:00Z",
+      "dateUnix": 1792107840,
+      "dateLocal": "2026-10-15T23:44:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      }
+    },
+    "fallbackLaunch": {
+      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
+      "name": "Dragon CRS-2 SpX-35",
+      "flightNumber": 738,
+      "upcoming": false,
+      "success": true,
+      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
+      "dateUtc": "2026-10-13T10:33:44Z",
+      "dateUnix": 1791887624,
+      "dateLocal": "2026-10-13T10:33:44Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/5efabdd13dfdeda1.jpg"
         ]
       }
     },
@@ -134,7 +134,7 @@
       {
         "id": "past",
         "label": "Completed archive",
-        "value": "737",
+        "value": "738",
         "description": "historical SpaceX launches available from the active provider"
       },
       {
@@ -150,49 +150,9 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-13T02:37:58.710Z"
+    "generatedAt": "2026-10-13T17:01:46.627Z"
   },
   "upcomingLaunches": [
-    {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
-      "flightNumber": 738,
-      "upcoming": true,
-      "success": null,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
-      "dateUtc": "2026-10-13T10:33:44Z",
-      "dateUnix": 1791887624,
-      "dateLocal": "2026-10-13T10:33:44Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
-        ]
-      }
-    },
     {
       "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
       "name": "USSF-481",
@@ -283,6 +243,46 @@
       "dateUtc": "2026-10-20T22:14:00Z",
       "dateUnix": 1792534440,
       "dateLocal": "2026-10-20T22:14:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://starlink.com",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      }
+    },
+    {
+      "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
+      "name": "Starlink Group 15-16",
+      "flightNumber": 742,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-10-24T05:29:00Z",
+      "dateUnix": 1792819740,
+      "dateLocal": "2026-10-24T05:29:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -1115,6 +1115,46 @@
     }
   ],
   "pastLaunches": [
+    {
+      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
+      "name": "Dragon CRS-2 SpX-35",
+      "flightNumber": 738,
+      "upcoming": false,
+      "success": true,
+      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
+      "dateUtc": "2026-10-13T10:33:44Z",
+      "dateUnix": 1791887624,
+      "dateLocal": "2026-10-13T10:33:44Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://www.nasa.gov/mission_pages/station/main/index.html",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/5efabdd13dfdeda1.jpg"
+        ]
+      }
+    },
     {
       "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
       "name": "Starlink Group 15-25",
@@ -2034,67 +2074,27 @@
           "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       }
-    },
-    {
-      "id": "e4316d4c-9eb8-4a18-9b0d-4307c3970ef6",
-      "name": "Starlink Group 17-38",
-      "flightNumber": 714,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-08T16:35:02Z",
-      "dateUnix": 1786206902,
-      "dateLocal": "2026-08-08T16:35:02Z",
+    }
+  ],
+  "launchDetails": {
+    "df88cfbf-f504-4e11-8370-e33dd6280b5b": {
+      "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
+      "name": "USSF-481",
+      "flightNumber": 739,
+      "upcoming": true,
+      "success": null,
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-10-15T23:44:00Z",
+      "dateUnix": 1792107840,
+      "dateLocal": "2026-10-15T23:44:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": "https://starlink.com",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
-        ]
-      }
-    }
-  ],
-  "launchDetails": {
-    "bf2c3027-a314-403e-a416-2bfd5d165ad1": {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
-      "flightNumber": 738,
-      "upcoming": true,
-      "success": null,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
-      "dateUtc": "2026-10-13T10:33:44Z",
-      "dateUnix": 1791887624,
-      "dateLocal": "2026-10-13T10:33:44Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -2102,22 +2102,22 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://www.youtube.com/watch?v=_gdbS1AAkq0",
-        "article": "https://www.spacex.com/launches/crs35",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "webcast": "https://x.com/i/broadcasts/1aJbdEzYpPaKX",
+        "article": "https://www.spacex.com/launches/ussf481",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
-        "youtubeId": "_gdbS1AAkq0",
+        "youtubeId": null,
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 0,
+      "window": 14400,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2139,28 +2139,28 @@
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
           "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
+          "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       },
       "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
         "region": null,
-        "timezone": "America/New_York",
+        "timezone": "America/Los_Angeles",
         "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
       },
       "crew": [],
       "payloads": [
         {
-          "id": "6266",
-          "name": "Dragon CRS-2 SpX-35",
-          "type": "Resupply",
+          "id": "7866",
+          "name": "USSF-481",
+          "type": "Government/Top Secret",
           "customers": [
-            "National Aeronautics and Space Administration"
+            "United States Space Force"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2168,8 +2168,8 @@
           "nationalities": [
             "USA"
           ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
+          "orbit": "Polar Orbit",
+          "regime": "PO",
           "massKg": null,
           "massLbs": null
         }
@@ -2375,6 +2375,206 @@
       "capsules": [],
       "cores": []
     },
+    "bf2c3027-a314-403e-a416-2bfd5d165ad1": {
+      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
+      "name": "Dragon CRS-2 SpX-35",
+      "flightNumber": 738,
+      "upcoming": false,
+      "success": true,
+      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
+      "dateUtc": "2026-10-13T10:33:44Z",
+      "dateUnix": 1791887624,
+      "dateLocal": "2026-10-13T10:33:44Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://www.youtube.com/watch?v=_gdbS1AAkq0",
+        "article": "https://www.spacex.com/launches/crs35",
+        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": "_gdbS1AAkq0",
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/5efabdd13dfdeda1.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 0,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/5efabdd13dfdeda1.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "6266",
+          "name": "Dragon CRS-2 SpX-35",
+          "type": "Resupply",
+          "customers": [
+            "National Aeronautics and Space Administration"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "3b430f81-0ff1-4d85-8a1a-cef0de326198": {
+      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
+      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+      "flightNumber": 740,
+      "upcoming": true,
+      "success": null,
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "dateUtc": "2026-10-19T10:30:00Z",
+      "dateUnix": 1792405800,
+      "dateLocal": "2026-10-19T10:30:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/6337115b056501f2.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 6180,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/6337115b056501f2.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7715",
+          "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+          "type": "Dedicated Rideshare",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
     "97c6f5e1-299e-4652-b72d-9618ac047076": {
       "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
       "name": "Starlink Group 15-25",
@@ -2457,206 +2657,6 @@
           "id": "7750",
           "name": "Starlink Group 15-25",
           "type": "Communications",
-          "customers": [
-            "SpaceX"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
-    "df88cfbf-f504-4e11-8370-e33dd6280b5b": {
-      "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
-      "name": "USSF-481",
-      "flightNumber": 739,
-      "upcoming": true,
-      "success": null,
-      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
-      "dateUtc": "2026-10-15T23:44:00Z",
-      "dateUnix": 1792107840,
-      "dateLocal": "2026-10-15T23:44:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1aJbdEzYpPaKX",
-        "article": "https://www.spacex.com/launches/ussf481",
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/11492e0a09c1640e.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 14400,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/11492e0a09c1640e.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "16",
-        "name": "Space Launch Complex 4E",
-        "fullName": "Space Launch Complex 4E",
-        "locality": "Vandenberg SFB, CA, USA",
-        "region": null,
-        "timezone": "America/Los_Angeles",
-        "status": null,
-        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
-        "image": "/data/spacex/images/b752567507d74cae.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7866",
-          "name": "USSF-481",
-          "type": "Government/Top Secret",
-          "customers": [
-            "United States Space Force"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Polar Orbit",
-          "regime": "PO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
-    "3b430f81-0ff1-4d85-8a1a-cef0de326198": {
-      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
-      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
-      "flightNumber": 740,
-      "upcoming": true,
-      "success": null,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
-      "dateUtc": "2026-10-19T10:30:00Z",
-      "dateUnix": 1792405800,
-      "dateLocal": "2026-10-19T10:30:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/6337115b056501f2.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 0,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/6337115b056501f2.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7715",
-          "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
-          "type": "Dedicated Rideshare",
           "customers": [
             "SpaceX"
           ],
@@ -2767,105 +2767,6 @@
           ],
           "orbit": "Polar Orbit",
           "regime": "PO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
-    "4651fd8a-43de-4166-bf8f-c168b3bd1d2c": {
-      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-      "name": "NROL-97",
-      "flightNumber": 735,
-      "upcoming": false,
-      "success": true,
-      "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-10-02T03:54:00Z",
-      "dateUnix": 1790913240,
-      "dateLocal": "2026-10-02T03:54:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1oJMvNkPPXlxQ",
-        "article": "https://www.spacex.com/launches/nrol97",
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
-        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 2940,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7165",
-          "name": "NROL-97",
-          "type": "Government/Top Secret",
-          "customers": [
-            "National Reconnaissance Office"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Unknown",
-          "regime": "N/A",
           "massKg": null,
           "massLbs": null
         }
