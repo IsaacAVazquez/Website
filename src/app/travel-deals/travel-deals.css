@@ -145,15 +145,23 @@
   font-family: var(--c97-font-mono);
 }
 
+/*
+ * The step only sets how far the arrows move, and a field commits any whole
+ * number in its range. So a fare of 412 is not an error, and the rule keeps
+ * its colour where the site's invalid style would paint it.
+ */
+.td-root .c97-field[type="number"]:invalid:not(:focus) {
+  border-bottom-color: var(--c97-ink-2);
+}
+
 /* Secondary inputs sit under disclosure headings in the input column. */
 .td-disclose {
   border-top: 1px solid var(--td-rule);
 }
 
+/* Left a list item, since the open and closed marker only draws on one. The line height is the 44px target. */
 .td-disclose summary {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
+  line-height: 44px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -270,6 +278,27 @@
 .td-table td[data-align="end"] {
   font-family: var(--c97-font-mono);
   white-space: nowrap;
+}
+
+/* The note gives way before the table leaves its column, breaking inside a word if a large budget needs it to. */
+.td-table td:last-child {
+  overflow-wrap: anywhere;
+}
+
+/* Under 360px the three columns outgrow the row at the shared padding, so the cells give some up. */
+@media screen and (max-width: 359px) {
+  .td-root .td-table th,
+  .td-root .td-table td {
+    padding-inline: var(--c97-sp-1);
+  }
+
+  .td-root .td-table th {
+    padding-inline-start: 0;
+  }
+
+  .td-root .td-table td:last-child {
+    padding-inline-end: 0;
+  }
 }
 
 .td-disclosure {
@@ -416,7 +445,8 @@
   margin-inline-start: 0;
 }
 
-.td-tools-title {
+/* Two classes, so the top margin outranks the heading reset on `.td-root h3`. */
+.td-playbook .td-tools-title {
   margin-top: var(--c97-sp-3);
   font-size: var(--c97-fs-body);
   font-weight: 700;

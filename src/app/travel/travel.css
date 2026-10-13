@@ -424,10 +424,14 @@
   border: 0;
   background: none;
   color: var(--mark-color, var(--tp-ink-2));
+}
+
+/* Only the button reads as pressable. The sample day draws the same mark on a span. */
+button.tp-toggle {
   cursor: pointer;
 }
 
-.tp-toggle:hover {
+button.tp-toggle:hover {
   color: var(--tp-ink);
 }
 
@@ -494,7 +498,13 @@
   padding: var(--c97-sp-2) 0 var(--c97-sp-1);
 }
 
-@media screen and (min-width: 640px) {
+/*
+ * Four across only while the days have the page's full width. From 1024px the
+ * time grid takes its column and a quarter of what is left clips a date or a
+ * time, and under 720px a quarter is too narrow as well, so both fall back to
+ * the form's two columns.
+ */
+@media screen and (min-width: 720px) and (max-width: 1023px) {
   .tp-form-stop {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -749,8 +759,22 @@
   }
 }
 
+/* The budget and notes, printed from outside the disclosure that holds their fields. */
+.tp-print-details {
+  display: none;
+}
+
 /* On paper the plan prints without its forms and controls. */
 @media print {
+  .tp-print-details {
+    display: block;
+  }
+
+  .tp-print-notes {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
+
   .tp-grid-cue,
   .tp-new-trip,
   .tp-manage,

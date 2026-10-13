@@ -38,13 +38,6 @@ describe("fareGauge", () => {
     expect(gauge.needle).toBe(0);
     expect(gauge.clamped).toBe("low");
   });
-
-  it("reuses scoreFare's rating rather than inventing a new one", () => {
-    const { scoreFare } = jest.requireActual("@/lib/travelDeals");
-    expect(fareGauge(region.typicalFare, region).rating).toBe(
-      scoreFare(region.typicalFare, region).rating,
-    );
-  });
 });
 
 describe("bookingStrip", () => {

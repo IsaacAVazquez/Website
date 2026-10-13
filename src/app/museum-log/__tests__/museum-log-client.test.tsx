@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import { museumSnapshot } from "@/data/museumSnapshot";
 import { MuseumLogClient } from "../museum-log-client";
 import { DEFAULT_MUSEUM_STATE } from "../museum-log-state";
@@ -45,6 +46,13 @@ describe("MuseumLogClient", () => {
     const search = screen.getByRole("searchbox", { name: "Filter museums" });
     fireEvent.change(search, { target: { value: "modern" } });
     expect(screen.getByText("Museum of Modern Art")).toBeVisible();
+  });
+
+  it("states no visit count in the server render, since the saved log has not been read yet", () => {
+    const html = renderToString(<MuseumLogClient initialState={DEFAULT_MUSEUM_STATE} snapshot={museumSnapshot} />);
+    // The sentence's own text. Its data-widest attribute holds figures, for the stylesheet to size it by.
+    const sentence = html.match(/data-testid="museum-log-visited"[^>]*>([^<]*)</)?.[1];
+    expect(sentence).toBe(`You’ve visited — of the ${museumSnapshot.museums.length}.`);
   });
 
   it("opens a museum detail route from the catalog", () => {

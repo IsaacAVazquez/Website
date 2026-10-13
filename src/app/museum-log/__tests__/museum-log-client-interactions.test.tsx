@@ -179,6 +179,8 @@ describe("MuseumLogClient interactions", () => {
     renderClient();
 
     expect(visited()).toHaveTextContent("You’ve visited 0 of the 3.");
+    // The stylesheet sizes the sentence to this, so the count arriving cannot rewrap the line.
+    expect(visited()).toHaveAttribute("data-widest", "You’ve visited 00 of the 3.");
     expect(summary()).toHaveTextContent("1 museum has an exhibit on view today.");
     expect(screen.getByText("3 museums catalogued, 3 curator reviews, and 3 visits in the curator’s diary.", { exact: false })).toBeInTheDocument();
     expect(summary()).toHaveTextContent("I would verify admission and exhibitions before visiting.");
@@ -287,6 +289,49 @@ describe("MuseumLogClient interactions", () => {
     expect(screen.getByRole("button", { name: "Remove Corvid History House from watchlist" })).toBeInTheDocument();
   });
 
+  it("puts the latest of several visits logged on one day first in the strip", () => {
+    // Saved in the order they were logged, all on one day.
+    seed({
+      visited: [
+        { museumId: "atlas", date: "2026-03-01" },
+        { museumId: "beacon", date: "2026-03-01" },
+        { museumId: "corvid", date: "2026-03-01" },
+      ],
+    });
+    renderClient();
+
+    const strip = within(lastVisits() as HTMLElement).getAllByRole("button");
+    expect(strip.map((button) => button.getAttribute("aria-label"))).toEqual([
+      "Open Corvid History House",
+      "Open Beacon Science Center",
+      "Open Atlas Art Museum",
+    ]);
+  });
+
+  it("prints the strip beside the title where the two fit one row, and after the catalog where they do not", () => {
+    seed({ visited: [{ museumId: "atlas", date: "2026-03-01" }] });
+    // jsdom's matchMedia matches nothing, which is the narrow page.
+    const narrow = renderClient();
+    expect(lastVisits()?.closest(".mlog-main")).not.toBeNull();
+    expect(lastVisits()?.closest(".mlog-head")).toBeNull();
+    // After the catalog in the document too, so the tab order follows the page.
+    const catalog = screen.getByRole("group", { name: "Actions for Atlas Art Museum" });
+    expect(catalog.compareDocumentPosition(lastVisits() as HTMLElement) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    narrow.unmount();
+
+    jest.spyOn(window, "matchMedia").mockImplementation(
+      (query) =>
+        ({
+          matches: query === "(min-width: 1173px)",
+          media: query,
+          addEventListener: jest.fn(),
+          removeEventListener: jest.fn(),
+        }) as unknown as MediaQueryList
+    );
+    renderClient();
+    expect(lastVisits()?.closest(".mlog-head")).not.toBeNull();
+  });
+
   it("falls back to an empty log when the store is unreadable", () => {
     seed("{broken");
     renderClient();
@@ -379,7 +424,8 @@ describe("MuseumLogClient interactions", () => {
     expect(within(detail).getByText(/– Permanent$/)).toBeInTheDocument();
     expect(within(detail).getByText("Timed entry")).toBeInTheDocument();
     expect(within(detail).getByRole("link", { name: "Visit official site" })).toHaveAttribute("href", "https://atlas.example.org");
-    expect(within(detail).getByText("Past visits")).toBeInTheDocument();
+    // The diary rows are the curator's, and the heading says so, since they sit right under "Your activity".
+    expect(within(detail).getByRole("heading", { level: 3, name: "Curator’s past visits" })).toBeInTheDocument();
 
     expect(within(sidePanel()).getByText("Other museums in Northeast US")).toBeInTheDocument();
     fireEvent.click(within(sidePanel()).getByRole("button", { name: /Beacon Science Center/ }));
@@ -453,6 +499,8 @@ describe("MuseumLogClient interactions", () => {
     expect(within(detail).getByText(/You have not rated this visit/)).toBeInTheDocument();
 
     const form = within(detail).getByRole("form", { name: "Rate this museum visit" });
+    // No inline display, which would outrank the print rule that takes the form off paper.
+    expect(form).not.toHaveAttribute("style");
     fireEvent.change(within(form).getByRole("slider", { name: "Your rating, 0 to 5 stars" }), { target: { value: "8" } });
     fireEvent.click(within(form).getByRole("button", { name: "Save rating" }));
     expect(stored().visited).toEqual([{ museumId: "corvid", date: toLocalDateKey(), rating: 4 }]);
@@ -489,10 +537,14 @@ describe("MuseumLogClient interactions", () => {
 
   it("offers a way back when the museum in the URL does not exist", () => {
     currentSearchParams = new URLSearchParams("museum=nowhere");
-    renderClient();
+    const { settle } = renderFollowingPushes();
     const region = screen.getByRole("region", { name: "Museum not found" });
     fireEvent.click(within(region).getByRole("button", { name: "Back to catalog" }));
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log", { scroll: false });
+
+    // The button goes with the notice, so focus lands on the catalog heading.
+    settle();
+    expect(screen.getByRole("heading", { level: 2, name: "Discover" })).toHaveFocus();
   });
 
   it("moves focus to the detail heading on open and back to the catalog heading on return", () => {

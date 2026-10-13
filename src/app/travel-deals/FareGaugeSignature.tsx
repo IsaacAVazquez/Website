@@ -7,6 +7,8 @@ import { bookingStrip, fareGauge, fitLabel } from "./fareGauge";
 
 interface FareGaugeSignatureProps {
   quoted: number;
+  /** The verdict's rating for the whole party, or null with no fare, so the gauge and the chip name the same one. */
+  rating: FareRating | null;
   region: DestinationRegion;
   departureDate: string;
   /** Null until the client resolves its own clock; see bookingStrip. */
@@ -78,7 +80,7 @@ const RATING_LABEL: Record<FareRating, string> = {
  * window against today. Both read straight off the trip form beside it, which
  * stays the keyboard path since this SVG carries no interactive marks.
  */
-export function FareGaugeSignature({ quoted, region, departureDate, today }: FareGaugeSignatureProps) {
+export function FareGaugeSignature({ quoted, rating, region, departureDate, today }: FareGaugeSignatureProps) {
   const gauge = useMemo(() => fareGauge(quoted, region), [quoted, region]);
   const strip = useMemo(() => bookingStrip(departureDate, today, region), [departureDate, today, region]);
 
@@ -96,10 +98,9 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
   const sweetLabelsFit = sweetW >= (sweetMaxLabel.length + sweetMinLabel.length) * CHAR_WIDE + 24;
 
   const departureIsSet = isIsoDate(departureDate);
-  const fareDesc =
-    quoted > 0
-      ? `Your fare of ${formatUsd(quoted)} a seat is a ${RATING_LABEL[gauge.rating].toLowerCase()} deal against the typical ${formatUsd(region.typicalFare)}.`
-      : "No fare entered yet.";
+  const fareDesc = rating
+    ? `Your fare of ${formatUsd(quoted)} a seat is rated ${RATING_LABEL[rating]} against the typical ${formatUsd(region.typicalFare)}.`
+    : "No fare entered yet.";
   const bookingDesc =
     strip.daysOut === null
       ? departureIsSet
@@ -121,12 +122,12 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
         Fare gauge · {region.label}
       </text>
 
-      {quoted > 0 ? (
+      {rating ? (
         <FittedLabel
           x={needleX}
           y={GAUGE_RATING_Y}
           className="td-fare-label"
-          text={`${gauge.clamped === "low" ? "‹ " : ""}${formatUsd(quoted)} a seat · ${RATING_LABEL[gauge.rating]}${gauge.clamped === "high" ? " ›" : ""}`}
+          text={`${gauge.clamped === "low" ? "‹ " : ""}${formatUsd(quoted)} a seat · ${RATING_LABEL[rating]}${gauge.clamped === "high" ? " ›" : ""}`}
         />
       ) : (
         <text x={W / 2} y={GAUGE_RATING_Y} textAnchor="middle" className="td-fare-axis td-fare-prompt">

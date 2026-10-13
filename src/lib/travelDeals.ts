@@ -10,7 +10,7 @@
 
 import type { DestinationRegion, RegionId } from "@/types/travelDeals";
 import { DESTINATION_REGIONS, POINTS_BASELINE_CENTS } from "@/data/travelDealsSnapshot";
-import { daysBetween, toLocalDateKey } from "@/lib/date-formatters";
+import { daysBetween, isLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
 
 // --- Date helpers ---
 
@@ -74,6 +74,19 @@ export function getBookingWindow(
     sweetSpotMaxDays: region.sweetSpotMaxDays,
   };
 
+  const askForDate: BookingWindow = {
+    ...base,
+    status: "watching",
+    daysUntilDeparture: null,
+    daysUntilSweetSpot: 0,
+    headline: "Add a departure date",
+    message: "Pick a departure date and I will map out when to start watching fares and when the cheaper window usually opens.",
+  };
+
+  // The missing departure comes first. With no date there is nothing to line
+  // today up against, so the server render asks for one instead of "checking".
+  if (!isLocalDateKey(departureDateKey)) return askForDate;
+
   if (today === null) {
     return {
       ...base,
@@ -86,16 +99,7 @@ export function getBookingWindow(
   }
 
   const daysUntil = daysBetween(today, departureDateKey);
-  if (daysUntil === null) {
-    return {
-      ...base,
-      status: "watching",
-      daysUntilDeparture: null,
-      daysUntilSweetSpot: 0,
-      headline: "Add a departure date",
-      message: "Pick a departure date and I will map out when to start watching fares and when the cheaper window usually opens.",
-    };
-  }
+  if (daysUntil === null) return askForDate;
 
   const daysUntilSweetSpot = Math.max(0, daysUntil - region.sweetSpotMaxDays);
 
@@ -211,7 +215,8 @@ export function scoreFare(
     message = "That is well under the typical fare. If the dates and routing work, book it now.";
   } else if (savingsPct >= 0.1) {
     rating = "good";
-    message = "A solid fare, below the typical band. Worth booking unless you have reason to think a sale is coming.";
+    // Rated against the typical price. A fare 10% under it is still inside the low-to-high band.
+    message = "A solid fare, below the typical price. Worth booking unless you have reason to think a sale is coming.";
   } else if (savingsPct >= -0.1) {
     rating = "fair";
     message = "About average for this route. Fine to book if timing matters, but a price alert might catch something better.";

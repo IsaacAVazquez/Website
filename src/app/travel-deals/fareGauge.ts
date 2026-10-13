@@ -3,12 +3,13 @@
  *
  * Both are pure transforms of the region data and the trip form's own
  * inputs, so the SVG signature and any future surface share one source of
- * truth. `fareGauge` reuses `scoreFare`'s rating rather than inventing a
- * second one, so the gauge and the fare-checker text never disagree.
+ * truth. `fareGauge` places the fare and does not rate it. The rating is the
+ * verdict's, scored once for the whole party, and the signature takes it as a
+ * prop, since a second per-seat score rounds differently at the cutoffs.
  */
 
 import type { DestinationRegion } from "@/types/travelDeals";
-import { daysBetween, scoreFare, type FareRating } from "@/lib/travelDeals";
+import { daysBetween } from "@/lib/travelDeals";
 
 // --- Fare gauge --------------------------------------------------------
 
@@ -28,12 +29,11 @@ export interface FareGauge {
   /** Needle position as a fraction (0..1) of the domain, clamped at the ends. */
   needle: number;
   clamped: "low" | "high" | null;
-  rating: FareRating;
 }
 
 /**
  * Place a quoted fare on a scale wide enough to hold the region's typical
- * band with room either side, and rate it the same way `scoreFare` does.
+ * band with room either side.
  */
 export function fareGauge(quoted: number, region: DestinationRegion): FareGauge {
   const { typicalFareLow: low, typicalFare: typical, typicalFareHigh: high } = region;
@@ -53,7 +53,6 @@ export function fareGauge(quoted: number, region: DestinationRegion): FareGauge 
     band: { low: toFraction(low), typical: toFraction(typical), high: toFraction(high) },
     needle,
     clamped,
-    rating: scoreFare(quoted, region).rating,
   };
 }
 

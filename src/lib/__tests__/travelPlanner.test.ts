@@ -3,6 +3,7 @@ import {
   calculateTripSummary,
   createActivity,
   findActivityOverlaps,
+  formatActivityTimeRange,
   getDayKeysBetween,
   parseTrips,
 } from "@/lib/travelPlanner";
@@ -190,5 +191,17 @@ describe("createActivity", () => {
       notes: "",
     });
     expect(activity.endTime).toBe("");
+  });
+});
+
+describe("formatActivityTimeRange", () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("prints a stop's stored time on the day the clocks spring forward", () => {
+    // In a zone that skips 2 AM on this day, a time built on today's date reads an hour late.
+    jest.useFakeTimers({ now: new Date(2026, 2, 8, 12) });
+    expect(formatActivityTimeRange("02:30", "")).toBe("2:30 AM");
   });
 });
