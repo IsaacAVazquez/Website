@@ -6,7 +6,7 @@ import {
   getLiveDraftSignals,
   getPickDelta,
 } from "@/lib/draftAnalytics";
-import { positionClass } from "./DraftRoomParts";
+import { positionClass } from "@/components/fantasy/positionClass";
 
 interface DraftAnalyticsPanelProps {
   analytics: DraftAnalytics;
@@ -56,8 +56,8 @@ function PickValueRow({
   const delta = getPickDelta(pick) ?? 0;
 
   return (
-    <div className="ffb-dt-entry">
-      <div className="ffb-dt-entry-line">
+    <div className="ffb-entry">
+      <div className="ffb-entry-line">
         <span className={`ffb-chip ffb-chip-sm ${positionClass(pick.player.position)}`.trimEnd()}>
           {pick.player.position}
         </span>
@@ -66,7 +66,7 @@ function PickValueRow({
           {label} {formatDelta(delta)}
         </span>
       </div>
-      <p className="ffb-dt-entry-note">
+      <p className="ffb-entry-note">
         {teamName} · Pick {pick.pickNumber} · Round {pick.round}
       </p>
     </div>
@@ -104,11 +104,11 @@ export function DraftAnalyticsPanel({
         </div>
         <div className="ffb-stack ffb-stack-tight">
           {latestFlaggedPick === null && activeRun === null && !showEmerging ? (
-            <p className="ffb-dt-entry-note">
+            <p className="ffb-entry-note">
               Nothing unusual yet. Steals, reaches, and position runs show up here as picks come in.
             </p>
           ) : (
-            <div className="ffb-dt-entries">
+            <div className="ffb-entries">
               {latestFlaggedPick && (
                 <PickValueRow
                   pick={latestFlaggedPick.pick}
@@ -117,9 +117,9 @@ export function DraftAnalyticsPanel({
                 />
               )}
               {activeRun && (
-                <div className="ffb-dt-entry">
+                <div className="ffb-entry">
                   <p className="ffb-h4">{activeRun.position} run in progress</p>
-                  <p className="ffb-dt-entry-note">
+                  <p className="ffb-entry-note">
                     {activeRun.playersSelected} {activeRun.position}s gone since pick{" "}
                     {activeRun.startPick}. The run changes likely availability, but it does not make
                     a reach worthwhile on its own.
@@ -127,9 +127,9 @@ export function DraftAnalyticsPanel({
                 </div>
               )}
               {showEmerging && emergingRun && (
-                <div className="ffb-dt-entry">
+                <div className="ffb-entry">
                   <p className="ffb-h4">{emergingRun.position}s starting to go</p>
-                  <p className="ffb-dt-entry-note">
+                  <p className="ffb-entry-note">
                     {emergingRun.count} went in the last few picks. Compare the next options inside
                     their current tier before changing your plan.
                   </p>
@@ -174,7 +174,7 @@ export function DraftAnalyticsPanel({
             {biggestSteal ? (
               <PickValueRow pick={biggestSteal} label="Steal" teamName={getTeamName(biggestSteal.teamNumber)} />
             ) : (
-              <p className="ffb-dt-entry-note">No pick beat its baseline by enough to count.</p>
+              <p className="ffb-entry-note">No pick beat its baseline by enough to count.</p>
             )}
           </div>
 
@@ -185,7 +185,7 @@ export function DraftAnalyticsPanel({
             {biggestReach ? (
               <PickValueRow pick={biggestReach} label="Reach" teamName={getTeamName(biggestReach.teamNumber)} />
             ) : (
-              <p className="ffb-dt-entry-note">
+              <p className="ffb-entry-note">
                 Nobody jumped a player far enough ahead of his baseline to count.
               </p>
             )}
@@ -196,9 +196,9 @@ export function DraftAnalyticsPanel({
               <div className="ffb-sechead">
                 <h3 className="ffb-h3">Position runs</h3>
               </div>
-              <ul className="ffb-dt-entries">
+              <ul className="ffb-entries">
                 {analytics.positionRunAnalysis.map((run) => (
-                  <li key={`run-${run.position}-${run.startPick ?? run.startRound}`} className="ffb-dt-entry">
+                  <li key={`run-${run.position}-${run.startPick ?? run.startRound}`} className="ffb-entry">
                     <p>
                       <span className="ffb-h4">{run.position} run</span>
                       <span className="ffb-muted">

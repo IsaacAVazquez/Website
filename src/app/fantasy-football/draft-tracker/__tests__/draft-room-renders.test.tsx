@@ -141,7 +141,10 @@ describe("draft room renders", () => {
     try {
       render(<DraftTrackerClient />);
       expect(screen.getByRole("timer")).toHaveAccessibleName("90 seconds left on the pick clock");
-      expect(screen.getByRole("timer")).toHaveTextContent("1:30");
+      // The clock says it is advisory, and at 90 seconds on the user's own pick it is neither urgent nor muted.
+      expect(screen.getByRole("timer")).toHaveTextContent(/1:30.*advisory/);
+      expect(screen.getByRole("timer")).not.toHaveClass("ffb-is-urgent");
+      expect(screen.getByRole("timer")).not.toHaveClass("ffb-is-quiet");
       const rendersBefore = mockBoardRenders.mock.calls.length;
 
       act(() => {
@@ -153,6 +156,49 @@ describe("draft room renders", () => {
       expect(screen.getByRole("timer")).not.toHaveTextContent("1:30");
       expect(mockBoardRenders.mock.calls.length).toBe(rendersBefore);
     } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("takes the highlighter in the last 15 seconds of the user's own pick", () => {
+    jest.useFakeTimers();
+    try {
+      render(<DraftTrackerClient />);
+
+      act(() => {
+        jest.advanceTimersByTime(74_000);
+      });
+      expect(screen.getByRole("timer")).toHaveAccessibleName("16 seconds left on the pick clock");
+      expect(screen.getByRole("timer")).not.toHaveClass("ffb-is-urgent");
+
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+      expect(screen.getByRole("timer")).toHaveAccessibleName("15 seconds left on the pick clock");
+      expect(screen.getByRole("timer")).toHaveClass("ffb-is-urgent");
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("stays quiet for the whole of another team's pick", () => {
+    jest.useFakeTimers();
+    mockDraftStateResult.isUserPick = false;
+    mockDraftStateResult.currentTeamNumber = 2;
+    try {
+      render(<DraftTrackerClient />);
+      expect(screen.getByRole("timer")).toHaveTextContent(/1:30.*advisory/);
+      expect(screen.getByRole("timer")).toHaveClass("ffb-is-quiet");
+
+      act(() => {
+        jest.advanceTimersByTime(80_000);
+      });
+      expect(screen.getByRole("timer")).toHaveAccessibleName("10 seconds left on the pick clock");
+      expect(screen.getByRole("timer")).toHaveClass("ffb-is-quiet");
+      expect(screen.getByRole("timer")).not.toHaveClass("ffb-is-urgent");
+    } finally {
+      mockDraftStateResult.isUserPick = true;
+      mockDraftStateResult.currentTeamNumber = 1;
       jest.useRealTimers();
     }
   });

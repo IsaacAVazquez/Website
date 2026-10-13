@@ -19,7 +19,7 @@ import type {
   FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
-import { positionClass } from "./DraftRoomParts";
+import { positionClass } from "@/components/fantasy/positionClass";
 
 interface DraftBoardProps {
   players: Player[];
@@ -40,11 +40,11 @@ interface DraftBoardProps {
 }
 
 /**
- * On a phone the column head is hidden, so a value the phone row keeps carries
- * its own label. The sr-only cell label next to it keeps the value named
- * exactly once for assistive tech at every width.
+ * The column head is hidden from assistive tech and from a phone, so each
+ * value carries its own label inside its cell, where it hides when the cell
+ * does. `ffb-dt-vh-desk` is a label a phone prints and a desktop only reads
+ * out, since the column head already shows it there.
  */
-const ROW_MICRO_LABEL_CLASS = "ffb-only-phone";
 
 const STAR_PATH = "M10 2.6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L10 14.3l-4.6 2.4.9-5.1L2.6 8l5.1-.7z";
 
@@ -98,6 +98,9 @@ export function DraftBoard({
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(BOARD_PAGE_SIZE);
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  // The row "Load more" hands focus to: the first one it added.
+  const [focusRowAt, setFocusRowAt] = useState<number | null>(null);
+  const boardRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const debouncedSearch = useDebounce(searchQuery, 200);
@@ -180,10 +183,6 @@ export function DraftBoard({
         return;
       }
       event.preventDefault();
-      // The site header listens for the same key on window and opens the site
-      // search without checking whether the key was already taken, which pulled
-      // focus off this field. This room has claimed the key, so it stops here.
-      event.stopPropagation();
       searchInputRef.current?.focus();
       searchInputRef.current?.select();
     }
@@ -244,11 +243,16 @@ export function DraftBoard({
     }
   }
 
-  // Auto-extend the window as the sentinel nears the viewport, so the tiers
-  // flow without a "Load more" control.
+  // From 1200px the rail sits beside the list, so the window extends by itself
+  // as its end nears the viewport. Below that the roster's rail follows the
+  // list, and a list that kept growing would keep it out of reach, so there
+  // the list ends on its "Load more" button and waits for it.
+  // ponytail: the width is read when the effect runs, not on resize. A window
+  // dragged across 1200px picks the new mode up on its next row change.
   useEffect(() => {
     const el = sentinelRef.current;
     if (!el || !hasMore || typeof IntersectionObserver === "undefined") return;
+    if (!window.matchMedia("(min-width: 1200px)").matches) return;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
@@ -260,6 +264,16 @@ export function DraftBoard({
     observer.observe(el);
     return () => observer.disconnect();
   }, [hasMore, filteredPlayers.length]);
+
+  // "Load more" can remove itself with the last page, so focus moves to the
+  // first row it added and never falls to the page.
+  useEffect(() => {
+    if (focusRowAt === null) return;
+    const rows = boardRef.current?.querySelectorAll<HTMLElement>("li.ffb-row");
+    rows?.item(focusRowAt)?.querySelector<HTMLElement>("button.ffb-c-name")?.focus();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot focus request, cleared once served
+    setFocusRowAt(null);
+  }, [focusRowAt]);
 
   const tierGroups = useMemo<TierGroup[]>(() => {
     const groups: TierGroup[] = [];
@@ -363,26 +377,28 @@ export function DraftBoard({
         <span className="ffb-c-bye">
           {hasBye ? (
             <>
-              <span className="ffb-only-phone">Bye </span>
+              <span className="ffb-dt-vh-desk">Bye </span>
               {player.byeWeek}
             </>
           ) : null}
         </span>
         {adpAvailable ? (
           <>
-            <span className="sr-only">ADP</span>
-            <span className="ffb-c-num ffb-is-flat ffb-m-meta" title={FANTASY_ADP_TOOLTIP}>
-              <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                ADP{" "}
-              </span>
+            <span className="ffb-c-num ffb-is-flat" title={FANTASY_ADP_TOOLTIP}>
+              <span className="sr-only">ADP </span>
               {formatAdp(player.adp)}
             </span>
-            <span className="sr-only">versus ADP at pick {currentPick}</span>
+            {/* A phone row has room for one number beside the bye. The gap
+                against the pick on the clock is the reading the room is for,
+                so in a room with ADP that number is the gap, with its label,
+                its sign, and its tone. The ADP itself and the gap together
+                need up to 100px there, and a 390px row has 67. */}
             <span
-              className={`ffb-c-num ${delta?.isValue ? "ffb-is-strong ffb-dt-is-value" : "ffb-is-flat"}`}
+              className={`ffb-c-num ffb-dt-gap ffb-m-meta ${delta?.isValue ? "ffb-is-strong ffb-dt-is-value" : "ffb-is-flat"}`}
               title={delta?.title}
             >
-              <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
+              <span className="sr-only">versus ADP at pick {currentPick} </span>
+              <span aria-hidden="true" className="ffb-only-phone">
                 ±ADP{" "}
               </span>
               {delta?.text ?? "—"}
@@ -390,21 +406,18 @@ export function DraftBoard({
           </>
         ) : null}
         {vorp ? (
-          <>
-            <span className="sr-only">Value over replacement player</span>
-            {/* VORP is a column of measured values, so it reads in ink like the rank.
-                A phone row has room for one number beside the bye. That is the
-                ADP when the room has one, and VORP when it does not. */}
-            <span
-              className={`ffb-c-num${vorp.value > 0 ? "" : " ffb-is-flat"}${adpAvailable ? "" : " ffb-m-meta"}`}
-              title={FANTASY_VORP_TOOLTIP}
-            >
-              <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                VORP{" "}
-              </span>
-              {Math.round(vorp.value)}
+          // VORP is a column of measured values, so it reads in ink like the rank.
+          // On a phone it takes the row's one number when the room has no ADP.
+          <span
+            className={`ffb-c-num${vorp.value > 0 ? "" : " ffb-is-flat"}${adpAvailable ? "" : " ffb-m-meta"}`}
+            title={FANTASY_VORP_TOOLTIP}
+          >
+            <span className="sr-only">Value over replacement player </span>
+            <span aria-hidden="true" className="ffb-only-phone">
+              VORP{" "}
             </span>
-          </>
+            {Math.round(vorp.value)}
+          </span>
         ) : hasVorp ? (
           // Holds the column for a player FantasyPros publishes no VORP for.
           <span className="ffb-c-num" />
@@ -481,7 +494,7 @@ export function DraftBoard({
           <h3 className="ffb-tier-name">
             {/* The spaces keep the three parts apart when the heading is read as one string. */}
             <span className="ffb-tier-tab">
-              {group.tier !== null ? `Tier ${group.tier}` : "No published tier"}
+              {group.tier !== null ? `Tier ${String(group.tier).padStart(2, "0")}` : "No published tier"}
             </span>{" "}
             <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
             <span className="ffb-tier-range">
@@ -522,6 +535,7 @@ export function DraftBoard({
 
   return (
     <section
+      ref={boardRef}
       aria-label="Draft board"
       className={`ffb-board ffb-board-room ffb-board-star-log ffb-dt-board${adpAvailable ? " ffb-dt-has-adp" : ""}${
         hasVorp ? " ffb-dt-has-vorp" : ""
@@ -545,9 +559,11 @@ export function DraftBoard({
         </div>
       )}
 
+      {/* A phone row prints VORP only when the room has no ADP, and the note
+          does not print where no row on screen shows the number it explains. */}
       {hasVorp && vorpTeamSize ? (
-        <p className="ffb-method ffb-dt-vorp">
-          VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel below.
+        <p className={adpAvailable ? "ffb-method ffb-dt-vorp ffb-not-phone" : "ffb-method ffb-dt-vorp"}>
+          VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel.
         </p>
       ) : null}
 
@@ -577,7 +593,9 @@ export function DraftBoard({
                 }. Press Enter to log.`
               : ""}
           </p>
-          <div className="ffb-search">
+          {/* A label, so the icon and the field's padding focus the input too.
+              It adds no text, so the field's name is still the one above. */}
+          <label className="ffb-search">
             <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
               <circle cx="8.5" cy="8.5" r="5.5" />
               <path d="M12.8 12.8L17 17" />
@@ -594,7 +612,7 @@ export function DraftBoard({
               placeholder="Search player or team"
               className="ffb-search-input"
             />
-          </div>
+          </label>
           <span aria-live="polite" className="ffb-count">
             {filteredPlayers.length} of {availablePlayers.length} available
           </span>
@@ -627,7 +645,20 @@ export function DraftBoard({
       {windowedPlayers.length > 0 ? (
         <>
           {tierGroups.map((group, index) => renderTierSection(group, index))}
-          <div ref={sentinelRef} aria-hidden="true" />
+          {hasMore ? (
+            <div ref={sentinelRef} className="ffb-more-row">
+              <button
+                type="button"
+                onClick={() => {
+                  setFocusRowAt(windowedPlayers.length);
+                  setVisibleCount((count) => Math.min(count + BOARD_PAGE_SIZE, filteredPlayers.length));
+                }}
+                className="ffb-more"
+              >
+                Load more ({filteredPlayers.length - windowedPlayers.length} left)
+              </button>
+            </div>
+          ) : null}
         </>
       ) : (
         <div className="ffb-empty">

@@ -141,19 +141,19 @@ export function DraftRecapPanel({
 
       <div>
         <h4 className="ffb-label ffb-dt-replay-head">Turn replay</h4>
-        <ol className="ffb-dt-entries">
+        <ol className="ffb-entries">
           {recap.outcomes.map((outcome) => {
             const summary = describeOutcome(outcome);
             return (
-              <li key={`turn-${outcome.record.pick}`} className="ffb-dt-entry">
-                <div className="ffb-dt-entry-line">
+              <li key={`turn-${outcome.record.pick}`} className="ffb-entry">
+                <div className="ffb-entry-line">
                   <span className="ffb-dt-replay-pick">#{outcome.record.pick}</span>{" "}
                   <span className="ffb-h4">You took {outcome.record.chosenPlayerName}</span>{" "}
                   <span className={`ffb-badge ${outcome.followedRecommendation ? "ffb-good" : "ffb-muted"}`}>
                     {outcome.followedRecommendation ? "recommended" : "off the card"}
                   </span>
                 </div>
-                {summary ? <p className="ffb-dt-entry-note ffb-dt-replay-note">{summary}</p> : null}
+                {summary ? <p className="ffb-entry-note ffb-dt-replay-note">{summary}</p> : null}
               </li>
             );
           })}

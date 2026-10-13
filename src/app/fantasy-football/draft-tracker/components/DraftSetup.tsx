@@ -1,9 +1,8 @@
 "use client";
 
-import { FantasySectionHeading } from "@/components/fantasy/FantasyRouteHeader";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { prefixedId } from "@/lib/utils";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { DraftSettings, RedraftLineupSettings, ScoringFormat } from "@/types";
 import {
   DRAFT_PRESETS_STORAGE_KEY,
@@ -43,6 +42,11 @@ interface DraftSetupProps {
    * non-zero count arms the start button instead of letting one click wipe it.
    */
   parkedPickCount?: number;
+  /**
+   * True when this screen replaced a running room (the "New room" button).
+   * The button that was pressed is gone, so the heading takes the focus.
+   */
+  focusHeadingOnMount?: boolean;
 }
 
 // Left alone the armed button disarms again, so the guard cannot quietly decay
@@ -121,7 +125,12 @@ export function DraftSetup({
   canResume = false,
   onResume,
   parkedPickCount = 0,
+  focusHeadingOnMount = false,
 }: DraftSetupProps) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (focusHeadingOnMount) headingRef.current?.focus();
+  }, [focusHeadingOnMount]);
   const [formState, setFormState] = useState<DraftSettings>(settings);
   const [isStarting, setIsStarting] = useState(false);
   const [startArmed, setStartArmed] = useState(false);
@@ -251,7 +260,9 @@ export function DraftSetup({
   return (
     <div className="ffb-dt-setup">
       <div className="ffb-sechead ffb-sechead-lg ffb-dt-setup-head">
-        <FantasySectionHeading>One screen, then draft.</FantasySectionHeading>
+        <h2 ref={headingRef} tabIndex={-1} className="ffb-h2">
+          One screen, then draft.
+        </h2>
         {canResume && onResume ? (
           <button type="button" onClick={onResume} className="ffb-btn">
             Back to room <span aria-hidden="true">→</span>

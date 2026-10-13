@@ -50,6 +50,24 @@ const rowOf = (name: string) => screen.getByRole("button", { name: `Open ${name}
 const visibleNames = () =>
   screen.queryAllByRole("button", { name: /^Open .* detail$/ }).map((button) => button.textContent);
 
+/** Answers the board's width query, and returns the undo. */
+function screenIsWide(matches: boolean): () => void {
+  const original = window.matchMedia;
+  window.matchMedia = ((query: string) => ({
+    matches,
+    media: query,
+    onchange: null,
+    addListener() {},
+    removeListener() {},
+    addEventListener() {},
+    removeEventListener() {},
+    dispatchEvent: () => false,
+  })) as unknown as typeof window.matchMedia;
+  return () => {
+    window.matchMedia = original;
+  };
+}
+
 async function settleDebounce() {
   await act(async () => {
     jest.advanceTimersByTime(250);
@@ -90,6 +108,9 @@ describe("DraftBoard rows and tiers", () => {
         .getByRole("region", { name: "Tier 2, 2 players, ranks 3 to 4, 5.3 average-rank cliff above" })
         .querySelector(".ffb-tier-cliff"),
     ).toHaveTextContent("5.3 avg-rank cliff");
+    // The tab prints two digits, as the rankings board does, and the region keeps the plain number.
+    expect(screen.getByText("Tier 01")).toHaveClass("ffb-tier-tab");
+    expect(screen.getByText("Tier 02")).toHaveClass("ffb-tier-tab");
   });
 
   it("prints rank, position rank, team, and bye on each row", () => {
@@ -100,13 +121,27 @@ describe("DraftBoard rows and tiers", () => {
     // Team and bye are their own columns, so bye weeks scan down the board.
     expect(within(row).getByText("ATL")).toHaveClass("ffb-c-team");
     expect(row.querySelector(".ffb-c-bye")).toHaveTextContent("Bye 5");
+    // The word Bye is read out at every width. A desktop hides it by sight only, so it is never display: none.
+    expect(within(row).getByText("Bye")).toHaveClass("ffb-dt-vh-desk");
+    expect(within(row).getByText("Bye")).not.toHaveClass("ffb-only-phone");
   });
 
   it("reads each ADP gap against the current pick", () => {
     renderBoard();
+    // Each hidden label sits inside the cell it names, so it hides when the cell does.
     const deltaCell = (name: string) => within(rowOf(name)).getByText("±ADP").parentElement as HTMLElement;
 
     expect(within(rowOf("Bijan Robinson")).getByTitle(FANTASY_ADP_TOOLTIP)).toHaveTextContent("ADP 10.0");
+    expect(within(rowOf("Bijan Robinson")).getByText("versus ADP at pick 20").parentElement).toBe(
+      deltaCell("Bijan Robinson"),
+    );
+    expect(within(rowOf("Bijan Robinson")).getByText("ADP").parentElement).toBe(
+      within(rowOf("Bijan Robinson")).getByTitle(FANTASY_ADP_TOOLTIP),
+    );
+    // The gap is the one number a phone row keeps, and one that reads as value keeps its tone there.
+    expect(deltaCell("Bijan Robinson")).toHaveClass("ffb-m-meta", "ffb-is-strong", "ffb-dt-is-value");
+    expect(deltaCell("Ja'Marr Chase")).toHaveClass("ffb-m-meta", "ffb-is-flat");
+    expect(within(rowOf("Bijan Robinson")).getByTitle(FANTASY_ADP_TOOLTIP)).not.toHaveClass("ffb-m-meta");
     expect(deltaCell("Bijan Robinson")).toHaveTextContent("+10.0");
     expect(deltaCell("Bijan Robinson")).toHaveAttribute(
       "title",
@@ -128,6 +163,7 @@ describe("DraftBoard rows and tiers", () => {
   it("hides every ADP surface without ADP", () => {
     renderBoard({ adpAvailable: false });
     expect(within(rowOf("Bijan Robinson")).queryByText("±ADP")).not.toBeInTheDocument();
+    expect(within(rowOf("Bijan Robinson")).queryByText(/versus ADP/)).not.toBeInTheDocument();
     expect(screen.queryByText("At #20")).not.toBeInTheDocument();
   });
 
@@ -137,14 +173,36 @@ describe("DraftBoard rows and tiers", () => {
       vorpTeamSize: 12,
     });
     expect(screen.getByText(/replacement for a 12-team league/)).toBeInTheDocument();
+    // The note names the panel without saying where it is, since it opens above the board.
+    expect(screen.getByText(/replacement for a 12-team league/)).toHaveTextContent(
+      /drive the replacement index and scarcity panel\.$/,
+    );
+    // With ADP on, a phone row shows no VORP, so the note leaves the phone with it.
+    expect(screen.getByText(/replacement for a 12-team league/)).toHaveClass("ffb-not-phone");
+    // The spoken label is inside the cell too.
+    expect(within(rowOf("Bijan Robinson")).getByText("Value over replacement player").parentElement).toBe(
+      within(rowOf("Bijan Robinson")).getByText("VORP").parentElement,
+    );
     expect(within(rowOf("Bijan Robinson")).getByText("VORP").parentElement).toHaveTextContent("VORP 88");
     expect(within(rowOf("Josh Allen")).getByText("VORP").parentElement).toHaveTextContent("VORP -2");
     expect(within(rowOf("Travis Kelce")).queryByText("VORP")).not.toBeInTheDocument();
   });
 
+  it("keeps VORP and its note on a phone row when the room has no ADP", () => {
+    renderBoard({
+      adpAvailable: false,
+      vorpValues: new Map([["p1", { playerId: "p1", rank: 1, value: 87.6 }]]),
+      vorpTeamSize: 12,
+    });
+    expect(within(rowOf("Bijan Robinson")).getByText("VORP").parentElement).toHaveClass("ffb-m-meta");
+    expect(screen.getByText(/replacement for a 12-team league/)).not.toHaveClass("ffb-not-phone");
+  });
+
   it("windows a long board at forty rows and extends as the sentinel nears", () => {
     let trigger: ((entries: Array<{ isIntersecting: boolean }>) => void) | null = null;
     const original = global.IntersectionObserver;
+    // From 1200px the rail sits beside the list, and that is where the list extends by itself.
+    const restoreWidth = screenIsWide(true);
     global.IntersectionObserver = class {
       constructor(cb: (entries: Array<{ isIntersecting: boolean }>) => void) {
         trigger = cb;
@@ -166,8 +224,46 @@ describe("DraftBoard rows and tiers", () => {
       expect(visibleNames()).toHaveLength(40);
       act(() => trigger?.([{ isIntersecting: true }]));
       expect(visibleNames()).toHaveLength(50);
+      // The last page took the button with it.
+      expect(screen.queryByRole("button", { name: /^Load more/ })).not.toBeInTheDocument();
     } finally {
       global.IntersectionObserver = original;
+      restoreWidth();
+    }
+  });
+
+  it("waits for Load more below 1200px, and hands focus to the first row it adds", async () => {
+    let observed = 0;
+    const original = global.IntersectionObserver;
+    global.IntersectionObserver = class {
+      observe() {
+        observed += 1;
+      }
+      disconnect() {}
+      unobserve() {}
+      takeRecords() {
+        return [];
+      }
+    } as unknown as typeof IntersectionObserver;
+    const restoreWidth = screenIsWide(false);
+    try {
+      const user = setup();
+      const many = Array.from({ length: 50 }, (_, i) =>
+        player({ id: `w${i}`, name: `Receiver ${i + 1}`, position: "WR", rankEcr: i + 1, averageRank: i + 1 }),
+      );
+      renderBoard({ players: many });
+      expect(visibleNames()).toHaveLength(40);
+      // Nothing watches the end of the list, so what follows it can be reached.
+      expect(observed).toBe(0);
+
+      await user.click(screen.getByRole("button", { name: "Load more (10 left)" }));
+      expect(visibleNames()).toHaveLength(50);
+      expect(screen.queryByRole("button", { name: /^Load more/ })).not.toBeInTheDocument();
+      // The button is gone, so focus is on the first row it added and not on the page.
+      expect(screen.getByRole("button", { name: "Open Receiver 41 detail" })).toHaveFocus();
+    } finally {
+      global.IntersectionObserver = original;
+      restoreWidth();
     }
   });
 });
