@@ -223,95 +223,98 @@ export function TradeResultRail({
         </p>
       </div>
 
-      <div>
-        <div className="ffb-sechead">
-          <h3 className="ffb-h3">Evidence mix</h3>
+      {/* One block, so below 1200px the evidence and the limits share the column beside the verdict. */}
+      <div className="ffb-tr-evidence">
+        <div>
+          <div className="ffb-sechead">
+            <h3 className="ffb-h3">Evidence mix</h3>
+          </div>
+          <dl className="ffb-facts ffb-facts-sm ffb-tr-facts">
+            <div className="ffb-fact">
+              <dt>
+                Expert consensus
+                <MetricTooltip
+                  term="Expert consensus"
+                  definition="Aggregate preseason expert rankings on the overall board. This is not a named creator model or a points projection."
+                />
+              </dt>
+              {result ? (
+                <dd>
+                  {expertPlayers}/{totalPlayers} players
+                </dd>
+              ) : null}
+              <dd className="ffb-fact-note">
+                {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
+              </dd>
+            </div>
+            <div className="ffb-fact">
+              <dt>
+                Draft market
+                <MetricTooltip
+                  term="Draft market"
+                  definition="Current mock-draft average position. It is a preseason price signal, not a database of completed trades."
+                />
+              </dt>
+              {result ? (
+                <dd>
+                  {marketPlayers}/{totalPlayers} players
+                </dd>
+              ) : null}
+              <dd className="ffb-fact-note">
+                {/* "Not current" is a staleness claim, so it waits for an
+                    evaluated result that actually found the market unusable.
+                    Before that the header already carries the source date. */}
+                {!result
+                  ? "Waiting for players"
+                  : result.sources.market.usable
+                    ? formatMarketDate(result.sources.market.asOf) ?? "Unavailable"
+                    : "Not current"}
+              </dd>
+            </div>
+            <div className="ffb-fact">
+              <dt>League fit</dt>
+              <dd>{result?.league.teams ?? teams} teams</dd>
+              <dd className="ffb-fact-note">{result?.league.rosterSize ?? rosterSize} roster spots</dd>
+            </div>
+          </dl>
         </div>
-        <dl className="ffb-facts ffb-facts-sm ffb-tr-facts">
-          <div className="ffb-fact">
-            <dt>
-              Expert consensus
-              <MetricTooltip
-                term="Expert consensus"
-                definition="Aggregate preseason expert rankings on the overall board. This is not a named creator model or a points projection."
-              />
-            </dt>
-            {result ? (
-              <dd>
-                {expertPlayers}/{totalPlayers} players
-              </dd>
-            ) : null}
-            <dd className="ffb-fact-note">
-              {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
-            </dd>
-          </div>
-          <div className="ffb-fact">
-            <dt>
-              Draft market
-              <MetricTooltip
-                term="Draft market"
-                definition="Current mock-draft average position. It is a preseason price signal, not a database of completed trades."
-              />
-            </dt>
-            {result ? (
-              <dd>
-                {marketPlayers}/{totalPlayers} players
-              </dd>
-            ) : null}
-            <dd className="ffb-fact-note">
-              {/* "Not current" is a staleness claim, so it waits for an
-                  evaluated result that actually found the market unusable.
-                  Before that the header already carries the source date. */}
-              {!result
-                ? "Waiting for players"
-                : result.sources.market.usable
-                  ? formatMarketDate(result.sources.market.asOf) ?? "Unavailable"
-                  : "Not current"}
-            </dd>
-          </div>
-          <div className="ffb-fact">
-            <dt>League fit</dt>
-            <dd>{result?.league.teams ?? teams} teams</dd>
-            <dd className="ffb-fact-note">{result?.league.rosterSize ?? rosterSize} roster spots</dd>
-          </div>
-        </dl>
-      </div>
 
-      <div className="ffb-tr-limits">
-        {warnings.length > 0 ? (
+        <div className="ffb-tr-limits">
+          {warnings.length > 0 ? (
+            <details className="ffb-details">
+              {/* The panel mixes top-level and per-player notes, so its title
+                  must match the coverage badge above it instead of asserting
+                  "limited" beside a supported or insufficient result. */}
+              <summary>
+                {coverage === "insufficient"
+                  ? "Why there is no verdict"
+                  : coverage === "limited"
+                    ? "Why coverage is limited"
+                    : "Notes on this result"}
+              </summary>
+              <div className="ffb-details-body">
+                <ul className="ffb-notice ffb-notice-warn ffb-tr-warnings">
+                  {warnings.map((warning) => (
+                    <li key={warning}>{warning}</li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          ) : hasBothSides ? (
+            <p className="ffb-method">
+              Both sources cover every selected player and the sensitivity range is available.
+            </p>
+          ) : null}
+
           <details className="ffb-details">
-            {/* The panel mixes top-level and per-player notes, so its title
-                must match the coverage badge above it instead of asserting
-                "limited" beside a supported or insufficient result. */}
-            <summary>
-              {coverage === "insufficient"
-                ? "Why there is no verdict"
-                : coverage === "limited"
-                  ? "Why coverage is limited"
-                  : "Notes on this result"}
-            </summary>
+            <summary>How the estimate works</summary>
             <div className="ffb-details-body">
-              <ul className="ffb-notice ffb-notice-warn ffb-tr-warnings">
-                {warnings.map((warning) => (
-                  <li key={warning}>{warning}</li>
-                ))}
-              </ul>
+              <p className="ffb-method">
+                Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range.
+              </p>
             </div>
           </details>
-        ) : hasBothSides ? (
-          <p className="ffb-method">
-            Both sources cover every selected player and the sensitivity range is available.
-          </p>
-        ) : null}
-
-        <details className="ffb-details">
-          <summary>How the estimate works</summary>
-          <div className="ffb-details-body">
-            <p className="ffb-method">
-              Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range.
-            </p>
-          </div>
-        </details>
+        </div>
       </div>
     </aside>
   );

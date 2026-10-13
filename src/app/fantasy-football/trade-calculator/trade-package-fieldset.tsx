@@ -36,6 +36,9 @@ export function TradePackageFieldset({
   const playersById = new Map(players.map((player) => [player.id, player]));
   const evaluatedById = new Map(evaluation?.players.map((player) => [player.id, player]) ?? []);
   const atLimit = playerIds.length >= FANTASY_TRADE_MAX_PLAYERS_PER_SIDE;
+  // A player has no index until both sides hold one, so the column stays empty until then.
+  // Once the deal is evaluated it prints the value, or a dash when the values are withheld.
+  const evaluated = evaluation !== null;
 
   return (
     <fieldset className="ffb-tr-side">
@@ -57,7 +60,7 @@ export function TradePackageFieldset({
           {playerIds.length > 0 ? (
             <div className="ffb-colhead" aria-hidden="true">
               <span className="ffb-tr-h-player">Player</span>
-              <span className="ffb-h-num">Index</span>
+              {evaluated ? <span className="ffb-h-num">Index</span> : null}
             </div>
           ) : null}
           <ul aria-label={`${legend} players`}>
@@ -66,10 +69,10 @@ export function TradePackageFieldset({
             ) : (
               playerIds.map((playerId) => {
                 const player = playersById.get(playerId);
-                const evaluated = evaluatedById.get(playerId);
-                const name = player?.name ?? evaluated?.name ?? "Unavailable player";
-                const position = player?.position ?? evaluated?.position;
-                const team = player?.team ?? evaluated?.team ?? "";
+                const valued = evaluatedById.get(playerId);
+                const name = player?.name ?? valued?.name ?? "Unavailable player";
+                const position = player?.position ?? valued?.position;
+                const team = player?.team ?? valued?.team ?? "";
                 const chip = position ? positionChip(position, player?.positionRank) : null;
                 return (
                   <li key={playerId} className="ffb-row ffb-tr-row">
@@ -77,14 +80,16 @@ export function TradePackageFieldset({
                     <span className="ffb-c-name">{name}</span>
                     <span className="ffb-c-team">
                       {team || "Not on this scoring board"}
-                      {exactValuesAvailable && evaluated?.marketAdp
-                        ? ` · ADP ${evaluated.marketAdp.toFixed(1)}`
+                      {exactValuesAvailable && valued?.marketAdp
+                        ? ` · ADP ${valued.marketAdp.toFixed(1)}`
                         : ""}
                     </span>
-                    <span className="ffb-c-num ffb-is-strong">
-                      <span className="ffb-vh">Index </span>
-                      {exactValuesAvailable ? formatTradeValue(evaluated?.blendedValue) : "—"}
-                    </span>
+                    {evaluated ? (
+                      <span className="ffb-c-num ffb-is-strong">
+                        <span className="ffb-vh">Index </span>
+                        {exactValuesAvailable ? formatTradeValue(valued?.blendedValue) : "—"}
+                      </span>
+                    ) : null}
                     <button
                       type="button"
                       onClick={() => onRemove(playerId)}

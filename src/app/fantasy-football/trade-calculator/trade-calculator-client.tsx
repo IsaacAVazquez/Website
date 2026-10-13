@@ -368,7 +368,7 @@ export function TradeCalculatorClient() {
         }
       />
 
-      <div className={`${SHELL_CLASS} ffb-stack`}>
+      <div className={`${SHELL_CLASS} ffb-stack ffb-tr-page`}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (

@@ -170,6 +170,7 @@
 .ffb-tr-effect { font-size: 14px; line-height: 1.45; }
 .ffb-tr-effect > .ffb-label { display: block; margin-bottom: var(--ffb-s1); color: var(--ffb-muted); font-size: 10.5px; }
 .ffb-tr-facts dt { display: flex; align-items: center; gap: var(--ffb-s1); }
+.ffb-tr-evidence { display: grid; align-content: start; gap: var(--ffb-s5); min-width: 0; }
 .ffb-tr-limits { border-bottom: 1px solid var(--ffb-rule); }
 .ffb-tr-limits > .ffb-method { padding-block: var(--ffb-s3); border-top: 1px solid var(--ffb-rule); }
 .ffb-tr-warnings { font-size: 13.5px; }
@@ -236,6 +237,7 @@
   display: grid;
   align-items: center;
   min-height: 44px;
+  padding-block: var(--ffb-s2);
   border-bottom: 1px solid var(--ffb-rule);
 }
 /* The wrapper only groups the four cells for the phone layout. */
@@ -267,4 +269,11 @@
 
 @media print {
   .ffb-root :is(.ffb-tr-toggle, .ffb-tr-actions, .ffb-tr-strip, .ffb-tr-pop) { display: none; }
+  /* The site's md breakpoint is screen only, so paper gets each cell's own label at any width. */
+  .ffb-root .ffb-tr-fit-row { align-items: end; }
+  /* A closed disclosure would leave the model's limits off the page, so paper prints both open. */
+  .ffb-root .ffb-tr-limits > details::details-content { content-visibility: visible; }
+  .ffb-root .ffb-tr-limits > details > summary::after { display: none; }
+  /* The kit takes the root's padding off on paper, and the site's next band then sits on the last line. */
+  .ffb-root .ffb-tr-page { padding-bottom: var(--ffb-s5); }
 }
