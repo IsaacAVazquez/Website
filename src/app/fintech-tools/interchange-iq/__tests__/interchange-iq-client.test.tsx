@@ -78,6 +78,36 @@ describe("InterchangeIQClient", () => {
     expect(screen.getAllByText("$12.50")[0]).toBeVisible();
   });
 
+  it("counts six processors in the title sentence, since Stripe is two of the seven options", () => {
+    render(<InterchangeIQClient />);
+
+    expect(screen.getByText(/six card processors/)).toBeVisible();
+    expect(screen.queryByText(/seven card processors/)).toBeNull();
+  });
+
+  it("prints the breakeven under the track to the cent, as the sentence above it does", () => {
+    const { container } = render(<InterchangeIQClient />);
+
+    fireEvent.change(screen.getByLabelText("Credit share in percent"), { target: { value: "10" } });
+    fireEvent.change(screen.getByLabelText("Amex share of credit in percent"), { target: { value: "0" } });
+
+    expect(container.querySelector(".iq-breakeven .iq-fig")).toHaveTextContent("$0.35");
+    expect(container.querySelector(".iq-track-figure figcaption")).toHaveTextContent("Breakeven $0.35");
+  });
+
+  it("opens every statement row for a print and closes the ones it opened afterwards", () => {
+    const { container } = render(<InterchangeIQClient />);
+    const rows = [...container.querySelectorAll<HTMLDetailsElement>(".iq-statement details")];
+    // A row the visitor opened is theirs, so it stays open after the print.
+    rows[0].open = true;
+
+    fireEvent(window, new Event("beforeprint"));
+    expect(rows.map((row) => row.open)).toEqual(rows.map(() => true));
+
+    fireEvent(window, new Event("afterprint"));
+    expect(rows.map((row) => row.open)).toEqual(rows.map((_, index) => index === 0));
+  });
+
   it("puts the four inputs ahead of the verdict and the fee statement", () => {
     const { container } = render(<InterchangeIQClient />);
     const lastInput = screen.getByLabelText("Amex share of credit in percent");

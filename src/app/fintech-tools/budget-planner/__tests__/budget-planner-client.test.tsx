@@ -1,7 +1,10 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { hydrateRoot } from "react-dom/client";
+import { renderToString } from "react-dom/server";
 import { BudgetPlannerClient } from "../budget-planner-client";
 import { BUDGET_PLANNER_STORAGE_KEY } from "@/lib/budgetPlanner";
+import { toLocalDateKey } from "@/lib/date-formatters";
 
 describe("BudgetPlannerClient", () => {
   beforeAll(() => {
@@ -176,6 +179,71 @@ describe("BudgetPlannerClient", () => {
     await user.clear(screen.getByLabelText("Category name for Home costs"));
     await user.tab();
     expect(screen.getByLabelText("Category name for Home costs")).toHaveValue("Home costs");
+  });
+
+  it("prints no month or date in the server render, so a page built last month still hydrates", () => {
+    // The month and today are the visitor's own, read after mount.
+    const html = renderToString(<BudgetPlannerClient />);
+
+    expect(html).toContain("this month");
+    expect(html).not.toContain("April 2026");
+    expect(html).not.toContain("2026-04");
+  });
+
+  it("hydrates a page built last month without a mismatch, then shows this month", async () => {
+    // The server render stands in for the last build of March.
+    jest.setSystemTime(new Date(2026, 2, 31, 12));
+    const html = renderToString(<BudgetPlannerClient />);
+    jest.setSystemTime(Date.parse("2026-04-03T16:00:00.000Z"));
+
+    const container = document.createElement("div");
+    container.innerHTML = html;
+    document.body.appendChild(container);
+    const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    const recoverable: unknown[] = [];
+
+    const root = await act(async () =>
+      hydrateRoot(container, <BudgetPlannerClient />, {
+        onRecoverableError: (error) => recoverable.push(error),
+      })
+    );
+
+    expect(recoverable).toEqual([]);
+    expect(errorSpy).not.toHaveBeenCalled();
+    expect(container.querySelector(".bp-month-name")).toHaveTextContent("April 2026");
+    expect(within(container).getByLabelText("Budget month")).toHaveValue("2026-04");
+
+    act(() => root.unmount());
+    container.remove();
+    errorSpy.mockRestore();
+  });
+
+  it("opens on the visitor's own month and day", () => {
+    render(<BudgetPlannerClient />);
+
+    expect(screen.getAllByText("April 2026").length).toBeGreaterThan(0);
+    expect(screen.getByLabelText("Expense date")).toHaveValue(toLocalDateKey(new Date()));
+  });
+
+  it("holds an expense to the month it is logged under", async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+    render(<BudgetPlannerClient />);
+    const date = screen.getByLabelText("Expense date");
+
+    expect(date).toHaveAttribute("min", "2026-04-01");
+    expect(date).toHaveAttribute("max", "2026-04-30");
+
+    await user.type(screen.getByLabelText("Expense amount"), "20");
+    fireEvent.change(date, { target: { value: "2026-05-01" } });
+
+    expect(date).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("Pick a date in April 2026.")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Add expense" })).toBeDisabled();
+
+    fireEvent.change(date, { target: { value: "2026-04-30" } });
+
+    expect(screen.queryByText("Pick a date in April 2026.")).toBeNull();
+    expect(screen.getByRole("button", { name: "Add expense" })).toBeEnabled();
   });
 
   it("puts the month, income, and savings target ahead of the envelopes and the figures", () => {

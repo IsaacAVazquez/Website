@@ -8,7 +8,7 @@ import {
   createBudgetExpense,
   createBudgetMonth,
   ensureBudgetMonth,
-  getCurrentBudgetMonthKey,
+  isDateInBudgetMonth,
   loadBudgetMonths,
   parseBudgetMonths,
   saveBudgetMonths,
@@ -28,8 +28,16 @@ function roundAmount(value: number) {
   return Number.isFinite(value) ? Math.max(0, roundTo(value, 2)) : 0;
 }
 
-export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
-  const [activeMonthKey, setActiveMonthKey] = useState(initialMonthKey);
+/**
+ * `currentMonthKey` is the visitor's own month. The page reads it after
+ * mount, so it is empty on the server and during hydration. The planner opens
+ * on it once it is known and then stays put until the visitor picks another
+ * month, so the clock passing midnight on the 1st never moves an open page.
+ */
+export function useBudgetPlanner(currentMonthKey: string) {
+  const [activeMonthKey, setActiveMonthKey] = useState(currentMonthKey);
+  if (!activeMonthKey && currentMonthKey) setActiveMonthKey(currentMonthKey);
+
   const storedMonthsSnapshot = useLocalStorageString(BUDGET_PLANNER_STORAGE_KEY, "{}");
   const months = useMemo(
     () => ensureBudgetMonth(parseBudgetMonths(storedMonthsSnapshot), activeMonthKey),
@@ -124,7 +132,11 @@ export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
     }));
   }
 
+  // An expense dated outside the active month would count against this
+  // month's balance and export while its own month never saw it.
   function addExpense(draft: ExpenseDraftInput) {
+    if (!isDateInBudgetMonth(draft.date, activeMonthKey)) return;
+
     updateActiveMonth((month) => ({
       ...month,
       expenses: [...month.expenses, createBudgetExpense(draft)],
@@ -132,6 +144,8 @@ export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
   }
 
   function updateExpense(expenseId: string, draft: ExpenseDraftInput) {
+    if (!isDateInBudgetMonth(draft.date, activeMonthKey)) return;
+
     updateActiveMonth((month) => ({
       ...month,
       expenses: month.expenses.map((expense) =>

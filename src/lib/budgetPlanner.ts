@@ -8,7 +8,7 @@ import type {
   BudgetSummary,
 } from "@/types/budget";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { toLocalDateKey } from "@/lib/date-formatters";
 import { escapeCsvValue, isRecord, prefixedId, roundTo } from "@/lib/utils";
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
@@ -36,46 +36,23 @@ export function isBudgetMonthKey(value: string) {
   return /^\d{4}-\d{2}$/.test(value);
 }
 
-const TODAY_PARTS_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  timeZone: DISPLAY_TIME_ZONE,
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-});
-
 /**
- * `{ year, month, day }` for an instant, read in the pinned display zone
- * rather than the runtime's own zone. `getCurrentBudgetMonthKey` and
- * `getDefaultExpenseDate` both default to "now" and run during the initial
- * render (SSR included), so local getters here would size "today" from
- * whichever system zone happened to render that pass — UTC on the server,
- * whatever the visitor's browser reports on the client — and disagree near a
- * month or midnight boundary. Reading a pinned zone keeps server and client
- * agreeing on the same calendar day.
+ * The month of an instant on the runtime's own calendar. A budget month and
+ * an expense date are the visitor's, so the page reads this in the browser
+ * after mount and the server render prints no month at all. A pinned zone
+ * would hand a visitor east of it last month for the first hours of the 1st.
  */
-function getZonedTodayParts(date: Date): { year: string; month: string; day: string } {
-  const parts = TODAY_PARTS_FORMATTER.formatToParts(date);
-  const lookup = (type: string) => parts.find((part) => part.type === type)?.value ?? "";
-  return { year: lookup("year"), month: lookup("month"), day: lookup("day") };
-}
-
 export function getCurrentBudgetMonthKey(date = new Date()) {
-  const { year, month } = getZonedTodayParts(date);
-  return `${year}-${month}`;
+  return toLocalDateKey(date).slice(0, 7);
 }
 
 export function getAdjacentBudgetMonthKey(monthKey: string, offset: number) {
   // Pure integer month arithmetic, no Date object involved: a Date built from
   // a month key and shifted with local getters/setters would size the result
-  // off the runtime's own zone, and "now" as the fallback base has the same
-  // server/client skew getCurrentBudgetMonthKey exists to avoid.
-  const parsed = isBudgetMonthKey(monthKey)
-    ? monthKey.split("-").map(Number)
-    : (() => {
-        const { year, month } = getZonedTodayParts(new Date());
-        return [Number(year), Number(month)];
-      })();
-  const [year, month] = parsed;
+  // off the runtime's own zone. An unreadable key steps from the current month.
+  const [year, month] = (isBudgetMonthKey(monthKey) ? monthKey : getCurrentBudgetMonthKey())
+    .split("-")
+    .map(Number);
   const zeroBasedTotal = year * 12 + (month - 1) + offset;
   const nextYear = Math.floor(zeroBasedTotal / 12);
   const nextMonth = ((zeroBasedTotal % 12) + 12) % 12;
@@ -98,13 +75,26 @@ export function formatBudgetMonthLabel(monthKey: string) {
   }).format(date);
 }
 
+/** Today when the month is the current one, its 1st otherwise, and nothing while the month is unknown. */
 export function getDefaultExpenseDate(monthKey: string, now = new Date()) {
-  const { day } = getZonedTodayParts(now);
-  if (getCurrentBudgetMonthKey(now) === monthKey) {
-    return `${monthKey}-${day}`;
-  }
+  if (!isBudgetMonthKey(monthKey)) return "";
 
-  return `${monthKey}-01`;
+  const today = toLocalDateKey(now);
+  return isDateInBudgetMonth(today, monthKey) ? today : `${monthKey}-01`;
+}
+
+/** An expense is filed under one month, so its `YYYY-MM-DD` date has to fall inside that month. */
+export function isDateInBudgetMonth(date: string, monthKey: string) {
+  return isBudgetMonthKey(monthKey) && date.startsWith(`${monthKey}-`);
+}
+
+/** A month's last day as `YYYY-MM-DD`, the upper bound of its expense dates. */
+export function getBudgetMonthLastDate(monthKey: string) {
+  if (!isBudgetMonthKey(monthKey)) return "";
+
+  const [year, month] = monthKey.split("-").map(Number);
+  // Day 0 of the next month is the last day of this one, counted in UTC so the runtime's zone stays out of it.
+  return `${monthKey}-${new Date(Date.UTC(year, month, 0)).getUTCDate()}`;
 }
 
 export function createBudgetCategory(name: string, budgetedAmount = 0): BudgetCategory {
