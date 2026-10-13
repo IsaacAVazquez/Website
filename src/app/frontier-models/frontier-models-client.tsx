@@ -121,28 +121,28 @@ export function FrontierModelsClient({
   const asOfLine = `Snapshot built ${updatedAt}${liveFactsNote}`;
 
   return (
-    <div className="fm-root">
-      <div className="c97-shell c97-frame fm-page">
-        <header className="fm-head">
-          <h1 className="fm-title">Frontier Model Tracker</h1>
-          <p className="fm-lede">
+    <div className="frm-root">
+      <div className="c97-shell c97-frame frm-page">
+        <header className="frm-head">
+          <h1 className="frm-title">Frontier Model Tracker</h1>
+          <p className="frm-lede">
             A curated table of leading large language models with context windows, pricing, and
             modality coverage, set side by side without the marketing.
             {readouts.cheapest && readouts.largestContext
               ? ` The cheapest input price is ${formatPriceUsd(readouts.cheapest.inputPricePerMTokens)} per million tokens (${readouts.cheapest.providerLabel} ${readouts.cheapest.name}), and the largest context window is ${formatTokenCount(readouts.largestContext.contextWindow)} tokens (${readouts.largestContext.providerLabel} ${readouts.largestContext.name}).`
               : ""}
           </p>
-          <p className="fm-asof">{asOfLine}</p>
-          <p className="fm-disclosure">
+          <p className="frm-asof">{asOfLine}</p>
+          <p className="frm-disclosure">
             {/* The disclosure keeps the original meta line's words, as one sentence. */}
             {`Curated by hand, facts as of ${formatLongUtcDate(asOf)}${snapshot.verified ? "" : ", independent review pending"}.`}{" "}
-            <a href={`#${SPEC_SHEET_ID}`} className="fm-jump">
+            <a href={`#${SPEC_SHEET_ID}`} className="frm-jump">
               Jump to the spec sheet
             </a>
           </p>
         </header>
 
-        <section className="fm-chart" aria-label="Price against context window">
+        <section className="frm-chart" aria-label="Price against context window">
           <FrontierCostContextChart
             models={filteredModels}
             selectedModelId={resolvedState.selectedModelId}
@@ -150,8 +150,8 @@ export function FrontierModelsClient({
           />
         </section>
 
-        <section id={SPEC_SHEET_ID} className="fm-sheet" aria-labelledby="fm-sheet-heading">
-          <div className="fm-toolbar">
+        <section id={SPEC_SHEET_ID} className="frm-sheet" aria-labelledby="frm-sheet-heading">
+          <div className="frm-toolbar">
             <FilterGroup
               label="Provider"
               options={[
@@ -171,15 +171,22 @@ export function FrontierModelsClient({
               }
             />
             <details
-              className="fm-more"
+              className="frm-more"
               open={extraFiltersOpen || hasExtraFilter}
               onToggle={(event) => setExtraFiltersOpen(event.currentTarget.open)}
             >
-              <summary>
+              {/* A set filter holds the block open. React would not reopen a
+                  details the browser had just closed, because the open prop
+                  stays true, so the close is stopped at the click. */}
+              <summary
+                onClick={(event) => {
+                  if (hasExtraFilter) event.preventDefault();
+                }}
+              >
                 <span data-when="closed">More filters</span>
                 <span data-when="open">Fewer filters</span>
               </summary>
-              <div className="fm-more-body">
+              <div className="frm-more-body">
                 <FilterGroup
                   label="Modality"
                   options={MODALITY_FILTERS.map((modality) => ({
@@ -220,17 +227,17 @@ export function FrontierModelsClient({
             </details>
           </div>
 
-          <div className="fm-sheet-head">
-            <h2 id="fm-sheet-heading" className="fm-h2">
+          <div className="frm-sheet-head">
+            <h2 id="frm-sheet-heading" className="frm-h2">
               The spec sheet
             </h2>
-            <p className="fm-count">
+            <p className="frm-count">
               {filteredModels.length} of {snapshot.models.length} models shown
             </p>
           </div>
 
           {reviewIsOverdue ? (
-            <p className="fm-warn" role="status">
+            <p className="frm-warn" role="status">
               This dataset is outside its 45-day review window or still unverified. I would not
               use its prices or model availability for a purchase decision until the source list
               is reviewed.
@@ -238,8 +245,8 @@ export function FrontierModelsClient({
           ) : null}
 
           {filteredModels.length === 0 ? (
-            <div className="fm-empty">
-              <p className="fm-empty-title">No models match those filters</p>
+            <div className="frm-empty">
+              <p className="frm-empty-title">No models match those filters</p>
               <p>Try widening the provider, modality, or price-tier filters to see more options.</p>
             </div>
           ) : (
@@ -265,11 +272,11 @@ interface FilterGroupProps {
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
   const labelId = useId();
   return (
-    <div className="fm-group">
-      <span id={labelId} className="fm-label">
+    <div className="frm-group">
+      <span id={labelId} className="frm-label">
         {label}
       </span>
-      <div role="group" aria-labelledby={labelId} className="fm-switch">
+      <div role="group" aria-labelledby={labelId} className="frm-switch">
         {options.map((option) => (
           <button
             key={option.id}

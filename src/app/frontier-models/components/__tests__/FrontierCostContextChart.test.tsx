@@ -54,6 +54,16 @@ describe("FrontierCostContextChart", () => {
     expect(svg.textContent).toContain("BLENDED PRICE / 1M (USD, LOG)");
   });
 
+  it("colours the axes and dot edges with the tokens themselves, so a theme change needs no redraw", () => {
+    render(<FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={jest.fn()} />);
+
+    const tickLabel = document.querySelector(".tick text") as SVGTextElement;
+    expect(points()[0].style.getPropertyValue("stroke")).toBe("var(--c97-ink-2, currentColor)");
+    expect(tickLabel.style.getPropertyValue("fill")).toBe("var(--c97-ink-2, currentColor)");
+    const gridLine = document.querySelector(".grid-x line") as SVGLineElement;
+    expect(gridLine.style.getPropertyValue("stroke")).toBe("var(--c97-rule, currentColor)");
+  });
+
   it("lists providers in the legend and repeats the data in a screen-reader list", () => {
     render(<FrontierCostContextChart models={MODELS} selectedModelId={null} onSelectModel={jest.fn()} />);
 

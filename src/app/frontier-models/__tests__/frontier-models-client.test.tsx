@@ -59,7 +59,7 @@ describe("FrontierModelsClient", () => {
     mockReplace.mockReset();
   });
 
-  it("renders the model tracker with the chart in the hero and navigates filter changes", () => {
+  it("renders the model tracker with its chart and table and navigates filter changes", () => {
     render(
       <FrontierModelsClient
         initialState={DEFAULT_FRONTIER_MODELS_STATE}
@@ -103,6 +103,36 @@ describe("FrontierModelsClient", () => {
       />
     );
     expect(screen.getByRole("group", { name: "Price tier" }).closest("details")).toHaveAttribute("open");
+  });
+
+  it("will not close the extra filters while one of them is set", () => {
+    currentSearchParams = new URLSearchParams("tier=budget");
+    render(
+      <FrontierModelsClient
+        initialState={DEFAULT_FRONTIER_MODELS_STATE}
+        snapshot={frontierModelsSnapshot}
+      />
+    );
+
+    // jsdom does not toggle a details on click, so the cancelled click is the
+    // evidence: fireEvent returns false when the handler prevented the default.
+    const details = screen.getByRole("group", { name: "Price tier" }).closest("details") as HTMLElement;
+    expect(fireEvent.click(details.querySelector("summary") as HTMLElement)).toBe(false);
+    expect(details).toHaveAttribute("open");
+  });
+
+  it("lets the extra filters open and close while neither is set", () => {
+    render(
+      <FrontierModelsClient
+        initialState={DEFAULT_FRONTIER_MODELS_STATE}
+        snapshot={frontierModelsSnapshot}
+      />
+    );
+
+    const details = screen
+      .getByRole("group", { name: "Price tier", hidden: true })
+      .closest("details") as HTMLElement;
+    expect(fireEvent.click(details.querySelector("summary") as HTMLElement)).toBe(true);
   });
 
   it("links the hero to the spec sheet", () => {

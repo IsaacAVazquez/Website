@@ -89,8 +89,8 @@ export function buildFrontierModelsHref(
     baseSearchParams ? Array.from(baseSearchParams.entries()) : []
   );
 
-  // The page once had a list/chart switch, and the chart now prints in the
-  // hero above the sheet, so a stale ?view= drops out of the URL.
+  // The page once had a list/chart switch, and the chart now prints above
+  // the sheet, so a stale ?view= drops out of the URL.
   params.delete("view");
 
   if (state.provider === DEFAULT_FRONTIER_MODELS_STATE.provider) {

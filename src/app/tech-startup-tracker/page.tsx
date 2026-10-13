@@ -1,6 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { techStartupSnapshot } from "@/data/techStartupSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { TechStartupClient } from "./tech-startup-client";
 import { normalizeTechStartupState } from "./tech-startup-state";
 
@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
   description:
     "Curated dashboard of notable tech startups by sector and funding stage, with valuations, total raised, latest rounds, and a momentum score from a checked-in snapshot.",
   canonicalUrl: "/tech-startup-tracker",
-  dateModified: techStartupSnapshot.generatedAt.slice(0, 10),
+  dateModified: laterDate(techStartupSnapshot.generatedAt.slice(0, 10), "2026-10-12"),
 });
 
 interface TechStartupPageProps {

@@ -161,15 +161,16 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
         <header className="ts-head">
           <h1 className="ts-title">Tech Startup Tracker</h1>
           <p className="ts-lede">
-            A curated read on notable private tech companies by sector and funding stage. The
+            I keep a curated read on notable private tech companies by sector and funding stage. The
             treemap sizes each one by its disclosed valuation, which shows how few companies
             hold most of the value.
           </p>
         </header>
 
         <section className="ts-map" aria-labelledby="ts-map-heading">
+          {/* The treemap groups by sector in both views, so the heading does too. */}
           <h2 id="ts-map-heading" className="sr-only">
-            Valuations by {TECH_STARTUP_KIND_LABELS[resolvedState.kind].toLowerCase()}
+            Valuations by sector
           </h2>
           <div className="ts-map-head">
             {/* The sector and stage filters sit above the treemap they redraw,
@@ -190,7 +191,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
                 ))}
               </div>
 
-              <div role="group" aria-label="Filter by segment" className="ts-switch ts-switch--scroll">
+              <div role="group" aria-label="Filter by segment" className="ts-switch">
                 <button
                   type="button"
                   aria-pressed={resolvedState.segment === "all"}
@@ -367,9 +368,9 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
   return (
     <>
       {/* The row stays clickable for pointer users, but the accessible
-          expand/collapse control is a real button on the name — role="button"
-          on a <tr> breaks table semantics and nests the Visit link inside an
-          interactive element. */}
+          expand/collapse control is a real button on the name, since
+          role="button" on a <tr> breaks table semantics and nests the Visit
+          link inside an interactive element. */}
       <tr onClick={onToggle} style={{ cursor: "pointer" }}>
         <td>
           <div className="flex" style={{ gap: "var(--c97-sp-1)" }}>

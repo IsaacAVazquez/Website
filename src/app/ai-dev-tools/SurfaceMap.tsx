@@ -83,8 +83,8 @@ function Plate({
  *
  * Two layouts share one data model: a CSS grid for anything wide enough to
  * show both axes at once, and a stacked list, grouped by category then
- * pricing, for a 390px phone. The directory's Map view prints both, and
- * `ai-dev-tools.css` shows one of them by width.
+ * pricing, for a 390px phone. The client mounts one of them, chosen by the
+ * window's width, so each tool has one plate on the page.
  */
 export function SurfaceMap({ tools, categories, pricing, selectedToolId, onSelect, layout }: SurfaceMapProps) {
   const rows = surfaceMap(tools, categories, pricing);
@@ -95,9 +95,8 @@ export function SurfaceMap({ tools, categories, pricing, selectedToolId, onSelec
   );
 
   return (
-    // The map prints straight on the route's paper with hairline rules, and
-    // the stylesheet shows the grid or the list by width.
-    <div data-layout={layout} className="c97-surface-map-sheet">
+    // The map prints straight on the route's paper with hairline rules.
+    <>
       {layout === "grid" ? (
         <div
           role="table"
@@ -145,6 +144,6 @@ export function SurfaceMap({ tools, categories, pricing, selectedToolId, onSelec
           })}
         </dl>
       )}
-    </div>
+    </>
   );
 }

@@ -34,10 +34,6 @@ import {
 } from "./ai-dev-tools-state";
 import { useModal } from "@/hooks/useModal";
 
-interface AiDevToolsClientProps {
-  initialState: AiDevToolsRouteState;
-}
-
 type FilterOption = {
   id: string;
   label: string;
@@ -162,10 +158,14 @@ function useWideMap(): boolean {
   );
 }
 
-/** Opening a tool's drawer is the one change that gets a history entry, so Back closes it. */
+/**
+ * Opening a tool's drawer is the one change that gets a history entry, so Back
+ * closes it. The entry carries a mark, which the router keeps, so closing the
+ * drawer can tell an entry this page pushed from a deep link.
+ */
 function pushHref(href: string) {
   if (href === `${window.location.pathname}${window.location.search}`) return;
-  window.history.pushState(null, "", href);
+  window.history.pushState({ adtDrawer: true }, "", href);
 }
 
 /** The URL as the bar shows it now, since useSearchParams follows a replace through a transition. */
@@ -173,7 +173,7 @@ function readBarState(): AiDevToolsRouteState {
   return normalizeAiDevToolsState(new URLSearchParams(window.location.search));
 }
 
-export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
+export function AiDevToolsClient() {
   const searchParams = useSearchParams();
   const hasManagedParams =
     searchParams.get("category") !== null ||
@@ -183,9 +183,10 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     searchParams.get("q") !== null ||
     searchParams.get("tool") !== null;
 
-  const state = hasManagedParams
-    ? normalizeAiDevToolsState(searchParams)
-    : initialState;
+  // The URL is the only source. A history write never re-renders the server
+  // page, so a state passed down from it would still name the first URL's tool
+  // and filters after the bar was cleared.
+  const state = normalizeAiDevToolsState(searchParams);
 
   const currentQuery = searchParams.toString();
   const currentHref = currentQuery ? `${AI_DEV_TOOLS_ROUTE}?${currentQuery}` : AI_DEV_TOOLS_ROUTE;
@@ -210,8 +211,15 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     );
     return () => window.clearTimeout(id);
   }, [query]);
+  // history.back() lands later, and until it does the bar still shows the
+  // drawer's entry, so a second close inside that gap would go back twice and
+  // leave the page.
+  const closingRef = useRef(false);
   useEffect(() => {
-    const reseed = () => setQuery(readBarState().query);
+    const reseed = () => {
+      closingRef.current = false;
+      setQuery(readBarState().query);
+    };
     window.addEventListener("popstate", reseed);
     return () => window.removeEventListener("popstate", reseed);
   }, []);
@@ -257,8 +265,22 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
 
   const [view, setView] = useState<"list" | "map">("list");
   const wideMap = useWideMap();
-  const handleSelectTool = (toolId: string) =>
-    pushHref(buildAiDevToolsHref({ ...state, query, selectedToolId: toolId }));
+  // The list's entry takes the field's text first, since a row can be pressed
+  // inside the search pause and Back from the drawer lands on that entry.
+  const handleSelectTool = (toolId: string) => {
+    const list = { ...readBarState(), query };
+    replaceHref(buildAiDevToolsHref(list));
+    pushHref(buildAiDevToolsHref({ ...list, selectedToolId: toolId }));
+  };
+  // A drawer this page pushed closes by going back, so no second copy of the
+  // list is left in the history. A deep link has no entry under it to go back to.
+  const handleCloseTool = () => {
+    if (closingRef.current) return;
+    if (window.history.state?.adtDrawer) {
+      closingRef.current = true;
+      window.history.back();
+    } else navigate({ selectedToolId: null });
+  };
   const surfaceMapProps = {
     tools: sortedTools,
     categories: categoryOptions.slice(1).map((option) => option.id),
@@ -381,10 +403,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         </section>
       </div>
 
-      <ToolDrawer
-        tool={selectedTool}
-        onClose={() => navigate({ selectedToolId: null })}
-      />
+      <ToolDrawer tool={selectedTool} onClose={handleCloseTool} />
     </div>
   );
 }
@@ -429,7 +448,7 @@ function ToolDirectoryList({
   onSelect,
 }: ToolDirectoryListProps) {
   return (
-    <div className="adt-list">
+    <div>
       <div className="adt-list-head" aria-hidden="true">
         <span>Tool</span>
         <span>Pricing</span>
@@ -437,7 +456,7 @@ function ToolDirectoryList({
         <span>Release</span>
         <span className="adt-end">GitHub stars</span>
       </div>
-      <ul className="adt-rows">
+      <ul>
         {tools.map((tool) => {
           const freshness = releaseFreshness(tool, nowMs);
           const starPct =
