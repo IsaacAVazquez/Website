@@ -1,6 +1,7 @@
 import React from "react";
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import type { Player } from "@/types";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { MockDraftClient } from "../mock-draft-client";
 
 const mockUseFantasySnapshot = jest.fn();
@@ -508,6 +509,36 @@ describe("MockDraftClient", () => {
     rerender(<MockDraftClient />);
     expect(screen.queryByRole("button", { name: "Reload the board" })).not.toBeInTheDocument();
     expect(document.activeElement).toBe(screen.getByText("On the clock").closest(".ffb-bug-seg"));
+  });
+
+  it("does not say a paused room's picks are saved when the browser refuses storage", () => {
+    const blocked = () => {
+      throw new Error("storage is blocked");
+    };
+    const getItem = jest.spyOn(Storage.prototype, "getItem").mockImplementation(blocked);
+    const setItem = jest.spyOn(Storage.prototype, "setItem").mockImplementation(blocked);
+    resetBrowserStorageMemory();
+    try {
+      const ready = mockUseFantasySnapshot();
+      const { rerender } = render(<MockDraftClient />);
+      startMock();
+      mockUseFantasySnapshot.mockReturnValue({
+        ...ready,
+        snapshot: null,
+        error: "The published rankings snapshot failed to load.",
+      });
+      rerender(<MockDraftClient />);
+
+      const alert = screen.getByRole("alert");
+      expect(alert).toHaveTextContent(
+        "Your picks stay until this tab closes, and simulated picks resume once the board loads."
+      );
+      expect(alert).not.toHaveTextContent(/saved/i);
+    } finally {
+      getItem.mockRestore();
+      setItem.mockRestore();
+      resetBrowserStorageMemory();
+    }
   });
 
   it("gives a keyboard a way past the board to the roster", () => {

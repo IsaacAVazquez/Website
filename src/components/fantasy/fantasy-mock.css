@@ -20,10 +20,54 @@
   font-size: 12.5px;
   line-height: 1.4;
 }
+/* The native box is 18px, which is under a phone's 44px target. So the input lies over the whole
+   label, as the kit's choice plate does it, and a span draws the box and its tick. */
 .ffb-mk-consent {
+  position: relative;
   display: flex;
   width: fit-content;
   margin-top: 2px;
+}
+.ffb-mk-consent > input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.ffb-mk-consent-box {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--ffb-edge);
+  background: var(--ffb-raised);
+}
+.ffb-mk-consent > input:checked + .ffb-mk-consent-box {
+  border-color: var(--ffb-ink);
+  background: var(--ffb-ink);
+}
+.ffb-mk-consent > input:checked + .ffb-mk-consent-box::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  margin-top: -2px;
+  border: solid var(--ffb-board);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.ffb-mk-consent > input:focus-visible + .ffb-mk-consent-box {
+  outline: 2px solid var(--ffb-ink);
+  outline-offset: 2px;
+}
+@media (forced-colors: active) {
+  .ffb-mk-consent > input:checked + .ffb-mk-consent-box {
+    border-color: Highlight;
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+  .ffb-mk-consent > input:checked + .ffb-mk-consent-box::after { border-color: HighlightText; }
 }
 
 /* ==========================================================================

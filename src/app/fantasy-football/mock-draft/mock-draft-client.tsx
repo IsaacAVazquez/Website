@@ -24,7 +24,7 @@ import {
 import { positionClass } from "@/components/fantasy/positionClass";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
-import { readValidatedBrowserStorage } from "@/lib/browserStorage";
+import { readBrowserStorageString, readValidatedBrowserStorage } from "@/lib/browserStorage";
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 import {
   SHELL_CLASS,
@@ -371,6 +371,16 @@ export function MockDraftClient() {
   const room = useMockDraftState(board, scoringSelection, simulationAvailable);
   const { state, availablePlayers, currentPick } = room;
   const settings = state.settings;
+  // The room writes itself to storage after every pick. When the browser
+  // refuses, the room lives in this tab only, and nothing here may say "saved".
+  // This runs after the hook's own write, so it reads that write's outcome.
+  const [storageBlocked, setStorageBlocked] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the storage layer's status once the room's write has run
+    setStorageBlocked(
+      readBrowserStorageString(getMockDraftStorageKey()).persistenceStatus === "memory-only"
+    );
+  }, [state]);
   const totalPicks = settings.totalTeams * settings.rounds;
   const currentRound = Math.min(settings.rounds, Math.ceil(currentPick / settings.totalTeams));
 
@@ -748,18 +758,20 @@ export function MockDraftClient() {
   // already in flight and the board itself is the problem. Eligible opening
   // boards can resume with explicit consent to dated preseason practice.
   const boardReloadable = !boardReady && (Boolean(error) || (!isLoading && snapshotMatches));
-  const pauseRecovery = !boardReady
+  const kept = (sentence: string) =>
+    storageBlocked ? sentence.replace(/\b(stays?) saved\b/, "$1 until this tab closes") : sentence;
+  const pauseRecovery = kept(!boardReady
     ? boardReloadable
       ? "Your picks stay saved, and simulated picks resume once the board loads."
       : "Your picks stay saved, and simulated picks resume once the board arrives."
     : archiveEligible
       ? "Your picks stay saved. Choose dated preseason practice above to resume with this board."
-      : "Your picks stay saved, and the room resumes only if a newer board publishes.";
-  const rerunRecovery = !boardReady
+      : "Your picks stay saved, and the room resumes only if a newer board publishes.");
+  const rerunRecovery = kept(!boardReady
     ? "Run it back turns back on once the published board loads, and this recap stays exactly as it is."
     : archiveEligible
       ? "Choose dated preseason practice above to run it back. This recap stays saved."
-      : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.";
+      : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.");
 
   // The reload button shows on setup only after a failed request, and in a room
   // whenever the board is the problem and no request is in flight.
@@ -923,6 +935,9 @@ export function MockDraftClient() {
                   checked={archivedPractice}
                   onChange={(event) => setArchiveConsent(event.target.checked ? archiveIdentity : null)}
                 />
+                {/* The input covers the whole label, so the label is the checkbox's
+                    44px target on a phone, and this draws the box. */}
+                <span className="ffb-mk-consent-box" aria-hidden="true" />
                 Practice with the dated preseason board
               </label>
             ) : null}
