@@ -32,8 +32,10 @@ const FANTASY_PRODUCT_LINKS: ReadonlyArray<ReadonlyArray<{ label: string; href: 
  * The product bar above every fantasy route. One 40px row on a desktop. On a
  * phone the links scroll sideways and the current one is brought into view on
  * mount, by moving the list only, so the page does not jump. A link that is not
- * fully on screen goes to the list's left edge. It is not sticky,
- * because every page has measured sticky bars of its own at the top.
+ * fully on screen goes to the list's left edge, on mount and again whenever one
+ * takes focus, since the browser scrolls only for a link that is wholly out of
+ * view. It is not sticky, because every page has measured sticky bars of its own
+ * at the top.
  */
 export function FantasyProductBar() {
   const pathname = usePathname();
@@ -51,7 +53,14 @@ export function FantasyProductBar() {
     <div className="c97-shell c97-frame">
       <nav className="ffb-bar" aria-label="Fantasy football">
         <span className="ffb-bar-name">Fantasy Football</span>
-        <ul className="ffb-bar-links" ref={listRef}>
+        <ul
+          className="ffb-bar-links"
+          ref={listRef}
+          onFocus={(event) => {
+            const item = (event.target as HTMLElement).closest("li");
+            if (item) scrollChildIntoViewX(event.currentTarget, item, 4, "start");
+          }}
+        >
           {FANTASY_PRODUCT_LINKS.map((group, groupIndex) =>
             group.map((link, index) => (
               <li key={link.href} className={groupIndex > 0 && index === 0 ? "ffb-bar-gap" : undefined}>

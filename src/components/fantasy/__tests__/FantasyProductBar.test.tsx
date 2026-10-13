@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 
 import { FantasyProductBar } from "../FantasyProductBar";
 
@@ -96,5 +96,42 @@ describe("FantasyProductBar when the current link is already on screen", () => {
     rectSpy.mockRestore();
     scrollWidth.mockRestore();
     clientWidth.mockRestore();
+  });
+});
+
+describe("FantasyProductBar when a link takes focus", () => {
+  afterEach(() => jest.restoreAllMocks());
+
+  // The current link sits on screen at mount, and the link that takes focus is given its own box.
+  function renderWithBoxes(focusedBox: Partial<DOMRect>) {
+    mockPathname.mockReturnValue("/fantasy-football");
+    render(<FantasyProductBar />);
+    const link = screen.getByRole("link", { name: "Mock draft" });
+    const item = link.closest("li") as HTMLElement;
+    jest.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
+      if (this === item) return focusedBox as DOMRect;
+      return (this.tagName === "UL" ? { left: 0, right: 300 } : { left: 0, right: 0 }) as DOMRect;
+    });
+    jest.spyOn(HTMLElement.prototype, "scrollWidth", "get").mockImplementation(() => 640);
+    jest.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => 300);
+    return { link, list: screen.getByRole("list") };
+  }
+
+  it("moves the list until a link that is partly off screen sits whole at its left edge", () => {
+    const { link, list } = renderWithBoxes({ left: 260, right: 360 });
+    expect(list.scrollLeft).toBe(0);
+
+    fireEvent.focus(link);
+
+    // The item starts at 260 and ends at 360 in a 300px list, so it goes 4px in from the left edge.
+    expect(list.scrollLeft).toBe(256);
+  });
+
+  it("leaves the list alone for a link that is already whole on screen", () => {
+    const { link, list } = renderWithBoxes({ left: 120, right: 220 });
+
+    fireEvent.focus(link);
+
+    expect(list.scrollLeft).toBe(0);
   });
 });
