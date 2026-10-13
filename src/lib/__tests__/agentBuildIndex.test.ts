@@ -97,6 +97,8 @@ describe("getAgentBuildIndex", () => {
       "topic-ai",
     ]);
     expect(index.measuredRepositoryCount).toBe(2);
+    // Repository 3 is on a partial window and sits in the agents group only.
+    expect(index.topicSegments.map((topic) => topic.unmeasuredCount)).toEqual([1, 0]);
   });
 
   it("returns an empty focused view when the snapshot has no agent segment", () => {

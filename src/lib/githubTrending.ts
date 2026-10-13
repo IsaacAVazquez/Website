@@ -69,12 +69,6 @@ function addDays(dateKey: string, days: number): string {
   return date.toISOString().slice(0, 10);
 }
 
-function daysBetween(startDateKey: string, endDateKey: string): number {
-  const start = new Date(`${startDateKey}T00:00:00.000Z`).getTime();
-  const end = new Date(`${endDateKey}T00:00:00.000Z`).getTime();
-  return Math.floor((end - start) / 86_400_000);
-}
-
 function sortHistory(history: GitHubTrendingStarPoint[]): GitHubTrendingStarPoint[] {
   return [...history].sort((a, b) => a.date.localeCompare(b.date));
 }
@@ -97,8 +91,9 @@ function mergeStarHistory(
   // it became the baseline on exactly one day, day N+7, silently widening the
   // seven-day window to eight and overstating weeklyStars for that day while the
   // page reported the figure as "measured". Leave the gap instead.
-  // calculateWeeklyStars already falls back to the nearest earlier point and
-  // labels the result, so an honest partial beats a fabricated measurement.
+  // calculateWeeklyStars calls a gain measured only with a reading on the
+  // target day and one today, and labels anything shorter partial, so an
+  // honest partial beats a fabricated measurement.
   if (!reused) {
     byDate.set(today, { date: today, stars });
   }
@@ -122,31 +117,31 @@ export function calculateWeeklyStars(
   const today = toUtcDateKey(generatedAt);
   const targetDate = addDays(today, -windowDays);
   const ordered = sortHistory(history).filter((point) => point.date <= today);
-  const measuredBaseline = [...ordered]
-    .reverse()
-    .find((point) => point.date <= targetDate);
+  // "Measured" promises the whole window, so it needs a reading on the target
+  // day itself and one today. When the target day was missed, the next reading
+  // gives a shorter window, which is what "partial" means. A repository
+  // restored from a reused segment has no reading today, so its gain ends at
+  // its last one and is partial too. An older reading is the last resort. Its
+  // gain covers more than the window, so it is never called measured, and it
+  // keeps its date so the page prints the real interval.
+  const exact = ordered.find((point) => point.date === targetDate);
+  const baseline =
+    exact ??
+    ordered.find((point) => point.date > targetDate && point.date < today) ??
+    ordered.findLast((point) => point.date < targetDate);
 
-  if (measuredBaseline) {
-    return {
-      weeklyStars: Math.max(0, currentStars - measuredBaseline.stars),
-      status: "measured",
-      baselineDate: measuredBaseline.date,
-    };
-  }
-
-  const earliest = ordered[0];
-  if (!earliest || earliest.date === today) {
+  if (!baseline) {
     return {
       weeklyStars: 0,
       status: "baseline",
-      baselineDate: earliest?.date ?? null,
+      baselineDate: ordered[0]?.date ?? null,
     };
   }
 
   return {
-    weeklyStars: Math.max(0, currentStars - earliest.stars),
-    status: daysBetween(earliest.date, today) >= windowDays ? "measured" : "partial",
-    baselineDate: earliest.date,
+    weeklyStars: Math.max(0, currentStars - baseline.stars),
+    status: exact && ordered.at(-1)?.date === today ? "measured" : "partial",
+    baselineDate: baseline.date,
   };
 }
 
@@ -327,9 +322,10 @@ export function sortGitHubTrendingRepositories<
   return sorted;
 }
 
+// One decimal from a thousand up, so 1,499 and 1,500 do not print as +1K and +2K.
 export function formatGitHubCompactNumber(value: number): string {
   return new Intl.NumberFormat("en-US", {
     notation: "compact",
-    maximumFractionDigits: value >= 10_000 ? 1 : 0,
+    maximumFractionDigits: 1,
   }).format(value);
 }

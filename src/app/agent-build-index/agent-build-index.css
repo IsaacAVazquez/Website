@@ -296,6 +296,14 @@
   color: var(--abi-ink-2);
 }
 
+/* How many of the group's repositories are short of a full window, in the ranked rows' status type. */
+.abi-topic-status {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* The signup sits under a rule at the foot, never louder than the list. */
 
 .abi-signup {
@@ -341,7 +349,7 @@
   }
 
   .abi-topic {
-    grid-template-columns: 6.5rem minmax(0, 1fr) 4rem;
+    grid-template-columns: 6.5rem minmax(0, 1fr) 4.5rem;
     gap: var(--c97-sp-1);
   }
 }

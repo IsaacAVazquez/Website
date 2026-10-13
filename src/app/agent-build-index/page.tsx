@@ -58,6 +58,20 @@ export default function AgentBuildIndexPage() {
     ...index.topicSegments.map((topic) => topic.weeklyStars)
   );
   const rankedRepositories = index.repositories.slice(0, RANKED_LIMIT);
+  // With no agent group there is nothing to say about it, and the sentence that
+  // explains the partial mark prints only when a row carries one.
+  const topicNote = [
+    agentSegment
+      ? leadingTopic?.key === agentSegment.key
+        ? `Agents lead the tracked topic groups in this snapshot with ${movementLabel(agentSegment.weeklyStars)} stars over ${index.windowDays} days, across ${formatGitHubCompactNumber(agentSegment.totalStars)} total stars.`
+        : `The agent group recorded ${movementLabel(agentSegment.weeklyStars)} stars over ${index.windowDays} days in this snapshot, across ${formatGitHubCompactNumber(agentSegment.totalStars)} total stars.`
+      : null,
+    index.topicSegments.some((topic) => topic.unmeasuredCount > 0)
+      ? `Where a total is marked partial, that many of its repositories were not measured over the full ${index.windowDays} days.`
+      : null,
+  ]
+    .filter(Boolean)
+    .join(" ");
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Agent Build Index", url: PATH },
@@ -179,7 +193,11 @@ export default function AgentBuildIndexPage() {
                       </p>
                     </div>
                     <p className="abi-move">
-                      <span className="abi-move-value">{movementLabel(repository.weeklyStars)}</span>
+                      <span className="abi-move-value">
+                        {repository.weeklyStarsStatus === "baseline"
+                          ? "Baseline"
+                          : movementLabel(repository.weeklyStars)}
+                      </span>
                       <span className="abi-move-status">
                         {repository.weeklyStarsStatus === "measured"
                           ? `${index.windowDays}d measured`
@@ -221,16 +239,17 @@ export default function AgentBuildIndexPage() {
                       <span className="abi-topic-track" aria-hidden="true">
                         <span style={{ width: `${width}%` }} />
                       </span>
-                      <span className="abi-topic-value">{movementLabel(topic.weeklyStars)}</span>
+                      <span className="abi-topic-value">
+                        {movementLabel(topic.weeklyStars)}{" "}
+                        {topic.unmeasuredCount > 0 ? (
+                          <span className="abi-topic-status">{topic.unmeasuredCount} partial</span>
+                        ) : null}
+                      </span>
                     </li>
                   );
                 })}
               </ul>
-              <p className="abi-note">
-                {leadingTopic?.key === agentSegment?.key
-                  ? `Agents lead the tracked topic groups in this snapshot with ${movementLabel(agentSegment?.weeklyStars ?? 0)} stars over ${index.windowDays} days, across ${formatGitHubCompactNumber(agentSegment?.totalStars ?? 0)} total stars.`
-                  : `The agent group recorded ${movementLabel(agentSegment?.weeklyStars ?? 0)} stars over ${index.windowDays} days in this snapshot, across ${formatGitHubCompactNumber(agentSegment?.totalStars ?? 0)} total stars.`}
-              </p>
+              {topicNote ? <p className="abi-note">{topicNote}</p> : null}
             </section>
 
             <section aria-labelledby="agent-index-meaning-heading">
