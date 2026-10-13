@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
@@ -14,7 +14,8 @@ import { groupFixtures } from "@/components/football/fixtureGroups";
 // route that reads it, and the two league pages do not use this drawer.
 import { DetailDrawer } from "@/components/football/DetailDrawer";
 import { SeedLadder, type LadderColumn, type LadderTeam } from "@/components/football/SeedLadderPanel";
-import { seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
+import { formatGamesGap, seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
+import { useKeepPressedInView } from "@/components/football/useKeepPressedInView";
 import type {
   NbaLeader,
   NbaRouteState,
@@ -169,11 +170,10 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     [west, teamColors]
   );
 
-  const hasManagedParams =
-    searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const linkedState = hasManagedParams
-    ? normalizeState(searchParams, defaultState, aliasMap)
-    : initialState;
+  // The URL alone is the state. The page keeps the props of the last render
+  // the server sent, so after Back `initialState` can still name the team or
+  // the view the visitor just left.
+  const linkedState = normalizeState(searchParams, defaultState, aliasMap);
   // A link that names a team outside its view (a West team on the default
   // East view) opens that team in its own conference, the way a pick does.
   // Until 2026-10-09 the team was dropped and the URL rewritten without it.
@@ -200,7 +200,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   } = useCachedSnapshot<NbaTeamSnapshot>(
     "/api/nba/teams",
     selectedTeam?.id ?? null,
-    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    // The server loads the team its own state names, which a bare ?view= link
+    // leaves on the default team while the page selects the view's first.
+    { id: initialState.team, snapshot: initialTeamSnapshot },
     "Unable to load team snapshot."
   );
   const [activeDetailTab, setActiveDetailTab] = useState<"schedule" | "leaders">("schedule");
@@ -224,6 +226,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   );
 
   const pushHref = useRouteSync(NBA_ROUTE, desiredHref);
+  const switchRef = useRef<HTMLDivElement>(null);
+  useKeepPressedInView(switchRef, routeState.view);
 
   function navigate(nextState: NbaRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
@@ -231,6 +235,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   }
 
   function handleViewChange(view: NbaView) {
+    // Back closes a drawer without clearing it, and the next view's first
+    // team can be the one it held.
+    setDrawerTeamId(null);
     const nextTeams = filterTeams(east, west, view);
     const nextTeam = nextTeams.some((team) => team.id === selectedTeamId)
       ? selectedTeamId
@@ -269,7 +276,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
       {isOffSeason ? (
         <p className="sb-status">
           The {summary.season} regular season is over, so this is the final table. Standings, the schedule, and
-          the leaders pick up again once the new season tips off and the refresh lane resumes.
+          the leaders pick up again once the new season tips off.
         </p>
       ) : null}
     </div>
@@ -316,7 +323,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
       <section className="sb-board" aria-label="NBA standings">
         <div className="sb-toolbar">
           <h2 className="sb-h2">Standings</h2>
-          <div role="group" aria-label="Conference and seeding view" className="sb-switch">
+          <div ref={switchRef} role="group" aria-label="Conference and seeding view" className="sb-switch">
             {viewOptions.map((option) => (
               <button
                 key={option.id}
@@ -334,7 +341,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
           conferences={conferences}
           columns={LADDER_COLUMNS}
           lineLabels={["Playoff line", "Play-in line"]}
-          selectedId={selectedTeam.id}
+          // Marked only while the drawer shows it, since nothing else on the page does.
+          selectedId={isDrawerOpen ? selectedTeam.id : null}
           onSelect={handleTeamChange}
           isBandVisible={(index) => visibleBands.includes(index)}
         />
@@ -398,9 +406,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 <LeaderLedger title="Assists per game" unit="apg" entries={toLedgerEntries(summary.assistLeaders)} />
               </div>
               <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="sb-link">
-                Official
-                <span className="sr-only"> NBA stat leaders (opens in a new tab)</span>
-                <span aria-hidden="true"> stats</span>
+                {summary.sourceLabel} stats
+                <span className="sr-only"> (opens in a new tab)</span>
                 <ExternalLink className="sb-link-icon" aria-hidden="true" />
               </a>
             </div>
@@ -559,29 +566,43 @@ function buildConferenceContext(teams: NbaTeam[]): ConferenceContext {
   };
 }
 
+/**
+ * How far `ahead` sits over `behind` as the ladder's lines print it, from wins
+ * and losses both, so teams that have played uneven schedules compare fairly.
+ * Null when either seed is missing.
+ */
+function gamesBetween(ahead: NbaTeam | undefined, behind: NbaTeam | undefined): string | null {
+  if (!ahead || !behind) return null;
+  const gap = (ahead.wins - behind.wins + (behind.losses - ahead.losses)) / 2;
+  // formatGamesGap prints a level pair as "Tied", which does not fit a sentence.
+  return gap === 0 ? "0 games" : formatGamesGap(gap);
+}
+
 function getTeamStoryline(team: NbaTeam, context: ConferenceContext): string {
   const { topSeed, sixthSeed, seventhSeed, tenthSeed, eleventhSeed } = context;
   const seed = team.conferenceSeed;
   if (!topSeed) return `${team.shortName} are still building their conference resume.`;
   if (seed === 1) {
-    const margin = sixthSeed ? team.wins - sixthSeed.wins : team.wins;
-    return `${team.shortName} hold the conference's top seed and sit ${margin} games clear of the play-in cutoff.`;
+    const margin = gamesBetween(team, seventhSeed);
+    return `${team.shortName} hold the conference's top seed${
+      margin !== null ? ` and sit ${margin} clear of the play-in cutoff` : ""
+    }.`;
   }
   if (seed <= 6) {
-    const aheadOfPlayIn = seventhSeed ? team.wins - seventhSeed.wins : null;
+    const aheadOfPlayIn = gamesBetween(team, seventhSeed);
     return `${team.shortName} are locked into a playoff seed${
-      aheadOfPlayIn !== null ? ` with a cushion of ${aheadOfPlayIn} games over the play-in line` : ""
+      aheadOfPlayIn !== null ? ` with a cushion of ${aheadOfPlayIn} over the play-in line` : ""
     }.`;
   }
   if (seed <= 10) {
-    const behindPlayoff = sixthSeed ? sixthSeed.wins - team.wins : null;
-    const aheadOfLottery = eleventhSeed ? team.wins - eleventhSeed.wins : null;
+    const behindPlayoff = gamesBetween(sixthSeed, team);
+    const aheadOfLottery = gamesBetween(team, eleventhSeed);
     return `${team.shortName} are in the play-in${
-      behindPlayoff !== null ? `, ${behindPlayoff} games back of a top-six seed` : ""
-    }${aheadOfLottery !== null ? ` and ${aheadOfLottery} games clear of the lottery` : ""}.`;
+      behindPlayoff !== null ? `, ${behindPlayoff} back of a top-six seed` : ""
+    }${aheadOfLottery !== null ? ` and ${aheadOfLottery} clear of the lottery` : ""}.`;
   }
-  const behindPlayIn = tenthSeed ? tenthSeed.wins - team.wins : null;
+  const behindPlayIn = gamesBetween(tenthSeed, team);
   return `${team.shortName} are outside the play-in${
-    behindPlayIn !== null ? ` and ${behindPlayIn} games short of the tenth seed` : ""
+    behindPlayIn !== null ? ` and ${behindPlayIn} short of the tenth seed` : ""
   }.`;
 }

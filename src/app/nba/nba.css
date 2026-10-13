@@ -34,6 +34,24 @@
   --sl-band-2: #6b7079;
 }
 
+/*
+ * A drawer game row under 390px has no room for a crest beside the longest
+ * team names, so the crests drop and both names print whole. The drawer's
+ * head keeps its crest.
+ */
+@media screen and (max-width: 389px) {
+  .nba-root .sb-games img {
+    display: none;
+  }
+}
+
+/* At 320px the widest name still fills its cell to the pixel, so the drawer gives up some side padding. */
+@media screen and (max-width: 339px) {
+  .nba-root .dd-panel {
+    padding-inline: var(--c97-sp-2);
+  }
+}
+
 .nba-root .sb-state[data-state="live"] { --sb-state: var(--sl-band-0); }
 .nba-root .sb-state[data-state="final"] { --sb-state: var(--sb-ink); }
 .nba-root .sb-state[data-state="off"] { --sb-state: var(--sl-band-1); }
