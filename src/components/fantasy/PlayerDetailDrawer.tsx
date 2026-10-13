@@ -13,10 +13,10 @@ import {
   FANTASY_EXPERT_SPREAD_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
+  FANTASY_VORP_TOOLTIP,
   formatAdp,
   formatOwnership,
   getConsensusSpread,
-  getFantasyPointsPerGameTooltip,
   getSnapshotStaleness,
   getValueVsAdp,
   formatPickDelta,
@@ -25,6 +25,8 @@ import {
 import type { Player } from "@/types";
 
 import "./fantasy-overlays.css";
+import { PlayerNoteField } from "./PlayerNoteField";
+import { PlayerPointsPerGame } from "./PlayerPointsPerGame";
 import { positionClass } from "./positionClass";
 import { RankDistributionBar } from "./RankDistributionBar";
 
@@ -61,6 +63,27 @@ interface PlayerDetailDrawerProps {
    */
   compareAvailable?: boolean;
   /**
+   * Whether the market sentence under Market ADP may print ("Value if he lasts
+   * to your pick", "Take him on schedule"). It is pick advice, so a caller
+   * passes false whenever its own surface is withholding recommendations: a
+   * stale source, a season under way, or a model source issue. The Value or
+   * Reach word beside the ADP figure stays either way. Defaults to true.
+   */
+  verdictAvailable?: boolean;
+  /**
+   * Value over replacement for this player and the league size it was computed
+   * for ("12-team"), printed as a fact when the caller's board shows VORP.
+   */
+  vorp?: { value: number; label: string };
+  /**
+   * Whether the calling board withholds this player's published consensus
+   * rank. The Position rank and Tier facts then read "Withheld", the word the
+   * board row and the compare modal print, in place of a dash.
+   */
+  consensusWithheld?: boolean;
+  /** The scoring the points per game log was built for ("PPR"), named in its basis line. */
+  scoringLabel?: string;
+  /**
    * Draft-room surfaces pass this to log the open player as the current pick,
    * so the drawer is a decision point rather than a dead end. Callers withhold
    * it for drafted players and outside a live draft.
@@ -91,7 +114,8 @@ function marketVerdict(
   if (!hasReliableAdpSample(player)) {
     return {
       text: "Too few mock selections behind his ADP to judge the market gap yet, so no market read.",
-      tone: "",
+      // A read the drawer is holding back, which is the kit's held notice.
+      tone: "ffb-notice-held",
     };
   }
   const picks = Math.round(Math.abs(value.delta));
@@ -118,13 +142,18 @@ function marketVerdict(
  * right-hand drawer on a desktop and a bottom sheet on a phone. It renders
  * only fields the snapshot populates (rank, tier, expert range, consensus
  * spread, ownership, bye, ADP, movement, points per game) plus the queue,
- * note, and compare controls that carry across the fantasy pages. The
- * rankings board draws a drawer of its own from the same kit classes.
+ * note, and compare controls that carry across the fantasy pages. The spread
+ * plot, the points per game block, and the note field are components of their
+ * own, so the rankings board's drawer can render the same parts.
  */
 export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel = "Rank", boardTierCount, onClose,
   adpAvailable = true,
   valueSignalAvailable = true,
   compareAvailable = true,
+  verdictAvailable = true,
+  vorp,
+  consensusWithheld = false,
+  scoringLabel,
   onLogPick,
 }: PlayerDetailDrawerProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -167,6 +196,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   const inCompare = compare.inCompare(player.id);
   const compareDisabled = !inCompare && compare.isFull;
   const hasPositionRank = Number.isFinite(player.positionRank);
+  const hasRange = Number.isFinite(player.minRank) && Number.isFinite(player.maxRank);
+  // The three stores share one storage, so one of them in memory means all are.
+  const persistent = [notes, queue, compare].every((store) => store.persistenceStatus === "persistent");
+  const withheld = <span className="ffb-label ffb-muted">Withheld</span>;
 
   return (
     <div className="ffb-overlay ffb-enter-fade">
@@ -191,7 +224,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
               <span className={`ffb-chip ${positionClass(player.position)}`}>
                 {player.position}
                 {hasPositionRank ? player.positionRank : ""}
-              </span>
+              </span>{" "}
               <span className="ffb-label ffb-muted">
                 {publishedRank ? (
                   <>
@@ -223,11 +256,9 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
               type="button"
               onClick={() => queue.toggle(player.id)}
               aria-pressed={isQueued}
-              className="ffb-btn ffb-ov-queue"
+              className="ffb-btn ffb-btn-toggle"
             >
-              <span className="ffb-ov-queue-mark">
-                <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
-              </span>
+              <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
               {isQueued ? "Queued" : "Add to queue"}
             </button>
             {compareAvailable && (
@@ -237,7 +268,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className={inCompare ? "ffb-btn ffb-btn-primary" : "ffb-btn"}
+                className="ffb-btn ffb-btn-toggle"
               >
                 <GitCompareArrows size={14} aria-hidden="true" />
                 {inCompare ? "Comparing" : "Compare"}
@@ -245,25 +276,44 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             )}
           </div>
 
-          <dl className="ffb-stats">
+          {/* Four short facts read best as two by two. Three sit on one line. */}
+          <dl className={vorp ? "ffb-stats ffb-stats-2" : "ffb-stats"}>
             <div className="ffb-stat">
               <dt>Position rank</dt>
-              <dd>
-                {player.position}
-                {hasPositionRank ? ` ${player.positionRank}` : " —"}
-              </dd>
+              {consensusWithheld ? (
+                <dd>{withheld}</dd>
+              ) : (
+                <dd>
+                  {player.position}
+                  {hasPositionRank ? ` ${player.positionRank}` : " —"}
+                </dd>
+              )}
             </div>
             <div className="ffb-stat">
               <dt>Tier</dt>
-              <dd>
-                {Number.isFinite(player.tier) ? player.tier : "—"}
-                {Number.isFinite(player.tier) && boardTierCount ? <small> of {boardTierCount}</small> : null}
-              </dd>
+              {consensusWithheld ? (
+                <dd>{withheld}</dd>
+              ) : (
+                <dd>
+                  {Number.isFinite(player.tier) ? player.tier : "—"}
+                  {Number.isFinite(player.tier) && boardTierCount ? <small> of {boardTierCount}</small> : null}
+                </dd>
+              )}
             </div>
             <div className="ffb-stat">
               <dt>Rostered</dt>
               <dd>{formatOwnership(player.ownership)}</dd>
             </div>
+            {vorp && (
+              <div className="ffb-stat">
+                <dt>
+                  <MetricTooltip term="VORP" definition={FANTASY_VORP_TOOLTIP} focusable>
+                    {`VORP · ${vorp.label}`}
+                  </MetricTooltip>
+                </dt>
+                <dd>{Math.round(vorp.value)}</dd>
+              </div>
+            )}
             {showAdp && (
               <div className="ffb-stat ffb-ov-stat-wide">
                 <dt>
@@ -272,7 +322,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                   </MetricTooltip>
                 </dt>
                 <dd className="ffb-ov-stat-row">
-                  {formatAdp(player.adp)}
+                  {formatAdp(player.adp)}{" "}
                   {valueSignal?.signal && (
                     <span
                       className={`ffb-badge ${valueSignal.signal === "value" ? "ffb-good" : "ffb-warn"}`}
@@ -302,7 +352,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             )}
           </dl>
 
-          {showAdp && verdict && <p className={`ffb-notice ${verdict.tone}`}>{verdict.text}</p>}
+          {showAdp && verdictAvailable && verdict && <p className={`ffb-notice ${verdict.tone}`}>{verdict.text}</p>}
 
           <div className="ffb-stack ffb-stack-tight">
             <div className="ffb-sechead">
@@ -313,6 +363,9 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
               </h3>
               {spread && <p className="ffb-sechead-note">{spread.label}</p>}
             </div>
+            {/* The plot's divisions are labelled R1, R2, and the head line above
+                prints a rank, so the drawer says once what a division is. */}
+            {hasRange && <p className="ffb-sechead-note">Each division is a round of a 12-team draft.</p>}
             <RankDistributionBar player={player} />
             {/* Board movement, present only once the committed rank history is
                 old enough for the window and while the board is still being
@@ -327,73 +380,33 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                   >
                     Movement
                   </MetricTooltip>
-                </span>
+                </span>{" "}
                 <span>{movement.join(" · ")}</span>
               </p>
             )}
           </div>
 
           {/* Prior-season points per game, history and never a projection. */}
-          {player.gameLog && (
-            <div className="ffb-stack ffb-stack-tight">
-              <div className="ffb-sechead">
-                <h3 className="ffb-h3" aria-label="Points per game">
-                  <MetricTooltip
-                    term="Points per game"
-                    definition={getFantasyPointsPerGameTooltip(player.gameLog)}
-                    focusable
-                  >
-                    Points per game
-                  </MetricTooltip>
-                </h3>
-                <p className="ffb-sechead-note">
-                  {player.gameLog.season} season · {player.gameLog.games}{" "}
-                  {player.gameLog.games === 1 ? "game" : "games"}
-                </p>
-              </div>
-              <dl className="ffb-stats ffb-ov-ppg">
-                {(
-                  [
-                    { label: "Low", value: player.gameLog.low },
-                    { label: "Median", value: player.gameLog.median },
-                    { label: "Avg", value: player.gameLog.average },
-                    { label: "High", value: player.gameLog.high },
-                  ] as const
-                ).map((cell) => (
-                  <div key={cell.label} className="ffb-stat">
-                    <dt>{cell.label}</dt>
-                    <dd>{cell.value.toFixed(1)}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          )}
+          {player.gameLog && <PlayerPointsPerGame gameLog={player.gameLog} scoringLabel={scoringLabel} />}
 
-          <div className="ffb-field">
-            <label htmlFor="player-note" className="ffb-field-label">
-              Private note
-            </label>
-            <textarea
-              id="player-note"
-              name="player-note"
-              value={draftNote}
-              maxLength={notes.maxLength}
-              onChange={(event) => {
-                setDraftNote(event.target.value);
-                notes.setNote(player.id, event.target.value);
-              }}
-              rows={2}
-              placeholder="Handcuff for Hall… target round 6… avoid."
-              className="ffb-textarea"
-            />
-            <p className="ffb-field-count">
-              {draftNote.length}/{notes.maxLength} · saved to this browser
-            </p>
-          </div>
+          <PlayerNoteField
+            id="player-note"
+            value={draftNote}
+            maxLength={notes.maxLength}
+            onChange={(value) => {
+              setDraftNote(value);
+              notes.setNote(player.id, value);
+            }}
+            persistent={persistent}
+          />
 
           <p className="ffb-method">
-            Ranks, tiers, and expert ranges come from the published FantasyPros consensus snapshot. Queue,
-            notes, and compare stay on this device.
+            Ranks, tiers, and expert ranges come from the published FantasyPros consensus snapshot.{" "}
+            {persistent
+              ? "Queue, notes, and compare stay on this device."
+              : compareAvailable
+                ? "Queue, notes, and compare last only in this tab."
+                : "Queue and notes last only in this tab."}
           </p>
         </div>
       </div>

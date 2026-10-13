@@ -1,7 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
-import { useRef, type CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { useModal } from "@/hooks/useModal";
 
 import {
@@ -67,6 +67,17 @@ export function CompareModal({
 }: CompareModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   useModal(panelRef, true, onClose, { lockScroll: false });
+
+  // A remove button takes its own column away. Once the column is gone, focus
+  // goes to the remove button that moved into its place, so it never falls to the page.
+  const removed = useRef<{ id: string; index: number } | null>(null);
+  useEffect(() => {
+    const last = removed.current;
+    if (!last || players.some((player) => player.id === last.id)) return;
+    removed.current = null;
+    const buttons = panelRef.current?.querySelectorAll<HTMLElement>("[data-compare-remove]");
+    (buttons?.[last.index] ?? buttons?.[buttons.length - 1])?.focus();
+  });
 
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
   const scaleMax = Math.max(...players.map((p) => (Number.isFinite(p.maxRank) ? (p.maxRank as number) : -Infinity)));
@@ -147,12 +158,15 @@ export function CompareModal({
           <>
             {adpAvailable ? formatAdp(p.adp) : "Unavailable"}
             {signal?.signal && (
-              <span
-                className={`ffb-badge ffb-ov-cell-tag ${signal.signal === "value" ? "ffb-good" : "ffb-warn"}`}
-                title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
-              >
-                {signal.signal === "value" ? "Value" : "Reach"}
-              </span>
+              <>
+                {/* A real space, so the figure and the word read as two. */}{" "}
+                <span
+                  className={`ffb-badge ffb-ov-cell-tag ${signal.signal === "value" ? "ffb-good" : "ffb-warn"}`}
+                  title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+                >
+                  {signal.signal === "value" ? "Value" : "Reach"}
+                </span>
+              </>
             )}
           </>
         );
@@ -224,19 +238,23 @@ export function CompareModal({
                   <th scope="col">
                     <span className="ffb-vh">Metric</span>
                   </th>
-                  {players.map((player) => (
+                  {players.map((player, index) => (
                     // Named explicitly so the column announces as the player.
                     // Without this the header's name absorbs the remove
                     // button's label and every cell is prefixed with it.
                     <th key={player.id} scope="col" aria-label={`${player.name}, ${player.position}, ${player.team}`}>
                       <span className="ffb-ov-compare-head">
-                        <span className={`ffb-chip ffb-chip-sm ${positionClass(player.position)}`}>{player.position}</span>
+                        <span className={`ffb-chip ffb-chip-sm ${positionClass(player.position)}`}>{player.position}</span>{" "}
                         <span className="ffb-label ffb-muted">{player.team}</span>
                         <button
                           type="button"
-                          onClick={() => onRemove(player.id)}
+                          onClick={() => {
+                            removed.current = { id: player.id, index };
+                            onRemove(player.id);
+                          }}
                           aria-label={`Remove ${player.name} from compare`}
                           className="ffb-iconbtn"
+                          data-compare-remove
                         >
                           <X size={14} aria-hidden="true" />
                         </button>

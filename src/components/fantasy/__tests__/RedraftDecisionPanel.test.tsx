@@ -80,7 +80,8 @@ describe("RedraftDecisionPanel", () => {
       />
     );
 
-    expect(screen.getByRole("heading", { name: "What changes if you wait" })).toBeInTheDocument();
+    // The room heads every block under its own h2 with an h3, and this panel is one of those blocks.
+    expect(screen.getByRole("heading", { level: 3, name: "What changes if you wait" })).toBeInTheDocument();
     expect(screen.getAllByText(describeRedraftWait(OFF_CLOCK))).toHaveLength(1);
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     // Status keeps its words, so the row at risk says so in text.
