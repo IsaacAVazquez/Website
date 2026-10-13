@@ -1,0 +1,234 @@
+/*
+ * Area sheet for the parts several fantasy pages share: the player drawer, the compare tray
+ * and modal, Draft Outlook, the spread plot, and the redraft decision panel. The kit
+ * (fantasy.css) draws nearly all of them, and this file holds only what those parts need on top.
+ *
+ * It is unlayered, so a rule here beats a kit component class on the same element whatever
+ * order the two sheets load in. Every selector starts with an `ffb-ov-` class or with
+ * `.ffb-root`, because a stylesheet stays loaded after in-app navigation. No rule here sets a
+ * property on an element that also carries a Tailwind utility for it.
+ */
+
+/* --------------------------------------------------------------------------
+ * The spread plot (RankDistributionBar)
+ * The kit's plot fills a board row. Standing alone it needs a height, and in the drawer the
+ * marks are drawn larger.
+ * ------------------------------------------------------------------------ */
+.ffb-ov-spread { display: grid; gap: 6px; min-width: 0; }
+.ffb-ov-spread .ffb-spread { height: 32px; }
+/* A player every expert ranks the same still gets a mark. */
+.ffb-ov-spread .ffb-spread-range { min-width: 4px; }
+.ffb-ov-spread:not(.ffb-ov-spread-compact) .ffb-spread-range { height: 3px; margin-top: -1.5px; }
+.ffb-ov-spread:not(.ffb-ov-spread-compact) .ffb-spread-sd { height: 12px; margin-top: -6px; }
+.ffb-ov-spread:not(.ffb-ov-spread-compact) .ffb-spread-avg { height: 24px; margin-top: -12px; }
+.ffb-ov-spread-compact .ffb-spread { height: 20px; }
+.ffb-ov-spread-ends {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ffb-s2);
+  color: var(--ffb-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.ffb-ov-spread-avg { color: var(--ffb-ink); font-weight: 600; }
+.ffb-ov-spread-none { color: var(--ffb-muted); font-size: 12.5px; }
+
+/* --------------------------------------------------------------------------
+ * The player drawer
+ * ------------------------------------------------------------------------ */
+.ffb-ov-drawer-body { padding-bottom: calc(var(--ffb-s5) + env(safe-area-inset-bottom)); }
+.ffb-ov-drawer-body > * { min-width: 0; }
+/* A tooltip trigger is a button, and a button does not inherit case from its label. */
+.ffb-ov-drawer-body :is(.ffb-h3, dt, .ffb-label) > button { text-transform: inherit; }
+/* The trigger's hit area reaches 44px around a 10 to 12px label. */
+.ffb-ov-drawer-body :is(.ffb-h3, dt, .ffb-label) > button::after { inset-block: -17px; }
+.ffb-ov-actions { display: flex; flex-wrap: wrap; gap: var(--ffb-s2); }
+.ffb-ov-actions > .ffb-btn { flex: 1 1 auto; }
+/* Queued is mine, so the star sits on a highlighter sticker, the same mark a board row's star takes. */
+.ffb-ov-queue-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--ffb-radius);
+}
+.ffb-ov-queue[aria-pressed="true"] .ffb-ov-queue-mark { background: var(--ffb-hi); color: var(--ffb-on-fill); }
+/* Market ADP takes a line of its own under the three short facts, with its reading and sample beside it. */
+.ffb-ov-stat-wide {
+  grid-column: 1 / -1;
+  padding-top: var(--ffb-s3);
+  border-top: 1px solid var(--ffb-rule);
+}
+.ffb-ov-stat-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2); }
+/* A label and its reading on one line (movement). */
+.ffb-ov-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px var(--ffb-s2);
+  color: var(--ffb-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.ffb-ov-line > .ffb-label { color: var(--ffb-ink); font-size: 11px; }
+/* Four figures across at every drawer width. */
+.ffb-ov-ppg { --ffb-stat-min: 56px; }
+.ffb-ov-ppg .ffb-stat dd { font-size: 18px; }
+
+/* --------------------------------------------------------------------------
+ * The compare tray
+ * ------------------------------------------------------------------------ */
+/* One row at every width, so the band never outgrows the room the page leaves for it. */
+.ffb-ov-tray-row { flex-wrap: nowrap; }
+.ffb-ov-tray-text { flex: 1 1 auto; min-width: 0; font-size: 14px; font-weight: 600; }
+/* On a phone the stickers yield to a count. */
+.ffb-ov-pins { display: none; }
+@media (min-width: 768px) {
+  .ffb-ov-pins {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    gap: var(--ffb-s2);
+    min-width: 0;
+  }
+}
+/* A pinned player: the kit's small sticker with its remove button inside it. */
+.ffb-ov-pin {
+  flex: 0 1 auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: center;
+  column-gap: var(--ffb-s1);
+  min-height: var(--ffb-control);
+  padding-block: 0;
+  padding-inline-end: 0;
+}
+/* The remove button sets the height, and the two lines sit together in the middle of it. */
+.ffb-ov-pin > .ffb-sticker-meta { grid-column: 1; align-self: end; justify-content: flex-start; }
+.ffb-ov-pin > .ffb-sticker-name { grid-column: 1; align-self: start; max-width: 12rem; }
+.ffb-ov-pin-remove { grid-area: 1 / 2 / 3 / 3; color: var(--ffb-on-fill); }
+.ffb-ov-pin-remove:hover { background-color: transparent; box-shadow: inset 0 0 0 2px var(--ffb-on-fill); }
+/* The ring is drawn inside the sticker, in the colour that reads on its fill. */
+.ffb-root .ffb-ov-pin .ffb-ov-pin-remove:focus-visible { outline-color: var(--ffb-on-fill); outline-offset: -3px; }
+.ffb-ov-pins-note { flex: none; color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
+/* Collapsed, the band is one button at the foot of the screen. */
+.ffb-ov-tray-min {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: var(--c97-z-tray, 50);
+  display: flex;
+  justify-content: center;
+  padding-bottom: max(var(--ffb-s2), env(safe-area-inset-bottom));
+  pointer-events: none;
+}
+.ffb-ov-tray-pill { border-color: var(--ffb-ink); background: var(--ffb-raised); pointer-events: auto; }
+.ffb-ov-tray-pill:hover { background: var(--ffb-sunk); }
+
+/* --------------------------------------------------------------------------
+ * The compare modal
+ * ------------------------------------------------------------------------ */
+.ffb-ov-compare-body > * { min-width: 0; }
+/* Each player column keeps room for a name and a value with its tag, and the table scrolls past that. */
+.ffb-ov-compare { min-width: calc(7.5rem + var(--ffb-ov-players, 2) * 7.25rem); }
+.ffb-ov-compare-label { width: 7.5rem; }
+/* The corner stays with the label column, so a player's head never slides over the row labels. */
+.ffb-ov-compare thead th:first-child { position: sticky; left: 0; z-index: 2; background: var(--ffb-surface); }
+.ffb-ov-compare-head { display: flex; align-items: center; gap: var(--ffb-s2); }
+.ffb-ov-compare-head > .ffb-iconbtn { margin-inline-start: auto; }
+/* Two lines of room whether the name needs them or not, so the heads end on one line. */
+.ffb-ov-compare-name {
+  display: block;
+  min-height: 2lh;
+  overflow: visible;
+  line-height: 1.25;
+  white-space: normal;
+}
+.ffb-ov-compare td { font-weight: 600; }
+.ffb-ov-cell-tag { margin-inline-start: 6px; vertical-align: 1px; }
+/* Inside the sideways scroller an outset ring is clipped at the table's edge. */
+.ffb-root .ffb-ov-compare .ffb-iconbtn:focus-visible { outline-offset: -3px; }
+
+/* --------------------------------------------------------------------------
+ * Draft Outlook
+ * It lays out from its own width: the read and the money sit side by side once the panel is
+ * about 712px wide and stack below that, with no media query.
+ * ------------------------------------------------------------------------ */
+.ffb-ov-outlook { min-width: 0; }
+.ffb-ov-outlook-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  align-items: start;
+  gap: var(--ffb-s5) var(--ffb-s6);
+  min-width: 0;
+}
+.ffb-ov-outlook-cols > * { min-width: 0; }
+.ffb-ov-outlook-empty { color: var(--ffb-muted); font-size: 14px; line-height: 1.45; }
+/* Where the figures come from, as one line. */
+.ffb-ov-provenance { display: flex; flex-wrap: wrap; padding-top: var(--ffb-s2); border-top: 1px solid var(--ffb-rule); }
+.ffb-ov-provenance > span { white-space: nowrap; }
+/* The dot trails its label, so a wrapped line never starts with one. */
+.ffb-ov-provenance > span:not(:last-child)::after { content: "·"; margin-inline: 6px; }
+/* Four figures as two by two at every width. */
+.ffb-ov-quad { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ffb-ov-quad .ffb-stat dd { overflow-wrap: anywhere; }
+.ffb-ov-calc-fields { display: grid; gap: var(--ffb-s3); }
+/* The kit draws an affixed input's focus ring inside it and gives the input no start padding
+   after a mark, so the ring crossed the first digit. This moves the space from the mark to the input. */
+.ffb-ov-calc-fields .ffb-affix-mark:first-child { padding-inline-end: 2px; }
+.ffb-ov-calc-fields .ffb-affix-mark:first-child + .ffb-input { padding-inline-start: 8px; }
+
+/* --------------------------------------------------------------------------
+ * The redraft decision panel
+ * One ruled row per position. The three readings sit side by side where there is room and
+ * stack where there is not.
+ * ------------------------------------------------------------------------ */
+.ffb-ov-wait { display: grid; }
+.ffb-ov-wait-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--ffb-s2) var(--ffb-s5);
+  padding-block: var(--ffb-s3);
+  border-top: 1px solid var(--ffb-rule);
+}
+.ffb-ov-wait-row > * { min-width: 0; }
+/* Status is an ink and a word, with a key rule beside the player. The rule sits on the first
+   cell only, so the two readings stay in line with the rows above and below. */
+.ffb-ov-wait-risk > .ffb-ov-wait-who { padding-inline-start: 13px; box-shadow: inset 3px 0 0 var(--ffb-warn); }
+/* The player and the need share a line where they fit, and the cutoff line runs under both. */
+.ffb-ov-wait-who { display: flex; flex-wrap: wrap; align-items: center; align-content: start; gap: 0 var(--ffb-s3); }
+.ffb-ov-wait-who > .ffb-ov-wait-lines { flex-basis: 100%; }
+.ffb-ov-wait-open {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ffb-s2);
+  max-width: 100%;
+  min-height: var(--ffb-control);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.ffb-ov-wait-open:hover .ffb-c-name { text-decoration: underline; text-underline-offset: 3px; }
+.ffb-ov-wait-index { flex: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.ffb-ov-wait-none {
+  display: flex;
+  align-items: center;
+  gap: var(--ffb-s2);
+  min-height: var(--ffb-control);
+  color: var(--ffb-muted);
+  font-size: 14px;
+}
+.ffb-ov-wait-tags { display: flex; flex-wrap: wrap; gap: var(--ffb-s1) var(--ffb-s3); }
+.ffb-ov-wait-tags > .ffb-label { font-size: 11px; }
+.ffb-ov-wait-lines,
+.ffb-ov-wait-tier { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
+.ffb-ov-wait-next { font-size: 14px; line-height: 1.45; }
+
+/* --------------------------------------------------------------------------
+ * Print
+ * ------------------------------------------------------------------------ */
+@media print {
+  /* A closed calculator and a collapsed tray are controls, and they do nothing on paper. */
+  .ffb-root .ffb-ov-outlook .ffb-details:not([open]),
+  .ffb-root .ffb-ov-tray-min { display: none; }
+}

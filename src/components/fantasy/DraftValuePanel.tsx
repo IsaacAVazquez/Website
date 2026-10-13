@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Calculator, ChevronDown } from "lucide-react";
+import { useState, type CSSProperties } from "react";
 import {
   calculateContestFieldEconomics,
   calculateExpectedReturn,
@@ -10,16 +9,7 @@ import {
   type DraftValueReport,
 } from "@/lib/fantasyTeamValue";
 
-const TILE_STYLE = {
-  borderColor: "var(--c97-rule)",
-  background: "var(--c97-field)",
-} as const;
-
-const INPUT_STYLE = {
-  borderColor: "var(--c97-rule)",
-  background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
-  color: "var(--c97-ink)",
-} as const;
+import "./fantasy-overlays.css";
 
 const CURRENCY = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -48,11 +38,15 @@ function formatAsOfDate(value: string | null | undefined): string | null {
   }).format(new Date(value));
 }
 
-/** Positive, negative, and zero each get their own tone; a sign is a state. */
-function signTone(value: number): string {
-  if (value > 0) return "var(--c97-positive)";
-  if (value < 0) return "var(--c97-negative)";
-  return "var(--c97-ink)";
+/**
+ * The kit's status ink for a signed figure. Positive, negative, and zero each
+ * read differently, and the figure prints its own sign, so the ink is never
+ * the only carrier.
+ */
+function signTone(value: number): string | undefined {
+  if (value > 0) return "ffb-good";
+  if (value < 0) return "ffb-bad";
+  return undefined;
 }
 
 export interface ExpectedReturnFormState {
@@ -159,37 +153,20 @@ function ExpectedReturnCalculator({
       : null;
 
   return (
-    <details
-      className="group border"
-      style={{ borderColor: "var(--c97-rule)" }}
-    >
-      <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between text-sm font-semibold marker:hidden" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-          <Calculator className="h-4 w-4" aria-hidden="true" />
-          Expected return calculator
-        </span>
-        <ChevronDown
-          className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
-          aria-hidden="true"
-        />
-      </summary>
+    <details className="ffb-details">
+      <summary>Expected return calculator</summary>
 
-      <div className="border-t" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
-        <p className="text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
+      <div className="ffb-details-body ffb-stack">
+        <p className="ffb-method">
           Enter your own payout assumptions. The Draft Outlook does not set these probabilities,
           and this arithmetic does not include taxes.
         </p>
 
-        <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-          <label className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }} htmlFor={`${id}-entry-cost`}>
-            <span className="font-semibold">Entry cost</span>
-            <span className="relative">
-              <span
-                className="pointer-events-none absolute inset-y-0 left-3 inline-flex items-center"
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                $
-              </span>
+        <div className="ffb-ov-calc-fields">
+          <label className="ffb-field" htmlFor={`${id}-entry-cost`}>
+            <span className="ffb-field-label">Entry cost</span>
+            <span className="ffb-affix">
+              <span className="ffb-affix-mark">$</span>
               <input
                 id={`${id}-entry-cost`}
                 type="number"
@@ -200,16 +177,15 @@ function ExpectedReturnCalculator({
                 onChange={(event) => updateField("entryCost", event.target.value)}
                 aria-invalid={entryCostInvalid || undefined}
                 aria-describedby={`${id}-status`}
-                className="min-h-[44px] w-full border text-sm tabular-nums"
-                style={{ paddingLeft: "var(--c97-sp-3)", paddingRight: "var(--c97-sp-1)", ...(INPUT_STYLE) }}
+                className="ffb-input"
                 placeholder="100"
               />
             </span>
           </label>
 
-          <label className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }} htmlFor={`${id}-payout-chance`}>
-            <span className="font-semibold">Chance of any payout</span>
-            <span className="relative">
+          <label className="ffb-field" htmlFor={`${id}-payout-chance`}>
+            <span className="ffb-field-label">Chance of any payout</span>
+            <span className="ffb-affix">
               <input
                 id={`${id}-payout-chance`}
                 type="number"
@@ -221,28 +197,17 @@ function ExpectedReturnCalculator({
                 onChange={(event) => updateField("payoutProbability", event.target.value)}
                 aria-invalid={payoutProbabilityInvalid || undefined}
                 aria-describedby={`${id}-status`}
-                className="min-h-[44px] w-full border text-sm tabular-nums"
-                style={{ paddingInline: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-3)", ...(INPUT_STYLE) }}
+                className="ffb-input"
                 placeholder="20"
               />
-              <span
-                className="pointer-events-none absolute inset-y-0 right-3 inline-flex items-center"
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                %
-              </span>
+              <span className="ffb-affix-mark">%</span>
             </span>
           </label>
 
-          <label className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }} htmlFor={`${id}-average-payout`}>
-            <span className="font-semibold">Average total payout if paid</span>
-            <span className="relative">
-              <span
-                className="pointer-events-none absolute inset-y-0 left-3 inline-flex items-center"
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                $
-              </span>
+          <label className="ffb-field" htmlFor={`${id}-average-payout`}>
+            <span className="ffb-field-label">Average total payout if paid</span>
+            <span className="ffb-affix">
+              <span className="ffb-affix-mark">$</span>
               <input
                 id={`${id}-average-payout`}
                 type="number"
@@ -253,8 +218,7 @@ function ExpectedReturnCalculator({
                 onChange={(event) => updateField("averagePayout", event.target.value)}
                 aria-invalid={averagePayoutInvalid || undefined}
                 aria-describedby={`${id}-status`}
-                className="min-h-[44px] w-full border text-sm tabular-nums"
-                style={{ paddingLeft: "var(--c97-sp-3)", paddingRight: "var(--c97-sp-1)", ...(INPUT_STYLE) }}
+                className="ffb-input"
                 placeholder="500"
               />
             </span>
@@ -265,8 +229,7 @@ function ExpectedReturnCalculator({
           id={`${id}-status`}
           role="status"
           aria-live="polite"
-          className="min-h-5 text-xs leading-5"
-          style={{ marginTop: "var(--c97-sp-1)", color: validationMessage ? "var(--c97-negative)" : "var(--c97-ink-2)" }}
+          className={validationMessage ? "ffb-field-error" : "ffb-field-hint"}
         >
           {validationMessage ??
             (result
@@ -275,47 +238,30 @@ function ExpectedReturnCalculator({
         </p>
 
         {result ? (
-          <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }} aria-live="polite">
-            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
-              <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                Gross return
-              </p>
-              <p className="text-lg font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
-                {CURRENCY.format(result.grossExpectedReturn)}
-              </p>
+          <dl className="ffb-stats ffb-ov-quad" aria-live="polite">
+            <div className="ffb-stat">
+              <dt>Gross return</dt>
+              <dd>{CURRENCY.format(result.grossExpectedReturn)}</dd>
             </div>
-            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
-              <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                Net EV
-              </p>
-              <p
-                className="text-lg font-semibold tabular-nums"
-                style={{ marginTop: "var(--c97-sp-0)", color: signTone(result.netExpectedValue) }}
-              >
-                {signedCurrency(result.netExpectedValue)}
-              </p>
+            <div className="ffb-stat">
+              <dt>Net EV</dt>
+              <dd className={signTone(result.netExpectedValue)}>{signedCurrency(result.netExpectedValue)}</dd>
             </div>
-            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
-              <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                ROI
-              </p>
-              <p className="text-lg font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
-                {result.roi === null ? "No entry cost" : percent(result.roi)}
-              </p>
+            <div className="ffb-stat">
+              <dt>ROI</dt>
+              <dd>{result.roi === null ? "No entry cost" : percent(result.roi)}</dd>
             </div>
-            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
-              <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                Break-even payout chance
-              </p>
-              <p className="text-lg font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
+            <div className="ffb-stat">
+              <dt>Break-even payout chance</dt>
+              <dd>
                 {result.breakEvenPayoutProbability === null
                   ? "No payout"
                   : result.breakEvenPayoutProbability > 1
                     ? "Not possible"
                     : percent(result.breakEvenPayoutProbability)}
-              </p>
+              </dd>
             </div>
-          </div>
+          </dl>
         ) : null}
       </div>
     </details>
@@ -348,66 +294,55 @@ function ContestMath({
   const asOf = formatAsOfDate(economics.asOf);
 
   return (
-    /* Nothing in this panel is live, active, or actionable, so it takes the
-       rule-and-paper-alt treatment of the tiles above it rather than a
-       signal wash; the signal stays on the top card and the progress bars. */
-    <section
-      className="border"
-      style={{ padding: "var(--c97-sp-2)", ...(TILE_STYLE) }}
-      aria-labelledby={headingId}
-    >
-      <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Published contest math</p>
-      <h4 id={headingId} className="text-sm font-semibold">
-        {contestName ? `${contestName} field baseline` : "Published field baseline"}
-      </h4>
-      <div className="grid grid-cols-2 text-xs" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-        <div>
-          <p style={{ color: "var(--c97-ink-2)" }}>Field gross</p>
-          <p className="text-base font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
-            {CURRENCY.format(result.grossExpectedReturn)}
-          </p>
-        </div>
-        <div>
-          <p style={{ color: "var(--c97-ink-2)" }}>Field net EV</p>
-          <p
-            className="text-base font-semibold tabular-nums"
-            style={{ marginTop: "var(--c97-sp-0)", color: signTone(result.netExpectedValue) }}
-          >
-            {signedCurrency(result.netExpectedValue)}
-          </p>
-        </div>
-        <div>
-          <p style={{ color: "var(--c97-ink-2)" }}>First advance</p>
-          <p className="text-base font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
-            {economics.firstAdvanceRate === undefined ? "Not set" : percent(economics.firstAdvanceRate)}
-          </p>
-        </div>
-        <div>
-          <p style={{ color: "var(--c97-ink-2)" }}>Break-even edge</p>
-          <p className="text-base font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
-            {signedPercent(result.breakEvenEdge)}
-          </p>
-        </div>
+    <section className="ffb-stack ffb-stack-tight" aria-labelledby={headingId}>
+      <div className="ffb-sechead">
+        <h4 id={headingId} className="ffb-h3">
+          {contestName ? `${contestName} field baseline` : "Published field baseline"}
+        </h4>
+        <p className="ffb-sechead-note">Published contest math</p>
       </div>
-      <p className="text-2xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+      <dl className="ffb-stats ffb-ov-quad">
+        <div className="ffb-stat">
+          <dt>Field gross</dt>
+          <dd>{CURRENCY.format(result.grossExpectedReturn)}</dd>
+        </div>
+        <div className="ffb-stat">
+          <dt>Field net EV</dt>
+          <dd className={signTone(result.netExpectedValue)}>{signedCurrency(result.netExpectedValue)}</dd>
+        </div>
+        <div className="ffb-stat">
+          <dt>First advance</dt>
+          <dd>{economics.firstAdvanceRate === undefined ? "Not set" : percent(economics.firstAdvanceRate)}</dd>
+        </div>
+        <div className="ffb-stat">
+          <dt>Break-even edge</dt>
+          <dd>{signedPercent(result.breakEvenEdge)}</dd>
+        </div>
+      </dl>
+      <p className="ffb-method">
         {asOf ? `Field figures as of ${asOf}. ` : ""}
         At a full field, {WHOLE_CURRENCY.format(result.prizePool)} across {NUMBER.format(result.fieldEntries)} entries
         gives an equal-entry return before taxes. This field math stays separate from Draft Outlook.
+        {sourceUrl ? (
+          <>
+            {" "}
+            <a href={sourceUrl} target="_blank" rel="noreferrer" className="ffb-link ffb-link-out">
+              Check the current rules
+            </a>
+          </>
+        ) : null}
       </p>
-      {sourceUrl ? (
-        <a
-          href={sourceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-[44px] items-center text-xs font-semibold underline decoration-[var(--c97-rule)] underline-offset-4" style={{ marginTop: "var(--c97-sp-1)" }}
-        >
-          Check the current rules
-        </a>
-      ) : null}
     </section>
   );
 }
 
+/**
+ * Draft Outlook: how this roster reads against the other teams in the same
+ * room, the published contest math when the caller has it, and a calculator
+ * for the user's own payout assumptions. It is flat, with ruled facts and no
+ * boxes, and it lays itself out from its own width, so it works in a 320px
+ * sheet, a 400px rail, and a wide column without reading the window.
+ */
 export function DraftValuePanel({
   report,
   headingId,
@@ -456,155 +391,126 @@ export function DraftValuePanel({
   const evidenceIntro = consensusOnly
     ? "This scores your picks against the other teams in this same draft using published consensus rank, roster shape, and format fit. Consensus rank measures expert board position. Market price requires usable ADP. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation."
     : "This scores your picks against the other teams in this same draft, on the price the market put on each player, the shape of your roster, and how well it fits the format. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation.";
+  // The widest meter belongs to the heaviest component, and the rest are
+  // drawn against it, so a track's length is that component's share of the read.
+  const heaviest = Math.max(0, ...(report?.components.map((component) => component.weight) ?? []));
 
   return (
-    <section className="grid" style={{ gap: "var(--c97-sp-2)" }} aria-labelledby={headingId}>
-      <div>
-        <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-          <p className="c97-kicker">Draft outlook</p>
-          {report && !unavailableReason ? (
-            <span
-              className="border text-2xs font-semibold"
-              style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
-            >
-              {confidenceLabel(report.confidence)}
-            </span>
-          ) : null}
-        </div>
-        <h3 id={headingId} className="text-xl font-semibold" style={{ marginTop: "var(--c97-sp-0)" }}>
-          {unavailableReason
-            ? "Draft Outlook paused"
-            : report?.picksDrafted
-              ? "How this room reads right now"
-              : "Waiting for your first pick"}
-        </h3>
-        {!unavailableReason ? (
-          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-            {evidenceIntro}
-          </p>
-        ) : null}
-      </div>
-
-      {unavailableReason ? (
-        <p
-          role="status"
-          className="border text-xs leading-5"
-          style={{
-            paddingInline: "var(--c97-sp-2)",
-            paddingBlock: "var(--c97-sp-1)",
-            borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
-            background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-            color: "var(--c97-ink-2)",
-          }}
-        >
-          {unavailableReason}
-        </p>
-      ) : report?.picksDrafted ? (
-        <>
-          <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
-              <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                Your rank in this room, modeled
-              </p>
-              <p className="text-2xl font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>{rankLabel}</p>
-              <p className="text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                {rankCaption}
-              </p>
-            </div>
-            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
-              <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
-                {consensusOnly ? "Calculated consensus value" : "Calculated market value"}
-              </p>
-              <p className="text-2xl font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
-                {averageDelta === null ? "Not set" : signedNumber(averageDelta)}
-              </p>
-              <p className="text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                {consensusOnly
-                  ? "Raw draft slots against published consensus rank per judged pick. This snapshot has no usable ADP evidence for these picks."
-                  : "Raw draft slots per priced pick. The market component discounts thin or volatile ADP evidence."}
-              </p>
-            </div>
-          </div>
-
-          {turnGap ? (
-            <p
-              className="border text-xs leading-5"
-              style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(TILE_STYLE) }}
-            >
-              Slot {turnGap.slot} has {turnGap.minimumTurnGap === turnGap.maximumTurnGap
-                ? `a ${turnGap.maximumTurnGap} pick gap between turns`
-                : `${turnGap.minimumTurnGap} to ${turnGap.maximumTurnGap} pick gaps between turns`}.
-              {consensusOnly
-                ? " Consensus value uses every actual overall pick."
-                : " Market value already uses every actual overall pick."}
+    <section className="ffb-stack ffb-ov-outlook" aria-labelledby={headingId}>
+      <div className="ffb-stack ffb-stack-tight">
+        <div className="ffb-sechead">
+          <h3 id={headingId} className="ffb-h3">
+            {unavailableReason
+              ? "Draft Outlook paused"
+              : report?.picksDrafted
+                ? "How this room reads right now"
+                : "Waiting for your first pick"}
+          </h3>
+          {!unavailableReason ? (
+            <p className="ffb-sechead-note ffb-cluster">
+              Draft Outlook
+              {report ? <span className="ffb-badge">{confidenceLabel(report.confidence)}</span> : null}
             </p>
           ) : null}
+        </div>
+        {!unavailableReason ? <p className="ffb-method">{evidenceIntro}</p> : null}
+      </div>
 
-          <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
-            {report.components.map((component) => (
-              <div key={component.id}>
-                <div className="flex items-center justify-between text-xs" style={{ gap: "var(--c97-sp-1)" }}>
-                  <span className="font-semibold">
-                    {componentLabel(component, consensusOnly)}
-                  </span>
-                  <span className="tabular-nums" style={{ color: "var(--c97-ink-2)" }}>
+      <div className="ffb-ov-outlook-cols">
+        {unavailableReason ? (
+          <div className="ffb-notice ffb-notice-warn" role="status">
+            <p>{unavailableReason}</p>
+          </div>
+        ) : report?.picksDrafted ? (
+          <div className="ffb-stack">
+            <div>
+              <dl className="ffb-facts">
+                <div className="ffb-fact">
+                  <dt>Your rank in this room, modeled</dt>
+                  <dd>{rankLabel}</dd>
+                  <dd className="ffb-fact-note">{rankCaption}</dd>
+                </div>
+                <div className="ffb-fact">
+                  <dt>{consensusOnly ? "Calculated consensus value" : "Calculated market value"}</dt>
+                  <dd className={averageDelta === null ? undefined : signTone(averageDelta)}>
+                    {averageDelta === null ? "Not set" : signedNumber(averageDelta)}
+                  </dd>
+                  <dd className="ffb-fact-note">
+                    {consensusOnly
+                      ? "Raw draft slots against published consensus rank per judged pick. This snapshot has no usable ADP evidence for these picks."
+                      : "Raw draft slots per priced pick. The market component discounts thin or volatile ADP evidence."}
+                  </dd>
+                </div>
+              </dl>
+              {turnGap ? (
+                <p className="ffb-fact-foot">
+                  Slot {turnGap.slot} has {turnGap.minimumTurnGap === turnGap.maximumTurnGap
+                    ? `a ${turnGap.maximumTurnGap} pick gap between turns`
+                    : `${turnGap.minimumTurnGap} to ${turnGap.maximumTurnGap} pick gaps between turns`}.
+                  {consensusOnly
+                    ? " Consensus value uses every actual overall pick."
+                    : " Market value already uses every actual overall pick."}
+                </p>
+              ) : null}
+            </div>
+
+            <div>
+              {report.components.map((component) => (
+                <div key={component.id} className="ffb-score">
+                  <span className="ffb-score-label">{componentLabel(component, consensusOnly)}</span>
+                  <span className="ffb-score-value">
                     {component.score} score · {Math.round(component.weight * 100)}% weight
                   </span>
-                </div>
-                <div
-                  className="h-1.5 overflow-hidden"
-                  style={{ marginTop: "var(--c97-sp-0)", background: "var(--c97-rule)" }}
-                  role="progressbar"
-                  aria-label={`${componentLabel(component, consensusOnly)} score`}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-valuenow={component.score}
-                >
-                  <div
-                    className="h-full"
-                    style={{ width: `${component.score}%`, background: "var(--c97-accent)" }}
+                  <span
+                    className="ffb-meter ffb-meter-weighted"
+                    role="progressbar"
+                    aria-label={`${componentLabel(component, consensusOnly)} score`}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={component.score}
+                    style={
+                      {
+                        "--ffb-value": `${component.score}%`,
+                        "--ffb-weight": `${heaviest > 0 ? Math.round((component.weight / heaviest) * 100) : 100}%`,
+                      } as CSSProperties
+                    }
                   />
+                  <span className="ffb-score-note">{component.detail}</span>
                 </div>
-                <p className="text-2xs leading-5" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                  {component.detail}
-                </p>
-              </div>
-            ))}
+              ))}
+              <p className="ffb-method ffb-ov-provenance">
+                {["Published ranks", "Calculated signals", "Modeled room rank", report.modelVersion.replace("draft-outlook-", "Model ")].map(
+                  (label) => (
+                    <span key={label}>{label}</span>
+                  )
+                )}
+              </p>
+            </div>
           </div>
+        ) : (
+          <p className="ffb-ov-outlook-empty">
+            The first read appears after a team has one pick. It becomes more useful as the roster and room fill in.
+          </p>
+        )}
 
-          <div className="flex flex-wrap text-2xs" style={{ gap: "var(--c97-sp-0)" }}>
-            {["Published ranks", "Calculated signals", "Modeled room rank", report.modelVersion.replace("draft-outlook-", "Model ")].map((label) => (
-              <span
-                key={label}
-                className="border"
-                style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-        </>
-      ) : (
-        <p className="text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
-          The first read appears after a team has one pick. It becomes more useful as the roster and room fill in.
-        </p>
-      )}
+        <div className="ffb-stack">
+          {economics ? (
+            <ContestMath
+              headingId={`${headingId}-contest-math`}
+              economics={economics}
+              contestName={economicsContestName}
+              sourceUrl={economicsSourceUrl}
+            />
+          ) : null}
 
-      {economics ? (
-        <ContestMath
-          headingId={`${headingId}-contest-math`}
-          economics={economics}
-          contestName={economicsContestName}
-          sourceUrl={economicsSourceUrl}
-        />
-      ) : null}
-
-      <ExpectedReturnCalculator
-        id={`${headingId}-return`}
-        defaultEntryCost={defaultEntryCost}
-        value={calculatorValue}
-        onChange={onCalculatorChange}
-      />
+          <ExpectedReturnCalculator
+            id={`${headingId}-return`}
+            defaultEntryCost={defaultEntryCost}
+            value={calculatorValue}
+            onChange={onCalculatorChange}
+          />
+        </div>
+      </div>
     </section>
   );
 }
