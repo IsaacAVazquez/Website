@@ -25,12 +25,12 @@ async function activateControl(control: Locator) {
 }
 
 /**
- * A rankings row names itself through an `absolute inset-0` overlay button, and
- * the row content sits above it at `z-[2]` with its own click handler so the
- * per-cell hover titles fire and player names stay selectable. A click therefore
- * lands on the content rather than on the overlay, which is exactly what a
- * visitor hits, so open the row through the list item while still identifying
- * which row it is by the overlay button's accessible name.
+ * A rankings row names itself through an overlay button that covers the row,
+ * and the row has its own click handler so the per-cell hover titles fire and
+ * player names stay selectable. A click therefore lands on the row's content
+ * rather than on the overlay, which is exactly what a visitor hits, so open
+ * the row through the list item while still identifying which row it is by the
+ * overlay button's accessible name.
  */
 function rankingsRow(shell: Locator, accessibleName: string | RegExp) {
   return shell
@@ -124,8 +124,8 @@ async function selectPosition(
   label: string,
   position: string
 ) {
-  // Phones render the position control as a select; the desktop radio pills
-  // sit in a hidden md:flex container there, so drive whichever is visible.
+  // Phones render the position control as a select and hide the desktop radio
+  // group, so drive whichever is visible.
   const select = shell.getByRole("combobox", { name: "Position board" });
   if (await select.isVisible()) {
     await select.selectOption(position);
@@ -175,7 +175,8 @@ test.describe("Fantasy football rankings", () => {
         "aria-pressed",
         "true"
       );
-      // The overall board always spans several tiers, so the tier plates render.
+      // The overall board always spans several tiers, so the tier breaks render,
+      // and the first one prints its number as 01.
       await expect(shell.getByText("01", { exact: true })).toBeVisible();
 
       for (const position of positions) {
@@ -394,7 +395,12 @@ test.describe("Fantasy football rankings", () => {
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth
     );
     expect(horizontalOverflow).toBeLessThanOrEqual(1);
-    await expect(page.getByRole("link", { name: "Draft tracker", exact: true }).first()).toBeVisible();
+    // The product bar is the way between the fantasy tools at every width.
+    await expect(
+      page
+        .getByRole("navigation", { name: "Fantasy football" })
+        .getByRole("link", { name: "Draft tracker", exact: true })
+    ).toBeVisible();
   });
 
   test("supports the fantasy rankings in dark mode", async ({ page }) => {
@@ -403,16 +409,14 @@ test.describe("Fantasy football rankings", () => {
     const toggle = page.locator('button[aria-label^="Theme:"]:visible').first();
     await expect(toggle).toBeVisible();
 
-    const initialPaper = await page.evaluate(() =>
-      getComputedStyle(document.querySelector("main [data-c97-surface]")!).getPropertyValue("--c97-surface").trim()
-    );
+    // The fantasy pages paint their own board inside the site frame, so the
+    // board's background is what has to change with the theme.
+    const readBoard = () =>
+      page.evaluate(() => getComputedStyle(document.querySelector(".ffb-root")!).backgroundColor);
+    const initialBoard = await readBoard();
     await toggle.click();
     await expect(page.locator("html")).toHaveClass(/dark/);
-    const darkPaper = await page.evaluate(() =>
-      getComputedStyle(document.querySelector("main [data-c97-surface]")!).getPropertyValue("--c97-surface").trim()
-    );
-
-    expect(darkPaper).not.toBe(initialPaper);
+    await expect.poll(readBoard).not.toBe(initialBoard);
     await expect(page.getByRole("heading", { name: /Overall rankings/i })).toBeVisible();
   });
 });
@@ -460,8 +464,8 @@ test.describe("Fantasy football draft tracker", () => {
       const firstPick = board.getByRole("button", { name: /^Log / }).first();
       await expect(firstPick).toHaveAccessibleName(`Log ${scoring.topPlayer}`);
       await firstPick.click();
-      // The live fascia is the room's pick counter now, so one logged pick moves
-      // it from #1 to #2 of the same total. Below sm the fascia prints the compact
+      // The scorebug's Pick cell is the room's pick counter, so one logged pick
+      // moves it from #1 to #2 of the same total. A phone prints the compact
       // "#2/180" and hides the spaced form, so read whichever one is showing.
       await expect(
         page
@@ -482,9 +486,14 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("heading", { name: "One screen, then draft." })).toBeVisible();
     await page.getByRole("button", { name: /^Start draft/ }).click();
 
-    // The room states its live position in the header kicker rather than in a
-    // heading, and pick #1 on the clock is the first thing it has to say.
-    await expect(page.getByText("Draft assistant · Live · Pick #1")).toBeVisible();
+    // The room states its live position in the scorebug's Pick cell, and pick #1
+    // is the first thing it has to say.
+    await expect(
+      page
+        .getByRole("region", { name: "Live draft status" })
+        .getByText(/^#1 ?\/ ?\d+$/)
+        .filter({ visible: true })
+    ).toBeVisible();
 
     // Every logged pick keeps an undo entry on the "Last picks" tape, so the
     // tape is where the room says how many picks it is holding.
@@ -495,8 +504,8 @@ test.describe("Fantasy football draft tracker", () => {
     await board.getByRole("button", { name: /^Log / }).first().click();
     await expect(loggedPicks).toHaveCount(2);
 
-    // Board rows stay grouped under their published tier plate, which names
-    // itself for assistive tech since its header is spans rather than a heading.
+    // Board rows stay grouped under their published tier, a section that names
+    // itself for assistive tech with the tier, its count, and its rank range.
     await expect(board.getByRole("region", { name: /^Tier \d+, / }).first()).toBeVisible();
 
     await page.reload();

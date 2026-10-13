@@ -44,8 +44,8 @@ test.describe("Fantasy football trade calculator", () => {
     await expect(reloaded.getByLabel("You give players").getByRole("listitem")).toHaveCount(1);
     await expect(reloaded.getByLabel("You get players").getByRole("listitem")).toHaveCount(1);
 
-    // Below lg the league settings sit behind a disclosure, so a phone opens
-    // it first, the way a visitor does. From lg up the toggle is not rendered.
+    // Below 1200px the league settings sit behind a disclosure, so a phone opens
+    // it first, the way a visitor does. From 1200px up the toggle is not rendered.
     const settingsToggle = reloaded.getByRole("button", { name: "Change league settings" });
     if (await settingsToggle.isVisible()) {
       await settingsToggle.click();
