@@ -200,7 +200,7 @@ describe("FantasyFootballClient", () => {
     jest.useRealTimers();
   });
 
-  it("renders tier plates with an avg-rank cliff and opens the player drawer", () => {
+  it("renders tier breaks with an avg-rank cliff and opens the player drawer", () => {
     mockSnapshot({
       players: [
         makePlayer({
@@ -227,30 +227,28 @@ describe("FantasyFootballClient", () => {
 
     const { container } = renderClient();
 
-    expect(container.firstChild).toHaveClass("c97-dash");
+    // The route root is the client's own first element, with no wrapper above it.
+    expect(container.firstChild).toHaveAttribute("data-testid", "fantasy-football-shell");
     expect(screen.getByRole("heading", { name: /RB rankings/i })).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: /RB/i })).not.toBeDisabled();
 
-    // One plate per tier, numbered with a leading zero like the template.
+    // One break per tier, its tab numbered with a leading zero.
     expect(screen.getByText("01")).toBeVisible();
     expect(screen.getByText("02")).toBeVisible();
-    // The consensus drop between the tiers is annotated between the plates.
-    expect(screen.getByText(/4\.4 avg-rank cliff/)).toBeInTheDocument();
+    // The consensus drop between the tiers prints on the second tier's break.
+    // The number is its own element there, so read the line it sits in.
+    expect(screen.getByText("4.4").closest("p")).toHaveTextContent("4.4 avg-rank cliff");
+    expect(screen.getByRole("region", { name: /^Tier 2, 1 player, ranks 2 to 2, 4\.4 average-rank cliff above$/ })).toBeInTheDocument();
 
     // No ADP source in this snapshot, so no ADP surfaces anywhere.
     expect(screen.queryByText("ADP")).not.toBeInTheDocument();
     expect(screen.queryByText("vs ADP")).not.toBeInTheDocument();
 
-    // The tool links render once, in the footer nav. The chip row that used to
-    // repeat them under the header cost 160px before the first row at 390.
-    expect(screen.getByRole("link", { name: /Draft tracker/i })).toHaveAttribute(
-      "href",
-      "/fantasy-football/draft-tracker"
-    );
-    expect(screen.queryByRole("navigation", { name: "Fantasy tools" })).not.toBeInTheDocument();
-    expect(
-      within(screen.getByRole("navigation", { name: "More fantasy tools" })).getAllByRole("link")
-    ).toHaveLength(7);
+    // The product bar in the fantasy layout carries the tool links now, so the
+    // board repeats none of them. "My team" is the one destination the bar does
+    // not list, and it stays as a single link under the board.
+    expect(screen.queryByRole("link", { name: /Draft tracker/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: "My team" })).toHaveAttribute("href", "/fantasy-football/weekly#my-team");
 
     fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
@@ -331,17 +329,22 @@ describe("FantasyFootballClient", () => {
     // metric queries to the row's list item.
     const chaseButton = screen.getByRole("button", { name: "Open Ja'Marr Chase detail" });
     const chaseRow = chaseButton.closest("li") as HTMLElement;
-    // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is toned.
-    expect(within(chaseRow).getByText("+18")).toHaveStyle({ color: "var(--c97-positive)" });
-    // The named chip rides beside the player, since the signed delta alone is
-    // what a drafter has to translate. It carries the word only, because the
-    // delta is already in the row's vs ADP cell above.
+    // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is heavy
+    // and takes the good ink.
+    expect(within(chaseRow).getByText("+18")).toHaveClass("ffb-is-strong", "ffb-good");
+    // The word rides in the same cell, since the signed delta alone is what a
+    // drafter has to translate.
     expect(within(chaseRow).getByText("Value")).toBeVisible();
+    expect(within(chaseRow).getByText("+18")).toContainElement(within(chaseRow).getByText("Value"));
     // Higgins: one pick of separation stays inside the noise band, muted.
     const higginsRow = screen
       .getByRole("button", { name: "Open Tee Higgins detail" })
       .closest("li") as HTMLElement;
-    expect(within(higginsRow).getByText("+1")).toHaveStyle({ color: "var(--c97-ink-2)" });
+    const higginsDelta = within(higginsRow).getByText("+1");
+    expect(higginsDelta).toHaveClass("ffb-is-flat");
+    expect(higginsDelta).not.toHaveClass("ffb-is-strong");
+    expect(higginsDelta).not.toHaveClass("ffb-good");
+    expect(higginsDelta).not.toHaveClass("ffb-bad");
     expect(within(higginsRow).queryByText(/^(Value|Reach)$/)).not.toBeInTheDocument();
 
     fireEvent.click(chaseButton);
@@ -461,7 +464,8 @@ describe("FantasyFootballClient", () => {
     const neighbors = within(dialog)
       .getAllByRole("button", { name: /VORP First|Consensus First/ })
       .map((button) => button.textContent?.trim());
-    expect(neighbors).toEqual(["1VORP First90", "2Consensus First70"]);
+    // Each neighbor reads rank, position chip, name, value, in that order.
+    expect(neighbors).toEqual(["1RB2VORP First90", "2RB1Consensus First70"]);
   });
 
   it("keeps the drawer on the consensus scale when the board is sorted by consensus", () => {
@@ -488,7 +492,7 @@ describe("FantasyFootballClient", () => {
     expect(within(dialog).getByText("VORP · 12-team")).toBeVisible();
   });
 
-  it("spans the drawer's lead stat card only when the card count is odd, so no cell sits blank", () => {
+  it("leads the drawer's facts with the rank the board is sorted by, and shows only the facts the state has", () => {
     const vorpSource = {
       provider: "FantasyPros projected VORP",
       asOf: "2026-08-17T00:00:00.000Z",
@@ -535,35 +539,39 @@ describe("FantasyFootballClient", () => {
       within(dialog).getByText(label).closest("div") as HTMLElement;
     const gridOf = (dialog: HTMLElement) => cardOf(dialog, "Consensus avg").parentElement as HTMLElement;
 
-    // Consensus board, five cards: Consensus avg leads on its own line and the
-    // four market and VORP cards fill a two-by-two below it.
+    // Consensus board, five facts: Consensus avg leads and VORP comes last.
     currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
     mockSnapshot({ position: "overall", adpSource: FRESH_ADP_SOURCE, vorpSource, vorpRankings, players });
     const consensus = renderClient({ position: "overall" });
     fireEvent.click(screen.getByRole("button", { name: "Open Ja'Marr Chase detail" }));
     let dialog = screen.getByRole("dialog", { name: "Ja'Marr Chase detail" });
     let grid = gridOf(dialog);
-    expect(grid).toHaveClass("grid-cols-2");
+    // The facts are one definition list, each fact a label over its value.
+    expect(grid.tagName).toBe("DL");
     expect(grid.children).toHaveLength(5);
     expect(grid.children[0]).toBe(cardOf(dialog, "Consensus avg"));
-    expect(grid.children[0]).toHaveClass("col-span-2");
+    expect(Array.from(grid.children).map((fact) => fact.querySelector("dt")?.textContent)).toEqual([
+      "Consensus avg",
+      "Expert range",
+      "Market ADP",
+      "vs ADP",
+      "VORP · 12-team",
+    ]);
     expect(grid.children[4]).toBe(cardOf(dialog, "VORP · 12-team"));
-    expect(grid.querySelectorAll(".col-span-2")).toHaveLength(1);
-    // The lead card keeps its focusable definition trigger.
+    // The lead fact keeps its focusable definition trigger.
     expect(within(grid.children[0] as HTMLElement).getByRole("button", { name: "What is Consensus avg?" })).toBeInTheDocument();
     fireEvent.click(within(dialog).getByRole("button", { name: "Close" }));
 
-    // Four cards (ADP but no published VORP) already fill two rows, so nothing spans.
+    // Four facts when the player has ADP but no published VORP.
     fireEvent.click(screen.getByRole("button", { name: "Open No Published VORP detail" }));
     dialog = screen.getByRole("dialog", { name: "No Published VORP detail" });
     grid = gridOf(dialog);
     expect(grid.children).toHaveLength(4);
     expect(within(dialog).queryByText("VORP · 12-team")).not.toBeInTheDocument();
-    expect(grid.querySelectorAll(".col-span-2")).toHaveLength(0);
     consensus.unmount();
 
-    // VORP board, five cards: the VORP card leads, since it is the rank the
-    // board is sorted by, and the consensus cards fill the two-by-two below.
+    // VORP board, five facts: VORP leads, since it is the rank the board is
+    // sorted by, and the consensus facts follow.
     currentSearchParams = new URLSearchParams("position=overall&scoring=ppr&ranking=vorp&teams=12");
     mockSnapshot({ position: "overall", adpSource: FRESH_ADP_SOURCE, vorpSource, vorpRankings, players });
     renderClient({ position: "overall", ranking: "vorp", teams: 12 });
@@ -572,12 +580,11 @@ describe("FantasyFootballClient", () => {
     grid = gridOf(dialog);
     expect(grid.children).toHaveLength(5);
     expect(grid.children[0]).toBe(cardOf(dialog, "VORP · 12-team"));
-    expect(grid.children[0]).toHaveClass("col-span-2");
-    expect(grid.querySelectorAll(".col-span-2")).toHaveLength(1);
+    expect(grid.children[1]).toBe(cardOf(dialog, "Consensus avg"));
     expect(within(grid.children[0] as HTMLElement).getByRole("button", { name: "What is VORP?" })).toBeInTheDocument();
   });
 
-  it("accents the VORP value only when VORP is the ranking, and keeps signal text AA-safe", () => {
+  it("weights the VORP value only when VORP is the ranking, and marks a queued row on its rank", () => {
     const vorpSource = {
       provider: "FantasyPros projected VORP",
       asOf: "2026-08-17T00:00:00.000Z",
@@ -586,7 +593,6 @@ describe("FantasyFootballClient", () => {
     };
     const vorpRankings = { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] };
     const players = [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })];
-    const signalText = "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))";
 
     currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
     mockSnapshot({ position: "overall", vorpSource, vorpRankings, players });
@@ -594,14 +600,15 @@ describe("FantasyFootballClient", () => {
     const consensusRow = screen
       .getByRole("button", { name: "Open Consensus First detail" })
       .closest("li") as HTMLElement;
-    // On the consensus board the column is data in ink, not forty accented numbers.
-    expect(within(consensusRow).getByTitle(/replacement/i)).toHaveStyle({ color: "var(--c97-ink)" });
-    // The queued rank digit takes the 72%-toward-ink mix: bare signal on
-    // paper-raised measured 4.61:1 at rest and 4.41:1 on hover in light mode.
+    // On the consensus board the column is data in plain ink, not forty weighted numbers.
+    const consensusVorp = within(consensusRow).getByTitle(/replacement/i);
+    expect(consensusVorp).not.toHaveClass("ffb-is-strong");
+    expect(consensusVorp).not.toHaveClass("ffb-is-flat");
+    // A queued row carries the state on the row, which is what puts the kit's
+    // highlighter behind the rank. The rank's title says so in words.
+    expect(consensusRow).not.toHaveClass("ffb-is-queued");
     fireEvent.click(screen.getByRole("button", { name: "Queue Consensus First" }));
-    expect(within(consensusRow).getByTitle("Board rank · in your queue")).toHaveStyle({
-      color: signalText,
-    });
+    expect(within(consensusRow).getByTitle("Board rank · in your queue").closest("li")).toHaveClass("ffb-is-queued");
     consensus.unmount();
 
     currentSearchParams = new URLSearchParams(
@@ -612,8 +619,8 @@ describe("FantasyFootballClient", () => {
     const vorpRow = screen
       .getByRole("button", { name: "Open Consensus First detail (in your queue)" })
       .closest("li") as HTMLElement;
-    expect(within(vorpRow).getByTitle(/replacement/i)).toHaveStyle({ color: signalText });
-    expect(within(vorpRow).getByTitle("VORP rank · in your queue")).toHaveStyle({ color: signalText });
+    expect(within(vorpRow).getByTitle(/replacement/i)).toHaveClass("ffb-is-strong");
+    expect(within(vorpRow).getByTitle("VORP rank · in your queue").closest("li")).toHaveClass("ffb-is-queued");
   });
 
   it("drives ranking and league size from the phone's single ranking select", () => {
@@ -680,17 +687,66 @@ describe("FantasyFootballClient", () => {
   it("reports a frozen source in season instead of grading it stale", () => {
     // The seed metadata is dated 2026-08-16, 26 days before this clock, which
     // the daily thresholds would grade "Stale". From Week 1 the board is kept
-    // as a reference on purpose, so the chip and footer say so in neutral tone
-    // rather than contradicting the note beside them.
+    // as a reference on purpose, so the freshness line says so in neutral tone
+    // rather than contradicting the note beside it.
     jest.setSystemTime(new Date("2026-09-11T10:00:00.000Z"));
     mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
 
     renderClient();
 
-    expect(screen.getByText("Frozen since Aug 16")).toBeVisible();
+    const frozen = screen.getByText("Frozen since Aug 16");
+    expect(frozen).toBeVisible();
+    expect(frozen).not.toHaveAttribute("style");
     expect(screen.queryByText(/^Stale/)).not.toBeInTheDocument();
     expect(screen.queryByText(/^Aging/)).not.toBeInTheDocument();
-    expect(screen.getByText(/^Frozen since Aug 16 · draft consensus kept as a reference/)).toBeVisible();
+    // The frozen date prints once, in the freshness line. The line under the
+    // board keeps the site's own snapshot date and drops the refresh cadence,
+    // which would read against a frozen board.
+    expect(screen.getByText(/^Snapshot Aug 16/)).toBeVisible();
+    expect(screen.queryByText(/Refreshes daily/)).not.toBeInTheDocument();
+  });
+
+  it("dates the frozen board by the consensus source in the VORP view, not by the VORP check", () => {
+    jest.setSystemTime(new Date("2026-09-11T10:00:00.000Z"));
+    currentSearchParams = new URLSearchParams("position=overall&scoring=ppr&ranking=vorp&teams=12");
+    mockSnapshot({
+      position: "overall",
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-09-10T00:00:00.000Z",
+        urls: { "12": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "12": 1 },
+      },
+      vorpRankings: { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] },
+      players: [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })],
+    });
+
+    renderClient({ position: "overall", ranking: "vorp", teams: 12 });
+
+    // The consensus source is dated Aug 16 and the VORP check Sep 10. What
+    // froze at kickoff is the consensus, and the VORP date has its own part.
+    expect(screen.getByText("VORP checked Sep 10")).toBeVisible();
+    expect(screen.getByText("Frozen since Aug 16")).toBeVisible();
+    expect(screen.queryByText("Frozen since Sep 10")).not.toBeInTheDocument();
+  });
+
+  it("does not grade a board that has not loaded as stale", () => {
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: null,
+      sliceMetadataMap: null,
+      isLoading: true,
+      error: null,
+      retry: jest.fn(),
+    });
+
+    renderClient();
+
+    expect(screen.getByText("Loading players…")).toBeVisible();
+    expect(screen.queryByText(/^Stale/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/source date unknown/)).not.toBeInTheDocument();
   });
 
   it("suppresses the value chip on a position board, where the rank is not overall scale", () => {
@@ -762,7 +818,10 @@ describe("FantasyFootballClient", () => {
     const row = screen
       .getByRole("button", { name: "Open Tyler Allgeier detail" })
       .closest("li") as HTMLElement;
-    expect(within(row).getByText("+26.3")).toHaveStyle({ color: "var(--c97-ink-2)" });
+    const thinDelta = within(row).getByText("+26.3");
+    expect(thinDelta).toHaveClass("ffb-is-flat");
+    expect(thinDelta).not.toHaveClass("ffb-is-strong");
+    expect(within(row).queryByText(/^(Value|Reach)$/)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Open Tyler Allgeier detail" }));
     const dialog = screen.getByRole("dialog", { name: "Tyler Allgeier detail" });
@@ -987,6 +1046,14 @@ describe("FantasyFootballClient", () => {
     expect(screen.getByText("Player 40")).toBeVisible();
     expect(screen.queryByText("Player 41")).not.toBeInTheDocument();
     expect(screen.getAllByText("40 of 45 shown")[0]).toBeVisible();
+    // The tier break describes the whole tier, not the 40 rows mounted so far.
+    expect(screen.getByRole("region", { name: "Tier 1, 45 players, ranks 1 to 45" })).toBeInTheDocument();
+    expect(screen.getByText("45 players")).toBeVisible();
+    expect(screen.getByText("Ranks 1–45")).toBeVisible();
+    // Every spread plot shares one scale, cut into ten divisions of twelve
+    // ranks while the mounted rows fit inside it.
+    expect(screen.getByText("RB109")).toBeInTheDocument();
+    expect(screen.queryByText("RB121")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Load more (5 left)" }));
     expect(screen.getByText("Player 45")).toBeVisible();
