@@ -141,7 +141,7 @@ describe("draft room renders", () => {
     try {
       render(<DraftTrackerClient />);
       expect(screen.getByRole("timer")).toHaveAccessibleName("90 seconds left on the pick clock");
-      expect(screen.getByText(/1:30 advisory/)).toBeInTheDocument();
+      expect(screen.getByRole("timer")).toHaveTextContent("1:30");
       const rendersBefore = mockBoardRenders.mock.calls.length;
 
       act(() => {
@@ -150,7 +150,7 @@ describe("draft room renders", () => {
 
       expect(screen.getByRole("timer")).toHaveAccessibleName("87 seconds left on the pick clock");
       expect(screen.getByRole("timer")).toHaveTextContent("1:27");
-      expect(screen.getByText(/1:27 advisory/)).toBeInTheDocument();
+      expect(screen.getByRole("timer")).not.toHaveTextContent("1:30");
       expect(mockBoardRenders.mock.calls.length).toBe(rendersBefore);
     } finally {
       jest.useRealTimers();

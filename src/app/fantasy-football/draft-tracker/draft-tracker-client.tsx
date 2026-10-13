@@ -4,27 +4,31 @@ import { useIsClient } from "@/hooks/useIsClient";
 import { isFiniteNumber } from "@/lib/utils";
 
 import {
+  Fragment,
   useEffect,
   useMemo,
   useRef,
   useState,
   type CSSProperties,
 } from "react";
+import "@/components/fantasy/fantasy-draft.css";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import Link from "next/link";
 import { DraftAnalyticsPanel } from "./components/DraftAnalyticsPanel";
 import { DraftBoard } from "./components/DraftBoard";
 import { DraftRecapPanel } from "./components/DraftRecapPanel";
+import {
+  DraftLastPicks,
+  DraftPickGrid,
+  DraftRoster,
+  DraftScorebug,
+  positionClass,
+} from "./components/DraftRoomParts";
 import { DraftSetup } from "./components/DraftSetup";
 import { calculateDraftOrder, useDraftState } from "./hooks/useDraftState";
 import { useDraftTelemetry } from "./hooks/useDraftTelemetry";
-import {
-  DraftClockInline,
-  DraftClockProvider,
-  formatClock,
-  useDraftClock,
-} from "./components/DraftClock";
+import { DraftClockProvider } from "./components/DraftClock";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { loadNotes } from "@/lib/fantasyLocal";
 import {
@@ -52,19 +56,13 @@ import {
   scoringFormatToRouteScoring,
 } from "@/lib/fantasy";
 import {
-  FASCIA_TOP_CLASS,
-  MONO_LABEL_CLASS,
-  PILL_BUTTON_CLASS,
-  POSITION_CHIP_CLASS,
   SHELL_CLASS,
-  WARNING_CARD_STYLE,
   assignLineupSlots,
   formatAdp,
   formatRankValue,
   formatUpdatedAt,
   getFantasySourceCapabilities,
   getNflRegularSeasonWeek,
-  getPositionTone,
   resolveDraftPicksForModel,
   shortName,
   withoutPlayerAdp,
@@ -81,115 +79,6 @@ function publishedDraftRank(player: Player): string {
 function numericDraftRank(player: Player): number | null {
   if (isFiniteNumber(player.rankEcr)) return player.rankEcr;
   return isFiniteNumber(player.averageRank) ? player.averageRank : null;
-}
-
-// Below `sm` the fascia tiles are 118px wide with 94px of content, so each
-// cell can carry a shorter value and sub line for that width. The pick
-// counter must never truncate; "#24 / 180" measured 101px there.
-interface FasciaCell {
-  key: string;
-  label: string;
-  labelCompact?: string;
-  value: string;
-  valueCompact?: string;
-  sub: string;
-  subCompact?: string;
-  valueColor?: string;
-  background?: string;
-  timer?: boolean;
-  focusTarget?: boolean;
-  phoneHidden?: boolean;
-}
-
-function FasciaTile({
-  cell,
-  tileRef,
-  timerLabel,
-}: {
-  cell: FasciaCell;
-  tileRef?: React.Ref<HTMLDivElement>;
-  /** Set on the clock tile only, which is announced as a timer. */
-  timerLabel?: string;
-}) {
-  return (
-    <div
-      ref={tileRef}
-      tabIndex={cell.focusTarget ? -1 : undefined}
-      className={`min-w-0 py-[var(--c97-sp-0)] sm:py-[var(--c97-sp-1)] ${cell.phoneHidden ? "hidden sm:block" : ""}`}
-      style={{ paddingInline: "var(--c97-sp-1)", background: cell.background ?? "var(--c97-surface)" }}
-      {...(timerLabel !== undefined
-        ? { role: "timer", "aria-live": "off" as const, "aria-label": timerLabel }
-        : {})}
-    >
-      <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-        {cell.labelCompact !== undefined ? (
-          <>
-            <span className="sm:hidden">{cell.labelCompact}</span>
-            <span className="hidden sm:inline">{cell.label}</span>
-          </>
-        ) : (
-          cell.label
-        )}
-      </p>
-      <p
-        className="m-0 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-base leading-tight tabular-nums sm:text-lg"
-        style={{ marginTop: "var(--c97-sp-0)", color: cell.valueColor ?? "var(--c97-ink)" }}
-      >
-        {cell.valueCompact !== undefined && cell.valueCompact !== cell.value ? (
-          <>
-            <span className="sm:hidden">{cell.valueCompact}</span>
-            <span className="hidden sm:inline">{cell.value}</span>
-          </>
-        ) : (
-          cell.value
-        )}
-      </p>
-      <p
-        className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-3xs"
-        style={{ color: "var(--c97-ink-2)" }}
-      >
-        {cell.subCompact !== undefined && cell.subCompact !== cell.sub ? (
-          <>
-            <span className="sm:hidden">{cell.subCompact}</span>
-            <span className="hidden sm:inline">{cell.sub}</span>
-          </>
-        ) : (
-          cell.sub
-        )}
-      </p>
-    </div>
-  );
-}
-
-/**
- * The clock tile reads the pick clock itself, so a tick renders this tile and
- * not the room around it. The clock is advisory and nothing fires at zero, so
- * it stays quiet by default: muted while other teams pick, and it only earns
- * the signal accent in the final 15 seconds of the user's own pick.
- */
-function DraftClockTile({ cell, canBeUrgent }: { cell: FasciaCell; canBeUrgent: boolean }) {
-  const clock = useDraftClock();
-  const urgent = canBeUrgent && !clock.isExpired && clock.secondsLeft <= 15;
-
-  return (
-    <FasciaTile
-      cell={{
-        ...cell,
-        value: formatClock(Math.max(0, clock.secondsLeft)),
-        valueColor: urgent
-          ? "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))"
-          : cell.valueColor,
-        background: urgent
-          ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))"
-          : cell.background,
-      }}
-      timerLabel={
-        clock.isExpired
-          ? "Pick clock expired"
-          : `${clock.secondsLeft} seconds left on the pick clock`
-      }
-    />
-  );
 }
 
 interface DecisionRec {
@@ -243,21 +132,14 @@ function waitCellReading(
 }
 
 /**
- * One recommendation card on the on-clock strip: label, published rank, the
- * player's detail button, position chip, an optional Log action, and either
- * the one-line sub reading or the longer "why" line once the disclosure opens.
+ * One recommendation card on the on-clock strip: its label, the position chip,
+ * the player's detail button, an optional Log action, and either the one-line
+ * reading or the longer "why" line once the disclosure opens. `now` marks the
+ * one action that is the user's to take, which takes the highlighter.
  */
-/* The strip grid draws its 1px dividers from each card's outline rather than
-   a rule-colored grid background, so an uneven last row (five cards in four
-   columns once the disclosure opens) leaves paper, not a tinted block. */
-const STRIP_CARD_STYLE: CSSProperties = {
-  background: "var(--c97-surface)",
-  outline: "1px solid color-mix(in srgb, var(--c97-accent) 20%, var(--c97-rule))",
-};
-
 function StripPlayerCard({
   label,
-  labelColor,
+  tone,
   player,
   publishedRank,
   sub,
@@ -265,9 +147,10 @@ function StripPlayerCard({
   onOpenDetail,
   onLog,
   logLabel,
+  now = false,
 }: {
   label: string;
-  labelColor: string;
+  tone?: "warn";
   player: Player;
   publishedRank: number | string;
   sub: string;
@@ -275,47 +158,36 @@ function StripPlayerCard({
   onOpenDetail: () => void;
   onLog?: () => void;
   logLabel: string;
+  now?: boolean;
 }) {
   return (
-    <div className="flex min-w-0 flex-col gap-0.5" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(STRIP_CARD_STYLE) }}>
-      <span className={MONO_LABEL_CLASS} style={{ color: labelColor }}>
-        {label}
-      </span>
-      <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
-        <span className="flex-none font-mono text-sm" style={{ color: "var(--c97-ink-2)" }}>
-          #{publishedRank}
+    <div className="ffb-dt-card">
+      <span className={tone === "warn" ? "ffb-label ffb-warn" : "ffb-label"}>{label}</span>
+      <div className="ffb-dt-card-line">
+        <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+          {player.position}
+          {player.positionRank ?? ""}
         </span>
         <button
           type="button"
           onClick={onOpenDetail}
           aria-label={`Open ${player.name} detail`}
-          className="min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4" style={{ marginBlock: "calc(var(--c97-sp-0) * -1)" }}
+          className="ffb-c-name"
         >
           {player.name}
         </button>
-        <span className={POSITION_CHIP_CLASS} style={getPositionTone(player.position)}>
-          {player.position}
-        </span>
         {onLog ? (
           <button
             type="button"
             onClick={onLog}
             aria-label={logLabel}
-            className="ml-auto inline-flex min-h-touch flex-none items-center justify-center border font-mono text-3xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)" }}
+            className={now ? "ffb-btn ffb-btn-now" : "ffb-log"}
           >
             Log
           </button>
         ) : null}
       </div>
-      {detail ? (
-        <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
-          {detail}
-        </p>
-      ) : (
-        <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
-          {sub}
-        </p>
-      )}
+      <p className="ffb-dt-card-note">{detail ?? `#${publishedRank} · ${sub}`}</p>
     </div>
   );
 }
@@ -807,10 +679,15 @@ export function DraftTrackerClient() {
       ? "Draft assistant · Complete"
       : `Draft assistant · Live · Pick #${draftState.currentPick}`;
 
-  const headerChips: { label: string; tone?: "warning" }[] = [
-    { label: draftState.settings.leagueName?.trim() || "Draft room" },
-    { label: `${draftState.settings.totalTeams}-team ${draftState.settings.draftType}` },
-    { label: `${FANTASY_SCORING_LABELS[scoringKey]} scoring` },
+  // The running head's league line describes the room. Setup leaves it out,
+  // because the form below is what describes the room being set up.
+  const roomLineParts = [
+    draftState.settings.leagueName?.trim() || "Draft room",
+    `${draftState.settings.totalTeams}-team ${draftState.settings.draftType}`,
+    `${FANTASY_SCORING_LABELS[scoringKey]} scoring`,
+  ];
+  const freshnessParts: { label: string; tone?: "warning" }[] = [
+    ...(showSetup ? [{ label: `${FANTASY_SCORING_LABELS[scoringKey]} scoring` }] : []),
     {
       label: matchingMetadata
         ? `${matchingMetadata.season} ${getFantasyWeekLabel(matchingMetadata.week)}`
@@ -924,95 +801,28 @@ export function DraftTrackerClient() {
     return name === `Team ${currentTeamNumber}` ? `Slot ${currentTeamNumber}` : name;
   })();
 
-  const fasciaCells: FasciaCell[] = [
-    {
-      key: "pick",
-      label: "Pick",
-      value: isDraftComplete ? "Done" : `#${draftState.currentPick} / ${totalPicks}`,
-      valueCompact: isDraftComplete ? "Done" : `#${draftState.currentPick}/${totalPicks}`,
-      sub: `Round ${draftState.currentRound} of ${draftState.settings.rounds}`,
-    },
-    {
-      key: "clock-team",
-      label: "On the clock",
-      value: onClockLabel,
-      sub: previousPick
-        ? `Prev · ${shortName(previousPick.player)} #${picksForDisplay.length}`
-        : "First overall pick",
-      subCompact: previousPick ? shortName(previousPick.player) : "First pick",
-      focusTarget: true,
-      /* Signal on a signal wash measures 4.09:1 in light mode. Mixing the text 72%
-         toward ink is the same repair the mock draft fascia already carries. */
-      valueColor: isUserPick
-        ? "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))"
-        : undefined,
-      background: isUserPick
-        ? "color-mix(in srgb, var(--c97-accent) 8%, var(--c97-surface))"
-        : undefined,
-    },
-    ...(clockVisible
-      ? [
-          {
-            key: "clock",
-            label: "Clock",
-            // While the draft runs, DraftClockTile supplies the value, the
-            // urgent colours, and the timer label, so this component does not
-            // read the clock and does not render on its ticks.
-            value: "—",
-            sub: `advisory · ${draftState.settings.timerSeconds}s per pick`,
-            subCompact: `${draftState.settings.timerSeconds}s advisory`,
-            valueColor: isUserPick ? "var(--c97-ink)" : "var(--c97-ink-2)",
-            timer: !isDraftComplete,
-          } satisfies FasciaCell,
-        ]
-      : []),
-    {
-      key: "next-turn",
-      label: "Your next turn",
-      // "Your next turn" wraps to two lines in a 94px tile and stretches its row.
-      labelCompact: "Next turn",
-      value: isDraftComplete
-        ? "—"
-        : isUserPick
-          ? "Now"
-          : nextUserPick
-            ? `#${nextUserPick}`
-            : "None left",
-      sub: isUserPick
-        ? nextUserPick
-          ? `then #${nextUserPick}`
-          : "last turn"
-        : nextUserPick
-          ? `in ${nextUserPick - draftState.currentPick} picks · slot ${draftState.settings.userTeam}`
-          : `slot ${draftState.settings.userTeam}`,
-      subCompact: isUserPick
-        ? nextUserPick
-          ? `then #${nextUserPick}`
-          : "last turn"
-        : nextUserPick
-          ? `in ${nextUserPick - draftState.currentPick} picks`
-          : `slot ${draftState.settings.userTeam}`,
-      valueColor: isUserPick ? "var(--c97-accent)" : undefined,
-    },
-    {
-      key: "pool",
-      label: "Pool",
-      value: draftSnapshot ? `${availableBoardPlayers.length} left` : "—",
-      sub: draftSnapshot ? `of ${draftBoardPlayers.length} ranked` : "board loading",
-      // The board controls carry the same count; on a phone the pinned band
-      // is the cost, so the tile leaves the fascia there.
-      phoneHidden: true,
-    },
-  ];
-  // Phone grid: three columns, with the undo and new-room cell filling out
-  // the last row rather than wrapping its two buttons into a 110px stack.
-  const phoneTileCount = fasciaCells.filter((cell) => !cell.phoneHidden).length;
-  const phoneActionsSpanClass = phoneTileCount % 3 === 1 ? "col-span-2" : "col-span-3";
+  const picksUntilTurn = nextUserPick - draftState.currentPick;
+  const nextTurn = isUserPick
+    ? { value: "Now", note: nextUserPick ? `then #${nextUserPick}` : "last turn" }
+    : nextUserPick
+      ? {
+          value: `#${nextUserPick}`,
+          note: `in ${picksUntilTurn} ${picksUntilTurn === 1 ? "pick" : "picks"}`,
+        }
+      : { value: "None left", note: "" };
+  // The scorebug holds the per-second clock, so it cannot be a live region.
+  // This sentence carries the announcement instead: it changes only when a pick
+  // is logged or undone, so logging a pick announces the new room state once.
+  const roomAnnouncement = isDraftComplete
+    ? "Draft complete."
+    : `Pick ${draftState.currentPick} of ${totalPicks}, round ${draftState.currentRound}. ${
+        isUserPick ? "You are on the clock." : `${onClockLabel} is on the clock.`
+      }${previousPick ? ` Last pick: ${previousPick.player.name}.` : ""}`;
 
   // A logged pick unmounts the control that logged it (a board row, a strip
   // card, or the drawer's opener), so focus would fall to the document. After
   // the commit, if nothing else claimed focus (the board refocuses its search
-  // when a query was active), move it to the on-the-clock tile, which exists
+  // when a query was active), move it to the on-the-clock cell, which exists
   // in every running state. The mock draft carries the same pattern.
   useEffect(() => {
     if (loggedPickRequests === 0) return;
@@ -1028,12 +838,11 @@ export function DraftTrackerClient() {
     onClockRef.current?.focus({ preventScroll: true });
   }, [loggedPickRequests]);
 
-  // The board's own controls stick underneath the live fascia rather than under
-  // the page header, and the fascia wraps to two rows once the shell is narrow,
-  // so measure it instead of assuming a height.
+  // The board's bar and the rail pin underneath the scorebug, and the scorebug
+  // takes a second row once the column is narrow, so measure it instead of
+  // assuming a height. Both read the result as --ffb-sticky-top.
   const fasciaRef = useRef<HTMLElement | null>(null);
   const [fasciaHeight, setFasciaHeight] = useState(0);
-  const boardStickyTop = `${fasciaHeight}px`;
 
   useEffect(() => {
     const element = fasciaRef.current;
@@ -1104,9 +913,18 @@ export function DraftTrackerClient() {
     vorpValues,
   ]);
 
+  const hasNotices =
+    seasonalWeek >= 1 || Boolean(persistenceError) || rankingsStale || adpSourceStale;
+  const adpUnavailableReason =
+    sourceCapabilities.market.freshness === "prior-season"
+      ? ("reference" as const)
+      : hasAdpSource
+        ? ("stale" as const)
+        : ("missing" as const);
+
   return (
-    // The pick clock ticks inside this provider, so a tick renders the two
-    // components that read it and leaves the room below alone.
+    // The pick clock ticks inside this provider, so a tick renders the one
+    // cell that reads it and leaves the room below alone.
     <DraftClockProvider
       currentPick={draftState.currentPick}
       durationSeconds={draftState.settings.timerSeconds ?? 0}
@@ -1114,78 +932,70 @@ export function DraftTrackerClient() {
       isActive={draftState.isActive}
     >
     <section
-      className="c97-dash relative overflow-x-clip min-h-dvh"
+      className="relative overflow-x-clip min-h-dvh"
       aria-label="Fantasy football draft assistant"
       data-testid="fantasy-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div>
-        <header
-          className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between`} style={{ paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-1)" }}
-        >
-          <div className={showSetup ? "flex flex-col items-start gap-y-[var(--c97-sp-1)]" : "flex flex-wrap items-baseline gap-x-[var(--c97-sp-2)] gap-y-[var(--c97-sp-0)]"}>
-            <span
-              className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.1em]"
-              style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-            >
-              <span
-                className="h-2 w-2"
-                style={{ background: "var(--c97-accent)" }}
-                aria-hidden="true"
-              />
-              {kicker}
-            </span>
-            <h1 className={showSetup ? "c97-poster" : "c97-serif c97-h3"}>Draft Tracker</h1>
-          </div>
-          <FreshnessParts parts={headerChips} />
+      <div className={SHELL_CLASS}>
+        {/* Setup keeps a headline and the pitch. A running draft gets one compact line. */}
+        <header className={showSetup ? "ffb-head ffb-head-setup" : "ffb-head ffb-head-run"}>
+          <h1 className="ffb-title">Draft Tracker</h1>
+          {/* The scorebug prints the pick, so the room's state is not drawn here
+              a second time. Assistive tech still gets it as one line. */}
+          <p className="ffb-vh">{kicker}</p>
+          {showSetup ? (
+            <p className="ffb-lede">
+              Settings lock when the draft starts. The board logs every pick in the room, not just
+              yours.
+            </p>
+          ) : (
+            <p className="ffb-lede">
+              {roomLineParts.map((part, index) => (
+                <Fragment key={index}>
+                  {index > 0 ? <>{" "}<span aria-hidden="true">·</span>{" "}</> : null}
+                  <span>{part}</span>
+                </Fragment>
+              ))}
+            </p>
+          )}
+          <FreshnessParts parts={freshnessParts} />
         </header>
 
-        {seasonalWeek >= 1 ? (
-          <div className={`${SHELL_CLASS}`} style={{ paddingBottom: "var(--c97-sp-2)" }}>
-            <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
-              This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer. This week&apos;s ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-            </SeasonalScopeNote>
-          </div>
-        ) : null}
-
-        {(persistenceError || rankingsStale || (!rankingsStale && adpSourceStale)) && (
-          <div className={`${SHELL_CLASS} grid`} style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+        {hasNotices ? (
+          <div className="ffb-dt-notices">
+            {seasonalWeek >= 1 ? (
+              <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
+                This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer. This week&apos;s ranks are on the <Link href="/fantasy-football/weekly">weekly board</Link>.
+              </SeasonalScopeNote>
+            ) : null}
             {persistenceError ? (
-              <div role="status" className="border text-sm" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}>
-                <p className="m-0 font-semibold">Local save is unavailable.</p>
-                <p className="m-0" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                  {persistenceError}
-                </p>
+              <div role="status" className="ffb-notice">
+                <p className="ffb-notice-title">Local save is unavailable.</p>
+                <p>{persistenceError}</p>
               </div>
             ) : null}
             {rankingsStale ? (
-              <div
-                role="alert"
-                className="max-w-[68ch] border text-sm leading-6"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
-              >
-                The ranking source is stale, so Draft Outlook and calculated draft signals are paused.
-                You can keep logging picks against the dated board, but check current player news and
-                your room&apos;s market before using it for a live decision.
+              <div role="alert" className="ffb-notice ffb-notice-warn">
+                <p>
+                  The ranking source is stale, so Draft Outlook and calculated draft signals are paused.
+                  You can keep logging picks against the dated board, but check current player news and
+                  your room&apos;s market before using it for a live decision.
+                </p>
               </div>
             ) : null}
             {!rankingsStale && adpSourceStale ? (
-              <div
-                role="status"
-                className="max-w-[68ch] border text-sm leading-6"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
-              >
-                The mock-draft ADP source is stale, so market price signals are hidden. The room is
-                using the current consensus board for its remaining draft signals.
+              <div role="status" className="ffb-notice ffb-notice-warn">
+                <p>
+                  The mock-draft ADP source is stale, so market price signals are hidden. The room is
+                  using the current consensus board for its remaining draft signals.
+                </p>
               </div>
             ) : null}
           </div>
-        )}
-      </div>
+        ) : null}
 
-      <div>
-      {showSetup ? (
-        <div className="c97-shell c97-frame" style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)", maxWidth: 740 }}>
+        {showSetup ? (
           <DraftSetup
             settings={draftState.settings}
             onSaveSettings={updateSettings}
@@ -1201,438 +1011,267 @@ export function DraftTrackerClient() {
             }}
             parkedPickCount={draftState.picks.length}
           />
-          <p className="mx-0.5 font-mono text-2xs leading-relaxed" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-            Settings lock when the draft starts. The board logs every pick in the room, not just
-            yours.
-          </p>
-        </div>
-      ) : rankingsUnavailable ? (
-        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)" }}>
-          <div
-            className="border text-center"
-            style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", borderColor: "var(--c97-warning)", background: "var(--c97-field)" }}
-          >
-            <p className="m-0 text-lg font-semibold">
-              Draft assistant unavailable for this scoring format
-            </p>
-            <p className="mx-auto max-w-[52ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+        ) : rankingsUnavailable ? (
+          <div className="ffb-notice ffb-notice-warn">
+            <p className="ffb-notice-title">Draft assistant unavailable for this scoring format</p>
+            <p>
               {overallSliceMetadata?.reason ??
                 "The draft assistant needs a published overall board. Switch scoring or wait for the next snapshot update."}
             </p>
           </div>
-        </div>
-      ) : (
-        <>
-          <section
-            ref={fasciaRef}
-            aria-label="Live draft status"
-            className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
-            style={{
-              borderColor: "var(--c97-rule)",
-              // Opaque on the sheet it sits on, matching the board's own
-              // sticky bar (DraftBoard.tsx) rather than a translucent blur.
-              background: "var(--c97-surface)",
-            }}
-          >
-            {/*
-              The fascia grid holds the per-second pick clock, so the section
-              itself cannot be a live region the way the best ball fascia is.
-              This line carries the announcement instead: its content changes
-              only when a pick is logged or undone, so logging a pick announces
-              the new room state once, matching the mock draft and best ball rooms.
-            */}
-            <p role="status" aria-live="polite" className="sr-only">
-              {isDraftComplete
-                ? "Draft complete."
-                : `Pick ${draftState.currentPick} of ${totalPicks}, round ${draftState.currentRound}. ${
-                    isUserPick ? "You are on the clock." : `${onClockLabel} is on the clock.`
-                  }${previousPick ? ` Last pick: ${previousPick.player.name}.` : ""}`}
-            </p>
-            <div className={SHELL_CLASS}>
-              <div
-                className="grid grid-cols-3 gap-px border-x sm:grid-cols-[repeat(auto-fit,minmax(min(148px,30vw),1fr))]"
-                style={{
-                  background: "var(--c97-rule)",
-                  borderColor: "var(--c97-rule)",
-                }}
-              >
-                {fasciaCells.map((cell) =>
-                  cell.timer ? (
-                    <DraftClockTile
-                      key={cell.key}
-                      cell={cell}
-                      canBeUrgent={timerEnabled && isUserPick}
-                    />
-                  ) : (
-                    <FasciaTile
-                      key={cell.key}
-                      cell={cell}
-                      tileRef={cell.focusTarget ? onClockRef : undefined}
-                    />
-                  )
-                )}
-                <div
-                  className={`flex min-w-0 flex-wrap content-center items-center py-[var(--c97-sp-0)] sm:col-span-1 sm:py-[var(--c97-sp-1)] ${phoneActionsSpanClass}`}
-                  style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", background: "var(--c97-surface)" }}
-                >
-                  <button
-                    type="button"
-                    onClick={undoLastPick}
-                    disabled={draftState.picks.length === 0}
-                    aria-label={
-                      draftState.picks.length === 0 ? "Undo last pick (no picks yet)" : "Undo last pick"
+        ) : (
+          <>
+            <DraftScorebug
+              sectionRef={fasciaRef}
+              onClockRef={onClockRef}
+              announcement={roomAnnouncement}
+              isComplete={isDraftComplete}
+              currentPick={draftState.currentPick}
+              totalPicks={totalPicks}
+              currentRound={draftState.currentRound}
+              rounds={draftState.settings.rounds}
+              onClockLabel={onClockLabel}
+              clock={
+                clockVisible
+                  ? {
+                      secondsPerPick: draftState.settings.timerSeconds ?? 0,
+                      mine: isUserPick,
+                      canBeUrgent: timerEnabled && isUserPick,
                     }
-                    className={PILL_BUTTON_CLASS}
-                  >
-                    ↶ Undo pick
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNewRoom}
-                    className={PILL_BUTTON_CLASS}
-                    style={{ color: "var(--c97-ink-2)" }}
-                  >
-                    New room
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
+                  : null
+              }
+              nextTurn={nextTurn}
+              poolLeft={draftSnapshot ? availableBoardPlayers.length : null}
+              canUndo={draftState.picks.length > 0}
+              canRedo={canRedo}
+              onUndo={undoLastPick}
+              onRedo={redoLastPick}
+              onNewRoom={handleNewRoom}
+            />
 
-          {tapePicks.length > 0 && (
-            <div className={`${SHELL_CLASS} flex items-center overflow-x-auto`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-              <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
-                Last picks
-              </span>
-              {tapePicks.map((pick) => (
-                <button
-                  key={`tape-${pick.pickNumber}`}
-                  type="button"
-                  onClick={() => undoToPick(pick.pickNumber)}
-                  title="Undo back to this pick"
-                  aria-label={`Undo back to pick ${pick.pickNumber} (${pick.player.name})`}
-                  className="inline-flex min-h-touch flex-none items-baseline border border-[var(--c97-rule)] bg-[var(--c97-field)] font-mono text-2xs text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}
-                >
-                  <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
-                  <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
-                    {shortName(pick.player)}
-                  </span>
-                  <span style={{ color: "var(--c97-ink-2)" }}>
-                    {pick.player.position} ·{" "}
-                    {pick.teamNumber === draftState.settings.userTeam ? "You" : `S${pick.teamNumber}`}
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Kept mounted so the note announces when it appears. */}
-          <div role="status" aria-live="polite" className={SHELL_CLASS}>
-            {specialistNote ? (
-              <div
-                className="flex items-start justify-between border text-sm leading-6"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
-              >
-                <p className="m-0" style={{ paddingBlock: "var(--c97-sp-0)" }}>{specialistNote}</p>
-                <button
-                  type="button"
-                  onClick={() => setSpecialistNote(null)}
-                  aria-label="Dismiss note"
-                  className="inline-flex min-h-touch min-w-touch flex-none items-center justify-center font-mono text-2xs text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
-                >
-                  ✕
-                </button>
-              </div>
-            ) : null}
-          </div>
-
-          <section
-            aria-label="Your roster"
-            className={`${SHELL_CLASS} flex flex-wrap items-center`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}
-          >
-            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
-              Your roster
-            </span>
-            {lineupAssignment.slots.map((slot, index) => (
-              <span
-                key={`slot-${slot.slot}-${index}`}
-                className="inline-flex items-baseline border py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
-                style={
-                  { paddingInline: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", ...(slot.player
-                    ? {
-                        borderStyle: "solid",
-                        borderColor: "var(--c97-rule)",
-                        background: "var(--c97-field)",
-                        color: "var(--c97-ink-2)",
-                      }
-                    : {
-                        borderStyle: "dashed",
-                        borderColor: "color-mix(in srgb, var(--c97-rule) 80%, transparent)",
-                        background: "transparent",
-                        color: "var(--c97-ink-2)",
-                      }) }
-                }
-              >
-                {slot.slot}
-                <span
-                  className="font-sans text-xs font-semibold normal-case tracking-[-0.01em]"
-                  style={{ color: slot.player ? "var(--c97-ink)" : undefined }}
-                >
-                  {slot.player ? shortName(slot.player) : "open"}
-                </span>
-              </span>
-            ))}
-            {lineupAssignment.bench > 0 && (
-              <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                +{lineupAssignment.bench} bench
-              </span>
-            )}
-          </section>
-
-          {stripVisible && bestAvailable && (
-            <section aria-label="Your pick recommendations" className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
-              <div
-                className="overflow-hidden border"
-                style={{
-                  borderColor: "color-mix(in srgb, var(--c97-accent) 45%, var(--c97-rule))",
-                  background: "color-mix(in srgb, var(--c97-accent) 7%, var(--c97-surface))",
-                }}
-              >
-                <div
-                  className="flex flex-wrap items-center border-b"
-                  style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
-                >
-                  {/* 11px signal on the card's 7% signal wash measures 4.15:1. The dot
-                      keeps the pure accent so the state still reads at a glance, and the
-                      label takes the 72%-toward-ink mix so it clears AA. */}
-                  <span
-                    className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.12em]"
-                    style={{ gap: "var(--c97-sp-1)", color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
-                  >
-                    <span
-                      className="h-[7px] w-[7px]"
-                      style={{ background: "var(--c97-accent)" }}
-                      aria-hidden="true"
-                    />
-                    Your pick is live
-                  </span>
-                  <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                    Pick #{draftState.currentPick} of {totalPicks}
-                    {timerEnabled ? <DraftClockInline /> : ""}
-                    {nextUserPick ? ` · your next turn #${nextUserPick}` : ""}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setShowDecisionDetail((open) => !open)}
-                    aria-expanded={showDecisionDetail}
-                    aria-controls="draft-decision-strip draft-decision-detail"
-                    className="ml-auto inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:underline hover:underline-offset-4" style={{ gap: "var(--c97-sp-0)" }}
-                  >
-                    Why these picks <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
-                  </button>
-                </div>
-                {/* Opening "Why these picks" adds each card's reasoning line and the
-                    remaining recommendations (the lineup fill, a market value) to
-                    this grid, so one Log button exists per player. The four-position
-                    panel below carries the long-form reading. The column floor is
-                    the width a card needs to print a name like "Omarion Hampton"
-                    beside its rank, chip and Log button, so an appended card wraps
-                    to a new row instead of squeezing the first three (at 1440 the
-                    240px floor let four 249px columns clip two names). */}
-                <div
-                  id="draft-decision-strip"
-                  className="grid gap-px"
-                  style={{
-                    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-                    background: "var(--c97-surface)",
-                  }}
-                >
-                  <StripPlayerCard
-                    label="Best available"
-                    labelColor="var(--c97-accent)"
-                    player={bestAvailable}
-                    publishedRank={publishedDraftRank(bestAvailable)}
-                    sub={bestStripSub}
-                    detail={
-                      showDecisionDetail ? (recByPlayerId.get(bestAvailable.id)?.why ?? null) : null
-                    }
-                    onOpenDetail={() => setDetailPlayer(bestAvailable)}
-                    onLog={() => logPick(bestAvailable)}
-                    logLabel={`Log ${bestAvailable.name} as pick ${draftState.currentPick}`}
-                  />
-
-                  {riskPlayer ? (
-                    <StripPlayerCard
-                      label={`Most at risk${riskDecision ? ` · ${riskDecision.position}` : ""}`}
-                      labelColor="var(--c97-warning)"
-                      player={riskPlayer}
-                      publishedRank={publishedDraftRank(riskPlayer)}
-                      sub={riskStripSub}
-                      detail={
-                        showDecisionDetail && riskPlayer.id !== bestAvailable.id
-                          ? (recByPlayerId.get(riskPlayer.id)?.why ?? null)
-                          : null
-                      }
-                      onOpenDetail={() => setDetailPlayer(riskPlayer)}
-                      onLog={riskPlayer.id !== bestAvailable.id ? () => logPick(riskPlayer) : undefined}
-                      logLabel={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
-                    />
-                  ) : (
-                    <div className="flex min-w-0 flex-col gap-0.5" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(STRIP_CARD_STYLE) }}>
-                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-warning)" }}>
-                        Most at risk
-                      </span>
-                      <p className="m-0 text-sm" style={{ color: "var(--c97-ink-2)" }}>
-                        {riskStripSub}
-                      </p>
-                    </div>
-                  )}
-
-                  <div
-                    className="flex min-w-0 flex-col gap-0.5"
-                    style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(STRIP_CARD_STYLE) }}
-                    title={stripWait.title}
-                  >
-                    <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                      If you wait{stripWaitPosition ? ` · ${stripWaitPosition}` : ""}
-                    </span>
-                    <p className="m-0 font-mono text-lg leading-tight tabular-nums">
-                      {stripWait.value}
-                    </p>
-                    <p className="m-0 truncate font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
-                      {stripWait.sub}
-                    </p>
-                  </div>
-
-                  {showDecisionDetail
-                    ? extraRecs.map((rec) => (
-                        <StripPlayerCard
-                          key={`rec-${rec.tag}-${rec.player.id}`}
-                          label={rec.tag}
-                          labelColor="var(--c97-ink-2)"
-                          player={rec.player}
-                          publishedRank={publishedDraftRank(rec.player)}
-                          sub={rec.why}
-                          detail={rec.why}
-                          onOpenDetail={() => setDetailPlayer(rec.player)}
-                          onLog={() => logPick(rec.player)}
-                          logLabel={`Log ${rec.player.name} as pick ${draftState.currentPick}`}
-                        />
-                      ))
-                    : null}
-                </div>
-              </div>
-            </section>
-          )}
-
-          {!isDraftComplete && redraftDecision.guidanceAvailable && !stripVisible ? (
-            <div className={`${SHELL_CLASS} flex justify-end`} style={{ paddingTop: "var(--c97-sp-1)" }}>
-              <button
-                type="button"
-                onClick={() => setShowDecisionDetail((open) => !open)}
-                aria-expanded={showDecisionDetail}
-                aria-controls="draft-decision-detail"
-                className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)] hover:underline hover:underline-offset-4" style={{ gap: "var(--c97-sp-0)" }}
-              >
-                What changes if you wait <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
-              </button>
-            </div>
-          ) : null}
-
-          {!isDraftComplete && redraftDecision.guidanceAvailable && showDecisionDetail ? (
-            <div id="draft-decision-detail" className={`${SHELL_CLASS} grid`} style={{ paddingTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
-              <RedraftDecisionPanel
-                report={redraftDecision}
-                onOpenPlayer={setDetailPlayer}
-              />
-            </div>
-          ) : null}
-
-          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
-            {/* The running page goes h1 to the Draft Outlook h3 with nothing
+            {/* The page goes from the h1 to the room's h3 headings with nothing
                 between, so name the room here the way the rankings board and the
                 mock draft both do. */}
             <h2 className="sr-only">Your draft room</h2>
-            {isDraftComplete && (
-              <div
-                className="border border-dashed text-center"
-                style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", marginBottom: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}
-              >
-                <p className="m-0 text-lg font-semibold tracking-[-0.02em]">Draft complete.</p>
-                <p className="m-0 font-mono text-2xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                  Every pick is logged in this room. Start a new room to run it back.
-                </p>
-                <button
-                  type="button"
-                  onClick={handleNewRoom}
-                  className="inline-flex min-h-touch items-center justify-center border font-mono text-2xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
-                >
-                  New room
-                </button>
-              </div>
-            )}
 
-            {isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
-              <div style={{ marginBottom: "var(--c97-sp-2)" }}>
-                <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
-              </div>
-            )}
-            {isDraftComplete && draftRecap && draftRecap.totalTurns === 0 && userTurnTotal > 0 && (
-              <p
-                className="mt-0 font-mono text-2xs leading-5"
-                style={{ marginBottom: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-              >
-                No model recap. None of your turns carried a recorded recommendation, which
-                usually means draft guidance was unavailable while you picked, for example
-                when the ADP source was stale and the decision strip stayed hidden.
-              </p>
-            )}
+            <DraftLastPicks
+              picks={tapePicks}
+              userTeam={draftState.settings.userTeam}
+              onUndoToPick={undoToPick}
+            />
 
-            {!draftSnapshot ? (
-              <div
-                className="border text-center"
-                style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-                role="status"
-              >
-                <p className="m-0 text-lg font-semibold">
-                  {error
-                    ? "Draft board unavailable"
-                    : `Loading the ${FANTASY_SCORING_LABELS[scoringKey]} board`}
-                </p>
-                <p className="mx-auto max-w-[52ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                  {error
-                    ? "Your room and picks are still saved. Retry the published snapshot before logging another pick."
-                    : "Your room is ready. Picks, the timer, and Draft Outlook will resume when the matching snapshot finishes loading."}
-                </p>
-                {error ? (
-                  <button
-                    type="button"
-                    onClick={retry}
-                    className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
-                  >
-                    Retry rankings
-                  </button>
+            {/* The scorebug's measured height is where the board's bar and the rail pin. */}
+            <div
+              className="ffb-work ffb-work-split"
+              style={{ "--ffb-sticky-top": `${fasciaHeight}px` } as CSSProperties}
+            >
+              <div>
+                {/* Kept mounted so the note announces when it appears. */}
+                <div role="status" aria-live="polite">
+                  {specialistNote ? (
+                    <div className="ffb-notice ffb-notice-warn ffb-dt-note">
+                      <p>{specialistNote}</p>
+                      <button
+                        type="button"
+                        onClick={() => setSpecialistNote(null)}
+                        aria-label="Dismiss note"
+                        className="ffb-iconbtn"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+
+                {stripVisible && bestAvailable && (
+                  <section aria-label="Your pick recommendations" className="ffb-dt-block">
+                    <div className="ffb-dt-strip-head">
+                      <h3 className="ffb-turn-tab">Your pick is live</h3>
+                      <button
+                        type="button"
+                        onClick={() => setShowDecisionDetail((open) => !open)}
+                        aria-expanded={showDecisionDetail}
+                        aria-controls="draft-decision-strip draft-decision-detail"
+                        className="ffb-btn ffb-btn-quiet ffb-dt-noprint"
+                      >
+                        Why these picks <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
+                      </button>
+                    </div>
+                    {/* Opening "Why these picks" adds each card's reasoning line and the
+                        remaining recommendations (the lineup fill, a market value) to
+                        this grid, so one Log button exists per player. The four-position
+                        panel below carries the long-form reading. The grid's column floor
+                        is in the route's stylesheet. */}
+                    <div id="draft-decision-strip" className="ffb-dt-strip">
+                      <StripPlayerCard
+                        label="Best available"
+                        player={bestAvailable}
+                        publishedRank={publishedDraftRank(bestAvailable)}
+                        sub={bestStripSub}
+                        detail={
+                          showDecisionDetail ? (recByPlayerId.get(bestAvailable.id)?.why ?? null) : null
+                        }
+                        onOpenDetail={() => setDetailPlayer(bestAvailable)}
+                        onLog={() => logPick(bestAvailable)}
+                        logLabel={`Log ${bestAvailable.name} as pick ${draftState.currentPick}`}
+                        now
+                      />
+
+                      {riskPlayer ? (
+                        <StripPlayerCard
+                          label={`Most at risk${riskDecision ? ` · ${riskDecision.position}` : ""}`}
+                          tone="warn"
+                          player={riskPlayer}
+                          publishedRank={publishedDraftRank(riskPlayer)}
+                          sub={riskStripSub}
+                          detail={
+                            showDecisionDetail && riskPlayer.id !== bestAvailable.id
+                              ? (recByPlayerId.get(riskPlayer.id)?.why ?? null)
+                              : null
+                          }
+                          onOpenDetail={() => setDetailPlayer(riskPlayer)}
+                          onLog={riskPlayer.id !== bestAvailable.id ? () => logPick(riskPlayer) : undefined}
+                          logLabel={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
+                        />
+                      ) : (
+                        <div className="ffb-dt-card">
+                          <span className="ffb-label ffb-warn">Most at risk</span>
+                          <p className="ffb-dt-card-note">{riskStripSub}</p>
+                        </div>
+                      )}
+
+                      <div className="ffb-dt-card" title={stripWait.title}>
+                        <span className="ffb-label">
+                          If you wait{stripWaitPosition ? ` · ${stripWaitPosition}` : ""}
+                        </span>
+                        <p className="ffb-dt-card-value">{stripWait.value}</p>
+                        <p className="ffb-dt-card-note">{stripWait.sub}</p>
+                      </div>
+
+                      {showDecisionDetail
+                        ? extraRecs.map((rec) => (
+                            <StripPlayerCard
+                              key={`rec-${rec.tag}-${rec.player.id}`}
+                              label={rec.tag}
+                              player={rec.player}
+                              publishedRank={publishedDraftRank(rec.player)}
+                              sub={rec.why}
+                              detail={rec.why}
+                              onOpenDetail={() => setDetailPlayer(rec.player)}
+                              onLog={() => logPick(rec.player)}
+                              logLabel={`Log ${rec.player.name} as pick ${draftState.currentPick}`}
+                            />
+                          ))
+                        : null}
+                    </div>
+                  </section>
+                )}
+
+                {!isDraftComplete && redraftDecision.guidanceAvailable && !stripVisible ? (
+                  <div className="ffb-dt-waitrow ffb-dt-noprint">
+                    <button
+                      type="button"
+                      onClick={() => setShowDecisionDetail((open) => !open)}
+                      aria-expanded={showDecisionDetail}
+                      aria-controls="draft-decision-detail"
+                      className="ffb-btn ffb-btn-quiet"
+                    >
+                      What changes if you wait <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
+                    </button>
+                  </div>
+                ) : null}
+
+                {!isDraftComplete && redraftDecision.guidanceAvailable && showDecisionDetail ? (
+                  <div id="draft-decision-detail" className="ffb-dt-block">
+                    <RedraftDecisionPanel
+                      report={redraftDecision}
+                      onOpenPlayer={setDetailPlayer}
+                    />
+                  </div>
+                ) : null}
+
+                {isDraftComplete && (
+                  <div className="ffb-notice ffb-notice-good ffb-dt-block">
+                    <p className="ffb-notice-title">Draft complete.</p>
+                    <p>Every pick is logged in this room. Start a new room to run it back.</p>
+                  </div>
+                )}
+
+                {isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
+                  <div className="ffb-dt-block">
+                    <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
+                  </div>
+                )}
+                {isDraftComplete && draftRecap && draftRecap.totalTurns === 0 && userTurnTotal > 0 && (
+                  <p className="ffb-method ffb-dt-block">
+                    No model recap. None of your turns carried a recorded recommendation, which
+                    usually means draft guidance was unavailable while you picked, for example
+                    when the ADP source was stale and the decision strip stayed hidden.
+                  </p>
+                )}
+
+                {!draftSnapshot ? (
+                  <div role="status" className={error ? "ffb-notice ffb-notice-bad" : "ffb-notice"}>
+                    <p className="ffb-notice-title">
+                      {error
+                        ? "Draft board unavailable"
+                        : `Loading the ${FANTASY_SCORING_LABELS[scoringKey]} board`}
+                    </p>
+                    <p>
+                      {error
+                        ? "Your room and picks are still saved. Retry the published snapshot before logging another pick."
+                        : "Your room is ready. Picks, the timer, and Draft Outlook will resume when the matching snapshot finishes loading."}
+                    </p>
+                    {error ? (
+                      <div className="ffb-notice-actions">
+                        <button type="button" onClick={retry} className="ffb-btn">
+                          Retry rankings
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : !isDraftComplete ? (
+                  <DraftBoard
+                    players={draftBoardPlayers}
+                    draftedPlayerIds={draftedPlayerIds}
+                    onDraftPlayer={logPick}
+                    onOpenDetail={setDetailPlayer}
+                    currentPick={draftState.currentPick}
+                    currentRound={draftState.currentRound}
+                    adpAvailable={adpAvailable}
+                    guidanceAvailable={draftGuidanceAvailable}
+                    vorpValues={vorpValues}
+                    vorpTeamSize={vorpTeamSize}
+                    nextUserPick={nextUserPick}
+                  />
+                ) : analytics ? (
+                  <DraftAnalyticsPanel
+                    analytics={analytics}
+                    picks={modelPicks}
+                    currentPick={draftState.currentPick}
+                    isDraftComplete
+                    userTeamNumber={draftState.settings.userTeam}
+                    adpAvailable={adpAvailable}
+                    adpUnavailableReason={adpUnavailableReason}
+                    getTeamName={getTeamName}
+                  />
                 ) : null}
               </div>
-            ) : !isDraftComplete ? (
-              <DraftBoard
-                players={draftBoardPlayers}
-                draftedPlayerIds={draftedPlayerIds}
-                onDraftPlayer={logPick}
-                onOpenDetail={setDetailPlayer}
-                currentPick={draftState.currentPick}
-                currentRound={draftState.currentRound}
-                adpAvailable={adpAvailable}
-                guidanceAvailable={draftGuidanceAvailable}
-                vorpValues={vorpValues}
-                vorpTeamSize={vorpTeamSize}
-                stickyTop={boardStickyTop}
-              />
-            ) : null}
 
-            {draftSnapshot && (
-              <div className="grid" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
-                <article className="c97-panel">
+              <aside className="ffb-rail ffb-rail-scroll ffb-dt-rail" aria-label="Your draft">
+                <DraftRoster
+                  assignment={lineupAssignment}
+                  picked={userTeam?.picks.length ?? 0}
+                  rounds={draftState.settings.rounds}
+                />
+                <DraftPickGrid
+                  picks={picksForDisplay}
+                  settings={draftState.settings}
+                  currentPick={draftState.currentPick}
+                  currentRound={draftState.currentRound}
+                  isComplete={isDraftComplete}
+                />
+                {draftSnapshot ? (
                   <DraftValuePanel
                     report={userDraftValue}
                     headingId="draft-tracker-outlook-heading"
@@ -1640,142 +1279,100 @@ export function DraftTrackerClient() {
                     onCalculatorChange={setReturnAssumptions}
                     unavailableReason={draftOutlookUnavailableReason}
                   />
-                </article>
-                {analytics && (
+                ) : null}
+                {draftSnapshot && analytics && !isDraftComplete ? (
                   <DraftAnalyticsPanel
                     analytics={analytics}
                     picks={modelPicks}
                     currentPick={draftState.currentPick}
-                    isDraftComplete={isDraftComplete}
+                    isDraftComplete={false}
                     userTeamNumber={draftState.settings.userTeam}
                     adpAvailable={adpAvailable}
-                    adpUnavailableReason={
-                      sourceCapabilities.market.freshness === "prior-season"
-                        ? "reference"
-                        : hasAdpSource
-                          ? "stale"
-                          : "missing"
-                    }
+                    adpUnavailableReason={adpUnavailableReason}
                     getTeamName={getTeamName}
                   />
-                )}
-                {!isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
-                  <details>
-                    <summary
-                      className="inline-flex min-h-touch cursor-pointer list-none items-center font-mono text-2xs uppercase tracking-[0.08em]"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    >
+                ) : null}
+                {draftSnapshot && !isDraftComplete && draftRecap && draftRecap.totalTurns > 0 ? (
+                  <details className="ffb-details">
+                    <summary>
                       Model recap so far · {draftRecap.totalTurns} recorded{" "}
-                      {draftRecap.totalTurns === 1 ? "turn" : "turns"} <span aria-hidden="true">▾</span>
+                      {draftRecap.totalTurns === 1 ? "turn" : "turns"}
                     </summary>
-                    <div style={{ marginTop: "var(--c97-sp-1)" }}>
+                    <div className="ffb-details-body">
                       <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
                     </div>
                   </details>
-                )}
-                <article className="c97-panel">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Room actions</p>
-                  <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                    <button
-                      type="button"
-                      onClick={redoLastPick}
-                      disabled={!canRedo}
-                      aria-label={canRedo ? "Redo the last undone pick" : "Redo (nothing to redo)"}
-                      className={PILL_BUTTON_CLASS}
-                    >
-                      ↷ Redo pick
-                    </button>
-                    {([
-                      { format: "csv", label: "Picks CSV" },
-                      { format: "recap-csv", label: "Recap CSV" },
-                      { format: "json", label: "JSON" },
-                    ] as const).map((option) => (
-                      <button
-                        key={option.format}
-                        type="button"
-                        onClick={() => handleExport(option.format)}
-                        className={PILL_BUTTON_CLASS}
-                      >
-                        {option.label}
-                      </button>
-                    ))}
-                    <button
-                      type="button"
-                      onClick={() => setShowTeamEditor((open) => !open)}
-                      aria-expanded={showTeamEditor}
-                      className={PILL_BUTTON_CLASS}
-                    >
-                      Name the teams <span aria-hidden="true">{showTeamEditor ? "▴" : "▾"}</span>
-                    </button>
-                  </div>
-                  {showTeamEditor && (
-                    <div
-                      className="grid"
-                      style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))" }}
-                    >
-                      {draftState.teams.map((team) => (
-                        <label key={team.teamNumber} className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }}>
-                          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                            Slot {team.teamNumber}
-                            {team.teamNumber === draftState.settings.userTeam ? " (you)" : ""}
-                          </span>
-                          <input
-                            value={team.teamName ?? ""}
-                            onChange={(event) => setTeamName(team.teamNumber, event.target.value)}
-                            maxLength={40}
-                            placeholder={`Team ${team.teamNumber}`}
-                            className="min-h-touch border font-mono text-xs"
-                            style={{
-                              paddingInline: "var(--c97-sp-1)",
-                              borderColor: "var(--c97-rule)",
-                              background: "var(--c97-surface)",
-                              color: "var(--c97-ink)",
-                            }}
-                          />
-                        </label>
-                      ))}
+                ) : null}
+                {draftSnapshot ? (
+                  <section aria-labelledby="draft-room-actions-heading" className="ffb-dt-noprint">
+                    <div className="ffb-sechead">
+                      <h3 id="draft-room-actions-heading" className="ffb-h3">
+                        Room actions
+                      </h3>
                     </div>
-                  )}
-                  <p className="max-w-[68ch] text-xs leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                    Change league settings by starting a new room. Active drafts keep one fixed room
-                    configuration, and picks stay on this device.
-                  </p>
-                </article>
-              </div>
-            )}
-
-            <div
-              className="flex flex-wrap items-baseline justify-between border-t"
-              style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-            >
-              <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                Advisory clock only, nothing auto-picks at zero · picks stay on this device
-              </span>
-              <Link
-                href="/fantasy-football"
-                className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
-              >
-                Open the rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
-              </Link>
+                    <div className="ffb-stack ffb-stack-tight">
+                      <div className="ffb-cluster">
+                        {([
+                          { format: "csv", label: "Picks CSV" },
+                          { format: "recap-csv", label: "Recap CSV" },
+                          { format: "json", label: "JSON" },
+                        ] as const).map((option) => (
+                          <button
+                            key={option.format}
+                            type="button"
+                            onClick={() => handleExport(option.format)}
+                            className="ffb-btn"
+                          >
+                            {option.label}
+                          </button>
+                        ))}
+                        <button
+                          type="button"
+                          onClick={() => setShowTeamEditor((open) => !open)}
+                          aria-expanded={showTeamEditor}
+                          className="ffb-btn"
+                        >
+                          Name the teams <span aria-hidden="true">{showTeamEditor ? "▴" : "▾"}</span>
+                        </button>
+                      </div>
+                      {showTeamEditor && (
+                        <div className="ffb-dt-teams">
+                          {draftState.teams.map((team) => (
+                            <label key={team.teamNumber} className="ffb-field">
+                              <span className="ffb-field-label">
+                                Slot {team.teamNumber}
+                                {team.teamNumber === draftState.settings.userTeam ? " (you)" : ""}
+                              </span>
+                              <input
+                                value={team.teamName ?? ""}
+                                onChange={(event) => setTeamName(team.teamNumber, event.target.value)}
+                                maxLength={40}
+                                placeholder={`Team ${team.teamNumber}`}
+                                className="ffb-input"
+                              />
+                            </label>
+                          ))}
+                        </div>
+                      )}
+                      <p className="ffb-method">
+                        Change league settings by starting a new room. Active drafts keep one fixed room
+                        configuration, and picks stay on this device.
+                      </p>
+                    </div>
+                  </section>
+                ) : null}
+              </aside>
             </div>
-          </div>
-        </>
-      )}
+
+            <p className="ffb-method ffb-dt-foot">
+              Advisory clock only, nothing auto-picks at zero · picks stay on this device
+            </p>
+          </>
+        )}
       </div>
 
-      <div
-        aria-live="polite"
-        role="status"
-        className="pointer-events-none fixed bottom-6 left-1/2 z-[var(--c97-z-toast)] -translate-x-1/2"
-      >
-        {exportToast ? (
-          <div
-            className="border text-sm font-semibold c97-offset"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
-          >
-            {exportToast}
-          </div>
-        ) : null}
+      <div aria-live="polite" role="status">
+        {exportToast ? <div className="ffb-toast ffb-enter-rise">{exportToast}</div> : null}
       </div>
 
       <DeferredPlayerDetailDrawer

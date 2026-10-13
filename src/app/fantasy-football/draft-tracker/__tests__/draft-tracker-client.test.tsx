@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { DraftTrackerClient } from "../draft-tracker-client";
@@ -176,12 +177,16 @@ describe("DraftTrackerClient", () => {
   it("renders the editorial shell and sourced-only draft board copy", () => {
     const { container } = render(<DraftTrackerClient />);
 
-    expect(container.firstChild).toHaveClass("c97-dash");
+    // The client renders one top-level node, the route's shell.
+    expect(container.firstChild).toHaveAttribute("data-testid", "fantasy-draft-tracker-shell");
     // This fixture is a running draft (one pick logged, isActive), so the
-    // header kicker reads live state and the fascia carries the pick number,
-    // the team on the clock, and the advisory clock.
-    expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i })).toBeVisible();
-    expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i })).not.toHaveClass("c97-poster");
+    // head is the kit's one-line running head, its hidden state line reads
+    // live state, and the scorebug carries the pick number, the team on the
+    // clock, and the advisory clock.
+    const title = screen.getByRole("heading", { level: 1, name: /Draft Tracker/i });
+    expect(title).toBeVisible();
+    expect(title.closest("header")).toHaveClass("ffb-head-run");
+    expect(title.closest("header")).not.toHaveClass("ffb-head-setup");
     expect(screen.getByText(/Draft assistant · Live · Pick #2/i)).toBeVisible();
     expect(screen.getByText("#2 / 150")).toBeVisible();
     expect(screen.getByText("On the clock")).toBeVisible();
@@ -238,8 +243,10 @@ describe("DraftTrackerClient", () => {
     render(<DraftTrackerClient />);
 
     fireEvent.click(screen.getByRole("button", { name: "New room" }));
-    // Setup keeps the display headline, a full poster step above the setup panel's own heading.
-    expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i })).toHaveClass("c97-poster");
+    // Setup keeps the headline: the kit's setup head, not the running head's one line.
+    expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i }).closest("header")).toHaveClass(
+      "ffb-head-setup"
+    );
     fireEvent.click(screen.getByRole("button", { name: "Preview Standard" }));
 
     expect(mockUseFantasySnapshot).toHaveBeenLastCalledWith({
@@ -420,15 +427,16 @@ describe("DraftTrackerClient", () => {
     expect(screen.getByText("On the clock").closest("div")).toHaveFocus();
   });
 
-  it("keeps the fascia pick counter whole on a phone", () => {
+  it("keeps the scorebug pick counter whole on a phone", () => {
     render(<DraftTrackerClient />);
 
-    // The compact copy renders below `sm` and the spaced copy above it; both
-    // are in the document and the stylesheet picks one.
-    expect(screen.getByText("#2/150")).toHaveClass("sm:hidden");
-    expect(screen.getByText("#2 / 150")).toHaveClass("hidden", "sm:inline");
-    expect(screen.getByText("Next turn")).toHaveClass("sm:hidden");
-    expect(screen.getByText("Pool").closest("div")).toHaveClass("hidden", "sm:block");
+    // The compact copy renders on a phone and the spaced copy above it; both
+    // are in the document and the kit's two helpers pick one. The scorebug's
+    // phone layout starts at the same 768px those helpers switch at.
+    expect(screen.getByText("#2/150")).toHaveClass("ffb-only-phone");
+    expect(screen.getByText("#2 / 150")).toHaveClass("ffb-not-phone");
+    expect(screen.getByText("Next turn")).toHaveClass("ffb-only-phone");
+    expect(screen.getByText("Pool").closest("div")).toHaveClass("ffb-not-phone");
   });
 
   it("expands the strip cards with their reasoning instead of a second card set", () => {
@@ -461,12 +469,13 @@ describe("DraftTrackerClient", () => {
     const toggle = screen.getByRole("button", { name: /Why these picks/i });
     expect(toggle).toHaveAttribute("aria-controls", "draft-decision-strip draft-decision-detail");
     // The column floor is the width a card needs to print a long name beside its
-    // rank, chip and Log button, so the cards the disclosure appends wrap to a
-    // new row instead of squeezing the first three (240px let four 249px columns
-    // clip two names at 1440).
-    expect(document.querySelector("#draft-decision-strip")).toHaveStyle({
-      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-    });
+    // chip and Log button, so the cards the disclosure appends wrap to a new row
+    // instead of squeezing the first three. The floor is static, so it lives in
+    // the route's stylesheet on the strip's class and not in an inline style.
+    expect(document.querySelector("#draft-decision-strip")).toHaveClass("ffb-dt-strip");
+    expect(fs.readFileSync("src/components/fantasy/fantasy-draft.css", "utf8")).toMatch(
+      /\.ffb-dt-strip \{[^}]*grid-template-columns: repeat\(auto-fit, minmax\(min\(100%, \d+px\), 1fr\)\);/
+    );
     expect(screen.queryByText(/^Board #1 · Tier 1/)).not.toBeInTheDocument();
     expect(screen.queryByText("Fills WR1")).not.toBeInTheDocument();
 
