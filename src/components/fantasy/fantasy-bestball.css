@@ -70,6 +70,17 @@
   --ffb-pinned-top: calc(var(--ffb-bb-bar, 148px) + var(--ffb-s1));
 }
 
+/* The search icon is a label for the field, and it takes the field's left padding with it, so a
+   press anywhere left of the text focuses the field. */
+.ffb-bb-search-icon {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-inline-start: -10px;
+  padding-inline-start: 10px;
+  cursor: text;
+}
+.ffb-bb-search-icon > svg { flex: none; fill: none; stroke: var(--ffb-muted); stroke-width: 1.8; stroke-linecap: round; }
 /* "Undrafted" and "Withheld" are words in a number's place. */
 .ffb-bb-word { font-size: 10.5px; }
 .ffb-bb-method { display: grid; gap: var(--ffb-s1); margin-top: var(--ffb-s4); }
@@ -87,6 +98,14 @@
   }
   .ffb-bb-board > .ffb-tier:first-of-type > .ffb-tier-head { top: var(--ffb-bb-bar, 88px); }
   .ffb-bb-board { --ffb-pinned-top: calc(var(--ffb-bb-bar, 88px) + 30px + var(--ffb-s1)); }
+  /* Wide enough for the placeholder and the clear button together, so the field does not
+     grow on the first character typed. */
+  .ffb-bb-tools > .ffb-search { flex: 0 0 241px; }
+}
+/* A row is one target, since its opener covers it, so a touch pointer gets a 44px row. The
+   opener sits inside the row's 1px top rule, which is why the row is 45px. */
+@media (pointer: coarse) {
+  .ffb-bb-board { --ffb-row: 45px; }
 }
 
 /* ==========================================================================
@@ -96,6 +115,14 @@
 @media (max-width: 767.98px) {
   .ffb-bb-tools > .ffb-count { order: 2; flex: 1 1 56px; min-width: 0; line-height: 1.3; }
   .ffb-bb-tools > .ffb-search { order: 3; flex: 1 1 100%; }
+  /* Sit and Go's sentence says the Week 17 column is dimmed. A phone prints every row's second
+     line muted, so there the dimmed opponent shows as an absence. */
+  .ffb-bb-board .ffb-row > .ffb-m-meta.ffb-is-flat { display: none; }
+}
+/* Five position buttons fit from 320px, so this switch keeps to the page column and the count
+   beside it never starts under the TE button, as it did with the kit's sideways bleed. */
+@media (max-width: 767.98px), (pointer: coarse) {
+  .ffb-bb-tools > .ffb-seg-pos { max-width: 100%; margin-inline-end: 0; }
 }
 /* Under 360px the count has no room beside the switch, so it takes a short line under the search.
    A row's second line has no room for the Week 17 opponent after a two-digit bye, so it is the
