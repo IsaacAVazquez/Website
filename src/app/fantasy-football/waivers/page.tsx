@@ -18,7 +18,7 @@ export const metadata: Metadata = constructMetadata({
     "In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered, with the rank, percentile, and rostered rate printed beside each gap.",
   canonicalUrl: "/fantasy-football/waivers",
   image: "/fantasy-football/waivers/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
 });
 
 const breadcrumbs = [
