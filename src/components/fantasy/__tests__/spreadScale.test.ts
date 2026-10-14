@@ -42,6 +42,12 @@ describe("fitSpreadScale", () => {
     expect(fitSpreadScale(3, 14, { pad: 2 }).min).toBe(1);
   });
 
+  it("starts the window at the division a division's last rank belongs to", () => {
+    // Rank 12 is the last of round one and rank 24 the last of round two, so neither starts a round late.
+    expect(fitSpreadScale(12, 13).min).toBe(1);
+    expect(fitSpreadScale(24, 30).ticks[0]).toEqual({ at: 13, label: "R2" });
+  });
+
   it("doubles the tick spacing past sixteen divisions and keeps every tick the same width", () => {
     // 1 to 204 is seventeen rounds. Ticks every two rounds need eighteen, so the window ends at 216.
     const scale = fitSpreadScale(1, 204);
