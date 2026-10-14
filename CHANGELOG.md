@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Stage 2 review fixes, with the project sovereign close-out ([#596](https://github.com/IsaacAVazquez/Website/pull/596)).
 - The fantasy football pages, rebuilt as one product ([#598](https://github.com/IsaacAVazquez/Website/pull/598)).
+- The October 12 project audit, with where its issues stand ([#606](https://github.com/IsaacAVazquez/Website/pull/606)).
 
 ---
 
