@@ -1416,6 +1416,7 @@ export function DraftTrackerClient() {
                     calculatorValue={returnAssumptions}
                     onCalculatorChange={setReturnAssumptions}
                     unavailableReason={draftOutlookUnavailableReason}
+                    adpAvailable={adpAvailable}
                   />
                 ) : null}
                 {draftSnapshot && analytics && !isDraftComplete ? (

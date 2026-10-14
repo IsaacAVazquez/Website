@@ -926,6 +926,7 @@ function BestBallDraftRoom({
           defaultEntryCost={preset.economics?.entryFee}
           calculatorValue={returnAssumptions}
           onCalculatorChange={setReturnAssumptions}
+          adpAvailable={adpAvailable}
         />
         <section aria-labelledby={`${headingId}-controls`} className="ffb-br-controls ffb-noprint">
           <div className="ffb-sechead">
