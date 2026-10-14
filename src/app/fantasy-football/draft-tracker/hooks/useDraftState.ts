@@ -451,12 +451,16 @@ export const useDraftState = () => {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [persistenceError, setPersistenceError] = useState<string | null>(null);
+  // True while the browser refuses to save. A conflict between two tabs leaves saving working, so it does not set this.
+  const [storageBlocked, setStorageBlocked] = useState(false);
 
   const stateRef = useRef(draftState);
   const knownRawRef = useRef<string | null>(null);
   const loadedRef = useRef(false);
   const unsavedRef = useRef(false);
   const conflictRef = useRef(false);
+  // Set once the first read is refused. Writes may still work, but a reload could not read the picks back.
+  const readBlockedRef = useRef(false);
   const conflictWarning = "This tab has unsaved draft changes, and another tab saved a different draft. I kept this tab's picks. Resetting the draft will clear them and resolve the conflict.";
 
   const restoreRaw = useCallback((raw: string | null) => {
@@ -483,9 +487,11 @@ export const useDraftState = () => {
       knownRawRef.current = raw;
       unsavedRef.current = false;
       emitBrowserStorageChange(FANTASY_DRAFT_STORAGE_KEY);
+      setStorageBlocked(readBlockedRef.current);
       return true;
     } catch {
       unsavedRef.current = true;
+      setStorageBlocked(true);
       setPersistenceError("This draft is running in this tab, but changes cannot be saved locally.");
       return false;
     }
@@ -507,6 +513,8 @@ export const useDraftState = () => {
     } catch {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- report browser storage access after hydration
       setPersistenceError("This draft is running in this tab, but your browser is blocking local saves.");
+      readBlockedRef.current = true;
+      setStorageBlocked(true);
     }
     if (saved) {
       try {
@@ -979,5 +987,6 @@ export const useDraftState = () => {
     userTeam,
     isLoaded,
     persistenceError,
+    storageBlocked,
   };
 };

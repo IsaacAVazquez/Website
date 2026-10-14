@@ -61,10 +61,10 @@
  * The room
  * ======================================================================== */
 /* The pinned bar keeps one height. A cell whose value changes from pick to pick holds the width
-   of its widest form, measured in the browser ("Pick 240 of 240" is 132px, "20 of 20" is 60px,
-   and "#229 in 22 picks" is 115px), so where the bar wraps depends on the screen and never on
-   the pick. */
-.ffb-br-cell-pick > .ffb-bug-value { min-inline-size: 133px; }
+   of its widest form, measured in the browser ("#240 / 240" is 101px, "20 of 20" is 60px, and
+   "#229 in 22 picks" is 115px), so where the bar wraps depends on the screen and never on the
+   pick. */
+.ffb-br-cell-pick > .ffb-bug-value { min-inline-size: 101px; }
 .ffb-br-cell-round > .ffb-bug-value { min-inline-size: 61px; }
 .ffb-br-cell-next > .ffb-bug-value { min-inline-size: 116px; }
 /* Undo and redo carry an icon. */
@@ -74,8 +74,11 @@
   justify-content: center;
   gap: 6px;
 }
-/* The status heading is the cell's value, and it takes the focus after a pick. */
+/* The status heading is the cell's value, and it takes the focus after a pick. On the live cell
+   the scorebug's own ring would be the highlighter on the highlighter, so it is drawn in the ink
+   that reads on the fill, in both themes. */
 .ffb-br-bug h2.ffb-bug-value:focus-visible { outline-offset: 2px; }
+.ffb-root .ffb-br-bug .ffb-bug-live > h2.ffb-bug-value:focus-visible { outline: 2px solid var(--ffb-on-fill); }
 
 /* What Undo removes, as one muted line under the last picks. */
 .ffb-br-undo-note { padding-bottom: var(--ffb-s3); }
@@ -96,24 +99,26 @@
 }
 .ffb-br-fit > .ffb-details { border-top: 0; }
 .ffb-br-fit > .ffb-details > summary { justify-content: flex-start; font-size: 13px; }
-.ffb-br-fit-why { display: grid; gap: var(--ffb-s1); margin: 0; padding: 0; list-style: none; }
+.ffb-br-fit-why { display: grid; gap: var(--ffb-s2); }
+.ffb-br-fit-why > ul { display: grid; gap: var(--ffb-s1); margin: 0; padding: 0; list-style: none; }
 .ffb-br-fit-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--ffb-s1) var(--ffb-s3); }
 .ffb-br-recnote { max-width: none; padding-block: var(--ffb-s2) var(--ffb-s4); }
 .ffb-br-recline { padding-bottom: var(--ffb-s4); }
 
-/* The board. Board rank, chip, name, team, bye, the market's number, and Draft. */
-.ffb-br-board { --ffb-cols: 40px 46px minmax(140px, 1fr) 36px 30px 96px 56px; }
-/* The reason a row is ordered off the ADP column takes a second line under the name. */
+/* The board. Rank, chip, name, team, bye, the market's ADP, the PPR consensus rank, and Draft.
+   With no room ADP it is one number, the source's rank, whose two-word head takes two lines. */
+.ffb-br-board { --ffb-cols: 40px 46px minmax(140px, 1fr) 36px 30px 88px 64px 56px; }
+.ffb-br-board.ffb-br-no-adp { --ffb-cols: 48px 46px minmax(140px, 1fr) 36px 30px 56px; }
+.ffb-br-no-adp > .ffb-sticky > .ffb-colhead > :first-child { white-space: normal; }
+/* The reason a row is ordered off the ADP column takes a second line under the name, and wraps
+   there, since the part that says anything is at its end. */
 .ffb-br-board .ffb-row > .ffb-br-why {
   grid-column: 3 / -2;
   grid-row: 2;
-  overflow: hidden;
   padding-bottom: 6px;
   color: var(--ffb-muted);
   font-size: 12px;
   line-height: 1.3;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* The rail's blocks. */
@@ -142,7 +147,15 @@
 .ffb-br-bar > .ffb-br-bar-build {
   flex: 1 1 0;
   justify-content: space-between;
+  gap: var(--ffb-s3);
   min-width: 0;
+}
+.ffb-br-bar-counts { display: inline-flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 var(--ffb-s4); }
+
+/* The rail hides where the bottom bar and the build sheet carry it. A screen rule, so paper,
+   which is narrower than 1200px, still prints the build, the pick grid, and every pick. */
+@media screen and (max-width: 1199.98px) {
+  .ffb-br-rail { display: none; }
 }
 .ffb-br-sheet-head { justify-content: flex-end; padding-block: var(--ffb-s2); border-bottom: 0; }
 .ffb-br-sheet-body { padding-top: 0; }
@@ -166,9 +179,11 @@
      its label ("ADP Undrafted" beside "WR127" at its widest). The kit's row leaves that 244px at
      360, and the widest line needs 272, so the board takes the kit's tighter row
      (`ffb-board-tight`), and the number is the part that gives. */
-  /* A phone pins the scorebug's two rows and the board's 64px bar, 176px in all, which is more
-     than the kit's scroll margin allows for. The scorebug's height is the measured one. */
-  .ffb-br-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 112px) + 68px); }
+  /* A phone pins the scorebug's two rows and nothing else. The board's bar scrolls with the list,
+     as it does in the other two rooms, so the list keeps the screen at 200% zoom too, and a
+     search that shortens the list brings the bar back with the board's start. */
+  .ffb-br-board > .ffb-sticky { position: static; }
+  .ffb-br-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 112px) + 8px); }
   .ffb-br-board .ffb-row > .ffb-m-meta { overflow: hidden; text-overflow: ellipsis; }
   /* A finished draft has no live cell, so its one cell sits beside the actions. */
   .ffb-br-bug .ffb-br-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }

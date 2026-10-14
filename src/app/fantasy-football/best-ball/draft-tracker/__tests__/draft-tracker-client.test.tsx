@@ -1,6 +1,6 @@
 import { execFileSync } from "node:child_process";
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
-import { BestBallDraftTrackerClient } from "../draft-tracker-client";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { BestBallDraftTrackerClient, findOtherSavedRoom } from "../draft-tracker-client";
 import {
   addBestBallDraftPick,
   getBestBallDraftStorageKey,
@@ -12,6 +12,31 @@ import type { Player } from "@/types";
 /** The room's one announcement: the visually hidden status line that outlives its screens. */
 const roomStatus = () =>
   screen.getAllByRole("status").find((status) => status.classList.contains("sr-only")) as HTMLElement;
+
+/**
+ * A room in `contest` from `slot` with `count` picks logged. The room checks a
+ * save against its preset, so the picks are added to the save the room itself
+ * wrote, and the page is rendered again on it.
+ */
+async function seedRoom(contest: string, slot: number, count: number) {
+  const firstView = render(<BestBallDraftTrackerClient initialContest={contest} />);
+  if (slot !== 1) fireEvent.click(await screen.findByRole("radio", { name: String(slot) }));
+  fireEvent.click(await screen.findByRole("button", { name: `Open draft room from slot ${slot}` }));
+  const key = getBestBallDraftStorageKey(2026, contest);
+  await waitFor(() => expect(window.localStorage.getItem(key)).toMatch(/"startedAt":"/));
+  let state = JSON.parse(window.localStorage.getItem(key) as string) as BestBallDraftState;
+  for (let index = 0; index < count; index += 1) {
+    state = addBestBallDraftPick(state, {
+      ...mockPlayers[index % mockPlayers.length],
+      id: `filled-${index + 1}`,
+      name: `Filled ${index + 1}`,
+    });
+  }
+  expect(state.picks).toHaveLength(count);
+  firstView.unmount();
+  window.localStorage.setItem(key, JSON.stringify(state));
+  return render(<BestBallDraftTrackerClient initialContest={contest} />);
+}
 
 const mockReplace = jest.fn();
 let mockSourceDate = new Date().toISOString();
@@ -59,6 +84,7 @@ const mockPlayers: Player[] = [
   ["qb-1", "Josh Allen", "BUF", "QB", 12, 14.1, 7],
   ["te-1", "Brock Bowers", "LV", "TE", 15, 16.4, 8],
   ["wr-3", "Amon-Ra St. Brown", "DET", "WR", 4, 4.5, 8],
+  ["wr-4", "Marvin Harrison Jr.", "ARI", "WR", 30, 31.5, 8],
 ].map(([id, name, team, position, rank, adp, bye]) => ({
   id: String(id),
   name: String(name),
@@ -208,6 +234,12 @@ describe("BestBallDraftTrackerClient", () => {
       // The drawer's head names the rank it prints, since the board is ordered by the market.
       expect(within(dialog).getByText("Board rank 1")).toBeInTheDocument();
       expect(within(dialog).queryByText(/reach|value/i)).not.toBeInTheDocument();
+
+      // Logged, his sticker prints the position alone, since its rank is the withheld consensus's.
+      fireEvent.click(within(dialog).getByRole("button", { name: /Log this pick/ }));
+      const sticker = await screen.findByRole("button", { name: "Undo back to pick 1 (Jahmyr Gibbs)" });
+      expect(sticker).toHaveTextContent(/RB · DET/);
+      expect(sticker).not.toHaveTextContent(/RB\d/);
     }
   );
 
@@ -496,18 +528,26 @@ describe("BestBallDraftTrackerClient", () => {
     fireEvent.click(screen.getByRole("button", { name: "Open draft room from slot 3" }));
 
     const bug = screen.getByRole("region", { name: "Live draft status" });
-    // The counter is the whole text of one element, which the e2e spec reads.
-    expect(within(bug).getByText((_, node) => node?.textContent === "Pick 1 of 216" && node.tagName === "P"))
-      .toBeInTheDocument();
-    expect(within(bug).getByText("Overall").nextElementSibling).toHaveTextContent(/^Pick 1 of 216$/);
+    // The pick cell prints as the other two rooms print it: the spaced form from
+    // 768px and the tight one on a phone, each the whole text of its own span.
+    expect(within(bug).getByText("Pick").nextElementSibling).toHaveTextContent(/^#1\/216#1 \/ 216$/);
+    expect(within(bug).getByText("#1 / 216")).toHaveClass("ffb-not-phone");
+    expect(within(bug).getByText("#1/216")).toHaveClass("ffb-only-phone");
     expect(within(bug).getByText("Round").nextElementSibling).toHaveTextContent(/^1 of 18$/);
     expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
       .toHaveTextContent(/^#3 in 2 picks$/);
     expect(screen.getByRole("heading", { name: "Slot 1 is on the clock" })).toHaveTextContent(
       "Slot 1 is on the clockSlot 1"
     );
+    // The on-the-clock cell names the pick just logged, and the first overall pick before any.
+    const onClock = screen.getByRole("heading", { name: "Slot 1 is on the clock" }).parentElement as HTMLElement;
+    expect(within(onClock).getByText("First overall pick")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    expect(
+      within(screen.getByRole("heading", { name: "Slot 2 is on the clock" }).parentElement as HTMLElement)
+        .getByText("Prev · J. Chase #1")
+    ).toBeInTheDocument();
     expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
       .toHaveTextContent(/^#3 in 1 pick$/);
     expect(roomStatus()).toHaveTextContent(
@@ -517,13 +557,137 @@ describe("BestBallDraftTrackerClient", () => {
     expect(within(bug).queryByRole("status")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
-    expect(within(bug).getByText("Overall").nextElementSibling).toHaveTextContent(/^Pick 3 of 216$/);
+    expect(within(bug).getByText("#3 / 216")).toBeInTheDocument();
     // Slot 3 picks 3 and then 22 in a twelve-team snake.
     expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
       .toHaveTextContent(/^Now then #22$/);
     expect(screen.getByRole("heading", { name: "You are on the clock at pick 3" })).toHaveTextContent(
       "You are on the clock at pick 3You"
     );
+  });
+
+  it("marks the turn after the user's own pick on the board while the user is on the clock", async () => {
+    // Slot 6 of a six-team snake picks 6 and then 7, so the line sits above the second row.
+    render(<BestBallDraftTrackerClient initialContest="six-man" />);
+    fireEvent.click(await screen.findByRole("radio", { name: "6" }));
+    fireEvent.click(screen.getByRole("button", { name: "Open draft room from slot 6" }));
+    for (const name of ["Ja'Marr Chase", "Bijan Robinson", "Puka Nacua", "Amon-Ra St. Brown", "Josh Allen"]) {
+      fireEvent.click(screen.getByRole("button", { name: new RegExp(`^Draft ${name} at pick`) }));
+    }
+    expect(screen.getByRole("heading", { name: "You are on the clock at pick 6" })).toBeInTheDocument();
+    const line = screen.getByText("Your turn #7").closest("li") as HTMLElement;
+    expect(line.nextElementSibling).toHaveTextContent(/Marvin Harrison Jr\./);
+  });
+
+  it("says the last turn, and none left, in the next-turn cell, and that a full roster has no pick to fit", async () => {
+    // Slot 1 picks the last pick of the eighteenth round, 216.
+    const lastTurn = await seedRoom("bbm-vii", 1, 215);
+    const bug = await screen.findByRole("region", { name: "Live draft status" });
+    expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
+      .toHaveTextContent(/^Now last turn$/);
+    lastTurn.unmount();
+    window.localStorage.clear();
+
+    // Slot 12 picks 205, the first pick of the eighteenth round, and then no more.
+    await seedRoom("bbm-vii", 12, 205);
+    const after = await screen.findByRole("region", { name: "Live draft status" });
+    expect(within(after).getByText("Your next turn").parentElement?.nextElementSibling)
+      .toHaveTextContent(/^None left$/);
+    expect(screen.getByText("Your roster is full, so there is no next pick to fit.")).toBeVisible();
+    expect(screen.queryByText(/stay hidden until your turn/)).not.toBeInTheDocument();
+  });
+
+  it("sends focus to the status heading when the draft's last pick is logged from a row", async () => {
+    await seedRoom("bbm-vii", 1, 215);
+    await screen.findByRole("heading", { name: "Slot 1 is on the clock" }).catch(() => null);
+    const [last] = await screen.findAllByRole("button", { name: /^Draft .+ at pick 216$/ });
+    act(() => last.focus());
+    fireEvent.click(last);
+    expect(screen.getByRole("heading", { name: "Draft complete" })).toHaveFocus();
+  });
+
+  it("prints the roster target words, and none where the range has closed on the count", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    const targets = screen.getByRole("region", { name: "Roster targets that update" });
+    const row = (position: string) => within(targets).getByText(position).closest(".ffb-fact") as HTMLElement;
+    expect(row("QB")).toHaveTextContent(/^QB0 \/ 3Range 2 to 3, 2 short\. /);
+    expect(within(row("QB")).getByText("2 short")).toHaveClass("ffb-muted");
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    expect(row("WR")).toHaveTextContent(/Range 7 to 8, 6 short\. /);
+  });
+
+  it("closes an open build sheet when the window grows past 1200px", async () => {
+    const listeners: Array<() => void> = [];
+    const query = { matches: false, addEventListener: (_: string, fn: () => void) => listeners.push(fn), removeEventListener: jest.fn() };
+    const original = window.matchMedia;
+    window.matchMedia = jest.fn().mockImplementation((media: string) =>
+      media === "(min-width: 1200px)" ? query : original(media)
+    );
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    fireEvent.click(screen.getByRole("button", { name: /My build/ }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    query.matches = true;
+    act(() => listeners.forEach((listener) => listener()));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    window.matchMedia = original;
+  });
+
+  it("prints the build's four counts against their targets in the bar's build button", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
+    const build = screen.getByRole("button", { name: /My build/ });
+    // From 768px; a phone keeps the total alone.
+    expect(within(build).getByText("QB 0/3 · RB 0/5 · WR 1/8 · TE 0/2")).toHaveClass("ffb-not-phone");
+    expect(within(build).getByText("1 / 18")).toBeInTheDocument();
+  });
+
+  it("names a started room saved in another contest on setup, and opens it", async () => {
+    // A Superflex room two picks in, then the bare route, which opens on BBM VII.
+    const superflex = await seedRoom("superflex", 1, 2);
+    superflex.unmount();
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+
+    expect(await screen.findByText(/^A Superflex room is saved at pick 3\./)).toBeVisible();
+    fireEvent.click(screen.getByRole("link", { name: "Open it" }));
+    expect(mockReplace).toHaveBeenLastCalledWith(
+      "/fantasy-football/best-ball/draft-tracker?contest=superflex",
+      { scroll: false }
+    );
+    expect(await screen.findByRole("heading", { name: "Slot 3 is on the clock" })).toBeVisible();
+  });
+
+  it("finds the last updated started room of another contest and passes over the rest", () => {
+    const saves: Record<string, string> = {
+      "fantasy-best-ball-draft-v1-2026-bbm-vii": JSON.stringify({ contestId: "bbm-vii", startedAt: "x", picks: [{}], rules: { teams: 12, rounds: 18 }, updatedAt: "2026-08-03T00:00:00Z" }),
+      "fantasy-best-ball-draft-v1-2026-eliminator": JSON.stringify({ contestId: "eliminator", startedAt: "x", picks: [{}, {}], rules: { teams: 12, rounds: 18 }, updatedAt: "2026-08-02T00:00:00Z" }),
+      "fantasy-best-ball-draft-v1-2026-puppy": JSON.stringify({ contestId: "puppy", startedAt: "x", picks: [{}], rules: { teams: 12, rounds: 18 }, updatedAt: "2026-08-01T00:00:00Z" }),
+      "fantasy-best-ball-draft-v1-2026-superflex": JSON.stringify({ contestId: "superflex", startedAt: null, picks: [], rules: { teams: 12, rounds: 20 }, updatedAt: "2026-08-09T00:00:00Z" }),
+      "fantasy-best-ball-draft-v1-2026-sit-and-go-previous": JSON.stringify({ contestId: "sit-and-go", startedAt: "x", picks: [], rules: { teams: 12, rounds: 18 }, updatedAt: "2026-08-09T00:00:00Z" }),
+      "fantasy-best-ball-draft-v1-2025-six-man": JSON.stringify({ contestId: "six-man", startedAt: "x", picks: [], rules: { teams: 6, rounds: 18 }, updatedAt: "2026-08-09T00:00:00Z" }),
+      "fantasy-best-ball-draft-v1-2026-weekly-winners": "not json",
+    };
+    const keys = Object.keys(saves);
+    const storage = { length: keys.length, key: (index: number) => keys[index] ?? null, getItem: (key: string) => saves[key] ?? null };
+
+    // BBM VII is the one showing, Superflex never started, the backup and the
+    // other season are not rooms, and Eliminator was updated after the Puppy.
+    expect(findOtherSavedRoom(storage, 2026, "bbm-vii")).toEqual({ contestId: "eliminator", currentPick: 3 });
+    expect(findOtherSavedRoom(storage, 2026, "eliminator")).toEqual({ contestId: "bbm-vii", currentPick: 2 });
+  });
+
+  it("closes the Undo sentence with one full stop after a name that ends in one", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "Draft Marvin Harrison Jr. at pick 1" }));
+
+    expect(document.getElementById("best-ball-undo-target")).toHaveTextContent(
+      /^Undo removes pick 1, Marvin Harrison Jr\. The picks above reach further back\./
+    );
+    expect(roomStatus()).toHaveTextContent(/Last pick: Marvin Harrison Jr\.$/);
   });
 
   it("names the pick Undo removes and describes the Undo button by it", async () => {
@@ -589,7 +753,7 @@ describe("BestBallDraftTrackerClient", () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
     fireEvent.click(await screen.findByRole("button", { name: "Open draft room from slot 1" }));
 
-    fireEvent.click(screen.getByRole("link", { name: "Skip to your roster" }));
+    fireEvent.click(screen.getByRole("link", { name: "Skip the board" }));
     expect(screen.getByRole("complementary", { name: "Roster build" })).toHaveFocus();
   });
 
@@ -637,7 +801,9 @@ describe("BestBallDraftTrackerClient", () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
 
     const heading = await screen.findByRole("heading", { name: "Draft complete" });
-    expect(heading).toHaveTextContent("Draft completeComplete");
+    // The finished draft's one cell is the pick cell, and it reads "Done", as the other two rooms' does.
+    expect(heading).toHaveTextContent("Draft completeDone");
+    expect(heading.previousElementSibling).toHaveTextContent(/^Pick$/);
     expect(heading).toHaveAttribute("tabindex", "-1");
     expect(
       screen.getByText("The draft is complete, so there is no next pick to fit.")
@@ -647,13 +813,18 @@ describe("BestBallDraftTrackerClient", () => {
 
     // Nobody is on the clock and no turn is left, so the bar drops those cells.
     const bug = screen.getByRole("region", { name: "Live draft status" });
-    expect(within(bug).queryByText("Overall")).not.toBeInTheDocument();
+    expect(within(bug).getAllByText("Pick")).toHaveLength(1);
+    expect(within(bug).queryByText("Round")).not.toBeInTheDocument();
     expect(within(bug).queryByText("On the clock")).not.toBeInTheDocument();
     expect(within(bug).queryByText("Your next turn")).not.toBeInTheDocument();
     expect(roomStatus()).toHaveTextContent(/^Draft complete\.$/);
     expect(screen.getByRole("button", { name: "Redo pick (nothing to redo)" })).toBeDisabled();
     for (const button of screen.getAllByTestId("best-ball-board-draft")) expect(button).toBeDisabled();
     expect(screen.getByRole("heading", { name: "18 of 18 players" })).toBeVisible();
+    // The grid reads in snake order: round two runs from slot 12 back to slot 1.
+    const rail = screen.getByRole("complementary", { name: "Roster build" });
+    expect(within(rail).getByRole("img", { name: /^Pick 13, slot 12, Filled 13, / })).toBeInTheDocument();
+    expect(within(rail).getByRole("img", { name: /^Pick 24, slot 1, yours, Filled 24, / })).toBeInTheDocument();
   });
 
   it("keeps a legacy overloaded-format room as a local backup", async () => {

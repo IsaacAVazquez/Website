@@ -207,3 +207,22 @@ describe("focus after an action that removes its own button", () => {
     expect(document.activeElement).toBe(screen.getByRole("button", { name: "Remove Roster Runner" }));
   });
 });
+
+it("counts a one-place rank gain in the singular and a larger one in the plural", () => {
+  const near = { ...rb, rank: 6 };
+  const nearBoard = { ...board, flex: [near, add] };
+  const nearSnapshot = { ...snapshot, boards: { ppr: nearBoard, half_ppr: nearBoard, standard: nearBoard } };
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [near], availableIds: [add.id] }));
+  const view = render(<MyTeamPanel snapshot={nearSnapshot} board={nearSnapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+  fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+  expect(screen.getByText("Available Runner ranks 1 place ahead of Roster Runner on the flex board.")).toBeInTheDocument();
+  view.unmount();
+
+  // The shared fixture has the roster player at 20 and the available one at 5.
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+  fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+  expect(screen.getByText("Available Runner ranks 15 places ahead of Roster Runner on the flex board.")).toBeInTheDocument();
+});

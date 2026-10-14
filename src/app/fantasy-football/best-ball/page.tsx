@@ -11,7 +11,7 @@ import { BestBallClient } from "./best-ball-client";
 import { normalizeBestBallState } from "./best-ball-state";
 
 // One date for the metadata and the structured data, so the two cannot disagree.
-const dateModified = laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12");
+const dateModified = laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13");
 
 export const metadata = constructMetadata({
   title: "Best Ball Rankings and Draft Strategy",

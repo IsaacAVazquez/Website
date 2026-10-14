@@ -10,7 +10,7 @@ export const metadata: Metadata = constructMetadata({
     "A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.",
   canonicalUrl: "/fantasy-football/best-ball/draft-tracker",
   image: "/fantasy-football/best-ball/draft-tracker/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
 });
 
 const breadcrumbs = [

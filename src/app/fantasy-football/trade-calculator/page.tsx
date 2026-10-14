@@ -17,7 +17,7 @@ export const metadata: Metadata = constructMetadata({
     "Compare one-QB redraft trades using expert consensus, mock-draft ADP, and your league settings, with visible source dates and data limits.",
   canonicalUrl: "/fantasy-football/trade-calculator",
   image: "/fantasy-football/trade-calculator/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
 });
 
 const breadcrumbs = [

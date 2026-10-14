@@ -219,6 +219,9 @@
   .ffb-dt-bug .ffb-dt-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }
   /* The scorebug already pins two rows, so the board's bar scrolls with the list. */
   .ffb-dt-boardbar { position: static; }
+  /* The count sits beside the search where the two fit one row, as in the mock room. The search
+     keeps the kit's 160px floor, so it never sits in what is left of the position switch's row. */
+  .ffb-dt-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
   /* The VORP note is five lines here, so it prints after the first tier and the board starts sooner. */
   .ffb-dt-board { display: flex; flex-direction: column; }
   .ffb-dt-board > * { order: 3; }

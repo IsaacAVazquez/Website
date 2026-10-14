@@ -55,13 +55,19 @@ jest.mock("../components/DraftSetup", () => ({
     onResume,
     onStartDraft,
     focusHeadingOnMount,
+    storageBlocked,
   }: {
     onPreviewScoring?: (scoring: "STANDARD") => void;
     onResume?: () => void;
     onStartDraft?: () => void;
     focusHeadingOnMount?: boolean;
+    storageBlocked?: boolean;
   }) => (
-    <div data-testid="draft-setup-mock" data-focus-heading={String(Boolean(focusHeadingOnMount))}>
+    <div
+      data-testid="draft-setup-mock"
+      data-focus-heading={String(Boolean(focusHeadingOnMount))}
+      data-storage-blocked={String(Boolean(storageBlocked))}
+    >
       Draft setup mock
       <button type="button" onClick={() => onPreviewScoring?.("STANDARD")}>
         Preview Standard
@@ -100,7 +106,7 @@ describe("DraftTrackerClient", () => {
         teams: [
           {
             teamNumber: 1,
-            picks: [],
+            picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "picked-1", adp: 1 } }],
             positionCounts: { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 },
             totalValue: 0,
             projectedPoints: 0,
@@ -205,6 +211,12 @@ describe("DraftTrackerClient", () => {
     expect(screen.queryByText(/^ADP$/)).not.toBeInTheDocument();
     expect(screen.queryByText(/^Proj\. Pts$/)).not.toBeInTheDocument();
     expect(container.querySelector("button button")).not.toBeInTheDocument();
+
+    // What the room hands the shared parts: the user's one pick on the roster,
+    // the cell on the clock in its slot, and the user's slot.
+    expect(screen.getByText("1 of 15 picked")).toBeVisible();
+    expect(screen.getByRole("img", { name: "Pick 2, slot 2, on the clock" })).toHaveClass("ffb-is-live");
+    expect(screen.getByText("Slot 1 is yours")).toBeVisible();
 
     // The compact strip and the board row both offer the best available
     // player, so the detail affordance legitimately appears twice.
@@ -629,7 +641,11 @@ describe("DraftTrackerClient", () => {
   it("offers a way past the board that lands on the rail", () => {
     render(<DraftTrackerClient />);
 
-    const skip = screen.getByRole("link", { name: "Skip to your roster" });
+    // Below 1200px the roster is drawn above the link, so its name says what it skips and not where it lands.
+    const skip = screen.getByRole("link", { name: "Skip the board" });
+    expect(document.querySelector(skip.getAttribute("href") as string)).toBe(
+      screen.getByRole("complementary", { name: "Your draft" })
+    );
     // It comes before the board, so a keyboard meets it first.
     expect(
       skip.compareDocumentPosition(screen.getByRole("region", { name: "Draft board" })) &
@@ -638,5 +654,136 @@ describe("DraftTrackerClient", () => {
     fireEvent.click(skip);
 
     expect(screen.getByRole("complementary", { name: "Your draft" })).toHaveFocus();
+  });
+
+  it("lays round two of a snake room out from the room's own order", () => {
+    const state = mockUseDraftState();
+    const picks = Array.from({ length: 10 }, (_, index) => ({
+      pickNumber: index + 1,
+      teamNumber: index + 1,
+      round: 1,
+      player: { id: `picked-${index + 1}`, adp: index + 1 },
+    }));
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      draftState: { ...state.draftState, picks, currentPick: 11, currentRound: 2 },
+      isUserPick: false,
+      currentTeamNumber: 10,
+    });
+
+    render(<DraftTrackerClient />);
+
+    // Pick 11 opens round two from the far end in a snake, so it is slot 10's.
+    // A linear order would put it in slot 1.
+    expect(screen.getByRole("img", { name: "Pick 11, slot 10, on the clock" })).toHaveClass("ffb-is-live");
+    expect(screen.getByRole("img", { name: "Pick 20, slot 1, yours, open" })).toBeInTheDocument();
+  });
+
+  it("ends the announcement once after a name that ends in a full stop", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      draftState: {
+        ...state.draftState,
+        picks: [{ pickNumber: 1, teamNumber: 1, round: 1, player: { id: "jr-1", name: "Travis Etienne Jr.", adp: 1 } }],
+      },
+    });
+
+    render(<DraftTrackerClient />);
+
+    expect(
+      screen.getAllByRole("status").find((status) => /Last pick:/.test(status.textContent ?? ""))
+    ).toHaveTextContent(/Last pick: Travis Etienne Jr\.$/);
+  });
+
+  it("does not say the picks stay on the device when the browser cannot save", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      persistenceError: "This draft is running in this tab, but changes cannot be saved locally.",
+      storageBlocked: true,
+    });
+
+    render(<DraftTrackerClient />);
+
+    expect(screen.queryByText(/picks stay on this device/)).not.toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Change league settings by starting a new room. Active drafts keep one fixed room configuration, and picks last only in this tab."
+      )
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("Advisory clock only, nothing auto-picks at zero · picks last only in this tab")
+    ).toBeInTheDocument();
+    // The setup screen gets the same state for its preset note.
+    fireEvent.click(screen.getByRole("button", { name: "New room" }));
+    expect(screen.getByTestId("draft-setup-mock")).toHaveAttribute("data-storage-blocked", "true");
+  });
+
+  it("keeps the device lines when two tabs conflict, since saving still works", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      persistenceError: "This draft changed in another tab. I loaded the latest save. Try that action again.",
+      storageBlocked: false,
+    });
+
+    render(<DraftTrackerClient />);
+
+    expect(
+      screen.getByText("Advisory clock only, nothing auto-picks at zero · picks stay on this device")
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/picks last only in this tab/)).not.toBeInTheDocument();
+  });
+
+  it("keeps the device lines as they were when the browser saves", () => {
+    render(<DraftTrackerClient />);
+
+    expect(
+      screen.getByText("Advisory clock only, nothing auto-picks at zero · picks stay on this device")
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/picks last only in this tab/)).not.toBeInTheDocument();
+  });
+
+  it("gives the drawer the room's VORP fact for its league size", () => {
+    mockSnapshotWithVorp(FRESH_AS_OF);
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getAllByRole("button", { name: "Open Bijan Robinson detail" })[0]);
+    const drawer = screen.getByRole("dialog", { name: "Bijan Robinson detail" });
+
+    // The room's VORP is read for a 10-team league, which is this room's size.
+    expect(within(drawer).getByText("VORP · 10-team")).toBeInTheDocument();
+    expect(within(drawer).getByText("VORP · 10-team").closest("div")).toHaveTextContent("54");
+  });
+
+  it("gives the drawer no VORP fact when the room has none", () => {
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getAllByRole("button", { name: "Open Bijan Robinson detail" })[0]);
+
+    expect(within(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).queryByText(/^VORP/)).not.toBeInTheDocument();
+  });
+
+  it("names the room's scoring on the drawer's points per game line", () => {
+    const snapshotResult = mockUseFantasySnapshot();
+    const [bijan] = snapshotResult.snapshot.overall;
+    mockUseFantasySnapshot.mockReturnValue({
+      ...snapshotResult,
+      snapshot: {
+        ...snapshotResult.snapshot,
+        overall: [
+          {
+            ...bijan,
+            gameLog: { season: 2025, throughWeek: 18, games: 17, low: 3.2, median: 19.7, average: 18.1, high: 31.5 },
+          },
+        ],
+      },
+    });
+    render(<DraftTrackerClient />);
+
+    fireEvent.click(screen.getAllByRole("button", { name: "Open Bijan Robinson detail" })[0]);
+
+    expect(within(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).getByText(/2025 season · PPR · 17 games/)).toBeInTheDocument();
   });
 });

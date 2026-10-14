@@ -147,6 +147,9 @@ const VISIBLE_BOARD_ROWS = 40;
 /** The tape shows at most this many room picks since the user's last turn. */
 const TAPE_LENGTH = 12;
 
+/** Ordinal words for a quick pick's lineup spot ("your second RB spot"). */
+const ORDINALS = ["first", "second", "third", "fourth", "fifth"];
+
 /** Three-digit room label off the seed; a display label, not an identifier. */
 function roomLabel(seed: number): string {
   return String(seed % 1000).padStart(3, "0");
@@ -159,6 +162,20 @@ function lineupShort(lineup: RedraftLineupSettings): string {
   if (lineup.K) parts.push("K");
   if (lineup.DST) parts.push("DST");
   return parts.join(" ");
+}
+
+/**
+ * The gap between a pick and a player's market ADP, in the form the redraft
+ * board prints under the same "At #N" head (`describeDelta` in the tracker's
+ * `components/DraftBoard.tsx`): one decimal on every value, and "±" inside
+ * two picks either way. `formatPickDelta` stays for the recap's whole-pick sums.
+ */
+export function formatGapAtPick(pickNumber: number, adp: number): string {
+  const delta = Number((pickNumber - adp).toFixed(1));
+  const magnitude = Math.abs(delta).toFixed(1);
+  if (delta >= 2) return `+${magnitude}`;
+  if (delta <= -2) return `\u2212${magnitude}`;
+  return `±${magnitude}`;
 }
 
 /**
@@ -177,13 +194,13 @@ function deltaAtPick(
   const magnitude = Math.abs(Math.round(delta * 10) / 10);
   if (isPlayerValueAtPick(player, pickNumber, round)) {
     return {
-      text: formatPickDelta(delta),
+      text: formatGapAtPick(pickNumber, player.adp),
       isValue: true,
       title: `Still on the board ${magnitude} picks past his market ADP`,
     };
   }
   return {
-    text: formatPickDelta(delta),
+    text: formatGapAtPick(pickNumber, player.adp),
     isValue: false,
     title:
       delta < 0
@@ -463,12 +480,11 @@ export function MockDraftClient() {
   const quickPicks = useMemo(() => {
     if (!isLive || !simulationAvailable || availablePlayers.length === 0) return [];
     const used = new Set<string>();
-    const picks: { key: string; tag: string; player: Player; sub: string; title: string }[] = [];
-    // "#" is a pick number everywhere else in the room, so the rank is spelled out.
+    // `reading` is the one fact each suggestion turns on, a rank or a gap. "#" is
+    // a pick number everywhere else in the room, so the rank is spelled out.
+    const picks: { key: string; tag: string; player: Player; reading: string; title: string }[] = [];
     const describe = (player: Player) =>
-      `${player.position}${player.positionRank ?? ""} · Rank ${formatRankValue(
-        player.rankEcr ?? player.averageRank
-      )}`;
+      `Rank ${formatRankValue(player.rankEcr ?? player.averageRank)}`;
 
     const best = availablePlayers[0];
     used.add(best.id);
@@ -476,7 +492,7 @@ export function MockDraftClient() {
       key: "best",
       tag: "Best left",
       player: best,
-      sub: describe(best),
+      reading: describe(best),
       title: `Top of the remaining board: ${best.name}`,
     });
 
@@ -485,13 +501,18 @@ export function MockDraftClient() {
     );
     let fill: Player | undefined;
     let fillSlot = "";
+    // The tag names the open lineup spot in words, since "RB1" beside the
+    // player's own chip reads as his position rank.
+    let fillSpot = "";
     for (const position of needOrder) {
       fill = availablePlayers.find(
         (player) => player.position === position && !used.has(player.id)
       );
       if (fill) {
         const lineupCount = settings.lineup[position as keyof RedraftLineupSettings] || 0;
-        fillSlot = `${position}${lineupCount - (lineupAssignment.openExact[position] ?? 0) + 1}`;
+        const spot = lineupCount - (lineupAssignment.openExact[position] ?? 0) + 1;
+        fillSlot = `${position}${spot}`;
+        fillSpot = lineupCount > 1 ? `your ${ORDINALS[spot - 1] ?? `number ${spot}`} ${position} spot` : `your ${position} spot`;
         break;
       }
     }
@@ -500,14 +521,15 @@ export function MockDraftClient() {
         (player) => FLEX_POSITIONS.has(player.position) && !used.has(player.id)
       );
       fillSlot = "FLX";
+      fillSpot = "your flex spot";
     }
     if (fill) {
       used.add(fill.id);
       picks.push({
         key: "fill",
-        tag: `Fills ${fillSlot}`,
+        tag: `Fills ${fillSpot}`,
         player: fill,
-        sub: describe(fill),
+        reading: describe(fill),
         title: `Best fit for your open ${fillSlot} spot: ${fill.name}`,
       });
     }
@@ -529,7 +551,7 @@ export function MockDraftClient() {
           key: "value",
           tag: "Value",
           player: value,
-          sub: `${value.position}${value.positionRank ?? ""} · ${formatPickDelta(valueDelta)} past ADP`,
+          reading: `${formatGapAtPick(currentPick, value.adp as number)} past ADP`,
           title: `${value.name} usually goes about ${Math.round(valueDelta)} picks earlier`,
         });
       }
@@ -662,6 +684,10 @@ export function MockDraftClient() {
 
   const backToRoom = () => {
     setRoomSetupOpen(false);
+    // The setup screen's scoring switch loads another board under the parked
+    // room. Going back puts the page on the room's own board, which is the one
+    // its head names and the only one Run it back will start on.
+    setScoringSelection(settings.scoringFormat);
     pendingFocusRef.current = "room";
   };
 
@@ -713,6 +739,10 @@ export function MockDraftClient() {
     // The clicked control leaves the DOM with the pick, so move focus to the
     // on-the-clock panel rather than letting it fall back to the document.
     focusClock();
+    // The other teams' picks follow this one, so whether it finished the room
+    // is only known on the next render. The effect takes "recap" only once the
+    // room is complete, and every other action replaces it.
+    pendingFocusRef.current = "recap";
   };
 
   const scoringLabel = FANTASY_SCORING_LABELS[routeScoring];
@@ -871,9 +901,15 @@ export function MockDraftClient() {
   })();
 
   const betweenTurns = picksSinceUserTurn.length;
-  const summary = `${setupForm.totalTeams}-team ${setupForm.draftType} · ${
-    setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`
-  } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`;
+  // A no-break space before each dot keeps a separator with the item before it,
+  // so a wrapped line never opens on one.
+  const summary = [
+    `${setupForm.totalTeams}-team ${setupForm.draftType}`,
+    setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`,
+    `${setupForm.rounds}-round rep`,
+    scoringLabel,
+    lineupShort(setupForm.lineup),
+  ].join("\u00A0· ");
   const reportHeadingId = `${roomIds}-report`;
   const haulHeadingId = `${roomIds}-haul`;
 
@@ -1175,7 +1211,7 @@ export function MockDraftClient() {
                     title="The engine finishes every remaining pick, including yours, and the room goes straight to the recap. Nothing takes that back."
                     className="ffb-bug-btn ffb-mk-sim"
                   >
-                    Sim to end <small className="ffb-bug-long">no take back</small>
+                    Sim to end <small>no take back</small>
                   </button>
                 </>
               }
@@ -1244,11 +1280,20 @@ export function MockDraftClient() {
                 between, so name the room here, as the redraft room does. */}
             <h2 className="sr-only">Your mock room</h2>
 
-            <DraftLastPicks
-              picks={tapePicks}
-              userTeam={settings.userTeam}
-              heading="Since your last pick"
-            />
+            {/* A mock drafter reads the room by these picks, so the row scrolls
+                sideways at every width and none is out of reach, and the heading
+                says so when the cap of twelve cuts the set. */}
+            <div className="ffb-mk-tape">
+              <DraftLastPicks
+                picks={tapePicks}
+                userTeam={settings.userTeam}
+                heading={
+                  picksSinceUserTurn.length > TAPE_LENGTH
+                    ? `Since your last pick, newest ${TAPE_LENGTH} of ${picksSinceUserTurn.length}`
+                    : "Since your last pick"
+                }
+              />
+            </div>
 
             {/* The scorebug's measured height is where the board's bar and the rail
                 pin, and the two bars together are what a focused row clears. */}
@@ -1273,32 +1318,45 @@ export function MockDraftClient() {
                 >
                   <div className="ffb-strip-head">
                     <h3 className="ffb-turn-tab">You&apos;re up</h3>
-                    {/* A phone's quick picks drop the word "Draft" to sit two to a
-                        row, so the note there says what a press does. */}
                     {simulationAvailable ? (
-                      <p className="ffb-mk-turn-note">
-                        <span className="ffb-only-phone">Select one to draft it</span>
-                        <span className="ffb-not-phone">The room resumes the moment you draft</span>
-                      </p>
+                      <p className="ffb-mk-turn-note">The room resumes the moment you draft</p>
                     ) : null}
                   </div>
+                  {/* A suggestion is drawn on the kit's strip, as the other two rooms
+                      draw theirs, since a solid sticker is a pick already made. The
+                      first is the action that is mine to take now. Each button keeps
+                      the name it had as a sticker, which starts on its tag. */}
                   {quickPicks.length > 0 ? (
-                    <div className="ffb-mk-quicks">
-                      {quickPicks.map((quick) => (
-                        <button
-                          key={quick.key}
-                          type="button"
-                          onClick={() => draftPlayer(quick.player)}
-                          title={quick.title}
-                          className={`ffb-sticker ${positionClass(quick.player.position)} ffb-mk-quick`}
-                        >
-                          <span className="ffb-sticker-meta">
-                            <span>{quick.tag}</span> <span>{quick.sub}</span>
-                          </span>{" "}
-                          <span className="ffb-sticker-name">{shortName(quick.player)}</span>{" "}
-                          <span className="ffb-mk-quick-go">Draft</span>
-                        </button>
-                      ))}
+                    <div className="ffb-strip ffb-mk-quicks">
+                      {quickPicks.map((quick, index) => {
+                        const chip = `${quick.player.position}${quick.player.positionRank ?? ""}`;
+                        return (
+                          <div key={quick.key} className="ffb-strip-item">
+                            <span className="ffb-label">{quick.tag}</span>
+                            <div className="ffb-strip-line">
+                              <span className={`ffb-chip ${positionClass(quick.player.position)}`.trimEnd()}>
+                                {chip}
+                              </span>
+                              <span className="ffb-c-name" title={quick.player.name}>
+                                {quick.player.name}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => draftPlayer(quick.player)}
+                                title={quick.title}
+                                aria-label={`${quick.tag} ${chip} · ${quick.reading} ${shortName(quick.player)} Draft`}
+                                className={index === 0 ? "ffb-btn ffb-btn-now" : "ffb-log"}
+                              >
+                                Draft
+                              </button>
+                            </div>
+                            <p className="ffb-strip-note">
+                              {quick.reading}
+                              {quick.player.team ? ` · ${quick.player.team}` : ""}
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
                   ) : null}
                 </section>
@@ -1311,7 +1369,7 @@ export function MockDraftClient() {
                   }}
                   className="ffb-btn ffb-skip"
                 >
-                  Skip to your roster
+                  Skip the board
                 </a>
 
                 <section
@@ -1576,7 +1634,7 @@ export function MockDraftClient() {
             </div>
 
             <div className="ffb-mk-foot">
-              <p className="ffb-method">
+              <p className="ffb-method ffb-method-ruled">
                 Take a pick back and the same room replays · sim to end finishes the room and
                 cannot be taken back · nothing leaves this device
               </p>
@@ -1749,8 +1807,10 @@ export function MockDraftClient() {
             </div>
 
             <div className="ffb-mk-foot">
-              <p className="ffb-method">
-                Practice reps only, with no prediction in them · rooms stay on this device
+              <p className="ffb-method ffb-method-ruled">
+                {storageBlocked
+                  ? "Practice reps only, with no prediction in them · this room stays until this tab closes"
+                  : "Practice reps only, with no prediction in them · rooms stay on this device"}
               </p>
               <p className="ffb-method">{LEAD}</p>
             </div>

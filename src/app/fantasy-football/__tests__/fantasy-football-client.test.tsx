@@ -433,6 +433,15 @@ describe("FantasyFootballClient", () => {
 
     renderClient({ position: "overall", ranking: "vorp", teams: 14 });
 
+    // The row's plot is on the page's scale in rounds of fourteen too: ranks 1 to 20
+    // on a 42-rank window, where rounds of twelve would give 20 of 36.
+    expect(screen.getByText("In rounds of a 14-team draft")).toBeInTheDocument();
+    const rowPlot = screen.getByRole("img", { name: "Expert rank range 1 to 20" });
+    expect(rowPlot.style.getPropertyValue("--ffb-max")).toBe("47.62%");
+    expect(
+      Array.from(document.querySelectorAll(".ffb-rk-scale > span")).map((label) => label.textContent)
+    ).toEqual(["R1", "R2", "R3"]);
+
     fireEvent.click(screen.getByRole("button", { name: "Open Consensus First detail" }));
     const dialog = screen.getByRole("dialog", { name: "Consensus First detail" });
     expect(within(dialog).getByText("Each division is a round of a 14-team draft.")).toBeVisible();
@@ -442,6 +451,37 @@ describe("FantasyFootballClient", () => {
     expect(
       Array.from(dialog.querySelectorAll(".ffb-ov-axis-labels > span")).map((label) => label.textContent)
     ).toEqual(["R1", "R2", "R3"]);
+  });
+
+  it("keeps a position board in twelves in a VORP view with another league size, as its drawer is", () => {
+    currentSearchParams = new URLSearchParams("position=rb&scoring=ppr&ranking=vorp&teams=14");
+    mockSnapshot({
+      vorpSource: {
+        provider: "FantasyPros projected VORP",
+        asOf: "2026-08-17T00:00:00.000Z",
+        urls: { "14": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php" },
+        matchedCounts: { "14": 1 },
+      },
+      vorpRankings: { "14": [{ playerId: "rb-1", rank: 1, value: 70 }] },
+      players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey", minRank: 1, maxRank: 20 })],
+    });
+
+    renderClient({ ranking: "vorp", teams: 14 });
+
+    expect(screen.getByText("In RB ranks")).toBeInTheDocument();
+    expect(
+      Array.from(document.querySelectorAll(".ffb-rk-scale > span")).map((label) => label.textContent)
+    ).toEqual(["RB1", "RB13", "RB25"]);
+    // Ranks 1 to 20 on a 36-rank window of twelves.
+    expect(screen.getByRole("img", { name: "Expert rank range 1 to 20" }).style.getPropertyValue("--ffb-max")).toBe(
+      "55.56%"
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Open Christian McCaffrey detail" }));
+    const dialog = screen.getByRole("dialog", { name: "Christian McCaffrey detail" });
+    expect(within(dialog).getByText("Each division is 12 RB ranks.")).toBeVisible();
+    expect(
+      Array.from(dialog.querySelectorAll(".ffb-ov-axis-labels > span")).map((label) => label.textContent)
+    ).toEqual(["RB1", "RB13", "RB25"]);
   });
 
   it("orders the VORP view by sourced points above replacement for the selected league size", () => {
@@ -1243,9 +1283,59 @@ describe("FantasyFootballClient", () => {
     // The star left with its row, so focus goes to the Queued toggle and not to the page body.
     const queuedToggle = screen.getByRole("button", { name: "Show only queued players (0 on this board)" });
     expect(queuedToggle).toHaveFocus();
-    fireEvent.click(screen.getByRole("button", { name: "Show all players" }));
+    // Show all players removes itself, so it hands focus to the toggle on its own,
+    // whatever had focus before it was pressed.
+    const showAll = screen.getByRole("button", { name: "Show all players" });
+    act(() => {
+      showAll.focus();
+    });
+    expect(showAll).toHaveFocus();
+    fireEvent.click(showAll);
     expect(screen.getByText("Jahmyr Gibbs")).toBeVisible();
     expect(queuedToggle).toHaveFocus();
+  });
+
+  it("brings the board's start back under the pinned controls when a search shortens the list deep in the page", () => {
+    mockSnapshot({
+      players: [
+        makePlayer({ id: "rb-1", name: "Christian McCaffrey" }),
+        makePlayer({ id: "rb-2", name: "Bijan Robinson", rankEcr: 2, averageRank: 2, positionRank: 2 }),
+      ],
+    });
+    const scrollTo = jest.fn();
+    const realScrollTo = window.scrollTo;
+    window.scrollTo = scrollTo as unknown as typeof window.scrollTo;
+    // jsdom keeps scrollY as a plain value, so the test sets it and puts the original back.
+    const realScrollY = Object.getOwnPropertyDescriptor(window, "scrollY");
+    const setScrollY = (value: number) => Object.defineProperty(window, "scrollY", { configurable: true, value });
+    try {
+      renderClient();
+      const board = document.querySelector(".ffb-rk-board") as HTMLElement;
+      const search = document.getElementById("fantasy-search") as HTMLInputElement;
+      act(() => {
+        search.focus();
+      });
+
+      // Above the board's start nothing scrolls.
+      setScrollY(0);
+      jest.spyOn(board, "getBoundingClientRect").mockReturnValue({ top: 400 } as DOMRect);
+      fireEvent.change(search, { target: { value: "mcc" } });
+      expect(scrollTo).not.toHaveBeenCalled();
+
+      // Deep in the list, where the board starts 2600px above the screen, the
+      // board's start (page y 400) comes back to the top and the field keeps focus.
+      setScrollY(3000);
+      jest.spyOn(board, "getBoundingClientRect").mockReturnValue({ top: -2600 } as DOMRect);
+      fireEvent.change(search, { target: { value: "mccaffrey" } });
+      expect(scrollTo).toHaveBeenCalledTimes(1);
+      expect(scrollTo).toHaveBeenCalledWith({ top: 400, behavior: "instant" });
+      expect(search).toHaveFocus();
+      expect(screen.getByText("Christian McCaffrey")).toBeVisible();
+      expect(screen.queryByText("Bijan Robinson")).not.toBeInTheDocument();
+    } finally {
+      if (realScrollY) Object.defineProperty(window, "scrollY", realScrollY);
+      window.scrollTo = realScrollTo;
+    }
   });
 
   it("moves focus to the next queued row when one is unqueued from the queued view", () => {

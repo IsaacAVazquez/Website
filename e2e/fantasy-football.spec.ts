@@ -96,6 +96,11 @@ const BEST_BALL_PRESETS = [
   },
 ] as const;
 
+/** The best ball room's pick counter, read from the scorebug's Pick cell at any width. */
+function bestBallPickCounter(shell: Locator, pick: number) {
+  return shell.getByText(new RegExp(`^#${pick} ?/ ?216$`)).filter({ visible: true });
+}
+
 async function getPersistedBestBallPickCount(page: Page, contestId: string) {
   return page.evaluate((targetContestId) => {
     const key = Array.from({ length: window.localStorage.length }, (_, index) =>
@@ -427,8 +432,8 @@ test.describe("Fantasy football draft tracker", () => {
     // board renders, not hardcoded, since scheduled data refreshes reorder the
     // rankings and a name literal goes stale within days.
     // The setup screen abbreviates the scoring segments ("Half", "Std") while
-    // the live room's header chip spells the format out, so each format carries
-    // both names.
+    // the running room's league line spells the format out, so each format
+    // carries both names.
     const scoringFormats = [
       { control: "PPR", chip: "PPR", file: "ppr" },
       { control: "Half", chip: "Half PPR", file: "half_ppr" },
@@ -520,6 +525,32 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("button", { name: /^Confirm new draft/ })).toBeVisible();
     await page.getByRole("button", { name: "Back to room" }).click();
     await expect(loggedPicks).toHaveCount(2);
+  });
+
+  test("brings a focused row out from under the pinned bars", async ({ page }) => {
+    await page.goto("/fantasy-football/draft-tracker");
+    await waitForDraftTrackerHydration(page);
+    await page.getByRole("button", { name: /^Start draft/ }).click();
+
+    const board = page.getByRole("region", { name: "Draft board" });
+    const row = board.getByRole("button", { name: /^Log / }).nth(6);
+    await expect(row).toBeVisible();
+
+    // Leave the row above the screen, so that taking focus scrolls it back up to
+    // the top, where the scorebug and the board's bar are pinned. The kit's
+    // scroll margin is what stops it landing behind them, and nothing else
+    // measures that margin.
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await row.focus();
+    await expect
+      .poll(() =>
+        row.evaluate((element) => {
+          const box = element.getBoundingClientRect();
+          const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+          return hit === element || element.contains(hit);
+        })
+      )
+      .toBe(true);
   });
 
   test("applies a saved preset without changing the parked room", async ({ page }) => {
@@ -646,17 +677,17 @@ test.describe("Fantasy football best ball", () => {
     // Tapping the name opens the detail drawer now; the pick is logged from
     // the row's explicit Draft button.
     await shell.getByRole("button", { name: `Draft ${firstPlayerName} at pick 1` }).click();
-    // The room used to state the pick counter in three places at once. The distill pass
-    // left the sticky live bar as the single authority, so it now reads "Pick 2 of 216"
-    // rather than a bare "2 of 216" tile.
-    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    // The scorebug's Pick cell is the one place the room states its pick counter. It
+    // prints "#2 / 216" from 768px and "#2/216" on a phone, each as the whole text of
+    // its own span, the same as the redraft room's.
+    await expect(bestBallPickCounter(shell, 2)).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
 
     await page.reload();
     // CI webkit rehydrates the restored room slowly enough that the undo click
     // below can land on a not-yet-interactive button, so wait it out.
     await waitForBestBallHydration(page);
-    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    await expect(bestBallPickCounter(shell, 2)).toBeVisible();
     // The rail that shows the bare player name is hidden on phones and while a
     // stale ranking source pauses the model, so read the undo copy instead:
     // it names the persisted pick on every viewport and in every data state.
@@ -666,7 +697,7 @@ test.describe("Fantasy football best ball", () => {
     ).toBeVisible();
 
     await shell.getByRole("button", { name: "Undo last pick" }).click();
-    await expect(shell.getByText("Pick 1 of 216", { exact: true })).toBeVisible();
+    await expect(bestBallPickCounter(shell, 1)).toBeVisible();
     await expect(
       shell.getByRole("button", { name: `Draft ${firstPlayerName!} at pick 1` })
     ).toBeVisible();
@@ -681,7 +712,7 @@ test.describe("Fantasy football best ball", () => {
     });
     await expect(redo).toBeVisible();
     await redo.click();
-    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    await expect(bestBallPickCounter(shell, 2)).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
   });
 
