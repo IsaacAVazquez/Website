@@ -7,6 +7,7 @@ import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   startTransition,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -72,6 +73,9 @@ const SCORING_SHORT_LABELS: Record<FantasyRouteScoring, string> = {
   half_ppr: "Half",
   standard: "Std",
 };
+
+/** The room left above the toolbar when a filter brings it back on screen. */
+const TOOLBAR_SCROLL_GAP = 8;
 
 /** Tailwind's `md`, the width at which the tables fit without clipping. */
 const TABLE_LAYOUT_QUERY = "(min-width: 768px)";
@@ -345,6 +349,18 @@ export function WeeklyBoardClient({
     count: number;
   } | null>(null);
   const countLineRef = useRef<HTMLParagraphElement>(null);
+  const toolbarRef = useRef<HTMLDivElement>(null);
+  // A search or a filter that shortens the board while the page is scrolled deep
+  // pulls the page up to the end of the shorter document, which leaves the toolbar
+  // above the screen with focus still in it. When the change came from the
+  // toolbar, bring the toolbar back to the top of the screen, so the field being
+  // typed in stays in view and the list's start sits right under it.
+  useLayoutEffect(() => {
+    const toolbar = toolbarRef.current;
+    if (!toolbar || !toolbar.contains(document.activeElement)) return;
+    const top = toolbar.getBoundingClientRect().top;
+    if (top < 0) window.scrollTo({ top: window.scrollY + top - TOOLBAR_SCROLL_GAP, behavior: "instant" });
+  }, [windowKey]);
   const visibleCount =
     windowState?.key === windowKey ? windowState.count : startableDepth;
   const visiblePlayers = useMemo(
@@ -444,7 +460,7 @@ export function WeeklyBoardClient({
             who picks a format the seed lacks and then loses the fetch can
             still go back. The rest needs a board. */}
         {snapshot ? (
-          <div className="ffb-toolbar ffb-wk-toolbar">
+          <div ref={toolbarRef} className="ffb-toolbar ffb-wk-toolbar">
             {activeBoard && view === "rankings" ? (
               <>
                 <div className="ffb-seg ffb-seg-pos" role="group" aria-label="Board">
