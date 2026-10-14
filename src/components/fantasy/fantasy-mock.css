@@ -356,8 +356,9 @@
      measured height and not the kit's fallback. */
   .ffb-mk-boardbar { position: static; }
   .ffb-mk-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 0px) + var(--ffb-s2)); }
-  /* The search and the count share a row, which starts the list 24px sooner. */
-  .ffb-mk-board .ffb-toolbar > .ffb-search { flex: 1 1 0; min-width: 0; }
+  /* The count sits beside the search where the two fit one row, which starts the list 24px
+     sooner at 390px. The search keeps the kit's 160px floor, so it never sits in what is left
+     of the position switch's row. */
   .ffb-mk-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
   .ffb-mk-col > .ffb-notice { margin-bottom: var(--ffb-s2); }
   /* Two quick picks to a row. The whole sticker is the button, and the note beside the tab
