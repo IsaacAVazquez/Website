@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 
 import { WeeklyBoardClient } from "../weekly-client";
@@ -257,6 +257,40 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(screen.getByRole("status")).toHaveTextContent(
       `1 of ${FLEX_COUNT} players match`,
     );
+  });
+
+  describe("a search typed while the page is scrolled deep", () => {
+    let scrollTo: jest.SpyInstance;
+    beforeEach(() => {
+      scrollTo = jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+      Object.defineProperty(window, "scrollY", { configurable: true, value: 3000 });
+    });
+    afterEach(() => {
+      scrollTo.mockRestore();
+      Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+    });
+
+    function typeWithToolbarAt(top: number) {
+      renderClient("rankings");
+      const input = screen.getByLabelText("Search");
+      const toolbar = input.closest(".ffb-toolbar") as HTMLElement;
+      jest.spyOn(toolbar, "getBoundingClientRect").mockReturnValue({ top } as DOMRect);
+      act(() => input.focus());
+      fireEvent.change(input, { target: { value: "Flex Player 12" } });
+      return input;
+    }
+
+    it("brings the toolbar back to the top of the screen, with focus left in the field", () => {
+      // The page sits 3000px down and the shorter board leaves the toolbar 2500px above the screen.
+      const input = typeWithToolbarAt(-2500);
+      expect(scrollTo).toHaveBeenCalledWith({ top: 492, behavior: "instant" });
+      expect(document.activeElement).toBe(input);
+    });
+
+    it("leaves the page where it is when the toolbar is already on screen", () => {
+      typeWithToolbarAt(40);
+      expect(scrollTo).not.toHaveBeenCalled();
+    });
   });
 
   it("closes an opened window again when the filter changes", () => {
