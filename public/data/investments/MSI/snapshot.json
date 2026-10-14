@@ -1,10 +1,10 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6961,
-      "ttmPe": 35.13,
-      "marketCap": 73808035000,
-      "psRatio": 6.03,
-      "pbRatio": 27.62,
-      "pegRatio": 3.66
+      "ttmPe": 35.37,
+      "marketCap": 74311155000,
+      "psRatio": 6.07,
+      "pbRatio": 27.81,
+      "pegRatio": 3.68
     },
     "profitability": {
       "roe": 21.36,
@@ -6662,81 +6662,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.66,
-      "costOfEquity": 11.940000000000001,
+      "wacc": 10.65,
+      "costOfEquity": 11.92,
       "costOfDebt": 1.13,
       "taxRate": 25,
-      "beta": 0.8776,
-      "marketCap": 73808035000
+      "beta": 0.8763,
+      "marketCap": 74311155000
     },
     "beta": {
-      "beta5y": 0.8776
+      "beta5y": 0.8763
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 454.82,
-        "high": 458.31,
-        "low": 453.16,
-        "close": 456.93,
-        "volume": 731600
-      },
-      {
-        "date": "2025-10-02",
-        "open": 454.21,
-        "high": 454.36,
-        "low": 447.66,
-        "close": 448.03,
-        "volume": 723900
-      },
-      {
-        "date": "2025-10-03",
-        "open": 448.25,
-        "high": 458.91,
-        "low": 447.98,
-        "close": 452.9,
-        "volume": 583900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 454.79,
-        "high": 458.42,
-        "low": 453.05,
-        "close": 457.13,
-        "volume": 610300
-      },
-      {
-        "date": "2025-10-07",
-        "open": 457.65,
-        "high": 459.01,
-        "low": 453.96,
-        "close": 458.5,
-        "volume": 659700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 459.44,
-        "high": 465.45,
-        "low": 458.61,
-        "close": 462.26,
-        "volume": 804400
-      },
-      {
-        "date": "2025-10-09",
-        "open": 462.27,
-        "high": 462.27,
-        "low": 455.34,
-        "close": 457.63,
-        "volume": 538000
-      },
-      {
-        "date": "2025-10-10",
-        "open": 460.42,
-        "high": 462,
-        "low": 455.34,
-        "close": 456.3,
-        "volume": 831400
-      },
       {
         "date": "2025-10-13",
         "open": 457.32,
@@ -8688,6 +8624,70 @@
         "low": 443.68,
         "close": 448.03,
         "volume": 695900
+      },
+      {
+        "date": "2026-10-02",
+        "open": 449.8,
+        "high": 451.24,
+        "low": 445.96,
+        "close": 447.41,
+        "volume": 616300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 448.05,
+        "high": 458.15,
+        "low": 448.05,
+        "close": 455.37,
+        "volume": 834000
+      },
+      {
+        "date": "2026-10-06",
+        "open": 455.96,
+        "high": 459.15,
+        "low": 453.18,
+        "close": 456.28,
+        "volume": 1120700
+      },
+      {
+        "date": "2026-10-07",
+        "open": 456.28,
+        "high": 458.17,
+        "low": 448.25,
+        "close": 448.33,
+        "volume": 720900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 444.76,
+        "high": 450.65,
+        "low": 443.12,
+        "close": 447.12,
+        "volume": 722100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 447.11,
+        "high": 449,
+        "low": 442.07,
+        "close": 444.18,
+        "volume": 908600
+      },
+      {
+        "date": "2026-10-12",
+        "open": 444.79,
+        "high": 448.92,
+        "low": 441.05,
+        "close": 446.33,
+        "volume": 662900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 448.53,
+        "high": 451.19,
+        "low": 443.52,
+        "close": 449.01,
+        "volume": 847700
       }
     ],
     "news": [
@@ -8700,14 +8700,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
-        "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
-        "publisher": "Reuters",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
         "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
         "publisher": "ACCESS Newswire",
@@ -8716,19 +8708,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f603d4c0-9c31-31dd-a858-dbb715dcdfd7",
         "title": "Market Chatter: Motorola Solutions Reportedly in Advanced Talks to Acquire Silvus for $4.5 Billion",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/market-chatter-motorola-solutions-reportedly-131403183.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
+        "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
+        "publisher": "Reuters",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
         "type": "STORY"
       },
       {
@@ -8748,6 +8748,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
+        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
+        "publisher": "Reuters",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "6bb9845e-f29b-3d36-ab46-22c4f8fce1b7",
         "title": "Motorola to acquire wireless-radio maker Silvus for $4.4bn",
         "publisher": "Verdict",
@@ -8756,19 +8764,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
-        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
+        "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
-        "type": "VIDEO"
-      },
-      {
-        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
-        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-204457398.html",
         "type": "STORY"
       }
     ],
@@ -8776,8 +8776,8 @@
       {
         "name": "Dr. Mahesh Saptharishi Ph.D.",
         "title": "Executive VP & CTO",
-        "age": 46,
-        "yearBorn": 1979,
+        "age": 47,
+        "yearBorn": 1978,
         "totalPay": 2469300
       },
       {
@@ -8840,28 +8840,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.13,
-        "industryAvg": 25.19
+        "value": 35.37,
+        "industryAvg": 26.54
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.03,
-        "industryAvg": 4.11
+        "value": 6.07,
+        "industryAvg": 4.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.62,
-        "industryAvg": 5.58
+        "value": 27.81,
+        "industryAvg": 5.82
       },
       {
         "metric": "ROE",
         "value": 21.36,
-        "industryAvg": 16.13
+        "industryAvg": 16.12
       },
       {
         "metric": "ROA",
         "value": 2.91,
-        "industryAvg": 6.11
+        "industryAvg": 6.1
       },
       {
         "metric": "Gross Margin",
@@ -8871,7 +8871,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 31.89,
-        "industryAvg": 17.11
+        "industryAvg": 17.1
       },
       {
         "metric": "Net Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.3978,
-      "ttmPe": 31.62,
-      "marketCap": 58675918880,
-      "psRatio": 3.11,
-      "pbRatio": 14.2,
-      "pegRatio": 1.54
+      "ttmPe": 33.63,
+      "marketCap": 62412872550,
+      "psRatio": 3.31,
+      "pbRatio": 15.11,
+      "pegRatio": 1.64
     },
     "profitability": {
       "roe": 14.14,
@@ -5156,81 +5156,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.959999999999999,
-      "costOfEquity": 12.5,
+      "wacc": 12.01,
+      "costOfEquity": 12.520000000000001,
       "costOfDebt": 0.72,
       "taxRate": 25,
-      "beta": 0.9517,
-      "marketCap": 58675918880
+      "beta": 0.9547,
+      "marketCap": 62412872550
     },
     "beta": {
-      "beta5y": 0.9517
+      "beta5y": 0.9547
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 946.83,
-        "high": 955.33,
-        "low": 942.55,
-        "close": 944,
-        "volume": 247400
-      },
-      {
-        "date": "2025-10-02",
-        "open": 940.74,
-        "high": 954.53,
-        "low": 940.74,
-        "close": 953.75,
-        "volume": 268700
-      },
-      {
-        "date": "2025-10-03",
-        "open": 953.38,
-        "high": 969.68,
-        "low": 950.89,
-        "close": 956.59,
-        "volume": 240300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 960.57,
-        "high": 967.75,
-        "low": 950.86,
-        "close": 958.9,
-        "volume": 320300
-      },
-      {
-        "date": "2025-10-07",
-        "open": 960,
-        "high": 964.11,
-        "low": 953.82,
-        "close": 958.82,
-        "volume": 217100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 951.31,
-        "high": 967.63,
-        "low": 948.01,
-        "close": 967.19,
-        "volume": 194900
-      },
-      {
-        "date": "2025-10-09",
-        "open": 972.38,
-        "high": 973.27,
-        "low": 957.8,
-        "close": 968.53,
-        "volume": 230800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 976.69,
-        "high": 980.31,
-        "low": 945.15,
-        "close": 947.56,
-        "volume": 253600
-      },
       {
         "date": "2025-10-13",
         "open": 939.87,
@@ -7182,6 +7118,70 @@
         "low": 1240,
         "close": 1281.6801,
         "volume": 299100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 1289.01,
+        "high": 1300,
+        "low": 1274.8,
+        "close": 1280.3,
+        "volume": 270900
+      },
+      {
+        "date": "2026-10-05",
+        "open": 1277.04,
+        "high": 1292.35,
+        "low": 1267.15,
+        "close": 1286.84,
+        "volume": 207500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 1286.61,
+        "high": 1287.26,
+        "low": 1272.14,
+        "close": 1275.5601,
+        "volume": 218100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 1267.98,
+        "high": 1281.8,
+        "low": 1260.2,
+        "close": 1263.51,
+        "volume": 238300
+      },
+      {
+        "date": "2026-10-08",
+        "open": 1261.65,
+        "high": 1282.97,
+        "low": 1258.59,
+        "close": 1268.67,
+        "volume": 186700
+      },
+      {
+        "date": "2026-10-09",
+        "open": 1272.15,
+        "high": 1295.05,
+        "low": 1270.79,
+        "close": 1289.79,
+        "volume": 182600
+      },
+      {
+        "date": "2026-10-12",
+        "open": 1294.76,
+        "high": 1307.88,
+        "low": 1287.95,
+        "close": 1306.73,
+        "volume": 274600
+      },
+      {
+        "date": "2026-10-13",
+        "open": 1313.1801,
+        "high": 1327.33,
+        "low": 1304.15,
+        "close": 1325.1,
+        "volume": 284700
       }
     ],
     "news": [
@@ -7202,19 +7202,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
-        "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
         "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
+        "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
         "type": "STORY"
       },
       {
@@ -7226,19 +7226,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
-        "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
         "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
+        "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
         "type": "STORY"
       },
       {
@@ -7250,31 +7250,31 @@
         "type": "STORY"
       },
       {
-        "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
-        "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
         "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
+        "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
         "name": "Mr. Barry Greenhouse",
-        "title": "Senior Vice President of Merchandising & Supplier Management",
+        "title": "Senior Vice President of Brand, Online Experience & Assortment",
         "age": 52,
         "yearBorn": 1973
       },
       {
-        "name": "Mr. Brian Walker",
+        "name": "Mr. Brian Charles Walker",
         "title": "Senior Vice President of Sales & Onsite Services",
         "age": 47,
         "yearBorn": 1978
@@ -7334,18 +7334,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.62,
-        "industryAvg": 26.65
+        "value": 33.63,
+        "industryAvg": 27.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.11,
-        "industryAvg": 1.66
+        "value": 3.31,
+        "industryAvg": 1.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.2,
-        "industryAvg": 5.03
+        "value": 15.11,
+        "industryAvg": 5.09
       },
       {
         "metric": "ROE",

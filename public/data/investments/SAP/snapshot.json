@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9544,
-      "ttmPe": 26.21,
-      "marketCap": 240627616000,
-      "psRatio": 5.52,
-      "pbRatio": 4.71,
-      "pegRatio": 0.78
+      "ttmPe": 27.63,
+      "marketCap": 253635450000,
+      "psRatio": 5.82,
+      "pbRatio": 4.97,
+      "pegRatio": 0.83
     },
     "profitability": {
       "roe": 4.87,
@@ -6081,81 +6081,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.18,
-      "costOfEquity": 13.73,
+      "wacc": 13.239999999999998,
+      "costOfEquity": 13.76,
       "costOfDebt": 3.0700000000000003,
       "taxRate": 27,
-      "beta": 1.1128,
-      "marketCap": 240627616000
+      "beta": 1.1157,
+      "marketCap": 253635450000
     },
     "beta": {
-      "beta5y": 1.1128
+      "beta5y": 1.1157
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 265.84,
-        "high": 270.51,
-        "low": 265.8,
-        "close": 269.99,
-        "volume": 1394400
-      },
-      {
-        "date": "2025-10-02",
-        "open": 272.09,
-        "high": 273.84,
-        "low": 270.8,
-        "close": 271.91,
-        "volume": 1201300
-      },
-      {
-        "date": "2025-10-03",
-        "open": 269.93,
-        "high": 271.16,
-        "low": 268.09,
-        "close": 270.53,
-        "volume": 1027500
-      },
-      {
-        "date": "2025-10-06",
-        "open": 271.71,
-        "high": 274.4,
-        "low": 269.77,
-        "close": 274.28,
-        "volume": 1229300
-      },
-      {
-        "date": "2025-10-07",
-        "open": 275,
-        "high": 275.58,
-        "low": 273.59,
-        "close": 273.82,
-        "volume": 1051500
-      },
-      {
-        "date": "2025-10-08",
-        "open": 275.76,
-        "high": 277.5,
-        "low": 274.83,
-        "close": 277.15,
-        "volume": 1092300
-      },
-      {
-        "date": "2025-10-09",
-        "open": 275.59,
-        "high": 276.83,
-        "low": 274.14,
-        "close": 275.79,
-        "volume": 1157800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 275.86,
-        "high": 276.13,
-        "low": 265.48,
-        "close": 265.53,
-        "volume": 1327600
-      },
       {
         "date": "2025-10-13",
         "open": 267.39,
@@ -8107,6 +8043,70 @@
         "low": 209.1,
         "close": 210.79,
         "volume": 1968000
+      },
+      {
+        "date": "2026-10-02",
+        "open": 210.01,
+        "high": 210.31,
+        "low": 206.36,
+        "close": 208.57,
+        "volume": 1412400
+      },
+      {
+        "date": "2026-10-05",
+        "open": 208.61,
+        "high": 211.02,
+        "low": 206.46,
+        "close": 207.74,
+        "volume": 1347400
+      },
+      {
+        "date": "2026-10-06",
+        "open": 212.22,
+        "high": 213.69,
+        "low": 210.07,
+        "close": 210.46,
+        "volume": 1645100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 210.58,
+        "high": 211.54,
+        "low": 208.2,
+        "close": 210.13,
+        "volume": 1991600
+      },
+      {
+        "date": "2026-10-08",
+        "open": 210.91,
+        "high": 213.31,
+        "low": 205.91,
+        "close": 212.4,
+        "volume": 2254000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 213.74,
+        "high": 215.68,
+        "low": 213.22,
+        "close": 214.78,
+        "volume": 2235900
+      },
+      {
+        "date": "2026-10-12",
+        "open": 217.2,
+        "high": 221.22,
+        "low": 215.7,
+        "close": 217.85,
+        "volume": 2391100
+      },
+      {
+        "date": "2026-10-13",
+        "open": 218,
+        "high": 222.21,
+        "low": 218,
+        "close": 219.75,
+        "volume": 2138900
       }
     ],
     "news": [
@@ -8151,22 +8151,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
-        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
-        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
         "title": "SAP Reimagines How Enterprises Run With Business AI",
         "publisher": "PR Newswire",
@@ -8183,11 +8167,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc7431e9-96a0-3d51-92a5-36d5bd27848d",
-        "title": "SAP SE (SAP) Earns Bullish Call From Wells Fargo, Cited as ‘Defensive Horizontal Story’",
-        "publisher": "Insider Monkey",
+        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
+        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
+        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
+        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/sap-se-sap-earns-bullish-040315005.html",
+        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
         "type": "STORY"
       }
     ],
@@ -8197,87 +8197,87 @@
         "title": "Demand Manager & Works Council Europe Representative Member of Supervisory Board",
         "age": 43,
         "yearBorn": 1982,
-        "totalPay": 266495
+        "totalPay": 262253
       },
       {
         "name": "Mr. Andreas Hahn",
         "title": "Chairperson of Works Council Europe & Works Council Europe Rep Member of Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 266495
+        "totalPay": 262253
       },
       {
         "name": "Mr. Christian Klein",
         "title": "CEO & Member of Executive Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 5968347
+        "totalPay": 5873350
       },
       {
         "name": "Mr. Dominik Asam",
         "title": "CFO & Member of Executive Board",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2869071
+        "totalPay": 2823404
       },
       {
         "name": "Mr. Lars Lamade",
         "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 328866
+        "totalPay": 323631
       },
       {
         "name": "Mr. Muhammad Alam",
         "title": "Lead Product Engineering & Member of Executive Board",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2545875
+        "totalPay": 2505353
       },
       {
         "name": "Mr. Pascal Demat",
         "title": "Solution Advisor HCM & Works Council Europe Representative Member of Supervisory Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 266495
+        "totalPay": 262253
       },
       {
         "name": "Mr. Sebastian Steinhaeuser",
         "title": "Chief Strategy Officer & COO and Member of Executive Board",
         "age": 39,
         "yearBorn": 1986,
-        "totalPay": 2415463
+        "totalPay": 2377016
       },
       {
         "name": "Mr. Thomas Saueressig",
         "title": "Member of Executive Board",
         "age": 40,
         "yearBorn": 1985,
-        "totalPay": 2829380
+        "totalPay": 2784345
       },
       {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 2863401
+        "totalPay": 2817824
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.21,
-        "industryAvg": 25.11
+        "value": 27.63,
+        "industryAvg": 26.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.52,
-        "industryAvg": 4.8
+        "value": 5.82,
+        "industryAvg": 5.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.71,
-        "industryAvg": 5.36
+        "value": 4.97,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",

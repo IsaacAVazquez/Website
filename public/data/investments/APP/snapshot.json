@@ -1,10 +1,10 @@
 {
   "symbol": "APP",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.0101,
-      "ttmPe": 23.49,
-      "marketCap": 102485352720,
-      "psRatio": 15.01,
-      "pbRatio": 32.4,
-      "pegRatio": 0.29
+      "ttmPe": 20.93,
+      "marketCap": 91293305760,
+      "psRatio": 13.37,
+      "pbRatio": 28.86,
+      "pegRatio": 0.26
     },
     "profitability": {
       "roe": 45.839999999999996,
@@ -5698,81 +5698,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.21,
-      "costOfEquity": 23.96,
+      "wacc": 23.16,
+      "costOfEquity": 24,
       "costOfDebt": 1.46,
       "taxRate": 16,
-      "beta": 2.4577,
-      "marketCap": 102485352720
+      "beta": 2.4524,
+      "marketCap": 91293305760
     },
     "beta": {
-      "beta5y": 2.4577
+      "beta5y": 2.4524
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 714.835,
-        "high": 727.49,
-        "low": 697.506,
-        "close": 704.09,
-        "volume": 6210800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 710.19,
-        "high": 710.99,
-        "low": 674.4,
-        "close": 683.64,
-        "volume": 6075400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 691.02,
-        "high": 695,
-        "low": 673.17,
-        "close": 682.76,
-        "volume": 4205800
-      },
-      {
-        "date": "2025-10-06",
-        "open": 684.475,
-        "high": 687,
-        "low": 545,
-        "close": 587,
-        "volume": 14417700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 595.215,
-        "high": 644.47,
-        "low": 592.26,
-        "close": 631.85,
-        "volume": 11768700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 631.39,
-        "high": 654.98,
-        "low": 616.24,
-        "close": 629.7,
-        "volume": 5472900
-      },
-      {
-        "date": "2025-10-09",
-        "open": 615.94,
-        "high": 618.99,
-        "low": 591.5,
-        "close": 600.32,
-        "volume": 6289300
-      },
-      {
-        "date": "2025-10-10",
-        "open": 599.61,
-        "high": 601.83,
-        "low": 566.9,
-        "close": 569.89,
-        "volume": 6479100
-      },
       {
         "date": "2025-10-13",
         "open": 590,
@@ -7723,7 +7659,71 @@
         "high": 291.545,
         "low": 275.13,
         "close": 281.31,
-        "volume": 7990300
+        "volume": 8021700
+      },
+      {
+        "date": "2026-10-02",
+        "open": 270.175,
+        "high": 279.94,
+        "low": 266.84,
+        "close": 268.22,
+        "volume": 8969000
+      },
+      {
+        "date": "2026-10-05",
+        "open": 270.615,
+        "high": 287.2,
+        "low": 270,
+        "close": 281.97,
+        "volume": 6894700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 282.73,
+        "high": 283.76,
+        "low": 276.66,
+        "close": 278.78,
+        "volume": 4363000
+      },
+      {
+        "date": "2026-10-07",
+        "open": 274.845,
+        "high": 281.34,
+        "low": 269.41,
+        "close": 281.29,
+        "volume": 3528000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 276.08,
+        "high": 280.12,
+        "low": 271.1,
+        "close": 280.12,
+        "volume": 6124800
+      },
+      {
+        "date": "2026-10-09",
+        "open": 281.53,
+        "high": 282.49,
+        "low": 275.35,
+        "close": 277.04,
+        "volume": 3310800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 280,
+        "high": 283.66,
+        "low": 270.14,
+        "close": 270.87,
+        "volume": 3712100
+      },
+      {
+        "date": "2026-10-13",
+        "open": 268.275,
+        "high": 276.95,
+        "low": 267,
+        "close": 272.28,
+        "volume": 3830900
       }
     ],
     "news": [
@@ -7841,7 +7841,7 @@
       },
       {
         "name": "Ms. Victoria Valenzuela",
-        "title": "Consultant",
+        "title": "Consultant & Director",
         "age": 51,
         "yearBorn": 1974,
         "totalPay": 457000
@@ -7850,28 +7850,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.49,
-        "industryAvg": 23
+        "value": 20.93,
+        "industryAvg": 21.5
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.01,
-        "industryAvg": 2.96
+        "value": 13.37,
+        "industryAvg": 2.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 32.4,
-        "industryAvg": 4.98
+        "value": 28.86,
+        "industryAvg": 4.59
       },
       {
         "metric": "ROE",
         "value": 45.839999999999996,
-        "industryAvg": 27.32
+        "industryAvg": 26.47
       },
       {
         "metric": "ROA",
         "value": 15.85,
-        "industryAvg": 5.79
+        "industryAvg": 5.7299999999999995
       },
       {
         "metric": "Gross Margin",
@@ -7881,12 +7881,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 82.61,
-        "industryAvg": 17.86
+        "industryAvg": 17.76
       },
       {
         "metric": "Net Margin",
         "value": 65.84,
-        "industryAvg": 9.11
+        "industryAvg": 9.030000000000001
       }
     ]
   }

@@ -1,11 +1,14 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
-    }
+      "price": "2026-10-13"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.4543,
-      "ttmPe": 36.84,
-      "marketCap": 76972626988,
-      "psRatio": 4.57,
-      "pbRatio": 7.65,
-      "pegRatio": 11.51
+      "ttmPe": 38.32,
+      "marketCap": 80078667876,
+      "psRatio": 4.75,
+      "pbRatio": 7.96,
+      "pegRatio": 11.98
     },
     "profitability": {
       "roe": 5.33,
@@ -6120,81 +6123,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.11,
-      "costOfEquity": 11.85,
+      "wacc": 10.18,
+      "costOfEquity": 11.86,
       "costOfDebt": 0.64,
       "taxRate": 22,
-      "beta": 0.8653,
-      "marketCap": 76972626988
+      "beta": 0.8675,
+      "marketCap": 80078667876
     },
     "beta": {
-      "beta5y": 0.8653
+      "beta5y": 0.8675
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 273.01,
-        "high": 273.85,
-        "low": 266.87,
-        "close": 269.71,
-        "volume": 1411700
-      },
-      {
-        "date": "2025-10-02",
-        "open": 269.61,
-        "high": 274.31,
-        "low": 268.49,
-        "close": 274,
-        "volume": 1425600
-      },
-      {
-        "date": "2025-10-03",
-        "open": 273.36,
-        "high": 278.57,
-        "low": 273.36,
-        "close": 276.59,
-        "volume": 1054600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 277.74,
-        "high": 280.31,
-        "low": 276,
-        "close": 279.74,
-        "volume": 949100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 279.97,
-        "high": 280.81,
-        "low": 277.93,
-        "close": 278.99,
-        "volume": 1020800
-      },
-      {
-        "date": "2025-10-08",
-        "open": 279.78,
-        "high": 282.2,
-        "low": 278.01,
-        "close": 281.35,
-        "volume": 919300
-      },
-      {
-        "date": "2025-10-09",
-        "open": 280.86,
-        "high": 281.28,
-        "low": 272,
-        "close": 272.54,
-        "volume": 1139000
-      },
-      {
-        "date": "2025-10-10",
-        "open": 274,
-        "high": 276.23,
-        "low": 271.76,
-        "close": 272.08,
-        "volume": 1014300
-      },
       {
         "date": "2025-10-13",
         "open": 271.74,
@@ -8146,6 +8085,70 @@
         "low": 267.46,
         "close": 271.26,
         "volume": 1683200
+      },
+      {
+        "date": "2026-10-02",
+        "open": 273.31,
+        "high": 275.31,
+        "low": 271.17,
+        "close": 273.7,
+        "volume": 1225700
+      },
+      {
+        "date": "2026-10-05",
+        "open": 272.06,
+        "high": 279.57,
+        "low": 271,
+        "close": 277.07,
+        "volume": 940200
+      },
+      {
+        "date": "2026-10-06",
+        "open": 278.76,
+        "high": 282.44,
+        "low": 275.8,
+        "close": 280.82,
+        "volume": 1181800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 279.02,
+        "high": 280.08,
+        "low": 277.31,
+        "close": 278.1,
+        "volume": 1146400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 276.52,
+        "high": 282.74,
+        "low": 276.15,
+        "close": 281.69,
+        "volume": 975000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 281.69,
+        "high": 282.69,
+        "low": 279.9,
+        "close": 281.83,
+        "volume": 935000
+      },
+      {
+        "date": "2026-10-12",
+        "open": 281,
+        "high": 285.57,
+        "low": 278.85,
+        "close": 284.3,
+        "volume": 875000
+      },
+      {
+        "date": "2026-10-13",
+        "open": 286.31,
+        "high": 287,
+        "low": 283.69,
+        "close": 285.66,
+        "volume": 1150300
       }
     ],
     "news": [
@@ -8182,14 +8185,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
-        "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
         "title": "Was Jim Cramer Right About Ecolab (ECL)?",
         "publisher": "Insider Monkey",
@@ -8198,11 +8193,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
-        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
+        "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
+        "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
         "type": "STORY"
       },
       {
@@ -8214,11 +8209,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
-        "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
+        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
+        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
         "publisher": "Business Wire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
         "type": "STORY"
       },
       {
@@ -8227,6 +8222,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
+        "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
         "type": "STORY"
       }
     ],

@@ -1,10 +1,10 @@
 {
   "symbol": "ACN",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Information Technology Services",
       "sector": "Technology",
       "longBusinessSummary": "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business processes for specific enterprise functions, including finance and accounting, sourcing and procurement, supply chain, marketing and sales, and human resources, as well as industry-specific services, such as platform trust and safety, banking, insurance, network and health services; and designs, manufactures, and assembles automation equipment, robotics, and other commercial hardware products. It serves communications, media, and technology; financial services; banking and capital markets, and insurance; health and public service; consumer goods, retail, travel services; industrial; life science; and chemicals, natural resources, energy, and utilities sectors. Accenture plc has collaboration with Amazon Web Services (AWS) to deliver transformative digital services to public sector, defense, and national security organizations. It has a collaboration with OpenAI to help enterprise clients unlock new levels of innovation and growth by bringing agentic AI systems; has a strategic collaboration with Microsoft and Avanade for the development of an agentic factory intelligence system; and INFRONEER Holdings Inc. and SAP Japan Co., Ltd. to develop a new financial data and insights platform. It also has strategic partnership with Netomi, Inc. to help enterprises reinvent customer experience using agentic AI systems. The company has a strategic alliance with ServiceNow for integrated risk management and third-party risk management solutions. Accenture plc was founded in 1951 and is based in Dublin, Ireland.",
-      "fullTimeEmployees": 799000,
+      "fullTimeEmployees": 814000,
       "website": "https://www.accenture.com",
       "shortName": "Accenture plc",
       "longName": "Accenture plc"
     },
     "fundamentals": {
-      "ttmEps": 12.5219,
-      "ttmPe": 14.64,
-      "marketCap": 112197116603,
-      "psRatio": 1.53,
-      "pbRatio": 3.52,
-      "pegRatio": 1.62
+      "ttmEps": 13.5663,
+      "ttmPe": 15.74,
+      "marketCap": 127281760000,
+      "psRatio": 1.74,
+      "pbRatio": 3.99,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 7.41,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 9.01
+        "yoyGrowth": 46.45
       }
     ],
     "income_statement": {
@@ -5657,81 +5657,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.5,
-      "costOfEquity": 13.389999999999999,
+      "wacc": 12.709999999999999,
+      "costOfEquity": 13.5,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.068,
-      "marketCap": 112197116603
+      "beta": 1.0819,
+      "marketCap": 127281760000
     },
     "beta": {
-      "beta5y": 1.068
+      "beta5y": 1.0819
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 245.26,
-        "high": 248.99,
-        "low": 239.71,
-        "close": 243.71,
-        "volume": 6545100
-      },
-      {
-        "date": "2025-10-02",
-        "open": 244.91,
-        "high": 248.18,
-        "low": 243.25,
-        "close": 244.34,
-        "volume": 4323200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 244.88,
-        "high": 246.46,
-        "low": 242.66,
-        "close": 245.32,
-        "volume": 3384000
-      },
-      {
-        "date": "2025-10-06",
-        "open": 246,
-        "high": 248.41,
-        "low": 242.05,
-        "close": 248.17,
-        "volume": 3400900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 249.13,
-        "high": 252.83,
-        "low": 248.21,
-        "close": 251.23,
-        "volume": 5930400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 251.71,
-        "high": 253.67,
-        "low": 247.65,
-        "close": 252.98,
-        "volume": 5672000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 253.51,
-        "high": 254.17,
-        "low": 249.61,
-        "close": 252.04,
-        "volume": 4427400
-      },
-      {
-        "date": "2025-10-10",
-        "open": 251.65,
-        "high": 252.95,
-        "low": 240.71,
-        "close": 240.94,
-        "volume": 4548800
-      },
       {
         "date": "2025-10-13",
         "open": 242.23,
@@ -7683,6 +7619,70 @@
         "low": 211.04,
         "close": 212.3,
         "volume": 28979200
+      },
+      {
+        "date": "2026-10-02",
+        "open": 211.02,
+        "high": 213.31,
+        "low": 198.36,
+        "close": 198.9,
+        "volume": 10032300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 196.3,
+        "high": 199.74,
+        "low": 193.77,
+        "close": 195.05,
+        "volume": 6993900
+      },
+      {
+        "date": "2026-10-06",
+        "open": 195.43,
+        "high": 196.16,
+        "low": 192.58,
+        "close": 193.4,
+        "volume": 6147800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 195,
+        "high": 198.2,
+        "low": 194.05,
+        "close": 196.64,
+        "volume": 5231800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 197.73,
+        "high": 209.06,
+        "low": 193.22,
+        "close": 208.36,
+        "volume": 12091900
+      },
+      {
+        "date": "2026-10-09",
+        "open": 208.58,
+        "high": 209.06,
+        "low": 204.1,
+        "close": 209.06,
+        "volume": 4876700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 210.82,
+        "high": 216.66,
+        "low": 210,
+        "close": 214.87,
+        "volume": 6389600
+      },
+      {
+        "date": "2026-10-13",
+        "open": 215.74,
+        "high": 218.58,
+        "low": 212.68,
+        "close": 213.56,
+        "volume": 6309100
       }
     ],
     "news": [
@@ -7831,23 +7831,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.64,
-        "industryAvg": 14.64
+        "value": 15.74,
+        "industryAvg": 15.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.53,
-        "industryAvg": 1.38
+        "value": 1.74,
+        "industryAvg": 1.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.52,
-        "industryAvg": 3.19
+        "value": 3.99,
+        "industryAvg": 3.38
       },
       {
         "metric": "ROE",
         "value": 7.41,
-        "industryAvg": 17.59
+        "industryAvg": 17.57
       },
       {
         "metric": "ROA",
@@ -7862,12 +7862,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 18.85,
-        "industryAvg": 16.220000000000002
+        "industryAvg": 16.21
       },
       {
         "metric": "Net Margin",
         "value": 12.5,
-        "industryAvg": 8.01
+        "industryAvg": 8
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.7487,
-      "ttmPe": 14.18,
-      "marketCap": 112440554226,
-      "psRatio": 5.5,
-      "pbRatio": -42.14,
+      "ttmPe": 15.07,
+      "marketCap": 119486873484,
+      "psRatio": 5.84,
+      "pbRatio": -44.79,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6013,81 +6013,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.6499999999999995,
-      "costOfEquity": 9.120000000000001,
+      "wacc": 7.720000000000001,
+      "costOfEquity": 9.11,
       "costOfDebt": 1.2,
       "taxRate": 22,
-      "beta": 0.5048,
-      "marketCap": 112440554226
+      "beta": 0.509,
+      "marketCap": 119486873484
     },
     "beta": {
-      "beta5y": 0.5048
+      "beta5y": 0.509
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 66.16,
-        "high": 66.34,
-        "low": 65.77,
-        "close": 66.29,
-        "volume": 8514600
-      },
-      {
-        "date": "2025-10-02",
-        "open": 66.18,
-        "high": 66.62,
-        "low": 65.5,
-        "close": 65.75,
-        "volume": 6043300
-      },
-      {
-        "date": "2025-10-03",
-        "open": 65.67,
-        "high": 66.24,
-        "low": 65.19,
-        "close": 65.73,
-        "volume": 7028800
-      },
-      {
-        "date": "2025-10-06",
-        "open": 65.14,
-        "high": 65.5,
-        "low": 64.78,
-        "close": 65.37,
-        "volume": 7768400
-      },
-      {
-        "date": "2025-10-07",
-        "open": 65.49,
-        "high": 66.65,
-        "low": 65.45,
-        "close": 66.65,
-        "volume": 8825500
-      },
-      {
-        "date": "2025-10-08",
-        "open": 66.61,
-        "high": 66.72,
-        "low": 65.23,
-        "close": 65.42,
-        "volume": 10933700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 65.55,
-        "high": 65.98,
-        "low": 65.3,
-        "close": 65.72,
-        "volume": 6965100
-      },
-      {
-        "date": "2025-10-10",
-        "open": 66.1,
-        "high": 67.12,
-        "low": 65.69,
-        "close": 66.54,
-        "volume": 11649600
-      },
       {
         "date": "2025-10-13",
         "open": 65.87,
@@ -8039,6 +7975,70 @@
         "low": 66.43,
         "close": 66.95,
         "volume": 5938500
+      },
+      {
+        "date": "2026-10-02",
+        "open": 66.9,
+        "high": 67.45,
+        "low": 66.59,
+        "close": 67.35,
+        "volume": 6614500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 67.14,
+        "high": 68.03,
+        "low": 65.78,
+        "close": 67.88,
+        "volume": 9267200
+      },
+      {
+        "date": "2026-10-06",
+        "open": 67.7,
+        "high": 68.79,
+        "low": 67.6,
+        "close": 68.55,
+        "volume": 6827500
+      },
+      {
+        "date": "2026-10-07",
+        "open": 69.08,
+        "high": 69.62,
+        "low": 68.74,
+        "close": 69.38,
+        "volume": 6957900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 70,
+        "high": 71.84,
+        "low": 70,
+        "close": 71.42,
+        "volume": 11654800
+      },
+      {
+        "date": "2026-10-09",
+        "open": 71.43,
+        "high": 71.95,
+        "low": 71.22,
+        "close": 71.68,
+        "volume": 8380400
+      },
+      {
+        "date": "2026-10-12",
+        "open": 71.84,
+        "high": 72.18,
+        "low": 71.16,
+        "close": 71.66,
+        "volume": 5982400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 72.22,
+        "high": 72.35,
+        "low": 71.14,
+        "close": 71.56,
+        "volume": 7099500
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
-        "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
         "title": "Needham Initiates Altria Group at Hold",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
+        "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
         "type": "STORY"
       },
       {
@@ -8188,18 +8188,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.18,
-        "industryAvg": 21.74
+        "value": 15.07,
+        "industryAvg": 22.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.5,
-        "industryAvg": 5.95
+        "value": 5.84,
+        "industryAvg": 6.24
       },
       {
         "metric": "P/B Ratio",
-        "value": -42.14,
-        "industryAvg": 1.8
+        "value": -44.79,
+        "industryAvg": 1.88
       },
       {
         "metric": "ROE",

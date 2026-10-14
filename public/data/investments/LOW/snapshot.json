@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 15.58,
-      "marketCap": 103386690000,
-      "psRatio": 1.14,
-      "pbRatio": -13.9,
-      "pegRatio": 389.5
+      "ttmPe": 15.96,
+      "marketCap": 105883140000,
+      "psRatio": 1.17,
+      "pbRatio": -14.24,
+      "pegRatio": 399
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,81 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.37,
+      "wacc": 8.42,
       "costOfEquity": 11.48,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.8169,
-      "marketCap": 103386690000
+      "beta": 0.8184,
+      "marketCap": 105883140000
     },
     "beta": {
-      "beta5y": 0.8169
+      "beta5y": 0.8184
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 251.11,
-        "high": 251.26,
-        "low": 246.46,
-        "close": 247.99,
-        "volume": 3106500
-      },
-      {
-        "date": "2025-10-02",
-        "open": 246.63,
-        "high": 249,
-        "low": 246.35,
-        "close": 247.33,
-        "volume": 1951900
-      },
-      {
-        "date": "2025-10-03",
-        "open": 246.56,
-        "high": 247.73,
-        "low": 245.53,
-        "close": 246.35,
-        "volume": 2023600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 246.12,
-        "high": 246.49,
-        "low": 240.53,
-        "close": 241.67,
-        "volume": 3307700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 241.11,
-        "high": 241.34,
-        "low": 237.95,
-        "close": 239.89,
-        "volume": 2597400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 239.41,
-        "high": 239.41,
-        "low": 237.24,
-        "close": 237.59,
-        "volume": 1995600
-      },
-      {
-        "date": "2025-10-09",
-        "open": 237.6,
-        "high": 237.96,
-        "low": 234.48,
-        "close": 234.67,
-        "volume": 2284800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 235.35,
-        "high": 236.13,
-        "low": 231.61,
-        "close": 232.22,
-        "volume": 2158600
-      },
       {
         "date": "2025-10-13",
         "open": 233,
@@ -7842,6 +7778,70 @@
         "low": 179.21,
         "close": 182.38,
         "volume": 4384700
+      },
+      {
+        "date": "2026-10-02",
+        "open": 184.61,
+        "high": 185.16,
+        "low": 180.01,
+        "close": 180.8,
+        "volume": 2771500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 180,
+        "high": 180.85,
+        "low": 178.45,
+        "close": 179.5,
+        "volume": 2774300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 179.74,
+        "high": 184.2,
+        "low": 179.72,
+        "close": 183.67,
+        "volume": 2702700
+      },
+      {
+        "date": "2026-10-07",
+        "open": 182.99,
+        "high": 183.67,
+        "low": 180.47,
+        "close": 181.54,
+        "volume": 2370400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 180.5,
+        "high": 189.45,
+        "low": 180,
+        "close": 188.85,
+        "volume": 4125100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 188.51,
+        "high": 189,
+        "low": 184.29,
+        "close": 186,
+        "volume": 2646700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 184.99,
+        "high": 186.73,
+        "low": 183.9,
+        "close": 185.57,
+        "volume": 3429400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 188.16,
+        "high": 190,
+        "low": 186,
+        "close": 188.74,
+        "volume": 3125500
       }
     ],
     "news": [
@@ -7902,20 +7902,20 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
-        "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
         "title": "Homeowners are feeling especially stressed about home repairs",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
+        "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
+        "type": "STORY"
       },
       {
         "uuid": "aff55959-70ca-319c-bee0-b6838ba8d029",
@@ -7991,18 +7991,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.58,
-        "industryAvg": 18.6
+        "value": 15.96,
+        "industryAvg": 19.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.14,
-        "industryAvg": 1.47
+        "value": 1.17,
+        "industryAvg": 1.52
       },
       {
         "metric": "P/B Ratio",
-        "value": -13.9,
-        "industryAvg": 14.58
+        "value": -14.24,
+        "industryAvg": 15.04
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1718,
-      "ttmPe": 63.96,
-      "marketCap": 255847032000,
-      "psRatio": 24.27,
-      "pbRatio": 17.29,
-      "pegRatio": 1.78
+      "ttmPe": 64.48,
+      "marketCap": 257940624000,
+      "psRatio": 24.47,
+      "pbRatio": 17.43,
+      "pegRatio": 1.79
     },
     "profitability": {
       "roe": 8.58,
@@ -5320,73 +5320,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.555
+      "beta5y": 1.5492
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 144.65,
-        "high": 149.95,
-        "low": 143.02,
-        "close": 149.27,
-        "volume": 7820700
-      },
-      {
-        "date": "2025-10-02",
-        "open": 150,
-        "high": 150.54,
-        "low": 141.25,
-        "close": 144.46,
-        "volume": 9473800
-      },
-      {
-        "date": "2025-10-03",
-        "open": 146.01,
-        "high": 149.09,
-        "low": 144.1,
-        "close": 145.5,
-        "volume": 7178600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 151.6,
-        "high": 153.73,
-        "low": 149.5,
-        "close": 149.5,
-        "volume": 7277600
-      },
-      {
-        "date": "2025-10-07",
-        "open": 150.48,
-        "high": 151.55,
-        "low": 143.28,
-        "close": 145.29,
-        "volume": 7348700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 147.99,
-        "high": 158.51,
-        "low": 147.405,
-        "close": 157.36,
-        "volume": 11283400
-      },
-      {
-        "date": "2025-10-09",
-        "open": 157,
-        "high": 159.8,
-        "low": 154.601,
-        "close": 158.23,
-        "volume": 8459900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 159.86,
-        "high": 162.68,
-        "low": 153.74,
-        "close": 154.1,
-        "volume": 10459300
-      },
       {
         "date": "2025-10-13",
         "open": 160.76,
@@ -7338,6 +7274,70 @@
         "low": 200.771,
         "close": 204.49,
         "volume": 4106100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 208.26,
+        "high": 208.632,
+        "low": 204.66,
+        "close": 207.35,
+        "volume": 4145600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 207.76,
+        "high": 208.91,
+        "low": 204.5,
+        "close": 206.9,
+        "volume": 3560300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 208,
+        "high": 216.07,
+        "low": 207.2,
+        "close": 215.36,
+        "volume": 6969400
+      },
+      {
+        "date": "2026-10-07",
+        "open": 211.3,
+        "high": 217.318,
+        "low": 209.13,
+        "close": 215.83,
+        "volume": 4995900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 213.495,
+        "high": 217.32,
+        "low": 209.51,
+        "close": 210.97,
+        "volume": 4875100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 215.38,
+        "high": 217.41,
+        "low": 213.651,
+        "close": 216.74,
+        "volume": 4329200
+      },
+      {
+        "date": "2026-10-12",
+        "open": 214.8,
+        "high": 216.485,
+        "low": 210.18,
+        "close": 210.88,
+        "volume": 3410300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 204.98,
+        "high": 205.2,
+        "low": 197.6,
+        "close": 204.52,
+        "volume": 7981100
       }
     ],
     "news": [
@@ -7374,19 +7374,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
-        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
         "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
         "publisher": "Zacks",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
+        "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
         "type": "STORY"
       },
       {
@@ -7414,11 +7414,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c5387320-7e0a-3c5c-98ce-eec930f7dbc2",
-        "title": "The New York Times Company Leverages Digital Subscriptions for Growth",
+        "uuid": "f090691f-d60d-31b4-8801-b74f7623f74f",
+        "title": "Buy 5 Internet-Centric AI Stocks on the Dip to Boost Portfolio Returns",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/york-times-company-leverages-digital-144500877.html",
+        "link": "https://finance.yahoo.com/news/buy-5-internet-centric-ai-120200754.html",
         "type": "STORY"
       }
     ],
@@ -7481,28 +7481,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 63.96,
-        "industryAvg": 29.65
+        "value": 64.48,
+        "industryAvg": 28.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.27,
-        "industryAvg": 4.31
+        "value": 24.47,
+        "industryAvg": 4.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.29,
-        "industryAvg": 9.06
+        "value": 17.43,
+        "industryAvg": 8.24
       },
       {
         "metric": "ROE",
         "value": 8.58,
-        "industryAvg": 66.47999999999999
+        "industryAvg": 66.43
       },
       {
         "metric": "ROA",
         "value": 5.35,
-        "industryAvg": 15.709999999999999
+        "industryAvg": 15.7
       },
       {
         "metric": "Gross Margin",
@@ -7512,7 +7512,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 46.160000000000004,
-        "industryAvg": 16.919999999999998
+        "industryAvg": 16.91
       },
       {
         "metric": "Net Margin",

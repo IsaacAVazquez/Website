@@ -1,10 +1,10 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -2.12,
       "ttmPe": 3518.87,
-      "marketCap": 606319890000,
-      "psRatio": 10.63,
-      "pbRatio": 6.93,
+      "marketCap": 518470830000,
+      "psRatio": 9.09,
+      "pbRatio": 5.92,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6010,81 +6010,17 @@
       ]
     },
     "wacc": {
-      "wacc": 21.08,
-      "costOfEquity": 22.8,
+      "wacc": 20.78,
+      "costOfEquity": 22.770000000000003,
       "costOfDebt": 0.64,
       "taxRate": 40,
-      "beta": 2.3097,
-      "marketCap": 606319890000
+      "beta": 2.2921,
+      "marketCap": 518470830000
     },
     "beta": {
-      "beta5y": 2.3097
+      "beta5y": 2.2921
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 33.53,
-        "high": 36.06,
-        "low": 33.5,
-        "close": 35.94,
-        "volume": 162649700
-      },
-      {
-        "date": "2025-10-02",
-        "open": 35.76,
-        "high": 37.57,
-        "low": 35.44,
-        "close": 37.3,
-        "volume": 149361700
-      },
-      {
-        "date": "2025-10-03",
-        "open": 37.95,
-        "high": 38.08,
-        "low": 36.45,
-        "close": 36.83,
-        "volume": 125359300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 37.19,
-        "high": 38.68,
-        "low": 36.43,
-        "close": 36.59,
-        "volume": 112086100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 36.64,
-        "high": 38.05,
-        "low": 36.35,
-        "close": 37.17,
-        "volume": 111140200
-      },
-      {
-        "date": "2025-10-08",
-        "open": 36.55,
-        "high": 37.79,
-        "low": 35.91,
-        "close": 37.43,
-        "volume": 103202100
-      },
-      {
-        "date": "2025-10-09",
-        "open": 37.53,
-        "high": 38.1,
-        "low": 36.86,
-        "close": 37.8,
-        "volume": 89884700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 38.46,
-        "high": 39.65,
-        "low": 36.3,
-        "close": 36.37,
-        "volume": 183063300
-      },
       {
         "date": "2025-10-13",
         "open": 36.44,
@@ -8035,7 +7971,71 @@
         "high": 122.15,
         "low": 117.35,
         "close": 120,
-        "volume": 103335500
+        "volume": 103559800
+      },
+      {
+        "date": "2026-10-02",
+        "open": 124.01,
+        "high": 126,
+        "low": 118.96,
+        "close": 119.33,
+        "volume": 95401500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 115.34,
+        "high": 118.06,
+        "low": 115.31,
+        "close": 116.19,
+        "volume": 81331800
+      },
+      {
+        "date": "2026-10-06",
+        "open": 117.06,
+        "high": 118.2,
+        "low": 112,
+        "close": 112.5,
+        "volume": 101938800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 111.67,
+        "high": 115.3,
+        "low": 111.14,
+        "close": 113.12,
+        "volume": 82861900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 110.38,
+        "high": 111.6,
+        "low": 105.24,
+        "close": 107.08,
+        "volume": 120196700
+      },
+      {
+        "date": "2026-10-09",
+        "open": 108.33,
+        "high": 108.38,
+        "low": 104,
+        "close": 104.7,
+        "volume": 75017800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 102.52,
+        "high": 103.19,
+        "low": 100.71,
+        "close": 101.35,
+        "volume": 74171900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 99.59,
+        "high": 102.88,
+        "low": 98.23,
+        "close": 102.81,
+        "volume": 87718300
       }
     ],
     "news": [
@@ -8122,11 +8122,25 @@
     ],
     "officers": [
       {
+        "name": "Mr. Allon Stabinsky",
+        "title": "Senior VP and Chief Deputy General Counsel of the Law & Policy Group"
+      },
+      {
         "name": "Mr. David A. Zinsner",
         "title": "Executive VP, CFO and Principal Financial & Accounting Officer",
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 4218200
+      },
+      {
+        "name": "Mr. Dean E. Jarnac Jr.",
+        "title": "Executive VP & Chief Sales Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. James A. Murray",
+        "title": "Chief Antitrust Counsel and VP of Law & Policy Group"
       },
       {
         "name": "Mr. John William Pitzer",
@@ -8167,17 +8181,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 3518.87,
-        "industryAvg": 30.24
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.63,
-        "industryAvg": 14.45
+        "value": 9.09,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.93,
-        "industryAvg": 12.62
+        "value": 5.92,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",

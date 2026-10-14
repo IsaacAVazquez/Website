@@ -1,10 +1,10 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5732,
-      "ttmPe": 42.61,
-      "marketCap": 255722170000,
-      "psRatio": 13.15,
-      "pbRatio": 14.2,
-      "pegRatio": 0.83
+      "ttmPe": 43.79,
+      "marketCap": 262807050000,
+      "psRatio": 13.51,
+      "pbRatio": 14.59,
+      "pegRatio": 0.85
     },
     "profitability": {
       "roe": 11.32,
@@ -5592,81 +5592,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.02,
-      "costOfEquity": 15.8,
+      "wacc": 15.079999999999998,
+      "costOfEquity": 15.840000000000002,
       "costOfDebt": 1,
       "taxRate": 12,
-      "beta": 1.3871,
-      "marketCap": 255722170000
+      "beta": 1.3873,
+      "marketCap": 262807050000
     },
     "beta": {
-      "beta5y": 1.3871
+      "beta5y": 1.3873
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 181.97,
-        "high": 184.51,
-        "low": 178.33,
-        "close": 180.39,
-        "volume": 7705000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 180.77,
-        "high": 184.62,
-        "low": 179.84,
-        "close": 182.32,
-        "volume": 6798000
-      },
-      {
-        "date": "2025-10-03",
-        "open": 182.78,
-        "high": 185.46,
-        "low": 180.16,
-        "close": 180.32,
-        "volume": 5167600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 181,
-        "high": 183.23,
-        "low": 179.3,
-        "close": 181.81,
-        "volume": 6019800
-      },
-      {
-        "date": "2025-10-07",
-        "open": 181.76,
-        "high": 182.02,
-        "low": 176.96,
-        "close": 177.05,
-        "volume": 5396100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 176.83,
-        "high": 181.93,
-        "low": 176.83,
-        "close": 181.6,
-        "volume": 6377700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 180.49,
-        "high": 180.7,
-        "low": 177.62,
-        "close": 178.96,
-        "volume": 5006100
-      },
-      {
-        "date": "2025-10-10",
-        "open": 179.62,
-        "high": 181.57,
-        "low": 171.5,
-        "close": 171.7,
-        "volume": 9630200
-      },
       {
         "date": "2025-10-13",
         "open": 172.83,
@@ -7618,6 +7554,70 @@
         "low": 278.09,
         "close": 281.31,
         "volume": 3696200
+      },
+      {
+        "date": "2026-10-02",
+        "open": 290,
+        "high": 297.06,
+        "low": 288.2,
+        "close": 293.8,
+        "volume": 5050700
+      },
+      {
+        "date": "2026-10-05",
+        "open": 291.47,
+        "high": 295.33,
+        "low": 288.75,
+        "close": 294.9,
+        "volume": 3778300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 295.45,
+        "high": 298.75,
+        "low": 294.23,
+        "close": 297.23,
+        "volume": 3285600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 290.5,
+        "high": 291.64,
+        "low": 284.81,
+        "close": 288.98,
+        "volume": 4566900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 285.46,
+        "high": 290.52,
+        "low": 283.27,
+        "close": 288.2,
+        "volume": 5944400
+      },
+      {
+        "date": "2026-10-09",
+        "open": 290.59,
+        "high": 291.23,
+        "low": 281.66,
+        "close": 283.74,
+        "volume": 4037300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 280.76,
+        "high": 283.63,
+        "low": 277.06,
+        "close": 281.74,
+        "volume": 3853500
+      },
+      {
+        "date": "2026-10-13",
+        "open": 279.78,
+        "high": 288.9,
+        "low": 277.38,
+        "close": 287.85,
+        "volume": 5628500
       }
     ],
     "news": [
@@ -7627,14 +7627,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-04-12",
         "link": "https://finance.yahoo.com/news/top-midday-decliners-182911186.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
-        "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
         "type": "STORY"
       },
       {
@@ -7651,6 +7643,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/himax-himx-q1-earnings-report-103324368.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
+        "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
         "type": "STORY"
       },
       {
@@ -7765,18 +7765,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.61,
-        "industryAvg": 30.24
+        "value": 43.79,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.15,
-        "industryAvg": 14.45
+        "value": 13.51,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.2,
-        "industryAvg": 12.62
+        "value": 14.59,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",

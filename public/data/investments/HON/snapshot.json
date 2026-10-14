@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.0441,
-      "ttmPe": 7.8,
-      "marketCap": 66855323600,
-      "psRatio": 1.85,
-      "pbRatio": 3.61,
-      "pegRatio": 0.1
+      "ttmPe": 7.66,
+      "marketCap": 65698492600,
+      "psRatio": 1.82,
+      "pbRatio": 3.54,
+      "pegRatio": 0.09
     },
     "profitability": {
       "roe": 35.370000000000005,
@@ -6494,81 +6494,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.920000000000001,
-      "costOfEquity": 11.52,
+      "wacc": 7.86,
+      "costOfEquity": 11.49,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 21,
-      "beta": 0.8221,
-      "marketCap": 66855323600
+      "beta": 0.8197,
+      "marketCap": 65698492600
     },
     "beta": {
-      "beta5y": 0.8221
+      "beta5y": 0.8197
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 208.0731,
-        "high": 210.3367,
-        "low": 207.569,
-        "close": 207.7568,
-        "volume": 3932538
-      },
-      {
-        "date": "2025-10-02",
-        "open": 208.0731,
-        "high": 210.5641,
-        "low": 207.6679,
-        "close": 208.5773,
-        "volume": 4357842
-      },
-      {
-        "date": "2025-10-03",
-        "open": 208.5476,
-        "high": 209.5855,
-        "low": 206.0171,
-        "close": 206.6399,
-        "volume": 4376962
-      },
-      {
-        "date": "2025-10-06",
-        "open": 207.5789,
-        "high": 208.0731,
-        "low": 205.4043,
-        "close": 206.5904,
-        "volume": 5217452
-      },
-      {
-        "date": "2025-10-07",
-        "open": 206.2247,
-        "high": 207.2626,
-        "low": 205.4142,
-        "close": 206.5707,
-        "volume": 3918577
-      },
-      {
-        "date": "2025-10-08",
-        "open": 206.4323,
-        "high": 207.4603,
-        "low": 205.5031,
-        "close": 207.4306,
-        "volume": 2846922
-      },
-      {
-        "date": "2025-10-09",
-        "open": 207.569,
-        "high": 207.5789,
-        "low": 201.1341,
-        "close": 201.8754,
-        "volume": 3798695
-      },
-      {
-        "date": "2025-10-10",
-        "open": 202.6069,
-        "high": 203.111,
-        "low": 198.4059,
-        "close": 198.5937,
-        "volume": 5597231
-      },
       {
         "date": "2025-10-13",
         "open": 200.0764,
@@ -8520,23 +8456,87 @@
         "low": 210.01,
         "close": 213.8,
         "volume": 2413100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 216.08,
+        "high": 216.13,
+        "low": 212.54,
+        "close": 213.99,
+        "volume": 1799200
+      },
+      {
+        "date": "2026-10-05",
+        "open": 214.57,
+        "high": 215.1,
+        "low": 212.14,
+        "close": 214.14,
+        "volume": 1744400
+      },
+      {
+        "date": "2026-10-06",
+        "open": 213.74,
+        "high": 215.37,
+        "low": 210.74,
+        "close": 212.87,
+        "volume": 3194700
+      },
+      {
+        "date": "2026-10-07",
+        "open": 211.01,
+        "high": 211.43,
+        "low": 207.87,
+        "close": 208.11,
+        "volume": 2041000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 206.49,
+        "high": 207.57,
+        "low": 204.23,
+        "close": 206.6,
+        "volume": 2120300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 206.6,
+        "high": 209.03,
+        "low": 205.9,
+        "close": 207.73,
+        "volume": 1563300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 207.45,
+        "high": 211.79,
+        "low": 206.35,
+        "close": 209.64,
+        "volume": 1667200
+      },
+      {
+        "date": "2026-10-13",
+        "open": 210.23,
+        "high": 210.9,
+        "low": 205.22,
+        "close": 207.29,
+        "volume": 1871800
       }
     ],
     "news": [
-      {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
       {
         "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
         "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -8572,11 +8572,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
-        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
-        "publisher": "The Wall Street Journal",
+        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
+        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
+        "publisher": "Investopedia",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
+        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
         "type": "STORY"
       },
       {
@@ -8588,11 +8588,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
-        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
-        "publisher": "Investopedia",
+        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
+        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
+        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
         "type": "STORY"
       },
       {
@@ -8607,7 +8607,7 @@
     "officers": [
       {
         "name": "Mr. Billal M. Hammoud",
-        "title": "President & CEO of Honeywell Building Automation",
+        "title": "President & CEO of Process Technology",
         "age": 52,
         "yearBorn": 1973,
         "totalPay": 1760703
@@ -8665,18 +8665,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.8,
-        "industryAvg": 13.26
+        "value": 7.66,
+        "industryAvg": 13.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.85,
+        "value": 1.82,
         "industryAvg": 1.55
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.61,
-        "industryAvg": 2.92
+        "value": 3.54,
+        "industryAvg": 2.73
       },
       {
         "metric": "ROE",

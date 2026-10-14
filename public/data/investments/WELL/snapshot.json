@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -41,8 +41,8 @@
     "fundamentals": {
       "ttmEps": -0.5498,
       "ttmPe": 141.68,
-      "marketCap": 165519996480,
-      "psRatio": 14.29,
+      "marketCap": 165448106280,
+      "psRatio": 14.28,
       "pbRatio": 3.78,
       "pegRatio": 3.5
     },
@@ -5381,81 +5381,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.17,
-      "costOfEquity": 11.28,
+      "wacc": 10.13,
+      "costOfEquity": 11.24,
       "costOfDebt": 0.96,
       "taxRate": 3,
-      "beta": 0.7901,
-      "marketCap": 165519996480
+      "beta": 0.7876,
+      "marketCap": 165448106280
     },
     "beta": {
-      "beta5y": 0.7901
+      "beta5y": 0.7876
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 178.37,
-        "high": 180.4,
-        "low": 177.94,
-        "close": 179.38,
-        "volume": 3106400
-      },
-      {
-        "date": "2025-10-02",
-        "open": 178.92,
-        "high": 179.37,
-        "low": 174.89,
-        "close": 175.5,
-        "volume": 3059000
-      },
-      {
-        "date": "2025-10-03",
-        "open": 175.38,
-        "high": 176.6,
-        "low": 175,
-        "close": 175.04,
-        "volume": 2001400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 174.04,
-        "high": 175.44,
-        "low": 173.15,
-        "close": 174.14,
-        "volume": 1932200
-      },
-      {
-        "date": "2025-10-07",
-        "open": 173.86,
-        "high": 174,
-        "low": 171.79,
-        "close": 173,
-        "volume": 2241600
-      },
-      {
-        "date": "2025-10-08",
-        "open": 172.47,
-        "high": 172.81,
-        "low": 168.88,
-        "close": 169.14,
-        "volume": 3116800
-      },
-      {
-        "date": "2025-10-09",
-        "open": 169.59,
-        "high": 170.07,
-        "low": 166.48,
-        "close": 167.27,
-        "volume": 2420300
-      },
-      {
-        "date": "2025-10-10",
-        "open": 167.02,
-        "high": 167.96,
-        "low": 165.52,
-        "close": 165.94,
-        "volume": 2538100
-      },
       {
         "date": "2025-10-13",
         "open": 165.56,
@@ -7407,6 +7343,70 @@
         "low": 226.23,
         "close": 226.94,
         "volume": 2858100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 226.87,
+        "high": 229.93,
+        "low": 225.36,
+        "close": 227.71,
+        "volume": 2646800
+      },
+      {
+        "date": "2026-10-05",
+        "open": 227.35,
+        "high": 229.73,
+        "low": 223.64,
+        "close": 224.16,
+        "volume": 2449100
+      },
+      {
+        "date": "2026-10-06",
+        "open": 223.94,
+        "high": 227.22,
+        "low": 222.22,
+        "close": 225.78,
+        "volume": 2170900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 225.8,
+        "high": 226.91,
+        "low": 220.87,
+        "close": 221.12,
+        "volume": 2611500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 221.11,
+        "high": 224.75,
+        "low": 220,
+        "close": 223.04,
+        "volume": 2524000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 225.14,
+        "high": 228.02,
+        "low": 223.99,
+        "close": 225.47,
+        "volume": 2834400
+      },
+      {
+        "date": "2026-10-12",
+        "open": 226.1,
+        "high": 230.34,
+        "low": 224.72,
+        "close": 230.29,
+        "volume": 1728800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 231.4,
+        "high": 232.03,
+        "low": 228.63,
+        "close": 230.14,
+        "volume": 2215900
       }
     ],
     "news": [
@@ -7443,19 +7443,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
-        "title": "Why Camden Property Remains a Solid Hold in the Current Market",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
         "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
+        "title": "Why Camden Property Remains a Solid Hold in the Current Market",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
         "type": "STORY"
       },
       {
@@ -7475,11 +7475,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4f40111d-551f-37eb-97c5-15cf5acf2705",
-        "title": "Welltower's Q1 FFO & Revenues Beat Estimates, Same Store NOI Rises",
-        "publisher": "Zacks",
+        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
+        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/welltowers-q1-ffo-revenues-beat-162300193.html",
+        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
         "type": "STORY"
       },
       {
@@ -7554,17 +7554,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 72.44
+        "industryAvg": 72.01
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.29,
-        "industryAvg": 8.88
+        "value": 14.28,
+        "industryAvg": 8.82
       },
       {
         "metric": "P/B Ratio",
         "value": 3.78,
-        "industryAvg": 2.84
+        "industryAvg": 2.82
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9107,
-      "ttmPe": 28.72,
-      "marketCap": 5486439870000,
-      "psRatio": 18.11,
-      "pbRatio": 23.96,
-      "pegRatio": 0.22
+      "ttmPe": 28.89,
+      "marketCap": 5518072440000,
+      "psRatio": 18.21,
+      "pbRatio": 24.1,
+      "pegRatio": 0.23
     },
     "profitability": {
       "roe": 28.12,
@@ -5897,77 +5897,13 @@
       "costOfEquity": 21.87,
       "costOfDebt": 0.59,
       "taxRate": 17,
-      "beta": 2.182,
-      "marketCap": 5486439870000
+      "beta": 2.1745,
+      "marketCap": 5518072440000
     },
     "beta": {
-      "beta5y": 2.182
+      "beta5y": 2.1745
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 185.24,
-        "high": 188.14,
-        "low": 183.9,
-        "close": 187.24,
-        "volume": 173844900
-      },
-      {
-        "date": "2025-10-02",
-        "open": 189.6,
-        "high": 191.05,
-        "low": 188.06,
-        "close": 188.89,
-        "volume": 136805800
-      },
-      {
-        "date": "2025-10-03",
-        "open": 189.19,
-        "high": 190.36,
-        "low": 185.38,
-        "close": 187.62,
-        "volume": 137596900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 185.5,
-        "high": 187.23,
-        "low": 183.33,
-        "close": 185.54,
-        "volume": 157678100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 186.23,
-        "high": 189.06,
-        "low": 184,
-        "close": 185.04,
-        "volume": 140088000
-      },
-      {
-        "date": "2025-10-08",
-        "open": 186.57,
-        "high": 189.6,
-        "low": 186.54,
-        "close": 189.11,
-        "volume": 130168900
-      },
-      {
-        "date": "2025-10-09",
-        "open": 192.23,
-        "high": 195.3,
-        "low": 191.06,
-        "close": 192.57,
-        "volume": 182997200
-      },
-      {
-        "date": "2025-10-10",
-        "open": 193.51,
-        "high": 195.62,
-        "low": 182.05,
-        "close": 183.16,
-        "volume": 268774400
-      },
       {
         "date": "2025-10-13",
         "open": 187.97,
@@ -7918,7 +7854,71 @@
         "high": 232.29,
         "low": 228.16,
         "close": 230.86,
-        "volume": 98369800
+        "volume": 98591400
+      },
+      {
+        "date": "2026-10-02",
+        "open": 236.06,
+        "high": 237.88,
+        "low": 233.6,
+        "close": 233.95,
+        "volume": 135167800
+      },
+      {
+        "date": "2026-10-05",
+        "open": 236.09,
+        "high": 240.1,
+        "low": 235.15,
+        "close": 238.9,
+        "volume": 127171500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 242.1,
+        "high": 243.37,
+        "low": 238.93,
+        "close": 239.24,
+        "volume": 101701900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 237.69,
+        "high": 239.08,
+        "low": 236.38,
+        "close": 237.47,
+        "volume": 81772400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 234.92,
+        "high": 237.07,
+        "low": 229.85,
+        "close": 230.48,
+        "volume": 118697400
+      },
+      {
+        "date": "2026-10-09",
+        "open": 233.84,
+        "high": 233.92,
+        "low": 229.11,
+        "close": 229.28,
+        "volume": 84645600
+      },
+      {
+        "date": "2026-10-12",
+        "open": 228.73,
+        "high": 228.86,
+        "low": 224.9,
+        "close": 226.32,
+        "volume": 70690300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 224.34,
+        "high": 228.64,
+        "low": 223.06,
+        "close": 228.52,
+        "volume": 83846800
       }
     ],
     "news": [
@@ -7955,19 +7955,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
-        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
         "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-03-22",
         "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6847b701-a805-3273-8363-1f5569a55995",
+        "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/stereotaxis-jumps-15-nvidias-ai-160200798.html",
         "type": "STORY"
       },
       {
@@ -8067,18 +8067,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.72,
-        "industryAvg": 30.27
+        "value": 28.89,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.11,
-        "industryAvg": 14.45
+        "value": 18.21,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 23.96,
-        "industryAvg": 12.63
+        "value": 24.1,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",

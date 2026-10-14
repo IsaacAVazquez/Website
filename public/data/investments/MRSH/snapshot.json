@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1723,
-      "ttmPe": 20.89,
-      "marketCap": 81595708425,
-      "psRatio": 2.92,
-      "pbRatio": 5.37,
-      "pegRatio": 2.84
+      "ttmPe": 21.66,
+      "marketCap": 84597061725,
+      "psRatio": 3.03,
+      "pbRatio": 5.57,
+      "pegRatio": 2.94
     },
     "profitability": {
       "roe": 8.51,
@@ -3507,81 +3507,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.630000000000001,
-      "costOfEquity": 9.49,
+      "wacc": 7.670000000000001,
+      "costOfEquity": 9.47,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
-      "beta": 0.5537,
-      "marketCap": 81595708425
+      "beta": 0.5562,
+      "marketCap": 84597061725
     },
     "beta": {
-      "beta5y": 0.5537
+      "beta5y": 0.5562
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 200.64,
-        "high": 201.87,
-        "low": 200.24,
-        "close": 201.29,
-        "volume": 2927100
-      },
-      {
-        "date": "2025-10-02",
-        "open": 199.03,
-        "high": 201.6,
-        "low": 197.81,
-        "close": 199.57,
-        "volume": 1996600
-      },
-      {
-        "date": "2025-10-03",
-        "open": 199.24,
-        "high": 202.12,
-        "low": 199.24,
-        "close": 201.14,
-        "volume": 2291200
-      },
-      {
-        "date": "2025-10-06",
-        "open": 201.11,
-        "high": 201.78,
-        "low": 199.78,
-        "close": 201.34,
-        "volume": 1491100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 202.2,
-        "high": 204,
-        "low": 201.36,
-        "close": 203.84,
-        "volume": 1829700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 204.22,
-        "high": 205.03,
-        "low": 203.05,
-        "close": 204.75,
-        "volume": 2656100
-      },
-      {
-        "date": "2025-10-09",
-        "open": 207,
-        "high": 207.5,
-        "low": 204.57,
-        "close": 206,
-        "volume": 3193200
-      },
-      {
-        "date": "2025-10-10",
-        "open": 207.29,
-        "high": 207.83,
-        "low": 205.74,
-        "close": 207.02,
-        "volume": 2841000
-      },
       {
         "date": "2025-10-13",
         "open": 205.51,
@@ -5533,6 +5469,70 @@
         "low": 169.97,
         "close": 171.85,
         "volume": 2247200
+      },
+      {
+        "date": "2026-10-02",
+        "open": 171.33,
+        "high": 172.43,
+        "low": 169.28,
+        "close": 170.06,
+        "volume": 2927500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 169.62,
+        "high": 171.31,
+        "low": 168.31,
+        "close": 170.43,
+        "volume": 2114000
+      },
+      {
+        "date": "2026-10-06",
+        "open": 169.76,
+        "high": 172.39,
+        "low": 169.52,
+        "close": 171.74,
+        "volume": 1968600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 172.35,
+        "high": 173.95,
+        "low": 166.48,
+        "close": 173.66,
+        "volume": 2732000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 174.28,
+        "high": 176.86,
+        "low": 172.79,
+        "close": 176.67,
+        "volume": 3949900
+      },
+      {
+        "date": "2026-10-09",
+        "open": 175.64,
+        "high": 177.79,
+        "low": 175.41,
+        "close": 175.76,
+        "volume": 1966500
+      },
+      {
+        "date": "2026-10-12",
+        "open": 176.28,
+        "high": 176.7,
+        "low": 175.42,
+        "close": 176.54,
+        "volume": 2345000
+      },
+      {
+        "date": "2026-10-13",
+        "open": 177.63,
+        "high": 178.34,
+        "low": 175.8,
+        "close": 177.01,
+        "volume": 3662200
       }
     ],
     "news": [
@@ -5553,14 +5553,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
-        "title": "Davos CEO Brief for Monday, January 19, 2026",
-        "publisher": "WSJ",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
         "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
         "publisher": "Insider Monkey",
@@ -5577,6 +5569,22 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
+        "title": "Davos CEO Brief for Monday, January 19, 2026",
+        "publisher": "WSJ",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "171d5505-dc56-3308-a908-b956a0833613",
+        "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
         "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
         "publisher": "Simply Wall St.",
@@ -5590,14 +5598,6 @@
         "publisher": "Business Wire",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "171d5505-dc56-3308-a908-b956a0833613",
-        "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
         "type": "STORY"
       },
       {
@@ -5685,18 +5685,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.89,
-        "industryAvg": 20.28
+        "value": 21.66,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.92,
-        "industryAvg": 2.89
+        "value": 3.03,
+        "industryAvg": 2.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.37,
-        "industryAvg": 3.63
+        "value": 5.57,
+        "industryAvg": 3.72
       },
       {
         "metric": "ROE",

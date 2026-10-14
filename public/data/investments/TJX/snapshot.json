@@ -1,10 +1,10 @@
 {
   "symbol": "TJX",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4067,
-      "ttmPe": 24.47,
-      "marketCap": 145695498387,
-      "psRatio": 2.34,
-      "pbRatio": 13.68,
-      "pegRatio": 1.04
+      "ttmPe": 26.17,
+      "marketCap": 155804217873,
+      "psRatio": 2.5,
+      "pbRatio": 14.63,
+      "pegRatio": 1.11
     },
     "profitability": {
       "roe": 14.44,
@@ -5504,81 +5504,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.84,
+      "wacc": 8.89,
       "costOfEquity": 9.700000000000001,
       "costOfDebt": 0.13,
       "taxRate": 25,
-      "beta": 0.5824,
-      "marketCap": 145695498387
+      "beta": 0.5867,
+      "marketCap": 155804217873
     },
     "beta": {
-      "beta5y": 0.5824
+      "beta5y": 0.5867
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 144.08,
-        "high": 145.12,
-        "low": 143.54,
-        "close": 144.32,
-        "volume": 6703800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 143.67,
-        "high": 144.49,
-        "low": 142.2,
-        "close": 142.49,
-        "volume": 4449400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 142.49,
-        "high": 143.25,
-        "low": 141.15,
-        "close": 141.33,
-        "volume": 2993800
-      },
-      {
-        "date": "2025-10-06",
-        "open": 141.24,
-        "high": 143.64,
-        "low": 141.24,
-        "close": 143.11,
-        "volume": 6309600
-      },
-      {
-        "date": "2025-10-07",
-        "open": 142.74,
-        "high": 143.65,
-        "low": 140.11,
-        "close": 142.66,
-        "volume": 6700900
-      },
-      {
-        "date": "2025-10-08",
-        "open": 142.72,
-        "high": 142.95,
-        "low": 140.38,
-        "close": 140.71,
-        "volume": 5158400
-      },
-      {
-        "date": "2025-10-09",
-        "open": 140.73,
-        "high": 141.47,
-        "low": 138.45,
-        "close": 138.56,
-        "volume": 3750700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 138.71,
-        "high": 141.07,
-        "low": 138.23,
-        "close": 140.38,
-        "volume": 4261200
-      },
       {
         "date": "2025-10-13",
         "open": 140.23,
@@ -7530,6 +7466,70 @@
         "low": 131.44,
         "close": 133.59,
         "volume": 5896100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 133.98,
+        "high": 133.98,
+        "low": 132.37,
+        "close": 132.68,
+        "volume": 6951300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 133.56,
+        "high": 136.15,
+        "low": 133.34,
+        "close": 134.41,
+        "volume": 9657800
+      },
+      {
+        "date": "2026-10-06",
+        "open": 134.94,
+        "high": 137.24,
+        "low": 134.53,
+        "close": 137.03,
+        "volume": 8447400
+      },
+      {
+        "date": "2026-10-07",
+        "open": 137.44,
+        "high": 139.62,
+        "low": 137.32,
+        "close": 138.8,
+        "volume": 9588900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 138.41,
+        "high": 139.15,
+        "low": 136.52,
+        "close": 138.75,
+        "volume": 8080000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 138.43,
+        "high": 139.46,
+        "low": 137.16,
+        "close": 138.76,
+        "volume": 4389700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 138.5,
+        "high": 141.94,
+        "low": 138.19,
+        "close": 141.92,
+        "volume": 9121300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 142.8,
+        "high": 144.05,
+        "low": 141.04,
+        "close": 141.49,
+        "volume": 7499500
       }
     ],
     "news": [
@@ -7558,19 +7558,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -7598,11 +7598,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "13938a79-8fd7-324f-becb-ec38238bc7db",
-        "title": "Earnings Data Deluge",
+        "uuid": "e678c910-efc6-3e2e-b7d7-30f7395f728e",
+        "title": "TJX Earnings and Sales Surpass Estimates in Q1, Comp Sales Rise",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/earnings-data-deluge-145600062.html",
+        "link": "https://finance.yahoo.com/news/tjx-earnings-sales-surpass-estimates-145700362.html",
         "type": "STORY"
       },
       {
@@ -7679,18 +7679,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.47,
-        "industryAvg": 21.61
+        "value": 26.17,
+        "industryAvg": 22
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.34,
-        "industryAvg": 2.2
+        "value": 2.5,
+        "industryAvg": 2.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.68,
-        "industryAvg": 7.65
+        "value": 14.63,
+        "industryAvg": 7.82
       },
       {
         "metric": "ROE",

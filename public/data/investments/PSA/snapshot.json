@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.4867,
-      "ttmPe": 26.97,
-      "marketCap": 49672671924,
-      "psRatio": 10.16,
-      "pbRatio": 5.4,
-      "pegRatio": 0.59
+      "ttmPe": 27.5,
+      "marketCap": 50647369029,
+      "psRatio": 10.36,
+      "pbRatio": 5.51,
+      "pegRatio": 0.61
     },
     "profitability": {
       "roe": 4.89,
@@ -5036,81 +5036,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.09,
-      "costOfEquity": 11.99,
+      "wacc": 10.11,
+      "costOfEquity": 11.98,
       "costOfDebt": 0.83,
       "taxRate": 1,
-      "beta": 0.8834,
-      "marketCap": 49672671924
+      "beta": 0.8843,
+      "marketCap": 50647369029
     },
     "beta": {
-      "beta5y": 0.8834
+      "beta5y": 0.8843
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 289,
-        "high": 292.93,
-        "low": 288.27,
-        "close": 290.68,
-        "volume": 652700
-      },
-      {
-        "date": "2025-10-02",
-        "open": 290.18,
-        "high": 291.05,
-        "low": 287.87,
-        "close": 289.16,
-        "volume": 561600
-      },
-      {
-        "date": "2025-10-03",
-        "open": 290.28,
-        "high": 295.73,
-        "low": 289.45,
-        "close": 293.54,
-        "volume": 547400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 293.74,
-        "high": 293.99,
-        "low": 290.09,
-        "close": 290.81,
-        "volume": 586900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 290.28,
-        "high": 294.12,
-        "low": 289.52,
-        "close": 293.53,
-        "volume": 564500
-      },
-      {
-        "date": "2025-10-08",
-        "open": 291.66,
-        "high": 293.49,
-        "low": 290.45,
-        "close": 293.14,
-        "volume": 634600
-      },
-      {
-        "date": "2025-10-09",
-        "open": 294.44,
-        "high": 296.28,
-        "low": 292.75,
-        "close": 294.01,
-        "volume": 791600
-      },
-      {
-        "date": "2025-10-10",
-        "open": 295.01,
-        "high": 297.26,
-        "low": 293.65,
-        "close": 294.42,
-        "volume": 814600
-      },
       {
         "date": "2025-10-13",
         "open": 297.46,
@@ -7062,6 +6998,70 @@
         "low": 280.02,
         "close": 284,
         "volume": 953900
+      },
+      {
+        "date": "2026-10-02",
+        "open": 285.27,
+        "high": 288.91,
+        "low": 283.6,
+        "close": 283.81,
+        "volume": 819100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 283,
+        "high": 284.22,
+        "low": 280.53,
+        "close": 281.66,
+        "volume": 862300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 283.14,
+        "high": 287.72,
+        "low": 281.64,
+        "close": 285.85,
+        "volume": 970600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 285.85,
+        "high": 285.85,
+        "low": 281.7,
+        "close": 281.99,
+        "volume": 975700
+      },
+      {
+        "date": "2026-10-08",
+        "open": 281.83,
+        "high": 286.86,
+        "low": 280.24,
+        "close": 285.52,
+        "volume": 1176000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 286.49,
+        "high": 291,
+        "low": 285.05,
+        "close": 289.86,
+        "volume": 988400
+      },
+      {
+        "date": "2026-10-12",
+        "open": 290.32,
+        "high": 292.31,
+        "low": 287.59,
+        "close": 288.88,
+        "volume": 830400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 291.68,
+        "high": 292.89,
+        "low": 286.26,
+        "close": 288.39,
+        "volume": 947000
       }
     ],
     "news": [
@@ -7074,19 +7074,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
+        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
         "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1e77d3ab-1347-3e08-9310-e686294a8488",
-        "title": "Public Storage: Q1 Earnings Snapshot",
-        "publisher": "Associated Press Finance",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-q1-earnings-snapshot-201519091.html",
         "type": "STORY"
       },
       {
@@ -7098,11 +7098,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
-        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
-        "publisher": "Zacks",
+        "uuid": "1e77d3ab-1347-3e08-9310-e686294a8488",
+        "title": "Public Storage: Q1 Earnings Snapshot",
+        "publisher": "Associated Press Finance",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
+        "link": "https://finance.yahoo.com/news/public-storage-q1-earnings-snapshot-201519091.html",
         "type": "STORY"
       },
       {
@@ -7138,15 +7138,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "41ef7ca1-081c-31e9-915f-3a3293a4d2d5",
-        "title": "Truist Securities Adjusts Price Target on Public Storage to $320 From $310, Maintains Buy Rating",
-        "publisher": "MT Newswires",
+        "uuid": "8e38b430-b999-3bf8-9ae2-e6f7f2ef6f80",
+        "title": "Public Storage (NYSE:PSA) Declares Quarterly Dividends of US$3.00 Per Common Share",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/truist-securities-adjusts-price-target-133220023.html",
+        "link": "https://finance.yahoo.com/news/public-storage-nyse-psa-declares-174308342.html",
         "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Ayash Basu",
+        "title": "Chief Revenue & Marketing Officer"
+      },
       {
         "name": "Mr. Brandon Tyler Reagan",
         "title": "Director of Investor Relations"
@@ -7176,13 +7180,6 @@
         "title": "Chief Technology Officer"
       },
       {
-        "name": "Mr. Nathaniel A. Vitan",
-        "title": "Senior Advisor",
-        "age": 51,
-        "yearBorn": 1974,
-        "totalPay": 864000
-      },
-      {
         "name": "Mr. Samuel Wade Sheek",
         "title": "Chief Legal Officer & Corporate Secretary",
         "age": 48,
@@ -7207,18 +7204,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.97,
-        "industryAvg": 27.51
+        "value": 27.5,
+        "industryAvg": 28.45
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.16,
-        "industryAvg": 8.36
+        "value": 10.36,
+        "industryAvg": 8.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.4,
-        "industryAvg": 2.24
+        "value": 5.51,
+        "industryAvg": 2.34
       },
       {
         "metric": "ROE",

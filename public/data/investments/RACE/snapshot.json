@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 36.52,
-      "marketCap": 69108797025,
-      "psRatio": 8.23,
-      "pbRatio": 16.55,
-      "pegRatio": 2.8
+      "ttmPe": 36.41,
+      "marketCap": 68888901400,
+      "psRatio": 8.21,
+      "pbRatio": 16.5,
+      "pegRatio": 2.79
     },
     "profitability": {
       "roe": 12,
@@ -6041,81 +6041,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.4,
-      "costOfEquity": 11.99,
+      "wacc": 11.37,
+      "costOfEquity": 11.959999999999999,
       "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.8834,
-      "marketCap": 69108797025
+      "beta": 0.8813,
+      "marketCap": 68888901400
     },
     "beta": {
-      "beta5y": 0.8834
+      "beta5y": 0.8813
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 482.77,
-        "high": 490.99,
-        "low": 481.75,
-        "close": 490.24,
-        "volume": 375100
-      },
-      {
-        "date": "2025-10-02",
-        "open": 501.91,
-        "high": 504.49,
-        "low": 496.41,
-        "close": 504.09,
-        "volume": 482600
-      },
-      {
-        "date": "2025-10-03",
-        "open": 499.44,
-        "high": 503.78,
-        "low": 497.69,
-        "close": 501.15,
-        "volume": 479400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 501.4,
-        "high": 501.4,
-        "low": 490.47,
-        "close": 491.53,
-        "volume": 440900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 493.42,
-        "high": 495,
-        "low": 488.985,
-        "close": 490.86,
-        "volume": 407800
-      },
-      {
-        "date": "2025-10-08",
-        "open": 488.17,
-        "high": 490.54,
-        "low": 477.01,
-        "close": 479.21,
-        "volume": 488300
-      },
-      {
-        "date": "2025-10-09",
-        "open": 419.18,
-        "high": 422.9,
-        "low": 402.86,
-        "close": 407.38,
-        "volume": 4872900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 412.24,
-        "high": 412.98,
-        "low": 393.38,
-        "close": 395.72,
-        "volume": 2619600
-      },
       {
         "date": "2025-10-13",
         "open": 386.71,
@@ -8067,6 +8003,70 @@
         "low": 383.62,
         "close": 387.3,
         "volume": 624700
+      },
+      {
+        "date": "2026-10-02",
+        "open": 390.39,
+        "high": 390.47,
+        "low": 384.7,
+        "close": 388.33,
+        "volume": 519600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 383.35,
+        "high": 384.87,
+        "low": 381.67,
+        "close": 383.4,
+        "volume": 588600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 387.13,
+        "high": 390.2,
+        "low": 386.371,
+        "close": 386.5,
+        "volume": 331100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 384.18,
+        "high": 388.424,
+        "low": 383.04,
+        "close": 386.39,
+        "volume": 483800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 384.93,
+        "high": 388.705,
+        "low": 383.6,
+        "close": 388.28,
+        "volume": 393100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 389.9,
+        "high": 390.72,
+        "low": 387.82,
+        "close": 389.91,
+        "volume": 272500
+      },
+      {
+        "date": "2026-10-12",
+        "open": 388.9,
+        "high": 392.175,
+        "low": 388.275,
+        "close": 389.24,
+        "volume": 215700
+      },
+      {
+        "date": "2026-10-13",
+        "open": 388.56,
+        "high": 393.61,
+        "low": 387.28,
+        "close": 391.6,
+        "volume": 283500
       }
     ],
     "news": [
@@ -8143,11 +8143,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "af5baeca-6bbc-32dc-b0d0-cfcdf1ea283f",
-        "title": "Is DXP Enterprises (DXPE) Outperforming Other Industrial Products Stocks This Year?",
+        "uuid": "e1d1e38a-ad1b-36e5-963c-bb0bfe3a7bb8",
+        "title": "Is GRINDR INC (GRND) Stock Outpacing Its Computer and Technology Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/dxp-enterprises-dxpe-outperforming-other-134003274.html",
+        "link": "https://finance.yahoo.com/news/grindr-inc-grnd-stock-outpacing-134004098.html",
         "type": "STORY"
       }
     ],
@@ -8163,7 +8163,7 @@
         "title": "CEO & Executive Director",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 9009480
+        "totalPay": 8866078
       },
       {
         "name": "Mr. Carlo Daneo",
@@ -8182,7 +8182,7 @@
         "title": "Executive Chairman",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 1710344
+        "totalPay": 1683120
       },
       {
         "name": "Mr. Marco Lovati",
@@ -8214,43 +8214,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.52,
-        "industryAvg": 24.76
+        "value": 36.41,
+        "industryAvg": 28.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.23,
-        "industryAvg": 1.15
+        "value": 8.21,
+        "industryAvg": 1.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.55,
-        "industryAvg": 1.89
+        "value": 16.5,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",
         "value": 12,
-        "industryAvg": 4.590000000000001
+        "industryAvg": 4.5600000000000005
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": 1.51
+        "industryAvg": 1.49
       },
       {
         "metric": "Gross Margin",
         "value": 52.59,
-        "industryAvg": 14.719999999999999
+        "industryAvg": 14.71
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.18,
-        "industryAvg": 9.64
+        "industryAvg": 9.569999999999999
       },
       {
         "metric": "Net Margin",
         "value": 23.849999999999998,
-        "industryAvg": 2.48
+        "industryAvg": 2.45
       }
     ]
   }

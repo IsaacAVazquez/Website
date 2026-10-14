@@ -1,10 +1,10 @@
 {
   "symbol": "BKNG",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.0414,
-      "ttmPe": 18.02,
-      "marketCap": 123485780000,
-      "psRatio": 4.37,
-      "pbRatio": -11.45,
-      "pegRatio": 0.14
+      "ttmPe": 17.42,
+      "marketCap": 119392580000,
+      "psRatio": 4.23,
+      "pbRatio": -11.07,
+      "pegRatio": 0.13
     },
     "profitability": {
       "roe": -19.99,
@@ -5570,81 +5570,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.13,
-      "costOfEquity": 13.98,
+      "wacc": 12.049999999999999,
+      "costOfEquity": 13.950000000000001,
       "costOfDebt": 1.4500000000000002,
       "taxRate": 24,
-      "beta": 1.1462,
-      "marketCap": 123485780000
+      "beta": 1.1412,
+      "marketCap": 119392580000
     },
     "beta": {
-      "beta5y": 1.1462
+      "beta5y": 1.1412
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 214.08,
-        "high": 215.0092,
-        "low": 210,
-        "close": 214.0224,
-        "volume": 8105000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 213.0156,
-        "high": 217.2384,
-        "low": 212.04,
-        "close": 216.982,
-        "volume": 5212500
-      },
-      {
-        "date": "2025-10-03",
-        "open": 217.9788,
-        "high": 218.6328,
-        "low": 214.8052,
-        "close": 216.722,
-        "volume": 6740000
-      },
-      {
-        "date": "2025-10-06",
-        "open": 214.7216,
-        "high": 224.9956,
-        "low": 210.4032,
-        "close": 216.7948,
-        "volume": 8847500
-      },
-      {
-        "date": "2025-10-07",
-        "open": 216.8888,
-        "high": 216.8888,
-        "low": 207.52,
-        "close": 209.68,
-        "volume": 6615000
-      },
-      {
-        "date": "2025-10-08",
-        "open": 208.92,
-        "high": 209.5292,
-        "low": 204.4,
-        "close": 205.2492,
-        "volume": 7227500
-      },
-      {
-        "date": "2025-10-09",
-        "open": 203.3116,
-        "high": 208.4332,
-        "low": 201.5508,
-        "close": 207.6772,
-        "volume": 5562500
-      },
-      {
-        "date": "2025-10-10",
-        "open": 207.7684,
-        "high": 209.5992,
-        "low": 205.234,
-        "close": 206.5972,
-        "volume": 4922500
-      },
       {
         "date": "2025-10-13",
         "open": 208.1536,
@@ -7595,7 +7531,71 @@
         "high": 165.15,
         "low": 159.61,
         "close": 160.28,
-        "volume": 6646200
+        "volume": 6672700
+      },
+      {
+        "date": "2026-10-02",
+        "open": 161.23,
+        "high": 162.24,
+        "low": 158.38,
+        "close": 159.02,
+        "volume": 7693100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 158.67,
+        "high": 158.8,
+        "low": 154.06,
+        "close": 158.33,
+        "volume": 8427900
+      },
+      {
+        "date": "2026-10-06",
+        "open": 158.54,
+        "high": 160.5,
+        "low": 155.34,
+        "close": 157.63,
+        "volume": 7147600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 157.67,
+        "high": 158.26,
+        "low": 155.35,
+        "close": 155.87,
+        "volume": 6329500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 154.62,
+        "high": 160.68,
+        "low": 154.26,
+        "close": 159.97,
+        "volume": 7778200
+      },
+      {
+        "date": "2026-10-09",
+        "open": 160.34,
+        "high": 161.05,
+        "low": 158.88,
+        "close": 160.34,
+        "volume": 4219200
+      },
+      {
+        "date": "2026-10-12",
+        "open": 160.29,
+        "high": 161.96,
+        "low": 157.99,
+        "close": 158.43,
+        "volume": 4475200
+      },
+      {
+        "date": "2026-10-13",
+        "open": 159.26,
+        "high": 161.84,
+        "low": 155.93,
+        "close": 157.51,
+        "volume": 5956700
       }
     ],
     "news": [
@@ -7664,19 +7664,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ff6c2457-0f15-3617-85ab-08dd2d4b0dcc",
-        "title": "MakeMyTrip Projected To Have Large Profit Increase This Year; Gets Relative Strength Rating Upgrade",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/ff6c2457-0f15-3617-85ab-08dd2d4b0dcc/makemytrip-projected-to-have.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f9d36917-6c20-368c-92bf-d17a00b1dd8c",
         "title": "KAYAK and Affirm expand exclusive partnership into Canada",
         "publisher": "Business Wire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/kayak-affirm-expand-exclusive-partnership-130000960.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ff6c2457-0f15-3617-85ab-08dd2d4b0dcc",
+        "title": "MakeMyTrip Projected To Have Large Profit Increase This Year; Gets Relative Strength Rating Upgrade",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/ff6c2457-0f15-3617-85ab-08dd2d4b0dcc/makemytrip-projected-to-have.html",
         "type": "STORY"
       }
     ],
@@ -7741,18 +7741,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.02,
-        "industryAvg": 16.92
+        "value": 17.42,
+        "industryAvg": 17.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.37,
-        "industryAvg": 3.17
+        "value": 4.23,
+        "industryAvg": 3.23
       },
       {
         "metric": "P/B Ratio",
-        "value": -11.45,
-        "industryAvg": 4.92
+        "value": -11.07,
+        "industryAvg": 5.13
       },
       {
         "metric": "ROE",

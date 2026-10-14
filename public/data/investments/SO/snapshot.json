@@ -1,10 +1,10 @@
 {
   "symbol": "SO",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.1443,
-      "ttmPe": 20,
-      "marketCap": 95353589070,
-      "psRatio": 3.16,
-      "pbRatio": 2.41,
-      "pegRatio": 0.68
+      "ttmPe": 21.26,
+      "marketCap": 101358483930,
+      "psRatio": 3.36,
+      "pbRatio": 2.56,
+      "pegRatio": 0.72
     },
     "profitability": {
       "roe": 3.06,
@@ -6326,81 +6326,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.6,
-      "costOfEquity": 7.61,
+      "wacc": 4.6899999999999995,
+      "costOfEquity": 7.59,
       "costOfDebt": 1.03,
       "taxRate": 14.000000000000002,
-      "beta": 0.3059,
-      "marketCap": 95353589070
+      "beta": 0.3106,
+      "marketCap": 101358483930
     },
     "beta": {
-      "beta5y": 0.3059
+      "beta5y": 0.3106
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 94.92,
-        "high": 95.38,
-        "low": 94.61,
-        "close": 94.8,
-        "volume": 4625900
-      },
-      {
-        "date": "2025-10-02",
-        "open": 94.18,
-        "high": 94.53,
-        "low": 93.53,
-        "close": 93.89,
-        "volume": 4436200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 93.5,
-        "high": 94.85,
-        "low": 93.5,
-        "close": 94.54,
-        "volume": 6022100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 94.43,
-        "high": 95.53,
-        "low": 94.4,
-        "close": 95.49,
-        "volume": 4870200
-      },
-      {
-        "date": "2025-10-07",
-        "open": 95.49,
-        "high": 96.77,
-        "low": 95.3,
-        "close": 96.42,
-        "volume": 5607700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 96.79,
-        "high": 96.79,
-        "low": 95.5,
-        "close": 96.18,
-        "volume": 3700500
-      },
-      {
-        "date": "2025-10-09",
-        "open": 96.66,
-        "high": 96.66,
-        "low": 96.01,
-        "close": 96.13,
-        "volume": 4113900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 96.66,
-        "high": 98.36,
-        "low": 96.45,
-        "close": 98.29,
-        "volume": 5296400
-      },
       {
         "date": "2025-10-13",
         "open": 97.62,
@@ -8352,6 +8288,70 @@
         "low": 82.01,
         "close": 83.47,
         "volume": 7566800
+      },
+      {
+        "date": "2026-10-02",
+        "open": 83.72,
+        "high": 84.31,
+        "low": 83.59,
+        "close": 83.72,
+        "volume": 7802000
+      },
+      {
+        "date": "2026-10-05",
+        "open": 83.75,
+        "high": 84.39,
+        "low": 83.17,
+        "close": 83.79,
+        "volume": 6572300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 84.2,
+        "high": 85.52,
+        "low": 84.14,
+        "close": 85.44,
+        "volume": 5772600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 85.5,
+        "high": 86.01,
+        "low": 85.19,
+        "close": 85.44,
+        "volume": 5625200
+      },
+      {
+        "date": "2026-10-08",
+        "open": 85.32,
+        "high": 86.23,
+        "low": 84.95,
+        "close": 86.15,
+        "volume": 5989300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 85.94,
+        "high": 86.23,
+        "low": 85.71,
+        "close": 86.17,
+        "volume": 3130200
+      },
+      {
+        "date": "2026-10-12",
+        "open": 86.22,
+        "high": 87.08,
+        "low": 85.74,
+        "close": 87.04,
+        "volume": 3386300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 87.53,
+        "high": 88.34,
+        "low": 86.24,
+        "close": 88.11,
+        "volume": 6565900
       }
     ],
     "news": [
@@ -8388,6 +8388,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
+        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
         "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
         "publisher": "PR Newswire",
@@ -8401,14 +8409,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/reaches-settlement-extension-rate-plan-102000939.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
-        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
         "type": "STORY"
       },
       {
@@ -8503,18 +8503,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20,
-        "industryAvg": 15.99
+        "value": 21.26,
+        "industryAvg": 16.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.16,
-        "industryAvg": 2.22
+        "value": 3.36,
+        "industryAvg": 2.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.41,
-        "industryAvg": 1.72
+        "value": 2.56,
+        "industryAvg": 1.78
       },
       {
         "metric": "ROE",

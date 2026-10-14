@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.9972,
-      "ttmPe": 42.21,
-      "marketCap": 207816360000,
-      "psRatio": 8.02,
-      "pbRatio": 14.87,
-      "pegRatio": 0.7
+      "ttmPe": 43.01,
+      "marketCap": 211736028000,
+      "psRatio": 8.17,
+      "pbRatio": 15.15,
+      "pegRatio": 0.72
     },
     "profitability": {
       "roe": 6.81,
@@ -5305,81 +5305,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.55,
-      "costOfEquity": 14.71,
+      "wacc": 13.58,
+      "costOfEquity": 14.719999999999999,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.243,
-      "marketCap": 207816360000
+      "beta": 1.241,
+      "marketCap": 211736028000
     },
     "beta": {
-      "beta5y": 1.243
+      "beta5y": 1.241
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 61.71,
-        "high": 62.77,
-        "low": 60.9,
-        "close": 62.33,
-        "volume": 14700000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 62.65,
-        "high": 62.905,
-        "low": 60.95,
-        "close": 61.79,
-        "volume": 12143000
-      },
-      {
-        "date": "2025-10-03",
-        "open": 62.075,
-        "high": 62.345,
-        "low": 61.065,
-        "close": 61.11,
-        "volume": 12631200
-      },
-      {
-        "date": "2025-10-06",
-        "open": 62.205,
-        "high": 62.515,
-        "low": 61.255,
-        "close": 61.7,
-        "volume": 13137200
-      },
-      {
-        "date": "2025-10-07",
-        "open": 62.065,
-        "high": 62.375,
-        "low": 61.46,
-        "close": 62.265,
-        "volume": 14791000
-      },
-      {
-        "date": "2025-10-08",
-        "open": 62.24,
-        "high": 63.055,
-        "low": 61.915,
-        "close": 62.895,
-        "volume": 12636600
-      },
-      {
-        "date": "2025-10-09",
-        "open": 63.055,
-        "high": 63.245,
-        "low": 62.185,
-        "close": 63.125,
-        "volume": 6645600
-      },
-      {
-        "date": "2025-10-10",
-        "open": 63.53,
-        "high": 63.75,
-        "low": 60.695,
-        "close": 60.85,
-        "volume": 11430200
-      },
       {
         "date": "2025-10-13",
         "open": 61.75,
@@ -7331,6 +7267,70 @@
         "low": 83.63,
         "close": 85.67,
         "volume": 11887200
+      },
+      {
+        "date": "2026-10-02",
+        "open": 86.82,
+        "high": 88.02,
+        "low": 85.72,
+        "close": 86.96,
+        "volume": 10765300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 86.75,
+        "high": 87.7,
+        "low": 86.61,
+        "close": 87.27,
+        "volume": 9548400
+      },
+      {
+        "date": "2026-10-06",
+        "open": 88.7,
+        "high": 89.93,
+        "low": 88.21,
+        "close": 88.62,
+        "volume": 9353700
+      },
+      {
+        "date": "2026-10-07",
+        "open": 87.21,
+        "high": 88.28,
+        "low": 86.44,
+        "close": 87.55,
+        "volume": 9190900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 86.23,
+        "high": 87.41,
+        "low": 83.96,
+        "close": 85.32,
+        "volume": 13020600
+      },
+      {
+        "date": "2026-10-09",
+        "open": 86.58,
+        "high": 87.55,
+        "low": 86.03,
+        "close": 87.24,
+        "volume": 8339500
+      },
+      {
+        "date": "2026-10-12",
+        "open": 86.93,
+        "high": 87.08,
+        "low": 85.67,
+        "close": 86.19,
+        "volume": 10226500
+      },
+      {
+        "date": "2026-10-13",
+        "open": 84.65,
+        "high": 86.13,
+        "low": 83.75,
+        "close": 85.89,
+        "volume": 8217200
       }
     ],
     "news": [
@@ -7383,19 +7383,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
-        "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
-        "publisher": "MarketWatch",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
         "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
         "publisher": "Zacks",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
+        "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
+        "publisher": "MarketWatch",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
         "type": "STORY"
       },
       {
@@ -7421,7 +7421,7 @@
         "title": "Vice President of Corporate Development"
       },
       {
-        "name": "Mr. Craig A. Lampo C.P.A.",
+        "name": "Mr. Craig A. Lampo CPA",
         "title": "Executive VP & CFO",
         "age": 55,
         "yearBorn": 1970,
@@ -7482,18 +7482,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.21,
-        "industryAvg": 43.94
+        "value": 43.01,
+        "industryAvg": 43.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.02,
-        "industryAvg": 3.74
+        "value": 8.17,
+        "industryAvg": 3.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.87,
-        "industryAvg": 7.08
+        "value": 15.15,
+        "industryAvg": 7.16
       },
       {
         "metric": "ROE",

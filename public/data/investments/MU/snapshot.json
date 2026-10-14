@@ -1,10 +1,10 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -32,19 +32,19 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "Micron Technology, Inc. designs, develops, manufactures, and sells memory and storage products in the United States, Taiwan, Japan, Mainland China, Hong Kong, Europe, and internationally. It operates through the Cloud Memory Business Unit; Core Data Center Business Unit; Mobile and Client Business Unit; and Automotive and Embedded Business Unit segments. The company provides memory products, including dynamic random access memory components and modules, CXL-based memory, LPDDR components and modules, graphics memory, high-bandwidth memory, and data center memory products; multichip packages (MCP) comprising embedded multimedia card-based, universal flash storage-based, and NAND-based MCPs; and technology leadership products that include 1y DRAM and G9 NAND technologies. It also offers storage products, such as data center solid-state drives (SSD), client SSD storage, and auto and industrial SSD storage; managed NAND; NAND flash; NOR flash; and memory cards. In addition, the company provides design tools, including FBGA and part decoders; DRAM power calculators; NAND power calculators; simulation models; chipset compatibility guides; serial presence-detection tools; cross-reference tools; UFSparm; SSD firmware; software and drivers; storage executive software; and obsolete part catalogs. It markets its semiconductor memory and storage products under the Micron and Crucial brands. The company serves the data center, PC, graphics, networking, automotive, industrial, and consumer embedded markets, as well as the smartphone and other mobile-device markets. It sells its products through its direct sales force, independent sales representatives, distributors, and retailers; web-based customer direct sales channel; and channel and distribution partners. Micron Technology, Inc. was founded in 1978 and is headquartered in Boise, Idaho.",
-      "fullTimeEmployees": 53000,
+      "longBusinessSummary": "Micron Technology, Inc. engages in the provision of semiconductor memory and storage products in the United States, Taiwan, Mainland China, other Asia Pacific countries, Japan, Europe, and internationally. It operates through Cloud Memory Business Unit, Core Data Center Business Unit, Mobile and Client Business Unit, and Automotive and Embedded Business Unit segments. The company provides dynamic random access memory (DRAM) products, including High-Bandwidth Memory, doublie data rate, low-power DRAM, and graphics DRAM products; NAND products comprising solid state drives, managed NAND, and multi-chip packages; and NOR products. The company sells its products under the Micron brand name and private labels through its own direct sales force, sales or representative offices, as well as through distributors, retailers, and independent sales representatives. Micron Technology, Inc. was founded in 1978 and is headquartered in Boise, Idaho.",
+      "fullTimeEmployees": 61000,
       "website": "https://www.micron.com",
       "shortName": "Micron Technology, Inc.",
       "longName": "Micron Technology, Inc."
     },
     "fundamentals": {
-      "ttmEps": 44.1721,
-      "ttmPe": 24.11,
-      "marketCap": 1202509190000,
-      "psRatio": 13.32,
-      "pbRatio": 11.94,
-      "pegRatio": 0.02
+      "ttmEps": 74.2111,
+      "ttmPe": 12.84,
+      "marketCap": 1078057890000,
+      "psRatio": 11.94,
+      "pbRatio": 10.7,
+      "pegRatio": 0.01
     },
     "profitability": {
       "roe": 32.62,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 1372.0900000000001
+        "yoyGrowth": 1061.37
       }
     ],
     "income_statement": {
@@ -5601,81 +5601,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.720000000000002,
-      "costOfEquity": 22.84,
+      "wacc": 22.689999999999998,
+      "costOfEquity": 22.82,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.3156,
-      "marketCap": 1202509190000
+      "beta": 2.2988,
+      "marketCap": 1078057890000
     },
     "beta": {
-      "beta5y": 2.3156
+      "beta5y": 2.2988
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 165.6,
-        "high": 182.39,
-        "low": 165.5,
-        "close": 182.15,
-        "volume": 41674800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 184.96,
-        "high": 186.18,
-        "low": 181.21,
-        "close": 183.75,
-        "volume": 25122200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 185.21,
-        "high": 191.85,
-        "low": 184.92,
-        "close": 187.83,
-        "volume": 29399300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 195.01,
-        "high": 201,
-        "low": 189.43,
-        "close": 190.96,
-        "volume": 36392300
-      },
-      {
-        "date": "2025-10-07",
-        "open": 194.85,
-        "high": 195.3,
-        "low": 183.24,
-        "close": 185.69,
-        "volume": 27828200
-      },
-      {
-        "date": "2025-10-08",
-        "open": 188.99,
-        "high": 196.95,
-        "low": 188.8,
-        "close": 196.54,
-        "volume": 26833900
-      },
-      {
-        "date": "2025-10-09",
-        "open": 192.97,
-        "high": 196.62,
-        "low": 189.5,
-        "close": 192.33,
-        "volume": 19721500
-      },
-      {
-        "date": "2025-10-10",
-        "open": 192.96,
-        "high": 193.44,
-        "low": 179.61,
-        "close": 181.6,
-        "volume": 26990300
-      },
       {
         "date": "2025-10-13",
         "open": 190.79,
@@ -7626,7 +7562,71 @@
         "high": 1098.9,
         "low": 1022.9,
         "close": 1097.39,
-        "volume": 45562800
+        "volume": 45735400
+      },
+      {
+        "date": "2026-10-02",
+        "open": 1107.35,
+        "high": 1108,
+        "low": 1072.01,
+        "close": 1074.89,
+        "volume": 27337500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 1069.6801,
+        "high": 1074.88,
+        "low": 1055.5601,
+        "close": 1063.96,
+        "volume": 18261700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 1064.48,
+        "high": 1074.3101,
+        "low": 1045.26,
+        "close": 1045.5601,
+        "volume": 21781200
+      },
+      {
+        "date": "2026-10-07",
+        "open": 1017.37,
+        "high": 1089.22,
+        "low": 1011.42,
+        "close": 1088,
+        "volume": 30859500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 1077.5,
+        "high": 1088.5,
+        "low": 1032.1,
+        "close": 1035.84,
+        "volume": 29910700
+      },
+      {
+        "date": "2026-10-09",
+        "open": 1054.17,
+        "high": 1054.17,
+        "low": 1017,
+        "close": 1029,
+        "volume": 19918900
+      },
+      {
+        "date": "2026-10-12",
+        "open": 1002.45,
+        "high": 1002.67,
+        "low": 978.5,
+        "close": 989.04,
+        "volume": 23983800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 934.07,
+        "high": 953.6,
+        "low": 929.03,
+        "close": 953.19,
+        "volume": 29017300
       }
     ],
     "news": [
@@ -7663,19 +7663,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
-        "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-103900131.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
         "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-06-03",
         "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
+        "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-103900131.html",
         "type": "STORY"
       },
       {
@@ -7687,27 +7687,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
-        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
-        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
         "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-05",
         "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
+        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
+        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
         "type": "STORY"
       }
     ],
@@ -7777,18 +7777,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.11,
-        "industryAvg": 30.24
+        "value": 12.84,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.32,
-        "industryAvg": 14.45
+        "value": 11.94,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.94,
-        "industryAvg": 12.62
+        "value": 10.7,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",

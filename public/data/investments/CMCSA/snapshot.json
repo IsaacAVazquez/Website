@@ -1,10 +1,10 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.0882,
-      "ttmPe": 7.05,
-      "marketCap": 77169748864,
-      "psRatio": 0.62,
-      "pbRatio": 0.86,
+      "ttmPe": 6.76,
+      "marketCap": 74048913432,
+      "psRatio": 0.59,
+      "pbRatio": 0.82,
       "pegRatio": 0.02
     },
     "profitability": {
@@ -5584,81 +5584,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.4399999999999995,
-      "costOfEquity": 10.8,
+      "wacc": 5.3100000000000005,
+      "costOfEquity": 10.75,
       "costOfDebt": 1.16,
       "taxRate": 26,
-      "beta": 0.7264,
-      "marketCap": 77169748864
+      "beta": 0.7231,
+      "marketCap": 74048913432
     },
     "beta": {
-      "beta5y": 0.7264
+      "beta5y": 0.7231
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 29.0909,
-        "high": 29.4002,
-        "low": 28.9597,
-        "close": 28.9972,
-        "volume": 32274829
-      },
-      {
-        "date": "2025-10-02",
-        "open": 28.791,
-        "high": 28.866,
-        "low": 28.4724,
-        "close": 28.4911,
-        "volume": 26690578
-      },
-      {
-        "date": "2025-10-03",
-        "open": 28.5192,
-        "high": 29.2409,
-        "low": 28.5005,
-        "close": 28.9597,
-        "volume": 34826773
-      },
-      {
-        "date": "2025-10-06",
-        "open": 28.866,
-        "high": 29.1565,
-        "low": 28.5098,
-        "close": 29.1378,
-        "volume": 29735156
-      },
-      {
-        "date": "2025-10-07",
-        "open": 29.1378,
-        "high": 29.1753,
-        "low": 28.3974,
-        "close": 28.6785,
-        "volume": 32197579
-      },
-      {
-        "date": "2025-10-08",
-        "open": 28.6879,
-        "high": 29.044,
-        "low": 28.5473,
-        "close": 28.8379,
-        "volume": 25357468
-      },
-      {
-        "date": "2025-10-09",
-        "open": 28.9222,
-        "high": 29.0253,
-        "low": 28.1724,
-        "close": 28.1912,
-        "volume": 24066185
-      },
-      {
-        "date": "2025-10-10",
-        "open": 28.2943,
-        "high": 28.4724,
-        "low": 27.582,
-        "close": 27.6101,
-        "volume": 24430886
-      },
       {
         "date": "2025-10-13",
         "open": 27.6757,
@@ -7610,23 +7546,87 @@
         "low": 21.55,
         "close": 21.7,
         "volume": 20414600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 21.92,
+        "high": 21.92,
+        "low": 21.4,
+        "close": 21.57,
+        "volume": 21038100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 21.57,
+        "high": 21.63,
+        "low": 21.31,
+        "close": 21.57,
+        "volume": 31087800
+      },
+      {
+        "date": "2026-10-06",
+        "open": 21.75,
+        "high": 21.76,
+        "low": 21.33,
+        "close": 21.56,
+        "volume": 23686100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 21.26,
+        "high": 21.44,
+        "low": 20.88,
+        "close": 20.94,
+        "volume": 30095700
+      },
+      {
+        "date": "2026-10-08",
+        "open": 20.91,
+        "high": 21.23,
+        "low": 20.75,
+        "close": 21.21,
+        "volume": 44732600
+      },
+      {
+        "date": "2026-10-09",
+        "open": 20.89,
+        "high": 21.03,
+        "low": 20.48,
+        "close": 20.66,
+        "volume": 32669300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 20.77,
+        "high": 20.86,
+        "low": 20.5,
+        "close": 20.68,
+        "volume": 24641000
+      },
+      {
+        "date": "2026-10-13",
+        "open": 20.87,
+        "high": 21.03,
+        "low": 20.65,
+        "close": 20.88,
+        "volume": 23167700
       }
     ],
     "news": [
-      {
-        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
-        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
-        "type": "STORY"
-      },
       {
         "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
         "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
+        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
         "type": "STORY"
       },
       {
@@ -7654,19 +7654,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d567be28-893c-3fff-93de-afee0d415d42",
-        "title": "Altice (ATUS) To Report Earnings Tomorrow: Here Is What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
         "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d567be28-893c-3fff-93de-afee0d415d42",
+        "title": "Altice (ATUS) To Report Earnings Tomorrow: Here Is What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
         "type": "STORY"
       },
       {
@@ -7761,18 +7761,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.05,
-        "industryAvg": 10.88
+        "value": 6.76,
+        "industryAvg": 10.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.62,
-        "industryAvg": 1.11
+        "value": 0.59,
+        "industryAvg": 1.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 0.86,
-        "industryAvg": 1.65
+        "value": 0.82,
+        "industryAvg": 1.57
       },
       {
         "metric": "ROE",

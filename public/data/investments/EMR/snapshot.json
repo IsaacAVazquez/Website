@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5762,
-      "ttmPe": 33.89,
-      "marketCap": 86514780000,
-      "psRatio": 4.64,
-      "pbRatio": 4.25,
-      "pegRatio": 1.45
+      "ttmPe": 35.73,
+      "marketCap": 91200300000,
+      "psRatio": 4.89,
+      "pbRatio": 4.48,
+      "pegRatio": 1.53
     },
     "profitability": {
       "roe": 3.53,
@@ -6095,81 +6095,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.67,
-      "costOfEquity": 14.510000000000002,
+      "wacc": 12.790000000000001,
+      "costOfEquity": 14.549999999999999,
       "costOfDebt": 0.83,
       "taxRate": 21,
-      "beta": 1.2168,
-      "marketCap": 86514780000
+      "beta": 1.2194,
+      "marketCap": 91200300000
     },
     "beta": {
-      "beta5y": 1.2168
+      "beta5y": 1.2194
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 129.95,
-        "high": 131.63,
-        "low": 129.57,
-        "close": 131.19,
-        "volume": 1926600
-      },
-      {
-        "date": "2025-10-02",
-        "open": 132.24,
-        "high": 133.34,
-        "low": 131.23,
-        "close": 133.05,
-        "volume": 2424900
-      },
-      {
-        "date": "2025-10-03",
-        "open": 133.27,
-        "high": 135.8,
-        "low": 133.15,
-        "close": 134.76,
-        "volume": 2711900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 133.2,
-        "high": 135.49,
-        "low": 132.79,
-        "close": 134.77,
-        "volume": 2218300
-      },
-      {
-        "date": "2025-10-07",
-        "open": 135.77,
-        "high": 135.77,
-        "low": 130.89,
-        "close": 131.49,
-        "volume": 2625400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 132.22,
-        "high": 134.04,
-        "low": 130.85,
-        "close": 132.94,
-        "volume": 1699000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 133.45,
-        "high": 134.23,
-        "low": 130.82,
-        "close": 131.53,
-        "volume": 1851000
-      },
-      {
-        "date": "2025-10-10",
-        "open": 132.1,
-        "high": 132.4,
-        "low": 125.89,
-        "close": 126.01,
-        "volume": 2712800
-      },
       {
         "date": "2025-10-13",
         "open": 128.58,
@@ -8121,6 +8057,70 @@
         "low": 153.1,
         "close": 158.57,
         "volume": 3341400
+      },
+      {
+        "date": "2026-10-02",
+        "open": 161.59,
+        "high": 164.13,
+        "low": 160.24,
+        "close": 161.61,
+        "volume": 2900600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 161.74,
+        "high": 164.21,
+        "low": 160.99,
+        "close": 162.33,
+        "volume": 2139300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 163.25,
+        "high": 165.24,
+        "low": 161.15,
+        "close": 161.4,
+        "volume": 2856100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 158.35,
+        "high": 161.55,
+        "low": 157.59,
+        "close": 159.22,
+        "volume": 3039800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 157.93,
+        "high": 159.66,
+        "low": 156.25,
+        "close": 159.06,
+        "volume": 2374400
+      },
+      {
+        "date": "2026-10-09",
+        "open": 160.37,
+        "high": 162.32,
+        "low": 158.88,
+        "close": 161.83,
+        "volume": 2555700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 161.79,
+        "high": 163.85,
+        "low": 161.28,
+        "close": 162.46,
+        "volume": 2313900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 162.17,
+        "high": 163.69,
+        "low": 160.5,
+        "close": 163.5,
+        "volume": 2131700
       }
     ],
     "news": [
@@ -8157,6 +8157,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
+        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "651066b8-616a-357d-aeaa-f617312eff1b",
         "title": "RBC Raises Price Target on Emerson Electric to $145 From $124, Keeps Outperform Rating",
         "publisher": "MT Newswires",
@@ -8173,14 +8181,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
-        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "818f6acd-b246-3fe0-80c9-8362811fc57f",
         "title": "Emerson Electric Co. (NYSE:EMR) is a favorite amongst institutional investors who own 83%",
         "publisher": "Simply Wall St.",
@@ -8189,19 +8189,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "db47beb6-8992-35e3-8b08-5069a876a9cf",
-        "title": "Q1 Earnings Outperformers: SmartRent (NYSE:SMRT) And The Rest Of The Internet of Things Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-smartrent-nyse-033437919.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "56b05011-a182-3513-8c8f-bee1946466a1",
         "title": "3 Large-Cap Stocks in Hot Water",
         "publisher": "StockStory",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/3-large-cap-stocks-hot-043310857.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "db47beb6-8992-35e3-8b08-5069a876a9cf",
+        "title": "Q1 Earnings Outperformers: SmartRent (NYSE:SMRT) And The Rest Of The Internet of Things Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-smartrent-nyse-033437919.html",
         "type": "STORY"
       }
     ],
@@ -8271,18 +8271,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.89,
-        "industryAvg": 31.16
+        "value": 35.73,
+        "industryAvg": 31.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.64,
-        "industryAvg": 3.54
+        "value": 4.89,
+        "industryAvg": 3.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.25,
-        "industryAvg": 6.45
+        "value": 4.48,
+        "industryAvg": 6.5
       },
       {
         "metric": "ROE",

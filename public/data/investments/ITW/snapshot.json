@@ -1,10 +1,10 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.033,
-      "ttmPe": 23.32,
-      "marketCap": 73273344000,
-      "psRatio": 4.45,
-      "pbRatio": 25.32,
-      "pegRatio": 2.3
+      "ttmPe": 24.14,
+      "marketCap": 75847936000,
+      "psRatio": 4.61,
+      "pbRatio": 26.21,
+      "pegRatio": 2.38
     },
     "profitability": {
       "roe": 26.619999999999997,
@@ -6134,81 +6134,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.06,
+      "wacc": 11.1,
       "costOfEquity": 12.44,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 24,
-      "beta": 0.9427,
-      "marketCap": 73273344000
+      "beta": 0.9445,
+      "marketCap": 75847936000
     },
     "beta": {
-      "beta5y": 0.9427
+      "beta5y": 0.9445
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 259.32,
-        "high": 260.58,
-        "low": 258,
-        "close": 259.92,
-        "volume": 874000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 258.88,
-        "high": 262.1,
-        "low": 258.2,
-        "close": 260.73,
-        "volume": 733200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 260.28,
-        "high": 262.75,
-        "low": 259.93,
-        "close": 260,
-        "volume": 740600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 259.34,
-        "high": 260,
-        "low": 256.74,
-        "close": 258.71,
-        "volume": 844500
-      },
-      {
-        "date": "2025-10-07",
-        "open": 259.35,
-        "high": 259.61,
-        "low": 255.42,
-        "close": 255.75,
-        "volume": 932400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 256.22,
-        "high": 256.26,
-        "low": 251.82,
-        "close": 252.75,
-        "volume": 1525400
-      },
-      {
-        "date": "2025-10-09",
-        "open": 253.56,
-        "high": 254.3,
-        "low": 247.49,
-        "close": 248.29,
-        "volume": 1145700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 248.92,
-        "high": 249.94,
-        "low": 244.23,
-        "close": 244.93,
-        "volume": 1271300
-      },
       {
         "date": "2025-10-13",
         "open": 246.54,
@@ -8160,6 +8096,70 @@
         "low": 255.69,
         "close": 260.84,
         "volume": 1574600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 263.11,
+        "high": 264.41,
+        "low": 261.52,
+        "close": 262.92,
+        "volume": 1141000
+      },
+      {
+        "date": "2026-10-05",
+        "open": 261.91,
+        "high": 265.94,
+        "low": 258.46,
+        "close": 264.19,
+        "volume": 1176700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 264.63,
+        "high": 269.03,
+        "low": 264.25,
+        "close": 267.14,
+        "volume": 1836100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 265.32,
+        "high": 266.73,
+        "low": 260.82,
+        "close": 261.15,
+        "volume": 1211900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 259.21,
+        "high": 264.93,
+        "low": 259.09,
+        "close": 264.71,
+        "volume": 1166000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 262.73,
+        "high": 265.22,
+        "low": 260.2,
+        "close": 264.13,
+        "volume": 1278500
+      },
+      {
+        "date": "2026-10-12",
+        "open": 263.92,
+        "high": 267.95,
+        "low": 263.2,
+        "close": 265.11,
+        "volume": 865600
+      },
+      {
+        "date": "2026-10-13",
+        "open": 266.61,
+        "high": 267.44,
+        "low": 262.86,
+        "close": 266.32,
+        "volume": 960400
       }
     ],
     "news": [
@@ -8188,19 +8188,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f6581e87-f1ee-3e5e-96fd-d911447ff624",
-        "title": "Citigroup Adjusts Price Target on Illinois Tool Works to $254 From $253",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/citigroup-adjusts-price-target-illinois-144053765.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "884ed253-b5ca-32ef-bff6-8ce35782c6f2",
         "title": "Goldman Sachs Adjusts Price Target on Illinois Tool Works to $253 From $257",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-144344318.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f6581e87-f1ee-3e5e-96fd-d911447ff624",
+        "title": "Citigroup Adjusts Price Target on Illinois Tool Works to $254 From $253",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/citigroup-adjusts-price-target-illinois-144053765.html",
         "type": "STORY"
       },
       {
@@ -8228,19 +8228,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
+        "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
         "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
         "publisher": "The Fly",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1771a0f3-2da7-3f95-84dc-bf2313156b30",
-        "title": "BofA Downgrades Illinois Tool Works to Underperform From Neutral, Price Target is $220",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/bofa-downgrades-illinois-tool-works-113704841.html",
         "type": "STORY"
       }
     ],
@@ -8312,18 +8312,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.32,
-        "industryAvg": 31.16
+        "value": 24.14,
+        "industryAvg": 31.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.45,
-        "industryAvg": 3.54
+        "value": 4.61,
+        "industryAvg": 3.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.32,
-        "industryAvg": 6.45
+        "value": 26.21,
+        "industryAvg": 6.5
       },
       {
         "metric": "ROE",

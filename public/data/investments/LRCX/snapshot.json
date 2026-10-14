@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.7641,
-      "ttmPe": 56.99,
-      "marketCap": 411057335780,
-      "psRatio": 17.69,
-      "pbRatio": 32.96,
-      "pegRatio": 1.65
+      "ttmPe": 52.24,
+      "marketCap": 376772318580,
+      "psRatio": 16.22,
+      "pbRatio": 30.21,
+      "pegRatio": 1.51
     },
     "profitability": {
       "roe": 19.75,
@@ -5611,81 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.54,
-      "costOfEquity": 19.71,
+      "wacc": 19.509999999999998,
+      "costOfEquity": 19.689999999999998,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 11,
-      "beta": 1.903,
-      "marketCap": 411057335780
+      "beta": 1.8905,
+      "marketCap": 376772318580
     },
     "beta": {
-      "beta5y": 1.903
+      "beta5y": 1.8905
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 132.41,
-        "high": 143.09,
-        "low": 131.94,
-        "close": 142.79,
-        "volume": 15549100
-      },
-      {
-        "date": "2025-10-02",
-        "open": 146.97,
-        "high": 147.35,
-        "low": 143.71,
-        "close": 146.99,
-        "volume": 16417100
-      },
-      {
-        "date": "2025-10-03",
-        "open": 145.82,
-        "high": 147.91,
-        "low": 144.6,
-        "close": 145.81,
-        "volume": 8970300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 149.9,
-        "high": 153.7,
-        "low": 149.12,
-        "close": 149.15,
-        "volume": 11217100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 149.23,
-        "high": 149.36,
-        "low": 139.5,
-        "close": 140.35,
-        "volume": 16549800
-      },
-      {
-        "date": "2025-10-08",
-        "open": 137.91,
-        "high": 142.88,
-        "low": 137.61,
-        "close": 142.54,
-        "volume": 13695700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 141.75,
-        "high": 142.86,
-        "low": 140.58,
-        "close": 141,
-        "volume": 8102500
-      },
-      {
-        "date": "2025-10-10",
-        "open": 140.6,
-        "high": 141.8,
-        "low": 131.02,
-        "close": 131.37,
-        "volume": 18749000
-      },
       {
         "date": "2025-10-13",
         "open": 138.09,
@@ -7636,7 +7572,71 @@
         "high": 341.64,
         "low": 331.05,
         "close": 340.1,
-        "volume": 8688500
+        "volume": 8700100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 350,
+        "high": 352.56,
+        "low": 344.77,
+        "close": 347.49,
+        "volume": 7457400
+      },
+      {
+        "date": "2026-10-05",
+        "open": 346.88,
+        "high": 351.37,
+        "low": 341.7,
+        "close": 345.8,
+        "volume": 6117500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 345.1,
+        "high": 346.9,
+        "low": 330.85,
+        "close": 333.89,
+        "volume": 7659800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 322.06,
+        "high": 329.75,
+        "low": 321.11,
+        "close": 329.51,
+        "volume": 6387800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 321.02,
+        "high": 331.79,
+        "low": 316.66,
+        "close": 320.59,
+        "volume": 8996800
+      },
+      {
+        "date": "2026-10-09",
+        "open": 326,
+        "high": 326.72,
+        "low": 316.01,
+        "close": 318.84,
+        "volume": 4655200
+      },
+      {
+        "date": "2026-10-12",
+        "open": 314.85,
+        "high": 314.95,
+        "low": 308.01,
+        "close": 309.56,
+        "volume": 6256800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 301.68,
+        "high": 303.5,
+        "low": 290.9,
+        "close": 301.11,
+        "volume": 8221900
       }
     ],
     "news": [
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
-        "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
         "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
+        "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
         "type": "STORY"
       },
       {
@@ -7705,19 +7705,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
-        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
         "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
+        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
         "type": "STORY"
       }
     ],
@@ -7728,6 +7728,13 @@
         "age": 58,
         "yearBorn": 1967,
         "totalPay": 2550227
+      },
+      {
+        "name": "Mr. Neil J. Fernandes",
+        "title": "Senior VP of Global Customer Operations",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 1851968
       },
       {
         "name": "Mr. Ram Ganesh",
@@ -7741,28 +7748,58 @@
         "totalPay": 2333347
       },
       {
+        "name": "Mr. Steve Fine",
+        "title": "Group VP & Chief Communication Officer"
+      },
+      {
         "name": "Mr. Timothy M. Archer",
         "title": "President, CEO & Director",
         "age": 58,
         "yearBorn": 1967,
         "totalPay": 6815065
+      },
+      {
+        "name": "Mr. Vahid Vahedi Ph.D.",
+        "title": "Senior VP, Chief Technology & Sustainability Officer",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 1884313
+      },
+      {
+        "name": "Ms. Ava A. Harter J.D.",
+        "title": "Senior VP, Chief Legal Officer & Secretary",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 1685283
+      },
+      {
+        "name": "Ms. Christina C. Correia",
+        "title": "Chief Accounting Officer & Group VP",
+        "age": 55,
+        "yearBorn": 1970
+      },
+      {
+        "name": "Ms. Mary Teresa Hassett",
+        "title": "Senior VP & Chief Human Resources Officer",
+        "age": 51,
+        "yearBorn": 1974
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.99,
-        "industryAvg": 53.81
+        "value": 52.24,
+        "industryAvg": 50.52
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.69,
-        "industryAvg": 14.62
+        "value": 16.22,
+        "industryAvg": 13.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 32.96,
-        "industryAvg": 20.1
+        "value": 30.21,
+        "industryAvg": 19.25
       },
       {
         "metric": "ROE",

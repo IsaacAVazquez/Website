@@ -1,10 +1,10 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Software-Application",
       "sector": "Technology",
-      "longBusinessSummary": "Uber Technologies, Inc. develops and operates proprietary technology applications in the United States, Canada, Latin America, Europe, the Middle East, Africa, and the Asia Pacific. The company operates through three segments: Mobility, Delivery, and Freight. The Mobility segment connects consumers with a range of transportation modalities, such as ridesharing, carsharing, micromobility, rentals, public transit, taxis, and other modalities; and offers riders in a variety of vehicle types, as well as financial partnerships products and advertising services. The Delivery segment allows consumers to search for and discover restaurants to grocery, alcohol, convenience, and other retailers, as well as order a meal or other items, and either pick-up at the restaurant or have it delivered; and provides Uber direct, a white-label delivery-as-a-service for retailers and restaurants, as well as advertising services. The Freight segment manages transportation and logistics networks, which connects shippers and carriers in digital marketplace, including carriers upfronts, pricing, and shipment booking; and offers on-demand platform to automate logistics end-to-end transactions for small-and medium-sized businesses to global enterprises. Uber Technologies, Inc. has staetegic partnership with Mews to embed ride booking, real-time tracking and integrated billing directly into the Mews platform. The company was formerly known as Ubercab, Inc. and changed its name to Uber Technologies, Inc. in February 2011. Uber Technologies, Inc. was founded in 2009 and is headquartered in San Francisco, California.",
+      "longBusinessSummary": "Uber Technologies, Inc. develops and operates proprietary technology applications in the United States, Canada, Latin America, Europe, the Middle East, Africa, and the Asia Pacific. The company operates through three segments: Mobility, Delivery, and Freight. The Mobility segment connects consumers with a range of transportation modalities, such as ridesharing, carsharing, micromobility, rentals, public transit, taxis, and other modalities; and offers riders in a variety of vehicle types, as well as financial partnerships products and advertising services. The Delivery segment allows consumers to search for and discover restaurants to grocery, alcohol, convenience, and other retailers, as well as order a meal or other items, and either pick-up at the restaurant or have it delivered; and provides Uber direct, a white-label delivery-as-a-service for retailers and restaurants, as well as advertising services. The Freight segment manages transportation and logistics networks, which connects shippers and carriers in digital marketplace, including carriers upfronts, pricing, and shipment booking; and offers on-demand platform to automate logistics end-to-end transactions for small-and medium-sized businesses to global enterprises. Uber Technologies, Inc. has strategic partnership with Mews to embed ride booking, real-time tracking and integrated billing directly into the Mews platform. The company was formerly known as Ubercab, Inc. and changed its name to Uber Technologies, Inc. in February 2011. Uber Technologies, Inc. was founded in 2009 and is headquartered in San Francisco, California.",
       "fullTimeEmployees": 36600,
       "website": "https://www.uber.com",
       "shortName": "Uber Technologies, Inc.",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.5496,
-      "ttmPe": 15.06,
-      "marketCap": 139759988940,
-      "psRatio": 2.53,
-      "pbRatio": 5.12,
+      "ttmPe": 15.68,
+      "marketCap": 145492372080,
+      "psRatio": 2.63,
+      "pbRatio": 5.33,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -6310,81 +6310,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.819999999999999,
-      "costOfEquity": 15.21,
+      "wacc": 13.91,
+      "costOfEquity": 15.25,
       "costOfDebt": 0.86,
       "taxRate": 26,
-      "beta": 1.3091,
-      "marketCap": 139759988940
+      "beta": 1.3103,
+      "marketCap": 145492372080
     },
     "beta": {
-      "beta5y": 1.3091
+      "beta5y": 1.3103
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 97.475,
-        "high": 99.085,
-        "low": 96.57,
-        "close": 96.61,
-        "volume": 16608500
-      },
-      {
-        "date": "2025-10-02",
-        "open": 97.08,
-        "high": 97.21,
-        "low": 94.76,
-        "close": 96.61,
-        "volume": 16046400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 96.95,
-        "high": 98.3,
-        "low": 96.46,
-        "close": 96.6,
-        "volume": 10556400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 96.96,
-        "high": 101.295,
-        "low": 96.89,
-        "close": 100.1,
-        "volume": 22760900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 100.13,
-        "high": 100.69,
-        "low": 97,
-        "close": 97.8,
-        "volume": 12583600
-      },
-      {
-        "date": "2025-10-08",
-        "open": 97.94,
-        "high": 99.61,
-        "low": 97.2,
-        "close": 99.28,
-        "volume": 10071200
-      },
-      {
-        "date": "2025-10-09",
-        "open": 99.965,
-        "high": 100.17,
-        "low": 95.83,
-        "close": 96,
-        "volume": 13435700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 96.3,
-        "high": 96.45,
-        "low": 93.33,
-        "close": 93.4,
-        "volume": 17021100
-      },
       {
         "date": "2025-10-13",
         "open": 95,
@@ -8335,24 +8271,88 @@
         "high": 68.91,
         "low": 67.32,
         "close": 67.88,
-        "volume": 17675100
+        "volume": 17746800
+      },
+      {
+        "date": "2026-10-02",
+        "open": 68.24,
+        "high": 68.47,
+        "low": 67.22,
+        "close": 68.11,
+        "volume": 15575400
+      },
+      {
+        "date": "2026-10-05",
+        "open": 68.4,
+        "high": 70.01,
+        "low": 68.38,
+        "close": 69.48,
+        "volume": 17031700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 69.56,
+        "high": 69.94,
+        "low": 68.76,
+        "close": 69.08,
+        "volume": 15066700
+      },
+      {
+        "date": "2026-10-07",
+        "open": 68.85,
+        "high": 69.24,
+        "low": 68.265,
+        "close": 68.45,
+        "volume": 11979500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 68.175,
+        "high": 70.32,
+        "low": 68,
+        "close": 70.24,
+        "volume": 14531300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 70.24,
+        "high": 72.08,
+        "low": 70.2,
+        "close": 71.51,
+        "volume": 16565700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 71.16,
+        "high": 71.81,
+        "low": 70.04,
+        "close": 71.5,
+        "volume": 11762400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 70.95,
+        "high": 71.63,
+        "low": 70.44,
+        "close": 71.32,
+        "volume": 12845600
       }
     ],
     "news": [
-      {
-        "uuid": "c2e34397-295e-3abc-9815-85c23901bc88",
-        "title": "The Zacks Analyst Blog Highlights Shell, Uber, TotalEnergies, Geospace and Natural Health Trends",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-20",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-shell-090000565.html",
-        "type": "STORY"
-      },
       {
         "uuid": "0def18d7-3d06-37f9-bff5-e0daf4d38d99",
         "title": "Top Analyst Reports for Shell, Uber & TotalEnergies",
         "publisher": "Zacks",
         "reportDate": "2025-03-20",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-shell-uber-223100107.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c2e34397-295e-3abc-9815-85c23901bc88",
+        "title": "The Zacks Analyst Blog Highlights Shell, Uber, TotalEnergies, Geospace and Natural Health Trends",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-shell-090000565.html",
         "type": "STORY"
       },
       {
@@ -8364,19 +8364,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "647a03ed-7d8c-3cc5-94cd-83f3d801bdd6",
-        "title": "Serve Robotics Saddles Up for Autonomous Delivery in Dallas-Fort Worth Via Uber Eats",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/serve-robotics-saddles-autonomous-delivery-113000233.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
         "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "647a03ed-7d8c-3cc5-94cd-83f3d801bdd6",
+        "title": "Serve Robotics Saddles Up for Autonomous Delivery in Dallas-Fort Worth Via Uber Eats",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/serve-robotics-saddles-autonomous-delivery-113000233.html",
         "type": "STORY"
       },
       {
@@ -8486,18 +8486,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.06,
-        "industryAvg": 25.11
+        "value": 15.68,
+        "industryAvg": 26.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.53,
-        "industryAvg": 4.8
+        "value": 2.63,
+        "industryAvg": 5.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.12,
-        "industryAvg": 5.36
+        "value": 5.33,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",

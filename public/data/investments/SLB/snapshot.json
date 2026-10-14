@@ -1,10 +1,10 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0602,
-      "ttmPe": 23.65,
-      "marketCap": 72307456704,
+      "ttmPe": 23.67,
+      "marketCap": 72381663864,
       "psRatio": 1.99,
-      "pbRatio": 2.77,
+      "pbRatio": 2.78,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -6018,81 +6018,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.98,
-      "costOfEquity": 11.600000000000001,
+      "wacc": 9.950000000000001,
+      "costOfEquity": 11.57,
       "costOfDebt": 1,
       "taxRate": 20,
-      "beta": 0.832,
-      "marketCap": 72307456704
+      "beta": 0.8301,
+      "marketCap": 72381663864
     },
     "beta": {
-      "beta5y": 0.832
+      "beta5y": 0.8301
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 34.22,
-        "high": 35.14,
-        "low": 34.1,
-        "close": 35.09,
-        "volume": 11264500
-      },
-      {
-        "date": "2025-10-02",
-        "open": 34.96,
-        "high": 35.2,
-        "low": 34.06,
-        "close": 34.11,
-        "volume": 10930200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 34.37,
-        "high": 34.66,
-        "low": 34.21,
-        "close": 34.26,
-        "volume": 9581400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 34.55,
-        "high": 34.84,
-        "low": 34.17,
-        "close": 34.59,
-        "volume": 18649900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 34.56,
-        "high": 35.1,
-        "low": 34.05,
-        "close": 34.41,
-        "volume": 18080300
-      },
-      {
-        "date": "2025-10-08",
-        "open": 34.54,
-        "high": 34.58,
-        "low": 33.86,
-        "close": 33.97,
-        "volume": 15217300
-      },
-      {
-        "date": "2025-10-09",
-        "open": 34.25,
-        "high": 34.55,
-        "low": 32.99,
-        "close": 33.13,
-        "volume": 12284900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 33.02,
-        "high": 33.09,
-        "low": 31.72,
-        "close": 31.72,
-        "volume": 15644200
-      },
       {
         "date": "2025-10-13",
         "open": 32.08,
@@ -8044,6 +7980,70 @@
         "low": 47.86,
         "close": 48.66,
         "volume": 14328600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 47.72,
+        "high": 49.34,
+        "low": 47.72,
+        "close": 48.74,
+        "volume": 12608100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 49.1,
+        "high": 50.59,
+        "low": 48.79,
+        "close": 50.28,
+        "volume": 8749400
+      },
+      {
+        "date": "2026-10-06",
+        "open": 49.64,
+        "high": 50.61,
+        "low": 49.45,
+        "close": 50,
+        "volume": 11092500
+      },
+      {
+        "date": "2026-10-07",
+        "open": 49.91,
+        "high": 49.91,
+        "low": 47.65,
+        "close": 47.96,
+        "volume": 15095400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 48.41,
+        "high": 49.04,
+        "low": 48.1,
+        "close": 48.98,
+        "volume": 16228600
+      },
+      {
+        "date": "2026-10-09",
+        "open": 49.08,
+        "high": 49.45,
+        "low": 48.64,
+        "close": 48.95,
+        "volume": 7580800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 49.24,
+        "high": 49.76,
+        "low": 48.55,
+        "close": 48.77,
+        "volume": 8630300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 49.29,
+        "high": 49.42,
+        "low": 48.14,
+        "close": 48.77,
+        "volume": 10231000
       }
     ],
     "news": [
@@ -8104,19 +8104,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "be800160-5d84-3d8c-b742-3828d7bd8bd7",
-        "title": "Is Schlumberger Limited (SLB) the Best Falling Stock to Buy According to Analysts?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-best-falling-220831710.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
         "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "be800160-5d84-3d8c-b742-3828d7bd8bd7",
+        "title": "Is Schlumberger Limited (SLB) the Best Falling Stock to Buy According to Analysts?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-best-falling-220831710.html",
         "type": "STORY"
       },
       {
@@ -8178,8 +8178,8 @@
         "totalPay": 1837839
       },
       {
-        "name": "Ms. Aparna Raman",
-        "title": "Chief Strategy & Marketing Officer",
+        "name": "Ms. Agnieszka Kmieciak",
+        "title": "Chief People Officer",
         "age": 50,
         "yearBorn": 1975
       },
@@ -8194,18 +8194,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.65,
-        "industryAvg": 20.42
+        "value": 23.67,
+        "industryAvg": 20.89
       },
       {
         "metric": "P/S Ratio",
         "value": 1.99,
-        "industryAvg": 1.76
+        "industryAvg": 1.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.77,
-        "industryAvg": 1.81
+        "value": 2.78,
+        "industryAvg": 1.86
       },
       {
         "metric": "ROE",

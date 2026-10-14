@@ -1,10 +1,10 @@
 {
   "symbol": "ROP",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 24.1307,
-      "ttmPe": 14.48,
-      "marketCap": 34556649000,
-      "psRatio": 4.17,
-      "pbRatio": 1.85,
-      "pegRatio": 0.06
+      "ttmPe": 15.27,
+      "marketCap": 36435749000,
+      "psRatio": 4.4,
+      "pbRatio": 1.95,
+      "pegRatio": 0.07
     },
     "profitability": {
       "roe": 6.23,
@@ -5898,81 +5898,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.309999999999999,
-      "costOfEquity": 10.74,
+      "wacc": 8.41,
+      "costOfEquity": 10.75,
       "costOfDebt": 0.98,
       "taxRate": 11,
-      "beta": 0.7193,
-      "marketCap": 34556649000
+      "beta": 0.7237,
+      "marketCap": 36435749000
     },
     "beta": {
-      "beta5y": 0.7193
+      "beta5y": 0.7237
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 499.26,
-        "high": 504,
-        "low": 495.55,
-        "close": 497.97,
-        "volume": 969100
-      },
-      {
-        "date": "2025-10-02",
-        "open": 495.44,
-        "high": 500.29,
-        "low": 495.44,
-        "close": 497.59,
-        "volume": 881200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 497.27,
-        "high": 504.91,
-        "low": 497.27,
-        "close": 499.95,
-        "volume": 1075500
-      },
-      {
-        "date": "2025-10-06",
-        "open": 501.9,
-        "high": 507.36,
-        "low": 497.12,
-        "close": 506.99,
-        "volume": 1210200
-      },
-      {
-        "date": "2025-10-07",
-        "open": 505.84,
-        "high": 511.02,
-        "low": 503.64,
-        "close": 510.57,
-        "volume": 1019400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 512.13,
-        "high": 521.28,
-        "low": 509.45,
-        "close": 520,
-        "volume": 1513200
-      },
-      {
-        "date": "2025-10-09",
-        "open": 519.9,
-        "high": 520.05,
-        "low": 511.45,
-        "close": 518.07,
-        "volume": 776900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 520.72,
-        "high": 520.85,
-        "low": 503.9,
-        "close": 509,
-        "volume": 1290900
-      },
       {
         "date": "2025-10-13",
         "open": 507.35,
@@ -7924,6 +7860,70 @@
         "low": 351.93,
         "close": 362.59,
         "volume": 1120400
+      },
+      {
+        "date": "2026-10-02",
+        "open": 362.88,
+        "high": 363.9,
+        "low": 353.6,
+        "close": 354.32,
+        "volume": 753200
+      },
+      {
+        "date": "2026-10-05",
+        "open": 356.43,
+        "high": 363.77,
+        "low": 354.01,
+        "close": 363.38,
+        "volume": 712200
+      },
+      {
+        "date": "2026-10-06",
+        "open": 360.98,
+        "high": 364.36,
+        "low": 359.08,
+        "close": 362.28,
+        "volume": 580100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 364.14,
+        "high": 365.24,
+        "low": 357.48,
+        "close": 358.57,
+        "volume": 458500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 357.73,
+        "high": 364.86,
+        "low": 354.37,
+        "close": 364.23,
+        "volume": 870200
+      },
+      {
+        "date": "2026-10-09",
+        "open": 365.22,
+        "high": 368.2,
+        "low": 362.39,
+        "close": 364.09,
+        "volume": 437700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 364.91,
+        "high": 370.15,
+        "low": 364.91,
+        "close": 367.32,
+        "volume": 558500
+      },
+      {
+        "date": "2026-10-13",
+        "open": 368.09,
+        "high": 372.87,
+        "low": 366.65,
+        "close": 368.41,
+        "volume": 612800
       }
     ],
     "news": [
@@ -7944,19 +7944,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f34481e-e6b5-350f-bd12-e657f2223f66",
-        "title": "Roper Technologies Inc (ROP) Q1 2025 Earnings Call Highlights: Strong Revenue Growth and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-inc-rop-q1-070227558.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "928928c5-6cc3-3dc6-9264-28ec07580766",
         "title": "Stifel Adjusts Price Target on Roper Technologies to $650 From $685, Maintains Buy Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/stifel-adjusts-price-target-roper-095800472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
+        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
         "type": "STORY"
       },
       {
@@ -7968,19 +7968,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "9f34481e-e6b5-350f-bd12-e657f2223f66",
+        "title": "Roper Technologies Inc (ROP) Q1 2025 Earnings Call Highlights: Strong Revenue Growth and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/roper-technologies-inc-rop-q1-070227558.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
         "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
-        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
         "type": "STORY"
       },
       {
@@ -8014,6 +8014,13 @@
         "title": "Senior VP & Group Executive",
         "age": 60,
         "yearBorn": 1965
+      },
+      {
+        "name": "Mr. Jason P. Conley CPA",
+        "title": "Executive VP & CFO",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 1905193
       },
       {
         "name": "Mr. Jeffrey B. Paulsen",
@@ -8052,10 +8059,6 @@
         "yearBorn": 1966
       },
       {
-        "name": "Mr. Shane Luke",
-        "title": "Senior Vice President of AI"
-      },
-      {
         "name": "Mr. Zack Moxcey",
         "title": "Vice President of Investor Relations"
       },
@@ -8067,18 +8070,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.48,
-        "industryAvg": 25.11
+        "value": 15.27,
+        "industryAvg": 26.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.17,
-        "industryAvg": 4.8
+        "value": 4.4,
+        "industryAvg": 5.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.85,
-        "industryAvg": 5.36
+        "value": 1.95,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",

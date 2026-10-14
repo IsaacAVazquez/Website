@@ -1,10 +1,10 @@
 {
   "symbol": "TGT",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.6366,
-      "ttmPe": 16.26,
-      "marketCap": 71182935135,
-      "psRatio": 0.66,
-      "pbRatio": 3.99,
+      "ttmPe": 15.77,
+      "marketCap": 69047765085,
+      "psRatio": 0.64,
+      "pbRatio": 3.87,
       "pegRatio": 0.16
     },
     "profitability": {
@@ -5385,81 +5385,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.82,
-      "costOfEquity": 12.29,
+      "wacc": 9.73,
+      "costOfEquity": 12.26,
       "costOfDebt": 0.52,
       "taxRate": 24,
-      "beta": 0.9235,
-      "marketCap": 71182935135
+      "beta": 0.9204,
+      "marketCap": 69047765085
     },
     "beta": {
-      "beta5y": 0.9235
+      "beta5y": 0.9204
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 89.48,
-        "high": 89.5,
-        "low": 87.26,
-        "close": 89.14,
-        "volume": 10378500
-      },
-      {
-        "date": "2025-10-02",
-        "open": 88.93,
-        "high": 90.28,
-        "low": 88.18,
-        "close": 89.51,
-        "volume": 7557400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 89.8,
-        "high": 90.37,
-        "low": 88.28,
-        "close": 89.03,
-        "volume": 6872000
-      },
-      {
-        "date": "2025-10-06",
-        "open": 89.34,
-        "high": 90.17,
-        "low": 87.84,
-        "close": 88.96,
-        "volume": 8975700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 89.18,
-        "high": 90.09,
-        "low": 88.51,
-        "close": 89.27,
-        "volume": 6348100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 89.62,
-        "high": 90.99,
-        "low": 89.54,
-        "close": 90.38,
-        "volume": 6848500
-      },
-      {
-        "date": "2025-10-09",
-        "open": 90.99,
-        "high": 90.99,
-        "low": 88.62,
-        "close": 89.1,
-        "volume": 7189200
-      },
-      {
-        "date": "2025-10-10",
-        "open": 89.18,
-        "high": 89.23,
-        "low": 85.36,
-        "close": 85.53,
-        "volume": 13925200
-      },
       {
         "date": "2025-10-13",
         "open": 86.92,
@@ -7411,6 +7347,70 @@
         "low": 155.49,
         "close": 156.7,
         "volume": 4740900
+      },
+      {
+        "date": "2026-10-02",
+        "open": 157,
+        "high": 157.08,
+        "low": 154.72,
+        "close": 156,
+        "volume": 4297500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 155.13,
+        "high": 155.51,
+        "low": 150.67,
+        "close": 152.99,
+        "volume": 5054500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 152.86,
+        "high": 154.56,
+        "low": 152.3,
+        "close": 154.33,
+        "volume": 3738100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 154.02,
+        "high": 154.45,
+        "low": 150.77,
+        "close": 150.92,
+        "volume": 4512000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 150.76,
+        "high": 156.1,
+        "low": 150.46,
+        "close": 154.76,
+        "volume": 4185000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 153.59,
+        "high": 155.35,
+        "low": 152.84,
+        "close": 153.64,
+        "volume": 3600100
+      },
+      {
+        "date": "2026-10-12",
+        "open": 153.36,
+        "high": 153.66,
+        "low": 150.5,
+        "close": 153.62,
+        "volume": 3547400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 155.21,
+        "high": 155.21,
+        "low": 151.25,
+        "close": 151.99,
+        "volume": 4160300
       }
     ],
     "news": [
@@ -7521,6 +7521,10 @@
         "title": "Vice President of Investor Relations"
       },
       {
+        "name": "Mr. Mark Weinstein",
+        "title": "Executive Vice President, Chief Marketing & Guest Experience Officer"
+      },
+      {
         "name": "Mr. Matthew A. Liegel",
         "title": "Senior VP, Chief Accounting Officer & Controller",
         "age": 48,
@@ -7556,18 +7560,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.26,
-        "industryAvg": 34.58
+        "value": 15.77,
+        "industryAvg": 36.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.66,
-        "industryAvg": 1.14
+        "value": 0.64,
+        "industryAvg": 1.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.99,
-        "industryAvg": 8.27
+        "value": 3.87,
+        "industryAvg": 8.79
       },
       {
         "metric": "ROE",

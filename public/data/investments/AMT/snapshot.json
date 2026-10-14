@@ -1,10 +1,10 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.2728,
-      "ttmPe": 22.51,
-      "marketCap": 76272828710,
-      "psRatio": 6.97,
-      "pbRatio": 20.51,
-      "pegRatio": 0.16
+      "ttmPe": 24.67,
+      "marketCap": 83607023370,
+      "psRatio": 7.64,
+      "pbRatio": 22.48,
+      "pegRatio": 0.18
     },
     "profitability": {
       "roe": 23.96,
@@ -6261,81 +6261,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.7299999999999995,
-      "costOfEquity": 11.88,
+      "wacc": 8.01,
+      "costOfEquity": 11.940000000000001,
       "costOfDebt": 0.79,
       "taxRate": 12,
-      "beta": 0.87,
-      "marketCap": 76272828710
+      "beta": 0.8782,
+      "marketCap": 83607023370
     },
     "beta": {
-      "beta5y": 0.87
+      "beta5y": 0.8782
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 192.28,
-        "high": 194.5,
-        "low": 192.11,
-        "close": 193.32,
-        "volume": 2960500
-      },
-      {
-        "date": "2025-10-02",
-        "open": 190.95,
-        "high": 193.21,
-        "low": 188.88,
-        "close": 191.17,
-        "volume": 2822300
-      },
-      {
-        "date": "2025-10-03",
-        "open": 191,
-        "high": 192.41,
-        "low": 189.46,
-        "close": 190.21,
-        "volume": 2863100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 189.45,
-        "high": 189.45,
-        "low": 185.33,
-        "close": 185.57,
-        "volume": 2968100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 186.26,
-        "high": 186.99,
-        "low": 183.95,
-        "close": 186.97,
-        "volume": 2741700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 186.71,
-        "high": 188.89,
-        "low": 183.77,
-        "close": 185.59,
-        "volume": 3329700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 186.3,
-        "high": 186.51,
-        "low": 183.99,
-        "close": 185.32,
-        "volume": 2211000
-      },
-      {
-        "date": "2025-10-10",
-        "open": 186.77,
-        "high": 187.99,
-        "low": 184.01,
-        "close": 186.68,
-        "volume": 3154400
-      },
       {
         "date": "2025-10-13",
         "open": 184.36,
@@ -8287,6 +8223,70 @@
         "low": 160.94,
         "close": 161.06,
         "volume": 2649100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 162.22,
+        "high": 165.23,
+        "low": 160.85,
+        "close": 162.2,
+        "volume": 2908500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 161.78,
+        "high": 162.67,
+        "low": 160.3,
+        "close": 162.26,
+        "volume": 2506000
+      },
+      {
+        "date": "2026-10-06",
+        "open": 162.86,
+        "high": 165.24,
+        "low": 162.42,
+        "close": 164.78,
+        "volume": 2185000
+      },
+      {
+        "date": "2026-10-07",
+        "open": 165.44,
+        "high": 168.3,
+        "low": 164.57,
+        "close": 166.18,
+        "volume": 2468800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 166.84,
+        "high": 167.42,
+        "low": 163.66,
+        "close": 166.73,
+        "volume": 4438300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 176.91,
+        "high": 182.52,
+        "low": 175.02,
+        "close": 182.24,
+        "volume": 8512000
+      },
+      {
+        "date": "2026-10-12",
+        "open": 182.25,
+        "high": 183.31,
+        "low": 180.03,
+        "close": 182.56,
+        "volume": 3456600
+      },
+      {
+        "date": "2026-10-13",
+        "open": 184.5,
+        "high": 184.75,
+        "low": 179.36,
+        "close": 179.43,
+        "volume": 3039400
       }
     ],
     "news": [
@@ -8363,11 +8363,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c1cf2d5-2670-3073-8a6b-d5f6c022aeea",
-        "title": "NYSE Content Advisory: Pre-Market update + Dick's Sporting Goods to acquire Foot Locker",
-        "publisher": "PR Newswire",
+        "uuid": "fde3659a-77b8-363f-be17-a13c3aa95ee9",
+        "title": "American Tower Corporation (AMT) Underpinned by Strong Demand Driven by Secular Growth in Mobile Data",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500511.html",
+        "link": "https://finance.yahoo.com/news/american-tower-corporation-amt-underpinned-125628591.html",
         "type": "STORY"
       }
     ],
@@ -8382,18 +8382,18 @@
       {
         "name": "Mr. Juan A. Font",
         "title": "Senior VP and President & CEO of Coresite",
-        "age": 55,
-        "yearBorn": 1970
-      },
-      {
-        "name": "Mr. Julian Plumstead",
-        "title": "Senior Vice President of M&A and Business Development - Europe, Africa and Latin America"
+        "age": 56,
+        "yearBorn": 1969
       },
       {
         "name": "Mr. Paul Blanchett",
         "title": "SVP & Chief Accounting Officer",
         "age": 41,
         "yearBorn": 1984
+      },
+      {
+        "name": "Mr. Richard C. Rossi Jr.",
+        "title": "Executive VP & President of U.S. Tower"
       },
       {
         "name": "Mr. Rodney M. Smith",
@@ -8432,18 +8432,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.51,
-        "industryAvg": 31
+        "value": 24.67,
+        "industryAvg": 32.5
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.97,
-        "industryAvg": 6.34
+        "value": 7.64,
+        "industryAvg": 6.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.51,
-        "industryAvg": 4.34
+        "value": 22.48,
+        "industryAvg": 4.47
       },
       {
         "metric": "ROE",

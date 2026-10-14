@@ -1,10 +1,10 @@
 {
   "symbol": "EOG",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.8548,
-      "ttmPe": 10.72,
-      "marketCap": 72392604480,
-      "psRatio": 2.72,
-      "pbRatio": 2.27,
-      "pegRatio": 0.1
+      "ttmPe": 11.92,
+      "marketCap": 80490528660,
+      "psRatio": 3.02,
+      "pbRatio": 2.53,
+      "pegRatio": 0.11
     },
     "profitability": {
       "roe": 8.68,
@@ -5107,81 +5107,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.01,
-      "costOfEquity": 7.739999999999999,
+      "wacc": 7.090000000000001,
+      "costOfEquity": 7.75,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 22,
-      "beta": 0.3231,
-      "marketCap": 72392604480
+      "beta": 0.3317,
+      "marketCap": 80490528660
     },
     "beta": {
-      "beta5y": 0.3231
+      "beta5y": 0.3317
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 111.55,
-        "high": 111.94,
-        "low": 110.45,
-        "close": 111.27,
-        "volume": 4107800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 111.1,
-        "high": 113.32,
-        "low": 110.29,
-        "close": 110.4,
-        "volume": 4427500
-      },
-      {
-        "date": "2025-10-03",
-        "open": 110.39,
-        "high": 111.4,
-        "low": 110.18,
-        "close": 110.83,
-        "volume": 4788700
-      },
-      {
-        "date": "2025-10-06",
-        "open": 110.64,
-        "high": 111.51,
-        "low": 110.39,
-        "close": 110.45,
-        "volume": 3362100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 110.35,
-        "high": 110.58,
-        "low": 108.87,
-        "close": 110.45,
-        "volume": 3571700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 110.37,
-        "high": 110.71,
-        "low": 109.34,
-        "close": 110.5,
-        "volume": 4190000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 111.4,
-        "high": 112.42,
-        "low": 110.08,
-        "close": 111.92,
-        "volume": 4612100
-      },
-      {
-        "date": "2025-10-10",
-        "open": 110.89,
-        "high": 111.71,
-        "low": 108.04,
-        "close": 108.07,
-        "volume": 4434200
-      },
       {
         "date": "2025-10-13",
         "open": 109.67,
@@ -7133,6 +7069,70 @@
         "low": 137.53,
         "close": 141.31,
         "volume": 3150000
+      },
+      {
+        "date": "2026-10-02",
+        "open": 139.75,
+        "high": 141.68,
+        "low": 139.46,
+        "close": 141.38,
+        "volume": 3599600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 142.18,
+        "high": 145.23,
+        "low": 140.04,
+        "close": 144.08,
+        "volume": 2523400
+      },
+      {
+        "date": "2026-10-06",
+        "open": 143.16,
+        "high": 145.12,
+        "low": 142.72,
+        "close": 144.28,
+        "volume": 2826200
+      },
+      {
+        "date": "2026-10-07",
+        "open": 145.4,
+        "high": 147.02,
+        "low": 142.82,
+        "close": 144.21,
+        "volume": 2141300
+      },
+      {
+        "date": "2026-10-08",
+        "open": 147.09,
+        "high": 148.93,
+        "low": 146.51,
+        "close": 148.51,
+        "volume": 2931800
+      },
+      {
+        "date": "2026-10-09",
+        "open": 148.28,
+        "high": 149.93,
+        "low": 147.97,
+        "close": 148.16,
+        "volume": 2277800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 150.31,
+        "high": 151.4,
+        "low": 149.78,
+        "close": 150.51,
+        "volume": 2890400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 151.66,
+        "high": 153.38,
+        "low": 150.94,
+        "close": 153.17,
+        "volume": 2309800
       }
     ],
     "news": [
@@ -7274,18 +7274,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.72,
-        "industryAvg": 12.82
+        "value": 11.92,
+        "industryAvg": 14.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.72,
-        "industryAvg": 2.45
+        "value": 3.02,
+        "industryAvg": 2.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.27,
-        "industryAvg": 1.63
+        "value": 2.53,
+        "industryAvg": 1.8
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 17.13,
-      "marketCap": 4169451600000,
-      "psRatio": 9.35,
-      "pbRatio": 6.51,
+      "ttmPe": 17.77,
+      "marketCap": 4326729400000,
+      "psRatio": 9.7,
+      "pbRatio": 6.76,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5800,81 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.99,
+      "wacc": 14.000000000000002,
       "costOfEquity": 14.34,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.1931,
-      "marketCap": 4169451600000
+      "beta": 1.1913,
+      "marketCap": 4326729400000
     },
     "beta": {
-      "beta5y": 1.1931
+      "beta5y": 1.1913
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 240.75,
-        "high": 246.3,
-        "low": 238.61,
-        "close": 244.9,
-        "volume": 31658200
-      },
-      {
-        "date": "2025-10-02",
-        "open": 245.15,
-        "high": 246.81,
-        "low": 242.3,
-        "close": 245.69,
-        "volume": 25483300
-      },
-      {
-        "date": "2025-10-03",
-        "open": 244.49,
-        "high": 246.3,
-        "low": 241.66,
-        "close": 245.35,
-        "volume": 30249600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 244.78,
-        "high": 251.32,
-        "low": 244.58,
-        "close": 250.43,
-        "volume": 28894700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 248.27,
-        "high": 250.44,
-        "low": 245.52,
-        "close": 245.76,
-        "volume": 23181300
-      },
-      {
-        "date": "2025-10-08",
-        "open": 244.96,
-        "high": 246.01,
-        "low": 243.82,
-        "close": 244.62,
-        "volume": 21307100
-      },
-      {
-        "date": "2025-10-09",
-        "open": 244.47,
-        "high": 244.76,
-        "low": 239.15,
-        "close": 241.53,
-        "volume": 27892100
-      },
-      {
-        "date": "2025-10-10",
-        "open": 241.43,
-        "high": 244.09,
-        "low": 235.84,
-        "close": 236.57,
-        "volume": 33180300
-      },
       {
         "date": "2025-10-13",
         "open": 240.21,
@@ -7825,7 +7761,71 @@
         "high": 353.22,
         "low": 335.51,
         "close": 338.24,
-        "volume": 33167100
+        "volume": 33269300
+      },
+      {
+        "date": "2026-10-02",
+        "open": 341.32,
+        "high": 345.77,
+        "low": 341.16,
+        "close": 343.5,
+        "volume": 23772100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 342.59,
+        "high": 348.09,
+        "low": 342.4,
+        "close": 346.47,
+        "volume": 25630600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 347.37,
+        "high": 349.09,
+        "low": 344.68,
+        "close": 347.68,
+        "volume": 18715600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 346.72,
+        "high": 350.8,
+        "low": 343.07,
+        "close": 350.5,
+        "volume": 20911600
+      },
+      {
+        "date": "2026-10-08",
+        "open": 353.14,
+        "high": 356.83,
+        "low": 346.52,
+        "close": 348.29,
+        "volume": 23511100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 351.4,
+        "high": 354.7,
+        "low": 350.31,
+        "close": 351.66,
+        "volume": 17281500
+      },
+      {
+        "date": "2026-10-12",
+        "open": 351.86,
+        "high": 356.5,
+        "low": 350.5,
+        "close": 352.72,
+        "volume": 19076400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 356.23,
+        "high": 358.58,
+        "low": 351.6,
+        "close": 353.78,
+        "volume": 23148200
       }
     ],
     "news": [
@@ -7838,27 +7838,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -7870,11 +7854,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7894,19 +7894,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
-        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
-        "publisher": "Reuters",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
         "title": "Magnificent 7 May Need to Make Room for Broadcom",
         "publisher": "The Daily Upside",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
+        "title": "3 Growth Stocks to Buy and Forget About",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
         "type": "STORY"
       }
     ],
@@ -7980,43 +7980,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.13,
-        "industryAvg": 18.43
+        "value": 17.77,
+        "industryAvg": 19.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.35,
-        "industryAvg": 8.44
+        "value": 9.7,
+        "industryAvg": 8.74
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.51,
-        "industryAvg": 6.14
+        "value": 6.76,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 20.03,
-        "industryAvg": 38.690000000000005
+        "industryAvg": 38.71
       },
       {
         "metric": "ROA",
         "value": 13.79,
-        "industryAvg": 25.840000000000003
+        "industryAvg": 25.86
       },
       {
         "metric": "Gross Margin",
         "value": 61.650000000000006,
-        "industryAvg": 63.55
+        "industryAvg": 63.56
       },
       {
         "metric": "EBITDA Margin",
         "value": 122.82,
-        "industryAvg": 61.739999999999995
+        "industryAvg": 61.760000000000005
       },
       {
         "metric": "Net Margin",
         "value": 93.58,
-        "industryAvg": 44.46
+        "industryAvg": 44.48
       }
     ]
   }

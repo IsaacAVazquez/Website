@@ -1,10 +1,10 @@
 {
   "symbol": "STZ",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -32,19 +32,19 @@
       "country": "United States",
       "industry": "Beverages-Brewers",
       "sector": "Consumer Defensive",
-      "longBusinessSummary": "Constellation Brands, Inc., together with its subsidiaries, produces, imports, markets, and sells beer, wine, and spirits in the United States, Canada, Mexico, New Zealand, and Italy. It offers beer under the Corona Extra, Corona Familiar, Corona Sunbrew, Corona Light, Corona Non-Alcoholic, Corona Premier, Modelo Especial, Modelo Chelada, Modelo Negra, Modelo Spiked Aguas Frescas, Modelo Oro, Modelo Noche Especial, Victoria, Vicky Chamoy, and Pacifico brand names. The company also offers wine under the Sea Smoke, Schrader Cellars, Kim Crawford, Mount Veeder, Ruffino, My Favorite Neighbor, Robert Mondavi Winery, and The Prisoner Wine Company brand names; and spirits under the Casa Noble, High West, Mi CAMPO, and Nelson's Green Brier brand names. It provides its products to wholesale distributors, retailers, and state alcohol beverage control agencies. Constellation Brands, Inc. was founded in 1945 and is headquartered in Rochester, New York.",
+      "longBusinessSummary": "Constellation Brands, Inc., together with its subsidiaries, produces, imports, markets, and sells beer, wine, and spirits in the United States, Canada, Mexico, New Zealand, and Italy. It offers beer under the Corona Extra, Corona Familiar, Corona Sunbrew, Corona Light, Corona Non-Alcoholic, Corona Premier, Modelo Especial, Modelo Chelada, Modelo Negra, Modelo Spiked Aguas Frescas, Modelo Oro, Modelo Noche Especial, Victoria, Vicky Chamoy, and Pacifico brand names. The company also offers wine under the Sea Smoke, Schrader Cellars, Kim Crawford, Mount Veeder, Ruffino, My Favorite Neighbor, Robert Mondavi Winery, and The Prisoner Wine Company brand names; and spirits under the Casa Noble, High West, Mi CAMPO, and Nelson's Green Brier brand names. Additionally, it offers a spirit-based, ready-to-drink alcoholic beverage under the SpikedAde brand. It provides its products to wholesale distributors, retailers, and state alcohol beverage control agencies. Constellation Brands, Inc. was founded in 1945 and is headquartered in Rochester, New York.",
       "fullTimeEmployees": 9400,
       "website": "https://www.cbrands.com",
       "shortName": "Constellation Brands, Inc.",
       "longName": "Constellation Brands, Inc."
     },
     "fundamentals": {
-      "ttmEps": 10.4823,
-      "ttmPe": 10.79,
-      "marketCap": 19386047714,
-      "psRatio": 2.14,
-      "pbRatio": 2.35,
-      "pegRatio": 0.35
+      "ttmEps": 11.1501,
+      "ttmPe": 11.4,
+      "marketCap": 21575537654,
+      "psRatio": 2.38,
+      "pbRatio": 2.61,
+      "pegRatio": 0.45
     },
     "profitability": {
       "roe": 8,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 30.78
+        "yoyGrowth": 25.21
       }
     ],
     "income_statement": {
@@ -6203,81 +6203,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.76,
-      "costOfEquity": 8.49,
+      "wacc": 5.970000000000001,
+      "costOfEquity": 8.53,
       "costOfDebt": 0.83,
       "taxRate": 12,
-      "beta": 0.4222,
-      "marketCap": 19386047714
+      "beta": 0.4334,
+      "marketCap": 21575537654
     },
     "beta": {
-      "beta5y": 0.4222
+      "beta5y": 0.4334
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 136.27,
-        "high": 139.02,
-        "low": 135.12,
-        "close": 138.95,
-        "volume": 2757400
-      },
-      {
-        "date": "2025-10-02",
-        "open": 138.56,
-        "high": 140.8,
-        "low": 138.49,
-        "close": 140.51,
-        "volume": 3298200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 140.63,
-        "high": 142.9,
-        "low": 140.46,
-        "close": 142.2,
-        "volume": 3027700
-      },
-      {
-        "date": "2025-10-06",
-        "open": 141.51,
-        "high": 141.72,
-        "low": 138,
-        "close": 138.71,
-        "volume": 4699100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 144.5,
-        "high": 147.6,
-        "low": 139.02,
-        "close": 140.14,
-        "volume": 6552400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 140.44,
-        "high": 144.33,
-        "low": 139.7,
-        "close": 142.76,
-        "volume": 3238200
-      },
-      {
-        "date": "2025-10-09",
-        "open": 143,
-        "high": 145.53,
-        "low": 141.89,
-        "close": 142.97,
-        "volume": 2933800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 143.74,
-        "high": 145.39,
-        "low": 140.61,
-        "close": 141.33,
-        "volume": 3373100
-      },
       {
         "date": "2025-10-13",
         "open": 140.81,
@@ -8229,6 +8165,70 @@
         "low": 111.77,
         "close": 112.99,
         "volume": 2025600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 113.64,
+        "high": 113.64,
+        "low": 112.05,
+        "close": 112.87,
+        "volume": 1522400
+      },
+      {
+        "date": "2026-10-05",
+        "open": 113.54,
+        "high": 114.5,
+        "low": 110.6,
+        "close": 113.31,
+        "volume": 2942500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 113.83,
+        "high": 116.77,
+        "low": 112.99,
+        "close": 115.67,
+        "volume": 6072600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 114.34,
+        "high": 120.31,
+        "low": 114.1,
+        "close": 118.39,
+        "volume": 6339300
+      },
+      {
+        "date": "2026-10-08",
+        "open": 116.82,
+        "high": 123.72,
+        "low": 116.51,
+        "close": 123.63,
+        "volume": 5266100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 123.25,
+        "high": 124.19,
+        "low": 121.6,
+        "close": 122.64,
+        "volume": 2378400
+      },
+      {
+        "date": "2026-10-12",
+        "open": 123.16,
+        "high": 126.42,
+        "low": 123.16,
+        "close": 126.4,
+        "volume": 2393000
+      },
+      {
+        "date": "2026-10-13",
+        "open": 128,
+        "high": 128.2,
+        "low": 125.45,
+        "close": 127.06,
+        "volume": 2105200
       }
     ],
     "news": [
@@ -8377,18 +8377,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.79,
-        "industryAvg": 14.8
+        "value": 11.4,
+        "industryAvg": 15.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.14,
-        "industryAvg": 1.72
+        "value": 2.38,
+        "industryAvg": 1.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.35,
-        "industryAvg": 1.62
+        "value": 2.61,
+        "industryAvg": 1.71
       },
       {
         "metric": "ROE",

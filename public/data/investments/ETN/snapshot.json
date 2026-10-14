@@ -1,10 +1,10 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.8283,
-      "ttmPe": 43.72,
-      "marketCap": 166899364000,
-      "psRatio": 5.56,
-      "pbRatio": 8.24,
+      "ttmPe": 43.58,
+      "marketCap": 166355604000,
+      "psRatio": 5.54,
+      "pbRatio": 8.21,
       "pegRatio": 1.77
     },
     "profitability": {
@@ -5261,81 +5261,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.2,
-      "costOfEquity": 13.669999999999998,
+      "wacc": 12.19,
+      "costOfEquity": 13.66,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 28.000000000000004,
-      "beta": 1.1059,
-      "marketCap": 166899364000
+      "beta": 1.1029,
+      "marketCap": 166355604000
     },
     "beta": {
-      "beta5y": 1.1059
+      "beta5y": 1.1029
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 369.66,
-        "high": 378.03,
-        "low": 369.09,
-        "close": 373.84,
-        "volume": 1590400
-      },
-      {
-        "date": "2025-10-02",
-        "open": 376.07,
-        "high": 381.58,
-        "low": 370.8,
-        "close": 376.76,
-        "volume": 1777800
-      },
-      {
-        "date": "2025-10-03",
-        "open": 377.8,
-        "high": 378.04,
-        "low": 371.61,
-        "close": 373.46,
-        "volume": 1372100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 380,
-        "high": 385.67,
-        "low": 377.56,
-        "close": 380.02,
-        "volume": 1852100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 382,
-        "high": 384.86,
-        "low": 367.49,
-        "close": 370.94,
-        "volume": 2321600
-      },
-      {
-        "date": "2025-10-08",
-        "open": 372.63,
-        "high": 378.94,
-        "low": 370.22,
-        "close": 376.7,
-        "volume": 2168600
-      },
-      {
-        "date": "2025-10-09",
-        "open": 381.58,
-        "high": 381.87,
-        "low": 373.29,
-        "close": 377.19,
-        "volume": 1723200
-      },
-      {
-        "date": "2025-10-10",
-        "open": 379.36,
-        "high": 387.62,
-        "low": 369.08,
-        "close": 369.08,
-        "volume": 2164700
-      },
       {
         "date": "2025-10-13",
         "open": 374.73,
@@ -7287,6 +7223,70 @@
         "low": 423,
         "close": 437.28,
         "volume": 1606300
+      },
+      {
+        "date": "2026-10-02",
+        "open": 446.56,
+        "high": 452,
+        "low": 433.65,
+        "close": 436.11,
+        "volume": 2093600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 436.48,
+        "high": 439.76,
+        "low": 431.38,
+        "close": 432.6,
+        "volume": 1426700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 436.4,
+        "high": 446.73,
+        "low": 434.02,
+        "close": 445.09,
+        "volume": 1592900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 435.1,
+        "high": 439.51,
+        "low": 423.83,
+        "close": 431.33,
+        "volume": 1730000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 426.8,
+        "high": 439.01,
+        "low": 421.42,
+        "close": 424.51,
+        "volume": 2535200
+      },
+      {
+        "date": "2026-10-09",
+        "open": 425.13,
+        "high": 431.12,
+        "low": 420,
+        "close": 429.65,
+        "volume": 1633000
+      },
+      {
+        "date": "2026-10-12",
+        "open": 427.66,
+        "high": 433.95,
+        "low": 424.65,
+        "close": 426.69,
+        "volume": 1292800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 421,
+        "high": 430.96,
+        "low": 417,
+        "close": 428.31,
+        "volume": 1762800
       }
     ],
     "news": [
@@ -7307,19 +7307,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "514d68fe-9e46-3355-97b4-005d7bb11ba7",
-        "title": "Eaton: Q1 Earnings Snapshot",
-        "publisher": "Associated Press Finance",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-snapshot-103722378.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
         "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
         "publisher": "Business Wire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "514d68fe-9e46-3355-97b4-005d7bb11ba7",
+        "title": "Eaton: Q1 Earnings Snapshot",
+        "publisher": "Associated Press Finance",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-snapshot-103722378.html",
         "type": "STORY"
       },
       {
@@ -7373,10 +7373,10 @@
     ],
     "officers": [
       {
-        "name": "Mr. Antonio C. Galvao",
-        "title": "President of Mobility Group",
-        "age": 63,
-        "yearBorn": 1962
+        "name": "Mr. Andrea Trabacchin",
+        "title": "Senior VP, Controller & Principal Accounting Officer",
+        "age": 47,
+        "yearBorn": 1978
       },
       {
         "name": "Mr. David B. Foster",
@@ -7432,18 +7432,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.72,
-        "industryAvg": 31.16
+        "value": 43.58,
+        "industryAvg": 31.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.56,
-        "industryAvg": 3.54
+        "value": 5.54,
+        "industryAvg": 3.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.24,
-        "industryAvg": 6.45
+        "value": 8.21,
+        "industryAvg": 6.5
       },
       {
         "metric": "ROE",

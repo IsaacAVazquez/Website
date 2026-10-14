@@ -1,10 +1,10 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Semiconductors",
       "sector": "Technology",
-      "longBusinessSummary": "QUALCOMM Incorporated engages in the development and commercialization of foundational technologies for the wireless industry worldwide. It operates through three segments: Qualcomm CDMA Technologies (QCT); Qualcomm Technology Licensing (QTL); and Qualcomm Strategic Initiatives (QSI). The QCT segment develops and supplies integrated circuits and system software with connectivity and computing technologies for use in mobile devices; automotive systems for connectivity, digital cockpit, and ADAS/AD; and IoT, including consumer electronic devices, industrial devices, and edge networking products. The QTL segment grants licenses or provides rights to use portions of its intellectual property portfolio, which include various patent rights useful in the manufacture and sale of wireless products comprising products implementing LTE, and/or OFDMA-based 5G products and derivatives; to use cellular standard-essential patents, including 3G, 4G and 5G for cellular devices. The QSI segment invests in early-stage companies in various industries, including 5G, artificial intelligence, automotive, consumer, enterprise, cloud, IoT, and extended reality, and investments, including non-marketable equity securities and, to a lesser extent, marketable equity securities, and convertible debt instruments. It also provides development, and other services and sells related products to the United States government agencies and their contractors. In addition, the company is also involved in Qualcomm government technologies and data center businesses. Further, it provides security and intelligence services for unmanaged networks through software-based network security solutions. QUALCOMM Incorporated was incorporated in 1985 and is headquartered in San Diego, California.",
+      "longBusinessSummary": "QUALCOMM Incorporated engages in the development and commercialization of foundational technologies for the wireless industry worldwide. It operates through three segments: Qualcomm CDMA Technologies (QCT); Qualcomm Technology Licensing (QTL); and Qualcomm Strategic Initiatives (QSI). The QCT segment develops and supplies integrated circuits and system software with connectivity and computing technologies for use in mobile devices; automotive systems for connectivity, digital cockpit, and ADAS/AD; and IoT, including consumer electronic devices, industrial devices, and edge networking products. The QTL segment grants licenses or provides rights to use portions of its intellectual property portfolio, which include various patent rights useful in the manufacture and sale of wireless products comprising products implementing LTE, and/or OFDMA-based 5G products and derivatives; to use cellular standard-essential patents, including 3G, 4G and 5G for cellular devices. The QSI segment invests in early-stage companies in various industries, including 5G, artificial intelligence, automotive, consumer, enterprise, cloud, IoT, and extended reality, and investments, including non-marketable equity securities and, to a lesser extent, marketable equity securities, and convertible debt instruments. It also provides development, and other services and sells related products to the United States government agencies and their contractors. In addition, the company is also involved in Qualcomm government technologies and data center businesses. Further, it provides security and intelligence services for unmanaged networks through software-based network security solutions. The company is in collaboration with Amazon to enable customized silicon at scale for large-scale AI data centers. QUALCOMM Incorporated was incorporated in 1985 and is headquartered in San Diego, California.",
       "fullTimeEmployees": 52000,
       "website": "https://www.qualcomm.com",
       "shortName": "QUALCOMM Incorporated",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.6404,
-      "ttmPe": 21.3,
-      "marketCap": 194530280000,
-      "psRatio": 4.41,
-      "pbRatio": 7.03,
+      "ttmPe": 20.47,
+      "marketCap": 186941020000,
+      "psRatio": 4.24,
+      "pbRatio": 6.76,
       "pegRatio": 0.12
     },
     "profitability": {
@@ -5804,81 +5804,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.78,
-      "costOfEquity": 18.02,
+      "wacc": 16.74,
+      "costOfEquity": 18.029999999999998,
       "costOfDebt": 1.17,
       "taxRate": 19,
-      "beta": 1.6795,
-      "marketCap": 194530280000
+      "beta": 1.6735,
+      "marketCap": 186941020000
     },
     "beta": {
-      "beta5y": 1.6795
+      "beta5y": 1.6735
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 165.8,
-        "high": 166.77,
-        "low": 164.49,
-        "close": 166.49,
-        "volume": 6153000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 167.75,
-        "high": 169.54,
-        "low": 167.18,
-        "close": 168.85,
-        "volume": 5499500
-      },
-      {
-        "date": "2025-10-03",
-        "open": 168.85,
-        "high": 171.75,
-        "low": 168.74,
-        "close": 169.18,
-        "volume": 5137900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 170.54,
-        "high": 170.88,
-        "low": 167.72,
-        "close": 168.62,
-        "volume": 8265800
-      },
-      {
-        "date": "2025-10-07",
-        "open": 169.9,
-        "high": 171.98,
-        "low": 165.14,
-        "close": 165.46,
-        "volume": 7147500
-      },
-      {
-        "date": "2025-10-08",
-        "open": 166.24,
-        "high": 168.55,
-        "low": 163.89,
-        "close": 167.77,
-        "volume": 7302200
-      },
-      {
-        "date": "2025-10-09",
-        "open": 167.37,
-        "high": 167.61,
-        "low": 163.23,
-        "close": 165.66,
-        "volume": 6928400
-      },
-      {
-        "date": "2025-10-10",
-        "open": 164.82,
-        "high": 165.09,
-        "low": 153.35,
-        "close": 153.59,
-        "volume": 15818600
-      },
       {
         "date": "2025-10-13",
         "open": 155.95,
@@ -7829,7 +7765,71 @@
         "high": 186.37,
         "low": 181.77,
         "close": 182.09,
-        "volume": 10890600
+        "volume": 10908600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 186.72,
+        "high": 188.95,
+        "low": 183.36,
+        "close": 184.87,
+        "volume": 10122300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 185.08,
+        "high": 185.48,
+        "low": 180.3,
+        "close": 180.79,
+        "volume": 12302800
+      },
+      {
+        "date": "2026-10-06",
+        "open": 182.03,
+        "high": 183.09,
+        "low": 179.33,
+        "close": 181.03,
+        "volume": 8227100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 178.92,
+        "high": 179.82,
+        "low": 175.35,
+        "close": 177.12,
+        "volume": 7910700
+      },
+      {
+        "date": "2026-10-08",
+        "open": 174.48,
+        "high": 176.28,
+        "low": 171.02,
+        "close": 176.01,
+        "volume": 9566200
+      },
+      {
+        "date": "2026-10-09",
+        "open": 176.4,
+        "high": 176.4,
+        "low": 171.79,
+        "close": 175.5,
+        "volume": 7575200
+      },
+      {
+        "date": "2026-10-12",
+        "open": 175.19,
+        "high": 175.23,
+        "low": 172.16,
+        "close": 174.43,
+        "volume": 6904700
+      },
+      {
+        "date": "2026-10-13",
+        "open": 172.55,
+        "high": 180.78,
+        "low": 172.29,
+        "close": 176.86,
+        "volume": 12298800
       }
     ],
     "news": [
@@ -7850,19 +7850,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
-        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
-        "publisher": "Just Auto",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "24997f10-d503-364e-97df-c293ed247214",
         "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
+        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
+        "publisher": "Just Auto",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
         "type": "STORY"
       },
       {
@@ -7981,18 +7981,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.3,
-        "industryAvg": 30.24
+        "value": 20.47,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.41,
-        "industryAvg": 14.45
+        "value": 4.24,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.03,
-        "industryAvg": 12.62
+        "value": 6.76,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",

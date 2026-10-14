@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3487,
-      "ttmPe": 22.04,
-      "marketCap": 161633518410,
-      "psRatio": 6.36,
-      "pbRatio": 7.82,
-      "pegRatio": 3.45
+      "ttmPe": 22.87,
+      "marketCap": 167709698520,
+      "psRatio": 6.6,
+      "pbRatio": 8.11,
+      "pegRatio": 3.58
     },
     "profitability": {
       "roe": 9.94,
@@ -4999,81 +4999,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.03,
+      "wacc": 10.09,
       "costOfEquity": 11.82,
       "costOfDebt": 1,
       "taxRate": 22,
-      "beta": 0.8611,
-      "marketCap": 161633518410
+      "beta": 0.8632,
+      "marketCap": 167709698520
     },
     "beta": {
-      "beta5y": 0.8611
+      "beta5y": 0.8632
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 235.92,
-        "high": 237.25,
-        "low": 234,
-        "close": 234.74,
-        "volume": 3950800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 235.44,
-        "high": 236.99,
-        "low": 233.52,
-        "close": 234.52,
-        "volume": 3873400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 234.86,
-        "high": 237.74,
-        "low": 234.52,
-        "close": 236.8,
-        "volume": 3176600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 237,
-        "high": 238.23,
-        "low": 235.5,
-        "close": 237.41,
-        "volume": 3261100
-      },
-      {
-        "date": "2025-10-07",
-        "open": 237.78,
-        "high": 238.22,
-        "low": 231.26,
-        "close": 231.86,
-        "volume": 3024100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 230.18,
-        "high": 233.74,
-        "low": 229.22,
-        "close": 232.65,
-        "volume": 3580300
-      },
-      {
-        "date": "2025-10-09",
-        "open": 232.74,
-        "high": 233.48,
-        "low": 230.12,
-        "close": 231.54,
-        "volume": 2331300
-      },
-      {
-        "date": "2025-10-10",
-        "open": 232.55,
-        "high": 233.86,
-        "low": 225.22,
-        "close": 225.45,
-        "volume": 2762700
-      },
       {
         "date": "2025-10-13",
         "open": 226.73,
@@ -7025,6 +6961,70 @@
         "low": 268.68,
         "close": 272.42,
         "volume": 2340600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 273.72,
+        "high": 278.6,
+        "low": 273.08,
+        "close": 278.28,
+        "volume": 3049500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 277.36,
+        "high": 278.36,
+        "low": 274.45,
+        "close": 277.06,
+        "volume": 2241100
+      },
+      {
+        "date": "2026-10-06",
+        "open": 276.62,
+        "high": 277.99,
+        "low": 274.88,
+        "close": 276.61,
+        "volume": 2330200
+      },
+      {
+        "date": "2026-10-07",
+        "open": 276.64,
+        "high": 278.34,
+        "low": 274.53,
+        "close": 274.68,
+        "volume": 1727500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 274.91,
+        "high": 279.03,
+        "low": 274.22,
+        "close": 278.2,
+        "volume": 1479500
+      },
+      {
+        "date": "2026-10-09",
+        "open": 278.11,
+        "high": 279.06,
+        "low": 276.51,
+        "close": 278.34,
+        "volume": 1363000
+      },
+      {
+        "date": "2026-10-12",
+        "open": 277.78,
+        "high": 281.71,
+        "low": 277.43,
+        "close": 281.57,
+        "volume": 1784100
+      },
+      {
+        "date": "2026-10-13",
+        "open": 282.69,
+        "high": 284.78,
+        "low": 280.68,
+        "close": 282.36,
+        "volume": 1359400
       }
     ],
     "news": [
@@ -7061,14 +7061,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
-        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dbb50989-5ece-3897-80fa-8dc913bc3bc2",
         "title": "Why Railroad Stocks Are Moving Higher Today",
         "publisher": "Motley Fool",
@@ -7077,11 +7069,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
+        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "55e29cc4-a1c7-3570-a4d4-4e9fb736b1a2",
         "title": "Some Class I railroads take fresh look at mergers",
         "publisher": "FreightWaves",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/class-railroads-fresh-look-mergers-150000401.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
+        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       },
       {
@@ -7098,14 +7106,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
-        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       }
     ],
@@ -7176,18 +7176,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.04,
-        "industryAvg": 24.59
+        "value": 22.87,
+        "industryAvg": 25.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.36,
-        "industryAvg": 5.52
+        "value": 6.6,
+        "industryAvg": 5.65
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.82,
-        "industryAvg": 4.13
+        "value": 8.11,
+        "industryAvg": 4.22
       },
       {
         "metric": "ROE",

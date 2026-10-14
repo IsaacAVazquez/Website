@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 19.91,
-      "marketCap": 283921020000,
-      "psRatio": 1.68,
-      "pbRatio": 17.09,
-      "pegRatio": 4.41
+      "ttmPe": 20.57,
+      "marketCap": 293332160000,
+      "psRatio": 1.73,
+      "pbRatio": 17.65,
+      "pegRatio": 4.56
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,81 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.34,
-      "costOfEquity": 12.46,
+      "wacc": 10.41,
+      "costOfEquity": 12.479999999999999,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9463,
-      "marketCap": 283921020000
+      "beta": 0.9485,
+      "marketCap": 293332160000
     },
     "beta": {
-      "beta5y": 0.9463
+      "beta5y": 0.9485
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 404.39,
-        "high": 405.13,
-        "low": 395.31,
-        "close": 397.02,
-        "volume": 3787800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 395.5,
-        "high": 397.38,
-        "low": 393.79,
-        "close": 395.01,
-        "volume": 2964700
-      },
-      {
-        "date": "2025-10-03",
-        "open": 394.13,
-        "high": 397.32,
-        "low": 392.63,
-        "close": 395.06,
-        "volume": 2951300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 394.5,
-        "high": 394.5,
-        "low": 385.72,
-        "close": 389.33,
-        "volume": 3653700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 389.45,
-        "high": 389.75,
-        "low": 385.51,
-        "close": 386.81,
-        "volume": 2505700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 386.46,
-        "high": 386.46,
-        "low": 382.98,
-        "close": 383.79,
-        "volume": 2517600
-      },
-      {
-        "date": "2025-10-09",
-        "open": 382.9,
-        "high": 384.36,
-        "low": 377.46,
-        "close": 377.69,
-        "volume": 3321400
-      },
-      {
-        "date": "2025-10-10",
-        "open": 380.26,
-        "high": 380.26,
-        "low": 374.78,
-        "close": 375.75,
-        "volume": 2992400
-      },
       {
         "date": "2025-10-13",
         "open": 379.07,
@@ -7452,6 +7388,70 @@
         "low": 277.15,
         "close": 282.46,
         "volume": 7776600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 286.56,
+        "high": 287.7,
+        "low": 280.89,
+        "close": 282.85,
+        "volume": 4791200
+      },
+      {
+        "date": "2026-10-05",
+        "open": 283.54,
+        "high": 283.54,
+        "low": 279.76,
+        "close": 281.15,
+        "volume": 4261500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 283.23,
+        "high": 287.14,
+        "low": 282.13,
+        "close": 286.69,
+        "volume": 4502100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 285,
+        "high": 285.98,
+        "low": 283.61,
+        "close": 285.77,
+        "volume": 5452900
+      },
+      {
+        "date": "2026-10-08",
+        "open": 284.53,
+        "high": 295.74,
+        "low": 282.84,
+        "close": 295.47,
+        "volume": 8908100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 294.99,
+        "high": 295.23,
+        "low": 290.33,
+        "close": 290.74,
+        "volume": 5292300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 289.5,
+        "high": 292.6,
+        "low": 288.51,
+        "close": 290.62,
+        "volume": 4627400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 295,
+        "high": 296.6,
+        "low": 291.01,
+        "close": 293.92,
+        "volume": 4520800
       }
     ],
     "news": [
@@ -7512,12 +7512,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "3af9c020-af6f-39f0-bb96-5f4046687d0b",
-        "title": "Stock Market Today: Dow Jones Falls, S&P 500 Ends Win Streak; Coffee Kiosks Stock Sinks",
-        "publisher": "Investor's Business Daily",
+        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
+        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/m/3af9c020-af6f-39f0-bb96-5f4046687d0b/stock-market-today%3A-dow-jones.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "9f2764b1-3a4c-3f9f-8251-57e17cb449eb",
@@ -7528,12 +7528,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
-        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "6de80f5d-3e1e-354a-a33e-7414775e46a2",
+        "title": "Jefferies Adjusts Home Depot Price Target to $456 From $461",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/jefferies-adjusts-home-depot-price-155048144.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.91,
-        "industryAvg": 18.6
+        "value": 20.57,
+        "industryAvg": 19.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.68,
-        "industryAvg": 1.47
+        "value": 1.73,
+        "industryAvg": 1.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.09,
-        "industryAvg": 14.58
+        "value": 17.65,
+        "industryAvg": 15.04
       },
       {
         "metric": "ROE",

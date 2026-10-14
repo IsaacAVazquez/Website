@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.8966,
-      "ttmPe": 157,
-      "marketCap": 998392320000,
-      "psRatio": 24.17,
-      "pbRatio": 14.85,
-      "pegRatio": 0.99
+      "ttmPe": 155.4,
+      "marketCap": 988224960000,
+      "psRatio": 23.93,
+      "pbRatio": 14.7,
+      "pegRatio": 0.98
     },
     "profitability": {
       "roe": 3.49,
@@ -6017,81 +6017,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.79,
-      "costOfEquity": 23.89,
+      "wacc": 23.849999999999998,
+      "costOfEquity": 23.95,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 10,
-      "beta": 2.4536,
-      "marketCap": 998392320000
+      "beta": 2.4465,
+      "marketCap": 988224960000
     },
     "beta": {
-      "beta5y": 2.4536
+      "beta5y": 2.4465
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 160.93,
-        "high": 164.18,
-        "low": 160.49,
-        "close": 164.01,
-        "volume": 39895200
-      },
-      {
-        "date": "2025-10-02",
-        "open": 168.68,
-        "high": 171.06,
-        "low": 166.12,
-        "close": 169.73,
-        "volume": 55475200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 170.68,
-        "high": 170.68,
-        "low": 163.14,
-        "close": 164.67,
-        "volume": 42699100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 226.45,
-        "high": 226.71,
-        "low": 203.01,
-        "close": 203.71,
-        "volume": 248859600
-      },
-      {
-        "date": "2025-10-07",
-        "open": 214.85,
-        "high": 218.9,
-        "low": 209.28,
-        "close": 211.51,
-        "volume": 115748100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 212.95,
-        "high": 235.87,
-        "low": 210.7,
-        "close": 235.56,
-        "volume": 159983500
-      },
-      {
-        "date": "2025-10-09",
-        "open": 236.3,
-        "high": 240.1,
-        "low": 229.53,
-        "close": 232.89,
-        "volume": 94290700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 232.77,
-        "high": 234.22,
-        "low": 213.2,
-        "close": 214.9,
-        "volume": 118656600
-      },
       {
         "date": "2025-10-13",
         "open": 220.2,
@@ -8042,7 +7978,71 @@
         "high": 619.3,
         "low": 601.5,
         "close": 615.73,
-        "volume": 17084200
+        "volume": 17134500
+      },
+      {
+        "date": "2026-10-02",
+        "open": 635.95,
+        "high": 645.46,
+        "low": 628.55,
+        "close": 633.91,
+        "volume": 19865300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 630.61,
+        "high": 633.5,
+        "low": 619.99,
+        "close": 631.75,
+        "volume": 13717500
+      },
+      {
+        "date": "2026-10-06",
+        "open": 648.04,
+        "high": 658.52,
+        "low": 628,
+        "close": 649.42,
+        "volume": 24245900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 634.77,
+        "high": 648.48,
+        "low": 633.16,
+        "close": 645.86,
+        "volume": 18561100
+      },
+      {
+        "date": "2026-10-08",
+        "open": 639.36,
+        "high": 643.85,
+        "low": 613.34,
+        "close": 620.68,
+        "volume": 23488200
+      },
+      {
+        "date": "2026-10-09",
+        "open": 626.89,
+        "high": 627.37,
+        "low": 606,
+        "close": 608.1,
+        "volume": 13733300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 599.93,
+        "high": 601.77,
+        "low": 586.54,
+        "close": 594.24,
+        "volume": 15379900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 577.5,
+        "high": 606.2,
+        "low": 570.6,
+        "close": 605.53,
+        "volume": 17862600
       }
     ],
     "news": [
@@ -8063,19 +8063,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "38332cb6-375c-3d3f-866e-110979b991dc",
-        "title": "1 of Wall Street’s Favorite Stock to Keep an Eye On and 2 to Avoid",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-130304939.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9eeeb70a-4a36-3460-aa56-174cd3b4e291",
         "title": "AMD downgraded, Dollar General upgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/amd-downgraded-dollar-general-upgraded-133520598.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38332cb6-375c-3d3f-866e-110979b991dc",
+        "title": "1 of Wall Street’s Favorite Stock to Keep an Eye On and 2 to Avoid",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-130304939.html",
         "type": "STORY"
       },
       {
@@ -8111,19 +8111,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
-        "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
         "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
+        "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
         "type": "VIDEO"
       }
     ],
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 157,
-        "industryAvg": 30.24
+        "value": 155.4,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.17,
-        "industryAvg": 14.45
+        "value": 23.93,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.85,
-        "industryAvg": 12.62
+        "value": 14.7,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",

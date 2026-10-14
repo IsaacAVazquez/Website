@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 28.2571,
-      "ttmPe": 11.51,
-      "marketCap": 125427458500,
-      "psRatio": 2.01,
-      "pbRatio": 1.66,
+      "ttmPe": 12.25,
+      "marketCap": 133491065440,
+      "psRatio": 2.14,
+      "pbRatio": 1.77,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5550,81 +5550,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.8500000000000005,
-      "costOfEquity": 7.71,
+      "wacc": 6.88,
+      "costOfEquity": 7.6899999999999995,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 20,
-      "beta": 0.3191,
-      "marketCap": 125427458500
+      "beta": 0.3235,
+      "marketCap": 133491065440
     },
     "beta": {
-      "beta5y": 0.3191
+      "beta5y": 0.3235
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 281.57,
-        "high": 283.68,
-        "low": 280.56,
-        "close": 281.41,
-        "volume": 1700100
-      },
-      {
-        "date": "2025-10-02",
-        "open": 279.46,
-        "high": 282.5,
-        "low": 279,
-        "close": 281.37,
-        "volume": 1731100
-      },
-      {
-        "date": "2025-10-03",
-        "open": 280.48,
-        "high": 285.18,
-        "low": 279.59,
-        "close": 283.96,
-        "volume": 1124200
-      },
-      {
-        "date": "2025-10-06",
-        "open": 285,
-        "high": 287.38,
-        "low": 283.92,
-        "close": 286.39,
-        "volume": 1334800
-      },
-      {
-        "date": "2025-10-07",
-        "open": 287,
-        "high": 289.76,
-        "low": 285.91,
-        "close": 289.24,
-        "volume": 1179100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 290,
-        "high": 290.5,
-        "low": 287,
-        "close": 287.1,
-        "volume": 1101700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 288.25,
-        "high": 289.36,
-        "low": 283.83,
-        "close": 284.33,
-        "volume": 1185500
-      },
-      {
-        "date": "2025-10-10",
-        "open": 285.69,
-        "high": 286.02,
-        "low": 281.99,
-        "close": 283.01,
-        "volume": 1283800
-      },
       {
         "date": "2025-10-13",
         "open": 282.72,
@@ -7576,6 +7512,70 @@
         "low": 325,
         "close": 331.3,
         "volume": 1368200
+      },
+      {
+        "date": "2026-10-02",
+        "open": 330.71,
+        "high": 332.01,
+        "low": 328.35,
+        "close": 330.89,
+        "volume": 1986800
+      },
+      {
+        "date": "2026-10-05",
+        "open": 330.69,
+        "high": 332.8,
+        "low": 328.81,
+        "close": 330.49,
+        "volume": 2715600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 330.1,
+        "high": 336,
+        "low": 329.45,
+        "close": 334.21,
+        "volume": 1277200
+      },
+      {
+        "date": "2026-10-07",
+        "open": 334.32,
+        "high": 337.3,
+        "low": 333.58,
+        "close": 334.7,
+        "volume": 1052000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 335.27,
+        "high": 344.97,
+        "low": 335.27,
+        "close": 343.78,
+        "volume": 1234500
+      },
+      {
+        "date": "2026-10-09",
+        "open": 342.77,
+        "high": 345.47,
+        "low": 340.97,
+        "close": 341.2,
+        "volume": 1032700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 343.11,
+        "high": 346.4,
+        "low": 342.76,
+        "close": 345.06,
+        "volume": 836300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 347.62,
+        "high": 348.13,
+        "low": 344.27,
+        "close": 346.16,
+        "volume": 892100
       }
     ],
     "news": [
@@ -7662,18 +7662,8 @@
     ],
     "officers": [
       {
-        "name": "Mr. Andreas Lewin",
-        "title": "Managing Director of ACE Tempest Re Europe"
-      },
-      {
         "name": "Mr. Christopher J. Hogan CFA",
         "title": "Senior VP of Chubb Group & Chief Investment Officer"
-      },
-      {
-        "name": "Mr. David Michael Alan Furby",
-        "title": "Senior VP & Executive Chairman of EMEA",
-        "age": 63,
-        "yearBorn": 1962
       },
       {
         "name": "Mr. Evan G. Greenberg",
@@ -7698,6 +7688,12 @@
         "totalPay": 6082297
       },
       {
+        "name": "Mr. Joseph F. Wayland J.D.",
+        "title": "Executive VP, General Counsel & Secretary",
+        "age": 67,
+        "yearBorn": 1958
+      },
+      {
         "name": "Mr. Juan Luis Ortega Guarderas",
         "title": "Executive VP of Chubb Group & President of North America Insurance",
         "age": 50,
@@ -7712,27 +7708,34 @@
         "totalPay": 3432728
       },
       {
-        "name": "Ms. Judith Gonsalves",
-        "title": "VP of Chubb Group & Division President of Chubb Bermuda",
-        "age": 59,
-        "yearBorn": 1966
+        "name": "Mr. Sean Ringsted",
+        "title": "EVP of Chubb Group, Chief Scientist, Chief Digital Business & Chief Analytics Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 4361934
+      },
+      {
+        "name": "Ms. Susan P. Spivak Bernstein",
+        "title": "Senior Vice President of Investor Relations",
+        "age": 58,
+        "yearBorn": 1967
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.51,
-        "industryAvg": 8.79
+        "value": 12.25,
+        "industryAvg": 9.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.01,
-        "industryAvg": 1.32
+        "value": 2.14,
+        "industryAvg": 1.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.66,
-        "industryAvg": 4.93
+        "value": 1.77,
+        "industryAvg": 4.87
       },
       {
         "metric": "ROE",

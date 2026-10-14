@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.9774,
-      "ttmPe": 32.83,
-      "marketCap": 59835085480,
-      "psRatio": 5.98,
-      "pbRatio": -6.1,
-      "pegRatio": 3.01
+      "ttmPe": 33.73,
+      "marketCap": 61481572822,
+      "psRatio": 6.14,
+      "pbRatio": -6.27,
+      "pegRatio": 3.1
     },
     "profitability": {
       "roe": -5.609999999999999,
@@ -6079,81 +6079,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.49,
+      "wacc": 8.559999999999999,
       "costOfEquity": 12.590000000000002,
       "costOfDebt": 1.54,
       "taxRate": 24,
-      "beta": 0.9631,
-      "marketCap": 59835085480
+      "beta": 0.9636,
+      "marketCap": 61481572822
     },
     "beta": {
-      "beta5y": 0.9631
+      "beta5y": 0.9636
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 1304.76,
-        "high": 1333.02,
-        "low": 1298.35,
-        "close": 1300.8,
-        "volume": 335900
-      },
-      {
-        "date": "2025-10-02",
-        "open": 1295.88,
-        "high": 1304.86,
-        "low": 1276.6899,
-        "close": 1283.8101,
-        "volume": 278000
-      },
-      {
-        "date": "2025-10-03",
-        "open": 1279.86,
-        "high": 1293.25,
-        "low": 1277.6,
-        "close": 1288.83,
-        "volume": 258200
-      },
-      {
-        "date": "2025-10-06",
-        "open": 1290.15,
-        "high": 1296.6,
-        "low": 1274.49,
-        "close": 1291.74,
-        "volume": 184700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 1291.74,
-        "high": 1303.66,
-        "low": 1283.86,
-        "close": 1284.38,
-        "volume": 197700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 1277.48,
-        "high": 1290.9301,
-        "low": 1277.48,
-        "close": 1285.85,
-        "volume": 219700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 1285,
-        "high": 1286.75,
-        "low": 1272.05,
-        "close": 1275.4399,
-        "volume": 183800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 1273.14,
-        "high": 1287.8,
-        "low": 1270,
-        "close": 1277.99,
-        "volume": 240000
-      },
       {
         "date": "2025-10-13",
         "open": 1282.1,
@@ -8105,6 +8041,70 @@
         "low": 1080.09,
         "close": 1097.24,
         "volume": 402000
+      },
+      {
+        "date": "2026-10-02",
+        "open": 1102.73,
+        "high": 1108.4399,
+        "low": 1086.13,
+        "close": 1090.38,
+        "volume": 278600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 1087,
+        "high": 1098.74,
+        "low": 1078,
+        "close": 1092.66,
+        "volume": 318300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 1093,
+        "high": 1110.33,
+        "low": 1082.66,
+        "close": 1103.33,
+        "volume": 286900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 1092.01,
+        "high": 1101.75,
+        "low": 1082.04,
+        "close": 1096.21,
+        "volume": 399400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 1091.73,
+        "high": 1104.52,
+        "low": 1087.5,
+        "close": 1089.3,
+        "volume": 424300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 1090.02,
+        "high": 1110.77,
+        "low": 1085,
+        "close": 1107.99,
+        "volume": 278700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 1107.25,
+        "high": 1129.21,
+        "low": 1105.15,
+        "close": 1119.9399,
+        "volume": 330500
+      },
+      {
+        "date": "2026-10-13",
+        "open": 1113.01,
+        "high": 1115.71,
+        "low": 1091.16,
+        "close": 1112.39,
+        "volume": 331200
       }
     ],
     "news": [
@@ -8117,14 +8117,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "eb4ff7d6-48e9-3d51-9a5c-b34eb59b0dd2",
-        "title": "TransDigm Group and Servotronics, Inc. Announce Acquisition Agreement",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/transdigm-group-servotronics-inc-announce-123000757.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
         "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
         "publisher": "MT Newswires",
@@ -8133,11 +8125,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "eb4ff7d6-48e9-3d51-9a5c-b34eb59b0dd2",
+        "title": "TransDigm Group and Servotronics, Inc. Announce Acquisition Agreement",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/transdigm-group-servotronics-inc-announce-123000757.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "204de1cc-01c3-368b-a226-3f4eb4a4e436",
         "title": "TransDigm Group Incorporated (TDG) to Acquire Servotronics, Inc. (SVT) in Newly Announced Merger Deal",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/transdigm-group-incorporated-tdg-acquire-010704911.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
+        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
         "type": "STORY"
       },
       {
@@ -8154,14 +8162,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
-        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
         "type": "STORY"
       },
       {
@@ -8201,8 +8201,8 @@
       {
         "name": "Mr. Armani Vadiee",
         "title": "General Counsel, Chief Compliance Officer & Secretary",
-        "age": 44,
-        "yearBorn": 1981
+        "age": 45,
+        "yearBorn": 1980
       },
       {
         "name": "Mr. Jason Marlin",
@@ -8222,15 +8222,15 @@
       {
         "name": "Mr. Michael J. Lisman",
         "title": "CEO, President & Director",
-        "age": 41,
-        "yearBorn": 1984,
+        "age": 42,
+        "yearBorn": 1983,
         "totalPay": 28530024
       },
       {
         "name": "Mr. Patrick Joseph Murphy",
         "title": "Co-Chief Operating Officer",
-        "age": 52,
-        "yearBorn": 1973,
+        "age": 53,
+        "yearBorn": 1972,
         "totalPay": 13843634
       },
       {
@@ -8248,18 +8248,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.83,
-        "industryAvg": 31.86
+        "value": 33.73,
+        "industryAvg": 31.62
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.98,
-        "industryAvg": 2.85
+        "value": 6.14,
+        "industryAvg": 2.8
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.1,
-        "industryAvg": 8.58
+        "value": -6.27,
+        "industryAvg": 8.67
       },
       {
         "metric": "ROE",

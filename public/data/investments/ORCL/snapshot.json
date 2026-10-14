@@ -1,14 +1,11 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-13"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 21.6,
-      "marketCap": 416676960000,
-      "psRatio": 5.81,
-      "pbRatio": 6.24,
-      "pegRatio": 0.39
+      "ttmPe": 22.45,
+      "marketCap": 433036800000,
+      "psRatio": 6.03,
+      "pbRatio": 6.49,
+      "pegRatio": 0.41
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6185,81 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.74,
-      "costOfEquity": 18.59,
+      "wacc": 13.919999999999998,
+      "costOfEquity": 18.65,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7521,
-      "marketCap": 416676960000
+      "beta": 1.754,
+      "marketCap": 433036800000
     },
     "beta": {
-      "beta5y": 1.7521
+      "beta5y": 1.754
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 278.8,
-        "high": 289.99,
-        "low": 277.88,
-        "close": 289.01,
-        "volume": 23378300
-      },
-      {
-        "date": "2025-10-02",
-        "open": 291.8,
-        "high": 294.97,
-        "low": 286.05,
-        "close": 288.78,
-        "volume": 16215500
-      },
-      {
-        "date": "2025-10-03",
-        "open": 289.6,
-        "high": 294.64,
-        "low": 284,
-        "close": 286.14,
-        "volume": 13688400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 292.38,
-        "high": 296.68,
-        "low": 290.8,
-        "close": 291.59,
-        "volume": 14076800
-      },
-      {
-        "date": "2025-10-07",
-        "open": 293.22,
-        "high": 293.22,
-        "low": 271,
-        "close": 284.24,
-        "volume": 31723400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 285.42,
-        "high": 291.53,
-        "low": 283.6,
-        "close": 288.63,
-        "volume": 18982100
-      },
-      {
-        "date": "2025-10-09",
-        "open": 291.55,
-        "high": 300.97,
-        "low": 287.26,
-        "close": 296.96,
-        "volume": 26479800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 300.28,
-        "high": 307.72,
-        "low": 292.01,
-        "close": 292.96,
-        "volume": 28895300
-      },
       {
         "date": "2025-10-13",
         "open": 298.7,
@@ -8210,7 +8143,71 @@
         "high": 140.25,
         "low": 135.33,
         "close": 138.07,
-        "volume": 25354600
+        "volume": 25459100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 142.09,
+        "high": 144.86,
+        "low": 140.26,
+        "close": 142.3,
+        "volume": 35409300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 142.53,
+        "high": 146.66,
+        "low": 142.37,
+        "close": 142.48,
+        "volume": 18069600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 143.93,
+        "high": 146.94,
+        "low": 143.86,
+        "close": 144.77,
+        "volume": 20041600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 142.54,
+        "high": 144.7,
+        "low": 141.37,
+        "close": 143.56,
+        "volume": 15739400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 142.19,
+        "high": 142.78,
+        "low": 134.66,
+        "close": 135.69,
+        "volume": 42412600
+      },
+      {
+        "date": "2026-10-09",
+        "open": 136.7,
+        "high": 142.9,
+        "low": 136.49,
+        "close": 141.4,
+        "volume": 25529900
+      },
+      {
+        "date": "2026-10-12",
+        "open": 141.56,
+        "high": 141.56,
+        "low": 136.52,
+        "close": 137.39,
+        "volume": 21533100
+      },
+      {
+        "date": "2026-10-13",
+        "open": 135.91,
+        "high": 144.18,
+        "low": 135.55,
+        "close": 143.2,
+        "volume": 26280500
       }
     ],
     "news": [
@@ -8279,101 +8276,119 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Cherian Varghese",
-        "title": "Senior Vice President of Technology - Middle East and Africa"
+        "name": "Mr. Clayton M. Magouyrk",
+        "title": "Chief Executive Officer & Director",
+        "age": 39,
+        "yearBorn": 1986,
+        "totalPay": 5803182
       },
       {
-        "name": "Mr. Cormac Watters",
-        "title": "Executive Vice President of Applications, Europe, Middle East & Africa",
-        "age": 59,
-        "yearBorn": 1966
+        "name": "Mr. Douglas A. Kehring",
+        "title": "Executive VP & Head of Operations",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 1311712
       },
       {
-        "name": "Mr. Evan M. Goldberg",
-        "title": "Executive Vice President of Oracle NetSuite",
-        "age": 59,
-        "yearBorn": 1966
+        "name": "Mr. Jeffrey O. Henley",
+        "title": "Executive Vice Chairman of the Board",
+        "age": 80,
+        "yearBorn": 1945,
+        "totalPay": 658717
       },
       {
-        "name": "Mr. Garrett J. Ilg",
-        "title": "Executive Vice President of Japan & Asia Pacific",
-        "age": 64,
-        "yearBorn": 1961
+        "name": "Mr. Lawrence J. Ellison",
+        "title": "Co-Founder, Executive Chairman & CTO",
+        "age": 81,
+        "yearBorn": 1944,
+        "totalPay": 13238138
       },
       {
-        "name": "Mr. Greg Pavlik",
-        "title": "Senior VP & CTO of Platform as a Service",
-        "age": 53,
-        "yearBorn": 1972
+        "name": "Mr. Mark Hura",
+        "title": "President of Global Field Operations",
+        "age": 51,
+        "yearBorn": 1974,
+        "totalPay": 5056734
       },
       {
-        "name": "Mr. Luiz Meisler",
-        "title": "Executive Vice President of Latin America",
-        "age": 72,
-        "yearBorn": 1953
-      },
-      {
-        "name": "Mr. Simon de Montfort Walker",
-        "title": "Senior VP and GM of Oracle Food & Beverage Global Business Unit"
-      },
-      {
-        "name": "Mr. T. K. Anand",
-        "title": "Executive Vice President of Healthcare & AI Data Platform"
-      },
-      {
-        "name": "Mr. Vipin Samar",
-        "title": "Senior Vice President of Database Security"
-      },
-      {
-        "name": "Ms. Seema Verma M.P.H.",
-        "title": "Executive VP and GM of Oracle Health & Life Sciences",
+        "name": "Mr. Michael D. Sicilia",
+        "title": "Chief Executive Officer & Director",
         "age": 54,
-        "yearBorn": 1971
+        "yearBorn": 1971,
+        "totalPay": 7939096
+      },
+      {
+        "name": "Mr. Stuart A. Levey",
+        "title": "Executive VP & Chief Legal Officer",
+        "age": 61,
+        "yearBorn": 1964,
+        "totalPay": 1719344
+      },
+      {
+        "name": "Ms. Hilary Barbara Maxson B.Sc., M.B.A.",
+        "title": "Chief Financial Officer",
+        "age": 47,
+        "yearBorn": 1978,
+        "totalPay": 1388349
+      },
+      {
+        "name": "Ms. Maria Smith",
+        "title": "Executive VP & Chief Accounting Officer",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 639362
+      },
+      {
+        "name": "Ms. Safra Ada Catz",
+        "title": "Executive Vice Chair",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 1291084
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.79,
-        "industryAvg": 33.11
+        "value": 22.45,
+        "industryAvg": 35.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.59,
-        "industryAvg": 7.41
+        "value": 6.03,
+        "industryAvg": 8.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.01,
-        "industryAvg": 8.24
+        "value": 6.49,
+        "industryAvg": 8.97
       },
       {
         "metric": "ROE",
         "value": 8.559999999999999,
-        "industryAvg": 25.89
+        "industryAvg": 25.900000000000002
       },
       {
         "metric": "ROA",
         "value": 1.66,
-        "industryAvg": 10.15
+        "industryAvg": 10.16
       },
       {
         "metric": "Gross Margin",
@@ -8383,12 +8398,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 53.72,
-        "industryAvg": 36.04
+        "industryAvg": 36.05
       },
       {
         "metric": "Net Margin",
         "value": 24.19,
-        "industryAvg": 19.82
+        "industryAvg": 19.830000000000002
       }
     ]
   }

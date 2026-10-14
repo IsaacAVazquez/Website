@@ -1,10 +1,10 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.5556,
-      "ttmPe": 17.07,
-      "marketCap": 175281254208,
-      "psRatio": 1.9,
-      "pbRatio": 3.12,
-      "pegRatio": 3.16
+      "ttmPe": 16.09,
+      "marketCap": 165231709648,
+      "psRatio": 1.79,
+      "pbRatio": 2.94,
+      "pegRatio": 2.98
     },
     "profitability": {
       "roe": 5.779999999999999,
@@ -5718,81 +5718,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.17,
-      "costOfEquity": 8.25,
+      "wacc": 5.01,
+      "costOfEquity": 8.16,
       "costOfDebt": 0.88,
       "taxRate": 25,
-      "beta": 0.391,
-      "marketCap": 175281254208
+      "beta": 0.385,
+      "marketCap": 165231709648
     },
     "beta": {
-      "beta5y": 0.391
+      "beta5y": 0.385
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 239.4,
-        "high": 240.95,
-        "low": 231.56,
-        "close": 233.26,
-        "volume": 5206700
-      },
-      {
-        "date": "2025-10-02",
-        "open": 232.54,
-        "high": 233.26,
-        "low": 229.72,
-        "close": 230.14,
-        "volume": 4325500
-      },
-      {
-        "date": "2025-10-03",
-        "open": 230.02,
-        "high": 230.82,
-        "low": 227.11,
-        "close": 230.27,
-        "volume": 3767100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 228.57,
-        "high": 229.06,
-        "low": 222.26,
-        "close": 224.96,
-        "volume": 6171700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 225,
-        "high": 228.95,
-        "low": 223.58,
-        "close": 227.68,
-        "volume": 3942400
-      },
-      {
-        "date": "2025-10-08",
-        "open": 226.7,
-        "high": 226.88,
-        "low": 224.39,
-        "close": 226.58,
-        "volume": 4059800
-      },
-      {
-        "date": "2025-10-09",
-        "open": 226.37,
-        "high": 228.07,
-        "low": 225,
-        "close": 226.21,
-        "volume": 3303700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 227.24,
-        "high": 231.02,
-        "low": 225.84,
-        "close": 228.79,
-        "volume": 5106300
-      },
       {
         "date": "2025-10-13",
         "open": 228.87,
@@ -7744,6 +7680,70 @@
         "low": 161.3,
         "close": 161.73,
         "volume": 3943100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 161.6,
+        "high": 164.57,
+        "low": 160.81,
+        "close": 163.64,
+        "volume": 3410000
+      },
+      {
+        "date": "2026-10-05",
+        "open": 162.23,
+        "high": 164.76,
+        "low": 162.23,
+        "close": 164.64,
+        "volume": 4296200
+      },
+      {
+        "date": "2026-10-06",
+        "open": 164.36,
+        "high": 166.06,
+        "low": 163.02,
+        "close": 165.93,
+        "volume": 4323900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 167.99,
+        "high": 169.78,
+        "low": 166.88,
+        "close": 167.65,
+        "volume": 3883400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 168.42,
+        "high": 171.8,
+        "low": 167.92,
+        "close": 171.31,
+        "volume": 4391800
+      },
+      {
+        "date": "2026-10-09",
+        "open": 155.51,
+        "high": 156.89,
+        "low": 147.9,
+        "close": 148.58,
+        "volume": 19028300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 149.6,
+        "high": 153.61,
+        "low": 149.58,
+        "close": 151.87,
+        "volume": 9028900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 151.81,
+        "high": 154.75,
+        "low": 151.8,
+        "close": 153.73,
+        "volume": 5685400
       }
     ],
     "news": [
@@ -7772,19 +7772,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad7da136-7e59-3da1-80ea-bf69c9f9a814",
-        "title": "China weighs U.S. tariff exemptions, Alphabet reports Q1 beat: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-27",
-        "link": "https://finance.yahoo.com/news/china-weighs-u-tariff-exemptions-162055045.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aaaad415-2eec-4b3b-9dfa-5e6b2a2aaa4b",
         "title": "4 of your biggest Trump tariff questions answered",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-04-27",
         "link": "https://finance.yahoo.com/news/4-of-your-biggest-trump-tariff-questions-answered-100003282.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad7da136-7e59-3da1-80ea-bf69c9f9a814",
+        "title": "China weighs U.S. tariff exemptions, Alphabet reports Q1 beat: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-27",
+        "link": "https://finance.yahoo.com/news/china-weighs-u-tariff-exemptions-162055045.html",
         "type": "STORY"
       },
       {
@@ -7895,18 +7895,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.07,
-        "industryAvg": 10.88
+        "value": 16.09,
+        "industryAvg": 10.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.9,
-        "industryAvg": 1.11
+        "value": 1.79,
+        "industryAvg": 1.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.12,
-        "industryAvg": 1.65
+        "value": 2.94,
+        "industryAvg": 1.57
       },
       {
         "metric": "ROE",

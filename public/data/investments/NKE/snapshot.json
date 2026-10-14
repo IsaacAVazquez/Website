@@ -1,10 +1,10 @@
 {
   "symbol": "NKE",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     },
     "retainedSections": [
       "info"
@@ -42,12 +42,12 @@
       "fullTimeEmployees": 73000
     },
     "fundamentals": {
-      "ttmEps": 2.0983,
-      "ttmPe": 16.87,
-      "marketCap": 52498200000,
+      "ttmEps": 2.0864,
+      "ttmPe": 16.93,
+      "marketCap": 52394390000,
       "psRatio": 1.13,
-      "pbRatio": 3.53,
-      "pegRatio": 0.04
+      "pbRatio": 3.52,
+      "pegRatio": 0.05
     },
     "profitability": {
       "roe": 7.380000000000001,
@@ -84,7 +84,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 404.83000000000004
+        "yoyGrowth": -2.42
       }
     ],
     "income_statement": {
@@ -5430,73 +5430,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.0457
+      "beta5y": 1.0464
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 74.35,
-        "high": 74.69,
-        "low": 71.61,
-        "close": 74.2,
-        "volume": 57921900
-      },
-      {
-        "date": "2025-10-02",
-        "open": 75,
-        "high": 76.97,
-        "low": 73.88,
-        "close": 74.57,
-        "volume": 26254400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 74.78,
-        "high": 74.78,
-        "low": 71.92,
-        "close": 71.93,
-        "volume": 18794900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 72.02,
-        "high": 72.39,
-        "low": 71.01,
-        "close": 71.17,
-        "volume": 14039600
-      },
-      {
-        "date": "2025-10-07",
-        "open": 71.23,
-        "high": 71.58,
-        "low": 68.9,
-        "close": 68.91,
-        "volume": 17368000
-      },
-      {
-        "date": "2025-10-08",
-        "open": 68.91,
-        "high": 69.43,
-        "low": 68.67,
-        "close": 69.09,
-        "volume": 13051800
-      },
-      {
-        "date": "2025-10-09",
-        "open": 69.55,
-        "high": 69.66,
-        "low": 67.89,
-        "close": 68.06,
-        "volume": 13410900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 68.18,
-        "high": 68.49,
-        "low": 64.88,
-        "close": 65.22,
-        "volume": 18806100
-      },
       {
         "date": "2025-10-13",
         "open": 65.7,
@@ -7447,7 +7383,71 @@
         "high": 36.24,
         "low": 35.02,
         "close": 35.15,
-        "volume": 105143400
+        "volume": 112413500
+      },
+      {
+        "date": "2026-10-02",
+        "open": 32.55,
+        "high": 33.97,
+        "low": 31.97,
+        "close": 33.87,
+        "volume": 142717000
+      },
+      {
+        "date": "2026-10-05",
+        "open": 33.82,
+        "high": 34.12,
+        "low": 32.76,
+        "close": 33.96,
+        "volume": 69574900
+      },
+      {
+        "date": "2026-10-06",
+        "open": 33.7,
+        "high": 34.62,
+        "low": 33.5,
+        "close": 34.61,
+        "volume": 50148100
+      },
+      {
+        "date": "2026-10-07",
+        "open": 34.39,
+        "high": 34.53,
+        "low": 33.81,
+        "close": 34.36,
+        "volume": 37624400
+      },
+      {
+        "date": "2026-10-08",
+        "open": 34.13,
+        "high": 34.87,
+        "low": 33.83,
+        "close": 34.74,
+        "volume": 43802400
+      },
+      {
+        "date": "2026-10-09",
+        "open": 34.58,
+        "high": 35.09,
+        "low": 34.1,
+        "close": 34.71,
+        "volume": 27456900
+      },
+      {
+        "date": "2026-10-12",
+        "open": 34.7,
+        "high": 35.35,
+        "low": 34.38,
+        "close": 35.35,
+        "volume": 23691200
+      },
+      {
+        "date": "2026-10-13",
+        "open": 35.5,
+        "high": 35.85,
+        "low": 35.16,
+        "close": 35.33,
+        "volume": 30186000
       }
     ],
     "news": [
@@ -7476,19 +7476,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
-        "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
         "title": "Brunswick (BC) Q1 Earnings: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
+        "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
         "type": "STORY"
       },
       {
@@ -7534,6 +7534,13 @@
     ],
     "officers": [
       {
+        "name": "Dr. Thomas E. Clarke Ph.D.",
+        "title": "Chief Growth Initiatives Officer",
+        "age": 73,
+        "yearBorn": 1952,
+        "totalPay": 1277458
+      },
+      {
         "name": "Mr. David M. Denton",
         "title": "Executive VP, CFO, Interim Corporate Controller & Principal Accounting Officer",
         "age": 60,
@@ -7551,13 +7558,6 @@
         "title": "Executive Chairman",
         "age": 69,
         "yearBorn": 1956
-      },
-      {
-        "name": "Mr. Matthew Friend",
-        "title": "Advisor",
-        "age": 47,
-        "yearBorn": 1978,
-        "totalPay": 2437500
       },
       {
         "name": "Mr. Michael Gonda",
@@ -7595,18 +7595,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.87,
-        "industryAvg": 15.38
+        "value": 16.93,
+        "industryAvg": 15.91
       },
       {
         "metric": "P/S Ratio",
         "value": 1.13,
-        "industryAvg": 1.28
+        "industryAvg": 1.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.53,
-        "industryAvg": 3.2
+        "value": 3.52,
+        "industryAvg": 3.31
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "DUK",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6654,
-      "ttmPe": 17.1,
-      "marketCap": 88927800000,
-      "psRatio": 2.67,
-      "pbRatio": 1.62,
-      "pegRatio": 1.61
+      "ttmPe": 17.73,
+      "marketCap": 92188200000,
+      "psRatio": 2.77,
+      "pbRatio": 1.68,
+      "pegRatio": 1.67
     },
     "profitability": {
       "roe": 1.97,
@@ -6347,81 +6347,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.3,
-      "costOfEquity": 7.8,
+      "wacc": 4.34,
+      "costOfEquity": 7.76,
       "costOfDebt": 1.04,
       "taxRate": 12,
-      "beta": 0.3305,
-      "marketCap": 88927800000
+      "beta": 0.3331,
+      "marketCap": 92188200000
     },
     "beta": {
-      "beta5y": 0.3305
+      "beta5y": 0.3331
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 123.56,
-        "high": 123.82,
-        "low": 122.32,
-        "close": 122.39,
-        "volume": 2489200
-      },
-      {
-        "date": "2025-10-02",
-        "open": 121.5,
-        "high": 122.08,
-        "low": 120.94,
-        "close": 121.57,
-        "volume": 3098800
-      },
-      {
-        "date": "2025-10-03",
-        "open": 122.11,
-        "high": 123.83,
-        "low": 122,
-        "close": 123.54,
-        "volume": 2761900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 123.43,
-        "high": 124.46,
-        "low": 122.78,
-        "close": 124.38,
-        "volume": 2289000
-      },
-      {
-        "date": "2025-10-07",
-        "open": 124.85,
-        "high": 125.95,
-        "low": 124.34,
-        "close": 125.56,
-        "volume": 2723300
-      },
-      {
-        "date": "2025-10-08",
-        "open": 126.26,
-        "high": 126.32,
-        "low": 124.4,
-        "close": 125.23,
-        "volume": 2423000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 125.9,
-        "high": 126.09,
-        "low": 124.61,
-        "close": 124.71,
-        "volume": 1500800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 125.29,
-        "high": 127.27,
-        "low": 125.02,
-        "close": 127.02,
-        "volume": 2955400
-      },
       {
         "date": "2025-10-13",
         "open": 126.21,
@@ -8373,6 +8309,70 @@
         "low": 112.61,
         "close": 113.74,
         "volume": 4821600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 114.21,
+        "high": 115.17,
+        "low": 113.52,
+        "close": 114.13,
+        "volume": 3890900
+      },
+      {
+        "date": "2026-10-05",
+        "open": 114,
+        "high": 114.31,
+        "low": 113.29,
+        "close": 113.84,
+        "volume": 4226000
+      },
+      {
+        "date": "2026-10-06",
+        "open": 114.43,
+        "high": 115.74,
+        "low": 114.06,
+        "close": 115.66,
+        "volume": 4946300
+      },
+      {
+        "date": "2026-10-07",
+        "open": 115.9,
+        "high": 116.24,
+        "low": 115.25,
+        "close": 115.5,
+        "volume": 3988200
+      },
+      {
+        "date": "2026-10-08",
+        "open": 115.6,
+        "high": 116.92,
+        "low": 114.87,
+        "close": 116.84,
+        "volume": 4254300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 116.26,
+        "high": 116.82,
+        "low": 116.02,
+        "close": 116.65,
+        "volume": 2805800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 116.76,
+        "high": 117.74,
+        "low": 116.29,
+        "close": 117.69,
+        "volume": 2789500
+      },
+      {
+        "date": "2026-10-13",
+        "open": 118.25,
+        "high": 118.5,
+        "low": 116.24,
+        "close": 118.19,
+        "volume": 3498800
       }
     ],
     "news": [
@@ -8449,11 +8449,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5e5e28bc-e1ed-34fa-a0e4-5f19ec49d58d",
-        "title": "Duke Energy Indiana agrees to Cayuga coal unit feasibility study in addition to building new gas units on-site",
-        "publisher": "PR Newswire",
+        "uuid": "5079d3be-0540-34cc-832b-08bff2082c50",
+        "title": "Morgan Stanley Adjusts Price Target on Duke Energy to $124 From $125, Maintains Equalweight Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/duke-energy-indiana-agrees-cayuga-185500767.html",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-adjusts-price-target-102559479.html",
         "type": "STORY"
       }
     ],
@@ -8523,18 +8523,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.1,
-        "industryAvg": 15.99
+        "value": 17.73,
+        "industryAvg": 16.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.67,
-        "industryAvg": 2.22
+        "value": 2.77,
+        "industryAvg": 2.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.62,
-        "industryAvg": 1.72
+        "value": 1.68,
+        "industryAvg": 1.78
       },
       {
         "metric": "ROE",

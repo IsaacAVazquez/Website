@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.121,
-      "ttmPe": 57.11,
-      "marketCap": 707006374703,
-      "psRatio": 17.54,
-      "pbRatio": 28.38,
-      "pegRatio": 1.8
+      "ttmPe": 53.48,
+      "marketCap": 662055108352,
+      "psRatio": 16.42,
+      "pbRatio": 26.58,
+      "pegRatio": 1.68
     },
     "profitability": {
       "roe": 13.68,
@@ -5853,81 +5853,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.52,
-      "costOfEquity": 18.64,
+      "wacc": 18.48,
+      "costOfEquity": 18.61,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.758,
-      "marketCap": 707006374703
+      "beta": 1.7499,
+      "marketCap": 662055108352
     },
     "beta": {
-      "beta5y": 1.758
+      "beta5y": 1.7499
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 965.61,
-        "high": 1005.36,
-        "low": 964.82,
-        "close": 1003.27,
-        "volume": 1963800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 1039,
-        "high": 1040.23,
-        "low": 1021.89,
-        "close": 1030.17,
-        "volume": 1689100
-      },
-      {
-        "date": "2025-10-03",
-        "open": 1031,
-        "high": 1039.85,
-        "low": 1025.46,
-        "close": 1032.22,
-        "volume": 1352300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 1040.4399,
-        "high": 1059,
-        "low": 1040.1,
-        "close": 1043.3,
-        "volume": 1385400
-      },
-      {
-        "date": "2025-10-07",
-        "open": 1042.83,
-        "high": 1044.85,
-        "low": 1001,
-        "close": 1002.3,
-        "volume": 1667800
-      },
-      {
-        "date": "2025-10-08",
-        "open": 977.95,
-        "high": 991.59,
-        "low": 977.42,
-        "close": 987.81,
-        "volume": 1947000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 985.35,
-        "high": 987.53,
-        "low": 971.51,
-        "close": 980.54,
-        "volume": 1496000
-      },
-      {
-        "date": "2025-10-10",
-        "open": 970.69,
-        "high": 976.2,
-        "low": 935.41,
-        "close": 936.19,
-        "volume": 2933900
-      },
       {
         "date": "2025-10-13",
         "open": 971.73,
@@ -7879,6 +7815,70 @@
         "low": 1791.25,
         "close": 1808.49,
         "volume": 1405400
+      },
+      {
+        "date": "2026-10-02",
+        "open": 1849.74,
+        "high": 1873.5,
+        "low": 1842.45,
+        "close": 1867.3101,
+        "volume": 1344400
+      },
+      {
+        "date": "2026-10-05",
+        "open": 1852.53,
+        "high": 1869.67,
+        "low": 1841.8,
+        "close": 1859.86,
+        "volume": 1386100
+      },
+      {
+        "date": "2026-10-06",
+        "open": 1870,
+        "high": 1870,
+        "low": 1819.09,
+        "close": 1834.1,
+        "volume": 1625900
+      },
+      {
+        "date": "2026-10-07",
+        "open": 1788.92,
+        "high": 1811.71,
+        "low": 1785.74,
+        "close": 1804.96,
+        "volume": 1247300
+      },
+      {
+        "date": "2026-10-08",
+        "open": 1791.8,
+        "high": 1842.53,
+        "low": 1763.23,
+        "close": 1769.79,
+        "volume": 1930400
+      },
+      {
+        "date": "2026-10-09",
+        "open": 1819.14,
+        "high": 1825.5699,
+        "low": 1778,
+        "close": 1780.34,
+        "volume": 1203700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 1784.36,
+        "high": 1784.8101,
+        "low": 1750.02,
+        "close": 1750.24,
+        "volume": 1103400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 1707,
+        "high": 1725.27,
+        "low": 1682.02,
+        "close": 1717.76,
+        "volume": 1582700
       }
     ],
     "news": [
@@ -7947,11 +7947,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
-        "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
-        "publisher": "Insider Monkey",
+        "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
+        "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
+        "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
         "type": "STORY"
       },
       {
@@ -7977,21 +7977,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4301384
+        "totalPay": 4221715
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2550358
+        "totalPay": 2503121
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2715228
+        "totalPay": 2664936
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -8002,7 +8002,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2532166
+        "totalPay": 2485265
       },
       {
         "name": "Mr. Ron Kool",
@@ -8013,7 +8013,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2660650
+        "totalPay": 2611370
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -8023,18 +8023,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 57.11,
-        "industryAvg": 54.39
+        "value": 53.48,
+        "industryAvg": 50.52
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.54,
-        "industryAvg": 14.78
+        "value": 16.42,
+        "industryAvg": 13.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.38,
-        "industryAvg": 20.69
+        "value": 26.58,
+        "industryAvg": 19.25
       },
       {
         "metric": "ROE",

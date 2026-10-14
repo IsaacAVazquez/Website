@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 21.64,
-      "marketCap": 181477000000,
-      "psRatio": 1.84,
-      "pbRatio": 1.65,
+      "ttmPe": 22.4,
+      "marketCap": 187843400000,
+      "psRatio": 1.9,
+      "pbRatio": 1.71,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6071,81 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.139999999999999,
-      "costOfEquity": 16.28,
+      "wacc": 13.270000000000001,
+      "costOfEquity": 16.33,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.45,
-      "marketCap": 181477000000
+      "beta": 1.4521,
+      "marketCap": 187843400000
     },
     "beta": {
-      "beta5y": 1.45
+      "beta5y": 1.4521
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 114.08,
-        "high": 116.06,
-        "low": 112.79,
-        "close": 112.95,
-        "volume": 9736300
-      },
-      {
-        "date": "2025-10-02",
-        "open": 112.98,
-        "high": 113.17,
-        "low": 110.78,
-        "close": 112.14,
-        "volume": 8695100
-      },
-      {
-        "date": "2025-10-03",
-        "open": 112.04,
-        "high": 113.57,
-        "low": 111.56,
-        "close": 112.47,
-        "volume": 7148400
-      },
-      {
-        "date": "2025-10-06",
-        "open": 112.69,
-        "high": 113.11,
-        "low": 111.45,
-        "close": 112.75,
-        "volume": 6141200
-      },
-      {
-        "date": "2025-10-07",
-        "open": 112.63,
-        "high": 113.4,
-        "low": 111.8,
-        "close": 112.53,
-        "volume": 5409800
-      },
-      {
-        "date": "2025-10-08",
-        "open": 112.81,
-        "high": 113.2,
-        "low": 111.65,
-        "close": 111.89,
-        "volume": 7074400
-      },
-      {
-        "date": "2025-10-09",
-        "open": 111.82,
-        "high": 113,
-        "low": 110.88,
-        "close": 110.99,
-        "volume": 6502400
-      },
-      {
-        "date": "2025-10-10",
-        "open": 111.53,
-        "high": 112.68,
-        "low": 109.11,
-        "close": 109.19,
-        "volume": 9635200
-      },
       {
         "date": "2025-10-13",
         "open": 110.39,
@@ -8097,6 +8033,70 @@
         "low": 101.15,
         "close": 101.33,
         "volume": 9207400
+      },
+      {
+        "date": "2026-10-02",
+        "open": 101.5,
+        "high": 102.63,
+        "low": 101.23,
+        "close": 102.19,
+        "volume": 6704300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 101.81,
+        "high": 103.72,
+        "low": 101.32,
+        "close": 103.61,
+        "volume": 7037600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 103.42,
+        "high": 104.27,
+        "low": 103.29,
+        "close": 104.03,
+        "volume": 6112600
+      },
+      {
+        "date": "2026-10-07",
+        "open": 103.48,
+        "high": 105.21,
+        "low": 102.62,
+        "close": 104.75,
+        "volume": 8643300
+      },
+      {
+        "date": "2026-10-08",
+        "open": 104.81,
+        "high": 107.41,
+        "low": 104.05,
+        "close": 107.02,
+        "volume": 14271300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 107.22,
+        "high": 108.35,
+        "low": 107.14,
+        "close": 108.05,
+        "volume": 7149600
+      },
+      {
+        "date": "2026-10-12",
+        "open": 107.9,
+        "high": 108.99,
+        "low": 107.56,
+        "close": 108.49,
+        "volume": 6621800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 109.52,
+        "high": 110.16,
+        "low": 107.95,
+        "close": 108.58,
+        "volume": 10568100
       }
     ],
     "news": [
@@ -8117,14 +8117,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
-        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
         "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
         "publisher": "StockStory",
@@ -8133,19 +8125,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
-        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
+        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
+        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
         "type": "STORY"
       },
       {
@@ -8162,6 +8146,22 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
+        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -8183,8 +8183,8 @@
     ],
     "officers": [
       {
-        "name": "Mr. Asad Ayaz",
-        "title": "Chief Marketing & Brand Officer"
+        "name": "Mr. Benjamin Daniel Swinburne C.F.A.",
+        "title": "Executive Vice President of Investor Relations & Corporate Strategy"
       },
       {
         "name": "Mr. Horacio E. Gutierrez J.D.",
@@ -8201,14 +8201,14 @@
         "totalPay": 7918292
       },
       {
-        "name": "Mr. Joe Schott",
-        "title": "President of Walt Disney World Resort"
-      },
-      {
         "name": "Mr. Josh D'Amaro",
         "title": "CEO & Director",
         "age": 53,
         "yearBorn": 1972
+      },
+      {
+        "name": "Mr. Karandeep Anand",
+        "title": "Senior EVP & Chief Technology Officer"
       },
       {
         "name": "Mr. Paul Roeder",
@@ -8222,16 +8222,14 @@
         "totalPay": 10842511
       },
       {
-        "name": "Mr. Ronald L. Iden",
-        "title": "Senior VP & Chief Security Officer",
-        "age": 78,
-        "yearBorn": 1947
-      },
-      {
         "name": "Ms. Dana Walden",
         "title": "President & Chief Creative Officer",
         "age": 59,
         "yearBorn": 1966
+      },
+      {
+        "name": "Ms. Jennifer Creegan",
+        "title": "Head of Marketing Technology & Operations"
       },
       {
         "name": "Ms. Sonia L. Coleman",
@@ -8244,18 +8242,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.64,
-        "industryAvg": 23.46
+        "value": 22.4,
+        "industryAvg": 23.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.84,
-        "industryAvg": 2.44
+        "value": 1.9,
+        "industryAvg": 2.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.65,
-        "industryAvg": 2.97
+        "value": 1.71,
+        "industryAvg": 2.99
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "BA",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.1958,
-      "ttmPe": 84.73,
-      "marketCap": 146940894625,
-      "psRatio": 1.59,
-      "pbRatio": 24.54,
-      "pegRatio": 3.11
+      "ttmPe": 84.93,
+      "marketCap": 147288403325,
+      "psRatio": 1.6,
+      "pbRatio": 24.6,
+      "pegRatio": 3.12
     },
     "profitability": {
       "roe": -1.5699999999999998,
@@ -5874,81 +5874,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.76,
-      "costOfEquity": 15.290000000000001,
+      "wacc": 11.78,
+      "costOfEquity": 15.299999999999999,
       "costOfDebt": 1.3,
       "taxRate": 40,
-      "beta": 1.3189,
-      "marketCap": 146940894625
+      "beta": 1.3176,
+      "marketCap": 147288403325
     },
     "beta": {
-      "beta5y": 1.3189
+      "beta5y": 1.3176
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 214.01,
-        "high": 215.63,
-        "low": 213.7,
-        "close": 215.2,
-        "volume": 7178000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 215.45,
-        "high": 218.86,
-        "low": 215.31,
-        "close": 217.43,
-        "volume": 8281100
-      },
-      {
-        "date": "2025-10-03",
-        "open": 216.75,
-        "high": 218.83,
-        "low": 215.25,
-        "close": 216.3,
-        "volume": 6634100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 217.87,
-        "high": 221.8,
-        "low": 215.9,
-        "close": 219.73,
-        "volume": 7665300
-      },
-      {
-        "date": "2025-10-07",
-        "open": 220.11,
-        "high": 223.95,
-        "low": 219.2,
-        "close": 221.82,
-        "volume": 7610600
-      },
-      {
-        "date": "2025-10-08",
-        "open": 222.73,
-        "high": 226.19,
-        "low": 221.47,
-        "close": 225.32,
-        "volume": 6189700
-      },
-      {
-        "date": "2025-10-09",
-        "open": 225.7,
-        "high": 225.7,
-        "low": 215.9,
-        "close": 216,
-        "volume": 12974800
-      },
-      {
-        "date": "2025-10-10",
-        "open": 217,
-        "high": 217.9,
-        "low": 210.73,
-        "close": 210.73,
-        "volume": 10647900
-      },
       {
         "date": "2025-10-13",
         "open": 212.09,
@@ -7899,7 +7835,71 @@
         "high": 194.56,
         "low": 185.56,
         "close": 192.28,
-        "volume": 13534900
+        "volume": 13550000
+      },
+      {
+        "date": "2026-10-02",
+        "open": 193.87,
+        "high": 196.93,
+        "low": 190.27,
+        "close": 193.56,
+        "volume": 12642500
+      },
+      {
+        "date": "2026-10-05",
+        "open": 194.6,
+        "high": 195.23,
+        "low": 191.34,
+        "close": 192.72,
+        "volume": 6504600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 193,
+        "high": 193.23,
+        "low": 189.33,
+        "close": 189.82,
+        "volume": 7710300
+      },
+      {
+        "date": "2026-10-07",
+        "open": 188.18,
+        "high": 188.84,
+        "low": 186.2,
+        "close": 188.32,
+        "volume": 6374100
+      },
+      {
+        "date": "2026-10-08",
+        "open": 185.9,
+        "high": 187.78,
+        "low": 184.25,
+        "close": 187.75,
+        "volume": 11354100
+      },
+      {
+        "date": "2026-10-09",
+        "open": 187.99,
+        "high": 191.02,
+        "low": 187.6,
+        "close": 190.37,
+        "volume": 5087300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 191.5,
+        "high": 191.9,
+        "low": 188.77,
+        "close": 189.5,
+        "volume": 3765400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 189.1,
+        "high": 189.1,
+        "low": 186,
+        "close": 186.49,
+        "volume": 5148700
       }
     ],
     "news": [
@@ -7944,19 +7944,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "19ccc5df-2651-3aab-9365-7eb3d83b9965",
         "title": "Trump says will ‘protect our farmers’ amid tariff negotiation with China",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/trump-says-protect-farmers-amid-145834613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -8046,18 +8046,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 84.73,
-        "industryAvg": 31.86
+        "value": 84.93,
+        "industryAvg": 31.62
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.59,
-        "industryAvg": 2.85
+        "value": 1.6,
+        "industryAvg": 2.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.54,
-        "industryAvg": 8.58
+        "value": 24.6,
+        "industryAvg": 8.67
       },
       {
         "metric": "ROE",

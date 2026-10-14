@@ -1,10 +1,10 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.632,
-      "ttmPe": 29.15,
-      "marketCap": 84655831960,
-      "psRatio": 3.36,
-      "pbRatio": 28.68,
-      "pegRatio": 0.87
+      "ttmPe": 28.9,
+      "marketCap": 83944135048,
+      "psRatio": 3.33,
+      "pbRatio": 28.44,
+      "pegRatio": 0.86
     },
     "profitability": {
       "roe": 30.020000000000003,
@@ -6285,81 +6285,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.35,
-      "costOfEquity": 12.83,
+      "wacc": 11.32,
+      "costOfEquity": 12.809999999999999,
       "costOfDebt": 1.6099999999999999,
       "taxRate": 16,
-      "beta": 0.9947,
-      "marketCap": 84655831960
+      "beta": 0.9926,
+      "marketCap": 83944135048
     },
     "beta": {
-      "beta5y": 0.9947
+      "beta5y": 0.9926
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 154.45,
-        "high": 156.54,
-        "low": 154.26,
-        "close": 156,
-        "volume": 2297900
-      },
-      {
-        "date": "2025-10-02",
-        "open": 157.26,
-        "high": 159.58,
-        "low": 156.54,
-        "close": 158.8,
-        "volume": 2167500
-      },
-      {
-        "date": "2025-10-03",
-        "open": 158.92,
-        "high": 160.39,
-        "low": 157.71,
-        "close": 158.66,
-        "volume": 3411600
-      },
-      {
-        "date": "2025-10-06",
-        "open": 158.7,
-        "high": 159.21,
-        "low": 154.63,
-        "close": 155.93,
-        "volume": 2421400
-      },
-      {
-        "date": "2025-10-07",
-        "open": 156.83,
-        "high": 157.94,
-        "low": 155.18,
-        "close": 155.33,
-        "volume": 1696700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 155.71,
-        "high": 156.09,
-        "low": 152.78,
-        "close": 156,
-        "volume": 2084200
-      },
-      {
-        "date": "2025-10-09",
-        "open": 156.1,
-        "high": 156.6,
-        "low": 151.37,
-        "close": 152.88,
-        "volume": 2512200
-      },
-      {
-        "date": "2025-10-10",
-        "open": 153.24,
-        "high": 154.25,
-        "low": 148.46,
-        "close": 148.75,
-        "volume": 3504400
-      },
       {
         "date": "2025-10-13",
         "open": 150.57,
@@ -8311,6 +8247,70 @@
         "low": 162.32,
         "close": 163.02,
         "volume": 3210500
+      },
+      {
+        "date": "2026-10-02",
+        "open": 163.5,
+        "high": 164.71,
+        "low": 161.12,
+        "close": 161.89,
+        "volume": 3026200
+      },
+      {
+        "date": "2026-10-05",
+        "open": 161.34,
+        "high": 163.56,
+        "low": 159.92,
+        "close": 163.19,
+        "volume": 2338300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 163.58,
+        "high": 164.3,
+        "low": 161.5,
+        "close": 163.64,
+        "volume": 2412500
+      },
+      {
+        "date": "2026-10-07",
+        "open": 162.54,
+        "high": 163.73,
+        "low": 160.96,
+        "close": 162.12,
+        "volume": 3205700
+      },
+      {
+        "date": "2026-10-08",
+        "open": 160.89,
+        "high": 164.23,
+        "low": 159.93,
+        "close": 163.58,
+        "volume": 2331700
+      },
+      {
+        "date": "2026-10-09",
+        "open": 163.27,
+        "high": 163.59,
+        "low": 159.88,
+        "close": 159.96,
+        "volume": 2372200
+      },
+      {
+        "date": "2026-10-12",
+        "open": 159.5,
+        "high": 162.56,
+        "low": 159.21,
+        "close": 160.89,
+        "volume": 2415900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 161.18,
+        "high": 162.96,
+        "low": 159.53,
+        "close": 162.77,
+        "volume": 2547100
       }
     ],
     "news": [
@@ -8323,19 +8323,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d0d4523-46ca-314f-bd26-a36814c66eee",
-        "title": "Rogers, Enviri, 3M, Gates Industrial Corporation, and Helios Stocks Trade Up, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/rogers-enviri-3m-gates-industrial-180105331.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
         "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d0d4523-46ca-314f-bd26-a36814c66eee",
+        "title": "Rogers, Enviri, 3M, Gates Industrial Corporation, and Helios Stocks Trade Up, What You Need To Know",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/rogers-enviri-3m-gates-industrial-180105331.html",
         "type": "STORY"
       },
       {
@@ -8397,10 +8397,8 @@
     ],
     "officers": [
       {
-        "name": "Dr. John P. Banovetz",
-        "title": "Executive VP, CTO & Environmental Responsibility",
-        "age": 57,
-        "yearBorn": 1968
+        "name": "Dr. Tushar Kshirsagar",
+        "title": "Executive VP, Chief Technology Officer and Environmental Responsibility"
       },
       {
         "name": "Mr. Anurag Maheshwari",
@@ -8459,18 +8457,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.15,
-        "industryAvg": 13.26
+        "value": 28.9,
+        "industryAvg": 13.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.36,
+        "value": 3.33,
         "industryAvg": 1.55
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.68,
-        "industryAvg": 2.92
+        "value": 28.44,
+        "industryAvg": 2.73
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.0763,
-      "ttmPe": 327.83,
-      "marketCap": 1393365160000,
-      "psRatio": 13.45,
-      "pbRatio": 16.04,
+      "ttmPe": 348.63,
+      "marketCap": 1481783270000,
+      "psRatio": 14.3,
+      "pbRatio": 17.06,
       "pegRatio": 23.5
     },
     "profitability": {
@@ -5972,81 +5972,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.19,
-      "costOfEquity": 18.39,
+      "wacc": 18.240000000000002,
+      "costOfEquity": 18.43,
       "costOfDebt": 0.5,
       "taxRate": 15,
-      "beta": 1.7248,
-      "marketCap": 1393365160000
+      "beta": 1.7265,
+      "marketCap": 1481783270000
     },
     "beta": {
-      "beta5y": 1.7248
+      "beta5y": 1.7265
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 443.8,
-        "high": 462.29,
-        "low": 440.75,
-        "close": 459.46,
-        "volume": 98122300
-      },
-      {
-        "date": "2025-10-02",
-        "open": 470.54,
-        "high": 470.75,
-        "low": 435.57,
-        "close": 436,
-        "volume": 137009000
-      },
-      {
-        "date": "2025-10-03",
-        "open": 443.29,
-        "high": 446.77,
-        "low": 416.58,
-        "close": 429.83,
-        "volume": 133188200
-      },
-      {
-        "date": "2025-10-06",
-        "open": 440.75,
-        "high": 453.55,
-        "low": 436.69,
-        "close": 453.25,
-        "volume": 85324900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 447.82,
-        "high": 452.68,
-        "low": 432.45,
-        "close": 433.09,
-        "volume": 102296100
-      },
-      {
-        "date": "2025-10-08",
-        "open": 437.57,
-        "high": 441.33,
-        "low": 425.23,
-        "close": 438.69,
-        "volume": 71192100
-      },
-      {
-        "date": "2025-10-09",
-        "open": 431.81,
-        "high": 436.35,
-        "low": 426.18,
-        "close": 435.54,
-        "volume": 69339900
-      },
-      {
-        "date": "2025-10-10",
-        "open": 436.54,
-        "high": 443.13,
-        "low": 411.45,
-        "close": 413.49,
-        "volume": 112107900
-      },
       {
         "date": "2025-10-13",
         "open": 423.53,
@@ -7997,7 +7933,71 @@
         "high": 359.79,
         "low": 353.8,
         "close": 354.11,
-        "volume": 31004400
+        "volume": 31080800
+      },
+      {
+        "date": "2026-10-02",
+        "open": 360.08,
+        "high": 374.6,
+        "low": 359.41,
+        "close": 370.59,
+        "volume": 55330100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 369,
+        "high": 381.59,
+        "low": 364.91,
+        "close": 378.73,
+        "volume": 42232700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 381.98,
+        "high": 383.33,
+        "low": 378.52,
+        "close": 380.68,
+        "volume": 27735400
+      },
+      {
+        "date": "2026-10-07",
+        "open": 378.45,
+        "high": 382.35,
+        "low": 374.43,
+        "close": 377.81,
+        "volume": 25594600
+      },
+      {
+        "date": "2026-10-08",
+        "open": 374.12,
+        "high": 375.96,
+        "low": 368.03,
+        "close": 375,
+        "volume": 28394900
+      },
+      {
+        "date": "2026-10-09",
+        "open": 382.38,
+        "high": 388.56,
+        "low": 379.71,
+        "close": 382.7,
+        "volume": 38952400
+      },
+      {
+        "date": "2026-10-12",
+        "open": 382.61,
+        "high": 382.7,
+        "low": 377.58,
+        "close": 378.03,
+        "volume": 20244300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 372.33,
+        "high": 377.05,
+        "low": 371.3,
+        "close": 375.23,
+        "volume": 18349700
       }
     ],
     "news": [
@@ -8034,19 +8034,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
-        "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
         "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
+        "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html",
         "type": "STORY"
       },
       {
@@ -8058,19 +8058,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
         "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -8138,43 +8138,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 327.83,
-        "industryAvg": 24.72
+        "value": 348.63,
+        "industryAvg": 28.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.45,
-        "industryAvg": 1.15
+        "value": 14.3,
+        "industryAvg": 1.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.04,
-        "industryAvg": 1.89
+        "value": 17.06,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",
         "value": 1.31,
-        "industryAvg": 4.590000000000001
+        "industryAvg": 4.5600000000000005
       },
       {
         "metric": "ROA",
         "value": 0.76,
-        "industryAvg": 1.51
+        "industryAvg": 1.49
       },
       {
         "metric": "Gross Margin",
         "value": 16.830000000000002,
-        "industryAvg": 14.719999999999999
+        "industryAvg": 14.71
       },
       {
         "metric": "EBITDA Margin",
         "value": 10.73,
-        "industryAvg": 9.64
+        "industryAvg": 9.569999999999999
       },
       {
         "metric": "Net Margin",
         "value": 3.95,
-        "industryAvg": 2.48
+        "industryAvg": 2.45
       }
     ]
   }

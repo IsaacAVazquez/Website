@@ -1,10 +1,10 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 16.4022,
-      "ttmPe": 20.23,
-      "marketCap": 89778995676,
+      "ttmPe": 20.27,
+      "marketCap": 89938624424,
       "psRatio": 1.64,
       "pbRatio": 3.35,
       "pegRatio": 1.52
@@ -5147,81 +5147,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.049999999999999,
-      "costOfEquity": 7.75,
+      "wacc": 7.000000000000001,
+      "costOfEquity": 7.6899999999999995,
       "costOfDebt": 0.52,
       "taxRate": 18,
-      "beta": 0.3251,
-      "marketCap": 89778995676
+      "beta": 0.3241,
+      "marketCap": 89938624424
     },
     "beta": {
-      "beta5y": 0.3251
+      "beta5y": 0.3241
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 337.9,
-        "high": 341.19,
-        "low": 336.31,
-        "close": 340.75,
-        "volume": 1162500
-      },
-      {
-        "date": "2025-10-02",
-        "open": 339.56,
-        "high": 341.68,
-        "low": 338.07,
-        "close": 341.05,
-        "volume": 942900
-      },
-      {
-        "date": "2025-10-03",
-        "open": 341.97,
-        "high": 345.22,
-        "low": 341.25,
-        "close": 343.62,
-        "volume": 710200
-      },
-      {
-        "date": "2025-10-06",
-        "open": 344.52,
-        "high": 347.37,
-        "low": 343.39,
-        "close": 346.5,
-        "volume": 885900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 344.56,
-        "high": 347.37,
-        "low": 342.85,
-        "close": 343.43,
-        "volume": 740600
-      },
-      {
-        "date": "2025-10-08",
-        "open": 345.22,
-        "high": 347.24,
-        "low": 343.43,
-        "close": 346.44,
-        "volume": 773900
-      },
-      {
-        "date": "2025-10-09",
-        "open": 346.28,
-        "high": 347.32,
-        "low": 342.23,
-        "close": 342.77,
-        "volume": 798300
-      },
-      {
-        "date": "2025-10-10",
-        "open": 340.86,
-        "high": 342,
-        "low": 332.8,
-        "close": 332.94,
-        "volume": 927300
-      },
       {
         "date": "2025-10-13",
         "open": 333.1,
@@ -7173,6 +7109,70 @@
         "low": 331.04,
         "close": 332.72,
         "volume": 1264300
+      },
+      {
+        "date": "2026-10-02",
+        "open": 333.02,
+        "high": 333.22,
+        "low": 328,
+        "close": 330.09,
+        "volume": 1416000
+      },
+      {
+        "date": "2026-10-05",
+        "open": 330,
+        "high": 333,
+        "low": 327.42,
+        "close": 331.72,
+        "volume": 1378900
+      },
+      {
+        "date": "2026-10-06",
+        "open": 329.89,
+        "high": 332.78,
+        "low": 327.64,
+        "close": 331.33,
+        "volume": 1352800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 330.24,
+        "high": 331.68,
+        "low": 325.01,
+        "close": 326.63,
+        "volume": 1285800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 326,
+        "high": 331.3,
+        "low": 322,
+        "close": 329.9,
+        "volume": 1508000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 327.45,
+        "high": 333.33,
+        "low": 327,
+        "close": 331.27,
+        "volume": 1142700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 333.3,
+        "high": 336.22,
+        "low": 332.33,
+        "close": 335.46,
+        "volume": 2089400
+      },
+      {
+        "date": "2026-10-13",
+        "open": 335.5,
+        "high": 336.37,
+        "low": 328.98,
+        "close": 332.42,
+        "volume": 1284000
       }
     ],
     "news": [
@@ -7201,19 +7201,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
-        "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
         "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
+        "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
         "type": "STORY"
       },
       {
@@ -7266,6 +7266,12 @@
         "totalPay": 3544278
       },
       {
+        "name": "Mr. David Paddock",
+        "title": "VP & President of General Dynamics Land Systems",
+        "age": 57,
+        "yearBorn": 1968
+      },
+      {
         "name": "Mr. Gregory S. Gallopoulos",
         "title": "Senior VP, General Counsel & Secretary",
         "age": 65,
@@ -7307,12 +7313,6 @@
         "totalPay": 3135011
       },
       {
-        "name": "Ms. Marguerite Amy Gilliland",
-        "title": "Executive Vice President",
-        "age": 50,
-        "yearBorn": 1975
-      },
-      {
         "name": "Ms. Phebe N. Novakovic",
         "title": "Chairperson & CEO",
         "age": 67,
@@ -7327,18 +7327,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.23,
-        "industryAvg": 31.86
+        "value": 20.27,
+        "industryAvg": 31.62
       },
       {
         "metric": "P/S Ratio",
         "value": 1.64,
-        "industryAvg": 2.85
+        "industryAvg": 2.8
       },
       {
         "metric": "P/B Ratio",
         "value": 3.35,
-        "industryAvg": 8.58
+        "industryAvg": 8.67
       },
       {
         "metric": "ROE",

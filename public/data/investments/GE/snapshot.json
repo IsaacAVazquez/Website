@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4841,
-      "ttmPe": 36.81,
-      "marketCap": 324020393125,
-      "psRatio": 6.4,
-      "pbRatio": 18.37,
-      "pegRatio": 1.88
+      "ttmPe": 36.26,
+      "marketCap": 319185351875,
+      "psRatio": 6.3,
+      "pbRatio": 18.09,
+      "pegRatio": 1.86
     },
     "profitability": {
       "roe": 13.28,
@@ -6864,81 +6864,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.27,
-      "costOfEquity": 16.12,
+      "wacc": 15.25,
+      "costOfEquity": 16.11,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 15,
-      "beta": 1.4287,
-      "marketCap": 324020393125
+      "beta": 1.4233,
+      "marketCap": 319185351875
     },
     "beta": {
-      "beta5y": 1.4287
+      "beta5y": 1.4233
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 296.38,
-        "high": 302.23,
-        "low": 295.03,
-        "close": 300.88,
-        "volume": 3633300
-      },
-      {
-        "date": "2025-10-02",
-        "open": 302.31,
-        "high": 303.44,
-        "low": 296.8,
-        "close": 299.45,
-        "volume": 2508200
-      },
-      {
-        "date": "2025-10-03",
-        "open": 299.46,
-        "high": 302.75,
-        "low": 295.46,
-        "close": 297,
-        "volume": 2817000
-      },
-      {
-        "date": "2025-10-06",
-        "open": 295.8,
-        "high": 299.29,
-        "low": 294.75,
-        "close": 298.22,
-        "volume": 2759800
-      },
-      {
-        "date": "2025-10-07",
-        "open": 298.07,
-        "high": 302.74,
-        "low": 297.89,
-        "close": 301.74,
-        "volume": 2578800
-      },
-      {
-        "date": "2025-10-08",
-        "open": 303.4,
-        "high": 304.67,
-        "low": 299.59,
-        "close": 302.56,
-        "volume": 2658600
-      },
-      {
-        "date": "2025-10-09",
-        "open": 302.71,
-        "high": 304,
-        "low": 296.1,
-        "close": 299.35,
-        "volume": 4292500
-      },
-      {
-        "date": "2025-10-10",
-        "open": 299,
-        "high": 300,
-        "low": 291.49,
-        "close": 291.49,
-        "volume": 3380000
-      },
       {
         "date": "2025-10-13",
         "open": 296,
@@ -8890,6 +8826,70 @@
         "low": 309.6,
         "close": 312.39,
         "volume": 3438600
+      },
+      {
+        "date": "2026-10-02",
+        "open": 316.5,
+        "high": 318.5,
+        "low": 308.19,
+        "close": 309.56,
+        "volume": 4163300
+      },
+      {
+        "date": "2026-10-05",
+        "open": 309.13,
+        "high": 309.68,
+        "low": 305.36,
+        "close": 306.34,
+        "volume": 5408700
+      },
+      {
+        "date": "2026-10-06",
+        "open": 306.5,
+        "high": 310.85,
+        "low": 304,
+        "close": 309.39,
+        "volume": 3517300
+      },
+      {
+        "date": "2026-10-07",
+        "open": 305.51,
+        "high": 308.55,
+        "low": 302.98,
+        "close": 303.62,
+        "volume": 3914500
+      },
+      {
+        "date": "2026-10-08",
+        "open": 299.98,
+        "high": 306.56,
+        "low": 296.61,
+        "close": 305.62,
+        "volume": 6387500
+      },
+      {
+        "date": "2026-10-09",
+        "open": 306.29,
+        "high": 308.61,
+        "low": 303.52,
+        "close": 308.2,
+        "volume": 2949700
+      },
+      {
+        "date": "2026-10-12",
+        "open": 307.78,
+        "high": 311.73,
+        "low": 307.65,
+        "close": 308.64,
+        "volume": 2432300
+      },
+      {
+        "date": "2026-10-13",
+        "open": 308,
+        "high": 309.98,
+        "low": 305.2,
+        "close": 307.63,
+        "volume": 4516600
       }
     ],
     "news": [
@@ -8966,27 +8966,31 @@
         "type": "STORY"
       },
       {
-        "uuid": "cb785922-1f2c-30be-9fee-e7382907a66d",
-        "title": "Why GE Vernova’s stock is power surging after just one year of existence",
-        "publisher": "Fortune",
+        "uuid": "f65ee8ef-b157-3570-9098-5413b7773f9f",
+        "title": "3 Market-Beating Stocks to Target This Week",
+        "publisher": "StockStory",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/why-ge-vernova-stock-power-100000031.html",
+        "link": "https://finance.yahoo.com/news/3-market-beating-stocks-target-043626728.html",
         "type": "STORY"
       }
     ],
     "officers": [
       {
         "name": "Mr. Christian E. Meisner",
-        "title": "Senior VP & Chief Human Resources Officer",
+        "title": "Chief Human Resources Officer",
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 2267604
       },
       {
         "name": "Mr. Christoph A. Pereira",
-        "title": "Chief Strategy & Risk Officer and CEO of Aerospace Carbon Solutions, SaaS & Sustainability",
+        "title": "CEO of SaaS & Aerospace Carbon Solutions and Sustainability",
         "age": 52,
         "yearBorn": 1973
+      },
+      {
+        "name": "Mr. David Burns",
+        "title": "Chief Information Officer"
       },
       {
         "name": "Mr. H. Lawrence Culp Jr.",
@@ -9025,33 +9029,29 @@
       {
         "name": "Mr. Robert M. Giglietti",
         "title": "VP, Chief Accounting Officer, Controller & Treasurer",
-        "age": 53,
-        "yearBorn": 1972
+        "age": 54,
+        "yearBorn": 1971
       },
       {
         "name": "Ms. Blaire Shoor",
         "title": "Head of Investor Relations"
-      },
-      {
-        "name": "Ms. Tara DiJulio",
-        "title": "VP, Chief Communications Officer & Chief Corporate Affairs Officer of GE Aerospace"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.81,
-        "industryAvg": 31.86
+        "value": 36.26,
+        "industryAvg": 31.62
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.4,
-        "industryAvg": 2.85
+        "value": 6.3,
+        "industryAvg": 2.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.37,
-        "industryAvg": 8.58
+        "value": 18.09,
+        "industryAvg": 8.67
       },
       {
         "metric": "ROE",

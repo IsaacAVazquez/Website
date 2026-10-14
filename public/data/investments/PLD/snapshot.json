@@ -1,10 +1,10 @@
 {
   "symbol": "PLD",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.491,
-      "ttmPe": 28.91,
-      "marketCap": 121141499040,
-      "psRatio": 13.18,
-      "pbRatio": 2.25,
-      "pegRatio": 0.34
+      "ttmPe": 29.74,
+      "marketCap": 124602951300,
+      "psRatio": 13.56,
+      "pbRatio": 2.32,
+      "pegRatio": 0.35
     },
     "profitability": {
       "roe": 1.9800000000000002,
@@ -5534,81 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.67,
-      "costOfEquity": 14.97,
+      "wacc": 11.77,
+      "costOfEquity": 15.010000000000002,
       "costOfDebt": 0.76,
       "taxRate": 9,
-      "beta": 1.2777,
-      "marketCap": 121141499040
+      "beta": 1.2788,
+      "marketCap": 124602951300
     },
     "beta": {
-      "beta5y": 1.2777
+      "beta5y": 1.2788
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 114.31,
-        "high": 116.52,
-        "low": 113.8,
-        "close": 116.48,
-        "volume": 2980900
-      },
-      {
-        "date": "2025-10-02",
-        "open": 116.22,
-        "high": 116.48,
-        "low": 114.54,
-        "close": 116.12,
-        "volume": 2935700
-      },
-      {
-        "date": "2025-10-03",
-        "open": 116.4,
-        "high": 118.2,
-        "low": 116.01,
-        "close": 117.06,
-        "volume": 3136900
-      },
-      {
-        "date": "2025-10-06",
-        "open": 117,
-        "high": 117.79,
-        "low": 116.37,
-        "close": 117.13,
-        "volume": 2540200
-      },
-      {
-        "date": "2025-10-07",
-        "open": 117.48,
-        "high": 117.62,
-        "low": 114.15,
-        "close": 115.97,
-        "volume": 2969000
-      },
-      {
-        "date": "2025-10-08",
-        "open": 116.02,
-        "high": 116.75,
-        "low": 114.74,
-        "close": 115.99,
-        "volume": 2324500
-      },
-      {
-        "date": "2025-10-09",
-        "open": 115.86,
-        "high": 116.04,
-        "low": 114.05,
-        "close": 114.45,
-        "volume": 2276200
-      },
-      {
-        "date": "2025-10-10",
-        "open": 114.76,
-        "high": 115.24,
-        "low": 111.03,
-        "close": 111.23,
-        "volume": 2924100
-      },
       {
         "date": "2025-10-13",
         "open": 112.02,
@@ -7560,6 +7496,70 @@
         "low": 127.29,
         "close": 128.18,
         "volume": 5399100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 128.56,
+        "high": 129.79,
+        "low": 128.13,
+        "close": 128.91,
+        "volume": 3823800
+      },
+      {
+        "date": "2026-10-05",
+        "open": 128.67,
+        "high": 129.23,
+        "low": 127.82,
+        "close": 128.08,
+        "volume": 2783300
+      },
+      {
+        "date": "2026-10-06",
+        "open": 128.25,
+        "high": 129.69,
+        "low": 127.61,
+        "close": 128.68,
+        "volume": 3820300
+      },
+      {
+        "date": "2026-10-07",
+        "open": 128.65,
+        "high": 129.15,
+        "low": 127.05,
+        "close": 127.3,
+        "volume": 3605600
+      },
+      {
+        "date": "2026-10-08",
+        "open": 127.16,
+        "high": 129.43,
+        "low": 126.62,
+        "close": 129.29,
+        "volume": 4223000
+      },
+      {
+        "date": "2026-10-09",
+        "open": 129.29,
+        "high": 129.89,
+        "low": 128.41,
+        "close": 129.49,
+        "volume": 3310600
+      },
+      {
+        "date": "2026-10-12",
+        "open": 129.55,
+        "high": 132.5,
+        "low": 129.26,
+        "close": 132.47,
+        "volume": 3477700
+      },
+      {
+        "date": "2026-10-13",
+        "open": 136.31,
+        "high": 136.31,
+        "low": 132.59,
+        "close": 133.55,
+        "volume": 4456100
       }
     ],
     "news": [
@@ -7628,19 +7628,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "13f07e88-8395-37fe-9770-159e3a7fa2a2",
-        "title": "3 Brilliant REIT Stocks to Buy Now and Hold for the Long Term",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/13f07e88-8395-37fe-9770-159e3a7fa2a2/3-brilliant-reit-stocks-to.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f4e3bdb8-8e07-3cf2-9319-34a1a4543372",
         "title": "Here Are My Top 3 Real Estate Dividend Stocks to Buy Now",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/f4e3bdb8-8e07-3cf2-9319-34a1a4543372/here-are-my-top-3-real-estate.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "13f07e88-8395-37fe-9770-159e3a7fa2a2",
+        "title": "3 Brilliant REIT Stocks to Buy Now and Hold for the Long Term",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/13f07e88-8395-37fe-9770-159e3a7fa2a2/3-brilliant-reit-stocks-to.html",
         "type": "STORY"
       }
     ],
@@ -7706,18 +7706,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.91,
-        "industryAvg": 27.51
+        "value": 29.74,
+        "industryAvg": 28.45
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.18,
-        "industryAvg": 8.36
+        "value": 13.56,
+        "industryAvg": 8.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.25,
-        "industryAvg": 2.24
+        "value": 2.32,
+        "industryAvg": 2.34
       },
       {
         "metric": "ROE",

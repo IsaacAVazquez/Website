@@ -1,10 +1,10 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1742,
-      "ttmPe": 21.92,
-      "marketCap": 289726924326,
-      "psRatio": 5.99,
-      "pbRatio": 9.61,
-      "pegRatio": 1.98
+      "ttmPe": 22.2,
+      "marketCap": 293391191262,
+      "psRatio": 6.07,
+      "pbRatio": 9.73,
+      "pegRatio": 2.01
     },
     "profitability": {
       "roe": 11.1,
@@ -4926,81 +4926,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.55,
-      "costOfEquity": 17.32,
+      "wacc": 16.6,
+      "costOfEquity": 17.36,
       "costOfDebt": 1.23,
       "taxRate": 16,
-      "beta": 1.5876,
-      "marketCap": 289726924326
+      "beta": 1.5864,
+      "marketCap": 293391191262
     },
     "beta": {
-      "beta5y": 1.5876
+      "beta5y": 1.5864
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 117.549,
-        "high": 117.914,
-        "low": 116.321,
-        "close": 117.09,
-        "volume": 41102000
-      },
-      {
-        "date": "2025-10-02",
-        "open": 116.15,
-        "high": 116.333,
-        "low": 113.4,
-        "close": 116.253,
-        "volume": 46855000
-      },
-      {
-        "date": "2025-10-03",
-        "open": 116.5,
-        "high": 116.8,
-        "low": 114.322,
-        "close": 115.332,
-        "volume": 31374000
-      },
-      {
-        "date": "2025-10-06",
-        "open": 116.037,
-        "high": 116.358,
-        "low": 114.545,
-        "close": 116.331,
-        "volume": 29686000
-      },
-      {
-        "date": "2025-10-07",
-        "open": 117.779,
-        "high": 120.137,
-        "low": 117.746,
-        "close": 119.106,
-        "volume": 33091000
-      },
-      {
-        "date": "2025-10-08",
-        "open": 119.711,
-        "high": 121.739,
-        "low": 119.2,
-        "close": 121.425,
-        "volume": 28514000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 121.425,
-        "high": 123.75,
-        "low": 121.182,
-        "close": 123.107,
-        "volume": 28241000
-      },
-      {
-        "date": "2025-10-10",
-        "open": 122.9,
-        "high": 124.7,
-        "low": 121.91,
-        "close": 122.008,
-        "volume": 42798000
-      },
       {
         "date": "2025-10-13",
         "open": 122.135,
@@ -6951,24 +6887,88 @@
         "high": 69.66,
         "low": 67.79,
         "close": 67.85,
-        "volume": 41403300
+        "volume": 41584700
+      },
+      {
+        "date": "2026-10-02",
+        "open": 67.6,
+        "high": 67.87,
+        "low": 66.75,
+        "close": 67.06,
+        "volume": 38672100
+      },
+      {
+        "date": "2026-10-05",
+        "open": 67.05,
+        "high": 67.5,
+        "low": 66.54,
+        "close": 67.5,
+        "volume": 36820200
+      },
+      {
+        "date": "2026-10-06",
+        "open": 67.51,
+        "high": 68.78,
+        "low": 67.31,
+        "close": 68.69,
+        "volume": 35242400
+      },
+      {
+        "date": "2026-10-07",
+        "open": 68.8,
+        "high": 69.8,
+        "low": 68.41,
+        "close": 69.7,
+        "volume": 30206200
+      },
+      {
+        "date": "2026-10-08",
+        "open": 70.09,
+        "high": 71.62,
+        "low": 69.72,
+        "close": 71.57,
+        "volume": 46130300
+      },
+      {
+        "date": "2026-10-09",
+        "open": 70.51,
+        "high": 72.1,
+        "low": 70.19,
+        "close": 70.3,
+        "volume": 29124300
+      },
+      {
+        "date": "2026-10-12",
+        "open": 71.33,
+        "high": 71.55,
+        "low": 70.56,
+        "close": 70.61,
+        "volume": 24200200
+      },
+      {
+        "date": "2026-10-13",
+        "open": 71.16,
+        "high": 71.52,
+        "low": 70.42,
+        "close": 70.46,
+        "volume": 27742800
       }
     ],
     "news": [
-      {
-        "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
-        "type": "STORY"
-      },
       {
         "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
         "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
         "type": "STORY"
       },
       {
@@ -7012,19 +7012,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
         "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
         "type": "STORY"
       },
       {
@@ -7098,18 +7098,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.92,
-        "industryAvg": 23.46
+        "value": 22.2,
+        "industryAvg": 23.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.99,
-        "industryAvg": 2.44
+        "value": 6.07,
+        "industryAvg": 2.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.61,
-        "industryAvg": 2.97
+        "value": 9.73,
+        "industryAvg": 2.99
       },
       {
         "metric": "ROE",

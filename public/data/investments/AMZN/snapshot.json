@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.4325,
-      "ttmPe": 19.84,
-      "marketCap": 2659842610000,
-      "psRatio": 3.58,
-      "pbRatio": 6.02,
-      "pegRatio": 0.08
+      "ttmPe": 20.8,
+      "marketCap": 2788268140000,
+      "psRatio": 3.75,
+      "pbRatio": 6.31,
+      "pegRatio": 0.09
     },
     "profitability": {
       "roe": 7.090000000000001,
@@ -4937,81 +4937,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.340000000000002,
-      "costOfEquity": 16.53,
+      "wacc": 15.42,
+      "costOfEquity": 16.56,
       "costOfDebt": 0.38,
       "taxRate": 24,
-      "beta": 1.4813,
-      "marketCap": 2659842610000
+      "beta": 1.4814,
+      "marketCap": 2788268140000
     },
     "beta": {
-      "beta5y": 1.4813
+      "beta5y": 1.4814
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 217.36,
-        "high": 222.15,
-        "low": 216.61,
-        "close": 220.63,
-        "volume": 43933800
-      },
-      {
-        "date": "2025-10-02",
-        "open": 221.01,
-        "high": 222.81,
-        "low": 218.95,
-        "close": 222.41,
-        "volume": 41258600
-      },
-      {
-        "date": "2025-10-03",
-        "open": 223.44,
-        "high": 224.2,
-        "low": 219.34,
-        "close": 219.51,
-        "volume": 43639000
-      },
-      {
-        "date": "2025-10-06",
-        "open": 221,
-        "high": 221.73,
-        "low": 216.03,
-        "close": 220.9,
-        "volume": 43690900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 220.88,
-        "high": 222.89,
-        "low": 220.17,
-        "close": 221.78,
-        "volume": 31194700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 222.92,
-        "high": 226.73,
-        "low": 221.19,
-        "close": 225.22,
-        "volume": 46686000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 225,
-        "high": 228.21,
-        "low": 221.75,
-        "close": 227.74,
-        "volume": 46412100
-      },
-      {
-        "date": "2025-10-10",
-        "open": 226.21,
-        "high": 228.25,
-        "low": 216,
-        "close": 216.37,
-        "volume": 72367500
-      },
       {
         "date": "2025-10-13",
         "open": 217.7,
@@ -6962,7 +6898,71 @@
         "high": 251.83,
         "low": 246.12,
         "close": 248.23,
-        "volume": 33173500
+        "volume": 33243900
+      },
+      {
+        "date": "2026-10-02",
+        "open": 251.51,
+        "high": 253.56,
+        "low": 250.02,
+        "close": 251.52,
+        "volume": 33433400
+      },
+      {
+        "date": "2026-10-05",
+        "open": 250.19,
+        "high": 254.53,
+        "low": 250.18,
+        "close": 251.4,
+        "volume": 39273900
+      },
+      {
+        "date": "2026-10-06",
+        "open": 253.4,
+        "high": 256.68,
+        "low": 251.08,
+        "close": 256.29,
+        "volume": 34120800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 254.23,
+        "high": 260.14,
+        "low": 253.17,
+        "close": 259.92,
+        "volume": 36225800
+      },
+      {
+        "date": "2026-10-08",
+        "open": 259.74,
+        "high": 259.86,
+        "low": 253.78,
+        "close": 254.06,
+        "volume": 38649900
+      },
+      {
+        "date": "2026-10-09",
+        "open": 256.5,
+        "high": 262.8,
+        "low": 256,
+        "close": 262.43,
+        "volume": 34770000
+      },
+      {
+        "date": "2026-10-12",
+        "open": 262.5,
+        "high": 263.7,
+        "low": 259.27,
+        "close": 259.53,
+        "volume": 26577900
+      },
+      {
+        "date": "2026-10-13",
+        "open": 259.44,
+        "high": 262.84,
+        "low": 258.42,
+        "close": 258.58,
+        "volume": 25227400
       }
     ],
     "news": [
@@ -6975,12 +6975,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
-        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
-        "publisher": "Investor's Business Daily",
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
@@ -6991,12 +6991,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
+        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
+        "type": "STORY"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
@@ -7113,18 +7113,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.84,
-        "industryAvg": 26.15
+        "value": 20.8,
+        "industryAvg": 27.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.58,
-        "industryAvg": 2.18
+        "value": 3.75,
+        "industryAvg": 2.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.02,
-        "industryAvg": 3.91
+        "value": 6.31,
+        "industryAvg": 4.08
       },
       {
         "metric": "ROE",

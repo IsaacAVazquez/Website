@@ -1,10 +1,10 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.4306,
-      "ttmPe": 19.58,
-      "marketCap": 403472257173,
-      "psRatio": 1.93,
-      "pbRatio": 2.12,
+      "ttmPe": 20.87,
+      "marketCap": 430184685149,
+      "psRatio": 2.06,
+      "pbRatio": 2.27,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5447,81 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.290000000000001,
-      "costOfEquity": 8.99,
+      "wacc": 8.32,
+      "costOfEquity": 8.98,
       "costOfDebt": 0.95,
       "taxRate": 27,
-      "beta": 0.4886,
-      "marketCap": 403472257173
+      "beta": 0.4928,
+      "marketCap": 430184685149
     },
     "beta": {
-      "beta5y": 0.4886
+      "beta5y": 0.4928
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 154.83,
-        "high": 155.09,
-        "low": 153.19,
-        "close": 154.58,
-        "volume": 6768400
-      },
-      {
-        "date": "2025-10-02",
-        "open": 153.96,
-        "high": 156.6,
-        "low": 153.32,
-        "close": 153.37,
-        "volume": 7562400
-      },
-      {
-        "date": "2025-10-03",
-        "open": 153.58,
-        "high": 154.28,
-        "low": 152.23,
-        "close": 153.55,
-        "volume": 7249300
-      },
-      {
-        "date": "2025-10-06",
-        "open": 153.97,
-        "high": 154.65,
-        "low": 152.92,
-        "close": 154.02,
-        "volume": 4778900
-      },
-      {
-        "date": "2025-10-07",
-        "open": 153.65,
-        "high": 154.96,
-        "low": 151.28,
-        "close": 154.91,
-        "volume": 5479600
-      },
-      {
-        "date": "2025-10-08",
-        "open": 154.36,
-        "high": 154.68,
-        "low": 152.84,
-        "close": 153.74,
-        "volume": 5678000
-      },
-      {
-        "date": "2025-10-09",
-        "open": 154.13,
-        "high": 154.97,
-        "low": 151.56,
-        "close": 151.64,
-        "volume": 6178600
-      },
-      {
-        "date": "2025-10-10",
-        "open": 150.7,
-        "high": 151.35,
-        "low": 148.89,
-        "close": 148.9,
-        "volume": 7796600
-      },
       {
         "date": "2025-10-13",
         "open": 150,
@@ -7473,6 +7409,70 @@
         "low": 202.82,
         "close": 207.1,
         "volume": 5999700
+      },
+      {
+        "date": "2026-10-02",
+        "open": 204.8,
+        "high": 207.32,
+        "low": 204.45,
+        "close": 206.69,
+        "volume": 6669900
+      },
+      {
+        "date": "2026-10-05",
+        "open": 206.83,
+        "high": 207.26,
+        "low": 201.96,
+        "close": 206.47,
+        "volume": 6445100
+      },
+      {
+        "date": "2026-10-06",
+        "open": 205.57,
+        "high": 208.69,
+        "low": 204.89,
+        "close": 207.58,
+        "volume": 5468800
+      },
+      {
+        "date": "2026-10-07",
+        "open": 208.44,
+        "high": 210.14,
+        "low": 204.86,
+        "close": 205.15,
+        "volume": 5733000
+      },
+      {
+        "date": "2026-10-08",
+        "open": 209.32,
+        "high": 212.36,
+        "low": 208.96,
+        "close": 211.55,
+        "volume": 7620800
+      },
+      {
+        "date": "2026-10-09",
+        "open": 211.05,
+        "high": 213.72,
+        "low": 210.71,
+        "close": 211.98,
+        "volume": 6298800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 214.54,
+        "high": 216.67,
+        "low": 213.75,
+        "close": 215,
+        "volume": 8302800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 217,
+        "high": 218.79,
+        "low": 215.95,
+        "close": 217.73,
+        "volume": 7432300
       }
     ],
     "news": [
@@ -7607,8 +7607,8 @@
       {
         "name": "Ms. Eimear P. Bonner",
         "title": "Chief Financial Officer",
-        "age": 50,
-        "yearBorn": 1975,
+        "age": 51,
+        "yearBorn": 1974,
         "totalPay": 2753975
       },
       {
@@ -7627,18 +7627,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.58,
-        "industryAvg": 11.67
+        "value": 20.87,
+        "industryAvg": 12.54
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.93,
-        "industryAvg": 1
+        "value": 2.06,
+        "industryAvg": 1.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.12,
-        "industryAvg": 1.59
+        "value": 2.27,
+        "industryAvg": 1.71
       },
       {
         "metric": "ROE",

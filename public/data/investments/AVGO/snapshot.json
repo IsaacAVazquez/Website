@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
     "sections": {
-      "price": "2026-10-01"
+      "price": "2026-10-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.8333,
-      "ttmPe": 45.33,
-      "marketCap": 1695247400000,
-      "psRatio": 19.03,
-      "pbRatio": 17.01,
+      "ttmPe": 45.61,
+      "marketCap": 1705797940000,
+      "psRatio": 19.14,
+      "pbRatio": 17.11,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -6215,81 +6215,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.870000000000001,
-      "costOfEquity": 16.39,
+      "wacc": 15.89,
+      "costOfEquity": 16.41,
       "costOfDebt": 1.31,
       "taxRate": 14.000000000000002,
-      "beta": 1.4627,
-      "marketCap": 1695247400000
+      "beta": 1.4615,
+      "marketCap": 1705797940000
     },
     "beta": {
-      "beta5y": 1.4627
+      "beta5y": 1.4615
     },
     "price": [
-      {
-        "date": "2025-10-01",
-        "open": 328.15,
-        "high": 337.95,
-        "low": 324.5,
-        "close": 333.39,
-        "volume": 21122700
-      },
-      {
-        "date": "2025-10-02",
-        "open": 347.61,
-        "high": 347.61,
-        "low": 335.25,
-        "close": 338.18,
-        "volume": 19917600
-      },
-      {
-        "date": "2025-10-03",
-        "open": 341.5,
-        "high": 344.4,
-        "low": 335.74,
-        "close": 338.37,
-        "volume": 14749100
-      },
-      {
-        "date": "2025-10-06",
-        "open": 335.92,
-        "high": 344.13,
-        "low": 334.56,
-        "close": 335.49,
-        "volume": 18465700
-      },
-      {
-        "date": "2025-10-07",
-        "open": 337.03,
-        "high": 338.11,
-        "low": 326.58,
-        "close": 336.41,
-        "volume": 18086700
-      },
-      {
-        "date": "2025-10-08",
-        "open": 333.82,
-        "high": 346.54,
-        "low": 332.62,
-        "close": 345.5,
-        "volume": 21478300
-      },
-      {
-        "date": "2025-10-09",
-        "open": 345.75,
-        "high": 347.31,
-        "low": 340.4,
-        "close": 345.02,
-        "volume": 17643700
-      },
-      {
-        "date": "2025-10-10",
-        "open": 345.39,
-        "high": 350.6,
-        "low": 324.05,
-        "close": 324.63,
-        "volume": 28941000
-      },
       {
         "date": "2025-10-13",
         "open": 352.77,
@@ -8240,7 +8176,71 @@
         "high": 354.45,
         "low": 343.29,
         "close": 343.64,
-        "volume": 24487100
+        "volume": 24574100
+      },
+      {
+        "date": "2026-10-02",
+        "open": 349.86,
+        "high": 357.35,
+        "low": 347.42,
+        "close": 355.14,
+        "volume": 24639600
+      },
+      {
+        "date": "2026-10-05",
+        "open": 357.79,
+        "high": 363.87,
+        "low": 356.14,
+        "close": 362.51,
+        "volume": 21481600
+      },
+      {
+        "date": "2026-10-06",
+        "open": 367.03,
+        "high": 380.84,
+        "low": 364.01,
+        "close": 375.81,
+        "volume": 30834300
+      },
+      {
+        "date": "2026-10-07",
+        "open": 372.6,
+        "high": 376.97,
+        "low": 369.12,
+        "close": 376.51,
+        "volume": 18046100
+      },
+      {
+        "date": "2026-10-08",
+        "open": 370.62,
+        "high": 373.35,
+        "low": 357.41,
+        "close": 360.14,
+        "volume": 27145200
+      },
+      {
+        "date": "2026-10-09",
+        "open": 365.59,
+        "high": 366.63,
+        "low": 361.1,
+        "close": 361.54,
+        "volume": 16843800
+      },
+      {
+        "date": "2026-10-12",
+        "open": 359.43,
+        "high": 360.69,
+        "low": 354.22,
+        "close": 354.73,
+        "volume": 16336800
+      },
+      {
+        "date": "2026-10-13",
+        "open": 349.6,
+        "high": 359.25,
+        "low": 348.11,
+        "close": 357.31,
+        "volume": 17241200
       }
     ],
     "news": [
@@ -8285,19 +8285,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
-        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
+        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
         "type": "STORY"
       },
       {
@@ -8384,18 +8384,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.33,
-        "industryAvg": 30.27
+        "value": 45.61,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.03,
-        "industryAvg": 14.45
+        "value": 19.14,
+        "industryAvg": 14.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.01,
-        "industryAvg": 12.63
+        "value": 17.11,
+        "industryAvg": 12.19
       },
       {
         "metric": "ROE",
