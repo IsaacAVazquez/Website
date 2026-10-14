@@ -701,6 +701,7 @@ describe("DraftTrackerClient", () => {
     mockUseDraftState.mockReturnValue({
       ...state,
       persistenceError: "This draft is running in this tab, but changes cannot be saved locally.",
+      storageBlocked: true,
     });
 
     render(<DraftTrackerClient />);
@@ -717,6 +718,22 @@ describe("DraftTrackerClient", () => {
     // The setup screen gets the same state for its preset note.
     fireEvent.click(screen.getByRole("button", { name: "New room" }));
     expect(screen.getByTestId("draft-setup-mock")).toHaveAttribute("data-storage-blocked", "true");
+  });
+
+  it("keeps the device lines when two tabs conflict, since saving still works", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      persistenceError: "This draft changed in another tab. I loaded the latest save. Try that action again.",
+      storageBlocked: false,
+    });
+
+    render(<DraftTrackerClient />);
+
+    expect(
+      screen.getByText("Advisory clock only, nothing auto-picks at zero · picks stay on this device")
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/picks last only in this tab/)).not.toBeInTheDocument();
   });
 
   it("keeps the device lines as they were when the browser saves", () => {

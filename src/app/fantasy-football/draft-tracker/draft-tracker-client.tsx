@@ -219,6 +219,7 @@ export function DraftTrackerClient() {
     isDraftComplete,
     currentTeamNumber,
     persistenceError,
+    storageBlocked,
   } = useDraftState();
 
   const telemetry = useDraftTelemetry(draftState.draftId);
@@ -941,7 +942,7 @@ export function DraftTrackerClient() {
   ]);
 
   // Nothing says the picks are kept when the browser cannot keep them.
-  const deviceWords = persistenceError ? "picks last only in this tab" : "picks stay on this device";
+  const deviceWords = storageBlocked ? "picks last only in this tab" : "picks stay on this device";
   // The drawer's VORP fact, for the league size the room's VORP is read at.
   const detailVorpEntry = detailPlayer ? vorpValues.get(detailPlayer.id) : undefined;
   const detailVorp =
@@ -1053,7 +1054,7 @@ export function DraftTrackerClient() {
             // On a first visit nothing was pressed, and nothing is moved.
             focusHeadingOnMount={roomSetupOpen}
             parkedPickCount={draftState.picks.length}
-            storageBlocked={Boolean(persistenceError)}
+            storageBlocked={storageBlocked}
           />
         ) : rankingsUnavailable ? (
           <div className="ffb-notice ffb-notice-warn">
