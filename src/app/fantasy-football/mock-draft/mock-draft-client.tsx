@@ -1744,6 +1744,7 @@ export function MockDraftClient() {
                 headingLevel={2}
                 sectionHead
                 names
+                picksOpen
               />
             </div>
 

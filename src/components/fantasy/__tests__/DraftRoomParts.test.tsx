@@ -10,6 +10,13 @@ import {
   type RoomPick,
 } from "../DraftRoomParts";
 import type { Player } from "@/types";
+import { useFirstRowCount } from "../useFirstRowCount";
+
+// The real hook measures layout, which jsdom does not have. One test sets the count it reports.
+jest.mock("../useFirstRowCount", () => {
+  const actual = jest.requireActual("../useFirstRowCount");
+  return { useFirstRowCount: jest.fn(actual.useFirstRowCount) };
+});
 
 function player(partial: Partial<Player> & Pick<Player, "id" | "name" | "position">): Player {
   return { team: "FA", averageRank: 1, ...partial };
@@ -87,6 +94,9 @@ describe("DraftPickGrid", () => {
     expect(screen.getByRole("img", { name: "Pick 6, slot 3, yours, on the clock" })).toHaveClass("ffb-is-live");
     expect(screen.getByRole("img", { name: "Pick 5, slot 4, Nico Collins, WR" })).toHaveTextContent("WR2");
     expect(screen.getByText(/Odd rounds run left to right and even rounds run right to left\./)).toBeInTheDocument();
+    // What has been taken, by position, and whose column is highlighted.
+    expect(screen.getByText("Taken").parentElement).toHaveTextContent("Taken QB 1 RB 1 WR 2 TE 1");
+    expect(screen.getByText("Slot 3 is yours")).toBeInTheDocument();
   });
 
   it("lays every round of a linear draft out left to right", () => {
@@ -162,6 +172,34 @@ describe("DraftPickGrid", () => {
     ]);
     expect(lines[3]).toHaveClass("ffb-rm-is-mine");
     expect(lines[0]).not.toHaveClass("ffb-rm-is-mine");
+  });
+
+  it("heads the rounds under All picks one level below the grid's heading, and opens the list when asked", () => {
+    render(
+      <DraftPickGrid
+        picks={picks([1, 2, 3, 4, 4])}
+        totalTeams={4}
+        userTeam={4}
+        rounds={3}
+        slotForPick={snake(4)}
+        currentPick={6}
+        currentRound={3}
+        isComplete
+        heading="The board"
+        headingLevel={2}
+        sectionHead
+        names
+        picksOpen
+      />
+    );
+    const all = screen.getByText("All picks").closest("details") as HTMLDetailsElement;
+
+    expect(all.open).toBe(true);
+    expect(within(all).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual([
+      "Round 1",
+      "Round 2",
+    ]);
+    expect(within(all).queryByRole("heading", { level: 4 })).not.toBeInTheDocument();
   });
 
   it("gives two grids on one page headings of their own", () => {
@@ -378,5 +416,141 @@ describe("DraftRoster", () => {
     expect(slots[2]).toHaveClass("ffb-slot", "ffb-pos-flex");
     // The lineup leaves four bench spots, and a fifth player is there, so the total follows the count.
     expect(slots[3]).toHaveTextContent("BN Bench 5 of 5");
+  });
+});
+
+describe("DraftPickGrid edges the three rooms reach", () => {
+  const base = {
+    totalTeams: 4,
+    userTeam: 1,
+    rounds: 3,
+    slotForPick: snake(4),
+    currentPick: 3,
+    currentRound: 1,
+    isComplete: false,
+  };
+
+  it("sets a fourteen-team rail grid in the tight type, and a grid at the page's width never", () => {
+    const fourteen = { ...base, totalTeams: 14, slotForPick: snake(14), picks: picks([1, 2]) };
+    const { container, unmount } = render(<DraftPickGrid {...fourteen} />);
+    expect(container.querySelector(".ffb-grid")).toHaveClass("ffb-grid-tight");
+    unmount();
+
+    const wide = render(<DraftPickGrid {...fourteen} names />);
+    expect(wide.container.querySelector(".ffb-grid")).toHaveClass("ffb-grid-names");
+    expect(wide.container.querySelector(".ffb-grid")).not.toHaveClass("ffb-grid-tight");
+  });
+
+  it("marks a made cell whose label runs to five characters, so the kit sets it narrow, and not on the wide grid", () => {
+    const dst: RoomPick[] = [
+      { pickNumber: 1, teamNumber: 1, player: player({ id: "d", name: "Ravens D/ST", position: "DST", team: "BAL", positionRank: 10 }) },
+      { pickNumber: 2, teamNumber: 2, player: player({ id: "w", name: "Ja'Marr Chase", position: "WR", team: "CIN", positionRank: 1 }) },
+    ];
+    const { unmount } = render(<DraftPickGrid {...base} picks={dst} />);
+    expect(screen.getByRole("img", { name: "Pick 1, slot 1, yours, Ravens D/ST, DST" })).toHaveTextContent(/^DST10$/);
+    expect(screen.getByRole("img", { name: "Pick 1, slot 1, yours, Ravens D/ST, DST" })).toHaveClass("ffb-cell-long");
+    expect(screen.getByRole("img", { name: "Pick 2, slot 2, Ja'Marr Chase, WR" })).not.toHaveClass("ffb-cell-long");
+    unmount();
+
+    render(<DraftPickGrid {...base} picks={dst} names />);
+    expect(screen.getByRole("img", { name: "Pick 1, slot 1, yours, Ravens D/ST, DST" })).not.toHaveClass("ffb-cell-long");
+  });
+
+  it("puts the highlighter band on the last column when the user drafts from the last slot", () => {
+    const { container } = render(<DraftPickGrid {...base} userTeam={4} picks={picks([1, 2])} />);
+    const grid = container.querySelector(".ffb-grid") as HTMLElement;
+
+    expect(grid.style.getPropertyValue("--ffb-my-slot")).toBe("4");
+    expect(grid.style.getPropertyValue("--ffb-teams")).toBe("4");
+    const heads = Array.from(grid.querySelectorAll(".ffb-grid-slot"));
+    expect(heads[3]).toHaveClass("ffb-is-mine");
+    expect(heads[3]).toHaveTextContent("4 (you)");
+    expect(screen.getByText("Slot 4 is yours")).toBeInTheDocument();
+  });
+
+  it("prints a pick with no position rank (a withheld best ball pick) by its position alone", () => {
+    const withheld: RoomPick[] = [
+      { pickNumber: 2, teamNumber: 2, player: player({ id: "g", name: "Jahmyr Gibbs", position: "RB", team: "DET" }) },
+    ];
+    render(<DraftPickGrid {...base} picks={withheld} />);
+
+    expect(screen.getByRole("img", { name: "Pick 1, slot 1, yours, open" })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Pick 2, slot 2, Jahmyr Gibbs, RB" })).toHaveTextContent(/^RB$/);
+    const all = screen.getByText("All picks").closest("details") as HTMLDetailsElement;
+    expect(within(all).getByRole("listitem", { hidden: true })).toHaveTextContent(/^#2 · Slot 2 · Jahmyr Gibbs · RB · DET$/);
+  });
+});
+
+describe("DraftLastPicks edges", () => {
+  afterEach(() => {
+    jest.mocked(useFirstRowCount).mockImplementation(jest.requireActual("../useFirstRowCount").useFirstRowCount);
+  });
+
+  it("hides the stickers that fell out of the first row, so a clipped button takes no focus", () => {
+    jest.mocked(useFirstRowCount).mockReturnValue(2);
+    render(<DraftLastPicks picks={picks([1, 2, 3]).reverse()} userTeam={3} onUndoToPick={jest.fn()} />);
+    const items = screen.getAllByRole("listitem", { hidden: true });
+
+    expect(items).toHaveLength(3);
+    expect(items[0]).not.toHaveStyle({ visibility: "hidden" });
+    expect(items[1]).not.toHaveStyle({ visibility: "hidden" });
+    expect(items[2]).toHaveStyle({ visibility: "hidden" });
+  });
+
+  it("lets a keyboard into a list of plain stickers, named by its heading, and leaves a list of buttons alone", () => {
+    const { unmount } = render(<DraftLastPicks picks={picks([1, 2]).reverse()} userTeam={1} heading="Since your last pick" />);
+    const plain = screen.getByRole("list", { name: "Since your last pick" });
+    expect(plain).toHaveAttribute("tabindex", "0");
+    unmount();
+
+    render(<DraftLastPicks picks={picks([1, 2]).reverse()} userTeam={1} onUndoToPick={jest.fn()} />);
+    const buttons = screen.getByRole("list");
+    expect(buttons).not.toHaveAttribute("tabindex");
+    expect(buttons).not.toHaveAttribute("aria-labelledby");
+  });
+
+  it("prints a withheld pick's sticker by its position alone", () => {
+    const withheld: RoomPick[] = [
+      { pickNumber: 7, teamNumber: 2, player: player({ id: "g", name: "Jahmyr Gibbs", position: "RB", team: "DET" }) },
+    ];
+    render(<DraftLastPicks picks={withheld} userTeam={1} />);
+
+    expect(screen.getByRole("listitem")).toHaveTextContent(/^#7 · Slot 2 RB · DET J\. Gibbs$/);
+  });
+});
+
+describe("DraftRoster edges", () => {
+  const slots = [
+    { slot: "QB", eligible: ["QB"], player: player({ id: "q", name: "Josh Allen", position: "QB", team: "BUF" }) },
+    { slot: "RB", eligible: ["RB"], player: player({ id: "r", name: "Jacory Croskey-Merritt", position: "RB", team: "WAS" }) },
+    { slot: "DST", eligible: ["DST"], player: player({ id: "d", name: "Ravens D/ST", position: "DST", team: "BAL" }) },
+    { slot: "K", eligible: ["K"], player: null },
+  ];
+
+  it("leaves the bench out of a draft shorter than the lineup, and its row with it", () => {
+    render(<DraftRoster assignment={{ slots, bench: 0 }} picked={3} rounds={3} />);
+    const list = screen.getByRole("list");
+
+    expect(screen.getAllByRole("listitem")).toHaveLength(4);
+    expect(screen.queryByText("Bench")).not.toBeInTheDocument();
+    expect(list.style.getPropertyValue("--ffb-slot-rows")).toBe("2");
+  });
+
+  it("keeps the bench once a pick lands there, even with no spots left for one", () => {
+    render(<DraftRoster assignment={{ slots, bench: 1 }} picked={4} rounds={3} />);
+
+    expect(screen.getAllByRole("listitem")[4]).toHaveTextContent("BN Bench 1 of 1");
+    expect(screen.getByRole("list").style.getPropertyValue("--ffb-slot-rows")).toBe("3");
+  });
+
+  it("titles each name in full and sets the initial apart, so the compact roster can print the last name alone", () => {
+    render(<DraftRoster assignment={{ slots, bench: 0 }} picked={3} rounds={3} />);
+    const names = Array.from(document.querySelectorAll(".ffb-slot.ffb-is-filled .ffb-slot-name"));
+
+    expect(names.map((name) => name.getAttribute("title"))).toEqual(["Josh Allen", "Jacory Croskey-Merritt", "Ravens D/ST"]);
+    expect(names.map((name) => name.textContent)).toEqual(["J. Allen", "J. Croskey-Merritt", "Ravens D/ST"]);
+    expect(names.map((name) => name.querySelector(".ffb-slot-initial")?.textContent ?? null)).toEqual(["J. ", "J. ", null]);
+    // An open slot has no name to title.
+    expect(screen.getByText("Open")).not.toHaveAttribute("title");
   });
 });
