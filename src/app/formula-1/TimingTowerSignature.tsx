@@ -108,7 +108,16 @@ export function TimingTowerSignature({ standings, kind, fullTableHref }: TimingT
           <span>
             Top {PHONE_ROWS} of {rows.length}
           </span>
-          <Link href={fullTableHref} className={styles.towerMoreLink}>
+          <Link
+            href={fullTableHref}
+            className={styles.towerMoreLink}
+            onClick={() => {
+              // In the table's own view the address can already end in this hash, and the
+              // router does not scroll for a link to the page it is on.
+              const anchor = fullTableHref.split("#")[1];
+              if (anchor) document.getElementById(anchor)?.scrollIntoView?.({ block: "start" });
+            }}
+          >
             See all {rows.length} {kind === "drivers" ? "drivers" : "teams"}
           </Link>
         </p>

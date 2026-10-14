@@ -2,7 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState, type FocusEvent } from "react";
 import { relativeAge } from "@/lib/utils";
 import { useClientNow } from "@/hooks/useClientNow";
 import {
@@ -30,6 +30,7 @@ import { languageShares, starBars, type StarLogRepo } from "./star-log";
 import { SHORT_DATE_FORMATTER, DATE_ONLY_TIME_ZONE, formatDateTime } from "@/lib/date-formatters";
 import "./github-trending-pulse.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useKeepPressedInView } from "@/components/football/useKeepPressedInView";
 
 interface GitHubTrendingClientProps {
   initialState: GitHubTrendingRouteState;
@@ -80,6 +81,10 @@ function statusLabel(repo: GitHubTrendingClientRepository, windowDays: number): 
   return "New baseline";
 }
 
+function segmentsAre(count: number): string {
+  return `${count} ${count === 1 ? "segment is" : "segments are"}`;
+}
+
 function toLogRepo(repo: GitHubTrendingClientRepository): StarLogRepo {
   return {
     id: repo.id,
@@ -88,6 +93,21 @@ function toLogRepo(repo: GitHubTrendingClientRepository): StarLogRepo {
     language: repo.primaryLanguage,
     weeklyStarsStatus: repo.weeklyStarsStatus,
   };
+}
+
+// A browser reveals a focused control only when almost none of it shows, so a
+// Tab stop cut by the phone row's edge would stay cut. This moves the row's own
+// scroll, never the page, until the button sits inside the row's padding,
+// which is the room its focus ring needs.
+function revealFocusedSegment(event: FocusEvent<HTMLDivElement>) {
+  const row = event.currentTarget;
+  const room = parseFloat(getComputedStyle(row).paddingLeft) || 0;
+  const rowBox = row.getBoundingClientRect();
+  const box = event.target.getBoundingClientRect();
+  const before = Math.floor(box.left - rowBox.left - room);
+  const past = Math.ceil(box.right - rowBox.right + room);
+  if (before < 0) row.scrollLeft += before;
+  else if (past > 0) row.scrollLeft += past;
 }
 
 function getSegments(snapshot: GitHubTrendingClientSnapshot, kind: GitHubTrendingSegmentKind) {
@@ -146,10 +166,10 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
     resolvedState.sort
   );
   const selectedRepo = filteredRepos.find((repo) => repo.id === resolvedState.selectedRepoId);
-  const measuredShare =
-    snapshot.totals.repositories > 0
-      ? Math.round((snapshot.totals.measuredWeeklyDeltaCount / snapshot.totals.repositories) * 100)
-      : 0;
+  // On a phone the segment switch is one scrolling row, and a link can open on
+  // a segment past its edge.
+  const segmentRowRef = useRef<HTMLDivElement>(null);
+  useKeepPressedInView(segmentRowRef, `${resolvedState.kind}:${resolvedState.segment}`);
 
   function setKind(kind: GitHubTrendingSegmentKind) {
     navigate({ ...resolvedState, kind, segment: "all", selectedRepoId: null });
@@ -184,13 +204,15 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
           </p>
           <p className="gt-status">
             {snapshot.sourceLabel} · updated {updatedLabel} · repositories pushed in the last{" "}
-            {snapshot.activityWindowDays} days · {measuredShare}% of the weekly gains measured
+            {snapshot.activityWindowDays} days · {snapshot.totals.measuredWeeklyDeltaCount} of{" "}
+            {snapshot.totals.repositories} tracked repositories measured over the full{" "}
+            {snapshot.windowDays} days
           </p>
           {snapshot.sourceStatus?.status === "degraded" ? (
             <p className="gt-status gt-warn" role="status">
               {snapshot.sourceStatus.reusedSegments.length > 0
-                ? `${snapshot.sourceStatus.reusedSegments.length} segments are using earlier data.`
-                : `${snapshot.sourceStatus.failedSegments.length} segments are unavailable right now.`}
+                ? `${segmentsAre(snapshot.sourceStatus.reusedSegments.length)} using earlier data.`
+                : `${segmentsAre(snapshot.sourceStatus.failedSegments.length)} unavailable right now.`}
             </p>
           ) : null}
         </header>
@@ -212,7 +234,13 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
                 ))}
               </div>
 
-              <div role="group" aria-label="Filter by segment" className="gt-switch gt-switch--scroll">
+              <div
+                ref={segmentRowRef}
+                role="group"
+                aria-label="Filter by segment"
+                className="gt-switch gt-switch--scroll"
+                onFocus={revealFocusedSegment}
+              >
                 <button
                   type="button"
                   aria-pressed={resolvedState.segment === "all"}
@@ -299,7 +327,10 @@ function LanguageStrip({
           className="gt-strip"
           role="img"
           aria-label={`This week's stars by language. ${languages
-            .map((entry) => `${entry.language} ${Math.round(entry.share * 100)}%`)
+            .map((entry) => {
+              const percent = Math.round(entry.share * 100);
+              return `${entry.language} ${percent < 1 ? "under 1" : percent}%`;
+            })
             .join(", ")}.`}
         >
           {languages.map((entry) => (
@@ -374,9 +405,11 @@ function RepositoryTable({
   onToggleRepo,
 }: RepositoryTableProps) {
   const [showAll, setShowAll] = useState(false);
-  // A deep link to a repository below the fold opens the whole table.
+  // A selected repository below the fold opens the whole table, and the table
+  // stays open after that, so closing the row never takes it off the page.
   const selectedIndex = repositories.findIndex((repo) => repo.id === selectedRepoId);
-  const unfolded = showAll || repositories.length <= TABLE_LIMIT || selectedIndex >= TABLE_LIMIT;
+  if (!showAll && selectedIndex >= TABLE_LIMIT) setShowAll(true);
+  const unfolded = showAll || repositories.length <= TABLE_LIMIT;
   const visible = unfolded ? repositories : repositories.slice(0, TABLE_LIMIT);
   // Bars scale to the biggest gain in the whole filter, so unfolding never rescales them.
   const bars = new Map(starBars(repositories.map(toLogRepo)).map((bar) => [bar.id, bar.share]));

@@ -5,8 +5,8 @@ import {
   createMBAApplicationFromJob,
   loadMBAApplications,
 } from "@/lib/mba-applications";
-import { useMBAApplications } from "../useMBAApplications";
-import type { MBAJob } from "@/types/mba-jobs";
+import { useMBAApplications, useMBAJobCandidates } from "../useMBAApplications";
+import type { MBAJob, MBAJobCandidate } from "@/types/mba-jobs";
 
 const job: MBAJob = {
   id: "stripe-1",
@@ -139,6 +139,20 @@ describe("useMBAApplications", () => {
     expect(result.current.applications[0].jobSnapshot.title).toBe("MBA Product Intern (Payments)");
     expect(result.current.applications[0].jobSnapshot.source).toBe("live-feed");
     expect(tracked).toMatchObject({ status: "applied" });
+  });
+
+  it("keeps an interviewing application where it is when the same job is marked applied again", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    act(() => {
+      result.current.trackJob(job, "interviewing");
+    });
+    act(() => {
+      result.current.trackJob(job, "applied");
+    });
+
+    expect(result.current.applications).toHaveLength(1);
+    expect(result.current.applications[0].status).toBe("interviewing");
   });
 
   it("moves a tracked job to a new status and links a manual entry to the live job", () => {
@@ -399,5 +413,78 @@ describe("useMBAApplications private sync in development", () => {
     expect(body.items.map((item: { id: string }) => item.id)).toEqual([other.id]);
     expect(loadMBAApplications().map((application) => application.id)).toEqual([other.id]);
     expect(result.current.applications.map((application) => application.id)).toEqual([other.id]);
+  });
+});
+
+describe("useMBAJobCandidates in development", () => {
+  const originalFetch = global.fetch;
+  let restoreEnv: { restore: () => void };
+
+  function jsonResponse(status: number, body: unknown) {
+    return { ok: status >= 200 && status < 300, status, json: async () => body };
+  }
+
+  function candidate(id: string): MBAJobCandidate {
+    return {
+      id,
+      job: {
+        ...job,
+        id: `${id}-job`,
+        applyUrl: `https://example.com/${id}`,
+        capturedAt: "2026-10-06T09:00:00.000Z",
+        source: "live-feed",
+      },
+      triage: "sourced",
+      fit: null,
+      sourcedAt: "2026-10-06T09:00:00.000Z",
+      updatedAt: "2026-10-06T09:00:00.000Z",
+    };
+  }
+
+  beforeEach(() => {
+    restoreEnv = jest.replaceProperty(process.env, "NODE_ENV", "development");
+  });
+
+  afterEach(() => {
+    restoreEnv.restore();
+    global.fetch = originalFetch;
+  });
+
+  it("keeps a removed candidate removed when the save hits a 409", async () => {
+    const kept = candidate("kept");
+    const removed = candidate("removed");
+    const sourcedSince = candidate("sourced-since");
+    let puts = 0;
+    global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        puts += 1;
+        const sent = JSON.parse(String(init.body)) as { items: unknown[] };
+        // Sourcing added a candidate since the pull, so the first save is stale and the
+        // server answers with its copy, which still holds the candidate removed here.
+        if (puts === 1) {
+          return Promise.resolve(jsonResponse(409, { revision: "150", items: [kept, removed, sourcedSince] }));
+        }
+        return Promise.resolve(jsonResponse(200, { revision: "200", items: sent.items }));
+      }
+      return Promise.resolve(jsonResponse(200, { revision: "100", items: [kept, removed] }));
+    }) as unknown as typeof fetch;
+
+    const { result } = renderHook(() => useMBAJobCandidates());
+    await waitFor(() => expect(result.current.candidates).toHaveLength(2));
+
+    act(() => {
+      result.current.removeCandidate(removed.id);
+    });
+
+    await waitFor(() => expect(puts).toBe(2));
+    const retry = (global.fetch as jest.Mock).mock.calls.filter(
+      ([, init]) => (init as RequestInit | undefined)?.method === "PUT"
+    )[1]!;
+    const body = JSON.parse(String((retry[1] as RequestInit).body));
+    expect(body.revision).toBe("150");
+    expect(body.items.map((item: { id: string }) => item.id).sort()).toEqual([kept.id, sourcedSince.id]);
+    await waitFor(() =>
+      expect(result.current.candidates.map((item) => item.id).sort()).toEqual([kept.id, sourcedSince.id])
+    );
   });
 });

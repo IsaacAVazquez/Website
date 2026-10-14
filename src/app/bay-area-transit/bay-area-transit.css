@@ -148,6 +148,8 @@
   border-radius: 0;
 }
 
+/* A hollow ring where the page has no live read to show for the feed. */
+.bt-badge[data-status="saved"] .bt-badge-mark,
 .bt-badge[data-status="unreported"] .bt-badge-mark {
   background: transparent;
   border: 2px solid var(--bt-ink-2);
@@ -325,7 +327,9 @@
   min-height: 100%;
 }
 
-/* The display itself, one dark surface in both themes. */
+/* The display itself, one dark surface in both themes. The frame colours a
+ * focus ring from --c97-accent and selected text from --c97-ink, so both are
+ * pointed at the board's own light values here. */
 .c97-transit-board-inner {
   flex: 1 1 auto;
   padding: var(--c97-sp-3);
@@ -334,6 +338,7 @@
   color: var(--bt-board-ink);
   box-shadow: inset 0 0 0 1px var(--bt-board-rule);
   --c97-accent: var(--bt-amber);
+  --c97-ink: var(--bt-board-ink);
 }
 
 .bt-board-kicker {
@@ -385,6 +390,8 @@
 
 .c97-transit-station-list {
   display: grid;
+  /* An auto column grows to the longest station name, past the list's edge. */
+  grid-template-columns: minmax(0, 1fr);
   max-height: 22rem;
   overflow-y: auto;
   border-top: 1px solid var(--bt-rule);
@@ -605,6 +612,12 @@
 
 .c97-transit-station-row[aria-current="true"] {
   box-shadow: inset 3px 0 0 0 var(--bt-ink);
+}
+
+/* The list scrolls, which clips the frame's outset ring at the list's edges,
+ * so the ring is drawn inside the row. */
+.bt-root .c97-transit-station-row:focus-visible {
+  outline-offset: -2px;
 }
 
 .c97-transit-swatch {

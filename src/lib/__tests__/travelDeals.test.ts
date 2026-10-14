@@ -96,6 +96,11 @@ describe("getBookingWindow", () => {
     expect(window.daysUntilDeparture).toBeNull();
     expect(window.headline).toMatch(/today/i);
   });
+
+  it("asks for a departure date before today is known when none has been entered", () => {
+    // The server render knows neither, and there is nothing to line today up against.
+    expect(getBookingWindow(region, "", null).headline).toBe("Add a departure date");
+  });
 });
 
 describe("scoreFare", () => {
@@ -112,6 +117,14 @@ describe("scoreFare", () => {
     expect(scoreFare(800, region, 1).rating).toBe("fair");
     expect(scoreFare(720, region, 1).rating).toBe("good");
     expect(scoreFare(1100, region, 1).rating).toBe("high");
+  });
+
+  it("compares a good fare with the typical price, since it still sits inside the band", () => {
+    const score = scoreFare(720, region, 1);
+    expect(score.rating).toBe("good");
+    expect(score.quoted).toBeGreaterThan(score.benchmarkLow);
+    expect(score.message).toMatch(/below the typical price/);
+    expect(score.message).not.toMatch(/band/);
   });
 
   it("never treats a negative fare as meaningful savings beyond the benchmark", () => {

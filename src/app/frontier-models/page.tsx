@@ -1,7 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { frontierModelsSnapshot } from "@/data/frontierModelsSnapshot";
 import { getFrontierModelsSnapshot } from "@/lib/frontierModelsSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { FrontierModelsClient } from "./frontier-models-client";
 import { normalizeFrontierModelsState } from "./frontier-models-state";
 
@@ -10,7 +10,7 @@ export const metadata = constructMetadata({
   description:
     "Curated tracker of frontier large language models with context windows, pricing, modality coverage, and editorial notes, built for product teams comparing frontier models as the price and capability tiers collapse.",
   canonicalUrl: "/frontier-models",
-  dateModified: frontierModelsSnapshot.generatedAt.slice(0, 10),
+  dateModified: laterDate(frontierModelsSnapshot.generatedAt.slice(0, 10), "2026-10-12"),
 });
 
 interface FrontierModelsPageProps {
@@ -57,7 +57,7 @@ export default async function FrontierModelsPage({
             "Sortable, filterable model table with editorial notes",
             "Cost-versus-context scatter plot across providers",
             "Filter by provider, modality, and price tier",
-            "Deep-linkable view, filter, and selection state",
+            "Deep-linkable filter and selection state",
           ],
           dateModified: snapshot.generatedAt,
         }}

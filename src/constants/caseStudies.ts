@@ -162,11 +162,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "interchange-iq",
     title: "Interchange IQ",
     description:
-      "I built a fee analyzer that models real payment processing costs across 7 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
+      "I built a fee analyzer that models real payment processing costs across 6 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
     role: "Builder",
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "React", "Payments Economics"],
-    metrics: "7 processors · Real interchange data · Breakeven calc",
+    metrics: "6 processors · Real interchange data · Breakeven calc",
     github: "https://github.com/IsaacAVazquez",
     link: "/fintech-tools/interchange-iq",
     featured: true,
@@ -787,10 +787,10 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "earthquake-pulse",
     title: "Earthquake Pulse",
     description:
-      "Snapshot-backed global earthquake monitor: the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
+      "Live global earthquake monitor that polls the USGS feed every five minutes and falls back to a checked-in snapshot, with the past 24 hours of seismic activity, significant quakes worldwide, magnitude distribution, and the busiest regions on one deep-linkable screen.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
-    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Snapshot pipeline"],
+    tools: ["Next.js", "TypeScript", "USGS GeoJSON", "Live feed with snapshot fallback"],
     metrics: "24h seismic pulse · Significant worldwide quakes · Region & magnitude breakdowns",
     github: "https://github.com/IsaacAVazquez",
     link: "/earthquake-pulse",
@@ -798,7 +798,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a global earthquake dashboard that turns checked-in USGS GeoJSON snapshots into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
+        "I built a global earthquake dashboard that polls the USGS GeoJSON feed every five minutes, falls back to a checked-in snapshot when the feed is down, and turns it into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
       impact:
         "Makes the planet's last day of seismic activity legible at a glance, what just moved, what was big enough to matter, and where the ground is busiest, without juggling separate live feeds.",
     },
@@ -857,7 +857,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "BART API", "Snapshot pipeline"],
-    metrics: "Line directory · Per-station departures · Service alerts",
+    metrics: "Line map · Per-station departures · Service alerts",
     github: "https://github.com/IsaacAVazquez",
     link: "/bay-area-transit",
     featured: false,
@@ -1084,7 +1084,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "recipe-finder",
     title: "Recipe Finder",
     description:
-      "Pantry-aware recipe aggregator that ranks recipes by how many of your on-hand ingredients they cover, so weeknight cooking decisions take seconds.",
+      "Pantry-aware recipe aggregator that ranks recipes by how much of each one your on-hand ingredients cover, so weeknight cooking decisions take seconds.",
     role: "Product Builder & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Search UX", "Local persistence"],
@@ -1095,7 +1095,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built an ingredient-driven recipe aggregator that ranks recipes by how many of your on-hand ingredients they cover.",
+        "I built an ingredient-driven recipe aggregator that ranks recipes by how much of each one your on-hand ingredients cover.",
       impact:
         "Turns 'what can I cook with what's already in the kitchen?' into a fast answer instead of a long scroll.",
     },

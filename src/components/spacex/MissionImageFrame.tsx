@@ -9,7 +9,6 @@ interface MissionImageFrameProps {
   className?: string;
   dataTestId?: string;
   alt: string;
-  priority?: boolean;
   /** Catalog 97 surface for the frame, when its overlay text needs a fixed ground. */
   surface?: "espresso" | "paper";
   /** The width of the frame on the page, as a `sizes` value. */
@@ -61,7 +60,6 @@ export function MissionImageFrame({
   className = "",
   dataTestId,
   alt,
-  priority = false,
   surface,
   sizes = "100vw",
   children,
@@ -114,8 +112,9 @@ export function MissionImageFrame({
               // remotePatterns, so those load as they are.
               unoptimized={!isStoredWithSite(activeImage)}
               referrerPolicy="no-referrer"
-              loading={priority ? "eager" : "lazy"}
-              fetchPriority={priority ? "high" : "auto"}
+              // Always lazy. The masthead hides its photo on a phone, and an
+              // eager image is preloaded from the head whatever the layout.
+              loading="lazy"
               decoding="async"
               draggable={false}
               className={`object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}

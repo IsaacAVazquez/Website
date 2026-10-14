@@ -3,7 +3,7 @@
 import { startTransition, useEffect, useMemo, type CSSProperties } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Plus, Sparkles, Trash2 } from "lucide-react";
-import { SHORT_DATE_FORMATTER, formatUpdatedAt } from "@/lib/date-formatters";
+import { formatDateTime, formatUpdatedAt } from "@/lib/date-formatters";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
@@ -48,11 +48,6 @@ function formatStamp(value: string | null | undefined): string {
   return value ? formatUpdatedAt(value) : "Unavailable";
 }
 
-function formatDay(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "a date to be set" : SHORT_DATE_FORMATTER.format(date);
-}
-
 function formatPoints(value: number): string {
   return value.toFixed(1);
 }
@@ -85,7 +80,12 @@ function SortAndFocusControls({
   onFocus: (focus: FantasyFormula1Focus) => void;
 }) {
   return (
-    <div className="ff1-controls">
+    // On a phone the row scrolls sideways, and a browser gives a partly visible button focus
+    // without scrolling it, so the row brings the focused button fully into view.
+    <div
+      className="ff1-controls"
+      onFocus={(event) => event.target.scrollIntoView?.({ block: "nearest", inline: "nearest" })}
+    >
       <div className="ff1-switch" role="group" aria-label="Sort assets by">
         {FANTASY_FORMULA1_SORT_OPTIONS.map((sort) => (
           <button key={sort} type="button" aria-pressed={sort === activeSort} onClick={() => onSort(sort)}>
@@ -133,19 +133,24 @@ function LineupCard({
       <p className="ff1-card-meta ff1-mono">
         {formatMoney(candidate.totalPrice)} · {formatMoney(candidate.budgetRemaining)} left
       </p>
-      {isCurrent ? (
-        <p className="ff1-card-current">Your team</p>
-      ) : (
-        <button
-          type="button"
-          className="ff1-btn"
-          aria-label={`Use option ${candidate.rank}`}
-          onClick={() => onApply(candidate)}
-        >
-          <Sparkles size={16} aria-hidden="true" />
-          Use
-        </button>
-      )}
+      {/* One button in both states. Swapping it for a label on Use would unmount
+          the element that has focus and drop a keyboard user to the page top. */}
+      <button
+        type="button"
+        className={isCurrent ? "ff1-card-current" : "ff1-btn"}
+        aria-label={isCurrent ? undefined : `Use option ${candidate.rank}`}
+        aria-disabled={isCurrent || undefined}
+        onClick={isCurrent ? undefined : () => onApply(candidate)}
+      >
+        {isCurrent ? (
+          "Your team"
+        ) : (
+          <>
+            <Sparkles size={16} aria-hidden="true" />
+            Use
+          </>
+        )}
+      </button>
     </li>
   );
 }
@@ -520,7 +525,8 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
   const statusLine = [
     `${seasonSummary.season} season`,
     `OpenF1 snapshot built ${formatStamp(seasonSummary.generatedAt)}`,
-    nextMeeting ? `${nextMeeting.name}${nextRaceStart ? ` on ${formatDay(nextRaceStart)}` : ""}` : null,
+    // The start prints with its time and zone, since a bare Pacific date reads a day early for some rounds.
+    nextMeeting ? `Next race ${nextMeeting.name}${nextRaceStart ? `, ${formatDateTime(nextRaceStart)}` : ""}` : null,
   ]
     .filter(Boolean)
     .join(" · ");

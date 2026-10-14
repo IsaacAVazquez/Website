@@ -1,5 +1,7 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import { useMBAJobs } from "../useMBAJobs";
+import { MBA_COMPANIES } from "@/constants/mba-companies";
 import type { MBAJob, MBAJobsApiResponse } from "@/types/mba-jobs";
 
 const SEEN_IDS_KEY = "mba_seen_job_ids_v1";
@@ -153,6 +155,108 @@ describe("useMBAJobs", () => {
       window.localStorage.getItem(SEEN_IDS_KEY) ?? "[]"
     );
     expect(persisted).toEqual(expect.arrayContaining(["stripe-1", "brex-1"]));
+  });
+
+  it("clears the new count on a feed longer than the cap on seen ids", async () => {
+    mockJobsResponse(Array.from({ length: 501 }, (_, i) => makeJob({ id: `job-${i}` })));
+
+    const { result } = renderHook(() => useMBAJobs());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.newJobCount).toBe(501);
+
+    act(() => {
+      result.current.markAllSeen();
+    });
+
+    await waitFor(() => expect(result.current.newJobCount).toBe(0));
+    expect(JSON.parse(window.localStorage.getItem(SEEN_IDS_KEY) ?? "[]")).toHaveLength(501);
+  });
+
+  it("keeps every seen id that is still in the feed when one more card is marked seen", async () => {
+    const jobs = Array.from({ length: 502 }, (_, i) => makeJob({ id: `job-${i}` }));
+    window.localStorage.setItem(
+      SEEN_IDS_KEY,
+      JSON.stringify(jobs.slice(0, 501).map((job) => job.id))
+    );
+    mockJobsResponse(jobs);
+
+    const { result } = renderHook(() => useMBAJobs());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.newJobCount).toBe(1);
+
+    act(() => {
+      result.current.markJobSeen("job-501");
+    });
+
+    await waitFor(() => expect(result.current.newJobCount).toBe(0));
+    expect(JSON.parse(window.localStorage.getItem(SEEN_IDS_KEY) ?? "[]")).toHaveLength(502);
+  });
+
+  it("trims seen ids that left the feed to the newest 500", async () => {
+    const gone = Array.from({ length: 600 }, (_, i) => `gone-${i}`);
+    window.localStorage.setItem(SEEN_IDS_KEY, JSON.stringify(gone));
+    mockJobsResponse([jobA, jobB]);
+
+    const { result } = renderHook(() => useMBAJobs());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    act(() => {
+      result.current.markJobSeen("stripe-1");
+    });
+
+    await waitFor(() => expect(result.current.newJobCount).toBe(1));
+    expect(JSON.parse(window.localStorage.getItem(SEEN_IDS_KEY) ?? "[]")).toEqual([
+      ...gone.slice(100),
+      "stripe-1",
+    ]);
+  });
+
+  it("trims nothing while the list is still the server's first page", async () => {
+    const seen = Array.from({ length: 600 }, (_, i) => `job-${i}`);
+    window.localStorage.setItem(SEEN_IDS_KEY, JSON.stringify(seen));
+    installFetch(
+      async () =>
+        new Promise(() => {
+          return undefined;
+        }),
+    );
+
+    const { result, unmount } = renderHook(() =>
+      useMBAJobs({ initialData: buildResponse([jobA, jobB]) })
+    );
+
+    act(() => {
+      result.current.markJobSeen("stripe-1");
+    });
+
+    await waitFor(() => expect(result.current.seenIds.has("stripe-1")).toBe(true));
+    expect(JSON.parse(window.localStorage.getItem(SEEN_IDS_KEY) ?? "[]")).toHaveLength(601);
+
+    unmount();
+  });
+
+  it("renders the default watched set on the server, whatever the browser has saved", () => {
+    window.localStorage.setItem(WATCHED_KEY, JSON.stringify(["stripe"]));
+    const defaultCount = MBA_COMPANIES.filter((company) => company.atsType !== "manual").length;
+
+    function Probe() {
+      return <span>{useMBAJobs().watchedCompanyIds.size}</span>;
+    }
+
+    // The first client render has to print what the server did, and the server has no storage.
+    expect(renderToString(<Probe />)).toBe(`<span>${defaultCount}</span>`);
+  });
+
+  it("restores a saved watched set after mount with a single fetch", async () => {
+    window.localStorage.setItem(WATCHED_KEY, JSON.stringify(["stripe"]));
+    const fetchSpy = mockJobsResponse([jobA]);
+
+    const { result } = renderHook(() => useMBAJobs());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    expect(Array.from(result.current.watchedCompanyIds)).toEqual(["stripe"]);
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    expect(String(fetchSpy.mock.calls[0][0])).toBe("/api/mba-jobs?companies=stripe");
   });
 
   it("starts with all non-manual companies watched by default", async () => {

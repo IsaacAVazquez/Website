@@ -87,7 +87,15 @@ function withSecurityHeaders(response: NextResponse, request: NextRequest) {
   response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-  response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  // The transit page's Nearest station button is the one geolocation call on
+  // the site, and an empty allowlist refuses it with no prompt. The policy
+  // belongs to the document, so a visitor who reaches that page by an in-app
+  // link keeps the policy of the page they landed on, and the allowance has to
+  // be on every route. next.config.mjs carries the same allowance.
+  response.headers.set(
+    "Permissions-Policy",
+    "camera=(), microphone=(), geolocation=(self)",
+  );
   response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
   // This header reaches the browser and does not decide what Netlify's cache

@@ -150,7 +150,16 @@
   .golf-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
+  }
+
+  /* A row or a card that takes focus under the stuck toolbar scrolls out from behind it.
+     The scroll region is the stop before the first row, so it lands the same distance down. */
+  .golf-scroll,
+  .golf-name,
+  .c97-golf-card,
+  .golf-more {
+    scroll-margin-top: 5rem;
   }
 }
 
@@ -193,7 +202,7 @@
 }
 
 .golf-slats {
-  --c97-accent: var(--golf-gold);
+  --c97-accent: var(--golf-focus-slat);
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 3px;
@@ -270,9 +279,11 @@
   display: flex;
   align-items: baseline;
   gap: var(--c97-sp-1);
-  width: 100%;
+  /* The button reaches 4px into the cell's padding on each side, so its inset focus ring clears the name. */
+  width: calc(100% + 8px);
   min-height: 44px;
-  padding: 0;
+  margin-inline: -4px;
+  padding: 0 4px;
   border: 0;
   background: none;
   color: inherit;
@@ -297,6 +308,11 @@
   text-underline-offset: 3px;
 }
 
+/* Inset, the ring stays on the slat. Outset it crosses onto the green between the rows, and the scroller clips it under the last one. */
+.golf-slats .golf-name:focus-visible {
+  outline-offset: -2px;
+}
+
 .golf-country {
   flex: none;
   font-size: 0.75rem;
@@ -306,6 +322,12 @@
 @media screen and (max-width: 479px) {
   .golf-country {
     display: none;
+  }
+
+  /* One line holds about nine capitals at 320px, so a longer name takes a second line. */
+  .golf-name-text {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .golf-slats tbody th,
@@ -356,7 +378,6 @@
 }
 
 .c97-golf-card {
-  --c97-accent: var(--golf-focus-slat);
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
@@ -469,12 +490,18 @@
 }
 
 @media print {
-  .golf-root {
+  /* Paper is white in both themes, so the dark story's inks go back to the light ones with it. */
+  .golf-root,
+  .dark .golf-root {
     --golf-ground: #ffffff;
     --golf-on-ground: #111111;
     --golf-on-ground-2: #444444;
     --golf-ground-rule: rgba(0, 0, 0, 0.3);
     --golf-slat: #ffffff;
+    --golf-ink: #12261c;
+    --golf-ink-2: #4d5b52;
+    --golf-rule: rgba(18, 38, 28, 0.14);
+    --golf-red: #c01f2f;
   }
 
   .golf-toolbar {
@@ -489,5 +516,11 @@
   .golf-switch > button:not([aria-selected="true"]),
   .golf-more {
     display: none;
+  }
+
+  /* Paper drops background fills by default, so the one tab that prints takes ink text and no fill. */
+  .golf-switch > button[aria-selected="true"] {
+    background: none;
+    color: var(--golf-on-ground);
   }
 }

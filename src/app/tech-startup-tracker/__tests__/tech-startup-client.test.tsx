@@ -224,6 +224,14 @@ describe("TechStartupClient", () => {
     });
   });
 
+  it("names the treemap's section by sector in the stage view too, since its blocks are sectors", () => {
+    currentSearchParams = new URLSearchParams("view=stage");
+    renderClient();
+
+    const section = screen.getByRole("region", { name: "Valuations by sector" });
+    expect(within(section).getByRole("img", { name: /^Disclosed valuations by sector\./ })).toBeInTheDocument();
+  });
+
   it("explains an empty segment instead of drawing a blank table", () => {
     currentSearchParams = new URLSearchParams("segment=sector-robotics");
     renderClient();
@@ -334,7 +342,7 @@ describe("TechStartupClient", () => {
       expect(screen.getByText(/have not been individually verified/)).toBeInTheDocument();
     });
 
-    it("links the short notice beside the list to the full notice under it", () => {
+    it("links the short notice above the treemap to the full notice under the table", () => {
       renderClient({ ...SNAPSHOT, verified: false });
 
       const link = screen.getByRole("link", { name: "Read the full notice" });

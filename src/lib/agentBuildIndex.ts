@@ -14,8 +14,13 @@ export interface AgentBuildIndex {
   sourceUrl: string;
   agentSegment: GitHubTrendingSegment | null;
   repositories: GitHubTrendingRepository[];
-  topicSegments: GitHubTrendingSegment[];
+  topicSegments: AgentBuildIndexTopic[];
   measuredRepositoryCount: number;
+}
+
+/** A topic group with the number of its repositories whose gain is not a full-window measurement. */
+export interface AgentBuildIndexTopic extends GitHubTrendingSegment {
+  unmeasuredCount: number;
 }
 
 /**
@@ -51,9 +56,16 @@ export function getAgentBuildIndex(
     sourceUrl: snapshot.sourceUrl,
     agentSegment,
     repositories,
-    topicSegments: snapshot.topics.toSorted(
-      (left, right) => right.weeklyStars - left.weeklyStars
-    ),
+    // A topic's weekly figure sums every repository in it, so the page needs to
+    // know how many of those sit on a partial window or a new baseline.
+    topicSegments: snapshot.topics
+      .toSorted((left, right) => right.weeklyStars - left.weeklyStars)
+      .map((topic) => ({
+        ...topic,
+        unmeasuredCount: topic.repoIds.filter(
+          (id) => repoById.get(id)?.weeklyStarsStatus !== "measured"
+        ).length,
+      })),
     measuredRepositoryCount: repositories.filter(
       (repository) => repository.weeklyStarsStatus === "measured"
     ).length,

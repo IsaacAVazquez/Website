@@ -1,18 +1,35 @@
 import { expect, test, type Page } from "@playwright/test";
-import { caseStudiesData } from "../src/constants/caseStudies";
 import { catalog97NavLinks, DASHBOARD_ROUTES } from "../src/constants/catalog97Nav";
-import { PROJECT_PRESS } from "../src/constants/projectPress";
 import { expectAlignedLayout } from "./layoutChecks";
 
 // The rendered half of src/constants/__tests__/project-routes-complete.test.ts.
-// Every live portfolio project renders one h1 and one main and hydrates
-// without a mismatch in a browser whose zone is not the server's (the server
-// renders in UTC). A project route owns its own design inside the site frame
+// Every project route renders one h1 and one main and hydrates without a
+// mismatch in a browser whose zone is not the server's (the server renders in
+// UTC). A project route owns its own design inside the site frame
 // (docs/superpowers/specs/2026-10-11-project-sovereign-design.md), so nothing
 // here asserts the hero sheet, its ink, or the poster h1.
-const PROJECT_ROUTES = Object.values(caseStudiesData)
-  .map((study) => study.link)
-  .filter((link): link is string => typeof link === "string" && link.startsWith("/"));
+//
+// DASHBOARD_ROUTES is the registry of live portfolio projects, which the Jest
+// half holds equal to the case studies' links. The pages below a project, and
+// the four that carry a project's design without a case study, are listed
+// here, since nothing else names them.
+const FANTASY_SUB_ROUTES = [
+  "/fantasy-football/best-ball",
+  "/fantasy-football/best-ball/draft-tracker",
+  "/fantasy-football/draft-tracker",
+  "/fantasy-football/mock-draft",
+  "/fantasy-football/trade-calculator",
+  "/fantasy-football/waivers",
+  "/fantasy-football/weekly",
+];
+const PROJECT_ROUTES = [
+  ...DASHBOARD_ROUTES,
+  ...FANTASY_SUB_ROUTES,
+  "/score-pools",
+  "/score-pools/tracker",
+  "/score-pools/settings",
+  "/agent-build-index",
+];
 
 const HYDRATION = /hydrat|did not match|didn't match|Minified React error #(418|419|422|423|425)/i;
 
@@ -74,14 +91,11 @@ test.describe("designed routes", () => {
   }
 });
 
-// Every project route (the fantasy sub-routes included), score pools, a topic,
-// and a post line up with the header at a phone, a laptop, and a big monitor.
-// DASHBOARD_ROUTES is the registry; the press keys add the fantasy sub-routes
-// for as long as they keep a row. Chromium only, since the edges don't differ
-// by engine and the full matrix runs every spec in five browsers.
+// Every project route, a topic, and a post line up with the header at a phone,
+// a laptop, and a big monitor. Chromium only, since the edges don't differ by
+// engine and the full matrix runs every spec in five browsers.
 const LAYOUT_ROUTES = [
-  ...new Set([...DASHBOARD_ROUTES, ...Object.keys(PROJECT_PRESS)]),
-  "/score-pools",
+  ...PROJECT_ROUTES,
   "/writing/topics/sports-fantasy",
   "/writing/complete-guide-qa-engineering",
 ];

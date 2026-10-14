@@ -2,7 +2,6 @@
 
 import { select, extent, scaleLog, axisBottom, axisLeft } from "d3";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useTheme } from "next-themes";
 import {
   blendedPricePerMTokens,
   formatPriceUsd,
@@ -36,7 +35,6 @@ export function FrontierCostContextChart({
 }: FrontierCostContextChartProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const { resolvedTheme } = useTheme();
   const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
@@ -106,16 +104,12 @@ export function FrontierCostContextChart({
       .domain([Math.max(0.05, yExtent[0] * 0.6), yExtent[1] * 1.4])
       .range([innerHeight, 0]);
 
-    // SVG presentation attributes can't substitute var()/color-mix(), so
-    // resolve the tokens at render time (re-resolved when the theme flips).
-    // Read from the svg itself rather than document.documentElement, since
-    // the Catalog 97 tokens are scoped to the `[data-c97]` page root and the
-    // document root would miss the repaint.
-    const computedStyle = getComputedStyle(svg);
-    const axisColor =
-      computedStyle.getPropertyValue("--c97-ink-2").trim() || "currentColor";
-    const gridColor =
-      computedStyle.getPropertyValue("--c97-rule").trim() || "currentColor";
+    // SVG presentation attributes can't substitute var(), so each mark takes
+    // the token as a style and follows a theme change by itself. A colour
+    // resolved here would be the old theme's after a manual toggle, since a
+    // child's effect runs before the theme class moves on <html>.
+    const axisColor = "var(--c97-ink-2, currentColor)";
+    const gridColor = "var(--c97-rule, currentColor)";
 
     // Log ticks label every mantissa step, which piles up. Keep 1, 2, and 5
     // per decade on context and 1 and 3 per decade on price.
@@ -142,8 +136,8 @@ export function FrontierCostContextChart({
       .attr("transform", `translate(0,${innerHeight})`)
       .call(xAxis)
       .call((selection) => {
-        selection.selectAll("path,line").attr("stroke", axisColor);
-        selection.selectAll("text").attr("fill", axisColor).attr("font-size", "11px");
+        selection.selectAll("path,line").style("stroke", axisColor);
+        selection.selectAll("text").style("fill", axisColor).attr("font-size", "11px");
         if (thinTicks) {
           selection.selectAll(".tick").each(function (_, i) {
             if (i % 2 === 1) select(this).select("text").attr("display", "none");
@@ -154,8 +148,8 @@ export function FrontierCostContextChart({
     g.append("g")
       .call(yAxis)
       .call((selection) => {
-        selection.selectAll("path,line").attr("stroke", axisColor);
-        selection.selectAll("text").attr("fill", axisColor).attr("font-size", "11px");
+        selection.selectAll("path,line").style("stroke", axisColor);
+        selection.selectAll("text").style("fill", axisColor).attr("font-size", "11px");
         if (thinTicks) {
           selection.selectAll(".tick").each(function (_, i) {
             if (i % 2 === 1) select(this).select("text").attr("display", "none");
@@ -174,14 +168,14 @@ export function FrontierCostContextChart({
       )
       .call((selection) => {
         selection.selectAll("path").attr("stroke", "transparent");
-        selection.selectAll("line").attr("stroke", gridColor).attr("stroke-dasharray", "2,3");
+        selection.selectAll("line").style("stroke", gridColor).attr("stroke-dasharray", "2,3");
       });
 
     const xTitle = g.append("text")
       .attr("x", innerWidth / 2)
       .attr("y", innerHeight + 40)
       .attr("text-anchor", "middle")
-      .attr("fill", axisColor)
+      .style("fill", axisColor)
       .attr("font-size", "11px")
       .attr("font-weight", "600")
       .attr("letter-spacing", "0.18em")
@@ -196,7 +190,7 @@ export function FrontierCostContextChart({
     g.append("text")
       .attr("transform", `translate(-46,${innerHeight / 2}) rotate(-90)`)
       .attr("text-anchor", "middle")
-      .attr("fill", axisColor)
+      .style("fill", axisColor)
       .attr("font-size", "11px")
       .attr("font-weight", "600")
       .attr("letter-spacing", "0.18em")
@@ -218,7 +212,7 @@ export function FrontierCostContextChart({
       // light paper, xai/deepseek on dark paper), so every dot gets an ink
       // edge as its own contrasting boundary rather than the surface colour,
       // which did nothing against a same-colour background.
-      .attr("stroke", axisColor)
+      .style("stroke", axisColor)
       .attr("stroke-width", 1.5)
       // Pointer only. A 16px dot is no keyboard target, and the spec sheet
       // below opens the same row from a real button, so the marks stay
@@ -232,7 +226,7 @@ export function FrontierCostContextChart({
         (d) =>
           `${d.model.providerLabel} ${d.model.name}\nContext: ${formatTokenCount(d.model.contextWindow)}\nBlended price: ${formatPriceUsd(d.y)} / 1M`
       );
-  }, [containerWidth, plotted, selectedModelId, onSelectModel, resolvedTheme]);
+  }, [containerWidth, plotted, selectedModelId, onSelectModel]);
 
   const providersInChart = useMemo(() => {
     const seen = new Map<FrontierProvider, string>();

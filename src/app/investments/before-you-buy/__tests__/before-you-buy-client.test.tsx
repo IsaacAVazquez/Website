@@ -178,6 +178,38 @@ describe("BeforeYouBuyClient", () => {
     expect(screen.getByText(/NVDA's daily moves had a correlation of -?\d\.\d\d with the/)).toBeInTheDocument();
   });
 
+  it("opens the sector table for a print and closes it again afterwards", async () => {
+    useUniverse();
+    await renderPage();
+    const detail = document.querySelector(".byb-detail") as HTMLDetailsElement;
+    expect(detail.open).toBe(false);
+
+    act(() => {
+      window.dispatchEvent(new Event("beforeprint"));
+    });
+    expect(detail.open).toBe(true);
+
+    act(() => {
+      window.dispatchEvent(new Event("afterprint"));
+    });
+    expect(detail.open).toBe(false);
+  });
+
+  it("leaves the sector table open after a print when the reader had opened it", async () => {
+    useUniverse();
+    await renderPage();
+    const detail = document.querySelector(".byb-detail") as HTMLDetailsElement;
+    detail.open = true;
+
+    act(() => {
+      window.dispatchEvent(new Event("beforeprint"));
+    });
+    act(() => {
+      window.dispatchEvent(new Event("afterprint"));
+    });
+    expect(detail.open).toBe(true);
+  });
+
   it("shows the market's five worst days, worst first", async () => {
     useUniverse();
     await renderPage();
@@ -252,13 +284,30 @@ describe("BeforeYouBuyClient", () => {
     await renderPage();
     expect(summary()).toHaveTextContent("Prices for NVDA aren't available right now, so there's nothing to compare yet.");
     expect(readouts()).toEqual([]);
-    expect(screen.queryByRole("heading", { name: "Before and after" })).toBeNull();
+    expect(screen.queryByRole("region", { name: /Sector weights before and after/ })).toBeNull();
   });
 
   it("says when the benchmark has no prices", async () => {
     useUniverse(["SPY"]);
     await renderPage();
     expect(summary()).toHaveTextContent("Prices for SPY aren't available right now, so there's nothing to compare yet.");
+  });
+
+  it("prints the not-advice line while prices load, when they are missing, and when the amount is invalid", async () => {
+    mockSnapshot.mockReturnValue(new Promise(() => {}));
+    const loading = render(<BeforeYouBuyClient />);
+    expect(screen.getByText("Not investment advice.")).toBeInTheDocument();
+    loading.unmount();
+
+    useUniverse(["NVDA"]);
+    const missing = await renderPage();
+    expect(screen.getByText("Not investment advice.")).toBeInTheDocument();
+    missing.unmount();
+
+    useUniverse();
+    await renderPage();
+    fireEvent.change(screen.getByRole("spinbutton", { name: "Amount in dollars" }), { target: { value: "0" } });
+    expect(screen.getByText("Not investment advice.")).toBeInTheDocument();
   });
 
   it("leaves out sample holdings the data does not cover", async () => {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { MockDraftClient } from "./mock-draft-client";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = constructMetadata({
     "Rehearse the early rounds of a one-QB draft against a seeded room that picks from the published consensus board and market ADP, then sim to the end for the board grid and value report.",
   canonicalUrl: "/fantasy-football/mock-draft",
   image: "/fantasy-football/mock-draft/opengraph-image",
-  dateModified: fantasySnapshotRevision.slice(0, 10),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
 });
 
 const breadcrumbs = [

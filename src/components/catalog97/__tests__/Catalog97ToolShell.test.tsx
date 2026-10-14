@@ -57,21 +57,4 @@ describe("Catalog97ToolShell", () => {
     expect(screen.getByRole("main")).toContainElement(link);
   });
 
-  it("prints the page's second ink when given a press", () => {
-    const { container } = render(
-      <Catalog97ToolShell route="/earthquake-pulse" press={{ lead: "teal", second: "vermilion" }}>
-        <p>body</p>
-      </Catalog97ToolShell>,
-    );
-    expect(container.querySelector('[data-c97-press-second="vermilion"]')).toContainHTML("<p>body</p>");
-  });
-
-  it("leaves the default overprint when no press is given", () => {
-    const { container } = render(
-      <Catalog97ToolShell route="/now">
-        <p>body</p>
-      </Catalog97ToolShell>,
-    );
-    expect(container.querySelector("[data-c97-press-second]")).toBeNull();
-  });
 });

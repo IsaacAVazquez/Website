@@ -303,17 +303,19 @@ export function TravelDealLabClient() {
                   </p>
                   <p className="td-savings">
                     {fare.savings >= 0 ? "Save " : "Over by "}
-                    {formatUsd(Math.abs(fare.savings))} for the party ({formatSignedPercent(fare.savingsPct)})
+                    {formatUsd(Math.abs(fare.savings))}
+                    {state.travelers > 1 ? " for the party" : ""} ({formatSignedPercent(fare.savingsPct)})
                   </p>
                   <p>{fare.message}</p>
                 </>
               ) : (
-                <p className="td-prompt">Add a quoted fare to score it against the typical band for {region.label}.</p>
+                <p className="td-prompt">Add a quoted fare to score it against the typical price for {region.label}.</p>
               )}
             </div>
 
             <FareGaugeSignature
               quoted={perTravelerFare}
+              rating={fare?.rating ?? null}
               region={region}
               departureDate={state.departureDate}
               today={today}
@@ -512,9 +514,9 @@ interface NumberFieldProps {
 
 /**
  * A number input that lets the field go blank while someone retypes it. The
- * text they type stays as typed, the value it commits is clamped to the range,
- * and a note under the field says when the clamp changed what they typed.
- * Leaving the field puts the committed value back in it.
+ * text they type stays as typed, the value it commits is a whole number
+ * clamped to the range, and a note under the field says when that changed
+ * what they typed. Leaving the field puts the committed value back in it.
  */
 function NumberField({ label, value, min, max, step = 1, onChange }: NumberFieldProps) {
   const [draft, setDraft] = useState(String(value));
@@ -526,6 +528,8 @@ function NumberField({ label, value, min, max, step = 1, onChange }: NumberField
   }
   const typed = draft.trim() === "" ? null : Number(draft);
   const clamped = typed !== null && Number.isFinite(typed) && typed !== value;
+  // The note names what moved the number, the range for a value outside it and rounding otherwise.
+  const outOfRange = typed !== null && (typed < min || typed > max);
   const noteId = useId();
 
   return (
@@ -545,7 +549,9 @@ function NumberField({ label, value, min, max, step = 1, onChange }: NumberField
             setDraft(raw);
             const next = Number(raw);
             if (raw.trim() === "" || !Number.isFinite(next)) return;
-            const bounded = Math.min(max, Math.max(min, next));
+            // Rounded here because the saved trip keeps whole numbers. An unrounded commit
+            // comes back different, which reads as an outside change and rewrites the text mid-typing.
+            const bounded = Math.round(Math.min(max, Math.max(min, next)));
             setCommitted(bounded);
             onChange(bounded);
           }}
@@ -555,8 +561,10 @@ function NumberField({ label, value, min, max, step = 1, onChange }: NumberField
       </label>
       {clamped ? (
         <p id={noteId} className="td-note">
-          This runs from {min.toLocaleString("en-US")} to {max.toLocaleString("en-US")}, so I&rsquo;m using{" "}
-          {value.toLocaleString("en-US")}.
+          {outOfRange
+            ? `This runs from ${min.toLocaleString("en-US")} to ${max.toLocaleString("en-US")}`
+            : "This takes whole numbers"}
+          , so I&rsquo;m using {value.toLocaleString("en-US")}.
         </p>
       ) : null}
     </div>

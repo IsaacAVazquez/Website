@@ -97,7 +97,8 @@ export function FreshnessParts({ parts }: { parts: FreshnessPart[] }) {
     <p className="m-0 font-mono text-2xs uppercase leading-relaxed tracking-[0.08em]" style={{ color: "var(--c97-ink-2)" }}>
       {parts.map((part, index) => (
         <span key={index}>
-          {index > 0 ? <span aria-hidden="true"> · </span> : null}
+          {/* The spaces sit outside the hidden dot so assistive tech still gets a word break between parts. */}
+          {index > 0 ? <>{" "}<span aria-hidden="true">·</span>{" "}</> : null}
           <span style={part.tone ? { color: `var(--c97-${part.tone})` } : undefined}>
             {part.shortLabel ? (
               <>

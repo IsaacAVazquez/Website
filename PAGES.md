@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-12
 
 ---
 
@@ -49,7 +49,7 @@ Current route inventory and page ownership for the live app.
 | `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
 | `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
 | `/golf` | `src/app/golf/page.tsx` | Snapshot-backed PGA Tour leaderboard dashboard (`npm run update:golf`, daily GitHub Actions refresh) |
-| `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Snapshot-backed global earthquake monitor (USGS feeds) |
+| `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Global earthquake monitor that polls the USGS feed every five minutes through its summary route and falls back to the checked-in snapshot |
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
 | `/score-pools` (+ `/tracker`, `/settings`) | `src/app/score-pools/page.tsx` | Exact-score prediction pool engine: market-calibrated scoreline model, expected-points pick sheet, tracker, and settings (`npm run update:score-pools`, 6-hourly refresh) |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
@@ -69,7 +69,7 @@ Current route inventory and page ownership for the live app.
 | `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
 | `/travel` | `src/app/travel/page.tsx` | Browser-persisted travel planner (trips, day-by-day itineraries, journaling) via `useTravelPlanner` |
 | `/travel-deals` | `src/app/travel-deals/page.tsx` | Travel Deal Lab: browser-persisted trip cost optimizer (booking-window timing, fare deal score, cash vs points, budget split) over a curated, unverified deals dataset |
-| `/arcade` | `src/app/arcade/page.tsx` | Reactor, a neon synthwave reflex game and deliberate style experiment (the one sanctioned palette exception in `STYLING.md`) |
+| `/arcade` | `src/app/arcade/page.tsx` | Reactor, a neon synthwave reflex game and deliberate style experiment, and the first route to keep its own palette (see `STYLING.md`) |
 
 ### Fantasy football
 

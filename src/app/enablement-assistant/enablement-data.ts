@@ -377,7 +377,7 @@ export const TROUBLESHOOTING_PROMPTS: readonly TroubleshootingPrompt[] = [
   { question: "Playwright cannot find Chromium in CI", answerable: true },
   { question: "Our tests pass locally and fail in CI", answerable: true },
   { question: "How do I publish the JUnit report after a failed run?", answerable: true },
-  { question: "pytest is not discovering our test files", answerable: true },
+  { question: "pytest does not discover our tests", answerable: true },
   { question: "Can you debug our private device farm VPN handshake?", answerable: false },
   { question: "Why did an internal proxy rewrite our signed artifact?", answerable: false },
   { question: "Which exception should our legal team approve?", answerable: false },

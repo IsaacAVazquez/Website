@@ -1,3 +1,5 @@
+import type { MarchMadnessAnalytics, MarchMadnessView } from "./march-madness-state";
+
 export const MARCH_MADNESS_TITLE = "March Madness 2026 Bracket Analysis";
 export const MARCH_MADNESS_DESCRIPTION =
   "Interactive 2026 March Madness bracket analysis with best upset picks, Final Four predictions, KenPom rankings, S-curve seed errors, injury notes, and a custom time-zone travel penalty model.";
@@ -106,7 +108,9 @@ export interface EditorialCard {
   title: string;
   reason: string;
   note: string;
-  href: string;
+  /** The workspace view the card's link opens. The client builds the address, so it keeps the reader's region. */
+  view: MarchMadnessView;
+  analytics?: MarchMadnessAnalytics;
   cta: string;
   color: "rose" | "amber" | "blue";
 }
@@ -485,7 +489,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     title: "UCF over UCLA",
     reason: "The cleanest Round 1 reversal in the bracket comes from UCLA absorbing a full 9% Pacific-to-Eastern penalty.",
     note: "Spread only −2.5 · three time zones east",
-    href: "/march-madness-2026?view=picks#analysis-workspace",
+    view: "picks",
     cta: "Open upset board",
     color: "rose",
   },
@@ -494,7 +498,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     title: "St. John's over Kansas",
     reason: "St. John's grades like a stronger team than a 5-seed, while Kansas is one of the biggest overseeded teams in the field.",
     note: "Underseeded +3 vs overseeded −5",
-    href: "/march-madness-2026?view=picks#analysis-workspace",
+    view: "picks",
     cta: "Open the picks board",
     color: "amber",
   },
@@ -503,7 +507,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     title: "Houston over Florida",
     reason: "The home regional and zero accumulated travel penalty make Houston the biggest structural upset call in the bracket.",
     note: "KP#5 vs KP#4 · Houston at 0%",
-    href: "/march-madness-2026?view=picks#analysis-workspace",
+    view: "picks",
     cta: "Open the picks board",
     color: "blue",
   },
@@ -514,8 +518,9 @@ export const MODEL_PILLARS: EditorialCard[] = [
     eyebrow: "Consensus ranking",
     title: "KenPom plus seven other systems",
     reason: "The rankings blend BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, and WAB so no single model controls the board.",
-    note: "Open the full rankings table",
-    href: "/march-madness-2026?view=analytics&analytics=rankings#analysis-workspace",
+    note: "Duke, Michigan, and Arizona hold the top three spots",
+    view: "analytics",
+    analytics: "rankings",
     cta: "View rankings",
     color: "blue",
   },
@@ -524,7 +529,8 @@ export const MODEL_PILLARS: EditorialCard[] = [
     title: "S-curve seed errors",
     reason: "The model highlights underseeded and overseeded teams so seed lines do not get treated as truth when the committee misses.",
     note: "Best example: Vanderbilt +5",
-    href: "/march-madness-2026?view=analytics&analytics=s-curve#analysis-workspace",
+    view: "analytics",
+    analytics: "s-curve",
     cta: "View S-curve",
     color: "amber",
   },
@@ -533,7 +539,8 @@ export const MODEL_PILLARS: EditorialCard[] = [
     title: "Injury adjustments",
     reason: "Questionable starters and missing rotation pieces change upset probability fast, especially in coin-flip 8/9 and 7/10 games.",
     note: "Clemson and Villanova are key examples",
-    href: "/march-madness-2026?view=analytics&analytics=injuries#analysis-workspace",
+    view: "analytics",
+    analytics: "injuries",
     cta: "View injuries",
     color: "rose",
   },
@@ -542,7 +549,7 @@ export const MODEL_PILLARS: EditorialCard[] = [
     title: "Time-zone penalties",
     reason: "The page applies a travel tax to east-west jumps and final-slot games, which creates several non-obvious bracket flips.",
     note: "UCLA and Arizona take the biggest hits",
-    href: "/march-madness-2026?view=time-zones#analysis-workspace",
+    view: "time-zones",
     cta: "View time zones",
     color: "rose",
   },
@@ -570,9 +577,3 @@ export const MARCH_MADNESS_FAQ: FAQEntry[] = [
       "It does not treat seed lines as the full story. The model combines consensus analytics, S-curve seed errors, injuries, and travel penalties, which is why teams like St. John's, Vanderbilt, Gonzaga, and Houston get stronger paths than a basic chalk bracket would show.",
   },
 ];
-
-export const BRACKET_THESIS_SHARE =
-  "That is the whole 2026 bracket in one line, and the written breakdown walks through the travel math and seed errors behind it.";
-
-export const BEST_UPSET_SHARE =
-  "UCLA loses 9% crossing three time zones east, and the line is only UCLA −2.5.";

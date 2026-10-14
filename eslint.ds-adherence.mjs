@@ -88,10 +88,6 @@ const COMPONENT_CONTRACTS = {
     props: ["label", "items", "ariaLabel", "className", "emptyFallback"],
     enums: {},
   },
-  StatusPanel: {
-    props: ["title", "message", "tone", "icon", "statusRole", "action"],
-    enums: { tone: ["default", "warning", "error"], statusRole: ["alert", "status"] },
-  },
   UtilityStrip: { props: ["children"], enums: {} },
 
   // --- football -----------------------------------------------------------
@@ -114,19 +110,13 @@ const COMPONENT_CONTRACTS = {
     ],
     enums: {},
   },
-  FixtureGroupSection: {
-    props: [
-      "title", "description", "fixtures", "contextTeamId", "onOpenTeam",
-      "getFallbackLabel",
-    ],
+  FixtureLedgerSection: {
+    props: ["groups", "onOpenTeam", "canOpenTeam", "emptyLabel", "dayInLabel", "contextTeamId"],
     enums: {},
   },
-  FixtureLedgerSection: { props: ["groups", "onOpenTeam", "emptyLabel"], enums: {} },
   GoalsPulseStrip: { props: ["data", "capLabel", "className"], enums: {} },
   InfoChip: { props: ["label"], enums: {} },
   LeaderLedger: { props: ["title", "entries", "unit", "emptyLabel"], enums: {} },
-  LeaderList: { props: ["leaders", "statLabel", "clubLookup"], enums: {} },
-  MetricCard: { props: ["label", "value", "detail", "icon", "className"], enums: {} },
   ResultsTape: {
     props: ["recentFixtures", "upcomingFixtures", "label", "emptyFallback", "className"],
     enums: {},
@@ -215,15 +205,12 @@ export const dsComponentContracts = COMPONENT_CONTRACTS;
  * the file is skipped rather than every call site being flagged.
  *
  * Verified by scanning `src` for a local declaration of any of the synced names:
- * these two are the only genuine shadows. `FixtureLedger.tsx` also turns up,
- * but it is the canonical module living under a filename that does not match
- * the export.
+ * this is the only genuine shadow. `FixtureLedger.tsx` also turns up, but it is
+ * the canonical module living under a filename that does not match the export.
  */
 const SHADOWED_BY_LOCAL_COMPONENTS = [
   // Declares its own SurfaceCard and SectionIntro, imports neither.
   "src/app/march-madness-2026/march-madness-client.tsx",
-  // Declares its own MetricCard.
-  "src/app/enablement-assistant/enablement-assistant-client.tsx",
 ];
 
 /**

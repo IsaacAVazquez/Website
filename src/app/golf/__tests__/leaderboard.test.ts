@@ -94,6 +94,30 @@ describe("leaderboardSlats", () => {
     expect(slat.rounds[3]).toEqual({ score: null, toPar: null, tone: null });
   });
 
+  it("leaves an in-progress round untoned when the snapshot carries no live figure for it", () => {
+    const [slat] = leaderboardSlats(
+      [entry({ roundScores: [70, 70, 34], thru: "9", today: null, totalToPar: -3 })],
+      OPTS
+    ).slats;
+
+    expect(slat.rounds[2]).toEqual({ score: 34, toPar: null, tone: null });
+  });
+
+  it("draws no cut line while the cut is still a projection and nobody has missed it", () => {
+    // Round two of a cut event: the feed already carries a cut score, and a
+    // withdrawal is the only player out of the field.
+    const { cutIndex } = leaderboardSlats(
+      [
+        entry({ playerId: "a", status: "Finish", roundScores: [68, 67] }),
+        entry({ playerId: "b", status: "In Progress", thru: "12", roundScores: [70, 40] }),
+        entry({ playerId: "c", position: "-", status: "Withdrawn", roundScores: [] }),
+      ],
+      OPTS
+    );
+
+    expect(cutIndex).toBeNull();
+  });
+
   it("draws the cut line after the last player whose status made the cut", () => {
     const { cutIndex, slats } = leaderboardSlats(
       [

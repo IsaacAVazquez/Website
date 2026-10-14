@@ -189,6 +189,17 @@ describe("MockDraftClient", () => {
       );
     });
 
+    it("does not say the room picks from market ADP on the line above the chip that drops it", () => {
+      jest.useFakeTimers().setSystemTime(new Date("2026-10-12T12:00:00.000Z"));
+      mockInSeasonSnapshot();
+
+      render(<MockDraftClient />);
+
+      expect(screen.getByText("ADP unavailable, consensus only")).toBeInTheDocument();
+      expect(screen.queryByText(/consensus board and market ADP\./)).not.toBeInTheDocument();
+      expect(screen.getByText(/from market ADP when a current sample is published\./)).toBeInTheDocument();
+    });
+
     it("requires explicit dated practice consent and pauses again when consent is removed", () => {
       jest.useFakeTimers().setSystemTime(new Date("2026-10-04T12:00:00.000Z"));
       mockInSeasonSnapshot();

@@ -72,9 +72,9 @@ export function resolveTechStartupState(
     state.segment === "all" || validSegments.has(state.segment)
       ? state.segment
       : "all";
-  // Validate the selection against the *visible* segment, not all startups —
-  // a deep link like ?segment=sector-fintech&startup=openai would otherwise
-  // keep the param while expanding nothing.
+  // Validate the selection against the *visible* segment, not all startups,
+  // since a deep link like ?segment=sector-fintech&startup=openai would
+  // otherwise keep the param while expanding nothing.
   const visibleStartupIds = new Set(
     segment === "all"
       ? snapshot.startups.map((startup) => startup.id)

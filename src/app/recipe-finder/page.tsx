@@ -5,7 +5,7 @@ import { RecipeFinderClient } from "./recipe-finder-client";
 export const metadata = constructMetadata({
   title: "Recipe Finder",
   description:
-    "Recipe aggregator and ingredient-based search. Add the ingredients you have on hand and surface recipes you can actually cook tonight, ranked by what you're missing.",
+    "Recipe aggregator and ingredient-based search. Add the ingredients you have on hand and surface recipes you can actually cook tonight, ranked by pantry match.",
   canonicalUrl: "/recipe-finder",
   dateModified: "2026-10-12",
 });
@@ -30,7 +30,7 @@ export default function RecipeFinderPage() {
         data={{
           name: "Recipe Finder",
           description:
-            "Ingredient-based recipe search. Add what's in your pantry; the tool ranks recipes by how many ingredients you already have.",
+            "Ingredient-based recipe search. Add what's in your pantry; the tool ranks recipes by how much of each one you already have.",
           url: "https://isaacvazquez.com/recipe-finder",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

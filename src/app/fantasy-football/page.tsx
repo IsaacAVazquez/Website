@@ -5,6 +5,7 @@ import {
   constructMetadata,
   freeApplicationOffer,
   generateBreadcrumbStructuredData,
+  laterDate,
 } from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { loadFantasySnapshotSeed } from "@/lib/fantasySnapshotServer";
@@ -18,7 +19,7 @@ export const metadata = constructMetadata({
     "Fantasy football consensus and VORP rankings from published FantasyPros snapshots, with scoring and league-size controls and a linked draft assistant.",
   canonicalUrl: "/fantasy-football",
   image: "/fantasy-football/opengraph-image",
-  dateModified: fantasySnapshotRevision.slice(0, 10),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
 });
 
 interface FantasyFootballPageProps {

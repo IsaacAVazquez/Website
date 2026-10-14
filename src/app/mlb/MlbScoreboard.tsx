@@ -43,7 +43,7 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
                   <th scope="col" className="mlb-num">
                     <abbr title={
                         board.kind === "wildcard"
-                          ? "Games back of the last wild card slot, or a slot holder's lead over the first team out"
+                          ? "Games behind or ahead of the last wild card slot"
                           : "Games back"
                       }>GB</abbr>
                   </th>
@@ -51,7 +51,7 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
                     <abbr title="Last ten games, wins lit">L10</abbr>
                   </th>
                   <th scope="col" className="mlb-num mlb-col-streak">
-                    <abbr title="Current streak">Strk</abbr>
+                    <abbr title="Streak">Strk</abbr>
                   </th>
                 </tr>
               </thead>
@@ -94,6 +94,8 @@ export function MlbScoreboard({ boards, selectedId, onSelect }: MlbScoreboardPro
                             </abbr>
                           ) : null}
                         </button>
+                        {/* The button's label replaces its content, so the mark is said again outside it. */}
+                        {markTitle ? <span className="sr-only">{markTitle}</span> : null}
                       </td>
                       <td className="mlb-num">{team.record}</td>
                       <td className="mlb-num">{team.gamesBack}</td>

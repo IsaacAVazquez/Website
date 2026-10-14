@@ -117,6 +117,9 @@ export function SpaceXMissionControlClient({
   const [launches, setLaunches] = useState<MissionLaunchCard[]>(
     initialData?.launches ?? []
   );
+  // The board the list in `launches` was fetched for. It trails the URL while
+  // the other board's list is on its way.
+  const [launchesStatus, setLaunchesStatus] = useState(initialState.status);
   const [launchesLoading, setLaunchesLoading] = useState(!hasInitialData);
   const [launchesError, setLaunchesError] = useState<string | null>(
     initialData?.launchesError ?? null
@@ -225,9 +228,10 @@ export function SpaceXMissionControlClient({
 
     const requestId = launchesRequestId.current + 1;
     launchesRequestId.current = requestId;
+    const status = routeState.status;
 
     fetchJson<{ launches: MissionLaunchCard[] }>(
-      `/api/spacex/launches?status=${routeState.status}&limit=10`,
+      `/api/spacex/launches?status=${status}&limit=10`,
       isLaunchesPayload,
     )
       .then((payload) => {
@@ -236,6 +240,7 @@ export function SpaceXMissionControlClient({
         }
 
         setLaunches(payload.launches);
+        setLaunchesStatus(status);
         setLaunchesError(null);
       })
       .catch((error: Error) => {
@@ -296,7 +301,10 @@ export function SpaceXMissionControlClient({
   }, [routeState.launch, detailFetchKey]);
 
   useEffect(() => {
-    if (!routeState.launch || launchesLoading) {
+    // A list fetched for the other board says nothing about this launch, so
+    // the check waits for this board's own list (a hero press or Back can
+    // change the board and the launch in one step).
+    if (!routeState.launch || launchesLoading || launchesStatus !== routeState.status) {
       return;
     }
 
@@ -318,7 +326,7 @@ export function SpaceXMissionControlClient({
         { scroll: false }
       );
     });
-  }, [launches, launchesLoading, routeState, router, searchParams]);
+  }, [launches, launchesLoading, launchesStatus, routeState, router, searchParams]);
 
   const refreshLiveData = useCallback(
     (options?: { showLoading?: boolean; dedupe?: boolean }) => {
@@ -444,19 +452,20 @@ export function SpaceXMissionControlClient({
       return;
     }
 
+    const status: MissionControlStatus =
+      summary?.heroMode === "fallback" || !heroLaunch.upcoming ? "past" : "upcoming";
+
+    // The hero's mission can sit on the other board, whose cards then load
+    // the way a press on the switch loads them.
+    if (status !== routeState.status) {
+      setLaunchesLoading(true);
+      setLaunchesError(null);
+      setLaunches([]);
+    }
     setDetailLoading(true);
     setDetailError(null);
     setDetail(null);
-    updateRouteState({
-      status:
-        summary?.heroMode === "fallback"
-          ? "past"
-          : heroLaunch.upcoming
-            ? "upcoming"
-            : "past",
-      launch: heroLaunch.id,
-      panel: "overview",
-    });
+    updateRouteState({ status, launch: heroLaunch.id, panel: "overview" });
   }
 
   function handleRetryAll() {

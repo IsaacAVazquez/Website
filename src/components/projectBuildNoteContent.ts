@@ -52,7 +52,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/fintech-tools/interchange-iq": {
     purpose:
-      "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It prices the same month of volume, ticket size, and card mix across seven processors' public rates and shows the ticket size where Stripe's interchange plus starts costing less than its flat rate.",
+      "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It prices the same month of volume, ticket size, and card mix across six processors' public rates and shows the ticket size where Stripe's interchange plus starts costing less than its flat rate.",
   },
   "/fantasy-football/best-ball": {
     purpose:
@@ -72,7 +72,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/food-map": {
     purpose:
-      "I built this to keep the places I actually send people to on one map, next to Anthony Bourdain's picks and the ones the crowd rates highest on Google, with each pin colored by who is vouching for it. Every filter and pick lives in the URL, so a link I send opens on the exact city and stop with what to order already showing.",
+      "I built this to keep the places I actually send people to on one map, next to Anthony Bourdain's picks and the ones the crowd rates highest on Google, with each pin colored by who is vouching for it. The city, the curator and cuisine filters, and the pick live in the URL, so a link I send opens on the exact city and stop with what to order already showing.",
   },
   "/formula-1": {
     purpose:
@@ -152,7 +152,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/recipe-finder": {
     purpose:
-      "I built this around the question I actually have at dinner, which is what I can make with what's already in the kitchen. The recipes reorder by how many ingredients the pantry is missing, staples like salt and oil never count against a recipe, and the pantry stays saved in this browser for the next night.",
+      "I built this around the question I actually have at dinner, which is what I can make with what's already in the kitchen. The recipes reorder by how much of each one the pantry already covers, staples like salt and oil never count against a recipe, and the pantry stays saved in this browser for the next night.",
   },
   "/spacex-mission-control": {
     purpose:
@@ -168,7 +168,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/travel-deals": {
     purpose:
-      "I built this to judge a fare I've already found, since the harder part of booking travel is knowing whether a quote is any good. It places the quote against a typical band for the region, marks where today sits in the booking window, splits the rest of the budget, and checks whether points beat cash. The playbook under it is the short list of tactics and search tools I actually use.",
+      "I built this to judge a fare I've already found, since the harder part of booking travel is knowing whether a quote is any good. It places the quote against a typical band for the region, marks where today sits in the booking window, splits the budget, and checks whether points beat cash. The playbook under it is the short list of tactics and search tools I actually use.",
   },
   "/world-cup-2026": {
     purpose:

@@ -270,12 +270,108 @@ describe("PollingAggregatorClient", () => {
     );
     expect(screen.getByRole("button", { name: "Governors" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("table", { name: "Governor race averages" })).toBeVisible();
+    expect(screen.getByText(/VoteHub has published no senate poll from the last four months/)).toBeVisible();
   });
 
-  it("counts a single day to the election in the singular", () => {
-    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-11-02T00:00:00Z"));
+  it("says so when the view it was asked for has no polls", () => {
+    currentSearchParams = new URLSearchParams("view=governors");
+    const { unmount } = render(
+      <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+    );
+    expect(
+      screen.getByText(/VoteHub has published no governor poll from the last four months/)
+    ).toBeVisible();
+    expect(screen.getByRole("button", { name: "Senate" })).toHaveAttribute("aria-pressed", "true");
+    unmount();
+
+    // A legacy Overview link asked for no race view, so it has nothing to explain.
+    currentSearchParams = new URLSearchParams("view=overview");
+    render(<PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />);
+    expect(screen.queryByText(/VoteHub has published no/)).not.toBeInTheDocument();
+  });
+
+  it("names the year at both ends of the trend and prints each tick as a month", () => {
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={{
+          ...datedSnapshot,
+          approvalTrend: [
+            { date: "2025-10-15", approve: 44, disapprove: 52 },
+            { date: "2026-10-15", approve: 40, disapprove: 56 },
+          ],
+        }}
+      />
+    );
+
+    expect(screen.getByText("Monthly averages, Oct 2025 to Oct 2026")).toBeVisible();
+    const chart = screen.getByRole("img", { name: /from Oct 2025 to Oct 2026/ });
+    expect(Array.from(chart.querySelectorAll("[data-tick-parity]"), (tick) => tick.textContent)).toEqual([
+      "Oct",
+      "Oct",
+    ]);
+    expect(screen.getByRole("rowheader", { name: "Oct 2026" })).toBeInTheDocument();
+  });
+
+  it("keeps the top gridline label inside the chart's box at the phone type size", () => {
     render(<PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={datedSnapshot} />);
-    expect(screen.getByRole("note")).toHaveTextContent("1 day to the Nov 3 midterms.");
+
+    const chart = screen.getByRole("img", { name: /Presidential approval trend/ });
+    const boxTop = Number(chart.getAttribute("viewBox")?.split(" ")[1]);
+    const baselines = Array.from(chart.querySelectorAll('text[text-anchor="end"]'), (label) =>
+      Number(label.getAttribute("y"))
+    );
+    expect(baselines).toHaveLength(3);
+    // Phone and paper set the type at 25 units, and a figure stands about three quarters of that over its baseline.
+    expect(Math.min(...baselines) - 25 * 0.75).toBeGreaterThanOrEqual(boxTop);
+  });
+
+  it("calls a level race a tie and puts neither name over the other", () => {
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={{ ...noRaces, senateRaces: [makeRace("Oregon", "OR", 0, 2), ohio] }}
+      />
+    );
+
+    const table = screen.getByRole("table", { name: "Senate race averages" });
+    const [oregonRow, ohioRow] = within(table).getAllByRole("row").slice(1);
+    expect(oregonRow).toHaveTextContent("tied with Oregon Runner-up");
+    expect(oregonRow).toHaveTextContent("Even");
+    expect(oregonRow).not.toHaveTextContent(/\bover\b/);
+    expect(ohioRow).toHaveTextContent("over Ohio Runner-up");
+  });
+
+  it("steps down the heading levels one at a time on the race and the poll views", () => {
+    for (const query of ["", "view=approval"]) {
+      currentSearchParams = new URLSearchParams(query);
+      const { unmount } = render(
+        <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={senateOnly} />
+      );
+      const levels = screen.getAllByRole("heading").map((heading) => Number(heading.tagName[1]));
+      levels.forEach((level, index) => {
+        expect(level - (levels[index - 1] ?? 0)).toBeLessThanOrEqual(1);
+      });
+      unmount();
+    }
+  });
+
+  it("counts calendar days to the election on the visitor's own date", () => {
+    const noteAt = (localTime: Date) => {
+      jest.spyOn(Date, "now").mockReturnValue(localTime.getTime());
+      const { unmount } = render(
+        <PollingAggregatorClient initialState={DEFAULT_POLLING_STATE} snapshot={datedSnapshot} />
+      );
+      const text = screen.getByRole("note").textContent;
+      unmount();
+      return text;
+    };
+
+    expect(noteAt(new Date(2026, 9, 12, 11))).toContain("22 days to the Nov 3 midterms.");
+    // Late on the eve is still the eve, and the morning of the day is the day.
+    expect(noteAt(new Date(2026, 10, 2, 23))).toContain("1 day to the Nov 3 midterms.");
+    expect(noteAt(new Date(2026, 10, 3, 7))).toContain("election day, Nov 3, 2026.");
+    expect(noteAt(new Date(2026, 10, 4, 7))).toContain("midterms Nov 3, 2026.");
     jest.restoreAllMocks();
   });
 });

@@ -72,6 +72,20 @@ interface Props {
 const subscribeToLocalDate = () => () => {};
 const getServerLocalDate = () => null;
 
+// The width from which the title and the strip of last visits fit one row of
+// the shell (see .mlog-head .mlog-strip-wrap). It reads the viewport, so a
+// scrollbar that takes room can still wrap the strip for a few pixels past it.
+const STRIP_BESIDE_TITLE = "(min-width: 1173px)";
+
+function subscribeToStripRoom(onChange: () => void): () => void {
+  const media = window.matchMedia(STRIP_BESIDE_TITLE);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+
+const hasStripRoom = () => window.matchMedia(STRIP_BESIDE_TITLE).matches;
+const hasStripRoomOnServer = () => false;
+
 /** A museum name set as a serif heading that opens the museum, with a 44px hit box. */
 const nameLinkStyle: React.CSSProperties = {
   background: "none",
@@ -165,7 +179,7 @@ function AdmissionStub({ museum, today }: { museum: Museum; today: string | null
   );
 }
 
-/** The last three visits as a strip of ticket stubs in the title row, once there are any. */
+/** The last three visits as a strip of ticket stubs, once there are any. It sits in the title row, or after the catalog where that row has no room. */
 function VisitStrip({
   museums,
   today,
@@ -1022,7 +1036,10 @@ function MuseumDetailView({
             {visit.note && <p className="mlog-small mlog-italic">&ldquo;{visit.note}&rdquo;</p>}
             {visit.rating === undefined && (
               <>
-                <p className="mlog-small">You have not rated this visit. Move the slider to your rating and save it.</p>
+                <p className="mlog-small">
+                  You have not rated this visit.{" "}
+                  <span className="mlog-activity-help">Move the slider to your rating and save it.</span>
+                </p>
                 <RateAndLogForm
                   logged
                   onSubmit={(rating, note) => {
@@ -1046,8 +1063,11 @@ function MuseumDetailView({
         ) : (
           <>
             <p className="mlog-small">
-              No visit logged yet. Use the buttons above to mark this one done without a rating, save it for later, or
-              like it. To log it with a rating, move the slider here to your own and save.
+              No visit logged yet.{" "}
+              <span className="mlog-activity-help">
+                Use the buttons above to mark this one done without a rating, save it for later, or like it. To log it
+                with a rating, move the slider here to your own and save.
+              </span>
             </p>
             <RateAndLogForm
               onSubmit={(rating, note) => {
@@ -1066,7 +1086,8 @@ function MuseumDetailView({
 
       {visitLogEntries.length > 0 && (
         <section className="mlog-detail-part" aria-labelledby={`mlog-history-${museum.id}`}>
-          <h3 id={`mlog-history-${museum.id}`} className="mlog-part-title">Past visits</h3>
+          {/* Named as the curator's, since these diary rows sit right under the reader's own activity. */}
+          <h3 id={`mlog-history-${museum.id}`} className="mlog-part-title">Curator&rsquo;s past visits</h3>
           <ol className="mlog-ruled">
             {visitLogEntries.map((entry) => (
               <li key={entry.id} className="mlog-history-row">
@@ -1117,7 +1138,7 @@ function RateAndLogForm({
         if (rating !== null) onSubmit(rating, note.trim());
       }}
       aria-label={logged ? "Rate this museum visit" : "Rate and log this museum visit"}
-      style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
+      className="mlog-rate-form"
     >
       <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <input
@@ -1229,6 +1250,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   // visitor's. React reads the local date after hydration without an effect.
   const today = useSyncExternalStore(subscribeToLocalDate, toLocalDateKey, getServerLocalDate);
 
+  // The strip only renders once the saved log is read. Beside the title it
+  // costs the catalog a line or two, and where it cannot fit there it goes
+  // after the catalog, so it never lands above what is already being read.
+  const stripBesideTitle = useSyncExternalStore(subscribeToStripRoom, hasStripRoom, hasStripRoomOnServer);
+
   // ─── Lookups ──────────────────────────────────────────────────────────────
   const museumBySlug = useMemo(() => {
     const map: Record<string, Museum> = {};
@@ -1281,7 +1307,10 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   // ─── Title row: the last three visited museums, empty until the log has loaded and holds a visit ──
   const heroVisits = useMemo(() => {
     if (!hydrated) return [];
+    // The log keeps same-day visits in the order they were logged, so it is
+    // reversed before the stable sort and the latest of a day comes first.
     return [...userState.visited]
+      .reverse()
       .sort((a, b) => b.date.localeCompare(a.date))
       .slice(0, 3)
       .map((v) => museumById[v.museumId])
@@ -1322,7 +1351,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     pendingFocus.current = null;
     heading.focus({ preventScroll: true });
     heading.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-  }, [selectedMuseumId, reduceMotion]);
+    // The view is a dependency for the way back from a museum the catalog does not hold, where no museum id changes.
+  }, [selectedMuseumId, routeState.view, reduceMotion]);
 
   // Active tab, since the detail view treats Discover as active.
   const activeView: MuseumView = routeState.view === "museum" ? "discover" : routeState.view;
@@ -1333,7 +1363,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     { id: "lists", label: "Lists", icon: Layers },
   ];
 
-  const visitedCount = hydrated ? userState.visited.length : 0;
+  // A dash until the saved log is read, so the server render never states a count of zero.
+  const visitedCount = hydrated ? userState.visited.length : "—";
+  // The sentence at its widest, which the stylesheet sizes the real one to. Two
+  // zeros at least, since the dash is wider than one figure and narrower than two.
+  const widestVisitedLine = `You’ve visited ${"0".repeat(Math.max(2, String(snapshot.museums.length).length))} of the ${snapshot.museums.length}.`;
   const exhibitsLine =
     exhibitsNowCount === 0
       ? "None lists an exhibit running today."
@@ -1355,7 +1389,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               Curated by {snapshot.curatorName} · updated {lastUpdated}
             </p>
           </div>
-          <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />
+          {stripBesideTitle && <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />}
         </header>
 
         <div className="mlog-bar">
@@ -1383,8 +1417,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             {snapshot.museums.length} museums catalogued, {snapshot.reviews.length}{" "}
             {snapshot.reviews.length === 1 ? "curator review" : "curator reviews"}, and {snapshot.visitLog.length}{" "}
             {snapshot.visitLog.length === 1 ? "visit" : "visits"} in the curator&rsquo;s diary. {exhibitsLine}{" "}
-            <span data-testid="museum-log-visited">
-              You&rsquo;ve visited {visitedCount} of the {snapshot.museums.length}.
+            <span data-testid="museum-log-visited" className="mlog-visited" data-widest={widestVisitedLine}>
+              {`You’ve visited ${visitedCount} of the ${snapshot.museums.length}.`}
             </span>{" "}
             I would verify admission and exhibitions before visiting.
           </p>
@@ -1479,6 +1513,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 removeVisit={removeVisit}
               />
             )}
+
+            {!stripBesideTitle && <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />}
           </div>
 
           <aside aria-label="Museum Log side panel" className="mlog-rail">

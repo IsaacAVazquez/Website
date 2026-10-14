@@ -312,6 +312,19 @@ describe("FixtureDetailDrawer", () => {
     expect(props.onSaveManualOdds).toHaveBeenCalledWith("fx-1", null);
   });
 
+  it("lets the two odds actions wrap, since a phone's drawer is narrower than both labels", () => {
+    const fx = fixture();
+    const p = pool({
+      manualOdds: {
+        "fx-1": { home: 1.8, draw: null, away: 4.5, line: null, over: null, under: null, enteredAt: NOW },
+      },
+    });
+    renderDrawer({ fixture: fx, pool: p, analysis: analyze(fx, p) });
+    const row = screen.getByRole("button", { name: "Remove hand-entered odds" }).parentElement;
+    expect(row).toContainElement(screen.getByRole("button", { name: "Save odds" }));
+    expect(row).toHaveClass("flex-wrap");
+  });
+
   it("locks a finished game even though it has no analysis", async () => {
     const user = userEvent.setup();
     const props = renderDrawer({

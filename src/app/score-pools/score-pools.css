@@ -111,9 +111,17 @@
   color: var(--sp-ink-2);
 }
 
+/*
+ * Only the pick sheet prints on the wide column, so tabs ending at each page's
+ * own right edge would move sideways under the pointer from one page to the
+ * next. The margin is half of what the title bar has over the standard column,
+ * which is nothing on the tracker and the settings, and it ends the pick
+ * sheet's tabs where theirs end.
+ */
 .sp-tabs {
   display: flex;
   flex-wrap: wrap;
+  margin-inline-end: calc((100% - min(100%, var(--c97-container))) / 2);
 }
 
 .sp-tabs a {
@@ -244,6 +252,11 @@
   flex-direction: column;
   margin-top: var(--c97-sp-1);
   border-top: 1px solid var(--sp-rule);
+}
+
+/* A new pool has no rivals yet, and an empty list would still print its top rule. */
+.sp-rows:empty {
+  display: none;
 }
 
 .sp-row {

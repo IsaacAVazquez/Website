@@ -260,6 +260,12 @@
     --mlb-lamp: #111111;
     --mlb-lamp-off: rgba(0, 0, 0, 0.35);
   }
+
+  /* Paper drops background fills by default, and a win is told from a loss by its fill alone. */
+  .mlb-square[data-square="W"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 
 /* At 320px even the short marks do not fit beside the code, so they sit under it inside the same 44px row. */

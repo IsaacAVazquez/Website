@@ -72,7 +72,7 @@ describe("TravelDealLabClient number fields", () => {
   it("opens a first visit with no fare and asks for one", () => {
     render(<TravelDealLabClient />);
     expect(screen.getByLabelText("Quoted fare, whole party (USD)")).toHaveValue(0);
-    expect(screen.getByText("Add a quoted fare to score it against the typical band for Western Europe.")).toBeInTheDocument();
+    expect(screen.getByText("Add a quoted fare to score it against the typical price for Western Europe.")).toBeInTheDocument();
     expect(screen.getByText("Your trip, fare, and budget are saved in this browser.")).toBeInTheDocument();
   });
 
@@ -102,6 +102,50 @@ describe("TravelDealLabClient number fields", () => {
     resetBrowserStorageMemory();
     render(<TravelDealLabClient />);
     expect(screen.getByLabelText("Quoted fare, whole party (USD)")).toHaveValue(100_000);
+  });
+
+  it("keeps a fare typed with cents as typed and saves it as whole dollars", () => {
+    render(<TravelDealLabClient />);
+    const fare = screen.getByLabelText("Quoted fare, whole party (USD)");
+
+    fireEvent.change(fare, { target: { value: "412.2" } });
+    // The text stays, so the next keystroke lands where the visitor is typing.
+    expect(fare).toHaveValue(412.2);
+    fireEvent.change(fare, { target: { value: "412.20" } });
+
+    expect(JSON.parse(window.localStorage.getItem(STORAGE_KEY)!).quotedFare).toBe(412);
+    expect(screen.getAllByText("$206").length).toBeGreaterThan(0);
+    // The note gives the real reason, which is rounding and not the range.
+    expect(screen.getByText(/takes whole numbers, so I.m using 412/)).toBeVisible();
+    expect(screen.queryByText(/runs from 0 to/)).not.toBeInTheDocument();
+
+    fireEvent.blur(fare);
+    expect(fare).toHaveValue(412);
+  });
+
+  it("names one rating for a fare on the verdict chip and on the gauge", () => {
+    // Rated per seat this quote is a steal and rated for the party it is good, so the gauge takes the party's.
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ ...SAVED_TRIP, regionId: "domestic-short", travelers: 3, quotedFare: 400 }),
+    );
+    render(<TravelDealLabClient />);
+
+    expect(document.querySelector(".td-verdict .c97-chip")).toHaveTextContent("Good");
+    expect(screen.getAllByText(/\$133 a seat · Good/).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/Steal/i)).not.toBeInTheDocument();
+  });
+
+  it("names the party in the savings line only when there is more than one traveler", () => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...SAVED_TRIP, travelers: 1, quotedFare: 600 }));
+    const solo = render(<TravelDealLabClient />);
+    expect(document.querySelector(".td-savings")).toHaveTextContent("Save $180 (+23%)");
+    solo.unmount();
+
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...SAVED_TRIP, travelers: 2, quotedFare: 1200 }));
+    resetBrowserStorageMemory();
+    render(<TravelDealLabClient />);
+    expect(document.querySelector(".td-savings")).toHaveTextContent("Save $360 for the party (+23%)");
   });
 
   it("opens the playbook on six tactics and shows the rest on request", () => {

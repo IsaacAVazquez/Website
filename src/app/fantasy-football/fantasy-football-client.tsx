@@ -1785,7 +1785,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         lead={
           vorpMode
             ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
-            : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."
+            : "The board pairs the expert consensus with market ADP when a current sample is published, and the tier plates and cliff lines mark where the board actually drops off."
         }
         freshness={
           <FreshnessParts

@@ -47,12 +47,17 @@ export function MissionLaunchBoard({
     return VEHICLE_FILTERS.filter((option) => option === "All" || present.has(option));
   }, [launches]);
 
+  // A vehicle this list does not fly reads as All. The pick outlives the
+  // Upcoming and Past switch, and the filter row is hidden when a list has one
+  // family, so the old pick would empty the board with nothing left to clear it.
+  const appliedFilter = availableFilters.includes(vehicleFilter) ? vehicleFilter : "All";
+
   const shownLaunches = useMemo(() => {
-    if (vehicleFilter === "All") {
+    if (appliedFilter === "All") {
       return launches;
     }
-    return launches.filter((launch) => deriveVehicleFamily(launch.rocketName) === vehicleFilter);
-  }, [launches, vehicleFilter]);
+    return launches.filter((launch) => deriveVehicleFamily(launch.rocketName) === appliedFilter);
+  }, [launches, appliedFilter]);
 
   return (
     <section data-testid="mission-board" aria-label="Mission board" className="sx-board">
@@ -76,7 +81,7 @@ export function MissionLaunchBoard({
               <button
                 key={option}
                 type="button"
-                aria-pressed={vehicleFilter === option}
+                aria-pressed={appliedFilter === option}
                 onClick={() => setVehicleFilter(option)}
               >
                 {option}
@@ -127,23 +132,17 @@ export function MissionLaunchBoard({
       ) : null}
 
       {launches.length > 0 ? (
-        shownLaunches.length > 0 ? (
-          <div className="sx-cards">
-            {shownLaunches.map((launch) => (
-              <MissionCard
-                key={launch.id}
-                launch={launch}
-                isSelected={selectedLaunchId === launch.id}
-                isBusy={isLoading}
-                onSelect={onSelectLaunch}
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="sx-empty">
-            No {vehicleFilter} missions on the {status} board right now.
-          </p>
-        )
+        <div className="sx-cards">
+          {shownLaunches.map((launch) => (
+            <MissionCard
+              key={launch.id}
+              launch={launch}
+              isSelected={selectedLaunchId === launch.id}
+              isBusy={isLoading}
+              onSelect={onSelectLaunch}
+            />
+          ))}
+        </div>
       ) : null}
     </section>
   );

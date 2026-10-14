@@ -28,7 +28,6 @@ export function MissionVehiclePhoto({
       dataTestId={dataTestId}
       sizes={sizes}
       alt={`${name} ${label.toLowerCase()}`}
-      priority={dataTestId === "mission-hero-visual"}
       surface="espresso"
       className={`flex items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] ${className}`}
     >

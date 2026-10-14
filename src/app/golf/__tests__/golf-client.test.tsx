@@ -92,7 +92,7 @@ const testPlayerSnapshots: Record<string, GolfPlayerSnapshot> = {
       position: "T2",
       totalToPar: -6,
       today: -2,
-      thru: "F",
+      thru: "—",
       status: "Tee time set",
       movement: 1,
       nextTeeTime: "12:20 PM ET",
@@ -334,7 +334,7 @@ describe("GolfClient", () => {
     expect(within(board()).getAllByRole("button")).toHaveLength(20);
   });
 
-  it("opens the whole field when a later link names a player below the first 20", () => {
+  it("opens the whole field when a later link names a player below the first 20", async () => {
     const field = Array.from({ length: 25 }, (_, index) => ({
       ...testSummary.leaderboard[0]!,
       playerId: `player-${index + 1}`,
@@ -357,5 +357,158 @@ describe("GolfClient", () => {
     const board = screen.getByRole("region", { name: /full leaderboard/i });
     expect(within(board).getAllByRole("button")).toHaveLength(25);
     expect(within(board).getByRole("row", { name: /Player 24/ })).toHaveAttribute("aria-current", "true");
+    // The named player's detail loads behind the board, and the test waits for it to land.
+    await waitFor(() =>
+      expect(mockFetch).toHaveBeenCalledWith("/api/golf/players/player-24", expect.any(Object))
+    );
+  });
+
+  it("reads the feed's negative movement as places gained", () => {
+    const [leader, chaser] = testSummary.leaderboard;
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{
+          ...testSummary,
+          leaderboard: [
+            { ...leader!, movement: -20 },
+            { ...chaser!, movement: 8 },
+          ],
+        }}
+        initialPlayerSnapshot={getPlayerSnapshot("scottie-scheffler")}
+      />
+    );
+
+    const board = screen.getByRole("region", { name: /full leaderboard/i });
+    const climber = within(board).getByRole("row", { name: /Scottie Scheffler/ });
+    expect(within(climber).getByText("Up 20")).toBeInTheDocument();
+    expect(climber.querySelector(".golf-move")).toHaveAttribute("data-move", "up");
+
+    const faller = within(board).getByRole("row", { name: /Justin Thomas/ });
+    expect(within(faller).getByText("Down 8")).toBeInTheDocument();
+    expect(faller.querySelector(".golf-move")).toHaveAttribute("data-move", "down");
+  });
+
+  it("runs the cut line across every column of the board", () => {
+    const [leader, chaser] = testSummary.leaderboard;
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{
+          ...testSummary,
+          leaderboard: [leader!, { ...chaser!, position: "-", status: "Missed Cut" }],
+        }}
+        initialPlayerSnapshot={getPlayerSnapshot("scottie-scheffler")}
+      />
+    );
+
+    const board = screen.getByRole("region", { name: /full leaderboard/i });
+    const cutLine = within(board).getByText("Cut line -1, 76 players advanced");
+    expect(cutLine).toHaveAttribute("colspan", String(within(board).getAllByRole("columnheader").length));
+  });
+
+  it("calls the cut projected until a player has missed it", () => {
+    const [leader, chaser] = testSummary.leaderboard;
+    const ui = (status: string) => (
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{ ...testSummary, leaderboard: [leader!, { ...chaser!, status }] }}
+        initialPlayerSnapshot={getPlayerSnapshot("scottie-scheffler")}
+      />
+    );
+    const view = render(ui("In Progress"));
+    expect(screen.getByText("132 players · Projected cut -1")).toBeInTheDocument();
+
+    view.rerender(ui("Missed Cut"));
+    expect(screen.getByText("132 players · Cut -1, 76 advanced")).toBeInTheDocument();
+  });
+
+  it("says the cut is to be decided when the feed has not described one", () => {
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{
+          ...testSummary,
+          tournament: { ...testSummary.tournament!, cutLine: null, cutState: "unknown", cutCount: null },
+        }}
+        initialPlayerSnapshot={getPlayerSnapshot("scottie-scheffler")}
+      />
+    );
+
+    expect(screen.getByText("132 players · Cut TBD")).toBeInTheDocument();
+  });
+
+  it("prints the location alone when the feed names no course", () => {
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{ ...testSummary, tournament: { ...testSummary.tournament!, course: "" } }}
+        initialPlayerSnapshot={getPlayerSnapshot("scottie-scheffler")}
+      />
+    );
+
+    expect(screen.getByText("Hilton Head Island, South Carolina")).toBeInTheDocument();
+  });
+
+  it("moves between the view tabs with the arrow keys, as one stop in the tab order", async () => {
+    const user = userEvent.setup();
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={testSummary}
+        initialPlayerSnapshot={null}
+      />
+    );
+
+    const leaderboardTab = screen.getByRole("tab", { name: "Leaderboard" });
+    const playersTab = screen.getByRole("tab", { name: "Players" });
+    expect(leaderboardTab).toHaveAttribute("tabindex", "0");
+    expect(playersTab).toHaveAttribute("tabindex", "-1");
+    // Only the selected view's panel is on the page.
+    expect(leaderboardTab).toHaveAttribute("aria-controls", "golf-tabpanel-leaderboard");
+    expect(playersTab).not.toHaveAttribute("aria-controls");
+
+    leaderboardTab.focus();
+    await user.keyboard("{ArrowRight}");
+
+    expect(playersTab).toHaveFocus();
+    expect(mockPush).toHaveBeenCalledWith("/golf?view=players", { scroll: false });
+  });
+
+  it("prints the next tee time between rounds, when the feed already marks the tournament complete", () => {
+    currentSearchParams = new URLSearchParams("player=justin-thomas");
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{
+          ...testSummary,
+          tournament: { ...testSummary.tournament!, status: "Round 2 - Play Complete", completed: true },
+        }}
+        initialPlayerSnapshot={getPlayerSnapshot("justin-thomas")}
+      />
+    );
+
+    const drawer = screen.getByRole("dialog", { name: "Justin Thomas detail" });
+    expect(within(drawer).getByText("Next round tee time 12:20 PM ET")).toBeInTheDocument();
+  });
+
+  it("prints no next tee time, and the status once, for a player who has played the round", () => {
+    const scottie = getPlayerSnapshot("scottie-scheffler");
+    currentSearchParams = new URLSearchParams("player=scottie-scheffler");
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={testSummary}
+        initialPlayerSnapshot={{
+          ...scottie,
+          // The feed keeps the tee time of the round just played.
+          tournamentStatus: { ...scottie.tournamentStatus, nextTeeTime: "9:21 PM EDT" },
+        }}
+      />
+    );
+
+    const drawer = screen.getByRole("dialog", { name: "Scottie Scheffler detail" });
+    expect(within(drawer).queryByText(/Next round tee time/)).not.toBeInTheDocument();
+    expect(within(drawer).getAllByText(/In clubhouse/)).toHaveLength(1);
   });
 });

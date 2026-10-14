@@ -42,9 +42,9 @@ describe("nfl-state", () => {
     expect(filterTeamsForView("afc").every((team) => team.conference === "AFC")).toBe(true);
     expect(filterTeamsForView("nfc").every((team) => team.conference === "NFC")).toBe(true);
 
-    // The NFLverse snapshot leaves `seed` null all season, so the playoffs
-    // view is built from the same derived seeding the seed-ladder signature
-    // uses (division leaders, then the best wildcards), not the raw field.
+    // The NFLverse snapshot's `seed` is null until the feed publishes one, so
+    // the playoffs view is built from the derived seeding the ladder prints
+    // (division leaders, then the best wildcards), not the raw field.
     const derivedSeeds = nflSeeds(nflSnapshot.teams);
     const playoffTeams = filterTeamsForView("playoffs");
     expect(playoffTeams).toHaveLength(derivedSeeds.size);

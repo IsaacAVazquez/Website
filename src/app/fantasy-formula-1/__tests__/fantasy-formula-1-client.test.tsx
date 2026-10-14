@@ -275,8 +275,27 @@ describe("FantasyFormula1Client", () => {
     const garage = screen.getByTestId("fantasy-formula-1-lineup");
     expect(within(garage).getAllByRole("button", { name: /^Remove / })).toHaveLength(7);
     const card = within(lineups).getByText("Option 1").closest("li") as HTMLElement;
-    expect(within(card).getByText("Your team")).toBeInTheDocument();
-    expect(within(card).queryByRole("button")).not.toBeInTheDocument();
+    // The pressed button stays mounted as the card's label, so keyboard focus stays on the card.
+    const label = within(card).getByRole("button", { name: "Your team" });
+    expect(label).toHaveAttribute("aria-disabled", "true");
+    expect(label).toHaveFocus();
+  });
+
+  it("prints the next race in the status line with its start time and zone", () => {
+    const base = createSummary();
+    render(
+      <FantasyFormula1Client
+        initialState={DEFAULT_FANTASY_FORMULA1_STATE}
+        summary={createSummary({
+          // 04:00 UTC on race day is still the evening before in Pacific time.
+          nextMeeting: { ...base.nextMeeting!, name: "Australian Grand Prix", raceStartsAt: "2026-03-08T04:00:00+00:00" },
+        })}
+      />
+    );
+
+    expect(screen.getByText(/^2026 season · /)).toHaveTextContent(
+      "Next race Australian Grand Prix, Mar 7, 8:00 PM PST"
+    );
   });
 
   it("keeps an asset's price and projection in its own cell for a phone, with the rest behind More", () => {
@@ -294,6 +313,25 @@ describe("FantasyFormula1Client", () => {
     }
     // One Add button per asset, whatever the width.
     expect(within(row).getAllByRole("button", { name: /^Add / })).toHaveLength(1);
+  });
+
+  it("brings a sort or filter button that takes focus fully into the row a phone scrolls", () => {
+    const scrollIntoView = jest.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+
+    try {
+      render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={createSummary()} />);
+      const constructors = within(screen.getByRole("group", { name: "Filter assets by kind" })).getByRole("button", {
+        name: "Constructors",
+      });
+
+      act(() => constructors.focus());
+
+      expect(scrollIntoView).toHaveBeenCalledWith({ block: "nearest", inline: "nearest" });
+      expect(scrollIntoView.mock.contexts).toEqual([constructors]);
+    } finally {
+      delete (Element.prototype as Partial<Element>).scrollIntoView;
+    }
   });
 
   it("renders an empty-state when the snapshot has no usable assets", () => {

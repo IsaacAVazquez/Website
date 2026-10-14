@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import type { Formula1ConstructorStanding } from "@/types/formula1";
 import { TimingTowerSignature } from "../TimingTowerSignature";
 
@@ -28,6 +28,30 @@ describe("TimingTowerSignature on a phone", () => {
       "href",
       "/formula-1?view=constructors#season"
     );
+  });
+
+  it("scrolls to the full table itself when the link is used in the table's own view", () => {
+    // The address already ends in the link's hash, which is when the router does not scroll.
+    window.history.replaceState(null, "", "/formula-1?view=constructors#season");
+    const scrollIntoView = jest.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+
+    try {
+      render(
+        <>
+          <h2 id="season">Constructor championship</h2>
+          <TimingTowerSignature standings={teams(23)} kind="constructors" fullTableHref="/formula-1?view=constructors#season" />
+        </>
+      );
+
+      fireEvent.click(screen.getByRole("link", { name: "See all 23 teams" }));
+
+      expect(scrollIntoView).toHaveBeenCalledWith({ block: "start" });
+      expect(scrollIntoView.mock.contexts).toEqual([screen.getByRole("heading", { name: "Constructor championship" })]);
+    } finally {
+      delete (Element.prototype as Partial<Element>).scrollIntoView;
+      window.history.replaceState(null, "", "/");
+    }
   });
 
   it("prints a tower of eleven whole", () => {

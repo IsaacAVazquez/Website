@@ -131,6 +131,30 @@ describe("GitHubTrendingClient", () => {
     );
   });
 
+  it("scrolls the segment row to show a focused segment cut by its edge", () => {
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={snapshot}
+      />
+    );
+
+    const row = screen.getByRole("group", { name: "Filter by segment" });
+    const cut = within(row).getByRole("button", { name: "TypeScript" });
+    row.style.paddingLeft = "5px";
+    row.getBoundingClientRect = () => ({ left: 0, right: 390 }) as DOMRect;
+    cut.getBoundingClientRect = () => ({ left: 345, right: 445 }) as DOMRect;
+
+    // 55px past the edge, plus the 5px of padding its focus ring needs.
+    fireEvent.focus(cut);
+    expect(row.scrollLeft).toBe(60);
+
+    // A button already whole inside the padding leaves the row alone.
+    cut.getBoundingClientRect = () => ({ left: 285, right: 385 }) as DOMRect;
+    fireEvent.focus(cut);
+    expect(row.scrollLeft).toBe(60);
+  });
+
   it("prints the filters ahead of the list they redraw", () => {
     render(
       <GitHubTrendingClient
@@ -192,6 +216,25 @@ describe("GitHubTrendingClient", () => {
     expect(screen.getByText("Other languages")).toBeVisible();
   });
 
+  it("reads a share that rounds to nothing as under 1% in the strip's label", () => {
+    const large = { ...repo, weeklyStars: 999 };
+    const small = { ...repo, id: 44, fullName: "openai/kotlin", primaryLanguage: "Kotlin", weeklyStars: 1 };
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          repositories: [large, small],
+          languages: [segment({ repoIds: [42, 44], repoCount: 2 })],
+        }}
+      />
+    );
+
+    const label = screen.getByRole("img").getAttribute("aria-label");
+    expect(label).toContain("Kotlin under 1%");
+    expect(label).not.toMatch(/\s0%/);
+  });
+
   it("folds a long table after 25 rows and opens the rest on one button", () => {
     const repos = Array.from({ length: 30 }, (_, index) => ({
       ...repo,
@@ -214,6 +257,64 @@ describe("GitHubTrendingClient", () => {
     fireEvent.click(screen.getByRole("button", { name: "Show all 30 repositories" }));
     expect(within(table).getAllByRole("row")).toHaveLength(31);
     expect(screen.queryByRole("button", { name: /show all/i })).toBeNull();
+  });
+
+  it("keeps the table open once a selected repository below the fold has opened it", () => {
+    const repos = Array.from({ length: 30 }, (_, index) => ({
+      ...repo,
+      id: 100 + index,
+      fullName: `owner/repo-${index}`,
+    }));
+    const long = {
+      ...snapshot,
+      repositories: repos,
+      languages: [segment({ repoIds: repos.map((entry) => entry.id), repoCount: 30 })],
+    };
+    currentSearchParams = new URLSearchParams("repo=127");
+    const { rerender } = render(
+      <GitHubTrendingClient initialState={DEFAULT_GITHUB_TRENDING_STATE} snapshot={long} />
+    );
+
+    const table = screen.getByRole("region", { name: /repository table/i });
+    expect(within(table).getAllByRole("row")).toHaveLength(32);
+
+    // Closing the row clears ?repo=, and the row just pressed has to stay on the page.
+    currentSearchParams = new URLSearchParams();
+    rerender(<GitHubTrendingClient initialState={DEFAULT_GITHUB_TRENDING_STATE} snapshot={long} />);
+
+    expect(within(table).getAllByRole("row")).toHaveLength(31);
+    expect(screen.queryByRole("button", { name: /show all/i })).toBeNull();
+  });
+
+  it("counts the measured repositories in the status line", () => {
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          totals: { ...snapshot.totals, repositories: 2, measuredWeeklyDeltaCount: 1 },
+        }}
+      />
+    );
+
+    expect(
+      screen.getByText(/1 of 2 tracked repositories measured over the full 7 days/)
+    ).toBeVisible();
+    expect(screen.queryByText(/% of the weekly gains measured/)).toBeNull();
+  });
+
+  it("writes the degraded line in the singular for one segment", () => {
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={{
+          ...snapshot,
+          sourceStatus: { status: "degraded", failedSegments: ["Rust"], reusedSegments: ["Rust"] },
+        }}
+      />
+    );
+
+    expect(screen.getByRole("status")).toHaveTextContent("1 segment is using earlier data.");
   });
 
   it("names the pool behind the leading language share", () => {

@@ -1,14 +1,8 @@
 "use client";
 
-import {
-  startTransition,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, CircleAlert } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
   NEWS_SOURCE_IDS,
   SOURCE_META,
@@ -29,7 +23,6 @@ import {
   normalizeNewsPulseState,
   SOURCE_LABELS,
   SOURCE_OPTIONS,
-  type NewsPulseSearchState,
   type NewsSource,
 } from "./news-pulse-state";
 import { DATE_TIME_FORMATTER, formatStableDateTime } from "@/lib/date-formatters";
@@ -39,7 +32,6 @@ import { groupBy } from "@/lib/utils";
 
 interface NewsPulseClientProps {
   initialFeed?: NewsPulseFeedResponse;
-  initialState: NewsPulseSearchState;
 }
 
 type FeedResponse = NewsPulseFeedResponse;
@@ -120,22 +112,15 @@ function SourceDropdown({
   );
 }
 
-export function NewsPulseClient({
-  initialFeed,
-  initialState,
-}: NewsPulseClientProps) {
-  const router = useRouter();
+export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
   const searchParams = useSearchParams();
+  const routeState = useMemo(() => normalizeNewsPulseState(searchParams), [searchParams]);
 
-  const hasManagedParams = searchParams.get("source") !== null;
-  const routeState = useMemo(
-    () => (hasManagedParams ? normalizeNewsPulseState(searchParams) : initialState),
-    [hasManagedParams, initialState, searchParams],
-  );
-
-  function updateRouteState(next: Partial<NewsPulseSearchState>) {
-    const href = buildNewsPulseHref({ ...routeState, ...next });
-    startTransition(() => router.push(href, { scroll: false }));
+  // The filter only narrows headlines the page already holds, so the choice is
+  // a plain history entry. The router syncs useSearchParams from the native
+  // call, where router.push waited on a server render of the whole page.
+  function selectSource(source: NewsSource) {
+    window.history.pushState(null, "", buildNewsPulseHref({ source }));
   }
 
   const hasUsableInitialFeed = (initialFeed?.articles.length ?? 0) > 0;
@@ -291,10 +276,7 @@ export function NewsPulseClient({
             <section className="np-section" aria-labelledby="np-headlines-title">
               <div className="np-section-head">
                 <h2 id="np-headlines-title" className="np-section-title">Headlines</h2>
-                <SourceDropdown
-                  value={routeState.source}
-                  onValueChange={(source) => updateRouteState({ source })}
-                />
+                <SourceDropdown value={routeState.source} onValueChange={selectSource} />
               </div>
               <HeadlinesView articles={filteredArticles} />
             </section>
@@ -303,7 +285,7 @@ export function NewsPulseClient({
               <div className="np-section-head">
                 <h2 id="np-tone-title" className="np-section-title">Tone and density</h2>
                 <p className="np-muted np-small">
-                  Headline sentiment read as directional framing, not article-level sentiment.
+                  I read this as directional framing pressure, not article-level sentiment.
                   Higher readability scans faster.
                 </p>
               </div>
@@ -516,7 +498,7 @@ function ToneTable({ articles }: { articles: NewsArticle[] }) {
                   <span className="np-length">
                     <span
                       className="np-length-bar"
-                      style={{ width: `${(words / maxAverageHeadlineLength) * 100}%` }}
+                      style={{ width: `${(words / maxAverageHeadlineLength) * 4}rem` }}
                       aria-hidden="true"
                     />
                     {words.toFixed(1)}

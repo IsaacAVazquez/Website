@@ -439,6 +439,8 @@ describe("TravelPlannerClient", () => {
     change(budget, "1250.5");
     fireEvent.blur(budget);
     expect(stored()[0].budget).toBe(1250.5);
+    // An amount the planner saves is never off a step, so the field does not read as an error.
+    expect(budget).toBeValid();
     // Cents print as a pair, never as a lone tenth.
     expect(within(details).getByText("$1,250.50")).toBeInTheDocument();
     change(budget, "");
@@ -537,6 +539,109 @@ describe("TravelPlannerClient", () => {
       });
       expect(screen.getByText("Day 1 of 2")).toBeInTheDocument();
       expect(within(itinerary()).getByRole("heading", { name: `${formatDayHeading(tomorrow)} · Today` })).toBeInTheDocument();
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("leaves a cleared date cleared in the new trip form", () => {
+    render(<TravelPlannerClient />);
+    const form = screen.getByRole("form", { name: "Create a new trip" });
+    const start = within(form).getByLabelText("Start date");
+    const end = within(form).getByLabelText("End date");
+    expect(start).toHaveValue(TODAY);
+
+    // A browser reports "" for a cleared segment or a half-typed date.
+    change(start, "");
+    expect(start).toHaveValue("");
+    change(end, "");
+    expect(end).toHaveValue("");
+
+    // A trip with no start never saves.
+    change(within(form).getByRole("textbox", { name: "Trip name" }), "Undated");
+    fireEvent.submit(form);
+    expect(stored()).toEqual([]);
+  });
+
+  it("requires the trip dates only once today has filled them in", () => {
+    // An empty required date is invalid, so the server render must not print one.
+    expect(renderToString(<TravelPlannerClient />)).not.toMatch(/type="date"[^>]*required/);
+
+    render(<TravelPlannerClient />);
+    const form = screen.getByRole("form", { name: "Create a new trip" });
+    expect(within(form).getByLabelText("Start date")).toBeRequired();
+    expect(within(form).getByLabelText("End date")).toBeRequired();
+  });
+
+  it("numbers the days from the trip's start and leaves a stop outside the trip unnumbered", () => {
+    seed([
+      makeTrip({
+        id: "trip-moved",
+        name: "Moved",
+        startDate: dayKey(5),
+        endDate: dayKey(6),
+        activities: [
+          { id: "act-early", date: dayKey(4), time: "", endTime: "", title: "Early", location: "", category: "other", notes: "", completed: false },
+        ],
+      }),
+    ]);
+    render(<TravelPlannerClient />);
+
+    const dayNumber = (offset: number) =>
+      within(itinerary()).getByRole("heading", { name: formatDayHeading(dayKey(offset)) }).previousElementSibling;
+    expect(dayNumber(5)).toHaveTextContent("Day 1");
+    expect(dayNumber(6)).toHaveTextContent("Day 2");
+    expect(dayNumber(4)).toBeEmptyDOMElement();
+  });
+
+  it("puts the trip's budget and notes where a print can reach them, outside the disclosure", () => {
+    seed([makeTrip({ id: "trip-notes", name: "Noted", budget: 1250, notes: "Hotel Avenida\nPack layers" })]);
+    const { unmount } = render(<TravelPlannerClient />);
+
+    const printed = manage().querySelector(".tp-print-details") as HTMLElement;
+    expect(printed.closest("details")).toBeNull();
+    expect(printed).toHaveTextContent("$1,250");
+    expect(printed).toHaveTextContent("Pack layers");
+    unmount();
+
+    // A trip with neither prints no block.
+    seed([LISBON]);
+    resetBrowserStorageMemory();
+    render(<TravelPlannerClient />);
+    expect(manage().querySelector(".tp-print-details")).toBeNull();
+  });
+
+  it("keeps an edit an edit when the default day moves at midnight", () => {
+    const yesterday = dayKey(-1);
+    const later = dayKey(3);
+    jest.useFakeTimers({ now: new Date(`${TODAY}T23:59:30`) });
+    try {
+      seed([
+        makeTrip({
+          id: "trip-late",
+          name: "Late night",
+          startDate: yesterday,
+          endDate: later,
+          activities: [
+            { id: "act-bar", date: TODAY, time: "22:00", endTime: "", title: "Bar", location: "", category: "food", notes: "", completed: false },
+          ],
+          journal: [{ id: "jrn-late", date: TODAY, title: "Late entry", body: "", mood: "good" }],
+        }),
+      ]);
+      render(<TravelPlannerClient />);
+      fireEvent.click(within(within(journal()).getByText("Late entry").closest("li") as HTMLElement).getByRole("button", { name: "Edit" }));
+      fireEvent.click(within(within(itinerary()).getByText("Bar").closest("li") as HTMLElement).getByRole("button", { name: "Edit" }));
+
+      act(() => {
+        jest.advanceTimersByTime(60_000);
+      });
+
+      change(within(journalForm()).getByRole("textbox", { name: "Title" }), "Late entry, finished");
+      fireEvent.click(within(journalForm()).getByRole("button", { name: "Save entry" }));
+      expect(stored()[0].journal.map((entry) => entry.title)).toEqual(["Late entry, finished"]);
+
+      fireEvent.click(within(stopForm()).getByRole("button", { name: "Save stop" }));
+      expect(stored()[0].activities).toHaveLength(1);
     } finally {
       jest.useRealTimers();
     }

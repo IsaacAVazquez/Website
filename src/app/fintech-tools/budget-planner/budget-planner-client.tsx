@@ -7,11 +7,15 @@ import {
   buildBudgetCsv,
   formatBudgetMonthLabel,
   getAdjacentBudgetMonthKey,
+  getBudgetMonthLastDate,
+  getCurrentBudgetMonthKey,
   getDefaultExpenseDate,
   isBudgetMonthKey,
+  isDateInBudgetMonth,
 } from "@/lib/budgetPlanner";
 import { downloadFile } from "@/lib/downloadFile";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
+import { useClientNow } from "@/hooks/useClientNow";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import type { BudgetCategorySummary } from "@/types/budget";
 import { checkRegister, envelope } from "./envelopes";
@@ -21,7 +25,8 @@ import { formatDollars } from "@/lib/utils";
 interface ExpenseDraft {
   categoryId: string;
   amount: string;
-  date: string;
+  /** Null until the visitor sets one, which reads as the active month's default day. */
+  date: string | null;
   note: string;
 }
 
@@ -46,11 +51,11 @@ function formatExpenseDate(iso: string): string {
   return Number.isNaN(date.getTime()) ? iso : EXPENSE_DATE_FORMATTER.format(date);
 }
 
-function createEmptyExpenseDraft(monthKey: string, categoryId = ""): ExpenseDraft {
+function createEmptyExpenseDraft(categoryId = ""): ExpenseDraft {
   return {
     categoryId,
     amount: "",
-    date: getDefaultExpenseDate(monthKey),
+    date: null,
     note: "",
   };
 }
@@ -167,6 +172,10 @@ function Envelope({
 }
 
 export function BudgetPlannerClient() {
+  // The month and today are the visitor's own, read after mount. The page is
+  // prerendered, so a month printed at build time is last month's for every
+  // visitor between the 1st and the next deploy, and hydration fails on it.
+  const now = useClientNow();
   const {
     activeMonth,
     activeMonthKey,
@@ -183,7 +192,7 @@ export function BudgetPlannerClient() {
     removeExpense,
     findExpense,
     clearMonth,
-  } = useBudgetPlanner();
+  } = useBudgetPlanner(now === null ? "" : getCurrentBudgetMonthKey(new Date(now)));
   const persistenceStatus = useLocalStoragePersistenceStatus(BUDGET_PLANNER_STORAGE_KEY);
   const ids = useId();
   const amountInputRef = useRef<HTMLInputElement | null>(null);
@@ -191,17 +200,22 @@ export function BudgetPlannerClient() {
   const [confirmReset, setConfirmReset] = useState(false);
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
-    createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? "")
+    createEmptyExpenseDraft(activeMonth.categories[0]?.id ?? "")
   );
   const resolvedExpenseCategoryId = activeMonth.categories.some(
     (category) => category.id === expenseDraft.categoryId
   )
     ? expenseDraft.categoryId
     : activeMonth.categories[0]?.id ?? "";
+  const expenseDate =
+    expenseDraft.date ?? (now === null ? "" : getDefaultExpenseDate(activeMonthKey, new Date(now)));
 
   // An amount that is typed but not above zero would log a $0 expense, so say so at the field.
   const amountInvalid = expenseDraft.amount.trim() !== "" && !(Number(expenseDraft.amount) > 0);
+  // An expense is filed under the month on screen, so a date in another month is turned back at the field.
+  const dateOutsideMonth = expenseDate !== "" && !isDateInBudgetMonth(expenseDate, activeMonthKey);
 
+  // Empty until the month is known, which the Categories line prints as "this month".
   const monthLabel = formatBudgetMonthLabel(activeMonthKey);
   const totalIncome = activeMonth.income;
   const totalExpenses = summary.spentTotal;
@@ -222,7 +236,7 @@ export function BudgetPlannerClient() {
     if (!isBudgetMonthKey(nextMonthKey)) return;
     setEditingExpenseId(null);
     setConfirmReset(false);
-    setExpenseDraft(createEmptyExpenseDraft(nextMonthKey, activeMonth.categories[0]?.id ?? ""));
+    setExpenseDraft(createEmptyExpenseDraft(activeMonth.categories[0]?.id ?? ""));
     selectMonth(nextMonthKey);
   }
 
@@ -234,7 +248,7 @@ export function BudgetPlannerClient() {
     clearMonth();
     setConfirmReset(false);
     setEditingExpenseId(null);
-    setExpenseDraft(createEmptyExpenseDraft(activeMonthKey, ""));
+    setExpenseDraft(createEmptyExpenseDraft());
   }
 
   function handleAddCategory(event: FormEvent<HTMLFormElement>) {
@@ -248,17 +262,17 @@ export function BudgetPlannerClient() {
 
   function resetExpenseDraft() {
     setEditingExpenseId(null);
-    setExpenseDraft(createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? ""));
+    setExpenseDraft(createEmptyExpenseDraft(activeMonth.categories[0]?.id ?? ""));
   }
 
   function handleExpenseSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!resolvedExpenseCategoryId || amountInvalid) return;
+    if (!resolvedExpenseCategoryId || amountInvalid || dateOutsideMonth) return;
 
     const payload = {
       categoryId: resolvedExpenseCategoryId,
       amount: parseAmountInput(expenseDraft.amount),
-      date: expenseDraft.date,
+      date: expenseDate,
       note: expenseDraft.note,
     };
 
@@ -420,7 +434,8 @@ export function BudgetPlannerClient() {
           <div className="bp-section-head">
             <h2 id={`${ids}-categories`}>Categories</h2>
             <p>
-              Budgeted {formatDollars(summary.budgetedTotal)} for <span className="bp-month-name">{monthLabel}</span>,{" "}
+              Budgeted {formatDollars(summary.budgetedTotal)} for{" "}
+              <span className="bp-month-name">{monthLabel || "this month"}</span>,{" "}
               {leftToAssign >= 0
                 ? `${formatDollars(leftToAssign)} left to assign`
                 : `${formatDollars(Math.abs(leftToAssign))} more than the month has`}
@@ -512,11 +527,20 @@ export function BudgetPlannerClient() {
               <span className="bp-label">Date</span>
               <input
                 aria-label="Expense date"
+                aria-invalid={dateOutsideMonth || undefined}
+                aria-describedby={dateOutsideMonth ? "budget-expense-date-error" : undefined}
                 type="date"
-                value={expenseDraft.date}
+                min={activeMonthKey ? `${activeMonthKey}-01` : undefined}
+                max={getBudgetMonthLastDate(activeMonthKey) || undefined}
+                value={expenseDate}
                 onChange={(event) => setExpenseDraft((current) => ({ ...current, date: event.target.value }))}
                 className="bp-field"
               />
+              {dateOutsideMonth ? (
+                <span id="budget-expense-date-error" className="bp-note">
+                  Pick a date in {monthLabel}.
+                </span>
+              ) : null}
             </label>
             <label>
               <span className="bp-label">Note</span>
@@ -532,7 +556,9 @@ export function BudgetPlannerClient() {
             <div className="bp-expense-actions">
               <button
                 type="submit"
-                disabled={!resolvedExpenseCategoryId || !expenseDraft.amount || amountInvalid || !expenseDraft.date}
+                disabled={
+                  !resolvedExpenseCategoryId || !expenseDraft.amount || amountInvalid || !expenseDate || dateOutsideMonth
+                }
                 className="bp-btn"
                 aria-describedby={activeMonth.categories.length === 0 ? "budget-expense-needs-category" : undefined}
               >

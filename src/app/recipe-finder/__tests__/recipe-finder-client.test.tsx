@@ -168,4 +168,49 @@ describe("RecipeFinderClient", () => {
     expect(screen.getByRole("button", { name: /all recipes/i, pressed: true })).toBeVisible();
     expect(screen.getByLabelText("Matching recipes")).toBeVisible();
   });
+
+  it("prints on the pantry chip the number of recipes its view lists", () => {
+    window.localStorage.setItem(PANTRY_KEY, JSON.stringify(["egg"]));
+    render(<RecipeFinderClient />);
+
+    const chip = screen.getByRole("button", { name: /suggested by pantry/i });
+    fireEvent.click(chip);
+    const listed = Number(screen.getByRole("status").textContent!.match(/^\d+/)![0]);
+    expect(listed).toBeGreaterThan(0);
+    expect(within(screen.getByLabelText("Matching recipes")).getAllByRole("article")).toHaveLength(listed);
+    expect(chip).toHaveTextContent(`(${listed})`);
+  });
+
+  it("says the cards are ranked by how much of each recipe the pantry covers", () => {
+    window.localStorage.setItem(PANTRY_KEY, JSON.stringify(["egg"]));
+    render(<RecipeFinderClient />);
+
+    expect(screen.getByRole("status")).toHaveTextContent(
+      /^\d+ of \d+ recipes, ranked by how much of each recipe your pantry covers/
+    );
+  });
+
+  it("announces the pantry count when an ingredient is added or removed", () => {
+    window.localStorage.setItem(PANTRY_KEY, JSON.stringify(["egg"]));
+    render(<RecipeFinderClient />);
+    const status = screen.getByRole("status");
+    expect(status).toHaveTextContent(/, 1 in your pantry$/);
+
+    fireEvent.click(screen.getByRole("button", { name: /^\+ tomato$/i }));
+    expect(status).toHaveTextContent(/, 2 in your pantry$/);
+
+    fireEvent.click(screen.getByRole("button", { name: "Remove egg" }));
+    expect(status).toHaveTextContent(/, 1 in your pantry$/);
+  });
+
+  it("leaves a half-typed ingredient unsaved on Tab and moves to the suggestions", async () => {
+    const user = userEvent.setup();
+    render(<RecipeFinderClient />);
+
+    await user.type(screen.getByLabelText("Add an ingredient"), "tom");
+    await user.tab();
+
+    expect(document.activeElement?.closest(".rf-suggest-list")).not.toBeNull();
+    expect(window.localStorage.getItem(PANTRY_KEY)).toBeNull();
+  });
 });

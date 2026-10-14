@@ -8,9 +8,8 @@ export interface LeaderLedgerEntry {
 
 /**
  * Dense leaderboard rows (rank, bold name, club code, value and unit) on
- * hairlines with no box, as opposed to `LeaderList`'s individually bordered cards.
- * Used for the scorers/assists boards on the league pages; `LeaderList`
- * itself is untouched since NBA/MLB/NFL/World Cup already depend on it.
+ * hairlines with no box. Used for the scorers and assists boards on the
+ * league pages and the stat leaders on the MLB, NBA, and NFL boards.
  */
 export function LeaderLedger({
   title,
@@ -42,7 +41,7 @@ export function LeaderLedger({
               <span className="flex-shrink-0 text-2xs font-semibold uppercase tracking-[0.06em] text-[var(--c97-ink-2)]">
                 {entry.clubCode}
               </span>
-              <span className="w-12 flex-shrink-0 text-right text-base font-bold tabular-nums text-[var(--c97-ink)]">
+              <span className="min-w-12 flex-shrink-0 text-right text-base font-bold tabular-nums text-[var(--c97-ink)]">
                 {entry.value}
                 <span className="text-2xs text-[var(--c97-ink-2)]" style={{ marginLeft: "var(--c97-sp-0)" }}>{unit}</span>
               </span>

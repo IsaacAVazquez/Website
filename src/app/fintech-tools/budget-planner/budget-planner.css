@@ -277,11 +277,13 @@
   font-weight: 600;
 }
 
+/* nowrap, since a line may break between a minus sign and the dollar sign. */
 .bp-sum-value {
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .bp-sum-value[data-negative] {
@@ -300,7 +302,10 @@
   gap: var(--c97-sp-1) var(--c97-sp-3);
 }
 
-@media screen and (min-width: 1024px) {
+/* One row from 1280px, where the shell is at its full width in every browser.
+ * The three capped tracks take their 600px first, so any narrower leaves the
+ * summary's two cells less room than a sum with cents needs. */
+@media screen and (min-width: 1280px) {
   .bp-month {
     grid-template-columns: minmax(0, 17.5rem) minmax(0, 10rem) minmax(0, 10rem) minmax(0, 1fr) auto;
     column-gap: var(--c97-sp-3);
@@ -529,6 +534,17 @@
   color: var(--bp-ink-2);
 }
 
+/* A long category name or amount scrolls inside the ledger, never the page.
+ * The inline padding keeps the focus ring of a link at either edge unclipped.
+ * It is positioned so the hidden "Actions" label in the last header cell,
+ * which is absolute, scrolls with the table and not out past the page. */
+.bp-register-scroll {
+  position: relative;
+  margin-inline: -5px;
+  padding-inline: 5px;
+  overflow-x: auto;
+}
+
 .bp-register {
   width: 100%;
   border-collapse: collapse;
@@ -567,7 +583,14 @@
   color: var(--bp-ink-2);
 }
 
-.bp-register-actions {
+/* A note can be one unbroken token, a pasted link or an order number, and it
+ * wraps so a stacked row and a printed one keep it on the sheet. */
+.bp-register td[data-label="Note"] {
+  overflow-wrap: anywhere;
+}
+
+/* Named under the table so it outranks `.bp-register td`, here and in print. */
+.bp-register .bp-register-actions {
   padding-right: 0;
   text-align: right;
   white-space: nowrap;
@@ -614,7 +637,7 @@
   .bp-actions,
   .bp-envelope-new,
   .bp-expense-form,
-  .bp-register-actions,
+  .bp-register .bp-register-actions,
   .bp-envelope-foot .bp-link,
   .bp-stepper .bp-icon-btn {
     display: none;

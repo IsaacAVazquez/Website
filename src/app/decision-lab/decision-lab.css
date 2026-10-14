@@ -238,6 +238,15 @@
   }
 }
 
+/* In one column the matrix would take the page's width, which on a tablet is
+ * taller than the screen, so it keeps the width its desktop column gives it.
+ * Paper keeps the full width. */
+@media screen and (max-width: 959px) {
+  .dl-figure {
+    max-inline-size: 30rem;
+  }
+}
+
 .dl-inputs {
   display: flex;
   flex-direction: column;
@@ -436,7 +445,10 @@
   grid-column: 3;
 }
 
-@media screen and (max-width: 479px) {
+/* The bar takes a row of its own wherever the ledger is too narrow to leave
+ * it a track, which is a phone and the left column just past the two-column
+ * breakpoint, where the label and the arithmetic use the whole row. */
+@media screen and (max-width: 479px), screen and (min-width: 960px) and (max-width: 1039px) {
   .dl-contribution {
     grid-template-columns: minmax(0, 1fr) auto;
   }
@@ -466,5 +478,12 @@
 @media print {
   .dl-tools {
     display: none;
+  }
+
+  /* A browser leaves backgrounds off paper by default, which would print the
+   * pressed chip's paper-coloured name on white. */
+  .dl-chip[aria-pressed="true"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }

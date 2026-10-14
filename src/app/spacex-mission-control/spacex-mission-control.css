@@ -73,16 +73,22 @@
   border-bottom: 1px solid rgba(232, 237, 243, 0.16);
 }
 
-/* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
-.sx-root :where(h1, h2, h3, h4) {
-  font-family: var(--c97-font-body);
-  color: var(--c97-ink);
-  margin: 0;
-}
+/* What the frame leaks: the base layer's heading face, paragraph measure, and
+ * list padding. The resets sit in that layer too, where one class of weight
+ * still beats the frame's element rules. Left outside a layer they outranked
+ * every Tailwind utility on a heading or a paragraph, and the components
+ * under src/components/spacex set mono labels and margins that way. */
+@layer base {
+  .sx-root :where(h1, h2, h3, h4) {
+    font-family: var(--c97-font-body);
+    color: var(--c97-ink);
+    margin: 0;
+  }
 
-.sx-root :where(p, dl, dd) {
-  margin: 0;
-  max-inline-size: none;
+  .sx-root :where(p, dl, dd) {
+    margin: 0;
+    max-inline-size: none;
+  }
 }
 
 .sx-console-inner {
@@ -216,7 +222,7 @@
   gap: var(--c97-sp-3);
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .sx-mast {
     grid-template-columns: minmax(0, 1fr) 240px;
     align-items: start;
@@ -300,8 +306,9 @@
 }
 
 /* On a phone the photo would push the manifest a screen down, and the
- * masthead already names the rocket, so it prints from 640px. */
-@media screen and (max-width: 639px) {
+ * masthead already names the rocket, so it shows from 640px. Paper leaves it
+ * off too, since its captions are light type set over the picture. */
+@media print, screen and (max-width: 639px) {
   .sx-mast-photo {
     display: none;
   }
@@ -323,6 +330,11 @@
   overflow: hidden;
   border-top: 1px solid var(--c97-rule);
   padding-top: var(--c97-sp-1);
+}
+
+/* The tape's scroll region runs to the clipped right and bottom edges, so its ring sits inside it. */
+.sx-tape [role="region"]:focus-visible {
+  outline-offset: -2px;
 }
 
 .sx-root .sx-muted {
@@ -414,6 +426,12 @@
     z-index: 2;
     border-bottom: 1px solid var(--sx-rule);
   }
+
+  /* Focus moving up the cards scrolls one to the top edge, which is under the
+   * stuck tools (67px on one row), so a card asks for room above itself. */
+  .sx-cards > * {
+    scroll-margin-top: 5rem;
+  }
 }
 
 .sx-switch {
@@ -437,6 +455,14 @@
 .sx-switch button[aria-pressed="true"] {
   background: var(--sx-ink);
   color: var(--sx-paper);
+}
+
+/* The switch clips at its rounded border, which cut the frame's outset ring
+ * away. Inside the button it shows whole, in the button's own text colour,
+ * since the accent on the pressed fill is under 3:1 in both themes. */
+.sx-root .sx-switch button:focus-visible {
+  outline-offset: -4px;
+  outline-color: currentColor;
 }
 
 .sx-filters {
@@ -477,13 +503,13 @@
   gap: var(--c97-sp-2);
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
   .sx-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .sx-cards {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -550,7 +576,7 @@
   padding: var(--c97-sp-2);
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
   .sx-spec-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -574,7 +600,38 @@
     position: static;
   }
 
+  /* Paper drops background fills by default, which left the display band's
+   * light type on white. On paper the band is a white sheet in dark ink. */
   .sx-console {
+    --c97-surface: #fff;
+    --c97-field: #fff;
+    --c97-panel: #fff;
+    --c97-ink: #111;
+    --c97-ink-2: #444;
+    --c97-label: #444;
+    --c97-rule: rgba(0, 0, 0, 0.18);
+    --c97-action: #111;
+    --c97-accent: #1f5fbf;
+    --c97-positive: #2e7d32;
+    --c97-negative: #b3261e;
+    --c97-warning: #8a5600;
+
+    background: #fff;
+    color: #111;
     border-bottom: 1px solid #000;
+  }
+
+  /* The two filled controls are told by their fill alone, so paper draws them as outlines. */
+  .sx-button {
+    border: 1px solid var(--c97-ink);
+    background: none;
+    color: var(--c97-ink);
+  }
+
+  .sx-switch button[aria-pressed="true"] {
+    background: none;
+    color: var(--sx-ink);
+    outline: 2px solid var(--sx-ink);
+    outline-offset: -2px;
   }
 }

@@ -1,13 +1,10 @@
 export { SurfaceCard } from "./SurfaceCard";
-export { MetricCard } from "./MetricCard";
 export { TeamResultPill } from "./TeamResultPill";
 export { InfoChip } from "./InfoChip";
 export { CrestAvatar } from "./CrestAvatar";
 export { EmptyPanel } from "./EmptyPanel";
 export { FixtureCard } from "./FixtureCard";
 export type { GenericFixture } from "./FixtureCard";
-export { LeaderList } from "./LeaderList";
-export type { LeaderEntry } from "./LeaderList";
 export { LeaderLedger } from "./LeaderLedger";
 export { ResultsTape } from "./ResultsTape";
 export { GoalsPulseStrip } from "./GoalsPulseStrip";

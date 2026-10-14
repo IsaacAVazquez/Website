@@ -302,12 +302,22 @@
     grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.92fr);
   }
 
+  /*
+   * The team card runs taller than a laptop's window, so the stuck column
+   * scrolls inside itself. The inline padding, cancelled by the margin, is
+   * room for the lookup's focus ring, which the scroll box would clip.
+   */
   .wcup-aside {
     grid-column: 2;
     grid-row: 1;
     position: sticky;
     top: var(--c97-sp-4);
     align-self: start;
+    max-height: calc(100dvh - 2 * var(--c97-sp-4));
+    margin-inline: -5px;
+    padding-inline: 5px;
+    overflow-y: auto;
+    scrollbar-width: thin;
   }
 
   .wcup-panel {
@@ -404,7 +414,9 @@
   border-bottom: 1px solid var(--wcup-rule);
 }
 
-.wcup-table tbody tr[data-selected] td {
+/* The pinned team's row, in a table or in the knockout ledger, where the row is a div. */
+.wcup-table tbody tr[data-selected] td,
+.wcup-panel div[data-selected] {
   background: color-mix(in srgb, var(--wcup-ink) 8%, transparent);
 }
 
@@ -474,6 +486,13 @@
   padding: 1px;
   border: 0;
   background: transparent;
+}
+
+/* On the narrowest phones a ledger row has room for the flags or the full names, and the names win. */
+@media screen and (max-width: 374px) {
+  .wcup-panel div.grid img {
+    display: none;
+  }
 }
 
 .wcup-section {

@@ -100,6 +100,21 @@ describe("SettingsClient pools", () => {
     expect(after.activePoolId).toBe("pool-1");
     expect(screen.getByRole("heading", { name: "Office pool" })).toBeInTheDocument();
   });
+
+  // The name has no length limit and the shared button never wraps on its own,
+  // so the confirmation has to give way on a phone instead of widening the page.
+  it("lets the delete confirmation wrap, and a long pool name wrap inside its button", async () => {
+    const user = userEvent.setup();
+    seedStore([pool({ name: "Work Champions League pool 2026" })]);
+    renderSettings();
+    const danger = screen.getByRole("region", { name: "Delete pool" });
+
+    await user.click(within(danger).getByRole("button", { name: "Delete pool…" }));
+    const confirm = within(danger).getByRole("button", { name: "Yes, delete Work Champions League pool 2026" });
+    expect(confirm.parentElement).toHaveClass("flex-wrap");
+    expect(confirm.parentElement).toContainElement(within(danger).getByRole("button", { name: "Keep it" }));
+    expect(confirm).toHaveStyle({ whiteSpace: "normal", overflowWrap: "anywhere" });
+  });
 });
 
 describe("SettingsClient pool settings", () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Info, RefreshCw } from "lucide-react";
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import {
   buildCardMix,
   calcProcessorResults,
@@ -126,6 +126,32 @@ export function InterchangeIQClient() {
   const scale = useMemo(() => breakevenScale(avgTicket, breakevenTicket), [avgTicket, breakevenTicket]);
   const hasBreakeven = breakevenTicket !== null && breakevenTicket > 0;
 
+  // A closed row prints its fee and nothing else, so every row opens for the
+  // print and the ones opened here close again afterwards, including after a
+  // cancelled print.
+  useEffect(() => {
+    // Accumulated, since a second beforeprint can arrive before the afterprint.
+    let opened: HTMLDetailsElement[] = [];
+    const openRows = () => {
+      document.querySelectorAll<HTMLDetailsElement>(".iq-statement details:not([open])").forEach((row) => {
+        row.open = true;
+        opened.push(row);
+      });
+    };
+    const restoreRows = () => {
+      opened.forEach((row) => {
+        row.open = false;
+      });
+      opened = [];
+    };
+    window.addEventListener("beforeprint", openRows);
+    window.addEventListener("afterprint", restoreRows);
+    return () => {
+      window.removeEventListener("beforeprint", openRows);
+      window.removeEventListener("afterprint", restoreRows);
+    };
+  }, []);
+
   function handleReset() {
     setMonthlyVolume(DEFAULT_VOLUME);
     setAvgTicket(DEFAULT_TICKET);
@@ -145,7 +171,7 @@ export function InterchangeIQClient() {
         <header className="iq-title">
           <h1>Interchange IQ</h1>
           <p>
-            This estimates what seven card processors would charge you each month from their public pricing, on flat
+            This estimates what six card processors would charge you each month from their public pricing, on flat
             rate and on interchange plus, so you can see where flat rate costs more before you commit to either.
           </p>
         </header>
@@ -342,7 +368,7 @@ export function InterchangeIQClient() {
                       <>
                         {" · "}
                         <span className="iq-key" data-kind="breakeven" aria-hidden="true" />
-                        Breakeven ${(breakevenTicket ?? 0).toFixed(0)}
+                        Breakeven ${(breakevenTicket ?? 0).toFixed(2)}
                       </>
                     ) : null}
                   </span>

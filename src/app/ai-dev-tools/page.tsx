@@ -1,15 +1,14 @@
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { AI_DEV_TOOLS_GENERATED_AT, aiDevTools } from "./ai-dev-tools-data";
 import { AiDevToolsClient } from "./ai-dev-tools-client";
-import { normalizeAiDevToolsState } from "./ai-dev-tools-state";
 
 export const metadata = constructMetadata({
   title: "AI Dev Tool Ecosystem",
   description:
     "Directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and deep-linkable filters.",
   canonicalUrl: "/ai-dev-tools",
-  dateModified: AI_DEV_TOOLS_GENERATED_AT.slice(0, 10),
+  dateModified: laterDate(AI_DEV_TOOLS_GENERATED_AT.slice(0, 10), "2026-10-12"),
 });
 
 interface AiDevToolsPageProps {
@@ -24,7 +23,9 @@ interface AiDevToolsPageProps {
 }
 
 export default async function AiDevToolsPage({ searchParams }: AiDevToolsPageProps) {
-  const initialState = normalizeAiDevToolsState(await searchParams);
+  // Read only to keep the page rendered per request, so the client's
+  // useSearchParams has the URL's filters and tool in the server HTML.
+  await searchParams;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "AI Dev Tool Ecosystem", url: "/ai-dev-tools" },
@@ -58,7 +59,7 @@ export default async function AiDevToolsPage({ searchParams }: AiDevToolsPagePro
           keywords: aiDevTools.map((tool) => tool.name),
         }}
       />
-      <AiDevToolsClient initialState={initialState} />
+      <AiDevToolsClient />
     </>
   );
 }

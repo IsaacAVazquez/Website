@@ -11,7 +11,6 @@ import {
   loadMBAApplications,
   MBA_APPLICATIONS_STORAGE_KEY,
   mergeMBAApplications,
-  mergeMBAJobCandidates,
   parseMBAApplications,
   parseMBAApplicationsImport,
   parseMBAJobCandidates,
@@ -117,8 +116,14 @@ export function useMBAApplications() {
           return mergeMBAApplications(current, [tracked]);
         }
 
-        const nextStatus =
-          status === "saved" && existing.status !== "saved" ? existing.status : status;
+        // Tracking or marking applied from the feed never moves an application
+        // back a stage: a saved one stays past saved, and one that reached an
+        // interview or an offer stays there.
+        const keepsStage =
+          (status === "saved" && existing.status !== "saved") ||
+          (status === "applied" &&
+            (existing.status === "interviewing" || existing.status === "offer"));
+        const nextStatus = keepsStage ? existing.status : status;
         const updated =
           nextStatus === existing.status
             ? {
@@ -468,17 +473,21 @@ export function useMBAJobCandidates() {
 
   usePullOnResume(enabled, pull);
 
+  // Takes the edit itself, not the edited list, so a 409 can replay it on the
+  // server's copy. Merging the two lists there would bring a removed candidate
+  // back, since the server still holds it.
   const put = useCallback(
-    async (next: MBAJobCandidate[]) => {
+    async (edit: (list: MBAJobCandidate[]) => MBAJobCandidate[]) => {
       if (!enabled) return;
+      const next = edit(candidates);
       setCandidates(next);
       try {
         let response = await putJson("candidates", revisionRef.current, next);
         if (response.status === 409) {
           const current = await readPayload(response);
-          const merged = mergeMBAJobCandidates(candidatesFromServer(current.items), next);
-          setCandidates(merged);
-          response = await putJson("candidates", current.revision, merged);
+          const replayed = edit(candidatesFromServer(current.items));
+          setCandidates(replayed);
+          response = await putJson("candidates", current.revision, replayed);
         }
         if (!response.ok) return;
         const payload = await readPayload(response);
@@ -488,26 +497,26 @@ export function useMBAJobCandidates() {
         // Local state already reflects the edit; the next pull reconciles.
       }
     },
-    [enabled]
+    [candidates, enabled]
   );
 
   const setTriage = useCallback(
     (id: string, triage: MBACandidateTriage) => {
       const now = new Date().toISOString();
-      void put(
-        candidates.map((candidate) =>
+      void put((list) =>
+        list.map((candidate) =>
           candidate.id === id ? { ...candidate, triage, updatedAt: now } : candidate
         )
       );
     },
-    [candidates, put]
+    [put]
   );
 
   const removeCandidate = useCallback(
     (id: string) => {
-      void put(candidates.filter((candidate) => candidate.id !== id));
+      void put((list) => list.filter((candidate) => candidate.id !== id));
     },
-    [candidates, put]
+    [put]
   );
 
   return { candidates, enabled, setTriage, removeCandidate };

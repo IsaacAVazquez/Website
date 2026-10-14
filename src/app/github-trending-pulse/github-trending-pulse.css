@@ -119,12 +119,24 @@
   background: var(--gt-bg);
 }
 
-/* The switches stay in reach while the list scrolls under them. */
-@media screen and (min-width: 768px) {
+/* The switches stay in reach while the list scrolls under them, in a window
+ * tall enough to spare the room. On a landscape phone or a zoomed laptop the
+ * wrapped bar would take about half the screen. */
+@media screen and (min-width: 768px) and (min-height: 600px) {
   .gt-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
+  }
+
+  /* A row focused under the stuck bar is still inside the window, so no
+   * browser scrolls it clear, and only the window's own scroll padding moves
+   * it. The padding holds while focus is in the list and covers the bar at its
+   * tallest (218px, the four-row wrap of the topic view under 1024px) plus one
+   * 44px button and its 5px ring, since Firefox moves a row only once the
+   * whole of it is inside the padded area. */
+  html:has(.gt-list:focus-within) {
+    scroll-padding-top: 17rem;
   }
 }
 
@@ -194,10 +206,16 @@
 
 /* On a phone the segment switch scrolls sideways in one row, the way the genre does it. */
 @media screen and (max-width: 767px) {
+  /* The scroll box clips, so it carries 5px of room on every side for the 2px
+   * focus ring at its 3px offset, and a matching negative margin keeps the
+   * first button on the page's edge. */
   .gt-switch--scroll {
     flex: 1 1 100%;
     flex-wrap: nowrap;
     overflow-x: auto;
+    margin: -5px;
+    padding: 5px;
+    scroll-padding-inline: 5px;
     scrollbar-width: none;
   }
 
@@ -220,10 +238,11 @@
   width: 100%;
 }
 
+/* The smallest share still holds its paper gap, both sides of its outline, and a pixel of colour. */
 .gt-strip-segment {
   display: flex;
   flex-direction: column;
-  min-width: 3px;
+  min-width: 5px;
   border-right: 2px solid var(--gt-bg);
 }
 
@@ -231,10 +250,13 @@
   border-right: 0;
 }
 
+/* Linguist's paler colours, JavaScript's yellow most of all, sit under 3:1 on
+ * the light paper, so every segment carries an outline that holds on any paper. */
 .gt-strip-swatch {
   display: block;
   height: 12px;
   width: 100%;
+  border: 1px solid var(--gt-ink-2);
 }
 
 .gt-strip-label {
@@ -280,6 +302,7 @@
 
 /* The strip's grey, for every language without a colour of its own. */
 .gt-root .gt-key--other {
+  border: 1px solid var(--gt-ink-2);
   background: var(--gt-other);
 }
 
@@ -318,10 +341,15 @@
 
 /* The list */
 
+/* A sort moves the rows and keeps their nodes, so scroll anchoring would
+ * follow the row at the top of the window to its new rank and take the window
+ * with it. The list opts out, so a sort from the stuck bar leaves the window
+ * where it is. */
 .gt-list {
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-2);
+  overflow-anchor: none;
 }
 
 .gt-scroll {
@@ -617,10 +645,29 @@
     position: static;
   }
 
+  /* The open row's stars, language, pushed, and link go, since paper prints
+   * their columns. The fold button stays, as the one line that says the list
+   * runs past 25 rows. */
   .gt-switch > button:not([aria-pressed="true"]),
   .gt-sort,
-  .gt-more {
+  .gt-narrow {
     display: none;
+  }
+
+  /* Paper drops background fills by default, so the switch that prints takes
+   * ink text and no fill, and the bars, the strip, and the legend keys, which
+   * are the page's data, keep theirs. */
+  .gt-switch > button[aria-pressed="true"] {
+    background: none;
+    color: var(--gt-ink);
+  }
+
+  .gt-track,
+  .gt-bar,
+  .gt-strip-swatch,
+  .gt-key {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .gt-row:hover {

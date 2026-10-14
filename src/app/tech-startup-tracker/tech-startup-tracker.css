@@ -38,21 +38,25 @@
   font-variant-numeric: tabular-nums;
 }
 
-.dark .ts-root {
-  --ts-bg: #0f141c;
-  --ts-raise: #1a212c;
-  --ts-ink: #e6e9ef;
-  --ts-ink-2: #a3abb8;
-  --ts-rule: rgba(230, 233, 239, 0.13);
-  --ts-rule-strong: rgba(230, 233, 239, 0.34);
-  --ts-focus: #8db4f5;
-  --ts-warn: #f0b35a;
-  --c97-chart-1: #4a7fb5;
-  --c97-chart-2: #8fb0d9;
-  --c97-chart-3: #5aa58f;
-  --c97-chart-4: #b5cf93;
-  --c97-chart-5: #d39a58;
-  --c97-chart-6: #b07fb3;
+/* The dark sheet is for the screen. Paper takes the light palette in both
+ * themes, since light ink is lost on white when backgrounds are off. */
+@media screen {
+  .dark .ts-root {
+    --ts-bg: #0f141c;
+    --ts-raise: #1a212c;
+    --ts-ink: #e6e9ef;
+    --ts-ink-2: #a3abb8;
+    --ts-rule: rgba(230, 233, 239, 0.13);
+    --ts-rule-strong: rgba(230, 233, 239, 0.34);
+    --ts-focus: #8db4f5;
+    --ts-warn: #f0b35a;
+    --c97-chart-1: #4a7fb5;
+    --c97-chart-2: #8fb0d9;
+    --c97-chart-3: #5aa58f;
+    --c97-chart-4: #b5cf93;
+    --c97-chart-5: #d39a58;
+    --c97-chart-6: #b07fb3;
+  }
 }
 
 /* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
@@ -192,19 +196,6 @@
   border-radius: 6px;
 }
 
-@media screen and (max-width: 767px) {
-  .ts-switch--scroll {
-    flex: 1 1 100%;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .ts-switch--scroll > button {
-    flex: none;
-  }
-}
-
 /* The table */
 
 .ts-list {
@@ -252,6 +243,12 @@
   background: var(--ts-raise);
 }
 
+/* A chip fills from the same raise colour as the open row, so inside that
+ * row it takes the paper and keeps its shape. */
+.ts-table tbody tr[id] .c97-chip {
+  background: var(--ts-bg);
+}
+
 @media screen and (min-width: 1024px) {
   .ts-table {
     min-width: 820px;
@@ -284,11 +281,18 @@
   color: var(--ts-ink-2);
 }
 
+/* Paper keeps the pressed option of each switch, the sort order included,
+ * since the list's rank means nothing without it. The pressed fill does not
+ * print with backgrounds off, so the option prints as ink text. */
 @media print {
   .ts-switch > button:not([aria-pressed="true"]),
-  .ts-sort,
   .ts-notice-link {
     display: none;
+  }
+
+  .ts-switch > button[aria-pressed="true"] {
+    background: none;
+    color: var(--ts-ink);
   }
 }
 

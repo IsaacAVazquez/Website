@@ -55,6 +55,26 @@ describe("ComparisonRadarChart", () => {
     expect(anchors).toEqual(["middle", "start", "middle", "end"]);
   });
 
+  it("colours every mark with the tokens themselves, so a theme change needs no redraw", () => {
+    const { container } = render(<ComparisonRadarChart data={data} symbolA="AAPL" symbolB="MSFT" />);
+    const svg = container.querySelector("svg") as SVGSVGElement;
+    const style = (el: Element, property: string) => (el as SVGElement).style.getPropertyValue(property);
+
+    expect(style(svg.querySelector("circle:not([cx])")!, "stroke")).toBe("var(--c97-rule, currentColor)");
+    expect(style(svg.querySelector("line")!, "stroke")).toBe("var(--c97-rule, currentColor)");
+    expect(style(svg.querySelector("text")!, "fill")).toBe("var(--c97-ink-2, currentColor)");
+    // B's polygon is drawn first, so A's sits on top.
+    const [polygonB, polygonA] = Array.from(svg.querySelectorAll("path"));
+    expect(style(polygonB, "fill")).toBe("var(--c97-ink, currentColor)");
+    expect(style(polygonB, "stroke")).toBe("var(--c97-ink, currentColor)");
+    expect(style(polygonA, "fill")).toBe("var(--c97-accent, currentColor)");
+    expect(style(polygonA, "stroke")).toBe("var(--c97-accent, currentColor)");
+    const points = Array.from(svg.querySelectorAll("circle[cx]"));
+    expect(style(points[0], "fill")).toBe("var(--c97-accent, currentColor)");
+    expect(style(points[4], "fill")).toBe("var(--c97-ink, currentColor)");
+    points.forEach((point) => expect(style(point, "stroke")).toBe("var(--c97-surface, currentColor)"));
+  });
+
   it("names both symbols in the legend", () => {
     render(<ComparisonRadarChart data={data} symbolA="AAPL" symbolB="MSFT" />);
     expect(screen.getByText("AAPL")).toBeInTheDocument();

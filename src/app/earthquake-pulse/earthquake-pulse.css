@@ -145,7 +145,7 @@
   font-size: 18px;
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .eq-plot-svg .eq-axis {
     font-size: 30px;
   }
@@ -174,7 +174,8 @@
   gap: var(--c97-sp-3) var(--c97-sp-4);
 }
 
-@media (min-width: 1024px) {
+/* Screen only, so paper keeps the one column whatever width the window was. */
+@media screen and (min-width: 1024px) {
   .eq-board {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     align-items: start;
@@ -215,7 +216,7 @@
   .eq-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
   }
 }
 
@@ -288,7 +289,8 @@
   text-decoration: underline;
 }
 
-.eq-quake-log-row[aria-current="true"] {
+/* The quake marked on the trace and the plot, whether or not its detail is open. */
+.eq-quake-log-row[data-selected] {
   box-shadow: inset 3px 0 0 0 var(--eq-ink);
 }
 
@@ -358,7 +360,7 @@ button.eq-region {
   cursor: pointer;
 }
 
-.eq-region[aria-current="true"] {
+.eq-region[aria-expanded="true"] {
   box-shadow: inset 3px 0 0 0 var(--eq-ink);
 }
 
@@ -412,7 +414,7 @@ button.eq-region {
   gap: var(--c97-sp-1) var(--c97-sp-3);
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
   .eq-detail-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -447,25 +449,16 @@ button.eq-region {
 
 /* At phone width the trace scales to about a third, so its type is set larger
  * in viewBox units and the long strongest-quake label moves into the caption
- * under the trace. 40px keeps the axis comfortably above 11px down to ~320px. */
+ * under the trace. 40px keeps the axis comfortably above 11px down to ~320px.
+ * The plot's latitude labels take the same size here, named with both classes
+ * because the plot's own 18px rule would otherwise outrank it. */
 @media print, screen and (max-width: 639px) {
-  .eq-axis {
+  .eq-axis,
+  .eq-plot-svg .eq-axis {
     font-size: 40px;
   }
 
-  /* The plot prints at about 45% of its 1000-unit viewBox beside the log and
- * at full width under 1024px, so its labels are sized for each. */
-.eq-plot-svg .eq-axis {
-  font-size: 18px;
-}
-
-@media (min-width: 1024px) {
-  .eq-plot-svg .eq-axis {
-    font-size: 30px;
-  }
-}
-
-.eq-trace-label {
+  .eq-trace-label {
     display: none;
   }
 
@@ -473,8 +466,7 @@ button.eq-region {
     display: inline;
   }
 
-  .eq-trace-svg [data-quake-tick="mid"],
-  .eq-plot-svg .eq-axis {
+  .eq-trace-svg [data-quake-tick="mid"] {
     display: none;
   }
 
@@ -486,10 +478,13 @@ button.eq-region {
     row-gap: var(--c97-sp-1);
   }
 
+  /* The day, the clock, and the age run on one line and wrap as whole pieces
+   * when the column is too narrow for all of them. */
   .eq-quake-log-row > :nth-child(1) {
     grid-area: time;
     display: flex;
-    gap: var(--c97-sp-2);
+    flex-wrap: wrap;
+    gap: 0 var(--c97-sp-2);
     white-space: nowrap;
   }
 
@@ -503,12 +498,5 @@ button.eq-region {
 
   .eq-quake-log-row > :nth-child(4) {
     grid-area: depth;
-  }
-}
-
-@media print {
-  .eq-toolbar,
-  .eq-plot {
-    position: static;
   }
 }

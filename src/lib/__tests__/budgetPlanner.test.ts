@@ -3,8 +3,10 @@ import {
   ensureBudgetMonth,
   formatBudgetMonthLabel,
   getAdjacentBudgetMonthKey,
+  getBudgetMonthLastDate,
   getCurrentBudgetMonthKey,
   getDefaultExpenseDate,
+  isDateInBudgetMonth,
   parseBudgetMonths,
 } from "@/lib/budgetPlanner";
 import type { BudgetMonth } from "@/types/budget";
@@ -107,26 +109,37 @@ describe("budgetPlanner helpers", () => {
   });
 });
 
-// The "current month" and "default expense day" pin to the display zone
-// (America/Los_Angeles) instead of the runtime's own zone, so a UTC server
-// and a visitor's browser agree on the same calendar day near midnight and
-// the same calendar month near month end. These assert against explicit ISO
-// instants and must pass under both TZ=UTC and TZ=Asia/Tokyo.
-describe("budget month/day pinning", () => {
-  it("resolves the current month key from the display zone, not the runtime zone", () => {
-    // 2026-10-01T00:00:00Z is still Sep 30 in America/Los_Angeles (PDT, UTC-7).
-    expect(getCurrentBudgetMonthKey(new Date("2026-10-01T00:00:00.000Z"))).toBe("2026-09");
-    // 2026-10-01T08:00:00Z is Oct 1, 1am in Los Angeles.
-    expect(getCurrentBudgetMonthKey(new Date("2026-10-01T08:00:00.000Z"))).toBe("2026-10");
+// The "current month" and "default expense day" are the visitor's own, read
+// from the runtime's calendar. These build each instant from local parts, so
+// they hold in any zone, and a helper that pinned Pacific time would fail
+// them in every zone east of it.
+describe("budget month and day", () => {
+  it("resolves the current month key from the runtime's own calendar", () => {
+    expect(getCurrentBudgetMonthKey(new Date(2026, 9, 1, 0, 30))).toBe("2026-10");
+    expect(getCurrentBudgetMonthKey(new Date(2026, 8, 30, 23, 30))).toBe("2026-09");
   });
 
-  it("resolves the default expense day from the display zone", () => {
-    expect(getDefaultExpenseDate("2026-09", new Date("2026-10-01T00:00:00.000Z"))).toBe(
-      "2026-09-30"
-    );
-    expect(getDefaultExpenseDate("2026-10", new Date("2026-10-01T00:00:00.000Z"))).toBe(
-      "2026-10-01"
-    );
+  it("defaults an expense to today in the current month and to the 1st in any other", () => {
+    const halfPastMidnight = new Date(2026, 9, 1, 0, 30);
+
+    expect(getDefaultExpenseDate("2026-10", halfPastMidnight)).toBe("2026-10-01");
+    expect(getDefaultExpenseDate("2026-09", halfPastMidnight)).toBe("2026-09-01");
+    expect(getDefaultExpenseDate("2026-09", new Date(2026, 8, 30, 23, 30))).toBe("2026-09-30");
+    // No month yet, so no date.
+    expect(getDefaultExpenseDate("", halfPastMidnight)).toBe("");
+  });
+
+  it("gives a month's last day, leap years included", () => {
+    expect(getBudgetMonthLastDate("2026-09")).toBe("2026-09-30");
+    expect(getBudgetMonthLastDate("2026-02")).toBe("2026-02-28");
+    expect(getBudgetMonthLastDate("2028-02")).toBe("2028-02-29");
+    expect(getBudgetMonthLastDate("")).toBe("");
+  });
+
+  it("knows whether a date falls inside a budget month", () => {
+    expect(isDateInBudgetMonth("2026-09-30", "2026-09")).toBe(true);
+    expect(isDateInBudgetMonth("2026-10-01", "2026-09")).toBe(false);
+    expect(isDateInBudgetMonth("2026-09-30", "")).toBe(false);
   });
 
   it("steps a month key forward and backward with pure arithmetic, including year rollover", () => {

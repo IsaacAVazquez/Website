@@ -42,6 +42,7 @@ import {
 } from "@/hooks/useTravelPlanner";
 import { useClientNow } from "@/hooks/useClientNow";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { daysBetween } from "@/lib/date-formatters";
 import { boardingPass, itineraryColumns, timelineTicks, type ItineraryColumn, type TimelineTick } from "./itinerary";
 import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types/travel";
 import "./travel.css";
@@ -109,8 +110,17 @@ function formatBudget(value: number) {
   });
 }
 
-/** An empty date in the new-trip draft means "today", which is only known once the page has mounted. */
-const EMPTY_TRIP_DRAFT = { name: "", destination: "", startDate: "", endDate: "" };
+/**
+ * A null date in the new-trip draft means "today", which is only known once
+ * the page has mounted. An empty string is a date the visitor cleared or has
+ * half typed, and it stays empty so the field is not written over mid-edit.
+ */
+const EMPTY_TRIP_DRAFT: { name: string; destination: string; startDate: string | null; endDate: string | null } = {
+  name: "",
+  destination: "",
+  startDate: null,
+  endDate: null,
+};
 
 export function TravelPlannerClient() {
   // Today is the browser's day, read after mount. The server's day and the
@@ -143,8 +153,8 @@ export function TravelPlannerClient() {
 
   const tripNameInputRef = useRef<HTMLInputElement>(null);
   const [tripDraft, setTripDraft] = useState(EMPTY_TRIP_DRAFT);
-  const draftStart = tripDraft.startDate || today;
-  const draftEnd = tripDraft.endDate || today;
+  const draftStart = tripDraft.startDate ?? today;
+  const draftEnd = tripDraft.endDate ?? today;
   const [showTripForm, setShowTripForm] = useState(false);
   // Which delete button is armed, as "active:<id>" or "row:<id>". A second
   // click deletes, "Keep it" disarms, and focus returns to a control that stays.
@@ -182,14 +192,23 @@ export function TravelPlannerClient() {
 
   const [lastTripContext, setLastTripContext] = useState({ tripId: activeTripId, date: defaultActivityDate });
   if (lastTripContext.tripId !== activeTripId || lastTripContext.date !== defaultActivityDate) {
+    const tripChanged = lastTripContext.tripId !== activeTripId;
     setLastTripContext({ tripId: activeTripId, date: defaultActivityDate });
-    setEditingActivityId(null);
-    setEditingJournalId(null);
-    if (lastTripContext.tripId !== activeTripId) setFormDay(null);
-    setActivityDraft((draft) =>
-      draft.title || draft.location || draft.notes || draft.time ? draft : emptyActivityDraft(defaultActivityDate)
-    );
-    setJournalDraft((draft) => (draft.title || draft.body ? draft : emptyJournalDraft(defaultActivityDate)));
+    // The default day also moves at midnight and when the trip's dates change.
+    // Only another trip ends an edit, or Save would add a copy and leave the original as it was.
+    if (tripChanged) {
+      setEditingActivityId(null);
+      setEditingJournalId(null);
+      setFormDay(null);
+    }
+    if (tripChanged || !editingActivityId) {
+      setActivityDraft((draft) =>
+        draft.title || draft.location || draft.notes || draft.time ? draft : emptyActivityDraft(defaultActivityDate)
+      );
+    }
+    if (tripChanged || !editingJournalId) {
+      setJournalDraft((draft) => (draft.title || draft.body ? draft : emptyJournalDraft(defaultActivityDate)));
+    }
   }
 
   function resetActivityDraft() {
@@ -337,12 +356,13 @@ export function TravelPlannerClient() {
           onChange={(e) => {
             const startDate = e.target.value;
             setTripDraft((d) => {
-              const end = d.endDate || today;
+              const end = d.endDate ?? today;
               return { ...d, startDate, endDate: !end || end < startDate ? startDate : end };
             });
           }}
           className="c97-field"
-          required
+          // Required only once today has filled the field, since an empty required date paints as an error.
+          required={today !== ""}
         />
       </label>
       <label>
@@ -353,7 +373,7 @@ export function TravelPlannerClient() {
           min={draftStart || undefined}
           onChange={(e) => setTripDraft((d) => ({ ...d, endDate: e.target.value }))}
           className="c97-field"
-          required
+          required={today !== ""}
         />
       </label>
       <div className="tp-span-2 tp-actions">
@@ -585,6 +605,23 @@ export function TravelPlannerClient() {
               </button>
             </div>
 
+            {/* The budget and the notes live in the disclosure below, which paper hides, so they print from here. */}
+            {activeTrip.budget > 0 || activeTrip.notes ? (
+              <div className="tp-print-details">
+                {activeTrip.budget > 0 ? (
+                  <p>
+                    <span className="c97-kicker">Budget</span> {formatBudget(activeTrip.budget)}
+                  </p>
+                ) : null}
+                {activeTrip.notes ? (
+                  <>
+                    <p className="c97-kicker">Trip notes</p>
+                    <p className="tp-print-notes">{activeTrip.notes}</p>
+                  </>
+                ) : null}
+              </div>
+            ) : null}
+
             {showTripForm ? (
               <form onSubmit={handleCreateTrip} className="tp-form tp-form-trip tp-new-trip-form" aria-label="Create a new trip">
                 {tripFormFields}
@@ -699,10 +736,15 @@ export function TravelPlannerClient() {
                   {summary.activitiesTotal === 0 ? (
                     <p className="tp-note">No stops yet. Add the first one with the Add stop form.</p>
                   ) : null}
-                  {summary.dayBuckets.map((bucket, index) => (
+                  {summary.dayBuckets.map((bucket) => (
                     <DayList
                       key={bucket.date}
-                      dayNumber={index + 1}
+                      // Counted from the trip's start. A stop left outside the trip's dates keeps its day and takes no number.
+                      dayNumber={
+                        bucket.date >= activeTrip.startDate && bucket.date <= activeTrip.endDate
+                          ? (daysBetween(activeTrip.startDate, bucket.date) ?? 0) + 1
+                          : null
+                      }
                       bucket={bucket}
                       today={today}
                       onToggle={(id) => toggleActivity(activeTrip.id, id)}
@@ -927,7 +969,7 @@ function DayList({
   onAddStop,
   form,
 }: {
-  dayNumber: number;
+  dayNumber: number | null;
   bucket: NonNullable<ReturnType<typeof useTravelPlanner>["summary"]>["dayBuckets"][number];
   today: string;
   onToggle: (id: string) => void;
@@ -941,8 +983,9 @@ function DayList({
   return (
     <div className="tp-day" data-today={isToday || undefined}>
       <div className="tp-day-head">
+        {/* Always rendered, since the head is a three-column grid and the heading must stay in the second. */}
         <p className="tp-day-number" aria-hidden="true">
-          Day {dayNumber}
+          {dayNumber === null ? null : `Day ${dayNumber}`}
         </p>
         <h3 className="tp-day-heading">
           {heading}
@@ -1150,7 +1193,8 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
         <input
           type="number"
           min="0"
-          step="50"
+          // Any amount is a budget, cents included, so no step marks one as invalid.
+          step="any"
           value={draft.budget}
           onChange={(e) => setDraftField("budget", e.target.value)}
           onBlur={() => onUpdateField({ budget: Number(draft.budget) || 0 })}

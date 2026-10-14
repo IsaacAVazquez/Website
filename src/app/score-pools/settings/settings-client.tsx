@@ -699,7 +699,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 Removes the pool, its picks, rivals, flags, and hand-entered odds from this
                 browser. There is no undo.
               </p>
-              <div className="flex" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+              <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {!confirmDelete ? (
                   <button type="button" className={PILL_BUTTON} onClick={() => setConfirmDelete(true)}>
                     Delete pool…
@@ -709,6 +709,14 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     <button
                       type="button"
                       className={PILL_BUTTON}
+                      // A pool name has no length limit and .c97-btn sets nowrap,
+                      // so a long name wraps inside the button, not past the column.
+                      style={{
+                        whiteSpace: "normal",
+                        overflowWrap: "anywhere",
+                        paddingBlock: "var(--c97-sp-1)",
+                        textAlign: "left",
+                      }}
                       onClick={() => {
                         removePool(pool.id);
                         setConfirmDelete(false);

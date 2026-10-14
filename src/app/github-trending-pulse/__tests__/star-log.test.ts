@@ -13,6 +13,10 @@ it("scales bars to the biggest week and floors small positive ones", () => {
   expect(small.share).toBeGreaterThanOrEqual(0.02);
 });
 
+it("draws each bar in proportion to its gain, so a bar a quarter as long is a quarter of the stars", () => {
+  expect(starBars([repo("a", 1000), repo("b", 250)]).map((b) => b.share)).toEqual([1, 0.25]);
+});
+
 it("gives no bar to flat or negative weeks", () => {
   expect(
     starBars([repo("a", 10), repo("flat", 0), repo("neg", -5)]).map((b) => b.share)

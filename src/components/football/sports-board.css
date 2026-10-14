@@ -130,7 +130,12 @@
   .sb-board > .sb-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
+  }
+
+  /* A control that takes focus under the stuck toolbar scrolls out from behind it, even where the switch wraps to three rows. */
+  .sb-board > :not(.sb-toolbar) :is(button, a) {
+    scroll-margin-top: 10rem;
   }
 }
 
@@ -195,6 +200,11 @@
     flex: 1 1 100%;
     flex-wrap: nowrap;
     min-width: 0;
+    /* Room for the focus ring, which the scroll box would clip. */
+    margin: -5px;
+    padding: 5px;
+    /* Keeps that room when the browser scrolls a focused pill into view on its own. */
+    scroll-padding-inline: 5px;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -295,14 +305,25 @@
 
 /* The fixture ledger borrows the shared crest tile and prints it at the table's size, unboxed. */
 .sb-detail img,
-.dd-panel .sb-games img {
+.sb-games img {
   width: 22px;
   height: 22px;
-  padding: 1px;
+  /* CrestAvatar sets its padding inline, which left a 12px logo in the 22px tile. */
+  padding: 1px !important;
   border: 0;
   border-radius: 4px;
   background: transparent;
   object-fit: contain;
+}
+
+/*
+ * Club logos are drawn for a light ground, so on a dark board each sits on a
+ * pale chip, the drawer's lead crest included. The :where() keeps these under
+ * a route's own chip rule whatever order the sheets load in.
+ */
+:where(.dark .sb-root) .sb-detail img,
+:where(.dark .sb-root) .dd-panel img {
+  background: var(--sb-ink);
 }
 
 .sb-muted {
@@ -350,5 +371,11 @@
 
   .sb-switch > button:not([aria-pressed="true"]):not([aria-selected="true"]) {
     display: none;
+  }
+
+  /* Paper drops background fills by default, so the one switch that prints takes ink text and no fill. */
+  .sb-switch > button:is([aria-pressed="true"], [aria-selected="true"]) {
+    background: none;
+    color: var(--sb-ink);
   }
 }

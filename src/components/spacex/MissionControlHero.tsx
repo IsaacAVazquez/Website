@@ -125,8 +125,9 @@ function MissionCountdown({
   return (
     <div
       data-testid="mission-countdown"
+      // A timer is not a live region by default. Marked polite, a screen
+      // reader was handed this text again every second.
       role="timer"
-      aria-live="polite"
       aria-label={`Time to launch: ${countdown}`}
       className="sx-countdown"
     >

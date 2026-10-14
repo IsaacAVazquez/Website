@@ -1,6 +1,7 @@
 import {
   buildGitHubTrendingSnapshot,
   calculateWeeklyStars,
+  formatGitHubCompactNumber,
 } from "@/lib/githubTrending";
 import type { GitHubTrendingSourceRepository } from "@/lib/githubTrending";
 import type { GitHubTrendingSnapshot } from "@/types/githubTrending";
@@ -49,6 +50,84 @@ describe("GitHub trending snapshot helpers", () => {
       status: "measured",
       baselineDate: "2026-04-21",
     });
+  });
+
+  it("labels the gain partial from the next reading when the target day was missed", () => {
+    const result = calculateWeeklyStars(
+      [
+        { date: "2026-10-04", stars: 100 },
+        { date: "2026-10-06", stars: 130 },
+        { date: "2026-10-12", stars: 200 },
+      ],
+      200,
+      "2026-10-12T12:00:00.000Z",
+      7
+    );
+
+    expect(result).toEqual({
+      weeklyStars: 70,
+      status: "partial",
+      baselineDate: "2026-10-06",
+    });
+  });
+
+  it("keeps an older reading's date and never calls a longer window measured", () => {
+    const result = calculateWeeklyStars(
+      [
+        { date: "2026-10-04", stars: 100 },
+        { date: "2026-10-12", stars: 200 },
+      ],
+      200,
+      "2026-10-12T12:00:00.000Z",
+      7
+    );
+
+    expect(result).toEqual({
+      weeklyStars: 100,
+      status: "partial",
+      baselineDate: "2026-10-04",
+    });
+  });
+
+  it("labels the gain partial when the history ends before today", () => {
+    const result = calculateWeeklyStars(
+      [
+        { date: "2026-10-05", stars: 60 },
+        { date: "2026-10-11", stars: 100 },
+      ],
+      100,
+      "2026-10-12T12:00:00.000Z",
+      7
+    );
+
+    expect(result).toEqual({
+      weeklyStars: 40,
+      status: "partial",
+      baselineDate: "2026-10-05",
+    });
+  });
+
+  it("starts a baseline when today's reading is the only one", () => {
+    const result = calculateWeeklyStars(
+      [{ date: "2026-10-12", stars: 200 }],
+      200,
+      "2026-10-12T12:00:00.000Z",
+      7
+    );
+
+    expect(result).toEqual({
+      weeklyStars: 0,
+      status: "baseline",
+      baselineDate: "2026-10-12",
+    });
+  });
+
+  it("prints one decimal from a thousand up and whole numbers below", () => {
+    expect(formatGitHubCompactNumber(939)).toBe("939");
+    expect(formatGitHubCompactNumber(1000)).toBe("1K");
+    expect(formatGitHubCompactNumber(1500)).toBe("1.5K");
+    expect(formatGitHubCompactNumber(3687)).toBe("3.7K");
+    expect(formatGitHubCompactNumber(12345)).toBe("12.3K");
   });
 
   // A segment whose fetch fails is restored from the previous snapshot, which

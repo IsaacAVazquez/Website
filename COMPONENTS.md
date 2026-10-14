@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-12
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
@@ -127,12 +127,12 @@ Shared components for the `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`,
 | Component | File | Role |
 |----------|------|------|
 | `FixtureCard` | `src/components/football/FixtureCard.tsx` | Single fixture result or upcoming match card |
-| `FixtureGroupSection` | `src/components/football/FixtureGroupSection.tsx` | Grouped fixture list by matchday or date |
-| `LeaderList` | `src/components/football/LeaderList.tsx` | Scorers and assists leaderboard |
+| `FixtureLedgerSection` | `src/components/football/FixtureLedger.tsx` | Fixtures under a group label such as a matchday or a date, with the home team, the dated score or kickoff, and the away team in one row. The league pages and the MLB, NBA, NFL, and World Cup boards render it |
+| `LeaderLedger` | `src/components/football/LeaderLedger.tsx` | Leaderboard rows (rank, name, club code, value and unit) on hairlines, for the scorers and assists on the league pages and the stat leaders on MLB, NBA, and NFL |
+| `DetailDrawer` | `src/components/football/DetailDrawer.tsx`, `detail-drawer.css` | The drawer a selected team or player opens in on the golf, MLB, NBA, and NFL routes, a sheet from the bottom on a phone and a side panel from 640px, with focus, Escape, and scroll lock from `useModal` |
 | `PointsLadder` | `src/components/football/PointsLadderChart.tsx` | Premier League and La Liga points ladder beside the table, clubs on a vertical points axis with the zone lines, geometry from `ladderGeometry.ts` |
 | `LeagueTableBoard` | `src/components/football/LeagueTableBoard.tsx`, `league-table.css` | The page both Premier League and La Liga render, meaning the title row with the club lookup, the results ticker, the standings with zone bands and each club's last five, the points ladder, and the fixtures and scorers tabs |
-| `SeedLadder` | `src/components/football/SeedLadderPanel.tsx` | NBA and NFL hero signature, each conference as a seed ladder with the games-clear gap at each line, from `seedLadder.ts` |
-| `MetricCard` | `src/components/football/MetricCard.tsx` | Metric highlight card with optional trend |
+| `SeedLadder` | `src/components/football/SeedLadderPanel.tsx`, `seed-ladder.css` | The NBA and NFL playoff picture as the standings, one ruled table per conference split into bands with the games-clear gap on each line between them, from `seedLadder.ts`. Every team is a button that opens the route's drawer |
 | `InfoChip` | `src/components/football/InfoChip.tsx` | Inline label chip for league/competition context |
 | `CrestAvatar` | `src/components/football/CrestAvatar.tsx` | Team crest image with fallback initials |
 | `TeamResultPill` | `src/components/football/TeamResultPill.tsx` | Win/draw/loss pill for form strips |
@@ -169,7 +169,7 @@ Core UI primitives live under `src/components/ui/`.
 
 The ones still in use are `ModernButton` (admin and the investments forms), `ThemeToggle` and `DeferredThemeToggle` (the header), `AuthorBio` (articles), and `ServerIcons` (inline SVG icons for server components). Most UI is composed from the `catalog97.css` classes, so a new block usually wants a `.c97-panel`, `.c97-chip`, or `.c97-btn` before it wants a component.
 
-The editorial components under `src/components/editorial/` are `StatusPanel` (used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
+The editorial components under `src/components/editorial/` are `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape); `StatusPanel` was deleted on 2026-10-12 once Job Search stopped rendering it. Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
 
 Styling guidance for these lives in `STYLING.md`.
 

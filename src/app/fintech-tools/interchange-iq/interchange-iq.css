@@ -446,10 +446,13 @@
   font-weight: 600;
 }
 
-/* Below 640px the bar takes its own line under the name and the fee. */
+/* Below 640px the bar takes its own line under the name and the fee, and the
+ * Cheapest mark the line under that. The mark only has width on the cheapest
+ * rows, so on the fee's line it would set those fees left of the rest and
+ * leave the name less room than it needs. */
 @media screen and (max-width: 639px) {
   .iq-statement summary {
-    grid-template-columns: minmax(0, 1fr) auto auto 16px;
+    grid-template-columns: minmax(0, 1fr) auto 16px;
     row-gap: 6px;
     padding-block: var(--c97-sp-1);
   }
@@ -457,6 +460,16 @@
   .iq-bar {
     grid-row: 2;
     grid-column: 1 / -1;
+  }
+
+  .iq-row-mark {
+    grid-row: 3;
+    grid-column: 1 / -1;
+  }
+
+  /* Every other row prints the mark empty, and an empty one would still open a third line. */
+  .iq-row-mark:empty {
+    display: none;
   }
 }
 

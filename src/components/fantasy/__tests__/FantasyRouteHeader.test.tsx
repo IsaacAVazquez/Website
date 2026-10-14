@@ -10,4 +10,12 @@ describe("FreshnessParts", () => {
     expect(error).not.toHaveBeenCalled();
     error.mockRestore();
   });
+
+  it("keeps a space between parts once the hidden dots are dropped, as a screen reader reads it", () => {
+    const { container } = render(<FreshnessParts parts={[{ label: "2026" }, { label: "PPR" }, { label: "ADP stale", tone: "warning" }]} />);
+    const line = container.querySelector("p") as HTMLElement;
+    expect(line).toHaveTextContent("2026 · PPR · ADP stale");
+    line.querySelectorAll('[aria-hidden="true"]').forEach((dot) => dot.remove());
+    expect(line).toHaveTextContent(/^2026 PPR ADP stale$/);
+  });
 });

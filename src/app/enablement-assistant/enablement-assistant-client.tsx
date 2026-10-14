@@ -17,6 +17,7 @@ import {
   type TeamIntake,
 } from "./enablement-data";
 import {
+  BASE_SCORE,
   buildEscalationDraft,
   generateOnboardingPlan,
   getProgramMetrics,
@@ -358,11 +359,6 @@ function IntakeForm({
             </label>
           );
         })}
-        {intake.layers.length === 0 ? (
-          <p role="alert" className="ea-alert">
-            Select at least one layer so the engine has something real to score.
-          </p>
-        ) : null}
       </fieldset>
     );
   }
@@ -426,11 +422,21 @@ function ScoreLedger({
   result: ScoredToolchain;
   defaultOpen?: boolean;
 }) {
+  // The engine's factors leave out where the score starts, so the ledger opens on that row and adds up.
+  const rows = [
+    {
+      label: "Starting score",
+      points: BASE_SCORE,
+      detail: "Every stack starts here, and the total is held between 0 and 100.",
+    },
+    ...result.factors,
+  ];
+
   return (
     <details open={defaultOpen} className="ea-ledger">
       <summary>Show the score ledger</summary>
       <ul>
-        {result.factors.map((factor) => (
+        {rows.map((factor) => (
           <li key={factor.label}>
             <span>{factor.label}</span>
             <span
@@ -515,6 +521,8 @@ function RecommendationSection({
     [intake, recommendation]
   );
   const [question, setQuestion] = useState("");
+  // The question as it was searched, which the box can move on from before the next search.
+  const [asked, setAsked] = useState("");
   const [attempted, setAttempted] = useState("");
   const [match, setMatch] = useState<TroubleshootingMatch | null>(null);
   const [copied, setCopied] = useState<
@@ -523,6 +531,7 @@ function RecommendationSection({
 
   function runTroubleshooting(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setAsked(question.trim());
     setMatch(
       matchTroubleshootingQuestion(question, recommendation.primary.toolchain.id)
     );
@@ -532,7 +541,8 @@ function RecommendationSection({
   const escalationDraft = buildEscalationDraft({
     intake,
     recommendation,
-    question,
+    // Only a question the desk declined belongs under "could not answer".
+    question: match?.shouldEscalate ? asked : "",
     attempted,
   });
 
@@ -824,7 +834,8 @@ function TeamOnboarding() {
   }
 
   const backDisabled = step === 0;
-  const advanceDisabled = step === 1 && intake.layers.length === 0;
+  // The step list opens the last step directly, so it needs a layer selected as much as the layers step.
+  const advanceDisabled = step > 0 && intake.layers.length === 0;
 
   return (
     <div className="ea-team">
@@ -865,6 +876,13 @@ function TeamOnboarding() {
 
         <IntakeForm intake={intake} step={step} onIntakeChange={setIntake} />
 
+        {advanceDisabled ? (
+          <p role="alert" className="ea-alert">
+            Select at least one layer{step === 1 ? "" : " on the Test layers step"} so the engine
+            has something real to score.
+          </p>
+        ) : null}
+
         <div className="ea-step-actions">
           <button
             type="button"
@@ -886,8 +904,8 @@ function TeamOnboarding() {
         ) : (
           <p className="ea-empty">
             <strong>The recommendation fills in here.</strong>
-            Answer the three steps and this side shows the scored stack with its runner-up, the
-            onboarding plan, and a troubleshooting desk for the setup questions that follow.
+            Answer the three steps to see the scored stack with its runner-up, the onboarding
+            plan, and a troubleshooting desk for the setup questions that follow.
           </p>
         )}
       </div>

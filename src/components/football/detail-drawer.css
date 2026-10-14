@@ -36,7 +36,7 @@
   outline: none;
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
   .dd-overlay {
     align-items: stretch;
     justify-content: flex-end;
@@ -87,7 +87,11 @@
   color: var(--c97-ink);
 }
 
-/* Body parts the four routes share. */
+/*
+ * Body parts the four routes share. The spacing rules carry the panel class,
+ * because each route root resets p, ul, and dl at one class of weight and the
+ * order the two sheets load in changes from route to route.
+ */
 
 .dd-panel :where(p, ul, ol, dl, dd) {
   margin: 0;
@@ -95,13 +99,13 @@
   max-inline-size: none;
 }
 
-.dd-section {
+.dd-panel .dd-section {
   margin-top: var(--c97-sp-2);
   padding-top: var(--c97-sp-2);
   border-top: 1px solid var(--c97-rule);
 }
 
-.dd-label {
+.dd-panel .dd-label {
   margin-bottom: var(--c97-sp-1);
   font-size: 0.75rem;
   font-weight: 700;
@@ -110,7 +114,7 @@
   color: var(--c97-ink-2);
 }
 
-.dd-tags {
+.dd-panel .dd-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--c97-sp-1);
@@ -152,7 +156,7 @@
   color: var(--c97-ink);
 }
 
-.dd-note {
+.dd-panel .dd-note {
   margin-top: var(--c97-sp-2);
   font-size: 0.875rem;
   line-height: 1.5;

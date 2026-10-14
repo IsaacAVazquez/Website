@@ -62,3 +62,15 @@ The poster hero and standfirst, both plates, the readout trio (the cheapest fee 
 The route suites pass with the shared suites. `tsc --noEmit` and eslint on the changed files are clean. In Chromium, the fintech test in `e2e/product-surfaces.spec.ts` and the route's `all-projects` and `project-routes` tests pass against the dev server and a production build. `contrastSweep.mjs` reports no failures in either theme and `layoutSweep.mjs` reports 0 fail; its orphan-row reviews are the two cheapest rows, whose bar takes its own line under 640px on purpose. On the production build at 1440x900 the first input sits at y415 against y683 before and the verdict at y329, with the whole statement on the first screen; at 390x844 the verdict is at y425 and the first input at y670 against y761. A keyboard walk from the top reaches Reset, each range and its exact field, "Learn about card mix", and the statement rows; ArrowRight moves the volume by $1,000, and Enter and Space open and close a statement row. Under reduced motion the chevron transition collapses. A Chromium print keeps the inputs' exact values, the statement, and both notes.
 
 Not checked: WebKit and Gecko prints, a screen reader, touch devices. Still open from 2026-09-14 is a "what I pay today" baseline.
+
+### Corrected after the merge, 2026-10-12
+
+The title sentence says six card processors, since the engine prices seven options from six companies and Stripe is two of them, flat rate and IC+. The meta line keeps "7 options", which counts the rows.
+
+Every statement row opens for a print. A closed disclosure prints its summary only, so the paper carried seven fees with no per-transaction cost or effective rate, both of which printed on every row before the redesign. The client listens for `beforeprint`, opens the closed rows, and closes the ones it opened on `afterprint`, so a row the visitor opened stays open. It is the same effect Rent vs. Buy uses for its input groups.
+
+The caption under the breakeven track prints the breakeven to the cent, as the sentence above it does. It used to round to a whole dollar, and a breakeven only exists up to 16% credit and never passes $0.83, so the caption read "$0" or "$1" under a sentence that said "$0.35".
+
+Under 640px the Cheapest mark takes a line of its own under the bar, and the first line is the name, the fee, and the chevron. The mark only has width on the cheapest rows, so on the fee's line it set those fees about 83px left of the rest and left "Checkout.com" about 66px at 320px, which ran it into the fee. The name has about 161px there now. Those widths are computed from the CSS and were not measured in a browser. An empty mark is `display: none` under 640px, so the other rows get no third line.
+
+The route has three suites now, with `interchange-iq-css.test.ts` holding the phone rules, and the client test covers the title count, the caption, and the print rows. None of this was run in a browser or printed, so the statement at 320px and a real print still need a look.

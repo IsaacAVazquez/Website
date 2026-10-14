@@ -13,7 +13,8 @@ describe("verdictStamp", () => {
 describe("verdictContributions", () => {
   function summedScore(metrics: Parameters<typeof verdictContributions>[0]): number {
     const total = verdictContributions(metrics).reduce((sum, row) => sum + row.contribution, 0);
-    return Number(total.toFixed(1));
+    // Half up from the exact hundredths, the way the score rounds.
+    return Math.round(Math.round(total * 100) / 10) / 10;
   }
 
   it("prints the four rows in impact, confidence, effort, reversibility order", () => {
@@ -34,6 +35,12 @@ describe("verdictContributions", () => {
 
   it("sums to evaluateDecision's weighted score for a preset that holds", () => {
     const metrics = getDecisionPresetMetrics("notification-rewrite");
+    expect(summedScore(metrics)).toBe(evaluateDecision(metrics).weightedScore);
+  });
+
+  it("sums to evaluateDecision's weighted score for a total that ends on a half", () => {
+    // Enterprise permissions totals 53.25.
+    const metrics = getDecisionPresetMetrics("enterprise-permissions");
     expect(summedScore(metrics)).toBe(evaluateDecision(metrics).weightedScore);
   });
 

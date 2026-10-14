@@ -67,7 +67,11 @@ describe("MissionControlHero T-0 liftoff", () => {
   it("launches the rocket once when a watched countdown crosses T-0", () => {
     jest.setSystemTime(NET - 2500);
     renderHero(root, NET - 2500);
-    expect(container.querySelector('[data-testid="mission-countdown"]')).not.toBeNull();
+    const countdown = container.querySelector('[data-testid="mission-countdown"]');
+    expect(countdown).not.toBeNull();
+    // It ticks every second, so it must not announce itself as a live region.
+    expect(countdown?.getAttribute("role")).toBe("timer");
+    expect(countdown?.hasAttribute("aria-live")).toBe(false);
     expect(container.querySelector('[data-testid="mission-liftoff-note"]')).toBeNull();
 
     act(() => {

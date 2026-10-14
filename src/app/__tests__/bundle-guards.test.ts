@@ -67,9 +67,10 @@ describe("bundle guards", () => {
     expect(hook.files.has("src/lib/draftAnalytics.ts")).toBe(true);
   });
 
-  // Six route clients import this barrel and two of them render the drawer.
-  // The repo declares no `sideEffects`, so webpack keeps every re-exported
-  // module, and a drawer in the barrel ships to all six.
+  // The World Cup client imports this barrel, and the two league pages load
+  // the drawer from its own file. The repo declares no `sideEffects`, so
+  // webpack keeps every re-exported module, and a drawer in the barrel ships
+  // to every route that imports it.
   it("keeps the club drawer out of everything the football barrel re-exports", () => {
     expect(reachableFrom("src/components/football/index.ts").files.has("src/components/football/ClubDrawer.tsx")).toBe(false);
   });

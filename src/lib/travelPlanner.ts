@@ -107,9 +107,11 @@ const DATE_FORMATTER_SHORT = new Intl.DateTimeFormat("en-US", {
 });
 
 // formatActivityTime below round-trips an "HH:MM" string through a throwaway
-// local Date (setHours then format with no zone), so only the visitor's own
-// local clock reading is ever produced or displayed; there is no real date or
-// zone-sensitive instant involved.
+// local Date (built from the parts, then formatted with no zone), so only the
+// visitor's own local clock reading is ever produced or displayed; there is no
+// real date or zone-sensitive instant involved. The Date sits on a fixed day
+// with no clock change, since on the day the clocks spring forward a time
+// inside the skipped hour does not exist and reads an hour late.
 // tz-local: see above.
 const TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
@@ -133,9 +135,7 @@ export function formatDayHeading(dateKey: string): string {
 function formatActivityTime(time: string): string {
   if (!isHourMinute(time)) return "";
   const [hours, minutes] = time.split(":").map(Number);
-  const date = new Date();
-  date.setHours(hours, minutes, 0, 0);
-  return TIME_FORMATTER.format(date);
+  return TIME_FORMATTER.format(new Date(2000, 0, 1, hours, minutes));
 }
 
 export function formatActivityTimeRange(time: string, endTime: string): string {

@@ -52,10 +52,12 @@
 /*
  * Stacking order for overlays. Declared on :root rather than [data-c97]
  * because the tooltip, search listbox, and easter-egg layers portal to the
- * body, outside the page root. The header sits at 2 inside the page, and
- * Leaflet's map panes keep their own scale (food map).
+ * body, outside the page root. The header sits at 2 inside the page and lifts
+ * to the tray level while its search is open, and Leaflet's map panes keep
+ * their own scale inside `.c97-basemap`.
  */
 :root {
+  --c97-z-sticky: 5;
   --c97-z-tray: 50;
   --c97-z-toast: 55;
   --c97-z-drawer: 60;
@@ -907,21 +909,6 @@ body {
 .dark .c97-page [data-c97-surface="ink-pink"] {
   --c97-overprint: var(--c97-riso-saffron);
 }
-
-/*
- * A route's press (src/constants/projectPress.ts) sets the second ink for
- * every sheet inside the tool shell, outranking the per-surface defaults
- * above. A blue offset vanishes on near-black dark paper, so it prints
- * saffron there.
- */
-.c97-page [data-c97-press-second="blue"] [data-c97-surface] { --c97-overprint: var(--c97-riso-blue); }
-.c97-page [data-c97-press-second="saffron"] [data-c97-surface] { --c97-overprint: var(--c97-riso-saffron); }
-.c97-page [data-c97-press-second="vermilion"] [data-c97-surface] { --c97-overprint: var(--c97-riso-vermilion); }
-.c97-page [data-c97-press-second="green"] [data-c97-surface] { --c97-overprint: var(--c97-riso-green); }
-.c97-page [data-c97-press-second="teal"] [data-c97-surface] { --c97-overprint: var(--c97-riso-teal); }
-.c97-page [data-c97-press-second="pink"] [data-c97-surface] { --c97-overprint: var(--c97-riso-pink); }
-.dark .c97-page [data-c97-press-second="blue"] [data-c97-surface="paper"],
-.dark .c97-page [data-c97-press-second="blue"] [data-c97-surface="bone"] { --c97-overprint: var(--c97-riso-saffron); }
 
 /* --------------------------------------------------------------------------
  * Layout primitives
@@ -2642,6 +2629,18 @@ select.c97-field {
   padding: var(--c97-sp-3) var(--c97-gutter) var(--c97-sp-4);
 }
 
+/*
+ * The search panel and its scrim hang below the header, over the page, and
+ * they can stack no higher than the header does. So the header lifts to one
+ * step above the tray level for as long as its search is open, which puts the
+ * panel above everything a route stacks at that level or below, a sticky
+ * toolbar and the fantasy compare tray included, and leaves toasts, drawers,
+ * and modals above it.
+ */
+.c97-header[data-search-open] {
+  z-index: calc(var(--c97-z-tray) + 1);
+}
+
 /* The torn bottom edge, the seam mask flipped so it hangs below the header. */
 .c97-header::after {
   content: "";
@@ -2981,57 +2980,6 @@ select.c97-field {
   transition: transform 900ms var(--c97-ease-slow);
 }
 
-/* --------------------------------------------------------------------------
- * Project hero: the headline sheet of a project route (Catalog97ProjectHero).
- * ------------------------------------------------------------------------ */
-
-.c97-project-hero-readouts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: var(--c97-sp-4);
-  margin: var(--c97-sp-5) 0 0;
-  max-width: 48rem;
-}
-
-.c97-project-hero-readouts dd {
-  margin: 0;
-}
-
-/*
- * Three readouts on a phone printed two across with the third alone under
- * them on every project route. Below 560px the first now runs across the
- * column as the lead figure and the other two sit side by side under it.
- * From 560px the auto-fit above puts all three on one line.
- */
-@media screen and (max-width: 559px) {
-  .c97-project-hero-readouts:has(> :nth-child(3):last-child) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .c97-project-hero-readouts > :first-child:nth-last-child(3) {
-    grid-column: 1 / -1;
-  }
-}
-
-.c97-project-hero-signature {
-  margin-top: var(--c97-sp-5);
-}
-
-/* The signature chart fills the slot; icons inside it keep their own size, and
- * so does a street map, whose vector layer and attribution flag Leaflet sizes
- * itself. */
-.c97-project-hero-signature svg:not(.lucide):not(.leaflet-container svg) {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* A hero's as-of line is one run of text, so it flows as a block. */
-.c97-project-hero .c97-meta {
-  display: block;
-  max-width: var(--c97-column);
-}
-
 /*
  * A dense data surface, such as the fantasy boards and draft rooms. Its
  * paragraphs and lists are labels, values, and rows rather than prose, so the
@@ -3060,6 +3008,12 @@ select.c97-field {
    warm paper by day, a dim field map at night. Pins and lines sit above
    the tile pane and keep their own colours. Shared by /food-map and
    /bay-area-transit. */
+/* Leaflet stacks its panes at 400 and its controls at 1000. The map is its
+   own stacking context so those numbers stay inside it, and the header's
+   search panel and a route's sticky bar pass over the map. */
+.c97-basemap {
+  isolation: isolate;
+}
 .c97-basemap .leaflet-tile-pane {
   filter: grayscale(0.8) sepia(0.25) contrast(0.92) brightness(1.03);
 }
@@ -3068,12 +3022,18 @@ select.c97-field {
 }
 /* On paper in Firefox's engine the wash comes off, since that engine prints
    nothing for an element under a CSS filter (see .c97-slot-img above). The
-   dark rule is listed too because it is the more specific of the pair. */
+   dark rule is listed too because it is the more specific of the pair. A
+   blend mode drops an element the same way, and Leaflet's stylesheet blends
+   every tile from `.leaflet-container img.leaflet-tile`, so the tiles go back
+   to normal through a selector that names the pane and outranks it. */
 @media print {
   @supports (-moz-appearance: none) {
     .c97-basemap .leaflet-tile-pane,
     .dark .c97-basemap .leaflet-tile-pane {
       filter: none;
+    }
+    .c97-basemap .leaflet-tile-pane img.leaflet-tile {
+      mix-blend-mode: normal;
     }
   }
 }

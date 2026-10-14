@@ -61,4 +61,16 @@ describe("ProjectBuildNote", () => {
       expect(linkedRoutes).toContain(route);
     }
   });
+
+  it("has authored context for every linked route but the arcade", () => {
+    // The context map is a plain Record, so a dropped entry still type-checks
+    // and its route quietly prints the placeholder. The arcade is the one
+    // route that keeps the placeholder on purpose.
+    const placeholderRoutes = new Set(["/arcade"]);
+    const missing = Object.keys(projectBuildNoteLinks).filter(
+      (route) => !placeholderRoutes.has(route) && !PROJECT_BUILD_NOTE_CONTEXT[route]?.purpose.trim(),
+    );
+
+    expect(missing).toEqual([]);
+  });
 });

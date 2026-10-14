@@ -85,8 +85,9 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
               </th>
               {Array.from({ length: size }, (_, away) => {
                 const p = grid[home][away];
-                // Capped at 40% so the strongest cell keeps 4.5:1 label contrast on the panel in both
-                // themes: 5.11:1 light and 6.61:1 dark. 55% measured 3.85:1 in light.
+                // Capped at 40% so the strongest cell keeps 4.5:1 label contrast on the console's raised
+                // paper in both themes. From the route palette that works out to 8.13:1 light and
+                // 5.50:1 dark, and a 55% cap would drop dark to 3.87:1.
                 const strength = max > 0 ? Math.round((p / max) * 40) : 0;
                 return (
                   <td
@@ -463,7 +464,7 @@ export function FixtureDetailDrawer({
                   {manualError}
                 </p>
               ) : null}
-              <div className="flex" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+              <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 <button type="button" className={PILL_BUTTON} onClick={saveManualOdds}>
                   Save odds
                 </button>

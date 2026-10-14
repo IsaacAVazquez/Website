@@ -58,7 +58,6 @@ interface EspnStatusType {
 interface EspnCompetitorStatus {
   position?: EspnPosition | null;
   thru?: number | string | null;
-  today?: number | string | null;
   teeTime?: string | null;
   displayValue?: string | null;
   type?: EspnStatusType | null;
@@ -292,6 +291,66 @@ export function deriveCutState(event: EspnEvent | null | undefined): {
   return { cutLine, cutState, cutCount: cutLine != null ? cutCount : null };
 }
 
+// A withdrawal's last line score can be the strokes of a round it never finished.
+const LEFT_MID_EVENT = /withdr|^wd$|disqualif|^dq$/i;
+
+/**
+ * A player's score to par for the round the field is on. ESPN's leaderboard
+ * sends no figure for it, so it comes from the line scores: a finished round
+ * is its strokes against par, and a round in progress is the live total less
+ * the rounds before it, since its line score is only the strokes so far. Null
+ * when the player has not started the round, left the field before it, or has
+ * no live total to subtract from.
+ */
+export function todayToPar(
+  row: Pick<GolfLeaderboardEntry, "roundScores" | "thru" | "status"> & {
+    totalToPar: number | null;
+  },
+  coursePar: number,
+  currentRound: number
+): number | null {
+  const { roundScores, thru, status, totalToPar } = row;
+  if (
+    roundScores.length === 0 ||
+    roundScores.length !== currentRound ||
+    thru === "—" ||
+    LEFT_MID_EVENT.test(status)
+  ) {
+    return null;
+  }
+  if (thru === "F") return roundScores[roundScores.length - 1] - coursePar;
+  if (totalToPar === null) return null;
+  return (
+    totalToPar -
+    roundScores.slice(0, -1).reduce((sum, score) => sum + score - coursePar, 0)
+  );
+}
+
+/**
+ * A board written before the builder worked Today out carries 0 for every
+ * player. This fills such a board from its line scores, so a committed one
+ * reads right until the next refresh rewrites it. A board with any other
+ * value is the builder's own and is returned as it is.
+ */
+export function fillTodayToPar(summary: GolfSummary): GolfSummary {
+  const coursePar = summary.tournament?.coursePar;
+  if (!coursePar || summary.leaderboard.some((row) => row.today !== 0)) {
+    return summary;
+  }
+  // The round the field is on is the longest card in it.
+  const currentRound = Math.max(
+    0,
+    ...summary.leaderboard.map((row) => row.roundScores.length)
+  );
+  return {
+    ...summary,
+    leaderboard: summary.leaderboard.map((row) => ({
+      ...row,
+      today: todayToPar(row, coursePar, currentRound),
+    })),
+  };
+}
+
 /** `||` rather than `??`, because ESPN can send an empty string. */
 function eventStart(event: EspnEvent): string {
   return event.startDate || event.date || "";
@@ -519,10 +578,16 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     // one is present; otherwise derive it from completed rounds
     // (cumulativeStrokes - coursePar * roundsPlayed). A player with no completed
     // rounds keeps 0 rather than a bogus negative number.
-    const explicitToPar = findStat(competitor.statistics, [
-      "scoretopar",
-      "topar",
-    ]);
+    const statusText =
+      competitor.status?.type?.description ??
+      competitor.status?.displayValue ??
+      (competitor.status?.type?.state === "pre" ? "Scheduled" : "");
+    // For a withdrawn player the to-par stat repeats the stroke total (a lone
+    // 75 came through as +75 at the 2026 Bank of Utah), so that row is worked
+    // out from its strokes, which gave the +4 ESPN printed.
+    const explicitToPar = LEFT_MID_EVENT.test(statusText)
+      ? null
+      : findStat(competitor.statistics, ["scoretopar", "topar"]);
     const cumulativeStrokes =
       competitor.score != null ? parseToPar(competitor.score) : null;
     const roundsPlayed = roundScores.length;
@@ -531,14 +596,16 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
       (cumulativeStrokes != null && roundsPlayed > 0
         ? cumulativeStrokes - coursePar * roundsPlayed
         : findStat(competitor.statistics, ["score"]) ?? 0);
-    const today = toNumber(competitor.status?.today);
     const thru = formatThru(competitor.status);
     const movement =
       typeof competitor.movement === "number" ? competitor.movement : 0;
-    const statusText =
-      competitor.status?.type?.description ??
-      competitor.status?.displayValue ??
-      (competitor.status?.type?.state === "pre" ? "Scheduled" : "");
+    // Only ESPN's own to-par stat is live mid-round. The stroke fallback above
+    // counts a round in progress as a full one.
+    const today = todayToPar(
+      { roundScores, thru, status: statusText, totalToPar: explicitToPar },
+      coursePar,
+      Math.min(period ?? 0, scheduledRounds)
+    );
 
     leaderboard.push({
       playerId: id,
@@ -602,7 +669,11 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
       roundByRound: roundScores.map((score, index) => ({
         round: index + 1,
         score,
-        relativeToPar: score - coursePar,
+        // A round in progress is a stroke count so far, so it takes the live figure.
+        relativeToPar:
+          index === roundScores.length - 1 && thru !== "F" && thru !== "—"
+            ? today
+            : score - coursePar,
       })),
       scoring,
       generatedAt,
@@ -617,10 +688,15 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     const parsed = Number(entry.position.replace(/[^0-9]/g, ""));
     return Number.isFinite(parsed) && parsed > 0 ? parsed : Number.POSITIVE_INFINITY;
   };
+  const leftField = (entry: GolfLeaderboardEntry): number =>
+    LEFT_MID_EVENT.test(entry.status) ? 1 : 0;
   leaderboard.sort((a, b) => {
+    // Two players with no position (a missed cut, a withdrawal) give NaN here,
+    // which has to fall through, or they stay in the feed's order.
     const posDiff = finishingPosition(a) - finishingPosition(b);
-    if (posDiff !== 0) return posDiff;
-    return a.totalToPar - b.totalToPar;
+    if (posDiff) return posDiff;
+    // A withdrawal has no standing, so it goes under the players who finished.
+    return leftField(a) - leftField(b) || a.totalToPar - b.totalToPar;
   });
 
   const summary: GolfSummary = {

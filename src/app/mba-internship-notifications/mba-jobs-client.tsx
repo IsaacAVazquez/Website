@@ -215,6 +215,11 @@ function formatCount(value: number): string {
   return value.toLocaleString("en-US");
 }
 
+/** A count with its noun, so one prints "1 role" and the rest "1,204 roles". */
+function countOf(value: number, noun: string): string {
+  return `${formatCount(value)} ${noun}${value === 1 ? "" : "s"}`;
+}
+
 /** Fit score descending with unscored applications last; ties keep the column's own order. */
 function sortApplicationsByFit(applications: MBATrackedApplication[]): MBATrackedApplication[] {
   return [...applications].sort(
@@ -1049,7 +1054,7 @@ function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceSt
                 accent={accent}
                 title={source.message}
                 label={`${source.companyName} · ${
-                  source.status === "ok" ? `${source.jobCount} roles` : source.status
+                  source.status === "ok" ? countOf(source.jobCount, "role") : source.status
                 }`}
               />
             );
@@ -1171,11 +1176,14 @@ function AttentionRow({
 
 function NeedsAttentionPanel({
   items,
+  todayKey,
   onEdit,
   onMarkApplied,
   onClearFollowUp,
 }: {
   items: MBAAttentionItem[];
+  /** Null on the server and during hydration, before the saved applications are read. */
+  todayKey: string | null;
   onEdit: (application: MBATrackedApplication) => void;
   onMarkApplied: (id: string) => void;
   onClearFollowUp: (id: string) => void;
@@ -1185,7 +1193,9 @@ function NeedsAttentionPanel({
       <h3 id="mba-attention-heading" className="mba-h3">
         What to chase today.
       </h3>
-      {items.length === 0 ? (
+      {!todayKey ? (
+        <p>Loading follow-ups…</p>
+      ) : items.length === 0 ? (
         <p>
           <strong style={{ color: "var(--c97-ink)" }}>All caught up.</strong>{" "}
           No follow-ups or deadlines need action right now. A follow-up date set when I apply
@@ -1231,15 +1241,17 @@ function ApplicationCard({
   const [copiedPath, setCopiedPath] = useState(false);
   const rounds = application.interviewRounds ?? [];
   const facts = application.facts ?? [];
+  // A hand-added application can leave either one blank.
+  const departmentAndLocation = [application.jobSnapshot.department, application.jobSnapshot.location]
+    .filter(Boolean)
+    .join(" · ");
   return (
     <article className="mba-card">
       <p className="mba-job-company">
         <strong>{application.jobSnapshot.companyName}</strong>
       </p>
       <h3 className="mba-job-title">{application.jobSnapshot.title}</h3>
-      <p className="mba-job-meta">
-        {application.jobSnapshot.department} · {application.jobSnapshot.location}
-      </p>
+      {departmentAndLocation && <p className="mba-job-meta">{departmentAndLocation}</p>}
       {application.appliedVia && (
         <p className="mba-job-meta">Applied via {application.appliedVia}</p>
       )}
@@ -1432,7 +1444,7 @@ function ApplicationPipeline({
       const result = onImport(content);
       setImportMessage(
         result.imported > 0
-          ? `Imported ${result.imported} applications. ${result.total} total now.`
+          ? `Imported ${countOf(result.imported, "application")}. ${result.total} total now.`
           : "No valid applications were found in that file."
       );
     } catch {
@@ -1499,11 +1511,13 @@ function ApplicationPipeline({
             <Upload className="h-4 w-4" aria-hidden="true" />
             Import
           </button>
+          {/* Import above opens this picker, so the hidden input stays out of the tab order. */}
           <input
             ref={importInputRef}
             type="file"
             accept="application/json,.json"
             className="sr-only"
+            tabIndex={-1}
             onChange={(event) => handleImportFile(event.target.files?.[0])}
             aria-label="Import applications JSON"
           />
@@ -1521,6 +1535,7 @@ function ApplicationPipeline({
           <UpcomingInterviews applications={applications} todayKey={todayKey} onEdit={onEdit} />
           <NeedsAttentionPanel
             items={attentionItems}
+            todayKey={todayKey}
             onEdit={onEdit}
             onMarkApplied={(id) => onStatusChange(id, "applied")}
             onClearFollowUp={onClearFollowUp}
@@ -1532,8 +1547,7 @@ function ApplicationPipeline({
           {applications.length === 0 ? (
             <p className="mba-empty">
               <strong>No applications tracked yet.</strong>
-              Track a role from the feed or add one by hand to start the pipeline. Everything here
-              stays in this browser.
+              Track a role from the feed or add one by hand to start the pipeline.
             </p>
           ) : filteredApplications.length === 0 ? (
             <p className="mba-empty">
@@ -1623,15 +1637,29 @@ export function MBAJobsClient({
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const locationInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Every href pushed from here since the last back or forward step. The local
+  // state already holds whatever one of them carries, and an older one landing
+  // late would put back text the visitor has since typed over.
+  const pushedHrefsRef = useRef<Set<string>>(new Set());
+
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Mirror canonical route state into local UI state when the URL changes externally (e.g. back/forward nav)
+    const forget = () => pushedHrefsRef.current.clear();
+    window.addEventListener("popstate", forget);
+    return () => window.removeEventListener("popstate", forget);
+  }, []);
+
+  useEffect(() => {
+    if (pushedHrefsRef.current.has(buildMBAJobsHref(routeState))) return;
+    // Mirror the route state into local UI state when the URL changes from outside, such as Back or Forward.
     setUiState(routeState);
   }, [routeState]);
 
   function updateRouteState(next: Partial<MBAJobsSearchState>) {
     const nextState = { ...uiState, ...next };
+    const href = buildMBAJobsHref(nextState);
     setUiState(nextState);
-    startTransition(() => router.push(buildMBAJobsHref(nextState), { scroll: false }));
+    pushedHrefsRef.current.add(href);
+    startTransition(() => router.push(href, { scroll: false }));
   }
 
   const {
@@ -1738,16 +1766,24 @@ export function MBAJobsClient({
   // ── Derived: filtered + sorted job list ──────────────────────────────
   const displayJobs = useMemo(() => {
     const normalizedLocation = normalizeSearchText(effectiveState.location);
-    const filtered = locationScopedEntries.filter(
-      (entry) =>
-        !normalizedLocation ||
-        normalizeSearchText(entry.job.location).includes(normalizedLocation)
-    );
+    // A suggested place matches on the same terms its pill was counted with
+    // ("nyc" for New York), so the list holds every role the pill promised.
+    // Anything else typed stays a plain substring test.
+    const locationTerms: readonly string[] =
+      LOCATION_PRESETS.find((preset) => normalizeSearchText(preset.label) === normalizedLocation)
+        ?.terms ?? [normalizedLocation];
+    const filtered = locationScopedEntries.filter((entry) => {
+      if (!normalizedLocation) return true;
+      const jobLocation = normalizeSearchText(entry.job.location);
+      return locationTerms.some((term) => jobLocation.includes(term));
+    });
 
     filtered.sort((left, right) => {
       const leftTime = getPostedAtTime(left.job.postedAt);
       const rightTime = getPostedAtTime(right.job.postedAt);
       if (effectiveState.sort === "oldest") {
+        // An unreadable date reads as 0, which would put the role ahead of every dated one.
+        if (!leftTime || !rightTime) return Number(!leftTime) - Number(!rightTime);
         return leftTime - rightTime;
       }
       if (effectiveState.sort === "newest") {
@@ -2113,7 +2149,7 @@ export function MBAJobsClient({
                     <p className="mba-refine-label">
                       Location
                       <span className="mba-small">
-                        {formatCount(matchingRoleCount)} roles before location filtering
+                        {countOf(matchingRoleCount, "role")} before location filtering
                       </span>
                     </p>
                     <div className="mba-pills" role="group" aria-label="Suggested locations">
@@ -2209,8 +2245,8 @@ export function MBAJobsClient({
                 </h2>
                 {countsReady && (
                   <p className="mba-count-line" role="status" aria-live="polite" aria-atomic="true">
-                    {formatCount(displayJobs.length)} matching roles
-                    {uiState.external === "on" ? `, ${formatCount(externalLeadCount)} external leads` : ""}
+                    {countOf(displayJobs.length, "matching role")}
+                    {uiState.external === "on" ? `, ${countOf(externalLeadCount, "external lead")}` : ""}
                   </p>
                 )}
                 {activeFilters && (

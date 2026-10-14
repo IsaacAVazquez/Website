@@ -145,9 +145,11 @@ describe("BayAreaTransitClient", () => {
     expect(screen.getByRole("button", { name: "Alerts" })).toHaveAttribute("aria-expanded", "false");
     expect(screen.getByText(/^BART API · feed 12:00:00 PM PDT · refreshed /)).toBeInTheDocument();
     expect(screen.queryByText(/seed data/)).toBeNull();
-    // Each feed's state prints in words beside its mark.
-    expect(screen.getByText("Departures").parentElement).toHaveTextContent("Departures Live");
-    expect(screen.getByText("Elevators").parentElement).toHaveTextContent("Elevators Live");
+    // Each feed's state prints in words beside its mark. No refresh has answered
+    // yet, so the page is still on the copy it was served with.
+    expect(screen.getByText("Departures").parentElement).toHaveTextContent("Departures Saved copy");
+    expect(screen.getByText("Elevators").parentElement).toHaveTextContent("Elevators Saved copy");
+    expect(screen.queryByText("Live")).toBeNull();
 
     expect(screen.getByRole("heading", { level: 2, name: "Embarcadero" })).toBeInTheDocument();
     expect(screen.getByText("Antioch")).toBeInTheDocument();
@@ -430,6 +432,48 @@ describe("BayAreaTransitClient", () => {
     await act(async () => {});
     expect(screen.getByRole("button", { name: "Alerts" })).toBeInTheDocument();
     expect(screen.getByText("Antioch")).toBeInTheDocument();
+    expect(screen.queryByText("Live")).toBeNull();
+  });
+
+  it("calls a feed live only once the browser's own refresh has answered", async () => {
+    mockFetch((url) =>
+      url.endsWith("/summary") ? jsonResponse(SUMMARY) : jsonResponse(board("embr", "Embarcadero", "Antioch"))
+    );
+    renderClient();
+    await waitFor(() => expect(screen.getAllByText("Live")).toHaveLength(3));
+    expect(screen.queryByText("Saved copy")).toBeNull();
+  });
+
+  it("goes back to a saved copy when a later refresh fails", async () => {
+    const intervalSpy = jest.spyOn(window, "setInterval");
+    let summaryCalls = 0;
+    mockFetch((url) => {
+      if (!url.endsWith("/summary")) return jsonResponse(board("embr", "Embarcadero", "Antioch"));
+      summaryCalls += 1;
+      return summaryCalls === 1 ? jsonResponse(SUMMARY) : jsonResponse({ error: "nope" }, 500);
+    });
+
+    renderClient();
+    await waitFor(() => expect(screen.getAllByText("Live")).toHaveLength(3));
+
+    const tick = intervalSpy.mock.calls.find(([, delay]) => delay === 60_000)?.[0] as () => void;
+    await act(async () => tick());
+    await waitFor(() => expect(screen.queryByText("Live")).toBeNull());
+    expect(screen.getByText("Departures").parentElement).toHaveTextContent("Departures Saved copy");
+  });
+
+  it("prints no empty list when a feed is held and nothing is reported", () => {
+    currentSearchParams = new URLSearchParams("view=advisories");
+    renderClient({
+      summary: {
+        ...SUMMARY,
+        sectionStatus: { advisories: "stale-fallback", elevator: "fresh", departures: "fresh" },
+      },
+    });
+
+    const alerts = screen.getByRole("region", { name: "Service alerts" });
+    expect(within(alerts).getByRole("status")).toHaveTextContent(/did not return fresh advisories data/);
+    expect(within(alerts).queryByRole("list")).toBeNull();
   });
 
   it("drops an unknown station from the URL and shows the default board", async () => {

@@ -59,7 +59,12 @@ export function Catalog97Header() {
   }, []);
 
   return (
-    <header data-c97-surface="ink-saffron" className="c97-header">
+    <header
+      data-c97-surface="ink-saffron"
+      className="c97-header"
+      // The stylesheet lifts the header over the page while its search hangs below it.
+      data-search-open={isSearchOpen || undefined}
+    >
       <div className="c97-shell c97-header-row">
         <Link href="/" className="c97-brand c97-header-brand">
           Isaac Vazquez

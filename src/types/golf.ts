@@ -24,7 +24,11 @@ export interface GolfTournament {
   endDate: string;
   roundLabel: string;
   status: string;
-  /** Published tournament completion; absent on older committed snapshots. */
+  /**
+   * ESPN's own completion flag; absent on older committed snapshots. It is also
+   * true between rounds ("Round 3 - Play Complete") and while play is suspended,
+   * so it does not say the event is over.
+   */
   completed?: boolean;
   fieldSize: number;
   cutLine: number | null;
@@ -56,10 +60,12 @@ export interface GolfLeaderboardEntry {
   country: string;
   position: string;
   totalToPar: number;
-  today: number;
+  /** To par for the round the field is on. Null when the player has no figure for it. */
+  today: number | null;
   thru: string;
   status: string;
   roundScores: number[];
+  /** ESPN's figure, the new place minus the old, so a climb is negative. */
   movement: number;
 }
 
@@ -79,7 +85,8 @@ export interface GolfPlayerProfile {
 export interface GolfRoundBreakdown {
   round: number;
   score: number;
-  relativeToPar: number;
+  /** Null for a round in progress the feed gave no live figure for. */
+  relativeToPar: number | null;
 }
 
 export interface GolfScoringBreakdown {
@@ -93,9 +100,10 @@ export interface GolfScoringBreakdown {
 export interface GolfPlayerTournamentStatus {
   position: string;
   totalToPar: number;
-  today: number;
+  today: number | null;
   thru: string;
   status: string;
+  /** ESPN's figure, the new place minus the old, so a climb is negative. */
   movement: number;
   nextTeeTime: string | null;
 }

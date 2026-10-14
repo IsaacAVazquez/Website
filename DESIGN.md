@@ -199,7 +199,7 @@ Two fixed micro sizes, `text-3xs` (10px) and `text-2xs` (11px), plus a fixed `te
 
 ## Layout
 
-The centered measure is `.c97-shell`, capped at 1080px (`--c97-container`) with margin-inline auto. The four dense tools in `WIDE_TOOL_ROUTES` (the trade calculator, the best ball draft room, Investments, and score pools) print on the 1376px `--c97-container-wide`, and every shell on those pages widens with them, the header's and footer's included, so each page keeps one edge. The running-prose column, `--c97-column`, is 720px, wide enough to hold the tables and code blocks a long article carries alongside its paragraphs. Horizontal gutter (`--c97-gutter`) is fluid, `clamp(28px, 6vw, 96px)`, and it sits off the spacing ladder because it answers a different question than block rhythm does.
+The centered measure is `.c97-shell`, capped at 1080px (`--c97-container`) with margin-inline auto. The five dense tools in `WIDE_TOOL_ROUTES` (Bay Area Transit, the trade calculator, the best ball draft room, Investments, and score pools) print on the 1376px `--c97-container-wide`, and every shell on those pages widens with them, the header's and footer's included, so each page keeps one edge. The running-prose column, `--c97-column`, is 720px, wide enough to hold the tables and code blocks a long article carries alongside its paragraphs. Horizontal gutter (`--c97-gutter`) is fluid, `clamp(28px, 6vw, 96px)`, and it sits off the spacing ladder because it answers a different question than block rhythm does.
 
 Vertical rhythm comes entirely off a seven-step spacing ladder, and nothing in a Catalog 97 route may use a gap, margin, or band padding that is not one of these seven values:
 
@@ -215,9 +215,9 @@ Vertical rhythm comes entirely off a seven-step spacing ladder, and nothing in a
 
 Two more constants, `--c97-touch-y` (16px) and `--c97-touch-x` (8px), sit deliberately outside the ladder. They are solved backward from the 44px touch-target floor against an 11px label, not chosen for rhythm, and only `.c97-microlink` and the header brand lockup use them.
 
-A route is a sequence of `.c97-band` sections, each carrying its own `data-c97-surface`. A band that changes surface from the one above it carries `.c97-sheet` with `data-seam="torn"` for a rough edge or `data-seam="deckle"` for a softer one, and a band that continues the same surface carries neither. The seven designed routes and the 33 project routes take the full print shop treatment with a poster hero; the utility pages and Score Pools use the same bands and vocabulary without the poster hero.
+A route is a sequence of `.c97-band` sections, each carrying its own `data-c97-surface`. A band that changes surface from the one above it carries `.c97-sheet` with `data-seam="torn"` for a rough edge or `data-seam="deckle"` for a softer one, and a band that continues the same surface carries neither. The seven designed routes take the full print shop treatment with a poster hero, the project routes own their design inside the frame (the section below), and the utility pages use the same bands and vocabulary without the poster hero.
 
-Every project route reads its own pair of lead inks from `src/constants/projectPress.ts`, keyed by pathname, and `ConditionalLayout` hands that pair to `Catalog97ToolShell`, which sets the second ink as the overprint (`data-c97-press-second`) on every sheet in the route. The route opens on `Catalog97ProjectHero`, a lead-ink sheet holding the poster h1, an optional standfirst and as-of line, at most three readouts, and the route's own signature visual as its child.
+A project route renders its own root inside `Catalog97ToolShell` and owns everything from there down, which "Project routes own their design" below describes.
 
 ## Elevation and depth
 
@@ -258,7 +258,7 @@ Sections are sheets. A band that changes surface from the one above it carries `
 
 Display type is poster type. Anton caps carry the sheet's own ink with the second ink printed a few hundredths of an em off register, on every h1 (`.c97-poster`) and every section h2 or closing statement (`.c97-poster-sm`). Project and article titles stay in Newsreader because they name a specific thing, and body text stays in Archivo. Tone is a halftone screen, and printed things, plates, thumbnails, and primary buttons, sit on the one allowed shadow, the hard offset in the second ink.
 
-Project routes printed the same way from 2026-09-25 until 2026-10-11, with the ink pair in `src/constants/projectPress.ts`, the second ink as the overprint on every sheet below the hero, and `Catalog97ProjectHero` as the lead-ink headline sheet. The spec for that pattern is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`. A route that still renders the hero follows it until its redesign lands; the section below is what replaces it.
+Project routes printed the same way from 2026-09-25 until 2026-10-11, with an ink pair per route and `Catalog97ProjectHero` as the lead-ink headline sheet (`docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`). Every route had moved to its own design by 2026-10-12 and the close-out deleted that pattern's code, so the section below is what replaced it.
 
 ## Project routes own their design
 
@@ -266,7 +266,7 @@ Isaac's decision on 2026-10-10 is that each project route owns its design inside
 
 `/arcade` (`src/app/arcade/arcade.module.css`) was the first route to work this way, as a fully self-contained synthwave CRT palette that paints its own root, writes its own focus rules, and borrows no `c97-*` class beyond `c97-shell c97-frame`. Its swatches are a deep-indigo void (`#06010f`, `#11052b`), neon cyan (`#21e6ff`), magenta (`#ff2e97`), acid green (`#d6ff3f`), amber (`#ffb000`), and green (`#19f7a3`), against an off-white text color (`#ece4ff`). It is the model for how a project root reaches independence.
 
-Formula 1 Pulse (`src/app/formula-1/formula-1.module.css`) used to be a scoped-red exception. Since the sports pass (#478) the module reads only `--c97-*` tokens for its gantry, timing tower, podium, and race strip, and each team's livery arrives inline from the standings data.
+Formula 1 Pulse (`src/app/formula-1/formula-1.module.css`) used to be a scoped-red exception, and the sports pass (#478) moved it onto `--c97-*` tokens. Since its redesign on 2026-10-12 the module declares its own `--f1-*` palette on the route root, a track-grey page with a light and a dark story and a carbon timing tower in both themes, and it maps the `--c97-*` tokens the shell and the focus ring read onto that palette. Each team's livery still arrives as data.
 
 Everywhere, data colors, team liveries, BART line colors, and party colors, stay data and never become inks. A route whose data already speaks in blue and red, for instance, prints its own two lead inks in neither, and because those colors used as small text routinely fail 4.5:1, the color goes on a swatch or a mark and the label text prints in the surface's own ink.
 

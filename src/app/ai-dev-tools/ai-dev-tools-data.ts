@@ -64,7 +64,7 @@ export interface AiDevTool {
 // Every entry was read against its own pricing, model, and release pages, and
 // against the GitHub API for stars and releases, on 2026-09-28. `latestRelease`
 // is null for a managed product with no dated public changelog entry, since a
-// made-up date would win the "most recent release" readout on the page.
+// made-up date would lead the page's "Recently shipped" sort.
 export const AI_DEV_TOOLS_GENERATED_AT = "2026-09-28T08:00:00.000Z";
 // Stays false until the entries have had a second, independent review.
 export const AI_DEV_TOOLS_VERIFIED = false;

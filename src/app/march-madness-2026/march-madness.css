@@ -438,6 +438,18 @@
   align-items: baseline;
 }
 
+/* A word wider than the middle column breaks instead of running under the figure. */
+.mm-tz-row > .mm-body {
+  overflow-wrap: anywhere;
+}
+
+/* On the narrowest phones the team column gives up room, so a one-word city fits whole. */
+@media screen and (max-width: 359px) {
+  .mm-tz-row {
+    grid-template-columns: minmax(0, 6rem) minmax(0, 1fr) auto;
+  }
+}
+
 .mm-table {
   min-width: 640px;
 }

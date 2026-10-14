@@ -1,12 +1,16 @@
 import {
   DEFAULT_TEAM_INTAKE,
+  TOOLCHAIN_CATALOG,
+  TROUBLESHOOTING_PROMPTS,
   type TeamIntake,
 } from "./enablement-data";
 import {
+  BASE_SCORE,
   generateOnboardingPlan,
   matchTroubleshootingQuestion,
   recommendToolchains,
   RECOMMENDATION_CONFIDENCE_THRESHOLD,
+  scoreToolchain,
 } from "./enablement-engine";
 
 function intakeWith(overrides: Partial<TeamIntake>): TeamIntake {
@@ -51,6 +55,40 @@ describe("enablement recommendation engine", () => {
     expect(recommendation.runnerUp.toolchain.id).toBe("mobile-cross-platform");
   });
 
+  it("scores every stack as the starting score plus its factors, held between 0 and 100", () => {
+    const intakes = [
+      DEFAULT_TEAM_INTAKE,
+      // The strongest fit runs past 100 before it is held.
+      intakeWith({
+        surface: "mobile",
+        language: "swift",
+        maturity: "mature",
+        hasQualityEngineer: true,
+        layers: ["unit", "integration", "e2e", "performance", "accessibility"],
+      }),
+      intakeWith({ language: "other", ci: "other" }),
+    ];
+
+    for (const entry of intakes) {
+      for (const toolchain of TOOLCHAIN_CATALOG) {
+        const { score, factors } = scoreToolchain(entry, toolchain);
+        const raw = BASE_SCORE + factors.reduce((sum, factor) => sum + factor.points, 0);
+        expect(score).toBe(Math.min(100, Math.max(0, raw)));
+      }
+    }
+  });
+
+  it("words the layer factor for no layers and for one layer", () => {
+    const layerDetail = (layers: TeamIntake["layers"]) =>
+      scoreToolchain(intakeWith({ layers }), TOOLCHAIN_CATALOG[0]).factors.find(
+        (factor) => factor.label === "Needed test layers"
+      )!.detail;
+
+    expect(layerDetail([])).toBe("No test layers are selected.");
+    expect(layerDetail(["unit"])).toBe("It covers the one selected test layer.");
+    expect(layerDetail(["unit", "integration"])).toBe("It covers all 2 selected test layers.");
+  });
+
   it("routes an unsupported language and custom CI system to a human", () => {
     const recommendation = recommendToolchains(
       intakeWith({
@@ -83,6 +121,12 @@ describe("enablement onboarding plan", () => {
     expect(plan.every((step) => step.owner && step.effort && step.snippet)).toBe(true);
   });
 
+  it("says so in the first snippet when no layer is selected", () => {
+    const plan = generateOnboardingPlan(intakeWith({ maturity: "none", layers: [] }));
+
+    expect(plan[0].snippet).toContain("layers: None selected");
+  });
+
   it("builds a parallel migration plan for a mature suite", () => {
     const matureIntake = intakeWith({ maturity: "mature" });
     const plan = generateOnboardingPlan(matureIntake);
@@ -105,6 +149,16 @@ describe("enablement troubleshooting retrieval", () => {
 
     expect(result.shouldEscalate).toBe(false);
     expect(result.article?.id).toBe("playwright-browsers");
+  });
+
+  it("answers every seeded question marked answerable, whichever stack is recommended", () => {
+    const declined = TROUBLESHOOTING_PROMPTS.filter((prompt) => prompt.answerable).flatMap((prompt) =>
+      TOOLCHAIN_CATALOG.filter(
+        (toolchain) => matchTroubleshootingQuestion(prompt.question, toolchain.id).shouldEscalate
+      ).map((toolchain) => `${prompt.question} on ${toolchain.id}`)
+    );
+
+    expect(declined).toEqual([]);
   });
 
   it("declines a deliberately unsupported private integration question", () => {

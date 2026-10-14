@@ -40,7 +40,7 @@ interface Formula1ClientProps {
   initialMeeting: Formula1MeetingSummary | null;
 }
 
-/** The board's anchor, where the tower's phone link and a race lookup land. */
+/** The board's anchor, where a view switch made from further down the page scrolls back to. */
 const BOARD_ID = "f1-board";
 
 function formatDateLabel(value: string): string {
@@ -231,14 +231,18 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
   ];
 
   return (
-    <dl className={styles.countdown} aria-label="Lights out in">
-      {cells.map((cell) => (
-        <div key={cell.label} className={styles.countdownCell}>
-          <dt>{cell.label}</dt>
-          <dd>{cell.value}</dd>
-        </div>
-      ))}
-    </dl>
+    <>
+      {/* A dl takes no accessible name, so the figures get their label as text. */}
+      <p className="sr-only">Lights out in</p>
+      <dl className={styles.countdown}>
+        {cells.map((cell) => (
+          <div key={cell.label} className={styles.countdownCell}>
+            <dt>{cell.label}</dt>
+            <dd>{cell.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </>
   );
 }
 
@@ -347,12 +351,22 @@ function StandingsTable({
           {rows.map((row) => (
             <tr key={row.key}>
               <td className={styles.num}>{row.position}</td>
+              {/* Under 560px the Team and Last race columns are hidden, so each rides under its neighbour. */}
               <td>
                 <span className={styles.livery} style={{ background: liveryOf(row.teamColor) }} aria-hidden="true" />
                 {row.name}
+                {row.team ? <span className={styles.narrowOnly}>{row.team}</span> : null}
               </td>
               {showTeam ? <td className={`${styles.muted} ${styles.wideOnly}`}>{row.team}</td> : null}
-              <td className={`${styles.num} ${styles.strong}`}>{formatPoints(row.points)}</td>
+              <td className={`${styles.num} ${styles.strong}`}>
+                {formatPoints(row.points)}
+                {row.pointsDelta > 0 ? (
+                  <span className={styles.narrowOnly}>
+                    +{formatPoints(row.pointsDelta)}
+                    <span className="sr-only"> points at the last race</span>
+                  </span>
+                ) : null}
+              </td>
               <td className={`${styles.num} ${styles.wideOnly}`}>
                 {row.pointsDelta > 0 ? `+${formatPoints(row.pointsDelta)}` : "0"}
               </td>
@@ -378,8 +392,10 @@ function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
           {entry.position ?? "NC"} · {entry.driverName}
         </p>
         <p className={styles.muted}>
-          {entry.teamName ?? "Unknown team"} · {entry.statusLabel}
+          {entry.teamName ?? "Unknown team"} · {entry.statusLabel} · {entry.lapsCompleted}{" "}
+          {entry.lapsCompleted === 1 ? "lap" : "laps"}
           {entry.gapToLeaderLabel ? ` · ${entry.gapToLeaderLabel}` : ""}
+          {entry.durationLabel ? ` · ${entry.durationLabel}` : ""}
         </p>
       </div>
       <p className={styles.resultPoints}>
@@ -416,6 +432,7 @@ function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
 /**
  * One weekend's schedule and classification. When the weekend is the one the
  * masthead already names, its name and venue are not printed a second time.
+ * The kicker is the weekend's own status, since any round can be picked here.
  */
 function MeetingDetailPanel({ meeting, named }: { meeting: Formula1MeetingSummary; named: boolean }) {
   const gmt = formatGmtOffset(meeting.gmtOffset);
@@ -425,7 +442,7 @@ function MeetingDetailPanel({ meeting, named }: { meeting: Formula1MeetingSummar
         <h3 className="sr-only">{meeting.name} weekend</h3>
       ) : (
         <>
-          <p className={styles.kicker}>{getMeetingStatusCopy(meeting)}</p>
+          <p className={styles.kicker}>{meeting.status}</p>
           <h3 className={styles.h3}>
             <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
             {meeting.name}
@@ -473,7 +490,7 @@ function MeetingDetailPanel({ meeting, named }: { meeting: Formula1MeetingSummar
 function MeetingDetailFallback({ meeting, error }: { meeting: Formula1MeetingMeta; error: string | null }) {
   return (
     <article className={styles.detail}>
-      <p className={styles.kicker}>{getMeetingStatusCopy(meeting)}</p>
+      <p className={styles.kicker}>{meeting.status}</p>
       <h3 className={styles.h3}>
         <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
         {meeting.name}
@@ -528,7 +545,12 @@ function MeetingStrip({
   onSelect: (meetingKey: string) => void;
 }) {
   return (
-    <div className={styles.raceStrip}>
+    // A browser gives a partly visible button focus without scrolling the strip, which leaves
+    // one side of its ring cut off, so the strip brings the focused button fully into view.
+    <div
+      className={styles.raceStrip}
+      onFocus={(event) => event.target.scrollIntoView?.({ block: "nearest", inline: "nearest" })}
+    >
       {meetings.map((meeting) => (
         <button
           key={meeting.key}
@@ -722,17 +744,23 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
   const towerKind: "drivers" | "constructors" = resolvedState.view === "constructors" ? "constructors" : "drivers";
   const towerStandings = towerKind === "constructors" ? summary.constructorStandings : summary.driverStandings;
+  // The full table's own heading, since the board opens on the same shortened tower.
   const fullTableHref = `${buildFormula1Href(
     { view: towerKind, meeting: selectedMeetingKey ?? summary.defaultMeetingKey },
     searchParams,
     summary.defaultMeetingKey
-  )}#${BOARD_ID}`;
+  )}#f1-${towerKind}-heading`;
   const highlightRound = highlightMeeting
     ? summary.meetings.findIndex((meeting) => meeting.key === highlightMeeting.key) + 1
     : 0;
 
+  // The calendar scrolls a pick's detail to the top, past the masthead, so only
+  // the overview leaves the name to the masthead.
   const detail = selectedMeeting ? (
-    <MeetingDetailPanel meeting={selectedMeeting} named={selectedMeeting.key === highlightMeeting?.key} />
+    <MeetingDetailPanel
+      meeting={selectedMeeting}
+      named={resolvedState.view === "overview" && selectedMeeting.key === highlightMeeting?.key}
+    />
   ) : selectedMeetingMeta ? (
     <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
   ) : null;
@@ -749,7 +777,15 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
                 key={view}
                 type="button"
                 aria-pressed={view === resolvedState.view}
-                onClick={() => navigate({ view, meeting: selectedMeetingKey ?? summary.defaultMeetingKey })}
+                onClick={() => {
+                  navigate({ view, meeting: selectedMeetingKey ?? summary.defaultMeetingKey });
+                  // The switch is sticky and the views differ in length, so a switch made
+                  // below the board's top would otherwise leave the page near the footer.
+                  const board = document.getElementById(BOARD_ID);
+                  if (board && board.getBoundingClientRect().top < 0) {
+                    board.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+                  }
+                }}
               >
                 {FORMULA1_VIEW_LABELS[view]}
               </button>
@@ -799,7 +835,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
             {resolvedState.view === "drivers" ? (
               <section className={styles.section} aria-labelledby="f1-drivers-heading">
-                <h2 id="f1-drivers-heading" className={styles.h2}>
+                <h2 id="f1-drivers-heading" className={`${styles.h2} ${styles.anchor}`}>
                   Driver championship
                 </h2>
                 <StandingsTable
@@ -813,7 +849,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
             {resolvedState.view === "constructors" ? (
               <section className={styles.section} aria-labelledby="f1-constructors-heading">
-                <h2 id="f1-constructors-heading" className={styles.h2}>
+                <h2 id="f1-constructors-heading" className={`${styles.h2} ${styles.anchor}`}>
                   Constructor championship
                 </h2>
                 <StandingsTable
@@ -850,7 +886,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
         </div>
 
         <p className={styles.source}>
-          From OpenF1&apos;s community-run historical feeds (
+          From OpenF1&apos;s community-run and unofficial historical feeds (
           <a href={summary.sourceUrls.docs}>docs</a>), frozen into a checked-in snapshot on a schedule.
           This dashboard is not affiliated with Formula 1, the FIA, or Formula One Management.
         </p>

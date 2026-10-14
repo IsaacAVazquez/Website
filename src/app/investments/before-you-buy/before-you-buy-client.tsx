@@ -128,6 +128,32 @@ export function BeforeYouBuyClient() {
     setSaved(loadHoldings());
   }, []);
 
+  // A printed page carries the sector table and the correlation sentence, so
+  // a closed disclosure opens for the print and closes again afterwards,
+  // including after a cancelled print.
+  useEffect(() => {
+    // Accumulated, since a second beforeprint can arrive before the afterprint.
+    let opened: HTMLDetailsElement[] = [];
+    const openDetail = () => {
+      document.querySelectorAll<HTMLDetailsElement>(".byb-detail:not([open])").forEach((detail) => {
+        detail.open = true;
+        opened.push(detail);
+      });
+    };
+    const restoreDetail = () => {
+      opened.forEach((detail) => {
+        detail.open = false;
+      });
+      opened = [];
+    };
+    window.addEventListener("beforeprint", openDetail);
+    window.addEventListener("afterprint", restoreDetail);
+    return () => {
+      window.removeEventListener("beforeprint", openDetail);
+      window.removeEventListener("afterprint", restoreDetail);
+    };
+  }, []);
+
   // The sample until the saved holdings are read, so the server and the first client render agree.
   const usingSaved = source === "saved" || (source === null && (saved?.length ?? 0) > 0);
   const portfolioSymbols = usingSaved ? (saved ?? []).map((holding) => holding.symbol) : SAMPLE.map((p) => p.symbol);

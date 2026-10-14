@@ -94,7 +94,7 @@ function standingsPayload() {
             leagueRank: "3",
             wildCardRank: "1",
             divisionGamesBack: "4.0",
-            // A slot holder's lead over the first team out, as the API prints it.
+            // A slot holder's lead, as the API prints it.
             wildCardGamesBack: "+2.0",
             wins: 50,
             losses: 40,

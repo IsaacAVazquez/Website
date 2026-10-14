@@ -1,6 +1,5 @@
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { AiDevToolsClient } from "../ai-dev-tools-client";
-import { DEFAULT_AI_DEV_TOOLS_STATE } from "../ai-dev-tools-state";
 
 let currentSearchParams = new URLSearchParams();
 // The page writes its state with the native history API, which the router
@@ -46,7 +45,7 @@ describe("AiDevToolsClient", () => {
   });
 
   it("renders the directory and writes filters and search to the URL in place", () => {
-    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+    render(<AiDevToolsClient />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: /ai dev tool ecosystem/i })
@@ -75,7 +74,7 @@ describe("AiDevToolsClient", () => {
   it("uses managed search params and resets them back to the default route", () => {
     visit("category=terminal-agent&pricing=subscription&tool=openai-codex");
 
-    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+    render(<AiDevToolsClient />);
 
     expect(screen.getByLabelText("Category")).toHaveValue("terminal-agent");
 
@@ -86,7 +85,7 @@ describe("AiDevToolsClient", () => {
 
   it("keeps the field empty after a reset instead of writing the old search back", () => {
     visit("q=codex");
-    const ui = () => <AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />;
+    const ui = () => <AiDevToolsClient />;
     const view = render(ui());
     const search = screen.getByLabelText("Search tools") as HTMLInputElement;
     expect(search.value).toBe("codex");
@@ -106,7 +105,7 @@ describe("AiDevToolsClient", () => {
   });
 
   it("keeps both the text and a filter picked while the search pause is running", () => {
-    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+    render(<AiDevToolsClient />);
     const search = screen.getByLabelText("Search tools") as HTMLInputElement;
 
     fireEvent.change(search, { target: { value: "cursor" } });
@@ -123,7 +122,7 @@ describe("AiDevToolsClient", () => {
 
   it("re-seeds the field only when back or forward moves the URL", () => {
     visit("q=codex");
-    const ui = () => <AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />;
+    const ui = () => <AiDevToolsClient />;
     const view = render(ui());
     const search = screen.getByLabelText("Search tools") as HTMLInputElement;
 
@@ -140,7 +139,7 @@ describe("AiDevToolsClient", () => {
   });
 
   it("opens the directory as a list and switches to the category map", () => {
-    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+    render(<AiDevToolsClient />);
 
     // The map moved out of the hero on 2026-10-12 and became the directory's
     // second view, so the list prints first and the map waits for the switch.
@@ -163,7 +162,7 @@ describe("AiDevToolsClient", () => {
       matches: query === "(min-width: 960px)",
     })) as typeof window.matchMedia;
     try {
-      render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+      render(<AiDevToolsClient />);
       fireEvent.click(screen.getByRole("button", { name: "Map" }));
       expect(screen.getByRole("table", { name: /by category and pricing model/i })).toBeInTheDocument();
       expect(screen.getAllByRole("button", { name: /^Cursor/ })).toHaveLength(1);
@@ -173,7 +172,7 @@ describe("AiDevToolsClient", () => {
   });
 
   it("opens no drawer until a tool is picked, then names it in the URL", () => {
-    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+    render(<AiDevToolsClient />);
 
     expect(screen.queryByRole("dialog")).toBeNull();
     fireEvent.click(screen.getAllByRole("button", { name: /^Cursor/ })[0]);
@@ -191,7 +190,7 @@ describe("AiDevToolsClient", () => {
 
   it("shows a deep-linked tool in a named drawer and clears it from the URL on close", () => {
     visit("q=Cursor&tool=cursor");
-    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+    render(<AiDevToolsClient />);
 
     const drawer = screen.getByRole("dialog", { name: "Cursor detail" });
     expect(within(drawer).getByRole("heading", { level: 2, name: "Cursor" })).toBeInTheDocument();
@@ -206,5 +205,72 @@ describe("AiDevToolsClient", () => {
     replaceState.mockClear();
     fireEvent.keyDown(window, { key: "Escape" });
     expect(lastHref()).toBe("/ai-dev-tools?q=Cursor");
+  });
+
+  it("closes a deep-linked drawer once the URL no longer names the tool", () => {
+    visit("tool=cursor");
+    const ui = () => <AiDevToolsClient />;
+    const view = render(ui());
+
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Close" }));
+    expect(lastHref()).toBe("/ai-dev-tools");
+
+    // The router catches up with the cleared bar, and nothing else names the tool.
+    currentSearchParams = new URLSearchParams();
+    view.rerender(ui());
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("goes back on close when the drawer was opened from the list", () => {
+    const back = jest.spyOn(window.history, "back").mockImplementation(() => {});
+    const ui = () => <AiDevToolsClient />;
+    const view = render(ui());
+
+    fireEvent.click(screen.getAllByRole("button", { name: /^Cursor/ })[0]);
+    currentSearchParams = new URLSearchParams("tool=cursor");
+    view.rerender(ui());
+
+    // Back drops the entry the drawer pushed, where a replace would leave a
+    // second copy of the list behind it.
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Close" }));
+    expect(back).toHaveBeenCalledTimes(1);
+    expect(replaceState).not.toHaveBeenCalled();
+    back.mockRestore();
+  });
+
+  it("goes back once when the drawer is closed twice before the first close lands", () => {
+    const back = jest.spyOn(window.history, "back").mockImplementation(() => {});
+    const ui = () => <AiDevToolsClient />;
+    const view = render(ui());
+
+    fireEvent.click(screen.getAllByRole("button", { name: /^Cursor/ })[0]);
+    currentSearchParams = new URLSearchParams("tool=cursor");
+    view.rerender(ui());
+
+    // The bar still shows the drawer's entry until the traversal lands, and a
+    // second Back from there would leave the page.
+    const close = within(screen.getByRole("dialog")).getByRole("button", { name: "Close" });
+    fireEvent.click(close);
+    fireEvent.click(close);
+    fireEvent.keyDown(window, { key: "Escape" });
+    expect(back).toHaveBeenCalledTimes(1);
+
+    // Once it lands, a drawer reopened with Forward closes again.
+    fireEvent.popState(window);
+    fireEvent.click(close);
+    expect(back).toHaveBeenCalledTimes(2);
+    back.mockRestore();
+  });
+
+  it("writes the field's text to the list's entry before the drawer's entry goes on top", () => {
+    render(<AiDevToolsClient />);
+
+    // A row pressed inside the search pause, so Back from the drawer keeps the text.
+    fireEvent.change(screen.getByLabelText("Search tools"), { target: { value: "cursor" } });
+    fireEvent.click(screen.getAllByRole("button", { name: /^Cursor/ })[0]);
+
+    expect(lastHref()).toBe("/ai-dev-tools?q=cursor");
+    expect(lastPushedHref()).toBe("/ai-dev-tools?q=cursor&tool=cursor");
+    expect(replaceState.mock.invocationCallOrder[0]).toBeLessThan(pushState.mock.invocationCallOrder[0]);
   });
 });

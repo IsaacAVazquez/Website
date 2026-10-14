@@ -67,8 +67,9 @@ async function fetchTransitSummary(signal: AbortSignal): Promise<TransitSummary>
   return payload;
 }
 
-const STATUS_LABEL: Record<TransitSectionStatus | "unreported", string> = {
+const STATUS_LABEL: Record<TransitSectionStatus | "unreported" | "saved", string> = {
   fresh: "Live",
+  saved: "Saved copy",
   "stale-fallback": "Last good copy",
   unavailable: "Unavailable",
   unreported: "Not reported",
@@ -77,10 +78,19 @@ const STATUS_LABEL: Record<TransitSectionStatus | "unreported", string> = {
 /**
  * One feed's state, in words and a mark, so it never rests on colour alone. A
  * summary without section statuses gets "Not reported" rather than a "Live"
- * it has no evidence for.
+ * it has no evidence for, and a fresh section reads "Live" only while `live`,
+ * since the page is served from a cached copy of the snapshot.
  */
-function FeedBadge({ label, status }: { label: string; status: TransitSectionStatus | undefined }) {
-  const state = status ?? "unreported";
+function FeedBadge({
+  label,
+  status,
+  live,
+}: {
+  label: string;
+  status: TransitSectionStatus | undefined;
+  live: boolean;
+}) {
+  const state = status === "fresh" && !live ? "saved" : status ?? "unreported";
   return (
     <span className="bt-badge" data-status={state}>
       <span className="bt-badge-mark" aria-hidden="true" />
@@ -134,6 +144,9 @@ export function BayAreaTransitClient({
   // screen while its replacement loads, instead of blanking to "Loading".
   const [refreshTick, setRefreshTick] = useState(0);
   const [boardTicks, setBoardTicks] = useState<Record<string, number>>({});
+  // Whether this browser's latest summary refresh answered. Until one has, and
+  // after one fails, the page is showing a copy it was handed earlier.
+  const [live, setLive] = useState(false);
 
   const stationBoard = selectedStationId
     ? stationBoards[selectedStationId] ?? null
@@ -168,15 +181,20 @@ export function BayAreaTransitClient({
 
     async function refreshSummary() {
       controller?.abort();
-      controller = new AbortController();
+      // Held locally, since the next refresh replaces the shared one.
+      const own = new AbortController();
+      controller = own;
       try {
-        const nextSummary = await fetchTransitSummary(controller.signal);
+        const nextSummary = await fetchTransitSummary(own.signal);
         if (!active) return;
         setSummary(nextSummary);
         setRefreshTick((tick) => tick + 1);
         setStationBoardErrors({});
+        setLive(true);
       } catch {
-        // Keep the last good summary and station board on transient failures. An abort lands here too.
+        // Keep the last good summary and station board on transient failures. An
+        // abort lands here too, and is not a failed read.
+        if (active && !own.signal.aborted) setLive(false);
       }
     }
 
@@ -331,9 +349,9 @@ export function BayAreaTransitClient({
           {title}
           <div className="bt-status">
             <div className="bt-badges">
-              <FeedBadge label="Departures" status={summary.sectionStatus?.departures} />
-              <FeedBadge label="Advisories" status={summary.sectionStatus?.advisories} />
-              <FeedBadge label="Elevators" status={summary.sectionStatus?.elevator} />
+              <FeedBadge label="Departures" status={summary.sectionStatus?.departures} live={live} />
+              <FeedBadge label="Advisories" status={summary.sectionStatus?.advisories} live={live} />
+              <FeedBadge label="Elevators" status={summary.sectionStatus?.elevator} live={live} />
               <button
                 type="button"
                 className="bt-alerts-toggle"
@@ -366,13 +384,14 @@ export function BayAreaTransitClient({
             </p>
           ) : null}
 
-          {summary.advisories.length === 0 &&
-          summary.elevator.length === 0 &&
-          staleSections.length === 0 ? (
-            <p className="bt-alert">
-              <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
-              No delays reported and all elevators in service at the last refresh.
-            </p>
+          {alertCount === 0 ? (
+            // A held feed cannot vouch for an all clear, so its sentence above stands alone.
+            staleSections.length === 0 ? (
+              <p className="bt-alert">
+                <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
+                No delays reported and all elevators in service at the last refresh.
+              </p>
+            ) : null
           ) : (
             <ul className="bt-alert-list">
               {summary.advisories.map((advisory) => (

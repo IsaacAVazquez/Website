@@ -31,10 +31,9 @@ export function filterTeams(
     case "nfc":
       return teams.filter((team) => team.conference === "NFC");
     case "playoffs": {
-      // The NFLverse snapshot leaves `seed` null until the league actually
-      // publishes it, so the playoffs view is built from the same derived
-      // seeding the seed-ladder signature uses instead of the raw field,
-      // which would otherwise leave this view empty all season.
+      // The NFLverse snapshot's `seed` is null until the feed publishes one,
+      // so the playoffs view is built from the derived seeding the ladder
+      // prints, never the raw field, which can leave this view empty.
       const seeds = nflSeeds(teams);
       return teams
         .filter((team) => seeds.has(team.id))

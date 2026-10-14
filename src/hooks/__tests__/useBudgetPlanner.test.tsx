@@ -205,4 +205,44 @@ describe("useBudgetPlanner", () => {
 
     expect(result.current.activeMonth.income).toBe(0);
   });
+
+  it("opens on the visitor's month once the page knows it, and stays there", () => {
+    const { result, rerender } = renderHook(({ month }) => useBudgetPlanner(month), {
+      initialProps: { month: "" },
+    });
+
+    // Until the page has mounted there is no month, so nothing is seeded.
+    expect(result.current.activeMonthKey).toBe("");
+    expect(readStoredMonths()).toEqual({});
+
+    rerender({ month: MONTH_KEY });
+    expect(result.current.activeMonthKey).toBe(MONTH_KEY);
+    expect(readStoredMonths()[MONTH_KEY]).toBeDefined();
+
+    // The clock passing into the next month does not move an open planner.
+    rerender({ month: OTHER_MONTH_KEY });
+    expect(result.current.activeMonthKey).toBe(MONTH_KEY);
+    expect(readStoredMonths()[OTHER_MONTH_KEY]).toBeUndefined();
+  });
+
+  it("does not file an expense under a month it is not dated in", () => {
+    const { result } = renderHook(() => useBudgetPlanner(MONTH_KEY));
+    const categoryId = result.current.activeMonth.categories[0].id;
+
+    act(() => {
+      result.current.addExpense({ categoryId, amount: 100, date: `${OTHER_MONTH_KEY}-01`, note: "Rent" });
+    });
+    expect(result.current.activeMonth.expenses).toHaveLength(0);
+
+    act(() => {
+      result.current.addExpense({ categoryId, amount: 100, date: `${MONTH_KEY}-30`, note: "Rent" });
+    });
+    const expenseId = result.current.activeMonth.expenses[0].id;
+
+    act(() => {
+      result.current.updateExpense(expenseId, { categoryId, amount: 100, date: `${OTHER_MONTH_KEY}-01`, note: "Rent" });
+    });
+    expect(result.current.findExpense(expenseId)?.date).toBe(`${MONTH_KEY}-30`);
+    expect(readStoredMonths()[MONTH_KEY].expenses).toHaveLength(1);
+  });
 });

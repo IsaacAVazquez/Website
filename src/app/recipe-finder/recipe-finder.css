@@ -1,7 +1,7 @@
 /*
  * Recipe Finder, drawn as a pantry-first recipe box: the pantry shelf on the
  * left, and on the right the filters as chips over a box of index cards,
- * ranked by what the pantry is missing. The route paints its own kitchen
+ * ranked by how much of each the pantry covers. The route paints its own kitchen
  * paper, and each recipe is an index card with a red head rule and blue
  * ruled lines, since the card is the object.
  */
@@ -105,11 +105,20 @@
   }
 }
 
-/* The shelf rides along only on a window tall enough to hold it. A pantry long enough to outgrow even that window loses its foot until the box ends, the cost of not clipping the suggestion list. */
+/*
+ * The shelf rides along only on a window tall enough to hold it. A pantry long
+ * enough to outgrow even that window scrolls inside the shelf, so its foot stays
+ * in reach. The inline padding, cancelled by the margin, is room for the focus
+ * rings, which the scroll box would clip.
+ */
 @media screen and (min-width: 1024px) and (min-height: 820px) {
   .rf-shelf {
     position: sticky;
     top: var(--c97-sp-3);
+    max-height: calc(100dvh - 2 * var(--c97-sp-3));
+    margin-inline: calc(-1 * var(--c97-sp-1));
+    padding-inline: var(--c97-sp-1);
+    overflow-y: auto;
   }
 }
 
@@ -227,6 +236,9 @@
   color: var(--rf-ink);
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-small);
+  /* A pasted link or any other unbroken run wraps inside the label, where it would run out of the shelf. */
+  overflow-wrap: anywhere;
+  text-align: left;
   cursor: pointer;
 }
 

@@ -43,22 +43,25 @@
   font-variant-numeric: tabular-nums;
 }
 
-.dark .lt-root {
-  --pl-bg: #15130f;
-  --pl-ink: #eeeae2;
-  --pl-ink-2: #a9a297;
-  --pl-rule: rgba(238, 234, 226, 0.13);
-  --pl-rule-strong: rgba(238, 234, 226, 0.32);
-  --pl-raise: #221f1a;
-  --pl-tint: 12%;
-  --pl-focus: #8db4f5;
-  --pl-ucl: #8db4f5;
-  --pl-uel: #f0a050;
-  --pl-uecl: #7cc47f;
-  --pl-drop: #f08a80;
-  /* The drawer and the ticker print a score in these, so they lift on dark. */
-  --c97-positive: #7cc47f;
-  --c97-negative: #f08a80;
+/* Screen only, so a page printed from the dark theme keeps ink that reads on paper. */
+@media screen {
+  .dark .lt-root {
+    --pl-bg: #15130f;
+    --pl-ink: #eeeae2;
+    --pl-ink-2: #a9a297;
+    --pl-rule: rgba(238, 234, 226, 0.13);
+    --pl-rule-strong: rgba(238, 234, 226, 0.32);
+    --pl-raise: #221f1a;
+    --pl-tint: 12%;
+    --pl-focus: #8db4f5;
+    --pl-ucl: #8db4f5;
+    --pl-uel: #f0a050;
+    --pl-uecl: #7cc47f;
+    --pl-drop: #f08a80;
+    /* The drawer and the ticker print a score in these, so they lift on dark. */
+    --c97-positive: #7cc47f;
+    --c97-negative: #f08a80;
+  }
 }
 
 /* What the frame leaks: the base layer's heading face, paragraph measure, and list padding. */
@@ -226,8 +229,13 @@
   .lt-board > .lt-toolbar {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: var(--c97-z-sticky);
     border-bottom: 1px solid var(--pl-rule);
+  }
+
+  /* A control that takes focus under the stuck toolbar scrolls out from behind it, even where the switches wrap to three rows. The ladder's marks take focus as SVG groups. */
+  .lt-board > :not(.lt-toolbar) :is(button, a, [tabindex="0"]) {
+    scroll-margin-top: 10rem;
   }
 }
 
@@ -282,6 +290,11 @@
     flex: 1 1 100%;
     flex-wrap: nowrap;
     min-width: 0;
+    /* Room for the focus ring, which the scroll box would clip. */
+    margin: -5px;
+    padding: 5px;
+    /* Keeps that room when the browser scrolls a focused pill into view on its own. */
+    scroll-padding-inline: 5px;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -430,11 +443,6 @@ tr[data-selected] .lt-club-name {
   object-fit: contain;
 }
 
-/* Navy and black crests disappear on the dark surface, so each sits on a pale chip there. */
-.dark .lt-crest {
-  background: #eeeae2;
-}
-
 /* The fixture rows borrow the shared crest tile and print it at the table's size, unboxed. */
 .lt-detail-panel img {
   width: 22px;
@@ -445,8 +453,12 @@ tr[data-selected] .lt-club-name {
   background: transparent;
 }
 
-.dark .lt-detail-panel img {
-  background: #eeeae2;
+/* Navy and black crests disappear on the dark surface, so each sits on a pale chip there. */
+@media screen {
+  .dark .lt-crest,
+  .dark .lt-detail-panel img {
+    background: #eeeae2;
+  }
 }
 
 .lt-col-form {
@@ -630,5 +642,11 @@ tr[data-selected] .lt-club-name {
 
   .lt-switch > button:not([aria-pressed="true"]):not([aria-selected="true"]) {
     display: none;
+  }
+
+  /* Paper drops background fills by default, so the one switch that prints takes ink text and no fill. */
+  .lt-switch > button:is([aria-pressed="true"], [aria-selected="true"]) {
+    background: none;
+    color: var(--pl-ink);
   }
 }

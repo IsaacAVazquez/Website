@@ -1,6 +1,6 @@
 /*
  * Museum Log, drawn as a Letterboxd for museums: a title row with your last
- * visits as ticket stubs, one bar with the Discover, Journal, and Lists switch
+ * visits as ticket stubs where it has room, one bar with the Discover, Journal, and Lists switch
  * and the catalog's summary line, then the catalog grid of admission tickets
  * under its search and filters, with a ruled rail beside it. A museum opens as
  * one ruled column in place of the grid. The route paints its own gallery
@@ -145,8 +145,23 @@
   display: flex;
   flex-direction: column;
   gap: var(--c97-sp-1);
-  flex: 0 1 40rem;
   min-width: 0;
+}
+
+/*
+ * 36rem holds three tickets across and, with the title's 26rem and the gap,
+ * fits one row of the 1080px shell from a 1173px viewport. The strip arrives
+ * after the saved log is read. Beside the title it narrows the lede, which
+ * takes a line or two more and moves the catalog down by that much.
+ */
+.mlog-head .mlog-strip-wrap {
+  flex: 0 1 36rem;
+}
+
+/* Under that width the client prints the strip after the catalog, so arriving late it moves nothing above it. */
+.mlog-main .mlog-strip-wrap {
+  padding-top: var(--c97-sp-3);
+  border-top: 1px solid var(--mlog-rule);
 }
 
 .mlog-strip {
@@ -209,6 +224,22 @@
 
 .mlog-summary {
   flex: 1 1 24rem;
+}
+
+/*
+ * The visited sentence is one box as wide as its widest reading, which the
+ * client hands over in data-widest. The count takes the dash's place once the
+ * saved log is read, and at a fixed width that cannot rewrap the summary.
+ */
+.mlog-visited {
+  display: inline-grid;
+}
+
+.mlog-visited::after {
+  content: attr(data-widest);
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 /* The catalog with the rail beside it. */
@@ -592,6 +623,13 @@
   line-height: 1.1;
 }
 
+/* A class and not an inline style, which would outrank the print rule that takes the form off paper. */
+.mlog-rate-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+}
+
 .mlog-review-headline {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-h3);
@@ -634,6 +672,12 @@
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-h3);
   line-height: 1.15;
+}
+
+/* A catalogue's title can outrun a phone's column, so its link wraps instead of running off the page. */
+.mlog-detail-part .c97-btn-ghost {
+  white-space: normal;
+  text-align: start;
 }
 
 /* A past visit reads as one row, date left and rating right. */
@@ -724,10 +768,14 @@
   margin-top: 3px;
 }
 
+/* On paper the log prints without its controls, the action buttons, the rating form, and the lines that say how to use them included. */
 @media print {
   .mlog-toolbar,
   .mlog-switch,
   .mlog-card-actions,
+  .mlog-action,
+  .mlog-detail form,
+  .mlog-activity-help,
   .mlog-back {
     display: none;
   }

@@ -12,7 +12,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { caseStudiesData } from "../caseStudies";
 import { catalog97NavLinks, DASHBOARD_ROUTES, isCatalog97Route, isDashboardRoute } from "../catalog97Nav";
-import { PROJECT_PRESS } from "../projectPress";
 
 const ROOT = path.join(__dirname, "..", "..", "..");
 const APP = path.join(ROOT, "src", "app");
@@ -100,10 +99,6 @@ describe("project route inventory", () => {
     expect(all).not.toContain("Home" + "StatsPanel");
   });
 
-  it("has no press row for a route that does not exist", () => {
-    const routes = new Set(pageRoutes());
-    expect(Object.keys(PROJECT_PRESS).filter((route) => !routes.has(route))).toEqual([]);
-  });
 
   it("places every page route as designed, project, or utility, with no orphans", () => {
     const designed = new Set(catalog97NavLinks.map((link) => link.href));
@@ -113,17 +108,27 @@ describe("project route inventory", () => {
     expect(orphans).toEqual([]);
   });
 
-  it("lists project routes that no portfolio card links to, so each one is deliberate", () => {
-    const linked = new Set(liveProjects.map((study) => study.link));
-    const unlinked = Object.keys(PROJECT_PRESS).filter((route) => !linked.has(route));
-    // The fantasy suite is one portfolio project spread over eight routes.
-    expect(unlinked.every((route) => route.startsWith("/fantasy-football/"))).toBe(true);
-  });
 
   it("marks Dashboards in the header on every live tool, and on nothing else", () => {
     expect([...DASHBOARD_ROUTES].sort()).toEqual(liveProjects.map((study) => study.link).sort());
     expect(isDashboardRoute("/fantasy-football/weekly")).toBe(true);
     expect(isDashboardRoute("/score-pools")).toBe(false);
     expect(isDashboardRoute("/nbax")).toBe(false);
+  });
+
+  // The browser spec spreads DASHBOARD_ROUTES and names every other project
+  // page by hand, so a page added below a project gets no two-zone hydration
+  // check and no header-edge check until it is named there.
+  it("names every project page outside the registry in the browser spec", () => {
+    const spec = fs.readFileSync(path.join(ROOT, "e2e", "project-routes.spec.ts"), "utf8");
+    const outsideRegistry = [
+      ...pageRoutes().filter((route) => isDashboardRoute(route) && !DASHBOARD_ROUTES.includes(route)),
+      "/score-pools",
+      "/score-pools/tracker",
+      "/score-pools/settings",
+      "/agent-build-index",
+    ];
+    expect(spec).toContain("...DASHBOARD_ROUTES");
+    expect(outsideRegistry.filter((route) => !spec.includes(`"${route}"`))).toEqual([]);
   });
 });

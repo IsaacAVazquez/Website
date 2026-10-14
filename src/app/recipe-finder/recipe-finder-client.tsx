@@ -147,8 +147,8 @@ export function RecipeFinderClient() {
   // whatever meal, diet, or search filter is active.
   const overallMatches = useMemo(() => searchRecipes(RECIPES, pantry, {}), [pantry]);
   const hasPantry = pantry.some((item) => item.trim().length > 0);
-  const cookableNow = useMemo(
-    () => overallMatches.filter((match) => match.missing.length === 0).length,
+  const pantrySuggested = useMemo(
+    () => overallMatches.filter((match) => match.matched.length > 0).length,
     [overallMatches],
   );
 
@@ -195,7 +195,8 @@ export function RecipeFinderClient() {
   }
 
   function handlePantryKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "," || event.key === "Tab") {
+    // A comma commits like Enter. Tab is left to move on, so it can reach the suggestions under the field.
+    if (event.key === ",") {
       const value = pantryDraft.trim();
       if (value) {
         event.preventDefault();
@@ -225,9 +226,9 @@ export function RecipeFinderClient() {
         <header className="rf-head">
           <h1>Recipe Finder</h1>
           <p className="rf-lede">
-            Add the ingredients you have on hand and the recipes reorder by what you&rsquo;re missing, so the ones you
-            can cook tonight come first. Salt, pepper, oil, and water count as already in every kitchen, so those tick
-            on their own.
+            Add the ingredients you have on hand and the recipes reorder by how much of each one you already have, so
+            the ones you can cook tonight come first. Staples like salt, pepper, cooking oil, and water count as already
+            in every kitchen, so those tick on their own.
           </p>
         </header>
 
@@ -284,7 +285,7 @@ export function RecipeFinderClient() {
                       {id === "vegetarian" && <ChefHat size={14} aria-hidden="true" />}
                       {id === "pantry" && <Plus size={14} aria-hidden="true" />}
                       <span>{VIEW_LABELS[id]}</span>
-                      {id === "pantry" && hasPantry ? <span>({cookableNow})</span> : null}
+                      {id === "pantry" && hasPantry ? <span>({pantrySuggested})</span> : null}
                     </button>
                   );
                 })}
@@ -330,7 +331,13 @@ export function RecipeFinderClient() {
 
             <p className="rf-count" role="status" aria-live="polite">
               {visibleMatches.length} of {totalRecipes} recipes
-              {hasPantry ? ", ranked by what your pantry is missing" : ""}
+              {hasPantry ? (
+                <>
+                  , ranked by how much of each recipe your pantry covers
+                  {/* An add or a remove can leave the line above as it was, so this gives the live region a change to announce. */}
+                  <span className="sr-only">, {pantry.length} in your pantry</span>
+                </>
+              ) : null}
             </p>
 
             <ResultsGrid

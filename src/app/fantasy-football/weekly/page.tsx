@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, generateBreadcrumbStructuredData, laterDate } from "@/lib/seo";
 import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
@@ -15,7 +15,7 @@ export const metadata: Metadata = constructMetadata({
     "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.",
   canonicalUrl: "/fantasy-football/weekly",
   image: "/fantasy-football/weekly/opengraph-image",
-  dateModified: fantasySnapshotRevision.slice(0, 10),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
 });
 
 const breadcrumbs = [

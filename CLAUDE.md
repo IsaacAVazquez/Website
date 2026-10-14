@@ -133,7 +133,7 @@ Shared conventions worth internalizing:
   from and the date it was read, which is how the 2026-09-28 review recorded each
   correction. Keep the on-page source and estimate disclosures intact.
 - **Shared football components** in `src/components/football/*` back the soccer, NBA,
-  MLB, and NFL dashboards (`FixtureCard`, `LeaderList`, `StatCard`, etc.).
+  MLB, and NFL dashboards (`FixtureLedgerSection`, `LeaderLedger`, `StatFascia`, etc.).
 
 ### Portfolio / writing
 
@@ -256,7 +256,8 @@ frame (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`): the `--
 are available there as a default and never required, the rules below bind the frame and the
 designed pages, and the contract for a project route is the "Project routes" section of
 `DESIGN_CHECKLIST.md`. `/arcade` was the first route to work that way. Formula 1's old scoped
-red is gone, and its module reads `--c97-*`. Every route renders inside `Catalog97Shell` or
+red is gone, and its module declares its own `--f1-*` palette and maps the `--c97-*` tokens the
+shell and the focus ring read onto it. Every route renders inside `Catalog97Shell` or
 `Catalog97ToolShell`, and the frame's tokens and classes live in
 `src/app/catalog97.css`. `STYLING.md` is the reference for it. `DESIGN.md` describes
 Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
@@ -274,16 +275,17 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   `.c97-poster`/`.c97-poster-sm` Anton headings with the
   `--c97-overprint` offset, `.c97-halftone` for tone, and `.c97-offset` as the only shadow. The
   method and its rules are in `STYLING.md` under "Print shop layout"; Home is the reference build.
-- Project routes printed the same way from 2026-09-25 until 2026-10-11 and move off it as each
-  redesign lands. Until then a route takes its ink pair from `src/constants/projectPress.ts`
-  and opens on `Catalog97ProjectHero` with its signature visual as the child, and anything
-  inside that hero that paints a field needs its own `data-c97-surface`.
-  `node scripts/contrastSweep.mjs <baseUrl> <routes…>` measures text contrast in both themes
-  on any palette. Specs: `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`
-  (the old pattern) and `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`.
-- A route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
-  each carrying its own `data-c97-surface`, and it uses only the `catalog97.css`
-  vocabulary: `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,
+- Every project route owns its design inside the frame as of 2026-10-12 (the four pilots landed in
+  #582 and the remaining 31 routes in #595), so `Catalog97ProjectHero`, `projectPress.ts`, and the
+  `data-c97-press-second` overprint no longer exist. A route root sets its heading font, resets the
+  `p` and list defaults it does not want, redeclares the `--c97-*` tokens any borrowed `c97-*` class
+  reads, and sets `--c97-accent` for the focus ring. `node scripts/contrastSweep.mjs <baseUrl>
+  <routes…>` measures text contrast in both themes on any palette. Specs:
+  `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md` (the old pattern) and
+  `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`.
+- A designed page or a utility page is a sequence of `c97-band` sections, each carrying
+  its own `data-c97-surface`, and it uses only the `catalog97.css` vocabulary (a project
+  route may borrow these classes or write its own): `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,
   `.c97-lead`, `.c97-prose`, `.c97-meta`, the ledger row `.c97-row` and its
   variants, `.c97-columns`, `.c97-mosaic`/`.c97-tile`, `.c97-panel`, `.c97-stat`,
   `.c97-chip`, `.c97-table`, `.c97-segmented`, the buttons and fields, and the
@@ -295,11 +297,14 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   an inline base beside responsive utilities, since inline style beats every breakpoint.
   A stack is a flex column with a token gap, not `space-y-*`. Never use Tailwind's own
   spacing scale or its colour, radius, or shadow utilities. Overlays read the `--c97-z-*`
-  stacking tokens on `:root`, never an arbitrary z-index. The running-prose column is
+  stacking tokens on `:root`, never an arbitrary z-index, and an in-page sticky bar reads
+  `--c97-z-sticky`. The running-prose column is
   `--c97-column`. The type classes and `.c97-panel` are unlayered and set their own
   margin or padding, so a Tailwind margin or padding utility on the same element silently
-  loses; put that spacing in an inline style.
-- The four dense tools in `WIDE_TOOL_ROUTES` (`src/constants/catalog97Nav.ts`) print on the
+  loses; put that spacing in an inline style. `.c97-btn` and `.c97-btn-ghost` set `display` the same
+  way, so a responsive display utility such as `md:hidden` on a button does nothing; put the
+  utility on a wrapper `div`.
+- The five dense tools in `WIDE_TOOL_ROUTES` (`src/constants/catalog97Nav.ts`) print on the
   1376px `--c97-container-wide`, and every shell on those pages widens with them, header and
   footer included, so a page keeps one edge. Content outside a `.c97-band` pairs `.c97-shell`
   with `.c97-frame`. `node scripts/layoutSweep.mjs <baseUrl>` checks every route from phone to
@@ -316,10 +321,13 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   `color-mix(…, white)`, which lightens in both themes and breaks dark mode. Fields paint the
   pale `--c97-field`, so a field inside an espresso, chocolate, or lead-ink sheet sits on a
   paper plate.
-- D3/SVG charts resolve token colors at render time via `getComputedStyle` and never bake
-  a token's hex into a constant. Read from the chart's own element, since the tokens are
-  scoped to the `[data-c97]` container and `document.documentElement` resolves none of
-  them. `ComparisonRadarChart` and `FrontierCostContextChart` are the references.
+- D3/SVG charts take token colors from the theme and never bake a token's hex into a
+  constant. Set them on each mark as `var(--c97-…)` through `.style()`, which follows a theme
+  change with no redraw; `ComparisonRadarChart` and `FrontierCostContextChart` are the
+  references. Resolve with `getComputedStyle` only where a colour feeds a computation, and
+  read it from the chart's own element, since the tokens are scoped to the `[data-c97]`
+  container and `document.documentElement` resolves none of them. An effect keyed on
+  `resolvedTheme` can run before the theme class moves, so it can read the old theme.
 - No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
 - CSS-Module surfaces must alias the tokens (`--x-ink: var(--c97-ink)`), never
   re-declare the palette as fresh hex with its own `.dark` mirror.

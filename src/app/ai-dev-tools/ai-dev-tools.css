@@ -163,6 +163,14 @@
   outline-offset: 1px;
 }
 
+/* The label wears the one ring. The frame's ring on a focused field outranks
+ * the plain resets on the input and the select, so it is cleared here under
+ * the root, at a weight the frame's rule cannot tie. */
+.adt-root .adt-search input:focus-visible,
+.adt-root .adt-select select:focus-visible {
+  outline: none;
+}
+
 .adt-select-label {
   font-size: 0.6875rem;
   font-weight: 600;
@@ -403,6 +411,13 @@
   display: block;
   height: 100%;
   background: var(--adt-accent);
+}
+
+/* A hovered or open row fills with the track's own colour, so there the
+ * track takes the rule colour and the bar keeps its full length. */
+.adt-row:hover .adt-meter,
+.adt-row[aria-pressed="true"] .adt-meter {
+  background: var(--adt-rule);
 }
 
 @media screen and (min-width: 640px) and (max-width: 899px) {
