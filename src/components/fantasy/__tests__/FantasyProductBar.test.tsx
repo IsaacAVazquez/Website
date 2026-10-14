@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 
 import { FantasyProductBar } from "../FantasyProductBar";
 
@@ -76,6 +76,68 @@ describe("FantasyProductBar", () => {
   });
 });
 
+describe("FantasyProductBar on a phone", () => {
+  const desktop = window.matchMedia;
+  afterEach(() => {
+    window.matchMedia = desktop;
+    jest.restoreAllMocks();
+  });
+
+  it("brings the current link in with as many neighbours before it as fit, at a link's start where the snapping rests", () => {
+    mockPathname.mockReturnValue("/fantasy-football/waivers");
+    const phone = jest.fn((query: string) => ({ matches: query === "(max-width: 767.98px)", media: query }) as MediaQueryList);
+    window.matchMedia = phone;
+    // The list shows 300px. Waivers ends at 600, Weekly starts at 440, Best ball tracker at 300.
+    const left = new Map([["Waivers", 520], ["Weekly", 440], ["Best ball tracker", 300]]);
+    jest.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
+      if (this.tagName === "UL") return { left: 0, right: 300, width: 300 } as DOMRect;
+      const at = left.get(this.textContent ?? "") ?? 0;
+      return { left: at, right: this.textContent === "Waivers" ? 600 : at + 80, width: 80 } as DOMRect;
+    });
+    jest.spyOn(HTMLElement.prototype, "scrollWidth", "get").mockImplementation(() => 640);
+    jest.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => 300);
+
+    render(<FantasyProductBar />);
+
+    // Weekly and Waivers take 160px of the 292 a link can start in, and Best ball tracker would need 300,
+    // so Weekly starts 4px in, which is the list's own start padding.
+    expect(phone).toHaveBeenCalledWith("(max-width: 767.98px)");
+    expect(screen.getByRole("list").scrollLeft).toBe(436);
+  });
+});
+
+describe("FantasyProductBar edge cue", () => {
+  afterEach(() => jest.restoreAllMocks());
+
+  it("marks the bar while more links sit past the list's right edge, and clears it at the end", () => {
+    mockPathname.mockReturnValue("/fantasy-football");
+    jest.spyOn(HTMLElement.prototype, "scrollWidth", "get").mockImplementation(() => 640);
+    jest.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => 300);
+    render(<FantasyProductBar />);
+    const nav = screen.getByRole("navigation", { name: "Fantasy football" });
+    const list = screen.getByRole("list");
+
+    expect(nav).toHaveAttribute("data-more", "end");
+
+    list.scrollLeft = 340;
+    fireEvent.scroll(list);
+    expect(nav).not.toHaveAttribute("data-more");
+
+    list.scrollLeft = 200;
+    fireEvent.scroll(list);
+    expect(nav).toHaveAttribute("data-more", "end");
+  });
+
+  it("carries no mark when every link fits", () => {
+    mockPathname.mockReturnValue("/fantasy-football");
+    jest.spyOn(HTMLElement.prototype, "scrollWidth", "get").mockImplementation(() => 300);
+    jest.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => 300);
+    render(<FantasyProductBar />);
+
+    expect(screen.getByRole("navigation", { name: "Fantasy football" })).not.toHaveAttribute("data-more");
+  });
+});
+
 describe("FantasyProductBar when the current link is already on screen", () => {
   it("leaves the list where it is", () => {
     mockPathname.mockReturnValue("/fantasy-football/draft-tracker");
@@ -117,21 +179,40 @@ describe("FantasyProductBar when a link takes focus", () => {
     return { link, list: screen.getByRole("list") };
   }
 
-  it("moves the list until a link that is partly off screen sits whole at its left edge", () => {
+  it("moves the list until a link that keyboard focus lands on, partly off screen, sits whole at its left edge", () => {
     const { link, list } = renderWithBoxes({ left: 260, right: 360 });
     expect(list.scrollLeft).toBe(0);
 
-    fireEvent.focus(link);
+    act(() => link.focus());
 
-    // The item starts at 260 and ends at 360 in a 300px list, so it goes 4px in from the left edge.
+    // A focus the keyboard gives. The item starts at 260 and ends at 360 in a 300px list, so it goes 4px in from the left edge.
+    expect(link).toHaveFocus();
+    expect(link).toHaveProperty("matches");
+    expect(link.matches(":focus-visible")).toBe(true);
     expect(list.scrollLeft).toBe(256);
   });
 
   it("leaves the list alone for a link that is already whole on screen", () => {
     const { link, list } = renderWithBoxes({ left: 120, right: 220 });
 
-    fireEvent.focus(link);
+    act(() => link.focus());
 
+    expect(link).toHaveFocus();
+    expect(list.scrollLeft).toBe(0);
+  });
+
+  it("does not move the list when a pointer press focuses a cut link, so the press lands on that link", () => {
+    const { link, list } = renderWithBoxes({ left: 260, right: 360 });
+    // A pointer press focuses a link in Chromium and Firefox without :focus-visible.
+    const matches = Element.prototype.matches;
+    jest.spyOn(link, "matches").mockImplementation((selector: string) =>
+      selector === ":focus-visible" ? false : matches.call(link, selector)
+    );
+
+    fireEvent.pointerDown(link);
+    act(() => link.focus());
+
+    expect(link).toHaveFocus();
     expect(list.scrollLeft).toBe(0);
   });
 });

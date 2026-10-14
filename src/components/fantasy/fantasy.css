@@ -258,6 +258,9 @@ html.dark .ffb-scope {
 /* On the scorebug the ring is the highlighter (light) or ink (dark). On a toast, which is ink in both themes, it is the board colour. */
 .ffb-root .ffb-bug { --c97-accent: var(--ffb-bug-focus); }
 .ffb-root .ffb-toast { --c97-accent: var(--ffb-board); }
+/* The on-the-clock cell stands proud of the bar, so an outset ring would land on the board around
+   it (1.16:1 in light). It draws inside the cell in the ink that reads on the highlighter. */
+.ffb-root .ffb-bug-live:focus-visible { outline-color: var(--ffb-on-fill); outline-offset: -4px; }
 
 /* The two phone helpers are unlayered, so they beat every component's own display and every
    utility. Each only hides. Where it does not apply, the element keeps the display its own class
@@ -298,7 +301,8 @@ html.dark .ffb-scope {
      width as a draft fills it. That room is taken from the page gutter at the rail's right, not
      from the rail's content: the box runs 12px past the column, 6px of inset and 6px of scrollbar. */
   @media (min-width: 1200px) {
-    .ffb-root .ffb-rail-scroll { margin-inline-end: -12px; padding-inline-end: 6px; scrollbar-gutter: stable; }
+    /* WebKit reserves the gutter only once the rail overflows, so the track is always laid out. */
+    .ffb-root .ffb-rail-scroll { margin-inline-end: -12px; padding-inline-end: 6px; overflow-y: scroll; scrollbar-gutter: stable; }
   }
   .ffb-root .ffb-rail-scroll::-webkit-scrollbar { width: 6px; }
   .ffb-root .ffb-rail-scroll::-webkit-scrollbar-track { background: transparent; }
@@ -312,6 +316,9 @@ html.dark .ffb-scope {
    cell is about 22px, so the label sets at 10px on the face's narrowest width, which needs 20px.
    The type roles are unlayered, so this is too. */
 .ffb-root .ffb-grid-tight .ffb-cell.ffb-is-made { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
+/* A five-character label ("DST10") needs 32px at the grid's own size, and a rail's cell is 29 to
+   31px from 1024px, so that cell takes the narrow form at any team count. */
+.ffb-root .ffb-grid .ffb-cell.ffb-cell-long { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
 /* A remove button inside a sticker rings inside the fill, in the colour that reads on it. */
 .ffb-root .ffb-sticker-remove:focus-visible { outline-color: var(--ffb-on-fill); outline-offset: -3px; }
 
@@ -438,6 +445,9 @@ html.dark .ffb-scope {
   }
   /* Item 50: the live cell stands 4px proud of the bug, so a pinned wrapper leaves it that room. */
   .ffb-sticky:has(> .ffb-bug) { padding-block: var(--ffb-s1); }
+  /* The scorebug's pinned section stacks one above every other pinned bar. A room's board bar is
+     pinned (or a flex item) at the same level and comes later, so on a tie it would cover Undo, Redo, and New room. */
+  .ffb-bug-pin { z-index: calc(var(--c97-z-sticky, 5) + 1); }
   /* Item 9: a pinned block that holds the column heads ends on the 2px ink rule a table head ends on. */
   .ffb-sticky-ruled { border-bottom: 2px solid var(--ffb-ink); }
 
@@ -496,6 +506,31 @@ html.dark .ffb-scope {
     inset: auto var(--ffb-s3) 0;
     height: 3px;
     background: var(--ffb-ink);
+  }
+  /* From 768px, where nothing snaps, a plate with an arrow closes the bar's right end while more
+     links sit past it. The bar sets data-more while they do, and a phone's cut link says it there. */
+  @media (min-width: 768px) {
+    .ffb-bar { position: relative; }
+    .ffb-bar[data-more]::after {
+      content: "";
+      position: absolute;
+      inset-block: 0 1px;
+      right: 0;
+      width: 28px;
+      border-inline-start: 1px solid var(--ffb-rule);
+      background: var(--ffb-surface);
+      pointer-events: none;
+    }
+    .ffb-bar[data-more]::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: calc(50% - 5px);
+      right: 10px;
+      border-block: 5px solid transparent;
+      border-inline-start: 7px solid var(--ffb-ink);
+      pointer-events: none;
+    }
   }
 
   /* The page head: title, freshness on the title's baseline, the lead under both.
@@ -656,6 +691,11 @@ html.dark .ffb-scope {
      the right edge of the screen, as the position switch does. */
   .ffb-seg-scroll { overflow-x: auto; scrollbar-width: none; }
   .ffb-seg-scroll > .ffb-seg-btn { flex: none; }
+  /* Eight contests need 688px, and the column is 674px at 768px, so the phone's run into the gutter
+     holds to 800px, where they fit the column. */
+  @media (min-width: 768px) and (max-width: 799.98px) {
+    .ffb-seg-scroll { max-width: calc(100% + var(--ffb-bleed)); margin-inline-end: calc(-1 * var(--ffb-bleed)); }
+  }
   .ffb-seg-btn:first-child { border-inline-start: 0; }
   .ffb-seg-btn:hover { background-color: var(--ffb-sunk); }
   .ffb-seg-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
@@ -906,7 +946,8 @@ html.dark .ffb-scope {
     font-size: 14px;
     appearance: none;
   }
-  .ffb-search-input::-webkit-search-cancel-button { appearance: none; }
+  /* Where the kit draws its own clear button, the browser's goes. A search field without one keeps it. */
+  .ffb-search:has(.ffb-search-clear) .ffb-search-input::-webkit-search-cancel-button { appearance: none; }
   .ffb-search-clear {
     display: grid;
     place-items: center;
@@ -1129,6 +1170,20 @@ html.dark .ffb-scope {
   :is(.ffb-row, .ffb-table tbody tr, .ffb-more-row) :is(a, button, select, input),
   .ffb-more {
     scroll-margin-block: var(--ffb-pinned-top, 152px) var(--ffb-pinned-bottom, 96px);
+  }
+  /* A room's controls between its scorebug and its board (a last-picks sticker, a strip's Log and
+     disclosure) are scrolled clear of the scorebug alone. Inside the work the room sets
+     --ffb-sticky-top to the scorebug's measured height. The last picks sit above it, so they take
+     the scorebug's height at each width (68px, and 112px on a phone where it is two rows). */
+  .ffb-picks-list button,
+  .ffb-strip :is(a, button, summary, select, input) {
+    scroll-margin-top: calc(var(--ffb-sticky-top, 68px) + var(--ffb-s2));
+  }
+  @media (max-width: 767.98px) {
+    .ffb-picks-list button,
+    .ffb-strip :is(a, button, summary, select, input) {
+      scroll-margin-top: calc(var(--ffb-sticky-top, 112px) + var(--ffb-s2));
+    }
   }
   /* Nothing is pinned over a row inside a pinned bar, an overlay, or a rail that scrolls by itself. */
   :is(.ffb-sticky, .ffb-overlay, .ffb-drawer, .ffb-modal, .ffb-sheet, .ffb-tray) { --ffb-pinned-top: 0px; --ffb-pinned-bottom: 0px; }
@@ -1456,6 +1511,13 @@ html.dark .ffb-scope {
   /* A made cell's player name, where the page asks for names. It prints from 1200px, where a
      grid with the page's width has cells wide enough for two short lines. */
   .ffb-cell-name { display: none; }
+  /* A grid at the page's width sets its labels at 14px in 40px cells (34px on a phone, where the
+     cells are as narrow as a rail's and the phone's narrow label applies). */
+  .ffb-grid-names .ffb-cell { height: 40px; }
+  .ffb-grid-names .ffb-cell.ffb-is-made { font-size: 14px; }
+  @media (max-width: 767.98px) {
+    .ffb-grid-names .ffb-cell { height: 34px; }
+  }
   @media (min-width: 1200px) {
     .ffb-grid-names .ffb-cell { height: 52px; }
     .ffb-grid-names .ffb-cell.ffb-is-made {
@@ -2122,7 +2184,9 @@ html.dark .ffb-scope {
   }
 
   /* The pick grid in a box that scrolls sideways, for a 14 or 16 team room in a narrow rail. */
-  .ffb-gridwrap { overflow-x: auto; scrollbar-width: thin; }
+  /* The highlighter band runs 3px past my column on each side, so the scroller is 3px wider each
+     way and the band stays inside it when my column is the last. */
+  .ffb-gridwrap { margin-inline: -3px; padding-inline: 3px; overflow-x: auto; scrollbar-width: thin; }
   .ffb-gridwrap > .ffb-grid { min-width: calc(var(--ffb-grid-lead) + var(--ffb-teams, 12) * 24px); }
   .ffb-grid-tight .ffb-cell:not(.ffb-is-made) { font-size: 10px; }
 
@@ -2207,14 +2271,18 @@ html.dark .ffb-scope {
     .ffb-work-split > .ffb-rail > * { order: 1; min-width: 0; }
     .ffb-work-split > .ffb-rail > .ffb-rail-lead { order: -1; }
     /* The lead roster is compact: the code over the name in sockets of 62px or more, so a lineup of
-       ten is one row from 768px, five across on a 390px phone, and four across under 382px. Rows
-       are added as the lineup needs them. */
+       ten is one row from 900px. Below 900px a ten-socket row leaves a name 50px, which cuts a last
+       name of nine letters ("Stevenson"), so the sockets are 72px or more and the row wraps: eight
+       and two at 768px, four across on a phone. Rows are added as the lineup needs them. */
     .ffb-rail-lead .ffb-slots {
       grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
       grid-template-rows: none;
       grid-auto-rows: 44px;
       grid-auto-flow: row;
       gap: var(--ffb-s1);
+    }
+    @media (max-width: 899.98px) {
+      .ffb-rail-lead .ffb-slots { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); }
     }
     .ffb-rail-lead .ffb-slot {
       grid-template-columns: minmax(0, 1fr);
@@ -2229,6 +2297,15 @@ html.dark .ffb-scope {
     .ffb-rail-lead .ffb-slot .ffb-slot-meta { display: none; }
     .ffb-rail-lead .ffb-slot-bench .ffb-slot-name { display: none; }
     .ffb-rail-lead .ffb-slot.ffb-slot-bench .ffb-slot-meta { display: block; font-size: 11px; }
+    /* A filled socket prints the last name alone, on up to two lines. The full name is the slot's title. */
+    .ffb-rail-lead .ffb-slot-initial { display: none; }
+    .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-height: 1;
+      white-space: normal;
+    }
     .ffb-bug-seg { padding-inline: var(--ffb-s3); }
     .ffb-head-run { grid-template-columns: auto minmax(0, 1fr) auto; }
     .ffb-head > .ffb-fresh { grid-column: 1 / -1; grid-row: auto; justify-self: start; text-align: left; }
@@ -2246,9 +2323,11 @@ html.dark .ffb-scope {
     .ffb-seg-btn { height: 44px; }
     .ffb-search-clear { width: 44px; height: 44px; }
     .ffb-star { width: 44px; height: 44px; }
-    /* A link holds a 44px target, and the negative margin keeps a sentence's line height. */
-    .ffb-link,
-    :is(.ffb-prose, .ffb-notice, .ffb-method, .ffb-footlinks, .ffb-lede, .ffb-fresh, .ffb-copy, .ffb-empty-body) a {
+    /* A link that stands by itself holds a 44px target, and the negative margin keeps its line's
+       height. A link that runs inside a sentence is exempt (the inline exception in WCAG's target
+       size rule): two boxes on consecutive lines overlapped, so a tap on one opened the other. */
+    .ffb-link:not(:is(.ffb-notice, .ffb-method, .ffb-lede, .ffb-fresh, .ffb-copy, .ffb-empty-body) .ffb-link),
+    .ffb-footlinks a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -2268,6 +2347,11 @@ html.dark .ffb-scope {
   @media (max-width: 767.98px) {
 
     .ffb-bar-links { margin-inline-end: calc(-1 * var(--ffb-bleed)); padding-inline: var(--ffb-s1) var(--ffb-bleed); }
+    /* The name tab sets its two words one over the other, and the links take 8px a side, so the
+       current link has two whole neighbours, or a cut word says there are more. */
+    .ffb-bar-name { width: min-content; padding-inline: 10px; font-size: 12px; line-height: 1; white-space: normal; }
+    .ffb-bar-link { padding-inline: var(--ffb-s2); }
+    .ffb-bar-link[aria-current="page"]::after { inset-inline: var(--ffb-s2); }
 
     .ffb-head,
     .ffb-head-run { grid-template-columns: minmax(0, 1fr); padding-block: var(--ffb-s4) var(--ffb-s2); }
@@ -2590,7 +2674,9 @@ html.dark .ffb-scope {
   .ffb-root .ffb-details-print > summary::after { display: none; }
   /* With the highlighter off, what was highlighted keeps an ink outline. */
   .ffb-root :is(.ffb-bug-live, .ffb-cell.ffb-is-live, .ffb-turn-tab, .ffb-countbadge) { outline: 2px solid #15191c; outline-offset: -2px; }
-  .ffb-root .ffb-bug-live { margin-block: 0; }
+  /* With a note under its value the cell needs more than the bar's height, so it takes 4px of room
+     above and below and its label clears the outline. */
+  .ffb-root .ffb-bug-live { margin-block: 0; padding-block: var(--ffb-s1); }
   .ffb-root .ffb-is-queued .ffb-c-rank { text-decoration: underline; text-decoration-thickness: 2px; }
   .ffb-root :is(.ffb-row, .ffb-fact, .ffb-score, .ffb-note, .ffb-tier-head, .ffb-sticker, .ffb-slot) { break-inside: avoid; }
   .ffb-root .ffb-tier-head { break-after: avoid; }

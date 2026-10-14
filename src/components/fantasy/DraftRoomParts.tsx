@@ -44,7 +44,8 @@ const TALLY_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
  * mounts with its text can be skipped, which is why the bar does not carry
  * the room's sentence. `announcement` is for a caller with no such element:
  * with it the bar prints a visually hidden status sentence, and without it
- * the bar prints none. `sectionRef` is the element a room measures to pin its
+ * the bar prints none. The section stacks one above every other pinned bar
+ * (`ffb-bug-pin`), so a room's board bar never covers it. `sectionRef` is the element a room measures to pin its
  * board bar and its rail under the bar. `className` goes on the bar, for a
  * room's own rules.
  */
@@ -64,7 +65,7 @@ export function DraftScorebug({
   children: ReactNode;
 }) {
   return (
-    <section ref={sectionRef} aria-label={label} className="ffb-sticky">
+    <section ref={sectionRef} aria-label={label} className="ffb-sticky ffb-bug-pin">
       {announcement === undefined ? null : (
         <p role="status" aria-live="polite" className="sr-only">
           {announcement}
@@ -129,7 +130,9 @@ function pickMeta(pick: RoomPick): string {
  *
  * The kit's list shows one row of whole stickers and clips the rest, and a
  * clipped button would still take focus where nobody can see it, so the ones
- * that fell out of the first row are hidden outright.
+ * that fell out of the first row are hidden outright. Plain stickers can scroll
+ * sideways instead, and Safari does not let a keyboard into a scroller with
+ * nothing focusable in it, so that list takes focus itself, named by its heading.
  */
 export function DraftLastPicks({
   picks,
@@ -147,6 +150,7 @@ export function DraftLastPicks({
 }) {
   const listRef = useRef<HTMLOListElement | null>(null);
   const fit = useFirstRowCount(listRef, picks.length);
+  const headingId = useId();
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
   if (picks.length === 0) return null;
@@ -154,12 +158,19 @@ export function DraftLastPicks({
   return (
     <div className="ffb-picks">
       <div className="ffb-picks-head">
-        <Heading className="ffb-h3">{heading}</Heading>
+        <Heading id={headingId} className="ffb-h3">
+          {heading}
+        </Heading>
         {onUndoToPick ? (
           <p className="ffb-picks-note ffb-noprint">Select one to undo back to it</p>
         ) : null}
       </div>
-      <ol ref={listRef} className="ffb-picks-list">
+      <ol
+        ref={listRef}
+        className="ffb-picks-list"
+        tabIndex={onUndoToPick ? undefined : 0}
+        aria-labelledby={onUndoToPick ? undefined : headingId}
+      >
         {picks.map((pick, index) => {
           const mine = pick.teamNumber === userTeam;
           const stickerClass = `ffb-sticker ${positionClass(pick.player.position)} ${
@@ -208,7 +219,11 @@ export function DraftLastPicks({
 /**
  * The user's roster as kit slots: a socket per lineup slot, the sticker itself
  * once it is filled, then the bench. It is the rail's lead block, which the kit
- * moves above the list where the rail drops under it.
+ * moves above the list where the rail drops under it. There the sockets are
+ * small, so a filled one prints the last name alone (the initial is its own
+ * span, which the kit hides) over two lines, and the full name is the title.
+ * A draft with no bench (a mock shorter than the lineup) leaves the bench out
+ * until a pick lands there.
  */
 export function DraftRoster({
   assignment,
@@ -224,6 +239,7 @@ export function DraftRoster({
   // A starting slot left open sends its pick to the bench, so the bench can outgrow the
   // spots the lineup leaves for it. The count never prints past its own total.
   const benchSize = Math.max(assignment.bench, rounds - assignment.slots.length);
+  const bench = benchSize > 0;
   return (
     <section className="ffb-rail-lead" aria-labelledby={headingId}>
       <div className="ffb-sechead">
@@ -236,7 +252,7 @@ export function DraftRoster({
       </div>
       <ul
         className="ffb-slots"
-        style={{ "--ffb-slot-rows": Math.ceil((assignment.slots.length + 1) / 2) } as CSSProperties}
+        style={{ "--ffb-slot-rows": Math.ceil((assignment.slots.length + (bench ? 1 : 0)) / 2) } as CSSProperties}
       >
         {assignment.slots.map((slot, index) => {
           const player = slot.player;
@@ -246,6 +262,9 @@ export function DraftRoster({
               : "";
           // A slot more than one position fits is the flex slot, which no single position class covers.
           const openClass = positionClass(slot.slot) || (slot.eligible.length > 1 ? "ffb-pos-flex" : "");
+          const short = player ? shortName(player) : "";
+          // "J. " of "J. Chase". A name shortName leaves whole (a defence, one word) has none.
+          const initial = player && short !== player.name ? short.slice(0, short.indexOf(" ") + 1) : "";
           return (
             <li
               key={`${slot.slot}-${index}`}
@@ -256,7 +275,14 @@ export function DraftRoster({
               }
             >
               <span className="ffb-slot-code">{slot.slot}</span>{" "}
-              <span className="ffb-slot-name">{player ? shortName(player) : "Open"}</span>
+              {player ? (
+                <span className="ffb-slot-name" title={player.name}>
+                  {initial ? <span className="ffb-slot-initial">{initial}</span> : null}
+                  {short.slice(initial.length)}
+                </span>
+              ) : (
+                <span className="ffb-slot-name">Open</span>
+              )}
               {player ? (
                 <>
                   {" "}
@@ -275,13 +301,15 @@ export function DraftRoster({
             </li>
           );
         })}
-        <li className="ffb-slot ffb-slot-bench">
-          <span className="ffb-slot-code">BN</span>{" "}
-          <span className="ffb-slot-name">Bench</span>{" "}
-          <span className="ffb-slot-meta">
-            {assignment.bench} of {benchSize}
-          </span>
-        </li>
+        {bench ? (
+          <li className="ffb-slot ffb-slot-bench">
+            <span className="ffb-slot-code">BN</span>{" "}
+            <span className="ffb-slot-name">Bench</span>{" "}
+            <span className="ffb-slot-meta">
+              {assignment.bench} of {benchSize}
+            </span>
+          </li>
+        ) : null}
       </ul>
     </section>
   );
@@ -303,8 +331,14 @@ export function DraftRoster({
  * `heading` and `headingLevel` name the grid and place it in the page's
  * outline. `sectionHead` draws the head a section of the page takes (the
  * 22px heading on the 2px rule), for a grid that is a section and not a rail
- * block. `names` prints the player's name under each made cell's label from
- * 1200px, so pass it only where the grid has the page's width (a recap).
+ * block. `names` is the grid at the page's width (a recap): its cells are tall
+ * and wide, so it never takes the tight type, and from 1200px each made cell
+ * prints the player's name under its label. `picksOpen` renders "All picks"
+ * open, for a page where the cells cannot print the names.
+ *
+ * A made cell whose label runs to five characters ("DST10", "WR173") is marked
+ * `ffb-cell-long`, and the kit sets it at the tight size where a rail's cell
+ * is narrow.
  */
 export function DraftPickGrid({
   picks,
@@ -319,6 +353,7 @@ export function DraftPickGrid({
   headingLevel = 3,
   sectionHead = false,
   names = false,
+  picksOpen = false,
 }: {
   picks: RoomPick[];
   totalTeams: number;
@@ -333,9 +368,12 @@ export function DraftPickGrid({
   headingLevel?: 2 | 3;
   sectionHead?: boolean;
   names?: boolean;
+  picksOpen?: boolean;
 }) {
   const headingId = useId();
   const Heading = headingLevel === 2 ? "h2" : "h3";
+  // The rounds under "All picks" sit one level below the grid's own heading.
+  const RoundHeading = headingLevel === 2 ? "h3" : "h4";
   const pickByNumber = new Map(picks.map((pick) => [pick.pickNumber, pick]));
   const shownRounds = isComplete ? rounds : Math.min(rounds, Math.max(1, currentRound));
   const slots = Array.from({ length: totalTeams }, (_, index) => index + 1);
@@ -367,8 +405,9 @@ export function DraftPickGrid({
       </p>
       <div className="ffb-gridwrap">
         <div
-          // Fourteen and sixteen columns leave a cell about 22px, so those rooms set the cell's type smaller.
-          className={`ffb-grid${totalTeams >= 14 ? " ffb-grid-tight" : ""}${names ? " ffb-grid-names" : ""}`}
+          // Fourteen and sixteen columns leave a rail's cell about 22px, so those rooms set the cell's type
+          // smaller. A grid at the page's width has room for the full size.
+          className={`ffb-grid${totalTeams >= 14 && !names ? " ffb-grid-tight" : ""}${names ? " ffb-grid-names" : ""}`}
           style={{ "--ffb-teams": totalTeams, "--ffb-my-slot": userTeam } as CSSProperties}
         >
           <span />
@@ -399,10 +438,11 @@ export function DraftPickGrid({
                   const pick = pickByNumber.get(pickNumber);
                   if (pick) {
                     const { name, position, positionRank } = pick.player;
+                    const long = !names && `${position ?? ""}${positionRank ?? ""}`.length >= 5;
                     return (
                       <span
                         key={pickNumber}
-                        className={`ffb-cell ffb-is-made ${positionClass(position)}`.trimEnd()}
+                        className={`ffb-cell ffb-is-made ${positionClass(position)}${long ? " ffb-cell-long" : ""}`.trimEnd()}
                         role="img"
                         aria-label={[`Pick ${pickNumber}`, slotWords(slot), name, position]
                           .filter(Boolean)
@@ -439,20 +479,24 @@ export function DraftPickGrid({
         <span className="ffb-tally-label">Taken</span>{" "}
         {TALLY_POSITIONS.filter(
           (position) => (taken.get(position) ?? 0) > 0 || !["K", "DST"].includes(position)
-        ).map((position) => (
-          <span key={position} className="ffb-tally-item">
-            <span className={`ffb-chip ffb-chip-sm ${positionClass(position)}`}>{position}</span>{" "}
-            {taken.get(position) ?? 0}
-          </span>
+        ).map((position, index) => (
+          // The space keeps "QB 1 RB 1" apart for a screen reader and a copy, where the flex gap does not reach.
+          <Fragment key={position}>
+            {index > 0 ? " " : null}
+            <span className="ffb-tally-item">
+              <span className={`ffb-chip ffb-chip-sm ${positionClass(position)}`}>{position}</span>{" "}
+              {taken.get(position) ?? 0}
+            </span>
+          </Fragment>
         ))}
       </p>
       {picks.length > 0 ? (
-        <details className="ffb-details ffb-details-print">
+        <details className="ffb-details ffb-details-print" open={picksOpen || undefined}>
           <summary>All picks</summary>
           <div className="ffb-details-body">
             {roundsWithPicks.map((round) => (
               <Fragment key={`all-${round}`}>
-                <h4 className="ffb-label ffb-rm-allpicks-round">Round {round}</h4>
+                <RoundHeading className="ffb-label ffb-rm-allpicks-round">Round {round}</RoundHeading>
                 <ol>
                   {picks
                     .filter((pick) => roundOf(pick) === round)

@@ -278,12 +278,6 @@
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 164px), 1fr));
   gap: var(--ffb-s1);
 }
-/* The whole draft at a size the page column allows. From 1200px the kit's named cells set
-   their own height. */
-@media (max-width: 1199.98px) {
-  .ffb-mk-fullboard .ffb-cell { height: 40px; }
-}
-.ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 14px; }
 
 @media (min-width: 1200px) {
   /* Four facts read as two by two in the room the column has. */
@@ -316,8 +310,6 @@
      of the position switch's row. */
   .ffb-mk-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
   .ffb-mk-col > .ffb-notice { margin-bottom: var(--ffb-s2); }
-  .ffb-mk-fullboard .ffb-cell { height: 34px; }
-  .ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 10.5px; }
 }
 
 @media print {
