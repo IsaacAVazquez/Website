@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-13
 
 ---
 
@@ -150,13 +150,14 @@ Footer behavior:
 
 ### `/fantasy-football`
 
+- all eight fantasy routes render inside `src/app/fantasy-football/layout.tsx`, which sets the root of the fantasy kit (`src/components/fantasy/fantasy.css`) and the product bar that links them; `docs/FANTASY_FOOTBALL_KIT.md` is the kit's reference
 - server shell (`page.tsx`) supplies metadata + structured data and hands deep-linked state to the `FantasyFootballClient` rankings board; sibling route `/fantasy-football/draft-tracker` is the manual draft assistant
-- both surfaces read one FantasyPros snapshot through `useFantasySnapshot` (`/data/fantasy/{scoring}.json` with an `/api/fantasy-data` fallback) and share three browser-local stores: watchlist (`fantasy-player-queue-v1`), private notes (`fantasy-player-notes-v1`, 280-char cap), and compare selection (`fantasy-compare-v1`, max 3)
-- rankings board (redesigned 2026-08 from the `draft-rankings` Claude Design template): tier-first plates with numbered tier headers, avg-rank cliff separators whose spacing scales with the consensus drop, per-row expert-spread bars, and a sticky control bar with the deep-linkable position pill bar (overall/QB/RB/WR/TE/Flex/K/DST via `?position=`), PPR/Half-PPR/Standard scoring selector (`?scoring=`), and per-board search managed by `fantasy-state.ts` (`?view=` is still parsed for old links but no longer has a UI)
-- rows window 40 at a time (infinite scroll on desktop, Load more on mobile); when the snapshot carries a fresh attributed ADP source, rows add ADP and vs-ADP columns whose delta is toned only after 20 player selections and a gap larger than the published player-level ADP and expert variation; row click opens the board's own drawer (rank/tier kicker, consensus stat cards, market verdict, spread meter, board neighborhood, queue toggle, private note)
-- shared presentation lives in `src/components/fantasy/` (barrel `index.ts`): `PositionFilterBar`, `PlayerDetailDrawer` (draft assistant + best ball), `RankDistributionBar`, `CompareTray`, `CompareModal`; cross-surface stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString`, with key constants in `src/lib/fantasyLocal.ts`
-- board math/formatting/legend copy lives in `src/lib/fantasyUtils.ts`; the pure draft signal engine (steals/reaches/position-runs) lives in `src/lib/draftAnalytics.ts`
-- the draft assistant reuses the same snapshot, watchlist, notes, drawer, and compare tray, adding exact starting-lineup settings, an advisory pick clock, multi-step undo/redo, per-team naming, CSV/recap-CSV/JSON export, and per-season state under `fantasy-draft-tracker-v3-<season>`
+- both surfaces read one FantasyPros snapshot through `useFantasySnapshot` (`/data/fantasy/{scoring}.json` with an `/api/fantasy-data` fallback); the watchlist (`fantasy-player-queue-v1`) is shared by both, private notes (`fantasy-player-notes-v1`, 280-char cap) are edited in either drawer, and the compare selection (`fantasy-compare-v1`, max 3) has its tray on the best ball board only
+- rankings board: rows grouped under tier breaks that carry the tier's count, rank range, and average-rank cliff, an expert spread plot on each row, and one pinned block holding the toolbar and the column heads, with the deep-linkable position switch (overall/QB/RB/WR/TE/Flex/K/DST via `?position=`), the PPR/Half-PPR/Standard scoring switch (`?scoring=`), the consensus or VORP ranking method (`?ranking=`, `?teams=`), and per-board search (`?q=`), all managed by `fantasy-state.ts`
+- rows window 40 at a time (the list extends itself on scroll from 1024px up, and a Load more button does it below that); when the snapshot carries a current attributed ADP source, rows add ADP and vs-ADP columns whose delta is toned only after 20 player selections and a gap larger than the published player-level ADP and expert variation; row click opens the board's own drawer (the rank line, the facts as a definition list, the market verdict, the spread plot, points per game, the neighbouring ranks, the queue toggle, the private note)
+- shared components live in `src/components/fantasy/` with no `index.ts` (see `docs/ai-context/COMPONENTS.md` for the list); cross-surface stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString`, with key constants in `src/lib/fantasyLocal.ts`
+- board math, formatting, and tooltip copy live in `src/lib/fantasyUtils.ts`; the pure draft signal engine (steals/reaches/position-runs) lives in `src/lib/draftAnalytics.ts`
+- the draft assistant reuses the same snapshot, watchlist, notes, and shared drawer, adding exact starting-lineup settings, an advisory pick clock, multi-step undo/redo, per-team naming, CSV/recap-CSV/JSON export, and per-season state under `fantasy-draft-tracker-v3-<season>`
 
 ### Standalone data tools
 

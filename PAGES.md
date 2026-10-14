@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-10-12
+**Last updated:** 2026-10-13
 
 ---
 
@@ -73,9 +73,11 @@ Current route inventory and page ownership for the live app.
 
 ### Fantasy football
 
+All eight routes render inside `src/app/fantasy-football/layout.tsx`, which sets the root of the fantasy kit and renders the product bar that links them, and all eight are in `WIDE_TOOL_ROUTES`. The kit's reference is `docs/FANTASY_FOOTBALL_KIT.md`.
+
 | Route | File | Notes |
 |------|------|-------|
-| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Tier-first FantasyPros consensus board (`fantasy-football-client.tsx`, from the `draft-rankings` design template): numbered tier plates with avg-rank cliff separators, per-row expert-spread bars, a sticky position/scoring/search bar, windowed rendering, freshness and ADP-source chips, and the board's own player drawer with board neighborhood, watchlist queue, and private notes (`?view=` still parses for old links but has no UI) |
+| `/fantasy-football` | `src/app/fantasy-football/page.tsx` | FantasyPros consensus board (`fantasy-football-client.tsx`): rows grouped under tier breaks that carry the tier's count, rank range, and average-rank cliff, an expert spread plot on each row, a pinned block holding the toolbar (position switch, scoring, ranking method, search, and the queue filter) over the column heads, windowed rendering, ADP and vs ADP columns when the ADP source allows them, and the board's own player drawer with the neighbouring ranks, the queue toggle, and a private note. State lives in `?position=`, `?scoring=`, `?ranking=`, `?teams=`, and `?q=` |
 | `/fantasy-football/best-ball` | `src/app/fantasy-football/best-ball/page.tsx` | Contest-aware best ball rankings, strategy notes, Underdog ADP, and Week 17 opponent context |
 | `/fantasy-football/best-ball/draft-tracker` | `src/app/fantasy-football/best-ball/draft-tracker/page.tsx` | Best ball room tracker with contest-specific recommendations, roster construction, room-relative Draft Outlook, published BBM field economics, and user-entered expected return math |
 | `/fantasy-football/tiers/[position]` | `next.config.mjs` | Redirects to the canonical fantasy board with query parameters |

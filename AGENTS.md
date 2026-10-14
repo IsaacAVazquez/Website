@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-13
 
 ---
 
@@ -112,7 +112,7 @@ Catalog 97 routes:
 
 - `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` render their own `Catalog97Shell` and pass through `ConditionalLayout` untouched, so `isCatalog97Route` (`src/constants/catalog97Nav.ts`) is what tells `ConditionalLayout` to stand down for them
 - every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus the build-note aside, so it owns the same header, the same only `main`, and the same footer
-- tokens live in `src/app/catalog97.css`, scoped under `[data-c97]` and `[data-c97-surface]`, and every route is composed from Catalog 97 bands that read `--c97-*` directly
+- tokens live in `src/app/catalog97.css`, scoped under `[data-c97]` and `[data-c97-surface]`. The frame and the seven designed pages read `--c97-*` directly, and a project route may declare its own tokens inside the frame, as the fantasy football routes do with `--ffb-*`
 - the Working Instrument `--home-*` tokens, its helpers, and the bridge that aliased them were deleted on 2026-09-27 when the unification closed, and `src/app/__tests__/catalog97-closeout.test.ts` keeps them from coming back
 
 Footer:
@@ -124,7 +124,7 @@ Footer:
 
 ## Guardrails
 
-- Never hardcode hex colors in components. Use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`, and the `c97-*` classes. The Working Instrument `--home-*` tokens no longer exist.
+- Never hardcode hex colors in components. On the frame and the seven designed pages use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`, and the `c97-*` classes. A project route may read tokens of its own from its own stylesheet, and the fantasy football routes read `--ffb-*` from `src/components/fantasy/fantasy.css`. The Working Instrument `--home-*` tokens no longer exist.
 - Never import `@tabler/icons-react` in server components. Use `@/components/ui/ServerIcons`.
 - Never import `better-sqlite3` into client code.
 - Never create real pages at `/projects`, `/work`, or `/blog`.
@@ -202,11 +202,13 @@ npm run dev
 
 ### Fantasy surface
 
+The eight fantasy routes are one product on a kit of their own. `src/app/fantasy-football/layout.tsx` wraps them in the kit's root (`ffb-root`), loads the product's typeface, and renders the product bar that links the eight tools. The kit is `src/components/fantasy/fantasy.css`, with `--ffb-*` tokens and `ffb-` classes inside `@layer components`. Each page or family of shared parts has an unlayered area sheet beside it (`fantasy-<area>.css`) with a class prefix of its own, and `src/app/fantasy-football/__tests__/print-shop-rules.test.ts` fails a selector that starts on anything but that prefix or `.ffb-root`. A draft room imports the scorebug, the last picks, the roster, and the pick grid from `src/components/fantasy/DraftRoomParts.tsx` and does not copy their markup. All eight routes are in `WIDE_TOOL_ROUTES` (`src/constants/catalog97Nav.ts`), beside `/bay-area-transit`, `/investments`, and `/score-pools`. Read `docs/FANTASY_FOOTBALL_KIT.md` before writing markup for one of these pages. The spec is `docs/superpowers/specs/2026-10-13-fantasy-football-redesign-design.md`.
+
 The fantasy-football surface keeps redraft and best ball separate. `/fantasy-football` and `/fantasy-football/draft-tracker` use the scoring-specific redraft snapshots through `useFantasySnapshot`. `/fantasy-football/best-ball` and `/fantasy-football/best-ball/draft-tracker` use `public/data/fantasy/best-ball.json` through `useBestBallSnapshot`, with contest rules and recommendations from `src/lib/bestBall/`. The best ball snapshot combines best ball consensus rankings, current Underdog ADP, bye weeks, and Week 17 opponents. Best ball draft state uses its own season-and-contest storage keys and does not read or overwrite the redraft draft state.
 
 `/fantasy-football/weekly` and `/fantasy-football/waivers` are the in-season surfaces. Both read `public/data/fantasy/weekly.json` through the shared weekly client and `useFantasyWeeklySnapshot`. The file does not exist before Week 1, so the hook treats a 404 as a not-published state rather than an error. Every other fantasy route is a draft board and carries a dated note from Week 1 saying so.
 
-The redraft rankings board is tier-first (from the `draft-rankings` Claude Design template): numbered tier plates, avg-rank cliff separators, per-row expert-spread bars, a sticky bar with the deep-linkable position pill row and PPR/Half-PPR/Standard scoring selector (`?position=`, `?scoring=`), per-board search, and, when the ADP source is fresh, ADP and vs-ADP columns plus a market verdict in the board's own player drawer (`?view=` is still parsed for old links but has no UI). Shared presentation components live in `src/components/fantasy/` (barrel `index.ts`); three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math/formatting/legend copy is in `src/lib/fantasyUtils.ts`; the pure redraft signal engine is `src/lib/draftAnalytics.ts`. LocalStorage keys include `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, and `fantasy-compare-v1`; per-season redraft state persists under `fantasy-draft-tracker-v3-<season>`.
+The redraft rankings board groups its rows under tier breaks that carry the tier's count, rank range, and average-rank cliff, and draws an expert spread plot on each row. One pinned block holds the toolbar and the column heads, with the deep-linkable position switch, the PPR, Half PPR, and Standard scoring switch, the consensus or VORP ranking method, and per-board search (`?position=`, `?scoring=`, `?ranking=`, `?teams=`, `?q=`). While the ADP source is current the board adds ADP and vs ADP columns, and the board's own player drawer adds a market verdict. Shared components live in `src/components/fantasy/`, which has no `index.ts`, so each is imported by its file path; three cross-surface browser-local stores live in `src/hooks/use{PlayerQueue,PlayerNotes,CompareTray}.ts` over `useLocalStorageString.ts`, with parse/serialize helpers and key constants in `src/lib/fantasyLocal.ts`. Board math, formatting, and tooltip copy are in `src/lib/fantasyUtils.ts`; the pure redraft signal engine is `src/lib/draftAnalytics.ts`. LocalStorage keys include `fantasy-player-queue-v1`, `fantasy-player-notes-v1`, and `fantasy-compare-v1`; per-season redraft state persists under `fantasy-draft-tracker-v3-<season>`.
 
 `/fantasy-football/trade-calculator` is a preseason one-QB redraft estimate built from the same overall consensus and mock-draft ADP snapshot. `src/lib/fantasyTrade.ts` converts each source to a league-specific replacement-relative index, keeps expert and market readings separate, and reports sensitivity and input coverage. It is not an in-season, dynasty, creator-specific, projected-points, or win-probability model. Selected player IDs persist under `fantasy-trade-calculator-v1-<season>-<scoring>`, while scoring, team count, roster size, and lineup preset stay in the URL.
 

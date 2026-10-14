@@ -2,7 +2,7 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-13
 
 Tracked Markdown audit scope: `git ls-files -- '*.md' '*.mdx'` returned 621 tracked files on 2026-09-30, split across `content/blog/` (244 live articles), `.agents/` (104), `.impeccable/` (79), `docs/` (65), `content/changelog/` (59), `content/` historical snapshots (44), the repository root (23), and three elsewhere. `ds-bundle/` is gitignored and not tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is about 88 files. Re-run the command rather than trusting these numbers.
 
@@ -49,6 +49,7 @@ Subsystem references (current):
 - `../SCORE_POOLS_ENGINE.md` — exact-score prediction engine behind `/score-pools` (`src/lib/scorePools/`)
 - `FANTASY_DRAFT_MODEL.md` - fantasy draft and trade metrics, formulas, data limits, and validation contract
 - `FANTASY_DRAFT_COMPANION.md` - private Chrome and Edge side panel build, installation, and operating limits
+- `FANTASY_FOOTBALL_KIT.md` - the stylesheet kit the eight fantasy football pages draw with, its cascade, and its shared parts
 - `ARTICLE_IMAGE_WORKFLOW.md` - blog cover-image plan, the fetch builder, and the writing-time step
 - `EASTER_EGGS.md` - every easter egg on the site, with its trigger, what it shows, and its code
 - `JOB_SEARCH_PRIVATE_DATA.md` - private job-search pipeline contract, local directory structure (`private/job-search/`), ATS candidates extraction script, and development sync route
