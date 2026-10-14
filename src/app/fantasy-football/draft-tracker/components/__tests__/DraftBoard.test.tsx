@@ -119,12 +119,19 @@ describe("DraftBoard rows and tiers", () => {
     renderBoard({ draftedPlayerIds: new Set(["p2"]) });
     expect(screen.getByText("4 of 4 available")).toBeInTheDocument();
     expect(screen.queryByText("Ja'Marr Chase")).not.toBeInTheDocument();
-    expect(screen.getByRole("region", { name: "Tier 1, 1 player, ranks 1 to 1" })).toBeInTheDocument();
+    // A tier down to one player names one rank, on screen and in its name.
+    expect(screen.getByRole("region", { name: "Tier 1, 1 player, rank 1" })).toBeInTheDocument();
+    expect(
+      within(screen.getByRole("region", { name: "Tier 1, 1 player, rank 1" })).getByText("Rank 1")
+    ).toHaveClass("ffb-tier-range");
+    expect(
+      within(screen.getByRole("region", { name: /^Tier 2, 2 players, ranks 3 to 4/ })).getByText("Ranks 3–4")
+    ).toHaveClass("ffb-tier-range");
     expect(
       screen.getByRole("region", { name: "Tier 2, 2 players, ranks 3 to 4, 5.3 average-rank cliff above" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: "No published tier, 1 player, ranks 5 to 5, 143.0 average-rank cliff above" }),
+      screen.getByRole("region", { name: "No published tier, 1 player, rank 5, 143.0 average-rank cliff above" }),
     ).toBeInTheDocument();
     // The break prints the cliff beside the kit's ledge-and-drop mark.
     expect(
@@ -320,6 +327,8 @@ describe("DraftBoard filtering and search", () => {
     await settleDebounce();
     expect(screen.getByText("No available players match on this board.")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Clear search" }));
+    // The button leaves with the empty state, and focus goes to the search field and not to the page.
+    expect(search()).toHaveFocus();
     await settleDebounce();
     expect(search()).toHaveValue("");
     expect(screen.getByRole("radio", { name: "All" })).toBeChecked();

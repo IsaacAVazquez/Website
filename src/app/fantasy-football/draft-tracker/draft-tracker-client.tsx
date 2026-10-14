@@ -74,6 +74,11 @@ import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerD
 import { RedraftDecisionPanel } from "@/components/fantasy/RedraftDecisionPanel";
 import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 
+/** A sentence that ends on a name ends once, even when the name ends in "Jr.". */
+function endOnName(name: string): string {
+  return name.endsWith(".") ? name : `${name}.`;
+}
+
 function publishedDraftRank(player: Player): string {
   return formatRankValue(player.rankEcr ?? player.averageRank);
 }
@@ -819,7 +824,7 @@ export function DraftTrackerClient() {
     ? "Draft complete."
     : `Pick ${draftState.currentPick} of ${totalPicks}, round ${draftState.currentRound}. ${
         isUserPick ? "You are on the clock." : `${onClockLabel} is on the clock.`
-      }${previousPick ? ` Last pick: ${previousPick.player.name}.` : ""}`;
+      }${previousPick?.player.name ? ` Last pick: ${endOnName(previousPick.player.name)}` : ""}`;
 
   // A logged pick unmounts the control that logged it (a board row, a strip
   // card, or the drawer's opener), so focus would fall to the document. Start
@@ -935,6 +940,15 @@ export function DraftTrackerClient() {
     vorpValues,
   ]);
 
+  // Nothing says the picks are kept when the browser cannot keep them.
+  const deviceWords = persistenceError ? "picks last only in this tab" : "picks stay on this device";
+  // The drawer's VORP fact, for the league size the room's VORP is read at.
+  const detailVorpEntry = detailPlayer ? vorpValues.get(detailPlayer.id) : undefined;
+  const detailVorp =
+    detailVorpEntry && vorpTeamSize
+      ? { value: detailVorpEntry.value, label: `${vorpTeamSize}-team` }
+      : undefined;
+
   const hasNotices =
     seasonalWeek >= 1 || Boolean(persistenceError) || rankingsStale || adpSourceStale;
   const adpUnavailableReason =
@@ -1039,6 +1053,7 @@ export function DraftTrackerClient() {
             // On a first visit nothing was pressed, and nothing is moved.
             focusHeadingOnMount={roomSetupOpen}
             parkedPickCount={draftState.picks.length}
+            storageBlocked={Boolean(persistenceError)}
           />
         ) : rankingsUnavailable ? (
           <div className="ffb-notice ffb-notice-warn">
@@ -1361,7 +1376,7 @@ export function DraftTrackerClient() {
                     }}
                     className="ffb-btn ffb-skip"
                   >
-                    Skip to your roster
+                    Skip the board
                   </a>
                   <DraftBoard
                     players={draftBoardPlayers}
@@ -1391,7 +1406,13 @@ export function DraftTrackerClient() {
                 ) : null}
               </div>
 
-              <aside ref={railRef} tabIndex={-1} className="ffb-rail ffb-rail-scroll" aria-label="Your draft">
+              <aside
+                ref={railRef}
+                id="your-draft"
+                tabIndex={-1}
+                className="ffb-rail ffb-rail-scroll"
+                aria-label="Your draft"
+              >
                 <DraftRoster
                   assignment={lineupAssignment}
                   picked={userTeam?.picks.length ?? 0}
@@ -1494,7 +1515,7 @@ export function DraftTrackerClient() {
                       )}
                       <p className="ffb-method">
                         Change league settings by starting a new room. Active drafts keep one fixed room
-                        configuration, and picks stay on this device.
+                        configuration, and {deviceWords}.
                       </p>
                     </div>
                   </section>
@@ -1503,7 +1524,7 @@ export function DraftTrackerClient() {
             </div>
 
             <p className="ffb-method ffb-method-ruled ffb-dt-foot">
-              Advisory clock only, nothing auto-picks at zero · picks stay on this device
+              Advisory clock only, nothing auto-picks at zero · {deviceWords}
             </p>
           </>
         )}
@@ -1519,6 +1540,8 @@ export function DraftTrackerClient() {
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
         adpAvailable={adpAvailable}
         compareAvailable={false}
+        vorp={detailVorp}
+        scoringLabel={FANTASY_SCORING_LABELS[scoringKey]}
         onLogPick={
           !showSetup &&
           !isDraftComplete &&

@@ -486,7 +486,7 @@ export function DraftBoard({
     const tierLabel = [
       group.tier !== null ? `Tier ${group.tier}` : "No published tier",
       `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
-      `ranks ${firstRank} to ${lastRank}`,
+      firstRank === lastRank ? `rank ${firstRank}` : `ranks ${firstRank} to ${lastRank}`,
       index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
     ]
       .filter(Boolean)
@@ -515,7 +515,7 @@ export function DraftBoard({
             </span>{" "}
             <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
             <span className="ffb-tier-range">
-              Ranks {firstRank}–{lastRank}
+              {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
             </span>
           </h3>
           {index > 0 && cliff > 0 ? (
@@ -685,6 +685,8 @@ export function DraftBoard({
             onClick={() => {
               setSearchQuery("");
               setSelectedPosition("ALL");
+              // The button goes with the empty state, so focus goes to the field the list is searched from.
+              searchInputRef.current?.focus();
             }}
             className="ffb-btn"
           >

@@ -42,6 +42,8 @@ interface DraftSetupProps {
    * non-zero count arms the start button instead of letting one click wipe it.
    */
   parkedPickCount?: number;
+  /** The browser is not saving (the room's local save failed), so nothing here says a preset is kept. */
+  storageBlocked?: boolean;
   /**
    * True when this screen replaced a running room (the "New room" button).
    * The button that was pressed is gone, so the heading takes the focus.
@@ -125,6 +127,7 @@ export function DraftSetup({
   canResume = false,
   onResume,
   parkedPickCount = 0,
+  storageBlocked = false,
   focusHeadingOnMount = false,
 }: DraftSetupProps) {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -564,8 +567,9 @@ export function DraftSetup({
               </button>
             </div>
             <p className="ffb-field-hint">
-              A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name on
-              this device. Applying one fills the form and starts nothing.
+              {storageBlocked
+                ? "A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name. This browser is not saving, so a preset lasts only in this tab. Applying one fills the form and starts nothing."
+                : "A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name on this device. Applying one fills the form and starts nothing."}
             </p>
           </div>
         </div>
