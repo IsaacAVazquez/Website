@@ -15,7 +15,7 @@ export const metadata: Metadata = constructMetadata({
     "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.",
   canonicalUrl: "/fantasy-football/weekly",
   image: "/fantasy-football/weekly/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
 });
 
 const breadcrumbs = [

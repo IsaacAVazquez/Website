@@ -15,9 +15,9 @@ export const FANTASY_FOOTBALL_FAQ = [
       "Yes. The draft tracker and rankings board read the same published snapshot, so the ranks stay aligned.",
   },
   {
-    question: "What do the tiers and cliff lines mean?",
+    question: "What do the tiers and cliffs mean?",
     answer:
-      "Tiers group players the expert consensus treats as close in value, and the dashed cliff lines mark where the average rank drops sharply from one tier to the next. The bigger the drop, the more space the board leaves before the next tier, so the gaps themselves show where the board falls off.",
+      "Tiers group players the expert consensus treats as close in value, and the cliff printed on each tier break is how far the average rank drops from the tier above it. The bigger the drop, the more space the board leaves before the next tier, so the gaps themselves show where the board falls off.",
   },
   {
     question: "What do the Value and Reach labels mean?",

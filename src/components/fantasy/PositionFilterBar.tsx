@@ -1,15 +1,16 @@
 "use client";
 
-import { useRef, type CSSProperties, type KeyboardEvent } from "react";
+import { useEffect, useRef, type KeyboardEvent } from "react";
 
-import { getPositionTone } from "@/lib/fantasyUtils";
+import { positionClass } from "./positionClass";
+import { scrollChildIntoViewX } from "./scrollChildIntoViewX";
 
 export interface PositionFilterOption<T extends string> {
   value: T;
   label: string;
-  /** Snapshot position (e.g. "QB") used to tint the active pill; omit for "All". */
+  /** Snapshot position (e.g. "QB"), which gives the button its foot bar and its pressed sticker; omit for "All". */
   position?: string;
-  /** When false the pill is rendered disabled with a muted "NA" hint. */
+  /** When false the button is rendered disabled with an "NA" hint. */
   available?: boolean;
   /** Optional short reason shown in the title attribute when unavailable. */
   unavailableLabel?: string;
@@ -24,15 +25,24 @@ interface PositionFilterBarProps<T extends string> {
 }
 
 /**
- * The position pill row shared by the rankings board and the draft board. It was
- * duplicated (with near-identical styling) in both surfaces; consolidating keeps
- * the tones, touch targets, and a11y semantics from forking.
+ * The kit class for an option: its position from the shared map, or the flex
+ * thirds when the option is the flex board, which is a switch button's look
+ * and not a position.
+ */
+function optionClass(option: PositionFilterOption<string>): string {
+  const key = (option.position ?? option.value).toUpperCase();
+  return key === "FLEX" ? "ffb-pos-flex" : positionClass(key);
+}
+
+/**
+ * The kit's position switch, shared by the rankings board, the best ball
+ * board, the redraft room, and the mock draft. It is also the legend: each
+ * position button carries its sticker colour as a foot bar, Flex carries RB,
+ * WR, and TE in thirds, and the pressed position becomes a full sticker.
  *
- * The row wraps at every width. It used to scroll horizontally below `sm` with
- * its scrollbar suppressed, which put Flex, K, and DST off screen at 390px with
- * no fade and no chevron, so three of eight boards were undiscoverable. Eight
- * 44px pills wrap into two rows at 390px, which removes the discovery problem
- * outright and needs no scroll state.
+ * One radiogroup with a roving tab stop. On a phone the eight buttons do not
+ * fit, so the row scrolls sideways off the right edge, and the checked button
+ * is brought into view whenever the value changes.
  */
 export function PositionFilterBar<T extends string>({
   options,
@@ -41,12 +51,19 @@ export function PositionFilterBar<T extends string>({
   ariaLabel,
   disabled = false,
 }: PositionFilterBarProps<T>) {
+  const groupRef = useRef<HTMLDivElement>(null);
   const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const enabledIndexes = options
     .map((option, index) => (!disabled && option.available !== false ? index : -1))
     .filter((index) => index >= 0);
   const selectedIndex = options.findIndex((option) => option.value === value);
   const tabStopIndex = enabledIndexes.includes(selectedIndex) ? selectedIndex : enabledIndexes[0];
+
+  useEffect(() => {
+    const group = groupRef.current;
+    const checked = buttonRefs.current[selectedIndex];
+    if (group && checked) scrollChildIntoViewX(group, checked);
+  }, [selectedIndex]);
 
   function handleRadioKeyDown(event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) {
     if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp", "Home", "End"].includes(event.key)) {
@@ -74,42 +91,11 @@ export function PositionFilterBar<T extends string>({
   }
 
   return (
-    <div
-      role="radiogroup"
-      aria-label={ariaLabel}
-      className="-mx-[var(--c97-sp-0)] flex flex-wrap px-[var(--c97-sp-0)] pb-[var(--c97-sp-0)] sm:mx-0 sm:px-0 sm:pb-0" style={{ gap: "var(--c97-sp-1)" }}
-    >
+    <div ref={groupRef} role="radiogroup" aria-label={ariaLabel} className="ffb-seg ffb-seg-pos">
       {options.map((option, index) => {
         const isActive = option.value === value;
         const isUnavailable = option.available === false;
         const isDisabled = disabled || isUnavailable;
-
-        let style: CSSProperties;
-        // The inactive pill takes its resting colours from classes so a hover
-        // utility can win; the other two branches stay inline.
-        let stateClass = "";
-        if (isActive) {
-          style = {
-            borderColor: "var(--c97-ink)",
-            background: "var(--c97-ink)",
-            color: "var(--c97-surface)",
-          };
-        } else if (isUnavailable) {
-          style = {
-            borderColor: "color-mix(in srgb, var(--c97-warning) 30%, var(--c97-rule))",
-            background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
-            color: "var(--c97-ink-2)",
-          };
-        } else {
-          stateClass =
-            "border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] enabled:hover:border-[var(--c97-ink)] enabled:hover:text-[var(--c97-action)]";
-          style = {
-            // A faint position tint on the inactive pill ties the control to the board.
-            boxShadow: option.position
-              ? `inset 0 0 0 999px ${getPositionTone(option.position).background as string}`
-              : undefined,
-          };
-        }
 
         return (
           <button
@@ -130,15 +116,11 @@ export function PositionFilterBar<T extends string>({
             }}
             onClick={() => !isDisabled && onChange(option.value)}
             onKeyDown={(event) => handleRadioKeyDown(event, index)}
-            className={`inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border text-sm font-semibold transition-colors disabled:cursor-not-allowed ${stateClass}`}
-            style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-0)", ...(style) }}
+            className={`ffb-seg-btn ${optionClass(option)}`.trimEnd()}
           >
             <span>{option.label}</span>
-            {isUnavailable && (
-              <span className="text-2xs font-semibold uppercase tracking-[0.12em] opacity-80">
-                NA
-              </span>
-            )}
+            {/* The space is real, so anything that reads the text gets two words. */}
+            {isUnavailable && <> <span className="ffb-seg-na">NA</span></>}
           </button>
         );
       })}

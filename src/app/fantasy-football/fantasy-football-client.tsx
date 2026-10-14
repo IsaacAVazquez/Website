@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 import Link from "next/link";
@@ -36,25 +37,20 @@ import {
   FANTASY_AVG_RANK_TOOLTIP,
   FANTASY_EXPERT_SPREAD_TOOLTIP,
   FANTASY_PLAYER_COLUMN_TOOLTIP,
-  getFantasyPointsPerGameTooltip,
   FANTASY_PRIOR_SEASON_ADP_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
   FANTASY_VORP_TOOLTIP,
   FANTASY_VS_ADP_TOOLTIP,
-  MONO_LABEL_CLASS,
   SHELL_CLASS,
   formatAdp,
-  formatPickDelta,
   formatRankValue,
   getConsensusAvg,
   getConsensusSpread,
   getFantasyAdpFreshness,
   getNflRegularSeasonWeek,
-  getPositionTone,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
-  getTierRailIntensity,
   getValueVsAdp,
   hasReliableAdpSample,
   type FantasySnapshotStaleness,
@@ -69,17 +65,24 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
-import { FantasyRouteHeader, FantasySectionHeading, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
+import {
+  FantasyRouteHeader,
+  FantasySectionHeading,
+  FreshnessParts,
+  type FreshnessPart,
+} from "@/components/fantasy/FantasyRouteHeader";
+import { PlayerNoteField } from "@/components/fantasy/PlayerNoteField";
+import { PlayerPointsPerGame } from "@/components/fantasy/PlayerPointsPerGame";
+import { positionClass } from "@/components/fantasy/positionClass";
+import { RankDistributionBar } from "@/components/fantasy/RankDistributionBar";
+import { fitSpreadScale, type SpreadScale } from "@/components/fantasy/spreadScale";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
-import {
-  buildFantasyHref,
-  FantasySearchState,
-  normalizeFantasyState,
-  type FantasyRankingMode,
-} from "./fantasy-state";
+import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
+import "@/components/fantasy/fantasy-rankings.css";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
+/** `shortLabel` is what a phone prints, where the full names do not fit beside the ranking select. */
 const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: string }[] = [
   { key: "ppr", label: "PPR", shortLabel: "PPR" },
   { key: "half_ppr", label: "Half PPR", shortLabel: "Half" },
@@ -89,34 +92,6 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: st
 /** Keep each mounted rankings window below the large-list threshold. */
 const RANKINGS_PAGE_SIZE = FANTASY_RANKINGS_PAGE_SIZE;
 
-/**
- * Small accent text on the plates. Bare accent on the raised plate
- * measured 4.61:1 in light mode at rest and 4.41:1 once the paper-alt hover
- * tint composites over it, so the 14px VORP value and the 16px queued rank
- * digit both fail AA exactly where a drafter is reading them. Mixing the text
- * 72% toward ink is the same repair the draft tracker, mock draft, and best
- * ball recommendations carry, and it lifts the resting margin as well.
- */
-const SIGNAL_TEXT_COLOR = "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))";
-
-/** Phone rows carry their own value labels, since the column-label row is md-and-up. */
-const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
-
-/**
- * The other fantasy surfaces, listed once in the footer nav. The tiers routes
- * only redirect back here, so they are not listed. A chip row under the header
- * used to repeat these six; at 390 it cost 160px before the first player row.
- */
-const FANTASY_TOOLS = [
-  { href: "/fantasy-football/draft-tracker", label: "Draft tracker" },
-  { href: "/fantasy-football/mock-draft", label: "Mock draft" },
-  { href: "/fantasy-football/best-ball", label: "Best ball" },
-  { href: "/fantasy-football/trade-calculator", label: "Trade calculator" },
-  { href: "/fantasy-football/weekly", label: "Weekly board" },
-  { href: "/fantasy-football/weekly#my-team", label: "My team" },
-  { href: "/fantasy-football/waivers", label: "Waiver targets" },
-];
-
 /** Status colour on the freshness line; the label itself says aging or stale. */
 const STALENESS_TONE: Record<FantasySnapshotStaleness, "warning" | "negative" | undefined> = {
   fresh: undefined,
@@ -125,11 +100,11 @@ const STALENESS_TONE: Record<FantasySnapshotStaleness, "warning" | "negative" | 
 };
 
 /**
- * Compact "Aug 16" / "Dec 3, 2025" stamp for the header chips and footer line.
- * `currentYear` is the caller's own read of "now" (null until the client
- * knows it), never `new Date()` here: the server and the client's first
- * render otherwise call `new Date()` at two different instants, which only
- * disagrees right at a year boundary but was still a real, if rare,
+ * Compact "Aug 16" / "Dec 3, 2025" stamp for the freshness line and the line
+ * under the board. `currentYear` is the caller's own read of "now" (null until
+ * the client knows it), never `new Date()` here: the server and the client's
+ * first render otherwise call `new Date()` at two different instants, which
+ * only disagrees right at a year boundary but was still a real, if rare,
  * hydration mismatch. While `currentYear` is null every stamp keeps its year,
  * which is always correct, just occasionally one year longer than needed
  * until the client settles.
@@ -182,387 +157,180 @@ function formatExpertRange(player: Player): string {
 }
 
 /**
- * Signed pick delta ("+12" / "−4") with the tone the value/reach gate assigns.
+ * The gap against ADP with one decimal on every row, so the decimal points
+ * line up down a right-aligned column. The shared `formatPickDelta` drops a
+ * trailing zero, which reads well in a sentence and ragged in a column.
+ */
+function formatVsAdp(delta: number): string {
+  const magnitude = Math.round(Math.abs(delta) * 10) / 10;
+  if (magnitude === 0) return "0.0";
+  return `${delta > 0 ? "+" : "\u2212"}${magnitude.toFixed(1)}`;
+}
+
+/**
+ * Signed pick delta ("+12.0" / "−4.0") with the signal the value/reach gate assigns.
  * `judged` is false when the ADP sample is too thin for the gate to evaluate
  * the gap at all, a different situation from a gap inside the noise band,
  * and one no surface may describe as market agreement.
  */
-function describeVsAdp(player: Player): { text: string; color: string; judged: boolean } | null {
+function describeVsAdp(
+  player: Player
+): { text: string; signal: "value" | "reach" | null; judged: boolean } | null {
   const value = getValueVsAdp(player);
   if (!value) return null;
-  const text = formatPickDelta(value.delta);
-  const color =
-    value.signal === "value"
-      ? "var(--c97-positive)"
-      : value.signal === "reach"
-        ? "var(--c97-negative)"
-        : "var(--c97-ink-2)";
-  return { text, color, judged: hasReliableAdpSample(player) };
+  return { text: formatVsAdp(value.delta), signal: value.signal, judged: hasReliableAdpSample(player) };
 }
 
 /**
- * The named Value/Reach label. The "vs ADP" column carries the same gap as a
- * signed number, but the word is what a drafter scans for, so the chip renders
- * beside the player name whenever the gate actually fires. It carries the word
- * alone, because the signed gap is already in the same row's vs ADP cell, and
- * with the number repeated the chip was wide enough to push the longest names
- * off one line at every desktop width. Callers gate on the
- * overall or flex board, because `rankEcr` is a position rank anywhere else and
- * the comparison with an overall ADP would be meaningless.
- *
- * The chip and the "vs ADP" number read the same `signal`, so they carry the
- * same tone. Reach is the negative token here because that is what the row
- * number and the drawer verdict already use; warning is spent on snapshot
- * staleness on this surface and must not also mean "reach".
+ * How a vs ADP number prints. A gap the gate judged is heavy and takes the
+ * status ink, and the word beside it says which way. A gap inside the noise
+ * band, or one the sample is too thin to judge, is muted. Reach is the error
+ * ink because warning is spent on snapshot staleness on this page.
  */
-function ValueReachChip({ player }: { player: Player }) {
-  const value = getValueVsAdp(player);
-  if (!value?.signal) return null;
+const VS_ADP_CLASS: Record<"value" | "reach" | "none", string> = {
+  value: "ffb-is-strong ffb-good",
+  reach: "ffb-is-strong ffb-bad",
+  none: "ffb-is-flat",
+};
 
-  const isValue = value.signal === "value";
+/** The position chip: the letters and the rank within the position, on the position's fill. */
+function PositionChip({ player }: { player: Player }) {
   return (
-    <span
-      className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
-      title={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
-      style={
-        { paddingInline: "var(--c97-sp-0)", ...(isValue
-          ? {
-              borderColor: "color-mix(in srgb, var(--c97-positive) 32%, var(--c97-rule))",
-              background: "color-mix(in srgb, var(--c97-positive) 12%, var(--c97-surface))",
-              color: "var(--c97-ink)",
-            }
-          : {
-              borderColor: "color-mix(in srgb, var(--c97-negative) 32%, var(--c97-rule))",
-              background: "color-mix(in srgb, var(--c97-negative) 12%, var(--c97-surface))",
-              color: "var(--c97-ink)",
-            }) }
-      }
-    >
-      {isValue ? "Value" : "Reach"}
+    <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+      {player.position}
+      {Number.isFinite(player.positionRank) ? player.positionRank : ""}
     </span>
   );
 }
 
 /**
- * The template's scoring switch: a fused button box rather than separate pills.
- * The segments round their own outer corners instead of the box taking
- * overflow-hidden, which clipped each segment's focus ring to a sliver, and the
- * focused segment lifts so the next segment cannot paint over its ring.
+ * Whether a board's expert ranks are overall ranks. The flex board is the
+ * overall board with three positions kept, and its best, worst, and average
+ * ranks are the overall ones (the snapshot marks both `rangeKind: "overall"`).
+ * Every other board ranks within its position.
  */
-function ScoringToggle({
-  value,
-  onChange,
-  compact = false,
-}: {
-  value: FantasyRouteScoring;
-  onChange: (value: FantasyRouteScoring) => void;
-  /** Short labels always, never, or only below xl, since at 1024 the desktop
-      bar's first line cannot hold the full names beside the VORP league-size
-      select. The full name is the accessible name either way. */
-  compact?: boolean | "below-xl";
-}) {
+function ranksAreOverall(position: FantasyRoutePosition): boolean {
+  return position === "overall" || position === "flex";
+}
+
+/** On a position board a division of the spread scale is named for the position rank it starts at ("RB13"). */
+function positionRankLabel(position: FantasyRoutePosition): (rank: number) => string {
+  return (rank) => `${position.toUpperCase()}${rank}`;
+}
+
+/**
+ * The scale for one group of rows (a tier, or a page of the VORP view), fitted
+ * to the best and worst rank any expert gave any player in it. Where the ranks
+ * are overall ranks a division is a round of the draft. On a position board it
+ * is that many ranks of the position, labelled by the rank it starts at.
+ */
+function fitGroupScale(rows: Player[], unit: number, position: FantasyRoutePosition): SpreadScale {
+  let lo = Infinity;
+  let hi = 0;
+  for (const player of rows) {
+    if (!Number.isFinite(player.minRank) || !Number.isFinite(player.maxRank)) continue;
+    lo = Math.min(lo, player.minRank as number);
+    hi = Math.max(hi, player.maxRank as number);
+  }
+  if (hi === 0) {
+    lo = 1;
+    hi = 1;
+  }
+  if (ranksAreOverall(position)) return fitSpreadScale(lo, hi, { unit });
+  return fitSpreadScale(lo, hi, { unit, label: positionRankLabel(position) });
+}
+
+/** The labels of a scale, one over each of its divisions. They are a caption for the plots under them. */
+function SpreadScaleLabels({ scale, className }: { scale: SpreadScale; className: string }) {
   return (
-    <div
-      role="group"
-      aria-label="Scoring format"
-      className="inline-flex shrink-0 border"
-      style={{ borderColor: "var(--c97-ink-2)" }}
+    <span
+      className={`ffb-h-rounds ${className}`}
+      aria-hidden="true"
+      style={{ "--ffb-rounds": scale.ticks.length } as CSSProperties}
     >
-      {SCORING_OPTIONS.map((option) => {
-        const active = value === option.key;
-        return (
-          <button
-            key={option.key}
-            type="button"
-            aria-pressed={active}
-            aria-label={option.label}
-            onClick={() => onChange(option.key)}
-            className={`relative min-h-touch cursor-pointer font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10${active ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
-            style={{ paddingInline: "var(--c97-sp-1)", ...(active ? { background: "var(--c97-ink)", color: "var(--c97-surface)" } : undefined) }}
-          >
-            {compact === "below-xl" ? (
-              <>
-                <span className="xl:hidden">{option.shortLabel}</span>
-                <span className="hidden xl:inline">{option.label}</span>
-              </>
-            ) : compact ? (
-              option.shortLabel
-            ) : (
-              option.label
-            )}
-          </button>
-        );
-      })}
-    </div>
+      {scale.ticks.map((tick) => (
+        <span key={tick.at}>{tick.label}</span>
+      ))}
+    </span>
   );
 }
 
 /**
- * Built like ScoringToggle. In VORP mode the league-size select rides inside
- * the box as its last segment, because the size is a parameter of VORP, and
- * fused it spends no gap on a first line with little room to give.
+ * The kit's expert spread: a thin line from the best to the worst rank any
+ * expert gave, a thicker segment one standard deviation each side of the
+ * average, and an ink tick on the average. Every plot in a group shares
+ * `scale`, so two rows can be compared by eye. The range rides in the
+ * accessible name and the hover title, since the plot is its only print on the
+ * row. The average is left out of that name, because the column beside the
+ * plot prints it.
  */
-function RankingToggle({
-  value,
-  onChange,
-  vorpAvailable,
-  children,
-}: {
-  value: FantasySearchState["ranking"];
-  onChange: (value: FantasySearchState["ranking"]) => void;
-  vorpAvailable: boolean;
-  children?: ReactNode;
-}) {
-  return (
-    <div
-      role="group"
-      aria-label="Ranking method"
-      className="inline-flex shrink-0 border"
-      style={{ borderColor: "var(--c97-ink-2)" }}
-    >
-      {(["consensus", "vorp"] as const).map((option) => {
-        const active = value === option;
-        const disabled = option === "vorp" && !vorpAvailable;
-        return (
-          <button
-            key={option}
-            type="button"
-            aria-pressed={active}
-            disabled={disabled}
-            onClick={() => onChange(option)}
-            className={`relative min-h-touch cursor-pointer font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed${active || disabled ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
-            style={
-              { paddingInline: "var(--c97-sp-1)", ...(active
-                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : disabled
-                  ? { background: "transparent", color: "var(--c97-ink-2)" }
-                  : undefined) }
-            }
-          >
-            {option === "consensus" ? "Consensus" : "VORP"}
-          </button>
-        );
-      })}
-      {children}
-    </div>
-  );
-}
-
-function VorpTeamSizeSelect({
-  value,
-  onChange,
-}: {
-  value: FantasyVorpTeamSize;
-  onChange: (value: FantasyVorpTeamSize) => void;
-}) {
-  return (
-    <label className="inline-flex shrink-0 items-center" style={{ gap: "var(--c97-sp-0)" }}>
-      <span className="sr-only">VORP league size</span>
-      <select
-        aria-label="VORP league size"
-        value={value}
-        onChange={(event) => onChange(Number(event.target.value) as FantasyVorpTeamSize)}
-        className="relative min-h-touch border-l font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
-        style={{
-          paddingInline: "var(--c97-sp-1)",
-          borderColor: "var(--c97-rule)",
-          background: "var(--c97-field)",
-          color: "var(--c97-ink)",
-        }}
-      >
-        {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
-          <option key={teamSize} value={teamSize}>
-            {teamSize} teams
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-}
-
-/**
- * The queue filter: a 44px star button with the count as a badge, the same
- * control in both bars. The phone bar places it in flow; on md and up it heads
- * the star column of the column-label row, over the rows' own star buttons.
- */
-function QueuedFilterButton({
-  pressed,
-  count,
-  onToggle,
-  className = "relative",
-}: {
-  pressed: boolean;
-  count: number;
-  onToggle: () => void;
-  /** Placement. It must keep the button positioned, since the badge is absolute. */
-  className?: string;
-}) {
-  return (
-    <button
-      type="button"
-      aria-pressed={pressed}
-      aria-label={`Show only queued players (${count} on this board)`}
-      onClick={onToggle}
-      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center border ${
-        pressed
-          ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
-          : "border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
-      }`}
-    >
-      <Star className="h-4 w-4" fill={pressed ? "currentColor" : "none"} aria-hidden="true" />
-      {count > 0 && (
-        <span
-          aria-hidden="true"
-          className="absolute -right-1 -top-1 font-mono text-3xs tracking-normal tabular-nums"
-          style={{ paddingInline: "var(--c97-sp-0)", background: "var(--c97-accent)", color: "var(--c97-surface)" }}
-        >
-          {count}
-        </span>
-      )}
-    </button>
-  );
-}
-
-type CompactRankingValue = "consensus" | `vorp-${FantasyVorpTeamSize}`;
-
-/**
- * The phone's ranking control. The Consensus/VORP pair plus the league-size
- * select took a third 54px row of the sticky bar at 390, where the row one
- * controls already use 347px of the 358px line. One native select carries
- * both choices, so the ranking shares a row with the count line instead.
- */
-function CompactRankingSelect({
-  ranking,
-  teams,
-  vorpAvailable,
-  onChange,
-}: {
-  ranking: FantasyRankingMode;
-  teams: FantasyVorpTeamSize;
-  vorpAvailable: boolean;
-  onChange: (next: { ranking: FantasyRankingMode; teams: FantasyVorpTeamSize }) => void;
-}) {
-  const value: CompactRankingValue = ranking === "vorp" ? `vorp-${teams}` : "consensus";
-  return (
-    <label className="inline-flex shrink-0 items-center">
-      <span className="sr-only">Ranking method</span>
-      <select
-        aria-label="Ranking method"
-        value={value}
-        onChange={(event) => {
-          const next = event.target.value;
-          if (next === "consensus") {
-            onChange({ ranking: "consensus", teams });
-            return;
-          }
-          const size = Number(next.replace("vorp-", ""));
-          if (isFantasyVorpTeamSize(size)) onChange({ ranking: "vorp", teams: size });
-        }}
-        className="min-h-touch border font-mono text-2xs uppercase tracking-[0.06em]"
-        style={{
-          paddingInline: "var(--c97-sp-1)",
-          borderColor: "var(--c97-ink-2)",
-          background: "var(--c97-field)",
-          color: "var(--c97-ink)",
-        }}
-      >
-        <option value="consensus">Consensus</option>
-        {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
-          <option key={teamSize} value={`vorp-${teamSize}`} disabled={!vorpAvailable}>
-            VORP {teamSize}-team
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-}
-
-/**
- * The per-row expert spread: the low–high expert range as a bar positioned on
- * the board-wide rank scale, with a tick at the consensus average. Bar heat
- * follows the shared tier-rail intensity so depth on the board reads at a glance.
- */
-function ExpertSpreadBar({ player, scale }: { player: Player; scale: number }) {
+function ExpertSpread({ player, scale }: { player: Player; scale: SpreadScale }) {
   const lo = player.minRank;
   const hi = player.maxRank;
-  if (!Number.isFinite(lo) || !Number.isFinite(hi) || scale <= 1) {
-    return <span className="relative h-3.5 w-[120px] shrink-0" aria-hidden="true" />;
+  const guides = { "--ffb-rounds": scale.ticks.length } as CSSProperties;
+  if (!Number.isFinite(lo) || !Number.isFinite(hi)) {
+    return <span className="ffb-spread" aria-hidden="true" style={guides} />;
   }
 
-  const toPercent = (rank: number) => Math.min(100, Math.max(0, ((rank - 1) / scale) * 100));
-  const left = toPercent(lo as number);
-  const width = Math.max(1.5, (((hi as number) - (lo as number)) / scale) * 100);
+  // A rank is a slot one wide: rank r runs from (r - min) to (r - min + 1) of the span, and its centre is half a slot in.
+  const span = scale.max - scale.min + 1;
+  const toPercent = (slots: number) => `${Math.min(100, Math.max(0, (slots / span) * 100)).toFixed(2)}%`;
   const avg = getConsensusAvg(player);
-  const intensity = getTierRailIntensity(player.tier);
+  const centre = avg === null ? null : avg - scale.min + 0.5;
+  const deviation =
+    typeof player.standardDeviation === "number" && Number.isFinite(player.standardDeviation) && player.standardDeviation > 0
+      ? player.standardDeviation
+      : null;
+  const label = `Expert rank range ${lo} to ${hi}`;
 
   return (
     <span
-      className="relative h-3.5 w-[120px] shrink-0"
-      title="Expert low to high range; tick = consensus avg"
-      aria-hidden="true"
+      className={`ffb-spread ${positionClass(player.position)}`.trimEnd()}
+      role="img"
+      aria-label={label}
+      title={label}
+      style={
+        {
+          ...guides,
+          "--ffb-min": toPercent((lo as number) - scale.min),
+          "--ffb-max": toPercent((hi as number) - scale.min + 1),
+          ...(centre === null ? {} : { "--ffb-avg": toPercent(centre) }),
+          ...(centre === null || deviation === null
+            ? {}
+            : {
+                "--ffb-sd-lo": toPercent(centre - deviation),
+                "--ffb-sd-hi": toPercent(centre + deviation),
+              }),
+        } as CSSProperties
+      }
     >
-      <span
-        className="absolute inset-x-0 top-[5px] h-1"
-        style={{ background: "color-mix(in srgb, var(--c97-rule) 70%, transparent)" }}
-      />
-      <span
-        className="absolute top-[5px] h-1"
-        style={{
-          left: `${left}%`,
-          width: `${Math.min(width, 100 - left)}%`,
-          background: `color-mix(in srgb, var(--c97-accent) ${intensity}%, var(--c97-rule))`,
-        }}
-      />
-      {avg !== null && (
-        <span
-          className="absolute top-[3px] h-2 w-0.5"
-          style={{ left: `${toPercent(avg)}%`, background: "var(--c97-ink)" }}
-        />
-      )}
+      <i className="ffb-spread-range" />
+      {centre !== null && deviation !== null ? <i className="ffb-spread-sd" /> : null}
+      {centre !== null ? <i className="ffb-spread-avg" /> : null}
     </span>
   );
 }
 
 /**
- * A labelled readout in the player drawer. The explanation used to ride on
- * `title` on this non-interactive div, which never fires on touch and is
- * unreachable by keyboard, and the drawer is the only place a phone visitor
- * can reach these definitions at all, because the focusable column-header
- * triggers are md-and-up. The label now uses MetricTooltip's `focusable` mode,
- * the same trigger those headers use. `term` names the tooltip subject when
+ * A labelled fact in the player drawer. The label is MetricTooltip's
+ * `focusable` trigger, the same control the column heads use, because the
+ * drawer is the only place a phone visitor can reach these definitions (the
+ * column heads' triggers are md-and-up). `term` names the tooltip subject when
  * the visible label carries a date or a qualifier.
  */
-interface DrawerStatProps {
+interface DrawerFactProps {
   label: string;
   value: string;
-  valueColor?: string;
+  /** A kit status class for the value (`ffb-good`, `ffb-bad`, `ffb-muted`). */
+  tone?: string;
   title?: string;
   term?: string;
 }
 
-/**
- * One stat card in the drawer grid. A `lead` card spans both columns and lays
- * its label and value on one line, so an odd card count fills the grid
- * without spending a full row on a single number.
- */
-function DrawerStat({
-  label,
-  value,
-  valueColor,
-  title,
-  term,
-  lead = false,
-}: DrawerStatProps & { lead?: boolean }) {
+function DrawerFact({ label, value, tone, title, term }: DrawerFactProps) {
   return (
-    <div
-      className={
-        lead
-          ? "col-span-2 flex flex-wrap items-baseline justify-between gap-x-[var(--c97-sp-1)] gap-y-0.5 border px-[var(--c97-sp-1)] py-[var(--c97-sp-1)]"
-          : "border px-[var(--c97-sp-1)] py-[var(--c97-sp-1)]"
-      }
-      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-    >
-      <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+    <div className="ffb-stat">
+      <dt>
         {title ? (
           <MetricTooltip term={term ?? label} definition={title} focusable>
             {label}
@@ -570,13 +338,8 @@ function DrawerStat({
         ) : (
           label
         )}
-      </p>
-      <p
-        className={`${lead ? "" : "mt-[var(--c97-sp-0)] "}font-mono text-base tabular-nums`}
-        style={{ color: valueColor ?? "var(--c97-ink)" }}
-      >
-        {value}
-      </p>
+      </dt>
+      <dd className={tone}>{value}</dd>
     </div>
   );
 }
@@ -604,15 +367,18 @@ interface DraftPlayerDrawerProps {
   vorpTeams: FantasyVorpTeamSize;
   /** The published VORP entries, keyed by player id, for this player and the neighbors. */
   vorpIndex: ReadonlyMap<string, FantasyVorpRankingEntry>;
+  /** Picks in a round of the draft: twelve, or the league size the VORP view names. */
+  spreadUnit: number;
   onSelectNeighbor: (id: string) => void;
   onClose: () => void;
 }
 
 /**
- * The template's player detail: a right-hand panel with the consensus numbers,
- * a market verdict, the expert spread meter, the board neighborhood, and the
- * browser-local queue and note controls. The draft tracker and best ball keep
- * the shared PlayerDetailDrawer; this panel is the rankings board's own read.
+ * The rankings board's player detail, on the kit's drawer: the facts as a
+ * definition list, the market verdict, the expert spread, points per game,
+ * the board neighborhood, and the browser-local queue and note. The draft
+ * tracker and best ball keep the shared PlayerDetailDrawer; this panel is the
+ * rankings board's own read.
  */
 function DraftPlayerDrawer({
   player,
@@ -628,6 +394,7 @@ function DraftPlayerDrawer({
   vorpMode,
   vorpTeams,
   vorpIndex,
+  spreadUnit,
   onSelectNeighbor,
   onClose,
 }: DraftPlayerDrawerProps) {
@@ -648,68 +415,69 @@ function DraftPlayerDrawer({
   const isQueued = queue.isQueued(player.id);
   const value = adpSignalsAvailable && vsAdpMeaningful ? getValueVsAdp(player) : null;
   const spread = getConsensusSpread(player);
-  const avg = getConsensusAvg(player);
   const vsAdp = adpSignalsAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
 
+  // The verdict is a kit notice, and its key rule carries the same ink the
+  // row's vs ADP number does. A sample too thin to judge is held back, which
+  // is the dashed rule.
   const verdict = value
     ? !hasReliableAdpSample(player)
       ? {
           // signal:null can also mean "sample too thin to judge", so never call
           // that market agreement (fantasyUtils gates at 20 mock selections).
           text: "Too few mock selections behind his ADP to judge the market gap yet, so no market read.",
-          color: "var(--c97-ink-2)",
-          background: "color-mix(in srgb, var(--c97-ink) 4%, transparent)",
+          tone: "ffb-notice-held",
         }
       : value.signal === "value"
         ? {
             text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks after the consensus rank. Value if he lasts to your pick.`,
-            color: "var(--c97-positive)",
-            background: "color-mix(in srgb, var(--c97-positive) 7%, transparent)",
+            tone: "ffb-notice-good",
           }
         : value.signal === "reach"
           ? {
               text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks before the consensus rank. Plan the reach or let him go.`,
-              color: "var(--c97-negative)",
-              background: "color-mix(in srgb, var(--c97-negative) 6%, transparent)",
+              tone: "ffb-notice-bad",
             }
           : {
               text: "Market and consensus sit inside this player's noise band. Take him on schedule.",
-              color: "var(--c97-ink-2)",
-              background: "color-mix(in srgb, var(--c97-ink) 4%, transparent)",
+              tone: "",
             }
     : null;
 
-  const spreadFill = spread
-    ? spread.level === "tight"
-      ? "color-mix(in srgb, var(--c97-positive) 34%, var(--c97-surface))"
-      : spread.level === "mixed"
-        ? "color-mix(in srgb, var(--c97-accent) 46%, var(--c97-surface))"
-        : "color-mix(in srgb, var(--c97-warning) 38%, var(--c97-surface))"
-    : "color-mix(in srgb, var(--c97-rule) 70%, var(--c97-surface))";
+  const hasRange = Number.isFinite(player.minRank) && Number.isFinite(player.maxRank);
+  // With storage blocked the queue and the note live in this tab only, and
+  // nothing here may say "saved".
+  const memoryOnly = queue.persistenceStatus === "memory-only" || notes.persistenceStatus === "memory-only";
 
-  const lo = Number.isFinite(player.minRank) ? (player.minRank as number) : null;
-  const hi = Number.isFinite(player.maxRank) ? (player.maxRank as number) : null;
-  const avgTickLeft =
-    lo !== null && hi !== null && avg !== null
-      ? Math.min(100, Math.max(0, ((avg - lo) / Math.max(1, hi - lo)) * 100))
-      : null;
+  // The plot is fitted to this player, as the shared drawer's is, and not to
+  // the tier his row is drawn with. Where the ranks are overall ranks the
+  // shared plot fits its own scale in rounds of twelve, so it gets one from
+  // here only when the VORP view names another league size. On a position
+  // board the divisions are position ranks, and the labels say so.
+  const overallRanks = ranksAreOverall(activePosition);
+  const plotScale = !hasRange
+    ? undefined
+    : !overallRanks
+      ? fitSpreadScale(player.minRank as number, player.maxRank as number, {
+          pad: 1,
+          label: positionRankLabel(activePosition),
+        })
+      : spreadUnit !== 12
+        ? fitSpreadScale(player.minRank as number, player.maxRank as number, { pad: 1, unit: spreadUnit })
+        : undefined;
 
-  // Prior-season scoring, present only when this player was matched to a game
-  // log that cleared the games-played floor. The span guards a flat line (a
-  // player whose low and high coincide) from dividing by zero.
+  // Per-game scoring, present only when this player was matched to a game
+  // log that cleared the games-played floor.
   const gameLog = player.gameLog;
-  const gameLogSpan = gameLog ? Math.max(0.1, gameLog.high - gameLog.low) : 0;
-  const gameLogTickLeft = (value: number): number =>
-    gameLog ? Math.min(100, Math.max(0, ((value - gameLog.low) / gameLogSpan) * 100)) : 0;
 
-  const boardLabel = activePosition === "overall" || activePosition === "flex" ? "overall" : "on this board";
-  const consensusLine = `R${publishedRank} ${boardLabel}${
+  const boardLabel = ranksAreOverall(activePosition) ? "overall" : "on this board";
+  const consensusLine = `Rank ${publishedRank} ${boardLabel}${
     Number.isFinite(player.tier) ? ` · Tier ${player.tier}${boardTierCount ? ` of ${boardTierCount}` : ""}` : ""
   }`;
   // The row already shows this number in both ranking modes, so the drawer
-  // carries it too. In VORP mode it leads the grid, because it is the rank.
+  // carries it too. In VORP mode it leads the facts, because it is the rank.
   const vorp = vorpIndex.get(player.id) ?? null;
-  const vorpCard: DrawerStatProps | null = vorp
+  const vorpFact: DrawerFactProps | null = vorp
     ? {
         label: `VORP · ${vorpTeams}-team`,
         term: "VORP",
@@ -717,7 +485,7 @@ function DraftPlayerDrawer({
         title: FANTASY_VORP_TOOLTIP,
       }
     : null;
-  const adpCard: DrawerStatProps | null =
+  const adpFact: DrawerFactProps | null =
     adpAvailable && Number.isFinite(player.adp)
       ? {
           label: adpReferenceAsOf ? `Prior-season ADP · ${adpReferenceAsOf}` : "Market ADP",
@@ -726,39 +494,37 @@ function DraftPlayerDrawer({
           title: adpReferenceAsOf ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP : FANTASY_ADP_TOOLTIP,
         }
       : null;
-  const vsAdpCard: DrawerStatProps | null = vsAdp
+  const vsAdpFact: DrawerFactProps | null = vsAdp
     ? {
         label: "vs ADP",
         value: vsAdp.text,
-        valueColor: vsAdp.color,
+        tone: vsAdp.signal === "value" ? "ffb-good" : vsAdp.signal === "reach" ? "ffb-bad" : "ffb-muted",
         title: vsAdp.judged
           ? FANTASY_VS_ADP_TOOLTIP
           : "Early mock-draft sample, so the gap carries no value or reach read yet",
       }
-    : adpCard
+    : adpFact
       ? { label: "vs ADP", value: "—", title: "No reliable market gap for this player on this board" }
       : null;
-  // The grid is two columns wide. With an odd card count the first card
-  // spans both, so five cards fill three rows and no cell sits blank.
-  const statCards: DrawerStatProps[] = [
-    ...(vorpMode && vorpCard ? [vorpCard] : []),
+  // The fact that leads is the rank the board behind the drawer is sorted by.
+  const facts: DrawerFactProps[] = [
+    ...(vorpMode && vorpFact ? [vorpFact] : []),
     { label: "Consensus avg", value: formatAvg(player), title: FANTASY_AVG_RANK_TOOLTIP },
-    { label: "Expert range", value: formatExpertRange(player), title: FANTASY_EXPERT_SPREAD_TOOLTIP },
-    ...(adpCard ? [adpCard] : []),
-    ...(vsAdpCard ? [vsAdpCard] : []),
-    ...(!vorpMode && vorpCard ? [vorpCard] : []),
+    // The definition for the range is on the Expert spread heading below, where the plot it describes is.
+    { label: "Expert range", value: formatExpertRange(player) },
+    ...(adpFact ? [adpFact] : []),
+    ...(vsAdpFact ? [vsAdpFact] : []),
+    ...(!vorpMode && vorpFact ? [vorpFact] : []),
   ];
-  const leadSpans = statCards.length % 2 === 1;
 
   return (
-    <div className="fixed inset-0 z-[var(--c97-z-drawer)] flex justify-end">
+    <div className="ffb-overlay ffb-enter-fade">
       <button
         type="button"
         onClick={onClose}
         aria-label="Close player detail"
         tabIndex={-1}
-        className="absolute inset-0 cursor-default"
-        style={{ background: "var(--c97-scrim)" }}
+        className="ffb-scrim"
       />
       <aside
         ref={panelRef}
@@ -766,311 +532,134 @@ function DraftPlayerDrawer({
         aria-modal="true"
         aria-label={`${player.name} detail`}
         tabIndex={-1}
-        className="relative flex h-full w-[min(400px,94vw)] flex-col overflow-y-auto overscroll-contain border-l"
-        style={{
-          padding: "var(--c97-sp-2)",
-          gap: "var(--c97-sp-2)",
-          borderColor: "var(--c97-rule)",
-          background: "var(--c97-surface)",
-        }}
+        className="ffb-drawer ffb-enter-side"
       >
-        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-          <div className="min-w-0">
-            {/* The kicker names whichever rank the board behind the drawer is
-                sorted by. In VORP mode the consensus rank stays on the next
-                line, since the gap between the two is itself the reading. */}
-            <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-accent)" }}>
-              {vorpMode && vorp ? `VORP #${vorp.rank} · ${vorpTeams}-team` : consensusLine}
+        <div className="ffb-panel-head">
+          <div className="ffb-stack ffb-stack-tight">
+            <p className="ffb-cluster">
+              <PositionChip player={player} />
+              <span className="ffb-label ffb-muted">
+                {`${player.team || "FA"}${player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}`}
+              </span>
             </p>
-            {vorpMode && vorp ? (
-              <p className={`${MONO_LABEL_CLASS}`} style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                {consensusLine}
-              </p>
-            ) : null}
-            <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>{player.name}</h2>
-            <p className="font-mono text-2xs uppercase tracking-[0.06em]" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-              {player.position}
-              {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
-              {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-            </p>
+            <h2 className="ffb-h2">{player.name}</h2>
+            {/* The first rank line names whichever rank the board behind the
+                drawer is sorted by. In VORP mode the consensus rank stays on the
+                next line, since the gap between the two is itself the reading. */}
+            {vorpMode && vorp ? <p className="ffb-label">{`VORP #${vorp.rank} · ${vorpTeams}-team`}</p> : null}
+            <p className="ffb-label ffb-muted">{consensusLine}</p>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
-          >
+          <button type="button" onClick={onClose} aria-label="Close" className="ffb-iconbtn">
             <X size={16} aria-hidden="true" />
           </button>
         </div>
 
-        <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-          {statCards.map((card, index) => (
-            <DrawerStat key={card.label} {...card} lead={leadSpans && index === 0} />
-          ))}
-        </div>
-
-        {verdict && (
-          <p
-            className="border-l-[3px] text-sm leading-6"
-            style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", borderColor: verdict.color, background: verdict.background, color: "var(--c97-ink)" }}
+        <div className="ffb-panel-body">
+          {/* The queue action leads the body, as in the shared drawer, and the
+              note stays the last control. */}
+          <button
+            type="button"
+            onClick={() => queue.toggle(player.id)}
+            aria-pressed={isQueued}
+            className="ffb-btn ffb-btn-toggle"
           >
-            {/* The verdict compares ADP with the consensus rank, so under a
-                VORP kicker it says which rank it is reading against. */}
-            {vorpMode ? (
-              <span className={`${MONO_LABEL_CLASS} block`} style={{ marginBottom: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                Market read against the consensus rank
-              </span>
-            ) : null}
-            {verdict.text}
-          </p>
-        )}
+            <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
+            {isQueued ? "Queued" : "Add to queue"}
+          </button>
 
-        {lo !== null && hi !== null && (
-          <div>
-            <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <span
-                className={`${MONO_LABEL_CLASS} inline-flex items-center`}
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                Expert spread
-                <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
-              </span>
-              {spread && (
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  {spread.label}
-                </span>
-              )}
-            </div>
-            <div
-              className="relative h-2.5 overflow-hidden"
-              style={{ marginTop: "var(--c97-sp-1)", background: "color-mix(in srgb, var(--c97-ink) 8%, var(--c97-surface))" }}
-            >
-              <span className="absolute inset-0" style={{ background: spreadFill }} />
-              {avgTickLeft !== null && (
-                <span
-                  className="absolute bottom-0 top-0 w-0.5"
-                  style={{ left: `calc(${avgTickLeft}% - 1px)`, background: "var(--c97-ink)" }}
-                />
-              )}
-            </div>
-            <div
-              className="flex justify-between font-mono text-3xs uppercase tracking-[0.08em]"
-              style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}
-            >
-              <span>Best {lo}</span>
-              {avg !== null && <span style={{ color: "var(--c97-ink)" }}>Avg {avg.toFixed(1)}</span>}
-              <span>Worst {hi}</span>
-            </div>
-          </div>
-        )}
+          <dl className="ffb-stats ffb-rk-facts">
+            {facts.map((fact) => (
+              <DrawerFact key={fact.label} {...fact} />
+            ))}
+          </dl>
 
-        {gameLog && (
-          <div>
-            <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <span
-                className={`${MONO_LABEL_CLASS} inline-flex items-center`}
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                Points per game
-                <MetricTooltip
-                  term="Points per game"
-                  definition={getFantasyPointsPerGameTooltip(gameLog)}
-                />
-              </span>
-              <span
-                className="font-mono text-3xs uppercase tracking-[0.1em]"
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                {gameLog.season} season · {scoringLabel} · {gameLog.games}{" "}
-                {gameLog.games === 1 ? "game" : "games"}
-              </span>
+          {verdict && (
+            <div className={`ffb-notice ${verdict.tone}`.trimEnd()}>
+              {/* The verdict compares ADP with the consensus rank, so under a
+                  VORP rank line it says which rank it is reading against. */}
+              {vorpMode ? <p className="ffb-label ffb-muted">Market read against the consensus rank</p> : null}
+              <p>{verdict.text}</p>
             </div>
-            <div
-              className="relative h-2.5 overflow-hidden"
-              style={{ marginTop: "var(--c97-sp-1)", background: "color-mix(in srgb, var(--c97-rule) 70%, var(--c97-surface))" }}
-            >
-              <span
-                className="absolute bottom-0 top-0 w-0.5"
-                title="Median"
-                style={{
-                  left: `calc(${gameLogTickLeft(gameLog.median)}% - 1px)`,
-                  background: "var(--c97-ink)",
-                }}
-              />
-              <span
-                className="absolute bottom-0 top-0 w-0.5"
-                title="Average"
-                style={{
-                  left: `calc(${gameLogTickLeft(gameLog.average)}% - 1px)`,
-                  background: "var(--c97-accent)",
-                }}
-              />
-            </div>
-            <dl className="grid grid-cols-4" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-              <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Low
-                </dt>
-                <dd
-                  className="mt-0.5 font-mono text-2xs tabular-nums"
-                  style={{ color: "var(--c97-ink-2)" }}
-                >
-                  {gameLog.low.toFixed(1)}
-                </dd>
-              </div>
-              <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Median
-                </dt>
-                <dd className="mt-0.5 font-mono text-2xs tabular-nums" style={{ color: "var(--c97-ink)" }}>
-                  {gameLog.median.toFixed(1)}
-                </dd>
-              </div>
-              <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-accent)" }}>
-                  Avg
-                </dt>
-                <dd
-                  className="mt-0.5 font-mono text-2xs font-medium tabular-nums"
-                  style={{ color: "var(--c97-ink)" }}
-                >
-                  {gameLog.average.toFixed(1)}
-                </dd>
-              </div>
-              <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  High
-                </dt>
-                <dd
-                  className="mt-0.5 font-mono text-2xs tabular-nums"
-                  style={{ color: "var(--c97-ink-2)" }}
-                >
-                  {gameLog.high.toFixed(1)}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        )}
+          )}
 
-        {neighbors.length > 1 && (
-          <div>
-            <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                Board neighborhood
-              </span>
-              {/* The list follows the board's sort, so its numbers name that
-                  sort: VORP rank and value in VORP mode, board rank and
-                  consensus average otherwise. */}
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                {vorpMode ? "VORP rank · VORP" : "Rank · avg"}
-              </span>
+          {/* The plot, points per game, and the note are the shared drawer's own
+              parts, so the two drawers draw them the same. The facts above
+              already print the range and the average, so the plot leaves its
+              Best, Avg, Worst line off and each number prints once. */}
+          {hasRange && (
+            <div className="ffb-stack ffb-stack-tight">
+              <div className="ffb-sechead">
+                <h3 className="ffb-h3" aria-label="Expert spread">
+                  <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} focusable>
+                    Expert spread
+                  </MetricTooltip>
+                </h3>
+                {spread && <p className="ffb-sechead-note">{spread.label}</p>}
+              </div>
+              <p className="ffb-sechead-note">
+                {overallRanks
+                  ? `Each division is a round of a ${spreadUnit}-team draft.`
+                  : `Each division is 12 ${activePosition.toUpperCase()} ranks.`}
+              </p>
+              <RankDistributionBar player={player} scale={plotScale} showEnds={false} />
             </div>
-            <ul
-              className="list-none overflow-hidden border"
-              style={{ marginTop: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-            >
-              {neighbors.map((neighbor) => {
-                const selected = neighbor.id === player.id;
-                return (
-                  <li
-                    key={neighbor.id}
-                    className="border-t first:border-t-0"
-                    style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 55%, transparent)" }}
-                  >
+          )}
+
+          {gameLog && <PlayerPointsPerGame gameLog={gameLog} scoringLabel={scoringLabel} />}
+
+          {neighbors.length > 1 && (
+            <section>
+              <div className="ffb-sechead">
+                <h3 className="ffb-h3">Board neighborhood</h3>
+                {/* The list follows the board's sort, so its numbers name that
+                    sort: VORP rank and value in VORP mode, board rank and
+                    consensus average otherwise. */}
+                <p className="ffb-sechead-note">{vorpMode ? "VORP rank · VORP" : "Rank · avg"}</p>
+              </div>
+              <ol className="ffb-neighbors">
+                {neighbors.map((neighbor) => (
+                  <li key={neighbor.id}>
                     <button
                       type="button"
                       onClick={() => onSelectNeighbor(neighbor.id)}
-                      aria-current={selected || undefined}
-                      className="flex min-h-11 w-full items-baseline border-l-[3px] text-left hover:bg-[var(--c97-overlay)]"
-                      style={{
-                        paddingInline: "var(--c97-sp-1)",
-                        paddingBlock: "var(--c97-sp-0)",
-                        gap: "var(--c97-sp-1)",
-                        borderColor: selected ? "var(--c97-accent)" : "transparent",
-                        background: selected
-                          ? "color-mix(in srgb, var(--c97-accent) 8%, transparent)"
-                          : undefined,
-                        color: "var(--c97-ink)",
-                      }}
+                      aria-current={neighbor.id === player.id || undefined}
+                      className="ffb-neighbor"
                     >
-                      <span
-                        className="w-7 shrink-0 text-right font-mono text-2xs"
-                        style={{ color: "var(--c97-ink-2)" }}
-                      >
+                      <span className="ffb-c-rank">
                         {vorpMode
                           ? formatRankValue(vorpIndex.get(neighbor.id)?.rank)
                           : getPublishedBoardRank(neighbor, activePosition)}
                       </span>
-                      <span className="min-w-0 flex-1 truncate text-sm font-semibold tracking-tight">
-                        {neighbor.name}
-                      </span>
-                      <span className="shrink-0 font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                        {vorpMode
-                          ? formatVorpValue(vorpIndex.get(neighbor.id))
-                          : formatAvg(neighbor)}
+                      <PositionChip player={neighbor} />
+                      <span className="ffb-neighbor-name">{neighbor.name}</span>
+                      <span className="ffb-muted">
+                        {vorpMode ? formatVorpValue(vorpIndex.get(neighbor.id)) : formatAvg(neighbor)}
                       </span>
                     </button>
                   </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
+                ))}
+              </ol>
+            </section>
+          )}
 
-        <button
-          type="button"
-          onClick={() => queue.toggle(player.id)}
-          aria-pressed={isQueued}
-          className={`inline-flex min-h-touch items-center justify-center border font-mono text-2xs uppercase tracking-[0.08em]${isQueued ? "" : " border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
-          style={
-            { gap: "var(--c97-sp-1)", ...(isQueued
-              ? {
-                  borderColor: "color-mix(in srgb, var(--c97-accent) 60%, var(--c97-rule))",
-                  background: "color-mix(in srgb, var(--c97-accent) 26%, var(--c97-surface))",
-                  color: "var(--c97-ink)",
-                }
-              : undefined) }
-          }
-        >
-          <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
-          {isQueued ? "Queued" : "Add to queue"}
-        </button>
-
-        <div>
-          <label htmlFor="board-player-note" className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-            Private note
-          </label>
-          <textarea
+          <PlayerNoteField
             id="board-player-note"
-            name="board-player-note"
-            rows={2}
             value={draftNote}
             maxLength={notes.maxLength}
-            onChange={(event) => {
-              setDraftNote(event.target.value);
-              notes.setNote(player.id, event.target.value);
+            onChange={(value) => {
+              setDraftNote(value);
+              notes.setNote(player.id, value);
             }}
-            placeholder="Handcuff for Hall… target round 6… avoid."
-            className="block w-full resize-none border font-mono text-xs leading-normal"
-            style={{
-              paddingInline: "var(--c97-sp-1)",
-              paddingBlock: "var(--c97-sp-1)",
-              marginTop: "var(--c97-sp-1)",
-              borderColor: "var(--c97-rule)",
-              background: "var(--c97-field)",
-              color: "var(--c97-ink)",
-            }}
+            persistent={!memoryOnly}
           />
-          <p className="text-right font-mono text-3xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-            {draftNote.length}/{notes.maxLength} · saved on this device
+
+          <p className="ffb-method">
+            Ranks, tiers, and expert ranges come from the published snapshot
+            {/* The per-game clause points at the season printed in the block above, so it prints only with that block. */}
+            {gameLog ? ", and per-game scoring comes from nflverse for the season named beside it" : ""}.{" "}
+            {memoryOnly ? "Queue and notes last only in this tab." : "Queue and notes stay on this device."}
           </p>
         </div>
-
-        <p className="font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
-          Ranks, tiers, and expert ranges come from the published snapshot, and per-game scoring is the prior
-          regular season from nflverse. Queue and notes stay on this device.
-        </p>
       </aside>
     </div>
   );
@@ -1085,7 +674,20 @@ interface FantasyFootballClientProps {
 interface TierGroup {
   tier: number | null;
   rows: Player[];
+  /** The VORP view has no tiers. Its rows are grouped by mounted page, counted from zero. */
+  page?: number;
 }
+
+/** One unbroken run of a tier on the full board, which is what a tier break describes. */
+interface TierRun {
+  count: number;
+  first: Player;
+  last: Player;
+  /** How far the consensus average drops from the run before this one. */
+  cliff: number;
+}
+
+type CompactRankingValue = "consensus" | `vorp-${FantasyVorpTeamSize}`;
 
 export function FantasyFootballClient({ initialState, initialSnapshot = null }: FantasyFootballClientProps) {
   const router = useRouter();
@@ -1097,7 +699,16 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const [queuedOnly, setQueuedOnly] = useState(false);
   const [detailPlayerId, setDetailPlayerId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const sentinelRef = useRef<HTMLButtonElement | null>(null);
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
+  const compactSearchRef = useRef<HTMLInputElement | null>(null);
+  const searchRef = useRef<HTMLInputElement | null>(null);
+  const findButtonRef = useRef<HTMLButtonElement | null>(null);
+  const queuedToggleRef = useRef<HTMLButtonElement | null>(null);
+  // Set by Done, which closes the phone search. The button it hands focus to
+  // is hidden until that render lands, so the hand-off waits for it.
+  const focusFindButtonRef = useRef(false);
   const isHydrated = useIsClient();
 
   const queue = usePlayerQueue();
@@ -1176,6 +787,47 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     });
   }
 
+  /**
+   * Focus for a control that has just removed itself. The phone's open search
+   * input takes it when it is mounted, then the desktop input, and where that
+   * one is not displayed (a phone with the search closed) the search button.
+   */
+  function focusSearch() {
+    if (compactSearchRef.current) {
+      compactSearchRef.current.focus();
+      return;
+    }
+    searchRef.current?.focus();
+    if (document.activeElement !== searchRef.current) findButtonRef.current?.focus();
+  }
+
+  function clearSearch() {
+    setSearchQuery("");
+    updateRouteState({ query: "" });
+    // Clear removes itself once the field is empty, so focus goes back to the field.
+    focusSearch();
+  }
+
+  useEffect(() => {
+    if (mobileSearchOpen || !focusFindButtonRef.current) return;
+    focusFindButtonRef.current = false;
+    findButtonRef.current?.focus();
+  }, [mobileSearchOpen]);
+
+  // A tier's head pins under the toolbar block, so it needs that block's
+  // height, which changes when the controls wrap. Written straight to the
+  // board's style, so a resize renders nothing.
+  useEffect(() => {
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board || typeof ResizeObserver === "undefined") return;
+    const write = () => board.style.setProperty("--ffb-rk-bar", `${bar.offsetHeight}px`);
+    write();
+    const observer = new ResizeObserver(write);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, []);
+
   const { players, snapshot, metadata, sliceMetadata, sliceMetadataMap, isLoading, error, retry } = useFantasySnapshot({
     position: routeState.position,
     scoring: routeState.scoring,
@@ -1203,7 +855,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const adpTooltip = adpFreshness === "prior-season"
     ? FANTASY_PRIOR_SEASON_ADP_TOOLTIP
     : FANTASY_ADP_TOOLTIP;
-  const vsAdpMeaningful = routeState.position === "overall" || routeState.position === "flex";
+  const vsAdpMeaningful = ranksAreOverall(routeState.position);
+  // The vs ADP column, its head, and the Value or Reach word all show together or not at all.
+  const showVsAdp = adpSignalsAvailable && vsAdpMeaningful;
   const selectedScoringLabel = FANTASY_SCORING_LABELS[routeState.scoring];
   const currentSourceUpdatedAt = sliceMetadata?.updatedAt ?? metadata?.upstreamUpdatedAt ?? null;
   const activeSourceUpdatedAt = vorpMode
@@ -1275,11 +929,46 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     return max;
   }, [players]);
 
+  // A tier break prints the tier's own count, rank range, and cliff. They are
+  // read off the full board, so they stay true when the window has mounted
+  // only part of a tier or a search has left one row of it.
+  const tierRuns = useMemo(() => {
+    const byPlayer = new Map<string, TierRun>();
+    let current: (TierRun & { tier: number | null }) | null = null;
+    for (const { player, tier, startsTier } of withTierBreaks(players)) {
+      if (!current || startsTier || (tier === null) !== (current.tier === null)) {
+        let cliff = 0;
+        if (current) {
+          const previousAvg = getConsensusAvg(current.last);
+          const nextAvg = getConsensusAvg(player);
+          if (previousAvg !== null && nextAvg !== null) {
+            cliff = Math.max(0, Number((nextAvg - previousAvg).toFixed(1)));
+          }
+        }
+        current = { tier, count: 0, first: player, last: player, cliff };
+      }
+      current.count += 1;
+      current.last = player;
+      byPlayer.set(player.id, current);
+    }
+    return byPlayer;
+  }, [players]);
+
   // Reset the window whenever the board, scoring, or search changes so a
-  // narrowed list never starts deep into a stale offset.
+  // narrowed list never starts deep into a stale offset. If the page is
+  // scrolled past the board's start when that happens (the controls are
+  // pinned and someone is typing in them deep in the list), a shorter list
+  // would leave the page ending on the footer with the pinned block, and the
+  // field being typed in, pushed off the top. So the board's start comes back
+  // to the top of the screen, where the block pins over the first result.
+  // Scrolling moves no focus, so the field keeps it.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(RANKINGS_PAGE_SIZE);
+    const board = boardRef.current;
+    if (!board) return;
+    const boardTop = Math.round(board.getBoundingClientRect().top + window.scrollY);
+    if (window.scrollY > boardTop) window.scrollTo({ top: boardTop, behavior: "instant" });
   }, [
     routeState.position,
     routeState.scoring,
@@ -1295,18 +984,42 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   );
   const hasMore = visibleCount < filteredPlayers.length;
 
-  // One rank scale for every visible spread bar. Scaling to the rendered
-  // window (not the full 500-player board) keeps the template's geometry:
-  // early-round ranges stay readable instead of compressing into slivers.
-  const boardScale = useMemo(() => {
-    let max = 0;
-    for (const player of windowedPlayers) {
-      if (Number.isFinite(player.maxRank) && (player.maxRank as number) > max) {
-        max = player.maxRank as number;
+  // Each tier draws its spread plots on a scale of its own, fitted to every
+  // player of that tier in the filtered list and not only the mounted ones. So
+  // a tier's plots are drawn once and nothing on screen moves when more rows
+  // load. The VORP view has no tiers, so each page of rows is fitted the same
+  // way. On the overall board a division is a round of the draft, twelve picks
+  // unless the VORP view names another league size.
+  // A position board is always in twelves, as its drawer says. Only overall
+  // ranks are in rounds of the league size the VORP view names.
+  const spreadUnit = vorpMode && ranksAreOverall(routeState.position) ? routeState.teams : 12;
+  const scaleByPlayer = useMemo(() => {
+    const scales = new Map<string, SpreadScale>();
+    const fit = (rows: Player[]) => {
+      const scale = fitGroupScale(rows, spreadUnit, routeState.position);
+      for (const player of rows) scales.set(player.id, scale);
+    };
+    if (vorpMode) {
+      for (let start = 0; start < filteredPlayers.length; start += RANKINGS_PAGE_SIZE) {
+        fit(filteredPlayers.slice(start, start + RANKINGS_PAGE_SIZE));
       }
+      return scales;
     }
-    return Math.max(max, 10);
-  }, [windowedPlayers]);
+    let run: Player[] = [];
+    let runTier: number | null = null;
+    for (const { player, tier, startsTier } of withTierBreaks(filteredPlayers)) {
+      if (run.length > 0 && (startsTier || (tier === null) !== (runTier === null))) {
+        fit(run);
+        run = [];
+      }
+      run.push(player);
+      runTier = tier;
+    }
+    if (run.length > 0) fit(run);
+    return scales;
+  }, [filteredPlayers, vorpMode, spreadUnit, routeState.position]);
+  const scaleFor = (rows: Player[]): SpreadScale =>
+    scaleByPlayer.get(rows[0].id) ?? fitGroupScale(rows, spreadUnit, routeState.position);
 
   useEffect(() => {
     if (!hasMore || typeof IntersectionObserver === "undefined") return;
@@ -1328,14 +1041,20 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     return () => observer.disconnect();
   }, [hasMore, filteredPlayers.length]);
 
-  // Group the windowed rows into consecutive-tier plates. The cliff between
-  // plates comes from the consensus averages either side of the boundary, so
-  // plate spacing scales with how large the drop actually is.
+  // Group the windowed rows into consecutive tiers. A consensus tier says
+  // nothing about a VORP order, so the VORP view is grouped by page instead,
+  // which is what its spread scales are fitted to.
   const tierGroups = useMemo<TierGroup[]>(() => {
     if (vorpMode) {
-      return windowedPlayers.length > 0
-        ? [{ tier: null, rows: windowedPlayers }]
-        : [];
+      const pages: TierGroup[] = [];
+      for (let start = 0; start < windowedPlayers.length; start += RANKINGS_PAGE_SIZE) {
+        pages.push({
+          tier: null,
+          rows: windowedPlayers.slice(start, start + RANKINGS_PAGE_SIZE),
+          page: start / RANKINGS_PAGE_SIZE,
+        });
+      }
+      return pages;
     }
     const groups: TierGroup[] = [];
     for (const { player, tier, startsTier } of withTierBreaks(windowedPlayers)) {
@@ -1379,18 +1098,26 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const adpStamp = formatStamp(adpSource?.asOf, currentYear);
   const vorpStamp = formatStamp(snapshot?.vorpSource?.asOf, currentYear);
   const sourceStamp = formatStamp(activeSourceUpdatedAt, currentYear);
+  // What froze at kickoff is the draft consensus, in either ranking mode. The
+  // VORP view's own date prints as "VORP checked", so the frozen date never
+  // borrows it.
+  const consensusStamp = formatStamp(currentSourceUpdatedAt, currentYear);
 
-  // Format and source share one chip, and the ADP chip drops its provider
-  // name below md: at 390 the strip ran four lines and pushed the first row
-  // to y=709, and the provider is still named in the footer and the drawer.
-  const headerChips: { label: string; shortLabel?: string; tone?: "warning" | "negative" }[] = [
+  // Each fact prints once, here: the season, the format and its source with the
+  // date the source last moved, the ADP state, and whether the source is
+  // frozen, aging, or stale. The site's own snapshot date is on the line under
+  // the board. The ADP part drops its provider name below md, where the line
+  // otherwise runs to four rows, and the drawer still names the provider.
+  const freshnessParts: FreshnessPart[] = [
+    ...(metadata?.season ? [{ label: String(metadata.season) }] : []),
     {
       label: vorpMode
         ? `${routeState.teams}-team ${selectedScoringLabel} VORP · ${snapshot?.vorpSource?.provider ?? "Projected VORP"}`
-        : `${selectedScoringLabel} · FantasyPros consensus`,
+        : `${selectedScoringLabel} · FantasyPros consensus${
+            !frozenInSeason && sourceStaleness === "fresh" && sourceStamp ? ` updated ${sourceStamp}` : ""
+          }`,
     },
     ...(vorpMode && vorpStamp ? [{ label: `VORP checked ${vorpStamp}` }] : []),
-    ...(snapshotStamp ? [{ label: `Snapshot ${snapshotStamp}` }] : []),
     ...(adpSource && adpAvailable && adpStamp
       ? [{ label: `ADP ${adpSource.provider} · ${adpStamp}`, shortLabel: `ADP · ${adpStamp}` }]
       : []),
@@ -1400,9 +1127,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     ...(adpSource && adpFreshness === "stale"
       ? [{ label: "ADP stale · signals hidden", tone: STALENESS_TONE.stale }]
       : []),
+    // No metadata means the board is still loading or failed to load, and a
+    // board that has not arrived has no age to grade.
     ...(frozenInSeason
-      ? [{ label: `Frozen since ${sourceStamp ?? "kickoff"}` }]
-      : sourceStaleness !== "fresh"
+      ? [{ label: `Frozen since ${consensusStamp ?? "kickoff"}` }]
+      : metadata && sourceStaleness !== "fresh"
         ? [
             {
               label: `${getSnapshotStalenessLabel(sourceStaleness)} · source ${sourceStamp ?? "date unknown"}`,
@@ -1411,6 +1140,27 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           ]
         : []),
   ];
+
+  const boardReady = !isLoading && !error && !currentSliceUnavailable && filteredPlayers.length > 0;
+
+  // The line under the board carries what the head does not: how often the
+  // snapshot is rebuilt and when this one was. In season the cadence is left
+  // off, since the board above it says it is frozen.
+  const footLine = [
+    frozenInSeason ? null : "Refreshes daily July through December, weekly in the offseason",
+    snapshotStamp ? `Snapshot ${snapshotStamp}` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  // What a division of the spread scale is, said once, in the column head
+  // where the name of the column is. The labels themselves ride on each tier.
+  const spreadUnitNote = ranksAreOverall(routeState.position)
+    ? `In rounds of a ${spreadUnit}-team draft`
+    : `In ${routeState.position.toUpperCase()} ranks`;
+  // "Not published" is only true once the snapshot has arrived without a VORP
+  // source. While it is loading, or failed, the button is disabled and says
+  // nothing more.
+  const vorpUnpublished = Boolean(metadata) && !isLoading && !error && !vorpAvailable;
 
   const vorpHiddenNote =
     vorpMode && hiddenWithoutVorp > 0 ? ` · ${hiddenWithoutVorp} without a published VORP` : "";
@@ -1424,872 +1174,754 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           ? `${windowedPlayers.length} of ${filteredPlayers.length} shown${vorpHiddenNote}`
           : `${filteredPlayers.length} of ${sliceMetadata?.playerCount ?? players.length} shown${vorpHiddenNote}`;
 
-  const metricColumns: { label: string; className: string; title?: string }[] = [
-    ...(vorpAvailable
-      ? [
-          {
-            label: "VORP",
-            className: "w-16 text-right",
-            title: FANTASY_VORP_TOOLTIP,
-          },
-        ]
-      : []),
-    // The spread bar itself yields below xl, so its label does too.
-    { label: "Expert spread", className: "hidden w-[120px] xl:block", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
-    { label: "Range", className: "w-16 text-right", title: FANTASY_EXPERT_SPREAD_TOOLTIP },
-    { label: "Avg", className: "w-12 text-right", title: FANTASY_AVG_RANK_TOOLTIP },
-    ...(adpAvailable
-      ? [
-          {
-            // Position boards rank within the position while ADP stays an
-            // overall pick number, so the label says which scale it is on.
-            label: vsAdpMeaningful ? "ADP" : "ADP (overall)",
-            className: "w-16 text-right",
-            title: adpTooltip,
-          },
-        ]
-      : []),
-    ...(adpSignalsAvailable && vsAdpMeaningful
-      ? [{ label: "vs ADP", className: "w-16 text-right", title: FANTASY_VS_ADP_TOOLTIP }]
-      : []),
-  ];
-  const boardReady = !isLoading && !error && !currentSliceUnavailable && filteredPlayers.length > 0;
+  // Position boards rank within the position while ADP stays an overall pick
+  // number, so the label says which scale it is on.
+  const adpLabel = vsAdpMeaningful ? "ADP" : "ADP (overall)";
+  // A phone row prints two numbers at its right edge: the market pair when the
+  // board judges it, otherwise VORP over the consensus average. Everything
+  // else a row carries on a desktop is in the drawer.
+  const phoneNumbers: "market" | "vorp" | "avg" = showVsAdp && !vorpMode ? "market" : vorpAvailable ? "vorp" : "avg";
+  const phoneNumbersLabel = { market: "ADP, vs ADP", vorp: "VORP, Avg", avg: "Avg" }[phoneNumbers];
+  const compactRankingValue: CompactRankingValue =
+    routeState.ranking === "vorp" ? `vorp-${routeState.teams}` : "consensus";
+
+  const displayRank = (player: Player): string =>
+    vorpMode
+      ? String(vorpIndex.get(player.id)?.rank ?? "—")
+      : getPublishedBoardRank(player, routeState.position);
+
+  function renderRow(player: Player, scale: SpreadScale): ReactNode {
+    const vsAdp = showVsAdp ? describeVsAdp(player) : null;
+    const vorp = vorpIndex.get(player.id);
+    const isQueued = queue.isQueued(player.id);
+    return (
+      // The opener overlays the row instead of wrapping it: an aria-label on a
+      // wrapping button would override every cell, leaving screen readers
+      // nothing but "Open X detail" rows. The cells sit above it so hover
+      // titles fire and names stay selectable, and the row's own click still
+      // opens the drawer unless the visitor is selecting text. The opener is
+      // the keyboard path.
+      <li
+        key={player.id}
+        className={`ffb-row${isQueued ? " ffb-is-queued" : ""}`}
+        onClick={(event) => {
+          if (window.getSelection()?.toString()) return;
+          // Pointer clicks land on the cells above the opener. Focus the
+          // opener so closing the drawer returns to this player.
+          event.currentTarget.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
+          setDetailPlayerId(player.id);
+        }}
+      >
+        <button
+          type="button"
+          aria-label={`Open ${player.name} detail${isQueued ? " (in your queue)" : ""}`}
+          onClick={(event) => {
+            event.stopPropagation();
+            setDetailPlayerId(player.id);
+          }}
+          className="ffb-row-open"
+        />
+        <span
+          className="ffb-c-rank"
+          title={
+            vorpMode
+              ? `VORP rank${isQueued ? " · in your queue" : ""}`
+              : isQueued
+                ? "Board rank · in your queue"
+                : "Board rank"
+          }
+        >
+          {displayRank(player)}
+        </span>
+        <PositionChip player={player} />
+        <span className="ffb-c-name" title={player.name}>
+          {player.name}
+        </span>
+        <span className="ffb-c-team">{player.team}</span>
+        <span className="ffb-c-bye">
+          {player.byeWeek ? (
+            <>
+              <span className="ffb-vh-desk">Bye </span>
+              {player.byeWeek}
+            </>
+          ) : null}
+        </span>
+        {adpAvailable && (
+          <span className={`ffb-c-num${phoneNumbers === "market" ? " ffb-m-top" : ""}`} title={adpTooltip}>
+            <span className="ffb-vh">ADP </span>
+            {formatAdp(player.adp)}
+          </span>
+        )}
+        {showVsAdp && (
+          <span
+            className={`ffb-c-num ffb-rk-vsadp ${VS_ADP_CLASS[vsAdp?.signal ?? "none"]}${phoneNumbers === "market" ? " ffb-m-sub" : ""}`}
+            title={
+              vsAdp && !vsAdp.judged
+                ? "Early mock-draft sample, so the gap carries no value or reach read yet"
+                : FANTASY_VS_ADP_TOOLTIP
+            }
+          >
+            <span className="ffb-vh">versus ADP </span>
+            {vsAdp ? vsAdp.text : "—"}
+            {/* The word a drafter scans for, beside the number it judges. It
+                prints only when the gate fires, and never on a position board,
+                where the rank is not on the overall scale. The space is real,
+                so the pair reads as two words where it is one line of text. */}
+            {vsAdp?.signal ? (
+              <>
+                {" "}
+                <span
+                  className="ffb-label ffb-rk-word"
+                  title={vsAdp.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+                >
+                  {vsAdp.signal === "value" ? "Value" : "Reach"}
+                </span>
+              </>
+            ) : null}
+          </span>
+        )}
+        {vorpAvailable && (
+          // Heavy only when VORP is the ranking, so on the consensus board the
+          // column is data and not forty weighted numbers beside another order.
+          <span
+            className={`ffb-c-num${vorp && vorp.value > 0 ? (vorpMode ? " ffb-is-strong" : "") : " ffb-is-flat"}${phoneNumbers === "vorp" ? " ffb-m-top" : ""}`}
+            title={FANTASY_VORP_TOOLTIP}
+          >
+            <span className="ffb-vh">Value over replacement player </span>
+            {vorp ? Math.round(vorp.value) : "—"}
+          </span>
+        )}
+        <ExpertSpread player={player} scale={scale} />
+        <span
+          className={`ffb-c-num ffb-is-flat${phoneNumbers === "vorp" ? " ffb-m-sub" : phoneNumbers === "avg" ? " ffb-m-top" : ""}`}
+          title={FANTASY_AVG_RANK_TOOLTIP}
+        >
+          <span className="ffb-vh">Consensus average </span>
+          {formatAvg(player)}
+        </span>
+        {/* The row-edge queue toggle. Its click stops at the button, so
+            starring a player never opens him. */}
+        <button
+          type="button"
+          aria-pressed={isQueued}
+          aria-label={isQueued ? `Remove ${player.name} from queue` : `Queue ${player.name}`}
+          onClick={(event) => {
+            event.stopPropagation();
+            // In the queued view this row is about to leave the list and take
+            // its star with it. Focus moves to the next row's star, or the one
+            // before, and to the Queued toggle when the view empties.
+            if (queuedOnly && isQueued) {
+              const stars = Array.from(boardRef.current?.querySelectorAll<HTMLButtonElement>(".ffb-row > .ffb-star") ?? []);
+              const at = stars.indexOf(event.currentTarget);
+              (stars[at + 1] ?? stars[at - 1] ?? queuedToggleRef.current)?.focus();
+            }
+            queue.toggle(player.id);
+          }}
+          className="ffb-star"
+        >
+          <Star className="ffb-star-icon" size={16} aria-hidden="true" />
+        </button>
+      </li>
+    );
+  }
 
   function renderTierSection(group: TierGroup, index: number): ReactNode {
-    const displayRank = (player: Player): string =>
-      vorpMode
-        ? String(vorpIndex.get(player.id)?.rank ?? "—")
-        : getPublishedBoardRank(player, routeState.position);
-    const firstRank = displayRank(group.rows[0]);
-    const lastRank = displayRank(group.rows[group.rows.length - 1]);
-    const railTone =
-      vorpMode
-        ? "var(--c97-accent)"
-        : group.tier !== null
-        ? `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.tier)}%, var(--c97-rule))`
-        : "var(--c97-rule)";
+    const scale = scaleFor(group.rows);
+    const scaleLabels = <SpreadScaleLabels scale={scale} className="ffb-label ffb-muted ffb-rk-scale" />;
 
-    let cliff = 0;
-    if (!vorpMode && index > 0) {
-      const previous = tierGroups[index - 1];
-      const prevAvg = getConsensusAvg(previous.rows[previous.rows.length - 1]);
-      const nextAvg = getConsensusAvg(group.rows[0]);
-      if (prevAvg !== null && nextAvg !== null) {
-        cliff = Math.max(0, Number((nextAvg - prevAvg).toFixed(1)));
-      }
+    if (group.page !== undefined) {
+      // A quiet break for each page of the VORP view. It says which ranks the
+      // page holds and carries the labels of the scale the page is drawn on.
+      const firstRank = displayRank(group.rows[0]);
+      const lastRank = displayRank(group.rows[group.rows.length - 1]);
+      return (
+        <section
+          key={`page-${group.page}`}
+          className="ffb-tier ffb-rk-page"
+          aria-label={`${routeState.teams}-team VORP ranks ${firstRank} to ${lastRank}`}
+        >
+          <header className="ffb-tier-head">
+            <div className="ffb-rk-tier-lead">
+              <h3 className="ffb-tier-name">
+                <span className="ffb-tier-count">
+                  {firstRank === lastRank ? `VORP rank ${firstRank}` : `VORP ranks ${firstRank}–${lastRank}`}
+                </span>
+              </h3>
+            </div>
+            {scaleLabels}
+          </header>
+          <ol className="ffb-rows">{group.rows.map((player) => renderRow(player, scale))}</ol>
+        </section>
+      );
     }
-    const marginTop = index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
+
+    const run = tierRuns.get(group.rows[0].id);
+    const count = run?.count ?? group.rows.length;
+    const firstRank = displayRank(run?.first ?? group.rows[0]);
+    const lastRank = displayRank(run?.last ?? group.rows[group.rows.length - 1]);
+    const cliff = run?.cliff ?? 0;
+    const countLabel = `${count} ${count === 1 ? "player" : "players"}`;
+    // The gap above a break grows with the cliff, in 4px steps from 8 to 28px.
+    const gap = Math.min(28, Math.max(8, Math.round((cliff * 6) / 4) * 4));
 
     /* A <section> with no accessible name is not exposed as a landmark at all, so an
-       unnamed plate makes the tier structure of a tier-first board invisible to assistive
-       tech. The plate header is spans rather than a heading, so this is a literal label
-       rather than aria-labelledby, which would dangle whenever that header changes shape.
-       The cliff rule above the plate is aria-hidden, so its size rides here too. */
+       unnamed tier makes the tier structure of a tier-first board invisible to assistive
+       tech. This is a literal label, not aria-labelledby, so it can also carry the cliff
+       in words the heading abbreviates. */
     const tierLabel = [
-      vorpMode
-        ? `${routeState.teams}-team VORP rankings`
-        : group.tier !== null
-          ? `Tier ${group.tier}`
-          : "No published tier",
-      `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
-      `${vorpMode ? "VORP ranks" : "ranks"} ${firstRank} to ${lastRank}`,
-      index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
+      group.tier !== null ? `Tier ${group.tier}` : "No published tier",
+      countLabel,
+      `ranks ${firstRank} to ${lastRank}`,
+      cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
     ]
       .filter(Boolean)
       .join(", ");
 
     return (
       <section
-        key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
+        // Keyed by the tier's first player on the full board, so the section (and whatever in it has
+        // focus) stays mounted when a filter or the queue takes its first visible row away.
+        key={`tier-${group.tier ?? "untiered"}-${(run?.first ?? group.rows[0]).id}`}
+        className="ffb-tier"
         aria-label={tierLabel}
-        style={{ marginTop }}
+        style={index > 0 ? ({ "--ffb-gap": `${gap}px` } as CSSProperties) : undefined}
       >
-        {index > 0 && cliff > 0 && (
-          <div aria-hidden="true" className="flex items-center px-0.5" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-            <span
-              className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
-            />
-            <span
-              className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--c97-accent)" }}
-            >
-              ↓ {cliff.toFixed(1)} avg-rank cliff
-            </span>
-            <span
-              className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
-            />
+        {/* From the width where the plot shows, the head pins under the toolbar
+            while its tier is on screen, and the labels of the tier's own scale
+            sit in it over the spread column. So a plot is never on screen
+            without its labels. */}
+        <header className="ffb-tier-head">
+          <div className="ffb-rk-tier-lead">
+            <h3 className="ffb-tier-name">
+              <span className="ffb-tier-tab">
+                {group.tier !== null ? (
+                  <>
+                    Tier <span>{String(group.tier).padStart(2, "0")}</span>
+                  </>
+                ) : (
+                  "No tier"
+                )}
+              </span>{" "}
+              <span className="ffb-tier-count">{countLabel}</span>{" "}
+              <span className="ffb-tier-range">
+                {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
+              </span>
+            </h3>
+            {cliff > 0 && (
+              <p className="ffb-tier-cliff">
+                <span className="ffb-cliff-mark" aria-hidden="true" />
+                <b>{cliff.toFixed(1)}</b> <span className="ffb-not-phone">avg-rank </span>cliff
+              </p>
+            )}
           </div>
-        )}
-        <div
-          className="overflow-hidden border border-l-[3px]"
-          style={{
-            borderColor: "var(--c97-rule)",
-            borderLeftColor: railTone,
-            background: "var(--c97-field)",
-          }}
-        >
-          <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-            <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
-              {vorpMode
-                ? "VORP"
-                : group.tier !== null
-                  ? String(group.tier).padStart(2, "0")
-                  : "—"}
-            </span>
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-              {vorpMode
-                ? `${routeState.teams}-team rankings`
-                : group.tier !== null
-                  ? "Tier"
-                  : "No published tier"}
-            </span>
-            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              {group.rows.length} {group.rows.length === 1 ? "player" : "players"}
-            </span>
-            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              {vorpMode ? "#" : "R"}{firstRank} to {vorpMode ? "#" : "R"}{lastRank}
-            </span>
-          </div>
-          <ul className="m-0 list-none p-0">
-            {group.rows.map((player) => {
-              const vsAdp = adpSignalsAvailable && vsAdpMeaningful ? describeVsAdp(player) : null;
-              const vorp = vorpIndex.get(player.id);
-              const tone = getPositionTone(player.position);
-              const isQueued = queue.isQueued(player.id);
-              return (
-                <li
-                  key={player.id}
-                  className="group relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
-                  style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
-                >
-                  {/* The open control overlays the row instead of wrapping it: an
-                      aria-label on a wrapping button would override every cell,
-                      leaving screen readers nothing but "Open X detail" rows.
-                      The content div sits above it so hover explanations fire
-                      and names stay selectable; its own click still opens the
-                      drawer unless the user is selecting text. */}
-                  <button
-                    type="button"
-                    aria-label={`Open ${player.name} detail${isQueued ? " (in your queue)" : ""}`}
-                    onClick={() => setDetailPlayerId(player.id)}
-                    className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
-                  />
-                  {isQueued && (
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-y-0 left-0 z-[2] w-1"
-                      style={{ background: "var(--c97-accent)" }}
-                    />
-                  )}
-                  <div
-                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center text-left"
-                    style={{ paddingBlock: "var(--c97-sp-0)", paddingLeft: "var(--c97-sp-2)", paddingRight: "calc(52px + var(--c97-sp-1))", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", color: "var(--c97-ink)" }}
-                    onClick={(event) => {
-                      if (window.getSelection()?.toString()) return;
-                      // Pointer clicks land on the content above the row button.
-                      // Focus that opener so closing the drawer returns to this player.
-                      event.currentTarget.parentElement
-                        ?.querySelector<HTMLButtonElement>("button")
-                        ?.focus({ preventScroll: true });
-                      setDetailPlayerId(player.id);
-                    }}
-                  >
-                    <span
-                      className="w-[34px] shrink-0 text-right font-mono text-sm"
-                      title={
-                        vorpMode
-                          ? `VORP rank${isQueued ? " · in your queue" : ""}`
-                          : isQueued
-                            ? "Board rank · in your queue"
-                            : "Board rank"
-                      }
-                      style={{
-                        color: isQueued ? SIGNAL_TEXT_COLOR : "var(--c97-ink)",
-                      }}
-                    >
-                      {displayRank(player)}
-                    </span>
-                    <span className="@container min-w-0 flex-[1_1_12rem]">
-                      {/* One shape per width, so a row's height never depends on
-                          whether it carries a Value or Reach chip. The cell switches
-                          on its own width, which moves with the columns a board shows
-                          as well as with the viewport. Below 21.5rem the name has its
-                          own line over the position, team and chip, and every row has
-                          a position chip, so that line is always the same height. From
-                          21.5rem the two share one line, and the spread bar yields
-                          below xl so the cell clears the switch from 1024 up. The name
-                          keeps a hard floor either way. */}
-                      <span className="flex flex-col @min-[21.5rem]:flex-row @min-[21.5rem]:items-center @min-[21.5rem]:gap-x-[var(--c97-sp-1)]" style={{ rowGap: "var(--c97-sp-0)" }}>
-                        <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
-                        <span className="flex min-w-0 items-center @min-[21.5rem]:shrink-0" style={{ columnGap: "var(--c97-sp-1)" }}>
-                          <span
-                            className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs tracking-[0.06em]"
-                            style={{ paddingInline: "var(--c97-sp-0)", ...tone, color: "var(--c97-ink)" }}
-                          >
-                            {player.position}
-                            {Number.isFinite(player.positionRank) ? player.positionRank : ""}
-                          </span>
-                          <span
-                            className="min-w-0 font-mono text-3xs uppercase tracking-[0.06em]"
-                            style={{ color: "var(--c97-ink-2)" }}
-                          >
-                            {player.team}
-                            {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-                          </span>
-                          {adpSignalsAvailable && vsAdpMeaningful && <ValueReachChip player={player} />}
-                        </span>
-                      </span>
-                    </span>
-                    <span className="grid w-full grid-cols-3 gap-x-[var(--c97-sp-1)] md:flex md:w-auto md:max-w-full md:flex-wrap md:items-center md:gap-x-[var(--c97-sp-2)]" style={{ rowGap: "var(--c97-sp-0)" }}>
-                      {vorpAvailable && (
-                        <>
-                          <span className="sr-only">Value over replacement player</span>
-                          {/* The accent tracks the sort, as the plate rail and
-                              the h2 already do: a positive VORP takes signal only
-                              when VORP is the ranking. On the consensus board it
-                              reads in ink, so the column is data rather than
-                              forty accented numbers beside a consensus order. */}
-                          <span
-                            className="w-auto font-mono text-xs font-medium md:w-16 md:text-right"
-                            title={FANTASY_VORP_TOOLTIP}
-                            style={{
-                              color:
-                                vorp && vorp.value > 0
-                                  ? vorpMode
-                                    ? SIGNAL_TEXT_COLOR
-                                    : "var(--c97-ink)"
-                                  : "var(--c97-ink-2)",
-                            }}
-                          >
-                            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                              VORP{" "}
-                            </span>
-                            {vorp ? Math.round(vorp.value) : "—"}
-                          </span>
-                        </>
-                      )}
-                      <span className="hidden xl:inline-flex">
-                        <ExpertSpreadBar player={player} scale={boardScale} />
-                      </span>
-                      <span className="sr-only">Expert range</span>
-                      <span
-                        className="w-auto font-mono text-xs md:w-16 md:text-right"
-                        title={FANTASY_EXPERT_SPREAD_TOOLTIP}
-                        style={{ color: "var(--c97-ink-2)" }}
-                      >
-                        <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                          Rng{" "}
-                        </span>
-                        {formatExpertRange(player)}
-                      </span>
-                      <span className="sr-only">Consensus average</span>
-                      <span
-                        className="w-auto font-mono text-xs font-medium md:w-12 md:text-right"
-                        title={FANTASY_AVG_RANK_TOOLTIP}
-                      >
-                        <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                          Avg{" "}
-                        </span>
-                        {formatAvg(player)}
-                      </span>
-                      {adpAvailable && (
-                        <>
-                          <span className="sr-only">ADP</span>
-                          <span
-                            className="w-auto font-mono text-xs md:w-16 md:text-right"
-                            title={adpTooltip}
-                            style={{ color: "var(--c97-ink-2)" }}
-                          >
-                            <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                              ADP{" "}
-                            </span>
-                            {formatAdp(player.adp)}
-                          </span>
-                          {adpSignalsAvailable && vsAdpMeaningful ? (
-                            <>
-                              <span className="sr-only">versus ADP</span>
-                              <span
-                                className="w-auto font-mono text-xs md:w-16 md:text-right"
-                                title={
-                                  vsAdp && !vsAdp.judged
-                                    ? "Early mock-draft sample, so the gap carries no value or reach read yet"
-                                    : FANTASY_VS_ADP_TOOLTIP
-                                }
-                                style={{ color: vsAdp ? vsAdp.color : "var(--c97-ink-2)" }}
-                              >
-                                <span
-                                  aria-hidden="true"
-                                  className={ROW_MICRO_LABEL_CLASS}
-                                  style={{ color: "var(--c97-ink-2)" }}
-                                >
-                                  ±ADP{" "}
-                                </span>
-                                {vsAdp ? vsAdp.text : "—"}
-                              </span>
-                            </>
-                          ) : null}
-                        </>
-                      )}
-                    </span>
-                    {/* The row-edge queue toggle: always visible on touch,
-                        revealed on hover/focus for fine pointers, and always
-                        shown once queued so membership reads as shape, not
-                        color. It is positioned at the row's edge rather than
-                        placed in the wrapping flow, because in flow it wrapped
-                        onto a line of its own at 390 and again at 768, where
-                        it also pushed the metrics 59px right of their column
-                        labels. The row's right padding reserves its column, and the
-                        label row reserves the same for the queue filter. */}
-                    <button
-                      type="button"
-                      aria-pressed={isQueued}
-                      aria-label={isQueued ? `Remove ${player.name} from queue` : `Queue ${player.name}`}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        queue.toggle(player.id);
-                      }}
-                      className={`absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c97-accent)] ${
-                        isQueued
-                          ? ""
-                          : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
-                      }`}
-                      style={{ color: isQueued ? "var(--c97-accent)" : "var(--c97-ink-2)" }}
-                    >
-                      <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
-                    </button>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+          {scaleLabels}
+        </header>
+        <ol className="ffb-rows">{group.rows.map((player) => renderRow(player, scale))}</ol>
       </section>
     );
   }
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-dvh"
+      className="relative min-h-dvh overflow-x-clip"
       aria-label="Fantasy football rankings"
       data-testid="fantasy-football-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
       <FantasyRouteHeader
-        title={
-          <>
-            Fantasy Football <TitleAccent>Rankings</TitleAccent>
-          </>
-        }
+        title="Fantasy Football Rankings"
         lead={
           vorpMode
             ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
-            : "The board pairs the expert consensus with market ADP when a current sample is published, and the tier plates and cliff lines mark where the board actually drops off."
+            : "The board pairs the expert consensus with market ADP when a current sample is published, and the tier breaks mark where the board actually drops off."
         }
-        freshness={
-          <FreshnessParts
-            parts={[
-              { label: `Draft rankings${metadata?.season ? ` · ${metadata.season}` : ""}` },
-              ...headerChips,
-            ]}
-          />
-        }
+        freshness={<FreshnessParts parts={freshnessParts} />}
       />
 
-      <div>
-        {seasonalWeek >= 1 ? (
-          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
+      <div className={`${SHELL_CLASS} ffb-stack ffb-stack-page`}>
+        <div className="ffb-stack">
+          {seasonalWeek >= 1 ? (
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
               Every board here is the preseason draft consensus, kept as a
               reference once games begin. Ranks that still move are on the{" "}
-              <Link
-                href="/fantasy-football/weekly"
-                className="underline decoration-[var(--c97-accent)] underline-offset-4"
-              >
-                weekly board
-              </Link>{" "}
-              and the{" "}
-              <Link
-                href="/fantasy-football/waivers"
-                className="underline decoration-[var(--c97-accent)] underline-offset-4"
-              >
-                waiver targets
-              </Link>
-              .
+              <Link href="/fantasy-football/weekly">weekly board</Link> and the{" "}
+              <Link href="/fantasy-football/waivers">waiver targets</Link>.
             </SeasonalScopeNote>
-          </div>
-        ) : null}
+          ) : null}
 
-        <div
-          data-testid="fantasy-board-controls"
-          className="sticky top-0 z-30 border-y"
-          style={{
-            borderColor: "var(--c97-rule)",
-            background: "var(--c97-surface)",
-          }}
-        >
-          <div className={`${SHELL_CLASS} hidden flex-wrap items-center md:flex`} style={{ paddingBlock: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
-            <PositionFilterBar
-              ariaLabel="Position board"
-              options={positionOptions}
-              value={routeState.position}
-              onChange={(position) => updateRouteState({ position })}
-            />
-            <ScoringToggle
-              value={routeState.scoring}
-              onChange={(scoring) => updateRouteState({ scoring })}
-              compact="below-xl"
-            />
-            <RankingToggle
-              value={routeState.ranking}
-              vorpAvailable={vorpAvailable}
-              onChange={(ranking) => updateRouteState({ ranking })}
+          {localToolsMemoryOnly && (
+            <div role="status" className="ffb-notice">
+              <p>
+                <strong>Browser storage is unavailable.</strong> Queue and notes still work in this tab, but they
+                will not survive a reload.
+              </p>
+            </div>
+          )}
+
+          <div>
+            <h2 className="sr-only">
+              {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
+            </h2>
+
+            <div
+              ref={boardRef}
+              className={[
+                "ffb-board ffb-board-ruled ffb-board-open ffb-rk-board",
+                adpAvailable ? "ffb-rk-adp" : "",
+                showVsAdp ? "ffb-rk-vs" : "",
+                vorpAvailable ? "ffb-rk-vorp" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
-              {routeState.ranking === "vorp" ? (
-                <VorpTeamSizeSelect
-                  value={routeState.teams}
-                  onChange={(teams) => updateRouteState({ teams })}
-                />
-              ) : null}
-            </RankingToggle>
-          </div>
-          {/* Wraps instead of clipping, so at 320 wide or with enlarged text the search
-              and queue filter drop to a second line and stay reachable. */}
-          <div className={`${SHELL_CLASS} flex flex-wrap items-center md:hidden`} style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-            {mobileSearchOpen ? (
-              <>
-                <div className="relative min-w-0 flex-1">
-                  <label htmlFor="fantasy-search-compact" className="sr-only">
-                    Search the current rankings board
-                  </label>
-                  <Search
-                    className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                    style={{ color: "var(--c97-ink-2)" }}
-                    aria-hidden="true"
-                  />
-                  <input
-                    id="fantasy-search-compact"
-                    name="fantasy-search-compact"
-                    value={searchQuery}
-                    maxLength={80}
-                    autoFocus
-                    onChange={(event) => setSearchQuery(event.target.value)}
-                    onBlur={() => {
-                      if (!searchQuery) setMobileSearchOpen(false);
-                    }}
-                    disabled={currentSliceUnavailable}
-                    autoComplete="off"
-                    placeholder="Search player or team"
-                    className="min-h-touch w-full border font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
-                    style={
-                      { paddingLeft: "calc(24px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)", ...(currentSliceUnavailable
-                        ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-                        : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }) }
-                    }
-                  />
-                </div>
-                {searchQuery && (
-                  <button
-                    type="button"
-                    aria-label="Clear search"
-                    onMouseDown={(event) => event.preventDefault()}
-                    onClick={() => {
-                      setSearchQuery("");
-                      updateRouteState({ query: "" });
-                    }}
-                    className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
-                  >
-                    <X className="h-4 w-4" aria-hidden="true" />
-                  </button>
-                )}
-                <button
-                  type="button"
-                  aria-label="Done searching, keep the filter"
-                  onMouseDown={(event) => event.preventDefault()}
-                  onClick={() => setMobileSearchOpen(false)}
-                  className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-ink-2)] bg-[var(--c97-field)] font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)" }}
-                >
-                  Done
-                </button>
-              </>
-            ) : (
-              <>
-                <label htmlFor="fantasy-position-select" className="sr-only">
-                  Position board
-                </label>
-                <select
-                  id="fantasy-position-select"
-                  value={routeState.position}
-                  onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
-                  className="min-h-touch shrink-0 border font-mono text-2xs uppercase tracking-[0.06em]"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    borderColor: "var(--c97-ink-2)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  {positionOptions.map((option) => {
-                    /* The desktop pill row already renders an unavailable slice
-                       disabled with its reason. Left plain and enabled here, the
-                       select let a phone visitor pick a board that does not
-                       exist. The selected value never disables itself, or the
-                       control would render blank on a board that went away. */
-                    const isUnavailable =
-                      option.available === false && option.value !== routeState.position;
-                    return (
-                      <option
-                        key={option.value}
-                        value={option.value}
-                        disabled={isUnavailable}
-                        title={isUnavailable ? option.unavailableLabel : undefined}
+              {/* The toolbar and the column heads pin as one block, so the numbers
+                  keep their names mid-scroll. Each control is built once. The
+                  three a phone draws differently (position, ranking, search) have
+                  a phone form beside the desktop one, and only one of each pair
+                  is displayed at a width. */}
+              <div ref={barRef} className="ffb-sticky ffb-sticky-ruled" data-testid="fantasy-board-controls">
+                <div className={`ffb-toolbar ffb-rk-tools${mobileSearchOpen ? " ffb-rk-searching" : ""}`}>
+                  {mobileSearchOpen ? (
+                    <div className="ffb-rk-findrow flex md:hidden">
+                      <div className="ffb-search">
+                        <Search size={15} aria-hidden="true" />
+                        <label htmlFor="fantasy-search-compact" className="ffb-vh">
+                          Search the current rankings board
+                        </label>
+                        <input
+                          id="fantasy-search-compact"
+                          name="fantasy-search-compact"
+                          value={searchQuery}
+                          maxLength={80}
+                          autoFocus
+                          ref={compactSearchRef}
+                          onChange={(event) => setSearchQuery(event.target.value)}
+                          onBlur={() => {
+                            if (!searchQuery) setMobileSearchOpen(false);
+                          }}
+                          disabled={currentSliceUnavailable}
+                          autoComplete="off"
+                          placeholder="Search player or team"
+                          className="ffb-search-input"
+                        />
+                        {searchQuery && (
+                          <button
+                            type="button"
+                            aria-label="Clear search"
+                            onMouseDown={(event) => event.preventDefault()}
+                            onClick={clearSearch}
+                            className="ffb-search-clear"
+                          >
+                            <X size={16} aria-hidden="true" />
+                          </button>
+                        )}
+                      </div>
+                      <button
+                        type="button"
+                        aria-label="Done searching, keep the filter"
+                        onMouseDown={(event) => event.preventDefault()}
+                        onClick={() => {
+                          // Done removes itself, so focus goes to the button that reopens the search.
+                          focusFindButtonRef.current = true;
+                          setMobileSearchOpen(false);
+                        }}
+                        className="ffb-btn"
                       >
-                        {isUnavailable ? `${option.label} · unavailable` : option.label}
-                      </option>
-                    );
-                  })}
-                </select>
-                <ScoringToggle compact value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
-                <button
-                  type="button"
-                  aria-label={
-                    searchQuery
-                      ? `Search the current rankings board, filtering by ${searchQuery}`
-                      : "Search the current rankings board"
-                  }
-                  onClick={() => setMobileSearchOpen(true)}
-                  disabled={currentSliceUnavailable}
-                  className={`inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border disabled:cursor-not-allowed disabled:border-dashed ${
-                    /* A collapsed search still filters the board, so the control
-                       carries the active state rather than hiding the filter. */
-                    currentSliceUnavailable
-                      ? "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
-                      : searchQuery
-                        ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
-                        : "border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
-                  }`}
-                >
-                  <Search className="h-4 w-4" aria-hidden="true" />
-                </button>
-                <QueuedFilterButton
-                  pressed={queuedOnly}
-                  count={queuedOnBoardCount}
-                  onToggle={() => setQueuedOnly((value) => !value)}
-                />
-              </>
-            )}
-          </div>
-          {/* The count and the route's only aria-live region used to sit inside
-              the md-and-up bar, so below 768px a filter that landed on six rows
-              announced nothing and showed no count. Phones get their own line,
-              and it stays visible rather than sr-only, because it is also the
-              feedback that a search or the queue filter landed on n rows. Only
-              one of the two is ever rendered, since the other is display:none at
-              that width, so nothing announces twice. The ranking select shares
-              this line: as a Consensus/VORP pair plus a league-size select it
-              took a third row, and the bar pinned 225px of an 844px phone. It
-              yields while the search is open, since the count is what a search
-              needs to see. */}
-          <div className={`${SHELL_CLASS} flex items-center md:hidden`} style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-            {!mobileSearchOpen ? (
-              <CompactRankingSelect
-                ranking={routeState.ranking}
-                teams={routeState.teams}
-                vorpAvailable={vorpAvailable}
-                onChange={(next) => updateRouteState(next)}
-              />
-            ) : null}
-            <span
-              aria-live={error ? undefined : "polite"}
-              className="min-w-0 flex-1 text-right font-mono text-2xs leading-snug"
-              style={{ color: "var(--c97-ink-2)" }}
-            >
-              {countLine}
-            </span>
-          </div>
-          {/* The second line of the bar. The search sits over the Player
-              column, whose label slot had 184 to 342px of slack while the
-              search pushed the controls onto a second line at 1440; the column
-              labels ride beside it so the numbers keep their names mid-scroll,
-              and the queue filter heads the star column it filters, in the
-              space both rows reserve with their right padding. Phones get per-value
-              micro-labels and their own search instead. The search and the
-              filter are always mounted here so an empty result can still be
-              edited; only the labels wait for rows. */}
-          <div
-            className="hidden border-t md:block"
-            style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
-          >
-            <div className={SHELL_CLASS}>
-              <div
-                className="relative flex items-center font-mono text-3xs uppercase tracking-[0.12em]"
-                style={{ paddingBlock: "var(--c97-sp-0)", paddingLeft: "var(--c97-sp-2)", paddingRight: "calc(52px + var(--c97-sp-1))", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-              >
-                <span className="w-[34px] shrink-0" />
-                <span className="flex min-w-0 flex-[1_1_12rem] items-center" style={{ columnGap: "var(--c97-sp-1)" }}>
-                  <span className="relative min-w-0 shrink">
-                    <label htmlFor="fantasy-search" className="sr-only">
-                      Search the current rankings board
-                    </label>
-                    <Search
-                      className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                      style={{ color: "var(--c97-ink-2)" }}
-                      aria-hidden="true"
+                        Done
+                      </button>
+                    </div>
+                  ) : null}
+
+                  {/* Two groups in the order the keyboard walks them. On a desktop
+                      neither draws a box, so the controls sit in one row. On a phone
+                      each group is a row: position and scoring, then method, search,
+                      and the queue filter. */}
+                  <div className="ffb-rk-ctl-a">
+                  <div className="contents max-md:hidden">
+                    <PositionFilterBar
+                      ariaLabel="Position board"
+                      options={positionOptions}
+                      value={routeState.position}
+                      onChange={(position) => updateRouteState({ position })}
                     />
+                  </div>
+                  <label htmlFor="fantasy-position-select" className="sr-only md:hidden">
+                    Position board
+                  </label>
+                  <select
+                    id="fantasy-position-select"
+                    value={routeState.position}
+                    onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
+                    className="ffb-select ffb-rk-pos md:hidden"
+                  >
+                    {positionOptions.map((option) => {
+                      /* The desktop switch already renders an unavailable slice
+                         disabled with its reason. Left plain and enabled here, the
+                         select let a phone visitor pick a board that does not
+                         exist. The selected value never disables itself, or the
+                         control would render blank on a board that went away. */
+                      const isUnavailable =
+                        option.available === false && option.value !== routeState.position;
+                      return (
+                        <option
+                          key={option.value}
+                          value={option.value}
+                          disabled={isUnavailable}
+                          title={isUnavailable ? option.unavailableLabel : undefined}
+                        >
+                          {isUnavailable ? `${option.label} · unavailable` : option.label}
+                        </option>
+                      );
+                    })}
+                  </select>
+
+                  <div className="ffb-seg" role="group" aria-label="Scoring format">
+                    {SCORING_OPTIONS.map((option) => (
+                      <button
+                        key={option.key}
+                        type="button"
+                        aria-pressed={routeState.scoring === option.key}
+                        aria-label={option.label}
+                        onClick={() => updateRouteState({ scoring: option.key })}
+                        className="ffb-seg-btn"
+                      >
+                        <span className="md:hidden">{option.shortLabel}</span>
+                        <span className="max-md:hidden">{option.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                  </div>
+
+                  <div className="ffb-rk-ctl-b">
+                  {/* In VORP mode the league size rides against the switch, because
+                      the size is a parameter of VORP. */}
+                  <div className="ffb-rk-rank max-md:hidden">
+                    <div className="ffb-seg" role="group" aria-label="Ranking method">
+                      {(["consensus", "vorp"] as const).map((option) => {
+                        const unpublished = option === "vorp" && vorpUnpublished;
+                        return (
+                          <button
+                            key={option}
+                            type="button"
+                            // Pressed by what the board shows. A VORP link with no
+                            // VORP published falls back to consensus, and the pressed
+                            // segment says so, so no button is both pressed and disabled.
+                            aria-pressed={option === "vorp" ? vorpMode : !vorpMode}
+                            aria-label={unpublished ? "VORP, not published in the current snapshot" : undefined}
+                            title={unpublished ? "Not published in the current snapshot" : undefined}
+                            disabled={option === "vorp" && !vorpAvailable}
+                            onClick={() => updateRouteState({ ranking: option })}
+                            className="ffb-seg-btn"
+                          >
+                            {option === "consensus" ? "Consensus" : "VORP"}
+                            {unpublished ? <span className="ffb-seg-na">NA</span> : null}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {routeState.ranking === "vorp" ? (
+                      <select
+                        aria-label="VORP league size"
+                        value={routeState.teams}
+                        onChange={(event) =>
+                          updateRouteState({ teams: Number(event.target.value) as FantasyVorpTeamSize })
+                        }
+                        className="ffb-select"
+                      >
+                        {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
+                          <option key={teamSize} value={teamSize}>
+                            {teamSize} teams
+                          </option>
+                        ))}
+                      </select>
+                    ) : null}
+                  </div>
+                  {/* The phone's ranking control. One native select carries the
+                      method and the league size, so the pair costs no third row. */}
+                  <select
+                    aria-label="Ranking method"
+                    value={compactRankingValue}
+                    onChange={(event) => {
+                      const next = event.target.value;
+                      if (next === "consensus") {
+                        updateRouteState({ ranking: "consensus" });
+                        return;
+                      }
+                      const size = Number(next.replace("vorp-", ""));
+                      if (isFantasyVorpTeamSize(size)) updateRouteState({ ranking: "vorp", teams: size });
+                    }}
+                    className="ffb-select ffb-rk-mode md:hidden"
+                  >
+                    <option value="consensus">Consensus</option>
+                    {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
+                      <option key={teamSize} value={`vorp-${teamSize}`} disabled={!vorpAvailable}>
+                        VORP {teamSize}-team
+                      </option>
+                    ))}
+                  </select>
+
+                  <label className="ffb-search max-md:hidden">
+                    <Search size={15} aria-hidden="true" />
+                    <span className="ffb-vh">Search the current rankings board</span>
                     <input
                       id="fantasy-search"
                       name="fantasy-search"
+                      ref={searchRef}
                       value={searchQuery}
                       maxLength={80}
                       onChange={(event) => setSearchQuery(event.target.value)}
                       disabled={currentSliceUnavailable}
                       autoComplete="off"
                       placeholder="Player or team"
-                      className="min-h-touch w-40 max-w-full border font-mono text-xs normal-case tracking-normal placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed lg:w-[200px]"
-                      style={
-                        { paddingLeft: "calc(24px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)", ...(currentSliceUnavailable
-                          ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-                          : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }) }
-                      }
+                      className="ffb-search-input"
                     />
-                  </span>
-                  {boardReady && (
-                    <span className="hidden shrink-0 lg:inline-flex">
-                      <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
-                        Player
+                  </label>
+                  {/* A collapsed search still filters the board, so the button
+                      carries the active state and names the query. */}
+                  <button
+                    type="button"
+                    aria-label={
+                      searchQuery
+                        ? `Search the current rankings board, filtering by ${searchQuery}`
+                        : "Search the current rankings board"
+                    }
+                    ref={findButtonRef}
+                    onClick={() => setMobileSearchOpen(true)}
+                    disabled={currentSliceUnavailable}
+                    className={`ffb-iconbtn ffb-iconbtn-edge ffb-rk-find md:hidden${searchQuery && !currentSliceUnavailable ? " ffb-is-on" : ""}`}
+                  >
+                    <Search size={16} aria-hidden="true" />
+                  </button>
+
+                  <button
+                    type="button"
+                    aria-pressed={queuedOnly}
+                    aria-label={`Show only queued players (${queuedOnBoardCount} on this board)`}
+                    ref={queuedToggleRef}
+                    onClick={() => setQueuedOnly((value) => !value)}
+                    className="ffb-toggle"
+                  >
+                    <Star className="ffb-star-icon" size={16} aria-hidden="true" />
+                    <span className="max-md:hidden">Queued</span>
+                    {queuedOnBoardCount > 0 && (
+                      <span className="ffb-countbadge" aria-hidden="true">
+                        {queuedOnBoardCount}
+                      </span>
+                    )}
+                  </button>
+                  </div>
+
+                  {/* The route's one live region. It is also the visible feedback
+                      that a search or the queue filter landed on n rows. */}
+                  <p
+                    className={`ffb-count${vorpHiddenNote ? " ffb-rk-count-long" : ""}`}
+                    aria-live={error ? undefined : "polite"}
+                  >
+                    {countLine}
+                  </p>
+                </div>
+
+                {boardReady && (
+                  <div className="ffb-colhead">
+                    <span className={`ffb-h-num ffb-m-show${vorpMode ? "" : " ffb-is-sorted"}`}>Rk</span>
+                    <span className="ffb-h-pos">Pos</span>
+                    {/* The help triggers are for a pointer or a keyboard. A phone's head
+                        prints the plain word, and the drawer carries the definitions.
+                        These two use the kit's helpers, which follow the paper's width
+                        in print, where the site holds Tailwind's breakpoints to screens. */}
+                    <span className="ffb-m-show">
+                      <span className="ffb-only-phone">Player</span>
+                      <span className="ffb-not-phone">
+                        <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
+                          Player
+                        </MetricTooltip>
+                      </span>
+                    </span>
+                    <span>Team</span>
+                    <span className="ffb-h-num">Bye</span>
+                    {adpAvailable && (
+                      <span className="ffb-h-num ffb-rk-h-wrap">
+                        <MetricTooltip term={adpLabel} definition={adpTooltip} focusable>
+                          {adpLabel}
+                        </MetricTooltip>
+                      </span>
+                    )}
+                    {showVsAdp && (
+                      <span className="ffb-h-num ffb-rk-h-vs">
+                        <MetricTooltip term="vs ADP" definition={FANTASY_VS_ADP_TOOLTIP} focusable>
+                          vs ADP
+                        </MetricTooltip>
+                      </span>
+                    )}
+                    {vorpAvailable && (
+                      <span className={`ffb-h-num${vorpMode ? " ffb-is-sorted" : ""}`}>
+                        <MetricTooltip term="VORP" definition={FANTASY_VORP_TOOLTIP} focusable>
+                          VORP
+                        </MetricTooltip>
+                      </span>
+                    )}
+                    <span className="ffb-h-spread">
+                      <span className="ffb-h-spread-label">
+                        <span className="ffb-rk-h-spread-name">
+                          <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} focusable>
+                            Expert spread
+                          </MetricTooltip>
+                        </span>
+                        <span className="ffb-spread-key">
+                          <span>
+                            <i className="ffb-key-range" />
+                            Range
+                          </span>
+                          <span>
+                            <i className="ffb-key-sd" />
+                            ±1 SD
+                          </span>
+                          <span>
+                            <i className="ffb-key-avg" />
+                            Average
+                          </span>
+                        </span>
+                      </span>
+                      <span className="ffb-rk-h-unit">{spreadUnitNote}</span>
+                    </span>
+                    <span className="ffb-h-num">
+                      <MetricTooltip term="Avg" definition={FANTASY_AVG_RANK_TOOLTIP} focusable>
+                        Avg
                       </MetricTooltip>
                     </span>
-                  )}
-                </span>
-                {boardReady && (
-                  <span className="flex shrink-0 items-center" style={{ gap: "var(--c97-sp-2)" }}>
-                    {metricColumns.map((column) => (
-                      <span key={column.label} className={column.className}>
-                        {column.title ? (
-                          <MetricTooltip term={column.label} definition={column.title} focusable>
-                            {column.label}
-                          </MetricTooltip>
-                        ) : (
-                          column.label
-                        )}
-                      </span>
-                    ))}
-                  </span>
+                    <span className="ffb-m-show ffb-only-phone">{phoneNumbersLabel}</span>
+                  </div>
                 )}
-                <QueuedFilterButton
-                  pressed={queuedOnly}
-                  count={queuedOnBoardCount}
-                  onToggle={() => setQueuedOnly((value) => !value)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2"
-                />
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
-          <h2 className="sr-only">
-            {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
-          </h2>
-          {/* The count left the sticky bar: with the search over the Player
-              column the bar's first line holds every control at 1440, and the
-              count would have been the one thing wrapping it to a second. */}
-          <div className="hidden justify-end md:flex" style={{ paddingBottom: "var(--c97-sp-1)" }}>
-            <span
-              aria-live={error ? undefined : "polite"}
-              className="font-mono text-2xs"
-              style={{ color: "var(--c97-ink-2)" }}
-            >
-              {countLine}
-            </span>
-          </div>
-
-          {localToolsMemoryOnly && (
-            <div
-              role="status"
-              className="border text-sm"
-              style={{
-                paddingInline: "var(--c97-sp-2)",
-                paddingBlock: "var(--c97-sp-1)",
-                marginBottom: "var(--c97-sp-2)",
-                borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
-                background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-              }}
-            >
-              <p className="font-semibold">Browser storage is unavailable.</p>
-              <p style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                Queue and notes still work in this tab, but they will not survive a reload.
-              </p>
-            </div>
-          )}
-
-          {isLoading ? (
-            <div className="grid" style={{ gap: "var(--c97-sp-1)" }} aria-hidden="true">
-              {Array.from({ length: 12 }).map((_, index) => (
-                <div key={`loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
-              ))}
-            </div>
-          ) : error ? (
-            <div
-              role="alert"
-              className="border"
-              style={{
-                paddingInline: "var(--c97-sp-2)",
-                paddingBlock: "var(--c97-sp-3)",
-                borderColor: "var(--c97-negative)",
-                background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
-              }}
-            >
-              <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
-                {error}
-              </p>
-              <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                Check your connection and try loading the published snapshot again.
-              </p>
-              <button
-                type="button"
-                onClick={retry}
-                className="c97-btn c97-btn-invert"
-                style={{ marginTop: "var(--c97-sp-2)" }}
-              >
-                Retry rankings
-              </button>
-            </div>
-          ) : currentSliceUnavailable ? (
-            <div
-              className="border text-center"
-              style={{
-                paddingInline: "var(--c97-sp-2)",
-                paddingBlock: "var(--c97-sp-5)",
-                borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
-                background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-              }}
-            >
-              <p className="text-lg font-semibold">
-                {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
-              </p>
-              <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                {sliceMetadata?.reason ??
-                  "This scoring-position combination is not published in the current snapshot."}
-              </p>
-            </div>
-          ) : filteredPlayers.length === 0 ? (
-            <div
-              className="border border-dashed text-center"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)", borderColor: "var(--c97-rule)" }}
-            >
-              <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
-                {queuedOnly ? "No queued players on this board." : "No players match on this board."}
-              </p>
-              {queuedOnly ? (
-                <button
-                  type="button"
-                  onClick={() => setQueuedOnly(false)}
-                  className="c97-btn c97-btn-invert"
-                  style={{ marginTop: "var(--c97-sp-2)" }}
-                >
-                  Show all players
-                </button>
-              ) : (
-                <div className="flex flex-wrap items-center justify-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchQuery("");
-                      updateRouteState({ query: "" });
-                    }}
-                    className="c97-btn c97-btn-invert"
-                  >
-                    Clear search
-                  </button>
-                  {overallSearchHit && (
+              {isLoading ? (
+                <div aria-hidden="true">
+                  {Array.from({ length: 12 }).map((_, index) => (
+                    <div key={`loading-${index}`} className="ffb-skel-row">
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                      <span className="ffb-skel" />
+                    </div>
+                  ))}
+                </div>
+              ) : error ? (
+                <div role="alert" className="ffb-notice ffb-notice-bad">
+                  <p>
+                    <strong>{error}</strong> Check your connection and try loading the published snapshot again.
+                  </p>
+                  <div className="ffb-notice-actions">
                     <button
                       type="button"
-                      onClick={() => updateRouteState({ position: "overall" })}
-                      className="c97-btn c97-btn-outline"
+                      onClick={() => {
+                        retry();
+                        // The button leaves with the notice as soon as the retry starts, so
+                        // focus goes to the search, which stays put while the board loads.
+                        focusSearch();
+                      }}
+                      className="ffb-btn"
                     >
-                      Found on the overall board
+                      Retry rankings
                     </button>
+                  </div>
+                </div>
+              ) : currentSliceUnavailable ? (
+                <div className="ffb-empty">
+                  <p className="ffb-empty-title">
+                    {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
+                  </p>
+                  <p className="ffb-empty-body">
+                    {sliceMetadata?.reason ??
+                      "This scoring-position combination is not published in the current snapshot."}
+                  </p>
+                </div>
+              ) : filteredPlayers.length === 0 ? (
+                <div className="ffb-empty">
+                  <p className="ffb-empty-title">
+                    {queuedOnly ? "No queued players on this board." : "No players match on this board."}
+                  </p>
+                  {queuedOnly ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setQueuedOnly(false);
+                        // The button leaves with the empty state, so focus goes to the toggle it just released.
+                        queuedToggleRef.current?.focus();
+                      }}
+                      className="ffb-btn"
+                    >
+                      Show all players
+                    </button>
+                  ) : (
+                    <div className="ffb-cluster">
+                      <button type="button" onClick={clearSearch} className="ffb-btn">
+                        Clear search
+                      </button>
+                      {overallSearchHit && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            updateRouteState({ position: "overall" });
+                            // The button leaves once the overall board lands, and the query that found him stays.
+                            focusSearch();
+                          }}
+                          className="ffb-btn ffb-btn-quiet"
+                        >
+                          Found on the overall board
+                        </button>
+                      )}
+                    </div>
                   )}
                 </div>
+              ) : (
+                <>
+                  {tierGroups.map((group, index) => renderTierSection(group, index))}
+                  {hasMore && (
+                    <button
+                      ref={sentinelRef}
+                      type="button"
+                      onClick={() =>
+                        setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
+                      }
+                      className="ffb-more"
+                    >
+                      Load more ({filteredPlayers.length - windowedPlayers.length} left)
+                    </button>
+                  )}
+                </>
               )}
             </div>
-          ) : (
-            <>
-              <div>{tierGroups.map((group, index) => renderTierSection(group, index))}</div>
-              {hasMore && (
-                <div ref={sentinelRef} className="flex justify-center" style={{ marginTop: "var(--c97-sp-2)" }}>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
-                    }
-                    className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]" style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
-                  >
-                    Load more ({filteredPlayers.length - windowedPlayers.length} left)
-                  </button>
-                </div>
-              )}
-            </>
-          )}
 
-          <div
-            className="flex flex-wrap items-baseline justify-between border-t"
-            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-          >
-            <span
-              className="font-mono text-2xs"
-              style={{
-                color:
-                  sourceStaleness === "fresh" || frozenInSeason
-                    ? "var(--c97-ink-2)"
-                    : "var(--c97-warning)",
-              }}
-            >
-              {frozenInSeason
-                ? `Frozen since ${sourceStamp ?? "kickoff"} · draft consensus kept as a reference${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
-                : sourceStaleness === "fresh"
-                  ? vorpMode
-                    ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
-                    : `Refreshes daily July through December, weekly in the offseason${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
-                  : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
-            </span>
-            <nav aria-label="More fantasy tools" className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
-              {FANTASY_TOOLS.map((tool) => (
-                <Link
-                  key={tool.href}
-                  href={tool.href}
-                  className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
-                >
-                  {tool.label}
-                  <span className="c97-arrow-out" aria-hidden="true">&nbsp;↗</span>
-                </Link>
-              ))}
-            </nav>
+            {/* The one link the product bar above the page does not carry sits
+                at the right of the source line. */}
+            <div className="ffb-footlinks ffb-rk-footlinks">
+              <p>{footLine}</p>
+              <Link href="/fantasy-football/weekly#my-team" className="ffb-link">
+                My team
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Plain prose under a rule, with the answers in reading columns. The same
-          array feeds the page's FAQ schema, so the text stays as written. */}
-      <section aria-labelledby="fantasy-rankings-questions" className={SHELL_CLASS} style={{ paddingBottom: "var(--c97-sp-5)" }}>
-        <div className="border-t" style={{ borderColor: "var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
-          <FantasySectionHeading id="fantasy-rankings-questions">
-            Fantasy rankings questions
-          </FantasySectionHeading>
-          <div className="grid lg:grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-4)", rowGap: "var(--c97-sp-3)" }}>
+        {/* Plain prose in reading columns. The same array feeds the page's FAQ
+            schema, so the text stays as written. */}
+        <section aria-labelledby="fantasy-rankings-questions">
+          <div className="ffb-sechead ffb-sechead-lg">
+            <FantasySectionHeading id="fantasy-rankings-questions">
+              Fantasy rankings questions
+            </FantasySectionHeading>
+          </div>
+          <div className="ffb-faq">
             {FANTASY_FOOTBALL_FAQ.map((item) => (
-              <div key={item.question} className="min-w-0">
-                <h3 className="m-0 text-base font-semibold" style={{ fontFamily: "var(--c97-font-body)" }}>{item.question}</h3>
-                <p className="text-sm leading-7" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                  {item.answer}
-                </p>
+              <div key={item.question}>
+                <h3 className="ffb-h4">{item.question}</h3>
+                <p>{item.answer}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {detailPlayer && (
         <DraftPlayerDrawer
@@ -2306,6 +1938,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           vorpMode={vorpMode}
           vorpTeams={routeState.teams}
           vorpIndex={vorpIndex}
+          spreadUnit={spreadUnit}
           onSelectNeighbor={(id) => setDetailPlayerId(id)}
           onClose={() => setDetailPlayerId(null)}
         />

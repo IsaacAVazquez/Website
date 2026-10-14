@@ -40,6 +40,6 @@ const PAGES: Array<[string, Metadata]> = [
 
 describe("fantasy football page dates", () => {
   it.each(PAGES)("%s keeps the redesign date while the board is older", (_route, metadata) => {
-    expect(metadata.other?.["og:updated_time"]).toBe("2026-10-12");
+    expect(metadata.other?.["og:updated_time"]).toBe("2026-10-13");
   });
 });

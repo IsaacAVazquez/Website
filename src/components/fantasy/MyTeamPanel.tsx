@@ -1,9 +1,9 @@
 "use client";
 
 import { FantasySectionHeading } from "@/components/fantasy/FantasyRouteHeader";
-import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Search } from "@/components/ui/ServerIcons";
-import styles from "./MyTeamPanel.module.css";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
+import "./fantasy-weekly.css";
 import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
 import { readBrowserStorageString } from "@/lib/browserStorage";
 import { FANTASY_SCORING_LABELS, type FantasyRouteScoring } from "@/lib/fantasy";
@@ -15,10 +15,31 @@ import type { FantasyWeeklyBoard, FantasyWeeklySnapshot } from "@/lib/fantasyWee
 import { getFantasyDraftStorageKey, getSnapshotStaleness } from "@/lib/fantasyUtils";
 import { REDRAFT_LINEUP_PRESETS, sameRedraftLineup } from "@/lib/redraftLineup";
 
-const control = styles.control;
-const button = styles.button;
 type TeamView = "lineup" | "roster" | "settings";
 
+/** The kit's position class, which carries the sticker colour for a chip or a slot. */
+const positionClass = (position: string) => `ffb-pos-${position.toLowerCase()}`;
+
+/** A player in one of My team's lists: the position chip, the name, and the team. */
+function TeamPlayer({ player }: { player: MyTeamPlayer }) {
+  return (
+    <span className="ffb-namecell">
+      <span className="ffb-wk-who">
+        <span className={`ffb-chip ffb-chip-sm ${positionClass(player.position)}`}>{player.position}</span>{" "}
+        <span className="ffb-wk-name">{player.name}</span>
+      </span>
+      {player.team ? <>{" "}<span className="ffb-c-team">{player.team}</span></> : null}
+    </span>
+  );
+}
+
+/**
+ * The saved-team workspace the weekly board and the waiver list share: a
+ * weekly lineup read off the consensus, the roster editor, and the league
+ * settings. It draws as one kit section with no surface of its own, so it
+ * sits in a rail beside the board or at full width under it. Each view is one
+ * column inside `ffb-wk-rail` and two columns outside it.
+ */
 export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = "lineup" }: {
   /** Which block a saved team opens on: the lineup on weekly, the saved waiver targets on waivers. */
   lead?: "lineup" | "waivers";
@@ -37,6 +58,12 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
   const [notice, setNotice] = useState("");
   const [manualName, setManualName] = useState("");
   const [manualPosition, setManualPosition] = useState<MyTeamPlayer["position"]>("RB");
+  // Several actions here remove the button that was pressed. Each one moves focus to where
+  // the reader carries on: the notice after a save or an import, the search field after a
+  // player is rostered from a result, and the next Remove button after a removal.
+  const noticeRef = useRef<HTMLParagraphElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const rosterRef = useRef<HTMLUListElement>(null);
   const weekly = useMemo(() => weeklyPlayerMap(board), [board]);
   const players = useMemo(() => [...weekly.values()].flatMap(player => {
     const parsed = readMyTeamPlayer(player);
@@ -49,6 +76,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
   const drop = team.players.find(player => player.id === dropId);
   const comparison = add && drop ? compareMyTeamWaiver(team, board, add, drop.id) : null;
   const lineup = buildMyTeamLineup(team, board);
+  const rankedStarters = lineup.filter(slot => slot.player).length;
   const stale = [board.flexSource, board.quarterbackSource].some(source => getSnapshotStaleness(source.asOf) === "stale");
   const missing = team.players.filter(player => !["K", "DST"].includes(player.position) && !weekly.has(player.id));
   const byePlayers = team.players.filter(player => player.byeWeek && player.byeWeek >= snapshot.week && player.byeWeek <= snapshot.week + 2);
@@ -68,196 +96,220 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = 
   function importDraft() {
     const imported = importMyTeamDraft(readBrowserStorageString(getFantasyDraftStorageKey(snapshot.season)).value);
     if (!imported) { setNotice(`No saved ${snapshot.season} redraft picks were found for your team in this browser.`); return; }
-    update(current => ({ ...current, ...imported, players: uniqueTeamPlayers([...current.players, ...imported.players]),
-      availableIds: current.availableIds.filter(id => !imported.players.some(player => player.id === id)) }));
-    onScoringChange(imported.scoring);
-    setSelectedView("lineup");
-    setNotice(`Imported ${imported.players.length} players and league settings. Existing roster players were kept. Review any moves made since the draft.`);
+    flushSync(() => {
+      update(current => ({ ...current, ...imported, players: uniqueTeamPlayers([...current.players, ...imported.players]),
+        availableIds: current.availableIds.filter(id => !imported.players.some(player => player.id === id)) }));
+      onScoringChange(imported.scoring);
+      setSelectedView("lineup");
+      setNotice(`Imported ${imported.players.length} ${imported.players.length === 1 ? "player" : "players"} and league settings. Existing roster players were kept. Review any moves made since the draft.`);
+    });
+    noticeRef.current?.focus();
+  }
+
+  function removeFromRoster(player: MyTeamPlayer) {
+    const index = team.players.findIndex(p => p.id === player.id);
+    flushSync(() => {
+      update(current => ({ ...current, players: current.players.filter(p => p.id !== player.id) }));
+      setNotice(`${player.name} removed from your saved roster.`);
+    });
+    // The row is gone. Focus takes the Remove button that moved into its place, or the last one, or the search field once the roster is empty.
+    const buttons = rosterRef.current?.querySelectorAll<HTMLButtonElement>("button") ?? [];
+    (buttons[index] ?? buttons[buttons.length - 1] ?? searchRef.current)?.focus();
   }
 
   // The add and drop comparison works from the players marked available, which
   // are the saved targets. Waivers leads the saved team with it and the weekly
   // page leads with the lineup, so it is built once and placed by `lead`.
   const comparisonBlock = (
-    <div className={styles.comparison}>
-      <h3 className={styles.subheading}>Compare an add and a drop</h3>
-      <p className={styles.supporting}>See where an available player fits before changing your roster.</p>
-      {available.length === 0 && <div className={styles.availabilityPrompt}>
-        <p>No players marked available yet.</p>
-        <button type="button" className={styles.textButton} onClick={() => setSelectedView("roster")}>Find available players <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
+    <div className="ffb-wk-block">
+      <div className="ffb-sechead"><h3 className="ffb-h3">Compare an add and a drop</h3></div>
+      <p className="ffb-copy">See where an available player fits before changing your roster.</p>
+      {available.length === 0 && <div className="ffb-cluster ffb-wk-actions">
+        <p className="ffb-copy">No players marked available yet.</p>
+        <button type="button" className="ffb-btn" onClick={() => setSelectedView("roster")}>Find available players</button>
       </div>}
-      <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-        <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Available player to add<select className={`${control} w-full min-w-0`} value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>
+      <label className="ffb-field"><span className="ffb-field-label">Available player to add</span>
+        <select className="ffb-select" value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>
           <option value="">Choose an available player</option>
           {available.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
-        </select></label>
-        <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Roster player to drop<select className={`${control} w-full min-w-0`} value={drop?.id ?? ""} onChange={event => setDropId(event.target.value)}>
+        </select>
+      </label>
+      <label className="ffb-field"><span className="ffb-field-label">Roster player to drop</span>
+        <select className="ffb-select" value={drop?.id ?? ""} onChange={event => setDropId(event.target.value)}>
           <option value="">Choose a roster player</option>
           {team.players.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
-        </select></label>
-      </div>
-      {comparison && add && drop && !stale && <div className={styles.comparisonResult} aria-live="polite">
+        </select>
+      </label>
+      {comparison && add && drop && !stale && <div className="ffb-wk-result" aria-live="polite">
         <p>{comparison.startingSlot ? `${add.name} enters the ranked lineup at ${comparison.startingSlot}.` : `${add.name} stays outside the ranked starting lineup.`}</p>
-        <p style={{ marginTop: "var(--c97-sp-1)" }}>{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} places ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
-        {comparison.newGaps.length > 0 && <p style={{ marginTop: "var(--c97-sp-1)" }}>This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
-        <p className="text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
-        <button className={`${styles.primaryButton}`} style={{ marginTop: "var(--c97-sp-1)" }} type="button" onClick={() => {
-          update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
-          setAddId(""); setDropId("");
-          setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);
+        <p>{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} ${Math.abs(comparison.rankGain) === 1 ? "place" : "places"} ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
+        {comparison.newGaps.length > 0 && <p>This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
+        <p className="ffb-muted">This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
+        <button className="ffb-btn ffb-btn-primary" type="button" onClick={() => {
+          flushSync(() => {
+            update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
+            setAddId(""); setDropId("");
+            // A name can end in a full stop of its own ("Aaron Jones Sr."), which then closes the sentence.
+            setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name.replace(/\.$/, "")}. Make the actual transaction in your league.`);
+          });
+          noticeRef.current?.focus();
         }}>Save this move to my roster</button>
       </div>}
-      <p className={styles.localNote}>Availability is entered by you and stays saved until you change it.</p>
+      <p className="ffb-method">Availability is entered by you and stays saved until you change it.</p>
     </div>
   );
 
   return (
-    <section id="my-team" aria-labelledby="my-team-title" className={styles.workspace}>
-      <header className={styles.header}>
-        <div>
-          <FantasySectionHeading id="my-team-title">My team</FantasySectionHeading>
-          <p className={styles.description}>Your saved roster, weekly lineup, and waiver decisions.</p>
-        </div>
-        <div className={styles.week}><span>Week</span><span>{snapshot.week}</span><span>{snapshot.season}</span></div>
-      </header>
-      <div className={styles.context}>
-        <span>{team.leagueSize} teams</span><span>{FANTASY_SCORING_LABELS[scoring]}</span><span>{team.players.length} rostered</span>
-        <span>{available.length} marked available</span>
+    <section id="my-team" aria-labelledby="my-team-title" className="ffb-wk-team">
+      <div className="ffb-sechead ffb-sechead-lg">
+        <FantasySectionHeading id="my-team-title">My team</FantasySectionHeading>
+        <p className="ffb-sechead-note">Week {snapshot.week} · {FANTASY_SCORING_LABELS[scoring]} · {team.leagueSize} teams · {team.players.length} rostered · {available.length} marked available</p>
       </div>
-      <div className={styles.viewNav} role="group" aria-label="My team views">
+      <p ref={noticeRef} tabIndex={-1} aria-live="polite" className={notice ? "ffb-notice ffb-wk-team-notice" : "sr-only"}>{notice}</p>
+      <div className="ffb-tabs ffb-wk-tabs" role="group" aria-label="My team views">
         {([
           ["lineup", "Weekly lineup"], ["roster", "Roster"], ["settings", "League settings"],
         ] as const).map(([value, label]) => <button key={value} type="button" aria-pressed={activeView === value}
-          className={styles.viewButton} onClick={() => { setSelectedView(value); setNotice(""); }}>{label}</button>)}
+          className="ffb-tab" onClick={() => { setSelectedView(value); setNotice(""); }}>{label}</button>)}
       </div>
-      <p aria-live="polite" className={notice ? styles.notice : "sr-only"}>{notice}</p>
 
-      {activeView === "settings" && <div className={styles.settings}>
-        <div>
-          <h3 className={styles.subheading}>League settings</h3>
-          <p className={styles.supporting}>Set the starting positions used to build your weekly lineup.</p>
-        </div>
-        <div>
-        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-2)" }}>
-          <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>League size
-            <select className={control} value={team.leagueSize} onChange={event => update(current => ({ ...current, leagueSize: Number(event.target.value) }))}>
-              {[8, 10, 12, 14, 16].map(size => <option key={size} value={size}>{size} teams</option>)}
-            </select>
-          </label>
-          <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Lineup preset
-            <select className={control} value={REDRAFT_LINEUP_PRESETS.find(preset => sameRedraftLineup(preset.lineup, team.lineup))?.id ?? "custom"}
-              onChange={event => { const preset = REDRAFT_LINEUP_PRESETS.find(item => item.id === event.target.value); if (preset) update(current => ({ ...current, lineup: { ...preset.lineup } })); }}>
-              <option value="custom" disabled>Custom lineup</option>
-              {REDRAFT_LINEUP_PRESETS.map(preset => <option key={preset.id} value={preset.id}>{preset.label}</option>)}
-            </select>
-          </label>
-        </div>
-        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-          {(["RB", "WR", "TE", "FLEX", "K", "DST"] as const).map(position => <label key={position} className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>{position} starters
-            <select className={control} value={team.lineup[position]} onChange={event => update(current => ({ ...current, lineup: { ...current.lineup, [position]: Number(event.target.value) } }))}>
-              {(position === "RB" ? [1, 2, 3] : position === "WR" ? [1, 2, 3, 4] : position === "TE" ? [1, 2] : position === "FLEX" ? [0, 1, 2, 3] : [0, 1]).map(count => <option key={count}>{count}</option>)}
-            </select>
-          </label>)}
-        </div>
-        <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>One starting QB. Flex accepts RB, WR, or TE. Weekly ranks cover QB, RB, WR, and TE.</p>
-
-        </div>
-      </div>}
-
-      {activeView === "roster" && <div className={styles.editor}>
-        <div className={styles.editorIntro}>
-          <h3 className={styles.subheading}>{team.players.length ? "Manage your roster" : "Start with your roster"}</h3>
-          <p className={styles.supporting}>Import picks from your draft tracker or search for players. Mark available players to compare a possible add and drop.</p>
-          <button type="button" className={styles.primaryButton} onClick={importDraft}>Import draft tracker roster <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
-          {team.players.length > 0 && <button type="button" className={styles.textButton} onClick={() => setSelectedView("lineup")}>View weekly lineup <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>}
-          <p className={styles.localNote}>Your roster stays saved as you add players.</p>
-        </div>
-        <div className={styles.playerEditor}>
-        <label className={styles.searchLabel}>Find a player to roster or mark available
-          <span className={styles.searchField}><Search size={20} aria-hidden="true" /><input type="search" className={`${control} w-full`} value={query} onChange={event => setQuery(event.target.value)} placeholder="Player, team, or position" /></span>
-        </label>
-        {query.trim() && <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
-        <ul className="divide-y divide-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-          {matches.map(player => <li key={player.id} className="flex flex-wrap items-center justify-between" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-            <span className="text-sm">{player.name} · {player.position} {player.team}</span>
-            {team.players.some(p => p.id === player.id) ? <span className="text-xs">On your roster</span> : <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-              <button type="button" className={button} onClick={() => addToRoster(player)} aria-label={`Roster ${player.name}`}>Roster</button>
-              <button type="button" className={team.availableIds.includes(player.id) ? styles.selectedButton : button} aria-pressed={team.availableIds.includes(player.id)} aria-label={`Available in my league: ${player.name}`}
-                onClick={() => update(current => ({ ...current, availableIds: current.availableIds.includes(player.id) ? current.availableIds.filter(id => id !== player.id) : [...current.availableIds, player.id] }))}>
-                {team.availableIds.includes(player.id) ? "Marked available" : "Mark available"}
-              </button>
-            </div>}
-          </li>)}
-        </ul>
-        <details style={{ marginTop: "var(--c97-sp-1)" }}>
-          <summary className="min-h-touch cursor-pointer text-sm" style={{ paddingBlock: "var(--c97-sp-1)" }}>Add a player missing from the weekly board</summary>
-          <form className="flex flex-wrap items-end" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }} onSubmit={event => {
-            event.preventDefault();
-            const name = manualName.trim();
-            if (!name) return;
-            const known = players.find(player => player.position === manualPosition && player.name.toLowerCase() === name.toLowerCase());
-            addToRoster(known ?? { id: `manual-${manualPosition}-${name.toLowerCase()}`.slice(0, 100), name, team: "", position: manualPosition });
-            setManualName("");
-          }}>
-            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Player name<input required maxLength={80} className={`${control} w-full`} value={manualName} onChange={event => setManualName(event.target.value)} /></label>
-            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Position<select className={control} value={manualPosition} onChange={event => setManualPosition(event.target.value as MyTeamPlayer["position"])}>
-              {["QB", "RB", "WR", "TE", "K", "DST"].map(position => <option key={position}>{position}</option>)}
-            </select></label>
-            <button className={button} type="submit">Add unranked player</button>
-          </form>
-          <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
-        </details>
-
-        <h3 className={styles.subheading}>Saved roster</h3>
-        {team.players.length === 0 && <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>Search above or import your redraft roster to get started.</p>}
-        <ul className="divide-y divide-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-          {team.players.map(player => <li key={player.id} className={styles.rosterRow}>
-            <span><span className={styles.playerName}>{player.name}</span><span className={styles.playerMeta}>{player.position} {player.team}{!weekly.has(player.id) ? " · No weekly rank" : ""}</span></span>
-            <button className={styles.textButton} type="button" aria-label={`Remove ${player.name}`} onClick={() => {
-              update(current => ({ ...current, players: current.players.filter(p => p.id !== player.id) }));
-              setNotice(`${player.name} removed from your saved roster.`);
-            }}>Remove</button>
-          </li>)}
-        </ul>
-
-        </div>
-      </div>}
-
-      {activeView === "lineup" && (team.players.length === 0 ? <div className={styles.emptyLineup}>
-        <h3 className={styles.subheading}>Add your players to see a weekly lineup</h3>
-        <p className={styles.supporting}>The lineup uses your league settings and the weekly consensus board.</p>
-        <button type="button" className={styles.primaryButton} onClick={() => setSelectedView("roster")}>Build my roster <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
-      </div> : <div className={`${styles.decisions} ${lead === "waivers" ? styles.targetsFirst : ""}`}>
-        {lead === "waivers" && comparisonBlock}
-        <div className={styles.lineup}>
-          <div className={styles.lineupHeading}>
-            <h3 className={styles.subheading}>Weekly lineup by consensus</h3>
-            {!stale && <span className={styles.coverage}>{lineup.filter(slot => slot.player).length} ranked {lineup.filter(slot => slot.player).length === 1 ? "starter" : "starters"}</span>}
+      {activeView === "settings" && <div className="ffb-wk-cols">
+        <div className="ffb-wk-block ffb-wk-block-wide">
+          <div className="ffb-sechead"><h3 className="ffb-h3">League settings</h3></div>
+          <p className="ffb-copy">Set the starting positions used to build your weekly lineup.</p>
+          <div className="ffb-wk-fields">
+            <label className="ffb-field"><span className="ffb-field-label">League size</span>
+              <select className="ffb-select" value={team.leagueSize} onChange={event => update(current => ({ ...current, leagueSize: Number(event.target.value) }))}>
+                {[8, 10, 12, 14, 16].map(size => <option key={size} value={size}>{size} teams</option>)}
+              </select>
+            </label>
+            <label className="ffb-field"><span className="ffb-field-label">Lineup preset</span>
+              <select className="ffb-select" value={REDRAFT_LINEUP_PRESETS.find(preset => sameRedraftLineup(preset.lineup, team.lineup))?.id ?? "custom"}
+                onChange={event => { const preset = REDRAFT_LINEUP_PRESETS.find(item => item.id === event.target.value); if (preset) update(current => ({ ...current, lineup: { ...preset.lineup } })); }}>
+                <option value="custom" disabled>Custom lineup</option>
+                {REDRAFT_LINEUP_PRESETS.map(preset => <option key={preset.id} value={preset.id}>{preset.label}</option>)}
+              </select>
+            </label>
           </div>
-          {stale ? <p className={styles.notice}>Weekly data is stale. Lineup and add/drop recommendations are paused until it refreshes.</p> : <>
-            <div className={styles.lineupLabels} aria-hidden="true"><span>Slot</span><span>Player</span><span>Rank</span></div>
-            <ul className={styles.lineupList}>
-              {lineup.map(slot => <li key={slot.slot} className={styles.lineupRow}>
-                <span className={styles.slot}>{slot.slot}</span>
-                <span className={styles.playerCell}>
-                  <span className={slot.player ? styles.playerName : styles.vacant}>{slot.player?.name ?? (/^(K|DST) /.test(slot.slot) ? "Weekly rankings unavailable" : "No ranked player")}</span>
-                  {slot.player && <span className={styles.playerMeta}>{slot.player.position} · {slot.player.team}{weekly.get(slot.player.id)?.opponent ? ` · ${weekly.get(slot.player.id)?.opponent}` : ""}</span>}
-                </span>
-                <span className={styles.rank}>{slot.rank !== null ? <><span>#{slot.rank}</span><small>{slot.player?.position === "QB" ? "QB" : "Flex"}</small></> : <span className={styles.vacant}>N/A</span>}</span>
-              </li>)}
-            </ul>
-          </>}
-          {missing.length > 0 && <p className={styles.supporting}>Missing weekly ranks for {missing.map(player => player.name).join(", ")}. A missing rank does not mean a player is injured or on bye. Lineup coverage is incomplete.</p>}
-          {byePlayers.length > 0 && <p className={styles.supporting}>Upcoming byes from your imported draft roster: {byePlayers.map(player => `${player.name} (Week ${player.byeWeek})`).join(", ")}. Bye coverage is limited to imported players with a saved bye week.</p>}
-          <p className={styles.localNote}>Check injuries and kickoff status in your league before setting a lineup. These inputs contain no live injury feed.</p>
-          <details className={styles.method}>
+          <div className="ffb-wk-fields">
+            {(["RB", "WR", "TE", "FLEX", "K", "DST"] as const).map(position => <label key={position} className="ffb-field"><span className="ffb-field-label">{position} starters</span>
+              <select className="ffb-select" value={team.lineup[position]} onChange={event => update(current => ({ ...current, lineup: { ...current.lineup, [position]: Number(event.target.value) } }))}>
+                {(position === "RB" ? [1, 2, 3] : position === "WR" ? [1, 2, 3, 4] : position === "TE" ? [1, 2] : position === "FLEX" ? [0, 1, 2, 3] : [0, 1]).map(count => <option key={count}>{count}</option>)}
+              </select>
+            </label>)}
+          </div>
+          <p className="ffb-method">One starting QB. Flex accepts RB, WR, or TE. Weekly ranks cover QB, RB, WR, and TE.</p>
+        </div>
+      </div>}
+
+      {activeView === "roster" && <div className="ffb-wk-cols">
+        <div className="ffb-wk-block">
+          <div className="ffb-sechead"><h3 className="ffb-h3">{team.players.length ? "Manage your roster" : "Start with your roster"}</h3></div>
+          <p className="ffb-copy">Import picks from your draft tracker or search for players. Mark available players to compare a possible add and drop.</p>
+          <div className="ffb-cluster ffb-wk-actions">
+            <button type="button" className="ffb-btn ffb-btn-primary" onClick={importDraft}>Import draft tracker roster</button>
+            {team.players.length > 0 && <button type="button" className="ffb-btn ffb-btn-quiet" onClick={() => setSelectedView("lineup")}>View weekly lineup</button>}
+          </div>
+          <label className="ffb-field"><span className="ffb-field-label">Find a player to roster or mark available</span>
+            <span className="ffb-search">
+              <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" /><path d="M12.8 12.8L17 17" /></svg>
+              <input ref={searchRef} type="search" className="ffb-search-input" value={query} onChange={event => setQuery(event.target.value)} placeholder="Player, team, or position" />
+            </span>
+          </label>
+          {query.trim() && <p className="ffb-method">{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
+          {matches.length > 0 && <ul className="ffb-wk-entries">
+            {matches.map(player => <li key={player.id} className="ffb-wk-entry">
+              <TeamPlayer player={player} />
+              {team.players.some(p => p.id === player.id) ? <span className="ffb-wk-entry-note">On your roster</span> : <div className="ffb-cluster ffb-wk-actions">
+                <button type="button" className="ffb-btn" aria-label={`Roster ${player.name}`} onClick={() => {
+                  // The button is gone once he is rostered, so the search field takes focus with its text selected, ready for the next name.
+                  flushSync(() => addToRoster(player));
+                  searchRef.current?.focus();
+                  searchRef.current?.select();
+                }}>Roster</button>
+                <button type="button" className="ffb-btn ffb-btn-toggle" aria-pressed={team.availableIds.includes(player.id)} aria-label={`Available in my league: ${player.name}`}
+                  onClick={() => update(current => ({ ...current, availableIds: current.availableIds.includes(player.id) ? current.availableIds.filter(id => id !== player.id) : [...current.availableIds, player.id] }))}>
+                  {team.availableIds.includes(player.id) ? "Marked available" : "Mark available"}
+                </button>
+              </div>}
+            </li>)}
+          </ul>}
+          <details className="ffb-details">
+            <summary>Add a player missing from the weekly board</summary>
+            <div className="ffb-details-body ffb-stack ffb-stack-tight">
+              <form className="ffb-wk-manual" onSubmit={event => {
+                event.preventDefault();
+                const name = manualName.trim();
+                if (!name) return;
+                const known = players.find(player => player.position === manualPosition && player.name.toLowerCase() === name.toLowerCase());
+                addToRoster(known ?? { id: `manual-${manualPosition}-${name.toLowerCase()}`.slice(0, 100), name, team: "", position: manualPosition });
+                setManualName("");
+              }}>
+                <label className="ffb-field"><span className="ffb-field-label">Player name</span><input required maxLength={80} placeholder="First and last name" className="ffb-input" value={manualName} onChange={event => setManualName(event.target.value)} /></label>
+                <label className="ffb-field"><span className="ffb-field-label">Position</span><select className="ffb-select" value={manualPosition} onChange={event => setManualPosition(event.target.value as MyTeamPlayer["position"])}>
+                  {["QB", "RB", "WR", "TE", "K", "DST"].map(position => <option key={position}>{position}</option>)}
+                </select></label>
+                <button className="ffb-btn ffb-btn-block" type="submit">Add unranked player</button>
+              </form>
+              <p className="ffb-method">Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
+            </div>
+          </details>
+          {persistenceStatus !== "memory-only" && <p className="ffb-method">Your roster stays saved as you add players.</p>}
+        </div>
+
+        <div className="ffb-wk-block">
+          <div className="ffb-sechead"><h3 className="ffb-h3">Saved roster</h3></div>
+          {team.players.length === 0 ? <p className="ffb-copy">Search or import your redraft roster to get started.</p> : <ul ref={rosterRef} className="ffb-wk-entries">
+            {team.players.map(player => <li key={player.id} className="ffb-wk-entry">
+              <TeamPlayer player={player} />
+              {!weekly.has(player.id) && <span className="ffb-wk-entry-note">No weekly rank</span>}
+              <button className="ffb-btn ffb-btn-quiet" type="button" aria-label={`Remove ${player.name}`} onClick={() => removeFromRoster(player)}>Remove</button>
+            </li>)}
+          </ul>}
+        </div>
+      </div>}
+
+      {activeView === "lineup" && (team.players.length === 0 ? <div className="ffb-wk-cols">
+        <div className="ffb-wk-block ffb-wk-block-wide">
+          <div className="ffb-sechead"><h3 className="ffb-h3">Add your players to see a weekly lineup</h3></div>
+          <p className="ffb-copy">The lineup uses your league settings and the weekly consensus board.</p>
+          <div className="ffb-cluster ffb-wk-actions"><button type="button" className="ffb-btn ffb-btn-primary" onClick={() => setSelectedView("roster")}>Build my roster</button></div>
+        </div>
+      </div> : <div className="ffb-wk-cols">
+        {lead === "waivers" && comparisonBlock}
+        <div className="ffb-wk-block">
+          <div className="ffb-sechead">
+            <h3 className="ffb-h3">Weekly lineup by consensus</h3>
+            {!stale && <p className="ffb-sechead-note">{rankedStarters} ranked {rankedStarters === 1 ? "starter" : "starters"}</p>}
+          </div>
+          {stale ? <p className="ffb-notice ffb-notice-warn">Weekly data is stale. Lineup and add/drop recommendations are paused until it refreshes.</p> : <ul className="ffb-slots ffb-slots-list">
+            {lineup.map(slot => {
+              const weeklyPlayer = slot.player ? weekly.get(slot.player.id) : undefined;
+              // An open slot is keyed with the position that fits it, and a filled one is the player's own sticker.
+              const tone = positionClass(slot.player?.position ?? slot.slot.split(" ")[0]);
+              return <li key={slot.slot} className={`ffb-slot ${tone}${slot.player ? " ffb-is-filled" : ""}`}>
+                <span className="ffb-slot-code">{slot.slot}</span>
+                <span className="ffb-slot-name">{slot.player?.name ?? (/^(K|DST) /.test(slot.slot) ? "Weekly rankings unavailable" : "No ranked player")}</span>
+                {slot.player && <span className="ffb-slot-meta">{slot.player.position} · {slot.player.team}{weeklyPlayer?.opponent ? ` · ${weeklyPlayer.opponent}` : ""}</span>}
+                {slot.rank !== null && <span className="ffb-slot-value">#{slot.rank}{" "}<small>{slot.player?.position === "QB" ? "QB" : "Flex"}</small></span>}
+              </li>;
+            })}
+          </ul>}
+          {missing.length > 0 && <p className="ffb-method">Missing weekly ranks for {missing.map(player => player.name).join(", ")}. A missing rank does not mean a player is injured or on bye. Lineup coverage is incomplete.</p>}
+          {byePlayers.length > 0 && <p className="ffb-method">Upcoming byes from your imported draft roster: {byePlayers.map(player => `${player.name} (Week ${player.byeWeek})`).join(", ")}. Bye coverage is limited to imported players with a saved bye week.</p>}
+          <p className="ffb-method">Check injuries and kickoff status in your league before setting a lineup. These inputs contain no live injury feed.</p>
+          <details className="ffb-details">
             <summary>How this lineup is selected</summary>
-            <p className={styles.supporting}>Required positions fill first, followed by flex. QB and flex ranks use separate boards. League size is saved for context and does not change these ranks.</p>
+            <div className="ffb-details-body">
+              <p className="ffb-method">Required positions fill first, followed by flex. QB and flex ranks use separate boards. League size is saved for context and does not change these ranks.</p>
+            </div>
           </details>
         </div>
         {lead !== "waivers" && comparisonBlock}
       </div>)}
-      <footer className={styles.footer}>{persistenceStatus === "memory-only" ? "Browser storage is unavailable. Changes last only in this tab." : "Saved in this browser. Your league roster changes only when you update it with your league provider."}</footer>
+      {persistenceStatus === "memory-only"
+        ? <p className="ffb-notice ffb-notice-warn">Browser storage is unavailable. Changes last only in this tab.</p>
+        : <p className="ffb-method ffb-method-ruled ffb-wk-foot">Saved in this browser. Your league roster changes only when you update it with your league provider.</p>}
     </section>
   );
 }

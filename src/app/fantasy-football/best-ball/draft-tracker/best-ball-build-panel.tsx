@@ -1,132 +1,121 @@
+import type { CSSProperties } from "react";
+import { positionClass } from "@/components/fantasy/positionClass";
 import type {
   BestBallContestPreset,
   BestBallRosterAnalysis,
 } from "@/lib/bestBall/types";
 import type { BestBallDraftPick } from "./best-ball-draft-state";
-import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
-import type { DraftValueReport } from "@/lib/fantasyTeamValue";
 
 const POSITIONS = ["QB", "RB", "WR", "TE"] as const;
 
-const PANEL_TILE_STYLE = {
-  borderColor: "var(--c97-rule)",
-  background: "var(--c97-field)",
-} as const;
-
-function targetTone(drafted: number, minimum: number, maximum: number): string {
-  if (drafted > maximum) return "var(--c97-negative)";
-  if (drafted >= minimum) return "var(--c97-positive)";
-  return "var(--c97-ink-2)";
+/**
+ * Where a position stands against its range, as a word and a status ink. The
+ * count beside it never carries the reading by colour alone.
+ *
+ * Late in a draft the model narrows a range onto what the roster already
+ * holds, and its reason says the roster sits outside the usual range. "In
+ * range" there would contradict the sentence beside it, so a range that has
+ * closed on the count gets no word at all (null).
+ */
+export function targetStatus(
+  drafted: number,
+  minimum: number,
+  maximum: number
+): { word: string; tone: string } | null {
+  if (minimum === maximum && drafted === minimum) return null;
+  if (drafted > maximum) return { word: `over by ${drafted - maximum}`, tone: "ffb-bad" };
+  if (drafted >= minimum) return { word: "in range", tone: "ffb-good" };
+  return { word: `${minimum - drafted} short`, tone: "ffb-muted" };
 }
 
+/**
+ * My build: the count, then roster targets, stacks, byes, Week 17 pairs, and
+ * the roster, each a ruled list. Best ball has no lineup slots, so this is the
+ * room's own block and not the shared roster. It renders in the rail and in
+ * the phone's build sheet, under a different heading id in each.
+ */
 export function BestBallBuildPanel({
   analysis,
   preset,
   userPicks,
   currentPick,
-  nextUserPick,
   totalPicks,
-  draftValue,
   week17Available,
-  draftValueUnavailableReason,
-  calculatorValue,
-  onCalculatorChange,
   headingId,
 }: {
   analysis: BestBallRosterAnalysis;
   preset: BestBallContestPreset;
   userPicks: readonly BestBallDraftPick[];
   currentPick: number;
-  nextUserPick: number | null;
   totalPicks: number;
-  draftValue: DraftValueReport | null;
   week17Available: boolean;
-  draftValueUnavailableReason?: string | null;
-  calculatorValue: ExpectedReturnFormState;
-  onCalculatorChange: (value: ExpectedReturnFormState) => void;
   headingId: string;
 }) {
   const completion = Math.min(100, Math.round((currentPick - 1) / totalPicks * 100));
   const usesWeek17Correlation =
     preset.strategyProfileId === "standard-tournament";
+  // A reason that already prints beside its position does not print again under the four.
+  const otherReasons = analysis.targets.reasons.filter(
+    (reason) => !POSITIONS.some((position) => analysis.targets.targets[position].reason === reason)
+  );
 
   return (
-    <div className="grid" style={{ gap: "var(--c97-sp-2)" }}>
+    <div className="ffb-br-build">
       <div>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>My build</p>
-        <h2 id={headingId} className="c97-serif c97-h3">
-          {userPicks.length} of {preset.rosterSize} players
-        </h2>
-        <p className="text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-          {nextUserPick
-            ? `Your next pick is ${nextUserPick}. The room is ${completion}% complete.`
-            : "Your roster is complete."}
-        </p>
-      </div>
-
-      <div>
-        <div className="h-2 overflow-hidden" style={{ background: "var(--c97-rule)" }}>
-          <div
-            className="h-full"
-            style={{ width: `${completion}%`, background: "var(--c97-accent)" }}
-            role="progressbar"
-            aria-label="Draft room completion"
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-valuenow={completion}
-          />
+        {/* The heading is the count, which is the name the build sheet's dialog takes. */}
+        <div className="ffb-sechead">
+          <span className="ffb-h3">My build</span>{" "}
+          <h2 id={headingId} className="ffb-sechead-note">
+            {userPicks.length} of {preset.rosterSize} players
+          </h2>
         </div>
-      </div>
-
-      <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
-        <DraftValuePanel
-          report={draftValue}
-          unavailableReason={draftValueUnavailableReason}
-          headingId={`${headingId}-draft-outlook`}
-          economics={preset.economics}
-          economicsContestName={preset.name}
-          economicsSourceUrl={preset.economics?.sourceUrl}
-          defaultEntryCost={preset.economics?.entryFee}
-          calculatorValue={calculatorValue}
-          onCalculatorChange={onCalculatorChange}
+        <p className="ffb-fine">The room is {completion}% complete.</p>
+        <span
+          className="ffb-meter ffb-br-progress"
+          style={{ "--ffb-value": `${completion}%` } as CSSProperties}
+          role="progressbar"
+          aria-label="Draft room completion"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={completion}
         />
       </div>
 
       <section aria-labelledby={`${headingId}-targets`}>
-        <h3 id={`${headingId}-targets`} className="text-sm font-semibold">
-          Roster targets that update
-        </h3>
-        <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+        <div className="ffb-sechead">
+          <h3 id={`${headingId}-targets`} className="ffb-h3">
+            Roster targets that update
+          </h3>
+        </div>
+        <dl className="ffb-facts ffb-facts-sm">
           {POSITIONS.map((position) => {
             const target = analysis.targets.targets[position];
+            const status = targetStatus(target.drafted, target.minimum, target.maximum);
             return (
-              <div
-                key={position}
-                className="border"
-                style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}
-              >
-                <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                  <span className="text-xs font-semibold">{position}</span>
-                  <span
-                    className="text-sm font-semibold tabular-nums"
-                    style={{ color: targetTone(target.drafted, target.minimum, target.maximum) }}
-                  >
-                    {target.drafted} / {target.recommended}
-                  </span>
-                </div>
-                <p className="text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
+              <div key={position} className="ffb-fact">
+                <dt>
+                  <span className={`ffb-chip ffb-chip-sm ${positionClass(position)}`}>{position}</span>
+                </dt>
+                <dd>
+                  {target.drafted} / {target.recommended}
+                </dd>
+                <dd className="ffb-fact-note">
                   Range {target.minimum} to {target.maximum}
-                </p>
-                <p className="text-2xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+                  {status ? (
+                    <>
+                      , <span className={status.tone}>{status.word}</span>
+                    </>
+                  ) : null}
+                  .{" "}
                   {target.reason}
-                </p>
+                </dd>
               </div>
             );
           })}
-        </div>
-        {analysis.targets.reasons.length > 0 ? (
-          <ul className="grid text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-            {analysis.targets.reasons.map((reason) => (
+        </dl>
+        {otherReasons.length > 0 ? (
+          <ul className="ffb-br-list ffb-fact-foot">
+            {otherReasons.map((reason) => (
               <li key={reason}>{reason}</li>
             ))}
           </ul>
@@ -134,92 +123,79 @@ export function BestBallBuildPanel({
       </section>
 
       <section aria-labelledby={`${headingId}-connections`}>
-        <h3 id={`${headingId}-connections`} className="text-sm font-semibold">
-          Stack connections
-        </h3>
+        <div className="ffb-sechead">
+          <h3 id={`${headingId}-connections`} className="ffb-h3">
+            Stack connections
+          </h3>
+        </div>
         {analysis.stacks.length > 0 ? (
-          <div className="grid" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+          <ul className="ffb-br-list">
             {analysis.stacks.slice(0, 4).map((stack) => (
-              <div
-                key={stack.team}
-                className="border text-xs leading-5"
-                style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}
-              >
-                <span className="font-semibold">{stack.team}</span>{" "}
-                <span style={{ color: "var(--c97-ink-2)" }}>
+              <li key={stack.team}>
+                <span className="ffb-label">{stack.team}</span>{" "}
+                <span className="ffb-muted">
                   {stack.quarterbacks.map((player) => player.name).join(", ")} with{" "}
                   {stack.passCatchers.map((player) => player.name).join(", ")}
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : (
-          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+          <p className="ffb-fine">
             A quarterback paired with one of his pass catchers will appear here.
           </p>
         )}
       </section>
 
       <section aria-labelledby={`${headingId}-coverage`}>
-        <h3 id={`${headingId}-coverage`} className="text-sm font-semibold">
-          Bye week coverage
-        </h3>
+        <div className="ffb-sechead">
+          <h3 id={`${headingId}-coverage`} className="ffb-h3">
+            Bye week coverage
+          </h3>
+        </div>
         {analysis.byeConflicts.length > 0 ? (
-          <div className="grid" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+          <ul className="ffb-br-list">
             {analysis.byeConflicts.slice(0, 3).map((conflict) => (
-              <div
-                key={conflict.byeWeek}
-                className="border text-xs leading-5"
-                style={{
-                  paddingInline: "var(--c97-sp-1)",
-                  paddingBlock: "var(--c97-sp-1)",
-                  ...PANEL_TILE_STYLE,
-                  borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
-                }}
-              >
-                <span className="font-semibold">Week {conflict.byeWeek}</span>{" "}
-                <span style={{ color: "var(--c97-ink-2)" }}>
+              <li key={conflict.byeWeek}>
+                <span className="ffb-label ffb-warn">Week {conflict.byeWeek} overlap</span>{" "}
+                <span className="ffb-muted">
                   {conflict.count} players, including{" "}
                   {conflict.players.slice(0, 3).map((player) => player.name).join(", ")}
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : (
-          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-            No bye overlap is showing yet.
-          </p>
+          <p className="ffb-fine">No bye overlap is showing yet.</p>
         )}
       </section>
 
       <section aria-labelledby={`${headingId}-week17`}>
-        <h3 id={`${headingId}-week17`} className="text-sm font-semibold">
-          Week 17 correlation
-        </h3>
+        <div className="ffb-sechead">
+          <h3 id={`${headingId}-week17`} className="ffb-h3">
+            Week 17 correlation
+          </h3>
+        </div>
         {usesWeek17Correlation && !week17Available ? (
-          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+          <p className="ffb-fine">
             Week 17 guidance is paused until the published schedule refreshes.
           </p>
         ) : usesWeek17Correlation && analysis.week17Pairs.length > 0 ? (
-          <div className="grid" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+          <ul className="ffb-br-list">
             {analysis.week17Pairs.slice(0, 3).map((pair) => (
-              <div
-                key={pair.teams.join("-")}
-                className="border text-xs leading-5"
-                style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}
-              >
-                <span className="font-semibold">{pair.teams.join(" vs ")}</span>
-                <p style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
+              <li key={pair.teams.join("-")}>
+                <span className="ffb-label">{pair.teams.join(" vs ")}</span>{" "}
+                <span className="ffb-muted">
                   {pair.teams
                     .flatMap((team) => pair.playersByTeam[team] ?? [])
                     .map((player) => player.name)
                     .join(", ")}
-                </p>
-              </div>
+                </span>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : (
-          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+          <p className="ffb-fine">
             {usesWeek17Correlation
               ? "Use this as a close call tiebreaker after the main roster needs are covered."
               : "This contest profile does not add a separate Week 17 opponent adjustment."}
@@ -228,28 +204,27 @@ export function BestBallBuildPanel({
       </section>
 
       <section aria-labelledby={`${headingId}-roster`}>
-        <h3 id={`${headingId}-roster`} className="text-sm font-semibold">
-          Roster
-        </h3>
+        <div className="ffb-sechead">
+          <h3 id={`${headingId}-roster`} className="ffb-h3">
+            Roster
+          </h3>
+        </div>
         {userPicks.length > 0 ? (
-          <ol className="grid" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+          <ol className="ffb-br-list ffb-br-roster">
             {[...userPicks].reverse().map((pick) => (
-              <li
-                key={pick.pickNumber}
-                className="flex items-center justify-between border text-xs"
-                style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}
-              >
-                <span className="min-w-0 truncate font-semibold">{pick.player.name}</span>
-                <span className="shrink-0 tabular-nums" style={{ color: "var(--c97-ink-2)" }}>
-                  {pick.player.position} {pick.pickNumber}
+              <li key={pick.pickNumber}>
+                <span className={`ffb-chip ffb-chip-sm ${positionClass(pick.player.position)}`.trimEnd()}>
+                  {pick.player.position}
+                </span>
+                <span className="ffb-br-roster-name">{pick.player.name}</span>
+                <span className="ffb-muted">
+                  {pick.player.team} · Pick {pick.pickNumber}
                 </span>
               </li>
             ))}
           </ol>
         ) : (
-          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-            Your selections will appear here as you log the room.
-          </p>
+          <p className="ffb-fine">Your selections will appear here as you log the room.</p>
         )}
       </section>
     </div>

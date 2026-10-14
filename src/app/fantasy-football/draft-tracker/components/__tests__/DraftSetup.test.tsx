@@ -305,3 +305,27 @@ describe("DraftSetup", () => {
     expect(onStartDraft).not.toHaveBeenCalled();
   });
 });
+
+describe("DraftSetup preset note", () => {
+  it("says a preset lasts only in this tab when the browser is not saving", () => {
+    render(
+      <DraftSetup
+        settings={makeSettings()}
+        onSaveSettings={jest.fn()}
+        onStartDraft={jest.fn()}
+        rankingsStatus="ready"
+        rankingsError={null}
+        onRetryRankings={jest.fn()}
+        storageBlocked
+      />
+    );
+    fireEvent.click(screen.getByText("Show optional settings"));
+
+    expect(
+      screen.getByText(
+        "A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name. This browser is not saving, so a preset lasts only in this tab. Applying one fills the form and starts nothing."
+      )
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/on this device/)).not.toBeInTheDocument();
+  });
+});

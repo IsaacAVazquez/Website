@@ -1,0 +1,2684 @@
+/*
+ * Fantasy football kit, direction "Board".
+ *
+ * The physical draft board and its sticker labels. Position is the colour system, a pick is a
+ * solid sticker, lists are ruled rows on a cool board with no boxes, and highlighter yellow
+ * always means mine or now. The fantasy layout (src/app/fantasy-football/layout.tsx) imports
+ * this file and puts `.ffb-root` around all eight routes.
+ *
+ * How the cascade is set up, because it decides what wins:
+ *   1. Tokens, the Catalog 97 bridge, the three type roles, the frame exceptions, and the print
+ *      block are unlayered. catalog97.css is unlayered too, so these have to be to beat it.
+ *   2. Every component is in `@layer components`. A Tailwind utility on the same element wins,
+ *      and so does any unlayered rule in a page's own area sheet, whatever order the sheets
+ *      load in. A stylesheet stays loaded after in-app navigation, so every selector here
+ *      starts with a class this file owns.
+ *
+ * KIT.md (the build reference) documents each class with its markup.
+ */
+
+/* The three column minimums do not inherit, so a grid inside a grid keeps its own.
+   Each takes a length or a percentage (100% makes one column). */
+@property --ffb-col-min { syntax: "<length-percentage>"; inherits: false; initial-value: 280px; }
+@property --ffb-choice-min { syntax: "<length-percentage>"; inherits: false; initial-value: 132px; }
+@property --ffb-stat-min { syntax: "<length-percentage>"; inherits: false; initial-value: 88px; }
+
+/* ==========================================================================
+ * 1. Tokens
+ * `.ffb-scope` carries tokens only, for things rendered outside the root (a portalled tooltip).
+ * ======================================================================== */
+.ffb-root,
+.ffb-scope {
+  /* Surfaces */
+  --ffb-board: #f7f8f6;
+  --ffb-raised: #ffffff;
+  --ffb-sunk: #eceeea;
+  /* The surface a thing sits on: the board, or the raised surface inside an overlay. Sticky parts paint it. */
+  --ffb-surface: var(--ffb-board);
+  /* Lines. A rule divides rows, the grid line sits behind a plot, the edge outlines a control (3:1). */
+  --ffb-rule: #d5d9d3;
+  --ffb-grid: #e3e6e1;
+  --ffb-edge: #737d86;
+  /* Ink */
+  --ffb-ink: #15191c;
+  --ffb-muted: #566069;
+
+  /* Fills are the same in both themes and always carry --ffb-on-fill text. */
+  --ffb-on-fill: #15191c;
+  --ffb-hi: #ffe94a;
+  --ffb-hi-edge: var(--ffb-on-fill);
+  --ffb-qb: #ff6b81;
+  --ffb-rb: #2fd08a;
+  --ffb-wr: #5ab0ff;
+  --ffb-te: #ffa53d;
+  --ffb-k: #b79cff;
+  --ffb-dst: #b9c2ca;
+
+  /* Position ink, for a mark drawn on the board itself (the spread plot). */
+  --ffb-qb-ink: #c81e45;
+  --ffb-rb-ink: #0b7a4b;
+  --ffb-wr-ink: #1b5fc4;
+  --ffb-te-ink: #a85200;
+  --ffb-k-ink: #6a3bd0;
+  --ffb-dst-ink: #55606a;
+
+  /* Status ink, each at least 4.5:1 on the board, the raised, and the sunk surface. */
+  --ffb-good: #0a6b41;
+  --ffb-bad: #b4162f;
+  --ffb-warn: #8a4a00;
+
+  /* The scorebug is one solid ink bar in light. In dark it is the sunk surface between two ink rules. */
+  --ffb-bug: var(--ffb-ink);
+  --ffb-bug-ink: var(--ffb-board);
+  --ffb-bug-muted: #aab4bb;
+  --ffb-bug-rule: #39424a;
+  --ffb-bug-focus: var(--ffb-hi);
+
+  --ffb-scrim: rgb(21 25 28 / 0.46);
+
+  /* One rhythm, a 4px step. */
+  --ffb-s1: 4px;
+  --ffb-s2: 8px;
+  --ffb-s3: 12px;
+  --ffb-s4: 16px;
+  --ffb-s5: 24px;
+  --ffb-s6: 32px;
+  --ffb-s7: 48px;
+  --ffb-row: 36px;
+  --ffb-control: 36px;
+  /* The one radius, for sticker-shaped objects only. */
+  --ffb-radius: 3px;
+  /* The page gutter, for a band that runs to the screen edge on a phone. */
+  --ffb-bleed: var(--c97-gutter, 28px);
+
+  --ffb-font: var(--font-ffb-archivo, "Archivo"), "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html.dark .ffb-root,
+html.dark .ffb-scope {
+  --ffb-board: #0f1316;
+  --ffb-raised: #161b1f;
+  --ffb-sunk: #0a0d0f;
+  --ffb-rule: #283037;
+  --ffb-grid: #1d2429;
+  --ffb-edge: #6c7882;
+  --ffb-ink: #eef1f0;
+  --ffb-muted: #9ba6ae;
+  --ffb-hi-edge: var(--ffb-hi);
+  --ffb-qb-ink: var(--ffb-qb);
+  --ffb-rb-ink: var(--ffb-rb);
+  --ffb-wr-ink: var(--ffb-wr);
+  --ffb-te-ink: var(--ffb-te);
+  --ffb-k-ink: var(--ffb-k);
+  --ffb-dst-ink: var(--ffb-dst);
+  --ffb-good: #46d896;
+  --ffb-bad: #ff8090;
+  --ffb-warn: #ffb84d;
+  --ffb-bug: var(--ffb-sunk);
+  --ffb-bug-ink: var(--ffb-ink);
+  --ffb-bug-muted: var(--ffb-muted);
+  --ffb-bug-rule: var(--ffb-rule);
+  --ffb-bug-focus: var(--ffb-ink);
+  --ffb-scrim: rgb(0 0 0 / 0.62);
+}
+
+.ffb-pos-qb { --ffb-pos: var(--ffb-qb); --ffb-pos-ink: var(--ffb-qb-ink); }
+.ffb-pos-rb { --ffb-pos: var(--ffb-rb); --ffb-pos-ink: var(--ffb-rb-ink); }
+.ffb-pos-wr { --ffb-pos: var(--ffb-wr); --ffb-pos-ink: var(--ffb-wr-ink); }
+.ffb-pos-te { --ffb-pos: var(--ffb-te); --ffb-pos-ink: var(--ffb-te-ink); }
+.ffb-pos-k { --ffb-pos: var(--ffb-k); --ffb-pos-ink: var(--ffb-k-ink); }
+.ffb-pos-dst { --ffb-pos: var(--ffb-dst); --ffb-pos-ink: var(--ffb-dst-ink); }
+
+/* ==========================================================================
+ * 2. The bridge
+ * No fantasy markup writes a Catalog 97 class or colour any more. The shared parts the pages
+ * still render inside the root do read the --c97-* tokens, which are MetricTooltip (its "?" mark
+ * and its bubble) and the frame's own focus ring. So inside the root, and on the paper wrapper
+ * a tooltip portals with, those tokens resolve to kit values.
+ * The id inside :is() matches nothing. It lifts the rule over catalog97.css's
+ * `.dark .c97-page [data-c97-surface="paper"]`, which sets the same properties.
+ * --c97-sp-* and --c97-z-* are left alone.
+ * ======================================================================== */
+.ffb-root,
+:is(.ffb-scope, #ffb-bridge) {
+  --c97-surface: var(--ffb-board);
+  --c97-ink: var(--ffb-ink);
+  --c97-ink-2: var(--ffb-muted);
+  --c97-label: var(--ffb-muted);
+  --c97-action: var(--ffb-ink);
+  /* Accent was text colour in about ten roles, and highlighter cannot be text. It is also the focus ring. */
+  --c97-accent: var(--ffb-ink);
+  --c97-accent-soft: var(--ffb-sunk);
+  --c97-rule: var(--ffb-rule);
+  --c97-field: var(--ffb-raised);
+  --c97-panel: var(--ffb-sunk);
+  --c97-overlay: color-mix(in srgb, var(--ffb-ink) 8%, transparent);
+  --c97-overprint: transparent;
+  --c97-scrim: var(--ffb-scrim);
+  --c97-positive: var(--ffb-good);
+  --c97-negative: var(--ffb-bad);
+  --c97-warning: var(--ffb-warn);
+  --c97-chart-up: var(--ffb-good);
+  --c97-chart-down: var(--ffb-bad);
+  --c97-font-body: var(--ffb-font);
+  --c97-font-display: var(--ffb-font);
+  --c97-font-poster: var(--ffb-font);
+  --c97-font-numeral: var(--ffb-font);
+  --c97-font-mono: var(--ffb-font);
+  /* Tailwind's font-mono and font-sans read these two. */
+  --font-fragment-mono: var(--ffb-font);
+  --font-instrument-sans: var(--ffb-font);
+}
+
+/* ==========================================================================
+ * 3. The root
+ * ======================================================================== */
+.ffb-root {
+  padding-block: var(--ffb-s3) 56px;
+  background: var(--ffb-board);
+  color: var(--ffb-ink);
+  font-family: var(--ffb-font);
+  font-size: 15px;
+  font-weight: 400;
+  font-stretch: 100%;
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+/* Selected text is a highlighter pass. The class is doubled to outrank `.c97-page ::selection`. */
+.ffb-root.ffb-root ::selection {
+  background-color: var(--ffb-hi);
+  color: var(--ffb-on-fill);
+}
+
+/* ==========================================================================
+ * 4. Type roles
+ * Unlayered, so the weight, width, case, and tracking of a kit class hold against a utility.
+ * Sizes are set with each component, in the layer.
+ * ======================================================================== */
+/* Label type: 700 at 80% width, capitals, lightly tracked, 10 to 12.5px. */
+.ffb-root :is(.ffb-label, .ffb-h3, .ffb-bar-link, .ffb-tab, .ffb-seg-btn, .ffb-btn, .ffb-toggle, .ffb-field-label, .ffb-choice-title, .ffb-colhead, .ffb-tier-count, .ffb-c-team, .ffb-more, .ffb-bug-label, .ffb-bug-btn, .ffb-sticker-meta, .ffb-slot-meta, .ffb-grid-slot, .ffb-grid-round, .ffb-tally-label, .ffb-turn-note, .ffb-badge, .ffb-best, .ffb-slot-value small),
+.ffb-root :is(.ffb-table thead th, .ffb-table-compare tbody th, .ffb-stat dt, .ffb-pairs dt) {
+  font-weight: 700;
+  font-stretch: 80%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+/* Sticker type: 800 at 72% width, capitals. */
+.ffb-root :is(.ffb-title, .ffb-h2, .ffb-bar-name, .ffb-tier-tab, .ffb-chip, .ffb-sticker-name, .ffb-slot-code, .ffb-is-filled .ffb-slot-name, .ffb-log, .ffb-turn-tab, .ffb-cell.ffb-is-made, .ffb-verdict-title, .ffb-empty-title, .ffb-countbadge) {
+  font-weight: 800;
+  font-stretch: 72%;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+/* A heavy number: 800 at 76 to 80% width, not capitals. */
+.ffb-root :is(.ffb-heavy, .ffb-bug-value, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num, .ffb-strip-value, .ffb-slot-value) {
+  font-weight: 800;
+  font-stretch: 78%;
+  letter-spacing: 0;
+}
+/* The row name: 600 at normal width. */
+.ffb-root :is(.ffb-c-name, .ffb-h4, .ffb-fact dt, .ffb-score-label, .ffb-neighbor-name) {
+  font-weight: 600;
+  font-stretch: 100%;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ==========================================================================
+ * 5. Frame exceptions
+ * catalog97.css sets these on bare elements under `.c97-page`, outside any layer, so the
+ * layered kit cannot answer them. Each rule here undoes one for the kit classes it would break.
+ * ======================================================================== */
+/* `.c97-page button { min-width: 44px }` */
+.ffb-root :is(.ffb-seg-btn, .ffb-star, .ffb-iconbtn, .ffb-search-clear, .ffb-tab, .ffb-cell, .ffb-row-open, .ffb-btn-quiet, .ffb-scrim) {
+  min-width: 0;
+}
+/* The focus ring is 2px of --c97-accent at a 3px offset with no radius. Inside a scroller or a
+   ruled list an outset ring is clipped or lands on the neighbour, so these draw it inside. */
+.ffb-root :is(.ffb-bar-link, .ffb-tab, .ffb-seg-btn, .ffb-row-open, .ffb-cell, .ffb-neighbor, .ffb-sticker, .ffb-search-input, .ffb-affix .ffb-input, .ffb-details > summary):focus-visible {
+  outline-offset: -3px;
+}
+.ffb-root :is(.ffb-sticker, .ffb-slot, .ffb-cell, .ffb-chip, .ffb-star):focus-visible {
+  border-radius: var(--ffb-radius);
+}
+/* A ring drawn inside a filled control takes the colour that reads on the fill. */
+.ffb-root .ffb-seg-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]):focus-visible {
+  outline-color: var(--ffb-board);
+}
+.ffb-root .ffb-seg-btn[class*="ffb-pos-"]:not(.ffb-pos-flex):is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]):focus-visible,
+.ffb-root :is(.ffb-sticker, .ffb-cell.ffb-is-made, .ffb-cell.ffb-is-live, .ffb-cell.ffb-is-mine):focus-visible {
+  outline-color: var(--ffb-on-fill);
+}
+/* A plate radio hides its input, so the plate takes the ring. */
+.ffb-root .ffb-choice:has(input:focus-visible) {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 3px;
+}
+/* On the scorebug the ring is the highlighter (light) or ink (dark). On a toast, which is ink in both themes, it is the board colour. */
+.ffb-root .ffb-bug { --c97-accent: var(--ffb-bug-focus); }
+.ffb-root .ffb-toast { --c97-accent: var(--ffb-board); }
+/* The on-the-clock cell stands proud of the bar, so an outset ring would land on the board around
+   it (1.16:1 in light). It draws inside the cell in the ink that reads on the highlighter. */
+.ffb-root .ffb-bug-live:focus-visible { outline-color: var(--ffb-on-fill); outline-offset: -4px; }
+
+/* The two phone helpers are unlayered, so they beat every component's own display and every
+   utility. Each only hides. Where it does not apply, the element keeps the display its own class
+   gives it. On paper they follow the page's width like the rest of the kit, so one half prints. */
+@media (min-width: 768px) {
+  .ffb-root .ffb-only-phone { display: none; }
+}
+@media (max-width: 767.98px) {
+  .ffb-root .ffb-not-phone { display: none; }
+}
+
+/* A search field takes the ring around the whole field. Drawn on the input it started after the
+   icon and crossed the first letter typed. The selector has no weight, so a page's own ring wins. */
+.ffb-root .ffb-search-input:focus-visible { outline: none; }
+:where(.ffb-root .ffb-search:has(.ffb-search-input:focus-visible)) {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 2px;
+}
+
+/* A help trigger (MetricTooltip) inside a kit label. A button does not inherit its case, and the
+   frame's 44px floor would centre a short label away from its column's edge. */
+.ffb-root [data-metric-trigger="text"] { min-width: 0; text-transform: inherit; }
+/* The "?" chip is a 16px mark inside a 44px target. The ring goes round the mark, so it does not
+   cover the end of the label beside it. */
+.ffb-root [data-metric-trigger="chip"]:focus-visible { outline: none; }
+.ffb-root [data-metric-trigger="chip"]:focus-visible > span { outline: 2px solid var(--c97-accent); outline-offset: 2px; }
+
+/* A required field with no placeholder is not an error before anyone types. The site marks every
+   empty required input that shows no placeholder, so the kit keeps its edge until the page sets aria-invalid. */
+.ffb-root :is(.ffb-input, .ffb-textarea):invalid:not(:focus):not([aria-invalid="true"]) { border-color: var(--ffb-edge); }
+
+/* A scrolling rail draws a thin scrollbar all the time, so a rail cut off at the foot of the
+   screen reads as "more below". A styled WebKit or Blink scrollbar is always drawn. Firefox
+   takes the standard properties and follows the system setting. */
+@supports selector(::-webkit-scrollbar) {
+  .ffb-root .ffb-rail-scroll { scrollbar-width: auto; }
+  /* The scrollbar keeps its 6px whether or not the rail overflows, so the rail does not change
+     width as a draft fills it. That room is taken from the page gutter at the rail's right, not
+     from the rail's content: the box runs 12px past the column, 6px of inset and 6px of scrollbar. */
+  @media (min-width: 1200px) {
+    /* WebKit reserves the gutter only once the rail overflows, so the track is always laid out. */
+    .ffb-root .ffb-rail-scroll { margin-inline-end: -12px; padding-inline-end: 6px; overflow-y: scroll; scrollbar-gutter: stable; }
+  }
+  .ffb-root .ffb-rail-scroll::-webkit-scrollbar { width: 6px; }
+  .ffb-root .ffb-rail-scroll::-webkit-scrollbar-track { background: transparent; }
+  .ffb-root .ffb-rail-scroll::-webkit-scrollbar-thumb { background: var(--ffb-edge); }
+}
+@supports not selector(::-webkit-scrollbar) {
+  .ffb-root .ffb-rail-scroll { scrollbar-width: thin; scrollbar-color: var(--ffb-edge) transparent; }
+}
+
+/* A four-character label ("WR10") needs 29px at the grid's own size. In a 14 or 16 team room a
+   cell is about 22px, so the label sets at 10px on the face's narrowest width, which needs 20px.
+   The type roles are unlayered, so this is too. */
+.ffb-root .ffb-grid-tight .ffb-cell.ffb-is-made { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
+/* A five-character label ("DST10") needs 32px at the grid's own size, and a rail's cell is 29 to
+   31px from 1024px, so that cell takes the narrow form at any team count. */
+.ffb-root .ffb-grid .ffb-cell.ffb-cell-long { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
+/* A remove button inside a sticker rings inside the fill, in the colour that reads on it. */
+.ffb-root .ffb-sticker-remove:focus-visible { outline-color: var(--ffb-on-fill); outline-offset: -3px; }
+
+/* The tooltip bubble is portalled outside the root with Tailwind classes on it, so its type is
+   set here, unlayered. Its colours come through the bridge on `.ffb-scope`. */
+.ffb-scope [role="tooltip"] {
+  padding: 8px 10px;
+  font-family: var(--ffb-font);
+  font-size: 12.5px;
+  font-weight: 500;
+  font-stretch: 100%;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@layer components {
+  /* ========================================================================
+   * 6. What the frame leaks, undone once on the root
+   * ====================================================================== */
+  .ffb-root :where(h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    text-wrap: balance;
+  }
+  .ffb-root :where(p) {
+    margin: 0;
+    max-inline-size: none;
+    line-height: inherit;
+  }
+  .ffb-root :where(ol, ul, menu) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ffb-root :where(li, dl, dt, dd, figure) {
+    margin: 0;
+    line-height: inherit;
+  }
+  .ffb-root :where(fieldset) {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .ffb-root :where(legend) { padding: 0; }
+  /* The site sets Newsreader italic on every bare em. */
+  .ffb-root :where(em) { font-family: inherit; }
+  .ffb-root :where(button, input, select, textarea) {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+  }
+  .ffb-root :where(a) { color: inherit; }
+  .ffb-root ::placeholder {
+    color: var(--ffb-muted);
+    opacity: 1;
+  }
+
+  /* ========================================================================
+   * 7. Helpers
+   * ====================================================================== */
+  .ffb-vh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* Read out at every width and shown only on a phone, for a word the desktop's column head already says ("Bye"). */
+  @media (min-width: 768px) {
+    .ffb-vh-desk {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+  /* A way past a long list for a keyboard. It is out of sight until it takes focus. */
+  .ffb-skip { margin-bottom: var(--ffb-s2); }
+  .ffb-skip:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .ffb-muted { color: var(--ffb-muted); }
+  .ffb-good { color: var(--ffb-good); }
+  .ffb-bad { color: var(--ffb-bad); }
+  .ffb-warn { color: var(--ffb-warn); }
+  .ffb-num { text-align: right; white-space: nowrap; }
+  .ffb-label { font-size: 12px; line-height: 1.2; }
+  /* A heavy number outside a stat or a fact. */
+  .ffb-heavy { font-size: 18px; line-height: 1; }
+  /* A muted note under or beside something. The muted paragraph is .ffb-copy, with the empty state's body. */
+  .ffb-fine { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
+
+  /* A column of blocks. The gap is the section rhythm, so pages do not set margins. */
+  .ffb-stack { display: flex; flex-direction: column; gap: var(--ffb-s4); min-width: 0; }
+  .ffb-stack > * { min-width: 0; }
+  .ffb-stack-tight { gap: var(--ffb-s2); }
+  .ffb-stack-mid { gap: var(--ffb-s5); }
+  .ffb-stack-loose { gap: var(--ffb-s6); }
+  .ffb-stack-page { gap: var(--ffb-s7); }
+  /* A wrapping row of small things. */
+  .ffb-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2) var(--ffb-s3); min-width: 0; }
+  /* Equal columns that fall to one. Set --ffb-col-min to change where. */
+  .ffb-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ffb-col-min)), 1fr)); gap: var(--ffb-s5) var(--ffb-s6); }
+  /* A bar that pins to the top of the page. A second one under it reads --ffb-sticky-top. */
+  .ffb-sticky {
+    position: sticky;
+    top: var(--ffb-sticky-top, 0px);
+    z-index: var(--c97-z-sticky, 5);
+    background: var(--ffb-surface);
+    box-shadow: -4px 0 0 var(--ffb-surface), 4px 0 0 var(--ffb-surface);
+  }
+  /* Item 50: the live cell stands 4px proud of the bug, so a pinned wrapper leaves it that room. */
+  .ffb-sticky:has(> .ffb-bug) { padding-block: var(--ffb-s1); }
+  /* The scorebug's pinned section stacks one above every other pinned bar. A room's board bar is
+     pinned (or a flex item) at the same level and comes later, so on a tie it would cover Undo, Redo, and New room. */
+  .ffb-bug-pin { z-index: calc(var(--c97-z-sticky, 5) + 1); }
+  /* Item 9: a pinned block that holds the column heads ends on the 2px ink rule a table head ends on. */
+  .ffb-sticky-ruled { border-bottom: 2px solid var(--ffb-ink); }
+
+  /* ========================================================================
+   * 8. Shell: product bar, page head, section headings, working layout
+   * ====================================================================== */
+  .ffb-bar {
+    display: flex;
+    align-items: stretch;
+    height: 40px;
+    border-bottom: 1px solid var(--ffb-rule);
+  }
+  .ffb-bar-name {
+    display: flex;
+    align-items: center;
+    flex: none;
+    padding-inline: var(--ffb-s3);
+    background: var(--ffb-ink);
+    color: var(--ffb-board);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .ffb-bar-links {
+    display: flex;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-inline-start: var(--ffb-s2);
+  }
+  .ffb-bar-links > li { display: flex; flex: none; }
+  /* The first link of a later group, with a thin rule before it. */
+  .ffb-bar-links > .ffb-bar-gap::before {
+    content: "";
+    align-self: center;
+    width: 1px;
+    height: 14px;
+    margin-inline: var(--ffb-s2);
+    background: var(--ffb-edge);
+  }
+  .ffb-bar-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-inline: var(--ffb-s3);
+    color: var(--ffb-muted);
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .ffb-bar-link:hover { color: var(--ffb-ink); }
+  .ffb-bar-link[aria-current="page"] { color: var(--ffb-ink); }
+  .ffb-bar-link[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    inset: auto var(--ffb-s3) 0;
+    height: 3px;
+    background: var(--ffb-ink);
+  }
+  /* From 768px, where nothing snaps, a plate with an arrow closes the bar's right end while more
+     links sit past it. The bar sets data-more while they do, and a phone's cut link says it there. */
+  @media (min-width: 768px) {
+    .ffb-bar { position: relative; }
+    .ffb-bar[data-more]::after {
+      content: "";
+      position: absolute;
+      inset-block: 0 1px;
+      right: 0;
+      width: 28px;
+      border-inline-start: 1px solid var(--ffb-rule);
+      background: var(--ffb-surface);
+      pointer-events: none;
+    }
+    .ffb-bar[data-more]::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: calc(50% - 5px);
+      right: 10px;
+      border-block: 5px solid transparent;
+      border-inline-start: 7px solid var(--ffb-ink);
+      pointer-events: none;
+    }
+  }
+
+  /* The page head: title, freshness on the title's baseline, the lead under both.
+     Three columns, the title's width, the rest, and the aside's width. The lead and the
+     freshness line each span the flexible one, so neither sets the width of the other's row. */
+  .ffb-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: var(--ffb-s2) var(--ffb-s5);
+    padding-block: var(--ffb-s4) var(--ffb-s3);
+  }
+  .ffb-head > .ffb-title { grid-column: 1; grid-row: 1; }
+  .ffb-head > .ffb-fresh { grid-column: 2 / 4; grid-row: 1; justify-self: end; text-align: right; }
+  .ffb-title {
+    font-size: 40px;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+  }
+  .ffb-fresh {
+    max-width: 78ch;
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .ffb-lede {
+    grid-column: 1 / -1;
+    max-width: 118ch;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  /* Page actions. They sit at the right of the lead's line. */
+  .ffb-head-aside {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--ffb-s2) var(--ffb-s3);
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+    align-self: center;
+  }
+  .ffb-head:has(> .ffb-head-aside) > .ffb-lede { grid-column: 1 / 3; }
+  @media (min-width: 1200px) {
+    .ffb-head:not(.ffb-head-setup, .ffb-head-run):not(:has(> .ffb-head-aside)) > .ffb-lede { text-wrap: balance; }
+  }
+  /* A full-width row under the head (the best ball contest switch). */
+  .ffb-head-row { grid-column: 1 / -1; min-width: 0; }
+  /* The running head of a live room: one compact line. */
+  .ffb-head-run {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    column-gap: var(--ffb-s4);
+    padding-block: var(--ffb-s3);
+  }
+  .ffb-head-run .ffb-title { font-size: 26px; }
+  .ffb-head-run > .ffb-lede { grid-column: 2; grid-row: 1; font-size: 14px; font-weight: 500; line-height: 1.3; }
+  .ffb-head-run > .ffb-fresh { grid-column: 3; grid-row: 1; justify-self: end; text-align: right; }
+  .ffb-head-run > .ffb-head-aside { grid-column: 1 / -1; grid-row: auto; }
+  /* The setup head: a headline and the pitch. */
+  .ffb-head-setup { row-gap: var(--ffb-s3); padding-block: var(--ffb-s5) var(--ffb-s4); }
+  .ffb-head-setup .ffb-title { font-size: 56px; }
+  .ffb-head-setup .ffb-lede { max-width: 62ch; font-size: 17px; }
+
+  /* Section headings at three levels. */
+  .ffb-h2 { font-size: 22px; line-height: 1; }
+  .ffb-h3 { font-size: 12px; font-weight: 800; line-height: 1.2; }
+  .ffb-h4 { font-size: 15px; line-height: 1.3; }
+  /* A heading on an ink rule with a note at its right. */
+  .ffb-sechead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--ffb-s1) var(--ffb-s4);
+    padding-block: var(--ffb-s2) 10px;
+    border-top: 1px solid var(--ffb-ink);
+  }
+  .ffb-sechead-lg { padding-block: var(--ffb-s3); border-top-width: 2px; }
+  /* A head that holds a control, and any head beside it on the same line: one height, so they share a rule. */
+  .ffb-sechead-ctl { align-items: center; min-height: calc(var(--ffb-control) + 17px); padding-block: var(--ffb-s2); }
+  .ffb-sechead-note { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
+
+  /* The working layout: the list beside a sticky rail. */
+  .ffb-work {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(404px, 34%, 460px);
+    align-items: start;
+    column-gap: var(--ffb-s6);
+  }
+  /* Settings, the work, and a result rail (the trade calculator). */
+  .ffb-work-3 { grid-template-columns: 200px minmax(0, 1fr) clamp(300px, 26%, 360px); column-gap: var(--ffb-s5); }
+  .ffb-work > * { min-width: 0; }
+  .ffb-rail {
+    position: sticky;
+    top: calc(var(--ffb-sticky-top, 0px) + var(--ffb-s2));
+    display: grid;
+    gap: var(--ffb-s5);
+  }
+  /* A rail taller than the screen scrolls by itself. */
+  .ffb-rail-scroll {
+    max-height: calc(100dvh - var(--ffb-sticky-top, 0px) - var(--ffb-s4));
+    /* A scroller clips what crosses its edge, so the inset gives the focus rings inside room on both sides. */
+    margin-inline: -6px;
+    padding-inline: 6px;
+    /* No overscroll containment: at the rail's end, and over a rail with nothing to scroll, the wheel moves the page. */
+    overflow-y: auto;
+  }
+
+  /* ========================================================================
+   * 9. Controls
+   * ====================================================================== */
+  .ffb-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ffb-s2) var(--ffb-s3);
+    padding-block: var(--ffb-s2);
+  }
+  .ffb-count {
+    margin-inline-start: auto;
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+
+  /* Segmented switch. Works on aria-pressed buttons, radios, and tabs. */
+  .ffb-seg {
+    display: inline-flex;
+    flex: none;
+    width: fit-content;
+    max-width: 100%;
+    border: 1px solid var(--ffb-edge);
+    vertical-align: top;
+  }
+  .ffb-seg-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(var(--ffb-control) - 2px);
+    padding-inline: 11px;
+    border: 0;
+    border-inline-start: 1px solid var(--ffb-edge);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-ink);
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  /* Inside a field the switch fills the column, so it lines up with the selects beside it. */
+  .ffb-seg-fill { display: flex; width: 100%; }
+  .ffb-seg-fill > .ffb-seg-btn { flex: 1 1 0; }
+  /* A switch too long for its row scrolls sideways (eight contests). On a phone it also runs off
+     the right edge of the screen, as the position switch does. */
+  .ffb-seg-scroll { overflow-x: auto; scrollbar-width: none; }
+  .ffb-seg-scroll > .ffb-seg-btn { flex: none; }
+  /* Eight contests need 688px, and the column is 674px at 768px, so the phone's run into the gutter
+     holds to 800px, where they fit the column. */
+  @media (min-width: 768px) and (max-width: 799.98px) {
+    .ffb-seg-scroll { max-width: calc(100% + var(--ffb-bleed)); margin-inline-end: calc(-1 * var(--ffb-bleed)); }
+  }
+  .ffb-seg-btn:first-child { border-inline-start: 0; }
+  .ffb-seg-btn:hover { background-color: var(--ffb-sunk); }
+  .ffb-seg-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
+    background: var(--ffb-ink);
+    color: var(--ffb-board);
+  }
+  /* The position switch is also the legend: each position carries its sticker colour as a foot bar. */
+  .ffb-seg-btn[class*="ffb-pos-"] { box-shadow: inset 0 -4px 0 var(--ffb-pos); }
+  /* Flex takes RB, WR, and TE in thirds. Hard stops, so nothing blends. */
+  .ffb-seg-btn.ffb-pos-flex {
+    box-shadow: none;
+    background-image: linear-gradient(90deg, var(--ffb-rb) 0 33.4%, var(--ffb-wr) 33.4% 66.7%, var(--ffb-te) 66.7%);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 4px;
+  }
+  /* A pressed position is a full sticker. */
+  .ffb-seg-btn[class*="ffb-pos-"]:not(.ffb-pos-flex):is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
+    background: var(--ffb-pos);
+    color: var(--ffb-on-fill);
+    box-shadow: none;
+  }
+  /* Unavailable, or the whole bar disabled: no foot bar, muted, and the word stays (print "NA" in .ffb-seg-na). */
+  .ffb-seg-btn:disabled {
+    background-image: none;
+    box-shadow: none;
+    color: var(--ffb-muted);
+    cursor: not-allowed;
+  }
+  .ffb-seg-btn:disabled:hover { background-color: transparent; }
+  /* Pressed and disabled (a board that failed to load keeps its selection): the muted label would
+     sit on the ink fill at under 3:1, so the fill gives way to an edge and the choice still reads.
+     A pressed position keeps its sticker, whose on-fill label is not muted. */
+  .ffb-seg-btn:disabled:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
+    background: transparent;
+    box-shadow: inset 0 0 0 2px var(--ffb-edge);
+  }
+  .ffb-seg-na { margin-inline-start: 5px; font-size: 10px; letter-spacing: 0.04em; }
+  .ffb-seg:has(> .ffb-seg-btn:disabled):not(:has(> .ffb-seg-btn:enabled)) { border-style: dashed; }
+
+  /* Buttons. Secondary is the base, then primary, now, quiet, and danger. */
+  .ffb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: var(--ffb-control);
+    padding-inline: 14px;
+    border: 1px solid var(--ffb-edge);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-ink);
+    font-size: 12px;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ffb-btn:hover { border-color: var(--ffb-ink); background-color: var(--ffb-sunk); }
+  .ffb-btn-primary { border-color: var(--ffb-ink); background: var(--ffb-ink); color: var(--ffb-board); }
+  .ffb-btn-primary:hover { border-color: var(--ffb-muted); background-color: var(--ffb-muted); }
+  /* The action that is mine to take now (my pick is live). Highlighter fill, on-fill text. */
+  .ffb-btn-now { border-color: var(--ffb-hi-edge); background: var(--ffb-hi); color: var(--ffb-on-fill); }
+  .ffb-btn-now:hover { border-color: var(--ffb-hi-edge); background-color: var(--ffb-hi); box-shadow: inset 0 0 0 1px var(--ffb-on-fill); }
+  .ffb-btn-quiet { padding-inline: var(--ffb-s2); border-color: transparent; }
+  .ffb-btn-quiet:hover { border-color: transparent; }
+  .ffb-btn-danger { border-color: var(--ffb-bad); color: var(--ffb-bad); }
+  .ffb-btn-danger:hover,
+  .ffb-btn-danger.ffb-btn-primary { border-color: var(--ffb-bad); background-color: var(--ffb-bad); color: var(--ffb-board); }
+  .ffb-btn-lg { height: 44px; padding-inline: 18px; font-size: 13px; }
+  .ffb-btn-block { display: flex; width: 100%; }
+  .ffb-btn:is(:disabled, [aria-disabled="true"]) {
+    border-color: var(--ffb-edge);
+    border-style: dashed;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ffb-muted);
+    cursor: not-allowed;
+  }
+  /* A quiet button has no box when it is enabled, so it gains none when it is not. */
+  .ffb-btn.ffb-btn-quiet:is(:disabled, [aria-disabled="true"]) { border-color: transparent; }
+  /* Items 31 and 41: a labelled toggle with no count. Pressed, it takes the 2px ink edge the pressed .ffb-toggle takes. */
+  .ffb-btn-toggle[aria-pressed="true"] { border-color: var(--ffb-ink); box-shadow: inset 0 0 0 1px var(--ffb-ink); }
+  /* A destructive step asks once: the question, a quiet way back, and the danger button. */
+  .ffb-confirm { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2); }
+  .ffb-confirm-q { font-size: 14px; font-weight: 600; }
+
+  /* The row action of a room (Log, Draft). */
+  .ffb-log {
+    width: 56px;
+    min-width: 44px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid var(--ffb-ink);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-ink);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+  }
+  .ffb-log:hover { background: var(--ffb-ink); color: var(--ffb-board); }
+  .ffb-log:disabled { border-color: var(--ffb-edge); border-style: dashed; background: transparent; color: var(--ffb-muted); cursor: not-allowed; }
+
+  /* Icon button: close, undo, remove. */
+  .ffb-iconbtn {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: var(--ffb-control);
+    height: var(--ffb-control);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-ink);
+    cursor: pointer;
+  }
+  .ffb-iconbtn:hover { background-color: var(--ffb-sunk); }
+  .ffb-iconbtn-edge { border: 1px solid var(--ffb-edge); }
+  .ffb-iconbtn:disabled { color: var(--ffb-muted); cursor: not-allowed; }
+  /* On: the phone's search button while a query is filtering the board. */
+  .ffb-iconbtn:is([aria-pressed="true"], .ffb-is-on) { background: var(--ffb-ink); color: var(--ffb-board); }
+
+  /* Queue star. Queued is a highlighter sticker behind the star and behind the rank. */
+  .ffb-star {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--ffb-radius);
+    background: transparent;
+    cursor: pointer;
+  }
+  .ffb-star-icon { position: relative; fill: none; stroke: var(--ffb-edge); stroke-width: 1.5; stroke-linejoin: round; }
+  .ffb-star:hover .ffb-star-icon { stroke: var(--ffb-ink); }
+  .ffb-star[aria-pressed="true"]::before {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-hi);
+  }
+  .ffb-star[aria-pressed="true"] .ffb-star-icon { fill: var(--ffb-on-fill); stroke: var(--ffb-on-fill); }
+  /* A toggle button with a count (the queued-only view). */
+  .ffb-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: var(--ffb-control);
+    padding-inline: 10px 6px;
+    border: 1px solid var(--ffb-edge);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-ink);
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ffb-toggle:hover { border-color: var(--ffb-ink); }
+  .ffb-toggle[aria-pressed="true"] { border-color: var(--ffb-ink); box-shadow: inset 0 0 0 1px var(--ffb-ink); }
+  .ffb-toggle .ffb-star-icon { stroke: currentColor; stroke-width: 1.6; }
+  .ffb-toggle[aria-pressed="true"] .ffb-star-icon { fill: currentColor; }
+
+  /* Fields. The label sits over the control. */
+  .ffb-field { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 6px; min-width: 0; }
+  .ffb-field-label { color: var(--ffb-ink); font-size: 11.5px; line-height: 1.2; }
+  .ffb-field-hint { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.4; }
+  .ffb-field-error { color: var(--ffb-bad); font-size: 12.5px; font-weight: 600; line-height: 1.4; }
+  .ffb-field-count { color: var(--ffb-muted); font-size: 12px; font-weight: 500; text-align: right; }
+  .ffb-input,
+  .ffb-select,
+  .ffb-textarea {
+    width: 100%;
+    min-width: 0;
+    height: var(--ffb-control);
+    padding: 0 10px;
+    border: 1px solid var(--ffb-edge);
+    border-radius: 0;
+    background-color: var(--ffb-raised);
+    color: var(--ffb-ink);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .ffb-select {
+    appearance: none;
+    padding-inline-end: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23737d86' stroke-width='1.8'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 6px;
+    cursor: pointer;
+  }
+  .ffb-textarea { height: auto; min-height: 72px; padding-block: var(--ffb-s2); line-height: 1.4; resize: vertical; }
+  :is(.ffb-input, .ffb-select, .ffb-textarea):hover { border-color: var(--ffb-ink); }
+  :is(.ffb-input, .ffb-select, .ffb-textarea)[aria-invalid="true"] { border-color: var(--ffb-bad); box-shadow: inset 0 0 0 1px var(--ffb-bad); }
+  :is(.ffb-input, .ffb-select, .ffb-textarea):disabled { border-style: dashed; background-color: transparent; color: var(--ffb-muted); cursor: not-allowed; }
+  /* An input with a unit beside it ($, %). */
+  .ffb-affix {
+    display: flex;
+    align-items: center;
+    height: var(--ffb-control);
+    background: var(--ffb-raised);
+    box-shadow: inset 0 0 0 1px var(--ffb-edge);
+  }
+  .ffb-affix:hover { box-shadow: inset 0 0 0 1px var(--ffb-ink); }
+  .ffb-affix:has(> [aria-invalid="true"]) { box-shadow: inset 0 0 0 2px var(--ffb-bad); }
+  .ffb-affix-mark { flex: none; padding-inline: 10px; color: var(--ffb-muted); font-size: 14px; font-weight: 600; }
+  .ffb-affix .ffb-input,
+  .ffb-affix .ffb-input[aria-invalid="true"] { height: 100%; border: 0; background: transparent; box-shadow: none; }
+  .ffb-affix > .ffb-affix-mark:first-child { padding-inline-end: 2px; }
+  .ffb-affix > .ffb-affix-mark:first-child + .ffb-input { padding-inline-start: 8px; }
+
+  .ffb-search {
+    display: flex;
+    align-items: center;
+    gap: var(--ffb-s2);
+    height: var(--ffb-control);
+    padding-inline: 10px 2px;
+    background: var(--ffb-raised);
+    box-shadow: inset 0 0 0 1px var(--ffb-edge);
+  }
+  .ffb-search:hover { box-shadow: inset 0 0 0 1px var(--ffb-ink); }
+  .ffb-search:has(> .ffb-search-input:disabled) {
+    background: transparent;
+    box-shadow: none;
+    outline: 1px dashed var(--ffb-edge);
+    outline-offset: -1px;
+    cursor: not-allowed;
+  }
+  .ffb-search-input:disabled { cursor: not-allowed; }
+  .ffb-search > svg { flex: none; fill: none; stroke: var(--ffb-muted); stroke-width: 1.8; stroke-linecap: round; }
+  .ffb-search-input {
+    flex: 1 1 168px;
+    width: 168px;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 14px;
+    appearance: none;
+  }
+  /* Where the kit draws its own clear button, the browser's goes. A search field without one keeps it. */
+  .ffb-search:has(.ffb-search-clear) .ffb-search-input::-webkit-search-cancel-button { appearance: none; }
+  .ffb-search-clear {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ffb-muted);
+    cursor: pointer;
+  }
+  .ffb-search-clear:hover { color: var(--ffb-ink); }
+
+  /* A native checkbox or radio with its words. */
+  .ffb-check {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ffb-s2);
+    min-height: var(--ffb-control);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .ffb-check input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: var(--ffb-ink); cursor: pointer; }
+  /* A list of radios drawn as plates, one choice per plate. */
+  .ffb-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ffb-choice-min)), 1fr)); gap: var(--ffb-s2); min-width: 0; padding: 0; border: 0; margin: 0; }
+  .ffb-choice {
+    position: relative;
+    display: grid;
+    align-content: center;
+    gap: 3px;
+    min-height: 44px;
+    padding: var(--ffb-s2) var(--ffb-s3);
+    border: 1px solid var(--ffb-edge);
+    background: transparent;
+    color: var(--ffb-ink);
+    text-align: left;
+    cursor: pointer;
+  }
+  .ffb-choice:hover { border-color: var(--ffb-ink); }
+  .ffb-choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  .ffb-choice-title { font-size: 12.5px; line-height: 1.2; }
+  .ffb-choice-note { font-size: 12.5px; line-height: 1.35; }
+  .ffb-choice:is(:has(input:checked), [aria-pressed="true"], [aria-checked="true"]) { border-color: var(--ffb-ink); background: var(--ffb-ink); color: var(--ffb-board); }
+  /* A choice that marks what is mine (my draft slot). */
+  .ffb-choice-mine:is(:has(input:checked), [aria-pressed="true"], [aria-checked="true"]) { border-color: var(--ffb-hi-edge); background: var(--ffb-hi); color: var(--ffb-on-fill); }
+  .ffb-choice:has(input:disabled) { border-style: dashed; color: var(--ffb-muted); cursor: not-allowed; }
+
+  /* A native disclosure. */
+  .ffb-details { border-top: 1px solid var(--ffb-rule); }
+  .ffb-details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ffb-s3);
+    min-height: var(--ffb-control);
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+  }
+  .ffb-details > summary::-webkit-details-marker { display: none; }
+  .ffb-details > summary::after {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    margin-inline: 0 4px;
+    border: solid var(--ffb-ink);
+    border-width: 0 2px 2px 0;
+    rotate: 45deg;
+    translate: 0 -2px;
+  }
+  .ffb-details[open] > summary::after { rotate: -135deg; translate: 0 2px; }
+  .ffb-details-body { padding-block: var(--ffb-s1) var(--ffb-s3); }
+
+  /* Tabs, drawn like the product bar's links. */
+  .ffb-tabs {
+    display: flex;
+    gap: var(--ffb-s4);
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--ffb-rule);
+  }
+  .ffb-tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+    height: var(--ffb-control);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-muted);
+    font-size: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ffb-tab:hover { color: var(--ffb-ink); }
+  .ffb-tab:is([aria-selected="true"], [aria-pressed="true"], [aria-current]) { color: var(--ffb-ink); }
+  .ffb-tab:is([aria-selected="true"], [aria-pressed="true"], [aria-current])::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 3px;
+    background: var(--ffb-ink);
+  }
+
+  /* A link. With an arrow it leads to another page, with the out arrow to another site. */
+  .ffb-link {
+    color: var(--ffb-ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .ffb-link:hover { text-decoration-thickness: 2px; }
+  /* The empty alternative text keeps the arrow out of the link's accessible name. */
+  .ffb-link-arrow::after { content: "\00a0→" / ""; }
+  .ffb-link-out::after { content: "\00a0↗" / ""; }
+
+  /* ========================================================================
+   * 10. The board: column head, tier break, row
+   * A page sets --ffb-cols on .ffb-board (in its area sheet) and fills rows with the cells below.
+   * ====================================================================== */
+  .ffb-board { min-width: 0; }
+  /* A room's rows are 44px, since each one carries a button. */
+  .ffb-board-room { --ffb-row: 44px; }
+  .ffb-colhead,
+  .ffb-row {
+    display: grid;
+    grid-template-columns: var(--ffb-cols);
+    column-gap: var(--ffb-s3);
+  }
+  .ffb-colhead {
+    align-items: end;
+    padding-block: var(--ffb-s2) 6px;
+    color: var(--ffb-muted);
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .ffb-h-num { text-align: right; }
+  .ffb-h-pos { text-align: center; }
+  /* The head of the column the list is sorted by, in ink with a caret. */
+  .ffb-is-sorted { color: var(--ffb-ink); }
+  .ffb-is-sorted::after {
+    content: "";
+    display: inline-block;
+    margin-inline-start: 3px;
+    border: 3.5px solid transparent;
+    border-top: 5px solid currentColor;
+    border-bottom: 0;
+    vertical-align: 1px;
+  }
+
+  /* The tier break is a 2px ink rule with the tier's tab hanging from it. A round break is the same thing. */
+  /* The gap above a break grows with the cliff, in 4px steps from 8 to 28px, set as --ffb-gap. */
+  .ffb-tier + .ffb-tier { margin-top: var(--ffb-gap, var(--ffb-s4)); }
+  .ffb-tier-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--ffb-s4);
+    height: 30px;
+    border-top: 2px solid var(--ffb-ink);
+    line-height: 22px;
+    white-space: nowrap;
+  }
+  .ffb-tier-name { display: flex; gap: var(--ffb-s3); min-width: 0; }
+  .ffb-tier-tab {
+    padding-inline: var(--ffb-s2);
+    background: var(--ffb-ink);
+    color: var(--ffb-board);
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+  }
+  .ffb-tier-count { font-size: 12px; }
+  .ffb-tier-range { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
+  .ffb-tier-cliff { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
+  .ffb-tier-cliff b { margin-inline-end: 2px; color: var(--ffb-ink); font-size: 14px; font-weight: 800; font-stretch: 80%; }
+  /* A ledge and a drop. */
+  .ffb-cliff-mark {
+    display: inline-block;
+    width: 9px;
+    height: 7px;
+    margin-inline-end: 7px;
+    border-top: 2px solid var(--ffb-ink);
+    border-right: 2px solid var(--ffb-ink);
+  }
+  /* Who is already gone from this tier, one clipped line under the break. */
+  .ffb-tier-gone {
+    display: flex;
+    align-items: baseline;
+    gap: var(--ffb-s2);
+    height: 26px;
+    overflow: hidden;
+    border-top: 1px solid var(--ffb-rule);
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    line-height: 25px;
+    white-space: nowrap;
+  }
+  .ffb-tier-gone > :last-child { overflow: hidden; text-overflow: ellipsis; }
+
+  .ffb-row {
+    position: relative;
+    align-items: center;
+    min-height: var(--ffb-row);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-row:hover { background-color: var(--ffb-sunk); }
+  /* A row's control that takes focus is scrolled clear of what is pinned over the list. A page that
+     measures its pinned bars sets --ffb-pinned-top (and --ffb-pinned-bottom while a tray shows).
+     The fallbacks clear the tallest pinned stack in the first five pages (147px) and the compare tray (74px). */
+  :is(.ffb-row, .ffb-table tbody tr, .ffb-more-row) :is(a, button, select, input),
+  .ffb-more {
+    scroll-margin-block: var(--ffb-pinned-top, 152px) var(--ffb-pinned-bottom, 96px);
+  }
+  /* A room's controls between its scorebug and its board (a last-picks sticker, a strip's Log and
+     disclosure) are scrolled clear of the scorebug alone. Inside the work the room sets
+     --ffb-sticky-top to the scorebug's measured height. The last picks sit above it, so they take
+     the scorebug's height at each width (68px, and 112px on a phone where it is two rows). */
+  .ffb-picks-list button,
+  .ffb-strip :is(a, button, summary, select, input) {
+    scroll-margin-top: calc(var(--ffb-sticky-top, 68px) + var(--ffb-s2));
+  }
+  @media (max-width: 767.98px) {
+    .ffb-picks-list button,
+    .ffb-strip :is(a, button, summary, select, input) {
+      scroll-margin-top: calc(var(--ffb-sticky-top, 112px) + var(--ffb-s2));
+    }
+  }
+  /* Nothing is pinned over a row inside a pinned bar, an overlay, or a rail that scrolls by itself. */
+  :is(.ffb-sticky, .ffb-overlay, .ffb-drawer, .ffb-modal, .ffb-sheet, .ffb-tray) { --ffb-pinned-top: 0px; --ffb-pinned-bottom: 0px; }
+  @media (min-width: 1200px) {
+    .ffb-rail { --ffb-pinned-top: 0px; --ffb-pinned-bottom: 0px; }
+  }
+  /* The row the keyboard is on. */
+  .ffb-row.ffb-is-active {
+    outline: 2px solid var(--c97-accent);
+    outline-offset: 0;
+  }
+  /* A button that makes the whole row open the player. Controls in the row stay above it. */
+  .ffb-row-open {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .ffb-row > :is(.ffb-star, .ffb-log, .ffb-btn, .ffb-iconbtn, a, [data-ffb-above]) { position: relative; z-index: 1; }
+  /* A board whose rows open the player from anywhere: every cell sits above the opener, so a
+     hover title fires and a name can be selected, and the row's own click still opens the player. */
+  .ffb-board-open .ffb-row { cursor: pointer; }
+  .ffb-board-open .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
+  .ffb-c-rank { font-size: 15px; font-weight: 700; font-stretch: 88%; text-align: right; }
+  .ffb-c-name {
+    overflow: hidden;
+    font-size: 15px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* The name as the opener, where the row has no overlay button. */
+  button.ffb-c-name { padding: 0; border: 0; background: transparent; cursor: pointer; }
+  button.ffb-c-name:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .ffb-c-team { color: var(--ffb-muted); font-size: 12px; }
+  .ffb-c-bye { color: var(--ffb-muted); font-size: 13px; font-weight: 500; text-align: right; }
+  .ffb-c-num { font-size: 14px; font-weight: 500; text-align: right; white-space: nowrap; }
+  /* A number that carries a judgement (a real gap against ADP, a move). */
+  .ffb-c-num.ffb-is-strong { font-weight: 700; }
+  /* A number that carries none, and a reference column. */
+  .ffb-c-num.ffb-is-flat { color: var(--ffb-muted); }
+  .ffb-is-queued .ffb-c-rank {
+    margin-inline: -4px;
+    padding-inline: 4px;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-hi);
+    color: var(--ffb-on-fill);
+    line-height: 24px;
+  }
+
+  .ffb-more {
+    display: block;
+    width: 100%;
+    height: 44px;
+    margin-top: var(--ffb-s4);
+    border: 1px solid var(--ffb-edge);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-ink);
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .ffb-more:hover { border-color: var(--ffb-ink); background-color: var(--ffb-sunk); }
+
+  /* Where the room stands when my turn comes back, if it drafts down this board. */
+  .ffb-turnline {
+    display: flex;
+    align-items: center;
+    gap: var(--ffb-s2);
+    height: 26px;
+    border-top: 1px solid var(--ffb-rule);
+    line-height: 18px;
+    white-space: nowrap;
+  }
+  .ffb-turnline::after { content: ""; flex: 1; border-top: 1px dashed var(--ffb-ink); }
+  .ffb-turn-tab { padding-inline: var(--ffb-s2); border-radius: var(--ffb-radius); background: var(--ffb-hi); color: var(--ffb-on-fill); font-size: 12px; letter-spacing: 0.05em; }
+  .ffb-turn-note { color: var(--ffb-muted); font-size: 11px; }
+
+  /* Expert spread. The range is a thin line from the best to the worst rank, one standard
+     deviation each side of the average is the thicker segment, and the average is an ink tick.
+     Every row shares one scale, with a faint guide per round. */
+  .ffb-spread {
+    position: relative;
+    display: block;
+    align-self: stretch;
+    min-height: 20px;
+    border-inline-end: 1px solid var(--ffb-grid);
+    background: linear-gradient(90deg, var(--ffb-grid) 1px, transparent 1px) 0 0 / calc(100% / var(--ffb-rounds, 10)) 100%;
+  }
+  .ffb-spread-range,
+  .ffb-spread-sd,
+  .ffb-spread-avg { position: absolute; top: 50%; }
+  .ffb-spread-range {
+    left: var(--ffb-min);
+    width: calc(var(--ffb-max) - var(--ffb-min));
+    height: 2px;
+    margin-top: -1px;
+    background: var(--ffb-pos-ink, var(--ffb-ink));
+  }
+  .ffb-spread-sd {
+    left: max(var(--ffb-min), var(--ffb-sd-lo));
+    right: calc(100% - min(var(--ffb-max), var(--ffb-sd-hi)));
+    height: 8px;
+    margin-top: -4px;
+    background: var(--ffb-pos-ink, var(--ffb-ink));
+  }
+  .ffb-spread-avg {
+    left: var(--ffb-avg);
+    width: 2px;
+    height: 16px;
+    margin: -8px 0 0 -1px;
+    background: var(--ffb-ink);
+  }
+  /* The spread column's head: the label and its three-part legend over the round labels. */
+  .ffb-h-spread { display: grid; gap: 3px; }
+  .ffb-h-spread-label { display: flex; justify-content: space-between; gap: var(--ffb-s3); }
+  .ffb-spread-key { display: flex; align-items: center; gap: 10px; }
+  .ffb-spread-key > span { display: inline-flex; align-items: center; gap: 4px; }
+  .ffb-key-range { width: 12px; height: 2px; background: var(--ffb-muted); }
+  .ffb-key-sd { width: 10px; height: 8px; background: var(--ffb-muted); }
+  .ffb-key-avg { width: 2px; height: 12px; background: var(--ffb-ink); }
+  .ffb-h-rounds {
+    display: grid;
+    grid-template-columns: repeat(var(--ffb-rounds, 10), 1fr);
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  /* A real table: the weekly board, the waiver list, the compare modal. */
+  .ffb-table-wrap { min-width: 0; overflow-x: auto; }
+  .ffb-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .ffb-table caption { padding-bottom: var(--ffb-s2); color: var(--ffb-muted); font-size: 12.5px; text-align: left; }
+  .ffb-table thead th {
+    padding: var(--ffb-s2) var(--ffb-s3) 6px 0;
+    border-bottom: 2px solid var(--ffb-ink);
+    color: var(--ffb-muted);
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: left;
+    vertical-align: bottom;
+    white-space: nowrap;
+  }
+  .ffb-table tbody :is(td, th) {
+    height: var(--ffb-row);
+    padding: var(--ffb-s1) var(--ffb-s3) var(--ffb-s1) 0;
+    border-top: 1px solid var(--ffb-rule);
+    font-weight: 500;
+    text-align: left;
+  }
+  .ffb-table tbody th { font-size: 15px; font-weight: 600; }
+  .ffb-table :is(td, th):last-child { padding-inline-end: 0; }
+  .ffb-table :is(td, th).ffb-num { text-align: right; }
+  /* The rank cell, which needs the table's own weight to beat the body cell's. */
+  .ffb-table tbody td.ffb-c-rank { color: var(--ffb-ink); font-size: 15px; font-weight: 700; text-align: right; }
+  .ffb-table tbody tr:hover > * { background-color: var(--ffb-sunk); }
+  /* The head stays on screen while the page scrolls under it. Not inside .ffb-table-wrap. */
+  .ffb-table-sticky thead th {
+    position: sticky;
+    top: var(--ffb-sticky-top, 0px);
+    z-index: 1;
+    border-bottom-color: transparent;
+    background: var(--ffb-surface);
+    box-shadow: inset 0 -2px 0 var(--ffb-ink);
+  }
+  /* Compare: a label column and one column per player. */
+  .ffb-table-compare { table-layout: fixed; }
+  .ffb-table-compare thead th { color: var(--ffb-ink); white-space: normal; vertical-align: top; }
+  .ffb-table-compare tbody th { position: sticky; left: 0; z-index: 1; width: 7.5rem; background: var(--ffb-surface); color: var(--ffb-muted); font-size: 11px; }
+  .ffb-table-compare tbody tr:hover > * { background-color: transparent; }
+  /* The corner stays with the label column, so a player's head never slides over the row labels. */
+  .ffb-table-compare thead :is(th, td):first-child { position: sticky; left: 0; z-index: 2; background: var(--ffb-surface); }
+  /* The stronger value on a compare row. The word prints, and the tag is ink, never highlighter. */
+  .ffb-best {
+    display: inline-block;
+    margin-inline-start: 6px;
+    padding-inline: 4px;
+    background: var(--ffb-ink);
+    color: var(--ffb-board);
+    font-size: 10.5px;
+    line-height: 16px;
+    vertical-align: 1px;
+  }
+
+  /* Facts. Label beside value, ruled (.ffb-fact), or label over value (.ffb-stat). No boxes. */
+  .ffb-facts { display: grid; margin: 0; }
+  .ffb-fact {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 2px var(--ffb-s3);
+    padding-block: var(--ffb-s2);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-fact:first-child { padding-top: 0; border-top: 0; }
+  .ffb-fact dt { font-size: 14px; }
+  .ffb-fact dd { font-size: 20px; line-height: 1; text-align: right; }
+  .ffb-facts-sm .ffb-fact { padding-block: 6px; }
+  .ffb-facts-sm .ffb-fact dd { font-size: 15px; }
+  .ffb-fact dd.ffb-fact-note,
+  .ffb-fact-foot {
+    grid-column: 1 / -1;
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    font-weight: 400;
+    font-stretch: 100%;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .ffb-fact-foot { padding-top: var(--ffb-s2); border-top: 1px solid var(--ffb-rule); }
+  .ffb-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--ffb-stat-min), 1fr)); gap: var(--ffb-s3) var(--ffb-s5); margin: 0; }
+  .ffb-stat { display: grid; align-content: start; gap: 5px; min-width: 0; }
+  .ffb-stat dt { color: var(--ffb-muted); font-size: 10.5px; line-height: 1.2; }
+  .ffb-stat dd { font-size: 22px; line-height: 1; }
+  .ffb-stat dd.ffb-stat-note,
+  .ffb-stat dd small { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; font-stretch: 100%; line-height: 1.35; }
+  /* Small label and value pairs in one wrapping line (a phone row's readouts). */
+  .ffb-pairs { display: flex; flex-wrap: wrap; gap: 2px var(--ffb-s4); margin: 0; }
+  .ffb-pairs > div { display: flex; align-items: baseline; gap: 6px; }
+  .ffb-pairs dt { color: var(--ffb-muted); font-size: 10.5px; }
+  .ffb-pairs dd { font-size: 13px; font-weight: 600; }
+
+  /* The players ranked around one player, each a button. */
+  .ffb-neighbors { display: grid; }
+  .ffb-neighbor {
+    display: grid;
+    grid-template-columns: 28px auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--ffb-s2);
+    width: 100%;
+    min-height: var(--ffb-control);
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--ffb-rule);
+    background: transparent;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .ffb-neighbor:hover { background-color: var(--ffb-sunk); }
+  .ffb-neighbor-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ffb-neighbor[aria-current="true"] { box-shadow: inset 3px 0 0 var(--ffb-ink); background-color: var(--ffb-sunk); cursor: default; }
+  .ffb-neighbor[aria-current="true"] > :first-child { padding-inline-start: 6px; }
+
+  /* ========================================================================
+   * 11. Position and picks
+   * ====================================================================== */
+  .ffb-chip {
+    display: inline-grid;
+    place-items: center;
+    box-sizing: border-box;
+    min-width: 46px;
+    height: 20px;
+    padding-inline: 5px;
+    border: 0;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-pos, var(--ffb-sunk));
+    color: var(--ffb-on-fill);
+    font-size: 12.5px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  /* Position letters only, no rank. */
+  .ffb-chip-sm { min-width: 30px; height: 18px; padding-inline: 4px; font-size: 11.5px; }
+
+  /* The sticker: a solid position fill, a meta line, the name. */
+  .ffb-sticker {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    padding: 6px 8px 7px;
+    border: 0;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-pos, var(--ffb-sunk));
+    color: var(--ffb-on-fill);
+    text-align: left;
+  }
+  /* As a button it takes a 1px edge in the on-fill ink, since no position fill reaches 3:1 on the light board. */
+  button.ffb-sticker { box-shadow: inset 0 0 0 1px var(--ffb-on-fill); cursor: pointer; }
+  .ffb-sticker-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--ffb-s2);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .ffb-sticker-name {
+    overflow: hidden;
+    font-size: 18px;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ffb-sticker-sm { gap: 3px; padding: 4px 6px 5px; }
+  .ffb-sticker-sm .ffb-sticker-meta { font-size: 10px; }
+  .ffb-sticker-sm .ffb-sticker-name { font-size: 14px; }
+  /* My pick carries a highlighter band at its left edge. */
+  .ffb-sticker.ffb-is-mine { padding-inline-start: 16px; box-shadow: inset 8px 0 0 var(--ffb-hi); }
+  .ffb-sticker-sm.ffb-is-mine { padding-inline-start: 12px; box-shadow: inset 6px 0 0 var(--ffb-hi); }
+  /* My own sticker as a button keeps both, with the edge over the band. */
+  button.ffb-sticker.ffb-is-mine { box-shadow: inset 0 0 0 1px var(--ffb-on-fill), inset 8px 0 0 var(--ffb-hi); }
+  button.ffb-sticker-sm.ffb-is-mine { box-shadow: inset 0 0 0 1px var(--ffb-on-fill), inset 6px 0 0 var(--ffb-hi); }
+
+  /* Last picks: one row of whole stickers. The older ones fall into zero-height rows and are clipped. */
+  .ffb-picks {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--ffb-s4);
+    padding-block: var(--ffb-s3) var(--ffb-s2);
+  }
+  .ffb-picks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-rows: auto;
+    grid-auto-rows: 0;
+    column-gap: var(--ffb-s1);
+    overflow: hidden;
+  }
+  /* A made cell's player name, where the page asks for names. It prints from 1200px, where a
+     grid with the page's width has cells wide enough for two short lines. */
+  .ffb-cell-name { display: none; }
+  /* A grid at the page's width sets its labels at 14px in 40px cells (34px on a phone, where the
+     cells are as narrow as a rail's and the phone's narrow label applies). */
+  .ffb-grid-names .ffb-cell { height: 40px; }
+  .ffb-grid-names .ffb-cell.ffb-is-made { font-size: 14px; }
+  @media (max-width: 767.98px) {
+    .ffb-grid-names .ffb-cell { height: 34px; }
+  }
+  @media (min-width: 1200px) {
+    .ffb-grid-names .ffb-cell { height: 52px; }
+    .ffb-grid-names .ffb-cell.ffb-is-made {
+      grid-template-rows: auto auto;
+      align-content: center;
+      row-gap: 2px;
+      padding-inline: 4px;
+    }
+    .ffb-grid-names .ffb-cell-name {
+      display: block;
+      max-width: 100%;
+      max-height: 2.2em;
+      overflow: hidden;
+      font-size: 11.5px;
+      font-weight: 600;
+      font-stretch: 88%;
+      line-height: 1.1;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: none;
+      white-space: normal;
+    }
+  }
+  /* The heading with a note under it that says what a sticker does when it is a button. */
+  .ffb-picks-head { display: grid; gap: 3px; }
+  .ffb-picks-note {
+    max-width: 16ch;
+    color: var(--ffb-muted);
+    font-size: 11px;
+    line-height: 1.25;
+  }
+  /* A sticker that is a button fills its list cell and takes an outline under the pointer. */
+  .ffb-picks-list > li { display: grid; min-width: 0; }
+  .ffb-picks-list > li > button.ffb-sticker { width: 100%; }
+  .ffb-picks-list > li > button.ffb-sticker:hover {
+    outline: 2px solid var(--ffb-on-fill);
+    outline-offset: -2px;
+  }
+
+  /* Roster. Each slot is a socket the size of a sticker, keyed with the colour that fits it.
+     A filled slot is the sticker itself. */
+  .ffb-slots {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--ffb-slot-rows, 5), 34px);
+    grid-auto-flow: column;
+    gap: var(--ffb-s1) var(--ffb-s2);
+  }
+  .ffb-slot {
+    position: relative;
+    display: grid;
+    /* The name takes what it needs first, and the team and bye get what is left. */
+    grid-template-columns: 34px minmax(0, max-content) minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--ffb-s2);
+    min-width: 0;
+    padding-inline: 12px 10px;
+    overflow: hidden;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-sunk);
+    box-shadow: inset 4px 0 0 var(--ffb-pos, var(--ffb-edge));
+    white-space: nowrap;
+  }
+  /* A flex slot's key is RB, WR, and TE in thirds. */
+  .ffb-slot.ffb-pos-flex {
+    box-shadow: none;
+    background-image: linear-gradient(var(--ffb-rb) 0 33.4%, var(--ffb-wr) 33.4% 66.7%, var(--ffb-te) 66.7%);
+    background-repeat: no-repeat;
+    background-size: 4px 100%;
+  }
+  .ffb-slot-code { font-size: 13px; letter-spacing: 0.04em; }
+  .ffb-slot-name { overflow: hidden; color: var(--ffb-muted); font-size: 13px; font-weight: 500; text-overflow: ellipsis; }
+  /* The team and bye sit at the slot's right and drop out whole when they do not fit, so a bye
+     week is never cut to its first digit. The line wraps under an empty first item and the
+     wrapped line is clipped. A list slot sets the meta back to a block, where none of this applies. */
+  .ffb-slot-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    height: 1lh;
+    overflow: hidden;
+    color: var(--ffb-muted);
+    font-size: 10.5px;
+  }
+  .ffb-slot-meta::before { content: ""; height: 1lh; }
+  .ffb-slot.ffb-is-filled { background: var(--ffb-pos); box-shadow: none; color: var(--ffb-on-fill); }
+  .ffb-slot.ffb-is-filled :is(.ffb-slot-name, .ffb-slot-meta) { color: inherit; }
+  .ffb-slot.ffb-is-filled .ffb-slot-name { font-size: 16px; }
+  /* Pick grid. Rounds down, slots across, my column on a highlighter band.
+     Set --ffb-teams and --ffb-my-slot on .ffb-grid. */
+  .ffb-grid {
+    --ffb-grid-lead: 34px;
+    --ffb-grid-col: calc((100% - var(--ffb-grid-lead) - var(--ffb-teams, 12) * 2px) / var(--ffb-teams, 12));
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--ffb-grid-lead) repeat(var(--ffb-teams, 12), minmax(0, 1fr));
+    gap: 2px;
+  }
+  .ffb-grid::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: calc(var(--ffb-grid-lead) + 2px + (var(--ffb-my-slot, 1) - 1) * (var(--ffb-grid-col) + 2px) - 3px);
+    width: calc(var(--ffb-grid-col) + 6px);
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-hi);
+  }
+  .ffb-grid > * { position: relative; }
+  .ffb-grid-slot,
+  .ffb-grid-round { color: var(--ffb-muted); font-size: 10.5px; letter-spacing: 0; }
+  .ffb-grid-slot { height: 18px; overflow: hidden; line-height: 18px; text-align: center; }
+  /* My column is headed "You". The cells of my column paint the highlighter themselves, and the band behind fills the gaps. */
+  .ffb-grid-slot.ffb-is-mine { border-radius: var(--ffb-radius); background: var(--ffb-hi); color: var(--ffb-on-fill); font-weight: 800; }
+  /* The round label carries a mark for the way the round runs: right, or left with .ffb-is-rev. */
+  .ffb-grid-round { display: flex; align-items: center; justify-content: space-between; align-self: center; padding-inline-end: 4px; }
+  .ffb-grid-dir { width: 0; height: 0; border: 4px solid transparent; border-inline: 6px solid transparent; border-inline-start-color: var(--ffb-ink); border-inline-end-width: 0; }
+  .ffb-grid-dir.ffb-is-rev { border-inline-start-color: transparent; border-inline-start-width: 0; border-inline-end: 6px solid var(--ffb-ink); }
+  .ffb-cell {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    height: 30px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-sunk);
+    color: var(--ffb-muted);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  button.ffb-cell { cursor: pointer; }
+  .ffb-cell.ffb-is-made { background: var(--ffb-pos, var(--ffb-rule)); color: var(--ffb-on-fill); font-size: 12px; letter-spacing: 0; }
+  .ffb-cell.ffb-is-mine:not(.ffb-is-made) { background: var(--ffb-hi); color: var(--ffb-on-fill); font-weight: 800; }
+  .ffb-cell.ffb-is-live {
+    background: var(--ffb-hi);
+    color: var(--ffb-on-fill);
+    font-size: 13px;
+    font-weight: 800;
+    outline: 2px solid var(--ffb-ink);
+    outline-offset: -2px;
+  }
+  /* What has been taken, by position. */
+  .ffb-tally {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ffb-s2) var(--ffb-s3);
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .ffb-tally-label { margin-inline-end: auto; color: var(--ffb-muted); font-size: 11px; }
+  .ffb-tally-item { display: flex; align-items: center; gap: 6px; }
+
+  /* ========================================================================
+   * 12. Status
+   * ====================================================================== */
+  /* The scorebug: one bar of four to six cells with the live cell in highlighter. */
+  .ffb-bug {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    min-height: 60px;
+    border-block: 2px solid var(--ffb-ink);
+    background: var(--ffb-bug);
+    color: var(--ffb-bug-ink);
+  }
+  .ffb-bug-seg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+    margin: 0;
+    padding-inline: 20px;
+    border-inline-end: 1px solid var(--ffb-bug-rule);
+    white-space: nowrap;
+  }
+  .ffb-bug-label { color: var(--ffb-bug-muted); font-size: 10.5px; line-height: 1; letter-spacing: 0.08em; }
+  .ffb-bug-value { margin: 0; font-size: 24px; line-height: 0.9; text-transform: uppercase; }
+  .ffb-bug .ffb-bug-value small {
+    margin-inline-start: 6px;
+    color: var(--ffb-bug-muted);
+    font-size: 12.5px;
+    font-weight: 600;
+    font-stretch: 88%;
+    text-transform: none;
+  }
+  /* The live cell stands 4px proud of the bar, top and bottom. */
+  .ffb-bug-live {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    gap: 5px;
+    margin-block: -6px;
+    border-inline-end: 0;
+    background: var(--ffb-hi);
+    color: var(--ffb-on-fill);
+  }
+  .ffb-bug-live .ffb-bug-label { color: var(--ffb-on-fill); }
+  /* The live cell's width does not follow the name in it, so the bar wraps at the same point, and
+     keeps the same height, whoever is on the clock. A long name ends in an ellipsis. */
+  .ffb-bug-live > .ffb-bug-value,
+  .ffb-bug-note {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media (min-width: 768px) {
+    .ffb-bug-live > .ffb-bug-value,
+    .ffb-bug-live > .ffb-bug-note { inline-size: 8.5rem; }
+  }
+  /* A small second line under a cell's value (the pick just logged). */
+  .ffb-bug-note {
+    margin: 0;
+    color: var(--ffb-bug-muted);
+    font-size: 11.5px;
+    font-weight: 600;
+    font-stretch: 88%;
+    line-height: 1;
+  }
+  .ffb-bug-live > .ffb-bug-note { color: var(--ffb-on-fill); }
+  .ffb-bug-seg:has(+ .ffb-bug-actions),
+  .ffb-bug-seg:last-child { border-inline-end: 0; }
+  .ffb-bug-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--ffb-s1);
+    margin-inline-start: auto;
+    padding-inline: var(--ffb-s3);
+  }
+  .ffb-bug-btn {
+    height: var(--ffb-control);
+    padding-inline: 14px;
+    border: 1px solid var(--ffb-bug-muted);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ffb-bug-ink);
+    font-size: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ffb-bug-btn-quiet { border-color: transparent; }
+  .ffb-bug-btn:hover { border-color: var(--ffb-bug-ink); }
+  .ffb-bug-btn:disabled { border-style: dashed; color: var(--ffb-bug-muted); cursor: not-allowed; }
+
+  /* A notice: text with a 3px key rule in the tone's ink. No border, no fill. */
+  .ffb-notice {
+    max-width: 96ch;
+    padding-inline-start: 13px;
+    border-inline-start: 3px solid var(--ffb-ink);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .ffb-notice > * + * { margin-top: 6px; }
+  .ffb-notice-title,
+  .ffb-notice strong { font-weight: 700; }
+  .ffb-notice-warn { border-inline-start-color: var(--ffb-warn); }
+  .ffb-notice-bad { border-inline-start-color: var(--ffb-bad); }
+  .ffb-notice-good { border-inline-start-color: var(--ffb-good); }
+  /* Something the page is holding back (a withheld verdict, a paused read). */
+  .ffb-notice-held { border-inline-start-style: dashed; border-inline-start-color: var(--ffb-edge); }
+  .ffb-notice-actions { display: flex; flex-wrap: wrap; gap: var(--ffb-s2); margin-top: var(--ffb-s2); }
+
+  /* A status word in an outline. Tone it with .ffb-good, .ffb-bad, or .ffb-warn. */
+  .ffb-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    padding-inline: 6px;
+    border: 1px solid currentColor;
+    font-size: 10.5px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  /* A count of what is mine (queued players). */
+  .ffb-countbadge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    padding-inline: 4px;
+    border-radius: var(--ffb-radius);
+    background: var(--ffb-hi);
+    color: var(--ffb-on-fill);
+    font-size: 12.5px;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  /* A meter, set with --ffb-value. A weighted one is as wide as its --ffb-weight. */
+  .ffb-meter {
+    position: relative;
+    display: block;
+    height: 6px;
+    background: var(--ffb-rule);
+  }
+  .ffb-meter::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--ffb-value, 0%);
+    background: var(--ffb-ink);
+  }
+  .ffb-meter-weighted { width: var(--ffb-weight, 100%); }
+  /* One scored component: label, reading, meter, and a line of detail. */
+  .ffb-score {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: var(--ffb-s1) var(--ffb-s3);
+    padding-block: var(--ffb-s2);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-score-label { font-size: 14px; }
+  .ffb-score-value { color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; white-space: nowrap; }
+  .ffb-score > .ffb-meter,
+  .ffb-score-note { grid-column: 1 / -1; }
+  .ffb-score-note { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.4; }
+
+  /* The trade verdict's head, and the frame of the balance scale. */
+  .ffb-verdict { display: grid; gap: var(--ffb-s2); }
+  .ffb-verdict.ffb-notice > * + * { margin-top: 0; }
+  .ffb-verdict-title { font-size: 26px; line-height: 0.95; }
+  .ffb-verdict-body { font-size: 15px; line-height: 1.45; }
+  .ffb-scale { margin: 0; padding-block: var(--ffb-s3); color: var(--ffb-ink); }
+  .ffb-scale > svg { display: block; width: 100%; height: auto; }
+  .ffb-scale > figcaption { margin-top: var(--ffb-s2); color: var(--ffb-muted); font-size: 12.5px; }
+
+  /* ========================================================================
+   * 13. Overlays
+   * The panels are position: fixed children of the route root, so nothing above them may carry
+   * transform, filter, contain, or will-change.
+   * ====================================================================== */
+  .ffb-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--c97-z-drawer, 60);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .ffb-overlay-modal { z-index: var(--c97-z-modal, 70); align-items: center; justify-content: center; padding: var(--ffb-s4); }
+  .ffb-overlay-sheet { z-index: var(--c97-z-sheet, 80); align-items: flex-end; justify-content: center; }
+  .ffb-scrim {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: var(--ffb-scrim);
+    cursor: default;
+  }
+  /* The right-hand drawer. It becomes a bottom sheet on a phone. */
+  .ffb-drawer,
+  .ffb-sheet,
+  .ffb-modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    --ffb-surface: var(--ffb-raised);
+    background: var(--ffb-surface);
+    color: var(--ffb-ink);
+  }
+  .ffb-drawer { width: min(26rem, 100%); height: 100%; border-inline-start: 2px solid var(--ffb-ink); }
+  .ffb-sheet { width: 100%; max-height: 88dvh; border-top: 2px solid var(--ffb-ink); }
+  .ffb-modal { width: min(44rem, 100%); max-height: 88dvh; border: 1px solid var(--ffb-rule); border-top: 2px solid var(--ffb-ink); }
+  .ffb-panel-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--ffb-s3);
+    padding: var(--ffb-s4) var(--ffb-s4) var(--ffb-s3) var(--ffb-s5);
+    border-bottom: 1px solid var(--ffb-rule);
+    background: var(--ffb-surface);
+  }
+  /* One column that cannot be wider than the panel, whatever its widest block wants. */
+  .ffb-panel-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ffb-s5); padding: var(--ffb-s4) var(--ffb-s5) var(--ffb-s5); }
+
+  /* The compare tray: a band pinned to the bottom of the screen. */
+  .ffb-tray {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: var(--c97-z-tray, 50);
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 2px solid var(--ffb-ink);
+    --ffb-surface: var(--ffb-raised);
+    background: var(--ffb-surface);
+    color: var(--ffb-ink);
+  }
+  .ffb-tray-row { display: flex; flex-wrap: nowrap; align-items: center; gap: var(--ffb-s2) var(--ffb-s3); min-height: 56px; padding-block: var(--ffb-s2); }
+  /* Room at the end of the page for the tray. */
+  .ffb-tray-space { height: 80px; }
+
+  .ffb-toast {
+    position: fixed;
+    inset: auto auto calc(var(--ffb-s5) + env(safe-area-inset-bottom)) 50%;
+    z-index: var(--c97-z-toast, 55);
+    display: flex;
+    align-items: center;
+    gap: var(--ffb-s3);
+    max-width: calc(100vw - 2 * var(--ffb-s4));
+    padding: 10px var(--ffb-s4);
+    translate: -50% 0;
+    background: var(--ffb-ink);
+    color: var(--ffb-board);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+
+  /* Entrances. They start from @starting-style, so the first paint is never transparent. */
+  @media (prefers-reduced-motion: no-preference) {
+    .ffb-enter-fade,
+    .ffb-enter-rise,
+    .ffb-enter-side { transition: opacity 160ms ease-out, translate 200ms cubic-bezier(0.22, 1, 0.36, 1); }
+    @starting-style {
+      .ffb-enter-fade { opacity: 0; }
+      .ffb-enter-rise { opacity: 0; translate: 0 20px; }
+      .ffb-enter-side { opacity: 0; translate: 24px 0; }
+    }
+  }
+
+  /* ========================================================================
+   * 14. States
+   * ====================================================================== */
+  .ffb-skel { display: block; height: 12px; background: var(--ffb-rule); }
+  .ffb-skel-row {
+    display: flex;
+    align-items: center;
+    gap: var(--ffb-s3);
+    height: var(--ffb-row);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-skel-title { width: 220px; height: 34px; }
+  .ffb-skel-line { width: min(100%, 520px); }
+  .ffb-skel-ctl { width: 150px; height: var(--ffb-control); }
+  .ffb-skel-ctl-wide { width: min(100%, 320px); }
+  .ffb-skel-row > .ffb-skel:nth-child(1) { width: 22px; }
+  .ffb-skel-row > .ffb-skel:nth-child(2) { width: 46px; height: 20px; }
+  .ffb-skel-row > .ffb-skel:nth-child(3) { width: 30%; margin-inline-end: auto; }
+  .ffb-skel-row:nth-child(even) > .ffb-skel:nth-child(3) { width: 22%; }
+  .ffb-skel-row > .ffb-skel:nth-child(n + 4) { width: 40px; }
+  /* The route's loading state holds the screen so the footer does not jump up. */
+  .ffb-loading { min-height: 70dvh; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ffb-skel { animation: ffb-skel-pulse 1.4s ease-in-out infinite; }
+  }
+  @keyframes ffb-skel-pulse {
+    50% { opacity: 0.5; }
+  }
+  /* Nothing to show: a line, a reason, one action. */
+  .ffb-empty {
+    display: grid;
+    justify-items: start;
+    gap: var(--ffb-s2);
+    padding-block: var(--ffb-s5);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-empty-title { font-size: 18px; line-height: 1; }
+  /* A muted paragraph, in an empty state or anywhere else. */
+  .ffb-copy,
+  .ffb-empty-body { max-width: 62ch; color: var(--ffb-muted); font-size: 14px; line-height: 1.45; }
+
+  /* ========================================================================
+   * 15. Prose
+   * ====================================================================== */
+  .ffb-prose { max-width: 68ch; font-size: 15px; line-height: 1.5; }
+  .ffb-prose > * + * { margin-top: var(--ffb-s3); }
+  .ffb-prose a,
+  .ffb-notice a,
+  .ffb-method a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  /* Questions and answers in columns. */
+  .ffb-faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--ffb-s5) var(--ffb-s6); }
+  .ffb-faq > * { display: grid; align-content: start; gap: 6px; }
+  .ffb-faq p { color: var(--ffb-muted); font-size: 14px; line-height: 1.5; }
+  /* Field notes: a numbered or plain list of short entries. */
+  .ffb-notes { display: grid; }
+  .ffb-note {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 4px var(--ffb-s2);
+    padding-block: var(--ffb-s3);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-note > :not(.ffb-note-num) { grid-column: 2; }
+  .ffb-note-num { grid-row: 1 / span 3; font-size: 20px; line-height: 1; }
+  .ffb-note p { color: var(--ffb-muted); font-size: 14px; line-height: 1.5; }
+  /* The method footnote under a board. */
+  .ffb-method { max-width: 96ch; color: var(--ffb-muted); font-size: 12.5px; line-height: 1.5; }
+  /* A page's last line: its source or method sentence on a rule. */
+  .ffb-method-ruled {
+    max-width: none;
+    padding-top: var(--ffb-s3);
+    /* The rule runs the width of the column, and the padding holds the sentence to the method's measure. */
+    padding-inline-end: max(0px, calc(100% - 96ch));
+    border-top: 1px solid var(--ffb-rule);
+  }
+  /* The last line of a page: one sentence and links to the sibling tools. */
+  .ffb-footlinks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--ffb-s2) var(--ffb-s5);
+    padding-top: var(--ffb-s3);
+    border-top: 1px solid var(--ffb-rule);
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .ffb-footlinks > :is(nav, ul, div) { display: flex; flex-wrap: wrap; gap: var(--ffb-s1) var(--ffb-s4); }
+  .ffb-footlinks a { color: var(--ffb-ink); }
+
+  /* ========================================================================
+   * 15b. Round 2: parts the first five pages needed
+   * ====================================================================== */
+  /* A label with a help trigger beside it, on one line. */
+  .ffb-with-help { display: flex; align-items: center; gap: var(--ffb-s1); }
+  /* A block in a column that carries its own bottom margin, where the column cannot use a gap. */
+  .ffb-block { margin-bottom: var(--ffb-s3); }
+
+  /* A board whose column heads are pinned on the ink rule (.ffb-sticky-ruled). The first tier's tab
+     hangs from that rule, and whatever comes first under it drops its own rule. */
+  .ffb-board-ruled > .ffb-tier:first-of-type > .ffb-tier-head { height: 28px; border-top: 0; }
+  .ffb-board-ruled > * > .ffb-row:first-child,
+  .ffb-board-ruled .ffb-empty,
+  .ffb-board-ruled .ffb-skel-row:first-child { border-top: 0; }
+
+  /* A chip, a name, and a team in one cell of a table or a stacked row. */
+  .ffb-namecell { display: flex; flex-wrap: wrap; align-items: center; gap: 2px var(--ffb-s2); min-width: 0; }
+
+  /* A two-line row outside a board: the chip, the name over the team, one number, one action. */
+  .ffb-row-two {
+    --ffb-cols: 46px minmax(0, 1fr) 44px var(--ffb-control);
+    grid-template-rows: auto auto;
+    align-content: center;
+    row-gap: 3px;
+    min-height: 52px;
+    padding-block: 6px;
+  }
+  /* It is not a button, so it does not light up under the pointer. */
+  .ffb-row-two:hover { background-color: transparent; }
+  .ffb-row-two > .ffb-chip { grid-area: 1 / 1 / 3 / 2; justify-self: start; }
+  .ffb-row-two > .ffb-c-name { grid-area: 1 / 2; }
+  .ffb-row-two > .ffb-c-team { grid-area: 2 / 2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ffb-row-two > .ffb-c-num { grid-area: 1 / 3 / 3 / 4; font-size: 15px; }
+  .ffb-row-two > :is(.ffb-iconbtn, .ffb-btn, .ffb-log, .ffb-star) { grid-area: 1 / 4 / 3 / 5; }
+
+  /* A phone list that is a table reflowed. Each row is the player over his values, the values sit
+     in columns that hold their place down the list, and one head names the columns. Set
+     --ffb-pair-cols on the list's wrapper, and the head and every row read it. */
+  .ffb-listhead {
+    --ffb-cols: 28px var(--ffb-pair-cols, repeat(3, minmax(0, 1fr)));
+    column-gap: var(--ffb-s2);
+    border-bottom: 2px solid var(--ffb-ink);
+  }
+  .ffb-listhead + .ffb-rows > .ffb-row:first-child { border-top: 0; }
+  .ffb-row-stack {
+    --ffb-cols: 28px minmax(0, 1fr);
+    align-items: start;
+    column-gap: var(--ffb-s2);
+    padding-block: var(--ffb-s2);
+  }
+  /* A list with no rank column. */
+  .ffb-listhead-plain { --ffb-cols: var(--ffb-pair-cols, repeat(3, minmax(0, 1fr))); }
+  .ffb-row-stack-plain { --ffb-cols: minmax(0, 1fr); }
+  .ffb-row-stack > .ffb-c-rank { line-height: 22px; }
+  .ffb-row-stack .ffb-namecell { min-height: 22px; font-size: 15px; font-weight: 600; }
+  .ffb-pairs-cols {
+    display: grid;
+    grid-template-columns: var(--ffb-pair-cols, repeat(3, minmax(0, 1fr)));
+    gap: 0 var(--ffb-s2);
+    margin-top: var(--ffb-s1);
+  }
+  .ffb-pairs-cols > div { display: block; min-width: 0; }
+  /* The head names the columns for the eye. Each row keeps its labels for assistive tech. */
+  .ffb-pairs-cols dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .ffb-pairs-cols dd { font-size: 14px; font-weight: 500; line-height: 18px; }
+  .ffb-pairs-cols dd.ffb-is-strong { font-weight: 700; }
+
+  /* Load more beside a second button. */
+  .ffb-more-row { display: flex; flex-wrap: wrap; gap: var(--ffb-s2); margin-top: var(--ffb-s4); }
+  .ffb-more-row > .ffb-more { flex: 1 1 200px; width: auto; margin-top: 0; }
+
+  /* Four figures as two by two at every width. Auto-fit leaves three and one. */
+  .ffb-stats-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ffb-stats-2 .ffb-stat dd { overflow-wrap: anywhere; }
+
+  /* A line of short items joined by dots. The dot trails its item, so a wrapped line never starts with one. */
+  .ffb-dotlist { display: flex; flex-wrap: wrap; }
+  .ffb-dotlist > * { white-space: nowrap; }
+  .ffb-dotlist > :not(:last-child)::after { content: "·" / ""; margin-inline: 6px; }
+  /* The freshness line is built the same way: each part holds together and takes its dot with it. */
+  @media (min-width: 768px) {
+    .ffb-fresh-part { white-space: nowrap; }
+  }
+
+  /* The spread plot standing alone (a drawer, a compare column). In a board row the plot fills its
+     cell. Here it has a height of its own, larger marks, and a mark even for a range of one rank. */
+  .ffb-plot { display: grid; gap: 6px; min-width: 0; }
+  .ffb-plot .ffb-spread { height: 32px; }
+  .ffb-plot .ffb-spread-range { min-width: 4px; height: 3px; margin-top: -1.5px; }
+  .ffb-plot .ffb-spread-sd { height: 12px; margin-top: -6px; }
+  .ffb-plot .ffb-spread-avg { height: 24px; margin-top: -12px; }
+  /* The compact form keeps the board's marks at a 20px height. */
+  .ffb-plot-compact .ffb-spread { height: 20px; }
+  .ffb-plot-compact .ffb-spread-range { height: 2px; margin-top: -1px; }
+  .ffb-plot-compact .ffb-spread-sd { height: 8px; margin-top: -4px; }
+  .ffb-plot-compact .ffb-spread-avg { height: 16px; margin-top: -8px; }
+  /* Best, average, and worst under the plot. */
+  .ffb-plot-ends {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--ffb-s2);
+    color: var(--ffb-muted);
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .ffb-plot-ends > .ffb-is-avg { color: var(--ffb-ink); font-weight: 600; }
+  .ffb-plot-none { color: var(--ffb-muted); font-size: 12.5px; }
+
+  /* A sticker with a remove button inside it (a pinned player in the compare tray). */
+  .ffb-sticker-pin {
+    flex: 0 1 auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: center;
+    column-gap: var(--ffb-s1);
+    min-height: var(--ffb-control);
+    padding-block: 0;
+    padding-inline-end: 0;
+  }
+  /* The button sets the height, and the two lines sit together in the middle of it. */
+  .ffb-sticker-pin > .ffb-sticker-meta { grid-column: 1; align-self: end; justify-content: flex-start; }
+  .ffb-sticker-pin > .ffb-sticker-name { grid-column: 1; align-self: start; max-width: 12rem; }
+  .ffb-sticker-remove { grid-area: 1 / 2 / 3 / 3; color: var(--ffb-on-fill); }
+  .ffb-sticker-remove:hover { background-color: transparent; box-shadow: inset 0 0 0 2px var(--ffb-on-fill); }
+
+  /* A clock in a cell of its own. The clock is advisory, so it is quiet while other teams pick,
+     and it takes the highlighter only when the page marks it urgent (the end of my own pick). */
+  .ffb-bug-seg.ffb-is-quiet .ffb-bug-value { color: var(--ffb-bug-muted); }
+  .ffb-bug-seg.ffb-is-urgent {
+    margin-block: -6px;
+    border-inline-end: 0;
+    background: var(--ffb-hi);
+    color: var(--ffb-on-fill);
+  }
+  .ffb-bug-seg.ffb-is-urgent :is(.ffb-bug-label, small) { color: var(--ffb-on-fill); }
+  /* A long and a short form of one text in the bar. Below 1300px six cells and three buttons fit
+     one line only with the short forms. */
+  .ffb-bug-short { display: none; }
+  @media (max-width: 1299.98px) {
+    .ffb-bug-short { display: revert; }
+    .ffb-bug-long { display: none; }
+  }
+
+  /* The pick grid in a box that scrolls sideways, for a 14 or 16 team room in a narrow rail. */
+  /* The highlighter band runs 3px past my column on each side, so the scroller is 3px wider each
+     way and the band stays inside it when my column is the last. */
+  .ffb-gridwrap { margin-inline: -3px; padding-inline: 3px; overflow-x: auto; scrollbar-width: thin; }
+  .ffb-gridwrap > .ffb-grid { min-width: calc(var(--ffb-grid-lead) + var(--ffb-teams, 12) * 24px); }
+  .ffb-grid-tight .ffb-cell:not(.ffb-is-made) { font-size: 10px; }
+
+  /* "Your pick is live": a highlighter tab hanging from an ink rule, then the facts side by side
+     with no boxes. */
+  .ffb-strip-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--ffb-s3);
+    border-top: 2px solid var(--ffb-ink);
+  }
+  .ffb-strip-head > .ffb-turn-tab {
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    font-size: 13px;
+    line-height: 24px;
+  }
+  /* The floor is what one fact needs for a chip, a long name, and its Log button, so a fact a
+     disclosure adds wraps to a new row and does not squeeze the first three. */
+  .ffb-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 248px), 1fr));
+    column-gap: var(--ffb-s5);
+    border-bottom: 1px solid var(--ffb-rule);
+  }
+  .ffb-strip-item {
+    display: grid;
+    align-content: start;
+    gap: 4px;
+    min-width: 0;
+    padding-block: var(--ffb-s2) var(--ffb-s3);
+  }
+  .ffb-strip-line {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--ffb-s2);
+    min-height: var(--ffb-control);
+  }
+  .ffb-strip-line > .ffb-c-name { min-height: var(--ffb-control); }
+  .ffb-strip-value { display: flex; align-items: center; min-height: var(--ffb-control); font-size: 24px; line-height: 1; }
+  .ffb-strip-note { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.4; }
+
+  /* Ruled entries: a title line and a muted note between hairlines (signals, a turn replay, position runs). */
+  .ffb-entries { display: grid; }
+  .ffb-entry {
+    display: grid;
+    gap: 4px;
+    padding-block: var(--ffb-s2);
+    border-top: 1px solid var(--ffb-rule);
+  }
+  .ffb-entry:first-child { padding-top: 0; border-top: 0; }
+  .ffb-entry-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s1) var(--ffb-s2); }
+  .ffb-entry-note { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
+
+  /* ========================================================================
+   * 16. Narrower desktops and tablets: the rail drops under the list
+   * ====================================================================== */
+  @media (max-width: 1199.98px) {
+    .ffb-work,
+    .ffb-work-3 { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s6); }
+    .ffb-rail {
+      position: static;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      column-gap: var(--ffb-s6);
+      align-items: start;
+      max-height: none;
+      overflow: visible;
+    }
+    .ffb-rail-scroll { margin-inline: 0; padding-inline: 0; }
+    /* The section marked .ffb-rail-lead moves above the list and the rest of the rail follows the
+       list, in the columns the rail had. The rail is not a box here, so its sections are the grid's items. */
+    .ffb-work-split {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      column-gap: var(--ffb-s6);
+      row-gap: var(--ffb-s5);
+    }
+    .ffb-work-split > .ffb-rail { display: contents; }
+    .ffb-work-split > :not(.ffb-rail),
+    .ffb-work-split > .ffb-rail > .ffb-rail-lead { grid-column: 1 / -1; }
+    .ffb-work-split > .ffb-rail > * { order: 1; min-width: 0; }
+    .ffb-work-split > .ffb-rail > .ffb-rail-lead { order: -1; }
+    /* The lead roster is compact: the code over the name in sockets of 62px or more, so a lineup of
+       ten is one row from 900px. Below 900px a ten-socket row leaves a name 50px, which cuts a last
+       name of nine letters ("Stevenson"), so the sockets are 72px or more and the row wraps: eight
+       and two at 768px, four across on a phone. Rows are added as the lineup needs them. */
+    .ffb-rail-lead .ffb-slots {
+      grid-template-columns: repeat(auto-fit, minmax(62px, 1fr));
+      grid-template-rows: none;
+      grid-auto-rows: 44px;
+      grid-auto-flow: row;
+      gap: var(--ffb-s1);
+    }
+    @media (max-width: 899.98px) {
+      .ffb-rail-lead .ffb-slots { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); }
+    }
+    .ffb-rail-lead .ffb-slot {
+      grid-template-columns: minmax(0, 1fr);
+      align-content: center;
+      row-gap: 4px;
+      padding-inline: 10px 4px;
+      line-height: 1;
+    }
+    .ffb-rail-lead .ffb-slot-code { font-size: 12px; }
+    .ffb-rail-lead .ffb-slot-name,
+    .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name { font-size: 12px; }
+    .ffb-rail-lead .ffb-slot .ffb-slot-meta { display: none; }
+    .ffb-rail-lead .ffb-slot-bench .ffb-slot-name { display: none; }
+    .ffb-rail-lead .ffb-slot.ffb-slot-bench .ffb-slot-meta { display: block; font-size: 11px; }
+    /* A filled socket prints the last name alone, on up to two lines. The full name is the slot's title. */
+    .ffb-rail-lead .ffb-slot-initial { display: none; }
+    .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-height: 1;
+      white-space: normal;
+    }
+    .ffb-bug-seg { padding-inline: var(--ffb-s3); }
+    .ffb-head-run { grid-template-columns: auto minmax(0, 1fr) auto; }
+    .ffb-head > .ffb-fresh { grid-column: 1 / -1; grid-row: auto; justify-self: start; text-align: left; }
+    .ffb-head-run > .ffb-lede { grid-column: 2 / 4; }
+    .ffb-head-setup .ffb-title { font-size: 46px; }
+  }
+
+  /* ========================================================================
+   * 16b. A phone, or a touch pointer at any width: the controls that do not read
+   * --ffb-control take their 44px here
+   * ====================================================================== */
+  @media (max-width: 767.98px), (pointer: coarse) {
+    .ffb-bar { height: 45px; }
+    .ffb-bar-link { min-width: 44px; justify-content: center; }
+    .ffb-seg-btn { height: 44px; }
+    .ffb-search-clear { width: 44px; height: 44px; }
+    .ffb-star { width: 44px; height: 44px; }
+    /* A link that stands by itself holds a 44px target, and the negative margin keeps its line's
+       height. A link that runs inside a sentence is exempt (the inline exception in WCAG's target
+       size rule): two boxes on consecutive lines overlapped, so a tap on one opened the other. */
+    .ffb-link:not(:is(.ffb-notice, .ffb-method, .ffb-lede, .ffb-fresh, .ffb-copy, .ffb-empty-body) .ffb-link),
+    .ffb-footlinks a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      margin-block: -13px;
+    }
+    .ffb-tab { height: 44px; }
+    .ffb-neighbor { min-height: 44px; }
+    .ffb-log { height: 44px; }
+    button.ffb-c-name { min-height: 44px; }
+  }
+
+  /* ========================================================================
+   * 17. Phones (below Tailwind's md)
+   * ====================================================================== */
+  @media (max-width: 767.98px) {
+
+    .ffb-bar-links { margin-inline-end: calc(-1 * var(--ffb-bleed)); padding-inline: var(--ffb-s1) var(--ffb-bleed); }
+    /* The name tab sets its two words one over the other, and the links take 8px a side, so the
+       current link has two whole neighbours, or a cut word says there are more. */
+    .ffb-bar-name { width: min-content; padding-inline: 10px; font-size: 12px; line-height: 1; white-space: normal; }
+    .ffb-bar-link { padding-inline: var(--ffb-s2); }
+    .ffb-bar-link[aria-current="page"]::after { inset-inline: var(--ffb-s2); }
+
+    .ffb-head,
+    .ffb-head-run { grid-template-columns: minmax(0, 1fr); padding-block: var(--ffb-s4) var(--ffb-s2); }
+    .ffb-title { font-size: 34px; }
+    .ffb-lede { font-size: 14.5px; }
+    .ffb-head > :is(.ffb-title, .ffb-lede, .ffb-fresh, .ffb-head-aside, .ffb-head-row) { grid-column: 1; grid-row: auto; }
+    /* Stretch, so a wide child (a sideways scroller in the row) is held to the column. */
+    .ffb-head > .ffb-fresh { justify-self: stretch; font-size: 12px; text-align: left; }
+    .ffb-head-aside { justify-content: flex-start; justify-self: start; }
+    .ffb-head-run .ffb-title { font-size: 26px; }
+    .ffb-head-setup .ffb-title { font-size: 40px; }
+    .ffb-head-setup .ffb-lede { font-size: 15.5px; }
+
+    .ffb-toolbar { gap: var(--ffb-s2); }
+    .ffb-toolbar > .ffb-seg { flex: 1 1 auto; }
+    .ffb-toolbar > .ffb-seg > .ffb-seg-btn { flex: 1 1 auto; }
+    .ffb-seg-btn { padding-inline: 6px; font-size: 11.5px; }
+    /* Eight 44px targets do not fit 334px, so the position switch scrolls sideways off the right edge. */
+    .ffb-toolbar > :is(.ffb-seg-pos, .ffb-seg-scroll),
+    :is(.ffb-seg-pos, .ffb-seg-scroll) {
+      flex: 0 0 auto;
+      max-width: calc(100% + var(--ffb-bleed));
+      margin-inline-end: calc(-1 * var(--ffb-bleed));
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .ffb-toolbar > :is(.ffb-seg-pos, .ffb-seg-scroll) > .ffb-seg-btn,
+    :is(.ffb-seg-pos, .ffb-seg-scroll) > .ffb-seg-btn { flex: none; padding-inline: 10px; }
+    .ffb-toolbar > .ffb-search { flex: 1 1 160px; min-width: min(100%, 160px); }
+    .ffb-search-input { width: auto; flex-basis: 0; font-size: 16px; }
+    .ffb-count { flex-basis: 100%; text-align: right; }
+    :is(.ffb-input, .ffb-select, .ffb-textarea) { font-size: 16px; }
+    .ffb-btn-lg { height: 48px; }
+    /* Three labels fit a 320px screen at this gap. */
+    .ffb-tabs { gap: var(--ffb-s3); }
+    .ffb-log { width: 52px; }
+
+    /* A row is two lines: the name over the chip, team, and bye, with one or two numbers at
+       the right and the action at the edge. Mark the numbers a phone keeps with .ffb-m-top,
+       .ffb-m-sub, or .ffb-m-meta. Everything else in the row drops out. */
+    .ffb-board-log { --ffb-act-cols: 52px; }
+    .ffb-board-star-log { --ffb-act-cols: 44px 52px; }
+    .ffb-board-plain { --ffb-act-cols: 0px; }
+    .ffb-board :is(.ffb-colhead, .ffb-row) { column-gap: var(--ffb-s2); }
+    .ffb-board .ffb-row {
+      grid-template-columns: 24px auto auto auto minmax(0, 1fr) auto var(--ffb-act-cols, 44px);
+      grid-template-rows: auto auto;
+      row-gap: 5px;
+      align-content: center;
+      min-height: 60px;
+      padding-block: var(--ffb-s2);
+    }
+    .ffb-board .ffb-row > :is(.ffb-c-num, .ffb-spread) { display: none; }
+    .ffb-board .ffb-c-rank { grid-area: 1 / 1; }
+    .ffb-board .ffb-c-name { grid-area: 1 / 2 / 2 / 6; }
+    /* Where the name is the opener, the button covers both lines and the second line lies over it. */
+    .ffb-board button.ffb-c-name { grid-row: 1 / 3; align-self: stretch; min-height: 44px; padding-bottom: 25px; }
+    .ffb-board .ffb-row:has(> button.ffb-c-name) > :is(.ffb-chip, .ffb-c-team, .ffb-c-bye, .ffb-m-meta) { position: relative; pointer-events: none; }
+    .ffb-board .ffb-row > .ffb-chip { grid-area: 2 / 2; }
+    .ffb-board .ffb-c-team { grid-area: 2 / 3; }
+    .ffb-board .ffb-c-bye { grid-area: 2 / 4; font-size: 12px; text-align: left; }
+    .ffb-board .ffb-row > .ffb-c-num.ffb-m-top { display: block; grid-area: 1 / 6; }
+    .ffb-board .ffb-row > .ffb-c-num.ffb-m-sub { display: block; grid-area: 2 / 6; }
+    .ffb-board .ffb-row > .ffb-c-num.ffb-m-meta { display: block; grid-area: 2 / 5; color: var(--ffb-muted); font-size: 12px; text-align: left; }
+    .ffb-board .ffb-row > .ffb-star { grid-area: 1 / 7 / 3 / 8; }
+    .ffb-board .ffb-row > .ffb-log { grid-area: 1 / -2 / 3 / -1; }
+    .ffb-is-queued .ffb-c-rank { margin-inline: -2px; padding-inline: 2px; }
+    /* The column head keeps only what is marked .ffb-m-show. */
+    .ffb-board .ffb-colhead { display: flex; gap: var(--ffb-s2); }
+    .ffb-board .ffb-colhead > :not(.ffb-m-show) { display: none; }
+    .ffb-board .ffb-colhead > .ffb-m-show:last-child { margin-inline-start: auto; }
+    .ffb-tier-head { gap: var(--ffb-s2); }
+    .ffb-tier-name { gap: var(--ffb-s2); }
+
+    .ffb-table { --ffb-row: 44px; }
+
+    /* The scorebug runs edge to edge in two rows: the live cell with the actions, then the other cells. */
+    .ffb-bug {
+      flex-wrap: wrap;
+      min-height: 0;
+      margin-inline: calc(-1 * var(--ffb-bleed));
+    }
+    .ffb-bug::after { content: ""; order: -1; flex-basis: 100%; height: 0; }
+    .ffb-bug-live {
+      order: -2;
+      flex: 1 1 176px;
+      min-height: 56px;
+      margin-block: -2px 0;
+      padding-inline: var(--ffb-bleed) var(--ffb-s2);
+    }
+    .ffb-bug-actions { order: -1; flex: none; gap: 0; margin-inline-start: 0; padding-inline: var(--ffb-s1) var(--ffb-s2); }
+    .ffb-bug-btn { height: 44px; padding-inline: 9px; font-size: 11.5px; }
+    .ffb-bug-seg:not(.ffb-bug-live) {
+      flex: 1 1 0;
+      gap: 4px;
+      min-height: 46px;
+      padding-inline: var(--ffb-s3) var(--ffb-s1);
+      border-top: 1px solid var(--ffb-bug-rule);
+      white-space: normal;
+    }
+    .ffb-bug-seg:not(.ffb-bug-live):first-of-type,
+    .ffb-bug-live + .ffb-bug-seg { padding-inline-start: var(--ffb-s3); }
+    .ffb-bug-label { font-size: 10px; letter-spacing: 0.05em; white-space: nowrap; }
+    .ffb-bug-value { font-size: 19px; white-space: nowrap; }
+    .ffb-bug .ffb-bug-value small { margin-inline-start: 3px; font-size: 11px; }
+    .ffb-bug-note { font-size: 10.5px; }
+
+    .ffb-picks { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s2); padding-block: var(--ffb-s3); }
+    .ffb-picks-list {
+      display: flex;
+      gap: var(--ffb-s1);
+      margin-inline-end: calc(-1 * var(--ffb-bleed));
+      padding-inline-end: var(--ffb-bleed);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .ffb-picks-list > * { flex: 0 0 150px; }
+    .ffb-picks-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--ffb-s3);
+    }
+    .ffb-picks-note { max-width: none; }
+
+    .ffb-rail { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s5); }
+    .ffb-grid { --ffb-grid-lead: 30px; }
+    .ffb-cell.ffb-is-made { font-size: 10.5px; }
+
+    /* The drawer and the modal come up from the bottom. */
+    .ffb-overlay { align-items: flex-end; justify-content: center; }
+    .ffb-overlay-modal { padding: 0; }
+    .ffb-drawer,
+    .ffb-modal { width: 100%; height: auto; max-height: 88dvh; border: 0; border-top: 2px solid var(--ffb-ink); }
+    .ffb-panel-head { padding-inline: var(--ffb-s4) var(--ffb-s2); }
+    .ffb-panel-body { padding-inline: var(--ffb-s4); }
+    .ffb-toast { inset-inline: var(--ffb-s4); translate: none; max-width: none; }
+    /* On a phone the urgent clock sits in the bar's second row, so it does not stand proud. */
+    .ffb-bug-seg.ffb-is-urgent { margin-block: 0; }
+    /* The product bar rests with a whole link at its left edge, never a word cut by the name tab. */
+    .ffb-bar-links { scroll-snap-type: x mandatory; scroll-padding-inline-start: var(--ffb-s1); }
+    .ffb-bar-links > li { scroll-snap-align: start; }
+    .ffb-bar-links::after { content: ""; flex: none; width: 100%; }
+    .ffb-note { grid-template-columns: 24px minmax(0, 1fr); }
+  }
+
+  /* A number that reads as value at this pick takes the good ink and keeps its sign. It comes
+     after the phone block, whose muted meta number it has to outrank. */
+  .ffb-board .ffb-row > .ffb-c-num.ffb-is-good,
+  .ffb-c-num.ffb-is-good { color: var(--ffb-good); }
+
+  /* A room's phone row with one more thing on its second line (a number with its label). It takes
+     8px from the Log button's column, 2px from each gap, and 4px from the chip, and at 375px and
+     under the second line sets a size smaller, which is the last 12px it needs. */
+  @media (max-width: 767.98px) {
+    .ffb-board.ffb-board-tight { --ffb-act-cols: 44px; }
+    .ffb-board.ffb-board-tight.ffb-board-star-log { --ffb-act-cols: 44px 44px; }
+    .ffb-board.ffb-board-tight .ffb-row { column-gap: 6px; }
+    .ffb-board.ffb-board-tight .ffb-row > .ffb-log { width: 44px; }
+    .ffb-board.ffb-board-tight .ffb-row > .ffb-chip { min-width: 42px; }
+  }
+  @media (max-width: 375.98px) {
+    .ffb-board.ffb-board-tight.ffb-board-tight .ffb-row > :is(.ffb-c-team, .ffb-c-bye, .ffb-m-meta) { font-size: 11px; }
+  }
+
+  /* Slots in one column at every width, with a meta line under the name and a value at the right
+     (the weekly lineup). */
+  .ffb-slots.ffb-slots-list {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(46px, auto);
+    gap: var(--ffb-s1);
+  }
+  .ffb-slots-list > .ffb-slot {
+    grid-template-columns: 50px minmax(0, 1fr) auto;
+    align-content: center;
+    row-gap: 3px;
+    padding-inline: 12px 10px;
+    line-height: 1.1;
+  }
+  .ffb-slots-list > .ffb-slot > .ffb-slot-code { grid-row: 1 / span 2; font-size: 13px; }
+  .ffb-slots-list > .ffb-slot > .ffb-slot-name { display: block; grid-column: 2; font-size: 13px; }
+  /* An open slot has one line, which sits in the middle of the socket. */
+  .ffb-slots-list > .ffb-slot:not(.ffb-is-filled) > .ffb-slot-name { grid-row: 1 / span 2; }
+  .ffb-slots-list > .ffb-slot.ffb-is-filled > .ffb-slot-name { font-size: 16px; }
+  .ffb-slots-list > .ffb-slot > .ffb-slot-meta {
+    display: block;
+    grid-column: 2;
+    overflow: hidden;
+    font-size: 10.5px;
+    text-overflow: ellipsis;
+  }
+  .ffb-slot-value { grid-column: 3; grid-row: 1 / span 2; font-size: 16px; }
+  .ffb-slot-value small { margin-inline-start: 3px; font-size: 10.5px; }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    :is(.ffb-seg-btn, .ffb-btn, .ffb-log, .ffb-more, .ffb-bug-btn, .ffb-row, .ffb-iconbtn, .ffb-choice, .ffb-neighbor, .ffb-toggle) {
+      transition: background-color 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out;
+    }
+  }
+}
+
+/* The 44px sizes of the tokens and of the frame exceptions above, on a phone and for a touch
+   pointer at any width. */
+@media (max-width: 767.98px), (pointer: coarse) {
+  .ffb-root { --ffb-control: 44px; }
+  .ffb-root :is(.ffb-seg-btn, .ffb-iconbtn, .ffb-tab, .ffb-btn-quiet) { min-width: 44px; }
+  .ffb-root .ffb-seg-pos > .ffb-seg-btn { min-width: 46px; }
+  .ffb-root :is(.ffb-star, .ffb-search-clear) { min-width: 44px; }
+  /* A help trigger holds a 44px target, and the negative margin keeps its label's line. */
+  .ffb-root [data-metric-trigger="text"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 44px;
+    min-height: 44px;
+    /* One more than half the difference from a label's line, so the label's line keeps its height. */
+    margin-block: -16px;
+  }
+  /* Over a column of numbers the label stays at the right of its target, on the edge the numbers share. */
+  .ffb-root .ffb-h-num [data-metric-trigger="text"] { justify-content: flex-end; }
+}
+@media (max-width: 767.98px) {
+  /* A cell is about 23px on a phone, so a made cell's label takes the narrow form there too. */
+  .ffb-root .ffb-grid .ffb-cell.ffb-is-made { font-size: 10px; font-stretch: 62%; letter-spacing: 0; }
+}
+/* A compact roster's name takes the face's narrowest width, so the 50px a five-across socket leaves holds "G. Pickens".
+   The type roles are unlayered, so this is too. */
+@media (max-width: 1199.98px) {
+  .ffb-root .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name { font-stretch: 62%; letter-spacing: 0; }
+}
+
+/* A tray is fixed over the foot of the screen, so at the end of the page it would cover the last
+   74px of the site's footer. While a page shows one, the footer runs 80px longer in its own
+   colour and its last lines clear the tray. The tray's spacer in the page is what says one is
+   up. A tray marked .ffb-tray-narrow shows only below 1200px (a room's bottom bar, where the
+   rail is not beside the list). */
+@media (min-width: 1200px) {
+  .ffb-root .ffb-tray-narrow { display: none; }
+}
+@media screen {
+  .c97-page:has(.ffb-root .ffb-tray-space:not(.ffb-tray-narrow)) .c97-footer { border-bottom: 80px solid transparent; }
+}
+@media screen and (max-width: 1199.98px) {
+  .c97-page:has(.ffb-root .ffb-tray-space) .c97-footer { border-bottom: 80px solid transparent; }
+}
+
+/* ==========================================================================
+ * 17b. Forced colours (Windows high contrast)
+ * The system paints its own colours over every fill. The spread's marks and a queued star are
+ * drawn with fills alone, so they take the text colour, and what is pressed or chosen takes the
+ * system's selection pair. That pair needs forced-color-adjust: none, or the browser paints a
+ * plate in the page colour behind the label and the label disappears into it.
+ * ======================================================================== */
+@media (forced-colors: active) {
+  .ffb-root :is(.ffb-spread-range, .ffb-spread-sd, .ffb-spread-avg, .ffb-key-range, .ffb-key-sd, .ffb-key-avg) { background-color: CanvasText; }
+  .ffb-root .ffb-star[aria-pressed="true"] .ffb-star-icon { fill: CanvasText; stroke: CanvasText; }
+  .ffb-root :is(.ffb-seg-btn, .ffb-tab, .ffb-toggle, .ffb-iconbtn):is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]),
+  .ffb-root .ffb-choice:is(:has(input:checked), [aria-pressed="true"], [aria-checked="true"]) {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+
+/* ==========================================================================
+ * 18. Print
+ * The board prints its light palette whatever the theme. Fills stay only where they carry
+ * position, and controls that do nothing on paper are left off.
+ * ======================================================================== */
+@media print {
+  /* A control or a note that does nothing on paper. */
+  .ffb-root :is(.ffb-noprint, .ffb-skip) { display: none; }
+  .ffb-root,
+  html.dark .ffb-root {
+    --ffb-board: #ffffff;
+    --ffb-raised: #ffffff;
+    --ffb-sunk: #f1f2ef;
+    --ffb-rule: #c9cec7;
+    --ffb-grid: #e3e6e1;
+    --ffb-edge: #737d86;
+    --ffb-ink: #15191c;
+    --ffb-muted: #4b545c;
+    --ffb-qb-ink: #c81e45;
+    --ffb-rb-ink: #0b7a4b;
+    --ffb-wr-ink: #1b5fc4;
+    --ffb-te-ink: #a85200;
+    --ffb-k-ink: #6a3bd0;
+    --ffb-dst-ink: #55606a;
+    --ffb-good: #0a6b41;
+    --ffb-bad: #b4162f;
+    --ffb-warn: #8a4a00;
+    --ffb-bug: transparent;
+    --ffb-bug-ink: #15191c;
+    --ffb-bug-muted: #4b545c;
+    --ffb-bug-rule: #c9cec7;
+    --ffb-hi: transparent;
+    --ffb-hi-edge: #15191c;
+    min-height: 0;
+    /* The room at the foot keeps the site's next band off the page's last line. */
+    padding-block: 0 var(--ffb-s5);
+  }
+  .ffb-root :is(.ffb-chip, .ffb-sticker, .ffb-slot, .ffb-cell, .ffb-spread, .ffb-spread-range, .ffb-spread-sd, .ffb-spread-avg, .ffb-seg-btn, .ffb-tier-tab, .ffb-meter, .ffb-meter::before, .ffb-best, .ffb-bar-name) {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .ffb-root :is(.ffb-grid-slot.ffb-is-mine, .ffb-cell.ffb-is-mine:not(.ffb-is-made)) { text-decoration: underline; }
+  .ffb-root :is(.ffb-bar, .ffb-toolbar, .ffb-star, .ffb-log, .ffb-more, .ffb-bug-actions, .ffb-iconbtn, .ffb-search, .ffb-toggle, .ffb-tray, .ffb-tray-space, .ffb-toast, .ffb-scrim, .ffb-head-aside, .ffb-notice-actions) {
+    display: none;
+  }
+  .ffb-root :is(.ffb-sticky, .ffb-rail, .ffb-table-sticky thead th) { position: static; }
+  .ffb-root .ffb-sticky { box-shadow: none; }
+  /* On paper the table head is not stuck, so it takes its real border back. An inset edge leaves seams between head cells in a PDF. */
+  .ffb-root .ffb-table-sticky thead th { border-bottom-color: var(--ffb-ink); box-shadow: none; }
+  /* A scrolling rail prints whole. */
+  .ffb-root.ffb-root .ffb-rail-scroll { max-height: none; margin-inline: 0; padding-inline: 0; overflow: visible; }
+  /* A disclosure marked to print opens on paper, so what it holds (a method, a model's limits) is on the page. */
+  .ffb-root .ffb-details-print::details-content { content-visibility: visible; }
+  .ffb-root .ffb-details-print > summary::after { display: none; }
+  /* With the highlighter off, what was highlighted keeps an ink outline. */
+  .ffb-root :is(.ffb-bug-live, .ffb-cell.ffb-is-live, .ffb-turn-tab, .ffb-countbadge) { outline: 2px solid #15191c; outline-offset: -2px; }
+  /* With a note under its value the cell needs more than the bar's height, so it takes 4px of room
+     above and below and its label clears the outline. */
+  .ffb-root .ffb-bug-live { margin-block: 0; padding-block: var(--ffb-s1); }
+  .ffb-root .ffb-is-queued .ffb-c-rank { text-decoration: underline; text-decoration-thickness: 2px; }
+  .ffb-root :is(.ffb-row, .ffb-fact, .ffb-score, .ffb-note, .ffb-tier-head, .ffb-sticker, .ffb-slot) { break-inside: avoid; }
+  .ffb-root .ffb-tier-head { break-after: avoid; }
+  .ffb-root .ffb-work { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s5); }
+}

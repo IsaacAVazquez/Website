@@ -56,6 +56,42 @@ describe("Catalog97Header utilities", () => {
     expect(header).not.toHaveAttribute("data-search-open");
   });
 
+  it("leaves slash alone when the page has already handled it", () => {
+    render(<Catalog97Header />);
+
+    // A page's own listener runs first and claims the key, as the redraft board does for its search.
+    const claim = (event: KeyboardEvent) => event.preventDefault();
+    document.addEventListener("keydown", claim);
+    fireEvent.keyDown(document.body, { key: "/" });
+    document.removeEventListener("keydown", claim);
+
+    expect(screen.queryByRole("dialog", { name: "Site search" })).not.toBeInTheDocument();
+
+    // The same key with nobody claiming it still opens the site search.
+    fireEvent.keyDown(document.body, { key: "/" });
+    expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
+  });
+
+  it("leaves slash alone while a modal dialog is open, and takes it again once the dialog has gone", () => {
+    render(<Catalog97Header />);
+
+    // A page's drawer, open over the page. Search on top of it would take focus out of the dialog.
+    const drawer = document.createElement("div");
+    drawer.setAttribute("role", "dialog");
+    drawer.setAttribute("aria-modal", "true");
+    document.body.appendChild(drawer);
+
+    const slash = new KeyboardEvent("keydown", { key: "/", bubbles: true, cancelable: true });
+    fireEvent(drawer, slash);
+
+    expect(slash.defaultPrevented).toBe(false);
+    expect(screen.queryByRole("dialog", { name: "Site search" })).not.toBeInTheDocument();
+
+    drawer.remove();
+    fireEvent.keyDown(document.body, { key: "/" });
+    expect(screen.getByRole("dialog", { name: "Site search" })).toBeVisible();
+  });
+
   it("opens search from slash without swallowing slash inside an input", () => {
     render(<Catalog97Header />);
 

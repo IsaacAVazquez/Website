@@ -83,7 +83,7 @@ it("imports a redraft roster without overwriting draft storage", () => {
   fireEvent.click(screen.getByRole("button", { name: "Import draft tracker roster" }));
   expect(localStorage.getItem(key)).toBe(raw);
   expect(scoring).toHaveBeenCalledWith("half_ppr");
-  expect(screen.getByText(/Imported 1 players/)).toBeInTheDocument();
+  expect(screen.getByText(/Imported 1 player and league settings/)).toBeInTheDocument();
 });
 
 it("retains edits in memory and explains when browser writes fail", () => {
@@ -93,7 +93,136 @@ it("retains edits in memory and explains when browser writes fail", () => {
     fireEvent.change(screen.getByLabelText("Find a player to roster or mark available"), { target: { value: "Roster" } });
     fireEvent.click(screen.getByRole("button", { name: "Roster Roster Runner" }));
     expect(screen.getByText(/Changes last only in this tab/)).toBeInTheDocument();
+    // Nothing says "saved" while the browser cannot save.
+    expect(screen.queryByText("Your roster stays saved as you add players.")).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Weekly lineup" }));
     expect(screen.getByRole("option", { name: "Roster Runner (RB)" })).toBeInTheDocument();
   } finally { write.mockRestore(); }
+});
+
+it("says the roster stays saved while storage works", () => {
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  expect(screen.getByText("Your roster stays saved as you add players.")).toBeInTheDocument();
+});
+
+it("names the week and the scoring format the lineup is read in", () => {
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="half_ppr" onScoringChange={jest.fn()} />);
+  expect(screen.getByText("Week 2 · Half PPR · 12 teams · 1 rostered · 1 marked available")).toBeInTheDocument();
+});
+
+it("prints a lineup slot's rank and its board as two words", () => {
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb] }));
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  expect(screen.getByText("Roster Runner").closest("li")).toHaveTextContent("#20 Flex");
+});
+
+// Each of these actions removes the button that was pressed, so focus has to be given somewhere to carry on from.
+describe("focus after an action that removes its own button", () => {
+  const searchField = () => screen.getByLabelText("Find a player to roster or mark available");
+
+  it("returns to the search field after a search result is rostered", () => {
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    fireEvent.change(searchField(), { target: { value: "Roster" } });
+    const roster = screen.getByRole("button", { name: "Roster Roster Runner" });
+    roster.focus();
+    fireEvent.click(roster);
+    expect(screen.queryByRole("button", { name: "Roster Roster Runner" })).not.toBeInTheDocument();
+    expect(document.activeElement).toBe(searchField());
+  });
+
+  it("moves to the notice after a move is saved", () => {
+    localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+    fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+    const save = screen.getByRole("button", { name: "Save this move to my roster" });
+    save.focus();
+    fireEvent.click(save);
+    const notice = screen.getByText("Saved roster updated. Added Available Runner and removed Roster Runner. Make the actual transaction in your league.");
+    expect(notice).toHaveAttribute("tabindex", "-1");
+    expect(document.activeElement).toBe(notice);
+    expect(screen.queryByRole("button", { name: "Save this move to my roster" })).not.toBeInTheDocument();
+  });
+
+  it("closes the sentence once when the dropped name ends in a full stop", () => {
+    const senior = { ...rb, name: "Roster Runner Sr." };
+    const seniorBoard = { ...board, flex: [senior, add] };
+    const seniorSnapshot = { ...snapshot, boards: { ppr: seniorBoard, half_ppr: seniorBoard, standard: seniorBoard } };
+    localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [senior], availableIds: [add.id] }));
+    render(<MyTeamPanel snapshot={seniorSnapshot} board={seniorSnapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+    fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+    fireEvent.click(screen.getByRole("button", { name: "Save this move to my roster" }));
+    expect(screen.getByText("Saved roster updated. Added Available Runner and removed Roster Runner Sr. Make the actual transaction in your league.")).toBeInTheDocument();
+  });
+
+  it("moves to the notice after a draft import", () => {
+    localStorage.setItem("fantasy-draft-tracker-v3-2026", JSON.stringify({ settings: { userTeam: 1, totalTeams: 12, scoringFormat: "PPR" }, picks: [{ teamNumber: 1, player: rb }] }));
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    const importButton = screen.getByRole("button", { name: "Import draft tracker roster" });
+    importButton.focus();
+    fireEvent.click(importButton);
+    const notice = screen.getByText("Imported 1 player and league settings. Existing roster players were kept. Review any moves made since the draft.");
+    expect(document.activeElement).toBe(notice);
+    expect(screen.queryByRole("button", { name: "Import draft tracker roster" })).not.toBeInTheDocument();
+  });
+
+  it("leaves focus on the import button when there is no draft to import", () => {
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    const importButton = screen.getByRole("button", { name: "Import draft tracker roster" });
+    importButton.focus();
+    fireEvent.click(importButton);
+    expect(screen.getByText("No saved 2026 redraft picks were found for your team in this browser.")).toBeInTheDocument();
+    expect(document.activeElement).toBe(importButton);
+  });
+
+  it("moves to the next Remove button after a removal, and to the search field once the roster is empty", () => {
+    const third = { id: "third", name: "Third Receiver", position: "WR" as const, team: "MIA" };
+    localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb, add, third] }));
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "Roster" }));
+    // Removing the middle row puts focus on the row that moved into its place, which is the third player and not the first.
+    const middle = screen.getByRole("button", { name: "Remove Available Runner" });
+    middle.focus();
+    fireEvent.click(middle);
+    const next = screen.getByRole("button", { name: "Remove Third Receiver" });
+    expect(document.activeElement).toBe(next);
+    fireEvent.click(next);
+    // That was the last row, so focus steps up to the one above.
+    const remaining = screen.getByRole("button", { name: "Remove Roster Runner" });
+    expect(document.activeElement).toBe(remaining);
+    fireEvent.click(remaining);
+    expect(screen.queryByRole("button", { name: /^Remove / })).not.toBeInTheDocument();
+    expect(document.activeElement).toBe(searchField());
+  });
+
+  it("moves to the Remove button above when the last row is removed", () => {
+    localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb, add] }));
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "Roster" }));
+    const last = screen.getByRole("button", { name: "Remove Available Runner" });
+    last.focus();
+    fireEvent.click(last);
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Remove Roster Runner" }));
+  });
+});
+
+it("counts a one-place rank gain in the singular and a larger one in the plural", () => {
+  const near = { ...rb, rank: 6 };
+  const nearBoard = { ...board, flex: [near, add] };
+  const nearSnapshot = { ...snapshot, boards: { ppr: nearBoard, half_ppr: nearBoard, standard: nearBoard } };
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [near], availableIds: [add.id] }));
+  const view = render(<MyTeamPanel snapshot={nearSnapshot} board={nearSnapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+  fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+  expect(screen.getByText("Available Runner ranks 1 place ahead of Roster Runner on the flex board.")).toBeInTheDocument();
+  view.unmount();
+
+  // The shared fixture has the roster player at 20 and the available one at 5.
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
+  fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
+  expect(screen.getByText("Available Runner ranks 15 places ahead of Roster Runner on the flex board.")).toBeInTheDocument();
 });

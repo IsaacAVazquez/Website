@@ -1,0 +1,243 @@
+/*
+ * The trade calculator's own rules, drawn on the fantasy kit's tokens (fantasy.css).
+ *
+ * Unlayered, so a rule here beats a kit class on the same element whatever order the two
+ * sheets load in. A stylesheet stays loaded after in-app navigation, so every selector starts
+ * with an `ffb-tr-` class or with `.ffb-root`. No rule here sets `display` on an element that
+ * also carries a Tailwind display utility (the verdict strip, the settings fields, the
+ * package-fit head), because an unlayered rule would beat the utility at every width.
+ *
+ * The desk's columns, the shared height of its three heads, the two-line package row, the
+ * disabled and focused search field, and the printed disclosures are the kit's own classes
+ * (`ffb-work-3`, `ffb-sechead-ctl`, `ffb-row-two`, `ffb-search`, `ffb-details-print`).
+ */
+
+/* ==========================================================================
+ * League settings
+ * ======================================================================== */
+@media screen and (min-width: 1200px) {
+  .ffb-tr-settings {
+    position: sticky;
+    top: var(--ffb-s2);
+  }
+}
+/* The head's words give way to the Change button, so the summary wraps beside it. */
+.ffb-tr-headtext { min-width: 0; flex: 1 1 0; }
+.ffb-tr-summary { margin-top: var(--ffb-s1); font-size: 14px; font-weight: 500; line-height: 1.35; }
+.ffb-tr-scoring { --ffb-choice-min: 200px; }
+.ffb-tr-selects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ffb-s3) var(--ffb-s2);
+}
+.ffb-tr-selects > :last-child { grid-column: 1 / -1; }
+@media (max-width: 1199.98px) {
+  /* With the settings open under the head, the three scoring plates sit on one line. */
+  .ffb-tr-scoring { --ffb-choice-min: 96px; }
+  .ffb-tr-selects { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ffb-tr-selects > :last-child { grid-column: auto; }
+}
+@media (max-width: 767.98px) {
+  .ffb-tr-selects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ffb-tr-selects > :last-child { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+ * The ledger: two packages, each a fieldset with no plate
+ * ======================================================================== */
+/* Two packages sit side by side from 1256px, where the centre column reaches 556px. */
+.ffb-tr-sides { --ffb-col-min: 266px; column-gap: var(--ffb-s5); }
+.ffb-tr-side {
+  position: relative;
+  /* The list's column head sits on the same columns the kit's two-line row sets on itself. */
+  --ffb-cols: 46px minmax(0, 1fr) 44px var(--ffb-control);
+}
+.ffb-tr-side > legend {
+  float: none;
+  width: auto;
+  margin-bottom: 6px;
+}
+/* The count sits at the right of the description's line. A fieldset's box starts under its legend. */
+.ffb-tr-count {
+  position: absolute;
+  inset: 0 0 auto auto;
+  line-height: 1.5;
+}
+/* The two fields are where the page starts, so they keep the full target on a desktop too. */
+.ffb-tr-search { height: 44px; }
+.ffb-tr-h-player { grid-column: 1 / 3; }
+/* A player's name is the last thing to be cut. In a package row and in a search option it
+   takes a second line first, and the full name is in its title where two lines are not enough. */
+.ffb-tr-side .ffb-c-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+/* The team line carries a held player's status, which wraps before it is cut. */
+.ffb-tr-side .ffb-row-two > .ffb-c-team { white-space: normal; }
+.ffb-tr-empty {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  border-top: 1px solid var(--ffb-rule);
+  color: var(--ffb-muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* The search popup. It is an overlay panel, so it is the raised surface with an ink edge. */
+.ffb-tr-pop {
+  position: absolute;
+  inset: calc(100% + var(--ffb-s1)) 0 auto;
+  z-index: calc(var(--c97-z-sticky, 5) + 1);
+  border: 1px solid var(--ffb-ink);
+  background: var(--ffb-raised);
+}
+/* All eight results show without a scroll where the screen has the room. */
+.ffb-tr-options {
+  max-height: min(352px, 60dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.ffb-tr-option {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--ffb-s3);
+  width: 100%;
+  min-height: 44px;
+  padding: var(--ffb-s1) var(--ffb-s3);
+  border: 0;
+  border-top: 1px solid var(--ffb-rule);
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.ffb-tr-options > :first-child > .ffb-tr-option { border-top: 0; }
+/* The option the arrow keys or the pointer are on: the sunk surface with an ink key at its edge. */
+.ffb-tr-option[aria-selected="true"] {
+  background: var(--ffb-sunk);
+  box-shadow: inset 3px 0 0 var(--ffb-ink);
+}
+.ffb-tr-option:disabled { color: var(--ffb-muted); cursor: not-allowed; }
+.ffb-tr-nomatch {
+  padding: var(--ffb-s3);
+  color: var(--ffb-muted);
+  font-size: 14px;
+}
+
+/* ==========================================================================
+ * The evaluation rail
+ * ======================================================================== */
+/* "Index" over both package values, on a rule, the way the ledger heads its own index column. */
+.ffb-tr-cap {
+  margin-bottom: var(--ffb-s2);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ffb-rule);
+  color: var(--ffb-muted);
+  font-size: 11px;
+}
+.ffb-tr-effect { font-size: 14px; line-height: 1.45; }
+.ffb-tr-effect > .ffb-label { display: block; margin-bottom: var(--ffb-s1); color: var(--ffb-muted); font-size: 10.5px; }
+.ffb-tr-limits { border-bottom: 1px solid var(--ffb-rule); }
+.ffb-tr-limits > .ffb-method { padding-block: var(--ffb-s3); border-top: 1px solid var(--ffb-rule); }
+.ffb-tr-warnings { font-size: 13.5px; }
+
+/* The balance scale. The track is drawn to the verdict thresholds in the component. Its type is
+   set in viewBox units, so the width is capped and the labels stay near 13px at every width. */
+.ffb-tr-eval .ffb-scale > svg { max-width: 340px; }
+.ffb-tr-scale-band { fill: var(--ffb-sunk); stroke: var(--ffb-rule); stroke-width: 1; }
+.ffb-tr-scale-track { stroke: var(--ffb-ink); stroke-width: 2; }
+.ffb-tr-scale-tick { stroke: var(--ffb-edge); stroke-width: 1; }
+.ffb-tr-scale-text {
+  fill: var(--ffb-muted);
+  font-size: 9.5px;
+  font-weight: 700;
+  font-stretch: 80%;
+  letter-spacing: 0.05em;
+}
+.ffb-tr-scale-stem { stroke: var(--ffb-ink); stroke-width: 2; }
+.ffb-tr-scale-pin { fill: var(--ffb-ink); stroke: var(--ffb-board); stroke-width: 2; }
+/* With no estimate the marker rests at the centre as an open socket, so it never reads as "even". */
+.ffb-tr-scale-rest .ffb-tr-scale-stem { stroke: var(--ffb-edge); stroke-dasharray: 2 2; }
+.ffb-tr-scale-rest .ffb-tr-scale-pin { fill: var(--ffb-board); stroke: var(--ffb-edge); }
+@media (prefers-reduced-motion: no-preference) {
+  .ffb-tr-scale-marker { transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1); }
+}
+
+/* The verdict strip, pinned under the page top while the rail sits below the ledger. */
+.ffb-tr-strip {
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ffb-s3);
+  margin-inline: calc(-1 * var(--ffb-bleed));
+  padding: 6px var(--ffb-bleed);
+  border-bottom: 2px solid var(--ffb-ink);
+}
+/* The verdict is never cut. On a narrow phone the longest one takes a second line. */
+.ffb-tr-strip-title { font-size: 18px; line-height: 1.1; }
+@media (max-width: 419.98px) {
+  /* Below 412px a title can wrap, so the strip holds the two-line height for every verdict
+     and never changes height when the verdict does. */
+  .ffb-tr-strip { min-height: 70px; }
+}
+@media (max-width: 1199.98px) {
+  /* The strip's link lands the rail's head under the strip, not behind it. */
+  .ffb-tr-eval { scroll-margin-top: 80px; }
+}
+
+/* ==========================================================================
+ * Package fit: an ARIA table on divs, ruled like a kit table
+ * ======================================================================== */
+.ffb-tr-fit { margin-top: var(--ffb-s5); }
+.ffb-tr-fit-head,
+.ffb-tr-fit-row {
+  grid-template-columns: 200px repeat(4, minmax(0, 1fr));
+  column-gap: var(--ffb-s5);
+}
+.ffb-tr-fit-head {
+  align-items: end;
+  padding-block: var(--ffb-s2) 6px;
+  border-bottom: 2px solid var(--ffb-ink);
+  color: var(--ffb-muted);
+  font-size: 11px;
+  line-height: 1.2;
+}
+.ffb-tr-fit-row {
+  display: grid;
+  align-items: center;
+  min-height: 44px;
+  padding-block: var(--ffb-s2);
+  border-bottom: 1px solid var(--ffb-rule);
+}
+/* The wrapper only groups the four cells for the phone layout. */
+.ffb-tr-fit-cells { display: contents; }
+.ffb-tr-fit-name { font-size: 15px; font-weight: 600; }
+/* The kit's heavy number, with room between a count and its arrow. */
+.ffb-tr-fit-value { word-spacing: 0.12em; }
+.ffb-tr-fit-label { margin-bottom: var(--ffb-s1); color: var(--ffb-muted); font-size: 10.5px; }
+.ffb-tr-fit-foot { margin-top: var(--ffb-s3); }
+@media (max-width: 767.98px) {
+  .ffb-tr-fit-table { border-top: 2px solid var(--ffb-ink); }
+  .ffb-tr-fit-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ffb-s3) var(--ffb-s4);
+    padding-block: var(--ffb-s3);
+  }
+  .ffb-tr-fit-name { grid-column: 1 / -1; }
+}
+
+/* The loading skeleton, on the desk's own columns so the page does not jump when the board lands. */
+.ffb-tr-skel-line { width: 96px; }
+.ffb-tr-skel-field { height: 44px; }
+.ffb-tr-skel-block { height: 148px; }
+
+@media print {
+  .ffb-root :is(.ffb-tr-toggle, .ffb-tr-actions, .ffb-tr-strip, .ffb-tr-pop) { display: none; }
+  /* The site's md breakpoint is screen only, so paper gets each cell's own label at any width. */
+  .ffb-root .ffb-tr-fit-row { align-items: end; }
+}

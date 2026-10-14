@@ -11,9 +11,9 @@ import {
   getSnapshotStaleness,
   canPracticeWithArchivedDraftBoard,
   getSnapshotStalenessLabel,
-  getTierRailIntensity,
   getValueVsAdp,
   formatPickDelta,
+  withMinusSign,
   ADP_COMPARABLE_MAX_RANK,
   resolveDraftPicksForModel,
 } from "@/lib/fantasyUtils";
@@ -517,25 +517,17 @@ describe("getAdpSurvivalThreshold", () => {
   });
 });
 
-describe("getTierRailIntensity", () => {
-  it("is solid at tier 1", () => {
-    expect(getTierRailIntensity(1)).toBe(100);
+describe("withMinusSign", () => {
+  it("prints a leading hyphen as the minus sign the boards use", () => {
+    expect(withMinusSign("-4.5")).toBe("\u22124.5");
+    expect(withMinusSign("-$12.00")).toBe("\u2212$12.00");
+    expect(withMinusSign("-3.0%")).toBe("\u22123.0%");
   });
 
-  it("fades by 13 points per tier", () => {
-    expect(getTierRailIntensity(2)).toBe(87);
-    expect(getTierRailIntensity(3)).toBe(74);
-  });
-
-  it("floors at 12 rather than fading to zero or negative", () => {
-    expect(getTierRailIntensity(8)).toBe(12);
-    expect(getTierRailIntensity(20)).toBe(12);
-  });
-
-  it("returns 0 for an untiered or invalid tier", () => {
-    expect(getTierRailIntensity(undefined)).toBe(0);
-    expect(getTierRailIntensity(null)).toBe(0);
-    expect(getTierRailIntensity(Number.NaN)).toBe(0);
+  it("leaves a positive number, a zero, and a hyphen inside the text alone", () => {
+    expect(withMinusSign("+4.5")).toBe("+4.5");
+    expect(withMinusSign("0")).toBe("0");
+    expect(withMinusSign("12-team")).toBe("12-team");
   });
 });
 

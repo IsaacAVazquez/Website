@@ -28,6 +28,9 @@ export function Catalog97Header() {
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
+      // A page that claims a key (the redraft board focuses its own search on "/") calls
+      // preventDefault first, since its listener sits below this one on the way up to window.
+      if (event.defaultPrevented) return;
       const target = event.target as HTMLElement | null;
       const isTypingTarget =
         !!target &&
@@ -47,7 +50,9 @@ export function Catalog97Header() {
         !isTypingTarget &&
         !event.metaKey &&
         !event.ctrlKey &&
-        !event.altKey
+        !event.altKey &&
+        // Search opened over a page's modal dialog would take focus out of it.
+        !document.querySelector('[aria-modal="true"]')
       ) {
         event.preventDefault();
         setIsSearchOpen(true);

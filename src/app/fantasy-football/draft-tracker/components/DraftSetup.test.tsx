@@ -15,10 +15,11 @@ const SETTINGS: DraftSettings = {
   lineup: { ...REDRAFT_LINEUP_PRESETS[0].lineup },
 };
 
-function renderSetup(parkedPickCount: number) {
+function renderSetup(parkedPickCount: number, focusHeadingOnMount = false) {
   const onStartDraft = jest.fn();
   render(
     <DraftSetup
+      focusHeadingOnMount={focusHeadingOnMount}
       settings={SETTINGS}
       onSaveSettings={jest.fn()}
       onStartDraft={onStartDraft}
@@ -32,6 +33,20 @@ function renderSetup(parkedPickCount: number) {
   );
   return onStartDraft;
 }
+
+describe("DraftSetup focus", () => {
+  it("takes focus on its heading when it replaces a running room", () => {
+    renderSetup(3, true);
+
+    expect(screen.getByRole("heading", { level: 2, name: "One screen, then draft." })).toHaveFocus();
+  });
+
+  it("leaves focus alone on a first visit", () => {
+    renderSetup(0);
+
+    expect(document.body).toHaveFocus();
+  });
+});
 
 describe("DraftSetup start guard", () => {
   it("starts on the first press when no room is parked", () => {

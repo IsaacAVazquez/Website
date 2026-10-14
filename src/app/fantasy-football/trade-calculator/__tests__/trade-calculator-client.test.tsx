@@ -170,7 +170,7 @@ async function addPlayerWithKeyboard(
 
   // A visitor cannot type into a field without being in it, and leaving the
   // other package's search is what closes its list.
-  input.focus();
+  act(() => input.focus());
   fireEvent.change(input, { target: { value: playerName } });
   expect(screen.getByRole("option", { name: new RegExp(playerName) })).toBeEnabled();
 
@@ -224,6 +224,10 @@ describe("TradeCalculatorClient", () => {
     });
     expect(within(evaluation).getByText("Clear edge to the other side")).toBeInTheDocument();
     expect(within(evaluation).getByText("supported coverage")).toBeInTheDocument();
+    // The two package values are named where they print.
+    expect(within(evaluation).getByText("Index")).toBeInTheDocument();
+    expect(within(evaluation).getByText("Range 93.1 to 100.0")).toBeInTheDocument();
+    expect(within(evaluation).getByText("Range 0.0 to 0.1")).toBeInTheDocument();
     expect(within(evaluation).getByText("Expert consensus")).toBeInTheDocument();
     expect(within(evaluation).getByText("Draft market")).toBeInTheDocument();
     expect(within(evaluation).getByText("League fit")).toBeInTheDocument();
@@ -256,7 +260,7 @@ describe("TradeCalculatorClient", () => {
     function addEliteRunnerToYouGive() {
       render(<TradeCalculatorClient />);
       const giveInput = screen.getByRole("combobox", { name: "Add a player to you give" });
-      giveInput.focus();
+      act(() => giveInput.focus());
       fireEvent.change(giveInput, { target: { value: "Elite Runner" } });
       fireEvent.keyDown(giveInput, { key: "ArrowDown" });
       fireEvent.keyDown(giveInput, { key: "Enter" });
@@ -268,7 +272,7 @@ describe("TradeCalculatorClient", () => {
     it("leaves focus where the visitor has moved it", () => {
       addEliteRunnerToYouGive();
       const getInput = screen.getByRole("combobox", { name: "Add a player to you get" });
-      getInput.focus();
+      act(() => getInput.focus());
       fireEvent.change(getInput, { target: { value: "Depth" } });
 
       act(() => frames.forEach((frame) => frame(0)));
@@ -279,7 +283,7 @@ describe("TradeCalculatorClient", () => {
 
     it("returns focus to the search when the add left it nowhere", () => {
       const giveInput = addEliteRunnerToYouGive();
-      giveInput.blur();
+      act(() => giveInput.blur());
       expect(document.body).toHaveFocus();
 
       act(() => frames.forEach((frame) => frame(0)));
@@ -317,17 +321,102 @@ describe("TradeCalculatorClient", () => {
       ),
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: "Confirm clear trade" }));
+    const confirm = screen.getByRole("button", { name: "Confirm clear trade" });
+    act(() => confirm.focus());
+    fireEvent.click(confirm);
     expect(screen.getAllByText("Search the overall board and add the first player.")).toHaveLength(
       2,
     );
+    // The confirm button is disabled once the deal is empty, so focus goes to
+    // the first field of the desk, with its list left closed.
+    const giveSearch = screen.getByRole("combobox", { name: "Add a player to you give" });
+    expect(giveSearch).toHaveFocus();
+    expect(giveSearch).toHaveAttribute("aria-expanded", "false");
     expect(screen.getByText("Build both sides")).toBeInTheDocument();
     // An idle rail has evaluated nothing, so it must not call the sources the
     // header just stamped as fresh "Not current".
     const evaluation = screen.getByRole("complementary", { name: "Trade evaluation" });
     expect(within(evaluation).getAllByText("Waiting for players")).toHaveLength(2);
     expect(within(evaluation).queryByText("Not current")).not.toBeInTheDocument();
+    // The value readouts are cut from an idle desk, not printed empty.
+    expect(within(evaluation).queryByText("Sensitivity unavailable")).not.toBeInTheDocument();
     expect(screen.queryByTestId("trade-verdict-strip")).not.toBeInTheDocument();
+    // The model's limits print in the open on an idle desk too, never inside a disclosure.
+    expect(
+      within(evaluation).getByText(/It is not projected points, win probability, dynasty value, or injury advice\./).closest("details"),
+    ).toBeNull();
+  });
+
+  it("sends focus to that side's search after a remove, with its list closed", async () => {
+    useSnapshot(buildSnapshot());
+    render(<TradeCalculatorClient />);
+
+    await addPlayerWithKeyboard("you give", "Elite Runner");
+    await addPlayerWithKeyboard("you get", "Depth Runner");
+    const remove = screen.getByRole("button", { name: "Remove Elite Runner from players you give" });
+    act(() => remove.focus());
+    fireEvent.click(remove);
+
+    const giveSearch = screen.getByRole("combobox", { name: "Add a player to you give" });
+    expect(giveSearch).toHaveFocus();
+    expect(giveSearch).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("listbox", { name: "Players for you give" })).not.toBeInTheDocument();
+    // The other side is untouched.
+    expect(
+      within(screen.getByRole("list", { name: "You get players" })).getByText("Depth Runner"),
+    ).toBeInTheDocument();
+  });
+
+  it("keeps the settings mounted, with focus, while another scoring's board loads", () => {
+    useSnapshot(buildSnapshot());
+    const { rerender } = render(<TradeCalculatorClient />);
+    const radio = screen.getByRole("radio", { name: "PPR" });
+    radio.focus();
+
+    // What the snapshot hook returns after an arrow key picks a scoring whose board is not cached.
+    mockUseFantasySnapshot.mockReturnValue({
+      players: [],
+      snapshot: null,
+      metadata: null,
+      sliceMetadata: null,
+      sliceMetadataMap: null,
+      isLoading: true,
+      error: null,
+      retry: mockRetry,
+    });
+    rerender(<TradeCalculatorClient />);
+
+    expect(screen.getByRole("status", { name: "Loading the overall board" })).toBeInTheDocument();
+    expect(screen.queryByRole("complementary", { name: "Trade evaluation" })).not.toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: "PPR" })).toBe(radio);
+    expect(radio).toHaveFocus();
+  });
+
+  it("marks the player whose reading withholds the verdict, in that player's own row", async () => {
+    const snapshot = buildSnapshot();
+    // Five selections is under the 20 the model needs before it calls a market reading reliable.
+    const thin = snapshot.overall.map((player) =>
+      player.name === "Depth Runner" ? { ...player, adpTimesDrafted: 5 } : player,
+    );
+    snapshot.overall = thin;
+    snapshot.positions = { ...snapshot.positions, RB: thin, FLEX: thin };
+    useSnapshot(snapshot);
+    render(<TradeCalculatorClient />);
+
+    await addPlayerWithKeyboard("you give", "Elite Runner");
+    await addPlayerWithKeyboard("you get", "Depth Runner");
+
+    const evaluation = screen.getByRole("complementary", { name: "Trade evaluation" });
+    expect(within(evaluation).getByText("Verdict withheld")).toBeInTheDocument();
+    const getRow = within(screen.getByRole("list", { name: "You get players" })).getByRole("listitem");
+    expect(within(getRow).getByText("No ADP sample")).toBeInTheDocument();
+    const giveRow = within(screen.getByRole("list", { name: "You give players" })).getByRole("listitem");
+    expect(within(giveRow).queryByText("No ADP sample")).not.toBeInTheDocument();
+    expect(within(giveRow).queryByText("No market reading")).not.toBeInTheDocument();
+    // The engine's sentence stays in the rail's list, word for word.
+    expect(
+      within(evaluation).getByText("This player has no ADP sample with at least 20 selections."),
+    ).toBeInTheDocument();
   });
 
   it("summarises the league in one line and opens the settings on request", async () => {
@@ -338,8 +427,8 @@ describe("TradeCalculatorClient", () => {
     const toggle = within(settings).getByRole("button", { name: "Change league settings" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     const fields = document.getElementById(toggle.getAttribute("aria-controls") as string) as HTMLElement;
-    // Closed below lg, always shown from lg up.
-    expect(fields).toHaveClass("hidden", "lg:block");
+    // Closed below 1200px, where the kit's desk is one column, and always shown from there up.
+    expect(fields).toHaveClass("hidden", "min-[1200px]:block");
     expect(fields).toContainElement(within(settings).getByLabelText("Teams"));
     // The supported-format scope stays outside the collapsed fields.
     expect(fields).not.toContainElement(within(settings).getByText(/Preseason managed redraft with one starting QB/));
@@ -413,12 +502,17 @@ describe("TradeCalculatorClient", () => {
       "last sampled real drafts on Sep 5, 2026, which is past the four-day window the estimate needs, so the verdict is withheld",
     );
     expect(within(note).getByRole("link", { name: "weekly board" })).toBeInTheDocument();
+    // The stamp is a date with no time, so the head prints the same date the note does.
+    expect(screen.getByText("Draft market Sep 5, 2026").closest("header")).not.toBeNull();
 
     await addPlayerWithKeyboard("you give", "Elite Runner");
     await addPlayerWithKeyboard("you get", "Depth Runner");
     const evaluation = screen.getByRole("complementary", { name: "Trade evaluation" });
     expect(within(evaluation).getByText("Verdict withheld")).toBeInTheDocument();
     expect(within(evaluation).getByText("Not current")).toBeInTheDocument();
+    // The whole market is old here, which is not about any one player, so no row is marked.
+    expect(screen.queryByText("No ADP sample")).not.toBeInTheDocument();
+    expect(screen.queryByText("No market reading")).not.toBeInTheDocument();
     expect(
       within(evaluation).queryByText(/prices what these players would cost in a draft this week/),
     ).not.toBeInTheDocument();
@@ -428,13 +522,12 @@ describe("TradeCalculatorClient", () => {
     useSnapshot(buildSnapshot({ stale: true }));
     render(<TradeCalculatorClient />);
 
-    // The green hero and its paper plate came off on 2026-10-12. The page is
-    // one paper surface now, so the status colour reads as itself in place.
+    // The status reads as the kit's error ink on the freshness line itself, in
+    // the page head, and not as a notice.
     const line = screen.getByText(/stale sources/i);
-    expect(line).toHaveStyle({ color: "var(--c97-negative)" });
+    expect(line).toHaveClass("ffb-bad");
     expect(line.closest("header")).not.toBeNull();
-    expect(line.closest(".c97-offset")).toBeNull();
-    expect(line.closest("[data-c97-surface]")).toBeNull();
+    expect(line.closest(".ffb-notice")).toBeNull();
   });
 
   it("withholds the verdict and exact values when the expert snapshot is stale", async () => {

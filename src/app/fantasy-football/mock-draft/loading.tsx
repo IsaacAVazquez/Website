@@ -1,5 +1,5 @@
-import { RouteLoadingState } from "@/components/RouteLoadingState";
+import { FantasyLoadingState } from "@/components/fantasy/FantasyLoadingState";
 
 export default function MockDraftLoading() {
-  return <RouteLoadingState surfaceName="the fantasy football mock draft simulator" />;
+  return <FantasyLoadingState surfaceName="the fantasy football mock draft simulator" />;
 }

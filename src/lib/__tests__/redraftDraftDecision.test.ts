@@ -1,5 +1,6 @@
 import {
   calculateRedraftDraftDecision,
+  describeRedraftTier,
   describeRedraftWait,
   getRedraftNextPickForTeam,
   getRedraftTeamAtPick,
@@ -297,6 +298,15 @@ describe("league-size and market-band corrections", () => {
     expect(twoTeam?.tier.overallBoardGap).toBe(3);
     expect(twoTeam?.tier.signal).toBe(0.7);
     expect(fourTeam?.tier.signal).toBe(0.5);
+  });
+
+  it("counts the gap to the next tier in picks, and in one pick when it is one", () => {
+    const quarterback = roomReport(2).positions.find((entry) => entry.position === "QB");
+    if (!quarterback) throw new Error("the fixture has a quarterback entry");
+    expect(describeRedraftTier(quarterback)).toContain("about 3 overall picks down the board.");
+    expect(
+      describeRedraftTier({ ...quarterback, tier: { ...quarterback.tier, overallBoardGap: 1 } })
+    ).toContain("about 1 overall pick down the board.");
   });
 
   it("publishes a 0-100 scarcity score no smaller than the tier signal", () => {

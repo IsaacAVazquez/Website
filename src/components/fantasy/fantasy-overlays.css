@@ -1,0 +1,201 @@
+/*
+ * Area sheet for the parts several fantasy pages share: the player drawer, the compare tray
+ * and modal, Draft Outlook, the spread plot, and the redraft decision panel. The kit
+ * (fantasy.css) draws nearly all of them, and this file holds only what those parts need on top.
+ *
+ * It is unlayered, so a rule here beats a kit component class on the same element whatever
+ * order the two sheets load in. Every selector starts with an `ffb-ov-` class or with
+ * `.ffb-root`, because a stylesheet stays loaded after in-app navigation. No rule here sets a
+ * property on an element that also carries a Tailwind utility for it.
+ */
+
+/* --------------------------------------------------------------------------
+ * The spread plot on a rank axis (RankDistributionBar)
+ * The kit's `ffb-plot` draws the plot standing alone. On an axis the guides are the axis's own
+ * ticks, which need not be evenly spaced, so each is an element at its place and the kit's
+ * even guides come off. Each tick's label starts at its guide.
+ * ------------------------------------------------------------------------ */
+.ffb-ov-axis .ffb-spread { background: none; }
+.ffb-ov-axis-guide {
+  position: absolute;
+  inset-block: 0;
+  left: var(--ffb-ov-at);
+  border-inline-start: 1px solid var(--ffb-grid);
+}
+.ffb-ov-axis-labels { position: relative; height: 12px; font-size: 10px; line-height: 12px; }
+.ffb-ov-axis-labels > span { position: absolute; left: var(--ffb-ov-at); padding-inline-start: 3px; white-space: nowrap; }
+
+/* --------------------------------------------------------------------------
+ * The player drawer
+ * ------------------------------------------------------------------------ */
+.ffb-ov-drawer-body { padding-bottom: calc(var(--ffb-s5) + env(safe-area-inset-bottom)); }
+.ffb-ov-drawer-body > * { min-width: 0; }
+/* The kit's cluster with an 8px gap both ways, and buttons that share the row's height. */
+.ffb-ov-actions { align-items: stretch; gap: var(--ffb-s2); }
+.ffb-ov-actions > .ffb-btn { flex: 1 1 auto; }
+/* Market ADP takes a line of its own under the short facts, with its reading and sample beside it. */
+.ffb-ov-stat-wide {
+  grid-column: 1 / -1;
+  padding-top: var(--ffb-s3);
+  border-top: 1px solid var(--ffb-rule);
+}
+.ffb-ov-stat-row { gap: var(--ffb-s2); }
+/* A label and its reading on one line (movement). */
+.ffb-ov-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px var(--ffb-s2);
+  color: var(--ffb-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.ffb-ov-line > .ffb-label { color: var(--ffb-ink); font-size: 11px; }
+/* Points per game (PlayerPointsPerGame): four figures across at every drawer width. */
+.ffb-ov-ppg { --ffb-stat-min: 56px; }
+.ffb-ov-ppg .ffb-stat dd { font-size: 18px; }
+
+/* --------------------------------------------------------------------------
+ * The compare tray
+ * ------------------------------------------------------------------------ */
+.ffb-ov-tray-text { flex: 1 1 auto; min-width: 0; font-size: 14px; font-weight: 600; }
+/* On a phone the stickers yield to a count. */
+.ffb-ov-pins { display: none; }
+@media (min-width: 768px) {
+  .ffb-ov-pins {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    gap: var(--ffb-s2);
+    min-width: 0;
+  }
+}
+.ffb-ov-pins-note { flex: none; color: var(--ffb-muted); font-size: 12.5px; font-weight: 500; }
+/* Collapsed, the band is one button at the foot of the screen. */
+.ffb-ov-tray-min {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: var(--c97-z-tray, 50);
+  display: flex;
+  justify-content: center;
+  padding-bottom: max(var(--ffb-s2), env(safe-area-inset-bottom));
+  pointer-events: none;
+}
+.ffb-ov-tray-pill { border-color: var(--ffb-ink); background: var(--ffb-raised); pointer-events: auto; }
+.ffb-ov-tray-pill:hover { background: var(--ffb-sunk); }
+
+/* --------------------------------------------------------------------------
+ * The compare modal
+ * ------------------------------------------------------------------------ */
+.ffb-ov-compare-body > * { min-width: 0; }
+/* Each player column keeps room for a name and a value with its tag, and the table scrolls past that. */
+.ffb-ov-compare { min-width: calc(7.5rem + var(--ffb-ov-players, 2) * 7.25rem); }
+.ffb-ov-compare-label { width: 7.5rem; }
+.ffb-ov-compare-head { display: flex; align-items: center; gap: var(--ffb-s2); }
+.ffb-ov-compare-head > .ffb-iconbtn { margin-inline-start: auto; }
+/* Two lines of room whether the name needs them or not, so the heads end on one line. */
+.ffb-ov-compare-name {
+  display: block;
+  min-height: 2lh;
+  overflow: visible;
+  line-height: 1.25;
+  white-space: normal;
+}
+.ffb-ov-compare td { font-weight: 600; }
+/* A real space sits between the figure and its word, and this adds the rest of the gap. */
+.ffb-ov-cell-tag { margin-inline-start: 2px; vertical-align: 1px; }
+/* Inside the sideways scroller an outset ring is clipped at the table's edge. */
+.ffb-root .ffb-ov-compare .ffb-iconbtn:focus-visible { outline-offset: -3px; }
+
+/* --------------------------------------------------------------------------
+ * Draft Outlook
+ * It lays out from its own width: the read and the money sit side by side once the panel is
+ * about 712px wide and stack below that, with no media query.
+ * ------------------------------------------------------------------------ */
+.ffb-ov-outlook { min-width: 0; }
+.ffb-ov-outlook-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  align-items: start;
+  gap: var(--ffb-s5) var(--ffb-s6);
+  min-width: 0;
+}
+.ffb-ov-outlook-cols > * { min-width: 0; }
+.ffb-ov-outlook-empty { color: var(--ffb-muted); font-size: 14px; line-height: 1.45; }
+/* Where the figures come from: the kit's dot list, closing the components on a rule. */
+.ffb-ov-provenance { padding-top: var(--ffb-s2); border-top: 1px solid var(--ffb-rule); }
+.ffb-ov-calc-fields { display: grid; gap: var(--ffb-s3); }
+
+/* --------------------------------------------------------------------------
+ * The redraft decision panel
+ * One ruled row per position, laid out from the list's own width. Under 544px a row is one
+ * column. From 544px the player and the tier reading share the first column and the next-turn
+ * sentence takes the second across both, since that sentence is the reading the panel is for.
+ * From 1100px the three sit side by side. Below that a third column is narrow enough to make
+ * the sentence taller than the two-column row it replaces. Off the clock there is no sentence
+ * per row (it prints once under the list), so the player and the tier reading take a column each.
+ * The list holds no fixed overlay, so it can be a container.
+ * ------------------------------------------------------------------------ */
+.ffb-ov-wait { display: grid; container: ffb-ov-wait / inline-size; }
+.ffb-ov-wait-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ffb-s2) var(--ffb-s5);
+  padding-block: var(--ffb-s3);
+  border-top: 1px solid var(--ffb-rule);
+}
+.ffb-ov-wait-row > * { min-width: 0; }
+@container ffb-ov-wait (min-width: 544px) {
+  .ffb-ov-wait-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ffb-ov-wait-who { grid-area: 1 / 1; }
+  .ffb-ov-wait-tier { grid-area: 2 / 1; }
+  .ffb-ov-wait-next { grid-area: 1 / 2 / 3 / 3; }
+  .ffb-ov-wait-shared .ffb-ov-wait-tier { grid-area: 1 / 2; }
+}
+@container ffb-ov-wait (min-width: 1100px) {
+  .ffb-ov-wait:not(.ffb-ov-wait-shared) .ffb-ov-wait-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ffb-ov-wait-tier { grid-area: 1 / 2; }
+  .ffb-ov-wait-next { grid-area: 1 / 3; }
+}
+/* Status is an ink and a word, with a key rule at the row's edge. The rule and its inset
+   belong to the row, so every reading in it sits inside the rule. */
+.ffb-ov-wait-risk { padding-inline-start: 13px; box-shadow: inset 3px 0 0 var(--ffb-warn); }
+/* The player and the need share a line where they fit, and the cutoff line runs under both. */
+.ffb-ov-wait-who { display: flex; flex-wrap: wrap; align-items: center; align-content: start; gap: 0 var(--ffb-s3); }
+.ffb-ov-wait-who > .ffb-ov-wait-lines { flex-basis: 100%; }
+.ffb-ov-wait-open {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ffb-s2);
+  max-width: 100%;
+  min-height: var(--ffb-control);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+/* A player's name is the last thing to be cut, so it wraps before it would be. */
+.ffb-ov-wait-name { overflow: visible; white-space: normal; }
+.ffb-ov-wait-open:hover .ffb-c-name { text-decoration: underline; text-underline-offset: 3px; }
+.ffb-ov-wait-index { flex: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.ffb-ov-wait-none {
+  display: flex;
+  align-items: center;
+  gap: var(--ffb-s2);
+  min-height: var(--ffb-control);
+  color: var(--ffb-muted);
+  font-size: 14px;
+}
+.ffb-ov-wait-tags { display: flex; flex-wrap: wrap; gap: var(--ffb-s1) var(--ffb-s3); }
+.ffb-ov-wait-tags > .ffb-label { font-size: 11px; }
+.ffb-ov-wait-next { font-size: 14px; line-height: 1.45; }
+
+/* --------------------------------------------------------------------------
+ * Print
+ * ------------------------------------------------------------------------ */
+@media print {
+  /* A closed calculator and a collapsed tray are controls, and they do nothing on paper. */
+  .ffb-root .ffb-ov-outlook .ffb-details:not([open]),
+  .ffb-root .ffb-ov-tray-min { display: none; }
+}

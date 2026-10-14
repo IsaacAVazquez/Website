@@ -10,7 +10,7 @@ export const metadata: Metadata = constructMetadata({
     "Rehearse the early rounds of a one-QB draft against a seeded room that picks from the published consensus board and market ADP, then sim to the end for the board grid and value report.",
   canonicalUrl: "/fantasy-football/mock-draft",
   image: "/fantasy-football/mock-draft/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-12"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
 });
 
 const breadcrumbs = [

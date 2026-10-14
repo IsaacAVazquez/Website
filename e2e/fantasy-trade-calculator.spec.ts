@@ -44,8 +44,8 @@ test.describe("Fantasy football trade calculator", () => {
     await expect(reloaded.getByLabel("You give players").getByRole("listitem")).toHaveCount(1);
     await expect(reloaded.getByLabel("You get players").getByRole("listitem")).toHaveCount(1);
 
-    // Below lg the league settings sit behind a disclosure, so a phone opens
-    // it first, the way a visitor does. From lg up the toggle is not rendered.
+    // Below 1200px the league settings sit behind a disclosure, so a phone opens
+    // it first, the way a visitor does. From 1200px up the toggle is not rendered.
     const settingsToggle = reloaded.getByRole("button", { name: "Change league settings" });
     if (await settingsToggle.isVisible()) {
       await settingsToggle.click();
@@ -80,6 +80,12 @@ test.describe("Fantasy football trade calculator", () => {
     for (const control of await controls.all()) {
       const box = await control.boundingBox();
       if (!box) continue;
+      // A link that runs inside a sentence is exempt, as WCAG's target size rule
+      // allows, since two of them on consecutive lines would overlap as 44px boxes
+      // and a tap could open the wrong one. Every other control holds 44px.
+      if (await control.evaluate((element) => element.tagName === "A" && element.closest("p") !== null)) {
+        continue;
+      }
       // Firefox reports sub-pixel boxes (43.99997 for a 44px control), so
       // allow half a pixel of rounding under the 44px touch-target floor.
       expect(box.width).toBeGreaterThanOrEqual(43.5);

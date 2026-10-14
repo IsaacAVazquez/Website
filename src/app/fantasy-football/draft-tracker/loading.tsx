@@ -1,5 +1,5 @@
-import { RouteLoadingState } from "@/components/RouteLoadingState";
+import { FantasyLoadingState } from "@/components/fantasy/FantasyLoadingState";
 
 export default function DraftTrackerLoading() {
-  return <RouteLoadingState surfaceName="the draft tracker" />;
+  return <FantasyLoadingState surfaceName="the draft tracker" />;
 }

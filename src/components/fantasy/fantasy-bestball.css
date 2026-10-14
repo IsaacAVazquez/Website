@@ -1,0 +1,149 @@
+/*
+ * The best ball board's own rules (/fantasy-football/best-ball), on top of the kit in fantasy.css.
+ * Unlayered, so a rule here beats a kit class on the same element whatever loads first.
+ * Every selector starts with an `ffb-bb-` class or with `.ffb-root`, because this sheet stays
+ * loaded after in-app navigation and must not reach another route.
+ */
+
+/* ==========================================================================
+ * The two columns
+ * The rail comes first in the markup, so a phone and a tablet draw the selected
+ * contest above the board with nothing reordered. From 1200px, where the kit puts
+ * a rail beside its list, it takes the second column.
+ * ======================================================================== */
+@media (min-width: 1200px) {
+  .ffb-bb-work > .ffb-bb-main { grid-column: 1; grid-row: 1; }
+  .ffb-bb-work > .ffb-bb-rail { grid-column: 2; grid-row: 1; }
+}
+
+/* ==========================================================================
+ * The contest switch
+ * Eight contests do not fit a phone, so the switch scrolls sideways off the right
+ * edge, as the kit's position switch does.
+ * ======================================================================== */
+@media (max-width: 767.98px) {
+  /* The kit's sideways switch, with 2px more in each button. */
+  .ffb-bb-lens > .ffb-bb-contests > .ffb-seg-btn { padding-inline: 12px; }
+  /* The date sits under the switch's left edge, where the switch starts. */
+  .ffb-bb-lens > .ffb-count { text-align: left; }
+}
+
+/* ==========================================================================
+ * The rail: the selected contest, then the notices
+ * ======================================================================== */
+.ffb-bb-format-head { display: grid; gap: var(--ffb-s1); }
+/* The four notes are a definition list on rules. A cell's display belongs to the
+   utilities that open and close it, so nothing here sets it. */
+.ffb-bb-notes { margin: 0; border-bottom: 1px solid var(--ffb-rule); }
+.ffb-bb-note { padding-block: var(--ffb-s2); border-top: 1px solid var(--ffb-rule); }
+.ffb-bb-note > dd { margin: var(--ffb-s1) 0 0; font-size: 14px; line-height: 1.45; }
+.ffb-bb-order-skel { display: grid; gap: 7px; }
+.ffb-bb-notices { display: grid; gap: var(--ffb-s4); }
+/* In season the dated sentence follows the week's note under one key rule, so the
+   pair reads as one notice in two paragraphs. */
+.ffb-bb-pair > .ffb-notice + .ffb-notice { padding-top: 6px; }
+
+/* On a tablet the rail is above the board at full width, so its notices take a second column
+   beside the contest and the board starts sooner. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .ffb-bb-format:has(> .ffb-bb-notices) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: var(--ffb-s6);
+  }
+  .ffb-bb-format > :not(.ffb-bb-notices) { grid-column: 1; }
+  .ffb-bb-format > .ffb-bb-notices { grid-column: 2; grid-row: 1 / span 4; }
+}
+
+/* ==========================================================================
+ * The board
+ * Rank, chip, name, team, Underdog ADP, the PPR consensus rank, value, bye, and the
+ * Week 17 opponent. The name keeps 168px before any other column gives. The last track
+ * is empty, so the opponent stands one column gap in from the row's edge and the focus
+ * ring, which the kit draws inside the row, does not cross it.
+ * ======================================================================== */
+.ffb-bb-board {
+  --ffb-cols: 30px 46px minmax(168px, 1fr) 36px 68px 64px 56px 30px 44px 0px;
+  /* What is pinned over the list, which the kit reads to stop a focused row under it: the
+     toolbar block (its measured height) on a phone, and a round's head with it from 768px. */
+  --ffb-pinned-top: calc(var(--ffb-bb-bar, 148px) + var(--ffb-s1));
+}
+
+/* The search icon is a label for the field, and it takes the field's left padding with it, so a
+   press anywhere left of the text focuses the field. */
+.ffb-bb-search-icon {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-inline-start: -10px;
+  padding-inline-start: 10px;
+  cursor: text;
+}
+.ffb-bb-search-icon > svg { flex: none; fill: none; stroke: var(--ffb-muted); stroke-width: 1.8; stroke-linecap: round; }
+/* "Undrafted" and "Withheld" are words in a number's place. */
+.ffb-bb-word { font-size: 10.5px; }
+.ffb-bb-method { display: grid; gap: var(--ffb-s1); margin-top: var(--ffb-s4); }
+
+@media (min-width: 768px) {
+  /* A round's head pins under the toolbar block (its measured height) while its round is on
+     screen. Its ink rule slides under the block's, so a pinned head hangs from that rule the
+     way the first round's does. */
+  .ffb-bb-board .ffb-tier-head {
+    position: sticky;
+    top: calc(var(--ffb-bb-bar, 88px) - 2px);
+    z-index: 2;
+    background: var(--ffb-surface);
+    box-shadow: -4px 0 0 var(--ffb-surface), 4px 0 0 var(--ffb-surface);
+  }
+  .ffb-bb-board > .ffb-tier:first-of-type > .ffb-tier-head { top: var(--ffb-bb-bar, 88px); }
+  .ffb-bb-board { --ffb-pinned-top: calc(var(--ffb-bb-bar, 88px) + 30px + var(--ffb-s1)); }
+  /* Wide enough for the placeholder and the clear button together, so the field does not
+     grow on the first character typed. */
+  .ffb-bb-tools > .ffb-search { flex: 0 0 241px; }
+}
+/* A row is one target, since its opener covers it, so a touch pointer gets a 44px row. The
+   opener sits inside the row's 1px top rule, which is why the row is 45px. */
+@media (pointer: coarse) {
+  .ffb-bb-board { --ffb-row: 45px; }
+}
+
+/* ==========================================================================
+ * Phones: the position switch with the count at its end, then the search
+ * The count is not a control, so it is the one thing drawn out of its place in the markup.
+ * ======================================================================== */
+@media (max-width: 767.98px) {
+  .ffb-bb-tools > .ffb-count { order: 2; flex: 1 1 56px; min-width: 0; line-height: 1.3; }
+  .ffb-bb-tools > .ffb-search { order: 3; flex: 1 1 100%; }
+  /* Sit and Go's sentence says the Week 17 column is dimmed. A phone prints every row's second
+     line muted, so there the dimmed opponent shows as an absence. */
+  .ffb-bb-board .ffb-row > .ffb-m-meta.ffb-is-flat { display: none; }
+}
+/* Five position buttons fit from 320px, so this switch keeps to the page column and the count
+   beside it never starts under the TE button, as it did with the kit's sideways bleed. */
+@media (max-width: 767.98px), (pointer: coarse) {
+  .ffb-bb-tools > .ffb-seg-pos { max-width: 100%; margin-inline-end: 0; }
+}
+/* Under 360px the count has no room beside the switch, so it takes a short line under the search.
+   A row's second line has no room for the Week 17 opponent after a two-digit bye, so it is the
+   one value those screens leave to the wider layouts. */
+@media (max-width: 359.98px) {
+  .ffb-bb-tools > .ffb-count { order: 4; flex-basis: 100%; }
+  .ffb-bb-board .ffb-row > .ffb-m-meta { display: none; }
+}
+
+/* ==========================================================================
+ * Field notes
+ * ======================================================================== */
+.ffb-bb-fieldnotes { --ffb-col-min: 300px; margin-top: var(--ffb-s4); }
+/* The findings carry no number, so they give up the number's column. */
+.ffb-bb-findings > .ffb-note { grid-template-columns: minmax(0, 1fr); }
+.ffb-bb-findings > .ffb-note > * { grid-column: 1; }
+
+@media print {
+  /* Paper has no toggle to press, so the three build notes print open, and the toggle and the
+     two links beside the contest's name are left off. */
+  .ffb-root .ffb-bb-notes > .ffb-bb-note { display: block; }
+  .ffb-root :is(.ffb-bb-guide, .ffb-bb-actions) { display: none; }
+  .ffb-bb-board .ffb-tier-head { position: static; box-shadow: none; }
+}

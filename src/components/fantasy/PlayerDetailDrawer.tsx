@@ -10,15 +10,13 @@ import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import {
   FANTASY_ADP_TOOLTIP,
-  FANTASY_CHIP_CLASS,
   FANTASY_EXPERT_SPREAD_TOOLTIP,
   FANTASY_REACH_TOOLTIP,
   FANTASY_VALUE_TOOLTIP,
+  FANTASY_VORP_TOOLTIP,
   formatAdp,
   formatOwnership,
   getConsensusSpread,
-  getFantasyPointsPerGameTooltip,
-  getPositionTone,
   getSnapshotStaleness,
   getValueVsAdp,
   formatPickDelta,
@@ -26,6 +24,10 @@ import {
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
+import "./fantasy-overlays.css";
+import { PlayerNoteField } from "./PlayerNoteField";
+import { PlayerPointsPerGame } from "./PlayerPointsPerGame";
+import { positionClass } from "./positionClass";
 import { RankDistributionBar } from "./RankDistributionBar";
 
 interface PlayerDetailDrawerProps {
@@ -61,6 +63,27 @@ interface PlayerDetailDrawerProps {
    */
   compareAvailable?: boolean;
   /**
+   * Whether the market sentence under Market ADP may print ("Value if he lasts
+   * to your pick", "Take him on schedule"). It is pick advice, so a caller
+   * passes false whenever its own surface is withholding recommendations: a
+   * stale source, a season under way, or a model source issue. The Value or
+   * Reach word beside the ADP figure stays either way. Defaults to true.
+   */
+  verdictAvailable?: boolean;
+  /**
+   * Value over replacement for this player and the league size it was computed
+   * for ("12-team"), printed as a fact when the caller's board shows VORP.
+   */
+  vorp?: { value: number; label: string };
+  /**
+   * Whether the calling board withholds this player's published consensus
+   * rank. The Position rank and Tier facts then read "Withheld", the word the
+   * board row and the compare modal print, in place of a dash.
+   */
+  consensusWithheld?: boolean;
+  /** The scoring the points per game log was built for ("PPR"), named in its basis line. */
+  scoringLabel?: string;
+  /**
    * Draft-room surfaces pass this to log the open player as the current pick,
    * so the drawer is a decision point rather than a dead end. Callers withhold
    * it for drafted players and outside a live draft.
@@ -77,36 +100,60 @@ function formatBoardMove(value: number): string {
   return `${value > 0 ? "↑" : "↓"}${magnitude}`;
 }
 
-function StatCell({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div
-      className="border"
-      style={{
-        paddingInline: "var(--c97-sp-1)",
-        paddingBlock: "var(--c97-sp-1)",
-        borderColor: "var(--c97-rule)",
-        background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))",
-      }}
-    >
-      <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--c97-ink-2)" }}>
-        {label}
-      </p>
-      <p className="mt-0.5 text-base font-semibold tabular-nums">{children}</p>
-    </div>
-  );
+/**
+ * The market read in one sentence, from the same ADP against consensus gap
+ * the Value and Reach words use. The four sentences are the ones the rankings
+ * board's own drawer prints, so the two drawers say the same thing.
+ */
+function marketVerdict(
+  player: Player,
+  value: NonNullable<ReturnType<typeof getValueVsAdp>>,
+): { text: string; tone: string } {
+  // A null signal can also mean the sample is too thin to judge, so that case
+  // never reads as the market agreeing.
+  if (!hasReliableAdpSample(player)) {
+    return {
+      text: "Too few mock selections behind his ADP to judge the market gap yet, so no market read.",
+      // A read the drawer is holding back, which is the kit's held notice.
+      tone: "ffb-notice-held",
+    };
+  }
+  const picks = Math.round(Math.abs(value.delta));
+  if (value.signal === "value") {
+    return {
+      text: `Rooms take him about ${picks} picks after the consensus rank. Value if he lasts to your pick.`,
+      tone: "ffb-notice-good",
+    };
+  }
+  if (value.signal === "reach") {
+    return {
+      text: `Rooms take him about ${picks} picks before the consensus rank. Plan the reach or let him go.`,
+      tone: "ffb-notice-warn",
+    };
+  }
+  return {
+    text: "Market and consensus sit inside this player's noise band. Take him on schedule.",
+    tone: "",
+  };
 }
 
 /**
- * A shared player detail surface, right-side drawer on desktop, bottom sheet on
- * mobile, used by both the rankings board and the draft assistant. It renders
- * only fields the snapshot actually populates (rank, tier, expert range,
- * consensus spread, ownership, bye, ADP) plus the cross-surface watchlist,
- * notes, and compare controls. No projections/headshots: that data is empty.
+ * The player detail panel the best ball board and both draft rooms share, a
+ * right-hand drawer on a desktop and a bottom sheet on a phone. It renders
+ * only fields the snapshot populates (rank, tier, expert range, consensus
+ * spread, ownership, bye, ADP, movement, points per game) plus the queue,
+ * note, and compare controls that carry across the fantasy pages. The spread
+ * plot, the points per game block, and the note field are components of their
+ * own, so the rankings board's drawer can render the same parts.
  */
 export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel = "Rank", boardTierCount, onClose,
   adpAvailable = true,
   valueSignalAvailable = true,
   compareAvailable = true,
+  verdictAvailable = true,
+  vorp,
+  consensusWithheld = false,
+  scoringLabel,
   onLogPick,
 }: PlayerDetailDrawerProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -129,344 +176,240 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
 
   useModal(panelRef, isOpen, onClose, { lockScroll: false });
 
-  const valueSignal =
-    player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;
-  const spread = player ? getConsensusSpread(player) : null;
+  if (!player) return null;
+
+  const showAdp = adpAvailable && Number.isFinite(player.adp);
+  const valueSignal = adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;
+  const verdict = valueSignal ? marketVerdict(player, valueSignal) : null;
+  const spread = getConsensusSpread(player);
   // The stamps measure the 7 and 14 days before the board was last updated,
   // so on a board that has stopped moving they describe a window that ended
   // when it stopped.
-  const movementCurrent = player ? getSnapshotStaleness(player.lastUpdated) !== "stale" : false;
-  const isQueued = player ? queue.isQueued(player.id) : false;
-  const inCompare = player ? compare.inCompare(player.id) : false;
+  const movementCurrent = getSnapshotStaleness(player.lastUpdated) !== "stale";
+  const movement = [
+    Number.isFinite(player.rankMove7d) ? `rank ${formatBoardMove(player.rankMove7d as number)} in 7d` : null,
+    Number.isFinite(player.rankMove14d) ? `${formatBoardMove(player.rankMove14d as number)} in 14d` : null,
+    Number.isFinite(player.adpMove7d) ? `ADP ${formatBoardMove(player.adpMove7d as number)} in 7d` : null,
+    Number.isFinite(player.adpMove14d) ? `${formatBoardMove(player.adpMove14d as number)} in 14d` : null,
+  ].filter(Boolean);
+  const isQueued = queue.isQueued(player.id);
+  const inCompare = compare.inCompare(player.id);
   const compareDisabled = !inCompare && compare.isFull;
+  const hasPositionRank = Number.isFinite(player.positionRank);
+  const hasRange = Number.isFinite(player.minRank) && Number.isFinite(player.maxRank);
+  // The three stores share one storage, so one of them in memory means all are.
+  const persistent = [notes, queue, compare].every((store) => store.persistenceStatus === "persistent");
+  const withheld = <span className="ffb-label ffb-muted">Withheld</span>;
 
   return (
-    <>
-      {isOpen && player && (
-        <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex items-end justify-center sm:items-stretch sm:justify-end">
-          <button
-            type="button"
-            aria-label="Close player detail"
-            onClick={onClose}
-            className="absolute inset-0 h-full w-full cursor-default"
-            style={{ background: "color-mix(in srgb, var(--c97-ink) 38%, transparent)" }}
-            tabIndex={-1}
-          />
-          <div
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${player.name} detail`}
-            tabIndex={-1}
-            className="c97-enter-slide-y relative flex max-h-[88vh] w-full flex-col overscroll-contain overflow-y-auto border sm:max-h-none sm:h-full sm:w-[26rem]"
-            style={{
-              padding: "var(--c97-sp-2)",
-              gap: "var(--c97-sp-2)",
-              borderColor: "var(--c97-rule)",
-              background: "var(--c97-surface)",
-            }}
-          >
-            {/* Header */}
-            <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <div className="min-w-0">
-                <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                  <span
-                    className="inline-flex items-center border py-0.5 text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={{ paddingInline: "var(--c97-sp-1)", ...(getPositionTone(player.position)) }}
-                  >
-                    {player.position}
-                    {Number.isFinite(player.positionRank) ? ` ${player.positionRank}` : ""}
-                  </span>
-                  {publishedRank && (
-                    <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--c97-ink-2)" }}>
+    <div className="ffb-overlay ffb-enter-fade">
+      <button
+        type="button"
+        aria-label="Close player detail"
+        onClick={onClose}
+        className="ffb-scrim"
+        tabIndex={-1}
+      />
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${player.name} detail`}
+        tabIndex={-1}
+        className="ffb-drawer ffb-enter-side"
+      >
+        <div className="ffb-panel-head">
+          <div className="ffb-stack ffb-stack-tight">
+            <p className="ffb-cluster">
+              <span className={`ffb-chip ${positionClass(player.position)}`}>
+                {player.position}
+                {hasPositionRank ? player.positionRank : ""}
+              </span>{" "}
+              <span className="ffb-label ffb-muted">
+                {publishedRank ? (
+                  <>
+                    <span>
                       {publishedRankLabel} {publishedRank}
                     </span>
-                  )}
-                </div>
-                <h2 className="c97-serif c97-h2 truncate" style={{ marginTop: "0.375rem" }}>{player.name}</h2>
-                <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
-                  {player.team || "Free agent"}
-                  {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close"
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
-              >
-                <X size={18} aria-hidden="true" />
-              </button>
-            </div>
+                    {" · "}
+                  </>
+                ) : null}
+                {player.team || "Free agent"}
+                {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
+              </span>
+            </p>
+            <h2 className="ffb-h2">{player.name}</h2>
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close" className="ffb-iconbtn">
+            <X size={18} aria-hidden="true" />
+          </button>
+        </div>
 
-            {/* Quick actions */}
-            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-              {onLogPick && (
-                <button
-                  type="button"
-                  onClick={() => onLogPick(player)}
-                  className="inline-flex min-h-touch flex-1 items-center justify-center border text-sm font-semibold border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
-                >
-                  Log this pick
-                </button>
-              )}
-              <button
-                type="button"
-                onClick={() => queue.toggle(player.id)}
-                aria-pressed={isQueued}
-                className={`inline-flex min-h-touch flex-1 items-center justify-center border text-sm font-semibold text-[var(--c97-ink)] ${
-                  isQueued
-                    ? "border-[color-mix(in_srgb,var(--c97-accent)_60%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_30%,var(--c97-surface))] hover:border-[var(--c97-accent)]"
-                    : "border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
-                }`} style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
-              >
-                <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
-                {isQueued ? "Queued" : "Add to queue"}
+        <div className="ffb-panel-body ffb-ov-drawer-body">
+          <div className="ffb-cluster ffb-ov-actions">
+            {onLogPick && (
+              <button type="button" onClick={() => onLogPick(player)} className="ffb-btn ffb-btn-primary">
+                Log this pick
               </button>
-              {compareAvailable && (
+            )}
+            <button
+              type="button"
+              onClick={() => queue.toggle(player.id)}
+              aria-pressed={isQueued}
+              className="ffb-btn ffb-btn-toggle"
+            >
+              <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
+              {isQueued ? "Queued" : "Add to queue"}
+            </button>
+            {compareAvailable && (
               <button
                 type="button"
                 onClick={() => compare.toggle(player.id)}
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className={`min-h-touch inline-flex flex-1 items-center justify-center border text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed ${
-                  compareDisabled
-                    ? "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
-                    : inCompare
-                      ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
-                      : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
-                }`} style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
+                className="ffb-btn ffb-btn-toggle"
               >
-                <GitCompareArrows size={16} aria-hidden="true" />
+                <GitCompareArrows size={14} aria-hidden="true" />
                 {inCompare ? "Comparing" : "Compare"}
               </button>
+            )}
+          </div>
+
+          {/* Four short facts read best as two by two. Three sit on one line. */}
+          <dl className={vorp ? "ffb-stats ffb-stats-2" : "ffb-stats"}>
+            <div className="ffb-stat">
+              <dt>Position rank</dt>
+              {consensusWithheld ? (
+                <dd>{withheld}</dd>
+              ) : (
+                <dd>
+                  {player.position}
+                  {hasPositionRank ? ` ${player.positionRank}` : " —"}
+                </dd>
               )}
             </div>
-
-            {/* Stats grid */}
-            <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-              <StatCell label="Position rank">
-                {player.position}
-                {Number.isFinite(player.positionRank) ? ` ${player.positionRank}` : " —"}
-              </StatCell>
-              <StatCell label="Tier">
-                {Number.isFinite(player.tier)
-                  ? `${player.tier}${boardTierCount ? ` of ${boardTierCount}` : ""}`
-                  : "—"}
-              </StatCell>
-              <StatCell label="Bye week">{player.byeWeek ?? "—"}</StatCell>
-              <StatCell label="Rostered">{formatOwnership(player.ownership)}</StatCell>
+            <div className="ffb-stat">
+              <dt>Tier</dt>
+              {consensusWithheld ? (
+                <dd>{withheld}</dd>
+              ) : (
+                <dd>
+                  {Number.isFinite(player.tier) ? player.tier : "—"}
+                  {Number.isFinite(player.tier) && boardTierCount ? <small> of {boardTierCount}</small> : null}
+                </dd>
+              )}
             </div>
+            <div className="ffb-stat">
+              <dt>Rostered</dt>
+              <dd>{formatOwnership(player.ownership)}</dd>
+            </div>
+            {vorp && (
+              <div className="ffb-stat">
+                <dt>
+                  <MetricTooltip term="VORP" definition={FANTASY_VORP_TOOLTIP} focusable>
+                    {`VORP · ${vorp.label}`}
+                  </MetricTooltip>
+                </dt>
+                <dd>{Math.round(vorp.value)}</dd>
+              </div>
+            )}
+            {showAdp && (
+              <div className="ffb-stat ffb-ov-stat-wide">
+                <dt>
+                  <MetricTooltip term="Market ADP" definition={FANTASY_ADP_TOOLTIP} focusable>
+                    Market ADP
+                  </MetricTooltip>
+                </dt>
+                <dd className="ffb-cluster ffb-ov-stat-row">
+                  {formatAdp(player.adp)}{" "}
+                  {valueSignal?.signal && (
+                    <span
+                      className={`ffb-badge ${valueSignal.signal === "value" ? "ffb-good" : "ffb-warn"}`}
+                      title={valueSignal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+                    >
+                      {valueSignal.signal === "value" ? "Value" : "Reach"} {formatPickDelta(valueSignal.delta)}
+                    </span>
+                  )}
+                </dd>
+                {(Number.isFinite(player.adpTimesDrafted) ||
+                  Number.isFinite(player.adpStandardDeviation) ||
+                  (Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow))) && (
+                  <dd className="ffb-stat-note">
+                    {Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow)
+                      ? `Drafted between picks ${formatAdp(player.adpHigh)} and ${formatAdp(player.adpLow)} · `
+                      : ""}
+                    {Number.isFinite(player.adpTimesDrafted)
+                      ? `${Math.round(player.adpTimesDrafted as number)} mock selections`
+                      : "Sample count unavailable"}
+                    {Number.isFinite(player.adpStandardDeviation)
+                      ? ` · ${Number(player.adpStandardDeviation).toFixed(1)} pick standard deviation`
+                      : ""}
+                    {!hasReliableAdpSample(player) ? " · Early sample, so no value or reach label" : ""}
+                  </dd>
+                )}
+              </div>
+            )}
+          </dl>
 
+          {showAdp && verdictAvailable && verdict && <p className={`ffb-notice ${verdict.tone}`}>{verdict.text}</p>}
+
+          <div className="ffb-stack ffb-stack-tight">
+            <div className="ffb-sechead">
+              <h3 className="ffb-h3" aria-label="Expert spread">
+                <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} focusable>
+                  Expert spread
+                </MetricTooltip>
+              </h3>
+              {spread && <p className="ffb-sechead-note">{spread.label}</p>}
+            </div>
+            {/* The plot's divisions are labelled R1, R2, and the head line above
+                prints a rank, so the drawer says once what a division is. */}
+            {hasRange && <p className="ffb-sechead-note">Each division is a round of a 12-team draft.</p>}
+            <RankDistributionBar player={player} />
             {/* Board movement, present only once the committed rank history is
                 old enough for the window and while the board is still being
                 updated. Positive means up the board. */}
-            {movementCurrent &&
-              (Number.isFinite(player.rankMove7d) ||
-              Number.isFinite(player.rankMove14d) ||
-              Number.isFinite(player.adpMove7d) ||
-              Number.isFinite(player.adpMove14d)) && (
-              <p
-                className="m-0 font-mono text-2xs leading-5"
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                <MetricTooltip
-                  term="Movement"
-                  definition="Movement against the published snapshot from 7 and 14 days back. An up arrow means he moved up the board, ranked higher or drafted earlier."
-                />
-                {": "}
-                {[
-                  Number.isFinite(player.rankMove7d)
-                    ? `rank ${formatBoardMove(player.rankMove7d as number)} in 7d`
-                    : null,
-                  Number.isFinite(player.rankMove14d)
-                    ? `${formatBoardMove(player.rankMove14d as number)} in 14d`
-                    : null,
-                  Number.isFinite(player.adpMove7d)
-                    ? `ADP ${formatBoardMove(player.adpMove7d as number)} in 7d`
-                    : null,
-                  Number.isFinite(player.adpMove14d)
-                    ? `${formatBoardMove(player.adpMove14d as number)} in 14d`
-                    : null,
-                ]
-                  .filter(Boolean)
-                  .join(" · ")}
+            {movementCurrent && movement.length > 0 && (
+              <p className="ffb-ov-line">
+                <span className="ffb-label">
+                  <MetricTooltip
+                    term="Movement"
+                    definition="Movement against the published snapshot from 7 and 14 days back. An up arrow means he moved up the board, ranked higher or drafted earlier."
+                    focusable
+                  >
+                    Movement
+                  </MetricTooltip>
+                </span>{" "}
+                <span>{movement.join(" · ")}</span>
               </p>
             )}
-
-            {/* Prior-season points per game, history rather than a projection.
-                Compact variant of the rankings drawer's panel: the four
-                figures without the tick bar. */}
-            {player.gameLog && (
-              <div>
-                <div className="flex flex-wrap items-baseline justify-between gap-y-0.5" style={{ columnGap: "var(--c97-sp-1)" }}>
-                  <span
-                    className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={{ color: "var(--c97-ink-2)" }}
-                  >
-                    Points per game
-                    <MetricTooltip
-                      term="Points per game"
-                      definition={getFantasyPointsPerGameTooltip(player.gameLog)}
-                    />
-                  </span>
-                  <span
-                    className="font-mono text-3xs uppercase tracking-[0.1em]"
-                    style={{ color: "var(--c97-ink-2)" }}
-                  >
-                    {player.gameLog.season} season · {player.gameLog.games}{" "}
-                    {player.gameLog.games === 1 ? "game" : "games"}
-                  </span>
-                </div>
-                <dl className="grid grid-cols-4" style={{ marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
-                  {(
-                    [
-                      { label: "Low", value: player.gameLog.low, muted: true },
-                      { label: "Median", value: player.gameLog.median, muted: false },
-                      { label: "Avg", value: player.gameLog.average, muted: false },
-                      { label: "High", value: player.gameLog.high, muted: true },
-                    ] as const
-                  ).map((cell) => (
-                    <div key={cell.label}>
-                      <dt
-                        className="text-2xs font-semibold uppercase tracking-[0.12em]"
-                        style={{ color: "var(--c97-ink-2)" }}
-                      >
-                        {cell.label}
-                      </dt>
-                      <dd
-                        className="m-0 mt-0.5 font-mono text-2xs tabular-nums"
-                        style={{ color: cell.muted ? "var(--c97-ink-2)" : "var(--c97-ink)" }}
-                      >
-                        {cell.value.toFixed(1)}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            )}
-
-            {/* ADP + value signal */}
-            {adpAvailable && Number.isFinite(player.adp) && (
-              <div
-                className="flex items-center justify-between border"
-                style={{
-                  paddingInline: "var(--c97-sp-1)",
-                  paddingBlock: "var(--c97-sp-1)",
-                  borderColor: "var(--c97-rule)",
-                  background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))",
-                }}
-              >
-                <div>
-                  <p
-                    className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={{ color: "var(--c97-ink-2)" }}
-                  >
-                    Market ADP
-                    <MetricTooltip term="Market ADP" definition={FANTASY_ADP_TOOLTIP} />
-                  </p>
-                  <p className="text-base font-semibold tabular-nums">{formatAdp(player.adp)}</p>
-                  {(Number.isFinite(player.adpTimesDrafted) ||
-                    Number.isFinite(player.adpStandardDeviation) ||
-                    (Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow))) && (
-                    <p className="mt-0.5 text-2xs leading-4" style={{ color: "var(--c97-ink-2)" }}>
-                      {Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow)
-                        ? `Drafted between picks ${formatAdp(player.adpHigh)} and ${formatAdp(player.adpLow)} · `
-                        : ""}
-                      {Number.isFinite(player.adpTimesDrafted)
-                        ? `${Math.round(player.adpTimesDrafted as number)} mock selections`
-                        : "Sample count unavailable"}
-                      {Number.isFinite(player.adpStandardDeviation)
-                        ? ` · ${Number(player.adpStandardDeviation).toFixed(1)} pick standard deviation`
-                        : ""}
-                      {!hasReliableAdpSample(player) ? " · Early sample, so no value or reach label" : ""}
-                    </p>
-                  )}
-                </div>
-                {valueSignal?.signal && (
-                  <span
-                    className={FANTASY_CHIP_CLASS}
-                    title={
-                      valueSignal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP
-                    }
-                    style={
-                      valueSignal.signal === "value"
-                        ? {
-                            borderColor: "color-mix(in srgb, var(--c97-positive) 30%, var(--c97-rule))",
-                            background: "color-mix(in srgb, var(--c97-positive) 12%, var(--c97-surface))",
-                            color: "var(--c97-ink)",
-                          }
-                        : {
-                            borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
-                            background: "color-mix(in srgb, var(--c97-warning) 12%, var(--c97-surface))",
-                            color: "var(--c97-ink)",
-                          }
-                    }
-                  >
-                    {valueSignal.signal === "value" ? "Value" : "Reach"}{" "}
-                    {formatPickDelta(valueSignal.delta)}
-                  </span>
-                )}
-              </div>
-            )}
-
-            {/* Expert consensus spread */}
-            <div>
-              <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)" }}>
-                <p className="c97-kicker inline-flex items-center">
-                  Expert spread
-                  <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
-                </p>
-                {spread && (
-                  <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--c97-ink-2)" }}>
-                    {spread.label}
-                  </span>
-                )}
-              </div>
-              <RankDistributionBar player={player} />
-            </div>
-
-            {/* Private note */}
-            <div>
-              <label
-                htmlFor="player-note"
-                className="c97-kicker block" style={{ marginBottom: "0.5rem" }}
-              >
-                Private note
-              </label>
-              <textarea
-                id="player-note"
-                name="player-note"
-                value={draftNote}
-                maxLength={notes.maxLength}
-                onChange={(event) => {
-                  setDraftNote(event.target.value);
-                  notes.setNote(player.id, event.target.value);
-                }}
-                rows={2}
-                placeholder="Handcuff for Hall… target round 6… avoid."
-                className="w-full resize-none border text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
-                style={{
-                  paddingInline: "var(--c97-sp-1)",
-                  paddingBlock: "var(--c97-sp-1)",
-                  borderColor: "var(--c97-rule)",
-                  background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
-                  color: "var(--c97-ink)",
-                }}
-              />
-              <p className="text-right text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                {draftNote.length}/{notes.maxLength} · saved to this browser
-              </p>
-            </div>
-
-            <p className="text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              Ranks, tiers, and expert ranges come from the published FantasyPros consensus snapshot. Queue,
-              notes, and compare stay on this device.
-            </p>
           </div>
+
+          {/* Prior-season points per game, history and never a projection. */}
+          {player.gameLog && <PlayerPointsPerGame gameLog={player.gameLog} scoringLabel={scoringLabel} />}
+
+          <PlayerNoteField
+            id="player-note"
+            value={draftNote}
+            maxLength={notes.maxLength}
+            onChange={(value) => {
+              setDraftNote(value);
+              notes.setNote(player.id, value);
+            }}
+            persistent={persistent}
+          />
+
+          <p className="ffb-method">
+            Ranks, tiers, and expert ranges come from the published FantasyPros consensus snapshot.{" "}
+            {persistent
+              ? "Queue, notes, and compare stay on this device."
+              : compareAvailable
+                ? "Queue, notes, and compare last only in this tab."
+                : "Queue and notes last only in this tab."}
+          </p>
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }

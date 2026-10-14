@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { Player } from "@/types";
 import { useDebounce } from "@/hooks/useDebounce";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
@@ -8,13 +8,10 @@ import { isPlayerValueAtPick } from "@/lib/draftAnalytics";
 import {
   FANTASY_ADP_TOOLTIP,
   FANTASY_VORP_TOOLTIP,
-  MONO_LABEL_CLASS,
-  POSITION_CHIP_CLASS,
   formatAdp,
   formatRankValue,
   getConsensusAvg,
-  getPositionTone,
-  getTierRailIntensity,
+  shortName,
   withTierBreaks,
 } from "@/lib/fantasyUtils";
 import type {
@@ -22,6 +19,7 @@ import type {
   FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
+import { positionClass } from "@/components/fantasy/positionClass";
 
 interface DraftBoardProps {
   players: Player[];
@@ -35,19 +33,20 @@ interface DraftBoardProps {
   vorpValues: ReadonlyMap<string, FantasyVorpRankingEntry>;
   vorpTeamSize: FantasyVorpTeamSize | null;
   /**
-   * CSS `top` for the sticky controls bar, measured by the tracker so the bar
-   * lands under the live fascia rather than behind it.
+   * The user's next turn, or 0 when there is none. The board marks where it
+   * falls if picks follow the board.
    */
-  stickyTop?: string;
+  nextUserPick?: number;
 }
 
 /**
- * Below `md` the column header is hidden, so each value carries its own label.
- * The sr-only cell label next to it keeps the value named exactly once for
- * assistive tech at every width. Same contract as the rankings board.
+ * The column head is hidden from assistive tech and from a phone, so each
+ * value carries its own label inside its cell, where it hides when the cell
+ * does. `ffb-vh-desk` is a label a phone prints and a desktop only reads
+ * out, since the column head already shows it there.
  */
-const ROW_MICRO_LABEL_CLASS =
-  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
+
+const STAR_PATH = "M10 2.6l2.3 4.7 5.1.7-3.7 3.6.9 5.1L10 14.3l-4.6 2.4.9-5.1L2.6 8l5.1-.7z";
 
 type BoardFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX";
 
@@ -93,12 +92,15 @@ export function DraftBoard({
   guidanceAvailable,
   vorpValues,
   vorpTeamSize,
-  stickyTop,
+  nextUserPick = 0,
 }: DraftBoardProps) {
   const [selectedPosition, setSelectedPosition] = useState<BoardFilter>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(BOARD_PAGE_SIZE);
   const [highlightIndex, setHighlightIndex] = useState(-1);
+  // The row "Load more" hands focus to: the first one it added.
+  const [focusRowAt, setFocusRowAt] = useState<number | null>(null);
+  const boardRef = useRef<HTMLElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const debouncedSearch = useDebounce(searchQuery, 200);
@@ -241,11 +243,47 @@ export function DraftBoard({
     }
   }
 
-  // Auto-extend the window as the sentinel nears the viewport, matching the
-  // rankings board: the tier plates flow without a "Load more" control.
+  // The pinned bar takes a second row where the list column is narrow (from 1200px to about
+  // 1280px), so its height is measured. The sheet adds it to the scorebug's for the kit's
+  // scroll margin, which keeps a focused row clear of both bars.
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board || typeof ResizeObserver === "undefined") return;
+    const write = () => board.style.setProperty("--ffb-dt-bar", `${bar.offsetHeight}px`);
+    write();
+    const observer = new ResizeObserver(write);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, []);
+
+  // A search or a position filter that shortens the board while the page is scrolled deep
+  // leaves the bar, and the field being typed in, above the screen or under the scorebug once
+  // the page gets shorter. So the bar comes back to just under the scorebug, and focus stays.
+  const filterKey = `${debouncedSearch}|${selectedPosition}`;
+  const lastFilterKeyRef = useRef(filterKey);
+  useEffect(() => {
+    if (lastFilterKeyRef.current === filterKey) return;
+    lastFilterKeyRef.current = filterKey;
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board) return;
+    const pinnedTop = parseFloat(getComputedStyle(board).getPropertyValue("--ffb-sticky-top")) || 0;
+    const top = bar.getBoundingClientRect().top;
+    if (top < pinnedTop) window.scrollTo({ top: window.scrollY + top - pinnedTop, behavior: "instant" });
+  }, [filterKey]);
+
+  // From 1200px the rail sits beside the list, so the window extends by itself
+  // as its end nears the viewport. Below that the roster's rail follows the
+  // list, and a list that kept growing would keep it out of reach, so there
+  // the list ends on its "Load more" button and waits for it.
+  // ponytail: the width is read when the effect runs, not on resize. A window
+  // dragged across 1200px picks the new mode up on its next row change.
   useEffect(() => {
     const el = sentinelRef.current;
     if (!el || !hasMore || typeof IntersectionObserver === "undefined") return;
+    if (!window.matchMedia("(min-width: 1200px)").matches) return;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
@@ -257,6 +295,16 @@ export function DraftBoard({
     observer.observe(el);
     return () => observer.disconnect();
   }, [hasMore, filteredPlayers.length]);
+
+  // "Load more" can remove itself with the last page, so focus moves to the
+  // first row it added and never falls to the page.
+  useEffect(() => {
+    if (focusRowAt === null) return;
+    const rows = boardRef.current?.querySelectorAll<HTMLElement>("li.ffb-row");
+    rows?.item(focusRowAt)?.querySelector<HTMLElement>("button.ffb-c-name")?.focus();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot focus request, cleared once served
+    setFocusRowAt(null);
+  }, [focusRowAt]);
 
   const tierGroups = useMemo<TierGroup[]>(() => {
     const groups: TierGroup[] = [];
@@ -279,7 +327,27 @@ export function DraftBoard({
       .filter((player): player is Player => Boolean(player));
   }, [availablePlayers, queue.queue]);
 
-  function describeDelta(player: Player): { text: string; color: string; title: string } | null {
+  // Who is already gone from each tier, under the position filter in force.
+  const goneByTier = useMemo(() => {
+    const gone = new Map<number, string[]>();
+    for (const player of players) {
+      if (!draftedPlayerIds.has(player.id) || !matchesFilter(player, selectedPosition)) continue;
+      if (typeof player.tier !== "number" || !Number.isFinite(player.tier)) continue;
+      gone.set(player.tier, [...(gone.get(player.tier) ?? []), shortName(player)]);
+    }
+    return gone;
+  }, [draftedPlayerIds, players, selectedPosition]);
+
+  const isSearching = debouncedSearch.trim().length > 0;
+  const hasVorp = vorpValues.size > 0;
+  // Where the board stands when the user's turn comes back, if every pick until
+  // then follows this board. A filter or a search breaks that reading, so the
+  // line only shows on the whole board.
+  const picksBeforeTurn =
+    nextUserPick > 0 && selectedPosition === "ALL" && !isSearching ? nextUserPick - currentPick : 0;
+  const turnPlayerId = picksBeforeTurn > 0 ? windowedPlayers[picksBeforeTurn]?.id : undefined;
+
+  function describeDelta(player: Player): { text: string; isValue: boolean; title: string } | null {
     if (!adpAvailable || typeof player.adp !== "number" || !Number.isFinite(player.adp)) {
       return null;
     }
@@ -289,7 +357,7 @@ export function DraftBoard({
     if (delta >= 2) {
       return {
         text: `+${magnitude}`,
-        color: isValue ? "var(--c97-positive)" : "var(--c97-ink-2)",
+        isValue,
         title: isValue
           ? `Lasted ${magnitude} picks past his ADP, so this reads as value at pick ${currentPick}`
           : `Lasted ${magnitude} picks past his ADP, inside the noise band for this market sample`,
@@ -298,15 +366,116 @@ export function DraftBoard({
     if (delta <= -2) {
       return {
         text: `−${magnitude}`,
-        color: "var(--c97-ink-2)",
+        isValue: false,
         title: `Mock rooms usually take him ${magnitude} picks after pick ${currentPick}`,
       };
     }
     return {
       text: `±${magnitude}`,
-      color: "var(--c97-ink-2)",
+      isValue: false,
       title: "Priced about right at this pick",
     };
+  }
+
+  function renderRow(player: Player) {
+    const isQueued = queue.isQueued(player.id);
+    const isHighlighted = highlightedPlayer?.id === player.id;
+    const delta = describeDelta(player);
+    const vorp = vorpValues.get(player.id);
+    const hasBye = typeof player.byeWeek === "number" && Number.isFinite(player.byeWeek);
+    return (
+      <li
+        key={player.id}
+        ref={isHighlighted ? scrollHighlightedRow : undefined}
+        className={`ffb-row${isQueued ? " ffb-is-queued" : ""}${isHighlighted ? " ffb-is-active" : ""}`}
+      >
+        <span className="ffb-c-rank" title="Overall board rank">
+          {formatRankValue(player.rankEcr ?? player.averageRank)}
+        </span>
+        <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+          {player.position}
+          {player.positionRank ?? ""}
+        </span>
+        <button
+          type="button"
+          onClick={() => onOpenDetail(player)}
+          aria-label={`Open ${player.name} detail`}
+          // A narrow row can still cut a long name, and the title keeps it whole.
+          title={player.name}
+          className="ffb-c-name"
+        >
+          {player.name}
+        </button>
+        <span className="ffb-c-team">{player.team}</span>
+        <span className="ffb-c-bye">
+          {hasBye ? (
+            <>
+              <span className="ffb-vh-desk">Bye </span>
+              {player.byeWeek}
+            </>
+          ) : null}
+        </span>
+        {adpAvailable ? (
+          <>
+            <span className="ffb-c-num ffb-is-flat" title={FANTASY_ADP_TOOLTIP}>
+              <span className="sr-only">ADP </span>
+              {formatAdp(player.adp)}
+            </span>
+            {/* A phone row has room for one number beside the bye. The gap
+                against the pick on the clock is the reading the room is for,
+                so in a room with ADP that number is the gap, with its label,
+                its sign, and its tone. The ADP itself and the gap together
+                need up to 100px there, and a 390px row has 67. */}
+            <span
+              className={`ffb-c-num ffb-m-meta ${delta?.isValue ? "ffb-is-strong ffb-is-good" : "ffb-is-flat"}`}
+              title={delta?.title}
+            >
+              <span className="sr-only">versus ADP at pick {currentPick} </span>
+              <span aria-hidden="true" className="ffb-only-phone">
+                ±ADP{" "}
+              </span>
+              {delta?.text ?? "—"}
+            </span>
+          </>
+        ) : null}
+        {vorp ? (
+          // VORP is a column of measured values, so it reads in ink like the rank.
+          // On a phone it takes the row's one number when the room has no ADP.
+          <span
+            className={`ffb-c-num${vorp.value > 0 ? "" : " ffb-is-flat"}${adpAvailable ? "" : " ffb-m-meta"}`}
+            title={FANTASY_VORP_TOOLTIP}
+          >
+            <span className="sr-only">Value over replacement player </span>
+            <span aria-hidden="true" className="ffb-only-phone">
+              VORP{" "}
+            </span>
+            {Math.round(vorp.value)}
+          </span>
+        ) : hasVorp ? (
+          // Holds the column for a player FantasyPros publishes no VORP for.
+          <span className="ffb-c-num" />
+        ) : null}
+        <button
+          type="button"
+          onClick={() => queue.toggle(player.id)}
+          aria-pressed={isQueued}
+          aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
+          className="ffb-star"
+        >
+          <svg className="ffb-star-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+            <path d={STAR_PATH} />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={() => handleDraftPlayer(player)}
+          aria-label={`Log ${player.name}`}
+          className="ffb-log"
+        >
+          Log
+        </button>
+      </li>
+    );
   }
 
   function renderTierSection(group: TierGroup, index: number) {
@@ -314,10 +483,6 @@ export function DraftBoard({
     const lastRank = formatRankValue(
       group.rows[group.rows.length - 1].rankEcr ?? group.rows[group.rows.length - 1].averageRank
     );
-    const railTone =
-      group.tier !== null
-        ? `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.tier)}%, var(--c97-rule))`
-        : "var(--c97-rule)";
 
     let cliff = 0;
     if (index > 0) {
@@ -328,265 +493,119 @@ export function DraftBoard({
         cliff = Math.max(0, Number((nextAvg - prevAvg).toFixed(1)));
       }
     }
-    const marginTop = index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
+    // The gap above a break grows with the cliff, in 4px steps from 8 to 28px.
+    const gap = Math.min(28, Math.max(8, Math.round((cliff * 6) / 4) * 4));
 
-    /* Same contract as the rankings board's tier plates: an unnamed <section> is not
-       exposed as a landmark at all, so the tier structure would be invisible to assistive
-       tech. Literal label rather than aria-labelledby, because the plate header is spans
-       rather than a heading. The cliff rule above is aria-hidden, so its size rides here. */
+    /* An unnamed <section> is not exposed as a landmark at all, so the tier
+       structure would be invisible to assistive tech. The cliff mark in the
+       head is aria-hidden, so its size rides in the label. */
     const tierLabel = [
       group.tier !== null ? `Tier ${group.tier}` : "No published tier",
       `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
-      `ranks ${firstRank} to ${lastRank}`,
+      firstRank === lastRank ? `rank ${firstRank}` : `ranks ${firstRank} to ${lastRank}`,
       index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
     ]
       .filter(Boolean)
       .join(", ");
 
+    // The window can split a tier across two groups, so the line prints with the first.
+    const gone =
+      group.tier !== null &&
+      !isSearching &&
+      tierGroups.findIndex((candidate) => candidate.tier === group.tier) === index
+        ? goneByTier.get(group.tier)
+        : undefined;
+
     return (
       <section
         key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
+        className="ffb-tier"
         aria-label={tierLabel}
-        style={{ marginTop }}
+        style={{ "--ffb-gap": `${gap}px` } as CSSProperties}
       >
-        {index > 0 && cliff > 0 && (
-          <div aria-hidden="true" className="flex items-center px-0.5" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-            <span
-              className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
-            />
-            <span
-              className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--c97-accent)" }}
-            >
-              ↓ {cliff.toFixed(1)} avg-rank cliff
+        <header className="ffb-tier-head">
+          <h3 className="ffb-tier-name">
+            {/* The spaces keep the three parts apart when the heading is read as one string. */}
+            <span className="ffb-tier-tab">
+              {group.tier !== null ? `Tier ${String(group.tier).padStart(2, "0")}` : "No published tier"}
+            </span>{" "}
+            <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
+            <span className="ffb-tier-range">
+              {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
             </span>
-            <span
-              className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
-            />
-          </div>
-        )}
-        <div
-          className="overflow-hidden border border-l-[3px]"
-          style={{
-            borderColor: "var(--c97-rule)",
-            borderLeftColor: railTone,
-            background: "var(--c97-field)",
-          }}
-        >
-          <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-            <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
-              {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
-            </span>
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-              {group.tier !== null ? "Tier" : "No published tier"}
-            </span>
-            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              {group.rows.length} left
-            </span>
-            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              R{firstRank}–R{lastRank}
-            </span>
-          </div>
-          <ul className="m-0 list-none p-0">
-            {group.rows.map((player) => {
-              const isQueued = queue.isQueued(player.id);
-              const isHighlighted = highlightedPlayer?.id === player.id;
-              const delta = describeDelta(player);
-              const vorp = vorpValues.get(player.id);
-              return (
-                <li
-                  key={player.id}
-                  ref={isHighlighted ? scrollHighlightedRow : undefined}
-                  className="flex flex-wrap items-center border-t border-l-[3px] transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
-                  style={{
-                    paddingBlock: "var(--c97-sp-0)",
-                    paddingLeft: "var(--c97-sp-1)",
-                    paddingRight: "var(--c97-sp-1)",
-                    columnGap: "var(--c97-sp-2)",
-                    rowGap: "var(--c97-sp-0)",
-                    borderTopColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
-                    borderLeftColor:
-                      isHighlighted || isQueued ? "var(--c97-accent)" : "transparent",
-                    background: isHighlighted
-                      ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-field))"
-                      : undefined,
-                  }}
-                >
-                  <span
-                    className="w-8 flex-none text-right font-mono text-sm"
-                    title="Overall board rank"
-                  >
-                    {formatRankValue(player.rankEcr ?? player.averageRank)}
-                  </span>
-                  <div className="flex min-w-0 flex-1 basis-44 items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
-                    {/* -my keeps the row dense while the button itself meets
-                        the 44px touch floor. */}
-                    <button
-                      type="button"
-                      onClick={() => onOpenDetail(player)}
-                      aria-label={`Open ${player.name} detail`}
-                      className="inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4" style={{ marginBlock: "calc(var(--c97-sp-1) * -1)" }}
-                    >
-                      {player.name}
-                    </button>
-                    <span className={POSITION_CHIP_CLASS} style={getPositionTone(player.position)}>
-                      {player.position}
-                      {player.positionRank ?? ""}
-                    </span>
-                    <span
-                      className="flex-none font-mono text-2xs uppercase tracking-[0.06em]"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    >
-                      {player.team}
-                      {typeof player.byeWeek === "number" && Number.isFinite(player.byeWeek)
-                        ? ` · Bye ${player.byeWeek}`
-                        : ""}
-                    </span>
-                  </div>
-                  <div className="ml-auto flex flex-none items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                    {vorp ? (
-                      <>
-                        <span className="sr-only">Value over replacement player</span>
-                        {/* VORP is a column of measured values, so it reads in
-                            ink like ADP beside it. Signal on the hover wash and
-                            the keyboard highlight measured 4.41:1 and 4.01:1 in
-                            light mode; the accent stays on the rail and the star. */}
-                        <span
-                          className="w-auto font-mono text-xs tabular-nums md:w-12 md:text-right"
-                          style={{
-                            color:
-                              vorp.value > 0
-                                ? "var(--c97-ink)"
-                                : "var(--c97-ink-2)",
-                          }}
-                          title={FANTASY_VORP_TOOLTIP}
-                        >
-                          <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                            VORP{" "}
-                          </span>
-                          {Math.round(vorp.value)}
-                        </span>
-                      </>
-                    ) : null}
-                    {adpAvailable ? (
-                      <>
-                        <span className="sr-only">ADP</span>
-                        <span
-                          className="w-auto font-mono text-xs md:w-11 md:text-right"
-                          style={{ color: "var(--c97-ink-2)" }}
-                          title={FANTASY_ADP_TOOLTIP}
-                        >
-                          <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                            ADP{" "}
-                          </span>
-                          {formatAdp(player.adp)}
-                        </span>
-                        <span className="sr-only">versus ADP at pick {currentPick}</span>
-                        <span
-                          className="w-auto font-mono text-xs md:w-12 md:text-right"
-                          style={{ color: delta?.color ?? "var(--c97-ink-2)" }}
-                          title={delta?.title}
-                        >
-                          <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                            ±ADP{" "}
-                          </span>
-                          {delta?.text ?? "—"}
-                        </span>
-                      </>
-                    ) : null}
-                    <button
-                      type="button"
-                      onClick={() => queue.toggle(player.id)}
-                      aria-pressed={isQueued}
-                      aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-                      className={`inline-flex h-11 w-11 items-center justify-center border ${
-                        isQueued ? "" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
-                      }`}
-                      style={{
-                        borderColor: isQueued
-                          ? "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-rule))"
-                          : undefined,
-                        color: isQueued ? "var(--c97-accent)" : "var(--c97-ink-2)",
-                      }}
-                    >
-                      {isQueued ? "★" : "☆"}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleDraftPlayer(player)}
-                      aria-label={`Log ${player.name}`}
-                      className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-3xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)" }}
-                    >
-                      Log
-                    </button>
-                  </div>
+          </h3>
+          {index > 0 && cliff > 0 ? (
+            <p className="ffb-tier-cliff" aria-hidden="true">
+              <span className="ffb-cliff-mark" />
+              <b>{cliff.toFixed(1)}</b> <span className="ffb-not-phone">avg-rank </span>cliff
+            </p>
+          ) : null}
+        </header>
+        {gone ? (
+          <p className="ffb-tier-gone">
+            <span className="ffb-label">Gone</span>{" "}
+            <span>{gone.join(", ")}</span>
+          </p>
+        ) : null}
+        <ol className="ffb-rows">
+          {group.rows.map((player) =>
+            player.id === turnPlayerId ? (
+              <Fragment key={player.id}>
+                <li className="ffb-turnline">
+                  <span className="ffb-turn-tab">Your turn #{nextUserPick}</span>{" "}
+                  <span className="ffb-turn-note">if picks follow this board</span>
                 </li>
-              );
-            })}
-          </ul>
-        </div>
+                {renderRow(player)}
+              </Fragment>
+            ) : (
+              renderRow(player)
+            )
+          )}
+        </ol>
       </section>
     );
   }
 
   return (
-    <section aria-label="Draft board">
+    <section
+      ref={boardRef}
+      aria-label="Draft board"
+      className={`ffb-board ffb-board-room ffb-board-star-log ffb-board-tight ffb-dt-board${adpAvailable ? " ffb-dt-has-adp" : ""}${
+        hasVorp ? " ffb-dt-has-vorp" : ""
+      }`}
+    >
       {queuedAvailable.length > 0 && (
-        <div
-          className="flex flex-wrap items-center border"
-          style={{
-            paddingInline: "var(--c97-sp-1)",
-            paddingBlock: "var(--c97-sp-0)",
-            marginBottom: "var(--c97-sp-1)",
-            gap: "var(--c97-sp-0)",
-            borderColor: "color-mix(in srgb, var(--c97-accent) 38%, var(--c97-rule))",
-            background: "color-mix(in srgb, var(--c97-accent) 9%, var(--c97-surface))",
-          }}
-        >
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-accent)" }}>
-            ★ Queue · still on the board
-          </span>
+        <div className="ffb-cluster ffb-dt-queue ffb-noprint">
+          <span className="ffb-turn-tab">★ Queue · still on the board</span>
           {queuedAvailable.slice(0, 8).map((player) => (
             <button
               key={`queued-${player.id}`}
               type="button"
               onClick={() => handleDraftPlayer(player)}
               title={`Log ${player.name}`}
-              className="inline-flex min-h-touch items-baseline border border-[var(--c97-rule)] font-mono text-2xs hover:border-[var(--c97-ink)]"
-              style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+              className="ffb-btn ffb-dt-queue-btn"
             >
-              <span style={{ color: "var(--c97-ink-2)" }}>
-                #{formatRankValue(player.rankEcr ?? player.averageRank)}
-              </span>
-              <span className="max-w-[8rem] truncate font-sans text-xs font-semibold tracking-[-0.01em]">
-                {player.name}
-              </span>
+              <span className="ffb-muted">#{formatRankValue(player.rankEcr ?? player.averageRank)}</span>{" "}
+              <span className="ffb-dt-queue-name">{player.name}</span>
             </button>
           ))}
         </div>
       )}
 
-      {vorpValues.size > 0 && vorpTeamSize ? (
-        <p
-          className="max-w-[68ch] text-xs leading-5"
-          style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-        >
-          VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel below.
+      {/* A phone row prints VORP only when the room has no ADP, and the note
+          does not print where no row on screen shows the number it explains. */}
+      {hasVorp && vorpTeamSize ? (
+        <p className={adpAvailable ? "ffb-method ffb-dt-vorp ffb-not-phone" : "ffb-method ffb-dt-vorp"}>
+          VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel.
         </p>
       ) : null}
 
       {/* The board runs hundreds of rows against a pick clock, so the filter,
-          search, count and column labels hold their place while you scroll. It
-          only sticks from `lg`, where the fascia above it is a single row;
-          narrower than that the two stacked bars would eat the viewport the
-          rows need. */}
-      <div
-        className="lg:sticky lg:z-20"
-        style={{ top: stickyTop, background: "var(--c97-surface)" }}
-      >
-        <div className="flex flex-wrap items-center" style={{ paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
+          search, count, and column labels hold their place under the scorebug
+          while you scroll. On a phone the scorebug already pins two rows, so
+          the stylesheet lets this bar scroll with the list there. */}
+      <div ref={barRef} className="ffb-sticky ffb-dt-boardbar">
+        <div className="ffb-toolbar">
           <PositionFilterBar
             ariaLabel="Position filter"
             options={POSITION_OPTIONS}
@@ -607,59 +626,51 @@ export function DraftBoard({
                 }. Press Enter to log.`
               : ""}
           </p>
-          <input
-            ref={searchInputRef}
-            id="draft-board-search"
-            name="draftBoardSearch"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            onKeyDown={handleSearchKeyDown}
-            aria-describedby="draft-board-search-keys"
-            autoComplete="off"
-            placeholder="Search player or team"
-            className="min-h-touch w-48 border font-mono text-xs"
-            style={{
-              paddingInline: "var(--c97-sp-1)",
-              borderColor: "var(--c97-rule)",
-              background: "var(--c97-field)",
-              color: "var(--c97-ink)",
-            }}
-          />
-          <span
-            aria-live="polite"
-            className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
+          {/* A label, so the icon and the field's padding focus the input too.
+              It adds no text, so the field's name is still the one above. */}
+          <label className="ffb-search">
+            <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.5" />
+              <path d="M12.8 12.8L17 17" />
+            </svg>
+            <input
+              ref={searchInputRef}
+              id="draft-board-search"
+              name="draftBoardSearch"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              onKeyDown={handleSearchKeyDown}
+              aria-describedby="draft-board-search-keys"
+              autoComplete="off"
+              placeholder="Search player or team"
+              className="ffb-search-input"
+            />
+          </label>
+          <span aria-live="polite" className="ffb-count">
             {filteredPlayers.length} of {availablePlayers.length} available
           </span>
         </div>
 
         {windowedPlayers.length > 0 ? (
-          <div
-            aria-hidden="true"
-            className="hidden items-center md:flex"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-          >
-            <span className="w-8" />
-            <span className={`${MONO_LABEL_CLASS} min-w-0 flex-1 basis-44`}>Player</span>
-            <span className="ml-auto flex flex-none items-center" style={{ gap: "var(--c97-sp-1)" }}>
-              {vorpValues.size > 0 ? (
-                <span
-                  className={`${MONO_LABEL_CLASS} w-12 text-right`}
-                  title={FANTASY_VORP_TOOLTIP}
-                >
-                  VORP
-                </span>
-              ) : null}
-              {adpAvailable ? (
-                <>
-                  <span className={`${MONO_LABEL_CLASS} w-11 text-right`}>ADP</span>
-                  <span className={`${MONO_LABEL_CLASS} w-12 text-right`}>At #{currentPick}</span>
-                </>
-              ) : null}
-              <span className="w-11" />
-              <span className="w-[3.6rem]" />
-            </span>
+          <div aria-hidden="true" className="ffb-colhead ffb-not-phone">
+            <span className="ffb-h-num ffb-is-sorted">Rk</span>
+            <span className="ffb-h-pos">Pos</span>
+            <span>Player</span>
+            <span>Team</span>
+            <span className="ffb-h-num">Bye</span>
+            {adpAvailable ? (
+              <>
+                <span className="ffb-h-num">ADP</span>
+                <span className="ffb-h-num">At #{currentPick}</span>
+              </>
+            ) : null}
+            {hasVorp ? (
+              <span className="ffb-h-num" title={FANTASY_VORP_TOOLTIP}>
+                VORP
+              </span>
+            ) : null}
+            <span />
+            <span />
           </div>
         ) : null}
       </div>
@@ -667,23 +678,33 @@ export function DraftBoard({
       {windowedPlayers.length > 0 ? (
         <>
           {tierGroups.map((group, index) => renderTierSection(group, index))}
-          <div ref={sentinelRef} aria-hidden="true" />
+          {hasMore ? (
+            <div ref={sentinelRef} className="ffb-more-row">
+              <button
+                type="button"
+                onClick={() => {
+                  setFocusRowAt(windowedPlayers.length);
+                  setVisibleCount((count) => Math.min(count + BOARD_PAGE_SIZE, filteredPlayers.length));
+                }}
+                className="ffb-more"
+              >
+                Load more ({filteredPlayers.length - windowedPlayers.length} left)
+              </button>
+            </div>
+          ) : null}
         </>
       ) : (
-        <div
-          className="border border-dashed text-center"
-          style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-4)", borderColor: "var(--c97-rule)" }}
-        >
-          <p className="m-0 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
-            No available players match on this board.
-          </p>
+        <div className="ffb-empty">
+          <p className="ffb-empty-title">No available players match on this board.</p>
           <button
             type="button"
             onClick={() => {
               setSearchQuery("");
               setSelectedPosition("ALL");
+              // The button goes with the empty state, so focus goes to the field the list is searched from.
+              searchInputRef.current?.focus();
             }}
-            className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-2xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
+            className="ffb-btn"
           >
             Clear search
           </button>

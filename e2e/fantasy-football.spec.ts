@@ -25,12 +25,12 @@ async function activateControl(control: Locator) {
 }
 
 /**
- * A rankings row names itself through an `absolute inset-0` overlay button, and
- * the row content sits above it at `z-[2]` with its own click handler so the
- * per-cell hover titles fire and player names stay selectable. A click therefore
- * lands on the content rather than on the overlay, which is exactly what a
- * visitor hits, so open the row through the list item while still identifying
- * which row it is by the overlay button's accessible name.
+ * A rankings row names itself through an overlay button that covers the row,
+ * and the row has its own click handler so the per-cell hover titles fire and
+ * player names stay selectable. A click therefore lands on the row's content
+ * rather than on the overlay, which is exactly what a visitor hits, so open
+ * the row through the list item while still identifying which row it is by the
+ * overlay button's accessible name.
  */
 function rankingsRow(shell: Locator, accessibleName: string | RegExp) {
   return shell
@@ -96,6 +96,11 @@ const BEST_BALL_PRESETS = [
   },
 ] as const;
 
+/** The best ball room's pick counter, read from the scorebug's Pick cell at any width. */
+function bestBallPickCounter(shell: Locator, pick: number) {
+  return shell.getByText(new RegExp(`^#${pick} ?/ ?216$`)).filter({ visible: true });
+}
+
 async function getPersistedBestBallPickCount(page: Page, contestId: string) {
   return page.evaluate((targetContestId) => {
     const key = Array.from({ length: window.localStorage.length }, (_, index) =>
@@ -124,8 +129,8 @@ async function selectPosition(
   label: string,
   position: string
 ) {
-  // Phones render the position control as a select; the desktop radio pills
-  // sit in a hidden md:flex container there, so drive whichever is visible.
+  // Phones render the position control as a select and hide the desktop radio
+  // group, so drive whichever is visible.
   const select = shell.getByRole("combobox", { name: "Position board" });
   if (await select.isVisible()) {
     await select.selectOption(position);
@@ -175,7 +180,8 @@ test.describe("Fantasy football rankings", () => {
         "aria-pressed",
         "true"
       );
-      // The overall board always spans several tiers, so the tier plates render.
+      // The overall board always spans several tiers, so the tier breaks render,
+      // and the first one prints its number as 01.
       await expect(shell.getByText("01", { exact: true })).toBeVisible();
 
       for (const position of positions) {
@@ -394,7 +400,12 @@ test.describe("Fantasy football rankings", () => {
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth
     );
     expect(horizontalOverflow).toBeLessThanOrEqual(1);
-    await expect(page.getByRole("link", { name: "Draft tracker", exact: true }).first()).toBeVisible();
+    // The product bar is the way between the fantasy tools at every width.
+    await expect(
+      page
+        .getByRole("navigation", { name: "Fantasy football" })
+        .getByRole("link", { name: "Draft tracker", exact: true })
+    ).toBeVisible();
   });
 
   test("supports the fantasy rankings in dark mode", async ({ page }) => {
@@ -403,16 +414,14 @@ test.describe("Fantasy football rankings", () => {
     const toggle = page.locator('button[aria-label^="Theme:"]:visible').first();
     await expect(toggle).toBeVisible();
 
-    const initialPaper = await page.evaluate(() =>
-      getComputedStyle(document.querySelector("main [data-c97-surface]")!).getPropertyValue("--c97-surface").trim()
-    );
+    // The fantasy pages paint their own board inside the site frame, so the
+    // board's background is what has to change with the theme.
+    const readBoard = () =>
+      page.evaluate(() => getComputedStyle(document.querySelector(".ffb-root")!).backgroundColor);
+    const initialBoard = await readBoard();
     await toggle.click();
     await expect(page.locator("html")).toHaveClass(/dark/);
-    const darkPaper = await page.evaluate(() =>
-      getComputedStyle(document.querySelector("main [data-c97-surface]")!).getPropertyValue("--c97-surface").trim()
-    );
-
-    expect(darkPaper).not.toBe(initialPaper);
+    await expect.poll(readBoard).not.toBe(initialBoard);
     await expect(page.getByRole("heading", { name: /Overall rankings/i })).toBeVisible();
   });
 });
@@ -423,8 +432,8 @@ test.describe("Fantasy football draft tracker", () => {
     // board renders, not hardcoded, since scheduled data refreshes reorder the
     // rankings and a name literal goes stale within days.
     // The setup screen abbreviates the scoring segments ("Half", "Std") while
-    // the live room's header chip spells the format out, so each format carries
-    // both names.
+    // the running room's league line spells the format out, so each format
+    // carries both names.
     const scoringFormats = [
       { control: "PPR", chip: "PPR", file: "ppr" },
       { control: "Half", chip: "Half PPR", file: "half_ppr" },
@@ -460,8 +469,8 @@ test.describe("Fantasy football draft tracker", () => {
       const firstPick = board.getByRole("button", { name: /^Log / }).first();
       await expect(firstPick).toHaveAccessibleName(`Log ${scoring.topPlayer}`);
       await firstPick.click();
-      // The live fascia is the room's pick counter now, so one logged pick moves
-      // it from #1 to #2 of the same total. Below sm the fascia prints the compact
+      // The scorebug's Pick cell is the room's pick counter, so one logged pick
+      // moves it from #1 to #2 of the same total. A phone prints the compact
       // "#2/180" and hides the spaced form, so read whichever one is showing.
       await expect(
         page
@@ -482,9 +491,14 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("heading", { name: "One screen, then draft." })).toBeVisible();
     await page.getByRole("button", { name: /^Start draft/ }).click();
 
-    // The room states its live position in the header kicker rather than in a
-    // heading, and pick #1 on the clock is the first thing it has to say.
-    await expect(page.getByText("Draft assistant · Live · Pick #1")).toBeVisible();
+    // The room states its live position in the scorebug's Pick cell, and pick #1
+    // is the first thing it has to say.
+    await expect(
+      page
+        .getByRole("region", { name: "Live draft status" })
+        .getByText(/^#1 ?\/ ?\d+$/)
+        .filter({ visible: true })
+    ).toBeVisible();
 
     // Every logged pick keeps an undo entry on the "Last picks" tape, so the
     // tape is where the room says how many picks it is holding.
@@ -495,8 +509,8 @@ test.describe("Fantasy football draft tracker", () => {
     await board.getByRole("button", { name: /^Log / }).first().click();
     await expect(loggedPicks).toHaveCount(2);
 
-    // Board rows stay grouped under their published tier plate, which names
-    // itself for assistive tech since its header is spans rather than a heading.
+    // Board rows stay grouped under their published tier, a section that names
+    // itself for assistive tech with the tier, its count, and its rank range.
     await expect(board.getByRole("region", { name: /^Tier \d+, / }).first()).toBeVisible();
 
     await page.reload();
@@ -511,6 +525,32 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("button", { name: /^Confirm new draft/ })).toBeVisible();
     await page.getByRole("button", { name: "Back to room" }).click();
     await expect(loggedPicks).toHaveCount(2);
+  });
+
+  test("brings a focused row out from under the pinned bars", async ({ page }) => {
+    await page.goto("/fantasy-football/draft-tracker");
+    await waitForDraftTrackerHydration(page);
+    await page.getByRole("button", { name: /^Start draft/ }).click();
+
+    const board = page.getByRole("region", { name: "Draft board" });
+    const row = board.getByRole("button", { name: /^Log / }).nth(6);
+    await expect(row).toBeVisible();
+
+    // Leave the row above the screen, so that taking focus scrolls it back up to
+    // the top, where the scorebug and the board's bar are pinned. The kit's
+    // scroll margin is what stops it landing behind them, and nothing else
+    // measures that margin.
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await row.focus();
+    await expect
+      .poll(() =>
+        row.evaluate((element) => {
+          const box = element.getBoundingClientRect();
+          const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+          return hit === element || element.contains(hit);
+        })
+      )
+      .toBe(true);
   });
 
   test("applies a saved preset without changing the parked room", async ({ page }) => {
@@ -637,26 +677,27 @@ test.describe("Fantasy football best ball", () => {
     // Tapping the name opens the detail drawer now; the pick is logged from
     // the row's explicit Draft button.
     await shell.getByRole("button", { name: `Draft ${firstPlayerName} at pick 1` }).click();
-    // The room used to state the pick counter in three places at once. The distill pass
-    // left the sticky live bar as the single authority, so it now reads "Pick 2 of 216"
-    // rather than a bare "2 of 216" tile.
-    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    // The scorebug's Pick cell is the one place the room states its pick counter. It
+    // prints "#2 / 216" from 768px and "#2/216" on a phone, each as the whole text of
+    // its own span, the same as the redraft room's.
+    await expect(bestBallPickCounter(shell, 2)).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
 
     await page.reload();
     // CI webkit rehydrates the restored room slowly enough that the undo click
     // below can land on a not-yet-interactive button, so wait it out.
     await waitForBestBallHydration(page);
-    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    await expect(bestBallPickCounter(shell, 2)).toBeVisible();
     // The rail that shows the bare player name is hidden on phones and while a
     // stale ranking source pauses the model, so read the undo copy instead:
     // it names the persisted pick on every viewport and in every data state.
     await expect(
-      shell.getByText(`Undo removes pick 1, ${firstPlayerName!}.`).first()
+      // A name that ends in a full stop ("Jr.") closes the sentence by itself.
+      shell.getByText(`Undo removes pick 1, ${firstPlayerName!.replace(/\.$/, "")}.`).first()
     ).toBeVisible();
 
     await shell.getByRole("button", { name: "Undo last pick" }).click();
-    await expect(shell.getByText("Pick 1 of 216", { exact: true })).toBeVisible();
+    await expect(bestBallPickCounter(shell, 1)).toBeVisible();
     await expect(
       shell.getByRole("button", { name: `Draft ${firstPlayerName!} at pick 1` })
     ).toBeVisible();
@@ -671,7 +712,7 @@ test.describe("Fantasy football best ball", () => {
     });
     await expect(redo).toBeVisible();
     await redo.click();
-    await expect(shell.getByText("Pick 2 of 216", { exact: true })).toBeVisible();
+    await expect(bestBallPickCounter(shell, 2)).toBeVisible();
     await expect.poll(() => getPersistedBestBallPickCount(page, "bbm-vii")).toBe(1);
   });
 

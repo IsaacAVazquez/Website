@@ -226,7 +226,8 @@ describe("DraftValuePanel", () => {
 
     expect(screen.getByText("Best Ball Mania VII field baseline")).toBeInTheDocument();
     expect(screen.getByText("$22.31")).toBeInTheDocument();
-    expect(screen.getByText("-$2.69")).toHaveStyle({ color: "var(--c97-negative)" });
+    // The sign prints with the figure, and the kit status ink follows the sign.
+    expect(screen.getByText("\u2212$2.69")).toHaveClass("ffb-bad");
     expect(screen.getByText("16.7%")).toBeInTheDocument();
     expect(screen.getByText("+12.1%")).toBeInTheDocument();
     // The entry count is the count on the capture date, so the date prints
@@ -248,7 +249,7 @@ describe("DraftValuePanel", () => {
     );
 
     expect(screen.getByText("Published field baseline")).toBeInTheDocument();
-    expect(screen.getByText("+$2.00")).toHaveStyle({ color: "var(--c97-positive)" });
+    expect(screen.getByText("+$2.00")).toHaveClass("ffb-good");
     expect(screen.queryByText(/Field figures as of/)).not.toBeInTheDocument();
   });
 
@@ -271,5 +272,65 @@ describe("DraftValuePanel", () => {
 
     expect(entryInputs[0]).toHaveValue(75);
     expect(entryInputs[1]).toHaveValue(75);
+  });
+  it("reads a Superflex room as a consensus read, since its format rank is a board position and not a price", () => {
+    render(
+      <DraftValuePanel
+        report={{
+          ...REPORT,
+          market: { ...REPORT.market, adpPicks: 0, formatRankPicks: 6, consensusRankPicks: 0 },
+        }}
+        headingId="superflex-heading"
+      />
+    );
+
+    expect(screen.getByText(/using published consensus rank, roster shape, and format fit/)).toBeInTheDocument();
+    expect(screen.queryByText(/the price the market put on each player/)).not.toBeInTheDocument();
+    expect(screen.getByText("Calculated consensus value")).toBeInTheDocument();
+    expect(screen.getByText("Consensus rank")).toBeInTheDocument();
+    expect(screen.queryByText("Market price")).not.toBeInTheDocument();
+    expect(screen.getByText(/no usable ADP evidence for these picks/)).toBeInTheDocument();
+  });
+
+  it("keeps the market read while any judged pick was priced by ADP", () => {
+    render(
+      <DraftValuePanel
+        report={{
+          ...REPORT,
+          market: { ...REPORT.market, adpPicks: 1, formatRankPicks: 3, consensusRankPicks: 2 },
+        }}
+        headingId="mixed-heading"
+      />
+    );
+
+    expect(screen.getByText(/the price the market put on each player/)).toBeInTheDocument();
+    expect(screen.getByText("Calculated market value")).toBeInTheDocument();
+    expect(screen.getByText("Market price")).toBeInTheDocument();
+  });
+
+  it("chooses the paragraph before the first judged pick from whether the room has ADP", () => {
+    const empty = {
+      ...REPORT,
+      picksDrafted: 0,
+      market: { ...REPORT.market, judgedPicks: 0, adpPicks: 0, formatRankPicks: 0, consensusRankPicks: 0, totalDelta: 0, averageDelta: null },
+    };
+    const consensusParagraph = /using published consensus rank, roster shape, and format fit/;
+    const marketParagraph = /the price the market put on each player/;
+
+    // A reference contest with no ADP, before its first pick.
+    const { rerender } = render(<DraftValuePanel report={empty} headingId="reference-heading" adpAvailable={false} />);
+    expect(screen.getByRole("heading", { name: "Waiting for your first pick" })).toBeInTheDocument();
+    expect(screen.getByText(consensusParagraph)).toBeInTheDocument();
+    expect(screen.queryByText(marketParagraph)).not.toBeInTheDocument();
+
+    // A room with ADP, and a caller that does not say, both keep the market paragraph.
+    rerender(<DraftValuePanel report={empty} headingId="reference-heading" adpAvailable />);
+    expect(screen.getByText(marketParagraph)).toBeInTheDocument();
+    rerender(<DraftValuePanel report={empty} headingId="reference-heading" />);
+    expect(screen.getByText(marketParagraph)).toBeInTheDocument();
+
+    // Once picks are judged the report decides, whatever the caller said.
+    rerender(<DraftValuePanel report={REPORT} headingId="reference-heading" adpAvailable={false} />);
+    expect(screen.getByText(marketParagraph)).toBeInTheDocument();
   });
 });

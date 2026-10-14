@@ -1,5 +1,5 @@
-import { RouteLoadingState } from "@/components/RouteLoadingState";
+import { FantasyLoadingState } from "@/components/fantasy/FantasyLoadingState";
 
 export default function TradeCalculatorLoading() {
-  return <RouteLoadingState surfaceName="the fantasy football trade calculator" />;
+  return <FantasyLoadingState surfaceName="the fantasy football trade calculator" />;
 }

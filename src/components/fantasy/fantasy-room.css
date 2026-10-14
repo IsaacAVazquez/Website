@@ -1,0 +1,33 @@
+/*
+ * The one thing the shared room parts (DraftRoomParts.tsx) need past the kit: the "All picks"
+ * list under the pick grid.
+ *
+ * The parts file imports this sheet itself, so every room gets it with the parts. It is
+ * unlayered like the area sheets, so a rule here beats a kit class on the same element whatever
+ * order the sheets load in, and it stays loaded after in-app navigation, so every selector
+ * starts with a class of this sheet's prefix (`ffb-rm-`) or with `.ffb-root`.
+ */
+
+/* "All picks" under the pick grid: one ruled line per pick, by round. My own picks carry the
+   highlighter behind the pick number, and the line says "(you)". */
+.ffb-rm-allpicks-round { margin-block: var(--ffb-s3) var(--ffb-s1); }
+.ffb-rm-allpicks-round:first-child { margin-top: 0; }
+.ffb-rm-allpick {
+  padding-block: 5px;
+  border-top: 1px solid var(--ffb-rule);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.ffb-rm-allpick-num { font-weight: 700; }
+.ffb-rm-is-mine > .ffb-rm-allpick-num {
+  margin-inline: -3px;
+  padding: 1px 3px;
+  border-radius: var(--ffb-radius);
+  background: var(--ffb-hi);
+  color: var(--ffb-on-fill);
+}
+
+@media print {
+  /* The highlighter does not print, so my own pick keeps an underline. */
+  .ffb-root .ffb-rm-is-mine > .ffb-rm-allpick-num { text-decoration: underline; }
+}

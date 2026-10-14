@@ -24,6 +24,42 @@ describe("MetricTooltip", () => {
     });
   });
 
+  it.each([
+    ["the ? mark", <MetricTooltip key="chip" term="Beta 5Y" />],
+    [
+      "a label trigger",
+      <MetricTooltip key="text" term="Beta 5Y" focusable>
+        Beta
+      </MetricTooltip>,
+    ],
+  ])("closes on Escape from %s and leaves focus on the trigger", async (_kind, tooltip) => {
+    const onKeyDown = jest.fn();
+    render(<div onKeyDown={onKeyDown}>{tooltip}</div>);
+
+    const trigger = screen.getByRole("button", { name: "What is Beta 5Y?" });
+    trigger.focus();
+    expect(await screen.findByRole("tooltip")).toBeInTheDocument();
+
+    fireEvent.keyDown(trigger, { key: "Escape" });
+
+    await waitFor(() => {
+      expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
+    });
+    expect(trigger).toHaveFocus();
+    expect(trigger).not.toHaveAttribute("aria-describedby");
+    // The Escape that closed the bubble stops there, so a dialog around the trigger stays open.
+    expect(onKeyDown).not.toHaveBeenCalled();
+
+    // With nothing left to close, the next Escape goes on to whatever holds the trigger.
+    fireEvent.keyDown(trigger, { key: "Escape" });
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+
+    // Enter on the trigger brings the bubble back without leaving it.
+    fireEvent.keyDown(trigger, { key: "Enter" });
+    expect(await screen.findByRole("tooltip")).toBeInTheDocument();
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+  });
+
   it("does not bubble clicks into a surrounding interactive row", () => {
     const onRowClick = jest.fn();
 
@@ -87,5 +123,54 @@ describe("MetricTooltip text trigger", () => {
     const trigger = screen.getByText("Avg");
     expect(trigger.tagName).toBe("SPAN");
     expect(trigger).not.toHaveAttribute("tabindex");
+  });
+});
+
+describe("MetricTooltip token scope", () => {
+  it("carries the nearest data-tooltip-scope onto the element it portals, so a route's tokens reach the bubble", async () => {
+    render(
+      <div data-tooltip-scope="ffb-scope">
+        <section>
+          <MetricTooltip term="Market ADP" definition="Where the market drafts him." />
+        </section>
+      </div>
+    );
+
+    fireEvent.focus(screen.getByRole("button", { name: "What is Market ADP?" }));
+
+    const bubble = await screen.findByRole("tooltip");
+    const portalled = bubble.parentElement as HTMLElement;
+    await waitFor(() => expect(portalled).toHaveClass("ffb-scope"));
+    // The bubble sits outside the scope's own subtree, which is why the class has to travel with it.
+    expect(bubble.closest("[data-tooltip-scope]")).toBeNull();
+    expect(portalled).toHaveAttribute("data-c97-surface", "paper");
+  });
+
+  it("adds no class when nothing above the trigger names a scope, so an Investments tooltip is unchanged", async () => {
+    render(<MetricTooltip term="Beta 5Y" />);
+
+    fireEvent.mouseEnter(screen.getByRole("button", { name: "What is Beta 5Y?" }));
+
+    const bubble = await screen.findByRole("tooltip");
+    const portalled = bubble.parentElement as HTMLElement;
+    await waitFor(() => expect(bubble).toHaveStyle({ opacity: "1" }));
+    expect(portalled).not.toHaveAttribute("class");
+    expect(portalled).toHaveAttribute("data-c97-surface", "paper");
+  });
+});
+
+describe("MetricTooltip trigger kinds", () => {
+  it("marks the chip and the text trigger, so a route's stylesheet can fit each to its label", () => {
+    render(
+      <>
+        <MetricTooltip term="Market Cap" />
+        <MetricTooltip term="vs ADP" definition="Market ADP minus the consensus rank." focusable>
+          vs ADP
+        </MetricTooltip>
+      </>
+    );
+
+    expect(screen.getByRole("button", { name: "What is Market Cap?" })).toHaveAttribute("data-metric-trigger", "chip");
+    expect(screen.getByRole("button", { name: "What is vs ADP?" })).toHaveAttribute("data-metric-trigger", "text");
   });
 });

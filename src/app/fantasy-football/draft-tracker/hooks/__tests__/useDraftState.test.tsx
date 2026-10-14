@@ -483,6 +483,7 @@ describe("useDraftState persisted-state loading", () => {
       await waitFor(() => expect(result.current.isLoaded).toBe(true));
 
       expect(result.current.persistenceError).toMatch(/blocking local saves/i);
+      expect(result.current.storageBlocked).toBe(true);
       expect(result.current.draftState.picks).toEqual([]);
     } finally {
       getItem.mockRestore();
@@ -529,11 +530,14 @@ describe("useDraftState save revisions", () => {
       );
       expect(result.current.draftState.picks.some((pick) => pick.player.id === "external")).toBe(false);
       expect(result.current.persistenceError).toMatch(/another tab|conflict/i);
+      // The two picks this tab could not write exist only in this tab, so the flag stays up through the conflict.
+      expect(result.current.storageBlocked).toBe(true);
       expect(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)).toBe(raw);
 
       act(() => result.current.resetDraft());
       expect(result.current.draftState.picks).toEqual([]);
       expect(result.current.persistenceError).toBeNull();
+      expect(result.current.storageBlocked).toBe(false);
       expect(JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!).picks).toEqual([]);
     }
   );
@@ -546,6 +550,7 @@ describe("useDraftState save revisions", () => {
     try {
       act(() => result.current.draftPlayer(persistedPlayer("memory-first")));
       expect(result.current.persistenceError).toMatch(/cannot be saved/i);
+      expect(result.current.storageBlocked).toBe(true);
     } finally {
       write.mockRestore();
     }
@@ -553,6 +558,7 @@ describe("useDraftState save revisions", () => {
     expect(result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["memory-first", "memory-second"]);
     expect(JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!).picks).toHaveLength(2);
     expect(result.current.persistenceError).toBeNull();
+    expect(result.current.storageBlocked).toBe(false);
   });
 
   it("synchronizes two mounted trackers and keeps consecutive batched picks", () => {

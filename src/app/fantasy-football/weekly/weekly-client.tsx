@@ -7,6 +7,7 @@ import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   startTransition,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -46,6 +47,7 @@ import {
   type FreshnessPart,
 } from "@/components/fantasy/FantasyRouteHeader";
 import { formatStableDateTime } from "@/lib/date-formatters";
+import "@/components/fantasy/fantasy-weekly.css";
 
 export type WeeklyView = "rankings" | "waivers";
 
@@ -54,37 +56,26 @@ const VIEWS = {
   rankings: {
     path: "/fantasy-football/weekly",
     ariaLabel: "Fantasy football weekly board",
-    sibling: { href: "/fantasy-football/waivers", label: "Waiver targets" },
   },
   waivers: {
     path: "/fantasy-football/waivers",
     ariaLabel: "Fantasy football waiver targets",
-    sibling: { href: "/fantasy-football/weekly", label: "Weekly board" },
   },
 } as const;
 
-const TOGGLE_CLASS =
-  "inline-flex min-h-touch items-center border px-[var(--c97-sp-1)] text-sm font-semibold transition-[border-color,background-color]";
-
-const GROUP_LEGEND_CLASS =
-  "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]";
-
-const STATUS_CLASS =
-  "mt-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]";
-
 /**
- * The header cell of a long table, pinned to the top of the viewport while the
- * page scrolls. The Catalog 97 header is `position: relative` and scrolls
- * away, so the row sits at 0. The 73px offset it once carried cleared the
- * deleted Working Instrument sticky header and left a gap after the shell
- * change on 2026-09-16.
+ * What a phone prints on the scoring switch, the same three the rankings board
+ * prints, so scoring shares a row with the search field. The full label stays
+ * each button's accessible name.
  */
-const STICKY_HEADER_CLASS = "sticky z-10";
-const STICKY_HEADER_STYLE = {
-  top: 0,
-  background: "var(--c97-field)",
-  boxShadow: "inset 0 -1px 0 var(--c97-rule)",
-} as const;
+const SCORING_SHORT_LABELS: Record<FantasyRouteScoring, string> = {
+  ppr: "PPR",
+  half_ppr: "Half",
+  standard: "Std",
+};
+
+/** The room left above the toolbar when a filter brings it back on screen. */
+const TOOLBAR_SCROLL_GAP = 8;
 
 /** Tailwind's `md`, the width at which the tables fit without clipping. */
 const TABLE_LAYOUT_QUERY = "(min-width: 768px)";
@@ -110,8 +101,8 @@ function getServerTableLayout() {
  * Below `md` a five or six column table cannot fit in 316px, and neither a
  * sticky first column (the name cell alone is wider than the box) nor a
  * horizontal scroll (which separates every number from its name) reads well
- * with one thumb. So the phone gets a stacked list, name over a labeled
- * readout, and the table only renders where it fits. One layout is in the
+ * with one thumb. So the phone gets a stacked list, the player over his
+ * values under one sticky head, and the table only renders where it fits. One layout is in the
  * DOM at a time rather than both with one hidden, since the flex board runs
  * to 457 rows.
  */
@@ -189,33 +180,58 @@ function describeWindow(
 
 function SourceLink({ href, label }: { href: string; label: string }) {
   return (
-    <a
-      href={href}
-      className="underline decoration-[var(--c97-rule)] underline-offset-4"
-      rel="noreferrer noopener"
-      target="_blank"
-    >
+    <a href={href} rel="noreferrer noopener" target="_blank">
       {label}
       <span className="sr-only">, opens in a new tab</span>
     </a>
   );
 }
 
+/**
+ * The player as both views print him: the position chip with his position
+ * rank, the name, and the team. The waiver list has no opponent column, so
+ * there the matchup follows the team. The chip and the name are one group and
+ * the team and the matchup another, so a tight cell wraps between the two and
+ * never leaves the chip on a line by itself.
+ */
+function PlayerCell({
+  player,
+  withOpponent = false,
+}: {
+  player: FantasyWeeklyPlayer;
+  withOpponent?: boolean;
+}) {
+  return (
+    <span className="ffb-namecell">
+      <span className="ffb-wk-who">
+        <span className={`ffb-chip ffb-pos-${player.position.toLowerCase()}`}>
+          {player.position}
+          {player.positionRank ?? ""}
+        </span>{" "}
+        <span className="ffb-wk-name">{player.name}</span>
+      </span>{" "}
+      <span className="ffb-wk-where">
+        <span className="ffb-c-team">{player.team}</span>
+        {withOpponent && player.opponent ? (
+          <>
+            {" "}
+            <span className="ffb-wk-opp">{player.opponent}</span>
+          </>
+        ) : null}
+      </span>
+    </span>
+  );
+}
+
+/**
+ * One value of a stacked row. The list's head names the column on screen, so
+ * the label here is for assistive tech, and the kit's `ffb-pairs-cols` hides it.
+ */
 function ReadoutPair({ label, value, emphasis = false }: { label: string; value: string; emphasis?: boolean }) {
   return (
-    <div className="flex items-baseline" style={{ gap: "var(--c97-sp-0)" }}>
-      <dt className="text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
-        {label}
-      </dt>
-      <dd
-        className={`tabular-nums ${
-          emphasis
-            ? "font-semibold text-[var(--c97-ink)]"
-            : "text-[var(--c97-ink)]"
-        }`}
-      >
-        {value}
-      </dd>
+    <div>
+      <dt>{label}</dt>
+      <dd className={emphasis ? "ffb-is-strong" : undefined}>{value}</dd>
     </div>
   );
 }
@@ -333,6 +349,18 @@ export function WeeklyBoardClient({
     count: number;
   } | null>(null);
   const countLineRef = useRef<HTMLParagraphElement>(null);
+  const toolbarRef = useRef<HTMLDivElement>(null);
+  // A search or a filter that shortens the board while the page is scrolled deep
+  // pulls the page up to the end of the shorter document, which leaves the toolbar
+  // above the screen with focus still in it. When the change came from the
+  // toolbar, bring the toolbar back to the top of the screen, so the field being
+  // typed in stays in view and the list's start sits right under it.
+  useLayoutEffect(() => {
+    const toolbar = toolbarRef.current;
+    if (!toolbar || !toolbar.contains(document.activeElement)) return;
+    const top = toolbar.getBoundingClientRect().top;
+    if (top < 0) window.scrollTo({ top: window.scrollY + top - TOOLBAR_SCROLL_GAP, behavior: "instant" });
+  }, [windowKey]);
   const visibleCount =
     windowState?.key === windowKey ? windowState.count : startableDepth;
   const visiblePlayers = useMemo(
@@ -367,11 +395,10 @@ export function WeeklyBoardClient({
     return host ? ` at ${host}` : "";
   }
 
+  const rosteredCount = savedTeam.team.players.length;
+
   return (
-    <section
-      className="c97-dash relative overflow-x-clip min-h-dvh"
-      aria-label={viewConfig.ariaLabel}
-    >
+    <section className="relative min-h-dvh overflow-x-clip print:min-h-0" aria-label={viewConfig.ariaLabel}>
       <FantasyRouteHeader
         title={
           <>
@@ -383,12 +410,9 @@ export function WeeklyBoardClient({
           view === "rankings" ? (
             <>
               I use this board to compare weekly rankings, opponents, and rostered
-              percentages. Save your team below for lineup and add/drop comparisons,
+              percentages. Save your team for lineup and add/drop comparisons,
               or browse the{" "}
-              <Link
-                href="/fantasy-football/waivers"
-                className="underline decoration-[var(--c97-accent)] underline-offset-4"
-              >
+              <Link href="/fantasy-football/waivers" className="ffb-link">
                 waiver targets
               </Link>.
             </>
@@ -396,17 +420,14 @@ export function WeeklyBoardClient({
             <>
               The players the experts rank ahead of where the rostering rate
               puts them, read off the same weekly consensus that feeds the{" "}
-              <Link
-                href="/fantasy-football/weekly"
-                className="underline decoration-[var(--c97-accent)] underline-offset-4"
-              >
+              <Link href="/fantasy-football/weekly" className="ffb-link">
                 weekly board
               </Link>
               . It refreshes through the season, and it is the list I would
               actually check before a Tuesday night waiver run.
             </>
           )
-      }
+        }
         freshness={
           snapshot && activeBoard && source ? (
             <FreshnessParts
@@ -433,116 +454,273 @@ export function WeeklyBoardClient({
         }
       />
 
-      <div className={`${SHELL_CLASS} flex flex-col`} style={{ paddingBottom: "var(--c97-sp-5)", gap: "var(--c97-sp-2)" }}>
+      <div className={`${SHELL_CLASS} ffb-stack ffb-stack-tight`}>
+        {/* One toolbar for the page. Scoring applies to the board and to My
+            team, and it stays up whenever a snapshot is readable, so a reader
+            who picks a format the seed lacks and then loses the fetch can
+            still go back. The rest needs a board. */}
+        {snapshot ? (
+          <div ref={toolbarRef} className="ffb-toolbar ffb-wk-toolbar">
+            {activeBoard && view === "rankings" ? (
+              <>
+                <div className="ffb-seg ffb-seg-pos" role="group" aria-label="Board">
+                  {(
+                    [
+                      ["flex", "Flex (RB, WR, TE)", "Flex", "ffb-pos-flex"],
+                      ["quarterbacks", "Quarterback", "QB", "ffb-pos-qb"],
+                    ] as const
+                  ).map(([value, label, shortLabel, tone]) => (
+                    <button
+                      key={value}
+                      type="button"
+                      aria-pressed={board === value}
+                      aria-label={label}
+                      onClick={() => updateRouteState({ board: value })}
+                      className={`ffb-seg-btn ${tone}`}
+                    >
+                      <span className="md:hidden">{shortLabel}</span>
+                      <span className="max-md:hidden">{label}</span>
+                    </button>
+                  ))}
+                </div>
+                {/* The quarterback board is one position already, so the
+                    position cut only renders for flex. */}
+                {board === "flex" ? (
+                  <div className="ffb-seg ffb-seg-pos" role="group" aria-label="Position">
+                    {(["ALL", "RB", "WR", "TE"] as const).map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        aria-pressed={positionFilter === option}
+                        onClick={() => setPositionFilter(option)}
+                        className={`ffb-seg-btn${option === "ALL" ? "" : ` ffb-pos-${option.toLowerCase()}`}`}
+                      >
+                        {option === "ALL" ? "All" : option}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </>
+            ) : null}
+            <div className="ffb-seg ffb-wk-scoring" role="group" aria-label="Scoring">
+              {(Object.keys(FANTASY_SCORING_LABELS) as FantasyRouteScoring[]).map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  aria-pressed={scoring === option}
+                  aria-label={FANTASY_SCORING_LABELS[option]}
+                  onClick={() => updateRouteState({ scoring: option })}
+                  className="ffb-seg-btn"
+                >
+                  <span className="md:hidden">{SCORING_SHORT_LABELS[option]}</span>
+                  <span className="max-md:hidden">{FANTASY_SCORING_LABELS[option]}</span>
+                </button>
+              ))}
+            </div>
+            {activeBoard && view === "rankings" ? (
+              <label className="ffb-search" htmlFor="weekly-board-search">
+                <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
+                  <circle cx="8.5" cy="8.5" r="5.5" />
+                  <path d="M12.8 12.8L17 17" />
+                </svg>
+                <span className="ffb-vh">Search</span>
+                <input
+                  id="weekly-board-search"
+                  className="ffb-search-input"
+                  value={searchQuery}
+                  maxLength={80}
+                  autoComplete="off"
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="Search player or team"
+                />
+              </label>
+            ) : null}
+            {/* The last row of the toolbar on a phone: the way to My team and the
+                count. From 768px the wrapper has no box and both sit in the toolbar. */}
+            {activeBoard ? (
+              <div className="ffb-wk-toolbar-end">
+                {/* Below 1200px My team sits under the board, so this is the way
+                    to it. From 1200px it is in the rail and the link is not needed. */}
+                <a href="#my-team" className="ffb-btn min-[1200px]:hidden">
+                  My team, {rosteredCount} {rosteredCount === 1 ? "player" : "players"}
+                </a>
+                {/* The count is the page's live region. It stays mounted across
+                    every filter change so a search that lands on one row is
+                    announced rather than only seen. It is also where focus lands
+                    after Show all, since that button unmounts itself and would
+                    otherwise drop a keyboard user to the top of the document. */}
+                {view === "rankings" && players.length > 0 ? (
+                  <p ref={countLineRef} role="status" tabIndex={-1} className="ffb-count">
+                    {filteredPlayers.length === 0 ? emptyFilterLine : countLine}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
         {isLoading || boardPending ? (
-          <p role="status" className="text-sm text-[var(--c97-ink-2)]">
+          <p role="status" className="ffb-wk-loading">
             Loading the weekly board.
           </p>
         ) : null}
         {(isLoading || boardPending) && !activeBoard ? (
-          <div className="grid" style={{ gap: "var(--c97-sp-1)" }} aria-hidden="true">
+          <div aria-hidden="true">
             {Array.from({ length: 8 }, (_, index) => (
-              <div key={`weekly-loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
+              <div key={`weekly-loading-${index}`} className="ffb-skel-row">
+                <span className="ffb-skel" />
+                <span className="ffb-skel" />
+                <span className="ffb-skel" />
+                <span className="ffb-skel" />
+                <span className="ffb-skel" />
+              </div>
             ))}
           </div>
         ) : null}
 
         {notPublished ? (
-          <div
-            role="note"
-            className="border text-sm"
-            style={{
-              paddingInline: "var(--c97-sp-2)",
-              paddingBlock: "var(--c97-sp-1)",
-              borderColor:
-                "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
-              background:
-                "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
-            }}
-          >
-            <p className="text-[var(--c97-ink-2)]">
-              <span className="font-semibold text-[var(--c97-ink)]">
-                The weekly board opens with Week 1.
-              </span>{" "}
+          <div role="note" className="ffb-notice ffb-notice-warn">
+            <p>
+              <strong>The weekly board opens with Week 1.</strong>{" "}
               It is deliberately empty until then. Rostered percentages before
               leagues have drafted describe the preseason rather than a waiver
               wire, and publishing them now would make the add list say
               something I cannot support. Until kickoff, the{" "}
-              <Link
-                href="/fantasy-football"
-                className="underline decoration-[var(--c97-accent)] underline-offset-4"
-              >
-                draft rankings
-              </Link>{" "}
+              <Link href="/fantasy-football">draft rankings</Link>{" "}
               are the board that means anything.
             </p>
           </div>
         ) : null}
 
         {error && !activeBoard ? (
-          <div
-            role="alert"
-            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}
-          >
-            <p className="text-sm text-[var(--c97-ink)]">{error}</p>
-            <button
-              type="button"
-              onClick={retry}
-              className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`} style={{ marginTop: "var(--c97-sp-1)" }}
-            >
-              Try again
-            </button>
+          <div role="alert" className="ffb-notice ffb-notice-bad">
+            <p>{error}</p>
+            <div className="ffb-notice-actions">
+              <button type="button" onClick={retry} className="ffb-btn">
+                Try again
+              </button>
+            </div>
           </div>
         ) : null}
 
         {snapshot && activeBoard ? (
-          <>
-            {/* Scoring applies to the team workspace and the reference board. */}
-            <div className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)" }}>
-              <fieldset>
-                <legend className={GROUP_LEGEND_CLASS}>Scoring</legend>
-                <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                  {(
-                    Object.keys(FANTASY_SCORING_LABELS) as FantasyRouteScoring[]
-                  ).map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      aria-pressed={scoring === option}
-                      onClick={() => updateRouteState({ scoring: option })}
-                      className={`${TOGGLE_CLASS} ${
-                        scoring === option
-                          ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                          : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
-                      }`}
-                    >
-                      {FANTASY_SCORING_LABELS[option]}
-                    </button>
-                  ))}
-                </div>
-              </fieldset>
-              <a href={view === "waivers" ? "#weekly-waivers" : "#weekly-board"}
-                className="inline-flex min-h-touch items-center self-end text-sm underline decoration-[var(--c97-accent)] underline-offset-4">
-                {view === "waivers" ? "Jump to waiver targets" : "Jump to rankings"}
-              </a>
-            </div>
-
-            <MyTeamPanel snapshot={snapshot} board={activeBoard} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} lead={view === "waivers" ? "waivers" : "lineup"} />
-
+          // The board beside My team. To put My team back above the board,
+          // render <MyTeamPanel> before this div and drop the `ffb-work` and
+          // rail wrappers. Its views fall to two columns by themselves once
+          // they are out of `ffb-wk-rail`.
+          <div className="ffb-work">
             {view === "waivers" ? (
-              <section
-                aria-labelledby="weekly-waivers"
-                className="border-t border-[var(--c97-ink)]" style={{ paddingTop: "var(--c97-sp-2)" }}
-              >
-                <FantasySectionHeading id="weekly-waivers">
-                  This week&rsquo;s list
-                </FantasySectionHeading>
-                <p className="max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+              <section aria-labelledby="weekly-waivers" className="ffb-wk-main ffb-wk-main-waivers">
+                <div className="ffb-sechead ffb-sechead-lg">
+                  <FantasySectionHeading id="weekly-waivers">
+                    This week&rsquo;s list
+                  </FantasySectionHeading>
+                  {/* The count is the page's live region, so a scoring tap
+                      that takes the list from 19 rows to 17 is heard as
+                      well as seen. */}
+                  {waivers.length > 0 ? (
+                    <p role="status" className="ffb-sechead-note">
+                      {waivers.length}{" "}
+                      {waivers.length === 1 ? "player clears" : "players clear"}{" "}
+                      the gap in {FANTASY_SCORING_LABELS[scoring]} scoring
+                    </p>
+                  ) : null}
+                </div>
+                <p className="ffb-method">
                   Players the experts rank ahead of where the rostering rate
-                  puts them. The gap is the player&rsquo;s percentile on this
-                  board minus the percentage of leagues rostering him, so both
-                  numbers are printed beside it and any row can be checked by
-                  hand. The percentile is measured against the whole published
+                  puts them. The gap is the player&rsquo;s percentile on this board minus
+                  the percentage of leagues rostering him, so both numbers are
+                  printed beside it and any row can be checked by hand.
+                </p>
+                {waivers.length === 0 ? (
+                  <div className="ffb-empty">
+                    <p role="status" className="ffb-empty-body">
+                      No player clears the gap this week, which happens when the
+                      widely rostered players are also the ones the experts like.
+                    </p>
+                  </div>
+                ) : tableLayout ? (
+                  <div
+                    className="ffb-table-wrap"
+                    tabIndex={0}
+                    role="region"
+                    aria-label="Waiver targets table"
+                  >
+                    <table className="ffb-table ffb-wk-table ffb-wk-table-waivers">
+                      <caption className="sr-only">{waiversCaption}</caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Player</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-gap">Gap</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-short">Board</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-short">Rank</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-pct">Percentile</th>
+                          <th scope="col" className="ffb-num ffb-wk-h-own">Rostered</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {waivers.map((candidate) => (
+                          <tr key={`${candidate.board}-${candidate.player.id}`}>
+                            <th scope="row">
+                              <PlayerCell player={candidate.player} withOpponent />
+                            </th>
+                            <td className="ffb-num ffb-c-num ffb-is-strong">{candidate.gap.toFixed(1)}</td>
+                            <td className="ffb-num ffb-c-num ffb-is-flat">
+                              {candidate.board === "flex" ? "Flex" : "QB"}
+                            </td>
+                            <td className="ffb-num">{candidate.player.rank}</td>
+                            <td className="ffb-num ffb-c-num ffb-is-flat">
+                              {candidate.rankPercentile.toFixed(1)}
+                            </td>
+                            <td className="ffb-num ffb-c-num ffb-is-flat">
+                              {formatOwnership(candidate.ownership)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <>
+                  <div className="ffb-colhead ffb-sticky ffb-listhead ffb-listhead-plain" aria-hidden="true">
+                    <span>Gap</span>
+                    <span>Board</span>
+                    <span>Rank</span>
+                    <span>Percentile</span>
+                    <span>Rostered</span>
+                  </div>
+                  <ol role="list" aria-label={waiversCaption} className="ffb-rows">
+                    {waivers.map((candidate) => (
+                      <li
+                        key={`${candidate.board}-${candidate.player.id}`}
+                        className="ffb-row ffb-row-stack ffb-row-stack-plain"
+                      >
+                        <div>
+                          <PlayerCell player={candidate.player} withOpponent />
+                          <dl className="ffb-pairs ffb-pairs-cols">
+                            <ReadoutPair label="Gap" value={candidate.gap.toFixed(1)} emphasis />
+                            <ReadoutPair
+                              label="Board"
+                              value={candidate.board === "flex" ? "Flex" : "QB"}
+                            />
+                            <ReadoutPair label="Rank" value={String(candidate.player.rank)} />
+                            <ReadoutPair
+                              label="Percentile"
+                              value={candidate.rankPercentile.toFixed(1)}
+                            />
+                            <ReadoutPair
+                              label="Rostered"
+                              value={formatOwnership(candidate.ownership)}
+                            />
+                          </dl>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  </>
+                )}
+                <p className="ffb-method ffb-wk-foot-note">
+                  The percentile is measured against the whole published
                   board rather than the startable part of it, so it is the count
                   of players at or below him divided by all{" "}
                   {activeBoard.flex.length} on the flex board, or all{" "}
@@ -558,149 +736,7 @@ export function WeeklyBoardClient({
                   no bid figure here, because the source carries none and I am
                   not inventing one.
                 </p>
-                {waivers.length === 0 ? (
-                  <p
-                    role="status"
-                    className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}
-                  >
-                    No player clears the gap this week, which happens when the
-                    widely rostered players are also the ones the experts like.
-                  </p>
-                ) : (
-                  <>
-                    {/* The count is the page's live region, so a scoring tap
-                        that takes the list from 19 rows to 17 is heard as
-                        well as seen. */}
-                    <p role="status" className={STATUS_CLASS}>
-                      {waivers.length}{" "}
-                      {waivers.length === 1 ? "player clears" : "players clear"}{" "}
-                      the gap in {FANTASY_SCORING_LABELS[scoring]} scoring
-                    </p>
-                    {tableLayout ? (
-                      <div
-                        className="overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }}
-                        tabIndex={0}
-                        role="region"
-                        aria-label="Waiver targets table"
-                      >
-                        <table className="w-full border-collapse text-sm">
-                          <caption className="sr-only">{waiversCaption}</caption>
-                          <thead>
-                            <tr className="border-b border-[var(--c97-rule)] text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-                              <th scope="col" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                Player
-                              </th>
-                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                Gap
-                              </th>
-                              <th scope="col" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                Board
-                              </th>
-                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                Rank
-                              </th>
-                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                Percentile
-                              </th>
-                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)" }}>
-                                Rostered
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {waivers.map((candidate) => (
-                              <tr
-                                key={`${candidate.board}-${candidate.player.id}`}
-                                className="border-b border-[var(--c97-rule)]"
-                              >
-                                <th
-                                  scope="row"
-                                  className="text-left font-normal" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}
-                                >
-                                  <span className="font-semibold text-[var(--c97-ink)]">
-                                    {candidate.player.name}
-                                  </span>{" "}
-                                  <span className="text-[var(--c97-ink-2)]">
-                                    {candidate.player.position}{" "}
-                                    {candidate.player.team}
-                                    {candidate.player.opponent
-                                      ? ` ${candidate.player.opponent}`
-                                      : ""}
-                                  </span>
-                                </th>
-                                <td className="text-right font-mono tabular-nums font-semibold text-[var(--c97-ink)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                  {candidate.gap.toFixed(1)}
-                                </td>
-                                <td className="text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                  {candidate.board === "flex" ? "Flex" : "QB"}
-                                </td>
-                                <td className="text-right font-mono tabular-nums text-[var(--c97-ink)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                  {candidate.player.rank}
-                                </td>
-                                <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                  {candidate.rankPercentile.toFixed(1)}
-                                </td>
-                                <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>
-                                  {formatOwnership(candidate.ownership)}
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ) : (
-                      <ol
-                        role="list"
-                        aria-label={waiversCaption}
-                        className="list-none border-t border-[var(--c97-rule)] p-0" style={{ marginTop: "var(--c97-sp-1)" }}
-                      >
-                        {waivers.map((candidate) => (
-                          <li
-                            key={`${candidate.board}-${candidate.player.id}`}
-                            className="border-b border-[var(--c97-rule)]" style={{ paddingBlock: "var(--c97-sp-1)" }}
-                          >
-                            <p className="text-sm">
-                              <span className="font-semibold text-[var(--c97-ink)]">
-                                {candidate.player.name}
-                              </span>{" "}
-                              <span className="text-[var(--c97-ink-2)]">
-                                {candidate.player.position}{" "}
-                                {candidate.player.team}
-                                {candidate.player.opponent
-                                  ? ` ${candidate.player.opponent}`
-                                  : ""}
-                              </span>
-                            </p>
-                            <dl className="flex flex-wrap font-mono text-2xs" style={{ marginTop: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-                              <ReadoutPair
-                                label="Gap"
-                                value={candidate.gap.toFixed(1)}
-                                emphasis
-                              />
-                              <ReadoutPair
-                                label="Board"
-                                value={candidate.board === "flex" ? "Flex" : "QB"}
-                              />
-                              <ReadoutPair
-                                label="Rank"
-                                value={String(candidate.player.rank)}
-                              />
-                              <ReadoutPair
-                                label="Percentile"
-                                value={candidate.rankPercentile.toFixed(1)}
-                              />
-                              <ReadoutPair
-                                label="Rostered"
-                                value={formatOwnership(candidate.ownership)}
-                              />
-                            </dl>
-                          </li>
-                        ))}
-                      </ol>
-                    )}
-                  </>
-                )}
-                <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <p className="ffb-method ffb-wk-foot-note">
                   {activeBoard.flexSource.playerCount} players on the{" "}
                   {describeFantasyWeeklySource(activeBoard.flexSource, "flex")}{" "}
                   and {activeBoard.quarterbackSource.playerCount} on the{" "}
@@ -721,290 +757,141 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)]" style={{ paddingTop: "var(--c97-sp-2)" }}>
-                <FantasySectionHeading id="weekly-board">
-                  {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
-                </FantasySectionHeading>
-                <p className="max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+              <section aria-labelledby="weekly-board" className="ffb-wk-main ffb-wk-main-weekly">
+                <div className="ffb-sechead ffb-sechead-lg">
+                  <FantasySectionHeading id="weekly-board">
+                    {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
+                  </FantasySectionHeading>
+                </div>
+                <p className="ffb-method">
                   Consensus rank within this board only. A flex rank and a
                   quarterback rank are not comparable, because FantasyPros
                   publishes no single in-season overall board and I would rather
                   keep them apart than manufacture an ordering the source never
                   made.
                 </p>
-                {/* Search narrows by name or team, and the flex board adds a
-                  position cut. The quarterback board is one position already,
-                  so the pills only render for flex. */}
-                <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)" }}>
-                  <fieldset>
-                  <legend className={GROUP_LEGEND_CLASS}>Board</legend>
-                  <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                    {(
-                      [
-                        ["flex", "Flex (RB, WR, TE)"],
-                        ["quarterbacks", "Quarterback"],
-                      ] as const
-                    ).map(([value, label]) => (
-                      <button
-                        key={value}
-                        type="button"
-                        aria-pressed={board === value}
-                        onClick={() => updateRouteState({ board: value })}
-                        className={`${TOGGLE_CLASS} ${
-                          board === value
-                            ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                            : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
-                        }`}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </div>
-                </fieldset>
-                  <div>
-                    <label
-                      htmlFor="weekly-board-search"
-                      className={`block ${GROUP_LEGEND_CLASS}`}
-                    >
-                      Search
-                    </label>
-                    <input
-                      id="weekly-board-search"
-                      value={searchQuery}
-                      maxLength={80}
-                      autoComplete="off"
-                      onChange={(event) => setSearchQuery(event.target.value)}
-                      placeholder="Search player or team"
-                      className="min-h-touch w-[220px] max-w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] font-mono text-xs text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}
-                    />
-                  </div>
-                  {board === "flex" ? (
-                    <fieldset>
-                      <legend className={GROUP_LEGEND_CLASS}>Position</legend>
-                      <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                        {(["ALL", "RB", "WR", "TE"] as const).map((option) => (
-                          <button
-                            key={option}
-                            type="button"
-                            aria-pressed={positionFilter === option}
-                            onClick={() => setPositionFilter(option)}
-                            className={`${TOGGLE_CLASS} ${
-                              positionFilter === option
-                                ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                                : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
-                            }`}
-                          >
-                            {option === "ALL" ? "All" : option}
-                          </button>
-                        ))}
-                      </div>
-                    </fieldset>
-                  ) : null}
-                </div>
                 {players.length === 0 ? (
-                  <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
-                    This board published with no rows, which usually means the
-                    source page came back empty. Check back after the next
-                    refresh, or use the other board until then.
-                  </p>
+                  <div className="ffb-empty">
+                    <p className="ffb-empty-body">
+                      This board published with no rows, which usually means the
+                      source page came back empty. Check back after the next
+                      refresh, or use the other board until then.
+                    </p>
+                  </div>
+                ) : filteredPlayers.length === 0 ? (
+                  <div className="ffb-empty">
+                    <p className="ffb-empty-title">No players match on this board.</p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSearchQuery("");
+                        setPositionFilter("ALL");
+                      }}
+                      className="ffb-btn"
+                    >
+                      Show all players
+                    </button>
+                  </div>
+                ) : tableLayout ? (
+                  // The table sits in page flow rather than a scroll box of
+                  // its own. It fits from md up, so nothing needs to scroll
+                  // sideways, and page-level sticky keeps the column labels
+                  // on screen for as long as the board runs.
+                  <table className="ffb-table ffb-table-sticky ffb-wk-table">
+                    <caption className="sr-only">{rankingsCaption}</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col" className="ffb-num ffb-wk-h-rank">#</th>
+                        <th scope="col">Player</th>
+                        <th scope="col" className="ffb-wk-h-opp">Opponent</th>
+                        <th scope="col" className="ffb-wk-h-range">Expert range</th>
+                        <th scope="col" className="ffb-num ffb-wk-h-num-wide">Rostered</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {visiblePlayers.map((player) => (
+                        <tr key={player.id}>
+                          <td className="ffb-num ffb-c-rank">{player.rank}</td>
+                          <th scope="row">
+                            <PlayerCell player={player} />
+                          </th>
+                          <td>{player.opponent ?? "—"}</td>
+                          <td>{formatSpread(player)}</td>
+                          <td className="ffb-num">{formatOwnership(player.ownership)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 ) : (
                   <>
-                    {/* The count is the page's live region. It stays mounted
-                        across every filter change so a search that lands on
-                        one row is announced rather than only seen. It is also
-                        where focus lands after Show all, since that button
-                        unmounts itself and would otherwise drop a keyboard
-                        user to the top of the document. */}
-                    <p
-                      ref={countLineRef}
-                      role="status"
-                      tabIndex={-1}
-                      className={STATUS_CLASS}
-                    >
-                      {filteredPlayers.length === 0 ? emptyFilterLine : countLine}
-                    </p>
-                    {filteredPlayers.length === 0 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSearchQuery("");
-                          setPositionFilter("ALL");
-                        }}
-                        className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`} style={{ marginTop: "var(--c97-sp-1)" }}
-                      >
-                        Show all players
-                      </button>
-                    ) : tableLayout ? (
-                      // The table sits in page flow rather than a scroll box of
-                      // its own. It fits from md up, so nothing needs to scroll
-                      // sideways, and page-level sticky keeps the column labels
-                      // under the site header for as long as the board runs.
-                      <table className="w-full border-collapse text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        <caption className="sr-only">{rankingsCaption}</caption>
-                        <thead>
-                          <tr className="text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-                            <th
-                              scope="col"
-                              className={`${STICKY_HEADER_CLASS} text-right`}
-                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
-                            >
-                              #
-                            </th>
-                            <th
-                              scope="col"
-                              className={`${STICKY_HEADER_CLASS}`}
-                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
-                            >
-                              Player
-                            </th>
-                            <th
-                              scope="col"
-                              className={`${STICKY_HEADER_CLASS}`}
-                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
-                            >
-                              Opponent
-                            </th>
-                            <th
-                              scope="col"
-                              className={`${STICKY_HEADER_CLASS} text-right`}
-                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
-                            >
-                              Expert range
-                            </th>
-                            <th
-                              scope="col"
-                              className={`${STICKY_HEADER_CLASS} text-right`}
-                              style={{ paddingBlock: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
-                            >
-                              Rostered
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {visiblePlayers.map((player) => (
-                            <tr
-                              key={player.id}
-                              className="border-b border-[var(--c97-rule)]"
-                            >
-                              <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                {player.rank}
-                              </td>
-                              <th
-                                scope="row"
-                                className="text-left font-normal" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}
-                              >
-                                <span className="font-semibold text-[var(--c97-ink)]">
-                                  {player.name}
-                                </span>{" "}
-                                <span className="text-[var(--c97-ink-2)]">
-                                  {player.position}
-                                  {player.positionRank !== undefined
-                                    ? player.positionRank
-                                    : ""}{" "}
-                                  {player.team}
-                                </span>
-                              </th>
-                              <td className="text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                {player.opponent ?? "—"}
-                              </td>
-                              <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
-                                {formatSpread(player)}
-                              </td>
-                              <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>
-                                {formatOwnership(player.ownership)}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    ) : (
-                      <ol
-                        role="list"
-                        aria-label={rankingsCaption}
-                        className="list-none border-t border-[var(--c97-rule)] p-0" style={{ marginTop: "var(--c97-sp-1)" }}
-                      >
-                        {visiblePlayers.map((player) => (
-                          <li
-                            key={player.id}
-                            className="flex items-start border-b border-[var(--c97-rule)]" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
-                          >
-                            <span className="w-8 shrink-0 text-right font-mono text-sm tabular-nums text-[var(--c97-ink-2)]">
-                              <span className="sr-only">Rank </span>
-                              {player.rank}
-                            </span>
-                            <div className="min-w-0 flex-1">
-                              <p className="text-sm">
-                                <span className="font-semibold text-[var(--c97-ink)]">
-                                  {player.name}
-                                </span>{" "}
-                                <span className="text-[var(--c97-ink-2)]">
-                                  {player.position}
-                                  {player.positionRank !== undefined
-                                    ? player.positionRank
-                                    : ""}{" "}
-                                  {player.team}
-                                </span>
-                              </p>
-                              <dl className="flex flex-wrap font-mono text-2xs" style={{ marginTop: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-                                <ReadoutPair
-                                  label="Opponent"
-                                  value={player.opponent ?? "—"}
-                                />
-                                <ReadoutPair
-                                  label="Expert range"
-                                  value={formatSpread(player)}
-                                />
-                                <ReadoutPair
-                                  label="Rostered"
-                                  value={formatOwnership(player.ownership)}
-                                />
-                              </dl>
-                            </div>
-                          </li>
-                        ))}
-                      </ol>
-                    )}
-                    {remainingCount > 0 ? (
-                      <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setWindowState({
-                              key: windowKey,
-                              count: Math.min(
-                                visibleCount + FANTASY_RANKINGS_PAGE_SIZE,
-                                filteredPlayers.length,
-                              ),
-                            })
-                          }
-                          className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`}
-                        >
-                          Load more ({remainingCount} left)
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            // Show all removes both buttons, so the render has
-                            // to land before focus moves or the count line is
-                            // still describing the old window.
-                            flushSync(() =>
-                              setWindowState({
-                                key: windowKey,
-                                count: filteredPlayers.length,
-                              }),
-                            );
-                            countLineRef.current?.focus();
-                          }}
-                          className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-accent)]`}
-                        >
-                          Show all {filteredPlayers.length}
-                        </button>
-                      </div>
-                    ) : null}
+                  <div className="ffb-colhead ffb-sticky ffb-listhead" aria-hidden="true">
+                    <span className="ffb-h-num">#</span>
+                    <span>Opponent</span>
+                    <span>Expert range</span>
+                    <span>Rostered</span>
+                  </div>
+                  <ol role="list" aria-label={rankingsCaption} className="ffb-rows">
+                    {visiblePlayers.map((player) => (
+                      <li key={player.id} className="ffb-row ffb-row-stack">
+                        <span className="ffb-c-rank">
+                          <span className="sr-only">Rank </span>
+                          {player.rank}
+                        </span>
+                        <div>
+                          <PlayerCell player={player} />
+                          <dl className="ffb-pairs ffb-pairs-cols">
+                            <ReadoutPair label="Opponent" value={player.opponent ?? "—"} />
+                            <ReadoutPair label="Expert range" value={formatSpread(player)} />
+                            <ReadoutPair
+                              label="Rostered"
+                              value={formatOwnership(player.ownership)}
+                            />
+                          </dl>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
                   </>
                 )}
+                {remainingCount > 0 ? (
+                  <div className="ffb-more-row">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setWindowState({
+                          key: windowKey,
+                          count: Math.min(
+                            visibleCount + FANTASY_RANKINGS_PAGE_SIZE,
+                            filteredPlayers.length,
+                          ),
+                        })
+                      }
+                      className="ffb-more"
+                    >
+                      Load more ({remainingCount} left)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        // Show all removes both buttons, so the render has
+                        // to land before focus moves or the count line is
+                        // still describing the old window.
+                        flushSync(() =>
+                          setWindowState({
+                            key: windowKey,
+                            count: filteredPlayers.length,
+                          }),
+                        );
+                        countLineRef.current?.focus();
+                      }}
+                      className="ffb-btn ffb-btn-lg"
+                    >
+                      Show all {filteredPlayers.length}
+                    </button>
+                  </div>
+                ) : null}
                 {source ? (
-                  <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
+                  <p className="ffb-method ffb-wk-foot-note">
                     {source.playerCount} players on the{" "}
                     {describeFantasyWeeklySource(
                       source,
@@ -1017,43 +904,11 @@ export function WeeklyBoardClient({
                 ) : null}
               </section>
             )}
-          </>
+            <div className="ffb-rail ffb-rail-scroll ffb-wk-rail">
+              <MyTeamPanel snapshot={snapshot} board={activeBoard} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} lead={view === "waivers" ? "waivers" : "lineup"} />
+            </div>
+          </div>
         ) : null}
-
-        {/* Rendered in every state, published or not, so the page never
-            dead-ends away from the rest of the fantasy tools. */}
-        <nav
-          aria-label="More fantasy football tools"
-          className="flex flex-wrap items-baseline border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}
-        >
-          <span className="font-mono text-2xs text-[var(--c97-ink-2)]">
-            More fantasy tools
-          </span>
-          <Link
-            href={viewConfig.sibling.href}
-            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
-          >
-            {viewConfig.sibling.label} <span className="c97-arrow-out" aria-hidden="true">↗</span>
-          </Link>
-          <Link
-            href="/fantasy-football"
-            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
-          >
-            Rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
-          </Link>
-          <Link
-            href="/fantasy-football/draft-tracker"
-            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
-          >
-            Draft tracker <span className="c97-arrow-out" aria-hidden="true">↗</span>
-          </Link>
-          <Link
-            href="/fantasy-football/best-ball"
-            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
-          >
-            Best ball <span className="c97-arrow-out" aria-hidden="true">↗</span>
-          </Link>
-        </nav>
       </div>
     </section>
   );

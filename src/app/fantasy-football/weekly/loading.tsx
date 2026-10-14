@@ -1,5 +1,5 @@
-import { RouteLoadingState } from "@/components/RouteLoadingState";
+import { FantasyLoadingState } from "@/components/fantasy/FantasyLoadingState";
 
 export default function WeeklyLoading() {
-  return <RouteLoadingState surfaceName="the weekly board" />;
+  return <FantasyLoadingState surfaceName="the weekly board" />;
 }

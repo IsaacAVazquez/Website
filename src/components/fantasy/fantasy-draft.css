@@ -1,0 +1,238 @@
+/*
+ * The redraft room and its setup screen (/fantasy-football/draft-tracker).
+ *
+ * The kit (fantasy.css) draws almost everything. This sheet holds what only this route needs.
+ * It is unlayered, so a rule here beats a kit class on the same element whatever order the two
+ * sheets load in. It stays loaded after in-app navigation, so every selector starts with a
+ * class of this route's prefix (`ffb-dt-`) or with `.ffb-root`.
+ */
+
+/* ==========================================================================
+ * Setup: a ruled sheet with no plate. The start block sits under the four main
+ * fields, and from 1024px it moves to a rail at the right that stays in view.
+ * ======================================================================== */
+.ffb-dt-setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--ffb-s5);
+  padding-bottom: var(--ffb-s7);
+}
+.ffb-dt-setup-main {
+  display: grid;
+  gap: var(--ffb-s5);
+  min-width: 0;
+}
+/* Teams and the draft slot share a row on a phone, with scoring under both. */
+.ffb-dt-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ffb-s4) var(--ffb-s5);
+  align-items: start;
+}
+.ffb-dt-fields > :nth-child(3) { grid-column: 1 / -1; }
+.ffb-dt-fieldset > legend { margin-bottom: 6px; }
+/* Three lineups, three columns. On a phone the plates carry their titles only, and the
+   summary line under them spells out the lineup in force. */
+.ffb-dt-lineups { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ffb-dt-lineups > .ffb-choice { align-content: start; }
+/* The kit's cluster with an 8px gap both ways. */
+.ffb-dt-presets { gap: var(--ffb-s2); }
+/* A preset is two buttons fused on one edge: apply it, or remove it. */
+.ffb-dt-preset { display: inline-flex; }
+.ffb-dt-preset > .ffb-iconbtn { margin-inline-start: -1px; }
+.ffb-dt-start {
+  display: grid;
+  gap: var(--ffb-s3);
+  min-width: 0;
+}
+.ffb-dt-start-summary { font-size: 14px; line-height: 1.45; }
+.ffb-dt-start-status { font-size: 14px; font-weight: 600; line-height: 1.4; }
+/* The disclosure prints the label for the state it is in. */
+.ffb-dt-optional:not([open]) [data-when="open"],
+.ffb-dt-optional[open] [data-when="closed"] { display: none; }
+.ffb-dt-optional-body { display: grid; gap: var(--ffb-s5); }
+.ffb-dt-optional-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ffb-s4) var(--ffb-s5);
+  align-items: start;
+}
+.ffb-dt-lineup-custom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ffb-s3) var(--ffb-s4);
+  align-items: end;
+}
+/* The one quarterback is fixed, so it prints as a line and not as a control. */
+.ffb-dt-lineup-fixed {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ffb-s2);
+  grid-column: 1 / -1;
+  font-size: 14px;
+  font-weight: 600;
+}
+.ffb-dt-preset-save { gap: var(--ffb-s2); }
+.ffb-dt-preset-save > .ffb-input { flex: 1 1 200px; width: auto; max-width: 320px; }
+
+@media (min-width: 480px) {
+  .ffb-dt-optional-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 640px) {
+  .ffb-dt-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ffb-dt-fields > :nth-child(3) { grid-column: auto; }
+  .ffb-dt-lineup-custom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .ffb-dt-setup {
+    grid-template-columns: minmax(0, 1fr) clamp(300px, 30%, 400px);
+    column-gap: var(--ffb-s6);
+    align-items: start;
+  }
+  .ffb-dt-setup > .ffb-dt-setup-head { grid-column: 1 / -1; }
+  .ffb-dt-setup > :is(.ffb-dt-setup-main, .ffb-dt-optional) { grid-column: 1; }
+  /* It pins at the top of the screen. The padding is its breathing room there, and the
+     negative margin takes the same amount back so it still lines up with the fields. */
+  .ffb-dt-setup > .ffb-dt-start {
+    position: sticky;
+    top: 0;
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    margin-top: calc(-1 * var(--ffb-s4));
+    padding-top: var(--ffb-s4);
+  }
+}
+@media (min-width: 1280px) {
+  .ffb-dt-lineup-custom { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+/* ==========================================================================
+ * The room
+ * The scorebug's frame, the last picks, the roster, and the pick grid are shared parts
+ * (DraftRoomParts.tsx), drawn with kit classes and fantasy-room.css. What is here is this
+ * room's own: the cells it puts in the scorebug, its strip, its board, and its rail blocks.
+ * ======================================================================== */
+.ffb-dt-notices {
+  display: grid;
+  gap: var(--ffb-s3);
+  padding-bottom: var(--ffb-s3);
+}
+
+/* The pinned bar keeps one height. A cell whose value changes from pick to pick holds the width
+   of its widest form ("#288 / 288", "18 of 18", "#288 in 30 picks", "551 left"), so the point
+   where the bar wraps depends on the screen and never on the pick. */
+.ffb-dt-cell-pick > .ffb-bug-value { min-inline-size: 101px; }
+.ffb-dt-cell-round > .ffb-bug-value { min-inline-size: 60px; }
+.ffb-dt-cell-next > .ffb-bug-value { min-inline-size: 115px; }
+.ffb-dt-cell-pool > .ffb-bug-value { min-inline-size: 63px; }
+/* The kit switches the bar to its short forms below 1300px. This room's six fixed cells and
+   three buttons need 1234px in their long forms, which the column has from 1440px, so the room
+   switches there. In the short forms the pool, which the board's own count repeats, fits from
+   1280px and leaves below it. One line then holds down to about 990px. */
+@media (max-width: 1439.98px) {
+  .ffb-dt-bug .ffb-bug-short { display: revert; }
+  .ffb-dt-bug .ffb-bug-long { display: none; }
+}
+@media (max-width: 1279.98px) {
+  .ffb-dt-bug .ffb-dt-cell-pool { display: none; }
+}
+/* At 320px the second row has room for the four values and nothing else. */
+@media (max-width: 359.98px) {
+  .ffb-dt-clock small { display: none; }
+}
+/* Undo and redo carry an icon. */
+.ffb-dt-bug .ffb-bug-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ffb-dt-note {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ffb-s3);
+  margin-bottom: var(--ffb-s3);
+}
+.ffb-dt-note > .ffb-iconbtn { margin-block: -6px; }
+
+/* A name on a strip card takes a second line before it is cut. */
+.ffb-dt-strip .ffb-strip-line > .ffb-c-name {
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ffb-dt-waitrow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* The board. Rank, chip, name, team, bye, then the numbers this room has, then the star and Log. */
+.ffb-dt-board { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 36px 56px; }
+.ffb-dt-board.ffb-dt-has-vorp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 40px 36px 56px; }
+.ffb-dt-board.ffb-dt-has-adp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 36px 56px; }
+.ffb-dt-board.ffb-dt-has-adp.ffb-dt-has-vorp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 40px 36px 56px; }
+.ffb-dt-queue { gap: var(--ffb-s2); padding-bottom: var(--ffb-s3); }
+.ffb-dt-queue-btn { gap: var(--ffb-s2); }
+.ffb-dt-queue-name {
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ffb-dt-vorp { padding-bottom: var(--ffb-s2); }
+/* The kit scrolls a focused row control clear of what is pinned over the list. From 768px that
+   is the scorebug and this board's bar, both measured, and the bar takes a second row near
+   1200px (173px in all, against the kit's 152px). The kit's value stays the floor. On a phone
+   the bar is not pinned, and the floor covers the scorebug. */
+@media (min-width: 768px) {
+  .ffb-dt-board {
+    --ffb-pinned-top: max(152px, calc(var(--ffb-sticky-top, 68px) + var(--ffb-dt-bar, 79px) + var(--ffb-s1)));
+  }
+}
+
+/* The recap. */
+.ffb-dt-recap { display: grid; gap: var(--ffb-s4); min-width: 0; }
+.ffb-dt-recap-stats { --ffb-stat-min: 168px; }
+.ffb-dt-replay-head { margin-bottom: var(--ffb-s2); }
+.ffb-dt-replay-pick {
+  flex: none;
+  width: 40px;
+  color: var(--ffb-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.ffb-dt-replay-note { padding-inline-start: calc(40px + var(--ffb-s2)); }
+.ffb-dt-teams {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ffb-s3);
+}
+.ffb-dt-foot { margin-top: var(--ffb-s6); }
+
+@media (max-width: 767.98px) {
+  /* Two rows at most: the live cell with the three actions, then the other cells at their own widths. */
+  .ffb-dt-bug .ffb-bug-live { flex-basis: 120px; }
+  .ffb-dt-bug .ffb-bug-seg:not(.ffb-bug-live) { flex: 1 1 auto; }
+  .ffb-dt-bug .ffb-bug-seg > .ffb-bug-value { min-inline-size: 0; }
+  /* A finished draft has no live cell, so "Done" takes its place beside the actions. */
+  .ffb-dt-bug .ffb-dt-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }
+  /* The scorebug already pins two rows, so the board's bar scrolls with the list. */
+  .ffb-dt-boardbar { position: static; }
+  /* The count sits beside the search where the two fit one row, as in the mock room. The search
+     keeps the kit's 160px floor, so it never sits in what is left of the position switch's row. */
+  .ffb-dt-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
+  /* The VORP note is five lines here, so it prints after the first tier and the board starts sooner. */
+  .ffb-dt-board { display: flex; flex-direction: column; }
+  .ffb-dt-board > * { order: 3; }
+  .ffb-dt-board > :is(.ffb-dt-queue, .ffb-dt-boardbar, .ffb-empty) { order: 0; }
+  .ffb-dt-board > section:first-of-type { order: 1; }
+  .ffb-dt-board > .ffb-dt-vorp { order: 2; padding-block: var(--ffb-s3) 0; }
+  /* A phone row's second line holds the chip, the team, the bye, and one number with its label
+     ("±ADP −118.3" at its widest, 73px). The kit's row leaves that 67px at 390 and 37px at 360,
+     so the board takes the kit's tighter row (`ffb-board-tight`). */
+  .ffb-dt-replay-note { padding-inline-start: 0; }
+  .ffb-dt-lineups > .ffb-choice { padding-inline: var(--ffb-s2); }
+  .ffb-dt-lineups .ffb-choice-note { display: none; }
+}
+

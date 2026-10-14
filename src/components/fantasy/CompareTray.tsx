@@ -1,13 +1,15 @@
 "use client";
 
 import { ChevronDown, GitCompareArrows, X } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { useCompareTray } from "@/hooks/useCompareTray";
-import { SHELL_CLASS, getPositionTone } from "@/lib/fantasyUtils";
+import { SHELL_CLASS } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 import { CompareModal } from "./CompareModal";
+import "./fantasy-overlays.css";
+import { positionClass } from "./positionClass";
 
 interface CompareTrayProps {
   resolvePlayer: (id: string) => Player | undefined;
@@ -27,15 +29,40 @@ interface CompareTrayProps {
 }
 
 /**
- * A docked bottom bar that surfaces the compare selection from anywhere on the
- * page and opens the side-by-side modal. Renders nothing until at least one
- * player is pinned, so it never steals space during normal browsing.
+ * Where focus goes after a control that takes itself away: the pill after
+ * minimize, the Compare button after expand, the pin that moved into a removed
+ * pin's place after a remove, and back out to the page once the tray has
+ * emptied itself.
+ */
+type FocusMove =
+  | { to: "pill" }
+  | { to: "compare" }
+  | { to: "pin"; removedId: string; index: number }
+  | { to: "outside" };
+
+/** The tray's own parts: the band, the pill, and the compare modal it opens. */
+const OWN = "[data-compare-own]";
+
+/** Focuses the first of these that can take focus. A disabled button and a hidden pin cannot. */
+function focusFirst(candidates: Array<HTMLElement | null | undefined>) {
+  for (const candidate of candidates) {
+    // A control that was disabled while it held focus can still be the active
+    // element, so it is ruled out by name and not by trying it.
+    if (!candidate || candidate.matches(":disabled")) continue;
+    candidate.focus();
+    if (document.activeElement === candidate) return;
+  }
+}
+
+/**
+ * A band pinned to the bottom of the screen that holds the compare selection
+ * and opens the side by side modal. It renders nothing until a player is
+ * pinned, so it takes no room during normal browsing.
  *
- * Once populated it is a fixed band across the bottom of the viewport, which
- * costs a phone about 100px of thumb zone, so it can be collapsed to a single
- * pill. Collapsing is component state rather than stored state on purpose: it
- * hides the bar without touching the pinned ids, so minimizing the tray and
- * clearing it stay separate actions.
+ * The band costs a phone about 60px of thumb zone, so it can be collapsed to
+ * one button. Collapsing is component state and not stored state on purpose,
+ * since it hides the band without touching the pinned ids, and minimizing the
+ * tray and clearing it stay separate actions.
  */
 export function CompareTray({
   resolvePlayer,
@@ -52,6 +79,25 @@ export function CompareTray({
   const replaceCompare = compare.replace;
   const [open, setOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const bandRef = useRef<HTMLDivElement>(null);
+  const pillRef = useRef<HTMLButtonElement>(null);
+  const focusMove = useRef<FocusMove | null>(null);
+  // The last element outside the tray that held focus, which is where a
+  // keyboard user was before they came down to it.
+  const lastOutside = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const remember = (target: EventTarget | null) => {
+      if (target instanceof HTMLElement && target !== document.body && !target.closest(OWN)) {
+        lastOutside.current = target;
+      }
+    };
+    // The tray mounts late, so whatever holds focus at that moment counts.
+    remember(document.activeElement);
+    const onFocusIn = (event: FocusEvent) => remember(event.target);
+    document.addEventListener("focusin", onFocusIn);
+    return () => document.removeEventListener("focusin", onFocusIn);
+  }, []);
 
   const players = useMemo(
     () =>
@@ -70,177 +116,174 @@ export function CompareTray({
   const hiddenCount = compareIds.length - players.length;
   const showHiddenSelections = playerDataReady && players.length === 0 && hiddenCount > 0;
   const trayVisible = players.length > 0 || showHiddenSelections;
+  const isCollapsed = collapsed && !showHiddenSelections;
+
+  // Minimize, expand, and remove each unmount the control that was pressed,
+  // which would drop a keyboard user's focus onto the page. This runs after
+  // the render that follows and hands focus to the control that took its place.
+  useEffect(() => {
+    const move = focusMove.current;
+    if (!move) return;
+    // The compare store has not dropped the pin yet, so its button is still here.
+    if (move.to === "pin" && compareIds.includes(move.removedId)) return;
+    if (move.to === "outside" && compareIds.length > 0) return;
+    focusMove.current = null;
+    if (move.to === "pill") {
+      pillRef.current?.focus();
+      return;
+    }
+    const band = bandRef.current;
+    if (!band) {
+      // The tray emptied itself and is gone. Focus goes back to where the user
+      // was before it, or to the page's main when that element has left the
+      // document or cannot take focus. It never falls to the body.
+      if (move.to === "compare") return;
+      const before = lastOutside.current;
+      focusFirst([before?.isConnected ? before : null, document.getElementById("main-content")]);
+      return;
+    }
+    const all = (selector: string) => Array.from(band.querySelectorAll<HTMLElement>(selector));
+    const clear = all("[data-compare-clear]");
+    if (move.to === "pin") {
+      const pins = all("[data-compare-remove]");
+      focusFirst([pins[move.index] ?? pins[pins.length - 1], ...clear]);
+      return;
+    }
+    focusFirst([...(move.to === "compare" ? all("[data-compare-open]") : []), ...clear]);
+  });
 
   return (
     <>
-      {trayVisible && (
-        <div className="c97-enter-slide-y fixed inset-x-0 bottom-0 z-[var(--c97-z-tray)] pb-[max(var(--c97-sp-1),env(safe-area-inset-bottom))]">
-          {/*
-            The bar aligns to the same content column as the page it floats
-            over. It used to be a max-w-3xl box centred in the viewport, so at
-            1440 it sat at x=336 in a page whose cards run 32 to 1408, lining
-            up with nothing, and the chips wrapped to a second row with 600px
-            of the bar's own width unused. SHELL_CLASS is what every fantasy
-            board wraps itself in, and it widens with the page on the wide
-            tool routes, so the tray's edges land on the board's edges at
-            every width.
-          */}
-          <div className={`${SHELL_CLASS} flex justify-center`}>
-          {showHiddenSelections ? (
-            <div
-              className="flex w-full items-center border"
-              style={{
-                paddingInline: "var(--c97-sp-2)",
-                paddingBlock: "var(--c97-sp-1)",
-                gap: "var(--c97-sp-1)",
-                borderColor: "var(--c97-rule)",
-                background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-              }}
-            >
-              <p role="status" className="flex-1 text-sm font-semibold">
-                {hiddenCount} {hiddenCount === 1 ? "player is" : "players are"} pinned on another fantasy board.
-              </p>
-              <button
-                type="button"
-                onClick={() => compare.clear()}
-                className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] text-sm font-semibold text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)" }}
-              >
-                Clear compare
-              </button>
-            </div>
-          ) : collapsed ? (
-            <button
-              type="button"
-              onClick={() => setCollapsed(false)}
-              aria-expanded={false}
-              aria-label={`Compare ${players.length}, show the tray`}
-              className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] text-sm font-semibold hover:border-[var(--c97-ink)]"
-              style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))" }}
-            >
-              <GitCompareArrows size={16} aria-hidden="true" />
-              Compare {players.length}
-            </button>
-          ) : (
-          <div
-            className="flex w-full flex-wrap items-center border"
-            style={{
-              paddingInline: "var(--c97-sp-1)",
-              paddingBlock: "var(--c97-sp-1)",
-              gap: "var(--c97-sp-1)",
-              borderColor: "var(--c97-rule)",
-              background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
+      {trayVisible && isCollapsed && (
+        <div className="ffb-ov-tray-min ffb-enter-rise" data-compare-own>
+          <button
+            ref={pillRef}
+            type="button"
+            onClick={() => {
+              focusMove.current = { to: "compare" };
+              setCollapsed(false);
             }}
+            aria-expanded={false}
+            aria-label={`Compare ${players.length}, show the tray`}
+            className="ffb-btn ffb-ov-tray-pill"
           >
-            <span className="c97-kicker hidden sm:block">Compare</span>
-            {/*
-              Below sm the names yield and the bar states a count instead.
-              Each chip is 44px tall because its remove button is, so three
-              pinned stacked one per row and pushed the minimize button onto a
-              fourth, measuring 236px of an 844px viewport with the board
-              heading and the whole position filter underneath it. A tray that
-              covers the board is not a tray. Nothing is lost, because the
-              names are in the modal this bar opens and every board row's own
-              compare toggle still removes a player.
-            */}
-            <p className="flex-1 text-sm font-semibold tabular-nums sm:hidden">
-              {hiddenCount > 0
-                ? `${players.length} here, ${hiddenCount} elsewhere`
-                : `${players.length} pinned`}
-            </p>
-            {/*
-              No min-w-0 here. With it, this flex item was allowed to shrink
-              below its own content instead of pushing the actions onto the
-              next line, so at 390px with three pinned the chips overflowed
-              their box and "Clear" landed on top of the second chip's remove
-              button, two buttons sharing one 43x44 rectangle and one of them
-              destructive. Letting the min-content width hold means the outer
-              flex-wrap does the work it was already there to do.
-            */}
-            <div className="hidden flex-1 flex-wrap items-center sm:flex" style={{ gap: "var(--c97-sp-0)" }}>
-              {players.map((player) => (
-                <span
-                  key={player.id}
-                  /*
-                    The chip is 44px tall because its remove button is. The
-                    button used to claw that back with -my-3, which left a
-                    30px chip carrying a 44px target that overhung 8px top and
-                    bottom, so stacked chips' hit areas overlapped each other
-                    by 8px. A chip that matches the height of the Clear and
-                    Compare buttons beside it also gives the whole band one
-                    cadence instead of two.
-                  */
-                  className="inline-flex items-center border py-0 pr-0 text-xs font-semibold"
-                  style={{ paddingLeft: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", ...getPositionTone(player.position) }}
+            <GitCompareArrows size={14} aria-hidden="true" />
+            Compare {players.length}
+          </button>
+        </div>
+      )}
+
+      {trayVisible && !isCollapsed && (
+        <div ref={bandRef} className="ffb-tray ffb-enter-rise" role="group" aria-label="Compare" data-compare-own>
+          {/* The row sits on the page column (SHELL_CLASS), so the tray's ends
+              land on the board's edges at every width. */}
+          <div className={`${SHELL_CLASS} ffb-tray-row`}>
+            {showHiddenSelections ? (
+              <>
+                <p role="status" className="ffb-ov-tray-text">
+                  {hiddenCount} {hiddenCount === 1 ? "player is" : "players are"} pinned on another fantasy board.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    focusMove.current = { to: "outside" };
+                    compare.clear();
+                  }}
+                  className="ffb-btn"
+                  data-compare-clear
                 >
-                  {/* 8rem cut "Jaxon Smith-Njigba" and "Marvin Harrison Jr."
-                      down to stubs that read almost the same. 12rem clears
-                      the longest names on the board, and the title carries
-                      the full name for whatever still overflows. */}
-                  <span className="max-w-[12rem] truncate" title={player.name}>
-                    {player.name}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => compare.remove(player.id)}
-                    aria-label={`Remove ${player.name} from compare`}
-                    className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-[var(--c97-overlay)] hover:bg-[color-mix(in_srgb,var(--c97-ink)_16%,transparent)]"
-                  >
-                    <X size={12} aria-hidden="true" />
-                  </button>
-                </span>
-              ))}
-              {hiddenCount > 0 ? (
-                <span className="text-xs font-semibold" style={{ paddingInline: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                  {hiddenCount} pinned elsewhere
-                </span>
-              ) : null}
-            </div>
-            <button
-              type="button"
-              onClick={() => compare.clear()}
-              className="inline-flex min-h-touch items-center text-xs font-semibold text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)] hover:underline hover:underline-offset-4" style={{ paddingInline: "var(--c97-sp-1)" }}
-            >
-              Clear
-            </button>
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              disabled={!canCompare}
-              className={`inline-flex min-h-touch items-center border text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed ${
-                canCompare
-                  ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
-                  : "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
-              }`} style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
-              title={canCompare ? undefined : "Pin at least two players"}
-            >
-              <GitCompareArrows size={16} aria-hidden="true" />
-              Compare {players.length}
-            </button>
-            <button
-              type="button"
-              onClick={() => setCollapsed(true)}
-              aria-expanded
-              aria-label="Minimize the compare tray"
-              className="inline-flex min-h-touch min-w-touch items-center justify-center border border-[var(--c97-rule)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink)] hover:text-[var(--c97-ink)]"
-            >
-              <ChevronDown size={16} aria-hidden="true" />
-            </button>
-          </div>
-          )}
+                  Clear compare
+                </button>
+              </>
+            ) : (
+              <>
+                <span className="ffb-label ffb-not-phone">Compare</span>
+                {/* On a phone the stickers yield to a count. Each sticker
+                    carries a 44px remove button there, and three of them do
+                    not fit one row, so the band grew to cover the board.
+                    Nothing is lost, since the names are in the modal this
+                    band opens and each board row's own compare toggle still
+                    removes a player. */}
+                <p className="ffb-ov-tray-text ffb-only-phone">
+                  {hiddenCount > 0
+                    ? `${players.length} here, ${hiddenCount} elsewhere`
+                    : `${players.length} pinned`}
+                </p>
+                <ul className="ffb-ov-pins ffb-not-phone">
+                  {players.map((player, index) => (
+                    <li key={player.id} className={`ffb-sticker ffb-sticker-sm ffb-sticker-pin ${positionClass(player.position)}`}>
+                      <span className="ffb-sticker-meta">
+                        {player.position}
+                        {player.team ? ` · ${player.team}` : ""}
+                      </span>{" "}
+                      {/* The title carries the full name for whatever the
+                          sticker has to cut. */}
+                      <span className="ffb-sticker-name" title={player.name}>
+                        {player.name}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          focusMove.current = { to: "pin", removedId: player.id, index };
+                          compare.remove(player.id);
+                        }}
+                        aria-label={`Remove ${player.name} from compare`}
+                        className="ffb-iconbtn ffb-sticker-remove"
+                        data-compare-remove
+                      >
+                        <X size={14} aria-hidden="true" />
+                      </button>
+                    </li>
+                  ))}
+                  {hiddenCount > 0 ? <li className="ffb-ov-pins-note">{hiddenCount} pinned elsewhere</li> : null}
+                </ul>
+                <button
+                  type="button"
+                  onClick={() => {
+                    focusMove.current = { to: "outside" };
+                    compare.clear();
+                  }}
+                  aria-label="Clear compare"
+                  className="ffb-btn ffb-btn-quiet"
+                  data-compare-clear
+                >
+                  Clear
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setOpen(true)}
+                  disabled={!canCompare}
+                  className="ffb-btn ffb-btn-primary"
+                  data-compare-open
+                  title={canCompare ? undefined : "Pin at least two players"}
+                >
+                  <GitCompareArrows size={14} aria-hidden="true" />
+                  Compare {players.length}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    focusMove.current = { to: "pill" };
+                    setCollapsed(true);
+                  }}
+                  aria-expanded
+                  aria-label="Minimize the compare tray"
+                  className="ffb-iconbtn ffb-iconbtn-edge"
+                >
+                  <ChevronDown size={16} aria-hidden="true" />
+                </button>
+              </>
+            )}
           </div>
         </div>
-        )}
+      )}
 
-      {/*
-        The bar is fixed, so it cannot push anything, and the page carried no
-        bottom padding to compensate. With a player pinned the last 132px of the
-        page sat under it permanently. This reserves that space at the end of
-        whichever surface renders the tray.
-        ponytail: a fixed 5rem covers the one-row bar at phone and desktop
-        widths; measure the bar and set the value from it if it ever grows a
-        second row at those widths.
-      */}
-      {trayVisible && <div aria-hidden="true" className="h-20" />}
+      {/* The band is fixed, so it cannot push anything. This reserves its
+          height at the end of whichever page renders the tray.
+          ponytail: the kit's fixed 80px covers the one-row band at phone and
+          desktop widths. Measure the band and set the value from it if it
+          ever grows a second row. */}
+      {trayVisible && <div aria-hidden="true" className="ffb-tray-space" />}
 
       {open && canCompare && (
         <CompareModal
@@ -252,8 +295,13 @@ export function CompareTray({
           adpAvailable={adpAvailable}
           onClose={() => setOpen(false)}
           onRemove={(id) => {
+            // At two players a remove closes the modal, and the Compare button
+            // it opened from is disabled by then, so focus goes to the pin left.
+            if (players.length <= 2) {
+              focusMove.current = { to: "pin", removedId: id, index: 0 };
+              setOpen(false);
+            }
             compare.remove(id);
-            if (players.length <= 2) setOpen(false);
           }}
         />
       )}

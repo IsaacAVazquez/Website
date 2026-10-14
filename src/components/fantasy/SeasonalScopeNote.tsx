@@ -7,6 +7,9 @@ import type { ReactNode } from "react";
  * board covers, and that it is deliberately frozen, is the difference between
  * a boundary and a surface that looks broken.
  *
+ * It is the kit's notice in the warning tone: text with a key rule at its left
+ * edge, no border and no fill.
+ *
  * Render it only when the week is 1 or higher; the caller owns that check so
  * the season and week it prints are the ones it already resolved.
  */
@@ -20,18 +23,9 @@ export function SeasonalScopeNote({
   children: ReactNode;
 }) {
   return (
-    <div
-      role="note"
-      className="border text-sm"
-      style={{
-        paddingInline: "var(--c97-sp-2)",
-        paddingBlock: "var(--c97-sp-1)",
-        borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
-        background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
-      }}
-    >
-      <p className="text-[var(--c97-ink-2)]">
-        <span className="font-semibold text-[var(--c97-ink)]">
+    <div role="note" className="ffb-notice ffb-notice-warn">
+      <p>
+        <span className="ffb-notice-title">
           Week {week} of the {season} season.
         </span>{" "}
         {children}

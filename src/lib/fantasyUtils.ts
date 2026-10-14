@@ -1,5 +1,3 @@
-import type { CSSProperties } from "react";
-
 import { DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
 import type { Player, RedraftLineupSettings } from "@/types";
 
@@ -469,6 +467,14 @@ export function getValueVsAdp(
  * rounding the difference to an integer turns a half-pick gap into a full pick:
  * Jahmyr Gibbs at ADP 1.5 and ECR 1 read "+1" on the 2026-08-16 half PPR board.
  */
+/**
+ * A formatted number with the minus sign the boards print (U+2212) in place of
+ * a leading hyphen, so "-4.5" and "-$12.00" read "−4.5" and "−$12.00".
+ */
+export function withMinusSign(formatted: string): string {
+  return formatted.replace(/^-/, "\u2212");
+}
+
 export function formatPickDelta(delta: number): string {
   const magnitude = Math.round(Math.abs(delta) * 10) / 10;
   if (magnitude === 0) {
@@ -493,7 +499,7 @@ export const FANTASY_REACH_TOOLTIP =
  * the player drawer so the width of the bar means the same thing on both.
  */
 export const FANTASY_EXPERT_SPREAD_TOOLTIP =
-  "The best and worst rank any contributing expert gave this player. A wider band means the experts disagree more about him, so the consensus rank is a weaker guide on its own.";
+  "The best and worst rank any contributing expert gave this player. A wider band means the experts disagree more about him, so the consensus rank is a weaker guide on its own. On the plot, the thicker part covers one standard deviation either side of the average, and the tick marks the average.";
 
 /**
  * Hover copy for the "vs ADP" cell. The board also has narrower variants for
@@ -507,7 +513,7 @@ export const FANTASY_VS_ADP_TOOLTIP =
  * carries more than a name, so the header says what else is in it.
  */
 export const FANTASY_PLAYER_COLUMN_TOOLTIP =
-  "The player, his team, and his rank within his own position, plus a Value or Reach label when the market and the experts disagree by enough to be worth a look. Click any row for the full detail panel.";
+  "The player. The position rank and team sit either side, and a Value or Reach label prints beside the vs ADP number, when that column shows and the market and the experts disagree by enough to be worth a look. Click any row for the full detail panel.";
 
 /**
  * Hover copy for the points-per-game panel. The panel is scoring history
@@ -661,79 +667,11 @@ export function getFantasySourceCapabilities({
 }
 
 /**
- * Natural-height label chip shared across fantasy surfaces (matches the /nfl
- * badge recipe). Interactive pills keep min-h-[44px] separately for touch targets.
- */
-export const FANTASY_CHIP_CLASS =
-  "inline-flex items-center border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
-
-/**
  * The site column with its own gutter, so fantasy content that sits outside a
- * `.c97-band` shares the header's edges. It widens on the wide tool routes
- * (the trade calculator and the best ball draft room) with every other shell.
+ * `.c97-band` shares the header's edges. All eight fantasy routes are wide
+ * tool routes, so it is the 1376px column on each.
  */
 export const SHELL_CLASS = "c97-shell c97-frame";
-
-export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
-
-/** Square-cornered mono position chip from the template (not the shared pill chip). */
-export const POSITION_CHIP_CLASS =
-  "inline-flex flex-none items-center border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
-
-/**
- * Disabled prints unfilled with a dashed edge; an opacity fade dropped its label to 3.02:1.
- * The resting colours live in the class rather than inline so the hover can apply.
- */
-export const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink)] enabled:hover:border-[var(--c97-ink)] disabled:cursor-not-allowed disabled:border-dashed";
-
-/** Sticky offset that clears the site header on the draft surfaces. */
-export const FASCIA_TOP_CLASS = "top-0";
-
-export const WARNING_CARD_STYLE: CSSProperties = {
-  borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
-  background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-};
-
-export function getPositionTone(position: string): CSSProperties {
-  switch (position) {
-    case "QB":
-      return {
-        background: "color-mix(in srgb, var(--c97-accent) 14%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))",
-      };
-    case "RB":
-      return {
-        background: "color-mix(in srgb, var(--c97-positive) 14%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-positive) 24%, var(--c97-rule))",
-      };
-    case "WR":
-      return {
-        background: "color-mix(in srgb, var(--c97-ink) 10%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-ink) 24%, var(--c97-rule))",
-      };
-    case "TE":
-      return {
-        background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-warning) 26%, var(--c97-rule))",
-      };
-    case "K":
-      return {
-        background: "color-mix(in srgb, var(--c97-rule) 45%, var(--c97-surface))",
-        borderColor: "var(--c97-rule)",
-      };
-    case "DST":
-      return {
-        background: "color-mix(in srgb, var(--c97-ink) 16%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-ink) 34%, var(--c97-rule))",
-      };
-    default:
-      return {
-        background: "var(--c97-field)",
-        borderColor: "var(--c97-rule)",
-      };
-  }
-}
 
 type FantasyConsensusSpread = "tight" | "mixed" | "volatile";
 
@@ -798,25 +736,6 @@ export function withTierBreaks(players: Player[]): FantasyTierRow[] {
     }
     return { player, tier, startsTier };
   });
-}
-
-/**
- * Signal intensity for a tier, on a 0-100 scale: solid (100) at tier 1, fading
- * by 13 points per tier down to a 12-point floor so even the bottom of the
- * board keeps a faint accent instead of vanishing. Shared by the rankings
- * row's left-edge tier rail and the inline tier-break tag so both read the
- * same "how deep in the board" signal off one formula. An untiered player
- * gets 0, which callers should mix toward a transparent/neutral base so the
- * accent disappears rather than reading as flat gray.
- */
-const TIER_RAIL_FLOOR = 12;
-const TIER_RAIL_STEP = 13;
-
-export function getTierRailIntensity(tier: number | null | undefined): number {
-  if (typeof tier !== "number" || !Number.isFinite(tier)) {
-    return 0;
-  }
-  return Math.max(TIER_RAIL_FLOOR, 100 - (tier - 1) * TIER_RAIL_STEP);
 }
 
 /**

@@ -1,7 +1,7 @@
 "use client";
 
-import { Check, X } from "lucide-react";
-import { useRef } from "react";
+import { X } from "lucide-react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { useModal } from "@/hooks/useModal";
 
 import {
@@ -11,12 +11,13 @@ import {
   formatOwnership,
   formatRankValue,
   getConsensusSpread,
-  getPositionTone,
   getValueVsAdp,
 } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 import { bestIndex } from "./compareMetrics";
+import "./fantasy-overlays.css";
+import { positionClass } from "./positionClass";
 import { RankDistributionBar } from "./RankDistributionBar";
 
 const CONSENSUS_RANK_LABEL = "Consensus rank";
@@ -67,6 +68,17 @@ export function CompareModal({
   const panelRef = useRef<HTMLDivElement>(null);
   useModal(panelRef, true, onClose, { lockScroll: false });
 
+  // A remove button takes its own column away. Once the column is gone, focus
+  // goes to the remove button that moved into its place, so it never falls to the page.
+  const removed = useRef<{ id: string; index: number } | null>(null);
+  useEffect(() => {
+    const last = removed.current;
+    if (!last || players.some((player) => player.id === last.id)) return;
+    removed.current = null;
+    const buttons = panelRef.current?.querySelectorAll<HTMLElement>("[data-compare-remove]");
+    (buttons?.[last.index] ?? buttons?.[buttons.length - 1])?.focus();
+  });
+
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
   const scaleMax = Math.max(...players.map((p) => (Number.isFinite(p.maxRank) ? (p.maxRank as number) : -Infinity)));
   const hasScale = Number.isFinite(scaleMin) && Number.isFinite(scaleMax);
@@ -86,11 +98,7 @@ export function CompareModal({
     publishedRank && !separateBoardRank
       ? publishedRank(p)
       : formatRankValue(p.rankEcr ?? p.averageRank);
-  const withheldToken = (
-    <span className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--c97-ink-2)" }}>
-      Withheld
-    </span>
-  );
+  const withheldToken = <span className="ffb-label ffb-muted">Withheld</span>;
 
   const rows: Array<{
     key: string;
@@ -147,24 +155,20 @@ export function CompareModal({
         const signal =
           adpAvailable && valueSignalAvailable && !isWithheld(p) ? getValueVsAdp(p) : null;
         return (
-          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
+          <>
             {adpAvailable ? formatAdp(p.adp) : "Unavailable"}
             {signal?.signal && (
-              <span
-                className="py-0.5 text-3xs font-semibold uppercase"
-                title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
-                style={{
-                  paddingInline: "var(--c97-sp-0)",
-                  background:
-                    signal.signal === "value"
-                      ? "color-mix(in srgb, var(--c97-positive) 16%, var(--c97-surface))"
-                      : "color-mix(in srgb, var(--c97-warning) 16%, var(--c97-surface))",
-                }}
-              >
-                {signal.signal}
-              </span>
+              <>
+                {/* A real space, so the figure and the word read as two. */}{" "}
+                <span
+                  className={`ffb-badge ffb-ov-cell-tag ${signal.signal === "value" ? "ffb-good" : "ffb-warn"}`}
+                  title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
+                >
+                  {signal.signal === "value" ? "Value" : "Reach"}
+                </span>
+              </>
             )}
-          </span>
+          </>
         );
       },
     },
@@ -186,203 +190,122 @@ export function CompareModal({
   ];
 
   return (
-    <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-modal)] flex items-center justify-center" style={{ padding: "var(--c97-sp-2)" }}>
-      <button
-        type="button"
-        aria-label="Close compare"
-        onClick={onClose}
-        className="absolute inset-0 h-full w-full cursor-default"
-        style={{ background: "color-mix(in srgb, var(--c97-ink) 42%, transparent)" }}
-        tabIndex={-1}
-      />
+    <div className="ffb-overlay ffb-overlay-modal ffb-enter-fade" data-compare-own>
+      <button type="button" aria-label="Close compare" onClick={onClose} className="ffb-scrim" tabIndex={-1} />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label="Compare players"
         tabIndex={-1}
-        className="c97-enter-pop relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto border"
-        style={{ padding: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+        className="ffb-modal ffb-enter-rise"
       >
-        <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)" }}>
-          <div>
-            <p className="c97-kicker">Side by side</p>
-            <h2 className="c97-serif c97-h3">Compare players</h2>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className="inline-flex min-h-touch min-w-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
-          >
+        <div className="ffb-panel-head">
+          <h2 className="ffb-h2">Compare players</h2>
+          <button type="button" onClick={onClose} aria-label="Close" className="ffb-iconbtn">
             <X size={18} aria-hidden="true" />
           </button>
         </div>
 
-        {/* A real table, not a grid of divs. The grid version handed a screen
-            reader a flat run of label, value, value with no way to tell which
-            column belonged to which player. */}
-        <div
-          className="overflow-x-auto"
-          role="region"
-          tabIndex={0}
-          aria-label="Player comparison table, scrolls horizontally"
-        >
-          {/*
-            table-fixed with an explicit colgroup, because the default auto
-            layout sized each column to its own content. Three players came
-            out 200px, 170px, and 135px wide, so whoever had the shortest name
-            got the narrowest column and their card ended up jammed against
-            the table's right edge. Equal player columns keep the comparison
-            readable as a comparison.
-          */}
-          <table className="w-full min-w-[34rem] table-fixed border-collapse text-left">
-            <colgroup>
-              <col style={{ width: "7.5rem" }} />
-              {players.map((player) => (
-                <col key={player.id} style={{ width: `calc((100% - 7.5rem) / ${players.length})` }} />
-              ))}
-            </colgroup>
-            <caption className="sr-only">
-              Side by side comparison of the pinned players. The stronger value on a row is marked Best.
-            </caption>
-            <thead>
-              <tr>
-                {/*
-                  The metric column is pinned to the left edge of the
-                  scroller. The table has a 34rem floor, so at 390px it runs
-                  544px inside a 316px box and 228px of it is off screen with
-                  the third player entirely out of view. Scrolling to reach
-                  him used to take the row labels with him, which leaves a
-                  column of bare numbers. The labels are the last thing
-                  allowed to leave.
-                */}
-                <th scope="col" className="sticky left-0 z-10" style={{ background: "var(--c97-surface)" }}>
-                  <span className="sr-only">Metric</span>
-                </th>
+        <div className="ffb-panel-body ffb-ov-compare-body">
+          {/* A real table, so a screen reader can tell which column belongs
+              to which player. The label column stays put while the player
+              columns scroll under it on a phone, since a column of bare
+              numbers is the one thing the table cannot become. */}
+          <div
+            className="ffb-table-wrap"
+            role="region"
+            tabIndex={0}
+            aria-label="Player comparison table, scrolls horizontally"
+          >
+            <table
+              className="ffb-table ffb-table-compare ffb-ov-compare"
+              style={{ "--ffb-ov-players": players.length } as CSSProperties}
+            >
+              {/* Fixed layout with only the label column sized, so the
+                  player columns split the rest equally whatever their names. */}
+              <colgroup>
+                <col className="ffb-ov-compare-label" />
                 {players.map((player) => (
-                  // Named explicitly so the column announces as the player.
-                  // Without this the header's name absorbs the remove
-                  // button's label and every cell is prefixed with it.
-                  <th
-                    key={player.id}
-                    scope="col"
-                    aria-label={`${player.name}, ${player.position}, ${player.team}`}
-                    /* align-top plus h-full on the card, so a one-line name
-                       and a name that wraps to two produce cards of the same
-                       height sitting on the same baseline. Aligned bottom,
-                       "Trey McBride" rendered 20px lower and 20px shorter
-                       than "Washington Commanders" beside it. */
-                    className="h-full p-0 align-top font-normal" style={{ paddingLeft: "var(--c97-sp-1)" }}
-                  >
-                    <div
-                      className="flex h-full flex-col items-start border"
-                      style={{ padding: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))" }}
-                    >
-                      <div className="flex w-full items-start justify-between" style={{ gap: "var(--c97-sp-0)" }}>
-                        <span
-                          className="inline-flex items-center border py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
-                          style={{ paddingInline: "var(--c97-sp-1)", ...(getPositionTone(player.position)) }}
-                        >
-                          {player.position}
-                        </span>
+                  <col key={player.id} />
+                ))}
+              </colgroup>
+              <caption className="ffb-vh">
+                Side by side comparison of the pinned players. The stronger value on a row is marked Best.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="ffb-vh">Metric</span>
+                  </th>
+                  {players.map((player, index) => (
+                    // Named explicitly so the column announces as the player.
+                    // Without this the header's name absorbs the remove
+                    // button's label and every cell is prefixed with it.
+                    <th key={player.id} scope="col" aria-label={`${player.name}, ${player.position}, ${player.team}`}>
+                      <span className="ffb-ov-compare-head">
+                        <span className={`ffb-chip ffb-chip-sm ${positionClass(player.position)}`}>{player.position}</span>{" "}
+                        <span className="ffb-label ffb-muted">{player.team}</span>
                         <button
                           type="button"
-                          onClick={() => onRemove(player.id)}
+                          onClick={() => {
+                            removed.current = { id: player.id, index };
+                            onRemove(player.id);
+                          }}
                           aria-label={`Remove ${player.name} from compare`}
-                          className="inline-flex min-h-touch min-w-touch items-center justify-center border border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
+                          className="ffb-iconbtn"
+                          data-compare-remove
                         >
-                          <X size={12} aria-hidden="true" />
+                          <X size={14} aria-hidden="true" />
                         </button>
-                      </div>
-                      {/* Two lines' worth of room whether the name needs it
-                          or not. h-full cannot equalize these, because a
-                          percentage height inside a table cell has no
-                          definite row height to resolve against, so a
-                          one-line name left its card 20px shorter than the
-                          one beside it and the bottom edge came out ragged. */}
-                      <span className="min-h-[2lh] text-sm font-semibold leading-tight">{player.name}</span>
-                      <span className="text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                        {player.team}
                       </span>
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => {
-                const winner = bestIndex(players, row.metric, row.direction, row.resolve);
-                return (
-                  <tr key={row.key}>
-                    <th
-                      scope="row"
-                      className="sticky left-0 z-10 text-2xs font-semibold uppercase tracking-[0.1em]"
-                      style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
-                    >
-                      {row.label}
+                      <span className="ffb-c-name ffb-ov-compare-name">{player.name}</span>
                     </th>
-                    {players.map((player, index) => (
-                      <td
-                        key={player.id}
-                        className="border-t text-sm font-semibold tabular-nums"
-                        style={{
-                          paddingBlock: "var(--c97-sp-1)",
-                          paddingLeft: "var(--c97-sp-1)",
-                          borderColor: "var(--c97-rule)",
-                          background:
-                            winner === index
-                              ? "color-mix(in srgb, var(--c97-accent) 18%, transparent)"
-                              : "transparent",
-                        }}
-                      >
-                        <span className="inline-flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row) => {
+                  const winner = bestIndex(players, row.metric, row.direction, row.resolve);
+                  return (
+                    <tr key={row.key}>
+                      <th scope="row">{row.label}</th>
+                      {players.map((player, index) => (
+                        <td key={player.id}>
                           {row.render(player)}
-                          {/* The tint alone carried the whole meaning before,
-                              so the win is a labeled token now and the wash
-                              only reinforces it. */}
-                          {winner === index && (
-                            <span className="inline-flex items-center text-3xs font-semibold uppercase tracking-[0.1em]" style={{ gap: "var(--c97-sp-0)" }}>
-                              <Check size={12} aria-hidden="true" />
-                              Best
-                            </span>
-                          )}
-                        </span>
+                          {/* The word carries the win. Nothing sits between
+                              the value and the tag, which the tests read. */}
+                          {winner === index && <span className="ffb-best">Best</span>}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+
+                {/* Expert range plots on one shared scale */}
+                {hasScale && (
+                  <tr>
+                    <th scope="row">Range</th>
+                    {players.map((player) => (
+                      <td key={player.id}>
+                        <RankDistributionBar player={player} scaleMin={scaleMin} scaleMax={scaleMax} compact />
                       </td>
                     ))}
                   </tr>
-                );
-              })}
+                )}
+              </tbody>
+            </table>
+          </div>
 
-              {/* Expert range bars (shared scale) */}
-              {hasScale && (
-                <tr>
-                  <th
-                    scope="row"
-                    className="sticky left-0 z-10 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
-                    style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
-                  >
-                    Range
-                  </th>
-                  {players.map((player) => (
-                    <td key={player.id} className="border-t" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
-                      <RankDistributionBar player={player} scaleMin={scaleMin} scaleMax={scaleMax} compact />
-                    </td>
-                  ))}
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <p className="ffb-method">
+            Best marks the stronger value on a row, meaning a lower rank or ADP and a higher rostered percentage.
+            Differences too small to act on stay unmarked, so a tier apart counts and a tenth of a point of rostered
+            does not. Range bars share one scale, so a wider fill means more expert disagreement.
+            {anyWithheld
+              ? " Withheld marks a player whose published consensus rank sits outside his own expert range, so the consensus, position rank, and tier rows carry no Best."
+              : ""}
+          </p>
         </div>
-
-        <p className="text-2xs" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-          Best marks the stronger value on a row, meaning a lower rank or ADP and a higher rostered percentage.
-          Differences too small to act on stay unmarked, so a tier apart counts and a tenth of a point of rostered
-          does not. Range bars share one scale, so a wider fill means more expert disagreement.
-          {anyWithheld
-            ? " Withheld marks a player whose published consensus rank sits outside his own expert range, so the consensus, position rank, and tier rows carry no Best."
-            : ""}
-        </p>
       </div>
     </div>
   );
