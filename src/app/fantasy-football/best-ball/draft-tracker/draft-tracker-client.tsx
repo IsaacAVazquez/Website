@@ -48,6 +48,7 @@ import {
   resolveDraftPicksForModel,
   withoutPlayerAdp,
   getNflRegularSeasonWeek,
+  shortName,
   SHELL_CLASS,
 } from "@/lib/fantasyUtils";
 import { calculateBestBallDraftValues } from "@/lib/fantasyTeamValue";
@@ -57,12 +58,15 @@ import { BestBallDraftBoard } from "./best-ball-draft-board";
 import { BestBallRecommendations } from "./best-ball-recommendations";
 import {
   BEST_BALL_ROOM_RULES_SCHEMA_VERSION,
+  getBestBallDraftStorageKey,
   getBestBallTeamForPick,
+  type BestBallDraftState,
   type BestBallRoomRules,
 } from "./best-ball-draft-state";
 import { useBestBallDraft } from "./use-best-ball-draft";
 
 const CONTESTS = Object.values(BEST_BALL_CONTESTS);
+const BUILD_POSITIONS = ["QB", "RB", "WR", "TE"] as const;
 // Presets whose lobby cards vary enough that the bespoke rulesNote has to print as a warning.
 // 6-Man belongs here because six-team rooms run several tournament structures.
 const VARIABLE_ROOM_CONTESTS = new Set<BestBallContestId>([
@@ -115,6 +119,58 @@ function lineupLabel(preset: BestBallContestPreset): string {
     .map(([count, label]) => `${count} ${label}`);
   if (preset.lineup.SUPERFLEX) slots.push(`${preset.lineup.SUPERFLEX} superflex`);
   return slots.join(" · ");
+}
+
+/** A room saved under another contest of the same season, as the setup screen names it. */
+interface OtherSavedRoom {
+  contestId: BestBallContestId;
+  /** The pick on the clock in that room, or null once its draft is complete. */
+  currentPick: number | null;
+}
+
+/**
+ * The most recently updated started room saved under another contest of this
+ * season. It reads the saves the rooms already write and adds no key of its
+ * own. A save that does not parse, a backup copy, and a room that never
+ * started are passed over.
+ */
+export function findOtherSavedRoom(
+  storage: Pick<Storage, "length" | "key" | "getItem">,
+  season: number,
+  currentContestId: BestBallContestId
+): OtherSavedRoom | null {
+  const prefix = getBestBallDraftStorageKey(season, "");
+  let best: (OtherSavedRoom & { updatedAt: number }) | null = null;
+  for (let index = 0; index < storage.length; index += 1) {
+    const key = storage.key(index);
+    if (!key || !key.startsWith(prefix) || key.endsWith("-previous")) continue;
+    try {
+      const saved = JSON.parse(storage.getItem(key) ?? "null") as Partial<BestBallDraftState> | null;
+      const contestId = saved?.contestId as BestBallContestId | undefined;
+      if (!saved || !contestId || contestId === currentContestId || !(contestId in BEST_BALL_CONTESTS)) continue;
+      if (typeof saved.startedAt !== "string" || !Array.isArray(saved.picks)) continue;
+      const total = Number(saved.rules?.teams) * Number(saved.rules?.rounds);
+      const updatedAt = Date.parse(saved.updatedAt ?? saved.startedAt) || 0;
+      if (best && updatedAt <= best.updatedAt) continue;
+      best = {
+        contestId,
+        currentPick: Number.isFinite(total) && saved.picks.length >= total ? null : saved.picks.length + 1,
+        updatedAt,
+      };
+    } catch {
+      // A save that does not parse is not a room anyone can return to.
+    }
+  }
+  return best ? { contestId: best.contestId, currentPick: best.currentPick } : null;
+}
+
+/** "A Superflex room is saved at pick 11." */
+function otherRoomSentence(room: OtherSavedRoom): string {
+  const name = BEST_BALL_CONTESTS[room.contestId].shortName;
+  const article = /^[aeiou]/i.test(name) ? "An" : "A";
+  return room.currentPick === null
+    ? `${article} ${name} room is saved with its draft complete.`
+    : `${article} ${name} room is saved at pick ${room.currentPick}.`;
 }
 
 /** A sentence that ends on a name does not double the full stop after "Jr." or "Sr.". */
@@ -198,16 +254,19 @@ export function BestBallDraftTrackerClient({
           <FreshnessParts
             parts={
               roomOpen
-                ? [
-                    { label: `Rankings updated ${rankingsDate}` },
-                    { label: "No live injury or news feed, so check the draft room before each pick." },
-                  ]
+                ? [{ label: `Rankings updated ${rankingsDate}` }]
                 : [
                     { label: "Half PPR · best ball scoring" },
                     { label: `Rankings updated ${rankingsDate}` },
                   ]
             }
           />
+          {/* A sentence, not a date, so it is a line of its own and not a part of the freshness line. */}
+          {roomOpen ? (
+            <p className="ffb-head-row ffb-fine">
+              No live injury or news feed, so check the draft room before each pick.
+            </p>
+          ) : null}
           {roomOpen ? null : (
             <div className="ffb-head-row">
               <details className="ffb-details ffb-br-about">
@@ -235,6 +294,15 @@ export function BestBallDraftTrackerClient({
                   key={contest.id}
                   type="button"
                   onClick={() => changeContest(contest.id)}
+                  // A keyboard can land on a button cut at the screen's edge, so
+                  // it is brought into view. A press is not moved, or the
+                  // scroll would take the button from under the finger.
+                  onFocus={(event) => {
+                    const group = contestsRef.current;
+                    if (group && event.currentTarget.matches(":focus-visible")) {
+                      scrollChildIntoViewX(group, event.currentTarget);
+                    }
+                  }}
                   aria-pressed={contest.id === contestId}
                   className="ffb-seg-btn"
                 >
@@ -302,6 +370,7 @@ export function BestBallDraftTrackerClient({
             snapshot={snapshot}
             preset={preset}
             onRoomOpenChange={setRoomOpen}
+            onOpenContest={changeContest}
           />
         ) : null}
       </div>
@@ -313,10 +382,12 @@ function BestBallDraftRoom({
   snapshot,
   preset,
   onRoomOpenChange,
+  onOpenContest,
 }: {
   snapshot: BestBallSnapshot;
   preset: BestBallContestPreset;
   onRoomOpenChange?: (open: boolean) => void;
+  onOpenContest?: (contestId: BestBallContestId) => void;
 }) {
   const rules = useMemo(() => roomRulesFromPreset(preset), [preset]);
   const draft = useBestBallDraft({ season: snapshot.season, rules });
@@ -588,6 +659,44 @@ function BestBallDraftRoom({
     setupHeadingRef.current?.focus();
   }, [showSetup]);
 
+  // The product bar's link carries no contest, so a drafter who left a room in
+  // another contest and came back lands on this setup screen. It names that
+  // room and opens it. The route is cached, so the page reads the saves here,
+  // after hydration, and never on the server.
+  const [otherRoom, setOtherRoom] = useState<OtherSavedRoom | null>(null);
+  useEffect(() => {
+    if (!draft.isLoaded || !showSetup) return;
+    let found: OtherSavedRoom | null;
+    try {
+      found = findOtherSavedRoom(window.localStorage, snapshot.season, preset.id);
+    } catch {
+      // Storage the browser blocks holds no room to point at.
+      found = null;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- read browser storage after hydration
+    setOtherRoom(found);
+  }, [draft.isLoaded, preset.id, showSetup, snapshot.season]);
+
+  // The build sheet belongs to the widths where the rail is not beside the
+  // list. A window that grows past 1200px with the sheet open (a tablet turned
+  // on its side) would keep it open, unseen, with the page unable to scroll.
+  useEffect(() => {
+    if (!buildOpen || typeof window.matchMedia !== "function") return;
+    const wide = window.matchMedia("(min-width: 1200px)");
+    const closeIfWide = () => {
+      if (!wide.matches) return;
+      setBuildOpen(false);
+      // The sheet's trigger is gone at this width, so the rail takes the focus.
+      requestAnimationFrame(() => {
+        const active = document.activeElement;
+        if (!active || active === document.body || active === buildTriggerRef.current) railRef.current?.focus();
+      });
+    };
+    closeIfWide();
+    wide.addEventListener("change", closeIfWide);
+    return () => wide.removeEventListener("change", closeIfWide);
+  }, [buildOpen]);
+
   useEffect(() => {
     if (resetArmed || !pendingResetFocusRef.current) return;
     pendingResetFocusRef.current = false;
@@ -624,6 +733,23 @@ function BestBallDraftRoom({
           <div role="status" className="ffb-notice ffb-notice-warn">
             <p>{storageNotice}</p>
           </div>
+        ) : null}
+
+        {otherRoom ? (
+          <p className="ffb-notice">
+            {otherRoomSentence(otherRoom)}{" "}
+            <a
+              href={`/fantasy-football/best-ball/draft-tracker?contest=${otherRoom.contestId}`}
+              onClick={(event) => {
+                if (!onOpenContest) return;
+                event.preventDefault();
+                onOpenContest(otherRoom.contestId);
+              }}
+            >
+              Open it
+            </a>
+            .
+          </p>
         ) : null}
 
         <section className="ffb-br-slot" aria-labelledby="best-ball-room-setup-heading">
@@ -736,8 +862,9 @@ function BestBallDraftRoom({
     : draft.isUserPick
       ? `You are on the clock at pick ${draft.currentPick}`
       : `Slot ${draft.currentTeamNumber} is on the clock`;
+  const lastDisplayPick = displayPicks[displayPicks.length - 1] ?? null;
   const statusShort = draft.isComplete
-    ? "Complete"
+    ? "Done"
     : draft.isUserPick
       ? "You"
       : `Slot ${draft.currentTeamNumber}`;
@@ -913,8 +1040,10 @@ function BestBallDraftRoom({
       >
         {draft.isComplete ? null : (
           <>
-            <DraftScorebugCell label="Overall" className="ffb-br-cell-pick">
-              Pick {draft.currentPick} <small>of {draft.totalPicks}</small>
+            {/* The pick cell prints as the other two rooms print it. A phone cell is too narrow for the spaced form. */}
+            <DraftScorebugCell label="Pick" className="ffb-br-cell-pick">
+              <span className="ffb-only-phone">{`#${draft.currentPick}/${draft.totalPicks}`}</span>
+              <span className="ffb-not-phone">{`#${draft.currentPick} / ${draft.totalPicks}`}</span>
             </DraftScorebugCell>
             <DraftScorebugCell label="Round" className="ffb-br-cell-round">
               {draft.currentRound} <small>of {preset.rounds}</small>
@@ -924,11 +1053,14 @@ function BestBallDraftRoom({
         {/* The one cell written by hand, since its value is the status heading
             and the shared cell's value is a paragraph. The heading's name is
             the full sentence, and what shows is its short form, so the bar
-            keeps one height and the heading keeps its name and its focus. */}
+            keeps one height and the heading keeps its name and its focus. A
+            finished draft has nobody on the clock, so this cell is the pick
+            cell then and reads "Done", as the other two rooms' does. */}
         <div
           className={draft.isComplete ? "ffb-bug-seg ffb-br-done" : "ffb-bug-seg ffb-bug-live"}
+          title={draft.isComplete ? undefined : statusShort}
         >
-          <span className="ffb-bug-label">{draft.isComplete ? "Draft" : "On the clock"}</span>
+          <span className="ffb-bug-label">{draft.isComplete ? "Pick" : "On the clock"}</span>
           <h2
             id="best-ball-room-status-heading"
             ref={statusHeadingRef}
@@ -938,6 +1070,13 @@ function BestBallDraftRoom({
             <span className="ffb-vh">{statusName}</span>
             <span aria-hidden="true">{statusShort}</span>
           </h2>
+          {draft.isComplete ? null : (
+            <p className="ffb-bug-note">
+              {lastDisplayPick
+                ? `Prev · ${shortName(lastDisplayPick.player)} #${lastDisplayPick.pickNumber}`
+                : "First overall pick"}
+            </p>
+          )}
         </div>
         {draft.isComplete ? null : (
           <DraftScorebugCell
@@ -982,6 +1121,7 @@ function BestBallDraftRoom({
             recommendations={recommendations}
             isUserPick={draft.isUserPick}
             isComplete={draft.isComplete}
+            rosterFull={!draft.isComplete && nextUserPick === null}
             adpAvailable={adpAvailable}
             recommendationMode={preset.recommendationMode}
             recommendationReason={preset.recommendationReason}
@@ -1000,15 +1140,21 @@ function BestBallDraftRoom({
             }}
             className="ffb-btn ffb-skip"
           >
-            Skip to your roster
+            Skip the board
           </a>
           <BestBallDraftBoard
             players={rankedAvailablePlayers}
             currentPick={draft.currentPick}
-            nextUserPick={nextUserPick}
+            turnPick={draft.isUserPick ? followingUserPick : nextUserPick}
+            pinnedTop={bugHeight}
             isComplete={draft.isComplete}
             adpAvailable={adpAvailable}
-            onDraftPlayer={draft.draftPlayer}
+            onDraftPlayer={(player) => {
+              // The board places focus on the row that took this one's place.
+              // The draft's last pick leaves no such row, and the heading takes it.
+              pendingFocusRef.current = "if-lost";
+              draft.draftPlayer(player);
+            }}
             onOpenDetail={setDetailPlayer}
           />
         </div>
@@ -1019,7 +1165,7 @@ function BestBallDraftRoom({
           id="best-ball-build"
           tabIndex={-1}
           aria-label="Roster build"
-          className="ffb-rail ffb-rail-scroll max-[1199px]:hidden"
+          className="ffb-rail ffb-rail-scroll ffb-br-rail"
         >
           {renderBuild("best-ball-desktop-build-heading")}
         </aside>
@@ -1055,8 +1201,19 @@ function BestBallDraftRoom({
             className="ffb-btn ffb-btn-primary ffb-btn-lg ffb-br-bar-build"
           >
             <span>My build</span>{" "}
-            <span>
-              {draft.userPicks.length} / {preset.rosterSize}
+            {/* From 768px the button has room for the four counts against their
+                targets, which is the build at a glance beside a real draft room.
+                A phone keeps the total. */}
+            <span className="ffb-br-bar-counts">
+              <span className="ffb-not-phone">
+                {BUILD_POSITIONS.map(
+                  (position) =>
+                    `${position} ${analysis.targets.targets[position].drafted}/${analysis.targets.targets[position].recommended}`
+                ).join(" · ")}
+              </span>{" "}
+              <span>
+                {draft.userPicks.length} / {preset.rosterSize}
+              </span>
             </span>
           </button>
         </div>

@@ -11,12 +11,18 @@ const POSITIONS = ["QB", "RB", "WR", "TE"] as const;
 /**
  * Where a position stands against its range, as a word and a status ink. The
  * count beside it never carries the reading by colour alone.
+ *
+ * Late in a draft the model narrows a range onto what the roster already
+ * holds, and its reason says the roster sits outside the usual range. "In
+ * range" there would contradict the sentence beside it, so a range that has
+ * closed on the count gets no word at all (null).
  */
-function targetStatus(
+export function targetStatus(
   drafted: number,
   minimum: number,
   maximum: number
-): { word: string; tone: string } {
+): { word: string; tone: string } | null {
+  if (minimum === maximum && drafted === minimum) return null;
   if (drafted > maximum) return { word: `over by ${drafted - maximum}`, tone: "ffb-bad" };
   if (drafted >= minimum) return { word: "in range", tone: "ffb-good" };
   return { word: `${minimum - drafted} short`, tone: "ffb-muted" };
@@ -94,7 +100,13 @@ export function BestBallBuildPanel({
                   {target.drafted} / {target.recommended}
                 </dd>
                 <dd className="ffb-fact-note">
-                  Range {target.minimum} to {target.maximum}, <span className={status.tone}>{status.word}</span>.{" "}
+                  Range {target.minimum} to {target.maximum}
+                  {status ? (
+                    <>
+                      , <span className={status.tone}>{status.word}</span>
+                    </>
+                  ) : null}
+                  .{" "}
                   {target.reason}
                 </dd>
               </div>

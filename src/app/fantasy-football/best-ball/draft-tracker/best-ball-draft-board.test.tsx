@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 
 import { sortBestBallRankings } from "@/lib/bestBall/rankings";
 import type { Player } from "@/types";
@@ -51,14 +51,16 @@ function renderBoard(
     onOpenDetail?: jest.Mock;
     players?: Player[];
     currentPick?: number;
-    nextUserPick?: number | null;
+    turnPick?: number | null;
+    pinnedTop?: number;
   } = {}
 ) {
   return render(
     <BestBallDraftBoard
       players={sortBestBallRankings(overrides.players ?? [player], "bbm-vii")}
       currentPick={overrides.currentPick ?? 1}
-      nextUserPick={overrides.nextUserPick}
+      turnPick={overrides.turnPick}
+      pinnedTop={overrides.pinnedTop}
       isComplete={false}
       adpAvailable
       onDraftPlayer={overrides.onDraftPlayer ?? jest.fn()}
@@ -115,7 +117,7 @@ describe("BestBallDraftBoard", () => {
   });
 
   it("marks where the board stands when the user's turn comes back, on the whole board only", () => {
-    renderBoard({ players: brokenBoard(), currentPick: 2, nextUserPick: 5 });
+    renderBoard({ players: brokenBoard(), currentPick: 2, turnPick: 5 });
 
     // Three picks come first (2, 3, and 4), so the line sits above the fourth row.
     const line = screen.getByText("Your turn #5").closest("li") as HTMLElement;
@@ -129,9 +131,73 @@ describe("BestBallDraftBoard", () => {
     expect(screen.queryByText("Your turn #5")).not.toBeInTheDocument();
   });
 
-  it("draws no turn line while the user is on the clock", () => {
-    renderBoard({ players: brokenBoard(), currentPick: 5, nextUserPick: 5 });
+  it("draws no turn line when the turn it would mark is the pick on the clock", () => {
+    renderBoard({ players: brokenBoard(), currentPick: 5, turnPick: 5 });
     expect(screen.queryByText(/^Your turn #/)).not.toBeInTheDocument();
+  });
+
+  it("brings the board's start back under the scorebug when a search shortens the list deep in the page", () => {
+    jest.useFakeTimers();
+    const scrollTo = jest.fn();
+    window.scrollTo = scrollTo;
+    renderBoard({ players: brokenBoard(), pinnedTop: 68 });
+    const board = screen.getByRole("region", { name: "Log the player selected" });
+    // The page is scrolled 3000px and the board starts 500px down the page.
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 3000 });
+    board.getBoundingClientRect = () => ({ top: -2500 }) as DOMRect;
+
+    const input = screen.getByRole("textbox", { name: "Search available players" });
+    act(() => input.focus());
+    fireEvent.change(input, { target: { value: "player 1" } });
+    act(() => jest.advanceTimersByTime(250));
+
+    expect(scrollTo).toHaveBeenCalledWith({ top: 432, behavior: "instant" });
+    expect(input).toHaveFocus();
+
+    // Already above the board's start, the page does not move.
+    scrollTo.mockClear();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 100 });
+    board.getBoundingClientRect = () => ({ top: 400 }) as DOMRect;
+    fireEvent.click(screen.getByRole("radio", { name: "RB" }));
+    act(() => jest.advanceTimersByTime(250));
+    expect(scrollTo).not.toHaveBeenCalled();
+
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+    jest.useRealTimers();
+  });
+
+  it("prints the consensus rank beside the ADP, and the word on a withheld row", () => {
+    renderBoard({ players: brokenBoard() });
+
+    const consistent = screen.getByRole("button", { name: "Open Player 2 detail" }).closest("li") as HTMLElement;
+    expect(within(consistent).getByText("PPR expert consensus rank").parentElement).toHaveTextContent(
+      /^PPR expert consensus rank 2$/
+    );
+    const withheld = screen.getByRole("button", { name: "Open Player 1 detail" }).closest("li") as HTMLElement;
+    expect(within(withheld).getByText("PPR expert consensus rank").parentElement).toHaveTextContent(
+      /^PPR expert consensus rank Withheld$/
+    );
+  });
+
+  it("prints one number, the source rank, where the contest has no room ADP", () => {
+    render(
+      <BestBallDraftBoard
+        players={sortBestBallRankings([player], "weekly-winners")}
+        currentPick={1}
+        isComplete={false}
+        adpAvailable={false}
+        onDraftPlayer={jest.fn()}
+        onOpenDetail={jest.fn()}
+      />
+    );
+
+    const row = screen.getByRole("button", { name: "Open Jaylin Noel detail" }).closest("li") as HTMLElement;
+    // The ECR, 193, is this contest's source rank, and it prints once, in the first column.
+    expect(within(row).getByText("Source rank").parentElement).toHaveTextContent(/^Source rank 193$/);
+    expect(within(row).getAllByText(/193/)).toHaveLength(1);
+    expect(within(row).queryByText(/ADP/)).not.toBeInTheDocument();
+    expect(within(row).queryByText("PPR expert consensus rank")).not.toBeInTheDocument();
+    expect(screen.getByTestId("best-ball-board-column-labels")).toHaveTextContent(/^Source rankPosPlayerTeamBye$/);
   });
 
   it("counts what is available and what a filter leaves", () => {

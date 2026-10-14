@@ -32,6 +32,7 @@ export function BestBallRecommendations({
   recommendations,
   isUserPick,
   isComplete,
+  rosterFull = false,
   adpAvailable,
   recommendationMode,
   recommendationReason,
@@ -42,6 +43,8 @@ export function BestBallRecommendations({
   recommendations: readonly BestBallRecommendation[];
   isUserPick: boolean;
   isComplete: boolean;
+  /** No turn of the user's is left, though the room still has picks to log. */
+  rosterFull?: boolean;
   adpAvailable: boolean;
   recommendationMode: BestBallRecommendationMode;
   recommendationReason: string;
@@ -52,6 +55,19 @@ export function BestBallRecommendations({
   const headingId = "best-ball-recommendations-heading";
   const heading =
     recommendationMode === "exact" ? "Best fits for your next pick" : "Board and roster guidance";
+  const renderParts = (
+    componentScores: Array<[keyof BestBallRecommendation["components"], number]>,
+    className: string
+  ) => (
+    <dl className={className}>
+      {componentScores.map(([component, score]) => (
+        <div key={component}>
+          <dt>{component === "adpValue" && !adpAvailable ? "Market ADP" : COMPONENT_LABELS[component]}</dt>
+          <dd className={score < 0 ? "ffb-bad" : undefined}>{formatScore(score)}</dd>
+        </div>
+      ))}
+    </dl>
+  );
   const fitsLive =
     recommendationMode === "exact" &&
     sourceIssue === null &&
@@ -131,28 +147,20 @@ export function BestBallRecommendations({
                   </span>
                 </p>
 
-                {componentScores.length > 0 ? (
-                  <dl className="ffb-pairs">
-                    {componentScores.map(([component, score]) => (
-                      <div key={component}>
-                        <dt>
-                          {component === "adpValue" && !adpAvailable
-                            ? "Market ADP"
-                            : COMPONENT_LABELS[component]}
-                        </dt>
-                        <dd className={score < 0 ? "ffb-bad" : undefined}>{formatScore(score)}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                ) : null}
+                {/* What moved the score. A phone folds it into "Why this player", so a fit
+                    there is the chip, the name, Log, and the score on two lines. */}
+                {componentScores.length > 0 ? renderParts(componentScores, "ffb-pairs ffb-not-phone") : null}
 
                 <details className="ffb-details">
                   <summary>Why this player</summary>
-                  <ul className="ffb-details-body ffb-fine ffb-br-fit-why">
-                    {recommendation.reasons.map((reason) => (
-                      <li key={`${reason.component}-${reason.detail}`}>{reason.detail}</li>
-                    ))}
-                  </ul>
+                  <div className="ffb-details-body ffb-br-fit-why">
+                    {componentScores.length > 0 ? renderParts(componentScores, "ffb-pairs ffb-only-phone") : null}
+                    <ul className="ffb-fine">
+                      {recommendation.reasons.map((reason) => (
+                        <li key={`${reason.component}-${reason.detail}`}>{reason.detail}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </details>
               </article>
             );
@@ -194,6 +202,8 @@ export function BestBallRecommendations({
         </p>
       ) : isComplete ? (
         <p className="ffb-fine">The draft is complete, so there is no next pick to fit.</p>
+      ) : rosterFull ? (
+        <p className="ffb-fine">Your roster is full, so there is no next pick to fit.</p>
       ) : !isUserPick ? (
         <p className="ffb-fine">
           Exact player cards stay hidden until your turn because this model does not estimate the

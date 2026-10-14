@@ -6,6 +6,7 @@ import { PositionFilterBar, type PositionFilterOption } from "@/components/fanta
 import { positionClass } from "@/components/fantasy/positionClass";
 import { useDebounce } from "@/hooks/useDebounce";
 import type { RankedBestBallPlayer } from "@/lib/bestBall/types";
+import { formatRankValue } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 type PositionFilter = "ALL" | "QB" | "RB" | "WR" | "TE";
@@ -26,7 +27,8 @@ function formatBoardAdp(player: RankedBestBallPlayer, missingLabel: string): str
 export function BestBallDraftBoard({
   players,
   currentPick,
-  nextUserPick = null,
+  turnPick = null,
+  pinnedTop = 0,
   isComplete,
   adpAvailable,
   onDraftPlayer,
@@ -34,8 +36,14 @@ export function BestBallDraftBoard({
 }: {
   players: readonly RankedBestBallPlayer[];
   currentPick: number;
-  /** The user's next pick, at or after the current one. The board marks where it would land. */
-  nextUserPick?: number | null;
+  /**
+   * The user's turn the board marks: the next one, or the one after it while
+   * the user is on the clock. The line sits where that pick lands if the room
+   * drafts down this board.
+   */
+  turnPick?: number | null;
+  /** The height of what is pinned above the board (the scorebug), so a search can bring the board back under it. */
+  pinnedTop?: number;
   isComplete: boolean;
   adpAvailable: boolean;
   onDraftPlayer: (player: Player) => void;
@@ -51,6 +59,7 @@ export function BestBallDraftBoard({
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchToggleRef = useRef<HTMLButtonElement>(null);
   const rowsRef = useRef<HTMLOListElement>(null);
+  const boardRef = useRef<HTMLElement>(null);
   // Index of the row whose Draft button was pressed. The button leaves the DOM
   // with the pick, so once the list re-renders focus moves to the Draft button
   // of the row that slid into its place, without scrolling, because scroll
@@ -117,31 +126,41 @@ export function BestBallDraftBoard({
     });
   }, [players, position, debouncedQuery]);
 
+  // A search or a position change shortens the list. With the page scrolled
+  // past the board's start, the list would end above the screen and take the
+  // pinned search with it, so the board's start comes back under the scorebug.
+  // Focus stays where it is, in the field or on the switch.
+  const filterKey = `${position}|${debouncedQuery.trim().toLowerCase()}`;
+  const appliedFilterRef = useRef(filterKey);
+  useEffect(() => {
+    if (appliedFilterRef.current === filterKey) return;
+    appliedFilterRef.current = filterKey;
+    const board = boardRef.current;
+    if (!board) return;
+    const start = Math.max(0, board.getBoundingClientRect().top + window.scrollY - pinnedTop);
+    if (window.scrollY > start + 1) window.scrollTo({ top: start, behavior: "instant" });
+  }, [filterKey, pinnedTop]);
+
   const shownPlayers = filteredPlayers.slice(0, visibleCount);
-  const marketLabel = adpAvailable ? "Underdog ADP" : "Source rank";
   // Where the board stands when the user's turn comes back, if every pick until
   // then follows this board. A filter or a search breaks that reading, so the
   // line shows on the whole board only, as it does in the redraft room.
   const picksBeforeTurn =
-    nextUserPick !== null && position === "ALL" && debouncedQuery.trim() === ""
-      ? nextUserPick - currentPick
+    turnPick !== null && position === "ALL" && debouncedQuery.trim() === ""
+      ? turnPick - currentPick
       : 0;
   const turnPlayerId = picksBeforeTurn > 0 ? shownPlayers[picksBeforeTurn]?.id : undefined;
 
   return (
     <section
-      className="ffb-board ffb-board-room ffb-board-log ffb-board-ruled ffb-board-tight ffb-br-board"
+      ref={boardRef}
+      className={`ffb-board ffb-board-room ffb-board-log ffb-board-ruled ffb-board-tight ffb-br-board${adpAvailable ? "" : " ffb-br-no-adp"}`}
       aria-labelledby="best-ball-player-board-heading"
     >
-      <div className="ffb-sechead">
-        <h2 id="best-ball-player-board-heading" className="ffb-h3">
-          Log the player selected
-        </h2>
-        {/* The board's one live region, and the visible feedback that a search landed on n rows. */}
-        <p className="ffb-sechead-note" aria-live="polite">
-          {filteredPlayers.length} of {players.length} available
-        </p>
-      </div>
+      {/* The section's name. The pinned toolbar under it carries the count. */}
+      <h2 id="best-ball-player-board-heading" className="ffb-vh">
+        Log the player selected
+      </h2>
 
       {/*
         The board runs 120 to 300 rows against a pick clock, so search, the
@@ -190,6 +209,10 @@ export function BestBallDraftBoard({
               className="ffb-search-input"
             />
           </label>
+          {/* The board's one live region, and the feedback that a search or a filter landed, where the field is. */}
+          <p className="ffb-count" aria-live="polite">
+            {filteredPlayers.length} of {players.length} available
+          </p>
         </div>
 
         {shownPlayers.length > 0 ? (
@@ -198,12 +221,18 @@ export function BestBallDraftBoard({
             aria-hidden="true"
             className="ffb-colhead ffb-not-phone"
           >
-            <span className="ffb-h-num ffb-is-sorted">Board</span>
+            {/* With no room ADP the board has one number, the source's own rank. */}
+            <span className="ffb-h-num ffb-is-sorted">{adpAvailable ? "Rk" : "Source rank"}</span>
             <span className="ffb-h-pos">Pos</span>
             <span>Player</span>
             <span>Team</span>
             <span className="ffb-h-num">Bye</span>
-            <span className="ffb-h-num">{marketLabel}</span>
+            {adpAvailable ? (
+              <>
+                <span className="ffb-h-num">UD ADP</span>
+                <span className="ffb-h-num">PPR ECR</span>
+              </>
+            ) : null}
             <span />
           </div>
         ) : null}
@@ -212,27 +241,37 @@ export function BestBallDraftBoard({
       {shownPlayers.length > 0 ? (
         <ol className="ffb-rows" ref={rowsRef}>
           {shownPlayers.map((player, index) => {
-            const marketValue = adpAvailable
-              ? formatBoardAdp(player, "Not matched")
-              : player.adjustedRank.toFixed(0);
             // A row the board orders off its ADP says why under the name. On
-            // every other row the sentence restates the ADP column, so it
+            // every other row the sentence restates the ordering column, so it
             // stays in that cell's title.
             const explainsOrder = player.isUndraftedAtContestFloor || player.consensusWithheld;
             const hasReason = player.rankAdjustment !== 0 || explainsOrder;
+            const reasonProps = {
+              title: hasReason ? player.rankReason : undefined,
+              "data-consensus-withheld": hasReason && player.consensusWithheld ? "true" : undefined,
+            };
             return (
               <Fragment key={player.id}>
               {player.id === turnPlayerId ? (
                 <li className="ffb-turnline">
-                  <span className="ffb-turn-tab">Your turn #{nextUserPick}</span>{" "}
+                  <span className="ffb-turn-tab">Your turn #{turnPick}</span>{" "}
                   <span className="ffb-turn-note">if picks follow this board</span>
                 </li>
               ) : null}
               <li className="ffb-row">
-                <span className="ffb-c-rank">
-                  <span className="ffb-vh">Board rank </span>
-                  {player.bestBallRank}
-                </span>
+                {/* With a room ADP the rank is the board's own order. Without one the
+                    board has one number, the source's rank, which it orders by. */}
+                {adpAvailable ? (
+                  <span className="ffb-c-rank">
+                    <span className="ffb-vh">Board rank </span>
+                    {player.bestBallRank}
+                  </span>
+                ) : (
+                  <span className="ffb-c-rank" {...reasonProps}>
+                    <span className="ffb-vh">Source rank </span>
+                    {player.adjustedRank.toFixed(0)}
+                  </span>
+                )}
                 {/* A withheld consensus takes its position rank with it, so the chip prints the letters alone. */}
                 <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
                   {player.position}
@@ -267,21 +306,35 @@ export function BestBallDraftBoard({
                   context, and it hides with the cell on a phone, where the
                   cell after this one prints the label itself.
                 */}
-                <span
-                  className="ffb-c-num ffb-is-flat"
-                  title={hasReason ? player.rankReason : undefined}
-                  data-consensus-withheld={hasReason && player.consensusWithheld ? "true" : undefined}
-                >
-                  <span className="ffb-vh">
-                    {adpAvailable ? "Underdog average draft position " : "Source rank "}
-                  </span>
-                  {marketValue}
-                </span>
-                {/* A phone row has room for one number after the bye, and this room's number is the market's. */}
-                <span className="ffb-c-num ffb-m-meta ffb-only-phone">
-                  {adpAvailable ? "ADP" : "Source rank"}{" "}
-                  {adpAvailable ? formatBoardAdp(player, "not available") : marketValue}
-                </span>
+                {adpAvailable ? (
+                  <>
+                    <span className="ffb-c-num ffb-is-flat" {...reasonProps}>
+                      <span className="ffb-vh">Underdog average draft position </span>
+                      {formatBoardAdp(player, "Not matched")}
+                    </span>
+                    {/* The consensus rank, which the market's order sits beside. A
+                        withheld consensus prints the word and never the number. */}
+                    <span
+                      className="ffb-c-num ffb-is-flat"
+                      title={
+                        player.consensusWithheld
+                          ? "The published consensus rank sits outside its own expert range, so it is withheld"
+                          : "PPR best ball expert consensus rank"
+                      }
+                    >
+                      <span className="ffb-vh">PPR expert consensus rank </span>
+                      {player.consensusWithheld ? (
+                        <span className="ffb-label">Withheld</span>
+                      ) : (
+                        formatRankValue(player.bestBallEcr)
+                      )}
+                    </span>
+                    {/* A phone row has room for one number after the bye, and this room's number is the market's. */}
+                    <span className="ffb-c-num ffb-m-meta ffb-only-phone">
+                      ADP {formatBoardAdp(player, "not available")}
+                    </span>
+                  </>
+                ) : null}
                 <button
                   type="button"
                   data-testid="best-ball-board-draft"
