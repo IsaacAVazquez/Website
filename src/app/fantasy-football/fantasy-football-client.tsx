@@ -955,10 +955,20 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   }, [players]);
 
   // Reset the window whenever the board, scoring, or search changes so a
-  // narrowed list never starts deep into a stale offset.
+  // narrowed list never starts deep into a stale offset. If the page is
+  // scrolled past the board's start when that happens (the controls are
+  // pinned and someone is typing in them deep in the list), a shorter list
+  // would leave the page ending on the footer with the pinned block, and the
+  // field being typed in, pushed off the top. So the board's start comes back
+  // to the top of the screen, where the block pins over the first result.
+  // Scrolling moves no focus, so the field keeps it.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional reset on filter change
     setVisibleCount(RANKINGS_PAGE_SIZE);
+    const board = boardRef.current;
+    if (!board) return;
+    const boardTop = Math.round(board.getBoundingClientRect().top + window.scrollY);
+    if (window.scrollY > boardTop) window.scrollTo({ top: boardTop, behavior: "instant" });
   }, [
     routeState.position,
     routeState.scoring,
@@ -980,7 +990,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   // load. The VORP view has no tiers, so each page of rows is fitted the same
   // way. On the overall board a division is a round of the draft, twelve picks
   // unless the VORP view names another league size.
-  const spreadUnit = vorpMode ? routeState.teams : 12;
+  // A position board is always in twelves, as its drawer says. Only overall
+  // ranks are in rounds of the league size the VORP view names.
+  const spreadUnit = vorpMode && ranksAreOverall(routeState.position) ? routeState.teams : 12;
   const scaleByPlayer = useMemo(() => {
     const scales = new Map<string, SpreadScale>();
     const fit = (rows: Player[]) => {
