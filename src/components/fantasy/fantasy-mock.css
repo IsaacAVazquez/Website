@@ -101,10 +101,6 @@
   align-items: start;
 }
 .ffb-mk-fields > :nth-child(n + 5) { grid-column: 1 / -1; }
-/* A switch inside a field fills its column, so it lines up with the selects beside it. */
-.ffb-mk-field-seg { display: flex; width: 100%; }
-.ffb-mk-field-seg > .ffb-seg-btn { flex: 1 1 0; }
-.ffb-mk-fieldset { min-width: 0; }
 .ffb-mk-fieldset > legend { margin-bottom: 6px; }
 .ffb-mk-lineups { --ffb-choice-min: 100%; }
 .ffb-mk-lineups > .ffb-choice { align-content: start; }
@@ -232,25 +228,10 @@
   color: var(--ffb-pos, var(--ffb-board));
 }
 
-/* A way past the board for a keyboard. It is out of sight until it takes focus. */
-.ffb-mk-skip { margin-bottom: var(--ffb-s2); }
-.ffb-mk-skip:not(:focus) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 /* The board. Rank, chip, name, team, bye, then the two market numbers when the room has ADP,
    then Draft. */
 .ffb-mk-board { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 56px; }
 .ffb-mk-board.ffb-mk-has-adp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 56px; }
-/* A gap that reads as value at this pick takes the good ink, and keeps its sign. */
-.ffb-mk-board .ffb-c-num.ffb-mk-is-value { color: var(--ffb-good); }
 .ffb-mk-more { padding-top: var(--ffb-s3); }
 
 .ffb-mk-foot {
@@ -290,8 +271,11 @@
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 164px), 1fr));
   gap: var(--ffb-s1);
 }
-/* The whole draft at a size the page column allows. */
-.ffb-mk-fullboard .ffb-cell { height: 40px; }
+/* The whole draft at a size the page column allows. From 1200px the kit's named cells set
+   their own height. */
+@media (max-width: 1199.98px) {
+  .ffb-mk-fullboard .ffb-cell { height: 40px; }
+}
 .ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 14px; }
 
 @media (min-width: 1200px) {
@@ -301,43 +285,9 @@
     column-gap: var(--ffb-s6);
   }
   .ffb-mk-facts > .ffb-fact:nth-child(2) { padding-top: 0; border-top: 0; }
-  /* The board at this width has room for who was picked, so each made cell prints the name
-     under its label. The shared grid keeps the name in the cell's title and does not print
-     it, so this reads the title. It goes when the part can print names itself (see the
-     ledger, "For the lead"). */
-  .ffb-mk-fullboard .ffb-cell { height: 52px; }
-  .ffb-mk-fullboard .ffb-cell.ffb-is-made {
-    grid-template-rows: auto auto;
-    align-content: center;
-    row-gap: 2px;
-    padding-inline: 4px;
-  }
-  .ffb-mk-fullboard .ffb-cell.ffb-is-made::after {
-    content: attr(title);
-    max-width: 100%;
-    max-height: 2.2em;
-    overflow: hidden;
-    font-size: 11.5px;
-    font-weight: 600;
-    font-stretch: 88%;
-    line-height: 1.1;
-    letter-spacing: 0;
-    text-align: center;
-    text-transform: none;
-    white-space: normal;
-  }
 }
 
 @media (min-width: 768px) {
-  /* Read out, not shown: the column head already says it. */
-  .ffb-mk-vh-desk {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
   .ffb-mk-report-body {
     grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
     column-gap: var(--ffb-s7);
@@ -380,13 +330,6 @@
 }
 
 @media print {
-  .ffb-root .ffb-mk-noprint,
-  .ffb-root .ffb-mk-skip,
   .ffb-root .ffb-mk-quick-go { display: none; }
   .ffb-root .ffb-mk-start { position: static; }
-}
-/* The column head leaves a phone through a screen-only utility, which also takes it off paper.
-   A sheet of paper is wide enough for the desktop row, whose numbers need their heads. */
-@media print and (min-width: 768px) {
-  .ffb-root .ffb-mk-colhead { display: grid; }
 }

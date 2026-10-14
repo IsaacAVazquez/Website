@@ -1229,7 +1229,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         <span className="ffb-c-bye">
           {player.byeWeek ? (
             <>
-              <span className="ffb-rk-vh-desk">Bye </span>
+              <span className="ffb-vh-desk">Bye </span>
               {player.byeWeek}
             </>
           ) : null}
@@ -1454,7 +1454,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             <div
               ref={boardRef}
               className={[
-                "ffb-board ffb-board-ruled ffb-rk-board",
+                "ffb-board ffb-board-ruled ffb-board-open ffb-rk-board",
                 adpAvailable ? "ffb-rk-adp" : "",
                 showVsAdp ? "ffb-rk-vs" : "",
                 vorpAvailable ? "ffb-rk-vorp" : "",

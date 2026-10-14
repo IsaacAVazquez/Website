@@ -9,6 +9,10 @@ import {
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
+/** The room's one announcement: the visually hidden status line that outlives its screens. */
+const roomStatus = () =>
+  screen.getAllByRole("status").find((status) => status.classList.contains("sr-only")) as HTMLElement;
+
 const mockReplace = jest.fn();
 let mockSourceDate = new Date().toISOString();
 let mockScheduleDate = mockSourceDate;
@@ -474,6 +478,18 @@ describe("BestBallDraftTrackerClient", () => {
     );
   });
 
+  it("keeps one status line mounted from setup into the room, so the opening sentence lands in a region already there", async () => {
+    render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
+    const open = await screen.findByRole("button", { name: "Open draft room from slot 1" });
+    const onSetup = roomStatus();
+    expect(onSetup).toBeEmptyDOMElement();
+
+    fireEvent.click(open);
+
+    expect(roomStatus()).toBe(onSetup);
+    expect(onSetup).toHaveTextContent(/^Pick 1 of 216, round 1\. You are on the clock\.$/);
+  });
+
   it("prints the pick, the round, and the next turn in the scorebug", async () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
     fireEvent.click(await screen.findByRole("radio", { name: "3" }));
@@ -494,9 +510,11 @@ describe("BestBallDraftTrackerClient", () => {
     fireEvent.click(screen.getByRole("button", { name: "Draft Ja'Marr Chase at pick 1" }));
     expect(within(bug).getByText("Your next turn").parentElement?.nextElementSibling)
       .toHaveTextContent(/^#3 in 1 pick$/);
-    expect(within(bug).getByRole("status")).toHaveTextContent(
+    expect(roomStatus()).toHaveTextContent(
       "Pick 2 of 216, round 1. Slot 2 is on the clock. Last pick: Ja'Marr Chase."
     );
+    // The bar prints no status of its own, so the room has one announcement.
+    expect(within(bug).queryByRole("status")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Draft Bijan Robinson at pick 2" }));
     expect(within(bug).getByText("Overall").nextElementSibling).toHaveTextContent(/^Pick 3 of 216$/);
@@ -632,7 +650,7 @@ describe("BestBallDraftTrackerClient", () => {
     expect(within(bug).queryByText("Overall")).not.toBeInTheDocument();
     expect(within(bug).queryByText("On the clock")).not.toBeInTheDocument();
     expect(within(bug).queryByText("Your next turn")).not.toBeInTheDocument();
-    expect(within(bug).getByRole("status")).toHaveTextContent(/^Draft complete\.$/);
+    expect(roomStatus()).toHaveTextContent(/^Draft complete\.$/);
     expect(screen.getByRole("button", { name: "Redo pick (nothing to redo)" })).toBeDisabled();
     for (const button of screen.getAllByTestId("best-ball-board-draft")) expect(button).toBeDisabled();
     expect(screen.getByRole("heading", { name: "18 of 18 players" })).toBeVisible();

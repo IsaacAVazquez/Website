@@ -105,7 +105,8 @@ describe("DraftAnalyticsPanel", () => {
     expect(screen.getByText("Reach One")).toBeVisible();
     expect(screen.getByText("Team 1 (you)")).toBeVisible();
     expect(screen.getByText("+15")).toBeVisible();
-    expect(screen.getByText("-37")).toBeVisible();
+    // A negative prints with the minus sign the boards use, not a hyphen.
+    expect(screen.getByText("\u221237")).toBeVisible();
     expect(screen.queryByText("A+")).not.toBeInTheDocument();
   });
 

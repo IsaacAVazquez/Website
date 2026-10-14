@@ -283,7 +283,7 @@ function marketComponent(
     consensusRankPicks > 0 ? `${consensusRankPicks} consensus` : null,
   ].filter(Boolean);
   const detail = judgedPicks > 0
-    ? `${averageDelta !== null && averageDelta >= 0 ? "+" : ""}${averageDelta?.toFixed(1)} draft slots of value per pick we could price · ${sourceParts.join(" · ")}`
+    ? `${averageDelta !== null && averageDelta >= 0 ? "+" : ""}${averageDelta?.toFixed(1).replace("-", "\u2212")} draft slots of value per pick we could price · ${sourceParts.join(" · ")}`
     : "No picks have a usable ADP or format rank yet.";
 
   return {

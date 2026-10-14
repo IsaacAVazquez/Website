@@ -7,6 +7,7 @@ import {
   getPickDelta,
 } from "@/lib/draftAnalytics";
 import { positionClass } from "@/components/fantasy/positionClass";
+import { withMinusSign } from "@/lib/fantasyUtils";
 
 interface DraftAnalyticsPanelProps {
   analytics: DraftAnalytics;
@@ -24,7 +25,7 @@ function defaultTeamName(teamNumber: number): string {
 }
 
 function formatDelta(delta: number): string {
-  return delta > 0 ? `+${delta}` : `${delta}`;
+  return delta > 0 ? `+${delta}` : withMinusSign(`${delta}`);
 }
 
 function describeBaseline(

@@ -98,7 +98,7 @@ function SegmentedButtons<Value extends string | number>({
   labelledBy: string;
 }) {
   return (
-    <div role="group" aria-labelledby={labelledBy} className="ffb-seg ffb-dt-field-seg">
+    <div role="group" aria-labelledby={labelledBy} className="ffb-seg ffb-seg-fill">
       {options.map((option) => (
         <button
           key={String(option.value)}

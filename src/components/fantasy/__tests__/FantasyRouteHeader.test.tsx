@@ -6,7 +6,7 @@ describe("FreshnessParts", () => {
     const error = jest.spyOn(console, "error").mockImplementation(() => {});
     render(<FreshnessParts parts={[{ label: "PPR scoring" }, { label: "PPR scoring" }, { label: "ADP stale", tone: "warning" }]} />);
     expect(screen.getAllByText("PPR scoring")).toHaveLength(2);
-    expect(screen.getByText("ADP stale")).toHaveStyle({ color: "var(--c97-warning)" });
+    expect(screen.getByText("ADP stale")).toHaveClass("ffb-warn");
     expect(error).not.toHaveBeenCalled();
     error.mockRestore();
   });
@@ -127,7 +127,7 @@ describe("FreshnessParts when the line wraps", () => {
     const between = [...line.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE).map((node) => node.textContent);
     expect(between).toEqual([" ", " "]);
     // The tone still sits on the label alone, so the dot stays the line's own colour.
-    expect(screen.getByText("ADP stale")).toHaveStyle({ color: "var(--c97-warning)" });
+    expect(screen.getByText("ADP stale")).toHaveClass("ffb-warn");
     expect(parts[1].querySelector('[aria-hidden="true"]')).toHaveTextContent("·");
   });
 

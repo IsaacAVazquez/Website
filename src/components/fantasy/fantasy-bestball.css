@@ -22,14 +22,8 @@
  * edge, as the kit's position switch does.
  * ======================================================================== */
 @media (max-width: 767.98px) {
-  .ffb-bb-lens > .ffb-bb-contests {
-    flex: 0 0 auto;
-    max-width: calc(100% + var(--ffb-bleed));
-    margin-inline-end: calc(-1 * var(--ffb-bleed));
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .ffb-bb-lens > .ffb-bb-contests > .ffb-seg-btn { flex: none; padding-inline: 12px; }
+  /* The kit's sideways switch, with 2px more in each button. */
+  .ffb-bb-lens > .ffb-bb-contests > .ffb-seg-btn { padding-inline: 12px; }
   /* The date sits under the switch's left edge, where the switch starts. */
   .ffb-bb-lens > .ffb-count { text-align: left; }
 }
@@ -76,28 +70,11 @@
   --ffb-pinned-top: calc(var(--ffb-bb-bar, 148px) + var(--ffb-s1));
 }
 
-/* The cells sit above the row's opener, so a hover title fires and a name can be selected.
-   The row's own click still opens the player. */
-.ffb-bb-board .ffb-row { cursor: pointer; }
-.ffb-bb-board .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
-/* A failed load disables the whole position switch. The kit keeps the checked button's fill under
-   the muted label of a disabled one, which reads at 2.76:1, so here it prints unfilled like its
-   neighbours until the kit has a rule for the pair. */
-.ffb-bb-tools .ffb-seg-btn:disabled[aria-checked="true"] { background: transparent; }
 /* "Undrafted" and "Withheld" are words in a number's place. */
 .ffb-bb-word { font-size: 10.5px; }
 .ffb-bb-method { display: grid; gap: var(--ffb-s1); margin-top: var(--ffb-s4); }
 
 @media (min-width: 768px) {
-  /* Read out, not shown: the column head already says it. A phone has no such head, so it prints. */
-  .ffb-bb-vh-desk {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
   /* A round's head pins under the toolbar block (its measured height) while its round is on
      screen. Its ink rule slides under the block's, so a pinned head hangs from that rule the
      way the first round's does. */

@@ -227,7 +227,7 @@ describe("DraftValuePanel", () => {
     expect(screen.getByText("Best Ball Mania VII field baseline")).toBeInTheDocument();
     expect(screen.getByText("$22.31")).toBeInTheDocument();
     // The sign prints with the figure, and the kit status ink follows the sign.
-    expect(screen.getByText("-$2.69")).toHaveClass("ffb-bad");
+    expect(screen.getByText("\u2212$2.69")).toHaveClass("ffb-bad");
     expect(screen.getByText("16.7%")).toBeInTheDocument();
     expect(screen.getByText("+12.1%")).toBeInTheDocument();
     // The entry count is the count on the capture date, so the date prints

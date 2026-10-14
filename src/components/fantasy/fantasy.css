@@ -131,15 +131,15 @@ html.dark .ffb-scope {
 
 /* ==========================================================================
  * 2. The bridge
- * Un-migrated markup reads --c97-* tokens inline. Inside the root they resolve to kit values,
- * so nothing paints in Catalog 97 paper, Newsreader, or Anton. A nested [data-c97-surface]
- * would reset them, and so would the paper wrapper a tooltip portals with, so both are named.
- * The id inside :is() matches nothing. It lifts these rules over catalog97.css's
+ * No fantasy markup writes a Catalog 97 class or colour any more. The shared parts the pages
+ * still render inside the root do read the --c97-* tokens, which are MetricTooltip (its "?" mark
+ * and its bubble) and the frame's own focus ring. So inside the root, and on the paper wrapper
+ * a tooltip portals with, those tokens resolve to kit values.
+ * The id inside :is() matches nothing. It lifts the rule over catalog97.css's
  * `.dark .c97-page [data-c97-surface="paper"]`, which sets the same properties.
  * --c97-sp-* and --c97-z-* are left alone.
  * ======================================================================== */
 .ffb-root,
-.ffb-root :is([data-c97-surface], #ffb-bridge),
 :is(.ffb-scope, #ffb-bridge) {
   --c97-surface: var(--ffb-board);
   --c97-ink: var(--ffb-ink);
@@ -169,50 +169,6 @@ html.dark .ffb-scope {
   --font-fragment-mono: var(--ffb-font);
   --font-instrument-sans: var(--ffb-font);
 }
-.ffb-root :is([data-c97-surface], #ffb-bridge) {
-  background-color: var(--ffb-board);
-  background-image: none;
-  color: var(--ffb-ink);
-}
-
-/* Catalog 97 classes still on un-migrated markup, set in the kit's type until their pages are rebuilt. */
-.ffb-root .c97-poster {
-  max-width: none;
-  font-size: clamp(38px, 4.4vw, 56px);
-  font-weight: 800;
-  font-stretch: 72%;
-  line-height: 0.92;
-  letter-spacing: 0.005em;
-  text-shadow: none;
-  text-transform: uppercase;
-}
-.ffb-root .c97-serif {
-  font-weight: 700;
-  font-stretch: 88%;
-  letter-spacing: 0;
-}
-.ffb-root .c97-kicker {
-  color: var(--ffb-muted);
-  font-weight: 700;
-  font-stretch: 80%;
-  letter-spacing: 0.05em;
-}
-.ffb-root :is(.c97-btn, .c97-btn-invert) {
-  border-color: var(--ffb-ink);
-  background: var(--ffb-ink);
-  color: var(--ffb-board);
-  font-weight: 700;
-  font-stretch: 80%;
-  letter-spacing: 0.05em;
-}
-.ffb-root .c97-btn-ghost {
-  color: var(--ffb-ink);
-  font-weight: 700;
-  font-stretch: 80%;
-  letter-spacing: 0.05em;
-}
-.ffb-root .c97-skeleton { background: var(--ffb-rule); }
-.ffb-root .c97-offset { box-shadow: none; }
 
 /* ==========================================================================
  * 3. The root
@@ -241,9 +197,8 @@ html.dark .ffb-scope {
  * Sizes are set with each component, in the layer.
  * ======================================================================== */
 /* Label type: 700 at 80% width, capitals, lightly tracked, 10 to 12.5px. */
-.ffb-root :is(.ffb-label, .ffb-h3, .ffb-bar-link, .ffb-tab, .ffb-seg-btn, .ffb-btn, .ffb-toggle, .ffb-field-label, .ffb-choice-title, .ffb-colhead, .ffb-tier-count, .ffb-c-team, .ffb-more, .ffb-bug-label, .ffb-bug-btn, .ffb-sticker-meta, .ffb-slot-meta, .ffb-grid-slot, .ffb-grid-round, .ffb-tally-label, .ffb-turn-note, .ffb-badge, .ffb-best, .ffb-toast-btn, .ffb-slot-value small),
-.ffb-root :is(.ffb-table thead th, .ffb-table-compare tbody th, .ffb-stat dt, .ffb-pairs dt),
-.ffb-root :is(.c97-btn, .c97-btn-ghost) {
+.ffb-root :is(.ffb-label, .ffb-h3, .ffb-bar-link, .ffb-tab, .ffb-seg-btn, .ffb-btn, .ffb-toggle, .ffb-field-label, .ffb-choice-title, .ffb-colhead, .ffb-tier-count, .ffb-c-team, .ffb-more, .ffb-bug-label, .ffb-bug-btn, .ffb-sticker-meta, .ffb-slot-meta, .ffb-grid-slot, .ffb-grid-round, .ffb-tally-label, .ffb-turn-note, .ffb-badge, .ffb-best, .ffb-slot-value small),
+.ffb-root :is(.ffb-table thead th, .ffb-table-compare tbody th, .ffb-stat dt, .ffb-pairs dt) {
   font-weight: 700;
   font-stretch: 80%;
   text-transform: uppercase;
@@ -257,7 +212,7 @@ html.dark .ffb-scope {
   letter-spacing: 0.02em;
 }
 /* A heavy number: 800 at 76 to 80% width, not capitals. */
-.ffb-root :is(.ffb-heavy, .ffb-bug-value, .ffb-bug-clock, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num, .ffb-strip-value, .ffb-slot-value) {
+.ffb-root :is(.ffb-heavy, .ffb-bug-value, .ffb-stat dd:not(.ffb-stat-note), .ffb-fact dd:not(.ffb-fact-note), .ffb-note-num, .ffb-strip-value, .ffb-slot-value) {
   font-weight: 800;
   font-stretch: 78%;
   letter-spacing: 0;
@@ -276,7 +231,7 @@ html.dark .ffb-scope {
  * layered kit cannot answer them. Each rule here undoes one for the kit classes it would break.
  * ======================================================================== */
 /* `.c97-page button { min-width: 44px }` */
-.ffb-root :is(.ffb-seg-btn, .ffb-star, .ffb-iconbtn, .ffb-search-clear, .ffb-tab, .ffb-h-sort, .ffb-cell, .ffb-row-open, .ffb-btn-quiet, .ffb-scrim) {
+.ffb-root :is(.ffb-seg-btn, .ffb-star, .ffb-iconbtn, .ffb-search-clear, .ffb-tab, .ffb-cell, .ffb-row-open, .ffb-btn-quiet, .ffb-scrim) {
   min-width: 0;
 }
 /* The focus ring is 2px of --c97-accent at a 3px offset with no radius. Inside a scroller or a
@@ -428,17 +383,37 @@ html.dark .ffb-scope {
     clip-path: inset(50%);
     white-space: nowrap;
   }
+  /* Read out at every width and shown only on a phone, for a word the desktop's column head already says ("Bye"). */
+  @media (min-width: 768px) {
+    .ffb-vh-desk {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+  /* A way past a long list for a keyboard. It is out of sight until it takes focus. */
+  .ffb-skip { margin-bottom: var(--ffb-s2); }
+  .ffb-skip:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
   .ffb-muted { color: var(--ffb-muted); }
   .ffb-good { color: var(--ffb-good); }
   .ffb-bad { color: var(--ffb-bad); }
   .ffb-warn { color: var(--ffb-warn); }
   .ffb-num { text-align: right; white-space: nowrap; }
-  .ffb-nowrap { white-space: nowrap; }
   .ffb-label { font-size: 12px; line-height: 1.2; }
-  /* A heavy number outside a stat or a fact: 18px, or 16 and 24px. */
+  /* A heavy number outside a stat or a fact. */
   .ffb-heavy { font-size: 18px; line-height: 1; }
-  .ffb-heavy-sm { font-size: 16px; }
-  .ffb-heavy-lg { font-size: 24px; }
   /* A muted note under or beside something. The muted paragraph is .ffb-copy, with the empty state's body. */
   .ffb-fine { color: var(--ffb-muted); font-size: 12.5px; line-height: 1.45; }
 
@@ -451,9 +426,6 @@ html.dark .ffb-scope {
   .ffb-stack-page { gap: var(--ffb-s7); }
   /* A wrapping row of small things. */
   .ffb-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ffb-s2) var(--ffb-s3); min-width: 0; }
-  .ffb-cluster-end { justify-content: flex-end; }
-  /* Two ends of one line. */
-  .ffb-split { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--ffb-s1) var(--ffb-s4); min-width: 0; }
   /* Equal columns that fall to one. Set --ffb-col-min to change where. */
   .ffb-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ffb-col-min)), 1fr)); gap: var(--ffb-s5) var(--ffb-s6); }
   /* A bar that pins to the top of the page. A second one under it reads --ffb-sticky-top. */
@@ -677,6 +649,13 @@ html.dark .ffb-scope {
     white-space: nowrap;
     cursor: pointer;
   }
+  /* Inside a field the switch fills the column, so it lines up with the selects beside it. */
+  .ffb-seg-fill { display: flex; width: 100%; }
+  .ffb-seg-fill > .ffb-seg-btn { flex: 1 1 0; }
+  /* A switch too long for its row scrolls sideways (eight contests). On a phone it also runs off
+     the right edge of the screen, as the position switch does. */
+  .ffb-seg-scroll { overflow-x: auto; scrollbar-width: none; }
+  .ffb-seg-scroll > .ffb-seg-btn { flex: none; }
   .ffb-seg-btn:first-child { border-inline-start: 0; }
   .ffb-seg-btn:hover { background-color: var(--ffb-sunk); }
   .ffb-seg-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
@@ -707,6 +686,13 @@ html.dark .ffb-scope {
     cursor: not-allowed;
   }
   .ffb-seg-btn:disabled:hover { background-color: transparent; }
+  /* Pressed and disabled (a board that failed to load keeps its selection): the muted label would
+     sit on the ink fill at under 3:1, so the fill gives way to an edge and the choice still reads.
+     A pressed position keeps its sticker, whose on-fill label is not muted. */
+  .ffb-seg-btn:disabled:is([aria-pressed="true"], [aria-checked="true"], [aria-selected="true"]) {
+    background: transparent;
+    box-shadow: inset 0 0 0 2px var(--ffb-edge);
+  }
   .ffb-seg-na { margin-inline-start: 5px; font-size: 10px; letter-spacing: 0.04em; }
   .ffb-seg:has(> .ffb-seg-btn:disabled):not(:has(> .ffb-seg-btn:enabled)) { border-style: dashed; }
 
@@ -1069,18 +1055,7 @@ html.dark .ffb-scope {
   }
   .ffb-h-num { text-align: right; }
   .ffb-h-pos { text-align: center; }
-  /* A column head that sorts. Put aria-sort on it, or .ffb-is-sorted on the current one. */
-  .ffb-h-sort {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    letter-spacing: inherit;
-    text-transform: inherit;
-    cursor: pointer;
-  }
-  .ffb-h-sort:hover,
+  /* The head of the column the list is sorted by, in ink with a caret. */
   .ffb-is-sorted { color: var(--ffb-ink); }
   .ffb-is-sorted::after {
     content: "";
@@ -1091,7 +1066,6 @@ html.dark .ffb-scope {
     border-bottom: 0;
     vertical-align: 1px;
   }
-  .ffb-is-sorted.ffb-is-asc::after { border-top: 0; border-bottom: 5px solid currentColor; }
 
   /* The tier break is a 2px ink rule with the tier's tab hanging from it. A round break is the same thing. */
   /* The gap above a break grows with the cliff, in 4px steps from 8 to 28px, set as --ffb-gap. */
@@ -1177,6 +1151,10 @@ html.dark .ffb-scope {
     cursor: pointer;
   }
   .ffb-row > :is(.ffb-star, .ffb-log, .ffb-btn, .ffb-iconbtn, a, [data-ffb-above]) { position: relative; z-index: 1; }
+  /* A board whose rows open the player from anywhere: every cell sits above the opener, so a
+     hover title fires and a name can be selected, and the row's own click still opens the player. */
+  .ffb-board-open .ffb-row { cursor: pointer; }
+  .ffb-board-open .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
   .ffb-c-rank { font-size: 15px; font-weight: 700; font-stretch: 88%; text-align: right; }
   .ffb-c-name {
     overflow: hidden;
@@ -1475,6 +1453,47 @@ html.dark .ffb-scope {
     column-gap: var(--ffb-s1);
     overflow: hidden;
   }
+  /* A made cell's player name, where the page asks for names. It prints from 1200px, where a
+     grid with the page's width has cells wide enough for two short lines. */
+  .ffb-cell-name { display: none; }
+  @media (min-width: 1200px) {
+    .ffb-grid-names .ffb-cell { height: 52px; }
+    .ffb-grid-names .ffb-cell.ffb-is-made {
+      grid-template-rows: auto auto;
+      align-content: center;
+      row-gap: 2px;
+      padding-inline: 4px;
+    }
+    .ffb-grid-names .ffb-cell-name {
+      display: block;
+      max-width: 100%;
+      max-height: 2.2em;
+      overflow: hidden;
+      font-size: 11.5px;
+      font-weight: 600;
+      font-stretch: 88%;
+      line-height: 1.1;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: none;
+      white-space: normal;
+    }
+  }
+  /* The heading with a note under it that says what a sticker does when it is a button. */
+  .ffb-picks-head { display: grid; gap: 3px; }
+  .ffb-picks-note {
+    max-width: 16ch;
+    color: var(--ffb-muted);
+    font-size: 11px;
+    line-height: 1.25;
+  }
+  /* A sticker that is a button fills its list cell and takes an outline under the pointer. */
+  .ffb-picks-list > li { display: grid; min-width: 0; }
+  .ffb-picks-list > li > button.ffb-sticker { width: 100%; }
+  .ffb-picks-list > li > button.ffb-sticker:hover {
+    outline: 2px solid var(--ffb-on-fill);
+    outline-offset: -2px;
+  }
 
   /* Roster. Each slot is a socket the size of a sticker, keyed with the colour that fits it.
      A filled slot is the sticker itself. */
@@ -1619,7 +1638,7 @@ html.dark .ffb-scope {
   }
   .ffb-bug-label { color: var(--ffb-bug-muted); font-size: 10.5px; line-height: 1; letter-spacing: 0.08em; }
   .ffb-bug-value { margin: 0; font-size: 24px; line-height: 0.9; text-transform: uppercase; }
-  .ffb-bug :is(.ffb-bug-value, .ffb-bug-clock) small {
+  .ffb-bug .ffb-bug-value small {
     margin-inline-start: 6px;
     color: var(--ffb-bug-muted);
     font-size: 12.5px;
@@ -1630,23 +1649,37 @@ html.dark .ffb-scope {
   /* The live cell stands 4px proud of the bar, top and bottom. */
   .ffb-bug-live {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: minmax(0, 1fr);
     align-content: center;
-    gap: 5px 28px;
+    gap: 5px;
     margin-block: -6px;
     border-inline-end: 0;
     background: var(--ffb-hi);
     color: var(--ffb-on-fill);
   }
   .ffb-bug-live .ffb-bug-label { color: var(--ffb-on-fill); }
-  .ffb-bug-clock {
-    grid-area: 1 / 2 / 3 / 3;
-    align-self: center;
-    margin: 0;
-    font-size: 36px;
-    line-height: 0.9;
+  /* The live cell's width does not follow the name in it, so the bar wraps at the same point, and
+     keeps the same height, whoever is on the clock. A long name ends in an ellipsis. */
+  .ffb-bug-live > .ffb-bug-value,
+  .ffb-bug-note {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .ffb-bug .ffb-bug-clock small { color: var(--ffb-on-fill); font-size: 11.5px; font-stretch: 80%; }
+  @media (min-width: 768px) {
+    .ffb-bug-live > .ffb-bug-value,
+    .ffb-bug-live > .ffb-bug-note { inline-size: 8.5rem; }
+  }
+  /* A small second line under a cell's value (the pick just logged). */
+  .ffb-bug-note {
+    margin: 0;
+    color: var(--ffb-bug-muted);
+    font-size: 11.5px;
+    font-weight: 600;
+    font-stretch: 88%;
+    line-height: 1;
+  }
+  .ffb-bug-live > .ffb-bug-note { color: var(--ffb-on-fill); }
   .ffb-bug-seg:has(+ .ffb-bug-actions),
   .ffb-bug-seg:last-child { border-inline-end: 0; }
   .ffb-bug-actions {
@@ -1700,7 +1733,6 @@ html.dark .ffb-scope {
     line-height: 1;
     white-space: nowrap;
   }
-  .ffb-badge-fill { border-color: var(--ffb-ink); background: var(--ffb-ink); color: var(--ffb-board); }
   /* A count of what is mine (queued players). */
   .ffb-countbadge {
     display: inline-grid;
@@ -1808,8 +1840,8 @@ html.dark .ffb-scope {
     border-bottom: 1px solid var(--ffb-rule);
     background: var(--ffb-surface);
   }
-  .ffb-panel-body { display: grid; gap: var(--ffb-s5); padding: var(--ffb-s4) var(--ffb-s5) var(--ffb-s5); }
-  .ffb-panel-foot { margin-top: auto; padding: var(--ffb-s3) var(--ffb-s5); border-top: 1px solid var(--ffb-rule); }
+  /* One column that cannot be wider than the panel, whatever its widest block wants. */
+  .ffb-panel-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ffb-s5); padding: var(--ffb-s4) var(--ffb-s5) var(--ffb-s5); }
 
   /* The compare tray: a band pinned to the bottom of the screen. */
   .ffb-tray {
@@ -1843,18 +1875,6 @@ html.dark .ffb-scope {
     line-height: 1.3;
   }
 
-  .ffb-toast-btn {
-    flex: none;
-    height: 30px;
-    padding-inline: 10px;
-    border: 1px solid currentColor;
-    border-radius: 0;
-    background: transparent;
-    color: inherit;
-    font-size: 12px;
-    white-space: nowrap;
-    cursor: pointer;
-  }
 
   /* Entrances. They start from @starting-style, so the first paint is never transparent. */
   @media (prefers-reduced-motion: no-preference) {
@@ -1936,7 +1956,13 @@ html.dark .ffb-scope {
   /* The method footnote under a board. */
   .ffb-method { max-width: 96ch; color: var(--ffb-muted); font-size: 12.5px; line-height: 1.5; }
   /* A page's last line: its source or method sentence on a rule. */
-  .ffb-method-ruled { padding-top: var(--ffb-s3); border-top: 1px solid var(--ffb-rule); }
+  .ffb-method-ruled {
+    max-width: none;
+    padding-top: var(--ffb-s3);
+    /* The rule runs the width of the column, and the padding holds the sentence to the method's measure. */
+    padding-inline-end: max(0px, calc(100% - 96ch));
+    border-top: 1px solid var(--ffb-rule);
+  }
   /* The last line of a page: one sentence and links to the sibling tools. */
   .ffb-footlinks {
     display: flex;
@@ -2077,8 +2103,6 @@ html.dark .ffb-scope {
   .ffb-sticker-remove { grid-area: 1 / 2 / 3 / 3; color: var(--ffb-on-fill); }
   .ffb-sticker-remove:hover { background-color: transparent; box-shadow: inset 0 0 0 2px var(--ffb-on-fill); }
 
-  /* The scorebug's live cell with no clock in it: a label over a value. */
-  .ffb-bug-live:not(:has(> .ffb-bug-clock)) { grid-template-columns: minmax(0, 1fr); }
   /* A clock in a cell of its own. The clock is advisory, so it is quiet while other teams pick,
      and it takes the highlighter only when the page marks it urgent (the end of my own pick). */
   .ffb-bug-seg.ffb-is-quiet .ffb-bug-value { color: var(--ffb-bug-muted); }
@@ -2206,7 +2230,6 @@ html.dark .ffb-scope {
     .ffb-rail-lead .ffb-slot-bench .ffb-slot-name { display: none; }
     .ffb-rail-lead .ffb-slot.ffb-slot-bench .ffb-slot-meta { display: block; font-size: 11px; }
     .ffb-bug-seg { padding-inline: var(--ffb-s3); }
-    .ffb-bug-live { column-gap: var(--ffb-s3); }
     .ffb-head-run { grid-template-columns: auto minmax(0, 1fr) auto; }
     .ffb-head > .ffb-fresh { grid-column: 1 / -1; grid-row: auto; justify-self: start; text-align: left; }
     .ffb-head-run > .ffb-lede { grid-column: 2 / 4; }
@@ -2223,8 +2246,6 @@ html.dark .ffb-scope {
     .ffb-seg-btn { height: 44px; }
     .ffb-search-clear { width: 44px; height: 44px; }
     .ffb-star { width: 44px; height: 44px; }
-    .ffb-h-sort { display: inline-flex; align-items: flex-end; min-width: 44px; min-height: 44px; }
-    .ffb-h-sort.ffb-h-num { justify-content: flex-end; }
     /* A link holds a 44px target, and the negative margin keeps a sentence's line height. */
     .ffb-link,
     :is(.ffb-prose, .ffb-notice, .ffb-method, .ffb-footlinks, .ffb-lede, .ffb-fresh, .ffb-copy, .ffb-empty-body) a {
@@ -2238,7 +2259,6 @@ html.dark .ffb-scope {
     .ffb-tab { height: 44px; }
     .ffb-neighbor { min-height: 44px; }
     .ffb-log { height: 44px; }
-    .ffb-toast-btn { height: 44px; margin-block: -6px; }
     button.ffb-c-name { min-height: 44px; }
   }
 
@@ -2266,16 +2286,16 @@ html.dark .ffb-scope {
     .ffb-toolbar > .ffb-seg > .ffb-seg-btn { flex: 1 1 auto; }
     .ffb-seg-btn { padding-inline: 6px; font-size: 11.5px; }
     /* Eight 44px targets do not fit 334px, so the position switch scrolls sideways off the right edge. */
-    .ffb-toolbar > .ffb-seg-pos,
-    .ffb-seg-pos {
+    .ffb-toolbar > :is(.ffb-seg-pos, .ffb-seg-scroll),
+    :is(.ffb-seg-pos, .ffb-seg-scroll) {
       flex: 0 0 auto;
       max-width: calc(100% + var(--ffb-bleed));
       margin-inline-end: calc(-1 * var(--ffb-bleed));
       overflow-x: auto;
       scrollbar-width: none;
     }
-    .ffb-toolbar > .ffb-seg-pos > .ffb-seg-btn,
-    .ffb-seg-pos > .ffb-seg-btn { flex: none; padding-inline: 10px; }
+    .ffb-toolbar > :is(.ffb-seg-pos, .ffb-seg-scroll) > .ffb-seg-btn,
+    :is(.ffb-seg-pos, .ffb-seg-scroll) > .ffb-seg-btn { flex: none; padding-inline: 10px; }
     .ffb-toolbar > .ffb-search { flex: 1 1 160px; min-width: min(100%, 160px); }
     .ffb-search-input { width: auto; flex-basis: 0; font-size: 16px; }
     .ffb-count { flex-basis: 100%; text-align: right; }
@@ -2300,7 +2320,7 @@ html.dark .ffb-scope {
       min-height: 60px;
       padding-block: var(--ffb-s2);
     }
-    .ffb-board .ffb-row > :is(.ffb-c-num, .ffb-spread, .ffb-c-desk) { display: none; }
+    .ffb-board .ffb-row > :is(.ffb-c-num, .ffb-spread) { display: none; }
     .ffb-board .ffb-c-rank { grid-area: 1 / 1; }
     .ffb-board .ffb-c-name { grid-area: 1 / 2 / 2 / 6; }
     /* Where the name is the opener, the button covers both lines and the second line lies over it. */
@@ -2334,14 +2354,10 @@ html.dark .ffb-scope {
     .ffb-bug-live {
       order: -2;
       flex: 1 1 176px;
-      grid-template-columns: minmax(0, 1fr) auto;
-      column-gap: var(--ffb-s2);
       min-height: 56px;
       margin-block: -2px 0;
       padding-inline: var(--ffb-bleed) var(--ffb-s2);
     }
-    .ffb-bug-clock { display: grid; justify-items: end; gap: 3px; font-size: 28px; }
-    .ffb-bug .ffb-bug-clock small { margin: 0; font-size: 10.5px; }
     .ffb-bug-actions { order: -1; flex: none; gap: 0; margin-inline-start: 0; padding-inline: var(--ffb-s1) var(--ffb-s2); }
     .ffb-bug-btn { height: 44px; padding-inline: 9px; font-size: 11.5px; }
     .ffb-bug-seg:not(.ffb-bug-live) {
@@ -2357,6 +2373,7 @@ html.dark .ffb-scope {
     .ffb-bug-label { font-size: 10px; letter-spacing: 0.05em; white-space: nowrap; }
     .ffb-bug-value { font-size: 19px; white-space: nowrap; }
     .ffb-bug .ffb-bug-value small { margin-inline-start: 3px; font-size: 11px; }
+    .ffb-bug-note { font-size: 10.5px; }
 
     .ffb-picks { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s2); padding-block: var(--ffb-s3); }
     .ffb-picks-list {
@@ -2368,6 +2385,13 @@ html.dark .ffb-scope {
       scrollbar-width: none;
     }
     .ffb-picks-list > * { flex: 0 0 150px; }
+    .ffb-picks-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--ffb-s3);
+    }
+    .ffb-picks-note { max-width: none; }
 
     .ffb-rail { grid-template-columns: minmax(0, 1fr); row-gap: var(--ffb-s5); }
     .ffb-grid { --ffb-grid-lead: 30px; }
@@ -2380,7 +2404,6 @@ html.dark .ffb-scope {
     .ffb-modal { width: 100%; height: auto; max-height: 88dvh; border: 0; border-top: 2px solid var(--ffb-ink); }
     .ffb-panel-head { padding-inline: var(--ffb-s4) var(--ffb-s2); }
     .ffb-panel-body { padding-inline: var(--ffb-s4); }
-    .ffb-panel-foot { padding-inline: var(--ffb-s4); padding-bottom: calc(var(--ffb-s3) + env(safe-area-inset-bottom)); }
     .ffb-toast { inset-inline: var(--ffb-s4); translate: none; max-width: none; }
     /* On a phone the urgent clock sits in the bar's second row, so it does not stand proud. */
     .ffb-bug-seg.ffb-is-urgent { margin-block: 0; }
@@ -2389,6 +2412,25 @@ html.dark .ffb-scope {
     .ffb-bar-links > li { scroll-snap-align: start; }
     .ffb-bar-links::after { content: ""; flex: none; width: 100%; }
     .ffb-note { grid-template-columns: 24px minmax(0, 1fr); }
+  }
+
+  /* A number that reads as value at this pick takes the good ink and keeps its sign. It comes
+     after the phone block, whose muted meta number it has to outrank. */
+  .ffb-board .ffb-row > .ffb-c-num.ffb-is-good,
+  .ffb-c-num.ffb-is-good { color: var(--ffb-good); }
+
+  /* A room's phone row with one more thing on its second line (a number with its label). It takes
+     8px from the Log button's column, 2px from each gap, and 4px from the chip, and at 375px and
+     under the second line sets a size smaller, which is the last 12px it needs. */
+  @media (max-width: 767.98px) {
+    .ffb-board.ffb-board-tight { --ffb-act-cols: 44px; }
+    .ffb-board.ffb-board-tight.ffb-board-star-log { --ffb-act-cols: 44px 44px; }
+    .ffb-board.ffb-board-tight .ffb-row { column-gap: 6px; }
+    .ffb-board.ffb-board-tight .ffb-row > .ffb-log { width: 44px; }
+    .ffb-board.ffb-board-tight .ffb-row > .ffb-chip { min-width: 42px; }
+  }
+  @media (max-width: 375.98px) {
+    .ffb-board.ffb-board-tight.ffb-board-tight .ffb-row > :is(.ffb-c-team, .ffb-c-bye, .ffb-m-meta) { font-size: 11px; }
   }
 
   /* Slots in one column at every width, with a meta line under the name and a value at the right
@@ -2435,7 +2477,7 @@ html.dark .ffb-scope {
   .ffb-root { --ffb-control: 44px; }
   .ffb-root :is(.ffb-seg-btn, .ffb-iconbtn, .ffb-tab, .ffb-btn-quiet) { min-width: 44px; }
   .ffb-root .ffb-seg-pos > .ffb-seg-btn { min-width: 46px; }
-  .ffb-root :is(.ffb-star, .ffb-h-sort, .ffb-search-clear) { min-width: 44px; }
+  .ffb-root :is(.ffb-star, .ffb-search-clear) { min-width: 44px; }
   /* A help trigger holds a 44px target, and the negative margin keeps its label's line. */
   .ffb-root [data-metric-trigger="text"] {
     display: inline-flex;
@@ -2457,6 +2499,21 @@ html.dark .ffb-scope {
    The type roles are unlayered, so this is too. */
 @media (max-width: 1199.98px) {
   .ffb-root .ffb-rail-lead .ffb-slot.ffb-is-filled .ffb-slot-name { font-stretch: 62%; letter-spacing: 0; }
+}
+
+/* A tray is fixed over the foot of the screen, so at the end of the page it would cover the last
+   74px of the site's footer. While a page shows one, the footer runs 80px longer in its own
+   colour and its last lines clear the tray. The tray's spacer in the page is what says one is
+   up. A tray marked .ffb-tray-narrow shows only below 1200px (a room's bottom bar, where the
+   rail is not beside the list). */
+@media (min-width: 1200px) {
+  .ffb-root .ffb-tray-narrow { display: none; }
+}
+@media screen {
+  .c97-page:has(.ffb-root .ffb-tray-space:not(.ffb-tray-narrow)) .c97-footer { border-bottom: 80px solid transparent; }
+}
+@media screen and (max-width: 1199.98px) {
+  .c97-page:has(.ffb-root .ffb-tray-space) .c97-footer { border-bottom: 80px solid transparent; }
 }
 
 /* ==========================================================================
@@ -2483,6 +2540,8 @@ html.dark .ffb-scope {
  * position, and controls that do nothing on paper are left off.
  * ======================================================================== */
 @media print {
+  /* A control or a note that does nothing on paper. */
+  .ffb-root :is(.ffb-noprint, .ffb-skip) { display: none; }
   .ffb-root,
   html.dark .ffb-root {
     --ffb-board: #ffffff;

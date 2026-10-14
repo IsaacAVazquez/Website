@@ -130,7 +130,7 @@ export function BestBallDraftBoard({
 
   return (
     <section
-      className="ffb-board ffb-board-room ffb-board-log ffb-board-ruled ffb-br-board"
+      className="ffb-board ffb-board-room ffb-board-log ffb-board-ruled ffb-board-tight ffb-br-board"
       aria-labelledby="best-ball-player-board-heading"
     >
       <div className="ffb-sechead">
@@ -196,7 +196,7 @@ export function BestBallDraftBoard({
           <div
             data-testid="best-ball-board-column-labels"
             aria-hidden="true"
-            className="ffb-colhead hidden md:grid"
+            className="ffb-colhead ffb-not-phone"
           >
             <span className="ffb-h-num ffb-is-sorted">Board</span>
             <span className="ffb-h-pos">Pos</span>
@@ -257,7 +257,7 @@ export function BestBallDraftBoard({
                 {/* A phone row has no room to say a bye is unknown, so it leaves the cell out. */}
                 <span className={player.byeWeek == null ? "ffb-c-bye ffb-not-phone" : "ffb-c-bye"}>
                   {/* A phone row prints the word, and a desktop row has it in the column head. */}
-                  <span className="ffb-br-vh-desk">Bye </span>
+                  <span className="ffb-vh-desk">Bye </span>
                   {player.byeWeek ?? "Unknown"}
                 </span>
                 {/*

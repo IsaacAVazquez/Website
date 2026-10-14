@@ -1,4 +1,5 @@
 import { positionClass } from "@/components/fantasy/positionClass";
+import { withMinusSign } from "@/lib/fantasyUtils";
 import type {
   BestBallRecommendation,
   BestBallRecommendationMode,
@@ -24,7 +25,7 @@ const SCORE_EPSILON = 0.05;
 
 function formatScore(value: number): string {
   if (Math.abs(value) < SCORE_EPSILON) return "0";
-  return `${value > 0 ? "+" : ""}${value.toFixed(1)}`;
+  return value > 0 ? `+${value.toFixed(1)}` : withMinusSign(value.toFixed(1));
 }
 
 export function BestBallRecommendations({
@@ -112,7 +113,7 @@ export function BestBallRecommendations({
                     onClick={() => onDraftPlayer(player)}
                     aria-label="Log for my team"
                     title={`Log ${player.name} for my team`}
-                    className={index === 0 ? "ffb-btn ffb-btn-now ffb-br-noprint" : "ffb-log"}
+                    className={index === 0 ? "ffb-btn ffb-btn-now ffb-noprint" : "ffb-log"}
                   >
                     Log
                   </button>

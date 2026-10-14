@@ -981,6 +981,12 @@ export function DraftTrackerClient() {
           <FreshnessParts parts={freshnessParts} />
         </header>
 
+        {/* The room's one announcement. It is mounted on every screen, so the sentence that
+            arrives on Start draft is a change inside a region a screen reader already knows. */}
+        <p role="status" aria-live="polite" className="sr-only">
+          {showSetup || rankingsUnavailable ? "" : roomAnnouncement}
+        </p>
+
         {hasNotices ? (
           <div className="ffb-dt-notices">
             {seasonalWeek >= 1 ? (
@@ -1052,7 +1058,6 @@ export function DraftTrackerClient() {
             <DraftScorebug
               label="Live draft status"
               sectionRef={fasciaRef}
-              announcement={roomAnnouncement}
               className="ffb-dt-bug"
               actions={
                 <>
@@ -1208,7 +1213,7 @@ export function DraftTrackerClient() {
                         onClick={() => setShowDecisionDetail((open) => !open)}
                         aria-expanded={showDecisionDetail}
                         aria-controls="draft-decision-strip draft-decision-detail"
-                        className="ffb-btn ffb-btn-quiet ffb-dt-noprint"
+                        className="ffb-btn ffb-btn-quiet ffb-noprint"
                       >
                         Why these picks <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
                       </button>
@@ -1284,7 +1289,7 @@ export function DraftTrackerClient() {
                 )}
 
                 {!isDraftComplete && redraftDecision.guidanceAvailable && !stripVisible ? (
-                  <div className="ffb-dt-waitrow ffb-dt-noprint">
+                  <div className="ffb-dt-waitrow ffb-noprint">
                     <button
                       type="button"
                       onClick={() => setShowDecisionDetail((open) => !open)}
@@ -1354,7 +1359,7 @@ export function DraftTrackerClient() {
                       event.preventDefault();
                       skipToRail();
                     }}
-                    className="ffb-btn ffb-dt-skip"
+                    className="ffb-btn ffb-skip"
                   >
                     Skip to your roster
                   </a>
@@ -1437,7 +1442,7 @@ export function DraftTrackerClient() {
                   </details>
                 ) : null}
                 {draftSnapshot ? (
-                  <section aria-labelledby="draft-room-actions-heading" className="ffb-dt-noprint">
+                  <section aria-labelledby="draft-room-actions-heading" className="ffb-noprint">
                     <div className="ffb-sechead">
                       <h3 id="draft-room-actions-heading" className="ffb-h3">
                         Room actions

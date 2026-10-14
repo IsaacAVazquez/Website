@@ -493,7 +493,7 @@ function BestBallPlayerRow({
         {formatAdpDelta(delta)}
       </span>
       <span className="ffb-c-bye">
-        <span className="ffb-bb-vh-desk">Bye </span>
+        <span className="ffb-vh-desk">Bye </span>
         {player.byeWeek ?? "NA"}
       </span>
       {/* Sit and Go has no playoff bracket, so its Week 17 opponent prints
@@ -506,7 +506,7 @@ function BestBallPlayerRow({
             : `Week 17 correlation does not move this board in ${contestLabel}`
         }
       >
-        <span className="ffb-bb-vh-desk">W17 </span>
+        <span className="ffb-vh-desk">W17 </span>
         {opponent ?? "NA"}
       </span>
     </li>
@@ -765,7 +765,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             ref={contestRef}
             role="group"
             aria-label="Best ball contest"
-            className="ffb-seg ffb-bb-contests"
+            className="ffb-seg ffb-seg-scroll ffb-bb-contests"
             onFocus={(event) => scrollChildIntoViewX(event.currentTarget, event.target)}
           >
             {CONTESTS.map((contest) => (
@@ -903,7 +903,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <h2 className="sr-only">{activeContest.shortLabel} board</h2>
             <div
               ref={boardRef}
-              className="ffb-board ffb-board-ruled ffb-board-plain ffb-bb-board"
+              className="ffb-board ffb-board-ruled ffb-board-plain ffb-board-open ffb-bb-board"
               data-testid="best-ball-board"
             >
               {/* The toolbar and the column heads pin as one block. The board

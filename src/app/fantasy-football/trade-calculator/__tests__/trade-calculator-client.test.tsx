@@ -522,13 +522,12 @@ describe("TradeCalculatorClient", () => {
     useSnapshot(buildSnapshot({ stale: true }));
     render(<TradeCalculatorClient />);
 
-    // The green hero and its paper plate came off on 2026-10-12. The page is
-    // one paper surface now, so the status colour reads as itself in place.
+    // The status reads as the kit's error ink on the freshness line itself, in
+    // the page head, and not as a notice.
     const line = screen.getByText(/stale sources/i);
-    expect(line).toHaveStyle({ color: "var(--c97-negative)" });
+    expect(line).toHaveClass("ffb-bad");
     expect(line.closest("header")).not.toBeNull();
-    expect(line.closest(".c97-offset")).toBeNull();
-    expect(line.closest("[data-c97-surface]")).toBeNull();
+    expect(line.closest(".ffb-notice")).toBeNull();
   });
 
   it("withholds the verdict and exact values when the expert snapshot is stale", async () => {
