@@ -354,6 +354,7 @@ export function DraftValuePanel({
   calculatorValue,
   onCalculatorChange,
   unavailableReason,
+  adpAvailable,
 }: {
   report: DraftValueReport | null;
   headingId: string;
@@ -365,6 +366,13 @@ export function DraftValuePanel({
   calculatorValue?: ExpectedReturnFormState;
   onCalculatorChange?: (value: ExpectedReturnFormState) => void;
   unavailableReason?: string | null;
+  /**
+   * Whether this room prices picks against market ADP. The report cannot say
+   * so until a pick has been judged, so before then this chooses the paragraph:
+   * false prints the consensus paragraph. Left out, the panel prints the market
+   * paragraph before the first judged pick, as it always has.
+   */
+  adpAvailable?: boolean;
 }) {
   const roomRank = report?.roomRank;
   // Hold the rank until the sample is big enough to mean anything, and say so
@@ -384,11 +392,16 @@ export function DraftValuePanel({
         : `${ordinal(report.roomPercentile)} percentile among same-progress teams`;
   const averageDelta = report?.market.averageDelta ?? null;
   const turnGap = report?.slotContext;
-  const consensusOnly = Boolean(
-    report &&
-      report.market.judgedPicks > 0 &&
-      report.market.consensusRankPicks === report.market.judgedPicks
-  );
+  // A read with no market price in it. A Superflex room judges every pick
+  // against the Superflex board's format rank, which is a consensus board
+  // position like the consensus rank, so both count. Before any pick is judged
+  // the report holds no sources yet, and the caller says whether there is ADP.
+  const market = report?.market;
+  const consensusOnly = market
+    ? market.judgedPicks > 0
+      ? market.formatRankPicks + market.consensusRankPicks === market.judgedPicks
+      : adpAvailable === false
+    : false;
   const evidenceIntro = consensusOnly
     ? "This scores your picks against the other teams in this same draft using published consensus rank, roster shape, and format fit. Consensus rank measures expert board position. Market price requires usable ADP. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation."
     : "This scores your picks against the other teams in this same draft, on the price the market put on each player, the shape of your roster, and how well it fits the format. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation.";
