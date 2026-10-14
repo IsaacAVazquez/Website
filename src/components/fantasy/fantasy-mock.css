@@ -150,6 +150,10 @@
 @media (max-width: 1023.98px) {
   .ffb-root .ffb-mk-wide { display: none; }
   .ffb-mk-cell-between { min-inline-size: 86px; }
+  /* The short bar has no room for the two words beside the name, so they sit under it, which
+     keeps the bar to one row down to 768px and the phone's first row to the live cell and the
+     three actions. */
+  .ffb-mk-bug .ffb-mk-sim { flex-direction: column; gap: 2px; line-height: 1; }
 }
 @media (min-width: 1024px) {
   .ffb-root .ffb-mk-narrow { display: none; }
@@ -162,7 +166,7 @@
   gap: 6px;
 }
 /* Sim to end cannot be undone, so it stands apart from the two buttons that can: last in the
-   bar, behind a rule, with the words "no take back" on it where there is room. */
+   bar, behind a rule, with the words "no take back" on it at every width. */
 .ffb-mk-bug .ffb-mk-sim {
   position: relative;
   margin-inline-start: calc(var(--ffb-s3) + 1px);
@@ -185,47 +189,50 @@
 
 /* "You're up": the kit's tab on its ink rule, a note at the right, then the quick picks. */
 .ffb-mk-turn-note {
+  flex: 1 1 0;
+  min-width: 0;
   align-self: center;
   color: var(--ffb-muted);
   font-size: 12.5px;
   line-height: 1.3;
   text-align: right;
 }
-.ffb-mk-quicks {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr));
-  gap: var(--ffb-s2);
-  padding-block: var(--ffb-s2) var(--ffb-s3);
-  border-bottom: 1px solid var(--ffb-rule);
+/* A name on a suggestion takes a second line before it is cut, as on the other rooms' strips. */
+.ffb-mk-quicks .ffb-strip-line > .ffb-c-name {
+  min-height: 0;
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
-/* A quick pick is a sticker that drafts on one press, so it carries the word at its right. */
-.ffb-mk-quick {
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: var(--ffb-s3);
-  width: 100%;
-  min-height: 44px;
+
+/* The picks since my last turn are the set this room is read by, so the row scrolls sideways at
+   every width, as the kit's does on a phone, and none of the twelve is out of reach. */
+.ffb-mk-tape .ffb-picks-list {
+  display: flex;
+  gap: var(--ffb-s1);
+  overflow-x: auto;
 }
-.ffb-mk-quick > .ffb-sticker-meta { grid-area: 1 / 1; }
-.ffb-mk-quick > .ffb-sticker-name { grid-area: 2 / 1; }
-.ffb-mk-quick-go {
-  display: grid;
-  grid-area: 1 / 2 / 3 / 3;
-  place-items: center;
-  height: 30px;
-  padding-inline: 10px;
-  box-shadow: inset 0 0 0 1px var(--ffb-on-fill);
-  font-size: 13px;
-  letter-spacing: 0.08em;
+.ffb-mk-tape .ffb-picks-list > * { flex: 0 0 150px; }
+@media (max-width: 767.98px) {
+  /* On a phone a suggestion reads like a board row: the chip and the name, then its tag and its
+     reason under the name, with Draft at the edge. The board starts sooner than with the kit's
+     three stacked lines and a full-width button row. */
+  .ffb-mk-quicks > .ffb-strip-item {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: var(--ffb-s2);
+    row-gap: 2px;
+    align-items: center;
+    padding-block: var(--ffb-s2);
+  }
+  .ffb-mk-quicks > .ffb-strip-item > .ffb-strip-line { display: contents; }
+  .ffb-mk-quicks .ffb-strip-line > .ffb-chip { grid-area: 1 / 1; }
+  .ffb-mk-quicks .ffb-strip-line > .ffb-c-name { grid-area: 1 / 2; }
+  .ffb-mk-quicks .ffb-strip-line > button { grid-area: 1 / 3 / 4 / 4; width: 64px; padding-inline: 0; }
+  .ffb-mk-quicks > .ffb-strip-item > .ffb-label { grid-area: 2 / 2; }
+  .ffb-mk-quicks > .ffb-strip-item > .ffb-strip-note { grid-area: 3 / 2; }
 }
-.ffb-root .ffb-mk-quick-go {
-  font-weight: 700;
-  font-stretch: 80%;
-  text-transform: uppercase;
-}
-.ffb-mk-quick:hover > .ffb-mk-quick-go {
-  background: var(--ffb-on-fill);
-  color: var(--ffb-pos, var(--ffb-board));
+@media (min-width: 768px) {
+  .ffb-mk-tape .ffb-picks-list { padding-bottom: var(--ffb-s1); scrollbar-width: thin; }
 }
 
 /* The board. Rank, chip, name, team, bye, then the two market numbers when the room has ADP,
@@ -234,12 +241,12 @@
 .ffb-mk-board.ffb-mk-has-adp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 56px; }
 .ffb-mk-more { padding-top: var(--ffb-s3); }
 
+/* The page's last lines: the kit's ruled line and the lead under it. The kit leaves the space above
+   the rule to the page. */
 .ffb-mk-foot {
   display: grid;
   gap: var(--ffb-s1);
   margin-top: var(--ffb-s6);
-  padding-top: var(--ffb-s3);
-  border-top: 1px solid var(--ffb-rule);
 }
 
 /* ==========================================================================
@@ -299,8 +306,6 @@
   .ffb-mk-bug .ffb-bug-live { flex-basis: 96px; }
   .ffb-mk-bug .ffb-bug-seg > .ffb-bug-value,
   .ffb-mk-cell-between { min-inline-size: 0; }
-  /* A quick pick's two labels take a line each where they do not fit one. */
-  .ffb-mk-quick > .ffb-sticker-meta { flex-wrap: wrap; row-gap: 3px; }
   /* The scorebug already pins two rows, so the board's bar scrolls with the list. That leaves
      the scorebug as the whole pinned stack, three rows under 360px, so a focused row clears its
      measured height and not the kit's fallback. */
@@ -311,25 +316,13 @@
      of the position switch's row. */
   .ffb-mk-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
   .ffb-mk-col > .ffb-notice { margin-bottom: var(--ffb-s2); }
-  /* Two quick picks to a row. The whole sticker is the button, and the note beside the tab
-     says so, so the word "Draft" leaves and the name keeps the width. */
-  .ffb-mk-quicks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ffb-s1); }
-  .ffb-mk-quick { grid-template-columns: minmax(0, 1fr); }
-  /* Hidden from the eye and still read, so the button's name ends in "Draft" at every width. */
-  .ffb-mk-quick > .ffb-mk-quick-go {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: none;
-    clip-path: inset(50%);
-  }
   .ffb-mk-fullboard .ffb-cell { height: 34px; }
   .ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 10.5px; }
 }
 
 @media print {
-  .ffb-root .ffb-mk-quick-go { display: none; }
   .ffb-root .ffb-mk-start { position: static; }
+  /* Paper does not scroll, so the picks since my last turn wrap, and a suggestion's Draft button goes. */
+  .ffb-root .ffb-mk-tape .ffb-picks-list { flex-wrap: wrap; overflow: visible; }
+  .ffb-root .ffb-mk-quicks button { display: none; }
 }
