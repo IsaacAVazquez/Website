@@ -49,10 +49,6 @@
 .ffb-tr-sides { --ffb-col-min: 266px; column-gap: var(--ffb-s5); }
 .ffb-tr-side {
   position: relative;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
   /* The list's column head sits on the same columns the kit's two-line row sets on itself. */
   --ffb-cols: 46px minmax(0, 1fr) 44px var(--ffb-control);
 }
@@ -60,7 +56,6 @@
   float: none;
   width: auto;
   margin-bottom: 6px;
-  padding: 0;
 }
 /* The count sits at the right of the description's line. A fieldset's box starts under its legend. */
 .ffb-tr-count {

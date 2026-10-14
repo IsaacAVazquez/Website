@@ -50,6 +50,30 @@ const rowOf = (name: string) => screen.getByRole("button", { name: `Open ${name}
 const visibleNames = () =>
   screen.queryAllByRole("button", { name: /^Open .* detail$/ }).map((button) => button.textContent);
 
+describe("DraftBoard pinned bar", () => {
+  it("writes its bar's height on the board, for the scroll margin that keeps a focused row clear of it", () => {
+    const observed: Element[] = [];
+    const original = window.ResizeObserver;
+    window.ResizeObserver = class {
+      observe(element: Element) {
+        observed.push(element);
+      }
+      unobserve() {}
+      disconnect() {}
+    } as unknown as typeof ResizeObserver;
+    const height = jest.spyOn(HTMLElement.prototype, "offsetHeight", "get").mockReturnValue(105);
+
+    const { container } = renderBoard();
+
+    const board = screen.getByRole("region", { name: "Draft board" });
+    expect(board.style.getPropertyValue("--ffb-dt-bar")).toBe("105px");
+    expect(observed).toEqual([container.querySelector(".ffb-dt-boardbar")]);
+
+    height.mockRestore();
+    window.ResizeObserver = original;
+  });
+});
+
 /** Answers the board's width query, and returns the undo. */
 function screenIsWide(matches: boolean): () => void {
   const original = window.matchMedia;
@@ -122,7 +146,7 @@ describe("DraftBoard rows and tiers", () => {
     expect(within(row).getByText("ATL")).toHaveClass("ffb-c-team");
     expect(row.querySelector(".ffb-c-bye")).toHaveTextContent("Bye 5");
     // The word Bye is read out at every width. A desktop hides it by sight only, so it is never display: none.
-    expect(within(row).getByText("Bye")).toHaveClass("ffb-dt-vh-desk");
+    expect(within(row).getByText("Bye")).toHaveClass("ffb-vh-desk");
     expect(within(row).getByText("Bye")).not.toHaveClass("ffb-only-phone");
   });
 
@@ -139,7 +163,7 @@ describe("DraftBoard rows and tiers", () => {
       within(rowOf("Bijan Robinson")).getByTitle(FANTASY_ADP_TOOLTIP),
     );
     // The gap is the one number a phone row keeps, and one that reads as value keeps its tone there.
-    expect(deltaCell("Bijan Robinson")).toHaveClass("ffb-m-meta", "ffb-is-strong", "ffb-dt-is-value");
+    expect(deltaCell("Bijan Robinson")).toHaveClass("ffb-m-meta", "ffb-is-strong", "ffb-is-good");
     expect(deltaCell("Ja'Marr Chase")).toHaveClass("ffb-m-meta", "ffb-is-flat");
     expect(within(rowOf("Bijan Robinson")).getByTitle(FANTASY_ADP_TOOLTIP)).not.toHaveClass("ffb-m-meta");
     expect(deltaCell("Bijan Robinson")).toHaveTextContent("+10.0");

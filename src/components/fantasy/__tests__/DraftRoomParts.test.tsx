@@ -186,6 +186,62 @@ describe("DraftPickGrid", () => {
     expect(new Set(ids).size).toBe(2);
     expect(screen.getAllByRole("region", { name: "Pick grid" })).toHaveLength(2);
   });
+
+  it("is a rail block headed Pick grid at level 3, with no names in its cells, unless a page says otherwise", () => {
+    render(
+      <DraftPickGrid
+        picks={picks([1, 2])}
+        totalTeams={4}
+        userTeam={1}
+        rounds={3}
+        slotForPick={snake(4)}
+        currentPick={3}
+        currentRound={1}
+        isComplete={false}
+      />
+    );
+
+    const heading = screen.getByRole("heading", { level: 3, name: "Pick grid" });
+    expect(heading).toHaveClass("ffb-h3");
+    expect(heading.parentElement).toHaveClass("ffb-sechead");
+    expect(heading.parentElement).not.toHaveClass("ffb-sechead-lg");
+    const cell = screen.getByRole("img", { name: "Pick 1, slot 1, yours, Ja'Marr Chase, WR" });
+    expect(cell).toHaveTextContent(/^WR1$/);
+    expect(cell.closest(".ffb-grid")).not.toHaveClass("ffb-grid-names");
+  });
+
+  it("takes a page's heading and level, the section head, and prints each player's name where asked", () => {
+    render(
+      <DraftPickGrid
+        picks={picks([1, 2])}
+        totalTeams={4}
+        userTeam={1}
+        rounds={3}
+        slotForPick={snake(4)}
+        currentPick={3}
+        currentRound={3}
+        isComplete
+        heading="The board"
+        headingLevel={2}
+        sectionHead
+        names
+      />
+    );
+
+    // One heading names the grid and its region, in the look a section of the page takes.
+    const heading = screen.getByRole("heading", { level: 2, name: "The board" });
+    expect(heading).toHaveClass("ffb-h2");
+    expect(heading.parentElement).toHaveClass("ffb-sechead", "ffb-sechead-lg");
+    expect(screen.getByRole("region", { name: "The board" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Pick grid" })).not.toBeInTheDocument();
+
+    // A made cell prints its label and then the name. Its accessible name is unchanged.
+    const cell = screen.getByRole("img", { name: "Pick 2, slot 2, Bijan Robinson, RB" });
+    expect(cell.closest(".ffb-grid")).toHaveClass("ffb-grid-names");
+    expect(cell.querySelector(".ffb-cell-name")).toHaveTextContent(/^Bijan Robinson$/);
+    // An open cell has nobody to name.
+    expect(screen.getByRole("img", { name: "Pick 3, slot 3, open" }).querySelector(".ffb-cell-name")).toBeNull();
+  });
 });
 
 describe("DraftScorebug", () => {
@@ -219,11 +275,11 @@ describe("DraftScorebug", () => {
     expect(pick).toHaveClass("ffb-bug-seg");
     expect(pick).not.toHaveClass("ffb-bug-live");
     expect(pick.querySelector(".ffb-bug-value")).toHaveTextContent("3");
-    expect(pick.querySelector(".ffb-rm-bug-note")).toHaveTextContent("Round 1");
+    expect(pick.querySelector(".ffb-bug-note")).toHaveTextContent("Round 1");
 
     // The live cell is the highlighter cell, and a room can focus it.
     const live = within(bar).getByText("On the clock").closest("div") as HTMLElement;
-    expect(live).toHaveClass("ffb-bug-seg", "ffb-bug-live", "ffb-rm-live");
+    expect(live).toHaveClass("ffb-bug-seg", "ffb-bug-live");
     expect(live).toHaveAttribute("title", "The Long Team Name");
     expect(cellRef.current).toBe(live);
     cellRef.current?.focus();
@@ -231,6 +287,18 @@ describe("DraftScorebug", () => {
 
     // Anything else a room passes lands on the cell.
     expect(within(bar).getByRole("timer", { name: "30 seconds left" })).toHaveClass("ffb-bug-seg", "ffb-is-quiet");
+  });
+
+  it("prints no status sentence of its own when a room keeps one", () => {
+    render(
+      <DraftScorebug label="Live draft status">
+        <DraftScorebugCell label="Pick">1</DraftScorebugCell>
+      </DraftScorebug>
+    );
+
+    const bar = screen.getByRole("region", { name: "Live draft status" });
+    expect(within(bar).queryByRole("status")).not.toBeInTheDocument();
+    expect(within(bar).getByText("Pick")).toBeInTheDocument();
   });
 
   it("leaves the actions out when a room passes none", () => {

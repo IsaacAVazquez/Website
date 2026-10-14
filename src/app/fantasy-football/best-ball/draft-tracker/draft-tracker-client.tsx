@@ -228,7 +228,7 @@ export function BestBallDraftTrackerClient({
               ref={contestsRef}
               role="group"
               aria-label="Best ball contest"
-              className="ffb-seg ffb-br-contests"
+              className="ffb-seg ffb-seg-scroll ffb-br-contests"
             >
               {CONTESTS.map((contest) => (
                 <button
@@ -606,8 +606,19 @@ function BestBallDraftRoom({
   const storageNotice = draft.persistenceError ?? draft.restoreNotice;
   const savedHere = !draft.persistenceError;
 
+  // The room's one announcement. Setup and the room both print it first, so it is the same
+  // element before and after Open draft room, and the room's first sentence is a change
+  // inside a region a screen reader already knows.
+  const roomStatus = (sentence: string) => (
+    <p role="status" aria-live="polite" className="sr-only">
+      {sentence}
+    </p>
+  );
+
   if (showSetup) {
     return (
+      <>
+      {roomStatus("")}
       <div className="ffb-br-setup">
         {storageNotice ? (
           <div role="status" className="ffb-notice ffb-notice-warn">
@@ -701,6 +712,7 @@ function BestBallDraftRoom({
           </p>
         </aside>
       </div>
+      </>
     );
   }
 
@@ -788,7 +800,7 @@ function BestBallDraftRoom({
           calculatorValue={returnAssumptions}
           onCalculatorChange={setReturnAssumptions}
         />
-        <section aria-labelledby={`${headingId}-controls`} className="ffb-br-controls ffb-br-noprint">
+        <section aria-labelledby={`${headingId}-controls`} className="ffb-br-controls ffb-noprint">
           <div className="ffb-sechead">
             <h3 id={`${headingId}-controls`} className="ffb-h3">
               {savedHere ? "Saved in this browser" : "Room controls"}
@@ -839,6 +851,7 @@ function BestBallDraftRoom({
 
   return (
     <>
+      {roomStatus(roomAnnouncement)}
       {storageNotice ? (
         <div className="ffb-br-notices">
           <div role="status" className="ffb-notice ffb-notice-warn">
@@ -852,14 +865,13 @@ function BestBallDraftRoom({
       {/*
         The scorebug is the single authority for the pick, the round, who is on
         the clock, and the user's next turn, and nothing below repeats those
-        numbers. Its hidden status line announces the new room state once per
+        numbers. The status line above announces the new room state once per
         pick. A finished draft has nobody on the clock and no next turn, so the
         bar is the one cell that says so.
       */}
       <DraftScorebug
         label="Live draft status"
         sectionRef={bugRef}
-        announcement={roomAnnouncement}
         className="ffb-br-bug"
         actions={
           <>
@@ -914,7 +926,7 @@ function BestBallDraftRoom({
             the full sentence, and what shows is its short form, so the bar
             keeps one height and the heading keeps its name and its focus. */}
         <div
-          className={draft.isComplete ? "ffb-bug-seg ffb-br-done" : "ffb-bug-seg ffb-bug-live ffb-rm-live"}
+          className={draft.isComplete ? "ffb-bug-seg ffb-br-done" : "ffb-bug-seg ffb-bug-live"}
         >
           <span className="ffb-bug-label">{draft.isComplete ? "Draft" : "On the clock"}</span>
           <h2
@@ -952,7 +964,7 @@ function BestBallDraftRoom({
         }}
       />
       {lastPick ? (
-        <p id="best-ball-undo-target" className="ffb-fine ffb-br-undo-note ffb-br-noprint">
+        <p id="best-ball-undo-target" className="ffb-fine ffb-br-undo-note ffb-noprint">
           {/* A name can end in a full stop of its own ("Marvin Harrison Jr."), which then closes the sentence. */}
           Undo removes pick {lastPick.pickNumber}, {lastPick.player.name.replace(/\.$/, "")}.{" "}
           {/* A phone keeps the sentence that names the pick. The note beside the last picks says the rest there. */}
@@ -986,7 +998,7 @@ function BestBallDraftRoom({
               event.preventDefault();
               skipToBuild();
             }}
-            className="ffb-btn ffb-br-skip"
+            className="ffb-btn ffb-skip"
           >
             Skip to your roster
           </a>
@@ -1019,8 +1031,8 @@ function BestBallDraftRoom({
         button, so neither shadows the other. The bar sits under the drawer and
         the sheet, so it needs no step aside while either is open.
       */}
-      <div className="ffb-tray-space ffb-br-noprint min-[1200px]:hidden" />
-      <div className="ffb-tray min-[1200px]:hidden">
+      <div className="ffb-tray-space ffb-tray-narrow ffb-noprint" />
+      <div className="ffb-tray ffb-tray-narrow">
         <div className={`${SHELL_CLASS} ffb-tray-row ffb-br-bar`}>
           <button
             type="button"

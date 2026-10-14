@@ -23,10 +23,6 @@
 .ffb-rk-board.ffb-rk-adp.ffb-rk-vs { --ffb-cols: var(--ffb-rk-lead) 60px 92px var(--ffb-rk-tail); }
 .ffb-rk-board.ffb-rk-adp.ffb-rk-vs.ffb-rk-vorp { --ffb-cols: var(--ffb-rk-lead) 60px 92px 48px var(--ffb-rk-tail); }
 
-/* The cells sit above the row's opener, so a hover title fires and a name can be selected.
-   The row's own click still opens the player. */
-.ffb-rk-board .ffb-row { cursor: pointer; }
-.ffb-rk-board .ffb-row > :not(.ffb-row-open) { position: relative; z-index: 1; }
 /* The kit scrolls a focused row control clear of what is pinned over the list, by
    --ffb-pinned-top. Here that is the toolbar block's measured height, plus the pinned tier
    head where there is one, plus the 8px a phone row's star sits below its row's top edge.
@@ -87,15 +83,6 @@
     column-gap: 6px;
   }
   .ffb-rk-board .ffb-colhead > .ffb-rk-h-vs { padding-inline-end: 46px; }
-  /* Read out, not shown: the column head already says it. */
-  .ffb-rk-vh-desk {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
 
   /* The plot, its column head, and the labels show together or not at all. The three
      properties below are switched off as one where the plot's cell would be too narrow. */

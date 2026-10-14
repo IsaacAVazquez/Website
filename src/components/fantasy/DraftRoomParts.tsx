@@ -22,8 +22,9 @@ import "./fantasy-room.css";
  * them imports from a route folder, so the redraft room, the mock room, and
  * the best ball room all draw from this one file.
  *
- * What a part needs past the kit is in fantasy-room.css (prefix `ffb-rm-`),
- * which this file imports itself, so a room gets it with the parts.
+ * The kit draws them. The one thing past it is the "All picks" list under the
+ * grid, whose rules are in fantasy-room.css (prefix `ffb-rm-`). This file
+ * imports that sheet itself, so a room gets it with the parts.
  */
 
 /** What the parts read from a pick. A redraft pick and a best ball pick both fit. */
@@ -32,16 +33,20 @@ export type RoomPick = Pick<DraftPick, "pickNumber" | "teamNumber" | "player">;
 const TALLY_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 
 /**
- * The scorebug's frame: the pinned section a room names with `label`, one
- * visually hidden sentence that announces the room's state, and the bar
- * itself. The cells are the children (`DraftScorebugCell`), and `actions` are
- * the buttons at the bar's far end, each an `ffb-bug-btn`.
+ * The scorebug's frame: the pinned section a room names with `label`, and the
+ * bar itself. The cells are the children (`DraftScorebugCell`), and `actions`
+ * are the buttons at the bar's far end, each an `ffb-bug-btn`.
  *
  * The section is not a live region, because a cell may hold a per-second
- * clock. `announcement` carries the news instead, so it should change only
- * when the room does (a pick logged or undone). `sectionRef` is the element a
- * room measures to pin its board bar and its rail under the bar. `className`
- * goes on the bar, for a room's own rules.
+ * clock. A room announces its state in one status element of its own, which it
+ * keeps mounted from setup through the room to the recap, so each sentence is
+ * a change inside a region a screen reader already knows. A region that
+ * mounts with its text can be skipped, which is why the bar does not carry
+ * the room's sentence. `announcement` is for a caller with no such element:
+ * with it the bar prints a visually hidden status sentence, and without it
+ * the bar prints none. `sectionRef` is the element a room measures to pin its
+ * board bar and its rail under the bar. `className` goes on the bar, for a
+ * room's own rules.
  */
 export function DraftScorebug({
   label,
@@ -53,16 +58,18 @@ export function DraftScorebug({
 }: {
   label: string;
   sectionRef?: Ref<HTMLElement>;
-  announcement: string;
+  announcement?: string;
   actions?: ReactNode;
   className?: string;
   children: ReactNode;
 }) {
   return (
     <section ref={sectionRef} aria-label={label} className="ffb-sticky">
-      <p role="status" aria-live="polite" className="sr-only">
-        {announcement}
-      </p>
+      {announcement === undefined ? null : (
+        <p role="status" aria-live="polite" className="sr-only">
+          {announcement}
+        </p>
+      )}
       <div className={className ? `ffb-bug ${className}` : "ffb-bug"}>
         {children}
         {actions ? <div className="ffb-bug-actions">{actions}</div> : null}
@@ -97,14 +104,14 @@ export function DraftScorebugCell({
   ref?: Ref<HTMLDivElement>;
   children: ReactNode;
 }) {
-  const classes = ["ffb-bug-seg", live ? "ffb-bug-live ffb-rm-live" : "", className ?? ""]
+  const classes = ["ffb-bug-seg", live ? "ffb-bug-live" : "", className ?? ""]
     .filter(Boolean)
     .join(" ");
   return (
     <div ref={ref} {...rest} className={classes}>
       <span className="ffb-bug-label">{label}</span>
       <p className="ffb-bug-value">{children}</p>
-      {note ? <p className="ffb-rm-bug-note">{note}</p> : null}
+      {note ? <p className="ffb-bug-note">{note}</p> : null}
     </div>
   );
 }
@@ -146,10 +153,10 @@ export function DraftLastPicks({
 
   return (
     <div className="ffb-picks">
-      <div className="ffb-rm-picks-head">
+      <div className="ffb-picks-head">
         <Heading className="ffb-h3">{heading}</Heading>
         {onUndoToPick ? (
-          <p className="ffb-rm-picks-note ffb-rm-noprint">Select one to undo back to it</p>
+          <p className="ffb-picks-note ffb-noprint">Select one to undo back to it</p>
         ) : null}
       </div>
       <ol ref={listRef} className="ffb-picks-list">
@@ -179,7 +186,6 @@ export function DraftLastPicks({
           return (
             <li
               key={pick.pickNumber}
-              className="ffb-rm-pick-item"
               style={fit !== null && index >= fit ? { visibility: "hidden" } : undefined}
             >
               <button
@@ -187,7 +193,7 @@ export function DraftLastPicks({
                 onClick={() => onUndoToPick(pick.pickNumber)}
                 title="Undo back to this pick"
                 aria-label={`Undo back to pick ${pick.pickNumber} (${pick.player.name})`}
-                className={`${stickerClass} ffb-rm-pick`}
+                className={stickerClass}
               >
                 {face}
               </button>
@@ -293,6 +299,12 @@ export function DraftRoster({
  *
  * The cells are images, so a name shows only on hover. "All picks" under the
  * grid lists every pick by round for a touch screen, a keyboard, and paper.
+ *
+ * `heading` and `headingLevel` name the grid and place it in the page's
+ * outline. `sectionHead` draws the head a section of the page takes (the
+ * 22px heading on the 2px rule), for a grid that is a section and not a rail
+ * block. `names` prints the player's name under each made cell's label from
+ * 1200px, so pass it only where the grid has the page's width (a recap).
  */
 export function DraftPickGrid({
   picks,
@@ -303,6 +315,10 @@ export function DraftPickGrid({
   currentPick,
   currentRound,
   isComplete,
+  heading = "Pick grid",
+  headingLevel = 3,
+  sectionHead = false,
+  names = false,
 }: {
   picks: RoomPick[];
   totalTeams: number;
@@ -312,8 +328,14 @@ export function DraftPickGrid({
   currentPick: number;
   currentRound: number;
   isComplete: boolean;
+  heading?: string;
+  /** The heading's level in the page's outline. The look follows `sectionHead`, not the level. */
+  headingLevel?: 2 | 3;
+  sectionHead?: boolean;
+  names?: boolean;
 }) {
   const headingId = useId();
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   const pickByNumber = new Map(picks.map((pick) => [pick.pickNumber, pick]));
   const shownRounds = isComplete ? rounds : Math.min(rounds, Math.max(1, currentRound));
   const slots = Array.from({ length: totalTeams }, (_, index) => index + 1);
@@ -330,10 +352,10 @@ export function DraftPickGrid({
 
   return (
     <section aria-labelledby={headingId}>
-      <div className="ffb-sechead">
-        <h3 id={headingId} className="ffb-h3">
-          Pick grid
-        </h3>
+      <div className={sectionHead ? "ffb-sechead ffb-sechead-lg" : "ffb-sechead"}>
+        <Heading id={headingId} className={sectionHead ? "ffb-h2" : "ffb-h3"}>
+          {heading}
+        </Heading>
         <p className="ffb-sechead-note">Slot {userTeam} is yours</p>
       </div>
       {/* The direction marks are drawn by the stylesheet, so the directions are said here. */}
@@ -346,7 +368,7 @@ export function DraftPickGrid({
       <div className="ffb-gridwrap">
         <div
           // Fourteen and sixteen columns leave a cell about 22px, so those rooms set the cell's type smaller.
-          className={totalTeams >= 14 ? "ffb-grid ffb-grid-tight" : "ffb-grid"}
+          className={`ffb-grid${totalTeams >= 14 ? " ffb-grid-tight" : ""}${names ? " ffb-grid-names" : ""}`}
           style={{ "--ffb-teams": totalTeams, "--ffb-my-slot": userTeam } as CSSProperties}
         >
           <span />
@@ -389,6 +411,8 @@ export function DraftPickGrid({
                       >
                         {position}
                         {positionRank ?? ""}
+                        {/* The cell is an image whose name already says the player, so this is for the eye. */}
+                        {names ? <span className="ffb-cell-name">{name}</span> : null}
                       </span>
                     );
                   }

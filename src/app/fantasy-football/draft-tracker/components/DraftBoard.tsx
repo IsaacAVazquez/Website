@@ -42,7 +42,7 @@ interface DraftBoardProps {
 /**
  * The column head is hidden from assistive tech and from a phone, so each
  * value carries its own label inside its cell, where it hides when the cell
- * does. `ffb-dt-vh-desk` is a label a phone prints and a desktop only reads
+ * does. `ffb-vh-desk` is a label a phone prints and a desktop only reads
  * out, since the column head already shows it there.
  */
 
@@ -243,6 +243,21 @@ export function DraftBoard({
     }
   }
 
+  // The pinned bar takes a second row where the list column is narrow (from 1200px to about
+  // 1280px), so its height is measured. The sheet adds it to the scorebug's for the kit's
+  // scroll margin, which keeps a focused row clear of both bars.
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board || typeof ResizeObserver === "undefined") return;
+    const write = () => board.style.setProperty("--ffb-dt-bar", `${bar.offsetHeight}px`);
+    write();
+    const observer = new ResizeObserver(write);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, []);
+
   // From 1200px the rail sits beside the list, so the window extends by itself
   // as its end nears the viewport. Below that the roster's rail follows the
   // list, and a list that kept growing would keep it out of reach, so there
@@ -379,7 +394,7 @@ export function DraftBoard({
         <span className="ffb-c-bye">
           {hasBye ? (
             <>
-              <span className="ffb-dt-vh-desk">Bye </span>
+              <span className="ffb-vh-desk">Bye </span>
               {player.byeWeek}
             </>
           ) : null}
@@ -396,7 +411,7 @@ export function DraftBoard({
                 its sign, and its tone. The ADP itself and the gap together
                 need up to 100px there, and a 390px row has 67. */}
             <span
-              className={`ffb-c-num ffb-m-meta ${delta?.isValue ? "ffb-is-strong ffb-dt-is-value" : "ffb-is-flat"}`}
+              className={`ffb-c-num ffb-m-meta ${delta?.isValue ? "ffb-is-strong ffb-is-good" : "ffb-is-flat"}`}
               title={delta?.title}
             >
               <span className="sr-only">versus ADP at pick {currentPick} </span>
@@ -539,12 +554,12 @@ export function DraftBoard({
     <section
       ref={boardRef}
       aria-label="Draft board"
-      className={`ffb-board ffb-board-room ffb-board-star-log ffb-dt-board${adpAvailable ? " ffb-dt-has-adp" : ""}${
+      className={`ffb-board ffb-board-room ffb-board-star-log ffb-board-tight ffb-dt-board${adpAvailable ? " ffb-dt-has-adp" : ""}${
         hasVorp ? " ffb-dt-has-vorp" : ""
       }`}
     >
       {queuedAvailable.length > 0 && (
-        <div className="ffb-cluster ffb-dt-queue ffb-dt-noprint">
+        <div className="ffb-cluster ffb-dt-queue ffb-noprint">
           <span className="ffb-turn-tab">★ Queue · still on the board</span>
           {queuedAvailable.slice(0, 8).map((player) => (
             <button
@@ -573,7 +588,7 @@ export function DraftBoard({
           search, count, and column labels hold their place under the scorebug
           while you scroll. On a phone the scorebug already pins two rows, so
           the stylesheet lets this bar scroll with the list there. */}
-      <div className="ffb-sticky ffb-dt-boardbar">
+      <div ref={barRef} className="ffb-sticky ffb-dt-boardbar">
         <div className="ffb-toolbar">
           <PositionFilterBar
             ariaLabel="Position filter"
@@ -621,7 +636,7 @@ export function DraftBoard({
         </div>
 
         {windowedPlayers.length > 0 ? (
-          <div aria-hidden="true" className="ffb-colhead hidden md:grid">
+          <div aria-hidden="true" className="ffb-colhead ffb-not-phone">
             <span className="ffb-h-num ffb-is-sorted">Rk</span>
             <span className="ffb-h-pos">Pos</span>
             <span>Player</span>

@@ -11,14 +11,8 @@
 /* ==========================================================================
  * The head, in both forms
  * ======================================================================== */
-/* The contest switch is its own sideways scroller wherever eight contests do not fit. */
-.ffb-br-contests {
-  display: flex;
-  max-width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.ffb-br-contests > .ffb-seg-btn { flex: none; }
+/* The contest switch is the kit's sideways scroller, and it takes the row's whole width. */
+.ffb-br-contests { display: flex; }
 .ffb-br-about { max-width: 62ch; }
 .ffb-br-about > .ffb-details-body { display: grid; gap: var(--ffb-s2); }
 
@@ -86,19 +80,6 @@
 /* What Undo removes, as one muted line under the last picks. */
 .ffb-br-undo-note { padding-bottom: var(--ffb-s3); }
 
-/* A way past the board for a keyboard. It is out of sight until it takes focus. */
-.ffb-br-skip { margin-bottom: var(--ffb-s2); }
-.ffb-br-skip:not(:focus) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 /* The fits. Each is one column of the kit's strip: the chip, the name, and the score on a line,
    then what moved the score, the reasons, and the button that logs it. */
 .ffb-br-fits { padding-bottom: var(--ffb-s4); }
@@ -164,31 +145,15 @@
   min-width: 0;
 }
 .ffb-br-sheet-head { justify-content: flex-end; padding-block: var(--ffb-s2); border-bottom: 0; }
-/* One column that cannot be wider than the sheet, whatever its widest block wants. */
-.ffb-br-sheet-body { grid-template-columns: minmax(0, 1fr); padding-top: 0; }
+.ffb-br-sheet-body { padding-top: 0; }
 
 @media (min-width: 768px) {
   /* On a tablet the sheet is wide, so the build takes one column and the rest stack beside it. */
   .ffb-br-sheet-body { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--ffb-s6); align-items: start; }
   .ffb-br-sheet-body > .ffb-br-build { grid-row: span 3; }
-  /* Read out, not shown: the column head already says it. */
-  .ffb-br-vh-desk {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
 }
 
 @media (max-width: 767.98px) {
-  /* The switch runs off the right edge of the screen, as the kit's position switch does. */
-  .ffb-br-contests {
-    max-width: calc(100% + var(--ffb-bleed));
-    margin-inline-end: calc(-1 * var(--ffb-bleed));
-  }
-  .ffb-br-contests > .ffb-seg-btn { padding-inline: 10px; }
   .ffb-br-open { justify-self: stretch; }
   /* One row of controls: the search button and the position switch, or the open search. */
   .ffb-br-tools:not(.ffb-br-searching) > .ffb-search,
@@ -199,32 +164,22 @@
   .ffb-br-bug .ffb-bug-seg > .ffb-bug-value { min-inline-size: 0; }
   /* A phone row's second line holds the chip, the team, the bye, and the market's number with
      its label ("ADP Undrafted" beside "WR127" at its widest). The kit's row leaves that 244px at
-     360, and the widest line needs 272, so this room takes 8px from the Draft button's column
-     and 2px from each gap, as the redraft room does, and the number is the part that gives. */
+     360, and the widest line needs 272, so the board takes the kit's tighter row
+     (`ffb-board-tight`), and the number is the part that gives. */
   /* A phone pins the scorebug's two rows and the board's 64px bar, 176px in all, which is more
      than the kit's scroll margin allows for. The scorebug's height is the measured one. */
   .ffb-br-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 112px) + 68px); }
-  .ffb-br-board { --ffb-act-cols: 44px; }
-  .ffb-br-board .ffb-row { column-gap: 6px; }
-  .ffb-br-board .ffb-row > .ffb-log { width: 44px; }
-  .ffb-br-board .ffb-row > .ffb-chip { min-width: 42px; }
   .ffb-br-board .ffb-row > .ffb-m-meta { overflow: hidden; text-overflow: ellipsis; }
   /* A finished draft has no live cell, so its one cell sits beside the actions. */
   .ffb-br-bug .ffb-br-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }
 }
 
-/* At 375px and under, the second line sets a size smaller, which is the last 12px it needs. */
-@media (max-width: 375.98px) {
-  .ffb-br-board .ffb-row > :is(.ffb-c-team, .ffb-c-bye, .ffb-m-meta) { font-size: 11px; }
-}
 /* Under 340px the line has no room for all four, and the bye is the one the drawer still carries. */
 @media (max-width: 339.98px) {
   .ffb-br-board .ffb-row > .ffb-c-bye { display: none; }
 }
 
 @media print {
-  .ffb-root .ffb-br-noprint,
-  .ffb-root .ffb-br-skip,
   .ffb-root .ffb-br-open,
   .ffb-root .ffb-br-contests { display: none; }
 }

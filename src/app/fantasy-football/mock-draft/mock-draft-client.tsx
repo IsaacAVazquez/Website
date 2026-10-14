@@ -210,7 +210,7 @@ function SegmentedButtons<Value extends string>({
   labelledBy: string;
 }) {
   return (
-    <div role="group" aria-labelledby={labelledBy} className="ffb-seg ffb-mk-field-seg">
+    <div role="group" aria-labelledby={labelledBy} className="ffb-seg ffb-seg-fill">
       {options.map((option) => (
         <button
           key={option.value}
@@ -876,7 +876,6 @@ export function MockDraftClient() {
   } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`;
   const reportHeadingId = `${roomIds}-report`;
   const haulHeadingId = `${roomIds}-haul`;
-  const boardHeadingId = `${roomIds}-board`;
 
   return (
     <section
@@ -915,14 +914,12 @@ export function MockDraftClient() {
           {freshnessParts.length > 0 ? <FreshnessParts parts={freshnessParts} /> : null}
         </header>
 
-        {/* The room's one announcement. A live room's scorebug carries it, so
-            this paragraph stands in on setup, where it is empty, and on the
-            recap. */}
-        {isLive ? null : (
-          <p role="status" aria-live="polite" className="sr-only">
-            {draftAnnouncement}
-          </p>
-        )}
+        {/* The room's one announcement. It is mounted on setup, where it is
+            empty, through the room to the recap, so each sentence is a change
+            inside a region a screen reader already knows. */}
+        <p role="status" aria-live="polite" className="sr-only">
+          {draftAnnouncement}
+        </p>
 
         {/* The paused messages point to the practice checkbox as "above", so
             the note that holds it stays first on all three screens. */}
@@ -1151,7 +1148,6 @@ export function MockDraftClient() {
             <DraftScorebug
               label="Live mock draft status"
               sectionRef={stripRef}
-              announcement={draftAnnouncement}
               className="ffb-mk-bug"
               actions={
                 <>
@@ -1313,7 +1309,7 @@ export function MockDraftClient() {
                     event.preventDefault();
                     skipToRail();
                   }}
-                  className="ffb-btn ffb-mk-skip"
+                  className="ffb-btn ffb-skip"
                 >
                   Skip to your roster
                 </a>
@@ -1365,7 +1361,7 @@ export function MockDraftClient() {
                     </div>
 
                     {windowedPlayers.length > 0 ? (
-                      <div aria-hidden="true" className="ffb-colhead ffb-mk-colhead hidden md:grid">
+                      <div aria-hidden="true" className="ffb-colhead ffb-not-phone">
                         <span className="ffb-h-num ffb-is-sorted">Rk</span>
                         <span className="ffb-h-pos">Pos</span>
                         <span>Player</span>
@@ -1479,7 +1475,7 @@ export function MockDraftClient() {
                                   <span className="ffb-c-bye">
                                     {hasBye ? (
                                       <>
-                                        <span className="ffb-mk-vh-desk">Bye </span>
+                                        <span className="ffb-vh-desk">Bye </span>
                                         {player.byeWeek}
                                       </>
                                     ) : null}
@@ -1498,7 +1494,7 @@ export function MockDraftClient() {
                                           the pick on the clock is the reading the room is for. */}
                                       <span
                                         className={`ffb-c-num ffb-m-meta ${
-                                          delta?.isValue ? "ffb-is-strong ffb-mk-is-value" : "ffb-is-flat"
+                                          delta?.isValue ? "ffb-is-strong ffb-is-good" : "ffb-is-flat"
                                         }`}
                                         title={delta?.title ?? "No reliable market sample for this player"}
                                       >
@@ -1601,7 +1597,7 @@ export function MockDraftClient() {
                 <h2 id={reportHeadingId} className="ffb-h2">
                   Value report
                 </h2>
-                <div className="ffb-cluster ffb-mk-noprint">
+                <div className="ffb-cluster ffb-noprint">
                   <button
                     type="button"
                     onClick={rerunRoom}
@@ -1732,12 +1728,9 @@ export function MockDraftClient() {
               </ol>
             </div>
 
-            <section aria-labelledby={boardHeadingId} className="ffb-mk-fullboard">
-              <div className="ffb-sechead ffb-sechead-lg">
-                <h2 id={boardHeadingId} className="ffb-h2">
-                  The board
-                </h2>
-              </div>
+            {/* The shared grid is the section, headed once as a section of the page, with
+                each player's name in its cell where the page is wide enough. */}
+            <div className="ffb-mk-fullboard">
               <DraftPickGrid
                 picks={state.picks}
                 totalTeams={settings.totalTeams}
@@ -1747,8 +1740,12 @@ export function MockDraftClient() {
                 currentPick={currentPick}
                 currentRound={settings.rounds}
                 isComplete
+                heading="The board"
+                headingLevel={2}
+                sectionHead
+                names
               />
-            </section>
+            </div>
 
             <div className="ffb-mk-foot">
               <p className="ffb-method">

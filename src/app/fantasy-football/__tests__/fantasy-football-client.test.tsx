@@ -821,7 +821,8 @@ describe("FantasyFootballClient", () => {
 
     const frozen = screen.getByText("Frozen since Aug 16");
     expect(frozen).toBeVisible();
-    expect(frozen).not.toHaveAttribute("style");
+    expect(frozen).not.toHaveClass("ffb-warn");
+    expect(frozen).not.toHaveClass("ffb-bad");
     expect(screen.queryByText(/^Stale/)).not.toBeInTheDocument();
     expect(screen.queryByText(/^Aging/)).not.toBeInTheDocument();
     // The frozen date prints once, in the freshness line. The line under the

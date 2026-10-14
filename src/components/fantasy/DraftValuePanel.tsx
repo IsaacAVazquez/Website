@@ -8,6 +8,7 @@ import {
   type ContestFieldEconomicsInput,
   type DraftValueReport,
 } from "@/lib/fantasyTeamValue";
+import { withMinusSign } from "@/lib/fantasyUtils";
 
 import "./fantasy-overlays.css";
 
@@ -57,12 +58,12 @@ export interface ExpectedReturnFormState {
 
 function signedNumber(value: number, digits = 1): string {
   const rounded = value.toFixed(digits);
-  return value > 0 ? `+${rounded}` : rounded;
+  return value > 0 ? `+${rounded}` : withMinusSign(rounded);
 }
 
 function signedCurrency(value: number): string {
   if (value > 0) return `+${CURRENCY.format(value)}`;
-  return CURRENCY.format(value);
+  return withMinusSign(CURRENCY.format(value));
 }
 
 function percent(value: number, digits = 1): string {
@@ -71,7 +72,7 @@ function percent(value: number, digits = 1): string {
 
 function signedPercent(value: number, digits = 1): string {
   const formatted = percent(value, digits);
-  return value > 0 ? `+${formatted}` : formatted;
+  return value > 0 ? `+${formatted}` : withMinusSign(formatted);
 }
 
 function confidenceLabel(value: DraftValueReport["confidence"]): string {

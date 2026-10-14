@@ -551,6 +551,25 @@ describe("DraftTrackerClient", () => {
     expect(screen.getByText("On the clock").closest("div")).toHaveFocus();
   });
 
+  it("keeps one status line mounted from setup into the room, so Start draft announces inside a region already there", () => {
+    render(<DraftTrackerClient />);
+    const roomStatus = () =>
+      screen.getAllByRole("status").find((status) => status.classList.contains("sr-only")) as HTMLElement;
+
+    fireEvent.click(screen.getByRole("button", { name: "New room" }));
+    const onSetup = roomStatus();
+    expect(onSetup).toBeEmptyDOMElement();
+
+    fireEvent.click(screen.getByRole("button", { name: "Start mock draft" }));
+
+    // The same node, now carrying the room's sentence. The scorebug prints none of its own.
+    expect(roomStatus()).toBe(onSetup);
+    expect(onSetup).toHaveTextContent(/^Pick \d+ of \d+, round \d+\. /);
+    expect(
+      within(screen.getByRole("region", { name: "Live draft status" })).queryByRole("status")
+    ).not.toBeInTheDocument();
+  });
+
   it("asks the setup screen to take focus when New room opens it", () => {
     render(<DraftTrackerClient />);
 

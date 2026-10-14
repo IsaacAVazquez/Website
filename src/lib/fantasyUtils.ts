@@ -1,5 +1,3 @@
-import type { CSSProperties } from "react";
-
 import { DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
 import type { Player, RedraftLineupSettings } from "@/types";
 
@@ -469,6 +467,14 @@ export function getValueVsAdp(
  * rounding the difference to an integer turns a half-pick gap into a full pick:
  * Jahmyr Gibbs at ADP 1.5 and ECR 1 read "+1" on the 2026-08-16 half PPR board.
  */
+/**
+ * A formatted number with the minus sign the boards print (U+2212) in place of
+ * a leading hyphen, so "-4.5" and "-$12.00" read "−4.5" and "−$12.00".
+ */
+export function withMinusSign(formatted: string): string {
+  return formatted.replace(/^-/, "\u2212");
+}
+
 export function formatPickDelta(delta: number): string {
   const magnitude = Math.round(Math.abs(delta) * 10) / 10;
   if (magnitude === 0) {
@@ -661,68 +667,11 @@ export function getFantasySourceCapabilities({
 }
 
 /**
- * The presentation exports below point at the fantasy kit
- * (src/components/fantasy/fantasy.css). They keep markup that has not been
- * rebuilt yet in the kit's palette and type, and a rebuilt page writes the kit
- * classes itself.
- */
-
-/** A natural-width label in an outline (the kit's badge). A position tone fills it. */
-export const FANTASY_CHIP_CLASS = "ffb-badge";
-
-/**
  * The site column with its own gutter, so fantasy content that sits outside a
  * `.c97-band` shares the header's edges. All eight fantasy routes are wide
  * tool routes, so it is the 1376px column on each.
  */
 export const SHELL_CLASS = "c97-shell c97-frame";
-
-/** The kit's label type: 700 at 80% width, capitals, 11 to 12px. */
-export const MONO_LABEL_CLASS = "ffb-label";
-
-/** The kit's position chip. Pair it with `getPositionTone` or an `ffb-pos-*` class. */
-export const POSITION_CHIP_CLASS = "ffb-chip";
-
-/** The kit's secondary button at the 44px size. Disabled prints unfilled with a dashed edge. */
-export const PILL_BUTTON_CLASS = "ffb-btn ffb-btn-lg";
-
-/** Sticky offset of the draft surfaces' status bars. The site header is not sticky, so it is the top. */
-export const FASCIA_TOP_CLASS = "top-0";
-
-/** A warning edge with no fill. A rebuilt page uses the kit's notice instead. */
-export const WARNING_CARD_STYLE: CSSProperties = {
-  borderColor: "var(--ffb-warn)",
-  background: "transparent",
-};
-
-const POSITION_FILL: Record<string, string> = {
-  QB: "var(--ffb-qb)",
-  RB: "var(--ffb-rb)",
-  WR: "var(--ffb-wr)",
-  TE: "var(--ffb-te)",
-  K: "var(--ffb-k)",
-  DST: "var(--ffb-dst)",
-};
-
-/**
- * The sticker colours of a position as inline styles: the solid fill, the same
- * colour as the edge, and the dark on-fill text, which is the same in both
- * themes. The two custom properties make any bridged Catalog 97 ink inside the
- * fill resolve to that text colour too, so older child markup stays readable.
- */
-export function getPositionTone(position: string): CSSProperties {
-  const fill = POSITION_FILL[position];
-  if (!fill) {
-    return { background: "var(--ffb-sunk)", borderColor: "var(--ffb-rule)", color: "var(--ffb-ink)" };
-  }
-  return {
-    background: fill,
-    borderColor: fill,
-    color: "var(--ffb-on-fill)",
-    "--c97-ink": "var(--ffb-on-fill)",
-    "--c97-ink-2": "var(--ffb-on-fill)",
-  } as CSSProperties;
-}
 
 type FantasyConsensusSpread = "tight" | "mixed" | "volatile";
 
@@ -787,25 +736,6 @@ export function withTierBreaks(players: Player[]): FantasyTierRow[] {
     }
     return { player, tier, startsTier };
   });
-}
-
-/**
- * Signal intensity for a tier, on a 0-100 scale: solid (100) at tier 1, fading
- * by 13 points per tier down to a 12-point floor so even the bottom of the
- * board keeps a faint accent instead of vanishing. Shared by the rankings
- * row's left-edge tier rail and the inline tier-break tag so both read the
- * same "how deep in the board" signal off one formula. An untiered player
- * gets 0, which callers should mix toward a transparent/neutral base so the
- * accent disappears rather than reading as flat gray.
- */
-const TIER_RAIL_FLOOR = 12;
-const TIER_RAIL_STEP = 13;
-
-export function getTierRailIntensity(tier: number | null | undefined): number {
-  if (typeof tier !== "number" || !Number.isFinite(tier)) {
-    return 0;
-  }
-  return Math.max(TIER_RAIL_FLOOR, 100 - (tier - 1) * TIER_RAIL_STEP);
 }
 
 /**

@@ -13,7 +13,7 @@ The direction is called Board. A pick is a solid sticker, a list is ruled rows o
 | `src/components/fantasy/fantasy.css` | The kit, with tokens, type, every component class, the phone and touch sizes, print, and forced colours |
 | `src/components/fantasy/fantasy-<area>.css` | An area sheet, holding what one page or one family of shared parts needs past the kit. Each has a prefix of its own (see the cascade) |
 | `src/app/fantasy-football/layout.tsx` | The root every fantasy route renders inside, the font, and the product bar |
-| `src/components/fantasy/` | The shared parts, which are the page head, the position switch, the room parts, the player drawer and its parts, the compare tray and modal, Draft Outlook, and My team |
+| `src/components/fantasy/` | The shared parts, which are the page head, the position switch, the room parts, the player drawer and its parts, the compare tray and modal, Draft Outlook, the redraft decision panel, and My team |
 | `src/app/fantasy-football/__tests__/print-shop-rules.test.ts` | The drawing rules held in source, which are the one radius, no blurred shadow, no hex colour in markup, and every area sheet on its own prefix |
 
 In the samples below `ffb-xx-` stands for your area sheet's prefix.
@@ -31,7 +31,7 @@ These shared parts draw with the kit.
 | `FantasyRouteHeader` | `header.<SHELL_CLASS>.ffb-head` holding `h1.ffb-title`, `p.ffb-lede`, the freshness line, `div.ffb-head-aside` for `aside`, and `div.ffb-head-row` for `children`. A title that opens with "Fantasy Football" shows only the words after it, and the first two stay in the h1 inside `.ffb-vh`, so the accessible name is the same |
 | `TitleAccent` | A plain fragment. It sets no face of its own |
 | `FantasySectionHeading` | `h2.ffb-h2` |
-| `FreshnessParts` | `p.ffb-fresh` of `span.ffb-fresh-part`, one per part. A part holds its label and, after a no-break space, its hidden dot, and from 768px a part does not break. So a wrapped line breaks only between parts, never inside a date, and never opens on a dot. The tone colours are inline (`var(--c97-warning)`, `var(--c97-negative)`), which the bridge maps to the kit's status inks |
+| `FreshnessParts` | `p.ffb-fresh` of `span.ffb-fresh-part`, one per part. A part holds its label and, after a no-break space, its hidden dot, and from 768px a part does not break. So a wrapped line breaks only between parts, never inside a date, and never opens on a dot. A part with a tone takes the kit's status ink on its label alone, `ffb-warn` or `ffb-bad`, and the label still says what is wrong in words |
 | `SeasonalScopeNote` | `div[role=note].ffb-notice.ffb-notice-warn` |
 | `PositionFilterBar` | `div[role=radiogroup].ffb-seg.ffb-seg-pos` of `button[role=radio].ffb-seg-btn.ffb-pos-*`. The class comes from `positionClass`, and an option with no `position` whose value is `flex` in any case takes the flex thirds. On a phone the row scrolls sideways and keeps the checked button in view |
 | `FantasyLoadingState` | The loading skeleton in all eight `loading.tsx` files, with the same `role="status"` and "Loading …" name |
@@ -40,9 +40,10 @@ These shared parts draw with the kit.
 | `useFirstRowCount(listRef, itemCount)` | `src/components/fantasy/useFirstRowCount.ts`. How many children of a list sit on its first row, for hiding the stickers `ffb-picks-list` clips when they are buttons |
 | `scrollChildIntoViewX(scroller, child, margin, align)` | Moves a sideways scroller without moving the page. `align` is `"nearest"` by default, and `"start"` puts a child that is not fully in view at the left edge |
 
-`src/lib/fantasyUtils.ts` still exports a few presentation constants from before the kit (`MONO_LABEL_CLASS`, `POSITION_CHIP_CLASS`, `FANTASY_CHIP_CLASS`, `PILL_BUTTON_CLASS`, `WARNING_CARD_STYLE`, and `getPositionTone`). They point at kit classes, so markup that still uses them paints in the kit's palette. New markup writes kit classes itself (`ffb-chip ffb-pos-wr`) and imports only `SHELL_CLASS`.
+`src/lib/fantasyUtils.ts` exports one presentation constant, `SHELL_CLASS` (`"c97-shell c97-frame"`). Markup writes kit classes itself (`ffb-chip ffb-pos-wr`), and there is no helper that hands out a class name or a colour.
 
 The site header opens its search on "/". It leaves the key alone when a page has already claimed it with `preventDefault`, and when a dialog with `aria-modal="true"` is open, so a page that takes "/" for its own search calls `preventDefault` and does not need `stopPropagation`.
+
 
 ## The rules
 
@@ -78,13 +79,13 @@ Tokens, the Catalog 97 bridge, the type roles, a short list of frame exceptions,
 
 What that means for you:
 
-- A Tailwind utility on the same element as a kit class wins. `hidden md:grid`, `sr-only`, `ml-auto`, `col-span-2`, `min-w-0`, and `sticky` all keep working beside a kit class. The tests that pin those class names keep passing.
+- A Tailwind utility on the same element as a kit class wins. `sr-only`, `ml-auto`, `col-span-2`, `min-w-0`, and `sticky` all keep working beside a kit class. The tests that pin those class names keep passing.
 - The site's `md` and its other breakpoint variants are screen only (`@custom-variant md (@media screen and …)` in `src/app/globals.css`). On paper none of them applies, so a pair switched with `md:hidden` and `max-md:hidden` prints both halves, and a `hidden md:grid` pair prints its phone half at every paper width. Anything that prints switches with `ffb-only-phone` and `ffb-not-phone`, which follow the page's width on paper as the rest of the kit does.
 - `ffb-only-phone` and `ffb-not-phone` are the one case where the kit beats you. They are unlayered and carry the root in their selector, so they hide an element whatever component class, utility, or one-class area rule sets its `display`.
 - Any unlayered rule in your area sheet wins over the kit, whatever order the stylesheets load in. So `.ffb-xx-thing { gap: 4px }` beats the kit's gap on an element that has both classes. You do not need to raise specificity to override a component.
 - The exception is type. The weight, width, case, and tracking of a kit class come from the unlayered type roles, so `font-semibold` or `uppercase` on a kit element does nothing. To change one in your area sheet, write `.ffb-root .ffb-xx-thing { font-weight: 600 }`. Font size is in the layer, so a `text-*` utility or an area rule changes it as usual.
 - Never redeclare an `--ffb-*` token on `.ffb-root` from inside a layer, since the unlayered token wins. Set a token on your own element, or in an unlayered rule.
-- `catalog97.css` sets three things on bare elements, outside any layer: `button { min-width: 44px }`, a 2px focus ring in `--c97-accent` at a 3px offset with no radius, and the placeholder colour. The kit undoes the first for its small buttons (`ffb-seg-btn`, `ffb-star`, `ffb-iconbtn`, `ffb-search-clear`, `ffb-tab`, `ffb-h-sort`, `ffb-cell`, `ffb-row-open`, `ffb-btn-quiet`), draws the ring inside for controls in a scroller or a ruled list, gives a ring inside a filled control the colour that reads on the fill, moves a search field's ring from the input to the whole field, and fits a help trigger to its label. A button of your own narrower than 44px needs `.ffb-root .ffb-xx-thing { min-width: 0 }` in your area sheet.
+- `catalog97.css` sets three things on bare elements, outside any layer: `button { min-width: 44px }`, a 2px focus ring in `--c97-accent` at a 3px offset with no radius, and the placeholder colour. The kit undoes the first for its small buttons (`ffb-seg-btn`, `ffb-star`, `ffb-iconbtn`, `ffb-search-clear`, `ffb-tab`, `ffb-cell`, `ffb-row-open`, `ffb-btn-quiet`), draws the ring inside for controls in a scroller or a ruled list, gives a ring inside a filled control the colour that reads on the fill, moves a search field's ring from the input to the whole field, and fits a help trigger to its label. A button of your own narrower than 44px needs `.ffb-root .ffb-xx-thing { min-width: 0 }` in your area sheet.
 
 Your area sheet starts every selector with a class of your prefix or with `.ffb-root`, because a stylesheet stays loaded after in-app navigation and would otherwise reach another route. A test in `print-shop-rules.test.ts` reads every `fantasy-*.css` in the folder and fails a selector that starts anywhere else, and it fails a sheet that has no prefix in its list.
 
@@ -92,11 +93,13 @@ Your area sheet starts every selector with a class of your prefix or with `.ffb-
 | --- | --- | --- |
 | `fantasy-rankings.css` | `ffb-rk-` | The rankings board |
 | `fantasy-draft.css` | `ffb-dt-` | The redraft room and its setup screen |
-| `fantasy-room.css` | `ffb-rm-` | The room parts every draft room shares |
+| `fantasy-room.css` | `ffb-rm-` | The "All picks" list in the room parts every draft room shares |
+| `fantasy-mock.css` | `ffb-mk-` | The mock draft, with its setup screen and recap |
+| `fantasy-bestball.css` | `ffb-bb-` | The best ball board |
+| `fantasy-bbroom.css` | `ffb-br-` | The best ball room and its setup screen |
 | `fantasy-trade.css` | `ffb-tr-` | The trade calculator |
 | `fantasy-weekly.css` | `ffb-wk-` | The weekly board, the waiver list, and My team |
 | `fantasy-overlays.css` | `ffb-ov-` | The player drawer, the compare tray and modal, Draft Outlook, and the redraft decision panel |
-| `fantasy-mock.css`, `fantasy-bestball.css`, `fantasy-bbroom.css` | `ffb-mk-`, `ffb-bb-`, `ffb-br-` | Reserved in the test for the mock draft, the best ball board, and the best ball room |
 
 A page imports its own sheet from its client component, and a shared part imports the sheet it needs itself, so a page gets the rules with the part.
 
@@ -132,7 +135,7 @@ All on `.ffb-root` and `.ffb-scope`, with dark values under `html.dark`.
 
 A position class sets two properties for whatever is inside it: `.ffb-pos-qb`, `.ffb-pos-rb`, `.ffb-pos-wr`, `.ffb-pos-te`, `.ffb-pos-k`, `.ffb-pos-dst` each set `--ffb-pos` (the fill) and `--ffb-pos-ink`. `.ffb-pos-flex` is only for a switch button and a roster slot.
 
-Inside `.ffb-root` the `--c97-*` colour and font tokens resolve to kit values (surface to board, ink to ink, ink-2 and label to muted, accent and action to ink, rule to rule, field to raised, panel to sunk, positive, negative, and warning to the three status inks, every font token to Archivo, and Tailwind's `font-mono` and `font-sans` to Archivo too). That is a safety net for markup you have not reached. `--c97-sp-*` and `--c97-z-*` are untouched and stay available.
+Inside `.ffb-root` the `--c97-*` colour and font tokens resolve to kit values (surface to board, ink to ink, ink-2 and label to muted, accent and action to ink, rule to rule, field to raised, panel to sunk, positive, negative, and warning to the three status inks, every font token to Archivo, and Tailwind's `font-mono` and `font-sans` to Archivo too). No fantasy markup writes a Catalog 97 class or an inline `--c97-*` colour any more. The redeclaration is there for the shared parts that still read those tokens inside the root, which are `MetricTooltip` (its "?" mark and its bubble) and the frame's own focus ring. The kit restyles no Catalog 97 class. `--c97-sp-*` and `--c97-z-*` are untouched and stay available.
 
 Contrast, computed from the tokens. The lowest text pair in light is RB ink on sunk at 4.61:1, muted on sunk is 5.50:1, the edge is 3.59:1 at its lowest (light, on sunk), and on-fill text on the fills runs 6.46 to 9.79:1.
 
@@ -143,13 +146,13 @@ One family, three roles, plus the heavy number. The role sets weight, width, cas
 | Role | Setting | Used by |
 | --- | --- | --- |
 | Sticker | 800 at 72% width, capitals, 0.02em | `ffb-title`, `ffb-h2`, `ffb-bar-name`, `ffb-tier-tab`, `ffb-chip`, `ffb-sticker-name`, `ffb-slot-code`, a filled slot's name, `ffb-log`, `ffb-turn-tab`, a made grid cell, `ffb-verdict-title`, `ffb-empty-title`, `ffb-countbadge` |
-| Label | 700 at 80% width, capitals, 0.05em | `ffb-label`, `ffb-h3`, bar links, tabs, switch buttons, `ffb-btn`, `ffb-toggle`, `ffb-toast-btn`, field labels, choice titles, column heads, table heads, tier counts, team codes, scorebug labels and buttons, sticker and slot meta, grid labels, tally and turn notes, badges, `ffb-best`, `dt` in `ffb-stat` and `ffb-pairs` |
+| Label | 700 at 80% width, capitals, 0.05em | `ffb-label`, `ffb-h3`, bar links, tabs, switch buttons, `ffb-btn`, `ffb-toggle`, field labels, choice titles, column heads, table heads, tier counts, team codes, scorebug labels and buttons, sticker and slot meta, grid labels, tally and turn notes, badges, `ffb-best`, `dt` in `ffb-stat` and `ffb-pairs` |
 | Row name | 600 at normal width | `ffb-c-name`, `ffb-h4`, `dt` in `ffb-fact`, `ffb-score-label`, `ffb-neighbor-name` |
-| Heavy number | 800 at 78% width | `ffb-heavy`, `ffb-bug-value`, `ffb-bug-clock`, `dd` in `ffb-stat` and `ffb-fact`, `ffb-note-num`, `ffb-strip-value`, `ffb-slot-value` |
+| Heavy number | 800 at 78% width | `ffb-heavy`, `ffb-bug-value`, `dd` in `ffb-stat` and `ffb-fact`, `ffb-note-num`, `ffb-strip-value`, `ffb-slot-value` |
 
 Body copy is 400 at normal width. Numbers are tabular everywhere inside the root.
 
-The scale, in px: 10 (round labels), 10.5 (scorebug labels, grid numbers, slot meta, stat labels, badges), 11 (column heads, sticker meta), 12 (labels, switch and button text, team codes), 12.5 (freshness, notes, chips, tier counts, methods), 13 (the Log button, large buttons), 14 (numbers in a row, notices, fields), 15 (row names, body, the lede), 16 (inputs on a phone), 18 (sticker names, empty titles), 20 (a fact's value), 22 (section headings, a stat's value), 24 (scorebug values), 26 (the running head, the verdict), 36 (the clock), 40 (the page title, 34 on a phone), 56 (the setup headline, 40 on a phone). Nothing is smaller than 10px.
+The scale, in px: 10 (round labels), 10.5 (scorebug labels, grid numbers, slot meta, stat labels, badges), 11 (column heads, sticker meta), 12 (labels, switch and button text, team codes), 12.5 (freshness, notes, chips, tier counts, methods), 13 (the Log button, large buttons), 14 (numbers in a row, notices, fields), 15 (row names, body, the lede), 16 (inputs on a phone), 18 (sticker names, empty titles), 20 (a fact's value), 22 (section headings, a stat's value), 24 (scorebug values), 26 (the running head, the verdict), 40 (the page title, 34 on a phone), 56 (the setup headline, 40 on a phone). Nothing is smaller than 10px.
 
 ## Spacing and breakpoints
 
@@ -157,7 +160,7 @@ Spacing is the 4px step, `--ffb-s1` to `--ffb-s7`. Sections sit `--ffb-s7` apart
 
 There are two breakpoints. Below 768px (Tailwind's `md`) is the phone layout, where controls are 44px, a board row is two lines, the scorebug is two rows, and the drawer and the modal come up from the bottom. Below 1200px the rail drops under the list, and in a split layout the rail's lead block moves above it.
 
-Controls are also 44px for a touch pointer at any width (`(pointer: coarse)`), which is an iPad or a touch laptop. `--ffb-control` is 44px there, and the controls that do not read the token (the star, the search's clear button, a sort head, a tab, a neighbour row, the Log button's height, the toast's button, a row's name button, the product bar's links, and every link the kit sizes) take their 44px on the same condition. Only sizes follow the pointer. The phone's layouts stay below 768px.
+Controls are also 44px for a touch pointer at any width (`(pointer: coarse)`), which is an iPad or a touch laptop. `--ffb-control` is 44px there, and the controls that do not read the token (the star, the search's clear button, a tab, a neighbour row, the Log button's height, a row's name button, the product bar's links, and every link the kit sizes) take their 44px on the same condition. Only sizes follow the pointer. The phone's layouts stay below 768px.
 
 The pages add these content-driven breakpoints in their own sheets, each because one thing stopped fitting. Reuse one of these before adding another. None of them moves the rail.
 
@@ -165,38 +168,45 @@ The pages add these content-driven breakpoints in their own sheets, each because
 | --- | --- | --- |
 | below 360px | redraft | The scorebug's clock drops its small note |
 | below 360px | rankings | The count takes a line of its own under the two rows of controls |
-| 375px and under | redraft | A phone row's second line sets at 11px |
+| below 340px | best ball room | A phone row drops its bye, which the drawer still carries |
+| below 360px | best ball board | The count takes a line of its own, and a phone row drops the Week 17 opponent |
+| 375px and under | the kit's `ffb-board-tight` | A room's phone row sets its second line at 11px |
 | below 420px | trade | The verdict strip holds its two-line height, so it never changes height with the verdict |
 | from 480px | redraft | The setup screen's optional fields go to two columns |
-| from 640px | redraft | The setup screen's fields and the custom lineup go to three columns |
+| from 640px | redraft, mock draft | The setup screen's fields go to three columns, with the custom lineup in the redraft room and the three lineup plates in the mock draft |
+| 768px to 1199px | best ball board | The rail sits above the board at full width, so its notices take a second column beside the contest |
 | 768px up to 823, 891, 905, 973, 1023, or 1091px | rankings | The board drops the spread plot where its cell would be under about 240px. The width depends on which columns the state shows, so there is one range for each set |
 | below 1024px | rankings | A tier's scale prints every other label |
-| from 1024px | redraft | The setup screen puts Start draft beside the form and pins it. It is not an `ffb-work` layout, so the 1200px rule does not apply to it |
+| below 1024px | mock draft | The scorebug takes its short forms and drops its pool cell |
+| from 1024px | redraft, mock draft, best ball room | The setup screen takes a second column (Start draft beside the form in the two redraft-style rooms, the contest's details beside the slot picker in the best ball room). None is an `ffb-work` layout, so the 1200px rule does not apply to them |
+| from 1200px | mock draft | The recap's four facts read two by two |
 | below 1280px | rankings | The spread column's head drops its legend, and a scale of more than eight labels prints every other one |
 | below 1280px | redraft | The scorebug drops its pool cell |
 | from 1280px | redraft | The custom lineup goes to six columns |
 | below 1440px | redraft | The scorebug takes its short forms. The kit's own switch is at 1300px, and this room's six cells and three buttons need more room than that |
 
-The redraft decision panel lays its rows out from its own width with two container queries, at 544px and 1100px, so it has no screen breakpoint. These are the widths in the rankings, redraft, and trade sheets on 2026-10-13. The mock draft and the two best ball pages were being rebuilt on that date and are not in the table. Tailwind's `lg` is 1024px and `xl` is 1280px, so anything you show or hide together with the rail takes `min-[1200px]:` or `max-[1199px]:`.
+The redraft decision panel lays its rows out from its own width with two container queries, at 544px and 1100px, so it has no screen breakpoint. These are the widths in the eight sheets on 2026-10-13. Tailwind's `lg` is 1024px and `xl` is 1280px, so anything you show or hide together with the rail takes `min-[1200px]:` or `max-[1199px]:`.
 
 ## Helpers
 
 | Class | What it does |
 | --- | --- |
 | `ffb-vh` | Visually hidden, still read. Tailwind's `sr-only` is fine too, and some tests pin it |
+| `ffb-vh-desk` | Visually hidden from 768px and printed on a phone, for a word the desktop's column head already says (the "Bye" before a row's bye week). It is still read at every width |
+| `ffb-skip` | A link or button that lets a keyboard past a long list. It is out of sight until it takes focus, and it does not print. Put `ffb-btn` on the same element |
+| `ffb-noprint` | Left off paper, for a control or a note that does nothing there |
 | `ffb-only-phone`, `ffb-not-phone` | Hidden from 768px up, and hidden below 768px. Each only hides, so where it does not apply the element keeps the display its own class gives it (`ffb-iconbtn ffb-only-phone` is still an inline grid on a phone). They beat every component class and utility, and they follow the page's width on paper |
 | `ffb-muted`, `ffb-good`, `ffb-bad`, `ffb-warn` | Text colour |
 | `ffb-num` | Right aligned, no wrap |
 | `ffb-label` | Label type at 12px, for a stray label |
-| `ffb-heavy` | The heavy number on a plain element, at 18px. `ffb-heavy-sm` is 16px and `ffb-heavy-lg` 24px. Use it where a number is not a `dd` in `ffb-stat` or `ffb-fact` |
+| `ffb-heavy` | The heavy number on a plain element, at 18px. Use it where a number is not a `dd` in `ffb-stat` or `ffb-fact` |
 | `ffb-fine` | A muted note at 12.5px, under or beside something |
 | `ffb-copy` | A muted paragraph at 14px with a 62ch measure. `ffb-empty-body` is the same rule under its older name |
 | `ffb-stack` | A column of blocks with a `--ffb-s4` gap. `ffb-stack-tight` is s2 (8px), `ffb-stack-mid` s5 (24px), `ffb-stack-loose` s6 (32px), `ffb-stack-page` s7 (48px) |
 | `ffb-block` | A block that carries its own 12px bottom margin, for a column that cannot use a gap because one of its children stays mounted while empty |
 | `ffb-with-help` | A label with a help trigger beside it on one line (`<dt class="ffb-with-help">Expert consensus <MetricTooltip … /></dt>`) |
 | `ffb-dotlist` | A wrapping line of short items joined by dots. The dot is drawn after each item but the last, so a wrapped line never starts with one, and it is left out of the accessible text. Put a real space between the items in the markup |
-| `ffb-cluster` | A wrapping row of small things, centred. `ffb-cluster-end` pushes it right |
-| `ffb-split` | Two ends of one line, baseline aligned, wrapping |
+| `ffb-cluster` | A wrapping row of small things, centred |
 | `ffb-columns` | Equal columns that fall to one. Set `--ffb-col-min` (default 280px) inline or in your sheet |
 | `ffb-sticky` | Pins to the top of the page on the surface colour, at `--c97-z-sticky`. It paints 4px past each side, which is how far a queued rank's highlighter runs, so nothing slides past it. A second bar under the first reads `--ffb-sticky-top`, which you set from the measured height of the first. A pinned wrapper that holds a scorebug directly gets 4px of block padding, the room the live cell needs to stand proud |
 | `ffb-sticky-ruled` | With `ffb-sticky`, for a pinned block that holds the column heads. It ends on the 2px ink rule a table head ends on. Put `ffb-board-ruled` on the board (see The board) |
@@ -270,7 +280,7 @@ A rail that is also a named section of the page takes the `ffb-h2` head on the 2
 
 `ffb-work-split` changes the order below 1200px, so the section marked `ffb-rail-lead` moves above the list and the rest of the rail follows the list, side by side where two sections fit. It does that with `display: contents` on the rail, so below 1200px the rail is not a box. Put the landmark role on the sections inside if you need one, and check it with a screen reader. A roster in the lead block takes its compact form there (see Position and picks), which at 1024 by 768 and at 768 by 1024 leaves the first board row on the first screen.
 
-The list keeps growing as someone scrolls, so whatever follows it below 1200px can only be reached if the list stops extending by itself there. So a page with a split layout ends its list on `ffb-more-row` with a Load more button below 1200px, and puts a skip link to the rail before the list. The redraft room does both. `DraftBoard.tsx` extends its window by itself only from 1200px, and "Skip to your roster" is a link before the board that shows when it takes focus.
+The list keeps growing as someone scrolls, so whatever follows it below 1200px can only be reached if the list stops extending by itself there. So a page with a split layout ends its list on `ffb-more-row` with a Load more button below 1200px, and puts a skip link to the rail before the list. The redraft room does both. `DraftBoard.tsx` extends its window by itself only from 1200px, and "Skip to your roster" is an `ffb-btn ffb-skip` link before the board that shows when it takes focus. All three rooms have one.
 
 ## Controls
 
@@ -295,6 +305,10 @@ The list keeps growing as someone scrolls, so whatever follows it below 1200px c
 ```
 
 The pressed look follows `aria-pressed="true"`, `aria-checked="true"`, or `aria-selected="true"`, so it works for toggle buttons, radios, and tabs. Inside a toolbar on a phone it stretches to fill the row.
+
+`ffb-seg-fill` makes a switch fill its field, so it lines up with the selects beside it on a setup screen. `ffb-seg-scroll` is for a switch too long for its row (the eight contests). It scrolls sideways at any width, and on a phone it runs off the right edge of the screen as the position switch does, so it has to sit in the page column.
+
+A pressed button that is disabled (a board that failed to load keeps its selection) gives up its ink fill for a 2px edge, since the muted disabled label measured 2.76:1 on the fill in light and 2.18:1 in dark. A pressed position keeps its sticker, whose label is not muted.
 
 The position switch adds `ffb-seg-pos` on the group and a position class on each button. Each position carries its colour as a 4px foot bar, Flex carries three, and the pressed position is a full sticker. Use `PositionFilterBar` where you can. A disabled button loses its foot bar, goes muted, and should print "NA" in `span.ffb-seg-na` with the reason in its accessible name and `title`. When every button is disabled the group's edge goes dashed. On a phone the group scrolls sideways off the right edge of the screen, so it has to sit in the page column.
 
@@ -442,13 +456,13 @@ A board is a list of ruled rows on one column template. You set the template onc
 </div>
 ```
 
-Cells, in order: `ffb-c-rank`, the chip, `ffb-c-name`, `ffb-c-team`, `ffb-c-bye`, then any number of `ffb-c-num`, the spread, and the actions. `ffb-c-num.ffb-is-strong` is a number that carries a judgement (a real gap against ADP, a move), and `ffb-is-flat` is one that carries none or is only a reference. A signed number prints its sign in both cases.
+Cells, in order: `ffb-c-rank`, the chip, `ffb-c-name`, `ffb-c-team`, `ffb-c-bye`, then any number of `ffb-c-num`, the spread, and the actions. `ffb-c-num.ffb-is-strong` is a number that carries a judgement (a real gap against ADP, a move), and `ffb-is-flat` is one that carries none or is only a reference. `ffb-is-good` puts a number in the good ink, for a gap that reads as value at this pick. A signed number prints its sign in every case, and a negative prints the minus sign (U+2212), never a hyphen. `formatPickDelta` and `withMinusSign` in `src/lib/fantasyUtils.ts` do that.
 
 Opening the player. Either put `button.ffb-row-open` first in the row, which covers the whole row while the star, the Log button, links, and anything marked `data-ffb-above` stay above it, or make the name the button (`button.ffb-c-name`). On a phone the name button covers both lines of the row so it is a 44px target.
 
 States of a row: `ffb-is-queued` (a highlighter sticker behind the rank, used with the pressed star) and `ffb-is-active` (the row the keyboard is on, a 2px ink outline). A hovered row takes the sunk surface.
 
-Column heads are label type. `ffb-h-num` right aligns and `ffb-h-pos` centres. `button.ffb-h-sort` is a head that sorts, and `ffb-is-sorted` marks the current one with a caret (`ffb-is-asc` turns it over). A "What is…?" help trigger is `MetricTooltip` with children, which draws a dotted underline, and it needs no kit class.
+Column heads are label type. `ffb-h-num` right aligns and `ffb-h-pos` centres. `ffb-is-sorted` marks the head of the column the list is sorted by, in ink with a caret. A "What is…?" help trigger is `MetricTooltip` with children, which draws a dotted underline, and it needs no kit class. A head that leaves a phone takes `ffb-not-phone`, never `hidden md:grid`, since the site's `md` is screen only and the head would never print.
 
 The phone row. Below 768px the kit replaces the template: a row is two lines, the name over the chip, team, and bye, with up to two numbers at the right and the action at the edge. Mark what a phone keeps and everything else drops out.
 
@@ -458,9 +472,8 @@ The phone row. Below 768px the kit replaces the template: a row is two lines, th
 | `ffb-c-num ffb-m-sub` | Line two, right |
 | `ffb-c-num ffb-m-meta` | Line two, after the bye, muted (a room's ADP) |
 | `ffb-m-show` on a column head | Kept. The last kept head moves right |
-| `ffb-c-desk` | Any other cell of yours that a phone should drop |
 
-The board's action columns on a phone are set by a modifier on `.ffb-board`: none for a single star (44px), `ffb-board-log` for a single Log or Draft button (52px), `ffb-board-star-log` for both, and `ffb-board-plain` for no action. `ffb-board-room` sets 44px rows on a desktop, since each row carries a button.
+The board's action columns on a phone are set by a modifier on `.ffb-board`: none for a single star (44px), `ffb-board-log` for a single Log or Draft button (52px), `ffb-board-star-log` for both, and `ffb-board-plain` for no action. `ffb-board-room` sets 44px rows on a desktop, since each row carries a button. `ffb-board-tight` is a room's phone row with one more thing on its second line (a number with its label). It takes 8px from the Log button's column, 2px from each gap, and 4px from the chip, and at 375px and under the second line sets at 11px. The redraft room and the best ball room use it. `ffb-board-open` is for a board whose rows open the player from anywhere. Every cell sits above the opener, so a hover title fires and a name can be selected, and the row's own click still opens the player. The rankings board and the best ball board use it.
 
 A row outside `.ffb-board` keeps its own `--ffb-cols` on a phone. Two such rows are in the kit.
 
@@ -503,7 +516,7 @@ The rankings board swaps the sideways position switch for a native `select` on a
 
 A control in a row that takes keyboard focus is scrolled clear of what is pinned over the list. Every `a`, `button`, `select`, and `input` inside `ffb-row`, a kit table's body row, and `ffb-more-row`, and `ffb-more` itself, carries `scroll-margin-top: var(--ffb-pinned-top, 152px)` and `scroll-margin-bottom: var(--ffb-pinned-bottom, 96px)`. The fallbacks clear the tallest pinned stack measured on the pages (147px, the redraft room's scorebug and board bar) and the 74px compare tray. A page that measures its bars can set `--ffb-pinned-top` to the height of everything pinned over its list, on the list or any wrapper, and `--ffb-pinned-bottom` to the tray's height while the tray shows. `--ffb-sticky-top` is a different thing, the offset a second bar pins at. Both margins are zero inside `ffb-sticky`, an overlay, the tray, and a sticky rail, because a margin on a control that is itself pinned would scroll the page every time it took focus.
 
-The rankings board sets `--ffb-pinned-top` on `.ffb-rk-board` in its sheet, from the height of its toolbar block, which `fantasy-football-client.tsx` measures and writes as `--ffb-rk-bar`, plus the pinned tier head, and it keeps the kit's 152px as the floor. The compare tray shows on the two best ball pages, so the page that draws the tray is the one to set `--ffb-pinned-bottom`, on the wrapper of its board, while the tray shows.
+The rankings board sets `--ffb-pinned-top` on `.ffb-rk-board` in its sheet, from the height of its toolbar block, which `fantasy-football-client.tsx` measures and writes as `--ffb-rk-bar`, plus the pinned tier head, and it keeps the kit's 152px as the floor. The redraft room does the same from 768px, where its board bar is measured as `--ffb-dt-bar` and takes a second row near 1200px (173px with the scorebug, against the kit's 152px). The best ball board sets it from its own measured toolbar block. The mock draft writes the variable inline from its two measured bars, and the best ball room sets it on a phone. From 1200px the best ball room's stack is 149px, inside the fallback, so it sets nothing there. The compare tray shows on the two best ball pages, so the page that draws the tray is the one to set `--ffb-pinned-bottom`, on the wrapper of its board, while the tray shows.
 
 ### A pinned head on the ink rule
 
@@ -669,7 +682,7 @@ A sticker with a remove button inside it (a pinned player in the compare tray) i
 </span>
 ```
 
-Last picks is one row of whole stickers, newest first. The older ones are clipped, so nothing is cut in half. On a phone it scrolls sideways off the right edge. Where the stickers are buttons, a clipped one still takes focus where nobody sees it, so count the first row with `useFirstRowCount(listRef, picks.length)` and set `visibility: hidden` on the items past that count, as `DraftLastPicks` does.
+Last picks is one row of whole stickers, newest first. The older ones are clipped, so nothing is cut in half. On a phone it scrolls sideways off the right edge. `ffb-picks-head` holds the heading with `ffb-picks-note` under it, a short note that says what a sticker does when it is a button, and on a phone the two share a line. Inside the list a `button.ffb-sticker` fills its `li` and takes an ink outline under the pointer. Where the stickers are buttons, a clipped one still takes focus where nobody sees it, so count the first row with `useFirstRowCount(listRef, picks.length)` and set `visibility: hidden` on the items past that count, as `DraftLastPicks` does.
 
 ```html
 <div class="ffb-picks"><h2 class="ffb-h3">Last picks</h2> <ol class="ffb-picks-list">…stickers…</ol></div>
@@ -702,7 +715,7 @@ A roster inside `ffb-rail-lead` is compact below 1200px, where the lead block si
 </ul>
 ```
 
-The pick grid is rounds down and slots across. Set `--ffb-teams` and `--ffb-my-slot` on it. My column sits on a highlighter band and is headed "You", each round's label carries a mark for the way the round runs, the cell on the clock is highlighter with an ink outline, and a cell's accessible name carries the pick number, the player, and the position. The open cells of my column and its "You" head paint the highlighter themselves, so their text measures against it.
+The pick grid is rounds down and slots across. Set `--ffb-teams` and `--ffb-my-slot` on it. My column sits on a highlighter band and is headed "You", each round's label carries a mark for the way the round runs, the cell on the clock is highlighter with an ink outline, and a cell's accessible name carries the pick number, the player, and the position. The open cells of my column and its "You" head paint the highlighter themselves, so their text measures against it. `ffb-grid-names` on the grid prints each made cell's player under its label, in `span.ffb-cell-name`, from 1200px, where the cells are 52px tall. Use it only where the grid has the page's width, as a recap does. `DraftPickGrid` does this with its `names` prop.
 
 ```html
 <div class="ffb-grid" style="--ffb-teams:12;--ffb-my-slot:3">
@@ -732,8 +745,8 @@ One bar of four to six cells with the live cell in highlighter. In the light the
   <div class="ffb-bug" role="group" aria-label="Live draft status">
     <div class="ffb-bug-seg"><span class="ffb-bug-label">Pick</span><p class="ffb-bug-value">16 <small>of 180</small></p></div>
     <div class="ffb-bug-seg"><span class="ffb-bug-label">Round</span><p class="ffb-bug-value">2 <small>of 15</small></p></div>
-    <div class="ffb-bug-seg ffb-bug-live"><span class="ffb-bug-label">On the clock</span><p class="ffb-bug-value">Slot 9</p>
-      <p class="ffb-bug-clock" role="timer">1:29 <small>advisory, 90s</small></p></div>
+    <div class="ffb-bug-seg ffb-bug-live" title="Slot 9"><span class="ffb-bug-label">On the clock</span><p class="ffb-bug-value">Slot 9</p>
+      <p class="ffb-bug-note">Prev · C. Brown #15</p></div>
     <div class="ffb-bug-seg"><span class="ffb-bug-label">Your next turn</span><p class="ffb-bug-value">#22 <small>in 6 picks</small></p></div>
     <div class="ffb-bug-seg"><span class="ffb-bug-label">Pool</span><p class="ffb-bug-value">536 <small>left</small></p></div>
     <div class="ffb-bug-actions"><button type="button" class="ffb-bug-btn">Undo pick</button><button type="button" class="ffb-bug-btn ffb-bug-btn-quiet">New room</button></div>
@@ -741,7 +754,7 @@ One bar of four to six cells with the live cell in highlighter. In the light the
 </div>
 ```
 
-The cells are plain flex children, so four, five, or six all work, and the live cell can sit anywhere in the order. It stands 4px proud of the bar. Leave the clock out and the live cell is one column, a label over a value. On a phone the bar runs edge to edge in two rows, the live cell with the actions and then the other cells in equal columns, and the advisory note sits under the clock. Below about 360px the actions wrap to a row of their own. The bar has to sit in the page column for the bleed to reach the screen edge.
+The cells are plain flex children, so four, five, or six all work, and the live cell can sit anywhere in the order. It stands 4px proud of the bar and is one column, a label over a value. Its value holds a width of 8.5rem from 768px and ends a long name in an ellipsis, so the bar wraps at the same point, and keeps the same height, whoever is on the clock. Put the full name in the cell's `title`. `ffb-bug-note` is a small second line under any cell's value (the pick just logged). On a phone the bar runs edge to edge in two rows, the live cell with the actions and then the other cells in equal columns. Below about 360px the actions wrap to a row of their own. The bar has to sit in the page column for the bleed to reach the screen edge.
 
 Inside the bug the focus ring is the highlighter in light and ink in dark. Use `ffb-bug-btn` for its buttons, since `ffb-btn` reads the board's colours.
 
@@ -789,7 +802,7 @@ Draft signals, a turn replay, and position runs are a title line and a muted not
 
 ### Freshness line
 
-`p.ffb-fresh`, muted, 12.5px, parts joined by a dot. Each part is a `span.ffb-fresh-part` that holds its label and its dot, so from 768px the line breaks only between parts. A part that carries a status takes `ffb-warn` or `ffb-bad` and still says so in words ("ADP stale"). `FreshnessParts` draws it. It prints once per page.
+`p.ffb-fresh`, muted, 12.5px, parts joined by a dot. Each part is a `span.ffb-fresh-part` that holds its label and its dot, so from 768px the line breaks only between parts. A part that carries a status takes `ffb-warn` or `ffb-bad` on its label and still says so in words ("ADP stale"). `FreshnessParts` draws it, from a part's `tone` of `warning` or `negative`. It prints once per page.
 
 ### Notice
 
@@ -814,7 +827,7 @@ Keep the role the page already uses (`note`, `status`, `alert`), since tests rea
 
 ### Badge, count, meter
 
-`ffb-badge` is a status word in a 20px outline, toned with `ffb-good`, `ffb-bad`, or `ffb-warn`. `ffb-badge-fill` is the ink-filled version. A badge is a label, so do not make one a button.
+`ffb-badge` is a status word in a 20px outline, toned with `ffb-good`, `ffb-bad`, or `ffb-warn`. A badge is a label, so do not make one a button.
 
 `ffb-countbadge` is a highlighter count of what is mine (queued players).
 
@@ -842,19 +855,21 @@ Tone the title with a status class, or leave it ink for a balanced read. `ffb-sc
 
 ## Room parts
 
-A draft room is built from `src/components/fantasy/DraftRoomParts.tsx`. A room imports these parts and does not copy their markup, so a fix to a part reaches every room. They were written for all three rooms, which are the redraft room, the mock room, and the best ball room. Each part is kit markup with the room's values filled in. None of them holds room state, and none imports from a route folder. What they need past the kit is in `fantasy-room.css` (prefix `ffb-rm-`), which the parts file imports itself, so a room gets it with the parts.
+A draft room is built from `src/components/fantasy/DraftRoomParts.tsx`. A room imports these parts and does not copy their markup, so a fix to a part reaches every room. The redraft room, the mock room, and the best ball room are all built from them. Each part is kit markup with the room's values filled in. None of them holds room state, and none imports from a route folder. The kit draws them. The one thing past it is the "All picks" list under the grid, whose four rules are in `fantasy-room.css` (prefix `ffb-rm-`), which the parts file imports itself, so a room gets it with the parts.
 
 | Part | What it draws | Props |
 | --- | --- | --- |
-| `DraftScorebug` | The pinned `section.ffb-sticky`, holding one visually hidden status sentence and the `ffb-bug` bar. Its children are the cells | `label` is the section's accessible name. `announcement` is the sentence, which should change only when the room does (a pick logged or undone), because a cell may hold a per-second clock and the section is not a live region. `actions` are the `ffb-bug-btn` buttons at the bar's far end. `sectionRef` is the element a room measures to pin its board bar and its rail. `className` goes on the bar |
+| `DraftScorebug` | The pinned `section.ffb-sticky` holding the `ffb-bug` bar. Its children are the cells | `label` is the section's accessible name. `announcement` is optional. With it the bar prints a visually hidden status sentence, and without it the bar prints none, which is what a room wants (see below). `actions` are the `ffb-bug-btn` buttons at the bar's far end. `sectionRef` is the element a room measures to pin its board bar and its rail. `className` goes on the bar |
 | `DraftScorebugCell` | One `ffb-bug-seg`, a label over a value | `label` is a node, so a room can pass a long form and a short form. `live` paints the on-the-clock cell in the highlighter and holds its width, so a long team name ends in an ellipsis and the bar keeps one height. Put the full name in `title`. `note` is a small second line under the value (the pick just logged). The value is the children. Any other `div` attribute lands on the cell, so a room can give it a `ref` and `tabIndex` to focus it, a `role`, or a class |
 | `DraftLastPicks` | `ffb-picks`, with the picks as stickers, newest first. It renders nothing while there are no picks | `picks` and `userTeam`. `heading` is "Last picks" unless you pass another. `headingLevel` is 2 or 3 and changes the element, not the look. With `onUndoToPick` each sticker is a button that undoes back to that pick, a note beside the heading says so, and the stickers that fell out of the first row are hidden so none takes focus unseen |
 | `DraftRoster` | The rail's lead block, `section.ffb-rail-lead`, with the roster as `ffb-slots` and the bench | `assignment` is the lineup's `slots` and `bench`. `picked` and `rounds` print as "3 of 15 picked" |
-| `DraftPickGrid` | The pick grid, rounds down and slots across, growing to the current round, with the tally and an "All picks" disclosure that lists every pick by round for a touch screen, a keyboard, and paper | `picks`, `totalTeams`, `userTeam`, `rounds`, `currentPick`, `currentRound`, and `isComplete`. `slotForPick` is the room's draft order, the slot that makes a given overall pick, and the grid reads each round's direction from it |
+| `DraftPickGrid` | The pick grid, rounds down and slots across, growing to the current round, with the tally and an "All picks" disclosure that lists every pick by round for a touch screen, a keyboard, and paper | `picks`, `totalTeams`, `userTeam`, `rounds`, `currentPick`, `currentRound`, and `isComplete`. `slotForPick` is the room's draft order, the slot that makes a given overall pick, and the grid reads each round's direction from it. `heading` ("Pick grid" unless you pass another) and `headingLevel` (2 or 3) name the grid and place it in the page's outline. `sectionHead` draws the head a section of the page takes, for a grid that is a section and not a rail block. `names` prints each player's name in its cell from 1200px, so pass it only where the grid has the page's width. The mock draft's recap passes all four |
 
 A pick is a `RoomPick`, which is the `pickNumber`, `teamNumber`, and `player` of a draft pick, so a redraft pick and a best ball pick both fit.
 
 A room keeps what is its own in its own sheet, which means the cells it puts in the scorebug, its strip, its board's columns, and its rail blocks. If a part needs a change, change the part.
+
+A room announces its state in one status element of its own, `<p role="status" aria-live="polite" class="sr-only">`, which it keeps mounted from its setup screen through the room to the recap. So each sentence is a change inside a region a screen reader already knows. A region that mounts together with its text can be skipped, which is why the scorebug does not carry the room's sentence. The paragraph is empty on setup. All three rooms do this, and each has a test that the element is the same node before and after its Start button.
 
 ## Overlays
 
@@ -866,7 +881,6 @@ The markup below is `position: fixed` inside the route root, as the drawer, the 
   <div class="ffb-drawer ffb-enter-side" role="dialog" aria-modal="true" aria-label="Justin Jefferson detail" tabindex="-1">
     <div class="ffb-panel-head">…chip, rank line, h2.ffb-h2 name… <button class="ffb-iconbtn" aria-label="Close">×</button></div>
     <div class="ffb-panel-body">…sections…</div>
-    <div class="ffb-panel-foot">…</div>
   </div>
 </div>
 ```
@@ -878,9 +892,9 @@ The markup below is `position: fixed` inside the route root, as the drawer, the 
 | `ffb-drawer` | The right-hand panel, 26rem wide with a 2px ink edge. On a phone it is a bottom sheet up to 88dvh |
 | `ffb-modal` | A centred panel up to 44rem. On a phone it comes up from the bottom |
 | `ffb-sheet` | A bottom sheet at every width |
-| `ffb-panel-head`, `ffb-panel-body`, `ffb-panel-foot` | The sticky head, the padded body with a 24px gap between sections, and the foot |
-| `ffb-tray`, `ffb-tray-row`, `ffb-tray-space` | The compare tray pinned to the bottom at `--c97-z-tray`, its row (put `c97-shell c97-frame` on the same element), and the 80px of room it needs at the end of the page. The row does not wrap, or it would outgrow that room, so give its list `flex: 1 1 0; min-width: 0` and let that part shrink |
-| `ffb-toast`, `ffb-toast-btn` | A message at the bottom centre at `--c97-z-toast`, ink with board text in both themes, and the outlined button for an undo inside it |
+| `ffb-panel-head`, `ffb-panel-body` | The sticky head, and the padded body with a 24px gap between sections. The body is one column that cannot be wider than the panel, whatever its widest block wants |
+| `ffb-tray`, `ffb-tray-row`, `ffb-tray-space` | The compare tray pinned to the bottom at `--c97-z-tray`, its row (put `c97-shell c97-frame` on the same element), and the 80px of room it needs at the end of the page. The row does not wrap, or it would outgrow that room, so give its list `flex: 1 1 0; min-width: 0` and let that part shrink. `ffb-tray-narrow` on the tray and on its spacer is a tray that shows only below 1200px (a room's bottom bar, where the rail is not beside the list). While a page shows a tray's spacer, the kit runs the site's footer 80px longer in its own colour, so the footer's last lines clear the tray at the end of the page |
+| `ffb-toast` | A message at the bottom centre at `--c97-z-toast`, ink with board text in both themes |
 | `ffb-enter-fade`, `ffb-enter-rise`, `ffb-enter-side` | Entrances from `@starting-style`, off under reduced motion, so the first paint is never transparent |
 
 Panels are the raised surface and set `--ffb-surface` to it, so a sticky head or a sticky table column inside paints the right colour. Inside a panel, sections are ruled with `ffb-sechead`, facts are `ffb-stats` or `ffb-facts`, and nothing is a bordered card.
@@ -924,7 +938,7 @@ An error is `ffb-notice ffb-notice-bad` with `role="alert"` and a retry in `ffb-
 | `ffb-prose` | Running text at 15px with a 68ch measure and 12px between paragraphs |
 | `ffb-faq` | Questions and answers in columns. Each child is a block of `h3.ffb-h4` and `p` |
 | `ffb-notes`, `ffb-note`, `ffb-note-num` | Field notes: a list of short entries on rules, each with an optional number, an `ffb-h4` title, and a paragraph |
-| `ffb-method` | The method footnote under a board, 12.5px and muted. `ffb-method-ruled` puts it on a 1px rule with 12px above the text |
+| `ffb-method` | The method footnote under a board, 12.5px and muted. `ffb-method-ruled` puts it on a 1px rule with 12px above the text. The rule runs the width of the column and the sentence keeps the method's 96ch measure |
 | `ffb-footlinks` | The last line of a page, with one sentence at the left and a `nav` of `ffb-link` at the right, on a rule |
 
 A page's last line is its source or method sentence on that rule, as `<p class="ffb-method ffb-method-ruled">`. The product bar replaced the foot's link lists, so `ffb-footlinks` is for a page that still has a real link to put beside the sentence, and nothing follows either one. Set the space above the line in your own sheet, since it depends on what the line follows.
@@ -935,11 +949,11 @@ On paper the board prints its light palette whatever the theme. Position fills p
 
 The kit's breakpoints follow the paper's width. A portrait Letter or A4 page is under 768px wide, so it prints the phone layout and the `ffb-only-phone` half of a pair, and a page turned on its side prints the desktop half. Tailwind's `md` variants never apply on paper (see the cascade), so a pair that has to print right switches with the kit's helpers. A closed `details` prints closed unless it carries `ffb-details-print`.
 
-If your page has a control that does nothing on paper, hide it in your area sheet under `@media print` with a `.ffb-root` selector.
+A control or a note that does nothing on paper takes `ffb-noprint`. Anything more particular is hidden in your area sheet under `@media print` with a `.ffb-root` selector. A board's column head has to print wherever the desktop row does, so it leaves a phone through `ffb-not-phone`.
 
 ## Forced colours
 
-Windows high contrast paints its own colours over every background. The kit has one block for it. The spread's three marks and its legend take the text colour, a queued star is filled in the text colour, and a pressed, checked, or selected `ffb-seg-btn`, `ffb-tab`, `ffb-toggle`, `ffb-iconbtn`, and a checked `ffb-choice` take the system's selection pair (`Highlight` and `HighlightText`). That rule also sets `forced-color-adjust: none`, because the browser otherwise paints a plate in the page colour behind the label and the label disappears into it. If your sheet draws a state or a mark with a fill alone, give it the same treatment under `@media (forced-colors: active)`, which the trade calculator's active search option still needs.
+Windows high contrast paints its own colours over every background. The kit has one block for it. The spread's three marks and its legend take the text colour, a queued star is filled in the text colour, and a pressed, checked, or selected `ffb-seg-btn`, `ffb-tab`, `ffb-toggle`, `ffb-iconbtn`, and a checked or pressed `ffb-choice` take the system's selection pair (`Highlight` and `HighlightText`). That rule also sets `forced-color-adjust: none`, because the browser otherwise paints a plate in the page colour behind the label and the label disappears into it. If your sheet draws a state or a mark with a fill alone, give it the same treatment under `@media (forced-colors: active)`, which the trade calculator's active search option still needs.
 
 ## How a page is put together
 
@@ -984,17 +998,19 @@ A room:
       <p class="ffb-lede">My Fantasy League · 12-team snake · PPR</p>
       <FreshnessParts parts={…} />
     </header>
-    <div class="ffb-sticky" ref={measured}><div class="ffb-bug">…</div></div>
-    <div class="ffb-picks">…last picks…</div>
+    <p role="status" aria-live="polite" class="sr-only">{the room's one announcement, empty on setup}</p>
+    <DraftScorebug label="Live draft status" sectionRef={measured} actions={…}>…cells…</DraftScorebug>
+    <DraftLastPicks … />
     <div class="ffb-work ffb-work-split" style="--ffb-sticky-top: <the bug's measured height>px">
+      <a class="ffb-btn ffb-skip" href="#your-draft">Skip to your roster</a>
       <div class="ffb-board ffb-board-room ffb-board-star-log ffb-xx-board">
         <div class="ffb-sticky ffb-toolbar">…position switch, search, count…</div>
-        <div class="ffb-colhead" aria-hidden="true">…</div>
+        <div class="ffb-colhead ffb-not-phone" aria-hidden="true">…</div>
         <section class="ffb-tier">…rows with a star and a Log button…</section>
       </div>
       <aside class="ffb-rail">
-        <section class="ffb-rail-lead">…ffb-sechead, ffb-slots…</section>
-        <section>…ffb-sechead, ffb-grid, ffb-tally…</section>
+        <DraftRoster … />
+        <DraftPickGrid … />
         <section>…ffb-sechead, ffb-facts, ffb-score…</section>
       </aside>
     </div>

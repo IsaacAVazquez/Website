@@ -232,6 +232,26 @@ describe("MockDraftClient", () => {
     });
   });
 
+  it("keeps one status line mounted from setup through the room to the recap", () => {
+    render(<MockDraftClient />);
+    const roomStatus = () =>
+      screen.getAllByRole("status").find((status) => status.classList.contains("sr-only")) as HTMLElement;
+    const onSetup = roomStatus();
+    expect(onSetup).toBeEmptyDOMElement();
+
+    startMock();
+    expect(roomStatus()).toBe(onSetup);
+    expect(onSetup).toHaveTextContent(/^Room #\d{3} open\. You are on the clock at pick #5, round 1 of 5\./);
+    // The scorebug prints no status of its own, so the room has one announcement.
+    expect(
+      within(screen.getByRole("region", { name: "Live mock draft status" })).queryByRole("status")
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /Sim to end/ }));
+    expect(roomStatus()).toBe(onSetup);
+    expect(onSetup).toHaveTextContent("The room is finished. The value report and the board are below.");
+  });
+
   it("moves focus to the on-the-clock panel and announces the opening turn on start", () => {
     render(<MockDraftClient />);
     startMock();
@@ -387,7 +407,11 @@ describe("MockDraftClient", () => {
       name: /^Pick \d+, slot \d+(, yours)?, Player \d+, (QB|RB|WR|TE|K|DST)$/,
     });
     expect(cells).toHaveLength(50);
+    // The grid is headed once, by the section's own heading, and every made cell prints its player.
+    expect(within(boardSection).queryByRole("heading", { name: "Pick grid" })).not.toBeInTheDocument();
+    expect(within(boardSection).getAllByRole("heading", { level: 2 })).toHaveLength(1);
     cells.forEach((cell) => {
+      expect(cell.querySelector(".ffb-cell-name")).toHaveTextContent(/^Player \d+$/);
       expect(cell).toHaveClass("ffb-cell", "ffb-is-made");
       expect(cell.className).toMatch(/\bffb-pos-(qb|rb|wr|te|k|dst)\b/);
     });
@@ -579,7 +603,7 @@ describe("MockDraftClient", () => {
     // The bye's label is read out on a desktop and printed on a phone, never dropped.
     const bye = items[0].querySelector(".ffb-c-bye");
     expect(bye).toHaveTextContent(/^Bye 9$/);
-    expect(bye?.firstElementChild).toHaveClass("ffb-mk-vh-desk");
+    expect(bye?.firstElementChild).toHaveClass("ffb-vh-desk");
     const line = items.findIndex((item) => item.classList.contains("ffb-turnline"));
     expect(line).toBe(11);
     expect(items[line]).toHaveTextContent("Your next turn #16 if picks follow this board");

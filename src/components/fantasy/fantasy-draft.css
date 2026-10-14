@@ -30,19 +30,7 @@
   align-items: start;
 }
 .ffb-dt-fields > :nth-child(3) { grid-column: 1 / -1; }
-/* A switch inside a field fills its column, so it lines up with the selects beside it. */
-.ffb-dt-field-seg { display: flex; width: 100%; }
-.ffb-dt-field-seg > .ffb-seg-btn { flex: 1 1 0; }
-.ffb-dt-fieldset {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.ffb-dt-fieldset > legend {
-  margin-bottom: 6px;
-  padding: 0;
-}
+.ffb-dt-fieldset > legend { margin-bottom: 6px; }
 /* Three lineups, three columns. On a phone the plates carry their titles only, and the
    summary line under them spells out the lineup in force. */
 .ffb-dt-lineups { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -180,19 +168,6 @@
   justify-content: flex-end;
 }
 
-/* A way past the board for a keyboard. It is out of sight until it takes focus. */
-.ffb-dt-skip { margin-bottom: var(--ffb-s2); }
-.ffb-dt-skip:not(:focus) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 /* The board. Rank, chip, name, team, bye, then the numbers this room has, then the star and Log. */
 .ffb-dt-board { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 36px 56px; }
 .ffb-dt-board.ffb-dt-has-vorp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 40px 36px 56px; }
@@ -206,8 +181,15 @@
   text-overflow: ellipsis;
 }
 .ffb-dt-vorp { padding-bottom: var(--ffb-s2); }
-/* A delta that reads as value at this pick takes the good ink, and keeps its sign. */
-.ffb-dt-board .ffb-c-num.ffb-dt-is-value { color: var(--ffb-good); }
+/* The kit scrolls a focused row control clear of what is pinned over the list. From 768px that
+   is the scorebug and this board's bar, both measured, and the bar takes a second row near
+   1200px (173px in all, against the kit's 152px). The kit's value stays the floor. On a phone
+   the bar is not pinned, and the floor covers the scorebug. */
+@media (min-width: 768px) {
+  .ffb-dt-board {
+    --ffb-pinned-top: max(152px, calc(var(--ffb-sticky-top, 68px) + var(--ffb-dt-bar, 79px) + var(--ffb-s1)));
+  }
+}
 
 /* The recap. */
 .ffb-dt-recap { display: grid; gap: var(--ffb-s4); min-width: 0; }
@@ -228,18 +210,6 @@
 }
 .ffb-dt-foot { margin-top: var(--ffb-s6); }
 
-@media (min-width: 768px) {
-  /* Read out, not shown: the column head already says it. */
-  .ffb-dt-vh-desk {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-}
-
 @media (max-width: 767.98px) {
   /* Two rows at most: the live cell with the three actions, then the other cells at their own widths. */
   .ffb-dt-bug .ffb-bug-live { flex-basis: 120px; }
@@ -257,23 +227,9 @@
   .ffb-dt-board > .ffb-dt-vorp { order: 2; padding-block: var(--ffb-s3) 0; }
   /* A phone row's second line holds the chip, the team, the bye, and one number with its label
      ("±ADP −118.3" at its widest, 73px). The kit's row leaves that 67px at 390 and 37px at 360,
-     so this room takes 8px from the Log button's column, 2px from each gap, and 4px from the
-     chip. The name on the first line gets the same room back. */
-  .ffb-dt-board { --ffb-act-cols: 44px 44px; }
-  .ffb-dt-board .ffb-row { column-gap: 6px; }
-  .ffb-dt-board .ffb-row > .ffb-log { width: 44px; }
-  .ffb-dt-board .ffb-row > .ffb-chip { min-width: 42px; }
+     so the board takes the kit's tighter row (`ffb-board-tight`). */
   .ffb-dt-replay-note { padding-inline-start: 0; }
   .ffb-dt-lineups > .ffb-choice { padding-inline: var(--ffb-s2); }
   .ffb-dt-lineups .ffb-choice-note { display: none; }
 }
 
-/* At 375px and under, the second line sets a size smaller, which is the last 12px it needs. */
-@media (max-width: 375.98px) {
-  .ffb-dt-board .ffb-row > :is(.ffb-c-team, .ffb-c-bye, .ffb-m-meta) { font-size: 11px; }
-}
-
-@media print {
-  .ffb-root .ffb-dt-noprint,
-  .ffb-root .ffb-dt-skip { display: none; }
-}

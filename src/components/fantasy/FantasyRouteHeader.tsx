@@ -95,8 +95,7 @@ export type FreshnessPart = { label: string; shortLabel?: string; tone?: "warnin
  * One muted freshness line from labelled parts, with a status colour on the
  * parts that carry one; the label itself still says stale or aging. Keyed by
  * position, since a part can be user text (a league name) that repeats another.
- * The tone colours stay inline as the bridged Catalog 97 names, which the
- * route tests read.
+ * The tone is the kit's status ink, `ffb-warn` or `ffb-bad`, on the label alone.
  *
  * Each part is one `ffb-fresh-part` that does not break from the tablet width
  * up, and its dot sits inside it after a no-break space. So a wrapped line
@@ -110,7 +109,7 @@ export function FreshnessParts({ parts }: { parts: FreshnessPart[] }) {
           {/* A real space between parts, outside the hidden dot, so the line can wrap here and assistive tech gets a word break. */}
           {index > 0 ? " " : null}
           <span className="ffb-fresh-part">
-            <span style={part.tone ? { color: `var(--c97-${part.tone})` } : undefined}>
+            <span className={part.tone === "negative" ? "ffb-bad" : part.tone === "warning" ? "ffb-warn" : undefined}>
               {part.shortLabel ? (
                 <>
                   <span className="md:hidden">{part.shortLabel}</span>
