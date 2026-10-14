@@ -14,8 +14,8 @@ import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 
 // Instrument Sans is what Tailwind's font-sans utility names (see
-// tailwind.config.ts). It is left over from the Working Instrument, and a few
-// fantasy and score pools elements still set font-sans.
+// tailwind.config.ts). It is left over from the Working Instrument, and the
+// body below is the one element that still sets font-sans.
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",

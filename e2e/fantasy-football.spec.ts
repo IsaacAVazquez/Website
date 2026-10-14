@@ -427,8 +427,8 @@ test.describe("Fantasy football draft tracker", () => {
     // board renders, not hardcoded, since scheduled data refreshes reorder the
     // rankings and a name literal goes stale within days.
     // The setup screen abbreviates the scoring segments ("Half", "Std") while
-    // the live room's header chip spells the format out, so each format carries
-    // both names.
+    // the running room's league line spells the format out, so each format
+    // carries both names.
     const scoringFormats = [
       { control: "PPR", chip: "PPR", file: "ppr" },
       { control: "Half", chip: "Half PPR", file: "half_ppr" },
@@ -520,6 +520,32 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByRole("button", { name: /^Confirm new draft/ })).toBeVisible();
     await page.getByRole("button", { name: "Back to room" }).click();
     await expect(loggedPicks).toHaveCount(2);
+  });
+
+  test("brings a focused row out from under the pinned bars", async ({ page }) => {
+    await page.goto("/fantasy-football/draft-tracker");
+    await waitForDraftTrackerHydration(page);
+    await page.getByRole("button", { name: /^Start draft/ }).click();
+
+    const board = page.getByRole("region", { name: "Draft board" });
+    const row = board.getByRole("button", { name: /^Log / }).nth(6);
+    await expect(row).toBeVisible();
+
+    // Leave the row above the screen, so that taking focus scrolls it back up to
+    // the top, where the scorebug and the board's bar are pinned. The kit's
+    // scroll margin is what stops it landing behind them, and nothing else
+    // measures that margin.
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await row.focus();
+    await expect
+      .poll(() =>
+        row.evaluate((element) => {
+          const box = element.getBoundingClientRect();
+          const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+          return hit === element || element.contains(hit);
+        })
+      )
+      .toBe(true);
   });
 
   test("applies a saved preset without changing the parked room", async ({ page }) => {
