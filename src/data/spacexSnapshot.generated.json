@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T17:02:16.928Z",
+  "generatedAt": "2026-10-14T00:24:13.383Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "132",
+        "value": "133",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-13T17:01:46.627Z"
+    "generatedAt": "2026-10-14T00:24:07.159Z"
   },
   "upcomingLaunches": [
     {
@@ -396,7 +396,7 @@
     {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
       "name": "Flight 15",
-      "flightNumber": 780,
+      "flightNumber": 781,
       "upcoming": true,
       "success": null,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
@@ -634,6 +634,46 @@
       }
     },
     {
+      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
+      "name": "Rivada 11",
+      "flightNumber": 780,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "7d77bd89-af23-4a5a-b632-de0034003a64",
       "name": "Rivada 8",
       "flightNumber": 780,
@@ -714,46 +754,6 @@
       }
     },
     {
-      "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
-      "name": "Rivada 11",
-      "flightNumber": 780,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
       "name": "SDA Tranche 2 Tracking Layer B",
       "flightNumber": 780,
@@ -794,16 +794,16 @@
       }
     },
     {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
+      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
+      "name": "SDA Tranche 2 Transport Layer A",
       "flightNumber": 780,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "year",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
@@ -834,16 +834,16 @@
       }
     },
     {
-      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
-      "name": "SDA Tranche 2 Transport Layer A",
+      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
       "flightNumber": 780,
       "upcoming": true,
       "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
+      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
+      "datePrecision": "quarter",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
@@ -910,6 +910,46 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
+      "name": "USSF-75",
+      "flightNumber": 780,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified payload for the United States Space Force",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 3,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       }
     },
@@ -1070,46 +1110,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
-      "name": "USSF-75",
-      "flightNumber": 780,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified payload for the United States Space Force",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       }
     }
@@ -2180,7 +2180,7 @@
     "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
       "name": "Flight 15",
-      "flightNumber": 780,
+      "flightNumber": 781,
       "upcoming": true,
       "success": null,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
@@ -2500,8 +2500,8 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": null,
+        "webcast": "https://x.com/i/broadcasts/1nxeLMddZlEJX",
+        "article": "https://www.spacex.com/launches/bandwagon5",
         "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
         "presskit": null,
         "redditLaunch": null,
@@ -2515,7 +2515,7 @@
         ]
       },
       "staticFireDateUtc": null,
-      "window": 6180,
+      "window": 3600,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2557,6 +2557,106 @@
           "id": "7715",
           "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
           "type": "Dedicated Rideshare",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "f6af629d-39b5-4f86-bc0c-f8776444a858": {
+      "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+      "name": "Starlink Group 15-15",
+      "flightNumber": 741,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-10-20T22:14:00Z",
+      "dateUnix": 1792534440,
+      "dateLocal": "2026-10-20T22:14:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1YGNrbnzdqLGw",
+        "article": "https://www.spacex.com/launches/sl-15-15",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7870",
+          "name": "Starlink Group 15-15",
+          "type": "Communications",
           "customers": [
             "SpaceX"
           ],
@@ -2835,10 +2935,10 @@
       {
         "monthKey": "2026-10",
         "label": "Oct 26",
-        "count": 5
+        "count": 6
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-13T02:38:03.273Z"
+    "generatedAt": "2026-10-14T00:24:12.756Z"
   }
 }
