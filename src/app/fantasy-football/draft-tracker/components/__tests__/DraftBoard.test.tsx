@@ -334,6 +334,37 @@ describe("DraftBoard filtering and search", () => {
     expect(screen.getByRole("radio", { name: "All" })).toBeChecked();
     expect(visibleNames()).toHaveLength(5);
   });
+
+  it("brings the bar back under the scorebug when a filter shortens the board while scrolled deep", async () => {
+    const user = setup();
+    const { container } = renderBoard();
+    const board = screen.getByRole("region", { name: "Draft board" });
+    board.style.setProperty("--ffb-sticky-top", "112px");
+    const bar = container.querySelector(".ffb-dt-boardbar") as HTMLElement;
+    const scrollTo = jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 3000 });
+    const barTop = jest.spyOn(bar, "getBoundingClientRect").mockReturnValue({ top: -500 } as DOMRect);
+
+    await user.type(search(), "zzz");
+    await settleDebounce();
+    // 3000 - 500 - 112: the bar's top lands where the scorebug ends, and the field keeps focus.
+    expect(scrollTo).toHaveBeenLastCalledWith({ top: 2388, behavior: "instant" });
+    expect(search()).toHaveFocus();
+
+    // A bar on screen but under the scorebug comes down too: 3000 + 40 - 112.
+    barTop.mockReturnValue({ top: 40 } as DOMRect);
+    await user.click(screen.getByRole("radio", { name: "RB" }));
+    expect(scrollTo).toHaveBeenLastCalledWith({ top: 2928, behavior: "instant" });
+
+    // A bar already clear of the scorebug does not move.
+    scrollTo.mockClear();
+    barTop.mockReturnValue({ top: 112 } as DOMRect);
+    await user.click(screen.getByRole("radio", { name: "WR" }));
+    expect(scrollTo).not.toHaveBeenCalled();
+
+    scrollTo.mockRestore();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+  });
 });
 
 describe("DraftBoard picks", () => {

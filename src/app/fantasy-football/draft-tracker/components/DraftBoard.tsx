@@ -258,6 +258,22 @@ export function DraftBoard({
     return () => observer.disconnect();
   }, []);
 
+  // A search or a position filter that shortens the board while the page is scrolled deep
+  // leaves the bar, and the field being typed in, above the screen or under the scorebug once
+  // the page gets shorter. So the bar comes back to just under the scorebug, and focus stays.
+  const filterKey = `${debouncedSearch}|${selectedPosition}`;
+  const lastFilterKeyRef = useRef(filterKey);
+  useEffect(() => {
+    if (lastFilterKeyRef.current === filterKey) return;
+    lastFilterKeyRef.current = filterKey;
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board) return;
+    const pinnedTop = parseFloat(getComputedStyle(board).getPropertyValue("--ffb-sticky-top")) || 0;
+    const top = bar.getBoundingClientRect().top;
+    if (top < pinnedTop) window.scrollTo({ top: window.scrollY + top - pinnedTop, behavior: "instant" });
+  }, [filterKey]);
+
   // From 1200px the rail sits beside the list, so the window extends by itself
   // as its end nears the viewport. Below that the roster's rail follows the
   // list, and a list that kept growing would keep it out of reach, so there
