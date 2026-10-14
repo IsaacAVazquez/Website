@@ -1347,14 +1347,14 @@
       "crew": []
     }
   },
-  "e4316d4c-9eb8-4a18-9b0d-4307c3970ef6": {
-    "launchId": "e4316d4c-9eb8-4a18-9b0d-4307c3970ef6",
-    "launchName": "Falcon 9 Block 5 | Starlink Group 17-38",
+  "e2886a96-5ce9-4f45-872f-4e25a00be837": {
+    "launchId": "e2886a96-5ce9-4f45-872f-4e25a00be837",
+    "launchName": "Falcon 9 Block 5 | Starlink Group 15-16",
     "window": "upcoming",
     "images": {
       "launch": [
         {
-          "label": "Falcon 9 Block 5 | Starlink Group 17-38",
+          "label": "Falcon 9 Block 5 | Starlink Group 15-16",
           "localPath": "/data/spacex/images/b317ff9ea04bd623.png",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png"
         }
