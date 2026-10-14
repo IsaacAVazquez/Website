@@ -258,6 +258,22 @@ export function DraftBoard({
     return () => observer.disconnect();
   }, []);
 
+  // A search or a position filter that shortens the board while the page is scrolled deep
+  // leaves the bar, and the field being typed in, above the screen or under the scorebug once
+  // the page gets shorter. So the bar comes back to just under the scorebug, and focus stays.
+  const filterKey = `${debouncedSearch}|${selectedPosition}`;
+  const lastFilterKeyRef = useRef(filterKey);
+  useEffect(() => {
+    if (lastFilterKeyRef.current === filterKey) return;
+    lastFilterKeyRef.current = filterKey;
+    const bar = barRef.current;
+    const board = boardRef.current;
+    if (!bar || !board) return;
+    const pinnedTop = parseFloat(getComputedStyle(board).getPropertyValue("--ffb-sticky-top")) || 0;
+    const top = bar.getBoundingClientRect().top;
+    if (top < pinnedTop) window.scrollTo({ top: window.scrollY + top - pinnedTop, behavior: "instant" });
+  }, [filterKey]);
+
   // From 1200px the rail sits beside the list, so the window extends by itself
   // as its end nears the viewport. Below that the roster's rail follows the
   // list, and a list that kept growing would keep it out of reach, so there
@@ -486,7 +502,7 @@ export function DraftBoard({
     const tierLabel = [
       group.tier !== null ? `Tier ${group.tier}` : "No published tier",
       `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
-      `ranks ${firstRank} to ${lastRank}`,
+      firstRank === lastRank ? `rank ${firstRank}` : `ranks ${firstRank} to ${lastRank}`,
       index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
     ]
       .filter(Boolean)
@@ -515,7 +531,7 @@ export function DraftBoard({
             </span>{" "}
             <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
             <span className="ffb-tier-range">
-              Ranks {firstRank}–{lastRank}
+              {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
             </span>
           </h3>
           {index > 0 && cliff > 0 ? (
@@ -685,6 +701,8 @@ export function DraftBoard({
             onClick={() => {
               setSearchQuery("");
               setSelectedPosition("ALL");
+              // The button goes with the empty state, so focus goes to the field the list is searched from.
+              searchInputRef.current?.focus();
             }}
             className="ffb-btn"
           >

@@ -119,12 +119,19 @@ describe("DraftBoard rows and tiers", () => {
     renderBoard({ draftedPlayerIds: new Set(["p2"]) });
     expect(screen.getByText("4 of 4 available")).toBeInTheDocument();
     expect(screen.queryByText("Ja'Marr Chase")).not.toBeInTheDocument();
-    expect(screen.getByRole("region", { name: "Tier 1, 1 player, ranks 1 to 1" })).toBeInTheDocument();
+    // A tier down to one player names one rank, on screen and in its name.
+    expect(screen.getByRole("region", { name: "Tier 1, 1 player, rank 1" })).toBeInTheDocument();
+    expect(
+      within(screen.getByRole("region", { name: "Tier 1, 1 player, rank 1" })).getByText("Rank 1")
+    ).toHaveClass("ffb-tier-range");
+    expect(
+      within(screen.getByRole("region", { name: /^Tier 2, 2 players, ranks 3 to 4/ })).getByText("Ranks 3–4")
+    ).toHaveClass("ffb-tier-range");
     expect(
       screen.getByRole("region", { name: "Tier 2, 2 players, ranks 3 to 4, 5.3 average-rank cliff above" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("region", { name: "No published tier, 1 player, ranks 5 to 5, 143.0 average-rank cliff above" }),
+      screen.getByRole("region", { name: "No published tier, 1 player, rank 5, 143.0 average-rank cliff above" }),
     ).toBeInTheDocument();
     // The break prints the cliff beside the kit's ledge-and-drop mark.
     expect(
@@ -320,10 +327,43 @@ describe("DraftBoard filtering and search", () => {
     await settleDebounce();
     expect(screen.getByText("No available players match on this board.")).toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Clear search" }));
+    // The button leaves with the empty state, and focus goes to the search field and not to the page.
+    expect(search()).toHaveFocus();
     await settleDebounce();
     expect(search()).toHaveValue("");
     expect(screen.getByRole("radio", { name: "All" })).toBeChecked();
     expect(visibleNames()).toHaveLength(5);
+  });
+
+  it("brings the bar back under the scorebug when a filter shortens the board while scrolled deep", async () => {
+    const user = setup();
+    const { container } = renderBoard();
+    const board = screen.getByRole("region", { name: "Draft board" });
+    board.style.setProperty("--ffb-sticky-top", "112px");
+    const bar = container.querySelector(".ffb-dt-boardbar") as HTMLElement;
+    const scrollTo = jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 3000 });
+    const barTop = jest.spyOn(bar, "getBoundingClientRect").mockReturnValue({ top: -500 } as DOMRect);
+
+    await user.type(search(), "zzz");
+    await settleDebounce();
+    // 3000 - 500 - 112: the bar's top lands where the scorebug ends, and the field keeps focus.
+    expect(scrollTo).toHaveBeenLastCalledWith({ top: 2388, behavior: "instant" });
+    expect(search()).toHaveFocus();
+
+    // A bar on screen but under the scorebug comes down too: 3000 + 40 - 112.
+    barTop.mockReturnValue({ top: 40 } as DOMRect);
+    await user.click(screen.getByRole("radio", { name: "RB" }));
+    expect(scrollTo).toHaveBeenLastCalledWith({ top: 2928, behavior: "instant" });
+
+    // A bar already clear of the scorebug does not move.
+    scrollTo.mockClear();
+    barTop.mockReturnValue({ top: 112 } as DOMRect);
+    await user.click(screen.getByRole("radio", { name: "WR" }));
+    expect(scrollTo).not.toHaveBeenCalled();
+
+    scrollTo.mockRestore();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
   });
 });
 
