@@ -197,16 +197,19 @@ describe("BestBallClient", () => {
     render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
     const format = screen.getByRole("region", { name: "Selected format" });
     const cell = (label: string) => within(format).getByText(label).parentElement as HTMLElement;
-    expect(cell("The room")).not.toHaveClass("hidden");
+    // The room note is closed on a phone only, and the three build notes below 1200px,
+    // where the rail is above the board. Beside the board all four are open.
+    expect(cell("The room")).toHaveClass("hidden", "md:block");
     for (const label of ["How I read it", "2026 build range", "What I would watch"]) {
-      // Closed below 1200px, where the rail is above the board, and open beside it.
       expect(cell(label)).toHaveClass("hidden", "min-[1200px]:block");
     }
     const toggle = within(format).getByRole("button", { name: "Show build guidance" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     fireEvent.click(toggle);
     expect(within(format).getByRole("button", { name: "Hide build guidance" })).toHaveAttribute("aria-expanded", "true");
-    expect(cell("How I read it")).not.toHaveClass("hidden");
+    for (const label of ["The room", "How I read it", "2026 build range", "What I would watch"]) {
+      expect(cell(label)).not.toHaveClass("hidden");
+    }
     // All eight contest choices stay in the one group.
     expect(within(screen.getByRole("group", { name: "Best ball contest" })).getAllByRole("button")).toHaveLength(8);
   });
@@ -352,7 +355,12 @@ describe("BestBallClient", () => {
       within(gibbs)
         .getAllByTitle(/sits outside its own expert range, so the board withholds it/)
         .map((cell) => cell.textContent?.replace(/\s+/g, " ").trim()),
-    ).toEqual(["ECR Withheld", "Value NA"]);
+    ).toEqual(["PPR best ball consensus Withheld", "Value versus ADP NA"]);
+    // On a phone the withheld row prints "Withheld" under its ADP, where the value would be.
+    expect(within(gibbs).getByTitle("Current Underdog average draft position")).toHaveClass("ffb-m-top");
+    const [ecrCell, valueCell] = within(gibbs).getAllByTitle(/sits outside its own expert range/);
+    expect(ecrCell).toHaveClass("ffb-m-sub");
+    expect(valueCell).not.toHaveClass("ffb-m-sub");
 
     // The healthy row beside it still reads.
     const chase = screen.getByRole("button", { name: "Open Ja'Marr Chase details" }).closest("li") as HTMLElement;
@@ -631,37 +639,94 @@ describe("BestBallClient", () => {
     expect(screen.queryByRole("region", { name: /^Round (19|20)$/ })).not.toBeInTheDocument();
   });
 
-  it("names each value inside its own cell and tones a gap of three picks or more", () => {
+  it("names each value in its long form inside its own cell, and tones only the gap the drawer calls value or reach", () => {
     currentSearchParams = new URLSearchParams("contest=bbm-vii");
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: {
+        ...snapshot,
+        players: [
+          ...snapshot.players,
+          // With no ADP spread in the snapshot the shared gate is ten picks.
+          { id: "wr-late", name: "Late Receiver", team: "BUF", position: "WR", averageRank: 31, rankEcr: 31, positionRank: 2, standardDeviation: 1, byeWeek: 7, adp: 42 },
+          { id: "wr-mid", name: "Middle Receiver", team: "BUF", position: "WR", averageRank: 40, rankEcr: 40, positionRank: 4, standardDeviation: 1, byeWeek: 7, adp: 45 },
+          { id: "wr-early", name: "Early Receiver", team: "ATL", position: "WR", averageRank: 60, rankEcr: 60, positionRank: 3, standardDeviation: 1, byeWeek: 11, adp: 48 },
+        ],
+      },
+      isLoading: false,
+      error: null,
+      retry: mockRetry,
+    });
     render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
 
-    // Bijan Robinson: ADP 32 against ECR 30. Josh Allen: ADP 47 against ECR 50.
-    const bijan = screen.getByRole("button", { name: "Open Bijan Robinson details" }).closest("li") as HTMLElement;
-    const cells = (row: HTMLElement) =>
-      Array.from(row.querySelectorAll(":scope > span")).map((cell) => cell.textContent?.replace(/\s+/g, " ").trim());
-    expect(cells(bijan)).toEqual(["1", "RB1", "Bijan Robinson", "ATL", "ADP 32", "ECR 30", "Value +2.0", "Bye 11", "W17 NO"]);
-    expect(within(bijan).getByTitle("Priced about even with the PPR reference")).toHaveClass("ffb-is-flat");
+    // What a screen reader hears from each cell: the column heads are hidden from it, so each
+    // cell names its column in full. The phone's visible short words are hidden from it.
+    const spoken = (row: HTMLElement) =>
+      Array.from(row.querySelectorAll(":scope > span")).map((cell) => {
+        const copy = cell.cloneNode(true) as HTMLElement;
+        copy.querySelectorAll('[aria-hidden="true"]').forEach((node) => node.remove());
+        return copy.textContent?.replace(/\s+/g, " ").trim();
+      });
+    const rowOf = (name: string) => screen.getByRole("button", { name: `Open ${name} details` }).closest("li") as HTMLElement;
 
-    const allen = screen.getByRole("button", { name: "Open Josh Allen details" }).closest("li") as HTMLElement;
-    expect(cells(allen)).toEqual(["2", "QB1", "Josh Allen", "BUF", "ADP 47", "ECR 50", "Value \u22123.0", "Bye 7", "W17 MIA"]);
-    const gap = within(allen).getByTitle("The market takes him 3.0 picks before the PPR reference");
-    expect(gap).toHaveClass("ffb-is-strong", "ffb-warn");
+    // Bijan Robinson: ADP 32 against ECR 30. Josh Allen: ADP 47 against ECR 50.
+    const bijan = rowOf("Bijan Robinson");
+    expect(spoken(bijan)).toEqual([
+      "1", "RB1", "Bijan Robinson", "ATL", "ADP 32", "PPR best ball consensus 30", "Value versus ADP +2.0", "Bye week 11", "Week 17 opponent NO",
+    ]);
+    // A phone prints the short words where the head row is not there to name them.
+    expect(within(bijan).getByText("Bye")).toHaveAttribute("aria-hidden", "true");
+    expect(within(bijan).getByText("W17")).toHaveAttribute("aria-hidden", "true");
+
+    // Three picks is inside the shared ten-pick gate, so the drawer says noise band and the row is flat.
+    const allen = rowOf("Josh Allen");
+    expect(spoken(allen)).toEqual([
+      "4", "QB1", "Josh Allen", "BUF", "ADP 47", "PPR best ball consensus 50", "Value versus ADP \u22123.0", "Bye week 7", "Week 17 opponent MIA",
+    ]);
+    const flat = within(allen).getByTitle("The market and the PPR reference sit inside this player's noise band");
+    expect(flat).toHaveClass("ffb-is-flat");
+    expect(flat).not.toHaveClass("ffb-is-strong");
+
+    // Five picks later is inside the gate too, where the old three-pick tone made it heavy.
+    expect(within(rowOf("Middle Receiver")).getByTitle("The market and the PPR reference sit inside this player's noise band")).toHaveTextContent("+5.0");
+    expect(within(rowOf("Middle Receiver")).getByTitle("The market and the PPR reference sit inside this player's noise band")).toHaveClass("ffb-is-flat");
+    // Eleven picks later is value and twelve picks earlier is reach, each toned and named in the title.
+    const late = within(rowOf("Late Receiver")).getByTitle("The market usually lets him go 11.0 picks after the PPR reference");
+    expect(late).toHaveTextContent("+11.0");
+    expect(late).toHaveClass("ffb-is-strong", "ffb-good");
+    const early = within(rowOf("Early Receiver")).getByTitle("The market takes him 12.0 picks before the PPR reference");
+    expect(early).toHaveTextContent("\u221212.0");
+    expect(early).toHaveClass("ffb-is-strong", "ffb-warn");
+
     // A phone row keeps ADP over value on a lens with a current ADP.
     expect(within(allen).getByTitle("Current Underdog average draft position")).toHaveClass("ffb-m-top");
-    expect(gap).toHaveClass("ffb-m-sub");
+    expect(flat).toHaveClass("ffb-m-sub");
+
+    // The drawer for the flat row says the same thing the row does.
+    fireEvent.click(screen.getByRole("button", { name: "Open Josh Allen details" }));
+    expect(screen.getByRole("dialog", { name: "Josh Allen detail" })).not.toHaveTextContent(/\bReach\b|\bValue\b(?! (versus|over))/);
   });
 
-  it("keeps the consensus rank as the phone's number on a lens with no ADP, and mutes Week 17 in Sit and Go", () => {
+  it("prints no second number on a phone row where the board rank is the consensus rank, and leaves Sit and Go's Week 17 off a phone", () => {
     currentSearchParams = new URLSearchParams("contest=sit-and-go");
-    render(<BestBallClient initialState={{ contest: "sit-and-go", position: "all", query: "" }} />);
+    const { unmount } = render(<BestBallClient initialState={{ contest: "sit-and-go", position: "all", query: "" }} />);
 
     const bijan = screen.getByRole("button", { name: "Open Bijan Robinson details" }).closest("li") as HTMLElement;
-    expect(within(bijan).getByTitle("PPR best ball expert consensus rank")).toHaveClass("ffb-m-top");
+    expect(within(bijan).getByTitle("PPR best ball expert consensus rank")).not.toHaveClass("ffb-m-top");
     expect(within(bijan).getByTitle("Current Underdog average draft position")).not.toHaveClass("ffb-m-top");
     expect(within(bijan).getByTitle("No matching room price in this snapshot")).not.toHaveClass("ffb-m-sub");
+    // The sheet hides a flat Week 17 cell on a phone, and only Sit and Go's is flat.
     expect(
       within(bijan).getByTitle("Week 17 correlation does not move this board in Sit and Go"),
-    ).toHaveClass("ffb-is-flat");
+    ).toHaveClass("ffb-m-meta", "ffb-is-flat");
+    expect(within(screen.getByTestId("best-ball-board-controls")).queryByText("ECR")).not.toBeInTheDocument();
+    unmount();
+
+    // Superflex orders on its own consensus, so its PPR rank is a second number worth the place.
+    currentSearchParams = new URLSearchParams("contest=superflex");
+    render(<BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />);
+    const allen = screen.getByRole("button", { name: "Open Josh Allen details" }).closest("li") as HTMLElement;
+    expect(within(allen).getByTitle("PPR best ball expert consensus rank")).toHaveClass("ffb-m-top");
+    expect(within(allen).getByTitle(/^Week 17: BUF vs MIA$/)).not.toHaveClass("ffb-is-flat");
     expect(within(screen.getByTestId("best-ball-board-controls")).getByText("ECR")).toHaveClass("ffb-only-phone");
   });
 
@@ -710,13 +775,14 @@ describe("BestBallClient", () => {
     const week17Opponents = Object.fromEntries(
       Array.from({ length: 32 }, (_, index) => [`T${index}`, `T${(index + 1) % 32}`]),
     );
-    const dated = (now: string, asOf: string) => {
+    const dated = (now: string, asOf: string, edit: { generatedAt?: string; players?: unknown[] } = {}) => {
       jest.useFakeTimers({ now: new Date(now) });
       currentSearchParams = new URLSearchParams("contest=bbm-vii");
       mockUseBestBallSnapshot.mockReturnValue({
         snapshot: {
           ...snapshot,
-          generatedAt: asOf,
+          players: edit.players ?? snapshot.players,
+          generatedAt: edit.generatedAt ?? asOf,
           week17Opponents,
           rankingSource: { ...snapshot.rankingSource, asOf },
           adpSource: { ...snapshot.adpSource, asOf },
@@ -735,10 +801,128 @@ describe("BestBallClient", () => {
     preseason.unmount();
 
     // Week 2, with every source read that morning: the dates are current and the season is under way.
-    dated("2026-09-20T12:00:00.000Z", "2026-09-20T09:00:00.000Z");
+    const inSeason = dated("2026-09-20T12:00:00.000Z", "2026-09-20T09:00:00.000Z");
     fireEvent.click(screen.getByRole("button", { name: "Open Bijan Robinson details" }));
     const drawer = screen.getByRole("dialog", { name: "Bijan Robinson detail" });
     expect(drawer).not.toHaveTextContent(verdict);
     expect(within(drawer).getByText("Board rank 1")).toBeInTheDocument();
+    inSeason.unmount();
+
+    // Preseason, with the sources read that morning and the snapshot itself built ten days
+    // earlier: only the board's own staleness check holds the advice back.
+    const stale = dated("2026-08-20T12:00:00.000Z", "2026-08-20T09:00:00.000Z", { generatedAt: "2026-08-10T09:00:00.000Z" });
+    expect(screen.getByRole("status")).toHaveTextContent(/older than the normal refresh window/);
+    fireEvent.click(screen.getByRole("button", { name: "Open Bijan Robinson details" }));
+    expect(screen.getByRole("dialog", { name: "Bijan Robinson detail" })).not.toHaveTextContent(verdict);
+    stale.unmount();
+
+    // Preseason and current, with a consensus that fails its own check: the advice is held back
+    // for a player the board does not withhold, too.
+    const divergent = (id: string, name: string, adp: number, rank: number) => ({
+      id, name, team: "DET", position: "RB", averageRank: rank, rankEcr: rank, rankAverage: 1.33,
+      minRank: 1, maxRank: 2, tier: 7, positionRank: 19, standardDeviation: 0.47, byeWeek: 6, adp,
+    });
+    dated("2026-08-20T12:00:00.000Z", "2026-08-20T09:00:00.000Z", {
+      players: [
+        divergent("rb-1x", "First Back", 1, 54), divergent("rb-2x", "Second Back", 2.1, 55), divergent("rb-3x", "Third Back", 4.3, 57),
+        divergent("rb-4x", "Fourth Back", 5.8, 59), divergent("rb-5x", "Fifth Back", 7.3, 60), divergent("rb-6x", "Sixth Back", 7.4, 61),
+        { id: "wr-chase", name: "Ja'Marr Chase", team: "CIN", position: "WR", averageRank: 1, rankEcr: 1, rankAverage: 3, minRank: 1, maxRank: 5, tier: 1, positionRank: 1, standardDeviation: 1, byeWeek: 6, adp: 3.1 },
+      ],
+    });
+    expect(screen.getByTestId("best-ball-consensus-note")).toBeInTheDocument();
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Open Ja'Marr Chase details" }));
+    expect(screen.getByRole("dialog", { name: "Ja'Marr Chase detail" })).not.toHaveTextContent(verdict);
+  });
+
+  it("puts focus on the search field after a retry that loads, and on the new Retry button after one that fails", () => {
+    const failed = { snapshot: null, isLoading: false, error: "Best ball rankings are unavailable right now.", retry: mockRetry };
+    const loading = { snapshot: null, isLoading: true, error: null, retry: mockRetry };
+    const props = { initialState: { contest: "superflex" as const, position: "all" as const, query: "" } };
+    mockUseBestBallSnapshot.mockReturnValue(failed);
+    const { rerender } = render(<BestBallClient {...props} />);
+
+    act(() => {
+      fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
+    });
+    expect(mockRetry).toHaveBeenCalledTimes(1);
+    // retry() clears the error at once, and nothing takes focus until the load settles.
+    mockUseBestBallSnapshot.mockReturnValue(loading);
+    act(() => rerender(<BestBallClient {...props} />));
+    expect(screen.getByRole("searchbox", { name: "Search best ball rankings" })).not.toHaveFocus();
+    mockUseBestBallSnapshot.mockReturnValue(failed);
+    act(() => rerender(<BestBallClient {...props} />));
+    expect(screen.getByRole("button", { name: "Retry rankings" })).toHaveFocus();
+
+    act(() => {
+      fireEvent.click(screen.getByRole("button", { name: "Retry rankings" }));
+    });
+    mockUseBestBallSnapshot.mockReturnValue(loading);
+    act(() => rerender(<BestBallClient {...props} />));
+    mockUseBestBallSnapshot.mockReturnValue({ snapshot, isLoading: false, error: null, retry: mockRetry });
+    act(() => rerender(<BestBallClient {...props} />));
+    expect(screen.getByRole("searchbox", { name: "Search best ball rankings" })).toHaveFocus();
+  });
+
+  it("focuses the first row a Show the next press adds, the last press included", () => {
+    currentSearchParams = new URLSearchParams("contest=eliminator");
+    const many = Array.from({ length: 100 }, (_, index) => ({
+      id: `p-${index + 1}`, name: `Player ${index + 1}`, team: "BUF", position: "WR",
+      averageRank: index + 1, rankEcr: index + 1, positionRank: index + 1, standardDeviation: 1, byeWeek: 7,
+    }));
+    mockUseBestBallSnapshot.mockReturnValue({ snapshot: { ...snapshot, players: many }, isLoading: false, error: null, retry: mockRetry });
+    render(<BestBallClient initialState={{ contest: "eliminator", position: "all", query: "" }} />);
+
+    act(() => {
+      fireEvent.click(screen.getByRole("button", { name: "Show the next 20 players" }));
+    });
+    expect(screen.queryByRole("button", { name: /^Show the next/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Open Player 81 details" })).toHaveFocus();
+  });
+
+  it("brings the board's start back to the top of the screen when a search shortens the list deep in it", () => {
+    render(<BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />);
+    const board = screen.getByTestId("best-ball-board");
+    const scrollTo = jest.spyOn(window, "scrollTo").mockImplementation(() => {});
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 3000 });
+    jest.spyOn(board, "getBoundingClientRect").mockReturnValue({ top: -2600 } as DOMRect);
+    const search = screen.getByRole("searchbox", { name: "Search best ball rankings" });
+    act(() => search.focus());
+    act(() => {
+      fireEvent.change(search, { target: { value: "allen" } });
+    });
+    expect(scrollTo).toHaveBeenLastCalledWith({ top: 400, behavior: "instant" });
+    expect(search).toHaveFocus();
+
+    // A board whose start is already on screen does not move.
+    scrollTo.mockClear();
+    jest.spyOn(board, "getBoundingClientRect").mockReturnValue({ top: 120 } as DOMRect);
+    act(() => {
+      fireEvent.change(search, { target: { value: "alle" } });
+    });
+    expect(scrollTo).not.toHaveBeenCalled();
+    scrollTo.mockRestore();
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+  });
+
+  it("names the Superflex consensus date in the head on the Superflex lens", () => {
+    mockUseBestBallSnapshot.mockReturnValue({
+      snapshot: {
+        ...snapshot,
+        rankingSource: { ...snapshot.rankingSource, asOf: "2026-09-09T23:22:32.000Z" },
+        superflexSource: { ...snapshot.superflexSource, asOf: "2026-09-10T00:19:40.000Z" },
+      },
+      isLoading: false,
+      error: null,
+      retry: mockRetry,
+    });
+    const { unmount } = render(<BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />);
+    expect(screen.getByText("FantasyPros Superflex consensus Sep 10")).toBeInTheDocument();
+    expect(screen.queryByText("FantasyPros consensus Sep 9")).not.toBeInTheDocument();
+    unmount();
+
+    currentSearchParams = new URLSearchParams("contest=bbm-vii");
+    render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
+    expect(screen.getByText("FantasyPros consensus Sep 9")).toBeInTheDocument();
   });
 });

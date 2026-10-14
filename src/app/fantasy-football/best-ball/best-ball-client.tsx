@@ -29,7 +29,7 @@ import {
   type BestBallContestId,
   type RankedBestBallPlayer,
 } from "@/lib/bestBall";
-import { SHELL_CLASS, getNflRegularSeasonWeek, getSnapshotStaleness } from "@/lib/fantasyUtils";
+import { SHELL_CLASS, getNflRegularSeasonWeek, getSnapshotStaleness, getValueVsAdp } from "@/lib/fantasyUtils";
 import type { BestBallSnapshot } from "@/lib/bestBallSnapshot";
 import type { Player } from "@/types";
 
@@ -334,11 +334,17 @@ function formatAdpDelta(value: number | null): string {
   return `${rounded > 0 ? "+" : "\u2212"}${Math.abs(rounded).toFixed(1)}`;
 }
 
-function describeAdpDelta(value: number | null): string {
+/**
+ * The value cell's hover title, on the same gate the drawer's market sentence
+ * reads (`getValueVsAdp`), so a row and its drawer never disagree about a gap.
+ */
+function describeAdpDelta(value: number | null, signal: "value" | "reach" | null | undefined): string {
   if (value === null) return "No matching room price in this snapshot";
-  if (value >= 3) return `The market usually lets him go ${value.toFixed(1)} picks after the PPR reference`;
-  if (value <= -3) return `The market takes him ${Math.abs(value).toFixed(1)} picks before the PPR reference`;
-  return "Priced about even with the PPR reference";
+  if (signal === "value") return `The market usually lets him go ${value.toFixed(1)} picks after the PPR reference`;
+  if (signal === "reach") return `The market takes him ${Math.abs(value).toFixed(1)} picks before the PPR reference`;
+  // undefined: the shared gate reads no gap this deep in the board.
+  if (signal === undefined) return "Too deep in the board for the gap to read as value or reach";
+  return "The market and the PPR reference sit inside this player's noise band";
 }
 
 /**
@@ -392,6 +398,7 @@ function BestBallPlayerRow({
   opponent,
   adpAvailable,
   showsWeek17,
+  ecrOrdered,
   contestLabel,
   onOpenDetail,
 }: {
@@ -399,6 +406,7 @@ function BestBallPlayerRow({
   opponent?: string;
   adpAvailable: boolean;
   showsWeek17: boolean;
+  ecrOrdered: boolean;
   contestLabel: string;
   onOpenDetail: (player: RankedBestBallPlayer) => void;
 }) {
@@ -409,13 +417,15 @@ function BestBallPlayerRow({
   // rank the board just declined to print.
   const withheld = player.consensusWithheld;
   const delta = playerAdpAvailable && !withheld ? getAdpDelta(player) : null;
-  // A gap of three picks or more is weighted and toned, and the sign says which way it runs.
+  // The tone follows the signal the drawer reads, so the heavy ink shows only
+  // where the drawer says Value or Reach. The signed number prints on every row.
+  const signal = delta === null ? null : getValueVsAdp(player)?.signal;
   const valueTone =
-    delta !== null && delta >= 3
-      ? "ffb-is-strong ffb-good"
-      : delta !== null && delta <= -3
-        ? "ffb-is-strong ffb-warn"
-        : "ffb-is-flat";
+    signal === "value" ? "ffb-is-strong ffb-good" : signal === "reach" ? "ffb-is-strong ffb-warn" : "ffb-is-flat";
+  // A lens ordered by the consensus rank prints that rank as the board rank, so
+  // a phone does not print it again at the right. Superflex orders on its own
+  // consensus, so its PPR rank is a second number worth the place.
+  const phoneEcr = !adpAvailable && !ecrOrdered;
 
   return (
     // The opener overlays the row instead of wrapping it: an aria-label on a
@@ -454,9 +464,10 @@ function BestBallPlayerRow({
       </span>
       <span className="ffb-c-team">{player.team || "FA"}</span>
       {/* Each value's name is inside its own cell, so it hides when the cell
-          does. A phone prints two numbers at the right of a row: ADP over
-          value where the lens has a current ADP, and the consensus rank alone
-          where it does not. */}
+          does, and it is the long form, since the column heads are hidden from
+          a screen reader. A phone prints up to two numbers at the right of a
+          row: ADP over value where the lens has a current ADP (over "Withheld"
+          on a withheld row), and on Superflex the PPR consensus rank. */}
       <span
         className={`ffb-c-num${adpAvailable ? " ffb-m-top" : " ffb-is-flat"}`}
         title={
@@ -475,10 +486,10 @@ function BestBallPlayerRow({
         )}
       </span>
       <span
-        className={`ffb-c-num${adpAvailable ? "" : " ffb-m-top"}${withheld ? " ffb-is-flat" : ""}`}
+        className={`ffb-c-num${phoneEcr ? " ffb-m-top" : adpAvailable && withheld ? " ffb-m-sub" : ""}${withheld ? " ffb-is-flat" : ""}`}
         title={withheld ? WITHHELD_CELL_TITLE : "PPR best ball expert consensus rank"}
       >
-        <span className="ffb-vh">ECR </span>
+        <span className="ffb-vh">PPR best ball consensus </span>
         {withheld ? (
           <span className="ffb-label ffb-bb-word">Withheld</span>
         ) : (
@@ -486,18 +497,19 @@ function BestBallPlayerRow({
         )}
       </span>
       <span
-        className={`ffb-c-num ${valueTone}${adpAvailable ? " ffb-m-sub" : ""}`}
-        title={withheld ? WITHHELD_CELL_TITLE : describeAdpDelta(delta)}
+        className={`ffb-c-num ${valueTone}${adpAvailable && !withheld ? " ffb-m-sub" : ""}`}
+        title={withheld ? WITHHELD_CELL_TITLE : describeAdpDelta(delta, signal)}
       >
-        <span className="ffb-vh">Value </span>
+        <span className="ffb-vh">Value versus ADP </span>
         {formatAdpDelta(delta)}
       </span>
       <span className="ffb-c-bye">
-        <span className="ffb-vh-desk">Bye </span>
+        <span className="ffb-vh-desk" aria-hidden="true">Bye </span>
+        <span className="ffb-vh">Bye week </span>
         {player.byeWeek ?? "NA"}
       </span>
       {/* Sit and Go has no playoff bracket, so its Week 17 opponent prints
-          muted, with a title that says why. */}
+          muted, with a title that says why, and a phone leaves it off. */}
       <span
         className={`ffb-c-num ffb-m-meta${showsWeek17 ? "" : " ffb-is-flat"}`}
         title={
@@ -506,7 +518,8 @@ function BestBallPlayerRow({
             : `Week 17 correlation does not move this board in ${contestLabel}`
         }
       >
-        <span className="ffb-vh-desk">W17 </span>
+        <span className="ffb-vh-desk" aria-hidden="true">W17 </span>
+        <span className="ffb-vh">Week 17 opponent </span>
         {opponent ?? "NA"}
       </span>
     </li>
@@ -526,6 +539,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const barRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const retriedRef = useRef(false);
+  const retryRef = useRef<HTMLButtonElement>(null);
+  // The index of the first row a "Show the next" press adds, which takes focus once it mounts.
+  const pendingMoreRef = useRef<number | null>(null);
   const canonicalState = useMemo(() => {
     const fromUrl = normalizeBestBallState(searchParams);
     return searchParams.size > 0 ? fromUrl : initialState;
@@ -543,6 +559,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     hasSupportedBestBallAdp(routeState.contest) &&
     snapshot?.adpSource !== null &&
     getSnapshotStaleness(snapshot?.adpSource?.asOf) !== "stale";
+
+  // The four lenses with no ADP, and an ADP lens whose ADP is stale, order the
+  // board on the PPR consensus rank. Superflex orders on its own consensus.
+  const ecrOrdered = !adpAvailable && routeState.contest !== "superflex";
 
   const modelPlayers = useMemo(
     () =>
@@ -692,13 +712,37 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
     return () => observer.disconnect();
   }, []);
 
-  // Retry leaves the page with the alert it sits in, so once the error clears
-  // focus goes to the search field, which is enabled again by then.
+  // Retry leaves the page with the alert it sits in, and retry() clears the
+  // error at once, so the flag waits for the load to settle. Focus then goes to
+  // the search field on a board that loaded, or to the new Retry button when
+  // the load failed again.
   useEffect(() => {
-    if (error || !retriedRef.current) return;
+    if (isLoading || !retriedRef.current) return;
     retriedRef.current = false;
-    searchRef.current?.focus();
-  }, [error]);
+    (error ? retryRef.current : searchRef.current)?.focus();
+  }, [isLoading, error]);
+
+  // A "Show the next" press focuses the first row it added, since the last
+  // press takes the button away.
+  useEffect(() => {
+    const index = pendingMoreRef.current;
+    if (index === null) return;
+    pendingMoreRef.current = null;
+    boardRef.current?.querySelectorAll<HTMLButtonElement>(".ffb-row-open")[index]?.focus();
+  }, [visibleCount]);
+
+  // A search or a position filter that shortens the list while the page is
+  // scrolled deep into it would leave the pinned block, and the field being
+  // typed in, above the screen once the page gets shorter. So the board's
+  // start comes back to the top of the screen, and focus stays where it was.
+  const filterKey = `${searchQuery}|${routeState.position}`;
+  const lastFilterKeyRef = useRef(filterKey);
+  useEffect(() => {
+    if (lastFilterKeyRef.current === filterKey) return;
+    lastFilterKeyRef.current = filterKey;
+    const top = boardRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) window.scrollTo({ top: window.scrollY + top, behavior: "instant" });
+  }, [filterKey]);
 
   const trackerHref = `/fantasy-football/best-ball/draft-tracker?contest=${routeState.contest}`;
   const freshnessWarning = getFreshnessWarning(snapshot, routeState.contest);
@@ -733,9 +777,15 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           ...(snapshot.adpSource
             ? [{ label: `${snapshot.adpSource.provider.split(" ")[0]} ADP ${formatDate(snapshot.adpSource.asOf, false)}` }]
             : []),
-          {
-            label: `${snapshot.rankingSource.provider.split(" ")[0]} consensus ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt, false)}`,
-          },
+          // Superflex orders on its own consensus, so its head names that one's date,
+          // the same date its frozen sentence gives.
+          routeState.contest === "superflex" && snapshot.superflexSource
+            ? {
+                label: `${snapshot.superflexSource.provider.split(" ")[0]} Superflex consensus ${formatDate(snapshot.superflexSource.asOf, false)}`,
+              }
+            : {
+                label: `${snapshot.rankingSource.provider.split(" ")[0]} consensus ${formatDate(snapshot.rankingSource.asOf ?? snapshot.generatedAt, false)}`,
+              },
         ]
       : []),
   ];
@@ -766,7 +816,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             role="group"
             aria-label="Best ball contest"
             className="ffb-seg ffb-seg-scroll ffb-bb-contests"
-            onFocus={(event) => scrollChildIntoViewX(event.currentTarget, event.target)}
+            onFocus={(event) => {
+              // Keyboard focus only. A press on a contest cut at the edge would
+              // otherwise scroll it away under the pointer and never select it.
+              if (event.target.matches(":focus-visible")) scrollChildIntoViewX(event.currentTarget, event.target);
+            }}
           >
             {CONTESTS.map((contest) => (
               <button
@@ -855,20 +909,20 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 </div>
               ) : null}
               <div className="ffb-stack ffb-stack-tight">
-                {/* The room is the short summary. The three build notes sit
-                    behind the toggle wherever the rail is above the board
-                    (below 1200px), so a phone reaches the board without
-                    reading them first, and they are open beside it. */}
+                {/* The three build notes sit behind the toggle wherever the rail
+                    is above the board (below 1200px), and on a phone the room
+                    note joins them, so a phone reaches the board without
+                    reading them first. Beside the board they are all open. */}
                 <dl className="ffb-bb-notes">
                   {[
-                    { label: "The room", body: activeContest.structure, guidance: false },
-                    { label: "How I read it", body: activeContest.brief, guidance: true },
-                    { label: "2026 build range", body: activeContest.build, guidance: true },
-                    { label: "What I would watch", body: activeContest.risk, guidance: true },
+                    { label: "The room", body: activeContest.structure, guidance: "phone" },
+                    { label: "How I read it", body: activeContest.brief, guidance: "rail" },
+                    { label: "2026 build range", body: activeContest.build, guidance: "rail" },
+                    { label: "What I would watch", body: activeContest.risk, guidance: "rail" },
                   ].map((cell) => (
                     <div
                       key={cell.label}
-                      className={`ffb-bb-note${cell.guidance && !guidanceOpen ? " hidden min-[1200px]:block" : ""}`}
+                      className={`ffb-bb-note${guidanceOpen ? "" : cell.guidance === "phone" ? " hidden md:block" : " hidden min-[1200px]:block"}`}
                     >
                       <dt className="ffb-label ffb-muted">{cell.label}</dt>
                       <dd>{cell.body}</dd>
@@ -923,7 +977,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                     disabled={Boolean(error)}
                   />
                   <div className="ffb-search">
-                    <Search size={15} aria-hidden="true" />
+                    {/* The icon is a label of its own with no text, so a press on it
+                        focuses the field and the field's name stays the hidden label. */}
+                    <label htmlFor="best-ball-search" className="ffb-bb-search-icon" aria-hidden="true">
+                      <Search size={15} aria-hidden="true" />
+                    </label>
                     <label htmlFor="best-ball-search" className="ffb-vh">
                       Search best ball rankings
                     </label>
@@ -974,7 +1032,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                     </span>
                     <span className="ffb-h-num">Bye</span>
                     <span className="ffb-h-num">W17</span>
-                    <span className="ffb-only-phone ffb-m-show">{adpAvailable ? "ADP, value" : "ECR"}</span>
+                    {adpAvailable || !ecrOrdered ? (
+                      <span className="ffb-only-phone ffb-m-show">{adpAvailable ? "ADP, value" : "ECR"}</span>
+                    ) : null}
                   </div>
                 )}
               </div>
@@ -987,6 +1047,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   </p>
                   <div className="ffb-notice-actions">
                     <button
+                      ref={retryRef}
                       type="button"
                       onClick={() => {
                         retriedRef.current = true;
@@ -1046,6 +1107,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                               opponent={snapshot?.week17Opponents[player.team]}
                               adpAvailable={adpAvailable}
                               showsWeek17={activeContest.showsWeek17}
+                              ecrOrdered={ecrOrdered}
                               contestLabel={activeContest.label}
                               onOpenDetail={setDetailPlayer}
                             />
@@ -1057,7 +1119,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   {hasMore && (
                     <button
                       type="button"
-                      onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+                      onClick={() => {
+                        pendingMoreRef.current = visibleCount;
+                        setVisibleCount((count) => count + PAGE_SIZE);
+                      }}
                       className="ffb-more"
                     >
                       Show the next{" "}
