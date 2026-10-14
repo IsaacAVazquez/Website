@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { positionClass } from "@/components/fantasy/positionClass";
 import type {
   BestBallRecommendation,
   BestBallRecommendationMode,
@@ -18,7 +18,7 @@ const COMPONENT_LABELS: Record<keyof BestBallRecommendation["components"], strin
 };
 
 // Below this a component rounds to "0" at one decimal, so it moved nothing a
-// reader could see. Shared so the chip filter and the number formatter cannot
+// reader could see. Shared so the filter and the number formatter cannot
 // drift apart and start hiding a value that would have printed.
 const SCORE_EPSILON = 0.05;
 
@@ -30,101 +30,58 @@ function formatScore(value: number): string {
 export function BestBallRecommendations({
   recommendations,
   isUserPick,
+  isComplete,
   adpAvailable,
   recommendationMode,
   recommendationReason,
   sourceIssue,
   onDraftPlayer,
+  onOpenDetail,
 }: {
   recommendations: readonly BestBallRecommendation[];
   isUserPick: boolean;
+  isComplete: boolean;
   adpAvailable: boolean;
   recommendationMode: BestBallRecommendationMode;
   recommendationReason: string;
   sourceIssue: string | null;
   onDraftPlayer: (player: Player) => void;
+  onOpenDetail: (player: Player) => void;
 }) {
-  // Protected framing (2026-08-23 loop): this paragraph explains the card
-  // score and the Draft Outlook paragraph explains a different score, so both
-  // stay. It only earns its space when a score is on screen, which is the
-  // user's own pick with a usable source. On the other eleven picks a round,
-  // and while the source is paused, nothing under it carries a score, so the
-  // section collapses to the one sentence that says why.
-  const showScoreExplainer =
-    recommendationMode === "exact" && isUserPick && sourceIssue === null;
-  const description = recommendationMode === "exact"
-    ? "The score starts from how far the current pick sits past a player's expert consensus rank, then moves half a point for every pick the Underdog market disagrees with that rank, so consensus and market count the same. At most seven points of roster, scarcity, and correlation adjustments follow, where scarcity reads both the tier cliff and how many board spots the position gives up by waiting a turn. The consensus board is full PPR while these contests score half PPR. This is not a projected win rate."
-    : "The sourced board and roster targets remain available, but this preset does not produce exact player cards.";
+  const headingId = "best-ball-recommendations-heading";
+  const heading =
+    recommendationMode === "exact" ? "Best fits for your next pick" : "Board and roster guidance";
+  const fitsLive =
+    recommendationMode === "exact" &&
+    sourceIssue === null &&
+    isUserPick &&
+    !isComplete &&
+    recommendations.length > 0;
 
-  return (
-    <section className="c97-panel" aria-labelledby="best-ball-recommendations-heading">
-      {/* The heading block is top-aligned and the explainer runs full width
-          beneath it. The old items-end pairing bottom-aligned the heading to
-          an eleven-line column and left 209px of empty card above it. */}
-      <div>
-        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Your next pick</p>
-        <h2 id="best-ball-recommendations-heading" className="c97-serif c97-h3">
-          {recommendationMode === "exact"
-            ? "Best fits for your next pick"
-            : "Board and roster guidance"}
-        </h2>
-        {showScoreExplainer || recommendationMode === "reference" ? (
-          <p
-            data-testid="best-ball-score-explainer"
-            className="max-w-[66ch] text-xs leading-5"
-            style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
-          >
-            {description}
-          </p>
-        ) : null}
-      </div>
-
-      {recommendationMode === "reference" ? (
-        <div
-          role="note"
-          className="border text-sm leading-6"
-          style={{
-            paddingInline: "var(--c97-sp-2)",
-            paddingBlock: "var(--c97-sp-1)",
-            marginTop: "var(--c97-sp-2)",
-            borderColor: "var(--c97-rule)",
-            background: "color-mix(in srgb, var(--c97-field) 58%, var(--c97-surface))",
-          }}
-        >
-          <p className="font-semibold">Reference guidance only</p>
-          <p style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-            {recommendationReason} Use the board and roster targets to plan the position or tier you
-            want next.
-          </p>
+  // Your pick, with a usable source. This is the one state that puts a score
+  // on screen, so it is the one state that prints the paragraph explaining the
+  // score (protected framing since the 2026-08-23 loop: Draft Outlook explains
+  // a different score, so both stay).
+  if (fitsLive) {
+    return (
+      <section aria-labelledby={headingId} className="ffb-br-fits">
+        <div className="ffb-strip-head">
+          <h2 id={headingId} className="ffb-turn-tab">
+            {heading}
+          </h2>
         </div>
-      ) : sourceIssue ? (
-        <p
-          role="alert"
-          className="text-sm leading-6"
-          style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-negative)" }}
-        >
-          Exact player cards are unavailable because {sourceIssue}. The room can still log picks,
-          but it will not present an unsupported board as a current recommendation.
-        </p>
-      ) : !isUserPick ? (
-        <p className="text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-          Exact player cards stay hidden until your turn because this model does not estimate the
-          chance that each player survives the intervening picks. Use the board and roster targets
-          to plan the position or tier you want next.
-        </p>
-      ) : recommendations.length > 0 ? (
-        /*
-          The reasons under each card print the consensus rank as fact. Rows
-          the ranking layer marks `consensusWithheld` never reach this branch,
+        {/*
+          The reasons under each fit print the consensus rank as fact. Rows the
+          ranking layer marks `consensusWithheld` never reach this branch,
           because the same self-consistency test that stamps them also sets
-          `sourceIssue`, which takes the alert branch above.
-        */
-        <div className="grid xl:grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          `sourceIssue`.
+        */}
+        <div className="ffb-strip">
           {recommendations.map((recommendation, index) => {
-            // All nine components used to print on every card, and most of them
-            // score zero for any given player, which buried the two or three
-            // that actually moved the number. Only the contributing ones get a
-            // chip; "Why this player" below still carries the full reasoning.
+            const { player } = recommendation;
+            // Most of the nine components score zero for any one player, so
+            // only the ones that moved the number print. "Why this player"
+            // carries the full reasoning.
             const componentScores = (
               Object.entries(recommendation.components) as Array<
                 [keyof BestBallRecommendation["components"], number]
@@ -132,108 +89,118 @@ export function BestBallRecommendations({
             ).filter(([, score]) => Math.abs(score) >= SCORE_EPSILON);
 
             return (
-              <article
-                key={recommendation.player.id}
-                className="flex flex-col border"
-                style={{
-                  padding: "var(--c97-sp-2)",
-                  borderColor:
-                    index === 0
-                      ? "color-mix(in srgb, var(--c97-accent) 52%, var(--c97-rule))"
-                      : "var(--c97-rule)",
-                  background:
-                    index === 0
-                      ? "color-mix(in srgb, var(--c97-accent-soft) 38%, var(--c97-surface))"
-                      : "color-mix(in srgb, var(--c97-field) 58%, var(--c97-surface))",
-                }}
-              >
-                <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                  <div className="min-w-0">
-                    <p className="truncate font-semibold">{recommendation.player.name}</p>
-                    <p className="text-xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                      {recommendation.player.position} · {recommendation.player.team}
-                      {adpAvailable
-                        ? ` · ADP ${recommendation.player.adp?.toFixed(1) ?? "not available"}`
-                        : " · Matching ADP not sourced"}
-                    </p>
-                  </div>
-                  {/* The top card's background is a signal-soft wash, where pure signal
-                      measures 4.32:1 at 12px. The 72%-toward-ink mix used across the rest
-                      of the fantasy surfaces clears AA on both card backgrounds. */}
-                  <span
-                    className="shrink-0 border text-xs font-semibold tabular-nums"
-                    style={{
-                      paddingInline: "var(--c97-sp-1)",
-                      paddingBlock: "var(--c97-sp-0)",
-                      borderColor: "var(--c97-rule)",
-                      color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))",
-                    }}
-                  >
-                    {recommendation.score.toFixed(1)}
+              <article key={player.id} className="ffb-strip-item ffb-br-fit">
+                <div className="ffb-strip-line">
+                  <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+                    {player.position}
+                    {player.positionRank ?? ""}
                   </span>
+                  <button
+                    type="button"
+                    onClick={() => onOpenDetail(player)}
+                    aria-label={`Open ${player.name} detail`}
+                    title={player.name}
+                    className="ffb-c-name"
+                  >
+                    {player.name}
+                  </button>
+                  {/* The top fit is the action that is mine to take now, so it alone takes the
+                      highlighter. The button's name is the full phrase, and what shows is its
+                      first word, as on the redraft room's strip. */}
+                  <button
+                    type="button"
+                    onClick={() => onDraftPlayer(player)}
+                    aria-label="Log for my team"
+                    title={`Log ${player.name} for my team`}
+                    className={index === 0 ? "ffb-btn ffb-btn-now ffb-br-noprint" : "ffb-log"}
+                  >
+                    Log
+                  </button>
                 </div>
+                <p className="ffb-br-fit-meta">
+                  <span className="ffb-br-fit-score">
+                    <span className="ffb-label ffb-muted">Score</span>{" "}
+                    <span className="ffb-heavy">{recommendation.score.toFixed(1)}</span>
+                  </span>{" "}
+                  <span className="ffb-strip-note">
+                    {player.team}
+                    {adpAvailable
+                      ? ` · ADP ${player.adp?.toFixed(1) ?? "not available"}`
+                      : " · Matching ADP not sourced"}
+                  </span>
+                </p>
 
                 {componentScores.length > 0 ? (
-                  <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+                  <dl className="ffb-pairs">
                     {componentScores.map(([component, score]) => (
-                      <span
-                        key={component}
-                        className="border text-2xs font-medium"
-                        style={{
-                          paddingInline: "var(--c97-sp-1)",
-                          paddingBlock: "var(--c97-sp-0)",
-                          borderColor: "var(--c97-rule)",
-                          color: score < 0 ? "var(--c97-negative)" : "var(--c97-ink-2)",
-                        }}
-                      >
-                        {component === "adpValue" && !adpAvailable
-                          ? "Market ADP"
-                          : COMPONENT_LABELS[component]}{" "}
-                        {formatScore(score)}
-                      </span>
+                      <div key={component}>
+                        <dt>
+                          {component === "adpValue" && !adpAvailable
+                            ? "Market ADP"
+                            : COMPONENT_LABELS[component]}
+                        </dt>
+                        <dd className={score < 0 ? "ffb-bad" : undefined}>{formatScore(score)}</dd>
+                      </div>
                     ))}
-                  </div>
+                  </dl>
                 ) : null}
 
-                <details className="group text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)" }}>
-                  {/* display:flex strips the native disclosure marker, so the
-                      chevron is the explicit sign this label opens. */}
-                  <summary className="flex min-h-[44px] cursor-pointer items-center font-semibold" style={{ gap: "var(--c97-sp-0)" }}>
-                    Why this player
-                    <ChevronDown
-                      className="h-3.5 w-3.5 transition-transform group-open:rotate-180"
-                      aria-hidden="true"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    />
-                  </summary>
-                  <ul className="grid" style={{ paddingBottom: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
+                <details className="ffb-details">
+                  <summary>Why this player</summary>
+                  <ul className="ffb-details-body ffb-fine ffb-br-fit-why">
                     {recommendation.reasons.map((reason) => (
                       <li key={`${reason.component}-${reason.detail}`}>{reason.detail}</li>
                     ))}
                   </ul>
                 </details>
-
-                {/* The top margin takes up the slack so all three buttons share the
-                    cards' bottom edge whatever each card's chip count. */}
-                {isUserPick ? (
-                  <div className="mt-auto" style={{ paddingTop: "var(--c97-sp-2)" }}>
-                    <button
-                      type="button"
-                      onClick={() => onDraftPlayer(recommendation.player)}
-                      className="inline-flex min-h-[44px] w-full items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-sm font-semibold text-[var(--c97-surface)] transition-[background-color,border-color,color,box-shadow] duration-200 hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)" }}
-                    >
-                      Log for my team
-                    </button>
-                  </div>
-                ) : null}
               </article>
             );
           })}
         </div>
-      ) : (
-        <p className="text-sm" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-          Recommendations will appear when the room has available players.
+        <p data-testid="best-ball-score-explainer" className="ffb-method ffb-br-recnote">
+          The score starts from how far the current pick sits past a player&apos;s expert consensus rank, then moves half a point for every pick the Underdog market disagrees with that rank, so consensus and market count the same. At most seven points of roster, scarcity, and correlation adjustments follow, where scarcity reads both the tier cliff and how many board spots the position gives up by waiting a turn. The consensus board is full PPR while these contests score half PPR. This is not a projected win rate.
         </p>
+      </section>
+    );
+  }
+
+  // Every other state is one short block that says why no fit is on screen.
+  return (
+    <section aria-labelledby={headingId} className="ffb-br-recline">
+      <div className="ffb-sechead">
+        <h2 id={headingId} className="ffb-h3">
+          {heading}
+        </h2>
+      </div>
+      {recommendationMode === "reference" ? (
+        <div role="note" className="ffb-notice">
+          <p className="ffb-notice-title">Reference guidance only</p>
+          <p>
+            {recommendationReason} Use the board and roster targets to plan the position or tier you
+            want next.
+          </p>
+          <p data-testid="best-ball-score-explainer">
+            The sourced board and roster targets remain available, but this preset does not produce exact player cards.
+          </p>
+        </div>
+      ) : sourceIssue ? (
+        // The pause is stated once, as the alert at the top of the page. This
+        // line says what this part cannot do because of it, so it is a held
+        // notice and not a second alert.
+        <p className="ffb-notice ffb-notice-held">
+          Exact player cards are unavailable because {sourceIssue}. The room can still log picks,
+          but it will not present an unsupported board as a current recommendation.
+        </p>
+      ) : isComplete ? (
+        <p className="ffb-fine">The draft is complete, so there is no next pick to fit.</p>
+      ) : !isUserPick ? (
+        <p className="ffb-fine">
+          Exact player cards stay hidden until your turn because this model does not estimate the
+          chance that each player survives the intervening picks. Use the board and roster targets
+          to plan the position or tier you want next.
+        </p>
+      ) : (
+        <p className="ffb-fine">Recommendations will appear when the room has available players.</p>
       )}
     </section>
   );

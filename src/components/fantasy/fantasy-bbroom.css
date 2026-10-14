@@ -1,0 +1,230 @@
+/*
+ * The best ball room and its setup screen (/fantasy-football/best-ball/draft-tracker).
+ *
+ * The kit (fantasy.css) and the shared room parts (DraftRoomParts.tsx, fantasy-room.css) draw
+ * almost everything. This sheet holds what only this route needs. It is unlayered, so a rule
+ * here beats a kit class on the same element whatever order the sheets load in. It stays loaded
+ * after in-app navigation, so every selector starts with a class of this route's prefix
+ * (`ffb-br-`) or with `.ffb-root`.
+ */
+
+/* ==========================================================================
+ * The head, in both forms
+ * ======================================================================== */
+/* The contest switch is its own sideways scroller wherever eight contests do not fit. */
+.ffb-br-contests {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ffb-br-contests > .ffb-seg-btn { flex: none; }
+.ffb-br-about { max-width: 62ch; }
+.ffb-br-about > .ffb-details-body { display: grid; gap: var(--ffb-s2); }
+
+.ffb-br-notices {
+  display: grid;
+  gap: var(--ffb-s3);
+  padding-bottom: var(--ffb-s3);
+}
+
+/* ==========================================================================
+ * Setup: the slot picker beside the contest's details, with no plate
+ * ======================================================================== */
+.ffb-br-setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ffb-s6);
+  padding-block: var(--ffb-s2) var(--ffb-s7);
+}
+.ffb-br-setup > * { min-width: 0; }
+.ffb-br-slot {
+  display: grid;
+  gap: var(--ffb-s4);
+  align-content: start;
+}
+.ffb-br-slot > .ffb-sechead { margin-bottom: calc(-1 * var(--ffb-s2)); }
+/* Twelve slots on one line where they fit, six across on a phone, and five at 320px. */
+.ffb-br-slots { --ffb-choice-min: 44px; }
+.ffb-br-slots > legend { margin-bottom: 6px; padding: 0; }
+.ffb-br-slots > .ffb-choice { justify-items: center; padding-inline: 0; font-size: 15px; font-weight: 700; }
+.ffb-br-open { justify-self: start; }
+.ffb-br-contest {
+  display: grid;
+  gap: var(--ffb-s3);
+  align-content: start;
+}
+.ffb-br-contest > .ffb-sechead { margin-bottom: calc(-1 * var(--ffb-s1)); }
+@media (min-width: 1024px) {
+  .ffb-br-setup {
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    align-items: start;
+  }
+  .ffb-br-setup > .ffb-notice { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+ * The room
+ * ======================================================================== */
+/* The pinned bar keeps one height. A cell whose value changes from pick to pick holds the width
+   of its widest form, measured in the browser ("Pick 240 of 240" is 132px, "20 of 20" is 60px,
+   and "#229 in 22 picks" is 115px), so where the bar wraps depends on the screen and never on
+   the pick. */
+.ffb-br-cell-pick > .ffb-bug-value { min-inline-size: 133px; }
+.ffb-br-cell-round > .ffb-bug-value { min-inline-size: 61px; }
+.ffb-br-cell-next > .ffb-bug-value { min-inline-size: 116px; }
+/* Undo and redo carry an icon. */
+.ffb-br-bug .ffb-bug-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+/* The status heading is the cell's value, and it takes the focus after a pick. */
+.ffb-br-bug h2.ffb-bug-value:focus-visible { outline-offset: 2px; }
+
+/* What Undo removes, as one muted line under the last picks. */
+.ffb-br-undo-note { padding-bottom: var(--ffb-s3); }
+
+/* A way past the board for a keyboard. It is out of sight until it takes focus. */
+.ffb-br-skip { margin-bottom: var(--ffb-s2); }
+.ffb-br-skip:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The fits. Each is one column of the kit's strip: the chip, the name, and the score on a line,
+   then what moved the score, the reasons, and the button that logs it. */
+.ffb-br-fits { padding-bottom: var(--ffb-s4); }
+.ffb-br-fit { gap: var(--ffb-s2); }
+.ffb-br-fit .ffb-strip-line > .ffb-c-name {
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ffb-br-fit-score {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.ffb-br-fit > .ffb-details { border-top: 0; }
+.ffb-br-fit > .ffb-details > summary { justify-content: flex-start; font-size: 13px; }
+.ffb-br-fit-why { display: grid; gap: var(--ffb-s1); margin: 0; padding: 0; list-style: none; }
+.ffb-br-fit-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--ffb-s1) var(--ffb-s3); }
+.ffb-br-recnote { max-width: none; padding-block: var(--ffb-s2) var(--ffb-s4); }
+.ffb-br-recline { padding-bottom: var(--ffb-s4); }
+
+/* The board. Board rank, chip, name, team, bye, the market's number, and Draft. */
+.ffb-br-board { --ffb-cols: 40px 46px minmax(140px, 1fr) 36px 30px 96px 56px; }
+/* The reason a row is ordered off the ADP column takes a second line under the name. */
+.ffb-br-board .ffb-row > .ffb-br-why {
+  grid-column: 3 / -2;
+  grid-row: 2;
+  overflow: hidden;
+  padding-bottom: 6px;
+  color: var(--ffb-muted);
+  font-size: 12px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The rail's blocks. */
+.ffb-br-build { display: grid; gap: var(--ffb-s5); min-width: 0; }
+.ffb-br-build section { min-width: 0; }
+.ffb-br-progress { margin-top: var(--ffb-s2); }
+.ffb-br-list { display: grid; margin: 0; padding: 0; list-style: none; }
+.ffb-br-list > li {
+  padding-block: 6px;
+  border-top: 1px solid var(--ffb-rule);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.ffb-br-list > li:first-child { padding-top: 0; border-top: 0; }
+.ffb-br-roster > li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--ffb-s2);
+}
+.ffb-br-roster-name { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.ffb-br-controls { display: grid; gap: var(--ffb-s3); justify-items: start; }
+.ffb-br-controls > .ffb-sechead { justify-self: stretch; margin-bottom: calc(-1 * var(--ffb-s1)); }
+
+/* The phone's bar: Undo under the thumb, and the way into the build sheet. */
+.ffb-br-bar > .ffb-br-bar-build {
+  flex: 1 1 0;
+  justify-content: space-between;
+  min-width: 0;
+}
+.ffb-br-sheet-head { justify-content: flex-end; padding-block: var(--ffb-s2); border-bottom: 0; }
+/* One column that cannot be wider than the sheet, whatever its widest block wants. */
+.ffb-br-sheet-body { grid-template-columns: minmax(0, 1fr); padding-top: 0; }
+
+@media (min-width: 768px) {
+  /* On a tablet the sheet is wide, so the build takes one column and the rest stack beside it. */
+  .ffb-br-sheet-body { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--ffb-s6); align-items: start; }
+  .ffb-br-sheet-body > .ffb-br-build { grid-row: span 3; }
+  /* Read out, not shown: the column head already says it. */
+  .ffb-br-vh-desk {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* The switch runs off the right edge of the screen, as the kit's position switch does. */
+  .ffb-br-contests {
+    max-width: calc(100% + var(--ffb-bleed));
+    margin-inline-end: calc(-1 * var(--ffb-bleed));
+  }
+  .ffb-br-contests > .ffb-seg-btn { padding-inline: 10px; }
+  .ffb-br-open { justify-self: stretch; }
+  /* One row of controls: the search button and the position switch, or the open search. */
+  .ffb-br-tools:not(.ffb-br-searching) > .ffb-search,
+  .ffb-br-tools.ffb-br-searching > .ffb-seg-pos { display: none; }
+  /* Two rows at most: the live cell with undo and redo, then the other cells at their own widths. */
+  .ffb-br-bug .ffb-bug-live { flex-basis: 120px; }
+  .ffb-br-bug .ffb-bug-seg:not(.ffb-bug-live) { flex: 1 1 auto; }
+  .ffb-br-bug .ffb-bug-seg > .ffb-bug-value { min-inline-size: 0; }
+  /* A phone row's second line holds the chip, the team, the bye, and the market's number with
+     its label ("ADP Undrafted" beside "WR127" at its widest). The kit's row leaves that 244px at
+     360, and the widest line needs 272, so this room takes 8px from the Draft button's column
+     and 2px from each gap, as the redraft room does, and the number is the part that gives. */
+  /* A phone pins the scorebug's two rows and the board's 64px bar, 176px in all, which is more
+     than the kit's scroll margin allows for. The scorebug's height is the measured one. */
+  .ffb-br-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 112px) + 68px); }
+  .ffb-br-board { --ffb-act-cols: 44px; }
+  .ffb-br-board .ffb-row { column-gap: 6px; }
+  .ffb-br-board .ffb-row > .ffb-log { width: 44px; }
+  .ffb-br-board .ffb-row > .ffb-chip { min-width: 42px; }
+  .ffb-br-board .ffb-row > .ffb-m-meta { overflow: hidden; text-overflow: ellipsis; }
+  /* A finished draft has no live cell, so its one cell sits beside the actions. */
+  .ffb-br-bug .ffb-br-done { order: -2; flex: 1 1 120px; padding-inline-start: var(--ffb-bleed); border-top: 0; }
+}
+
+/* At 375px and under, the second line sets a size smaller, which is the last 12px it needs. */
+@media (max-width: 375.98px) {
+  .ffb-br-board .ffb-row > :is(.ffb-c-team, .ffb-c-bye, .ffb-m-meta) { font-size: 11px; }
+}
+/* Under 340px the line has no room for all four, and the bye is the one the drawer still carries. */
+@media (max-width: 339.98px) {
+  .ffb-br-board .ffb-row > .ffb-c-bye { display: none; }
+}
+
+@media print {
+  .ffb-root .ffb-br-noprint,
+  .ffb-root .ffb-br-skip,
+  .ffb-root .ffb-br-open,
+  .ffb-root .ffb-br-contests { display: none; }
+}
