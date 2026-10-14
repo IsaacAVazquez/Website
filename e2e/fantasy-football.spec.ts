@@ -661,7 +661,8 @@ test.describe("Fantasy football best ball", () => {
     // stale ranking source pauses the model, so read the undo copy instead:
     // it names the persisted pick on every viewport and in every data state.
     await expect(
-      shell.getByText(`Undo removes pick 1, ${firstPlayerName!}.`).first()
+      // A name that ends in a full stop ("Jr.") closes the sentence by itself.
+      shell.getByText(`Undo removes pick 1, ${firstPlayerName!.replace(/\.$/, "")}.`).first()
     ).toBeVisible();
 
     await shell.getByRole("button", { name: "Undo last pick" }).click();

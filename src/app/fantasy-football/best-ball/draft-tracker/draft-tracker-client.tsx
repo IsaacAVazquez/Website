@@ -953,7 +953,8 @@ function BestBallDraftRoom({
       />
       {lastPick ? (
         <p id="best-ball-undo-target" className="ffb-fine ffb-br-undo-note ffb-br-noprint">
-          Undo removes pick {lastPick.pickNumber}, {lastPick.player.name}.{" "}
+          {/* A name can end in a full stop of its own ("Marvin Harrison Jr."), which then closes the sentence. */}
+          Undo removes pick {lastPick.pickNumber}, {lastPick.player.name.replace(/\.$/, "")}.{" "}
           {/* A phone keeps the sentence that names the pick. The note beside the last picks says the rest there. */}
           <span className="ffb-not-phone">
             The picks above reach further back. Choosing one takes back that pick and everything
