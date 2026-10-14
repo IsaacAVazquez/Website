@@ -2,13 +2,13 @@ import React from "react";
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import type { Player } from "@/types";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
-import { MockDraftClient } from "../mock-draft-client";
+import { MockDraftClient, formatGapAtPick } from "../mock-draft-client";
 
 const mockUseFantasySnapshot = jest.fn();
 const FRESH_AS_OF = new Date(Date.now() - 60 * 60 * 1000).toISOString();
 
 jest.mock("@/hooks/useFantasySnapshot", () => ({
-  useFantasySnapshot: () => mockUseFantasySnapshot(),
+  useFantasySnapshot: (...args: unknown[]) => mockUseFantasySnapshot(...args),
 }));
 
 let nextId = 0;
@@ -333,9 +333,10 @@ describe("MockDraftClient", () => {
       "New mock",
       "Sim to end, which finishes the room with no take back",
     ]);
-    expect(within(actions).getByRole("button", { name: /Sim to end/ })).toHaveTextContent(
-      /^Sim to end no take back$/
-    );
+    const sim = within(actions).getByRole("button", { name: /Sim to end/ });
+    expect(sim).toHaveTextContent(/^Sim to end no take back$/);
+    // The words print at every width, not only in the bar's long form.
+    expect(sim.querySelector("small")).not.toHaveClass("ffb-bug-long");
   });
 
   it("puts the user on the clock at their slot after starting", () => {
@@ -358,6 +359,103 @@ describe("MockDraftClient", () => {
 
     // Snake order: slot 5 of 10 picks again at pick 16.
     expect(screen.getByText("#16 / 50")).toBeInTheDocument();
+    // The rail's grid and roster follow the pick, and focus is on the turn's region.
+    expect(screen.getByRole("img", { name: "Pick 16, slot 5, yours, on the clock" })).toBeInTheDocument();
+    expect(screen.getByText("1 of 5 picked")).toBeInTheDocument();
+    expect(document.activeElement).toBe(screen.getByRole("region", { name: "You are on the clock" }));
+  });
+
+  it("puts a parked room back on its own board when Back to room follows a scoring change", () => {
+    render(<MockDraftClient />);
+    startMock();
+    fireEvent.click(screen.getByRole("button", { name: "New mock" }));
+    fireEvent.click(screen.getByRole("button", { name: "Standard" }));
+    expect(mockUseFantasySnapshot).toHaveBeenLastCalledWith({ scoring: "standard" });
+
+    fireEvent.click(screen.getByRole("button", { name: /Back to room/ }));
+    expect(mockUseFantasySnapshot).toHaveBeenLastCalledWith({ scoring: "ppr" });
+    // The head names the board on screen, and the room can still pick from it.
+    expect(screen.getByText("PPR scoring")).toBeInTheDocument();
+    const board = screen.getByRole("region", { name: "Available players" });
+    expect(within(board).getAllByRole("button", { name: /^Draft / })[0]).toBeEnabled();
+
+    // From a recap, the same steps leave Run it back starting a fresh room.
+    fireEvent.click(screen.getByRole("button", { name: /Sim to end/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Change setup" }));
+    fireEvent.click(screen.getByRole("button", { name: "Standard" }));
+    fireEvent.click(screen.getByRole("button", { name: /Back to room/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Run it back/ }));
+    expect(document.activeElement).toBe(screen.getByRole("region", { name: "You are on the clock" }));
+    expect(screen.getByText("#5 / 50")).toBeInTheDocument();
+  });
+
+  it("hands focus to the value report when the user's own pick finishes the room", () => {
+    render(<MockDraftClient />);
+    fireEvent.change(screen.getByLabelText("Rounds · early rep"), { target: { value: "3" } });
+    startMock();
+    for (let pick = 0; pick < 3; pick += 1) {
+      fireEvent.click(screen.getAllByRole("button", { name: /^Draft / })[0]);
+    }
+    expect(screen.getByRole("group", { name: "Your haul" })).toBeInTheDocument();
+    expect(document.activeElement).toBe(screen.getByRole("region", { name: "Value report" }));
+  });
+
+  it("offers the quick picks on the kit's strip, each with a Draft button and its tag", () => {
+    render(<MockDraftClient />);
+    startMock();
+
+    const region = screen.getByRole("region", { name: "You are on the clock" });
+    // A solid sticker is a pick already made, so a suggestion is never drawn as one.
+    expect(region.querySelector(".ffb-sticker")).toBeNull();
+    expect(region.querySelectorAll(".ffb-strip .ffb-strip-item")).toHaveLength(2);
+    const [best, fill] = within(region).getAllByRole("button");
+    expect(best).toHaveTextContent(/^Draft$/);
+    expect(best).toHaveClass("ffb-btn", "ffb-btn-now");
+    expect(best).toHaveAccessibleName(/^Best left (QB|RB|WR|TE|K|DST) · Rank \d+ P\. \d+ Draft$/);
+    expect(fill).toHaveTextContent(/^Draft$/);
+    expect(fill).toHaveClass("ffb-log");
+    // The lineup spot is named in words, so it cannot be read as the chip's position rank.
+    expect(within(region).getByText("Fills your first RB spot")).toHaveClass("ffb-label");
+    expect(fill).toHaveAccessibleName(/^Fills your first RB spot RB · Rank \d+ P\. \d+ Draft$/);
+  });
+
+  it("prints the gap at the pick in the redraft board's form", () => {
+    expect(formatGapAtPick(5, 2.2)).toBe("+2.8");
+    expect(formatGapAtPick(5, 3)).toBe("+2.0");
+    expect(formatGapAtPick(5, 4.5)).toBe("±0.5");
+    expect(formatGapAtPick(16, 16)).toBe("±0.0");
+    expect(formatGapAtPick(5, 6.9)).toBe("±1.9");
+    expect(formatGapAtPick(5, 7)).toBe("\u22122.0");
+    expect(formatGapAtPick(5, 9)).toBe("\u22124.0");
+
+    const ready = mockUseFantasySnapshot();
+    const overall = [
+      ...(ready.snapshot.overall as Player[]),
+      makePlayer({ name: "Market Nine", rankEcr: 30, averageRank: 30, adp: 9, adpTimesDrafted: 100 }),
+    ].sort((a, b) => (a.rankEcr as number) - (b.rankEcr as number));
+    mockUseFantasySnapshot.mockReturnValue({ ...ready, snapshot: { ...ready.snapshot, overall } });
+    render(<MockDraftClient />);
+    startMock();
+
+    const row = screen.getByRole("button", { name: "Draft Market Nine" }).closest("li") as HTMLElement;
+    expect(row.querySelector(".ffb-m-meta")).toHaveTextContent(/^versus ADP at pick 5 ±ADP \u22124\.0$/);
+  });
+
+  it("scrolls the whole set since the last turn and names the cut when twelve are shown", () => {
+    render(<MockDraftClient />);
+    fireEvent.change(screen.getByLabelText("Teams"), { target: { value: "12" } });
+    fireEvent.change(screen.getByLabelText("Your slot"), { target: { value: "12" } });
+    fireEvent.change(screen.getByLabelText("Rounds · early rep"), { target: { value: "4" } });
+    startMock();
+    expect(screen.getByRole("heading", { name: "Since your last pick" })).toBeInTheDocument();
+
+    // Slot 12 of 12 picks at 12 and 13, then waits 22 picks for 36.
+    fireEvent.click(screen.getAllByRole("button", { name: /^Draft / })[0]);
+    fireEvent.click(screen.getAllByRole("button", { name: /^Draft / })[0]);
+    expect(screen.getByText("#36 / 48")).toBeInTheDocument();
+    const heading = screen.getByRole("heading", { name: "Since your last pick, newest 12 of 22" });
+    const list = heading.closest(".ffb-mk-tape")?.querySelector(".ffb-picks-list");
+    expect(list?.querySelectorAll("li")).toHaveLength(12);
   });
 
   it("returns to the previous turn on take back", () => {
@@ -569,7 +667,8 @@ describe("MockDraftClient", () => {
     render(<MockDraftClient />);
     startMock();
 
-    const skip = screen.getByRole("link", { name: "Skip to your roster" });
+    // Below 1200px the roster is drawn above the board, so the link is named for what it skips.
+    const skip = screen.getByRole("link", { name: "Skip the board" });
     const board = screen.getByRole("region", { name: "Available players" });
     expect(skip.compareDocumentPosition(board) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     fireEvent.click(skip);
@@ -632,18 +731,62 @@ describe("MockDraftClient", () => {
   });
 
   it("prints the haul as one sticker per pick with its round, pick, position, and signed gap", () => {
+    // A receiver ranked 40th taken at pick 5 is a reach of 35 against the consensus
+    // baseline. With the lineup that starts no defence the simulated teams never draft
+    // one, so a defence ranked 2nd is still there at pick 16, a value of 14.
+    const ready = mockUseFantasySnapshot();
+    const overall = [
+      ...(ready.snapshot.overall as Player[]),
+      makePlayer({ name: "Reach Target", position: "WR", rankEcr: 40, averageRank: 40 }),
+      makePlayer({ name: "Value Target", position: "DST", rankEcr: 2, averageRank: 2 }),
+    ].sort((a, b) => (a.rankEcr as number) - (b.rankEcr as number));
+    mockUseFantasySnapshot.mockReturnValue({ ...ready, snapshot: { ...ready.snapshot, overall } });
     render(<MockDraftClient />);
+    fireEvent.click(screen.getByRole("button", { name: /^3 WR, no K\/DST/ }));
     startMock();
+    const search = screen.getByRole("textbox", { name: "Search available players" });
+    fireEvent.change(search, { target: { value: "Reach Target" } });
+    fireEvent.click(screen.getByRole("button", { name: "Draft Reach Target" }));
+    fireEvent.change(search, { target: { value: "Value Target" } });
+    fireEvent.click(screen.getByRole("button", { name: "Draft Value Target" }));
     fireEvent.click(screen.getByRole("button", { name: /Sim to end/ }));
 
     const haul = screen.getByRole("group", { name: "Your haul" });
     const stickers = within(haul).getAllByRole("listitem");
     expect(stickers).toHaveLength(5);
-    expect(stickers[0]).toHaveTextContent(/^R1 · #5 · (QB|RB|WR|TE|K|DST)/);
-    expect(stickers[1]).toHaveTextContent(/^R2 · #16 · /);
-    stickers.forEach((sticker) => {
-      expect(sticker).toHaveClass("ffb-sticker");
-      expect(sticker.textContent).toMatch(/(Value |Reach )?[+−±]?\d/);
-    });
+    stickers.forEach((sticker) => expect(sticker).toHaveClass("ffb-sticker"));
+    expect(stickers[0]).toHaveTextContent(/^R1 · #5 · WR Reach \u221235 R\. Target$/);
+    expect(stickers[1]).toHaveTextContent(/^R2 · #16 · DST Value \+14 Value Target$/);
+    expect(stickers[2]).toHaveTextContent(/^R3 · #25 · /);
+  });
+
+  it("says on the recap that the room lasts until the tab closes when the browser refuses storage", () => {
+    const blocked = () => {
+      throw new Error("storage is blocked");
+    };
+    const getItem = jest.spyOn(Storage.prototype, "getItem").mockImplementation(blocked);
+    const setItem = jest.spyOn(Storage.prototype, "setItem").mockImplementation(blocked);
+    resetBrowserStorageMemory();
+    try {
+      render(<MockDraftClient />);
+      startMock();
+      fireEvent.click(screen.getByRole("button", { name: /Sim to end/ }));
+      expect(
+        screen.getByText("Practice reps only, with no prediction in them · this room stays until this tab closes")
+      ).toHaveClass("ffb-method-ruled");
+      expect(screen.queryByText(/rooms stay on this device/)).not.toBeInTheDocument();
+    } finally {
+      getItem.mockRestore();
+      setItem.mockRestore();
+      resetBrowserStorageMemory();
+    }
+  });
+
+  it("keeps each separator of the setup summary with the item before it", () => {
+    render(<MockDraftClient />);
+    const summary = screen.getByRole("button", { name: "Start mock" }).parentElement?.querySelector(".ffb-mk-start-summary");
+    expect(summary?.textContent).toBe(
+      "10-team snake\u00A0· slot 5\u00A0· 5-round rep\u00A0· PPR\u00A0· 1QB 2RB 2WR 1TE 1FLX K DST"
+    );
   });
 });
