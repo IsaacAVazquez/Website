@@ -2,7 +2,7 @@
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-13
 
 ---
 
@@ -13,9 +13,9 @@ Current hook inventory and state ownership.
 | `useBestBallSnapshot` | `src/hooks/useBestBallSnapshot.ts` | Published best ball snapshot loading from `public/data/fantasy/best-ball.json` |
 | `useBudgetPlanner` | `src/hooks/useBudgetPlanner.ts` | Budget planner state and calculations |
 | `useClientNow` | `src/hooks/useClientNow.ts` | Hydration-safe client-side timestamp state |
-| `useCompareTray` | `src/hooks/useCompareTray.ts` | Browser-local fantasy compare selection (up to 3 player ids), shared across the rankings board and draft assistant |
+| `useCompareTray` | `src/hooks/useCompareTray.ts` | Browser-local fantasy compare selection (up to 3 player ids), read by the shared player drawer and the compare tray on the best ball board |
 | `useDebounce` | `src/hooks/useDebounce.ts` | Debounced inputs |
-| `useFantasyMyTeam` | `src/hooks/useFantasyMyTeam.ts` | Browser-local roster tracker for draft board integration |
+| `useFantasyMyTeam` | `src/hooks/useFantasyMyTeam.ts` | Browser-local saved roster for My team on the weekly board and waivers |
 | `useFantasySnapshot` | `src/hooks/useFantasySnapshot.ts` | Published redraft fantasy snapshot loading |
 | `useFantasyTradeCalculator` | `src/hooks/useFantasyTradeCalculator.ts` | Browser-local trade calculator player selections per format |
 | `useFantasyWeeklySnapshot` | `src/hooks/useFantasyWeeklySnapshot.ts` | In-season weekly fantasy snapshot loading from `public/data/fantasy/weekly.json` |
@@ -27,8 +27,8 @@ Current hook inventory and state ownership.
 | `useMBAJobs` | `src/hooks/useMBAJobs.ts` | MBA job fetch state plus seen-job and watched-company persistence |
 | `useMountOnFirstOpen` | `src/hooks/useMountOnFirstOpen.ts` | Deferred mounting helper for modals and drawers |
 | `useMuseumLog` | `src/hooks/useMuseumLog.ts` | Browser-local museum visit state for `/museum-log` |
-| `usePlayerNotes` | `src/hooks/usePlayerNotes.ts` | Browser-local fantasy per-player private notes (max 280 chars), shared across the rankings board and draft assistant |
-| `usePlayerQueue` | `src/hooks/usePlayerQueue.ts` | Browser-local fantasy player queue / watchlist of player ids, shared across the rankings board and draft assistant |
+| `usePlayerNotes` | `src/hooks/usePlayerNotes.ts` | Browser-local fantasy per-player private notes (max 280 chars), edited in the rankings board's drawer and the shared player drawer |
+| `usePlayerQueue` | `src/hooks/usePlayerQueue.ts` | Browser-local fantasy player queue / watchlist of player ids, shared across the rankings board, the redraft room, and the shared player drawer |
 | `useRentVsBuy` | `src/hooks/useRentVsBuy.ts` | Rent vs. buy inputs and month-by-month net-worth comparison |
 | `useRetirementPlan` | `src/hooks/useRetirementPlan.ts` | Browser-local retirement plan inputs (localStorage key `retirement_plan`) |
 | `useScorePools` | `src/hooks/useScorePools.ts` | Score pools pick state and odds calculations |
@@ -87,17 +87,13 @@ The single client-side entry point for fantasy data. Loads the published snapsho
 
 ### Shared cross-surface browser stores
 
-The rankings board (`/fantasy-football`) and the draft assistant (`/fantasy-football/draft-tracker`) share three browser-local stores, all keyed by stable player ids so an action on one surface flags the player on the other. The hooks wire React state via `useLocalStorageString` (a generic `useSyncExternalStore` reader), with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`:
+The fantasy pages share three browser-local stores, all keyed by stable player ids so an action on one surface flags the player on the others. The hooks wire React state via `useLocalStorageString` (a generic `useSyncExternalStore` reader), with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`:
 
-- `usePlayerQueue` — single watchlist of player ids (My Queue sidebar card, star toggles). Exposes `queue`, `isQueued`, `toggle`, `remove`, `reorder`, `clear`. Key `fantasy-player-queue-v1`.
-- `usePlayerNotes` — short private notes keyed by player id (max 280 chars), edited in the `PlayerDetailDrawer` and folded into the draft assistant's CSV/recap exports. Exposes `getNote`, `hasNote`, `setNote`, `notedIds`, `maxLength`. Key `fantasy-player-notes-v1`.
-- `useCompareTray` — compare selection of up to 3 player ids powering the docked `CompareTray` and `CompareModal`. Exposes `compareIds`, `inCompare`, `isFull`, `limit` (3), `toggle`, `remove`, `clear`. Key `fantasy-compare-v1`.
+- `usePlayerQueue` — single watchlist of player ids (the star on a rankings row and on a redraft room row, the queued filter on the rankings board, the queue line over the redraft room's board, and the queue toggle in both drawers). Exposes `queue`, `isQueued`, `toggle`, `remove`, `reorder`, `clear`. Key `fantasy-player-queue-v1`.
+- `usePlayerNotes` — short private notes keyed by player id (max 280 chars), edited in the rankings board's drawer and in `PlayerDetailDrawer`, and folded into the draft assistant's exports. Exposes `getNote`, `hasNote`, `setNote`, `notedIds`, `maxLength`. Key `fantasy-player-notes-v1`.
+- `useCompareTray` — compare selection of up to 3 player ids behind the Compare control in `PlayerDetailDrawer` and the `CompareTray` and `CompareModal` on the best ball board. Both draft rooms turn the drawer's Compare control off, since neither renders a tray. Exposes `compareIds`, `inCompare`, `isFull`, `limit` (3), `toggle`, `remove`, `clear`. Key `fantasy-compare-v1`.
 
 `useLocalStorageString` is not itself bound to a key — callers pass the key. Same-tab writes notify subscribers via an explicit `emitLocalStoreChange` call; cross-tab changes arrive through the window `storage` event.
-
-### List density preference
-
-The rankings client also keeps a List-view Comfortable/Compact density preference under key `fantasy-board-density`. It is implemented inline in `src/app/fantasy-football/fantasy-football-client.tsx` (its own `useSyncExternalStore` glue, not a separate hook file).
 
 ### Draft tracker state
 

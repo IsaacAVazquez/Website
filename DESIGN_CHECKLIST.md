@@ -4,12 +4,13 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-10-12 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. Its line on class names, sticky bars, and maps was added on 2026-10-12. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-10-13 · The "Project routes" section was added on 2026-10-11, when each project route was released to its own design inside the site frame, and the colour, typography, consistency, and print shop sections now bind the frame and the seven designed pages. Its line on class names, sticky bars, and maps was added on 2026-10-12, and its line on the fantasy football kit on 2026-10-13. The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
 > the print shop reference, `wine-cellar.css` and `league-table.css` show a project route on its own
-> design inside the frame, `ComparisonRadarChart` shows themeable D3, and `tech-startup-tracker` shows the
-> error, loading, and verified disclosure with correct row semantics.
+> design inside the frame, `src/components/fantasy/fantasy.css` shows several routes sharing one kit
+> (`docs/FANTASY_FOOTBALL_KIT.md`), `ComparisonRadarChart` shows themeable D3, and `tech-startup-tracker`
+> shows the error, loading, and verified disclosure with correct row semantics.
 
 ---
 
@@ -192,6 +193,12 @@ genre, the first screen, what is cut, and what is pinned. Before merging a redes
       `src/app/__tests__/route-stylesheets.test.ts` fails when two route folders name a class the same
       way. A sticky bar inside the page reads `--c97-z-sticky`, and a Leaflet map takes `.c97-basemap`,
       which keeps Leaflet's pane and control z-indexes inside the map.
+- [ ] A fantasy football page follows its kit. The eight routes draw with `src/components/fantasy/fantasy.css`
+      and one area sheet per page or family of shared parts, all under `src/components/fantasy/`, which the
+      route stylesheet test treats as shared. `src/app/fantasy-football/__tests__/print-shop-rules.test.ts`
+      holds each area sheet to a prefix of its own and every selector in it to that prefix or `.ffb-root`,
+      and it fails a radius other than the kit's, a blurred shadow, and a hex colour in markup.
+      `docs/FANTASY_FOOTBALL_KIT.md` has the rules, the cascade, and how a page is put together.
 - [ ] Everything pinned stays. Every e2e test id, exact string, URL parameter, and keyboard path a spec or
       a route test names is kept, and where a redesign has to change one the PR changes the test in the
       same commit and says why. Nothing in the route's `.impeccable/surfaces/` brief's "do not

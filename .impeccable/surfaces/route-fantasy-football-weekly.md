@@ -5,6 +5,10 @@ primary_target: "route:/fantasy-football/weekly"
 related_targets: ["src/app/fantasy-football/weekly/weekly-client.tsx","src/app/fantasy-football/weekly/page.tsx","src/app/fantasy-football/waivers/page.tsx","src/lib/fantasyWeeklySnapshot.ts","src/hooks/useFantasyWeeklySnapshot.ts","scripts/buildFantasyWeeklySnapshot.ts"]
 ---
 
+Updated on 2026-10-13 by the fantasy football redesign. All eight fantasy routes were rebuilt as one product on a kit of their own, `src/components/fantasy/fantasy.css`. `docs/FANTASY_FOOTBALL_KIT.md` is the kit's reference and `docs/superpowers/specs/2026-10-13-fantasy-football-redesign-design.md` is the spec. Every route renders inside `src/app/fantasy-football/layout.tsx`, which sets the kit's root and the product bar, and all eight are wide tool routes. The weekly board draws with kit classes and `fantasy-weekly.css`. Every item under "Decisions not to re-litigate" stands, including the not-published state before Week 1 and flex and quarterback ranks never reading as one list.
+
+That supersedes these layout notes below and leaves the rest of the record as it was written. The 2026-09-27 status note's sentence that the route reads `--c97-*` tokens directly under `data-c97-surface` describes the page before the kit. In "Frame removal, 2026-10-12" the section heads set in the body face at `text-xl` semibold, the header description, and every y position are superseded, and so is the note that the first board row sits under the My team workspace. My team sits in a rail beside the board from 1200px up and after it below that. That order was the lead's call, and the spec says it is one change to put back if the earlier order was Isaac's. I did not measure the new positions for this note.
+
 Updated on 2026-09-28 by the responsive pass. The page uses the site gutter through `SHELL_CLASS`, and the 96px scroll margins on the section headings and on `MyTeamPanel`, sized for the deleted sticky header, are gone, since nothing is pinned above them.
 
 # Fantasy Football Weekly Board

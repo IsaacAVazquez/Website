@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-10-12
+**Last updated:** 2026-10-13
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
@@ -74,31 +74,51 @@ page's only `<main>`, header, and footer.
 
 ### Fantasy football
 
-Representative live components:
+The eight `/fantasy-football/*` routes are one product. `src/app/fantasy-football/layout.tsx` wraps
+them in the kit's root (`ffb-root`), loads the product's typeface, and renders `FantasyProductBar`
+above the route. They draw with the kit in `src/components/fantasy/fantasy.css`, and
+`docs/FANTASY_FOOTBALL_KIT.md` is the reference for its classes, its cascade, and the shared parts below.
 
-- `src/app/fantasy-football/fantasy-football-client.tsx`
-- `src/app/fantasy-football/best-ball/best-ball-client.tsx`
-- `src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx`
-- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx`
-- `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
-- `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
+Route clients, each with the parts it keeps in its own folder:
 
-These are used across `/fantasy-football/*` routes.
+- `src/app/fantasy-football/fantasy-football-client.tsx`, the rankings board, which renders its own player drawer
+- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx`, the redraft room, with `components/DraftSetup.tsx`, `DraftBoard.tsx`, `DraftClock.tsx`, `DraftAnalyticsPanel.tsx`, and `DraftRecapPanel.tsx`
+- `src/app/fantasy-football/mock-draft/mock-draft-client.tsx`, the mock draft
+- `src/app/fantasy-football/trade-calculator/trade-calculator-client.tsx`, the trade calculator, with `trade-package-fieldset.tsx`, `trade-player-combobox.tsx`, `trade-result-rail.tsx`, `trade-balance-scale.tsx`, and `trade-roster-impact.tsx`
+- `src/app/fantasy-football/best-ball/best-ball-client.tsx`, the best ball board
+- `src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx`, the best ball room, with `best-ball-draft-board.tsx`, `best-ball-recommendations.tsx`, `best-ball-build-panel.tsx`, and `best-ball-build-sheet.tsx`
+- `src/app/fantasy-football/weekly/weekly-client.tsx`, which renders both the weekly board and waivers
 
-`src/components/newsletter/NewsletterSignup.tsx` is the shared public email opt-in used by the writing archive, fantasy rankings, and Agent Build Index. It posts to `/api/newsletter/subscribe` and records a conversion only after the contact API succeeds.
+`src/components/newsletter/NewsletterSignup.tsx` is the public email opt-in on Agent Build Index. It posts to `/api/newsletter/subscribe` and records a conversion only after the contact API succeeds.
 
-Shared fantasy presentation components live in `src/components/fantasy/`
-(exported via `index.ts`) and are reused by both the rankings board and the
-draft assistant:
+Shared fantasy components live in `src/components/fantasy/`. The folder has no `index.ts`, so a page
+imports each file by its path, and a route client never imports `PlayerDetailDrawer.tsx` or
+`CompareTray.tsx` directly, since the two `Deferred` wrappers keep them out of first load.
 
 | Component | File | Role |
 |----------|------|------|
-| `PositionFilterBar` | `src/components/fantasy/PositionFilterBar.tsx` | Generic position pill radiogroup with per-slice availability/NA states, shared by rankings and draft boards |
-| `PlayerDetailDrawer` | `src/components/fantasy/PlayerDetailDrawer.tsx` | Focus-trapped player detail drawer/bottom-sheet with tier context, ADP, distribution bar, queue/compare toggles, and editable note; used by the draft assistant and best ball, while the rankings board renders its own tier-plate drawer inside `fantasy-football-client.tsx` |
-| `RankDistributionBar` | `src/components/fantasy/RankDistributionBar.tsx` | Visualizes expert best→worst rank spread with the average marked and tight/mixed/volatile color coding |
-| `CompareTray` | `src/components/fantasy/CompareTray.tsx` | Docked bottom bar surfacing the compare selection (up to 3 players) that opens the `CompareModal` |
-| `CompareModal` | `src/components/fantasy/CompareModal.tsx` | Side-by-side comparison dialog with per-row winner highlighting and shared-scale range bars |
-| `DraftValuePanel` | `src/components/fantasy/DraftValuePanel.tsx` | Shared room-relative Draft Outlook, draft-slot context, published BBM field math, and user-entered expected return calculator for redraft and best ball trackers |
+| `FantasyProductBar` | `src/components/fantasy/FantasyProductBar.tsx` | The bar the layout renders above every fantasy route, naming the product and linking the eight tools with the current one marked |
+| `FantasyRouteHeader` | `src/components/fantasy/FantasyRouteHeader.tsx` | The page head (title, one orienting sentence, the freshness line) on the rankings board, the best ball board, the trade calculator, and the weekly pages. The file also exports `TitleAccent`, `FantasySectionHeading`, and `FreshnessParts`, the line of source dates the three draft rooms print in their own heads |
+| `FantasyLoadingState` | `src/components/fantasy/FantasyLoadingState.tsx` | The loading skeleton in all eight `loading.tsx` files, with `role="status"` and a "Loading …" name |
+| `SeasonalScopeNote` | `src/components/fantasy/SeasonalScopeNote.tsx` | The dated note a draft-season page prints from Week 1, which names the week and the season and then carries the page's own sentence about its board |
+| `PositionFilterBar` | `src/components/fantasy/PositionFilterBar.tsx` | The position switch on the rankings board, the best ball board, and the three draft rooms. One radiogroup with a roving tab stop, where each position button carries its colour and an unavailable option is disabled and marked "NA" |
+| `RankDistributionBar` | `src/components/fantasy/RankDistributionBar.tsx` | The expert spread plot, drawing the best to worst rank as a line, one standard deviation each side of the mean as a thicker segment, and the mean as a tick |
+| `PlayerPointsPerGame` | `src/components/fantasy/PlayerPointsPerGame.tsx` | A player's prior-season points per game (low, median, average, high) with the season, scoring, and games it covers, rendered by every player drawer |
+| `PlayerNoteField` | `src/components/fantasy/PlayerNoteField.tsx` | The private note on a player, with its counter and where the note is kept, rendered by every player drawer |
+| `PlayerDetailDrawer` | `src/components/fantasy/PlayerDetailDrawer.tsx` | The focus-trapped player drawer, a bottom sheet on a phone, with rank, tier, expert range, ADP, movement, points per game, the queue and compare controls, and the note. The best ball board, the redraft room, and the best ball room open it, and the two rooms turn its Compare control off because neither renders a tray |
+| `DeferredPlayerDetailDrawer` | `src/components/fantasy/DeferredPlayerDetailDrawer.tsx` | Loads `PlayerDetailDrawer` the first time a player is opened. It is the import the three callers use |
+| `CompareTray` | `src/components/fantasy/CompareTray.tsx` | The band pinned to the bottom of the screen that holds the compare selection (up to 3 players) and opens `CompareModal` |
+| `CompareModal` | `src/components/fantasy/CompareModal.tsx` | The side by side comparison dialog, which marks the best value in each row and draws the players' ranges on one shared scale |
+| `DeferredCompareTray` | `src/components/fantasy/DeferredCompareTray.tsx` | Keeps `CompareTray` out of first load and shows nothing until a player is pinned. The best ball board is the one page that renders it |
+| `DraftRoomParts` | `src/components/fantasy/DraftRoomParts.tsx` | The parts the redraft room, the mock draft, and the best ball room share, which are `DraftScorebug` and `DraftScorebugCell` (the room's pinned status bar), `DraftLastPicks`, `DraftRoster`, and `DraftPickGrid`. A room imports them and does not copy their markup |
+| `RedraftDecisionPanel` | `src/components/fantasy/RedraftDecisionPanel.tsx` | The redraft room's reading of what waiting costs at each position, one row per position with its tier and next-turn readings |
+| `DraftValuePanel` | `src/components/fantasy/DraftValuePanel.tsx` | Draft Outlook for the redraft and best ball rooms, with the room-relative rank, draft-slot context, the published Best Ball Mania VII field math, and the user-entered expected return calculator |
+| `MyTeamPanel` | `src/components/fantasy/MyTeamPanel.tsx` | The saved roster on the weekly board and waivers, with its weekly lineup, roster, and league settings views and the add and drop comparison |
+
+Four small helpers sit beside them. `positionClass.ts` returns the kit class that carries a position's
+colour, `spreadScale.ts` fits a spread plot to its scale, `useFirstRowCount.ts` counts the children on
+a wrapping list's first row, and `scrollChildIntoViewX.ts` moves a sideways scroller without moving
+the page.
 
 ### Investments
 

@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-10-12
+**Last updated:** 2026-10-13
 
 ---
 
@@ -123,34 +123,47 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 
 ## Fantasy Football
 
+The eight routes are one product inside `src/app/fantasy-football/layout.tsx`, which sets the kit's root (`ffb-root`), loads the product's typeface, and renders `FantasyProductBar`. The kit is `src/components/fantasy/fantasy.css`, each page or family of shared parts has an area sheet beside it (`fantasy-<area>.css`), and `docs/FANTASY_FOOTBALL_KIT.md` is the reference.
+
 Route clients:
 
-- `src/app/fantasy-football/fantasy-football-client.tsx` — tier-plate rankings board from the `draft-rankings` design template (sticky position/scoring/search bar, avg-rank cliff separators, expert-spread bars, windowing, and its own player drawer with neighborhood, queue, and notes)
-- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx` — draft assistant (reuses snapshot + shared drawer/compare/notes/queue)
-- `src/app/fantasy-football/draft-tracker/components/DraftBoard.tsx`
-- `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`
-- `src/app/fantasy-football/draft-tracker/components/DraftAnalyticsPanel.tsx` — live signals card + completion recap, backed by the pure `draftAnalytics` engine
+- `src/app/fantasy-football/fantasy-football-client.tsx` — the rankings board (rows under tier breaks with the average-rank cliff, an expert spread plot per row, a pinned toolbar over the column heads, windowing, and its own player drawer with the neighbouring ranks, the queue toggle, and a private note)
+- `src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx` — the redraft room (reuses the snapshot, the queue, and the shared drawer)
+- `src/app/fantasy-football/draft-tracker/components/DraftSetup.tsx`, `DraftBoard.tsx`, `DraftClock.tsx`, `DraftRecapPanel.tsx`
+- `src/app/fantasy-football/draft-tracker/components/DraftAnalyticsPanel.tsx` — live signals and the completion recap, backed by the pure `draftAnalytics` engine
+- `src/app/fantasy-football/mock-draft/mock-draft-client.tsx` — the mock draft
+- `src/app/fantasy-football/trade-calculator/trade-calculator-client.tsx` — the trade calculator, with `trade-package-fieldset.tsx`, `trade-player-combobox.tsx`, `trade-result-rail.tsx`, `trade-balance-scale.tsx`, and `trade-roster-impact.tsx`
+- `src/app/fantasy-football/best-ball/best-ball-client.tsx` — the best ball board
+- `src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx` — the best ball room, with `best-ball-draft-board.tsx`, `best-ball-recommendations.tsx`, `best-ball-build-panel.tsx`, and `best-ball-build-sheet.tsx`
+- `src/app/fantasy-football/weekly/weekly-client.tsx` — the weekly board and waivers
 
-Shared presentation components in `src/components/fantasy/` (barrel-exported via `index.ts`):
+Shared components in `src/components/fantasy/` (no `index.ts`, so each is imported by its file path):
 
-- `PositionFilterBar` (+ `PositionFilterOption` type) — shared position pill radiogroup with per-slice availability/NA states
-- `PlayerDetailDrawer` — focus-trapped detail drawer/bottom-sheet (position rank, tier N of M, ADP, distribution bar, editable private note, queue/compare toggles); used by the draft assistant and best ball, while the rankings board renders its own template drawer in `fantasy-football-client.tsx`
-- `RankDistributionBar` — expert best→worst spread with consensus marker and tight/mixed/volatile coloring
-- `CompareTray` — docked bottom bar for the pinned compare selection (up to 3)
-- `CompareModal` — side-by-side compare dialog with per-row winner highlighting
+- `FantasyProductBar` — the bar above every fantasy route that links the eight tools
+- `FantasyRouteHeader` (+ `TitleAccent`, `FantasySectionHeading`, `FreshnessParts`) — the page head and the line of source dates
+- `FantasyLoadingState` — the loading skeleton in all eight `loading.tsx` files
+- `SeasonalScopeNote` — the dated note a draft-season page prints from Week 1
+- `PositionFilterBar` (+ `PositionFilterOption` type) — the position switch, one radiogroup with a roving tab stop and a disabled "NA" state per option
+- `RankDistributionBar` — the expert spread plot, with the range as a line, one standard deviation as a thicker segment, and the mean as a tick
+- `PlayerPointsPerGame`, `PlayerNoteField` — the points per game block and the private note field every player drawer renders
+- `PlayerDetailDrawer` — the focus-trapped drawer, a bottom sheet on a phone (rank, tier, expert range, ADP, movement, points per game, queue and compare controls, private note); opened by the best ball board, the redraft room, and the best ball room through `DeferredPlayerDetailDrawer`, while the rankings board renders its own drawer in `fantasy-football-client.tsx`
+- `CompareTray`, `CompareModal` — the band pinned to the bottom of the screen for the compare selection (up to 3) and the side by side dialog it opens; rendered through `DeferredCompareTray`, and the best ball board is the one page that renders it
+- `DraftRoomParts` — `DraftScorebug`, `DraftScorebugCell`, `DraftLastPicks`, `DraftRoster`, and `DraftPickGrid`, shared by the redraft room, the mock draft, and the best ball room
+- `RedraftDecisionPanel` — the redraft room's reading of what waiting costs at each position
+- `DraftValuePanel` — Draft Outlook and the expected return calculator for both draft trackers
+- `MyTeamPanel` — the saved roster on the weekly board and waivers
 
-Cross-surface browser-local stores (shared by both clients) in `src/hooks/`:
+Cross-surface browser-local stores in `src/hooks/`:
 
-- `usePlayerQueue` — starred watchlist of player ids (`fantasy-player-queue-v1`)
-- `usePlayerNotes` — private per-player notes, 280-char cap (`fantasy-player-notes-v1`)
-- `useCompareTray` — compare selection, max 3 (`fantasy-compare-v1`)
+- `usePlayerQueue` — starred watchlist of player ids (`fantasy-player-queue-v1`), read by the rankings board, the redraft room's board, and the shared drawer
+- `usePlayerNotes` — private per-player notes, 280-char cap (`fantasy-player-notes-v1`), read by the rankings board and the shared drawer
+- `useCompareTray` — compare selection, max 3 (`fantasy-compare-v1`), read by the shared drawer and the compare tray
 - `useLocalStorageString` — low-level reactive single-key localStorage reader the three stores build on
-- list density preference lives inline in `fantasy-football-client.tsx` via `useSyncExternalStore` (`fantasy-board-density`)
 - draft state persists per-season under `fantasy-draft-tracker-v3-<season>`
 
 Supporting libs:
 
-- `src/lib/fantasyUtils.ts` — board math, formatting, and legend copy (`getValueVsAdp`, `getConsensusSpread`, `withTierBreaks`, freshness helpers, `FANTASY_BOARD_LEGEND`)
+- `src/lib/fantasyUtils.ts` — board math, formatting, and tooltip copy (`getValueVsAdp`, `getConsensusSpread`, `withTierBreaks`, freshness helpers, the `FANTASY_*_TOOLTIP` strings)
 - `src/lib/draftAnalytics.ts` — pure steal/reach/position-run engine consumed by `DraftAnalyticsPanel`
 - `src/lib/fantasyLocal.ts` — parse/serialize helpers + storage-key constants for the queue/notes/compare stores
 
