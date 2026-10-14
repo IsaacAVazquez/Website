@@ -1,19 +1,33 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
-import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
-import { FantasyRouteHeader, FreshnessParts, TitleAccent } from "@/components/fantasy/FantasyRouteHeader";
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import Link from "next/link";
+import { Undo2 } from "lucide-react";
+import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import { FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
+import {
+  DraftLastPicks,
+  DraftPickGrid,
+  DraftRoster,
+  DraftScorebug,
+  DraftScorebugCell,
+} from "@/components/fantasy/DraftRoomParts";
+import { positionClass } from "@/components/fantasy/positionClass";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
-import { readValidatedBrowserStorage } from "@/lib/browserStorage";
+import { readBrowserStorageString, readValidatedBrowserStorage } from "@/lib/browserStorage";
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 import {
-  FASCIA_TOP_CLASS,
-  MONO_LABEL_CLASS,
-  PILL_BUTTON_CLASS,
   SHELL_CLASS,
-  WARNING_CARD_STYLE,
   assignLineupSlots,
   canPracticeWithArchivedDraftBoard,
   formatAdp,
@@ -22,10 +36,8 @@ import {
   getConsensusAvg,
   getFantasyAdpFreshness,
   getNflRegularSeasonWeek,
-  getPositionTone,
   getSnapshotStaleness,
   getSnapshotStalenessLabel,
-  getTierRailIntensity,
   hasReliableAdpSample,
   shortName,
   withTierBreaks,
@@ -38,41 +50,27 @@ import {
   type PositionFilterOption,
 } from "@/components/fantasy/PositionFilterBar";
 import type { MockDraftTemper } from "@/lib/mockDraft";
+import { calculateDraftOrder } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import {
   DEFAULT_MOCK_DRAFT_SETTINGS,
   getMockDraftStorageKey,
   useMockDraftState,
 } from "./hooks/useMockDraftState";
+import "@/components/fantasy/fantasy-mock.css";
 
 /**
- * Ink-filled action pill (the template's "Draft" / "Start mock" buttons). The
- * fill lives in classes rather than an inline style so the hover can win.
- * The opacity fade `disabled:opacity-50` used to apply measured 4.38:1 light
- * and 3.42:1 dark once blended over the page, so disabled drops the fade and
- * prints as a dashed ink-2 outline instead of a faded ink fill.
+ * The page's orienting sentence. Static on purpose, and worded to hold whether
+ * or not the ADP is in use, so it never swaps when the snapshot loads. The
+ * setup head prints it as the lede, and a running room prints it as the page's
+ * last line, since the running head is one compact line.
  */
-const SOLID_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]";
+const LEAD =
+  "A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board, and from market ADP when a current sample is published.";
 
 /**
- * Below `md` the column-label row is hidden, so each board value carries its
- * own label. The sr-only cell label next to it keeps the value named exactly
- * once for assistive tech at every width. Same contract as the draft tracker.
- */
-const ROW_MICRO_LABEL_CLASS =
-  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
-
-/**
- * The recap board's "#n · POS" line sits on each cell's position wash, where
- * plain muted ink measured 4.16 to 4.41:1 in light. Muted mixed 72% toward ink
- * clears 4.5:1 on every wash in both themes and stays lighter than the name.
- */
-const RECAP_CELL_LABEL_COLOR = "color-mix(in srgb, var(--c97-ink-2) 72%, var(--c97-ink))";
-
-/**
- * Date-only stamp pinned to UTC, so the board and ADP dates in the header chip
- * and the scope note match the upstream's own date in every zone instead of
- * drifting a day for viewers west of UTC.
+ * Date-only stamp pinned to UTC, so the board and ADP dates in the freshness
+ * line and the scope note match the upstream's own date in every zone instead
+ * of drifting a day for viewers west of UTC.
  */
 function formatStampDate(timestamp: string | null | undefined): string {
   if (!timestamp) return "undated";
@@ -89,10 +87,11 @@ function formatStampDate(timestamp: string | null | undefined): string {
 /** Which control opened or restored the current turn, for the live region. */
 type RoomTransition = "open" | "rerun" | "undo" | null;
 
-const SCORING_OPTIONS: { value: ScoringFormat; label: string }[] = [
+/** `shortLabel` is what a phone prints, where the full names do not fit a third of a field. */
+const SCORING_OPTIONS: { value: ScoringFormat; label: string; shortLabel?: string }[] = [
   { value: "PPR", label: "PPR" },
-  { value: "HALF_PPR", label: "Half" },
-  { value: "STANDARD", label: "Std" },
+  { value: "HALF_PPR", label: "Half PPR", shortLabel: "Half" },
+  { value: "STANDARD", label: "Standard", shortLabel: "Std" },
 ];
 
 const ORDER_OPTIONS: { value: "snake" | "linear"; label: string }[] = [
@@ -124,6 +123,12 @@ const ROUND_OPTIONS = [3, 4, 5, 6];
 type BoardPositionFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "FLEX" | "K" | "DST";
 
 const FLEX_POSITIONS = new Set(["RB", "WR", "TE"]);
+
+function matchesPosition(player: Player, filter: BoardPositionFilter): boolean {
+  if (filter === "ALL") return true;
+  if (filter === "FLEX") return FLEX_POSITIONS.has(player.position);
+  return player.position === filter;
+}
 
 const POSITION_FILTER_OPTIONS: PositionFilterOption<BoardPositionFilter>[] = [
   { value: "ALL", label: "All" },
@@ -165,7 +170,7 @@ function deltaAtPick(
   player: Player,
   pickNumber: number,
   round: number
-): { text: string; color: string; title: string } | null {
+): { text: string; isValue: boolean; title: string } | null {
   if (typeof player.adp !== "number" || !Number.isFinite(player.adp)) return null;
   if (!hasReliableAdpSample(player)) return null;
   const delta = pickNumber - player.adp;
@@ -173,13 +178,13 @@ function deltaAtPick(
   if (isPlayerValueAtPick(player, pickNumber, round)) {
     return {
       text: formatPickDelta(delta),
-      color: "var(--c97-positive)",
+      isValue: true,
       title: `Still on the board ${magnitude} picks past his market ADP`,
     };
   }
   return {
     text: formatPickDelta(delta),
-    color: "var(--c97-ink-2)",
+    isValue: false,
     title:
       delta < 0
         ? `Rooms usually take him about ${magnitude} picks after #${pickNumber}`
@@ -187,47 +192,44 @@ function deltaAtPick(
   };
 }
 
-/** Fused segmented control: aria-pressed buttons inside one hairline frame. */
+/**
+ * The kit's segmented switch: aria-pressed buttons in one frame, as wide as
+ * the field it sits in. An option with a `shortLabel` prints it on a phone and
+ * keeps the long form as its accessible name.
+ */
 function SegmentedButtons<Value extends string>({
   options,
   value,
   onSelect,
   labelledBy,
 }: {
-  options: readonly { value: Value; label: string }[];
+  options: readonly { value: Value; label: string; shortLabel?: string }[];
   value: Value;
   onSelect: (value: Value) => void;
   /** Id of the visible label, so each segment is announced with its group. */
   labelledBy: string;
 }) {
   return (
-    <div
-      role="group"
-      aria-labelledby={labelledBy}
-      className="flex flex-wrap border"
-      style={{ borderColor: "var(--c97-rule)" }}
-    >
-      {options.map((option) => {
-        const active = option.value === value;
-        return (
-          <button
-            key={option.value}
-            type="button"
-            aria-pressed={active}
-            onClick={() => onSelect(option.value)}
-            className={`relative min-h-touch min-w-touch flex-1 font-mono text-2xs uppercase tracking-[0.06em] focus-visible:z-[var(--c97-z-tray)] ${
-              active ? "" : "hover:bg-[var(--c97-overlay)]"
-            }`}
-            style={
-              { paddingInline: "var(--c97-sp-0)", ...(active
-                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { color: "var(--c97-ink)" }) }
-            }
-          >
-            {option.label}
-          </button>
-        );
-      })}
+    <div role="group" aria-labelledby={labelledBy} className="ffb-seg ffb-mk-field-seg">
+      {options.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          aria-pressed={option.value === value}
+          aria-label={option.shortLabel ? option.label : undefined}
+          onClick={() => onSelect(option.value)}
+          className="ffb-seg-btn"
+        >
+          {option.shortLabel ? (
+            <>
+              <span className="ffb-only-phone">{option.shortLabel}</span>
+              <span className="ffb-not-phone">{option.label}</span>
+            </>
+          ) : (
+            option.label
+          )}
+        </button>
+      ))}
     </div>
   );
 }
@@ -271,10 +273,9 @@ export function MockDraftClient() {
   // Every pick unmounts the row or quick pick that took the click, so focus has
   // somewhere stable to land: the panel that owns the next turn.
   const onClockRef = useRef<HTMLElement>(null);
-  // The sticky status strip above the on-the-clock panel is one wrapping line
-  // below md and a readout row from lg (189px against 86px when measured on
-  // 2026-10-09), so the margin that keeps the panel clear of it when focus()
-  // scrolls it into view is read off the strip rather than fixed in CSS.
+  // The pinned scorebug above the on-the-clock panel is one row on a desktop
+  // and two on a phone, so the margin that keeps the panel clear of it when
+  // focus() scrolls it into view is read off the bar rather than fixed in CSS.
   const stripRef = useRef<HTMLElement>(null);
   const focusClock = useCallback(() => {
     const panel = onClockRef.current;
@@ -288,7 +289,19 @@ export function MockDraftClient() {
   // Start mock, Run it back and Sim to end all remove the control that took
   // the click, and the panel that should hold focus next mounts on the
   // following render, so the move waits for that render (see the effect below).
-  const pendingFocusRef = useRef<"clock" | "recap" | null>(null);
+  // New mock and Change setup swap the room for the setup screen, and Back to
+  // room swaps it back, so those wait for the next render the same way. Setup
+  // lands on its heading, and a room that comes back lands on the scorebug's
+  // on-the-clock cell, or on the value report when the room is finished.
+  const pendingFocusRef = useRef<"clock" | "recap" | "setup" | "room" | null>(null);
+  const setupHeadingRef = useRef<HTMLHeadingElement>(null);
+  const onClockCellRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const railRef = useRef<HTMLElement>(null);
+  // Retry and Reload the board leave the screen once the request is under
+  // way, so the effect below watches for the button going and catches the focus.
+  const reloadFocusRef = useRef(false);
+  const roomIds = useId();
   const [transition, setTransition] = useState<RoomTransition>(null);
 
   // A persisted room decides which scoring board to fetch, so a saved
@@ -358,6 +371,16 @@ export function MockDraftClient() {
   const room = useMockDraftState(board, scoringSelection, simulationAvailable);
   const { state, availablePlayers, currentPick } = room;
   const settings = state.settings;
+  // The room writes itself to storage after every pick. When the browser
+  // refuses, the room lives in this tab only, and nothing here may say "saved".
+  // This runs after the hook's own write, so it reads that write's outcome.
+  const [storageBlocked, setStorageBlocked] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the storage layer's status once the room's write has run
+    setStorageBlocked(
+      readBrowserStorageString(getMockDraftStorageKey()).persistenceStatus === "memory-only"
+    );
+  }, [state]);
   const totalPicks = settings.totalTeams * settings.rounds;
   const currentRound = Math.min(settings.rounds, Math.ceil(currentPick / settings.totalTeams));
 
@@ -374,8 +397,37 @@ export function MockDraftClient() {
     } else if (pending === "recap" && isRecap && valueReportRef.current) {
       pendingFocusRef.current = null;
       valueReportRef.current.focus();
+    } else if (pending === "setup" && showSetup && setupHeadingRef.current) {
+      pendingFocusRef.current = null;
+      setupHeadingRef.current.focus();
+    } else if (pending === "room" && !showSetup) {
+      pendingFocusRef.current = null;
+      // The cell is pinned, so nothing needs to scroll to show it.
+      if (isLive) onClockCellRef.current?.focus({ preventScroll: true });
+      else valueReportRef.current?.focus();
     }
-  }, [currentPick, focusClock, isLive, isRecap]);
+  }, [currentPick, focusClock, isLive, isRecap, showSetup]);
+
+  // The scorebug is two rows on a phone and three under 360px, so the board's
+  // bar and the rail pin under its measured height. The board's bar wraps where
+  // the list column is narrow, so the two together are what a focused row has
+  // to clear, and the kit's scroll margin reads that sum.
+  const boardbarRef = useRef<HTMLDivElement>(null);
+  const [bugHeight, setBugHeight] = useState(0);
+  const [boardbarHeight, setBoardbarHeight] = useState(0);
+  useEffect(() => {
+    const bug = stripRef.current;
+    if (!bug || typeof ResizeObserver === "undefined") return;
+    const measure = () => {
+      setBugHeight(bug.offsetHeight);
+      setBoardbarHeight(boardbarRef.current?.offsetHeight ?? 0);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(bug);
+    if (boardbarRef.current) observer.observe(boardbarRef.current);
+    return () => observer.disconnect();
+  }, [isLive]);
 
   const userPicks = useMemo(
     () => state.picks.filter((pick) => pick.teamNumber === settings.userTeam),
@@ -412,11 +464,11 @@ export function MockDraftClient() {
     if (!isLive || !simulationAvailable || availablePlayers.length === 0) return [];
     const used = new Set<string>();
     const picks: { key: string; tag: string; player: Player; sub: string; title: string }[] = [];
-    const describe = (player: Player) => {
-      const rank = formatRankValue(player.rankEcr ?? player.averageRank);
-      const tier = Number.isFinite(player.tier) ? ` · T${player.tier}` : "";
-      return `#${rank}${tier} · ${player.position}`;
-    };
+    // "#" is a pick number everywhere else in the room, so the rank is spelled out.
+    const describe = (player: Player) =>
+      `${player.position}${player.positionRank ?? ""} · Rank ${formatRankValue(
+        player.rankEcr ?? player.averageRank
+      )}`;
 
     const best = availablePlayers[0];
     used.add(best.id);
@@ -477,7 +529,7 @@ export function MockDraftClient() {
           key: "value",
           tag: "Value",
           player: value,
-          sub: `${formatPickDelta(valueDelta)} past ADP · ${value.position}`,
+          sub: `${value.position}${value.positionRank ?? ""} · ${formatPickDelta(valueDelta)} past ADP`,
           title: `${value.name} usually goes about ${Math.round(valueDelta)} picks earlier`,
         });
       }
@@ -498,11 +550,7 @@ export function MockDraftClient() {
   const filteredAvailable = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     return availablePlayers.filter((player) => {
-      if (positionFilter === "FLEX") {
-        if (!FLEX_POSITIONS.has(player.position)) return false;
-      } else if (positionFilter !== "ALL" && player.position !== positionFilter) {
-        return false;
-      }
+      if (!matchesPosition(player, positionFilter)) return false;
       if (!query) return true;
       return (
         player.name.toLowerCase().includes(query) ||
@@ -568,25 +616,36 @@ export function MockDraftClient() {
     return { judged, total, grade, bestPick, biggestReach, shape };
   }, [state.picks, userPicks]);
 
-  const gridRows = useMemo(() => {
-    if (!isRecap) return [];
-    const byNumber = new Map(state.picks.map((pick) => [pick.pickNumber, pick]));
-    const teams = settings.totalTeams;
-    return Array.from({ length: settings.rounds }, (_, roundIndex) => {
-      const round = roundIndex + 1;
-      return {
-        round,
-        cells: Array.from({ length: teams }, (_, slotIndex) => {
-          const slot = slotIndex + 1;
-          const pickNumber =
-            settings.draftType === "snake" && round % 2 === 0
-              ? round * teams - slot + 1
-              : (round - 1) * teams + slot;
-          return { slot, pickNumber, pick: byNumber.get(pickNumber) ?? null };
-        }),
-      };
-    });
-  }, [isRecap, settings.draftType, settings.rounds, settings.totalTeams, state.picks]);
+  const isSearching = searchQuery.trim().length > 0;
+  // Who is already gone from each tier, under the position filter in force.
+  const goneByTier = useMemo(() => {
+    const drafted = new Set(state.picks.map((pick) => pick.player.id));
+    const gone = new Map<number, string[]>();
+    for (const player of board) {
+      if (!drafted.has(player.id) || !matchesPosition(player, positionFilter)) continue;
+      if (typeof player.tier !== "number" || !Number.isFinite(player.tier)) continue;
+      gone.set(player.tier, [...(gone.get(player.tier) ?? []), shortName(player)]);
+    }
+    return gone;
+  }, [board, positionFilter, state.picks]);
+
+  const slotForPick = useCallback(
+    (pickNumber: number) => calculateDraftOrder(pickNumber, settings.totalTeams, settings.draftType),
+    [settings.draftType, settings.totalTeams]
+  );
+  // The user's turn after this one, or 0 on their last. The board marks where
+  // it falls if every pick until then follows the board, which a filter or a
+  // search breaks, so the line only shows on the whole board.
+  const nextUserPick = useMemo(() => {
+    for (let pick = currentPick + 1; pick <= totalPicks; pick += 1) {
+      if (slotForPick(pick) === settings.userTeam) return pick;
+    }
+    return 0;
+  }, [currentPick, settings.userTeam, slotForPick, totalPicks]);
+  const turnPlayerId =
+    nextUserPick > 0 && positionFilter === "ALL" && !isSearching
+      ? windowedPlayers[nextUserPick - currentPick]?.id
+      : undefined;
 
   const openSetup = () => {
     setSetupForm({
@@ -598,6 +657,12 @@ export function MockDraftClient() {
       lineup: settings.lineup,
     });
     setRoomSetupOpen(true);
+    pendingFocusRef.current = "setup";
+  };
+
+  const backToRoom = () => {
+    setRoomSetupOpen(false);
+    pendingFocusRef.current = "room";
   };
 
   const startRoom = () => {
@@ -651,25 +716,23 @@ export function MockDraftClient() {
   };
 
   const scoringLabel = FANTASY_SCORING_LABELS[routeScoring];
-  const kicker = showSetup
-    ? "Mock room · Setup"
-    : isRecap
-      ? "Mock room · Recap"
-      : `Mock room · Live · Pick #${currentPick}`;
-
-  const chipSettings = state.status === "setup"
-    ? {
-        teams: setupForm.totalTeams,
-        draftType: setupForm.draftType,
-        rounds: setupForm.rounds,
-      }
-    : { teams: settings.totalTeams, draftType: settings.draftType, rounds: settings.rounds };
-  const headerChips: { label: string; tone?: "warning" }[] = [
+  const parkedRoom = roomSetupOpen && state.status !== "setup";
+  // The running head describes the room, so it reads the room's own settings
+  // and not the form, which a parked room's setup screen can change.
+  const roomScoring = SCORING_OPTIONS.find((option) => option.value === settings.scoringFormat);
+  const roomLineParts = [
+    { key: "room", text: `Room #${roomLabel(state.seed)}` },
+    { key: "teams", text: `${settings.totalTeams}-team ${settings.draftType}` },
+    // A phone holds the room line to one row, so the scoring takes its short form there.
+    {
+      key: "scoring",
+      text: `${roomScoring?.label ?? settings.scoringFormat} scoring`,
+      short: roomScoring?.shortLabel ?? roomScoring?.label,
+    },
+    { key: "rounds", text: `${settings.rounds}-round rep` },
+  ];
+  const freshnessParts: { label: string; tone?: "warning" }[] = [
     ...(archivedPractice ? [{ label: "Dated preseason practice", tone: "warning" as const }] : []),
-    ...(state.status !== "setup" ? [{ label: `Room #${roomLabel(state.seed)}` }] : []),
-    { label: `${chipSettings.teams}-team ${chipSettings.draftType}` },
-    { label: `${scoringLabel} scoring` },
-    { label: `${chipSettings.rounds}-round rep` },
     ...(boardReady
       ? [
           {
@@ -703,18 +766,54 @@ export function MockDraftClient() {
   // already in flight and the board itself is the problem. Eligible opening
   // boards can resume with explicit consent to dated preseason practice.
   const boardReloadable = !boardReady && (Boolean(error) || (!isLoading && snapshotMatches));
-  const pauseRecovery = !boardReady
+  const kept = (sentence: string) =>
+    storageBlocked ? sentence.replace(/\b(stays?) saved\b/, "$1 until this tab closes") : sentence;
+  const pauseRecovery = kept(!boardReady
     ? boardReloadable
       ? "Your picks stay saved, and simulated picks resume once the board loads."
       : "Your picks stay saved, and simulated picks resume once the board arrives."
     : archiveEligible
       ? "Your picks stay saved. Choose dated preseason practice above to resume with this board."
-      : "Your picks stay saved, and the room resumes only if a newer board publishes.";
-  const rerunRecovery = !boardReady
+      : "Your picks stay saved, and the room resumes only if a newer board publishes.");
+  const rerunRecovery = kept(!boardReady
     ? "Run it back turns back on once the published board loads, and this recap stays exactly as it is."
     : archiveEligible
       ? "Choose dated preseason practice above to run it back. This recap stays saved."
-      : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.";
+      : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.");
+
+  // The reload button shows on setup only after a failed request, and in a room
+  // whenever the board is the problem and no request is in flight.
+  const reloadShown = showSetup ? Boolean(error) : boardReloadable;
+  const reloadBoard = () => {
+    reloadFocusRef.current = true;
+    retry();
+  };
+  useEffect(() => {
+    if (!reloadFocusRef.current || reloadShown) return;
+    reloadFocusRef.current = false;
+    const active = document.activeElement;
+    if (active && active !== document.body && active.isConnected) return;
+    const target = showSetup
+      ? setupHeadingRef.current
+      : isLive
+        ? onClockCellRef.current
+        : valueReportRef.current;
+    target?.focus({ preventScroll: true });
+  }, [isLive, reloadShown, showSetup]);
+
+  // A keyboard gets a way past forty rows of Draft buttons. Where the rail is
+  // not a box (the kit sets display: contents under 1200px), the first block
+  // after the list takes the focus instead.
+  const skipToRail = () => {
+    const rail = railRef.current;
+    if (!rail) return;
+    rail.focus();
+    if (document.activeElement === rail) return;
+    const firstAfterList = rail.querySelector<HTMLElement>(":scope > :not(.ffb-rail-lead)");
+    if (!firstAfterList) return;
+    firstAfterList.tabIndex = -1;
+    firstAfterList.focus();
+  };
 
   // The pick loop re-renders the board and the quick picks with no other signal
   // that a pick landed, so a screen reader gets the outcome and the next turn.
@@ -753,77 +852,14 @@ export function MockDraftClient() {
     transition,
   ]);
 
-  const footerLinks = (
-    <span className="inline-flex" style={{ gap: "var(--c97-sp-2)" }}>
-      <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-        Rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
-      </Link>
-      <Link href="/fantasy-football/draft-tracker" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-        Draft tracker <span className="c97-arrow-out" aria-hidden="true">↗</span>
-      </Link>
-    </span>
-  );
-
-  interface FasciaCell {
-    key: string;
-    label: string;
-    value: string;
-    sub: string;
-    /** The same readout as one phrase for the single-line strip below md. */
-    compact: string;
-    /** Read before `compact` by assistive tech when the phrase needs its label. */
-    compactPrefix?: string;
-    valueColor?: string;
-    background?: string;
-  }
-
-  const roomPickCount = `${picksSinceUserTurn.length} room pick${picksSinceUserTurn.length === 1 ? "" : "s"}`;
-  const fasciaCells: FasciaCell[] = [
-    {
-      key: "pick",
-      label: "Pick",
-      value: `#${currentPick} / ${totalPicks}`,
-      sub: `Round ${currentRound} of ${settings.rounds}`,
-      compact: `Pick #${currentPick}/${totalPicks} · round ${currentRound}/${settings.rounds}`,
-    },
-    {
-      key: "clock",
-      label: "On the clock",
-      value: "You",
-      sub: `slot ${settings.userTeam} of ${settings.totalTeams} · ${settings.draftType}`,
-      compact: `You · slot ${settings.userTeam}/${settings.totalTeams}`,
-      compactPrefix: "On the clock",
-      // Signal mixed toward ink clears 4.5:1 on the signal wash in both themes.
-      valueColor: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))",
-      background: "color-mix(in srgb, var(--c97-accent) 8%, var(--c97-surface))",
-    },
-    {
-      key: "between",
-      label: "Between turns",
-      value: `${picksSinceUserTurn.length} pick${picksSinceUserTurn.length === 1 ? "" : "s"}`,
-      sub: hasUserPick ? "since your last pick" : "before your first turn",
-      compact: `${roomPickCount} ${hasUserPick ? "since yours" : "before you"}`,
-    },
-    {
-      key: "pool",
-      label: "Pool",
-      value: `${availablePlayers.length} left`,
-      sub: `of ${board.length} ranked`,
-      compact: `${availablePlayers.length} of ${board.length} left`,
-    },
-  ];
-
   // The simulator drafts off the preseason board, so once the season starts it is
   // rehearsing a market that no longer exists. Name the season rather than letting
   // it read as current.
   const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
-  // The seasonal note is the first paper sheet under the green hero when it
-  // renders, so it carries the torn seam; when it does not render, whichever
-  // state sheet (setup, live, recap) follows the hero carries it instead.
   const showScopeNote = seasonalWeek >= 1;
-  // The header chip reads the freshness gate, so the stamp line has to as well:
+  // The freshness line reads the freshness gate, so the stamp line has to as well:
   // an ADP that has a date but is past its window is dated and unused, and the
-  // line says both so the two do not disagree two lines apart.
+  // line says both so the two do not disagree a few lines apart.
   const adpStampLabel = (() => {
     if (!snapshotMatches || !metadata?.adpSource) return "ADP unavailable";
     const dated = `ADP dated ${formatStampDate(metadata.adpSource.asOf)}`;
@@ -834,1221 +870,895 @@ export function MockDraftClient() {
     return `${dated}, past its window, so the room runs on consensus`;
   })();
 
+  const betweenTurns = picksSinceUserTurn.length;
+  const summary = `${setupForm.totalTeams}-team ${setupForm.draftType} · ${
+    setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`
+  } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`;
+  const reportHeadingId = `${roomIds}-report`;
+  const haulHeadingId = `${roomIds}-haul`;
+  const boardHeadingId = `${roomIds}-board`;
+
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-dvh"
+      className="relative min-h-dvh overflow-x-clip"
       aria-label="Fantasy football mock draft"
       data-testid="fantasy-mock-draft-shell"
     >
-      <FantasyRouteHeader
-        title={
-          <>
-            Mock <TitleAccent>Draft</TitleAccent>
-          </>
-        }
-        // Static on purpose, and worded to hold whether or not the ADP is in use,
-        // so the sentence never swaps when the snapshot loads.
-        lead="A seeded practice room for rehearsing a draft, where the simulated teams pick from the published consensus board, and from market ADP when a current sample is published."
-        freshness={<FreshnessParts parts={[{ label: kicker }, ...headerChips]} />}
-      />
+      <div className={`${SHELL_CLASS} ffb-mk-col`}>
+        {/* Setup keeps a headline and the pitch. A running room gets one compact line. */}
+        <header className={showSetup ? "ffb-head ffb-head-setup" : "ffb-head ffb-head-run"}>
+          <h1 className="ffb-title">Mock Draft</h1>
+          {showSetup ? (
+            <p className="ffb-lede">{LEAD}</p>
+          ) : (
+            <p className="ffb-lede">
+              {roomLineParts.map((part, index) => (
+                <Fragment key={part.key}>
+                  {index > 0 ? (
+                    <>
+                      {" "}
+                      <span aria-hidden="true">·</span>{" "}
+                    </>
+                  ) : null}
+                  {part.short ? (
+                    <span>
+                      <span className="ffb-only-phone">{part.short}</span>
+                      <span className="ffb-not-phone">{part.text}</span>
+                    </span>
+                  ) : (
+                    <span>{part.text}</span>
+                  )}
+                </Fragment>
+              ))}
+            </p>
+          )}
+          {freshnessParts.length > 0 ? <FreshnessParts parts={freshnessParts} /> : null}
+        </header>
 
-      <p role="status" aria-live="polite" className="sr-only">
-        {draftAnnouncement}
-      </p>
+        {/* The room's one announcement. A live room's scorebug carries it, so
+            this paragraph stands in on setup, where it is empty, and on the
+            recap. */}
+        {isLive ? null : (
+          <p role="status" aria-live="polite" className="sr-only">
+            {draftAnnouncement}
+          </p>
+        )}
 
-      {showScopeNote ? (
-        <div>
-          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
-            <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-              This is a preseason draft practice room. I keep the source dates visible, and the room pauses simulated picks
-              if the published board goes stale. You can choose dated preseason practice to use the archived consensus board.
-              Current in-season ranks are on the{" "}
-              <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-              <span className="block font-mono text-2xs uppercase tracking-[0.08em]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                {boardReady
-                  ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
-                  : "Board and ADP dates arrive with the board"}
-              </span>
-              {archiveEligible ? (
-                <label className="flex min-h-touch cursor-pointer items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
-                  <input
-                    type="checkbox"
-                    checked={archivedPractice}
-                    onChange={(event) => setArchiveConsent(event.target.checked ? archiveIdentity : null)}
-                    className="h-5 w-5 accent-[var(--c97-accent)]"
-                  />
-                  <span>Practice with the dated preseason board</span>
-                </label>
-              ) : null}
-            </SeasonalScopeNote>
-          </div>
-        </div>
-      ) : null}
+        {/* The paused messages point to the practice checkbox as "above", so
+            the note that holds it stays first on all three screens. */}
+        {showScopeNote ? (
+          <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+            This is a preseason draft practice room. I keep the source dates visible, and the room pauses simulated picks
+            if the published board goes stale. You can choose dated preseason practice to use the archived consensus board.
+            Current in-season ranks are on the <Link href="/fantasy-football/weekly">weekly board</Link>.
+            <span className="ffb-mk-stamp">
+              {boardReady
+                ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
+                : "Board and ADP dates arrive with the board"}
+            </span>
+            {archiveEligible ? (
+              <label className="ffb-check ffb-mk-consent">
+                <input
+                  type="checkbox"
+                  checked={archivedPractice}
+                  onChange={(event) => setArchiveConsent(event.target.checked ? archiveIdentity : null)}
+                />
+                {/* The input covers the whole label, so the label is the checkbox's
+                    44px target on a phone, and this draws the box. */}
+                <span className="ffb-mk-consent-box" aria-hidden="true" />
+                Practice with the dated preseason board
+              </label>
+            ) : null}
+          </SeasonalScopeNote>
+        ) : null}
 
-      {showSetup && (
-        <div>
-        <div className="c97-shell c97-frame" style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)", maxWidth: 700 }}>
-          <div
-            className="overflow-hidden border"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-          >
+        {showSetup ? (
+          <div className="ffb-mk-setup">
             <div
-              className="flex flex-wrap items-baseline justify-between border-b"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
+              className={`ffb-sechead ffb-sechead-lg ffb-mk-setup-head${parkedRoom ? " ffb-sechead-ctl" : ""}`}
             >
-              <div className="min-w-0">
-                <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-                  Room setup
-                </p>
-                <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
-                  Rep the rounds that decide leagues.
-                </h2>
-              </div>
-              {roomSetupOpen && state.status !== "setup" && (
-                <button
-                  type="button"
-                  onClick={() => setRoomSetupOpen(false)}
-                  className={PILL_BUTTON_CLASS}
-                >
-                  Back to room <span className="c97-arrow" aria-hidden="true">→</span>
+              <h2 ref={setupHeadingRef} tabIndex={-1} className="ffb-h2">
+                Rep the rounds that decide leagues.
+              </h2>
+              {parkedRoom ? (
+                <button type="button" onClick={backToRoom} className="ffb-btn">
+                  Back to room <span aria-hidden="true">→</span>
                 </button>
-              )}
+              ) : null}
             </div>
 
-            {/* The room summary and Start sit directly under the heading, so
-                the default room starts without scrolling past its settings.
-                The summary reads the form, so it follows every change made in
-                the fields below it. */}
-            <div
-              className="flex flex-wrap items-center justify-between border-b"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
-            >
-              <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
-                {`${setupForm.totalTeams}-team ${setupForm.draftType} · ${
-                  setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`
-                } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`}
-              </p>
+            {/* The room summary and Start come before the fields in the
+                document, so the default room starts without a trip through its
+                settings. The summary reads the form, so it follows every change
+                made in the fields. From 1024px the stylesheet moves this block
+                to a rail at the right, where it stays in view. */}
+            <div className="ffb-mk-start">
+              <div className="ffb-sechead ffb-mk-start-head">
+                <h3 className="ffb-h3">Room setup</h3>
+              </div>
+              {/* Start leads its block, so the default room is one press from the
+                  top of the form. What it will start is the line under it, and
+                  why it is paused, when it is, comes straight after. */}
               <button
                 type="button"
                 onClick={startRoom}
                 disabled={!simulationAvailable}
-                className={SOLID_BUTTON_CLASS}
+                className="ffb-btn ffb-btn-primary ffb-btn-lg ffb-btn-block"
               >
                 Start mock
               </button>
+              <p className="ffb-mk-start-summary">{summary}</p>
+              {boardStatusLine ? (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className={
+                    error
+                      ? "ffb-notice ffb-notice-bad"
+                      : isLoading || !snapshotMatches
+                        ? "ffb-notice"
+                        : "ffb-notice ffb-notice-warn"
+                  }
+                >
+                  <p>{boardStatusLine}</p>
+                  {error ? (
+                    <div className="ffb-notice-actions">
+                      <button type="button" onClick={reloadBoard} className="ffb-btn">
+                        Retry
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
 
-            {/* Why Start is paused, kept against the button it explains. */}
-            {boardStatusLine && (
-              <p
-                role="status"
-                aria-live="polite"
-                className="m-0 border-b text-sm leading-6"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
-              >
-                {boardStatusLine}
-                {error && (
-                  <button
-                    type="button"
-                    onClick={retry}
-                    className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
+            <div className="ffb-mk-setup-main">
+              <div className="ffb-mk-fields">
+                <label className="ffb-field">
+                  <span className="ffb-field-label">Teams</span>
+                  <select
+                    value={setupForm.totalTeams}
+                    onChange={(event) => {
+                      const totalTeams = Number(event.target.value);
+                      setSetupForm((form) => ({
+                        ...form,
+                        totalTeams,
+                        slot: form.slot === 0 ? 0 : Math.min(form.slot, totalTeams),
+                      }));
+                    }}
+                    className="ffb-select"
                   >
-                    Retry
-                  </button>
-                )}
-              </p>
-            )}
-
-            <div
-              className="grid"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
-            >
-              <label className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Teams
-                </span>
-                <select
-                  value={setupForm.totalTeams}
-                  onChange={(event) => {
-                    const totalTeams = Number(event.target.value);
-                    setSetupForm((form) => ({
-                      ...form,
-                      totalTeams,
-                      slot: form.slot === 0 ? 0 : Math.min(form.slot, totalTeams),
-                    }));
-                  }}
-                  className="min-h-touch border font-mono text-xs"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-surface)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  {TEAM_OPTIONS.map((value) => (
-                    <option key={value} value={value}>
-                      {value} teams
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Your slot
-                </span>
-                <select
-                  value={setupForm.slot}
-                  onChange={(event) =>
-                    setSetupForm((form) => ({ ...form, slot: Number(event.target.value) }))
-                  }
-                  className="min-h-touch border font-mono text-xs"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-surface)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  <option value={0}>Random slot</option>
-                  {Array.from({ length: setupForm.totalTeams }, (_, index) => index + 1).map(
-                    (slot) => (
-                      <option key={slot} value={slot}>
-                        Pick {slot}
+                    {TEAM_OPTIONS.map((value) => (
+                      <option key={value} value={value}>
+                        {value} teams
                       </option>
-                    )
-                  )}
-                </select>
-              </label>
+                    ))}
+                  </select>
+                </label>
 
-              <label className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Rounds · early rep
-                </span>
-                <select
-                  value={setupForm.rounds}
-                  onChange={(event) =>
-                    setSetupForm((form) => ({ ...form, rounds: Number(event.target.value) }))
-                  }
-                  className="min-h-touch border font-mono text-xs"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-surface)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  {ROUND_OPTIONS.map((value) => (
-                    <option key={value} value={value}>
-                      {value} rounds
-                    </option>
-                  ))}
-                </select>
-              </label>
+                <label className="ffb-field">
+                  <span className="ffb-field-label">Your slot</span>
+                  <select
+                    value={setupForm.slot}
+                    onChange={(event) =>
+                      setSetupForm((form) => ({ ...form, slot: Number(event.target.value) }))
+                    }
+                    className="ffb-select"
+                  >
+                    <option value={0}>Random slot</option>
+                    {Array.from({ length: setupForm.totalTeams }, (_, index) => index + 1).map(
+                      (slot) => (
+                        <option key={slot} value={slot}>
+                          Pick {slot}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </label>
 
-              <div className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
-                <span id={scoringLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Scoring
-                </span>
-                <SegmentedButtons
-                  labelledBy={scoringLabelId}
-                  options={SCORING_OPTIONS.map((option) => ({
-                    value: option.value,
-                    label: option.label,
-                  }))}
-                  value={scoringSelection}
-                  onSelect={setScoringSelection}
-                />
+                <label className="ffb-field">
+                  <span className="ffb-field-label">Rounds · early rep</span>
+                  <select
+                    value={setupForm.rounds}
+                    onChange={(event) =>
+                      setSetupForm((form) => ({ ...form, rounds: Number(event.target.value) }))
+                    }
+                    className="ffb-select"
+                  >
+                    {ROUND_OPTIONS.map((value) => (
+                      <option key={value} value={value}>
+                        {value} rounds
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <div className="ffb-field">
+                  <span id={scoringLabelId} className="ffb-field-label">
+                    Scoring
+                  </span>
+                  <SegmentedButtons
+                    labelledBy={scoringLabelId}
+                    options={SCORING_OPTIONS}
+                    value={scoringSelection}
+                    onSelect={setScoringSelection}
+                  />
+                </div>
+
+                <div className="ffb-field">
+                  <span id={orderLabelId} className="ffb-field-label">
+                    Draft order
+                  </span>
+                  <SegmentedButtons
+                    labelledBy={orderLabelId}
+                    options={ORDER_OPTIONS}
+                    value={setupForm.draftType}
+                    onSelect={(draftType) => setSetupForm((form) => ({ ...form, draftType }))}
+                  />
+                </div>
+
+                <div className="ffb-field">
+                  <span id={temperLabelId} className="ffb-field-label">
+                    Room temper
+                  </span>
+                  <SegmentedButtons
+                    labelledBy={temperLabelId}
+                    options={TEMPER_OPTIONS}
+                    value={setupForm.temper}
+                    onSelect={(temper) => setSetupForm((form) => ({ ...form, temper }))}
+                  />
+                  <span className="ffb-field-hint">{TEMPER_NOTES[setupForm.temper]}</span>
+                </div>
               </div>
 
-              <div className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
-                <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Draft order
-                </span>
-                <SegmentedButtons
-                  labelledBy={orderLabelId}
-                  options={ORDER_OPTIONS}
-                  value={setupForm.draftType}
-                  onSelect={(draftType) => setSetupForm((form) => ({ ...form, draftType }))}
-                />
-              </div>
-
-              <div className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
-                <span id={temperLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                  Room temper
-                </span>
-                <SegmentedButtons
-                  labelledBy={temperLabelId}
-                  options={TEMPER_OPTIONS}
-                  value={setupForm.temper}
-                  onSelect={(temper) => setSetupForm((form) => ({ ...form, temper }))}
-                />
-                <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
-                  {TEMPER_NOTES[setupForm.temper]}
-                </p>
-              </div>
-            </div>
-
-            <div style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
-              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                Starting lineup
-              </p>
-              <div
-                className="grid"
-                style={{ gap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}
-              >
-                {REDRAFT_LINEUP_PRESETS.map((preset) => {
-                  const active = sameRedraftLineup(preset.lineup, setupForm.lineup);
-                  return (
+              <fieldset className="ffb-mk-fieldset">
+                <legend className="ffb-field-label">Starting lineup</legend>
+                <div className="ffb-choices ffb-mk-lineups">
+                  {REDRAFT_LINEUP_PRESETS.map((preset) => (
                     <button
                       key={preset.id}
                       type="button"
-                      aria-pressed={active}
+                      aria-pressed={sameRedraftLineup(preset.lineup, setupForm.lineup)}
                       onClick={() =>
                         setSetupForm((form) => ({ ...form, lineup: { ...preset.lineup } }))
                       }
-                      className={`min-h-[56px] border text-left ${
-                        active ? "" : "bg-[var(--c97-surface)] hover:bg-[var(--c97-overlay)]"
-                      }`}
-                      style={
-                        { paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(active
-                          ? {
-                              borderColor: "var(--c97-ink)",
-                              background: "var(--c97-ink)",
-                              color: "var(--c97-surface)",
-                            }
-                          : {
-                              borderColor: "var(--c97-rule)",
-                              color: "var(--c97-ink)",
-                            }) }
-                      }
+                      className="ffb-choice"
                     >
-                      <span className="block text-sm font-semibold tracking-[-0.01em]">
-                        {preset.label}
-                      </span>
-                      <span
-                        className="mt-0.5 block font-mono text-3xs tracking-[0.04em]"
-                        style={{
-                          color: active
-                            ? "color-mix(in srgb, var(--c97-surface) 75%, transparent)"
-                            : "var(--c97-ink-2)",
-                        }}
-                      >
-                        {lineupShort(preset.lineup)}
-                      </span>
+                      <span className="ffb-choice-title">{preset.label}</span>{" "}
+                      <span className="ffb-choice-note">{lineupShort(preset.lineup)}</span>
                     </button>
-                  );
-                })}
-              </div>
+                  ))}
+                </div>
+              </fieldset>
             </div>
 
+            <p className="ffb-method ffb-method-ruled ffb-mk-setup-foot">
+              The room drafts around you, so you are on the clock every turn. Each run is a fresh
+              seeded room with the same settings, and nothing here is a projection of season
+              outcomes.
+            </p>
           </div>
+        ) : null}
 
-          <p className="mx-0.5 font-mono text-2xs leading-relaxed" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-            The room drafts around you, so you are on the clock every turn. Each run is a fresh
-            seeded room with the same settings, and nothing here is a projection of season
-            outcomes.
-          </p>
-        </div>
-        </div>
-      )}
-
-      {isLive && (
-        <div>
-          <section
-            ref={stripRef}
-            aria-label="Live mock draft status"
-            className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
-            style={{
-              borderColor: "var(--c97-rule)",
-              // Opaque on the sheet it sits on (paper), matching the boards'
-              // own sticky bars rather than a translucent blur.
-              background: "var(--c97-surface)",
-            }}
-          >
-            <div className={SHELL_CLASS}>
-              {/*
-                The readouts and the actions used to share one auto-fit grid, so
-                the row stretched to the stacked pills (160px) at every width and
-                the grid's painted background showed through empty tracks once
-                the cells wrapped. Now the readouts are their own row of cells
-                with hairlines between them, the actions sit beside them from lg
-                and under them below that, and below md the four readouts
-                collapse to one wrapping mono line so nothing truncates.
-              */}
-              <div
-                className="border-x lg:flex lg:items-stretch"
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
-              >
-                <dl
-                  className="m-0 hidden min-w-0 md:grid lg:flex-1"
-                  style={{ gridTemplateColumns: `repeat(${fasciaCells.length}, minmax(0, 1fr))` }}
-                >
-                  {fasciaCells.map((cell, index) => (
-                    <div
-                      key={cell.key}
-                      className={`min-w-0 ${index > 0 ? "border-l" : ""}`}
-                      style={{
-                        paddingInline: "var(--c97-sp-1)",
-                        paddingBlock: "var(--c97-sp-1)",
-                        background: cell.background ?? "var(--c97-surface)",
-                        borderColor: "var(--c97-rule)",
-                      }}
-                    >
-                      <dt className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-                        {cell.label}
-                      </dt>
-                      <dd
-                        className="m-0 font-mono text-lg leading-tight tabular-nums"
-                        style={{ marginTop: "var(--c97-sp-0)", color: cell.valueColor ?? "var(--c97-ink)" }}
-                      >
-                        {cell.value}
-                      </dd>
-                      <dd
-                        className="m-0 mt-0.5 font-mono text-3xs leading-snug"
-                        style={{ color: "var(--c97-ink-2)" }}
-                      >
-                        {cell.sub}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-                <p
-                  className="m-0 flex flex-wrap items-baseline gap-y-0.5 font-mono text-xs tabular-nums md:hidden"
-                  style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
-                >
-                  {fasciaCells.map((cell, index) => (
-                    <span
-                      key={cell.key}
-                      className="whitespace-nowrap"
-                      style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
-                    >
-                      {index > 0 && (
-                        <span aria-hidden="true" style={{ color: "var(--c97-ink-2)" }}>
-                          ·{" "}
-                        </span>
-                      )}
-                      {cell.compactPrefix && <span className="sr-only">{cell.compactPrefix} </span>}
-                      {cell.compact}
-                    </span>
-                  ))}
-                </p>
-                <div
-                  className="flex flex-wrap items-center border-t lg:flex-none lg:border-l lg:border-t-0"
-                  style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}
-                >
+        {isLive ? (
+          <>
+            {/* The scorebug's cells are this room's four readouts, each with its
+                second line as the cell's note. The user is on the clock at every
+                stop, so the highlighter cell always reads "You". Below 1024px
+                the bar takes its short forms and leaves the pool to the board's
+                own count, which keeps it to one row down to 768px and to two on
+                a phone. */}
+            <DraftScorebug
+              label="Live mock draft status"
+              sectionRef={stripRef}
+              announcement={draftAnnouncement}
+              className="ffb-mk-bug"
+              actions={
+                <>
                   <button
                     type="button"
                     onClick={takeBackPick}
                     disabled={!hasUserPick}
                     aria-label={hasUserPick ? "Take back your last pick" : "Take back (no picks yet)"}
-                    className={PILL_BUTTON_CLASS}
+                    title="Take back your last pick"
+                    className="ffb-bug-btn"
                   >
-                    ↶ Take back
+                    <Undo2 size={15} aria-hidden="true" />
+                    <span className="ffb-mk-wide">Take back</span>
                   </button>
-                  {/*
-                    Take back is reversible and this is not, so it does not wear
-                    the same quiet pill: the warning tone and the accessible name
-                    both say the room ends here.
-                  */}
+                  <button type="button" onClick={openSetup} className="ffb-bug-btn ffb-bug-btn-quiet">
+                    New mock
+                  </button>
+                  {/* Take back is reversible and this is not, so it sits last,
+                      behind a rule, and says so on the button itself. */}
                   <button
                     type="button"
                     onClick={finishRoom}
                     disabled={!simulationAvailable}
                     aria-label="Sim to end, which finishes the room with no take back"
                     title="The engine finishes every remaining pick, including yours, and the room goes straight to the recap. Nothing takes that back."
-                    className={PILL_BUTTON_CLASS}
-                    style={WARNING_CARD_STYLE}
+                    className="ffb-bug-btn ffb-mk-sim"
                   >
-                    Sim to end <span aria-hidden="true">⇥</span>
+                    Sim to end <small className="ffb-bug-long">no take back</small>
                   </button>
-                  <button
-                    type="button"
-                    onClick={openSetup}
-                    className={PILL_BUTTON_CLASS}
-                    style={{ color: "var(--c97-ink-2)" }}
-                  >
-                    New mock
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {!simulationAvailable && (
-            <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-1)" }}>
-              <div
-                role="alert"
-                className="border text-sm leading-6"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
-              >
-                {boardStatusLine} {pauseRecovery}
-                {boardReloadable && (
-                  <button
-                    type="button"
-                    onClick={retry}
-                    className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
-                  >
-                    Reload the board
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
-
-          {tapePicks.length > 0 && (
-            <div
-              role="group"
-              aria-label="Room picks since your last turn"
-              className={`${SHELL_CLASS} flex items-center overflow-x-auto`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
-            >
-              <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
-                Since your last pick
-              </span>
-              {tapePicks.map((pick) => (
-                <span
-                  key={`tape-${pick.pickNumber}`}
-                  className="inline-flex flex-none items-baseline border py-0.5 font-mono text-2xs"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    gap: "var(--c97-sp-0)",
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
-                  <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
-                    {shortName(pick.player)}
-                  </span>
-                  <span style={{ color: "var(--c97-ink-2)" }}>
-                    {pick.player.position} · S{pick.teamNumber}
-                  </span>
-                </span>
-              ))}
-            </div>
-          )}
-
-          <section
-            aria-label="Your roster"
-            className={`${SHELL_CLASS} flex flex-wrap items-center`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}
-          >
-            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
-              Your roster
-            </span>
-            {lineupAssignment.slots.map((slot, index) => (
-              <span
-                key={`slot-${slot.slot}-${index}`}
-                className="inline-flex items-baseline border py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
-                style={
-                  { paddingInline: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", ...(slot.player
-                    ? {
-                        borderStyle: "solid",
-                        borderColor: "var(--c97-rule)",
-                        background: "var(--c97-field)",
-                        color: "var(--c97-ink-2)",
-                      }
-                    : {
-                        borderStyle: "dashed",
-                        borderColor: "color-mix(in srgb, var(--c97-rule) 80%, transparent)",
-                        background: "transparent",
-                        color: "var(--c97-ink-2)",
-                      }) }
-                }
-              >
-                {slot.slot}
-                {slot.player ? (
-                  <span
-                    className="font-sans text-xs font-semibold normal-case tracking-[-0.01em]"
-                    style={{ color: "var(--c97-ink)" }}
-                  >
-                    {shortName(slot.player)}
-                  </span>
-                ) : (
-                  <span className="normal-case">open</span>
-                )}
-              </span>
-            ))}
-            {lineupAssignment.bench > 0 && (
-              <span className="font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
-                +{lineupAssignment.bench} bench
-              </span>
-            )}
-          </section>
-
-          {/*
-            focusClock sets this panel's scroll margin to the sticky strip's
-            measured height before it calls focus(), so the panel lands under
-            the strip rather than behind it. The site header scrolls away.
-          */}
-          <section
-            ref={onClockRef}
-            tabIndex={-1}
-            aria-label="You are on the clock"
-            className={SHELL_CLASS} style={{ marginTop: "var(--c97-sp-2)" }}
-          >
-            <div
-              className="overflow-hidden border"
-              style={{
-                borderColor: "color-mix(in srgb, var(--c97-accent) 45%, var(--c97-rule))",
-                background: "color-mix(in srgb, var(--c97-accent) 7%, var(--c97-surface))",
-              }}
-            >
-              <div
-                className="flex flex-wrap items-baseline border-b"
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
-              >
-                <span
-                  className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.12em]"
-                  style={{ gap: "var(--c97-sp-1)", color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
-                >
-                  <span
-                    className="h-[7px] w-[7px]"
-                    style={{ background: "var(--c97-accent)" }}
-                    aria-hidden="true"
-                  />
-                  You&apos;re up
-                </span>
-                <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                  {`Pick #${currentPick} · round ${currentRound} of ${settings.rounds} · the room resumes the moment you draft`}
-                </span>
-              </div>
-              <div className="flex flex-wrap items-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
-                {quickPicks.map((quick) => (
-                  <button
-                    key={quick.key}
-                    type="button"
-                    onClick={() => draftPlayer(quick.player)}
-                    title={quick.title}
-                    className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] font-mono text-2xs hover:border-[var(--c97-ink)]"
-                    style={{
-                      paddingInline: "var(--c97-sp-2)",
-                      gap: "var(--c97-sp-1)",
-                      background: "var(--c97-surface)",
-                      color: "var(--c97-ink)",
-                    }}
-                  >
-                    <span
-                      className="text-3xs uppercase tracking-[0.1em]"
-                      style={{ color: "var(--c97-accent)" }}
-                    >
-                      {quick.tag}
-                    </span>
-                    <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
-                      {shortName(quick.player)}
-                    </span>
-                    <span style={{ color: "var(--c97-ink-2)" }}>{quick.sub}</span>
-                  </button>
-                ))}
-                <span className="font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
-                  or draft from the board <span aria-hidden="true">↓</span>
-                </span>
-              </div>
-            </div>
-          </section>
-
-          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
-            <h2 className="sr-only">Available players</h2>
-            <div className="flex flex-wrap items-center" style={{ paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
-              <PositionFilterBar
-                ariaLabel="Filter available players by position"
-                options={POSITION_FILTER_OPTIONS}
-                value={positionFilter}
-                onChange={setPositionFilter}
-              />
-              <label htmlFor="mock-draft-search" className="sr-only">
-                Search available players
-              </label>
-              <input
-                id="mock-draft-search"
-                name="mock-draft-search"
-                value={searchQuery}
-                maxLength={80}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                autoComplete="off"
-                placeholder="Search player or team"
-                className="min-h-touch w-[190px] border font-mono text-xs placeholder:text-[var(--c97-ink-2)]"
-                style={{
-                  paddingInline: "var(--c97-sp-1)",
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink)",
-                }}
-              />
-              <span
-                className="ml-auto whitespace-nowrap font-mono text-2xs"
-                style={{ color: "var(--c97-ink-2)" }}
-              >
-                {filteredAvailable.length} of {availablePlayers.length} available
-              </span>
-            </div>
-
-            {/*
-              Column labels for md and up, where the values sit in fixed-width
-              columns under them. Below md the rows wrap and each value carries
-              its own micro label instead, so the row stays hidden there.
-            */}
-            {windowedPlayers.length > 0 && adpAvailable && (
-              <div
-                aria-hidden="true"
-                className={`hidden items-center md:flex ${MONO_LABEL_CLASS}`}
-                style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-              >
-                <span className="w-[34px]" />
-                <span className="min-w-0 flex-1">Player</span>
-                <span className="w-11 text-right">ADP</span>
-                <span className="w-14 text-right">At #{currentPick}</span>
-                <span className="w-[74px]" />
-              </div>
-            )}
-
-            {tierGroups.map((group, index) => {
-              const railTone =
-                group.tier !== null
-                  ? `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.tier)}%, var(--c97-rule))`
-                  : "var(--c97-rule)";
-              let cliff = 0;
-              if (index > 0) {
-                const previous = tierGroups[index - 1];
-                const previousAvg = getConsensusAvg(previous.rows[previous.rows.length - 1]);
-                const nextAvg = getConsensusAvg(group.rows[0]);
-                if (previousAvg !== null && nextAvg !== null) {
-                  cliff = Math.max(0, Number((nextAvg - previousAvg).toFixed(1)));
-                }
+                </>
               }
-              const marginTop =
-                index === 0 ? 0 : Math.round(Math.min(48, Math.max(14, cliff * 9))) || 18;
-
-              return (
-                <section
-                  key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
-                  aria-label={
-                    group.tier !== null ? `Tier ${group.tier}` : "Players with no published tier"
-                  }
-                  style={{ marginTop }}
-                >
-                  {index > 0 && cliff > 0 && (
-                    <div aria-hidden="true" className="flex items-center px-0.5" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                      <span
-                        className="flex-1 border-t border-dashed"
-                        style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
-                      />
-                      <span
-                        className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
-                        style={{ color: "var(--c97-accent)" }}
-                      >
-                        ↓ {cliff.toFixed(1)} avg-rank cliff
-                      </span>
-                      <span
-                        className="flex-1 border-t border-dashed"
-                        style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
-                      />
-                    </div>
-                  )}
-                  <div
-                    className="overflow-hidden border border-l-[3px]"
-                    style={{
-                      borderColor: "var(--c97-rule)",
-                      borderLeftColor: railTone,
-                      background: "var(--c97-field)",
-                    }}
-                  >
-                    <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-                      <span className="text-2xl font-bold leading-none tracking-[-0.04em] tabular-nums">
-                        {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
-                      </span>
-                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                        {group.tier !== null ? "Tier" : "No published tier"}
-                      </span>
-                      <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                        {group.rows.length} left
-                      </span>
-                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                        R{formatRankValue(group.rows[0].rankEcr ?? group.rows[0].averageRank)}–R
-                        {formatRankValue(
-                          group.rows[group.rows.length - 1].rankEcr ??
-                            group.rows[group.rows.length - 1].averageRank
-                        )}
-                      </span>
-                    </div>
-                    <ul className="m-0 list-none p-0">
-                      {group.rows.map((player) => {
-                        const delta = adpAvailable
-                          ? deltaAtPick(player, currentPick, currentRound)
-                          : null;
-                        const positionTone = getPositionTone(player.position);
-                        return (
-                          <li
-                            key={player.id}
-                            className="flex flex-wrap items-center border-t"
-                            style={{
-                              paddingInline: "var(--c97-sp-2)",
-                              paddingBlock: "var(--c97-sp-0)",
-                              columnGap: "var(--c97-sp-2)",
-                              rowGap: "var(--c97-sp-0)",
-                              borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
-                            }}
-                          >
-                            <span
-                              className="w-[34px] shrink-0 text-right font-mono text-sm font-medium"
-                              title="Overall board rank"
-                            >
-                              {formatRankValue(player.rankEcr ?? player.averageRank)}
-                            </span>
-                            <div className="flex min-w-0 flex-1 basis-44 items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
-                              <span className="truncate text-sm font-semibold tracking-[-0.02em]">
-                                {player.name}
-                              </span>
-                              <span
-                                className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs tracking-[0.06em]"
-                                style={{ paddingInline: "var(--c97-sp-0)", ...(positionTone) }}
-                              >
-                                {player.position}
-                                {player.positionRank ?? ""}
-                              </span>
-                              <span
-                                className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
-                                style={{ color: "var(--c97-ink-2)" }}
-                              >
-                                {player.team}
-                                {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
-                              </span>
-                            </div>
-                            <div className="flex flex-none items-center" style={{ columnGap: "var(--c97-sp-2)" }}>
-                              {adpAvailable && (
-                                <>
-                                  <span className="sr-only">ADP</span>
-                                  <span
-                                    className="w-auto text-right font-mono text-xs md:w-11"
-                                    style={{ color: "var(--c97-ink-2)" }}
-                                    title="Average draft position in mock rooms"
-                                  >
-                                    <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                                      ADP{" "}
-                                    </span>
-                                    {formatAdp(player.adp)}
-                                  </span>
-                                  <span className="sr-only">versus ADP at pick {currentPick}</span>
-                                  <span
-                                    className="w-auto text-right font-mono text-xs md:w-14"
-                                    style={{ color: delta?.color ?? "var(--c97-ink-2)" }}
-                                    title={delta?.title ?? "No reliable market sample for this player"}
-                                  >
-                                    <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
-                                      At #{currentPick}{" "}
-                                    </span>
-                                    {delta?.text ?? "—"}
-                                  </span>
-                                </>
-                              )}
-                              <button
-                                type="button"
-                                onClick={() => draftPlayer(player)}
-                                disabled={!simulationAvailable}
-                                aria-label={`Draft ${player.name}`}
-                                className={SOLID_BUTTON_CLASS}
-                              >
-                                Draft
-                              </button>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </section>
-              );
-            })}
-
-            {filteredAvailable.length === 0 && (
-              <div
-                className="border border-dashed text-center"
-                style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", borderColor: "var(--c97-rule)" }}
-              >
-                <p className="m-0 font-mono text-xs" style={{ marginBottom: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
-                  No available players match on this board.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSearchQuery("");
-                    setPositionFilter("ALL");
-                  }}
-                  className={SOLID_BUTTON_CLASS}
-                >
-                  Clear search
-                </button>
-              </div>
-            )}
-            {filteredAvailable.length > VISIBLE_BOARD_ROWS && (
-              <p className="font-mono text-3xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-                Showing the top {VISIBLE_BOARD_ROWS} of {filteredAvailable.length} available
-                players. Search or filter to reach the rest.
-              </p>
-            )}
-
-            <div
-              className="flex flex-wrap items-baseline justify-between border-t"
-              style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
             >
-              <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
+              <DraftScorebugCell
+                label="Pick"
+                className="ffb-mk-cell-pick"
+                note={`Round ${currentRound} of ${settings.rounds}`}
+              >
+                <span className="ffb-only-phone">{`#${currentPick}/${totalPicks}`}</span>
+                <span className="ffb-not-phone">{`#${currentPick} / ${totalPicks}`}</span>
+              </DraftScorebugCell>
+              <DraftScorebugCell
+                label="On the clock"
+                live
+                ref={onClockCellRef}
+                tabIndex={-1}
+                note={
+                  <>
+                    <span className="ffb-mk-narrow">{`slot ${settings.userTeam}/${settings.totalTeams}`}</span>
+                    <span className="ffb-mk-wide">{`slot ${settings.userTeam} of ${settings.totalTeams}`}</span>
+                  </>
+                }
+              >
+                You
+              </DraftScorebugCell>
+              <DraftScorebugCell
+                label="Between turns"
+                className="ffb-mk-cell-between"
+                note={
+                  <>
+                    <span className="ffb-mk-narrow">{hasUserPick ? "since yours" : "before you"}</span>
+                    <span className="ffb-mk-wide">
+                      {hasUserPick ? "since your last pick" : "before your first turn"}
+                    </span>
+                  </>
+                }
+              >
+                {betweenTurns} <small>{betweenTurns === 1 ? "pick" : "picks"}</small>
+              </DraftScorebugCell>
+              <DraftScorebugCell
+                label="Pool"
+                className="ffb-mk-wide ffb-mk-cell-pool"
+                note={`of ${board.length} ranked`}
+              >
+                {availablePlayers.length} <small>left</small>
+              </DraftScorebugCell>
+            </DraftScorebug>
+
+            {!simulationAvailable ? (
+              <div role="alert" className="ffb-notice ffb-notice-warn">
+                <p>
+                  {boardStatusLine} {pauseRecovery}
+                </p>
+                {boardReloadable ? (
+                  <div className="ffb-notice-actions">
+                    <button type="button" onClick={reloadBoard} className="ffb-btn">
+                      Reload the board
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+
+            {/* The page goes from the h1 to the room's h3 headings with nothing
+                between, so name the room here, as the redraft room does. */}
+            <h2 className="sr-only">Your mock room</h2>
+
+            <DraftLastPicks
+              picks={tapePicks}
+              userTeam={settings.userTeam}
+              heading="Since your last pick"
+            />
+
+            {/* The scorebug's measured height is where the board's bar and the rail
+                pin, and the two bars together are what a focused row clears. */}
+            <div
+              className="ffb-work ffb-work-split"
+              style={
+                {
+                  "--ffb-sticky-top": `${bugHeight}px`,
+                  "--ffb-pinned-top": `${bugHeight + boardbarHeight + 8}px`,
+                } as CSSProperties
+              }
+            >
+              <div>
+                {/* focusClock sets this region's scroll margin to the scorebug's
+                    measured height before it calls focus(), so the region lands
+                    under the pinned bar and not behind it. */}
+                <section
+                  ref={onClockRef}
+                  tabIndex={-1}
+                  aria-label="You are on the clock"
+                  className="ffb-block"
+                >
+                  <div className="ffb-strip-head">
+                    <h3 className="ffb-turn-tab">You&apos;re up</h3>
+                    {/* A phone's quick picks drop the word "Draft" to sit two to a
+                        row, so the note there says what a press does. */}
+                    {simulationAvailable ? (
+                      <p className="ffb-mk-turn-note">
+                        <span className="ffb-only-phone">Select one to draft it</span>
+                        <span className="ffb-not-phone">The room resumes the moment you draft</span>
+                      </p>
+                    ) : null}
+                  </div>
+                  {quickPicks.length > 0 ? (
+                    <div className="ffb-mk-quicks">
+                      {quickPicks.map((quick) => (
+                        <button
+                          key={quick.key}
+                          type="button"
+                          onClick={() => draftPlayer(quick.player)}
+                          title={quick.title}
+                          className={`ffb-sticker ${positionClass(quick.player.position)} ffb-mk-quick`}
+                        >
+                          <span className="ffb-sticker-meta">
+                            <span>{quick.tag}</span> <span>{quick.sub}</span>
+                          </span>{" "}
+                          <span className="ffb-sticker-name">{shortName(quick.player)}</span>{" "}
+                          <span className="ffb-mk-quick-go">Draft</span>
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </section>
+
+                <a
+                  href="#mock-your-draft"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    skipToRail();
+                  }}
+                  className="ffb-btn ffb-mk-skip"
+                >
+                  Skip to your roster
+                </a>
+
+                <section
+                  aria-label="Available players"
+                  className={`ffb-board ffb-board-room ffb-board-log ffb-mk-board${
+                    adpAvailable ? " ffb-mk-has-adp" : ""
+                  }`}
+                >
+                  {/* The filter, the search, the count, and the column labels
+                      hold their place under the scorebug while the list scrolls.
+                      On a phone the scorebug already pins two rows, so the
+                      stylesheet lets this bar scroll with the list there. */}
+                  <div ref={boardbarRef} className="ffb-sticky ffb-mk-boardbar">
+                    <div className="ffb-toolbar">
+                      <PositionFilterBar
+                        ariaLabel="Filter available players by position"
+                        options={POSITION_FILTER_OPTIONS}
+                        value={positionFilter}
+                        onChange={setPositionFilter}
+                      />
+                      <label htmlFor="mock-draft-search" className="sr-only">
+                        Search available players
+                      </label>
+                      {/* A label, so the icon and the field's padding focus the
+                          input too. It adds no text, so the field's name is
+                          still the one above. */}
+                      <label className="ffb-search">
+                        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
+                          <circle cx="8.5" cy="8.5" r="5.5" />
+                          <path d="M12.8 12.8L17 17" />
+                        </svg>
+                        <input
+                          ref={searchRef}
+                          id="mock-draft-search"
+                          name="mock-draft-search"
+                          value={searchQuery}
+                          maxLength={80}
+                          onChange={(event) => setSearchQuery(event.target.value)}
+                          autoComplete="off"
+                          placeholder="Search player or team"
+                          className="ffb-search-input"
+                        />
+                      </label>
+                      <span className="ffb-count">
+                        {filteredAvailable.length} of {availablePlayers.length} available
+                      </span>
+                    </div>
+
+                    {windowedPlayers.length > 0 ? (
+                      <div aria-hidden="true" className="ffb-colhead ffb-mk-colhead hidden md:grid">
+                        <span className="ffb-h-num ffb-is-sorted">Rk</span>
+                        <span className="ffb-h-pos">Pos</span>
+                        <span>Player</span>
+                        <span>Team</span>
+                        <span className="ffb-h-num">Bye</span>
+                        {adpAvailable ? (
+                          <>
+                            <span className="ffb-h-num">ADP</span>
+                            <span className="ffb-h-num">At #{currentPick}</span>
+                          </>
+                        ) : null}
+                        <span />
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {tierGroups.map((group, index) => {
+                    const firstRank = formatRankValue(group.rows[0].rankEcr ?? group.rows[0].averageRank);
+                    const lastRow = group.rows[group.rows.length - 1];
+                    const lastRank = formatRankValue(lastRow.rankEcr ?? lastRow.averageRank);
+                    let cliff = 0;
+                    if (index > 0) {
+                      const previous = tierGroups[index - 1];
+                      const previousAvg = getConsensusAvg(previous.rows[previous.rows.length - 1]);
+                      const nextAvg = getConsensusAvg(group.rows[0]);
+                      if (previousAvg !== null && nextAvg !== null) {
+                        cliff = Math.max(0, Number((nextAvg - previousAvg).toFixed(1)));
+                      }
+                    }
+                    // The gap above a break grows with the cliff, in 4px steps from 8 to 28px.
+                    const gap = Math.min(28, Math.max(8, Math.round((cliff * 6) / 4) * 4));
+                    // The cliff mark in the head is hidden from assistive tech, so its size rides in the label.
+                    const tierLabel = [
+                      group.tier !== null ? `Tier ${group.tier}` : "Players with no published tier",
+                      `${group.rows.length} ${group.rows.length === 1 ? "player" : "players"}`,
+                      firstRank === lastRank ? `rank ${firstRank}` : `ranks ${firstRank} to ${lastRank}`,
+                      index > 0 && cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
+                    ]
+                      .filter(Boolean)
+                      .join(", ");
+                    // The window can split a tier across two groups, so the line prints with the first.
+                    const gone =
+                      group.tier !== null &&
+                      !isSearching &&
+                      tierGroups.findIndex((candidate) => candidate.tier === group.tier) === index
+                        ? goneByTier.get(group.tier)
+                        : undefined;
+
+                    return (
+                      <section
+                        key={`tier-${group.tier ?? "untiered"}-${group.rows[0].id}`}
+                        className="ffb-tier"
+                        aria-label={tierLabel}
+                        style={{ "--ffb-gap": `${gap}px` } as CSSProperties}
+                      >
+                        <header className="ffb-tier-head">
+                          <h3 className="ffb-tier-name">
+                            {/* The spaces keep the three parts apart when the heading is read as one string. */}
+                            <span className="ffb-tier-tab">
+                              {group.tier !== null
+                                ? `Tier ${String(group.tier).padStart(2, "0")}`
+                                : "No published tier"}
+                            </span>{" "}
+                            <span className="ffb-tier-count">{group.rows.length} left</span>{" "}
+                            {/* A tier down to its last player has one rank, not a range. */}
+                            <span className="ffb-tier-range">
+                              {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
+                            </span>
+                          </h3>
+                          {index > 0 && cliff > 0 ? (
+                            <p className="ffb-tier-cliff" aria-hidden="true">
+                              <span className="ffb-cliff-mark" />
+                              <b>{cliff.toFixed(1)}</b> <span className="ffb-not-phone">avg-rank </span>cliff
+                            </p>
+                          ) : null}
+                        </header>
+                        {gone ? (
+                          <p className="ffb-tier-gone">
+                            <span className="ffb-label">Gone</span> <span>{gone.join(", ")}</span>
+                          </p>
+                        ) : null}
+                        <ol className="ffb-rows">
+                          {group.rows.map((player) => {
+                            const delta = adpAvailable
+                              ? deltaAtPick(player, currentPick, currentRound)
+                              : null;
+                            const hasBye =
+                              typeof player.byeWeek === "number" && Number.isFinite(player.byeWeek);
+                            return (
+                              <Fragment key={player.id}>
+                                {player.id === turnPlayerId ? (
+                                  <li className="ffb-turnline">
+                                    <span className="ffb-turn-tab">Your next turn #{nextUserPick}</span>{" "}
+                                    <span className="ffb-turn-note">if picks follow this board</span>
+                                  </li>
+                                ) : null}
+                                <li className="ffb-row">
+                                  <span className="ffb-c-rank" title="Overall board rank">
+                                    {formatRankValue(player.rankEcr ?? player.averageRank)}
+                                  </span>
+                                  <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+                                    {player.position}
+                                    {player.positionRank ?? ""}
+                                  </span>
+                                  {/* The name has the whole first line on a phone. A narrow row
+                                      can still cut a long one, and the title keeps it whole. */}
+                                  <span className="ffb-c-name" title={player.name}>
+                                    {player.name}
+                                  </span>
+                                  <span className="ffb-c-team">{player.team}</span>
+                                  <span className="ffb-c-bye">
+                                    {hasBye ? (
+                                      <>
+                                        <span className="ffb-mk-vh-desk">Bye </span>
+                                        {player.byeWeek}
+                                      </>
+                                    ) : null}
+                                  </span>
+                                  {adpAvailable ? (
+                                    <>
+                                      {/* Each hidden label sits inside the cell it names, so it
+                                          hides when the cell does. */}
+                                      <span
+                                        className="ffb-c-num ffb-is-flat"
+                                        title="Average draft position in mock rooms"
+                                      >
+                                        <span className="sr-only">ADP</span> {formatAdp(player.adp)}
+                                      </span>
+                                      {/* A phone row has room for one number, and the gap against
+                                          the pick on the clock is the reading the room is for. */}
+                                      <span
+                                        className={`ffb-c-num ffb-m-meta ${
+                                          delta?.isValue ? "ffb-is-strong ffb-mk-is-value" : "ffb-is-flat"
+                                        }`}
+                                        title={delta?.title ?? "No reliable market sample for this player"}
+                                      >
+                                        <span className="sr-only">versus ADP at pick {currentPick}</span>{" "}
+                                        <span aria-hidden="true" className="ffb-only-phone">
+                                          ±ADP{" "}
+                                        </span>
+                                        {delta?.text ?? "—"}
+                                      </span>
+                                    </>
+                                  ) : null}
+                                  <button
+                                    type="button"
+                                    onClick={() => draftPlayer(player)}
+                                    disabled={!simulationAvailable}
+                                    aria-label={`Draft ${player.name}`}
+                                    className="ffb-log"
+                                  >
+                                    Draft
+                                  </button>
+                                </li>
+                              </Fragment>
+                            );
+                          })}
+                        </ol>
+                      </section>
+                    );
+                  })}
+
+                  {filteredAvailable.length === 0 ? (
+                    <div className="ffb-empty">
+                      <p className="ffb-empty-title">No available players match on this board.</p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchQuery("");
+                          setPositionFilter("ALL");
+                          // This button leaves with the empty state, so the search field takes the focus.
+                          searchRef.current?.focus();
+                        }}
+                        className="ffb-btn"
+                      >
+                        Clear search
+                      </button>
+                    </div>
+                  ) : null}
+                  {filteredAvailable.length > VISIBLE_BOARD_ROWS ? (
+                    <p className="ffb-fine ffb-mk-more">
+                      Showing the top {VISIBLE_BOARD_ROWS} of {filteredAvailable.length} available
+                      players. Search or filter to reach the rest.
+                    </p>
+                  ) : null}
+                </section>
+              </div>
+
+              <aside
+                ref={railRef}
+                id="mock-your-draft"
+                tabIndex={-1}
+                className="ffb-rail ffb-rail-scroll"
+                aria-label="Your draft"
+              >
+                <DraftRoster
+                  assignment={lineupAssignment}
+                  picked={userPicks.length}
+                  rounds={settings.rounds}
+                />
+                <DraftPickGrid
+                  picks={state.picks}
+                  totalTeams={settings.totalTeams}
+                  userTeam={settings.userTeam}
+                  rounds={settings.rounds}
+                  slotForPick={slotForPick}
+                  currentPick={currentPick}
+                  currentRound={currentRound}
+                  isComplete={false}
+                />
+              </aside>
+            </div>
+
+            <div className="ffb-mk-foot">
+              <p className="ffb-method">
                 Take a pick back and the same room replays · sim to end finishes the room and
                 cannot be taken back · nothing leaves this device
-              </span>
-              {footerLinks}
+              </p>
+              <p className="ffb-method">{LEAD}</p>
             </div>
-          </div>
-        </div>
-      )}
+          </>
+        ) : null}
 
-      {isRecap && (
-        <div>
-        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-4)" }}>
-          <section
-            ref={valueReportRef}
-            tabIndex={-1}
-            aria-label="Value report"
-            className="flex flex-wrap overflow-hidden border"
-            style={{ marginTop: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-          >
-            <div
-              className="w-full border-b sm:w-[200px] sm:border-b-0 sm:border-r"
-              style={{
-                padding: "var(--c97-sp-2)",
-                borderColor: "var(--c97-rule)",
-                background: "color-mix(in srgb, var(--c97-accent) 6%, var(--c97-surface))",
-              }}
+        {isRecap ? (
+          <div className="ffb-stack ffb-stack-loose ffb-mk-recap">
+            <section
+              ref={valueReportRef}
+              tabIndex={-1}
+              aria-labelledby={reportHeadingId}
+              className="ffb-mk-report"
             >
-              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-                Draft grade
-              </p>
-              <p
-                className="m-0 text-5xl font-bold leading-none tracking-[-0.05em]"
-                style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-accent)" }}
-              >
-                {recap.grade ?? "—"}
-              </p>
-              <p className="m-0 font-mono text-2xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink)" }}>
-                {recap.judged.length > 0
-                  ? `${formatPickDelta(recap.total)} vs the draft baseline`
-                  : "no judged picks"}
-              </p>
-              <p className="m-0 font-mono text-3xs leading-relaxed" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                {recap.judged.length > 0
-                  ? `summed pick delta vs the ADP-or-consensus baseline across ${recap.judged.length} of your ${userPicks.length} picks`
-                  : "no pick had a market or consensus baseline to score against"}
-              </p>
-            </div>
-            <div
-              className="grid min-w-0 flex-1 basis-[340px] gap-px"
-              style={{
-                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 170px), 1fr))",
-                background: "var(--c97-rule)",
-              }}
-            >
-              {[
-                recap.bestPick
-                  ? {
-                      label: "Your best pick",
-                      value: shortName(recap.bestPick.pick.player),
-                      sub: `${formatPickDelta(recap.bestPick.delta)} vs baseline at #${recap.bestPick.pick.pickNumber}`,
-                      subColor:
-                        classifyPickValue(recap.bestPick.pick) === "steal"
-                          ? "var(--c97-positive)"
-                          : "var(--c97-ink-2)",
-                    }
-                  : {
-                      label: "Your best pick",
-                      value: "—",
-                      sub: "no judged picks",
-                      subColor: "var(--c97-ink-2)",
-                    },
-                recap.biggestReach
-                  ? {
-                      label: "Biggest room reach",
-                      value: shortName(recap.biggestReach.pick.player),
-                      sub: `${
-                        recap.biggestReach.pick.teamNumber === settings.userTeam
-                          ? "you"
-                          : `slot ${recap.biggestReach.pick.teamNumber}`
-                      } · ${formatPickDelta(recap.biggestReach.delta)} vs baseline`,
-                      subColor: "var(--c97-warning)",
-                    }
-                  : {
-                      label: "Biggest room reach",
-                      value: "None",
-                      sub: "no pick cleared the reach threshold",
-                      subColor: "var(--c97-ink-2)",
-                    },
-                {
-                  label: "Your shape",
-                  value: recap.shape || "—",
-                  sub: `${userPicks.length} picks · ${
-                    lineupAssignment.bench > 0
-                      ? `${lineupAssignment.bench} to bench`
-                      : "all starters"
-                  }`,
-                  subColor: "var(--c97-ink-2)",
-                },
-                {
-                  label: "Room temper",
-                  value: TEMPER_LABELS[settings.temper],
-                  sub: `seeded room #${roomLabel(state.seed)}`,
-                  subColor: "var(--c97-ink-2)",
-                },
-              ].map((fact) => (
-                <div
-                  key={fact.label}
-                  className="min-w-0"
-                  style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-field)" }}
-                >
-                  <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-                    {fact.label}
-                  </p>
-                  <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold tracking-[-0.02em]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                    {fact.value}
-                  </p>
-                  <p
-                    className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-2xs"
-                    style={{ color: fact.subColor }}
+              <div className="ffb-sechead ffb-sechead-lg ffb-sechead-ctl">
+                <h2 id={reportHeadingId} className="ffb-h2">
+                  Value report
+                </h2>
+                <div className="ffb-cluster ffb-mk-noprint">
+                  <button
+                    type="button"
+                    onClick={rerunRoom}
+                    disabled={!simulationAvailable}
+                    aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
+                    className="ffb-btn ffb-btn-primary"
                   >
-                    {fact.sub}
+                    Run it back <span aria-hidden="true">→</span>
+                  </button>
+                  <button type="button" onClick={openSetup} className="ffb-btn">
+                    Change setup
+                  </button>
+                </div>
+              </div>
+
+              {!simulationAvailable ? (
+                <div id="mock-rerun-blocked" role="status" className="ffb-notice ffb-notice-warn ffb-block">
+                  <p>
+                    {boardStatusLine} {rerunRecovery}
+                  </p>
+                  {boardReloadable ? (
+                    <div className="ffb-notice-actions">
+                      <button type="button" onClick={reloadBoard} className="ffb-btn">
+                        Reload the board
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
+              <div className="ffb-mk-report-body">
+                <div className="ffb-mk-grade">
+                  <p className="ffb-label ffb-muted">Draft grade</p>
+                  <p className="ffb-heavy ffb-mk-grade-letter">{recap.grade ?? "—"}</p>
+                  <p className="ffb-mk-grade-total">
+                    {recap.judged.length > 0
+                      ? `${formatPickDelta(recap.total)} vs the draft baseline`
+                      : "no judged picks"}
+                  </p>
+                  <p className="ffb-fine">
+                    {recap.judged.length > 0
+                      ? `summed pick delta vs the ADP-or-consensus baseline across ${recap.judged.length} of your ${userPicks.length} picks`
+                      : "no pick had a market or consensus baseline to score against"}
                   </p>
                 </div>
-              ))}
-            </div>
-          </section>
-
-          <section
-            aria-label="Draft board grid"
-            className="overflow-hidden border"
-            style={{ marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-          >
-            <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
-              <h2 className="c97-serif c97-h3">The board</h2>
-              <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-                {`room #${roomLabel(state.seed)} · ${settings.draftType} order · your column outlined`}
-              </span>
-            </div>
-            {/*
-              A real table, not a grid of divs. The grid version handed a screen
-              reader a flat run of "#3 · RB", "Ja'Marr Chase" with no way to
-              tell which round row or team column a pick belonged to, the same
-              anti-pattern CompareModal already fixed. table-fixed with a
-              colgroup keeps the team columns equal the way minmax(88px, 1fr)
-              did, and the table's own min-width carries the 88px floor.
-            */}
-            <div
-              className="overflow-x-auto"
-              role="region"
-              tabIndex={0}
-              aria-label="Draft board, scrolls horizontally"
-            >
-              <table
-                className="w-full table-fixed border-collapse border-t"
-                style={{
-                  borderColor: "var(--c97-rule)",
-                  minWidth: `${34 + 88 * settings.totalTeams}px`,
-                }}
-              >
-                <colgroup>
-                  <col style={{ width: "34px" }} />
-                  {Array.from({ length: settings.totalTeams }, (_, index) => (
-                    <col
-                      key={`col-${index + 1}`}
-                      style={{ width: `calc((100% - 34px) / ${settings.totalTeams})` }}
-                    />
-                  ))}
-                </colgroup>
-                <caption className="sr-only">
-                  Every pick by round and draft slot. Rounds run down, draft slots run across, and
-                  your slot's column is outlined.
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col" className="border-t p-0" style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}>
-                      <span className="sr-only">Round</span>
-                    </th>
-                    {Array.from({ length: settings.totalTeams }, (_, index) => {
-                      const slot = index + 1;
-                      const isUser = slot === settings.userTeam;
-                      return (
-                        <th
-                          key={`hdr-${slot}`}
-                          scope="col"
-                          aria-label={isUser ? "Your slot" : `Slot ${slot}`}
-                          className="whitespace-nowrap border-l border-t text-center font-mono text-3xs font-normal uppercase tracking-[0.1em]"
-                          style={{
-                            paddingInline: "var(--c97-sp-1)",
-                            paddingBlock: "var(--c97-sp-0)",
-                            borderColor: "var(--c97-rule)",
-                            background: isUser
-                              ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))"
-                              : "var(--c97-surface)",
-                            color: isUser
-                              ? "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))"
-                              : "var(--c97-ink-2)",
-                          }}
-                        >
-                          {isUser ? "You" : `S${slot}`}
-                        </th>
-                      );
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {gridRows.map((row) => (
-                    <tr key={`round-${row.round}`}>
-                      <th
-                        scope="row"
-                        aria-label={`Round ${row.round}`}
-                        className="border-t text-center align-middle font-mono text-3xs font-normal tracking-[0.08em]"
-                        style={{
-                          borderColor: "var(--c97-rule)",
-                          background: "var(--c97-surface)",
-                          color: "var(--c97-ink-2)",
-                        }}
-                      >
-                        R{row.round}
-                      </th>
-                      {row.cells.map((cell) => (
-                        <td
-                          key={`cell-${cell.pickNumber}`}
-                          className="min-w-0 border-l border-t align-top"
-                          style={{
-                            paddingInline: "var(--c97-sp-1)",
-                            paddingBlock: "var(--c97-sp-0)",
-                            borderColor: "var(--c97-rule)",
-                            background: cell.pick
-                              ? (getPositionTone(cell.pick.player.position).background as string)
-                              : "var(--c97-surface)",
-                            boxShadow:
-                              cell.slot === settings.userTeam
-                                ? "inset 0 0 0 1px color-mix(in srgb, var(--c97-accent) 55%, transparent)"
-                                : undefined,
-                          }}
-                        >
-                          {/* 10px muted on the position washes measured 4.16 to 4.41:1 in
-                              light and 4.16 on the TE wash in dark. Mixing the muted tone
-                              72% toward ink clears 4.5:1 on every wash in both themes while
-                              the name line below stays the darker of the two. */}
-                          <p
-                            className="m-0 font-mono text-3xs tracking-[0.04em]"
-                            style={{ color: RECAP_CELL_LABEL_COLOR }}
-                          >
-                            #{cell.pickNumber} · {cell.pick?.player.position ?? "—"}
-                          </p>
-                          <p
-                            className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs font-semibold tracking-[-0.01em]"
-                            style={{ color: cell.pick ? "var(--c97-ink)" : "var(--c97-ink-2)" }}
-                          >
-                            {cell.pick ? shortName(cell.pick.player) : "—"}
-                          </p>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <div role="group" className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-0)" }} aria-label="Your haul">
-            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
-              Your haul
-            </span>
-            {userPicks.map((pick) => {
-              const delta = getPickDelta(pick);
-              const verdict = classifyPickValue(pick);
-              return (
-                <span
-                  key={`haul-${pick.pickNumber}`}
-                  className="inline-flex items-baseline border py-0.5 font-mono text-2xs"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    gap: "var(--c97-sp-0)",
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
-                  <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
-                    {shortName(pick.player)}
-                  </span>
-                  {delta !== null && (
-                    <span
-                      style={{
-                        color:
-                          verdict === "steal"
-                            ? "var(--c97-positive)"
-                            : verdict === "reach"
-                              ? "var(--c97-warning)"
-                              : "var(--c97-ink-2)",
-                      }}
+                <dl className="ffb-facts ffb-mk-facts">
+                  <div className="ffb-fact">
+                    <dt>Your best pick</dt>
+                    <dd>{recap.bestPick ? shortName(recap.bestPick.pick.player) : "—"}</dd>
+                    <dd
+                      className={`ffb-fact-note${
+                        recap.bestPick && classifyPickValue(recap.bestPick.pick) === "steal" ? " ffb-good" : ""
+                      }`}
                     >
-                      {formatPickDelta(delta)}
-                    </span>
-                  )}
-                </span>
-              );
-            })}
-          </div>
+                      {recap.bestPick
+                        ? `${formatPickDelta(recap.bestPick.delta)} vs baseline at #${recap.bestPick.pick.pickNumber}`
+                        : "no judged picks"}
+                    </dd>
+                  </div>
+                  <div className="ffb-fact">
+                    <dt>Biggest room reach</dt>
+                    <dd>{recap.biggestReach ? shortName(recap.biggestReach.pick.player) : "None"}</dd>
+                    <dd className={`ffb-fact-note${recap.biggestReach ? " ffb-warn" : ""}`}>
+                      {recap.biggestReach
+                        ? `${
+                            recap.biggestReach.pick.teamNumber === settings.userTeam
+                              ? "you"
+                              : `slot ${recap.biggestReach.pick.teamNumber}`
+                          } · ${formatPickDelta(recap.biggestReach.delta)} vs baseline`
+                        : "no pick cleared the reach threshold"}
+                    </dd>
+                  </div>
+                  <div className="ffb-fact">
+                    <dt>Your shape</dt>
+                    <dd>{recap.shape || "—"}</dd>
+                    <dd className="ffb-fact-note">
+                      {`${userPicks.length} ${userPicks.length === 1 ? "pick" : "picks"} · ${
+                        lineupAssignment.bench > 0 ? `${lineupAssignment.bench} to bench` : "all starters"
+                      }`}
+                    </dd>
+                  </div>
+                  <div className="ffb-fact">
+                    <dt>Room temper</dt>
+                    <dd>{TEMPER_LABELS[settings.temper]}</dd>
+                    <dd className="ffb-fact-note">{`seeded room #${roomLabel(state.seed)}`}</dd>
+                  </div>
+                </dl>
+              </div>
+              <p className="ffb-fact-foot">
+                same settings, fresh room · grades score every pick against the same baseline
+              </p>
+            </section>
 
-          {!simulationAvailable && (
-            <p
-              id="mock-rerun-blocked"
-              role="status"
-              className="m-0 border text-sm leading-6"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)", ...(WARNING_CARD_STYLE) }}
-            >
-              {boardStatusLine} {rerunRecovery}
-              {boardReloadable && (
-                <button
-                  type="button"
-                  onClick={retry}
-                  className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
-                >
-                  Reload the board
-                </button>
-              )}
-            </p>
-          )}
+            <div role="group" aria-labelledby={haulHeadingId}>
+              <div className="ffb-sechead ffb-sechead-lg">
+                <h2 id={haulHeadingId} className="ffb-h2">
+                  Your haul
+                </h2>
+              </div>
+              <ol className="ffb-mk-haul">
+                {userPicks.map((pick) => {
+                  const delta = getPickDelta(pick);
+                  const verdict = classifyPickValue(pick);
+                  const { position, positionRank } = pick.player;
+                  return (
+                    <li
+                      key={`haul-${pick.pickNumber}`}
+                      className={`ffb-sticker ${positionClass(position)}`.trimEnd()}
+                    >
+                      <span className="ffb-sticker-meta">
+                        <span>
+                          R{pick.round} · #{pick.pickNumber} · {position}
+                          {positionRank ?? ""}
+                        </span>{" "}
+                        {delta !== null ? (
+                          <span>
+                            {verdict === "steal" ? "Value " : verdict === "reach" ? "Reach " : ""}
+                            {formatPickDelta(delta)}
+                          </span>
+                        ) : null}
+                      </span>{" "}
+                      <span className="ffb-sticker-name" title={pick.player.name}>
+                        {shortName(pick.player)}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
 
-          <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            <button
-              type="button"
-              onClick={rerunRoom}
-              disabled={!simulationAvailable}
-              aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
-              className={SOLID_BUTTON_CLASS}
-            >
-              Run it back <span className="c97-arrow" aria-hidden="true">→</span>
-            </button>
-            <button
-              type="button"
-              onClick={openSetup}
-              className={PILL_BUTTON_CLASS}
-            >
-              Change setup
-            </button>
-            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              same settings, fresh room · grades score every pick against the same baseline
-            </span>
-          </div>
+            <section aria-labelledby={boardHeadingId} className="ffb-mk-fullboard">
+              <div className="ffb-sechead ffb-sechead-lg">
+                <h2 id={boardHeadingId} className="ffb-h2">
+                  The board
+                </h2>
+              </div>
+              <DraftPickGrid
+                picks={state.picks}
+                totalTeams={settings.totalTeams}
+                userTeam={settings.userTeam}
+                rounds={settings.rounds}
+                slotForPick={slotForPick}
+                currentPick={currentPick}
+                currentRound={settings.rounds}
+                isComplete
+              />
+            </section>
 
-          <div
-            className="flex flex-wrap items-baseline justify-between border-t"
-            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-          >
-            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
-              Practice reps only, with no prediction in them · rooms stay on this device
-            </span>
-            {footerLinks}
+            <div className="ffb-mk-foot">
+              <p className="ffb-method">
+                Practice reps only, with no prediction in them · rooms stay on this device
+              </p>
+              <p className="ffb-method">{LEAD}</p>
+            </div>
           </div>
-        </div>
-        </div>
-      )}
+        ) : null}
+      </div>
     </section>
   );
 }

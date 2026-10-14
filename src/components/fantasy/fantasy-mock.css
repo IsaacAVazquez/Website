@@ -1,0 +1,392 @@
+/*
+ * The mock draft (/fantasy-football/mock-draft): its setup screen, its room, and its recap.
+ *
+ * The kit (fantasy.css) and the shared room parts (DraftRoomParts.tsx with fantasy-room.css)
+ * draw almost everything. This sheet holds what only this route needs. It is unlayered, so a
+ * rule here beats a kit class on the same element whatever order the sheets load in. It stays
+ * loaded after in-app navigation, so every selector starts with a class of this route's prefix
+ * (`ffb-mk-`) or with `.ffb-root`.
+ */
+
+/* The column. A notice that sits straight in it (the in-season note, the paused alert) carries
+   its own room, since the note's parent has to stay the page shell. */
+.ffb-mk-col > .ffb-notice { margin-bottom: var(--ffb-s4); }
+.ffb-mk-col > .ffb-sticky + .ffb-notice { margin-top: var(--ffb-s3); }
+/* The stamp line and the practice checkbox live inside the note's one paragraph. */
+.ffb-mk-stamp {
+  display: block;
+  margin-top: 6px;
+  color: var(--ffb-muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+/* The native box is 18px, which is under a phone's 44px target. So the input lies over the whole
+   label, as the kit's choice plate does it, and a span draws the box and its tick. */
+.ffb-mk-consent {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  margin-top: 2px;
+}
+.ffb-mk-consent > input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.ffb-mk-consent-box {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--ffb-edge);
+  background: var(--ffb-raised);
+}
+.ffb-mk-consent > input:checked + .ffb-mk-consent-box {
+  border-color: var(--ffb-ink);
+  background: var(--ffb-ink);
+}
+.ffb-mk-consent > input:checked + .ffb-mk-consent-box::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  margin-top: -2px;
+  border: solid var(--ffb-board);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.ffb-mk-consent > input:focus-visible + .ffb-mk-consent-box {
+  outline: 2px solid var(--ffb-ink);
+  outline-offset: 2px;
+}
+@media (forced-colors: active) {
+  .ffb-mk-consent > input:checked + .ffb-mk-consent-box {
+    border-color: Highlight;
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+  .ffb-mk-consent > input:checked + .ffb-mk-consent-box::after { border-color: HighlightText; }
+}
+
+/* ==========================================================================
+ * Setup: a ruled sheet with no plate. The start block comes first in the document, and from
+ * 1024px it is a rail at the right that stays in view, as the redraft setup's is.
+ * ======================================================================== */
+.ffb-mk-setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--ffb-s5);
+  padding-bottom: var(--ffb-s7);
+}
+.ffb-mk-start {
+  display: grid;
+  gap: var(--ffb-s3);
+  min-width: 0;
+}
+/* Under the form's own heading the block needs no second one. It heads the rail from 1024px. */
+.ffb-mk-start-head { display: none; }
+.ffb-mk-start-summary { font-size: 14px; line-height: 1.45; }
+.ffb-mk-setup-main {
+  display: grid;
+  gap: var(--ffb-s5);
+  min-width: 0;
+}
+/* Two to a row on a phone, with the two wide switches on rows of their own. */
+.ffb-mk-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ffb-s4) var(--ffb-s5);
+  align-items: start;
+}
+.ffb-mk-fields > :nth-child(n + 5) { grid-column: 1 / -1; }
+/* A switch inside a field fills its column, so it lines up with the selects beside it. */
+.ffb-mk-field-seg { display: flex; width: 100%; }
+.ffb-mk-field-seg > .ffb-seg-btn { flex: 1 1 0; }
+.ffb-mk-fieldset { min-width: 0; }
+.ffb-mk-fieldset > legend { margin-bottom: 6px; }
+.ffb-mk-lineups { --ffb-choice-min: 100%; }
+.ffb-mk-lineups > .ffb-choice { align-content: start; }
+
+@media (min-width: 640px) {
+  .ffb-mk-fields { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ffb-mk-fields > :nth-child(n + 5) { grid-column: auto; }
+  .ffb-mk-lineups { --ffb-choice-min: 30%; }
+}
+@media (min-width: 1024px) {
+  .ffb-mk-setup {
+    grid-template-columns: minmax(0, 1fr) clamp(300px, 30%, 400px);
+    column-gap: var(--ffb-s6);
+    align-items: start;
+  }
+  .ffb-mk-setup > .ffb-mk-setup-head { grid-column: 1 / -1; }
+  .ffb-mk-start-head { display: flex; }
+  .ffb-mk-setup > .ffb-mk-setup-main { grid-column: 1; grid-row: 2; }
+  .ffb-mk-setup > .ffb-mk-setup-foot { grid-column: 1; grid-row: 3; }
+  /* It pins at the top of the screen. The padding is its breathing room there, and the
+     negative margin takes the same amount back so it still lines up with the fields. */
+  .ffb-mk-setup > .ffb-mk-start {
+    position: sticky;
+    top: 0;
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    margin-top: calc(-1 * var(--ffb-s4));
+    padding-top: var(--ffb-s4);
+  }
+}
+
+/* ==========================================================================
+ * The room
+ * The scorebug's frame, the picks, the roster, and the pick grid are the shared parts. What is
+ * here is this room's own: the cells it puts in the scorebug, its quick picks, and its board.
+ * ======================================================================== */
+
+/* The pinned bar keeps one height. A cell whose value or note changes from pick to pick holds
+   the width of its widest form ("#84 / 84", "before your first turn", "559 left"), so the point
+   where the bar wraps depends on the screen and never on the pick. */
+.ffb-mk-cell-pick > .ffb-bug-value { min-inline-size: 86px; }
+.ffb-mk-cell-between { min-inline-size: 122px; }
+.ffb-mk-cell-pool > .ffb-bug-value { min-inline-size: 63px; }
+/* The bar's long forms need about 900px. Below 1024px it takes the short ones: Take back keeps
+   its icon, two notes shorten, and the pool, which the board's own count repeats, leaves. One
+   row then holds down to 768px. */
+@media (max-width: 1023.98px) {
+  .ffb-root .ffb-mk-wide { display: none; }
+  .ffb-mk-cell-between { min-inline-size: 86px; }
+}
+@media (min-width: 1024px) {
+  .ffb-root .ffb-mk-narrow { display: none; }
+}
+/* Take back carries an icon. */
+.ffb-mk-bug .ffb-bug-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+/* Sim to end cannot be undone, so it stands apart from the two buttons that can: last in the
+   bar, behind a rule, with the words "no take back" on it where there is room. */
+.ffb-mk-bug .ffb-mk-sim {
+  position: relative;
+  margin-inline-start: calc(var(--ffb-s3) + 1px);
+}
+.ffb-mk-bug .ffb-mk-sim::before {
+  content: "";
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-start: calc(-1 * var(--ffb-s2) - 2px);
+  border-inline-start: 1px solid var(--ffb-bug-rule);
+}
+.ffb-root .ffb-mk-sim > small {
+  color: var(--ffb-bug-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  font-stretch: 88%;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* "You're up": the kit's tab on its ink rule, a note at the right, then the quick picks. */
+.ffb-mk-turn-note {
+  align-self: center;
+  color: var(--ffb-muted);
+  font-size: 12.5px;
+  line-height: 1.3;
+  text-align: right;
+}
+.ffb-mk-quicks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr));
+  gap: var(--ffb-s2);
+  padding-block: var(--ffb-s2) var(--ffb-s3);
+  border-bottom: 1px solid var(--ffb-rule);
+}
+/* A quick pick is a sticker that drafts on one press, so it carries the word at its right. */
+.ffb-mk-quick {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--ffb-s3);
+  width: 100%;
+  min-height: 44px;
+}
+.ffb-mk-quick > .ffb-sticker-meta { grid-area: 1 / 1; }
+.ffb-mk-quick > .ffb-sticker-name { grid-area: 2 / 1; }
+.ffb-mk-quick-go {
+  display: grid;
+  grid-area: 1 / 2 / 3 / 3;
+  place-items: center;
+  height: 30px;
+  padding-inline: 10px;
+  box-shadow: inset 0 0 0 1px var(--ffb-on-fill);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.ffb-root .ffb-mk-quick-go {
+  font-weight: 700;
+  font-stretch: 80%;
+  text-transform: uppercase;
+}
+.ffb-mk-quick:hover > .ffb-mk-quick-go {
+  background: var(--ffb-on-fill);
+  color: var(--ffb-pos, var(--ffb-board));
+}
+
+/* A way past the board for a keyboard. It is out of sight until it takes focus. */
+.ffb-mk-skip { margin-bottom: var(--ffb-s2); }
+.ffb-mk-skip:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The board. Rank, chip, name, team, bye, then the two market numbers when the room has ADP,
+   then Draft. */
+.ffb-mk-board { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 56px; }
+.ffb-mk-board.ffb-mk-has-adp { --ffb-cols: 30px 46px minmax(120px, 1fr) 36px 26px 44px 54px 56px; }
+/* A gap that reads as value at this pick takes the good ink, and keeps its sign. */
+.ffb-mk-board .ffb-c-num.ffb-mk-is-value { color: var(--ffb-good); }
+.ffb-mk-more { padding-top: var(--ffb-s3); }
+
+.ffb-mk-foot {
+  display: grid;
+  gap: var(--ffb-s1);
+  margin-top: var(--ffb-s6);
+  padding-top: var(--ffb-s3);
+  border-top: 1px solid var(--ffb-rule);
+}
+
+/* ==========================================================================
+ * The recap
+ * ======================================================================== */
+.ffb-mk-recap { padding-top: var(--ffb-s2); }
+.ffb-mk-recap > .ffb-mk-foot { margin-top: 0; }
+.ffb-mk-report-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ffb-s5);
+  padding-bottom: var(--ffb-s3);
+}
+.ffb-mk-grade {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-width: 0;
+}
+.ffb-mk-grade-letter { font-size: 72px; line-height: 0.85; }
+.ffb-mk-grade-total { font-size: 15px; font-weight: 600; }
+/* A name in a fact wraps before it is cut. */
+.ffb-mk-report-body .ffb-fact > dd { overflow-wrap: anywhere; }
+/* The grade beside the facts is the taller of the two, and the facts keep their own height. */
+.ffb-mk-facts { align-content: start; align-self: start; }
+/* The haul wraps, so every pick shows whole. */
+.ffb-mk-haul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 164px), 1fr));
+  gap: var(--ffb-s1);
+}
+/* The whole draft at a size the page column allows. */
+.ffb-mk-fullboard .ffb-cell { height: 40px; }
+.ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 14px; }
+
+@media (min-width: 1200px) {
+  /* Four facts read as two by two in the room the column has. */
+  .ffb-mk-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--ffb-s6);
+  }
+  .ffb-mk-facts > .ffb-fact:nth-child(2) { padding-top: 0; border-top: 0; }
+  /* The board at this width has room for who was picked, so each made cell prints the name
+     under its label. The shared grid keeps the name in the cell's title and does not print
+     it, so this reads the title. It goes when the part can print names itself (see the
+     ledger, "For the lead"). */
+  .ffb-mk-fullboard .ffb-cell { height: 52px; }
+  .ffb-mk-fullboard .ffb-cell.ffb-is-made {
+    grid-template-rows: auto auto;
+    align-content: center;
+    row-gap: 2px;
+    padding-inline: 4px;
+  }
+  .ffb-mk-fullboard .ffb-cell.ffb-is-made::after {
+    content: attr(title);
+    max-width: 100%;
+    max-height: 2.2em;
+    overflow: hidden;
+    font-size: 11.5px;
+    font-weight: 600;
+    font-stretch: 88%;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: none;
+    white-space: normal;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Read out, not shown: the column head already says it. */
+  .ffb-mk-vh-desk {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .ffb-mk-report-body {
+    grid-template-columns: minmax(200px, 300px) minmax(0, 1fr);
+    column-gap: var(--ffb-s7);
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Two rows: the live cell with the three actions, then Pick and Between turns. */
+  .ffb-mk-bug .ffb-bug-live { flex-basis: 96px; }
+  .ffb-mk-bug .ffb-bug-seg > .ffb-bug-value,
+  .ffb-mk-cell-between { min-inline-size: 0; }
+  /* A quick pick's two labels take a line each where they do not fit one. */
+  .ffb-mk-quick > .ffb-sticker-meta { flex-wrap: wrap; row-gap: 3px; }
+  /* The scorebug already pins two rows, so the board's bar scrolls with the list. That leaves
+     the scorebug as the whole pinned stack, three rows under 360px, so a focused row clears its
+     measured height and not the kit's fallback. */
+  .ffb-mk-boardbar { position: static; }
+  .ffb-mk-board { --ffb-pinned-top: calc(var(--ffb-sticky-top, 0px) + var(--ffb-s2)); }
+  /* The count sits beside the search where the two fit one row, which starts the list 24px
+     sooner at 390px. The search keeps the kit's 160px floor, so it never sits in what is left
+     of the position switch's row. */
+  .ffb-mk-board .ffb-toolbar > .ffb-count { flex-basis: auto; }
+  .ffb-mk-col > .ffb-notice { margin-bottom: var(--ffb-s2); }
+  /* Two quick picks to a row. The whole sticker is the button, and the note beside the tab
+     says so, so the word "Draft" leaves and the name keeps the width. */
+  .ffb-mk-quicks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ffb-s1); }
+  .ffb-mk-quick { grid-template-columns: minmax(0, 1fr); }
+  /* Hidden from the eye and still read, so the button's name ends in "Draft" at every width. */
+  .ffb-mk-quick > .ffb-mk-quick-go {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: none;
+    clip-path: inset(50%);
+  }
+  .ffb-mk-fullboard .ffb-cell { height: 34px; }
+  .ffb-mk-fullboard .ffb-cell.ffb-is-made { font-size: 10.5px; }
+}
+
+@media print {
+  .ffb-root .ffb-mk-noprint,
+  .ffb-root .ffb-mk-skip,
+  .ffb-root .ffb-mk-quick-go { display: none; }
+  .ffb-root .ffb-mk-start { position: static; }
+}
+/* The column head leaves a phone through a screen-only utility, which also takes it off paper.
+   A sheet of paper is wide enough for the desktop row, whose numbers need their heads. */
+@media print and (min-width: 768px) {
+  .ffb-root .ffb-mk-colhead { display: grid; }
+}
