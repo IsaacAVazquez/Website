@@ -1,6 +1,6 @@
 {
   "season": "2026",
-  "generatedAt": "2026-10-15T04:26:55.143Z",
+  "generatedAt": "2026-10-15T13:20:43.432Z",
   "updatedAt": "2026-10-15",
   "sourceLabel": "MLB Stats API",
   "sourceUrls": {
@@ -2085,7 +2085,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "109": {
       "team": {
@@ -2109,7 +2109,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "110": {
       "team": {
@@ -2133,7 +2133,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "111": {
       "team": {
@@ -2188,7 +2188,7 @@
         "runsFor": 2,
         "runsAgainst": 9
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "112": {
       "team": {
@@ -2243,7 +2243,7 @@
         "runsFor": 1,
         "runsAgainst": 4
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "113": {
       "team": {
@@ -2267,7 +2267,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "114": {
       "team": {
@@ -2579,7 +2579,7 @@
         "runsFor": 28,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "115": {
       "team": {
@@ -2603,7 +2603,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "116": {
       "team": {
@@ -2627,7 +2627,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "117": {
       "team": {
@@ -2682,7 +2682,7 @@
         "runsFor": 3,
         "runsAgainst": 7
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "118": {
       "team": {
@@ -2706,7 +2706,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "119": {
       "team": {
@@ -2990,7 +2990,7 @@
         "runsFor": 14,
         "runsAgainst": 17
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "120": {
       "team": {
@@ -3014,7 +3014,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "121": {
       "team": {
@@ -3038,7 +3038,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "133": {
       "team": {
@@ -3062,7 +3062,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "134": {
       "team": {
@@ -3086,7 +3086,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "135": {
       "team": {
@@ -3257,7 +3257,7 @@
         "runsFor": 14,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "136": {
       "team": {
@@ -3281,7 +3281,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "137": {
       "team": {
@@ -3305,7 +3305,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "138": {
       "team": {
@@ -3329,7 +3329,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "139": {
       "team": {
@@ -3641,7 +3641,7 @@
         "runsFor": 16,
         "runsAgainst": 13
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "140": {
       "team": {
@@ -3665,7 +3665,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "141": {
       "team": {
@@ -3689,7 +3689,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "142": {
       "team": {
@@ -3713,7 +3713,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "143": {
       "team": {
@@ -3797,7 +3797,7 @@
         "runsFor": 6,
         "runsAgainst": 9
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "144": {
       "team": {
@@ -3968,7 +3968,7 @@
         "runsFor": 14,
         "runsAgainst": 16
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "145": {
       "team": {
@@ -4139,7 +4139,7 @@
         "runsFor": 15,
         "runsAgainst": 23
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "146": {
       "team": {
@@ -4163,7 +4163,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "147": {
       "team": {
@@ -4305,7 +4305,7 @@
         "runsFor": 14,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     },
     "158": {
       "team": {
@@ -4589,7 +4589,7 @@
         "runsFor": 21,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-15T04:26:55.143Z"
+      "generatedAt": "2026-10-15T13:20:43.432Z"
     }
   }
 }
