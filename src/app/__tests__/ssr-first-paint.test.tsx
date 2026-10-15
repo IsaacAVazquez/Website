@@ -1,14 +1,12 @@
 import type { ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { DecisionLabClient } from "@/app/decision-lab/decision-lab-client";
-import { DEFAULT_DECISION_LAB_STATE } from "@/app/decision-lab/decision-lab-state";
 import { BudgetPlannerClient } from "@/app/fintech-tools/budget-planner/budget-planner-client";
 import { RentVsBuyClient } from "@/app/fintech-tools/rent-vs-buy/rent-vs-buy-client";
 import { TravelPlannerClient } from "@/app/travel/travel-planner-client";
 import { MBAJobsClient } from "@/app/mba-internship-notifications/mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "@/app/mba-internship-notifications/mba-jobs-state";
 import { FoodMapClient } from "@/app/food-map/food-map-client";
-import { DEFAULT_FOOD_MAP_STATE } from "@/app/food-map/food-map-state";
 import { SpaceXMissionControlClient } from "@/app/spacex-mission-control/spacex-mission-control-client";
 import { DEFAULT_MISSION_CONTROL_STATE } from "@/app/spacex-mission-control/spacex-mission-control-state";
 
@@ -42,12 +40,12 @@ function serverRenderedHeadingOpacity(element: ReactElement): number {
 
 describe("server-rendered first paint", () => {
   it.each([
-    ["Decision Lab", <DecisionLabClient key="d" initialState={DEFAULT_DECISION_LAB_STATE} />],
+    ["Decision Lab", <DecisionLabClient key="d" />],
     ["Budget Planner", <BudgetPlannerClient key="b" />],
     ["Rent vs. Buy", <RentVsBuyClient key="r" />],
     ["Travel Planner", <TravelPlannerClient key="t" />],
     ["Job Search", <MBAJobsClient key="j" initialState={DEFAULT_MBA_JOBS_STATE} />],
-    ["Food Map", <FoodMapClient key="f" initialState={DEFAULT_FOOD_MAP_STATE} />],
+    ["Food Map", <FoodMapClient key="f" />],
   ])("%s ships its headline visible before any script runs", (_name, element) => {
     expect(serverRenderedHeadingOpacity(element)).toBe(1);
   });

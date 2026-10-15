@@ -20,9 +20,6 @@ import {
 import { verdictContributions, verdictStamp, type VerdictContribution } from "./verdictStamp";
 import "./decision-lab.css";
 
-interface DecisionLabClientProps {
-  initialState: DecisionLabState;
-}
 
 interface MetricDefinition {
   key: keyof DecisionMetrics;
@@ -508,21 +505,20 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
   );
 }
 
-export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
+export function DecisionLabClient() {
   const searchParams = useSearchParams();
-  const normalizedRouteState = normalizeDecisionLabState(searchParams);
+  // The URL is the only source. Back from another page can restore the
+  // server's state for a deep link the visitor has since cleared.
+  const routeState = normalizeDecisionLabState(searchParams);
   const currentQuery = searchParams.toString();
   const currentHref = currentQuery ? `${DECISION_LAB_ROUTE}?${currentQuery}` : DECISION_LAB_ROUTE;
-  const canonicalHref = buildDecisionLabHref(normalizedRouteState);
+  const canonicalHref = buildDecisionLabHref(routeState);
   const hasManagedParams =
     searchParams.get("preset") !== null ||
     searchParams.get("impact") !== null ||
     searchParams.get("confidence") !== null ||
     searchParams.get("effort") !== null ||
     searchParams.get("reversibility") !== null;
-  // An empty query is the default scenario. Back from another page can restore
-  // the server's state for a deep link the visitor has since cleared.
-  const routeState = searchParams ? normalizedRouteState : initialState;
 
   useEffect(() => {
     if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);

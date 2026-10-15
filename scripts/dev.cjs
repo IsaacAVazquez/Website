@@ -12,7 +12,8 @@ function getDevOptions(args, env) {
     // localhost stays on loopback and keeps the browser origin the docs and
     // bookmarks use, so localStorage-backed tools open with their saved data.
     args: ["dev", "--webpack", "--hostname", "localhost", ...args],
-    env: { ...env, JOB_SEARCH_PRIVATE_SYNC: sync, NODE_OPTIONS: nodeOptions },
+    // The page reads the public copy, so the server and the page turn sync on together.
+    env: { ...env, JOB_SEARCH_PRIVATE_SYNC: sync, NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC: sync, NODE_OPTIONS: nodeOptions },
   };
 }
 

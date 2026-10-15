@@ -1,6 +1,5 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { DecisionLabClient } from "../decision-lab-client";
-import { DEFAULT_DECISION_LAB_STATE, normalizeDecisionLabState } from "../decision-lab-state";
 
 const mockWriteText = jest.fn();
 let currentSearchParams = new URLSearchParams();
@@ -50,7 +49,7 @@ describe("DecisionLabClient", () => {
   });
 
   it("renders the default support-copilot scenario when no params are present", () => {
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: /^Decision Lab$/i })).toBeVisible();
     expect(screen.getByText(/i built this to pressure-test product bets/i)).toBeVisible();
@@ -61,7 +60,7 @@ describe("DecisionLabClient", () => {
   it("canonicalizes invalid query params to the normalized decision-lab href in place", () => {
     visit("preset=nope&impact=140&confidence=abc");
 
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
 
     expect(replaceState).toHaveBeenCalledWith(null, "", "/decision-lab?impact=100");
   });
@@ -69,7 +68,7 @@ describe("DecisionLabClient", () => {
   it("updates preset selection, slider state, and the URL together", () => {
     visit("preset=notification-rewrite");
 
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
 
     expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("44");
     expect(screen.getByText(/I would hold this for now\./i)).toBeVisible();
@@ -98,7 +97,7 @@ describe("DecisionLabClient", () => {
     visit("preset=onboarding-refresh&confidence=52");
     mockWriteText.mockResolvedValue(undefined);
 
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
 
     expect((screen.getByLabelText("Confidence") as HTMLInputElement).value).toBe("52");
     expect(screen.getByText("-21 vs preset")).toBeVisible();
@@ -120,7 +119,7 @@ describe("DecisionLabClient", () => {
 
   it("keeps the slider mounted on its own commits and re-seeds on back or forward", () => {
     visit("preset=onboarding-refresh");
-    const ui = () => <DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />;
+    const ui = () => <DecisionLabClient />;
     const view = render(ui());
 
     const slider = screen.getByLabelText("Confidence") as HTMLInputElement;
@@ -149,9 +148,7 @@ describe("DecisionLabClient", () => {
 
   it("returns to the default scenario after a deep link's last parameter is cleared", () => {
     visit("preset=onboarding-refresh");
-    // The server reads the same link, so its state names the deep link's preset.
-    const initialState = normalizeDecisionLabState(currentSearchParams);
-    const ui = () => <DecisionLabClient initialState={initialState} />;
+    const ui = () => <DecisionLabClient />;
     const view = render(ui());
     expect((screen.getByLabelText("Confidence") as HTMLInputElement).value).toBe("73");
 
@@ -159,7 +156,7 @@ describe("DecisionLabClient", () => {
     settleUrl();
     expect(lastHref()).toBe("/decision-lab");
 
-    // The router catches up with the emptied query, while the server's prop still names the deep link.
+    // The router catches up with the emptied query.
     currentSearchParams = new URLSearchParams();
     view.rerender(ui());
     settleUrl();
@@ -168,22 +165,9 @@ describe("DecisionLabClient", () => {
     expect(screen.getByText(/I would test this before I commit fully\./i)).toBeVisible();
   });
 
-  it("shows the default scenario when Back restores the page with a deep link's server state", () => {
-    // Back from another page can hand the page the server's state for the deep
-    // link it first rendered, while the URL the visitor left is the plain page.
-    visit("");
-    const initialState = normalizeDecisionLabState(new URLSearchParams("preset=onboarding-refresh"));
-    render(<DecisionLabClient initialState={initialState} />);
-
-    expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("82");
-    expect(screen.getByText(/I would test this before I commit fully\./i)).toBeVisible();
-    settleUrl();
-    expect(replaceState).not.toHaveBeenCalled();
-  });
-
   it("ends on the last of two quick slider moves whichever commit the router shows first", () => {
     visit("preset=onboarding-refresh");
-    const ui = () => <DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />;
+    const ui = () => <DecisionLabClient />;
     const view = render(ui());
     const slider = screen.getByLabelText("Confidence") as HTMLInputElement;
 
@@ -207,7 +191,7 @@ describe("DecisionLabClient", () => {
   });
 
   it("puts the four sliders beside the verdict and keeps the calculation ledger below", () => {
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
     const ledger = screen.getByRole("heading", { level: 2, name: "Why this verdict" });
     const verdict = screen.getByText(/^Score .+ · /);
 
@@ -227,7 +211,7 @@ describe("DecisionLabClient", () => {
     ["the default state", ""],
   ])("prints ledger rows that add up to the weighted score row under them for %s", (_state, query) => {
     visit(query);
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
 
     const printed = (selector: string) =>
       Array.from(document.querySelectorAll(selector)).map((figure) => Number(figure.textContent));
@@ -239,7 +223,7 @@ describe("DecisionLabClient", () => {
   });
 
   it("names the preset a custom state started from and drops that preset's hint", () => {
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
     expect(screen.getByText(/High upside with thin proof/)).toBeVisible();
 
     fireEvent.change(screen.getByLabelText("Impact"), { target: { value: "10" } });
@@ -258,7 +242,7 @@ describe("DecisionLabClient", () => {
       return { left, width, right: left + width } as DOMRect;
     });
     visit("preset=notification-rewrite");
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
     boxes.mockRestore();
 
     // The chip's centre is at 460 and the row's at 150.
@@ -266,7 +250,7 @@ describe("DecisionLabClient", () => {
   });
 
   it("tilts the stamp from a group outside the one its animation transforms", () => {
-    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    render(<DecisionLabClient />);
     const stamp = document.querySelector(".dl-stamp") as SVGGElement;
 
     expect(stamp).not.toHaveAttribute("transform");

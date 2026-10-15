@@ -27,6 +27,8 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+The dev server answers only on this computer. To open it from a phone on the same network, start it with `npm run dev -- --hostname 0.0.0.0` and use the Network address it prints, which also leaves the private job search sync off. Next refuses hot reload from that address unless it is listed in `allowedDevOrigins` in `next.config.mjs`, so reload the phone's page by hand after an edit.
+
 ---
 
 ## Main Scripts

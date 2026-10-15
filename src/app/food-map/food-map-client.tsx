@@ -43,10 +43,6 @@ import {
 import { FoodMapLeaflet } from "./food-map-leaflet";
 import "./food-map.css";
 
-interface FoodMapClientProps {
-  initialState: FoodMapState;
-}
-
 /* -------------------------------------------------------------------------- */
 /* Filter chips                                                               */
 /* -------------------------------------------------------------------------- */
@@ -544,20 +540,21 @@ function replaceHref(href: string) {
   window.history.replaceState(null, "", href);
 }
 
-export function FoodMapClient({ initialState }: FoodMapClientProps) {
+export function FoodMapClient() {
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
 
-  const normalizedRouteState = normalizeFoodMapState(searchParams);
+  // The URL is the only source. A history write never re-renders the server
+  // page, so a state passed down from it would still name the first URL's city.
+  const routeState = normalizeFoodMapState(searchParams);
   const currentQuery = searchParams.toString();
   const currentHref = currentQuery ? `${FOOD_MAP_ROUTE}?${currentQuery}` : FOOD_MAP_ROUTE;
-  const canonicalHref = buildFoodMapHref(normalizedRouteState);
+  const canonicalHref = buildFoodMapHref(routeState);
   const hasManagedParams =
     searchParams.get("city") !== null ||
     searchParams.get("curator") !== null ||
     searchParams.get("cuisine") !== null ||
     searchParams.get("pick") !== null;
-  const routeState = searchParams ? normalizedRouteState : initialState;
 
   useEffect(() => {
     if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);
