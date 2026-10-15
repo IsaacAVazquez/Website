@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 47.08,
-      "marketCap": 192231979505,
-      "psRatio": 13.85,
-      "pbRatio": 5.73,
+      "ttmPe": 47.89,
+      "marketCap": 195556098835,
+      "psRatio": 14.09,
+      "pbRatio": 5.83,
       "pegRatio": 0.29
     },
     "profitability": {
@@ -6102,25 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.149999999999999,
-      "costOfEquity": 14.78,
+      "wacc": 14.19,
+      "costOfEquity": 14.81,
       "costOfDebt": 0.97,
       "taxRate": 13,
       "beta": 1.2525,
-      "marketCap": 192231979505
+      "marketCap": 195556098835
     },
     "beta": {
       "beta5y": 1.2525
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 228.32,
-        "high": 235.82,
-        "low": 226.96,
-        "close": 234.67,
-        "volume": 4609900
-      },
       {
         "date": "2025-10-14",
         "open": 231.15,
@@ -8128,6 +8120,14 @@
         "low": 400.51,
         "close": 414.7,
         "volume": 2699400
+      },
+      {
+        "date": "2026-10-14",
+        "open": 410.21,
+        "high": 410.5,
+        "low": 401.4,
+        "close": 403.57,
+        "volume": 5013100
       }
     ],
     "news": [
@@ -8180,14 +8180,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
-        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e475f2ac-cd94-38a1-812b-ee573876a8ee",
         "title": "JPMorgan Reaffirms $300 Price Target for Analog Devices After Strong Q2",
         "publisher": "Insider Monkey",
@@ -8196,11 +8188,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
-        "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
+        "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
+        "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
+        "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
+        "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
         "type": "STORY"
       },
       {
@@ -8215,7 +8215,7 @@
     "officers": [
       {
         "name": "Dr. Katsufumi Nakamura",
-        "title": "Senior VP & Chief Customer Officer",
+        "title": "Chief Customer Officer",
         "age": 59,
         "yearBorn": 1966,
         "totalPay": 1885368
@@ -8228,8 +8228,12 @@
         "totalPay": 111163
       },
       {
+        "name": "Jeff Ambrosi",
+        "title": "Senior Director of Investor Relations"
+      },
+      {
         "name": "Mr. Martin Cotter",
-        "title": "Senior Vice President of Vertical Business Units & President of ADI EMEA",
+        "title": "Chief Business Units Officer & EMEA President",
         "age": 60,
         "yearBorn": 1965,
         "totalPay": 1611240
@@ -8242,7 +8246,7 @@
       },
       {
         "name": "Mr. Richard C. Puccio Jr.",
-        "title": "Executive VP & CFO",
+        "title": "Chief Financial Officer",
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 2119759
@@ -8256,45 +8260,39 @@
       },
       {
         "name": "Mr. Vivek Jain",
-        "title": "Executive Vice President of Global Operations & Technology",
+        "title": "Chief Operations & Technology Officer",
         "age": 65,
         "yearBorn": 1960,
         "totalPay": 2097691
       },
       {
         "name": "Ms. Janene I. Asgeirsson J.D.",
-        "title": "Senior VP, Chief Legal Officer & Corporate Secretary",
+        "title": "Senior VP, Chief Legal Officer & Chief Risk Officer",
         "age": 55,
         "yearBorn": 1970
       },
       {
         "name": "Ms. Mariya K. Trickett",
-        "title": "Senior VP & Chief People Officer",
+        "title": "Chief People Officer",
         "age": 42,
         "yearBorn": 1983
-      },
-      {
-        "name": "Ms. Stephanie Sidelko",
-        "title": "Vice President & Head of Strategy and Chief of Staff to the Chief Executive Officer",
-        "age": 40,
-        "yearBorn": 1985
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.08,
-        "industryAvg": 30.24
+        "value": 47.89,
+        "industryAvg": 28.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.85,
-        "industryAvg": 14.45
+        "value": 14.09,
+        "industryAvg": 13.49
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.73,
-        "industryAvg": 12.62
+        "value": 5.83,
+        "industryAvg": 11.71
       },
       {
         "metric": "ROE",

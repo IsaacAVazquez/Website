@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     },
     "retainedSections": [
       "fundamentals"
@@ -35,7 +35,7 @@
       "country": "United States",
       "industry": "Biotechnology",
       "sector": "Healthcare",
-      "longBusinessSummary": "Regeneron Pharmaceuticals, Inc. discovers, invents, develops, manufactures, and commercializes medicines to treat various diseases worldwide. The company develops product candidates to treat eye, allergic and inflammatory, cardiovascular, metabolic, neurological, infectious, and rare diseases; and cancer, hematologic conditions. It also offers EYLEA injections for wet age-related macular degeneration and diabetic macular edema; myopic choroidal neovascularization; diabetic retinopathy; neovascular glaucoma; retinopathy of prematurity; Dupixent injection to treat atopic dermatitis and asthma; Libtayo injection for metastatic or locally advanced cutaneous squamous cell carcinoma; Praluent injection to treat heterozygous familial hypercholesterolemia (HoFH); and Kevzara solution for rheumatoid arthritis. It has license and collaboration agreement with Bayer for the development and commercialization of EYLEA 8 mg and EYLEA; Alnylam Pharmaceuticals, Inc. to discover, develop, and commercialize RNAi therapeutics for diseases by addressing therapeutic disease targets expressed in the eye and central nervous system; Intellia Therapeutics, Inc. to advance CRISPR/Cas9 gene-editing technology for in vivo therapeutic development for therapies focused on neurological and muscular diseases; Hansoh Pharmaceuticals Group Company Limited to acquire development and commercial rights for HS-20094, a dual GLP-1/GIP receptor; and Tessera Therapeutics, Inc. develops and commercializes TSRA-196, an investigational gene editing therapy for Alpha-1 antitrypsin deficiency. Additionally, the company has a strategic collaboration with Telix Pharmaceuticals Limited to develop and commercialize radiopharmaceutical therapies. It also has a strategic collaboration with CytomX Therapeutics, Inc. to create conditionally-activated bispecific cancer therapies. The company was incorporated in 1988 and is based in Tarrytown, New York.",
+      "longBusinessSummary": "Regeneron Pharmaceuticals, Inc. discovers, invents, develops, manufactures, and commercializes medicines to treat various diseases worldwide. The company develops product candidates to treat eye, allergic and inflammatory, cardiovascular, metabolic, neurological, infectious, and rare diseases; and cancer, hematologic conditions. It also offers EYLEA injections for wet age-related macular degeneration and diabetic macular edema; myopic choroidal neovascularization; diabetic retinopathy; neovascular glaucoma; retinopathy of prematurity; Dupixent injection to treat atopic dermatitis and asthma; Libtayo injection for metastatic or locally advanced cutaneous squamous cell carcinoma; Praluent injection to treat heterozygous familial hypercholesterolemia (HoFH); and Kevzara solution for rheumatoid arthritis. It has license and collaboration agreement with Bayer for the development and commercialization of EYLEA 8 mg and EYLEA; Alnylam Pharmaceuticals, Inc. to discover, develop, and commercialize RNAi therapeutics for diseases by addressing therapeutic disease targets expressed in eye and central nervous system; Intellia Therapeutics, Inc. to advance CRISPR/Cas9 gene-editing technology for in vivo therapeutic development for therapies focused on neurological and muscular diseases; Hansoh Pharmaceuticals Group Company Limited to acquire development and commercial rights for HS-20094, a dual GLP-1/GIP receptor; and Tessera Therapeutics, Inc. develops and commercializes TSRA-196, an investigational gene editing therapy for Alpha-1 antitrypsin deficiency. The company has a strategic collaboration with Telix Pharmaceuticals Limited to develop and commercialize radiopharmaceutical therapies. It also has a strategic collaboration with CytomX Therapeutics, Inc. to create conditionally-activated bispecific cancer therapies. It has a strategic alliance with Sanofi to develop long-acting immunology antibodies. The company was incorporated in 1988 and is based in Tarrytown, New York.",
       "fullTimeEmployees": 15410,
       "website": "https://www.regeneron.com",
       "shortName": "Regeneron Pharmaceuticals, Inc.",
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 40.4631,
-      "ttmPe": 18.16,
+      "ttmPe": 19.24,
       "pegRatio": 1.03,
-      "marketCap": 75979354000,
-      "psRatio": 4.89,
-      "pbRatio": 2.4
+      "marketCap": 80482424000,
+      "psRatio": 5.18,
+      "pbRatio": 2.54
     },
     "profitability": {
       "roe": 4.109999999999999,
@@ -5712,25 +5712,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.08,
-      "costOfEquity": 6.279999999999999,
+      "wacc": 6.03,
+      "costOfEquity": 6.22,
       "costOfDebt": 0.41000000000000003,
       "taxRate": 15,
-      "beta": 0.136,
-      "marketCap": 75979354000
+      "beta": 0.1336,
+      "marketCap": 80482424000
     },
     "beta": {
-      "beta5y": 0.136
+      "beta5y": 0.1336
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 551.5,
-        "high": 563.77,
-        "low": 541,
-        "close": 557.73,
-        "volume": 1426400
-      },
       {
         "date": "2025-10-14",
         "open": 556.92,
@@ -7738,6 +7730,14 @@
         "low": 743.57,
         "close": 753.12,
         "volume": 629600
+      },
+      {
+        "date": "2026-10-14",
+        "open": 758.16,
+        "high": 781.84,
+        "low": 755.21,
+        "close": 778.36,
+        "volume": 878400
       }
     ],
     "news": [
@@ -7885,28 +7885,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.16,
-        "industryAvg": 22.55
+        "value": 19.24,
+        "industryAvg": 22.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.89,
-        "industryAvg": 11.02
+        "value": 5.18,
+        "industryAvg": 10.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.4,
-        "industryAvg": 4.56
+        "value": 2.54,
+        "industryAvg": 4.44
       },
       {
         "metric": "ROE",
         "value": 4.109999999999999,
-        "industryAvg": -18.3
+        "industryAvg": -18.34
       },
       {
         "metric": "ROA",
         "value": 3.1399999999999997,
-        "industryAvg": -11.23
+        "industryAvg": -11.26
       },
       {
         "metric": "Gross Margin",
@@ -7916,12 +7916,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 38.75,
-        "industryAvg": -27.54
+        "industryAvg": -27.589999999999996
       },
       {
         "metric": "Net Margin",
         "value": 30.23,
-        "industryAvg": -33.53
+        "industryAvg": -33.61
       }
     ]
   }

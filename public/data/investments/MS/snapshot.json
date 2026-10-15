@@ -1,10 +1,10 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3764,
-      "ttmPe": 15.19,
-      "marketCap": 295538766111,
-      "psRatio": 4.05,
-      "pbRatio": 2.54,
-      "pegRatio": 0.24
+      "ttmPe": 14.67,
+      "marketCap": 285321213961,
+      "psRatio": 3.91,
+      "pbRatio": 2.45,
+      "pegRatio": 0.23
     },
     "profitability": {
       "roe": 4.71,
@@ -5910,25 +5910,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.3999999999999995,
-      "costOfEquity": 14.56,
+      "wacc": 7.3,
+      "costOfEquity": 14.57,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.2221,
-      "marketCap": 295538766111
+      "beta": 1.222,
+      "marketCap": 285321213961
     },
     "beta": {
-      "beta5y": 1.2221
+      "beta5y": 1.222
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 154.28,
-        "high": 155.62,
-        "low": 153.35,
-        "close": 155.13,
-        "volume": 4735800
-      },
       {
         "date": "2025-10-14",
         "open": 154.5,
@@ -7935,7 +7927,15 @@
         "high": 193.3,
         "low": 186.35,
         "close": 186.64,
-        "volume": 8203900
+        "volume": 8214700
+      },
+      {
+        "date": "2026-10-14",
+        "open": 180.45,
+        "high": 183.9,
+        "low": 176.44,
+        "close": 181.51,
+        "volume": 10258200
       }
     ],
     "news": [
@@ -7996,19 +7996,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b98f630-680d-374d-aa9d-38ab2c73390f",
-        "title": "Traders Wager $10 Billion on Chevron-Hess Deal Beating Exxon Case",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/traders-wager-10-billion-chevron-100001931.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
         "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b98f630-680d-374d-aa9d-38ab2c73390f",
+        "title": "Traders Wager $10 Billion on Chevron-Hess Deal Beating Exxon Case",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/traders-wager-10-billion-chevron-100001931.html",
         "type": "STORY"
       },
       {
@@ -8082,18 +8082,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.19,
-        "industryAvg": 16.05
+        "value": 14.67,
+        "industryAvg": 15.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.05,
-        "industryAvg": 2.09
+        "value": 3.91,
+        "industryAvg": 2.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.54,
-        "industryAvg": 2.61
+        "value": 2.45,
+        "industryAvg": 2.52
       },
       {
         "metric": "ROE",

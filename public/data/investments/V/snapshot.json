@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.6523,
-      "ttmPe": 30.84,
-      "marketCap": 671337065459,
-      "psRatio": 15.09,
-      "pbRatio": 19.08,
-      "pegRatio": 2.96
+      "ttmPe": 33.59,
+      "marketCap": 731309569289,
+      "psRatio": 16.44,
+      "pbRatio": 20.79,
+      "pegRatio": 3.23
     },
     "profitability": {
       "roe": 15.89,
@@ -5375,25 +5375,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.129999999999999,
-      "costOfEquity": 11.5,
+      "wacc": 11.14,
+      "costOfEquity": 11.48,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 18,
-      "beta": 0.8192,
-      "marketCap": 671337065459
+      "beta": 0.8189,
+      "marketCap": 731309569289
     },
     "beta": {
-      "beta5y": 0.8192
+      "beta5y": 0.8189
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 343.72,
-        "high": 347.66,
-        "low": 340.73,
-        "close": 343.3,
-        "volume": 4030700
-      },
       {
         "date": "2025-10-14",
         "open": 341,
@@ -7401,23 +7393,31 @@
         "low": 390.69,
         "close": 396.06,
         "volume": 7476700
+      },
+      {
+        "date": "2026-10-14",
+        "open": 395.91,
+        "high": 397.19,
+        "low": 389.56,
+        "close": 391.43,
+        "volume": 7725400
       }
     ],
     "news": [
-      {
-        "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
-        "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
-        "type": "STORY"
-      },
       {
         "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
         "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
         "publisher": "Zacks",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
+        "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
         "type": "STORY"
       },
       {
@@ -7445,19 +7445,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
-        "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
         "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
         "publisher": "TipRanks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "554d65d5-b261-3c95-8aa0-7089a114436d",
+        "title": "Can Global Payments Navigate Lower Americas Revenues in Q1 Earnings?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/global-payments-navigate-lower-americas-120900847.html",
         "type": "STORY"
       },
       {
@@ -7477,11 +7477,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
-        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
+        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
+        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
         "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
         "type": "STORY"
       }
     ],
@@ -7553,18 +7553,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.84,
-        "industryAvg": 20.98
+        "value": 33.59,
+        "industryAvg": 22.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.09,
-        "industryAvg": 4.91
+        "value": 16.44,
+        "industryAvg": 5.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.08,
-        "industryAvg": 5.24
+        "value": 20.79,
+        "industryAvg": 5.59
       },
       {
         "metric": "ROE",

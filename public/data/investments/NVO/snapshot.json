@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.0918,
-      "ttmPe": 9.14,
+      "ttmPe": 9.32,
       "pegRatio": 0.13,
-      "marketCap": 125135855900,
-      "psRatio": 2.49,
-      "pbRatio": 3.7
+      "marketCap": 127544888420,
+      "psRatio": 2.54,
+      "pbRatio": 3.77
     },
     "profitability": {
       "roe": 9.89,
@@ -6161,25 +6161,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.3,
-      "costOfEquity": 10.75,
+      "wacc": 9.32,
+      "costOfEquity": 10.74,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 22,
-      "beta": 0.7226,
-      "marketCap": 125135855900
+      "beta": 0.7221,
+      "marketCap": 127544888420
     },
     "beta": {
-      "beta5y": 0.7226
+      "beta5y": 0.7221
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 57.3,
-        "high": 58.13,
-        "low": 57.25,
-        "close": 57.5,
-        "volume": 8835500
-      },
       {
         "date": "2025-10-14",
         "open": 56.28,
@@ -8187,6 +8179,14 @@
         "low": 37.98,
         "close": 38.06,
         "volume": 9253800
+      },
+      {
+        "date": "2026-10-14",
+        "open": 37.91,
+        "high": 38.42,
+        "low": 37.9,
+        "close": 38.12,
+        "volume": 9312900
       }
     ],
     "news": [
@@ -8215,14 +8215,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
-        "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
         "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
         "publisher": "BioPharma Dive",
@@ -8231,11 +8223,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
-        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-29",
-        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
+        "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
+        "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
         "type": "STORY"
       },
       {
@@ -8244,6 +8236,14 @@
         "publisher": "Pharmaceutical Technology",
         "reportDate": "2025-03-29",
         "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
+        "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-29",
+        "link": "https://finance.yahoo.com/m/37f312c0-b1a2-341e-8db3-6e35681e8002/novo-nordisk-inks-its-second.html",
         "type": "STORY"
       },
       {
@@ -8277,7 +8277,7 @@
         "title": "EVP of R&D, Chief Scientific Officer and Member of the Management Board",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 1848361
+        "totalPay": 1827999
       },
       {
         "name": "Mr. Emil Kongshoej Larsen",
@@ -8302,7 +8302,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 2605886
+        "totalPay": 2577179
       },
       {
         "name": "Mr. Maziar Mike Doustdar B.A.",
@@ -8338,18 +8338,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.14,
-        "industryAvg": 25.78
+        "value": 9.32,
+        "industryAvg": 26.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.49,
-        "industryAvg": 4.66
+        "value": 2.54,
+        "industryAvg": 4.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.7,
-        "industryAvg": 5.75
+        "value": 3.77,
+        "industryAvg": 5.87
       },
       {
         "metric": "ROE",

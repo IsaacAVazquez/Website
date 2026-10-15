@@ -1,10 +1,10 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Banks-Diversified",
       "sector": "Financial Services",
       "longBusinessSummary": "JPMorgan Chase & Co. operates as a bank and financial holding company in the United States, rest of North America, Europe, the Middle East, Africa, the Asia Pacific, Latin America, and the Caribbean. It operates in three segments: Consumer & Community Banking, Commercial & Investment Bank, and Asset & Wealth Management. The company offers deposit, investment and lending products, and cash management; mortgage origination and servicing activities; residential mortgages and home equity loans; and credit cards, payment solutions, travel services, merchant offers, lifestyle benefits, auto loans, and leases to consumers and small businesses through bank branches, ATMs, and digital and telephone banking. It also provides investment banking, market-making, financing, custody, and securities products and services; corporate strategy and structure advisory, equity and debt market capital-raising, and loan origination and syndication services; cash and derivative instruments, risk management solutions, prime brokerage, clearing, and research; and fund services, liquidity and trading services, and data solutions products for large corporations, financial institutions, merchants, start-ups, small and midsized companies, local governments, municipalities, nonprofits, and commercial real estate clients. In addition, the company offers multi-asset investment management solutions in equities, fixed income, alternatives, and money market funds to institutional clients and retail investors; retirement products and services, estate planning, lending, deposits, and investment management products to high-net-worth clients; and financial transaction processing. JPMorgan Chase & Co. was founded in 1799 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 320560,
+      "fullTimeEmployees": 322964,
       "website": "https://www.jpmorganchase.com",
       "shortName": "JPMorgan Chase & Co.",
       "longName": "JPMorgan Chase & Co."
     },
     "fundamentals": {
-      "ttmEps": 23.3431,
-      "ttmPe": 14.17,
-      "marketCap": 879407740546,
-      "psRatio": 4.51,
-      "pbRatio": 2.35,
-      "pegRatio": 0.3
+      "ttmEps": 23.8359,
+      "ttmPe": 14.07,
+      "marketCap": 890369568000,
+      "psRatio": 4.57,
+      "pbRatio": 2.38,
+      "pegRatio": 1.45
     },
     "profitability": {
       "roe": 5.62,
@@ -73,7 +73,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 47.08
+        "yoyGrowth": 9.71
       }
     ],
     "income_statement": {
@@ -6211,25 +6211,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.520000000000001,
-      "costOfEquity": 13.089999999999998,
+      "wacc": 9.55,
+      "costOfEquity": 13.100000000000001,
       "costOfDebt": 4.71,
       "taxRate": 23,
       "beta": 1.0296,
-      "marketCap": 879407740546
+      "marketCap": 890369568000
     },
     "beta": {
       "beta5y": 1.0296
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 305.6,
-        "high": 309.46,
-        "low": 305.45,
-        "close": 307.97,
-        "volume": 10788700
-      },
       {
         "date": "2025-10-14",
         "open": 305.84,
@@ -8237,6 +8229,14 @@
         "low": 331.17,
         "close": 331.43,
         "volume": 13753800
+      },
+      {
+        "date": "2026-10-14",
+        "open": 327.17,
+        "high": 336.2,
+        "low": 326.4,
+        "close": 335.28,
+        "volume": 10236200
       }
     ],
     "news": [
@@ -8394,18 +8394,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.17,
-        "industryAvg": 13.87
+        "value": 14.07,
+        "industryAvg": 13.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.51,
-        "industryAvg": 3.82
+        "value": 4.57,
+        "industryAvg": 3.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.35,
-        "industryAvg": 1.73
+        "value": 2.38,
+        "industryAvg": 1.67
       },
       {
         "metric": "ROE",

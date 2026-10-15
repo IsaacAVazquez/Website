@@ -1,10 +1,10 @@
 {
   "symbol": "APO",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     },
     "retainedSections": [
       "fundamentals"
@@ -35,7 +35,7 @@
       "country": "United States",
       "industry": "Asset Management",
       "sector": "Financial Services",
-      "longBusinessSummary": "Apollo Global Management, Inc. is a private equity firm specializing in investments in credit, private equity, infrastructure, secondaries and real estate markets. The firm prefers to invest in private and public markets. The firm's private equity investments include traditional buyouts, recapitalization, distressed buyouts and debt investments in real estate, corporate partner buyouts, distressed asset, corporate carve-outs, middle market, growth, venture capital, turnaround, bridge, corporate restructuring, special situation, acquisition, and industry consolidation transactions. For credit strategies, the firm focuses to invest in multi-sector credit, semi-liquid credit, direct lending, first lien, unitranche, whole loans and private credit. The firm provides its services to endowment and sovereign wealth funds, as well as other institutional and individual investors. It manages client focused portfolios. The firm launches and manages hedge funds for its clients. It also manages real estate funds and private equity funds for its clients. The firm invests in the fixed income and alternative investment markets across the globe. Its fixed income investments include income-oriented senior loans, bonds, collateralized loan obligations, structured credit, opportunistic credit, non-performing loans, distressed debt, mezzanine debt, and value oriented fixed income securities. The firm seeks to invest in chemicals, commodities, consumer and retail, oil and gas, metals, mining, agriculture, commodities, distribution and transportation, financial and business services, manufacturing and industrial, media distribution, cable, entertainment and leisure, telecom, technology, natural resources, energy, packaging and materials, and satellite and wireless industries. It also focuses on clean energy, sustainable industry, climate solutions, energy transition, industrial decarbonization, sustainable mobility, sustainable resource use, and sustainable real estate. It seeks to invest in companies based in across Africa, Asia, North America with a focus on United States, Western Europe and Europe. It employs a combination of contrarian, value, and distressed strategies to make its investments. The firm seeks to make investments in the range of $75 million and $1500 million. The firm seeks to invest in companies with Enterprise value between $750 million to $2500 million. The firm conducts in-house research to create its investment portfolio. It seeks to acquire minority and majority positions in its portfolio companies. Apollo Global Management, Inc. was founded in 1990 and is headquartered in New York, New York with additional offices in North America, Asia, Africa and Europe.",
+      "longBusinessSummary": "Apollo Global Management, Inc. is a private equity firm specializing in investments in credit, private equity, infrastructure, secondaries and real estate markets. The firm prefers to invest in private and public markets. The firm's private equity investments include traditional buyouts, recapitalization, distressed buyouts and debt investments in real estate, corporate partner buyouts, distressed asset, corporate carve-outs, middle market, growth capital, venture capital, turnaround, bridge, PIPES, corporate restructuring, special situation, acquisition, and industry consolidation transactions. For credit strategies, the firm focuses on investing in multi-sector credit, semi-liquid credit, direct lending, first lien, unitranche, whole loans and private credit. The firm provides its services to endowment and sovereign wealth funds, as well as other institutional and individual investors. It manages client focused portfolios. The firm launches and manages hedge funds for its clients. It also manages real estate funds and private equity funds for its clients. The firm invests in the fixed income and alternative investment markets across the globe. Its fixed income investments include income-oriented senior loans, bonds, collateralized loan obligations, structured credit, opportunistic credit, non-performing loans, distressed debt, mezzanine debt, and value oriented fixed income securities. The firm seeks to invest in chemicals, commodities, consumer and retail, oil and gas, metals, mining, agriculture, commodities, distribution and transportation, financial and business services, manufacturing and industrial, media distribution, cable, entertainment and leisure, telecom, technology, natural resources, energy, packaging and materials, and satellite and wireless industries. It also focuses on clean energy, sustainable industry, climate solutions, energy transition, industrial decarbonization, sustainable mobility, sustainable resource use, and sustainable real estate. It seeks to invest in companies based in across Africa, Asia, North America with a focus on United States, Western Europe and Europe. It employs a combination of contrarian, value, and distressed strategies to make its investments. The firm seeks to make investments in the range of $20 million and $1500 million. The firm seeks to invest in companies with enterprise value between $750 million to $2500 million and EBITDA up to $75 million. The firm conducts in-house research to create its investment portfolio. It seeks to acquire minority and majority positions in its portfolio companies. Apollo Global Management, Inc. was founded in 1990 and is based in New York, New York with additional offices in North America, Asia, Africa and Europe.",
       "fullTimeEmployees": 6140,
       "website": "https://www.apollo.com/institutional/homepage",
       "shortName": "Apollo Global Management, Inc.",
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.6438,
-      "ttmPe": 43.25,
+      "ttmPe": 42.89,
       "pegRatio": 0.38,
-      "marketCap": 65856615612,
-      "psRatio": 1.83,
-      "pbRatio": 3.14
+      "marketCap": 65309442402,
+      "psRatio": 1.82,
+      "pbRatio": 3.11
     },
     "profitability": {
       "roe": 4.71,
@@ -5648,24 +5648,16 @@
     },
     "wacc": {
       "wacc": 14.01,
-      "costOfEquity": 16.74,
+      "costOfEquity": 16.76,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 16,
-      "beta": 1.5078,
-      "marketCap": 65856615612
+      "beta": 1.5069,
+      "marketCap": 65309442402
     },
     "beta": {
-      "beta5y": 1.5078
+      "beta5y": 1.5069
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 120.5,
-        "high": 122.63,
-        "low": 119,
-        "close": 122.44,
-        "volume": 3705500
-      },
       {
         "date": "2025-10-14",
         "open": 120.97,
@@ -7673,6 +7665,14 @@
         "low": 115.2,
         "close": 116.28,
         "volume": 3889300
+      },
+      {
+        "date": "2026-10-14",
+        "open": 115.9,
+        "high": 116.65,
+        "low": 111.41,
+        "close": 113.39,
+        "volume": 4647100
       }
     ],
     "news": [
@@ -7733,19 +7733,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6bc6fa76-dff5-3f25-af7e-62b726704292",
-        "title": "Private Credit Has a Problem: Too Much Money",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/6bc6fa76-dff5-3f25-af7e-62b726704292/private-credit-has-a-problem%3A.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
         "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6bc6fa76-dff5-3f25-af7e-62b726704292",
+        "title": "Private Credit Has a Problem: Too Much Money",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/6bc6fa76-dff5-3f25-af7e-62b726704292/private-credit-has-a-problem%3A.html",
         "type": "STORY"
       },
       {
@@ -7759,10 +7759,18 @@
     ],
     "officers": [
       {
-        "name": "Mr. Gareth Turner",
-        "title": "Partner of Private Equity in Miami",
-        "age": 61,
-        "yearBorn": 1964
+        "name": "Mr. Byron C. Vielehr",
+        "title": "Partner & COO of Apollo Asset Management",
+        "age": 62,
+        "yearBorn": 1963
+      },
+      {
+        "name": "Mr. Gregory W. Sills",
+        "title": "Partner, MD & COO"
+      },
+      {
+        "name": "Mr. Jacob Frederick Walker",
+        "title": "Partner and COO of Client & Product Solutions"
       },
       {
         "name": "Mr. James Charles Zelter",
@@ -7772,8 +7780,18 @@
         "totalPay": 8994057
       },
       {
-        "name": "Mr. Jamey Lamanna",
-        "title": "Partner & Chief Information Officer"
+        "name": "Mr. James Richard Belardi",
+        "title": "Co- Founder, Executive Chairman, Chief Investment Officer of Athene and Partner & Director",
+        "age": 68,
+        "yearBorn": 1957,
+        "totalPay": 67784181
+      },
+      {
+        "name": "Mr. John T. Zito C.F.A.",
+        "title": "Co-President of Apollo Asset Management",
+        "age": 43,
+        "yearBorn": 1982,
+        "totalPay": 23043660
       },
       {
         "name": "Mr. Marc Jeffrey Rowan",
@@ -7783,54 +7801,44 @@
         "totalPay": 913367
       },
       {
-        "name": "Mr. Matthew Breitfelder",
-        "title": "Partner & Global Head of Human Capital"
+        "name": "Mr. Martin Bernard Kelly",
+        "title": "Partner & CFO",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 4373437
       },
       {
-        "name": "Mr. Noah Gunn",
-        "title": "MD of Finance & Global Head of Investor Relations in New York"
+        "name": "Mr. Tristram Leach",
+        "title": "Chief Investment Officer of EMEA & Co-Head of European Credit & Hybrid Equity"
       },
       {
-        "name": "Mr. Steven Martinez",
-        "title": "Partner of Private Equity & Co-Head of Impact Investing",
-        "age": 56,
-        "yearBorn": 1969
-      },
-      {
-        "name": "Ms. Joanna Rose",
-        "title": "Partner & Global Head of Corporate Communications"
-      },
-      {
-        "name": "Ms. Kristiane Kinahan",
-        "title": "MD of Finance in New York & Chief Accounting Officer",
-        "age": 46,
-        "yearBorn": 1979
-      },
-      {
-        "name": "Ms. Yael Kenan Levy J.D.",
-        "title": "Chief Compliance Officer and Partner of Legal, Compliance & Tax in New York"
+        "name": "Ms. Whitney A Chatterjee",
+        "title": "Partner & Chief Legal Officer",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 2482908
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.25,
-        "industryAvg": 22.77
+        "value": 42.89,
+        "industryAvg": 22.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.83,
-        "industryAvg": 3.11
+        "value": 1.82,
+        "industryAvg": 3.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.14,
-        "industryAvg": 2.57
+        "value": 3.11,
+        "industryAvg": 2.5
       },
       {
         "metric": "ROE",
         "value": 4.71,
-        "industryAvg": 7.39
+        "industryAvg": 7.42
       },
       {
         "metric": "ROA",
@@ -7845,12 +7853,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.37,
-        "industryAvg": 41.22
+        "industryAvg": 41.24
       },
       {
         "metric": "Net Margin",
         "value": 8.649999999999999,
-        "industryAvg": 6.510000000000001
+        "industryAvg": 6.54
       }
     ]
   }

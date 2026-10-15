@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4992,
-      "ttmPe": 17.89,
-      "marketCap": 169995085704,
-      "psRatio": 6.53,
-      "pbRatio": 3.39,
-      "pegRatio": 0.43
+      "ttmPe": 17.6,
+      "marketCap": 167281938560,
+      "psRatio": 6.43,
+      "pbRatio": 3.34,
+      "pegRatio": 0.42
     },
     "profitability": {
       "roe": 5.4,
@@ -6045,25 +6045,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.25,
-      "costOfEquity": 10.93,
+      "wacc": 9.22,
+      "costOfEquity": 10.92,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7458,
-      "marketCap": 169995085704
+      "beta": 0.7462,
+      "marketCap": 167281938560
     },
     "beta": {
-      "beta5y": 0.7458
+      "beta5y": 0.7462
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 92.38,
-        "high": 93.78,
-        "low": 91.98,
-        "close": 93.49,
-        "volume": 8773400
-      },
       {
         "date": "2025-10-14",
         "open": 93.13,
@@ -8071,9 +8063,25 @@
         "low": 95.81,
         "close": 95.94,
         "volume": 6859600
+      },
+      {
+        "date": "2026-10-14",
+        "open": 95.75,
+        "high": 97.21,
+        "low": 95.06,
+        "close": 96.8,
+        "volume": 13127200
       }
     ],
     "news": [
+      {
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
       {
         "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
         "title": "Tariffs, Trump, and Turmoil",
@@ -8088,14 +8096,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
         "type": "STORY"
       },
       {
@@ -8115,19 +8115,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
-        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
         "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
         "publisher": "CNW Group",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
+        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
         "type": "STORY"
       },
       {
@@ -8139,19 +8139,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
+        "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
         "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
-        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
         "type": "STORY"
       }
     ],
@@ -8216,18 +8216,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.89,
-        "industryAvg": 16.05
+        "value": 17.6,
+        "industryAvg": 15.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.53,
-        "industryAvg": 2.09
+        "value": 6.43,
+        "industryAvg": 2.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.39,
-        "industryAvg": 2.61
+        "value": 3.34,
+        "industryAvg": 2.52
       },
       {
         "metric": "ROE",

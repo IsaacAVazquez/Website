@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7917,
-      "ttmPe": 22.48,
-      "marketCap": 95244624310,
-      "psRatio": 14.06,
-      "pbRatio": 3.59,
-      "pegRatio": 8.45
+      "ttmPe": 24.22,
+      "marketCap": 102606232579,
+      "psRatio": 15.15,
+      "pbRatio": 3.87,
+      "pegRatio": 9.11
     },
     "profitability": {
       "roe": 3.92,
@@ -5438,25 +5438,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.69,
-      "costOfEquity": 6.9,
+      "wacc": 6.67,
+      "costOfEquity": 6.859999999999999,
       "costOfDebt": 1.27,
       "taxRate": 22,
-      "beta": 0.2178,
-      "marketCap": 95244624310
+      "beta": 0.218,
+      "marketCap": 102606232579
     },
     "beta": {
-      "beta5y": 0.2178
+      "beta5y": 0.218
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 268.29,
-        "high": 271.82,
-        "low": 267.67,
-        "close": 271.28,
-        "volume": 1687800
-      },
       {
         "date": "2025-10-14",
         "open": 273.54,
@@ -7464,6 +7456,14 @@
         "low": 276.68,
         "close": 278.03,
         "volume": 1418800
+      },
+      {
+        "date": "2026-10-14",
+        "open": 278.74,
+        "high": 286.59,
+        "low": 278.5,
+        "close": 285.59,
+        "volume": 2003500
       }
     ],
     "news": [
@@ -7484,6 +7484,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
+        "title": "XRP futures bag $19M on launch day",
+        "publisher": "TheStreet",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
         "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
         "publisher": "CoinDesk",
@@ -7492,11 +7500,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
-        "title": "XRP futures bag $19M on launch day",
-        "publisher": "TheStreet",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
+        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
+        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
         "type": "STORY"
       },
       {
@@ -7513,14 +7521,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
-        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
         "type": "STORY"
       },
       {
@@ -7567,8 +7567,10 @@
         "yearBorn": 1964
       },
       {
-        "name": "Mr. Jonathan L. Marcus J.D.",
-        "title": "Senior MD & General Counsel"
+        "name": "Mr. John Clifford Marchese",
+        "title": "General Counsel",
+        "age": 57,
+        "yearBorn": 1968
       },
       {
         "name": "Mr. Sunil Cutinho",
@@ -7612,18 +7614,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.48,
-        "industryAvg": 23.24
+        "value": 24.22,
+        "industryAvg": 24.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.06,
-        "industryAvg": 7.31
+        "value": 15.15,
+        "industryAvg": 7.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.59,
-        "industryAvg": 3.82
+        "value": 3.87,
+        "industryAvg": 3.9
       },
       {
         "metric": "ROE",

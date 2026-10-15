@@ -1,10 +1,10 @@
 {
   "symbol": "ABBV",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.5367,
-      "ttmPe": 73.5,
-      "pegRatio": 0.26,
-      "marketCap": 459314323149,
-      "psRatio": 7.13,
-      "pbRatio": -77.39
+      "ttmPe": 80.15,
+      "pegRatio": 0.28,
+      "marketCap": 500928805164,
+      "psRatio": 7.78,
+      "pbRatio": -84.4
     },
     "profitability": {
       "roe": -57.199999999999996,
@@ -5606,25 +5606,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.9799999999999995,
-      "costOfEquity": 6.76,
+      "wacc": 5.99,
+      "costOfEquity": 6.710000000000001,
       "costOfDebt": 1.05,
       "taxRate": 15,
-      "beta": 0.1993,
-      "marketCap": 459314323149
+      "beta": 0.1977,
+      "marketCap": 500928805164
     },
     "beta": {
-      "beta5y": 0.1993
+      "beta5y": 0.1977
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 230,
-        "high": 233.81,
-        "low": 229.22,
-        "close": 230.3,
-        "volume": 5411900
-      },
       {
         "date": "2025-10-14",
         "open": 228.07,
@@ -7632,6 +7624,14 @@
         "low": 273.7,
         "close": 274.36,
         "volume": 6408500
+      },
+      {
+        "date": "2026-10-14",
+        "open": 277,
+        "high": 285.4,
+        "low": 275.97,
+        "close": 283.48,
+        "volume": 5624300
       }
     ],
     "news": [
@@ -7725,12 +7725,6 @@
         "totalPay": 4072891
       },
       {
-        "name": "Dr. Nicholas J. Donoghoe M.D.",
-        "title": "Executive VP and Chief Business & Strategy Officer",
-        "age": 44,
-        "yearBorn": 1981
-      },
-      {
         "name": "Dr. Roopal B. Thakkar M.D.",
         "title": "Executive VP of Research & Development and Chief Scientific Officer",
         "age": 53,
@@ -7757,6 +7751,13 @@
         "yearBorn": 1975
       },
       {
+        "name": "Mr. Robert A. Michael CPA",
+        "title": "CEO & Chairman of the Board",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 7416293
+      },
+      {
         "name": "Mr. Scott T. Reents",
         "title": "Executive VP & CFO",
         "age": 58,
@@ -7779,18 +7780,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 73.5,
-        "industryAvg": 25.78
+        "value": 80.15,
+        "industryAvg": 26.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.13,
-        "industryAvg": 4.66
+        "value": 7.78,
+        "industryAvg": 4.79
       },
       {
         "metric": "P/B Ratio",
-        "value": -77.39,
-        "industryAvg": 5.75
+        "value": -84.4,
+        "industryAvg": 5.87
       },
       {
         "metric": "ROE",

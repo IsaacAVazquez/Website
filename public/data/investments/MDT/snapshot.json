@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 21.28,
-      "pegRatio": 0.51,
-      "marketCap": 110647254036,
-      "psRatio": 2.95,
-      "pbRatio": 2.2
+      "ttmPe": 23.2,
+      "pegRatio": 0.56,
+      "marketCap": 120618819387,
+      "psRatio": 3.21,
+      "pbRatio": 2.4
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.920000000000001,
-      "costOfEquity": 9.8,
+      "wacc": 8.03,
+      "costOfEquity": 9.78,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5976,
-      "marketCap": 110647254036
+      "beta": 0.5979,
+      "marketCap": 120618819387
     },
     "beta": {
-      "beta5y": 0.5976
+      "beta5y": 0.5979
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 95.7,
-        "high": 96.41,
-        "low": 95.06,
-        "close": 95.58,
-        "volume": 4619500
-      },
       {
         "date": "2025-10-14",
         "open": 95.26,
@@ -7972,6 +7964,14 @@
         "low": 90.2,
         "close": 93.01,
         "volume": 24930900
+      },
+      {
+        "date": "2026-10-14",
+        "open": 93.01,
+        "high": 94.72,
+        "low": 92.16,
+        "close": 94.23,
+        "volume": 49858700
       }
     ],
     "news": [
@@ -8040,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
-        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
         "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
+        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
         "type": "STORY"
       }
     ],
@@ -8117,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.28,
-        "industryAvg": 24.34
+        "value": 23.2,
+        "industryAvg": 25.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.95,
-        "industryAvg": 2.94
+        "value": 3.21,
+        "industryAvg": 3.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.2,
-        "industryAvg": 2.86
+        "value": 2.4,
+        "industryAvg": 2.95
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.717,
-      "ttmPe": 20.27,
-      "marketCap": 59920030390,
-      "psRatio": 4.54,
-      "pbRatio": 5.26,
-      "pegRatio": 0.28
+      "ttmPe": 18.85,
+      "marketCap": 55707238290,
+      "psRatio": 4.23,
+      "pbRatio": 4.89,
+      "pegRatio": 0.26
     },
     "profitability": {
       "roe": 6.87,
@@ -5949,25 +5949,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.400000000000002,
-      "costOfEquity": 19.25,
+      "wacc": 16.29,
+      "costOfEquity": 19.34,
       "costOfDebt": 1.02,
       "taxRate": 19,
-      "beta": 1.8419,
-      "marketCap": 59920030390
+      "beta": 1.8423,
+      "marketCap": 55707238290
     },
     "beta": {
-      "beta5y": 1.8419
+      "beta5y": 1.8423
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 211.61,
-        "high": 217.4,
-        "low": 210.74,
-        "close": 216.7,
-        "volume": 2806300
-      },
       {
         "date": "2025-10-14",
         "open": 211.68,
@@ -7975,6 +7967,14 @@
         "low": 221.89,
         "close": 226.32,
         "volume": 3033900
+      },
+      {
+        "date": "2026-10-14",
+        "open": 222.83,
+        "high": 224.72,
+        "low": 218.64,
+        "close": 220.83,
+        "volume": 4396700
       }
     ],
     "news": [
@@ -7987,14 +7987,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
-        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
         "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
         "publisher": "Investopedia",
@@ -8003,11 +7995,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1cccdaf0-90b3-3e43-85e1-78e2bfdf80cd",
-        "title": "NXP Unveils Next-Gen Radar Chip To Boost Autonomous Driving Systems",
-        "publisher": "Benzinga",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nxp-unveils-next-gen-radar-150939114.html",
+        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
+        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
         "type": "STORY"
       },
       {
@@ -8019,11 +8011,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
-        "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/nxp-semiconductors-nasdaqgs-nxpi-unveils-174847555.html",
+        "uuid": "1cccdaf0-90b3-3e43-85e1-78e2bfdf80cd",
+        "title": "NXP Unveils Next-Gen Radar Chip To Boost Autonomous Driving Systems",
+        "publisher": "Benzinga",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nxp-unveils-next-gen-radar-150939114.html",
         "type": "STORY"
       },
       {
@@ -8032,6 +8024,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
+        "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/nxp-semiconductors-nasdaqgs-nxpi-unveils-174847555.html",
         "type": "STORY"
       },
       {
@@ -8123,18 +8123,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.27,
-        "industryAvg": 30.24
+        "value": 18.85,
+        "industryAvg": 28.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.54,
-        "industryAvg": 14.45
+        "value": 4.23,
+        "industryAvg": 13.49
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.26,
-        "industryAvg": 12.62
+        "value": 4.89,
+        "industryAvg": 11.71
       },
       {
         "metric": "ROE",

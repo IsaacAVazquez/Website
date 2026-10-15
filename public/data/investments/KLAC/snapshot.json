@@ -1,10 +1,10 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
+    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
     "sections": {
-      "price": "2026-10-13"
+      "price": "2026-10-14"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.6677,
-      "ttmPe": 53.15,
-      "marketCap": 254770196190,
-      "psRatio": 18.76,
-      "pbRatio": 40.12,
-      "pegRatio": 3.69
+      "ttmPe": 48.75,
+      "marketCap": 233701630230,
+      "psRatio": 17.21,
+      "pbRatio": 36.8,
+      "pegRatio": 3.39
     },
     "profitability": {
       "roe": 22.38,
@@ -6266,25 +6266,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.68,
-      "costOfEquity": 16.03,
+      "wacc": 15.7,
+      "costOfEquity": 16.08,
       "costOfDebt": 1.1900000000000002,
       "taxRate": 12,
-      "beta": 1.4171,
-      "marketCap": 254770196190
+      "beta": 1.4176,
+      "marketCap": 233701630230
     },
     "beta": {
-      "beta5y": 1.4171
+      "beta5y": 1.4176
     },
     "price": [
-      {
-        "date": "2025-10-13",
-        "open": 101.625,
-        "high": 103.39,
-        "low": 101.49,
-        "close": 102.5,
-        "volume": 12270000
-      },
       {
         "date": "2025-10-14",
         "open": 99.855,
@@ -8292,23 +8284,31 @@
         "low": 179.84,
         "close": 184,
         "volume": 10451200
+      },
+      {
+        "date": "2026-10-14",
+        "open": 180.55,
+        "high": 184.58,
+        "low": 177.39,
+        "close": 178.81,
+        "volume": 14454400
       }
     ],
     "news": [
-      {
-        "uuid": "aa125839-97db-3f4e-9c8d-45fe4d3f50e1",
-        "title": "What Makes KLA Corporation (KLAC) a Good Long-Term Bet?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/makes-kla-corporation-klac-good-134811807.html",
-        "type": "STORY"
-      },
       {
         "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
         "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "aa125839-97db-3f4e-9c8d-45fe4d3f50e1",
+        "title": "What Makes KLA Corporation (KLAC) a Good Long-Term Bet?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/makes-kla-corporation-klac-good-134811807.html",
         "type": "STORY"
       },
       {
@@ -8368,11 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7d244f54-1547-3e57-9402-fe0b6840571f",
-        "title": "KLA Corporation Reports Fiscal 2025 Third Quarter Results; Announces an Increase in the Dividend Level to $1.90 Per Share and a $5 billion Increase in Share Repurchase Authorization",
-        "publisher": "PR Newswire",
+        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
+        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
+        "publisher": "StockStory",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-reports-fiscal-2025-200500861.html",
+        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
         "type": "STORY"
       }
     ],
@@ -8442,18 +8442,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.15,
-        "industryAvg": 53.81
+        "value": 48.75,
+        "industryAvg": 48.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.76,
-        "industryAvg": 14.62
+        "value": 17.21,
+        "industryAvg": 13.19
       },
       {
         "metric": "P/B Ratio",
-        "value": 40.12,
-        "industryAvg": 20.1
+        "value": 36.8,
+        "industryAvg": 18.97
       },
       {
         "metric": "ROE",
