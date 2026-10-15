@@ -168,6 +168,19 @@ describe("DecisionLabClient", () => {
     expect(screen.getByText(/I would test this before I commit fully\./i)).toBeVisible();
   });
 
+  it("shows the default scenario when Back restores the page with a deep link's server state", () => {
+    // Back from another page can hand the page the server's state for the deep
+    // link it first rendered, while the URL the visitor left is the plain page.
+    visit("");
+    const initialState = normalizeDecisionLabState(new URLSearchParams("preset=onboarding-refresh"));
+    render(<DecisionLabClient initialState={initialState} />);
+
+    expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("82");
+    expect(screen.getByText(/I would test this before I commit fully\./i)).toBeVisible();
+    settleUrl();
+    expect(replaceState).not.toHaveBeenCalled();
+  });
+
   it("ends on the last of two quick slider moves whichever commit the router shows first", () => {
     visit("preset=onboarding-refresh");
     const ui = () => <DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />;

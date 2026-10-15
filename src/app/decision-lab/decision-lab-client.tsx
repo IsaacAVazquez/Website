@@ -520,7 +520,9 @@ export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
     searchParams.get("confidence") !== null ||
     searchParams.get("effort") !== null ||
     searchParams.get("reversibility") !== null;
-  const routeState = hasManagedParams ? normalizedRouteState : initialState;
+  // An empty query is the default scenario. Back from another page can restore
+  // the server's state for a deep link the visitor has since cleared.
+  const routeState = searchParams ? normalizedRouteState : initialState;
 
   useEffect(() => {
     if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);
