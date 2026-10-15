@@ -10,7 +10,7 @@
  * Not an npm script: `npm run` on this machine resolves to the home folder's Node.
  */
 
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import {
@@ -23,6 +23,7 @@ import {
 } from "../../src/lib/mba-applications";
 import { getDefaultMBACompanyIds, getMBAJobsData } from "../../src/lib/mbaJobsServer";
 import { writeFileAtomic } from "../snapshotFallback";
+import { withJobSearchFileLock } from "../../src/lib/jobSearchFileLock";
 
 const DIR = resolve(process.cwd(), "private/job-search");
 // getMBAJobsData answers after 5 s with an error while a cold fan-out is still
@@ -36,8 +37,6 @@ function readPrivate(name: string): string | null {
 
 async function main(): Promise<void> {
   const targets = parseMBAJobSearchTargets(readPrivate("targets.json"));
-  const pipeline = parseMBAApplications(readPrivate("pipeline.json"));
-  const candidates = parseMBAJobCandidates(readPrivate("candidates.json"));
   const external = Boolean(process.env.ADZUNA_APP_ID);
 
   let result = await getMBAJobsData(getDefaultMBACompanyIds(), external);
@@ -51,17 +50,21 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
-  const fresh = selectNewCandidates(result.body.jobs, candidates, pipeline, targets);
   const inbox = process.argv
     .slice(2)
     .flatMap((file) => parseMBAJobCandidates(readFileSync(resolve(file), "utf8")));
 
-  const merged = mergeMBAJobCandidates(candidates, [...fresh, ...inbox]);
-  mkdirSync(DIR, { recursive: true });
-  writeFileAtomic(
-    resolve(DIR, "candidates.json"),
-    `${JSON.stringify(buildMBAJobCandidatesFile(merged), null, 2)}\n`
-  );
+  const { fresh, merged } = await withJobSearchFileLock(() => {
+    const pipeline = parseMBAApplications(readPrivate("pipeline.json"));
+    const candidates = parseMBAJobCandidates(readPrivate("candidates.json"));
+    const fresh = selectNewCandidates(result.body.jobs, candidates, pipeline, targets);
+    const merged = mergeMBAJobCandidates(candidates, [...fresh, ...inbox]);
+    writeFileAtomic(
+      resolve(DIR, "candidates.json"),
+      `${JSON.stringify(buildMBAJobCandidatesFile(merged), null, 2)}\n`
+    );
+    return { fresh, merged };
+  });
 
   const failed = result.body.errors.map((error) => error.companyName || error.companyId);
   console.log(

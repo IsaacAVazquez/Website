@@ -6,7 +6,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "node scripts/dev.cjs",
     "update:football": "npm run update:premier-league && sleep 30 && npm run update:la-liga",
     "build": "next build --webpack",
     "build:fantasy-companion": "vite build --config extension/vite.config.ts && node scripts/buildFantasyCompanionExtension.mjs",

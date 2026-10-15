@@ -71,7 +71,11 @@ Every merge in `src/lib/mba-applications.ts` is newer wins, both for application
 
 ## The development-only route
 
-`src/app/api/job-search/route.ts` answers `GET` and `PUT` at `/api/job-search?file=pipeline` and `?file=candidates`. It returns 404 unless `NODE_ENV` is `development`, read inside the handler, so a production build never serves or accepts the files. `GET` returns `{ revision, items }`, with the revision being the file's modification time and `{ revision: "0", items: [] }` when the file is missing. `PUT` takes `{ revision, items }`, answers 409 with the current file when the revision is stale, and otherwise sanitizes the items through the parsers and writes the wrapper. The page's `usePrivatePipelineSync` hook pulls on mount, focus, visibility change, and every 30 seconds, and pushes shortly after a local edit, merging on 409 and retrying once. The candidates hook, `useMBAJobCandidates`, keeps no local copy to merge, so on a 409 it replays the page's edit on the server's copy and retries once, which keeps a candidate removed in the page removed.
+`src/app/api/job-search/route.ts` answers `GET` and `PUT` at `/api/job-search?file=pipeline` and `?file=candidates`. I start it through `npm run dev`, whose launcher binds to `127.0.0.1` and enables private sync for that listener. An explicit hostname override disables private sync, including `npm run dev -- --hostname 0.0.0.0`. Starting Next directly also leaves it disabled. The route requires both development mode and the launcher's flag, validates the raw Host header, and rejects an unrelated Origin. Production returns 404. Network use requires separate authentication.
+
+`GET` returns `{ revision, items }`, with an opaque SHA-256 revision calculated from the bytes read, or `{ revision: "0", items: [] }` when the file is missing. A concurrent rename cannot pair old contents with a new revision. `PUT` takes `{ revision, items }`, requires an array of valid, unique records, and returns 400 without writing when the envelope or records are invalid. An explicit empty array clears the selected file. A stale revision returns 409 with the current file. The page's `usePrivatePipelineSync` hook pulls on mount, focus, visibility change, and every 30 seconds, and pushes shortly after a local edit, merging on 409 and retrying once. The candidates hook, `useMBAJobCandidates`, keeps no local copy to merge, so on a 409 it replays the page's edit on the server's copy and retries once, which keeps a candidate removed in the page removed.
+
+API saves and the sourcing script share `private/job-search/.write.lock`. Each writer holds it only during its synchronous read, revision check, and atomic replacement. A competing writer waits briefly, then reports that the files are busy without changing them. If a process is killed while it holds the lock, the error includes the recorded process ID and lock path. Stop all job search writers before removing that orphan lock, then retry. The code keeps an existing lock in place until its owner releases it or it is explicitly removed.
 
 ## The dump command
 
@@ -79,7 +83,7 @@ Every merge in `src/lib/mba-applications.ts` is newer wins, both for application
 ./node_modules/.bin/tsx --env-file-if-exists=.env.local scripts/jobSearch/dumpCandidates.ts [inbox files...]
 ```
 
-It reads the targets, the pipeline, and the candidates, fetches the polled boards, keeps the full-time matches inside the targets that are not already known, merges them with any inbox files passed as arguments, writes `candidates.json`, and prints counts. It is called by hand or by the sourcing skill, and it is not wired to any scheduled workflow. The path is written out because `npm run` on this machine resolves to the home folder's Node 25.
+It reads the targets and fetches the polled boards, then acquires the write lock and reads the latest pipeline and candidates. It keeps the full-time matches inside the targets that are not already known, merges them with any inbox files passed as arguments, writes `candidates.json`, and prints counts. Decisions saved while the boards were being fetched survive this final merge. It is called by hand or by the sourcing skill, and it is not wired to any scheduled workflow. The path is written out because `npm run` on this machine resolves to the home folder's Node 25.
 
 ## Where the skills live
 
