@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T14:14:51.901Z",
+  "generatedAt": "2026-10-15T23:43:20.216Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
-      "dateUtc": "2026-10-15T23:57:05Z",
-      "dateUnix": 1792108625,
-      "dateLocal": "2026-10-15T23:57:05Z",
+      "dateUtc": "2026-10-16T00:01:05Z",
+      "dateUnix": 1792108865,
+      "dateLocal": "2026-10-16T00:01:05Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
-      "dateUtc": "2026-10-15T23:57:05Z",
-      "dateUnix": 1792108625,
-      "dateLocal": "2026-10-15T23:57:05Z",
+      "dateUtc": "2026-10-16T00:01:05Z",
+      "dateUnix": 1792108865,
+      "dateLocal": "2026-10-16T00:01:05Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "134",
+        "value": "136",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-15T14:14:46.042Z"
+    "generatedAt": "2026-10-15T23:43:13.170Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
-      "dateUtc": "2026-10-15T23:57:05Z",
-      "dateUnix": 1792108625,
-      "dateLocal": "2026-10-15T23:57:05Z",
+      "dateUtc": "2026-10-16T00:01:05Z",
+      "dateUnix": 1792108865,
+      "dateLocal": "2026-10-16T00:01:05Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -370,7 +370,7 @@
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/f9_on_slc-40_2_image_20240919072420.jpg",
+      "vehicleImage": "/data/spacex/images/fcff0e91470c97ae.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -389,7 +389,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/f9_on_slc-40_2_image_20240919072420.jpg"
+          "/data/spacex/images/fcff0e91470c97ae.jpg"
         ]
       }
     },
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
-      "dateUtc": "2026-10-15T23:57:05Z",
-      "dateUnix": 1792108625,
-      "dateLocal": "2026-10-15T23:57:05Z",
+      "dateUtc": "2026-10-16T00:01:05Z",
+      "dateUnix": 1792108865,
+      "dateLocal": "2026-10-16T00:01:05Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2939,6 +2939,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-15T14:14:51.566Z"
+    "generatedAt": "2026-10-15T23:43:19.834Z"
   }
 }
