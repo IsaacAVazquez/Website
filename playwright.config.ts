@@ -85,7 +85,8 @@ export default defineConfig({
   /* Run the production server before tests on CI (compiled, fast). Locally
      fall back to `npm run dev` so iteration stays cheap. */
   webServer: {
-    command: IS_CI ? `PORT=${E2E_PORT} npm run start` : `PORT=${E2E_PORT} npm run dev`,
+    // Private job search sync stays off, so a test never writes the real files.
+    command: IS_CI ? `PORT=${E2E_PORT} npm run start` : `PORT=${E2E_PORT} JOB_SEARCH_PRIVATE_SYNC=0 npm run dev`,
     url: BASE_URL,
     reuseExistingServer: !IS_CI,
     timeout: 120 * 1000,
