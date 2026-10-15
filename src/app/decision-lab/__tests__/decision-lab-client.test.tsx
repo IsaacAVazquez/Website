@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { DecisionLabClient } from "../decision-lab-client";
-import { DEFAULT_DECISION_LAB_STATE } from "../decision-lab-state";
+import { DEFAULT_DECISION_LAB_STATE, normalizeDecisionLabState } from "../decision-lab-state";
 
 const mockWriteText = jest.fn();
 let currentSearchParams = new URLSearchParams();
@@ -145,6 +145,27 @@ describe("DecisionLabClient", () => {
     expect(screen.getByText(/I would hold this for now\./i)).toBeVisible();
     settleUrl();
     expect(replaceState).toHaveBeenCalledTimes(1);
+  });
+
+  it("returns to the default scenario after a deep link's last parameter is cleared", () => {
+    visit("preset=onboarding-refresh");
+    // The server reads the same link, so its state names the deep link's preset.
+    const initialState = normalizeDecisionLabState(currentSearchParams);
+    const ui = () => <DecisionLabClient initialState={initialState} />;
+    const view = render(ui());
+    expect((screen.getByLabelText("Confidence") as HTMLInputElement).value).toBe("73");
+
+    fireEvent.click(screen.getByRole("button", { name: "Support copilot rollout" }));
+    settleUrl();
+    expect(lastHref()).toBe("/decision-lab");
+
+    // The router catches up with the emptied query, while the server's prop still names the deep link.
+    currentSearchParams = new URLSearchParams();
+    view.rerender(ui());
+    settleUrl();
+
+    expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("82");
+    expect(screen.getByText(/I would test this before I commit fully\./i)).toBeVisible();
   });
 
   it("ends on the last of two quick slider moves whichever commit the router shows first", () => {
