@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T10:39:23.245Z",
+  "generatedAt": "2026-10-15T10:22:54.364Z",
   "sourceAsOf": "2026-10-11",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
@@ -10,8 +10,8 @@
   "approvalTrend": [
     {
       "date": "2025-10-15",
-      "approve": 43.3,
-      "disapprove": 53.6
+      "approve": 43.1,
+      "disapprove": 53.7
     },
     {
       "date": "2025-11-15",
@@ -3848,52 +3848,6 @@
             {
               "name": "Ken Paxton",
               "support": 43
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "senate-va",
-      "state": "Virginia",
-      "stateAbbr": "VA",
-      "office": "Senate",
-      "year": 2026,
-      "candidates": [
-        {
-          "name": "Mark Warner",
-          "support": 48
-        },
-        {
-          "name": "Bert Mizusawa",
-          "support": 32
-        }
-      ],
-      "margin": 16,
-      "pollCount": 1,
-      "lastPolled": "2026-06-16",
-      "polls": [
-        {
-          "id": "us-202the5a104154",
-          "pollster": "The Public Sentiment Institute",
-          "startDate": "2026-06-12",
-          "endDate": "2026-06-16",
-          "sampleSize": 996,
-          "sampleType": "RV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Mark Warner",
-              "support": 48
-            },
-            {
-              "name": "Bert Mizusawa",
-              "support": 32
-            },
-            {
-              "name": "Mark Moran",
-              "support": 4
             }
           ]
         }
