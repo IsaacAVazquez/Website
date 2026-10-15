@@ -557,7 +557,7 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
     searchParams.get("curator") !== null ||
     searchParams.get("cuisine") !== null ||
     searchParams.get("pick") !== null;
-  const routeState = hasManagedParams ? normalizedRouteState : initialState;
+  const routeState = searchParams ? normalizedRouteState : initialState;
 
   useEffect(() => {
     if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);
