@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
+import { JobSearchFilesBusyError, readJobSearchFile, withJobSearchFileLock } from "@/lib/jobSearchFileLock";
 import {
   buildMBAApplicationsExport,
   buildMBAJobCandidatesFile,
@@ -31,10 +33,19 @@ const FILES = {
 
 type FileKey = keyof typeof FILES;
 
-/** Development only, and only from this machine, so `next dev -H 0.0.0.0` or a tunnel never exposes the files. */
+/** Enabled only by the loopback-bound development launcher. */
 function notFound(request: NextRequest) {
-  if (process.env.NODE_ENV !== "development") return json({ error: "Not found." }, 404);
-  if (!["localhost", "127.0.0.1", "[::1]"].includes(request.nextUrl.hostname)) {
+  if (process.env.NODE_ENV !== "development" || process.env.JOB_SEARCH_PRIVATE_SYNC !== "1") {
+    return json({ error: "Not found." }, 404);
+  }
+  // Next can synthesize nextUrl from its own hostname. The raw Host also
+  // rejects DNS rebinding, but the launcher's listener is the LAN boundary.
+  const host = request.headers.get("host");
+  if (!host || !/^(localhost|127\.0\.0\.1|\[::1\])(?::\d{1,5})?$/i.test(host)) {
+    return json({ error: "Not found." }, 404);
+  }
+  const origin = request.headers.get("origin");
+  if (origin && origin !== `http://${host}` && origin !== `https://${host}`) {
     return json({ error: "Not found." }, 404);
   }
   return null;
@@ -54,17 +65,17 @@ function filePath(key: FileKey): string {
 }
 
 function readCurrent(key: FileKey): { revision: string; items: unknown[] } {
-  const target = filePath(key);
-  if (!fs.existsSync(target)) return { revision: "0", items: [] };
-  const raw = fs.readFileSync(target, "utf8");
-  return {
-    revision: String(fs.statSync(target).mtimeMs),
-    items: FILES[key].parse(raw),
-  };
+  const raw = readJobSearchFile(filePath(key));
+  if (raw === null) return { revision: "0", items: [] };
+  return { revision: revisionFor(raw), items: FILES[key].parse(raw) };
 }
 
-function sanitize(key: FileKey, items: unknown): unknown[] {
-  return FILES[key].parse(JSON.stringify(Array.isArray(items) ? items : []));
+function revisionFor(raw: string): string {
+  return createHash("sha256").update(raw).digest("hex");
+}
+
+function sanitize(key: FileKey, items: unknown[]): unknown[] {
+  return FILES[key].parse(JSON.stringify(items));
 }
 
 export async function GET(request: NextRequest) {
@@ -87,20 +98,28 @@ export async function PUT(request: NextRequest) {
   } catch {
     return json({ error: "Expected a JSON body." }, 400);
   }
-  if (typeof body?.revision !== "string") {
+  if (typeof body?.revision !== "string" || !Array.isArray(body.items)) {
     return json({ error: "Expected { revision: string, items: unknown[] }." }, 400);
   }
 
-  const current = readCurrent(key);
-  if (current.revision !== body.revision) return json(current, 409);
-
   const items = sanitize(key, body.items);
-  // Both wrappers type their array parameter; the parser already produced that shape.
-  const wrapped = (FILES[key].wrap as (items: unknown[]) => unknown)(items);
-  const target = filePath(key);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(`${target}.tmp`, `${JSON.stringify(wrapped, null, 2)}\n`, "utf8");
-  fs.renameSync(`${target}.tmp`, target);
-
-  return json({ revision: String(fs.statSync(target).mtimeMs), items });
+  if (items.length !== body.items.length) {
+    return json({ error: "Expected valid, unique records in items." }, 400);
+  }
+  try {
+    return await withJobSearchFileLock(() => {
+      const current = readCurrent(key);
+      if (current.revision !== body.revision) return json(current, 409);
+      // Both wrappers type their array parameter; the parser produced that shape.
+      const wrapped = (FILES[key].wrap as (items: unknown[]) => unknown)(items);
+      const target = filePath(key);
+      const raw = `${JSON.stringify(wrapped, null, 2)}\n`;
+      fs.writeFileSync(`${target}.tmp`, raw, "utf8");
+      fs.renameSync(`${target}.tmp`, target);
+      return json({ revision: revisionFor(raw), items });
+    });
+  } catch (error) {
+    if (error instanceof JobSearchFilesBusyError) return json({ error: error.message }, 503);
+    throw error;
+  }
 }

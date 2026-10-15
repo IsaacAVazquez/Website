@@ -354,4 +354,36 @@ describe("NflClient", () => {
     expect(currentSearchParams.get("team")).toBe(team.id);
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
+
+  it("keeps the drawer shut on Back inside a view whose URL names its first team", async () => {
+    const user = userEvent.setup();
+    const summary = await getNflSummarySnapshot();
+    const startState: NFLRouteState = { view: otherView, team: getDefaultTeamForView(otherView) };
+    const second = core.filterTeams(summary.teams, otherView).find((team) => team.id !== startState.team)!;
+    global.fetch = jest.fn().mockImplementation(async (input: RequestInfo) => ({
+      ok: true,
+      json: async () => getNflTeamSnapshot(String(input).split("/").at(-1)!),
+    })) as unknown as typeof fetch;
+    mockPush.mockImplementation((href: string) => {
+      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    });
+    const startHref = buildNflHref(startState);
+    currentSearchParams = new URLSearchParams(startHref.split("?")[1] ?? "");
+    const ui = () => <NflClient initialState={startState} summary={summary} initialTeamSnapshot={null} />;
+    const view = render(ui());
+    expect(currentSearchParams.get("team")).toBe(startState.team);
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: `Show ${second.name} details` }));
+    view.rerender(ui());
+    await screen.findByRole("dialog", { name: `${second.name} detail` });
+
+    // Back returns to the view's own link, which still names its first team,
+    // and the browser's history event must not read that team as opened.
+    currentSearchParams = new URLSearchParams(startHref.split("?")[1] ?? "");
+    window.history.replaceState(null, "", startHref);
+    fireEvent.popState(window);
+    view.rerender(ui());
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
 });

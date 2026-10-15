@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { FoodMapClient } from "../food-map-client";
-import { DEFAULT_FOOD_MAP_STATE } from "../food-map-state";
+import { DEFAULT_FOOD_MAP_STATE, normalizeFoodMapState } from "../food-map-state";
 
 let currentSearchParams = new URLSearchParams();
 // The page writes its state with the native history API, which the router
@@ -51,6 +51,19 @@ describe("FoodMapClient", () => {
     fireEvent.click(screen.getByRole("radio", { name: /tokyo/i }));
 
     expect(replaceState).toHaveBeenCalledWith(null, "", "/food-map?city=tokyo");
+  });
+
+  it("returns to Austin after opening a Tokyo deep link", () => {
+    currentSearchParams = new URLSearchParams("city=tokyo");
+    const initialState = normalizeFoodMapState(currentSearchParams);
+    const ui = () => <FoodMapClient initialState={initialState} />;
+    const view = render(ui());
+    fireEvent.click(screen.getByRole("radio", { name: /austin/i }));
+    expect(lastHref()).toBe("/food-map");
+    currentSearchParams = new URLSearchParams();
+    view.rerender(ui());
+    expect(screen.getByRole("radio", { name: /austin/i })).toHaveAttribute("aria-checked", "true");
+    expect(screen.getByText(/Showing 12 of 12 in Austin/i)).toBeVisible();
   });
 
   it("moves and selects city radios with arrow keys, including wrapping", () => {

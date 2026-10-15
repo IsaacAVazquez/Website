@@ -102,6 +102,9 @@ test("MBA tracker saves and reloads a manual application", async ({ page }) => {
     jobs: [], fetchedAt: new Date().toISOString(), errors: [],
     companiesRequested: [], sourceStatuses: [],
   } }));
+  // A reused dev server may have private sync on, so the test application
+  // never reaches the real job search files.
+  await page.route("**/api/job-search?*", (route) => route.fulfill({ status: 404, json: { error: "Not found." } }));
   await open(page, "/mba-internship-notifications");
   await page.getByRole("button", { name: "Application pipeline", exact: true }).click();
   await page.getByRole("button", { name: "Add application", exact: true }).click();
