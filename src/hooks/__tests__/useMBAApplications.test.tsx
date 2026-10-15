@@ -24,6 +24,26 @@ const job: MBAJob = {
   roleFamilies: ["product"],
 };
 
+/** Sets the flag the `npm run dev` launcher passes to the page, and returns the undo. */
+function setPrivateSyncFlag(value: string | undefined): () => void {
+  const previous = process.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC;
+  if (value === undefined) delete process.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC;
+  else process.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC = value;
+  return () => {
+    if (previous === undefined) delete process.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC;
+    else process.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC = previous;
+  };
+}
+
+// Sync runs only in development, so the flag matters only where a test sets NODE_ENV.
+let restorePrivateSyncFlag = () => {};
+beforeEach(() => {
+  restorePrivateSyncFlag = setPrivateSyncFlag("1");
+});
+afterEach(() => {
+  restorePrivateSyncFlag();
+});
+
 describe("useMBAApplications", () => {
   beforeEach(() => {
     window.localStorage.clear();
@@ -546,5 +566,30 @@ describe("useMBAJobCandidates in development", () => {
     await waitFor(() =>
       expect(result.current.candidates.map((item) => item.id).sort()).toEqual([kept.id, sourcedSince.id])
     );
+  });
+});
+
+describe("private sync in a dev server the launcher did not start", () => {
+  const originalFetch = global.fetch;
+  let restoreEnv: { restore: () => void };
+
+  beforeEach(() => {
+    window.localStorage.clear();
+    restoreEnv = jest.replaceProperty(process.env, "NODE_ENV", "development");
+    setPrivateSyncFlag(undefined);
+    global.fetch = jest.fn() as unknown as typeof fetch;
+  });
+
+  afterEach(() => {
+    restoreEnv.restore();
+    global.fetch = originalFetch;
+  });
+
+  it("keeps the pipeline and the candidates off the private route", () => {
+    const applications = renderHook(() => useMBAApplications());
+    const candidates = renderHook(() => useMBAJobCandidates());
+    expect(applications.result.current.privateSync).toBeNull();
+    expect(candidates.result.current.enabled).toBe(false);
+    expect(global.fetch).not.toHaveBeenCalled();
   });
 });

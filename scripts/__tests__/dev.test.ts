@@ -6,11 +6,12 @@ describe("development server binding", () => {
     const options = getDevOptions(["--port", "3014"], {});
     expect(options.args).toEqual(["dev", "--webpack", "--hostname", "localhost", "--port", "3014"]);
     expect(options.env.JOB_SEARCH_PRIVATE_SYNC).toBe("1");
+    expect(options.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC).toBe("1");
   });
 
   it("keeps private sync off when the caller already turned it off", () => {
     const options = getDevOptions([], { JOB_SEARCH_PRIVATE_SYNC: "0", PORT: "3100" });
-    expect(options.env).toMatchObject({ JOB_SEARCH_PRIVATE_SYNC: "0", PORT: "3100" });
+    expect(options.env).toMatchObject({ JOB_SEARCH_PRIVATE_SYNC: "0", NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC: "0", PORT: "3100" });
   });
 
   it("resolves localhost to IPv4 first and keeps the caller's Node options", () => {
@@ -28,5 +29,6 @@ describe("development server binding", () => {
   ])("disables private sync for hostname override %p", (...args) => {
     const options = getDevOptions(args, { JOB_SEARCH_PRIVATE_SYNC: "1" });
     expect(options.env.JOB_SEARCH_PRIVATE_SYNC).toBe("0");
+    expect(options.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC).toBe("0");
   });
 });

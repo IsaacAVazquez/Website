@@ -37,7 +37,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `/api/job-search` returns `404` or `409`
 
-- `404` is expected in production. In development the route answers only a server started with plain `npm run dev`, whose launcher binds to `localhost` and turns private sync on, so a server started with `next dev` directly, with a hostname flag, or with `JOB_SEARCH_PRIVATE_SYNC=0` also answers `404`, and so does a request whose Host header is not `localhost`, `127.0.0.1`, or `[::1]`, or whose Origin is another site.
+- `404` is expected in production. In development the route answers only a server started with plain `npm run dev`, whose launcher binds to `localhost` and turns private sync on, so a server started with `next dev` directly, with a hostname flag, or with `JOB_SEARCH_PRIVATE_SYNC=0` also answers `404`, and so does a request whose Host header is not `localhost`, `127.0.0.1`, or `[::1]`, or whose Origin is another site. In those servers the tracker page doesn't call the route at all, so a 404 there comes from a request made some other way.
 - `409 Conflict` occurs when the file on disk has changed since the client's last read. The client hook automatically re-fetches the latest state and merges changes.
 - `400` means a save was malformed or would have lost records to the parser, and nothing was written.
 - A `500` whose server log says a file "is not valid JSON" means a hand edit broke `pipeline.json` or `candidates.json`. Nothing reads it as empty or replaces it until it is fixed by hand.

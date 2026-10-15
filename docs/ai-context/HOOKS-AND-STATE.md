@@ -113,11 +113,11 @@ Owns job fetch state against `/api/mba-jobs`, plus browser-local persistence for
 
 ### `useMBAApplications`
 
-Owns browser-local application status tracking layered onto the same surface, tracking stages (`saved`, `applied`, `interviewing`, `offer`, `rejected`, `archived`), priorities (`low`, `medium`, `high`), fit grading and rationales (`JobFitGrade`: `strong`, `good`, `moderate`, `stretch`), and interview rounds (`InterviewRound`). In development it also syncs localStorage with `private/job-search/pipeline.json` through `/api/job-search` (pull on focus and every 30 s, push after a local edit, newer `updatedAt` wins) and exposes that as `privateSync`, which is `null` in production.
+Owns browser-local application status tracking layered onto the same surface, tracking stages (`saved`, `applied`, `interviewing`, `offer`, `rejected`, `archived`), priorities (`low`, `medium`, `high`), fit grading and rationales (`JobFitGrade`: `strong`, `good`, `moderate`, `stretch`), and interview rounds (`InterviewRound`). When `npm run dev` started the server, it also syncs localStorage with `private/job-search/pipeline.json` through `/api/job-search` (pull on focus and every 30 s, push after a local edit, newer `updatedAt` wins) and exposes that as `privateSync`, which is `null` in production and in a dev server started any other way.
 
 ### `useMBAJobCandidates`
 
-Owns sourced role candidates review and triage state (`MBAJobCandidate`: `sourced`, `reviewed`, `dismissed`) in `src/hooks/useMBAApplications.ts`. In development, it reads and writes `private/job-search/candidates.json` via `/api/job-search` and reports `enabled: false` in production builds. See `docs/JOB_SEARCH_PRIVATE_DATA.md`.
+Owns sourced role candidates review and triage state (`MBAJobCandidate`: `sourced`, `reviewed`, `dismissed`) in `src/hooks/useMBAApplications.ts`. When `npm run dev` started the server, it reads and writes `private/job-search/candidates.json` via `/api/job-search`, and it reports `enabled: false` in production and in a dev server started any other way. See `docs/JOB_SEARCH_PRIVATE_DATA.md`.
 
 ---
 

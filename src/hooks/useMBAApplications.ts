@@ -338,6 +338,14 @@ function candidatesFromServer(items: unknown[]): MBAJobCandidate[] {
   return parseMBAJobCandidates(JSON.stringify(items));
 }
 
+/**
+ * The `npm run dev` launcher turns private sync on for the server and the page
+ * together, so a dev server started any other way runs on localStorage alone.
+ */
+function privateSyncEnabled(): boolean {
+  return process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_JOB_SEARCH_PRIVATE_SYNC === "1";
+}
+
 /** Cleared or never-written storage holds no local copy, which is different from an empty list. */
 function hasLocalPipelineCopy(): boolean {
   return readBrowserStorageString(MBA_APPLICATIONS_STORAGE_KEY).value !== null;
@@ -365,12 +373,12 @@ function usePullOnResume(enabled: boolean, pull: () => void) {
 
 /**
  * Keeps localStorage and private/job-search/pipeline.json in step while the
- * site runs under `next dev`. Pulls merge the file into localStorage (newer
+ * site runs under `npm run dev`. Pulls merge the file into localStorage (newer
  * `updatedAt` wins); a local edit pushes the whole list 500 ms later with the
  * last seen revision, and a 409 merges the server copy and retries once.
  */
 export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncState | null {
-  const enabled = process.env.NODE_ENV === "development";
+  const enabled = privateSyncEnabled();
   const [state, setState] = useState<MBAPrivateSyncState>({ lastSyncedAt: null, error: null });
   const revisionRef = useRef("0");
   const readyRef = useRef(false);
@@ -466,10 +474,10 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
 /**
  * The sourced-but-not-promoted list in private/job-search/candidates.json.
  * Server state only, no localStorage: the skills write the file and the
- * dashboard triages it. Inert outside development.
+ * dashboard triages it. Inert unless `npm run dev` started the server.
  */
 export function useMBAJobCandidates() {
-  const enabled = process.env.NODE_ENV === "development";
+  const enabled = privateSyncEnabled();
   const [candidates, setCandidates] = useState<MBAJobCandidate[]>([]);
   const revisionRef = useRef("0");
 
