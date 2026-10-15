@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-14T20:45:26.273Z",
+  "generatedAt": "2026-10-15T20:23:13.498Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-14T20:45:26.839Z",
+        "accessedAt": "2026-10-15T20:23:13.958Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3565,7 +3565,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 396,
@@ -4654,7 +4654,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 517,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-14T20:45:27.722Z",
+        "accessedAt": "2026-10-15T20:23:15.197Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8549,7 +8549,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 354,
@@ -9683,7 +9683,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 480,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-14T20:45:28.389Z",
+        "accessedAt": "2026-10-15T20:23:15.851Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13731,7 +13731,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 334,
@@ -15234,7 +15234,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-14T20:45:29.284Z",
+        "accessedAt": "2026-10-15T20:23:16.460Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19293,7 +19293,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 356,
@@ -20895,7 +20895,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 534,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-14T20:45:29.998Z",
+        "accessedAt": "2026-10-15T20:23:16.874Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24808,7 +24808,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 373,
@@ -25852,7 +25852,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 489,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-14T20:45:30.656Z",
+        "accessedAt": "2026-10-15T20:23:17.281Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29801,7 +29801,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 332,
@@ -31322,7 +31322,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-14T20:45:31.579Z",
+        "accessedAt": "2026-10-15T20:23:18.130Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35606,7 +35606,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 381,
@@ -36884,7 +36884,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 523,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-14T20:45:32.334Z",
+        "accessedAt": "2026-10-15T20:23:18.714Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40833,7 +40833,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 366,
@@ -42264,7 +42264,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 525,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-14T20:45:32.814Z",
+        "accessedAt": "2026-10-15T20:23:19.305Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46060,7 +46060,7 @@
           {
             "playerId": "fp-24335",
             "name": "Jarquez Hunter",
-            "team": "FA",
+            "team": "NO",
             "position": "RB",
             "positionRank": 113,
             "rank": 351,
@@ -47347,7 +47347,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "FA",
+            "team": "NO",
             "position": "WR",
             "positionRank": 187,
             "rank": 494,
