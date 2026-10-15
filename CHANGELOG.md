@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-15
 
 - The October 14 review's job search and empty-query fixes, checked against main ([#607](https://github.com/IsaacAVazquez/Website/pull/607)).
+- Tracker sync follows the dev launcher, and Food Map and Decision Lab read only the URL ([#609](https://github.com/IsaacAVazquez/Website/pull/609)).
 
 ---
 
