@@ -188,7 +188,7 @@ March Madness is split between:
 - **Request-time aggregation:** `/api/mba-jobs` aggregates and normalizes listings with a 30-minute `s-maxage` cache and 8s per-target timeout, filtered by role families and keywords in `src/lib/mba-job-matching.ts`.
 - **Email delivery:** `/api/mba-jobs/email` sends grouped job digests via Resend (protected by `MBA_DIGEST_SECRET` and `MBA_DIGEST_ALLOWED_RECIPIENTS`).
 - **Local candidate dumping:** `./node_modules/.bin/tsx --env-file-if-exists=.env.local scripts/jobSearch/dumpCandidates.ts` pulls live feeds, matches against `private/job-search/targets.json`, and writes `private/job-search/candidates.json`.
-- **Development-only file sync:** `/api/job-search` syncs `pipeline.json` and `candidates.json` with the client tracker's `localStorage` in development (mtime revision tracking, 409 conflict detection, newer `updatedAt` wins).
+- **Development-only file sync:** `/api/job-search` syncs `pipeline.json` and `candidates.json` with the client tracker's `localStorage` in development (content-hash revision tracking, 409 conflict detection, newer `updatedAt` wins).
 
 ---
 

@@ -37,8 +37,11 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `/api/job-search` returns `404` or `409`
 
-- `404` is expected outside local development. The route is development-only (`process.env.NODE_ENV !== "development"`) and is not available in production.
-- `409 Conflict` occurs when the file revision on disk has moved since the client's last read. The client hook automatically re-fetches the latest state and merges changes.
+- `404` is expected in production. In development the route answers only a server started with plain `npm run dev`, whose launcher binds to `localhost` and turns private sync on, so a server started with `next dev` directly, with a hostname flag, or with `JOB_SEARCH_PRIVATE_SYNC=0` also answers `404`, and so does a request whose Host header is not `localhost`, `127.0.0.1`, or `[::1]`, or whose Origin is another site.
+- `409 Conflict` occurs when the file on disk has changed since the client's last read. The client hook automatically re-fetches the latest state and merges changes.
+- `400` means a save was malformed or would have lost records to the parser, and nothing was written.
+- A `500` whose server log says a file "is not valid JSON" means a hand edit broke `pipeline.json` or `candidates.json`. Nothing reads it as empty or replaces it until it is fixed by hand.
+- `503` means another writer held `private/job-search/.write.lock` for the whole wait. A lock left by a process that was killed clears itself on the next save once it is two seconds old.
 
 The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since the function had no caller. There is no live `/api/scheduled-update` route in the current app tree; older references to that endpoint are historical.
 
