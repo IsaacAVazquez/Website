@@ -23,7 +23,7 @@ import {
 } from "../../src/lib/mba-applications";
 import { getDefaultMBACompanyIds, getMBAJobsData } from "../../src/lib/mbaJobsServer";
 import { writeFileAtomic } from "../snapshotFallback";
-import { withJobSearchFileLock } from "../../src/lib/jobSearchFileLock";
+import { readJobSearchFile, withJobSearchFileLock } from "../../src/lib/jobSearchFileLock";
 
 const DIR = resolve(process.cwd(), "private/job-search");
 // getMBAJobsData answers after 5 s with an error while a cold fan-out is still
@@ -55,8 +55,8 @@ async function main(): Promise<void> {
     .flatMap((file) => parseMBAJobCandidates(readFileSync(resolve(file), "utf8")));
 
   const { fresh, merged } = await withJobSearchFileLock(() => {
-    const pipeline = parseMBAApplications(readPrivate("pipeline.json"));
-    const candidates = parseMBAJobCandidates(readPrivate("candidates.json"));
+    const pipeline = parseMBAApplications(readJobSearchFile(resolve(DIR, "pipeline.json")));
+    const candidates = parseMBAJobCandidates(readJobSearchFile(resolve(DIR, "candidates.json")));
     const fresh = selectNewCandidates(result.body.jobs, candidates, pipeline, targets);
     const merged = mergeMBAJobCandidates(candidates, [...fresh, ...inbox]);
     writeFileAtomic(

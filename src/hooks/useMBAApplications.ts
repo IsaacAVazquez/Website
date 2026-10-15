@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { readBrowserStorageString } from "@/lib/browserStorage";
 import {
   buildMBAApplicationsCsv,
   buildMBAApplicationsExport,
@@ -337,6 +338,11 @@ function candidatesFromServer(items: unknown[]): MBAJobCandidate[] {
   return parseMBAJobCandidates(JSON.stringify(items));
 }
 
+/** Cleared or never-written storage holds no local copy, which is different from an empty list. */
+function hasLocalPipelineCopy(): boolean {
+  return readBrowserStorageString(MBA_APPLICATIONS_STORAGE_KEY).value !== null;
+}
+
 /** Runs `pull` on mount, on focus, when the tab becomes visible, and every 30 s. */
 function usePullOnResume(enabled: boolean, pull: () => void) {
   useEffect(() => {
@@ -378,6 +384,8 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
   // Merges server items into localStorage. Returns the merged list and whether
   // it holds anything the server does not, which is the signal to push.
   const absorb = useCallback((items: unknown[]) => {
+    // Clearing storage deleted nothing in this browser, so every server record comes back.
+    if (!hasLocalPipelineCopy()) serverIdsRef.current.clear();
     const local = loadMBAApplications();
     const localIds = new Set(local.map((application) => application.id));
     const server = applicationsFromServer(items);
@@ -395,6 +403,8 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
   }, []);
 
   const push = useCallback(async () => {
+    // With no local copy there is nothing to send, and the next pull restores it.
+    if (!hasLocalPipelineCopy()) return;
     try {
       let response = await putJson("pipeline", revisionRef.current, loadMBAApplications());
       if (response.status === 409) {
@@ -442,8 +452,13 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
   useEffect(() => {
     if (!enabled || !readyRef.current) return;
     if (storedSnapshot === pulledSnapshotRef.current) return;
+    // Cleared storage is not an edit, so the file is pulled back instead of overwritten.
+    if (!hasLocalPipelineCopy()) {
+      void pull();
+      return;
+    }
     schedulePush();
-  }, [enabled, storedSnapshot, schedulePush]);
+  }, [enabled, storedSnapshot, schedulePush, pull]);
 
   return enabled ? state : null;
 }

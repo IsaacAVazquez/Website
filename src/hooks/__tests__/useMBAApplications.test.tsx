@@ -414,6 +414,66 @@ describe("useMBAApplications private sync in development", () => {
     expect(loadMBAApplications().map((application) => application.id)).toEqual([other.id]);
     expect(result.current.applications.map((application) => application.id)).toEqual([other.id]);
   });
+
+  it.each(["the next pull", "another tab's storage event"])(
+    "brings the file back after browser storage is cleared, on %s, without pushing an empty list",
+    async (trigger) => {
+      const other = createMBAApplicationFromJob(
+        { ...job, id: "ramp-1", companyId: "ramp", companyName: "Ramp", applyUrl: "https://example.com/ramp" },
+        "saved",
+        new Date("2026-10-06T10:00:00.000Z")
+      );
+      const puts: unknown[][] = [];
+      global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) => {
+        if (init?.method === "PUT") {
+          const sent = JSON.parse(String(init.body)) as { items: unknown[] };
+          puts.push(sent.items);
+          return Promise.resolve(jsonResponse(200, { revision: "200", items: sent.items }));
+        }
+        return Promise.resolve(jsonResponse(200, { revision: "100", items: [fileRecord, other] }));
+      }) as unknown as typeof fetch;
+
+      const { result, unmount } = renderHook(() => useMBAApplications());
+      await waitFor(() => expect(result.current.applications).toHaveLength(2));
+      await waitFor(() => expect(result.current.privateSync?.lastSyncedAt).not.toBeNull());
+
+      // Clear site data, or localStorage.clear() in another tab, takes the key away.
+      window.localStorage.clear();
+      await act(async () => {
+        if (trigger === "the next pull") window.dispatchEvent(new Event("focus"));
+        else window.dispatchEvent(new StorageEvent("storage", { key: null }));
+      });
+
+      await waitFor(() => expect(loadMBAApplications()).toHaveLength(2));
+      // The push delay passes with nothing sent.
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 700));
+      });
+      expect(puts).toEqual([]);
+      unmount();
+    }
+  );
+
+  it("still clears the file when every application is removed in the page", async () => {
+    const puts: unknown[][] = [];
+    global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const sent = JSON.parse(String(init.body)) as { items: unknown[] };
+        puts.push(sent.items);
+        return Promise.resolve(jsonResponse(200, { revision: "200", items: sent.items }));
+      }
+      return Promise.resolve(jsonResponse(200, { revision: "100", items: [fileRecord] }));
+    }) as unknown as typeof fetch;
+
+    const { result } = renderHook(() => useMBAApplications());
+    await waitFor(() => expect(result.current.applications).toHaveLength(1));
+
+    act(() => {
+      result.current.removeApplication(fileRecord.id);
+    });
+
+    await waitFor(() => expect(puts).toEqual([[]]), { timeout: 2_000 });
+  });
 });
 
 describe("useMBAJobCandidates in development", () => {

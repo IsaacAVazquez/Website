@@ -228,4 +228,15 @@ describe("/api/job-search in development", () => {
     const readBack = await (await get("candidates")).json();
     expect(readBack.items[0].triage).toBe("sourced");
   });
+
+  it("leaves a file a hand edit made invalid untouched instead of reading it as empty", async () => {
+    const target = path.join(tmpDir, "private", "job-search", "pipeline.json");
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, '{"applications":[],}');
+
+    await expect(get("pipeline")).rejects.toThrow("is not valid JSON");
+    await expect(put("pipeline", { revision: "0", items: [] })).rejects.toThrow("is not valid JSON");
+    expect(fs.readFileSync(target, "utf8")).toBe('{"applications":[],}');
+    expect(fs.existsSync(path.join(path.dirname(target), ".write.lock"))).toBe(false);
+  });
 });

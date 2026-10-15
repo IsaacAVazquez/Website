@@ -3,7 +3,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { NO_STORE_HEADERS } from "@/lib/apiCacheHeaders";
-import { JobSearchFilesBusyError, withJobSearchFileLock } from "@/lib/jobSearchFileLock";
+import { JobSearchFilesBusyError, readJobSearchFile, withJobSearchFileLock } from "@/lib/jobSearchFileLock";
 import {
   buildMBAApplicationsExport,
   buildMBAJobCandidatesFile,
@@ -65,14 +65,9 @@ function filePath(key: FileKey): string {
 }
 
 function readCurrent(key: FileKey): { revision: string; items: unknown[] } {
-  const target = filePath(key);
-  try {
-    const raw = fs.readFileSync(target, "utf8");
-    return { revision: revisionFor(raw), items: FILES[key].parse(raw) };
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return { revision: "0", items: [] };
-    throw error;
-  }
+  const raw = readJobSearchFile(filePath(key));
+  if (raw === null) return { revision: "0", items: [] };
+  return { revision: revisionFor(raw), items: FILES[key].parse(raw) };
 }
 
 function revisionFor(raw: string): string {

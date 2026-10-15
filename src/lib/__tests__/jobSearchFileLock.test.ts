@@ -1,8 +1,9 @@
 /** @jest-environment node */
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { JobSearchFilesBusyError, withJobSearchFileLock } from "../jobSearchFileLock";
+import { JobSearchFilesBusyError, readJobSearchFile, withJobSearchFileLock } from "../jobSearchFileLock";
 
 describe("private job search file locking", () => {
   let folder: string;
@@ -42,5 +43,48 @@ describe("private job search file locking", () => {
     await expect(withJobSearchFileLock(write)).rejects.toBeInstanceOf(JobSearchFilesBusyError);
     expect(write).not.toHaveBeenCalled();
     expect(fs.readFileSync(lock, "utf8")).toBe("other writer");
+  });
+
+  it("clears a lock left by a writer that stopped, once it is old enough to be orphaned", async () => {
+    // A finished child process stands in for a writer killed while it held the lock.
+    const stopped = spawnSync(process.execPath, ["-e", ""]).pid;
+    fs.writeFileSync(lock, `${stopped}\n`);
+    const past = new Date(Date.now() - 10_000);
+    fs.utimesSync(lock, past, past);
+    await expect(withJobSearchFileLock(() => "saved")).resolves.toBe("saved");
+    expect(fs.existsSync(lock)).toBe(false);
+  });
+
+  it("keeps an old lock while its writer is still running", async () => {
+    fs.writeFileSync(lock, `${process.pid}\n`);
+    const past = new Date(Date.now() - 10_000);
+    fs.utimesSync(lock, past, past);
+    const write = jest.fn();
+    await expect(withJobSearchFileLock(write)).rejects.toBeInstanceOf(JobSearchFilesBusyError);
+    expect(write).not.toHaveBeenCalled();
+    expect(fs.readFileSync(lock, "utf8")).toBe(`${process.pid}\n`);
+  });
+});
+
+describe("reading a private job search file", () => {
+  let folder: string;
+  beforeEach(() => {
+    folder = fs.mkdtempSync(path.join(os.tmpdir(), "job-read-test-"));
+  });
+  afterEach(() => {
+    fs.rmSync(folder, { recursive: true, force: true });
+  });
+
+  it("returns null for a missing file and the text of a valid one", () => {
+    const file = path.join(folder, "pipeline.json");
+    expect(readJobSearchFile(file)).toBeNull();
+    fs.writeFileSync(file, '{"applications":[]}');
+    expect(readJobSearchFile(file)).toBe('{"applications":[]}');
+  });
+
+  it("refuses a file a hand edit left invalid, naming it", () => {
+    const file = path.join(folder, "candidates.json");
+    fs.writeFileSync(file, '{"candidates":[],}');
+    expect(() => readJobSearchFile(file)).toThrow(`${file} is not valid JSON`);
   });
 });
