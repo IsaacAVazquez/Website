@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { FoodMapClient } from "../food-map-client";
-import { DEFAULT_FOOD_MAP_STATE, normalizeFoodMapState } from "../food-map-state";
 
 let currentSearchParams = new URLSearchParams();
 // The page writes its state with the native history API, which the router
@@ -31,7 +30,7 @@ describe("FoodMapClient", () => {
   });
 
   it("renders the default Austin surface with the curator legend", () => {
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: /^food map$/i })
@@ -46,7 +45,7 @@ describe("FoodMapClient", () => {
   });
 
   it("switches the city into the URL", () => {
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
 
     fireEvent.click(screen.getByRole("radio", { name: /tokyo/i }));
 
@@ -55,8 +54,7 @@ describe("FoodMapClient", () => {
 
   it("returns to Austin after opening a Tokyo deep link", () => {
     currentSearchParams = new URLSearchParams("city=tokyo");
-    const initialState = normalizeFoodMapState(currentSearchParams);
-    const ui = () => <FoodMapClient initialState={initialState} />;
+    const ui = () => <FoodMapClient />;
     const view = render(ui());
     fireEvent.click(screen.getByRole("radio", { name: /austin/i }));
     expect(lastHref()).toBe("/food-map");
@@ -67,7 +65,7 @@ describe("FoodMapClient", () => {
   });
 
   it("moves and selects city radios with arrow keys, including wrapping", () => {
-    const view = render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    const view = render(<FoodMapClient />);
     const austin = screen.getByRole("radio", { name: /austin/i });
     expect(austin).toHaveAttribute("tabindex", "0");
     expect(screen.getByRole("radio", { name: /tokyo/i })).toHaveAttribute("tabindex", "-1");
@@ -77,7 +75,7 @@ describe("FoodMapClient", () => {
     expect(lastHref()).toBe("/food-map?city=sf");
 
     currentSearchParams = new URLSearchParams("city=sf");
-    view.rerender(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    view.rerender(<FoodMapClient />);
     expect(screen.getByRole("radio", { name: /san francisco/i })).toHaveAttribute("tabindex", "0");
     fireEvent.keyDown(austin, { key: "ArrowLeft" });
     expect(screen.getByRole("radio", { name: /san sebastián/i })).toHaveFocus();
@@ -88,7 +86,7 @@ describe("FoodMapClient", () => {
     replaceState.mockImplementation((_state: unknown, _title: string, href?: string | URL | null) => {
       currentSearchParams = new URLSearchParams(String(href).split("?")[1] ?? "");
     });
-    const ui = () => <FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />;
+    const ui = () => <FoodMapClient />;
     const view = render(ui());
     fireEvent.click(screen.getByRole("button", { name: /barbecue franklin barbecue/i }));
     view.rerender(ui());
@@ -100,7 +98,7 @@ describe("FoodMapClient", () => {
   });
 
   it("puts the city choice ahead of the map and offers a direct path to the list", () => {
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
     const cities = screen.getByRole("radiogroup", { name: "Choose a city" });
     const map = screen.getByTestId("food-map-leaflet");
     expect(cities.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -113,7 +111,7 @@ describe("FoodMapClient", () => {
   });
 
   it("offers the path to the list ahead of the filters and the map it skips", () => {
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
     const jump = screen.getByRole("button", { name: "Go to the list of stops" });
     const curators = screen.getByRole("group", { name: "Curator" });
     const map = screen.getByTestId("food-map-leaflet");
@@ -130,7 +128,7 @@ describe("FoodMapClient", () => {
       return new DOMRect();
     });
     currentSearchParams = new URLSearchParams("city=tokyo");
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
     boxes.mockRestore();
     return screen.getByRole("radiogroup", { name: "Choose a city" });
   }
@@ -145,14 +143,14 @@ describe("FoodMapClient", () => {
   });
 
   it("keeps a space between a city and its count, so a screen reader reads two words", () => {
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
     // jsdom spaces every child of a name, so the text itself is the check.
     expect(screen.getByRole("radio", { name: /austin/i }).textContent).toBe("Austin 12");
   });
 
   it("returns to the stop's detail when the chosen stop is picked again", () => {
     currentSearchParams = new URLSearchParams("pick=franklin-barbecue");
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
     const heading = screen.getByRole("heading", { level: 2, name: "Franklin Barbecue" });
     expect(heading).not.toHaveFocus();
 
@@ -164,7 +162,7 @@ describe("FoodMapClient", () => {
   });
 
   it("toggles a curator chip into the URL", () => {
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
 
     fireEvent.click(screen.getByRole("button", { name: /anthony bourdain/i }));
 
@@ -173,7 +171,7 @@ describe("FoodMapClient", () => {
 
   it("rewrites a non-canonical query in place without a navigation", () => {
     currentSearchParams = new URLSearchParams("city=austin&curator=bourdain,bourdain");
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
 
     expect(replaceState).toHaveBeenCalledWith(null, "", "/food-map?curator=bourdain");
   });
@@ -181,7 +179,7 @@ describe("FoodMapClient", () => {
   it("selects a place from the URL and clears it again", () => {
     currentSearchParams = new URLSearchParams("pick=franklin-barbecue");
 
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
 
     expect(
       screen.getByRole("heading", { level: 2, name: "Franklin Barbecue" })
@@ -196,7 +194,7 @@ describe("FoodMapClient", () => {
     // Austin has no sushi spots.
     currentSearchParams = new URLSearchParams("cuisine=sushi");
 
-    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    render(<FoodMapClient />);
 
     expect(
       screen.getByText(/Nothing matches that combination yet\./i)

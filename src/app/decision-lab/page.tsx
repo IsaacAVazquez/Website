@@ -1,7 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { DecisionLabClient } from "./decision-lab-client";
-import { normalizeDecisionLabState } from "./decision-lab-state";
 
 export const metadata = constructMetadata({
   title: "Decision Lab",
@@ -22,7 +21,9 @@ interface DecisionLabPageProps {
 }
 
 export default async function DecisionLabPage({ searchParams }: DecisionLabPageProps) {
-  const initialState = normalizeDecisionLabState(await searchParams);
+  // Read only to keep the page rendered per request, so the client's
+  // useSearchParams has the URL's scenario in the server HTML.
+  await searchParams;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Decision Lab", url: "/decision-lab" },
@@ -55,7 +56,7 @@ export default async function DecisionLabPage({ searchParams }: DecisionLabPageP
           ],
         }}
       />
-      <DecisionLabClient initialState={initialState} />
+      <DecisionLabClient />
     </>
   );
 }

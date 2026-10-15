@@ -1,7 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { FoodMapClient } from "./food-map-client";
-import { normalizeFoodMapState } from "./food-map-state";
 
 export const metadata = constructMetadata({
   title: "Food Map",
@@ -21,7 +20,9 @@ interface FoodMapPageProps {
 }
 
 export default async function FoodMapPage({ searchParams }: FoodMapPageProps) {
-  const initialState = normalizeFoodMapState(await searchParams);
+  // Read only to keep the page rendered per request, so the client's
+  // useSearchParams has the URL's city and filters in the server HTML.
+  await searchParams;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Food Map", url: "/food-map" },
@@ -54,7 +55,7 @@ export default async function FoodMapPage({ searchParams }: FoodMapPageProps) {
           ],
         }}
       />
-      <FoodMapClient initialState={initialState} />
+      <FoodMapClient />
     </>
   );
 }
