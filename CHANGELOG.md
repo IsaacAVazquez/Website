@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-15
+
+- The October 14 review's job search and empty-query fixes, checked against main ([#607](https://github.com/IsaacAVazquez/Website/pull/607)).
+
+---
+
 ## 2026-10-14
 
 - Stage 2 review fixes, with the project sovereign close-out ([#596](https://github.com/IsaacAVazquez/Website/pull/596)).
