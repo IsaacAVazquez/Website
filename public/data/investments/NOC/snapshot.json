@@ -1,10 +1,10 @@
 {
   "symbol": "NOC",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 31.538,
-      "ttmPe": 15.26,
-      "marketCap": 68386142526,
-      "psRatio": 1.59,
-      "pbRatio": 3.82,
+      "ttmPe": 15.84,
+      "marketCap": 70978786801,
+      "psRatio": 1.65,
+      "pbRatio": 3.97,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -5392,25 +5392,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.75,
-      "costOfEquity": 4.42,
+      "wacc": 3.6799999999999997,
+      "costOfEquity": 4.31,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 6,
-      "beta": -0.1029,
-      "marketCap": 68386142526
+      "beta": -0.1015,
+      "marketCap": 70978786801
     },
     "beta": {
-      "beta5y": -0.1029
+      "beta5y": -0.1015
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 619.48,
-        "high": 627.41,
-        "low": 618.07,
-        "close": 626.93,
-        "volume": 437500
-      },
       {
         "date": "2025-10-15",
         "open": 625.05,
@@ -7418,6 +7410,14 @@
         "low": 483.24,
         "close": 495.69,
         "volume": 1218900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 505.61,
+        "high": 508.09,
+        "low": 496.59,
+        "close": 499.63,
+        "volume": 1332000
       }
     ],
     "news": [
@@ -7454,19 +7454,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
-        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
+        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
         "type": "STORY"
       },
       {
@@ -7478,19 +7478,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "77bead5e-baed-3b2f-9e53-0088e8b46380",
-        "title": "3 Profitable Stocks in Hot Water",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/3-profitable-stocks-hot-water-043118929.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c29f651c-1204-30d6-90fd-fdbab67e64a0",
         "title": "Defense Contractors Stocks Q1 Highlights: Huntington Ingalls (NYSE:HII)",
         "publisher": "StockStory",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/defense-contractors-stocks-q1-highlights-033617270.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "77bead5e-baed-3b2f-9e53-0088e8b46380",
+        "title": "3 Profitable Stocks in Hot Water",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/3-profitable-stocks-hot-water-043118929.html",
         "type": "STORY"
       },
       {
@@ -7565,18 +7565,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.26,
-        "industryAvg": 31.62
+        "value": 15.84,
+        "industryAvg": 32.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.59,
-        "industryAvg": 2.8
+        "value": 1.65,
+        "industryAvg": 2.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.82,
-        "industryAvg": 8.67
+        "value": 3.97,
+        "industryAvg": 8.48
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "TSM",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.855,
-      "ttmPe": 32.13,
-      "marketCap": 2308603306880,
-      "psRatio": 16.55,
-      "pbRatio": 11.43,
-      "pegRatio": 0.44
+      "ttmPe": 30.48,
+      "marketCap": 2189988646500,
+      "psRatio": 15.7,
+      "pbRatio": 10.84,
+      "pegRatio": 0.42
     },
     "profitability": {
       "roe": 11.469999999999999,
@@ -6930,25 +6930,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.68,
-      "costOfEquity": 15.9,
+      "wacc": 15.740000000000002,
+      "costOfEquity": 15.98,
       "costOfDebt": 0.29,
       "taxRate": 18,
-      "beta": 1.396,
-      "marketCap": 2308603306880
+      "beta": 1.3999,
+      "marketCap": 2189988646500
     },
     "beta": {
-      "beta5y": 1.396
+      "beta5y": 1.3999
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 295.63,
-        "high": 301.75,
-        "low": 291.34,
-        "close": 295.94,
-        "volume": 16567900
-      },
       {
         "date": "2025-10-15",
         "open": 306.29,
@@ -8955,7 +8947,15 @@
         "high": 440.39,
         "low": 428.06,
         "close": 430,
-        "volume": 14973600
+        "volume": 15167200
+      },
+      {
+        "date": "2026-10-15",
+        "open": 415.17,
+        "high": 423.66,
+        "low": 407.13,
+        "close": 422.25,
+        "volume": 22391300
       }
     ],
     "news": [
@@ -9044,7 +9044,7 @@
       {
         "name": "Dr. C. C. Wei Ph.D.",
         "title": "Chairman & CEO",
-        "totalPay": 64321780
+        "totalPay": 63799657
       },
       {
         "name": "Dr. Horng-Dar Lin",
@@ -9069,7 +9069,7 @@
       {
         "name": "Mr. Jen-Chau Huang",
         "title": "Senior VP, CFO & Spokesperson",
-        "totalPay": 9318460
+        "totalPay": 9242819
       },
       {
         "name": "Mr. Pei-Hong Chen",
@@ -9087,18 +9087,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.13,
-        "industryAvg": 29.44
+        "value": 30.48,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.55,
-        "industryAvg": 14.04
+        "value": 15.7,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.43,
-        "industryAvg": 12.19
+        "value": 10.84,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

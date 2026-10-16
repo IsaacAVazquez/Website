@@ -1,10 +1,10 @@
 {
   "symbol": "COP",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.548,
-      "ttmPe": 18.67,
-      "marketCap": 169268453750,
-      "psRatio": 2.67,
-      "pbRatio": 2.59,
-      "pegRatio": 0.17
+      "ttmPe": 18.78,
+      "marketCap": 170265563875,
+      "psRatio": 2.69,
+      "pbRatio": 2.61,
+      "pegRatio": 0.18
     },
     "profitability": {
       "roe": 6.03,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.239999999999999,
-      "costOfEquity": 6.99,
+      "wacc": 6.12,
+      "costOfEquity": 6.8500000000000005,
       "costOfDebt": 1.21,
       "taxRate": 35,
-      "beta": 0.2323,
-      "marketCap": 169268453750
+      "beta": 0.2249,
+      "marketCap": 170265563875
     },
     "beta": {
-      "beta5y": 0.2323
+      "beta5y": 0.2249
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 86.9,
-        "high": 88.89,
-        "low": 86.75,
-        "close": 88.17,
-        "volume": 6003900
-      },
       {
         "date": "2025-10-15",
         "open": 88.93,
@@ -7637,6 +7629,14 @@
         "low": 140.9,
         "close": 142.34,
         "volume": 5668300
+      },
+      {
+        "date": "2026-10-15",
+        "open": 143,
+        "high": 143.13,
+        "low": 140.81,
+        "close": 141.73,
+        "volume": 8340500
       }
     ],
     "news": [
@@ -7681,19 +7681,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
-        "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dc3a8355-96fa-385e-96a5-a14c75515cf4",
         "title": "Coterra Energy to Report Q1 Earnings: Key Metrics to Watch",
         "publisher": "Zacks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/coterra-energy-report-q1-earnings-134800445.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
+        "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
         "type": "STORY"
       },
       {
@@ -7713,11 +7713,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a734f233-b3a7-39f9-a01b-aefeb5a637c3",
-        "title": "OPEC Shifts To Oil Price-War Stance Ahead Of Trump Saudi Visit; These Stocks Rally",
-        "publisher": "Investor's Business Daily",
+        "uuid": "164bdc7b-1cbb-3adb-b047-5a86a1dcef5c",
+        "title": "Why Frontline Stock Popped, but Exxon and ConocoPhillips Dropped",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/m/a734f233-b3a7-39f9-a01b-aefeb5a637c3/opec-shifts-to-oil-price-war.html",
+        "link": "https://finance.yahoo.com/m/164bdc7b-1cbb-3adb-b047-5a86a1dcef5c/why-frontline-stock-popped%2C.html",
         "type": "STORY"
       }
     ],
@@ -7786,17 +7786,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.67,
-        "industryAvg": 14.22
+        "value": 18.78,
+        "industryAvg": 14.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.67,
-        "industryAvg": 2.72
+        "value": 2.69,
+        "industryAvg": 2.67
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.59,
+        "value": 2.61,
         "industryAvg": 1.8
       },
       {

@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "ASML Holding N.V."
     },
     "fundamentals": {
-      "ttmEps": 32.121,
-      "ttmPe": 53.48,
-      "marketCap": 662055108352,
-      "psRatio": 16.42,
-      "pbRatio": 26.58,
-      "pegRatio": 1.68
+      "ttmEps": 40.597,
+      "ttmPe": 40.83,
+      "marketCap": 638806674146.23,
+      "psRatio": 15.84,
+      "pbRatio": 25.65,
+      "pegRatio": 0.31
     },
     "profitability": {
       "roe": 13.68,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 31.77
+        "yoyGrowth": 132.32999999999998
       }
     ],
     "income_statement": {
@@ -5853,25 +5853,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.48,
-      "costOfEquity": 18.61,
+      "wacc": 18.61,
+      "costOfEquity": 18.740000000000002,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7499,
-      "marketCap": 662055108352
+      "beta": 1.7557,
+      "marketCap": 638806674146.23
     },
     "beta": {
-      "beta5y": 1.7499
+      "beta5y": 1.7557
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 967.46,
-        "high": 993.48,
-        "low": 966,
-        "close": 983.18,
-        "volume": 2422100
-      },
       {
         "date": "2025-10-15",
         "open": 1030.13,
@@ -7878,7 +7870,15 @@
         "high": 1734.5,
         "low": 1648.8,
         "close": 1650,
-        "volume": 2865500
+        "volume": 2877200
+      },
+      {
+        "date": "2026-10-15",
+        "open": 1616.14,
+        "high": 1661.14,
+        "low": 1594.03,
+        "close": 1657.4399,
+        "volume": 1984700
       }
     ],
     "news": [
@@ -7955,11 +7955,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
-        "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
-        "publisher": "Zacks",
+        "uuid": "565bcd88-476f-35bb-b736-8293be6c6500",
+        "title": "Beyond Tariffs: Why Berenberg Still Sees a “Buy” in ASML’s Future",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
+        "link": "https://finance.yahoo.com/news/beyond-tariffs-why-berenberg-still-200027130.html",
         "type": "STORY"
       }
     ],
@@ -7977,21 +7977,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4221715
+        "totalPay": 4234993
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2503121
+        "totalPay": 2510994
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2664936
+        "totalPay": 2673318
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -8002,7 +8002,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2485265
+        "totalPay": 2493082
       },
       {
         "name": "Mr. Ron Kool",
@@ -8013,7 +8013,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2611370
+        "totalPay": 2619583
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -8023,18 +8023,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.48,
-        "industryAvg": 50.52
+        "value": 40.83,
+        "industryAvg": 48.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.42,
-        "industryAvg": 13.72
+        "value": 15.84,
+        "industryAvg": 13.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.58,
-        "industryAvg": 19.25
+        "value": 25.65,
+        "industryAvg": 18.62
       },
       {
         "metric": "ROE",

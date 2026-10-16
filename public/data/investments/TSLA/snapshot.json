@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.0763,
-      "ttmPe": 348.63,
-      "marketCap": 1481783270000,
-      "psRatio": 14.3,
-      "pbRatio": 17.06,
+      "ttmPe": 336.75,
+      "marketCap": 1431275560000,
+      "psRatio": 13.81,
+      "pbRatio": 16.48,
       "pegRatio": 23.5
     },
     "profitability": {
@@ -5972,25 +5972,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.240000000000002,
-      "costOfEquity": 18.43,
+      "wacc": 18.3,
+      "costOfEquity": 18.5,
       "costOfDebt": 0.5,
       "taxRate": 15,
-      "beta": 1.7265,
-      "marketCap": 1481783270000
+      "beta": 1.7243,
+      "marketCap": 1431275560000
     },
     "beta": {
-      "beta5y": 1.7265
+      "beta5y": 1.7243
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 426.79,
-        "high": 434.2,
-        "low": 417.86,
-        "close": 429.24,
-        "volume": 72669400
-      },
       {
         "date": "2025-10-15",
         "open": 434.9,
@@ -7997,7 +7989,15 @@
         "high": 371.39,
         "low": 363.82,
         "close": 367.16,
-        "volume": 30803500
+        "volume": 31001400
+      },
+      {
+        "date": "2026-10-15",
+        "open": 360.57,
+        "high": 363.75,
+        "low": 355.23,
+        "close": 362.44,
+        "volume": 26614300
       }
     ],
     "news": [
@@ -8034,19 +8034,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
-        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
         "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
         "publisher": "Barrons.com",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
         "type": "STORY"
       },
       {
@@ -8058,19 +8058,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
-        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
         "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
         "type": "STORY"
       },
       {
@@ -8138,18 +8138,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 348.63,
-        "industryAvg": 28.76
+        "value": 336.75,
+        "industryAvg": 28.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.3,
-        "industryAvg": 1.37
+        "value": 13.81,
+        "industryAvg": 1.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.06,
-        "industryAvg": 2.28
+        "value": 16.48,
+        "industryAvg": 2.24
       },
       {
         "metric": "ROE",

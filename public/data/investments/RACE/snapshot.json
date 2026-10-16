@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 36.41,
-      "marketCap": 68888901400,
-      "psRatio": 8.21,
-      "pbRatio": 16.5,
-      "pegRatio": 2.79
+      "ttmPe": 37.02,
+      "marketCap": 70056986960,
+      "psRatio": 8.35,
+      "pbRatio": 16.78,
+      "pegRatio": 2.84
     },
     "profitability": {
       "roe": 12,
@@ -6041,25 +6041,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.37,
+      "wacc": 11.379999999999999,
       "costOfEquity": 11.959999999999999,
       "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.8813,
-      "marketCap": 68888901400
+      "beta": 0.8834,
+      "marketCap": 70056986960
     },
     "beta": {
-      "beta5y": 0.8813
+      "beta5y": 0.8834
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 375.81,
-        "high": 386.61,
-        "low": 372.31,
-        "close": 382.19,
-        "volume": 1839400
-      },
       {
         "date": "2025-10-15",
         "open": 381.125,
@@ -8067,6 +8059,14 @@
         "low": 385.48,
         "close": 387.35,
         "volume": 343100
+      },
+      {
+        "date": "2026-10-15",
+        "open": 392.41,
+        "high": 399.07,
+        "low": 392.41,
+        "close": 398.24,
+        "volume": 637900
       }
     ],
     "news": [
@@ -8135,19 +8135,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f68fd351-a8c1-3faa-a47e-d132f2b08f3f",
-        "title": "Is Axos Financial (AX) Stock Outpacing Its Finance Peers This Year?",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/axos-financial-ax-stock-outpacing-134004384.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e1d1e38a-ad1b-36e5-963c-bb0bfe3a7bb8",
         "title": "Is GRINDR INC (GRND) Stock Outpacing Its Computer and Technology Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
         "link": "https://finance.yahoo.com/news/grindr-inc-grnd-stock-outpacing-134004098.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b310c041-b391-3fda-b664-048a835d90db",
+        "title": "Is Air Lease (AL) Stock Outpacing Its Transportation Peers This Year?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-24",
+        "link": "https://finance.yahoo.com/news/air-lease-al-stock-outpacing-134005698.html",
         "type": "STORY"
       }
     ],
@@ -8163,7 +8163,7 @@
         "title": "CEO & Executive Director",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 8866078
+        "totalPay": 8893964
       },
       {
         "name": "Mr. Carlo Daneo",
@@ -8182,7 +8182,7 @@
         "title": "Executive Chairman",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 1683120
+        "totalPay": 1688414
       },
       {
         "name": "Mr. Marco Lovati",
@@ -8214,18 +8214,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.41,
-        "industryAvg": 28.76
+        "value": 37.02,
+        "industryAvg": 28.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.21,
-        "industryAvg": 1.37
+        "value": 8.35,
+        "industryAvg": 1.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.5,
-        "industryAvg": 2.28
+        "value": 16.78,
+        "industryAvg": 2.24
       },
       {
         "metric": "ROE",

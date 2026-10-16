@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 18.27,
-      "marketCap": 80904356800,
-      "psRatio": 3.77,
-      "pbRatio": 4.26,
+      "ttmPe": 20.01,
+      "marketCap": 88612345280,
+      "psRatio": 4.13,
+      "pbRatio": 4.67,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6595,25 +6595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.34,
-      "costOfEquity": 12.46,
+      "wacc": 11.39,
+      "costOfEquity": 12.42,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.9464,
-      "marketCap": 80904356800
+      "beta": 0.9424,
+      "marketCap": 88612345280
     },
     "beta": {
-      "beta5y": 0.9464
+      "beta5y": 0.9424
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 645.82,
-        "high": 660.71,
-        "low": 644.45,
-        "close": 657.16,
-        "volume": 1243700
-      },
       {
         "date": "2025-10-15",
         "open": 657.1,
@@ -8621,6 +8613,14 @@
         "low": 298.83,
         "close": 310.44,
         "volume": 2923100
+      },
+      {
+        "date": "2026-10-15",
+        "open": 314.37,
+        "high": 332.27,
+        "low": 314,
+        "close": 330.17,
+        "volume": 4497000
       }
     ],
     "news": [
@@ -8657,20 +8657,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
-        "title": "Morning Movers: Apple slips following President Trump tariff threat",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
         "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
@@ -8681,12 +8681,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
-        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+        "title": "Morning Movers: Apple slips following President Trump tariff threat",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "type": "STORY"
       },
       {
         "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
@@ -8771,18 +8771,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.27,
-        "industryAvg": 26.67
+        "value": 20.01,
+        "industryAvg": 27.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.77,
-        "industryAvg": 5.09
+        "value": 4.13,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.26,
-        "industryAvg": 5.69
+        "value": 4.67,
+        "industryAvg": 5.83
       },
       {
         "metric": "ROE",

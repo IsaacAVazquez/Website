@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 86.66,
-      "marketCap": 93989916700,
-      "psRatio": 9.98,
-      "pbRatio": 3.02,
-      "pegRatio": 0.97
+      "ttmPe": 82.7,
+      "marketCap": 89692216550,
+      "psRatio": 9.53,
+      "pbRatio": 2.88,
+      "pegRatio": 0.93
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,25 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.91,
-      "costOfEquity": 14.29,
+      "wacc": 12.94,
+      "costOfEquity": 14.39,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1862,
-      "marketCap": 93989916700
+      "beta": 1.1958,
+      "marketCap": 89692216550
     },
     "beta": {
-      "beta5y": 1.1862
+      "beta5y": 1.1958
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 436.41,
-        "high": 452.8,
-        "low": 433.36,
-        "close": 443.76,
-        "volume": 2937600
-      },
       {
         "date": "2025-10-15",
         "open": 446.26,
@@ -8308,6 +8300,14 @@
         "low": 476.73,
         "close": 479.93,
         "volume": 3203000
+      },
+      {
+        "date": "2026-10-15",
+        "open": 470.77,
+        "high": 472.17,
+        "low": 454.49,
+        "close": 468.11,
+        "volume": 3174800
       }
     ],
     "news": [
@@ -8336,11 +8336,27 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
         "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
         "publisher": "Investing.com",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
+        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
         "type": "STORY"
       },
       {
@@ -8352,19 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
+        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
-        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
+        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
         "type": "STORY"
       },
       {
@@ -8376,19 +8384,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
+        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
+        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
-        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
+        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
         "type": "STORY"
       }
     ],
@@ -8405,12 +8405,11 @@
         "title": "Chief Strategy Officer"
       },
       {
-        "name": "Mr. Charlie Matar",
-        "title": "Chief IP Development Officer"
-      },
-      {
-        "name": "Mr. Raja Tabet",
-        "title": "SVP of Strategic Missions & Technologies"
+        "name": "Mr. Sassine Ghazi",
+        "title": "CEO, President & Director",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 2086177
       },
       {
         "name": "Mr. Sudhindra Kankanwadi",
@@ -8438,6 +8437,12 @@
         "totalPay": 501255
       },
       {
+        "name": "Ms. Jill Larsen",
+        "title": "Chief People Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
         "name": "Ms. Shelagh Glaser",
         "title": "Chief Financial Officer",
         "age": 61,
@@ -8448,18 +8453,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 86.66,
-        "industryAvg": 33.43
+        "value": 82.7,
+        "industryAvg": 34.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.98,
-        "industryAvg": 7.69
+        "value": 9.53,
+        "industryAvg": 7.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.02,
-        "industryAvg": 8.55
+        "value": 2.88,
+        "industryAvg": 8.76
       },
       {
         "metric": "ROE",
@@ -8469,7 +8474,7 @@
       {
         "metric": "ROA",
         "value": 1.15,
-        "industryAvg": 10.15
+        "industryAvg": 10.16
       },
       {
         "metric": "Gross Margin",
@@ -8479,7 +8484,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 51.35999999999999,
-        "industryAvg": 36.04
+        "industryAvg": 36.05
       },
       {
         "metric": "Net Margin",

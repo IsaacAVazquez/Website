@@ -1,10 +1,10 @@
 {
   "symbol": "SBUX",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.7343,
-      "ttmPe": 53.05,
-      "marketCap": 104861600000,
-      "psRatio": 2.74,
-      "pbRatio": -13.66,
-      "pegRatio": 0.61
+      "ttmPe": 55.86,
+      "marketCap": 110423824000,
+      "psRatio": 2.88,
+      "pbRatio": -14.39,
+      "pegRatio": 0.65
     },
     "profitability": {
       "roe": -12.950000000000001,
@@ -6187,25 +6187,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.79,
-      "costOfEquity": 13,
+      "wacc": 10.9,
+      "costOfEquity": 13.03,
       "costOfDebt": 0.6,
       "taxRate": 26,
-      "beta": 1.017,
-      "marketCap": 104861600000
+      "beta": 1.0204,
+      "marketCap": 110423824000
     },
     "beta": {
-      "beta5y": 1.017
+      "beta5y": 1.0204
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 79.25,
-        "high": 81.48,
-        "low": 79.03,
-        "close": 81.15,
-        "volume": 7510300
-      },
       {
         "date": "2025-10-15",
         "open": 81.7,
@@ -8212,7 +8204,15 @@
         "high": 93.42,
         "low": 91.31,
         "close": 93.25,
-        "volume": 6773700
+        "volume": 6784400
+      },
+      {
+        "date": "2026-10-15",
+        "open": 94.82,
+        "high": 97.01,
+        "low": 94.81,
+        "close": 96.88,
+        "volume": 15377700
       }
     ],
     "news": [
@@ -8289,11 +8289,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b34f0011-f284-3cc7-aae0-417e841264f0",
-        "title": "3 Magnificent Dividend Stocks Down 15% to 64% to Buy and Hold for 20 Years",
-        "publisher": "Motley Fool",
+        "uuid": "37a0ba7a-0d07-31b4-b9de-0adb0e7334c8",
+        "title": "Is Realty Income’s (O) 9-Year Low a Golden Opportunity for Dividend Investors?",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-31",
-        "link": "https://finance.yahoo.com/m/b34f0011-f284-3cc7-aae0-417e841264f0/3-magnificent-dividend-stocks.html",
+        "link": "https://finance.yahoo.com/news/realty-income-o-9-low-182100233.html",
         "type": "STORY"
       }
     ],
@@ -8362,18 +8362,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.05,
-        "industryAvg": 23.54
+        "value": 55.86,
+        "industryAvg": 24.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.74,
-        "industryAvg": 2.73
+        "value": 2.88,
+        "industryAvg": 2.81
       },
       {
         "metric": "P/B Ratio",
-        "value": -13.66,
-        "industryAvg": 5.62
+        "value": -14.39,
+        "industryAvg": 5.8
       },
       {
         "metric": "ROE",

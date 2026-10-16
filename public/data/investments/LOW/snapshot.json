@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 15.96,
-      "marketCap": 105883140000,
-      "psRatio": 1.17,
-      "pbRatio": -14.24,
-      "pegRatio": 399
+      "ttmPe": 16.55,
+      "marketCap": 109798920000,
+      "psRatio": 1.21,
+      "pbRatio": -14.76,
+      "pegRatio": 413.75
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,25 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.42,
-      "costOfEquity": 11.48,
+      "wacc": 8.48,
+      "costOfEquity": 11.459999999999999,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.8184,
-      "marketCap": 105883140000
+      "beta": 0.8181,
+      "marketCap": 109798920000
     },
     "beta": {
-      "beta5y": 0.8184
+      "beta5y": 0.8181
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 233.92,
-        "high": 241.74,
-        "low": 233.23,
-        "close": 240.75,
-        "volume": 3130200
-      },
       {
         "date": "2025-10-15",
         "open": 241.51,
@@ -7842,6 +7834,14 @@
         "low": 184.89,
         "close": 188.31,
         "volume": 2647900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 191.32,
+        "high": 197.96,
+        "low": 191.31,
+        "close": 195.72,
+        "volume": 3912900
       }
     ],
     "news": [
@@ -7886,20 +7886,20 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "a33e6f17-9cf5-3ecd-b2ea-0a29b462994a",
-        "title": "NYSE Content Advisory: Pre-Market update + Retailers report earnings",
-        "publisher": "CNW Group",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500529.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
         "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "a33e6f17-9cf5-3ecd-b2ea-0a29b462994a",
+        "title": "NYSE Content Advisory: Pre-Market update + Retailers report earnings",
+        "publisher": "CNW Group",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500529.html",
+        "type": "STORY"
       },
       {
         "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
@@ -7991,18 +7991,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.96,
-        "industryAvg": 19.16
+        "value": 16.55,
+        "industryAvg": 20.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.17,
-        "industryAvg": 1.52
+        "value": 1.21,
+        "industryAvg": 1.59
       },
       {
         "metric": "P/B Ratio",
-        "value": -14.24,
-        "industryAvg": 15.04
+        "value": -14.76,
+        "industryAvg": 15.77
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "PM",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.9569,
-      "ttmPe": 28.65,
-      "marketCap": 310613971941,
-      "psRatio": 7.3,
-      "pbRatio": -36.19,
+      "ttmPe": 28.73,
+      "marketCap": 311564719710,
+      "psRatio": 7.32,
+      "pbRatio": -36.3,
       "pegRatio": 0.05
     },
     "profitability": {
@@ -5824,25 +5824,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.12,
-      "costOfEquity": 8.18,
+      "wacc": 7.049999999999999,
+      "costOfEquity": 8.1,
       "costOfDebt": 0.49,
       "taxRate": 22,
-      "beta": 0.3873,
-      "marketCap": 310613971941
+      "beta": 0.3857,
+      "marketCap": 311564719710
     },
     "beta": {
-      "beta5y": 0.3873
+      "beta5y": 0.3857
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 158.43,
-        "high": 161.15,
-        "low": 157.94,
-        "close": 159.07,
-        "volume": 6198900
-      },
       {
         "date": "2025-10-15",
         "open": 157.84,
@@ -7850,6 +7842,14 @@
         "low": 199.99,
         "close": 205.58,
         "volume": 4294300
+      },
+      {
+        "date": "2026-10-15",
+        "open": 210,
+        "high": 210.45,
+        "low": 199.53,
+        "close": 199.9,
+        "volume": 7964700
       }
     ],
     "news": [
@@ -7878,19 +7878,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a49561d7-0ec6-3a3d-9fe5-44a773263e3a",
-        "title": "Sector Update: Consumer Stocks Edge Higher Pre-Bell Wednesday",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-edge-higher-130953240.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "50d7410c-2f17-3580-a982-ae49a9bdc36b",
         "title": "Altria Trading at a Discount: Should You Buy, Sell or Hold the Stock?",
         "publisher": "Zacks",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/altria-trading-discount-buy-sell-112600598.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a49561d7-0ec6-3a3d-9fe5-44a773263e3a",
+        "title": "Sector Update: Consumer Stocks Edge Higher Pre-Bell Wednesday",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-edge-higher-130953240.html",
         "type": "STORY"
       },
       {
@@ -7998,18 +7998,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.65,
-        "industryAvg": 22.8
+        "value": 28.73,
+        "industryAvg": 23.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.3,
-        "industryAvg": 6.24
+        "value": 7.32,
+        "industryAvg": 6.31
       },
       {
         "metric": "P/B Ratio",
-        "value": -36.19,
-        "industryAvg": 1.88
+        "value": -36.3,
+        "industryAvg": 1.96
       },
       {
         "metric": "ROE",

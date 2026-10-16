@@ -1,10 +1,10 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9453,
-      "ttmPe": 30.28,
-      "marketCap": 4036203150000,
-      "psRatio": 12.16,
-      "pbRatio": 9.12,
-      "pegRatio": 0.96
+      "ttmPe": 30.06,
+      "marketCap": 4006420880000,
+      "psRatio": 12.07,
+      "pbRatio": 9.06,
+      "pegRatio": 0.95
     },
     "profitability": {
       "roe": 8.35,
@@ -5929,25 +5929,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.04,
-      "costOfEquity": 13.209999999999999,
+      "wacc": 13.03,
+      "costOfEquity": 13.200000000000001,
       "costOfDebt": 1.48,
       "taxRate": 19,
-      "beta": 1.0445,
-      "marketCap": 4036203150000
+      "beta": 1.0419,
+      "marketCap": 4006420880000
     },
     "beta": {
-      "beta5y": 1.0445
+      "beta5y": 1.0419
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 510.23,
-        "high": 515.28,
-        "low": 506,
-        "close": 513.57,
-        "volume": 14684300
-      },
       {
         "date": "2025-10-15",
         "open": 514.96,
@@ -7954,7 +7946,15 @@
         "high": 545.75,
         "low": 532.54,
         "close": 533.69,
-        "volume": 22200800
+        "volume": 22324300
+      },
+      {
+        "date": "2026-10-15",
+        "open": 533.32,
+        "high": 541.13,
+        "low": 531.22,
+        "close": 539.44,
+        "volume": 24132000
       }
     ],
     "news": [
@@ -7991,19 +7991,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
-        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
         "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
         "type": "STORY"
       },
       {
@@ -8103,18 +8103,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.28,
-        "industryAvg": 35.16
+        "value": 30.06,
+        "industryAvg": 34.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.16,
-        "industryAvg": 8.06
+        "value": 12.07,
+        "industryAvg": 7.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.12,
-        "industryAvg": 8.97
+        "value": 9.06,
+        "industryAvg": 8.76
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 22.4,
-      "marketCap": 187843400000,
-      "psRatio": 1.9,
-      "pbRatio": 1.71,
+      "ttmPe": 22.83,
+      "marketCap": 191476400000,
+      "psRatio": 1.94,
+      "pbRatio": 1.74,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6071,25 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.270000000000001,
-      "costOfEquity": 16.33,
+      "wacc": 13.36,
+      "costOfEquity": 16.38,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4521,
-      "marketCap": 187843400000
+      "beta": 1.4511,
+      "marketCap": 191476400000
     },
     "beta": {
-      "beta5y": 1.4521
+      "beta5y": 1.4511
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 109.65,
-        "high": 111.84,
-        "low": 109.2,
-        "close": 111.17,
-        "volume": 7898000
-      },
       {
         "date": "2025-10-15",
         "open": 111.47,
@@ -8097,6 +8089,14 @@
         "low": 107.65,
         "close": 108.99,
         "volume": 8276400
+      },
+      {
+        "date": "2026-10-15",
+        "open": 110.12,
+        "high": 111.59,
+        "low": 109.87,
+        "close": 110.68,
+        "volume": 9808800
       }
     ],
     "news": [
@@ -8133,19 +8133,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
-        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
         "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
+        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -8157,11 +8157,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
-        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
-        "publisher": "TipRanks",
+        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
+        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
+        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
         "type": "STORY"
       },
       {
@@ -8242,18 +8242,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.4,
-        "industryAvg": 23.83
+        "value": 22.83,
+        "industryAvg": 24.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.9,
-        "industryAvg": 2.5
+        "value": 1.94,
+        "industryAvg": 2.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.71,
-        "industryAvg": 2.99
+        "value": 1.74,
+        "industryAvg": 3.03
       },
       {
         "metric": "ROE",

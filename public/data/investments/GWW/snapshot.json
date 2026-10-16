@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.3978,
-      "ttmPe": 33.63,
-      "marketCap": 62412872550,
-      "psRatio": 3.31,
-      "pbRatio": 15.11,
-      "pegRatio": 1.64
+      "ttmPe": 33.79,
+      "marketCap": 62698772585,
+      "psRatio": 3.33,
+      "pbRatio": 15.18,
+      "pegRatio": 1.65
     },
     "profitability": {
       "roe": 14.14,
@@ -5156,25 +5156,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.01,
-      "costOfEquity": 12.520000000000001,
+      "wacc": 11.99,
+      "costOfEquity": 12.5,
       "costOfDebt": 0.72,
       "taxRate": 25,
-      "beta": 0.9547,
-      "marketCap": 62412872550
+      "beta": 0.9526,
+      "marketCap": 62698772585
     },
     "beta": {
-      "beta5y": 0.9547
+      "beta5y": 0.9526
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 933.15,
-        "high": 964.02,
-        "low": 925.41,
-        "close": 959.74,
-        "volume": 278600
-      },
       {
         "date": "2025-10-15",
         "open": 959.9,
@@ -7182,6 +7174,14 @@
         "low": 1288.16,
         "close": 1330.62,
         "volume": 440900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 1339.9399,
+        "high": 1355,
+        "low": 1306.8199,
+        "close": 1331.17,
+        "volume": 276200
       }
     ],
     "news": [
@@ -7202,19 +7202,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
-        "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
         "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
+        "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
         "type": "STORY"
       },
       {
@@ -7226,19 +7226,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
-        "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
         "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
+        "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
         "type": "STORY"
       },
       {
@@ -7334,18 +7334,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.63,
-        "industryAvg": 27.1
+        "value": 33.79,
+        "industryAvg": 27.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.31,
+        "value": 3.33,
         "industryAvg": 1.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.11,
-        "industryAvg": 5.09
+        "value": 15.18,
+        "industryAvg": 5.08
       },
       {
         "metric": "ROE",

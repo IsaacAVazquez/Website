@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9544,
-      "ttmPe": 27.63,
-      "marketCap": 253635450000,
-      "psRatio": 5.82,
-      "pbRatio": 4.97,
-      "pegRatio": 0.83
+      "ttmPe": 28.29,
+      "marketCap": 259695000000,
+      "psRatio": 5.96,
+      "pbRatio": 5.09,
+      "pegRatio": 0.85
     },
     "profitability": {
       "roe": 4.87,
@@ -6081,25 +6081,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.239999999999998,
+      "wacc": 13.25,
       "costOfEquity": 13.76,
       "costOfDebt": 3.0700000000000003,
       "taxRate": 27,
-      "beta": 1.1157,
-      "marketCap": 253635450000
+      "beta": 1.1142,
+      "marketCap": 259695000000
     },
     "beta": {
-      "beta5y": 1.1157
+      "beta5y": 1.1142
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 265.94,
-        "high": 271.61,
-        "low": 264.54,
-        "close": 270.52,
-        "volume": 1040700
-      },
       {
         "date": "2025-10-15",
         "open": 271.5,
@@ -8107,6 +8099,14 @@
         "low": 218.45,
         "close": 220.49,
         "volume": 1684800
+      },
+      {
+        "date": "2026-10-15",
+        "open": 223.02,
+        "high": 227.42,
+        "low": 222.68,
+        "close": 225,
+        "volume": 2669800
       }
     ],
     "news": [
@@ -8151,14 +8151,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
-        "title": "SAP Reimagines How Enterprises Run With Business AI",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/sap-reimagines-enterprises-run-business-131600231.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
         "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
         "publisher": "Investing.com",
@@ -8183,11 +8175,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
-        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
+        "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
+        "title": "SAP Reimagines How Enterprises Run With Business AI",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/sap-reimagines-enterprises-run-business-131600231.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7f6fe3a9-58be-3b3b-b6ab-8f6850d4fd81",
+        "title": "SAP & Accenture Unveil ADVANCE to Boost Cloud-First Transformation",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
+        "link": "https://finance.yahoo.com/news/sap-accenture-unveil-advance-boost-111200942.html",
         "type": "STORY"
       }
     ],
@@ -8197,87 +8197,87 @@
         "title": "Demand Manager & Works Council Europe Representative Member of Supervisory Board",
         "age": 43,
         "yearBorn": 1982,
-        "totalPay": 262253
+        "totalPay": 263078
       },
       {
         "name": "Mr. Andreas Hahn",
         "title": "Chairperson of Works Council Europe & Works Council Europe Rep Member of Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 262253
+        "totalPay": 263078
       },
       {
         "name": "Mr. Christian Klein",
         "title": "CEO & Member of Executive Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 5873350
+        "totalPay": 5891823
       },
       {
         "name": "Mr. Dominik Asam",
         "title": "CFO & Member of Executive Board",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2823404
+        "totalPay": 2832284
       },
       {
         "name": "Mr. Lars Lamade",
         "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 323631
+        "totalPay": 324649
       },
       {
         "name": "Mr. Muhammad Alam",
         "title": "Lead Product Engineering & Member of Executive Board",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2505353
+        "totalPay": 2513233
       },
       {
         "name": "Mr. Pascal Demat",
         "title": "Solution Advisor HCM & Works Council Europe Representative Member of Supervisory Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 262253
+        "totalPay": 263078
       },
       {
         "name": "Mr. Sebastian Steinhaeuser",
         "title": "Chief Strategy Officer & COO and Member of Executive Board",
         "age": 39,
         "yearBorn": 1986,
-        "totalPay": 2377016
+        "totalPay": 2384492
       },
       {
         "name": "Mr. Thomas Saueressig",
         "title": "Member of Executive Board",
         "age": 40,
         "yearBorn": 1985,
-        "totalPay": 2784345
+        "totalPay": 2793103
       },
       {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 2817824
+        "totalPay": 2826687
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.63,
-        "industryAvg": 26.67
+        "value": 28.29,
+        "industryAvg": 27.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.82,
-        "industryAvg": 5.09
+        "value": 5.96,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.97,
-        "industryAvg": 5.69
+        "value": 5.09,
+        "industryAvg": 5.83
       },
       {
         "metric": "ROE",

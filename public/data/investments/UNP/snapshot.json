@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3487,
-      "ttmPe": 22.87,
-      "marketCap": 167709698520,
-      "psRatio": 6.6,
-      "pbRatio": 8.11,
-      "pegRatio": 3.58
+      "ttmPe": 23.38,
+      "marketCap": 171481325470,
+      "psRatio": 6.75,
+      "pbRatio": 8.29,
+      "pegRatio": 3.66
     },
     "profitability": {
       "roe": 9.94,
@@ -4999,25 +4999,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.09,
-      "costOfEquity": 11.82,
+      "wacc": 10.11,
+      "costOfEquity": 11.799999999999999,
       "costOfDebt": 1,
       "taxRate": 22,
-      "beta": 0.8632,
-      "marketCap": 167709698520
+      "beta": 0.8622,
+      "marketCap": 171481325470
     },
     "beta": {
-      "beta5y": 0.8632
+      "beta5y": 0.8622
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 223.92,
-        "high": 227.85,
-        "low": 223.33,
-        "close": 227.08,
-        "volume": 2306200
-      },
       {
         "date": "2025-10-15",
         "open": 227.14,
@@ -7025,6 +7017,14 @@
         "low": 281,
         "close": 286.43,
         "volume": 2454500
+      },
+      {
+        "date": "2026-10-15",
+        "open": 290,
+        "high": 290.53,
+        "low": 286.58,
+        "close": 288.71,
+        "volume": 3671600
       }
     ],
     "news": [
@@ -7053,19 +7053,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
-        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dbb50989-5ece-3897-80fa-8dc913bc3bc2",
         "title": "Why Railroad Stocks Are Moving Higher Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/m/dbb50989-5ece-3897-80fa-8dc913bc3bc2/why-railroad-stocks-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
+        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
         "type": "STORY"
       },
       {
@@ -7176,18 +7176,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.87,
-        "industryAvg": 25.14
+        "value": 23.38,
+        "industryAvg": 25.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.6,
-        "industryAvg": 5.65
+        "value": 6.75,
+        "industryAvg": 5.74
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.11,
-        "industryAvg": 4.22
+        "value": 8.29,
+        "industryAvg": 4.29
       },
       {
         "metric": "ROE",

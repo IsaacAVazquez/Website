@@ -1,10 +1,10 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 1.4191,
-      "ttmPe": 38.78,
-      "marketCap": 45401186283,
+      "ttmPe": 38.73,
+      "marketCap": 45343434456,
       "psRatio": 2.05,
       "pbRatio": 3.45,
       "pegRatio": 1.14
@@ -6016,25 +6016,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.11,
-      "costOfEquity": 15.2,
+      "wacc": 12.13,
+      "costOfEquity": 15.24,
       "costOfDebt": 1.02,
       "taxRate": 25,
-      "beta": 1.3036,
-      "marketCap": 45401186283
+      "beta": 1.3048,
+      "marketCap": 45343434456
     },
     "beta": {
-      "beta5y": 1.3036
+      "beta5y": 1.3048
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 55.53,
-        "high": 57.875,
-        "low": 55.33,
-        "close": 57.5,
-        "volume": 6553500
-      },
       {
         "date": "2025-10-15",
         "open": 57.44,
@@ -8042,6 +8034,14 @@
         "low": 53.575,
         "close": 54.24,
         "volume": 4612000
+      },
+      {
+        "date": "2026-10-15",
+        "open": 55.22,
+        "high": 55.22,
+        "low": 53.77,
+        "close": 54.96,
+        "volume": 5855300
       }
     ],
     "news": [
@@ -8110,19 +8110,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "b5ace3c5-cba2-3947-b295-a968d700daff",
+        "title": "JPMorgan Adjusts Price Target on Carrier Global to $79 From $66, Maintains Overweight Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-carrier-103720777.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "ce4bb8f1-5b90-36fe-99e1-fe15757eab25",
         "title": "Mizuho Adjusts Price Target on Carrier Global to $88 From $80, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-carrier-103753974.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "e5f2ad23-e548-354a-8b1a-ba2a8fe46513",
-        "title": "RBC Raises Price Target on Carrier Global to $86 From $82, Keeps Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-carrier-110913885.html",
         "type": "STORY"
       }
     ],
@@ -8195,18 +8195,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.78,
-        "industryAvg": 28.17
+        "value": 38.73,
+        "industryAvg": 27.44
       },
       {
         "metric": "P/S Ratio",
         "value": 2.05,
-        "industryAvg": 2.5
+        "industryAvg": 2.44
       },
       {
         "metric": "P/B Ratio",
         "value": 3.45,
-        "industryAvg": 3.72
+        "industryAvg": 3.63
       },
       {
         "metric": "ROE",

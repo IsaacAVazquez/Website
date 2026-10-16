@@ -1,10 +1,10 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.0882,
-      "ttmPe": 6.76,
-      "marketCap": 74048913432,
-      "psRatio": 0.59,
-      "pbRatio": 0.82,
+      "ttmPe": 7.05,
+      "marketCap": 77205212903,
+      "psRatio": 0.62,
+      "pbRatio": 0.86,
       "pegRatio": 0.02
     },
     "profitability": {
@@ -5584,25 +5584,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.3100000000000005,
+      "wacc": 5.42,
       "costOfEquity": 10.75,
       "costOfDebt": 1.16,
       "taxRate": 26,
-      "beta": 0.7231,
-      "marketCap": 74048913432
+      "beta": 0.7266,
+      "marketCap": 77205212903
     },
     "beta": {
-      "beta5y": 0.7231
+      "beta5y": 0.7266
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 27.6007,
-        "high": 28.2193,
-        "low": 27.5633,
-        "close": 28.1068,
-        "volume": 24966413
-      },
       {
         "date": "2025-10-15",
         "open": 28.0506,
@@ -7609,24 +7601,32 @@
         "high": 21.09,
         "low": 20.61,
         "close": 21.05,
-        "volume": 25823900
+        "volume": 25851900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 21.46,
+        "high": 22.08,
+        "low": 21.43,
+        "close": 21.77,
+        "volume": 32439400
       }
     ],
     "news": [
-      {
-        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
-        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
-        "type": "STORY"
-      },
       {
         "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
         "title": "Top Analyst Reports for Roche, Comcast & Eaton",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
+        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
         "type": "STORY"
       },
       {
@@ -7654,19 +7654,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
-        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d567be28-893c-3fff-93de-afee0d415d42",
         "title": "Altice (ATUS) To Report Earnings Tomorrow: Here Is What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
+        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
         "type": "STORY"
       },
       {
@@ -7761,18 +7761,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 6.76,
-        "industryAvg": 10.47
+        "value": 7.05,
+        "industryAvg": 10.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.59,
-        "industryAvg": 1.07
+        "value": 0.62,
+        "industryAvg": 1.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 0.82,
-        "industryAvg": 1.57
+        "value": 0.86,
+        "industryAvg": 1.59
       },
       {
         "metric": "ROE",

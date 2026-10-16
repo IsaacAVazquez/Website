@@ -1,10 +1,10 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.632,
-      "ttmPe": 28.9,
-      "marketCap": 83944135048,
-      "psRatio": 3.33,
-      "pbRatio": 28.44,
-      "pegRatio": 0.86
+      "ttmPe": 29.36,
+      "marketCap": 85264384392,
+      "psRatio": 3.39,
+      "pbRatio": 28.88,
+      "pegRatio": 0.88
     },
     "profitability": {
       "roe": 30.020000000000003,
@@ -6285,25 +6285,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.32,
-      "costOfEquity": 12.809999999999999,
+      "wacc": 11.360000000000001,
+      "costOfEquity": 12.83,
       "costOfDebt": 1.6099999999999999,
       "taxRate": 16,
-      "beta": 0.9926,
-      "marketCap": 83944135048
+      "beta": 0.9947,
+      "marketCap": 85264384392
     },
     "beta": {
-      "beta5y": 0.9926
+      "beta5y": 0.9947
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 149.27,
-        "high": 153.71,
-        "low": 149.27,
-        "close": 152.53,
-        "volume": 2604800
-      },
       {
         "date": "2025-10-15",
         "open": 153.69,
@@ -8311,6 +8303,14 @@
         "low": 162.15,
         "close": 164.46,
         "volume": 2697700
+      },
+      {
+        "date": "2026-10-15",
+        "open": 165.94,
+        "high": 167.03,
+        "low": 164.64,
+        "close": 165.33,
+        "volume": 3568300
       }
     ],
     "news": [
@@ -8339,19 +8339,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
-        "title": "3M Annual Meeting Results",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "851ab5aa-5348-3d05-8328-b9a523adc9fb",
         "title": "3M Board Declares Quarterly Dividend",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/3m-board-declares-quarterly-dividend-201500097.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
+        "title": "3M Annual Meeting Results",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
         "type": "STORY"
       },
       {
@@ -8363,19 +8363,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
-        "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
         "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
+        "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
         "type": "STORY"
       },
       {
@@ -8457,18 +8457,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.9,
-        "industryAvg": 13.19
+        "value": 29.36,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.33,
-        "industryAvg": 1.55
+        "value": 3.39,
+        "industryAvg": 1.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.44,
-        "industryAvg": 2.73
+        "value": 28.88,
+        "industryAvg": 2.71
       },
       {
         "metric": "ROE",

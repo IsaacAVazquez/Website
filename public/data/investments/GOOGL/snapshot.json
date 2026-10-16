@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 17.77,
-      "marketCap": 4326729400000,
-      "psRatio": 9.7,
-      "pbRatio": 6.76,
+      "ttmPe": 17.54,
+      "marketCap": 4270960600000,
+      "psRatio": 9.58,
+      "pbRatio": 6.67,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5800,25 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.000000000000002,
-      "costOfEquity": 14.34,
+      "wacc": 14.01,
+      "costOfEquity": 14.360000000000001,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.1913,
-      "marketCap": 4326729400000
+      "beta": 1.1915,
+      "marketCap": 4270960600000
     },
     "beta": {
-      "beta5y": 1.1913
+      "beta5y": 1.1915
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 241.23,
-        "high": 247.12,
-        "low": 240.51,
-        "close": 245.45,
-        "volume": 22111600
-      },
       {
         "date": "2025-10-15",
         "open": 247.25,
@@ -7825,7 +7817,15 @@
         "high": 359.4,
         "low": 346.34,
         "close": 347.64,
-        "volume": 27835000
+        "volume": 28018500
+      },
+      {
+        "date": "2026-10-15",
+        "open": 344.7,
+        "high": 352.15,
+        "low": 340.61,
+        "close": 349.22,
+        "volume": 21287700
       }
     ],
     "news": [
@@ -7838,19 +7838,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
         "title": "Top Research Reports for Alphabet, IBM & RTX",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
         "type": "STORY"
       },
       {
@@ -7862,27 +7862,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
         "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-        "title": "Sector Update: Consumer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
         "type": "STORY"
       },
       {
@@ -7894,19 +7886,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
-        "title": "Magnificent 7 May Need to Make Room for Broadcom",
-        "publisher": "The Daily Upside",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
         "type": "STORY"
       },
       {
-        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
-        "title": "3 Growth Stocks to Buy and Forget About",
+        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
+        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
+        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
+        "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
         "type": "STORY"
       }
     ],
@@ -7980,18 +7980,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.77,
-        "industryAvg": 19.08
+        "value": 17.54,
+        "industryAvg": 18.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.7,
-        "industryAvg": 8.74
+        "value": 9.58,
+        "industryAvg": 8.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.76,
-        "industryAvg": 6.36
+        "value": 6.67,
+        "industryAvg": 6.25
       },
       {
         "metric": "ROE",

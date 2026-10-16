@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Conglomerates",
       "sector": "Industrials",
-      "longBusinessSummary": "Honeywell International Inc. engages in the industrial automation, building automation, and energy and sustainability solutions businesses in the United States, Europe, and internationally. The Industrial Automation segment provides automation control and instrumentation products and services; smart energy products; sensing technologies, including custom-engineered sensors and related services; gas detection technologies and personal protective equipment; and system design automation equipment, as well as software and analytics for manufacturing, distribution, and fulfillment operations. The Building Automation segment provides software applications for building control and optimization; sensors, switches, control systems, and instruments for energy management; access control; video surveillance; fire products; and installation, maintenance, and system upgrade services. The Energy and Sustainability Solutions segment, through its UOP business, delivers licensed process technology, equipment, engineering, catalysts, adsorbents, and services for refining, petrochemicals, low-carbon energy, gas and LNG, and industrial solutions, as well as connectivity, data integration, and software solutions. The company was formerly known as AlliedSignal, Inc. Honeywell International Inc. was founded in 1885 and is headquartered in Charlotte, North Carolina.",
+      "longBusinessSummary": "Honeywell International Inc. engages in the industrial automation, building automation, and energy and sustainability solutions businesses in the United States, Europe, and internationally. The Industrial Automation segment provides automation control and instrumentation products and services; smart energy products; sensing technologies, including custom-engineered sensors and related services; gas detection technologies and personal protective equipment; and system design automation equipment, as well as software and analytics for manufacturing, distribution, and fulfillment operations. The Building Automation segment provides software applications for building control and optimization; sensors, switches, control systems, and instruments for energy management; access control; video surveillance; fire products; and installation, maintenance, and system upgrade services. The Energy and Sustainability Solutions segment, through its UOP business, delivers licensed process technology, equipment, engineering, catalysts, adsorbents, and services for refining, petrochemicals, low-carbon energy, gas and LNG, and industrial solutions, as well as connectivity, data integration, and software solutions. The company also offers Forge Cognition, a self-contained agentic AI and simulation platform for facility operations. The company was formerly known as AlliedSignal, Inc. Honeywell International Inc. was founded in 1885 and is headquartered in Charlotte, North Carolina.",
       "fullTimeEmployees": 101000,
       "website": "https://www.honeywell.com",
       "shortName": "Honeywell International Inc.",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 27.0441,
-      "ttmPe": 7.66,
-      "marketCap": 65698492600,
-      "psRatio": 1.82,
-      "pbRatio": 3.54,
+      "ttmPe": 7.78,
+      "marketCap": 66715870000,
+      "psRatio": 1.85,
+      "pbRatio": 3.6,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6494,25 +6494,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.86,
+      "wacc": 7.9,
       "costOfEquity": 11.49,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 21,
-      "beta": 0.8197,
-      "marketCap": 65698492600
+      "beta": 0.822,
+      "marketCap": 66715870000
     },
     "beta": {
-      "beta5y": 0.8197
+      "beta5y": 0.822
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 199.0978,
-        "high": 206.3235,
-        "low": 199.0286,
-        "close": 206.2049,
-        "volume": 4097440
-      },
       {
         "date": "2025-10-15",
         "open": 206.373,
@@ -8520,23 +8512,31 @@
         "low": 206.25,
         "close": 207.61,
         "volume": 2982600
+      },
+      {
+        "date": "2026-10-15",
+        "open": 208.88,
+        "high": 210.8,
+        "low": 206.62,
+        "close": 210.5,
+        "volume": 2323000
       }
     ],
     "news": [
-      {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
       {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8548,19 +8548,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9be5b1f5-c0a9-3093-aa30-e284c8d42a92",
-        "title": "Top Stock Reports for Meta Platforms, Honeywell & Automatic Data Processing",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-meta-platforms-203100625.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fddfa91c-cd65-3c95-af50-ad968127c78c",
         "title": "The Zacks Analyst Blog Highlights Meta Platforms, Honeywell International and Automatic Data Processing",
         "publisher": "Zacks",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-meta-134100075.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9be5b1f5-c0a9-3093-aa30-e284c8d42a92",
+        "title": "Top Stock Reports for Meta Platforms, Honeywell & Automatic Data Processing",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-meta-platforms-203100625.html",
         "type": "STORY"
       },
       {
@@ -8580,14 +8580,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
-        "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
         "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
         "publisher": "The Wall Street Journal",
@@ -8596,11 +8588,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8f56767b-647b-39f8-bdb1-a18c334b5a17",
-        "title": "Honeywell Stock Is Rising. An Activist Is Joining the Board.",
-        "publisher": "Barrons.com",
+        "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
+        "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "7c53ca89-6899-3d5f-a8b1-a1ed469f6f47",
+        "title": "Argus Research Adjusts Honeywell International Price Target to $250 From $240",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/8f56767b-647b-39f8-bdb1-a18c334b5a17/honeywell-stock-is-rising.-an.html",
+        "link": "https://finance.yahoo.com/news/argus-research-adjusts-honeywell-international-120140450.html",
         "type": "STORY"
       }
     ],
@@ -8665,18 +8665,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.66,
-        "industryAvg": 13.19
+        "value": 7.78,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.82,
-        "industryAvg": 1.55
+        "value": 1.85,
+        "industryAvg": 1.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.54,
-        "industryAvg": 2.73
+        "value": 3.6,
+        "industryAvg": 2.71
       },
       {
         "metric": "ROE",

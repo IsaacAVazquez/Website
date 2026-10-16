@@ -1,10 +1,10 @@
 {
   "symbol": "ROP",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 24.1307,
-      "ttmPe": 15.27,
-      "marketCap": 36435749000,
-      "psRatio": 4.4,
-      "pbRatio": 1.95,
+      "ttmPe": 15.85,
+      "marketCap": 37824305000,
+      "psRatio": 4.57,
+      "pbRatio": 2.02,
       "pegRatio": 0.07
     },
     "profitability": {
@@ -5898,25 +5898,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.41,
-      "costOfEquity": 10.75,
+      "wacc": 8.44,
+      "costOfEquity": 10.7,
       "costOfDebt": 0.98,
       "taxRate": 11,
-      "beta": 0.7237,
-      "marketCap": 36435749000
+      "beta": 0.7212,
+      "marketCap": 37824305000
     },
     "beta": {
-      "beta5y": 0.7237
+      "beta5y": 0.7212
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 508.4,
-        "high": 515.32,
-        "low": 506.79,
-        "close": 513.82,
-        "volume": 712600
-      },
       {
         "date": "2025-10-15",
         "open": 507.8,
@@ -7924,6 +7916,14 @@
         "low": 367.7,
         "close": 372.69,
         "volume": 681800
+      },
+      {
+        "date": "2026-10-15",
+        "open": 380.15,
+        "high": 386.46,
+        "low": 378.21,
+        "close": 382.45,
+        "volume": 867700
       }
     ],
     "news": [
@@ -7944,6 +7944,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
+        "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "928928c5-6cc3-3dc6-9264-28ec07580766",
         "title": "Stifel Adjusts Price Target on Roper Technologies to $650 From $685, Maintains Buy Rating",
         "publisher": "MT Newswires",
@@ -7960,11 +7968,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f91cd02-a180-39fe-a2f7-ddc9aa3fb029",
-        "title": "JPMorgan Adjusts Price Target on Roper Technologies to $470 From $465, Maintains Neutral Rating",
+        "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
+        "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-roper-094652421.html",
+        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
         "type": "STORY"
       },
       {
@@ -7976,27 +7984,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
-        "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
+        "uuid": "1f91cd02-a180-39fe-a2f7-ddc9aa3fb029",
+        "title": "JPMorgan Adjusts Price Target on Roper Technologies to $470 From $465, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
-        "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "0c60e5f6-ca6f-34cb-92b4-bf432f11ac42",
-        "title": "Roper Technologies, Inc. (ROP): Among Charles Akre’s and John Neff’s Stock Picks With Huge Upside Potential",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/roper-technologies-inc-rop-among-182436669.html",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-roper-094652421.html",
         "type": "STORY"
       },
       {
@@ -8005,6 +7997,14 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/does-roper-technologies-rop-hold-113742542.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0c60e5f6-ca6f-34cb-92b4-bf432f11ac42",
+        "title": "Roper Technologies, Inc. (ROP): Among Charles Akre’s and John Neff’s Stock Picks With Huge Upside Potential",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/roper-technologies-inc-rop-among-182436669.html",
         "type": "STORY"
       }
     ],
@@ -8070,18 +8070,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.27,
-        "industryAvg": 26.67
+        "value": 15.85,
+        "industryAvg": 27.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.4,
-        "industryAvg": 5.09
+        "value": 4.57,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.95,
-        "industryAvg": 5.69
+        "value": 2.02,
+        "industryAvg": 5.83
       },
       {
         "metric": "ROE",

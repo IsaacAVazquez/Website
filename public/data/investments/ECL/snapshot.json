@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     },
     "retainedSections": [
       "industry"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.4543,
-      "ttmPe": 38.32,
-      "marketCap": 80078667876,
-      "psRatio": 4.75,
-      "pbRatio": 7.96,
-      "pegRatio": 11.98
+      "ttmPe": 39.01,
+      "marketCap": 81522360166,
+      "psRatio": 4.84,
+      "pbRatio": 8.11,
+      "pegRatio": 12.19
     },
     "profitability": {
       "roe": 5.33,
@@ -6124,24 +6124,16 @@
     },
     "wacc": {
       "wacc": 10.18,
-      "costOfEquity": 11.86,
+      "costOfEquity": 11.83,
       "costOfDebt": 0.64,
       "taxRate": 22,
-      "beta": 0.8675,
-      "marketCap": 80078667876
+      "beta": 0.8663,
+      "marketCap": 81522360166
     },
     "beta": {
-      "beta5y": 0.8675
+      "beta5y": 0.8663
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 269.78,
-        "high": 274.33,
-        "low": 269.11,
-        "close": 273.03,
-        "volume": 1234200
-      },
       {
         "date": "2025-10-15",
         "open": 272.67,
@@ -8149,6 +8141,14 @@
         "low": 284.37,
         "close": 287.71,
         "volume": 1098600
+      },
+      {
+        "date": "2026-10-15",
+        "open": 292.15,
+        "high": 295.95,
+        "low": 290.38,
+        "close": 290.81,
+        "volume": 1947600
       }
     ],
     "news": [
@@ -8185,19 +8185,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
-        "title": "Was Jim Cramer Right About Ecolab (ECL)?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/jim-cramer-ecolab-ecl-190549111.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
         "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
+        "title": "Was Jim Cramer Right About Ecolab (ECL)?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/jim-cramer-ecolab-ecl-190549111.html",
         "type": "STORY"
       },
       {
@@ -8217,19 +8217,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
-        "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
         "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
         "publisher": "Business Wire",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
+        "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
         "type": "STORY"
       }
     ],

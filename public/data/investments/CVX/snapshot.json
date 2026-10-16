@@ -1,10 +1,10 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.4306,
-      "ttmPe": 20.87,
-      "marketCap": 430184685149,
-      "psRatio": 2.06,
-      "pbRatio": 2.27,
-      "pegRatio": 0.06
+      "ttmPe": 21.03,
+      "marketCap": 433326161516,
+      "psRatio": 2.08,
+      "pbRatio": 2.28,
+      "pegRatio": 0.07
     },
     "profitability": {
       "roe": 6.460000000000001,
@@ -5447,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.32,
-      "costOfEquity": 8.98,
+      "wacc": 8.260000000000002,
+      "costOfEquity": 8.91,
       "costOfDebt": 0.95,
       "taxRate": 27,
-      "beta": 0.4928,
-      "marketCap": 430184685149
+      "beta": 0.4898,
+      "marketCap": 433326161516
     },
     "beta": {
-      "beta5y": 0.4928
+      "beta5y": 0.4898
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 149.81,
-        "high": 153.46,
-        "low": 149.66,
-        "close": 152.39,
-        "volume": 6419400
-      },
       {
         "date": "2025-10-15",
         "open": 152.9,
@@ -7472,7 +7464,15 @@
         "high": 222.55,
         "low": 218.54,
         "close": 222.04,
-        "volume": 9491700
+        "volume": 9505100
+      },
+      {
+        "date": "2026-10-15",
+        "open": 222.82,
+        "high": 223.46,
+        "low": 218.05,
+        "close": 219.32,
+        "volume": 7100200
       }
     ],
     "news": [
@@ -7525,19 +7525,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
-        "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-15",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "37f5738b-07b3-30fa-a06f-536929356258",
         "title": "Top Analyst Reports for Bank of America, Chevron & Stryker",
         "publisher": "Zacks",
         "reportDate": "2025-04-15",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-bank-america-211500618.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
+        "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-15",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
         "type": "STORY"
       },
       {
@@ -7627,18 +7627,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.87,
-        "industryAvg": 12.54
+        "value": 21.03,
+        "industryAvg": 12.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.06,
-        "industryAvg": 1.08
+        "value": 2.08,
+        "industryAvg": 1.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.27,
-        "industryAvg": 1.71
+        "value": 2.28,
+        "industryAvg": 1.7
       },
       {
         "metric": "ROE",

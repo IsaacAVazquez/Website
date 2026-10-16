@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1718,
-      "ttmPe": 64.48,
-      "marketCap": 257940624000,
-      "psRatio": 24.47,
-      "pbRatio": 17.43,
-      "pegRatio": 1.79
+      "ttmPe": 58.51,
+      "marketCap": 234053496000,
+      "psRatio": 22.2,
+      "pbRatio": 15.82,
+      "pegRatio": 1.63
     },
     "profitability": {
       "roe": 8.58,
@@ -5320,17 +5320,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.5492
+      "beta5y": 1.5513
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 142.985,
-        "high": 143.02,
-        "low": 136.79,
-        "close": 138.79,
-        "volume": 13672400
-      },
       {
         "date": "2025-10-15",
         "open": 140.42,
@@ -7337,7 +7329,15 @@
         "high": 203.68,
         "low": 193.3,
         "close": 195.42,
-        "volume": 5941000
+        "volume": 5961900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 187.97,
+        "high": 188.66,
+        "low": 178.471,
+        "close": 185.58,
+        "volume": 10311500
       }
     ],
     "news": [
@@ -7374,19 +7374,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
-        "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4da000f1-5e34-311b-ab91-cafccc27f54d",
         "title": "Zacks Investment Ideas feature highlights: Arista Networks, Apple and Applied Industrial Technologies",
         "publisher": "Zacks",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-132600703.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc02e84f-6989-34d6-a08b-93c18e28509b",
+        "title": "Buy 5 Big AI Laggards of Q1 That Found Wings and Soared Past Month",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/buy-5-big-ai-laggards-130000558.html",
         "type": "STORY"
       },
       {
@@ -7481,18 +7481,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 64.48,
-        "industryAvg": 28.12
+        "value": 58.51,
+        "industryAvg": 25.21
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.47,
-        "industryAvg": 4.07
+        "value": 22.2,
+        "industryAvg": 3.65
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.43,
-        "industryAvg": 8.24
+        "value": 15.82,
+        "industryAvg": 7.65
       },
       {
         "metric": "ROE",

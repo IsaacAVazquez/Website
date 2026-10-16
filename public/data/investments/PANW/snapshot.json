@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 774.69,
-      "marketCap": 323579450000,
-      "psRatio": 28.19,
-      "pbRatio": 11.77,
+      "ttmPe": 722.48,
+      "marketCap": 301770050000,
+      "psRatio": 26.29,
+      "pbRatio": 10.98,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,25 +5904,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.29,
-      "costOfEquity": 12.389999999999999,
+      "wacc": 12.3,
+      "costOfEquity": 12.4,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9373,
-      "marketCap": 323579450000
+      "beta": 0.939,
+      "marketCap": 301770050000
     },
     "beta": {
-      "beta5y": 0.9373
+      "beta5y": 0.939
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 209.77,
-        "high": 210.8,
-        "low": 206.7,
-        "close": 207.56,
-        "volume": 4381700
-      },
       {
         "date": "2025-10-15",
         "open": 208.08,
@@ -7929,7 +7921,15 @@
         "high": 383.64,
         "low": 370.5,
         "close": 375.04,
-        "volume": 7142700
+        "volume": 7157800
+      },
+      {
+        "date": "2026-10-15",
+        "open": 367.05,
+        "high": 372.05,
+        "low": 361.68,
+        "close": 370.27,
+        "volume": 5604100
       }
     ],
     "news": [
@@ -7958,20 +7958,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
-        "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
         "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
+        "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "f5b81787-2ebe-34d1-92b0-5caff846147b",
@@ -8075,18 +8075,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 774.69,
-        "industryAvg": 35.16
+        "value": 722.48,
+        "industryAvg": 34.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 28.19,
-        "industryAvg": 8.06
+        "value": 26.29,
+        "industryAvg": 7.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.77,
-        "industryAvg": 8.97
+        "value": 10.98,
+        "industryAvg": 8.76
       },
       {
         "metric": "ROE",

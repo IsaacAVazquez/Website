@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -0.5498,
       "ttmPe": 141.68,
-      "marketCap": 165448106280,
-      "psRatio": 14.28,
-      "pbRatio": 3.78,
+      "marketCap": 168675976260,
+      "psRatio": 14.56,
+      "pbRatio": 3.85,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5381,25 +5381,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.13,
+      "wacc": 10.15,
       "costOfEquity": 11.24,
       "costOfDebt": 0.96,
       "taxRate": 3,
-      "beta": 0.7876,
-      "marketCap": 165448106280
+      "beta": 0.79,
+      "marketCap": 168675976260
     },
     "beta": {
-      "beta5y": 0.7876
+      "beta5y": 0.79
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 166.88,
-        "high": 169.48,
-        "low": 166.88,
-        "close": 169.34,
-        "volume": 3481500
-      },
       {
         "date": "2025-10-15",
         "open": 169,
@@ -7407,23 +7399,31 @@
         "low": 229.1,
         "close": 232.17,
         "volume": 3258000
+      },
+      {
+        "date": "2026-10-15",
+        "open": 236.53,
+        "high": 238.2,
+        "low": 233.2,
+        "close": 234.63,
+        "volume": 4153100
       }
     ],
     "news": [
-      {
-        "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
-        "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
         "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
+        "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
         "type": "STORY"
       },
       {
@@ -7459,14 +7459,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
-        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
         "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
         "publisher": "Zacks",
@@ -7475,11 +7467,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
-        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
+        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
+        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
         "type": "STORY"
       },
       {
@@ -7488,6 +7480,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/welltower-nyse-well-increases-dividend-174407979.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4f40111d-551f-37eb-97c5-15cf5acf2705",
+        "title": "Welltower's Q1 FFO & Revenues Beat Estimates, Same Store NOI Rises",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/welltowers-q1-ffo-revenues-beat-162300193.html",
         "type": "STORY"
       }
     ],
@@ -7554,17 +7554,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 72.01
+        "industryAvg": 73.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.28,
-        "industryAvg": 8.82
+        "value": 14.56,
+        "industryAvg": 8.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.78,
-        "industryAvg": 2.82
+        "value": 3.85,
+        "industryAvg": 2.86
       },
       {
         "metric": "ROE",

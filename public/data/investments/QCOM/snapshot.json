@@ -1,10 +1,10 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.6404,
-      "ttmPe": 20.47,
-      "marketCap": 186941020000,
-      "psRatio": 4.24,
-      "pbRatio": 6.76,
+      "ttmPe": 20.65,
+      "marketCap": 188568800000,
+      "psRatio": 4.28,
+      "pbRatio": 6.82,
       "pegRatio": 0.12
     },
     "profitability": {
@@ -5804,25 +5804,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.74,
-      "costOfEquity": 18.029999999999998,
+      "wacc": 16.85,
+      "costOfEquity": 18.14,
       "costOfDebt": 1.17,
       "taxRate": 19,
-      "beta": 1.6735,
-      "marketCap": 186941020000
+      "beta": 1.6786,
+      "marketCap": 188568800000
     },
     "beta": {
-      "beta5y": 1.6735
+      "beta5y": 1.6786
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 159.3,
-        "high": 164.27,
-        "low": 159.26,
-        "close": 161.74,
-        "volume": 8675200
-      },
       {
         "date": "2025-10-15",
         "open": 164.24,
@@ -7829,7 +7821,15 @@
         "high": 175.61,
         "low": 171.02,
         "close": 172.62,
-        "volume": 11143300
+        "volume": 11204800
+      },
+      {
+        "date": "2026-10-15",
+        "open": 169.31,
+        "high": 179.21,
+        "low": 168.84,
+        "close": 178.4,
+        "volume": 11780800
       }
     ],
     "news": [
@@ -7850,19 +7850,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "24997f10-d503-364e-97df-c293ed247214",
-        "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
         "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
         "publisher": "Just Auto",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "24997f10-d503-364e-97df-c293ed247214",
+        "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
         "type": "STORY"
       },
       {
@@ -7981,18 +7981,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.47,
-        "industryAvg": 29.44
+        "value": 20.65,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.24,
-        "industryAvg": 14.04
+        "value": 4.28,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.76,
-        "industryAvg": 12.19
+        "value": 6.82,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

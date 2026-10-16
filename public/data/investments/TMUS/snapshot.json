@@ -1,10 +1,10 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.5556,
-      "ttmPe": 16.09,
-      "marketCap": 165231709648,
-      "psRatio": 1.79,
-      "pbRatio": 2.94,
-      "pegRatio": 2.98
+      "ttmPe": 16.43,
+      "marketCap": 168778607728,
+      "psRatio": 1.83,
+      "pbRatio": 3,
+      "pegRatio": 3.04
     },
     "profitability": {
       "roe": 5.779999999999999,
@@ -5718,25 +5718,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.01,
-      "costOfEquity": 8.16,
+      "wacc": 5.029999999999999,
+      "costOfEquity": 8.129999999999999,
       "costOfDebt": 0.88,
       "taxRate": 25,
-      "beta": 0.385,
-      "marketCap": 165231709648
+      "beta": 0.3901,
+      "marketCap": 168778607728
     },
     "beta": {
-      "beta5y": 0.385
+      "beta5y": 0.3901
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 230,
-        "high": 230.65,
-        "low": 226.98,
-        "close": 229.42,
-        "volume": 3894200
-      },
       {
         "date": "2025-10-15",
         "open": 229.18,
@@ -7744,6 +7736,14 @@
         "low": 152.05,
         "close": 157.79,
         "volume": 7265900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 160.74,
+        "high": 163.17,
+        "low": 155.75,
+        "close": 157.03,
+        "volume": 5486000
       }
     ],
     "news": [
@@ -7836,13 +7836,6 @@
         "yearBorn": 1962
       },
       {
-        "name": "Mr. André Almeida",
-        "title": "Chief Commercial Officer",
-        "age": 48,
-        "yearBorn": 1977,
-        "totalPay": 117301
-      },
-      {
         "name": "Mr. Daniel J. Drobac",
         "title": "VP & Chief Accounting Officer",
         "age": 49,
@@ -7888,6 +7881,10 @@
         "totalPay": 8325344
       },
       {
+        "name": "Ms. Lucy McLellan",
+        "title": "Executive VP and Chief Brand & Communications Officer"
+      },
+      {
         "name": "Ms. Quan Yao C.F.A.",
         "title": "Senior Vice President of Investor Relations"
       }
@@ -7895,18 +7892,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.09,
-        "industryAvg": 10.47
+        "value": 16.43,
+        "industryAvg": 10.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.79,
-        "industryAvg": 1.07
+        "value": 1.83,
+        "industryAvg": 1.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.94,
-        "industryAvg": 1.57
+        "value": 3,
+        "industryAvg": 1.59
       },
       {
         "metric": "ROE",

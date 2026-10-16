@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4823,
-      "ttmPe": 119.09,
-      "marketCap": 227570749032,
-      "psRatio": 17.15,
-      "pbRatio": 17.94,
-      "pegRatio": 1.77
+      "ttmPe": 120.18,
+      "marketCap": 229659263724,
+      "psRatio": 17.31,
+      "pbRatio": 18.11,
+      "pegRatio": 1.79
     },
     "profitability": {
       "roe": 11.93,
@@ -5803,25 +5803,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.45,
-      "costOfEquity": 25.580000000000002,
+      "wacc": 25.56,
+      "costOfEquity": 25.69,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6592,
-      "marketCap": 227570749032
+      "beta": 2.6498,
+      "marketCap": 229659263724
     },
     "beta": {
-      "beta5y": 2.6592
+      "beta5y": 2.6498
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 148.42,
-        "high": 154.92,
-        "low": 145.16,
-        "close": 152.88,
-        "volume": 8698200
-      },
       {
         "date": "2025-10-15",
         "open": 154.95,
@@ -7828,7 +7820,15 @@
         "high": 179.2,
         "low": 170.22,
         "close": 172.5,
-        "volume": 8346400
+        "volume": 8357100
+      },
+      {
+        "date": "2026-10-15",
+        "open": 164.3,
+        "high": 178.31,
+        "low": 163.252,
+        "close": 178.14,
+        "volume": 10682100
       }
     ],
     "news": [
@@ -7865,19 +7865,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
-        "title": "Exploring High Growth US Tech Stocks for May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
         "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
+        "title": "Exploring High Growth US Tech Stocks for May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
         "type": "STORY"
       },
       {
@@ -7973,18 +7973,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 119.09,
-        "industryAvg": 26.67
+        "value": 120.18,
+        "industryAvg": 27.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.15,
-        "industryAvg": 5.09
+        "value": 17.31,
+        "industryAvg": 5.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.94,
-        "industryAvg": 5.69
+        "value": 18.11,
+        "industryAvg": 5.83
       },
       {
         "metric": "ROE",

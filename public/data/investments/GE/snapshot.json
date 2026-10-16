@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4841,
-      "ttmPe": 36.26,
-      "marketCap": 319185351875,
-      "psRatio": 6.3,
-      "pbRatio": 18.09,
-      "pegRatio": 1.86
+      "ttmPe": 36.77,
+      "marketCap": 323719500000,
+      "psRatio": 6.39,
+      "pbRatio": 18.35,
+      "pegRatio": 1.88
     },
     "profitability": {
       "roe": 13.28,
@@ -6864,25 +6864,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.25,
-      "costOfEquity": 16.11,
+      "wacc": 15.35,
+      "costOfEquity": 16.2,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 15,
-      "beta": 1.4233,
-      "marketCap": 319185351875
+      "beta": 1.428,
+      "marketCap": 323719500000
     },
     "beta": {
-      "beta5y": 1.4233
+      "beta5y": 1.428
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 294.84,
-        "high": 302.29,
-        "low": 292.01,
-        "close": 300.08,
-        "volume": 2516500
-      },
       {
         "date": "2025-10-15",
         "open": 301.54,
@@ -8890,6 +8882,14 @@
         "low": 305.09,
         "close": 307.02,
         "volume": 3302100
+      },
+      {
+        "date": "2026-10-15",
+        "open": 308.8,
+        "high": 312.18,
+        "low": 304.09,
+        "close": 312,
+        "volume": 3809200
       }
     ],
     "news": [
@@ -8918,19 +8918,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
-        "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
         "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
+        "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
         "type": "STORY"
       },
       {
@@ -9040,18 +9040,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.26,
-        "industryAvg": 31.62
+        "value": 36.77,
+        "industryAvg": 32.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.3,
-        "industryAvg": 2.8
+        "value": 6.39,
+        "industryAvg": 2.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.09,
-        "industryAvg": 8.67
+        "value": 18.35,
+        "industryAvg": 8.48
       },
       {
         "metric": "ROE",

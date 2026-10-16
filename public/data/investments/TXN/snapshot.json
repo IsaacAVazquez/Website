@@ -1,10 +1,10 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5732,
-      "ttmPe": 43.79,
-      "marketCap": 262807050000,
-      "psRatio": 13.51,
-      "pbRatio": 14.59,
-      "pegRatio": 0.85
+      "ttmPe": 42.46,
+      "marketCap": 254836560000,
+      "psRatio": 13.1,
+      "pbRatio": 14.15,
+      "pegRatio": 0.82
     },
     "profitability": {
       "roe": 11.32,
@@ -5592,25 +5592,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.079999999999998,
-      "costOfEquity": 15.840000000000002,
+      "wacc": 15.1,
+      "costOfEquity": 15.879999999999999,
       "costOfDebt": 1,
       "taxRate": 12,
-      "beta": 1.3873,
-      "marketCap": 262807050000
+      "beta": 1.3868,
+      "marketCap": 254836560000
     },
     "beta": {
-      "beta5y": 1.3873
+      "beta5y": 1.3868
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 171.97,
-        "high": 176.27,
-        "low": 171.45,
-        "close": 173.94,
-        "volume": 9919400
-      },
       {
         "date": "2025-10-15",
         "open": 174.02,
@@ -7618,6 +7610,14 @@
         "low": 278.9,
         "close": 280.65,
         "volume": 6921800
+      },
+      {
+        "date": "2026-10-15",
+        "open": 275.39,
+        "high": 282.51,
+        "low": 273.59,
+        "close": 279.12,
+        "volume": 6857500
       }
     ],
     "news": [
@@ -7627,14 +7627,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-04-12",
         "link": "https://finance.yahoo.com/news/top-midday-decliners-182911186.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
-        "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
         "type": "STORY"
       },
       {
@@ -7651,6 +7643,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
+        "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
         "type": "STORY"
       },
       {
@@ -7694,11 +7694,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "aef3881f-6223-3d99-9975-d3c24cfd8228",
-        "title": "Why the Market Dipped But Texas Instruments (TXN) Gained Today",
-        "publisher": "Zacks",
+        "uuid": "7b2cc4bf-9dd6-3dd1-8f5f-d7f25e81db45",
+        "title": "Texas Instruments Insiders Sell US$5.5m Of Stock, Possibly Signalling Caution",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/why-market-dipped-texas-instruments-215009732.html",
+        "link": "https://finance.yahoo.com/news/texas-instruments-insiders-sell-us-130022300.html",
         "type": "STORY"
       }
     ],
@@ -7765,18 +7765,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.79,
-        "industryAvg": 29.44
+        "value": 42.46,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.51,
-        "industryAvg": 14.04
+        "value": 13.1,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.59,
-        "industryAvg": 12.19
+        "value": 14.15,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

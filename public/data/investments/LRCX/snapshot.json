@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.7641,
-      "ttmPe": 52.24,
-      "marketCap": 376772318580,
-      "psRatio": 16.22,
-      "pbRatio": 30.21,
-      "pegRatio": 1.51
+      "ttmPe": 48.14,
+      "marketCap": 347179593880,
+      "psRatio": 14.94,
+      "pbRatio": 27.84,
+      "pegRatio": 1.39
     },
     "profitability": {
       "roe": 19.75,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.509999999999998,
-      "costOfEquity": 19.689999999999998,
+      "wacc": 19.66,
+      "costOfEquity": 19.86,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 11,
-      "beta": 1.8905,
-      "marketCap": 376772318580
+      "beta": 1.899,
+      "marketCap": 347179593880
     },
     "beta": {
-      "beta5y": 1.8905
+      "beta5y": 1.899
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 134.1,
-        "high": 140.92,
-        "low": 134.04,
-        "close": 138.31,
-        "volume": 10509700
-      },
       {
         "date": "2025-10-15",
         "open": 144,
@@ -7636,7 +7628,15 @@
         "high": 295.86,
         "low": 284.75,
         "close": 286.92,
-        "volume": 10330900
+        "volume": 10356700
+      },
+      {
+        "date": "2026-10-15",
+        "open": 275.19,
+        "high": 280.45,
+        "low": 266.12,
+        "close": 277.46,
+        "volume": 13398000
       }
     ],
     "news": [
@@ -7689,14 +7689,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "af0d9419-10be-3fc3-95c2-7602b7866c4f",
-        "title": "3 Reasons Growth Investors Will Love Lam Research (LRCX)",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/3-reasons-growth-investors-love-164507608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3fd416d3-44c0-32de-a211-5ceed23a66c3",
         "title": "Zacks Investment Ideas feature highlights: CyberArk, Lam Research and monday.com",
         "publisher": "Zacks",
@@ -7705,11 +7697,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
-        "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
+        "uuid": "af0d9419-10be-3fc3-95c2-7602b7866c4f",
+        "title": "3 Reasons Growth Investors Will Love Lam Research (LRCX)",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/3-reasons-growth-investors-love-164507608.html",
         "type": "STORY"
       },
       {
@@ -7718,6 +7710,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
+        "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
         "type": "STORY"
       }
     ],
@@ -7788,18 +7788,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 52.24,
-        "industryAvg": 50.52
+        "value": 48.14,
+        "industryAvg": 48.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.22,
-        "industryAvg": 13.72
+        "value": 14.94,
+        "industryAvg": 13.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 30.21,
-        "industryAvg": 19.25
+        "value": 27.84,
+        "industryAvg": 18.62
       },
       {
         "metric": "ROE",

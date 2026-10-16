@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.1735,
-      "ttmPe": 177.82,
-      "marketCap": 501412516990,
-      "psRatio": 81.45,
-      "pbRatio": 51.3,
-      "pegRatio": 0.79
+      "ttmPe": 170.86,
+      "marketCap": 481780848500,
+      "psRatio": 78.26,
+      "pbRatio": 49.29,
+      "pegRatio": 0.76
     },
     "profitability": {
       "roe": 11.65,
@@ -5142,25 +5142,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.72,
-      "costOfEquity": 17.73,
+      "wacc": 17.76,
+      "costOfEquity": 17.77,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.6343,
-      "marketCap": 501412516990
+      "beta": 1.6308,
+      "marketCap": 481780848500
     },
     "beta": {
-      "beta5y": 1.6343
+      "beta5y": 1.6308
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 176,
-        "high": 182.34,
-        "low": 170.82,
-        "close": 179.74,
-        "volume": 49261400
-      },
       {
         "date": "2025-10-15",
         "open": 181.655,
@@ -7167,7 +7159,15 @@
         "high": 209.29,
         "low": 199.74,
         "close": 200.97,
-        "volume": 24063200
+        "volume": 24263800
+      },
+      {
+        "date": "2026-10-15",
+        "open": 196.85,
+        "high": 200.91,
+        "low": 192.6,
+        "close": 200.5,
+        "volume": 24745000
       }
     ],
     "news": [
@@ -7180,19 +7180,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
-        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
         "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-03-14",
         "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
         "type": "STORY"
       },
       {
@@ -7320,18 +7320,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 177.82,
-        "industryAvg": 35.16
+        "value": 170.86,
+        "industryAvg": 34.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 81.45,
-        "industryAvg": 8.06
+        "value": 78.26,
+        "industryAvg": 7.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 51.3,
-        "industryAvg": 8.97
+        "value": 49.29,
+        "industryAvg": 8.76
       },
       {
         "metric": "ROE",

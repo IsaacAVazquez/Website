@@ -1,10 +1,10 @@
 {
   "symbol": "PLD",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.491,
-      "ttmPe": 29.74,
-      "marketCap": 124602951300,
-      "psRatio": 13.56,
-      "pbRatio": 2.32,
-      "pegRatio": 0.35
+      "ttmPe": 28.27,
+      "marketCap": 118435781640,
+      "psRatio": 12.89,
+      "pbRatio": 2.2,
+      "pegRatio": 0.33
     },
     "profitability": {
       "roe": 1.9800000000000002,
@@ -5534,25 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.77,
-      "costOfEquity": 15.010000000000002,
+      "wacc": 11.65,
+      "costOfEquity": 15.02,
       "costOfDebt": 0.76,
       "taxRate": 9,
-      "beta": 1.2788,
-      "marketCap": 124602951300
+      "beta": 1.2771,
+      "marketCap": 118435781640
     },
     "beta": {
-      "beta5y": 1.2788
+      "beta5y": 1.2771
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 112.55,
-        "high": 115.71,
-        "low": 111.81,
-        "close": 115.45,
-        "volume": 3150800
-      },
       {
         "date": "2025-10-15",
         "open": 116.67,
@@ -7560,6 +7552,14 @@
         "low": 129.72,
         "close": 130.46,
         "volume": 6466100
+      },
+      {
+        "date": "2026-10-15",
+        "open": 132.04,
+        "high": 132.39,
+        "low": 126.15,
+        "close": 126.94,
+        "volume": 6937700
       }
     ],
     "news": [
@@ -7667,12 +7667,12 @@
         "totalPay": 1630001
       },
       {
-        "name": "Mr. Justin Meng",
-        "title": "Senior VP & Head of Investor Relations"
+        "name": "Mr. Jan Kneisel",
+        "title": "Chief Compliance Officer"
       },
       {
-        "name": "Mr. Sineesh Keshav",
-        "title": "Chief Technical Officer & Chief Technology Officer"
+        "name": "Mr. Justin Meng",
+        "title": "Senior VP & Head of Investor Relations"
       },
       {
         "name": "Mr. Timothy D. Arndt",
@@ -7706,18 +7706,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.74,
-        "industryAvg": 28.45
+        "value": 28.27,
+        "industryAvg": 27.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.56,
-        "industryAvg": 8.54
+        "value": 12.89,
+        "industryAvg": 8.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.32,
-        "industryAvg": 2.34
+        "value": 2.2,
+        "industryAvg": 2.25
       },
       {
         "metric": "ROE",

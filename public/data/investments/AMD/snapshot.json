@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.8966,
-      "ttmPe": 155.4,
-      "marketCap": 988224960000,
-      "psRatio": 23.93,
-      "pbRatio": 14.7,
-      "pegRatio": 0.98
+      "ttmPe": 144.29,
+      "marketCap": 917559360000,
+      "psRatio": 22.21,
+      "pbRatio": 13.65,
+      "pegRatio": 0.91
     },
     "profitability": {
       "roe": 3.49,
@@ -6017,25 +6017,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.849999999999998,
-      "costOfEquity": 23.95,
+      "wacc": 24.03,
+      "costOfEquity": 24.14,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 10,
-      "beta": 2.4465,
-      "marketCap": 988224960000
+      "beta": 2.451,
+      "marketCap": 917559360000
     },
     "beta": {
-      "beta5y": 2.4465
+      "beta5y": 2.451
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 219.2,
-        "high": 224.98,
-        "low": 215.9,
-        "close": 218.09,
-        "volume": 71216300
-      },
       {
         "date": "2025-10-15",
         "open": 222.71,
@@ -8042,7 +8034,15 @@
         "high": 591.88,
         "low": 567,
         "close": 570.82,
-        "volume": 22070500
+        "volume": 22319500
+      },
+      {
+        "date": "2026-10-15",
+        "open": 540,
+        "high": 568.62,
+        "low": 530.09,
+        "close": 562.23,
+        "volume": 28740600
       }
     ],
     "news": [
@@ -8063,19 +8063,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9eeeb70a-4a36-3460-aa56-174cd3b4e291",
-        "title": "AMD downgraded, Dollar General upgraded: Wall Street’s top analyst calls",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/amd-downgraded-dollar-general-upgraded-133520598.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "38332cb6-375c-3d3f-866e-110979b991dc",
         "title": "1 of Wall Street’s Favorite Stock to Keep an Eye On and 2 to Avoid",
         "publisher": "StockStory",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-130304939.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9eeeb70a-4a36-3460-aa56-174cd3b4e291",
+        "title": "AMD downgraded, Dollar General upgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/amd-downgraded-dollar-general-upgraded-133520598.html",
         "type": "STORY"
       },
       {
@@ -8111,19 +8111,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
-        "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
         "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
+        "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
         "type": "VIDEO"
       }
     ],
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 155.4,
-        "industryAvg": 29.44
+        "value": 144.29,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 23.93,
-        "industryAvg": 14.04
+        "value": 22.21,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.7,
-        "industryAvg": 12.19
+        "value": 13.65,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

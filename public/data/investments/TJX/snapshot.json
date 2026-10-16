@@ -1,10 +1,10 @@
 {
   "symbol": "TJX",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4067,
-      "ttmPe": 26.17,
-      "marketCap": 155804217873,
-      "psRatio": 2.5,
-      "pbRatio": 14.63,
-      "pegRatio": 1.11
+      "ttmPe": 26.74,
+      "marketCap": 159206826066,
+      "psRatio": 2.55,
+      "pbRatio": 14.95,
+      "pegRatio": 1.14
     },
     "profitability": {
       "roe": 14.44,
@@ -5504,25 +5504,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.89,
-      "costOfEquity": 9.700000000000001,
+      "wacc": 8.85,
+      "costOfEquity": 9.64,
       "costOfDebt": 0.13,
       "taxRate": 25,
-      "beta": 0.5867,
-      "marketCap": 155804217873
+      "beta": 0.5839,
+      "marketCap": 159206826066
     },
     "beta": {
-      "beta5y": 0.5867
+      "beta5y": 0.5839
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 141.41,
-        "high": 144.36,
-        "low": 141.16,
-        "close": 144.1,
-        "volume": 4431800
-      },
       {
         "date": "2025-10-15",
         "open": 144.01,
@@ -7530,6 +7522,14 @@
         "low": 141.23,
         "close": 142.83,
         "volume": 6884700
+      },
+      {
+        "date": "2026-10-15",
+        "open": 145.29,
+        "high": 146.52,
+        "low": 143.84,
+        "close": 144.58,
+        "volume": 8959100
       }
     ],
     "news": [
@@ -7558,19 +7558,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
         "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
         "type": "STORY"
       },
       {
@@ -7598,19 +7598,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e678c910-efc6-3e2e-b7d7-30f7395f728e",
-        "title": "TJX Earnings and Sales Surpass Estimates in Q1, Comp Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/tjx-earnings-sales-surpass-estimates-145700362.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9a965619-0d00-38cd-8688-ecf9a8d18f7f",
         "title": "Q1 Retailers Report Earnings: TGT Misses, LOW & TJX Beat",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/q1-retailers-report-earnings-tgt-142600297.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "13938a79-8fd7-324f-becb-ec38238bc7db",
+        "title": "Earnings Data Deluge",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/earnings-data-deluge-145600062.html",
         "type": "STORY"
       }
     ],
@@ -7679,18 +7679,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.17,
-        "industryAvg": 22
+        "value": 26.74,
+        "industryAvg": 22.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.5,
-        "industryAvg": 2.23
+        "value": 2.55,
+        "industryAvg": 2.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.63,
-        "industryAvg": 7.82
+        "value": 14.95,
+        "industryAvg": 8.05
       },
       {
         "metric": "ROE",

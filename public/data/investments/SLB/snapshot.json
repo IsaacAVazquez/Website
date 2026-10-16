@@ -1,10 +1,10 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0602,
-      "ttmPe": 23.67,
-      "marketCap": 72381663864,
-      "psRatio": 1.99,
-      "pbRatio": 2.78,
+      "ttmPe": 23.48,
+      "marketCap": 71788006584,
+      "psRatio": 1.97,
+      "pbRatio": 2.75,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -6018,25 +6018,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.950000000000001,
-      "costOfEquity": 11.57,
+      "wacc": 9.93,
+      "costOfEquity": 11.559999999999999,
       "costOfDebt": 1,
       "taxRate": 20,
-      "beta": 0.8301,
-      "marketCap": 72381663864
+      "beta": 0.8315,
+      "marketCap": 71788006584
     },
     "beta": {
-      "beta5y": 0.8301
+      "beta5y": 0.8315
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 31.75,
-        "high": 32.76,
-        "low": 31.69,
-        "close": 32.57,
-        "volume": 13014200
-      },
       {
         "date": "2025-10-15",
         "open": 32.84,
@@ -8044,6 +8036,14 @@
         "low": 47.76,
         "close": 48.51,
         "volume": 9844300
+      },
+      {
+        "date": "2026-10-15",
+        "open": 48.27,
+        "high": 48.4,
+        "low": 47.17,
+        "close": 48.37,
+        "volume": 9186300
       }
     ],
     "news": [
@@ -8064,19 +8064,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d7aa2e46-6844-32d4-9e99-1b31a3887eed",
-        "title": "Schlumberger Ltd (SLB) Q1 2025 Earnings Call Highlights: Navigating Challenges with Digital ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-26",
-        "link": "https://finance.yahoo.com/news/schlumberger-ltd-slb-q1-2025-070452790.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
         "title": "Why Schlumberger Stock Slumped on Friday",
         "publisher": "Motley Fool",
         "reportDate": "2025-04-26",
         "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d7aa2e46-6844-32d4-9e99-1b31a3887eed",
+        "title": "Schlumberger Ltd (SLB) Q1 2025 Earnings Call Highlights: Navigating Challenges with Digital ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-26",
+        "link": "https://finance.yahoo.com/news/schlumberger-ltd-slb-q1-2025-070452790.html",
         "type": "STORY"
       },
       {
@@ -8104,11 +8104,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
-        "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
-        "publisher": "Insider Monkey",
+        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
+        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
+        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
         "type": "STORY"
       },
       {
@@ -8120,11 +8120,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
-        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
-        "publisher": "Business Wire",
+        "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
+        "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
+        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
         "type": "STORY"
       }
     ],
@@ -8194,18 +8194,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.67,
-        "industryAvg": 20.89
+        "value": 23.48,
+        "industryAvg": 20.3
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.99,
-        "industryAvg": 1.79
+        "value": 1.97,
+        "industryAvg": 1.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.78,
-        "industryAvg": 1.86
+        "value": 2.75,
+        "industryAvg": 1.8
       },
       {
         "metric": "ROE",

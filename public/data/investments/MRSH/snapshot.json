@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1723,
-      "ttmPe": 21.66,
-      "marketCap": 84597061725,
-      "psRatio": 3.03,
-      "pbRatio": 5.57,
-      "pegRatio": 2.94
+      "ttmPe": 22.83,
+      "marketCap": 89151663150,
+      "psRatio": 3.19,
+      "pbRatio": 5.87,
+      "pegRatio": 3.1
     },
     "profitability": {
       "roe": 8.51,
@@ -3507,25 +3507,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.670000000000001,
-      "costOfEquity": 9.47,
+      "wacc": 7.7,
+      "costOfEquity": 9.42,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
-      "beta": 0.5562,
-      "marketCap": 84597061725
+      "beta": 0.5554,
+      "marketCap": 89151663150
     },
     "beta": {
-      "beta5y": 0.5562
+      "beta5y": 0.5554
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 205.77,
-        "high": 207.28,
-        "low": 204.51,
-        "close": 207.02,
-        "volume": 2013000
-      },
       {
         "date": "2025-10-15",
         "open": 205.29,
@@ -5533,6 +5525,14 @@
         "low": 176.44,
         "close": 178.4,
         "volume": 2472000
+      },
+      {
+        "date": "2026-10-15",
+        "open": 182.8,
+        "high": 191.04,
+        "low": 181.2,
+        "close": 186.54,
+        "volume": 4228800
       }
     ],
     "news": [
@@ -5553,6 +5553,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
+        "title": "Davos CEO Brief for Monday, January 19, 2026",
+        "publisher": "WSJ",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
         "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
         "publisher": "Insider Monkey",
@@ -5569,27 +5577,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
-        "title": "Davos CEO Brief for Monday, January 19, 2026",
-        "publisher": "WSJ",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "171d5505-dc56-3308-a908-b956a0833613",
         "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
-        "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
         "type": "STORY"
       },
       {
@@ -5601,11 +5593,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f0b7d32-adff-37f9-bfc0-193e2def2181",
-        "title": "Is Marsh & McLennan (MRSH) Offering Value After Its Recent One Year Share Price Decline?",
+        "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
+        "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
         "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-22",
-        "link": "https://finance.yahoo.com/news/marsh-mclennan-mrsh-offering-value-221523006.html",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
         "type": "STORY"
       },
       {
@@ -5614,6 +5606,14 @@
         "publisher": "Zacks",
         "reportDate": "2026-01-22",
         "link": "https://finance.yahoo.com/news/marsh-mrsh-reports-next-week-150018511.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f0b7d32-adff-37f9-bfc0-193e2def2181",
+        "title": "Is Marsh & McLennan (MRSH) Offering Value After Its Recent One Year Share Price Decline?",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-22",
+        "link": "https://finance.yahoo.com/news/marsh-mclennan-mrsh-offering-value-221523006.html",
         "type": "STORY"
       }
     ],
@@ -5685,18 +5685,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.66,
-        "industryAvg": 20.8
+        "value": 22.83,
+        "industryAvg": 21.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.03,
-        "industryAvg": 2.96
+        "value": 3.19,
+        "industryAvg": 3.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.57,
-        "industryAvg": 3.72
+        "value": 5.87,
+        "industryAvg": 3.91
       },
       {
         "metric": "ROE",

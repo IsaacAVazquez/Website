@@ -1,10 +1,10 @@
 {
   "symbol": "STZ",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.1501,
-      "ttmPe": 11.4,
-      "marketCap": 21575537654,
-      "psRatio": 2.38,
-      "pbRatio": 2.61,
-      "pegRatio": 0.45
+      "ttmPe": 11.62,
+      "marketCap": 22003448522,
+      "psRatio": 2.43,
+      "pbRatio": 2.67,
+      "pegRatio": 0.46
     },
     "profitability": {
       "roe": 8,
@@ -6203,25 +6203,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.970000000000001,
-      "costOfEquity": 8.53,
+      "wacc": 5.92,
+      "costOfEquity": 8.4,
       "costOfDebt": 0.83,
       "taxRate": 12,
-      "beta": 0.4334,
-      "marketCap": 21575537654
+      "beta": 0.4253,
+      "marketCap": 22003448522
     },
     "beta": {
-      "beta5y": 0.4334
+      "beta5y": 0.4253
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 140.2,
-        "high": 142.05,
-        "low": 139.8,
-        "close": 141.24,
-        "volume": 2969300
-      },
       {
         "date": "2025-10-15",
         "open": 140.57,
@@ -8229,6 +8221,14 @@
         "low": 125.58,
         "close": 127.41,
         "volume": 2274600
+      },
+      {
+        "date": "2026-10-15",
+        "open": 128.99,
+        "high": 131.84,
+        "low": 128.7,
+        "close": 129.58,
+        "volume": 2102000
       }
     ],
     "news": [
@@ -8297,19 +8297,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4dfed969-a57e-390c-b7a0-861961cd04d9",
-        "title": "NYSE Content Advisory: Pre-Market update + Warren Buffett to step down as Berkshire Hathaway CEO",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500699.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
         "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
         "publisher": "Zacks",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4dfed969-a57e-390c-b7a0-861961cd04d9",
+        "title": "NYSE Content Advisory: Pre-Market update + Warren Buffett to step down as Berkshire Hathaway CEO",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500699.html",
         "type": "STORY"
       }
     ],
@@ -8377,18 +8377,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.4,
-        "industryAvg": 15.74
+        "value": 11.62,
+        "industryAvg": 16.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.38,
-        "industryAvg": 1.76
+        "value": 2.43,
+        "industryAvg": 1.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.61,
-        "industryAvg": 1.71
+        "value": 2.67,
+        "industryAvg": 1.77
       },
       {
         "metric": "ROE",

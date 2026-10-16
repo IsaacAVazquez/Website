@@ -1,10 +1,10 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.8283,
-      "ttmPe": 43.58,
-      "marketCap": 166355604000,
-      "psRatio": 5.54,
-      "pbRatio": 8.21,
+      "ttmPe": 40.95,
+      "marketCap": 156323232000,
+      "psRatio": 5.21,
+      "pbRatio": 7.72,
       "pegRatio": 1.77
     },
     "profitability": {
@@ -5261,25 +5261,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.19,
-      "costOfEquity": 13.66,
+      "wacc": 12.120000000000001,
+      "costOfEquity": 13.68,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 28.000000000000004,
-      "beta": 1.1029,
-      "marketCap": 166355604000
+      "beta": 1.1042,
+      "marketCap": 156323232000
     },
     "beta": {
-      "beta5y": 1.1029
+      "beta5y": 1.1042
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 368.73,
-        "high": 379.15,
-        "low": 364.36,
-        "close": 374.35,
-        "volume": 1669400
-      },
       {
         "date": "2025-10-15",
         "open": 379.74,
@@ -7287,23 +7279,31 @@
         "low": 404.4,
         "close": 408.85,
         "volume": 3207900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 395.12,
+        "high": 403.69,
+        "low": 386.01,
+        "close": 402.48,
+        "volume": 4689500
       }
     ],
     "news": [
-      {
-        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
-        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
-        "type": "STORY"
-      },
       {
         "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
         "title": "Top Analyst Reports for Roche, Comcast & Eaton",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
+        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
         "type": "STORY"
       },
       {
@@ -7432,18 +7432,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.58,
-        "industryAvg": 31.58
+        "value": 40.95,
+        "industryAvg": 30.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.54,
-        "industryAvg": 3.59
+        "value": 5.21,
+        "industryAvg": 3.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.21,
-        "industryAvg": 6.5
+        "value": 7.72,
+        "industryAvg": 6.3
       },
       {
         "metric": "ROE",

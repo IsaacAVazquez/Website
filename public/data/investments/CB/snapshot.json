@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 28.2571,
-      "ttmPe": 12.25,
-      "marketCap": 133491065440,
-      "psRatio": 2.14,
-      "pbRatio": 1.77,
+      "ttmPe": 12.49,
+      "marketCap": 136047818860,
+      "psRatio": 2.18,
+      "pbRatio": 1.81,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5550,25 +5550,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.88,
-      "costOfEquity": 7.6899999999999995,
+      "wacc": 6.800000000000001,
+      "costOfEquity": 7.59,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 20,
-      "beta": 0.3235,
-      "marketCap": 133491065440
+      "beta": 0.3205,
+      "marketCap": 136047818860
     },
     "beta": {
-      "beta5y": 0.3235
+      "beta5y": 0.3205
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 283.32,
-        "high": 285.62,
-        "low": 281.92,
-        "close": 284.63,
-        "volume": 1263300
-      },
       {
         "date": "2025-10-15",
         "open": 282.78,
@@ -7576,6 +7568,14 @@
         "low": 343.78,
         "close": 350.15,
         "volume": 1472500
+      },
+      {
+        "date": "2026-10-15",
+        "open": 356.08,
+        "high": 358.58,
+        "low": 352.1,
+        "close": 352.79,
+        "volume": 2056400
       }
     ],
     "news": [
@@ -7620,19 +7620,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7157263e-9335-325f-9342-9023ba098971",
-        "title": "5 Stocks to Watch From the Prospering P&C Insurance Industry",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/5-stocks-watch-prospering-p-192300678.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c50f9178-bc22-3ab0-a07c-8cb31d7541f4",
         "title": "Zacks Industry Outlook Highlights Berkshire Hathaway, The Progressive, Chubb, The Travelers Companies and The Allstate",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-berkshire-132800117.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7157263e-9335-325f-9342-9023ba098971",
+        "title": "5 Stocks to Watch From the Prospering P&C Insurance Industry",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/5-stocks-watch-prospering-p-192300678.html",
         "type": "STORY"
       },
       {
@@ -7724,18 +7724,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.25,
-        "industryAvg": 9.3
+        "value": 12.49,
+        "industryAvg": 9.37
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.14,
-        "industryAvg": 1.39
+        "value": 2.18,
+        "industryAvg": 1.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.77,
-        "industryAvg": 4.87
+        "value": 1.81,
+        "industryAvg": 4.88
       },
       {
         "metric": "ROE",

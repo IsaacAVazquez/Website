@@ -1,10 +1,10 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-10-14T14:19:13.311901+00:00",
+  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-14T14:19:13.311901+00:00",
+    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
     "sections": {
-      "price": "2026-10-14"
+      "price": "2026-10-15"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1742,
-      "ttmPe": 22.2,
-      "marketCap": 293391191262,
-      "psRatio": 6.07,
-      "pbRatio": 9.73,
-      "pegRatio": 2.01
+      "ttmPe": 22.88,
+      "marketCap": 302343661617,
+      "psRatio": 6.25,
+      "pbRatio": 10.03,
+      "pegRatio": 2.07
     },
     "profitability": {
       "roe": 11.1,
@@ -4926,25 +4926,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.6,
-      "costOfEquity": 17.36,
+      "wacc": 16.7,
+      "costOfEquity": 17.44,
       "costOfDebt": 1.23,
       "taxRate": 16,
-      "beta": 1.5864,
-      "marketCap": 293391191262
+      "beta": 1.5882,
+      "marketCap": 302343661617
     },
     "beta": {
-      "beta5y": 1.5864
+      "beta5y": 1.5882
     },
     "price": [
-      {
-        "date": "2025-10-14",
-        "open": 121.475,
-        "high": 122.429,
-        "low": 120.31,
-        "close": 121.535,
-        "volume": 23624000
-      },
       {
         "date": "2025-10-15",
         "open": 121.301,
@@ -6951,24 +6943,32 @@
         "high": 71.26,
         "low": 69.37,
         "close": 70.57,
-        "volume": 39904000
+        "volume": 40030900
+      },
+      {
+        "date": "2026-10-15",
+        "open": 71.55,
+        "high": 73.07,
+        "low": 71.34,
+        "close": 72.61,
+        "volume": 40275900
       }
     ],
     "news": [
-      {
-        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
-        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
-        "type": "STORY"
-      },
       {
         "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
+        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
         "type": "STORY"
       },
       {
@@ -7012,14 +7012,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
         "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
         "publisher": "Investor's Business Daily",
@@ -7033,6 +7025,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       }
     ],
@@ -7098,18 +7098,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.2,
-        "industryAvg": 23.83
+        "value": 22.88,
+        "industryAvg": 24.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.07,
-        "industryAvg": 2.5
+        "value": 6.25,
+        "industryAvg": 2.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.73,
-        "industryAvg": 2.99
+        "value": 10.03,
+        "industryAvg": 3.03
       },
       {
         "metric": "ROE",
