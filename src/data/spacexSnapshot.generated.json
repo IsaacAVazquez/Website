@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T14:03:37.530Z",
+  "generatedAt": "2026-10-16T23:42:51.188Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-16T14:03:30.156Z"
+    "generatedAt": "2026-10-16T23:42:43.457Z"
   },
   "upcomingLaunches": [
     {
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-16T14:03:37.075Z"
+    "generatedAt": "2026-10-16T23:42:50.741Z"
   }
 }
