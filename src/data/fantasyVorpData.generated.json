@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-15T20:23:13.498Z",
+  "generatedAt": "2026-10-16T19:59:07.224Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-15T20:23:13.958Z",
+        "accessedAt": "2026-10-16T19:59:07.972Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2539,7 +2539,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 94,
             "rank": 282,
@@ -5311,7 +5311,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-15T20:23:15.197Z",
+        "accessedAt": "2026-10-16T19:59:08.663Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8027,7 +8027,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 94,
             "rank": 296,
@@ -10673,7 +10673,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-15T20:23:15.851Z",
+        "accessedAt": "2026-10-16T19:59:09.289Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13596,7 +13596,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 94,
             "rank": 319,
@@ -16035,7 +16035,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-15T20:23:16.460Z",
+        "accessedAt": "2026-10-16T19:59:10.277Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18888,7 +18888,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 94,
             "rank": 311,
@@ -21399,7 +21399,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-15T20:23:16.874Z",
+        "accessedAt": "2026-10-16T19:59:10.927Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -23998,7 +23998,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 94,
             "rank": 283,
@@ -26761,7 +26761,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-15T20:23:17.281Z",
+        "accessedAt": "2026-10-16T19:59:11.600Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29738,7 +29738,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 94,
             "rank": 325,
@@ -32123,7 +32123,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-15T20:23:18.130Z",
+        "accessedAt": "2026-10-16T19:59:12.405Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34796,7 +34796,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 95,
             "rank": 291,
@@ -37487,7 +37487,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-15T20:23:18.714Z",
+        "accessedAt": "2026-10-16T19:59:13.159Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40203,7 +40203,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 95,
             "rank": 296,
@@ -42849,7 +42849,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-15T20:23:19.305Z",
+        "accessedAt": "2026-10-16T19:59:13.865Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45529,7 +45529,7 @@
           {
             "playerId": "fp-18706",
             "name": "Darius Slayton",
-            "team": "IND",
+            "team": "FA",
             "position": "WR",
             "positionRank": 95,
             "rank": 292,
@@ -48211,7 +48211,7 @@
           {
             "playerId": "fp-25967",
             "name": "Joe Milton III",
-            "team": "DAL",
+            "team": "PHI",
             "position": "QB",
             "positionRank": 70,
             "rank": 590,

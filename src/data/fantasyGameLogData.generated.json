@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T20:23:12.142Z",
+  "generatedAt": "2026-10-16T19:59:05.838Z",
   "data": {
     "PPR": {
       "entries": [
@@ -24,16 +24,6 @@
           "high": 40.8
         },
         {
-          "name": "Jaxon Smith-Njigba",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 12.6,
-          "median": 26.2,
-          "average": 27.9,
-          "high": 42.5
-        },
-        {
           "name": "Kenneth Walker III",
           "team": "KC",
           "position": "RB",
@@ -42,6 +32,16 @@
           "median": 27.4,
           "average": 27.5,
           "high": 34.1
+        },
+        {
+          "name": "Jaxon Smith-Njigba",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 12.6,
+          "median": 25.8,
+          "average": 27.5,
+          "high": 42.5
         },
         {
           "name": "Bijan Robinson",
@@ -664,16 +664,6 @@
           "high": 19.1
         },
         {
-          "name": "Bo Nix",
-          "team": "DEN",
-          "position": "QB",
-          "games": 5,
-          "low": 5.4,
-          "median": 13.6,
-          "average": 13,
-          "high": 24.1
-        },
-        {
           "name": "Michael Wilson",
           "team": "ARI",
           "position": "WR",
@@ -694,16 +684,6 @@
           "high": 17
         },
         {
-          "name": "Sam Darnold",
-          "team": "SEA",
-          "position": "QB",
-          "games": 4,
-          "low": 0.5,
-          "median": 10.8,
-          "average": 12.4,
-          "high": 27.7
-        },
-        {
           "name": "Devaughn Vele",
           "team": "NO",
           "position": "WR",
@@ -722,6 +702,16 @@
           "median": 11.7,
           "average": 12.3,
           "high": 20
+        },
+        {
+          "name": "Sam Darnold",
+          "team": "SEA",
+          "position": "QB",
+          "games": 5,
+          "low": 0.5,
+          "median": 11,
+          "average": 12.2,
+          "high": 27.7
         },
         {
           "name": "Rhamondre Stevenson",
@@ -784,6 +774,16 @@
           "high": 20.2
         },
         {
+          "name": "Bo Nix",
+          "team": "DEN",
+          "position": "QB",
+          "games": 6,
+          "low": 4.5,
+          "median": 10.7,
+          "average": 11.6,
+          "high": 24.1
+        },
+        {
           "name": "Jameson Williams",
           "team": "DET",
           "position": "WR",
@@ -844,6 +844,16 @@
           "high": 17.2
         },
         {
+          "name": "RJ Harvey",
+          "team": "DEN",
+          "position": "RB",
+          "games": 5,
+          "low": 0.7,
+          "median": 10.7,
+          "average": 10.7,
+          "high": 19.3
+        },
+        {
           "name": "Terry McLaurin",
           "team": "WAS",
           "position": "WR",
@@ -902,16 +912,6 @@
           "median": 9.5,
           "average": 10.3,
           "high": 14.1
-        },
-        {
-          "name": "Emanuel Wilson",
-          "team": "SEA",
-          "position": "RB",
-          "games": 5,
-          "low": 0.3,
-          "median": 9.2,
-          "average": 10.2,
-          "high": 27
         },
         {
           "name": "Jeremiyah Love",
@@ -1044,26 +1044,6 @@
           "high": 16.5
         },
         {
-          "name": "Jaylen Waddle",
-          "team": "DEN",
-          "position": "WR",
-          "games": 5,
-          "low": 1.2,
-          "median": 6.4,
-          "average": 9.7,
-          "high": 21.8
-        },
-        {
-          "name": "RJ Harvey",
-          "team": "DEN",
-          "position": "RB",
-          "games": 4,
-          "low": 0.7,
-          "median": 9.4,
-          "average": 9.7,
-          "high": 19.3
-        },
-        {
           "name": "Carnell Tate",
           "team": "TEN",
           "position": "WR",
@@ -1124,6 +1104,16 @@
           "high": 23.8
         },
         {
+          "name": "Emanuel Wilson",
+          "team": "SEA",
+          "position": "RB",
+          "games": 6,
+          "low": 0.3,
+          "median": 7.2,
+          "average": 9.4,
+          "high": 27
+        },
+        {
           "name": "Alvin Kamara",
           "team": "NO",
           "position": "RB",
@@ -1132,6 +1122,16 @@
           "median": 6.2,
           "average": 9.4,
           "high": 22.8
+        },
+        {
+          "name": "Jaylen Waddle",
+          "team": "DEN",
+          "position": "WR",
+          "games": 6,
+          "low": 1.2,
+          "median": 6.4,
+          "average": 9.2,
+          "high": 21.8
         },
         {
           "name": "DJ Moore",
@@ -1324,6 +1324,16 @@
           "high": 15.4
         },
         {
+          "name": "J.K. Dobbins",
+          "team": "DEN",
+          "position": "RB",
+          "games": 6,
+          "low": 3.6,
+          "median": 6.8,
+          "average": 8.3,
+          "high": 15.4
+        },
+        {
           "name": "Rachaad White",
           "team": "WAS",
           "position": "RB",
@@ -1484,16 +1494,6 @@
           "high": 16.4
         },
         {
-          "name": "J.K. Dobbins",
-          "team": "DEN",
-          "position": "RB",
-          "games": 5,
-          "low": 3.6,
-          "median": 6.3,
-          "average": 7.2,
-          "high": 15.4
-        },
-        {
           "name": "Cade Otton",
           "team": "TB",
           "position": "TE",
@@ -1564,6 +1564,16 @@
           "high": 14.4
         },
         {
+          "name": "Rashid Shaheed",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 1.4,
+          "median": 5.6,
+          "average": 6.7,
+          "high": 12.3
+        },
+        {
           "name": "Ted Hurst III",
           "team": "TB",
           "position": "WR",
@@ -1572,6 +1582,16 @@
           "median": 5.7,
           "average": 6.7,
           "high": 11
+        },
+        {
+          "name": "Cooper Kupp",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 2.3,
+          "median": 4.8,
+          "average": 6.6,
+          "high": 14.6
         },
         {
           "name": "TreVeyon Henderson",
@@ -1624,16 +1644,6 @@
           "high": 10
         },
         {
-          "name": "AJ Barner",
-          "team": "SEA",
-          "position": "TE",
-          "games": 5,
-          "low": 2.2,
-          "median": 5,
-          "average": 6.1,
-          "high": 11.9
-        },
-        {
           "name": "Malachi Fields",
           "team": "NYG",
           "position": "WR",
@@ -1652,16 +1662,6 @@
           "median": 3.2,
           "average": 6,
           "high": 15.8
-        },
-        {
-          "name": "Cooper Kupp",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 2.3,
-          "median": 4,
-          "average": 6,
-          "high": 14.6
         },
         {
           "name": "Kendre Miller",
@@ -1724,6 +1724,16 @@
           "high": 13.4
         },
         {
+          "name": "AJ Barner",
+          "team": "SEA",
+          "position": "TE",
+          "games": 6,
+          "low": 2.2,
+          "median": 4.8,
+          "average": 5.8,
+          "high": 11.9
+        },
+        {
           "name": "Konata Mumpfield",
           "team": "LA",
           "position": "WR",
@@ -1734,26 +1744,6 @@
           "high": 19.3
         },
         {
-          "name": "Rashid Shaheed",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 1.4,
-          "median": 4.3,
-          "average": 5.7,
-          "high": 12.3
-        },
-        {
-          "name": "Evan Engram",
-          "team": "DEN",
-          "position": "TE",
-          "games": 5,
-          "low": 0,
-          "median": 2.7,
-          "average": 5.6,
-          "high": 14.3
-        },
-        {
           "name": "Dohnte Meyers",
           "team": "CIN",
           "position": "WR",
@@ -1762,16 +1752,6 @@
           "median": 3.8,
           "average": 5.6,
           "high": 15.2
-        },
-        {
-          "name": "Courtland Sutton",
-          "team": "DEN",
-          "position": "WR",
-          "games": 5,
-          "low": 1.4,
-          "median": 5.5,
-          "average": 5.5,
-          "high": 9.8
         },
         {
           "name": "Kayshon Boutte",
@@ -1814,6 +1794,16 @@
           "high": 15.2
         },
         {
+          "name": "George Holani",
+          "team": "SEA",
+          "position": "RB",
+          "games": 6,
+          "low": 2.5,
+          "median": 4,
+          "average": 5.4,
+          "high": 10.8
+        },
+        {
           "name": "Laquon Treadwell",
           "team": "IND",
           "position": "WR",
@@ -1822,6 +1812,26 @@
           "median": 5.4,
           "average": 5.3,
           "high": 9.2
+        },
+        {
+          "name": "Evan Engram",
+          "team": "DEN",
+          "position": "TE",
+          "games": 6,
+          "low": 0,
+          "median": 3,
+          "average": 5.2,
+          "high": 14.3
+        },
+        {
+          "name": "Courtland Sutton",
+          "team": "DEN",
+          "position": "WR",
+          "games": 6,
+          "low": 1.4,
+          "median": 4.7,
+          "average": 5.2,
+          "high": 9.8
         },
         {
           "name": "Tyjae Spears",
@@ -1882,16 +1892,6 @@
           "median": 3.2,
           "average": 5,
           "high": 8.9
-        },
-        {
-          "name": "George Holani",
-          "team": "SEA",
-          "position": "RB",
-          "games": 5,
-          "low": 2.5,
-          "median": 3,
-          "average": 4.9,
-          "high": 10.8
         },
         {
           "name": "Marvin Harrison Jr.",
@@ -2034,16 +2034,6 @@
           "high": 10.4
         },
         {
-          "name": "Tyler Badie",
-          "team": "DEN",
-          "position": "RB",
-          "games": 4,
-          "low": 1.1,
-          "median": 3.7,
-          "average": 4.1,
-          "high": 7.9
-        },
-        {
           "name": "Darnell Mooney",
           "team": "NYG",
           "position": "WR",
@@ -2122,6 +2112,16 @@
           "median": 2.6,
           "average": 3.4,
           "high": 10.7
+        },
+        {
+          "name": "Tyler Badie",
+          "team": "DEN",
+          "position": "RB",
+          "games": 5,
+          "low": 0.6,
+          "median": 2.4,
+          "average": 3.4,
+          "high": 7.9
         },
         {
           "name": "Dawson Knox",
@@ -2234,16 +2234,6 @@
           "high": 5.2
         },
         {
-          "name": "Troy Franklin",
-          "team": "DEN",
-          "position": "WR",
-          "games": 4,
-          "low": 0.5,
-          "median": 3.4,
-          "average": 2.7,
-          "high": 3.7
-        },
-        {
           "name": "Jalen Royals",
           "team": "KC",
           "position": "WR",
@@ -2272,6 +2262,16 @@
           "median": 2.3,
           "average": 2.5,
           "high": 4.4
+        },
+        {
+          "name": "Troy Franklin",
+          "team": "DEN",
+          "position": "WR",
+          "games": 5,
+          "low": 0.5,
+          "median": 3.1,
+          "average": 2.4,
+          "high": 3.7
         },
         {
           "name": "Myles Price",
@@ -2354,6 +2354,16 @@
           "high": 4
         },
         {
+          "name": "Marvin Mims Jr.",
+          "team": "DEN",
+          "position": "WR",
+          "games": 4,
+          "low": 0,
+          "median": 2.5,
+          "average": 2,
+          "high": 3.3
+        },
+        {
           "name": "Seth McGowan",
           "team": "IND",
           "position": "RB",
@@ -2374,16 +2384,6 @@
           "high": 4.9
         },
         {
-          "name": "Brady Russell",
-          "team": "SEA",
-          "position": "RB",
-          "games": 4,
-          "low": 0,
-          "median": 1.5,
-          "average": 1.8,
-          "high": 4
-        },
-        {
           "name": "CJ Donaldson",
           "team": "NO",
           "position": "RB",
@@ -2392,16 +2392,6 @@
           "median": 1.2,
           "average": 1.8,
           "high": 4.3
-        },
-        {
-          "name": "Eric Saubert",
-          "team": "SEA",
-          "position": "TE",
-          "games": 5,
-          "low": 0,
-          "median": 0,
-          "average": 1.7,
-          "high": 8.3
         },
         {
           "name": "DeeJay Dallas",
@@ -2474,6 +2464,16 @@
           "high": 2.6
         },
         {
+          "name": "Eric Saubert",
+          "team": "SEA",
+          "position": "TE",
+          "games": 6,
+          "low": 0,
+          "median": 0,
+          "average": 1.4,
+          "high": 8.3
+        },
+        {
           "name": "Bo Melton",
           "team": "GB",
           "position": "WR",
@@ -2492,6 +2492,16 @@
           "median": 0.9,
           "average": 1.4,
           "high": 3.7
+        },
+        {
+          "name": "Brady Russell",
+          "team": "SEA",
+          "position": "RB",
+          "games": 5,
+          "low": 0,
+          "median": 0,
+          "average": 1.4,
+          "high": 4
         },
         {
           "name": "Ameer Abdullah",
@@ -2957,7 +2967,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 5
+      "throughWeek": 6
     },
     "HALF_PPR": {
       "entries": [
@@ -2995,10 +3005,10 @@
           "name": "Jaxon Smith-Njigba",
           "team": "SEA",
           "position": "WR",
-          "games": 5,
+          "games": 6,
           "low": 10.1,
-          "median": 22.2,
-          "average": 24.2,
+          "median": 21.3,
+          "average": 23.4,
           "high": 38
         },
         {
@@ -3472,16 +3482,6 @@
           "high": 25.7
         },
         {
-          "name": "Bo Nix",
-          "team": "DEN",
-          "position": "QB",
-          "games": 5,
-          "low": 5.4,
-          "median": 13.6,
-          "average": 13,
-          "high": 24.1
-        },
-        {
           "name": "Mike Evans",
           "team": "SF",
           "position": "WR",
@@ -3522,16 +3522,6 @@
           "high": 23.9
         },
         {
-          "name": "Sam Darnold",
-          "team": "SEA",
-          "position": "QB",
-          "games": 4,
-          "low": 0.5,
-          "median": 10.8,
-          "average": 12.4,
-          "high": 27.7
-        },
-        {
           "name": "Tee Higgins",
           "team": "CIN",
           "position": "WR",
@@ -3560,6 +3550,16 @@
           "median": 11.7,
           "average": 12.3,
           "high": 20
+        },
+        {
+          "name": "Sam Darnold",
+          "team": "SEA",
+          "position": "QB",
+          "games": 5,
+          "low": 0.5,
+          "median": 11,
+          "average": 12.2,
+          "high": 27.7
         },
         {
           "name": "Denzel Boston",
@@ -3600,6 +3600,16 @@
           "median": 10.6,
           "average": 11.8,
           "high": 16
+        },
+        {
+          "name": "Bo Nix",
+          "team": "DEN",
+          "position": "QB",
+          "games": 6,
+          "low": 4.5,
+          "median": 10.7,
+          "average": 11.6,
+          "high": 24.1
         },
         {
           "name": "Mike Gesicki",
@@ -3782,16 +3792,6 @@
           "high": 25.2
         },
         {
-          "name": "Emanuel Wilson",
-          "team": "SEA",
-          "position": "RB",
-          "games": 5,
-          "low": 0.3,
-          "median": 9.2,
-          "average": 9.7,
-          "high": 25.5
-        },
-        {
           "name": "Daniel Jones",
           "team": "IND",
           "position": "QB",
@@ -3850,6 +3850,16 @@
           "median": 6,
           "average": 9.1,
           "high": 19.4
+        },
+        {
+          "name": "Emanuel Wilson",
+          "team": "SEA",
+          "position": "RB",
+          "games": 6,
+          "low": 0.3,
+          "median": 7.2,
+          "average": 9,
+          "high": 25.5
         },
         {
           "name": "Luther Burden III",
@@ -3930,6 +3940,16 @@
           "median": 7.2,
           "average": 8.4,
           "high": 20.6
+        },
+        {
+          "name": "RJ Harvey",
+          "team": "DEN",
+          "position": "RB",
+          "games": 5,
+          "low": 0.7,
+          "median": 7.7,
+          "average": 8.4,
+          "high": 14.3
         },
         {
           "name": "Darren Waller",
@@ -4042,16 +4062,6 @@
           "high": 12
         },
         {
-          "name": "Jaylen Waddle",
-          "team": "DEN",
-          "position": "WR",
-          "games": 5,
-          "low": 0.7,
-          "median": 5.4,
-          "average": 7.9,
-          "high": 17.8
-        },
-        {
           "name": "DK Metcalf",
           "team": "PIT",
           "position": "WR",
@@ -4090,6 +4100,16 @@
           "median": 5.9,
           "average": 7.6,
           "high": 18.5
+        },
+        {
+          "name": "J.K. Dobbins",
+          "team": "DEN",
+          "position": "RB",
+          "games": 6,
+          "low": 3.6,
+          "median": 6,
+          "average": 7.6,
+          "high": 14.4
         },
         {
           "name": "Roman Wilson",
@@ -4192,6 +4212,16 @@
           "high": 15.3
         },
         {
+          "name": "Jaylen Waddle",
+          "team": "DEN",
+          "position": "WR",
+          "games": 6,
+          "low": 0.7,
+          "median": 4.9,
+          "average": 7.4,
+          "high": 17.8
+        },
+        {
           "name": "Carnell Tate",
           "team": "TEN",
           "position": "WR",
@@ -4210,16 +4240,6 @@
           "median": 4.5,
           "average": 7.3,
           "high": 20
-        },
-        {
-          "name": "RJ Harvey",
-          "team": "DEN",
-          "position": "RB",
-          "games": 4,
-          "low": 0.7,
-          "median": 6.9,
-          "average": 7.2,
-          "high": 14.3
         },
         {
           "name": "Mack Hollins",
@@ -4300,16 +4320,6 @@
           "median": 6.2,
           "average": 6.8,
           "high": 13.4
-        },
-        {
-          "name": "J.K. Dobbins",
-          "team": "DEN",
-          "position": "RB",
-          "games": 5,
-          "low": 3.6,
-          "median": 5.8,
-          "average": 6.7,
-          "high": 14.4
         },
         {
           "name": "Jake Ferguson",
@@ -4512,6 +4522,16 @@
           "high": 10.5
         },
         {
+          "name": "Rashid Shaheed",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 0.9,
+          "median": 4.3,
+          "average": 5.5,
+          "high": 11.8
+        },
+        {
           "name": "Kendre Miller",
           "team": "NO",
           "position": "RB",
@@ -4560,6 +4580,16 @@
           "median": 2.7,
           "average": 5.3,
           "high": 14.8
+        },
+        {
+          "name": "Cooper Kupp",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 1.8,
+          "median": 3.8,
+          "average": 5.3,
+          "high": 12.6
         },
         {
           "name": "Saquon Barkley",
@@ -4642,16 +4672,6 @@
           "high": 8.2
         },
         {
-          "name": "Cooper Kupp",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 1.8,
-          "median": 3,
-          "average": 4.9,
-          "high": 12.6
-        },
-        {
           "name": "Darnell Washington",
           "team": "PIT",
           "position": "TE",
@@ -4672,16 +4692,6 @@
           "high": 9.7
         },
         {
-          "name": "AJ Barner",
-          "team": "SEA",
-          "position": "TE",
-          "games": 5,
-          "low": 1.7,
-          "median": 3.5,
-          "average": 4.9,
-          "high": 9.4
-        },
-        {
           "name": "Elijah Higgins",
           "team": "ARI",
           "position": "TE",
@@ -4692,24 +4702,14 @@
           "high": 8.9
         },
         {
-          "name": "Rashid Shaheed",
+          "name": "AJ Barner",
           "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 0.9,
-          "median": 3.3,
-          "average": 4.8,
-          "high": 11.8
-        },
-        {
-          "name": "Evan Engram",
-          "team": "DEN",
           "position": "TE",
-          "games": 5,
-          "low": 0,
-          "median": 2.2,
+          "games": 6,
+          "low": 1.7,
+          "median": 3.3,
           "average": 4.6,
-          "high": 12.3
+          "high": 9.4
         },
         {
           "name": "Isaac TeSlaa",
@@ -4732,14 +4732,14 @@
           "high": 8.9
         },
         {
-          "name": "Courtland Sutton",
-          "team": "DEN",
-          "position": "WR",
-          "games": 5,
-          "low": 0.9,
-          "median": 4,
-          "average": 4.4,
-          "high": 8.8
+          "name": "George Holani",
+          "team": "SEA",
+          "position": "RB",
+          "games": 6,
+          "low": 2,
+          "median": 3,
+          "average": 4.5,
+          "high": 8.3
         },
         {
           "name": "Kyle Pitts",
@@ -4832,6 +4832,16 @@
           "high": 7.6
         },
         {
+          "name": "Evan Engram",
+          "team": "DEN",
+          "position": "TE",
+          "games": 6,
+          "low": 0,
+          "median": 2.3,
+          "average": 4.2,
+          "high": 12.3
+        },
+        {
           "name": "Brian Thomas Jr.",
           "team": "JAX",
           "position": "WR",
@@ -4840,6 +4850,16 @@
           "median": 5.5,
           "average": 4.2,
           "high": 8.7
+        },
+        {
+          "name": "Courtland Sutton",
+          "team": "DEN",
+          "position": "WR",
+          "games": 6,
+          "low": 0.9,
+          "median": 3.5,
+          "average": 4.1,
+          "high": 8.8
         },
         {
           "name": "Mike Washington Jr.",
@@ -4890,16 +4910,6 @@
           "median": 3.8,
           "average": 3.9,
           "high": 7.9
-        },
-        {
-          "name": "George Holani",
-          "team": "SEA",
-          "position": "RB",
-          "games": 5,
-          "low": 2,
-          "median": 2.9,
-          "average": 3.8,
-          "high": 8.3
         },
         {
           "name": "Tyjae Spears",
@@ -5012,16 +5022,6 @@
           "high": 7.1
         },
         {
-          "name": "Tyler Badie",
-          "team": "DEN",
-          "position": "RB",
-          "games": 4,
-          "low": 0.6,
-          "median": 2.9,
-          "average": 3.3,
-          "high": 6.9
-        },
-        {
           "name": "Tanner Hudson",
           "team": "CIN",
           "position": "TE",
@@ -5090,6 +5090,16 @@
           "median": 1.3,
           "average": 2.8,
           "high": 10.5
+        },
+        {
+          "name": "Tyler Badie",
+          "team": "DEN",
+          "position": "RB",
+          "games": 5,
+          "low": 0.6,
+          "median": 1.9,
+          "average": 2.8,
+          "high": 6.9
         },
         {
           "name": "Chris Brooks",
@@ -5202,16 +5212,6 @@
           "high": 8
         },
         {
-          "name": "Troy Franklin",
-          "team": "DEN",
-          "position": "WR",
-          "games": 4,
-          "low": 0.5,
-          "median": 2.6,
-          "average": 2.2,
-          "high": 3.2
-        },
-        {
           "name": "Jared Wayne",
           "team": "HOU",
           "position": "WR",
@@ -5250,6 +5250,16 @@
           "median": 1.8,
           "average": 1.9,
           "high": 3.4
+        },
+        {
+          "name": "Troy Franklin",
+          "team": "DEN",
+          "position": "WR",
+          "games": 5,
+          "low": 0.5,
+          "median": 2.6,
+          "average": 1.9,
+          "high": 3.2
         },
         {
           "name": "Myles Price",
@@ -5322,16 +5332,6 @@
           "high": 3
         },
         {
-          "name": "Eric Saubert",
-          "team": "SEA",
-          "position": "TE",
-          "games": 5,
-          "low": -0.5,
-          "median": 0,
-          "average": 1.5,
-          "high": 7.8
-        },
-        {
           "name": "AJ Dillon",
           "team": "CAR",
           "position": "RB",
@@ -5352,14 +5352,14 @@
           "high": 4.6
         },
         {
-          "name": "Brady Russell",
-          "team": "SEA",
-          "position": "RB",
+          "name": "Marvin Mims Jr.",
+          "team": "DEN",
+          "position": "WR",
           "games": 4,
           "low": 0,
-          "median": 1.3,
+          "median": 1.7,
           "average": 1.4,
-          "high": 3
+          "high": 2.3
         },
         {
           "name": "CJ Donaldson",
@@ -5390,6 +5390,16 @@
           "median": 0.8,
           "average": 1.3,
           "high": 3.8
+        },
+        {
+          "name": "Eric Saubert",
+          "team": "SEA",
+          "position": "TE",
+          "games": 6,
+          "low": -0.5,
+          "median": 0,
+          "average": 1.2,
+          "high": 7.8
         },
         {
           "name": "Sam Roush",
@@ -5450,6 +5460,16 @@
           "median": 1,
           "average": 1.1,
           "high": 2.6
+        },
+        {
+          "name": "Brady Russell",
+          "team": "SEA",
+          "position": "RB",
+          "games": 5,
+          "low": 0,
+          "median": 0,
+          "average": 1.1,
+          "high": 3
         },
         {
           "name": "Bo Melton",
@@ -5915,7 +5935,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 5
+      "throughWeek": 6
     },
     "STANDARD": {
       "entries": [
@@ -6010,16 +6030,6 @@
           "high": 33.3
         },
         {
-          "name": "Jaxon Smith-Njigba",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 7.6,
-          "median": 18.2,
-          "average": 20.5,
-          "high": 33.5
-        },
-        {
           "name": "Joe Burrow",
           "team": "CIN",
           "position": "QB",
@@ -6038,6 +6048,16 @@
           "median": 19.7,
           "average": 19.8,
           "high": 25
+        },
+        {
+          "name": "Jaxon Smith-Njigba",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 7.6,
+          "median": 18,
+          "average": 19.3,
+          "high": 33.5
         },
         {
           "name": "Dak Prescott",
@@ -6320,16 +6340,6 @@
           "high": 25.7
         },
         {
-          "name": "Bo Nix",
-          "team": "DEN",
-          "position": "QB",
-          "games": 5,
-          "low": 5.4,
-          "median": 13.6,
-          "average": 13,
-          "high": 24.1
-        },
-        {
           "name": "Bucky Irving",
           "team": "TB",
           "position": "RB",
@@ -6350,16 +6360,6 @@
           "high": 26.7
         },
         {
-          "name": "Sam Darnold",
-          "team": "SEA",
-          "position": "QB",
-          "games": 4,
-          "low": 0.5,
-          "median": 10.8,
-          "average": 12.4,
-          "high": 27.7
-        },
-        {
           "name": "Cam Ward",
           "team": "TEN",
           "position": "QB",
@@ -6368,6 +6368,16 @@
           "median": 11.7,
           "average": 12.3,
           "high": 20
+        },
+        {
+          "name": "Sam Darnold",
+          "team": "SEA",
+          "position": "QB",
+          "games": 5,
+          "low": 0.5,
+          "median": 11,
+          "average": 12.2,
+          "high": 27.7
         },
         {
           "name": "Malik Willis",
@@ -6418,6 +6428,16 @@
           "median": 10.5,
           "average": 11.6,
           "high": 15.7
+        },
+        {
+          "name": "Bo Nix",
+          "team": "DEN",
+          "position": "QB",
+          "games": 6,
+          "low": 4.5,
+          "median": 10.7,
+          "average": 11.6,
+          "high": 24.1
         },
         {
           "name": "Justin Jefferson",
@@ -6630,16 +6650,6 @@
           "high": 15.4
         },
         {
-          "name": "Emanuel Wilson",
-          "team": "SEA",
-          "position": "RB",
-          "games": 5,
-          "low": 0.3,
-          "median": 9.2,
-          "average": 9.2,
-          "high": 24
-        },
-        {
           "name": "Malik Nabers",
           "team": "NYG",
           "position": "WR",
@@ -6688,6 +6698,16 @@
           "median": 5.4,
           "average": 8.5,
           "high": 23.1
+        },
+        {
+          "name": "Emanuel Wilson",
+          "team": "SEA",
+          "position": "RB",
+          "games": 6,
+          "low": 0.3,
+          "median": 7.2,
+          "average": 8.5,
+          "high": 24
         },
         {
           "name": "Pat Freiermuth",
@@ -6860,6 +6880,16 @@
           "high": 14.9
         },
         {
+          "name": "J.K. Dobbins",
+          "team": "DEN",
+          "position": "RB",
+          "games": 6,
+          "low": 3.6,
+          "median": 5.3,
+          "average": 6.9,
+          "high": 13.4
+        },
+        {
           "name": "Keon Coleman",
           "team": "BUF",
           "position": "WR",
@@ -7030,16 +7060,6 @@
           "high": 14.4
         },
         {
-          "name": "J.K. Dobbins",
-          "team": "DEN",
-          "position": "RB",
-          "games": 5,
-          "low": 3.6,
-          "median": 5.2,
-          "average": 6.2,
-          "high": 13.4
-        },
-        {
           "name": "Roman Wilson",
           "team": "PIT",
           "position": "WR",
@@ -7070,16 +7090,6 @@
           "high": 16
         },
         {
-          "name": "Jaylen Waddle",
-          "team": "DEN",
-          "position": "WR",
-          "games": 5,
-          "low": 0.2,
-          "median": 4.4,
-          "average": 6.1,
-          "high": 13.8
-        },
-        {
           "name": "Ladd McConkey",
           "team": "LAC",
           "position": "WR",
@@ -7088,6 +7098,16 @@
           "median": 5,
           "average": 6.1,
           "high": 14.2
+        },
+        {
+          "name": "RJ Harvey",
+          "team": "DEN",
+          "position": "RB",
+          "games": 5,
+          "low": 0.7,
+          "median": 4.7,
+          "average": 6.1,
+          "high": 11.6
         },
         {
           "name": "TreVeyon Henderson",
@@ -7178,6 +7198,16 @@
           "median": 4.5,
           "average": 5.7,
           "high": 12.4
+        },
+        {
+          "name": "Jaylen Waddle",
+          "team": "DEN",
+          "position": "WR",
+          "games": 6,
+          "low": 0.2,
+          "median": 3.6,
+          "average": 5.5,
+          "high": 13.8
         },
         {
           "name": "Jordan Addison",
@@ -7400,16 +7430,6 @@
           "high": 6.5
         },
         {
-          "name": "RJ Harvey",
-          "team": "DEN",
-          "position": "RB",
-          "games": 4,
-          "low": 0.7,
-          "median": 4.4,
-          "average": 4.7,
-          "high": 9.3
-        },
-        {
           "name": "Ted Hurst III",
           "team": "TB",
           "position": "WR",
@@ -7490,6 +7510,16 @@
           "high": 7.6
         },
         {
+          "name": "Rashid Shaheed",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 0.4,
+          "median": 3.1,
+          "average": 4.4,
+          "high": 11.3
+        },
+        {
           "name": "Mark Andrews",
           "team": "BAL",
           "position": "TE",
@@ -7550,6 +7580,16 @@
           "high": 11.2
         },
         {
+          "name": "Cooper Kupp",
+          "team": "SEA",
+          "position": "WR",
+          "games": 6,
+          "low": 1.3,
+          "median": 2.8,
+          "average": 4,
+          "high": 10.6
+        },
+        {
           "name": "Eli Raridon",
           "team": "NE",
           "position": "TE",
@@ -7568,16 +7608,6 @@
           "median": 4,
           "average": 3.9,
           "high": 5.8
-        },
-        {
-          "name": "Rashid Shaheed",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 0.4,
-          "median": 2.3,
-          "average": 3.9,
-          "high": 11.3
         },
         {
           "name": "Ryan Flournoy",
@@ -7608,16 +7638,6 @@
           "median": 3.9,
           "average": 3.9,
           "high": 7.9
-        },
-        {
-          "name": "Cooper Kupp",
-          "team": "SEA",
-          "position": "WR",
-          "games": 5,
-          "low": 1.3,
-          "median": 2,
-          "average": 3.8,
-          "high": 10.6
         },
         {
           "name": "Darnell Washington",
@@ -7660,16 +7680,6 @@
           "high": 5.7
         },
         {
-          "name": "AJ Barner",
-          "team": "SEA",
-          "position": "TE",
-          "games": 5,
-          "low": 1.2,
-          "median": 2,
-          "average": 3.7,
-          "high": 6.9
-        },
-        {
           "name": "Isaac TeSlaa",
           "team": "DET",
           "position": "WR",
@@ -7678,16 +7688,6 @@
           "median": 2.6,
           "average": 3.7,
           "high": 9.5
-        },
-        {
-          "name": "Evan Engram",
-          "team": "DEN",
-          "position": "TE",
-          "games": 5,
-          "low": 0,
-          "median": 1.7,
-          "average": 3.6,
-          "high": 10.3
         },
         {
           "name": "Justice Hill",
@@ -7708,6 +7708,16 @@
           "median": 3.7,
           "average": 3.6,
           "high": 5.6
+        },
+        {
+          "name": "George Holani",
+          "team": "SEA",
+          "position": "RB",
+          "games": 6,
+          "low": 1.1,
+          "median": 2.5,
+          "average": 3.6,
+          "high": 8
         },
         {
           "name": "Marvin Harrison Jr.",
@@ -7760,14 +7770,14 @@
           "high": 6.9
         },
         {
-          "name": "Courtland Sutton",
-          "team": "DEN",
-          "position": "WR",
-          "games": 5,
-          "low": 0.4,
-          "median": 2.5,
+          "name": "AJ Barner",
+          "team": "SEA",
+          "position": "TE",
+          "games": 6,
+          "low": 1.2,
+          "median": 1.8,
           "average": 3.3,
-          "high": 7.8
+          "high": 6.9
         },
         {
           "name": "Brian Thomas Jr.",
@@ -7790,6 +7800,16 @@
           "high": 6.8
         },
         {
+          "name": "Evan Engram",
+          "team": "DEN",
+          "position": "TE",
+          "games": 6,
+          "low": 0,
+          "median": 1.5,
+          "average": 3.2,
+          "high": 10.3
+        },
+        {
           "name": "Kenny Gainwell",
           "team": "TB",
           "position": "RB",
@@ -7808,6 +7828,16 @@
           "median": 3.4,
           "average": 3.1,
           "high": 6.1
+        },
+        {
+          "name": "Courtland Sutton",
+          "team": "DEN",
+          "position": "WR",
+          "games": 6,
+          "low": 0.4,
+          "median": 2.2,
+          "average": 3.1,
+          "high": 7.8
         },
         {
           "name": "Kayshon Boutte",
@@ -7908,26 +7938,6 @@
           "median": 2.2,
           "average": 2.8,
           "high": 6.4
-        },
-        {
-          "name": "George Holani",
-          "team": "SEA",
-          "position": "RB",
-          "games": 5,
-          "low": 1.1,
-          "median": 2,
-          "average": 2.7,
-          "high": 5.8
-        },
-        {
-          "name": "Tyler Badie",
-          "team": "DEN",
-          "position": "RB",
-          "games": 4,
-          "low": 0.1,
-          "median": 2.1,
-          "average": 2.6,
-          "high": 5.9
         },
         {
           "name": "Foster Moreau",
@@ -8050,6 +8060,16 @@
           "high": 5.7
         },
         {
+          "name": "Tyler Badie",
+          "team": "DEN",
+          "position": "RB",
+          "games": 5,
+          "low": 0.1,
+          "median": 1.4,
+          "average": 2.2,
+          "high": 5.9
+        },
+        {
           "name": "Sione Vaki",
           "team": "DET",
           "position": "RB",
@@ -8140,16 +8160,6 @@
           "high": 8.5
         },
         {
-          "name": "Troy Franklin",
-          "team": "DEN",
-          "position": "WR",
-          "games": 4,
-          "low": 0.5,
-          "median": 1.9,
-          "average": 1.7,
-          "high": 2.7
-        },
-        {
           "name": "Jared Wayne",
           "team": "HOU",
           "position": "WR",
@@ -8210,6 +8220,16 @@
           "high": 6.5
         },
         {
+          "name": "Troy Franklin",
+          "team": "DEN",
+          "position": "WR",
+          "games": 5,
+          "low": 0.2,
+          "median": 1.6,
+          "average": 1.4,
+          "high": 2.7
+        },
+        {
           "name": "Myles Price",
           "team": "MIN",
           "position": "WR",
@@ -8230,16 +8250,6 @@
           "high": 3.8
         },
         {
-          "name": "Eric Saubert",
-          "team": "SEA",
-          "position": "TE",
-          "games": 5,
-          "low": -1,
-          "median": 0,
-          "average": 1.3,
-          "high": 7.3
-        },
-        {
           "name": "Davis Allen",
           "team": "LA",
           "position": "TE",
@@ -8248,6 +8258,16 @@
           "median": 1.3,
           "average": 1.3,
           "high": 2.4
+        },
+        {
+          "name": "Eric Saubert",
+          "team": "SEA",
+          "position": "TE",
+          "games": 6,
+          "low": -1,
+          "median": 0,
+          "average": 1.1,
+          "high": 7.3
         },
         {
           "name": "AJ Dillon",
@@ -8300,16 +8320,6 @@
           "high": 2
         },
         {
-          "name": "Brady Russell",
-          "team": "SEA",
-          "position": "RB",
-          "games": 4,
-          "low": 0,
-          "median": 1,
-          "average": 1,
-          "high": 2
-        },
-        {
           "name": "CJ Donaldson",
           "team": "NO",
           "position": "RB",
@@ -8358,6 +8368,26 @@
           "median": 1,
           "average": 0.9,
           "high": 1.5
+        },
+        {
+          "name": "Brady Russell",
+          "team": "SEA",
+          "position": "RB",
+          "games": 5,
+          "low": 0,
+          "median": 0,
+          "average": 0.8,
+          "high": 2
+        },
+        {
+          "name": "Marvin Mims Jr.",
+          "team": "DEN",
+          "position": "WR",
+          "games": 4,
+          "low": 0,
+          "median": 0.9,
+          "average": 0.8,
+          "high": 1.3
         },
         {
           "name": "Sam Roush",
@@ -8873,7 +8903,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 5
+      "throughWeek": 6
     }
   }
 }
