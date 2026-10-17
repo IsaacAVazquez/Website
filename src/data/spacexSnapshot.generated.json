@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T13:03:26.450Z",
+  "generatedAt": "2026-10-17T23:13:24.401Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -8,7 +8,7 @@
       "flightNumber": 740,
       "upcoming": true,
       "success": null,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
       "dateUtc": "2026-10-19T10:30:00Z",
       "dateUnix": 1792405800,
       "dateLocal": "2026-10-19T10:30:00Z",
@@ -48,7 +48,7 @@
       "flightNumber": 740,
       "upcoming": true,
       "success": null,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
       "dateUtc": "2026-10-19T10:30:00Z",
       "dateUnix": 1792405800,
       "dateLocal": "2026-10-19T10:30:00Z",
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-17T13:03:19.338Z"
+    "generatedAt": "2026-10-17T23:13:18.324Z"
   },
   "upcomingLaunches": [
     {
@@ -159,7 +159,7 @@
       "flightNumber": 740,
       "upcoming": true,
       "success": null,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
       "dateUtc": "2026-10-19T10:30:00Z",
       "dateUnix": 1792405800,
       "dateLocal": "2026-10-19T10:30:00Z",
@@ -2083,7 +2083,7 @@
       "flightNumber": 740,
       "upcoming": true,
       "success": null,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.",
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
       "dateUtc": "2026-10-19T10:30:00Z",
       "dateUnix": 1792405800,
       "dateLocal": "2026-10-19T10:30:00Z",
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-17T13:03:26.075Z"
+    "generatedAt": "2026-10-17T23:13:23.686Z"
   }
 }
