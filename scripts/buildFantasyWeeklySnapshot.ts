@@ -7,8 +7,13 @@ import {
   FANTASY_PROS_PUBLIC_SOURCE,
   type FantasyProsPublicBoard,
 } from "@/lib/fantasyProsPublicSource";
-import { fetchWeeklyFlexBoard, fetchWeeklyQuarterbackBoard } from "@/lib/fantasyWeeklySource";
 import {
+  fetchRestOfSeasonBoard,
+  fetchWeeklyFlexBoard,
+  fetchWeeklyQuarterbackBoard,
+} from "@/lib/fantasyWeeklySource";
+import {
+  FANTASY_REST_OF_SEASON_PROVIDER_LABEL,
   FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION,
   FANTASY_WEEKLY_STARTABLE_DEPTH,
   formatFantasyWeeklyProviderLabel,
@@ -49,6 +54,7 @@ function toWeeklyPlayer(player: FantasyProsPublicBoard["players"][number]): Fant
     team: player.team,
     position: player.position,
     rank: player.averageRank,
+    ...(player.rankAverage !== undefined ? { rankAverage: player.rankAverage } : {}),
     ...(player.positionRank !== undefined ? { positionRank: player.positionRank } : {}),
     ...(player.standardDeviation !== undefined
       ? { standardDeviation: player.standardDeviation }
@@ -86,6 +92,56 @@ export function toSource(board: FantasyProsPublicBoard): FantasyWeeklyBoardSourc
     expertCount: board.totalExperts,
     playerCount: board.players.length,
   };
+}
+
+export function toRestOfSeasonSource(board: FantasyProsPublicBoard): FantasyWeeklyBoardSource {
+  if (board.sourceLabel !== FANTASY_PROS_PUBLIC_SOURCE) {
+    throw new Error(`Rest-of-season board returned an unknown source label: ${board.sourceLabel}`);
+  }
+  return {
+    provider: FANTASY_REST_OF_SEASON_PROVIDER_LABEL,
+    url: board.sourceUrl,
+    asOf: board.upstreamUpdatedAt,
+    expertCount: board.totalExperts,
+    playerCount: board.players.length,
+  };
+}
+
+/**
+ * The rest-of-season board is a second input, used only by the trade
+ * calculator, so it never blocks the weekly board. A failed fetch keeps the
+ * previous build's board for the same season. Its age is not judged here: five
+ * experts move it less often than the weekly pages (on 2026-09-27 it was three
+ * days old), so it is published with its own date and the calculator decides
+ * when that date is too old to price a trade on.
+ */
+async function buildRestOfSeason(
+  scoring: FantasyRouteScoring,
+  season: number,
+  previous: FantasyWeeklySnapshot | null
+): Promise<Pick<FantasyWeeklyBoard, "restOfSeason" | "restOfSeasonSource">> {
+  try {
+    const board = await withRetry(`rest-of-season ${scoring} board`, () =>
+      fetchRestOfSeasonBoard(routeScoringToScoringFormat(scoring), season)
+    );
+    return {
+      // A season-long board has no opponent, and the trade calculator reads no
+      // rostered rate, so neither rides along.
+      restOfSeason: board.players.map((player) => {
+        const { opponent: _opponent, ownership: _ownership, ...row } = toWeeklyPlayer(player);
+        return row;
+      }),
+      restOfSeasonSource: toRestOfSeasonSource(board),
+    };
+  } catch (error) {
+    const kept = previous?.season === season ? previous.boards[scoring] : undefined;
+    console.warn(
+      `Rest-of-season ${scoring} board was not refreshed${kept?.restOfSeason ? ", keeping the previous one" : ""}: ${error instanceof Error ? error.message : String(error)}`
+    );
+    return kept?.restOfSeason && kept.restOfSeasonSource
+      ? { restOfSeason: kept.restOfSeason, restOfSeasonSource: kept.restOfSeasonSource }
+      : {};
+  }
 }
 
 /**
@@ -197,6 +253,11 @@ export async function buildFantasyWeeklySnapshot(
       flexSource: toSource(flexBoard),
       quarterbackSource,
     };
+  }
+  // After every weekly page, so a stalled weekly source still fails the run
+  // before any rest-of-season request is spent.
+  for (const scoring of scoringKeys) {
+    Object.assign(boards[scoring], await buildRestOfSeason(scoring, season, previous));
   }
 
   const snapshot = normalizeFantasyWeeklySnapshot({

@@ -12,10 +12,10 @@ import { WeeklyBoardClient, type WeeklyRouteState } from "./weekly-client";
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Weekly Rankings",
   description:
-    "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.",
+    "In-season weekly consensus rankings for flex and quarterback, grouped into tiers, with each player's opponent, expert spread, and rostered rate.",
   canonicalUrl: "/fantasy-football/weekly",
   image: "/fantasy-football/weekly/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-15"),
 });
 
 const breadcrumbs = [

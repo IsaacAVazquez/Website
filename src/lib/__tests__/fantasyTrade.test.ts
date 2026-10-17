@@ -2,13 +2,16 @@
  * @jest-environment node
  */
 import {
+  FANTASY_TRADE_IN_SEASON_MODEL_VERSION,
   FANTASY_TRADE_IN_SEASON_WARNING,
   FANTASY_TRADE_MODEL_VERSION,
+  buildInSeasonTradeBoard,
   evaluateFantasyTrade,
   type FantasyTradeEvaluationInput,
   type FantasyTradeLeagueSettings,
 } from "@/lib/fantasyTrade";
 import type { FantasySnapshot } from "@/lib/fantasy";
+import type { FantasyWeeklyPlayer } from "@/lib/fantasyWeeklySnapshot";
 import type { Player } from "@/types";
 
 const NOW = new Date("2026-08-10T12:00:00.000Z");
@@ -409,5 +412,188 @@ describe("evaluateFantasyTrade", () => {
     );
     expect(mismatch.coverage).toBe("insufficient");
     expect(mismatch.verdict).toBe("insufficient");
+  });
+
+  describe("in season, on the rest-of-season board and this season's scoring", () => {
+    // Week 6 of 2026. The draft board and its ADP are a month old, which would withhold every
+    // verdict on the preseason basis.
+    const WEEK_6 = new Date("2026-10-15T12:00:00.000Z");
+    const ROS_AS_OF = "2026-10-14T12:00:00.000Z";
+
+    function withScoring(snapshot: FantasySnapshot, games = 5, season = 2026): FantasySnapshot {
+      return {
+        ...snapshot,
+        upstreamUpdatedAt: "2026-09-10T00:19:00.000Z",
+        adpSource: { ...snapshot.adpSource!, asOf: "2026-09-10T00:00:00.000Z" },
+        overall: snapshot.overall.map((player) => {
+          const average = 30 - (player.positionRank ?? 0) * 0.2;
+          return {
+            ...player,
+            gameLog: { season, throughWeek: 5, games, low: average - 2, median: average, average, high: average + 2 },
+          };
+        }),
+      };
+    }
+
+    function restOfSeasonRows(snapshot: FantasySnapshot): FantasyWeeklyPlayer[] {
+      return snapshot.overall.map((player) => ({
+        id: player.id,
+        name: player.name,
+        team: player.team,
+        position: player.position,
+        rank: player.averageRank,
+        rankAverage: player.averageRank,
+        standardDeviation: 1,
+        minRank: Math.max(1, player.averageRank - 2),
+        maxRank: player.averageRank + 2,
+      }));
+    }
+
+    function inSeasonInput(
+      sideA: readonly string[],
+      sideB: readonly string[],
+      { snapshot = withScoring(buildSnapshot()), asOf = ROS_AS_OF, rows }: {
+        snapshot?: FantasySnapshot;
+        asOf?: string;
+        rows?: FantasyWeeklyPlayer[];
+      } = {}
+    ): FantasyTradeEvaluationInput {
+      return input(sideA, sideB, {
+        snapshot,
+        now: WEEK_6,
+        restOfSeason: {
+          players: rows ?? restOfSeasonRows(snapshot),
+          source: {
+            provider: "FantasyPros rest-of-season board",
+            url: "https://www.fantasypros.com/nfl/rankings/ros-ppr-overall.php",
+            asOf,
+            expertCount: 5,
+            playerCount: snapshot.overall.length,
+          },
+        },
+      });
+    }
+
+    it("prices the rest of the season and can issue a clear edge again", () => {
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"]));
+
+      expect(result.basis).toBe("in-season");
+      expect(result.modelVersion).toBe(FANTASY_TRADE_IN_SEASON_MODEL_VERSION);
+      expect(result.scope).toBe("in-season-one-qb-redraft");
+      expect(result.warnings).not.toContain(FANTASY_TRADE_IN_SEASON_WARNING);
+      expect(result.coverage).toBe("supported");
+      expect(result.verdict).toBe("clear-edge-side-a");
+      expect(result.sources.expert).toMatchObject({ asOf: ROS_AS_OF, freshness: "fresh", expertCount: 5 });
+      expect(result.sources.market).toMatchObject({
+        provider: "2026 scoring through Week 5",
+        usable: true,
+      });
+      expect(result.sideA.players[0].production).toEqual({ pointsPerGame: 29.8, games: 5 });
+    });
+
+    it("weights the scoring leg by games played", () => {
+      const five = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"]));
+      const ten = evaluateFantasyTrade(
+        inSeasonInput(["RB-1"], ["RB-30"], { snapshot: withScoring(buildSnapshot(), 10) })
+      );
+      expect(five.sideA.players[0].marketReliability).toBe(0.5);
+      expect(ten.sideA.players[0].marketReliability).toBe(1);
+    });
+
+    it("ranks the scoring leg against each position's replacement level, not raw points", () => {
+      // Every position scores the same points per game by depth, so the top quarterback and the
+      // top running back are both one starter-line above replacement and share the top ranks.
+      const result = evaluateFantasyTrade(inSeasonInput(["QB-1"], ["RB-1"]));
+      const ranks = [result.sideA.players[0].marketAdp, result.sideB.players[0].marketAdp];
+      expect(ranks.every((rank) => rank !== null && rank <= 4)).toBe(true);
+    });
+
+    it("prices a player with no scoring log on the experts alone, at limited coverage", () => {
+      const snapshot = withScoring(buildSnapshot());
+      const noLog = {
+        ...snapshot,
+        overall: snapshot.overall.map(({ gameLog, ...player }) =>
+          player.id === "RB-1" ? player : { ...player, gameLog }
+        ),
+      };
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"], { snapshot: noLog }));
+
+      expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
+      expect(result.sideA.players[0].warnings).toContain(
+        "This player has no 2026 scoring log of at least four games, so the experts price him alone."
+      );
+      expect(result.coverage).toBe("limited");
+      expect(result.verdict).toBe("leans-side-a");
+    });
+
+    it("ignores last season's scoring", () => {
+      const result = evaluateFantasyTrade(
+        inSeasonInput(["RB-1"], ["RB-30"], { snapshot: withScoring(buildSnapshot(), 17, 2025) })
+      );
+      expect(result.sideA.players[0].production).toBeNull();
+      expect(result.sources.market.usable).toBe(false);
+      expect(result.coverage).toBe("limited");
+    });
+
+    it("reads aging after five days and withholds after eight", () => {
+      const aging = evaluateFantasyTrade(
+        inSeasonInput(["RB-1"], ["RB-30"], { asOf: "2026-10-09T12:00:00.000Z" })
+      );
+      expect(aging.sources.expert.freshness).toBe("aging");
+      expect(aging.coverage).toBe("limited");
+
+      const stale = evaluateFantasyTrade(
+        inSeasonInput(["RB-1"], ["RB-30"], { asOf: "2026-10-06T12:00:00.000Z" })
+      );
+      expect(stale.coverage).toBe("insufficient");
+      expect(stale.verdict).toBe("insufficient");
+      expect(stale.warnings).toContain(
+        "The rest-of-season expert board is stale, so the calculator cannot issue a trade verdict."
+      );
+    });
+
+    it("withholds a player the rest-of-season board does not list", () => {
+      const snapshot = withScoring(buildSnapshot());
+      const rows = restOfSeasonRows(snapshot).filter((row) => row.id !== "RB-30");
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"], { snapshot, rows }));
+      expect(result.sideB.players[0].warnings).toEqual(["Player RB-30 is not on the rest-of-season board."]);
+      expect(result.verdict).toBe("insufficient");
+    });
+  });
+});
+
+describe("buildInSeasonTradeBoard", () => {
+  it("takes the rest-of-season board and carries over only the bye week and scoring", () => {
+    const draft = buildSnapshot().overall.slice(0, 2).map((player) => ({
+      ...player,
+      byeWeek: 9,
+      gameLog: { season: 2026, throughWeek: 5, games: 5, low: 1, median: 2, average: 2, high: 3 },
+    }));
+    const board = buildInSeasonTradeBoard(draft, [
+      { id: draft[1].id, name: "Second", team: "KC", position: "RB", rank: 1, rankAverage: 1.4, standardDeviation: 0.5 },
+      { id: "fp-waiver", name: "Waiver Add", team: "NYJ", position: "WR", rank: 2 },
+    ]);
+
+    expect(board[0]).toEqual({
+      id: draft[1].id,
+      name: "Second",
+      team: "KC",
+      position: "RB",
+      averageRank: 1,
+      rankEcr: 1,
+      rankAverage: 1.4,
+      standardDeviation: 0.5,
+      byeWeek: 9,
+      gameLog: draft[1].gameLog,
+    });
+    expect(board[0]).not.toHaveProperty("adp");
+    expect(board[1]).toEqual({
+      id: "fp-waiver",
+      name: "Waiver Add",
+      team: "NYJ",
+      position: "WR",
+      averageRank: 2,
+      rankEcr: 2,
+    });
   });
 });

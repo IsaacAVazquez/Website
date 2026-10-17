@@ -36,7 +36,9 @@ export type FantasyProsWeeklyPageKind =
   | "flex-ppr"
   | "flex-half"
   | "flex-std"
-  | "ros-ppr";
+  | "ros-ppr"
+  | "ros-half"
+  | "ros-std";
 
 export interface FantasyProsWeeklyPageOverrides {
   year?: number;
@@ -85,6 +87,14 @@ const PAGES: Record<
   "ros-ppr": {
     envelope: {"sport":"NFL","type":"ROS PPR","ranking_type_name":"ros","year":"2026","week":"0","position_id":"ALL","scoring":"PPR","filters":"22,1139,1204","count":396,"total_experts":6,"last_updated":"9/24","last_updated_ts":1790278741,"experts_available":{"total":30,"included":[22,1139,1204],"excluded":[7266,5874,1080],"ineligible":[],"last_update":1790278741},"accessed":"2026-09-27 19:05:32"},
     rows: ROS_ROWS,
+  },  // The other two formats' rest-of-season pages share the PPR page's rows and differ in scoring.
+  "ros-half": {
+    envelope: {"sport":"NFL","type":"ROS Half PPR","ranking_type_name":"ros","year":"2026","week":"0","position_id":"ALL","scoring":"HALF","filters":"22,1139,1204","count":396,"total_experts":6,"last_updated":"9/24","last_updated_ts":1790278741,"experts_available":{"total":30,"included":[22,1139,1204],"excluded":[7266,5874,1080],"ineligible":[],"last_update":1790278741},"accessed":"2026-09-27 19:05:32"},
+    rows: ROS_ROWS,
+  },
+  "ros-std": {
+    envelope: {"sport":"NFL","type":"ROS","ranking_type_name":"ros","year":"2026","week":"0","position_id":"ALL","scoring":"STD","filters":"22,1139,1204","count":396,"total_experts":6,"last_updated":"9/24","last_updated_ts":1790278741,"experts_available":{"total":30,"included":[22,1139,1204],"excluded":[7266,5874,1080],"ineligible":[],"last_update":1790278741},"accessed":"2026-09-27 19:05:32"},
+    rows: ROS_ROWS,
   },
 };
 
@@ -94,6 +104,8 @@ const PAGE_KIND_BY_PATH: Record<string, FantasyProsWeeklyPageKind> = {
   "/nfl/rankings/half-point-ppr-flex.php": "flex-half",
   "/nfl/rankings/flex.php": "flex-std",
   "/nfl/rankings/ros-ppr-overall.php": "ros-ppr",
+  "/nfl/rankings/ros-half-point-ppr-overall.php": "ros-half",
+  "/nfl/rankings/ros-overall.php": "ros-std",
 };
 
 function expandRows(rows: FantasyProsRow[], count: number): FantasyProsRow[] {

@@ -118,9 +118,11 @@ export function TradePackageFieldset({
                     </span>
                     <span className="ffb-c-team">
                       {team || "Not on this scoring board"}
-                      {exactValuesAvailable && valued?.marketAdp
-                        ? ` · ADP ${valued.marketAdp.toFixed(1)}`
-                        : ""}
+                      {exactValuesAvailable && valued?.production
+                        ? ` · ${valued.production.pointsPerGame.toFixed(1)} pts/g`
+                        : exactValuesAvailable && valued?.marketAdp
+                          ? ` · ADP ${valued.marketAdp.toFixed(1)}`
+                          : ""}
                       {held ? (
                         <>
                           {" · "}

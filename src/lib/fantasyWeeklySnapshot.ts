@@ -60,6 +60,8 @@ export function formatFantasyWeeklyProviderLabel(board: FantasyWeeklyBoardLabel)
   return `FantasyPros weekly ${board} board`;
 }
 
+export const FANTASY_REST_OF_SEASON_PROVIDER_LABEL = "FantasyPros rest-of-season board";
+
 /** The host a source URL points at, without a leading www, or null when the URL is unusable. */
 export function getFantasyWeeklySourceHost(
   source: Pick<FantasyWeeklyBoardSource, "url">
@@ -122,6 +124,8 @@ export interface FantasyWeeklyPlayer {
   position: Position;
   /** Consensus rank within this board only. Flex and quarterback ranks do not compare. */
   rank: number;
+  /** FantasyPros' published mean expert rank. The tiers read it because `rank` is a whole number. */
+  rankAverage?: number;
   positionRank?: number;
   standardDeviation?: number;
   minRank?: number;
@@ -137,6 +141,14 @@ export interface FantasyWeeklyBoard {
   quarterbacks: FantasyWeeklyPlayer[];
   flexSource: FantasyWeeklyBoardSource;
   quarterbackSource: FantasyWeeklyBoardSource;
+  /**
+   * FantasyPros' rest-of-season overall board, every position on one scale.
+   * It prices the rest of the season rather than this week, which is what the
+   * trade calculator needs once the draft board has frozen. Optional because
+   * snapshots built before it shipped do not carry it.
+   */
+  restOfSeason?: FantasyWeeklyPlayer[];
+  restOfSeasonSource?: FantasyWeeklyBoardSource;
 }
 
 export interface FantasyWeeklySnapshot {
@@ -202,6 +214,9 @@ function normalizePlayer(raw: unknown, label: string): FantasyWeeklyPlayer {
     team: typeof record.team === "string" && record.team.trim() ? record.team.trim() : "FA",
     position: String(record.position ?? "").toUpperCase() as Position,
     rank,
+    ...(optionalNumber("rankAverage") !== undefined
+      ? { rankAverage: optionalNumber("rankAverage") }
+      : {}),
     ...(optionalNumber("positionRank") !== undefined
       ? { positionRank: optionalNumber("positionRank") }
       : {}),
@@ -275,6 +290,16 @@ export function normalizeFantasyWeeklySnapshot(raw: unknown): FantasyWeeklySnaps
       flexSource: normalizeSource(boardFields.flexSource, `${scoring}.flex`),
       quarterbackSource: normalizeSource(boardFields.quarterbackSource, `${scoring}.quarterback`),
     };
+    const restOfSeason = Array.isArray(boardFields.restOfSeason) ? boardFields.restOfSeason : [];
+    if (restOfSeason.length > 0 && boardFields.restOfSeasonSource) {
+      boards[scoring].restOfSeason = restOfSeason.map((player, index) =>
+        normalizePlayer(player, `${scoring}.restOfSeason[${index}]`)
+      );
+      boards[scoring].restOfSeasonSource = normalizeSource(
+        boardFields.restOfSeasonSource,
+        `${scoring}.restOfSeason`
+      );
+    }
   }
 
   return {

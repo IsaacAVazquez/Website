@@ -15,6 +15,14 @@ import { TradeCalculatorClient } from "../trade-calculator-client";
 const mockReplace = jest.fn();
 const mockRetry = jest.fn();
 const mockUseFantasySnapshot = jest.fn();
+const NOT_PUBLISHED_WEEKLY = {
+  snapshot: null,
+  notPublished: true,
+  isLoading: false,
+  error: null,
+  retry: jest.fn(),
+};
+const mockUseFantasyWeeklySnapshot = jest.fn();
 let currentSearchParams = new URLSearchParams();
 
 // The engine and the season note both read the wall clock, and the 2026
@@ -53,6 +61,10 @@ jest.mock("next/navigation", () => ({
 
 jest.mock("@/hooks/useFantasySnapshot", () => ({
   useFantasySnapshot: () => mockUseFantasySnapshot(),
+}));
+
+jest.mock("@/hooks/useFantasyWeeklySnapshot", () => ({
+  useFantasyWeeklySnapshot: () => mockUseFantasyWeeklySnapshot(),
 }));
 
 const AVAILABLE_SLICE: FantasySnapshotSliceMetadata = {
@@ -194,6 +206,8 @@ describe("TradeCalculatorClient", () => {
     mockReplace.mockReset();
     mockRetry.mockReset();
     mockUseFantasySnapshot.mockReset();
+    mockUseFantasyWeeklySnapshot.mockReset();
+    mockUseFantasyWeeklySnapshot.mockReturnValue(NOT_PUBLISHED_WEEKLY);
     pinClock(PRESEASON_NOW);
     Object.defineProperty(window, "requestAnimationFrame", {
       configurable: true,
@@ -516,6 +530,120 @@ describe("TradeCalculatorClient", () => {
     expect(
       within(evaluation).queryByText(/prices what these players would cost in a draft this week/),
     ).not.toBeInTheDocument();
+  });
+
+  describe("in season, with a rest-of-season board", () => {
+    const WEEK_6_NOW = "2026-10-15T12:00:00.000Z";
+    const ROS_AS_OF = "2026-10-15T09:00:00.000Z";
+
+    function seasonSnapshot(): FantasySnapshot {
+      const snapshot = buildSnapshot();
+      return {
+        ...snapshot,
+        // The draft board froze at kickoff and its market a day later.
+        upstreamUpdatedAt: "2026-09-10T00:19:00.000Z",
+        adpSource: { ...snapshot.adpSource!, asOf: "2026-09-10T00:00:00.000Z" },
+        overall: snapshot.overall.map((player) => {
+          const average = 30 - player.averageRank * 0.5;
+          return {
+            ...player,
+            gameLog: { season: 2026, throughWeek: 5, games: 5, low: average - 1, median: average, average, high: average + 1 },
+          };
+        }),
+      };
+    }
+
+    function useRestOfSeason(snapshot: FantasySnapshot) {
+      const rows = [
+        ...snapshot.overall.map((player) => ({
+          id: player.id,
+          name: player.name,
+          team: player.team,
+          position: player.position,
+          rank: player.averageRank,
+          rankAverage: player.averageRank,
+          standardDeviation: 0.25,
+          minRank: Math.max(1, player.averageRank - 1),
+          maxRank: player.averageRank + 1,
+        })),
+        // Picked up off waivers after the draft board froze.
+        { id: "rb-waiver", name: "Waiver Runner", team: "MIA", position: "RB" as const, rank: 33 },
+      ];
+      const source = {
+        provider: "FantasyPros rest-of-season board",
+        url: "https://www.fantasypros.com/nfl/rankings/ros-ppr-overall.php",
+        asOf: ROS_AS_OF,
+        expertCount: 5,
+        playerCount: rows.length,
+      };
+      const weeklySource = { ...source, provider: "FantasyPros weekly flex board" };
+      const board = {
+        flex: rows.slice(0, 1),
+        quarterbacks: rows.slice(0, 1),
+        flexSource: weeklySource,
+        quarterbackSource: weeklySource,
+        restOfSeason: rows,
+        restOfSeasonSource: source,
+      };
+      mockUseFantasyWeeklySnapshot.mockReturnValue({
+        ...NOT_PUBLISHED_WEEKLY,
+        notPublished: false,
+        snapshot: {
+          schemaVersion: 1,
+          season: 2026,
+          week: 6,
+          generatedAt: ROS_AS_OF,
+          boards: { ppr: board, half_ppr: board, standard: board },
+        },
+      });
+    }
+
+    it("prices the rest of the season, says so, and can issue a clear edge again", async () => {
+      pinClock(WEEK_6_NOW);
+      const snapshot = seasonSnapshot();
+      useSnapshot(snapshot);
+      useRestOfSeason(snapshot);
+      render(<TradeCalculatorClient />);
+
+      expect(screen.getByText("In-season redraft · Model v1")).toBeInTheDocument();
+      expect(screen.getByText(/^Rest-of-season board .*, 5 experts$/).closest("header")).not.toBeNull();
+      expect(screen.getByText("2026 scoring through Week 5")).toBeInTheDocument();
+      const note = screen.getByRole("note");
+      expect(note).toHaveTextContent("this prices the rest of the season instead");
+      expect(note).toHaveTextContent("averages 5 experts");
+
+      await addPlayerWithKeyboard("you give", "Elite Runner");
+      await addPlayerWithKeyboard("you get", "Depth Runner");
+
+      const evaluation = screen.getByRole("complementary", { name: "Trade evaluation" });
+      expect(within(evaluation).getByText("supported coverage")).toBeInTheDocument();
+      expect(within(screen.getByTestId("trade-verdict-strip")).getByText("Clear edge to the other side")).toBeInTheDocument();
+      expect(within(evaluation).getByText("Season scoring")).toBeInTheDocument();
+      expect(within(evaluation).getAllByText("2026 scoring through Week 5").length).toBeGreaterThan(0);
+      expect(within(evaluation).getByText(/an in-season one-QB redraft estimate/)).toBeInTheDocument();
+      expect(
+        within(screen.getByRole("list", { name: "You give players" })).getByText(/29\.5 pts\/g/),
+      ).toBeInTheDocument();
+    });
+
+    it("lists a player only the rest-of-season board has, and prices him on the experts alone", async () => {
+      pinClock(WEEK_6_NOW);
+      const snapshot = seasonSnapshot();
+      useSnapshot(snapshot);
+      useRestOfSeason(snapshot);
+      render(<TradeCalculatorClient />);
+
+      await addPlayerWithKeyboard("you give", "Test Runner 30");
+      await addPlayerWithKeyboard("you get", "Waiver Runner");
+
+      const evaluation = screen.getByRole("complementary", { name: "Trade evaluation" });
+      expect(within(evaluation).getByText("limited coverage")).toBeInTheDocument();
+      expect(
+        within(evaluation).getByText(
+          "This player has no 2026 scoring log of at least four games, so the experts price him alone.",
+        ),
+      ).toBeInTheDocument();
+    });
   });
 
   it("prints the stale source line in the negative ink in the compact header, with no plate around it", () => {

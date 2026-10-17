@@ -74,12 +74,51 @@
   font-weight: 500;
 }
 
+/* The tiered rankings board, drawn the way the draft board is: rank, chip, name, team,
+   opponent, rostered, the spread, and the average. The name keeps 150px before the spread
+   takes any, since the name is the last thing a row can lose. */
+.ffb-wk-board { --ffb-cols: 30px 46px minmax(150px, 1fr) 36px 64px 64px minmax(150px, 2fr) 44px; }
+/* The opponent is a word, so it reads from the left like the team beside it. */
+.ffb-wk-board .ffb-wk-c-opp { text-align: left; }
+/* The tier's name and its cliff share the head's left part at every width. */
+.ffb-wk-tier-lead {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ffb-s4);
+  min-width: 0;
+}
+/* The scale's labels print only where the plot does. */
+.ffb-wk-scale { display: none; }
+@media (min-width: 768px) {
+  /* A tier's head is a row on the board's own columns, with the labels of the tier's scale
+     over the spread column. */
+  .ffb-wk-board .ffb-tier-head {
+    display: grid;
+    grid-template-columns: var(--ffb-cols);
+    column-gap: var(--ffb-s3);
+  }
+  .ffb-wk-board .ffb-wk-tier-lead { grid-column: 1 / -3; }
+  .ffb-wk-board .ffb-wk-scale {
+    display: grid;
+    grid-column: -3 / -2;
+    align-self: end;
+    padding-bottom: 3px;
+    line-height: 1.2;
+  }
+}
+/* Below 1024px the plot is narrow enough that every other label is all that fits, and the
+   spread's legend needs about 300px. */
+@media (max-width: 1023.98px) {
+  .ffb-wk-board .ffb-wk-scale > :nth-child(even) { visibility: hidden; }
+}
+@media (max-width: 1279.98px) {
+  .ffb-wk-board .ffb-spread-key { display: none; }
+}
+
 /* The tables size their columns once, from the head, and the player takes the rest. */
 .ffb-wk-table { table-layout: fixed; }
-.ffb-wk-table .ffb-wk-h-rank { width: 44px; }
-.ffb-wk-table .ffb-wk-h-opp { width: 17%; }
-.ffb-wk-table .ffb-wk-h-range { width: 19%; }
-.ffb-wk-table .ffb-wk-h-num-wide { width: 104px; }
 /* The waiver table's five number columns are as narrow as their heads allow, so the player
    keeps one line from 768px up and where the rail first appears at 1200px. */
 .ffb-wk-table-waivers .ffb-wk-h-gap { width: 60px; }
@@ -89,7 +128,6 @@
 
 /* The phone lists are the kit's reflowed table. These are the two column templates its head
    and its rows read. */
-.ffb-wk-main-weekly { --ffb-pair-cols: minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1fr); }
 .ffb-wk-main-waivers { --ffb-pair-cols: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.45fr) minmax(0, 1.2fr); }
 
 /* ==========================================================================

@@ -144,6 +144,7 @@ function ValueReadout({
 }
 
 export function TradeResultRail({
+  inSeason = false,
   result,
   hasBothSides,
   valuesAvailable,
@@ -152,6 +153,8 @@ export function TradeResultRail({
   teams,
   rosterSize,
 }: {
+  /** True when the calculator prices the rest-of-season board and this season's scoring. */
+  inSeason?: boolean;
   result: FantasyTradeEvaluation | null;
   hasBothSides: boolean;
   valuesAvailable: boolean;
@@ -223,7 +226,7 @@ export function TradeResultRail({
         {/* A disclaimer never sits inside a disclosure, so this prints in the
             open beside the verdict it qualifies. */}
         <p className="ffb-method">
-          This is a preseason one-QB redraft estimate. It is not projected points, win probability, dynasty value, or injury advice.
+          This is {inSeason ? "an in-season" : "a preseason"} one-QB redraft estimate. It is not projected points, win probability, dynasty value, or injury advice.
         </p>
       </div>
 
@@ -239,7 +242,11 @@ export function TradeResultRail({
                 Expert consensus
                 <MetricTooltip
                   term="Expert consensus"
-                  definition="Aggregate preseason expert rankings on the overall board. This is not a named creator model or a points projection."
+                  definition={
+                    inSeason
+                      ? "FantasyPros' rest-of-season consensus on one overall board. This is not a named creator model or a points projection."
+                      : "Aggregate preseason expert rankings on the overall board. This is not a named creator model or a points projection."
+                  }
                 />
               </dt>
               {result ? (
@@ -248,15 +255,25 @@ export function TradeResultRail({
                 </dd>
               ) : null}
               <dd className="ffb-fact-note">
-                {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
+                {result
+                  ? `${formatUpdatedAt(result.sources.expert.asOf)}${
+                      result.sources.expert.expertCount !== null
+                        ? `, ${result.sources.expert.expertCount} experts`
+                        : ""
+                    }`
+                  : "Waiting for players"}
               </dd>
             </div>
             <div className="ffb-fact">
               <dt className="ffb-with-help">
-                Draft market
+                {inSeason ? "Season scoring" : "Draft market"}
                 <MetricTooltip
-                  term="Draft market"
-                  definition="Current mock-draft average position. It is a preseason price signal, not a database of completed trades."
+                  term={inSeason ? "Season scoring" : "Draft market"}
+                  definition={
+                    inSeason
+                      ? "Points per game this season above each position's replacement level, from players with at least four games. It weighs in by games played, so it counts for half at five games and in full from ten."
+                      : "Current mock-draft average position. It is a preseason price signal, not a database of completed trades."
+                  }
                 />
               </dt>
               {result ? (
@@ -270,9 +287,11 @@ export function TradeResultRail({
                     Before that the header already carries the source date. */}
                 {!result
                   ? "Waiting for players"
-                  : result.sources.market.usable
-                    ? formatMarketDate(result.sources.market.asOf) ?? "Unavailable"
-                    : "Not current"}
+                  : result.basis === "in-season"
+                    ? result.sources.market.provider
+                    : result.sources.market.usable
+                      ? formatMarketDate(result.sources.market.asOf) ?? "Unavailable"
+                      : "Not current"}
               </dd>
             </div>
             <div className="ffb-fact">
@@ -314,7 +333,9 @@ export function TradeResultRail({
             <summary>How the estimate works</summary>
             <div className="ffb-details-body">
               <p className="ffb-method">
-                Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range.
+                {inSeason
+                  ? "Rest-of-season expert rank and a rank built from this season's points per game above replacement are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range."
+                  : "Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range."}
               </p>
             </div>
           </details>

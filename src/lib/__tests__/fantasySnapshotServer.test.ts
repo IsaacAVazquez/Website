@@ -132,7 +132,11 @@ describe("loadFantasyWeeklySeed", () => {
     const seed = await loadFantasyWeeklySeed("half_ppr");
 
     expect(Object.keys(seed?.boards ?? {})).toEqual(["half_ppr"]);
-    expect(seed?.boards.half_ppr).toEqual(published.boards.half_ppr);
+    // The rest-of-season board is for the trade calculator, so the weekly pages' HTML leaves it out.
+    const { restOfSeason, restOfSeasonSource, ...weeklyBoard } = published.boards.half_ppr;
+    expect(restOfSeason?.length).toBeGreaterThan(0);
+    expect(restOfSeasonSource).toBeDefined();
+    expect(seed?.boards.half_ppr).toEqual(weeklyBoard);
     expect(seed?.week).toBe(published.week);
     expect(seed?.season).toBe(published.season);
   });

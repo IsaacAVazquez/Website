@@ -7,7 +7,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type ReactNode,
 } from "react";
 import Link from "next/link";
@@ -75,7 +74,8 @@ import { PlayerNoteField } from "@/components/fantasy/PlayerNoteField";
 import { PlayerPointsPerGame } from "@/components/fantasy/PlayerPointsPerGame";
 import { positionClass } from "@/components/fantasy/positionClass";
 import { RankDistributionBar } from "@/components/fantasy/RankDistributionBar";
-import { fitSpreadScale, type SpreadScale } from "@/components/fantasy/spreadScale";
+import { fitRowsScale, fitSpreadScale, type SpreadScale } from "@/components/fantasy/spreadScale";
+import { ExpertSpread, SpreadScaleLabels, TierSection } from "@/components/fantasy/TierSection";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
@@ -225,90 +225,8 @@ function positionRankLabel(position: FantasyRoutePosition): (rank: number) => st
  * is that many ranks of the position, labelled by the rank it starts at.
  */
 function fitGroupScale(rows: Player[], unit: number, position: FantasyRoutePosition): SpreadScale {
-  let lo = Infinity;
-  let hi = 0;
-  for (const player of rows) {
-    if (!Number.isFinite(player.minRank) || !Number.isFinite(player.maxRank)) continue;
-    lo = Math.min(lo, player.minRank as number);
-    hi = Math.max(hi, player.maxRank as number);
-  }
-  if (hi === 0) {
-    lo = 1;
-    hi = 1;
-  }
-  if (ranksAreOverall(position)) return fitSpreadScale(lo, hi, { unit });
-  return fitSpreadScale(lo, hi, { unit, label: positionRankLabel(position) });
-}
-
-/** The labels of a scale, one over each of its divisions. They are a caption for the plots under them. */
-function SpreadScaleLabels({ scale, className }: { scale: SpreadScale; className: string }) {
-  return (
-    <span
-      className={`ffb-h-rounds ${className}`}
-      aria-hidden="true"
-      style={{ "--ffb-rounds": scale.ticks.length } as CSSProperties}
-    >
-      {scale.ticks.map((tick) => (
-        <span key={tick.at}>{tick.label}</span>
-      ))}
-    </span>
-  );
-}
-
-/**
- * The kit's expert spread: a thin line from the best to the worst rank any
- * expert gave, a thicker segment one standard deviation each side of the
- * average, and an ink tick on the average. Every plot in a group shares
- * `scale`, so two rows can be compared by eye. The range rides in the
- * accessible name and the hover title, since the plot is its only print on the
- * row. The average is left out of that name, because the column beside the
- * plot prints it.
- */
-function ExpertSpread({ player, scale }: { player: Player; scale: SpreadScale }) {
-  const lo = player.minRank;
-  const hi = player.maxRank;
-  const guides = { "--ffb-rounds": scale.ticks.length } as CSSProperties;
-  if (!Number.isFinite(lo) || !Number.isFinite(hi)) {
-    return <span className="ffb-spread" aria-hidden="true" style={guides} />;
-  }
-
-  // A rank is a slot one wide: rank r runs from (r - min) to (r - min + 1) of the span, and its centre is half a slot in.
-  const span = scale.max - scale.min + 1;
-  const toPercent = (slots: number) => `${Math.min(100, Math.max(0, (slots / span) * 100)).toFixed(2)}%`;
-  const avg = getConsensusAvg(player);
-  const centre = avg === null ? null : avg - scale.min + 0.5;
-  const deviation =
-    typeof player.standardDeviation === "number" && Number.isFinite(player.standardDeviation) && player.standardDeviation > 0
-      ? player.standardDeviation
-      : null;
-  const label = `Expert rank range ${lo} to ${hi}`;
-
-  return (
-    <span
-      className={`ffb-spread ${positionClass(player.position)}`.trimEnd()}
-      role="img"
-      aria-label={label}
-      title={label}
-      style={
-        {
-          ...guides,
-          "--ffb-min": toPercent((lo as number) - scale.min),
-          "--ffb-max": toPercent((hi as number) - scale.min + 1),
-          ...(centre === null ? {} : { "--ffb-avg": toPercent(centre) }),
-          ...(centre === null || deviation === null
-            ? {}
-            : {
-                "--ffb-sd-lo": toPercent(centre - deviation),
-                "--ffb-sd-hi": toPercent(centre + deviation),
-              }),
-        } as CSSProperties
-      }
-    >
-      <i className="ffb-spread-range" />
-      {centre !== null && deviation !== null ? <i className="ffb-spread-sd" /> : null}
-      {centre !== null ? <i className="ffb-spread-avg" /> : null}
-    </span>
-  );
+  if (ranksAreOverall(position)) return fitRowsScale(rows, { unit });
+  return fitRowsScale(rows, { unit, label: positionRankLabel(position) });
 }
 
 /**
@@ -1291,7 +1209,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             {vorp ? Math.round(vorp.value) : "—"}
           </span>
         )}
-        <ExpertSpread player={player} scale={scale} />
+        <ExpertSpread player={player} avg={getConsensusAvg(player)} scale={scale} />
         <span
           className={`ffb-c-num ffb-is-flat${phoneNumbers === "vorp" ? " ffb-m-sub" : phoneNumbers === "avg" ? " ffb-m-top" : ""}`}
           title={FANTASY_AVG_RANK_TOOLTIP}
@@ -1356,68 +1274,26 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     }
 
     const run = tierRuns.get(group.rows[0].id);
-    const count = run?.count ?? group.rows.length;
-    const firstRank = displayRank(run?.first ?? group.rows[0]);
-    const lastRank = displayRank(run?.last ?? group.rows[group.rows.length - 1]);
-    const cliff = run?.cliff ?? 0;
-    const countLabel = `${count} ${count === 1 ? "player" : "players"}`;
-    // The gap above a break grows with the cliff, in 4px steps from 8 to 28px.
-    const gap = Math.min(28, Math.max(8, Math.round((cliff * 6) / 4) * 4));
-
-    /* A <section> with no accessible name is not exposed as a landmark at all, so an
-       unnamed tier makes the tier structure of a tier-first board invisible to assistive
-       tech. This is a literal label, not aria-labelledby, so it can also carry the cliff
-       in words the heading abbreviates. */
-    const tierLabel = [
-      group.tier !== null ? `Tier ${group.tier}` : "No published tier",
-      countLabel,
-      `ranks ${firstRank} to ${lastRank}`,
-      cliff > 0 ? `${cliff.toFixed(1)} average-rank cliff above` : null,
-    ]
-      .filter(Boolean)
-      .join(", ");
-
     return (
-      <section
+      <TierSection
         // Keyed by the tier's first player on the full board, so the section (and whatever in it has
         // focus) stays mounted when a filter or the queue takes its first visible row away.
         key={`tier-${group.tier ?? "untiered"}-${(run?.first ?? group.rows[0]).id}`}
-        className="ffb-tier"
-        aria-label={tierLabel}
-        style={index > 0 ? ({ "--ffb-gap": `${gap}px` } as CSSProperties) : undefined}
+        tier={group.tier}
+        count={run?.count ?? group.rows.length}
+        firstRank={displayRank(run?.first ?? group.rows[0])}
+        lastRank={displayRank(run?.last ?? group.rows[group.rows.length - 1])}
+        cliff={run?.cliff ?? 0}
+        first={index === 0}
+        leadClassName="ffb-rk-tier-lead"
+        // From the width where the plot shows, the head pins under the toolbar
+        // while its tier is on screen, and the labels of the tier's own scale
+        // sit in it over the spread column. So a plot is never on screen
+        // without its labels.
+        scaleLabels={scaleLabels}
       >
-        {/* From the width where the plot shows, the head pins under the toolbar
-            while its tier is on screen, and the labels of the tier's own scale
-            sit in it over the spread column. So a plot is never on screen
-            without its labels. */}
-        <header className="ffb-tier-head">
-          <div className="ffb-rk-tier-lead">
-            <h3 className="ffb-tier-name">
-              <span className="ffb-tier-tab">
-                {group.tier !== null ? (
-                  <>
-                    Tier <span>{String(group.tier).padStart(2, "0")}</span>
-                  </>
-                ) : (
-                  "No tier"
-                )}
-              </span>{" "}
-              <span className="ffb-tier-count">{countLabel}</span>{" "}
-              <span className="ffb-tier-range">
-                {firstRank === lastRank ? `Rank ${firstRank}` : `Ranks ${firstRank}–${lastRank}`}
-              </span>
-            </h3>
-            {cliff > 0 && (
-              <p className="ffb-tier-cliff">
-                <span className="ffb-cliff-mark" aria-hidden="true" />
-                <b>{cliff.toFixed(1)}</b> <span className="ffb-not-phone">avg-rank </span>cliff
-              </p>
-            )}
-          </div>
-          {scaleLabels}
-        </header>
-        <ol className="ffb-rows">{group.rows.map((player) => renderRow(player, scale))}</ol>
-      </section>
+        {group.rows.map((player) => renderRow(player, scale))}
+      </TierSection>
     );
   }
 

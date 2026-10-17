@@ -27,19 +27,20 @@ jest.mock("../trade-calculator/trade-calculator-client", () => ({
 }));
 jest.mock("../weekly/weekly-client", () => ({ WeeklyBoardClient: () => null }));
 
-const PAGES: Array<[string, Metadata]> = [
-  ["/fantasy-football", rankings],
-  ["/fantasy-football/best-ball", bestBall],
-  ["/fantasy-football/best-ball/draft-tracker", bestBallDraft],
-  ["/fantasy-football/draft-tracker", draftTracker],
-  ["/fantasy-football/mock-draft", mockDraft],
-  ["/fantasy-football/trade-calculator", tradeCalculator],
-  ["/fantasy-football/waivers", waivers],
-  ["/fantasy-football/weekly", weekly],
+// The weekly tiers and the in-season trade calculator moved two pages on 2026-10-15.
+const PAGES: Array<[string, Metadata, string]> = [
+  ["/fantasy-football", rankings, "2026-10-13"],
+  ["/fantasy-football/best-ball", bestBall, "2026-10-13"],
+  ["/fantasy-football/best-ball/draft-tracker", bestBallDraft, "2026-10-13"],
+  ["/fantasy-football/draft-tracker", draftTracker, "2026-10-13"],
+  ["/fantasy-football/mock-draft", mockDraft, "2026-10-13"],
+  ["/fantasy-football/trade-calculator", tradeCalculator, "2026-10-15"],
+  ["/fantasy-football/waivers", waivers, "2026-10-13"],
+  ["/fantasy-football/weekly", weekly, "2026-10-15"],
 ];
 
 describe("fantasy football page dates", () => {
-  it.each(PAGES)("%s keeps the redesign date while the board is older", (_route, metadata) => {
-    expect(metadata.other?.["og:updated_time"]).toBe("2026-10-13");
+  it.each(PAGES)("%s keeps the redesign date while the board is older", (_route, metadata, date) => {
+    expect(metadata.other?.["og:updated_time"]).toBe(date);
   });
 });

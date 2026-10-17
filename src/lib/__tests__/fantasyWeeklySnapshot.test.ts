@@ -67,6 +67,25 @@ describe("normalizeFantasyWeeklySnapshot", () => {
     expect(snapshot.boards.standard.quarterbacks).toHaveLength(1);
   });
 
+  it("keeps the published average and a rest-of-season board when there is one", () => {
+    const rest = { provider: "FantasyPros rest-of-season board", url: "https://example.com/ros", asOf: "2026-09-09T12:00:00.000Z", expertCount: 5, playerCount: 1 };
+    const snapshot = normalizeFantasyWeeklySnapshot(
+      snapshotWith({
+        ppr: board({
+          flex: [player(1, { rankAverage: 1.4 }), player(2)],
+          restOfSeason: [player(1, { position: "QB" })],
+          restOfSeasonSource: rest,
+        }),
+      })
+    );
+    expect(snapshot.boards.ppr.flex[0].rankAverage).toBe(1.4);
+    expect(snapshot.boards.ppr.flex[1]).not.toHaveProperty("rankAverage");
+    expect(snapshot.boards.ppr.restOfSeason).toHaveLength(1);
+    expect(snapshot.boards.ppr.restOfSeasonSource).toEqual(rest);
+    // A snapshot built before the board shipped has neither field.
+    expect(snapshot.boards.standard).not.toHaveProperty("restOfSeason");
+  });
+
   it("rejects a week outside the regular season", () => {
     // The builder refuses to publish before Week 1, so a week-0 payload means
     // something upstream served a preseason board as an in-season one.

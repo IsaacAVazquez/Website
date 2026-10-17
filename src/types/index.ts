@@ -42,9 +42,11 @@ export interface Player {
   adpMove14d?: number;
 
   /**
-   * Prior-season fantasy points per game for this scoring format, from
-   * nflverse. Absent when the player has no matched scoring history, which is
-   * normal for rookies and for anyone under the games-played floor.
+   * Fantasy points per game for this scoring format from the most recent
+   * regular season nflverse has published, which is the current season once
+   * it is under way (`season` says which). Absent when the player has no
+   * matched scoring history, which is normal for rookies and for anyone under
+   * the games-played floor.
    */
   gameLog?: {
     season: number;

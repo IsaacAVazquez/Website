@@ -35,6 +35,7 @@ function player(
     range: { low: 48, high: 52 },
     coverage: "supported",
     marketReliability: 1,
+    production: null,
     replacementCutoffs: {
       expertStarter,
       expertRoster: 40,
@@ -59,6 +60,7 @@ function side(players: FantasyTradePlayerEvaluation[]): FantasyTradeSideEvaluati
 function evaluation(): FantasyTradeEvaluation {
   return {
     modelVersion: FANTASY_TRADE_MODEL_VERSION,
+    basis: "preseason",
     scope: "preseason-one-qb-redraft",
     league: {
       scoring: "ppr",
@@ -81,7 +83,7 @@ function evaluation(): FantasyTradeEvaluation {
       player("B starter two", { expertRank: 18, marketAdp: 19 }),
     ]),
     sources: {
-      expert: { asOf: "2026-08-13T00:00:00.000Z", freshness: "fresh" },
+      expert: { asOf: "2026-08-13T00:00:00.000Z", freshness: "fresh", expertCount: null },
       market: {
         provider: "Test market",
         asOf: "2026-08-13T00:00:00.000Z",
