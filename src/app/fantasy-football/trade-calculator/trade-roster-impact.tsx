@@ -25,22 +25,28 @@ interface RosterRow {
   cuts: number;
 }
 
-function isStarterLevel(player: FantasyTradePlayerEvaluation): boolean {
+function isStarterLevel(player: FantasyTradePlayerEvaluation, inSeason: boolean): boolean {
   const expertStarter = player.replacementCutoffs.expertStarter;
   const marketStarter = player.replacementCutoffs.marketStarter;
 
+  // In season a player without four games has no scoring rank, and the experts
+  // alone decide whether he starts, the same way they alone price him.
+  if (inSeason && player.marketRank === null) {
+    return isFiniteNumber(player.expertRank) && isFiniteNumber(expertStarter) && player.expertRank <= expertStarter;
+  }
+
   return (
     isFiniteNumber(player.expertRank) &&
-    isFiniteNumber(player.marketAdp) &&
+    isFiniteNumber(player.marketRank) &&
     isFiniteNumber(expertStarter) &&
     isFiniteNumber(marketStarter) &&
     player.expertRank <= expertStarter &&
-    player.marketAdp <= marketStarter
+    player.marketRank <= marketStarter
   );
 }
 
-function summarizePackage(side: FantasyTradeSideEvaluation): PackageSummary {
-  const starters = side.players.filter(isStarterLevel).length;
+function summarizePackage(side: FantasyTradeSideEvaluation, inSeason: boolean): PackageSummary {
+  const starters = side.players.filter((player) => isStarterLevel(player, inSeason)).length;
   return {
     starters,
     depth: Math.max(0, side.valuedPlayerCount - starters),
@@ -78,8 +84,8 @@ export function TradeRosterImpact({
   getCount,
 }: TradeRosterImpactProps) {
   const canShowValues = valuesAvailable && result !== null;
-  const sideA = canShowValues ? summarizePackage(result.sideA) : null;
-  const sideB = canShowValues ? summarizePackage(result.sideB) : null;
+  const sideA = canShowValues ? summarizePackage(result.sideA, result.basis === "in-season") : null;
+  const sideB = canShowValues ? summarizePackage(result.sideB, result.basis === "in-season") : null;
   const normalizedGiveCount = normalizePackageCount(giveCount);
   const normalizedGetCount = normalizePackageCount(getCount);
   const yourRosterDelta = normalizedGiveCount - normalizedGetCount;

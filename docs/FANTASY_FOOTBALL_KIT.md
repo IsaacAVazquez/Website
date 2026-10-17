@@ -552,6 +552,8 @@ The tier break is a 2px ink rule with the tier's tab hanging from it, then the c
 
 ### Expert spread
 
+`ExpertSpread`, `SpreadScaleLabels`, and `TierSection` in `src/components/fantasy/TierSection.tsx` draw the spread and the tier break for both the draft rankings board and the weekly board, and `fitRowsScale` in `spreadScale.ts` fits a section's scale. A page passes its own area class for the tier head's left part, `ffb-rk-tier-lead` or `ffb-wk-tier-lead`, which lays the head on the board's columns.
+
 One scale for every row of a section. The range is a thin line from the best to the worst rank, one standard deviation each side of the average is the thicker segment (clipped to the range by the CSS), and the average is an ink tick. Give each mark its position as a percentage of the scale.
 
 ```html
@@ -597,7 +599,7 @@ Standing alone (a drawer, a compare column), wrap it in `ffb-plot`. The plot is 
 
 ### Tables
 
-A real `table` for the weekly board, the waiver list, and the compare modal.
+A real `table` for the waiver list and the compare modal.
 
 ```html
 <div class="ffb-table-wrap">
@@ -615,7 +617,7 @@ Heads are label type on a 2px ink rule, rows are ruled at the row height (44px o
 
 The sticky head draws its 2px ink rule as an inset edge, because a collapsed table does not carry a stuck cell's border with it. On paper the head is not stuck and takes its real border back, since an inset edge leaves seams between head cells in a PDF. In the compare table the corner cell stays with the label column, so a player's head never slides over the row labels.
 
-Where a table would be too wide for a phone and the page switches to a list, as the weekly board does, use `ffb-listhead` and `ffb-row-stack` (see The board).
+Where a table would be too wide for a phone and the page switches to a list, as the waiver list does, use `ffb-listhead` and `ffb-row-stack` (see The board).
 
 ### Facts
 

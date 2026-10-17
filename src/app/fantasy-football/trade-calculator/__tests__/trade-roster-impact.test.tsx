@@ -12,12 +12,12 @@ function player(
   id: string,
   {
     expertRank,
-    marketAdp,
+    marketRank,
     expertStarter = 20,
     marketStarter = 20,
   }: {
     expertRank: number | null;
-    marketAdp: number | null;
+    marketRank: number | null;
     expertStarter?: number | null;
     marketStarter?: number | null;
   },
@@ -28,13 +28,14 @@ function player(
     team: "SF",
     position: "RB",
     expertRank,
-    marketAdp,
+    marketRank,
     expertValue: 50,
     marketValue: 50,
     blendedValue: 50,
     range: { low: 48, high: 52 },
     coverage: "supported",
     marketReliability: 1,
+    production: null,
     replacementCutoffs: {
       expertStarter,
       expertRoster: 40,
@@ -59,6 +60,7 @@ function side(players: FantasyTradePlayerEvaluation[]): FantasyTradeSideEvaluati
 function evaluation(): FantasyTradeEvaluation {
   return {
     modelVersion: FANTASY_TRADE_MODEL_VERSION,
+    basis: "preseason",
     scope: "preseason-one-qb-redraft",
     league: {
       scoring: "ppr",
@@ -72,16 +74,16 @@ function evaluation(): FantasyTradeEvaluation {
     relativeGap: 0.1,
     rangesOverlap: true,
     sideA: side([
-      player("A starter", { expertRank: 8, marketAdp: 10 }),
-      player("A depth", { expertRank: 24, marketAdp: 18 }),
-      player("A missing market", { expertRank: 7, marketAdp: null }),
+      player("A starter", { expertRank: 8, marketRank: 10 }),
+      player("A depth", { expertRank: 24, marketRank: 18 }),
+      player("A missing market", { expertRank: 7, marketRank: null }),
     ]),
     sideB: side([
-      player("B starter one", { expertRank: 5, marketAdp: 7 }),
-      player("B starter two", { expertRank: 18, marketAdp: 19 }),
+      player("B starter one", { expertRank: 5, marketRank: 7 }),
+      player("B starter two", { expertRank: 18, marketRank: 19 }),
     ]),
     sources: {
-      expert: { asOf: "2026-08-13T00:00:00.000Z", freshness: "fresh" },
+      expert: { asOf: "2026-08-13T00:00:00.000Z", freshness: "fresh", expertCount: null },
       market: {
         provider: "Test market",
         asOf: "2026-08-13T00:00:00.000Z",

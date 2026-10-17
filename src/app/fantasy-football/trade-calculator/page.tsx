@@ -14,10 +14,10 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = constructMetadata({
   title: "Fantasy Football Trade Calculator",
   description:
-    "Compare one-QB redraft trades using expert consensus, mock-draft ADP, and your league settings, with visible source dates and data limits.",
+    "Compare one-QB redraft trades using expert consensus, mock-draft ADP before the season or this season's scoring after kickoff, and your league settings, with visible source dates and data limits.",
   canonicalUrl: "/fantasy-football/trade-calculator",
   image: "/fantasy-football/trade-calculator/opengraph-image",
-  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-13"),
+  dateModified: laterDate(fantasySnapshotRevision.slice(0, 10), "2026-10-15"),
 });
 
 const breadcrumbs = [
@@ -41,7 +41,7 @@ export default function TradeCalculatorPage() {
         data={{
           name: "Fantasy Football Trade Calculator",
           description:
-            "A preseason one-quarterback redraft trade estimator using expert consensus, mock-draft ADP, and league settings",
+            "A one-quarterback redraft trade estimator using expert consensus and league settings, priced on mock-draft ADP before the season and on rest-of-season rankings and this season's scoring after kickoff",
           url: "https://isaacvazquez.com/fantasy-football/trade-calculator",
           applicationCategory: "Sports",
           operatingSystem: "Web Browser",

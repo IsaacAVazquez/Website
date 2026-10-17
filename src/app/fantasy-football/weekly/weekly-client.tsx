@@ -47,6 +47,11 @@ import {
   type FreshnessPart,
 } from "@/components/fantasy/FantasyRouteHeader";
 import { formatStableDateTime } from "@/lib/date-formatters";
+import { computeWeeklyTiers, type WeeklyTier } from "@/lib/fantasyWeeklyTiers";
+import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
+import { ExpertSpread, SpreadScaleLabels, TierSection } from "@/components/fantasy/TierSection";
+import { fitRowsScale, type SpreadScale } from "@/components/fantasy/spreadScale";
+import { positionClass } from "@/components/fantasy/positionClass";
 import "@/components/fantasy/fantasy-weekly.css";
 
 export type WeeklyView = "rankings" | "waivers";
@@ -134,6 +139,20 @@ export type WeeklyBoardKey = "flex" | "quarterbacks";
 
 type WeeklyPositionFilter = "ALL" | "RB" | "WR" | "TE";
 
+const POSITION_OPTIONS: PositionFilterOption<WeeklyPositionFilter>[] = [
+  { value: "ALL", label: "All" },
+  { value: "RB", label: "RB", position: "RB" },
+  { value: "WR", label: "WR", position: "WR" },
+  { value: "TE", label: "TE", position: "TE" },
+];
+
+/** A division of a tier's spread scale is twelve ranks of the board, labelled by the rank it starts at. */
+const SPREAD_UNIT = 12;
+
+function formatAverage(player: FantasyWeeklyPlayer): string {
+  return player.rankAverage === undefined ? "—" : player.rankAverage.toFixed(1);
+}
+
 export interface WeeklyRouteState {
   scoring: FantasyRouteScoring;
   board: WeeklyBoardKey;
@@ -144,11 +163,6 @@ function normalizeWeeklyBoard(
   value: string | null | undefined,
 ): WeeklyBoardKey {
   return value === "quarterbacks" ? "quarterbacks" : "flex";
-}
-
-function formatSpread(player: FantasyWeeklyPlayer): string {
-  if (player.minRank === undefined || player.maxRank === undefined) return "—";
-  return `${player.minRank} to ${player.maxRank}`;
 }
 
 function formatOwnership(value: number | undefined): string {
@@ -176,6 +190,25 @@ function describeWindow(
   return shown === matching
     ? `${matching} of ${total} players match`
     : `Showing ${shown} of ${matching} matching players, ${total} on the board`;
+}
+
+/**
+ * The mounted rows in runs of one tier each. A search or the window can leave
+ * part of a tier on screen, and the run still carries the whole tier.
+ */
+function groupVisibleRows(
+  rows: FantasyWeeklyPlayer[],
+  tierByPlayer: Map<string, { tier: WeeklyTier; scale: SpreadScale }>,
+): { tier: WeeklyTier; scale: SpreadScale; rows: FantasyWeeklyPlayer[] }[] {
+  const groups: { tier: WeeklyTier; scale: SpreadScale; rows: FantasyWeeklyPlayer[] }[] = [];
+  for (const player of rows) {
+    const entry = tierByPlayer.get(player.id);
+    if (!entry) continue;
+    const current = groups[groups.length - 1];
+    if (current?.tier === entry.tier) current.rows.push(player);
+    else groups.push({ ...entry, rows: [player] });
+  }
+  return groups;
 }
 
 function SourceLink({ href, label }: { href: string; label: string }) {
@@ -321,17 +354,35 @@ export function WeeklyBoardClient({
     useState<WeeklyPositionFilter>("ALL");
   const query = searchQuery.trim().toLowerCase();
   const positionActive = board === "flex" && positionFilter !== "ALL";
+  const positionPlayers = useMemo(
+    () => (positionActive ? players.filter((player) => player.position === positionFilter) : players),
+    [players, positionActive, positionFilter],
+  );
   const filteredPlayers = useMemo(
     () =>
-      players.filter((player) => {
-        if (positionActive && player.position !== positionFilter) {
-          return false;
-        }
-        if (!query) return true;
-        return `${player.name} ${player.team}`.toLowerCase().includes(query);
-      }),
-    [players, positionActive, positionFilter, query],
+      query
+        ? positionPlayers.filter((player) =>
+            `${player.name} ${player.team}`.toLowerCase().includes(query),
+          )
+        : positionPlayers,
+    [positionPlayers, query],
   );
+
+  // Tiers are drawn on the list a position filter leaves, so the RB view gets
+  // running back tiers. A search only hides rows, so a tier's count, range,
+  // cliff, and spread scale stay those of the whole tier.
+  const tiers = useMemo(() => computeWeeklyTiers(positionPlayers), [positionPlayers]);
+  const tierByPlayer = useMemo(() => {
+    const byPlayer = new Map<string, { tier: WeeklyTier; scale: SpreadScale }>();
+    for (const tier of tiers) {
+      const scale = fitRowsScale(tier.players, {
+        unit: SPREAD_UNIT,
+        label: (rank) => (board === "flex" ? String(rank) : `QB${rank}`),
+      });
+      for (const player of tier.players) byPlayer.set(player.id, { tier, scale });
+    }
+    return byPlayer;
+  }, [tiers, board]);
 
   // The board is cut at the startable depth by default, since that is how deep
   // the snapshot module says a start decision reaches, and the rest sits behind
@@ -486,19 +537,12 @@ export function WeeklyBoardClient({
                 {/* The quarterback board is one position already, so the
                     position cut only renders for flex. */}
                 {board === "flex" ? (
-                  <div className="ffb-seg ffb-seg-pos" role="group" aria-label="Position">
-                    {(["ALL", "RB", "WR", "TE"] as const).map((option) => (
-                      <button
-                        key={option}
-                        type="button"
-                        aria-pressed={positionFilter === option}
-                        onClick={() => setPositionFilter(option)}
-                        className={`ffb-seg-btn${option === "ALL" ? "" : ` ffb-pos-${option.toLowerCase()}`}`}
-                      >
-                        {option === "ALL" ? "All" : option}
-                      </button>
-                    ))}
-                  </div>
+                  <PositionFilterBar
+                    options={POSITION_OPTIONS}
+                    value={positionFilter}
+                    onChange={setPositionFilter}
+                    ariaLabel="Position"
+                  />
                 ) : null}
               </>
             ) : null}
@@ -757,7 +801,7 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="ffb-wk-main ffb-wk-main-weekly">
+              <section aria-labelledby="weekly-board" className="ffb-wk-main">
                 <div className="ffb-sechead ffb-sechead-lg">
                   <FantasySectionHeading id="weekly-board">
                     {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
@@ -768,7 +812,10 @@ export function WeeklyBoardClient({
                   quarterback rank are not comparable, because FantasyPros
                   publishes no single in-season overall board and I would rather
                   keep them apart than manufacture an ordering the source never
-                  made.
+                  made. The tiers are my grouping, since FantasyPros publishes
+                  none for a weekly board. A new tier starts where the expert
+                  average jumps furthest for how much the experts disagree, and
+                  no tier runs past ten players.
                 </p>
                 {players.length === 0 ? (
                   <div className="ffb-empty">
@@ -792,66 +839,91 @@ export function WeeklyBoardClient({
                       Show all players
                     </button>
                   </div>
-                ) : tableLayout ? (
-                  // The table sits in page flow rather than a scroll box of
-                  // its own. It fits from md up, so nothing needs to scroll
-                  // sideways, and page-level sticky keeps the column labels
-                  // on screen for as long as the board runs.
-                  <table className="ffb-table ffb-table-sticky ffb-wk-table">
-                    <caption className="sr-only">{rankingsCaption}</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col" className="ffb-num ffb-wk-h-rank">#</th>
-                        <th scope="col">Player</th>
-                        <th scope="col" className="ffb-wk-h-opp">Opponent</th>
-                        <th scope="col" className="ffb-wk-h-range">Expert range</th>
-                        <th scope="col" className="ffb-num ffb-wk-h-num-wide">Rostered</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {visiblePlayers.map((player) => (
-                        <tr key={player.id}>
-                          <td className="ffb-num ffb-c-rank">{player.rank}</td>
-                          <th scope="row">
-                            <PlayerCell player={player} />
-                          </th>
-                          <td>{player.opponent ?? "—"}</td>
-                          <td>{formatSpread(player)}</td>
-                          <td className="ffb-num">{formatOwnership(player.ownership)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
                 ) : (
-                  <>
-                  <div className="ffb-colhead ffb-sticky ffb-listhead" aria-hidden="true">
-                    <span className="ffb-h-num">#</span>
-                    <span>Opponent</span>
-                    <span>Expert range</span>
-                    <span>Rostered</span>
-                  </div>
-                  <ol role="list" aria-label={rankingsCaption} className="ffb-rows">
-                    {visiblePlayers.map((player) => (
-                      <li key={player.id} className="ffb-row ffb-row-stack">
-                        <span className="ffb-c-rank">
-                          <span className="sr-only">Rank </span>
-                          {player.rank}
+                  <div role="region" aria-label={rankingsCaption} className="ffb-board ffb-board-ruled ffb-board-plain ffb-wk-board">
+                    {/* The column heads pin as the table head did, so the numbers keep their names mid-scroll. */}
+                    <div className="ffb-sticky ffb-sticky-ruled">
+                      <div className="ffb-colhead" aria-hidden="true">
+                        <span className="ffb-h-num ffb-m-show ffb-is-sorted">#</span>
+                        <span className="ffb-h-pos">Pos</span>
+                        <span className="ffb-m-show">Player</span>
+                        <span>Team</span>
+                        <span>Opponent</span>
+                        <span className="ffb-h-num">Rostered</span>
+                        <span className="ffb-h-spread">
+                          <span className="ffb-h-spread-label">
+                            <span>Expert spread</span>
+                            <span className="ffb-spread-key">
+                              <span>
+                                <i className="ffb-key-range" />
+                                Range
+                              </span>
+                              <span>
+                                <i className="ffb-key-sd" />
+                                ±1 SD
+                              </span>
+                              <span>
+                                <i className="ffb-key-avg" />
+                                Average
+                              </span>
+                            </span>
+                          </span>
                         </span>
-                        <div>
-                          <PlayerCell player={player} />
-                          <dl className="ffb-pairs ffb-pairs-cols">
-                            <ReadoutPair label="Opponent" value={player.opponent ?? "—"} />
-                            <ReadoutPair label="Expert range" value={formatSpread(player)} />
-                            <ReadoutPair
-                              label="Rostered"
-                              value={formatOwnership(player.ownership)}
-                            />
-                          </dl>
-                        </div>
-                      </li>
+                        <span className="ffb-h-num">Avg</span>
+                        <span className="ffb-m-show ffb-only-phone">Avg · Rostered</span>
+                      </div>
+                    </div>
+                    {groupVisibleRows(visiblePlayers, tierByPlayer).map(({ tier, scale, rows }, index) => (
+                      <TierSection
+                        key={`tier-${tier.tier}-${tier.players[0].id}`}
+                        tier={tier.tier}
+                        count={tier.players.length}
+                        firstRank={String(tier.players[0].rank)}
+                        lastRank={String(tier.players[tier.players.length - 1].rank)}
+                        cliff={tier.cliff}
+                        first={index === 0}
+                        leadClassName="ffb-wk-tier-lead"
+                        scaleLabels={<SpreadScaleLabels scale={scale} className="ffb-label ffb-muted ffb-wk-scale" />}
+                      >
+                        {rows.map((player) => (
+                          <li key={player.id} className="ffb-row">
+                            <span className="ffb-c-rank">
+                              <span className="ffb-vh">Rank </span>
+                              {player.rank}
+                            </span>
+                            <span className={`ffb-chip ${positionClass(player.position)}`.trimEnd()}>
+                              {player.position}
+                              {player.positionRank ?? ""}
+                            </span>
+                            <span className="ffb-c-name" title={player.name}>
+                              {player.name}
+                            </span>
+                            <span className="ffb-c-team">{player.team}</span>
+                            <span className="ffb-c-num ffb-m-meta ffb-wk-c-opp">
+                              <span className="ffb-vh">Opponent </span>
+                              {player.opponent ?? "—"}
+                              {Number.isFinite(player.minRank) && Number.isFinite(player.maxRank) ? (
+                                <span className="ffb-wk-range">
+                                  {" · "}
+                                  <span className="ffb-vh">Expert range </span>
+                                  {player.minRank} to {player.maxRank}
+                                </span>
+                              ) : null}
+                            </span>
+                            <span className="ffb-c-num ffb-is-flat ffb-m-sub">
+                              <span className="ffb-vh">Rostered </span>
+                              {formatOwnership(player.ownership)}
+                            </span>
+                            <ExpertSpread player={player} avg={player.rankAverage ?? null} scale={scale} />
+                            <span className="ffb-c-num ffb-m-top">
+                              <span className="ffb-vh">Expert average </span>
+                              {formatAverage(player)}
+                            </span>
+                          </li>
+                        ))}
+                      </TierSection>
                     ))}
-                  </ol>
-                  </>
+                  </div>
                 )}
                 {remainingCount > 0 ? (
                   <div className="ffb-more-row">

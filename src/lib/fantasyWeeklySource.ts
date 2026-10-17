@@ -27,6 +27,21 @@ const WEEKLY_FLEX_URLS: Record<ScoringFormat, string> = {
 // pipeline shares its QB cheat sheet.
 const WEEKLY_QB_URL = "https://www.fantasypros.com/nfl/rankings/qb.php";
 
+// The rest-of-season overall pages, every position on one scale. Week 6 of
+// 2026 served about 405 players from five experts on each of them.
+const REST_OF_SEASON_URLS: Record<ScoringFormat, string> = {
+  PPR: "https://www.fantasypros.com/nfl/rankings/ros-ppr-overall.php",
+  HALF_PPR: "https://www.fantasypros.com/nfl/rankings/ros-half-point-ppr-overall.php",
+  STANDARD: "https://www.fantasypros.com/nfl/rankings/ros-overall.php",
+};
+
+/**
+ * Five experts contributed to every rest-of-season board on 2026-10-15, so the
+ * floor sits one below that. It is thin next to the weekly boards, and the
+ * trade calculator prints the count beside every reading built on it.
+ */
+const REST_OF_SEASON_MIN_EXPERTS = 4;
+
 /** Lowest contributing-expert count observed across the weekly boards was six. */
 const WEEKLY_MIN_EXPERTS = 5;
 
@@ -39,7 +54,8 @@ async function fetchWeeklyBoard(options: {
   requestedPosition: "FLEX" | "QB" | "OVERALL";
   expectedSeason: number;
   minimumPlayers: number;
-  rankingType: "weekly";
+  rankingType: "weekly" | "ros";
+  minimumExperts?: number;
 }): Promise<FantasyProsPublicBoard> {
   const board = await fetchFantasyProsConsensusBoard({
     scoringFormat: options.scoringFormat,
@@ -47,7 +63,7 @@ async function fetchWeeklyBoard(options: {
     publicSourceUrl: options.sourceUrl,
     expectedSeason: options.expectedSeason,
     expectedRankingType: options.rankingType,
-    minimumExperts: WEEKLY_MIN_EXPERTS,
+    minimumExperts: options.minimumExperts ?? WEEKLY_MIN_EXPERTS,
   });
 
   if (board.players.length < options.minimumPlayers) {
@@ -90,5 +106,22 @@ export function fetchWeeklyQuarterbackBoard(
     expectedSeason,
     minimumPlayers: WEEKLY_MIN_QUARTERBACKS,
     rankingType: "weekly",
+  });
+}
+
+export function fetchRestOfSeasonBoard(
+  scoringFormat: ScoringFormat,
+  expectedSeason: number
+): Promise<FantasyProsPublicBoard> {
+  return fetchWeeklyBoard({
+    sourceUrl: REST_OF_SEASON_URLS[scoringFormat],
+    scoringFormat,
+    requestedPosition: "OVERALL",
+    expectedSeason,
+    // The parser's own overall floor is 300 players, which the rest-of-season
+    // pages clear by about a hundred.
+    minimumPlayers: 300,
+    rankingType: "ros",
+    minimumExperts: REST_OF_SEASON_MIN_EXPERTS,
   });
 }

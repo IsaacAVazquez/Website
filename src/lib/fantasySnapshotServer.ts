@@ -133,5 +133,8 @@ export async function loadFantasyWeeklySeed(
   }
 
   const { boards, ...snapshot } = weeklyCache.data;
-  return { ...snapshot, boards: { [scoring]: boards[scoring] } };
+  // The weekly and waiver pages never read the rest-of-season board, so it
+  // stays out of their HTML. The client's own fetch of the file carries it.
+  const { restOfSeason, restOfSeasonSource, ...board } = boards[scoring];
+  return { ...snapshot, boards: { [scoring]: board } };
 }

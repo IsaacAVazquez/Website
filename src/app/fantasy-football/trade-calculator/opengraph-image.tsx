@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "Draft Tools",
     title: "Trade Calculator",
     description:
-      "Compare one-QB redraft trades on expert consensus and mock-draft ADP, with source dates and stated limits.",
+      "Compare one-QB redraft trades on expert consensus and the draft market or this season's scoring, with source dates and stated limits.",
     accent: "cobalt",
     footer: "isaacvazquez.com/fantasy-football/trade-calculator",
   });

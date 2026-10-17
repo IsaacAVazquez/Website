@@ -68,6 +68,11 @@ const FLEX_URLS = [
   "https://www.fantasypros.com/nfl/rankings/half-point-ppr-flex.php",
   "https://www.fantasypros.com/nfl/rankings/flex.php",
 ];
+const ROS_URLS = [
+  "https://www.fantasypros.com/nfl/rankings/ros-ppr-overall.php",
+  "https://www.fantasypros.com/nfl/rankings/ros-half-point-ppr-overall.php",
+  "https://www.fantasypros.com/nfl/rankings/ros-overall.php",
+];
 
 function hoursBefore(now: Date, hours: number): number {
   return Math.floor(now.getTime() / 1000) - hours * 3600;
@@ -141,15 +146,14 @@ describe("buildFantasyWeeklySnapshot", () => {
     await Promise.all(tempDirs.map((dir) => fs.rm(dir, { recursive: true, force: true })));
   });
 
-  it("publishes the week FantasyPros is serving from four pages", async () => {
+  it("publishes the week FantasyPros is serving from four pages, then the rest-of-season boards", async () => {
     const target = await emptyOutput();
     serve();
 
     await buildFantasyWeeklySnapshot(NOW, target);
 
-    // One quarterback page and three flex pages. The rest-of-season pages are
-    // live, but nothing publishes them, so the builder does not request one.
-    expect(requestedUrls()).toEqual([QB_URL, ...FLEX_URLS]);
+    // One quarterback page and three flex pages, then a rest-of-season page per format.
+    expect(requestedUrls()).toEqual([QB_URL, ...FLEX_URLS, ...ROS_URLS]);
     const written = JSON.parse(await fs.readFile(target, "utf8"));
     expect(written).toMatchObject({ season: 2026, week: 3 });
     expect(written.boards.ppr.flex).toHaveLength(406);
@@ -164,7 +168,64 @@ describe("buildFantasyWeeklySnapshot", () => {
       name: "Jahmyr Gibbs",
       opponent: "vs. NYJ",
       ownership: 99.9,
+      rankAverage: 1.29,
     });
+    // The rest-of-season board is published with its own date, three days old here.
+    expect(written.boards.ppr.restOfSeason).toHaveLength(396);
+    expect(written.boards.standard.restOfSeason[0]).toMatchObject({ name: "Jahmyr Gibbs", rank: 1 });
+    expect(written.boards.ppr.restOfSeasonSource).toMatchObject({
+      provider: "FantasyPros rest-of-season board",
+      asOf: "2026-09-24T19:39:01.000Z",
+      expertCount: 6,
+      playerCount: 396,
+    });
+  });
+
+  it("keeps the previous rest-of-season board when its page fails, and still publishes the week", async () => {
+    const { target } = await publishedOutput();
+    serve();
+    const healthy = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (input: RequestInfo | URL) =>
+      ROS_URLS.includes(String(input)) ? failedResponse(404) : healthy(input)
+    );
+
+    jest.useFakeTimers();
+    let settled = false;
+    const run = buildFantasyWeeklySnapshot(new Date(NOW.getTime() + 3_600_000), target).finally(() => {
+      settled = true;
+    });
+    while (!settled) {
+      await jest.advanceTimersByTimeAsync(1_000);
+    }
+    await run;
+
+    const written = JSON.parse(await fs.readFile(target, "utf8"));
+    expect(written.generatedAt).toBe("2026-09-27T20:45:00.000Z");
+    expect(written.boards.ppr.restOfSeason).toHaveLength(396);
+    expect(written.boards.ppr.restOfSeasonSource.asOf).toBe("2026-09-24T19:39:01.000Z");
+  });
+
+  it("publishes the week without a rest-of-season board when there is none to keep", async () => {
+    const target = await emptyOutput();
+    serve();
+    const healthy = fetchMock.getMockImplementation()!;
+    fetchMock.mockImplementation(async (input: RequestInfo | URL) =>
+      ROS_URLS.includes(String(input)) ? failedResponse(404) : healthy(input)
+    );
+
+    jest.useFakeTimers();
+    let settled = false;
+    const run = buildFantasyWeeklySnapshot(NOW, target).finally(() => {
+      settled = true;
+    });
+    while (!settled) {
+      await jest.advanceTimersByTimeAsync(1_000);
+    }
+    await run;
+
+    const written = JSON.parse(await fs.readFile(target, "utf8"));
+    expect(written.week).toBe(3);
+    expect(written.boards.ppr.restOfSeason).toBeUndefined();
   });
 
   it("retries a page that fails once and then publishes", async () => {
@@ -189,7 +250,7 @@ describe("buildFantasyWeeklySnapshot", () => {
     }
     await run;
 
-    expect(requestedUrls()).toEqual([QB_URL, QB_URL, ...FLEX_URLS]);
+    expect(requestedUrls()).toEqual([QB_URL, QB_URL, ...FLEX_URLS, ...ROS_URLS]);
     expect(JSON.parse(await fs.readFile(target, "utf8")).week).toBe(3);
   });
 

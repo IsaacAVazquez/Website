@@ -12,7 +12,7 @@ export default function Image() {
     eyebrow: "In Season",
     title: "Weekly Board",
     description:
-      "Weekly flex and quarterback consensus, with opponents, expert range, and rostered rate.",
+      "Weekly flex and quarterback consensus in tiers, with opponents, expert spread, and rostered rate.",
     accent: "teal",
     footer: "isaacvazquez.com/fantasy-football/weekly",
   });

@@ -129,7 +129,7 @@ for (const route of ["/fantasy-football/weekly"]) {
     await expect(page.locator("main")).toContainText(/No (players|waiver targets|matches)/i);
     await search.fill("");
     await expect(page.locator('section[aria-labelledby="weekly-board"]')
-      .locator("tbody tr, ol[aria-label] > li").first()).toBeVisible();
+      .locator("section.ffb-tier li").first()).toBeVisible();
   });
 }
 

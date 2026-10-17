@@ -68,7 +68,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/fantasy-football/trade-calculator": {
     purpose:
-      "I built this to check a one-QB redraft trade against something steadier than my gut, turning expert consensus and mock-draft ADP into values for my league's scoring, size, and lineup. It withholds the verdict when a source is stale or a player has no current market reading, because I would rather it say nothing than say something I cannot support.",
+      "I built this to check a one-QB redraft trade against something steadier than my gut, turning expert consensus and mock-draft ADP into values for my league's scoring, size, and lineup before the season, and rest-of-season consensus and this season's scoring once it starts. It withholds the verdict when a source is stale, because I would rather it say nothing than say something I cannot support.",
   },
   "/food-map": {
     purpose:

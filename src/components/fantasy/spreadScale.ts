@@ -59,3 +59,33 @@ export function fitSpreadScale(
   }
   return { min: first * unit + 1, max: (last + 1) * unit, ticks };
 }
+
+/** What a spread plot reads off a row. */
+export interface SpreadRow {
+  position: string;
+  minRank?: number;
+  maxRank?: number;
+  standardDeviation?: number;
+}
+
+/**
+ * The scale for one group of rows, fitted to the best and worst rank any
+ * expert gave any player in it.
+ */
+export function fitRowsScale(
+  rows: readonly SpreadRow[],
+  options: { unit: number; label?: (rank: number) => string }
+): SpreadScale {
+  let lo = Infinity;
+  let hi = 0;
+  for (const row of rows) {
+    if (!Number.isFinite(row.minRank) || !Number.isFinite(row.maxRank)) continue;
+    lo = Math.min(lo, row.minRank as number);
+    hi = Math.max(hi, row.maxRank as number);
+  }
+  if (hi === 0) {
+    lo = 1;
+    hi = 1;
+  }
+  return fitSpreadScale(lo, hi, options);
+}

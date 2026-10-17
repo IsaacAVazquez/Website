@@ -8,11 +8,16 @@ import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { FantasyRouteHeader, FreshnessParts } from "@/components/fantasy/FantasyRouteHeader";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { useFantasyTradeCalculator } from "@/hooks/useFantasyTradeCalculator";
+import { useFantasyWeeklySnapshot } from "@/hooks/useFantasyWeeklySnapshot";
 import { FANTASY_SCORING_LABELS } from "@/lib/fantasy";
 import {
+  buildInSeasonTradeBoard,
   evaluateFantasyTrade,
+  getRestOfSeasonFreshness,
+  getScoringThroughWeek,
   type FantasyTradeEvaluation,
   type FantasyTradeLeagueSettings,
+  type FantasyTradeRestOfSeasonInput,
 } from "@/lib/fantasyTrade";
 import {
   FANTASY_TRADE_MAX_PLAYERS_PER_SIDE,
@@ -82,8 +87,10 @@ function LeagueSettings({
   open,
   onToggle,
   onChange,
+  inSeason,
 }: {
   state: TradeCalculatorSearchState;
+  inSeason: boolean;
   /**
    * Below 1200px the desk is one column and the settings lead it, so they open
    * on request and a one-line summary stands in for them. From 1200px they sit
@@ -184,7 +191,7 @@ function LeagueSettings({
 
       <p className="ffb-method">
         <span className="ffb-label">Supported format</span>{" "}
-        Preseason managed redraft with one starting QB. Dynasty, picks, keepers, IDP, Superflex, and tight end premium are not modeled.
+        {inSeason ? "In-season" : "Preseason"} managed redraft with one starting QB. Dynasty, picks, keepers, IDP, Superflex, and tight end premium are not modeled.
       </p>
     </aside>
   );
@@ -198,10 +205,33 @@ export function TradeCalculatorClient() {
     () => normalizeTradeCalculatorState(searchParams),
     [searchParams]
   );
-  const { snapshot, players, isLoading, error, retry } = useFantasySnapshot({
+  const { snapshot, players: draftPlayers, isLoading: draftLoading, error, retry } = useFantasySnapshot({
     scoring: routeState.scoring,
     all: true,
   });
+  // In season the calculator prices the rest-of-season board, which rides in
+  // the weekly snapshot. Before Week 1 that file is not published and the
+  // calculator stays on the draft board.
+  const weekly = useFantasyWeeklySnapshot();
+  const seasonWeek = snapshot ? getNflRegularSeasonWeek(snapshot.season) : 0;
+  const weeklyBoard = weekly.snapshot?.season === snapshot?.season
+    ? weekly.snapshot?.boards[routeState.scoring]
+    : undefined;
+  const restOfSeason = useMemo<FantasyTradeRestOfSeasonInput | undefined>(
+    () =>
+      seasonWeek >= 1 && weeklyBoard?.restOfSeason && weeklyBoard.restOfSeasonSource
+        ? { players: weeklyBoard.restOfSeason, source: weeklyBoard.restOfSeasonSource }
+        : undefined,
+    [seasonWeek, weeklyBoard]
+  );
+  const inSeason = restOfSeason !== undefined;
+  const players = useMemo(
+    () => (restOfSeason ? buildInSeasonTradeBoard(draftPlayers, restOfSeason.players) : draftPlayers),
+    [draftPlayers, restOfSeason]
+  );
+  // In season the pool waits for the weekly file too, so a shared deal naming a
+  // player only the rest-of-season board lists is not dropped while it loads.
+  const isLoading = draftLoading || (seasonWeek >= 1 && weekly.isLoading);
   // The lenient snapshot normalizer emits season 0 for malformed input, and
   // getFantasyTradeStorageKey throws on it. Validate rather than nullish-check,
   // and fall back to the draft season (not the calendar year) so a January
@@ -226,7 +256,10 @@ export function TradeCalculatorClient() {
 
   const { replaceDeal } = trade;
   useEffect(() => {
-    if (!pendingShare || !snapshot) return;
+    // Gate on every input the player pool reads: in season the pool is the
+    // rest-of-season board, which arrives through the weekly file after the
+    // (usually cached) draft snapshot, and the share is consumed only once.
+    if (!pendingShare || isLoading) return;
     // IDs missing from the current snapshot are dropped silently, matching
     // how the calculator already treats unknown stored players.
     const knownIds = new Set(players.map((player) => player.id));
@@ -239,7 +272,7 @@ export function TradeCalculatorClient() {
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot: consuming the shared deal must gate the URL mirror below
     setPendingShare(null);
-  }, [pendingShare, players, replaceDeal, snapshot]);
+  }, [isLoading, pendingShare, players, replaceDeal]);
 
   // The route is force-dynamic so the server can render the real query, which
   // made every router.replace a server round trip per player added. The native
@@ -290,18 +323,30 @@ export function TradeCalculatorClient() {
       league,
       sideA: { playerIds: trade.givePlayerIds },
       sideB: { playerIds: trade.getPlayerIds },
+      restOfSeason,
     });
-  }, [hasBothSides, league, snapshot, trade.getPlayerIds, trade.givePlayerIds]);
+  }, [hasBothSides, league, restOfSeason, snapshot, trade.getPlayerIds, trade.givePlayerIds]);
   // The chip covers BOTH inputs. Reading only the expert board let it say
   // "fresh sources" while the verdict was withheld for a stale draft market.
-  const expertFreshness: FantasySnapshotStaleness = snapshot
-    ? getSnapshotStaleness(snapshot.upstreamUpdatedAt)
-    : "stale";
-  const marketFreshness: FantasySnapshotStaleness = !snapshot?.adpSource
-    ? "stale"
-    : getFantasyAdpFreshness(snapshot.adpSource.asOf, snapshot.season) === "current"
-      ? getSnapshotStaleness(snapshot.adpSource.asOf)
+  // In season the scoring leg has no dated feed of its own, so it reads fresh
+  // while any player has current scoring and stale once the logs stop, the same
+  // predicate the engine reports in sources.market.freshness.
+  const scoringThrough = useMemo(
+    () => (snapshot ? getScoringThroughWeek(players, snapshot.season, seasonWeek) : 0),
+    [players, seasonWeek, snapshot]
+  );
+  const expertFreshness: FantasySnapshotStaleness = restOfSeason
+    ? getRestOfSeasonFreshness(restOfSeason.source.asOf)
+    : snapshot
+      ? getSnapshotStaleness(snapshot.upstreamUpdatedAt)
       : "stale";
+  const marketFreshness: FantasySnapshotStaleness = restOfSeason
+    ? scoringThrough > 0 ? "fresh" : "stale"
+    : !snapshot?.adpSource
+      ? "stale"
+      : getFantasyAdpFreshness(snapshot.adpSource.asOf, snapshot.season) === "current"
+        ? getSnapshotStaleness(snapshot.adpSource.asOf)
+        : "stale";
   const FRESHNESS_SEVERITY: Record<FantasySnapshotStaleness, number> = {
     fresh: 0,
     aging: 1,
@@ -311,14 +356,12 @@ export function TradeCalculatorClient() {
     FRESHNESS_SEVERITY[expertFreshness] >= FRESHNESS_SEVERITY[marketFreshness]
       ? expertFreshness
       : marketFreshness;
-  // The declared scope is a preseason one-QB redraft model and its market leg
-  // is mock-draft ADP. The provider kept stamping that feed after the 2026
-  // kickoff, so the engine gates on the feed's age rather than the calendar:
-  // while the feed is current it prices a draft market at limited coverage
-  // (evaluateFantasyTrade pushes FANTASY_TRADE_IN_SEASON_WARNING from Week 1),
-  // and once the feed stops it withholds. The note below names which of those
-  // two states the page is in, so neither reads as a breakage.
-  const seasonWeek = snapshot ? getNflRegularSeasonWeek(snapshot.season) : 0;
+  // In season with a rest-of-season board, the calculator prices the rest of
+  // the season. Without one (before its first build, or if the weekly file
+  // fails) it falls back to the draft board, where the engine gates on the
+  // mock-draft feed's age: while the feed is current it prices a draft market
+  // at limited coverage, and once the feed stops it withholds. The note below
+  // names which of those states the page is in, so none reads as a breakage.
   const marketDate = formatMarketDate(snapshot?.adpSource?.asOf);
   const valuesAvailable = Boolean(result && result.coverage !== "insufficient");
   const allSelected = useMemo(
@@ -331,7 +374,7 @@ export function TradeCalculatorClient() {
   // player has no reading in a market that is current. Only the second is
   // about a row, so only then do the rows say which player it is.
   const marksHeldPlayers = Boolean(
-    result && result.coverage === "insufficient" && result.sources.market.usable
+    result && !inSeason && result.coverage === "insufficient" && result.sources.market.usable
   );
   // A confirmed clear disables the button that had focus. Once the deal is
   // empty, focus goes to the first field of the desk.
@@ -356,13 +399,30 @@ export function TradeCalculatorClient() {
     >
       <FantasyRouteHeader
         title="Build a Trade Offer"
-        lead="Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin."
+        lead={
+          inSeason
+            ? "Compare both sides of a one-QB redraft trade using rest-of-season expert consensus, this season’s scoring, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin."
+            : "Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin."
+        }
         freshness={
           <FreshnessParts
             parts={[
-              { label: `Expert board ${formatUpdatedAt(snapshot?.upstreamUpdatedAt)}` },
-              // The market stamp is a date with no time, printed the same way here and in the note below.
-              { label: `Draft market ${marketDate ?? "Unavailable"}` },
+              ...(restOfSeason
+                ? [
+                    {
+                      label: `Rest-of-season board ${formatUpdatedAt(restOfSeason.source.asOf)}, ${restOfSeason.source.expertCount} experts`,
+                    },
+                    {
+                      label: scoringThrough > 0
+                        ? `${snapshot?.season} scoring through Week ${scoringThrough}`
+                        : `No ${snapshot?.season} scoring yet`,
+                    },
+                  ]
+                : [
+                    { label: `Expert board ${formatUpdatedAt(snapshot?.upstreamUpdatedAt)}` },
+                    // The market stamp is a date with no time, printed the same way here and in the note below.
+                    { label: `Draft market ${marketDate ?? "Unavailable"}` },
+                  ]),
               {
                 label: `${sourceFreshness} sources`,
                 tone:
@@ -377,7 +437,7 @@ export function TradeCalculatorClient() {
         }
         aside={
           <>
-            <span className="ffb-badge">Preseason redraft · Model v1</span>
+            <span className="ffb-badge">{inSeason ? "In-season" : "Preseason"} redraft · Model v1</span>
             <Link
               href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
               className="ffb-link ffb-link-arrow"
@@ -391,7 +451,17 @@ export function TradeCalculatorClient() {
       <div className={`${SHELL_CLASS} ffb-stack`}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
-            {marketFreshness === "stale" ? (
+            {restOfSeason ? (
+              <>
+                The draft board froze at kickoff, so in season this prices the rest of the season
+                instead. The expert side is FantasyPros&rsquo; rest-of-season board, which averages{" "}
+                {restOfSeason.source.expertCount} experts, a thinner panel than the weekly boards.
+                The second side is this season&rsquo;s points per game above each position&rsquo;s
+                replacement level, weighted by games played, so five games count for half as much
+                as the experts. A player with fewer than four games, a rookie or someone back from
+                injury most often, is priced on the experts alone at limited coverage.{" "}
+              </>
+            ) : marketFreshness === "stale" ? (
               <>
                 This calculator prices a preseason draft market, and the mock-draft feed behind it{" "}
                 {marketDate
@@ -457,6 +527,7 @@ export function TradeCalculatorClient() {
                 skeleton over the whole desk took the radio, and focus, with it. */}
             <div className="ffb-work ffb-work-3">
               <LeagueSettings
+                inSeason={inSeason}
                 state={routeState}
                 open={settingsOpen}
                 onToggle={() => setSettingsOpen((current) => !current)}
@@ -543,6 +614,7 @@ export function TradeCalculatorClient() {
 
               {boardReady ? (
                 <TradeResultRail
+                  inSeason={inSeason}
                   result={result}
                   hasBothSides={hasBothSides}
                   valuesAvailable={valuesAvailable}

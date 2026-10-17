@@ -125,14 +125,26 @@ describe("loadFantasyWeeklySeed", () => {
   });
 
   it("seeds the complete boards for the requested scoring format and no other", async () => {
-    const published = normalizeFantasyWeeklySnapshot(
-      JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"))
-    );
+    // The builder publishes without a rest-of-season board when the page fails and
+    // nothing was kept, so the fixture carries one rather than trusting the last refresh.
+    const fixture = JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"));
+    fixture.boards.half_ppr.restOfSeason = [
+      { id: "fp-1", name: "Fixture Player", team: "DET", position: "RB", rank: 1, rankAverage: 1, positionRank: 1, standardDeviation: 0, minRank: 1, maxRank: 1 },
+    ];
+    fixture.boards.half_ppr.restOfSeasonSource = {
+      provider: "fixture", url: "https://example.com/ros", asOf: fixture.generatedAt, expertCount: 1, playerCount: 1,
+    };
+    jest.spyOn(fsPromises, "readFile").mockResolvedValueOnce(JSON.stringify(fixture));
+    const published = normalizeFantasyWeeklySnapshot(fixture);
 
     const seed = await loadFantasyWeeklySeed("half_ppr");
 
     expect(Object.keys(seed?.boards ?? {})).toEqual(["half_ppr"]);
-    expect(seed?.boards.half_ppr).toEqual(published.boards.half_ppr);
+    // The rest-of-season board is for the trade calculator, so the weekly pages' HTML leaves it out.
+    const { restOfSeason, restOfSeasonSource, ...weeklyBoard } = published.boards.half_ppr;
+    expect(restOfSeason?.length).toBeGreaterThan(0);
+    expect(restOfSeasonSource).toBeDefined();
+    expect(seed?.boards.half_ppr).toEqual(weeklyBoard);
     expect(seed?.week).toBe(published.week);
     expect(seed?.season).toBe(published.season);
   });

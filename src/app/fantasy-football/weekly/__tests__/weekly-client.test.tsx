@@ -135,8 +135,8 @@ function listHeadLabels(list: HTMLElement) {
 }
 
 function bodyRowCount() {
-  const table = screen.getByRole("table");
-  return within(table).getAllByRole("row").length - 1;
+  const board = screen.getByRole("region", { name: /consensus rankings/ });
+  return within(board).getAllByRole("listitem").length;
 }
 
 beforeEach(() => {
@@ -298,7 +298,7 @@ describe("WeeklyBoardClient rankings view", () => {
     fireEvent.click(screen.getByRole("button", { name: `Show all ${FLEX_COUNT}` }));
     expect(bodyRowCount()).toBe(FLEX_COUNT);
 
-    fireEvent.click(screen.getByRole("button", { name: "RB" }));
+    fireEvent.click(screen.getByRole("radio", { name: "RB" }));
     // 130 players cycle RB, WR, TE from index 1, so 43 are backs.
     expect(screen.getByRole("status")).toHaveTextContent(
       `43 of ${FLEX_COUNT} players match`,
@@ -321,34 +321,50 @@ describe("WeeklyBoardClient rankings view", () => {
     );
   });
 
-  it("stacks each row below md with labeled readouts instead of a clipped table", () => {
-    tableLayout = false;
-    renderClient("rankings");
+  it("draws the board in tiers the way the draft board does, at every width", () => {
+    for (const wide of [true, false]) {
+      tableLayout = wide;
+      const { unmount } = renderClient("rankings");
 
-    expect(screen.queryByRole("table")).not.toBeInTheDocument();
-    const list = screen.getByRole("list", {
-      name: "2026 week 1 flex consensus rankings, PPR scoring",
-    });
-    // WebKit drops list semantics for `list-style: none`, so the role is explicit.
-    expect(list).toHaveAttribute("role", "list");
-    const items = within(list).getAllByRole("listitem");
-    expect(items).toHaveLength(FANTASY_WEEKLY_STARTABLE_DEPTH.flex);
-    const first = within(items[0]);
-    expect(first.getByText("Flex Player 1")).toBeInTheDocument();
-    expect(first.getByText("Opponent")).toBeInTheDocument();
-    expect(first.getByText("vs. MIA")).toBeInTheDocument();
-    expect(first.getByText("Expert range")).toBeInTheDocument();
-    expect(first.getByText("1 to 6")).toBeInTheDocument();
-    expect(first.getByText("Rostered")).toBeInTheDocument();
-    expect(first.getByText("99.0%")).toBeInTheDocument();
-    // The row's labels are for assistive tech. What a phone shows is the list head, which has
-    // to name the same columns in the same order, after the rank mark.
-    const rowLabels = first.getAllByRole("term").map((term) => term.textContent?.trim());
-    expect(rowLabels).toEqual(["Opponent", "Expert range", "Rostered"]);
-    expect(listHeadLabels(list)).toEqual(["#", ...rowLabels]);
-    expect(screen.getByRole("status")).toHaveTextContent(
-      `Showing ${FANTASY_WEEKLY_STARTABLE_DEPTH.flex} of ${FLEX_COUNT} players`,
-    );
+      expect(screen.queryByRole("table")).not.toBeInTheDocument();
+      // 130 players with every gap one rank halve into even tiers: 16 and 17 a side, then 8 and 9.
+      const tiers = screen.getAllByRole("region", { name: /^Tier \d+, / });
+      expect(tiers[0]).toHaveAccessibleName("Tier 1, 8 players, ranks 1 to 8");
+      // Without published averages the cliff is the one-rank step between whole-number ranks.
+      expect(within(tiers[0]).getByText("01")).toBeInTheDocument();
+      expect(tiers[1]).toHaveAccessibleName("Tier 2, 8 players, ranks 9 to 16, 1.0 average-rank cliff above");
+      const first = within(within(tiers[0]).getAllByRole("listitem")[0]);
+      expect(first.getByText("Flex Player 1")).toBeInTheDocument();
+      expect(first.getByText("vs. MIA")).toBeInTheDocument();
+      expect(first.getByText("99.0%")).toBeInTheDocument();
+      expect(first.getByRole("img", { name: "Expert rank range 1 to 6" })).toBeInTheDocument();
+      // The phone reflow hides the plot, so the range also prints as text beside the opponent.
+      expect(first.getByText("1 to 6", { exact: false })).toHaveClass("ffb-wk-range");
+      // No published average in this fixture, so the column prints a dash rather than the rank.
+      expect(first.getByText("—")).toBeInTheDocument();
+      expect(screen.getByRole("status")).toHaveTextContent(
+        `Showing ${FANTASY_WEEKLY_STARTABLE_DEPTH.flex} of ${FLEX_COUNT} players`,
+      );
+      unmount();
+    }
+  });
+
+  it("keeps a tier's own count and range when a search leaves one row of it", () => {
+    renderClient("rankings");
+    fireEvent.change(screen.getByLabelText("Search"), { target: { value: "Flex Player 14" } });
+    const tiers = screen.getAllByRole("region", { name: /^Tier \d+, / });
+    expect(tiers).toHaveLength(1);
+    expect(tiers[0]).toHaveAccessibleName("Tier 2, 8 players, ranks 9 to 16, 1.0 average-rank cliff above");
+    expect(within(tiers[0]).getAllByRole("listitem")).toHaveLength(1);
+  });
+
+  it("draws running back tiers when the position filter is on", () => {
+    renderClient("rankings");
+    fireEvent.click(screen.getByRole("radio", { name: "RB" }));
+    // The 43 backs sit at flex ranks 3, 6, 9, and so on, and tier among themselves.
+    const tiers = screen.getAllByRole("region", { name: /^Tier \d+, / });
+    expect(tiers[0]).toHaveAccessibleName("Tier 1, 10 players, ranks 3 to 30");
+    expect(within(tiers[0]).getAllByRole("listitem").every((row) => row.textContent?.includes("RB"))).toBe(true);
   });
 });
 
