@@ -86,6 +86,21 @@ describe("normalizeFantasyWeeklySnapshot", () => {
     expect(snapshot.boards.standard).not.toHaveProperty("restOfSeason");
   });
 
+  it("drops a malformed rest-of-season board instead of failing the weekly boards", () => {
+    const rest = { provider: "FantasyPros rest-of-season board", url: "https://example.com/ros", asOf: "2026-09-09T12:00:00.000Z", expertCount: 5, playerCount: 1 };
+    const snapshot = normalizeFantasyWeeklySnapshot(
+      snapshotWith({
+        ppr: board({
+          restOfSeason: [{ ...player(1), rank: "not a rank" as unknown as number }],
+          restOfSeasonSource: rest,
+        }),
+      })
+    );
+    expect(snapshot.boards.ppr.flex).toHaveLength(2);
+    expect(snapshot.boards.ppr).not.toHaveProperty("restOfSeason");
+    expect(snapshot.boards.ppr).not.toHaveProperty("restOfSeasonSource");
+  });
+
   it("rejects a week outside the regular season", () => {
     // The builder refuses to publish before Week 1, so a week-0 payload means
     // something upstream served a preseason board as an in-season one.

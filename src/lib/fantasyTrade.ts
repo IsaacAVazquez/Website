@@ -266,7 +266,10 @@ function hasCurrentScoring(player: Player, season: number, seasonWeek: number): 
       log.season === season &&
       log.games >= MIN_GAME_LOG_GAMES &&
       Number.isFinite(log.average) &&
-      (log.throughWeek === undefined || seasonWeek - log.throughWeek <= PRODUCTION_MAX_WEEKS_BEHIND)
+      // A log with no throughWeek cannot show how far behind it is, and the
+      // freshness summary reads the same field, so it is not current scoring.
+      Number.isInteger(log.throughWeek) &&
+      seasonWeek - log.throughWeek! <= PRODUCTION_MAX_WEEKS_BEHIND
   );
 }
 
@@ -279,7 +282,7 @@ export function getScoringThroughWeek(board: readonly Player[], season: number, 
   return Math.max(
     0,
     ...board.map((player) =>
-      hasCurrentScoring(player, season, seasonWeek) ? player.gameLog?.throughWeek ?? 0 : 0
+      hasCurrentScoring(player, season, seasonWeek) ? player.gameLog!.throughWeek! : 0
     )
   );
 }

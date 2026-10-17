@@ -259,7 +259,9 @@ export function TradeCalculatorClient() {
     // Gate on every input the player pool reads: in season the pool is the
     // rest-of-season board, which arrives through the weekly file after the
     // (usually cached) draft snapshot, and the share is consumed only once.
-    if (!pendingShare || isLoading) return;
+    // A failed draft fetch settles with no snapshot; hold the share so Retry
+    // can still import it instead of consuming it against an empty pool.
+    if (!pendingShare || isLoading || !snapshot) return;
     // IDs missing from the current snapshot are dropped silently, matching
     // how the calculator already treats unknown stored players.
     const knownIds = new Set(players.map((player) => player.id));
@@ -272,7 +274,7 @@ export function TradeCalculatorClient() {
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot: consuming the shared deal must gate the URL mirror below
     setPendingShare(null);
-  }, [isLoading, pendingShare, players, replaceDeal]);
+  }, [isLoading, pendingShare, players, replaceDeal, snapshot]);
 
   // The route is force-dynamic so the server can render the real query, which
   // made every router.replace a server round trip per player added. The native

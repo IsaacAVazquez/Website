@@ -541,6 +541,22 @@ describe("evaluateFantasyTrade", () => {
       expect(result.coverage).toBe("limited");
     });
 
+    it("treats a log with no throughWeek as no current scoring, so freshness and pricing agree", () => {
+      const snapshot = withScoring(buildSnapshot());
+      const noWeek = {
+        ...snapshot,
+        overall: snapshot.overall.map(({ gameLog, ...player }) =>
+          gameLog ? { ...player, gameLog: { ...gameLog, throughWeek: undefined } } : player
+        ),
+      };
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"], { snapshot: noWeek }));
+
+      expect(result.sources.market.usable).toBe(false);
+      expect(result.sources.market.freshness).toBe("stale");
+      expect(result.sideA.players[0].production).toBeNull();
+      expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
+    });
+
     it("ignores last season's scoring", () => {
       const result = evaluateFantasyTrade(
         inSeasonInput(["RB-1"], ["RB-30"], { snapshot: withScoring(buildSnapshot(), 17, 2025) })
