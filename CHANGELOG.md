@@ -9,6 +9,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Weekly board in tiers and an in-season trade calculator ([#610](https://github.com/IsaacAVazquez/Website/pull/610)).
 - Trade calculator review follow-ups from #610 ([#611](https://github.com/IsaacAVazquez/Website/pull/611)).
 - Bump executing from 2.2.1 to 2.3.0 in /scripts ([#604](https://github.com/IsaacAVazquez/Website/pull/604)).
+- Bump next from 16.3.8 to 16.4.0 in the next group across 1 directory ([#599](https://github.com/IsaacAVazquez/Website/pull/599)).
 
 ---
 
