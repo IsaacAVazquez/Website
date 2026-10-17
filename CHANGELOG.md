@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-17
+
+- Weekly board in tiers and an in-season trade calculator ([#610](https://github.com/IsaacAVazquez/Website/pull/610)).
+
+---
+
 ## 2026-10-15
 
 - The October 14 review's job search and empty-query fixes, checked against main ([#607](https://github.com/IsaacAVazquez/Website/pull/607)).
