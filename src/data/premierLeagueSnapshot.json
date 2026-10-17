@@ -79,6 +79,46 @@
       },
       {
         "position": 4,
+        "playedGames": 7,
+        "won": 2,
+        "draw": 5,
+        "lost": 0,
+        "points": 11,
+        "goalsFor": 8,
+        "goalsAgainst": 5,
+        "goalDifference": 3,
+        "team": {
+          "id": "62",
+          "name": "Everton FC",
+          "shortName": "Everton",
+          "tla": "EVE",
+          "crest": "https://crests.football-data.org/62.png",
+          "venue": null,
+          "accentColor": "#003399"
+        }
+      },
+      {
+        "position": 5,
+        "playedGames": 7,
+        "won": 3,
+        "draw": 2,
+        "lost": 2,
+        "points": 11,
+        "goalsFor": 15,
+        "goalsAgainst": 13,
+        "goalDifference": 2,
+        "team": {
+          "id": "61",
+          "name": "Chelsea FC",
+          "shortName": "Chelsea",
+          "tla": "CHE",
+          "crest": "https://crests.football-data.org/61.png",
+          "venue": null,
+          "accentColor": "#034694"
+        }
+      },
+      {
+        "position": 6,
         "playedGames": 6,
         "won": 2,
         "draw": 4,
@@ -95,46 +135,6 @@
           "crest": "https://crests.football-data.org/402.png",
           "venue": null,
           "accentColor": "#E30613"
-        }
-      },
-      {
-        "position": 5,
-        "playedGames": 6,
-        "won": 2,
-        "draw": 4,
-        "lost": 0,
-        "points": 10,
-        "goalsFor": 8,
-        "goalsAgainst": 5,
-        "goalDifference": 3,
-        "team": {
-          "id": "62",
-          "name": "Everton FC",
-          "shortName": "Everton",
-          "tla": "EVE",
-          "crest": "https://crests.football-data.org/62.png",
-          "venue": null,
-          "accentColor": "#003399"
-        }
-      },
-      {
-        "position": 6,
-        "playedGames": 6,
-        "won": 3,
-        "draw": 1,
-        "lost": 2,
-        "points": 10,
-        "goalsFor": 15,
-        "goalsAgainst": 13,
-        "goalDifference": 2,
-        "team": {
-          "id": "61",
-          "name": "Chelsea FC",
-          "shortName": "Chelsea",
-          "tla": "CHE",
-          "crest": "https://crests.football-data.org/61.png",
-          "venue": null,
-          "accentColor": "#034694"
         }
       },
       {
@@ -630,32 +630,6 @@
     ],
     "upcomingFixtures": [
       {
-        "id": "560603",
-        "utcDate": "2026-10-17T11:30:00Z",
-        "status": "TIMED",
-        "matchday": 7,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "62",
-          "name": "Everton FC",
-          "shortName": "Everton",
-          "tla": "EVE",
-          "crest": "https://crests.football-data.org/62.png"
-        },
-        "awayTeam": {
-          "id": "61",
-          "name": "Chelsea FC",
-          "shortName": "Chelsea",
-          "tla": "CHE",
-          "crest": "https://crests.football-data.org/61.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
-      {
         "id": "560602",
         "utcDate": "2026-10-17T14:00:00Z",
         "status": "TIMED",
@@ -830,6 +804,32 @@
           "shortName": "Crystal Palace",
           "tla": "CRY",
           "crest": "https://crests.football-data.org/354.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560608",
+        "utcDate": "2026-10-18T15:30:00Z",
+        "status": "TIMED",
+        "matchday": 7,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "351",
+          "name": "Nottingham Forest FC",
+          "shortName": "Nottingham",
+          "tla": "NOT",
+          "crest": "https://crests.football-data.org/351.png"
+        },
+        "awayTeam": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png"
         },
         "score": {
           "winner": null,
@@ -1037,7 +1037,7 @@
         "teamName": "Chelsea",
         "goals": 5,
         "assists": 3,
-        "appearances": 5
+        "appearances": 6
       },
       {
         "rank": 3,
@@ -1046,7 +1046,7 @@
         "teamName": "Chelsea",
         "goals": 4,
         "assists": 1,
-        "appearances": 6
+        "appearances": 7
       },
       {
         "rank": 4,
@@ -1082,7 +1082,7 @@
         "teamName": "Everton",
         "goals": 3,
         "assists": 0,
-        "appearances": 6
+        "appearances": 7
       },
       {
         "rank": 8,
@@ -1138,7 +1138,7 @@
         "totalGoals": 36
       }
     ],
-    "generatedAt": "2026-10-17T04:30:43.548Z"
+    "generatedAt": "2026-10-17T12:13:06.864Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1435,7 +1435,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "58": {
       "team": {
@@ -1731,7 +1731,7 @@
         "goalsFor": 6,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "61": {
       "team": {
@@ -1882,32 +1882,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "560603",
-          "utcDate": "2026-10-17T11:30:00Z",
-          "status": "TIMED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "560617",
           "utcDate": "2026-10-24T16:30:00Z",
           "status": "TIMED",
@@ -2010,6 +1984,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560658",
+          "utcDate": "2026-11-27T20:00:00Z",
+          "status": "TIMED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "awayTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -2027,7 +2027,7 @@
         "goalsFor": 12,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "62": {
       "team": {
@@ -2178,32 +2178,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "560603",
-          "utcDate": "2026-10-17T11:30:00Z",
-          "status": "TIMED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "62",
-            "name": "Everton FC",
-            "shortName": "Everton",
-            "tla": "EVE",
-            "crest": "https://crests.football-data.org/62.png"
-          },
-          "awayTeam": {
-            "id": "61",
-            "name": "Chelsea FC",
-            "shortName": "Chelsea",
-            "tla": "CHE",
-            "crest": "https://crests.football-data.org/61.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "560616",
           "utcDate": "2026-10-24T14:00:00Z",
           "status": "TIMED",
@@ -2306,6 +2280,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560656",
+          "utcDate": "2026-11-29T12:00:00Z",
+          "status": "TIMED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "62",
+            "name": "Everton FC",
+            "shortName": "Everton",
+            "tla": "EVE",
+            "crest": "https://crests.football-data.org/62.png"
+          },
+          "awayTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -2323,7 +2323,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "63": {
       "team": {
@@ -2619,7 +2619,7 @@
         "goalsFor": 4,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "64": {
       "team": {
@@ -2915,7 +2915,7 @@
         "goalsFor": 5,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "65": {
       "team": {
@@ -3211,7 +3211,7 @@
         "goalsFor": 14,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "66": {
       "team": {
@@ -3507,7 +3507,7 @@
         "goalsFor": 9,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "67": {
       "team": {
@@ -3803,7 +3803,7 @@
         "goalsFor": 8,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "71": {
       "team": {
@@ -4099,7 +4099,7 @@
         "goalsFor": 5,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "73": {
       "team": {
@@ -4395,7 +4395,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "322": {
       "team": {
@@ -4691,7 +4691,7 @@
         "goalsFor": 6,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "341": {
       "team": {
@@ -4987,7 +4987,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "349": {
       "team": {
@@ -5283,7 +5283,7 @@
         "goalsFor": 7,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "351": {
       "team": {
@@ -5579,7 +5579,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "354": {
       "team": {
@@ -5875,7 +5875,7 @@
         "goalsFor": 9,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "397": {
       "team": {
@@ -6171,7 +6171,7 @@
         "goalsFor": 14,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "402": {
       "team": {
@@ -6467,7 +6467,7 @@
         "goalsFor": 9,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "1044": {
       "team": {
@@ -6763,7 +6763,7 @@
         "goalsFor": 6,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     },
     "1076": {
       "team": {
@@ -7059,7 +7059,7 @@
         "goalsFor": 5,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-10-17T04:30:43.548Z"
+      "generatedAt": "2026-10-17T12:13:06.864Z"
     }
   }
 }
