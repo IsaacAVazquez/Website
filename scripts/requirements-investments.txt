@@ -20,7 +20,7 @@ defeatbeta-api==0.0.61
 defusedxml==0.7.1
 duckdb==1.5.3
 et-xmlfile==2.0.0
-executing==2.2.1
+executing==2.3.0
 fonttools==4.66.0
 h11==0.16.0
 httpcore2==2.13.1
