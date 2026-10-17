@@ -4,15 +4,15 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "10/16/2026 09:55:32 PM PDT",
-      "generatedAt": "2026-10-17T04:55:35.784Z",
+      "feedTime": "10/17/2026 02:00:16 AM PDT",
+      "generatedAt": "2026-10-17T11:07:21.414Z",
       "seed": false
     },
     "heroStats": {
       "lineCount": 6,
       "stationCount": 50,
       "activeAdvisories": 0,
-      "elevatorOutages": 1,
+      "elevatorOutages": 0,
       "trainsTracked": 371
     },
     "lines": [
@@ -821,17 +821,11 @@
       }
     ],
     "advisories": [],
-    "elevator": [
-      {
-        "id": "elevator-0",
-        "description": "There is 1 elevator out of service at this time: CIVC: Station",
-        "posted": ""
-      }
-    ],
+    "elevator": [],
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
-      "departures": "fresh"
+      "departures": "stale-fallback"
     },
     "defaultStation": "embr"
   },
