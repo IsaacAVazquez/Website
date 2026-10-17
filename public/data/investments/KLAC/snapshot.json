@@ -1,8 +1,8 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.6677,
-      "ttmPe": 48.75,
-      "marketCap": 233701630230,
-      "psRatio": 17.21,
-      "pbRatio": 36.8,
-      "pegRatio": 3.39
+      "ttmPe": 47.57,
+      "marketCap": 228016254180,
+      "psRatio": 16.79,
+      "pbRatio": 35.91,
+      "pegRatio": 3.31
     },
     "profitability": {
       "roe": 22.38,
@@ -6266,15 +6266,15 @@
       ]
     },
     "wacc": {
-      "wacc": 15.7,
-      "costOfEquity": 16.08,
+      "wacc": 15.690000000000001,
+      "costOfEquity": 16.09,
       "costOfDebt": 1.1900000000000002,
       "taxRate": 12,
-      "beta": 1.4176,
-      "marketCap": 233701630230
+      "beta": 1.4142,
+      "marketCap": 228016254180
     },
     "beta": {
-      "beta5y": 1.4176
+      "beta5y": 1.4142
     },
     "price": [
       {
@@ -8368,11 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
-        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
-        "publisher": "StockStory",
+        "uuid": "7d244f54-1547-3e57-9402-fe0b6840571f",
+        "title": "KLA Corporation Reports Fiscal 2025 Third Quarter Results; Announces an Increase in the Dividend Level to $1.90 Per Share and a $5 billion Increase in Share Repurchase Authorization",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
+        "link": "https://finance.yahoo.com/news/kla-corporation-reports-fiscal-2025-200500861.html",
         "type": "STORY"
       }
     ],
@@ -8442,18 +8442,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.75,
-        "industryAvg": 48.59
+        "value": 47.57,
+        "industryAvg": 48.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.21,
-        "industryAvg": 13.19
+        "value": 16.79,
+        "industryAvg": 13.05
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.8,
-        "industryAvg": 18.97
+        "value": 35.91,
+        "industryAvg": 18.62
       },
       {
         "metric": "ROE",

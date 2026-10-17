@@ -1,8 +1,8 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3516,
-      "ttmPe": 15.73,
-      "pegRatio": 0.96,
-      "marketCap": 30926892491,
-      "psRatio": 1.45,
-      "pbRatio": 2.82
+      "ttmPe": 16.17,
+      "pegRatio": 0.98,
+      "marketCap": 31776060855,
+      "psRatio": 1.49,
+      "pbRatio": 2.9
     },
     "profitability": {
       "roe": 5.18,
@@ -6205,15 +6205,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.82,
-      "costOfEquity": 11.52,
+      "wacc": 8.870000000000001,
+      "costOfEquity": 11.51,
       "costOfDebt": 1.08,
       "taxRate": 17,
-      "beta": 0.8244,
-      "marketCap": 30926892491
+      "beta": 0.8249,
+      "marketCap": 31776060855
     },
     "beta": {
-      "beta5y": 0.8244
+      "beta5y": 0.8249
     },
     "price": [
       {
@@ -8235,6 +8235,14 @@
     ],
     "news": [
       {
+        "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
+        "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "3a8a0cd7-61db-3a85-96ee-ff05c2acb719",
         "title": "GE HealthCare reports first quarter 2025 financial results",
         "publisher": "Business Wire",
@@ -8243,12 +8251,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
-        "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
-        "type": "STORY"
+        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
+        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
@@ -8267,12 +8275,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
-        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
-        "type": "VIDEO"
+        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
+        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
+        "type": "STORY"
       },
       {
         "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
@@ -8280,14 +8288,6 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
-        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
         "type": "STORY"
       },
       {
@@ -8380,18 +8380,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.73,
-        "industryAvg": 25.13
+        "value": 16.17,
+        "industryAvg": 25.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.45,
-        "industryAvg": 3.03
+        "value": 1.49,
+        "industryAvg": 3.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.82,
-        "industryAvg": 2.95
+        "value": 2.9,
+        "industryAvg": 3.02
       },
       {
         "metric": "ROE",

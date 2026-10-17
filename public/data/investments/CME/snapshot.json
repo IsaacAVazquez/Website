@@ -1,8 +1,8 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7917,
-      "ttmPe": 24.22,
-      "marketCap": 102606232579,
-      "psRatio": 15.15,
-      "pbRatio": 3.87,
-      "pegRatio": 9.11
+      "ttmPe": 24.55,
+      "marketCap": 103996638826,
+      "psRatio": 15.36,
+      "pbRatio": 3.92,
+      "pegRatio": 9.23
     },
     "profitability": {
       "roe": 3.92,
@@ -5438,15 +5438,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.67,
-      "costOfEquity": 6.859999999999999,
+      "wacc": 6.619999999999999,
+      "costOfEquity": 6.81,
       "costOfDebt": 1.27,
       "taxRate": 22,
-      "beta": 0.218,
-      "marketCap": 102606232579
+      "beta": 0.2203,
+      "marketCap": 103996638826
     },
     "beta": {
-      "beta5y": 0.218
+      "beta5y": 0.2203
     },
     "price": [
       {
@@ -7484,14 +7484,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
-        "title": "XRP futures bag $19M on launch day",
-        "publisher": "TheStreet",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
         "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
         "publisher": "CoinDesk",
@@ -7500,11 +7492,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
-        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
+        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
+        "title": "XRP futures bag $19M on launch day",
+        "publisher": "TheStreet",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
         "type": "STORY"
       },
       {
@@ -7516,6 +7508,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
+        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
         "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
         "publisher": "MT Newswires",
@@ -7524,19 +7524,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3983830b-3586-3549-9334-10a4699a62b7",
-        "title": "CME Group vs. Intercontinental: Which Exchange Stock is a Better Buy?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
         "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3983830b-3586-3549-9334-10a4699a62b7",
+        "title": "CME Group vs. Intercontinental: Which Exchange Stock is a Better Buy?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
         "type": "STORY"
       },
       {
@@ -7614,18 +7614,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.22,
-        "industryAvg": 24.29
+        "value": 24.55,
+        "industryAvg": 25.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.15,
-        "industryAvg": 7.56
+        "value": 15.36,
+        "industryAvg": 7.81
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.87,
-        "industryAvg": 3.9
+        "value": 3.92,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",

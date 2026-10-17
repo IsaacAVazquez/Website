@@ -1,8 +1,8 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -33,17 +33,17 @@
       "industry": "Capital Markets",
       "sector": "Financial Services",
       "longBusinessSummary": "The Goldman Sachs Group, Inc., a financial institution, provides a range of financial services for corporations, financial institutions, governments, and individuals in the Americas, Europe, the Middle East, Africa, and Asia. It operates through three segments: Global Banking & Markets, Asset & Wealth Management, and Platform Solutions. The Global Banking & Markets segment provides financial advisory services, including strategic advisory assignments related to mergers and acquisitions, divestitures, corporate defense activities, restructurings, and spin-offs; equity and debt underwriting of public offerings and private placements; relationship lending and acquisition financing; secured lending through structured credit and asset-backed lending, such as warehouse, residential and commercial mortgage, corporate, consumer, auto, and student loans; financing through securities purchased under agreements to resell; and commodity financing through structured transactions. This segment also offers client execution activities for cash and derivative instruments; credit and interest rate products; and provision of mortgages, currencies, commodities, and equities related products. Its Asset & Wealth Management segment manages assets across various classes, including equity, fixed income, hedge funds, credit funds, private equity, real estate, currencies, commodities, and asset allocation strategies; and provides customized investment advisory solutions, wealth advisory services, personalized financial planning, and private banking services, as well as invests in corporate equity, credit, real estate, and infrastructure assets. The Platform Solutions segment offers credit cards; and transaction banking and other services, such as deposit-taking, payment solutions, and other cash management services for corporate and institutional clients. The Goldman Sachs Group, Inc. was founded in 1869 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 46200,
+      "fullTimeEmployees": 47500,
       "website": "https://www.goldmansachs.com",
       "shortName": "Goldman Sachs Group, Inc.",
       "longName": "Goldman Sachs Group, Inc."
     },
     "fundamentals": {
       "ttmEps": 69.5502,
-      "ttmPe": 12.63,
-      "marketCap": 259749632000,
-      "psRatio": 3.92,
-      "pbRatio": 2.12,
+      "ttmPe": 12.81,
+      "marketCap": 263462368000,
+      "psRatio": 3.98,
+      "pbRatio": 2.15,
       "pegRatio": 0.33
     },
     "profitability": {
@@ -6280,15 +6280,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.21,
-      "costOfEquity": 15.040000000000001,
+      "wacc": 7.26,
+      "costOfEquity": 15.06,
       "costOfDebt": 3.81,
       "taxRate": 23,
-      "beta": 1.2825,
-      "marketCap": 259749632000
+      "beta": 1.2817,
+      "marketCap": 263462368000
     },
     "beta": {
-      "beta5y": 1.2825
+      "beta5y": 1.2817
     },
     "price": [
       {
@@ -8449,18 +8449,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.63,
-        "industryAvg": 15.7
+        "value": 12.81,
+        "industryAvg": 15.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.92,
-        "industryAvg": 2.02
+        "value": 3.98,
+        "industryAvg": 2.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.12,
-        "industryAvg": 2.52
+        "value": 2.15,
+        "industryAvg": 2.54
       },
       {
         "metric": "ROE",

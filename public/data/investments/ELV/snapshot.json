@@ -1,8 +1,8 @@
 {
   "symbol": "ELV",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,9 +43,9 @@
     },
     "fundamentals": {
       "ttmEps": 22.4991,
-      "ttmPe": 19.03,
+      "ttmPe": 19.04,
       "pegRatio": 0.31,
-      "marketCap": 92827506499,
+      "marketCap": 92901232473,
       "psRatio": 0.46,
       "pbRatio": 2.07
     },
@@ -5054,14 +5054,14 @@
     },
     "wacc": {
       "wacc": 7.8,
-      "costOfEquity": 10.12,
+      "costOfEquity": 10.11,
       "costOfDebt": 1.17,
       "taxRate": 25,
-      "beta": 0.6425,
-      "marketCap": 92827506499
+      "beta": 0.6449,
+      "marketCap": 92901232473
     },
     "beta": {
-      "beta5y": 0.6425
+      "beta5y": 0.6449
     },
     "price": [
       {
@@ -7091,20 +7091,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
-        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
         "title": "3 things we've learned from healthcare earnings",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
+        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
+        "type": "STORY"
       },
       {
         "uuid": "695e3470-e670-3ba0-83e2-e8388efd09b2",
@@ -7147,19 +7147,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a762e27-ea8c-35f7-b55f-93be8e209562",
-        "title": "1 S&P 500 Stock to Own for Decades and 2 to Ignore",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/1-p-500-stock-own-043936277.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6b9d1eaf-da89-3f7d-9300-45c919f0806f",
         "title": "Top Analyst Reports for Walmart, Palantir & Uber",
         "publisher": "Zacks",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-walmart-palantir-210700298.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a762e27-ea8c-35f7-b55f-93be8e209562",
+        "title": "1 S&P 500 Stock to Own for Decades and 2 to Ignore",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-own-043936277.html",
         "type": "STORY"
       }
     ],
@@ -7227,18 +7227,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.03,
-        "industryAvg": 21.9
+        "value": 19.04,
+        "industryAvg": 22.38
       },
       {
         "metric": "P/S Ratio",
         "value": 0.46,
-        "industryAvg": 0.43
+        "industryAvg": 0.44
       },
       {
         "metric": "P/B Ratio",
         "value": 2.07,
-        "industryAvg": 2.4
+        "industryAvg": 2.45
       },
       {
         "metric": "ROE",

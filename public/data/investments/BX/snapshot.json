@@ -1,8 +1,8 @@
 {
   "symbol": "BX",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4576,
-      "ttmPe": 23.83,
-      "marketCap": 132105378730,
-      "psRatio": 9.7,
-      "pbRatio": 14.65,
-      "pegRatio": 0.42
+      "ttmPe": 24.5,
+      "marketCap": 135824379600,
+      "psRatio": 9.98,
+      "pbRatio": 15.07,
+      "pegRatio": 0.43
     },
     "profitability": {
       "roe": 14.14,
@@ -2476,15 +2476,15 @@
       ]
     },
     "wacc": {
-      "wacc": 15.42,
-      "costOfEquity": 16.97,
+      "wacc": 15.509999999999998,
+      "costOfEquity": 17.02,
       "costOfDebt": 1.03,
       "taxRate": 16,
-      "beta": 1.5344,
-      "marketCap": 132105378730
+      "beta": 1.5336,
+      "marketCap": 135824379600
     },
     "beta": {
-      "beta5y": 1.5344
+      "beta5y": 1.5336
     },
     "price": [
       {
@@ -4530,19 +4530,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
         "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
         "type": "STORY"
       },
       {
@@ -4648,18 +4648,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.83,
-        "industryAvg": 22.18
+        "value": 24.5,
+        "industryAvg": 22.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.7,
-        "industryAvg": 3.03
+        "value": 9.98,
+        "industryAvg": 3.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.65,
-        "industryAvg": 2.5
+        "value": 15.07,
+        "industryAvg": 2.55
       },
       {
         "metric": "ROE",

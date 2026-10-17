@@ -1,8 +1,8 @@
 {
   "symbol": "WMT",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.76,
-      "ttmPe": 42.09,
+      "ttmPe": 42.71,
       "pegRatio": 2,
-      "marketCap": 922542720000,
-      "psRatio": 1.25,
-      "pbRatio": 9.39
+      "marketCap": 936123540000,
+      "psRatio": 1.27,
+      "pbRatio": 9.53
     },
     "profitability": {
       "roe": 6.61,
@@ -5422,15 +5422,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.780000000000001,
-      "costOfEquity": 9.46,
+      "wacc": 8.77,
+      "costOfEquity": 9.44,
       "costOfDebt": 0.36,
       "taxRate": 19,
-      "beta": 0.5561,
-      "marketCap": 922542720000
+      "beta": 0.5588,
+      "marketCap": 936123540000
     },
     "beta": {
-      "beta5y": 0.5561
+      "beta5y": 0.5588
     },
     "price": [
       {
@@ -7484,19 +7484,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
-        "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
         "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
         "publisher": "Zacks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
+        "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
         "type": "STORY"
       },
       {
@@ -7598,18 +7598,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.09,
-        "industryAvg": 37.88
+        "value": 42.71,
+        "industryAvg": 38.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.25,
-        "industryAvg": 1.24
+        "value": 1.27,
+        "industryAvg": 1.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.39,
-        "industryAvg": 9.06
+        "value": 9.53,
+        "industryAvg": 9.17
       },
       {
         "metric": "ROE",

@@ -1,13 +1,14 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
     "retainedSections": [
-      "fundamentals"
+      "fundamentals",
+      "industry"
     ]
   },
   "source": "prefetched",
@@ -43,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.62,
-      "ttmPe": 23.65,
+      "ttmPe": 23.73,
       "pegRatio": 3.76,
-      "marketCap": 363744414000,
-      "psRatio": 4.18,
-      "pbRatio": 6.73
+      "marketCap": 365022504000,
+      "psRatio": 4.19,
+      "pbRatio": 6.75
     },
     "profitability": {
       "roe": 5.47,
@@ -5776,15 +5777,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.42,
-      "costOfEquity": 8.08,
+      "wacc": 7.380000000000001,
+      "costOfEquity": 8.04,
       "costOfDebt": 0.67,
       "taxRate": 22,
-      "beta": 0.3759,
-      "marketCap": 363744414000
+      "beta": 0.3778,
+      "marketCap": 365022504000
     },
     "beta": {
-      "beta5y": 0.3759
+      "beta5y": 0.3778
     },
     "price": [
       {
