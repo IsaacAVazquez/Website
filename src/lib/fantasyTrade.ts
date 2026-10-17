@@ -266,7 +266,10 @@ function hasCurrentScoring(player: Player, season: number, seasonWeek: number): 
       log.season === season &&
       log.games >= MIN_GAME_LOG_GAMES &&
       Number.isFinite(log.average) &&
-      (log.throughWeek === undefined || seasonWeek - log.throughWeek <= PRODUCTION_MAX_WEEKS_BEHIND)
+      // A log with no throughWeek cannot show how far behind it is, and the
+      // freshness summary reads the same field, so it is not current scoring.
+      Number.isInteger(log.throughWeek) &&
+      seasonWeek - log.throughWeek! <= PRODUCTION_MAX_WEEKS_BEHIND
   );
 }
 
@@ -279,7 +282,7 @@ export function getScoringThroughWeek(board: readonly Player[], season: number, 
   return Math.max(
     0,
     ...board.map((player) =>
-      hasCurrentScoring(player, season, seasonWeek) ? player.gameLog?.throughWeek ?? 0 : 0
+      hasCurrentScoring(player, season, seasonWeek) ? player.gameLog!.throughWeek! : 0
     )
   );
 }
@@ -287,10 +290,13 @@ export function getScoringThroughWeek(board: readonly Player[], season: number, 
 /**
  * Ranks every player with this season's scoring by points per game above his
  * position's replacement level, which is the points per game of the last
- * dedicated starter at that position across the league. It is the draft
- * board's VORP idea read off games already played. The spread re-ranks the
- * player at his points per game plus and minus a quarter of his best-to-worst
- * game, the same quarter-of-the-range rule the expert spread falls back on.
+ * starter at that position across the league, FLEX slots included. The FLEX
+ * allocation is the same one the expert leg's cutoffs use, read off a points
+ * per game ordering instead of expert rank, so both legs price RB, WR, and TE
+ * against the same replacement depth. It is the draft board's VORP idea read
+ * off games already played. The spread re-ranks the player at his points per
+ * game plus and minus a quarter of his best-to-worst game, the same
+ * quarter-of-the-range rule the expert spread falls back on.
  */
 function productionMarketLeg(
   board: readonly Player[],
@@ -301,9 +307,22 @@ function productionMarketLeg(
   const eligible = board.filter(
     (player) => isTradePosition(player.position) && hasCurrentScoring(player, season, seasonWeek)
   );
+  const byPpg = [...eligible].sort(
+    (left, right) =>
+      right.gameLog!.average - left.gameLog!.average || left.id.localeCompare(right.id)
+  );
+  const ppgRank = new Map(byPpg.map((player, index) => [player.id, index + 1]));
+  const starterCutoffs = buildSourceCutoffs(eligible, league, (player) => ppgRank.get(player.id) ?? null);
   const replacement = new Map<string, number>();
   for (const position of ["QB", "RB", "WR", "TE", "K", "DST"] as const) {
     const needed = league.teams * league.lineup[position];
+    const starter = starterCutoffs[position].starter;
+    if (starter !== null) {
+      replacement.set(position, byPpg[starter - 1].gameLog!.average);
+      continue;
+    }
+    // Too few scored players to fill the league's starters (or its FLEX): the
+    // deepest scored player stands in for the last starter.
     const ppg = eligible
       .filter((player) => player.position === position)
       .map((player) => player.gameLog!.average)

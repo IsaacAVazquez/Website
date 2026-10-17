@@ -501,11 +501,23 @@ describe("evaluateFantasyTrade", () => {
     });
 
     it("ranks the scoring leg against each position's replacement level, not raw points", () => {
-      // Every position scores the same points per game by depth, so the top quarterback and the
-      // top running back are both one starter-line above replacement and share the top ranks.
-      const result = evaluateFantasyTrade(inSeasonInput(["QB-1"], ["RB-1"]));
-      const ranks = [result.sideA.players[0].marketRank, result.sideB.players[0].marketRank];
-      expect(ranks.every((rank) => rank !== null && rank <= 4)).toBe(true);
+      // Every position scores the same points per game by depth. Without a FLEX
+      // slot the top quarterback and the top running back are both one
+      // starter-line above replacement and share the top ranks.
+      const base = inSeasonInput(["QB-1"], ["RB-1"]);
+      const noFlex = evaluateFantasyTrade({
+        ...base,
+        league: { ...base.league, lineup: { ...base.league.lineup, FLEX: 0 } },
+      });
+      const noFlexRanks = [noFlex.sideA.players[0].marketRank, noFlex.sideB.players[0].marketRank];
+      expect(noFlexRanks.every((rank) => rank !== null && rank <= 4)).toBe(true);
+
+      // With eight FLEX slots the RB, WR, and TE replacement lines sit deeper, so
+      // the top players at those positions carry more points over replacement
+      // than the top quarterback, who falls behind them but no further.
+      const withFlex = evaluateFantasyTrade(base);
+      expect(withFlex.sideB.players[0].marketRank).toBe(1);
+      expect(withFlex.sideA.players[0].marketRank).toBe(9);
     });
 
     it("prices a player with no scoring log on the experts alone, at limited coverage", () => {
@@ -539,6 +551,37 @@ describe("evaluateFantasyTrade", () => {
       expect(result.sideA.players[0].production).toBeNull();
       expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
       expect(result.coverage).toBe("limited");
+    });
+
+    it("counts FLEX starters in the scoring leg's replacement level", () => {
+      // Twelve teams, two RB slots and one FLEX: the twenty-fourth back is a
+      // dedicated starter, so his points over replacement cannot be zero.
+      const base = inSeasonInput(["RB-24"], ["RB-30"]);
+      const withFlex = evaluateFantasyTrade(base);
+      const noFlex = evaluateFantasyTrade({
+        ...base,
+        league: { ...base.league, lineup: { ...base.league.lineup, FLEX: 0 } },
+      });
+      expect(withFlex.sideA.players[0].replacementCutoffs.marketStarter).toBeGreaterThan(
+        noFlex.sideA.players[0].replacementCutoffs.marketStarter!
+      );
+      expect(withFlex.sideA.players[0].marketValue).toBeGreaterThan(0);
+    });
+
+    it("treats a log with no throughWeek as no current scoring, so freshness and pricing agree", () => {
+      const snapshot = withScoring(buildSnapshot());
+      const noWeek = {
+        ...snapshot,
+        overall: snapshot.overall.map(({ gameLog, ...player }) =>
+          gameLog ? { ...player, gameLog: { ...gameLog, throughWeek: undefined } } : player
+        ),
+      };
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"], { snapshot: noWeek }));
+
+      expect(result.sources.market.usable).toBe(false);
+      expect(result.sources.market.freshness).toBe("stale");
+      expect(result.sideA.players[0].production).toBeNull();
+      expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
     });
 
     it("ignores last season's scoring", () => {

@@ -292,13 +292,21 @@ export function normalizeFantasyWeeklySnapshot(raw: unknown): FantasyWeeklySnaps
     };
     const restOfSeason = Array.isArray(boardFields.restOfSeason) ? boardFields.restOfSeason : [];
     if (restOfSeason.length > 0 && boardFields.restOfSeasonSource) {
-      boards[scoring].restOfSeason = restOfSeason.map((player, index) =>
-        normalizePlayer(player, `${scoring}.restOfSeason[${index}]`)
-      );
-      boards[scoring].restOfSeasonSource = normalizeSource(
-        boardFields.restOfSeasonSource,
-        `${scoring}.restOfSeason`
-      );
+      // Only the trade calculator reads this board, so a malformed row drops
+      // it the way the builder does rather than failing the weekly and waiver
+      // pages, whose own boards are fine.
+      try {
+        boards[scoring].restOfSeason = restOfSeason.map((player, index) =>
+          normalizePlayer(player, `${scoring}.restOfSeason[${index}]`)
+        );
+        boards[scoring].restOfSeasonSource = normalizeSource(
+          boardFields.restOfSeasonSource,
+          `${scoring}.restOfSeason`
+        );
+      } catch {
+        delete boards[scoring].restOfSeason;
+        delete boards[scoring].restOfSeasonSource;
+      }
     }
   }
 
