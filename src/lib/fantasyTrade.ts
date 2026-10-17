@@ -26,6 +26,7 @@ import {
   type FantasyReplacementCutoffs as SourceCutoffs,
   type FantasyReplacementPosition as TradePosition,
 } from "@/lib/fantasyReplacement";
+import { MIN_GAME_LOG_GAMES } from "@/lib/fantasyGameLogSource";
 import type { FantasyWeeklyBoardSource, FantasyWeeklyPlayer } from "@/lib/fantasyWeeklySnapshot";
 import type { Player, RedraftLineupSettings } from "@/types";
 
@@ -117,7 +118,11 @@ export interface FantasyTradePlayerEvaluation {
   team: string;
   position: TradePosition | null;
   expertRank: number | null;
-  marketAdp: number | null;
+  /**
+   * The market leg's rank: mock-draft ADP on the preseason basis, this season's
+   * points-over-replacement rank in season. Null when the leg has no reading.
+   */
+  marketRank: number | null;
   expertValue: number | null;
   marketValue: number | null;
   blendedValue: number | null;
@@ -259,9 +264,23 @@ function hasCurrentScoring(player: Player, season: number, seasonWeek: number): 
   return Boolean(
     log &&
       log.season === season &&
-      log.games > 0 &&
+      log.games >= MIN_GAME_LOG_GAMES &&
       Number.isFinite(log.average) &&
       (log.throughWeek === undefined || seasonWeek - log.throughWeek <= PRODUCTION_MAX_WEEKS_BEHIND)
+  );
+}
+
+/**
+ * The last week any player on the board has current scoring through, or 0 when
+ * none does. The page header and the engine's source summary both read it, so
+ * they cannot disagree about whether the scoring leg is live.
+ */
+export function getScoringThroughWeek(board: readonly Player[], season: number, seasonWeek: number): number {
+  return Math.max(
+    0,
+    ...board.map((player) =>
+      hasCurrentScoring(player, season, seasonWeek) ? player.gameLog?.throughWeek ?? 0 : 0
+    )
   );
 }
 
@@ -301,8 +320,17 @@ function productionMarketLeg(
       (left, right) =>
         right.overReplacement - left.overReplacement || left.player.id.localeCompare(right.player.id)
     );
-  const rankAt = (overReplacement: number) =>
-    1 + scored.filter((entry) => entry.overReplacement > overReplacement).length;
+  // scored is sorted descending, so the rank at a value is one past the last entry above it.
+  const rankAt = (overReplacement: number) => {
+    let low = 0;
+    let high = scored.length;
+    while (low < high) {
+      const mid = (low + high) >> 1;
+      if (scored[mid].overReplacement > overReplacement) low = mid + 1;
+      else high = mid;
+    }
+    return low + 1;
+  };
   const byId = new Map(
     scored.map((entry, index) => {
       const log = entry.player.gameLog!;
@@ -373,12 +401,10 @@ export function buildInSeasonTradeBoard(
 
 /** The rest-of-season board's own clock, a week long rather than the draft boards' two days. */
 export function getRestOfSeasonFreshness(asOf: string | null | undefined, now: Date = new Date()): FantasySnapshotStaleness {
-  if (!asOf) return "stale";
-  const time = new Date(asOf).getTime();
-  if (Number.isNaN(time) || time > now.getTime() + 5 * 60 * 1000) return "stale";
-  const ageDays = (now.getTime() - time) / 86_400_000;
-  if (ageDays < REST_OF_SEASON_AGING_DAYS) return "fresh";
-  return ageDays < REST_OF_SEASON_STALE_DAYS ? "aging" : "stale";
+  return getSnapshotStaleness(asOf, now, {
+    agingDays: REST_OF_SEASON_AGING_DAYS,
+    staleDays: REST_OF_SEASON_STALE_DAYS,
+  });
 }
 
 function replacementCutoffSummary(
@@ -401,7 +427,7 @@ function unavailablePlayer(id: string, warning: string): InternalPlayerEvaluatio
     team: "",
     position: null,
     expertRank: null,
-    marketAdp: null,
+    marketRank: null,
     expertValue: null,
     marketValue: null,
     blendedValue: null,
@@ -459,7 +485,7 @@ function evaluatePlayer({
       team: player.team,
       position,
       expertRank: getExpertRank(player),
-      marketAdp: marketLeg.rank(player) ?? (isFinitePositive(player.adp) ? player.adp : null),
+      marketRank: marketLeg.rank(player) ?? (isFinitePositive(player.adp) ? player.adp : null),
       expertValue: null,
       marketValue: null,
       blendedValue: null,
@@ -569,7 +595,7 @@ function evaluatePlayer({
     team: player.team,
     position,
     expertRank: rank,
-    marketAdp: marketRank ?? (isFinitePositive(player.adp) ? player.adp : null),
+    marketRank: marketRank ?? (isFinitePositive(player.adp) ? player.adp : null),
     expertValue: roundValue(rawExpertValue),
     marketValue: rawMarketValue === null ? null : roundValue(rawMarketValue),
     blendedValue: roundValue(rawBlendedValue),
@@ -757,19 +783,14 @@ export function evaluateFantasyTrade(
   let market: FantasyTradeSourceSummary["market"];
   if (inSeason) {
     marketLeg = productionMarketLeg(board, input.league, input.snapshot.season, seasonWeek);
-    const throughWeek = Math.max(
-      0,
-      ...board.map((player) =>
-        hasCurrentScoring(player, input.snapshot.season, seasonWeek) ? player.gameLog?.throughWeek ?? 0 : 0
-      )
-    );
+    const throughWeek = getScoringThroughWeek(board, input.snapshot.season, seasonWeek);
     const usable = board.some((player) => marketLeg.rank(player) !== null);
     market = {
       provider: throughWeek > 0
         ? `${input.snapshot.season} scoring through Week ${throughWeek}`
         : `${input.snapshot.season} scoring`,
       asOf: null,
-      freshness: usable ? "fresh" : "stale",
+      freshness: throughWeek > 0 ? "fresh" : "stale",
       usable,
     };
     if (!usable) {

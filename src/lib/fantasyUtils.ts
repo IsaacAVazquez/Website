@@ -143,7 +143,8 @@ function isDailyRefreshWindow(now: Date): boolean {
  */
 export function getSnapshotStaleness(
   date: Date | string | null | undefined,
-  now: Date = new Date()
+  now: Date = new Date(),
+  thresholds?: { agingDays: number; staleDays: number }
 ): FantasySnapshotStaleness {
   if (date === null || date === undefined) {
     return "stale";
@@ -162,12 +163,12 @@ export function getSnapshotStaleness(
   }
 
   const daily = isDailyRefreshWindow(now);
-  const agingDays = daily
+  const agingDays = thresholds?.agingDays ?? (daily
     ? FANTASY_DAILY_REFRESH_AGING_DAYS
-    : FANTASY_OFFSEASON_AGING_DAYS;
-  const staleDays = daily
+    : FANTASY_OFFSEASON_AGING_DAYS);
+  const staleDays = thresholds?.staleDays ?? (daily
     ? FANTASY_DAILY_REFRESH_STALE_DAYS
-    : FANTASY_OFFSEASON_STALE_DAYS;
+    : FANTASY_OFFSEASON_STALE_DAYS);
   const ageDays = (now.getTime() - parsed.getTime()) / MS_PER_DAY;
   if (ageDays < agingDays) {
     return "fresh";

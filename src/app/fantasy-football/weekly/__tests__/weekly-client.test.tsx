@@ -338,6 +338,8 @@ describe("WeeklyBoardClient rankings view", () => {
       expect(first.getByText("vs. MIA")).toBeInTheDocument();
       expect(first.getByText("99.0%")).toBeInTheDocument();
       expect(first.getByRole("img", { name: "Expert rank range 1 to 6" })).toBeInTheDocument();
+      // The phone reflow hides the plot, so the range also prints as text beside the opponent.
+      expect(first.getByText("1 to 6", { exact: false })).toHaveClass("ffb-wk-range");
       // No published average in this fixture, so the column prints a dash rather than the rank.
       expect(first.getByText("—")).toBeInTheDocument();
       expect(screen.getByRole("status")).toHaveTextContent(

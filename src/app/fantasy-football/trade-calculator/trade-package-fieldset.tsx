@@ -120,8 +120,8 @@ export function TradePackageFieldset({
                       {team || "Not on this scoring board"}
                       {exactValuesAvailable && valued?.production
                         ? ` · ${valued.production.pointsPerGame.toFixed(1)} pts/g`
-                        : exactValuesAvailable && valued?.marketAdp
-                          ? ` · ADP ${valued.marketAdp.toFixed(1)}`
+                        : exactValuesAvailable && valued?.marketRank
+                          ? ` · ADP ${valued.marketRank.toFixed(1)}`
                           : ""}
                       {held ? (
                         <>

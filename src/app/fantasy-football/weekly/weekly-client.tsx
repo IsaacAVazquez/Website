@@ -902,6 +902,13 @@ export function WeeklyBoardClient({
                             <span className="ffb-c-num ffb-m-meta ffb-wk-c-opp">
                               <span className="ffb-vh">Opponent </span>
                               {player.opponent ?? "—"}
+                              {Number.isFinite(player.minRank) && Number.isFinite(player.maxRank) ? (
+                                <span className="ffb-wk-range">
+                                  {" · "}
+                                  <span className="ffb-vh">Expert range </span>
+                                  {player.minRank} to {player.maxRank}
+                                </span>
+                              ) : null}
                             </span>
                             <span className="ffb-c-num ffb-is-flat ffb-m-sub">
                               <span className="ffb-vh">Rostered </span>

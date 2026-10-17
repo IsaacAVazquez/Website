@@ -504,7 +504,7 @@ describe("evaluateFantasyTrade", () => {
       // Every position scores the same points per game by depth, so the top quarterback and the
       // top running back are both one starter-line above replacement and share the top ranks.
       const result = evaluateFantasyTrade(inSeasonInput(["QB-1"], ["RB-1"]));
-      const ranks = [result.sideA.players[0].marketAdp, result.sideB.players[0].marketAdp];
+      const ranks = [result.sideA.players[0].marketRank, result.sideB.players[0].marketRank];
       expect(ranks.every((rank) => rank !== null && rank <= 4)).toBe(true);
     });
 
@@ -524,6 +524,21 @@ describe("evaluateFantasyTrade", () => {
       );
       expect(result.coverage).toBe("limited");
       expect(result.verdict).toBe("leans-side-a");
+    });
+
+    it("prices a player under the four-game floor on the experts alone", () => {
+      const snapshot = withScoring(buildSnapshot());
+      const thin = {
+        ...snapshot,
+        overall: snapshot.overall.map((player) =>
+          player.id === "RB-1" && player.gameLog ? { ...player, gameLog: { ...player.gameLog, games: 3 } } : player
+        ),
+      };
+      const result = evaluateFantasyTrade(inSeasonInput(["RB-1"], ["RB-30"], { snapshot: thin }));
+
+      expect(result.sideA.players[0].production).toBeNull();
+      expect(result.sideA.players[0].blendedValue).toBe(result.sideA.players[0].expertValue);
+      expect(result.coverage).toBe("limited");
     });
 
     it("ignores last season's scoring", () => {

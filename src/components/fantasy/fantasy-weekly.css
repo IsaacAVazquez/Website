@@ -89,9 +89,10 @@
   gap: var(--ffb-s4);
   min-width: 0;
 }
-/* The scale's labels print only where the plot does. */
+/* The scale's labels print only where the plot does, and the range as text only where it does not. */
 .ffb-wk-scale { display: none; }
 @media (min-width: 768px) {
+  .ffb-wk-range { display: none; }
   /* A tier's head is a row on the board's own columns, with the labels of the tier's scale
      over the spread column. */
   .ffb-wk-board .ffb-tier-head {

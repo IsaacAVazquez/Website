@@ -626,6 +626,26 @@ describe("TradeCalculatorClient", () => {
       ).toBeInTheDocument();
     });
 
+    it("holds a shared deal until the rest-of-season board has loaded", () => {
+      pinClock(WEEK_6_NOW);
+      currentSearchParams = new URLSearchParams(
+        "scoring=ppr&teams=8&rosterSize=13&lineup=traditional&give=rb-30&get=rb-waiver",
+      );
+      const snapshot = seasonSnapshot();
+      useSnapshot(snapshot);
+      // The draft snapshot is usually cached, so it resolves before the weekly file.
+      mockUseFantasyWeeklySnapshot.mockReturnValue({ ...NOT_PUBLISHED_WEEKLY, notPublished: false, isLoading: true });
+      const { rerender } = render(<TradeCalculatorClient />);
+      expect(screen.queryByRole("list", { name: "You get players" })).not.toBeInTheDocument();
+
+      useRestOfSeason(snapshot);
+      rerender(<TradeCalculatorClient />);
+
+      // The waiver pickup is only on the rest-of-season board, and the share kept him.
+      expect(within(screen.getByRole("list", { name: "You get players" })).getByText("Waiver Runner")).toBeInTheDocument();
+      expect(within(screen.getByRole("list", { name: "You give players" })).getByText("Test Runner 30")).toBeInTheDocument();
+    });
+
     it("lists a player only the rest-of-season board has, and prices him on the experts alone", async () => {
       pinClock(WEEK_6_NOW);
       const snapshot = seasonSnapshot();

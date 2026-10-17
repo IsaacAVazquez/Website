@@ -31,17 +31,17 @@ function isStarterLevel(player: FantasyTradePlayerEvaluation, inSeason: boolean)
 
   // In season a player without four games has no scoring rank, and the experts
   // alone decide whether he starts, the same way they alone price him.
-  if (inSeason && player.marketAdp === null) {
+  if (inSeason && player.marketRank === null) {
     return isFiniteNumber(player.expertRank) && isFiniteNumber(expertStarter) && player.expertRank <= expertStarter;
   }
 
   return (
     isFiniteNumber(player.expertRank) &&
-    isFiniteNumber(player.marketAdp) &&
+    isFiniteNumber(player.marketRank) &&
     isFiniteNumber(expertStarter) &&
     isFiniteNumber(marketStarter) &&
     player.expertRank <= expertStarter &&
-    player.marketAdp <= marketStarter
+    player.marketRank <= marketStarter
   );
 }
 

@@ -14,6 +14,7 @@ import {
   buildInSeasonTradeBoard,
   evaluateFantasyTrade,
   getRestOfSeasonFreshness,
+  getScoringThroughWeek,
   type FantasyTradeEvaluation,
   type FantasyTradeLeagueSettings,
   type FantasyTradeRestOfSeasonInput,
@@ -255,7 +256,10 @@ export function TradeCalculatorClient() {
 
   const { replaceDeal } = trade;
   useEffect(() => {
-    if (!pendingShare || !snapshot) return;
+    // Gate on every input the player pool reads: in season the pool is the
+    // rest-of-season board, which arrives through the weekly file after the
+    // (usually cached) draft snapshot, and the share is consumed only once.
+    if (!pendingShare || isLoading) return;
     // IDs missing from the current snapshot are dropped silently, matching
     // how the calculator already treats unknown stored players.
     const knownIds = new Set(players.map((player) => player.id));
@@ -268,7 +272,7 @@ export function TradeCalculatorClient() {
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot: consuming the shared deal must gate the URL mirror below
     setPendingShare(null);
-  }, [pendingShare, players, replaceDeal, snapshot]);
+  }, [isLoading, pendingShare, players, replaceDeal]);
 
   // The route is force-dynamic so the server can render the real query, which
   // made every router.replace a server round trip per player added. The native
@@ -324,15 +328,20 @@ export function TradeCalculatorClient() {
   }, [hasBothSides, league, restOfSeason, snapshot, trade.getPlayerIds, trade.givePlayerIds]);
   // The chip covers BOTH inputs. Reading only the expert board let it say
   // "fresh sources" while the verdict was withheld for a stale draft market.
-  // In season the scoring leg has no dated feed of its own, so the chip follows
-  // the rest-of-season board alone.
+  // In season the scoring leg has no dated feed of its own, so it reads fresh
+  // while any player has current scoring and stale once the logs stop, the same
+  // predicate the engine reports in sources.market.freshness.
+  const scoringThrough = useMemo(
+    () => (snapshot ? getScoringThroughWeek(players, snapshot.season, seasonWeek) : 0),
+    [players, seasonWeek, snapshot]
+  );
   const expertFreshness: FantasySnapshotStaleness = restOfSeason
     ? getRestOfSeasonFreshness(restOfSeason.source.asOf)
     : snapshot
       ? getSnapshotStaleness(snapshot.upstreamUpdatedAt)
       : "stale";
   const marketFreshness: FantasySnapshotStaleness = restOfSeason
-    ? "fresh"
+    ? scoringThrough > 0 ? "fresh" : "stale"
     : !snapshot?.adpSource
       ? "stale"
       : getFantasyAdpFreshness(snapshot.adpSource.asOf, snapshot.season) === "current"
@@ -353,16 +362,6 @@ export function TradeCalculatorClient() {
   // mock-draft feed's age: while the feed is current it prices a draft market
   // at limited coverage, and once the feed stops it withholds. The note below
   // names which of those states the page is in, so none reads as a breakage.
-  const scoringThrough = useMemo(
-    () =>
-      Math.max(
-        0,
-        ...players.map((player) =>
-          player.gameLog?.season === snapshot?.season ? player.gameLog?.throughWeek ?? 0 : 0
-        )
-      ),
-    [players, snapshot?.season]
-  );
   const marketDate = formatMarketDate(snapshot?.adpSource?.asOf);
   const valuesAvailable = Boolean(result && result.coverage !== "insufficient");
   const allSelected = useMemo(
