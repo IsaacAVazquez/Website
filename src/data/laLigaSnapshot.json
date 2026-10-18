@@ -1,7 +1,7 @@
 {
   "season": "2026/27",
   "matchday": 9,
-  "generatedAt": "2026-10-18T18:48:09.366Z",
+  "generatedAt": "2026-10-18T22:35:52.442Z",
   "updatedAt": "2026-10-18",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -43,11 +43,27 @@
       "accentColor": "#CB3524"
     },
     {
+      "id": "rma",
+      "code": "RMA",
+      "name": "Real Madrid CF",
+      "shortName": "Real Madrid",
+      "position": 3,
+      "points": 21,
+      "played": 9,
+      "won": 7,
+      "drawn": 0,
+      "lost": 2,
+      "goalsFor": 23,
+      "goalsAgainst": 9,
+      "goalDifference": 14,
+      "accentColor": "#00529F"
+    },
+    {
       "id": "bet",
       "code": "BET",
       "name": "Real Betis Balompié",
       "shortName": "Real Betis",
-      "position": 3,
+      "position": 4,
       "points": 19,
       "played": 9,
       "won": 6,
@@ -57,22 +73,6 @@
       "goalsAgainst": 14,
       "goalDifference": 2,
       "accentColor": "#00954C"
-    },
-    {
-      "id": "rma",
-      "code": "RMA",
-      "name": "Real Madrid CF",
-      "shortName": "Real Madrid",
-      "position": 4,
-      "points": 18,
-      "played": 8,
-      "won": 6,
-      "drawn": 0,
-      "lost": 2,
-      "goalsFor": 19,
-      "goalsAgainst": 8,
-      "goalDifference": 11,
-      "accentColor": "#00529F"
     },
     {
       "id": "rso",
@@ -97,13 +97,13 @@
       "shortName": "Sevilla FC",
       "position": 6,
       "points": 14,
-      "played": 8,
+      "played": 9,
       "won": 4,
       "drawn": 2,
-      "lost": 2,
-      "goalsFor": 13,
-      "goalsAgainst": 12,
-      "goalDifference": 1,
+      "lost": 3,
+      "goalsFor": 14,
+      "goalsAgainst": 16,
+      "goalDifference": -2,
       "accentColor": "#D2001C"
     },
     {
@@ -343,6 +343,15 @@
     },
     {
       "rank": 2,
+      "name": "Kylian Mbappé",
+      "clubId": "rma",
+      "clubCode": "RMA",
+      "total": 9,
+      "appearances": 9,
+      "perMatch": 1
+    },
+    {
+      "rank": 3,
       "name": "Lamine Yamal",
       "clubId": "fcb",
       "clubCode": "FCB",
@@ -351,22 +360,13 @@
       "perMatch": 0.8888888888888888
     },
     {
-      "rank": 3,
+      "rank": 4,
       "name": "Sergio Camello",
       "clubId": "ray",
       "clubCode": "RAY",
       "total": 7,
       "appearances": 8,
       "perMatch": 0.875
-    },
-    {
-      "rank": 4,
-      "name": "Kylian Mbappé",
-      "clubId": "rma",
-      "clubCode": "RMA",
-      "total": 7,
-      "appearances": 9,
-      "perMatch": 0.7777777777777778
     },
     {
       "rank": 5,
@@ -514,10 +514,36 @@
     },
     {
       "matchday": 9,
-      "totalGoals": 22
+      "totalGoals": 27
     }
   ],
   "recentFixtures": [
+    {
+      "id": "564709",
+      "utcDate": "2026-10-18T19:00:00Z",
+      "status": "FINISHED",
+      "matchday": 9,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "86",
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA",
+        "crest": "https://crests.football-data.org/86.png"
+      },
+      "awayTeam": {
+        "id": "559",
+        "name": "Sevilla FC",
+        "shortName": "Sevilla FC",
+        "tla": "SEV",
+        "crest": "https://crests.football-data.org/559.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 4,
+        "away": 1
+      }
+    },
     {
       "id": "564714",
       "utcDate": "2026-10-18T16:30:00Z",
@@ -699,61 +725,9 @@
         "home": 0,
         "away": 1
       }
-    },
-    {
-      "id": "564716",
-      "utcDate": "2026-10-16T19:00:00Z",
-      "status": "FINISHED",
-      "matchday": 9,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "560",
-        "name": "RC Deportivo La Coruña",
-        "shortName": "Deportivo",
-        "tla": "DEP",
-        "crest": "https://crests.football-data.org/560.png"
-      },
-      "awayTeam": {
-        "id": "88",
-        "name": "Levante UD",
-        "shortName": "Levante",
-        "tla": "LEV",
-        "crest": "https://crests.football-data.org/88.png"
-      },
-      "score": {
-        "winner": "DRAW",
-        "home": 1,
-        "away": 1
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "564709",
-      "utcDate": "2026-10-18T19:00:00Z",
-      "status": "TIMED",
-      "matchday": 9,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "86",
-        "name": "Real Madrid CF",
-        "shortName": "Real Madrid",
-        "tla": "RMA",
-        "crest": "https://crests.football-data.org/86.png"
-      },
-      "awayTeam": {
-        "id": "559",
-        "name": "Sevilla FC",
-        "shortName": "Sevilla FC",
-        "tla": "SEV",
-        "crest": "https://crests.football-data.org/559.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "564717",
       "utcDate": "2026-10-19T19:00:00Z",
@@ -929,6 +903,32 @@
         "shortName": "Deportivo",
         "tla": "DEP",
         "crest": "https://crests.football-data.org/560.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564720",
+      "utcDate": "2026-10-25T13:00:00Z",
+      "status": "TIMED",
+      "matchday": 10,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "77",
+        "name": "Athletic Club",
+        "shortName": "Athletic",
+        "tla": "ATH",
+        "crest": "https://crests.football-data.org/77.png"
+      },
+      "awayTeam": {
+        "id": "82",
+        "name": "Getafe CF",
+        "shortName": "Getafe",
+        "tla": "GET",
+        "crest": "https://crests.football-data.org/82.png"
       },
       "score": {
         "winner": null,
@@ -1414,7 +1414,7 @@
         "goalsFor": 12,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "fcb": {
       "team": {
@@ -1710,7 +1710,7 @@
         "goalsFor": 22,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "cel": {
       "team": {
@@ -2006,7 +2006,7 @@
         "goalsFor": 9,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "elc": {
       "team": {
@@ -2302,7 +2302,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "esp": {
       "team": {
@@ -2598,7 +2598,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "get": {
       "team": {
@@ -2893,7 +2893,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "lev": {
       "team": {
@@ -3188,7 +3188,7 @@
         "goalsFor": 7,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "mal": {
       "team": {
@@ -3484,7 +3484,7 @@
         "goalsFor": 5,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "osa": {
       "team": {
@@ -3780,7 +3780,7 @@
         "goalsFor": 5,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "ray": {
       "team": {
@@ -4075,7 +4075,7 @@
         "goalsFor": 9,
         "goalsAgainst": 13
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "bet": {
       "team": {
@@ -4371,7 +4371,7 @@
         "goalsFor": 11,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "rma": {
       "team": {
@@ -4387,6 +4387,32 @@
         "manager": "José Mourinho"
       },
       "recentFixtures": [
+        {
+          "id": "564709",
+          "utcDate": "2026-10-18T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 9,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "86",
+            "name": "Real Madrid CF",
+            "shortName": "Real Madrid",
+            "tla": "RMA",
+            "crest": "https://crests.football-data.org/86.png"
+          },
+          "awayTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 1
+          }
+        },
         {
           "id": "564702",
           "utcDate": "2026-10-10T19:00:00Z",
@@ -4490,61 +4516,9 @@
             "home": 4,
             "away": 1
           }
-        },
-        {
-          "id": "564667",
-          "utcDate": "2026-09-04T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 4,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "90",
-            "name": "Real Betis Balompié",
-            "shortName": "Real Betis",
-            "tla": "BET",
-            "crest": "https://crests.football-data.org/90.png"
-          },
-          "awayTeam": {
-            "id": "86",
-            "name": "Real Madrid CF",
-            "shortName": "Real Madrid",
-            "tla": "RMA",
-            "crest": "https://crests.football-data.org/86.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 1,
-            "away": 0
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564709",
-          "utcDate": "2026-10-18T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 9,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "86",
-            "name": "Real Madrid CF",
-            "shortName": "Real Madrid",
-            "tla": "RMA",
-            "crest": "https://crests.football-data.org/86.png"
-          },
-          "awayTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564723",
           "utcDate": "2026-10-25T20:00:00Z",
@@ -4649,24 +4623,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564762",
+          "utcDate": "2026-11-29T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 14,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "86",
+            "name": "Real Madrid CF",
+            "shortName": "Real Madrid",
+            "tla": "RMA",
+            "crest": "https://crests.football-data.org/86.png"
+          },
+          "awayTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
+          "W",
           "L",
           "W",
-          "W",
-          "L"
+          "W"
         ],
-        "wins": 3,
+        "wins": 4,
         "draws": 0,
-        "losses": 2,
-        "points": 9,
-        "goalsFor": 9,
+        "losses": 1,
+        "points": 12,
+        "goalsFor": 13,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "rso": {
       "team": {
@@ -4962,7 +4963,7 @@
         "goalsFor": 14,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "sev": {
       "team": {
@@ -4978,6 +4979,32 @@
         "manager": "Luís García"
       },
       "recentFixtures": [
+        {
+          "id": "564709",
+          "utcDate": "2026-10-18T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 9,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "86",
+            "name": "Real Madrid CF",
+            "shortName": "Real Madrid",
+            "tla": "RMA",
+            "crest": "https://crests.football-data.org/86.png"
+          },
+          "awayTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 4,
+            "away": 1
+          }
+        },
         {
           "id": "564704",
           "utcDate": "2026-10-12T19:00:00Z",
@@ -5081,61 +5108,9 @@
             "home": 1,
             "away": 0
           }
-        },
-        {
-          "id": "564661",
-          "utcDate": "2026-09-06T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 4,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "80",
-            "name": "RCD Espanyol de Barcelona",
-            "shortName": "Espanyol",
-            "tla": "ESP",
-            "crest": "https://crests.football-data.org/80.png"
-          },
-          "awayTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 1,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "564709",
-          "utcDate": "2026-10-18T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 9,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "86",
-            "name": "Real Madrid CF",
-            "shortName": "Real Madrid",
-            "tla": "RMA",
-            "crest": "https://crests.football-data.org/86.png"
-          },
-          "awayTeam": {
-            "id": "559",
-            "name": "Sevilla FC",
-            "shortName": "Sevilla FC",
-            "tla": "SEV",
-            "crest": "https://crests.football-data.org/559.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "564721",
           "utcDate": "2026-10-26T20:00:00Z",
@@ -5240,24 +5215,51 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564764",
+          "utcDate": "2026-11-29T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 14,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "92",
+            "name": "Real Sociedad de Fútbol",
+            "shortName": "Real Sociedad",
+            "tla": "RSO",
+            "crest": "https://crests.football-data.org/92.png"
+          },
+          "awayTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "D",
           "L",
           "W",
-          "W",
-          "D"
+          "W"
         ],
         "wins": 2,
-        "draws": 2,
-        "losses": 1,
-        "points": 8,
+        "draws": 1,
+        "losses": 2,
+        "points": 7,
         "goalsFor": 7,
-        "goalsAgainst": 7
+        "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "val": {
       "team": {
@@ -5553,7 +5555,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "vil": {
       "team": {
@@ -5849,7 +5851,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "ala": {
       "team": {
@@ -6145,7 +6147,7 @@
         "goalsFor": 3,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "ath": {
       "team": {
@@ -6440,7 +6442,7 @@
         "goalsFor": 6,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "dep": {
       "team": {
@@ -6736,7 +6738,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     },
     "san": {
       "team": {
@@ -7032,7 +7034,7 @@
         "goalsFor": 6,
         "goalsAgainst": 17
       },
-      "generatedAt": "2026-10-18T18:48:09.366Z"
+      "generatedAt": "2026-10-18T22:35:52.442Z"
     }
   }
 }
