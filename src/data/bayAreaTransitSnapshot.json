@@ -4,15 +4,15 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "10/17/2026 10:03:32 PM PDT",
-      "generatedAt": "2026-10-18T05:03:37.013Z",
+      "feedTime": "10/18/2026 01:57:47 AM PDT",
+      "generatedAt": "2026-10-18T11:38:18.931Z",
       "seed": false
     },
     "heroStats": {
       "lineCount": 6,
       "stationCount": 50,
       "activeAdvisories": 0,
-      "elevatorOutages": 1,
+      "elevatorOutages": 0,
       "trainsTracked": 374
     },
     "lines": [
@@ -52,27 +52,10 @@
         "name": "Daly City to Berryessa/North San Jose",
         "colorName": "Green",
         "hexColor": "#339933",
-        "origin": "DALY",
+        "origin": "UCTY",
         "destination": "BERY",
-        "stationCount": 22,
+        "stationCount": 5,
         "stationSequence": [
-          "DALY",
-          "BALB",
-          "GLEN",
-          "24TH",
-          "16TH",
-          "CIVC",
-          "POWL",
-          "MONT",
-          "EMBR",
-          "WOAK",
-          "LAKE",
-          "FTVL",
-          "COLS",
-          "SANL",
-          "BAYF",
-          "HAYW",
-          "SHAY",
           "UCTY",
           "FRMT",
           "WARM",
@@ -821,17 +804,11 @@
       }
     ],
     "advisories": [],
-    "elevator": [
-      {
-        "id": "elevator-0",
-        "description": "There is 1 elevator out of service at this time: WARM: Station - West Access Bridge - Street",
-        "posted": ""
-      }
-    ],
+    "elevator": [],
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
-      "departures": "fresh"
+      "departures": "stale-fallback"
     },
     "defaultStation": "embr"
   },
