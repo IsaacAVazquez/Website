@@ -198,8 +198,8 @@ export function Catalog97Resume() {
         <section className="c97-band" data-c97-surface="bone">
           <div className={`c97-shell ${styles.bed}`}>
             <aside className={`${styles.rail} ${styles.downloadRail}`} aria-label="Download">
-              <p className="c97-kicker">Press bed · one sheet</p>
-              <p>The full version, set in Berkeley. The PDF is the one-page version.</p>
+              <p className="c97-kicker">The full record</p>
+              <p>Every role, set in Berkeley. The PDF is the one-page version.</p>
               <a className="c97-btn c97-offset" href={RESUME_PDF} download>
                 Download PDF
               </a>

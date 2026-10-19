@@ -19,12 +19,6 @@
   --c97-overprint: var(--c97-riso-vermilion);
 }
 
-.caption {
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--c97-sp-3);
-}
-
 .headline {
   font-size: clamp(36px, 4.2vw, 56px);
   max-width: 20ch;

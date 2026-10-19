@@ -91,3 +91,7 @@ At 1440x900 the first lead h2 sits at y 778 (was 877) and the page is 3,439px; a
 ### Still open after this pass
 
 The h1 is still 106.56px and runs y 188 to 482, which the critique's other P1 names for `/dashboards` and the `layout` pass takes. The four names for this route (Work, Projects in the title, All projects on Home, work index on Contact) wait for the `clarify` pass. The lead cards' role labels still read "Full-Stack Developer & Designer" on two of four, from `caseStudies.ts`.
+
+### Clarify pass, 2026-10-19
+
+The route had four names: Work in the header and footer, "Isaac Vazquez Projects" in the document title and the ItemList, "All projects" on Home, and "work index" on Contact. It is Work in all of them now ("Isaac Vazquez Work | AI, Fintech and Analytics", "All the work", "the Work page"), and the metadata description says what the curated page holds. A tool landing still marks Dashboards current with no in-page way back to Work; with Dashboards as the inventory since the distill pass that is coherent, and adding a return link would be a change to the tool shell across every project route, so it was left alone and is recorded here rather than done.

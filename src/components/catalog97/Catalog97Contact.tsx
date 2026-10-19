@@ -21,7 +21,7 @@ const touchTarget = {
  * headline that `e2e/footer-cta.spec.ts` pins and the reply time at the foot,
  * and the address is the right half, the stamp top right and the four address
  * lines at the bottom with the email as the largest. One sentence under the
- * card points at the résumé and the work index.
+ * card points at the résumé and the Work page.
  *
  * There is no form backend in this repo, so there is no form, since shipping
  * the markup would look right and silently drop every message sent through it.
@@ -112,8 +112,8 @@ export function Catalog97Contact() {
           <p className={styles.after}>
             The <Link className="c97-link" href="/resume">résumé</Link> has the
             short version of my background, and the{" "}
-            <Link className="c97-link" href="/portfolio">work index</Link> has the
-            long one.
+            <Link className="c97-link" href="/portfolio">Work page</Link> has the
+            longer one.
           </p>
         </div>
       </section>
