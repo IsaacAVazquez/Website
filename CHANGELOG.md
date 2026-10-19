@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-19
 
 - Tighten the footer so it takes less vertical space ([#614](https://github.com/IsaacAVazquez/Website/pull/614)).
+- About as a proof, the résumé as a sheet on the press bed, Contact as a reply card ([#613](https://github.com/IsaacAVazquez/Website/pull/613)).
 
 ---
 
