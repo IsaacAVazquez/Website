@@ -1,7 +1,7 @@
 # About, Résumé, and Contact lose the sheet stack
 
 **Date:** 2026-10-18
-**Status:** Isaac approved the direction in conversation on 2026-10-18 and asked for the build. One branch, `design/about-resume-contact`, carries the three pages.
+**Status:** Superseded on 2026-10-19 by `2026-10-19-about-resume-contact-objects-design.md`. Isaac read this build as PR #613 and did not accept it. The branch stays and carries the replacement.
 
 ## What this is
 

@@ -126,12 +126,14 @@ describe("SEO page sitemap freshness", () => {
   // of them, the 2026-09-28 bio pass rewrote home, about, contact, and the
   // résumé again, Isaac's answers on 2026-09-29 changed home, about, and the
   // résumé once more, and on 2026-10-01 home, about, and contact named the
-  // product roles he is looking for.
+  // product roles he is looking for, and on 2026-10-19 about, contact, and
+  // the résumé were each set as one object (the proof, the reply card, and
+  // the sheet on the press bed) with new copy on all three.
   it.each([
     ["/", "2026-10-01T00:00:00.000Z"],
-    ["/about", "2026-10-01T00:00:00.000Z"],
-    ["/contact", "2026-10-01T00:00:00.000Z"],
-    ["/resume", "2026-09-29T00:00:00.000Z"],
+    ["/about", "2026-10-19T00:00:00.000Z"],
+    ["/contact", "2026-10-19T00:00:00.000Z"],
+    ["/resume", "2026-10-19T00:00:00.000Z"],
     ["/portfolio", "2026-10-09T00:00:00.000Z"],
   ])("records the latest copy change for %s", (pathname, lastmod) => {
     const entry = getPublicSitemapEntries().find(

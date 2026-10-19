@@ -13,15 +13,15 @@ const PUBLISHED_POSTS = getPublishedPosts();
 // hand dates in step with each page's own dateModified.
 const STATIC_ROUTE_LASTMOD = {
   "/": "2026-10-01",
-  "/about": "2026-10-18",
+  "/about": "2026-10-19",
   "/accessibility": "2026-10-02",
   "/privacy": "2026-10-02",
   "/agent-build-index": latestIso(readGitHubTrendingLastmod(), "2026-10-12"),
   "/ai-dev-tools": "2026-10-12",
   "/arcade": "2026-07-16",
-  "/contact": "2026-10-18",
+  "/contact": "2026-10-19",
   "/dashboards": "2026-10-05",
-  "/resume": "2026-10-18",
+  "/resume": "2026-10-19",
   "/portfolio": "2026-10-09",
   // The index changes whenever a post is published or edited.
   "/writing": latestIso("2026-09-28", newestPostLastmod()),
