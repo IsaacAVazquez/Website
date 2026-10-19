@@ -319,14 +319,34 @@
       },
       {
         "position": 16,
-        "playedGames": 6,
+        "playedGames": 7,
+        "won": 1,
+        "draw": 3,
+        "lost": 3,
+        "points": 6,
+        "goalsFor": 6,
+        "goalsAgainst": 10,
+        "goalDifference": -4,
+        "team": {
+          "id": "73",
+          "name": "Tottenham Hotspur FC",
+          "shortName": "Tottenham",
+          "tla": "TOT",
+          "crest": "https://crests.football-data.org/73.png",
+          "venue": null,
+          "accentColor": "#132257"
+        }
+      },
+      {
+        "position": 17,
+        "playedGames": 7,
         "won": 2,
         "draw": 0,
-        "lost": 4,
+        "lost": 5,
         "points": 6,
-        "goalsFor": 5,
-        "goalsAgainst": 11,
-        "goalDifference": -6,
+        "goalsFor": 6,
+        "goalsAgainst": 14,
+        "goalDifference": -8,
         "team": {
           "id": "1076",
           "name": "Coventry City FC",
@@ -338,7 +358,7 @@
         }
       },
       {
-        "position": 17,
+        "position": 18,
         "playedGames": 7,
         "won": 1,
         "draw": 2,
@@ -358,7 +378,7 @@
         }
       },
       {
-        "position": 18,
+        "position": 19,
         "playedGames": 7,
         "won": 1,
         "draw": 2,
@@ -378,7 +398,7 @@
         }
       },
       {
-        "position": 19,
+        "position": 20,
         "playedGames": 7,
         "won": 1,
         "draw": 1,
@@ -396,29 +416,35 @@
           "venue": null,
           "accentColor": "#EB172B"
         }
-      },
+      }
+    ],
+    "recentFixtures": [
       {
-        "position": 20,
-        "playedGames": 6,
-        "won": 0,
-        "draw": 3,
-        "lost": 3,
-        "points": 3,
-        "goalsFor": 3,
-        "goalsAgainst": 9,
-        "goalDifference": -6,
-        "team": {
+        "id": "560606",
+        "utcDate": "2026-10-19T19:00:00Z",
+        "status": "FINISHED",
+        "matchday": 7,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
           "id": "73",
           "name": "Tottenham Hotspur FC",
           "shortName": "Tottenham",
           "tla": "TOT",
-          "crest": "https://crests.football-data.org/73.png",
-          "venue": null,
-          "accentColor": "#132257"
+          "crest": "https://crests.football-data.org/73.png"
+        },
+        "awayTeam": {
+          "id": "1076",
+          "name": "Coventry City FC",
+          "shortName": "Coventry City",
+          "tla": "COV",
+          "crest": "https://crests.football-data.org/1076.png"
+        },
+        "score": {
+          "winner": "HOME_TEAM",
+          "home": 3,
+          "away": 1
         }
-      }
-    ],
-    "recentFixtures": [
+      },
       {
         "id": "560608",
         "utcDate": "2026-10-18T15:30:00Z",
@@ -600,61 +626,9 @@
           "home": 3,
           "away": 2
         }
-      },
-      {
-        "id": "560611",
-        "utcDate": "2026-10-17T14:00:00Z",
-        "status": "FINISHED",
-        "matchday": 7,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "402",
-          "name": "Brentford FC",
-          "shortName": "Brentford",
-          "tla": "BRE",
-          "crest": "https://crests.football-data.org/402.png"
-        },
-        "awayTeam": {
-          "id": "64",
-          "name": "Liverpool FC",
-          "shortName": "Liverpool",
-          "tla": "LIV",
-          "crest": "https://crests.football-data.org/64.png"
-        },
-        "score": {
-          "winner": "AWAY_TEAM",
-          "home": 1,
-          "away": 2
-        }
       }
     ],
     "upcomingFixtures": [
-      {
-        "id": "560606",
-        "utcDate": "2026-10-19T19:00:00Z",
-        "status": "TIMED",
-        "matchday": 7,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "73",
-          "name": "Tottenham Hotspur FC",
-          "shortName": "Tottenham",
-          "tla": "TOT",
-          "crest": "https://crests.football-data.org/73.png"
-        },
-        "awayTeam": {
-          "id": "1076",
-          "name": "Coventry City FC",
-          "shortName": "Coventry City",
-          "tla": "COV",
-          "crest": "https://crests.football-data.org/1076.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
       {
         "id": "560620",
         "utcDate": "2026-10-23T19:00:00Z",
@@ -830,6 +804,32 @@
           "shortName": "Newcastle",
           "tla": "NEW",
           "crest": "https://crests.football-data.org/67.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560615",
+        "utcDate": "2026-10-25T14:00:00Z",
+        "status": "TIMED",
+        "matchday": 8,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "66",
+          "name": "Manchester United FC",
+          "shortName": "Man United",
+          "tla": "MUN",
+          "crest": "https://crests.football-data.org/66.png"
+        },
+        "awayTeam": {
+          "id": "1044",
+          "name": "AFC Bournemouth",
+          "shortName": "Bournemouth",
+          "tla": "BOU",
+          "crest": "https://crests.football-data.org/bournemouth.png"
         },
         "score": {
           "winner": null,
@@ -1139,10 +1139,10 @@
       },
       {
         "matchday": 7,
-        "totalGoals": 22
+        "totalGoals": 26
       }
     ],
-    "generatedAt": "2026-10-19T15:38:54.375Z"
+    "generatedAt": "2026-10-19T21:05:35.601Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1439,7 +1439,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "58": {
       "team": {
@@ -1735,7 +1735,7 @@
         "goalsFor": 7,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "61": {
       "team": {
@@ -2031,7 +2031,7 @@
         "goalsFor": 10,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "62": {
       "team": {
@@ -2327,7 +2327,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "63": {
       "team": {
@@ -2623,7 +2623,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "64": {
       "team": {
@@ -2919,7 +2919,7 @@
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "65": {
       "team": {
@@ -3215,7 +3215,7 @@
         "goalsFor": 13,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "66": {
       "team": {
@@ -3511,7 +3511,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "67": {
       "team": {
@@ -3807,7 +3807,7 @@
         "goalsFor": 6,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "71": {
       "team": {
@@ -4103,7 +4103,7 @@
         "goalsFor": 4,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "73": {
       "team": {
@@ -4121,6 +4121,32 @@
         "manager": "Roberto De Zerbi"
       },
       "recentFixtures": [
+        {
+          "id": "560606",
+          "utcDate": "2026-10-19T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 7,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 1
+          }
+        },
         {
           "id": "560600",
           "utcDate": "2026-10-10T16:30:00Z",
@@ -4224,61 +4250,9 @@
             "home": 0,
             "away": 0
           }
-        },
-        {
-          "id": "560558",
-          "utcDate": "2026-08-29T16:30:00Z",
-          "status": "FINISHED",
-          "matchday": 2,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "awayTeam": {
-            "id": "67",
-            "name": "Newcastle United FC",
-            "shortName": "Newcastle",
-            "tla": "NEW",
-            "crest": "https://crests.football-data.org/67.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560606",
-          "utcDate": "2026-10-19T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "awayTeam": {
-            "id": "1076",
-            "name": "Coventry City FC",
-            "shortName": "Coventry City",
-            "tla": "COV",
-            "crest": "https://crests.football-data.org/1076.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560617",
           "utcDate": "2026-10-24T16:30:00Z",
@@ -4382,24 +4356,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560660",
+          "utcDate": "2026-11-29T14:05:00Z",
+          "status": "TIMED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "71",
+            "name": "Sunderland AFC",
+            "shortName": "Sunderland",
+            "tla": "SUN",
+            "crest": "https://crests.football-data.org/71.png"
+          },
+          "awayTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "D",
           "L",
           "D",
-          "D",
-          "L"
+          "D"
         ],
-        "wins": 0,
+        "wins": 1,
         "draws": 3,
-        "losses": 2,
-        "points": 3,
-        "goalsFor": 3,
-        "goalsAgainst": 6
+        "losses": 1,
+        "points": 6,
+        "goalsFor": 6,
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "322": {
       "team": {
@@ -4695,7 +4695,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "341": {
       "team": {
@@ -4991,7 +4991,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "349": {
       "team": {
@@ -5287,7 +5287,7 @@
         "goalsFor": 7,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "351": {
       "team": {
@@ -5583,7 +5583,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "354": {
       "team": {
@@ -5879,7 +5879,7 @@
         "goalsFor": 8,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "397": {
       "team": {
@@ -6175,7 +6175,7 @@
         "goalsFor": 16,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "402": {
       "team": {
@@ -6471,7 +6471,7 @@
         "goalsFor": 9,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "1044": {
       "team": {
@@ -6767,7 +6767,7 @@
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     },
     "1076": {
       "team": {
@@ -6785,6 +6785,32 @@
         "manager": "Frank Lampard"
       },
       "recentFixtures": [
+        {
+          "id": "560606",
+          "utcDate": "2026-10-19T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 7,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 3,
+            "away": 1
+          }
+        },
         {
           "id": "560597",
           "utcDate": "2026-10-12T19:00:00Z",
@@ -6888,61 +6914,9 @@
             "home": 1,
             "away": 0
           }
-        },
-        {
-          "id": "560561",
-          "utcDate": "2026-08-29T14:00:00Z",
-          "status": "FINISHED",
-          "matchday": 2,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "1076",
-            "name": "Coventry City FC",
-            "shortName": "Coventry City",
-            "tla": "COV",
-            "crest": "https://crests.football-data.org/1076.png"
-          },
-          "awayTeam": {
-            "id": "322",
-            "name": "Hull City AFC",
-            "shortName": "Hull City",
-            "tla": "HUL",
-            "crest": "https://crests.football-data.org/322.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 1
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560606",
-          "utcDate": "2026-10-19T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 7,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "awayTeam": {
-            "id": "1076",
-            "name": "Coventry City FC",
-            "shortName": "Coventry City",
-            "tla": "COV",
-            "crest": "https://crests.football-data.org/1076.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560618",
           "utcDate": "2026-10-24T14:00:00Z",
@@ -7046,13 +7020,39 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560652",
+          "utcDate": "2026-11-28T15:00:00Z",
+          "status": "TIMED",
+          "matchday": 12,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "341",
+            "name": "Leeds United FC",
+            "shortName": "Leeds United",
+            "tla": "LEE",
+            "crest": "https://crests.football-data.org/341.png"
+          },
+          "awayTeam": {
+            "id": "1076",
+            "name": "Coventry City FC",
+            "shortName": "Coventry City",
+            "tla": "COV",
+            "crest": "https://crests.football-data.org/1076.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
-          "W",
-          "W",
           "L",
+          "W",
+          "W",
           "L",
           "L"
         ],
@@ -7060,10 +7060,10 @@
         "draws": 0,
         "losses": 3,
         "points": 6,
-        "goalsFor": 5,
-        "goalsAgainst": 8
+        "goalsFor": 6,
+        "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-19T15:38:54.375Z"
+      "generatedAt": "2026-10-19T21:05:35.601Z"
     }
   }
 }
