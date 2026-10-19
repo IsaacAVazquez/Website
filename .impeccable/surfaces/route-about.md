@@ -73,3 +73,8 @@ The route constraints line said the portrait slot is a flat Stone field with its
 ## Clarify pass, 2026-10-19
 
 Two captions that talked about the print shop are gone, on Isaac's call of 2026-10-19 ("Cut them"). "Plate 1 · portrait" under the headshot is deleted along with its `.caption` rule, since the spec had left the right half of that line empty pending a place and year that never arrived and a half-caption is a label for a label. The FAQ heading is "Questions I get asked" with no "Specimen" and no `<br>`, so a heading list reads it as one phrase. If a real place and year for the portrait ever arrive, the caption row can come back with both halves filled.
+## Typeset pass, 2026-10-19
+
+The specimen title (`.specimenTitle`, "Specimen / Questions I get asked") was 18px, which is on no step. It is `--c97-fs-lead` now (22px at 1440, 19px at 390) over the body-size questions (16 and 15), zero inversions. The `<br>` inside it, which makes a heading list read "Specimen Questions I get asked", goes when the `clarify` pass cuts "Specimen", which Isaac chose on 2026-10-19.
+
+**Decision, 2026-10-19.** The h1 keeps its object size, `clamp(36px, 4.2vw, 56px)` and 36px below 880, which the detector flags as an off-ramp endpoint. The 2026-10-19 spec sized the proof's headline to the document (about 52px on desktop) rather than to the poster step, so this is deliberate and not a defect. The answers at the small step and the "n · checked" labels at the label step are also the spec's sizes.
