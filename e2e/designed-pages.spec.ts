@@ -42,3 +42,27 @@ test.describe("Résumé", () => {
     await expect(page.locator("[data-sheet] h2")).toHaveCount(4);
   });
 });
+
+test.describe("Contact", () => {
+  test("is one reply card with the address lines as targets", async ({ page }) => {
+    await page.goto("/contact");
+    await expect(page.locator("h1")).toHaveText(/like to hear from you/i);
+    await expect(page.locator("[data-card]")).toHaveCount(1);
+    // The stamp is its own ink-blue surface; the page has no blue band.
+    await expect(page.locator("section[data-c97-surface='ink-blue']")).toHaveCount(0);
+    for (const name of [/berkeley\.edu/i, /linkedin/i, /github/i]) {
+      const box = await page.locator("[data-card]").getByRole("link", { name }).boundingBox();
+      expect(box!.height).toBeGreaterThanOrEqual(44);
+    }
+    await expect(page.locator("[data-stamp]")).toContainText("2026");
+  });
+
+  test("keeps the card inside a 320px viewport", async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 700 });
+    await page.goto("/contact");
+    const wide = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
+    expect(wide).toBe(false);
+  });
+});

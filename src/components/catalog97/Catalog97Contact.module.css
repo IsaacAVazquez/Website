@@ -1,0 +1,175 @@
+/*
+ * Contact as a reply card. One card centred on the paper band, the message on
+ * the left half, the address on the right, split by an ink rule. Every colour
+ * is a token. The offset wrapper reads the paper's second ink, which is
+ * vermilion by day and whatever the system paints by night, and the stamp is
+ * its own ink-blue surface, so its text reads that surface's ink in both
+ * themes.
+ */
+.post {
+  display: grid;
+  justify-items: center;
+  gap: var(--c97-sp-4);
+}
+
+.offset {
+  width: min(100%, 740px);
+  box-shadow: 10px 10px 0 var(--c97-overprint);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1px 1.3fr;
+  gap: 0 var(--c97-sp-3);
+  aspect-ratio: 6 / 4;
+  padding: var(--c97-sp-4) var(--c97-sp-5);
+  border: 1px solid var(--c97-ink);
+  background: var(--c97-surface);
+}
+
+.rule {
+  background: var(--c97-ink);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.headline {
+  font-size: clamp(28px, 3vw, 36px);
+  text-wrap: balance;
+}
+
+.body {
+  margin-top: var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.aside {
+  margin-top: var(--c97-sp-2);
+  font-size: var(--c97-fs-label);
+  line-height: 1.5;
+  color: var(--c97-ink-2);
+}
+
+.reply {
+  margin-top: auto;
+  padding-top: var(--c97-sp-3);
+  line-height: 1.5;
+}
+
+.address {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+}
+
+.stamp {
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 98px;
+  border: 1px dashed var(--c97-ink);
+}
+
+.stampInk {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 78px;
+  padding: 6px;
+  background: var(--c97-surface);
+  color: var(--c97-ink);
+  font-family: var(--c97-font-poster);
+  font-size: 12px;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+}
+
+.stampInk small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--c97-font-body);
+  font-size: 7.5px;
+  letter-spacing: 0.06em;
+}
+
+.lines {
+  align-self: end;
+  display: grid;
+  gap: var(--c97-sp-2);
+  margin: 0;
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: var(--c97-sp-1);
+  align-items: baseline;
+  padding-bottom: var(--c97-sp-0);
+  border-bottom: 1px solid var(--c97-ink);
+}
+
+.line dd {
+  margin: 0;
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-body);
+  overflow-wrap: anywhere;
+}
+
+.line a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.line a:hover,
+.line a:focus-visible {
+  text-decoration: underline;
+}
+
+/* The largest line on the card, sized so the address holds on one line beside its label. */
+.email dd {
+  font-size: calc(var(--c97-fs-body) * 1.15);
+}
+
+.email a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.after {
+  max-width: 740px;
+  text-align: center;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+@media (max-width: 700px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    aspect-ratio: auto;
+    padding: var(--c97-sp-3);
+  }
+
+  .rule {
+    height: 1px;
+    margin: var(--c97-sp-3) 0;
+  }
+
+  .reply {
+    margin-top: var(--c97-sp-3);
+  }
+
+  .address {
+    gap: var(--c97-sp-3);
+  }
+}
