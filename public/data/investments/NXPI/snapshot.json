@@ -1,8 +1,8 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.717,
-      "ttmPe": 18.85,
-      "marketCap": 55707238290,
-      "psRatio": 4.23,
-      "pbRatio": 4.89,
-      "pegRatio": 0.26
+      "ttmPe": 19.72,
+      "marketCap": 58295456670,
+      "psRatio": 4.42,
+      "pbRatio": 5.11,
+      "pegRatio": 0.27
     },
     "profitability": {
       "roe": 6.87,
@@ -5949,15 +5949,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16.29,
-      "costOfEquity": 19.34,
+      "wacc": 16.470000000000002,
+      "costOfEquity": 19.41,
       "costOfDebt": 1.02,
       "taxRate": 19,
-      "beta": 1.8423,
-      "marketCap": 55707238290
+      "beta": 1.8411,
+      "marketCap": 58295456670
     },
     "beta": {
-      "beta5y": 1.8423
+      "beta5y": 1.8411
     },
     "price": [
       {
@@ -7987,19 +7987,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
-        "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
-        "publisher": "Investopedia",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/m/bf516d5d-637d-3db5-978c-5163ffd50ea1/s%26p-500-gains-and-losses.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
         "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
         "publisher": "TipRanks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
+        "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
+        "publisher": "Investopedia",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/m/bf516d5d-637d-3db5-978c-5163ffd50ea1/s%26p-500-gains-and-losses.html",
         "type": "STORY"
       },
       {
@@ -8035,19 +8035,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ef3f3b0-301b-3d63-8d2e-52dffba1a0b4",
-        "title": "Estimating The Intrinsic Value Of NXP Semiconductors N.V. (NASDAQ:NXPI)",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/estimating-intrinsic-value-nxp-semiconductors-110011706.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ac3b3228-ed47-3830-b732-094c326d70cf",
         "title": "NXPI Q1 Earnings Call: Early Cycle Recovery Signals Amid Tariff Uncertainty and Leadership Transition",
         "publisher": "StockStory",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/nxpi-q1-earnings-call-early-135931997.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ef3f3b0-301b-3d63-8d2e-52dffba1a0b4",
+        "title": "Estimating The Intrinsic Value Of NXP Semiconductors N.V. (NASDAQ:NXPI)",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/estimating-intrinsic-value-nxp-semiconductors-110011706.html",
         "type": "STORY"
       },
       {
@@ -8123,18 +8123,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.85,
-        "industryAvg": 28.29
+        "value": 19.72,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.23,
-        "industryAvg": 13.49
+        "value": 4.42,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.89,
-        "industryAvg": 11.71
+        "value": 5.11,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

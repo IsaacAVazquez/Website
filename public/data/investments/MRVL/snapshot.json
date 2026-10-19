@@ -1,8 +1,8 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 80.77,
-      "marketCap": 215061504000,
-      "psRatio": 22.76,
-      "pbRatio": 11.61,
-      "pegRatio": 1.63
+      "ttmPe": 79.44,
+      "marketCap": 211519232000,
+      "psRatio": 22.38,
+      "pbRatio": 11.41,
+      "pegRatio": 1.61
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,15 +5955,15 @@
       ]
     },
     "wacc": {
-      "wacc": 21.89,
-      "costOfEquity": 22.400000000000002,
+      "wacc": 21.97,
+      "costOfEquity": 22.49,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2405,
-      "marketCap": 215061504000
+      "beta": 2.2375,
+      "marketCap": 211519232000
     },
     "beta": {
-      "beta5y": 2.2405
+      "beta5y": 2.2375
     },
     "price": [
       {
@@ -8025,6 +8025,14 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
+        "title": "3 Hyped Up  Stocks with Mounting Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
         "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
         "publisher": "Zacks",
@@ -8033,11 +8041,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
-        "title": "3 Hyped Up  Stocks with Mounting Challenges",
+        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
+        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
         "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
         "type": "STORY"
       },
       {
@@ -8054,14 +8062,6 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
-        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
-        "publisher": "The Fly",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 80.77,
-        "industryAvg": 28.29
+        "value": 79.44,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.76,
-        "industryAvg": 13.49
+        "value": 22.38,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.61,
-        "industryAvg": 11.71
+        "value": 11.41,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

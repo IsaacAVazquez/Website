@@ -1,8 +1,8 @@
 {
   "symbol": "WFC",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -33,18 +33,18 @@
       "industry": "Banks-Diversified",
       "sector": "Financial Services",
       "longBusinessSummary": "Wells Fargo & Company, a financial services company, provides diversified banking, investment, mortgage, and consumer and commercial finance products and services in the United States and internationally. It operates through four segments: Consumer Banking and Lending; Commercial Banking; Corporate and Investment Banking; and Wealth and Investment Management. The company's financial products and services includes checking and savings accounts, and credit and debit cards, as well as home, auto, personal, and small business lending services. It also provides personalized wealth management, brokerage, financial planning, lending, private banking, trust and fiduciary products and services; and financial solutions to private, family owned and public companies through products and services including banking and credit products across multiple industry sectors and municipalities, secured lending and lease products, and treasury management. In addition, it offers a suite of capital markets, banking, and financial products and services, such as corporate banking, investment banking, treasury management, commercial real estate lending and servicing, equity, and fixed income solutions, as well as sales, trading, and research capabilities services to corporate, commercial real estate, government, and institutional clients. Wells Fargo & Company was founded in 1852 and is headquartered in San Francisco, California.",
-      "fullTimeEmployees": 197466,
+      "fullTimeEmployees": 194369,
       "website": "https://www.wellsfargo.com",
       "shortName": "Wells Fargo & Company",
       "longName": "Wells Fargo & Company"
     },
     "fundamentals": {
       "ttmEps": 7.0962,
-      "ttmPe": 11.4,
-      "marketCap": 242832587010,
-      "psRatio": 2.8,
-      "pbRatio": 1.35,
-      "pegRatio": 0.89
+      "ttmPe": 11.66,
+      "marketCap": 248385618975,
+      "psRatio": 2.86,
+      "pbRatio": 1.38,
+      "pegRatio": 0.91
     },
     "profitability": {
       "roe": 3.44,
@@ -6476,15 +6476,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.709999999999999,
-      "costOfEquity": 12.4,
+      "wacc": 8.75,
+      "costOfEquity": 12.389999999999999,
       "costOfDebt": 5.29,
       "taxRate": 17,
-      "beta": 0.9383,
-      "marketCap": 242832587010
+      "beta": 0.9387,
+      "marketCap": 248385618975
     },
     "beta": {
-      "beta5y": 0.9383
+      "beta5y": 0.9387
     },
     "price": [
       {
@@ -8546,19 +8546,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
-        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
         "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
+        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
         "type": "STORY"
       },
       {
@@ -8654,18 +8654,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.4,
-        "industryAvg": 13.42
+        "value": 11.66,
+        "industryAvg": 13.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.8,
-        "industryAvg": 3.7
+        "value": 2.86,
+        "industryAvg": 3.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.35,
-        "industryAvg": 1.67
+        "value": 1.38,
+        "industryAvg": 1.68
       },
       {
         "metric": "ROE",

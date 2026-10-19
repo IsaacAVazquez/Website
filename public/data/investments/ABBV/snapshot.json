@@ -1,8 +1,8 @@
 {
   "symbol": "ABBV",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.5367,
-      "ttmPe": 80.15,
+      "ttmPe": 80.13,
       "pegRatio": 0.28,
-      "marketCap": 500928805164,
+      "marketCap": 500787439620,
       "psRatio": 7.78,
-      "pbRatio": -84.4
+      "pbRatio": -84.38
     },
     "profitability": {
       "roe": -57.199999999999996,
@@ -5606,15 +5606,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.99,
-      "costOfEquity": 6.710000000000001,
+      "wacc": 5.94,
+      "costOfEquity": 6.65,
       "costOfDebt": 1.05,
       "taxRate": 15,
-      "beta": 0.1977,
-      "marketCap": 500928805164
+      "beta": 0.1992,
+      "marketCap": 500787439620
     },
     "beta": {
-      "beta5y": 0.1977
+      "beta5y": 0.1992
     },
     "price": [
       {
@@ -7676,19 +7676,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -7780,18 +7780,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 80.15,
-        "industryAvg": 26.48
+        "value": 80.13,
+        "industryAvg": 26.97
       },
       {
         "metric": "P/S Ratio",
         "value": 7.78,
-        "industryAvg": 4.79
+        "industryAvg": 4.88
       },
       {
         "metric": "P/B Ratio",
-        "value": -84.4,
-        "industryAvg": 5.87
+        "value": -84.38,
+        "industryAvg": 5.99
       },
       {
         "metric": "ROE",

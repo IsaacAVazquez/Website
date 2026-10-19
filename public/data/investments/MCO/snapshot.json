@@ -1,8 +1,8 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.77,
-      "ttmPe": 29.34,
-      "marketCap": 80142971370,
-      "psRatio": 9.82,
-      "pbRatio": 26.49,
-      "pegRatio": 0.52
+      "ttmPe": 30.67,
+      "marketCap": 83765917890,
+      "psRatio": 10.27,
+      "pbRatio": 27.69,
+      "pegRatio": 0.54
     },
     "profitability": {
       "roe": 29.17,
@@ -6394,15 +6394,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.000000000000002,
-      "costOfEquity": 15.25,
+      "wacc": 14.08,
+      "costOfEquity": 15.28,
       "costOfDebt": 0.89,
       "taxRate": 25,
-      "beta": 1.3093,
-      "marketCap": 80142971370
+      "beta": 1.3105,
+      "marketCap": 83765917890
     },
     "beta": {
-      "beta5y": 1.3093
+      "beta5y": 1.3105
     },
     "price": [
       {
@@ -8448,6 +8448,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
+        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
         "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
         "publisher": "Bloomberg",
@@ -8464,27 +8472,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
-        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aab9c808-d77b-38ff-b78c-c75c081d23b2",
         "title": "Bond Investors Detect Trouble in US Debt Stripped of AAA Rating",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/bond-investors-detect-trouble-us-083108491.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
-        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       },
       {
@@ -8496,11 +8488,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
-        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
+        "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
+        "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
+        "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
+        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       }
     ],
@@ -8565,18 +8565,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.34,
-        "industryAvg": 24.29
+        "value": 30.67,
+        "industryAvg": 25.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.82,
-        "industryAvg": 7.56
+        "value": 10.27,
+        "industryAvg": 7.81
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.49,
-        "industryAvg": 3.9
+        "value": 27.69,
+        "industryAvg": 4.03
       },
       {
         "metric": "ROE",

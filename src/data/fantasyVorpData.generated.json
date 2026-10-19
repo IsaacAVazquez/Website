@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-16T19:59:07.224Z",
+  "generatedAt": "2026-10-19T21:35:39.719Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-16T19:59:07.972Z",
+        "accessedAt": "2026-10-19T21:35:40.492Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -5302,7 +5302,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -5356,7 +5356,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-16T19:59:08.663Z",
+        "accessedAt": "2026-10-19T21:35:40.971Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -10664,7 +10664,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -10718,7 +10718,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-16T19:59:09.289Z",
+        "accessedAt": "2026-10-19T21:35:41.626Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -16026,7 +16026,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -16080,7 +16080,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-16T19:59:10.277Z",
+        "accessedAt": "2026-10-19T21:35:42.237Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -21390,7 +21390,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -21444,7 +21444,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-16T19:59:10.927Z",
+        "accessedAt": "2026-10-19T21:35:42.956Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -26752,7 +26752,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -26806,7 +26806,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-16T19:59:11.600Z",
+        "accessedAt": "2026-10-19T21:35:44.098Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -32114,7 +32114,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -32168,7 +32168,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-16T19:59:12.405Z",
+        "accessedAt": "2026-10-19T21:35:44.938Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -37478,7 +37478,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -37532,7 +37532,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-16T19:59:13.159Z",
+        "accessedAt": "2026-10-19T21:35:45.425Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42840,7 +42840,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -42894,7 +42894,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-16T19:59:13.865Z",
+        "accessedAt": "2026-10-19T21:35:45.856Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -48202,7 +48202,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "FA",
+            "team": "ATL",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -48256,7 +48256,7 @@
           {
             "playerId": "fp-16477",
             "name": "Cooper Rush",
-            "team": "ATL",
+            "team": "FA",
             "position": "QB",
             "positionRank": 75,
             "rank": 595,

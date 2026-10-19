@@ -1,8 +1,8 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.5216,
-      "ttmPe": 22.58,
+      "ttmPe": 23.21,
       "pegRatio": 0.3,
-      "marketCap": 358036100000,
-      "psRatio": 0.8,
-      "pbRatio": 3.64
+      "marketCap": 368036350000,
+      "psRatio": 0.82,
+      "pbRatio": 3.74
     },
     "profitability": {
       "roe": 5.59,
@@ -5046,15 +5046,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.88,
-      "costOfEquity": 9.28,
+      "wacc": 7.9,
+      "costOfEquity": 9.26,
       "costOfDebt": 1.31,
       "taxRate": 19,
-      "beta": 0.5332,
-      "marketCap": 358036100000
+      "beta": 0.5356,
+      "marketCap": 368036350000
     },
     "beta": {
-      "beta5y": 0.5332
+      "beta5y": 0.5356
     },
     "price": [
       {
@@ -7148,11 +7148,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9565ba37-626e-3f42-bd78-7532d14b0317",
-        "title": "Why UnitedHealth’s Blowup May Be More Isolated Than Investors Think",
-        "publisher": "The Wall Street Journal",
+        "uuid": "c017eb02-e851-3ee3-98c7-3315aaa7c8de",
+        "title": "Health Insurance Providers Stocks Q1 Highlights: Molina Healthcare (NYSE:MOH)",
+        "publisher": "StockStory",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/m/9565ba37-626e-3f42-bd78-7532d14b0317/why-unitedhealth%E2%80%99s-blowup-may.html",
+        "link": "https://finance.yahoo.com/news/health-insurance-providers-stocks-q1-033235659.html",
         "type": "STORY"
       }
     ],
@@ -7225,18 +7225,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.58,
-        "industryAvg": 21.9
+        "value": 23.21,
+        "industryAvg": 22.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.8,
-        "industryAvg": 0.43
+        "value": 0.82,
+        "industryAvg": 0.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.64,
-        "industryAvg": 2.4
+        "value": 3.74,
+        "industryAvg": 2.45
       },
       {
         "metric": "ROE",

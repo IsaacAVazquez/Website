@@ -1,8 +1,8 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.5529,
-      "ttmPe": 47.24,
-      "marketCap": 28558387760,
-      "psRatio": 4.61,
-      "pbRatio": 3.96,
-      "pegRatio": 1.29
+      "ttmPe": 47.46,
+      "marketCap": 28690746700,
+      "psRatio": 4.63,
+      "pbRatio": 3.97,
+      "pegRatio": 1.3
     },
     "profitability": {
       "roe": 3.1199999999999997,
@@ -5897,15 +5897,15 @@
       ]
     },
     "wacc": {
-      "wacc": 18.38,
-      "costOfEquity": 21.23,
+      "wacc": 18.47,
+      "costOfEquity": 21.32,
       "costOfDebt": 0.31,
       "taxRate": 16,
-      "beta": 2.0891,
-      "marketCap": 28558387760
+      "beta": 2.0876,
+      "marketCap": 28690746700
     },
     "beta": {
-      "beta5y": 2.0891
+      "beta5y": 2.0876
     },
     "price": [
       {
@@ -7951,11 +7951,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
-        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
-        "publisher": "Simply Wall St.",
+        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
+        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
         "type": "STORY"
       },
       {
@@ -7967,11 +7967,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
-        "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
-        "publisher": "Insider Monkey",
+        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
+        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
+        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
         "type": "STORY"
       },
       {
@@ -8063,18 +8063,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.24,
-        "industryAvg": 28.29
+        "value": 47.46,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.61,
-        "industryAvg": 13.49
+        "value": 4.63,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.96,
-        "industryAvg": 11.71
+        "value": 3.97,
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

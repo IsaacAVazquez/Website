@@ -1,8 +1,8 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 47.89,
-      "marketCap": 195556098835,
-      "psRatio": 14.09,
+      "ttmPe": 47.94,
+      "marketCap": 195740233725,
+      "psRatio": 14.1,
       "pbRatio": 5.83,
       "pegRatio": 0.29
     },
@@ -6102,15 +6102,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.19,
-      "costOfEquity": 14.81,
+      "wacc": 14.21,
+      "costOfEquity": 14.829999999999998,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2525,
-      "marketCap": 195556098835
+      "beta": 1.2524,
+      "marketCap": 195740233725
     },
     "beta": {
-      "beta5y": 1.2525
+      "beta5y": 1.2524
     },
     "price": [
       {
@@ -8204,11 +8204,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
-        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
+        "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
+        "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
         "type": "STORY"
       }
     ],
@@ -8281,18 +8281,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.89,
-        "industryAvg": 28.29
+        "value": 47.94,
+        "industryAvg": 27.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.09,
-        "industryAvg": 13.49
+        "value": 14.1,
+        "industryAvg": 13.33
       },
       {
         "metric": "P/B Ratio",
         "value": 5.83,
-        "industryAvg": 11.71
+        "industryAvg": 11.57
       },
       {
         "metric": "ROE",

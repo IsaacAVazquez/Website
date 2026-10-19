@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-16T10:10:09.247Z",
-  "sourceAsOf": "2026-10-14",
+  "generatedAt": "2026-10-19T11:18:29.140Z",
+  "sourceAsOf": "2026-10-15",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
     "approve": 40,
@@ -11,7 +11,7 @@
     {
       "date": "2025-10-15",
       "approve": 43.1,
-      "disapprove": 53.7
+      "disapprove": 53.6
     },
     {
       "date": "2025-11-15",
@@ -959,18 +959,38 @@
       "year": 2026,
       "candidates": [
         {
-          "name": "Mary Peltola",
-          "support": 48.7
-        },
-        {
           "name": "Dan Sullivan",
           "support": 47.9
+        },
+        {
+          "name": "Mary Peltola",
+          "support": 47.1
         }
       ],
       "margin": 0.8,
       "pollCount": 3,
-      "lastPolled": "2026-09-30",
+      "lastPolled": "2026-10-15",
       "polls": [
+        {
+          "id": "us-202pub53b72052",
+          "pollster": "Public Policy Polling",
+          "startDate": "2026-10-14",
+          "endDate": "2026-10-15",
+          "sampleSize": 578,
+          "sampleType": "RV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Mary Peltola",
+              "support": 48
+            },
+            {
+              "name": "Dan Sullivan",
+              "support": 47
+            }
+          ]
+        },
         {
           "id": "us-202qua198b0338",
           "pollster": "Quantus Insights",
@@ -1010,27 +1030,6 @@
               "support": 46
             }
           ]
-        },
-        {
-          "id": "us-202fabecd2ecd9",
-          "pollster": "Fabrizio, Lee & Associates/Impact Research",
-          "sponsor": "AARP",
-          "startDate": "2026-09-08",
-          "endDate": "2026-09-11",
-          "sampleSize": 800,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Mary Peltola",
-              "support": 53
-            },
-            {
-              "name": "Dan Sullivan",
-              "support": 47
-            }
-          ]
         }
       ]
     },
@@ -1043,17 +1042,42 @@
       "candidates": [
         {
           "name": "Tom Cotton",
-          "support": 51
+          "support": 50.7
         },
         {
           "name": "Hallie Shoffner",
-          "support": 37.5
+          "support": 38.7
         }
       ],
-      "margin": 13.5,
-      "pollCount": 2,
-      "lastPolled": "2026-10-04",
+      "margin": 12,
+      "pollCount": 3,
+      "lastPolled": "2026-10-13",
       "polls": [
+        {
+          "id": "us-202hen5c2d9c7e",
+          "pollster": "Hendrix College",
+          "sponsor": "Talk Business & Politics",
+          "startDate": "2026-10-08",
+          "endDate": "2026-10-13",
+          "sampleSize": 709,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Tom Cotton",
+              "support": 50
+            },
+            {
+              "name": "Hallie Shoffner",
+              "support": 41
+            },
+            {
+              "name": "Jeff Wadlin",
+              "support": 5
+            }
+          ]
+        },
         {
           "id": "us-202gracbfdd9ed",
           "pollster": "Grayhouse",
@@ -1648,17 +1672,37 @@
       "candidates": [
         {
           "name": "Adam Hamilton",
-          "support": 47.5
+          "support": 47.3
         },
         {
           "name": "Roger Marshall",
-          "support": 45.5
+          "support": 46.3
         }
       ],
-      "margin": 2,
-      "pollCount": 2,
-      "lastPolled": "2026-09-24",
+      "margin": 1,
+      "pollCount": 3,
+      "lastPolled": "2026-10-14",
       "polls": [
+        {
+          "id": "us-202ins9dcc36f4",
+          "pollster": "InsiderAdvantage",
+          "startDate": "2026-10-13",
+          "endDate": "2026-10-14",
+          "sampleSize": 1200,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Roger Marshall",
+              "support": 48
+            },
+            {
+              "name": "Adam Hamilton",
+              "support": 47
+            }
+          ]
+        },
         {
           "id": "us-202wedd2e2b8b0",
           "pollster": "Wedgewood Polls",
@@ -1719,17 +1763,37 @@
       "candidates": [
         {
           "name": "Troy Jackson",
-          "support": 48.8
+          "support": 48.9
         },
         {
           "name": "Susan Collins",
-          "support": 46.5
+          "support": 46.8
         }
       ],
-      "margin": 2.3,
+      "margin": 2.1,
       "pollCount": 10,
-      "lastPolled": "2026-10-05",
+      "lastPolled": "2026-10-14",
       "polls": [
+        {
+          "id": "us-202inscfc77987",
+          "pollster": "InsiderAdvantage",
+          "startDate": "2026-10-13",
+          "endDate": "2026-10-14",
+          "sampleSize": 1200,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Troy Jackson",
+              "support": 49
+            },
+            {
+              "name": "Susan Collins",
+              "support": 47
+            }
+          ]
+        },
         {
           "id": "us-202the6b777566",
           "pollster": "The Washington Post/George Mason University School of Policy and Government",
@@ -1911,26 +1975,6 @@
               "support": 43
             }
           ]
-        },
-        {
-          "id": "us-202you8b2f9799",
-          "pollster": "YouGov",
-          "startDate": "2026-09-02",
-          "endDate": "2026-09-08",
-          "sampleSize": 1335,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Troy Jackson",
-              "support": 48
-            },
-            {
-              "name": "Susan Collins",
-              "support": 44
-            }
-          ]
         }
       ]
     },
@@ -2042,17 +2086,38 @@
       "candidates": [
         {
           "name": "Abdul El-Sayed",
-          "support": 47.8
+          "support": 47.3
         },
         {
           "name": "Mike Rogers",
-          "support": 44.1
+          "support": 44.2
         }
       ],
-      "margin": 3.7,
-      "pollCount": 12,
-      "lastPolled": "2026-10-01",
+      "margin": 3.1,
+      "pollCount": 14,
+      "lastPolled": "2026-10-08",
       "polls": [
+        {
+          "id": "us-202thed1db38e3",
+          "pollster": "The Tyson Group",
+          "sponsor": "Alliance for a Better Future",
+          "startDate": "2026-10-06",
+          "endDate": "2026-10-08",
+          "sampleSize": 600,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Mike Rogers",
+              "support": 46
+            },
+            {
+              "name": "Abdul El-Sayed",
+              "support": 44
+            }
+          ]
+        },
         {
           "id": "us-202mit7960c973",
           "pollster": "Mitchell Research & Communications",
@@ -2168,6 +2233,27 @@
             {
               "name": "Mike Rogers",
               "support": 49
+            }
+          ]
+        },
+        {
+          "id": "us-202thee5a838a4",
+          "pollster": "The Tyson Group",
+          "sponsor": "Alliance for a Better Future",
+          "startDate": "2026-09-24",
+          "endDate": "2026-09-27",
+          "sampleSize": 600,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Abdul El-Sayed",
+              "support": 44
+            },
+            {
+              "name": "Mike Rogers",
+              "support": 43
             }
           ]
         },
@@ -2622,15 +2708,15 @@
       "candidates": [
         {
           "name": "Kurt Alme",
-          "support": 44
+          "support": 43.3
         },
         {
           "name": "Seth Bodnar",
-          "support": 27.8
+          "support": 28.1
         }
       ],
-      "margin": 16.2,
-      "pollCount": 8,
+      "margin": 15.2,
+      "pollCount": 7,
       "lastPolled": "2026-09-24",
       "polls": [
         {
@@ -2810,30 +2896,6 @@
             {
               "name": "Kyle Austin",
               "support": 3
-            }
-          ]
-        },
-        {
-          "id": "us-202tav5bb1680a",
-          "pollster": "Tavern Research",
-          "startDate": "2026-06-16",
-          "endDate": "2026-06-19",
-          "sampleSize": 400,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Kurt Alme",
-              "support": 49
-            },
-            {
-              "name": "Alani Bankhead",
-              "support": 27
-            },
-            {
-              "name": "Seth Bodnar",
-              "support": 25
             }
           ]
         }
@@ -3287,17 +3349,45 @@
       "candidates": [
         {
           "name": "Sherrod Brown",
-          "support": 46.9
+          "support": 47
         },
         {
           "name": "Jon Husted",
-          "support": 43.6
+          "support": 43.4
         }
       ],
-      "margin": 3.3,
-      "pollCount": 8,
-      "lastPolled": "2026-10-06",
+      "margin": 3.6,
+      "pollCount": 9,
+      "lastPolled": "2026-10-09",
       "polls": [
+        {
+          "id": "us-202bow14c3613e",
+          "pollster": "Bowling Green State University/YouGov",
+          "startDate": "2026-09-29",
+          "endDate": "2026-10-09",
+          "sampleSize": 1000,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Sherrod Brown",
+              "support": 48
+            },
+            {
+              "name": "Jon Husted",
+              "support": 42
+            },
+            {
+              "name": "Greg Levy",
+              "support": 5
+            },
+            {
+              "name": "Bill Redpath",
+              "support": 3
+            }
+          ]
+        },
         {
           "id": "us-202co/ed81e3f8",
           "pollster": "co/efficient",
@@ -3685,13 +3775,33 @@
         },
         {
           "name": "Ken Paxton",
-          "support": 46.1
+          "support": 46.4
         }
       ],
-      "margin": 1.9,
-      "pollCount": 9,
+      "margin": 1.6,
+      "pollCount": 10,
       "lastPolled": "2026-10-14",
       "polls": [
+        {
+          "id": "us-202ins62d5470c",
+          "pollster": "InsiderAdvantage",
+          "startDate": "2026-10-13",
+          "endDate": "2026-10-14",
+          "sampleSize": 1200,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Ken Paxton",
+              "support": 49
+            },
+            {
+              "name": "James Talarico",
+              "support": 48
+            }
+          ]
+        },
         {
           "id": "us-202act4e413645",
           "pollster": "ActiVote",
@@ -6116,17 +6226,41 @@
       "candidates": [
         {
           "name": "Amy Acton",
-          "support": 48.1
+          "support": 48.4
         },
         {
           "name": "Vivek Ramaswamy",
-          "support": 44.2
+          "support": 44.1
         }
       ],
-      "margin": 3.9,
-      "pollCount": 6,
-      "lastPolled": "2026-10-06",
+      "margin": 4.3,
+      "pollCount": 7,
+      "lastPolled": "2026-10-09",
       "polls": [
+        {
+          "id": "gov202bow8bc2f1b8",
+          "pollster": "Bowling Green State University/YouGov",
+          "startDate": "2026-09-29",
+          "endDate": "2026-10-09",
+          "sampleSize": 1000,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Amy Acton",
+              "support": 50
+            },
+            {
+              "name": "Vivek Ramaswamy",
+              "support": 44
+            },
+            {
+              "name": "Don Kissick",
+              "support": 4
+            }
+          ]
+        },
         {
           "id": "gov202co/1800419d",
           "pollster": "co/efficient",

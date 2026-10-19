@@ -1,8 +1,8 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.0918,
-      "ttmPe": 9.32,
+      "ttmPe": 9.59,
       "pegRatio": 0.13,
-      "marketCap": 127544888420,
-      "psRatio": 2.54,
-      "pbRatio": 3.77
+      "marketCap": 131225354770,
+      "psRatio": 2.61,
+      "pbRatio": 3.88
     },
     "profitability": {
       "roe": 9.89,
@@ -6161,15 +6161,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.32,
-      "costOfEquity": 10.74,
+      "wacc": 9.33,
+      "costOfEquity": 10.72,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 22,
-      "beta": 0.7221,
-      "marketCap": 127544888420
+      "beta": 0.7227,
+      "marketCap": 131225354770
     },
     "beta": {
-      "beta5y": 0.7221
+      "beta5y": 0.7227
     },
     "price": [
       {
@@ -8215,19 +8215,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
-        "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
-        "publisher": "BioPharma Dive",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
         "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
+        "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
+        "publisher": "BioPharma Dive",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
         "type": "STORY"
       },
       {
@@ -8247,19 +8247,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9c58c7ad-37f3-34e6-b08e-047ba5eb4c67",
-        "title": "LXRX Stock Moves Up 30% in a Week: What is Driving This Rally?",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/news/lxrx-stock-moves-30-week-141800883.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
         "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9c58c7ad-37f3-34e6-b08e-047ba5eb4c67",
+        "title": "LXRX Stock Moves Up 30% in a Week: What is Driving This Rally?",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/news/lxrx-stock-moves-30-week-141800883.html",
         "type": "STORY"
       },
       {
@@ -8277,7 +8277,7 @@
         "title": "EVP of R&D, Chief Scientific Officer and Member of the Management Board",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 1827999
+        "totalPay": 1827011
       },
       {
         "name": "Mr. Emil Kongshoej Larsen",
@@ -8302,7 +8302,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 2577179
+        "totalPay": 2575786
       },
       {
         "name": "Mr. Maziar Mike Doustdar B.A.",
@@ -8338,18 +8338,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.32,
-        "industryAvg": 26.48
+        "value": 9.59,
+        "industryAvg": 26.97
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.54,
-        "industryAvg": 4.79
+        "value": 2.61,
+        "industryAvg": 4.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.77,
-        "industryAvg": 5.87
+        "value": 3.88,
+        "industryAvg": 5.99
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -39,12 +39,12 @@
       "longName": "Morgan Stanley"
     },
     "fundamentals": {
-      "ttmEps": 12.3764,
-      "ttmPe": 14.67,
-      "marketCap": 285321213961,
-      "psRatio": 3.91,
-      "pbRatio": 2.45,
-      "pegRatio": 0.23
+      "ttmEps": 12.6077,
+      "ttmPe": 14.44,
+      "marketCap": 286261200000,
+      "psRatio": 3.92,
+      "pbRatio": 2.46,
+      "pegRatio": 1.75
     },
     "profitability": {
       "roe": 4.71,
@@ -73,7 +73,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 62.71
+        "yoyGrowth": 8.260000000000002
       }
     ],
     "income_statement": {
@@ -5910,15 +5910,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.3,
-      "costOfEquity": 14.57,
+      "wacc": 7.32,
+      "costOfEquity": 14.59,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.222,
-      "marketCap": 285321213961
+      "beta": 1.2209,
+      "marketCap": 286261200000
     },
     "beta": {
-      "beta5y": 1.222
+      "beta5y": 1.2209
     },
     "price": [
       {
@@ -7996,14 +7996,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
-        "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7b98f630-680d-374d-aa9d-38ab2c73390f",
         "title": "Traders Wager $10 Billion on Chevron-Hess Deal Beating Exxon Case",
         "publisher": "Bloomberg",
@@ -8017,6 +8009,14 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
+        "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
         "type": "STORY"
       }
     ],
@@ -8082,18 +8082,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.67,
-        "industryAvg": 15.7
+        "value": 14.44,
+        "industryAvg": 15.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.91,
-        "industryAvg": 2.02
+        "value": 3.92,
+        "industryAvg": 2.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.45,
-        "industryAvg": 2.52
+        "value": 2.46,
+        "industryAvg": 2.54
       },
       {
         "metric": "ROE",

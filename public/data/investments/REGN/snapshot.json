@@ -1,8 +1,8 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 40.4631,
-      "ttmPe": 19.24,
+      "ttmPe": 19.68,
       "pegRatio": 1.03,
-      "marketCap": 80482424000,
-      "psRatio": 5.18,
-      "pbRatio": 2.54
+      "marketCap": 82341556000,
+      "psRatio": 5.3,
+      "pbRatio": 2.6
     },
     "profitability": {
       "roe": 4.109999999999999,
@@ -5712,15 +5712,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.03,
-      "costOfEquity": 6.22,
+      "wacc": 5.970000000000001,
+      "costOfEquity": 6.15,
       "costOfDebt": 0.41000000000000003,
       "taxRate": 15,
-      "beta": 0.1336,
-      "marketCap": 80482424000
+      "beta": 0.1345,
+      "marketCap": 82341556000
     },
     "beta": {
-      "beta5y": 0.1336
+      "beta5y": 0.1345
     },
     "price": [
       {
@@ -7742,19 +7742,19 @@
     ],
     "news": [
       {
-        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
-        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
         "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-15",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
+        "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-15",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
         "type": "STORY"
       },
       {
@@ -7885,18 +7885,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.24,
-        "industryAvg": 22.63
+        "value": 19.68,
+        "industryAvg": 22.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.18,
-        "industryAvg": 10.71
+        "value": 5.3,
+        "industryAvg": 10.9
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.54,
-        "industryAvg": 4.44
+        "value": 2.6,
+        "industryAvg": 4.51
       },
       {
         "metric": "ROE",

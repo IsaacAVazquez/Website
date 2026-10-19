@@ -1,8 +1,8 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.7251,
-      "ttmPe": 48.16,
-      "pegRatio": 1.81,
-      "marketCap": 148722936000,
-      "psRatio": 13.48,
-      "pbRatio": 8.19
+      "ttmPe": 49.04,
+      "pegRatio": 1.84,
+      "marketCap": 151419654000,
+      "psRatio": 13.72,
+      "pbRatio": 8.33
     },
     "profitability": {
       "roe": 4.590000000000001,
@@ -4974,7 +4974,7 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4453
+      "beta5y": 1.4462
     },
     "price": [
       {
@@ -7068,11 +7068,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "63b9f8af-133d-3653-91c4-a1722b33de46",
-        "title": "Intuitive Surgical, Inc. (ISRG) is Attracting Investor Attention: Here is What You Should Know",
-        "publisher": "Zacks",
+        "uuid": "ff42a39e-bc52-373b-996d-47249d04e6d3",
+        "title": "Intuitive Surgical (NASDAQ:ISRG): Strongest Q1 Results from the Surgical Equipment & Consumables - Specialty Group",
+        "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/intuitive-surgical-inc-isrg-attracting-130009154.html",
+        "link": "https://finance.yahoo.com/news/intuitive-surgical-nasdaq-isrg-strongest-033505396.html",
         "type": "STORY"
       }
     ],
@@ -7139,18 +7139,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.16,
-        "industryAvg": 37.95
+        "value": 49.04,
+        "industryAvg": 38.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.48,
-        "industryAvg": 3.63
+        "value": 13.72,
+        "industryAvg": 3.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.19,
-        "industryAvg": 3.14
+        "value": 8.33,
+        "industryAvg": 3.21
       },
       {
         "metric": "ROE",

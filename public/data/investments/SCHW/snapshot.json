@@ -1,8 +1,8 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
     "sections": {
       "price": "2026-10-15"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4992,
-      "ttmPe": 17.6,
-      "marketCap": 167281938560,
-      "psRatio": 6.43,
-      "pbRatio": 3.34,
-      "pegRatio": 0.42
+      "ttmPe": 17.12,
+      "marketCap": 162719703872,
+      "psRatio": 6.25,
+      "pbRatio": 3.24,
+      "pegRatio": 0.41
     },
     "profitability": {
       "roe": 5.4,
@@ -6045,15 +6045,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.22,
-      "costOfEquity": 10.92,
+      "wacc": 9.16,
+      "costOfEquity": 10.89,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7462,
-      "marketCap": 167281938560
+      "beta": 0.7452,
+      "marketCap": 162719703872
     },
     "beta": {
-      "beta5y": 0.7462
+      "beta5y": 0.7452
     },
     "price": [
       {
@@ -8075,22 +8075,6 @@
     ],
     "news": [
       {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
-        "title": "Tariffs, Trump, and Turmoil",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2e71adf6-2659-3496-ae55-cea7be85c88a",
         "title": "Subdued AUM Performance on Weak Markets to Hurt Invesco's Q1 Earnings",
         "publisher": "Zacks",
@@ -8104,6 +8088,22 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
+        "title": "Tariffs, Trump, and Turmoil",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
         "type": "STORY"
       },
       {
@@ -8216,18 +8216,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.6,
-        "industryAvg": 15.7
+        "value": 17.12,
+        "industryAvg": 15.82
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.43,
-        "industryAvg": 2.02
+        "value": 6.25,
+        "industryAvg": 2.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.34,
-        "industryAvg": 2.52
+        "value": 3.24,
+        "industryAvg": 2.54
       },
       {
         "metric": "ROE",

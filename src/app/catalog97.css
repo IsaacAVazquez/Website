@@ -2328,7 +2328,7 @@ select.c97-field {
 
 /* Keep the navigation and signature together, with a fixed signature size. */
 .c97-footer {
-  padding: var(--c97-sp-5) var(--c97-gutter);
+  padding: var(--c97-sp-3) var(--c97-gutter);
 }
 
 /*
@@ -2356,15 +2356,17 @@ select.c97-field {
 }
 
 .c97-footer-tile {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   align-content: start;
-  gap: 2px;
-  padding: var(--c97-sp-3);
+  column-gap: var(--c97-sp-3);
+  padding: var(--c97-sp-2);
   box-shadow: 8px 8px 0 var(--c97-overprint);
 }
 
 .c97-footer-tile-name {
-  margin: 0 0 var(--c97-sp-1);
+  flex-basis: 100%;
+  margin: 0;
   font-family: var(--c97-font-poster);
   font-size: clamp(26px, 2.6vw, 34px);
   line-height: 1;
@@ -2395,10 +2397,10 @@ select.c97-field {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--c97-sp-2);
-  padding-block: var(--c97-sp-2);
+  padding-block: 0 var(--c97-sp-2);
 }
 
-.c97-footer-colophon .c97-wordmark { width: 100%; max-width: 260px; }
+.c97-footer-colophon .c97-wordmark { width: 100%; max-width: 180px; }
 
 .c97-footer-copy {
   margin: 0;
