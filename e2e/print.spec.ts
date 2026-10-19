@@ -196,7 +196,9 @@ test.describe("Print", () => {
     });
   }
 
-  for (const route of ["/about", "/resume"]) {
+  // /resume left this loop on 2026-10-18, when its capabilities grid became a
+  // ledger and the route stopped using c97-columns.
+  for (const route of ["/about"]) {
     test(`keeps each grid's own gap when ${route} stacks it on paper`, async ({ page }) => {
       await page.setViewportSize(DESKTOP);
       await open(page, route);

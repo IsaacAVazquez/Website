@@ -25,6 +25,27 @@
   }
 }
 
+/* The capabilities ledger: the category in a shared column, the tools beside it. */
+.ledger {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  margin: 0;
+}
+
+.ledgerRow {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+}
+
+@media print, screen and (max-width: 600px) {
+  .ledger {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /*
  * Print stylesheet for /resume. Every print rule hangs off
  * `.print`, a `display: contents` wrapper that only the résumé renders, or off
@@ -148,7 +169,8 @@
   }
 
   /* One date column for every entry, instead of one per entry. */
-  .print article {
+  .print article,
+  .ledgerRow {
     grid-template-columns: 17ch 1fr !important;
     gap: 12pt !important;
   }

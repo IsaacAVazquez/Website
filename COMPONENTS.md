@@ -52,9 +52,9 @@ page's only `<main>`, header, and footer.
 | `Catalog97Portfolio` | `src/components/catalog97/Catalog97Portfolio.tsx` | `/portfolio` index with client-side search, sorting, and category filters over `classifyToolSlug` |
 | `Catalog97Writing` | `src/components/catalog97/Catalog97Writing.tsx` | `/writing` index with client-side search, sorting, cluster/length/bucket filters, and topic links |
 | `Catalog97Dashboards` | `src/components/catalog97/Catalog97Dashboards.tsx` | `/dashboards` mosaic. Props: `groups`, `summaries` |
-| `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, reads `careerTimeline` |
-| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content. `Catalog97Resume.module.css` is its print stylesheet, which drops the site chrome, prints black on white, and signs the foot of the page with a pressman's mark that never shows on screen |
-| `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, with no form because there is no form backend |
+| `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, one profile piece since 2026-10-18 (hero with the portrait, the biography on the same paper, "How I work" on blue, the FAQ on bone). `Catalog97About.module.css` holds its hero grid |
+| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content, one paper document since 2026-10-18 with experience, education, a capabilities ledger, and outside work under hairline rules. `Catalog97Resume.module.css` holds the experience and ledger subgrids and is its print stylesheet, which drops the site chrome, prints black on white, and signs the foot of the page with a pressman's mark that never shows on screen |
+| `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, one screen since 2026-10-18 with the address on the paper hero and the other channels on one blue sheet, with no form because there is no form backend |
 
 ### Writing and structured data
 

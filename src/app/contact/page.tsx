@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Email me about full-time product roles, Berkeley Haas, an analytics problem, or anything on this site that looks wrong to you.",
   canonicalUrl: "/contact",
-  dateModified: "2026-10-01",
+  dateModified: "2026-10-18",
 });
 
 export default function Contact() {

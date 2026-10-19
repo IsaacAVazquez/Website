@@ -1,0 +1,25 @@
+/*
+ * The hero: the headline, the opening paragraph, and the two exits on the
+ * left, the portrait on the right, the same 7:5 split as Home so the whole
+ * of it shares the first screen at 1440. Paper takes the one column too,
+ * because Safari's engine answers a width query with the window's width while
+ * it lays the print out at the paper's ("Printing on paper" in STYLING.md).
+ */
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  gap: var(--c97-sp-6);
+}
+.headline { font-size: clamp(40px, 5.4vw, 84px); max-width: none; }
+.heroCopy { display: grid; gap: var(--c97-sp-4); min-width: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
+
+@media print, screen and (max-width: 880px) {
+  .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
+  .portrait { width: min(72%, 300px); }
+}
+
+@media print {
+  .headline { font-size: 40px; }
+}

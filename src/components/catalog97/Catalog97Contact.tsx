@@ -26,32 +26,30 @@ const touchTarget = {
 } as const;
 
 /**
- * Contact, in the Catalog 97 language, and deliberately the shortest of the
- * seven routes.
+ * Contact, as one screen (2026-10-18).
  *
- * The design draws a four-field form on the left of the blue band and a direct
- * email panel on the right. There is no form backend in this repo, so the form
- * is not implemented, since shipping the markup would look right and silently drop
- * every message sent through it. The design's own vermilion line above the band
- * says email is faster than the form and gets read first, so the direct panel
- * takes the full weight the form would have had, in the same two-column split.
+ * The headline, which `e2e/footer-cta.spec.ts` pins, then the address as the
+ * largest thing on the page, the paragraph about what to write, and the
+ * response time, all on the first screen. One blue sheet holds the other two
+ * channels and the exits. The vermilion line, the peach band, and the Email
+ * me button that stood in for the address are gone.
+ *
+ * There is no form backend in this repo, so there is no form, since shipping
+ * the markup would look right and silently drop every message sent through it.
  */
 export function Catalog97Contact() {
   return (
     <Catalog97Shell>
-      {/* Hero, the proofed sheet. */}
-      <section
-        className="c97-band c97-band-tall c97-sheet"
-        data-c97-surface="paper"
-        style={{ paddingBottom: "var(--c97-sp-5)" }}
-      >
+      {/* Hero, the proofed sheet, with the address on it. */}
+      <section className="c97-band c97-sheet" data-c97-surface="paper">
         <div className="c97-shell">
           <h1 className="c97-poster">I&rsquo;d like to hear from you.</h1>
           <p
-            className="c97-prose"
+            className="c97-lead"
             style={{
-              marginTop: "var(--c97-sp-2)",
-              maxWidth: "var(--c97-measure-body)",
+              marginTop: "var(--c97-sp-3)",
+              maxWidth: "var(--c97-measure-wide)",
+              lineHeight: "var(--c97-lh-body)",
             }}
           >
             I&rsquo;m looking for a full-time role in product management,
@@ -61,174 +59,82 @@ export function Catalog97Contact() {
             If something on this site looks wrong to you, I want to hear about
             that too.
           </p>
-          {/* The address itself is two bands down, which on a phone is past the first screen. */}
-          <a
-            className="c97-btn c97-offset"
-            href={`mailto:${profile.email}`}
-            style={{ marginTop: "var(--c97-sp-3)" }}
+          <p
+            className="c97-serif c97-h2"
+            style={{ marginTop: "var(--c97-sp-4)", wordBreak: "break-word" }}
           >
-            Email me
-          </a>
-        </div>
-      </section>
-
-      {/* Vermilion line, set in poster type. */}
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="ink-vermilion"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          <p className="c97-poster-sm" style={{ maxWidth: "22ch" }}>
-            Email is the fastest way to reach me, and I read it first.
+            <a href={`mailto:${profile.email}`} className="c97-link" style={touchTarget}>
+              {profile.email}
+            </a>
+          </p>
+          <p
+            className="c97-prose"
+            style={{
+              marginTop: "var(--c97-sp-2)",
+              color: "var(--c97-ink-2)",
+              maxWidth: "var(--c97-measure-wide)",
+            }}
+          >
+            Email is the fastest way to reach me, and I read it first. If you
+            want to talk about a specific project on this site, name it in the
+            subject line so I can pull up the details before I reply. I usually
+            reply within two working days, so if it has been longer than that,
+            send it again.
           </p>
         </div>
       </section>
 
-      {/* Channels */}
+      {/* The other channels and the exits, on the page's one ink sheet. */}
       <section
-        className="c97-band c97-band-tall c97-sheet"
+        className="c97-band c97-sheet"
         data-c97-surface="ink-blue"
         data-seam="torn"
       >
-        <div
-          className="c97-shell"
-          style={{
-            display: "grid",
-            // min() so the 280px floor cannot exceed a narrower shell, which is
-            // 249px at a 320px viewport and would otherwise overflow the page.
-            gridTemplateColumns:
-              "repeat(auto-fit,minmax(min(100%, 280px),1fr))",
-            gap: "var(--c97-sp-5)",
-            alignItems: "start",
-          }}
-        >
-          <div>
-            <h2 className="c97-kicker">Write to me</h2>
-            <p
-              className="c97-serif c97-h3"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                wordBreak: "break-word",
-              }}
-            >
-              <a
-                href={`mailto:${profile.email}`}
-                className="c97-link"
-                style={touchTarget}
-              >
-                {profile.email}
-              </a>
-            </p>
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                color: "var(--c97-ink-2)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              If you want to talk about a specific project on this site, name it
-              in the subject line so I can pull up the details before I reply.
-            </p>
-
-            <h2 className="c97-kicker" style={{ marginTop: "var(--c97-sp-4)" }}>
-              Response time
-            </h2>
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                color: "var(--c97-ink-2)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              I usually reply within two working days, so if it has been longer
-              than that, send it again.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="c97-kicker">Elsewhere</h2>
-            <div
-              style={{
-                display: "grid",
-                gap: "var(--c97-sp-4)",
-                marginTop: "var(--c97-sp-2)",
-              }}
-            >
-              {elsewhere.map((channel) => (
-                <div key={channel.label}>
-                  <p className="c97-kicker">{channel.label}</p>
-                  <p
-                    className="c97-serif c97-lead"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      wordBreak: "break-word",
-                    }}
-                  >
-                    <a
-                      href={channel.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="c97-link"
-                      aria-label={`${channel.label}, ${channel.value}, opens in a new tab`}
-                      style={touchTarget}
-                    >
-                      {channel.value}
-                    </a>
-                  </p>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      color: "var(--c97-ink-2)",
-                      maxWidth: "var(--c97-measure-body)",
-                    }}
-                  >
-                    {channel.note}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA, on peach, the vermilion tint, so the page keeps to its two inks. */}
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="ink-peach"
-        data-seam="torn"
-      >
-        <div
-          className="c97-shell"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "var(--c97-sp-3)",
-            alignItems: "end",
-            justifyContent: "space-between",
-          }}
-        >
-          <p className="c97-poster-sm" style={{ maxWidth: "22ch" }}>
-            The résumé has the short version, and the work index has the long
-            one.
-          </p>
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">Elsewhere</h2>
           <div
             style={{
-              display: "flex",
-              gap: "var(--c97-sp-2)",
-              flexWrap: "wrap",
+              display: "grid",
+              gap: "var(--c97-sp-3)",
+              marginTop: "var(--c97-sp-3)",
             }}
           >
-            <Link className="c97-btn c97-offset" href="/resume">
-              Résumé
-            </Link>
-            <Link className="c97-btn-ghost" href="/portfolio">
-              The work
-            </Link>
+            {elsewhere.map((channel) => (
+              <div key={channel.label}>
+                <p className="c97-serif c97-lead" style={{ wordBreak: "break-word" }}>
+                  <a
+                    href={channel.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="c97-link"
+                    aria-label={`${channel.label}, ${channel.value}, opens in a new tab`}
+                    style={touchTarget}
+                  >
+                    {channel.label} · {channel.value}
+                  </a>
+                </p>
+                <p
+                  className="c97-prose"
+                  style={{
+                    marginTop: "var(--c97-sp-1)",
+                    color: "var(--c97-ink-2)",
+                    maxWidth: "var(--c97-measure-wide)",
+                  }}
+                >
+                  {channel.note}
+                </p>
+              </div>
+            ))}
           </div>
+          <p
+            className="c97-prose"
+            style={{ marginTop: "var(--c97-sp-4)", maxWidth: "var(--c97-measure-wide)" }}
+          >
+            The <Link className="c97-link" href="/resume">résumé</Link> has the
+            short version of my background, and the{" "}
+            <Link className="c97-link" href="/portfolio">work index</Link> has the
+            long one.
+          </p>
         </div>
       </section>
     </Catalog97Shell>
