@@ -1,25 +1,177 @@
 /*
- * The hero: the headline, the opening paragraph, and the two exits on the
- * left, the portrait on the right, the same 7:5 split as Home so the whole
- * of it shares the first screen at 1440. Paper takes the one column too,
+ * About as a proof. The plate on the left, the document on the right, and
+ * inside the document the copy, the checked notes in the margin, and the
+ * specimen strip across the foot. Every colour is a token; the text marks take
+ * the accent so they hold contrast in both themes, and the plate's offset is
+ * the page's second ink, set on the plate alone because the overprint token
+ * also drives the poster headline's shadow. Paper takes the one column too,
  * because Safari's engine answers a width query with the window's width while
  * it lays the print out at the paper's ("Printing on paper" in STYLING.md).
  */
-.heroGrid {
+.proof {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  align-items: center;
-  gap: var(--c97-sp-6);
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: var(--c97-sp-5);
+  align-items: start;
 }
-.headline { font-size: clamp(40px, 5.4vw, 84px); max-width: none; }
-.heroCopy { display: grid; gap: var(--c97-sp-4); min-width: 0; }
-.actions { display: flex; flex-wrap: wrap; gap: var(--c97-sp-2); }
+
+.plate {
+  --c97-overprint: var(--c97-riso-vermilion);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--c97-sp-3);
+}
+
+.headline {
+  font-size: clamp(36px, 4.2vw, 56px);
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.document {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: var(--c97-sp-4);
+  align-items: start;
+}
+
+.document > .headline {
+  grid-column: 1 / -1;
+}
+
+.body {
+  display: grid;
+  gap: var(--c97-sp-2);
+  max-width: var(--c97-measure-wide);
+}
+
+.claim {
+  background: linear-gradient(
+    transparent 60%,
+    color-mix(in srgb, var(--c97-accent) 18%, transparent) 60%
+  );
+  color: inherit;
+}
+
+/* The superscript is a real link, so it keeps a 44px row without moving the line. */
+.ref {
+  display: inline-block;
+  color: var(--c97-accent);
+  font-family: var(--c97-font-display);
+  font-style: italic;
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: 0.55em;
+  padding: var(--c97-touch-y) 2px;
+  margin-block: calc(-1 * var(--c97-touch-y));
+  text-decoration: none;
+}
+
+.ref:hover,
+.ref:focus-visible {
+  text-decoration: underline;
+}
+
+.margin {
+  display: grid;
+  gap: var(--c97-sp-3);
+  border-left: 1px solid var(--c97-rule);
+  padding-left: var(--c97-sp-3);
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.note {
+  position: relative;
+  scroll-margin-top: var(--c97-sp-5);
+}
+
+.note::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--c97-sp-3) - 4px);
+  top: 0.45em;
+  width: 7px;
+  height: 7px;
+  background: var(--c97-accent);
+  transform: rotate(45deg);
+}
+
+.noteLabel {
+  color: var(--c97-accent);
+  font-style: italic;
+  font-size: var(--c97-fs-label);
+}
+
+.noteBody {
+  margin-top: var(--c97-sp-0);
+}
+
+.source {
+  margin-top: var(--c97-sp-0);
+}
+
+.source a {
+  color: var(--c97-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* The specimen strip, across the whole proof under the plate, the copy, and the margin. */
+.specimen {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 150px repeat(4, minmax(0, 1fr));
+  gap: var(--c97-sp-3);
+  margin-top: var(--c97-sp-2);
+  padding: var(--c97-sp-2) 0 var(--c97-sp-3);
+  border-top: 1px solid var(--c97-ink);
+  border-bottom: 1px solid var(--c97-ink);
+  font-size: var(--c97-fs-small);
+}
+
+.specimenTitle {
+  font-family: var(--c97-font-poster);
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.question h3 {
+  font-weight: 500;
+  font-size: var(--c97-fs-body);
+  line-height: 1.25;
+}
+
+.question p {
+  margin-top: var(--c97-sp-0);
+  color: var(--c97-ink-2);
+}
 
 @media print, screen and (max-width: 880px) {
-  .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
-  .portrait { width: min(72%, 300px); }
+  .proof {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--c97-sp-4);
+  }
+
+  .plate {
+    width: min(72%, 300px);
+  }
+
+  .document,
+  .specimen {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media print {
-  .headline { font-size: 40px; }
+  .headline {
+    font-size: 36px;
+  }
 }

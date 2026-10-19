@@ -121,11 +121,8 @@ async function stackedGapsThatDrift(page: Page) {
   });
 }
 
+// /about left this list on 2026-10-19, when it became one sheet with no c97-columns.
 const NARROW_GRIDS = [
-  {
-    route: "/about",
-    grids: ["c97-columns of 3, block, 1 across", "c97-footer-tiles of 4, grid, 2 across"],
-  },
   {
     route: "/dashboards",
     grids: [
@@ -196,9 +193,9 @@ test.describe("Print", () => {
     });
   }
 
-  // /resume left this loop on 2026-10-18, when its capabilities grid became a
-  // ledger and the route stopped using c97-columns.
-  for (const route of ["/about"]) {
+  // /resume left this loop on 2026-10-18 and /about on 2026-10-19, when each
+  // stopped using c97-columns, so it now reads the shared grid on /dashboards.
+  for (const route of ["/dashboards"]) {
     test(`keeps each grid's own gap when ${route} stacks it on paper`, async ({ page }) => {
       await page.setViewportSize(DESKTOP);
       await open(page, route);
@@ -245,7 +242,8 @@ test.describe("Print", () => {
   }
 
   test("tears the seams with a clip path on paper", async ({ page }) => {
-    await open(page, "/about");
+    // /about became one sheet on 2026-10-19; /dashboards still carries a deckle.
+    await open(page, "/dashboards");
     await expect(page.locator(".c97-sheet[data-seam='deckle']")).toHaveCount(1);
 
     await page.emulateMedia({ media: "print" });
