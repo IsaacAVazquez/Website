@@ -206,7 +206,7 @@ export function Catalog97Resume() {
             </aside>
 
             <div className={styles.offset}>
-              <article className={styles.sheet} data-sheet data-c97-surface="paper">
+              <article className={styles.sheet} data-sheet data-c97-object data-c97-surface="paper">
                 <h1 className={`c97-poster ${styles.name}`}>Isaac Vazquez</h1>
                 <p className={`c97-kicker ${styles.contact}`}>
                   <span>Berkeley, California</span>

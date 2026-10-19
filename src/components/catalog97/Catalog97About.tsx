@@ -56,7 +56,7 @@ export function Catalog97About() {
   return (
     <Catalog97Shell>
       <section className="c97-band" data-c97-surface="paper" data-c97-monet>
-        <div className={`c97-shell ${styles.proof}`}>
+        <div className={`c97-shell ${styles.proof}`} data-c97-object>
           {/* The plate. The headshot, by Isaac's ask, on the stone field the design drew here. */}
           <div className={styles.plate} data-c97-paint="portrait">
             <Catalog97Slot

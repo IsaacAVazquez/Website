@@ -32,7 +32,7 @@ export function Catalog97Contact() {
       <section className="c97-band" data-c97-surface="paper">
         <div className={`c97-shell ${styles.post}`}>
           <div className={styles.offset}>
-            <div className={styles.card} data-card>
+            <div className={styles.card} data-card data-c97-object>
               <div className={styles.message}>
                 <h1 className={`c97-poster ${styles.headline}`}>
                   I&rsquo;d like to hear from you.

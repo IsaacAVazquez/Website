@@ -191,8 +191,9 @@ export function measureLayout({ phone = false, fold = false, edgesOnly = false }
   if (headerRow) {
     const H = contentBox(headerRow);
     stats.headerLeft = Math.round(H.left);
+    // An h1 inside an object (a sheet, a card, a proof) is inset by design.
     const h1 = document.querySelector("main h1");
-    if (h1 && shown(h1)) {
+    if (h1 && shown(h1) && !h1.closest("[data-c97-object]")) {
       const b = contentBox(h1);
       if (!near(b.left, H.left)) add("fail", "edge", h1, `h1 starts at ${Math.round(b.left)}, header at ${Math.round(H.left)}`);
     }
