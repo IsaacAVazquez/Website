@@ -64,7 +64,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
           className="c97-shell"
           style={{ display: "grid", gap: "var(--c97-sp-3)" }}
         >
-          <h1 className="c97-poster">
+          <h1 className="c97-poster-sm">
             The work I&rsquo;d show first, and the decisions behind it.
           </h1>
           <p className="c97-lead" style={{ maxWidth: "var(--c97-measure-body)" }}>

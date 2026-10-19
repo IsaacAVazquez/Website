@@ -91,3 +91,7 @@ At 1440x900 the first lead h2 sits at y 778 (was 877) and the page is 3,439px; a
 ### Still open after this pass
 
 The h1 is still 106.56px and runs y 188 to 482, which the critique's other P1 names for `/dashboards` and the `layout` pass takes. The four names for this route (Work, Projects in the title, All projects on Home, work index on Contact) wait for the `clarify` pass. The lead cards' role labels still read "Full-Stack Developer & Designer" on two of four, from `caseStudies.ts`.
+
+### Layout pass, 2026-10-19
+
+The h1 moved from `c97-poster` to the `c97-poster-sm` step in the same pass that took `/dashboards` down, so the two index pages share one heading size with each other and with the run headings. At 1440x900 the first lead card is at y 587 (was 778 after the distill and 877 before it); at 390 it is at y 568. Page height 3,248px at 1440 and 4,048px at 390.
