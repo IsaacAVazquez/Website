@@ -129,3 +129,6 @@ ds-bundle/
 
 # Private job-search data (résumé, pipeline, materials); see docs/JOB_SEARCH_PRIVATE_DATA.md
 private/
+
+# Superpowers brainstorm scratch (mocks, server state)
+.superpowers/
