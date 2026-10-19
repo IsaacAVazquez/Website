@@ -133,7 +133,7 @@ Footer:
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
-- The `/portfolio` index is rendered by `src/components/catalog97/Catalog97Portfolio.tsx`, which carries a client-side project search with tokenized AND matching over title, description, role, timeline, metrics, summary, category, and tools, plus curated, newest, alphabetical, and live-first sorting.
+- The `/portfolio` index is rendered by `src/components/catalog97/Catalog97Portfolio.tsx`, a server component that shows the first four projects in `PORTFOLIO_PROJECT_ORDER` as lead cards plus the Juno and Civitech write-ups, and points at `/dashboards` for the full inventory. The search, sort, and category filter it carried until 2026-10-19 live on `/dashboards` only.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
 - Validate all persisted and restored user strings (such as investment symbols with `isValidInvestmentSymbol` matching `^[A-Z0-9.\-]{1,10}$`) and construct chart tooltips using text nodes or `textContent` to prevent script execution.
 - In dictionary and keyword lookups (like `/api/search`), always use `Object.hasOwn()` or `Map` to prevent prototype property resolution for inherited keys like `constructor`.

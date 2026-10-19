@@ -1,5 +1,6 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
-import { getPortfolioProjects, getProjectCardSummary } from "@/constants/caseStudies";
+import { render, screen } from "@testing-library/react";
+import { getPortfolioProjects } from "@/constants/caseStudies";
+import { WORK_LEAD_COUNT } from "@/components/catalog97/Catalog97Portfolio";
 import Home from "../page";
 import PortfolioPage from "../portfolio/page";
 
@@ -103,7 +104,9 @@ describe("Portfolio shell page semantics", () => {
   it("links portfolio entries straight to the live tool", () => {
     const { container } = render(<PortfolioPage />);
     const hrefs = Array.from(container.querySelectorAll("a"), (a) => a.getAttribute("href"));
-    const liveProjects = getPortfolioProjects().filter((project) => project.link);
+    const liveProjects = getPortfolioProjects()
+      .slice(0, WORK_LEAD_COUNT)
+      .filter((project) => project.link);
 
     expect(liveProjects.length).toBeGreaterThan(0);
     for (const project of liveProjects) {
@@ -112,18 +115,21 @@ describe("Portfolio shell page semantics", () => {
     }
   });
 
-  // The 2026-10-05 audit found the secondary rows carried a title and a year only.
-  it("gives every secondary project its summary and role in the default scan", () => {
-    render(<PortfolioPage />);
+  // Since 2026-10-19 the page is the curated story, not the inventory: four
+  // lead projects, the two career write-ups, and one link to the full index.
+  it("shows the lead projects, both career write-ups, and the way to the full inventory", () => {
+    const { container } = render(<PortfolioPage />);
     const projects = getPortfolioProjects();
-    const secondary = projects[projects.length - 1];
-    const row = screen
-      .getByRole("heading", { level: 3, name: secondary.title })
-      .closest(".c97-row") as HTMLElement;
+    const hrefs = Array.from(container.querySelectorAll("main a"), (a) => a.getAttribute("href"));
 
-    expect(within(row).getByText(getProjectCardSummary(secondary))).toBeInTheDocument();
-    expect(within(row).getByText(secondary.role)).toBeInTheDocument();
-    expect(screen.getAllByRole("heading", { level: 3 }).length).toBeGreaterThan(20);
+    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(WORK_LEAD_COUNT + 1);
+    expect(hrefs).toContain("/writing/juno-mba-growth-internship");
+    expect(hrefs).toContain("/writing/civitech-quality-and-product-work");
+    expect(container.querySelector('main a[href="/dashboards"]')?.closest("p")).toHaveTextContent(
+      `all ${projects.length} tools`
+    );
+    expect(screen.queryByRole("searchbox")).not.toBeInTheDocument();
+    expect(screen.queryByRole("combobox")).not.toBeInTheDocument();
   });
 
   it("gives the portfolio index exactly one main landmark and one h1", () => {
@@ -134,19 +140,8 @@ describe("Portfolio shell page semantics", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /everything i.{0,3}ve shipped, and the decisions behind it/i,
+        name: /the work i.{0,3}d show first, and the decisions behind it/i,
       })
     ).toBeVisible();
-  });
-
-  it("filters from the compact category picker without showing an empty index section", () => {
-    render(<PortfolioPage />);
-    const picker = screen.getByRole("combobox", { name: "Project category" });
-
-    fireEvent.change(picker, { target: { value: "civic" } });
-
-    expect(screen.getByRole("heading", { level: 2, name: /polling/i })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "The rest of the index" })).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Investment Analytics Platform" })).not.toBeInTheDocument();
   });
 });

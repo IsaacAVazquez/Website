@@ -75,3 +75,19 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 Focus rings carried a 4px radius and a halo until this loop. Page height measured 3,539px at 1440 and 4,487px at 390 on 2026-09-14, so the 3,698px figure in the 2026-08-03 layout entry is history.
+
+## Loop, 2026-10-19
+
+Mode stays Experience. The dual-agent critique of all seven Catalog 97 routes (`2026-10-19T22-58-23Z__src-components-catalog97.md`, 28/40) scored this route's two P1s: the first screen was controls with the first lead card at y 877 against a 900px fold, and the route indexed the same 34 case studies as `/dashboards` through the same nine `classifyToolSlug` tabs, with 20 ledger rows carrying the identical role label. Isaac chose "Work's purpose first" on 2026-10-19, which reopens and replaces the two-tier split recorded on 2026-08-03 above.
+
+### Decision, 2026-10-19
+
+`/portfolio` is the curated story and `/dashboards` is the inventory. The route renders the first four projects in `PORTFOLIO_PROJECT_ORDER` as lead cards on saffron (Before You Buy, Investment Analytics Platform, Interchange IQ, News Pulse Dashboard, all with plates and build notes), then the Juno and Civitech write-ups on blue under "Where the product work came from", with each card's copy taken from the article excerpt, then the chocolate CTA. The search field, the sort select, the category filter, the `role="status"` count, and the thirty-row ledger are gone from this route, and the hero's lead paragraph points at `/dashboards` with the live count ("all 34 tools"). The h1 is "The work I'd show first, and the decisions behind it." (Isaac's pick from three options), and the unit-test anchor moved with it. The component is a server component again. `WORK_LEAD_COUNT` is exported so `page.tsx` builds its ItemList from the four rendered projects rather than all 34. Work cards still open the live tool and still carry "How I built it".
+
+### Measured after the change
+
+At 1440x900 the first lead h2 sits at y 778 (was 877) and the page is 3,439px; at 390 the first lead h2 is at y 647 (was 772) and the page is 4,127px with the job rows stacking through `c97-row-stack-sm`. One h1, one main, no horizontal overflow, zero contrast failures in either theme (lowest 4.99 on the 11px meta lines, which is the saffron-on-blue pair recorded before). Outline: h1 106.56px, four h2 at 32px, one h2 at 56px (`c97-poster-sm`, the same step the Home "Selected work" heading uses), two h3 at 26px. `impeccable detect` on the component returns `[]`. 174 Jest tests across the app, component, and constants suites pass and the eight `e2e/portfolio-shell.spec.ts` tests pass against the worktree server on port 3100.
+
+### Still open after this pass
+
+The h1 is still 106.56px and runs y 188 to 482, which the critique's other P1 names for `/dashboards` and the `layout` pass takes. The four names for this route (Work, Projects in the title, All projects on Home, work index on Contact) wait for the `clarify` pass. The lead cards' role labels still read "Full-Stack Developer & Designer" on two of four, from `caseStudies.ts`.
