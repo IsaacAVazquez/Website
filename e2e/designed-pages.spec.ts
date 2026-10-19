@@ -18,6 +18,20 @@ test.describe("About", () => {
     await expect(page.locator("main .c97-sheet[data-seam]")).toHaveCount(0);
   });
 
+  test("registers the paint reveal with the photograph and keeps every mark tappable", async ({ page }) => {
+    await page.goto("/about");
+    const [paint, img] = await Promise.all([
+      page.locator("[data-c97-paint='portrait']").boundingBox(),
+      page.locator("img.c97-slot-img").boundingBox(),
+    ]);
+    // The painted layer covers its element, so the element must be the photograph's box.
+    expect(Math.abs(paint!.height - img!.height)).toBeLessThanOrEqual(2);
+    for (const link of await page.locator("main a[href^='#note-'], [id^='note-'] a").all()) {
+      const box = await link.boundingBox();
+      expect(box!.height, (await link.textContent()) ?? "").toBeGreaterThanOrEqual(44);
+    }
+  });
+
   test("prints the same questions the FAQ schema carries", async ({ page }) => {
     await page.goto("/about");
     const schema = await page.locator("script[type='application/ld+json']").allTextContents();

@@ -267,7 +267,7 @@ export function Catalog97Resume() {
 
                 {/* The pressman's line, the one line that says what the object is. */}
                 <p className={styles.foot}>
-                  Set in Berkeley. The live copy is at isaacvazquez.com/resume.
+                  I set this sheet in Berkeley, and the live copy is at isaacvazquez.com/resume.
                 </p>
               </article>
             </div>

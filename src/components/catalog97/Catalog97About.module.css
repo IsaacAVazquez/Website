@@ -56,16 +56,20 @@
   color: inherit;
 }
 
-/* The superscript is a real link, so it keeps a 44px row without moving the line. */
+/*
+ * The superscript is a real link, so it keeps a 44px row without moving the
+ * line: a 12px line box plus 16px of padding each side, and the margin takes
+ * the padding back so the text line stays where it was.
+ */
 .ref {
   display: inline-block;
   color: var(--c97-accent);
   font-family: var(--c97-font-display);
   font-style: italic;
   font-size: 0.72em;
-  line-height: 0;
+  line-height: 12px;
   vertical-align: 0.55em;
-  padding: var(--c97-touch-y) 2px;
+  padding: var(--c97-touch-y) 0 var(--c97-touch-y) 2px;
   margin-block: calc(-1 * var(--c97-touch-y));
   text-decoration: none;
 }
@@ -115,7 +119,11 @@
   margin-top: var(--c97-sp-0);
 }
 
+/* The source link is alone on its line, so it carries its own 44px row. */
 .source a {
+  display: inline-block;
+  padding-block: var(--c97-touch-y);
+  margin-block: calc(-1 * var(--c97-touch-y));
   color: var(--c97-accent);
   text-decoration: underline;
   text-underline-offset: 2px;

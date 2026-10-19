@@ -58,16 +58,19 @@ export function Catalog97About() {
       <section className="c97-band" data-c97-surface="paper" data-c97-monet>
         <div className={`c97-shell ${styles.proof}`} data-c97-object>
           {/* The plate. The headshot, by Isaac's ask, on the stone field the design drew here. */}
-          <div className={styles.plate} data-c97-paint="portrait">
-            <Catalog97Slot
-              surface="stone"
-              ratio="4 / 5"
-              src="/images/headshot-home.webp"
-              alt="Isaac Vazquez"
-              sizes="(max-width: 880px) 72vw, 260px"
-              priority
-              offset
-            />
+          <div className={styles.plate}>
+            {/* The paint reveal covers its element, so it wraps the photograph alone. */}
+            <div data-c97-paint="portrait">
+              <Catalog97Slot
+                surface="stone"
+                ratio="4 / 5"
+                src="/images/headshot-home.webp"
+                alt="Isaac Vazquez"
+                sizes="(max-width: 880px) 72vw, 260px"
+                priority
+                offset
+              />
+            </div>
             <p className={`c97-kicker ${styles.caption}`}>
               <span>Plate 1 · portrait</span>
             </p>
