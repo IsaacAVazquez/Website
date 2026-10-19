@@ -144,7 +144,8 @@
 
 .specimenTitle {
   font-family: var(--c97-font-poster);
-  font-size: 18px;
+  /* The lead step, one above the body-size questions under it; 18px was on no step. */
+  font-size: var(--c97-fs-lead);
   line-height: 1.05;
   letter-spacing: 0.02em;
   text-transform: uppercase;

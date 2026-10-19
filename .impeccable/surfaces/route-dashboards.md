@@ -75,3 +75,7 @@ The general sweep still flags 8 pine tiles at 2.31:1 in light at every width. Th
 ### Corrected facts in this brief
 
 The 2026-08-03 filter entry said the control is `role="tablist"` with `aria-selected`, and the code is `role="group"` with `aria-pressed` buttons, so that line was corrected. The status copy and tobacco line quoted in the 2026-08-03 corrections entry ("Each dashboard", "Every panel here") were rescoped on 2026-09-14 as described above. Page height measured 7,275px at 1440 and 10,561px at 390 on 2026-09-14, against 11,059 at 390 in the 2026-08-03 filter entry. Focus rings carried a 4px radius and a halo until this loop.
+
+### Typeset pass, 2026-10-19
+
+"Pull log · times PT" was an `h2` carrying `c97-kicker`, so it rendered at 11px between 56px run headings and under its own 22px `h3` neighbours in "How the data works", the kicker-as-heading defect the August sweeps had fixed on the other routes. It is `h2.c97-poster-sm` "Pull log" now with a `p.c97-kicker` "Times PT" under it, so every `h2` on the route draws at one size. Measured: h2 56px (30px at 390), h3 26 and 22 (20 and 19), zero inversions in document order.

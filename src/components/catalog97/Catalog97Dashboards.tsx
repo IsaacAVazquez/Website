@@ -451,7 +451,16 @@ export function Catalog97Dashboards({
           data-seam="deckle"
         >
           <div className="c97-shell">
-            <h2 className="c97-kicker">Pull log · times PT</h2>
+            {/*
+              A poster h2 like every other section heading on the route. As
+              `c97-kicker` this h2 rendered at 11px between 56px siblings and
+              under its own 22px h3 neighbours, the kicker-as-heading defect
+              the August sweeps fixed on the other six routes.
+            */}
+            <h2 className="c97-poster-sm">Pull log</h2>
+            <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
+              Times PT
+            </p>
             <dl
               style={{
                 marginTop: "var(--c97-sp-2)",

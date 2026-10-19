@@ -69,3 +69,9 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 The route constraints line said the portrait slot is a flat Stone field with its caption, and it shows the headshot, so that line and the image-slot bullet were corrected. The "nine timeline entries" in the 2026-08-03 entries is history, since there are ten. Page height measured 4,806px at 1440 and 5,616px at 390 on 2026-09-14, against 4,598 and 5,363 in the pre-fix critique and 5,203 at 1440 in the 2026-08-03 entry. Focus rings carried a 4px radius and a halo until this loop.
+
+## Typeset pass, 2026-10-19
+
+The specimen title (`.specimenTitle`, "Specimen / Questions I get asked") was 18px, which is on no step. It is `--c97-fs-lead` now (22px at 1440, 19px at 390) over the body-size questions (16 and 15), zero inversions. The `<br>` inside it, which makes a heading list read "Specimen Questions I get asked", goes when the `clarify` pass cuts "Specimen", which Isaac chose on 2026-10-19.
+
+**Decision, 2026-10-19.** The h1 keeps its object size, `clamp(36px, 4.2vw, 56px)` and 36px below 880, which the detector flags as an off-ramp endpoint. The 2026-10-19 spec sized the proof's headline to the document (about 52px on desktop) rather than to the poster step, so this is deliberate and not a defect. The answers at the small step and the "n · checked" labels at the label step are also the spec's sizes.

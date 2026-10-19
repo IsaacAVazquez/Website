@@ -65,3 +65,9 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 The theme toggle no longer shifts the header on this route, so any remaining layout shift here is the font-load re-wrap above and not the toggle. Page height measured 3,867px at 1440 and 6,036px at 390 on 2026-09-14. Focus rings carried a 4px radius and a halo until this loop.
+
+## Typeset pass, 2026-10-19
+
+The four section `h2`s (`.heading`, 14px poster face) sat under their own `h3` role titles, because `.role` took `--c97-fs-small`, which grows to 15px at desktop. `.role` is 13px now, the size the 2026-10-19 spec names for the title, so the order holds at every width (h1 36 or 28, h2 14, h3 13) with zero inversions. The print sheet's 14pt heading over 11.5pt role was already in order and is unchanged.
+
+**Decision, 2026-10-19 (Isaac).** The sheet's running text stays at 11px (`--c97-fs-label` on `.sheet`), which the spec set so the sheet reads the way the one-pager prints. The critique of the same day asked to lift it a step and Isaac chose to keep it, so later critiques should record it as a decision rather than a finding. The 14px section headings, the 13px role titles, and the h1 at `clamp(28px, 3vw, 36px)` are the object's own sizes for the same reason, and the detector's `design-system-font-size` advisories on lines 42, 60, and 87 of the module describe them.
