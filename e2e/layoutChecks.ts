@@ -26,7 +26,11 @@ export async function expectAlignedLayout(page: Page) {
       return {
         overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
         header: edges(document.querySelector(".c97-header-row")),
-        h1: edges(document.querySelector("main h1")),
+        // An h1 inside an object (a sheet, a card, a proof) is inset by design.
+        h1: edges((() => {
+          const h1 = document.querySelector("main h1");
+          return h1 && h1.closest("[data-c97-object]") ? null : h1;
+        })()),
         breadcrumb: document.querySelector("main nav[aria-label='Breadcrumb'] ol")?.getBoundingClientRect().left ?? null,
         footer: edges(document.querySelector(".c97-footer > .c97-shell")),
       };

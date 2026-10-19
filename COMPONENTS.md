@@ -52,9 +52,9 @@ page's only `<main>`, header, and footer.
 | `Catalog97Portfolio` | `src/components/catalog97/Catalog97Portfolio.tsx` | `/portfolio` index with client-side search, sorting, and category filters over `classifyToolSlug` |
 | `Catalog97Writing` | `src/components/catalog97/Catalog97Writing.tsx` | `/writing` index with client-side search, sorting, cluster/length/bucket filters, and topic links |
 | `Catalog97Dashboards` | `src/components/catalog97/Catalog97Dashboards.tsx` | `/dashboards` mosaic. Props: `groups`, `summaries` |
-| `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, reads `careerTimeline` |
-| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content. `Catalog97Resume.module.css` is its print stylesheet, which drops the site chrome, prints black on white, and signs the foot of the page with a pressman's mark that never shows on screen |
-| `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, with no form because there is no form backend |
+| `Catalog97About` | `src/components/catalog97/Catalog97About.tsx` | `/about` content, a proof since 2026-10-19: the portrait plate, the biography with four marked claims that link to checked notes in the margin, each with its source, and the FAQ as a specimen strip across the foot, all on one paper sheet. `Catalog97About.module.css` holds the proof grid, the marks, the margin, and the strip |
+| `Catalog97Resume` | `src/components/catalog97/Catalog97Resume.tsx` | `/resume` content, the sheet on the press bed since 2026-10-19: the whole record set tight on a letter-proportioned paper sheet on the bone bed, the download in the left rail, the write-ups and Get in touch in the right. `Catalog97Resume.module.css` holds the bed, the sheet, and the rails and is its print stylesheet, which drops the site chrome and the download rail, prints black on white, and signs the foot of the sheet |
+| `Catalog97Contact` | `src/components/catalog97/Catalog97Contact.tsx` | `/contact` content, a reply card since 2026-10-19: the message on the left half, the stamp and the four address lines on the right with the email as the largest, and one sentence under the card, with no form because there is no form backend. It exports `CONTACT_DATE_MODIFIED`, which the page's metadata and the stamp's year both read. `Catalog97Contact.module.css` holds the card |
 
 ### Writing and structured data
 

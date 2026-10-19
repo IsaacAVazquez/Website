@@ -9,7 +9,7 @@ export const metadata = constructMetadata({
   description:
     "My résumé covers campaign data at Open Progress, QA and product work at Civitech, a 2026 growth internship at Juno, and my Berkeley Haas MBA.",
   canonicalUrl: "/resume",
-  dateModified: "2026-09-29",
+  dateModified: "2026-10-19",
 });
 
 export default function ResumePage() {
@@ -38,7 +38,7 @@ export default function ResumePage() {
           type: "ProfilePage",
           data: {
             url: "https://isaacvazquez.com/resume",
-            lastReviewed: "2026-09-29",
+            lastReviewed: "2026-10-19",
             description:
               "Isaac Vazquez's résumé: second-year Berkeley Haas MBA candidate with experience spanning QA systems, analytics, civic technology, and product growth.",
             person: {

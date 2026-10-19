@@ -1,4 +1,7 @@
-import { Catalog97Contact } from "@/components/catalog97/Catalog97Contact";
+import {
+  CONTACT_DATE_MODIFIED,
+  Catalog97Contact,
+} from "@/components/catalog97/Catalog97Contact";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 
@@ -7,7 +10,7 @@ export const metadata = constructMetadata({
   description:
     "Email me about full-time product roles, Berkeley Haas, an analytics problem, or anything on this site that looks wrong to you.",
   canonicalUrl: "/contact",
-  dateModified: "2026-10-01",
+  dateModified: CONTACT_DATE_MODIFIED,
 });
 
 export default function Contact() {

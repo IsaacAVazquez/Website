@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import { Catalog97Shell } from "./Catalog97Shell";
+import { profile } from "@/lib/profile";
 import { careerTimeline } from "@/constants/personal";
 import styles from "./Catalog97Resume.module.css";
 
@@ -178,297 +178,117 @@ const interests =
 const RESUME_PDF = "/Isaac_Vazquez_Resume.pdf";
 
 /**
- * Résumé, in the Catalog 97 language.
+ * Résumé, as the sheet on the press bed (2026-10-19).
  *
- * The design runs experience on paper with the date range in a fixed-width
- * column to the left, then a chocolate download band, a blue capabilities
- * grid, and a saffron closing row. That order is kept.
+ * One bone band, the bed, and on it the sheet at letter proportions with the
+ * whole record set tight the way the one-pager prints, between two rails. The
+ * left rail is the download, the right rail is the write-ups and the Get in
+ * touch link that `e2e/resume.spec.ts` measures on paper. The sheet runs
+ * longer than one page with the real entries, which is fine, since the PDF is
+ * its own one-page document. The bed's offset is the bed's own second ink, so
+ * it is blue by day and follows the system's flip by night.
  *
- * The mockup's education, certifications, and reference copy is fictional and
- * does not ship; everything below is the real record. There is no
- * certifications column because there are no certifications to list.
+ * Everything below is the real record. There is no certifications section
+ * because there are no certifications to list.
  */
 export function Catalog97Resume() {
   return (
     <div className={styles.print}>
       <Catalog97Shell>
-        {/* Hero, the proofed sheet. */}
-        <section className="c97-band c97-sheet" data-c97-surface="paper">
-          {/*
-          Flex with wrap rather than `grid: 1fr auto`, which is what the other
-          hero rows use. Their second cell is a plate numeral about 70px wide,
-          which always fits. This one is a 160px button that cannot shrink,
-          because `.c97-btn` is nowrap with 22px of padding a side and a 48px
-          floor. At a 320px viewport the shell is 249px, the button kept its
-          160px inside a 52.8px track, and the page scrolled sideways to 385px.
-          The download band lower down already solves the same pairing this way.
-        */}
-          <div
-            className="c97-shell"
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--c97-sp-5)",
-              alignItems: "end",
-              justifyContent: "space-between",
-            }}
-          >
-            <div style={{ flex: "1 1 260px", minWidth: 0 }}>
-              <h1 className="c97-poster">
-                I&rsquo;ve spent six years in campaign data, QA, and product
-                work.
-              </h1>
-            </div>
-            <a className="c97-btn c97-offset" href={RESUME_PDF} download>
-              Download PDF
-            </a>
-          </div>
-        </section>
+        <section className="c97-band" data-c97-surface="bone">
+          <div className={`c97-shell ${styles.bed}`}>
+            <aside className={`${styles.rail} ${styles.downloadRail}`} aria-label="Download">
+              <p className="c97-kicker">Press bed · one sheet</p>
+              <p>The full version, set in Berkeley. The PDF is the one-page version.</p>
+              <a className="c97-btn c97-offset" href={RESUME_PDF} download>
+                Download PDF
+              </a>
+            </aside>
 
-        {/* Experience */}
-        <section
-          className="c97-band c97-band-continues"
-          data-c97-surface="paper"
-        >
-          <div className="c97-shell">
-            {/*
-            Every section heading on this route was an h2 carrying
-            `c97-kicker`, so all five rendered at 11px while their children ran
-            at 26px or 22px. --c97-fs-h2 is 32px against both and clamps to
-            24px against 20px or 19px on a phone. Do not reach for
-            --c97-fs-h3 here; it collapses to within a pixel of --c97-fs-lead
-            once both clamps bottom out, which was measured on /portfolio.
-          */}
-            <h2 className="c97-poster-sm">Experience</h2>
-            <div
-              className={styles.experience}
-              style={{ marginTop: "var(--c97-sp-3)" }}
-            >
-              {experience.map((entry) => (
-                <article
-                  key={`${entry.company}-${entry.role}`}
-                  className={styles.entry}
-                >
-                  <div
-                    className="c97-serif c97-tabular"
-                    style={{
-                      fontSize: "var(--c97-fs-body)",
-                      color: "var(--c97-label)",
-                      minWidth: "9ch",
-                    }}
-                  >
-                    {entry.when}
-                  </div>
-                  <div>
-                    <h3
-                      className="c97-serif c97-h3"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    >
-                      {entry.role}
-                    </h3>
-                    <p
-                      className="c97-meta"
-                      style={{ marginTop: "var(--c97-sp-1)" }}
-                    >
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "var(--c97-sp-1)",
-                        }}
-                      >
-                        <Catalog97CompanyMark company={entry.company} />
-                        {entry.company}
-                      </span>
-                      <span>{entry.kind}</span>
-                    </p>
-                    <p
-                      className="c97-prose"
-                      style={{ marginTop: "var(--c97-sp-2)" }}
-                    >
-                      {entry.description}
-                    </p>
-                    {entry.writeUp ? (
-                      <p
-                        className={styles.screenOnly}
-                        style={{ marginTop: "var(--c97-sp-2)" }}
-                      >
-                        <Link className="c97-microlink" href={entry.writeUp}>
-                          Read the write-up
-                          <span className="sr-only"> on my {entry.company} work</span>
-                        </Link>
+            <div className={styles.offset}>
+              <article className={styles.sheet} data-sheet data-c97-object data-c97-surface="paper">
+                <h1 className={`c97-poster ${styles.name}`}>Isaac Vazquez</h1>
+                <p className={`c97-kicker ${styles.contact}`}>
+                  <span>Berkeley, California</span>
+                  <span>{profile.email}</span>
+                  <span>linkedin/isaac-vazquez</span>
+                  <span>github/IsaacAVazquez</span>
+                </p>
+
+                <h2 className={styles.heading}>Experience</h2>
+                {experience.map((entry) => (
+                  <article key={`${entry.company}-${entry.role}`} className={styles.entry}>
+                    <p className={styles.when}>{entry.when}</p>
+                    <div>
+                      <h3 className={styles.role}>{entry.role}</h3>
+                      <p className={`c97-meta ${styles.company}`}>
+                        <span className={styles.mark}>
+                          <Catalog97CompanyMark company={entry.company} />
+                          {entry.company}
+                        </span>
+                        <span>{entry.kind}</span>
                       </p>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+                      <p className={styles.description}>{entry.description}</p>
+                    </div>
+                  </article>
+                ))}
 
-        {/* Download band */}
-        <section
-          className={`c97-band c97-sheet ${styles.screenOnly}`}
-          data-c97-surface="chocolate"
-          data-seam="torn"
-        >
-          <div
-            className="c97-shell"
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--c97-sp-3)",
-              alignItems: "end",
-              justifyContent: "space-between",
-            }}
-          >
-            <p className="c97-poster-sm" style={{ maxWidth: "20ch" }}>
-              The one-page version, ready to print.
-            </p>
-            <a
-              className="c97-btn c97-btn-invert c97-offset"
-              href={RESUME_PDF}
-              download
-            >
-              Download PDF
-            </a>
-          </div>
-        </section>
+                <h2 className={styles.heading}>Education</h2>
+                {education.map((entry) => (
+                  <article key={entry.company} className={styles.entry}>
+                    <p className={styles.when}>{entry.when}</p>
+                    <div>
+                      <h3 className={styles.role}>{entry.role}</h3>
+                      <p className={`c97-meta ${styles.company}`}>
+                        <span className={styles.mark}>
+                          <Catalog97CompanyMark company={entry.company} />
+                          {entry.company}
+                        </span>
+                      </p>
+                      {entry.description ? (
+                        <p className={styles.description}>{entry.description}</p>
+                      ) : null}
+                    </div>
+                  </article>
+                ))}
 
-        {/* Capabilities */}
-        <section
-          className="c97-band c97-band-tall c97-sheet"
-          data-c97-surface="ink-blue"
-          data-seam="torn"
-        >
-          <div className="c97-shell">
-            <h2 className="c97-poster-sm">Capabilities</h2>
-            <div
-              className="c97-columns c97-print-stack"
-              style={
-                {
-                  "--c97-columns-gap": "var(--c97-sp-4)",
-                  marginTop: "var(--c97-sp-4)",
-                } as CSSProperties
-              }
-            >
-              {capabilities.map((group) => (
-                <div key={group.category}>
-                  <h3 className="c97-serif c97-lead">{group.category}</h3>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      lineHeight: "var(--c97-lh-loose)",
-                      color: "var(--c97-ink-2)",
-                    }}
-                  >
-                    {group.skills}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <h2 className={styles.heading}>Capabilities</h2>
+                <dl className={styles.ledger}>
+                  {capabilities.map((group) => (
+                    <div key={group.category} className={styles.ledgerRow}>
+                      <dt>{group.category}</dt>
+                      <dd>{group.skills}</dd>
+                    </div>
+                  ))}
+                </dl>
 
-        {/* Education, outside work, references */}
-        <section
-          className="c97-band c97-sheet"
-          data-c97-surface="ink-saffron"
-          data-seam="torn"
-        >
-          <div
-            className="c97-shell c97-columns"
-            style={{ "--c97-columns-gap": "var(--c97-sp-4)" } as CSSProperties}
-          >
-            <div>
-              {/*
-              Education, Outside work and References are the three columns of
-              one saffron band, so they move together. Education is the only one
-              with heading children and so the only strict inversion, but
-              leaving the other two at 11px beside a 32px sibling would put
-              three mismatched headers in one row.
-            */}
-              <h2 className="c97-poster-sm">Education</h2>
-              {education.map((entry) => (
-                <div
-                  key={entry.company}
-                  style={{ marginTop: "var(--c97-sp-2)" }}
-                >
-                  <h3 className="c97-serif c97-lead">{entry.role}</h3>
-                  <p
-                    className="c97-kicker"
-                    style={{ marginTop: "var(--c97-sp-1)" }}
-                  >
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "var(--c97-sp-1)",
-                      }}
-                    >
-                      <Catalog97CompanyMark company={entry.company} />
-                      {entry.company}
-                    </span>{" "}
-                    · {entry.when}
-                  </p>
-                  {entry.description ? (
-                    <p
-                      className="c97-prose"
-                      style={{
-                        marginTop: "var(--c97-sp-1)",
-                        maxWidth: "var(--c97-measure-body)",
-                      }}
-                    >
-                      {entry.description}
-                    </p>
-                  ) : null}
-                </div>
-              ))}
+                <h2 className={styles.heading}>Outside work</h2>
+                <p className={styles.description}>{interests}</p>
+
+                {/* The pressman's line, the one line that says what the object is. */}
+                <p className={styles.foot}>
+                  I set this sheet in Berkeley, and the live copy is at isaacvazquez.com/resume.
+                </p>
+              </article>
             </div>
 
-            <div>
-              <h2 className="c97-poster-sm">Outside work</h2>
-              <p
-                className="c97-prose"
-                style={{
-                  marginTop: "var(--c97-sp-2)",
-                  lineHeight: "var(--c97-lh-loose)",
-                  maxWidth: "var(--c97-measure-body)",
-                }}
-              >
-                {interests}
-              </p>
-            </div>
-
-            <div>
-              <h2 className="c97-poster-sm">References</h2>
-              <p
-                className="c97-prose"
-                style={{
-                  marginTop: "var(--c97-sp-2)",
-                  maxWidth: "var(--c97-measure-body)",
-                }}
-              >
-                Available on request, and I am happy to walk through any project
-                on this site line by line.
-              </p>
-              <Link
-                className="c97-btn-ghost"
-                href="/contact"
-                style={{ marginTop: "var(--c97-sp-2)" }}
-              >
+            <aside className={styles.rail} aria-label="Also on this site">
+              <p className="c97-kicker">Also on this site</p>
+              <p>The Juno and Civitech entries each have a long-form write-up under Writing.</p>
+              <Link className="c97-btn-ghost" href="/writing/juno-mba-growth-internship">
+                Juno write-up
+              </Link>
+              <Link className="c97-btn-ghost" href="/writing/civitech-quality-and-product-work">
+                Civitech write-up
+              </Link>
+              <p className={`c97-kicker ${styles.railBreak}`}>References</p>
+              <p>I&rsquo;m happy to walk through any project on this site line by line.</p>
+              <Link className="c97-btn-ghost" href="/contact">
                 Get in touch
               </Link>
-            </div>
+            </aside>
           </div>
         </section>
-
-        {/* Hidden on screen. Print only, the way a printer signs a job. */}
-        <p className={styles.mark}>
-          I set this page in Berkeley, and you printed it. The live copy is at
-          isaacvazquez.com/resume.
-        </p>
       </Catalog97Shell>
     </div>
   );
