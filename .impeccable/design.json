@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-09T08:44:27.190300+00:00",
+  "generatedAt": "2026-10-17T05:00:55.765Z",
   "title": "Design System: Catalog 97",
   "extensions": {
     "colorMeta": {
@@ -8,191 +8,362 @@
         "role": "neutral",
         "displayName": "Paper",
         "canonical": "#f1ebdf",
-        "dark": "#14100c"
+        "dark": "#14100c",
+        "tonalRamp": [
+          "oklch(0.150000 0.017239 84.5878)",
+          "oklch(0.264286 0.017239 84.5878)",
+          "oklch(0.378571 0.017239 84.5878)",
+          "oklch(0.492857 0.017239 84.5878)",
+          "oklch(0.607143 0.017239 84.5878)",
+          "oklch(0.721429 0.017239 84.5878)",
+          "oklch(0.835714 0.017239 84.5878)",
+          "oklch(0.950000 0.017239 84.5878)"
+        ]
       },
       "bone": {
         "role": "neutral",
         "displayName": "Bone",
         "canonical": "#e4dbc9",
-        "dark": "#1e1811"
+        "dark": "#1e1811",
+        "tonalRamp": [
+          "oklch(0.150000 0.026084 84.5928)",
+          "oklch(0.264286 0.026084 84.5928)",
+          "oklch(0.378571 0.026084 84.5928)",
+          "oklch(0.492857 0.026084 84.5928)",
+          "oklch(0.607143 0.026084 84.5928)",
+          "oklch(0.721429 0.026084 84.5928)",
+          "oklch(0.835714 0.026084 84.5928)",
+          "oklch(0.950000 0.026084 84.5928)"
+        ]
       },
       "stone": {
         "role": "neutral",
         "displayName": "Stone",
         "canonical": "#a79e8f",
-        "dark": "#6e655a"
+        "dark": "#6e655a",
+        "tonalRamp": [
+          "oklch(0.150000 0.023785 80.6489)",
+          "oklch(0.264286 0.023785 80.6489)",
+          "oklch(0.378571 0.023785 80.6489)",
+          "oklch(0.492857 0.023785 80.6489)",
+          "oklch(0.607143 0.023785 80.6489)",
+          "oklch(0.721429 0.023785 80.6489)",
+          "oklch(0.835714 0.023785 80.6489)",
+          "oklch(0.950000 0.023785 80.6489)"
+        ]
       },
       "chocolate": {
         "role": "neutral",
         "displayName": "Chocolate",
         "canonical": "#4a3728",
-        "dark": "#3a2b1f"
+        "dark": "#3a2b1f",
+        "tonalRamp": [
+          "oklch(0.150000 0.036627 59.5136)",
+          "oklch(0.264286 0.036627 59.5136)",
+          "oklch(0.378571 0.036627 59.5136)",
+          "oklch(0.492857 0.036627 59.5136)",
+          "oklch(0.607143 0.036627 59.5136)",
+          "oklch(0.721429 0.036627 59.5136)",
+          "oklch(0.835714 0.036627 59.5136)",
+          "oklch(0.950000 0.036627 59.5136)"
+        ]
       },
       "espresso": {
         "role": "neutral",
         "displayName": "Espresso",
         "canonical": "#2b211a",
-        "dark": "#0c0907"
+        "dark": "#0c0907",
+        "tonalRamp": [
+          "oklch(0.150000 0.019978 56.6705)",
+          "oklch(0.264286 0.019978 56.6705)",
+          "oklch(0.378571 0.019978 56.6705)",
+          "oklch(0.492857 0.019978 56.6705)",
+          "oklch(0.607143 0.019978 56.6705)",
+          "oklch(0.721429 0.019978 56.6705)",
+          "oklch(0.835714 0.019978 56.6705)",
+          "oklch(0.950000 0.019978 56.6705)"
+        ]
       },
       "print-black": {
         "role": "neutral",
         "displayName": "Print Black",
-        "canonical": "#17110d"
-      },
-      "print-bone": {
-        "role": "neutral",
-        "displayName": "Print Bone",
-        "canonical": "#e4dbc9"
+        "canonical": "#17110d",
+        "tonalRamp": [
+          "oklch(0.150000 0.012807 55.4580)",
+          "oklch(0.264286 0.012807 55.4580)",
+          "oklch(0.378571 0.012807 55.4580)",
+          "oklch(0.492857 0.012807 55.4580)",
+          "oklch(0.607143 0.012807 55.4580)",
+          "oklch(0.721429 0.012807 55.4580)",
+          "oklch(0.835714 0.012807 55.4580)",
+          "oklch(0.950000 0.012807 55.4580)"
+        ]
       },
       "riso-blue": {
         "role": "primary",
         "displayName": "Riso Blue",
-        "canonical": "#1a3ea6"
+        "canonical": "#1a3ea6",
+        "tonalRamp": [
+          "oklch(0.150000 0.172315 264.8464)",
+          "oklch(0.264286 0.172315 264.8464)",
+          "oklch(0.378571 0.172315 264.8464)",
+          "oklch(0.492857 0.172315 264.8464)",
+          "oklch(0.607143 0.172315 264.8464)",
+          "oklch(0.721429 0.172315 264.8464)",
+          "oklch(0.835714 0.172315 264.8464)",
+          "oklch(0.950000 0.172315 264.8464)"
+        ]
       },
       "riso-saffron": {
         "role": "primary",
         "displayName": "Riso Saffron",
-        "canonical": "#edb722"
+        "canonical": "#edb722",
+        "tonalRamp": [
+          "oklch(0.150000 0.158131 85.9621)",
+          "oklch(0.264286 0.158131 85.9621)",
+          "oklch(0.378571 0.158131 85.9621)",
+          "oklch(0.492857 0.158131 85.9621)",
+          "oklch(0.607143 0.158131 85.9621)",
+          "oklch(0.721429 0.158131 85.9621)",
+          "oklch(0.835714 0.158131 85.9621)",
+          "oklch(0.950000 0.158131 85.9621)"
+        ]
       },
       "riso-vermilion": {
         "role": "primary",
         "displayName": "Riso Vermilion",
-        "canonical": "#df4c1e"
+        "canonical": "#df4c1e",
+        "tonalRamp": [
+          "oklch(0.150000 0.191162 36.5565)",
+          "oklch(0.264286 0.191162 36.5565)",
+          "oklch(0.378571 0.191162 36.5565)",
+          "oklch(0.492857 0.191162 36.5565)",
+          "oklch(0.607143 0.191162 36.5565)",
+          "oklch(0.721429 0.191162 36.5565)",
+          "oklch(0.835714 0.191162 36.5565)",
+          "oklch(0.950000 0.191162 36.5565)"
+        ]
       },
       "riso-peach": {
         "role": "primary",
         "displayName": "Riso Peach",
-        "canonical": "#f6b995"
+        "canonical": "#f6b995",
+        "tonalRamp": [
+          "oklch(0.150000 0.085824 51.7293)",
+          "oklch(0.264286 0.085824 51.7293)",
+          "oklch(0.378571 0.085824 51.7293)",
+          "oklch(0.492857 0.085824 51.7293)",
+          "oklch(0.607143 0.085824 51.7293)",
+          "oklch(0.721429 0.085824 51.7293)",
+          "oklch(0.835714 0.085824 51.7293)",
+          "oklch(0.950000 0.085824 51.7293)"
+        ]
       },
       "riso-green": {
         "role": "primary",
         "displayName": "Riso Green",
-        "canonical": "#32a860"
+        "canonical": "#32a860",
+        "tonalRamp": [
+          "oklch(0.150000 0.148853 152.2916)",
+          "oklch(0.264286 0.148853 152.2916)",
+          "oklch(0.378571 0.148853 152.2916)",
+          "oklch(0.492857 0.148853 152.2916)",
+          "oklch(0.607143 0.148853 152.2916)",
+          "oklch(0.721429 0.148853 152.2916)",
+          "oklch(0.835714 0.148853 152.2916)",
+          "oklch(0.950000 0.148853 152.2916)"
+        ]
       },
       "riso-teal": {
         "role": "primary",
         "displayName": "Riso Teal",
-        "canonical": "#056c71"
+        "canonical": "#056c71",
+        "tonalRamp": [
+          "oklch(0.150000 0.081038 200.5062)",
+          "oklch(0.264286 0.081038 200.5062)",
+          "oklch(0.378571 0.081038 200.5062)",
+          "oklch(0.492857 0.081038 200.5062)",
+          "oklch(0.607143 0.081038 200.5062)",
+          "oklch(0.721429 0.081038 200.5062)",
+          "oklch(0.835714 0.081038 200.5062)",
+          "oklch(0.950000 0.081038 200.5062)"
+        ]
       },
       "riso-pink": {
         "role": "primary",
         "displayName": "Riso Pink",
-        "canonical": "#f25f9f"
+        "canonical": "#f25f9f",
+        "tonalRamp": [
+          "oklch(0.150000 0.190197 356.2017)",
+          "oklch(0.264286 0.190197 356.2017)",
+          "oklch(0.378571 0.190197 356.2017)",
+          "oklch(0.492857 0.190197 356.2017)",
+          "oklch(0.607143 0.190197 356.2017)",
+          "oklch(0.721429 0.190197 356.2017)",
+          "oklch(0.835714 0.190197 356.2017)",
+          "oklch(0.950000 0.190197 356.2017)"
+        ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Ink (paper surface)",
         "canonical": "#2b211a",
-        "dark": "#f1ebdf"
+        "dark": "#f1ebdf",
+        "tonalRamp": [
+          "oklch(0.150000 0.019978 56.6705)",
+          "oklch(0.264286 0.019978 56.6705)",
+          "oklch(0.378571 0.019978 56.6705)",
+          "oklch(0.492857 0.019978 56.6705)",
+          "oklch(0.607143 0.019978 56.6705)",
+          "oklch(0.721429 0.019978 56.6705)",
+          "oklch(0.835714 0.019978 56.6705)",
+          "oklch(0.950000 0.019978 56.6705)"
+        ]
       },
       "ink-2": {
         "role": "neutral",
         "displayName": "Ink 2 (paper surface)",
         "canonical": "#4a3728",
-        "dark": "#dcd2bf"
+        "dark": "#dcd2bf",
+        "tonalRamp": [
+          "oklch(0.150000 0.036627 59.5136)",
+          "oklch(0.264286 0.036627 59.5136)",
+          "oklch(0.378571 0.036627 59.5136)",
+          "oklch(0.492857 0.036627 59.5136)",
+          "oklch(0.607143 0.036627 59.5136)",
+          "oklch(0.721429 0.036627 59.5136)",
+          "oklch(0.835714 0.036627 59.5136)",
+          "oklch(0.950000 0.036627 59.5136)"
+        ]
       },
       "label": {
         "role": "neutral",
         "displayName": "Label (paper surface)",
         "canonical": "#645e55",
-        "dark": "#a99f91"
-      },
-      "action": {
-        "role": "neutral",
-        "displayName": "Action (paper surface)",
-        "canonical": "#4a3728",
-        "dark": "#d9b487"
-      },
-      "accent": {
-        "role": "primary",
-        "displayName": "Accent (paper surface)",
-        "canonical": "#6e2b36",
-        "dark": "#c2707c"
+        "dark": "#a99f91",
+        "tonalRamp": [
+          "oklch(0.150000 0.016032 78.1627)",
+          "oklch(0.264286 0.016032 78.1627)",
+          "oklch(0.378571 0.016032 78.1627)",
+          "oklch(0.492857 0.016032 78.1627)",
+          "oklch(0.607143 0.016032 78.1627)",
+          "oklch(0.721429 0.016032 78.1627)",
+          "oklch(0.835714 0.016032 78.1627)",
+          "oklch(0.950000 0.016032 78.1627)"
+        ]
       },
       "rule": {
         "role": "neutral",
         "displayName": "Rule hairline (paper surface)",
         "canonical": "rgba(43, 33, 26, 0.18)",
-        "dark": "rgba(241, 235, 223, 0.16)"
-      },
-      "field": {
-        "role": "neutral",
-        "displayName": "Field (paper surface)",
-        "canonical": "#e4dbc9",
-        "dark": "#241d16"
-      },
-      "panel": {
-        "role": "neutral",
-        "displayName": "Panel (paper surface)",
-        "canonical": "#e4dbc9",
-        "dark": "#241d16"
+        "dark": "rgba(241, 235, 223, 0.16)",
+        "tonalRamp": [
+          "oklch(0.150000 0.019978 56.6705 / 0.18)",
+          "oklch(0.264286 0.019978 56.6705 / 0.18)",
+          "oklch(0.378571 0.019978 56.6705 / 0.18)",
+          "oklch(0.492857 0.019978 56.6705 / 0.18)",
+          "oklch(0.607143 0.019978 56.6705 / 0.18)",
+          "oklch(0.721429 0.019978 56.6705 / 0.18)",
+          "oklch(0.835714 0.019978 56.6705 / 0.18)",
+          "oklch(0.950000 0.019978 56.6705 / 0.18)"
+        ]
       },
       "positive": {
         "role": "tertiary",
         "displayName": "Positive (paper surface)",
         "canonical": "#1b4d2c",
-        "dark": "#a8e0b4"
+        "dark": "#a8e0b4",
+        "tonalRamp": [
+          "oklch(0.150000 0.077889 151.9218)",
+          "oklch(0.264286 0.077889 151.9218)",
+          "oklch(0.378571 0.077889 151.9218)",
+          "oklch(0.492857 0.077889 151.9218)",
+          "oklch(0.607143 0.077889 151.9218)",
+          "oklch(0.721429 0.077889 151.9218)",
+          "oklch(0.835714 0.077889 151.9218)",
+          "oklch(0.950000 0.077889 151.9218)"
+        ]
       },
       "negative": {
         "role": "tertiary",
         "displayName": "Negative (paper surface)",
         "canonical": "#7a1c1c",
-        "dark": "#fbcdc7"
+        "dark": "#fbcdc7",
+        "tonalRamp": [
+          "oklch(0.150000 0.128735 25.6440)",
+          "oklch(0.264286 0.128735 25.6440)",
+          "oklch(0.378571 0.128735 25.6440)",
+          "oklch(0.492857 0.128735 25.6440)",
+          "oklch(0.607143 0.128735 25.6440)",
+          "oklch(0.721429 0.128735 25.6440)",
+          "oklch(0.835714 0.128735 25.6440)",
+          "oklch(0.950000 0.128735 25.6440)"
+        ]
       },
       "warning": {
         "role": "tertiary",
         "displayName": "Warning (paper surface)",
         "canonical": "#5c3600",
-        "dark": "#f5cf7a"
+        "dark": "#f5cf7a",
+        "tonalRamp": [
+          "oklch(0.150000 0.081783 67.3688)",
+          "oklch(0.264286 0.081783 67.3688)",
+          "oklch(0.378571 0.081783 67.3688)",
+          "oklch(0.492857 0.081783 67.3688)",
+          "oklch(0.607143 0.081783 67.3688)",
+          "oklch(0.721429 0.081783 67.3688)",
+          "oklch(0.835714 0.081783 67.3688)",
+          "oklch(0.950000 0.081783 67.3688)"
+        ]
       }
     },
     "typographyMeta": {
       "poster": {
         "displayName": "Poster",
-        "purpose": "Every h1. Anton caps at clamp(44px, 7.4vw, 112px), weight 400, printed in the sheet's own ink with the second ink shadowed off register."
+        "purpose": "Anton caps for h1s in the frame and designed pages, with the second ink offset behind the text."
       },
       "poster-sm": {
         "displayName": "Poster small",
-        "purpose": "Section h2s and closing statement lines. Anton caps at clamp(30px, 4vw, 56px), same off-register treatment."
+        "purpose": "Anton caps for section headings and closing statements in the designed pages."
       },
       "display": {
         "displayName": "Display",
-        "purpose": "Rare use above the h1 step. Newsreader 400 at clamp(46px, 5.6vw, 74px)."
+        "purpose": "Newsreader for named titles at the documented display step; poster type carries page headings."
       },
       "h2": {
         "displayName": "H2",
-        "purpose": "Section headings. Newsreader 400 at clamp(24px, 2.7vw, 32px)."
+        "purpose": "Newsreader at the h2 step for named headings; designed-page section headings use poster-sm."
       },
       "h3": {
         "displayName": "H3",
-        "purpose": "Sub-headings. Newsreader 400 at clamp(20px, 2.2vw, 26px)."
+        "purpose": "Newsreader for smaller named headings."
       },
       "lead": {
         "displayName": "Lead",
-        "purpose": "Standfirsts and pull quotes. Body face at clamp(19px, 2vw, 22px)."
+        "purpose": "Standfirsts and pull quotes in the body face."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Reading copy. Archivo (standing in for Helvetica Neue) at clamp(15px, 1.4vw, 16px), line-height 1.65."
+        "purpose": "Reading copy in the documented Helvetica Neue and Archivo body stack."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Kickers, meta rows, table headings. Fixed 11px uppercase, +0.08em tracking, weight 400 only, the fixed size in the whole scale."
+        "purpose": "Kickers, meta rows, and table headings at the fixed label step."
       },
       "mono": {
         "displayName": "Mono",
-        "purpose": "Readouts and tabular data. Fragment Mono, weight 400 only, tabular numerals."
+        "purpose": "Readouts and tabular data in Fragment Mono at weight 400."
       },
       "script": {
         "displayName": "Script",
-        "purpose": "The single footer wordmark. Great Vibes standing in for Snell Roundhand, used exactly once per page."
+        "purpose": "The footer wordmark in the Snell Roundhand and Great Vibes script stack."
       }
     },
     "shadows": [
       {
         "name": "offset",
         "value": "8px 8px 0 var(--c97-overprint)",
-        "purpose": "The one shadow the system allows: a printed plate, thumbnail, or panel sitting on a hard offset in the sheet's second ink."
+        "purpose": "The hard offset behind a plate or thumbnail in the sheet's second ink."
       },
       {
         "name": "offset-button",
@@ -214,12 +385,28 @@
     ],
     "breakpoints": [
       {
-        "name": "sm",
+        "name": "min-width-560",
+        "value": "560px"
+      },
+      {
+        "name": "min-width-640",
         "value": "640px"
       },
       {
-        "name": "lg",
-        "value": "1024px"
+        "name": "min-width-700",
+        "value": "700px"
+      },
+      {
+        "name": "min-width-881",
+        "value": "881px"
+      },
+      {
+        "name": "min-width-960",
+        "value": "960px"
+      },
+      {
+        "name": "min-width-1200",
+        "value": "1200px"
       }
     ]
   },
@@ -229,110 +416,86 @@
       "kind": "button",
       "refersTo": "btn-primary",
       "description": "Solid rectangle, no radius. Ink-2 fill with surface text; hover darkens to ink. Offset variant adds a 4px hard shadow in the sheet's second ink that collapses on press.",
-      "html": "<button class=\"c97-btn c97-offset\">View the work</button>",
-      "css": ".c97-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 clamp(22px, 2.6vw, 32px); border: 0; border-radius: 0; background: #4a3728; color: #f1ebdf; font-size: clamp(13px, 1.3vw, 15px); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1), color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .c97-btn:hover { background: #2b211a; } .c97-btn.c97-offset { box-shadow: 4px 4px 0 var(--c97-overprint); transition: box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1), transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .c97-btn.c97-offset:active { box-shadow: none; transform: translate(4px, 4px); }"
+      "html": "<div class=\"ds-preview\"><button class=\"ds-btn ds-offset\">View the work</button></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-btn { min-height: 48px; display: inline-flex; align-items: center; padding: 0 clamp(22px, 2.6vw, 32px); border: 0; border-radius: 0; background: #4a3728; color: #f1ebdf; font-family: inherit; font-size: clamp(13px, 1.3vw, 15px); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),\n    color 160ms cubic-bezier(0.22, 1, 0.36, 1),\n    transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn:hover { background: #2b211a; } .ds-btn.ds-offset { box-shadow: 4px 4px 0 #df4c1e; transition: box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1), transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn.ds-offset:active { box-shadow: none; transform: translate(4px, 4px); } .ds-btn:where(:not(:disabled)):active { transform: translateY(1px); } .ds-btn:disabled { background: none; color: #4a3728; border: 1px dashed #4a3728; box-shadow: none; transform: none; cursor: not-allowed; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Invert button",
       "kind": "button",
       "refersTo": "btn-invert",
       "description": "Swaps to full ink for use on a saffron or vermilion band, where the primary button's ink-2 fill would sit too close to the band's own ink.",
-      "html": "<button class=\"c97-btn c97-btn-invert\">Read more</button>",
-      "css": ".c97-btn-invert { background: #2b211a; color: #f1ebdf; } .c97-btn-invert:hover { background: #4a3728; }"
+      "html": "<div class=\"ds-preview\"><button class=\"ds-btn ds-btn-invert\">Read more</button></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-btn { min-height: 48px; display: inline-flex; align-items: center; padding: 0 clamp(22px, 2.6vw, 32px); border: 0; border-radius: 0; background: #4a3728; color: #f1ebdf; font-family: inherit; font-size: clamp(13px, 1.3vw, 15px); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),\n    color 160ms cubic-bezier(0.22, 1, 0.36, 1),\n    transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-invert { background: #2b211a; color: #f1ebdf; } .ds-btn-invert:hover { background: #4a3728; } .ds-btn:disabled { background: none; color: #4a3728; border: 1px dashed #4a3728; box-shadow: none; transform: none; cursor: not-allowed; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Outline button",
       "kind": "button",
       "refersTo": "btn-outline",
       "description": "The outlined display button, used once, on a route's closing vermilion band, set at the h2 step to match the closing line beside it.",
-      "html": "<button class=\"c97-btn-outline\">See the archive</button>",
-      "css": ".c97-btn-outline { min-height: 64px; display: inline-flex; align-items: center; padding: 0 clamp(22px, 2.6vw, 32px); border: 2px solid #2b211a; background: none; color: #2b211a; font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1), color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .c97-btn-outline:hover { background: #2b211a; color: #f1ebdf; }"
+      "html": "<div class=\"ds-preview\"><button class=\"ds-btn-outline\">See the archive</button></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-btn-outline { min-height: 64px; display: inline-flex; align-items: center; padding: 0 clamp(22px, 2.6vw, 32px); border: 2px solid #2b211a; background: none; color: #2b211a; font-family: inherit; font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1),\n    color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-outline:hover { background: #2b211a; color: #f1ebdf; } .ds-btn-outline:disabled { background: none; color: #4a3728; border: 1px dashed #4a3728; box-shadow: none; transform: none; cursor: not-allowed; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Printed panel",
       "kind": "card",
       "refersTo": "panel",
       "description": "A raised block, drawer, or sidebar. Elevation is a surface change here, so a panel is a flat tint of its sheet with no border, no radius, and no shadow.",
-      "html": "<div class=\"c97-panel\"><p class=\"c97-stat-label\">Uptime</p><p class=\"c97-stat-value\">99.999%</p></div>",
-      "css": ".c97-panel { background: #e4dbc9; padding: clamp(22px, 2.6vw, 32px); }"
+      "html": "<div class=\"ds-preview\"><div class=\"ds-panel\"><p class=\"ds-stat-label\">Uptime</p><p class=\"ds-stat-value\">99.999%</p></div></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-panel { background: #e4dbc9; padding: clamp(22px, 2.6vw, 32px); } .ds-stat-label { font-size: 11px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: #645e55; margin: 0; } .ds-stat-value { font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; font-variant-numeric: tabular-nums; font-feature-settings: \"tnum\" 1; color: #2b211a; margin: 0; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Field",
       "kind": "input",
       "refersTo": "field",
       "description": "A pale tint of the sheet with a bottom rule instead of a full border, and no radius. Focus shifts the accent in; there is no glow.",
-      "html": "<input class=\"c97-field\" type=\"text\" placeholder=\"Search\" />",
-      "css": ".c97-field { min-height: 48px; border: 0; border-bottom: 1px solid #4a3728; border-radius: 0; padding: 0 clamp(12px, 1.3vw, 17px); background: #e4dbc9; color: #2b211a; font-size: clamp(15px, 1.4vw, 16px); width: 100%; }"
+      "html": "<div class=\"ds-preview\"><input class=\"ds-field\" type=\"text\" placeholder=\"Search\" /></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-field { min-height: 48px; border: 0; border-bottom: 1px solid #4a3728; border-radius: 0; padding: 0 clamp(12px, 1.3vw, 17px); background: #e4dbc9; color: #2b211a; font-family: inherit; font-size: clamp(15px, 1.4vw, 16px); width: 100%; } .ds-field:disabled { background: none; color: #4a3728; border: 1px dashed #4a3728; box-shadow: none; transform: none; cursor: not-allowed; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Tag chip",
       "kind": "chip",
       "refersTo": "chip",
       "description": "A status or category tag. Label-step uppercase on the field tint, no radius. On several ink surfaces the status tones cannot clear 4.5:1 at body size, so the tone shows through ink instead.",
-      "html": "<span class=\"c97-chip\">Fintech</span>",
-      "css": ".c97-chip { display: inline-flex; align-items: center; gap: clamp(8px, 0.9vw, 10px); min-height: 28px; padding: 0 clamp(12px, 1.3vw, 17px); background: #e4dbc9; color: #2b211a; font-size: 11px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }"
+      "html": "<div class=\"ds-preview\"><span class=\"ds-chip\">Fintech</span></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-chip { display: inline-flex; align-items: center; gap: clamp(8px, 0.9vw, 10px); min-height: 28px; padding: 0 clamp(12px, 1.3vw, 17px); background: #e4dbc9; color: #2b211a; font-size: 11px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Mono readout",
       "kind": "custom",
-      "refersTo": "stat",
       "description": "The label, value, delta triplet that carries every measured figure on the site. The value is set in the body face at the h2 step, never Anton, which is kept for plate numerals and poster headlines.",
-      "html": "<div class=\"c97-stat\"><p class=\"c97-stat-label\">NPS</p><p class=\"c97-stat-value\">23 &rarr; 36</p></div>",
-      "css": ".c97-stat { display: grid; gap: clamp(8px, 0.9vw, 10px); align-content: start; } .c97-stat-label { font-size: 11px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: #645e55; margin: 0; } .c97-stat-value { font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; font-variant-numeric: tabular-nums; color: #2b211a; margin: 0; }"
+      "html": "<div class=\"ds-preview\"><div class=\"ds-stat\"><p class=\"ds-stat-label\">NPS</p><p class=\"ds-stat-value\">23 &rarr; 36</p></div></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-stat { display: grid; gap: clamp(8px, 0.9vw, 10px); align-content: start; } .ds-stat-label { font-size: 11px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: #645e55; margin: 0; } .ds-stat-value { font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; font-variant-numeric: tabular-nums; font-feature-settings: \"tnum\" 1; color: #2b211a; margin: 0; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; } @media (prefers-reduced-motion: reduce) { .ds-preview :is(a,button,input) { transition-duration: 0.01ms; } }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "The wrapping header links, with a filled current-page state and an underlined hover state.",
+      "html": "<div class=\"ds-preview\"><nav class=\"ds-header-nav\" aria-label=\"Pages\"><a class=\"ds-microlink ds-header-link\" href=\"#home\">Home</a><a class=\"ds-microlink ds-header-link\" href=\"#work\" aria-current=\"page\">Work</a><a class=\"ds-microlink ds-header-link\" href=\"#writing\">Writing</a></nav></div>",
+      "css": ".ds-preview { color: #2b211a; font-family: \"Helvetica Neue\", Helvetica, \"Archivo\", Arial,\n    sans-serif; } .ds-header-nav { display: flex; align-items: center; column-gap: clamp(22px, 2.6vw, 32px); row-gap: clamp(40px, 5vw, 68px); flex-wrap: wrap; } .ds-microlink { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #645e55; text-decoration: none; padding: 16px 8px; margin: calc(-1 * 16px) calc(-1 * 8px); display: inline-block; transition: color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-header-link { color: #4a3728; } .ds-header-link:not([aria-current]):hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; } .ds-header-link[aria-current] { background: #2b211a; color: #f1ebdf; } .ds-preview :is(a,button,input):focus-visible { outline: 2px solid #6e2b36; outline-offset: 3px; border-radius: 0; box-shadow: none; }"
     }
   ],
   "narrative": {
     "northStar": "Catalog 97",
-    "overview": "Catalog 97 treats every page as a print run off a risograph press. A route is built from bands of grained paper stock, each one a sheet that can change color as the page scrolls, and a sheet that changes surface tears over the one above it in a rough torn or deckled edge. Two lead riso inks carry a page's identity, chosen from blue, saffron, vermilion, green, teal, and pink, with peach counting as a vermilion tint and not a seventh option. Display type is poster type, Anton caps for every h1 and section h2, printed in the sheet's own ink with the second ink shadowed a few hundredths of an em off register. Newsreader carries every other heading at weight 400 only, Archivo carries body copy, and Fragment Mono carries readouts and micro-labels at weight 400 only. The system draws no rounded corners and no blurred shadow; the one shadow it allows is the hard printed offset behind a plate, thumbnail, or button.",
+    "overview": "Catalog 97 treats every page as a print run off a risograph press. A route is built from bands of grained paper stock, each one a \"sheet\" that can change color as the page scrolls, and a sheet that changes surface tears over the one above it in a rough torn or deckled edge. Two lead riso inks carry a page's identity, chosen from blue, saffron, vermilion, green, teal, and pink, with peach counting as a vermilion tint and not a seventh option. Everything else sits on the neutral stock, paper, bone, stone, chocolate, or espresso.\n\nDisplay type is poster type. Anton caps set every h1 and every section h2, printed in the sheet's own ink with the second ink shadowed a few hundredths of an em off register, the way a two-color riso run drifts slightly out of registration. Newsreader carries every other heading and named title at weight 400 only, because the design never bolds the serif. Archivo stands in for Helvetica Neue, which the source design specifies but which only renders on macOS, and it carries body copy and the kickers and meta rows that use Fragment Mono's tabular pitch for anything measured or counted. Fragment Mono ships at weight 400 only. Great Vibes stands in for Snell Roundhand, another macOS-only face, and it appears exactly once, in the footer's script wordmark.\n\nThe system draws no rounded corners and no blurred shadow anywhere. `tailwind.config.ts` compiles the whole radius scale and the whole shadow scale to nothing, so a stray `rounded-lg` or `shadow-sm` left in markup paints square and flat. The one shape exception is the radio input, which sets `border-radius: 50%` so it renders as a circle. The one shadow the system allows is the hard printed offset, `.c97-offset`, a flat rectangle of the sheet's second ink sitting behind a plate, a thumbnail, or a primary button.",
     "keyCharacteristics": [
-      "Sheets of grained paper stock, not flat panels. Every surface tears over its neighbor when the surface changes.",
+      "Sheets of grained paper stock, not flat panels. Every surface carries a soft speckle texture and tears over its neighbor when the surface changes.",
       "Two lead riso inks per page, chosen from six plus a vermilion tint, never a third.",
       "Anton poster caps on every h1 and section h2, shadowed off register in the page's second ink.",
-      "Newsreader at weight 400 for every other heading, and Archivo for body copy and kickers.",
+      "Newsreader at weight 400 for every other heading and title, and Archivo for body copy and kickers.",
       "Zero radius and zero blurred shadow. The only shadow is the hard offset behind a printed plate, thumbnail, or button.",
       "Fragment Mono at weight 400 only, with tabular numerals for anything measured or counted."
     ],
     "rules": [
       {
-        "name": "The Two-Ink Rule",
-        "body": "A page picks exactly two lead riso inks from blue, saffron, vermilion, green, teal, and pink, with peach counting as a vermilion tint. A third lead ink is never introduced.",
-        "section": "colors"
-      },
-      {
-        "name": "The Surface Rule",
-        "body": "A component never sets a color directly. It sits inside a data-c97-surface and reads that surface's own --c97-ink, --c97-ink-2, --c97-label, --c97-action, --c97-accent, and --c97-rule, which is what makes the dark palette a single override per surface rather than a per-component edit.",
-        "section": "colors"
-      },
-      {
-        "name": "The Data-Color Rule",
-        "body": "Team liveries, transit line colors, and party colors stay data and never become inks. A route whose data already speaks in blue and red, for instance, prints its own two lead inks in neither, and because those colors used as small text routinely fail 4.5:1, the color goes on a swatch or a mark while the label text prints in the surface's own ink.",
-        "section": "colors"
-      },
-      {
-        "name": "The Poster Rule",
-        "body": "Anton caps carry every h1 and every section h2 or closing statement, printed in the sheet's own ink with the second ink cast as a text-shadow off register. Project and article titles stay in Newsreader because they name a specific thing.",
-        "section": "typography"
-      },
-      {
-        "name": "The Honest Weight Rule",
-        "body": "Fragment Mono ships at weight 400 only, and Newsreader never bolds. Anton draws numerals at the plate size only, never running text.",
-        "section": "typography"
-      },
-      {
-        "name": "The No-Radius Rule",
-        "body": "tailwind.config.ts compiles every step of the radius scale and the shadow scale to nothing. The one shape exception is the radio input, which sets border-radius: 50% so it renders as a circle. The one shadow exception is the hard printed offset, .c97-offset.",
-        "section": "shapes"
-      },
-      {
-        "name": "The Ladder Rule",
-        "body": "Nothing in a Catalog 97 route uses a gap, margin, or band padding that is not one of the seven --c97-sp steps, and nothing is added to the frozen type or measure scales.",
+        "name": "Project routes own their design",
+        "body": "Isaac's decision on 2026-10-10 is that each project route owns its design inside the site frame. The header, the one `main`, and the footer stay Catalog 97, and everything a project renders inside them is the project's, from the layout and whether there is a hero at all to the type scale, the density, and its own color system where the genre calls for it. The `--c97-*` tokens stay available there as a default and are never required. The contract a project route follows, including the shared rules that leak into a project root and how to handle them, is the \"Project routes\" section of `DESIGN_CHECKLIST.md`, and the spec is `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`.",
         "section": "layout"
       }
     ],
     "dos": [
-      "Set data-c97-surface on the section and read var(--c97-ink), var(--c97-ink-2), var(--c97-label), var(--c97-action), var(--c97-accent), and var(--c97-rule) inside it.",
-      "Keep every gap, margin, and band padding on the --c97-sp-1 through --c97-sp-7 ladder.",
-      "Keep radii at zero in the frame and on the seven designed pages, and let the one hard .c97-offset shadow stand in for every other shadow there; since 2026-10-11 a project route decides for itself in its own route CSS.",
+      "Set `data-c97-surface` on the section and read `var(--c97-ink)`, `var(--c97-ink-2)`, `var(--c97-label)`, `var(--c97-action)`, `var(--c97-accent)`, and `var(--c97-rule)` inside it, and never set a color directly on a component.",
+      "Keep every gap, margin, and band padding on the `--c97-sp-0` through `--c97-sp-7` ladder, with `sp-0` as the hairline step and only an optical nudge of 2px or less off it.",
+      "Keep radii at zero in the frame and on the designed pages, and let the one hard `.c97-offset` shadow stand in for every other shadow there; a project route decides for itself in its own route CSS.",
       "Keep Fragment Mono at weight 400 and set tabular numerals on anything measured or counted.",
       "Keep Newsreader at weight 400, and reserve Anton poster type for h1s, section h2s, and closing statements.",
       "Confirm a status color clears 4.5:1 as body-size text on its surface before shipping it that way; several surfaces are large-text-or-mark only and fall back to ink.",
@@ -340,10 +503,10 @@
     ],
     "donts": [
       "Don't hardcode a hex in a component; read the token for the surface the component sits inside.",
-      "Don't round a corner or add a blurred shadow in the frame or on a designed page; a project route decides for itself since 2026-10-11.",
+      "Don't round a corner or add a blurred shadow in the frame or on a designed page.",
       "Don't fake a bold Fragment Mono weight, and don't bold Newsreader.",
       "Don't give a print run a third lead ink. A page picks exactly two, and peach counts as a vermilion tint, not a seventh ink.",
-      "Don't read a --home-*, --surface-*, --text-*, --border-*, --color-*, --radius-*, or --shadow-* token, and don't reach for HomeStatsPanel, WarmCard, Badge, Chip, Kicker, SectionIntro, Heading, Paragraph, or InlineSectionLead; all were deleted with the Working Instrument on 2026-09-27."
+      "Don't read a `--home-*`, `--surface-*`, `--text-*`, `--border-*`, `--color-*`, `--radius-*`, or `--shadow-*` token, and don't reach for `HomeStatsPanel`, `WarmCard`, `Badge`, `Chip`, `Kicker`, `SectionIntro`, `Heading`, `Paragraph`, or `InlineSectionLead`; all were deleted with the Working Instrument on 2026-09-27."
     ]
   }
 }
