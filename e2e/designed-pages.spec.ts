@@ -26,3 +26,19 @@ test.describe("About", () => {
     await expect(page.locator("[data-specimen] h3")).toHaveCount(4);
   });
 });
+
+test.describe("Résumé", () => {
+  test("sets the sheet on the bed with the rails beside it", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/resume");
+    await expect(page.locator("h1")).toHaveText("Isaac Vazquez");
+    const sheet = page.locator("[data-sheet]");
+    const bed = page.locator("[data-c97-surface='bone']").first();
+    await expect(sheet).toBeVisible();
+    const [s, b] = await Promise.all([sheet.boundingBox(), bed.boundingBox()]);
+    expect(s!.width).toBeLessThanOrEqual(680);
+    expect(s!.height).toBeGreaterThanOrEqual((s!.width * 11) / 8.5 - 1);
+    expect(Math.abs(s!.x + s!.width / 2 - (b!.x + b!.width / 2))).toBeLessThan(2);
+    await expect(page.locator("[data-sheet] h2")).toHaveCount(4);
+  });
+});

@@ -1,35 +1,110 @@
 /*
- * The experience list on screen. Every entry is a subgrid of the list's two
- * tracks, so the longest date range sets one date column for all of them.
- * When each entry had its own `auto 1fr` grid, "Jan 2022 to Jan 2025" pushed
- * its own title right of the others. On a phone the date stacks over the
- * entry, since a side column left the description about 200px wide at 390.
+ * The résumé as the sheet on the press bed. The bed is the bone band, the
+ * sheet is a paper article at letter proportions between two rails, and every
+ * colour is a token. The offset wrapper sits outside the sheet so it reads the
+ * bed's second ink, which is blue by day and follows the system's dark-mode
+ * flip, while the name on the sheet keeps the paper's own overprint.
  */
-.experience {
+.bed {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--c97-sp-4);
+  grid-template-columns: 180px minmax(0, 680px) 180px;
+  gap: var(--c97-sp-5);
+  justify-content: center;
+  align-items: start;
+}
+
+.rail {
+  display: grid;
+  gap: var(--c97-sp-2);
+  justify-items: start;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.railBreak {
+  margin-top: var(--c97-sp-2);
+}
+
+.offset {
+  box-shadow: 10px 10px 0 var(--c97-overprint);
+}
+
+.sheet {
+  aspect-ratio: 8.5 / 11;
+  padding: 40px 44px;
+  background: var(--c97-surface);
+  color: var(--c97-ink);
+  font-size: var(--c97-fs-label);
+  line-height: 1.4;
+}
+
+.name {
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--c97-sp-0) var(--c97-sp-2);
+  margin-top: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--c97-ink);
+}
+
+.heading {
+  margin: var(--c97-sp-3) 0 var(--c97-sp-1);
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--c97-rule);
+  font-family: var(--c97-font-poster);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .entry {
   display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: subgrid;
-  row-gap: var(--c97-sp-1);
-  align-items: baseline;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: var(--c97-sp-2);
+  margin-top: var(--c97-sp-1);
 }
 
-@media print, screen and (max-width: 600px) {
-  .experience {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.when {
+  font-family: var(--c97-font-display);
+  color: var(--c97-label);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-/* The capabilities ledger: the category in a shared column, the tools beside it. */
+.role {
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-small);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.company {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  margin: 2px 0 3px;
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-0);
+}
+
+.description {
+  color: var(--c97-ink-2);
+}
+
 .ledger {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--c97-sp-2) var(--c97-sp-4);
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: var(--c97-sp-0) var(--c97-sp-2);
   margin: 0;
 }
 
@@ -40,34 +115,59 @@
   align-items: baseline;
 }
 
-@media print, screen and (max-width: 600px) {
+.ledgerRow dt {
+  font-family: var(--c97-font-display);
+}
+
+.ledgerRow dd {
+  margin: 0;
+  color: var(--c97-ink-2);
+}
+
+.foot {
+  margin-top: var(--c97-sp-3);
+  padding-top: var(--c97-sp-0);
+  border-top: 1px solid var(--c97-rule);
+  font-family: var(--c97-font-display);
+  font-style: italic;
+  text-align: right;
+  color: var(--c97-label);
+}
+
+@media (max-width: 880px) {
+  .bed {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--c97-sp-4);
+  }
+
+  .sheet {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .entry,
   .ledger {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
   }
 }
 
 /*
- * Print stylesheet for /resume. Every print rule hangs off
- * `.print`, a `display: contents` wrapper that only the résumé renders, or off
- * `.mark` and `.screenOnly`, which only the résumé uses, so printing any other
- * route is untouched. On screen the wrapper adds no box and the pressman's
- * mark stays hidden.
+ * Print stylesheet for /resume. Every print rule hangs off `.print`, a
+ * `display: contents` wrapper that only the résumé renders, so printing any
+ * other route is untouched. On paper the bed is paper, the download rail is
+ * gone, the sheet prints at the page width without its offset, and the
+ * links rail follows the sheet at its left edge.
  */
-
 .print {
   display: contents;
 }
 
-.mark {
-  display: none;
-}
-
 @media print {
-  /*
-   * The print inks, redeclared as black on white. Every band sets its own
-   * tokens through `data-c97-surface`, so these go on every element and win
-   * with !important, and on the body, which sits outside the wrapper.
-   */
   :global(body):has(.print),
   .print,
   .print * {
@@ -97,11 +197,9 @@
   .print :global(.c97-header),
   .print footer,
   .print nav,
-  .print aside,
   .print button,
-  .print a[download],
   .print :global(.c97-halftone),
-  .screenOnly {
+  .downloadRail {
     display: none !important;
   }
 
@@ -113,37 +211,33 @@
     max-width: none;
   }
 
-  .print main {
-    font-size: 10.5pt;
-    line-height: 1.4;
+  .bed {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14pt;
   }
 
-  .print h1 {
-    font-size: 24pt !important;
-    max-width: none !important;
+  .sheet {
+    aspect-ratio: auto;
+    padding: 0;
+    font-size: 10pt;
   }
 
-  .print h2 {
-    font-size: 14pt !important;
-    margin-bottom: 6pt;
-    padding-bottom: 3pt;
-    border-bottom: 1pt solid var(--c97-rule);
+  .name {
+    font-size: 24pt;
   }
 
-  .print h3 {
-    font-size: 11.5pt !important;
+  .heading {
+    font-size: 14pt;
   }
 
-  .print :global(.c97-prose),
-  .print :global(.c97-lead) {
-    font-size: 10pt !important;
-    line-height: 1.4 !important;
-    max-width: none !important;
+  .role {
+    font-size: 11.5pt;
   }
 
-  .print :global(.c97-meta),
-  .print :global(.c97-kicker) {
-    font-size: 8.5pt !important;
+  .entry,
+  .ledger {
+    grid-template-columns: 17ch 1fr;
+    gap: 12pt;
   }
 
   /*
@@ -158,21 +252,13 @@
   }
 
   /* Keep each entry whole, and keep a heading with what follows it. */
-  .print article,
-  .print :global(.c97-columns) > div {
+  .entry {
     break-inside: avoid;
   }
 
-  .print h2,
-  .print h3 {
+  .heading,
+  .role {
     break-after: avoid;
-  }
-
-  /* One date column for every entry, instead of one per entry. */
-  .print article,
-  .ledgerRow {
-    grid-template-columns: 17ch 1fr !important;
-    gap: 12pt !important;
   }
 
   /*
@@ -202,16 +288,12 @@
     content: " (" attr(href) ")";
   }
 
-  /* The pressman's mark, signed at the foot of the job. */
-  .mark {
-    display: block;
-    max-width: none;
+  /* The pressman's line, signed at the foot of the job. */
+  .foot {
     margin-top: 18pt;
     padding-top: 6pt;
     border-top: 0.5pt solid var(--c97-rule);
     font-size: 8pt;
-    font-style: italic;
-    text-align: right;
     break-inside: avoid;
   }
 }

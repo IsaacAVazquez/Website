@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
+import { profile } from "@/lib/profile";
 import { careerTimeline } from "@/constants/personal";
 import styles from "./Catalog97Resume.module.css";
 
@@ -177,242 +178,117 @@ const interests =
 const RESUME_PDF = "/Isaac_Vazquez_Resume.pdf";
 
 /**
- * Résumé, as one set document (2026-10-18).
+ * Résumé, as the sheet on the press bed (2026-10-19).
  *
- * One paper sheet, the way the printed one-pager reads. The hero is the word
- * in poster type, one line naming the role, and the Download PDF button
- * beside them, once. Experience starts within the first screen and keeps its
- * subgrid date column and company marks, and education, capabilities, and
- * outside work follow under hairline rules. The chocolate download band, the
- * blue capabilities grid, the saffron three-column band, and "References
- * available on request" are gone. The page ends on the sentence about walking
- * through any project line by line, with the Get in touch link that
- * `e2e/resume.spec.ts` measures on paper.
+ * One bone band, the bed, and on it the sheet at letter proportions with the
+ * whole record set tight the way the one-pager prints, between two rails. The
+ * left rail is the download, the right rail is the write-ups and the Get in
+ * touch link that `e2e/resume.spec.ts` measures on paper. The sheet runs
+ * longer than one page with the real entries, which is fine, since the PDF is
+ * its own one-page document. The bed's offset is the bed's own second ink, so
+ * it is blue by day and follows the system's flip by night.
  *
  * Everything below is the real record. There is no certifications section
  * because there are no certifications to list.
  */
-function Rule() {
-  return (
-    <hr
-      aria-hidden="true"
-      style={{
-        border: 0,
-        borderTop: "1px solid var(--c97-rule)",
-        margin: "var(--c97-sp-5) 0 var(--c97-sp-4)",
-      }}
-    />
-  );
-}
-
 export function Catalog97Resume() {
   return (
     <div className={styles.print}>
       <Catalog97Shell>
-        {/* Hero, the document's title row. */}
-        <section className="c97-band c97-sheet" data-c97-surface="paper">
-          {/*
-            Flex with wrap rather than `grid: 1fr auto`, because `.c97-btn` is
-            nowrap with a 160px floor and at a 320px viewport a grid track
-            kept that width inside a 52.8px column and scrolled the page
-            sideways.
-          */}
-          <div
-            className="c97-shell"
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--c97-sp-4)",
-              alignItems: "end",
-              justifyContent: "space-between",
-            }}
-          >
-            <div style={{ flex: "1 1 260px", minWidth: 0 }}>
-              <h1 className="c97-poster">Résumé</h1>
-              <p
-                className="c97-lead"
-                style={{
-                  marginTop: "var(--c97-sp-2)",
-                  maxWidth: "var(--c97-measure-wide)",
-                  lineHeight: "var(--c97-lh-body)",
-                }}
-              >
-                Second-year MBA at Berkeley Haas, after six years in campaign
-                data, QA, and product work.
-              </p>
+        <section className="c97-band" data-c97-surface="bone">
+          <div className={`c97-shell ${styles.bed}`}>
+            <aside className={`${styles.rail} ${styles.downloadRail}`} aria-label="Download">
+              <p className="c97-kicker">Press bed · one sheet</p>
+              <p>The full version, set in Berkeley. The PDF is the one-page version.</p>
+              <a className="c97-btn c97-offset" href={RESUME_PDF} download>
+                Download PDF
+              </a>
+            </aside>
+
+            <div className={styles.offset}>
+              <article className={styles.sheet} data-sheet data-c97-surface="paper">
+                <h1 className={`c97-poster ${styles.name}`}>Isaac Vazquez</h1>
+                <p className={`c97-kicker ${styles.contact}`}>
+                  <span>Berkeley, California</span>
+                  <span>{profile.email}</span>
+                  <span>linkedin/isaac-vazquez</span>
+                  <span>github/IsaacAVazquez</span>
+                </p>
+
+                <h2 className={styles.heading}>Experience</h2>
+                {experience.map((entry) => (
+                  <article key={`${entry.company}-${entry.role}`} className={styles.entry}>
+                    <p className={styles.when}>{entry.when}</p>
+                    <div>
+                      <h3 className={styles.role}>{entry.role}</h3>
+                      <p className={`c97-meta ${styles.company}`}>
+                        <span className={styles.mark}>
+                          <Catalog97CompanyMark company={entry.company} />
+                          {entry.company}
+                        </span>
+                        <span>{entry.kind}</span>
+                      </p>
+                      <p className={styles.description}>{entry.description}</p>
+                    </div>
+                  </article>
+                ))}
+
+                <h2 className={styles.heading}>Education</h2>
+                {education.map((entry) => (
+                  <article key={entry.company} className={styles.entry}>
+                    <p className={styles.when}>{entry.when}</p>
+                    <div>
+                      <h3 className={styles.role}>{entry.role}</h3>
+                      <p className={`c97-meta ${styles.company}`}>
+                        <span className={styles.mark}>
+                          <Catalog97CompanyMark company={entry.company} />
+                          {entry.company}
+                        </span>
+                      </p>
+                      {entry.description ? (
+                        <p className={styles.description}>{entry.description}</p>
+                      ) : null}
+                    </div>
+                  </article>
+                ))}
+
+                <h2 className={styles.heading}>Capabilities</h2>
+                <dl className={styles.ledger}>
+                  {capabilities.map((group) => (
+                    <div key={group.category} className={styles.ledgerRow}>
+                      <dt>{group.category}</dt>
+                      <dd>{group.skills}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <h2 className={styles.heading}>Outside work</h2>
+                <p className={styles.description}>{interests}</p>
+
+                {/* The pressman's line, the one line that says what the object is. */}
+                <p className={styles.foot}>
+                  Set in Berkeley. The live copy is at isaacvazquez.com/resume.
+                </p>
+              </article>
             </div>
-            <a className="c97-btn c97-offset" href={RESUME_PDF} download>
-              Download PDF
-            </a>
+
+            <aside className={styles.rail} aria-label="Also on this site">
+              <p className="c97-kicker">Also on this site</p>
+              <p>The Juno and Civitech entries each have a long-form write-up under Writing.</p>
+              <Link className="c97-btn-ghost" href="/writing/juno-mba-growth-internship">
+                Juno write-up
+              </Link>
+              <Link className="c97-btn-ghost" href="/writing/civitech-quality-and-product-work">
+                Civitech write-up
+              </Link>
+              <p className={`c97-kicker ${styles.railBreak}`}>References</p>
+              <p>I&rsquo;m happy to walk through any project on this site line by line.</p>
+              <Link className="c97-btn-ghost" href="/contact">
+                Get in touch
+              </Link>
+            </aside>
           </div>
         </section>
-
-        {/* The document body, continuing the hero's paper. */}
-        <section className="c97-band c97-band-continues" data-c97-surface="paper">
-          <div className="c97-shell">
-            <h2 className="c97-poster-sm">Experience</h2>
-            <div
-              className={styles.experience}
-              style={{ marginTop: "var(--c97-sp-3)" }}
-            >
-              {experience.map((entry) => (
-                <article
-                  key={`${entry.company}-${entry.role}`}
-                  className={styles.entry}
-                >
-                  <div
-                    className="c97-serif c97-tabular"
-                    style={{
-                      fontSize: "var(--c97-fs-body)",
-                      color: "var(--c97-label)",
-                      minWidth: "9ch",
-                    }}
-                  >
-                    {entry.when}
-                  </div>
-                  <div>
-                    <h3
-                      className="c97-serif c97-h3"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    >
-                      {entry.role}
-                    </h3>
-                    <p
-                      className="c97-meta"
-                      style={{ marginTop: "var(--c97-sp-1)" }}
-                    >
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "var(--c97-sp-1)",
-                        }}
-                      >
-                        <Catalog97CompanyMark company={entry.company} />
-                        {entry.company}
-                      </span>
-                      <span>{entry.kind}</span>
-                    </p>
-                    <p
-                      className="c97-prose"
-                      style={{ marginTop: "var(--c97-sp-2)" }}
-                    >
-                      {entry.description}
-                    </p>
-                    {entry.writeUp ? (
-                      <p
-                        className={styles.screenOnly}
-                        style={{ marginTop: "var(--c97-sp-2)" }}
-                      >
-                        <Link className="c97-microlink" href={entry.writeUp}>
-                          Read the write-up
-                          <span className="sr-only"> on my {entry.company} work</span>
-                        </Link>
-                      </p>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <Rule />
-
-            <h2 className="c97-poster-sm">Education</h2>
-            <div className={styles.experience} style={{ marginTop: "var(--c97-sp-3)" }}>
-              {education.map((entry) => (
-                <article key={entry.company} className={styles.entry}>
-                  <div
-                    className="c97-serif c97-tabular"
-                    style={{
-                      fontSize: "var(--c97-fs-body)",
-                      color: "var(--c97-label)",
-                      minWidth: "9ch",
-                    }}
-                  >
-                    {entry.when}
-                  </div>
-                  <div>
-                    <h3
-                      className="c97-serif c97-h3"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    >
-                      {entry.role}
-                    </h3>
-                    <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "var(--c97-sp-1)",
-                        }}
-                      >
-                        <Catalog97CompanyMark company={entry.company} />
-                        {entry.company}
-                      </span>
-                    </p>
-                    {entry.description ? (
-                      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-                        {entry.description}
-                      </p>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <Rule />
-
-            <h2 className="c97-poster-sm">Capabilities</h2>
-            {/* A ledger, category then tools, so no group strands on a last row. */}
-            <dl className={styles.ledger} style={{ marginTop: "var(--c97-sp-3)" }}>
-              {capabilities.map((group) => (
-                <div key={group.category} className={styles.ledgerRow}>
-                  <dt className="c97-serif c97-lead">{group.category}</dt>
-                  <dd
-                    className="c97-prose"
-                    style={{ margin: 0, color: "var(--c97-ink-2)" }}
-                  >
-                    {group.skills}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <Rule />
-
-            <h2 className="c97-poster-sm">Outside work</h2>
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-2)",
-                lineHeight: "var(--c97-lh-loose)",
-                maxWidth: "var(--c97-measure-wide)",
-              }}
-            >
-              {interests}
-            </p>
-
-            <Rule />
-
-            <p className="c97-prose" style={{ maxWidth: "var(--c97-measure-wide)" }}>
-              I&rsquo;m happy to walk through any project on this site line by
-              line.
-            </p>
-            <Link
-              className="c97-btn-ghost"
-              href="/contact"
-              style={{ marginTop: "var(--c97-sp-2)" }}
-            >
-              Get in touch
-            </Link>
-          </div>
-        </section>
-
-        {/* Hidden on screen. Print only, the way a printer signs a job. */}
-        <p className={styles.mark}>
-          I set this page in Berkeley, and you printed it. The live copy is at
-          isaacvazquez.com/resume.
-        </p>
       </Catalog97Shell>
     </div>
   );
