@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-19T21:35:39.719Z",
+  "generatedAt": "2026-10-20T20:40:30.493Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-19T21:35:40.492Z",
+        "accessedAt": "2026-10-20T20:40:31.275Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -1882,7 +1882,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 209,
@@ -2260,7 +2260,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 63,
             "rank": 251,
@@ -4357,7 +4357,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 170,
             "rank": 484,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-19T21:35:40.971Z",
+        "accessedAt": "2026-10-20T20:40:31.770Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -7136,7 +7136,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 63,
             "rank": 197,
@@ -7442,7 +7442,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 231,
@@ -9413,7 +9413,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 170,
             "rank": 450,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-19T21:35:41.626Z",
+        "accessedAt": "2026-10-20T20:40:32.956Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -12084,7 +12084,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 63,
             "rank": 151,
@@ -13137,7 +13137,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 268,
@@ -14955,7 +14955,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 170,
             "rank": 470,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-19T21:35:42.237Z",
+        "accessedAt": "2026-10-20T20:40:34.058Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -17988,7 +17988,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 211,
@@ -18033,7 +18033,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 61,
             "rank": 216,
@@ -20643,7 +20643,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 171,
             "rank": 506,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-19T21:35:42.956Z",
+        "accessedAt": "2026-10-20T20:40:34.970Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -23305,7 +23305,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 61,
             "rank": 206,
@@ -23566,7 +23566,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 235,
@@ -25510,7 +25510,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 171,
             "rank": 451,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-19T21:35:44.098Z",
+        "accessedAt": "2026-10-20T20:40:35.668Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -28091,7 +28091,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 61,
             "rank": 142,
@@ -29207,7 +29207,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 266,
@@ -30998,7 +30998,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 171,
             "rank": 465,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-19T21:35:45.425Z",
+        "accessedAt": "2026-10-20T20:40:49.084Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -39177,7 +39177,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 61,
             "rank": 182,
@@ -39708,7 +39708,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 241,
@@ -42030,7 +42030,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 172,
             "rank": 499,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-19T21:35:45.856Z",
+        "accessedAt": "2026-10-20T20:40:49.885Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -44161,7 +44161,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 61,
             "rank": 140,
@@ -45565,7 +45565,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 296,
@@ -47050,7 +47050,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 172,
             "rank": 461,
