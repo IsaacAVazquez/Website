@@ -452,6 +452,7 @@ export function Catalog97Dashboards({
       {/* Pull log. Its own band, because in the grid it read as an openable tile. */}
       {pullLog.length > 0 ? (
         <section
+          aria-labelledby="dashboards-pull-log"
           className="c97-band c97-sheet"
           data-c97-surface="bone"
           data-seam="deckle"
@@ -463,7 +464,7 @@ export function Catalog97Dashboards({
               under its own 22px h3 neighbours, the kicker-as-heading defect
               the August sweeps fixed on the other six routes.
             */}
-            <h2 className="c97-poster-sm">Pull log</h2>
+            <h2 id="dashboards-pull-log" className="c97-poster-sm">Pull log</h2>
             <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
               Times PT
             </p>
@@ -488,12 +489,13 @@ export function Catalog97Dashboards({
 
       {/* How the data works */}
       <section
+        aria-labelledby="dashboards-how-the-data-works"
         className="c97-band c97-band-taller c97-sheet"
         data-c97-surface="ink-blue"
         data-seam="torn"
       >
         <div className="c97-shell">
-          <h2 className="c97-poster-sm">How the data works</h2>
+          <h2 id="dashboards-how-the-data-works" className="c97-poster-sm">How the data works</h2>
           <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
             {dataNotes.map((note) => (
               <div key={note.title}>

@@ -75,3 +75,7 @@ A headshot fills the hero portrait slot, so the image-slot bullet near the top o
 ## Clarify pass, 2026-10-19
 
 The link under "Selected work" reads "All the work" instead of "All projects", so the route has the one name the header gives it. "See the work" in the hero is unchanged.
+
+## Harden pass, 2026-10-19
+
+The content bands are named landmarks now. A `section` with no accessible name is not exposed as a region at all, so the bands whose heading always renders carry `aria-labelledby` pointing at that heading's `id`, and the two bands with no heading of their own on Writing carry a literal `aria-label` ("Featured writing", "Browse by topic"), as does the lead band on Work ("Projects"). Hero bands, the filter band, the vermilion bridge on Writing, and the closing CTAs stay unnamed on purpose, since they are not destinations a landmark list should offer. Zero dangling `aria-labelledby` references measured on every route.

@@ -80,6 +80,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
 
       {/* Lead entries */}
       <section
+        aria-label="Projects"
         className="c97-band c97-band-tall c97-sheet"
         data-c97-surface="ink-saffron"
         data-seam="torn"
@@ -172,6 +173,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
 
       {/* The two jobs */}
       <section
+        aria-labelledby="work-where-from"
         className="c97-band c97-band-tall c97-sheet"
         data-c97-surface="ink-blue"
         data-seam="torn"
@@ -180,7 +182,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
           className="c97-shell"
           style={{ display: "grid", gap: "var(--c97-sp-4)" }}
         >
-          <h2 className="c97-poster-sm">Where the product work came from</h2>
+          <h2 id="work-where-from" className="c97-poster-sm">Where the product work came from</h2>
           {CAREER_WRITE_UPS.map((job) => (
             <article
               key={job.href}

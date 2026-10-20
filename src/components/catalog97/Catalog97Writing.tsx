@@ -219,6 +219,7 @@ export function Catalog97Writing({
       */}
       {featured.length > 0 ? (
         <section
+          aria-label="Featured writing"
           className="c97-band c97-band-tall c97-sheet"
           data-c97-surface="ink-blue"
           data-seam="torn"
@@ -321,6 +322,7 @@ export function Catalog97Writing({
         height, so whatever field it takes becomes the route.
       */}
       <section
+        aria-labelledby="writing-archive"
         className="c97-band c97-sheet"
         data-c97-surface="paper"
         data-seam="torn"
@@ -341,7 +343,7 @@ export function Catalog97Writing({
               are already at that step and the header would land exactly on its
               own children. --c97-fs-h2 clears them at both ends of the clamp.
             */}
-            <h2 className="c97-poster-sm">Archive</h2>
+            <h2 id="writing-archive" className="c97-poster-sm">Archive</h2>
             <p className="c97-kicker c97-tabular">
               {archive.length} {archive.length === 1 ? "piece" : "pieces"}
             </p>
@@ -619,6 +621,7 @@ export function Catalog97Writing({
       </section>
 
       <section
+        aria-label="Browse by topic"
         className="c97-band c97-sheet"
         data-c97-surface="bone"
         data-seam="deckle"

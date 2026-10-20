@@ -7,11 +7,15 @@ import styles from "./Catalog97Contact.module.css";
 export const CONTACT_DATE_MODIFIED = "2026-10-19";
 
 // A 44px tap height for the address links without moving them off their line,
-// the same padding and cancelling margin the header wordmark uses.
+// the same padding and cancelling margin the header wordmark uses. The padding
+// is solved from the line height rather than fixed at --c97-touch-y, because
+// 16px on a 25px to 29px line made each link 58px to 61px tall and the three
+// stacked links overlapped by 9px at 1440 and 15px at 390 (critique,
+// 2026-10-19). With .lines at --c97-sp-3 the boxes clear each other at both.
 const touchTarget = {
   display: "inline-block",
-  paddingBlock: "var(--c97-touch-y)",
-  marginBlock: "calc(-1 * var(--c97-touch-y))",
+  paddingBlock: "calc((44px - 1lh) / 2)",
+  marginBlock: "calc((1lh - 44px) / 2)",
 } as const;
 
 /**
