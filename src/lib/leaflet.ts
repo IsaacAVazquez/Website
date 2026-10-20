@@ -26,7 +26,7 @@ export interface LeafletMap {
   unproject(point: [number, number], zoom?: number): { lat: number; lng: number };
 }
 
-export interface LeafletPathStyle {
+interface LeafletPathStyle {
   color?: string;
   weight?: number;
   opacity?: number;
@@ -38,7 +38,7 @@ export interface LeafletPathStyle {
 }
 
 /** A vector layer: polyline or circle marker. */
-export interface LeafletPath {
+interface LeafletPath {
   addTo(target: LeafletMap | LeafletLayerGroup): LeafletPath;
   setStyle(style: LeafletPathStyle): LeafletPath;
   bringToFront(): LeafletPath;
@@ -65,7 +65,7 @@ export interface LeafletMarker {
   openPopup(): LeafletMarker;
 }
 
-export interface LeafletIcon {
+interface LeafletIcon {
   readonly _icon?: unknown;
 }
 

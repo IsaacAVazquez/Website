@@ -1,8 +1,9 @@
+import { daysBetween } from "@/lib/date-formatters";
 import { formatDayHeading, formatTripDateRange, getTodayKey } from "@/lib/travelPlanner";
 import type { ActivityCategory, Trip, TripDayBucket, TripSummary } from "@/types/travel";
 
 /** One timed stop placed on a day's timeline. `top`/`height` are fractions of that day's shared time window. */
-export interface ItineraryStop {
+interface ItineraryStop {
   id: string;
   title: string;
   category: ActivityCategory;
@@ -13,7 +14,7 @@ export interface ItineraryStop {
 }
 
 /** A stop with no time, listed under its day rather than placed on the timeline. */
-export interface ItineraryUntimedStop {
+interface ItineraryUntimedStop {
   id: string;
   title: string;
   category: ActivityCategory;
@@ -141,12 +142,6 @@ export interface BoardingPass {
   stopsTotal: number;
 }
 
-function daysBetween(fromKey: string, toKey: string): number {
-  const from = new Date(`${fromKey}T00:00`).getTime();
-  const to = new Date(`${toKey}T00:00`).getTime();
-  return Math.round((to - from) / 86400000);
-}
-
 function pluralDays(count: number): string {
   return `${count} day${count === 1 ? "" : "s"}`;
 }
@@ -159,7 +154,7 @@ export function boardingPass(trip: Trip, summary: TripSummary, today = getTodayK
   } else if (summary.status === "active") {
     countdown = `Day ${summary.daysElapsed} of ${summary.daysTotal}`;
   } else {
-    const daysAgo = daysBetween(trip.endDate, today);
+    const daysAgo = daysBetween(trip.endDate, today) ?? 0;
     countdown = daysAgo > 0 ? `Back ${pluralDays(daysAgo)} ago` : "Just wrapped";
   }
 

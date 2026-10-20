@@ -2,7 +2,7 @@ import type { RegionData, RoundOneMatchup } from "./march-madness-data";
 
 export type BracketRoundKey = "r1" | "r2" | "s16" | "e8";
 
-export interface BracketSlot {
+interface BracketSlot {
   name: string;
   seed: number | null;
 }

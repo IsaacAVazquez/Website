@@ -31,7 +31,7 @@ export interface Mix {
   beta: number | null;
 }
 
-export interface WorstDay {
+interface WorstDay {
   date: string;
   benchmark: number;
   before: number | null;
@@ -51,10 +51,10 @@ export interface BeforeYouBuyResult {
   window: { from: string; to: string; days: number } | null;
 }
 
-export const FUND_SECTOR = "Index fund";
+const FUND_SECTOR = "Index fund";
 const WORST_DAY_COUNT = 5;
 
-export function sectorOf(symbol: string, history: SymbolHistory | undefined, benchmark: string): string {
+function sectorOf(symbol: string, history: SymbolHistory | undefined, benchmark: string): string {
   return history?.sector || (symbol === benchmark ? FUND_SECTOR : "Unclassified");
 }
 

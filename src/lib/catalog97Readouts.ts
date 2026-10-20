@@ -58,7 +58,7 @@ async function safely<T>(read: () => T | Promise<T>): Promise<T | null> {
   }
 }
 
-export interface LaunchReadout {
+interface LaunchReadout {
   cardLine: string;
   mission: string;
   vehicle: string;
@@ -68,7 +68,7 @@ export interface LaunchReadout {
   pulledAt: string;
 }
 
-export interface TableReadout {
+interface TableReadout {
   cardLine: string;
   matchday: number;
   top: { position: number; name: string; played: number; points: number }[];
@@ -76,7 +76,7 @@ export interface TableReadout {
   pulledAt: string;
 }
 
-export interface FigureReadout {
+interface FigureReadout {
   /** The index card's one-line readout. */
   cardLine: string;
   label: string;
@@ -87,7 +87,7 @@ export interface FigureReadout {
   pulledAt: string;
 }
 
-export interface InvestmentsReadout extends FigureReadout {
+interface InvestmentsReadout extends FigureReadout {
   /** "Prices older than seven days are marked delayed. On the 14 Sep run…" */
   staleNote: string;
 }

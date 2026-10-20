@@ -8,8 +8,7 @@ import { StructuredData } from "@/components/StructuredData";
  * and `src/lib/analytics.ts` (GA4 loads only when NEXT_PUBLIC_GA_MEASUREMENT_ID
  * is set, which it is in production), the tools' storage is
  * `src/lib/browserStorage.ts` and the hooks that call it, the signup is
- * `src/app/api/newsletter/subscribe/route.ts`, and the digest is
- * `src/app/api/mba-jobs/email/route.ts`. Change this page when any of those
+ * `src/app/api/newsletter/subscribe/route.ts`. Change this page when any of those
  * change what they collect or where they send it.
  */
 
@@ -139,17 +138,13 @@ export default function PrivacyPage() {
         <div className="c97-shell">
           <h2 className="c97-serif c97-h2">Email addresses you send</h2>
           <p className="c97-prose" style={proseStyle}>
-            Two forms send an email address off the page. The newsletter signup on the{" "}
+            One form sends an email address off the page. The newsletter signup on the{" "}
             <Link href="/agent-build-index" className="c97-link">
               agent build index
             </Link>{" "}
             sends the address you type to Resend, the service I use for email, which adds it to my
             list. To slow down spam, the server counts signup attempts from each IP address over an
             hour and keeps that count only in memory.
-          </p>
-          <p className="c97-prose" style={proseStyle}>
-            The MBA internship tracker can email a digest of listings, and it sends those listings
-            and the address you enter to Resend so the email can go out.
           </p>
         </div>
       </section>

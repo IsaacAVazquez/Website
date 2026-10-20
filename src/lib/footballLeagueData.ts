@@ -55,7 +55,7 @@ export function isValidTeamId(teamId: string): boolean {
   return /^[1-9]\d*$/.test(teamId);
 }
 
-export function seasonStartYear(startDate?: string | null): number | null {
+function seasonStartYear(startDate?: string | null): number | null {
   if (!startDate) return null;
   const year = new Date(startDate).getUTCFullYear();
   return Number.isFinite(year) ? year : null;
@@ -68,7 +68,7 @@ export function seasonStartYear(startDate?: string | null): number | null {
  * and La Liga keeps last season's table under a future-dated label. Either
  * signal means we should pin to the completed prior season instead.
  */
-export function seasonNotStarted(
+function seasonNotStarted(
   season: FootballDataSeason | null | undefined,
   playedGames: readonly number[],
   now: Date = new Date()
@@ -78,7 +78,7 @@ export function seasonNotStarted(
   return Number.isFinite(startMs) && startMs > now.getTime();
 }
 
-export function normalizeFixtureTeam(raw: FootballDataTeam | null | undefined): FixtureTeam | null {
+function normalizeFixtureTeam(raw: FootballDataTeam | null | undefined): FixtureTeam | null {
   const id = raw?.id;
   if (typeof id !== "number" || !Number.isFinite(id)) return null;
   return {
@@ -103,7 +103,7 @@ export function normalizeTeamOption(
   };
 }
 
-export function normalizeTeamProfile(
+function normalizeTeamProfile(
   raw: FootballDataTeam | null | undefined,
   accentColor: FootballLeague<unknown>["accentColor"]
 ): TeamProfile | null {
@@ -121,7 +121,7 @@ export function normalizeTeamProfile(
   };
 }
 
-export function normalizeFixture(raw: FootballDataMatch | null | undefined): Fixture | null {
+function normalizeFixture(raw: FootballDataMatch | null | undefined): Fixture | null {
   const matchId = raw?.id;
   const utcDate = raw?.utcDate?.trim();
   const homeTeam = normalizeFixtureTeam(raw?.homeTeam);
@@ -167,7 +167,7 @@ function fixturesFrom(
  * `matchday` and the final score are needed. Matches missing either are
  * skipped rather than dropping the whole series.
  */
-export function buildGoalsPerMatchday(matches: FootballDataMatch[]): MatchdayGoals[] {
+function buildGoalsPerMatchday(matches: FootballDataMatch[]): MatchdayGoals[] {
   const totals = new Map<number, number>();
   for (const match of matches) {
     const matchday = match?.matchday;
@@ -188,7 +188,7 @@ export function buildGoalsPerMatchday(matches: FootballDataMatch[]): MatchdayGoa
     .sort((a, b) => a.matchday - b.matchday);
 }
 
-export function buildTeamFormSummary(teamId: string, fixtures: Fixture[]): FormSummary {
+function buildTeamFormSummary(teamId: string, fixtures: Fixture[]): FormSummary {
   return fixtures.reduce<FormSummary>(
     (summary, fixture) => {
       const isHome = fixture.homeTeam.id === teamId;

@@ -14,7 +14,7 @@ const updateWorkflowFiles = workflowFiles.filter((file) =>
   path.basename(file).startsWith("update-")
 );
 
-// Ten lanes share one body through refresh-snapshot.yml; the rest carry their own.
+// Thirteen lanes share one body through refresh-snapshot.yml; the rest carry their own.
 const reusableWorkflow = path.join(workflowsDir, "refresh-snapshot.yml");
 const REUSABLE_USES = "uses: ./.github/workflows/refresh-snapshot.yml";
 const isCaller = (file: string) =>
@@ -29,7 +29,7 @@ const bodyFor = (file: string) => (isCaller(file) ? reusableWorkflow : file);
 
 describe("snapshot refresh workflow infrastructure", () => {
   it("passes every per-lane field into the shared refresh body", () => {
-    expect(callerFiles.length).toBe(10);
+    expect(callerFiles.length).toBe(13);
     const reusable = fs.readFileSync(reusableWorkflow, "utf8");
     expect(reusable).toContain("workflow_call:");
     expect(reusable).toContain("run: npm run update:${{ inputs.id }}");
@@ -39,16 +39,17 @@ describe("snapshot refresh workflow infrastructure", () => {
 
     for (const workflowPath of callerFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
-      expect(workflow).toContain("schedule:");
+      // World Cup runs on dispatch only until the next tournament is seeded.
+      expect(workflow).toMatch(/schedule:|workflow_dispatch:/);
       expect(workflow).toContain("concurrency:");
       // A called workflow can only narrow the token it is handed, so the push
       // and the failure issue need the caller to grant both scopes.
       expect(workflow).toContain("contents: write");
       expect(workflow).toContain("issues: write");
       expect(workflow).toContain("secrets: inherit");
-      expect(workflow).toMatch(/\n\s+id: [a-z-]+\n/);
+      expect(workflow).toMatch(/\n\s+id: [a-z0-9-]+\n/);
       expect(workflow).toMatch(/snapshot-path: src\/data\/\w+Snapshot\.json/);
-      expect(workflow).toMatch(/label: [a-z-]+-refresh-failure/);
+      expect(workflow).toMatch(/label: [a-z0-9-]+-refresh-failure/);
       expect(workflow).toMatch(/title: .+ refresh failed/);
     }
   });
@@ -377,13 +378,12 @@ describe("snapshot refresh workflow infrastructure", () => {
       "utf8"
     );
 
-    // Every substantive step is gated on the tournament window, but skipped
-    // steps do not set job status, so a dormant run still reports success().
-    // Gated only on success(), the close step erased real refresh-failure
-    // incidents on runs that refreshed nothing.
-    expect(workflow).toContain(
-      "if: success() && steps.window.outputs.active == 'true'"
-    );
+    // The whole refresh job, close step included, is gated on the tournament
+    // window. When the close step was gated only on success(), skipped steps
+    // left the job green and it erased real refresh-failure incidents on runs
+    // that refreshed nothing.
+    expect(workflow).toContain("needs: window");
+    expect(workflow).toContain("if: needs.window.outputs.active == 'true'");
   });
 
   it("routes failure issues through the shared helper", () => {

@@ -3,14 +3,12 @@
 import { useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { X } from "lucide-react";
-import {
-  CrestAvatar,
-  EmptyPanel,
-  FixtureCard,
-  FixtureLedgerSection,
-  InfoChip,
-  TeamResultPill,
-} from "@/components/football";
+import { CrestAvatar } from "@/components/football/CrestAvatar";
+import { EmptyPanel } from "@/components/football/EmptyPanel";
+import { FixtureCard } from "@/components/football/FixtureCard";
+import { FixtureLedgerSection } from "@/components/football/FixtureLedger";
+import { InfoChip } from "@/components/football/InfoChip";
+import { TeamResultPill } from "@/components/football/TeamResultPill";
 import { groupFixtures } from "@/components/football/fixtureGroups";
 import { formatFixtureDay } from "@/components/football/fixtureFormat";
 import type {

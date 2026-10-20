@@ -7,7 +7,7 @@ import {
   type FoodMapCuisineId,
   type FoodMapCuratorId,
 } from "./food-map-data";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export interface FoodMapState {
   city: FoodMapCityId;
@@ -18,7 +18,7 @@ export interface FoodMapState {
 
 export const FOOD_MAP_ROUTE = "/food-map";
 
-export const DEFAULT_CITY: FoodMapCityId = "austin";
+const DEFAULT_CITY: FoodMapCityId = "austin";
 
 export const DEFAULT_FOOD_MAP_STATE: FoodMapState = {
   city: DEFAULT_CITY,
@@ -70,26 +70,16 @@ export function normalizeFoodMapState(input: SearchParamInput): FoodMapState {
 }
 
 export function buildFoodMapHref(state: FoodMapState): string {
-  const params = new URLSearchParams();
-
-  if (state.city !== DEFAULT_CITY) {
-    params.set("city", state.city);
-  }
-
-  if (state.curators.length > 0) {
-    params.set("curator", state.curators.join(","));
-  }
-
-  if (state.cuisines.length > 0) {
-    params.set("cuisine", state.cuisines.join(","));
-  }
-
-  if (state.pick) {
-    params.set("pick", state.pick);
-  }
-
-  const query = params.toString();
-  return query ? `${FOOD_MAP_ROUTE}?${query}` : FOOD_MAP_ROUTE;
+  return buildHref(
+    FOOD_MAP_ROUTE,
+    {
+      city: state.city,
+      curator: state.curators.join(",") || null,
+      cuisine: state.cuisines.join(",") || null,
+      pick: state.pick || null,
+    },
+    { city: DEFAULT_CITY }
+  );
 }
 
 export function setCity(state: FoodMapState, city: FoodMapCityId): FoodMapState {

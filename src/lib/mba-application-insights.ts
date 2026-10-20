@@ -16,7 +16,6 @@
 
 import type {
   MBAApplicationPriority,
-  MBAApplicationStatus,
   MBAInterviewRound,
   MBATrackedApplication,
 } from "@/types/mba-jobs";
@@ -336,6 +335,3 @@ export function describeAttentionItem(item: MBAAttentionItem): string {
 export function isFollowUpAttention(kind: MBAAttentionKind): boolean {
   return kind === "follow-up-overdue" || kind === "follow-up-today";
 }
-
-// Re-exported for callers that want to keep status keys in one place.
-export type { MBAApplicationStatus };

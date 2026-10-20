@@ -1,5 +1,5 @@
-export type FantasyFormula1AssetKind = "driver" | "constructor";
-export type FantasyFormula1Risk = "low" | "medium" | "high";
+type FantasyFormula1AssetKind = "driver" | "constructor";
+type FantasyFormula1Risk = "low" | "medium" | "high";
 
 export interface FantasyFormula1Asset {
   id: string;

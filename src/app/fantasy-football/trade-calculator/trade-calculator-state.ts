@@ -5,7 +5,8 @@ import {
   type FantasyRouteScoring,
 } from "@/lib/fantasy";
 import { repairFantasyTradePlayerIds } from "@/lib/fantasyTradePersistence";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { enumValue } from "@/lib/utils";
+import { buildHref, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const TRADE_CALCULATOR_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
 export const TRADE_CALCULATOR_ROSTER_SIZES = [13, 14, 15, 16, 17, 18] as const;
@@ -15,9 +16,9 @@ export const TRADE_CALCULATOR_LINEUP_PRESETS = [
   "three-wr-no-kdst",
 ] as const;
 
-export type TradeCalculatorTeamCount = (typeof TRADE_CALCULATOR_TEAM_COUNTS)[number];
-export type TradeCalculatorRosterSize = (typeof TRADE_CALCULATOR_ROSTER_SIZES)[number];
-export type TradeCalculatorLineupPreset =
+type TradeCalculatorTeamCount = (typeof TRADE_CALCULATOR_TEAM_COUNTS)[number];
+type TradeCalculatorRosterSize = (typeof TRADE_CALCULATOR_ROSTER_SIZES)[number];
+type TradeCalculatorLineupPreset =
   (typeof TRADE_CALCULATOR_LINEUP_PRESETS)[number];
 
 export interface TradeCalculatorSearchState {
@@ -47,15 +48,6 @@ function normalizeNumberOption<Option extends number>(
     : fallback;
 }
 
-function normalizeLineupPreset(value: string | null): TradeCalculatorLineupPreset {
-  const normalized = value?.trim().toLowerCase();
-  return TRADE_CALCULATOR_LINEUP_PRESETS.includes(
-    normalized as TradeCalculatorLineupPreset,
-  )
-    ? (normalized as TradeCalculatorLineupPreset)
-    : DEFAULT_TRADE_CALCULATOR_STATE.lineup;
-}
-
 export function normalizeTradeCalculatorState(
   input: SearchParamInput,
 ): TradeCalculatorSearchState {
@@ -71,7 +63,11 @@ export function normalizeTradeCalculatorState(
       TRADE_CALCULATOR_ROSTER_SIZES,
       DEFAULT_TRADE_CALCULATOR_STATE.rosterSize,
     ),
-    lineup: normalizeLineupPreset(readParam(input, "lineup")),
+    lineup: enumValue(
+      readParam(input, "lineup")?.trim().toLowerCase(),
+      TRADE_CALCULATOR_LINEUP_PRESETS,
+      DEFAULT_TRADE_CALCULATOR_STATE.lineup,
+    ),
   };
 }
 
@@ -79,15 +75,17 @@ export function buildTradeCalculatorHref(
   state: TradeCalculatorSearchState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams,
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : [],
+  return buildHref(
+    "/fantasy-football/trade-calculator",
+    {
+      scoring: state.scoring,
+      teams: state.teams,
+      rosterSize: state.rosterSize,
+      lineup: state.lineup,
+    },
+    {},
+    baseSearchParams,
   );
-  params.set("scoring", state.scoring);
-  params.set("teams", String(state.teams));
-  params.set("rosterSize", String(state.rosterSize));
-  params.set("lineup", state.lineup);
-
-  return `/fantasy-football/trade-calculator?${params.toString()}`;
 }
 
 export interface TradeCalculatorShareSelection {
@@ -132,22 +130,13 @@ export function buildTradeCalculatorShareHref(
   share: TradeCalculatorShareSelection,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams,
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : [],
+  return buildHref(
+    "/fantasy-football/trade-calculator",
+    {
+      give: share.givePlayerIds.join(",") || null,
+      get: share.getPlayerIds.join(",") || null,
+    },
+    {},
+    baseSearchParams,
   );
-  if (share.givePlayerIds.length > 0) {
-    params.set("give", share.givePlayerIds.join(","));
-  } else {
-    params.delete("give");
-  }
-  if (share.getPlayerIds.length > 0) {
-    params.set("get", share.getPlayerIds.join(","));
-  } else {
-    params.delete("get");
-  }
-
-  const query = params.toString();
-  return query
-    ? `/fantasy-football/trade-calculator?${query}`
-    : "/fantasy-football/trade-calculator";
 }

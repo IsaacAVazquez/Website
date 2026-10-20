@@ -24,7 +24,7 @@ function getBestBallEcr(player: Player): number {
   return Number.POSITIVE_INFINITY;
 }
 
-export function isBestBallPosition(position: Player["position"]): position is BestBallPosition {
+function isBestBallPosition(position: Player["position"]): position is BestBallPosition {
   return BEST_BALL_POSITIONS.includes(position as BestBallPosition);
 }
 

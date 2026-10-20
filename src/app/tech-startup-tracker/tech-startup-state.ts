@@ -5,7 +5,8 @@ import type {
   TechStartupSnapshot,
   TechStartupSortKey,
 } from "@/types/techStartup";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { enumValue } from "@/lib/utils";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const TECH_STARTUP_ROUTE = "/tech-startup-tracker";
 
@@ -29,9 +30,6 @@ export const TECH_STARTUP_SORT_LABELS: Record<TechStartupSortKey, string> = {
   recent: "Latest round",
 };
 
-const VALID_KINDS = new Set<TechStartupSegmentKind>(TECH_STARTUP_KIND_OPTIONS);
-const VALID_SORTS = new Set<TechStartupSortKey>(TECH_STARTUP_SORT_OPTIONS);
-
 export const DEFAULT_TECH_STARTUP_STATE: TechStartupRouteState = {
   kind: "sector",
   segment: "all",
@@ -42,20 +40,11 @@ export const DEFAULT_TECH_STARTUP_STATE: TechStartupRouteState = {
 export function normalizeTechStartupState(
   input: SearchParamInput
 ): TechStartupRouteState {
-  const kind = readParam(input, "view");
-  const segment = readParam(input, "segment");
-  const sort = readParam(input, "sort");
-  const startup = readParam(input, "startup");
-
   return {
-    kind: VALID_KINDS.has((kind ?? "") as TechStartupSegmentKind)
-      ? (kind as TechStartupSegmentKind)
-      : DEFAULT_TECH_STARTUP_STATE.kind,
-    segment: segment && segment.trim().length > 0 ? segment.trim() : "all",
-    sort: VALID_SORTS.has((sort ?? "") as TechStartupSortKey)
-      ? (sort as TechStartupSortKey)
-      : DEFAULT_TECH_STARTUP_STATE.sort,
-    selectedStartupId: startup && startup.trim().length > 0 ? startup.trim() : null,
+    kind: readEnum(input, "view", TECH_STARTUP_KIND_OPTIONS, DEFAULT_TECH_STARTUP_STATE.kind),
+    segment: readParam(input, "segment")?.trim() || "all",
+    sort: readEnum(input, "sort", TECH_STARTUP_SORT_OPTIONS, DEFAULT_TECH_STARTUP_STATE.sort),
+    selectedStartupId: readParam(input, "startup")?.trim() || null,
   };
 }
 
@@ -63,9 +52,7 @@ export function resolveTechStartupState(
   state: TechStartupRouteState,
   snapshot: TechStartupSnapshot
 ): TechStartupRouteState {
-  const kind = VALID_KINDS.has(state.kind)
-    ? state.kind
-    : DEFAULT_TECH_STARTUP_STATE.kind;
+  const kind = enumValue(state.kind, TECH_STARTUP_KIND_OPTIONS, DEFAULT_TECH_STARTUP_STATE.kind);
   const segments = kind === "sector" ? snapshot.sectors : snapshot.stages;
   const validSegments = new Set(segments.map((segment) => segment.key));
   const segment =
@@ -84,9 +71,7 @@ export function resolveTechStartupState(
   return {
     kind,
     segment,
-    sort: VALID_SORTS.has(state.sort)
-      ? state.sort
-      : DEFAULT_TECH_STARTUP_STATE.sort,
+    sort: enumValue(state.sort, TECH_STARTUP_SORT_OPTIONS, DEFAULT_TECH_STARTUP_STATE.sort),
     selectedStartupId:
       state.selectedStartupId && visibleStartupIds.has(state.selectedStartupId)
         ? state.selectedStartupId
@@ -98,34 +83,15 @@ export function buildTechStartupHref(
   state: TechStartupRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    TECH_STARTUP_ROUTE,
+    {
+      view: state.kind,
+      segment: state.segment,
+      sort: state.sort,
+      startup: state.selectedStartupId || null,
+    },
+    { ...DEFAULT_TECH_STARTUP_STATE, view: DEFAULT_TECH_STARTUP_STATE.kind },
+    baseSearchParams
   );
-
-  if (state.kind === DEFAULT_TECH_STARTUP_STATE.kind) {
-    params.delete("view");
-  } else {
-    params.set("view", state.kind);
-  }
-
-  if (state.segment === DEFAULT_TECH_STARTUP_STATE.segment) {
-    params.delete("segment");
-  } else {
-    params.set("segment", state.segment);
-  }
-
-  if (state.sort === DEFAULT_TECH_STARTUP_STATE.sort) {
-    params.delete("sort");
-  } else {
-    params.set("sort", state.sort);
-  }
-
-  if (!state.selectedStartupId) {
-    params.delete("startup");
-  } else {
-    params.set("startup", state.selectedStartupId);
-  }
-
-  const query = params.toString();
-  return `${TECH_STARTUP_ROUTE}${query ? `?${query}` : ""}`;
 }

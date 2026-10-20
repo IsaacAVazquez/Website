@@ -1,8 +1,10 @@
-export const MARCH_MADNESS_ROUTE = "/march-madness-2026";
+import { buildHref, readEnum } from "@/lib/searchParams";
 
-export const VIEW_OPTIONS = ["bracket", "picks", "analytics", "time-zones"] as const;
-export const REGION_OPTIONS = ["east", "west", "south", "midwest"] as const;
-export const ANALYTICS_OPTIONS = ["rankings", "s-curve", "injuries"] as const;
+const MARCH_MADNESS_ROUTE = "/march-madness-2026";
+
+const VIEW_OPTIONS = ["bracket", "picks", "analytics", "time-zones"] as const;
+const REGION_OPTIONS = ["east", "west", "south", "midwest"] as const;
+const ANALYTICS_OPTIONS = ["rankings", "s-curve", "injuries"] as const;
 
 export type MarchMadnessView = (typeof VIEW_OPTIONS)[number];
 export type MarchMadnessRegion = (typeof REGION_OPTIONS)[number];
@@ -40,58 +42,35 @@ export const ANALYTICS_LABELS: Record<MarchMadnessAnalytics, string> = {
   injuries: "Injuries",
 };
 
-const isValidOption = <T extends readonly string[]>(
-  value: string | null | undefined,
-  options: T
-): value is T[number] => Boolean(value && options.includes(value as T[number]));
-
-export function normalizeMarchMadnessState(searchParams?: {
-  view?: string;
-  region?: string;
-  analytics?: string;
-}): MarchMadnessSearchState {
+export function normalizeMarchMadnessState(
+  searchParams: { view?: string; region?: string; analytics?: string } = {}
+): MarchMadnessSearchState {
   return {
-    view: isValidOption(searchParams?.view, VIEW_OPTIONS)
-      ? searchParams!.view
-      : DEFAULT_MARCH_MADNESS_STATE.view,
-    region: isValidOption(searchParams?.region, REGION_OPTIONS)
-      ? searchParams!.region
-      : DEFAULT_MARCH_MADNESS_STATE.region,
-    analytics: isValidOption(searchParams?.analytics, ANALYTICS_OPTIONS)
-      ? searchParams!.analytics
-      : DEFAULT_MARCH_MADNESS_STATE.analytics,
+    view: readEnum(searchParams, "view", VIEW_OPTIONS, DEFAULT_MARCH_MADNESS_STATE.view),
+    region: readEnum(searchParams, "region", REGION_OPTIONS, DEFAULT_MARCH_MADNESS_STATE.region),
+    analytics: readEnum(
+      searchParams,
+      "analytics",
+      ANALYTICS_OPTIONS,
+      DEFAULT_MARCH_MADNESS_STATE.analytics
+    ),
   };
 }
 
 export function buildMarchMadnessHref(
   state: Partial<MarchMadnessSearchState> & { hash?: string; pick?: string | null } = {}
 ): string {
-  const nextState = {
-    ...DEFAULT_MARCH_MADNESS_STATE,
-    ...state,
-  };
-
-  const params = new URLSearchParams();
-
-  if (nextState.view !== DEFAULT_MARCH_MADNESS_STATE.view) {
-    params.set("view", nextState.view);
-  }
-
-  if (nextState.region !== DEFAULT_MARCH_MADNESS_STATE.region) {
-    params.set("region", nextState.region);
-  }
-
-  if (nextState.analytics !== DEFAULT_MARCH_MADNESS_STATE.analytics) {
-    params.set("analytics", nextState.analytics);
-  }
-
-  // An open pick only means something on the picks board.
-  if (state.pick && nextState.view === "picks") {
-    params.set("pick", state.pick);
-  }
-
-  const query = params.toString();
-  const hash = state.hash ? `#${state.hash}` : "";
-
-  return `${MARCH_MADNESS_ROUTE}${query ? `?${query}` : ""}${hash}`;
+  const next = { ...DEFAULT_MARCH_MADNESS_STATE, ...state };
+  const href = buildHref(
+    MARCH_MADNESS_ROUTE,
+    {
+      view: next.view,
+      region: next.region,
+      analytics: next.analytics,
+      // An open pick only means something on the picks board.
+      pick: next.view === "picks" ? state.pick || null : null,
+    },
+    DEFAULT_MARCH_MADNESS_STATE
+  );
+  return state.hash ? `${href}#${state.hash}` : href;
 }

@@ -18,12 +18,12 @@ export interface SeedBandSpec {
   throughSeed?: number;
 }
 
-export interface SeedBand<T> {
+interface SeedBand<T> {
   label: string;
   teams: T[];
 }
 
-export interface SeedLadderLine {
+interface SeedLadderLine {
   /** null when either side of the line has no team (a short conference). */
   gamesClear: number | null;
 }

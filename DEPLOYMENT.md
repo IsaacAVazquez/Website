@@ -82,7 +82,6 @@ Core production variables:
 
 Operational variables:
 
-- `MBA_DIGEST_SECRET`
 - `FOOTBALL_DATA_API_TOKEN`
 
 The fantasy snapshot builder reads the public FantasyPros rankings pages and needs no credential. The deployed runtime does not fetch from FantasyPros.

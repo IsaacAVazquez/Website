@@ -52,7 +52,6 @@ Current API route inventory for the app.
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/mba-jobs` | GET | Aggregates MBA-relevant and tech PM postings across Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards (plus optional Adzuna external leads). `src/constants/mba-companies.ts` tracks 59 companies, 48 actively fetched (37 Greenhouse, 7 Ashby, 2 SmartRecruiters, 1 Lever, 1 direct-HTML; 11 manual catalog entries); filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
-| `/api/mba-jobs/email` | POST | Sends a grouped digest of supplied `{ jobs, to }` via Resend; requires the `x-mba-digest-secret` header, `RESEND_API_KEY`, and `MBA_DIGEST_ALLOWED_RECIPIENTS`; `RESEND_FROM_EMAIL` selects a verified sender |
 | `/api/job-search` | GET, PUT | Development only, and only for a server started with `npm run dev` and a request from this machine (404 otherwise, including production). Reads and writes `private/job-search/pipeline.json` or `candidates.json` (`?file=`) with a content-hash revision and 409 conflict detection, enabling bidirectional sync between the local tracker and job search skills |
 
 ### Content and utilities
@@ -150,7 +149,6 @@ Use these as the actual source of truth:
 - `src/app/api/spacex/launches/route.ts`
 - `src/app/api/spacex/launches/[id]/route.ts`
 - `src/app/api/mba-jobs/route.ts`
-- `src/app/api/mba-jobs/email/route.ts`
 - `src/app/api/job-search/route.ts`
 - `src/app/api/rss/route.ts`
 - `src/app/api/search/route.ts`

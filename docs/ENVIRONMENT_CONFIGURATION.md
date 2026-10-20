@@ -51,14 +51,12 @@ There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled
 
 ---
 
-## Email Digest
+## Newsletter
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `MBA_DIGEST_SECRET` | yes for `/api/mba-jobs/email` | Shared secret the caller sends in the `x-mba-digest-secret` header. The route answers `503` when it is unset and `401` when the header does not match |
-| `RESEND_API_KEY` | yes for both email endpoints | Resend API key used to deliver the MBA jobs digest and create newsletter contacts |
+| `RESEND_API_KEY` | fallback for `/api/newsletter/subscribe` | Used to create newsletter contacts when `RESEND_CONTACTS_API_KEY` is unset |
 | `RESEND_NEWSLETTER_SEGMENT_ID` | recommended for `/api/newsletter/subscribe` | Resend segment that receives public newsletter signups; when omitted, signups are created as unsegmented contacts |
-| `MBA_DIGEST_ALLOWED_RECIPIENTS` | yes for `/api/mba-jobs/email` | Comma-separated recipient allowlist; entries can be exact emails or domains such as `@example.edu` |
 
 ---
 
@@ -124,8 +122,6 @@ Useful local template for broader coverage:
 ```bash
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 SITE_URL=http://localhost:3000
-MBA_DIGEST_SECRET=replace-me
-MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```
 
 Add `RESEND_API_KEY` only if you are testing email delivery. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`.

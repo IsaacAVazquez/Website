@@ -1,6 +1,6 @@
 import type { AiDevTool } from "./ai-dev-tools-data";
 
-export interface SurfaceMapCell {
+interface SurfaceMapCell {
   pricing: string;
   tools: AiDevTool[];
 }

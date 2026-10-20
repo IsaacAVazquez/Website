@@ -18,7 +18,7 @@ export const TROUBLESHOOTING_CONFIDENCE_THRESHOLD = 0.55;
 /** Where every stack's score starts, before any factor adds to it or takes from it. */
 export const BASE_SCORE = 18;
 
-export interface ScoreFactor {
+interface ScoreFactor {
   label: string;
   points: number;
   detail: string;

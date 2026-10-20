@@ -3,14 +3,12 @@ import type {
   FrontierModalityFilter,
   FrontierModelsRouteState,
   FrontierModelsSnapshot,
-  FrontierProviderFilter,
-  FrontierTierFilter,
 } from "@/types/frontierModels";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const FRONTIER_MODELS_ROUTE = "/frontier-models";
 
-const VALID_PROVIDERS = new Set([
+const PROVIDERS = [
   "anthropic",
   "openai",
   "google",
@@ -18,9 +16,9 @@ const VALID_PROVIDERS = new Set([
   "xai",
   "deepseek",
   "mistral",
-]);
-const VALID_MODALITIES = new Set(["text", "vision", "audio"]);
-const VALID_TIERS = new Set(["budget", "standard", "premium"]);
+] as const;
+const MODALITIES = ["text", "vision", "audio"] as const;
+const TIERS = ["budget", "standard", "premium"] as const;
 
 export const DEFAULT_FRONTIER_MODELS_STATE: FrontierModelsRouteState = {
   provider: "all",
@@ -41,22 +39,11 @@ export const FRONTIER_MODALITY_LABELS: Record<
 export function normalizeFrontierModelsState(
   input: SearchParamInput
 ): FrontierModelsRouteState {
-  const provider = readParam(input, "provider");
-  const modality = readParam(input, "modality");
-  const tier = readParam(input, "tier");
-  const model = readParam(input, "model");
-
   return {
-    provider: VALID_PROVIDERS.has(provider ?? "")
-      ? (provider as FrontierProviderFilter)
-      : DEFAULT_FRONTIER_MODELS_STATE.provider,
-    modality: VALID_MODALITIES.has(modality ?? "")
-      ? (modality as FrontierModalityFilter)
-      : DEFAULT_FRONTIER_MODELS_STATE.modality,
-    priceTier: VALID_TIERS.has(tier ?? "")
-      ? (tier as FrontierTierFilter)
-      : DEFAULT_FRONTIER_MODELS_STATE.priceTier,
-    selectedModelId: model && model.trim().length > 0 ? model.trim() : null,
+    provider: readEnum(input, "provider", PROVIDERS, DEFAULT_FRONTIER_MODELS_STATE.provider),
+    modality: readEnum(input, "modality", MODALITIES, DEFAULT_FRONTIER_MODELS_STATE.modality),
+    priceTier: readEnum(input, "tier", TIERS, DEFAULT_FRONTIER_MODELS_STATE.priceTier),
+    selectedModelId: readParam(input, "model")?.trim() || null,
   };
 }
 
@@ -85,38 +72,18 @@ export function buildFrontierModelsHref(
   state: FrontierModelsRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    FRONTIER_MODELS_ROUTE,
+    {
+      // The page once had a list/chart switch, and the chart now prints above
+      // the sheet, so a stale ?view= drops out of the URL.
+      view: null,
+      provider: state.provider,
+      modality: state.modality,
+      tier: state.priceTier,
+      model: state.selectedModelId || null,
+    },
+    { ...DEFAULT_FRONTIER_MODELS_STATE, tier: DEFAULT_FRONTIER_MODELS_STATE.priceTier },
+    baseSearchParams
   );
-
-  // The page once had a list/chart switch, and the chart now prints above
-  // the sheet, so a stale ?view= drops out of the URL.
-  params.delete("view");
-
-  if (state.provider === DEFAULT_FRONTIER_MODELS_STATE.provider) {
-    params.delete("provider");
-  } else {
-    params.set("provider", state.provider);
-  }
-
-  if (state.modality === DEFAULT_FRONTIER_MODELS_STATE.modality) {
-    params.delete("modality");
-  } else {
-    params.set("modality", state.modality);
-  }
-
-  if (state.priceTier === DEFAULT_FRONTIER_MODELS_STATE.priceTier) {
-    params.delete("tier");
-  } else {
-    params.set("tier", state.priceTier);
-  }
-
-  if (!state.selectedModelId) {
-    params.delete("model");
-  } else {
-    params.set("model", state.selectedModelId);
-  }
-
-  const query = params.toString();
-  return `${FRONTIER_MODELS_ROUTE}${query ? `?${query}` : ""}`;
 }

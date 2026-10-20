@@ -66,6 +66,16 @@ describe("redirect policy", () => {
     expect(redirects).toContainEqual({ source, destination, permanent: true });
   });
 
+  // Position shortcuts stay temporary so the scoring default can move.
+  it.each([
+    ["/qb", "/fantasy-football?position=qb&scoring=ppr"],
+    ["/rb", "/fantasy-football?position=rb&scoring=ppr"],
+    ["/wr", "/fantasy-football?position=wr&scoring=ppr"],
+    ["/te", "/fantasy-football?position=te&scoring=ppr"],
+  ])("sends the %s shortcut to the PPR board", (source, destination) => {
+    expect(redirects).toContainEqual({ source, destination, permanent: false });
+  });
+
   // src/proxy.ts used to answer these first with a 307, and sent
   // /blog/posts/<slug> to /writing/posts/<slug>, which is a 404.
   it.each([

@@ -1,6 +1,5 @@
 import {
   NEWS_SOURCE_IDS,
-  SOURCE_META,
   type NewsFeedId,
 } from "@/lib/news-pulse-sources";
 
@@ -329,4 +328,3 @@ export function clusterArticlesByStory(
     .slice(0, maxClusters);
 }
 
-export { SOURCE_META };

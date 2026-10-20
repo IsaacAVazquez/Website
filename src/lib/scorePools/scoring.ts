@@ -19,11 +19,11 @@ import type {
   ScoringRules,
 } from "./types";
 
-export function goalDifference(score: Scoreline): number {
+function goalDifference(score: Scoreline): number {
   return score.home - score.away;
 }
 
-export function sameScoreline(a: Scoreline, b: Scoreline): boolean {
+function sameScoreline(a: Scoreline, b: Scoreline): boolean {
   return a.home === b.home && a.away === b.away;
 }
 
@@ -32,7 +32,7 @@ export function sameScoreline(a: Scoreline, b: Scoreline): boolean {
  * `outcome` can differ from the score's own outcome only when the pool
  * counts a shootout winner as the winner of a level final score.
  */
-export function comparisonForResult(
+function comparisonForResult(
   result: MatchResultInput,
   rules: ScoringRules,
 ): { score: Scoreline; outcome: MatchOutcome } {

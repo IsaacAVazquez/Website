@@ -14,27 +14,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh-score-pools:
-    name: Refresh Score Pools Snapshot
+  # A missing key is a lane that was never switched on, which is a different
+  # thing from a provider that failed. It failed all 268 runs from July 20 to
+  # September 27, 2026 as if it were the second, and a lane that is always
+  # red teaches everyone to stop looking. With the keys set, a provider
+  # failure still fails the run and opens the issue.
+  config:
+    name: Check provider configuration
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
-    permissions:
-      contents: write
-      issues: write
-
+    timeout-minutes: 5
+    outputs:
+      configured: ${{ steps.config.outputs.configured }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      # A missing key is a lane that was never switched on, which is a different
-      # thing from a provider that failed. It failed all 268 runs from July 20 to
-      # September 27, 2026 as if it were the second, and a lane that is always
-      # red teaches everyone to stop looking. With the keys set, a provider
-      # failure still fails the run and opens the issue.
       - name: Check provider configuration
         id: config
         env:
@@ -48,53 +39,20 @@ jobs:
             echo "configured=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Set up Node.js
-        if: steps.config.outputs.configured == 'true'
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        if: steps.config.outputs.configured == 'true'
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh score-pools snapshot
-        if: steps.config.outputs.configured == 'true'
-        timeout-minutes: 12
-        run: npm run update:score-pools
-        env:
-          NODE_ENV: production
-          THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
-          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
-
-      - name: Verify score-pools snapshot quality
-        id: verify_quality
-        if: steps.config.outputs.configured == 'true'
-        run: npx tsx scripts/verifyScorePoolsSnapshot.ts
-
-      - name: Verify refresh freshness
-        if: steps.config.outputs.configured == 'true'
-        run: npx tsx scripts/verifyDataRefresh.ts score-pools
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        if: steps.config.outputs.configured == 'true'
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh score pools snapshot [automated] [skip ci]" \
-            src/data/scorePoolsSnapshot.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'score-pools-refresh-failure', 'Score-pools refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'score-pools-refresh-failure')
+  # The builder refuses to write a snapshot with no provider-backed live
+  # leagues, fixtures, or odds, or with a stale live league, so the shared
+  # freshness gate is the only verify step this lane needs.
+  refresh-score-pools:
+    name: Refresh Score Pools Snapshot
+    needs: config
+    if: needs.config.outputs.configured == 'true'
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
+    permissions:
+      contents: write
+      issues: write
+    with:
+      id: score-pools
+      snapshot-path: src/data/scorePoolsSnapshot.json
+      label: score-pools-refresh-failure
+      title: Score-pools refresh failed

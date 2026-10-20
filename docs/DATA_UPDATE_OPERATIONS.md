@@ -197,11 +197,12 @@ changed artifact under `src/data/` or `public/data/`.
 
 All 17 `update-*.yml` workflows route their git commit + push through one
 shared helper, `scripts/ci/commit-and-push-snapshot.sh`, rather than each
-hand-rolling its own git steps. Ten of them (transit, earthquake, GitHub
-Trending, golf, La Liga, MLB, NBA, NFL, polling, Premier League) are short
-callers of `.github/workflows/refresh-snapshot.yml`, which holds the shared
-checkout, install, refresh, verify, commit, and failure-issue steps; each caller
-keeps only its name, schedule, concurrency group, and lane inputs.
+hand-rolling its own git steps. Thirteen of them (transit, earthquake, Formula 1,
+GitHub Trending, golf, La Liga, MLB, NBA, NFL, polling, Premier League, score
+pools, World Cup) are short callers of `.github/workflows/refresh-snapshot.yml`,
+which holds the shared checkout, install, refresh, verify, commit, and
+failure-issue steps; each caller keeps only its name, schedule, concurrency
+group, and lane inputs, and World Cup and score pools add a gate job in front.
 
 ```bash
 bash scripts/ci/commit-and-push-snapshot.sh "<commit message>" <pathspec> [pathspec ...]

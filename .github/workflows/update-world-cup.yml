@@ -4,11 +4,11 @@ on:
   # The cron only fires in June and July, the months a World Cup can run, but a
   # coarse month gate isn't enough: with the 2026 tournament over, an unguarded
   # schedule would still wake every 30 minutes each following June and July and
-  # commit no-op churn. The "Determine tournament window" step below reads the
-  # start and end dates out of the committed snapshot and skips the refresh
-  # entirely outside a short window around them, so the workflow self-arms when a
-  # future tournament's dates are seeded and stays dormant the rest of the time.
-  # ESPN's site API needs no token.
+  # commit no-op churn. The window job below reads the start and end dates out
+  # of the committed snapshot and skips the refresh entirely outside a short
+  # window around them, so the workflow self-arms when a future tournament's
+  # dates are seeded and stays dormant the rest of the time. ESPN's site API
+  # needs no token.
   #
   # The schedule is off until the next tournament. The 2026 final was July 19,
   # and a June and July cron would wake about 2,900 times a year to skip every
@@ -22,27 +22,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh-world-cup:
-    name: Refresh World Cup Snapshot
+  window:
+    name: Determine tournament window
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
-    permissions:
-      contents: write
-      issues: write
-
+    timeout-minutes: 5
+    outputs:
+      active: ${{ steps.window.outputs.active }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
 
       - name: Determine tournament window
         id: window
@@ -73,47 +64,19 @@ jobs:
           console.log('Tournament window active:', active, '-', reason);
           "
 
-      - name: Install dependencies
-        if: steps.window.outputs.active == 'true'
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh World Cup snapshot
-        if: steps.window.outputs.active == 'true'
-        timeout-minutes: 12
-        run: npm run update:world-cup
-        env:
-          NODE_ENV: production
-
-      - name: Verify refresh freshness and quality
-        if: steps.window.outputs.active == 'true'
-        run: npx tsx scripts/verifyDataRefresh.ts world-cup
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        if: steps.window.outputs.active == 'true'
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh World Cup snapshot [automated] [skip ci]" \
-            src/data/worldCupSnapshot.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'world-cup-refresh-failure', 'World Cup refresh failed')
-
-      # Every substantive step is gated on the tournament window, but skipped
-      # steps do not set job status, so a dormant run still reports success().
-      # Without the window condition this step closed real refresh-failure
-      # incidents with a "Refresh succeeded" comment on a run that refreshed
-      # nothing: the last in-window run could fail on an ESPN outage and open an
-      # issue, then the next scheduled run 30 minutes later would fall outside
-      # the window and erase it. This is the only workflow with a dormancy gate,
-      # so the other close steps are correct as they stand.
-      - name: Close resolved failure issues
-        if: success() && steps.window.outputs.active == 'true'
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'world-cup-refresh-failure')
+  # A dormant run skips this job outright, so it neither refreshes nor closes a
+  # real refresh-failure incident with a "succeeded" comment.
+  refresh-world-cup:
+    name: Refresh World Cup Snapshot
+    needs: window
+    if: needs.window.outputs.active == 'true'
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
+    permissions:
+      contents: write
+      issues: write
+    with:
+      id: world-cup
+      snapshot-path: src/data/worldCupSnapshot.json
+      label: world-cup-refresh-failure
+      title: World Cup refresh failed

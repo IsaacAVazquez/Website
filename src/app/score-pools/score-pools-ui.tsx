@@ -6,6 +6,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { ConfidenceLevel, Scoreline } from "@/lib/scorePools";
+import { formatPercent as formatPercentWithDigits } from "@/lib/retirement/format";
 import { hasLiveScorePoolsData } from "@/lib/scorePoolsSnapshot";
 import type { ScorePoolLeagueSnapshot, ScorePoolsSnapshot } from "@/types/scorePools";
 
@@ -41,9 +42,7 @@ export function formatAge(iso: string, nowIso: string): string {
   return `${Math.round(hours / 24)}d ago`;
 }
 
-export function formatPercent(value: number, digits = 0): string {
-  return `${(value * 100).toFixed(digits)}%`;
-}
+export const formatPercent = (value: number, digits = 0) => formatPercentWithDigits(value, digits);
 
 export function formatPoints(value: number): string {
   return value.toFixed(2);

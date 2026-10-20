@@ -1,7 +1,4 @@
-import { appendFile } from "node:fs/promises";
-import path from "node:path";
 import type { ScorePoolsSnapshot } from "../src/types/scorePools";
-import { readGeneratedSnapshot } from "./snapshotFallback";
 
 const MAX_LIVE_LEAGUE_AGE_MS = 8 * 60 * 60 * 1000;
 
@@ -76,42 +73,4 @@ export function assessScorePoolsSnapshotQuality(
     liveOdds,
     issues,
   };
-}
-
-async function main() {
-  const snapshotPath = path.join(
-    process.cwd(),
-    "src/data/scorePoolsSnapshot.json"
-  );
-  const snapshot = readGeneratedSnapshot<ScorePoolsSnapshot>(snapshotPath);
-  if (!snapshot) throw new Error(`Could not parse ${snapshotPath}.`);
-
-  const result = assessScorePoolsSnapshotQuality(snapshot);
-  console.log(JSON.stringify(result, null, 2));
-
-  if (process.env.GITHUB_OUTPUT) {
-    await appendFile(
-      process.env.GITHUB_OUTPUT,
-      [
-        `leagues=${result.leagues}`,
-        `fixtures=${result.fixtures}`,
-        `odds=${result.odds}`,
-        `live_leagues=${result.liveLeagues}`,
-        `live_fixtures=${result.liveFixtures}`,
-        `live_odds=${result.liveOdds}`,
-        "",
-      ].join("\n")
-    );
-  }
-
-  if (result.issues.length > 0) {
-    throw new Error(result.issues.join("; "));
-  }
-}
-
-if (process.argv[1]?.endsWith("verifyScorePoolsSnapshot.ts")) {
-  void main().catch((error) => {
-    console.error(`::error::${error instanceof Error ? error.message : String(error)}`);
-    process.exit(1);
-  });
 }

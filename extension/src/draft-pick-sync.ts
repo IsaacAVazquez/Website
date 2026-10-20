@@ -120,7 +120,7 @@ export function parseEspnPlayerIndex(value: unknown): EspnPlayerIndex {
 }
 
 /** ESPN pre-fills every slot with playerId -1; D/ST ids sit in -16001..-16100. */
-export function espnPlayerIdsFromDraftDetail(value: unknown): number[] {
+function espnPlayerIdsFromDraftDetail(value: unknown): number[] {
   const picks = (value as { draftDetail?: { picks?: unknown } })?.draftDetail?.picks;
   if (!Array.isArray(picks)) return [];
   return picks

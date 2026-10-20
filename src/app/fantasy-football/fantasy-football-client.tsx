@@ -1822,5 +1822,3 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     </section>
   );
 }
-
-export default FantasyFootballClient;

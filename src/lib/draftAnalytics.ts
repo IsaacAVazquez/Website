@@ -52,7 +52,7 @@ const _ROSTER_STARTER_TARGETS = {
 
 type RosterTargetPosition = keyof typeof _ROSTER_STARTER_TARGETS;
 
-export type RosterNeedLevel = "starter" | "depth";
+type RosterNeedLevel = "starter" | "depth";
 
 export interface RosterNeed {
   slot: RosterTargetPosition | "FLEX";

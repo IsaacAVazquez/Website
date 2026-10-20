@@ -105,9 +105,10 @@ Snapshot-driven, per the site pattern (`SNAPSHOT_DRIVEN_DASHBOARDS.md`):
   Unchanged prices refresh the latest entry's timestamp; changed prices append.
   Line movement stays queryable and `summarizeLineMovement` reads it.
 - Fail-soft everywhere: a dead provider keeps the previous league snapshot, a
-  missing key degrades to manual/CSV with a note, and the workflow
-  (`.github/workflows/update-score-pools.yml`, every six hours) refuses to
-  commit a snapshot with no leagues.
+  missing key degrades to manual/CSV with a note, and the builder refuses to
+  write a snapshot with no provider-backed leagues, fixtures, or odds, so the
+  six-hourly `.github/workflows/update-score-pools.yml` lane commits nothing
+  degraded.
 - Team matching between providers is tiered exact (normalized names plus
   per-league aliases), never fuzzy, mirroring the fantasy ADP matcher's
   philosophy.

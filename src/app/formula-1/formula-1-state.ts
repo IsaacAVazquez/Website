@@ -4,9 +4,10 @@ import type {
   Formula1Summary,
   Formula1View,
 } from "@/types/formula1";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { enumValue } from "@/lib/utils";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export const FORMULA1_ROUTE = "/formula-1";
+const FORMULA1_ROUTE = "/formula-1";
 
 export const FORMULA1_VIEW_OPTIONS = [
   "overview",
@@ -14,8 +15,6 @@ export const FORMULA1_VIEW_OPTIONS = [
   "constructors",
   "calendar",
 ] as const;
-
-const VALID_VIEWS = new Set<Formula1View>(FORMULA1_VIEW_OPTIONS);
 
 export const DEFAULT_FORMULA1_STATE: Formula1RouteState = {
   view: "overview",
@@ -30,23 +29,14 @@ export const FORMULA1_VIEW_LABELS: Record<Formula1View, string> = {
 };
 
 function normalizeMeetingParam(meeting: string | null): string | null {
-  if (!meeting) {
-    return null;
-  }
-
-  const trimmed = meeting.trim();
+  const trimmed = meeting?.trim() ?? "";
   return /^[1-9]\d*$/.test(trimmed) ? trimmed : null;
 }
 
 export function normalizeFormula1State(input: SearchParamInput): Formula1RouteState {
-  const view = readParam(input, "view");
-  const meeting = readParam(input, "meeting");
-
   return {
-    view: VALID_VIEWS.has((view ?? "") as Formula1View)
-      ? (view as Formula1View)
-      : DEFAULT_FORMULA1_STATE.view,
-    meeting: normalizeMeetingParam(meeting),
+    view: readEnum(input, "view", FORMULA1_VIEW_OPTIONS, DEFAULT_FORMULA1_STATE.view),
+    meeting: normalizeMeetingParam(readParam(input, "meeting")),
   };
 }
 
@@ -58,7 +48,7 @@ export function resolveFormula1State(
   const defaultMeetingKey = summary.defaultMeetingKey ?? summary.meetings[0]?.key ?? null;
 
   return {
-    view: VALID_VIEWS.has(state.view) ? state.view : DEFAULT_FORMULA1_STATE.view,
+    view: enumValue(state.view, FORMULA1_VIEW_OPTIONS, DEFAULT_FORMULA1_STATE.view),
     meeting:
       state.meeting && validMeetingKeys.has(state.meeting)
         ? state.meeting
@@ -71,22 +61,10 @@ export function buildFormula1Href(
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams,
   defaultMeetingKey?: string | null
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    FORMULA1_ROUTE,
+    { view: state.view, meeting: state.meeting || null },
+    { view: DEFAULT_FORMULA1_STATE.view, meeting: defaultMeetingKey },
+    baseSearchParams
   );
-
-  if (state.view === DEFAULT_FORMULA1_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (!state.meeting || state.meeting === defaultMeetingKey) {
-    params.delete("meeting");
-  } else {
-    params.set("meeting", state.meeting);
-  }
-
-  const query = params.toString();
-  return `${FORMULA1_ROUTE}${query ? `?${query}` : ""}`;
 }

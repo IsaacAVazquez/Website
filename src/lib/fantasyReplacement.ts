@@ -3,10 +3,10 @@ import { getRedraftRosterTarget } from "@/lib/redraftLineup";
 import { clamp } from "@/lib/utils";
 import type { Player, Position, RedraftLineupSettings } from "@/types";
 
-export const REPLACEMENT_STARTER_VALUE_WEIGHT = 0.75;
-export const REPLACEMENT_DEPTH_VALUE_WEIGHT = 0.25;
+const REPLACEMENT_STARTER_VALUE_WEIGHT = 0.75;
+const REPLACEMENT_DEPTH_VALUE_WEIGHT = 0.25;
 
-export const FANTASY_REPLACEMENT_POSITIONS = [
+const FANTASY_REPLACEMENT_POSITIONS = [
   "QB",
   "RB",
   "WR",

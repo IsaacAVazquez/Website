@@ -51,7 +51,7 @@ export interface LeagueTableConfig {
   officialLabel: string;
 }
 
-export type LeagueDetailTab = "fixtures" | "scorers";
+type LeagueDetailTab = "fixtures" | "scorers";
 
 interface LeagueTableBoardProps<V extends string> {
   config: LeagueTableConfig;

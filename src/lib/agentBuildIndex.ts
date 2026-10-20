@@ -19,7 +19,7 @@ export interface AgentBuildIndex {
 }
 
 /** A topic group with the number of its repositories whose gain is not a full-window measurement. */
-export interface AgentBuildIndexTopic extends GitHubTrendingSegment {
+interface AgentBuildIndexTopic extends GitHubTrendingSegment {
   unmeasuredCount: number;
 }
 

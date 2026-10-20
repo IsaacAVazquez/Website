@@ -1,7 +1,9 @@
 import { load, type Cheerio, type CheerioAPI } from "cheerio";
-import type { AnyNode } from "domhandler";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
 import type { NewsFeedDefinition } from "./news-pulse-sources";
+
+// cheerio does not re-export domhandler's node union, so read it off load().
+type AnyNode = Exclude<Parameters<typeof load>[0], string | Buffer | unknown[]>;
 
 const DESCRIPTION_LIMIT = 300;
 

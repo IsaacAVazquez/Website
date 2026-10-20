@@ -16,7 +16,7 @@ export interface NetWorthSeriesInput {
   yearly: readonly { year: number; buyerNetWorth: number; renterNetWorth: number }[];
 }
 
-export interface NetWorthChartTick {
+interface NetWorthChartTick {
   value: number;
   y: number;
 }

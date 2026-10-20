@@ -1,8 +1,8 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { PollingRouteState, PollingView, Race } from "@/types/polling";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export const POLLING_ROUTE = "/polling-aggregator";
+const POLLING_ROUTE = "/polling-aggregator";
 
 // The race tables lead, then the national approval and ballot polls. The old
 // Overview view is gone, so ?view=overview falls back to the default.
@@ -14,27 +14,20 @@ export const POLLING_VIEW_LABELS: Record<PollingView, string> = {
   approval: "Approval",
 };
 
-const VALID_VIEWS = new Set<PollingView>(POLLING_VIEW_OPTIONS);
-
 export const DEFAULT_POLLING_STATE: PollingRouteState = {
   view: "senate",
   race: null,
 };
 
 function normalizeRaceParam(race: string | null): string | null {
-  if (!race) return null;
-  const trimmed = race.trim();
+  const trimmed = race?.trim() ?? "";
   return /^[a-z][a-z0-9-]*$/.test(trimmed) ? trimmed : null;
 }
 
 export function normalizePollingState(input: SearchParamInput): PollingRouteState {
-  const view = readParam(input, "view");
-  const race = readParam(input, "race");
   return {
-    view: VALID_VIEWS.has((view ?? "") as PollingView)
-      ? (view as PollingView)
-      : DEFAULT_POLLING_STATE.view,
-    race: normalizeRaceParam(race),
+    view: readEnum(input, "view", POLLING_VIEW_OPTIONS, DEFAULT_POLLING_STATE.view),
+    race: normalizeRaceParam(readParam(input, "race")),
   };
 }
 
@@ -42,24 +35,12 @@ export function buildPollingHref(
   state: PollingRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    POLLING_ROUTE,
+    { view: state.view, race: state.race || null },
+    DEFAULT_POLLING_STATE,
+    baseSearchParams
   );
-
-  if (state.view === DEFAULT_POLLING_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (state.race) {
-    params.set("race", state.race);
-  } else {
-    params.delete("race");
-  }
-
-  const query = params.toString();
-  return `${POLLING_ROUTE}${query ? `?${query}` : ""}`;
 }
 
 // ─── Race helpers ──────────────────────────────────────────────────────────────

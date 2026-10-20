@@ -28,7 +28,7 @@ import {
 import { DATE_TIME_FORMATTER, formatStableDateTime } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
 import "./news-pulse.css";
-import { groupBy } from "@/lib/utils";
+import { groupBy, relativeAge } from "@/lib/utils";
 
 interface NewsPulseClientProps {
   initialFeed?: NewsPulseFeedResponse;
@@ -36,25 +36,7 @@ interface NewsPulseClientProps {
 
 type FeedResponse = NewsPulseFeedResponse;
 
-/** Relative age computed against a caller-supplied "now" rather than reading
- * Date.now() during render, so server and client agree on the first paint. */
-function timeAgo(dateStr: string, now: number): string {
-  const date = new Date(dateStr);
-  if (Number.isNaN(date.getTime())) return "";
-
-  const diff = now - date.getTime();
-  const minutes = Math.floor(diff / 60_000);
-  if (minutes < 1) return "just now";
-  if (minutes < 60) return `${minutes}m ago`;
-
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-
-  const days = Math.floor(hours / 24);
-  return `${days}d ago`;
-}
-
-/** Fallback for timeAgo() while useClientNow() is still null (server render
+/** Fallback for relativeAge() while useClientNow() is still null (server render
  * and first hydration pass), so the pubDate always shows something true. */
 function formatAbsolutePubDate(dateStr: string): string {
   const date = new Date(dateStr);
@@ -348,7 +330,7 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
                   <a href={article.link} target="_blank" rel="noopener noreferrer" className="np-headline">
                     <h3 className="np-headline-title">{article.title}</h3>
                     <p className="np-muted np-small">
-                      {now === null ? formatAbsolutePubDate(article.pubDate) : timeAgo(article.pubDate, now)}
+                      {now === null ? formatAbsolutePubDate(article.pubDate) : relativeAge(article.pubDate, now)}
                       {article.category && article.category !== "General" ? ` · ${article.category}` : ""}
                     </p>
                     {article.description ? <p className="np-dek">{article.description}</p> : null}

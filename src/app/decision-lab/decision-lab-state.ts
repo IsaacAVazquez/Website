@@ -4,7 +4,7 @@ import {
   isDecisionPresetId,
   type DecisionPresetId,
 } from "./decision-lab-data";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export interface DecisionLabState {
   preset: DecisionPresetId;
@@ -53,26 +53,17 @@ export function normalizeDecisionLabState(input: SearchParamInput): DecisionLabS
   };
 }
 
+/** A metric is written only when it differs from its preset's value. */
 export function buildDecisionLabHref(state: DecisionLabState): string {
-  const params = new URLSearchParams();
-  const presetMetrics = getDecisionPresetMetrics(state.preset);
-
-  if (state.preset !== DEFAULT_DECISION_LAB_STATE.preset) {
-    params.set("preset", state.preset);
-  }
-  if (state.impact !== presetMetrics.impact) {
-    params.set("impact", String(state.impact));
-  }
-  if (state.confidence !== presetMetrics.confidence) {
-    params.set("confidence", String(state.confidence));
-  }
-  if (state.effort !== presetMetrics.effort) {
-    params.set("effort", String(state.effort));
-  }
-  if (state.reversibility !== presetMetrics.reversibility) {
-    params.set("reversibility", String(state.reversibility));
-  }
-
-  const query = params.toString();
-  return query ? `${DECISION_LAB_ROUTE}?${query}` : DECISION_LAB_ROUTE;
+  return buildHref(
+    DECISION_LAB_ROUTE,
+    {
+      preset: state.preset,
+      impact: state.impact,
+      confidence: state.confidence,
+      effort: state.effort,
+      reversibility: state.reversibility,
+    },
+    { preset: DEFAULT_DECISION_LAB_STATE.preset, ...getDecisionPresetMetrics(state.preset) }
+  );
 }

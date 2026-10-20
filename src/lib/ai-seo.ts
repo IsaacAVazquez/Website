@@ -62,7 +62,7 @@ interface EducationalOrganization {
   fieldOfStudy?: string[];
 }
 
-export interface Organization {
+interface Organization {
   "@type"?:
     | "Organization"
     | "Corporation"
@@ -92,7 +92,7 @@ interface OccupationData {
   employer?: Organization;
 }
 
-export interface PostalAddress {
+interface PostalAddress {
   "@type"?: "PostalAddress";
   addressLocality?: string;
   addressRegion?: string;
@@ -101,7 +101,7 @@ export interface PostalAddress {
   streetAddress?: string;
 }
 
-export interface Place {
+interface Place {
   "@type": "City" | "State" | "Country" | "Place";
   name: string;
   containedInPlace?: Place;
@@ -135,7 +135,7 @@ export interface ArticleSchemaData {
   audience?: Audience;
 }
 
-export interface Thing {
+interface Thing {
   "@type": string;
   name: string;
   description?: string;
@@ -143,7 +143,7 @@ export interface Thing {
   sameAs?: string[];
 }
 
-export interface SpeakableSpecification {
+interface SpeakableSpecification {
   "@type": "SpeakableSpecification";
   cssSelector?: string[];
   xpath?: string[];

@@ -18,7 +18,7 @@ export type FrontierPriceTier = "budget" | "standard" | "premium";
  * "curated-only" means no catalog entry matched, so the curated facts stand
  * unchecked.
  */
-export interface FrontierModelLiveCheck {
+interface FrontierModelLiveCheck {
   status: "confirmed" | "updated" | "curated-only";
   checkedAt: string;
   source: "models.dev" | "openrouter" | null;
@@ -50,7 +50,7 @@ export interface FrontierModel {
 }
 
 /** The facts the automated check compares against the public catalogs. */
-export type FrontierCheckedFact =
+type FrontierCheckedFact =
   | "contextWindow"
   | "maxOutputTokens"
   | "inputPricePerMTokens"

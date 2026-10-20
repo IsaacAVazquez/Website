@@ -132,3 +132,6 @@ private/
 
 # Superpowers brainstorm scratch (mocks, server state)
 .superpowers/
+
+# Local skill symlinks into .agents/ (which is ignored above)
+.claude/skills/

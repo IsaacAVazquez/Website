@@ -4,12 +4,8 @@ import {
   fantasyPositionDataSource,
 } from "@/data/fantasyPositionData.generated";
 import { Player, Position, ScoringFormat } from "@/types";
-export const FANTASY_POSITION_DATA_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
 
-export type FantasyPositionDataPosition = Extract<
-  Position,
-  (typeof FANTASY_POSITION_DATA_POSITIONS)[number]
->;
+export type FantasyPositionDataPosition = Extract<Position, "QB" | "RB" | "WR" | "TE" | "K" | "DST">;
 
 interface LegacyFantasyPositionData {
   [key: string]: Record<FantasyPositionDataPosition, Player[]>;

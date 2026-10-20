@@ -52,7 +52,7 @@ export interface TechStartupSegment {
   topStartupId: string | null;
 }
 
-export interface TechStartupSnapshotTotals {
+interface TechStartupSnapshotTotals {
   startups: number;
   sectors: number;
   stages: number;

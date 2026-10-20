@@ -62,7 +62,7 @@ export interface MBAJobsFetchError {
   message: string;
 }
 
-export type MBAJobsSourceStatusKind =
+type MBAJobsSourceStatusKind =
   | "ok"
   | "failed"
   | "skipped"

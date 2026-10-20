@@ -5,7 +5,7 @@ import {
   type AiDevToolPricingModel,
   type AiDevToolSourceStatus,
 } from "./ai-dev-tools-data";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const AI_DEV_TOOLS_ROUTE = "/ai-dev-tools";
 
@@ -27,77 +27,36 @@ export const DEFAULT_AI_DEV_TOOLS_STATE: AiDevToolsRouteState = {
   selectedToolId: null,
 };
 
-const VALID_CATEGORIES = new Set<AiDevToolCategory>(
-  aiDevTools.map((tool) => tool.category)
-);
-const VALID_PRICING = new Set<AiDevToolPricingModel>(
-  aiDevTools.map((tool) => tool.pricingModel)
-);
-const VALID_MODELS = new Set<AiDevToolModelSupport>(
-  aiDevTools.map((tool) => tool.modelSupport)
-);
-const VALID_SOURCES = new Set<AiDevToolSourceStatus>(
-  aiDevTools.map((tool) => tool.sourceStatus)
-);
-const VALID_TOOL_IDS = new Set(aiDevTools.map((tool) => tool.id));
-
-function cleanQuery(value: string | null): string {
-  if (!value) {
-    return "";
-  }
-  return value.trim().slice(0, 80);
-}
+const CATEGORIES = aiDevTools.map((tool) => tool.category);
+const PRICING = aiDevTools.map((tool) => tool.pricingModel);
+const MODELS = aiDevTools.map((tool) => tool.modelSupport);
+const SOURCES = aiDevTools.map((tool) => tool.sourceStatus);
+const TOOL_IDS = aiDevTools.map((tool) => tool.id);
 
 export function normalizeAiDevToolsState(
   input: SearchParamInput
 ): AiDevToolsRouteState {
-  const category = readParam(input, "category");
-  const pricing = readParam(input, "pricing");
-  const model = readParam(input, "model");
-  const source = readParam(input, "source");
-  const tool = readParam(input, "tool");
-
   return {
-    category: VALID_CATEGORIES.has((category ?? "") as AiDevToolCategory)
-      ? (category as AiDevToolCategory)
-      : DEFAULT_AI_DEV_TOOLS_STATE.category,
-    pricing: VALID_PRICING.has((pricing ?? "") as AiDevToolPricingModel)
-      ? (pricing as AiDevToolPricingModel)
-      : DEFAULT_AI_DEV_TOOLS_STATE.pricing,
-    model: VALID_MODELS.has((model ?? "") as AiDevToolModelSupport)
-      ? (model as AiDevToolModelSupport)
-      : DEFAULT_AI_DEV_TOOLS_STATE.model,
-    source: VALID_SOURCES.has((source ?? "") as AiDevToolSourceStatus)
-      ? (source as AiDevToolSourceStatus)
-      : DEFAULT_AI_DEV_TOOLS_STATE.source,
-    query: cleanQuery(readParam(input, "q")),
-    selectedToolId:
-      tool && VALID_TOOL_IDS.has(tool) ? tool : DEFAULT_AI_DEV_TOOLS_STATE.selectedToolId,
+    category: readEnum(input, "category", CATEGORIES, DEFAULT_AI_DEV_TOOLS_STATE.category),
+    pricing: readEnum(input, "pricing", PRICING, DEFAULT_AI_DEV_TOOLS_STATE.pricing),
+    model: readEnum(input, "model", MODELS, DEFAULT_AI_DEV_TOOLS_STATE.model),
+    source: readEnum(input, "source", SOURCES, DEFAULT_AI_DEV_TOOLS_STATE.source),
+    query: (readParam(input, "q") ?? "").trim().slice(0, 80),
+    selectedToolId: readEnum(input, "tool", TOOL_IDS, DEFAULT_AI_DEV_TOOLS_STATE.selectedToolId),
   };
 }
 
 export function buildAiDevToolsHref(state: AiDevToolsRouteState): string {
-  const params = new URLSearchParams();
-
-  if (state.category !== DEFAULT_AI_DEV_TOOLS_STATE.category) {
-    params.set("category", state.category);
-  }
-  if (state.pricing !== DEFAULT_AI_DEV_TOOLS_STATE.pricing) {
-    params.set("pricing", state.pricing);
-  }
-  if (state.model !== DEFAULT_AI_DEV_TOOLS_STATE.model) {
-    params.set("model", state.model);
-  }
-  if (state.source !== DEFAULT_AI_DEV_TOOLS_STATE.source) {
-    params.set("source", state.source);
-  }
-  if (state.query.trim().length > 0) {
-    params.set("q", state.query.trim());
-  }
-  if (state.selectedToolId) {
-    params.set("tool", state.selectedToolId);
-  }
-
-  const query = params.toString();
-  return `${AI_DEV_TOOLS_ROUTE}${query ? `?${query}` : ""}`;
+  return buildHref(
+    AI_DEV_TOOLS_ROUTE,
+    {
+      category: state.category,
+      pricing: state.pricing,
+      model: state.model,
+      source: state.source,
+      q: state.query.trim(),
+      tool: state.selectedToolId || null,
+    },
+    { ...DEFAULT_AI_DEV_TOOLS_STATE, q: "" }
+  );
 }

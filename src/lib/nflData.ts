@@ -675,10 +675,6 @@ function buildLeaderboards(rows: PlayerStatRow[]): NFLLeaderboards {
   };
 }
 
-export function isValidNflTeamId(teamId: string): boolean {
-  return /^[a-z]{2,4}$/i.test(teamId);
-}
-
 interface BuildNflSnapshotOptions {
   skipPlayerLeaders?: boolean;
   skipTeamSnapshots?: boolean;

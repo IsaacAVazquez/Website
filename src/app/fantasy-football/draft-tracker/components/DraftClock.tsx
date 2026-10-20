@@ -27,11 +27,11 @@ export function DraftClockProvider({
   return <DraftClockContext.Provider value={clock}>{children}</DraftClockContext.Provider>;
 }
 
-export function useDraftClock(): DraftClock {
+function useDraftClock(): DraftClock {
   return useContext(DraftClockContext);
 }
 
-export function formatClock(seconds: number): string {
+function formatClock(seconds: number): string {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 }
 

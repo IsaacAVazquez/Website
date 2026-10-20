@@ -17,6 +17,7 @@ import {
 } from "../src/lib/scorePools/providers/manual";
 import type { ScorePoolsSnapshot } from "../src/types/scorePools";
 import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
+import { assessScorePoolsSnapshotQuality } from "./verifyScorePoolsSnapshot";
 import { MANUAL_SCORE_POOL_LEAGUES } from "./data/scorePools.manual";
 import { SCORE_POOL_LEAGUES } from "./data/scorePoolsConfig";
 
@@ -63,6 +64,13 @@ async function main() {
       return;
     }
     throw error;
+  }
+
+  // Refuse to write provider-empty or stale live-league output; the committed
+  // snapshot stays and the refresh lane fails loudly.
+  const quality = assessScorePoolsSnapshotQuality(snapshot);
+  if (quality.issues.length > 0) {
+    throw new Error(`Score-pools snapshot looks degraded, refusing to write it: ${quality.issues.join("; ")}`);
   }
 
   const output = JSON.stringify(snapshot, null, 2) + "\n";

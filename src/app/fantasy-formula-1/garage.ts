@@ -9,7 +9,7 @@ export interface GarageSlot {
   asset: FantasyFormula1Asset | null;
 }
 
-export interface GarageBudgetBar {
+interface GarageBudgetBar {
   /** Share of the track the spend inside the budget fills. */
   spentWidth: number;
   /** Share of the track the spend past the budget fills, 0 when under. */

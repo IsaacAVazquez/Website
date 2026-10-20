@@ -1,6 +1,5 @@
 import type {
   PremierLeagueFixture,
-  PremierLeagueFixtureTeam,
   PremierLeagueFormSummary,
   PremierLeagueMatchdayGoals,
   PremierLeagueTeamOption,
@@ -11,12 +10,11 @@ export type LaLigaView = "table" | "title-race" | "europe" | "relegation";
 
 // Both leagues come from the same football-data.org feed, so these shapes are
 // the Premier League ones. The La Liga profile never carried website/address.
-export type LaLigaTeamOption = PremierLeagueTeamOption;
-export type LaLigaTeamProfile = Omit<PremierLeagueTeamProfile, "website" | "address">;
-export type LaLigaFixtureTeam = PremierLeagueFixtureTeam;
+type LaLigaTeamOption = PremierLeagueTeamOption;
+type LaLigaTeamProfile = Omit<PremierLeagueTeamProfile, "website" | "address">;
 export type LaLigaFixture = PremierLeagueFixture;
-export type LaLigaFormSummary = PremierLeagueFormSummary;
-export type LaLigaMatchdayGoals = PremierLeagueMatchdayGoals;
+type LaLigaFormSummary = PremierLeagueFormSummary;
+type LaLigaMatchdayGoals = PremierLeagueMatchdayGoals;
 
 export interface LaLigaTeamSnapshot {
   team: LaLigaTeamProfile | null;

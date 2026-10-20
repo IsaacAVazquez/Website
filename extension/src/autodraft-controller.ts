@@ -37,7 +37,7 @@ export interface AutoDraftCommand {
   roundRules?: AutoDraftRoundRule[];
 }
 
-export type AutoDraftPhase =
+type AutoDraftPhase =
   | "ready"
   | "armed"
   | "waiting"

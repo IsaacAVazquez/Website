@@ -1,6 +1,6 @@
 export type PremierLeagueView = "table" | "title-race" | "europe" | "relegation";
 
-export type PremierLeagueDetailTab = "fixtures" | "scorers";
+type PremierLeagueDetailTab = "fixtures" | "scorers";
 
 export interface PremierLeagueRouteState {
   view: PremierLeagueView;
@@ -140,7 +140,7 @@ export interface PremierLeagueTeamSnapshot {
   generatedAt: string;
 }
 
-export interface PremierLeagueSnapshotSourceUrls {
+interface PremierLeagueSnapshotSourceUrls {
   provider: string;
   standings: string;
   fixtures: string;

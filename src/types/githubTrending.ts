@@ -49,7 +49,7 @@ export interface GitHubTrendingSegment {
   topRepoId: number | null;
 }
 
-export interface GitHubTrendingSnapshotTotals {
+interface GitHubTrendingSnapshotTotals {
   repositories: number;
   languages: number;
   topics: number;

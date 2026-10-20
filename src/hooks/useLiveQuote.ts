@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { useEffect } from "react";
 import type { StockQuote } from "@/types/investment";
+import { useKeyedRequest, type KeyedRequestAction } from "./useKeyedRequest";
 
 interface QuotePayload {
   quotes?: StockQuote[];
@@ -38,12 +39,7 @@ const EMPTY_STATE: UseLiveQuoteState = {
   lastUpdated: null,
 };
 
-type LiveQuoteAction =
-  | { type: "reset" }
-  | { type: "start"; preserveQuote: boolean }
-  | { type: "success"; entry: CachedQuote }
-  | { type: "expire" }
-  | { type: "error"; message: string; preserveQuote: boolean };
+type LiveQuoteAction = KeyedRequestAction<CachedQuote> | { type: "expire" };
 
 function liveQuoteReducer(
   state: UseLiveQuoteState,
@@ -53,7 +49,7 @@ function liveQuoteReducer(
     case "reset":
       return EMPTY_STATE;
     case "start":
-      if (action.preserveQuote && state.quote) {
+      if (action.preserve && state.quote) {
         return {
           ...state,
           isLoading: true,
@@ -67,10 +63,10 @@ function liveQuoteReducer(
       };
     case "success":
       return {
-        quote: action.entry.quote,
+        quote: action.result.quote,
         isLoading: false,
-        error: action.entry.quote.error ?? null,
-        lastUpdated: action.entry.lastUpdated,
+        error: action.result.quote.error ?? null,
+        lastUpdated: action.result.lastUpdated,
       };
     case "expire":
       if (!state.quote || state.quote.isFallback) return state;
@@ -78,24 +74,29 @@ function liveQuoteReducer(
         ...state,
         quote: { ...state.quote, isFallback: true },
       };
-    case "error":
-      if (action.preserveQuote && state.quote) {
+    case "error": {
+      const message =
+        action.error instanceof Error
+          ? action.error.message
+          : "Market quote is temporarily unavailable.";
+      if (action.preserve && state.quote) {
         // Keep showing the last good value, but mark it as saved so consumers
         // cannot present its old day move as a current market response.
         return {
           ...state,
           quote: { ...state.quote, isFallback: true },
           isLoading: false,
-          error: action.message,
+          error: message,
         };
       }
 
       return {
         quote: null,
         isLoading: false,
-        error: action.message,
+        error: message,
         lastUpdated: null,
       };
+    }
     default:
       return state;
   }
@@ -178,61 +179,28 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
   return promise;
 }
 
+function forgetQuote(symbol: string) {
+  quoteCache.delete(symbol);
+}
+
 export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
-  const [state, dispatch] = useReducer(liveQuoteReducer, EMPTY_STATE);
-  const [fetchKey, setFetchKey] = useState(0);
-  const latestRequestId = useRef(0);
-  const previousSymbol = useRef<string | null>(null);
+  const key = symbol ? symbol.toUpperCase() : null;
+  const { state, dispatch, refetch } = useKeyedRequest(
+    key,
+    fetchQuote,
+    liveQuoteReducer,
+    EMPTY_STATE,
+    forgetQuote,
+  );
 
   useEffect(() => {
-    if (!symbol) {
-      previousSymbol.current = null;
-      dispatch({ type: "reset" });
-      return;
-    }
-
-    let cancelled = false;
-    const upperSymbol = symbol.toUpperCase();
-    const preserveQuote = previousSymbol.current === upperSymbol;
-    previousSymbol.current = upperSymbol;
-    const requestId = latestRequestId.current + 1;
-    latestRequestId.current = requestId;
-
-    dispatch({ type: "start", preserveQuote });
-
-    fetchQuote(upperSymbol)
-      .then((entry) => {
-        if (cancelled || latestRequestId.current !== requestId) return;
-
-        dispatch({ type: "success", entry });
-      })
-      .catch((error) => {
-        if (cancelled || latestRequestId.current !== requestId) return;
-
-        dispatch({
-          type: "error",
-          message:
-            error instanceof Error
-              ? error.message
-              : "Market quote is temporarily unavailable.",
-          preserveQuote,
-        });
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [fetchKey, symbol]);
-
-  useEffect(() => {
-    if (!symbol) return;
-    const upperSymbol = symbol.toUpperCase();
+    if (!key) return;
     const revalidate = () => {
       if (document.visibilityState === "hidden") return;
-      if (inflightQuotes.has(upperSymbol)) return;
-      const cached = quoteCache.get(upperSymbol);
+      if (inflightQuotes.has(key)) return;
+      const cached = quoteCache.get(key);
       if (cached && Date.now() - cached.fetchedAt < QUOTE_TTL_MS) return;
-      setFetchKey((current) => current + 1);
+      refetch();
     };
 
     const intervalId = window.setInterval(revalidate, QUOTE_TTL_MS);
@@ -243,7 +211,7 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
       window.removeEventListener("focus", revalidate);
       document.removeEventListener("visibilitychange", revalidate);
     };
-  }, [symbol]);
+  }, [key, refetch]);
 
   useEffect(() => {
     const sourceTimestamp = state.quote?.asOf
@@ -262,25 +230,9 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
       Math.max(0, remainingMs),
     );
     return () => window.clearTimeout(timeoutId);
-  }, [state.quote]);
+  }, [state.quote, dispatch]);
 
-  const refetch = useCallback(() => {
-    if (!symbol) return;
-    quoteCache.delete(symbol.toUpperCase());
-    setFetchKey((current) => current + 1);
-  }, [symbol]);
-
-  if (!symbol) {
-    return {
-      ...EMPTY_STATE,
-      refetch,
-    };
-  }
-
-  return {
-    ...state,
-    refetch,
-  };
+  return { ...state, refetch };
 }
 
 export const __testUtils = {

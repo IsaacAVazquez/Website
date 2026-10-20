@@ -111,7 +111,7 @@ export interface ProjectLike {
   link?: string | null;
 }
 
-export interface LiveToolEntry {
+interface LiveToolEntry {
   slug: string;
   title: string;
   href: string;

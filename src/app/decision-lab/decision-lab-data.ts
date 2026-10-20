@@ -1,13 +1,10 @@
-export const DECISION_PRESET_IDS = [
-  "support-copilot",
-  "onboarding-refresh",
-  "pricing-experiment",
-  "pipeline-hardening",
-  "enterprise-permissions",
-  "notification-rewrite",
-] as const;
-
-export type DecisionPresetId = (typeof DECISION_PRESET_IDS)[number];
+export type DecisionPresetId =
+  | "support-copilot"
+  | "onboarding-refresh"
+  | "pricing-experiment"
+  | "pipeline-hardening"
+  | "enterprise-permissions"
+  | "notification-rewrite";
 export type DecisionRecommendation = "ship" | "test" | "hold";
 export type DecisionAxis = "impact" | "confidence" | "effort" | "reversibility";
 

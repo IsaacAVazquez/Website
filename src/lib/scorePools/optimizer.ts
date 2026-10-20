@@ -21,7 +21,7 @@ import type {
 } from "./types";
 
 /** Every scoreline in the grid is a candidate pick. */
-export function candidateScorelines(maxGoals: number): Scoreline[] {
+function candidateScorelines(maxGoals: number): Scoreline[] {
   const candidates: Scoreline[] = [];
   for (let h = 0; h <= maxGoals; h++) {
     for (let a = 0; a <= maxGoals; a++) candidates.push({ home: h, away: a });

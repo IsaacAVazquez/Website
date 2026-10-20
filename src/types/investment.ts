@@ -94,7 +94,7 @@ export interface Margin {
 /** Raw margins data is an array of period records */
 export type MarginsData = Margin[] | { error: string };
 
-export interface GrowthMetric {
+interface GrowthMetric {
   metric: string;
   value?: number;
   prevYearValue?: number;
@@ -116,7 +116,7 @@ export interface WaccData {
   error?: string;
 }
 
-export interface IndustryMetric {
+interface IndustryMetric {
   industry?: string;
   metric?: string;
   value?: number;
@@ -263,7 +263,7 @@ export type InvestmentSection =
 
 export type InvestmentDataSource = "prefetched" | "on-demand";
 
-export type InvestmentCapabilityKey = InvestmentSection | "compare";
+type InvestmentCapabilityKey = InvestmentSection | "compare";
 
 export type InvestmentCapabilities = Partial<
   Record<InvestmentCapabilityKey, boolean>

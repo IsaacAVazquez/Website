@@ -16,8 +16,8 @@ import type { BestBallContestPreset } from "./types";
  * every player, so the sample is capped at the top of the board by `rank_ave`
  * rather than the whole list.
  */
-export const BEST_BALL_CONSENSUS_BAND_TOLERANCE = 10;
-export const BEST_BALL_CONSENSUS_SAMPLE_SIZE = 150;
+const BEST_BALL_CONSENSUS_BAND_TOLERANCE = 10;
+const BEST_BALL_CONSENSUS_SAMPLE_SIZE = 150;
 export const BEST_BALL_CONSENSUS_MAX_DIVERGENT = 5;
 
 export interface BestBallConsensusConsistency {

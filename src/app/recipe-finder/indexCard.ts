@@ -7,7 +7,7 @@
  */
 import { scoreRecipe, type Recipe } from "@/lib/recipes";
 
-export interface IndexCardLine {
+interface IndexCardLine {
   /** The ingredient's display line as written in the recipe (e.g. "2 tbsp olive oil"). */
   name: string;
   /** Whether the pantry, or the staples exemption, covers this line. */
@@ -15,7 +15,7 @@ export interface IndexCardLine {
   staple: boolean;
 }
 
-export interface IndexCardCounts {
+interface IndexCardCounts {
   have: number;
   need: number;
 }

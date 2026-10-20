@@ -1,19 +1,15 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type {
-  PremierLeagueDetailTab,
   PremierLeagueRouteState,
   PremierLeagueStandingRow,
   PremierLeagueView,
 } from "@/types/premier-league";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const PREMIER_LEAGUE_ROUTE = "/premier-league";
 
 export const PREMIER_LEAGUE_VIEW_OPTIONS = ["table", "title-race", "europe", "relegation"] as const;
-export const PREMIER_LEAGUE_DETAIL_OPTIONS = ["fixtures", "scorers"] as const;
-
-const VALID_VIEWS = new Set<PremierLeagueView>(PREMIER_LEAGUE_VIEW_OPTIONS);
-const VALID_DETAILS = new Set<PremierLeagueDetailTab>(PREMIER_LEAGUE_DETAIL_OPTIONS);
+const PREMIER_LEAGUE_DETAIL_OPTIONS = ["fixtures", "scorers"] as const;
 
 export const DEFAULT_PREMIER_LEAGUE_STATE: PremierLeagueRouteState = {
   view: "table",
@@ -29,8 +25,7 @@ export const PREMIER_LEAGUE_VIEW_LABELS: Record<PremierLeagueView, string> = {
 };
 
 function normalizeTeamParam(team: string | null): string | null {
-  if (!team) return null;
-  const trimmed = team.trim();
+  const trimmed = team?.trim() ?? "";
   return /^[1-9]\d*$/.test(trimmed) ? trimmed : null;
 }
 
@@ -54,18 +49,15 @@ export function filterStandingsForView(
 export function normalizePremierLeagueState(
   input: SearchParamInput
 ): PremierLeagueRouteState {
-  const view = readParam(input, "view");
-  const team = readParam(input, "team");
-  const detail = readParam(input, "detail");
-
   return {
-    view: VALID_VIEWS.has((view ?? "") as PremierLeagueView)
-      ? (view as PremierLeagueView)
-      : DEFAULT_PREMIER_LEAGUE_STATE.view,
-    team: normalizeTeamParam(team),
-    detail: VALID_DETAILS.has((detail ?? "") as PremierLeagueDetailTab)
-      ? (detail as PremierLeagueDetailTab)
-      : DEFAULT_PREMIER_LEAGUE_STATE.detail,
+    view: readEnum(input, "view", PREMIER_LEAGUE_VIEW_OPTIONS, DEFAULT_PREMIER_LEAGUE_STATE.view),
+    team: normalizeTeamParam(readParam(input, "team")),
+    detail: readEnum(
+      input,
+      "detail",
+      PREMIER_LEAGUE_DETAIL_OPTIONS,
+      DEFAULT_PREMIER_LEAGUE_STATE.detail
+    ),
   };
 }
 
@@ -73,28 +65,10 @@ export function buildPremierLeagueHref(
   state: PremierLeagueRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    PREMIER_LEAGUE_ROUTE,
+    { view: state.view, team: state.team || null, detail: state.detail || null },
+    DEFAULT_PREMIER_LEAGUE_STATE,
+    baseSearchParams
   );
-
-  if (state.view === DEFAULT_PREMIER_LEAGUE_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (state.team) {
-    params.set("team", state.team);
-  } else {
-    params.delete("team");
-  }
-
-  if (state.detail && state.detail !== DEFAULT_PREMIER_LEAGUE_STATE.detail) {
-    params.set("detail", state.detail);
-  } else {
-    params.delete("detail");
-  }
-
-  const query = params.toString();
-  return `${PREMIER_LEAGUE_ROUTE}${query ? `?${query}` : ""}`;
 }

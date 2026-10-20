@@ -32,7 +32,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | Theme | `next-themes` |
 | Content | `gray-matter`, `remark`, `remark-gfm`, `remark-rehype`, `rehype-sanitize`, `rehype-stringify` |
 | Data | Version-controlled snapshots for repeatable builds, request-time USGS and BART overlays, and Netlify Blobs for runtime last-good caches. |
-| Email | Resend (job search digest) |
+| Email | Resend (newsletter contacts) |
 | Tests | Jest, Playwright |
 | Deploy | Netlify + `@netlify/plugin-nextjs` |
 
@@ -159,14 +159,12 @@ GOOGLE_SITE_VERIFICATION=...
 # Data sources used by update scripts and a few server routes
 FOOTBALL_DATA_API_TOKEN=...   # football-data.org, free tier
 FINNHUB_API_KEY=...           # quote endpoint for /investments
-RESEND_API_KEY=...            # job search email digest
+RESEND_API_KEY=...            # newsletter fallback when the contacts key is unset
 RESEND_FROM_EMAIL=...         # sender on a verified Resend domain
 RESEND_CONTACTS_API_KEY=...   # separate server-only newsletter contact key
-MBA_DIGEST_ALLOWED_RECIPIENTS=... # comma-separated digest recipient emails/domains
-MBA_DIGEST_SECRET=...         # sent in the x-mba-digest-secret header to the digest route
 ```
 
-The sender, newsletter key, and protected digest caller are described in [`docs/EMAIL_DELIVERY.md`](docs/EMAIL_DELIVERY.md).
+The sender and newsletter key are described in [`docs/EMAIL_DELIVERY.md`](docs/EMAIL_DELIVERY.md).
 
 - `update:investments` additionally expects the Python virtualenv described in `DEVELOPMENT.md`.
 - `update:football`, `update:premier-league`, and `update:la-liga` only need `FOOTBALL_DATA_API_TOKEN` when rebuilding checked-in football snapshots.
