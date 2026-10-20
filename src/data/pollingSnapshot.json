@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:18:29.140Z",
+  "generatedAt": "2026-10-20T10:27:49.804Z",
   "sourceAsOf": "2026-10-15",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
@@ -11,7 +11,7 @@
     {
       "date": "2025-10-15",
       "approve": 43.1,
-      "disapprove": 53.6
+      "disapprove": 53.8
     },
     {
       "date": "2025-11-15",
