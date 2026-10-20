@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.4325,
-      "ttmPe": 20.49,
-      "marketCap": 2747077080000,
-      "psRatio": 3.7,
-      "pbRatio": 6.22,
-      "pegRatio": 0.08
+      "ttmPe": 21.11,
+      "marketCap": 2829998350000,
+      "psRatio": 3.81,
+      "pbRatio": 6.4,
+      "pegRatio": 0.09
     },
     "profitability": {
       "roe": 7.090000000000001,
@@ -4938,32 +4938,16 @@
     },
     "wacc": {
       "wacc": 15.440000000000001,
-      "costOfEquity": 16.6,
+      "costOfEquity": 16.56,
       "costOfDebt": 0.38,
       "taxRate": 24,
-      "beta": 1.4806,
-      "marketCap": 2747077080000
+      "beta": 1.4785,
+      "marketCap": 2829998350000
     },
     "beta": {
-      "beta5y": 1.4806
+      "beta5y": 1.4785
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 216.62,
-        "high": 217.71,
-        "low": 212.66,
-        "close": 215.57,
-        "volume": 45909500
-      },
-      {
-        "date": "2025-10-16",
-        "open": 215.67,
-        "high": 218.59,
-        "low": 212.81,
-        "close": 214.47,
-        "volume": 42414600
-      },
       {
         "date": "2025-10-17",
         "open": 214.56,
@@ -6962,7 +6946,23 @@
         "high": 255.6,
         "low": 248.65,
         "close": 254.76,
-        "volume": 34505700
+        "volume": 34564200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 255.1,
+        "high": 255.54,
+        "low": 248.6,
+        "close": 250,
+        "volume": 40427300
+      },
+      {
+        "date": "2026-10-19",
+        "open": 255.25,
+        "high": 263.72,
+        "low": 255.22,
+        "close": 262.45,
+        "volume": 56068100
       }
     ],
     "news": [
@@ -6973,6 +6973,14 @@
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/one-time-amazon-takeover-target-125946201.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
@@ -6989,14 +6997,6 @@
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
@@ -7113,18 +7113,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.49,
-        "industryAvg": 27.31
+        "value": 21.11,
+        "industryAvg": 27.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.7,
-        "industryAvg": 2.28
+        "value": 3.81,
+        "industryAvg": 2.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.22,
-        "industryAvg": 4.08
+        "value": 6.4,
+        "industryAvg": 4.13
       },
       {
         "metric": "ROE",

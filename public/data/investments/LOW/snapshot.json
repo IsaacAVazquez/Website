@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 16.55,
-      "marketCap": 109798920000,
-      "psRatio": 1.21,
-      "pbRatio": -14.76,
-      "pegRatio": 413.75
+      "ttmPe": 16.57,
+      "marketCap": 109911120000,
+      "psRatio": 1.22,
+      "pbRatio": -14.78,
+      "pegRatio": 414.25
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,33 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.48,
-      "costOfEquity": 11.459999999999999,
+      "wacc": 8.469999999999999,
+      "costOfEquity": 11.44,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.8181,
-      "marketCap": 109798920000
+      "beta": 0.8143,
+      "marketCap": 109911120000
     },
     "beta": {
-      "beta5y": 0.8181
+      "beta5y": 0.8143
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 241.51,
-        "high": 246.08,
-        "low": 240.52,
-        "close": 241.53,
-        "volume": 2569500
-      },
-      {
-        "date": "2025-10-16",
-        "open": 242.34,
-        "high": 243.2,
-        "low": 240.44,
-        "close": 243.1,
-        "volume": 2258700
-      },
       {
         "date": "2025-10-17",
         "open": 243.21,
@@ -7842,6 +7826,22 @@
         "low": 191.31,
         "close": 195.72,
         "volume": 3912900
+      },
+      {
+        "date": "2026-10-16",
+        "open": 197.06,
+        "high": 199.95,
+        "low": 195.97,
+        "close": 197.38,
+        "volume": 3708600
+      },
+      {
+        "date": "2026-10-19",
+        "open": 195.59,
+        "high": 196.72,
+        "low": 194.66,
+        "close": 195.92,
+        "volume": 3086500
       }
     ],
     "news": [
@@ -7862,19 +7862,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
-        "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
         "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
+        "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
         "type": "STORY"
       },
       {
@@ -7991,18 +7991,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.55,
-        "industryAvg": 20.03
+        "value": 16.57,
+        "industryAvg": 20.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.21,
+        "value": 1.22,
         "industryAvg": 1.59
       },
       {
         "metric": "P/B Ratio",
-        "value": -14.76,
-        "industryAvg": 15.77
+        "value": -14.78,
+        "industryAvg": 15.84
       },
       {
         "metric": "ROE",

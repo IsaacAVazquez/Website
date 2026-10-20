@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 27.0441,
-      "ttmPe": 7.78,
-      "marketCap": 66715870000,
-      "psRatio": 1.85,
-      "pbRatio": 3.6,
+      "ttmPe": 7.76,
+      "marketCap": 66551061200,
+      "psRatio": 1.84,
+      "pbRatio": 3.59,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6495,32 +6495,16 @@
     },
     "wacc": {
       "wacc": 7.9,
-      "costOfEquity": 11.49,
+      "costOfEquity": 11.5,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 21,
-      "beta": 0.822,
-      "marketCap": 66715870000
+      "beta": 0.8222,
+      "marketCap": 66551061200
     },
     "beta": {
-      "beta5y": 0.822
+      "beta5y": 0.8222
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 206.373,
-        "high": 206.9957,
-        "low": 199.77,
-        "close": 200.1654,
-        "volume": 4481973
-      },
-      {
-        "date": "2025-10-16",
-        "open": 201.3515,
-        "high": 202.508,
-        "low": 199.9084,
-        "close": 200.8277,
-        "volume": 3137978
-      },
       {
         "date": "2025-10-17",
         "open": 200.7881,
@@ -8520,23 +8504,39 @@
         "low": 206.62,
         "close": 210.5,
         "volume": 2323000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 211.42,
+        "high": 213.5,
+        "low": 210.66,
+        "close": 211.41,
+        "volume": 2939500
+      },
+      {
+        "date": "2026-10-19",
+        "open": 211.67,
+        "high": 212.35,
+        "low": 209.66,
+        "close": 209.98,
+        "volume": 2080800
       }
     ],
     "news": [
-      {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
       {
         "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
         "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -8572,14 +8572,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
-        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
-        "publisher": "Investopedia",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
         "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
         "publisher": "The Wall Street Journal",
@@ -8596,11 +8588,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "7c53ca89-6899-3d5f-a8b1-a1ed469f6f47",
-        "title": "Argus Research Adjusts Honeywell International Price Target to $250 From $240",
-        "publisher": "MT Newswires",
+        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
+        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
+        "publisher": "Investopedia",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "75d38bd4-ebde-3496-88f8-9b8ccd44f07d",
+        "title": "Honeywell International (HON) Up 6.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/argus-research-adjusts-honeywell-international-120140450.html",
+        "link": "https://finance.yahoo.com/news/honeywell-international-hon-6-7-153052103.html",
         "type": "STORY"
       }
     ],
@@ -8665,18 +8665,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.78,
-        "industryAvg": 13.33
+        "value": 7.76,
+        "industryAvg": 13.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.85,
-        "industryAvg": 1.56
+        "value": 1.84,
+        "industryAvg": 1.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.6,
-        "industryAvg": 2.71
+        "value": 3.59,
+        "industryAvg": 2.91
       },
       {
         "metric": "ROE",

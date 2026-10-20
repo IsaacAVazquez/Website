@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.84,
-      "ttmPe": 11.56,
-      "marketCap": 184472018880,
-      "psRatio": 1.33,
-      "pbRatio": 1.78,
+      "ttmPe": 11.5,
+      "marketCap": 183433325080,
+      "psRatio": 1.32,
+      "pbRatio": 1.77,
       "pegRatio": 2.84
     },
     "profitability": {
@@ -4263,33 +4263,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.95,
-      "costOfEquity": 7.180000000000001,
+      "wacc": 3.9699999999999998,
+      "costOfEquity": 7.24,
       "costOfDebt": 1.05,
       "taxRate": 25,
-      "beta": 0.2682,
-      "marketCap": 184472018880
+      "beta": 0.2702,
+      "marketCap": 183433325080
     },
     "beta": {
-      "beta5y": 0.2682
+      "beta5y": 0.2702
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 40.42,
-        "high": 40.56,
-        "low": 40.24,
-        "close": 40.38,
-        "volume": 18233200
-      },
-      {
-        "date": "2025-10-16",
-        "open": 40.42,
-        "high": 40.57,
-        "low": 40.18,
-        "close": 40.36,
-        "volume": 16751200
-      },
       {
         "date": "2025-10-17",
         "open": 40.5,
@@ -6289,6 +6273,22 @@
         "low": 44,
         "close": 44.4,
         "volume": 26273200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 44.83,
+        "high": 45.06,
+        "low": 44.37,
+        "close": 44.79,
+        "volume": 19895900
+      },
+      {
+        "date": "2026-10-19",
+        "open": 44.24,
+        "high": 44.6,
+        "low": 44,
+        "close": 44.15,
+        "volume": 16148200
       }
     ],
     "news": [
@@ -6341,6 +6341,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
+        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "5c1d73cc-606a-3af4-8404-18be018b6c71",
         "title": "Top Research Reports for Verizon Communications, Bristol-Myers Squibb & Canadian Pacific",
         "publisher": "Zacks",
@@ -6354,14 +6362,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
-        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
         "type": "STORY"
       },
       {
@@ -6434,18 +6434,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.56,
-        "industryAvg": 10.71
+        "value": 11.5,
+        "industryAvg": 10.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.33,
-        "industryAvg": 1.09
+        "value": 1.32,
+        "industryAvg": 1.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.78,
-        "industryAvg": 1.59
+        "value": 1.77,
+        "industryAvg": 1.58
       },
       {
         "metric": "ROE",

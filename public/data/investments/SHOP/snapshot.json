@@ -1,11 +1,14 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4823,
-      "ttmPe": 120.18,
-      "marketCap": 229659263724,
-      "psRatio": 17.31,
-      "pbRatio": 18.11,
-      "pegRatio": 1.79
+      "ttmPe": 115.4,
+      "marketCap": 220531680996,
+      "psRatio": 16.62,
+      "pbRatio": 17.39,
+      "pegRatio": 1.72
     },
     "profitability": {
       "roe": 11.93,
@@ -5803,33 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.56,
-      "costOfEquity": 25.69,
+      "wacc": 25.39,
+      "costOfEquity": 25.53,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6498,
-      "marketCap": 229659263724
+      "beta": 2.6405,
+      "marketCap": 220531680996
     },
     "beta": {
-      "beta5y": 2.6498
+      "beta5y": 2.6405
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 154.95,
-        "high": 158.665,
-        "low": 154.244,
-        "close": 156.21,
-        "volume": 6010000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 160.76,
-        "high": 164.95,
-        "low": 155.89,
-        "close": 156.57,
-        "volume": 8937700
-      },
       {
         "date": "2025-10-17",
         "open": 155.88,
@@ -7828,7 +7815,23 @@
         "high": 178.31,
         "low": 163.252,
         "close": 178.14,
-        "volume": 10682100
+        "volume": 10698200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 177.715,
+        "high": 180.41,
+        "low": 167.335,
+        "close": 169.52,
+        "volume": 15244000
+      },
+      {
+        "date": "2026-10-19",
+        "open": 171.6,
+        "high": 174.36,
+        "low": 169.53,
+        "close": 171.06,
+        "volume": 6729100
       }
     ],
     "news": [
@@ -7849,19 +7852,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
-        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
         "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
         "type": "STORY"
       },
       {

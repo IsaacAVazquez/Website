@@ -1,10 +1,10 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.5556,
-      "ttmPe": 16.43,
-      "marketCap": 168778607728,
-      "psRatio": 1.83,
-      "pbRatio": 3,
-      "pegRatio": 3.04
+      "ttmPe": 16.33,
+      "marketCap": 167768279184,
+      "psRatio": 1.82,
+      "pbRatio": 2.98,
+      "pegRatio": 3.02
     },
     "profitability": {
       "roe": 5.779999999999999,
@@ -5718,33 +5718,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.029999999999999,
-      "costOfEquity": 8.129999999999999,
+      "wacc": 5.050000000000001,
+      "costOfEquity": 8.18,
       "costOfDebt": 0.88,
       "taxRate": 25,
-      "beta": 0.3901,
-      "marketCap": 168778607728
+      "beta": 0.3929,
+      "marketCap": 167768279184
     },
     "beta": {
-      "beta5y": 0.3901
+      "beta5y": 0.3929
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 229.18,
-        "high": 229.53,
-        "low": 226.37,
-        "close": 226.65,
-        "volume": 3286600
-      },
-      {
-        "date": "2025-10-16",
-        "open": 229.79,
-        "high": 230.07,
-        "low": 225.25,
-        "close": 226.45,
-        "volume": 4217400
-      },
       {
         "date": "2025-10-17",
         "open": 227.15,
@@ -7744,6 +7728,22 @@
         "low": 155.75,
         "close": 157.03,
         "volume": 5486000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 158.99,
+        "high": 159.65,
+        "low": 156.56,
+        "close": 159.1,
+        "volume": 5906100
+      },
+      {
+        "date": "2026-10-19",
+        "open": 158.77,
+        "high": 159.54,
+        "low": 155.87,
+        "close": 156.09,
+        "volume": 5182500
       }
     ],
     "news": [
@@ -7772,19 +7772,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "aaaad415-2eec-4b3b-9dfa-5e6b2a2aaa4b",
-        "title": "4 of your biggest Trump tariff questions answered",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-04-27",
-        "link": "https://finance.yahoo.com/news/4-of-your-biggest-trump-tariff-questions-answered-100003282.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad7da136-7e59-3da1-80ea-bf69c9f9a814",
         "title": "China weighs U.S. tariff exemptions, Alphabet reports Q1 beat: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-27",
         "link": "https://finance.yahoo.com/news/china-weighs-u-tariff-exemptions-162055045.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "aaaad415-2eec-4b3b-9dfa-5e6b2a2aaa4b",
+        "title": "4 of your biggest Trump tariff questions answered",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-04-27",
+        "link": "https://finance.yahoo.com/news/4-of-your-biggest-trump-tariff-questions-answered-100003282.html",
         "type": "STORY"
       },
       {
@@ -7892,18 +7892,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.43,
-        "industryAvg": 10.71
+        "value": 16.33,
+        "industryAvg": 10.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.83,
-        "industryAvg": 1.09
+        "value": 1.82,
+        "industryAvg": 1.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 3,
-        "industryAvg": 1.59
+        "value": 2.98,
+        "industryAvg": 1.58
       },
       {
         "metric": "ROE",

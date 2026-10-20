@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 21.57,
-      "marketCap": 307623520000,
-      "psRatio": 1.82,
-      "pbRatio": 18.51,
-      "pegRatio": 4.78
+      "ttmPe": 21.68,
+      "marketCap": 309260240000,
+      "psRatio": 1.83,
+      "pbRatio": 18.61,
+      "pegRatio": 4.81
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,33 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.48,
-      "costOfEquity": 12.47,
+      "wacc": 10.459999999999999,
+      "costOfEquity": 12.43,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9479,
-      "marketCap": 307623520000
+      "beta": 0.9426,
+      "marketCap": 309260240000
     },
     "beta": {
-      "beta5y": 0.9479
+      "beta5y": 0.9426
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 389.23,
-        "high": 394.37,
-        "low": 386.73,
-        "close": 388.3,
-        "volume": 3690100
-      },
-      {
-        "date": "2025-10-16",
-        "open": 389.66,
-        "high": 390,
-        "low": 383.97,
-        "close": 387.39,
-        "volume": 2783700
-      },
       {
         "date": "2025-10-17",
         "open": 388.5,
@@ -7452,6 +7436,22 @@
         "low": 301.42,
         "close": 308.24,
         "volume": 6670900
+      },
+      {
+        "date": "2026-10-16",
+        "open": 309.66,
+        "high": 314.66,
+        "low": 308.32,
+        "close": 309.63,
+        "volume": 7035400
+      },
+      {
+        "date": "2026-10-19",
+        "open": 306.55,
+        "high": 311.58,
+        "low": 306,
+        "close": 309.88,
+        "volume": 3936500
       }
     ],
     "news": [
@@ -7520,19 +7520,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6de80f5d-3e1e-354a-a33e-7414775e46a2",
-        "title": "Jefferies Adjusts Home Depot Price Target to $456 From $461",
-        "publisher": "MT Newswires",
+        "uuid": "3af9c020-af6f-39f0-bb96-5f4046687d0b",
+        "title": "Stock Market Today: Dow Jones Falls, S&P 500 Ends Win Streak; Coffee Kiosks Stock Sinks",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/jefferies-adjusts-home-depot-price-155048144.html",
+        "link": "https://finance.yahoo.com/m/3af9c020-af6f-39f0-bb96-5f4046687d0b/stock-market-today%3A-dow-jones.html",
         "type": "STORY"
       },
       {
-        "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
-        "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
+        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
+        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
+        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
         "type": "VIDEO"
       }
     ],
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.57,
-        "industryAvg": 20.03
+        "value": 21.68,
+        "industryAvg": 20.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.82,
+        "value": 1.83,
         "industryAvg": 1.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.51,
-        "industryAvg": 15.77
+        "value": 18.61,
+        "industryAvg": 15.84
       },
       {
         "metric": "ROE",

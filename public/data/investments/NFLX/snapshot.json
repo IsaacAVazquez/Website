@@ -1,10 +1,10 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1742,
-      "ttmPe": 22.88,
-      "marketCap": 302343661617,
-      "psRatio": 6.25,
-      "pbRatio": 10.03,
-      "pegRatio": 2.07
+      "ttmPe": 22.01,
+      "marketCap": 290851188045,
+      "psRatio": 6.01,
+      "pbRatio": 9.65,
+      "pegRatio": 1.99
     },
     "profitability": {
       "roe": 11.1,
@@ -4926,33 +4926,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.7,
-      "costOfEquity": 17.44,
+      "wacc": 16.64,
+      "costOfEquity": 17.41,
       "costOfDebt": 1.23,
       "taxRate": 16,
-      "beta": 1.5882,
-      "marketCap": 302343661617
+      "beta": 1.5875,
+      "marketCap": 290851188045
     },
     "beta": {
-      "beta5y": 1.5882
+      "beta5y": 1.5875
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 121.301,
-        "high": 121.962,
-        "low": 120.161,
-        "close": 120.329,
-        "volume": 20252000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 121.215,
-        "high": 121.671,
-        "low": 117.6,
-        "close": 118.359,
-        "volume": 28326000
-      },
       {
         "date": "2025-10-17",
         "open": 118.36,
@@ -6951,7 +6935,23 @@
         "high": 73.07,
         "low": 71.34,
         "close": 72.61,
-        "volume": 40275900
+        "volume": 40397500
+      },
+      {
+        "date": "2026-10-16",
+        "open": 69.87,
+        "high": 71.9,
+        "low": 69.76,
+        "close": 70.53,
+        "volume": 44151300
+      },
+      {
+        "date": "2026-10-19",
+        "open": 69.75,
+        "high": 70.22,
+        "low": 69.02,
+        "close": 69.85,
+        "volume": 33894000
       }
     ],
     "news": [
@@ -7012,19 +7012,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
         "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
         "publisher": "StockStory",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
         "type": "STORY"
       },
       {
@@ -7098,18 +7098,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.88,
-        "industryAvg": 24.33
+        "value": 22.01,
+        "industryAvg": 23.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.25,
-        "industryAvg": 2.54
+        "value": 6.01,
+        "industryAvg": 2.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.03,
-        "industryAvg": 3.03
+        "value": 9.65,
+        "industryAvg": 3.08
       },
       {
         "metric": "ROE",

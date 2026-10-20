@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5762,
-      "ttmPe": 35.43,
-      "marketCap": 90447270000,
-      "psRatio": 4.85,
-      "pbRatio": 4.44,
-      "pegRatio": 1.52
+      "ttmPe": 35.08,
+      "marketCap": 89549212000,
+      "psRatio": 4.81,
+      "pbRatio": 4.39,
+      "pegRatio": 1.5
     },
     "profitability": {
       "roe": 3.53,
@@ -6095,33 +6095,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.78,
-      "costOfEquity": 14.56,
+      "wacc": 12.75,
+      "costOfEquity": 14.540000000000001,
       "costOfDebt": 0.83,
       "taxRate": 21,
-      "beta": 1.2174,
-      "marketCap": 90447270000
+      "beta": 1.2157,
+      "marketCap": 89549212000
     },
     "beta": {
-      "beta5y": 1.2174
+      "beta5y": 1.2157
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 131.15,
-        "high": 132.45,
-        "low": 128.46,
-        "close": 130.27,
-        "volume": 2636000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 130.94,
-        "high": 131.45,
-        "low": 128.44,
-        "close": 128.89,
-        "volume": 2430900
-      },
       {
         "date": "2025-10-17",
         "open": 128.4,
@@ -8121,6 +8105,22 @@
         "low": 156.71,
         "close": 162.15,
         "volume": 2548000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 161.4,
+        "high": 164.09,
+        "low": 159.3,
+        "close": 161.47,
+        "volume": 3425400
+      },
+      {
+        "date": "2026-10-19",
+        "open": 163.44,
+        "high": 163.51,
+        "low": 160.09,
+        "close": 160.54,
+        "volume": 2607900
       }
     ],
     "news": [
@@ -8157,6 +8157,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
+        "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
         "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
         "publisher": "MT Newswires",
@@ -8173,14 +8181,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
-        "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "818f6acd-b246-3fe0-80c9-8362811fc57f",
         "title": "Emerson Electric Co. (NYSE:EMR) is a favorite amongst institutional investors who own 83%",
         "publisher": "Simply Wall St.",
@@ -8189,11 +8189,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "db47beb6-8992-35e3-8b08-5069a876a9cf",
-        "title": "Q1 Earnings Outperformers: SmartRent (NYSE:SMRT) And The Rest Of The Internet of Things Stocks",
-        "publisher": "StockStory",
+        "uuid": "f6a1359b-cb8a-30d0-a8d1-682ec7309443",
+        "title": "Emerson's 'Project Beyond' to Modernize and Seamlessly Integrate the Industrial Automation Technology Stack",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-smartrent-nyse-033437919.html",
+        "link": "https://finance.yahoo.com/news/emersons-project-beyond-modernize-seamlessly-130000736.html",
         "type": "STORY"
       },
       {
@@ -8271,18 +8271,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.43,
-        "industryAvg": 30.63
+        "value": 35.08,
+        "industryAvg": 30.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.85,
-        "industryAvg": 3.48
+        "value": 4.81,
+        "industryAvg": 3.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.44,
-        "industryAvg": 6.3
+        "value": 4.39,
+        "industryAvg": 6.23
       },
       {
         "metric": "ROE",

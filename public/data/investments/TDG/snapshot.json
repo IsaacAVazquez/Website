@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.9774,
-      "ttmPe": 34.39,
-      "marketCap": 62689217952,
-      "psRatio": 6.26,
-      "pbRatio": -6.39,
-      "pegRatio": 3.16
+      "ttmPe": 34.64,
+      "marketCap": 63142983010,
+      "psRatio": 6.31,
+      "pbRatio": -6.44,
+      "pegRatio": 3.18
     },
     "profitability": {
       "roe": -5.609999999999999,
@@ -6079,33 +6079,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.61,
-      "costOfEquity": 12.590000000000002,
+      "wacc": 8.62,
+      "costOfEquity": 12.57,
       "costOfDebt": 1.54,
       "taxRate": 24,
-      "beta": 0.9638,
-      "marketCap": 62689217952
+      "beta": 0.9613,
+      "marketCap": 63142983010
     },
     "beta": {
-      "beta5y": 0.9638
+      "beta5y": 0.9613
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 1299.35,
-        "high": 1313.27,
-        "low": 1235.6899,
-        "close": 1237.71,
-        "volume": 750900
-      },
-      {
-        "date": "2025-10-16",
-        "open": 1243.16,
-        "high": 1270,
-        "low": 1240.4,
-        "close": 1249.42,
-        "volume": 387300
-      },
       {
         "date": "2025-10-17",
         "open": 1253.08,
@@ -8105,6 +8089,22 @@
         "low": 1111.95,
         "close": 1134.24,
         "volume": 288000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 1144.14,
+        "high": 1158.04,
+        "low": 1135.72,
+        "close": 1139.34,
+        "volume": 395800
+      },
+      {
+        "date": "2026-10-19",
+        "open": 1135,
+        "high": 1146.88,
+        "low": 1127.52,
+        "close": 1142.45,
+        "volume": 283400
       }
     ],
     "news": [
@@ -8141,14 +8141,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
-        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
         "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
@@ -8162,6 +8154,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
+        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
         "type": "STORY"
       },
       {
@@ -8248,23 +8248,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.39,
-        "industryAvg": 32.03
+        "value": 34.64,
+        "industryAvg": 32.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.26,
-        "industryAvg": 2.85
+        "value": 6.31,
+        "industryAvg": 2.87
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.39,
-        "industryAvg": 8.48
+        "value": -6.44,
+        "industryAvg": 8.5
       },
       {
         "metric": "ROE",
         "value": -5.609999999999999,
-        "industryAvg": 17.330000000000002
+        "industryAvg": 17.32
       },
       {
         "metric": "ROA",

@@ -1,10 +1,10 @@
 {
   "symbol": "ORLY",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1445,
-      "ttmPe": 28.14,
-      "marketCap": 72230673300,
-      "psRatio": 3.89,
-      "pbRatio": -39.35,
-      "pegRatio": 2.61
+      "ttmPe": 28.33,
+      "marketCap": 72695887806,
+      "psRatio": 3.91,
+      "pbRatio": -39.6,
+      "pegRatio": 2.63
     },
     "profitability": {
       "roe": -49.27,
@@ -5047,33 +5047,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.33,
-      "costOfEquity": 9.36,
+      "wacc": 8.34,
+      "costOfEquity": 9.370000000000001,
       "costOfDebt": 0.73,
       "taxRate": 23,
-      "beta": 0.548,
-      "marketCap": 72230673300
+      "beta": 0.5464,
+      "marketCap": 72695887806
     },
     "beta": {
-      "beta5y": 0.548
+      "beta5y": 0.5464
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 103.04,
-        "high": 103.82,
-        "low": 101.88,
-        "close": 102.12,
-        "volume": 3958700
-      },
-      {
-        "date": "2025-10-16",
-        "open": 102.18,
-        "high": 102.71,
-        "low": 101,
-        "close": 101.17,
-        "volume": 5148300
-      },
       {
         "date": "2025-10-17",
         "open": 101.42,
@@ -7073,6 +7057,22 @@
         "low": 88.23,
         "close": 88.5,
         "volume": 5880000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 89.26,
+        "high": 90.49,
+        "low": 88.77,
+        "close": 89.27,
+        "volume": 5892600
+      },
+      {
+        "date": "2026-10-19",
+        "open": 88.4,
+        "high": 89.47,
+        "low": 88.4,
+        "close": 89.07,
+        "volume": 4122800
       }
     ],
     "news": [
@@ -7166,11 +7166,10 @@
         "totalPay": 2815451
       },
       {
-        "name": "Mr. Brent G. Kirby",
-        "title": "President",
-        "age": 56,
-        "yearBorn": 1969,
-        "totalPay": 2392769
+        "name": "Mr. C. David Wilbanks",
+        "title": "Senior Vice President of Merchandise",
+        "age": 53,
+        "yearBorn": 1972
       },
       {
         "name": "Mr. David E. O'Reilly",
@@ -7194,11 +7193,10 @@
         "totalPay": 1102942
       },
       {
-        "name": "Mr. Jeremy Adam Fletcher CPA",
-        "title": "Executive VP & CFO",
-        "age": 47,
-        "yearBorn": 1978,
-        "totalPay": 1619396
+        "name": "Mr. Mark J. Merz",
+        "title": "Senior Vice President of International",
+        "age": 53,
+        "yearBorn": 1972
       },
       {
         "name": "Mr. Robert Allen Dumas",
@@ -7229,18 +7227,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.14,
-        "industryAvg": 20.42
+        "value": 28.33,
+        "industryAvg": 20.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.89,
-        "industryAvg": 0.89
+        "value": 3.91,
+        "industryAvg": 0.84
       },
       {
         "metric": "P/B Ratio",
-        "value": -39.35,
-        "industryAvg": 1.88
+        "value": -39.6,
+        "industryAvg": 1.72
       },
       {
         "metric": "ROE",

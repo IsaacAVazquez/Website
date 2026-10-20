@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -33,17 +33,17 @@
       "industry": "Semiconductor Equipment & Materials",
       "sector": "Technology",
       "longBusinessSummary": "ASML Holding N.V. provides lithography solutions for the development, production, marketing, sales, upgrading, and servicing of advanced semiconductor equipment systems. The company offers lithography, metrology, and inspection systems. It also provides extreme ultraviolet lithography systems; and deep ultraviolet lithography systems comprising immersion and dry lithography systems solutions to manufacture various range of semiconductor nodes and technologies. In addition, the company offers metrology and inspection systems, including YieldStar optical metrology systems, a diffraction-based wafer metrology platform to assess the quality of patterns on the wafers; and HMI electron beam solutions to locate and analyze individual chip defects. Further, it provides computational lithography solutions, and lithography systems and control software solutions; and refurbishes and upgrades lithography systems, as well as offers customer support and related services. Additionally, the company offers hardware, software, and services to chipmakers to produce the patterns of integrated circuits. It operates in Japan, South Korea, Singapore, Taiwan, China, rest of Asia, the Netherlands, rest of Europe, the Middle East, Africa, and the United States. The company was formerly known as ASM Lithography Holding N.V. and changed its name to ASML Holding N.V. in 2001. ASML Holding N.V. was founded in 1984 and is headquartered in Veldhoven, the Netherlands.",
-      "fullTimeEmployees": 43938,
+      "fullTimeEmployees": 44681,
       "website": "https://www.asml.com",
       "shortName": "ASML Holding N.V.",
       "longName": "ASML Holding N.V."
     },
     "fundamentals": {
       "ttmEps": 40.597,
-      "ttmPe": 40.83,
-      "marketCap": 638806674146.23,
-      "psRatio": 15.84,
-      "pbRatio": 25.65,
+      "ttmPe": 40.57,
+      "marketCap": 634829202024,
+      "psRatio": 15.75,
+      "pbRatio": 25.49,
       "pegRatio": 0.31
     },
     "profitability": {
@@ -5853,33 +5853,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.61,
-      "costOfEquity": 18.740000000000002,
+      "wacc": 18.62,
+      "costOfEquity": 18.75,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7557,
-      "marketCap": 638806674146.23
+      "beta": 1.7618,
+      "marketCap": 634829202024
     },
     "beta": {
-      "beta5y": 1.7557
+      "beta5y": 1.7618
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 1030.13,
-        "high": 1033,
-        "low": 993.54,
-        "close": 1009.81,
-        "volume": 2900300
-      },
-      {
-        "date": "2025-10-16",
-        "open": 1037.17,
-        "high": 1049.38,
-        "low": 1011.1,
-        "close": 1019.59,
-        "volume": 1938400
-      },
       {
         "date": "2025-10-17",
         "open": 1020.59,
@@ -7879,6 +7863,22 @@
         "low": 1594.03,
         "close": 1657.4399,
         "volume": 1984700
+      },
+      {
+        "date": "2026-10-16",
+        "open": 1659.01,
+        "high": 1686.3199,
+        "low": 1639.4301,
+        "close": 1641.52,
+        "volume": 1887700
+      },
+      {
+        "date": "2026-10-19",
+        "open": 1678.75,
+        "high": 1681.78,
+        "low": 1646.02,
+        "close": 1647.12,
+        "volume": 1256200
       }
     ],
     "news": [
@@ -7977,21 +7977,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4234993
+        "totalPay": 4246342
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2510994
+        "totalPay": 2517723
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2673318
+        "totalPay": 2680482
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -8002,7 +8002,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2493082
+        "totalPay": 2499763
       },
       {
         "name": "Mr. Ron Kool",
@@ -8013,7 +8013,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2619583
+        "totalPay": 2626603
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -8023,18 +8023,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.83,
-        "industryAvg": 48.05
+        "value": 40.57,
+        "industryAvg": 47.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.84,
-        "industryAvg": 13.04
+        "value": 15.75,
+        "industryAvg": 12.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.65,
-        "industryAvg": 18.62
+        "value": 25.49,
+        "industryAvg": 17.83
       },
       {
         "metric": "ROE",

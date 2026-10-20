@@ -1,10 +1,10 @@
 {
   "symbol": "NET",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     },
     "retainedSections": [
       "fundamentals",
@@ -44,9 +44,9 @@
     },
     "fundamentals": {
       "ttmEps": -0.5828,
-      "marketCap": 112588093920,
-      "psRatio": 44.81,
-      "pbRatio": 69.5,
+      "marketCap": 105917946980,
+      "psRatio": 42.16,
+      "pbRatio": 65.38,
       "ttmPe": -1118.24
     },
     "profitability": {
@@ -5645,33 +5645,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.010000000000002,
-      "costOfEquity": 15.479999999999999,
+      "wacc": 15.03,
+      "costOfEquity": 15.53,
       "costOfDebt": 0.09,
       "taxRate": 40,
-      "beta": 1.3356,
-      "marketCap": 112588093920
+      "beta": 1.344,
+      "marketCap": 105917946980
     },
     "beta": {
-      "beta5y": 1.3356
+      "beta5y": 1.344
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 220.99,
-        "high": 225.01,
-        "low": 217.26,
-        "close": 217.38,
-        "volume": 2168000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 218.78,
-        "high": 221.46,
-        "low": 209.14,
-        "close": 211.4,
-        "volume": 2588400
-      },
       {
         "date": "2025-10-17",
         "open": 208.225,
@@ -7671,6 +7655,22 @@
         "low": 305.01,
         "close": 316.32,
         "volume": 4496200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 319,
+        "high": 320.5,
+        "low": 291.15,
+        "close": 296.3,
+        "volume": 4224600
+      },
+      {
+        "date": "2026-10-19",
+        "open": 305,
+        "high": 306.76,
+        "low": 296.3,
+        "close": 297.58,
+        "volume": 3050500
       }
     ],
     "news": [
@@ -7765,6 +7765,10 @@
         "title": "Senior Vice President of Emerging Technology & Incubation"
       },
       {
+        "name": "Mr. Isaac Specter",
+        "title": "Head of Product Strategy Operations"
+      },
+      {
         "name": "Mr. Mark F. Anderson",
         "title": "President of Revenue",
         "age": 63,
@@ -7802,13 +7806,6 @@
         "yearBorn": 1978
       },
       {
-        "name": "Ms. Michelle Zatlyn",
-        "title": "Co-Founder, President & Co-Chair of the Board",
-        "age": 45,
-        "yearBorn": 1980,
-        "totalPay": 1794059
-      },
-      {
         "name": "Ms. W. Ling",
         "title": "Head of Governance Risk & Compliance"
       }
@@ -7816,18 +7813,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 34.42,
+        "industryAvg": 33.66,
         "value": -1118.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 44.81,
-        "industryAvg": 7.88
+        "value": 42.16,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 69.5,
-        "industryAvg": 8.76
+        "value": 65.38,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",

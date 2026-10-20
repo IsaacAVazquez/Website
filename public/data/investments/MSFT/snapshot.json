@@ -1,10 +1,10 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9453,
-      "ttmPe": 30.06,
-      "marketCap": 4006420880000,
-      "psRatio": 12.07,
-      "pbRatio": 9.06,
-      "pegRatio": 0.95
+      "ttmPe": 29.73,
+      "marketCap": 3962453040000,
+      "psRatio": 11.94,
+      "pbRatio": 8.96,
+      "pegRatio": 0.94
     },
     "profitability": {
       "roe": 8.35,
@@ -5929,33 +5929,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.03,
-      "costOfEquity": 13.200000000000001,
+      "wacc": 13.01,
+      "costOfEquity": 13.18,
       "costOfDebt": 1.48,
       "taxRate": 19,
-      "beta": 1.0419,
-      "marketCap": 4006420880000
+      "beta": 1.0398,
+      "marketCap": 3962453040000
     },
     "beta": {
-      "beta5y": 1.0419
+      "beta5y": 1.0398
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 514.96,
-        "high": 517.19,
-        "low": 510,
-        "close": 513.43,
-        "volume": 14694700
-      },
-      {
-        "date": "2025-10-16",
-        "open": 512.58,
-        "high": 516.85,
-        "low": 508.13,
-        "close": 511.61,
-        "volume": 15559600
-      },
       {
         "date": "2025-10-17",
         "open": 509.04,
@@ -7954,7 +7938,23 @@
         "high": 541.13,
         "low": 531.22,
         "close": 539.44,
-        "volume": 24132000
+        "volume": 24151200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 541.31,
+        "high": 543.82,
+        "low": 524.43,
+        "close": 529.05,
+        "volume": 24845700
+      },
+      {
+        "date": "2026-10-19",
+        "open": 528.7,
+        "high": 535.57,
+        "low": 528.06,
+        "close": 533.52,
+        "volume": 17984300
       }
     ],
     "news": [
@@ -7991,19 +7991,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
         "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
       },
       {
@@ -8103,18 +8103,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.06,
-        "industryAvg": 34.42
+        "value": 29.73,
+        "industryAvg": 33.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.07,
-        "industryAvg": 7.88
+        "value": 11.94,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.06,
-        "industryAvg": 8.76
+        "value": 8.96,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",

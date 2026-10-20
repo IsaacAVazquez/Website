@@ -1,11 +1,14 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 20.01,
-      "marketCap": 88612345280,
-      "psRatio": 4.13,
-      "pbRatio": 4.67,
+      "ttmPe": 19.74,
+      "marketCap": 87391198080,
+      "psRatio": 4.07,
+      "pbRatio": 4.6,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6595,33 +6598,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.39,
-      "costOfEquity": 12.42,
+      "wacc": 11.3,
+      "costOfEquity": 12.34,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.9424,
-      "marketCap": 88612345280
+      "beta": 0.931,
+      "marketCap": 87391198080
     },
     "beta": {
-      "beta5y": 0.9424
+      "beta5y": 0.931
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 657.1,
-        "high": 657.42,
-        "low": 647.76,
-        "close": 652.69,
-        "volume": 1693000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 659.21,
-        "high": 659.4,
-        "low": 642.74,
-        "close": 646.99,
-        "volume": 1248000
-      },
       {
         "date": "2025-10-17",
         "open": 647.57,
@@ -8621,6 +8608,22 @@
         "low": 314,
         "close": 330.17,
         "volume": 4497000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 334.68,
+        "high": 336.26,
+        "low": 320.86,
+        "close": 325.15,
+        "volume": 3526300
+      },
+      {
+        "date": "2026-10-19",
+        "open": 322.85,
+        "high": 327.19,
+        "low": 317.93,
+        "close": 325.62,
+        "volume": 2555800
       }
     ],
     "news": [
@@ -8657,6 +8660,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
+        "title": "Morning Movers: Apple slips following President Trump tariff threat",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
         "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
         "publisher": "Investor's Business Daily",
@@ -8681,11 +8692,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
-        "title": "Morning Movers: Apple slips following President Trump tariff threat",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
+        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+        "title": "US High Growth Tech Stocks to Watch in May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
         "type": "STORY"
       },
       {
@@ -8694,14 +8705,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
-        "title": "US High Growth Tech Stocks to Watch in May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
         "type": "STORY"
       }
     ],

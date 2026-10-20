@@ -1,10 +1,10 @@
 {
   "symbol": "MCD",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3129,
-      "ttmPe": 19.35,
-      "pegRatio": 3.34,
-      "marketCap": 168628156000,
-      "psRatio": 6.09,
-      "pbRatio": -165
+      "ttmPe": 19.71,
+      "pegRatio": 3.4,
+      "marketCap": 171713292000,
+      "psRatio": 6.2,
+      "pbRatio": -168.02
     },
     "profitability": {
       "roe": -204.76999999999998,
@@ -5535,32 +5535,16 @@
     },
     "wacc": {
       "wacc": 6.67,
-      "costOfEquity": 8.63,
+      "costOfEquity": 8.6,
       "costOfDebt": 0.75,
       "taxRate": 20,
-      "beta": 0.4485,
-      "marketCap": 168628156000
+      "beta": 0.4466,
+      "marketCap": 171713292000
     },
     "beta": {
-      "beta5y": 0.4485
+      "beta5y": 0.4466
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 303.63,
-        "high": 309.1,
-        "low": 303.63,
-        "close": 305.25,
-        "volume": 2522100
-      },
-      {
-        "date": "2025-10-16",
-        "open": 305.79,
-        "high": 307.28,
-        "low": 304.71,
-        "close": 305.33,
-        "volume": 2021600
-      },
       {
         "date": "2025-10-17",
         "open": 306.8,
@@ -7560,23 +7544,39 @@
         "low": 241.76,
         "close": 242.5,
         "volume": 6610600
+      },
+      {
+        "date": "2026-10-16",
+        "open": 244.31,
+        "high": 245.85,
+        "low": 241.88,
+        "close": 242.97,
+        "volume": 7265800
+      },
+      {
+        "date": "2026-10-19",
+        "open": 241.75,
+        "high": 243.61,
+        "low": 240.01,
+        "close": 242.67,
+        "volume": 5385300
       }
     ],
     "news": [
-      {
-        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
-        "type": "STORY"
-      },
       {
         "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
         "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
         "type": "STORY"
       },
       {
@@ -7714,18 +7714,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.35,
-        "industryAvg": 23.74
+        "value": 19.71,
+        "industryAvg": 24.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.09,
-        "industryAvg": 2.75
+        "value": 6.2,
+        "industryAvg": 2.82
       },
       {
         "metric": "P/B Ratio",
-        "value": -165,
-        "industryAvg": 5.67
+        "value": -168.02,
+        "industryAvg": 5.81
       },
       {
         "metric": "ROE",

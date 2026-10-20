@@ -1,10 +1,10 @@
 {
   "symbol": "PYPL",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.2919,
-      "ttmPe": 10.8,
-      "marketCap": 49271920000,
-      "psRatio": 1.44,
-      "pbRatio": 2.49,
+      "ttmPe": 10.68,
+      "marketCap": 48711620000,
+      "psRatio": 1.43,
+      "pbRatio": 2.46,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -5728,33 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.36,
-      "costOfEquity": 15.509999999999998,
+      "wacc": 12.29,
+      "costOfEquity": 15.45,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 16,
-      "beta": 1.3403,
-      "marketCap": 49271920000
+      "beta": 1.3345,
+      "marketCap": 48711620000
     },
     "beta": {
-      "beta5y": 1.3403
+      "beta5y": 1.3345
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 69.385,
-        "high": 69.875,
-        "low": 67.84,
-        "close": 67.98,
-        "volume": 11247300
-      },
-      {
-        "date": "2025-10-16",
-        "open": 68.13,
-        "high": 68.6,
-        "low": 65.42,
-        "close": 66.05,
-        "volume": 19258500
-      },
       {
         "date": "2025-10-17",
         "open": 65.535,
@@ -7754,6 +7738,22 @@
         "low": 55.509,
         "close": 57.16,
         "volume": 9059100
+      },
+      {
+        "date": "2026-10-16",
+        "open": 57.36,
+        "high": 57.805,
+        "low": 56.405,
+        "close": 56.7,
+        "volume": 10986300
+      },
+      {
+        "date": "2026-10-19",
+        "open": 55.39,
+        "high": 56.65,
+        "low": 55.122,
+        "close": 56.51,
+        "volume": 25782800
       }
     ],
     "news": [
@@ -7822,20 +7822,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "911d96d2-6f17-30b2-ae5f-99ba756c5f20",
-        "title": "Mizuho updates U.S. top picks: Adds CVS Health, PayPal and Oracle",
-        "publisher": "Investing.com",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/mizuho-updates-u-top-picks-123141078.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b93aa709-6674-3851-be3e-6b780dc87df0",
         "title": "PayPal's Venmo, Snowflake upgrade, Asana: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/video/paypals-venmo-snowflake-upgrade-asana-151649128.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "911d96d2-6f17-30b2-ae5f-99ba756c5f20",
+        "title": "Mizuho updates U.S. top picks: Adds CVS Health, PayPal and Oracle",
+        "publisher": "Investing.com",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/mizuho-updates-u-top-picks-123141078.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7901,18 +7901,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.8,
-        "industryAvg": 22.89
+        "value": 10.68,
+        "industryAvg": 22.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.44,
-        "industryAvg": 5.36
+        "value": 1.43,
+        "industryAvg": 5.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.49,
-        "industryAvg": 5.71
+        "value": 2.46,
+        "industryAvg": 5.73
       },
       {
         "metric": "ROE",

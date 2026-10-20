@@ -1,10 +1,10 @@
 {
   "symbol": "ABNB",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3996,
-      "ttmPe": 39.61,
-      "marketCap": 102825200000,
-      "psRatio": 7.81,
-      "pbRatio": 13.18,
-      "pegRatio": 1.2
+      "ttmPe": 39.88,
+      "marketCap": 103521400000,
+      "psRatio": 7.87,
+      "pbRatio": 13.27,
+      "pegRatio": 1.21
     },
     "profitability": {
       "roe": 10.57,
@@ -5538,33 +5538,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.52,
-      "costOfEquity": 14.84,
+      "wacc": 14.469999999999999,
+      "costOfEquity": 14.790000000000001,
       "costOfDebt": 1.48,
       "taxRate": 9,
-      "beta": 1.2534,
-      "marketCap": 102825200000
+      "beta": 1.2484,
+      "marketCap": 103521400000
     },
     "beta": {
-      "beta5y": 1.2534
+      "beta5y": 1.2484
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 124.335,
-        "high": 125.875,
-        "low": 122.69,
-        "close": 124.26,
-        "volume": 5677900
-      },
-      {
-        "date": "2025-10-16",
-        "open": 124.26,
-        "high": 126.97,
-        "low": 122.045,
-        "close": 122.89,
-        "volume": 5254200
-      },
       {
         "date": "2025-10-17",
         "open": 123.065,
@@ -7564,6 +7548,22 @@
         "low": 167.07,
         "close": 174.28,
         "volume": 5434900
+      },
+      {
+        "date": "2026-10-16",
+        "open": 175.43,
+        "high": 176.98,
+        "low": 171.55,
+        "close": 173.7,
+        "volume": 4755300
+      },
+      {
+        "date": "2026-10-19",
+        "open": 174.54,
+        "high": 175.82,
+        "low": 172.479,
+        "close": 175.46,
+        "volume": 2905500
       }
     ],
     "news": [
@@ -7584,19 +7584,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0f845723-da1a-38d7-86f0-b68559ac2540",
-        "title": "Cathie Wood Just Bought These 2 Stocks Down 42% and 87%. Should You?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/0f845723-da1a-38d7-86f0-b68559ac2540/cathie-wood-just-bought-these.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c9f32a90-1596-32fd-ae3e-2aa7c7b77417",
         "title": "1 Cash-Heavy Stock That Stand Out and 2 to Question",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/1-cash-heavy-stock-stand-043422120.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0f845723-da1a-38d7-86f0-b68559ac2540",
+        "title": "Cathie Wood Just Bought These 2 Stocks Down 42% and 87%. Should You?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/0f845723-da1a-38d7-86f0-b68559ac2540/cathie-wood-just-bought-these.html",
         "type": "STORY"
       },
       {
@@ -7709,18 +7709,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.61,
-        "industryAvg": 17.83
+        "value": 39.88,
+        "industryAvg": 17.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.81,
-        "industryAvg": 3.34
+        "value": 7.87,
+        "industryAvg": 3.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.18,
-        "industryAvg": 5.27
+        "value": 13.27,
+        "industryAvg": 5.28
       },
       {
         "metric": "ROE",

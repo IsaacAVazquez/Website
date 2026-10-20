@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.4841,
-      "ttmPe": 36.77,
-      "marketCap": 323719500000,
-      "psRatio": 6.39,
-      "pbRatio": 18.35,
+      "ttmPe": 36.69,
+      "marketCap": 322972455000,
+      "psRatio": 6.38,
+      "pbRatio": 18.31,
       "pegRatio": 1.88
     },
     "profitability": {
@@ -6864,33 +6864,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.35,
-      "costOfEquity": 16.2,
+      "wacc": 15.340000000000002,
+      "costOfEquity": 16.189999999999998,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 15,
-      "beta": 1.428,
-      "marketCap": 323719500000
+      "beta": 1.4298,
+      "marketCap": 322972455000
     },
     "beta": {
-      "beta5y": 1.428
+      "beta5y": 1.4298
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 301.54,
-        "high": 304.95,
-        "low": 295.72,
-        "close": 300.12,
-        "volume": 2773000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 301.67,
-        "high": 303.05,
-        "low": 297.76,
-        "close": 299.84,
-        "volume": 2623100
-      },
       {
         "date": "2025-10-17",
         "open": 298.17,
@@ -8890,6 +8874,22 @@
         "low": 304.09,
         "close": 312,
         "volume": 3809200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 314.79,
+        "high": 321.17,
+        "low": 313.2,
+        "close": 313.83,
+        "volume": 4204700
+      },
+      {
+        "date": "2026-10-19",
+        "open": 313.21,
+        "high": 315.34,
+        "low": 310.64,
+        "close": 311.28,
+        "volume": 5055500
       }
     ],
     "news": [
@@ -8918,19 +8918,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
-        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
         "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
+        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
         "type": "STORY"
       },
       {
@@ -9040,23 +9040,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.77,
-        "industryAvg": 32.03
+        "value": 36.69,
+        "industryAvg": 32.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.39,
-        "industryAvg": 2.85
+        "value": 6.38,
+        "industryAvg": 2.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.35,
-        "industryAvg": 8.48
+        "value": 18.31,
+        "industryAvg": 8.5
       },
       {
         "metric": "ROE",
         "value": 13.28,
-        "industryAvg": 17.330000000000002
+        "industryAvg": 17.32
       },
       {
         "metric": "ROA",

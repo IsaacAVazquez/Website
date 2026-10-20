@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 17.54,
-      "marketCap": 4270960600000,
-      "psRatio": 9.58,
-      "pbRatio": 6.67,
+      "ttmPe": 17.29,
+      "marketCap": 4209321400000,
+      "psRatio": 9.44,
+      "pbRatio": 6.57,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5800,33 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.01,
-      "costOfEquity": 14.360000000000001,
+      "wacc": 14.000000000000002,
+      "costOfEquity": 14.35,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.1915,
-      "marketCap": 4270960600000
+      "beta": 1.192,
+      "marketCap": 4209321400000
     },
     "beta": {
-      "beta5y": 1.1915
+      "beta5y": 1.192
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 247.25,
-        "high": 252.11,
-        "low": 245.99,
-        "close": 251.03,
-        "volume": 27007700
-      },
-      {
-        "date": "2025-10-16",
-        "open": 251.77,
-        "high": 256.96,
-        "low": 250.1,
-        "close": 251.46,
-        "volume": 27997200
-      },
       {
         "date": "2025-10-17",
         "open": 250.76,
@@ -7825,7 +7809,23 @@
         "high": 352.15,
         "low": 340.61,
         "close": 349.22,
-        "volume": 21287700
+        "volume": 21328200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 348.28,
+        "high": 350.66,
+        "low": 339.08,
+        "close": 340.59,
+        "volume": 28641900
+      },
+      {
+        "date": "2026-10-19",
+        "open": 343.67,
+        "high": 346.58,
+        "low": 341.85,
+        "close": 344.18,
+        "volume": 19793800
       }
     ],
     "news": [
@@ -7835,14 +7835,6 @@
         "publisher": "Yahoo Finance",
         "reportDate": "2025-06-13",
         "link": "https://finance.yahoo.com/news/how-waymo-got-the-edge-on-the-competition-and-teslas-robotaxi-so-far-090019552.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7862,6 +7854,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
         "title": "3 Top Quantum Computing Stocks to Buy in 2025",
         "publisher": "Motley Fool",
@@ -7878,14 +7878,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
-        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
         "title": "Sector Update: Consumer",
         "publisher": "MT Newswires",
@@ -7894,19 +7886,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
-        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
+        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
+        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
         "type": "STORY"
       },
       {
-        "uuid": "58844064-6ec3-3b70-b13a-3eee7607b6b5",
-        "title": "Adobe vs. Apple: Which AI-Driven Tech Stock is a Better Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
+        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/adobe-vs-apple-ai-driven-172200197.html",
+        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
+        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
         "type": "STORY"
       }
     ],
@@ -7980,18 +7980,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.54,
-        "industryAvg": 18.77
+        "value": 17.29,
+        "industryAvg": 18.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.58,
-        "industryAvg": 8.59
+        "value": 9.44,
+        "industryAvg": 8.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.67,
-        "industryAvg": 6.25
+        "value": 6.57,
+        "industryAvg": 6.13
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 26.5478,
-      "ttmPe": 27.75,
-      "marketCap": 1877162560000,
-      "psRatio": 8.22,
-      "pbRatio": 7.19,
+      "ttmPe": 26.57,
+      "marketCap": 1797461120000,
+      "psRatio": 7.88,
+      "pbRatio": 6.88,
       "pegRatio": 0.33
     },
     "profitability": {
@@ -5567,33 +5567,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.87,
+      "wacc": 13.84,
       "costOfEquity": 14.67,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 16,
-      "beta": 1.2317,
-      "marketCap": 1877162560000
+      "beta": 1.2335,
+      "marketCap": 1797461120000
     },
     "beta": {
-      "beta5y": 1.2317
+      "beta5y": 1.2335
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 717.06,
-        "high": 723.9,
-        "low": 709.51,
-        "close": 717.55,
-        "volume": 10246800
-      },
-      {
-        "date": "2025-10-16",
-        "open": 717.55,
-        "high": 725.49,
-        "low": 703.88,
-        "close": 712.07,
-        "volume": 9017000
-      },
       {
         "date": "2025-10-17",
         "open": 707.08,
@@ -7592,7 +7576,23 @@
         "high": 743.97,
         "low": 715.58,
         "close": 736.72,
-        "volume": 16868800
+        "volume": 16891500
+      },
+      {
+        "date": "2026-10-16",
+        "open": 736.7,
+        "high": 738.49,
+        "low": 702.71,
+        "close": 709.33,
+        "volume": 20643800
+      },
+      {
+        "date": "2026-10-19",
+        "open": 707.16,
+        "high": 708.83,
+        "low": 693.86,
+        "close": 705.44,
+        "volume": 16235800
       }
     ],
     "news": [
@@ -7613,14 +7613,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
         "publisher": "Zacks",
@@ -7629,11 +7621,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
-        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7642,6 +7634,14 @@
         "publisher": "Yahoo Finance",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
+        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
         "type": "STORY"
       },
       {
@@ -7747,18 +7747,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.75,
-        "industryAvg": 18.77
+        "value": 26.57,
+        "industryAvg": 18.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.22,
-        "industryAvg": 8.59
+        "value": 7.88,
+        "industryAvg": 8.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.19,
-        "industryAvg": 6.25
+        "value": 6.88,
+        "industryAvg": 6.13
       },
       {
         "metric": "ROE",

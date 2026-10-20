@@ -1,10 +1,10 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.2477,
-      "ttmPe": 31.64,
-      "marketCap": 338155243436,
-      "psRatio": 4.53,
-      "pbRatio": 17.44,
+      "ttmPe": 31.22,
+      "marketCap": 333627445671,
+      "psRatio": 4.46,
+      "pbRatio": 17.2,
       "pegRatio": 0.46
     },
     "profitability": {
@@ -5528,32 +5528,16 @@
     },
     "wacc": {
       "wacc": 15.32,
-      "costOfEquity": 17.330000000000002,
+      "costOfEquity": 17.36,
       "costOfDebt": 0.3,
       "taxRate": 23,
-      "beta": 1.5737,
-      "marketCap": 338155243436
+      "beta": 1.581,
+      "marketCap": 333627445671
     },
     "beta": {
-      "beta5y": 1.5737
+      "beta5y": 1.581
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 534.2,
-        "high": 538.45,
-        "low": 527.21,
-        "close": 534.05,
-        "volume": 3447100
-      },
-      {
-        "date": "2025-10-16",
-        "open": 538.06,
-        "high": 544.99,
-        "low": 534.7,
-        "close": 540.96,
-        "volume": 3463100
-      },
       {
         "date": "2025-10-17",
         "open": 537.38,
@@ -7553,6 +7537,22 @@
         "low": 704.01,
         "close": 735.64,
         "volume": 4501400
+      },
+      {
+        "date": "2026-10-16",
+        "open": 734.36,
+        "high": 742.98,
+        "low": 728.69,
+        "close": 730.76,
+        "volume": 2867900
+      },
+      {
+        "date": "2026-10-19",
+        "open": 739.5,
+        "high": 740,
+        "low": 718.44,
+        "close": 725.79,
+        "volume": 2640900
       }
     ],
     "news": [
@@ -7597,19 +7597,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
-        "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b9d2a8d3-3cf0-32f2-8da6-9ba442fc5cfa",
         "title": "Construction Machinery Stocks Q1 Teardown: Caterpillar (NYSE:CAT) Vs The Rest",
         "publisher": "StockStory",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/construction-machinery-stocks-q1-teardown-033232238.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
+        "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
         "type": "STORY"
       },
       {
@@ -7629,11 +7629,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
-        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
-        "publisher": "MT Newswires",
+        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
+        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
+        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
         "type": "STORY"
       }
     ],
@@ -7702,18 +7702,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.64,
-        "industryAvg": 30.26
+        "value": 31.22,
+        "industryAvg": 29.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.53,
-        "industryAvg": 2.89
+        "value": 4.46,
+        "industryAvg": 2.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.44,
-        "industryAvg": 6.35
+        "value": 17.2,
+        "industryAvg": 6.21
       },
       {
         "metric": "ROE",

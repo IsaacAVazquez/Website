@@ -1,10 +1,10 @@
 {
   "symbol": "TJX",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4067,
-      "ttmPe": 26.74,
-      "marketCap": 159206826066,
-      "psRatio": 2.55,
-      "pbRatio": 14.95,
-      "pegRatio": 1.14
+      "ttmPe": 27.26,
+      "marketCap": 162268072272,
+      "psRatio": 2.6,
+      "pbRatio": 15.24,
+      "pegRatio": 1.16
     },
     "profitability": {
       "roe": 14.44,
@@ -5505,32 +5505,16 @@
     },
     "wacc": {
       "wacc": 8.85,
-      "costOfEquity": 9.64,
+      "costOfEquity": 9.62,
       "costOfDebt": 0.13,
       "taxRate": 25,
-      "beta": 0.5839,
-      "marketCap": 159206826066
+      "beta": 0.5785,
+      "marketCap": 162268072272
     },
     "beta": {
-      "beta5y": 0.5839
+      "beta5y": 0.5785
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 144.01,
-        "high": 146.46,
-        "low": 144.01,
-        "close": 145.16,
-        "volume": 5397600
-      },
-      {
-        "date": "2025-10-16",
-        "open": 145.26,
-        "high": 145.26,
-        "low": 142.06,
-        "close": 142.55,
-        "volume": 3400100
-      },
       {
         "date": "2025-10-17",
         "open": 143,
@@ -7530,23 +7514,39 @@
         "low": 143.84,
         "close": 144.58,
         "volume": 8959100
+      },
+      {
+        "date": "2026-10-16",
+        "open": 145.98,
+        "high": 147.45,
+        "low": 145.67,
+        "close": 147.33,
+        "volume": 8510100
+      },
+      {
+        "date": "2026-10-19",
+        "open": 146.32,
+        "high": 147.7,
+        "low": 145.4,
+        "close": 147.36,
+        "volume": 4878600
       }
     ],
     "news": [
-      {
-        "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
-        "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html",
-        "type": "STORY"
-      },
       {
         "uuid": "bc384cdc-c2a8-3c40-8561-b2d2746f3a9e",
         "title": "Block upgraded, Nvidia downgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/block-upgraded-nvidia-downgraded-wall-134047763.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
+        "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html",
         "type": "STORY"
       },
       {
@@ -7558,19 +7558,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -7598,19 +7598,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a965619-0d00-38cd-8688-ecf9a8d18f7f",
-        "title": "Q1 Retailers Report Earnings: TGT Misses, LOW & TJX Beat",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/q1-retailers-report-earnings-tgt-142600297.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "13938a79-8fd7-324f-becb-ec38238bc7db",
         "title": "Earnings Data Deluge",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/earnings-data-deluge-145600062.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e678c910-efc6-3e2e-b7d7-30f7395f728e",
+        "title": "TJX Earnings and Sales Surpass Estimates in Q1, Comp Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/tjx-earnings-sales-surpass-estimates-145700362.html",
         "type": "STORY"
       }
     ],
@@ -7679,17 +7679,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.74,
+        "value": 27.26,
         "industryAvg": 22.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.55,
+        "value": 2.6,
         "industryAvg": 2.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.95,
+        "value": 15.24,
         "industryAvg": 8.05
       },
       {

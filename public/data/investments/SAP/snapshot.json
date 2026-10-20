@@ -1,11 +1,14 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.9544,
-      "ttmPe": 28.29,
-      "marketCap": 259695000000,
-      "psRatio": 5.96,
-      "pbRatio": 5.09,
+      "ttmPe": 28.42,
+      "marketCap": 260883826000,
+      "psRatio": 5.99,
+      "pbRatio": 5.11,
       "pegRatio": 0.85
     },
     "profitability": {
@@ -6081,33 +6084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.25,
-      "costOfEquity": 13.76,
+      "wacc": 13.22,
+      "costOfEquity": 13.719999999999999,
       "costOfDebt": 3.0700000000000003,
       "taxRate": 27,
-      "beta": 1.1142,
-      "marketCap": 259695000000
+      "beta": 1.1098,
+      "marketCap": 260883826000
     },
     "beta": {
-      "beta5y": 1.1142
+      "beta5y": 1.1098
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 271.5,
-        "high": 272.94,
-        "low": 269.26,
-        "close": 271.64,
-        "volume": 955800
-      },
-      {
-        "date": "2025-10-16",
-        "open": 274.08,
-        "high": 276.26,
-        "low": 268.86,
-        "close": 269.74,
-        "volume": 1247600
-      },
       {
         "date": "2025-10-17",
         "open": 267.94,
@@ -8107,6 +8094,22 @@
         "low": 222.68,
         "close": 225,
         "volume": 2669800
+      },
+      {
+        "date": "2026-10-16",
+        "open": 228.62,
+        "high": 229.54,
+        "low": 221.86,
+        "close": 224.29,
+        "volume": 4744400
+      },
+      {
+        "date": "2026-10-19",
+        "open": 222.46,
+        "high": 226.58,
+        "low": 222.31,
+        "close": 226.03,
+        "volume": 2170500
       }
     ],
     "news": [
@@ -8167,14 +8170,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
-        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
         "title": "SAP Reimagines How Enterprises Run With Business AI",
         "publisher": "PR Newswire",
@@ -8183,11 +8178,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7f6fe3a9-58be-3b3b-b6ab-8f6850d4fd81",
-        "title": "SAP & Accenture Unveil ADVANCE to Boost Cloud-First Transformation",
+        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
+        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
+        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/sap-accenture-unveil-advance-boost-111200942.html",
+        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
         "type": "STORY"
       }
     ],
@@ -8197,70 +8200,70 @@
         "title": "Demand Manager & Works Council Europe Representative Member of Supervisory Board",
         "age": 43,
         "yearBorn": 1982,
-        "totalPay": 263078
+        "totalPay": 263783
       },
       {
         "name": "Mr. Andreas Hahn",
         "title": "Chairperson of Works Council Europe & Works Council Europe Rep Member of Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 263078
+        "totalPay": 263783
       },
       {
         "name": "Mr. Christian Klein",
         "title": "CEO & Member of Executive Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 5891823
+        "totalPay": 5907612
       },
       {
         "name": "Mr. Dominik Asam",
         "title": "CFO & Member of Executive Board",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2832284
+        "totalPay": 2839874
       },
       {
         "name": "Mr. Lars Lamade",
         "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 324649
+        "totalPay": 325519
       },
       {
         "name": "Mr. Muhammad Alam",
         "title": "Lead Product Engineering & Member of Executive Board",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2513233
+        "totalPay": 2519968
       },
       {
         "name": "Mr. Pascal Demat",
         "title": "Solution Advisor HCM & Works Council Europe Representative Member of Supervisory Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 263078
+        "totalPay": 263783
       },
       {
         "name": "Mr. Sebastian Steinhaeuser",
         "title": "Chief Strategy Officer & COO and Member of Executive Board",
         "age": 39,
         "yearBorn": 1986,
-        "totalPay": 2384492
+        "totalPay": 2390882
       },
       {
         "name": "Mr. Thomas Saueressig",
         "title": "Member of Executive Board",
         "age": 40,
         "yearBorn": 1985,
-        "totalPay": 2793103
+        "totalPay": 2800588
       },
       {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 2826687
+        "totalPay": 2834262
       }
     ],
     "industry": [

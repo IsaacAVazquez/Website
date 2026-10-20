@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.1735,
-      "ttmPe": 170.86,
-      "marketCap": 481780848500,
-      "psRatio": 78.26,
-      "pbRatio": 49.29,
-      "pegRatio": 0.76
+      "ttmPe": 165.45,
+      "marketCap": 466522452550,
+      "psRatio": 75.78,
+      "pbRatio": 47.73,
+      "pegRatio": 0.74
     },
     "profitability": {
       "roe": 11.65,
@@ -5142,33 +5142,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.76,
-      "costOfEquity": 17.77,
+      "wacc": 17.73,
+      "costOfEquity": 17.740000000000002,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.6308,
-      "marketCap": 481780848500
+      "beta": 1.6309,
+      "marketCap": 466522452550
     },
     "beta": {
-      "beta5y": 1.6308
+      "beta5y": 1.6309
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 181.655,
-        "high": 184.35,
-        "low": 176.02,
-        "close": 179.62,
-        "volume": 37372100
-      },
-      {
-        "date": "2025-10-16",
-        "open": 181.78,
-        "high": 184.82,
-        "low": 176.45,
-        "close": 178.12,
-        "volume": 42870900
-      },
       {
         "date": "2025-10-17",
         "open": 177.75,
@@ -7167,16 +7151,32 @@
         "high": 200.91,
         "low": 192.6,
         "close": 200.5,
-        "volume": 24745000
+        "volume": 24781500
+      },
+      {
+        "date": "2026-10-16",
+        "open": 201.79,
+        "high": 203.55,
+        "low": 184.45,
+        "close": 186.03,
+        "volume": 33354900
+      },
+      {
+        "date": "2026-10-19",
+        "open": 186.995,
+        "high": 196.99,
+        "low": 186.155,
+        "close": 194.15,
+        "volume": 23912900
       }
     ],
     "news": [
       {
-        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
-        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
-        "publisher": "MT Newswires",
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
         "type": "STORY"
       },
       {
@@ -7188,11 +7188,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
-        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
-        "publisher": "Insider Monkey",
+        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
+        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
+        "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
         "type": "STORY"
       },
       {
@@ -7320,18 +7320,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 170.86,
-        "industryAvg": 34.42
+        "value": 165.45,
+        "industryAvg": 33.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 78.26,
-        "industryAvg": 7.88
+        "value": 75.78,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 49.29,
-        "industryAvg": 8.76
+        "value": 47.73,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",

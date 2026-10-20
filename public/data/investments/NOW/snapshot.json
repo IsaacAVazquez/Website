@@ -1,11 +1,14 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.6013,
-      "ttmPe": 92.78,
-      "marketCap": 153600877340,
-      "psRatio": 10.43,
-      "pbRatio": 12.27,
+      "ttmPe": 90.78,
+      "marketCap": 150282180320,
+      "psRatio": 10.2,
+      "pbRatio": 12.01,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5367,33 +5370,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.91,
-      "costOfEquity": 12.540000000000001,
+      "wacc": 11.86,
+      "costOfEquity": 12.5,
       "costOfDebt": 0.7799999999999999,
       "taxRate": 32,
-      "beta": 0.9576,
-      "marketCap": 153600877340
+      "beta": 0.9525,
+      "marketCap": 150282180320
     },
     "beta": {
-      "beta5y": 0.9576
+      "beta5y": 0.9525
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 183.6,
-        "high": 184.42,
-        "low": 179.94,
-        "close": 180.61,
-        "volume": 3817000
-      },
-      {
-        "date": "2025-10-16",
-        "open": 182.794,
-        "high": 185.8,
-        "low": 177.614,
-        "close": 178.898,
-        "volume": 5392000
-      },
       {
         "date": "2025-10-17",
         "open": 178,
@@ -7392,7 +7379,23 @@
         "high": 149.34,
         "low": 139.58,
         "close": 148.57,
-        "volume": 17607900
+        "volume": 17629000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 151.92,
+        "high": 154.2,
+        "low": 139.94,
+        "close": 141.97,
+        "volume": 15529100
+      },
+      {
+        "date": "2026-10-19",
+        "open": 141.09,
+        "high": 145.48,
+        "low": 140.7,
+        "close": 145.36,
+        "volume": 9553100
       }
     ],
     "news": [
@@ -7445,19 +7448,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
-        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d66b766-bead-3972-a483-2318d3521577",
         "title": "Nice enters partnership with ServiceNow for customer service fulfillment",
         "publisher": "TipRanks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/nice-enters-partnership-servicenow-customer-151028608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f38eca9-f098-3ec9-8940-f848a225631e",
+        "title": "Zoom, ServiceNow plan to integrate Zoom CX with ServiceNow CRM, ITSM",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zoom-servicenow-plan-integrate-zoom-150553095.html",
         "type": "STORY"
       },
       {

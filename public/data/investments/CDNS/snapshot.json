@@ -1,11 +1,14 @@
 {
   "symbol": "CDNS",
-  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -32,7 +35,7 @@
       "country": "United States",
       "industry": "Software-Application",
       "sector": "Technology",
-      "longBusinessSummary": "Cadence Design Systems, Inc. develops computational, AI-driven software, hardware, and silicon intellectual property products and solutions. The company offers functional verification services, such as Jasper, a formal verification platform; Xcelium, a parallel logic simulation platform; Verisium, a generative AI solution; Palladium, an enterprise emulation platform; and Protium, a prototyping platform for chip verification, as well as digital IC design and sign off products, including In novus platform; and custom IC design and simulation product include Virtuoso, a platform to design and verify analog. It also provides Xcelium logic simulator and other front-end verification and virtual prototyping technologies; controllers and physical interfaces; PCI Express, universal accelerator and compute express links, and multiple memory interfaces; and Ten Silica, a digital signal processor. In addition, the company's design IP portfolio includes serializer/deserializer, peripheral component interconnect, USB, and other standard protocols; and Secure-IC, a solution for embedded security IP. Additionally, it provides System Design and Analysis (SD&A) platform, a solution that enables end-to-end system-level design and verification across chips, packages, PCBs, and electronic systems; Allegro X and Orca X platforms for PCB and advanced packaging; Sigrity X for signal and power integrity; AIR for RF design; Fidelity for computational fluid dynamics; Celsius for thermal and airflow analysis; Clarity 3D solver for electromagnetic and power electronics analysis and simulation; Integrity 3D-IC solution for 3D-IC and multi-chiplet designs; the Optimality Intelligent System Explorer, Reality digital twin, and Millennium enterprise multiphasic platforms; Allegro system design platform; and molecular modeling and simulation solutions and services. The company has a strategic collaboration with NVIDIA. The company was incorporated in 1987 and is headquartered in San Jose, California.",
+      "longBusinessSummary": "Cadence Design Systems, Inc. develops computational, AI-driven software, hardware, and silicon intellectual property products and solutions. The company offers functional verification services, such as Jasper, a formal verification platform; Xcelium, a parallel logic simulation platform; Verisium, a generative AI solution; Palladium, an enterprise emulation platform; and Protium, a prototyping platform for chip verification, as well as digital IC design and sign off products, including Innovus platform; and custom IC design and simulation product include Virtuoso, a platform to design and verify analog. It also provides Xcelium logic simulator and other front-end verification and virtual prototyping technologies; controllers and physical interfaces; PCI Express, universal accelerator and compute express links, and multiple memory interfaces; and Tensilica, a digital signal processor. In addition, the company's design IP portfolio includes serializer/deserializer, peripheral component interconnect, USB, and other standard protocols; and Secure-IC, a solution for embedded security IP. Additionally, it provides System Design and Analysis (SD&A) platform, a solution that enables end-to-end system-level design and verification across chips, packages, PCBs, and electronic systems; Allegro X and Orca X platforms for PCB and advanced packaging; Sigrity X for signal and power integrity; AIR for RF design; Fidelity for computational fluid dynamics; Celsius for thermal and airflow analysis; Clarity 3D solver for electromagnetic and power electronics analysis and simulation; Integrity 3D-IC solution for 3D-IC and multi-chiplet designs; the Optimality Intelligent System Explorer, Reality digital twin, and Millennium enterprise multiphasic platforms; Allegro system design platform; and molecular modeling and simulation solutions and services. The company has a strategic collaboration with NVIDIA. The company was incorporated in 1987 and is headquartered in San Jose, California.",
       "fullTimeEmployees": 15445,
       "website": "https://www.cadence.com",
       "shortName": "Cadence Design Systems, Inc.",
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.0263,
-      "ttmPe": 69.78,
-      "marketCap": 96588586890,
-      "psRatio": 16.55,
-      "pbRatio": 14.08,
-      "pegRatio": 0.55
+      "ttmPe": 64.83,
+      "marketCap": 89739562980,
+      "psRatio": 15.37,
+      "pbRatio": 13.09,
+      "pegRatio": 0.51
     },
     "profitability": {
       "roe": 5.47,
@@ -5984,33 +5987,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.15,
-      "costOfEquity": 13.48,
+      "wacc": 13.16,
+      "costOfEquity": 13.52,
       "costOfDebt": 1.3299999999999998,
       "taxRate": 28.000000000000004,
-      "beta": 1.0798,
-      "marketCap": 96588586890
+      "beta": 1.0843,
+      "marketCap": 89739562980
     },
     "beta": {
-      "beta5y": 1.0798
+      "beta5y": 1.0843
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 330.65,
-        "high": 330.65,
-        "low": 321.39,
-        "close": 324.1,
-        "volume": 1599600
-      },
-      {
-        "date": "2025-10-16",
-        "open": 326.18,
-        "high": 327.05,
-        "low": 320.08,
-        "close": 324.25,
-        "volume": 1788400
-      },
       {
         "date": "2025-10-17",
         "open": 322.59,
@@ -8010,6 +7997,22 @@
         "low": 315.91,
         "close": 324.38,
         "volume": 2578600
+      },
+      {
+        "date": "2026-10-16",
+        "open": 323.97,
+        "high": 326.65,
+        "low": 316.61,
+        "close": 319.51,
+        "volume": 2501800
+      },
+      {
+        "date": "2026-10-19",
+        "open": 324.8,
+        "high": 329.84,
+        "low": 321.58,
+        "close": 325.86,
+        "volume": 1854600
       }
     ],
     "news": [
@@ -8086,11 +8089,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9bec91a8-bc34-344d-94c1-7eb44356d4ca",
-        "title": "Sector Update: Tech Stocks Advance Premarket Thursday",
-        "publisher": "MT Newswires",
+        "uuid": "f8fe7d94-d06a-3bb5-8035-a550a0b80cc1",
+        "title": "Cadence Design Systems, Inc.'s (NASDAQ:CDNS) recent 9.1% pullback adds to one-year year losses, institutional owners may take drastic measures",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/sector-tech-stocks-advance-premarket-131131117.html",
+        "link": "https://finance.yahoo.com/news/cadence-design-systems-inc-nasdaq-130018859.html",
         "type": "STORY"
       }
     ],
@@ -8111,14 +8114,10 @@
       },
       {
         "name": "Dr. Paul Cunningham Ph.D.",
-        "title": "Senior VP & GM of the System and Verification Group",
+        "title": "Senior VP & GM of the System Verification Group",
         "age": 47,
         "yearBorn": 1978,
         "totalPay": 1136083
-      },
-      {
-        "name": "Mr. Ariel Sella",
-        "title": "Co-Founder"
       },
       {
         "name": "Mr. John M. Wall",
@@ -8132,6 +8131,13 @@
         "title": "Senior VP, General Counsel & Corporate Secretary",
         "age": 56,
         "yearBorn": 1969
+      },
+      {
+        "name": "Mr. Nimish H. Modi",
+        "title": "Senior VP & GM of Strategy and New Ventures",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 636878
       },
       {
         "name": "Mr. Paul Scannell",

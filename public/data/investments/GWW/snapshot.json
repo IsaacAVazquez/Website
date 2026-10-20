@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.3978,
-      "ttmPe": 33.79,
-      "marketCap": 62698772585,
-      "psRatio": 3.33,
-      "pbRatio": 15.18,
-      "pegRatio": 1.65
+      "ttmPe": 33.46,
+      "marketCap": 62081289740.05,
+      "psRatio": 3.29,
+      "pbRatio": 15.03,
+      "pegRatio": 1.63
     },
     "profitability": {
       "roe": 14.14,
@@ -5156,33 +5156,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.99,
-      "costOfEquity": 12.5,
+      "wacc": 11.97,
+      "costOfEquity": 12.479999999999999,
       "costOfDebt": 0.72,
       "taxRate": 25,
-      "beta": 0.9526,
-      "marketCap": 62698772585
+      "beta": 0.9501,
+      "marketCap": 62081289740.05
     },
     "beta": {
-      "beta5y": 0.9526
+      "beta5y": 0.9501
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 959.9,
-        "high": 961.82,
-        "low": 949.4,
-        "close": 957.99,
-        "volume": 216500
-      },
-      {
-        "date": "2025-10-16",
-        "open": 958.18,
-        "high": 961.45,
-        "low": 949.69,
-        "close": 954.56,
-        "volume": 259300
-      },
       {
         "date": "2025-10-17",
         "open": 950,
@@ -7182,6 +7166,22 @@
         "low": 1306.8199,
         "close": 1331.17,
         "volume": 276200
+      },
+      {
+        "date": "2026-10-16",
+        "open": 1340,
+        "high": 1349.88,
+        "low": 1319.36,
+        "close": 1330.7,
+        "volume": 236900
+      },
+      {
+        "date": "2026-10-19",
+        "open": 1331.8,
+        "high": 1338.37,
+        "low": 1317.51,
+        "close": 1318.0601,
+        "volume": 208500
       }
     ],
     "news": [
@@ -7202,19 +7202,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
-        "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
         "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
+        "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
         "type": "STORY"
       },
       {
@@ -7250,19 +7250,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
-        "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
         "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
+        "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
         "type": "STORY"
       }
     ],
@@ -7334,18 +7334,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.79,
-        "industryAvg": 27.07
+        "value": 33.46,
+        "industryAvg": 26.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.33,
-        "industryAvg": 1.68
+        "value": 3.29,
+        "industryAvg": 1.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.18,
-        "industryAvg": 5.08
+        "value": 15.03,
+        "industryAvg": 5.05
       },
       {
         "metric": "ROE",

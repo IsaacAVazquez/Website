@@ -1,10 +1,10 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.8283,
-      "ttmPe": 40.95,
-      "marketCap": 156323232000,
-      "psRatio": 5.21,
-      "pbRatio": 7.72,
+      "ttmPe": 39.83,
+      "marketCap": 152058600000,
+      "psRatio": 5.06,
+      "pbRatio": 7.51,
       "pegRatio": 1.77
     },
     "profitability": {
@@ -5262,32 +5262,16 @@
     },
     "wacc": {
       "wacc": 12.120000000000001,
-      "costOfEquity": 13.68,
+      "costOfEquity": 13.719999999999999,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 28.000000000000004,
-      "beta": 1.1042,
-      "marketCap": 156323232000
+      "beta": 1.1098,
+      "marketCap": 152058600000
     },
     "beta": {
-      "beta5y": 1.1042
+      "beta5y": 1.1098
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 379.74,
-        "high": 385.96,
-        "low": 375.4,
-        "close": 381.72,
-        "volume": 1589200
-      },
-      {
-        "date": "2025-10-16",
-        "open": 385.89,
-        "high": 386.67,
-        "low": 372.15,
-        "close": 375.59,
-        "volume": 1597300
-      },
       {
         "date": "2025-10-17",
         "open": 373.4,
@@ -7287,23 +7271,39 @@
         "low": 386.01,
         "close": 402.48,
         "volume": 4689500
+      },
+      {
+        "date": "2026-10-16",
+        "open": 399.11,
+        "high": 403.73,
+        "low": 390.05,
+        "close": 391.25,
+        "volume": 3101500
+      },
+      {
+        "date": "2026-10-19",
+        "open": 400,
+        "high": 400,
+        "low": 390.72,
+        "close": 391.5,
+        "volume": 3146400
       }
     ],
     "news": [
-      {
-        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
-        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
-        "type": "STORY"
-      },
       {
         "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
         "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
+        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
         "type": "STORY"
       },
       {
@@ -7323,14 +7323,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
-        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
         "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
         "publisher": "GuruFocus.com",
@@ -7345,6 +7337,14 @@
         "reportDate": "2025-05-03",
         "link": "https://finance.yahoo.com/video/latest-companies-warning-tariffs-204022408.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
+        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-03",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
+        "type": "STORY"
       },
       {
         "uuid": "f5675682-9157-39e7-9a91-2a6739ec90d0",
@@ -7432,18 +7432,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.95,
-        "industryAvg": 30.63
+        "value": 39.83,
+        "industryAvg": 30.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.21,
-        "industryAvg": 3.48
+        "value": 5.06,
+        "industryAvg": 3.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.72,
-        "industryAvg": 6.3
+        "value": 7.51,
+        "industryAvg": 6.23
       },
       {
         "metric": "ROE",

@@ -1,11 +1,14 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.9274,
-      "ttmPe": 39.91,
-      "marketCap": 47387830000,
-      "psRatio": 4.67,
-      "pbRatio": 7.34,
-      "pegRatio": 0.2
+      "ttmPe": 39.62,
+      "marketCap": 47043200000,
+      "psRatio": 4.63,
+      "pbRatio": 7.28,
+      "pegRatio": 0.19
     },
     "profitability": {
       "roe": 9.62,
@@ -5792,33 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.08,
-      "costOfEquity": 13.01,
+      "wacc": 12.07,
+      "costOfEquity": 13,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.0186,
-      "marketCap": 47387830000
+      "beta": 1.0168,
+      "marketCap": 47043200000
     },
     "beta": {
-      "beta5y": 1.0186
+      "beta5y": 1.0168
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 237.22,
-        "high": 238.18,
-        "low": 234.09,
-        "close": 234.76,
-        "volume": 1788700
-      },
-      {
-        "date": "2025-10-16",
-        "open": 236.79,
-        "high": 241,
-        "low": 227.14,
-        "close": 227.6,
-        "volume": 2240800
-      },
       {
         "date": "2025-10-17",
         "open": 229.09,
@@ -7818,6 +7805,22 @@
         "low": 190.38,
         "close": 196.63,
         "volume": 3226700
+      },
+      {
+        "date": "2026-10-16",
+        "open": 196.84,
+        "high": 199.48,
+        "low": 188.92,
+        "close": 190.81,
+        "volume": 2538500
+      },
+      {
+        "date": "2026-10-19",
+        "open": 190.71,
+        "high": 195.32,
+        "low": 188.8,
+        "close": 195.2,
+        "volume": 1658000
       }
     ],
     "news": [
@@ -7894,12 +7897,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "a8a7c6bc-d151-3b29-bb14-3b60f20774ca",
-        "title": "Workday Q1 Earnings Beat Estimates on Solid Revenue Growth",
-        "publisher": "Zacks",
+        "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
+        "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/workday-q1-earnings-beat-estimates-154200149.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [

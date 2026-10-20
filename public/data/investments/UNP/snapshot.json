@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3487,
-      "ttmPe": 23.38,
-      "marketCap": 171481325470,
-      "psRatio": 6.75,
-      "pbRatio": 8.29,
-      "pegRatio": 3.66
+      "ttmPe": 23.24,
+      "marketCap": 170471598570,
+      "psRatio": 6.71,
+      "pbRatio": 8.25,
+      "pegRatio": 3.64
     },
     "profitability": {
       "roe": 9.94,
@@ -4999,33 +4999,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.11,
-      "costOfEquity": 11.799999999999999,
+      "wacc": 10.08,
+      "costOfEquity": 11.78,
       "costOfDebt": 1,
       "taxRate": 22,
-      "beta": 0.8622,
-      "marketCap": 171481325470
+      "beta": 0.859,
+      "marketCap": 170471598570
     },
     "beta": {
-      "beta5y": 0.8622
+      "beta5y": 0.859
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 227.14,
-        "high": 228,
-        "low": 224.59,
-        "close": 225.72,
-        "volume": 2483700
-      },
-      {
-        "date": "2025-10-16",
-        "open": 226.27,
-        "high": 227.5,
-        "low": 223.22,
-        "close": 224.04,
-        "volume": 2971200
-      },
       {
         "date": "2025-10-17",
         "open": 225.11,
@@ -7025,6 +7009,22 @@
         "low": 286.58,
         "close": 288.71,
         "volume": 3671600
+      },
+      {
+        "date": "2026-10-16",
+        "open": 288.56,
+        "high": 291.93,
+        "low": 286.46,
+        "close": 289.04,
+        "volume": 2657700
+      },
+      {
+        "date": "2026-10-19",
+        "open": 287.95,
+        "high": 288.87,
+        "low": 286.05,
+        "close": 287.01,
+        "volume": 1739700
       }
     ],
     "news": [
@@ -7053,6 +7053,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
+        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "dbb50989-5ece-3897-80fa-8dc913bc3bc2",
         "title": "Why Railroad Stocks Are Moving Higher Today",
         "publisher": "Motley Fool",
@@ -7066,14 +7074,6 @@
         "publisher": "Barrons.com",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
-        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
         "type": "STORY"
       },
       {
@@ -7176,18 +7176,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.38,
-        "industryAvg": 25.55
+        "value": 23.24,
+        "industryAvg": 25.37
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.75,
-        "industryAvg": 5.74
+        "value": 6.71,
+        "industryAvg": 5.7
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.29,
-        "industryAvg": 4.29
+        "value": 8.25,
+        "industryAvg": 4.26
       },
       {
         "metric": "ROE",

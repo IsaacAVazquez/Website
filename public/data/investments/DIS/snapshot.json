@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 22.83,
-      "marketCap": 191476400000,
-      "psRatio": 1.94,
-      "pbRatio": 1.74,
+      "ttmPe": 22.6,
+      "marketCap": 189590700000,
+      "psRatio": 1.92,
+      "pbRatio": 1.72,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6071,33 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.36,
-      "costOfEquity": 16.38,
+      "wacc": 13.29,
+      "costOfEquity": 16.33,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4511,
-      "marketCap": 191476400000
+      "beta": 1.4479,
+      "marketCap": 189590700000
     },
     "beta": {
-      "beta5y": 1.4511
+      "beta5y": 1.4479
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 111.47,
-        "high": 112.68,
-        "low": 111.14,
-        "close": 111.71,
-        "volume": 7012600
-      },
-      {
-        "date": "2025-10-16",
-        "open": 111.79,
-        "high": 112.09,
-        "low": 108.51,
-        "close": 109.88,
-        "volume": 7531200
-      },
       {
         "date": "2025-10-17",
         "open": 109.74,
@@ -8097,6 +8081,22 @@
         "low": 109.87,
         "close": 110.68,
         "volume": 9808800
+      },
+      {
+        "date": "2026-10-16",
+        "open": 111.48,
+        "high": 112.69,
+        "low": 110.01,
+        "close": 110.59,
+        "volume": 8639100
+      },
+      {
+        "date": "2026-10-19",
+        "open": 109.4,
+        "high": 110.11,
+        "low": 108.99,
+        "close": 109.59,
+        "volume": 5520600
       }
     ],
     "news": [
@@ -8117,14 +8117,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
-        "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/look-back-media-stocks-q4-090350655.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
         "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
         "publisher": "StockStory",
@@ -8133,19 +8125,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
-        "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
-        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
+        "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
+        "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/look-back-media-stocks-q4-090350655.html",
         "type": "STORY"
       },
       {
@@ -8162,6 +8146,22 @@
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
+        "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
+        "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
         "type": "STORY"
       },
       {
@@ -8242,18 +8242,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.83,
-        "industryAvg": 24.33
+        "value": 22.6,
+        "industryAvg": 23.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.94,
-        "industryAvg": 2.54
+        "value": 1.92,
+        "industryAvg": 2.71
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.74,
-        "industryAvg": 3.03
+        "value": 1.72,
+        "industryAvg": 3.08
       },
       {
         "metric": "ROE",

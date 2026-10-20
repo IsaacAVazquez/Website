@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 11.266,
-      "ttmPe": 20.78,
-      "marketCap": 220541040000,
-      "psRatio": 3.19,
-      "pbRatio": 6.4,
+      "ttmPe": 20.98,
+      "marketCap": 222679380000,
+      "psRatio": 3.22,
+      "pbRatio": 6.46,
       "pegRatio": 1.7
     },
     "profitability": {
@@ -6563,32 +6563,16 @@
     },
     "wacc": {
       "wacc": 8.77,
-      "costOfEquity": 11.17,
+      "costOfEquity": 11.15,
       "costOfDebt": 0.74,
       "taxRate": 13,
-      "beta": 0.7811,
-      "marketCap": 220541040000
+      "beta": 0.7777,
+      "marketCap": 222679380000
     },
     "beta": {
-      "beta5y": 0.7811
+      "beta5y": 0.7777
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 278.38,
-        "high": 285.45,
-        "low": 277,
-        "close": 280.75,
-        "volume": 3346800
-      },
-      {
-        "date": "2025-10-16",
-        "open": 281.11,
-        "high": 282.56,
-        "low": 275.6,
-        "close": 275.97,
-        "volume": 2956900
-      },
       {
         "date": "2025-10-17",
         "open": 276.15,
@@ -8588,6 +8572,22 @@
         "low": 226.01,
         "close": 234.12,
         "volume": 5590700
+      },
+      {
+        "date": "2026-10-16",
+        "open": 236.05,
+        "high": 236.98,
+        "low": 230.25,
+        "close": 232.14,
+        "volume": 6952700
+      },
+      {
+        "date": "2026-10-19",
+        "open": 230.68,
+        "high": 238.38,
+        "low": 229.3,
+        "close": 236.39,
+        "volume": 4906600
       }
     ],
     "news": [
@@ -8736,18 +8736,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.78,
-        "industryAvg": 16.17
+        "value": 20.98,
+        "industryAvg": 16.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.19,
-        "industryAvg": 1.5
+        "value": 3.22,
+        "industryAvg": 1.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.4,
-        "industryAvg": 3.47
+        "value": 6.46,
+        "industryAvg": 3.5
       },
       {
         "metric": "ROE",

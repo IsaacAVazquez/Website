@@ -1,11 +1,14 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
-    }
+      "price": "2026-10-19"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6961,
-      "ttmPe": 35.95,
-      "marketCap": 75532545000,
-      "psRatio": 6.17,
-      "pbRatio": 28.27,
-      "pegRatio": 3.74
+      "ttmPe": 36.14,
+      "marketCap": 75947950000,
+      "psRatio": 6.21,
+      "pbRatio": 28.42,
+      "pegRatio": 3.76
     },
     "profitability": {
       "roe": 21.36,
@@ -6662,33 +6665,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.67,
+      "wacc": 10.68,
       "costOfEquity": 11.92,
       "costOfDebt": 1.13,
       "taxRate": 25,
-      "beta": 0.8778,
-      "marketCap": 75532545000
+      "beta": 0.8768,
+      "marketCap": 75947950000
     },
     "beta": {
-      "beta5y": 0.8778
+      "beta5y": 0.8768
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 461.24,
-        "high": 462.09,
-        "low": 437.7,
-        "close": 438.94,
-        "volume": 1281600
-      },
-      {
-        "date": "2025-10-16",
-        "open": 439.86,
-        "high": 441.16,
-        "low": 434.47,
-        "close": 437.21,
-        "volume": 829100
-      },
       {
         "date": "2025-10-17",
         "open": 437.41,
@@ -8688,6 +8675,22 @@
         "low": 455.21,
         "close": 456.39,
         "volume": 799300
+      },
+      {
+        "date": "2026-10-16",
+        "open": 459.71,
+        "high": 468.98,
+        "low": 458.95,
+        "close": 463.15,
+        "volume": 1257000
+      },
+      {
+        "date": "2026-10-19",
+        "open": 461.14,
+        "high": 463.77,
+        "low": 457.75,
+        "close": 458.9,
+        "volume": 747800
       }
     ],
     "news": [
@@ -8700,11 +8703,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
-        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
-        "publisher": "ACCESS Newswire",
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
         "type": "STORY"
       },
       {
@@ -8724,11 +8727,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
+        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
+        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
+        "publisher": "ACCESS Newswire",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
+        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8748,14 +8751,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
-        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
         "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
         "publisher": "MT Newswires",
@@ -8764,11 +8759,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
-        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
-        "publisher": "Reuters",
+        "uuid": "9ee82bdb-47b7-3377-992d-1c0127ffd46d",
+        "title": "Motorola to Acquire Silvus Technologies, Expand Security Portfolio",
+        "publisher": "Zacks",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
+        "link": "https://finance.yahoo.com/news/motorola-acquire-silvus-technologies-expand-154400833.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
+        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
         "type": "STORY"
       }
     ],

@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 722.48,
-      "marketCap": 301770050000,
-      "psRatio": 26.29,
-      "pbRatio": 10.98,
+      "ttmPe": 676.98,
+      "marketCap": 282764250000,
+      "psRatio": 24.63,
+      "pbRatio": 10.29,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,33 +5904,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.3,
-      "costOfEquity": 12.4,
+      "wacc": 12.35,
+      "costOfEquity": 12.46,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.939,
-      "marketCap": 301770050000
+      "beta": 0.947,
+      "marketCap": 282764250000
     },
     "beta": {
-      "beta5y": 0.939
+      "beta5y": 0.947
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 208.08,
-        "high": 210.6,
-        "low": 203.38,
-        "close": 206.7,
-        "volume": 4992300
-      },
-      {
-        "date": "2025-10-16",
-        "open": 208,
-        "high": 210.44,
-        "low": 204.63,
-        "close": 205.51,
-        "volume": 3675600
-      },
       {
         "date": "2025-10-17",
         "open": 204.09,
@@ -7930,6 +7914,22 @@
         "low": 361.68,
         "close": 370.27,
         "volume": 5604100
+      },
+      {
+        "date": "2026-10-16",
+        "open": 373.51,
+        "high": 375.71,
+        "low": 339.55,
+        "close": 342,
+        "volume": 8775200
+      },
+      {
+        "date": "2026-10-19",
+        "open": 356,
+        "high": 356,
+        "low": 345.08,
+        "close": 346.95,
+        "volume": 4596400
       }
     ],
     "news": [
@@ -7998,19 +7998,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
-        "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
         "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
+        "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
         "type": "STORY"
       }
     ],
@@ -8075,18 +8075,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 722.48,
-        "industryAvg": 34.42
+        "value": 676.98,
+        "industryAvg": 33.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 26.29,
-        "industryAvg": 7.88
+        "value": 24.63,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.98,
-        "industryAvg": 8.76
+        "value": 10.29,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",

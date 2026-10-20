@@ -1,10 +1,10 @@
 {
   "symbol": "PM",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.9569,
-      "ttmPe": 28.73,
-      "marketCap": 311564719710,
-      "psRatio": 7.32,
-      "pbRatio": -36.3,
+      "ttmPe": 28.9,
+      "marketCap": 313357113045,
+      "psRatio": 7.37,
+      "pbRatio": -36.51,
       "pegRatio": 0.05
     },
     "profitability": {
@@ -5824,33 +5824,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.049999999999999,
-      "costOfEquity": 8.1,
+      "wacc": 7.06,
+      "costOfEquity": 8.110000000000001,
       "costOfDebt": 0.49,
       "taxRate": 22,
-      "beta": 0.3857,
-      "marketCap": 311564719710
+      "beta": 0.3835,
+      "marketCap": 313357113045
     },
     "beta": {
-      "beta5y": 0.3857
+      "beta5y": 0.3835
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 157.84,
-        "high": 159.95,
-        "low": 157.45,
-        "close": 157.73,
-        "volume": 4683500
-      },
-      {
-        "date": "2025-10-16",
-        "open": 158.69,
-        "high": 158.69,
-        "low": 155.68,
-        "close": 155.98,
-        "volume": 5110000
-      },
       {
         "date": "2025-10-17",
         "open": 157.03,
@@ -7850,6 +7834,22 @@
         "low": 199.53,
         "close": 199.9,
         "volume": 7964700
+      },
+      {
+        "date": "2026-10-16",
+        "open": 202.98,
+        "high": 205.79,
+        "low": 201.69,
+        "close": 205.2,
+        "volume": 6197000
+      },
+      {
+        "date": "2026-10-19",
+        "open": 202.14,
+        "high": 203.2,
+        "low": 200.89,
+        "close": 201.05,
+        "volume": 4867500
       }
     ],
     "news": [
@@ -7878,19 +7878,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "50d7410c-2f17-3580-a982-ae49a9bdc36b",
-        "title": "Altria Trading at a Discount: Should You Buy, Sell or Hold the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/altria-trading-discount-buy-sell-112600598.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a49561d7-0ec6-3a3d-9fe5-44a773263e3a",
         "title": "Sector Update: Consumer Stocks Edge Higher Pre-Bell Wednesday",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/sector-consumer-stocks-edge-higher-130953240.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "50d7410c-2f17-3580-a982-ae49a9bdc36b",
+        "title": "Altria Trading at a Discount: Should You Buy, Sell or Hold the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/altria-trading-discount-buy-sell-112600598.html",
         "type": "STORY"
       },
       {
@@ -7998,18 +7998,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.73,
-        "industryAvg": 23.05
+        "value": 28.9,
+        "industryAvg": 23.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.32,
-        "industryAvg": 6.31
+        "value": 7.37,
+        "industryAvg": 6.34
       },
       {
         "metric": "P/B Ratio",
-        "value": -36.3,
-        "industryAvg": 1.96
+        "value": -36.51,
+        "industryAvg": 1.93
       },
       {
         "metric": "ROE",

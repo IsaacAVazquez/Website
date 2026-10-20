@@ -1,10 +1,10 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.0645,
-      "ttmPe": 31.73,
-      "marketCap": 89668758663,
-      "psRatio": 3.49,
-      "pbRatio": 9.03,
-      "pegRatio": 3.67
+      "ttmPe": 32.05,
+      "marketCap": 90556686957,
+      "psRatio": 3.53,
+      "pbRatio": 9.12,
+      "pegRatio": 3.71
     },
     "profitability": {
       "roe": 7.870000000000001,
@@ -5505,32 +5505,16 @@
     },
     "wacc": {
       "wacc": 6.7,
-      "costOfEquity": 8.25,
+      "costOfEquity": 8.23,
       "costOfDebt": 1,
       "taxRate": 23,
-      "beta": 0.4055,
-      "marketCap": 89668758663
+      "beta": 0.3996,
+      "marketCap": 90556686957
     },
     "beta": {
-      "beta5y": 0.4055
+      "beta5y": 0.3996
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 217.6,
-        "high": 217.77,
-        "low": 213,
-        "close": 213.69,
-        "volume": 1709600
-      },
-      {
-        "date": "2025-10-16",
-        "open": 213.5,
-        "high": 214.14,
-        "low": 211.71,
-        "close": 213.29,
-        "volume": 1195200
-      },
       {
         "date": "2025-10-17",
         "open": 214.13,
@@ -7530,6 +7514,22 @@
         "low": 220.33,
         "close": 224.19,
         "volume": 5219600
+      },
+      {
+        "date": "2026-10-16",
+        "open": 224.78,
+        "high": 227.16,
+        "low": 223.67,
+        "close": 226.86,
+        "volume": 2575200
+      },
+      {
+        "date": "2026-10-19",
+        "open": 224.54,
+        "high": 227.18,
+        "low": 223,
+        "close": 226.41,
+        "volume": 2526900
       }
     ],
     "news": [
@@ -7574,14 +7574,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
-        "title": "Why Waste Management Stock Is Sinking Today",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
         "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
         "publisher": "StockStory",
@@ -7595,6 +7587,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/wm-announces-cash-dividend-213300031.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
+        "title": "Why Waste Management Stock Is Sinking Today",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
         "type": "STORY"
       },
       {
@@ -7680,18 +7680,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.73,
-        "industryAvg": 33.11
+        "value": 32.05,
+        "industryAvg": 33.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.49,
-        "industryAvg": 3.54
+        "value": 3.53,
+        "industryAvg": 3.55
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.03,
-        "industryAvg": 5.88
+        "value": 9.12,
+        "industryAvg": 5.91
       },
       {
         "metric": "ROE",

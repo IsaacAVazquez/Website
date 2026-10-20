@@ -1,10 +1,10 @@
 {
   "symbol": "PEP",
-  "lastUpdated": "2026-10-15T13:59:07.513004+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-15T13:59:07.513004+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9572,
-      "ttmPe": 16.25,
-      "pegRatio": 0.93,
-      "marketCap": 176324280000,
-      "psRatio": 1.82,
-      "pbRatio": 7.98
+      "ttmPe": 16.79,
+      "pegRatio": 0.96,
+      "marketCap": 182189480000,
+      "psRatio": 1.88,
+      "pbRatio": 8.24
     },
     "profitability": {
       "roe": 13.71,
@@ -5881,33 +5881,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.069999999999999,
-      "costOfEquity": 7.8,
+      "wacc": 6.08,
+      "costOfEquity": 7.76,
       "costOfDebt": 0.43,
       "taxRate": 22,
-      "beta": 0.3396,
-      "marketCap": 176324280000
+      "beta": 0.3375,
+      "marketCap": 182189480000
     },
     "beta": {
-      "beta5y": 0.3396
+      "beta5y": 0.3375
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 151.33,
-        "high": 152.39,
-        "low": 149.17,
-        "close": 151.16,
-        "volume": 6101100
-      },
-      {
-        "date": "2025-10-16",
-        "open": 152.38,
-        "high": 154.38,
-        "low": 152.29,
-        "close": 152.67,
-        "volume": 8532900
-      },
       {
         "date": "2025-10-17",
         "open": 153.77,
@@ -7907,6 +7891,22 @@
         "low": 127.27,
         "close": 128.38,
         "volume": 11639800
+      },
+      {
+        "date": "2026-10-16",
+        "open": 129.53,
+        "high": 131.59,
+        "low": 128.82,
+        "close": 131.49,
+        "volume": 10695300
+      },
+      {
+        "date": "2026-10-19",
+        "open": 130.88,
+        "high": 133.81,
+        "low": 130.27,
+        "close": 133.57,
+        "volume": 9646100
       }
     ],
     "news": [
@@ -7993,24 +7993,6 @@
     ],
     "officers": [
       {
-        "name": "Mr. Eugene Willemsen",
-        "title": "Chief Executive Officer of International Beverages",
-        "age": 58,
-        "yearBorn": 1967
-      },
-      {
-        "name": "Mr. James P. Andrew",
-        "title": "Executive VP & Chief Sustainability Officer",
-        "age": 63,
-        "yearBorn": 1962
-      },
-      {
-        "name": "Mr. Ramkumar Krishnan",
-        "title": "Chief Executive Officer of PepsiCo North America",
-        "age": 54,
-        "yearBorn": 1971
-      },
-      {
         "name": "Mr. Ramon Luis Laguarta",
         "title": "Chairman & CEO",
         "age": 61,
@@ -8030,10 +8012,6 @@
         "age": 51,
         "yearBorn": 1974,
         "totalPay": 3196609
-      },
-      {
-        "name": "Ms. Cynthia A. Nastanski",
-        "title": "Senior VP of Corporate Law & Deputy Corporate Secretary"
       },
       {
         "name": "Ms. Jane Caroline Wakely",
@@ -8056,18 +8034,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.25,
-        "industryAvg": 23.45
+        "value": 16.79,
+        "industryAvg": 24.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.82,
-        "industryAvg": 3.16
+        "value": 1.88,
+        "industryAvg": 3.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.98,
-        "industryAvg": 6.19
+        "value": 8.24,
+        "industryAvg": 6.37
       },
       {
         "metric": "ROE",

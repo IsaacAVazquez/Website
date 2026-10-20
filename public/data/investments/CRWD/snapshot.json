@@ -1,10 +1,10 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
     "sections": {
-      "price": "2026-10-15"
+      "price": "2026-10-19"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.0357,
-      "ttmPe": 6850.7,
-      "marketCap": 250401771650,
-      "psRatio": 46.4,
-      "pbRatio": 49.08,
-      "pegRatio": 63.87
+      "ttmPe": 6389.36,
+      "marketCap": 233539044500,
+      "psRatio": 43.28,
+      "pbRatio": 45.78,
+      "pegRatio": 59.57
     },
     "profitability": {
       "roe": 0.11,
@@ -5980,33 +5980,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.04,
-      "costOfEquity": 14.09,
+      "wacc": 14.099999999999998,
+      "costOfEquity": 14.149999999999999,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.157,
-      "marketCap": 250401771650
+      "beta": 1.1656,
+      "marketCap": 233539044500
     },
     "beta": {
-      "beta5y": 1.157
+      "beta5y": 1.1656
     },
     "price": [
-      {
-        "date": "2025-10-15",
-        "open": 123.5,
-        "high": 123.875,
-        "low": 121.195,
-        "close": 122.255,
-        "volume": 6923200
-      },
-      {
-        "date": "2025-10-16",
-        "open": 122.4325,
-        "high": 124.5775,
-        "low": 118.847,
-        "close": 120.5575,
-        "volume": 8683200
-      },
       {
         "date": "2025-10-17",
         "open": 119.5038,
@@ -8005,7 +7989,23 @@
         "high": 246.88,
         "low": 239.82,
         "close": 244.57,
-        "volume": 10778100
+        "volume": 10792000
+      },
+      {
+        "date": "2026-10-16",
+        "open": 246.98,
+        "high": 248,
+        "low": 224.6,
+        "close": 227.39,
+        "volume": 13859700
+      },
+      {
+        "date": "2026-10-19",
+        "open": 234.18,
+        "high": 234.262,
+        "low": 223.95,
+        "close": 228.1,
+        "volume": 8318300
       }
     ],
     "news": [
@@ -8066,19 +8066,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
-        "title": "3 Top Cybersecurity Stocks to Buy in May",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
         "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
         "publisher": "StockStory",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
+        "title": "3 Top Cybersecurity Stocks to Buy in May",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
         "type": "STORY"
       },
       {
@@ -8148,18 +8148,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 6850.7,
-        "industryAvg": 34.42
+        "value": 6389.36,
+        "industryAvg": 33.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 46.4,
-        "industryAvg": 7.88
+        "value": 43.28,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 49.08,
-        "industryAvg": 8.76
+        "value": 45.78,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",
