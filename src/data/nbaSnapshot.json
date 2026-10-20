@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-20T05:00:29.965Z",
+  "generatedAt": "2026-10-20T13:39:34.000Z",
   "updatedAt": "2026-10-20",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -11,114 +11,48 @@
   "teamsByConference": {
     "east": [
       {
-        "id": "bos",
-        "abbreviation": "BOS",
-        "name": "Boston Celtics",
-        "shortName": "Celtics",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 1,
-        "position": 1,
-        "wins": 4,
-        "losses": 0,
-        "winPercent": 1,
-        "gamesBack": 0,
-        "gamesPlayed": 4,
-        "pointsFor": 126.75,
-        "pointsAgainst": 108,
-        "pointDifferential": 75,
-        "streak": "W4",
-        "homeRecord": "2-0",
-        "awayRecord": "2-0",
-        "lastTen": "4-0"
-      },
-      {
         "id": "atl",
         "abbreviation": "ATL",
         "name": "Atlanta Hawks",
         "shortName": "Hawks",
         "conference": "east",
         "division": null,
+        "conferenceSeed": 1,
+        "position": 1,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "bos",
+        "abbreviation": "BOS",
+        "name": "Boston Celtics",
+        "shortName": "Celtics",
+        "conference": "east",
+        "division": null,
         "conferenceSeed": 2,
         "position": 2,
-        "wins": 4,
-        "losses": 1,
-        "winPercent": 0.8,
-        "gamesBack": 0.5,
-        "gamesPlayed": 5,
-        "pointsFor": 122.6,
-        "pointsAgainst": 117.2,
-        "pointDifferential": 27,
-        "streak": "W4",
-        "homeRecord": "1-1",
-        "awayRecord": "3-0",
-        "lastTen": "4-1"
-      },
-      {
-        "id": "det",
-        "abbreviation": "DET",
-        "name": "Detroit Pistons",
-        "shortName": "Pistons",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 3,
-        "position": 3,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
-        "gamesBack": 1,
-        "gamesPlayed": 4,
-        "pointsFor": 118.5,
-        "pointsAgainst": 113,
-        "pointDifferential": 22,
-        "streak": "W2",
-        "homeRecord": "2-0",
-        "awayRecord": "1-1",
-        "lastTen": "3-1"
-      },
-      {
-        "id": "bkn",
-        "abbreviation": "BKN",
-        "name": "Brooklyn Nets",
-        "shortName": "Nets",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 4,
-        "position": 4,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
-        "gamesBack": 1,
-        "gamesPlayed": 4,
-        "pointsFor": 124.25,
-        "pointsAgainst": 116,
-        "pointDifferential": 33,
-        "streak": "L1",
-        "homeRecord": "1-0",
-        "awayRecord": "2-1",
-        "lastTen": "3-1"
-      },
-      {
-        "id": "orl",
-        "abbreviation": "ORL",
-        "name": "Orlando Magic",
-        "shortName": "Magic",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 5,
-        "position": 5,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
-        "gamesBack": 1,
-        "gamesPlayed": 4,
-        "pointsFor": 123.75,
-        "pointsAgainst": 117,
-        "pointDifferential": 27,
-        "streak": "W2",
-        "homeRecord": "2-0",
-        "awayRecord": "1-1",
-        "lastTen": "3-1"
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "chi",
@@ -127,20 +61,86 @@
         "shortName": "Bulls",
         "conference": "east",
         "division": null,
+        "conferenceSeed": 3,
+        "position": 3,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "cle",
+        "abbreviation": "CLE",
+        "name": "Cleveland Cavaliers",
+        "shortName": "Cavaliers",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 4,
+        "position": 4,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "det",
+        "abbreviation": "DET",
+        "name": "Detroit Pistons",
+        "shortName": "Pistons",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 5,
+        "position": 5,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "ind",
+        "abbreviation": "IND",
+        "name": "Indiana Pacers",
+        "shortName": "Pacers",
+        "conference": "east",
+        "division": null,
         "conferenceSeed": 6,
         "position": 6,
-        "wins": 3,
-        "losses": 2,
-        "winPercent": 0.6,
-        "gamesBack": 1.5,
-        "gamesPlayed": 5,
-        "pointsFor": 122,
-        "pointsAgainst": 114.8,
-        "pointDifferential": 36,
-        "streak": "W2",
-        "homeRecord": "2-1",
-        "awayRecord": "1-1",
-        "lastTen": "3-2"
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "mia",
@@ -151,40 +151,18 @@
         "division": null,
         "conferenceSeed": 7,
         "position": 7,
-        "wins": 3,
-        "losses": 2,
-        "winPercent": 0.6,
-        "gamesBack": 1.5,
-        "gamesPlayed": 5,
-        "pointsFor": 128,
-        "pointsAgainst": 122.4,
-        "pointDifferential": 28,
-        "streak": "L1",
-        "homeRecord": "2-1",
-        "awayRecord": "1-1",
-        "lastTen": "3-2"
-      },
-      {
-        "id": "wsh",
-        "abbreviation": "WSH",
-        "name": "Washington Wizards",
-        "shortName": "Wizards",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 8,
-        "position": 8,
-        "wins": 2,
-        "losses": 2,
-        "winPercent": 0.5,
-        "gamesBack": 2,
-        "gamesPlayed": 4,
-        "pointsFor": 113.25,
-        "pointsAgainst": 113.75,
-        "pointDifferential": -2,
-        "streak": "L2",
-        "homeRecord": "1-1",
-        "awayRecord": "1-1",
-        "lastTen": "2-2"
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "mil",
@@ -193,130 +171,42 @@
         "shortName": "Bucks",
         "conference": "east",
         "division": null,
+        "conferenceSeed": 8,
+        "position": 8,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "bkn",
+        "abbreviation": "BKN",
+        "name": "Brooklyn Nets",
+        "shortName": "Nets",
+        "conference": "east",
+        "division": null,
         "conferenceSeed": 9,
         "position": 9,
-        "wins": 2,
-        "losses": 3,
-        "winPercent": 0.4,
-        "gamesBack": 2.5,
-        "gamesPlayed": 5,
-        "pointsFor": 109.4,
-        "pointsAgainst": 119.8,
-        "pointDifferential": -52,
-        "streak": "W1",
-        "homeRecord": "0-2",
-        "awayRecord": "2-1",
-        "lastTen": "2-3"
-      },
-      {
-        "id": "tor",
-        "abbreviation": "TOR",
-        "name": "Toronto Raptors",
-        "shortName": "Raptors",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 10,
-        "position": 10,
-        "wins": 2,
-        "losses": 3,
-        "winPercent": 0.4,
-        "gamesBack": 2.5,
-        "gamesPlayed": 5,
-        "pointsFor": 122.4,
-        "pointsAgainst": 116.8,
-        "pointDifferential": 28,
-        "streak": "L2",
-        "homeRecord": "2-1",
-        "awayRecord": "0-2",
-        "lastTen": "2-3"
-      },
-      {
-        "id": "cle",
-        "abbreviation": "CLE",
-        "name": "Cleveland Cavaliers",
-        "shortName": "Cavaliers",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 11,
-        "position": 11,
-        "wins": 1,
-        "losses": 2,
-        "winPercent": 0.33333334,
-        "gamesBack": 2.5,
-        "gamesPlayed": 3,
-        "pointsFor": 116,
-        "pointsAgainst": 120.333336,
-        "pointDifferential": -13,
-        "streak": "L1",
-        "homeRecord": "1-1",
-        "awayRecord": "0-1",
-        "lastTen": "1-2"
-      },
-      {
-        "id": "cha",
-        "abbreviation": "CHA",
-        "name": "Charlotte Hornets",
-        "shortName": "Hornets",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 12,
-        "position": 12,
-        "wins": 1,
-        "losses": 3,
-        "winPercent": 0.25,
-        "gamesBack": 3,
-        "gamesPlayed": 4,
-        "pointsFor": 96.5,
-        "pointsAgainst": 111,
-        "pointDifferential": -58,
-        "streak": "L2",
-        "homeRecord": "1-1",
-        "awayRecord": "0-2",
-        "lastTen": "1-3"
-      },
-      {
-        "id": "phi",
-        "abbreviation": "PHI",
-        "name": "Philadelphia 76ers",
-        "shortName": "76ers",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 13,
-        "position": 13,
-        "wins": 1,
-        "losses": 3,
-        "winPercent": 0.25,
-        "gamesBack": 3,
-        "gamesPlayed": 4,
-        "pointsFor": 113.5,
-        "pointsAgainst": 120,
-        "pointDifferential": -26,
-        "streak": "L3",
-        "homeRecord": "1-1",
-        "awayRecord": "0-2",
-        "lastTen": "1-3"
-      },
-      {
-        "id": "ind",
-        "abbreviation": "IND",
-        "name": "Indiana Pacers",
-        "shortName": "Pacers",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 14,
-        "position": 14,
-        "wins": 1,
-        "losses": 3,
-        "winPercent": 0.25,
-        "gamesBack": 3,
-        "gamesPlayed": 4,
-        "pointsFor": 119.75,
-        "pointsAgainst": 118.25,
-        "pointDifferential": 6,
-        "streak": "L3",
-        "homeRecord": "0-2",
-        "awayRecord": "0-1",
-        "lastTen": "1-3"
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "ny",
@@ -325,45 +215,133 @@
         "shortName": "Knicks",
         "conference": "east",
         "division": null,
+        "conferenceSeed": 10,
+        "position": 10,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "orl",
+        "abbreviation": "ORL",
+        "name": "Orlando Magic",
+        "shortName": "Magic",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 11,
+        "position": 11,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "phi",
+        "abbreviation": "PHI",
+        "name": "Philadelphia 76ers",
+        "shortName": "76ers",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 12,
+        "position": 12,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "wsh",
+        "abbreviation": "WSH",
+        "name": "Washington Wizards",
+        "shortName": "Wizards",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 13,
+        "position": 13,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "tor",
+        "abbreviation": "TOR",
+        "name": "Toronto Raptors",
+        "shortName": "Raptors",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 14,
+        "position": 14,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "cha",
+        "abbreviation": "CHA",
+        "name": "Charlotte Hornets",
+        "shortName": "Hornets",
+        "conference": "east",
+        "division": null,
         "conferenceSeed": 15,
         "position": 15,
-        "wins": 1,
-        "losses": 4,
-        "winPercent": 0.2,
-        "gamesBack": 3.5,
-        "gamesPlayed": 5,
-        "pointsFor": 106,
-        "pointsAgainst": 124.2,
-        "pointDifferential": -91,
-        "streak": "W1",
-        "homeRecord": "1-2",
-        "awayRecord": "0-2",
-        "lastTen": "1-4"
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       }
     ],
     "west": [
-      {
-        "id": "mem",
-        "abbreviation": "MEM",
-        "name": "Memphis Grizzlies",
-        "shortName": "Grizzlies",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 1,
-        "position": 1,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
-        "gamesBack": 0,
-        "gamesPlayed": 4,
-        "pointsFor": 117.5,
-        "pointsAgainst": 110.75,
-        "pointDifferential": 27,
-        "streak": "W2",
-        "homeRecord": "1-1",
-        "awayRecord": "2-0",
-        "lastTen": "3-1"
-      },
       {
         "id": "no",
         "abbreviation": "NO",
@@ -371,64 +349,64 @@
         "shortName": "Pelicans",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 2,
-        "position": 2,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
+        "conferenceSeed": 1,
+        "position": 1,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
         "gamesBack": 0,
-        "gamesPlayed": 4,
-        "pointsFor": 110.5,
-        "pointsAgainst": 110.25,
-        "pointDifferential": 1,
-        "streak": "W2",
-        "homeRecord": "1-0",
-        "awayRecord": "1-1",
-        "lastTen": "3-1"
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
-        "id": "utah",
-        "abbreviation": "UTAH",
-        "name": "Utah Jazz",
-        "shortName": "Jazz",
+        "id": "dal",
+        "abbreviation": "DAL",
+        "name": "Dallas Mavericks",
+        "shortName": "Mavericks",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 2,
+        "position": 2,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "den",
+        "abbreviation": "DEN",
+        "name": "Denver Nuggets",
+        "shortName": "Nuggets",
         "conference": "west",
         "division": null,
         "conferenceSeed": 3,
         "position": 3,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
         "gamesBack": 0,
-        "gamesPlayed": 4,
-        "pointsFor": 113.25,
-        "pointsAgainst": 109.75,
-        "pointDifferential": 14,
-        "streak": "W2",
-        "homeRecord": "1-1",
-        "awayRecord": "2-0",
-        "lastTen": "3-1"
-      },
-      {
-        "id": "por",
-        "abbreviation": "POR",
-        "name": "Portland Trail Blazers",
-        "shortName": "Trail Blazers",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 4,
-        "position": 4,
-        "wins": 3,
-        "losses": 1,
-        "winPercent": 0.75,
-        "gamesBack": 0,
-        "gamesPlayed": 4,
-        "pointsFor": 117.5,
-        "pointsAgainst": 102.5,
-        "pointDifferential": 60,
-        "streak": "L1",
-        "homeRecord": "2-0",
-        "awayRecord": "1-1",
-        "lastTen": "3-1"
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "gs",
@@ -437,20 +415,42 @@
         "shortName": "Warriors",
         "conference": "west",
         "division": null,
+        "conferenceSeed": 4,
+        "position": 4,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "hou",
+        "abbreviation": "HOU",
+        "name": "Houston Rockets",
+        "shortName": "Rockets",
+        "conference": "west",
+        "division": null,
         "conferenceSeed": 5,
         "position": 5,
-        "wins": 4,
-        "losses": 2,
-        "winPercent": 0.6666667,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
         "gamesBack": 0,
-        "gamesPlayed": 6,
-        "pointsFor": 113.833336,
-        "pointsAgainst": 106.333336,
-        "pointDifferential": 45,
-        "streak": "W3",
-        "homeRecord": "3-0",
-        "awayRecord": "0-1",
-        "lastTen": "4-2"
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "lac",
@@ -461,106 +461,18 @@
         "division": null,
         "conferenceSeed": 6,
         "position": 6,
-        "wins": 2,
-        "losses": 1,
-        "winPercent": 0.6666667,
-        "gamesBack": 0.5,
-        "gamesPlayed": 3,
-        "pointsFor": 110.666664,
-        "pointsAgainst": 108.333336,
-        "pointDifferential": 7,
-        "streak": "W1",
-        "homeRecord": "1-0",
-        "awayRecord": "0-1",
-        "lastTen": "2-1"
-      },
-      {
-        "id": "hou",
-        "abbreviation": "HOU",
-        "name": "Houston Rockets",
-        "shortName": "Rockets",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 7,
-        "position": 7,
-        "wins": 2,
-        "losses": 1,
-        "winPercent": 0.6666667,
-        "gamesBack": 0.5,
-        "gamesPlayed": 3,
-        "pointsFor": 122,
-        "pointsAgainst": 112.666664,
-        "pointDifferential": 28,
-        "streak": "W1",
-        "homeRecord": "1-0",
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
         "awayRecord": "0-0",
-        "lastTen": "2-1"
-      },
-      {
-        "id": "den",
-        "abbreviation": "DEN",
-        "name": "Denver Nuggets",
-        "shortName": "Nuggets",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 8,
-        "position": 8,
-        "wins": 3,
-        "losses": 2,
-        "winPercent": 0.6,
-        "gamesBack": 0.5,
-        "gamesPlayed": 5,
-        "pointsFor": 115.6,
-        "pointsAgainst": 114.2,
-        "pointDifferential": 7,
-        "streak": "W1",
-        "homeRecord": "1-1",
-        "awayRecord": "2-1",
-        "lastTen": "3-2"
-      },
-      {
-        "id": "min",
-        "abbreviation": "MIN",
-        "name": "Minnesota Timberwolves",
-        "shortName": "Timberwolves",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 9,
-        "position": 9,
-        "wins": 3,
-        "losses": 3,
-        "winPercent": 0.5,
-        "gamesBack": 1,
-        "gamesPlayed": 6,
-        "pointsFor": 116.166664,
-        "pointsAgainst": 118.166664,
-        "pointDifferential": -12,
-        "streak": "L2",
-        "homeRecord": "0-1",
-        "awayRecord": "3-1",
-        "lastTen": "3-3"
-      },
-      {
-        "id": "sa",
-        "abbreviation": "SA",
-        "name": "San Antonio Spurs",
-        "shortName": "Spurs",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 10,
-        "position": 10,
-        "wins": 2,
-        "losses": 3,
-        "winPercent": 0.4,
-        "gamesBack": 1.5,
-        "gamesPlayed": 5,
-        "pointsFor": 114.4,
-        "pointsAgainst": 108.8,
-        "pointDifferential": 28,
-        "streak": "W2",
-        "homeRecord": "2-1",
-        "awayRecord": "0-2",
-        "lastTen": "2-3"
+        "lastTen": null
       },
       {
         "id": "lal",
@@ -569,42 +481,42 @@
         "shortName": "Lakers",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 11,
-        "position": 11,
-        "wins": 2,
-        "losses": 3,
-        "winPercent": 0.4,
-        "gamesBack": 1.5,
-        "gamesPlayed": 5,
-        "pointsFor": 106.8,
-        "pointsAgainst": 111.8,
-        "pointDifferential": -25,
-        "streak": "L2",
-        "homeRecord": "1-1",
-        "awayRecord": "1-1",
-        "lastTen": "2-3"
+        "conferenceSeed": 7,
+        "position": 7,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
-        "id": "dal",
-        "abbreviation": "DAL",
-        "name": "Dallas Mavericks",
-        "shortName": "Mavericks",
+        "id": "min",
+        "abbreviation": "MIN",
+        "name": "Minnesota Timberwolves",
+        "shortName": "Timberwolves",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 12,
-        "position": 12,
-        "wins": 1,
-        "losses": 3,
-        "winPercent": 0.25,
-        "gamesBack": 2,
-        "gamesPlayed": 4,
-        "pointsFor": 114.25,
-        "pointsAgainst": 121.5,
-        "pointDifferential": -29,
-        "streak": "L2",
-        "homeRecord": "0-2",
+        "conferenceSeed": 8,
+        "position": 8,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
         "awayRecord": "0-0",
-        "lastTen": "1-3"
+        "lastTen": null
       },
       {
         "id": "phx",
@@ -613,42 +525,42 @@
         "shortName": "Suns",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 13,
-        "position": 13,
-        "wins": 1,
-        "losses": 4,
-        "winPercent": 0.2,
-        "gamesBack": 2.5,
-        "gamesPlayed": 5,
-        "pointsFor": 109,
-        "pointsAgainst": 114.6,
-        "pointDifferential": -28,
-        "streak": "L2",
-        "homeRecord": "1-1",
-        "awayRecord": "0-3",
-        "lastTen": "1-4"
+        "conferenceSeed": 9,
+        "position": 9,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
-        "id": "okc",
-        "abbreviation": "OKC",
-        "name": "Oklahoma City Thunder",
-        "shortName": "Thunder",
+        "id": "por",
+        "abbreviation": "POR",
+        "name": "Portland Trail Blazers",
+        "shortName": "Trail Blazers",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 14,
-        "position": 14,
-        "wins": 1,
-        "losses": 4,
-        "winPercent": 0.2,
-        "gamesBack": 2.5,
-        "gamesPlayed": 5,
-        "pointsFor": 109.8,
-        "pointsAgainst": 117,
-        "pointDifferential": -36,
-        "streak": "L1",
-        "homeRecord": "1-1",
-        "awayRecord": "0-2",
-        "lastTen": "1-4"
+        "conferenceSeed": 10,
+        "position": 10,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       },
       {
         "id": "sac",
@@ -657,20 +569,108 @@
         "shortName": "Kings",
         "conference": "west",
         "division": null,
+        "conferenceSeed": 11,
+        "position": 11,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "sa",
+        "abbreviation": "SA",
+        "name": "San Antonio Spurs",
+        "shortName": "Spurs",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 12,
+        "position": 12,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "okc",
+        "abbreviation": "OKC",
+        "name": "Oklahoma City Thunder",
+        "shortName": "Thunder",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 13,
+        "position": 13,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "utah",
+        "abbreviation": "UTAH",
+        "name": "Utah Jazz",
+        "shortName": "Jazz",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 14,
+        "position": 14,
+        "wins": 0,
+        "losses": 0,
+        "winPercent": 0,
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
+      },
+      {
+        "id": "mem",
+        "abbreviation": "MEM",
+        "name": "Memphis Grizzlies",
+        "shortName": "Grizzlies",
+        "conference": "west",
+        "division": null,
         "conferenceSeed": 15,
         "position": 15,
         "wins": 0,
-        "losses": 5,
+        "losses": 0,
         "winPercent": 0,
-        "gamesBack": 3.5,
-        "gamesPlayed": 5,
-        "pointsFor": 102.8,
-        "pointsAgainst": 117.6,
-        "pointDifferential": -74,
-        "streak": "L5",
-        "homeRecord": "0-2",
-        "awayRecord": "0-3",
-        "lastTen": "0-5"
+        "gamesBack": 0,
+        "gamesPlayed": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
+        "pointDifferential": 0,
+        "streak": "-",
+        "homeRecord": "0-0",
+        "awayRecord": "0-0",
+        "lastTen": null
       }
     ]
   },
@@ -1669,7 +1669,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "mil": {
       "team": {
@@ -1824,7 +1824,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "chi": {
       "team": {
@@ -1979,7 +1979,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "cle": {
       "team": {
@@ -2134,7 +2134,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "bos": {
       "team": {
@@ -2289,7 +2289,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "lac": {
       "team": {
@@ -2444,7 +2444,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "mem": {
       "team": {
@@ -2599,7 +2599,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "atl": {
       "team": {
@@ -2754,7 +2754,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "mia": {
       "team": {
@@ -2909,7 +2909,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "cha": {
       "team": {
@@ -3064,7 +3064,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "utah": {
       "team": {
@@ -3219,7 +3219,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "sac": {
       "team": {
@@ -3374,7 +3374,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "ny": {
       "team": {
@@ -3529,7 +3529,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "lal": {
       "team": {
@@ -3684,7 +3684,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "orl": {
       "team": {
@@ -3839,7 +3839,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "dal": {
       "team": {
@@ -3994,7 +3994,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "bkn": {
       "team": {
@@ -4149,7 +4149,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "den": {
       "team": {
@@ -4304,7 +4304,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "ind": {
       "team": {
@@ -4459,7 +4459,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "no": {
       "team": {
@@ -4614,7 +4614,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "det": {
       "team": {
@@ -4769,7 +4769,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "tor": {
       "team": {
@@ -4924,7 +4924,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "hou": {
       "team": {
@@ -5079,7 +5079,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "sa": {
       "team": {
@@ -5234,7 +5234,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "phx": {
       "team": {
@@ -5389,7 +5389,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "okc": {
       "team": {
@@ -5544,7 +5544,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "min": {
       "team": {
@@ -5699,7 +5699,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "por": {
       "team": {
@@ -5854,7 +5854,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "gs": {
       "team": {
@@ -6009,7 +6009,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     },
     "wsh": {
       "team": {
@@ -6164,7 +6164,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T05:00:29.965Z"
+      "generatedAt": "2026-10-20T13:39:34.000Z"
     }
   }
 }
