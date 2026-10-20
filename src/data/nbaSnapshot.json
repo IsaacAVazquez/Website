@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-20T20:01:55.367Z",
+  "generatedAt": "2026-10-20T23:13:49.689Z",
   "updatedAt": "2026-10-20",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -950,12 +950,11 @@
       "perGame": 7.382353
     }
   ],
-  "recentFixtures": [],
-  "upcomingFixtures": [
+  "recentFixtures": [
     {
       "id": "401909088",
       "utcDate": "2026-10-20T19:00Z",
-      "status": "STATUS_IN_PROGRESS",
+      "status": "FINISHED",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -973,11 +972,13 @@
         "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png"
       },
       "score": {
-        "winner": null,
-        "home": 39,
-        "away": 47
+        "winner": "HOME_TEAM",
+        "home": 121,
+        "away": 113
       }
-    },
+    }
+  ],
+  "upcomingFixtures": [
     {
       "id": "401909089",
       "utcDate": "2026-10-20T23:00Z",
@@ -1205,6 +1206,32 @@
         "shortName": "Pacers",
         "abbreviation": "IND",
         "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909840",
+      "utcDate": "2026-10-22T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "hou",
+        "name": "Houston Rockets",
+        "shortName": "Rockets",
+        "abbreviation": "HOU",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png"
+      },
+      "awayTeam": {
+        "id": "dal",
+        "name": "Dallas Mavericks",
+        "shortName": "Mavericks",
+        "abbreviation": "DAL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png"
       },
       "score": {
         "winner": null,
@@ -1669,7 +1696,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "mil": {
       "team": {
@@ -1824,7 +1851,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "chi": {
       "team": {
@@ -1979,7 +2006,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "cle": {
       "team": {
@@ -2134,7 +2161,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "bos": {
       "team": {
@@ -2149,12 +2176,11 @@
         "founded": null,
         "primaryColor": "008348"
       },
-      "recentFixtures": [],
-      "upcomingFixtures": [
+      "recentFixtures": [
         {
           "id": "401909088",
           "utcDate": "2026-10-20T19:00Z",
-          "status": "STATUS_IN_PROGRESS",
+          "status": "FINISHED",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -2172,11 +2198,13 @@
             "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
           },
           "score": {
-            "winner": null,
-            "home": null,
-            "away": null
+            "winner": "HOME_TEAM",
+            "home": 121,
+            "away": 113
           }
-        },
+        }
+      ],
+      "upcomingFixtures": [
         {
           "id": "401909095",
           "utcDate": "2026-10-23T23:00Z",
@@ -2280,16 +2308,44 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909903",
+          "utcDate": "2026-11-01T20:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "orl",
+            "name": "Orlando Magic",
+            "shortName": "Magic",
+            "abbreviation": "ORL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
+          },
+          "awayTeam": {
+            "id": "bos",
+            "name": "Boston Celtics",
+            "shortName": "Celtics",
+            "abbreviation": "BOS",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
-        "sequence": [],
+        "sequence": [
+          "L"
+        ],
         "wins": 0,
-        "losses": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0
+        "losses": 1,
+        "pointsFor": 113,
+        "pointsAgainst": 121
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "lac": {
       "team": {
@@ -2444,7 +2500,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "mem": {
       "team": {
@@ -2599,7 +2655,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "atl": {
       "team": {
@@ -2754,7 +2810,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "mia": {
       "team": {
@@ -2909,7 +2965,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "cha": {
       "team": {
@@ -3064,7 +3120,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "utah": {
       "team": {
@@ -3219,7 +3275,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "sac": {
       "team": {
@@ -3374,7 +3430,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "ny": {
       "team": {
@@ -3529,7 +3585,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "lal": {
       "team": {
@@ -3684,7 +3740,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "orl": {
       "team": {
@@ -3839,7 +3895,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "dal": {
       "team": {
@@ -3994,7 +4050,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "bkn": {
       "team": {
@@ -4149,7 +4205,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "den": {
       "team": {
@@ -4304,7 +4360,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "ind": {
       "team": {
@@ -4459,7 +4515,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "no": {
       "team": {
@@ -4614,7 +4670,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "det": {
       "team": {
@@ -4629,12 +4685,11 @@
         "founded": null,
         "primaryColor": "1d428a"
       },
-      "recentFixtures": [],
-      "upcomingFixtures": [
+      "recentFixtures": [
         {
           "id": "401909088",
           "utcDate": "2026-10-20T19:00Z",
-          "status": "STATUS_IN_PROGRESS",
+          "status": "FINISHED",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -4652,11 +4707,13 @@
             "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
           },
           "score": {
-            "winner": null,
-            "home": null,
-            "away": null
+            "winner": "HOME_TEAM",
+            "home": 121,
+            "away": 113
           }
-        },
+        }
+      ],
+      "upcomingFixtures": [
         {
           "id": "401909847",
           "utcDate": "2026-10-24T00:00Z",
@@ -4760,16 +4817,44 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909279",
+          "utcDate": "2026-10-30T23:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "bkn",
+            "name": "Brooklyn Nets",
+            "shortName": "Nets",
+            "abbreviation": "BKN",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png"
+          },
+          "awayTeam": {
+            "id": "det",
+            "name": "Detroit Pistons",
+            "shortName": "Pistons",
+            "abbreviation": "DET",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
-        "sequence": [],
-        "wins": 0,
+        "sequence": [
+          "W"
+        ],
+        "wins": 1,
         "losses": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0
+        "pointsFor": 121,
+        "pointsAgainst": 113
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "tor": {
       "team": {
@@ -4924,7 +5009,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "hou": {
       "team": {
@@ -5079,7 +5164,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "sa": {
       "team": {
@@ -5234,7 +5319,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "phx": {
       "team": {
@@ -5389,7 +5474,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "okc": {
       "team": {
@@ -5544,7 +5629,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "min": {
       "team": {
@@ -5699,7 +5784,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "por": {
       "team": {
@@ -5854,7 +5939,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "gs": {
       "team": {
@@ -6009,7 +6094,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     },
     "wsh": {
       "team": {
@@ -6164,7 +6249,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-20T20:01:55.367Z"
+      "generatedAt": "2026-10-20T23:13:49.689Z"
     }
   }
 }
