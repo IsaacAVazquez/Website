@@ -191,7 +191,7 @@ export function Catalog97Home({
                 Three projects and the question each one answers.
               </p>
               <Link href="/portfolio" className="c97-sectionlink">
-                All projects
+                All the work
               </Link>
             </div>
           </div>

@@ -71,3 +71,7 @@ The in-page detector overlay cannot run on this route, because the enforcing CSP
 ### Corrected facts in this brief
 
 A headshot fills the hero portrait slot, so the image-slot bullet near the top of this brief was corrected to apply only to slots without a photograph. The 2026-08-03 entry about the hero caption going through the slot's `caption` prop was corrected, since the caption was removed on 2026-09-14. Focus rings on this route carried a 4px radius and a halo until this loop, and the verified-state line now says so. Page height measured 4,579px at 1440 and 5,453px at 390 on 2026-09-14, so the 5,366px figure in the 2026-08-03 layout entry is history.
+
+## Clarify pass, 2026-10-19
+
+The link under "Selected work" reads "All the work" instead of "All projects", so the route has the one name the header gives it. "See the work" in the hero is unchanged.

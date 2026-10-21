@@ -69,3 +69,7 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 The route constraints line said the portrait slot is a flat Stone field with its caption, and it shows the headshot, so that line and the image-slot bullet were corrected. The "nine timeline entries" in the 2026-08-03 entries is history, since there are ten. Page height measured 4,806px at 1440 and 5,616px at 390 on 2026-09-14, against 4,598 and 5,363 in the pre-fix critique and 5,203 at 1440 in the 2026-08-03 entry. Focus rings carried a 4px radius and a halo until this loop.
+
+## Clarify pass, 2026-10-19
+
+Two captions that talked about the print shop are gone, on Isaac's call of 2026-10-19 ("Cut them"). "Plate 1 · portrait" under the headshot is deleted along with its `.caption` rule, since the spec had left the right half of that line empty pending a place and year that never arrived and a half-caption is a label for a label. The FAQ heading is "Questions I get asked" with no "Specimen" and no `<br>`, so a heading list reads it as one phrase. If a real place and year for the portrait ever arrive, the caption row can come back with both halves filled.

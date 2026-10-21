@@ -11,9 +11,9 @@ import {
 import { AIStructuredData } from "@/components/AIStructuredData";
 
 export const metadata = constructMetadata({
-  title: "Isaac Vazquez Projects | AI, Fintech and Analytics",
+  title: "Isaac Vazquez Work | AI, Fintech and Analytics",
   description:
-    "The projects I've shipped across AI workflows, fintech, analytics, civic tech, and sports data, with the product decisions behind them.",
+    "The four projects I'd show first and the two jobs the product work came from, with the decisions behind them.",
   canonicalUrl: "/portfolio",
   dateModified: "2026-10-19",
 });
@@ -41,7 +41,7 @@ export default function PortfolioPage() {
         schema={{
           type: "ItemList",
           data: {
-            name: "Isaac Vazquez Projects",
+            name: "Isaac Vazquez Work",
             description:
               "Product, analytics, fintech, sports, and decision-support tools built by Isaac Vazquez.",
             url: "https://isaacvazquez.com/portfolio",

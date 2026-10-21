@@ -65,3 +65,7 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 The theme toggle no longer shifts the header on this route, so any remaining layout shift here is the font-load re-wrap above and not the toggle. Page height measured 3,867px at 1440 and 6,036px at 390 on 2026-09-14. Focus rings carried a 4px radius and a halo until this loop.
+
+## Clarify pass, 2026-10-19
+
+The download rail's kicker "Press bed · one sheet" is "The full record" now, and the sentence under it is "Every role, set in Berkeley. The PDF is the one-page version." (it said "The full version", which repeated the kicker). Isaac chose to cut the print shop captions on 2026-10-19. "Download PDF" is unchanged because `e2e/resume.spec.ts` pins it.

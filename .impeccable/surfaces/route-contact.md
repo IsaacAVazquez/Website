@@ -57,3 +57,7 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 Page height measured 1,907px at 1440 and 2,269px at 390 on 2026-09-14. Focus rings carried a 4px radius and a halo until this loop.
+
+## Clarify pass, 2026-10-19
+
+The sentence under the card now says "the Work page has the longer one" instead of "the work index has the long one", since the route is Work everywhere else and, after 2026-10-19, it is the curated page rather than an index.

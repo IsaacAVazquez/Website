@@ -71,9 +71,6 @@ export function Catalog97About() {
                 offset
               />
             </div>
-            <p className={`c97-kicker ${styles.caption}`}>
-              <span>Plate 1 · portrait</span>
-            </p>
           </div>
 
           {/* The document. */}
@@ -147,11 +144,7 @@ export function Catalog97About() {
             data-specimen
             aria-label="Frequently asked questions"
           >
-            <h2 className={styles.specimenTitle}>
-              Specimen
-              <br />
-              Questions I get asked
-            </h2>
+            <h2 className={styles.specimenTitle}>Questions I get asked</h2>
             {ABOUT_FAQ.map((faq) => (
               <div key={faq.question} className={styles.question}>
                 <h3 className="c97-serif">{faq.question}</h3>
