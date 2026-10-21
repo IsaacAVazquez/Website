@@ -78,3 +78,7 @@ Two captions that talked about the print shop are gone, on Isaac's call of 2026-
 The specimen title (`.specimenTitle`, "Specimen / Questions I get asked") was 18px, which is on no step. It is `--c97-fs-lead` now (22px at 1440, 19px at 390) over the body-size questions (16 and 15), zero inversions. The `<br>` inside it, which makes a heading list read "Specimen Questions I get asked", goes when the `clarify` pass cuts "Specimen", which Isaac chose on 2026-10-19.
 
 **Decision, 2026-10-19.** The h1 keeps its object size, `clamp(36px, 4.2vw, 56px)` and 36px below 880, which the detector flags as an off-ramp endpoint. The 2026-10-19 spec sized the proof's headline to the document (about 52px on desktop) rather than to the poster step, so this is deliberate and not a defect. The answers at the small step and the "n · checked" labels at the label step are also the spec's sizes.
+
+## Harden pass, 2026-10-19
+
+**Decision.** The four footnote links (`.ref`, 8px by 44px) stay as they are. They sit inside a sentence, which is the inline exemption in WCAG 2.5.8, and the two ways to widen them both read worse: real inline padding puts a gap between the superscript and the comma that follows it, and a negative-margin extension is not clickable where the following text paints over it. Each note is also reachable through the margin itself and through the "Note n" accessible name. The 2026-10-19 critique's P3 on this is closed as an exemption rather than a fix.

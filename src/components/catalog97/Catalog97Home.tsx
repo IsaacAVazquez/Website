@@ -179,13 +179,14 @@ export function Catalog97Home({
 
       {/* Selected work, three plates across the page's lead ink. */}
       <section
+        aria-labelledby="home-selected-work"
         className="c97-band c97-band-tall c97-sheet"
         data-c97-surface="ink-blue"
         data-seam="torn"
       >
         <div className="c97-shell">
           <div className={styles.workHead}>
-            <h2 className="c97-poster-sm">Selected work</h2>
+            <h2 id="home-selected-work" className="c97-poster-sm">Selected work</h2>
             <div className={styles.workNote}>
               <p className={`c97-prose ${styles.workIntro}`}>
                 Three projects and the question each one answers.
@@ -229,13 +230,14 @@ export function Catalog97Home({
       {/* Write-ups of the Juno and Civitech jobs, pinned in page.tsx */}
       {recentPosts.length > 0 ? (
         <section
+          aria-labelledby="home-write-ups"
           className="c97-band c97-band-tall c97-sheet"
           data-c97-surface="paper"
           data-seam="torn"
         >
           <div className="c97-shell">
             <div className={styles.sectionHead}>
-              <h2 className="c97-poster-sm">What I built at Juno and Civitech</h2>
+              <h2 id="home-write-ups" className="c97-poster-sm">What I built at Juno and Civitech</h2>
               <Link href="/writing" className="c97-sectionlink">
                 All writing
               </Link>
@@ -269,13 +271,14 @@ export function Catalog97Home({
         only tears when that sheet is missing and it lands on the blue one.
       */}
       <section
+        aria-labelledby="home-dashboards"
         className="c97-band c97-band-tall c97-sheet"
         data-c97-surface="paper"
         data-seam={recentPosts.length > 0 ? undefined : "torn"}
       >
         <div className="c97-shell">
           <div className={styles.boardHead}>
-            <h2 className="c97-poster-sm">Dashboards</h2>
+            <h2 id="home-dashboards" className="c97-poster-sm">Dashboards</h2>
             <Link href="/dashboards" className="c97-sectionlink">
               All dashboards
             </Link>

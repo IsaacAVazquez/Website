@@ -61,3 +61,7 @@ Page height measured 1,907px at 1440 and 2,269px at 390 on 2026-09-14. Focus rin
 ## Clarify pass, 2026-10-19
 
 The sentence under the card now says "the Work page has the longer one" instead of "the work index has the long one", since the route is Work everywhere else and, after 2026-10-19, it is the curated page rather than an index.
+
+## Harden pass, 2026-10-19
+
+The three address links overlapped each other vertically, by 9px at 1440 and 15px at 390, because `touchTarget` padded every link by a fixed 16px above and below a 25px to 29px line, which made each box 58px to 61px tall in rows about 32px apart. The padding is now solved from the line height (`calc((44px - 1lh) / 2)`, with the matching negative margin) so every link box is exactly 44px, and `.lines` moved from `--c97-sp-2` to `--c97-sp-3`. Measured live: three boxes of 44px with zero overlap at both widths, and the card's rules and stamp unchanged. The two inline links under the card stay 17px tall as inline links in a sentence, which WCAG 2.5.8 exempts.

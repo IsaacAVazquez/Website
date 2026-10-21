@@ -86,3 +86,9 @@ The critique's P1 for this route was that the first screen was controls and no w
 ### Typeset pass, 2026-10-19
 
 "Pull log · times PT" was an `h2` carrying `c97-kicker`, so it rendered at 11px between 56px run headings and under its own 22px `h3` neighbours in "How the data works", the kicker-as-heading defect the August sweeps had fixed on the other routes. It is `h2.c97-poster-sm` "Pull log" now with a `p.c97-kicker` "Times PT" under it, so every `h2` on the route draws at one size. Measured: h2 56px (30px at 390), h3 26 and 22 (20 and 19), zero inversions in document order.
+
+## Harden pass, 2026-10-19
+
+The content bands are named landmarks now. A `section` with no accessible name is not exposed as a region at all, so the bands whose heading always renders carry `aria-labelledby` pointing at that heading's `id`, and the two bands with no heading of their own on Writing carry a literal `aria-label` ("Featured writing", "Browse by topic"), as does the lead band on Work ("Projects"). Hero bands, the filter band, the vermilion bridge on Writing, and the closing CTAs stay unnamed on purpose, since they are not destinations a landmark list should offer. Zero dangling `aria-labelledby` references measured on every route.
+
+**False positive worth not re-deriving.** The critique counted `aria-live` attributes and found none, and read that as the filter changing the count silently. The count lives in a `p.sr-only` with `role="status"`, which is an implicit polite live region, so a filter press does announce. The same holds for `/writing`. Do not add an `aria-live` attribute on top of `role="status"`.

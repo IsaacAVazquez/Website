@@ -105,7 +105,8 @@
 .lines {
   align-self: end;
   display: grid;
-  gap: var(--c97-sp-2);
+  /* sp-3, not sp-2: the 44px link boxes need the room, see touchTarget. */
+  gap: var(--c97-sp-3);
   margin: 0;
 }
 

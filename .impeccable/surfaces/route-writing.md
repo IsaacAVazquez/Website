@@ -69,3 +69,9 @@ The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, 
 ### Corrected facts in this brief
 
 The job line said about 200 pieces, and the index has 206, so it was corrected. The 2026-08-03 archive-length entry said the Archive count reports the true total, and it now reports the archive without the featured pair, so that sentence was corrected. The 197-piece and 195-row figures in that entry are history. Default page height measured 9,371px at 1440 and 11,852px at 390 on 2026-09-14, against 9,323 and 11,372 in the 2026-08-03 entries. Focus rings carried a 4px radius and a halo until this loop.
+
+## Harden pass, 2026-10-19
+
+The content bands are named landmarks now. A `section` with no accessible name is not exposed as a region at all, so the bands whose heading always renders carry `aria-labelledby` pointing at that heading's `id`, and the two bands with no heading of their own on Writing carry a literal `aria-label` ("Featured writing", "Browse by topic"), as does the lead band on Work ("Projects"). Hero bands, the filter band, the vermilion bridge on Writing, and the closing CTAs stay unnamed on purpose, since they are not destinations a landmark list should offer. Zero dangling `aria-labelledby` references measured on every route.
+
+The result count under the filters is a `role="status"` region (implicit polite live region), so the critique's "no `aria-live`" count was a false positive, as recorded on `route-dashboards.md`.

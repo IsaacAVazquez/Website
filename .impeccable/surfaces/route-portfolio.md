@@ -98,3 +98,7 @@ The route had four names: Work in the header and footer, "Isaac Vazquez Projects
 ### Layout pass, 2026-10-19
 
 The h1 moved from `c97-poster` to the `c97-poster-sm` step in the same pass that took `/dashboards` down, so the two index pages share one heading size with each other and with the run headings. At 1440x900 the first lead card is at y 587 (was 778 after the distill and 877 before it); at 390 it is at y 568. Page height 3,248px at 1440 and 4,048px at 390.
+
+## Harden pass, 2026-10-19
+
+The content bands are named landmarks now. A `section` with no accessible name is not exposed as a region at all, so the bands whose heading always renders carry `aria-labelledby` pointing at that heading's `id`, and the two bands with no heading of their own on Writing carry a literal `aria-label` ("Featured writing", "Browse by topic"), as does the lead band on Work ("Projects"). Hero bands, the filter band, the vermilion bridge on Writing, and the closing CTAs stay unnamed on purpose, since they are not destinations a landmark list should offer. Zero dangling `aria-labelledby` references measured on every route.
