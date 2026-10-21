@@ -12,8 +12,10 @@ export const CONTACT_DATE_MODIFIED = "2026-10-19";
 // 16px on a 25px to 29px line made each link 58px to 61px tall and the three
 // stacked links overlapped by 9px at 1440 and 15px at 390 (critique,
 // 2026-10-19). With .lines at --c97-sp-3 the boxes clear each other at both.
+// The min size holds the floor where Firefox rounds the padding down to 43.98px.
 const touchTarget = {
   display: "inline-block",
+  minBlockSize: "44px",
   paddingBlock: "calc((44px - 1lh) / 2)",
   marginBlock: "calc((1lh - 44px) / 2)",
 } as const;
