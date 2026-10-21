@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-21T20:13:59.433Z",
+  "generatedAt": "2026-10-21T23:26:54.345Z",
   "updatedAt": "2026-10-21",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -1034,7 +1034,7 @@
     {
       "id": "401909834",
       "utcDate": "2026-10-21T23:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1053,14 +1053,14 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 20,
+        "away": 15
       }
     },
     {
       "id": "401909835",
       "utcDate": "2026-10-21T23:00Z",
-      "status": "STATUS_SCHEDULED",
+      "status": "STATUS_IN_PROGRESS",
       "matchday": null,
       "stage": "Regular Season",
       "homeTeam": {
@@ -1079,8 +1079,8 @@
       },
       "score": {
         "winner": null,
-        "home": 0,
-        "away": 0
+        "home": 13,
+        "away": 13
       }
     },
     {
@@ -1777,7 +1777,7 @@
         "pointsFor": 106,
         "pointsAgainst": 100
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "mil": {
       "team": {
@@ -1797,7 +1797,7 @@
         {
           "id": "401909835",
           "utcDate": "2026-10-21T23:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -1932,7 +1932,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "chi": {
       "team": {
@@ -2087,7 +2087,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "cle": {
       "team": {
@@ -2242,7 +2242,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "bos": {
       "team": {
@@ -2426,7 +2426,7 @@
         "pointsFor": 113,
         "pointsAgainst": 121
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "lac": {
       "team": {
@@ -2581,7 +2581,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "mem": {
       "team": {
@@ -2736,7 +2736,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "atl": {
       "team": {
@@ -2756,7 +2756,7 @@
         {
           "id": "401909834",
           "utcDate": "2026-10-21T23:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -2891,7 +2891,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "mia": {
       "team": {
@@ -3046,7 +3046,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "cha": {
       "team": {
@@ -3201,7 +3201,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "utah": {
       "team": {
@@ -3356,7 +3356,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "sac": {
       "team": {
@@ -3511,7 +3511,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "ny": {
       "team": {
@@ -3695,7 +3695,7 @@
         "pointsFor": 100,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "lal": {
       "team": {
@@ -3850,7 +3850,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "orl": {
       "team": {
@@ -3870,7 +3870,7 @@
         {
           "id": "401909834",
           "utcDate": "2026-10-21T23:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -4005,7 +4005,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "dal": {
       "team": {
@@ -4160,7 +4160,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "bkn": {
       "team": {
@@ -4315,7 +4315,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "den": {
       "team": {
@@ -4470,7 +4470,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "ind": {
       "team": {
@@ -4625,7 +4625,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "no": {
       "team": {
@@ -4780,7 +4780,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "det": {
       "team": {
@@ -4964,7 +4964,7 @@
         "pointsFor": 121,
         "pointsAgainst": 113
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "tor": {
       "team": {
@@ -5119,7 +5119,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "hou": {
       "team": {
@@ -5274,7 +5274,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "sa": {
       "team": {
@@ -5458,7 +5458,7 @@
         "pointsFor": 104,
         "pointsAgainst": 116
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "phx": {
       "team": {
@@ -5613,7 +5613,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "okc": {
       "team": {
@@ -5797,7 +5797,7 @@
         "pointsFor": 116,
         "pointsAgainst": 104
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "min": {
       "team": {
@@ -5952,7 +5952,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "por": {
       "team": {
@@ -6107,7 +6107,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "gs": {
       "team": {
@@ -6262,7 +6262,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     },
     "wsh": {
       "team": {
@@ -6282,7 +6282,7 @@
         {
           "id": "401909835",
           "utcDate": "2026-10-21T23:00Z",
-          "status": "STATUS_SCHEDULED",
+          "status": "STATUS_IN_PROGRESS",
           "matchday": null,
           "stage": "Regular Season",
           "homeTeam": {
@@ -6417,7 +6417,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-21T20:13:59.433Z"
+      "generatedAt": "2026-10-21T23:26:54.345Z"
     }
   }
 }
