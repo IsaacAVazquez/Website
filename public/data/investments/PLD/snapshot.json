@@ -1,10 +1,10 @@
 {
   "symbol": "PLD",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "Prologis, Inc."
     },
     "fundamentals": {
-      "ttmEps": 4.491,
-      "ttmPe": 28.27,
-      "marketCap": 118435781640,
-      "psRatio": 12.89,
-      "pbRatio": 2.2,
-      "pegRatio": 0.33
+      "ttmEps": 4.5335,
+      "ttmPe": 28.12,
+      "marketCap": 118930274820,
+      "psRatio": 12.94,
+      "pbRatio": 2.21,
+      "pegRatio": 5.41
     },
     "profitability": {
       "roe": 1.9800000000000002,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 85.28
+        "yoyGrowth": 5.2
       }
     ],
     "income_statement": {
@@ -5534,25 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.65,
+      "wacc": 11.66,
       "costOfEquity": 15.02,
       "costOfDebt": 0.76,
       "taxRate": 9,
-      "beta": 1.2771,
-      "marketCap": 118435781640
+      "beta": 1.2778,
+      "marketCap": 118930274820
     },
     "beta": {
-      "beta5y": 1.2771
+      "beta5y": 1.2778
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 121.28,
-        "high": 124.36,
-        "low": 121.17,
-        "close": 124.08,
-        "volume": 5377000
-      },
       {
         "date": "2025-10-20",
         "open": 125.2,
@@ -7560,6 +7552,14 @@
         "low": 123.43,
         "close": 124.09,
         "volume": 4254100
+      },
+      {
+        "date": "2026-10-20",
+        "open": 124.85,
+        "high": 127.47,
+        "low": 124.14,
+        "close": 127.47,
+        "volume": 4104900
       }
     ],
     "news": [
@@ -7628,19 +7628,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f4e3bdb8-8e07-3cf2-9319-34a1a4543372",
-        "title": "Here Are My Top 3 Real Estate Dividend Stocks to Buy Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/f4e3bdb8-8e07-3cf2-9319-34a1a4543372/here-are-my-top-3-real-estate.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "13f07e88-8395-37fe-9770-159e3a7fa2a2",
         "title": "3 Brilliant REIT Stocks to Buy Now and Hold for the Long Term",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/13f07e88-8395-37fe-9770-159e3a7fa2a2/3-brilliant-reit-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f4e3bdb8-8e07-3cf2-9319-34a1a4543372",
+        "title": "Here Are My Top 3 Real Estate Dividend Stocks to Buy Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/f4e3bdb8-8e07-3cf2-9319-34a1a4543372/here-are-my-top-3-real-estate.html",
         "type": "STORY"
       }
     ],
@@ -7706,18 +7706,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.27,
-        "industryAvg": 27.6
+        "value": 28.12,
+        "industryAvg": 27.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.89,
-        "industryAvg": 8.39
+        "value": 12.94,
+        "industryAvg": 8.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.2,
-        "industryAvg": 2.25
+        "value": 2.21,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",

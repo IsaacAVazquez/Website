@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.5216,
-      "ttmPe": 23.21,
-      "pegRatio": 0.3,
-      "marketCap": 368036350000,
-      "psRatio": 0.82,
-      "pbRatio": 3.74
+      "ttmPe": 23.93,
+      "pegRatio": 0.31,
+      "marketCap": 379430300000,
+      "psRatio": 0.84,
+      "pbRatio": 3.85
     },
     "profitability": {
       "roe": 5.59,
@@ -5046,25 +5046,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.9,
-      "costOfEquity": 9.26,
+      "wacc": 7.920000000000001,
+      "costOfEquity": 9.24,
       "costOfDebt": 1.31,
       "taxRate": 19,
-      "beta": 0.5356,
-      "marketCap": 368036350000
+      "beta": 0.5321,
+      "marketCap": 379430300000
     },
     "beta": {
-      "beta5y": 0.5356
+      "beta5y": 0.5321
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 351,
-        "high": 358.39,
-        "low": 350.83,
-        "close": 356.6,
-        "volume": 8608400
-      },
       {
         "date": "2025-10-20",
         "open": 358.54,
@@ -7072,6 +7064,14 @@
         "low": 399.2,
         "close": 406.88,
         "volume": 4996900
+      },
+      {
+        "date": "2026-10-20",
+        "open": 410.12,
+        "high": 422.4,
+        "low": 408.28,
+        "close": 419.26,
+        "volume": 6811200
       }
     ],
     "news": [
@@ -7116,19 +7116,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "4baf6117-8def-30b6-8fd6-c5b66c69be8e",
-        "title": "1 of Wall Street’s Favorite Stock That Stand Out and 2 to Steer Clear Of",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-043449940.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1ce151a6-8b4a-34e8-860a-e7e6ece6f141",
         "title": "UnitedHealth, Amedisys reach new deal to sell home health and hospice locations if merger approved",
         "publisher": "Healthcare Dive",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/1ce151a6-8b4a-34e8-860a-e7e6ece6f141/unitedhealth%2C-amedisys-reach.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4baf6117-8def-30b6-8fd6-c5b66c69be8e",
+        "title": "1 of Wall Street’s Favorite Stock That Stand Out and 2 to Steer Clear Of",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-043449940.html",
         "type": "STORY"
       },
       {
@@ -7148,11 +7148,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c017eb02-e851-3ee3-98c7-3315aaa7c8de",
-        "title": "Health Insurance Providers Stocks Q1 Highlights: Molina Healthcare (NYSE:MOH)",
-        "publisher": "StockStory",
+        "uuid": "9565ba37-626e-3f42-bd78-7532d14b0317",
+        "title": "Why UnitedHealth’s Blowup May Be More Isolated Than Investors Think",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/health-insurance-providers-stocks-q1-033235659.html",
+        "link": "https://finance.yahoo.com/m/9565ba37-626e-3f42-bd78-7532d14b0317/why-unitedhealth%E2%80%99s-blowup-may.html",
         "type": "STORY"
       }
     ],
@@ -7225,18 +7225,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.21,
-        "industryAvg": 22.38
+        "value": 23.93,
+        "industryAvg": 22.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.82,
-        "industryAvg": 0.44
+        "value": 0.84,
+        "industryAvg": 0.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.74,
-        "industryAvg": 2.45
+        "value": 3.85,
+        "industryAvg": 2.51
       },
       {
         "metric": "ROE",

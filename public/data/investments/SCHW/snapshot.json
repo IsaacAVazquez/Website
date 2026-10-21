@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Capital Markets",
       "sector": "Financial Services",
       "longBusinessSummary": "The Charles Schwab Corporation, together with its subsidiaries, operates as a savings and loan holding company that provides wealth management, securities brokerage, banking, asset management, custody, and financial advisory services in the United States and internationally. The company operates in two segments, Investor Services and Advisor Services. It offers brokerage accounts with equity and fixed income trading, margin lending, options trading, futures and forex trading, and cash management capabilities, including money market funds, and certificates of deposit; third-party mutual funds through the Mutual Fund Marketplace and Mutual Fund OneSource service, as well as mutual fund trading and clearing services to broker-dealers; exchange-traded funds; advisory solutions for managed portfolios, separately managed accounts, customized personal advice for tailored portfolios, specialized planning, and full-time portfolio management; banking products comprising checking and savings accounts, first lien residential real estate mortgage loans, home equity lines of credit, and pledged asset lines; and trust custody services, personal trust reporting services, and administrative trustee services. It provides digital and software based trading platforms; research tools, and multichannel support, real-time market data, options trading; equity compensation plan sponsors full-service recordkeeping for stock plans, stock options, restricted stock, performance shares, and stock appreciation rights; retirement plan services; mutual fund clearing services; and advisor services, including interactive tools and educational content. The Company operates through branch offices. The Charles Schwab Corporation was founded in 1971 and is headquartered in Westlake, Texas.",
-      "fullTimeEmployees": 33700,
+      "fullTimeEmployees": 33900,
       "website": "https://www.aboutschwab.com",
       "shortName": "Charles Schwab Corporation",
       "longName": "Charles Schwab Corporation"
     },
     "fundamentals": {
-      "ttmEps": 5.4992,
-      "ttmPe": 17.12,
-      "marketCap": 162719703872,
-      "psRatio": 6.25,
-      "pbRatio": 3.24,
-      "pegRatio": 0.41
+      "ttmEps": 5.8619,
+      "ttmPe": 15.51,
+      "marketCap": 157068754088,
+      "psRatio": 6.04,
+      "pbRatio": 3.13,
+      "pegRatio": 0.54
     },
     "profitability": {
       "roe": 5.4,
@@ -73,7 +73,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 42.08
+        "yoyGrowth": 28.849999999999998
       }
     ],
     "income_statement": {
@@ -6045,25 +6045,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.16,
-      "costOfEquity": 10.89,
+      "wacc": 9.120000000000001,
+      "costOfEquity": 10.91,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7452,
-      "marketCap": 162719703872
+      "beta": 0.7469,
+      "marketCap": 157068754088
     },
     "beta": {
-      "beta5y": 0.7452
+      "beta5y": 0.7469
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 94.72,
-        "high": 94.86,
-        "low": 92.83,
-        "close": 94.14,
-        "volume": 9199700
-      },
       {
         "date": "2025-10-20",
         "open": 94.2,
@@ -8070,7 +8062,15 @@
         "high": 92.19,
         "low": 89.4,
         "close": 89.58,
-        "volume": 12505900
+        "volume": 12518000
+      },
+      {
+        "date": "2026-10-20",
+        "open": 89.6,
+        "high": 91.5,
+        "low": 89.33,
+        "close": 90.89,
+        "volume": 10153400
       }
     ],
     "news": [
@@ -8080,14 +8080,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -8104,6 +8096,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -8139,19 +8139,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
+        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
         "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
-        "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
         "type": "STORY"
       }
     ],
@@ -8216,18 +8216,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.12,
-        "industryAvg": 15.82
+        "value": 15.51,
+        "industryAvg": 15.57
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.25,
-        "industryAvg": 2.03
+        "value": 6.04,
+        "industryAvg": 1.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.24,
-        "industryAvg": 2.54
+        "value": 3.13,
+        "industryAvg": 2.49
       },
       {
         "metric": "ROE",

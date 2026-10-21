@@ -1,10 +1,10 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 12.55,
-      "marketCap": 1053232440000,
-      "psRatio": 11.67,
-      "pbRatio": 10.46,
+      "ttmPe": 12.07,
+      "marketCap": 1013455170000,
+      "psRatio": 11.23,
+      "pbRatio": 10.06,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5601,25 +5601,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.919999999999998,
-      "costOfEquity": 23.06,
+      "wacc": 22.93,
+      "costOfEquity": 23.080000000000002,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.3117,
-      "marketCap": 1053232440000
+      "beta": 2.3178,
+      "marketCap": 1013455170000
     },
     "beta": {
-      "beta5y": 2.3117
+      "beta5y": 2.3178
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 199.28,
-        "high": 203.39,
-        "low": 195.55,
-        "close": 202.38,
-        "volume": 23283100
-      },
       {
         "date": "2025-10-20",
         "open": 209.66,
@@ -7626,7 +7618,15 @@
         "high": 926.81,
         "low": 900.57,
         "close": 904.9,
-        "volume": 25616000
+        "volume": 25740500
+      },
+      {
+        "date": "2026-10-20",
+        "open": 884.13,
+        "high": 918.89,
+        "low": 881.52,
+        "close": 896.07,
+        "volume": 20068400
       }
     ],
     "news": [
@@ -7663,6 +7663,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
+        "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
         "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
         "publisher": "Zacks",
@@ -7671,11 +7679,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
-        "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-06-03",
-        "link": "https://finance.yahoo.com/news/micron-ships-world-first-1-130000724.html",
+        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
+        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
+        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
         "type": "STORY"
       },
       {
@@ -7692,22 +7708,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-06-05",
         "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
-        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
-        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
         "type": "STORY"
       }
     ],
@@ -7777,18 +7777,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.55,
-        "industryAvg": 27.98
+        "value": 12.07,
+        "industryAvg": 27.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.67,
-        "industryAvg": 13.33
+        "value": 11.23,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.46,
-        "industryAvg": 11.57
+        "value": 10.06,
+        "industryAvg": 11.37
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Capital Markets",
       "sector": "Financial Services",
       "longBusinessSummary": "Morgan Stanley, a financial holding company, provides various financial products and services to corporations, governments, financial institutions, and individuals in the Americas, Asia, Europe, the Middle East, and Africa. It operates through Institutional Securities, Wealth Management, and Investment Management segments. The company offers capital raising and financial advisory services, including services related to the underwriting of debt, equity securities, and other products, as well as advice on mergers and acquisitions, restructurings, and project finance. It also provides equity and fixed income products comprising sales, financing, prime brokerage, and market-making services; Asia wealth management; business-related investments services; originating corporate and commercial real estate loans, secured lending facilities, and extending securities-based and other financing; and research activities. In addition, the company offers financial advisor-led brokerage, investment advisory, custody, cash management, and administrative services; self-directed brokerage services; financial and wealth planning services; stock plan administration; securities-based lending, residential real estate loans, and other lending products; banking; and retirement plan services. Further, it provides equity, fixed income, alternatives and solutions, and liquidity and overlay services to benefit/defined contribution plans, foundations, endowments, government entities, sovereign wealth funds, insurance companies, third-party fund sponsors, corporations, and individuals. Morgan Stanley was founded in 1924 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 83000,
+      "fullTimeEmployees": 83728,
       "website": "https://www.morganstanley.com",
       "shortName": "Morgan Stanley",
       "longName": "Morgan Stanley"
     },
     "fundamentals": {
       "ttmEps": 12.6077,
-      "ttmPe": 14.44,
-      "marketCap": 286261200000,
-      "psRatio": 3.92,
-      "pbRatio": 2.46,
-      "pegRatio": 1.75
+      "ttmPe": 14.31,
+      "marketCap": 283588800000,
+      "psRatio": 3.88,
+      "pbRatio": 2.44,
+      "pegRatio": 1.73
     },
     "profitability": {
       "roe": 4.71,
@@ -5910,25 +5910,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.32,
+      "wacc": 7.290000000000001,
       "costOfEquity": 14.59,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.2209,
-      "marketCap": 286261200000
+      "beta": 1.2224,
+      "marketCap": 283588800000
     },
     "beta": {
-      "beta5y": 1.2209
+      "beta5y": 1.2224
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 160.7,
-        "high": 160.98,
-        "low": 157.85,
-        "close": 158.67,
-        "volume": 7965000
-      },
       {
         "date": "2025-10-20",
         "open": 160.2,
@@ -7936,6 +7928,14 @@
         "low": 178.4,
         "close": 178.47,
         "volume": 4585000
+      },
+      {
+        "date": "2026-10-20",
+        "open": 177.52,
+        "high": 182.89,
+        "low": 176.74,
+        "close": 180.4,
+        "volume": 4964200
       }
     ],
     "news": [
@@ -7996,6 +7996,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
+        "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "7b98f630-680d-374d-aa9d-38ab2c73390f",
         "title": "Traders Wager $10 Billion on Chevron-Hess Deal Beating Exxon Case",
         "publisher": "Bloomberg",
@@ -8009,14 +8017,6 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
-        "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
         "type": "STORY"
       }
     ],
@@ -8082,18 +8082,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.44,
-        "industryAvg": 15.82
+        "value": 14.31,
+        "industryAvg": 15.57
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.92,
-        "industryAvg": 2.03
+        "value": 3.88,
+        "industryAvg": 1.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.46,
-        "industryAvg": 2.54
+        "value": 2.44,
+        "industryAvg": 2.49
       },
       {
         "metric": "ROE",

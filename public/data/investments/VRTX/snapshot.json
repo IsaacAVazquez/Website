@@ -1,13 +1,14 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
-      "fundamentals"
+      "fundamentals",
+      "industry"
     ]
   },
   "source": "prefetched",
@@ -43,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.1885,
-      "ttmPe": 29.6,
-      "pegRatio": 3.69,
-      "marketCap": 128890591500,
-      "psRatio": 10.24,
-      "pbRatio": 6.37
+      "ttmPe": 29.94,
+      "pegRatio": 3.73,
+      "marketCap": 130385342340,
+      "psRatio": 10.36,
+      "pbRatio": 6.44
     },
     "profitability": {
       "roe": 5.55,
@@ -5447,25 +5448,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.140000000000001,
-      "costOfEquity": 7.249999999999999,
+      "wacc": 7.16,
+      "costOfEquity": 7.2700000000000005,
       "costOfDebt": 0.16,
       "taxRate": 11,
-      "beta": 0.2762,
-      "marketCap": 128890591500
+      "beta": 0.2775,
+      "marketCap": 130385342340
     },
     "beta": {
-      "beta5y": 0.2762
+      "beta5y": 0.2775
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 407.36,
-        "high": 419.37,
-        "low": 406.76,
-        "close": 416.81,
-        "volume": 1054400
-      },
       {
         "date": "2025-10-20",
         "open": 418.17,
@@ -7473,6 +7466,14 @@
         "low": 499.5,
         "close": 501.95,
         "volume": 1298700
+      },
+      {
+        "date": "2026-10-20",
+        "open": 507.89,
+        "high": 515.74,
+        "low": 505,
+        "close": 514.65,
+        "volume": 1230000
       }
     ],
     "news": [
@@ -7493,11 +7494,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
-        "publisher": "Investor's Business Daily",
+        "uuid": "bb8a4622-9ea5-346d-9b42-b1d653307b4a",
+        "title": "Stocks to Watch Recap: Palantir, Ford, Mattel, DoorDash",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
+        "link": "https://finance.yahoo.com/m/bb8a4622-9ea5-346d-9b42-b1d653307b4a/stocks-to-watch-recap%3A.html",
         "type": "STORY"
       },
       {
@@ -7509,11 +7510,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "bb8a4622-9ea5-346d-9b42-b1d653307b4a",
-        "title": "Stocks to Watch Recap: Palantir, Ford, Mattel, DoorDash",
-        "publisher": "The Wall Street Journal",
+        "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/m/bb8a4622-9ea5-346d-9b42-b1d653307b4a/stocks-to-watch-recap%3A.html",
+        "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
         "type": "STORY"
       },
       {

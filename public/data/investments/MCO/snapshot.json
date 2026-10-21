@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.77,
-      "ttmPe": 30.67,
-      "marketCap": 83765917890,
-      "psRatio": 10.27,
-      "pbRatio": 27.69,
-      "pegRatio": 0.54
+      "ttmPe": 30.14,
+      "marketCap": 82321588350,
+      "psRatio": 10.09,
+      "pbRatio": 27.21,
+      "pegRatio": 0.53
     },
     "profitability": {
       "roe": 29.17,
@@ -6394,25 +6394,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.08,
-      "costOfEquity": 15.28,
+      "wacc": 14.04,
+      "costOfEquity": 15.260000000000002,
       "costOfDebt": 0.89,
       "taxRate": 25,
-      "beta": 1.3105,
-      "marketCap": 83765917890
+      "beta": 1.3089,
+      "marketCap": 82321588350
     },
     "beta": {
-      "beta5y": 1.3105
+      "beta5y": 1.3089
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 470.32,
-        "high": 475.01,
-        "low": 466.19,
-        "close": 471.04,
-        "volume": 1380700
-      },
       {
         "date": "2025-10-20",
         "open": 472.64,
@@ -8420,6 +8412,14 @@
         "low": 478.58,
         "close": 481.26,
         "volume": 699500
+      },
+      {
+        "date": "2026-10-20",
+        "open": 488.82,
+        "high": 494.36,
+        "low": 474.76,
+        "close": 475.35,
+        "volume": 1777700
       }
     ],
     "news": [
@@ -8432,14 +8432,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
-        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
         "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
         "publisher": "Bloomberg",
@@ -8448,11 +8440,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
-        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
+        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
+        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
         "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
         "type": "STORY"
       },
       {
@@ -8461,6 +8453,14 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
+        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
         "type": "STORY"
       },
       {
@@ -8565,18 +8565,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.67,
-        "industryAvg": 25.02
+        "value": 30.14,
+        "industryAvg": 25.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.27,
-        "industryAvg": 7.81
+        "value": 10.09,
+        "industryAvg": 7.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.69,
-        "industryAvg": 4.03
+        "value": 27.21,
+        "industryAvg": 4.06
       },
       {
         "metric": "ROE",

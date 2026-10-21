@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.4867,
-      "ttmPe": 28.16,
-      "marketCap": 51866179463,
-      "psRatio": 10.61,
-      "pbRatio": 5.64,
-      "pegRatio": 0.62
+      "ttmPe": 28.78,
+      "marketCap": 52995423136,
+      "psRatio": 10.84,
+      "pbRatio": 5.77,
+      "pegRatio": 0.63
     },
     "profitability": {
       "roe": 4.89,
@@ -5036,25 +5036,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.14,
-      "costOfEquity": 11.97,
+      "wacc": 10.17,
+      "costOfEquity": 11.959999999999999,
       "costOfDebt": 0.83,
       "taxRate": 1,
-      "beta": 0.8842,
-      "marketCap": 51866179463
+      "beta": 0.8827,
+      "marketCap": 52995423136
     },
     "beta": {
-      "beta5y": 0.8842
+      "beta5y": 0.8827
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 306.81,
-        "high": 309.81,
-        "low": 305.41,
-        "close": 307.61,
-        "volume": 1998400
-      },
       {
         "date": "2025-10-20",
         "open": 308.88,
@@ -7062,6 +7054,14 @@
         "low": 294.88,
         "close": 295.69,
         "volume": 492200
+      },
+      {
+        "date": "2026-10-20",
+        "open": 297.58,
+        "high": 302.79,
+        "low": 297.17,
+        "close": 301.76,
+        "volume": 646400
       }
     ],
     "news": [
@@ -7074,22 +7074,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
-        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
-        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
         "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
         "publisher": "Zacks",
@@ -7098,11 +7082,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
+        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "1e77d3ab-1347-3e08-9310-e686294a8488",
         "title": "Public Storage: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-q1-earnings-snapshot-201519091.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
+        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
         "type": "STORY"
       },
       {
@@ -7138,11 +7138,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e38b430-b999-3bf8-9ae2-e6f7f2ef6f80",
-        "title": "Public Storage (NYSE:PSA) Declares Quarterly Dividends of US$3.00 Per Common Share",
-        "publisher": "Simply Wall St.",
+        "uuid": "41ef7ca1-081c-31e9-915f-3a3293a4d2d5",
+        "title": "Truist Securities Adjusts Price Target on Public Storage to $320 From $310, Maintains Buy Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/public-storage-nyse-psa-declares-174308342.html",
+        "link": "https://finance.yahoo.com/news/truist-securities-adjusts-price-target-133220023.html",
         "type": "STORY"
       }
     ],
@@ -7204,18 +7204,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.16,
-        "industryAvg": 27.6
+        "value": 28.78,
+        "industryAvg": 27.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.61,
-        "industryAvg": 8.39
+        "value": 10.84,
+        "industryAvg": 8.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.64,
-        "industryAvg": 2.25
+        "value": 5.77,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",

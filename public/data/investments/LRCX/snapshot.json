@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.7641,
-      "ttmPe": 48.14,
-      "marketCap": 347179593880,
-      "psRatio": 14.94,
-      "pbRatio": 27.84,
-      "pegRatio": 1.39
+      "ttmPe": 45.71,
+      "marketCap": 329649189100,
+      "psRatio": 14.19,
+      "pbRatio": 26.43,
+      "pegRatio": 1.32
     },
     "profitability": {
       "roe": 19.75,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.66,
-      "costOfEquity": 19.86,
+      "wacc": 19.68,
+      "costOfEquity": 19.89,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 11,
-      "beta": 1.899,
-      "marketCap": 347179593880
+      "beta": 1.9053,
+      "marketCap": 329649189100
     },
     "beta": {
-      "beta5y": 1.899
+      "beta5y": 1.9053
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 142.26,
-        "high": 142.65,
-        "low": 139.82,
-        "close": 141.51,
-        "volume": 6389800
-      },
       {
         "date": "2025-10-20",
         "open": 143.49,
@@ -7637,6 +7629,14 @@
         "low": 271.87,
         "close": 272.2,
         "volume": 10386700
+      },
+      {
+        "date": "2026-10-20",
+        "open": 267.76,
+        "high": 270.97,
+        "low": 260.29,
+        "close": 263.45,
+        "volume": 7781000
       }
     ],
     "news": [
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
-        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
         "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/3-stocks-buy-prospering-semiconductor-164400530.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
+        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
         "type": "STORY"
       },
       {
@@ -7705,19 +7705,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
-        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1c35cfa7-d448-3e5c-83b8-22d64a5b1af1",
         "title": "Lam Research Corporation (LRCX): A Bull Case Theory",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
+        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
         "type": "STORY"
       }
     ],
@@ -7788,18 +7788,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.14,
-        "industryAvg": 48.05
+        "value": 45.71,
+        "industryAvg": 46.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.94,
-        "industryAvg": 13.04
+        "value": 14.19,
+        "industryAvg": 12.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.84,
-        "industryAvg": 18.62
+        "value": 26.43,
+        "industryAvg": 17.35
       },
       {
         "metric": "ROE",

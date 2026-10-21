@@ -1,14 +1,11 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-20"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -42,12 +39,12 @@
       "longName": "U.S. Bancorp"
     },
     "fundamentals": {
-      "ttmEps": 5.0117,
-      "ttmPe": 11.45,
-      "marketCap": 89402692944,
-      "psRatio": 3.02,
-      "pbRatio": 1.33,
-      "pegRatio": 0.54
+      "ttmEps": 5.1397,
+      "ttmPe": 11.5,
+      "marketCap": 92062220000,
+      "psRatio": 3.11,
+      "pbRatio": 1.37,
+      "pegRatio": 1.09
     },
     "profitability": {
       "roe": 3.15,
@@ -76,7 +73,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 21.37
+        "yoyGrowth": 10.530000000000001
       }
     ],
     "income_statement": {
@@ -5652,25 +5649,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.76,
+      "wacc": 7.84,
       "costOfEquity": 13.200000000000001,
       "costOfDebt": 3.37,
       "taxRate": 20,
       "beta": 1.0421,
-      "marketCap": 89402692944
+      "marketCap": 92062220000
     },
     "beta": {
       "beta5y": 1.0421
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 46.29,
-        "high": 46.5,
-        "low": 45.51,
-        "close": 45.69,
-        "volume": 14032400
-      },
       {
         "date": "2025-10-20",
         "open": 45.97,
@@ -7678,6 +7667,14 @@
         "low": 57.82,
         "close": 57.85,
         "volume": 7599100
+      },
+      {
+        "date": "2026-10-20",
+        "open": 58.05,
+        "high": 59.11,
+        "low": 57.97,
+        "close": 59.09,
+        "volume": 7275500
       }
     ],
     "news": [
@@ -7714,19 +7711,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cc727297-8486-3bd9-9bf8-af6740bca428",
-        "title": "Elavon and Jscrambler Partner to Strengthen PCI DSS Compliance for Merchants",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/elavon-jscrambler-partner-strengthen-pci-080000015.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d2d1ca3e-3f65-3b97-a4be-6a57660dda6f",
         "title": "Elavon Offers Innovative One-Stop Payment Solution for Small and Medium-Sized Businesses",
         "publisher": "Business Wire",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/elavon-offers-innovative-one-stop-121500667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cc727297-8486-3bd9-9bf8-af6740bca428",
+        "title": "Elavon and Jscrambler Partner to Strengthen PCI DSS Compliance for Merchants",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/elavon-jscrambler-partner-strengthen-pci-080000015.html",
         "type": "STORY"
       },
       {
@@ -7826,33 +7823,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.2,
-        "industryAvg": 13.6
+        "value": 11.5,
+        "industryAvg": 11.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.39,
-        "industryAvg": 3.41
+        "value": 3.11,
+        "industryAvg": 3.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.49,
-        "industryAvg": 1.39
+        "value": 1.37,
+        "industryAvg": 1.24
       },
       {
         "metric": "ROE",
-        "value": 2.81,
-        "industryAvg": 9.94
+        "value": 3.15,
+        "industryAvg": 10.280000000000001
       },
       {
         "metric": "ROA",
-        "value": 0.26,
-        "industryAvg": 0.8699999999999999
+        "value": 0.29,
+        "industryAvg": 0.91
       },
       {
         "metric": "Net Margin",
-        "value": 25.36,
-        "industryAvg": 25.22
+        "value": 27.3,
+        "industryAvg": 25.72
       }
     ]
   }

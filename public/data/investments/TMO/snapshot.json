@@ -1,10 +1,10 @@
 {
   "symbol": "TMO",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.5902,
-      "ttmPe": 37.47,
-      "pegRatio": 3.99,
-      "marketCap": 257525296977,
-      "psRatio": 5.56,
-      "pbRatio": 4.89
+      "ttmPe": 36.97,
+      "pegRatio": 3.94,
+      "marketCap": 254153201601,
+      "psRatio": 5.49,
+      "pbRatio": 4.82
     },
     "profitability": {
       "roe": 3.32,
@@ -5613,25 +5613,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.11,
+      "wacc": 10.09,
       "costOfEquity": 11.64,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 9,
-      "beta": 0.8422,
-      "marketCap": 257525296977
+      "beta": 0.8415,
+      "marketCap": 254153201601
     },
     "beta": {
-      "beta5y": 0.8422
+      "beta5y": 0.8415
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 534.16,
-        "high": 540.87,
-        "low": 532,
-        "close": 538.92,
-        "volume": 2010200
-      },
       {
         "date": "2025-10-20",
         "open": 541,
@@ -7639,6 +7631,14 @@
         "low": 673.47,
         "close": 679.38,
         "volume": 2403800
+      },
+      {
+        "date": "2026-10-20",
+        "open": 680.17,
+        "high": 693.37,
+        "low": 679.32,
+        "close": 687.37,
+        "volume": 3527700
       }
     ],
     "news": [
@@ -7699,19 +7699,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "58ff33dd-c95d-3b8e-8100-f5eda7e8caff",
-        "title": "Spotting Winners: Sotera Health Company (NASDAQ:SHC) And Research Tools & Consumables Stocks In Q1",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/spotting-winners-sotera-health-company-033323533.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6474059a-fb5c-368d-9798-b6635a4de69a",
         "title": "Thermo Fisher Scientific Inc. (TMO): Among Billionaire Quants’ Two Sigma’s Stock Picks with Huge Upside Potential",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/thermo-fisher-scientific-inc-tmo-073441075.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "58ff33dd-c95d-3b8e-8100-f5eda7e8caff",
+        "title": "Spotting Winners: Sotera Health Company (NASDAQ:SHC) And Research Tools & Consumables Stocks In Q1",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/spotting-winners-sotera-health-company-033323533.html",
         "type": "STORY"
       },
       {
@@ -7781,18 +7781,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.47,
-        "industryAvg": 38.48
+        "value": 36.97,
+        "industryAvg": 38.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.56,
-        "industryAvg": 5.34
+        "value": 5.49,
+        "industryAvg": 5.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.89,
-        "industryAvg": 4.72
+        "value": 4.82,
+        "industryAvg": 4.67
       },
       {
         "metric": "ROE",

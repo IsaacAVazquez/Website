@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7917,
-      "ttmPe": 24.55,
-      "marketCap": 103996638826,
-      "psRatio": 15.36,
-      "pbRatio": 3.92,
-      "pegRatio": 9.23
+      "ttmPe": 25.04,
+      "marketCap": 106098415711,
+      "psRatio": 15.67,
+      "pbRatio": 4,
+      "pegRatio": 9.41
     },
     "profitability": {
       "roe": 3.92,
@@ -5439,24 +5439,16 @@
     },
     "wacc": {
       "wacc": 6.619999999999999,
-      "costOfEquity": 6.81,
+      "costOfEquity": 6.800000000000001,
       "costOfDebt": 1.27,
       "taxRate": 22,
-      "beta": 0.2203,
-      "marketCap": 103996638826
+      "beta": 0.2171,
+      "marketCap": 106098415711
     },
     "beta": {
-      "beta5y": 0.2203
+      "beta5y": 0.2171
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 263.5,
-        "high": 268.64,
-        "low": 262.06,
-        "close": 267.94,
-        "volume": 1881200
-      },
       {
         "date": "2025-10-20",
         "open": 267.5,
@@ -7464,6 +7456,14 @@
         "low": 291.42,
         "close": 293.53,
         "volume": 3510600
+      },
+      {
+        "date": "2026-10-20",
+        "open": 296.39,
+        "high": 299.92,
+        "low": 293.3,
+        "close": 295.31,
+        "volume": 3150700
       }
     ],
     "news": [
@@ -7500,19 +7500,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
-        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
         "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
+        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
         "type": "STORY"
       },
       {
@@ -7614,18 +7614,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.55,
-        "industryAvg": 25.02
+        "value": 25.04,
+        "industryAvg": 25.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.36,
-        "industryAvg": 7.81
+        "value": 15.67,
+        "industryAvg": 7.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.92,
-        "industryAvg": 4.03
+        "value": 4,
+        "industryAvg": 4.06
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "JNJ",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5922,
-      "ttmPe": 38.42,
+      "ttmPe": 39.34,
       "pegRatio": 0.45,
-      "marketCap": 609955987840,
-      "psRatio": 6.23,
-      "pbRatio": 7.18
+      "marketCap": 624598014080,
+      "psRatio": 6.38,
+      "pbRatio": 7.35
     },
     "profitability": {
       "roe": 6.660000000000001,
@@ -5887,25 +5887,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.23,
-      "costOfEquity": 6.69,
+      "wacc": 6.260000000000001,
+      "costOfEquity": 6.72,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 18,
-      "beta": 0.2049,
-      "marketCap": 609955987840
+      "beta": 0.2062,
+      "marketCap": 624598014080
     },
     "beta": {
-      "beta5y": 0.2049
+      "beta5y": 0.2062
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 192.5,
-        "high": 193.6,
-        "low": 191.68,
-        "close": 193.22,
-        "volume": 7764400
-      },
       {
         "date": "2025-10-20",
         "open": 193.5,
@@ -7913,23 +7905,31 @@
         "low": 251.5,
         "close": 253.79,
         "volume": 8847400
+      },
+      {
+        "date": "2026-10-20",
+        "open": 257.48,
+        "high": 260.77,
+        "low": 256.42,
+        "close": 259.36,
+        "volume": 7659800
       }
     ],
     "news": [
-      {
-        "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
-        "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
-        "type": "STORY"
-      },
       {
         "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
         "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
         "publisher": "Zacks",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
+        "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
         "type": "STORY"
       },
       {
@@ -7973,19 +7973,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
-        "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "805043bf-ab7d-346e-b3c8-0163ff94cf2f",
         "title": "Top Stock Reports for Amazon.com, Johnson & Johnson & Cisco Systems",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/top-stock-reports-amazon-com-210200739.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
+        "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
         "type": "STORY"
       },
       {
@@ -8062,18 +8062,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.42,
-        "industryAvg": 26.97
+        "value": 39.34,
+        "industryAvg": 27.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.23,
-        "industryAvg": 4.88
+        "value": 6.38,
+        "industryAvg": 4.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.18,
-        "industryAvg": 5.99
+        "value": 7.35,
+        "industryAvg": 6.1
       },
       {
         "metric": "ROE",

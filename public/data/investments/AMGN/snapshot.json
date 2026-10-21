@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.0981,
-      "ttmPe": 26.96,
+      "ttmPe": 27.27,
       "pegRatio": 0.42,
-      "marketCap": 234636618000,
-      "psRatio": 6.16,
-      "pbRatio": 20.08
+      "marketCap": 237290964000,
+      "psRatio": 6.23,
+      "pbRatio": 20.3
     },
     "profitability": {
       "roe": 22.75,
@@ -5336,25 +5336,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.06,
-      "costOfEquity": 8.540000000000001,
+      "wacc": 7.08,
+      "costOfEquity": 8.55,
       "costOfDebt": 1.17,
       "taxRate": 14.000000000000002,
-      "beta": 0.4428,
-      "marketCap": 234636618000
+      "beta": 0.4423,
+      "marketCap": 237290964000
     },
     "beta": {
-      "beta5y": 0.4428
+      "beta5y": 0.4423
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 295.24,
-        "high": 299.37,
-        "low": 293.14,
-        "close": 298.81,
-        "volume": 1959400
-      },
       {
         "date": "2025-10-20",
         "open": 299.48,
@@ -7362,6 +7354,14 @@
         "low": 424.74,
         "close": 424.94,
         "volume": 2682800
+      },
+      {
+        "date": "2026-10-20",
+        "open": 425.58,
+        "high": 439.05,
+        "low": 425.11,
+        "close": 438.94,
+        "volume": 2215900
       }
     ],
     "news": [
@@ -7398,19 +7398,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
-        "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
         "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
         "publisher": "BioPharma Dive",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
+        "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
         "type": "STORY"
       },
       {
@@ -7438,11 +7438,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2ae33d5c-c3e6-3385-bf18-c31dafc8863f",
-        "title": "With 81% institutional ownership, Amgen Inc. (NASDAQ:AMGN) is a favorite amongst the big guns",
-        "publisher": "Simply Wall St.",
+        "uuid": "a5c3d64b-cace-3675-a8fc-06676a70e152",
+        "title": "The Smartest High-Yielding Dividend Stocks in the Nasdaq Composite Index to Buy With $1,500 Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/81-institutional-ownership-amgen-inc-140011063.html",
+        "link": "https://finance.yahoo.com/m/a5c3d64b-cace-3675-a8fc-06676a70e152/the-smartest-high-yielding.html",
         "type": "STORY"
       }
     ],
@@ -7510,18 +7510,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.96,
-        "industryAvg": 26.97
+        "value": 27.27,
+        "industryAvg": 27.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.16,
-        "industryAvg": 4.88
+        "value": 6.23,
+        "industryAvg": 4.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.08,
-        "industryAvg": 5.99
+        "value": 20.3,
+        "industryAvg": 6.1
       },
       {
         "metric": "ROE",

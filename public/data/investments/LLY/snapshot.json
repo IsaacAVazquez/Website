@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.4291,
-      "ttmPe": 42.53,
-      "pegRatio": 1.62,
-      "marketCap": 1178390815000,
-      "psRatio": 14.79,
-      "pbRatio": 34.78
+      "ttmPe": 43.62,
+      "pegRatio": 1.67,
+      "marketCap": 1208565890000,
+      "psRatio": 15.17,
+      "pbRatio": 35.67
     },
     "profitability": {
       "roe": 21.8,
@@ -6012,25 +6012,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.110000000000001,
+      "wacc": 8.12,
       "costOfEquity": 8.39,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.4232,
-      "marketCap": 1178390815000
+      "beta": 0.4214,
+      "marketCap": 1208565890000
     },
     "beta": {
-      "beta5y": 0.4232
+      "beta5y": 0.4214
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 788.96,
-        "high": 804.44,
-        "low": 783.85,
-        "close": 802.83,
-        "volume": 3983000
-      },
       {
         "date": "2025-10-20",
         "open": 805.6,
@@ -8038,6 +8030,14 @@
         "low": 1239.1,
         "close": 1240.34,
         "volume": 1959500
+      },
+      {
+        "date": "2026-10-20",
+        "open": 1263.5,
+        "high": 1311.75,
+        "low": 1260.17,
+        "close": 1283.66,
+        "volume": 2966500
       }
     ],
     "news": [
@@ -8114,11 +8114,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
-        "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
-        "publisher": "StockStory",
+        "uuid": "25da5773-f641-3465-b822-ea6b73672626",
+        "title": "How to Play the Biotech Meltdown in the Age of RFK Jr. and Tariffs",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
+        "link": "https://finance.yahoo.com/m/25da5773-f641-3465-b822-ea6b73672626/how-to-play-the-biotech.html",
         "type": "STORY"
       }
     ],
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.53,
-        "industryAvg": 26.97
+        "value": 43.62,
+        "industryAvg": 27.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.79,
-        "industryAvg": 4.88
+        "value": 15.17,
+        "industryAvg": 4.97
       },
       {
         "metric": "P/B Ratio",
-        "value": 34.78,
-        "industryAvg": 5.99
+        "value": 35.67,
+        "industryAvg": 6.1
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "COP",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.548,
-      "ttmPe": 18.78,
-      "marketCap": 170265563875,
-      "psRatio": 2.69,
-      "pbRatio": 2.61,
+      "ttmPe": 19.34,
+      "marketCap": 175335208125,
+      "psRatio": 2.77,
+      "pbRatio": 2.68,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -5612,24 +5612,16 @@
     },
     "wacc": {
       "wacc": 6.12,
-      "costOfEquity": 6.8500000000000005,
+      "costOfEquity": 6.83,
       "costOfDebt": 1.21,
       "taxRate": 35,
-      "beta": 0.2249,
-      "marketCap": 170265563875
+      "beta": 0.221,
+      "marketCap": 175335208125
     },
     "beta": {
-      "beta5y": 0.2249
+      "beta5y": 0.221
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 86.93,
-        "high": 87.49,
-        "low": 86.13,
-        "close": 86.48,
-        "volume": 5774600
-      },
       {
         "date": "2025-10-20",
         "open": 86.7,
@@ -7637,6 +7629,14 @@
         "low": 144.27,
         "close": 145.24,
         "volume": 4342300
+      },
+      {
+        "date": "2026-10-20",
+        "open": 147.15,
+        "high": 147.15,
+        "low": 142.8,
+        "close": 145.95,
+        "volume": 5316600
       }
     ],
     "news": [
@@ -7681,19 +7681,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc3a8355-96fa-385e-96a5-a14c75515cf4",
-        "title": "Coterra Energy to Report Q1 Earnings: Key Metrics to Watch",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/coterra-energy-report-q1-earnings-134800445.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
         "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
         "publisher": "Zacks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc3a8355-96fa-385e-96a5-a14c75515cf4",
+        "title": "Coterra Energy to Report Q1 Earnings: Key Metrics to Watch",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/coterra-energy-report-q1-earnings-134800445.html",
         "type": "STORY"
       },
       {
@@ -7713,11 +7713,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "164bdc7b-1cbb-3adb-b047-5a86a1dcef5c",
-        "title": "Why Frontline Stock Popped, but Exxon and ConocoPhillips Dropped",
-        "publisher": "Motley Fool",
+        "uuid": "a734f233-b3a7-39f9-a01b-aefeb5a637c3",
+        "title": "OPEC Shifts To Oil Price-War Stance Ahead Of Trump Saudi Visit; These Stocks Rally",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/m/164bdc7b-1cbb-3adb-b047-5a86a1dcef5c/why-frontline-stock-popped%2C.html",
+        "link": "https://finance.yahoo.com/m/a734f233-b3a7-39f9-a01b-aefeb5a637c3/opec-shifts-to-oil-price-war.html",
         "type": "STORY"
       }
     ],
@@ -7786,18 +7786,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.78,
-        "industryAvg": 14.18
+        "value": 19.34,
+        "industryAvg": 14.57
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.69,
-        "industryAvg": 2.67
+        "value": 2.77,
+        "industryAvg": 2.78
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.61,
-        "industryAvg": 1.8
+        "value": 2.68,
+        "industryAvg": 1.84
       },
       {
         "metric": "ROE",

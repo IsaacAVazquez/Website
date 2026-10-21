@@ -1,10 +1,10 @@
 {
   "symbol": "ACN",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "Ireland",
       "industry": "Information Technology Services",
       "sector": "Technology",
-      "longBusinessSummary": "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business processes for specific enterprise functions, including finance and accounting, sourcing and procurement, supply chain, marketing and sales, and human resources, as well as industry-specific services, such as platform trust and safety, banking, insurance, network and health services; and designs, manufactures, and assembles automation equipment, robotics, and other commercial hardware products. It serves communications, media, and technology; financial services; banking and capital markets, and insurance; health and public service; consumer goods, retail, travel services; industrial; life science; and chemicals, natural resources, energy, and utilities sectors. Accenture plc has collaboration with Amazon Web Services (AWS) to deliver transformative digital services to public sector, defense, and national security organizations. It has a collaboration with OpenAI to help enterprise clients unlock new levels of innovation and growth by bringing agentic AI systems; has a strategic collaboration with Microsoft and Avanade for the development of an agentic factory intelligence system; and INFRONEER Holdings Inc. and SAP Japan Co., Ltd. to develop a new financial data and insights platform. It also has strategic partnership with Netomi, Inc. to help enterprises reinvent customer experience using agentic AI systems. The company has a strategic alliance with ServiceNow for integrated risk management and third-party risk management solutions. Accenture plc was founded in 1951 and is based in Dublin, Ireland.",
+      "longBusinessSummary": "Accenture plc provides consulting and managed services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers artificial intelligence and data; cloud consulting; cybersecurity consulting; digital engineering and manufacturing; ecosystem partners; emerging technology; finance and risk management consulting; infrastructure and capital projects; digital learning; supply chain consulting; technology consulting; sustainability consulting; and metaverse solutions, as well as customer services. The company also provides proprietary assets and platforms, such as GenWizard, SynOps and reinvention.AI to clients. It serves aerospace and defense, automotive, banking, capital markets, chemicals, communications and media, consumer goods and services, energy, health, high tech, industrial, insurance, life sciences, natural resources, private equity, public service, retail, software and platforms, travel, and utilities industries. Accenture plc was founded in 1951 and is based in Dublin, Ireland.",
       "fullTimeEmployees": 814000,
       "website": "https://www.accenture.com",
       "shortName": "Accenture plc",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.5663,
-      "ttmPe": 16.58,
-      "marketCap": 134052320000,
-      "psRatio": 1.83,
-      "pbRatio": 4.2,
-      "pegRatio": 0.36
+      "ttmPe": 17.63,
+      "marketCap": 142403874872,
+      "psRatio": 1.95,
+      "pbRatio": 4.47,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 7.41,
@@ -5657,25 +5657,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.68,
-      "costOfEquity": 13.43,
+      "wacc": 12.659999999999998,
+      "costOfEquity": 13.370000000000001,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.0725,
-      "marketCap": 134052320000
+      "beta": 1.0648,
+      "marketCap": 142403874872
     },
     "beta": {
-      "beta5y": 1.0725
+      "beta5y": 1.0648
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 234.35,
-        "high": 239.12,
-        "low": 233.6,
-        "close": 238.39,
-        "volume": 4436100
-      },
       {
         "date": "2025-10-20",
         "open": 240.1,
@@ -7683,6 +7675,14 @@
         "low": 226.45,
         "close": 236.93,
         "volume": 6939400
+      },
+      {
+        "date": "2026-10-20",
+        "open": 238,
+        "high": 243.67,
+        "low": 237.82,
+        "close": 239.12,
+        "volume": 6688000
       }
     ],
     "news": [
@@ -7831,18 +7831,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.58,
-        "industryAvg": 16.17
+        "value": 17.63,
+        "industryAvg": 16.75
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.83,
-        "industryAvg": 1.5
+        "value": 1.95,
+        "industryAvg": 1.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.2,
-        "industryAvg": 3.47
+        "value": 4.47,
+        "industryAvg": 3.57
       },
       {
         "metric": "ROE",

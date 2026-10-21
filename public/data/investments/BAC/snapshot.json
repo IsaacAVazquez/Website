@@ -1,10 +1,10 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -33,17 +33,17 @@
       "industry": "Banks-Diversified",
       "sector": "Financial Services",
       "longBusinessSummary": "Bank of America Corporation, through its subsidiaries, provides various financial products and services for individual consumers, small and middle-market businesses, institutional investors, large corporations, and governments worldwide. It operates through four segments: Consumer Banking, Global Wealth & Investment Management (GWIM), Global Banking, and Global Markets. The Consumer Banking segment offers traditional and money market savings accounts, certificates of deposit and IRAs, checking accounts, and investment accounts and products; credit and debit cards; residential mortgages and home equity loans; and direct and indirect loans. The GWIM segment provides investment management, brokerage, banking, and trust and retirement products and services; wealth management solutions; and customized solutions, including specialty asset management services. The Global Banking segment offers lending products and services, including commercial loans, leases, commitment facilities, trade finance, and commercial real estate and asset-based lending; treasury solutions, and underwriting and advisory services. The Global Markets segment provides market-making, financing, securities clearing, settlement, and custody services; securities and derivative products; and risk management products using interest rate, equity, credit, currency and commodity derivatives, foreign exchange, fixed-income, and mortgage-related products. Bank of America Corporation was founded in 1784 and is based in Charlotte, North Carolina.",
-      "fullTimeEmployees": 213000,
+      "fullTimeEmployees": 209911,
       "website": "https://www.bankofamerica.com",
       "shortName": "Bank of America Corporation",
       "longName": "Bank of America Corporation"
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 12.33,
-      "marketCap": 357903347010,
-      "psRatio": 3.06,
-      "pbRatio": 1.19,
+      "ttmPe": 12.07,
+      "marketCap": 350565289992,
+      "psRatio": 3,
+      "pbRatio": 1.17,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5571,25 +5571,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.9,
-      "costOfEquity": 14.35,
+      "wacc": 8.85,
+      "costOfEquity": 14.360000000000001,
       "costOfDebt": 4.590000000000001,
       "taxRate": 17,
-      "beta": 1.1901,
-      "marketCap": 357903347010
+      "beta": 1.192,
+      "marketCap": 350565289992
     },
     "beta": {
-      "beta5y": 1.1901
+      "beta5y": 1.192
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 50.95,
-        "high": 51.77,
-        "low": 50.33,
-        "close": 51.28,
-        "volume": 48915400
-      },
       {
         "date": "2025-10-20",
         "open": 51.44,
@@ -7596,7 +7588,15 @@
         "high": 51.53,
         "low": 50.2,
         "close": 50.39,
-        "volume": 42782400
+        "volume": 42794700
+      },
+      {
+        "date": "2026-10-20",
+        "open": 50.18,
+        "high": 51.3,
+        "low": 50.01,
+        "close": 50.64,
+        "volume": 43627700
       }
     ],
     "news": [
@@ -7641,19 +7641,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
-        "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
-        "publisher": "Financial Times",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
         "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
+        "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
+        "publisher": "Financial Times",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
         "type": "STORY"
       },
       {
@@ -7749,18 +7749,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.33,
-        "industryAvg": 13.51
+        "value": 12.07,
+        "industryAvg": 13.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.06,
-        "industryAvg": 3.72
+        "value": 3,
+        "industryAvg": 3.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.19,
-        "industryAvg": 1.68
+        "value": 1.17,
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",

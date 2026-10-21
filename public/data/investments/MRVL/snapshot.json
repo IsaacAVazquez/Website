@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 79.44,
-      "marketCap": 211519232000,
-      "psRatio": 22.38,
-      "pbRatio": 11.41,
-      "pegRatio": 1.61
+      "ttmPe": 79.17,
+      "marketCap": 210800256000,
+      "psRatio": 22.31,
+      "pbRatio": 11.38,
+      "pegRatio": 1.6
     },
     "profitability": {
       "roe": 1.68,
@@ -5959,21 +5959,13 @@
       "costOfEquity": 22.49,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2375,
-      "marketCap": 211519232000
+      "beta": 2.2413,
+      "marketCap": 210800256000
     },
     "beta": {
-      "beta5y": 2.2375
+      "beta5y": 2.2413
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 86.83,
-        "high": 88.95,
-        "low": 85.71,
-        "close": 87.95,
-        "volume": 13244000
-      },
       {
         "date": "2025-10-20",
         "open": 86.64,
@@ -7980,7 +7972,15 @@
         "high": 246.58,
         "low": 234.82,
         "close": 237.09,
-        "volume": 17941100
+        "volume": 18004500
+      },
+      {
+        "date": "2026-10-20",
+        "open": 232.45,
+        "high": 243.96,
+        "low": 226.52,
+        "close": 240.42,
+        "volume": 16587400
       }
     ],
     "news": [
@@ -8041,19 +8041,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
-        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
-        "publisher": "StockStory",
+        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
+        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
+        "publisher": "The Fly",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
-        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
+        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
         "type": "STORY"
       },
       {
@@ -8062,6 +8054,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
+        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 79.44,
-        "industryAvg": 27.98
+        "value": 79.17,
+        "industryAvg": 27.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.38,
-        "industryAvg": 13.33
+        "value": 22.31,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.41,
-        "industryAvg": 11.57
+        "value": 11.38,
+        "industryAvg": 11.37
       },
       {
         "metric": "ROE",

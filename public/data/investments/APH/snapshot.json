@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.9972,
-      "ttmPe": 40.8,
-      "marketCap": 200889148000,
-      "psRatio": 7.76,
-      "pbRatio": 14.37,
-      "pegRatio": 0.68
+      "ttmPe": 39.72,
+      "marketCap": 195539664000,
+      "psRatio": 7.55,
+      "pbRatio": 13.99,
+      "pegRatio": 0.66
     },
     "profitability": {
       "roe": 6.81,
@@ -5305,25 +5305,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.55,
-      "costOfEquity": 14.75,
+      "wacc": 13.530000000000001,
+      "costOfEquity": 14.760000000000002,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.2417,
-      "marketCap": 200889148000
+      "beta": 1.2439,
+      "marketCap": 195539664000
     },
     "beta": {
-      "beta5y": 1.2417
+      "beta5y": 1.2439
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 63.12,
-        "high": 63.525,
-        "low": 62.23,
-        "close": 62.825,
-        "volume": 11768600
-      },
       {
         "date": "2025-10-20",
         "open": 63.285,
@@ -7331,23 +7323,31 @@
         "low": 80.15,
         "close": 80.28,
         "volume": 9435300
+      },
+      {
+        "date": "2026-10-20",
+        "open": 79.14,
+        "high": 80.79,
+        "low": 77.88,
+        "close": 79.32,
+        "volume": 7084900
       }
     ],
     "news": [
-      {
-        "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
-        "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
-        "publisher": "StockStory",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
         "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
+        "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
+        "publisher": "StockStory",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
         "type": "STORY"
       },
       {
@@ -7367,14 +7367,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
-        "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/comm-stock-surges-378-2-180800505.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
@@ -7383,11 +7375,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
-        "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
+        "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
+        "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
         "publisher": "Zacks",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/comm-stock-surges-378-2-180800505.html",
         "type": "STORY"
       },
       {
@@ -7404,6 +7396,14 @@
         "publisher": "MarketWatch",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
+        "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
         "type": "STORY"
       },
       {
@@ -7482,18 +7482,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.8,
-        "industryAvg": 40.58
+        "value": 39.72,
+        "industryAvg": 39.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.76,
-        "industryAvg": 3.46
+        "value": 7.55,
+        "industryAvg": 3.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.37,
-        "industryAvg": 6.8
+        "value": 13.99,
+        "industryAvg": 6.44
       },
       {
         "metric": "ROE",

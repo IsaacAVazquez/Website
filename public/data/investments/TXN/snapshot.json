@@ -1,10 +1,10 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.5732,
-      "ttmPe": 42.46,
-      "marketCap": 254836560000,
-      "psRatio": 13.1,
-      "pbRatio": 14.15,
+      "ttmPe": 42.26,
+      "marketCap": 253613140000,
+      "psRatio": 13.04,
+      "pbRatio": 14.08,
       "pegRatio": 0.82
     },
     "profitability": {
@@ -5592,25 +5592,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.1,
-      "costOfEquity": 15.879999999999999,
+      "wacc": 15.079999999999998,
+      "costOfEquity": 15.870000000000001,
       "costOfDebt": 1,
       "taxRate": 12,
-      "beta": 1.3868,
-      "marketCap": 254836560000
+      "beta": 1.3873,
+      "marketCap": 253613140000
     },
     "beta": {
-      "beta5y": 1.3868
+      "beta5y": 1.3873
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 175.05,
-        "high": 177.63,
-        "low": 174.57,
-        "close": 176.58,
-        "volume": 5082600
-      },
       {
         "date": "2025-10-20",
         "open": 172.51,
@@ -7618,6 +7610,14 @@
         "low": 272.07,
         "close": 276.15,
         "volume": 9582000
+      },
+      {
+        "date": "2026-10-20",
+        "open": 272.69,
+        "high": 282.45,
+        "low": 272.01,
+        "close": 277.78,
+        "volume": 7659700
       }
     ],
     "news": [
@@ -7630,19 +7630,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "18947235-499e-3176-814b-e007504ed5ce",
-        "title": "Himax (HIMX) Q1 Earnings Report Preview: What To Look For",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/himax-himx-q1-earnings-report-103324368.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
         "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "18947235-499e-3176-814b-e007504ed5ce",
+        "title": "Himax (HIMX) Q1 Earnings Report Preview: What To Look For",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/himax-himx-q1-earnings-report-103324368.html",
         "type": "STORY"
       },
       {
@@ -7694,11 +7694,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b2cc4bf-9dd6-3dd1-8f5f-d7f25e81db45",
-        "title": "Texas Instruments Insiders Sell US$5.5m Of Stock, Possibly Signalling Caution",
-        "publisher": "Simply Wall St.",
+        "uuid": "aef3881f-6223-3d99-9975-d3c24cfd8228",
+        "title": "Why the Market Dipped But Texas Instruments (TXN) Gained Today",
+        "publisher": "Zacks",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/texas-instruments-insiders-sell-us-130022300.html",
+        "link": "https://finance.yahoo.com/news/why-market-dipped-texas-instruments-215009732.html",
         "type": "STORY"
       }
     ],
@@ -7765,18 +7765,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.46,
-        "industryAvg": 27.98
+        "value": 42.26,
+        "industryAvg": 27.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.1,
-        "industryAvg": 13.33
+        "value": 13.04,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.15,
-        "industryAvg": 11.57
+        "value": 14.08,
+        "industryAvg": 11.37
       },
       {
         "metric": "ROE",

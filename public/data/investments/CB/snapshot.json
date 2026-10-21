@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 28.2571,
-      "ttmPe": 12.49,
-      "marketCap": 136047818860,
-      "psRatio": 2.18,
-      "pbRatio": 1.81,
+      "ttmPe": 12.66,
+      "marketCap": 137960563500,
+      "psRatio": 2.22,
+      "pbRatio": 1.83,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5550,25 +5550,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.800000000000001,
+      "wacc": 6.81,
       "costOfEquity": 7.59,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 20,
-      "beta": 0.3205,
-      "marketCap": 136047818860
+      "beta": 0.3181,
+      "marketCap": 137960563500
     },
     "beta": {
-      "beta5y": 0.3205
+      "beta5y": 0.3181
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 267.96,
-        "high": 270.1,
-        "low": 266.45,
-        "close": 268.21,
-        "volume": 2525200
-      },
       {
         "date": "2025-10-20",
         "open": 269.37,
@@ -7576,6 +7568,14 @@
         "low": 355.22,
         "close": 356.27,
         "volume": 1387400
+      },
+      {
+        "date": "2026-10-20",
+        "open": 359,
+        "high": 361.21,
+        "low": 355.06,
+        "close": 357.75,
+        "volume": 2205500
       }
     ],
     "news": [
@@ -7652,11 +7652,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
-        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
-        "publisher": "Investing.com",
+        "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
+        "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
+        "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
         "type": "STORY"
       }
     ],
@@ -7724,18 +7724,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.49,
-        "industryAvg": 9.37
+        "value": 12.66,
+        "industryAvg": 9.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.18,
-        "industryAvg": 1.41
+        "value": 2.22,
+        "industryAvg": 1.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.81,
-        "industryAvg": 4.88
+        "value": 1.83,
+        "industryAvg": 4.97
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.8966,
-      "ttmPe": 144.29,
-      "marketCap": 917559360000,
-      "psRatio": 22.21,
-      "pbRatio": 13.65,
-      "pegRatio": 0.91
+      "ttmPe": 137.23,
+      "marketCap": 872695680000,
+      "psRatio": 21.13,
+      "pbRatio": 12.98,
+      "pegRatio": 0.86
     },
     "profitability": {
       "roe": 3.49,
@@ -6017,25 +6017,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.03,
-      "costOfEquity": 24.14,
+      "wacc": 24.04,
+      "costOfEquity": 24.15,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 10,
-      "beta": 2.451,
-      "marketCap": 917559360000
+      "beta": 2.4553,
+      "marketCap": 872695680000
     },
     "beta": {
-      "beta5y": 2.451
+      "beta5y": 2.4553
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 233.26,
-        "high": 235.38,
-        "low": 227.91,
-        "close": 233.08,
-        "volume": 55804200
-      },
       {
         "date": "2025-10-20",
         "open": 236.47,
@@ -8042,7 +8034,15 @@
         "high": 554.41,
         "low": 535.67,
         "close": 538.05,
-        "volume": 20153700
+        "volume": 20199700
+      },
+      {
+        "date": "2026-10-20",
+        "open": 530.02,
+        "high": 548.11,
+        "low": 524.6,
+        "close": 534.74,
+        "volume": 15043700
       }
     ],
     "news": [
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 144.29,
-        "industryAvg": 27.98
+        "value": 137.23,
+        "industryAvg": 27.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.21,
-        "industryAvg": 13.33
+        "value": 21.13,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.65,
-        "industryAvg": 11.57
+        "value": 12.98,
+        "industryAvg": 11.37
       },
       {
         "metric": "ROE",

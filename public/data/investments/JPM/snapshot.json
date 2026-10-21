@@ -1,10 +1,10 @@
 {
   "symbol": "JPM",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 23.8359,
-      "ttmPe": 14.08,
-      "marketCap": 891033468000,
+      "ttmPe": 14.07,
+      "marketCap": 890316456000,
       "psRatio": 4.57,
       "pbRatio": 2.38,
       "pegRatio": 1.45
@@ -6216,20 +6216,12 @@
       "costOfDebt": 4.71,
       "taxRate": 23,
       "beta": 1.0296,
-      "marketCap": 891033468000
+      "marketCap": 890316456000
     },
     "beta": {
       "beta5y": 1.0296
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 299.16,
-        "high": 299.55,
-        "low": 294.2,
-        "close": 297.56,
-        "volume": 10153500
-      },
       {
         "date": "2025-10-20",
         "open": 298.5,
@@ -8237,6 +8229,14 @@
         "low": 333.22,
         "close": 333.53,
         "volume": 6925800
+      },
+      {
+        "date": "2026-10-20",
+        "open": 333.97,
+        "high": 339.86,
+        "low": 332.55,
+        "close": 335.26,
+        "volume": 6157500
       }
     ],
     "news": [
@@ -8394,18 +8394,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.08,
-        "industryAvg": 13.51
+        "value": 14.07,
+        "industryAvg": 13.36
       },
       {
         "metric": "P/S Ratio",
         "value": 4.57,
-        "industryAvg": 3.72
+        "industryAvg": 3.68
       },
       {
         "metric": "P/B Ratio",
         "value": 2.38,
-        "industryAvg": 1.68
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",

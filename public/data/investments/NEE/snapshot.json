@@ -1,10 +1,10 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 4.4569,
-      "ttmPe": 17.72,
-      "marketCap": 164710560000,
-      "psRatio": 5.74,
+      "ttmPe": 17.69,
+      "marketCap": 164501960000,
+      "psRatio": 5.73,
       "pbRatio": 2.88,
       "pegRatio": 0.34
     },
@@ -5885,21 +5885,13 @@
       "costOfEquity": 9.86,
       "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.6129,
-      "marketCap": 164710560000
+      "beta": 0.6117,
+      "marketCap": 164501960000
     },
     "beta": {
-      "beta5y": 0.6129
+      "beta5y": 0.6117
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 85.45,
-        "high": 85.82,
-        "low": 84.17,
-        "close": 84.53,
-        "volume": 9142200
-      },
       {
         "date": "2025-10-20",
         "open": 85.19,
@@ -7907,6 +7899,14 @@
         "low": 77.95,
         "close": 78.17,
         "volume": 10611600
+      },
+      {
+        "date": "2026-10-20",
+        "open": 78.75,
+        "high": 79.3,
+        "low": 78.35,
+        "close": 78.86,
+        "volume": 13788300
       }
     ],
     "news": [
@@ -8056,18 +8056,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.72,
-        "industryAvg": 16.61
+        "value": 17.69,
+        "industryAvg": 16.97
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.74,
-        "industryAvg": 2.3
+        "value": 5.73,
+        "industryAvg": 2.36
       },
       {
         "metric": "P/B Ratio",
         "value": 2.88,
-        "industryAvg": 1.79
+        "industryAvg": 1.83
       },
       {
         "metric": "ROE",

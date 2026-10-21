@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 42.7592,
-      "ttmPe": 26.21,
-      "marketCap": 181790516000,
-      "psRatio": 6.66,
-      "pbRatio": 3.16,
-      "pegRatio": 0.82
+      "ttmPe": 26.4,
+      "marketCap": 183071912220,
+      "psRatio": 6.71,
+      "pbRatio": 3.18,
+      "pegRatio": 0.83
     },
     "profitability": {
       "roe": 3.35,
@@ -5484,25 +5484,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.77,
-      "costOfEquity": 15.93,
+      "wacc": 14.75,
+      "costOfEquity": 15.9,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 25,
-      "beta": 1.3933,
-      "marketCap": 181790516000
+      "beta": 1.3916,
+      "marketCap": 183071912220
     },
     "beta": {
-      "beta5y": 1.3933
+      "beta5y": 1.3916
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 1169.0601,
-        "high": 1176.1801,
-        "low": 1154.15,
-        "close": 1161.16,
-        "volume": 777500
-      },
       {
         "date": "2025-10-20",
         "open": 1178,
@@ -7510,6 +7502,14 @@
         "low": 1121.54,
         "close": 1124.6,
         "volume": 541000
+      },
+      {
+        "date": "2026-10-20",
+        "open": 1138.89,
+        "high": 1150.21,
+        "low": 1123.84,
+        "close": 1128.6801,
+        "volume": 1177800
       }
     ],
     "news": [
@@ -7530,19 +7530,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
-        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
         "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
         "publisher": "CoinDesk",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
+        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
         "type": "STORY"
       },
       {
@@ -7659,23 +7659,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.21,
-        "industryAvg": 22.66
+        "value": 26.4,
+        "industryAvg": 22.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.66,
-        "industryAvg": 3.09
+        "value": 6.71,
+        "industryAvg": 3.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.16,
-        "industryAvg": 2.55
+        "value": 3.18,
+        "industryAvg": 2.56
       },
       {
         "metric": "ROE",
         "value": 3.35,
-        "industryAvg": 7.42
+        "industryAvg": 7.33
       },
       {
         "metric": "ROA",
@@ -7685,17 +7685,17 @@
       {
         "metric": "Gross Margin",
         "value": 48.96,
-        "industryAvg": 33.129999999999995
+        "industryAvg": 33.25
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.71,
-        "industryAvg": 41.24
+        "industryAvg": 41.19
       },
       {
         "metric": "Net Margin",
         "value": 27.02,
-        "industryAvg": 6.54
+        "industryAvg": 6.5
       }
     ]
   }

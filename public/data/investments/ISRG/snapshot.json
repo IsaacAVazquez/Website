@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.7251,
-      "ttmPe": 49.04,
-      "pegRatio": 1.84,
-      "marketCap": 151419654000,
-      "psRatio": 13.72,
-      "pbRatio": 8.33
+      "ttmPe": 50.2,
+      "pegRatio": 1.89,
+      "marketCap": 155008200000,
+      "psRatio": 14.05,
+      "pbRatio": 8.53
     },
     "profitability": {
       "roe": 4.590000000000001,
@@ -4974,17 +4974,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4462
+      "beta5y": 1.4447
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 437.17,
-        "high": 449.09,
-        "low": 434.57,
-        "close": 446.13,
-        "volume": 2209200
-      },
       {
         "date": "2025-10-20",
         "open": 452.5,
@@ -6992,6 +6984,14 @@
         "low": 426.7,
         "close": 433.18,
         "volume": 2530200
+      },
+      {
+        "date": "2026-10-20",
+        "open": 433.5,
+        "high": 440.4,
+        "low": 432,
+        "close": 438,
+        "volume": 3414200
       }
     ],
     "news": [
@@ -7139,18 +7139,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 49.04,
-        "industryAvg": 38.8
+        "value": 50.2,
+        "industryAvg": 39.21
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.72,
-        "industryAvg": 3.72
+        "value": 14.05,
+        "industryAvg": 3.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.33,
-        "industryAvg": 3.21
+        "value": 8.53,
+        "industryAvg": 3.24
       },
       {
         "metric": "ROE",

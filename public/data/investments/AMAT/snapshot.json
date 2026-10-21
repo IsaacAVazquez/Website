@@ -1,10 +1,10 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.5973,
-      "ttmPe": 37.08,
-      "marketCap": 341254817974,
-      "psRatio": 11.07,
-      "pbRatio": 13.32,
-      "pegRatio": 0.86
+      "ttmPe": 34.92,
+      "marketCap": 321391075052,
+      "psRatio": 10.42,
+      "pbRatio": 12.54,
+      "pegRatio": 0.81
     },
     "profitability": {
       "roe": 10.25,
@@ -6309,25 +6309,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.080000000000002,
-      "costOfEquity": 17.41,
+      "wacc": 17.11,
+      "costOfEquity": 17.45,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.5847,
-      "marketCap": 341254817974
+      "beta": 1.5909,
+      "marketCap": 321391075052
     },
     "beta": {
-      "beta5y": 1.5847
+      "beta5y": 1.5909
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 226.47,
-        "high": 227.36,
-        "low": 222.7,
-        "close": 224.99,
-        "volume": 5272800
-      },
       {
         "date": "2025-10-20",
         "open": 227.15,
@@ -8335,6 +8327,14 @@
         "low": 412.69,
         "close": 413.11,
         "volume": 6750300
+      },
+      {
+        "date": "2026-10-20",
+        "open": 405.56,
+        "high": 412.46,
+        "low": 399.03,
+        "close": 404.98,
+        "volume": 6838300
       }
     ],
     "news": [
@@ -8387,19 +8387,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
-        "title": "3 Cash-Heavy Stocks with Exciting Potential",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "de8eda00-fb93-3a66-9ed6-a9623991b765",
         "title": "Applied Materials, Inc. (AMAT) is Attracting Investor Attention: Here is What You Should Know",
         "publisher": "Zacks",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/applied-materials-inc-amat-attracting-130014413.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
+        "title": "3 Cash-Heavy Stocks with Exciting Potential",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
         "type": "STORY"
       },
       {
@@ -8488,18 +8488,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.08,
-        "industryAvg": 48.05
+        "value": 34.92,
+        "industryAvg": 46.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.07,
-        "industryAvg": 13.04
+        "value": 10.42,
+        "industryAvg": 12.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.32,
-        "industryAvg": 18.62
+        "value": 12.54,
+        "industryAvg": 17.35
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.6523,
-      "ttmPe": 34.31,
-      "marketCap": 746853844425,
-      "psRatio": 16.79,
-      "pbRatio": 21.23,
-      "pegRatio": 3.3
+      "ttmPe": 34.89,
+      "marketCap": 759595666111,
+      "psRatio": 17.07,
+      "pbRatio": 21.59,
+      "pegRatio": 3.35
     },
     "profitability": {
       "roe": 15.89,
@@ -5375,25 +5375,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.14,
-      "costOfEquity": 11.48,
+      "wacc": 11.129999999999999,
+      "costOfEquity": 11.459999999999999,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 18,
-      "beta": 0.8212,
-      "marketCap": 746853844425
+      "beta": 0.818,
+      "marketCap": 759595666111
     },
     "beta": {
-      "beta5y": 0.8212
+      "beta5y": 0.818
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 337.77,
-        "high": 343.45,
-        "low": 337,
-        "close": 341.89,
-        "volume": 6267100
-      },
       {
         "date": "2025-10-20",
         "open": 341.9,
@@ -7401,6 +7393,14 @@
         "low": 398.01,
         "close": 402.92,
         "volume": 5839500
+      },
+      {
+        "date": "2026-10-20",
+        "open": 403.87,
+        "high": 408.59,
+        "low": 403.39,
+        "close": 406.57,
+        "volume": 6704500
       }
     ],
     "news": [
@@ -7421,19 +7421,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
-        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
         "title": "Top Research Reports for Visa, ServiceNow & Progressive",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
+        "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
         "type": "STORY"
       },
       {
@@ -7553,18 +7553,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.31,
-        "industryAvg": 22.89
+        "value": 34.89,
+        "industryAvg": 23.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.79,
-        "industryAvg": 5.36
+        "value": 17.07,
+        "industryAvg": 5.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.23,
-        "industryAvg": 5.71
+        "value": 21.59,
+        "industryAvg": 5.77
       },
       {
         "metric": "ROE",

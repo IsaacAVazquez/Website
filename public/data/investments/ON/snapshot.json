@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.5529,
-      "ttmPe": 47.46,
-      "marketCap": 28690746700,
-      "psRatio": 4.63,
-      "pbRatio": 3.97,
-      "pegRatio": 1.3
+      "ttmPe": 48.7,
+      "marketCap": 29438185420,
+      "psRatio": 4.75,
+      "pbRatio": 4.08,
+      "pegRatio": 1.33
     },
     "profitability": {
       "roe": 3.1199999999999997,
@@ -5897,25 +5897,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.47,
-      "costOfEquity": 21.32,
+      "wacc": 18.529999999999998,
+      "costOfEquity": 21.310000000000002,
       "costOfDebt": 0.31,
       "taxRate": 16,
-      "beta": 2.0876,
-      "marketCap": 28690746700
+      "beta": 2.0892,
+      "marketCap": 29438185420
     },
     "beta": {
-      "beta5y": 2.0876
+      "beta5y": 2.0892
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 52.97,
-        "high": 53.07,
-        "low": 51.22,
-        "close": 52.53,
-        "volume": 8037800
-      },
       {
         "date": "2025-10-20",
         "open": 53.35,
@@ -7923,6 +7915,14 @@
         "low": 71.27,
         "close": 73.12,
         "volume": 8009300
+      },
+      {
+        "date": "2026-10-20",
+        "open": 72.02,
+        "high": 76.27,
+        "low": 71.39,
+        "close": 75.62,
+        "volume": 9012200
       }
     ],
     "news": [
@@ -7951,6 +7951,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
+        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "e9dbc5dc-5d28-32bb-b602-ed73bf763d85",
         "title": "ON Semiconductor (ON): Among Billionaire Glenn Russell Dubin’s Stock Picks with Huge Upside Potential",
         "publisher": "Insider Monkey",
@@ -7967,11 +7975,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
-        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
+        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
+        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
         "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
         "type": "STORY"
       },
       {
@@ -7980,14 +7988,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
-        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
         "type": "STORY"
       },
       {
@@ -8063,18 +8063,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.46,
-        "industryAvg": 27.98
+        "value": 48.7,
+        "industryAvg": 27.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.63,
-        "industryAvg": 13.33
+        "value": 4.75,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.97,
-        "industryAvg": 11.57
+        "value": 4.08,
+        "industryAvg": 11.37
       },
       {
         "metric": "ROE",

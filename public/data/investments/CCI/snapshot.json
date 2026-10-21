@@ -1,10 +1,10 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.5368,
-      "ttmPe": 17.63,
-      "marketCap": 34080000000,
-      "psRatio": 8.19,
-      "pbRatio": -10.42,
+      "ttmPe": 17.88,
+      "marketCap": 34565640000,
+      "psRatio": 8.31,
+      "pbRatio": -10.57,
       "pegRatio": 0.45
     },
     "profitability": {
@@ -5682,25 +5682,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.8100000000000005,
-      "costOfEquity": 12.58,
+      "wacc": 7.82,
+      "costOfEquity": 12.53,
       "costOfDebt": 0.86,
       "taxRate": 1,
-      "beta": 0.9632,
-      "marketCap": 34080000000
+      "beta": 0.9567,
+      "marketCap": 34565640000
     },
     "beta": {
-      "beta5y": 0.9632
+      "beta5y": 0.9567
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 98.29,
-        "high": 98.53,
-        "low": 96.5,
-        "close": 97.48,
-        "volume": 2654800
-      },
       {
         "date": "2025-10-20",
         "open": 97.13,
@@ -7708,23 +7700,31 @@
         "low": 80.3,
         "close": 81.06,
         "volume": 3827000
+      },
+      {
+        "date": "2026-10-20",
+        "open": 82,
+        "high": 82.43,
+        "low": 80.76,
+        "close": 81.14,
+        "volume": 4498700
       }
     ],
     "news": [
-      {
-        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
-        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
-        "type": "STORY"
-      },
       {
         "uuid": "67e78153-344f-391e-b3a2-7c41544ac44d",
         "title": "KeyBanc Adjusts Price Target on Crown Castle to $122 From $120",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/keybanc-adjusts-price-target-crown-155131405.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
+        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
         "type": "STORY"
       },
       {
@@ -7736,19 +7736,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d9d2c464-1153-3359-9b60-77757fef2c3f",
-        "title": "Crown Castle's Q1 AFFO Surpasses Estimates, Revenues Fall Y/Y",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/crown-castles-q1-affo-surpasses-175200746.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f734f670-1f48-3b82-928d-dab535236e9b",
         "title": "Citigroup Adjusts Crown Castle Price Target to $124 From $108",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/citigroup-adjusts-crown-castle-price-130821194.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d9d2c464-1153-3359-9b60-77757fef2c3f",
+        "title": "Crown Castle's Q1 AFFO Surpasses Estimates, Revenues Fall Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/crown-castles-q1-affo-surpasses-175200746.html",
         "type": "STORY"
       },
       {
@@ -7760,19 +7760,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
-        "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
         "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
+        "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
         "type": "STORY"
       },
       {
@@ -7855,18 +7855,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.63,
-        "industryAvg": 32.31
+        "value": 17.88,
+        "industryAvg": 32.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.19,
-        "industryAvg": 6.6
+        "value": 8.31,
+        "industryAvg": 6.61
       },
       {
         "metric": "P/B Ratio",
-        "value": -10.42,
-        "industryAvg": 4.43
+        "value": -10.57,
+        "industryAvg": 4.44
       },
       {
         "metric": "ROE",

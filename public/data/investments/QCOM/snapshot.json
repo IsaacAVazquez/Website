@@ -1,10 +1,10 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.6404,
-      "ttmPe": 20.65,
-      "marketCap": 188568800000,
-      "psRatio": 4.28,
-      "pbRatio": 6.82,
+      "ttmPe": 20.34,
+      "marketCap": 185725470000,
+      "psRatio": 4.21,
+      "pbRatio": 6.72,
       "pegRatio": 0.12
     },
     "profitability": {
@@ -5804,25 +5804,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.85,
+      "wacc": 16.830000000000002,
       "costOfEquity": 18.14,
       "costOfDebt": 1.17,
       "taxRate": 19,
-      "beta": 1.6786,
-      "marketCap": 188568800000
+      "beta": 1.6801,
+      "marketCap": 185725470000
     },
     "beta": {
-      "beta5y": 1.6786
+      "beta5y": 1.6801
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 162.86,
-        "high": 163.79,
-        "low": 161.67,
-        "close": 163.45,
-        "volume": 4833100
-      },
       {
         "date": "2025-10-20",
         "open": 163.34,
@@ -7830,6 +7822,14 @@
         "low": 172.37,
         "close": 173.53,
         "volume": 10554800
+      },
+      {
+        "date": "2026-10-20",
+        "open": 171.51,
+        "high": 177.05,
+        "low": 171.13,
+        "close": 175.71,
+        "volume": 6848300
       }
     ],
     "news": [
@@ -7850,19 +7850,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
-        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
-        "publisher": "Just Auto",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "24997f10-d503-364e-97df-c293ed247214",
         "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
+        "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
+        "publisher": "Just Auto",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
         "type": "STORY"
       },
       {
@@ -7981,18 +7981,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.65,
-        "industryAvg": 27.98
+        "value": 20.34,
+        "industryAvg": 27.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.28,
-        "industryAvg": 13.33
+        "value": 4.21,
+        "industryAvg": 13.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.82,
-        "industryAvg": 11.57
+        "value": 6.72,
+        "industryAvg": 11.37
       },
       {
         "metric": "ROE",

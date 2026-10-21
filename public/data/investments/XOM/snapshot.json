@@ -1,10 +1,10 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-10-16T13:49:32.098641+00:00",
+  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-16T13:49:32.098641+00:00",
+    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
     "sections": {
-      "price": "2026-10-19"
+      "price": "2026-10-20"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.7709,
-      "ttmPe": 22.48,
-      "marketCap": 718284160000,
-      "psRatio": 1.99,
-      "pbRatio": 2.77,
+      "ttmPe": 22.89,
+      "marketCap": 731360320000,
+      "psRatio": 2.03,
+      "pbRatio": 2.82,
       "pegRatio": 0.2
     },
     "profitability": {
@@ -5191,21 +5191,13 @@
       "costOfEquity": 6.54,
       "costOfDebt": 0.54,
       "taxRate": 24,
-      "beta": 0.1848,
-      "marketCap": 718284160000
+      "beta": 0.1829,
+      "marketCap": 731360320000
     },
     "beta": {
-      "beta5y": 0.1848
+      "beta5y": 0.1829
     },
     "price": [
-      {
-        "date": "2025-10-17",
-        "open": 111.63,
-        "high": 112.91,
-        "low": 111.18,
-        "close": 112.24,
-        "volume": 13460100
-      },
       {
         "date": "2025-10-20",
         "open": 112,
@@ -7213,23 +7205,31 @@
         "low": 177.23,
         "close": 178.28,
         "volume": 11157900
+      },
+      {
+        "date": "2026-10-20",
+        "open": 179.9,
+        "high": 180.26,
+        "low": 174.92,
+        "close": 177.86,
+        "volume": 13496400
       }
     ],
     "news": [
-      {
-        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
-        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
-        "type": "STORY"
-      },
       {
         "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
+        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
         "type": "STORY"
       },
       {
@@ -7249,19 +7249,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
-        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
+        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
         "type": "STORY"
       },
       {
@@ -7273,19 +7273,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
-        "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
         "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
+        "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
         "type": "STORY"
       },
       {
@@ -7362,18 +7362,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.48,
-        "industryAvg": 12.48
+        "value": 22.89,
+        "industryAvg": 12.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.99,
-        "industryAvg": 1.07
+        "value": 2.03,
+        "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.77,
-        "industryAvg": 1.7
+        "value": 2.82,
+        "industryAvg": 1.74
       },
       {
         "metric": "ROE",
