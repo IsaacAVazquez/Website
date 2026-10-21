@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-21
 
 - Track résumé downloads, contact clicks, and tool use in GA4 ([#631](https://github.com/IsaacAVazquez/Website/pull/631)).
+- Curate the work page to four lead projects and two write-ups ([#617](https://github.com/IsaacAVazquez/Website/pull/617)).
 
 ---
 
