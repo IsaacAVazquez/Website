@@ -11,6 +11,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Third ponytail audit cut ([#629](https://github.com/IsaacAVazquez/Website/pull/629)).
 - Bump numpy from 2.5.3 to 2.5.4 in /scripts ([#624](https://github.com/IsaacAVazquez/Website/pull/624)).
 - Drop eslint-disable comments for the removed react-refresh plugin ([#632](https://github.com/IsaacAVazquez/Website/pull/632)).
+- Hold the contact links at 44px where Firefox rounds the padding down ([#634](https://github.com/IsaacAVazquez/Website/pull/634)).
 
 ---
 
