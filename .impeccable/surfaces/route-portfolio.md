@@ -95,3 +95,6 @@ The h1 is still 106.56px and runs y 188 to 482, which the critique's other P1 na
 ### Clarify pass, 2026-10-19
 
 The route had four names: Work in the header and footer, "Isaac Vazquez Projects" in the document title and the ItemList, "All projects" on Home, and "work index" on Contact. It is Work in all of them now ("Isaac Vazquez Work | AI, Fintech and Analytics", "All the work", "the Work page"), and the metadata description says what the curated page holds. A tool landing still marks Dashboards current with no in-page way back to Work; with Dashboards as the inventory since the distill pass that is coherent, and adding a return link would be a change to the tool shell across every project route, so it was left alone and is recorded here rather than done.
+### Layout pass, 2026-10-19
+
+The h1 moved from `c97-poster` to the `c97-poster-sm` step in the same pass that took `/dashboards` down, so the two index pages share one heading size with each other and with the run headings. At 1440x900 the first lead card is at y 587 (was 778 after the distill and 877 before it); at 390 it is at y 568. Page height 3,248px at 1440 and 4,048px at 390.

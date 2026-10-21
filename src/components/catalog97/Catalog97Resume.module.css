@@ -79,7 +79,12 @@
 
 .role {
   font-family: var(--c97-font-display);
-  font-size: var(--c97-fs-small);
+  /*
+   * 13px, the spec's size for the title, and under the 14px section heading
+   * at every width. --c97-fs-small grew to 15px at desktop and put every h3
+   * above its h2.
+   */
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.2;
 }

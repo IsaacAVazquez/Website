@@ -184,7 +184,7 @@ export function Catalog97Dashboards({
           }}
         >
           <div style={{ flex: "1 1 32rem", minWidth: 0 }}>
-            <h1 className="c97-poster">
+            <h1 className="c97-poster-sm">
               {toolCount} instruments I built, and I keep them running.
             </h1>
           </div>
@@ -321,10 +321,16 @@ export function Catalog97Dashboards({
         aria-label="Instruments by category"
       >
         {/*
-          Each banner's 96px min-height carries through its 5 / 1 aspect ratio
-          into a 480px minimum width, which ran the page 118px past a 390
-          phone. The minmax(0, 1fr) track stops the column growing to fit it,
-          and the banner's max-width stops it overhanging the column.
+          Each banner's min-height carries through its aspect ratio into a
+          minimum width (96px at 5 / 1 was 480px, which ran the page 118px past
+          a 390 phone). The minmax(0, 1fr) track stops the column growing to
+          fit it, and the banner's max-width stops it overhanging the column.
+
+          The banner is an 8 / 1 strip since 2026-10-19. At 5 / 1 it was 216px
+          per run at 1440, and with the h1 already down to the 56px step it was
+          the single largest thing between the heading and the first tile,
+          which sat at y 909 against a 900px fold. The strip keeps the riso
+          plate as the seam of each run and gives back about 80px per run.
         */}
         <div
           className="c97-shell"
@@ -360,8 +366,8 @@ export function Catalog97Dashboards({
               <div
                 style={{
                   position: "relative",
-                  aspectRatio: "5 / 1",
-                  minHeight: "96px",
+                  aspectRatio: "8 / 1",
+                  minHeight: "72px",
                   maxWidth: "100%",
                   overflow: "hidden",
                   marginBottom: "var(--c97-sp-3)",
@@ -451,7 +457,16 @@ export function Catalog97Dashboards({
           data-seam="deckle"
         >
           <div className="c97-shell">
-            <h2 className="c97-kicker">Pull log · times PT</h2>
+            {/*
+              A poster h2 like every other section heading on the route. As
+              `c97-kicker` this h2 rendered at 11px between 56px siblings and
+              under its own 22px h3 neighbours, the kicker-as-heading defect
+              the August sweeps fixed on the other six routes.
+            */}
+            <h2 className="c97-poster-sm">Pull log</h2>
+            <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
+              Times PT
+            </p>
             <dl
               style={{
                 marginTop: "var(--c97-sp-2)",
