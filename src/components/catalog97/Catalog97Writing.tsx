@@ -199,7 +199,12 @@ export function Catalog97Writing({
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
         <div className="c97-shell">
-          <h1 className="c97-poster">
+          {/*
+            The 56px step, like /portfolio and /dashboards since 2026-10-19. At
+            the 107px poster step this ran four lines and pushed the two
+            featured pieces to the second screen on a Read page.
+          */}
+          <h1 className="c97-poster-sm">
             I write about product management, AI, and a lot of sports.
           </h1>
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
