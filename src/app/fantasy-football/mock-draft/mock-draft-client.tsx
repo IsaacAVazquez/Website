@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import {
   Fragment,
   useCallback,
@@ -734,6 +735,7 @@ export function MockDraftClient() {
 
   const draftPlayer = (player: Player) => {
     if (!room.makeUserPick(player)) return;
+    trackToolAction({ tool_name: "mock_draft", action: "draft_pick" });
     setSearchQuery("");
     setTransition(null);
     // The clicked control leaves the DOM with the pick, so move focus to the

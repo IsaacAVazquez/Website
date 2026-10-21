@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import { emitBrowserStorageChange, subscribeBrowserStorage } from "@/lib/browserStorage";
 import type { Player } from "@/types";
@@ -159,10 +160,12 @@ export function useBestBallDraft({
   }, [commitState]);
 
   const startDraft = useCallback(() => {
+    trackToolAction({ tool_name: "best_ball_draft", action: "draft_start" });
     commitState((current) => startBestBallDraft(current));
   }, [commitState]);
 
   const draftPlayer = useCallback((player: Player) => {
+    trackToolAction({ tool_name: "best_ball_draft", action: "draft_pick" });
     commitState((current) => addBestBallDraftPick(current, player));
   }, [commitState]);
 
