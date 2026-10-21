@@ -13,9 +13,9 @@ import type {
   MBARoleTypeFilter,
   MBASortOrder,
 } from "@/types/mba-jobs";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export const MBA_JOBS_ROUTE = "/mba-internship-notifications";
+const MBA_JOBS_ROUTE = "/mba-internship-notifications";
 
 // Cards rendered per "Show more" step on the live grid, and the slice the page
 // serializes for the first paint. A job card runs about 800px tall on a phone,
@@ -23,7 +23,7 @@ export const MBA_JOBS_ROUTE = "/mba-internship-notifications";
 export const JOB_PAGE_SIZE = 12;
 
 export const VIEW_OPTIONS = ["feed", "applications", "candidates"] as const;
-export const EXTERNAL_OPTIONS = ["off", "on"] as const;
+const EXTERNAL_OPTIONS = ["off", "on"] as const;
 export const SORT_OPTIONS = ["relevance", "newest", "oldest"] as const;
 export const CATEGORY_OPTIONS = ["all", "big-tech", "fintech", "startup"] as const;
 export const ROLE_TYPE_OPTIONS = ["all", "internship", "full-time"] as const;
@@ -74,64 +74,33 @@ export const DEFAULT_MBA_JOBS_STATE: MBAJobsSearchState = {
   roleFamily: "all",
 };
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-function isValidOption<T extends string>(
-  value: string | null,
-  options: readonly T[]
-): value is T {
-  return !!value && (options as readonly string[]).includes(value);
-}
-
 export function normalizeMBAJobsState(input: SearchParamInput): MBAJobsSearchState {
-  const rawView = readParam(input, "view");
-  const rawExternal = readParam(input, "external");
-  const rawQuery = readParam(input, "q");
-  const rawLocation = readParam(input, "location");
-  const rawSort = readParam(input, "sort");
-  const rawCategory = readParam(input, "category");
-  const rawRoleType = readParam(input, "roleType");
-  const rawRoleFamily = readParam(input, "roleFamily");
+  const d = DEFAULT_MBA_JOBS_STATE;
   return {
-    view: isValidOption(rawView, VIEW_OPTIONS)
-      ? rawView
-      : DEFAULT_MBA_JOBS_STATE.view,
-    external: isValidOption(rawExternal, EXTERNAL_OPTIONS)
-      ? rawExternal
-      : DEFAULT_MBA_JOBS_STATE.external,
-    q: rawQuery?.trim() ?? DEFAULT_MBA_JOBS_STATE.q,
-    location: rawLocation?.trim() ?? DEFAULT_MBA_JOBS_STATE.location,
-    sort: isValidOption(rawSort, SORT_OPTIONS)
-      ? rawSort
-      : DEFAULT_MBA_JOBS_STATE.sort,
-    category: isValidOption(rawCategory, CATEGORY_OPTIONS)
-      ? rawCategory
-      : DEFAULT_MBA_JOBS_STATE.category,
-    roleType: isValidOption(rawRoleType, ROLE_TYPE_OPTIONS)
-      ? rawRoleType
-      : DEFAULT_MBA_JOBS_STATE.roleType,
-    roleFamily: isValidOption(rawRoleFamily, ROLE_FAMILY_OPTIONS)
-      ? rawRoleFamily
-      : DEFAULT_MBA_JOBS_STATE.roleFamily,
+    view: readEnum(input, "view", VIEW_OPTIONS, d.view),
+    external: readEnum(input, "external", EXTERNAL_OPTIONS, d.external),
+    q: readParam(input, "q")?.trim() ?? d.q,
+    location: readParam(input, "location")?.trim() ?? d.location,
+    sort: readEnum(input, "sort", SORT_OPTIONS, d.sort),
+    category: readEnum(input, "category", CATEGORY_OPTIONS, d.category),
+    roleType: readEnum(input, "roleType", ROLE_TYPE_OPTIONS, d.roleType),
+    roleFamily: readEnum(input, "roleFamily", ROLE_FAMILY_OPTIONS, d.roleFamily),
   };
 }
 
 export function buildMBAJobsHref(state: MBAJobsSearchState): string {
-  const params = new URLSearchParams();
-  const query = state.q.trim();
-  const location = state.location.trim();
-  if (state.view !== DEFAULT_MBA_JOBS_STATE.view) params.set("view", state.view);
-  if (state.external !== DEFAULT_MBA_JOBS_STATE.external)
-    params.set("external", state.external);
-  if (query) params.set("q", query);
-  if (location) params.set("location", location);
-  if (state.sort !== DEFAULT_MBA_JOBS_STATE.sort) params.set("sort", state.sort);
-  if (state.category !== DEFAULT_MBA_JOBS_STATE.category)
-    params.set("category", state.category);
-  if (state.roleType !== DEFAULT_MBA_JOBS_STATE.roleType)
-    params.set("roleType", state.roleType);
-  if (state.roleFamily !== DEFAULT_MBA_JOBS_STATE.roleFamily)
-    params.set("roleFamily", state.roleFamily);
-  const qs = params.toString();
-  return qs ? `${MBA_JOBS_ROUTE}?${qs}` : MBA_JOBS_ROUTE;
+  return buildHref(
+    MBA_JOBS_ROUTE,
+    {
+      view: state.view,
+      external: state.external,
+      q: state.q.trim(),
+      location: state.location.trim(),
+      sort: state.sort,
+      category: state.category,
+      roleType: state.roleType,
+      roleFamily: state.roleFamily,
+    },
+    DEFAULT_MBA_JOBS_STATE
+  );
 }

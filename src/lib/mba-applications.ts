@@ -214,7 +214,7 @@ function isInterviewOutcome(value: unknown): value is MBAInterviewOutcome {
   );
 }
 
-export function sanitizeFacts(value: unknown): MBAApplicationFact[] {
+function sanitizeFacts(value: unknown): MBAApplicationFact[] {
   if (!Array.isArray(value)) return [];
   const facts: MBAApplicationFact[] = [];
   for (const item of value) {
@@ -228,7 +228,7 @@ export function sanitizeFacts(value: unknown): MBAApplicationFact[] {
   return facts;
 }
 
-export function sanitizeStatusHistory(value: unknown): MBAApplicationStatusEvent[] {
+function sanitizeStatusHistory(value: unknown): MBAApplicationStatusEvent[] {
   if (!Array.isArray(value)) return [];
   return mergeStatusHistory(value.flatMap((item) => {
     if (!isRecord(item) || !isStatus(item.status)) return [];
@@ -277,7 +277,7 @@ function normalizeApplyUrlForKey(value: string): string {
 }
 
 /** One dedupe rule for feed jobs, candidates, and tracked applications. */
-export function buildMBAJobKey(job: Pick<MBAJob, "id" | "applyUrl">): string {
+function buildMBAJobKey(job: Pick<MBAJob, "id" | "applyUrl">): string {
   const applyUrl = normalizeApplyUrlForKey(job.applyUrl);
   if (applyUrl) return `url:${applyUrl}`;
   return `job:${job.id}`;
@@ -388,7 +388,7 @@ export function createManualMBAApplication(
   };
 }
 
-export function sanitizeJobSnapshot(value: unknown, fallbackTimestamp: string): MBAApplicationJobSnapshot | null {
+function sanitizeJobSnapshot(value: unknown, fallbackTimestamp: string): MBAApplicationJobSnapshot | null {
   if (!isRecord(value)) return null;
 
   const title = cleanText(value.title);
@@ -725,7 +725,7 @@ export function buildMBAJobCandidatesFile(
   };
 }
 
-export const DEFAULT_MBA_JOB_SEARCH_TARGETS: MBAJobSearchTargets = {
+const DEFAULT_MBA_JOB_SEARCH_TARGETS: MBAJobSearchTargets = {
   roleFamilies: [...MBA_ROLE_FAMILIES],
   locations: [],
   excludeTitleTerms: [],

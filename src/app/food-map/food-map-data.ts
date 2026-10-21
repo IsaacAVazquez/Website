@@ -140,7 +140,7 @@ export interface FoodMapCuisine {
   label: string;
 }
 
-export const FOOD_MAP_CUISINES: readonly FoodMapCuisine[] = [
+const FOOD_MAP_CUISINES: readonly FoodMapCuisine[] = [
   { id: "barbecue", label: "Barbecue" },
   { id: "tacos", label: "Tacos" },
   { id: "mexican", label: "Mexican" },

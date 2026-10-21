@@ -89,7 +89,7 @@ export interface TransitStationBoard {
   status?: TransitSectionStatus;
 }
 
-export interface TransitHeroStats {
+interface TransitHeroStats {
   lineCount: number;
   stationCount: number;
   activeAdvisories: number;
@@ -97,7 +97,7 @@ export interface TransitHeroStats {
   trainsTracked: number;
 }
 
-export interface TransitSystem {
+interface TransitSystem {
   name: string;
   abbr: string;
   /** Attribution string shown in the UI. */
@@ -111,7 +111,7 @@ export interface TransitSystem {
 
 export type TransitSectionStatus = "fresh" | "stale-fallback" | "unavailable";
 
-export interface TransitSectionStatuses {
+interface TransitSectionStatuses {
   advisories: TransitSectionStatus;
   elevator: TransitSectionStatus;
   departures: TransitSectionStatus;

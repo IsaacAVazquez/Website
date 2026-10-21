@@ -1,7 +1,7 @@
 import type { WorldCupFixture, WorldCupKnockoutRound } from "@/types/worldCup";
 
 /** One fixture positioned inside its bracket column. */
-export interface BracketFixtureNode {
+interface BracketFixtureNode {
   fixture: WorldCupFixture;
   /** 0-based position within the column. */
   slot: number;
@@ -12,7 +12,7 @@ export interface BracketFixtureNode {
   feedsTo: string | null;
 }
 
-export interface BracketColumn {
+interface BracketColumn {
   id: string;
   name: string;
   order: number;

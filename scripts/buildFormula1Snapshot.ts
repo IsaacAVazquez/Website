@@ -146,6 +146,22 @@ export async function buildFormula1Snapshot(
     };
   }
 
+  // A same-season table shorter than both a full grid and the committed one is
+  // a truncated OpenF1 answer, not a grid change. Keep the committed tables.
+  if (
+    existingSnapshot &&
+    existingSnapshot.season === snapshot.season &&
+    (snapshot.driverStandings.length <
+      Math.min(10, existingSnapshot.driverStandings.length) ||
+      snapshot.constructorStandings.length <
+        Math.min(5, existingSnapshot.constructorStandings.length))
+  ) {
+    logger.log(
+      `Formula 1 build returned ${snapshot.driverStandings.length} drivers and ${snapshot.constructorStandings.length} constructors. Keeping the existing snapshot.`
+    );
+    return { snapshotPath, snapshot: existingSnapshot };
+  }
+
   // OpenF1 answers a result it cannot find with a 404, which the build reads as
   // not published yet, so one bad response would blank a finished round.
   const meetings = snapshot.meetings.map((meeting) =>

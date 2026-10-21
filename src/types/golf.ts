@@ -37,7 +37,7 @@ export interface GolfTournament {
   generatedAt: string;
 }
 
-export interface GolfHeroStats {
+interface GolfHeroStats {
   leaderName: string | null;
   leaderScore: number | null;
   playersUnderPar: number;
@@ -76,13 +76,13 @@ export interface GolfSummary {
   players: GolfPlayerOption[];
 }
 
-export interface GolfPlayerProfile {
+interface GolfPlayerProfile {
   id: string;
   name: string;
   country: string;
 }
 
-export interface GolfRoundBreakdown {
+interface GolfRoundBreakdown {
   round: number;
   score: number;
   /** Null for a round in progress the feed gave no live figure for. */
@@ -97,7 +97,7 @@ export interface GolfScoringBreakdown {
   doubleBogeys: number;
 }
 
-export interface GolfPlayerTournamentStatus {
+interface GolfPlayerTournamentStatus {
   position: string;
   totalToPar: number;
   today: number | null;

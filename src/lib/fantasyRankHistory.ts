@@ -12,9 +12,9 @@ import { isFiniteNumber, isRecord, roundTo } from "@/lib/utils";
  * player moved up the board (ranked higher, or drafted earlier).
  */
 
-export const FANTASY_RANK_HISTORY_VERSION = 1;
+const FANTASY_RANK_HISTORY_VERSION = 1;
 /** The longest movement window; the windows list below derives from it. */
-export const FANTASY_RANK_HISTORY_WINDOW_DAYS = 14;
+const FANTASY_RANK_HISTORY_WINDOW_DAYS = 14;
 /**
  * Days of readings to keep. Three days of grace past the longest window keeps
  * a gapped refresh cadence resolvable: a 15-day-old reading still answers the
@@ -22,12 +22,12 @@ export const FANTASY_RANK_HISTORY_WINDOW_DAYS = 14;
  */
 export const FANTASY_RANK_HISTORY_RETENTION_DAYS = FANTASY_RANK_HISTORY_WINDOW_DAYS + 3;
 
-export interface FantasyRankHistoryReading {
+interface FantasyRankHistoryReading {
   ecr?: number;
   adp?: number;
 }
 
-export interface FantasyRankHistoryDay {
+interface FantasyRankHistoryDay {
   /** UTC calendar day, YYYY-MM-DD. */
   date: string;
   players: Record<string, FantasyRankHistoryReading>;

@@ -55,7 +55,8 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   "formula-1": definition(
     "formula-1",
     "src/data/formula1Snapshot.json",
-    ["generatedAt"]
+    ["generatedAt"],
+    { minimums: { meetings: 10, "seasonMetrics.totalRaces": 10, defaultMeetingKey: 1 } }
   ),
   "github-trending": definition(
     "github-trending",

@@ -1,4 +1,4 @@
-export type TripKind = "domestic" | "international";
+type TripKind = "domestic" | "international";
 
 /**
  * Destination buckets coarse enough to hang a rough fare band and a booking

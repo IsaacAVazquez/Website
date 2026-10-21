@@ -51,7 +51,7 @@ import {
 import { useMBAApplications, useMBAJobCandidates } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useClientNow } from "@/hooks/useClientNow";
-import { UPDATED_AT_FORMATTER, formatStableDateTime, toLocalDateKey as getTodayDateKey } from "@/lib/date-formatters";
+import { DATE_TIME_FORMATTER, formatStableDateTime, toLocalDateKey as getTodayDateKey } from "@/lib/date-formatters";
 import { downloadFile as downloadTextFile } from "@/lib/downloadFile";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
@@ -150,7 +150,7 @@ const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
 
 function formatFetchedAt(d: Date | null): string {
   if (!d) return "—";
-  return formatStableDateTime(UPDATED_AT_FORMATTER, d);
+  return formatStableDateTime(DATE_TIME_FORMATTER, d);
 }
 
 function getPostedAtTime(value: string): number {
@@ -637,7 +637,7 @@ function JobCard({
                 {job.location} ·{" "}
                 <time
                   dateTime={job.postedAt}
-                  title={`Posted ${formatStableDateTime(UPDATED_AT_FORMATTER, new Date(job.postedAt))}`}
+                  title={`Posted ${formatStableDateTime(DATE_TIME_FORMATTER, new Date(job.postedAt))}`}
                 >
                   {relativePostedAt}
                 </time>

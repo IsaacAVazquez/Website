@@ -9,9 +9,9 @@ import {
   isFantasyVorpTeamSize,
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export type FantasyRankingMode = "consensus" | "vorp";
+type FantasyRankingMode = "consensus" | "vorp";
 
 export interface FantasySearchState {
   position: FantasyRoutePosition;
@@ -29,14 +29,6 @@ export const DEFAULT_FANTASY_STATE: FantasySearchState = {
   query: "",
 };
 
-function normalizeFantasyQuery(value: string | null): string {
-  return (value ?? "").replace(/\s+/g, " ").trim().slice(0, 80);
-}
-
-function normalizeFantasyRanking(value: string | null): FantasyRankingMode {
-  return value?.trim().toLowerCase() === "vorp" ? "vorp" : "consensus";
-}
-
 function normalizeFantasyTeams(value: string | null): FantasyVorpTeamSize {
   const parsed = Number.parseInt(value ?? "", 10);
   return isFantasyVorpTeamSize(parsed) ? parsed : 12;
@@ -46,9 +38,9 @@ export function normalizeFantasyState(input: SearchParamInput): FantasySearchSta
   return {
     position: normalizeFantasyRoutePosition(readParam(input, "position")),
     scoring: normalizeFantasyRouteScoring(readParam(input, "scoring")),
-    ranking: normalizeFantasyRanking(readParam(input, "ranking")),
+    ranking: readParam(input, "ranking")?.trim().toLowerCase() === "vorp" ? "vorp" : "consensus",
     teams: normalizeFantasyTeams(readParam(input, "teams")),
-    query: normalizeFantasyQuery(readParam(input, "q")),
+    query: (readParam(input, "q") ?? "").replace(/\s+/g, " ").trim().slice(0, 80),
   };
 }
 
@@ -56,23 +48,20 @@ export function buildFantasyHref(
   state: FantasySearchState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(baseSearchParams ? Array.from(baseSearchParams.entries()) : []);
-  params.set("position", state.position);
-  params.set("scoring", state.scoring);
-  // The board dropped its list/tiers toggle; strip the dead param from
-  // inherited links instead of carrying it forward.
-  params.delete("view");
-  if (state.ranking === "vorp") {
-    params.set("ranking", "vorp");
-    params.set("teams", String(state.teams));
-  } else {
-    params.delete("ranking");
-    params.delete("teams");
-  }
-  if (state.query) {
-    params.set("q", state.query);
-  } else {
-    params.delete("q");
-  }
-  return `/fantasy-football?${params.toString()}`;
+  const vorp = state.ranking === "vorp";
+  return buildHref(
+    "/fantasy-football",
+    {
+      position: state.position,
+      scoring: state.scoring,
+      // The board dropped its list/tiers toggle; strip the dead param from
+      // inherited links instead of carrying it forward.
+      view: null,
+      ranking: vorp ? "vorp" : null,
+      teams: vorp ? state.teams : null,
+      q: state.query,
+    },
+    { q: "" },
+    baseSearchParams
+  );
 }

@@ -18,18 +18,18 @@ import type {
 
 export const REDRAFT_DRAFT_DECISION_MODEL_VERSION = "redraft-decision-v2";
 
-export const REDRAFT_DECISION_POSITIONS = ["QB", "RB", "WR", "TE"] as const;
-export type RedraftDecisionPosition = (typeof REDRAFT_DECISION_POSITIONS)[number];
-export type RedraftDecisionNeed = "starter" | "depth" | "filled";
-export type RedraftDecisionCoverage = "supported" | "limited" | "unavailable";
+const REDRAFT_DECISION_POSITIONS = ["QB", "RB", "WR", "TE"] as const;
+type RedraftDecisionPosition = (typeof REDRAFT_DECISION_POSITIONS)[number];
+type RedraftDecisionNeed = "starter" | "depth" | "filled";
+type RedraftDecisionCoverage = "supported" | "limited" | "unavailable";
 export type RedraftDecisionOrder = "snake" | "linear";
 
-export interface RedraftDecisionPick {
+interface RedraftDecisionPick {
   teamNumber: number;
   player: Player;
 }
 
-export interface RedraftDecisionRoom {
+interface RedraftDecisionRoom {
   teams: number;
   rounds: number;
   userTeam: number;
@@ -55,7 +55,7 @@ export interface RedraftDraftDecisionInput {
   vorpValues?: ReadonlyMap<string, { value: number }>;
 }
 
-export interface RedraftReplacementReading {
+interface RedraftReplacementReading {
   player: Player;
   expertRank: number;
   value: number;
@@ -66,7 +66,7 @@ export interface RedraftReplacementReading {
   coverage: RedraftDecisionCoverage;
 }
 
-export interface RedraftTierReading {
+interface RedraftTierReading {
   tier: number | null;
   positionRank: number | null;
   remaining: number;
@@ -77,7 +77,7 @@ export interface RedraftTierReading {
   coverage: RedraftDecisionCoverage;
 }
 
-export interface RedraftWaitSurvivor {
+interface RedraftWaitSurvivor {
   player: Player;
   expertRank: number;
   rankCost: number;

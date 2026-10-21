@@ -92,7 +92,7 @@ export interface Formula1SeasonMetrics {
   sprintWeekends: number;
 }
 
-export interface Formula1SnapshotSourceUrls {
+interface Formula1SnapshotSourceUrls {
   docs: string;
   apiBase: string;
   meetings: string;

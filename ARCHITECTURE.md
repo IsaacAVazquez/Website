@@ -192,7 +192,7 @@ Important groups:
 - US sports and golf: `/api/mlb/teams/[teamId]`, `/api/nba/teams/[teamId]`, `/api/nfl/teams/[teamId]`, `/api/golf/players/[playerId]`, `/api/formula-1/meetings/[meetingId]`
 - World Cup: `/api/world-cup/teams/[teamId]`
 - transit and geo: `/api/bay-area-transit/summary`, `/api/bay-area-transit/stations/[stationId]`, `/api/earthquake-pulse/summary`
-- jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`, and development-only `/api/job-search`
+- jobs: `/api/mba-jobs` and development-only `/api/job-search`
 - content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`
 
 Current caveat:

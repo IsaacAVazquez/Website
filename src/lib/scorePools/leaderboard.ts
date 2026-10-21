@@ -224,7 +224,7 @@ export function recommendPick(
  * stands out) and when the pick's expected points sit well clear of the
  * field's. A genuine coin flip reads low no matter what the pick is.
  */
-export function assessConfidence(
+function assessConfidence(
   recommended: RankedPick,
   epField: number,
   comparison: ComparisonDistribution,

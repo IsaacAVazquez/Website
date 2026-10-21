@@ -3,9 +3,9 @@ import {
   SOURCE_META,
   type NewsFeedId,
 } from "@/lib/news-pulse-sources";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, type SearchParamInput } from "@/lib/searchParams";
 
-export const NEWS_PULSE_ROUTE = "/news-pulse";
+const NEWS_PULSE_ROUTE = "/news-pulse";
 
 export type NewsSource = "all" | NewsFeedId;
 
@@ -18,7 +18,7 @@ export interface NewsPulseSearchState {
 
 export const SOURCE_OPTIONS: readonly NewsSource[] = ["all", ...NEWS_SOURCE_IDS];
 
-export const DEFAULT_NEWS_PULSE_STATE: NewsPulseSearchState = {
+const DEFAULT_NEWS_PULSE_STATE: NewsPulseSearchState = {
   source: "all",
 };
 
@@ -30,17 +30,11 @@ export const SOURCE_LABELS: Record<NewsSource, string> = {
 } as Record<NewsSource, string>;
 
 export function normalizeNewsPulseState(input: SearchParamInput): NewsPulseSearchState {
-  const rawSource = readParam(input, "source");
   return {
-    source:
-      rawSource && SOURCE_OPTIONS.includes(rawSource as NewsSource)
-        ? (rawSource as NewsSource)
-        : DEFAULT_NEWS_PULSE_STATE.source,
+    source: readEnum(input, "source", SOURCE_OPTIONS, DEFAULT_NEWS_PULSE_STATE.source),
   };
 }
 
 export function buildNewsPulseHref(state: NewsPulseSearchState): string {
-  return state.source === DEFAULT_NEWS_PULSE_STATE.source
-    ? NEWS_PULSE_ROUTE
-    : `${NEWS_PULSE_ROUTE}?source=${state.source}`;
+  return buildHref(NEWS_PULSE_ROUTE, { source: state.source }, DEFAULT_NEWS_PULSE_STATE);
 }

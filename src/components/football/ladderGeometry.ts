@@ -14,7 +14,7 @@ export interface PointsLadderRow {
   points: number;
 }
 
-export interface PointsLadderMark {
+interface PointsLadderMark {
   id: string;
   position: number;
   points: number;
@@ -27,7 +27,7 @@ export interface PointsLadderMark {
   gapFromLeader: number;
 }
 
-export interface PointsLadderZoneLine {
+interface PointsLadderZoneLine {
   /** The line sits directly below this table position. */
   afterPosition: number;
   y: number;

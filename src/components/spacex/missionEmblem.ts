@@ -7,7 +7,7 @@
  * across renders and reloads without persisting anything.
  */
 
-export type MissionPatchGlyph = "capsule" | "tri" | "ring" | "constellation" | "dot";
+type MissionPatchGlyph = "capsule" | "tri" | "ring" | "constellation" | "dot";
 
 export interface MissionPatchSpec {
   glyph: MissionPatchGlyph;
@@ -36,9 +36,6 @@ export function derivePatchSpec(seed: string): MissionPatchSpec {
     tilt: ((hash >> 16) % 61) - 30,
   };
 }
-
-export type { MissionVehicleFamily } from "@/lib/spacexVehicleFamily";
-export { deriveVehicleFamily, VEHICLE_SHORT_CODE } from "@/lib/spacexVehicleFamily";
 
 export type MissionCardStatus = "success" | "failed" | "upcoming" | "pending";
 

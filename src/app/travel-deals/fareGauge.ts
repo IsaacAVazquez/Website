@@ -16,7 +16,7 @@ import { daysBetween } from "@/lib/travelDeals";
 /** Padding added to each side of the low..high band, as a fraction of its span. */
 const DOMAIN_MARGIN_FRACTION = 0.2;
 
-export interface FareGaugeBand {
+interface FareGaugeBand {
   low: number;
   typical: number;
   high: number;
@@ -61,7 +61,7 @@ export function fareGauge(quoted: number, region: DestinationRegion): FareGauge 
 /** Days of margin added beyond the sweet-spot window so it never touches the strip's edge. */
 const STRIP_MARGIN_DAYS = 10;
 
-export type BookingStripPosition = "before" | "inside" | "after";
+type BookingStripPosition = "before" | "inside" | "after";
 
 export interface BookingStrip {
   /** The strip's full width, in days before departure. */

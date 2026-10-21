@@ -20,6 +20,39 @@ export function readParam(input: SearchParamInput, key: string): string | null {
   return rawValue ?? null;
 }
 
+/** The `key` param when it is one of `options`, else `fallback` (which may be null). */
+export function readEnum<T extends string, F = T>(
+  input: SearchParamInput,
+  key: string,
+  options: readonly T[],
+  fallback: F
+): T | F {
+  const value = readParam(input, key);
+  return value !== null && (options as readonly string[]).includes(value) ? (value as T) : fallback;
+}
+
+type HrefValue = string | number | null | undefined;
+
+/**
+ * `route` plus `params` as its query, over a copy of `base`. A param is written
+ * when it is non-null and differs from its default and deleted otherwise, so a
+ * default or cleared value drops out of an inherited query too.
+ */
+export function buildHref<P extends Record<string, HrefValue>>(
+  route: string,
+  params: P,
+  defaults: Partial<Record<keyof P, HrefValue>> = {},
+  base?: URLSearchParams | ReadonlyURLSearchParams
+): string {
+  const query = new URLSearchParams(base ? Array.from(base.entries()) : []);
+  for (const [key, value] of Object.entries(params)) {
+    if (value == null || value === defaults[key as keyof P]) query.delete(key);
+    else query.set(key, String(value));
+  }
+  const text = query.toString();
+  return `${route}${text ? `?${text}` : ""}`;
+}
+
 /** Resolves an id or alias (any case, padded) to its canonical id, or null. */
 export function canonicalizeId(
   id: string | null | undefined,

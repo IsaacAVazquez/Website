@@ -69,9 +69,9 @@ describe("snapshot quality minimums", () => {
     (artifact) => artifact?.minimums
   );
 
-  it("gates the ten surfaces whose workflow checks were only counts", () => {
+  it("gates the eleven surfaces whose workflow checks were only counts", () => {
     expect(gated.map((artifact) => artifact!.surface).sort()).toEqual(
-      ["bay-area-transit", "earthquake", "github-trending", "golf", "la-liga", "mlb", "nba", "nfl", "premier-league", "world-cup"]
+      ["bay-area-transit", "earthquake", "formula-1", "github-trending", "golf", "la-liga", "mlb", "nba", "nfl", "premier-league", "world-cup"]
     );
   });
 

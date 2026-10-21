@@ -29,12 +29,6 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ## Environment And Auth
 
-### The email digest route returns `503` or `401`
-
-- `503` means `MBA_DIGEST_SECRET` is not set in the Netlify environment
-- `401` means the request did not send that secret in the `x-mba-digest-secret` header
-- The public page no longer has a digest button, since a browser cannot hold the secret and every click got `401`. Call the route from a scheduled job that sends the header
-
 ### `/api/job-search` returns `404` or `409`
 
 - `404` is expected in production. In development the route answers only a server started with plain `npm run dev`, whose launcher binds to `localhost` and turns private sync on, so a server started with `next dev` directly, with a hostname flag, or with `JOB_SEARCH_PRIVATE_SYNC=0` also answers `404`, and so does a request whose Host header is not `localhost`, `127.0.0.1`, or `[::1]`, or whose Origin is another site. In those servers the tracker page doesn't call the route at all, so a 404 there comes from a request made some other way.

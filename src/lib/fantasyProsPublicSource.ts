@@ -23,7 +23,7 @@ type FantasyProsRankingType = "draft" | "best" | "weekly" | "ros";
  * in-season FantasyPros publishes no single overall board, so FLEX stands in
  * for the Overall tab and has to keep its own identity through validation.
  */
-export type FantasyProsBoardPosition = FantasyPublicPosition | "FLEX";
+type FantasyProsBoardPosition = FantasyPublicPosition | "FLEX";
 
 interface FantasyProsConsensusOptions {
   scoringFormat: ScoringFormat;
@@ -591,7 +591,7 @@ export function assertFantasyProsRefreshCoverage(
  * retry logic in `scripts/buildFantasyPositionData.ts` can decide whether the
  * request is retryable and honor a `Retry-After` hint.
  */
-export class FantasyProsPublicFetchError extends Error {
+class FantasyProsPublicFetchError extends Error {
   readonly status: number;
   readonly headers: Headers;
   readonly url: string;

@@ -1,6 +1,6 @@
 import { useEffect, useRef, type RefObject } from "react";
 
-export const MODAL_FOCUSABLE =
+const MODAL_FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [role="tab"], [tabindex]:not([tabindex="-1"])';
 
 /**

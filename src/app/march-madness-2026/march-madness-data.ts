@@ -76,7 +76,7 @@ export interface RoundOneMatchup {
   tags: string[];
 }
 
-export interface LaterRoundMatchup {
+interface LaterRoundMatchup {
   t1: string;
   t2: string;
   w: number;

@@ -224,14 +224,6 @@ export function formatRankValue(value: number | string | undefined): string {
   return value?.trim() ? value : "--";
 }
 
-export function formatRange(player: Player): string {
-  if (player.minRank === undefined || player.maxRank === undefined) {
-    return "--";
-  }
-
-  return `${formatRankValue(player.minRank)} to ${formatRankValue(player.maxRank)}`;
-}
-
 export function formatOwnership(ownership: number | undefined): string {
   if (!Number.isFinite(ownership)) {
     return "Not listed";
@@ -763,7 +755,7 @@ export function shortName(player: Player): string {
   return `${parts[0][0]}. ${parts.slice(1).join(" ")}`;
 }
 
-export interface LineupSlot {
+interface LineupSlot {
   slot: string;
   eligible: string[];
   player: Player | null;

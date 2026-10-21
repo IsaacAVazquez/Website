@@ -9,7 +9,7 @@ import type {
   TransitStationBoard,
   TransitSummary,
 } from "@/types/bayAreaTransit";
-import { slugify } from "@/lib/utils";
+import { slugify, toNumber } from "@/lib/utils";
 import { retryLinear, isTransientFetchError } from "@/lib/fetchRetry";
 import { setTimeout as delay } from "node:timers/promises";
 
@@ -120,13 +120,6 @@ function readCdata(value: Cdata): string {
   if (value == null) return "";
   if (typeof value === "string") return value.trim();
   return (value["#cdata-section"] ?? "").trim();
-}
-
-function toNumber(value: string | number | null | undefined): number {
-  if (value == null) return 0;
-  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
-  const parsed = Number(String(value).trim());
-  return Number.isFinite(parsed) ? parsed : 0;
 }
 
 /** BART returns "Leaving" or a numeric minutes string. */

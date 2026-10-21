@@ -8,7 +8,7 @@ export interface TreemapStartup {
   valuation: number | null;
 }
 
-export interface ValuationTile {
+interface ValuationTile {
   id: string;
   name: string;
   valuation: number;

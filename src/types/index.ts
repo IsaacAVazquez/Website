@@ -132,16 +132,6 @@ export interface RedraftLineupSettings {
   DST: number;
 }
 
-export interface TierGroup {
-  tier: number;
-  players: Player[];
-  color: string;
-  minRank: number;
-  maxRank: number;
-  avgRank: number;
-  label?: string; // Optional tier label
-}
-
 // Draft Tracker Types
 export interface DraftSettings {
   totalTeams: number;

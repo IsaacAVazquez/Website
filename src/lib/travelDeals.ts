@@ -32,7 +32,7 @@ export function getRegion(regionId: RegionId): DestinationRegion | undefined {
 
 // --- Booking window ---------------------------------------------------------
 
-export type BookingStatus =
+type BookingStatus =
   | "departed"
   | "too-early"
   | "watching"

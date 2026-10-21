@@ -46,7 +46,7 @@ function resolveCompanyName(
 }
 
 /** Return the most recent non-null value for a field in a time-series array */
-export function latest(arr: unknown, field: string): number | undefined {
+function latest(arr: unknown, field: string): number | undefined {
   if (!Array.isArray(arr)) return undefined;
   const found = [...arr]
     .reverse()

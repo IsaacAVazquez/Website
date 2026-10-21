@@ -3,13 +3,13 @@ import type { GolfCutState, GolfLeaderboardEntry } from "@/types/golf";
 /** Tone for a score relative to par. Under par prints in golf's red; even and over stay ink. */
 export type ParTone = "under" | "even" | "over";
 
-export interface LeaderboardSlatRound {
+interface LeaderboardSlatRound {
   score: number | null;
   toPar: number | null;
   tone: ParTone | null;
 }
 
-export interface LeaderboardSlat {
+interface LeaderboardSlat {
   playerId: string;
   position: string;
   name: string;

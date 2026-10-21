@@ -15,12 +15,6 @@ export type OddsFormat = "decimal" | "american" | "fractional";
 /** How the bookmaker margin gets stripped. Proportional is the default. */
 export type DevigMethod = "proportional" | "power";
 
-/** A single price as entered or fetched, before normalization. */
-export interface RawPrice {
-  value: number | string;
-  format: OddsFormat;
-}
-
 /** Moneyline in decimal odds. `draw` present only for three-way markets. */
 export interface MoneylineOdds {
   home: number;

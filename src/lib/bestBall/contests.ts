@@ -11,7 +11,7 @@ import type {
 // is when the BBM VII field figures were captured, and entries keep growing
 // until the draft deadline, so the two drift apart between audits.
 export const BEST_BALL_RULES_AS_OF = "2026-08-23";
-export const BEST_BALL_ECONOMICS_AS_OF = "2026-08-09";
+const BEST_BALL_ECONOMICS_AS_OF = "2026-08-09";
 const UNDERDOG_OFFICIAL_RULES_URL = "https://app.underdogsports.com/rules";
 const UNDERDOG_OFFICIAL_TERMS_URL = "https://legal.underdogsports.com/";
 const BBM_VII_OFFICIAL_RULES_URL =

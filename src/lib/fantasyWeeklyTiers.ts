@@ -28,7 +28,7 @@ export interface WeeklyTier {
 }
 
 /** The published mean when there is one, the whole-number consensus rank otherwise. */
-export function getWeeklyAverage(player: FantasyWeeklyPlayer): number {
+function getWeeklyAverage(player: FantasyWeeklyPlayer): number {
   return player.rankAverage ?? player.rank;
 }
 

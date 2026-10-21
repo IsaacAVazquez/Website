@@ -1,7 +1,7 @@
 // ─── Poll metadata ────────────────────────────────────────────────────────────
 
 export type SampleType = "LV" | "RV" | "A"; // Likely Voters, Registered Voters, Adults
-export type PollMethodology = "online" | "phone" | "mixed" | "ivr" | "unknown";
+type PollMethodology = "online" | "phone" | "mixed" | "ivr" | "unknown";
 
 export interface BasePoll {
   id: string;
@@ -29,7 +29,7 @@ export interface ApprovalDataPoint {
   disapprove: number;
 }
 
-export interface ApprovalAverage {
+interface ApprovalAverage {
   approve: number;
   disapprove: number;
   net: number; // approve − disapprove
@@ -43,7 +43,7 @@ export interface GenericBallotPoll extends BasePoll {
   other: number;
 }
 
-export interface GenericBallotAverage {
+interface GenericBallotAverage {
   dem: number;
   rep: number;
   margin: number; // positive = D+, negative = R+

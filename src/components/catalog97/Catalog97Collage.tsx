@@ -35,7 +35,7 @@ export interface CollagePanel {
  * A finished print that fills its frame and scales in as it reveals. Given a
  * `paint`, it carries the paint reveal, cropped to the photo's own position.
  */
-export function Catalog97PrintPlate({
+function Catalog97PrintPlate({
   src,
   sizes,
   alt = "",

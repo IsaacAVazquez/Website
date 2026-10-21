@@ -122,7 +122,7 @@ export function upcomingDepartures(
 }
 
 /** A readable swatch border that still shows bright BART colors on light paper. */
-export function swatchStyle(hexColor: string): CSSProperties {
+function swatchStyle(hexColor: string): CSSProperties {
   return {
     background: hexColor,
     border: "1px solid color-mix(in srgb, var(--c97-ink) 16%, transparent)",

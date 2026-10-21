@@ -5,9 +5,10 @@ import type {
   GitHubTrendingClientSnapshot,
   GitHubTrendingSortKey,
 } from "@/types/githubTrending";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { enumValue } from "@/lib/utils";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export const GITHUB_TRENDING_ROUTE = "/github-trending-pulse";
+const GITHUB_TRENDING_ROUTE = "/github-trending-pulse";
 
 export const GITHUB_TRENDING_KIND_OPTIONS = ["language", "topic"] as const;
 export const GITHUB_TRENDING_SORT_OPTIONS = [
@@ -33,13 +34,6 @@ export const GITHUB_TRENDING_SORT_LABELS: Record<
   updated: "Updated",
 };
 
-const VALID_KINDS = new Set<GitHubTrendingSegmentKind>(
-  GITHUB_TRENDING_KIND_OPTIONS
-);
-const VALID_SORTS = new Set<GitHubTrendingSortKey>(
-  GITHUB_TRENDING_SORT_OPTIONS
-);
-
 export const DEFAULT_GITHUB_TRENDING_STATE: GitHubTrendingRouteState = {
   kind: "language",
   segment: "all",
@@ -50,20 +44,12 @@ export const DEFAULT_GITHUB_TRENDING_STATE: GitHubTrendingRouteState = {
 export function normalizeGitHubTrendingState(
   input: SearchParamInput
 ): GitHubTrendingRouteState {
-  const kind = readParam(input, "view");
-  const segment = readParam(input, "segment");
-  const sort = readParam(input, "sort");
-  const repo = readParam(input, "repo");
-  const repoId = repo ? Number.parseInt(repo, 10) : Number.NaN;
+  const repoId = Number.parseInt(readParam(input, "repo") ?? "", 10);
 
   return {
-    kind: VALID_KINDS.has((kind ?? "") as GitHubTrendingSegmentKind)
-      ? (kind as GitHubTrendingSegmentKind)
-      : DEFAULT_GITHUB_TRENDING_STATE.kind,
-    segment: segment && segment.trim().length > 0 ? segment.trim() : "all",
-    sort: VALID_SORTS.has((sort ?? "") as GitHubTrendingSortKey)
-      ? (sort as GitHubTrendingSortKey)
-      : DEFAULT_GITHUB_TRENDING_STATE.sort,
+    kind: readEnum(input, "view", GITHUB_TRENDING_KIND_OPTIONS, DEFAULT_GITHUB_TRENDING_STATE.kind),
+    segment: readParam(input, "segment")?.trim() || "all",
+    sort: readEnum(input, "sort", GITHUB_TRENDING_SORT_OPTIONS, DEFAULT_GITHUB_TRENDING_STATE.sort),
     selectedRepoId: Number.isFinite(repoId) ? repoId : null,
   };
 }
@@ -77,16 +63,12 @@ export function resolveGitHubTrendingState(
   const validRepoIds = new Set(snapshot.repositories.map((repo) => repo.id));
 
   return {
-    kind: VALID_KINDS.has(state.kind)
-      ? state.kind
-      : DEFAULT_GITHUB_TRENDING_STATE.kind,
+    kind: enumValue(state.kind, GITHUB_TRENDING_KIND_OPTIONS, DEFAULT_GITHUB_TRENDING_STATE.kind),
     segment:
       state.segment === "all" || validSegments.has(state.segment)
         ? state.segment
         : "all",
-    sort: VALID_SORTS.has(state.sort)
-      ? state.sort
-      : DEFAULT_GITHUB_TRENDING_STATE.sort,
+    sort: enumValue(state.sort, GITHUB_TRENDING_SORT_OPTIONS, DEFAULT_GITHUB_TRENDING_STATE.sort),
     selectedRepoId:
       state.selectedRepoId && validRepoIds.has(state.selectedRepoId)
         ? state.selectedRepoId
@@ -98,34 +80,15 @@ export function buildGitHubTrendingHref(
   state: GitHubTrendingRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    GITHUB_TRENDING_ROUTE,
+    {
+      view: state.kind,
+      segment: state.segment,
+      sort: state.sort,
+      repo: state.selectedRepoId || null,
+    },
+    { ...DEFAULT_GITHUB_TRENDING_STATE, view: DEFAULT_GITHUB_TRENDING_STATE.kind },
+    baseSearchParams
   );
-
-  if (state.kind === DEFAULT_GITHUB_TRENDING_STATE.kind) {
-    params.delete("view");
-  } else {
-    params.set("view", state.kind);
-  }
-
-  if (state.segment === DEFAULT_GITHUB_TRENDING_STATE.segment) {
-    params.delete("segment");
-  } else {
-    params.set("segment", state.segment);
-  }
-
-  if (state.sort === DEFAULT_GITHUB_TRENDING_STATE.sort) {
-    params.delete("sort");
-  } else {
-    params.set("sort", state.sort);
-  }
-
-  if (!state.selectedRepoId) {
-    params.delete("repo");
-  } else {
-    params.set("repo", state.selectedRepoId.toString());
-  }
-
-  const query = params.toString();
-  return `${GITHUB_TRENDING_ROUTE}${query ? `?${query}` : ""}`;
 }

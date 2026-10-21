@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useEffect, useRef, useCallback, useState } from "react";
+import { useCallback } from "react";
 import type {
   InvestmentCapabilities,
   InvestmentDataEnvelope,
@@ -13,6 +13,7 @@ import {
   clearClientInvestmentDataCaches,
   getClientInvestmentSnapshot,
 } from "@/lib/investmentsClientData";
+import { useKeyedRequest, type KeyedRequestAction } from "./useKeyedRequest";
 
 interface UseStockDataState<T> {
   data: T | null;
@@ -49,11 +50,7 @@ type StockDataError = Error & {
   freshness?: InvestmentSnapshotFreshness | null;
 };
 
-type StockDataAction<T> =
-  | { type: "reset" }
-  | { type: "start"; preserveData: boolean }
-  | { type: "success"; envelope: InvestmentDataEnvelope<T> }
-  | { type: "error"; error: StockDataError; preserveData: boolean };
+type StockDataAction<T> = KeyedRequestAction<InvestmentDataEnvelope<T>>;
 
 function buildEnvelopeFromSnapshot<T>(
   snapshot: InvestmentSnapshot,
@@ -99,7 +96,7 @@ function stockDataReducer<T>(
     case "reset":
       return { ...(EMPTY_STATE as UseStockDataState<T>) };
     case "start":
-      if (action.preserveData && state.data !== null) {
+      if (action.preserve && state.data !== null) {
         return {
           ...state,
           isLoading: true,
@@ -114,17 +111,17 @@ function stockDataReducer<T>(
       };
     case "success":
       return {
-        data: action.envelope.data,
+        data: action.result.data,
         isLoading: false,
         error: null,
         isNotFetched: false,
-        lastUpdated: action.envelope.lastUpdated,
-        freshness: action.envelope.freshness ?? null,
-        source: action.envelope.source,
-        capabilities: action.envelope.capabilities,
+        lastUpdated: action.result.lastUpdated,
+        freshness: action.result.freshness ?? null,
+        source: action.result.source,
+        capabilities: action.result.capabilities,
       };
-    case "error":
-      if (action.preserveData && state.data !== null) {
+    case "error": {
+      if (action.preserve && state.data !== null) {
         return {
           ...state,
           isLoading: false,
@@ -133,16 +130,18 @@ function stockDataReducer<T>(
         };
       }
 
+      const error = action.error as StockDataError;
       return {
         data: null,
         isLoading: false,
-        error: action.error.message,
-        isNotFetched: action.error.status === 404,
-        lastUpdated: action.error.lastUpdated ?? null,
-        freshness: action.error.freshness ?? null,
-        source: action.error.source ?? null,
-        capabilities: action.error.capabilities ?? {},
+        error: error.message,
+        isNotFetched: error.status === 404,
+        lastUpdated: error.lastUpdated ?? null,
+        freshness: error.freshness ?? null,
+        source: error.source ?? null,
+        capabilities: error.capabilities ?? {},
       };
+    }
     default:
       return state;
   }
@@ -152,55 +151,20 @@ export function useStockData<T>(
   symbol: string | null,
   section: InvestmentSection | string
 ): UseStockDataReturn<T> {
-  const [state, dispatch] = useReducer(stockDataReducer<T>, EMPTY_STATE as UseStockDataState<T>);
-  const latestRequestId = useRef(0);
-  const previousResourceKey = useRef<string | null>(null);
-  const [fetchKey, setFetchKey] = useState(0);
-
-  useEffect(() => {
-    if (!symbol) {
-      previousResourceKey.current = null;
-      dispatch({ type: "reset" });
-      return;
-    }
-
-    let cancelled = false;
-    const upperSymbol = symbol.toUpperCase();
-    const resourceKey = `${upperSymbol}:${section}`;
-    const preserveData = previousResourceKey.current === resourceKey;
-    previousResourceKey.current = resourceKey;
-    const requestId = latestRequestId.current + 1;
-    latestRequestId.current = requestId;
-
-    dispatch({ type: "start", preserveData });
-
-    fetchSection<T>(upperSymbol, section)
-      .then((envelope) => {
-        if (cancelled || latestRequestId.current !== requestId) return;
-        dispatch({ type: "success", envelope });
-      })
-      .catch((err: StockDataError) => {
-        if (cancelled || latestRequestId.current !== requestId) return;
-        dispatch({ type: "error", error: err, preserveData });
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [symbol, section, fetchKey]);
-
-  const refetch = useCallback(() => {
-    if (!symbol) return;
-    clearClientInvestmentDataCaches();
-    setFetchKey((k) => k + 1);
-  }, [symbol]);
-
-  if (!symbol) {
-    return {
-      ...(EMPTY_STATE as UseStockDataState<T>),
-      refetch,
-    };
-  }
+  // The key carries the section so a section switch on the same symbol reads
+  // as a new resource rather than a refetch that keeps the old data showing.
+  const key = symbol ? `${symbol.toUpperCase()}:${section}` : null;
+  const load = useCallback(
+    (key: string) => fetchSection<T>(key.split(":")[0], section),
+    [section]
+  );
+  const { state, refetch } = useKeyedRequest(
+    key,
+    load,
+    stockDataReducer<T>,
+    EMPTY_STATE as UseStockDataState<T>,
+    clearClientInvestmentDataCaches
+  );
 
   return { ...state, refetch };
 }

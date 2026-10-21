@@ -5,21 +5,10 @@ import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { RENT_VS_BUY_BOUNDS, RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
-import { formatCompactCurrency } from "@/lib/retirement/format";
+import { formatCompactCurrency, formatCurrency } from "@/lib/retirement/format";
 import { fitLabel } from "@/app/travel-deals/fareGauge";
 import { netWorthChart } from "./netWorthChart";
 import "./rent-vs-buy.css";
-
-function formatCurrency(value: number) {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    // Both bounds, since an engine before Intl.NumberFormat v3 throws when the
-    // maximum falls under the currency's default minimum of two.
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-}
 
 const plural = (count: number, unit: string) => `${count} ${unit}${count === 1 ? "" : "s"}`;
 

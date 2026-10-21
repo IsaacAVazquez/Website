@@ -12,7 +12,7 @@ import { groupBy } from "@/lib/utils";
 
 export type ScoreboardSquare = "W" | "L";
 
-export interface ScoreboardTeam {
+interface ScoreboardTeam {
   id: string;
   code: string;
   name: string;

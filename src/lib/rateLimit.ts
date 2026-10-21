@@ -5,88 +5,44 @@ interface RateLimitConfig {
   uniqueTokenPerInterval: number; // Max number of unique tokens per interval
 }
 
-interface RateLimitStore {
-  [key: string]: {
-    count: number;
-    resetTime: number;
-  };
+interface RateLimitResult {
+  success: boolean;
+  limit: number;
+  remaining: number;
+  reset: number;
 }
 
-class RateLimiter {
-  private store: RateLimitStore = {};
-  private config: RateLimitConfig;
-
-  constructor(config: RateLimitConfig) {
-    this.config = config;
-  }
-
-  private getKey(identifier: string): string {
-    return `rate_limit:${identifier}`;
-  }
-
-  private cleanupExpired(): void {
-    const now = Date.now();
-    Object.keys(this.store).forEach(key => {
-      if (this.store[key].resetTime < now) {
-        delete this.store[key];
+function createRateLimiter({ interval, uniqueTokenPerInterval: limit }: RateLimitConfig) {
+  const store = new Map<string, { count: number; resetTime: number }>();
+  return {
+    check(identifier: string): RateLimitResult {
+      const now = Date.now();
+      for (const [key, entry] of store) if (entry.resetTime < now) store.delete(key);
+      const entry = store.get(identifier) ?? { count: 0, resetTime: now + interval };
+      store.set(identifier, entry);
+      if (entry.count >= limit) {
+        return { success: false, limit, remaining: 0, reset: entry.resetTime };
       }
-    });
-  }
-
-  check(identifier: string): { success: boolean; limit: number; remaining: number; reset: number } {
-    this.cleanupExpired();
-    
-    const key = this.getKey(identifier);
-    const now = Date.now();
-    const resetTime = now + this.config.interval;
-
-    if (!this.store[key] || this.store[key].resetTime < now) {
-      this.store[key] = {
-        count: 1,
-        resetTime: resetTime
-      };
-      return {
-        success: true,
-        limit: this.config.uniqueTokenPerInterval,
-        remaining: this.config.uniqueTokenPerInterval - 1,
-        reset: resetTime
-      };
-    }
-
-    if (this.store[key].count >= this.config.uniqueTokenPerInterval) {
-      return {
-        success: false,
-        limit: this.config.uniqueTokenPerInterval,
-        remaining: 0,
-        reset: this.store[key].resetTime
-      };
-    }
-
-    this.store[key].count++;
-    return {
-      success: true,
-      limit: this.config.uniqueTokenPerInterval,
-      remaining: this.config.uniqueTokenPerInterval - this.store[key].count,
-      reset: this.store[key].resetTime
-    };
-  }
-
-  reset(): void {
-    this.store = {};
-  }
+      entry.count += 1;
+      return { success: true, limit, remaining: limit - entry.count, reset: entry.resetTime };
+    },
+    reset(): void {
+      store.clear();
+    },
+  };
 }
 
 // Public market-data fan-out is materially more expensive than ordinary API
 // reads. Keep this separate so unrelated endpoints do not expand the quote
 // allowance. The source migration should add a shared edge/provider quota;
 // this is the local process guard.
-export const investmentsQuoteRateLimiter = new RateLimiter({
+export const investmentsQuoteRateLimiter = createRateLimiter({
   interval: 60 * 1000,
   // Seven 25-symbol batches cover the entire 151-symbol curated universe once.
   uniqueTokenPerInterval: 7,
 });
 
-export const fantasyRateLimiter = new RateLimiter({
+export const fantasyRateLimiter = createRateLimiter({
   interval: 60 * 1000, // 1 minute
   uniqueTokenPerInterval: 10 // 10 requests per minute for fantasy data
 });
@@ -95,19 +51,14 @@ export const fantasyRateLimiter = new RateLimiter({
 // mount/focus refreshes, so a real user can legitimately burst well past a
 // handful of requests per minute. 30/min stays comfortably above that while
 // still capping abusive fan-out (each uncached request hits ~30 boards).
-export const mbaJobsRateLimiter = new RateLimiter({
+export const mbaJobsRateLimiter = createRateLimiter({
   interval: 60 * 1000,
   uniqueTokenPerInterval: 30,
 });
 
-export const emailDigestRateLimiter = new RateLimiter({
-  interval: 60 * 60 * 1000, // 1 hour
-  uniqueTokenPerInterval: 3 // 3 email sends per client per hour
-});
-
 // Signing up is a one-time action, so a handful of attempts an hour covers a
 // typo and a retry while capping automated fan-out at the form.
-export const newsletterRateLimiter = new RateLimiter({
+export const newsletterRateLimiter = createRateLimiter({
   interval: 60 * 60 * 1000,
   uniqueTokenPerInterval: 5,
 });
@@ -162,7 +113,7 @@ export function getClientIdentifier(request: NextRequest): string {
 // (the newsletter form reads it straight out of the body), so those pass their
 // own wording rather than the machine-facing default.
 export function rateLimitResponse(
-  result: ReturnType<RateLimiter["check"]>,
+  result: RateLimitResult,
   message = "Rate limit exceeded. Please try again later."
 ) {
   return new Response(

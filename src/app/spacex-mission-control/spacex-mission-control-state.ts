@@ -1,20 +1,11 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
-import type {
-  MissionControlPanel,
-  MissionControlSearchState,
-  MissionControlStatus,
-} from "@/types/spacex";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import type { MissionControlSearchState } from "@/types/spacex";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export const MISSION_CONTROL_ROUTE = "/spacex-mission-control";
+const MISSION_CONTROL_ROUTE = "/spacex-mission-control";
 
-const VALID_STATUS = new Set<MissionControlStatus>(["upcoming", "past"]);
-const VALID_PANELS = new Set<MissionControlPanel>([
-  "overview",
-  "vehicle",
-  "payloads",
-  "links",
-]);
+const STATUSES = ["upcoming", "past"] as const;
+const PANELS = ["overview", "vehicle", "payloads", "links"] as const;
 const LAUNCH_ID_PATTERN =
   /^(?:[a-f0-9]{24}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 
@@ -32,18 +23,10 @@ function normalizeLaunchId(rawValue: string | null): string | null {
 export function normalizeMissionControlState(
   input: SearchParamInput
 ): MissionControlSearchState {
-  const status = readParam(input, "status");
-  const launch = readParam(input, "launch");
-  const panel = readParam(input, "panel");
-
   return {
-    status: VALID_STATUS.has((status ?? "") as MissionControlStatus)
-      ? (status as MissionControlStatus)
-      : DEFAULT_MISSION_CONTROL_STATE.status,
-    launch: normalizeLaunchId(launch),
-    panel: VALID_PANELS.has((panel ?? "") as MissionControlPanel)
-      ? (panel as MissionControlPanel)
-      : DEFAULT_MISSION_CONTROL_STATE.panel,
+    status: readEnum(input, "status", STATUSES, DEFAULT_MISSION_CONTROL_STATE.status),
+    launch: normalizeLaunchId(readParam(input, "launch")),
+    panel: readEnum(input, "panel", PANELS, DEFAULT_MISSION_CONTROL_STATE.panel),
   };
 }
 
@@ -51,28 +34,10 @@ export function buildMissionControlHref(
   state: MissionControlSearchState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    MISSION_CONTROL_ROUTE,
+    { status: state.status, launch: state.launch || null, panel: state.panel },
+    DEFAULT_MISSION_CONTROL_STATE,
+    baseSearchParams
   );
-
-  if (state.status === DEFAULT_MISSION_CONTROL_STATE.status) {
-    params.delete("status");
-  } else {
-    params.set("status", state.status);
-  }
-
-  if (state.launch) {
-    params.set("launch", state.launch);
-  } else {
-    params.delete("launch");
-  }
-
-  if (state.panel === DEFAULT_MISSION_CONTROL_STATE.panel) {
-    params.delete("panel");
-  } else {
-    params.set("panel", state.panel);
-  }
-
-  const query = params.toString();
-  return `${MISSION_CONTROL_ROUTE}${query ? `?${query}` : ""}`;
 }

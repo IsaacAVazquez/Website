@@ -16,7 +16,7 @@ export function getDraftTelemetryStorageKey(draftId: string): string {
   return `${DRAFT_TELEMETRY_STORAGE_PREFIX}${draftId}`;
 }
 
-export interface DraftTelemetryWaitCandidate {
+interface DraftTelemetryWaitCandidate {
   playerId: string;
   playerName: string;
   rank: number;

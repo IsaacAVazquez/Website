@@ -1,11 +1,9 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { GolfRouteState, GolfView } from "@/types/golf";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { buildHref, readEnum, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const GOLF_ROUTE = "/golf";
 export const GOLF_VIEW_OPTIONS = ["leaderboard", "players"] as const;
-
-const VALID_VIEWS = new Set<GolfView>(GOLF_VIEW_OPTIONS);
 
 export const DEFAULT_GOLF_STATE: GolfRouteState = {
   view: "leaderboard",
@@ -18,23 +16,14 @@ export const GOLF_VIEW_LABELS: Record<GolfView, string> = {
 };
 
 function normalizePlayerParam(player: string | null): string | null {
-  if (!player) {
-    return null;
-  }
-
-  const trimmed = player.trim();
+  const trimmed = player?.trim() ?? "";
   return /^[a-z0-9-]+$/.test(trimmed) ? trimmed : null;
 }
 
 export function normalizeGolfState(input: SearchParamInput): GolfRouteState {
-  const view = readParam(input, "view");
-  const player = readParam(input, "player");
-
   return {
-    view: VALID_VIEWS.has((view ?? "") as GolfView)
-      ? (view as GolfView)
-      : DEFAULT_GOLF_STATE.view,
-    player: normalizePlayerParam(player),
+    view: readEnum(input, "view", GOLF_VIEW_OPTIONS, DEFAULT_GOLF_STATE.view),
+    player: normalizePlayerParam(readParam(input, "player")),
   };
 }
 
@@ -42,22 +31,10 @@ export function buildGolfHref(
   state: GolfRouteState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+  return buildHref(
+    GOLF_ROUTE,
+    { view: state.view, player: state.player || null },
+    DEFAULT_GOLF_STATE,
+    baseSearchParams
   );
-
-  if (state.view === DEFAULT_GOLF_STATE.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (state.player) {
-    params.set("player", state.player);
-  } else {
-    params.delete("player");
-  }
-
-  const query = params.toString();
-  return `${GOLF_ROUTE}${query ? `?${query}` : ""}`;
 }

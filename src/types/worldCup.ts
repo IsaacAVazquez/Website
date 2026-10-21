@@ -5,13 +5,13 @@ export interface WorldCupRouteState {
   team: string | null;
 }
 
-export interface WorldCupVenue {
+interface WorldCupVenue {
   city: string;
   country: string;
   stadium: string;
 }
 
-export interface WorldCupTournament {
+interface WorldCupTournament {
   /** Human-readable competition name, e.g. "2026 FIFA World Cup". */
   name: string;
   /** Season key, e.g. "2026". */
@@ -140,7 +140,7 @@ export interface WorldCupFormSummary {
   goalsAgainst: number;
 }
 
-export interface WorldCupTeamProfile {
+interface WorldCupTeamProfile {
   id: string;
   name: string;
   code: string;

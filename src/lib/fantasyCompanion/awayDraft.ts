@@ -2,23 +2,23 @@ import { countRedraftStartingSlots } from "@/lib/redraftLineup";
 import type { Player, RedraftLineupSettings } from "@/types";
 import { redraftSourceRank } from "./recommendations";
 
-export type AwayDraftPlatform = "espn" | "sleeper";
+type AwayDraftPlatform = "espn" | "sleeper";
 
-export type AwayDraftPosition = "QB" | "RB" | "WR" | "TE" | "K" | "DST";
+type AwayDraftPosition = "QB" | "RB" | "WR" | "TE" | "K" | "DST";
 
-export interface AwayDraftQueueEntry {
+interface AwayDraftQueueEntry {
   player: Player;
   rank: number;
   sourceRank: number;
 }
 
-export interface AwayDraftPositionLimit {
+interface AwayDraftPositionLimit {
   position: AwayDraftPosition;
   minimum: number;
   maximum: number;
 }
 
-export interface AwayDraftRoundRule {
+interface AwayDraftRoundRule {
   round: number;
   position: "K" | "DST";
 }

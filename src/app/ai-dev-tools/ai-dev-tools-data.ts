@@ -32,7 +32,7 @@ export type AiDevToolCadence =
   | "managed"
   | "slow";
 
-export interface AiDevToolSource {
+interface AiDevToolSource {
   label: string;
   url: string;
 }

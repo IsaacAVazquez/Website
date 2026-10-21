@@ -1,7 +1,8 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
 import { normalizeContestId, type BestBallContestId } from "@/lib/bestBall";
-import { readParam, type SearchParamInput } from "@/lib/searchParams";
+import { enumValue } from "@/lib/utils";
+import { buildHref, readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export type BestBallPositionFilter = "all" | "QB" | "RB" | "WR" | "TE";
 
@@ -11,16 +12,7 @@ export interface BestBallSearchState {
   query: string;
 }
 
-const POSITIONS = new Set<BestBallPositionFilter>(["all", "QB", "RB", "WR", "TE"]);
-
-function normalizePosition(value: string | null): BestBallPositionFilter {
-  if (!value) return "all";
-  const normalized = value.toUpperCase();
-  if (normalized === "ALL") return "all";
-  return POSITIONS.has(normalized as BestBallPositionFilter)
-    ? (normalized as BestBallPositionFilter)
-    : "all";
-}
+const POSITIONS = ["QB", "RB", "WR", "TE"] as const;
 
 /**
  * The URL's form of a search query. The client compares the typed value against
@@ -34,7 +26,7 @@ export function normalizeBestBallQuery(value: string | null): string {
 export function normalizeBestBallState(input: SearchParamInput): BestBallSearchState {
   return {
     contest: normalizeContestId(readParam(input, "contest")),
-    position: normalizePosition(readParam(input, "position")),
+    position: enumValue(readParam(input, "position")?.toUpperCase(), POSITIONS, "all"),
     query: normalizeBestBallQuery(readParam(input, "q")),
   };
 }
@@ -43,14 +35,10 @@ export function buildBestBallHref(
   state: BestBallSearchState,
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams,
 ): string {
-  const params = new URLSearchParams(baseSearchParams ? Array.from(baseSearchParams.entries()) : []);
-  params.set("contest", state.contest);
-
-  if (state.position === "all") params.delete("position");
-  else params.set("position", state.position.toLowerCase());
-
-  if (state.query) params.set("q", state.query);
-  else params.delete("q");
-
-  return `/fantasy-football/best-ball?${params.toString()}`;
+  return buildHref(
+    "/fantasy-football/best-ball",
+    { contest: state.contest, position: state.position.toLowerCase(), q: state.query },
+    { position: "all", q: "" },
+    baseSearchParams,
+  );
 }

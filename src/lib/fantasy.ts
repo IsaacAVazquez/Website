@@ -24,7 +24,7 @@ const _FANTASY_ROUTE_SCORING = ["ppr", "half_ppr", "standard"] as const;
 export const FANTASY_SNAPSHOT_SCHEMA_VERSION = 9;
 /** Rows the rankings board renders per page, and the size of the server-rendered seed. */
 export const FANTASY_RANKINGS_PAGE_SIZE = 40;
-export const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
+const DEFAULT_FANTASY_SNAPSHOT_SOURCE =
   "Published fantasy rankings snapshot generated from FantasyPros public consensus pages. Overall boards come from the public overall consensus page for each scoring format, while flex is derived locally from the published overall board.";
 
 export type FantasyRoutePosition = (typeof FANTASY_ROUTE_POSITIONS)[number];

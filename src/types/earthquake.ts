@@ -61,7 +61,7 @@ export interface RegionCount {
   strongestId: string | null;
 }
 
-export interface EarthquakeHeroStats {
+interface EarthquakeHeroStats {
   /** M2.5+ quakes in the past 24h, the same population as `total7d`. */
   total24h: number;
   /** M2.5+ quakes in the past 7 days. */

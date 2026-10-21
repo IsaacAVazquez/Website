@@ -32,7 +32,7 @@ import type { Player, RedraftLineupSettings } from "@/types";
 
 export const FANTASY_TRADE_MODEL_VERSION = "preseason-redraft-v1";
 export const FANTASY_TRADE_IN_SEASON_MODEL_VERSION = "in-season-redraft-v1";
-export type FantasyTradeBasis = "preseason" | "in-season";
+type FantasyTradeBasis = "preseason" | "in-season";
 
 /**
  * The rest-of-season board moves when any of its five experts updates. It was
@@ -62,7 +62,7 @@ const SUPPORTED_TEAM_COUNTS = new Set([8, 10, 12, 14, 16]);
 const SUPPORTED_ROSTER_SIZES = new Set([13, 14, 15, 16, 17, 18]);
 
 export type FantasyTradeCoverage = "supported" | "limited" | "insufficient";
-export type FantasyTradeVerdict =
+type FantasyTradeVerdict =
   | "balanced"
   | "leans-side-a"
   | "leans-side-b"
@@ -77,7 +77,7 @@ export interface FantasyTradeLeagueSettings {
   lineup: RedraftLineupSettings;
 }
 
-export interface FantasyTradeSideInput {
+interface FantasyTradeSideInput {
   playerIds: readonly string[];
 }
 
@@ -100,12 +100,12 @@ export interface FantasyTradeEvaluationInput {
   now?: Date;
 }
 
-export interface FantasyTradeValueRange {
+interface FantasyTradeValueRange {
   low: number;
   high: number;
 }
 
-export interface FantasyTradeReplacementCutoffs {
+interface FantasyTradeReplacementCutoffs {
   expertStarter: number | null;
   expertRoster: number | null;
   marketStarter: number | null;
@@ -144,7 +144,7 @@ export interface FantasyTradeSideEvaluation {
   valuedPlayerCount: number;
 }
 
-export interface FantasyTradeSourceSummary {
+interface FantasyTradeSourceSummary {
   expert: {
     asOf: string | null;
     freshness: FantasySnapshotStaleness;

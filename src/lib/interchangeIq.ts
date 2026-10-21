@@ -22,7 +22,7 @@ interface InterchangePlusProcessor {
   note: string;
 }
 
-export type Processor = FlatProcessor | InterchangePlusProcessor;
+type Processor = FlatProcessor | InterchangePlusProcessor;
 
 const PROCESSORS: Processor[] = [
   { id: "stripe", name: "Stripe", model: "Flat Rate", pctRate: 0.029, fixedFee: 0.3, note: "Standard online card rate" },

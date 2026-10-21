@@ -49,7 +49,7 @@ export function toDecimal(value: number | string, format: OddsFormat): number {
 }
 
 /** Raw implied probability of a decimal price, margin still included. */
-export function impliedProbability(decimal: number): number {
+function impliedProbability(decimal: number): number {
   if (!Number.isFinite(decimal) || decimal <= 1) {
     throw new Error(`Decimal odds must be greater than 1, got ${decimal}`);
   }

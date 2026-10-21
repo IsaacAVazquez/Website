@@ -105,7 +105,7 @@ export interface MlbPitchingLeaders {
   strikeouts: MlbLeader[];
 }
 
-export interface MlbSnapshotSourceUrls {
+interface MlbSnapshotSourceUrls {
   standings: string;
   schedule: string;
   leaders: string;

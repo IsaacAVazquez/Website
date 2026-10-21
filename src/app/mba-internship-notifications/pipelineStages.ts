@@ -7,7 +7,7 @@
 
 import type { MBAApplicationInsights } from "@/lib/mba-application-insights";
 
-export type PipelineStageKey = "applied" | "responded" | "interview" | "offer";
+type PipelineStageKey = "applied" | "responded" | "interview" | "offer";
 
 export interface PipelineStage {
   key: PipelineStageKey;

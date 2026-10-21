@@ -1,10 +1,9 @@
 "use client";
-/* eslint-disable react-refresh/only-export-components -- co-located constants are intentional */
 
 import React from "react";
 import { createPortal } from "react-dom";
 
-export const METRIC_DEFINITIONS: Record<string, string> = {
+const METRIC_DEFINITIONS: Record<string, string> = {
   // Valuation, all label variants
   "P/E TTM": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
   "P/E (TTM)": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",

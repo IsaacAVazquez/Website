@@ -377,7 +377,7 @@ function usePullOnResume(enabled: boolean, pull: () => void) {
  * `updatedAt` wins); a local edit pushes the whole list 500 ms later with the
  * last seen revision, and a 409 merges the server copy and retries once.
  */
-export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncState | null {
+function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncState | null {
   const enabled = privateSyncEnabled();
   const [state, setState] = useState<MBAPrivateSyncState>({ lastSyncedAt: null, error: null });
   const revisionRef = useRef("0");

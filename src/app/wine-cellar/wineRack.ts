@@ -1,7 +1,7 @@
 import type { WineEntry, WineType } from "@/types/wine";
 import { groupBy } from "@/lib/utils";
 
-export interface WineRackSlot {
+interface WineRackSlot {
   id: string;
   type: WineType;
   name: string;

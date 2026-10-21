@@ -29,26 +29,19 @@ Active secrets used by the running app and update scripts:
 |---|---|
 | `FOOTBALL_DATA_API_TOKEN` | football-data.org token used by football snapshot scripts. |
 | `FINNHUB_API_KEY` | Quote endpoint behind `/api/investments/quotes`. |
-| `RESEND_API_KEY` | Transactional email for the MBA internship digest and contact creation for the public newsletter signup. |
+| `RESEND_API_KEY` | Fallback key for contact creation on the public newsletter signup when `RESEND_CONTACTS_API_KEY` is unset. |
 | `RESEND_NEWSLETTER_SEGMENT_ID` | Optional Resend segment used to keep public newsletter signups grouped separately. |
-| `MBA_DIGEST_ALLOWED_RECIPIENTS` | Comma-separated email/domain allowlist for `/api/mba-jobs/email`, for example `name@example.com,@example.edu`; use `*` only if the public relay risk is intentional. |
-| `MBA_DIGEST_SECRET` | Shared secret required by `/api/mba-jobs/email` in the `x-mba-digest-secret` header. A browser cannot hold it, so the caller has to be a server or a scheduled job. |
 | `GOOGLE_SITE_VERIFICATION` | Optional; surfaced in metadata for Search Console verification. |
 | `SITE_URL` / `NEXT_PUBLIC_SITE_URL` | Canonical site URL for SEO and absolute links. |
 
 Rotation guidance:
 
-- rotate `MBA_DIGEST_SECRET` after any suspected exposure or hand-off
 - rotate third-party API keys (`FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
 - after rotation, verify the relevant secret store. Redeploy for runtime keys and rerun the affected GitHub Actions job for snapshot credentials
 
 ---
 
 ## API Surface
-
-### Operationally protected
-
-- `/api/mba-jobs/email` requires the `x-mba-digest-secret` header to match `MBA_DIGEST_SECRET`, compared in constant time, and answers `503` while that variable is unset. The recipient allowlist still applies after the secret passes
 
 ### Public, read-only endpoints
 
@@ -78,7 +71,6 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 
 ### Public, side-effect endpoints
 
-- `/api/mba-jobs/email` sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
 - `/api/newsletter/subscribe` creates a Resend contact from the public newsletter form. It validates that the parsed JSON payload is a non-null object before inspecting fields, returning HTTP 400 for malformed input.
 - `/api/job-search` is strictly development-only. It answers only when `NODE_ENV` is `development` and the server came from plain `npm run dev`, whose launcher binds to `localhost` and sets `JOB_SEARCH_PRIVATE_SYNC=1`, and it also requires a loopback Host header and, when one is sent, a matching Origin. It returns 404 in production and in every other case. It accesses only the gitignored `private/job-search/` directory to sync personal application and candidate state with local files, ensuring private job search data is never exposed in deployed builds.
 

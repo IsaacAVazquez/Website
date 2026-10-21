@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-export interface DivisionGridTeam {
+interface DivisionGridTeam {
   id: string;
   name: string;
   shortName: string;

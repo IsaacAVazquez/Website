@@ -15,7 +15,7 @@ interface ToolCategoryIconProps {
   className?: string;
 }
 
-export function ToolCategoryIcon({ category, className = "h-4 w-4" }: ToolCategoryIconProps) {
+function ToolCategoryIcon({ category, className = "h-4 w-4" }: ToolCategoryIconProps) {
   switch (category) {
     case "cloud-agent":
       return <Cloud aria-hidden="true" className={className} />;

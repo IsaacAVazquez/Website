@@ -68,7 +68,7 @@ export interface FantasyCompanionDraftState {
   updatedAt: string;
 }
 
-export type AddFantasyCompanionPickFailureReason =
+type AddFantasyCompanionPickFailureReason =
   | "draft-complete"
   | "duplicate-player"
   | "ineligible-position"
@@ -94,14 +94,14 @@ export interface RedraftRecommendation {
   reason: string;
 }
 
-export interface RedraftCompanionRecommendationResult {
+interface RedraftCompanionRecommendationResult {
   kind: "redraft";
   mode: "consensus";
   reason: string;
   recommendations: readonly RedraftRecommendation[];
 }
 
-export interface BestBallCompanionRecommendationResult {
+interface BestBallCompanionRecommendationResult {
   kind: "best-ball";
   mode: BestBallRecommendationMode;
   reason: string;

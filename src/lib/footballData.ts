@@ -11,8 +11,8 @@
 import { HttpStatusError } from "@/lib/utils";
 import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 
-export const FOOTBALL_DATA_BASE_URL = "https://api.football-data.org/v4";
-export const REQUEST_TIMEOUT_MS = 10_000;
+const FOOTBALL_DATA_BASE_URL = "https://api.football-data.org/v4";
+const REQUEST_TIMEOUT_MS = 10_000;
 export const SUMMARY_REVALIDATE_SECONDS = 300;
 export const TEAM_REVALIDATE_SECONDS = 300;
 export const RECENT_FIXTURE_LIMIT = 8;
@@ -22,7 +22,7 @@ export const TEAM_FIXTURE_LIMIT = 5;
 // every FINISHED match and feeds both the recent list and goals per matchday.
 export const SEASON_FIXTURES_REVALIDATE_SECONDS = 300;
 
-export interface FootballDataArea {
+interface FootballDataArea {
   name?: string | null;
 }
 
@@ -54,14 +54,14 @@ export interface FootballDataSeason {
   } | null;
 }
 
-export interface FootballDataCompetition {
+interface FootballDataCompetition {
   code?: string | null;
   name?: string | null;
   emblem?: string | null;
   area?: FootballDataArea | null;
 }
 
-export interface FootballDataStandingsGroup {
+interface FootballDataStandingsGroup {
   type?: string | null;
   table?: FootballDataStandingEntry[] | null;
 }
@@ -86,7 +86,7 @@ export interface FootballDataCompetitionStandingsResponse {
   standings?: FootballDataStandingsGroup[] | null;
 }
 
-export interface FootballDataScoreTime {
+interface FootballDataScoreTime {
   home?: number | null;
   away?: number | null;
 }

@@ -5,7 +5,7 @@ import {
 } from "@/lib/bestBall";
 import type { Player } from "@/types";
 
-export const BEST_BALL_DRAFT_STORAGE_VERSION = 1;
+const BEST_BALL_DRAFT_STORAGE_VERSION = 1;
 export const BEST_BALL_ROOM_RULES_SCHEMA_VERSION = 2;
 
 export interface BestBallRoomRules {

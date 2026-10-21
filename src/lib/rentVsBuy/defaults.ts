@@ -12,18 +12,18 @@ import type { FilingStatus, RentVsBuyAssumptionsMeta, RentVsBuyInput } from "./t
 /** Tax year the figures below are for. Year 1 of a projection is treated as this tax year. */
 export const TAX_YEAR = 2026;
 /** Date the tax sources below were read. */
-export const TAX_FIGURES_READ_ON = "2026-09-27";
+const TAX_FIGURES_READ_ON = "2026-09-27";
 
 // State and local tax (SALT) deduction cap, tax year 2026, single and married
 // filing jointly. Source, read 2026-09-27:
 // https://www.irs.gov/forms-pubs/correction-to-state-and-local-income-tax-deduction-amount-in-the-2026-form-1040-es
-export const SALT_CAP = 40_400;
+const SALT_CAP = 40_400;
 
 // Modified adjusted gross income above which the law reduces the 2026 cap, by
 // 30 percent of the excess and never below $10,000. Same IRS source as SALT_CAP.
 // The tool collects no income figure, so the engine does not model this
 // reduction, and the constant exists for the on-page disclosure only.
-export const SALT_PHASE_DOWN_THRESHOLD = 505_000;
+const SALT_PHASE_DOWN_THRESHOLD = 505_000;
 
 // The cap by tax year under 26 USC 164(b)(7)(A), added by Public Law 119-21
 // section 70120, enacted 2025-07-04. Sources, read 2026-09-27:
@@ -58,7 +58,7 @@ export function saltCapForYear(taxYear: number): number {
 // https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill
 // The engine never reads this. It rides along in the assumptions meta as
 // context, since the tax model does not compare itemizing with it.
-export const STANDARD_DEDUCTION: Record<FilingStatus, number> = {
+const STANDARD_DEDUCTION: Record<FilingStatus, number> = {
   single: 16_100,
   married: 32_200,
 };
@@ -66,7 +66,7 @@ export const STANDARD_DEDUCTION: Record<FilingStatus, number> = {
 // Exclusion of gain on the sale of a main home. The amounts are set by statute
 // and are not indexed, so they carry no tax year. Source, read 2026-09-27:
 // https://www.irs.gov/taxtopics/tc701
-export const CAPITAL_GAINS_EXCLUSION: Record<FilingStatus, number> = {
+const CAPITAL_GAINS_EXCLUSION: Record<FilingStatus, number> = {
   single: 250_000,
   married: 500_000,
 };
@@ -74,8 +74,8 @@ export const CAPITAL_GAINS_EXCLUSION: Record<FilingStatus, number> = {
 // Freddie Mac Primary Mortgage Market Survey, 30 year fixed rate average as of
 // 2026-10-08. Source, read 2026-10-09: https://www.freddiemac.com/pmms
 // The survey publishes every Thursday, so this default ages weekly.
-export const DEFAULT_MORTGAGE_RATE_PERCENT = 7.4;
-export const DEFAULT_MORTGAGE_RATE_AS_OF = "2026-10-08";
+const DEFAULT_MORTGAGE_RATE_PERCENT = 7.4;
+const DEFAULT_MORTGAGE_RATE_AS_OF = "2026-10-08";
 
 const dollars = (value: number) => `$${value.toLocaleString("en-US")}`;
 
