@@ -345,6 +345,43 @@ describe("Catalog97EasterEggs", () => {
     expect(screen.getByText("Out of register")).toBeInTheDocument();
   });
 
+  it("leaves the code to mission control, which flies a drill itself", () => {
+    window.history.pushState({}, "", "/spacex-mission-control");
+    try {
+      renderOnPage();
+      pressKonami();
+      expect(document.documentElement).not.toHaveClass("misregistered");
+      expect(screen.queryByText("Out of register")).not.toBeInTheDocument();
+    } finally {
+      window.history.pushState({}, "", "/");
+    }
+  });
+
+  it("wears the rubber in on the hundredth stamp, counted across visits", () => {
+    window.localStorage.setItem("c97-stamps-v1", "97");
+    try {
+      const { page } = renderOnPage();
+      const mark = page.querySelector(".c97-wordmark")!;
+
+      fireEvent.click(mark);
+      fireEvent.click(mark);
+      expect(screen.queryByText("Worn in")).not.toBeInTheDocument();
+      expect(window.localStorage.getItem("c97-stamps-v1")).toBe("99");
+
+      fireEvent.click(mark);
+      expect(screen.getByRole("status")).toHaveTextContent("That's your hundredth stamp");
+      expect(screen.queryByRole("link", { name: "Go to the arcade" })).not.toBeInTheDocument();
+      expect(window.localStorage.getItem("c97-stamps-v1")).toBe("100");
+
+      // The press is still stampable, and the count keeps going past the milestone.
+      fireEvent.click(mark);
+      expect(window.localStorage.getItem("c97-stamps-v1")).toBe("101");
+      expect(page.querySelectorAll(".imprint")).toHaveLength(4);
+    } finally {
+      window.localStorage.removeItem("c97-stamps-v1");
+    }
+  });
+
   it("stamps on the arcade without knocking the press", () => {
     window.history.pushState({}, "", "/arcade");
     try {

@@ -1,7 +1,7 @@
 import type { DraftPick, Position } from "@/types";
 
 type PickLike = Pick<DraftPick, "round" | "teamNumber"> & {
-  player: { position: Position };
+  player: { position: Position; team?: string };
 };
 
 const NOTES: Partial<Record<Position, string>> = {
@@ -52,6 +52,27 @@ export function getSecondSpecialistNote(
   return `A second ${name} is a bold call${too}. I'd want that roster spot back, but it's your league.`;
 }
 
+const HOMER_PICKS = 4;
+
+/**
+ * The note for a roster that leans on one NFL team. It fires on the pick that
+ * makes it four from the same team, and only on that pick, so a fifth stays
+ * quiet. A pick with no team (an unmatched player) never counts.
+ */
+export function getHomerNote(
+  pick: PickLike,
+  userTeam: number,
+  earlierPicks: readonly PickLike[] = [],
+): string | null {
+  const team = pick.player.team;
+  if (!team || pick.teamNumber !== userTeam) return null;
+  const held = earlierPicks.filter(
+    (earlier) => earlier.teamNumber === userTeam && earlier.player.team === team,
+  ).length;
+  if (held + 1 !== HOMER_PICKS) return null;
+  return `Four from one team. I respect the loyalty, but that bye week is going to hurt.`;
+}
+
 /** The note the draft tracker shows for a pick, with the early one first. */
 export function getSpecialistNote(
   pick: PickLike,
@@ -60,6 +81,7 @@ export function getSpecialistNote(
 ): string | null {
   return (
     getEarlySpecialistNote(pick, userTeam, earlierPicks) ??
-    getSecondSpecialistNote(pick, userTeam, earlierPicks)
+    getSecondSpecialistNote(pick, userTeam, earlierPicks) ??
+    getHomerNote(pick, userTeam, earlierPicks)
   );
 }

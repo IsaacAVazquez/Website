@@ -22,6 +22,7 @@ import {
 } from "@/lib/blog";
 import { Catalog97Slot } from "@/components/catalog97/Catalog97Primitives";
 import { ArticleCodeCopy } from "@/components/analytics/ArticleCodeCopy";
+import { ArticleEndMark } from "@/components/editorial/ArticleEndMark";
 import { publishedDateFormatter } from "@/lib/utils";
 
 interface PageProps {
@@ -302,10 +303,13 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="c97-shell">
             <div
               id="article-body"
-              className="c97-article c97-article-end"
+              className="c97-article"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <ArticleCodeCopy containerSelector="#article-body" location="article" />
+            <ArticleEndMark
+              next={newerPost ? { href: `/writing/${newerPost.slug}`, title: newerPost.title } : null}
+            />
           </div>
         </section>
       </article>

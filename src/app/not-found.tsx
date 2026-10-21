@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { NotFoundNote } from "@/components/NotFoundNote";
 import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {
@@ -54,6 +55,8 @@ export default function NotFound() {
             I don&apos;t have anything at this address. The link may be old or
             have a typo in it, but the pages below are all still here.
           </p>
+          {/* A line for a few addresses people type on purpose (docs/EASTER_EGGS.md). */}
+          <NotFoundNote className={styles.note} />
         </div>
 
         <nav aria-label="Ways back" className={styles.ways}>

@@ -1,6 +1,6 @@
 # Easter eggs
 
-This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-10-02, and the Konami code and stamp knock entries were checked again on 2026-10-12. The Konami code, humans.txt, and the two kicker note entries were checked again on 2026-10-13, after the fantasy football redesign took the poster type off the two draft trackers' setup titles, so on a fantasy page the code moves only the footer and the build-note strip, where the page has one.
+This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-10-02, and the Konami code and stamp knock entries were checked again on 2026-10-12. The Konami code, humans.txt, and the two kicker note entries were checked again on 2026-10-13, after the fantasy football redesign took the poster type off the two draft trackers' setup titles, so on a fantasy page the code moves only the footer and the build-note strip, where the page has one. Seven more were added on 2026-10-21, the 404 note, the end mark, the homer note, the drill launch, the worn-in stamp, four search answers, and the future vintage.
 
 Most of them mount from the header, which is on every route. `src/components/catalog97/Catalog97Header.tsx` renders `Catalog97Monet` (the painted hovers) and `Catalog97EasterEggs` (the Konami code, the console note, the stamp and its knock, the proof marks, the safelight, and the tab title). The reduced-motion guard at the end of `src/app/catalog97.css` cuts every transition and animation inside `.c97-page` to 0.01ms, so each entry below says what's left when motion is reduced.
 
@@ -11,10 +11,11 @@ Most of them mount from the header, which is on every route. `src/components/cat
 | Portrait painters | `/`, `/about` | Hover the portrait's section, click the portrait to change painter | No | `Catalog97Monet.tsx`, paint reveal block in `catalog97.css` |
 | Monet name by time of day | Header, every route | Hover or focus the name | Only as a stuck hover on `/` | `Catalog97Monet.tsx`, Monet block in `catalog97.css` |
 | Painted collage plates | `/` | Hover a dashboard plate | No | `Catalog97Collage.tsx`, `Catalog97Home.tsx` |
-| Konami code | Every route but `/arcade` | ↑ ↑ ↓ ↓ ← → ← → B A | No, it needs a keyboard | `Catalog97EasterEggs.tsx`, `konami.ts` |
+| Konami code | Every route but `/arcade` and `/spacex-mission-control` | ↑ ↑ ↓ ↓ ← → ← → B A | No, it needs a keyboard | `Catalog97EasterEggs.tsx`, `konami.ts` |
 | Console note | Every route | Open the browser console | Not applicable | `Catalog97EasterEggs.tsx` |
 | Footer rubber stamp | Footer, every route | Click the footer wordmark | Yes | `Catalog97EasterEggs.tsx` |
 | Stamp knock | Footer, every route but `/arcade` | Stamp the wordmark six times inside three seconds | Yes | `Catalog97EasterEggs.tsx` |
+| Worn-in stamp | Footer, every route | Stamp the wordmark a hundred times, counted across visits | Yes | `Catalog97EasterEggs.tsx` |
 | Press-proof marks | Every route | Hold Option or Alt | No, it needs a keyboard | `Catalog97EasterEggs.tsx` |
 | Darkroom safelight | Every route | Flip the theme toggle five times inside four seconds | Yes | `Catalog97EasterEggs.tsx` |
 | Away tab title | Every route | Switch to another tab | Yes | `Catalog97EasterEggs.tsx` |
@@ -25,9 +26,13 @@ Most of them mount from the header, which is on every route. `src/components/cat
 | Teapot | `/teapot` | Visit the address | Yes | `src/app/teapot/route.ts` |
 | humans.txt | `/humans.txt` | Visit the address | Yes | `public/humans.txt` |
 | SpaceX liftoff | `/spacex-mission-control` | Have the page open when the countdown hits T-0 | Yes | `MissionControlHero.tsx`, `liftoff.ts` |
+| Drill launch | `/spacex-mission-control` | ↑ ↑ ↓ ↓ ← → ← → B A | No, it needs a keyboard | `MissionControlHero.tsx`, `konami.ts` |
 | Early kicker note | `/fantasy-football/draft-tracker` | Draft a kicker or defense in round 1 or 2 | Yes | `src/lib/draftEarlySpecialistNote.ts` |
 | Second kicker note | `/fantasy-football/draft-tracker` | Draft a second kicker or a second defense | Yes | `src/lib/draftEarlySpecialistNote.ts` |
-| The "-30-" end mark | `/writing/[slug]` | Read to the end of a post | Yes | `catalog97.css` |
+| Homer note | `/fantasy-football/draft-tracker` | Draft four players from one NFL team | Yes | `src/lib/draftEarlySpecialistNote.ts` |
+| The "-30-" end mark | `/writing/[slug]` | Read to the end of a post, then press the mark | Yes | `ArticleEndMark.tsx`, `catalog97.css` |
+| The 404 note | 404 page | Visit `/coffee`, `/admin`, `/dashboard`, `/cv`, or a few others | Yes | `src/components/NotFoundNote.tsx` |
+| Future vintage | `/wine-cellar` | Type a vintage later than this year | Yes | `wine-cellar-client.tsx` |
 | Halftone split | 404 page, some `/writing` cards | Hover a halftone field | No | `catalog97.css` |
 
 ## Portrait painters
@@ -46,7 +51,7 @@ The three dashboard plates in the home collage each reveal a painted version und
 
 ## Konami code
 
-Typing ↑ ↑ ↓ ↓ ← → ← → B A anywhere except /arcade throws the page out of register for six seconds. On the pages still printed with the poster classes, meaning the seven designed routes and the 404, the poster type jitters off its overprint, the offset shadows jump, the halftone dots swell, and the sheets shift a few pixels and tilt. The utility pages, the topic pages, and the articles set their titles in display type and carry none of those classes, so there the sheets and bands shift and tilt, the footer with them, and nothing else moves. A project route owns its design and for the most part prints without those classes, so there the footer and the build-note strip, where the route has one, slip and tilt, and little else moves. A saffron toast in the bottom left reads "Out of register" and "You found the code. The press needs a few seconds to line back up, and the arcade is open in the meantime.", with a button to the arcade and a close button. Esc closes it, and it closes itself after 12 seconds unless it's hovered or focused. Keys typed into form fields, modifier combos, and held-down repeats don't count, and /arcade is skipped because the arcade answers the code itself (see 30 lives below). With reduced motion it becomes a still misprint with no movement, which shows on the poster type, the offsets, and the halftone, so on a utility page, a topic page, an article, or a project route that has none of them only the toast shows. The styles are in `Catalog97EasterEggs.module.css`, and they reach `.c97-poster`, `.c97-poster-sm`, `.c97-offset`, `.c97-halftone`, the sheets and bands inside `main`, and the footer.
+Typing ↑ ↑ ↓ ↓ ← → ← → B A anywhere except /arcade and /spacex-mission-control, which answer the code themselves (see 30 lives and the drill launch below), throws the page out of register for six seconds. On the pages still printed with the poster classes, meaning the seven designed routes and the 404, the poster type jitters off its overprint, the offset shadows jump, the halftone dots swell, and the sheets shift a few pixels and tilt. The utility pages, the topic pages, and the articles set their titles in display type and carry none of those classes, so there the sheets and bands shift and tilt, the footer with them, and nothing else moves. A project route owns its design and for the most part prints without those classes, so there the footer and the build-note strip, where the route has one, slip and tilt, and little else moves. A saffron toast in the bottom left reads "Out of register" and "You found the code. The press needs a few seconds to line back up, and the arcade is open in the meantime.", with a button to the arcade and a close button. Esc closes it, and it closes itself after 12 seconds unless it's hovered or focused. Keys typed into form fields, modifier combos, and held-down repeats don't count, and /arcade is skipped because the arcade answers the code itself (see 30 lives below). With reduced motion it becomes a still misprint with no movement, which shows on the poster type, the offsets, and the halftone, so on a utility page, a topic page, an article, or a project route that has none of them only the toast shows. The styles are in `Catalog97EasterEggs.module.css`, and they reach `.c97-poster`, `.c97-poster-sm`, `.c97-offset`, `.c97-halftone`, the sheets and bands inside `main`, and the footer.
 
 ## Console note
 
@@ -59,6 +64,10 @@ Clicking or tapping the wordmark in the footer presses it and stamps a smaller c
 ## Stamp knock
 
 Six stamps on the footer wordmark inside three seconds (`KNOCK_STAMPS` and `KNOCK_WINDOW_MS`) knock the page out of register the same way the Konami code does, for the same six seconds, so on a project route it is the footer and the build-note strip that move. The toast reads "Out of register" and "You stamped hard enough to knock the press out of line. It needs a few seconds to settle, and the arcade is open in the meantime.", with the same two buttons. It's the way into that effect for a phone, since the code needs a keyboard. Slower stamps only stamp, and after a knock it takes six fresh stamps to do it again. On /arcade the wordmark still stamps but never knocks the press, since the toast would only point back at the page the visitor is already on.
+
+## Worn-in stamp
+
+Every stamp on the footer wordmark also counts toward a lifetime total kept in localStorage under `c97-stamps-v1` (`STAMPS_KEY`), so it carries across visits and pages in the same browser. The hundredth stamp (`WORN_IN_STAMPS`) gets a toast that reads "Worn in" and "That's your hundredth stamp, counting every visit from this browser. The rubber is worn in now, and it will keep printing.", with only a close button. It fires once, since the count keeps climbing past it. When the hundredth stamp is also the sixth of a knock, the knock's toast keeps its place and the milestone passes quietly. Clearing site data resets the count.
 
 ## Press-proof marks
 
@@ -94,6 +103,10 @@ A few exact searches in the header search (`/` or Cmd or Ctrl+K) and on /search 
 | contra, 30 lives, thirty lives | 30 lives | `/arcade` |
 | teapot, 418, i'm a teapot | Teapot | `/teapot` |
 | humans, humans.txt, colophon | Colophon | `/humans.txt` |
+| coffee, espresso | Coffee | `/teapot` |
+| hello, hey, howdy | Hello | `/contact` |
+| 404, misprint | The misprint | `/404`, which is itself a 404 |
+| now, what is isaac doing now, what are you doing now | What I'm doing now | `/now` |
 
 The "Easter eggs" answer promises "a few hidden around the site, from something on the home page, to a note in the browser console, to a couple I'll leave for you to find", so it should stay roughly true as this list changes. The last six rows each hint at one easter egg without giving the whole trigger away, and the Konami answer says the code is worth trying inside the arcade too.
 
@@ -117,17 +130,33 @@ Typing the Konami code on /arcade gives 30 lives, which is what it gave in Contr
 
 On /spacex-mission-control, if the page is open and visible when the countdown crosses the scheduled T-0 (within a five-second grace window), a small riso rocket rises up the screen and flies off the top, once per launch, and a status line reads "T-0 by the schedule. The snapshot can't tell me whether it flew." With reduced motion, or in print, the rocket doesn't render but the note still shows.
 
+## Drill launch
+
+Typing the Konami code on /spacex-mission-control flies the same rocket on demand, as many times as the code is typed, and prints a status line under the schedule that reads "That one was a drill. The code can't move the schedule, so the real rocket goes when the countdown does." The hero listens for the code itself through the shared `konami.ts` helpers, and `Catalog97EasterEggs` leaves the code to this route the way it leaves it to the arcade, so the page never goes out of register. Keys typed into a field don't count, and with reduced motion only the note shows. It needs a keyboard.
+
 ## Early kicker note
 
 In /fantasy-football/draft-tracker, if your own team takes a kicker or a defense in round 1 or 2, a note you can dismiss says "A kicker in the first two rounds is a bold call. I'd have waited until the last round, but it's your league.", or the same idea for a defense, once per draft. The best ball tracker and the mock draft don't have it.
 
 ## Second kicker note
 
-In the same tracker, if your own team takes a second kicker or a second defense in any round, the note says "A second kicker is a bold call. I'd want that roster spot back, but it's your league.", or the same for a defense, once per draft. When the early kicker note already ran in that draft it reads "a bold call too". `getSpecialistNote` in the same file checks the early note first and this one second, and the tracker calls only that.
+In the same tracker, if your own team takes a second kicker or a second defense in any round, the note says "A second kicker is a bold call. I'd want that roster spot back, but it's your league.", or the same for a defense, once per draft. When the early kicker note already ran in that draft it reads "a bold call too". `getSpecialistNote` in the same file checks the early note first, this one second, and the homer note third, and the tracker calls only that.
+
+## Homer note
+
+In the same tracker, the pick that gives your own team four players from one NFL team says "Four from one team. I respect the loyalty, but that bye week is going to hurt." It fires on the fourth and only the fourth, so a fifth stays quiet, it counts a defense as a player from its team, and a player with no team on the board (an unmatched one) never counts. `getHomerNote` in `src/lib/draftEarlySpecialistNote.ts`.
 
 ## The "-30-" end mark
 
-Every post under /writing ends with "-30-", the old newsroom sign that a story is over, set in poster type with an overprint shadow. Screen readers skip it.
+Every post under /writing ends with "-30-", the old newsroom sign that a story is over, set in poster type with an overprint shadow. It is a button (`src/components/editorial/ArticleEndMark.tsx`, labelled "What the end mark means"), and pressing it opens a note under the mark that explains the sign, says how long it has been since the page loaded by the tab's own clock ("under a minute", "about 3 minutes", "about an hour"), and links to the next post in the chronology, or says the post is the newest one. Pressing again closes it. The note is a status region, so it announces when it opens.
+
+## The 404 note
+
+The misprint reads the address it failed on, and a few addresses get a line under the lead (`src/components/NotFoundNote.tsx`, matched on the lower-cased pathname). /coffee, /cafe, /espresso, and /latte say the press can't brew coffee either and link to the teapot. Anything ending in .php, and /admin, /administrator, /login, /signin, /xmlrpc, and any /wp- address, which are what scanners try, say there is no back room to log in to. /dashboard without the s points at /dashboards, /home, /index, and /index.html point at the root, /cv and /resume.pdf point at /resume, /secret, /hidden, and /easter-eggs say the eggs don't have an address and link to a search for them, and /404 admits it is a real one. Everything else gets the ordinary misprint.
+
+## Future vintage
+
+In /wine-cellar, typing a vintage later than the current year into the form prints "A bottle from the future. I'd open it before the paradox does." under the field while it stays that way. The year is read from the visitor's clock on each keystroke, never on the server, since the draft is empty there. The field still accepts the bottle, since the cap on the input is 2100.
 
 ## Halftone split
 

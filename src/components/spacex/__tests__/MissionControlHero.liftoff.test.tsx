@@ -106,6 +106,30 @@ describe("MissionControlHero T-0 liftoff", () => {
     );
   });
 
+  it("flies a drill on the Konami code, and says it was one", () => {
+    jest.setSystemTime(NET - 60_000);
+    renderHero(root, NET - 60_000);
+    const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+    act(() => {
+      code.forEach((key) => fireEvent.keyDown(window, { key }));
+    });
+
+    expect(container.querySelectorAll('div[aria-hidden="true"] > svg')).toHaveLength(1);
+    expect(container.querySelector('[data-testid="mission-drill-note"]')).toHaveTextContent("That one was a drill.");
+    // The countdown is still running, so the T-0 note never prints.
+    expect(container.querySelector('[data-testid="mission-liftoff-note"]')).toBeNull();
+    expect(container.querySelector('[data-testid="mission-countdown"]')).not.toBeNull();
+
+    // Typing the code into a field is typing, not the code.
+    const input = document.createElement("input");
+    document.body.appendChild(input);
+    act(() => {
+      code.forEach((key) => fireEvent.keyDown(input, { key }));
+    });
+    expect(container.querySelectorAll('div[aria-hidden="true"] > svg')).toHaveLength(1);
+    input.remove();
+  });
+
   it("does nothing when the page opens after T-0", () => {
     // The server rendered before T-0, but the visitor's clock is already past it.
     jest.setSystemTime(NET + 1000);

@@ -1,5 +1,6 @@
 import {
   getEarlySpecialistNote,
+  getHomerNote,
   getSecondSpecialistNote,
   getSpecialistNote,
 } from "@/lib/draftEarlySpecialistNote";
@@ -82,7 +83,44 @@ describe("getSecondSpecialistNote", () => {
   });
 });
 
+describe("getHomerNote", () => {
+  const homer = (team: string, round: number, teamNumber = USER_TEAM) => ({
+    round,
+    teamNumber,
+    player: { position: "WR" as Position, team },
+  });
+  const three = [homer("PHI", 1), homer("PHI", 2), homer("PHI", 3)];
+
+  it("fires on the fourth pick from one team", () => {
+    expect(getHomerNote(homer("PHI", 4), USER_TEAM, three)).toMatch(/Four from one team/);
+  });
+
+  it("stays quiet before the fourth, after it, and across teams", () => {
+    expect(getHomerNote(homer("PHI", 3), USER_TEAM, three.slice(0, 2))).toBeNull();
+    expect(getHomerNote(homer("PHI", 5), USER_TEAM, [...three, homer("PHI", 4)])).toBeNull();
+    expect(getHomerNote(homer("DAL", 4), USER_TEAM, three)).toBeNull();
+  });
+
+  it("counts only the user's own picks, and never an unmatched player", () => {
+    const other = USER_TEAM + 1;
+    expect(getHomerNote(homer("PHI", 4), USER_TEAM, [...three.slice(0, 2), homer("PHI", 3, other)])).toBeNull();
+    expect(getHomerNote(homer("PHI", 4, other), USER_TEAM, three)).toBeNull();
+    expect(getHomerNote(homer("", 4), USER_TEAM, [homer("", 1), homer("", 2), homer("", 3)])).toBeNull();
+  });
+});
+
 describe("getSpecialistNote", () => {
+  it("falls through to the homer note", () => {
+    const earlier = [1, 2, 3].map((round) => ({
+      round,
+      teamNumber: USER_TEAM,
+      player: { position: "RB" as Position, team: "SF" },
+    }));
+    expect(
+      getSpecialistNote({ round: 4, teamNumber: USER_TEAM, player: { position: "TE", team: "SF" } }, USER_TEAM, earlier),
+    ).toMatch(/Four from one team/);
+  });
+
   it("gives the early note first and the second note later in the same draft", () => {
     expect(getSpecialistNote(pick("K", 1), USER_TEAM)).toMatch(/first two rounds/);
     expect(getSpecialistNote(pick("K", 2), USER_TEAM, [pick("K", 1)])).toMatch(

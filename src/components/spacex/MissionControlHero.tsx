@@ -4,6 +4,7 @@ import type { MissionControlSummary } from "@/types/spacex";
 import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
 import { formatMissionScheduleLabel } from "./formatters";
 import { crossedScheduledT0 } from "./liftoff";
+import { isKonami, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
 import liftoffStyles from "./MissionLiftoff.module.css";
 
 /** One fleet figure, printed as text in the masthead's fleet line. */
@@ -146,7 +147,23 @@ export function MissionControlHero({
   onRetry,
 }: MissionControlHeroProps) {
   const [renderTimestampMs] = useState(() => initialRenderTimestampMs ?? Date.now());
+  // Drills flown on the Konami code, each one a fresh rocket (docs/EASTER_EGGS.md).
+  // The site-wide handler in Catalog97EasterEggs leaves the code to this page.
+  const [drills, setDrills] = useState(0);
   const heroLaunch = summary?.heroLaunch ?? null;
+
+  useEffect(() => {
+    let history: string[] = [];
+    const onKey = (event: KeyboardEvent) => {
+      if (shouldIgnoreKey(event)) return;
+      history = pushKonamiKey(history, event.key);
+      if (!isKonami(history)) return;
+      history = [];
+      setDrills((count) => count + 1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   if (isLoading && !heroLaunch) {
     return (
@@ -205,6 +222,16 @@ export function MissionControlHero({
             <MissionCountdown dateUtc={heroLaunch.dateUtc} initialNow={renderTimestampMs} />
           ) : null}
           <p className="sx-mast-schedule">{formatMissionScheduleLabel(heroLaunch)}</p>
+          {drills > 0 ? (
+            <>
+              <MissionLiftoff key={drills} />
+              <p data-testid="mission-drill-note" role="status" className="sx-liftoff-note">
+                <Rocket aria-hidden="true" className="h-4 w-4" />
+                That one was a drill. The code can&apos;t move the schedule, so the real rocket goes
+                when the countdown does.
+              </p>
+            </>
+          ) : null}
         </div>
 
         <p className="sx-mast-facts">{facts.join(" · ")}</p>
