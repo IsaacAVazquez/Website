@@ -4,7 +4,10 @@ import {
   generateBreadcrumbStructuredData,
 } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
-import { Catalog97Portfolio } from "@/components/catalog97/Catalog97Portfolio";
+import {
+  Catalog97Portfolio,
+  WORK_LEAD_COUNT,
+} from "@/components/catalog97/Catalog97Portfolio";
 import { AIStructuredData } from "@/components/AIStructuredData";
 
 export const metadata = constructMetadata({
@@ -12,7 +15,7 @@ export const metadata = constructMetadata({
   description:
     "The projects I've shipped across AI workflows, fintech, analytics, civic tech, and sports data, with the product decisions behind them.",
   canonicalUrl: "/portfolio",
-  dateModified: "2026-10-09",
+  dateModified: "2026-10-19",
 });
 
 export default function PortfolioPage() {
@@ -42,7 +45,7 @@ export default function PortfolioPage() {
             description:
               "Product, analytics, fintech, sports, and decision-support tools built by Isaac Vazquez.",
             url: "https://isaacvazquez.com/portfolio",
-            items: portfolioProjects.map((project) => ({
+            items: portfolioProjects.slice(0, WORK_LEAD_COUNT).map((project) => ({
               name: project.title,
               description: project.overview.summary,
               url: project.link?.startsWith("http")

@@ -75,3 +75,7 @@ The general sweep still flags 8 pine tiles at 2.31:1 in light at every width. Th
 ### Corrected facts in this brief
 
 The 2026-08-03 filter entry said the control is `role="tablist"` with `aria-selected`, and the code is `role="group"` with `aria-pressed` buttons, so that line was corrected. The status copy and tobacco line quoted in the 2026-08-03 corrections entry ("Each dashboard", "Every panel here") were rescoped on 2026-09-14 as described above. Page height measured 7,275px at 1440 and 10,561px at 390 on 2026-09-14, against 11,059 at 390 in the 2026-08-03 filter entry. Focus rings carried a 4px radius and a halo until this loop.
+
+## 2026-10-19
+
+`/portfolio` dropped its search, sort, category filter, and ledger on 2026-10-19 (see `route-portfolio.md`, Loop 2026-10-19), so this route is now the only index of the 34 tools and the only place the `classifyToolSlug` filter runs. The Work hero links here with the live count. Nothing on this route changed in that pass; the `layout` pass the same critique named (h1 to the 56px step, search and tabs together, no sort select, first run above the fold) is next.

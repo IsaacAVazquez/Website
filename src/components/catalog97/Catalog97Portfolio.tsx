@@ -1,6 +1,3 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Catalog97Shell } from "./Catalog97Shell";
@@ -10,114 +7,50 @@ import {
   getProjectCardSummary,
   type CaseStudyData,
 } from "@/constants/caseStudies";
-import {
-  classifyToolSlug,
-  TOOL_CATEGORY_DEFS,
-  type ToolCategoryId,
-} from "@/constants/toolCategories";
 
 export interface Catalog97PortfolioProps {
   projects: CaseStudyData[];
 }
 
-const ALL = "all";
+/** How many entries the work page shows. The rest of the inventory lives on /dashboards. */
+export const WORK_LEAD_COUNT = 4;
 
-/** How many entries lead the index at full weight before the ledger takes over. */
-const LEAD_COUNT = 4;
-type SortMode = "curated" | "newest" | "alpha" | "live";
-
-function timelineYear(timeline: string) {
-  const years = timeline.match(/\d{4}/g);
-  return years ? Math.max(...years.map(Number)) : 0;
-}
-
-function matchesQuery(project: CaseStudyData, tokens: string[]) {
-  if (tokens.length === 0) return true;
-
-  const categoryLabel =
-    TOOL_CATEGORY_DEFS.find(
-      (definition) => definition.id === classifyToolSlug(project.slug),
-    )?.label ?? "";
-  const searchable = [
-    project.title,
-    project.description,
-    project.role,
-    project.timeline,
-    project.metrics,
-    project.overview?.summary ?? "",
-    categoryLabel,
-    ...project.tools,
-  ]
-    .join(" ")
-    .toLowerCase();
-
-  return tokens.every((token) => searchable.includes(token));
-}
+/*
+ * The two jobs the product work came from. Copy is the excerpt of each
+ * write-up, so the card and the article say the same thing.
+ */
+const CAREER_WRITE_UPS = [
+  {
+    title: "Juno",
+    role: "MBA Growth Intern",
+    when: "May to Aug 2026",
+    href: "/writing/juno-mba-growth-internship",
+    summary:
+      "I spent the summer of 2026 as the growth intern on Juno's MBA team. I rebuilt the team's reporting, set up conversion measurement, audited the email program, took over the SMS program, and replaced a few flattering numbers with honest ones.",
+  },
+  {
+    title: "Civitech",
+    role: "QA Analyst, then QA Engineer",
+    when: "Jan 2022 to Aug 2025",
+    href: "/writing/civitech-quality-and-product-work",
+    summary:
+      "For three and a half years I was the QA analyst and then QA engineer at Civitech, which builds campaign software in Austin, and the QA job grew into product work on TextOut, RunningMate, pricing, and client data.",
+  },
+] as const;
 
 /**
- * The work index, in the Catalog 97 language.
+ * The work page, in the Catalog 97 language.
  *
- * The design leads with a small saffron band of full-weight entries and drops
- * everything else into a blue ledger below it, which is the same two-tier
- * shape the writing index uses. That proportion is what keeps saffron to its
- * share of the page rather than letting a thirty-row list turn the whole route
- * tan.
- *
- * The design's category filter is drawn as a row of links. It is wired up here
- * against the repo's real category buckets rather than rendered as links that
- * go nowhere, and every project in `caseStudies.ts` is bucketed, so no entry
- * disappears when a filter is on.
+ * This is the curated story, and /dashboards is the inventory. Four full-weight
+ * entries lead on saffron, the two jobs the product work came from follow on
+ * blue, and one line in the hero points at /dashboards, which indexes and
+ * filters all of the tools. Until 2026-10-19 this route also carried a search
+ * field, a sort select, the nine-bucket category filter, and a thirty-row
+ * ledger of the remaining tools, which made it the same inventory as
+ * /dashboards in a second layout and buried the first project below the fold.
  */
 export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
-  const [active, setActive] = useState<string>(ALL);
-  const [query, setQuery] = useState("");
-  const [sort, setSort] = useState<SortMode>("curated");
-
-  const tabs = useMemo(() => {
-    const counts = new Map<ToolCategoryId, number>();
-    for (const project of projects) {
-      const id = classifyToolSlug(project.slug);
-      counts.set(id, (counts.get(id) ?? 0) + 1);
-    }
-    return [
-      { id: ALL, label: "All", count: projects.length },
-      ...TOOL_CATEGORY_DEFS.filter((def) => counts.has(def.id)).map((def) => ({
-        id: def.id as string,
-        label: def.label,
-        count: counts.get(def.id) ?? 0,
-      })),
-    ];
-  }, [projects]);
-
-  const filtered = useMemo(() => {
-    const categoryMatches =
-      active === ALL
-        ? projects
-        : projects.filter(
-            (project) => classifyToolSlug(project.slug) === active,
-          );
-    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
-
-    const queryMatches = categoryMatches.filter((project) =>
-      matchesQuery(project, tokens),
-    );
-
-    return [...queryMatches].sort((left, right) => {
-      if (sort === "newest") {
-        return timelineYear(right.timeline) - timelineYear(left.timeline);
-      }
-      if (sort === "alpha") {
-        return left.title.localeCompare(right.title);
-      }
-      if (sort === "live") {
-        return Number(Boolean(right.link)) - Number(Boolean(left.link));
-      }
-      return 0;
-    });
-  }, [projects, active, query, sort]);
-
-  const lead = filtered.slice(0, LEAD_COUNT);
-  const ledger = filtered.slice(LEAD_COUNT);
+  const lead = projects.slice(0, WORK_LEAD_COUNT);
 
   return (
     <Catalog97Shell>
@@ -127,122 +60,20 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
-        <div className="c97-shell">
-          <h1 className="c97-poster">
-            Everything I&rsquo;ve shipped, and the decisions behind it.
-          </h1>
-        </div>
-      </section>
-
-      {/* Filter row */}
-      <section
-        className="c97-band c97-band-continues"
-        data-c97-surface="paper"
-        style={{ paddingBottom: "var(--c97-sp-3)" }}
-      >
         <div
           className="c97-shell"
           style={{ display: "grid", gap: "var(--c97-sp-3)" }}
         >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
-              gap: "var(--c97-sp-2)",
-              alignItems: "end",
-            }}
-          >
-            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
-              <span className="c97-kicker">Search projects</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search projects"
-                className="c97-field"
-              />
-            </label>
-            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
-              <span className="c97-kicker">Sort projects</span>
-              <select
-                value={sort}
-                onChange={(event) => setSort(event.target.value as SortMode)}
-                className="c97-field"
-              >
-                <option value="curated">Featured first</option>
-                <option value="newest">Newest first</option>
-                <option value="alpha">Alphabetical</option>
-                <option value="live">Live first</option>
-              </select>
-            </label>
-          </div>
-          <label className="c97-category-picker">
-            <span className="c97-kicker">Project category</span>
-            <select
-              name="category"
-              value={active}
-              onChange={(event) => setActive(event.target.value)}
-              className="c97-field"
-            >
-              {tabs.map((tab) => (
-                <option key={tab.id} value={tab.id}>
-                  {tab.label} ({tab.count})
-                </option>
-              ))}
-            </select>
-          </label>
-          <div
-            className="c97-category-links"
-            role="group"
-            aria-label="Filter projects by category"
-            /*
-              Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
-              and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
-              apart and overlaps them. Measured on the identical control on
-              /dashboards, that was eight overlapping pairs at 320. Keep the two
-              axes separate.
-            */
-            style={{
-              columnGap: "var(--c97-sp-3)",
-              rowGap: "var(--c97-sp-5)",
-              flexWrap: "wrap",
-            }}
-          >
-            {tabs.map((tab) => {
-              const selected = tab.id === active;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => setActive(tab.id)}
-                  className="c97-microlink"
-                  style={{
-                    background: "none",
-                    border: 0,
-                    cursor: "pointer",
-                    display: "inline-flex",
-                    alignItems: "baseline",
-                    gap: "var(--c97-sp-1)",
-                    // Unselected buttons take the microlink's label colour and its hover.
-                    color: selected ? "var(--c97-ink)" : undefined,
-                    // Pressed is never colour alone; this is .c97-segmented's underline.
-                    textDecoration: selected ? "underline" : "none",
-                    textDecorationThickness: "2px",
-                    textUnderlineOffset: "6px",
-                    textDecorationColor: "var(--c97-accent)",
-                  }}
-                >
-                  <span>{tab.label}</span>
-                  <span className="c97-tabular">{tab.count}</span>
-                </button>
-              );
-            })}
-          </div>
-          {/* Read out when a search or filter changes the list. */}
-          <p className="sr-only" role="status">
-            {filtered.length} of {projects.length} projects shown
+          <h1 className="c97-poster">
+            The work I&rsquo;d show first, and the decisions behind it.
+          </h1>
+          <p className="c97-lead" style={{ maxWidth: "var(--c97-measure-body)" }}>
+            Four things I built and the two jobs the product work came from.
+            The full inventory, all {projects.length} tools, is on{" "}
+            <Link className="c97-link" href="/dashboards">
+              Dashboards
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -257,27 +88,6 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
           className="c97-shell"
           style={{ display: "grid", gap: "var(--c97-sp-5)" }}
         >
-          {filtered.length === 0 ? (
-            <div
-              style={{
-                display: "grid",
-                justifyItems: "start",
-                gap: "var(--c97-sp-2)",
-              }}
-            >
-              <p className="c97-prose">No projects match that search.</p>
-              <button
-                type="button"
-                className="c97-btn-ghost"
-                onClick={() => {
-                  setQuery("");
-                  setActive(ALL);
-                }}
-              >
-                Clear search
-              </button>
-            </div>
-          ) : null}
           {lead.map((project) => (
             <article
               key={project.slug}
@@ -360,135 +170,47 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
         </div>
       </section>
 
-      {/* The rest of the index. With no matches the empty state above says so. */}
-      {ledger.length > 0 ? (
-        <section
-          className="c97-band c97-band-tall c97-sheet"
-          data-c97-surface="ink-blue"
-          data-seam="torn"
+      {/* The two jobs */}
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="ink-blue"
+        data-seam="torn"
+      >
+        <div
+          className="c97-shell"
+          style={{ display: "grid", gap: "var(--c97-sp-4)" }}
         >
-          <div className="c97-shell">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: "var(--c97-sp-2)",
-                flexWrap: "wrap",
-              }}
+          <h2 className="c97-poster-sm">Where the product work came from</h2>
+          {CAREER_WRITE_UPS.map((job) => (
+            <article
+              key={job.href}
+              className="c97-row c97-row-stack-sm"
+              style={{ alignItems: "start" }}
             >
-              {/*
-              This was `c97-kicker`, so an h2 rendered at 11px directly above
-              22px children while its four sibling h2s in the saffron band ran at
-              32px.
-
-              --c97-fs-h3 was tried first, on the reasoning that the ledger is
-              the quiet tier and its header should stay quiet. It does not
-              survive mobile. Both steps clamp down at 390px, h3 to 20px and
-              lead to 19px, so the header landed one pixel above its own
-              children and the nesting went invisible, which is the same defect
-              one step over. --c97-fs-h2 clamps to 24px against the same 19px,
-              and at 1440 it is 32px against 22px. It also matches the four
-              sibling h2s in the saffron band, so every h2 on the route now draws
-              at one size.
-            */}
-              <h2 className="c97-poster-sm">The rest of the index</h2>
-              <p className="c97-kicker c97-tabular">
-                {ledger.length} {ledger.length === 1 ? "project" : "projects"}
-              </p>
-            </div>
-
-            {ledger.length > 0 ? (
-              /*
-              Two columns above roughly 780px, one below.
-
-              As a single full-width column each row was a 1fr title track and
-              an auto date track inside the 1080px shell, so a title of about
-              250px sat roughly 850px away from its own date with nothing
-              between them. Reading across that gap is the scanning problem a
-              ledger exists to avoid, and there are 29 rows of it. Halving the
-              column width halves the distance, and it takes the blue band from
-              1940px to about half that.
-
-              A hairline per row would also bridge the gap and the design owns
-              that device, but proximity solves it without adding 29 rules.
-            */
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns:
-                    "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-                  columnGap: "var(--c97-sp-5)",
-                  rowGap: "var(--c97-sp-4)",
-                  marginTop: "var(--c97-sp-4)",
-                }}
-              >
-                {ledger.map((project) => (
-                  <div
-                    key={project.slug}
-                    className="c97-row"
-                    // Top-aligned, since the left cell now runs several lines.
-                    style={{ alignItems: "start" }}
-                  >
-                    <div>
-                      {/*
-                      An h3 rather than a div. These 29 are the same kind of thing
-                      as the four in the saffron band, which are h2, so as divs they
-                      were 29 of the 33 projects unreachable by heading
-                      navigation. The level mirrors the two-tier split the design
-                      already makes visually, and `c97-lead` keeps the size.
-                    */}
-                      <h3 className="c97-serif c97-lead">
-                        <Link
-                          href={project.link ?? `/portfolio/${project.slug}`}
-                          className="c97-link-heading"
-                        >
-                          {project.title}
-                        </Link>
-                      </h3>
-                      {/*
-                      The same scan context the four lead entries carry, what the
-                      project is for and my role on it, so a row can be read
-                      without opening the tool.
-                    */}
-                      <p className="c97-prose">{getProjectCardSummary(project)}</p>
-                      <p
-                        className="c97-meta"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      >
-                        <span>{project.role}</span>
-                      </p>
-                      {PROJECT_BUILD_NOTES[project.slug] ? (
-                        <Link
-                          href={`/writing/${PROJECT_BUILD_NOTES[project.slug]}`}
-                          className="c97-sectionlink"
-                          aria-label={`How I built it, ${project.title}`}
-                        >
-                          How I built it
-                        </Link>
-                      ) : null}
-                    </div>
-                    <div className="c97-kicker c97-tabular">
-                      {project.timeline}
-                    </div>
-                  </div>
-                ))}
+              <div>
+                <h3 className="c97-serif c97-h3">
+                  <Link href={job.href} className="c97-link-heading">
+                    {job.title}
+                  </Link>
+                </h3>
+                <p
+                  className="c97-prose"
+                  style={{ marginTop: "var(--c97-sp-1)" }}
+                >
+                  {job.summary}
+                </p>
+                <p
+                  className="c97-meta"
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
+                  <span>{job.role}</span>
+                </p>
               </div>
-            ) : (
-              <p
-                className="c97-prose"
-                style={{
-                  marginTop: "var(--c97-sp-4)",
-                  color: "var(--c97-ink-2)",
-                  maxWidth: "var(--c97-measure-body)",
-                }}
-              >
-                Everything under this filter is already above.
-              </p>
-            )}
-          </div>
-        </section>
-      ) : null}
+              <div className="c97-kicker c97-tabular">{job.when}</div>
+            </article>
+          ))}
+        </div>
+      </section>
 
       {/* CTA */}
       <section
@@ -512,7 +234,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               className="c97-poster-sm"
               style={{ maxWidth: "24ch", marginTop: "var(--c97-sp-2)" }}
             >
-              Most of these have a build note in the writing archive, and I am
+              Each of these has a build note in the writing archive, and I am
               happy to walk through any of them.
             </p>
           </div>

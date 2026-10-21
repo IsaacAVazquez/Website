@@ -76,8 +76,8 @@ const CATEGORY_BANNERS: Record<ToolCategoryId, string> = {
  * Sports. Tool titles are `h3` under that `h2` so the document outline matches
  * what the page looks like.
  *
- * The category filter is the same control `/portfolio` runs over the same
- * `classifyToolSlug` buckets, which is why it is drawn the same way. It is what
+ * The category filter runs over the `classifyToolSlug` buckets. Until
+ * 2026-10-19 `/portfolio` ran the same control; this is the only index now. It is what
  * makes Sports being eleven deep a state you chose rather than one imposed on
  * you, and it is the only thing on the route that lets a phone reduce what is
  * on screen. It is a client component for that one piece of state; everything
@@ -202,7 +202,7 @@ export function Catalog97Dashboards({
         </div>
       </section>
 
-      {/* Filter row, the same control /portfolio runs over the same buckets. */}
+      {/* Filter row over the classifyToolSlug buckets. */}
       <section
         className="c97-band c97-band-continues"
         data-c97-surface="paper"

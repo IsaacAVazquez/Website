@@ -30,43 +30,18 @@ test.describe("Portfolio shell", () => {
     });
   }
 
-  test("/portfolio renders the masthead, lead projects, filter, and index", async ({ page }) => {
+  test("/portfolio renders the masthead, lead projects, write-ups, and the way to the inventory", async ({ page }) => {
     await page.goto("/portfolio");
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(
-      page.getByRole("heading", { name: /investment analytics platform/i })
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: /before you buy/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /^juno$/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /^civitech$/i })).toBeVisible();
+    await expect(page.locator('main a[href="/dashboards"]')).toHaveCount(1);
 
-    const filters = page.getByRole("group", {
-      name: "Filter projects by category",
-    });
-    const categoryPicker = page.getByRole("combobox", { name: "Project category" });
-    if (await categoryPicker.isVisible()) {
-      await expect(categoryPicker).toHaveValue("all");
-    } else {
-      await expect(filters).toBeVisible();
-      await expect(filters.getByRole("button", { name: /^All / })).toHaveAttribute(
-        "aria-pressed",
-        "true"
-      );
-    }
-
-    const search = page.getByRole("searchbox", { name: "Search projects" });
-    await search.fill("investment analytics");
-    await expect(
-      page.getByRole("heading", { name: /investment analytics platform/i })
-    ).toBeVisible();
-
-    await search.fill("no matching project title");
-    await expect(page.getByText("No projects match that search.")).toBeVisible();
-
-    await search.fill("");
-    await page.getByRole("combobox", { name: "Sort projects" }).selectOption("alpha");
-    const leadTitles = await page
-      .locator('section[data-c97-surface="ink-saffron"] h2')
-      .allTextContents();
-    expect(leadTitles).toEqual([...leadTitles].sort((left, right) => left.localeCompare(right)));
+    // The inventory controls moved to /dashboards on 2026-10-19.
+    await expect(page.getByRole("searchbox")).toHaveCount(0);
+    await expect(page.getByRole("combobox")).toHaveCount(0);
 
     // Entries link straight to each live tool instead of through the
     // /portfolio/<slug> redirect.
