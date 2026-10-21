@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T23:58:42.295Z",
+  "generatedAt": "2026-10-21T14:33:06.962Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-21T21:59:00Z",
-      "dateUnix": 1792619940,
-      "dateLocal": "2026-10-21T21:59:00Z",
+      "dateUtc": "2026-10-21T23:02:41Z",
+      "dateUnix": 1792623761,
+      "dateLocal": "2026-10-21T23:02:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-21T21:59:00Z",
-      "dateUnix": 1792619940,
-      "dateLocal": "2026-10-21T21:59:00Z",
+      "dateUtc": "2026-10-21T23:02:41Z",
+      "dateUnix": 1792623761,
+      "dateLocal": "2026-10-21T23:02:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-20T23:58:36.483Z"
+    "generatedAt": "2026-10-21T14:32:57.760Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-21T21:59:00Z",
-      "dateUnix": 1792619940,
-      "dateLocal": "2026-10-21T21:59:00Z",
+      "dateUtc": "2026-10-21T23:02:41Z",
+      "dateUnix": 1792623761,
+      "dateLocal": "2026-10-21T23:02:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -316,7 +316,7 @@
     {
       "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
       "name": "Starlink Group 15-21",
-      "flightNumber": 744,
+      "flightNumber": 745,
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
@@ -356,7 +356,7 @@
     {
       "id": "d74afbc7-0de5-491c-be05-4e9c31f736ac",
       "name": "Cygnus CRS-2 NG-25",
-      "flightNumber": 745,
+      "flightNumber": 746,
       "upcoming": true,
       "success": null,
       "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
@@ -396,7 +396,47 @@
     {
       "id": "1fa3741c-3339-4954-a026-2cd9d36161c0",
       "name": "Rivada 7",
-      "flightNumber": 784,
+      "flightNumber": 785,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
+      "name": "Rivada 12",
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -436,7 +476,7 @@
     {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
       "name": "Flight 15",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
@@ -474,9 +514,49 @@
       }
     },
     {
+      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
+      "name": "SDA Tranche 1 Tracking Layer E",
+      "flightNumber": 785,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
       "name": "Rivada 1",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -516,7 +596,7 @@
     {
       "id": "c5783e2b-d458-4b99-9936-4043c236190b",
       "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -556,7 +636,7 @@
     {
       "id": "adfc829a-6704-4d9e-b2ca-1068c38b2b83",
       "name": "Telesat Lightspeed 4",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
@@ -594,9 +674,49 @@
       }
     },
     {
+      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+      "name": "Telesat Lightspeed 1",
+      "flightNumber": 785,
+      "upcoming": true,
+      "success": null,
+      "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 18,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "11b218b1-5e40-4b9d-854e-50320299239d",
       "name": "BlueBird 14-16 (Block 2 #9-11)",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "AST SpaceMobile’s Block 2 BlueBird satellites are designed to deliver up to 10 times the bandwidth capacity of the BlueBird Block 1 satellites, required to achieve 24/7 continuous cellular broadband service coverage in the United States, with beams designed to support a capacity of up to 40 MHz, enabling peak data transmission speeds up to 120 Mbps, supporting voice, full data and video applications. The Block 2 BlueBirds, featuring as large as 2400 square foot communications arrays, will be the largest satellites ever commercially deployed in Low Earth orbit once launched.\r\n\r\nThis launch will feature 3 satellites.",
@@ -636,7 +756,7 @@
     {
       "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
       "name": "Rivada 3",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -676,7 +796,7 @@
     {
       "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
       "name": "SDA Tranche 2 Transport Layer A",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
@@ -714,89 +834,9 @@
       }
     },
     {
-      "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
-      "name": "Rivada 12",
-      "flightNumber": 784,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
-      "flightNumber": 784,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
       "name": "Griffin Mission One",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
@@ -834,49 +874,9 @@
       }
     },
     {
-      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
-      "name": "Telesat Lightspeed 1",
-      "flightNumber": 784,
-      "upcoming": true,
-      "success": null,
-      "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 18,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "98b905bb-4060-40a2-b299-2773b6883203",
       "name": "Telesat Lightspeed 5",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
@@ -916,7 +916,7 @@
     {
       "id": "d08d8b46-353b-4eee-ab5e-e1385b329008",
       "name": "Rivada 11",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -956,7 +956,7 @@
     {
       "id": "d6615c37-dcef-45d1-96c1-3d1a5250bf13",
       "name": "Telesat Lightspeed 3",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
@@ -996,7 +996,7 @@
     {
       "id": "7d77bd89-af23-4a5a-b632-de0034003a64",
       "name": "Rivada 8",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -1036,7 +1036,7 @@
     {
       "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
       "name": "SDA Tranche 2 Tracking Layer B",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
@@ -1076,7 +1076,7 @@
     {
       "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
       "name": "Rivada 5",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-21T21:59:00Z",
-      "dateUnix": 1792619940,
-      "dateLocal": "2026-10-21T21:59:00Z",
+      "dateUtc": "2026-10-21T23:02:41Z",
+      "dateUnix": 1792623761,
+      "dateLocal": "2026-10-21T23:02:41Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2180,7 +2180,7 @@
     "0f867f0c-5422-4d44-93b8-d7faaae7019b": {
       "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
       "name": "Flight 15",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
@@ -2279,7 +2279,7 @@
     "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67": {
       "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
       "name": "Griffin Mission One",
-      "flightNumber": 784,
+      "flightNumber": 785,
       "upcoming": true,
       "success": null,
       "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the cancelled NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-20T23:58:41.983Z"
+    "generatedAt": "2026-10-21T14:33:06.434Z"
   }
 }
