@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-20T20:40:30.493Z",
+  "generatedAt": "2026-10-21T20:41:15.297Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-20T20:40:31.275Z",
+        "accessedAt": "2026-10-21T20:41:15.882Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -4654,7 +4654,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 517,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-20T20:40:31.770Z",
+        "accessedAt": "2026-10-21T20:41:16.596Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -9683,7 +9683,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 480,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-20T20:40:32.956Z",
+        "accessedAt": "2026-10-21T20:41:17.307Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -15234,7 +15234,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-20T20:40:34.058Z",
+        "accessedAt": "2026-10-21T20:41:18.443Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -20895,7 +20895,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 534,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-20T20:40:34.970Z",
+        "accessedAt": "2026-10-21T20:41:19.090Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -25852,7 +25852,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 489,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-20T20:40:35.668Z",
+        "accessedAt": "2026-10-21T20:41:19.765Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -31322,7 +31322,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 501,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-19T21:35:44.938Z",
+        "accessedAt": "2026-10-21T20:41:20.602Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34085,7 +34085,7 @@
           {
             "playerId": "fp-19302",
             "name": "Najee Harris",
-            "team": "NYG",
+            "team": "FA",
             "position": "RB",
             "positionRank": 61,
             "rank": 212,
@@ -34184,7 +34184,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "MIA",
+            "team": "FA",
             "position": "K",
             "positionRank": 25,
             "rank": 223,
@@ -36605,7 +36605,7 @@
           {
             "playerId": "fp-25857",
             "name": "Ryan Miller",
-            "team": "FA",
+            "team": "NE",
             "position": "WR",
             "positionRank": 172,
             "rank": 492,
@@ -36884,7 +36884,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 523,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-20T20:40:49.084Z",
+        "accessedAt": "2026-10-21T20:41:21.042Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42264,7 +42264,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 525,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-20T20:40:49.885Z",
+        "accessedAt": "2026-10-21T20:41:21.676Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -47347,7 +47347,7 @@
           {
             "playerId": "fp-23049",
             "name": "Kevin Austin Jr.",
-            "team": "NO",
+            "team": "FA",
             "position": "WR",
             "positionRank": 187,
             "rank": 494,
