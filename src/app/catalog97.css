@@ -1782,14 +1782,18 @@ select.c97-field {
 
 /*
  * The end of a post gets the newsroom's "-30-", the old sign that a story
- * was finished. Where `content` takes alt text, the alt text is empty so
- * screen readers skip it. A browser without alt text would drop a slashed
- * `content` whole, so that version sits behind @supports.
+ * was finished. It is a button (ArticleEndMark) that explains itself when
+ * pressed, so the mark is its visible text and the button carries the label.
  */
-.c97-article-end::after {
-  content: "\2011 30\2011";
+.c97-article-mark {
   display: block;
+  width: 100%;
+  min-height: 44px;
   margin-top: var(--c97-sp-5);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
   font-family: var(--c97-font-poster);
   font-size: var(--c97-fs-h3);
   letter-spacing: 0.08em;
@@ -1798,10 +1802,23 @@ select.c97-field {
   text-shadow: 0.05em 0.04em 0 var(--c97-overprint, var(--c97-riso-vermilion));
 }
 
-@supports (content: "a" / "") {
-  .c97-article-end::after {
-    content: "\2011 30\2011" / "";
-  }
+.c97-article-mark:hover,
+.c97-article-mark:focus-visible {
+  color: var(--c97-ink);
+}
+
+.c97-article-mark-note {
+  max-width: 56ch;
+  margin-inline: auto;
+  text-align: center;
+  font-size: var(--c97-fs-small);
+  line-height: var(--c97-lh-body);
+  color: var(--c97-ink-2);
+}
+
+.c97-article-mark-note p {
+  margin-top: var(--c97-sp-2);
+  max-inline-size: none;
 }
 
 /* The column, not the 65ch paragraph cap globals.css applies to every p. */

@@ -579,6 +579,12 @@ export function WineCellarClient() {
                     className="c97-field"
                   />
                 </label>
+                {/* A vintage past this year gets a line (docs/EASTER_EGGS.md). The draft is empty on the server, so the clock is only read after a keystroke. */}
+                {(parseNumberInput(formDraft.vintage) ?? 0) > new Date().getFullYear() ? (
+                  <p className="wc-note wc-wide" role="status" style={{ marginTop: 0 }}>
+                    A bottle from the future. I&apos;d open it before the paradox does.
+                  </p>
+                ) : null}
                 <label className="wc-field">
                   <span className="wc-label">Region</span>
                   <input

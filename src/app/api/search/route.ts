@@ -290,7 +290,58 @@ const COLOPHON_ANSWER: SearchableContent = {
   category: 'Site',
 };
 
+const COFFEE_ANSWER: SearchableContent = {
+  id: 'answer-coffee',
+  title: 'Coffee',
+  excerpt:
+    "I can't brew coffee here. The teapot at /teapot will tell you the same thing, with the status code to prove it.",
+  content: '',
+  url: '/teapot',
+  type: 'page',
+  category: 'Site',
+};
+const HELLO_ANSWER: SearchableContent = {
+  id: 'answer-hello',
+  title: 'Hello',
+  excerpt:
+    "Hi, thanks for stopping by. If you want to talk, the contact page is the quickest way to reach me.",
+  content: '',
+  url: '/contact',
+  type: 'page',
+  category: 'Site',
+};
+const MISPRINT_ANSWER: SearchableContent = {
+  id: 'answer-misprint',
+  title: 'The misprint',
+  excerpt:
+    "Any address that doesn't exist gets a sheet that came off the press wrong, and this link is one of them.",
+  content: '',
+  url: '/404',
+  type: 'page',
+  category: 'Site',
+};
+const NOW_ANSWER: SearchableContent = {
+  id: 'answer-now',
+  title: "What I'm doing now",
+  excerpt:
+    "What I'm focused on this month, what I'm building, and where I am, on one page that I refresh when it goes stale.",
+  content: '',
+  url: '/now',
+  type: 'page',
+  category: 'Site',
+};
+
 const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
+  coffee: COFFEE_ANSWER,
+  espresso: COFFEE_ANSWER,
+  hello: HELLO_ANSWER,
+  hey: HELLO_ANSWER,
+  howdy: HELLO_ANSWER,
+  '404': MISPRINT_ANSWER,
+  misprint: MISPRINT_ANSWER,
+  now: NOW_ANSWER,
+  'what is isaac doing now': NOW_ANSWER,
+  'what are you doing now': NOW_ANSWER,
   monet: MONET_ANSWER,
   konami: KONAMI_ANSWER,
   'konami code': KONAMI_ANSWER,

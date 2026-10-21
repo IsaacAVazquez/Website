@@ -109,6 +109,16 @@
   max-width: var(--c97-measure-wide);
 }
 
+/* The note for an address the misprint recognises, under the lead. */
+.note {
+  position: relative;
+  z-index: 2;
+  margin-top: var(--c97-sp-2);
+  max-width: var(--c97-measure-wide);
+  font-size: var(--c97-fs-small);
+  line-height: var(--c97-lh-body);
+}
+
 .ways {
   display: flex;
   flex-wrap: wrap;

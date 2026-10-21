@@ -392,6 +392,11 @@ describe("GET /api/search", () => {
       ["I'm a teapot", "answer-teapot", "/teapot"],
       ["humans.txt", "answer-colophon", "/humans.txt"],
       ["colophon", "answer-colophon", "/humans.txt"],
+      ["coffee", "answer-coffee", "/teapot"],
+      ["Hello!", "answer-hello", "/contact"],
+      ["404", "answer-misprint", "/404"],
+      ["now", "answer-now", "/now"],
+      ["What are you doing now?", "answer-now", "/now"],
     ])("answers %s with the hint for that easter egg", async (q, id, url) => {
       const response = await GET(makeRequest(`?q=${encodeURIComponent(q)}`));
       const body = await response.json();

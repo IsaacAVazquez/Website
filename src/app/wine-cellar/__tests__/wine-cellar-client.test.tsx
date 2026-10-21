@@ -146,6 +146,18 @@ describe("WineCellarClient", () => {
     }
   });
 
+  it("notes a vintage from the future while it is typed", () => {
+    render(<WineCellarClient />);
+    const vintage = screen.getByLabelText("Vintage");
+    const nextYear = new Date().getFullYear() + 1;
+
+    fireEvent.change(vintage, { target: { value: String(nextYear) } });
+    expect(screen.getByRole("status")).toHaveTextContent("A bottle from the future.");
+
+    fireEvent.change(vintage, { target: { value: "2018" } });
+    expect(screen.queryByText(/bottle from the future/)).not.toBeInTheDocument();
+  });
+
   it("explains a missing name inline instead of disabling the button", () => {
     render(<WineCellarClient />);
 

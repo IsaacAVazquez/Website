@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import styles from "./Catalog97EasterEggs.module.css";
 import { isKonami, isTypingTarget, pushKonamiKey, shouldIgnoreKey } from "./konami";
 import { sep } from "@/lib/date-formatters";
+import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/browserStorage";
 
 /**
  * Small things for people who poke at the site, rendered once from
@@ -30,6 +31,9 @@ const IMPRINT_MS = 2400;
 const MAX_IMPRINTS = 5;
 const KNOCK_STAMPS = 6;
 const KNOCK_WINDOW_MS = 3000;
+// Stamps counted across visits in this browser, and the one that wears the rubber in.
+const STAMPS_KEY = "c97-stamps-v1";
+const WORN_IN_STAMPS = 100;
 const SAFELIGHT_MS = 6000;
 const SAFELIGHT_FLIPS = 5;
 const SAFELIGHT_WINDOW_MS = 4000;
@@ -55,11 +59,20 @@ const TOASTS = {
     body: "You flipped the lights enough times to trip the safelight. It turns itself off in a few seconds.",
     arcade: false,
   },
+  worn: {
+    title: "Worn in",
+    body: "That's your hundredth stamp, counting every visit from this browser. The rubber is worn in now, and it will keep printing.",
+    arcade: false,
+  },
 } as const;
 
 type ToastKind = keyof typeof TOASTS;
 
 const onArcade = () => window.location.pathname.startsWith("/arcade");
+// The routes that answer the code themselves: the arcade with 30 lives, and
+// mission control with a drill launch.
+const answersTheCode = () =>
+  onArcade() || window.location.pathname.startsWith("/spacex-mission-control");
 
 // Module scope survives client navigation and React strict mode's second
 // effect run, and resets on a full page load, which is exactly the "once" wanted.
@@ -136,9 +149,9 @@ export function Catalog97EasterEggs() {
     let history: string[] = [];
 
     const onKeydown = (event: KeyboardEvent) => {
-      // The arcade answers the code itself, and the toast would only point
-      // back at the page the visitor is already on.
-      if (onArcade()) return;
+      // The arcade and mission control answer the code themselves, and on the
+      // arcade the toast would only point back at the page the visitor is on.
+      if (answersTheCode()) return;
       if (shouldIgnoreKey(event)) return;
       history = pushKonamiKey(history, event.key);
       if (!isKonami(history)) return;
@@ -282,6 +295,12 @@ export function Catalog97EasterEggs() {
         knock("stamp");
       }
 
+      // The lifetime count. A knock's toast in the same click keeps its place,
+      // since the hundredth stamp will still be the hundredth on the next one.
+      const total = (Number.parseInt(readBrowserStorageString(STAMPS_KEY).value ?? "", 10) || 0) + 1;
+      writeBrowserStorageString(STAMPS_KEY, String(total));
+      if (total === WORN_IN_STAMPS && stamps.length > 0) openToast("worn");
+
       const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
       if (!reduced && typeof mark.animate === "function") {
         mark.animate(
@@ -324,7 +343,7 @@ export function Catalog97EasterEggs() {
       timers.forEach((timer) => window.clearTimeout(timer));
       imprints.forEach((imprint) => imprint.remove());
     };
-  }, [knock]);
+  }, [knock, openToast]);
 
   const restartToastTimer = () => {
     window.clearTimeout(toastTimer.current);
