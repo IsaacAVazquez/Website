@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable react-refresh/only-export-components -- co-located matcher is intentional */
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";

@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable react-refresh/only-export-components -- co-located helper is intentional */
 
 import { useState } from "react";
 import Link from "next/link";
