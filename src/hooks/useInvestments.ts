@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import type {
   PortfolioHolding,
@@ -786,6 +787,7 @@ export function useInvestments(): UseInvestmentsReturn {
   );
 
   const addHolding = useCallback((holding: PortfolioHolding) => {
+    trackToolAction({ tool_name: "investments", action: "holding_add" });
     commitHoldings((prev) => {
       const existing = prev.findIndex((h) => h.symbol === holding.symbol);
       let next: PortfolioHolding[];

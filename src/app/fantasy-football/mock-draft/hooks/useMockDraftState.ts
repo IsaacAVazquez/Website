@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   readBrowserStorageString,
@@ -364,6 +365,7 @@ export function useMockDraftState(
       // The caller is responsible for handing over a board in the room's
       // scoring format; refuse to start a room on the wrong one.
       if (!simulationEnabled || settings.scoringFormat !== boardScoring) return;
+      trackToolAction({ tool_name: "mock_draft", action: "draft_start" });
       hydratedRef.current = true;
       const roomSeed =
         typeof seed === "number" ? seed : Math.floor(Math.random() * 2 ** 31);

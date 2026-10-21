@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { useCallback, useMemo } from "react";
 import { calculateRentVsBuy } from "@/lib/rentVsBuy/engine";
 import {
@@ -33,6 +34,7 @@ export function useRentVsBuy() {
 
   const setField = useCallback(
     <K extends keyof RentVsBuyInput>(key: K, value: RentVsBuyInput[K]) => {
+      trackToolAction({ tool_name: "rent_vs_buy", action: "input_edit" });
       const current = parseSnapshot(readBrowserStorageString(RENT_VS_BUY_STORAGE_KEY).value ?? "");
       setInput({ ...current, [key]: value });
     },
@@ -40,6 +42,7 @@ export function useRentVsBuy() {
   );
 
   const reset = useCallback(() => {
+    trackToolAction({ tool_name: "rent_vs_buy", action: "reset" });
     setInput(createDefaultInput());
   }, [setInput]);
 

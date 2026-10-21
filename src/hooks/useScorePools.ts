@@ -5,6 +5,7 @@
 // browser-storage helpers. All mutation goes through commit() so every
 // caller reads the freshest stored value before writing.
 
+import { trackToolAction } from "@/lib/analytics";
 import { useCallback, useMemo } from "react";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
@@ -59,6 +60,7 @@ export function useScorePools() {
 
   const addPool = useCallback(
     (leagueKey: string, name: string): string => {
+      trackToolAction({ tool_name: "score_pools", action: "pool_add" });
       const pool = createPool(leagueKey, name);
       commit((current) => ({
         ...current,
@@ -94,6 +96,7 @@ export function useScorePools() {
 
   const setSubmission = useCallback(
     (poolId: string, fixtureId: string, score: Scoreline, submittedAt: string) => {
+      trackToolAction({ tool_name: "score_pools", action: "pick_set" });
       updatePool(poolId, (pool) => ({
         ...pool,
         submissions: {

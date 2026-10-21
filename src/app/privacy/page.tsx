@@ -13,7 +13,7 @@ import { StructuredData } from "@/components/StructuredData";
  * change what they collect or where they send it.
  */
 
-const UPDATED = "2026-10-02";
+const UPDATED = "2026-10-21";
 
 const privacyDescription =
   "What this site collects and where it goes, from Google Analytics, to the tools that save your entries in your own browser, to the two forms that send an email address.";
@@ -99,8 +99,13 @@ export default function PrivacyPage() {
             On top of page views, the site sends a few events of its own, which are clicks on the
             header and search result links, filter changes on the search page, copying a code
             sample out of an article, how far down a long page you scroll (at 25, 50, 75, and 100
-            percent), and a newsletter signup. The signup event carries the page it happened on and
-            not your email address.
+            percent), a newsletter signup, a click on the résumé download, and a click on my email
+            address or my LinkedIn or GitHub profile. A few of the tools also send one event the
+            first time you use a feature after a page loads, like making a pick in a draft tracker,
+            adding a player to the trade calculator, or changing an input on the retirement or rent
+            versus buy calculators. None of these events carry what you typed or picked, only the
+            page and the name of the feature, and the signup event carries the page it happened on
+            and not your email address.
           </p>
           <p className="c97-prose" style={secondaryProseStyle}>
             I don&apos;t run session recordings or heatmaps on this site.

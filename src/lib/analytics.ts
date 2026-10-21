@@ -50,11 +50,12 @@ function cleanParams(params: GtagParams): GtagParams {
  * Low-level event dispatch. Safe to call anywhere — it does nothing on the
  * server, when analytics is disabled, or before gtag has finished loading.
  */
-export function trackEvent(eventName: string, params: GtagParams = {}): void {
-  if (typeof window === "undefined") return;
-  if (!isAnalyticsEnabled()) return;
-  if (typeof window.gtag !== "function") return;
+export function trackEvent(eventName: string, params: GtagParams = {}): boolean {
+  if (typeof window === "undefined") return false;
+  if (!isAnalyticsEnabled()) return false;
+  if (typeof window.gtag !== "function") return false;
   window.gtag("event", eventName, cleanParams(params));
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -68,6 +69,9 @@ export const GA_EVENT = {
   listingSearch: "listing_search",
   scrollDepth: "scroll_depth",
   newsletterSubscribe: "newsletter_subscribe",
+  resumeDownload: "resume_download",
+  contactClick: "contact_click",
+  toolAction: "tool_action",
 } as const;
 
 type NavLocation =
@@ -130,4 +134,38 @@ export function trackNewsletterSubscribe(params: {
   signup_location: string;
 }): void {
   trackEvent(GA_EVENT.newsletterSubscribe, params);
+}
+
+/** A link to the résumé PDF was clicked. */
+export function trackResumeDownload(params: { page_path: string }): void {
+  trackEvent(GA_EVENT.resumeDownload, params);
+}
+
+/** A click on the email address or a profile link (LinkedIn, GitHub). */
+export function trackContactClick(params: {
+  contact_method: "email" | "linkedin" | "github";
+  page_path: string;
+}): void {
+  trackEvent(GA_EVENT.contactClick, params);
+}
+
+type ToolName =
+  | "draft_tracker"
+  | "best_ball_draft"
+  | "mock_draft"
+  | "trade_calculator"
+  | "retirement_planner"
+  | "rent_vs_buy"
+  | "score_pools"
+  | "investments";
+
+// ponytail: one event per tool and action per page load, so a 200-pick draft or a
+// form's keystrokes count as one use. Drop the dedupe if per-action volume matters.
+const sentToolActions = new Set<string>();
+
+/** First use of a tool feature in this page load (draft pick, input edit, and so on). */
+export function trackToolAction(params: { tool_name: ToolName; action: string }): void {
+  const key = `${params.tool_name}:${params.action}`;
+  if (sentToolActions.has(key)) return;
+  if (trackEvent(GA_EVENT.toolAction, params)) sentToolActions.add(key);
 }

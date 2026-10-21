@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import {
@@ -196,6 +197,7 @@ export function useRetirementPlan(
   // directly, so neither is mistaken for the visitor entering something.
   const editPlan = useCallback(
     (updater: React.SetStateAction<RetirementPlanInput>) => {
+      trackToolAction({ tool_name: "retirement_planner", action: "input_edit" });
       const current = loadPlan() ?? planRef.current;
       const next = typeof updater === "function" ? updater(current) : updater;
       safeWrite(next);
@@ -350,6 +352,7 @@ export function useRetirementPlan(
   }, [editPlan]);
 
   const reset = useCallback(() => {
+    trackToolAction({ tool_name: "retirement_planner", action: "reset" });
     const fresh = seedFreshPlan(seedRef.current);
     removeBrowserStorageString(STORAGE_KEY);
     planRef.current = fresh;

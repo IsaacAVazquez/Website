@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { logger } from "@/lib/logger";
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { DraftState, DraftSettings, DraftPick, Player, TeamRoster, ScoringFormat } from '@/types';
@@ -594,6 +595,7 @@ export const useDraftState = () => {
   }, [commitDraftState]);
 
   const startDraft = useCallback(() => {
+    trackToolAction({ tool_name: "draft_tracker", action: "draft_start" });
     commitDraftState((prev) => ({
       ...prev,
       isActive: true,
@@ -603,6 +605,7 @@ export const useDraftState = () => {
 
   // Draft a player
   const draftPlayer = useCallback((player: Player) => {
+    trackToolAction({ tool_name: "draft_tracker", action: "draft_pick" });
     commitDraftState(prev => {
       const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
       if (

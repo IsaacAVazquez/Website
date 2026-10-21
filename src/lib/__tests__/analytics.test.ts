@@ -110,6 +110,9 @@ describe("analytics with a measurement id configured", () => {
     analytics.trackListingSearch({ listing_id: "writing", search_term: "draft", results_count: 3 });
     analytics.trackScrollDepth({ percent_scrolled: 75, page_path: "/writing" });
     analytics.trackNewsletterSubscribe({ signup_location: "footer" });
+    analytics.trackResumeDownload({ page_path: "/resume" });
+    analytics.trackContactClick({ contact_method: "email", page_path: "/contact" });
+    analytics.trackToolAction({ tool_name: "rent_vs_buy", action: "input_edit" });
 
     expect(gtag.mock.calls.map((call) => call[1])).toEqual([
       analytics.GA_EVENT.navigationClick,
@@ -118,8 +121,30 @@ describe("analytics with a measurement id configured", () => {
       analytics.GA_EVENT.listingSearch,
       analytics.GA_EVENT.scrollDepth,
       analytics.GA_EVENT.newsletterSubscribe,
+      analytics.GA_EVENT.resumeDownload,
+      analytics.GA_EVENT.contactClick,
+      analytics.GA_EVENT.toolAction,
     ]);
     expect(gtag.mock.calls[1][2]).toEqual({ code_location: "article", code_language: "ts", char_count: 42 });
     expect(gtag.mock.calls[4][2]).toEqual({ percent_scrolled: 75, page_path: "/writing" });
+  });
+
+  it("sends each tool action once per page load, and only once gtag can take it", () => {
+    const analytics = loadAnalytics("G-TEST1");
+    const pick = { tool_name: "draft_tracker", action: "draft_pick" } as const;
+
+    // Before gtag loads nothing is sent, and the action is not marked as sent.
+    delete (window as unknown as { gtag?: unknown }).gtag;
+    analytics.trackToolAction(pick);
+    (window as unknown as { gtag: unknown }).gtag = gtag;
+
+    analytics.trackToolAction(pick);
+    analytics.trackToolAction(pick);
+    analytics.trackToolAction({ tool_name: "draft_tracker", action: "draft_start" });
+
+    expect(gtag.mock.calls.map((call) => call[2])).toEqual([
+      pick,
+      { tool_name: "draft_tracker", action: "draft_start" },
+    ]);
   });
 });

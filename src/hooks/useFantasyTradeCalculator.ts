@@ -1,5 +1,6 @@
 "use client";
 
+import { trackToolAction } from "@/lib/analytics";
 import { useCallback, useMemo } from "react";
 import { useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
 import type { PersistenceStatus } from "@/lib/browserStorage";
@@ -63,6 +64,7 @@ export function useFantasyTradeCalculator(
 
   const addPlayer = useCallback(
     (side: "give" | "get", playerId: string) => {
+      trackToolAction({ tool_name: "trade_calculator", action: "player_add" });
       commit((latest) => {
         const allIds = new Set([...latest.givePlayerIds, ...latest.getPlayerIds]);
         if (allIds.has(playerId)) return latest;
