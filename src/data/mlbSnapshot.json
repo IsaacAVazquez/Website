@@ -1,7 +1,7 @@
 {
   "season": "2026",
-  "generatedAt": "2026-10-20T23:08:50.314Z",
-  "updatedAt": "2026-10-20",
+  "generatedAt": "2026-10-21T04:33:02.479Z",
+  "updatedAt": "2026-10-21",
   "sourceLabel": "MLB Stats API",
   "sourceUrls": {
     "standings": "https://statsapi.mlb.com/api/v1/standings?leagueId=103,104&season=2026",
@@ -1392,6 +1392,34 @@
         "home": null,
         "away": null
       }
+    },
+    {
+      "id": "849800",
+      "utcDate": "2026-10-31T23:59:59Z",
+      "status": "Scheduled",
+      "matchday": null,
+      "stage": "W",
+      "startTimeTbd": true,
+      "ifNecessary": true,
+      "homeTeam": {
+        "id": "158",
+        "name": "Milwaukee Brewers",
+        "shortName": "Brewers",
+        "abbreviation": "MIL",
+        "crest": "https://www.mlbstatic.com/team-logos/158.svg"
+      },
+      "awayTeam": {
+        "id": "139",
+        "name": "Tampa Bay Rays",
+        "shortName": "Rays",
+        "abbreviation": "TB",
+        "crest": "https://www.mlbstatic.com/team-logos/139.svg"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
     }
   ],
   "hittingLeaders": {
@@ -1973,7 +2001,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "109": {
       "team": {
@@ -1997,7 +2025,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "110": {
       "team": {
@@ -2021,7 +2049,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "111": {
       "team": {
@@ -2045,7 +2073,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "112": {
       "team": {
@@ -2069,7 +2097,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "113": {
       "team": {
@@ -2093,7 +2121,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "114": {
       "team": {
@@ -2264,7 +2292,7 @@
         "runsFor": 11,
         "runsAgainst": 22
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "115": {
       "team": {
@@ -2288,7 +2316,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "116": {
       "team": {
@@ -2312,7 +2340,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "117": {
       "team": {
@@ -2336,7 +2364,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "118": {
       "team": {
@@ -2360,7 +2388,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "119": {
       "team": {
@@ -2531,7 +2559,7 @@
         "runsFor": 15,
         "runsAgainst": 22
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "120": {
       "team": {
@@ -2555,7 +2583,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "121": {
       "team": {
@@ -2579,7 +2607,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "133": {
       "team": {
@@ -2603,7 +2631,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "134": {
       "team": {
@@ -2627,7 +2655,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "135": {
       "team": {
@@ -2711,7 +2739,7 @@
         "runsFor": 5,
         "runsAgainst": 6
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "136": {
       "team": {
@@ -2735,7 +2763,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "137": {
       "team": {
@@ -2759,7 +2787,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "138": {
       "team": {
@@ -2783,7 +2811,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "139": {
       "team": {
@@ -3095,7 +3123,7 @@
         "runsFor": 22,
         "runsAgainst": 11
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "140": {
       "team": {
@@ -3119,7 +3147,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "141": {
       "team": {
@@ -3143,7 +3171,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "142": {
       "team": {
@@ -3167,7 +3195,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "143": {
       "team": {
@@ -3191,7 +3219,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "144": {
       "team": {
@@ -3275,7 +3303,7 @@
         "runsFor": 2,
         "runsAgainst": 7
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "145": {
       "team": {
@@ -3374,34 +3402,6 @@
             "home": 3,
             "away": 9
           }
-        },
-        {
-          "id": "849834",
-          "utcDate": "2026-10-05T21:00:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "D",
-          "startTimeTbd": false,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "114",
-            "name": "Cleveland Guardians",
-            "shortName": "Guardians",
-            "abbreviation": "CLE",
-            "crest": "https://www.mlbstatic.com/team-logos/114.svg"
-          },
-          "awayTeam": {
-            "id": "145",
-            "name": "Chicago White Sox",
-            "shortName": "White Sox",
-            "abbreviation": "CWS",
-            "crest": "https://www.mlbstatic.com/team-logos/145.svg"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 4
-          }
         }
       ],
       "upcomingGames": [],
@@ -3409,15 +3409,14 @@
         "sequence": [
           "L",
           "L",
-          "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
+        "wins": 0,
         "losses": 3,
-        "runsFor": 12,
-        "runsAgainst": 23
+        "runsFor": 8,
+        "runsAgainst": 20
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "146": {
       "team": {
@@ -3441,7 +3440,7 @@
         "runsFor": 0,
         "runsAgainst": 0
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "147": {
       "team": {
@@ -3484,48 +3483,19 @@
             "home": 3,
             "away": 4
           }
-        },
-        {
-          "id": "849839",
-          "utcDate": "2026-10-05T23:59:59Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "D",
-          "startTimeTbd": true,
-          "ifNecessary": false,
-          "homeTeam": {
-            "id": "139",
-            "name": "Tampa Bay Rays",
-            "shortName": "Rays",
-            "abbreviation": "TB",
-            "crest": "https://www.mlbstatic.com/team-logos/139.svg"
-          },
-          "awayTeam": {
-            "id": "147",
-            "name": "New York Yankees",
-            "shortName": "Yankees",
-            "abbreviation": "NYY",
-            "crest": "https://www.mlbstatic.com/team-logos/147.svg"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 5,
-            "away": 2
-          }
         }
       ],
       "upcomingGames": [],
       "form": {
         "sequence": [
-          "L",
           "L"
         ],
         "wins": 0,
-        "losses": 2,
-        "runsFor": 5,
-        "runsAgainst": 9
+        "losses": 1,
+        "runsFor": 3,
+        "runsAgainst": 4
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     },
     "158": {
       "team": {
@@ -3837,7 +3807,7 @@
         "runsFor": 24,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-20T23:08:50.314Z"
+      "generatedAt": "2026-10-21T04:33:02.479Z"
     }
   }
 }
