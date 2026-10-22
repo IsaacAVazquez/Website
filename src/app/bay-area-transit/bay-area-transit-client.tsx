@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { formatUpdatedAt } from "@/lib/date-formatters";
 import { ChevronDown, CircleAlert, ShieldCheck, TriangleAlert } from "lucide-react";
@@ -19,6 +19,9 @@ import {
 } from "./bay-area-transit-state";
 import { TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { COMMUTE_KEY, parseCommute, commuteDepartures } from "./commute";
+import { CommutePanel } from "./CommutePanel";
 import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface BayAreaTransitClientProps {
@@ -90,7 +93,8 @@ function FeedBadge({
   status: TransitSectionStatus | undefined;
   live: boolean;
 }) {
-  const state = status === "fresh" && !live ? "saved" : status ?? "unreported";
+  const state =
+    status === "fresh" && !live ? "saved" : (status ?? "unreported");
   return (
     <span className="bt-badge" data-status={state}>
       <span className="bt-badge-mark" aria-hidden="true" />
@@ -149,10 +153,10 @@ export function BayAreaTransitClient({
   const [live, setLive] = useState(false);
 
   const stationBoard = selectedStationId
-    ? stationBoards[selectedStationId] ?? null
+    ? (stationBoards[selectedStationId] ?? null)
     : null;
   const stationBoardError = selectedStationId
-    ? stationBoardErrors[selectedStationId] ?? null
+    ? (stationBoardErrors[selectedStationId] ?? null)
     : null;
   const isStationBoardLoading = Boolean(
     selectedStationId && !stationBoard && !stationBoardError
@@ -161,6 +165,30 @@ export function BayAreaTransitClient({
   const system = summary.system;
   const selectedStation =
     summary.stations.find((station) => station.id === selectedStationId) ?? null;
+  const parsePreferences = useCallback(
+    (raw: string) =>
+      parseCommute(
+        raw,
+        summary.stations.map((station) => station.id),
+      ),
+    [summary.stations],
+  );
+  const {
+    value: commute,
+    update: updateCommute,
+    status: commuteStatus,
+  } = useBrowserRecord(COMMUTE_KEY, parsePreferences);
+  const [commuteOpen, setCommuteOpen] = useState(false);
+  const displayedBoard =
+    stationBoard && commuteOpen
+      ? {
+          ...stationBoard,
+          departures: commuteDepartures(
+            stationBoard.departures,
+            commute.direction,
+          ),
+        }
+      : stationBoard;
   const staleSections = Object.entries(summary.sectionStatus ?? {})
     .filter(([, status]) => status !== "fresh")
     .map(([section]) => section);
@@ -326,7 +354,8 @@ export function BayAreaTransitClient({
     <div className="bt-title-text">
       <h1 className="bt-title">Bay Area Transit Pulse</h1>
       <p className="bt-standfirst">
-        The BART map, the next trains at a station, and the service alerts on one screen.
+        The BART map, the next trains at a station, and the service alerts on
+        one screen.
       </p>
     </div>
   );
@@ -379,8 +408,9 @@ export function BayAreaTransitClient({
         <section id="transit-alerts" className="bt-alerts" aria-label="Service alerts" hidden={!alertsOpen}>
           {staleSections.length > 0 ? (
             <p className="bt-alert" role="status">
-              BART did not return fresh {staleSections.join(", ")} data on this pass, so I kept
-              the last good result instead of showing a false zero.
+              BART did not return fresh {staleSections.join(", ")} data on this
+              pass, so I kept the last good result instead of showing a false
+              zero.
             </p>
           ) : null}
 
@@ -389,7 +419,8 @@ export function BayAreaTransitClient({
             staleSections.length === 0 ? (
               <p className="bt-alert">
                 <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
-                No delays reported and all elevators in service at the last refresh.
+                No delays reported and all elevators in service at the last
+                refresh.
               </p>
             ) : null
           ) : (
@@ -402,7 +433,9 @@ export function BayAreaTransitClient({
                       {advisory.type || "Advisory"}
                       {advisory.station ? ` · ${advisory.station}` : ""}
                     </span>
-                    <span className="bt-muted bt-block">{advisory.description}</span>
+                    <span className="bt-muted bt-block">
+                      {advisory.description}
+                    </span>
                   </span>
                 </li>
               ))}
@@ -416,13 +449,23 @@ export function BayAreaTransitClient({
           )}
         </section>
 
+        <CommutePanel
+          value={commute}
+          update={updateCommute}
+          selected={selectedStation}
+          summary={summary}
+          onSelect={handleStationChange}
+          open={commuteOpen}
+          onOpen={setCommuteOpen}
+          memoryOnly={commuteStatus === "memory-only"}
+        />
         <TransitSignature
           departuresStatus={summary.sectionStatus?.departures}
           advisoryStations={advisoryStations}
           stations={summary.stations}
           lines={summary.lines}
           selectedStation={selectedStation}
-          stationBoard={stationBoard}
+          stationBoard={displayedBoard}
           isLoading={isStationBoardLoading}
           error={stationBoardError}
           onSelect={handleStationChange}
