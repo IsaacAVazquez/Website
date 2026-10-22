@@ -3,6 +3,7 @@
 import { CircleAlert, Search } from "lucide-react";
 import React, {
   useState,
+  useId,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -18,6 +19,7 @@ import type { InvestmentIndexEntry, InvestmentsIndex } from "@/types/investment"
 interface Props {
   value: string;
   onChange: (symbol: string) => void;
+  label?: string;
 }
 
 const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
@@ -45,7 +47,9 @@ function scoreEntry(entry: InvestmentIndexEntry, query: string): number | null {
   return null;
 }
 
-export function StockSearch({ value, onChange }: Props) {
+export function StockSearch({ value, onChange, label = "Search stock symbol" }: Props) {
+  const searchId = useId();
+  const listboxId = `${searchId}-suggestions`;
   const [input, setInput] = useState(value);
   const [index, setIndex] = useState<InvestmentsIndex | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -76,7 +80,7 @@ export function StockSearch({ value, onChange }: Props) {
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      const listbox = document.getElementById("stock-search-listbox");
+      const listbox = document.getElementById(listboxId);
       const target = e.target as Node;
       const insideInput = containerRef.current?.contains(target) ?? false;
       const insideDropdown = listbox?.contains(target) ?? false;
@@ -88,7 +92,7 @@ export function StockSearch({ value, onChange }: Props) {
 
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  }, [listboxId]);
 
   const normalizedQuery = normalizeQuery(debouncedInput);
   const upperSymbolCandidate = debouncedInput.trim().toUpperCase();
@@ -137,12 +141,17 @@ export function StockSearch({ value, onChange }: Props) {
     if (!inputRef.current) return;
 
     const rect = inputRef.current.getBoundingClientRect();
+    const below = Math.max(0, window.innerHeight - rect.bottom - 12);
+    const above = Math.max(0, rect.top - 12);
+    const openAbove = below < 220 && above > below;
 
     setDropdownStyle({
       position: "fixed",
-      top: Math.round(rect.bottom + 6),
+      ...(openAbove ? { bottom: Math.round(window.innerHeight - rect.top + 6) } : { top: Math.round(rect.bottom + 6) }),
       left: Math.round(rect.left),
       width: Math.round(rect.width),
+      maxHeight: Math.min(360, openAbove ? above : below),
+      overflowY: "auto",
       // Above the terminal's sticky cells (z-index 4 at most), below the site overlays (55 and up).
       zIndex: 10,
     });
@@ -226,8 +235,8 @@ export function StockSearch({ value, onChange }: Props) {
 
   return (
     <div ref={containerRef} className="relative w-full max-w-sm">
-      <label htmlFor="stock-search" className="sr-only">
-        Search stock symbol
+      <label htmlFor={searchId} className="sr-only">
+        {label}
       </label>
 
       <div className="relative">
@@ -239,7 +248,7 @@ export function StockSearch({ value, onChange }: Props) {
 
         <input
           ref={inputRef}
-          id="stock-search"
+          id={searchId}
           name="stock-search"
           type="text"
           value={input}
@@ -258,12 +267,12 @@ export function StockSearch({ value, onChange }: Props) {
           className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:border-[var(--c97-accent)]" style={{ minHeight: 44, paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-4)", paddingRight: "var(--c97-sp-2)" }}
           // aria-expanded and aria-activedescendant are only allowed on a combobox, not a plain textbox.
           role="combobox"
-          aria-label="Search stock symbol"
+          aria-label={label}
           aria-autocomplete="list"
-          aria-controls="stock-search-listbox"
+          aria-controls={listboxId}
           aria-activedescendant={
             showDropdown && activeIndex >= 0
-              ? `stock-search-option-${suggestions[activeIndex]?.symbol}`
+              ? `${searchId}-option-${suggestions[activeIndex]?.symbol}`
               : undefined
           }
           aria-expanded={showDropdown && suggestions.length > 0}
@@ -279,7 +288,7 @@ export function StockSearch({ value, onChange }: Props) {
           // gives the list paper tokens without painting a box of its own.
           <div data-c97-surface="paper" style={{ display: "contents" }}>
             <ul
-              id="stock-search-listbox"
+              id={listboxId}
               role="listbox"
               aria-label="Symbol suggestions"
               style={dropdownStyle}
@@ -288,10 +297,12 @@ export function StockSearch({ value, onChange }: Props) {
             {suggestions.map((entry, indexPosition) => (
               <li key={entry.symbol} role="presentation">
                 <button
-                  id={`stock-search-option-${entry.symbol}`}
+                  id={`${searchId}-option-${entry.symbol}`}
                   role="option"
                   aria-selected={indexPosition === activeIndex}
-                  onMouseDown={() => selectEntry(entry)}
+                  // Keeps focus in the input so its blur can't close the list before the click lands.
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => selectEntry(entry)}
                   style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}
                   className={`flex min-h-[52px] w-full flex-col items-start justify-center text-left text-sm transition ${
                     indexPosition === activeIndex

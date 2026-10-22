@@ -1,5 +1,7 @@
 import {
   analyzeBuy,
+  compareBuys,
+  decodeBuyPositions,
   correlationPhrase,
   describeBuy,
   formatDay,
@@ -30,7 +32,7 @@ describe("analyzeBuy", () => {
     expect(result.before.total).toBe(1000);
     expect(result.before.sectors).toEqual([
       { sector: "Technology", weight: 0.6 },
-      { sector: "Index fund", weight: 0.4 },
+      { sector: "Fund holdings", weight: 0.4 },
     ]);
     expect(result.after.total).toBe(1400);
     expect(result.after.holdings.map((h) => h.symbol)).toEqual(["AAA", "SPY"]);
@@ -72,7 +74,67 @@ describe("analyzeBuy", () => {
     };
     const result = analyzeBuy([{ symbol: "SPY", value: 1000 }], { symbol: "BBB", value: 500 }, gappy, "SPY");
 
-    expect(result.window).toEqual({ from: "2026-01-02", to: "2026-01-09", days: 4 });
+    expect(result.window).toEqual({ from: "2026-01-02", to: "2026-01-09", days: 3 });
+    expect(result.worstDays.map((day) => day.date)).not.toContain("2026-01-08");
+  });
+});
+
+describe("purchase comparisons", () => {
+  it("uses identical dates and starting weights for both purchases", () => {
+    const longerDates = Array.from({ length: 45 }, (_, i) => new Date(Date.UTC(2026, 0, i + 1)).toISOString().slice(0, 10));
+    const histories = Object.fromEntries(["SPY", "AAA", "BBB"].map((symbol, i) => [symbol, {
+      sector: i ? "Technology" : undefined,
+      prices: longerDates.slice(symbol === "BBB" ? 5 : 0).map((date, t) => ({ date, close: 100 + t + Math.sin(t * (i + 1)) })),
+    }]));
+    const [first, second] = compareBuys([{ symbol: "AAA", value: 1000 }], [
+      { symbol: "AAA", value: 500 }, { symbol: "BBB", value: 500 },
+    ], histories, "SPY");
+    expect(first.window).toEqual(second.window);
+    expect(first.window?.days).toBe(39);
+    expect(first.before).toEqual(second.before);
+    expect(first.after.total).toBe(second.after.total);
+    expect(first.worstDays.map((day) => day.date)).toEqual(second.worstDays.map((day) => day.date));
+  });
+
+  it("keeps one choice's history when the other choice has none", () => {
+    const longerDates = Array.from({ length: 45 }, (_, i) => new Date(Date.UTC(2026, 0, i + 1)).toISOString().slice(0, 10));
+    const histories = Object.fromEntries(["SPY", "AAA"].map((symbol, i) => [symbol, {
+      prices: longerDates.map((date, t) => ({ date, close: 100 + t + Math.sin(t * (i + 1)) })),
+    }]));
+    const [primary, missing] = compareBuys([{ symbol: "AAA", value: 1000 }], [
+      { symbol: "AAA", value: 500 }, { symbol: "ZZZ", value: 500 },
+    ], histories, "SPY");
+    expect(primary.window?.days).toBe(44);
+    expect(primary.after.beta).not.toBeNull();
+    expect(missing.window).toBeNull();
+  });
+
+  it("keeps allocation but withholds historical conclusions from short histories", () => {
+    const [result] = compareBuys([{ symbol: "AAA", value: 1000 }], [{ symbol: "BBB", value: 500 }], history, "SPY");
+    expect(result.after.total).toBe(1500);
+    expect(result.window?.days).toBe(5);
+    expect(result.before.beta).toBeNull();
+    expect(result.after.beta).toBeNull();
+    expect(result.correlation).toBeNull();
+    expect(result.worstDays).toEqual([]);
+  });
+});
+
+describe("portfolio draft validation", () => {
+  it("accepts an empty portfolio and valid dollar positions", () => {
+    expect(decodeBuyPositions([])).toEqual([]);
+    expect(decodeBuyPositions([{ symbol: "BRK-B", value: 1250 }])).toEqual([{ symbol: "BRK-B", value: 1250 }]);
+  });
+
+  it.each([
+    [{ symbol: "<script>", value: 100 }],
+    [{ symbol: "AAPL", value: -100 }],
+    [{ symbol: "AAPL", value: "100" }],
+    [{ symbol: "AAPL", value: Infinity }],
+    [{ symbol: "AAPL", value: 100 }, { symbol: "AAPL", value: 200 }],
+    null,
+  ].map((value) => [value]))("rejects an invalid restored draft %p", (value) => {
+    expect(decodeBuyPositions(value)).toBeUndefined();
   });
 });
 
@@ -89,8 +151,8 @@ describe("describeBuy", () => {
     expect(text).toContain(
       "Adding $1,000 of BBB Corp (BBB) to this $1,000 portfolio puts 50% of the portfolio in Energy, where it held nothing before, and BBB becomes the largest holding at 50% of the total."
     );
-    expect(text).toMatch(/Over the past year it .+ what you already hold \(a correlation of -?\d\.\d\d\)/);
-    expect(text).toMatch(/On the S&P 500's five worst days of that year, your current mix averaged -\d\.\d% and the new one would have averaged [+-]\d\.\d%\./);
+    expect(text).toMatch(/Over the shared history it .+ what you already hold \(a correlation of -?\d\.\d\d\)/);
+    expect(text).toMatch(/On the S&P 500's five worst days in this window, your current mix averaged -\d\.\d% and the new one would have averaged [+-]\d\.\d%\./);
   });
 
   it("describes adding to a sector and a beta that doesn't move", () => {

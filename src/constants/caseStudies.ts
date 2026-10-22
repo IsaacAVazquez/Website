@@ -95,11 +95,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "before-you-buy",
     title: "Before You Buy",
     description:
-      "A product concept for Google Finance that shows what one stock would do to your portfolio before you buy it, comparing sector weights, beta, and the market's five worst days of the past year before and after the purchase.",
+      "A product concept for Google Finance where you can edit your portfolio and compare two purchases using the same amount, with changes in concentration and historical market behavior shown together.",
     role: "Product Concept, Design & Build",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Portfolio Analytics"],
-    metrics: "Sector weights before and after · Beta and correlation · Five worst days replayed",
+    metrics: "Editable portfolio · Two purchase options · Shared historical comparison",
     github: "https://github.com/IsaacAVazquez",
     link: "/investments/before-you-buy",
     featured: true,

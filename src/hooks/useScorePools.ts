@@ -114,6 +114,7 @@ export function useScorePools() {
       entries: Array<{ fixtureId: string; score: Scoreline }>,
       submittedAt: string,
     ) => {
+      if (entries.length) trackToolAction({ tool_name: "score_pools", action: "pick_set" });
       updatePool(poolId, (pool) => ({
         ...pool,
         submissions: {

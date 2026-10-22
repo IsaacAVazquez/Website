@@ -28,6 +28,14 @@ async function suggest(query: string) {
 }
 
 describe("StockSearch suggestion list", () => {
+  it("keeps multiple search fields and suggestion targets distinct", async () => {
+    render(<><StockSearch value="NVDA" onChange={() => {}} /><StockSearch value="SPY" label="Alternative stock" onChange={() => {}} /></>);
+    const primary = screen.getByRole("combobox", { name: "Search stock symbol" });
+    const alternative = screen.getByRole("combobox", { name: "Alternative stock" });
+    expect(primary.id).not.toBe(alternative.id);
+    expect(primary.getAttribute("aria-controls")).not.toBe(alternative.getAttribute("aria-controls"));
+    await act(async () => { await Promise.resolve(); });
+  });
   beforeEach(() => {
     jest.useFakeTimers();
   });

@@ -1,85 +1,93 @@
 import { expect, test } from "@playwright/test";
 
 const ROUTE = "/investments/before-you-buy";
-const DISCLAIMER = "An independent concept by Isaac Vazquez, not affiliated with or endorsed by Google.";
+const status = (page: import("@playwright/test").Page) => page.locator('.byb-result [role="status"]');
 
 test.describe("Before You Buy", () => {
-  test("opens on the sample portfolio with the disclaimer and a worked example", async ({ page }) => {
+  test("opens with a worked comparison and a clear data boundary", async ({ page }) => {
     await page.goto(ROUTE);
-
+    await expect(status(page)).toContainText("9.1%");
     await expect(page.getByRole("heading", { level: 1, name: "Before You Buy" })).toBeVisible();
-    await expect(page.getByText(DISCLAIMER)).toBeVisible();
-    const summary = page.locator('.byb-result [role="status"]');
-    await expect(summary).toContainText("Adding $5,000 of NVIDIA Corporation (NVDA) to this $50,000 portfolio");
-    await expect(page.getByRole("heading", { name: "The market's five worst days" })).toBeVisible();
-    await expect(page.locator("table").last().locator("tbody tr")).toHaveCount(5);
+    await expect(page.getByText("An independent concept by Isaac Vazquez, not affiliated with or endorsed by Google.", { exact: false })).toBeVisible();
+    const comparison = page.getByRole("region", { name: "Purchase comparison (scrollable)" });
+    await expect(comparison.getByRole("columnheader", { name: "Buy SPY" })).toBeVisible();
+    await expect(page.getByText(/I don't have their underlying holdings/)).toBeVisible();
+    await expect(page.getByRole("region", { name: "The market's five worst days (scrollable)" }).locator("tbody tr")).toHaveCount(5);
   });
 
-  test("an example buy rewrites the summary", async ({ page }) => {
+  test("picks an alternative from its own suggestion list", async ({ page }) => {
     await page.goto(ROUTE);
-    const summary = page.locator('.byb-result [role="status"]');
-    await expect(summary).toContainText("(NVDA)");
-
-    await page.getByRole("button", { name: "XOM", exact: true }).click();
-
-    await expect(summary).toContainText("Exxon Mobil Corporation (XOM)");
-    await expect(summary).toContainText("Energy");
-  });
-
-  test("uses the holdings saved on /investments", async ({ page }) => {
-    await page.addInitScript(() => {
-      window.localStorage.setItem(
-        "portfolio_holdings",
-        JSON.stringify([{ symbol: "AAPL", shares: 10, averageCost: 200 }])
-      );
-    });
-    await page.goto(ROUTE);
-
-    await expect(page.getByRole("button", { name: "Your saved holdings" })).toHaveAttribute("aria-pressed", "true");
-    await expect(page.locator('.byb-result [role="status"]')).toContainText(/to this \$[\d,]+ portfolio/);
-    const holdings = page.getByRole("table").first().locator("tbody tr");
-    await expect(holdings).toHaveCount(1);
-    await expect(holdings.first()).toContainText("AAPL");
-  });
-
-  test("lists search suggestions in the route's own palette and picks one", async ({ page }) => {
-    await page.goto(ROUTE);
-    const summary = page.locator('.byb-result [role="status"]');
-    // The summary names the buy once the page has hydrated and the index has loaded.
-    await expect(summary).toContainText("(NVDA)");
-
-    const search = page.getByRole("combobox", { name: "Search stock symbol" });
+    await expect(status(page)).toContainText("NVDA");
+    const search = page.getByRole("combobox", { name: "Alternative stock" });
     await search.fill("xo");
-    // The list portals into the route root, so it reads the route's palette
-    // and paints the same field colour as the search above it.
     const list = page.locator('.byb [role="listbox"]');
     await expect(list).toBeVisible();
     const fieldColour = await search.evaluate((field) => getComputedStyle(field).backgroundColor);
     await expect(list).toHaveCSS("background-color", fieldColour);
-
     await list.getByRole("option", { name: /^XOM/ }).click();
-    await expect(summary).toContainText("(XOM)");
+    await expect(page.getByRole("region", { name: "Purchase comparison (scrollable)" }).getByRole("columnheader", { name: "Buy XOM" })).toBeVisible();
   });
 
-  test("keeps the result within a screen of the inputs on a phone with many saved holdings", async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.addInitScript(() => {
-      const symbols = ["SPY", "AAPL", "MSFT", "GOOGL", "AMZN", "JPM", "COST", "NVDA", "XOM", "KO", "V", "ABBV", "ACN", "ADBE"];
-      window.localStorage.setItem(
-        "portfolio_holdings",
-        JSON.stringify(symbols.map((symbol) => ({ symbol, shares: 10, averageCost: 100 })))
-      );
-    });
+  test("edits and restores a draft without overwriting saved investments", async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("portfolio_holdings", JSON.stringify([{ symbol: "AAPL", shares: 10, averageCost: 200 }])));
     await page.goto(ROUTE);
+    await expect(status(page)).toContainText("NVDA");
+    await expect(page.getByRole("button", { name: "Your saved holdings" })).toHaveAttribute("aria-pressed", "true");
+    await page.getByText(/View and edit/).click();
+    await page.getByLabel("AAPL value in dollars").fill("10000");
+    await expect(status(page)).toContainText("33.3%");
+    expect(await page.evaluate(() => JSON.parse(localStorage.getItem("portfolio_holdings")!))).toEqual([{ symbol: "AAPL", shares: 10, averageCost: 200 }]);
+    await page.reload();
+    await expect(status(page)).toContainText("33.3%");
+    await expect(page.getByRole("button", { name: "Your draft" })).toHaveAttribute("aria-pressed", "true");
+  });
 
-    const summary = page.locator('.byb-result [role="status"]');
-    await expect(summary).toContainText(/to this \$[\d,]+ portfolio/);
-    await expect(page.getByRole("table").first().locator("tbody tr")).toHaveCount(14);
+  test("adds a holding and handles an invalid amount", async ({ page }) => {
+    await page.goto(ROUTE);
+    await expect(status(page)).toContainText("NVDA");
+    await page.getByText(/View and edit/).click();
+    await page.getByRole("combobox", { name: "Add holding symbol" }).fill("KO");
+    await page.getByRole("option", { name: /^KO/ }).click();
+    await page.getByLabel("New holding value in dollars").fill("10000");
+    await page.getByRole("button", { name: "Add holding", exact: true }).click();
+    await expect(status(page)).toContainText("7.7%");
+    await page.getByLabel("Amount in dollars").fill("0");
+    await expect(status(page)).toContainText("Enter an amount above zero");
+    await expect(page.getByText("Not investment advice.", { exact: true })).toBeVisible();
+  });
 
-    // The holdings scroll inside their own region, so fourteen rows do not
-    // push the summary a screen below the stock field that rewrites it.
-    const search = await page.getByRole("combobox", { name: "Search stock symbol" }).boundingBox();
-    const result = await summary.boundingBox();
+  test("keeps a long portfolio collapsed before the result on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.addInitScript(() => localStorage.setItem("portfolio_holdings", JSON.stringify(["SPY", "AAPL", "MSFT", "GOOGL", "AMZN", "JPM", "COST", "NVDA", "XOM", "KO", "V", "ABBV", "ACN", "ADBE"].map((symbol) => ({ symbol, shares: 10, averageCost: 100 })))));
+    await page.goto(ROUTE);
+    await expect(status(page)).toContainText("NVDA");
+    const search = await page.getByRole("combobox", { name: "Search stock symbol", exact: true }).boundingBox();
+    const result = await status(page).boundingBox();
     expect(result!.y - search!.y).toBeLessThanOrEqual(844);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.getByText(/View and edit/).click();
+    await expect(page.locator(".byb-editor tbody tr")).toHaveCount(14);
+  });
+
+  test("renders both themes, the open editor, mobile, and print without errors", async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(ROUTE);
+    await expect(status(page)).toContainText("NVDA");
+    await page.evaluate(() => document.documentElement.classList.remove("dark"));
+    await expect(page.locator(".byb")).toHaveCSS("background-color", "rgb(253, 253, 252)");
+    await page.evaluate(() => document.documentElement.classList.add("dark"));
+    await expect(page.locator(".byb")).toHaveCSS("background-color", "rgb(18, 19, 21)");
+    await page.getByText(/View and edit/).click();
+    await expect(page.locator(".byb-editor")).toBeVisible();
+    await page.getByText(/View and edit/).click();
+    await page.evaluate(() => document.documentElement.classList.remove("dark"));
+    await expect(page.locator(".byb")).toHaveCSS("background-color", "rgb(253, 253, 252)");
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.emulateMedia({ media: "print" });
+    await page.evaluate(() => window.dispatchEvent(new Event("beforeprint")));
+    await expect(page.locator(".byb-how")).toHaveAttribute("open", "");
+    expect(errors).toEqual([]);
   });
 });

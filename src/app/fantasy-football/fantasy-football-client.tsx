@@ -80,6 +80,8 @@ import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import { buildFantasyHref, FantasySearchState, normalizeFantasyState } from "./fantasy-state";
 import "@/components/fantasy/fantasy-rankings.css";
+import { IsaacScoutCard } from "@/components/fantasy/IsaacScoutCard";
+import { isScoutQuery } from "@/lib/siteDiscoveries";
 
 const POSITION_OPTIONS: FantasyRoutePosition[] = ["overall", "qb", "rb", "wr", "te", "flex", "k", "dst"];
 /** `shortLabel` is what a phone prints, where the full names do not fit beside the ranking select. */
@@ -713,7 +715,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   function focusSearch() {
     if (compactSearchRef.current) {
       compactSearchRef.current.focus();
-      return;
+      if (document.activeElement === compactSearchRef.current) return;
     }
     searchRef.current?.focus();
     if (document.activeElement !== searchRef.current) findButtonRef.current?.focus();
@@ -1669,6 +1671,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   </div>
                 )}
               </div>
+
+              {isScoutQuery(searchQuery) && <IsaacScoutCard onLeave={clearSearch} />}
 
               {isLoading ? (
                 <div aria-hidden="true">

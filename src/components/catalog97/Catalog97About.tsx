@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PortraitControls } from "@/components/discoveries/PortraitControls";
 import type { ReactNode } from "react";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Slot } from "./Catalog97Primitives";
@@ -71,6 +72,7 @@ export function Catalog97About() {
                 offset
               />
             </div>
+            <PortraitControls />
           </div>
 
           {/* The document. */}

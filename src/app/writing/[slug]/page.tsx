@@ -24,6 +24,8 @@ import { Catalog97Slot } from "@/components/catalog97/Catalog97Primitives";
 import { ArticleCodeCopy } from "@/components/analytics/ArticleCodeCopy";
 import { ArticleEndMark } from "@/components/editorial/ArticleEndMark";
 import { publishedDateFormatter } from "@/lib/utils";
+import { ArticlePostscript } from "@/components/discoveries/ArticlePostscript";
+import { ARTICLE_POSTSCRIPTS } from "@/lib/articlePostscripts";
 
 interface PageProps {
   params: Promise<{
@@ -307,9 +309,13 @@ export default async function BlogPostPage({ params }: PageProps) {
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <ArticleCodeCopy containerSelector="#article-body" location="article" />
-            <ArticleEndMark
-              next={newerPost ? { href: `/writing/${newerPost.slug}`, title: newerPost.title } : null}
-            />
+            {Object.hasOwn(ARTICLE_POSTSCRIPTS, slug) ? (
+              <ArticlePostscript note={ARTICLE_POSTSCRIPTS[slug]} />
+            ) : (
+              <ArticleEndMark
+                next={newerPost ? { href: `/writing/${newerPost.slug}`, title: newerPost.title } : null}
+              />
+            )}
           </div>
         </section>
       </article>

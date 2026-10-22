@@ -1122,6 +1122,20 @@ describe("FantasyFootballClient", () => {
     expect(screen.getAllByText("1 of 2 shown")[0]).toBeVisible();
   });
 
+  it("adds Isaac's novelty card without hiding real matching players or changing their ranks", () => {
+    mockSnapshot({ players: [makePlayer({ id: "real-isaac", name: "Isaac Guerendo", rankEcr: 47, positionRank: 47 })] });
+    renderClient();
+    const search = screen.getByRole("textbox", { name: "Search the current rankings board" });
+    fireEvent.change(search, { target: { value: "Isaac" } });
+    expect(screen.getByRole("region", { name: "Isaac's novelty scouting report" })).toBeVisible();
+    expect(screen.getByText("Isaac Guerendo")).toBeVisible();
+    expect(screen.getByText("47")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Leave on waivers" }));
+    expect(search).toHaveValue("");
+    expect(search).toHaveFocus();
+    expect(screen.queryByRole("region", { name: "Isaac's novelty scouting report" })).not.toBeInTheDocument();
+  });
+
   it("shows the template empty state and clears the search from it", () => {
     mockSnapshot({
       players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })],

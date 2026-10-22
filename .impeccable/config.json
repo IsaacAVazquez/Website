@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-10-17T04:58:02.290Z",
         "reason": "Reviewer decision: .impeccable/surfaces/route-food-map.md keeps curator attribution on ticket edges and the pressed curator underline; curator rail borders use the same attribution color. Preserved intentional curator and selected-state marks at current lines 445, 520, and 241."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/components/discoveries/discoveries.module.css"
+        ],
+        "createdAt": "2026-10-21T09:08:04.417Z",
+        "reason": "Agent review: the remaining side border is the mobile transit diagram rail connecting station markers; it is map geometry, not a card accent."
       }
     ]
   }

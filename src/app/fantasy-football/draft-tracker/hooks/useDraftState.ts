@@ -546,11 +546,11 @@ export const useDraftState = () => {
     });
   }, [persist, restoreRaw]);
 
-  const commitDraftState = useCallback((update: (current: DraftState) => DraftState, discardUnsaved = false) => {
-    if (!loadedRef.current) return;
+  const commitDraftState = useCallback((update: (current: DraftState) => DraftState, discardUnsaved = false): boolean => {
+    if (!loadedRef.current) return false;
     if (conflictRef.current && !discardUnsaved) {
       setPersistenceError(conflictWarning);
-      return;
+      return false;
     }
     try {
       const raw = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
@@ -559,17 +559,18 @@ export const useDraftState = () => {
       } else if (raw !== knownRawRef.current) {
         restoreRaw(raw);
         if (!conflictRef.current) setPersistenceError("This draft changed in another tab. I loaded the latest save. Try that action again.");
-        return;
+        return false;
       }
     } catch {
       // Blocked storage does not prevent drafting in memory.
     }
     if (discardUnsaved) conflictRef.current = false;
     const next = update(stateRef.current);
-    if (next === stateRef.current) return;
+    if (next === stateRef.current) return false;
     stateRef.current = next;
     setDraftState(next);
     if (persist(next)) setPersistenceError(null);
+    return true;
   }, [persist, restoreRaw]);
 
   // Update draft settings
@@ -595,18 +596,16 @@ export const useDraftState = () => {
   }, [commitDraftState]);
 
   const startDraft = useCallback(() => {
-    trackToolAction({ tool_name: "draft_tracker", action: "draft_start" });
-    commitDraftState((prev) => ({
+    if (commitDraftState((prev) => ({
       ...prev,
       isActive: true,
       startTime: prev.startTime ?? new Date(),
-    }));
+    }))) trackToolAction({ tool_name: "draft_tracker", action: "draft_start" });
   }, [commitDraftState]);
 
   // Draft a player
   const draftPlayer = useCallback((player: Player) => {
-    trackToolAction({ tool_name: "draft_tracker", action: "draft_pick" });
-    commitDraftState(prev => {
+    const picked = commitDraftState(prev => {
       const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
       if (
         prev.currentPick > totalPicks ||
@@ -667,6 +666,7 @@ export const useDraftState = () => {
         undoHistory: [],
       };
     });
+    if (picked) trackToolAction({ tool_name: "draft_tracker", action: "draft_pick" });
   }, [commitDraftState]);
 
   // Undo last pick

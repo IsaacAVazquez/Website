@@ -1,23 +1,14 @@
-/*
- * Before You Buy. The route owns its design inside the site frame
- * (docs/superpowers/specs/2026-10-11-project-sovereign-design.md), drawn as a
- * brokerage what-if panel: the buy and the portfolio on the left, one result
- * on the right with the before and after sector bars and the three figures as
- * their caption, and the five worst days as the second screen. Sector colours
- * are HOLDING_PALETTE's, shared with /investments, so they stay data colours.
- * Everything here is scoped to the .byb root.
- */
-
+/* A purchase workspace inside the shared site frame. All palette decisions
+   stay here; charts use the investment tool's shared categorical palette. */
 .byb {
   --byb-paper: #fdfdfc;
   --byb-ink: #1b1d20;
   --byb-ink-2: #565b62;
-  --byb-rule: #e1e2e4;
+  --byb-rule: #dedfe2;
   --byb-field: #f1f2f3;
   --byb-action: #155ea8;
-
-  /* StockSearch and any borrowed rule read these. Its suggestion list portals
-   * to the element marked data-stock-search-portal, which is this root. */
+  --byb-proposed: #eef4fa;
+  --byb-warning: #754415;
   --c97-ink: var(--byb-ink);
   --c97-ink-2: var(--byb-ink-2);
   --c97-label: var(--byb-ink-2);
@@ -26,25 +17,24 @@
   --c97-field: var(--byb-field);
   --c97-rule: var(--byb-rule);
   --c97-accent: var(--byb-action);
-
+  --c97-warning: var(--byb-warning);
   background: var(--byb-paper);
   color: var(--byb-ink);
   font-family: var(--c97-font-body);
   font-variant-numeric: tabular-nums;
+  caret-color: var(--byb-action);
+  scrollbar-color: var(--byb-ink-2) var(--byb-field);
 }
-
 .dark .byb {
   --byb-paper: #121315;
   --byb-ink: #e8e9eb;
   --byb-ink-2: #a8adb4;
-  --byb-rule: #2e3135;
-  --byb-field: #1d1f22;
+  --byb-rule: #34373d;
+  --byb-field: #202226;
   --byb-action: #8fbcef;
+  --byb-proposed: #192633;
+  --byb-warning: #e5b67f;
 }
-
-/* StockSearch wraps its portalled list in a paper surface, which resets the
- * frame tokens to Catalog 97's paper, so that surface gets this route's
- * palette back. The .dark selector outweighs the frame's dark paper rule. */
 .c97-page .byb [data-c97-surface],
 .dark .c97-page .byb [data-c97-surface] {
   --c97-ink: var(--byb-ink);
@@ -54,435 +44,131 @@
   --c97-panel: var(--byb-field);
   --c97-rule: var(--byb-rule);
   --c97-accent: var(--byb-action);
+  --c97-warning: var(--byb-warning);
 }
-
-.byb :where(p, ul, li, dl, dd) {
-  margin: 0;
-  padding: 0;
-  max-inline-size: none;
-}
-
-.byb :where(ul) {
-  list-style: none;
-}
-
-.byb h1,
-.byb h2 {
-  margin: 0;
-  color: var(--byb-ink);
-  font-family: var(--c97-font-body);
-}
-
-.byb a {
-  color: var(--byb-action);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.byb-page {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-4);
-  padding-block: var(--c97-sp-3) var(--c97-sp-5);
-}
-
-/* ── Title row ──────────────────────────────────────────────────────────── */
-
-.byb-title {
-  display: grid;
-  gap: var(--c97-sp-1);
-}
-
-.byb-title h1 {
-  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-}
-
-.byb-title p {
-  max-inline-size: 70ch;
-  color: var(--byb-ink-2);
-  font-size: 1.0625rem;
-  line-height: 1.5;
-}
-
-.byb-title .byb-disclaimer {
-  font-size: 0.875rem;
-}
-
-/* ── Layout ─────────────────────────────────────────────────────────────── */
-
-/* Phone and paper: the buy, the portfolio it lands in, then what it changes,
- * which is the DOM order, so the visual order and the tab order agree. */
-.byb-calc {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-4);
-}
-
+.byb ::selection { background: var(--byb-action); color: var(--byb-paper); }
+.byb :where(p, ul, li, dl, dd) { margin: 0; padding: 0; max-inline-size: none; }
+.byb ul { list-style: none; }
+.byb :where(h1, h2, h3) { margin: 0; color: var(--byb-ink); font-family: var(--c97-font-body); text-wrap: balance; }
+.byb a { color: var(--byb-action); text-decoration: underline; text-underline-offset: 3px; }
+.byb :where(button, input) { font: inherit; }
+.byb :where(button, input):focus-visible { outline: 2px solid var(--byb-action); outline-offset: 3px; }
+.byb button { cursor: pointer; }
+.byb button:disabled { cursor: not-allowed; opacity: 1; }
+.byb-page { display: flex; flex-direction: column; gap: 40px; padding-block: 30px 64px; }
+.byb-title { display: grid; gap: 10px; }
+.byb-title h1 { font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.025em; }
+.byb-title p { max-inline-size: 70ch; font-size: 1.0625rem; line-height: 1.5; color: var(--byb-ink-2); }
+.byb-title .byb-disclaimer { font-size: 0.8125rem; }
+.byb-calc { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; align-items: start; }
+.byb-buy, .byb-result { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.byb-buy > h2 { font-size: 1.125rem; font-weight: 650; padding-bottom: 12px; border-bottom: 1px solid var(--byb-rule); }
+.byb-label { display: block; margin-bottom: 6px; font-size: 0.8125rem; color: var(--byb-ink-2); font-weight: 550; }
+.byb-buy-fields { display: grid; gap: 16px; }
+.byb-money { display: flex; align-items: center; gap: 6px; padding-inline: 12px; background: var(--byb-field); border-bottom: 1px solid var(--byb-ink-2); color: var(--byb-ink-2); }
+.byb-money input { flex: 1; min-width: 0; width: 100%; padding: 0; border: 0; min-height: 48px; font-size: 1.25rem; font-weight: 550; background: transparent; color: var(--byb-ink); }
+.byb-examples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.byb-examples .byb-label { margin: 0 4px 0 0; }
+.byb-chip, .byb-switch button { min-height: 44px; padding: 8px 14px; border: 1px solid var(--byb-rule); border-radius: 24px; background: transparent; color: var(--byb-ink); font-size: 0.8125rem; font-weight: 550; transition: color 150ms var(--c97-ease), border-color 150ms var(--c97-ease), background-color 150ms var(--c97-ease); }
+.byb-chip:hover, .byb-switch button:hover:not(:disabled) { border-color: var(--byb-ink-2); }
+.byb-chip[aria-pressed="true"], .byb-switch button[aria-pressed="true"] { background: var(--byb-ink); border-color: var(--byb-ink); color: var(--byb-paper); }
+.byb-switch { display: flex; flex-wrap: wrap; gap: 8px; }
+.byb-note, .byb-coverage-note, .byb-warning { font-size: 0.8125rem; line-height: 1.55; color: var(--byb-ink-2); }
+.byb-warning { color: var(--byb-warning); }
+.byb-alternative, .byb-source { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid var(--byb-rule); }
+.byb-control-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.byb-control-heading .byb-label { margin: 0; max-inline-size: 14ch; }
+.byb-text-button { min-height: 44px; padding: 4px 0; border: 0; background: transparent; color: var(--byb-action); text-align: left; font-size: 0.8125rem; text-decoration: underline; text-underline-offset: 3px; }
+.byb-source h3 { font-size: 0.9375rem; font-weight: 600; }
+.byb-detail > summary { min-height: 44px; display: flex; align-items: center; gap: 10px; color: var(--byb-action); font-size: 0.875rem; font-weight: 550; list-style: none; cursor: pointer; }
+.byb-detail > summary::-webkit-details-marker { display: none; }
+.byb-detail > summary::after { content: ""; width: 6px; height: 6px; flex-shrink: 0; margin-bottom: 3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 150ms var(--c97-ease); }
+.byb-detail[open] > summary::after { transform: rotate(-135deg); margin-bottom: -3px; }
+.byb-detail > :not(summary) { margin-top: 14px; }
+.byb-scroll { overflow: auto; scrollbar-width: thin; }
+.byb-portfolio .byb-scroll { max-block-size: 22rem; }
+.byb-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; line-height: 1.4; }
+.byb-table :where(th, td) { padding: 12px; border-bottom: 1px solid var(--byb-rule); text-align: right; vertical-align: middle; white-space: nowrap; }
+.byb-table :where(th, td):first-child { text-align: left; padding-left: 0; }
+.byb-table :where(th, td):last-child { padding-right: 0; }
+.byb-table thead th { font-size: 0.75rem; color: var(--byb-ink-2); font-weight: 500; padding-block: 12px; }
+.byb-table tbody th { font-weight: 550; }
+.byb-table td { font-weight: 550; }
+.byb-editor :where(th, td) { padding: 4px; }
+.byb-editor input, .byb-add-value input { min-width: 0; width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--byb-rule); background: var(--byb-field); color: var(--byb-ink); font-size: 0.875rem; }
+.byb-editor input { text-align: right; }
+.byb-editor td:nth-child(2) { width: 100%; }
+.byb-remove { min-width: 44px; min-height: 44px; display: inline-grid; place-items: center; border: 0; background: none; color: var(--byb-ink-2); }
+.byb-remove:hover { color: var(--byb-warning); background: var(--byb-field); }
+.byb-add-holding { display: grid; gap: 10px; padding-top: 8px; }
+.byb-add-value { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.byb-add { min-height: 44px; display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 0; background: var(--byb-action); color: var(--byb-paper); font-size: 0.8125rem; }
+.byb-add:disabled { background: var(--byb-field); color: var(--byb-ink-2); }
+.byb-result-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--byb-rule); }
+.byb-result h2 { font-size: 1.375rem; font-weight: 600; }
+.byb-result-heading > span { color: var(--byb-ink-2); font-size: 0.8125rem; }
+.byb-summary { display: flex; align-items: center; gap: 20px; line-height: 1.5; font-size: 1rem; }
+.byb-position-share { flex-shrink: 0; color: var(--byb-action); font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.2; letter-spacing: -0.035em; font-weight: 550; }
+.byb-summary > span:last-child { max-inline-size: 28ch; }
+.byb-takeaway { font-size: 0.9375rem; line-height: 1.6; max-inline-size: 65ch; }
+.byb-result-context { margin-top: -8px; color: var(--byb-ink-2); font-size: 0.8125rem; line-height: 1.5; }
+.byb-comparison-table { min-width: 29rem; }
+.byb-comparison-table :where(th, td) { padding-block: 16px; }
+.byb-comparison-table tbody th { white-space: normal; min-width: 10rem; max-width: 14rem; font-size: 0.875rem; }
+.byb-comparison-table td[data-proposed] { background: var(--byb-proposed); }
+.byb-cell-note { display: block; margin-top: 5px; font-size: 0.75rem; font-weight: 400; color: var(--byb-ink-2); line-height: 1.45; }
+.byb-sector-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.byb-sector-heading h3 { font-size: 0.9375rem; font-weight: 600; }
+.byb-sector-heading > span { font-size: 0.75rem; color: var(--byb-ink-2); }
+.byb-bars { display: grid; gap: 10px; }
+.byb-bar-row { display: grid; grid-template-columns: 6rem minmax(0, 1fr); align-items: center; gap: 12px; }
+.byb-bar-label { font-size: 0.8125rem; color: var(--byb-ink-2); }
+.byb-bar { display: flex; height: 26px; gap: 2px; }
+.byb-bar > span { min-width: 0; transition: flex-grow 180ms var(--c97-ease); }
+.byb-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; padding-top: 4px; font-size: 0.75rem; line-height: 1.5; color: var(--byb-ink-2); }
+.byb-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.byb-legend li span { width: 9px; height: 9px; }
+.byb-coverage-note { padding-top: 4px; }
+.byb-data-date { padding-block: 12px; border-block: 1px solid var(--byb-rule); }
+.byb-empty-summary { max-inline-size: 45ch; line-height: 1.6; color: var(--byb-ink-2); }
+.byb-loading { display: grid; gap: 18px; padding-block: 16px; }
+.byb-loading span { height: 32px; background: var(--byb-field); }
+.byb-loading span:last-child { width: 70%; }
+.byb-worst { display: flex; flex-direction: column; gap: 14px; padding-top: 28px; border-top: 1px solid var(--byb-rule); }
+.byb-worst h2 { font-size: 1.375rem; font-weight: 600; }
+.byb-worst .byb-table { min-width: 32rem; }
+.byb-how { max-width: 72ch; border-top: 1px solid var(--byb-rule); padding-top: 8px; }
+.byb-how p { font-size: 0.875rem; line-height: 1.65; color: var(--byb-ink-2); }
 @media screen and (min-width: 960px) {
-  .byb-calc {
-    display: grid;
-    grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
-    align-items: start;
-    column-gap: var(--c97-sp-5);
-    row-gap: var(--c97-sp-4);
-  }
-
-  .byb-buy {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .byb-portfolio {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .byb-result {
-    grid-column: 2;
-    grid-row: 1 / 3;
-  }
+  .byb-calc { grid-template-columns: minmax(0, 19.5rem) minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); }
 }
-
-.byb-buy,
-.byb-portfolio,
-.byb-result,
-.byb-worst {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-2);
-}
-
-.byb-calc h2,
-.byb-worst h2 {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  border-bottom: 2px solid var(--byb-ink);
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-/* ── Inputs ─────────────────────────────────────────────────────────────── */
-
-.byb-label {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--byb-ink-2);
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-
-.byb-buy-fields {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
-  gap: var(--c97-sp-2);
-  align-items: start;
-}
-
-.byb-money {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  min-height: 44px;
-  padding-inline: var(--c97-sp-1);
-  border-bottom: 1px solid var(--byb-ink-2);
-  background: var(--byb-field);
-  color: var(--byb-ink-2);
-}
-
-.byb-money input {
-  flex: 1;
-  min-width: 0;
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--byb-ink);
-  font: inherit;
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-@supports selector(:has(a)) {
-  .byb .byb-money input:focus-visible {
-    outline: none;
-  }
-
-  .byb-money:has(input:focus-visible) {
-    outline: 2px solid var(--byb-action);
-    outline-offset: 2px;
-  }
-}
-
-.byb-examples {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--c97-sp-1);
-}
-
-.byb-examples .byb-label {
-  margin: 0 var(--c97-sp-1) 0 0;
-}
-
-.byb-chip,
-.byb-switch button {
-  min-height: 44px;
-  padding: 0 var(--c97-sp-2);
-  border: 1px solid var(--byb-rule);
-  border-radius: 999px;
-  background: none;
-  color: var(--byb-ink);
-  font: inherit;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.byb-chip:hover,
-.byb-switch button:hover:not(:disabled) {
-  border-color: var(--byb-ink-2);
-}
-
-.byb-chip[aria-pressed="true"],
-.byb-switch button[aria-pressed="true"] {
-  border-color: var(--byb-ink);
-  background: var(--byb-ink);
-  color: var(--byb-paper);
-}
-
-.byb-switch {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-1);
-}
-
-.byb-switch button:disabled {
-  color: var(--byb-ink-2);
-  cursor: not-allowed;
-}
-
-.byb-note {
-  display: block;
-  color: var(--byb-ink-2);
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-/* ── Tables ─────────────────────────────────────────────────────────────── */
-
-.byb-scroll {
-  overflow-x: auto;
-}
-
-/* In one column the result sits under the portfolio, so a long list of saved
- * holdings scrolls inside its region and the result stays within a screen of
- * the inputs that change it. 22rem clears the seven-row sample, so only a
- * longer list scrolls, and it cuts an eighth row through its text, which is
- * the cue that the list goes on where the scrollbar is an overlay. */
 @media screen and (max-width: 959px) {
-  .byb-portfolio .byb-scroll {
-    max-block-size: 22rem;
-  }
+  .byb-buy-fields { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .byb-buy .byb-source { gap: 10px; }
+  .byb-control-heading .byb-label { max-inline-size: none; }
 }
-
-.byb-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9375rem;
+@media screen and (max-width: 479px) {
+  .byb-page { gap: 28px; padding-top: 24px; }
+  .byb-title .byb-disclaimer { font-size: 0.75rem; }
+  .byb-summary { gap: 12px; font-size: 0.9375rem; }
+  .byb-bar-row { grid-template-columns: 5rem minmax(0, 1fr); gap: 8px; }
+  .byb-comparison-table { min-width: 0; table-layout: fixed; }
+  .byb-comparison-table :where(th, td) { padding-inline: 6px; white-space: normal; overflow-wrap: anywhere; font-size: 0.75rem; }
+  .byb-comparison-table :where(th, td):first-child { width: 37%; padding-left: 0; }
+  .byb-comparison-table :where(th, td):last-child { padding-right: 0; }
+  .byb-comparison-table tbody th { min-width: 0; max-width: none; font-size: 0.8125rem; }
+  .byb-cell-note { font-size: 0.75rem; }
 }
-
-.byb-table th,
-.byb-table td {
-  padding: var(--c97-sp-1) var(--c97-sp-2) var(--c97-sp-1) 0;
-  border-bottom: 1px solid var(--byb-rule);
-  text-align: left;
-  white-space: nowrap;
+@media (prefers-reduced-motion: reduce) {
+  .byb :where(button, .byb-bar > span, summary::after) { transition: none; }
 }
-
-.byb-table th:last-child,
-.byb-table td:last-child {
-  padding-right: 0;
-}
-
-.byb-table thead th {
-  color: var(--byb-ink-2);
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-
-.byb-table [data-align="end"] {
-  text-align: right;
-}
-
-.byb-table td[data-align="end"] {
-  font-weight: 600;
-}
-
-/* ── Result ─────────────────────────────────────────────────────────────── */
-
-.byb-summary {
-  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
-  font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: -0.005em;
-  text-wrap: pretty;
-}
-
-.byb-bars {
-  display: grid;
-  gap: var(--c97-sp-1);
-  margin-top: var(--c97-sp-1);
-}
-
-.byb-bar-row {
-  display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
-  align-items: center;
-  gap: var(--c97-sp-2);
-}
-
-.byb-bar-label {
-  color: var(--byb-ink-2);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.byb-bar {
-  display: flex;
-  gap: 2px;
-  height: 32px;
-}
-
-.byb-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px var(--c97-sp-3);
-  padding-left: calc(7rem + var(--c97-sp-2));
-  color: var(--byb-ink-2);
-  font-size: 0.8125rem;
-}
-
-.byb-legend li {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.byb-legend li span {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-}
-
-@media screen and (max-width: 639px) {
-  .byb-bar-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 4px;
-  }
-
-  .byb-legend {
-    padding-left: 0;
-  }
-}
-
-.byb-figures {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--c97-sp-2) var(--c97-sp-5);
-  padding-block: var(--c97-sp-2);
-  border-block: 1px solid var(--byb-rule);
-}
-
-.byb-figure dt {
-  color: var(--byb-ink-2);
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-
-.byb-figure-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.byb-figure-was {
-  color: var(--byb-ink-2);
-  font-size: 0.8125rem;
-}
-
-.byb-detail > summary {
-  display: flex;
-  align-items: center;
-  gap: var(--c97-sp-1);
-  min-height: 44px;
-  color: var(--byb-action);
-  font-weight: 600;
-  list-style: none;
-  cursor: pointer;
-}
-
-.byb-detail > summary::-webkit-details-marker {
-  display: none;
-}
-
-.byb-detail > summary::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  margin: 0 4px 3px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 150ms var(--c97-ease);
-}
-
-.byb-detail[open] > summary::after {
-  margin-bottom: -3px;
-  transform: rotate(-135deg);
-}
-
-/* Margins and not a flex gap, since a browser lays the open content out in
- * one box of its own, where a gap on the details never reaches the note. */
-.byb-detail > :not(summary) {
-  margin-top: var(--c97-sp-2);
-}
-
-/* ── Second screen and the close ────────────────────────────────────────── */
-
-.byb-worst {
-  max-inline-size: 48rem;
-}
-
-.byb-how {
-  display: flex;
-  flex-direction: column;
-  gap: var(--c97-sp-1);
-  max-inline-size: var(--c97-column);
-  padding-top: var(--c97-sp-2);
-  border-top: 1px solid var(--byb-rule);
-}
-
-.byb-how h2 {
-  font-size: 1.125rem;
-  font-weight: 700;
-}
-
-.byb-how p {
-  color: var(--byb-ink-2);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-}
-
 @media print {
-  .byb-examples,
-  .byb-switch {
-    display: none;
-  }
+  .byb-calc { display: block; }
+  .byb-result { margin-top: 24px; }
+  .byb-scroll { overflow: visible; max-block-size: none !important; }
+  .byb-comparison-table, .byb-worst .byb-table { min-width: 0; }
+  .byb-examples, .byb-switch, .byb-text-button, .byb-remove, .byb-add-holding { display: none; }
+  .byb-table { font-size: 10pt; }
+  .byb-table :where(th, td) { white-space: normal; }
+  .byb-editor input { border: 0; background: transparent; }
 }

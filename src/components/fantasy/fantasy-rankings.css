@@ -189,3 +189,6 @@
   .ffb-rk-footlinks a { display: none; }
   .ffb-rk-board .ffb-tier-head { position: static; box-shadow: none; }
 }
+.ffb-rk-scout { max-width: 620px; }
+.ffb-root .ffb-rk-scout .ffb-fact { grid-template-columns: 6rem minmax(0, 1fr); }
+.ffb-root .ffb-rk-scout .ffb-fact dd { text-align: left; font-size: 15px; line-height: 1.4; }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { Catalog97Header } from "./Catalog97Header";
+import { VisitLedger } from "@/components/discoveries/VisitLedger";
 
 // getFullYear() reads the local clock, so a server rendering in UTC and a
 // visitor's browser west or east of it can disagree on the year for hours
@@ -129,6 +130,12 @@ function Catalog97Footer() {
             <p className="c97-footer-copy">
               &copy; {FOOTER_YEAR_FORMATTER.format(new Date())} Isaac Vazquez
             </p>
+            <Link href="/back-room/receipt" prefetch={false} className="c97-footer-link">
+              Print receipt
+            </Link>
+            <Link href="/back-room/registration" prefetch={false} className="c97-footer-link" aria-label="Printer registration mark">
+              <span aria-hidden="true">⊕</span>
+            </Link>
           </div>
           {footerGroups.map(({ name, links, surface }) => (
             <nav
@@ -191,6 +198,7 @@ export function Catalog97Shell({
         {children}
       </main>
       <Catalog97Footer />
+      <VisitLedger />
     </div>
   );
 }

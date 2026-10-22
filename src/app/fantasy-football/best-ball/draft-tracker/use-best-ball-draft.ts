@@ -122,11 +122,11 @@ export function useBestBallDraft({
     });
   }, [initialSlot, persist, restoreRaw, rules, season, storageKey]);
 
-  const commitState = useCallback((update: (current: BestBallDraftState) => BestBallDraftState, discardUnsaved = false) => {
-    if (loadedKeyRef.current !== storageKey) return;
+  const commitState = useCallback((update: (current: BestBallDraftState) => BestBallDraftState, discardUnsaved = false): boolean => {
+    if (loadedKeyRef.current !== storageKey) return false;
     if (conflictRef.current && !discardUnsaved) {
       setPersistenceError(conflictWarning);
-      return;
+      return false;
     }
     try {
       const raw = window.localStorage.getItem(storageKey);
@@ -135,17 +135,18 @@ export function useBestBallDraft({
       } else if (raw !== knownRawRef.current) {
         restoreRaw(raw);
         if (!conflictRef.current) setPersistenceError("This draft changed in another tab. I loaded the latest save. Try that action again.");
-        return;
+        return false;
       }
     } catch {
       // Browser restrictions do not prevent drafting in this tab.
     }
     if (discardUnsaved) conflictRef.current = false;
     const next = update(stateRef.current);
-    if (next === stateRef.current) return;
+    if (next === stateRef.current) return false;
     stateRef.current = next;
     setState(next);
     if (persist(next)) setPersistenceError(null);
+    return true;
   }, [persist, restoreRaw, storageKey]);
 
   const setUserSlot = useCallback((slot: number) => {
@@ -160,13 +161,11 @@ export function useBestBallDraft({
   }, [commitState]);
 
   const startDraft = useCallback(() => {
-    trackToolAction({ tool_name: "best_ball_draft", action: "draft_start" });
-    commitState((current) => startBestBallDraft(current));
+    if (commitState((current) => startBestBallDraft(current))) trackToolAction({ tool_name: "best_ball_draft", action: "draft_start" });
   }, [commitState]);
 
   const draftPlayer = useCallback((player: Player) => {
-    trackToolAction({ tool_name: "best_ball_draft", action: "draft_pick" });
-    commitState((current) => addBestBallDraftPick(current, player));
+    if (commitState((current) => addBestBallDraftPick(current, player))) trackToolAction({ tool_name: "best_ball_draft", action: "draft_pick" });
   }, [commitState]);
 
   const undoLastPick = useCallback(() => {

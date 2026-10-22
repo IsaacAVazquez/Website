@@ -19,6 +19,7 @@ import type { WineEntry, WineType } from "@/types/wine";
 import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
 import "./wine-cellar.css";
 import { formatDollars } from "@/lib/utils";
+import { WineCork } from "@/components/discoveries/WineCork";
 
 interface WineFormDraft {
   name: string;
@@ -345,6 +346,7 @@ export function WineCellarClient() {
         <header className="wc-head">
           <div className="wc-title">
             <h1>Wine Cellar</h1>
+            <WineCork />
             <p className="wc-lede">
               A cellar book for the bottles you open, one line each, with the producer, the vintage, and what
               you actually thought of it.

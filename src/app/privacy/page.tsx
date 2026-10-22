@@ -34,6 +34,7 @@ const storedTools = [
   "the travel planner and the travel deal lab",
   "the wine cellar, the museum log, and the recipe finder's pantry",
   "the arcade's high score",
+  "your entries in the hidden 1997 guestbook",
 ];
 
 const secondaryProseStyle = {
@@ -135,6 +136,13 @@ export default function PrivacyPage() {
             the investments dashboard sends the ticker symbols you hold to this site&apos;s server
             to look up their prices. Clearing your browser&apos;s data for isaacvazquez.com
             removes everything the tools saved.
+          </p>
+          <p className="c97-prose" style={proseStyle}>
+            The hidden visit receipt keeps up to 40 public tools and main pages opened in the
+            tab&apos;s session storage, which normally clears when you close the tab. It leaves
+            out search queries, article addresses, and private tools. You can clear it on the
+            receipt page. The receipt and guestbook stay in your browser and are never sent
+            to a server.
           </p>
         </div>
       </section>
