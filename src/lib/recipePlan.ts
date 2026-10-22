@@ -12,7 +12,7 @@ export interface RecipePlan {
   favorites: string[];
   meals: PlannedMeal[];
 }
-const recipeMap = new Map(RECIPES.map((recipe) => [recipe.id, recipe]));
+export const recipeMap = new Map(RECIPES.map((recipe) => [recipe.id, recipe]));
 export function parseRecipePlan(raw: string): RecipePlan {
   try {
     const value = JSON.parse(raw);

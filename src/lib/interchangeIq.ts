@@ -160,8 +160,12 @@ export function calcProcessorResults(
   const txCount = volume / avgTicket;
   const interchange = calcInterchange(volume, txCount, mix);
 
+  // The interchange estimates above are not split by channel, so an assumed
+  // contract is only priced for online checkout. Pricing one card present with
+  // these rates would compare it against the lower in-person flat rates unfairly.
+  const showContracts = includeContracts && channel === "online";
   return PROCESSORS.filter(
-    (processor) => includeContracts || processor.model === "Flat Rate",
+    (processor) => showContracts || processor.model === "Flat Rate",
   )
     .map((processor): ProcessorResult => {
       const rates =
@@ -176,8 +180,8 @@ export function calcProcessorResults(
             (rates as FlatProcessor).fixedFee * txCount +
             (processor.subscription ?? 0)
           : interchange +
-          processor.markupPct * volume +
-          processor.markupFixed * txCount;
+            processor.markupPct * volume +
+            processor.markupFixed * txCount;
 
       return {
         id: processor.id,
@@ -195,10 +199,8 @@ export function calcProcessorResults(
     .sort((left, right) => left.monthlyFee - right.monthlyFee);
 }
 
-export function calcStripeBreakevenTicket(
-  mix: CardMix,
-  channel: PaymentChannel = "online",
-): number | null {
+/** Online checkout only, for the same reason `calcProcessorResults` prices contracts online. */
+export function calcStripeBreakevenTicket(mix: CardMix): number | null {
   const interchangeEffRate =
     mix.creditFraction * INTERCHANGE_RATES.visaMcCredit.rate +
     mix.debitFraction * INTERCHANGE_RATES.visaMcDebit.rate +
@@ -226,11 +228,10 @@ export function calcStripeBreakevenTicket(
   // ic.markupFixed for the ticket T where the two per-transaction costs meet.
   // Flat's percentage rate is higher, so a crossover only exists when flat's
   // fixed fee is the larger fixed component; otherwise IC+ wins at every ticket.
-  const flatRates = channel === "in-person" ? stripeFlat.inPerson! : stripeFlat;
   const rateDiff =
-    flatRates.pctRate - (interchangeEffRate + stripeIC.markupPct);
+    stripeFlat.pctRate - (interchangeEffRate + stripeIC.markupPct);
   const fixedDiff =
-    interchangeFixed + stripeIC.markupFixed - flatRates.fixedFee;
+    interchangeFixed + stripeIC.markupFixed - stripeFlat.fixedFee;
   const breakeven = rateDiff > 0 ? fixedDiff / rateDiff : null;
 
   return breakeven !== null && breakeven > 0 ? breakeven : null;

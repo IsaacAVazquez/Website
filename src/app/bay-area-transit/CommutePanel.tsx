@@ -25,7 +25,8 @@ export function CommutePanel({
   const stations = summary.stations;
   const alerts = commuteAdvisories(
     summary.advisories,
-    [selected?.abbr ?? "", value.to],
+    // The saved endpoints, falling back to the open station before From is set.
+    [value.from || (selected?.id ?? ""), value.to],
     stations.map((station) => station.abbr),
   );
   return (

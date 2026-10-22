@@ -17,7 +17,7 @@ The new stores use the shared browser storage adapter through `useBrowserRecord`
 
 I checked the US pricing pages for [Stripe](https://stripe.com/pricing), [Square](https://squareup.com/us/en/payments/our-fees), [Shopify](https://www.shopify.com/pricing), and [PayPal](https://www.paypal.com/us/business/paypal-business-fees) on October 22, 2026. Each flat-rate row links to its source. Square uses the Free plan's checkout and card-present rates. Shopify uses Basic's standard card rates and includes its $29 monthly equivalent when billed annually. PayPal compares Checkout online with Point of Sale card-present payments.
 
-The interchange-plus markups are illustrative assumptions, and the card mix uses the existing representative interchange estimates. Enabling those estimates changes the comparison's wording to say that the result depends on those assumptions. The tool excludes network and assessment fees from interchange-plus totals and excludes hardware, optional add-ons, international cards, and refunds from the published-rate comparison.
+The interchange-plus markups are illustrative assumptions, and the card mix uses the existing representative interchange estimates. Enabling those estimates changes the comparison's wording to say that the result depends on those assumptions. The interchange estimates are not split by payment channel, so the assumed contracts and the Stripe breakeven are priced for online checkout only, and the page says so when card present is selected. The tool excludes network and assessment fees from interchange-plus totals and excludes hardware, optional add-ons, international cards, and refunds from the published-rate comparison.
 
 ## Limits of the outputs
 
@@ -35,4 +35,4 @@ Pure helpers cover restored records, calendar boundaries and escaping, shopping-
 
 On October 22, 2026, all 502 Jest suites and 4,909 tests passed. Lint, standalone TypeScript, and the Node 22 production build passed. The responsive sweep reported zero failures across these six routes at widths from 320 to 2560 pixels. Populated workflows also passed overflow and landmark checks at 320 and 1440 pixels in both themes.
 
-Chromium checks covered saving and reloading bets, recipes, meals, trips, station preferences, and onboarding progress, and downloading an itinerary calendar. The browser showed no application errors and retained framework CSS preload warnings. Firefox and WebKit were not part of this pass. The independent code review has no remaining required findings.
+Chromium checks covered saving and reloading bets, recipes, meals, trips, station preferences, and onboarding progress, and downloading an itinerary calendar. The browser showed no application errors and retained framework CSS preload warnings. Firefox and WebKit were not part of this pass.

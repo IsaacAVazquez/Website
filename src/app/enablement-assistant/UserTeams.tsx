@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { prefixedId } from "@/lib/utils";
 import {
   DEFAULT_TEAM_INTAKE,
   SURFACE_OPTIONS,
@@ -91,7 +92,7 @@ export function UserTeams() {
             event.preventDefault();
             const next = {
               ...draft,
-              id: draft.id || crypto.randomUUID(),
+              id: draft.id || prefixedId("team"),
               name: draft.name.trim(),
             };
             const validated = parseTeamRecords(JSON.stringify([next]))[0];
@@ -110,6 +111,13 @@ export function UserTeams() {
             const saved = update((latest) =>
               saveTeamRecord(latest, validated, original),
             ).find((team) => team.id === validated.id);
+            if (!saved && !draft.id) {
+              // Another tab filled the last slot; keep what was typed.
+              setMessage(
+                "There is room for 50 teams. Remove a team before adding another.",
+              );
+              return;
+            }
             if (!saved) {
               setDraft(blank());
               setOriginal(undefined);

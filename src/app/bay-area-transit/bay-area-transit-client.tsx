@@ -93,8 +93,7 @@ function FeedBadge({
   status: TransitSectionStatus | undefined;
   live: boolean;
 }) {
-  const state =
-    status === "fresh" && !live ? "saved" : (status ?? "unreported");
+  const state = status === "fresh" && !live ? "saved" : status ?? "unreported";
   return (
     <span className="bt-badge" data-status={state}>
       <span className="bt-badge-mark" aria-hidden="true" />
@@ -153,10 +152,10 @@ export function BayAreaTransitClient({
   const [live, setLive] = useState(false);
 
   const stationBoard = selectedStationId
-    ? (stationBoards[selectedStationId] ?? null)
+    ? stationBoards[selectedStationId] ?? null
     : null;
   const stationBoardError = selectedStationId
-    ? (stationBoardErrors[selectedStationId] ?? null)
+    ? stationBoardErrors[selectedStationId] ?? null
     : null;
   const isStationBoardLoading = Boolean(
     selectedStationId && !stationBoard && !stationBoardError
@@ -354,8 +353,7 @@ export function BayAreaTransitClient({
     <div className="bt-title-text">
       <h1 className="bt-title">Bay Area Transit Pulse</h1>
       <p className="bt-standfirst">
-        The BART map, the next trains at a station, and the service alerts on
-        one screen.
+        The BART map, the next trains at a station, and the service alerts on one screen.
       </p>
     </div>
   );
@@ -408,9 +406,8 @@ export function BayAreaTransitClient({
         <section id="transit-alerts" className="bt-alerts" aria-label="Service alerts" hidden={!alertsOpen}>
           {staleSections.length > 0 ? (
             <p className="bt-alert" role="status">
-              BART did not return fresh {staleSections.join(", ")} data on this
-              pass, so I kept the last good result instead of showing a false
-              zero.
+              BART did not return fresh {staleSections.join(", ")} data on this pass, so I kept
+              the last good result instead of showing a false zero.
             </p>
           ) : null}
 
@@ -419,8 +416,7 @@ export function BayAreaTransitClient({
             staleSections.length === 0 ? (
               <p className="bt-alert">
                 <ShieldCheck className="bt-alert-icon" data-tone="ok" aria-hidden="true" />
-                No delays reported and all elevators in service at the last
-                refresh.
+                No delays reported and all elevators in service at the last refresh.
               </p>
             ) : null
           ) : (
@@ -433,9 +429,7 @@ export function BayAreaTransitClient({
                       {advisory.type || "Advisory"}
                       {advisory.station ? ` · ${advisory.station}` : ""}
                     </span>
-                    <span className="bt-muted bt-block">
-                      {advisory.description}
-                    </span>
+                    <span className="bt-muted bt-block">{advisory.description}</span>
                   </span>
                 </li>
               ))}

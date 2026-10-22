@@ -21,6 +21,17 @@ describe("interchangeIq", () => {
       56,
     );
     expect(online.some((row) => row.model === "Interchange+")).toBe(false);
+    // Interchange is not split by channel, so contracts stay online only.
+    expect(
+      calcProcessorResults(1000, 5, mix, "in-person", true).some(
+        (row) => row.model === "Interchange+",
+      ),
+    ).toBe(false);
+    expect(
+      calcProcessorResults(1000, 5, mix, "online", true).some(
+        (row) => row.model === "Interchange+",
+      ),
+    ).toBe(true);
     expect(online.find((row) => row.id === "shopify")?.monthlyFee).toBeCloseTo(
       118,
     );

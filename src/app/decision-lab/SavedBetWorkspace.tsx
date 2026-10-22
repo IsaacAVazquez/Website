@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { prefixedId } from "@/lib/utils";
 import { evaluateDecision } from "./decision-lab-data";
 import type { DecisionLabState } from "./decision-lab-state";
 import {
@@ -28,7 +29,18 @@ export function SavedBets({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [original, setOriginal] = useState<SavedBet | undefined>();
   const [message, setMessage] = useState("");
-  const changes = verdictChanges(state);
+  const { impact, confidence, effort, reversibility } = state;
+  const changes = useMemo(
+    () => verdictChanges({ impact, confidence, effort, reversibility }),
+    [impact, confidence, effort, reversibility],
+  );
+  const ranked = useMemo(
+    () =>
+      bets
+        .map((bet) => ({ bet, result: evaluateDecision(bet) }))
+        .sort((a, b) => b.result.weightedScore - a.result.weightedScore),
+    [bets],
+  );
   const selected = bets.find((bet) => bet.id === selectedId);
   function save(replace: boolean) {
     if (!name.trim()) {
@@ -41,7 +53,7 @@ export function SavedBets({
       );
       return;
     }
-    const id = replace && original ? original.id : crypto.randomUUID();
+    const id = replace && original ? original.id : prefixedId("bet");
     const saved = update((latest) =>
       saveBet(
         latest,
@@ -120,14 +132,7 @@ export function SavedBets({
               </tr>
             </thead>
             <tbody>
-              {[...bets]
-                .sort(
-                  (a, b) =>
-                    evaluateDecision(b).weightedScore -
-                    evaluateDecision(a).weightedScore,
-                )
-                .map((bet) => {
-                  const result = evaluateDecision(bet);
+              {ranked.map(({ bet, result }) => {
                   return (
                     <tr key={bet.id}>
                       <th scope="row">{bet.name}</th>

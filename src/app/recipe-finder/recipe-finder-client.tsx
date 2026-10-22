@@ -248,10 +248,9 @@ export function RecipeFinderClient() {
         <header className="rf-head">
           <h1>Recipe Finder</h1>
           <p className="rf-lede">
-            Add the ingredients you have on hand and the recipes reorder by how
-            much of each one you already have, so the ones you can cook tonight
-            come first. Staples like salt, pepper, cooking oil, and water count
-            as already in every kitchen, so those tick on their own.
+            Add the ingredients you have on hand and the recipes reorder by how much of each one you already have, so
+            the ones you can cook tonight come first. Staples like salt, pepper, cooking oil, and water count as already
+            in every kitchen, so those tick on their own.
           </p>
         </header>
 
@@ -272,9 +271,8 @@ export function RecipeFinderClient() {
               inputRef={pantryInputRef}
             />
             <p className="rf-note">
-              I added every recipe here by hand, which keeps the ingredient
-              names consistent enough for the matcher to work, and your pantry
-              is saved in this browser only.
+              I added every recipe here by hand, which keeps the ingredient names consistent enough for the matcher to
+              work, and your pantry is saved in this browser only.
             </p>
           </section>
 
@@ -305,17 +303,11 @@ export function RecipeFinderClient() {
                       aria-pressed={isActive}
                       className="rf-chip"
                     >
-                      {id === "quick" && (
-                        <Sparkles size={14} aria-hidden="true" />
-                      )}
-                      {id === "vegetarian" && (
-                        <ChefHat size={14} aria-hidden="true" />
-                      )}
+                      {id === "quick" && <Sparkles size={14} aria-hidden="true" />}
+                      {id === "vegetarian" && <ChefHat size={14} aria-hidden="true" />}
                       {id === "pantry" && <Plus size={14} aria-hidden="true" />}
                       <span>{VIEW_LABELS[id]}</span>
-                      {id === "pantry" && hasPantry ? (
-                        <span>({pantrySuggested})</span>
-                      ) : null}
+                      {id === "pantry" && hasPantry ? <span>({pantrySuggested})</span> : null}
                     </button>
                   );
                 })}
@@ -354,10 +346,7 @@ export function RecipeFinderClient() {
                   ))}
                 </select>
                 {view === "vegetarian" ? (
-                  <p className="rf-note">
-                    Vegetarian view is active. Switch to All recipes to use
-                    other diets.
-                  </p>
+                  <p className="rf-note">Vegetarian view is active. Switch to All recipes to use other diets.</p>
                 ) : null}
               </div>
             </div>
@@ -373,9 +362,7 @@ export function RecipeFinderClient() {
                 <>
                   , ranked by how much of each recipe your pantry covers
                   {/* An add or a remove can leave the line above as it was, so this gives the live region a change to announce. */}
-                  <span className="sr-only">
-                    , {pantry.length} in your pantry
-                  </span>
+                  <span className="sr-only">, {pantry.length} in your pantry</span>
                 </>
               ) : null}
             </p>
@@ -503,9 +490,7 @@ function PantryShelf({
         // prompt in ahead of the real list.
         <span className="c97-skeleton rf-skeleton" />
       ) : pantry.length === 0 ? (
-        <p className="rf-note">
-          Add what&rsquo;s in your kitchen, or tap a quick add below.
-        </p>
+        <p className="rf-note">Add what&rsquo;s in your kitchen, or tap a quick add below.</p>
       ) : (
         <>
           <ul className="rf-tags" aria-label="Pantry ingredients">
@@ -574,12 +559,9 @@ function ResultsGrid({
       <div className="rf-empty">
         {pantryIsEmpty ? (
           <>
-            <p>
-              Your pantry shelf is empty, so there is nothing to suggest yet.
-            </p>
+            <p>Your pantry shelf is empty, so there is nothing to suggest yet.</p>
             <p className="rf-note">
-              Add a few ingredients to the pantry and the recipes that use them
-              show up here.
+              Add a few ingredients to the pantry and the recipes that use them show up here.
             </p>
           </>
         ) : (
@@ -606,29 +588,28 @@ function ResultsGrid({
             pantry={pantry}
             isOpen={openRecipeId === match.recipe.id}
             actions={
-          <div className="rf-card-actions">
-            <button
-              type="button"
-              className="rf-plan-button"
-              aria-pressed={favorites.includes(match.recipe.id)}
-              aria-label={`${favorites.includes(match.recipe.id) ? "Unsave" : "Save"} ${match.recipe.title}`}
-              onClick={() => onSave(match.recipe.id)}
-            >
-              {favorites.includes(match.recipe.id) ? "Saved" : "Save recipe"}
-            </button>
-            <button
-              type="button"
-              className="rf-plan-button"
-              onClick={() => onPlan(match.recipe.id)}
-              aria-label={`Plan ${match.recipe.title}`}
-            >
-              Plan meal
-            </button>
-          </div>
+              <div className="rf-card-actions">
+                <button
+                  type="button"
+                  className="rf-plan-button"
+                  aria-pressed={favorites.includes(match.recipe.id)}
+                  aria-label={`${favorites.includes(match.recipe.id) ? "Unsave" : "Save"} ${match.recipe.title}`}
+                  onClick={() => onSave(match.recipe.id)}
+                >
+                  {favorites.includes(match.recipe.id) ? "Saved" : "Save recipe"}
+                </button>
+                <button
+                  type="button"
+                  className="rf-plan-button"
+                  onClick={() => onPlan(match.recipe.id)}
+                  aria-label={`Plan ${match.recipe.title}`}
+                >
+                  Plan meal
+                </button>
+              </div>
             }
             onToggleSteps={() => onToggleRecipe(match.recipe.id)}
           />
-
         </li>
       ))}
     </ul>
@@ -706,13 +687,9 @@ function RecipeIndexCard({
                   </svg>
                 </span>
                 <span>
-                  <span className="sr-only">
-                    {line.have ? "In your pantry: " : "Still need: "}
-                  </span>
+                  <span className="sr-only">{line.have ? "In your pantry: " : "Still need: "}</span>
                   {line.name}
-                  {line.staple ? (
-                    <span className="rf-staple">staple</span>
-                  ) : null}
+                  {line.staple ? <span className="rf-staple">staple</span> : null}
                 </span>
               </li>
             ))}

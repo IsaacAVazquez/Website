@@ -96,22 +96,18 @@ export function verdictChanges(metrics: DecisionMetrics) {
     verdict: DecisionRecommendation;
   }[] = [];
   for (const axis of DECISION_AXES) {
-    const candidates = Array.from({ length: 101 }, (_, to) => to)
-      .filter((to) => to !== metrics[axis])
-      .sort(
-        (a, b) => Math.abs(a - metrics[axis]) - Math.abs(b - metrics[axis]),
-      );
-    const to = candidates.find(
-      (value) =>
-        evaluateDecision({ ...metrics, [axis]: value }).recommendation !==
-        current,
-    );
-    if (to !== undefined)
-      changes.push({
-        axis,
-        to,
-        verdict: evaluateDecision({ ...metrics, [axis]: to }).recommendation,
-      });
+    const from = metrics[axis];
+    // Walk outward one step at a time, lower value first on a tie, and stop at the first flip.
+    search: for (let step = 1; step <= 100; step++) {
+      for (const to of [from - step, from + step]) {
+        if (to < 0 || to > 100) continue;
+        const verdict = evaluateDecision({ ...metrics, [axis]: to }).recommendation;
+        if (verdict !== current) {
+          changes.push({ axis, to, verdict });
+          break search;
+        }
+      }
+    }
   }
   return changes;
 }

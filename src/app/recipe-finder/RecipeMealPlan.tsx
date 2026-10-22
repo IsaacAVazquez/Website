@@ -4,8 +4,14 @@ import { useState } from "react";
 import { RECIPES } from "@/data/recipesSnapshot";
 import { useClientNow } from "@/hooks/useClientNow";
 import { toLocalDateKey } from "@/lib/date-formatters";
-import { shoppingList, weekDates, type RecipePlan } from "@/lib/recipePlan";
+import {
+  recipeMap,
+  shoppingList,
+  weekDates,
+  type RecipePlan,
+} from "@/lib/recipePlan";
 import { downloadFile } from "@/lib/downloadFile";
+import { prefixedId } from "@/lib/utils";
 
 export function RecipeMealPlan({
   plan,
@@ -15,7 +21,7 @@ export function RecipeMealPlan({
   onSelect,
 }: {
   plan: RecipePlan;
-  update: (edit: (latest: RecipePlan) => RecipePlan) => void;
+  update: (edit: (latest: RecipePlan) => RecipePlan) => RecipePlan;
   pantry: string[];
   selectedId: string;
   onSelect: (id: string) => void;
@@ -31,7 +37,6 @@ export function RecipeMealPlan({
     .filter((meal) => days.includes(meal.date))
     .sort((a, b) => a.date.localeCompare(b.date));
   const list = shoppingList(meals, pantry);
-  const recipes = new Map(RECIPES.map((recipe) => [recipe.id, recipe]));
   return (
     <section
       className="rf-plan"
@@ -68,14 +73,19 @@ export function RecipeMealPlan({
             setMessage("Remove an older meal before adding another.");
             return;
           }
-          update((latest) => ({
+          const id = prefixedId("meal");
+          const added = update((latest) => ({
             ...latest,
-            meals: [
-              ...latest.meals,
-              { id: crypto.randomUUID(), date, recipeId: selectedId },
-            ].slice(0, 366),
-          }));
-          setMessage("Meal added to the plan.");
+            meals: [...latest.meals, { id, date, recipeId: selectedId }].slice(
+              0,
+              366,
+            ),
+          })).meals.some((meal) => meal.id === id);
+          setMessage(
+            added
+              ? "Meal added to the plan."
+              : "Remove an older meal before adding another.",
+          );
         }}
       >
         <label>
@@ -121,12 +131,12 @@ export function RecipeMealPlan({
           {meals.map((meal) => (
             <li key={meal.id}>
               <span>
-                {meal.date} · {recipes.get(meal.recipeId)?.title}
+                {meal.date} · {recipeMap.get(meal.recipeId)?.title}
               </span>
               <button
                 type="button"
                 className="rf-plan-button"
-                aria-label={`Remove ${recipes.get(meal.recipeId)?.title} on ${meal.date}`}
+                aria-label={`Remove ${recipeMap.get(meal.recipeId)?.title} on ${meal.date}`}
                 onClick={() =>
                   update((latest) => ({
                     ...latest,

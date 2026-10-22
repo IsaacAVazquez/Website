@@ -185,8 +185,8 @@ export function TravelPlannerClient() {
   }
 
   const defaultActivityDate = useMemo(
-    () =>activeTrip ? getDefaultActivityDate(activeTrip, today || activeTrip.startDate) : today,
-    [activeTrip, today],
+    () => (activeTrip ? getDefaultActivityDate(activeTrip, today || activeTrip.startDate) : today),
+    [activeTrip, today]
   );
 
   const [activityDraft, setActivityDraft] = useState<ActivityDraft>(() => emptyActivityDraft(defaultActivityDate));
@@ -202,8 +202,7 @@ export function TravelPlannerClient() {
   const journalTitleInputRef = useRef<HTMLInputElement>(null);
 
   const [lastTripContext, setLastTripContext] = useState({ tripId: activeTripId, date: defaultActivityDate });
-  if (lastTripContext.tripId !== activeTripId || lastTripContext.date !== defaultActivityDate
-  ) {
+  if (lastTripContext.tripId !== activeTripId || lastTripContext.date !== defaultActivityDate) {
     const tripChanged = lastTripContext.tripId !== activeTripId;
     setLastTripContext({ tripId: activeTripId, date: defaultActivityDate });
     // The default day also moves at midnight and when the trip's dates change.
@@ -219,8 +218,7 @@ export function TravelPlannerClient() {
       );
     }
     if (tripChanged || !editingJournalId) {
-      setJournalDraft((draft) =>draft.title || draft.body ? draft : emptyJournalDraft(defaultActivityDate),
-      );
+      setJournalDraft((draft) => (draft.title || draft.body ? draft : emptyJournalDraft(defaultActivityDate)));
     }
   }
 
@@ -410,9 +408,7 @@ export function TravelPlannerClient() {
 
   const stopForm = (
     <div className="tp-stop-form">
-      <p className="c97-kicker">
-        {editingActivityId ? "Edit stop" : "Add stop"}
-      </p>
+      <p className="c97-kicker">{editingActivityId ? "Edit stop" : "Add stop"}</p>
       <form onSubmit={handleSubmitActivity} className="tp-form tp-form-stop">
         <label className="tp-span-2">
           <span className="c97-kicker">Title</span>
@@ -488,8 +484,7 @@ export function TravelPlannerClient() {
         </label>
         {endTimeInvalid ? (
           <p role="alert" className="tp-span-2 tp-error">
-            The end time has to come after the start. Overnight stops need one
-            entry per day.
+            The end time has to come after the start. Overnight stops need one entry per day.
           </p>
         ) : null}
         <label className="tp-span-2">
@@ -554,17 +549,14 @@ export function TravelPlannerClient() {
         <header className="tp-head">
           <h1>Travel Planner</h1>
           <p className="tp-lede">
-            One dated plan per trip, laid out by day, with the stops ticked off
-            as they happen and a journal for what the day was actually like.
+            One dated plan per trip, laid out by day, with the stops ticked off as they happen and a journal for
+            what the day was actually like.
           </p>
-          <p className="tp-note">
-            Your trips are saved in this browser only, so they never leave this
-            device.
-          </p>
+          <p className="tp-note">Your trips are saved in this browser only, so they never leave this device.</p>
           {persistenceStatus === "memory-only" ? (
             <p className="tp-note" role="status">
-              Your trips are available in this tab, but browser storage is
-              unavailable, so changes may not last after you close it.
+              Your trips are available in this tab, but browser storage is unavailable, so changes may not last
+              after you close it.
             </p>
           ) : null}
         </header>
@@ -574,15 +566,10 @@ export function TravelPlannerClient() {
             <form onSubmit={handleCreateTrip} className="tp-form tp-form-trip" aria-label="Create a new trip">
               <p className="c97-kicker tp-span-2">Your first trip</p>
               {tripFormFields}
-              <p className="tp-span-2 tp-note">
-                The day-by-day itinerary and the journal open once a trip is
-                saved.
-              </p>
+              <p className="tp-span-2 tp-note">The day-by-day itinerary and the journal open once a trip is saved.</p>
             </form>
             <figure className="tp-sample">
-              <figcaption className="c97-kicker">
-                A sample day, to show what the plan turns into
-              </figcaption>
+              <figcaption className="c97-kicker">A sample day, to show what the plan turns into</figcaption>
               <p className="tp-day-heading">Day 1 · Sat, Oct 10</p>
               <ul className="tp-stops">
                 {SAMPLE_DAY.map((stop) => {
@@ -591,11 +578,7 @@ export function TravelPlannerClient() {
                     <li key={stop.title} className="tp-stop" data-done={stop.done || undefined}>
                       <span className="tp-stop-time">{stop.time}</span>
                       <span className="tp-toggle" style={{ ["--mark-color" as string]: CATEGORY_CHART[stop.category] }} aria-hidden="true">
-                        {stop.done ? (
-                          <CheckCircle2 className="h-5 w-5" />
-                        ) : (
-                          <Circle className="h-5 w-5" />
-                        )}
+                        {stop.done ? <CheckCircle2 className="h-5 w-5" /> : <Circle className="h-5 w-5" />}
                       </span>
                       <span className="tp-stop-body">
                         <span className="tp-stop-title">{stop.title}</span>
@@ -650,9 +633,7 @@ export function TravelPlannerClient() {
               <button
                 ref={newTripButtonRef}
                 type="button"
-                onClick={() =>
-                  showTripForm ? setShowTripForm(false) : openTripForm()
-                }
+                onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())}
                 className="c97-btn tp-new-trip"
                 aria-expanded={showTripForm}
               >
@@ -666,8 +647,7 @@ export function TravelPlannerClient() {
               <div className="tp-print-details">
                 {activeTrip.budget > 0 ? (
                   <p>
-                    <span className="c97-kicker">Budget</span>{" "}
-                    {formatBudget(activeTrip.budget)}
+                    <span className="c97-kicker">Budget</span> {formatBudget(activeTrip.budget)}
                   </p>
                 ) : null}
                 {activeTrip.notes ? (
@@ -767,8 +747,7 @@ export function TravelPlannerClient() {
                             {other.id === activeTrip.id ? " (active)" : ""}
                           </span>
                           <span className="tp-stop-meta">
-                            {other.destination || "No destination"} &middot;{" "}
-                            {formatTripDateRange(other.startDate, other.endDate)}
+                            {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
                           </span>
                         </button>
                         <div className="tp-actions">
@@ -819,17 +798,14 @@ export function TravelPlannerClient() {
               <h2>Itinerary</h2>
               {summary.itineraryTruncated ? (
                 <p className="tp-note">
-                  This trip spans {summary.daysTotal.toLocaleString("en-US")}{" "}
-                  days, so the itinerary shows the first {MAX_ITINERARY_DAYS}.
-                  Double-check the trip dates if that looks off.
+                  This trip spans {summary.daysTotal.toLocaleString("en-US")} days, so the itinerary shows the first{" "}
+                  {MAX_ITINERARY_DAYS}. Double-check the trip dates if that looks off.
                 </p>
               ) : null}
               <div className="tp-itinerary">
                 <div className="tp-days">
                   {summary.activitiesTotal === 0 ? (
-                    <p className="tp-note">
-                      No stops yet. Add the first one with the Add stop form.
-                    </p>
+                    <p className="tp-note">No stops yet. Add the first one with the Add stop form.</p>
                   ) : null}
                   {summary.dayBuckets.map((bucket) => (
                     <DayList
@@ -863,17 +839,13 @@ export function TravelPlannerClient() {
               <div className="tp-section-head">
                 <h2>Journal</h2>
                 <p className="tp-count">
-                  {activeTrip.journal.length}{" "}
-                  {activeTrip.journal.length === 1 ? "entry" : "entries"}
+                  {activeTrip.journal.length} {activeTrip.journal.length === 1 ? "entry" : "entries"}
                 </p>
               </div>
               <div className="tp-journal">
                 <div>
                   {activeTrip.journal.length === 0 ? (
-                    <p className="tp-note">
-                      Journal is empty. Capture a moment with the Journal entry
-                      form.
-                    </p>
+                    <p className="tp-note">Journal is empty. Capture a moment with the Journal entry form.</p>
                   ) : (
                     <ul className="tp-postcards">
                       {[...activeTrip.journal]
@@ -896,9 +868,7 @@ export function TravelPlannerClient() {
                 </div>
 
                 <div className="tp-journal-form">
-                  <p className="c97-kicker">
-                    {editingJournalId ? "Edit entry" : "Journal entry"}
-                  </p>
+                  <p className="c97-kicker">{editingJournalId ? "Edit entry" : "Journal entry"}</p>
                   <form onSubmit={handleSubmitJournal} className="tp-form">
                     <label>
                       <span className="c97-kicker">Date</span>
@@ -1035,11 +1005,7 @@ function ItineraryTimeline({ columns, ticks }: { columns: ItineraryColumn[]; tic
                   />
                 ))}
               </div>
-              {column.untimed.length > 0 ? (
-                <p className="tp-grid-untimed">
-                  {column.untimed.length} untimed
-                </p>
-              ) : null}
+              {column.untimed.length > 0 ? <p className="tp-grid-untimed">{column.untimed.length} untimed</p> : null}
             </div>
           ))}
         </div>
@@ -1119,11 +1085,7 @@ function DayList({
                   className="tp-toggle"
                   style={{ ["--mark-color" as string]: CATEGORY_CHART[activity.category] }}
                 >
-                  {activity.completed ? (
-                    <CheckCircle2 className="h-5 w-5" />
-                  ) : (
-                    <Circle className="h-5 w-5" />
-                  )}
+                  {activity.completed ? <CheckCircle2 className="h-5 w-5" /> : <Circle className="h-5 w-5" />}
                 </button>
                 <span className="tp-stop-body">
                   <span className="tp-stop-title-row">
@@ -1138,19 +1100,10 @@ function DayList({
                   <span className="tp-stop-meta">
                     <Icon className="h-3.5 w-3.5" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category] }} />
                     <span>{ACTIVITY_CATEGORY_LABELS[activity.category]}</span>
-                    {activity.location ? (
-                      <span>· {activity.location}</span>
-                    ) : null}
-                    <span>
-                      ·{" "}
-                      {activity.cost == null
-                        ? "Cost unknown"
-                        : formatBudget(activity.cost)}
-                    </span>
+                    {activity.location ? <span>· {activity.location}</span> : null}
+                    <span>· {activity.cost == null ? "Cost unknown" : formatBudget(activity.cost)}</span>
                   </span>
-                  {activity.notes ? (
-                    <span className="tp-stop-notes">{activity.notes}</span>
-                  ) : null}
+                  {activity.notes ? <span className="tp-stop-notes">{activity.notes}</span> : null}
                 </span>
                 <span className="tp-stop-actions">
                   <button type="button" onClick={() => onEdit(activity)} className="c97-btn-ghost">
@@ -1261,8 +1214,7 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
   }
 
   function handleDateBlur(field: "startDate" | "endDate") {
-    setDraft((current) =>isIsoDate(current[field]) ? current : { ...current, [field]: trip[field] },
-    );
+    setDraft((current) => (isIsoDate(current[field]) ? current : { ...current, [field]: trip[field] }));
   }
 
   return (
@@ -1320,9 +1272,7 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
           onBlur={() => onUpdateField({ budget: Number(draft.budget) || 0 })}
           className="c97-field"
         />
-        <span className="sr-only">
-          {formatBudget(Number(draft.budget) || 0)}
-        </span>
+        <span className="sr-only">{formatBudget(Number(draft.budget) || 0)}</span>
       </label>
       <label className="tp-span-2">
         <span className="c97-kicker">Trip notes</span>
