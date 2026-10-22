@@ -342,6 +342,16 @@ const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   now: NOW_ANSWER,
   'what is isaac doing now': NOW_ANSWER,
   'what are you doing now': NOW_ANSWER,
+  'take me somewhere': {
+    id: 'answer-site-transit', title: 'The Site Transit Authority',
+    excerpt: 'A fictional railway through sports, museums, food, wine, and a very long branch to Mission Control. Pick a station.',
+    content: '', url: '/back-room/transit', type: 'page', category: 'Site',
+  },
+  '1997': {
+    id: 'answer-1997', title: 'Greetings From 1997',
+    excerpt: 'Beveled buttons, a guestbook, and a homepage that is permanently under construction.',
+    content: '', url: '/back-room/1997', type: 'page', category: 'Site',
+  },
   monet: MONET_ANSWER,
   konami: KONAMI_ANSWER,
   'konami code': KONAMI_ANSWER,

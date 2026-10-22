@@ -2862,6 +2862,17 @@ select.c97-field {
   transition-behavior: normal, allow-discrete;
 }
 
+/* A still painting for the explicit portrait control and touch screens. */
+@media screen {
+  [data-c97-paint="portrait"][data-c97-still-painting="true"]::before {
+    background-image: var(--c97-paint);
+    opacity: 1;
+    -webkit-mask-image: none;
+    mask-image: none;
+    transition: none;
+  }
+}
+
 /*
  * Only for a real hover on screen. A tap leaves `:hover` stuck on touch
  * screens with the circle wherever the finger first moved, and a print

@@ -8,7 +8,15 @@ Most of them mount from the header, which is on every route. `src/components/cat
 
 | Easter egg | Where | Trigger | Touch screens | Code |
 | --- | --- | --- | --- | --- |
-| Portrait painters | `/`, `/about` | Hover the portrait's section, click the portrait to change painter | No | `Catalog97Monet.tsx`, paint reveal block in `catalog97.css` |
+| Visit receipt | Footer, every route | Follow Print receipt | Yes | `discoveries/VisitReceipt.tsx`, `lib/visitReceipt.ts` |
+| Site transit map | Site search | Search take me somewhere | Yes | `discoveries/SiteTransitMap.tsx` |
+| Isaac's scouting report | Fantasy rankings board | Search Isaac or Isaac Vazquez | Yes | `fantasy/IsaacScoutCard.tsx` |
+| After-hours gallery | Home and About portraits | See all five painters, then follow The gallery is open | Yes | `discoveries/PortraitControls.tsx`, `PainterGallery.tsx` |
+| Article commentary | Three build articles | Activate the -30- end mark | Yes | `discoveries/ArticlePostscript.tsx`, `lib/articlePostscripts.ts` |
+| 1997 homepage | Site search | Search 1997 | Yes | `discoveries/RetroHome.tsx` |
+| Registration puzzle | Footer, every route | Activate the printer registration mark | Yes | `discoveries/RegistrationGame.tsx` |
+| Website tasting note | Wine Cellar | Inspect the cork three times | Yes | `discoveries/WineCork.tsx` |
+| Portrait painters | `/`, `/about` | Hover the portrait's section, click the portrait or Another painter to change painter | Yes, through the button | `Catalog97Monet.tsx`, paint reveal block in `catalog97.css` |
 | Monet name by time of day | Header, every route | Hover or focus the name | Only as a stuck hover on `/` | `Catalog97Monet.tsx`, Monet block in `catalog97.css` |
 | Painted collage plates | `/` | Hover a dashboard plate | No | `Catalog97Collage.tsx`, `Catalog97Home.tsx` |
 | Konami code | Every route but `/arcade` and `/spacex-mission-control` | ↑ ↑ ↓ ↓ ← → ← → B A | No, it needs a keyboard | `Catalog97EasterEggs.tsx`, `konami.ts` |
@@ -37,7 +45,7 @@ Most of them mount from the header, which is on every route. `src/components/cat
 
 ## Portrait painters
 
-Hovering anywhere in the portrait's section on the home page or /about shows a 150px circle of a painted version of the headshot that follows the pointer. Clicking the portrait hands it to the next painter, from Monet (the default), to Van Gogh, to Seurat, to Hopper, to Lichtenstein, and back to Monet. The choice lives on the element, so a reload or a navigation resets it to Monet, and each painting downloads the first time someone hovers it. It only runs where hover is real and motion is welcome, since the CSS is gated on `(hover: hover)` and `prefers-reduced-motion: no-preference` and the script returns early without attaching the click either. With reduced motion the photo stays as it is, because the circle follows the pointer and the duration guard cannot stop that.
+Hovering anywhere in the portrait's section on the home page or /about shows a 150px circle of a painted version of the headshot that follows the pointer. Clicking the portrait hands it to the next painter, from Monet (the default), to Van Gogh, to Seurat, to Hopper, to Lichtenstein, and back to Monet. The choice lives on the element, so a reload or a navigation resets it to Monet, and each painting downloads the first time someone hovers it. The pointer-following reveal runs only where hover is real and motion is welcome. The explicit Another painter control shows a still full painting, which also works on touch screens and with reduced motion. Seeing all five painters opens the after-hours gallery link.
 
 The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Both renderers were removed on 2026-10-01 and can be restored from git history (commit fa4849574). Adding a painter means a render, an entry in `PAINTERS` in `Catalog97Monet.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
 
@@ -148,7 +156,7 @@ In the same tracker, the pick that gives your own team four players from one NFL
 
 ## The "-30-" end mark
 
-Every post under /writing ends with "-30-", the old newsroom sign that a story is over, set in poster type with an overprint shadow. It is a button (`src/components/editorial/ArticleEndMark.tsx`, labelled "What the end mark means"), and pressing it opens a note under the mark that explains the sign, says how long it has been since the page loaded by the tab's own clock ("under a minute", "about 3 minutes", "about an hour"), and links to the next post in the chronology, or says the post is the newest one. Pressing again closes it. The note is a status region, so it announces when it opens.
+Every post under /writing but the three with commentary ends with "-30-", the old newsroom sign that a story is over, set in poster type with an overprint shadow. It is a button (`src/components/editorial/ArticleEndMark.tsx`, labelled "What the end mark means"), and pressing it opens a note under the mark that explains the sign, says how long it has been since the page loaded by the tab's own clock ("under a minute", "about 3 minutes", "about an hour"), and links to the next post in the chronology, or says the post is the newest one. Pressing again closes it. The note is a status region, so it announces when it opens.
 
 ## The 404 note
 
@@ -165,3 +173,39 @@ Hovering a halftone field splits it into blue, vermilion, and saffron dots sligh
 ## Close calls that aren't on the list
 
 Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/score-pools/settings` is unlinked and noindexed, but it's a utility page with nothing playful in it. There's nothing playful in robots.txt, llms.txt, or security.txt.
+
+## The back room additions
+
+Added on 2026-10-21. The receipt, map, gallery, retro homepage, and puzzle live under `/back-room/[discovery]`. Each destination is noindexed and absent from the sitemap. They use the normal site shell, and their components load on their own routes.
+
+### Visit receipt
+
+The footer's Print receipt link opens `/back-room/receipt`. `VisitLedger` records visits to known public tools and main pages in this tab's session storage, under `site-visit-receipt-v1`. The receipt combines repeat visits into quantities, lists every item at $0.00, and has a PNG download and a clear button. The list has at most 40 destinations, with quantities capped at 999. Search queries, article addresses, private tools, unknown routes, and back-room routes are excluded. Restored entries are validated against the public route dictionary. Storage failures use memory, and the receipt never sends the list to a server.
+
+### Site transit map
+
+Searching `take me somewhere` in either site search pins a link to `/back-room/transit`. The fictional railway has the Sports Line, the Saturday Line through museums, food, wine, recipes, and travel, and the Orbital Extension through transit, earthquakes, and Mission Control. Every station is a working link, with Dashboard Junction as the shared transfer. On a phone the lines run vertically. No map provider or live transit feed is involved.
+
+### Isaac's scouting report
+
+Searching exactly `Isaac` or `Isaac Vazquez`, ignoring case and repeated spaces, in the redraft rankings board adds a novelty scouting card above the matching real players. It has no player ID, rank, ADP, or roster action. Leave on waivers clears the search and returns focus to the board's search control. The real ranking snapshots and draft state never include the novelty player.
+
+### After-hours portrait gallery
+
+The Another painter button beside the Home and About portraits cycles the same five painters as clicking the image. After all five have appeared, The gallery is open links to `/back-room/gallery`, which shows all five existing paintings with fictional museum labels. The button shows a still painting on touch screens and with reduced motion, and works with a keyboard. Discovery resets when the portrait controls unmount. The original pointer-following reveal stays available on hover-capable devices without reduced motion.
+
+### Article commentary
+
+The end mark is an expandable native details control on `building-a-wine-cellar-app`, `building-a-bart-transit-dashboard`, and `building-a-fantasy-football-rankings-platform`. Its note restates a product decision already described in that article. The text lives in `src/lib/articlePostscripts.ts`. On those three the commentary takes the place of the end mark button, and every other article keeps the button. Each new commentary entry needs an existing source or Isaac's own account of the build.
+
+### Greetings from 1997
+
+Searching `1997` links to `/back-room/1997`, with beveled links, a tiled background, an under-construction sign, and a decorative visitor counter fixed at 000097. Its links lead to the actual site pages. The guestbook stores up to 12 entries, each at most 160 characters, under `site-1997-guestbook-v1` in local storage. Entries stay in that browser, and neither Isaac nor other visitors can read them. Restored strings are validated and rendered as text. A storage failure keeps entries for the open page and says so. Clear guestbook removes the entries.
+
+### Registration puzzle
+
+The printer registration mark in the footer links to `/back-room/registration`. Four labeled sliders move the horizontal and vertical offsets of two colored ink layers relative to the fixed paper. Every offset must be within one unit of zero before a dated souvenir PNG can be downloaded. Arrow keys adjust the sliders. Reset inks restores the starting offsets. It has no timer, animation, or stored score, and reduced motion changes nothing.
+
+### Website tasting note
+
+The cork illustration under the Wine Cellar title reveals a fictional Château Side Project label after three clicks, taps, or keyboard activations. A note after the first inspection hints at the trigger. The label links to Recipe Finder, and Put the cork back closes it and returns focus to the cork. It never adds a bottle to the wine log or changes saved entries.

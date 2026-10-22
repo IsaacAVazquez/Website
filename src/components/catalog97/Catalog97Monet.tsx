@@ -2,9 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-
-/** The portrait's painters, in click order. Monet is the default, with no attribute. */
-const PAINTERS = ["monet", "van-gogh", "seurat", "hopper", "lichtenstein"] as const;
+import { PAINTERS } from "@/lib/siteDiscoveries";
 
 /** Which header canvas the visitor's local hour gets (see catalog97.css). */
 function daypart(hour: number): "morning" | "midday" | "evening" {
@@ -33,10 +31,9 @@ function daypart(hour: number): "morning" | "midday" | "evening" {
  * Clicking a portrait hands it to the next painter in `PAINTERS` by setting
  * `data-c97-painter`, which catalog97.css maps to that painter's image.
  *
- * It only attaches where hover is real and motion is welcome (the CSS shows
- * the layers only under `(hover: hover)` and `prefers-reduced-motion:
- * no-preference`, since the circle follows the pointer) and only when the page
- * has a painted element. Moves are
+ * Pointer tracking attaches only where hover is real and motion is welcome.
+ * Portrait clicks also work on touch screens and with reduced motion, where
+ * the explicit painter control reveals a still painting. Moves are
  * coalesced into one animation frame, which reads every box before writing
  * any style. The header survives client navigation between the tool routes,
  * so the scan reruns whenever the pathname changes.
@@ -49,7 +46,7 @@ export function Catalog97Monet() {
   }, []);
 
   useEffect(() => {
-    if (!window.matchMedia?.("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) return;
+    const canReveal = window.matchMedia?.("(hover: hover) and (prefers-reduced-motion: no-preference)").matches;
     const layersByArea = new Map<Element, HTMLElement[]>();
     document.querySelectorAll<HTMLElement>("[data-c97-paint]").forEach((layer) => {
       const area =
@@ -77,7 +74,7 @@ export function Catalog97Monet() {
       });
     };
 
-    const handlers = [...layersByArea.keys()].map((area) => {
+    const handlers = (canReveal ? [...layersByArea.keys()] : []).map((area) => {
       const onMove = (event: Event) => {
         const { clientX, clientY } = event as PointerEvent;
         x = clientX;
@@ -98,6 +95,7 @@ export function Catalog97Monet() {
           (portrait.dataset.c97Painter ?? "monet") as (typeof PAINTERS)[number],
         );
         portrait.dataset.c97Painter = PAINTERS[(current + 1) % PAINTERS.length];
+        if (!canReveal) portrait.dataset.c97StillPainting = "true";
       };
       portrait.addEventListener("click", onClick);
       return () => portrait.removeEventListener("click", onClick);

@@ -21,6 +21,7 @@ const UTILITY_ROUTES = new Set([
   "/accessibility",
   "/agent-build-index",
   "/arcade",
+  "/back-room/[discovery]",
   "/changelog",
   "/now",
   "/portfolio/[slug]",

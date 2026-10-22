@@ -38,6 +38,13 @@ function publishedDaysAgo(days: number): string {
 }
 
 describe("GET /api/search", () => {
+  it.each([
+    ["Take me somewhere!", "/back-room/transit"],
+    ["1997", "/back-room/1997"],
+  ])("reveals the hidden destination for %s", async (query, url) => {
+    const response = await GET(makeRequest(`?q=${encodeURIComponent(query)}`));
+    expect((await response.json()).results[0].url).toBe(url);
+  });
   beforeEach(() => {
     jest.clearAllMocks();
     jest.spyOn(console, "error").mockImplementation(() => undefined);

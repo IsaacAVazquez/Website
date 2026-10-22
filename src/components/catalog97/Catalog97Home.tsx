@@ -11,6 +11,7 @@ import {
 import type { BlogPostPreview } from "@/lib/blog";
 import { formatPtTime, type SnapshotReadouts } from "@/lib/catalog97Readouts";
 import { sep } from "@/lib/date-formatters";
+import { PortraitControls } from "@/components/discoveries/PortraitControls";
 
 export interface Catalog97HomeProps {
   featuredProjects: CaseStudyData[];
@@ -163,15 +164,18 @@ export function Catalog97Home({
               </p>
 
             </div>
-            <div className={`c97-offset ${styles.portrait}`} data-c97-paint="portrait">
-              <Image
-                src={PORTRAIT}
-                alt="Isaac Vazquez"
-                fill
-                priority
-                sizes="(max-width: 880px) 72vw, 42vw"
-                className={styles.portraitImage}
-              />
+            <div>
+              <div className={`c97-offset ${styles.portrait}`} data-c97-paint="portrait">
+                <Image
+                  src={PORTRAIT}
+                  alt="Isaac Vazquez"
+                  fill
+                  priority
+                  sizes="(max-width: 880px) 72vw, 42vw"
+                  className={styles.portraitImage}
+                />
+              </div>
+              <PortraitControls />
             </div>
           </div>
         </div>
