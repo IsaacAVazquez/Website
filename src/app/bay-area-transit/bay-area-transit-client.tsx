@@ -460,6 +460,7 @@ export function BayAreaTransitClient({
           memoryOnly={commuteStatus === "memory-only"}
         />
         <TransitSignature
+          directionFilter={commuteOpen ? commute.direction : ""}
           departuresStatus={summary.sectionStatus?.departures}
           advisoryStations={advisoryStations}
           stations={summary.stations}

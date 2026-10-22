@@ -14,6 +14,7 @@ import { bundleTrack, linePath, nearestStation, projectStations } from "./statio
 import { TransitMap } from "./TransitMap";
 
 interface TransitSignatureProps {
+  directionFilter?: "" | "North" | "South";
   stations: TransitStation[];
   lines: TransitLine[];
   selectedStation: TransitStation | null;
@@ -253,6 +254,7 @@ function StationFinder({
 }
 
 function PlatformBoard({
+  directionFilter = "",
   station,
   board,
   isLoading,
@@ -264,6 +266,7 @@ function PlatformBoard({
   onHoverLine,
   onPinLine,
 }: {
+  directionFilter?: "" | "North" | "South";
   station: TransitStation | null;
   board: TransitStationBoard | null;
   isLoading: boolean;
@@ -371,7 +374,9 @@ function PlatformBoard({
                 </ul>
               ) : (
                 <p className="bt-board-note">
-                  {departuresStatus === "fresh" && board.departures.length === 0
+                  {directionFilter
+                    ? `No upcoming ${directionFilter.toLowerCase()}bound trains in this feed for ${station.name}.`
+                    : departuresStatus === "fresh" && board.departures.length === 0
                     ? `No trains are scheduled at ${station.name} right now.`
                     : `No upcoming departures in this snapshot for ${station.name}.`}
                 </p>
@@ -393,6 +398,7 @@ function PlatformBoard({
  * buttons and the station search on the board are the keyboard path.
  */
 export function TransitSignature({
+  directionFilter = "",
   stations,
   lines,
   selectedStation,
@@ -594,6 +600,7 @@ export function TransitSignature({
       </div>
 
       <PlatformBoard
+        directionFilter={directionFilter}
         departuresStatus={departuresStatus}
         station={selectedStation}
         board={stationBoard}

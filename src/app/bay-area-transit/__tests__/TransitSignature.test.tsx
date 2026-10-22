@@ -62,6 +62,12 @@ it("says so on the board when BART has no departures to give", () => {
   expect(screen.getByText(/departures are unavailable/i)).toBeInTheDocument();
 });
 
+it("describes an empty direction filter without claiming no trains are scheduled", () => {
+  renderSignature({ stationBoard: { ...(board(0) as TransitStationBoard), departures: [] }, directionFilter: "North" });
+  expect(screen.getByText("No upcoming northbound trains in this feed for EMBR station.")).toBeVisible();
+  expect(screen.queryByText(/No trains are scheduled/)).toBeNull();
+});
+
 /** A board in the shape the station route serves. */
 function servedBoard(
   minutes: Array<number | null>,
