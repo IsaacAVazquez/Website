@@ -1,10 +1,10 @@
 {
   "symbol": "MCD",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3129,
-      "ttmPe": 19.71,
-      "pegRatio": 3.4,
-      "marketCap": 171713292000,
-      "psRatio": 6.2,
-      "pbRatio": -168.02
+      "ttmPe": 20,
+      "pegRatio": 3.45,
+      "marketCap": 174246500000,
+      "psRatio": 6.29,
+      "pbRatio": -170.5
     },
     "profitability": {
       "roe": -204.76999999999998,
@@ -5534,25 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.67,
-      "costOfEquity": 8.6,
+      "wacc": 6.710000000000001,
+      "costOfEquity": 8.62,
       "costOfDebt": 0.75,
       "taxRate": 20,
-      "beta": 0.4466,
-      "marketCap": 171713292000
+      "beta": 0.4508,
+      "marketCap": 174246500000
     },
     "beta": {
-      "beta5y": 0.4466
+      "beta5y": 0.4508
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 307.95,
-        "high": 308.7,
-        "low": 305.84,
-        "close": 307.77,
-        "volume": 2329600
-      },
       {
         "date": "2025-10-21",
         "open": 308.55,
@@ -7559,24 +7551,32 @@
         "high": 247.29,
         "low": 243.5,
         "close": 246.52,
-        "volume": 5498800
+        "volume": 5511400
+      },
+      {
+        "date": "2026-10-21",
+        "open": 246,
+        "high": 246.85,
+        "low": 243.33,
+        "close": 246.25,
+        "volume": 4577800
       }
     ],
     "news": [
-      {
-        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
-        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
+        "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
         "type": "STORY"
       },
       {
@@ -7588,19 +7588,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f5df691a-39e5-31d7-bcb8-7d2f48d17b70",
-        "title": "Wendy's (WEN) Upgraded on Rebound Potential Despite Industry Slump",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/wendys-wen-upgraded-rebound-potential-201625694.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
         "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f5df691a-39e5-31d7-bcb8-7d2f48d17b70",
+        "title": "Wendy's (WEN) Upgraded on Rebound Potential Despite Industry Slump",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/wendys-wen-upgraded-rebound-potential-201625694.html",
         "type": "STORY"
       },
       {
@@ -7714,18 +7714,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.71,
-        "industryAvg": 24.33
+        "value": 20,
+        "industryAvg": 24.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.2,
+        "value": 6.29,
         "industryAvg": 2.82
       },
       {
         "metric": "P/B Ratio",
-        "value": -168.02,
-        "industryAvg": 5.81
+        "value": -170.5,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",

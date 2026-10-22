@@ -1,10 +1,10 @@
 {
   "symbol": "ORLY",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.1445,
-      "ttmPe": 28.33,
-      "marketCap": 72695887806,
-      "psRatio": 3.91,
-      "pbRatio": -39.6,
+      "ttmPe": 28.37,
+      "marketCap": 72801989360,
+      "psRatio": 3.92,
+      "pbRatio": -39.66,
       "pegRatio": 2.63
     },
     "profitability": {
@@ -5047,25 +5047,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.34,
-      "costOfEquity": 9.370000000000001,
+      "wacc": 8.35,
+      "costOfEquity": 9.379999999999999,
       "costOfDebt": 0.73,
       "taxRate": 23,
-      "beta": 0.5464,
-      "marketCap": 72695887806
+      "beta": 0.5485,
+      "marketCap": 72801989360
     },
     "beta": {
-      "beta5y": 0.5464
+      "beta5y": 0.5485
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 102.02,
-        "high": 102.02,
-        "low": 99.6,
-        "close": 100.97,
-        "volume": 4888100
-      },
       {
         "date": "2025-10-21",
         "open": 100.95,
@@ -7073,6 +7065,14 @@
         "low": 89.45,
         "close": 90.02,
         "volume": 3759900
+      },
+      {
+        "date": "2026-10-21",
+        "open": 89.56,
+        "high": 89.76,
+        "low": 88.61,
+        "close": 89.2,
+        "volume": 4261700
       }
     ],
     "news": [
@@ -7101,19 +7101,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "888164de-9c38-3a1e-a697-022cd3b8f837",
-        "title": "1 Unstoppable Stock That Keeps Crushing the Market: Should You Buy It in May and Hold Forever?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/888164de-9c38-3a1e-a697-022cd3b8f837/1-unstoppable-stock-that.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d080e955-d819-30b8-9130-a6eb89a91e1f",
         "title": "3 Big Reasons to Love O'Reilly (ORLY)",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/3-big-reasons-love-oreilly-040130781.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "888164de-9c38-3a1e-a697-022cd3b8f837",
+        "title": "1 Unstoppable Stock That Keeps Crushing the Market: Should You Buy It in May and Hold Forever?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/888164de-9c38-3a1e-a697-022cd3b8f837/1-unstoppable-stock-that.html",
         "type": "STORY"
       },
       {
@@ -7227,18 +7227,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.33,
-        "industryAvg": 20.33
+        "value": 28.37,
+        "industryAvg": 20.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.91,
-        "industryAvg": 0.84
+        "value": 3.92,
+        "industryAvg": 0.88
       },
       {
         "metric": "P/B Ratio",
-        "value": -39.6,
-        "industryAvg": 1.72
+        "value": -39.66,
+        "industryAvg": 1.88
       },
       {
         "metric": "ROE",

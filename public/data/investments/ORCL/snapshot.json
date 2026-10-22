@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 20.32,
-      "marketCap": 391880160000,
-      "psRatio": 5.46,
-      "pbRatio": 5.87,
+      "ttmPe": 20.25,
+      "marketCap": 390489120000,
+      "psRatio": 5.44,
+      "pbRatio": 5.85,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -6182,25 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.600000000000001,
-      "costOfEquity": 18.7,
+      "wacc": 13.569999999999999,
+      "costOfEquity": 18.68,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7556,
-      "marketCap": 391880160000
+      "beta": 1.7504,
+      "marketCap": 390489120000
     },
     "beta": {
-      "beta5y": 1.7556
+      "beta5y": 1.7504
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 288.95,
-        "high": 289.24,
-        "low": 275.31,
-        "close": 277.18,
-        "volume": 32810700
-      },
       {
         "date": "2025-10-21",
         "open": 278.11,
@@ -8207,7 +8199,15 @@
         "high": 134.35,
         "low": 127.45,
         "close": 131.14,
-        "volume": 26608900
+        "volume": 26751800
+      },
+      {
+        "date": "2026-10-21",
+        "open": 133.12,
+        "high": 133.52,
+        "low": 127.7,
+        "close": 129.13,
+        "volume": 26195500
       }
     ],
     "news": [
@@ -8276,19 +8276,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       }
     ],
@@ -8367,18 +8367,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.32,
-        "industryAvg": 33.66
+        "value": 20.25,
+        "industryAvg": 33.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.46,
-        "industryAvg": 7.69
+        "value": 5.44,
+        "industryAvg": 7.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.87,
-        "industryAvg": 8.55
+        "value": 5.85,
+        "industryAvg": 8.63
       },
       {
         "metric": "ROE",

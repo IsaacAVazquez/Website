@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7879,
-      "ttmPe": 24.44,
+      "ttmPe": 24.67,
       "pegRatio": 0.13,
-      "marketCap": 118317240000,
+      "marketCap": 119429100000,
       "psRatio": 0.29,
-      "pbRatio": 1.48
+      "pbRatio": 1.5
     },
     "profitability": {
       "roe": 3.7900000000000005,
@@ -5618,25 +5618,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.11,
-      "costOfEquity": 9.58,
+      "wacc": 6.15,
+      "costOfEquity": 9.6,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 25,
-      "beta": 0.5764,
-      "marketCap": 118317240000
+      "beta": 0.5778,
+      "marketCap": 119429100000
     },
     "beta": {
-      "beta5y": 0.5764
+      "beta5y": 0.5778
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 82.46,
-        "high": 82.63,
-        "low": 81.52,
-        "close": 82.48,
-        "volume": 5703300
-      },
       {
         "date": "2025-10-21",
         "open": 82.36,
@@ -7644,15 +7636,23 @@
         "low": 93.2,
         "close": 94.75,
         "volume": 7067100
+      },
+      {
+        "date": "2026-10-21",
+        "open": 95.26,
+        "high": 95.26,
+        "low": 93.42,
+        "close": 93.45,
+        "volume": 6523500
       }
     ],
     "news": [
       {
-        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
-        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
-        "publisher": "The Wall Street Journal",
+        "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
+        "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
+        "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
         "type": "STORY"
       },
       {
@@ -7664,11 +7664,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
-        "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
-        "publisher": "Motley Fool",
+        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
+        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
+        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
         "type": "STORY"
       },
       {
@@ -7704,14 +7704,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2698cddb-15c9-48d9-bc0a-8ecf627a14ef",
-        "title": "Aetna ACA exit is bad for marketplace, good for Oscar: CEO Bertolini",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "72fc7b97-1dc2-33b1-8fef-05e1bcd2ecb9",
         "title": "INGN Stock Gains Following Q1 Earnings Beat, Revenues Up Y/Y",
         "publisher": "Zacks",
@@ -7720,11 +7712,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05c0ea41-f713-3abc-bac5-4735abe28c53",
-        "title": "TMDX Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
+        "uuid": "2698cddb-15c9-48d9-bc0a-8ecf627a14ef",
+        "title": "Aetna ACA exit is bad for marketplace, good for Oscar: CEO Bertolini",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2ae57d9c-b9b9-376d-bf2b-539f1d358547",
+        "title": "PacBio Stock Down Despite Q1 Earnings & Revenue Beat Estimates",
         "publisher": "Zacks",
         "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/tmdx-stock-gains-post-q1-160300345.html",
+        "link": "https://finance.yahoo.com/news/pacbio-stock-down-despite-q1-160000954.html",
         "type": "STORY"
       }
     ],
@@ -7798,8 +7798,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.44,
-        "industryAvg": 22.38
+        "value": 24.67,
+        "industryAvg": 22.77
       },
       {
         "metric": "P/S Ratio",
@@ -7808,8 +7808,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.48,
-        "industryAvg": 2.45
+        "value": 1.5,
+        "industryAvg": 2.49
       },
       {
         "metric": "ROE",

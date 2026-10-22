@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 40.597,
-      "ttmPe": 40.57,
-      "marketCap": 634829202024,
-      "psRatio": 15.75,
-      "pbRatio": 25.49,
+      "ttmPe": 41.3,
+      "marketCap": 646225964871.23,
+      "psRatio": 16.03,
+      "pbRatio": 25.94,
       "pegRatio": 0.31
     },
     "profitability": {
@@ -5853,25 +5853,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.62,
-      "costOfEquity": 18.75,
+      "wacc": 18.58,
+      "costOfEquity": 18.709999999999997,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7618,
-      "marketCap": 634829202024
+      "beta": 1.7544,
+      "marketCap": 646225964871.23
     },
     "beta": {
-      "beta5y": 1.7618
+      "beta5y": 1.7544
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 1031.75,
-        "high": 1052.17,
-        "low": 1031.49,
-        "close": 1042.15,
-        "volume": 1271700
-      },
       {
         "date": "2025-10-21",
         "open": 1036.3101,
@@ -7879,6 +7871,14 @@
         "low": 1613.54,
         "close": 1630.84,
         "volume": 990600
+      },
+      {
+        "date": "2026-10-21",
+        "open": 1680.53,
+        "high": 1687.8101,
+        "low": 1661.62,
+        "close": 1676.6899,
+        "volume": 1243800
       }
     ],
     "news": [
@@ -7947,11 +7947,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
-        "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
+        "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
+        "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
+        "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
         "type": "STORY"
       },
       {
@@ -7977,21 +7977,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4246342
+        "totalPay": 4246758
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2517723
+        "totalPay": 2517969
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2680482
+        "totalPay": 2680745
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -8002,7 +8002,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2499763
+        "totalPay": 2500008
       },
       {
         "name": "Mr. Ron Kool",
@@ -8013,7 +8013,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2626603
+        "totalPay": 2626861
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -8023,18 +8023,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.57,
-        "industryAvg": 47.18
+        "value": 41.3,
+        "industryAvg": 47.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.75,
-        "industryAvg": 12.8
+        "value": 16.03,
+        "industryAvg": 12.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.49,
-        "industryAvg": 17.83
+        "value": 25.94,
+        "industryAvg": 17.87
       },
       {
         "metric": "ROE",

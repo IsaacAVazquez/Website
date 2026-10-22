@@ -1,10 +1,10 @@
 {
   "symbol": "SBUX",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.7343,
-      "ttmPe": 56.43,
-      "marketCap": 111552226000,
-      "psRatio": 2.91,
-      "pbRatio": -14.54,
-      "pegRatio": 0.65
+      "ttmPe": 57.13,
+      "marketCap": 112931384000,
+      "psRatio": 2.95,
+      "pbRatio": -14.72,
+      "pegRatio": 0.66
     },
     "profitability": {
       "roe": -12.950000000000001,
@@ -6187,25 +6187,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.91,
-      "costOfEquity": 13.01,
+      "wacc": 10.95,
+      "costOfEquity": 13.04,
       "costOfDebt": 0.6,
       "taxRate": 26,
-      "beta": 1.0182,
-      "marketCap": 111552226000
+      "beta": 1.0215,
+      "marketCap": 112931384000
     },
     "beta": {
-      "beta5y": 1.0182
+      "beta5y": 1.0215
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 85.69,
-        "high": 86.34,
-        "low": 84.43,
-        "close": 84.53,
-        "volume": 7679700
-      },
       {
         "date": "2025-10-21",
         "open": 84.14,
@@ -8213,6 +8205,14 @@
         "low": 98.19,
         "close": 99.37,
         "volume": 8333200
+      },
+      {
+        "date": "2026-10-21",
+        "open": 98.95,
+        "high": 99.19,
+        "low": 97.92,
+        "close": 99.08,
+        "volume": 5758400
       }
     ],
     "news": [
@@ -8273,14 +8273,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "35f8c5ea-ecf8-396f-9f08-6fb9ef01e1a2",
-        "title": "SBUX vs. BROS: Which Coffee Stock Has the Stronger Brew for 2025?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/sbux-vs-bros-coffee-stock-124200778.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
         "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
         "publisher": "Zacks",
@@ -8289,11 +8281,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "37a0ba7a-0d07-31b4-b9de-0adb0e7334c8",
-        "title": "Is Realty Income’s (O) 9-Year Low a Golden Opportunity for Dividend Investors?",
-        "publisher": "TipRanks",
+        "uuid": "35f8c5ea-ecf8-396f-9f08-6fb9ef01e1a2",
+        "title": "SBUX vs. BROS: Which Coffee Stock Has the Stronger Brew for 2025?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/sbux-vs-bros-coffee-stock-124200778.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b34f0011-f284-3cc7-aae0-417e841264f0",
+        "title": "3 Magnificent Dividend Stocks Down 15% to 64% to Buy and Hold for 20 Years",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-31",
-        "link": "https://finance.yahoo.com/news/realty-income-o-9-low-182100233.html",
+        "link": "https://finance.yahoo.com/m/b34f0011-f284-3cc7-aae0-417e841264f0/3-magnificent-dividend-stocks.html",
         "type": "STORY"
       }
     ],
@@ -8362,18 +8362,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 56.43,
-        "industryAvg": 24.33
+        "value": 57.13,
+        "industryAvg": 24.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.91,
+        "value": 2.95,
         "industryAvg": 2.82
       },
       {
         "metric": "P/B Ratio",
-        "value": -14.54,
-        "industryAvg": 5.81
+        "value": -14.72,
+        "industryAvg": 5.66
       },
       {
         "metric": "ROE",

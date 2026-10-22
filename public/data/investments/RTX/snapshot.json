@@ -1,10 +1,10 @@
 {
   "symbol": "RTX",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "RTX Corporation"
     },
     "fundamentals": {
-      "ttmEps": 5.6791,
-      "ttmPe": 33.83,
-      "marketCap": 258917808591,
+      "ttmEps": 6.1551,
+      "ttmPe": 31.13,
+      "marketCap": 258552799800,
       "psRatio": 2.77,
       "pbRatio": 3.9,
-      "pegRatio": 1.21
+      "pegRatio": 0.92
     },
     "profitability": {
       "roe": 3.2199999999999998,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 28.04
+        "yoyGrowth": 33.71
       }
     ],
     "income_statement": {
@@ -5874,25 +5874,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.69,
-      "costOfEquity": 7.5600000000000005,
+      "wacc": 6.68,
+      "costOfEquity": 7.55,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 18,
-      "beta": 0.3117,
-      "marketCap": 258917808591
+      "beta": 0.313,
+      "marketCap": 258552799800
     },
     "beta": {
-      "beta5y": 0.3117
+      "beta5y": 0.313
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 159.67,
-        "high": 162.07,
-        "low": 159.45,
-        "close": 160.71,
-        "volume": 6517800
-      },
       {
         "date": "2025-10-21",
         "open": 171.81,
@@ -7900,6 +7892,14 @@
         "low": 188.08,
         "close": 193.34,
         "volume": 9903600
+      },
+      {
+        "date": "2026-10-21",
+        "open": 193.24,
+        "high": 195.78,
+        "low": 189.2,
+        "close": 191.6,
+        "volume": 7099600
       }
     ],
     "news": [
@@ -8048,18 +8048,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.83,
-        "industryAvg": 32.41
+        "value": 31.13,
+        "industryAvg": 32.07
       },
       {
         "metric": "P/S Ratio",
         "value": 2.77,
-        "industryAvg": 2.87
+        "industryAvg": 2.84
       },
       {
         "metric": "P/B Ratio",
         "value": 3.9,
-        "industryAvg": 8.5
+        "industryAvg": 8.77
       },
       {
         "metric": "ROE",

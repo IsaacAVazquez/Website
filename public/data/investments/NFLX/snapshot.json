@@ -1,10 +1,10 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "Netflix, Inc."
     },
     "fundamentals": {
-      "ttmEps": 3.1742,
-      "ttmPe": 22.01,
-      "marketCap": 290851188045,
-      "psRatio": 6.01,
-      "pbRatio": 9.65,
-      "pegRatio": 1.99
+      "ttmEps": 3.4574,
+      "ttmPe": 18.81,
+      "marketCap": 270822638088,
+      "psRatio": 5.6,
+      "pbRatio": 8.98,
+      "pegRatio": 0.39
     },
     "profitability": {
       "roe": 11.1,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 11.06
+        "yoyGrowth": 48.26
       }
     ],
     "income_statement": {
@@ -4926,25 +4926,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.64,
-      "costOfEquity": 17.41,
+      "wacc": 16.580000000000002,
+      "costOfEquity": 17.4,
       "costOfDebt": 1.23,
       "taxRate": 16,
-      "beta": 1.5875,
-      "marketCap": 290851188045
+      "beta": 1.5849,
+      "marketCap": 270822638088
     },
     "beta": {
-      "beta5y": 1.5875
+      "beta5y": 1.5849
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 120.788,
-        "high": 124.776,
-        "low": 120.69,
-        "close": 123.856,
-        "volume": 39862000
-      },
       {
         "date": "2025-10-21",
         "open": 124.283,
@@ -6951,7 +6943,15 @@
         "high": 70.66,
         "low": 68.2,
         "close": 68.69,
-        "volume": 65673700
+        "volume": 67039300
+      },
+      {
+        "date": "2026-10-21",
+        "open": 64.15,
+        "high": 67.12,
+        "low": 64.1,
+        "close": 65.04,
+        "volume": 101181700
       }
     ],
     "news": [
@@ -7012,19 +7012,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
-        "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
         "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
+        "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
         "type": "STORY"
       },
       {
@@ -7098,18 +7098,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.01,
-        "industryAvg": 23.89
+        "value": 18.81,
+        "industryAvg": 23.45
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.01,
-        "industryAvg": 2.71
+        "value": 5.6,
+        "industryAvg": 2.67
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.65,
-        "industryAvg": 3.08
+        "value": 8.98,
+        "industryAvg": 3.04
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.0787,
-      "ttmPe": 12.9,
-      "pegRatio": 8.49,
-      "marketCap": 32477956680,
-      "psRatio": 3.41,
-      "pbRatio": 10.32
+      "ttmPe": 13.1,
+      "pegRatio": 8.62,
+      "marketCap": 32974941480,
+      "psRatio": 3.46,
+      "pbRatio": 10.47
     },
     "profitability": {
       "roe": 21.66,
@@ -6002,25 +6002,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.28,
-      "costOfEquity": 10.489999999999998,
+      "wacc": 8.33,
+      "costOfEquity": 10.52,
       "costOfDebt": 0.66,
       "taxRate": 20,
-      "beta": 0.6935,
-      "marketCap": 32477956680
+      "beta": 0.696,
+      "marketCap": 32974941480
     },
     "beta": {
-      "beta5y": 0.6935
+      "beta5y": 0.696
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 143.87,
-        "high": 145.69,
-        "low": 143.51,
-        "close": 145.06,
-        "volume": 2479400
-      },
       {
         "date": "2025-10-21",
         "open": 144.83,
@@ -8028,6 +8020,14 @@
         "low": 79.03,
         "close": 80.04,
         "volume": 3741400
+      },
+      {
+        "date": "2026-10-21",
+        "open": 79.22,
+        "high": 80,
+        "low": 78.88,
+        "close": 79.62,
+        "volume": 3037100
       }
     ],
     "news": [
@@ -8056,6 +8056,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
+        "title": "Zoetis Declares Third Quarter 2025 Dividend",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
         "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
         "publisher": "Zacks",
@@ -8072,19 +8080,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
-        "title": "Zoetis Declares Third Quarter 2025 Dividend",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
-        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
-        "publisher": "Business Wire",
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8096,11 +8096,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
+        "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
+        "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
+        "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
         "type": "STORY"
       },
       {
@@ -8180,18 +8180,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.9,
-        "industryAvg": 22.78
+        "value": 13.1,
+        "industryAvg": 23.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.41,
-        "industryAvg": 2.33
+        "value": 3.46,
+        "industryAvg": 2.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.32,
-        "industryAvg": 2.45
+        "value": 10.47,
+        "industryAvg": 2.46
       },
       {
         "metric": "ROE",

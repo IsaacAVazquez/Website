@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.0918,
-      "ttmPe": 9.59,
+      "ttmPe": 9.55,
       "pegRatio": 0.13,
-      "marketCap": 131225354770,
-      "psRatio": 2.61,
-      "pbRatio": 3.88
+      "marketCap": 130690014210,
+      "psRatio": 2.6,
+      "pbRatio": 3.87
     },
     "profitability": {
       "roe": 9.89,
@@ -6161,25 +6161,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.33,
-      "costOfEquity": 10.72,
+      "wacc": 9.34,
+      "costOfEquity": 10.73,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 22,
-      "beta": 0.7227,
-      "marketCap": 131225354770
+      "beta": 0.723,
+      "marketCap": 130690014210
     },
     "beta": {
-      "beta5y": 0.7227
+      "beta5y": 0.723
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 55.41,
-        "high": 56.23,
-        "low": 55.19,
-        "close": 55.74,
-        "volume": 7901600
-      },
       {
         "date": "2025-10-21",
         "open": 55.3,
@@ -8186,7 +8178,15 @@
         "high": 39.38,
         "low": 38.81,
         "close": 39.35,
-        "volume": 9381800
+        "volume": 9412600
+      },
+      {
+        "date": "2026-10-21",
+        "open": 39.25,
+        "high": 39.49,
+        "low": 39.05,
+        "close": 39.06,
+        "volume": 6797400
       }
     ],
     "news": [
@@ -8231,14 +8231,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f09b787-e949-3a08-babf-84e7425b5e17",
-        "title": "Novo Nordisk strikes $1bn deal for Lexicon’s oral obesity drug",
-        "publisher": "Pharmaceutical Technology",
-        "reportDate": "2025-03-29",
-        "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "37f312c0-b1a2-341e-8db3-6e35681e8002",
         "title": "Novo Nordisk Inks Its Second Big Obesity Deal In A Week — And It's Not For A GLP-1",
         "publisher": "Investor's Business Daily",
@@ -8247,11 +8239,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
-        "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "uuid": "5f09b787-e949-3a08-babf-84e7425b5e17",
+        "title": "Novo Nordisk strikes $1bn deal for Lexicon’s oral obesity drug",
+        "publisher": "Pharmaceutical Technology",
+        "reportDate": "2025-03-29",
+        "link": "https://finance.yahoo.com/m/5f09b787-e949-3a08-babf-84e7425b5e17/novo-nordisk-strikes-%241bn.html",
         "type": "STORY"
       },
       {
@@ -8260,6 +8252,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/news/lxrx-stock-moves-30-week-141800883.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
+        "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
         "type": "STORY"
       },
       {
@@ -8277,7 +8277,7 @@
         "title": "EVP of R&D, Chief Scientific Officer and Member of the Management Board",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 1827011
+        "totalPay": 1832111
       },
       {
         "name": "Mr. Emil Kongshoej Larsen",
@@ -8302,7 +8302,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 2575786
+        "totalPay": 2582976
       },
       {
         "name": "Mr. Maziar Mike Doustdar B.A.",
@@ -8338,18 +8338,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.59,
-        "industryAvg": 26.97
+        "value": 9.55,
+        "industryAvg": 27.37
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.61,
-        "industryAvg": 4.88
+        "value": 2.6,
+        "industryAvg": 4.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.88,
-        "industryAvg": 5.99
+        "value": 3.87,
+        "industryAvg": 6.08
       },
       {
         "metric": "ROE",

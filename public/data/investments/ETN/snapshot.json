@@ -1,10 +1,10 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.8283,
-      "ttmPe": 39.83,
-      "marketCap": 152058600000,
-      "psRatio": 5.06,
-      "pbRatio": 7.51,
+      "ttmPe": 40.08,
+      "marketCap": 153006296000,
+      "psRatio": 5.1,
+      "pbRatio": 7.55,
       "pegRatio": 1.77
     },
     "profitability": {
@@ -5261,25 +5261,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.120000000000001,
-      "costOfEquity": 13.719999999999999,
+      "wacc": 12.07,
+      "costOfEquity": 13.66,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 28.000000000000004,
-      "beta": 1.1098,
-      "marketCap": 152058600000
+      "beta": 1.1022,
+      "marketCap": 153006296000
     },
     "beta": {
-      "beta5y": 1.1098
+      "beta5y": 1.1022
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 375.62,
-        "high": 379.02,
-        "low": 374.6,
-        "close": 377.69,
-        "volume": 1331400
-      },
       {
         "date": "2025-10-21",
         "open": 377.64,
@@ -7287,6 +7279,14 @@
         "low": 372.79,
         "close": 381.98,
         "volume": 2822100
+      },
+      {
+        "date": "2026-10-21",
+        "open": 392.06,
+        "high": 395.86,
+        "low": 388.31,
+        "close": 393.94,
+        "volume": 2341300
       }
     ],
     "news": [
@@ -7323,6 +7323,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
+        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-03",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
         "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
         "publisher": "GuruFocus.com",
@@ -7337,14 +7345,6 @@
         "reportDate": "2025-05-03",
         "link": "https://finance.yahoo.com/video/latest-companies-warning-tariffs-204022408.html",
         "type": "VIDEO"
-      },
-      {
-        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
-        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
-        "type": "STORY"
       },
       {
         "uuid": "f5675682-9157-39e7-9a91-2a6739ec90d0",
@@ -7432,18 +7432,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.83,
-        "industryAvg": 30.26
+        "value": 40.08,
+        "industryAvg": 30.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.06,
-        "industryAvg": 3.44
+        "value": 5.1,
+        "industryAvg": 3.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.51,
-        "industryAvg": 6.23
+        "value": 7.55,
+        "industryAvg": 6.28
       },
       {
         "metric": "ROE",

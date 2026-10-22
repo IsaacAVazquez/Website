@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 80.31,
-      "marketCap": 87099800900,
-      "psRatio": 9.25,
-      "pbRatio": 2.8,
-      "pegRatio": 0.9
+      "ttmPe": 79.71,
+      "marketCap": 86450259950,
+      "psRatio": 9.18,
+      "pbRatio": 2.78,
+      "pegRatio": 0.89
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,25 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.879999999999999,
-      "costOfEquity": 14.360000000000001,
+      "wacc": 12.889999999999999,
+      "costOfEquity": 14.38,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.193,
-      "marketCap": 87099800900
+      "beta": 1.1953,
+      "marketCap": 86450259950
     },
     "beta": {
-      "beta5y": 1.193
+      "beta5y": 1.1953
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 450.66,
-        "high": 457.82,
-        "low": 449,
-        "close": 453.35,
-        "volume": 1539900
-      },
       {
         "date": "2025-10-21",
         "open": 448.25,
@@ -8308,6 +8300,14 @@
         "low": 441.09,
         "close": 447.62,
         "volume": 1782200
+      },
+      {
+        "date": "2026-10-21",
+        "open": 451.8,
+        "high": 459.88,
+        "low": 450.01,
+        "close": 451.19,
+        "volume": 1337700
       }
     ],
     "news": [
@@ -8336,43 +8336,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
-        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
-        "publisher": "Investing.com",
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
-        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
-        "title": "US Tightens China Chip Curbs by Targeting Design Software",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
-        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
-        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       },
       {
@@ -8384,11 +8352,43 @@
         "type": "STORY"
       },
       {
+        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
+        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
+        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
+        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
         "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+        "title": "US Tightens China Chip Curbs by Targeting Design Software",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
         "type": "STORY"
       }
     ],
@@ -8453,18 +8453,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 80.31,
-        "industryAvg": 33.66
+        "value": 79.71,
+        "industryAvg": 33.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.25,
-        "industryAvg": 7.69
+        "value": 9.18,
+        "industryAvg": 7.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.8,
-        "industryAvg": 8.55
+        "value": 2.78,
+        "industryAvg": 8.63
       },
       {
         "metric": "ROE",
