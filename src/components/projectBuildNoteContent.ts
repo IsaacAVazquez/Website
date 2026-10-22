@@ -52,7 +52,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/fintech-tools/interchange-iq": {
     purpose:
-      "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It prices the same month of volume, ticket size, and card mix across six processors' public rates and shows the ticket size where Stripe's interchange plus starts costing less than its flat rate.",
+      "I built this to see what a card payment actually costs under flat rate pricing versus interchange plus, since a flat rate bundles the interchange, the network fees, and the processor's markup into one number. It compares the same payment channel across published flat rates, includes Shopify's required plan fee, and keeps assumed custom contracts behind an explicit choice. Each published rate links to its source and carries a check date.",
   },
   "/fantasy-football/best-ball": {
     purpose:

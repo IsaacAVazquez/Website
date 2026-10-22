@@ -2,7 +2,7 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { InterchangeIQClient } from "../interchange-iq-client";
 
 describe("InterchangeIQClient", () => {
-  it("renders the default fee model with Stripe IC+ and Checkout.com tied cheapest", () => {
+  it("keeps assumed contracts out of the default published-rate comparison", () => {
     render(<InterchangeIQClient />);
 
     expect(
@@ -10,14 +10,18 @@ describe("InterchangeIQClient", () => {
     ).toBeVisible();
     // Stripe IC+ and Checkout.com share the same interchange-plus markup, so
     // they tie for cheapest at the default inputs and both get marked.
-    expect(screen.getByText("Stripe IC+ and Checkout.com tie")).toBeVisible();
+    expect(screen.getByText("Stripe wins on published rates")).toBeVisible();
     expect(screen.getByText("Monthly fee breakdown")).toBeVisible();
-    expect(screen.getByText("7 options · 588 transactions a month · sorted cheapest first")).toBeVisible();
-    expect(screen.getAllByText("Cheapest")).toHaveLength(2);
+    expect(
+      screen.getByText(
+        "4 options · 588 transactions a month · sorted cheapest first",
+      ),
+    ).toBeVisible();
+    expect(screen.getAllByText("Cheapest")).toHaveLength(1);
     // The breakdown is the statement itself, one expandable row per processor.
     const statement = screen.getByRole("list");
-    expect(within(statement).getAllByRole("listitem")).toHaveLength(7);
-    expect(within(statement).getAllByText("Effective rate")).toHaveLength(7);
+    expect(within(statement).getAllByRole("listitem")).toHaveLength(4);
+    expect(within(statement).getAllByText("Effective rate")).toHaveLength(4);
   });
 
   it("updates the live summary and processor ranking when inputs change", () => {
@@ -33,7 +37,11 @@ describe("InterchangeIQClient", () => {
     expect(screen.getByText("$100k")).toBeVisible();
     expect(screen.getAllByText("$25")[0]).toBeVisible();
     // The count is the same for every processor, so it prints once in the list's meta line.
-    expect(screen.getByText("7 options · 4,000 transactions a month · sorted cheapest first")).toBeVisible();
+    expect(
+      screen.getByText(
+        "4 options · 4,000 transactions a month · sorted cheapest first",
+      ),
+    ).toBeVisible();
     expect(screen.queryByText(/tx\/mo/)).toBeNull();
   });
 
@@ -64,7 +72,11 @@ describe("InterchangeIQClient", () => {
     fireEvent.change(exact, { target: { value: "52318" } });
     expect(slider).toHaveAttribute("aria-valuenow", "52318");
     // 52,318 at the default $85 ticket is 615.5 transactions, shown rounded.
-    expect(screen.getByText("7 options · 616 transactions a month · sorted cheapest first")).toBeVisible();
+    expect(
+      screen.getByText(
+        "4 options · 616 transactions a month · sorted cheapest first",
+      ),
+    ).toBeVisible();
 
     fireEvent.change(exact, { target: { value: "5" } });
     expect(slider).toHaveAttribute("aria-valuenow", "52318");
@@ -78,7 +90,7 @@ describe("InterchangeIQClient", () => {
     expect(screen.getAllByText("$12.50")[0]).toBeVisible();
   });
 
-  it("counts six processors in the title sentence, since Stripe is two of the seven options", () => {
+  it("describes published rates and assumed contracts separately", () => {
     render(<InterchangeIQClient />);
 
     expect(screen.getByText(/six card processors/)).toBeVisible();
@@ -87,6 +99,7 @@ describe("InterchangeIQClient", () => {
 
   it("prints the breakeven under the track to the cent, as the sentence above it does", () => {
     const { container } = render(<InterchangeIQClient />);
+    fireEvent.click(screen.getByLabelText("Include assumed custom contracts"));
 
     fireEvent.change(screen.getByLabelText("Credit share in percent"), { target: { value: "10" } });
     fireEvent.change(screen.getByLabelText("Amex share of credit in percent"), { target: { value: "0" } });

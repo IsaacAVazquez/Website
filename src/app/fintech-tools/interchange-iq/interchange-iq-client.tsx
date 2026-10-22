@@ -4,6 +4,8 @@ import { Info, RefreshCw } from "lucide-react";
 import { useEffect, useId, useMemo, useState } from "react";
 import {
   buildCardMix,
+  PROCESSOR_RATES_AS_OF,
+  type PaymentChannel,
   calcProcessorResults,
   calcStripeBreakevenTicket,
   DEFAULT_INTERCHANGE_AMEX_OF_CREDIT,
@@ -26,7 +28,8 @@ const fmtVolume = (n: number) =>
   n >= 1000 ? `$${(n / 1000).toFixed(n >= 10_000 ? 0 : 1)}k` : `$${n}`;
 
 /** A whole-dollar ticket prints as "$25" and a typed one with cents as "$12.50". */
-const fmtTicket = (n: number) => (Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`);
+const fmtTicket = (n: number) =>
+  Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
 
 interface SliderProps {
   label: string;
@@ -107,10 +110,22 @@ export function InterchangeIQClient() {
   const [avgTicket, setAvgTicket] = useState(DEFAULT_TICKET);
   const [creditPct, setCreditPct] = useState(DEFAULT_CREDIT_PCT);
   const [amexOfCredit, setAmexOfCredit] = useState(DEFAULT_AMEX_OF_CREDIT);
+  const [channel, setChannel] = useState<PaymentChannel>("online");
+  const [includeContracts, setIncludeContracts] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
 
   const cardMix = useMemo(() => buildCardMix(creditPct, amexOfCredit), [creditPct, amexOfCredit]);
-  const results = useMemo(() => calcProcessorResults(monthlyVolume, avgTicket, cardMix), [monthlyVolume, avgTicket, cardMix]);
+  const results = useMemo(
+    () =>
+      calcProcessorResults(
+        monthlyVolume,
+        avgTicket,
+        cardMix,
+        channel,
+        includeContracts,
+      ),
+    [monthlyVolume, avgTicket, cardMix, channel, includeContracts],
+  );
   const cheapest = results[0];
   const worst = results[results.length - 1];
   const savingsVsWorst = worst.monthlyFee - cheapest.monthlyFee;
@@ -122,7 +137,7 @@ export function InterchangeIQClient() {
   const cheapestVerdict = cheapestRows.length > 1 ? `${cheapestNames} tie` : `${cheapestNames} wins`;
   const resultById = new Map(results.map((result) => [result.id, result]));
 
-  const breakevenTicket = calcStripeBreakevenTicket(cardMix);
+  const breakevenTicket = calcStripeBreakevenTicket(cardMix, channel);
   const scale = useMemo(() => breakevenScale(avgTicket, breakevenTicket), [avgTicket, breakevenTicket]);
   const hasBreakeven = breakevenTicket !== null && breakevenTicket > 0;
 
@@ -153,6 +168,8 @@ export function InterchangeIQClient() {
   }, []);
 
   function handleReset() {
+    setChannel("online");
+    setIncludeContracts(false);
     setMonthlyVolume(DEFAULT_VOLUME);
     setAvgTicket(DEFAULT_TICKET);
     setCreditPct(DEFAULT_CREDIT_PCT);
@@ -171,8 +188,7 @@ export function InterchangeIQClient() {
         <header className="iq-title">
           <h1>Interchange IQ</h1>
           <p>
-            This estimates what six card processors would charge you each month from their public pricing, on flat
-            rate and on interchange plus, so you can see where flat rate costs more before you commit to either.
+            Compare six card processors using the same online or in-person channel. Published flat rates are shown first, and you can include assumed custom contracts to explore how a quote would change the costs.
           </p>
         </header>
 
@@ -187,6 +203,35 @@ export function InterchangeIQClient() {
               </button>
             </div>
 
+            <label className="iq-channel">
+              Payment channel
+              <select
+                value={channel}
+                onChange={(event) =>
+                  setChannel(
+                    event.target.value === "in-person" ? "in-person" : "online",
+                  )
+                }
+              >
+                <option value="online">Online checkout</option>
+                <option value="in-person">In person, card present</option>
+              </select>
+            </label>
+            <label className="iq-contracts">
+              <input
+                type="checkbox"
+                checked={includeContracts}
+                onChange={(event) => setIncludeContracts(event.target.checked)}
+              />{" "}
+              Include assumed custom contracts
+            </label>
+            {includeContracts ? (
+              <p className="iq-hint">
+                Custom markups are illustrative assumptions. Any apparent saving
+                depends on receiving that quote and excludes network and
+                assessment fees.
+              </p>
+            ) : null}
             <Slider
               label="Monthly volume"
               exactLabel="Volume per month in dollars"
@@ -252,8 +297,9 @@ export function InterchangeIQClient() {
               </div>
               {showInfo ? (
                 <p id="card-mix-info" className="iq-hint">
-                  Different card types carry different interchange rates. Debit (Reg II) is much lower than consumer
-                  credit. Amex runs its own network and typically costs more.
+                  Different card types carry different interchange rates. Debit
+                  (Reg II) is much lower than consumer credit. Amex runs its own
+                  network and typically costs more.
                 </p>
               ) : null}
               <dl>
@@ -274,10 +320,17 @@ export function InterchangeIQClient() {
           {/* On a phone this wrapper becomes display: contents, so the verdict prints above the inputs and the statement after them. */}
           <div className="iq-aside">
             <p role="status" aria-live="polite" className="iq-verdict">
-              <span>{cheapestVerdict}</span>
+              <span>
+                {cheapestVerdict}
+                {includeContracts
+                  ? " under these assumptions"
+                  : " on published rates"}
+              </span>
               <span className="iq-verdict-detail">
-                {fmtFull(cheapest.monthlyFee)} a month{cheapestRows.length > 1 ? " each" : ""}, which is{" "}
-                {fmtFull(savingsVsWorst)} a month and {fmtFull(annualSavings)} a year less than {worst.name}.
+                {fmtFull(cheapest.monthlyFee)} a month
+                {cheapestRows.length > 1 ? " each" : ""}, which is{" "}
+                {fmtFull(savingsVsWorst)} a month and {fmtFull(annualSavings)} a
+                year less than {worst.name}.
               </span>
             </p>
 
@@ -302,7 +355,9 @@ export function InterchangeIQClient() {
                             <span style={{ width: `${row.fraction * 100}%` }} />
                           </span>
                           <span className="iq-row-fee">{fmtFull(row.fee)}</span>
-                          <span className="iq-row-mark">{row.isCheapest ? <span>Cheapest</span> : null}</span>
+                          <span className="iq-row-mark">
+                            {row.isCheapest ? <span>Cheapest</span> : null}
+                          </span>
                         </summary>
                         <dl className="iq-row-detail">
                           <div>
@@ -315,7 +370,22 @@ export function InterchangeIQClient() {
                           </div>
                           <div>
                             <dt>Pricing</dt>
-                            <dd>{result.note}</dd>
+                            <dd>
+                              {result.note}
+                              {result.sourceUrl ? (
+                                <>
+                                  {" "}
+                                  ·{" "}
+                                  <a
+                                    href={result.sourceUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    Rate source
+                                  </a>
+                                </>
+                              ) : null}
+                            </dd>
                           </div>
                         </dl>
                       </details>
@@ -325,24 +395,30 @@ export function InterchangeIQClient() {
               </ol>
             </section>
 
-            <section className="iq-breakeven" id="breakeven" aria-labelledby={`${ids}-breakeven`}>
-              <h2 id={`${ids}-breakeven`}>Stripe flat vs Stripe IC+</h2>
-              {hasBreakeven ? (
-                <p>
-                  With your card mix, Stripe IC+ becomes cheaper than Stripe flat rate once the average ticket passes{" "}
-                  <span className="iq-fig">${(breakevenTicket ?? 0).toFixed(2)}</span>. Your current average ticket is{" "}
-                  <span className="iq-fig">{fmtTicket(avgTicket)}</span>, and{" "}
-                  {avgTicket >= (breakevenTicket ?? 0) ? "IC+ wins on unit economics." : "flat rate wins per transaction."}
-                </p>
-              ) : (
-                <p>
-                  At your current card mix, Stripe IC+ costs less than Stripe flat at every ticket size, so there is no
-                  breakeven to find. IC+ usually needs a custom contract and about $250k a year in volume, and the IC+
-                  totals here leave out card network and assessment fees, so real IC+ costs run higher.
-                </p>
-              )}
+            {includeContracts ? (<section className="iq-breakeven" id="breakeven" aria-labelledby={`${ids}-breakeven`}>
+                <h2 id={`${ids}-breakeven`}>Stripe flat vs Stripe IC+</h2>
+                {hasBreakeven ? (
+                  <p>
+                    With your card mix, Stripe IC+ becomes cheaper than Stripe
+                    flat rate once the average ticket passes{" "}
+                    <span className="iq-fig">
+                      ${(breakevenTicket ?? 0).toFixed(2)}
+                    </span>
+                    . Your current average ticket is{" "}
+                    <span className="iq-fig">{fmtTicket(avgTicket)}</span>, and{" "}
+                    {avgTicket >= (breakevenTicket ?? 0) ? "IC+ wins on unit economics." : "flat rate wins per transaction."}
+                  </p>
+                ) : (
+                  <p>
+                    At your current card mix, Stripe IC+ costs less than Stripe
+                    flat at every ticket size, so there is no breakeven to find.
+                    The IC+ markup is an assumed custom contract, and the IC+
+                    totals here leave out card network and assessment fees, so
+                    real IC+ costs run higher.
+                  </p>
+                )}
 
-              <figure className="iq-track-figure">
+                <figure className="iq-track-figure">
                 <div className="iq-track">
                   <span
                     className="iq-track-mark"
@@ -376,38 +452,49 @@ export function InterchangeIQClient() {
                 </figcaption>
               </figure>
 
-              {hasBreakeven ? (
-                <p className="iq-fine">
-                  Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume, and the IC+ totals here
-                  leave out card network and assessment fees, so real IC+ costs run higher.
-                </p>
-              ) : null}
-            </section>
+                {hasBreakeven ? (
+                  <p className="iq-fine">
+                    Stripe IC+ uses an assumed custom contract, and the IC+
+                    totals here leave out card network and assessment fees, so
+                    real IC+ costs run higher.
+                  </p>
+                ) : null}
+              </section>
+            ) : null}
           </div>
         </div>
 
         <section className="iq-primer" aria-labelledby={`${ids}-primer`}>
           <h2 id={`${ids}-primer`}>How payment processing fees work</h2>
           <p>
-            Interchange is the fee the card-issuing bank charges every time a card is swiped or typed in. Visa and
-            Mastercard set it, not your processor, and it flows from the merchant to the acquirer to the issuer. Your
-            processor either passes it through or bundles it into a flat rate.
+            Interchange is the fee the card-issuing bank charges every time a
+            card is swiped or typed in. Visa and Mastercard set it, not your
+            processor, and it flows from the merchant to the acquirer to the
+            issuer. Your processor either passes it through or bundles it into a
+            flat rate.
           </p>
           <p>
-            Flat rate pricing, such as 2.9% + $0.30, bundles interchange, network assessments, and the processor&apos;s
-            markup into one predictable number. Interchange plus passes the actual interchange cost through to you and
-            adds a visible markup, which is cheaper at scale when your card mix is favorable.
+            Flat rate pricing, such as 2.9% + $0.30, bundles interchange,
+            network assessments, and the processor&apos;s markup into one
+            predictable number. Interchange plus passes the actual interchange
+            cost through to you and adds a visible markup, which is cheaper at
+            scale when your card mix is favorable.
           </p>
           <p>
-            These are representative averages. Real interchange has 300+ rate categories by card type, industry code,
-            and auth method. IC+ is typically available to merchants processing $250k+/yr, and the IC+ totals here leave
-            out network and assessment fees. Card-present transactions have lower interchange than online. Always get
-            actual quotes.
+            These are representative averages. Real interchange has 300+ rate
+            categories by card type, industry code, and auth method. IC+
+            requires an individual quote, and the IC+ totals here leave out
+            network and assessment fees. Card-present transactions have lower
+            interchange than online. Always get actual quotes.
           </p>
           <p className="iq-fine">
-            Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue program averages.
-            Processor fees from public pricing pages. For educational purposes only. Actual rates vary by industry, card
-            type, and negotiated terms.
+            Interchange rates based on published 2024 Visa/Mastercard US
+            schedules and Amex OptBlue program averages. Processor fees checked{" "}
+            {PROCESSOR_RATES_AS_OF} on the linked US pricing pages. Shopify
+            includes its $29 monthly equivalent on annual billing. Hardware,
+            optional add-ons, international cards, and refunds are excluded. For
+            educational purposes only. Actual rates vary by industry, card type,
+            and negotiated terms.
           </p>
         </section>
       </div>

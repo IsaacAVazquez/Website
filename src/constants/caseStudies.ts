@@ -162,11 +162,11 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "interchange-iq",
     title: "Interchange IQ",
     description:
-      "I built a fee analyzer that models real payment processing costs across 6 major processors using published 2024 interchange rate data. Adjust volume, avg ticket, and card mix to see live fee comparisons and a breakeven analysis.",
+      "I built a fee analyzer that compares online and in-person costs using dated US processor rates, includes required plan fees, and separates assumed custom contracts from published pricing.",
     role: "Builder",
     timeline: "2025",
     tools: ["Next.js", "TypeScript", "React", "Payments Economics"],
-    metrics: "6 processors · Real interchange data · Breakeven calc",
+    metrics: "6 processors · Payment channel comparisons · Dated rate sources",
     github: "https://github.com/IsaacAVazquez",
     link: "/fintech-tools/interchange-iq",
     featured: true,

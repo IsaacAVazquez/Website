@@ -10,6 +10,21 @@ import {
 } from "../interchangeIq";
 
 describe("interchangeIq", () => {
+  it("compares one channel and excludes assumed contracts when requested", () => {
+    const mix = buildCardMix(65, 18);
+    const online = calcProcessorResults(1000, 5, mix, "online", false);
+    const inPerson = calcProcessorResults(1000, 5, mix, "in-person", false);
+    expect(online.find((row) => row.id === "square")?.monthlyFee).toBeCloseTo(
+      93,
+    );
+    expect(inPerson.find((row) => row.id === "square")?.monthlyFee).toBeCloseTo(
+      56,
+    );
+    expect(online.some((row) => row.model === "Interchange+")).toBe(false);
+    expect(online.find((row) => row.id === "shopify")?.monthlyFee).toBeCloseTo(
+      118,
+    );
+  });
   it("builds a normalized card mix from credit and Amex percentages", () => {
     const mix = buildCardMix(
       DEFAULT_INTERCHANGE_CREDIT_PCT,
@@ -80,7 +95,11 @@ describe("interchangeIq", () => {
   it("keeps zero volume calculations finite", () => {
     const results = calcProcessorResults(0, 85, buildCardMix(65, 18));
 
-    expect(results.every((result) => result.monthlyFee === 0)).toBe(true);
+    expect(
+      results.every(
+        (result) => result.monthlyFee === (result.id === "shopify" ? 29 : 0),
+      ),
+    ).toBe(true);
     expect(results.every((result) => result.effectiveRate === 0)).toBe(true);
     expect(results.every((result) => Number.isFinite(result.perTxAvg))).toBe(true);
   });

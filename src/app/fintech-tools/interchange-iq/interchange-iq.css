@@ -577,3 +577,27 @@
     display: none;
   }
 }
+
+
+.iq-channel {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+.iq-channel select {
+  min-height: 44px;
+  max-width: 100%;
+  color: var(--iq-ink);
+  background: var(--iq-paper);
+  border: 1px solid currentColor;
+  padding: var(--c97-sp-1);
+}
+.iq-contracts {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+}
+.iq-contracts input {
+  min-width: 24px;
+  min-height: 44px;
+}

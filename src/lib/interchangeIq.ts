@@ -4,7 +4,13 @@ const INTERCHANGE_RATES = {
   amex: { rate: 0.023, fixed: 0 },
 };
 
+export type PaymentChannel = "online" | "in-person";
+export const PROCESSOR_RATES_AS_OF = "2026-10-22";
+
 interface FlatProcessor {
+  sourceUrl?: string;
+  subscription?: number;
+  inPerson?: { pctRate: number; fixedFee: number };
   id: string;
   name: string;
   model: "Flat Rate";
@@ -25,13 +31,71 @@ interface InterchangePlusProcessor {
 type Processor = FlatProcessor | InterchangePlusProcessor;
 
 const PROCESSORS: Processor[] = [
-  { id: "stripe", name: "Stripe", model: "Flat Rate", pctRate: 0.029, fixedFee: 0.3, note: "Standard online card rate" },
-  { id: "square", name: "Square", model: "Flat Rate", pctRate: 0.026, fixedFee: 0.1, note: "Card-present; online is 2.9%+$0.30" },
-  { id: "shopify", name: "Shopify", model: "Flat Rate", pctRate: 0.029, fixedFee: 0.3, note: "Shopify Payments basic plan" },
-  { id: "paypal", name: "PayPal", model: "Flat Rate", pctRate: 0.0349, fixedFee: 0.49, note: "Standard checkout rate" },
-  { id: "stripe_ic", name: "Stripe IC+", model: "Interchange+", markupPct: 0.0025, markupFixed: 0.1, note: "Custom pricing; typically $250k+/yr volume" },
-  { id: "adyen", name: "Adyen", model: "Interchange+", markupPct: 0.003, markupFixed: 0.13, note: "Processing markup; scheme fees not modeled" },
-  { id: "checkout", name: "Checkout.com", model: "Interchange+", markupPct: 0.0025, markupFixed: 0.1, note: "Enterprise tier; volume minimums apply" },
+  {
+    id: "stripe",
+    name: "Stripe",
+    model: "Flat Rate",
+    pctRate: 0.029,
+    fixedFee: 0.3,
+    inPerson: { pctRate: 0.027, fixedFee: 0.05 },
+    sourceUrl: "https://stripe.com/pricing",
+    note: "US domestic cards; standard processing, excluding optional Terminal add-ons",
+  },
+  {
+    id: "square",
+    name: "Square",
+    model: "Flat Rate",
+    pctRate: 0.033,
+    fixedFee: 0.3,
+    inPerson: { pctRate: 0.026, fixedFee: 0.15 },
+    sourceUrl: "https://squareup.com/us/en/payments/our-fees",
+    note: "Square Free plan; online checkout, excluding Online API and manual entry",
+  },
+  {
+    id: "shopify",
+    name: "Shopify",
+    model: "Flat Rate",
+    pctRate: 0.029,
+    fixedFee: 0.3,
+    inPerson: { pctRate: 0.026, fixedFee: 0.1 },
+    subscription: 29,
+    sourceUrl: "https://www.shopify.com/pricing",
+    note: "Basic, billed yearly ($29/month included); standard domestic cards",
+  },
+  {
+    id: "paypal",
+    name: "PayPal",
+    model: "Flat Rate",
+    pctRate: 0.0349,
+    fixedFee: 0.49,
+    inPerson: { pctRate: 0.0229, fixedFee: 0.09 },
+    sourceUrl: "https://www.paypal.com/us/business/paypal-business-fees",
+    note: "PayPal Checkout online or PayPal Point of Sale card present",
+  },
+  {
+    id: "stripe_ic",
+    name: "Stripe IC+",
+    model: "Interchange+",
+    markupPct: 0.0025,
+    markupFixed: 0.1,
+    note: "Assumed markup, not a published quote; contract required",
+  },
+  {
+    id: "adyen",
+    name: "Adyen",
+    model: "Interchange+",
+    markupPct: 0.003,
+    markupFixed: 0.13,
+    note: "Assumed markup; contract required; network fees excluded",
+  },
+  {
+    id: "checkout",
+    name: "Checkout.com",
+    model: "Interchange+",
+    markupPct: 0.0025,
+    markupFixed: 0.1,
+    note: "Assumed markup, not a published quote; contract required",
+  },
 ];
 
 export const DEFAULT_INTERCHANGE_VOLUME = 50_000;
@@ -54,6 +118,7 @@ interface ProcessorResult {
   txCount: number;
   perTxAvg: number;
   note: string;
+  sourceUrl?: string;
 }
 
 export function buildCardMix(creditPct: number, amexOfCredit: number): CardMix {
@@ -88,33 +153,52 @@ export function calcInterchange(
 export function calcProcessorResults(
   volume: number,
   avgTicket: number,
-  mix: CardMix
+  mix: CardMix,
+  channel: PaymentChannel = "online",
+  includeContracts = true,
 ): ProcessorResult[] {
   const txCount = volume / avgTicket;
   const interchange = calcInterchange(volume, txCount, mix);
 
-  return PROCESSORS.map((processor): ProcessorResult => {
-    const fee =
-      processor.model === "Flat Rate"
-        ? processor.pctRate * volume + processor.fixedFee * txCount
-        : interchange +
+  return PROCESSORS.filter(
+    (processor) => includeContracts || processor.model === "Flat Rate",
+  )
+    .map((processor): ProcessorResult => {
+      const rates =
+        processor.model === "Flat Rate" &&
+        channel === "in-person" &&
+        processor.inPerson
+          ? processor.inPerson
+          : processor;
+      const fee =
+        processor.model === "Flat Rate"
+          ? (rates as FlatProcessor).pctRate * volume +
+            (rates as FlatProcessor).fixedFee * txCount +
+            (processor.subscription ?? 0)
+          : interchange +
           processor.markupPct * volume +
           processor.markupFixed * txCount;
 
-    return {
-      id: processor.id,
-      name: processor.name,
-      model: processor.model,
-      monthlyFee: fee,
-      effectiveRate: volume > 0 ? fee / volume : 0,
-      txCount,
-      perTxAvg: txCount > 0 ? fee / txCount : 0,
-      note: processor.note,
-    };
-  }).sort((left, right) => left.monthlyFee - right.monthlyFee);
+      return {
+        id: processor.id,
+        name: processor.name,
+        model: processor.model,
+        monthlyFee: fee,
+        effectiveRate: volume > 0 ? fee / volume : 0,
+        txCount,
+        perTxAvg: txCount > 0 ? fee / txCount : 0,
+        note: processor.note,
+        sourceUrl:
+          processor.model === "Flat Rate" ? processor.sourceUrl : undefined,
+      };
+    })
+    .sort((left, right) => left.monthlyFee - right.monthlyFee);
 }
 
-export function calcStripeBreakevenTicket(mix: CardMix): number | null {
+export function calcStripeBreakevenTicket(
+  mix: CardMix,
+  channel: PaymentChannel = "online",
+): number | null {
   const interchangeEffRate =
     mix.creditFraction * INTERCHANGE_RATES.visaMcCredit.rate +
     mix.debitFraction * INTERCHANGE_RATES.visaMcDebit.rate +
@@ -142,8 +226,11 @@ export function calcStripeBreakevenTicket(mix: CardMix): number | null {
   // ic.markupFixed for the ticket T where the two per-transaction costs meet.
   // Flat's percentage rate is higher, so a crossover only exists when flat's
   // fixed fee is the larger fixed component; otherwise IC+ wins at every ticket.
-  const rateDiff = stripeFlat.pctRate - (interchangeEffRate + stripeIC.markupPct);
-  const fixedDiff = interchangeFixed + stripeIC.markupFixed - stripeFlat.fixedFee;
+  const flatRates = channel === "in-person" ? stripeFlat.inPerson! : stripeFlat;
+  const rateDiff =
+    flatRates.pctRate - (interchangeEffRate + stripeIC.markupPct);
+  const fixedDiff =
+    interchangeFixed + stripeIC.markupFixed - flatRates.fixedFee;
   const breakeven = rateDiff > 0 ? fixedDiff / rateDiff : null;
 
   return breakeven !== null && breakeven > 0 ? breakeven : null;
