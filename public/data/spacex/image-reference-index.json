@@ -1452,6 +1452,31 @@
       "crew": []
     }
   },
+  "e61d353c-db55-4a57-8184-0fab187231e6": {
+    "launchId": "e61d353c-db55-4a57-8184-0fab187231e6",
+    "launchName": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 9)",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 9)",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "f6958a77-37bb-4559-a108-40ba0ff9e34a": {
     "launchId": "f6958a77-37bb-4559-a108-40ba0ff9e34a",
     "launchName": "Falcon 9 Block 5 | Starlink Group 17-50",
@@ -1552,6 +1577,37 @@
           "label": "Space Launch Complex 4E",
           "localPath": "/data/spacex/images/b752567507d74cae.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_16_20200803143532.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
+  "fc1bd321-e502-4d0f-81f4-1926dece81c6": {
+    "launchId": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
+    "launchName": "Falcon 9 Block 5 | VICTUS SURGO",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | VICTUS SURGO",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [
+        {
+          "label": "Falcon 9 Block 5",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Unknown Pad",
+          "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_72_20200803143403.jpg"
         }
       ],
       "crew": []
