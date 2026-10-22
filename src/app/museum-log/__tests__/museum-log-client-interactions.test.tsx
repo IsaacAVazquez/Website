@@ -422,7 +422,7 @@ describe("MuseumLogClient interactions", () => {
     expect(within(detail).getByText("upcoming")).toHaveClass("c97-chip-warning");
     expect(within(detail).getByText("ended")).toBeInTheDocument();
     expect(within(detail).getByText(/– Permanent$/)).toBeInTheDocument();
-    expect(within(detail).getByText("Timed entry")).toBeInTheDocument();
+    expect(within(detail).getByText("Separate ticket")).toBeInTheDocument();
     expect(within(detail).getByRole("link", { name: "Visit official site" })).toHaveAttribute("href", "https://atlas.example.org");
     // The diary rows are the curator's, and the heading says so, since they sit right under "Your activity".
     expect(within(detail).getByRole("heading", { level: 3, name: "Curator’s past visits" })).toBeInTheDocument();

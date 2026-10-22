@@ -1015,7 +1015,7 @@ function MuseumDetailView({
                   <p className="mlog-small">{ex.blurb}</p>
                   {ex.ticketed && (
                     <span className="c97-chip mlog-chip-start">
-                      <Ticket size={12} aria-hidden="true" /> Timed entry
+                      <Ticket size={12} aria-hidden="true" /> Separate ticket
                     </span>
                   )}
                 </li>
