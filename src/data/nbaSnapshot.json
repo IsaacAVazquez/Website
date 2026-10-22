@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-22T05:02:04.188Z",
+  "generatedAt": "2026-10-22T13:54:23.849Z",
   "updatedAt": "2026-10-22",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -387,14 +387,36 @@
         "lastTen": "1-0"
       },
       {
+        "id": "lac",
+        "abbreviation": "LAC",
+        "name": "LA Clippers",
+        "shortName": "Clippers",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 3,
+        "position": 3,
+        "wins": 1,
+        "losses": 0,
+        "winPercent": 1,
+        "gamesBack": 0,
+        "gamesPlayed": 1,
+        "pointsFor": 121,
+        "pointsAgainst": 96,
+        "pointDifferential": 25,
+        "streak": "W1",
+        "homeRecord": "1-0",
+        "awayRecord": "0-0",
+        "lastTen": "1-0"
+      },
+      {
         "id": "lal",
         "abbreviation": "LAL",
         "name": "Los Angeles Lakers",
         "shortName": "Lakers",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 3,
-        "position": 3,
+        "conferenceSeed": 4,
+        "position": 4,
         "wins": 1,
         "losses": 0,
         "winPercent": 1,
@@ -415,8 +437,8 @@
         "shortName": "Grizzlies",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 4,
-        "position": 4,
+        "conferenceSeed": 5,
+        "position": 5,
         "wins": 1,
         "losses": 0,
         "winPercent": 1,
@@ -437,8 +459,8 @@
         "shortName": "Rockets",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 5,
-        "position": 5,
+        "conferenceSeed": 6,
+        "position": 6,
         "wins": 1,
         "losses": 0,
         "winPercent": 1,
@@ -459,8 +481,8 @@
         "shortName": "Thunder",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 6,
-        "position": 6,
+        "conferenceSeed": 7,
+        "position": 7,
         "wins": 1,
         "losses": 0,
         "winPercent": 1,
@@ -481,52 +503,8 @@
         "shortName": "Nuggets",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 7,
-        "position": 7,
-        "wins": 0,
-        "losses": 0,
-        "winPercent": 0,
-        "gamesBack": 0.5,
-        "gamesPlayed": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0,
-        "pointDifferential": 0,
-        "streak": "-",
-        "homeRecord": "0-0",
-        "awayRecord": "0-0",
-        "lastTen": null
-      },
-      {
-        "id": "lac",
-        "abbreviation": "LAC",
-        "name": "LA Clippers",
-        "shortName": "Clippers",
-        "conference": "west",
-        "division": null,
         "conferenceSeed": 8,
         "position": 8,
-        "wins": 0,
-        "losses": 0,
-        "winPercent": 0,
-        "gamesBack": 0.5,
-        "gamesPlayed": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0,
-        "pointDifferential": 0,
-        "streak": "-",
-        "homeRecord": "0-0",
-        "awayRecord": "0-0",
-        "lastTen": null
-      },
-      {
-        "id": "sac",
-        "abbreviation": "SAC",
-        "name": "Sacramento Kings",
-        "shortName": "Kings",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 9,
-        "position": 9,
         "wins": 0,
         "losses": 0,
         "winPercent": 0,
@@ -547,8 +525,8 @@
         "shortName": "Pelicans",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 10,
-        "position": 10,
+        "conferenceSeed": 9,
+        "position": 9,
         "wins": 0,
         "losses": 1,
         "winPercent": 0,
@@ -569,8 +547,8 @@
         "shortName": "Spurs",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 11,
-        "position": 11,
+        "conferenceSeed": 10,
+        "position": 10,
         "wins": 0,
         "losses": 1,
         "winPercent": 0,
@@ -591,8 +569,8 @@
         "shortName": "Mavericks",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 12,
-        "position": 12,
+        "conferenceSeed": 11,
+        "position": 11,
         "wins": 0,
         "losses": 1,
         "winPercent": 0,
@@ -613,8 +591,8 @@
         "shortName": "Jazz",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 13,
-        "position": 13,
+        "conferenceSeed": 12,
+        "position": 12,
         "wins": 0,
         "losses": 1,
         "winPercent": 0,
@@ -635,8 +613,8 @@
         "shortName": "Warriors",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 14,
-        "position": 14,
+        "conferenceSeed": 13,
+        "position": 13,
         "wins": 0,
         "losses": 1,
         "winPercent": 0,
@@ -645,6 +623,28 @@
         "pointsFor": 105,
         "pointsAgainst": 127,
         "pointDifferential": -22,
+        "streak": "L1",
+        "homeRecord": "0-0",
+        "awayRecord": "0-1",
+        "lastTen": "0-1"
+      },
+      {
+        "id": "sac",
+        "abbreviation": "SAC",
+        "name": "Sacramento Kings",
+        "shortName": "Kings",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 14,
+        "position": 14,
+        "wins": 0,
+        "losses": 1,
+        "winPercent": 0,
+        "gamesBack": 1,
+        "gamesPlayed": 1,
+        "pointsFor": 96,
+        "pointsAgainst": 121,
+        "pointDifferential": -25,
         "streak": "L1",
         "homeRecord": "0-0",
         "awayRecord": "0-1",
@@ -677,6 +677,24 @@
   "scorers": [
     {
       "rank": 1,
+      "name": "Ty Jerome",
+      "teamId": "mem",
+      "teamAbbreviation": "MEM",
+      "total": 45,
+      "appearances": 1,
+      "perGame": 45
+    },
+    {
+      "rank": 2,
+      "name": "Anthony Edwards",
+      "teamId": "min",
+      "teamAbbreviation": "MIN",
+      "total": 45,
+      "appearances": 1,
+      "perGame": 45
+    },
+    {
+      "rank": 3,
       "name": "Paul George",
       "teamId": "bos",
       "teamAbbreviation": "BOS",
@@ -685,7 +703,43 @@
       "perGame": 38
     },
     {
-      "rank": 2,
+      "rank": 4,
+      "name": "Giannis Antetokounmpo",
+      "teamId": "mia",
+      "teamAbbreviation": "MIA",
+      "total": 35,
+      "appearances": 1,
+      "perGame": 35
+    },
+    {
+      "rank": 5,
+      "name": "Paolo Banchero",
+      "teamId": "orl",
+      "teamAbbreviation": "ORL",
+      "total": 35,
+      "appearances": 1,
+      "perGame": 35
+    },
+    {
+      "rank": 6,
+      "name": "Anthony Davis",
+      "teamId": "wsh",
+      "teamAbbreviation": "WSH",
+      "total": 34,
+      "appearances": 1,
+      "perGame": 34
+    },
+    {
+      "rank": 7,
+      "name": "Julius Randle",
+      "teamId": "bkn",
+      "teamAbbreviation": "BKN",
+      "total": 33,
+      "appearances": 1,
+      "perGame": 33
+    },
+    {
+      "rank": 8,
       "name": "Shai Gilgeous-Alexander",
       "teamId": "okc",
       "teamAbbreviation": "OKC",
@@ -694,81 +748,72 @@
       "perGame": 32
     },
     {
-      "rank": 3,
-      "name": "Tyrese Maxey",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 28,
-      "appearances": 1,
-      "perGame": 28
-    },
-    {
-      "rank": 4,
-      "name": "Stephon Castle",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 24,
-      "appearances": 1,
-      "perGame": 24
-    },
-    {
-      "rank": 5,
-      "name": "Cade Cunningham",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 22,
-      "appearances": 1,
-      "perGame": 22
-    },
-    {
-      "rank": 6,
-      "name": "Jalen Duren",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 22,
-      "appearances": 1,
-      "perGame": 22
-    },
-    {
-      "rank": 7,
-      "name": "Duncan Robinson",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 21,
-      "appearances": 1,
-      "perGame": 21
-    },
-    {
-      "rank": 8,
-      "name": "Jalen Brunson",
-      "teamId": "ny",
-      "teamAbbreviation": "NY",
-      "total": 21,
-      "appearances": 1,
-      "perGame": 21
-    },
-    {
       "rank": 9,
-      "name": "Jared McCain",
-      "teamId": "okc",
-      "teamAbbreviation": "OKC",
-      "total": 20,
+      "name": "Cooper Flagg",
+      "teamId": "dal",
+      "teamAbbreviation": "DAL",
+      "total": 32,
       "appearances": 1,
-      "perGame": 20
+      "perGame": 32
     },
     {
       "rank": 10,
-      "name": "Javonte Green",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 19,
+      "name": "Nickeil Alexander-Walker",
+      "teamId": "atl",
+      "teamAbbreviation": "ATL",
+      "total": 31,
       "appearances": 1,
-      "perGame": 19
+      "perGame": 31
     }
   ],
   "rebounders": [
     {
       "rank": 1,
+      "name": "Domantas Sabonis",
+      "teamId": "sac",
+      "teamAbbreviation": "SAC",
+      "total": 18,
+      "appearances": 1,
+      "perGame": 18
+    },
+    {
+      "rank": 2,
+      "name": "Ivica Zubac",
+      "teamId": "ind",
+      "teamAbbreviation": "IND",
+      "total": 15,
+      "appearances": 1,
+      "perGame": 15
+    },
+    {
+      "rank": 3,
+      "name": "Rudy Gobert",
+      "teamId": "min",
+      "teamAbbreviation": "MIN",
+      "total": 15,
+      "appearances": 1,
+      "perGame": 15
+    },
+    {
+      "rank": 4,
+      "name": "Jalen Johnson",
+      "teamId": "atl",
+      "teamAbbreviation": "ATL",
+      "total": 14,
+      "appearances": 1,
+      "perGame": 14
+    },
+    {
+      "rank": 5,
+      "name": "Yves Missi",
+      "teamId": "no",
+      "teamAbbreviation": "NO",
+      "total": 14,
+      "appearances": 1,
+      "perGame": 14
+    },
+    {
+      "rank": 6,
       "name": "Andre Drummond",
       "teamId": "ny",
       "teamAbbreviation": "NY",
@@ -777,7 +822,7 @@
       "perGame": 14
     },
     {
-      "rank": 2,
+      "rank": 7,
       "name": "Victor Wembanyama",
       "teamId": "sa",
       "teamAbbreviation": "SA",
@@ -786,7 +831,16 @@
       "perGame": 13
     },
     {
-      "rank": 3,
+      "rank": 8,
+      "name": "Anthony Davis",
+      "teamId": "wsh",
+      "teamAbbreviation": "WSH",
+      "total": 12,
+      "appearances": 1,
+      "perGame": 12
+    },
+    {
+      "rank": 9,
       "name": "Karl-Anthony Towns",
       "teamId": "ny",
       "teamAbbreviation": "NY",
@@ -795,72 +849,36 @@
       "perGame": 12
     },
     {
-      "rank": 4,
-      "name": "Joel Embiid",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 11,
-      "appearances": 1,
-      "perGame": 11
-    },
-    {
-      "rank": 5,
-      "name": "Ausar Thompson",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 11,
-      "appearances": 1,
-      "perGame": 11
-    },
-    {
-      "rank": 6,
-      "name": "Jalen Duren",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 9,
-      "appearances": 1,
-      "perGame": 9
-    },
-    {
-      "rank": 7,
-      "name": "LeBron James",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 9,
-      "appearances": 1,
-      "perGame": 9
-    },
-    {
-      "rank": 8,
-      "name": "Jaylen Brown",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 8,
-      "appearances": 1,
-      "perGame": 8
-    },
-    {
-      "rank": 9,
-      "name": "Stephon Castle",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 7,
-      "appearances": 1,
-      "perGame": 7
-    },
-    {
       "rank": 10,
-      "name": "Dylan Harper",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 7,
+      "name": "Naz Reid",
+      "teamId": "cha",
+      "teamAbbreviation": "CHA",
+      "total": 11,
       "appearances": 1,
-      "perGame": 7
+      "perGame": 11
     }
   ],
   "assistLeaders": [
     {
       "rank": 1,
+      "name": "Trae Young",
+      "teamId": "wsh",
+      "teamAbbreviation": "WSH",
+      "total": 13,
+      "appearances": 1,
+      "perGame": 13
+    },
+    {
+      "rank": 2,
+      "name": "Tyrese Haliburton",
+      "teamId": "ind",
+      "teamAbbreviation": "IND",
+      "total": 12,
+      "appearances": 1,
+      "perGame": 12
+    },
+    {
+      "rank": 3,
       "name": "Jayson Tatum",
       "teamId": "bos",
       "teamAbbreviation": "BOS",
@@ -869,7 +887,52 @@
       "perGame": 11
     },
     {
-      "rank": 2,
+      "rank": 4,
+      "name": "Davion Mitchell",
+      "teamId": "mia",
+      "teamAbbreviation": "MIA",
+      "total": 11,
+      "appearances": 1,
+      "perGame": 11
+    },
+    {
+      "rank": 5,
+      "name": "Fred VanVleet",
+      "teamId": "hou",
+      "teamAbbreviation": "HOU",
+      "total": 11,
+      "appearances": 1,
+      "perGame": 11
+    },
+    {
+      "rank": 6,
+      "name": "Paolo Banchero",
+      "teamId": "orl",
+      "teamAbbreviation": "ORL",
+      "total": 10,
+      "appearances": 1,
+      "perGame": 10
+    },
+    {
+      "rank": 7,
+      "name": "Tyler Herro",
+      "teamId": "mil",
+      "teamAbbreviation": "MIL",
+      "total": 9,
+      "appearances": 1,
+      "perGame": 9
+    },
+    {
+      "rank": 8,
+      "name": "Andrew Nembhard",
+      "teamId": "ind",
+      "teamAbbreviation": "IND",
+      "total": 9,
+      "appearances": 1,
+      "perGame": 9
+    },
+    {
+      "rank": 9,
       "name": "Cade Cunningham",
       "teamId": "det",
       "teamAbbreviation": "DET",
@@ -878,76 +941,13 @@
       "perGame": 8
     },
     {
-      "rank": 3,
+      "rank": 10,
       "name": "Derrick White",
       "teamId": "bos",
       "teamAbbreviation": "BOS",
       "total": 8,
       "appearances": 1,
       "perGame": 8
-    },
-    {
-      "rank": 4,
-      "name": "LeBron James",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 7,
-      "appearances": 1,
-      "perGame": 7
-    },
-    {
-      "rank": 5,
-      "name": "De'Aaron Fox",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 7,
-      "appearances": 1,
-      "perGame": 7
-    },
-    {
-      "rank": 6,
-      "name": "Jaylen Brown",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 6,
-      "appearances": 1,
-      "perGame": 6
-    },
-    {
-      "rank": 7,
-      "name": "Joel Embiid",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 6,
-      "appearances": 1,
-      "perGame": 6
-    },
-    {
-      "rank": 8,
-      "name": "Ajay Mitchell",
-      "teamId": "okc",
-      "teamAbbreviation": "OKC",
-      "total": 6,
-      "appearances": 1,
-      "perGame": 6
-    },
-    {
-      "rank": 9,
-      "name": "Tyrese Maxey",
-      "teamId": "phi",
-      "teamAbbreviation": "PHI",
-      "total": 5,
-      "appearances": 1,
-      "perGame": 5
-    },
-    {
-      "rank": 10,
-      "name": "Dylan Harper",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 5,
-      "appearances": 1,
-      "perGame": 5
     }
   ],
   "recentFixtures": [
@@ -1959,7 +1959,7 @@
         "pointsFor": 106,
         "pointsAgainst": 100
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "mil": {
       "team": {
@@ -2143,7 +2143,7 @@
         "pointsFor": 116,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "chi": {
       "team": {
@@ -2327,7 +2327,7 @@
         "pointsFor": 92,
         "pointsAgainst": 135
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "cle": {
       "team": {
@@ -2482,7 +2482,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "bos": {
       "team": {
@@ -2666,7 +2666,7 @@
         "pointsFor": 113,
         "pointsAgainst": 121
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "lac": {
       "team": {
@@ -2850,7 +2850,7 @@
         "pointsFor": 121,
         "pointsAgainst": 96
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "mem": {
       "team": {
@@ -3034,7 +3034,7 @@
         "pointsFor": 123,
         "pointsAgainst": 103
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "atl": {
       "team": {
@@ -3218,7 +3218,7 @@
         "pointsFor": 132,
         "pointsAgainst": 125
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "mia": {
       "team": {
@@ -3402,7 +3402,7 @@
         "pointsFor": 106,
         "pointsAgainst": 131
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "cha": {
       "team": {
@@ -3586,7 +3586,7 @@
         "pointsFor": 110,
         "pointsAgainst": 103
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "utah": {
       "team": {
@@ -3770,7 +3770,7 @@
         "pointsFor": 103,
         "pointsAgainst": 123
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "sac": {
       "team": {
@@ -3954,7 +3954,7 @@
         "pointsFor": 96,
         "pointsAgainst": 121
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "ny": {
       "team": {
@@ -4138,7 +4138,7 @@
         "pointsFor": 100,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "lal": {
       "team": {
@@ -4322,7 +4322,7 @@
         "pointsFor": 127,
         "pointsAgainst": 105
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "orl": {
       "team": {
@@ -4506,7 +4506,7 @@
         "pointsFor": 125,
         "pointsAgainst": 132
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "dal": {
       "team": {
@@ -4690,7 +4690,7 @@
         "pointsFor": 110,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "bkn": {
       "team": {
@@ -4874,7 +4874,7 @@
         "pointsFor": 103,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "den": {
       "team": {
@@ -5029,7 +5029,7 @@
         "pointsFor": 0,
         "pointsAgainst": 0
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "ind": {
       "team": {
@@ -5213,7 +5213,7 @@
         "pointsFor": 123,
         "pointsAgainst": 120
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "no": {
       "team": {
@@ -5397,7 +5397,7 @@
         "pointsFor": 120,
         "pointsAgainst": 123
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "det": {
       "team": {
@@ -5581,7 +5581,7 @@
         "pointsFor": 121,
         "pointsAgainst": 113
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "tor": {
       "team": {
@@ -5765,7 +5765,7 @@
         "pointsFor": 135,
         "pointsAgainst": 92
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "hou": {
       "team": {
@@ -5949,7 +5949,7 @@
         "pointsFor": 128,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "sa": {
       "team": {
@@ -6133,7 +6133,7 @@
         "pointsFor": 104,
         "pointsAgainst": 116
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "phx": {
       "team": {
@@ -6317,7 +6317,7 @@
         "pointsFor": 83,
         "pointsAgainst": 124
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "okc": {
       "team": {
@@ -6501,7 +6501,7 @@
         "pointsFor": 116,
         "pointsAgainst": 104
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "min": {
       "team": {
@@ -6685,7 +6685,7 @@
         "pointsFor": 131,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "por": {
       "team": {
@@ -6869,7 +6869,7 @@
         "pointsFor": 124,
         "pointsAgainst": 83
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "gs": {
       "team": {
@@ -7053,7 +7053,7 @@
         "pointsFor": 105,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     },
     "wsh": {
       "team": {
@@ -7237,7 +7237,7 @@
         "pointsFor": 128,
         "pointsAgainst": 116
       },
-      "generatedAt": "2026-10-22T05:02:04.188Z"
+      "generatedAt": "2026-10-22T13:54:23.849Z"
     }
   }
 }
