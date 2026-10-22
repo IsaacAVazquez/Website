@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-22
+
+- Before You Buy rework, back room easter eggs, and draft event fix ([#635](https://github.com/IsaacAVazquez/Website/pull/635)).
+
+---
+
 ## 2026-10-21
 
 - Track résumé downloads, contact clicks, and tool use in GA4 ([#631](https://github.com/IsaacAVazquez/Website/pull/631)).
