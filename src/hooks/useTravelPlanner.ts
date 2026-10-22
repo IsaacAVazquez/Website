@@ -23,6 +23,7 @@ interface NewTripInput {
 }
 
 export interface ActivityDraft {
+  cost?: number | null;
   date: string;
   time: string;
   endTime: string;

@@ -1,3 +1,4 @@
+import { normalizeActivityCost } from "./travelExtras";
 import {
   getBrowserStorageSnapshot,
   writeBrowserStorageString,
@@ -248,6 +249,7 @@ function sanitizeActivity(input: unknown): TripActivity | null {
     location: clampString(input.location, 140),
     category,
     notes: clampString(input.notes, 500),
+    cost: normalizeActivityCost(input.cost),
     completed: input.completed === true,
   };
 }
@@ -377,6 +379,7 @@ export function createActivity(input: Omit<TripActivity, "id" | "completed">): T
     location: clampString(input.location, 140),
     category: input.category,
     notes: clampString(input.notes, 500),
+    cost: normalizeActivityCost(input.cost),
     completed: false,
   };
 }

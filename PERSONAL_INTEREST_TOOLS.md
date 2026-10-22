@@ -98,7 +98,7 @@ receives changes from other tabs and other hook instances in the same tab.
 - Files: `src/lib/recipes.ts` (types, ingredient normalizer, match scoring),
   catalog `src/data/recipesSnapshot.ts`; client
   `src/app/recipe-finder/recipe-finder-client.tsx`.
-- Persisted: the user's pantry only, under `recipe-finder:pantry:v1`. The recipe
+- Persisted: the pantry under `recipe-finder:pantry:v1`, and saved recipe IDs and dated meals under `recipe-finder-plan-v1`. The recipe
   corpus is curated and read-only; the client scores recipes against the pantry
   (staple pantry items don't count against a "missing ingredients" score).
 
@@ -143,3 +143,11 @@ receives changes from other tabs and other hook instances in the same tab.
 - **Privacy:** nothing here leaves the browser. Keep it that way — don't add an
   API or analytics call that ships a user's trips/cellar/log off-device without a
   deliberate decision.
+
+## Changes on October 22, 2026
+
+Travel activities now carry an optional planned cost in US dollars. A missing cost stays unknown when an older trip is restored, and zero means free. The spending summary counts priced and unpriced stops separately. Calendar export downloads an RFC 5545 file with the times as entered and no time zone. Untimed stops export as all-day events.
+
+Recipe Finder saves favorite recipe IDs and dated meals separately from the pantry. Its shopping list groups missing ingredients for the selected seven calendar dates, keeps quantities per meal, and excludes pantry ingredients and recipe staples. The catalog's ingredient text does not support reliable conversion between units.
+
+The other saved project workflows and their storage contracts are in `docs/PROJECT_TOOL_WORKFLOWS.md`.

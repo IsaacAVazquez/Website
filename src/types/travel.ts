@@ -9,6 +9,8 @@ export type ActivityCategory =
   | "other";
 
 export interface TripActivity {
+  /** Planned USD cost; absent or null means not priced yet. */
+  cost?: number | null;
   id: string;
   date: string;
   time: string;

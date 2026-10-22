@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { formatUpdatedAt } from "@/lib/date-formatters";
 import { ChevronDown, CircleAlert, ShieldCheck, TriangleAlert } from "lucide-react";
@@ -19,6 +19,9 @@ import {
 } from "./bay-area-transit-state";
 import { TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { COMMUTE_KEY, parseCommute, commuteDepartures } from "./commute";
+import { CommutePanel } from "./CommutePanel";
 import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface BayAreaTransitClientProps {
@@ -161,6 +164,30 @@ export function BayAreaTransitClient({
   const system = summary.system;
   const selectedStation =
     summary.stations.find((station) => station.id === selectedStationId) ?? null;
+  const parsePreferences = useCallback(
+    (raw: string) =>
+      parseCommute(
+        raw,
+        summary.stations.map((station) => station.id),
+      ),
+    [summary.stations],
+  );
+  const {
+    value: commute,
+    update: updateCommute,
+    status: commuteStatus,
+  } = useBrowserRecord(COMMUTE_KEY, parsePreferences);
+  const [commuteOpen, setCommuteOpen] = useState(false);
+  const displayedBoard =
+    stationBoard && commuteOpen
+      ? {
+          ...stationBoard,
+          departures: commuteDepartures(
+            stationBoard.departures,
+            commute.direction,
+          ),
+        }
+      : stationBoard;
   const staleSections = Object.entries(summary.sectionStatus ?? {})
     .filter(([, status]) => status !== "fresh")
     .map(([section]) => section);
@@ -416,13 +443,24 @@ export function BayAreaTransitClient({
           )}
         </section>
 
+        <CommutePanel
+          value={commute}
+          update={updateCommute}
+          selected={selectedStation}
+          summary={summary}
+          onSelect={handleStationChange}
+          open={commuteOpen}
+          onOpen={setCommuteOpen}
+          memoryOnly={commuteStatus === "memory-only"}
+        />
         <TransitSignature
+          directionFilter={commuteOpen ? commute.direction : ""}
           departuresStatus={summary.sectionStatus?.departures}
           advisoryStations={advisoryStations}
           stations={summary.stations}
           lines={summary.lines}
           selectedStation={selectedStation}
-          stationBoard={stationBoard}
+          stationBoard={displayedBoard}
           isLoading={isStationBoardLoading}
           error={stationBoardError}
           onSelect={handleStationChange}

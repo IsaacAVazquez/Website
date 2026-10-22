@@ -36,8 +36,9 @@ import {
   type IntakeStep,
 } from "./enablement-state";
 import "./enablement.css";
+import { UserTeams } from "./UserTeams";
 
-type WorkspaceView = "program" | "team";
+type WorkspaceView = "program" | "team" | "saved";
 
 /** A label above its value; the label comes first so a reader meets the name before the number. */
 function MetricCard({
@@ -71,6 +72,7 @@ function WorkspaceTabs({
         [
           ["program", "Program dashboard"],
           ["team", "Onboard a team"],
+          ["saved", "Your teams"],
         ] as const
       ).map(([id, label]) => (
         <button key={id} type="button" aria-pressed={view === id} onClick={() => onChange(id)}>
@@ -483,9 +485,9 @@ function RecommendationCard({
                   : "var(--c97-negative)",
           }}
           role="img"
-          aria-label={`${result.score} percent confidence`}
+          aria-label={`${result.score} fit score out of 100`}
         >
-          {result.score}%
+          {result.score}/100
         </div>
       </div>
       <p className="ea-body">{result.toolchain.summary}</p>
@@ -594,9 +596,10 @@ function RecommendationSection({
             </p>
             <h3 className="ea-h3">I do not have enough confidence to recommend this setup.</h3>
             <p className="ea-body">
-              The best catalog match scored {recommendation.primary.score}%, below the{" "}
-              {recommendation.threshold}% threshold. I would route the intake to the central team
-              instead of making the missing language or CI integration sound supported.
+              The best catalog match scored {recommendation.primary.score}/100,
+              below the {recommendation.threshold}/100 threshold. I would route
+              the intake to the central team instead of making the missing
+              language or CI integration sound supported.
             </p>
           </div>
         ) : null}
@@ -934,7 +937,11 @@ export function EnablementAssistantClient() {
             <h1 id="ea-title" className="ea-h1">Automation Enablement Assistant</h1>
             <WorkspaceTabs view={view} onChange={changeView} />
             <p className="ea-small ea-title-status">
-              {view === "program" ? "Portfolio view · 12 seeded teams" : "Team view · 3 intake steps"}
+              {view === "program"
+                ? "Portfolio view · 12 seeded teams"
+                : view === "saved"
+                  ? "Your saved team records"
+                  : "Team view · 3 intake steps"}
             </p>
           </div>
           <p className="ea-lede">
@@ -949,7 +956,9 @@ export function EnablementAssistantClient() {
         </section>
 
         <div id="workspace" className="ea-workspace">
-          {view === "program" ? (
+          {view === "saved" ? (
+            <UserTeams />
+          ) : view === "program" ? (
             <ProgramDashboard onStart={() => changeView("team")} />
           ) : (
             <TeamOnboarding />

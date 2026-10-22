@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
   type RefObject,
+  type ReactNode,
 } from "react";
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
 import { RECIPES } from "@/data/recipesSnapshot";
@@ -24,6 +25,9 @@ import {
 } from "@/lib/recipes";
 import { indexCardLines } from "./indexCard";
 import "./recipe-finder.css";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { parseRecipePlan, RECIPE_PLAN_KEY } from "@/lib/recipePlan";
+import { RecipeMealPlan } from "./RecipeMealPlan";
 
 const PANTRY_STORAGE_KEY = "recipe-finder:pantry:v1";
 
@@ -169,6 +173,24 @@ export function RecipeFinderClient() {
     return baseMatches;
   }, [baseMatches, view]);
 
+  const {
+    value: plan,
+    update: updatePlan,
+    status: planStatus,
+  } = useBrowserRecord(RECIPE_PLAN_KEY, parseRecipePlan);
+  const [savedOnly, setSavedOnly] = useState(false);
+  const [plannedRecipeId, setPlannedRecipeId] = useState(RECIPES[0].id);
+  function toggleSaved(id: string) {
+    updatePlan((latest) => ({
+      ...latest,
+      favorites: latest.favorites.includes(id)
+        ? latest.favorites.filter((entry) => entry !== id)
+        : [...latest.favorites, id],
+    }));
+  }
+  const displayedMatches = savedOnly
+    ? visibleMatches.filter((match) => plan.favorites.includes(match.recipe.id))
+    : visibleMatches;
   const totalRecipes = RECIPES.length;
 
   function addIngredient(rawValue: string) {
@@ -329,8 +351,13 @@ export function RecipeFinderClient() {
               </div>
             </div>
 
-            <p className="rf-count" role="status" aria-live="polite">
-              {visibleMatches.length} of {totalRecipes} recipes
+            <p
+              className="rf-count"
+              role="status"
+              aria-label="Recipe results"
+              aria-live="polite"
+            >
+              {displayedMatches.length} of {totalRecipes} recipes
               {hasPantry ? (
                 <>
                   , ranked by how much of each recipe your pantry covers
@@ -340,11 +367,36 @@ export function RecipeFinderClient() {
               ) : null}
             </p>
 
+            <label className="rf-saved-filter">
+              <input
+                type="checkbox"
+                checked={savedOnly}
+                onChange={(event) => setSavedOnly(event.target.checked)}
+              />{" "}
+              Saved recipes only ({plan.favorites.length})
+            </label>
+            {planStatus === "memory-only" ? (
+              <p role="status">
+                Browser storage is unavailable. Your saved recipes and meals
+                only last in this tab.
+              </p>
+            ) : null}
             <ResultsGrid
-              matches={visibleMatches}
+              favorites={plan.favorites}
+              onSave={toggleSaved}
+              onPlan={(id) => {
+                setPlannedRecipeId(id);
+                document
+                  .getElementById("meal-plan")
+                  ?.scrollIntoView({ behavior: "instant" });
+              }}
+              matches={displayedMatches}
               pantry={pantry}
               pantryIsEmpty={hydrated && !hasPantry && view === "pantry"}
-              onReset={resetFilters}
+              onReset={() => {
+                resetFilters();
+                setSavedOnly(false);
+              }}
               openRecipeId={openRecipeId}
               onToggleRecipe={(id) =>
                 setOpenRecipeId((current) => (current === id ? null : id))
@@ -352,6 +404,13 @@ export function RecipeFinderClient() {
             />
           </section>
         </div>
+        <RecipeMealPlan
+          plan={plan}
+          update={updatePlan}
+          pantry={pantry}
+          selectedId={plannedRecipeId}
+          onSelect={setPlannedRecipeId}
+        />
       </div>
     </div>
   );
@@ -472,6 +531,9 @@ function PantryShelf({
 }
 
 interface ResultsGridProps {
+  favorites: string[];
+  onSave: (id: string) => void;
+  onPlan: (id: string) => void;
   matches: RecipeMatch[];
   pantry: string[];
   /** The pantry view with nothing on the shelf, which needs a different prompt than a filter miss. */
@@ -481,7 +543,17 @@ interface ResultsGridProps {
   onToggleRecipe: (id: string) => void;
 }
 
-function ResultsGrid({ matches, pantry, pantryIsEmpty, onReset, openRecipeId, onToggleRecipe }: ResultsGridProps) {
+function ResultsGrid({
+  favorites,
+  onSave,
+  onPlan,
+  matches,
+  pantry,
+  pantryIsEmpty,
+  onReset,
+  openRecipeId,
+  onToggleRecipe,
+}: ResultsGridProps) {
   if (matches.length === 0) {
     return (
       <div className="rf-empty">
@@ -515,6 +587,27 @@ function ResultsGrid({ matches, pantry, pantryIsEmpty, onReset, openRecipeId, on
             recipe={match.recipe}
             pantry={pantry}
             isOpen={openRecipeId === match.recipe.id}
+            actions={
+              <div className="rf-card-actions">
+                <button
+                  type="button"
+                  className="rf-plan-button"
+                  aria-pressed={favorites.includes(match.recipe.id)}
+                  aria-label={`${favorites.includes(match.recipe.id) ? "Unsave" : "Save"} ${match.recipe.title}`}
+                  onClick={() => onSave(match.recipe.id)}
+                >
+                  {favorites.includes(match.recipe.id) ? "Saved" : "Save recipe"}
+                </button>
+                <button
+                  type="button"
+                  className="rf-plan-button"
+                  onClick={() => onPlan(match.recipe.id)}
+                  aria-label={`Plan ${match.recipe.title}`}
+                >
+                  Plan meal
+                </button>
+              </div>
+            }
             onToggleSteps={() => onToggleRecipe(match.recipe.id)}
           />
         </li>
@@ -528,6 +621,7 @@ interface RecipeIndexCardProps {
   pantry: string[];
   isOpen: boolean;
   onToggleSteps: () => void;
+  actions: ReactNode;
 }
 
 /**
@@ -536,7 +630,13 @@ interface RecipeIndexCardProps {
  * short list. Selecting one opens its ingredient list, which ticks off what
  * the pantry already covers, and its steps on the same card.
  */
-function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexCardProps) {
+function RecipeIndexCard({
+  recipe,
+  pantry,
+  isOpen,
+  onToggleSteps,
+  actions,
+}: RecipeIndexCardProps) {
   const card = useMemo(() => indexCardLines(recipe, pantry), [recipe, pantry]);
   const detailId = `recipe-detail-${recipe.id}`;
 
@@ -616,6 +716,7 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
           </div>
         </div>
       ) : null}
+      {actions}
     </article>
   );
 }

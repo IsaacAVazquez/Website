@@ -790,3 +790,14 @@ button.tp-toggle:hover {
     break-inside: avoid;
   }
 }
+
+
+.tp-costs {
+  display: grid;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-2);
+  border-block: 1px solid var(--tp-rule);
+}
+.tp-costs .c97-btn-ghost {
+  justify-self: start;
+}

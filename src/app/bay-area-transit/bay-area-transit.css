@@ -683,3 +683,47 @@
     transition: transform 160ms ease;
   }
 }
+
+.bt-commute {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  display: grid;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-2);
+  border-block: 1px solid var(--bt-rule);
+}
+.bt-commute-actions,
+.bt-commute-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--c97-sp-1);
+}
+.bt-commute-fields label {
+  display: grid;
+  gap: var(--c97-sp-1);
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.bt-commute :where(button, select) {
+  min-height: 44px;
+  max-width: 100%;
+  background: var(--c97-field);
+  color: var(--bt-ink);
+  border: 1px solid var(--bt-rule);
+  padding: var(--c97-sp-1);
+}
+.bt-commute-toggle {
+  display: flex;
+  gap: var(--c97-sp-1);
+  align-items: center;
+  min-height: 44px;
+}
+.bt-commute-toggle input {
+  min-height: 44px;
+}
+
+.bt-commute select {
+  width: 100%;
+  min-width: 0;
+}

@@ -487,3 +487,50 @@
     print-color-adjust: exact;
   }
 }
+
+
+.dl-saved {
+  display: grid;
+  gap: var(--c97-sp-2);
+  border-top: 1px solid var(--dl-rule);
+  padding-top: var(--c97-sp-3);
+}
+.dl-save-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--c97-sp-2);
+}
+.dl-save-form label {
+  display: grid;
+  gap: var(--c97-sp-1);
+  max-width: 100%;
+}
+.dl-save-form input {
+  min-height: 44px;
+  max-width: 100%;
+  background: var(--dl-field);
+  color: var(--dl-ink);
+  border: 1px solid var(--dl-rule);
+  padding: var(--c97-sp-1);
+}
+.dl-compare {
+  overflow-x: auto;
+}
+.dl-compare table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+.dl-compare :where(th, td) {
+  text-align: left;
+  border-bottom: 1px solid var(--dl-rule);
+  padding: var(--c97-sp-1);
+  overflow-wrap: anywhere;
+}
+.dl-compare th:first-child {
+  max-width: 180px;
+}
+.dl-saved ul {
+  padding-left: var(--c97-sp-3);
+}

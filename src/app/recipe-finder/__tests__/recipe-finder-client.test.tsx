@@ -32,9 +32,13 @@ describe("RecipeFinderClient", () => {
     render(<RecipeFinderClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: "Recipe Finder" })).toBeVisible();
-    expect(screen.getByRole("button", { name: /all recipes/i, pressed: true })).toBeVisible();
+    expect(
+      screen.getByRole("button", { name: /all recipes/i, pressed: true }),
+    ).toBeVisible();
     expect(screen.getByLabelText("Matching recipes")).toBeVisible();
-    expect(screen.getByRole("status")).toHaveTextContent(/^\d+ of \d+ recipes$/);
+    expect(
+      screen.getByRole("status", { name: "Recipe results" }),
+    ).toHaveTextContent(/^\d+ of \d+ recipes$/);
   });
 
   it("adds, persists, removes, and clears pantry ingredients", () => {
@@ -175,7 +179,11 @@ describe("RecipeFinderClient", () => {
 
     const chip = screen.getByRole("button", { name: /suggested by pantry/i });
     fireEvent.click(chip);
-    const listed = Number(screen.getByRole("status").textContent!.match(/^\d+/)![0]);
+    const listed = Number(
+      screen
+        .getByRole("status", { name: "Recipe results" })
+        .textContent!.match(/^\d+/)![0],
+    );
     expect(listed).toBeGreaterThan(0);
     expect(within(screen.getByLabelText("Matching recipes")).getAllByRole("article")).toHaveLength(listed);
     expect(chip).toHaveTextContent(`(${listed})`);
@@ -185,15 +193,17 @@ describe("RecipeFinderClient", () => {
     window.localStorage.setItem(PANTRY_KEY, JSON.stringify(["egg"]));
     render(<RecipeFinderClient />);
 
-    expect(screen.getByRole("status")).toHaveTextContent(
-      /^\d+ of \d+ recipes, ranked by how much of each recipe your pantry covers/
+    expect(
+      screen.getByRole("status", { name: "Recipe results" }),
+    ).toHaveTextContent(
+      /^\d+ of \d+ recipes, ranked by how much of each recipe your pantry covers/,
     );
   });
 
   it("announces the pantry count when an ingredient is added or removed", () => {
     window.localStorage.setItem(PANTRY_KEY, JSON.stringify(["egg"]));
     render(<RecipeFinderClient />);
-    const status = screen.getByRole("status");
+    const status = screen.getByRole("status", { name: "Recipe results" });
     expect(status).toHaveTextContent(/, 1 in your pantry$/);
 
     fireEvent.click(screen.getByRole("button", { name: /^\+ tomato$/i }));

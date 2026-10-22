@@ -43,6 +43,8 @@ AI-oriented technical references:
 
 Subsystem references (current):
 
+- `PROJECT_TOOL_WORKFLOWS.md` - saved decisions, meal planning, trip costs and calendar export, transit commutes, own team records, and payment channel comparisons
+
 - `../SNAPSHOT_DRIVEN_DASHBOARDS.md` — shared snapshot-driven dashboard architecture
 - `../PERSONAL_INTEREST_TOOLS.md` — browser-persisted localStorage tools
 - `../RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine (`src/lib/retirement/`)

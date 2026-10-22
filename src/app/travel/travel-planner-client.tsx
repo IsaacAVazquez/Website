@@ -46,6 +46,8 @@ import { daysBetween } from "@/lib/date-formatters";
 import { boardingPass, itineraryColumns, timelineTicks, type ItineraryColumn, type TimelineTick } from "./itinerary";
 import type { ActivityCategory, JournalEntry, Trip, TripActivity } from "@/types/travel";
 import "./travel.css";
+import { activityBudget, tripCalendar } from "@/lib/travelExtras";
+import { downloadFile } from "@/lib/downloadFile";
 
 const CATEGORY_ICON: Record<ActivityCategory, LucideIcon> = {
   transit: Train,
@@ -91,7 +93,16 @@ const SAMPLE_DAY: { time: string; title: string; category: ActivityCategory; pla
 ];
 
 function emptyActivityDraft(date: string): ActivityDraft {
-  return { date, time: "", endTime: "", title: "", location: "", category: "activity", notes: "" };
+  return {
+    date,
+    time: "",
+    endTime: "",
+    title: "",
+    location: "",
+    category: "activity",
+    notes: "",
+    cost: null,
+  };
 }
 
 function emptyJournalDraft(date: string): JournalDraft {
@@ -251,6 +262,7 @@ export function TravelPlannerClient() {
         location: activity.location,
         category: activity.category,
         notes: activity.notes,
+        cost: activity.cost ?? null,
       },
       activity.id,
     );
@@ -390,6 +402,10 @@ export function TravelPlannerClient() {
     </>
   );
 
+  const plannedCosts = activeTrip
+    ? activityBudget(activeTrip.activities)
+    : null;
+
   const stopForm = (
     <div className="tp-stop-form">
       <p className="c97-kicker">{editingActivityId ? "Edit stop" : "Add stop"}</p>
@@ -471,6 +487,27 @@ export function TravelPlannerClient() {
             The end time has to come after the start. Overnight stops need one entry per day.
           </p>
         ) : null}
+        <label className="tp-span-2">
+          <span className="c97-kicker">Planned cost (USD)</span>
+          <input
+            className="c97-field"
+            type="number"
+            min="0"
+            max="10000000"
+            step="0.01"
+            value={activityDraft.cost ?? ""}
+            onChange={(event) =>
+              setActivityDraft((draft) => ({
+                ...draft,
+                cost:
+                  event.target.value === "" ? null : Number(event.target.value),
+              }))
+            }
+          />
+          <span className="tp-muted">
+            Leave blank for unknown, or enter 0 for a free stop.
+          </span>
+        </label>
         <label className="tp-span-2">
           <span className="c97-kicker">Location</span>
           <input
@@ -628,6 +665,40 @@ export function TravelPlannerClient() {
               </form>
             ) : null}
 
+            {plannedCosts ? (
+              <section className="tp-costs" aria-label="Trip spending plan">
+                <h2>Planned spending</h2>
+                <p>
+                  {formatBudget(plannedCosts.total)} across{" "}
+                  {plannedCosts.priced} priced {plannedCosts.priced === 1 ? "stop" : "stops"}. {plannedCosts.unpriced}{" "}
+                  {plannedCosts.unpriced === 1 ? "stop still needs" : "stops still need"} a cost.
+                </p>
+                <p>
+                  {activeTrip.budget > 0
+                    ? `${formatBudget(Math.abs(activeTrip.budget - plannedCosts.total))} ${plannedCosts.total > activeTrip.budget ? "over" : "remaining in"} your ${formatBudget(activeTrip.budget)} budget.`
+                    : "Set a trip budget in Trip details to compare your planned spending."}
+                </p>
+                <button
+                  type="button"
+                  className="c97-btn-ghost"
+                  disabled={!activeTrip.activities.length}
+                  onClick={() =>
+                    downloadFile(
+                      "trip-itinerary.ics",
+                      tripCalendar(activeTrip),
+                      "text/calendar;charset=utf-8",
+                    )
+                  }
+                >
+                  Download calendar
+                </button>
+                <p className="tp-muted">
+                  The calendar uses times as entered, with no time zone. Choose
+                  the destination time zone when importing. Untimed stops are
+                  all-day events.
+                </p>
+              </section>
+            ) : null}
             <details className="tp-manage">
               <summary>Trip details and all trips ({trips.length})</summary>
               <div className="tp-manage-body">
@@ -1030,6 +1101,7 @@ function DayList({
                     <Icon className="h-3.5 w-3.5" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category] }} />
                     <span>{ACTIVITY_CATEGORY_LABELS[activity.category]}</span>
                     {activity.location ? <span>· {activity.location}</span> : null}
+                    <span>· {activity.cost == null ? "Cost unknown" : formatBudget(activity.cost)}</span>
                   </span>
                   {activity.notes ? <span className="tp-stop-notes">{activity.notes}</span> : null}
                 </span>
