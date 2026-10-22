@@ -36,8 +36,9 @@ import {
   type IntakeStep,
 } from "./enablement-state";
 import "./enablement.css";
+import { UserTeams } from "./UserTeams";
 
-type WorkspaceView = "program" | "team";
+type WorkspaceView = "program" | "team" | "saved";
 
 /** A label above its value; the label comes first so a reader meets the name before the number. */
 function MetricCard({
@@ -71,6 +72,7 @@ function WorkspaceTabs({
         [
           ["program", "Program dashboard"],
           ["team", "Onboard a team"],
+          ["saved", "Your teams"],
         ] as const
       ).map(([id, label]) => (
         <button key={id} type="button" aria-pressed={view === id} onClick={() => onChange(id)}>
@@ -105,8 +107,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
               See where the standard is holding
             </h2>
             <p className="ea-lede">
-              This is twelve simulated teams on one standard, with the stack each one runs, the
-              setup questions it resolves on its own, and where it has drifted.
+              This is twelve simulated teams on one standard, with the stack
+              each one runs, the setup questions it resolves on its own, and
+              where it has drifted.
             </p>
           </div>
           <button type="button" className="c97-btn" onClick={onStart}>
@@ -183,8 +186,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
             </table>
           </div>
           <p className="ea-small">
-            This dashboard uses invented, committed seed data for a portfolio demo. It does not
-            describe a real organization or production program.
+            This dashboard uses invented, committed seed data for a portfolio
+            demo. It does not describe a real organization or production
+            program.
           </p>
         </div>
       </section>
@@ -195,14 +199,16 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
             The failure log becomes the documentation roadmap.
           </h2>
           <p className="ea-lede">
-            Every low-confidence answer is a trace of where the platform failed to transfer
-            knowledge, so ranked across teams the traces say which guide or integration to write
-            next.
+            Every low-confidence answer is a trace of where the platform failed
+            to transfer knowledge, so ranked across teams the traces say which
+            guide or integration to write next.
           </p>
           <ol className="ea-gaps">
             {DOCUMENTATION_GAPS.map((gap, index) => (
               <li key={gap.question}>
-                <span className="ea-rank">{String(index + 1).padStart(2, "0")}</span>
+                <span className="ea-rank">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <div className="ea-gap-body">
                   <p className="ea-gap-question">{gap.question}</p>
                   <p className="ea-small">
@@ -230,8 +236,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
             Where teams are leaving the shared path
           </h2>
           <p className="ea-lede">
-            A team can use the recommended framework and still keep the reporting and maintenance
-            differences that made the portfolio hard to support.
+            A team can use the recommended framework and still keep the
+            reporting and maintenance differences that made the portfolio hard
+            to support.
           </p>
           <ul className="ea-drift">
             {driftTeams.map((team) => (
@@ -244,7 +251,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
                 </div>
                 <p className="ea-small">{LABELS.surfaces[team.surface]}</p>
                 <p className="ea-body">{team.driftReason}</p>
-                <p className="ea-small ea-card-foot">Current stack · {team.toolchain}</p>
+                <p className="ea-small ea-card-foot">
+                  Current stack · {team.toolchain}
+                </p>
               </li>
             ))}
           </ul>
@@ -340,8 +349,8 @@ function IntakeForm({
       <fieldset className="ea-fieldset">
         <legend>Which test layers does the team need?</legend>
         <p className="ea-small">
-          Pick every layer the standard needs to cover. The score drops when a stack leaves a
-          selected layer unsupported.
+          Pick every layer the standard needs to cover. The score drops when a
+          stack leaves a selected layer unsupported.
         </p>
         {TEST_LAYER_OPTIONS.map((option) => {
           const checked = intake.layers.includes(option.value);
@@ -483,9 +492,9 @@ function RecommendationCard({
                   : "var(--c97-negative)",
           }}
           role="img"
-          aria-label={`${result.score} percent confidence`}
+          aria-label={`${result.score} fit score out of 100`}
         >
-          {result.score}%
+          {result.score}/100
         </div>
       </div>
       <p className="ea-body">{result.toolchain.summary}</p>
@@ -510,11 +519,7 @@ function RecommendationCard({
   );
 }
 
-function RecommendationSection({
-  intake,
-}: {
-  intake: TeamIntake;
-}) {
+function RecommendationSection({ intake }: { intake: TeamIntake }) {
   const recommendation = useMemo(() => recommendToolchains(intake), [intake]);
   const plan = useMemo(
     () => generateOnboardingPlan(intake, recommendation),
@@ -582,9 +587,9 @@ function RecommendationSection({
           A recommendation you can inspect
         </h2>
         <p className="ea-lede">
-          The score is a committed set of readable rules, so changing one answer in the intake
-          moves the recommendation through the surface, language, coverage, CI fit, migration
-          work, or ownership score.
+          The score is a committed set of readable rules, so changing one answer
+          in the intake moves the recommendation through the surface, language,
+          coverage, CI fit, migration work, or ownership score.
         </p>
 
         {recommendation.shouldEscalate ? (
@@ -592,11 +597,14 @@ function RecommendationSection({
             <p className="ea-label" style={{ color: "var(--c97-negative)" }}>
               Human review needed
             </p>
-            <h3 className="ea-h3">I do not have enough confidence to recommend this setup.</h3>
+            <h3 className="ea-h3">
+              I do not have enough confidence to recommend this setup.
+            </h3>
             <p className="ea-body">
-              The best catalog match scored {recommendation.primary.score}%, below the{" "}
-              {recommendation.threshold}% threshold. I would route the intake to the central team
-              instead of making the missing language or CI integration sound supported.
+              The best catalog match scored {recommendation.primary.score}/100,
+              below the {recommendation.threshold}/100 threshold. I would route
+              the intake to the central team instead of making the missing
+              language or CI integration sound supported.
             </p>
           </div>
         ) : null}
@@ -625,8 +633,8 @@ function RecommendationSection({
                 {intake.maturity === "none" || intake.maturity === "manual"
                   ? "first setup"
                   : "parallel migration"}{" "}
-                plan, with an owner, effort, prerequisite, and copyable configuration in every
-                step.
+                plan, with an owner, effort, prerequisite, and copyable
+                configuration in every step.
               </p>
             </div>
             <button type="button" className="c97-btn-ghost" onClick={() => copyText(planText, "plan")}>
@@ -640,7 +648,9 @@ function RecommendationSection({
           <ol className="ea-plan">
             {plan.map((step) => (
               <li key={step.id}>
-                <span className="ea-rank">{String(step.order).padStart(2, "0")}</span>
+                <span className="ea-rank">
+                  {String(step.order).padStart(2, "0")}
+                </span>
                 <div>
                   <h3 className="ea-h3">{step.title}</h3>
                   <p className="ea-body">{step.description}</p>
@@ -673,8 +683,9 @@ function RecommendationSection({
           Ask a setup or integration question
         </h2>
         <p className="ea-lede">
-          The search retrieves from a small committed knowledge base, reports its confidence, and
-          gives up when the question does not match the material it has.
+          The search retrieves from a small committed knowledge base, reports
+          its confidence, and gives up when the question does not match the
+          material it has.
         </p>
 
         <div className="ea-pair">
@@ -705,7 +716,9 @@ function RecommendationSection({
                 <li key={prompt.question}>
                   <button type="button" onClick={() => setQuestion(prompt.question)}>
                     <span>{prompt.question}</span>
-                    {!prompt.answerable ? <span className="c97-chip">Outside scope</span> : null}
+                    {!prompt.answerable ? (
+                      <span className="c97-chip">Outside scope</span>
+                    ) : null}
                   </button>
                 </li>
               ))}
@@ -733,15 +746,20 @@ function RecommendationSection({
                     <pre className="ea-snippet">
                       <code>{match.article.snippet}</code>
                     </pre>
-                    <p className="ea-small">Matched terms · {match.matchedTerms.join(", ")}</p>
+                    <p className="ea-small">
+                      Matched terms · {match.matchedTerms.join(", ")}
+                    </p>
                   </>
                 ) : (
                   <>
-                    <h3 className="ea-h3">I do not have a reliable answer for this.</h3>
+                    <h3 className="ea-h3">
+                      I do not have a reliable answer for this.
+                    </h3>
                     <p className="ea-body">
                       The best match stayed below the{" "}
-                      {Math.round(TROUBLESHOOTING_CONFIDENCE_THRESHOLD * 100)}% threshold. I would
-                      send the question and the team context to a person instead of guessing.
+                      {Math.round(TROUBLESHOOTING_CONFIDENCE_THRESHOLD * 100)}%
+                      threshold. I would send the question and the team context
+                      to a person instead of guessing.
                     </p>
                   </>
                 )}
@@ -750,8 +768,8 @@ function RecommendationSection({
               <>
                 <h3 className="ea-h3">No question searched yet</h3>
                 <p className="ea-body">
-                  Try a known setup problem or one of the deliberately unsupported questions to see
-                  the confidence boundary.
+                  Try a known setup problem or one of the deliberately
+                  unsupported questions to see the confidence boundary.
                 </p>
               </>
             )}
@@ -765,9 +783,9 @@ function RecommendationSection({
             Give the central team the context up front.
           </h2>
           <p className="ea-lede">
-            The handoff carries the intake, the recommendation, the exact question, and what the
-            team already tried, so support can start with the failure instead of repeating
-            discovery.
+            The handoff carries the intake, the recommendation, the exact
+            question, and what the team already tried, so support can start with
+            the failure instead of repeating discovery.
           </p>
           <div className="ea-pair">
             <div className="ea-form">
@@ -865,7 +883,9 @@ function TeamOnboarding() {
                     aria-current={current ? "step" : undefined}
                     data-done={completed && !current ? "true" : undefined}
                   >
-                    <span className="ea-step-mark">{completed && !current ? "✓" : index + 1}</span>
+                    <span className="ea-step-mark">
+                      {completed && !current ? "✓" : index + 1}
+                    </span>
                     <span>{label}</span>
                   </button>
                 </li>
@@ -878,8 +898,9 @@ function TeamOnboarding() {
 
         {advanceDisabled ? (
           <p role="alert" className="ea-alert">
-            Select at least one layer{step === 1 ? "" : " on the Test layers step"} so the engine
-            has something real to score.
+            Select at least one layer
+            {step === 1 ? "" : " on the Test layers step"} so the engine has
+            something real to score.
           </p>
         ) : null}
 
@@ -904,8 +925,9 @@ function TeamOnboarding() {
         ) : (
           <p className="ea-empty">
             <strong>The recommendation fills in here.</strong>
-            Answer the three steps to see the scored stack with its runner-up, the onboarding
-            plan, and a troubleshooting desk for the setup questions that follow.
+            Answer the three steps to see the scored stack with its runner-up,
+            the onboarding plan, and a troubleshooting desk for the setup
+            questions that follow.
           </p>
         )}
       </div>
@@ -931,25 +953,35 @@ export function EnablementAssistantClient() {
       <div className="c97-shell c97-frame ea-page">
         <section className="ea-titlebar" aria-labelledby="ea-title">
           <div className="ea-title-row">
-            <h1 id="ea-title" className="ea-h1">Automation Enablement Assistant</h1>
+            <h1 id="ea-title" className="ea-h1">
+              Automation Enablement Assistant
+            </h1>
             <WorkspaceTabs view={view} onChange={changeView} />
             <p className="ea-small ea-title-status">
-              {view === "program" ? "Portfolio view · 12 seeded teams" : "Team view · 3 intake steps"}
+              {view === "program"
+                ? "Portfolio view · 12 seeded teams"
+                : view === "saved"
+                  ? "Your saved team records"
+                  : "Team view · 3 intake steps"}
             </p>
           </div>
           <p className="ea-lede">
-            I built this so a small central tooling team can support many product teams without
-            repeating the same onboarding work one team at a time.
+            I built this so a small central tooling team can support many
+            product teams without repeating the same onboarding work one team at
+            a time.
           </p>
           <p className="ea-small ea-boundary">
-            <span className="ea-boundary-tag">Model boundary</span> No credentials, live model, or
-            hidden service. The scoring, retrieval, plans, and program data all run from committed
-            TypeScript rules and invented seed data.
+            <span className="ea-boundary-tag">Model boundary</span> No
+            credentials, live model, or hidden service. The scoring, retrieval,
+            plans, and program data all run from committed TypeScript rules and
+            invented seed data.
           </p>
         </section>
 
         <div id="workspace" className="ea-workspace">
-          {view === "program" ? (
+          {view === "saved" ? (
+            <UserTeams />
+          ) :view === "program" ? (
             <ProgramDashboard onStart={() => changeView("team")} />
           ) : (
             <TeamOnboarding />

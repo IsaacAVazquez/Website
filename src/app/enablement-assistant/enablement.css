@@ -793,3 +793,51 @@
   border-left: 1px solid var(--ea-rule-strong);
   min-width: 0;
 }
+
+
+.ea-user-teams {
+  display: grid;
+  gap: var(--c97-sp-4);
+}
+.ea-record-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: var(--c97-sp-2);
+}
+.ea-record-form label:not(.ea-record-check) {
+  display: grid;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+}
+.ea-record-form :where(input, select) {
+  min-height: 44px;
+  min-width: 0;
+  max-width: 100%;
+}
+.ea-record-check {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--c97-sp-1);
+}
+.ea-record-check input {
+  min-height: 44px;
+  min-width: 24px;
+}
+.ea-record-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  align-items: end;
+}
+.ea-record-progress {
+  display: grid;
+  gap: var(--c97-sp-3);
+}
+.ea-record-progress li {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+.ea-switch {
+  flex-wrap: wrap;
+}

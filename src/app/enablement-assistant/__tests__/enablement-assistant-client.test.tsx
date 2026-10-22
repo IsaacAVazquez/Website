@@ -153,11 +153,17 @@ describe("EnablementAssistantClient", () => {
     const plan = generateOnboardingPlan(intake(), recommendation);
     expect(scrollIntoView).toHaveBeenLastCalledWith({ behavior: "smooth" });
 
-    const section = screen.getByRole("region", { name: "A recommendation you can inspect" });
+    const section = screen.getByRole("region", {
+      name: "A recommendation you can inspect",
+    });
     expect(within(section).queryByText("Human review needed")).toBeNull();
     const top = within(section).getByText("Top recommendation").closest("article") as HTMLElement;
     expect(within(top).getByRole("heading", { name: recommendation.primary.toolchain.name })).toBeInTheDocument();
-    expect(within(top).getByRole("img", { name: `${recommendation.primary.score} percent confidence` })).toBeInTheDocument();
+    expect(
+      within(top).getByRole("img", {
+        name: `${recommendation.primary.score} fit score out of 100`,
+      }),
+    ).toBeInTheDocument();
     expect(top.querySelector("details")).toHaveAttribute("open");
     expect(within(top).getByText("Product surface")).toBeInTheDocument();
     const runnerUp = within(section).getByText("Runner-up").closest("article") as HTMLElement;
@@ -169,9 +175,15 @@ describe("EnablementAssistantClient", () => {
     expect(within(planSection).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)).toEqual(
       plan.map((step) => step.title)
     );
-    expect(screen.queryByRole("region", { name: "Give the central team the context up front." })).toBeNull();
+    expect(
+      screen.queryByRole("region", {
+        name: "Give the central team the context up front.",
+      }),
+    ).toBeNull();
 
-    const progress = screen.getByRole("navigation", { name: "Intake progress" });
+    const progress = screen.getByRole("navigation", {
+      name: "Intake progress",
+    });
     expect(within(progress).getAllByText("✓")).toHaveLength(2);
   });
 
@@ -213,14 +225,20 @@ describe("EnablementAssistantClient", () => {
     buildRecommendation();
 
     const recommendation = recommendToolchains(intake({ language: "other", ci: "other" }));
-    const section = screen.getByRole("region", { name: "A recommendation you can inspect" });
+    const section = screen.getByRole("region", {
+      name: "A recommendation you can inspect",
+    });
     const review = within(section).getByRole("status");
     expect(review).toHaveTextContent("Human review needed");
-    expect(review).toHaveTextContent(`scored ${recommendation.primary.score}%, below the ${recommendation.threshold}% threshold`);
+    expect(review).toHaveTextContent(
+      `scored ${recommendation.primary.score}/100, below the ${recommendation.threshold}/100 threshold`,
+    );
     expect(within(section).getByText("Closest catalog match")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Copy full plan" })).toBeNull();
 
-    const handoff = screen.getByRole("region", { name: "Give the central team the context up front." });
+    const handoff = screen.getByRole("region", {
+      name: "Give the central team the context up front.",
+    });
     fireEvent.change(within(handoff).getByLabelText("What has the team already tried?"), {
       target: { value: "Pinned the runner image" },
     });

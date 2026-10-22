@@ -437,8 +437,8 @@ export function buildEscalationDraft({
   attempted: string;
 }): string {
   const toolchain = recommendation.shouldEscalate
-    ? `No recommendation cleared the ${recommendation.threshold}% confidence threshold`
-    : `${recommendation.primary.toolchain.name} at ${recommendation.primary.score}% confidence`;
+    ? `No recommendation cleared the ${recommendation.threshold}/100 fit score threshold`
+    : `${recommendation.primary.toolchain.name} at ${recommendation.primary.score}/100 fit score`;
 
   return [
     "Automation enablement support request",
