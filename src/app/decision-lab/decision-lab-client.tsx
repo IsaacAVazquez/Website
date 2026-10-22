@@ -19,6 +19,7 @@ import {
 } from "./decision-lab-state";
 import { verdictContributions, verdictStamp, type VerdictContribution } from "./verdictStamp";
 import "./decision-lab.css";
+import { SavedBets } from "./SavedBetWorkspace";
 
 
 interface MetricDefinition {
@@ -500,6 +501,7 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
           </figure>
           <WhyThisVerdict metrics={draftState} evaluation={evaluation} headingId={`${ids}-why`} />
         </div>
+        <SavedBets state={draftState} onLoad={commitState} />
       </div>
     </div>
   );
