@@ -6,10 +6,8 @@ const css = fs.readFileSync(path.join(__dirname, "..", "before-you-buy.css"), "u
 describe("before-you-buy.css", () => {
   // Under 960px the result sits below the portfolio, so a long list of saved
   // holdings scrolls inside its own region instead of pushing the result away.
-  it("caps the holdings table while the calculator is one column", () => {
-    expect(css).toMatch(
-      /@media screen and \(max-width: 959px\) \{\s*\.byb-portfolio \.byb-scroll \{\s*max-block-size: 22rem;/
-    );
+  it("caps the expanded holdings editor", () => {
+    expect(css).toMatch(/\.byb-portfolio \.byb-scroll \{ max-block-size: 22rem;/);
   });
 
   // StockSearch wraps its list in a paper surface, which would otherwise put

@@ -1,4 +1,5 @@
 import type { StockPrice } from "@/types/investment";
+import { isValidSymbol } from "@/lib/investmentSymbol";
 
 /**
  * Before You Buy: what one purchase would do to a portfolio. Every reading
@@ -51,11 +52,29 @@ export interface BeforeYouBuyResult {
   window: { from: string; to: string; days: number } | null;
 }
 
-const FUND_SECTOR = "Index fund";
+export const FUND_SECTOR = "Fund holdings";
 const WORST_DAY_COUNT = 5;
+export const MIN_COMPARISON_DAYS = 30;
+export const BUY_PORTFOLIO_KEY = "before-you-buy-portfolio-v1";
 
+/** Reject the entire draft on malformed, duplicated, or non-finite positions. */
+export function decodeBuyPositions(value: unknown): Position[] | undefined {
+  if (!Array.isArray(value) || value.length > 100) return undefined;
+  const seen = new Set<string>();
+  const positions: Position[] = [];
+  for (const row of value) {
+    if (!row || typeof row !== "object" || !isValidSymbol(row.symbol) || seen.has(row.symbol) ||
+        typeof row.value !== "number" || !Number.isFinite(row.value) || row.value <= 0) return undefined;
+    seen.add(row.symbol);
+    positions.push({ symbol: row.symbol, value: row.value });
+  }
+  return Number.isFinite(positions.reduce((sum, row) => sum + row.value, 0)) ? positions : undefined;
+}
+
+// The benchmark is the only fund in the curated research universe, and the
+// provider sends no quote type, so a fund added later reads as Unclassified.
 function sectorOf(symbol: string, history: SymbolHistory | undefined, benchmark: string): string {
-  return history?.sector || (symbol === benchmark ? FUND_SECTOR : "Unclassified");
+  return symbol === benchmark ? FUND_SECTOR : history?.sector || "Unclassified";
 }
 
 function mixOf(
@@ -96,11 +115,12 @@ export function analyzeBuy(
   positions: readonly Position[],
   buy: Position,
   history: Readonly<Record<string, SymbolHistory>>,
-  benchmark: string
+  benchmark: string,
+  sharedSymbols: readonly string[] = []
 ): BeforeYouBuyResult {
   const before = mixOf(positions, history, benchmark);
   const after = mixOf([...positions, buy], history, benchmark);
-  const symbols = [...new Set([benchmark, buy.symbol, ...after.holdings.map((h) => h.symbol)])];
+  const symbols = [...new Set([benchmark, buy.symbol, ...after.holdings.map((h) => h.symbol), ...sharedSymbols])];
 
   // Only days every symbol traded, taken in the benchmark's order.
   const closes = new Map(
@@ -109,20 +129,22 @@ export function analyzeBuy(
       new Map((history[symbol]?.prices ?? []).map((row) => [row.date, row.close])),
     ])
   );
-  const dates = (history[benchmark]?.prices ?? [])
-    .map((row) => row.date)
-    .filter((date) =>
-      symbols.every((symbol) => {
-        const close = closes.get(symbol)?.get(date);
-        return typeof close === "number" && Number.isFinite(close) && close > 0;
-      })
-    );
+  const benchmarkDates = [...new Set((history[benchmark]?.prices ?? []).map((row) => row.date))].sort();
+  const validDay = (date: string) => symbols.every((symbol) => {
+    const close = closes.get(symbol)?.get(date);
+    return typeof close === "number" && Number.isFinite(close) && close > 0;
+  });
+  // A missing close removes both adjacent intervals. Never call a multi-day
+  // return a daily return by joining across a gap in one symbol's history.
+  const intervals = benchmarkDates.slice(1).flatMap((date, i) =>
+    validDay(date) && validDay(benchmarkDates[i]) ? [{ from: benchmarkDates[i], to: date }] : []
+  );
   const returnsOf = (symbol: string) => {
     const series = closes.get(symbol)!;
-    return dates.slice(1).map((date, i) => series.get(date)! / series.get(dates[i])! - 1);
+    return intervals.map(({ from, to }) => series.get(to)! / series.get(from)! - 1);
   };
   const returns = new Map(symbols.map((symbol) => [symbol, returnsOf(symbol)]));
-  const days = Math.max(dates.length - 1, 0);
+  const days = intervals.length;
   const mixReturns = (mix: Omit<Mix, "beta">) =>
     Array.from({ length: days }, (_, t) =>
       mix.holdings.reduce((sum, h) => sum + h.weight * returns.get(h.symbol)![t], 0)
@@ -148,7 +170,7 @@ export function analyzeBuy(
     .sort((a, b) => a.value - b.value)
     .slice(0, WORST_DAY_COUNT)
     .map(({ value, t }) => ({
-      date: dates[t + 1],
+      date: intervals[t].to,
       benchmark: value,
       before: beforeReturns ? beforeReturns[t] : null,
       after: afterReturns[t],
@@ -161,8 +183,26 @@ export function analyzeBuy(
     buySector: sectorOf(buy.symbol, history[buy.symbol], benchmark),
     correlation,
     worstDays,
-    window: days > 0 ? { from: dates[0], to: dates[dates.length - 1], days } : null,
+    window: days > 0 ? { from: intervals[0].from, to: intervals[days - 1].to, days } : null,
   };
+}
+
+/** All alternatives use one common set of daily observations. */
+export function compareBuys(
+  positions: readonly Position[],
+  buys: readonly Position[],
+  history: Readonly<Record<string, SymbolHistory>>,
+  benchmark: string
+): BeforeYouBuyResult[] {
+  // A choice with no history can't share a window, so it must not empty the other one's.
+  const shared = buys.map((option) => option.symbol).filter((symbol) => (history[symbol]?.prices.length ?? 0) > 1);
+  return buys.map((buy) => {
+    const result = analyzeBuy(positions, buy, history, benchmark, shared);
+    return (result.window?.days ?? 0) >= MIN_COMPARISON_DAYS ? result : {
+      ...result, before: { ...result.before, beta: null }, after: { ...result.after, beta: null },
+      correlation: null, worstDays: [],
+    };
+  });
 }
 
 // ─── Wording ─────────────────────────────────────────────────────────────────
@@ -201,7 +241,7 @@ export function weightIn(sectors: Mix["sectors"], sector: string): number {
 /** The plain summary at the top of the page, built only from the numbers above it. */
 export function describeBuy(result: BeforeYouBuyResult, buyName: string): string {
   const { before, after, buy, buySector, correlation, worstDays } = result;
-  const sectorName = buySector === FUND_SECTOR ? "index funds" : buySector;
+  const sectorName = buySector === FUND_SECTOR ? "fund holdings" : buySector;
   const sectorBefore = weightIn(before.sectors, buySector);
   const sectorAfter = weightIn(after.sectors, buySector);
   const buyWeight = after.holdings.find((h) => h.symbol === buy.symbol)?.weight ?? 0;
@@ -229,7 +269,7 @@ export function describeBuy(result: BeforeYouBuyResult, buyName: string): string
         ? `the portfolio's beta stays at ${formatRatio(after.beta)}`
         : `the portfolio's beta goes from ${formatRatio(before.beta)} to ${formatRatio(after.beta)}`;
     sentences.push(
-      `Over the past year it ${correlationPhrase(correlation)} what you already hold (a correlation of ${formatRatio(correlation)}), and ${betaChange}.`
+      `Over the shared history it ${correlationPhrase(correlation)} what you already hold (a correlation of ${formatRatio(correlation)}), and ${betaChange}.`
     );
   }
 
@@ -239,7 +279,7 @@ export function describeBuy(result: BeforeYouBuyResult, buyName: string): string
     const averageAfter = mean(comparable.map((day) => day.after));
     const count = comparable.length === WORST_DAY_COUNT ? "five" : String(comparable.length);
     sentences.push(
-      `On the S&P 500's ${count} worst days of that year, your current mix averaged ${formatReturn(averageBefore)} and the new one would have averaged ${formatReturn(averageAfter)}.`
+      `On the S&P 500's ${count} worst days in this window, your current mix averaged ${formatReturn(averageBefore)} and the new one would have averaged ${formatReturn(averageAfter)}.`
     );
   }
 

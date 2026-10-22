@@ -1,7 +1,8 @@
 ---
 title: "Building Before You Buy"
-excerpt: "I built a portfolio comparison around one proposed stock purchase, with the change in concentration and historical market behavior shown together."
+excerpt: "I built a purchase comparison with an editable portfolio, two stock choices, and the change in concentration and historical market behavior shown together."
 publishedAt: "2026-10-09"
+updatedAt: "2026-10-21"
 category: "Fintech Product"
 tags: ["Portfolio Tracking", "Investment Research", "Product Design", "Next.js"]
 featured: false
@@ -12,7 +13,7 @@ coverImageAlt: "Two portfolio worksheets with pie charts beside a calculator and
 cta:
   eyebrow: "Related tool"
   title: "Open Before You Buy"
-  description: "Compare your saved holdings or a sample portfolio with one proposed purchase."
+  description: "Edit your holdings and compare two purchases using the same amount."
   href: "/investments/before-you-buy"
   actionLabel: "Compare a purchase"
 seo:
@@ -23,10 +24,12 @@ seo:
 
 I built [Before You Buy](/investments/before-you-buy) because I wanted a stock research page to answer a question about the whole portfolio. If I add this company, how does the mix change? A company can be interesting on its own, but I still want to see how much of the portfolio it would occupy and how its price history relates to what I already hold.
 
-The tool starts with holdings saved in the [Investment Research Platform](/investments), or a labeled sample portfolio. I enter a symbol and a purchase amount, and the page puts the current mix beside the proposed mix. Position weights and sector totals sit next to the historical comparisons, so the purchase has a visible effect on both the allocation and the calculations. The holdings stay in the browser.
+The tool starts with holdings saved in the [Investment Research Platform](/investments), a labeled $50,000 sample, or a portfolio I edit directly on the page. I enter a stock and an amount, then compare that purchase with the same amount in another stock or fund. Both choices add new money to the same starting portfolio. Edits stay in a separate browser draft, so trying a different mix leaves the holdings saved on Investments intact.
 
-I framed this as an independent product concept for Google Finance. I think the useful interaction is the comparison itself, because it gives the research a specific decision to support. The page keeps the assumptions close to the results, and it leaves a result unavailable when the histories do not support it. I would keep that behavior even if the tool covered more companies.
+I put the resulting position size first, followed by a sentence explaining how direct sector exposure changes under each option. The comparison puts the current portfolio beside both proposed mixes, with the largest holding, historical sensitivity to the S&P 500, and average returns on the benchmark's five worst days. The sector bars use the same colors and ordering across all three mixes. I think this makes the tradeoff easier to see than asking someone to interpret a paragraph of statistics.
 
-The calculations use committed price snapshots and only dates shared by every holding, the proposed purchase, and SPY, the market benchmark. Both portfolio mixes keep their weights fixed across that window. Beta measures their historical sensitivity to the benchmark, correlation compares the purchase with the existing mix, and the stress view uses the benchmark's five worst daily returns in the shared history. Sector totals use the supplied classifications without looking through a fund's underlying holdings. These are historical comparisons, and I do not treat them as forecasts or purchase recommendations.
+I framed this as an independent product concept for Google Finance. The useful interaction is the comparison itself, because it gives the research a specific decision to support. The calculations use committed closing-price snapshots and the same historical dates for every holding, both purchase choices, and SPY, the market benchmark. A daily return is included only when all of those symbols have prices on both consecutive benchmark trading dates. I withhold the historical comparisons when fewer than 30 daily returns are available.
+
+Both portfolio mixes keep their weights fixed across that window. Beta measures historical sensitivity to the benchmark, correlation compares each purchase with the existing mix, and the stress view uses the benchmark's five lowest daily returns. Funds remain a separate allocation because the data does not contain their underlying holdings, so the direct sector totals leave that exposure unassigned. The comparison excludes dividends, fees, and taxes, and I treat the results as descriptions of past behavior, with the purchase decision left to the reader.
 
 The [investment research build article](/writing/building-an-investment-research-platform) explains the surrounding workspace, and the [Interchange IQ article](/writing/interchange-iq-payment-fee-analyzer) covers another financial tool where I wanted the assumptions visible alongside the result.
