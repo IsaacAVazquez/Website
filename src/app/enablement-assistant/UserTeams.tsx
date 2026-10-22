@@ -73,7 +73,7 @@ export function UserTeams() {
           adoption status.
         </p>
         <p>
-          {teams.length} teams ·{" "}
+          {teams.length} {teams.length === 1 ? "team" : "teams"} ·{" "}
           {teams.filter((team) => team.standardStatus === "standard").length} on
           the full standard ·{" "}
           {total

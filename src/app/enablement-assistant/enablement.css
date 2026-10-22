@@ -800,6 +800,7 @@
   gap: var(--c97-sp-4);
 }
 .ea-record-form {
+  align-items: start;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: var(--c97-sp-2);

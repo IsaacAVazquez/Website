@@ -611,17 +611,18 @@ function ResultsGrid({
               type="button"
               className="rf-plan-button"
               aria-pressed={favorites.includes(match.recipe.id)}
+              aria-label={`${favorites.includes(match.recipe.id) ? "Unsave" : "Save"} ${match.recipe.title}`}
               onClick={() => onSave(match.recipe.id)}
             >
-              {favorites.includes(match.recipe.id) ? "Unsave" : "Save"}{" "}
-              {match.recipe.title}
+              {favorites.includes(match.recipe.id) ? "Saved" : "Save recipe"}
             </button>
             <button
               type="button"
               className="rf-plan-button"
               onClick={() => onPlan(match.recipe.id)}
+              aria-label={`Plan ${match.recipe.title}`}
             >
-              Plan {match.recipe.title}
+              Plan meal
             </button>
           </div>
             }
