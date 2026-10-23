@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
       "fundamentals"
@@ -42,12 +42,12 @@
       "longName": "Intuitive Surgical, Inc."
     },
     "fundamentals": {
-      "ttmEps": 8.7251,
-      "ttmPe": 50.2,
-      "pegRatio": 1.89,
-      "marketCap": 155008200000,
-      "psRatio": 14.05,
-      "pbRatio": 8.53
+      "ttmEps": 8.2651,
+      "ttmPe": 53.7,
+      "pegRatio": 1.77,
+      "marketCap": 153838410000,
+      "psRatio": 13.94,
+      "pbRatio": 8.47
     },
     "profitability": {
       "roe": 4.590000000000001,
@@ -84,7 +84,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 26.619999999999997
+        "yoyGrowth": -23.630000000000003
       }
     ],
     "income_statement": {
@@ -4974,17 +4974,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4447
+      "beta5y": 1.4392
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 459.47,
-        "high": 466.98,
-        "low": 456.31,
-        "close": 462.74,
-        "volume": 4779600
-      },
       {
         "date": "2025-10-22",
         "open": 543,
@@ -6992,6 +6984,14 @@
         "low": 398.99,
         "close": 428.12,
         "volume": 4799500
+      },
+      {
+        "date": "2026-10-22",
+        "open": 430.75,
+        "high": 444.15,
+        "low": 427.47,
+        "close": 443.85,
+        "volume": 2776000
       }
     ],
     "news": [
@@ -7036,19 +7036,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e2a6e0e5-9c5e-3765-857d-f01059b77bae",
-        "title": "Q1 Earnings Highlights: Teleflex (NYSE:TFX) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/q1-earnings-highlights-teleflex-nyse-033148019.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0c543466-ad8e-305f-a9de-837e5ccce4d0",
         "title": "Q1 Earnings Highs And Lows: LeMaitre (NASDAQ:LMAT) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/q1-earnings-highs-lows-lemaitre-033104898.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e2a6e0e5-9c5e-3765-857d-f01059b77bae",
+        "title": "Q1 Earnings Highlights: Teleflex (NYSE:TFX) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/q1-earnings-highlights-teleflex-nyse-033148019.html",
         "type": "STORY"
       },
       {
@@ -7068,11 +7068,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ff42a39e-bc52-373b-996d-47249d04e6d3",
-        "title": "Intuitive Surgical (NASDAQ:ISRG): Strongest Q1 Results from the Surgical Equipment & Consumables - Specialty Group",
-        "publisher": "StockStory",
+        "uuid": "63b9f8af-133d-3653-91c4-a1722b33de46",
+        "title": "Intuitive Surgical, Inc. (ISRG) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/intuitive-surgical-nasdaq-isrg-strongest-033505396.html",
+        "link": "https://finance.yahoo.com/news/intuitive-surgical-inc-isrg-attracting-130009154.html",
         "type": "STORY"
       }
     ],
@@ -7139,18 +7139,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 50.2,
-        "industryAvg": 39.21
+        "value": 53.7,
+        "industryAvg": 39.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.05,
-        "industryAvg": 3.76
+        "value": 13.94,
+        "industryAvg": 3.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.53,
-        "industryAvg": 3.24
+        "value": 8.47,
+        "industryAvg": 3.28
       },
       {
         "metric": "ROE",

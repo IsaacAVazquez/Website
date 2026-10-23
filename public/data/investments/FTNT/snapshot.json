@@ -1,10 +1,10 @@
 {
   "symbol": "FTNT",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.8381,
-      "ttmPe": 60.23,
-      "marketCap": 125394248000,
-      "psRatio": 16.66,
-      "pbRatio": 80.84,
-      "pegRatio": 1.37
+      "ttmPe": 60.95,
+      "marketCap": 126898128000,
+      "psRatio": 16.86,
+      "pbRatio": 81.81,
+      "pegRatio": 1.39
     },
     "profitability": {
       "roe": 47.73,
@@ -5721,25 +5721,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.7,
-      "costOfEquity": 12.75,
+      "wacc": 12.709999999999999,
+      "costOfEquity": 12.76,
       "costOfDebt": 0.64,
       "taxRate": 16,
-      "beta": 0.9841,
-      "marketCap": 125394248000
+      "beta": 0.9866,
+      "marketCap": 126898128000
     },
     "beta": {
-      "beta5y": 0.9841
+      "beta5y": 0.9866
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 83.41,
-        "high": 85.12,
-        "low": 81.1,
-        "close": 84.78,
-        "volume": 4828900
-      },
       {
         "date": "2025-10-22",
         "open": 85,
@@ -7747,6 +7739,14 @@
         "low": 166.22,
         "close": 174.05,
         "volume": 3084700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 174.22,
+        "high": 177.71,
+        "low": 171.69,
+        "close": 172.98,
+        "volume": 3960000
       }
     ],
     "news": [
@@ -7767,19 +7767,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4a311f79-4b04-3e67-9e21-fe4c2e7072d4",
-        "title": "Fortinet Q1 Non-GAAP Earnings, Revenue Rise; Full-Year Non-GAAP Earnings Outlook Lifted",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/fortinet-q1-non-gaap-earnings-202117731.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eed47d1e-34f8-3033-86b2-82909f127cad",
         "title": "Dow Jones Futures Rise As Trump To Unveil 'Major Trade Deal' With U.K.; MercadoLibre, AppLovin Soar",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/m/eed47d1e-34f8-3033-86b2-82909f127cad/dow-jones-futures-rise-as.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4a311f79-4b04-3e67-9e21-fe4c2e7072d4",
+        "title": "Fortinet Q1 Non-GAAP Earnings, Revenue Rise; Full-Year Non-GAAP Earnings Outlook Lifted",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/fortinet-q1-non-gaap-earnings-202117731.html",
         "type": "STORY"
       },
       {
@@ -7888,18 +7888,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 60.23,
-        "industryAvg": 33.61
+        "value": 60.95,
+        "industryAvg": 33.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.66,
-        "industryAvg": 7.68
+        "value": 16.86,
+        "industryAvg": 7.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 80.84,
-        "industryAvg": 8.54
+        "value": 81.81,
+        "industryAvg": 8.46
       },
       {
         "metric": "ROE",

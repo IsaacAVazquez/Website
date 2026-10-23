@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "CME Group Inc."
     },
     "fundamentals": {
-      "ttmEps": 11.7917,
-      "ttmPe": 25.04,
-      "marketCap": 106098415711,
-      "psRatio": 15.67,
-      "pbRatio": 4,
-      "pegRatio": 9.41
+      "ttmEps": 12.1953,
+      "ttmPe": 25.09,
+      "marketCap": 109931913038,
+      "psRatio": 16.23,
+      "pbRatio": 4.15,
+      "pegRatio": 1.55
     },
     "profitability": {
       "roe": 3.92,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 2.6599999999999997
+        "yoyGrowth": 16.220000000000002
       }
     ],
     "income_statement": {
@@ -5438,25 +5438,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.619999999999999,
-      "costOfEquity": 6.800000000000001,
+      "wacc": 6.43,
+      "costOfEquity": 6.6000000000000005,
       "costOfDebt": 1.27,
       "taxRate": 22,
-      "beta": 0.2171,
-      "marketCap": 106098415711
+      "beta": 0.2076,
+      "marketCap": 109931913038
     },
     "beta": {
-      "beta5y": 0.2171
+      "beta5y": 0.2076
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 268.75,
-        "high": 269.86,
-        "low": 267.22,
-        "close": 268.61,
-        "volume": 1779600
-      },
       {
         "date": "2025-10-22",
         "open": 263.68,
@@ -7464,6 +7456,14 @@
         "low": 290.19,
         "close": 295.79,
         "volume": 2031600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 299.25,
+        "high": 307.27,
+        "low": 299.25,
+        "close": 305.98,
+        "volume": 2294400
       }
     ],
     "news": [
@@ -7500,6 +7500,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
+        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
         "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
         "publisher": "Simply Wall St.",
@@ -7513,14 +7521,6 @@
         "publisher": "PR Newswire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
-        "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
         "type": "STORY"
       },
       {
@@ -7614,18 +7614,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.04,
-        "industryAvg": 25.4
+        "value": 25.09,
+        "industryAvg": 26.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.67,
-        "industryAvg": 7.87
+        "value": 16.23,
+        "industryAvg": 8.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 4,
-        "industryAvg": 4.06
+        "value": 4.15,
+        "industryAvg": 4.24
       },
       {
         "metric": "ROE",

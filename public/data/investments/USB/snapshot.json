@@ -1,10 +1,10 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.1397,
-      "ttmPe": 11.5,
-      "marketCap": 92062220000,
-      "psRatio": 3.11,
-      "pbRatio": 1.37,
-      "pegRatio": 1.09
+      "ttmPe": 11.68,
+      "marketCap": 93511160000,
+      "psRatio": 3.16,
+      "pbRatio": 1.39,
+      "pegRatio": 1.11
     },
     "profitability": {
       "roe": 3.15,
@@ -5649,25 +5649,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.84,
-      "costOfEquity": 13.200000000000001,
+      "wacc": 7.870000000000001,
+      "costOfEquity": 13.18,
       "costOfDebt": 3.37,
       "taxRate": 20,
-      "beta": 1.0421,
-      "marketCap": 92062220000
+      "beta": 1.0394,
+      "marketCap": 93511160000
     },
     "beta": {
-      "beta5y": 1.0421
+      "beta5y": 1.0394
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 47.03,
-        "high": 47.83,
-        "low": 46.95,
-        "close": 47.61,
-        "volume": 11278200
-      },
       {
         "date": "2025-10-22",
         "open": 47.65,
@@ -7675,6 +7667,14 @@
         "low": 58.87,
         "close": 59.05,
         "volume": 7115800
+      },
+      {
+        "date": "2026-10-22",
+        "open": 58.72,
+        "high": 60.03,
+        "low": 58.65,
+        "close": 60.02,
+        "volume": 7241400
       }
     ],
     "news": [
@@ -7823,17 +7823,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.5,
-        "industryAvg": 11.77
+        "value": 11.68,
+        "industryAvg": 11.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.11,
-        "industryAvg": 3.03
+        "value": 3.16,
+        "industryAvg": 2.95
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.37,
+        "value": 1.39,
         "industryAvg": 1.24
       },
       {

@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "Chubb Limited"
     },
     "fundamentals": {
-      "ttmEps": 28.2571,
-      "ttmPe": 12.66,
-      "marketCap": 137960563500,
-      "psRatio": 2.22,
-      "pbRatio": 1.83,
-      "pegRatio": 0.15
+      "ttmEps": 28.5733,
+      "ttmPe": 12.74,
+      "marketCap": 140351494300,
+      "psRatio": 2.25,
+      "pbRatio": 1.86,
+      "pegRatio": 2.81
     },
     "profitability": {
       "roe": 3.83,
@@ -74,7 +74,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -0.74
+        "yoyGrowth": 4.53
       }
     ],
     "income_statement": {
@@ -5550,25 +5550,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.81,
-      "costOfEquity": 7.59,
+      "wacc": 6.68,
+      "costOfEquity": 7.430000000000001,
       "costOfDebt": 1.0999999999999999,
       "taxRate": 20,
-      "beta": 0.3181,
-      "marketCap": 137960563500
+      "beta": 0.3118,
+      "marketCap": 140351494300
     },
     "beta": {
-      "beta5y": 0.3181
+      "beta5y": 0.3118
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 267.14,
-        "high": 269.89,
-        "low": 266.4,
-        "close": 269.26,
-        "volume": 2857300
-      },
       {
         "date": "2025-10-22",
         "open": 275.86,
@@ -7576,17 +7568,17 @@
         "low": 351.61,
         "close": 354.95,
         "volume": 2334500
+      },
+      {
+        "date": "2026-10-22",
+        "open": 360,
+        "high": 364.86,
+        "low": 357.11,
+        "close": 363.95,
+        "volume": 1710000
       }
     ],
     "news": [
-      {
-        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
-        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
-        "type": "STORY"
-      },
       {
         "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
@@ -7596,11 +7588,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
-        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
+        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
+        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
         "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
         "type": "STORY"
       },
       {
@@ -7609,6 +7601,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
+        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
         "type": "STORY"
       },
       {
@@ -7724,18 +7724,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.66,
-        "industryAvg": 9.6
+        "value": 12.74,
+        "industryAvg": 9.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.22,
-        "industryAvg": 1.44
+        "value": 2.25,
+        "industryAvg": 1.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.83,
-        "industryAvg": 4.97
+        "value": 1.86,
+        "industryAvg": 5.21
       },
       {
         "metric": "ROE",

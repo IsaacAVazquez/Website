@@ -1,10 +1,10 @@
 {
   "symbol": "STZ",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.1501,
-      "ttmPe": 11.9,
-      "marketCap": 22540035166,
-      "psRatio": 2.49,
-      "pbRatio": 2.73,
-      "pegRatio": 0.47
+      "ttmPe": 12.46,
+      "marketCap": 23599623982,
+      "psRatio": 2.61,
+      "pbRatio": 2.86,
+      "pegRatio": 0.49
     },
     "profitability": {
       "roe": 8,
@@ -6203,25 +6203,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.94,
-      "costOfEquity": 8.38,
+      "wacc": 5.88,
+      "costOfEquity": 8.18,
       "costOfDebt": 0.83,
       "taxRate": 12,
-      "beta": 0.4204,
-      "marketCap": 22540035166
+      "beta": 0.4065,
+      "marketCap": 23599623982
     },
     "beta": {
-      "beta5y": 0.4204
+      "beta5y": 0.4065
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 141.72,
-        "high": 141.82,
-        "low": 139.2,
-        "close": 141.57,
-        "volume": 2424200
-      },
       {
         "date": "2025-10-22",
         "open": 141,
@@ -8229,6 +8221,14 @@
         "low": 130.92,
         "close": 132.02,
         "volume": 1287700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 133.31,
+        "high": 139.31,
+        "low": 132.67,
+        "close": 138.98,
+        "volume": 2494400
       }
     ],
     "news": [
@@ -8297,19 +8297,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
-        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4dfed969-a57e-390c-b7a0-861961cd04d9",
         "title": "NYSE Content Advisory: Pre-Market update + Warren Buffett to step down as Berkshire Hathaway CEO",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500699.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
+        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
         "type": "STORY"
       }
     ],
@@ -8377,18 +8377,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.9,
-        "industryAvg": 16.65
+        "value": 12.46,
+        "industryAvg": 16.9
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.49,
-        "industryAvg": 1.93
+        "value": 2.61,
+        "industryAvg": 1.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.73,
-        "industryAvg": 1.81
+        "value": 2.86,
+        "industryAvg": 1.84
       },
       {
         "metric": "ROE",

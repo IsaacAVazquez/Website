@@ -1,14 +1,13 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
-      "fundamentals",
-      "industry"
+      "fundamentals"
     ]
   },
   "source": "prefetched",
@@ -44,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.1885,
-      "ttmPe": 29.94,
-      "pegRatio": 3.73,
-      "marketCap": 130385342340,
-      "psRatio": 10.36,
-      "pbRatio": 6.44
+      "ttmPe": 31.14,
+      "pegRatio": 3.88,
+      "marketCap": 135584035092,
+      "psRatio": 10.77,
+      "pbRatio": 6.7
     },
     "profitability": {
       "roe": 5.55,
@@ -5448,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.16,
-      "costOfEquity": 7.2700000000000005,
+      "wacc": 7.049999999999999,
+      "costOfEquity": 7.1499999999999995,
       "costOfDebt": 0.16,
       "taxRate": 11,
-      "beta": 0.2775,
-      "marketCap": 130385342340
+      "beta": 0.2768,
+      "marketCap": 135584035092
     },
     "beta": {
-      "beta5y": 0.2775
+      "beta5y": 0.2768
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 417.57,
-        "high": 426.97,
-        "low": 417.57,
-        "close": 426.27,
-        "volume": 1075900
-      },
       {
         "date": "2025-10-22",
         "open": 426.27,
@@ -7474,6 +7465,14 @@
         "low": 510.48,
         "close": 524.52,
         "volume": 1448600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 527.18,
+        "high": 537.81,
+        "low": 521.3,
+        "close": 535.17,
+        "volume": 1641200
       }
     ],
     "news": [
@@ -7502,20 +7501,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
-        "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
         "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
+        "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "f9f53c24-fd35-3af4-8128-7145d69de473",
@@ -7626,18 +7625,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.6,
-        "industryAvg": 22.89
+        "value": 31.14,
+        "industryAvg": 23.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.24,
-        "industryAvg": 10.9
+        "value": 10.77,
+        "industryAvg": 11.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.37,
-        "industryAvg": 4.51
+        "value": 6.7,
+        "industryAvg": 4.61
       },
       {
         "metric": "ROE",
@@ -7657,12 +7656,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 39.75,
-        "industryAvg": -27.589999999999996
+        "industryAvg": -27.6
       },
       {
         "metric": "Net Margin",
         "value": 32.99,
-        "industryAvg": -33.61
+        "industryAvg": -33.62
       }
     ]
   }

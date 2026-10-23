@@ -1,10 +1,10 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 11.717,
-      "ttmPe": 20.28,
-      "marketCap": 59937688800,
+      "ttmPe": 20.29,
+      "marketCap": 59985618770,
       "psRatio": 4.55,
       "pbRatio": 5.26,
       "pegRatio": 0.28
@@ -5949,25 +5949,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.520000000000003,
-      "costOfEquity": 19.400000000000002,
+      "wacc": 16.64,
+      "costOfEquity": 19.53,
       "costOfDebt": 1.02,
       "taxRate": 19,
-      "beta": 1.842,
-      "marketCap": 59937688800
+      "beta": 1.8415,
+      "marketCap": 59985618770
     },
     "beta": {
-      "beta5y": 1.842
+      "beta5y": 1.8415
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 219.34,
-        "high": 224.27,
-        "low": 218.51,
-        "close": 222.34,
-        "volume": 1935400
-      },
       {
         "date": "2025-10-22",
         "open": 217.07,
@@ -7975,6 +7967,14 @@
         "low": 236.05,
         "close": 242.36,
         "volume": 3125600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 237.38,
+        "high": 242.34,
+        "low": 235.18,
+        "close": 237.79,
+        "volume": 6949500
       }
     ],
     "news": [
@@ -7987,19 +7987,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
-        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
         "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
         "publisher": "Investopedia",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/m/bf516d5d-637d-3db5-978c-5163ffd50ea1/s%26p-500-gains-and-losses.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
+        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
         "type": "STORY"
       },
       {
@@ -8019,19 +8019,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
-        "title": "3 Profitable Stocks with Mounting Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "50b590cf-d065-3ced-aa2a-2509fcd4e582",
         "title": "NXP Semiconductors (NasdaqGS:NXPI) Unveils Powerful S32R47 Radar Processors for Autonomous Driving",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/nxp-semiconductors-nasdaqgs-nxpi-unveils-174847555.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d1740fcc-bb4f-35e7-a25d-a17e591fce0f",
+        "title": "3 Profitable Stocks with Mounting Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/3-profitable-stocks-mounting-challenges-044005927.html",
         "type": "STORY"
       },
       {
@@ -8123,18 +8123,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.28,
-        "industryAvg": 27.53
+        "value": 20.29,
+        "industryAvg": 26.63
       },
       {
         "metric": "P/S Ratio",
         "value": 4.55,
-        "industryAvg": 13.11
+        "industryAvg": 12.66
       },
       {
         "metric": "P/B Ratio",
         "value": 5.26,
-        "industryAvg": 11.37
+        "industryAvg": 10.98
       },
       {
         "metric": "ROE",

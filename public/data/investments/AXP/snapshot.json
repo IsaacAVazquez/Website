@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.482,
-      "ttmPe": 19.31,
-      "marketCap": 214879500000,
-      "psRatio": 2.83,
-      "pbRatio": 6.27,
-      "pegRatio": 1.75
+      "ttmPe": 19.73,
+      "marketCap": 219489750000,
+      "psRatio": 2.89,
+      "pbRatio": 6.4,
+      "pegRatio": 1.79
     },
     "profitability": {
       "roe": 9.01,
@@ -5795,25 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.24,
-      "costOfEquity": 13.63,
+      "wacc": 11.27,
+      "costOfEquity": 13.62,
       "costOfDebt": 3.32,
       "taxRate": 24,
-      "beta": 1.0987,
-      "marketCap": 214879500000
+      "beta": 1.0948,
+      "marketCap": 219489750000
     },
     "beta": {
-      "beta5y": 1.0987
+      "beta5y": 1.0948
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 352.09,
-        "high": 356.67,
-        "low": 350.79,
-        "close": 355.22,
-        "volume": 2658400
-      },
       {
         "date": "2025-10-22",
         "open": 355.28,
@@ -7821,6 +7813,14 @@
         "low": 318.55,
         "close": 323.61,
         "volume": 2759800
+      },
+      {
+        "date": "2026-10-22",
+        "open": 323.36,
+        "high": 326.27,
+        "low": 322.47,
+        "close": 325.17,
+        "volume": 3385400
       }
     ],
     "news": [
@@ -7865,14 +7865,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "0672dd26-9686-35f8-a29e-b98a620ba84b",
-        "title": "West Japan Railway and a.k.a. Brands have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/west-japan-railway-k-brands-122200264.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5cb5d8a8-80a8-36da-b95e-575adcad8fb8",
         "title": "Stock Market Turmoil: Buy These 3 Dividend Stocks for Less Than $1,000 Right Now",
         "publisher": "Motley Fool",
@@ -7881,11 +7873,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
-        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
+        "uuid": "0672dd26-9686-35f8-a29e-b98a620ba84b",
+        "title": "West Japan Railway and a.k.a. Brands have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/west-japan-railway-k-brands-122200264.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
+        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
+        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
         "type": "STORY"
       },
       {
@@ -7897,11 +7897,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
-        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
+        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
+        "publisher": "Zacks",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
+        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
         "type": "STORY"
       }
     ],
@@ -7974,18 +7974,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.31,
-        "industryAvg": 23.14
+        "value": 19.73,
+        "industryAvg": 23.5
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.83,
-        "industryAvg": 5.41
+        "value": 2.89,
+        "industryAvg": 5.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.27,
-        "industryAvg": 5.77
+        "value": 6.4,
+        "industryAvg": 5.88
       },
       {
         "metric": "ROE",

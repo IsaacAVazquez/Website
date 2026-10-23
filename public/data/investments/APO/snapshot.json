@@ -1,10 +1,10 @@
 {
   "symbol": "APO",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.6438,
-      "ttmPe": 42.07,
-      "pegRatio": 0.37,
-      "marketCap": 64059583596,
-      "psRatio": 1.78,
-      "pbRatio": 3.05
+      "ttmPe": 43.43,
+      "pegRatio": 0.38,
+      "marketCap": 66138841794,
+      "psRatio": 1.84,
+      "pbRatio": 3.15
     },
     "profitability": {
       "roe": 4.71,
@@ -5647,25 +5647,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.000000000000002,
-      "costOfEquity": 16.8,
+      "wacc": 14.14,
+      "costOfEquity": 16.88,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 16,
-      "beta": 1.5073,
-      "marketCap": 64059583596
+      "beta": 1.5075,
+      "marketCap": 66138841794
     },
     "beta": {
-      "beta5y": 1.5073
+      "beta5y": 1.5075
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 124.86,
-        "high": 127.3,
-        "low": 124.45,
-        "close": 125.98,
-        "volume": 3604900
-      },
       {
         "date": "2025-10-22",
         "open": 126.24,
@@ -7673,6 +7665,14 @@
         "low": 110.97,
         "close": 111.69,
         "volume": 4117200
+      },
+      {
+        "date": "2026-10-22",
+        "open": 109.99,
+        "high": 114.86,
+        "low": 109.91,
+        "close": 114.83,
+        "volume": 4208300
       }
     ],
     "news": [
@@ -7733,19 +7733,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
-        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6bc6fa76-dff5-3f25-af7e-62b726704292",
         "title": "Private Credit Has a Problem: Too Much Money",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/6bc6fa76-dff5-3f25-af7e-62b726704292/private-credit-has-a-problem%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
+        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
         "type": "STORY"
       },
       {
@@ -7822,43 +7822,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.07,
-        "industryAvg": 22.71
+        "value": 43.43,
+        "industryAvg": 23.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.78,
-        "industryAvg": 3.1
+        "value": 1.84,
+        "industryAvg": 3.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.05,
-        "industryAvg": 2.56
+        "value": 3.15,
+        "industryAvg": 2.69
       },
       {
         "metric": "ROE",
         "value": 4.71,
-        "industryAvg": 7.33
+        "industryAvg": 5.7700000000000005
       },
       {
         "metric": "ROA",
         "value": 0.2,
-        "industryAvg": 0.67
+        "industryAvg": 0.52
       },
       {
         "metric": "Gross Margin",
         "value": 96.1,
-        "industryAvg": 33.25
+        "industryAvg": 33.2
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.37,
-        "industryAvg": 41.19
+        "industryAvg": 38.98
       },
       {
         "metric": "Net Margin",
         "value": 8.649999999999999,
-        "industryAvg": 6.5
+        "industryAvg": 5.11
       }
     ]
   }

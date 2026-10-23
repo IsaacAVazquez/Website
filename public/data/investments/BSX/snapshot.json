@@ -1,13 +1,14 @@
 {
   "symbol": "BSX",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
-      "fundamentals"
+      "fundamentals",
+      "industry"
     ]
   },
   "source": "prefetched",
@@ -43,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.4661,
-      "ttmPe": 18.05,
-      "pegRatio": 1.18,
-      "marketCap": 64392870707,
-      "psRatio": 3.07,
-      "pbRatio": 2.58
+      "ttmPe": 18.66,
+      "pegRatio": 1.22,
+      "marketCap": 66562929257,
+      "psRatio": 3.17,
+      "pbRatio": 2.67
     },
     "profitability": {
       "roe": 3.5700000000000003,
@@ -6639,25 +6640,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.27,
-      "costOfEquity": 9.76,
+      "wacc": 8.21,
+      "costOfEquity": 9.65,
       "costOfDebt": 0.76,
       "taxRate": 15,
-      "beta": 0.5976,
-      "marketCap": 64392870707
+      "beta": 0.5934,
+      "marketCap": 66562929257
     },
     "beta": {
-      "beta5y": 0.5976
+      "beta5y": 0.5934
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 99.83,
-        "high": 100.33,
-        "low": 99.29,
-        "close": 99.9,
-        "volume": 8955900
-      },
       {
         "date": "2025-10-22",
         "open": 103.1,
@@ -8665,6 +8658,14 @@
         "low": 43.92,
         "close": 44.51,
         "volume": 15186600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 44.72,
+        "high": 46.05,
+        "low": 44.62,
+        "close": 46.01,
+        "volume": 16391000
       }
     ],
     "news": [
@@ -8685,19 +8686,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
-        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a042a14e-e4f0-3fab-bde6-907c05b8f8ff",
         "title": "Intelligent Bio Solutions Stock Drops Despite Key U.S. Patent Win",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/intelligent-bio-solutions-stock-drops-144800234.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
         "type": "STORY"
       },
       {

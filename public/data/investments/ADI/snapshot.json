@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 47.12,
-      "marketCap": 192396731775,
-      "psRatio": 13.86,
-      "pbRatio": 5.73,
-      "pegRatio": 0.29
+      "ttmPe": 45.78,
+      "marketCap": 186925987280,
+      "psRatio": 13.47,
+      "pbRatio": 5.57,
+      "pegRatio": 0.28
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,25 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.2,
-      "costOfEquity": 14.829999999999998,
+      "wacc": 14.24,
+      "costOfEquity": 14.89,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2526,
-      "marketCap": 192396731775
+      "beta": 1.2548,
+      "marketCap": 186925987280
     },
     "beta": {
-      "beta5y": 1.2526
+      "beta5y": 1.2548
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 247.84,
-        "high": 248.83,
-        "low": 245.61,
-        "close": 246.37,
-        "volume": 2361300
-      },
       {
         "date": "2025-10-22",
         "open": 240.54,
@@ -8128,6 +8120,14 @@
         "low": 395.06,
         "close": 405.96,
         "volume": 3024400
+      },
+      {
+        "date": "2026-10-22",
+        "open": 398.02,
+        "high": 399.99,
+        "low": 385.31,
+        "close": 385.76,
+        "volume": 6584700
       }
     ],
     "news": [
@@ -8196,19 +8196,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
+        "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
         "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
-        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
         "type": "STORY"
       }
     ],
@@ -8281,18 +8281,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.12,
-        "industryAvg": 27.53
+        "value": 45.78,
+        "industryAvg": 26.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.86,
-        "industryAvg": 13.11
+        "value": 13.47,
+        "industryAvg": 12.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.73,
-        "industryAvg": 11.37
+        "value": 5.57,
+        "industryAvg": 10.98
       },
       {
         "metric": "ROE",

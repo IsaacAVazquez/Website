@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.9972,
-      "ttmPe": 39.72,
-      "marketCap": 195539664000,
-      "psRatio": 7.55,
-      "pbRatio": 13.99,
-      "pegRatio": 0.66
+      "ttmPe": 36.59,
+      "marketCap": 180132164000,
+      "psRatio": 6.95,
+      "pbRatio": 12.89,
+      "pegRatio": 0.61
     },
     "profitability": {
       "roe": 6.81,
@@ -5306,24 +5306,16 @@
     },
     "wacc": {
       "wacc": 13.530000000000001,
-      "costOfEquity": 14.760000000000002,
+      "costOfEquity": 14.87,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.2439,
-      "marketCap": 195539664000
+      "beta": 1.2529,
+      "marketCap": 180132164000
     },
     "beta": {
-      "beta5y": 1.2439
+      "beta5y": 1.2529
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 63.905,
-        "high": 64.045,
-        "low": 62.175,
-        "close": 62.22,
-        "volume": 15854400
-      },
       {
         "date": "2025-10-22",
         "open": 67.675,
@@ -7331,23 +7323,31 @@
         "low": 79.14,
         "close": 79.2,
         "volume": 12126600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 77.06,
+        "high": 77.34,
+        "low": 72.23,
+        "close": 73.07,
+        "volume": 18416400
       }
     ],
     "news": [
-      {
-        "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
-        "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
-        "type": "STORY"
-      },
       {
         "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
         "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
         "publisher": "StockStory",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
+        "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
         "type": "STORY"
       },
       {
@@ -7367,14 +7367,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
         "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
         "publisher": "Zacks",
@@ -7383,11 +7375,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
-        "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -7396,6 +7388,14 @@
         "publisher": "MarketWatch",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
+        "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
         "type": "STORY"
       },
       {
@@ -7482,18 +7482,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.72,
-        "industryAvg": 39.11
+        "value": 36.59,
+        "industryAvg": 36.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.55,
-        "industryAvg": 3.33
+        "value": 6.95,
+        "industryAvg": 3.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.99,
-        "industryAvg": 6.44
+        "value": 12.89,
+        "industryAvg": 5.97
       },
       {
         "metric": "ROE",

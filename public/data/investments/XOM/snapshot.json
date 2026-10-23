@@ -1,10 +1,10 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.7709,
-      "ttmPe": 22.89,
-      "marketCap": 731360320000,
+      "ttmPe": 22.94,
+      "marketCap": 732881760000,
       "psRatio": 2.03,
-      "pbRatio": 2.82,
+      "pbRatio": 2.83,
       "pegRatio": 0.2
     },
     "profitability": {
@@ -5187,25 +5187,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.2,
-      "costOfEquity": 6.54,
+      "wacc": 6.04,
+      "costOfEquity": 6.370000000000001,
       "costOfDebt": 0.54,
       "taxRate": 24,
-      "beta": 0.1829,
-      "marketCap": 731360320000
+      "beta": 0.1786,
+      "marketCap": 732881760000
     },
     "beta": {
-      "beta5y": 0.1829
+      "beta5y": 0.1786
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 112.89,
-        "high": 113.36,
-        "low": 111.99,
-        "close": 112.71,
-        "volume": 9202300
-      },
       {
         "date": "2025-10-22",
         "open": 113.45,
@@ -7213,6 +7205,14 @@
         "low": 176.15,
         "close": 178.09,
         "volume": 11214000
+      },
+      {
+        "date": "2026-10-22",
+        "open": 179.89,
+        "high": 180.31,
+        "low": 174.63,
+        "close": 178.23,
+        "volume": 11564300
       }
     ],
     "news": [
@@ -7273,19 +7273,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
-        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
         "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
+        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
         "type": "STORY"
       },
       {
@@ -7362,8 +7362,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.89,
-        "industryAvg": 12.78
+        "value": 22.94,
+        "industryAvg": 12.83
       },
       {
         "metric": "P/S Ratio",
@@ -7372,8 +7372,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.82,
-        "industryAvg": 1.74
+        "value": 2.83,
+        "industryAvg": 1.75
       },
       {
         "metric": "ROE",

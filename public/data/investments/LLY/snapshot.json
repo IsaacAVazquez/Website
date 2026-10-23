@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
       "fundamentals"
@@ -35,7 +35,7 @@
       "country": "United States",
       "industry": "Drug Manufacturers-General",
       "sector": "Healthcare",
-      "longBusinessSummary": "Eli Lilly and Company discovers, develops, manufactures, and markets human pharmaceutical products in the United States, Europe, China, Japan, and internationally. The company offers cardiometabolic health products, including Basaglar, Humalog, Humalog Mix 75/25, Humalog U-100, Humalog U-200, Humalog Mix 50/50, insulin lispro, insulin lispro protamine, insulin lispro mix 75/25, Humulin, Humulin 70/30, Humulin N, Humulin R, Humulin U-500 for diabetes; Jardiance, Mounjaro, and Trulicity for type 2 diabetes; and Zepbound for obesity. It also provides oncology products, such as Cyramza for the second-line treatment of gastric cancer or gastro-esophageal junction adenocarcinoma; Erbitux for colorectal cancers and head and neck cancers; Inluriyo for breast cancer; Jaypirca for chronic lymphocytic leukemia or small lymphocytic lymphoma; Retevmo for the treatment of metastatic NSCLC; TYVYT for classic hodgkin's lymphoma; and Verzenio for breast cancer. In addition, the company offers immunology products, which include Ebglyss; Olumiant; Omvoh; and Taltz. Further, it provides Emgality for migraine prevention and episodic cluster headache; and Kisubla for symptomatic Alzheimer's disease. The company has collaborations with Boehringer Ingelheim Pharmaceuticals, Inc. for the Jardiance product family; and F. Hoffmann-La Roche Ltd and Genentech, Inc. for lebrikizumab, as well as license agreements with Almirall, S.A. for Ebglyss; and Chugai Pharmaceutical Co., Ltd for orforglipron; strategic collaboration with Ascidian Therapeutics for development of therapies for undisclosed monogenic kidney diseases; BioArctic AB (publ) for new treatment; QurCan Therapeutics Inc for development of PLNP-enabled genetic medicine therapeutics for the treatment of central nervous system and peripheral nervous system; and Abbisko Therapeutics for discovery and development of medicines across multiple targets. Eli Lilly and Company was founded in 1876 and is headquartered in Indianapolis, Indiana.",
+      "longBusinessSummary": "Eli Lilly and Company discovers, develops, manufactures, and markets human pharmaceutical products in the United States, Europe, China, Japan, and internationally. The company offers cardiometabolic health products, including Basaglar, Humalog, Humalog Mix 75/25, Humalog U-100, Humalog U-200, Humalog Mix 50/50, insulin lispro, insulin lispro protamine, insulin lispro mix 75/25, Humulin, Humulin 70/30, Humulin N, Humulin R, Humulin U-500 for diabetes; Jardiance, Mounjaro, and Trulicity for type 2 diabetes; and Zepbound for obesity. It also provides oncology products, such as Cyramza for the second-line treatment of gastric cancer or gastro-esophageal junction adenocarcinoma; Erbitux for colorectal cancers and head and neck cancers; Inluriyo for breast cancer; Jaypirca for chronic lymphocytic leukemia or small lymphocytic lymphoma; Retevmo for the treatment of metastatic NSCLC; TYVYT for classic hodgkin's lymphoma; and Verzenio for breast cancer. In addition, the company offers immunology products, which include Ebglyss; Olumiant; Omvoh; and Taltz. Further, it provides Emgality for migraine prevention and episodic cluster headache; and Kisubla for symptomatic Alzheimer's disease. The company has collaborations with Boehringer Ingelheim Pharmaceuticals, Inc. for the Jardiance product family; and F. Hoffmann-La Roche Ltd and Genentech, Inc. for lebrikizumab, as well as license agreements with Almirall, S.A. for Ebglyss; and Chugai Pharmaceutical Co., Ltd for orforglipron; strategic collaboration with Ascidian Therapeutics for development of therapies for undisclosed monogenic kidney diseases; BioArctic AB (publ) for new treatment; QurCan Therapeutics Inc for development of PLNP-enabled genetic medicine therapeutics for the treatment of central nervous system and peripheral nervous system; and Abbisko Therapeutics for discovery and development of medicines across multiple targets. Eli Lilly and Company has a strategic partnership with Metis TechBio Co., Ltd. The company was founded in 1876 and is headquartered in Indianapolis, Indiana.",
       "fullTimeEmployees": 50000,
       "website": "https://www.lilly.com",
       "shortName": "Eli Lilly and Company",
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.4291,
-      "ttmPe": 43.62,
-      "pegRatio": 1.67,
-      "marketCap": 1208565890000,
-      "psRatio": 15.17,
-      "pbRatio": 35.67
+      "ttmPe": 44.4,
+      "pegRatio": 1.7,
+      "marketCap": 1230248540850,
+      "psRatio": 15.44,
+      "pbRatio": 36.31
     },
     "profitability": {
       "roe": 21.8,
@@ -6012,25 +6012,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.12,
-      "costOfEquity": 8.39,
+      "wacc": 7.99,
+      "costOfEquity": 8.25,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.4214,
-      "marketCap": 1208565890000
+      "beta": 0.4155,
+      "marketCap": 1230248540850
     },
     "beta": {
-      "beta5y": 0.4214
+      "beta5y": 0.4155
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 806.93,
-        "high": 812.99,
-        "low": 798.71,
-        "close": 799.57,
-        "volume": 2099500
-      },
       {
         "date": "2025-10-22",
         "open": 798.4,
@@ -8038,6 +8030,14 @@
         "low": 1261.08,
         "close": 1270.75,
         "volume": 1875800
+      },
+      {
+        "date": "2026-10-22",
+        "open": 1281.76,
+        "high": 1321.21,
+        "low": 1275.1,
+        "close": 1306.6899,
+        "volume": 2654400
       }
     ],
     "news": [
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.62,
-        "industryAvg": 27.51
+        "value": 44.4,
+        "industryAvg": 27.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.17,
-        "industryAvg": 4.97
+        "value": 15.44,
+        "industryAvg": 5.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 35.67,
-        "industryAvg": 6.1
+        "value": 36.31,
+        "industryAvg": 6.19
       },
       {
         "metric": "ROE",

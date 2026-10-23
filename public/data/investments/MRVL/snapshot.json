@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 79.17,
-      "marketCap": 210800256000,
-      "psRatio": 22.31,
-      "pbRatio": 11.38,
-      "pegRatio": 1.6
+      "ttmPe": 73.58,
+      "marketCap": 195938496000,
+      "psRatio": 20.73,
+      "pbRatio": 10.57,
+      "pegRatio": 1.49
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 21.97,
-      "costOfEquity": 22.49,
+      "wacc": 22.2,
+      "costOfEquity": 22.770000000000003,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2413,
-      "marketCap": 210800256000
+      "beta": 2.2516,
+      "marketCap": 195938496000
     },
     "beta": {
-      "beta5y": 2.2413
+      "beta5y": 2.2516
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 85.69,
-        "high": 85.93,
-        "low": 83.1,
-        "close": 84.26,
-        "volume": 13242100
-      },
       {
         "date": "2025-10-22",
         "open": 81.23,
@@ -7980,7 +7972,15 @@
         "high": 250.12,
         "low": 237.8,
         "close": 244.76,
-        "volume": 14250000
+        "volume": 14400600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 231.2,
+        "high": 236.2,
+        "low": 220.21,
+        "close": 223.47,
+        "volume": 24837000
       }
     ],
     "news": [
@@ -8041,11 +8041,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
-        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
-        "publisher": "The Fly",
+        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
+        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
+        "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
+        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
         "type": "STORY"
       },
       {
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ed708cc-4393-3b86-93c6-18b8e7eb5389",
-        "title": "What To Expect From Marvell Technology’s (MRVL) Q1 Earnings",
-        "publisher": "StockStory",
+        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
+        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
+        "publisher": "The Fly",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
+        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 79.17,
-        "industryAvg": 27.53
+        "value": 73.58,
+        "industryAvg": 26.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.31,
-        "industryAvg": 13.11
+        "value": 20.73,
+        "industryAvg": 12.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.38,
-        "industryAvg": 11.37
+        "value": 10.57,
+        "industryAvg": 10.98
       },
       {
         "metric": "ROE",
