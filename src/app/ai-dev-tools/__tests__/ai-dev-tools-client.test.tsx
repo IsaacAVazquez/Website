@@ -48,7 +48,7 @@ describe("AiDevToolsClient", () => {
     render(<AiDevToolsClient />);
 
     expect(
-      screen.getByRole("heading", { level: 1, name: /ai dev tool ecosystem/i })
+      screen.getByRole("heading", { level: 1, name: /ai dev tool directory/i })
     ).toBeVisible();
     expect(screen.getByText(/tools shown/i)).toBeVisible();
 

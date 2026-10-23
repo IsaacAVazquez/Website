@@ -360,7 +360,7 @@ export function InvestmentsDashboard({
         ref={researchSectionRef}
         data-c97-surface="chocolate"
         className={`${styles.workspace} ${styles.researchPane}`}
-        aria-label="Research deep dive"
+        aria-label="Company research"
       >
         <div className="invest-section-header">
           <h2 className="invest-section-title">Research</h2>

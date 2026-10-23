@@ -76,7 +76,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/formula-1": {
     purpose:
-      "I use this dashboard to move between the next Grand Prix, the driver and constructor standings, and the result of each race without losing the season context. The point is a clean answer to where the championship stands and what changed at the last meeting.",
+      "I use this dashboard to move between the next Grand Prix, the driver and constructor standings, and the result of each race without losing the season context. The point is a clear answer to where the championship stands and what changed at the last meeting.",
   },
   "/frontier-models": {
     purpose:
@@ -92,7 +92,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/investments": {
     purpose:
-      "I use this workspace to move from a portfolio-level question into the company detail behind it, comparing price history, financial context, valuation ratios, and holdings without turning the research into a spreadsheet maze.",
+      "I use this workspace to move from a portfolio-level question into the company detail behind it, comparing price history, financial context, valuation ratios, and holdings without moving the research into a spreadsheet.",
   },
   "/la-liga": {
     purpose:
@@ -120,7 +120,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/news-pulse": {
     purpose:
-      "I built this to compare what major newsrooms are emphasizing at the same moment, then see which topics cross outlet lines and where the headline tone differs. It is a media coverage view, not another general news homepage.",
+      "I built this to compare what major newsrooms are emphasizing at the same moment, then see which topics cross outlet lines and where the headline tone differs. It is a media coverage view for comparing outlets against each other.",
   },
   "/nfl": {
     purpose:
@@ -160,7 +160,7 @@ export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext>
   },
   "/tech-startup-tracker": {
     purpose:
-      "I use this tracker to compare notable startups across sector, funding stage, valuation, capital raised, and recent financing without pretending that one number explains momentum. The goal is a research shortlist that can be sorted and inspected, not a definitive company ranking.",
+      "I use this tracker to compare notable startups across sector, funding stage, valuation, capital raised, and recent financing without pretending that one number explains momentum. The goal is a research shortlist that can be sorted and inspected, and I wouldn't read its order as a definitive company ranking.",
   },
   "/travel": {
     purpose:

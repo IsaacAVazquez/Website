@@ -40,7 +40,7 @@ export default function ResumePage() {
             url: "https://isaacvazquez.com/resume",
             lastReviewed: "2026-10-19",
             description:
-              "Isaac Vazquez's résumé: second-year Berkeley Haas MBA candidate with experience spanning QA systems, analytics, civic technology, and product growth.",
+              "Isaac Vazquez's résumé. He is a second-year Berkeley Haas MBA candidate with experience in QA systems, analytics, civic technology, and product growth.",
             person: {
               name: profile.name,
               jobTitle: profile.fullTitle,
