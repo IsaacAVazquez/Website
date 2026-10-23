@@ -420,6 +420,32 @@
     ],
     "recentFixtures": [
       {
+        "id": "560620",
+        "utcDate": "2026-10-23T19:00:00Z",
+        "status": "FINISHED",
+        "matchday": 8,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "349",
+          "name": "Ipswich Town FC",
+          "shortName": "Ipswich Town",
+          "tla": "IPS",
+          "crest": "https://crests.football-data.org/349.png"
+        },
+        "awayTeam": {
+          "id": "351",
+          "name": "Nottingham Forest FC",
+          "shortName": "Nottingham",
+          "tla": "NOT",
+          "crest": "https://crests.football-data.org/351.png"
+        },
+        "score": {
+          "winner": "DRAW",
+          "home": 1,
+          "away": 1
+        }
+      },
+      {
         "id": "560606",
         "utcDate": "2026-10-19T19:00:00Z",
         "status": "FINISHED",
@@ -599,32 +625,6 @@
           "winner": "HOME_TEAM",
           "home": 1,
           "away": 0
-        }
-      },
-      {
-        "id": "560610",
-        "utcDate": "2026-10-17T14:00:00Z",
-        "status": "FINISHED",
-        "matchday": 7,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "65",
-          "name": "Manchester City FC",
-          "shortName": "Man City",
-          "tla": "MCI",
-          "crest": "https://crests.football-data.org/65.png"
-        },
-        "awayTeam": {
-          "id": "349",
-          "name": "Ipswich Town FC",
-          "shortName": "Ipswich Town",
-          "tla": "IPS",
-          "crest": "https://crests.football-data.org/349.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 3,
-          "away": 2
         }
       }
     ],
@@ -1140,9 +1140,13 @@
       {
         "matchday": 7,
         "totalGoals": 26
+      },
+      {
+        "matchday": 8,
+        "totalGoals": 2
       }
     ],
-    "generatedAt": "2026-10-23T19:57:51.649Z"
+    "generatedAt": "2026-10-23T23:10:08.709Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1439,7 +1443,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "58": {
       "team": {
@@ -1735,7 +1739,7 @@
         "goalsFor": 7,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "61": {
       "team": {
@@ -2031,7 +2035,7 @@
         "goalsFor": 10,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "62": {
       "team": {
@@ -2327,7 +2331,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "63": {
       "team": {
@@ -2623,7 +2627,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "64": {
       "team": {
@@ -2919,7 +2923,7 @@
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "65": {
       "team": {
@@ -3215,7 +3219,7 @@
         "goalsFor": 13,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "66": {
       "team": {
@@ -3511,7 +3515,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "67": {
       "team": {
@@ -3807,7 +3811,7 @@
         "goalsFor": 6,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "71": {
       "team": {
@@ -4103,7 +4107,7 @@
         "goalsFor": 4,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "73": {
       "team": {
@@ -4399,7 +4403,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "322": {
       "team": {
@@ -4695,7 +4699,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "341": {
       "team": {
@@ -4991,7 +4995,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "349": {
       "team": {
@@ -5009,6 +5013,32 @@
         "manager": "Gary O'Neil"
       },
       "recentFixtures": [
+        {
+          "id": "560620",
+          "utcDate": "2026-10-23T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 8,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "349",
+            "name": "Ipswich Town FC",
+            "shortName": "Ipswich Town",
+            "tla": "IPS",
+            "crest": "https://crests.football-data.org/349.png"
+          },
+          "awayTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "score": {
+            "winner": "DRAW",
+            "home": 1,
+            "away": 1
+          }
+        },
         {
           "id": "560610",
           "utcDate": "2026-10-17T14:00:00Z",
@@ -5111,32 +5141,6 @@
             "winner": "AWAY_TEAM",
             "home": 2,
             "away": 3
-          }
-        },
-        {
-          "id": "560566",
-          "utcDate": "2026-09-04T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 3,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "349",
-            "name": "Ipswich Town FC",
-            "shortName": "Ipswich Town",
-            "tla": "IPS",
-            "crest": "https://crests.football-data.org/349.png"
-          },
-          "awayTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 2
           }
         }
       ],
@@ -5274,20 +5278,20 @@
       ],
       "form": {
         "sequence": [
+          "D",
           "L",
           "W",
           "L",
-          "W",
-          "L"
+          "W"
         ],
         "wins": 2,
-        "draws": 0,
-        "losses": 3,
-        "points": 6,
-        "goalsFor": 7,
-        "goalsAgainst": 9
+        "draws": 1,
+        "losses": 2,
+        "points": 7,
+        "goalsFor": 8,
+        "goalsAgainst": 8
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "351": {
       "team": {
@@ -5305,6 +5309,32 @@
         "manager": "Oliver Glasner"
       },
       "recentFixtures": [
+        {
+          "id": "560620",
+          "utcDate": "2026-10-23T19:00:00Z",
+          "status": "FINISHED",
+          "matchday": 8,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "349",
+            "name": "Ipswich Town FC",
+            "shortName": "Ipswich Town",
+            "tla": "IPS",
+            "crest": "https://crests.football-data.org/349.png"
+          },
+          "awayTeam": {
+            "id": "351",
+            "name": "Nottingham Forest FC",
+            "shortName": "Nottingham",
+            "tla": "NOT",
+            "crest": "https://crests.football-data.org/351.png"
+          },
+          "score": {
+            "winner": "DRAW",
+            "home": 1,
+            "away": 1
+          }
+        },
         {
           "id": "560608",
           "utcDate": "2026-10-18T15:30:00Z",
@@ -5407,32 +5437,6 @@
             "winner": "AWAY_TEAM",
             "home": 1,
             "away": 2
-          }
-        },
-        {
-          "id": "560562",
-          "utcDate": "2026-09-05T14:00:00Z",
-          "status": "FINISHED",
-          "matchday": 3,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "351",
-            "name": "Nottingham Forest FC",
-            "shortName": "Nottingham",
-            "tla": "NOT",
-            "crest": "https://crests.football-data.org/351.png"
-          },
-          "awayTeam": {
-            "id": "73",
-            "name": "Tottenham Hotspur FC",
-            "shortName": "Tottenham",
-            "tla": "TOT",
-            "crest": "https://crests.football-data.org/73.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 0,
-            "away": 0
           }
         }
       ],
@@ -5570,20 +5574,20 @@
       ],
       "form": {
         "sequence": [
+          "D",
           "L",
           "L",
           "L",
-          "W",
-          "D"
+          "W"
         ],
         "wins": 1,
         "draws": 1,
         "losses": 3,
         "points": 4,
-        "goalsFor": 3,
-        "goalsAgainst": 6
+        "goalsFor": 4,
+        "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "354": {
       "team": {
@@ -5879,7 +5883,7 @@
         "goalsFor": 8,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "397": {
       "team": {
@@ -6175,7 +6179,7 @@
         "goalsFor": 16,
         "goalsAgainst": 1
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "402": {
       "team": {
@@ -6471,7 +6475,7 @@
         "goalsFor": 9,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "1044": {
       "team": {
@@ -6767,7 +6771,7 @@
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     },
     "1076": {
       "team": {
@@ -7063,7 +7067,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-23T19:57:51.649Z"
+      "generatedAt": "2026-10-23T23:10:08.709Z"
     }
   }
 }
