@@ -41,6 +41,7 @@ import {
 import { clamp } from "@/lib/utils";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { FareGaugeSignature } from "./FareGaugeSignature";
+import { FlightQuoteComparison } from "./FlightQuoteComparison";
 import "./travel-deals.css";
 
 /** The whole-party quote cap, as the fare checker had it, so a 12-seat long-haul quote still fits. */
@@ -244,6 +245,7 @@ export function TravelDealLabClient() {
           </p>
         </header>
 
+        <FlightQuoteComparison />
         <div className="td-calc" data-testid="travel-deals-shell">
           <div className="td-inputs" role="group" aria-label="Your trip and fare">
             <label className="td-field">
