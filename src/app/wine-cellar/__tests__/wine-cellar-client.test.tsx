@@ -49,6 +49,23 @@ describe("WineCellarClient", () => {
     expect(window.localStorage.getItem(WINE_CELLAR_STORAGE_KEY)).toContain("Barolo");
   });
 
+  it("moves a wishlist wine onto the shelf and opens it through the tasting form", () => {
+    render(<WineCellarClient />);
+    fireEvent.click(screen.getByRole("button", { name: "Wishlist" }));
+    fireEvent.click(screen.getByText("Add a wine to the wishlist"));
+    fireEvent.change(screen.getByLabelText("Inventory wine name"), { target: { value: "Chenin" } });
+    fireEvent.click(screen.getByRole("button", { name: "Save to wishlist" }));
+    fireEvent.click(screen.getByRole("button", { name: "Bought a bottle" }));
+    fireEvent.click(screen.getByRole("button", { name: "Owned bottles" }));
+    expect(screen.getByLabelText("Quantity of Chenin")).toHaveValue(1);
+    fireEvent.click(screen.getByRole("button", { name: "Open bottle of Chenin" }));
+    expect(screen.getByLabelText("Wine name")).toHaveValue("Chenin");
+    fireEvent.click(screen.getByRole("button", { name: "Add tasting" }));
+    expect(screen.getByLabelText("Quantity of Chenin")).toHaveValue(0);
+    expect(within(screen.getByRole("region", { name: "Tasting log" })).getByText("Chenin")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Open bottle of Chenin" })).toBeDisabled();
+  });
+
   it("filters, resets, edits, and deletes an existing bottle", () => {
     window.localStorage.setItem(
       WINE_CELLAR_STORAGE_KEY,
