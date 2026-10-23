@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Financial Data & Stock Exchanges",
       "sector": "Financial Services",
       "longBusinessSummary": "Moody's Corporation, together with its subsidiaries, operates as an integrated risk assessment firm in the United States, the rest of the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through two segments, Moody's Analytics (MA) and Moody's Investors Service (MIS). The MA segment develops a range of products and services that support the risk management activities of institutional participants in financial markets. This segment also offers credit research, credit models and analytics, economic data and models, and structured finance solutions; data sets on companies and securities; and cloud-based SaaS subscription solutions supporting banking, insurance, and know-your-customer workflows. The MIS segment publishes credit ratings and provides assessment services on various debt obligations, programs and facilities, and entities that issue such obligations, including corporate, financial institution, and governmental obligations, as well as structured finance securities. It also provides ratings, investment research, compliance and third-party risk, supplier risk, trade credit, business intelligence sales and marketing, financial and regulatory reporting, balance sheet management, capital management, credit portfolio management, and model risk and governance solutions; Maxsight, a unified risk platform; lending suite, origination, and monitoring solutions; and property, casualty, and sustainable insurance underwriting solutions. The company serves the financial, banking, insurance, corporate, public, and asset management sectors. The company was formerly known as Dun and Bradstreet Company and changed its name to Moody's Corporation in September 2000. Moody's Corporation was founded in 1900 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 16000,
+      "fullTimeEmployees": 16076,
       "website": "https://www.moodys.com",
       "shortName": "Moody's Corporation",
       "longName": "Moody's Corporation"
     },
     "fundamentals": {
       "ttmEps": 15.77,
-      "ttmPe": 30.14,
-      "marketCap": 82321588350,
-      "psRatio": 10.09,
-      "pbRatio": 27.21,
-      "pegRatio": 0.53
+      "ttmPe": 31.14,
+      "marketCap": 85040530050,
+      "psRatio": 10.42,
+      "pbRatio": 28.11,
+      "pegRatio": 0.55
     },
     "profitability": {
       "roe": 29.17,
@@ -6394,25 +6394,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.04,
-      "costOfEquity": 15.260000000000002,
+      "wacc": 14.08,
+      "costOfEquity": 15.27,
       "costOfDebt": 0.89,
       "taxRate": 25,
-      "beta": 1.3089,
-      "marketCap": 82321588350
+      "beta": 1.3037,
+      "marketCap": 85040530050
     },
     "beta": {
-      "beta5y": 1.3089
+      "beta5y": 1.3037
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 477.13,
-        "high": 486.59,
-        "low": 474.64,
-        "close": 484.92,
-        "volume": 1334200
-      },
       {
         "date": "2025-10-22",
         "open": 483.35,
@@ -8420,6 +8412,14 @@
         "low": 455.65,
         "close": 481.05,
         "volume": 1924600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 478.09,
+        "high": 491.05,
+        "low": 476.85,
+        "close": 491.05,
+        "volume": 1054300
       }
     ],
     "news": [
@@ -8432,14 +8432,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
-        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
         "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
         "publisher": "Bloomberg",
@@ -8448,11 +8440,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
-        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
+        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
+        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
         "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
         "type": "STORY"
       },
       {
@@ -8461,6 +8453,14 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
+        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
         "type": "STORY"
       },
       {
@@ -8480,6 +8480,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
+        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
         "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
         "publisher": "Bloomberg",
@@ -8493,14 +8501,6 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
-        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       }
     ],
@@ -8565,18 +8565,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.14,
-        "industryAvg": 25.4
+        "value": 31.14,
+        "industryAvg": 26.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.09,
-        "industryAvg": 7.87
+        "value": 10.42,
+        "industryAvg": 8.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.21,
-        "industryAvg": 4.06
+        "value": 28.11,
+        "industryAvg": 4.24
       },
       {
         "metric": "ROE",

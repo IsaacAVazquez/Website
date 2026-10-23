@@ -1,10 +1,10 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 39.7715,
-      "ttmPe": 13.57,
-      "marketCap": 1159284502980,
-      "psRatio": 2.92,
-      "pbRatio": 1.55,
+      "ttmPe": 13.75,
+      "marketCap": 1174639406830,
+      "psRatio": 2.96,
+      "pbRatio": 1.57,
       "pegRatio": 0.13
     },
     "profitability": {
@@ -4542,25 +4542,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.86,
-      "costOfEquity": 9.75,
+      "wacc": 8.780000000000001,
+      "costOfEquity": 9.65,
       "costOfDebt": 1.04,
       "taxRate": 20,
-      "beta": 0.5975,
-      "marketCap": 1159284502980
+      "beta": 0.5923,
+      "marketCap": 1174639406830
     },
     "beta": {
-      "beta5y": 0.5975
+      "beta5y": 0.5923
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 493.7,
-        "high": 495.7,
-        "low": 491.25,
-        "close": 491.29,
-        "volume": 2714500
-      },
       {
         "date": "2025-10-22",
         "open": 491.73,
@@ -6568,23 +6560,31 @@
         "low": 538.99,
         "close": 538.99,
         "volume": 5111900
+      },
+      {
+        "date": "2026-10-22",
+        "open": 544,
+        "high": 549.96,
+        "low": 542.01,
+        "close": 546.97,
+        "volume": 5701000
       }
     ],
     "news": [
-      {
-        "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
-        "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
-        "type": "STORY"
-      },
       {
         "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
         "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
         "publisher": "Zacks",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
+        "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
         "type": "STORY"
       },
       {
@@ -6712,18 +6712,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.57,
-        "industryAvg": 17.71
+        "value": 13.75,
+        "industryAvg": 17.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.92,
-        "industryAvg": 2.73
+        "value": 2.96,
+        "industryAvg": 2.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.55,
-        "industryAvg": 1.54
+        "value": 1.57,
+        "industryAvg": 1.56
       },
       {
         "metric": "ROE",

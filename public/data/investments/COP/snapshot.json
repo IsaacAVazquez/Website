@@ -1,10 +1,10 @@
 {
   "symbol": "COP",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 7.548,
-      "ttmPe": 19.34,
-      "marketCap": 175335208125,
-      "psRatio": 2.77,
+      "ttmPe": 19.29,
+      "marketCap": 174950780125,
+      "psRatio": 2.76,
       "pbRatio": 2.68,
       "pegRatio": 0.18
     },
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.12,
-      "costOfEquity": 6.83,
+      "wacc": 5.949999999999999,
+      "costOfEquity": 6.64,
       "costOfDebt": 1.21,
       "taxRate": 35,
-      "beta": 0.221,
-      "marketCap": 175335208125
+      "beta": 0.2126,
+      "marketCap": 174950780125
     },
     "beta": {
-      "beta5y": 0.221
+      "beta5y": 0.2126
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 87.25,
-        "high": 87.68,
-        "low": 86.24,
-        "close": 86.41,
-        "volume": 5895500
-      },
       {
         "date": "2025-10-22",
         "open": 87.27,
@@ -7637,6 +7629,14 @@
         "low": 143.94,
         "close": 145.67,
         "volume": 6294700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 146.85,
+        "high": 147.55,
+        "low": 143.31,
+        "close": 145.63,
+        "volume": 5575200
       }
     ],
     "news": [
@@ -7786,18 +7786,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.34,
-        "industryAvg": 14.57
+        "value": 19.29,
+        "industryAvg": 14.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.77,
+        "value": 2.76,
         "industryAvg": 2.78
       },
       {
         "metric": "P/B Ratio",
         "value": 2.68,
-        "industryAvg": 1.84
+        "industryAvg": 1.82
       },
       {
         "metric": "ROE",

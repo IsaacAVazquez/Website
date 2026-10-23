@@ -1,10 +1,10 @@
 {
   "symbol": "PNC",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.803,
-      "ttmPe": 11.75,
-      "marketCap": 87786642174,
-      "psRatio": 3.57,
-      "pbRatio": 1.37,
-      "pegRatio": 0.82
+      "ttmPe": 11.99,
+      "marketCap": 89590123578,
+      "psRatio": 3.65,
+      "pbRatio": 1.4,
+      "pegRatio": 0.84
     },
     "profitability": {
       "roe": 3.04,
@@ -5592,25 +5592,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.35,
-      "costOfEquity": 12.2,
+      "wacc": 7.39,
+      "costOfEquity": 12.18,
       "costOfDebt": 3.02,
       "taxRate": 21,
-      "beta": 0.9141,
-      "marketCap": 87786642174
+      "beta": 0.9128,
+      "marketCap": 89590123578
     },
     "beta": {
-      "beta5y": 0.9141
+      "beta5y": 0.9128
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 182.31,
-        "high": 183.32,
-        "low": 181.25,
-        "close": 181.91,
-        "volume": 3395600
-      },
       {
         "date": "2025-10-22",
         "open": 182.51,
@@ -7618,6 +7610,14 @@
         "low": 221.56,
         "close": 222.89,
         "volume": 1665700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 221.61,
+        "high": 225.68,
+        "low": 221.56,
+        "close": 225.53,
+        "volume": 2041400
       }
     ],
     "news": [
@@ -7694,11 +7694,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d501b543-8a7b-30e2-a6ea-7ee6a98823b0",
-        "title": "PNC Bank Agrees to Acquire Aqueduct Capital Group to Complement Harris Williams Capabilities",
-        "publisher": "PR Newswire",
+        "uuid": "808e1989-20d7-31bc-a90a-c9e60cbf69d7",
+        "title": "PNC Financial Services' PNC Bank to Buy Aqueduct Capital",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/pnc-bank-agrees-acquire-aqueduct-202800063.html",
+        "link": "https://finance.yahoo.com/news/pnc-financial-services-apos-pnc-204926054.html",
         "type": "STORY"
       }
     ],
@@ -7768,17 +7768,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.75,
-        "industryAvg": 11.77
+        "value": 11.99,
+        "industryAvg": 11.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.57,
-        "industryAvg": 3.03
+        "value": 3.65,
+        "industryAvg": 2.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.37,
+        "value": 1.4,
         "industryAvg": 1.24
       },
       {

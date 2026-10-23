@@ -1,10 +1,10 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4217,
-      "ttmPe": 26.68,
-      "marketCap": 129157776000,
-      "psRatio": 8.01,
-      "pbRatio": 4.1,
-      "pegRatio": 1.52
+      "ttmPe": 27.59,
+      "marketCap": 133573880000,
+      "psRatio": 8.29,
+      "pbRatio": 4.24,
+      "pegRatio": 1.57
     },
     "profitability": {
       "roe": 3.88,
@@ -5711,25 +5711,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.91,
-      "costOfEquity": 13.3,
+      "wacc": 11.89,
+      "costOfEquity": 13.23,
       "costOfDebt": 0.5599999999999999,
       "taxRate": 24,
-      "beta": 1.0552,
-      "marketCap": 129157776000
+      "beta": 1.0461,
+      "marketCap": 133573880000
     },
     "beta": {
-      "beta5y": 1.0552
+      "beta5y": 1.0461
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 452.6206,
-        "high": 459.5081,
-        "low": 451.7881,
-        "close": 457.701,
-        "volume": 1092092
-      },
       {
         "date": "2025-10-22",
         "open": 456.0643,
@@ -7737,6 +7729,14 @@
         "low": 429.88,
         "close": 443.16,
         "volume": 2064000
+      },
+      {
+        "date": "2026-10-22",
+        "open": 444.65,
+        "high": 456.78,
+        "low": 444.65,
+        "close": 453.1,
+        "volume": 2933500
       }
     ],
     "news": [
@@ -7823,81 +7823,28 @@
     ],
     "officers": [
       {
-        "name": "Mr. Christopher Craig",
-        "title": "Senior VP, Controller & Chief Accounting Officer",
-        "age": 52,
-        "yearBorn": 1973,
-        "totalPay": 1458735
-      },
-      {
-        "name": "Mr. David Ernsberger",
-        "title": "President of S&P Global Energy",
-        "age": 50,
-        "yearBorn": 1975
-      },
-      {
-        "name": "Mr. Eric Walter Aboaf",
-        "title": "CFO & Executive VP",
-        "totalPay": 4905668
-      },
-      {
-        "name": "Mr. Firdaus Bhathena",
-        "title": "Executive VP and Chief Technology & Transformation Officer",
-        "age": 54,
-        "yearBorn": 1971
-      },
-      {
-        "name": "Mr. Girish Ganesan",
-        "title": "Executive VP & Chief People Officer",
-        "age": 44,
-        "yearBorn": 1981
-      },
-      {
-        "name": "Mr. Yann Le Pallec",
-        "title": "President of S&P Global Ratings"
-      },
-      {
-        "name": "Ms. Catherine R. Clay",
-        "title": "Chief Executive Officer of S&P Dow Jones Indices",
-        "age": 58,
-        "yearBorn": 1967
-      },
-      {
-        "name": "Ms. Christina Twomey",
-        "title": "Chief Communications Officer",
-        "age": 44,
-        "yearBorn": 1981
-      },
-      {
         "name": "Ms. Martina L. Cheung",
         "title": "President, CEO & Director",
         "age": 49,
         "yearBorn": 1976,
         "totalPay": 3850628
-      },
-      {
-        "name": "Ms. Sally Moore",
-        "title": "Executive VP, Chief Client Officer & Co-Head of Market Intelligence Kensho Data & Platforms",
-        "age": 49,
-        "yearBorn": 1976,
-        "totalPay": 2093472
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.68,
-        "industryAvg": 25.4
+        "value": 27.59,
+        "industryAvg": 26.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.01,
-        "industryAvg": 7.87
+        "value": 8.29,
+        "industryAvg": 8.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.1,
-        "industryAvg": 4.06
+        "value": 4.24,
+        "industryAvg": 4.24
       },
       {
         "metric": "ROE",

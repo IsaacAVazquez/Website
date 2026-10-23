@@ -1,10 +1,10 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.6677,
-      "ttmPe": 44.1,
-      "marketCap": 211391430420,
-      "psRatio": 15.57,
-      "pbRatio": 33.29,
-      "pegRatio": 3.06
+      "ttmPe": 40.31,
+      "marketCap": 193211296890,
+      "psRatio": 14.23,
+      "pbRatio": 30.43,
+      "pegRatio": 2.8
     },
     "profitability": {
       "roe": 22.38,
@@ -6266,25 +6266,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.690000000000001,
-      "costOfEquity": 16.12,
+      "wacc": 15.840000000000002,
+      "costOfEquity": 16.31,
       "costOfDebt": 1.1900000000000002,
       "taxRate": 12,
-      "beta": 1.4192,
-      "marketCap": 211391430420
+      "beta": 1.4345,
+      "marketCap": 193211296890
     },
     "beta": {
-      "beta5y": 1.4192
+      "beta5y": 1.4345
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 114.081,
-        "high": 115.632,
-        "low": 113.859,
-        "close": 114.743,
-        "volume": 7447000
-      },
       {
         "date": "2025-10-22",
         "open": 114.743,
@@ -8291,7 +8283,15 @@
         "high": 164.94,
         "low": 162.52,
         "close": 163.43,
-        "volume": 9659100
+        "volume": 9674500
+      },
+      {
+        "date": "2026-10-22",
+        "open": 154.8,
+        "high": 155.04,
+        "low": 146.55,
+        "close": 147.83,
+        "volume": 20725300
       }
     ],
     "news": [
@@ -8368,11 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7d244f54-1547-3e57-9402-fe0b6840571f",
-        "title": "KLA Corporation Reports Fiscal 2025 Third Quarter Results; Announces an Increase in the Dividend Level to $1.90 Per Share and a $5 billion Increase in Share Repurchase Authorization",
-        "publisher": "PR Newswire",
+        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
+        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
+        "publisher": "StockStory",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-reports-fiscal-2025-200500861.html",
+        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
         "type": "STORY"
       }
     ],
@@ -8442,18 +8442,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 44.1,
-        "industryAvg": 46.32
+        "value": 40.31,
+        "industryAvg": 43.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.57,
-        "industryAvg": 12.57
+        "value": 14.23,
+        "industryAvg": 11.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 33.29,
-        "industryAvg": 17.35
+        "value": 30.43,
+        "industryAvg": 16.47
       },
       {
         "metric": "ROE",

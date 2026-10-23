@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.8619,
-      "ttmPe": 15.51,
-      "marketCap": 157068754088,
-      "psRatio": 6.04,
-      "pbRatio": 3.13,
+      "ttmPe": 15.6,
+      "marketCap": 158019219648,
+      "psRatio": 6.07,
+      "pbRatio": 3.15,
       "pegRatio": 0.54
     },
     "profitability": {
@@ -6046,24 +6046,16 @@
     },
     "wacc": {
       "wacc": 9.120000000000001,
-      "costOfEquity": 10.91,
+      "costOfEquity": 10.9,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7469,
-      "marketCap": 157068754088
+      "beta": 0.7504,
+      "marketCap": 158019219648
     },
     "beta": {
-      "beta5y": 0.7469
+      "beta5y": 0.7504
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 94.57,
-        "high": 95.41,
-        "low": 93.8,
-        "close": 95.09,
-        "volume": 7450900
-      },
       {
         "date": "2025-10-22",
         "open": 95.3,
@@ -8071,6 +8063,14 @@
         "low": 90.81,
         "close": 91.64,
         "volume": 8108500
+      },
+      {
+        "date": "2026-10-22",
+        "open": 91.19,
+        "high": 92.44,
+        "low": 91.06,
+        "close": 91.44,
+        "volume": 8775300
       }
     ],
     "news": [
@@ -8083,19 +8083,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
-        "title": "Tariffs, Trump, and Turmoil",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
+        "title": "Tariffs, Trump, and Turmoil",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
         "type": "STORY"
       },
       {
@@ -8115,19 +8115,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
-        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
-        "publisher": "CNW Group",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
         "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
+        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
+        "publisher": "CNW Group",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
         "type": "STORY"
       },
       {
@@ -8139,19 +8139,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
-        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
-        "publisher": "MT Newswires",
+        "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
+        "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
+        "publisher": "Bloomberg",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
+        "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
         "type": "STORY"
       },
       {
-        "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
-        "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
-        "publisher": "MT Newswires",
+        "uuid": "55850a15-58e4-37d9-8fbb-42d6dfddc03b",
+        "title": "TD Bank Quarterly Earnings Buoyed by Sale of Schwab Stake",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
+        "link": "https://finance.yahoo.com/m/55850a15-58e4-37d9-8fbb-42d6dfddc03b/td-bank-quarterly-earnings.html",
         "type": "STORY"
       }
     ],
@@ -8216,18 +8216,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.51,
-        "industryAvg": 15.57
+        "value": 15.6,
+        "industryAvg": 15.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.04,
-        "industryAvg": 1.99
+        "value": 6.07,
+        "industryAvg": 2
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.13,
-        "industryAvg": 2.49
+        "value": 3.15,
+        "industryAvg": 2.5
       },
       {
         "metric": "ROE",

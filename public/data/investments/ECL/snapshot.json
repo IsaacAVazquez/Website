@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.4543,
-      "ttmPe": 38.66,
-      "marketCap": 80779489376,
-      "psRatio": 4.8,
-      "pbRatio": 8.03,
-      "pegRatio": 12.08
+      "ttmPe": 39.21,
+      "marketCap": 81940049780,
+      "psRatio": 4.87,
+      "pbRatio": 8.15,
+      "pegRatio": 12.25
     },
     "profitability": {
       "roe": 5.33,
@@ -6120,25 +6120,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.16,
-      "costOfEquity": 11.82,
+      "wacc": 10.13,
+      "costOfEquity": 11.77,
       "costOfDebt": 0.64,
       "taxRate": 22,
-      "beta": 0.8649,
-      "marketCap": 80779489376
+      "beta": 0.861,
+      "marketCap": 81940049780
     },
     "beta": {
-      "beta5y": 0.8649
+      "beta5y": 0.861
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 279.29,
-        "high": 280.91,
-        "low": 276.84,
-        "close": 278.19,
-        "volume": 1563200
-      },
       {
         "date": "2025-10-22",
         "open": 277.59,
@@ -8146,6 +8138,14 @@
         "low": 285,
         "close": 288.09,
         "volume": 1400500
+      },
+      {
+        "date": "2026-10-22",
+        "open": 287.81,
+        "high": 292.58,
+        "low": 286.94,
+        "close": 292.3,
+        "volume": 1249600
       }
     ],
     "news": [
@@ -8182,14 +8182,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
-        "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
         "title": "Was Jim Cramer Right About Ecolab (ECL)?",
         "publisher": "Insider Monkey",
@@ -8198,11 +8190,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
-        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
+        "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
+        "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
         "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
         "type": "STORY"
       },
       {
@@ -8211,6 +8203,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
+        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
         "type": "STORY"
       },
       {
@@ -8296,18 +8296,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.66,
-        "industryAvg": 29.86
+        "value": 39.21,
+        "industryAvg": 30.29
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.8,
-        "industryAvg": 2.6
+        "value": 4.87,
+        "industryAvg": 2.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.03,
-        "industryAvg": 3.3
+        "value": 8.15,
+        "industryAvg": 3.4
       },
       {
         "metric": "ROE",

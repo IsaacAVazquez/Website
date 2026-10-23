@@ -1,10 +1,10 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.4306,
-      "ttmPe": 21.64,
-      "marketCap": 445951340123,
-      "psRatio": 2.14,
-      "pbRatio": 2.35,
+      "ttmPe": 21.73,
+      "marketCap": 447867838284,
+      "psRatio": 2.15,
+      "pbRatio": 2.36,
       "pegRatio": 0.07
     },
     "profitability": {
@@ -5447,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.27,
-      "costOfEquity": 8.9,
+      "wacc": 8.15,
+      "costOfEquity": 8.77,
       "costOfDebt": 0.95,
       "taxRate": 27,
-      "beta": 0.4877,
-      "marketCap": 445951340123
+      "beta": 0.4821,
+      "marketCap": 447867838284
     },
     "beta": {
-      "beta5y": 0.4877
+      "beta5y": 0.4821
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 154.74,
-        "high": 155.29,
-        "low": 153.21,
-        "close": 153.79,
-        "volume": 6304900
-      },
       {
         "date": "2025-10-22",
         "open": 154.65,
@@ -7473,6 +7465,14 @@
         "low": 224.19,
         "close": 226.78,
         "volume": 8201700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 228.86,
+        "high": 229.04,
+        "low": 222.86,
+        "close": 226.68,
+        "volume": 6582500
       }
     ],
     "news": [
@@ -7493,19 +7493,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7525,19 +7525,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
-        "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-15",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "37f5738b-07b3-30fa-a06f-536929356258",
         "title": "Top Analyst Reports for Bank of America, Chevron & Stryker",
         "publisher": "Zacks",
         "reportDate": "2025-04-15",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-bank-america-211500618.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
+        "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-15",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
         "type": "STORY"
       },
       {
@@ -7627,18 +7627,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.64,
-        "industryAvg": 12.78
+        "value": 21.73,
+        "industryAvg": 12.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.14,
+        "value": 2.15,
         "industryAvg": 1.1
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.35,
-        "industryAvg": 1.74
+        "value": 2.36,
+        "industryAvg": 1.75
       },
       {
         "metric": "ROE",

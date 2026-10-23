@@ -1,10 +1,10 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "Texas Instruments Incorporated"
     },
     "fundamentals": {
-      "ttmEps": 6.5732,
-      "ttmPe": 42.26,
-      "marketCap": 253613140000,
-      "psRatio": 13.04,
-      "pbRatio": 14.08,
-      "pegRatio": 0.82
+      "ttmEps": 7.7074,
+      "ttmPe": 36.26,
+      "marketCap": 255463000000,
+      "psRatio": 13.13,
+      "pbRatio": 14.19,
+      "pegRatio": 0.47
     },
     "profitability": {
       "roe": 11.32,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 51.54
+        "yoyGrowth": 76.44999999999999
       }
     ],
     "income_statement": {
@@ -5592,25 +5592,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.079999999999998,
-      "costOfEquity": 15.870000000000001,
+      "wacc": 15.15,
+      "costOfEquity": 15.93,
       "costOfDebt": 1,
       "taxRate": 12,
       "beta": 1.3873,
-      "marketCap": 253613140000
+      "marketCap": 255463000000
     },
     "beta": {
       "beta5y": 1.3873
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 179.47,
-        "high": 181.84,
-        "low": 178.84,
-        "close": 180.84,
-        "volume": 10301500
-      },
       {
         "date": "2025-10-22",
         "open": 163.96,
@@ -7617,7 +7609,15 @@
         "high": 289.31,
         "low": 277.37,
         "close": 284.65,
-        "volume": 10397200
+        "volume": 10433000
+      },
+      {
+        "date": "2026-10-22",
+        "open": 284.22,
+        "high": 286.54,
+        "low": 276.59,
+        "close": 279.5,
+        "volume": 13865800
       }
     ],
     "news": [
@@ -7630,19 +7630,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
-        "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "18947235-499e-3176-814b-e007504ed5ce",
         "title": "Himax (HIMX) Q1 Earnings Report Preview: What To Look For",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/himax-himx-q1-earnings-report-103324368.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
+        "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
         "type": "STORY"
       },
       {
@@ -7694,11 +7694,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "aef3881f-6223-3d99-9975-d3c24cfd8228",
-        "title": "Why the Market Dipped But Texas Instruments (TXN) Gained Today",
-        "publisher": "Zacks",
+        "uuid": "7b2cc4bf-9dd6-3dd1-8f5f-d7f25e81db45",
+        "title": "Texas Instruments Insiders Sell US$5.5m Of Stock, Possibly Signalling Caution",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/why-market-dipped-texas-instruments-215009732.html",
+        "link": "https://finance.yahoo.com/news/texas-instruments-insiders-sell-us-130022300.html",
         "type": "STORY"
       }
     ],
@@ -7765,18 +7765,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.26,
-        "industryAvg": 27.53
+        "value": 36.26,
+        "industryAvg": 26.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.04,
-        "industryAvg": 13.11
+        "value": 13.13,
+        "industryAvg": 12.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.08,
-        "industryAvg": 11.37
+        "value": 14.19,
+        "industryAvg": 10.98
       },
       {
         "metric": "ROE",

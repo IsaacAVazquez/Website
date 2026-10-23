@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.5216,
-      "ttmPe": 23.93,
-      "pegRatio": 0.31,
-      "marketCap": 379430300000,
-      "psRatio": 0.84,
-      "pbRatio": 3.85
+      "ttmPe": 24.25,
+      "pegRatio": 0.32,
+      "marketCap": 384606900000,
+      "psRatio": 0.85,
+      "pbRatio": 3.91
     },
     "profitability": {
       "roe": 5.59,
@@ -5046,25 +5046,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.920000000000001,
-      "costOfEquity": 9.24,
+      "wacc": 7.8100000000000005,
+      "costOfEquity": 9.1,
       "costOfDebt": 1.31,
       "taxRate": 19,
-      "beta": 0.5321,
-      "marketCap": 379430300000
+      "beta": 0.523,
+      "marketCap": 384606900000
     },
     "beta": {
-      "beta5y": 0.5321
+      "beta5y": 0.523
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 365.14,
-        "high": 371.05,
-        "low": 361.5,
-        "close": 365.37,
-        "volume": 6885300
-      },
       {
         "date": "2025-10-22",
         "open": 363.96,
@@ -7072,6 +7064,14 @@
         "low": 415,
         "close": 417,
         "volume": 3986900
+      },
+      {
+        "date": "2026-10-22",
+        "open": 418.38,
+        "high": 426.55,
+        "low": 417.13,
+        "close": 424.98,
+        "volume": 5417300
       }
     ],
     "news": [
@@ -7148,11 +7148,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9565ba37-626e-3f42-bd78-7532d14b0317",
-        "title": "Why UnitedHealth’s Blowup May Be More Isolated Than Investors Think",
-        "publisher": "The Wall Street Journal",
+        "uuid": "2078cfe5-f146-3ea9-8b1b-514c736c53fe",
+        "title": "Morning Movers: UnitedHealth sinks following CEO exit and outlook suspension",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/m/9565ba37-626e-3f42-bd78-7532d14b0317/why-unitedhealth%E2%80%99s-blowup-may.html",
+        "link": "https://finance.yahoo.com/news/morning-movers-unitedhealth-sinks-following-131835232.html",
         "type": "STORY"
       }
     ],
@@ -7225,18 +7225,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.93,
-        "industryAvg": 22.95
+        "value": 24.25,
+        "industryAvg": 23.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.84,
+        "value": 0.85,
         "industryAvg": 0.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.85,
-        "industryAvg": 2.51
+        "value": 3.91,
+        "industryAvg": 2.54
       },
       {
         "metric": "ROE",

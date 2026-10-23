@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 22.91,
-      "marketCap": 90927126986,
-      "psRatio": 3.25,
-      "pbRatio": 5.99,
-      "pegRatio": 1.98
+      "ttmPe": 23.87,
+      "marketCap": 94735169897,
+      "psRatio": 3.39,
+      "pbRatio": 6.24,
+      "pegRatio": 2.07
     },
     "profitability": {
       "roe": 8.51,
@@ -3507,25 +3507,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.71,
-      "costOfEquity": 9.4,
+      "wacc": 7.64,
+      "costOfEquity": 9.25,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
-      "beta": 0.5525,
-      "marketCap": 90927126986
+      "beta": 0.5426,
+      "marketCap": 94735169897
     },
     "beta": {
-      "beta5y": 0.5525
+      "beta5y": 0.5426
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 189.25,
-        "high": 191.07,
-        "low": 188.12,
-        "close": 188.95,
-        "volume": 2751700
-      },
       {
         "date": "2025-10-22",
         "open": 189.07,
@@ -5533,6 +5525,14 @@
         "low": 189.16,
         "close": 190.56,
         "volume": 1709200
+      },
+      {
+        "date": "2026-10-22",
+        "open": 192,
+        "high": 199.59,
+        "low": 191.64,
+        "close": 199.27,
+        "volume": 3065200
       }
     ],
     "news": [
@@ -5553,20 +5553,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
-        "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-inc-mmc-221719641.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
         "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
         "publisher": "WSJ",
         "reportDate": "2026-01-20",
         "link": "https://finance.yahoo.com/video/marsh-mclennan-ceo-john-doyle-212200870.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
+        "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-inc-mmc-221719641.html",
+        "type": "STORY"
       },
       {
         "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
@@ -5577,19 +5577,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
-        "title": "Deep Shifts in Human Sentiment Are Redefining Economic, Health, and Workplace Norms, Oliver Wyman Forum Report Finds",
-        "publisher": "Business Wire",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "171d5505-dc56-3308-a908-b956a0833613",
         "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
+        "title": "Deep Shifts in Human Sentiment Are Redefining Economic, Health, and Workplace Norms, Oliver Wyman Forum Report Finds",
+        "publisher": "Business Wire",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
         "type": "STORY"
       },
       {
@@ -5601,19 +5601,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f0b7d32-adff-37f9-bfc0-193e2def2181",
-        "title": "Is Marsh & McLennan (MRSH) Offering Value After Its Recent One Year Share Price Decline?",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-22",
-        "link": "https://finance.yahoo.com/news/marsh-mclennan-mrsh-offering-value-221523006.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "04061779-be28-3eeb-b473-e9f9e6a93ba0",
         "title": "Marsh (MRSH) Reports Next Week: Wall Street Expects Earnings Growth",
         "publisher": "Zacks",
         "reportDate": "2026-01-22",
         "link": "https://finance.yahoo.com/news/marsh-mrsh-reports-next-week-150018511.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f0b7d32-adff-37f9-bfc0-193e2def2181",
+        "title": "Is Marsh & McLennan (MRSH) Offering Value After Its Recent One Year Share Price Decline?",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-22",
+        "link": "https://finance.yahoo.com/news/marsh-mclennan-mrsh-offering-value-221523006.html",
         "type": "STORY"
       }
     ],
@@ -5685,18 +5685,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.91,
-        "industryAvg": 22.57
+        "value": 23.87,
+        "industryAvg": 23.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.25,
-        "industryAvg": 3.21
+        "value": 3.39,
+        "industryAvg": 3.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.99,
-        "industryAvg": 4.03
+        "value": 6.24,
+        "industryAvg": 4.19
       },
       {
         "metric": "ROE",

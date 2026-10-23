@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "Lam Research Corporation"
     },
     "fundamentals": {
-      "ttmEps": 5.7641,
-      "ttmPe": 45.71,
-      "marketCap": 329649189100,
-      "psRatio": 14.19,
-      "pbRatio": 26.43,
-      "pegRatio": 1.32
+      "ttmEps": 6.7183,
+      "ttmPe": 34.26,
+      "marketCap": 287490721750,
+      "psRatio": 12.37,
+      "pbRatio": 23.05,
+      "pegRatio": 0.44
     },
     "profitability": {
       "roe": 19.75,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 34.599999999999994
+        "yoyGrowth": 77.21000000000001
       }
     ],
     "income_statement": {
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 19.68,
-      "costOfEquity": 19.89,
+      "wacc": 19.93,
+      "costOfEquity": 20.18,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 11,
-      "beta": 1.9053,
-      "marketCap": 329649189100
+      "beta": 1.9241,
+      "marketCap": 287490721750
     },
     "beta": {
-      "beta5y": 1.9053
+      "beta5y": 1.9241
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 143.98,
-        "high": 145.44,
-        "low": 142.47,
-        "close": 145.04,
-        "volume": 8855600
-      },
       {
         "date": "2025-10-22",
         "open": 144.9,
@@ -7636,7 +7628,15 @@
         "high": 270.9,
         "low": 259.04,
         "close": 260.81,
-        "volume": 15811300
+        "volume": 16027300
+      },
+      {
+        "date": "2026-10-22",
+        "open": 234.5,
+        "high": 242.1,
+        "low": 227.68,
+        "close": 230.15,
+        "volume": 22957600
       }
     ],
     "news": [
@@ -7788,18 +7788,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.71,
-        "industryAvg": 46.32
+        "value": 34.26,
+        "industryAvg": 43.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.19,
-        "industryAvg": 12.57
+        "value": 12.37,
+        "industryAvg": 11.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.43,
-        "industryAvg": 17.35
+        "value": 23.05,
+        "industryAvg": 16.47
       },
       {
         "metric": "ROE",

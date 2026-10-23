@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.8966,
-      "ttmPe": 137.23,
-      "marketCap": 872695680000,
-      "psRatio": 21.13,
-      "pbRatio": 12.98,
-      "pegRatio": 0.86
+      "ttmPe": 130.35,
+      "marketCap": 828941760000,
+      "psRatio": 20.07,
+      "pbRatio": 12.33,
+      "pegRatio": 0.82
     },
     "profitability": {
       "roe": 3.49,
@@ -6017,25 +6017,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.04,
-      "costOfEquity": 24.15,
+      "wacc": 24.349999999999998,
+      "costOfEquity": 24.47,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 10,
-      "beta": 2.4553,
-      "marketCap": 872695680000
+      "beta": 2.4664,
+      "marketCap": 828941760000
     },
     "beta": {
-      "beta5y": 2.4553
+      "beta5y": 2.4664
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 239.39,
-        "high": 242.26,
-        "low": 234.02,
-        "close": 238.03,
-        "volume": 47122400
-      },
       {
         "date": "2025-10-22",
         "open": 236.85,
@@ -8042,7 +8034,15 @@
         "high": 556.79,
         "low": 537.3,
         "close": 552.72,
-        "volume": 17868300
+        "volume": 17998600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 524.1,
+        "high": 529.98,
+        "low": 502.6,
+        "close": 507.93,
+        "volume": 27910400
       }
     ],
     "news": [
@@ -8111,19 +8111,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
-        "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
         "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
+        "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
         "type": "VIDEO"
       }
     ],
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 137.23,
-        "industryAvg": 27.53
+        "value": 130.35,
+        "industryAvg": 26.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 21.13,
-        "industryAvg": 13.11
+        "value": 20.07,
+        "industryAvg": 12.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.98,
-        "industryAvg": 11.37
+        "value": 12.33,
+        "industryAvg": 10.98
       },
       {
         "metric": "ROE",

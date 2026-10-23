@@ -1,10 +1,10 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6077,
-      "ttmPe": 14.31,
-      "marketCap": 283588800000,
-      "psRatio": 3.88,
-      "pbRatio": 2.44,
-      "pegRatio": 1.73
+      "ttmPe": 14.59,
+      "marketCap": 289200840000,
+      "psRatio": 3.96,
+      "pbRatio": 2.49,
+      "pegRatio": 1.77
     },
     "profitability": {
       "roe": 4.71,
@@ -5910,25 +5910,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.290000000000001,
-      "costOfEquity": 14.59,
+      "wacc": 7.37,
+      "costOfEquity": 14.64,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.2224,
-      "marketCap": 283588800000
+      "beta": 1.2235,
+      "marketCap": 289200840000
     },
     "beta": {
-      "beta5y": 1.2224
+      "beta5y": 1.2235
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 161.45,
-        "high": 162.06,
-        "low": 159.19,
-        "close": 159.23,
-        "volume": 4220600
-      },
       {
         "date": "2025-10-22",
         "open": 159.57,
@@ -7936,6 +7928,14 @@
         "low": 180.85,
         "close": 187.01,
         "volume": 8906700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 183.38,
+        "high": 187,
+        "low": 182.22,
+        "close": 183.97,
+        "volume": 6288900
       }
     ],
     "news": [
@@ -7996,6 +7996,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "3666397c-e7c8-30e3-aeaf-dd0102f07b1e",
+        "title": "Hinge Health Jumps 17% After Top-Priced $437 Million IPO",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "da76727f-9f6d-37e6-99cd-6150f46cea47",
         "title": "Ryan Reynolds’ MNTN Shares Rise 65% After $187 Million IPO",
         "publisher": "Bloomberg",
@@ -8009,14 +8017,6 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/traders-wager-10-billion-chevron-100001931.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3666397c-e7c8-30e3-aeaf-dd0102f07b1e",
-        "title": "Hinge Health Jumps 17% After Top-Priced $437 Million IPO",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/hinge-health-jumps-17-top-201219815.html",
         "type": "STORY"
       }
     ],
@@ -8082,18 +8082,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.31,
-        "industryAvg": 15.57
+        "value": 14.59,
+        "industryAvg": 15.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.88,
-        "industryAvg": 1.99
+        "value": 3.96,
+        "industryAvg": 2
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.44,
-        "industryAvg": 2.49
+        "value": 2.49,
+        "industryAvg": 2.5
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.5529,
-      "ttmPe": 48.7,
-      "marketCap": 29438185420,
-      "psRatio": 4.75,
-      "pbRatio": 4.08,
-      "pegRatio": 1.33
+      "ttmPe": 47.16,
+      "marketCap": 28507779930,
+      "psRatio": 4.6,
+      "pbRatio": 3.95,
+      "pegRatio": 1.29
     },
     "profitability": {
       "roe": 3.1199999999999997,
@@ -5897,25 +5897,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.529999999999998,
-      "costOfEquity": 21.310000000000002,
+      "wacc": 18.62,
+      "costOfEquity": 21.51,
       "costOfDebt": 0.31,
       "taxRate": 16,
-      "beta": 2.0892,
-      "marketCap": 29438185420
+      "beta": 2.0921,
+      "marketCap": 28507779930
     },
     "beta": {
-      "beta5y": 2.0892
+      "beta5y": 2.0921
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 54.7,
-        "high": 55.5,
-        "low": 53.42,
-        "close": 55.08,
-        "volume": 9780700
-      },
       {
         "date": "2025-10-22",
         "open": 53.19,
@@ -7922,7 +7914,15 @@
         "high": 77.69,
         "low": 74.95,
         "close": 76.94,
-        "volume": 8308800
+        "volume": 8344100
+      },
+      {
+        "date": "2026-10-22",
+        "open": 75.22,
+        "high": 75.46,
+        "low": 72.43,
+        "close": 73.23,
+        "volume": 12504300
       }
     ],
     "news": [
@@ -7951,11 +7951,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
-        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
-        "publisher": "Simply Wall St.",
+        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
+        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
+        "publisher": "Investing.com",
         "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
         "type": "STORY"
       },
       {
@@ -7967,19 +7967,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
-        "title": "ON Semiconductor negativity priced in says Morgan Stanley",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/semiconductor-negativity-priced-says-morgan-131509481.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
-        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
+        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
+        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
         "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
         "type": "STORY"
       },
       {
@@ -7988,6 +7980,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
+        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
         "type": "STORY"
       },
       {
@@ -8063,18 +8063,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.7,
-        "industryAvg": 27.53
+        "value": 47.16,
+        "industryAvg": 26.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.75,
-        "industryAvg": 13.11
+        "value": 4.6,
+        "industryAvg": 12.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.08,
-        "industryAvg": 11.37
+        "value": 3.95,
+        "industryAvg": 10.98
       },
       {
         "metric": "ROE",

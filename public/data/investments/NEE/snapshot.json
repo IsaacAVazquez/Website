@@ -1,10 +1,10 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "NextEra Energy, Inc."
     },
     "fundamentals": {
-      "ttmEps": 4.4569,
-      "ttmPe": 17.69,
-      "marketCap": 164501960000,
-      "psRatio": 5.73,
-      "pbRatio": 2.88,
-      "pegRatio": 0.34
+      "ttmEps": 5.5555,
+      "ttmPe": 14.74,
+      "marketCap": 170843400000,
+      "psRatio": 5.95,
+      "pbRatio": 2.99,
+      "pegRatio": 0.16
     },
     "profitability": {
       "roe": 5.6000000000000005,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 52.66
+        "yoyGrowth": 93.31
       }
     ],
     "income_statement": {
@@ -5881,25 +5881,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.01,
-      "costOfEquity": 9.86,
+      "wacc": 6.04,
+      "costOfEquity": 9.76,
       "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.6117,
-      "marketCap": 164501960000
+      "beta": 0.6065,
+      "marketCap": 170843400000
     },
     "beta": {
-      "beta5y": 0.6117
+      "beta5y": 0.6065
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 85,
-        "high": 85.11,
-        "low": 83.03,
-        "close": 83.99,
-        "volume": 7282200
-      },
       {
         "date": "2025-10-22",
         "open": 84.07,
@@ -7907,6 +7899,14 @@
         "low": 77.93,
         "close": 78.28,
         "volume": 14693900
+      },
+      {
+        "date": "2026-10-22",
+        "open": 78.84,
+        "high": 82.19,
+        "low": 78.64,
+        "close": 81.9,
+        "volume": 17552800
       }
     ],
     "news": [
@@ -7967,19 +7967,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4f71c377-d695-3cb2-a196-7bcde1c2d0c4",
-        "title": "NextEra Energy price target lowered to $94 from $95 at Morgan Stanley",
-        "publisher": "TipRanks",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/nextera-energy-price-target-lowered-132104119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "472f7e64-e595-3e23-99fc-3238bef5acc2",
         "title": "Is NEE Building Sustainable Growth Through Capital Spending?",
         "publisher": "Zacks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/nee-building-sustainable-growth-capital-155900607.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4f71c377-d695-3cb2-a196-7bcde1c2d0c4",
+        "title": "NextEra Energy price target lowered to $94 from $95 at Morgan Stanley",
+        "publisher": "TipRanks",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/nextera-energy-price-target-lowered-132104119.html",
         "type": "STORY"
       },
       {
@@ -8056,18 +8056,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.69,
-        "industryAvg": 16.97
+        "value": 14.74,
+        "industryAvg": 17.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.73,
-        "industryAvg": 2.36
+        "value": 5.95,
+        "industryAvg": 2.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.88,
-        "industryAvg": 1.83
+        "value": 2.99,
+        "industryAvg": 1.88
       },
       {
         "metric": "ROE",

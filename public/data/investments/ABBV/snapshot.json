@@ -1,10 +1,10 @@
 {
   "symbol": "ABBV",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.5367,
-      "ttmPe": 81.74,
+      "ttmPe": 80.64,
       "pegRatio": 0.28,
-      "marketCap": 510824393244,
-      "psRatio": 7.93,
-      "pbRatio": -86.07
+      "marketCap": 503950493667,
+      "psRatio": 7.83,
+      "pbRatio": -84.91
     },
     "profitability": {
       "roe": -57.199999999999996,
@@ -5606,25 +5606,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.949999999999999,
-      "costOfEquity": 6.65,
+      "wacc": 5.800000000000001,
+      "costOfEquity": 6.49,
       "costOfDebt": 1.05,
       "taxRate": 15,
-      "beta": 0.197,
-      "marketCap": 510824393244
+      "beta": 0.193,
+      "marketCap": 503950493667
     },
     "beta": {
-      "beta5y": 0.197
+      "beta5y": 0.193
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 232.15,
-        "high": 232.81,
-        "low": 229.83,
-        "close": 231.39,
-        "volume": 3298100
-      },
       {
         "date": "2025-10-22",
         "open": 231.67,
@@ -7632,6 +7624,14 @@
         "low": 282.15,
         "close": 284.8,
         "volume": 4393600
+      },
+      {
+        "date": "2026-10-22",
+        "open": 284.57,
+        "high": 285.76,
+        "low": 278.01,
+        "close": 285.19,
+        "volume": 6172200
       }
     ],
     "news": [
@@ -7676,19 +7676,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
         "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
         "type": "STORY"
       },
       {
@@ -7780,18 +7780,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 81.74,
-        "industryAvg": 27.51
+        "value": 80.64,
+        "industryAvg": 27.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.93,
-        "industryAvg": 4.97
+        "value": 7.83,
+        "industryAvg": 5.03
       },
       {
         "metric": "P/B Ratio",
-        "value": -86.07,
-        "industryAvg": 6.1
+        "value": -84.91,
+        "industryAvg": 6.19
       },
       {
         "metric": "ROE",

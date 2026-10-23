@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.4867,
-      "ttmPe": 28.78,
-      "marketCap": 52995423136,
-      "psRatio": 10.84,
-      "pbRatio": 5.77,
-      "pegRatio": 0.63
+      "ttmPe": 29.48,
+      "marketCap": 54289750643,
+      "psRatio": 11.1,
+      "pbRatio": 5.91,
+      "pegRatio": 0.65
     },
     "profitability": {
       "roe": 4.89,
@@ -5036,25 +5036,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.17,
-      "costOfEquity": 11.959999999999999,
+      "wacc": 10.15,
+      "costOfEquity": 11.899999999999999,
       "costOfDebt": 0.83,
       "taxRate": 1,
-      "beta": 0.8827,
-      "marketCap": 52995423136
+      "beta": 0.8769,
+      "marketCap": 54289750643
     },
     "beta": {
-      "beta5y": 0.8827
+      "beta5y": 0.8769
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 312,
-        "high": 312.95,
-        "low": 308.16,
-        "close": 308.27,
-        "volume": 973900
-      },
       {
         "date": "2025-10-22",
         "open": 307.86,
@@ -7062,6 +7054,14 @@
         "low": 296.99,
         "close": 298.31,
         "volume": 825000
+      },
+      {
+        "date": "2026-10-22",
+        "open": 298.4,
+        "high": 309.25,
+        "low": 298,
+        "close": 309.13,
+        "volume": 773900
       }
     ],
     "news": [
@@ -7071,22 +7071,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-07",
         "link": "https://finance.yahoo.com/news/psa-eyes-australian-market-offers-145600036.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
-        "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
-        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
         "type": "STORY"
       },
       {
@@ -7103,6 +7087,22 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
+        "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
+        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
         "type": "STORY"
       },
       {
@@ -7138,11 +7138,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "41ef7ca1-081c-31e9-915f-3a3293a4d2d5",
-        "title": "Truist Securities Adjusts Price Target on Public Storage to $320 From $310, Maintains Buy Rating",
-        "publisher": "MT Newswires",
+        "uuid": "8e38b430-b999-3bf8-9ae2-e6f7f2ef6f80",
+        "title": "Public Storage (NYSE:PSA) Declares Quarterly Dividends of US$3.00 Per Common Share",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/truist-securities-adjusts-price-target-133220023.html",
+        "link": "https://finance.yahoo.com/news/public-storage-nyse-psa-declares-174308342.html",
         "type": "STORY"
       }
     ],
@@ -7204,43 +7204,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.78,
-        "industryAvg": 27.95
+        "value": 29.48,
+        "industryAvg": 28.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.84,
-        "industryAvg": 8.5
+        "value": 11.1,
+        "industryAvg": 8.53
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.77,
-        "industryAvg": 2.28
+        "value": 5.91,
+        "industryAvg": 2.33
       },
       {
         "metric": "ROE",
         "value": 4.89,
-        "industryAvg": 11.51
+        "industryAvg": 11.899999999999999
       },
       {
         "metric": "ROA",
         "value": 2.25,
-        "industryAvg": 5.64
+        "industryAvg": 5.83
       },
       {
         "metric": "Gross Margin",
         "value": 72.09,
-        "industryAvg": 69.92
+        "industryAvg": 70.19999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 71.23,
-        "industryAvg": 69.62
+        "industryAvg": 69.92
       },
       {
         "metric": "Net Margin",
         "value": 36.52,
-        "industryAvg": 32.75
+        "industryAvg": 33.2
       }
     ]
   }

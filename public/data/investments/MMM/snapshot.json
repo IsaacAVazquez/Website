@@ -1,10 +1,10 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-10-21T14:24:39.162644+00:00",
+  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-21T14:24:39.162644+00:00",
+    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
     "sections": {
-      "price": "2026-10-21"
+      "price": "2026-10-22"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "3M Company"
     },
     "fundamentals": {
-      "ttmEps": 5.632,
-      "ttmPe": 30.43,
-      "marketCap": 88379347688,
-      "psRatio": 3.51,
-      "pbRatio": 29.94,
-      "pegRatio": 0.91
+      "ttmEps": 6.7093,
+      "ttmPe": 26.17,
+      "marketCap": 90717048576,
+      "psRatio": 3.6,
+      "pbRatio": 30.73,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 30.020000000000003,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 33.54
+        "yoyGrowth": 69.51
       }
     ],
     "income_statement": {
@@ -6286,24 +6286,16 @@
     },
     "wacc": {
       "wacc": 11.4,
-      "costOfEquity": 12.83,
+      "costOfEquity": 12.790000000000001,
       "costOfDebt": 1.6099999999999999,
       "taxRate": 16,
-      "beta": 0.9943,
-      "marketCap": 88379347688
+      "beta": 0.99,
+      "marketCap": 90717048576
     },
     "beta": {
-      "beta5y": 0.9943
+      "beta5y": 0.99
     },
     "price": [
-      {
-        "date": "2025-10-21",
-        "open": 158,
-        "high": 166.82,
-        "low": 152.8,
-        "close": 166.64,
-        "volume": 7302200
-      },
       {
         "date": "2025-10-22",
         "open": 167.16,
@@ -8311,6 +8303,14 @@
         "low": 167.71,
         "close": 174.74,
         "volume": 5630700
+      },
+      {
+        "date": "2026-10-22",
+        "open": 174.95,
+        "high": 176.18,
+        "low": 173.07,
+        "close": 175.56,
+        "volume": 5953300
       }
     ],
     "news": [
@@ -8363,19 +8363,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
-        "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
         "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
+        "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
         "type": "STORY"
       },
       {
@@ -8457,18 +8457,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.43,
-        "industryAvg": 13.61
+        "value": 26.17,
+        "industryAvg": 13.9
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.51,
-        "industryAvg": 1.59
+        "value": 3.6,
+        "industryAvg": 1.63
       },
       {
         "metric": "P/B Ratio",
-        "value": 29.94,
-        "industryAvg": 2.91
+        "value": 30.73,
+        "industryAvg": 2.9
       },
       {
         "metric": "ROE",
