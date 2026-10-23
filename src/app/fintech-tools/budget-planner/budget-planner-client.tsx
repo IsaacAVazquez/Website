@@ -19,6 +19,7 @@ import { useClientNow } from "@/hooks/useClientNow";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import type { BudgetCategorySummary } from "@/types/budget";
 import { checkRegister, envelope } from "./envelopes";
+import { BudgetRepeatingCosts } from "./BudgetRepeatingCosts";
 import "./budget-planner.css";
 import { formatDollars } from "@/lib/utils";
 
@@ -111,21 +112,26 @@ function Envelope({
   onRename,
   onBudget,
   onDelete,
+  onCarry,
+  hasRecurringBills,
 }: {
   category: BudgetCategorySummary;
   onRename: (id: string, name: string) => void;
   onBudget: (id: string, amount: number) => void;
   onDelete: (id: string) => void;
+  onCarry: (id: string) => void;
+  hasRecurringBills: boolean;
 }) {
   const displayName = category.name || "Untitled";
   const hasLinkedExpenses = category.expenseCount > 0;
-  const { fill, torn, overBy } = envelope(category.spent, category.budgetedAmount);
+  const cannotDelete = hasLinkedExpenses || hasRecurringBills;
+  const { fill, torn, overBy } = envelope(category.spent, category.availableAmount);
   const metaId = `category-${category.id}-meta`;
   const entries = `${category.expenseCount} ${category.expenseCount === 1 ? "entry" : "entries"}`;
 
   let reading: string;
   if (torn) reading = `${formatDollars(category.spent)} spent, over by ${formatDollars(overBy)}`;
-  else if (category.budgetedAmount === 0 && category.spent === 0) reading = "Nothing budgeted yet";
+  else if (category.availableAmount === 0 && category.spent === 0) reading = "Nothing budgeted yet";
   else reading = `${formatDollars(category.spent)} spent, ${formatDollars(category.remaining)} left`;
 
   return (
@@ -146,18 +152,20 @@ function Envelope({
       <p className="bp-envelope-reading" data-over={torn || undefined}>
         {reading}
       </p>
+      {Boolean(category.carriedAmount) && <p className="bp-envelope-meta">Includes {formatDollars(category.carriedAmount ?? 0)} carried in</p>}
+      <label className="bp-carry"><input type="checkbox" checked={category.carryForward === true} onChange={() => onCarry(category.id)} />Carry unused {displayName} balance forward</label>
       <div className="bp-envelope-foot">
         {/* Seeded category ids are random until the saved month loads, so the id
             only prints once it is needed, which keeps the server and client markup equal. */}
-        <p className="bp-envelope-meta" id={hasLinkedExpenses ? metaId : undefined}>
+        <p className="bp-envelope-meta" id={cannotDelete ? metaId : undefined}>
           {entries}
-          {hasLinkedExpenses ? ", remove linked expenses before deleting" : ""}
+          {hasRecurringBills ? ", remove recurring bills and any linked expenses before deleting" : hasLinkedExpenses ? ", remove linked expenses before deleting" : ""}
         </p>
         <button
           type="button"
           aria-label={`Delete ${displayName}`}
-          aria-describedby={hasLinkedExpenses ? metaId : undefined}
-          disabled={hasLinkedExpenses}
+          aria-describedby={cannotDelete ? metaId : undefined}
+          disabled={cannotDelete}
           onClick={() => onDelete(category.id)}
           className="bp-link"
         >
@@ -192,6 +200,8 @@ export function BudgetPlannerClient() {
     removeExpense,
     findExpense,
     clearMonth,
+    canCopyPrevious, copyPreviousPlan, toggleCarryForward,
+    addRecurringBill, removeRecurringBill, recordMonthlyBills,
   } = useBudgetPlanner(now === null ? "" : getCurrentBudgetMonthKey(new Date(now)));
   const persistenceStatus = useLocalStoragePersistenceStatus(BUDGET_PLANNER_STORAGE_KEY);
   const ids = useId();
@@ -430,6 +440,9 @@ export function BudgetPlannerClient() {
           </div>
         </section>
 
+        <BudgetRepeatingCosts month={activeMonth} canCopyPrevious={canCopyPrevious} onCopy={copyPreviousPlan}
+          onAdd={addRecurringBill} onRemove={removeRecurringBill} onRecord={recordMonthlyBills} />
+
         <section className="bp-envelopes" aria-labelledby={`${ids}-categories`}>
           <div className="bp-section-head">
             <h2 id={`${ids}-categories`}>Categories</h2>
@@ -450,6 +463,8 @@ export function BudgetPlannerClient() {
                 onRename={renameCategory}
                 onBudget={updateCategoryBudget}
                 onDelete={removeCategory}
+                onCarry={toggleCarryForward}
+                hasRecurringBills={Boolean(activeMonth.recurringExpenses?.some(bill => bill.categoryId === category.id))}
               />
             ))}
             <li className="bp-envelope-new">
