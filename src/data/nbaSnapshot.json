@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-23T13:34:50.417Z",
+  "generatedAt": "2026-10-23T19:58:59.120Z",
   "updatedAt": "2026-10-23",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -1986,7 +1986,7 @@
         "pointsFor": 220,
         "pointsAgainst": 206
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "mil": {
       "team": {
@@ -2170,7 +2170,7 @@
         "pointsFor": 116,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "chi": {
       "team": {
@@ -2354,7 +2354,7 @@
         "pointsFor": 92,
         "pointsAgainst": 135
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "cle": {
       "team": {
@@ -2538,7 +2538,7 @@
         "pointsFor": 106,
         "pointsAgainst": 114
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "bos": {
       "team": {
@@ -2722,7 +2722,7 @@
         "pointsFor": 113,
         "pointsAgainst": 121
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "lac": {
       "team": {
@@ -2906,7 +2906,7 @@
         "pointsFor": 121,
         "pointsAgainst": 96
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "mem": {
       "team": {
@@ -3090,7 +3090,7 @@
         "pointsFor": 123,
         "pointsAgainst": 103
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "atl": {
       "team": {
@@ -3274,7 +3274,7 @@
         "pointsFor": 132,
         "pointsAgainst": 125
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "mia": {
       "team": {
@@ -3458,7 +3458,7 @@
         "pointsFor": 106,
         "pointsAgainst": 131
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "cha": {
       "team": {
@@ -3642,7 +3642,7 @@
         "pointsFor": 110,
         "pointsAgainst": 103
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "utah": {
       "team": {
@@ -3826,7 +3826,7 @@
         "pointsFor": 103,
         "pointsAgainst": 123
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "sac": {
       "team": {
@@ -4010,7 +4010,7 @@
         "pointsFor": 96,
         "pointsAgainst": 121
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "ny": {
       "team": {
@@ -4194,7 +4194,7 @@
         "pointsFor": 100,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "lal": {
       "team": {
@@ -4378,7 +4378,7 @@
         "pointsFor": 127,
         "pointsAgainst": 105
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "orl": {
       "team": {
@@ -4562,7 +4562,7 @@
         "pointsFor": 125,
         "pointsAgainst": 132
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "dal": {
       "team": {
@@ -4746,7 +4746,7 @@
         "pointsFor": 110,
         "pointsAgainst": 128
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "bkn": {
       "team": {
@@ -4930,7 +4930,7 @@
         "pointsFor": 103,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "den": {
       "team": {
@@ -5114,7 +5114,7 @@
         "pointsFor": 84,
         "pointsAgainst": 96
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "ind": {
       "team": {
@@ -5298,7 +5298,7 @@
         "pointsFor": 123,
         "pointsAgainst": 120
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "no": {
       "team": {
@@ -5482,7 +5482,7 @@
         "pointsFor": 120,
         "pointsAgainst": 123
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "det": {
       "team": {
@@ -5666,7 +5666,7 @@
         "pointsFor": 121,
         "pointsAgainst": 113
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "tor": {
       "team": {
@@ -5850,7 +5850,7 @@
         "pointsFor": 135,
         "pointsAgainst": 92
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "hou": {
       "team": {
@@ -6034,7 +6034,7 @@
         "pointsFor": 128,
         "pointsAgainst": 110
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "sa": {
       "team": {
@@ -6218,7 +6218,7 @@
         "pointsFor": 104,
         "pointsAgainst": 116
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "phx": {
       "team": {
@@ -6402,7 +6402,7 @@
         "pointsFor": 83,
         "pointsAgainst": 124
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "okc": {
       "team": {
@@ -6613,7 +6613,7 @@
         "pointsFor": 212,
         "pointsAgainst": 188
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "min": {
       "team": {
@@ -6797,7 +6797,7 @@
         "pointsFor": 131,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "por": {
       "team": {
@@ -6981,7 +6981,7 @@
         "pointsFor": 124,
         "pointsAgainst": 83
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "gs": {
       "team": {
@@ -7165,7 +7165,7 @@
         "pointsFor": 105,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     },
     "wsh": {
       "team": {
@@ -7349,7 +7349,7 @@
         "pointsFor": 128,
         "pointsAgainst": 116
       },
-      "generatedAt": "2026-10-23T13:34:50.417Z"
+      "generatedAt": "2026-10-23T19:58:59.120Z"
     }
   }
 }
