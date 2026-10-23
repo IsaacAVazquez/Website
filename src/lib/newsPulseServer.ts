@@ -67,10 +67,11 @@ let observationHistory: NewsObservation[] = [];
 function hydrateDurableLastGood(): Promise<void> {
   if (durableHydrationPromise) return durableHydrationPromise;
   durableHydrationPromise = (async () => {
-    observationHistory = parseNewsHistory(await readDurableJson<unknown>("news-pulse/history", NEWS_HISTORY_DAYS * 24 * 60 * 60 * 1000));
-    const saved = await readDurableJson<
-      Partial<Record<NewsFeedId, LastGoodFeed>>
-    >("news-pulse/feeds", DURABLE_LAST_GOOD_MAX_AGE_MS);
+    const [history, saved] = await Promise.all([
+      readDurableJson<unknown>("news-pulse/history", NEWS_HISTORY_DAYS * 24 * 60 * 60 * 1000),
+      readDurableJson<Partial<Record<NewsFeedId, LastGoodFeed>>>("news-pulse/feeds", DURABLE_LAST_GOOD_MAX_AGE_MS),
+    ]);
+    observationHistory = parseNewsHistory(history);
     if (!saved) return;
     for (const feed of NEWS_FEEDS) {
       const value = saved[feed.id];
@@ -195,13 +196,10 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
 
   if (successfulFeedCount > 0) {
     observationHistory = observeNews(observationHistory, observedArticles, fetchedAt);
-    await writeDurableJson("news-pulse/history", observationHistory);
-    await writeDurableJson(
-      "news-pulse/feeds",
-      Object.fromEntries(lastGoodByFeed) as Partial<
-        Record<NewsFeedId, LastGoodFeed>
-      >
-    );
+    await Promise.all([
+      writeDurableJson("news-pulse/history", observationHistory),
+      writeDurableJson("news-pulse/feeds", Object.fromEntries(lastGoodByFeed) as Partial<Record<NewsFeedId, LastGoodFeed>>),
+    ]);
   }
 
   articles.sort(byNewest);
