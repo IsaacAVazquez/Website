@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
+import { RentScenarios } from "./RentScenarios";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { RENT_VS_BUY_BOUNDS, RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
@@ -211,7 +212,7 @@ function NumberField({
 }
 
 export function RentVsBuyClient() {
-  const { input, result, setField, reset } = useRentVsBuy();
+  const { input, result, setField, setInput, reset } = useRentVsBuy();
   const persistenceStatus = useLocalStoragePersistenceStatus(RENT_VS_BUY_STORAGE_KEY);
   // Each NumberField keeps a local draft while typing, so Reset remounts the
   // fields to drop any draft still showing a value the store no longer holds.
@@ -420,6 +421,7 @@ export function RentVsBuyClient() {
             )}
           </section>
         </div>
+        <RentScenarios input={input} onLoad={next => { setInput(next); setResetKey(current => current + 1); }} />
       </div>
     </div>
   );

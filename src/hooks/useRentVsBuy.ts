@@ -46,5 +46,5 @@ export function useRentVsBuy() {
     setInput(createDefaultInput());
   }, [setInput]);
 
-  return { input, result, setField, reset };
+  return { input, result, setField, setInput, reset };
 }
