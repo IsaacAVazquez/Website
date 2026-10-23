@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T20:35:49.543Z",
+  "generatedAt": "2026-10-23T20:30:23.315Z",
   "data": {
     "PPR": {
       "entries": [
@@ -114,6 +114,16 @@
           "high": 32.3
         },
         {
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "games": 4,
+          "low": 7.7,
+          "median": 19.3,
+          "average": 20.9,
+          "high": 37.3
+        },
+        {
           "name": "Amon-Ra St. Brown",
           "team": "DET",
           "position": "WR",
@@ -192,6 +202,16 @@
           "median": 18.4,
           "average": 19.8,
           "high": 32.7
+        },
+        {
+          "name": "Drake Maye",
+          "team": "NE",
+          "position": "QB",
+          "games": 7,
+          "low": 3.8,
+          "median": 23.8,
+          "average": 19.8,
+          "high": 39.5
         },
         {
           "name": "Chuba Hubbard",
@@ -294,16 +314,6 @@
           "high": 22.6
         },
         {
-          "name": "Drake Maye",
-          "team": "NE",
-          "position": "QB",
-          "games": 6,
-          "low": 3.8,
-          "median": 16.8,
-          "average": 18.5,
-          "high": 39.5
-        },
-        {
           "name": "Jordan Love",
           "team": "GB",
           "position": "QB",
@@ -377,10 +387,10 @@
           "name": "D'Andre Swift",
           "team": "CHI",
           "position": "RB",
-          "games": 6,
+          "games": 7,
           "low": 7.4,
-          "median": 15.1,
-          "average": 17.3,
+          "median": 17.3,
+          "average": 17.5,
           "high": 32.4
         },
         {
@@ -664,6 +674,16 @@
           "high": 21.7
         },
         {
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 6.2,
+          "median": 11.4,
+          "average": 13.9,
+          "high": 23.7
+        },
+        {
           "name": "Geno Smith",
           "team": "NYJ",
           "position": "QB",
@@ -724,6 +744,16 @@
           "high": 25.1
         },
         {
+          "name": "Rhamondre Stevenson",
+          "team": "NE",
+          "position": "RB",
+          "games": 7,
+          "low": 3.6,
+          "median": 14.5,
+          "average": 12.4,
+          "high": 22.5
+        },
+        {
           "name": "Sam Darnold",
           "team": "SEA",
           "position": "QB",
@@ -732,16 +762,6 @@
           "median": 11,
           "average": 12.2,
           "high": 27.7
-        },
-        {
-          "name": "Luther Burden III",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 6.2,
-          "median": 10.4,
-          "average": 12.2,
-          "high": 19.8
         },
         {
           "name": "Deebo Samuel Sr.",
@@ -944,16 +964,6 @@
           "high": 20.7
         },
         {
-          "name": "Rhamondre Stevenson",
-          "team": "NE",
-          "position": "RB",
-          "games": 6,
-          "low": 3.6,
-          "median": 10.7,
-          "average": 10.7,
-          "high": 18.4
-        },
-        {
           "name": "RJ Harvey",
           "team": "DEN",
           "position": "RB",
@@ -1104,16 +1114,6 @@
           "high": 18.3
         },
         {
-          "name": "DeMario Douglas",
-          "team": "NE",
-          "position": "WR",
-          "games": 6,
-          "low": 1.9,
-          "median": 5.9,
-          "average": 9.9,
-          "high": 22.5
-        },
-        {
           "name": "T.J. Hockenson",
           "team": "MIN",
           "position": "TE",
@@ -1132,6 +1132,16 @@
           "median": 11.1,
           "average": 9.8,
           "high": 15.7
+        },
+        {
+          "name": "Hunter Henry",
+          "team": "NE",
+          "position": "TE",
+          "games": 7,
+          "low": 1.5,
+          "median": 11.2,
+          "average": 9.7,
+          "high": 14.8
         },
         {
           "name": "Romeo Doubs",
@@ -1182,16 +1192,6 @@
           "median": 11,
           "average": 9.5,
           "high": 14.3
-        },
-        {
-          "name": "Kalif Raymond",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 2.6,
-          "median": 6.4,
-          "average": 9.4,
-          "high": 21
         },
         {
           "name": "Emanuel Wilson",
@@ -1254,6 +1254,16 @@
           "high": 13.4
         },
         {
+          "name": "DeMario Douglas",
+          "team": "NE",
+          "position": "WR",
+          "games": 7,
+          "low": 1.9,
+          "median": 5.3,
+          "average": 9.2,
+          "high": 22.5
+        },
+        {
           "name": "DJ Moore",
           "team": "BUF",
           "position": "WR",
@@ -1304,16 +1314,6 @@
           "high": 14.2
         },
         {
-          "name": "Hunter Henry",
-          "team": "NE",
-          "position": "TE",
-          "games": 6,
-          "low": 1.5,
-          "median": 9.1,
-          "average": 8.9,
-          "high": 14.8
-        },
-        {
           "name": "Kendrick Bourne",
           "team": "ARI",
           "position": "WR",
@@ -1342,6 +1342,16 @@
           "median": 8.2,
           "average": 8.9,
           "high": 14.2
+        },
+        {
+          "name": "Colston Loveland",
+          "team": "CHI",
+          "position": "TE",
+          "games": 7,
+          "low": 0,
+          "median": 7.1,
+          "average": 8.9,
+          "high": 19.9
         },
         {
           "name": "Woody Marks",
@@ -1414,6 +1424,16 @@
           "high": 13.6
         },
         {
+          "name": "Rome Odunze",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 5,
+          "median": 7.3,
+          "average": 8.6,
+          "high": 15.4
+        },
+        {
           "name": "J.K. Dobbins",
           "team": "DEN",
           "position": "RB",
@@ -1444,16 +1464,6 @@
           "high": 20
         },
         {
-          "name": "Rome Odunze",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 5,
-          "median": 7.3,
-          "average": 8.2,
-          "high": 15.4
-        },
-        {
           "name": "Darren Waller",
           "team": "CAR",
           "position": "TE",
@@ -1462,6 +1472,16 @@
           "median": 6.6,
           "average": 8,
           "high": 18.3
+        },
+        {
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 3.8,
+          "average": 8,
+          "high": 21
         },
         {
           "name": "Tommy Tremble",
@@ -1624,16 +1644,6 @@
           "high": 10.5
         },
         {
-          "name": "Colston Loveland",
-          "team": "CHI",
-          "position": "TE",
-          "games": 6,
-          "low": 0,
-          "median": 5.5,
-          "average": 7.1,
-          "high": 18.5
-        },
-        {
           "name": "Ty Johnson",
           "team": "BUF",
           "position": "RB",
@@ -1694,6 +1704,16 @@
           "high": 11
         },
         {
+          "name": "Eli Raridon",
+          "team": "NE",
+          "position": "TE",
+          "games": 6,
+          "low": 2.1,
+          "median": 5.6,
+          "average": 6.8,
+          "high": 14.6
+        },
+        {
           "name": "Kimani Vidal",
           "team": "LAC",
           "position": "RB",
@@ -1722,16 +1742,6 @@
           "median": 5.6,
           "average": 6.7,
           "high": 12.3
-        },
-        {
-          "name": "Roschon Johnson",
-          "team": "CHI",
-          "position": "RB",
-          "games": 4,
-          "low": 0,
-          "median": 6.2,
-          "average": 6.7,
-          "high": 14.5
         },
         {
           "name": "Cooper Kupp",
@@ -1824,16 +1834,6 @@
           "high": 9.9
         },
         {
-          "name": "TreVeyon Henderson",
-          "team": "NE",
-          "position": "RB",
-          "games": 5,
-          "low": 3,
-          "median": 4.2,
-          "average": 5.9,
-          "high": 13.6
-        },
-        {
           "name": "Saquon Barkley",
           "team": "PHI",
           "position": "RB",
@@ -1874,6 +1874,16 @@
           "high": 15.3
         },
         {
+          "name": "Roschon Johnson",
+          "team": "CHI",
+          "position": "RB",
+          "games": 5,
+          "low": 0,
+          "median": 3.3,
+          "average": 5.6,
+          "high": 14.5
+        },
+        {
           "name": "Dohnte Meyers",
           "team": "CIN",
           "position": "WR",
@@ -1882,6 +1892,16 @@
           "median": 3.8,
           "average": 5.6,
           "high": 15.2
+        },
+        {
+          "name": "TreVeyon Henderson",
+          "team": "NE",
+          "position": "RB",
+          "games": 6,
+          "low": 3,
+          "median": 4.3,
+          "average": 5.6,
+          "high": 13.6
         },
         {
           "name": "Isaac TeSlaa",
@@ -1984,16 +2004,6 @@
           "high": 8.2
         },
         {
-          "name": "Eli Raridon",
-          "team": "NE",
-          "position": "TE",
-          "games": 5,
-          "low": 2.1,
-          "median": 4,
-          "average": 5.2,
-          "high": 10.7
-        },
-        {
           "name": "Laquon Treadwell",
           "team": "IND",
           "position": "WR",
@@ -2022,16 +2032,6 @@
           "median": 3.9,
           "average": 5.1,
           "high": 9.7
-        },
-        {
-          "name": "Efton Chism III",
-          "team": "NE",
-          "position": "WR",
-          "games": 5,
-          "low": 0,
-          "median": 1.7,
-          "average": 5.1,
-          "high": 12.2
         },
         {
           "name": "Kenny Gainwell",
@@ -2094,6 +2094,16 @@
           "high": 9.5
         },
         {
+          "name": "Efton Chism III",
+          "team": "NE",
+          "position": "WR",
+          "games": 6,
+          "low": 0,
+          "median": 2.2,
+          "average": 4.7,
+          "high": 12.2
+        },
+        {
           "name": "Tyjae Spears",
           "team": "TEN",
           "position": "RB",
@@ -2102,16 +2112,6 @@
           "median": 3.1,
           "average": 4.5,
           "high": 9.8
-        },
-        {
-          "name": "Kyle Williams",
-          "team": "NE",
-          "position": "WR",
-          "games": 6,
-          "low": 0,
-          "median": 2.1,
-          "average": 4.5,
-          "high": 18.1
         },
         {
           "name": "Raheim Sanders",
@@ -2244,6 +2244,16 @@
           "high": 8.1
         },
         {
+          "name": "Kyle Williams",
+          "team": "NE",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 2,
+          "average": 3.8,
+          "high": 18.1
+        },
+        {
           "name": "Charlie Kolar",
           "team": "LAC",
           "position": "TE",
@@ -2282,6 +2292,16 @@
           "median": 1.3,
           "average": 3.6,
           "high": 12
+        },
+        {
+          "name": "Cole Kmet",
+          "team": "CHI",
+          "position": "TE",
+          "games": 7,
+          "low": 0,
+          "median": 2.3,
+          "average": 3.5,
+          "high": 11.5
         },
         {
           "name": "Brycen Tremayne",
@@ -2374,16 +2394,6 @@
           "high": 8.7
         },
         {
-          "name": "Cole Kmet",
-          "team": "CHI",
-          "position": "TE",
-          "games": 6,
-          "low": 0,
-          "median": 2,
-          "average": 3.1,
-          "high": 11.5
-        },
-        {
           "name": "Chris Brooks",
           "team": "GB",
           "position": "RB",
@@ -2464,16 +2474,6 @@
           "high": 5.3
         },
         {
-          "name": "Corey Kiner",
-          "team": "NE",
-          "position": "RB",
-          "games": 6,
-          "low": 0,
-          "median": 2.4,
-          "average": 2.6,
-          "high": 5.7
-        },
-        {
           "name": "Calvin Ridley",
           "team": "TEN",
           "position": "WR",
@@ -2532,6 +2532,16 @@
           "median": 2.8,
           "average": 2.4,
           "high": 6
+        },
+        {
+          "name": "Corey Kiner",
+          "team": "NE",
+          "position": "RB",
+          "games": 7,
+          "low": 0,
+          "median": 1.3,
+          "average": 2.4,
+          "high": 5.7
         },
         {
           "name": "Brevyn Spann-Ford",
@@ -2604,16 +2614,6 @@
           "high": 3.3
         },
         {
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
-          "games": 5,
-          "low": 0,
-          "median": 1.1,
-          "average": 2,
-          "high": 5.5
-        },
-        {
           "name": "John Bates",
           "team": "WAS",
           "position": "TE",
@@ -2632,6 +2632,16 @@
           "median": 1.5,
           "average": 1.9,
           "high": 5.8
+        },
+        {
+          "name": "Jahdae Walker",
+          "team": "CHI",
+          "position": "WR",
+          "games": 4,
+          "low": 0,
+          "median": 0,
+          "average": 1.8,
+          "high": 7.1
         },
         {
           "name": "CJ Donaldson",
@@ -2712,6 +2722,16 @@
           "median": 1.7,
           "average": 1.6,
           "high": 4.3
+        },
+        {
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "games": 6,
+          "low": 0,
+          "median": 0.6,
+          "average": 1.6,
+          "high": 5.5
         },
         {
           "name": "Jonathan Mingo",
@@ -3267,7 +3287,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 6
+      "throughWeek": 7
     },
     "HALF_PPR": {
       "entries": [
@@ -3352,6 +3372,16 @@
           "high": 32.3
         },
         {
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "games": 4,
+          "low": 7.7,
+          "median": 19.3,
+          "average": 20.9,
+          "high": 37.3
+        },
+        {
           "name": "Joe Burrow",
           "team": "CIN",
           "position": "QB",
@@ -3380,6 +3410,16 @@
           "median": 20.5,
           "average": 19.8,
           "high": 34.3
+        },
+        {
+          "name": "Drake Maye",
+          "team": "NE",
+          "position": "QB",
+          "games": 7,
+          "low": 3.8,
+          "median": 23.8,
+          "average": 19.8,
+          "high": 39.5
         },
         {
           "name": "Trevor Lawrence",
@@ -3460,16 +3500,6 @@
           "median": 18.6,
           "average": 18.5,
           "high": 25.4
-        },
-        {
-          "name": "Drake Maye",
-          "team": "NE",
-          "position": "QB",
-          "games": 6,
-          "low": 3.8,
-          "median": 16.8,
-          "average": 18.5,
-          "high": 39.5
         },
         {
           "name": "Jordan Love",
@@ -3612,6 +3642,16 @@
           "high": 23.1
         },
         {
+          "name": "D'Andre Swift",
+          "team": "CHI",
+          "position": "RB",
+          "games": 7,
+          "low": 6.4,
+          "median": 15.3,
+          "average": 16,
+          "high": 31.9
+        },
+        {
           "name": "Jalen Hurts",
           "team": "PHI",
           "position": "QB",
@@ -3620,16 +3660,6 @@
           "median": 13.5,
           "average": 16,
           "high": 24.7
-        },
-        {
-          "name": "D'Andre Swift",
-          "team": "CHI",
-          "position": "RB",
-          "games": 6,
-          "low": 6.4,
-          "median": 12.9,
-          "average": 15.8,
-          "high": 31.9
         },
         {
           "name": "Zay Flowers",
@@ -3992,6 +4022,16 @@
           "high": 20
         },
         {
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 4.7,
+          "median": 9.4,
+          "average": 11.4,
+          "high": 21.7
+        },
+        {
           "name": "Ollie Gordon II",
           "team": "MIA",
           "position": "RB",
@@ -4010,6 +4050,16 @@
           "median": 6.4,
           "average": 11.1,
           "high": 24.2
+        },
+        {
+          "name": "Rhamondre Stevenson",
+          "team": "NE",
+          "position": "RB",
+          "games": 7,
+          "low": 3.1,
+          "median": 12,
+          "average": 11,
+          "high": 20
         },
         {
           "name": "Tyler Warren",
@@ -4130,26 +4180,6 @@
           "median": 8,
           "average": 9.6,
           "high": 21.7
-        },
-        {
-          "name": "Luther Burden III",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 4.7,
-          "median": 8.2,
-          "average": 9.6,
-          "high": 16.3
-        },
-        {
-          "name": "Rhamondre Stevenson",
-          "team": "NE",
-          "position": "RB",
-          "games": 6,
-          "low": 3.1,
-          "median": 8.7,
-          "average": 9.5,
-          "high": 16.9
         },
         {
           "name": "Emeka Egbuka",
@@ -4402,16 +4432,6 @@
           "high": 15.3
         },
         {
-          "name": "DeMario Douglas",
-          "team": "NE",
-          "position": "WR",
-          "games": 6,
-          "low": 1.4,
-          "median": 4.4,
-          "average": 8.2,
-          "high": 20.5
-        },
-        {
           "name": "Dalton Kincaid",
           "team": "BUF",
           "position": "TE",
@@ -4450,6 +4470,16 @@
           "median": 7.3,
           "average": 7.9,
           "high": 12
+        },
+        {
+          "name": "Hunter Henry",
+          "team": "NE",
+          "position": "TE",
+          "games": 7,
+          "low": 1,
+          "median": 8.7,
+          "average": 7.8,
+          "high": 12.8
         },
         {
           "name": "Brenton Strange",
@@ -4532,6 +4562,16 @@
           "high": 14.4
         },
         {
+          "name": "DeMario Douglas",
+          "team": "NE",
+          "position": "WR",
+          "games": 7,
+          "low": 1.4,
+          "median": 4.3,
+          "average": 7.6,
+          "high": 20.5
+        },
+        {
           "name": "Roman Wilson",
           "team": "PIT",
           "position": "WR",
@@ -4592,16 +4632,6 @@
           "high": 20.6
         },
         {
-          "name": "Hunter Henry",
-          "team": "NE",
-          "position": "TE",
-          "games": 6,
-          "low": 1,
-          "median": 7.1,
-          "average": 7.3,
-          "high": 12.8
-        },
-        {
           "name": "Khalil Shakir",
           "team": "BUF",
           "position": "WR",
@@ -4632,16 +4662,6 @@
           "high": 13.5
         },
         {
-          "name": "Kalif Raymond",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 1.6,
-          "median": 4.7,
-          "average": 7.2,
-          "high": 18
-        },
-        {
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
@@ -4660,6 +4680,16 @@
           "median": 4.1,
           "average": 7.1,
           "high": 20.5
+        },
+        {
+          "name": "Colston Loveland",
+          "team": "CHI",
+          "position": "TE",
+          "games": 7,
+          "low": 0,
+          "median": 5.1,
+          "average": 7.1,
+          "high": 16.4
         },
         {
           "name": "Dalton Schultz",
@@ -4700,6 +4730,16 @@
           "median": 6.4,
           "average": 6.9,
           "high": 10.7
+        },
+        {
+          "name": "Rome Odunze",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 3.5,
+          "median": 5.9,
+          "average": 6.9,
+          "high": 12.4
         },
         {
           "name": "Jahan Dotson",
@@ -4782,16 +4822,6 @@
           "high": 16.7
         },
         {
-          "name": "Rome Odunze",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 3.5,
-          "median": 5.8,
-          "average": 6.5,
-          "high": 12.4
-        },
-        {
           "name": "Josh Palmer",
           "team": "BUF",
           "position": "WR",
@@ -4810,6 +4840,16 @@
           "median": 8.3,
           "average": 6.3,
           "high": 11.2
+        },
+        {
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 2.8,
+          "average": 6.2,
+          "high": 18
         },
         {
           "name": "Rashod Bateman",
@@ -4902,6 +4942,16 @@
           "high": 10.5
         },
         {
+          "name": "Eli Raridon",
+          "team": "NE",
+          "position": "TE",
+          "games": 6,
+          "low": 1.6,
+          "median": 5.1,
+          "average": 5.8,
+          "high": 13.1
+        },
+        {
           "name": "Cody White",
           "team": "LV",
           "position": "WR",
@@ -4910,16 +4960,6 @@
           "median": 6,
           "average": 5.7,
           "high": 15.4
-        },
-        {
-          "name": "Roschon Johnson",
-          "team": "CHI",
-          "position": "RB",
-          "games": 4,
-          "low": 0,
-          "median": 4.7,
-          "average": 5.7,
-          "high": 13.5
         },
         {
           "name": "Ted Hurst III",
@@ -4982,16 +5022,6 @@
           "high": 20
         },
         {
-          "name": "TreVeyon Henderson",
-          "team": "NE",
-          "position": "RB",
-          "games": 5,
-          "low": 2.5,
-          "median": 4.2,
-          "average": 5.6,
-          "high": 13.6
-        },
-        {
           "name": "Rashid Shaheed",
           "team": "SEA",
           "position": "WR",
@@ -5000,16 +5030,6 @@
           "median": 4.3,
           "average": 5.5,
           "high": 11.8
-        },
-        {
-          "name": "Colston Loveland",
-          "team": "CHI",
-          "position": "TE",
-          "games": 6,
-          "low": 0,
-          "median": 4,
-          "average": 5.5,
-          "high": 15.5
         },
         {
           "name": "Ty Johnson",
@@ -5072,6 +5092,16 @@
           "high": 12.2
         },
         {
+          "name": "TreVeyon Henderson",
+          "team": "NE",
+          "position": "RB",
+          "games": 6,
+          "low": 2.5,
+          "median": 3.8,
+          "average": 5.2,
+          "high": 13.6
+        },
+        {
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
@@ -5090,6 +5120,16 @@
           "median": 3.9,
           "average": 5,
           "high": 9.7
+        },
+        {
+          "name": "Roschon Johnson",
+          "team": "CHI",
+          "position": "RB",
+          "games": 5,
+          "low": 0,
+          "median": 2.8,
+          "average": 4.8,
+          "high": 13.5
         },
         {
           "name": "Isaiah Williams",
@@ -5232,16 +5272,6 @@
           "high": 11.7
         },
         {
-          "name": "Eli Raridon",
-          "team": "NE",
-          "position": "TE",
-          "games": 5,
-          "low": 1.6,
-          "median": 3.5,
-          "average": 4.3,
-          "high": 8.2
-        },
-        {
           "name": "Evan Engram",
           "team": "DEN",
           "position": "TE",
@@ -5290,16 +5320,6 @@
           "median": 3.9,
           "average": 4.2,
           "high": 8.8
-        },
-        {
-          "name": "Efton Chism III",
-          "team": "NE",
-          "position": "WR",
-          "games": 5,
-          "low": 0,
-          "median": 1.2,
-          "average": 4.2,
-          "high": 11.2
         },
         {
           "name": "Courtland Sutton",
@@ -5352,16 +5372,6 @@
           "high": 5.3
         },
         {
-          "name": "Kyle Williams",
-          "team": "NE",
-          "position": "WR",
-          "games": 6,
-          "low": 0,
-          "median": 1.6,
-          "average": 4,
-          "high": 16.6
-        },
-        {
           "name": "Tank Bigsby",
           "team": "PHI",
           "position": "RB",
@@ -5370,6 +5380,16 @@
           "median": 2.9,
           "average": 3.9,
           "high": 10.8
+        },
+        {
+          "name": "Efton Chism III",
+          "team": "NE",
+          "position": "WR",
+          "games": 6,
+          "low": 0,
+          "median": 1.7,
+          "average": 3.9,
+          "high": 11.2
         },
         {
           "name": "Elic Ayomanor",
@@ -5450,6 +5470,16 @@
           "median": 3,
           "average": 3.4,
           "high": 7.6
+        },
+        {
+          "name": "Kyle Williams",
+          "team": "NE",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 1.5,
+          "average": 3.4,
+          "high": 16.6
         },
         {
           "name": "Raheim Sanders",
@@ -5582,6 +5612,16 @@
           "high": 8.7
         },
         {
+          "name": "Cole Kmet",
+          "team": "CHI",
+          "position": "TE",
+          "games": 7,
+          "low": 0,
+          "median": 1.3,
+          "average": 2.8,
+          "high": 10.5
+        },
+        {
           "name": "Blake Whiteheart",
           "team": "CLE",
           "position": "TE",
@@ -5632,16 +5672,6 @@
           "high": 7.9
         },
         {
-          "name": "Cole Kmet",
-          "team": "CHI",
-          "position": "TE",
-          "games": 6,
-          "low": 0,
-          "median": 1.3,
-          "average": 2.6,
-          "high": 10.5
-        },
-        {
           "name": "Charlie Kolar",
           "team": "LAC",
           "position": "TE",
@@ -5682,16 +5712,6 @@
           "high": 7.6
         },
         {
-          "name": "Corey Kiner",
-          "team": "NE",
-          "position": "RB",
-          "games": 6,
-          "low": 0,
-          "median": 2.2,
-          "average": 2.4,
-          "high": 5.7
-        },
-        {
           "name": "Dawson Knox",
           "team": "BUF",
           "position": "TE",
@@ -5720,6 +5740,16 @@
           "median": 0.7,
           "average": 2.2,
           "high": 8.3
+        },
+        {
+          "name": "Corey Kiner",
+          "team": "NE",
+          "position": "RB",
+          "games": 7,
+          "low": 0,
+          "median": 1.3,
+          "average": 2.2,
+          "high": 5.7
         },
         {
           "name": "Najee Harris",
@@ -5862,6 +5892,16 @@
           "high": 3.4
         },
         {
+          "name": "Jahdae Walker",
+          "team": "CHI",
+          "position": "WR",
+          "games": 4,
+          "low": 0,
+          "median": 0,
+          "average": 1.6,
+          "high": 6.6
+        },
+        {
           "name": "CJ Donaldson",
           "team": "NO",
           "position": "RB",
@@ -5870,16 +5910,6 @@
           "median": 1.3,
           "average": 1.5,
           "high": 3.3
-        },
-        {
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
-          "games": 5,
-          "low": 0,
-          "median": 0.6,
-          "average": 1.5,
-          "high": 4
         },
         {
           "name": "AJ Dillon",
@@ -5980,6 +6010,16 @@
           "median": 0,
           "average": 1.2,
           "high": 7.8
+        },
+        {
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "games": 6,
+          "low": 0,
+          "median": 0.3,
+          "average": 1.2,
+          "high": 4
         },
         {
           "name": "Brock Wright",
@@ -6535,7 +6575,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 6
+      "throughWeek": 7
     },
     "STANDARD": {
       "entries": [
@@ -6610,6 +6650,16 @@
           "high": 32.3
         },
         {
+          "name": "Caleb Williams",
+          "team": "CHI",
+          "position": "QB",
+          "games": 4,
+          "low": 7.7,
+          "median": 19.3,
+          "average": 20.9,
+          "high": 37.3
+        },
+        {
           "name": "Joe Burrow",
           "team": "CIN",
           "position": "QB",
@@ -6628,6 +6678,16 @@
           "median": 19.7,
           "average": 19.8,
           "high": 25
+        },
+        {
+          "name": "Drake Maye",
+          "team": "NE",
+          "position": "QB",
+          "games": 7,
+          "low": 3.8,
+          "median": 23.8,
+          "average": 19.8,
+          "high": 39.5
         },
         {
           "name": "Jaxon Smith-Njigba",
@@ -6688,16 +6748,6 @@
           "median": 19.4,
           "average": 18.5,
           "high": 22.6
-        },
-        {
-          "name": "Drake Maye",
-          "team": "NE",
-          "position": "QB",
-          "games": 6,
-          "low": 3.8,
-          "median": 16.8,
-          "average": 18.5,
-          "high": 39.5
         },
         {
           "name": "Jordan Love",
@@ -6873,10 +6923,10 @@
           "name": "D'Andre Swift",
           "team": "CHI",
           "position": "RB",
-          "games": 6,
+          "games": 7,
           "low": 5.4,
-          "median": 11.1,
-          "average": 14.3,
+          "median": 13.3,
+          "average": 14.4,
           "high": 31.4
         },
         {
@@ -7270,6 +7320,16 @@
           "high": 15.7
         },
         {
+          "name": "Rhamondre Stevenson",
+          "team": "NE",
+          "position": "RB",
+          "games": 7,
+          "low": 2.6,
+          "median": 9.5,
+          "average": 9.6,
+          "high": 17.5
+        },
+        {
           "name": "Drake London",
           "team": "ATL",
           "position": "WR",
@@ -7330,6 +7390,16 @@
           "high": 15.4
         },
         {
+          "name": "Luther Burden III",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 3.2,
+          "median": 7.4,
+          "average": 8.9,
+          "high": 19.7
+        },
+        {
           "name": "Jalon Daniels",
           "team": "TB",
           "position": "QB",
@@ -7378,16 +7448,6 @@
           "median": 6.6,
           "average": 8.3,
           "high": 14.1
-        },
-        {
-          "name": "Rhamondre Stevenson",
-          "team": "NE",
-          "position": "RB",
-          "games": 6,
-          "low": 2.6,
-          "median": 6.7,
-          "average": 8.2,
-          "high": 15.4
         },
         {
           "name": "Chase Brown",
@@ -7600,16 +7660,6 @@
           "high": 11.7
         },
         {
-          "name": "Luther Burden III",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 3.2,
-          "median": 6.2,
-          "average": 7,
-          "high": 12.8
-        },
-        {
           "name": "J.K. Dobbins",
           "team": "DEN",
           "position": "RB",
@@ -7668,16 +7718,6 @@
           "median": 6.5,
           "average": 6.5,
           "high": 11.5
-        },
-        {
-          "name": "DeMario Douglas",
-          "team": "NE",
-          "position": "WR",
-          "games": 6,
-          "low": 0.9,
-          "median": 2.9,
-          "average": 6.5,
-          "high": 18.5
         },
         {
           "name": "Michael Wilson",
@@ -7760,6 +7800,16 @@
           "high": 11.6
         },
         {
+          "name": "Hunter Henry",
+          "team": "NE",
+          "position": "TE",
+          "games": 7,
+          "low": 0.5,
+          "median": 6.2,
+          "average": 5.9,
+          "high": 10.8
+        },
+        {
           "name": "Josh Palmer",
           "team": "BUF",
           "position": "WR",
@@ -7780,14 +7830,14 @@
           "high": 14.7
         },
         {
-          "name": "Hunter Henry",
+          "name": "DeMario Douglas",
           "team": "NE",
-          "position": "TE",
-          "games": 6,
-          "low": 0.5,
-          "median": 5.1,
-          "average": 5.8,
-          "high": 10.8
+          "position": "WR",
+          "games": 7,
+          "low": 0.9,
+          "median": 2.3,
+          "average": 5.9,
+          "high": 18.5
         },
         {
           "name": "Kyle Pitts",
@@ -7990,16 +8040,6 @@
           "high": 8.5
         },
         {
-          "name": "TreVeyon Henderson",
-          "team": "NE",
-          "position": "RB",
-          "games": 5,
-          "low": 2,
-          "median": 3.8,
-          "average": 5.3,
-          "high": 13.6
-        },
-        {
           "name": "Mack Hollins",
           "team": "NE",
           "position": "WR",
@@ -8040,6 +8080,26 @@
           "high": 14.2
         },
         {
+          "name": "Rome Odunze",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 2,
+          "median": 4.4,
+          "average": 5.2,
+          "high": 9.4
+        },
+        {
+          "name": "Colston Loveland",
+          "team": "CHI",
+          "position": "TE",
+          "games": 7,
+          "low": 0,
+          "median": 3.1,
+          "average": 5.2,
+          "high": 12.9
+        },
+        {
           "name": "Noah Fant",
           "team": "NO",
           "position": "TE",
@@ -8058,16 +8118,6 @@
           "median": 5,
           "average": 5.1,
           "high": 14.4
-        },
-        {
-          "name": "Kalif Raymond",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 0.4,
-          "median": 2.9,
-          "average": 5,
-          "high": 15
         },
         {
           "name": "Tommy Tremble",
@@ -8120,16 +8170,6 @@
           "high": 10
         },
         {
-          "name": "Rome Odunze",
-          "team": "CHI",
-          "position": "WR",
-          "games": 6,
-          "low": 2,
-          "median": 4.3,
-          "average": 4.9,
-          "high": 9.4
-        },
-        {
           "name": "Saquon Barkley",
           "team": "PHI",
           "position": "RB",
@@ -8140,14 +8180,24 @@
           "high": 8
         },
         {
-          "name": "Roschon Johnson",
-          "team": "CHI",
+          "name": "Eli Raridon",
+          "team": "NE",
+          "position": "TE",
+          "games": 6,
+          "low": 1.1,
+          "median": 4.3,
+          "average": 4.8,
+          "high": 11.6
+        },
+        {
+          "name": "TreVeyon Henderson",
+          "team": "NE",
           "position": "RB",
-          "games": 4,
-          "low": 0,
-          "median": 3.1,
-          "average": 4.7,
-          "high": 12.5
+          "games": 6,
+          "low": 2,
+          "median": 3.3,
+          "average": 4.8,
+          "high": 13.6
         },
         {
           "name": "Samaje Perine",
@@ -8260,6 +8310,16 @@
           "high": 12.4
         },
         {
+          "name": "Kalif Raymond",
+          "team": "CHI",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 1.8,
+          "average": 4.3,
+          "high": 15
+        },
+        {
           "name": "Foster Moreau",
           "team": "HOU",
           "position": "TE",
@@ -8300,6 +8360,16 @@
           "high": 10.6
         },
         {
+          "name": "Roschon Johnson",
+          "team": "CHI",
+          "position": "RB",
+          "games": 5,
+          "low": 0,
+          "median": 2.3,
+          "average": 4,
+          "high": 12.5
+        },
+        {
           "name": "Mike Washington Jr.",
           "team": "LV",
           "position": "RB",
@@ -8338,16 +8408,6 @@
           "median": 2,
           "average": 3.9,
           "high": 13.3
-        },
-        {
-          "name": "Colston Loveland",
-          "team": "CHI",
-          "position": "TE",
-          "games": 6,
-          "low": 0,
-          "median": 2.5,
-          "average": 3.9,
-          "high": 12.5
         },
         {
           "name": "Josh Cameron",
@@ -8500,26 +8560,6 @@
           "high": 5.7
         },
         {
-          "name": "Kyle Williams",
-          "team": "NE",
-          "position": "WR",
-          "games": 6,
-          "low": 0,
-          "median": 1.1,
-          "average": 3.4,
-          "high": 15.1
-        },
-        {
-          "name": "Eli Raridon",
-          "team": "NE",
-          "position": "TE",
-          "games": 5,
-          "low": 1.1,
-          "median": 3,
-          "average": 3.4,
-          "high": 6.2
-        },
-        {
           "name": "AJ Barner",
           "team": "SEA",
           "position": "TE",
@@ -8528,16 +8568,6 @@
           "median": 1.8,
           "average": 3.3,
           "high": 6.9
-        },
-        {
-          "name": "Efton Chism III",
-          "team": "NE",
-          "position": "WR",
-          "games": 5,
-          "low": -0.2,
-          "median": 0.7,
-          "average": 3.3,
-          "high": 10.2
         },
         {
           "name": "Evan Engram",
@@ -8650,6 +8680,16 @@
           "high": 7.3
         },
         {
+          "name": "Kyle Williams",
+          "team": "NE",
+          "position": "WR",
+          "games": 7,
+          "low": 0,
+          "median": 1,
+          "average": 3,
+          "high": 15.1
+        },
+        {
           "name": "Dohnte Meyers",
           "team": "CIN",
           "position": "WR",
@@ -8678,6 +8718,16 @@
           "median": 3,
           "average": 3,
           "high": 6.4
+        },
+        {
+          "name": "Efton Chism III",
+          "team": "NE",
+          "position": "WR",
+          "games": 6,
+          "low": -0.2,
+          "median": 1.2,
+          "average": 3,
+          "high": 10.2
         },
         {
           "name": "Theo Johnson",
@@ -8850,16 +8900,6 @@
           "high": 5.1
         },
         {
-          "name": "Corey Kiner",
-          "team": "NE",
-          "position": "RB",
-          "games": 6,
-          "low": 0,
-          "median": 1.9,
-          "average": 2.2,
-          "high": 5.7
-        },
-        {
           "name": "Nate Boerkircher",
           "team": "JAX",
           "position": "TE",
@@ -8880,6 +8920,16 @@
           "high": 5.9
         },
         {
+          "name": "Cole Kmet",
+          "team": "CHI",
+          "position": "TE",
+          "games": 7,
+          "low": 0,
+          "median": 0.8,
+          "average": 2.1,
+          "high": 9.5
+        },
+        {
           "name": "Sione Vaki",
           "team": "DET",
           "position": "RB",
@@ -8888,6 +8938,16 @@
           "median": 1.8,
           "average": 2.1,
           "high": 3.7
+        },
+        {
+          "name": "Corey Kiner",
+          "team": "NE",
+          "position": "RB",
+          "games": 7,
+          "low": 0,
+          "median": 1.3,
+          "average": 2.1,
+          "high": 5.7
         },
         {
           "name": "Bryce Lance",
@@ -8908,16 +8968,6 @@
           "median": 1.4,
           "average": 2.1,
           "high": 5.2
-        },
-        {
-          "name": "Cole Kmet",
-          "team": "CHI",
-          "position": "TE",
-          "games": 6,
-          "low": 0,
-          "median": 0.6,
-          "average": 2,
-          "high": 9.5
         },
         {
           "name": "Tyjae Spears",
@@ -9050,6 +9100,16 @@
           "high": 2.1
         },
         {
+          "name": "Jahdae Walker",
+          "team": "CHI",
+          "position": "WR",
+          "games": 4,
+          "low": 0,
+          "median": 0,
+          "average": 1.5,
+          "high": 6.1
+        },
+        {
           "name": "Dylan Laube",
           "team": "LV",
           "position": "RB",
@@ -9170,16 +9230,6 @@
           "high": 3.3
         },
         {
-          "name": "Zavion Thomas",
-          "team": "CHI",
-          "position": "WR",
-          "games": 5,
-          "low": 0,
-          "median": 0.1,
-          "average": 1,
-          "high": 2.5
-        },
-        {
           "name": "Jelani Woods",
           "team": "NYJ",
           "position": "TE",
@@ -9268,6 +9318,16 @@
           "median": 0.5,
           "average": 0.8,
           "high": 2
+        },
+        {
+          "name": "Zavion Thomas",
+          "team": "CHI",
+          "position": "WR",
+          "games": 6,
+          "low": 0,
+          "median": 0.1,
+          "average": 0.8,
+          "high": 2.5
         },
         {
           "name": "John Bates",
@@ -9803,7 +9863,7 @@
       "season": 2026,
       "seasonType": "REG",
       "sourceUrl": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv",
-      "throughWeek": 6
+      "throughWeek": 7
     }
   }
 }
