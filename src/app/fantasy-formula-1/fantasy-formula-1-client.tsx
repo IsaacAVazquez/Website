@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Plus, Sparkles, Trash2 } from "lucide-react";
 import { formatDateTime, formatUpdatedAt } from "@/lib/date-formatters";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { f1PricesKey, parseF1Prices, applyF1Prices } from "@/lib/fantasyFormula1Records";
+import { RaceNotebook } from "./RaceNotebook";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   buildFantasyFormula1Assets,
@@ -237,12 +240,14 @@ function AssetsTable({
   lineup,
   onAdd,
   onRemove,
+  enteredPrices,
 }: {
   assets: FantasyFormula1Asset[];
   selectedIds: Set<string>;
   lineup: FantasyFormula1Lineup;
   onAdd: (asset: FantasyFormula1Asset) => void;
   onRemove: (asset: FantasyFormula1Asset) => void;
+  enteredPrices: Record<string, number>;
 }) {
   if (assets.length === 0) {
     return (
@@ -308,7 +313,7 @@ function AssetsTable({
                     <summary>
                       <span>
                         <span className="sr-only">{asset.name}, </span>
-                        {formatMoney(asset.price)} &middot; {formatPoints(asset.projectedPoints)} projected
+                        {formatMoney(asset.price)} {Object.hasOwn(enteredPrices, asset.id) ? "entered" : "model"} &middot; {formatPoints(asset.projectedPoints)} projected
                       </span>
                       <span className="ff1-more-toggle" aria-hidden="true">
                         <span data-when="closed">More</span>
@@ -339,7 +344,7 @@ function AssetsTable({
                   </details>
                 </td>
                 <td className="hidden capitalize sm:table-cell">{asset.kind}</td>
-                <td data-align="end" className="hidden sm:table-cell">{formatMoney(asset.price)}</td>
+                <td data-align="end" className="hidden sm:table-cell">{formatMoney(asset.price)}<span className="ff1-asset-meta"> {Object.hasOwn(enteredPrices, asset.id) ? "Entered" : "Model"}</span></td>
                 <td data-align="end" className="hidden sm:table-cell">{formatPoints(asset.projectedPoints)}</td>
                 <td data-align="end" className="hidden sm:table-cell">{formatPoints(asset.valueRating)}</td>
                 <td data-align="end" className="hidden sm:table-cell">{formatPoints(asset.formScore)}</td>
@@ -409,7 +414,9 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
     () => (hasManagedParams ? normalizeFantasyFormula1State(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
   );
-  const assets = useMemo(() => buildFantasyFormula1Assets(seasonSummary), [seasonSummary]);
+  const modelAssets = useMemo(() => buildFantasyFormula1Assets(seasonSummary), [seasonSummary]);
+  const prices = useBrowserRecord(f1PricesKey(seasonSummary.season, seasonSummary.nextMeeting?.key ?? "season"), parseF1Prices);
+  const assets = useMemo(() => applyF1Prices(modelAssets, prices.value), [modelAssets, prices.value]);
   const storageKey = getFantasyFormula1StorageKey(seasonSummary.season);
   const storedLineup = useLocalStorageString(storageKey);
   const lineup = useMemo(
@@ -558,7 +565,7 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
         <section className="ff1-slate" aria-labelledby="ff1-slate-heading" data-testid="fantasy-formula-1-shell">
           <div className="ff1-slate-toolbar">
             <h2 id="ff1-slate-heading" className="ff1-h2">
-              Model slate
+              {Object.keys(prices.value).length ? "Planning slate" : "Model slate"}
             </h2>
             <SortAndFocusControls
               activeSort={routeState.sort}
@@ -573,9 +580,11 @@ export function FantasyFormula1Client({ initialState, summary: seasonSummary }: 
             lineup={lineup}
             onAdd={addAsset}
             onRemove={removeAsset}
+            enteredPrices={prices.value}
           />
         </section>
 
+        <RaceNotebook key={`${seasonSummary.season}-${nextMeeting?.key ?? "season"}`} season={seasonSummary.season} race={nextMeeting?.name ?? ""} date={(nextRaceStart ?? "").slice(0, 10)} sourceAt={seasonSummary.generatedAt} assets={modelAssets} lineup={summary} prices={prices.value} memoryOnly={prices.status === "memory-only"} onPrice={(id, value) => prices.update(latest => { const next = { ...latest }; if (value === null) delete next[id]; else next[id] = value; return next; })} />
         <section className="ff1-rules" aria-labelledby="ff1-rules-heading">
           <h2 id="ff1-rules-heading" className="ff1-h2">
             How the model scores a pick

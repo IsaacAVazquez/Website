@@ -307,7 +307,7 @@ describe("FantasyFormula1Client", () => {
 
     // The stylesheet hides this below 640px only, so the class is what is checked.
     expect(more).toHaveClass("sm:hidden");
-    expect(more.querySelector("summary")).toHaveTextContent(/^Valtteri Bottas, \$[\d.]+m · [\d.]+ projected/);
+    expect(more.querySelector("summary")).toHaveTextContent(/^Valtteri Bottas, \$[\d.]+m model · [\d.]+ projected/);
     for (const label of ["Type", "Standing", "Value", "Form", "Risk"]) {
       expect(within(more).getByText(label, { selector: "dt" })).toBeInTheDocument();
     }
