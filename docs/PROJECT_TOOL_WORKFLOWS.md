@@ -62,3 +62,30 @@ Chromium checks covered saving and reloading bets, recipes, meals, trips, statio
 On October 23, 2026, the full Jest run passed 508 suites. The two suites whose localhost servers and child processes were blocked by the sandbox passed when rerun with the required access. The final project checks passed 29 focused suites and 179 tests. The last changes after that were checked only with their own focused suites, not with another full run. Lint, standalone TypeScript, and the Node 22 production build passed.
 
 Chromium checks passed for all five routes at phone width in both themes, for hydration in Los Angeles and Tokyo, and for layout at 390, 1440, and 1920 pixels. The 24 route checks passed across the initial run and focused reruns. Browser interactions also covered copying a budget, recording bills, opening and restoring a stocked wine, viewing news observation times, restoring repository comparisons, and adding a museum through Museum Log into Travel Planner. A phone wrapping issue, repeated provider links, and an exhibition toggle hydration warning found during this pass were corrected.
+
+
+## Additional comparisons and personal views on October 23, 2026
+
+I added these workflows to six existing routes.
+
+| Project | Workflow | Browser storage |
+| --- | --- | --- |
+| Rent versus buy | Save up to 20 named scenarios, load their inputs, compare up to four, and vary mortgage rate, appreciation, and holding period independently | `rent-vs-buy-scenarios-v1` |
+| Food Map | Save restaurants, mark visits, keep notes, filter personal collections, and add dated restaurant stops to existing trips | `food-map-records-v1`, plus Travel Planner records |
+| Travel Deal Lab | Save up to 30 flight options with route, dates, people, stops, base fare, fees, baggage, and points | `travel-flight-quotes-v1` |
+| Fantasy Formula 1 | Enter race-specific game prices, save up to 30 complete lineups per season, and record actual point totals | `fantasy-formula-1-prices-v1-<season>-<round>`, `fantasy-formula-1-results-v1-<season>` |
+| NBA and NFL | Save up to 10 favorite teams, show their published schedules, download calendars, and compare up to eight observed standings snapshots | `<league>-favorite-teams-v1`, `<league>-observed-standings-v1` |
+
+The stores use the shared browser adapter and validate restored records. Edits read the latest save. The trip loader now also reads the latest browser value before an edit, so a restaurant addition preserves trip edits made in another tab before its storage event arrives. Failed storage writes stay in memory and show a notice.
+
+Rent scenarios keep every entered input and recalculate through the existing engine. Each compared result uses its own holding period and assumptions. The sensitivity table varies one input at a time, respects the input bounds, and assigns no probabilities.
+
+Restaurant stops have no price until the visitor enters one in Travel Planner. The same restaurant is added once per trip date. I checked four official sources on October 23, 2026, covering [Franklin Barbecue’s location and hours](https://franklinbbq.com/home), [Di Fara’s listed locations](https://www.difarapizzany.com/restaurants), [Staplehouse’s counter service](https://www.staplehouse.com/staplehouseabout), and [Noma’s published Copenhagen season](https://noma.dk/da/reservation/). Each checked listing shows its source, date, and the facts covered. The checks do not validate curator attributions, approximate map pins, or the rest of the catalog. The catalog keeps its earlier review date and unverified flag.
+
+Flight quotes are entered by the visitor. Amounts cover the entire party and itinerary. Cash outlay includes the base fare for a cash booking, plus fees and baggage; for a points booking it includes fees and baggage. The comparison cost adds the visitor’s chosen value of the points. The starting 1.4 cents per point remains an estimate. Quotes can have different routes, dates, and party sizes, so the tool shows those details and does not rank them as equivalent offers.
+
+Formula 1 entered prices replace model prices in the builder and optimizer for the upcoming round. Blank prices keep their model values, and each price has a source label. The planning budget stays at $100m. A recorded lineup keeps its seven picks, prices, source timestamp, save timestamp, and point estimates. An unknown actual result stays separate from zero. The estimates still use the existing model, which does not implement official game scoring, so a recorded difference does not establish prediction accuracy.
+
+Team schedules come from the existing per-team snapshot APIs. Calendar files use UTC start times and stable game identifiers, omit unconfirmed dates and postponed or cancelled games, and share the Travel Planner’s text escaping and line folding. Downloads contain the published upcoming schedule, and a changed schedule needs another download. Standings history contains snapshots seen in that browser, with source timestamps, and compares conference rank and records within the same season. Differences can include provider corrections.
+
+The full Jest run passed 520 suites and 4,946 tests. Lint, standalone TypeScript, and the Node 22 production build passed. Moving the rent comparison below the calculator was then checked with the five rent suites and another production build. Chromium passed 64 browser checks in light and dark mode, including saved scenario reloads, restaurant notes and trip additions, cash and points quote restoration, recorded Formula 1 results, restored favorite teams, and NBA and NFL calendar downloads. Populated phone views passed at 390 pixels, and all six routes passed overflow checks at 320, 768, 1440, and 1920 pixels. The browser reported no application errors. The 320 pixel pass found long team buttons extending the page; the final stylesheet wraps those buttons and contains the list grid. Firefox and WebKit were not part of this pass.
