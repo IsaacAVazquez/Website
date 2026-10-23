@@ -424,7 +424,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "pizza",
     coords: [40.625, -73.9615],
     order: "Classic round pie with fresh basil snipped on top.",
-    why: "Dom DeMarco's Midwood shrine, where every pie is made by hand with no rushing.",
+    why: "A Midwood pizza stop at the corner of 15th and Avenue J, with round pies and slices.",
   },
   {
     id: "peter-luger",
@@ -656,9 +656,9 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["isaac"],
     cuisine: "american",
     coords: [33.7546, -84.3717],
-    // Market menu and Thursday to Sunday hours from https://www.staplehouse.com/, read 2026-09-28.
+    // Counter service described at https://www.staplehouse.com/staplehouseabout, read 2026-10-23.
     order: "Whatever is on the market menu, out on the patio.",
-    why: "It made its name as one of the South's best tasting-menu rooms, and now it's a neighborhood spot in Old Fourth Ward, open Thursday to Sunday.",
+    why: "A counter-service restaurant and market in Old Fourth Ward, with seasonal plates, sandwiches, pizza, and seating in the backyard garden.",
   },
   {
     id: "antico-pizza",

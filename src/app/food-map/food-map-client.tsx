@@ -1,6 +1,9 @@
 "use client";
 
 import { Search } from "lucide-react";
+import { useBrowserRecord } from "@/hooks/useBrowserRecord";
+import { FoodPersonal } from "./RestaurantRecord";
+import { FOOD_RECORDS_KEY, parseFoodRecords, EMPTY_FOOD_RECORD, type FoodRecord } from "./foodPersonal";
 import {
   useEffect,
   useMemo,
@@ -238,10 +241,14 @@ function PlaceDossier({
   place,
   onClear,
   headingRef,
+  personal,
+  onPersonalChange,
 }: {
   place: FoodMapPlace;
   onClear: () => void;
   headingRef: RefObject<HTMLHeadingElement | null>;
+  personal: FoodRecord;
+  onPersonalChange: (patch: Partial<FoodRecord>) => void;
 }) {
   const cuisine = getFoodMapCuisine(place.cuisine);
   const accent = getPlaceAccent(place);
@@ -287,6 +294,7 @@ function PlaceDossier({
           Open in Google Maps <span className="c97-arrow-out" aria-hidden="true">↗</span>
         </a>
       </div>
+      <FoodPersonal key={place.id} place={place} record={personal} onChange={onPersonalChange} />
     </div>
   );
 }
@@ -305,6 +313,8 @@ function FoodMapWorkbench({
   onCommit: (next: FoodMapState) => void;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const personal = useBrowserRecord(FOOD_RECORDS_KEY, parseFoodRecords);
+  const [personalFilter, setPersonalFilter] = useState("all");
   const pendingFocus = useRef<"detail" | "list" | null>(null);
   const dossierHeadingRef = useRef<HTMLHeadingElement>(null);
   const indexHeadingRef = useRef<HTMLHeadingElement>(null);
@@ -336,15 +346,16 @@ function FoodMapWorkbench({
 
   const visiblePlaces = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    if (!q) return filteredPlaces;
-    return filteredPlaces.filter((p) => {
+    const personalPlaces = filteredPlaces.filter(place => personalFilter === "all" || (personal.value[place.id] ?? EMPTY_FOOD_RECORD)[personalFilter === "saved" ? "saved" : "visited"]);
+    if (!q) return personalPlaces;
+    return personalPlaces.filter((p) => {
       const cuisine = getFoodMapCuisine(p.cuisine);
       return (
         p.name.toLowerCase().includes(q) ||
         cuisine.label.toLowerCase().includes(q)
       );
     });
-  }, [filteredPlaces, searchQuery]);
+  }, [filteredPlaces, searchQuery, personal.value, personalFilter]);
 
   const cityCounts = useMemo(() => countPlacesByCity(FOOD_MAP_PLACES), []);
   const cityCount = cityCounts[routeState.city] ?? 0;
@@ -354,6 +365,7 @@ function FoodMapWorkbench({
     : undefined;
 
   const hasFilters =
+    personalFilter !== "all" ||
     routeState.curators.length > 0 ||
     routeState.cuisines.length > 0 ||
     searchQuery.trim().length > 0;
@@ -397,6 +409,7 @@ function FoodMapWorkbench({
 
   function handleResetFilters() {
     setSearchQuery("");
+    setPersonalFilter("all");
     onCommit(resetFoodMapFilters(routeState));
   }
 
@@ -422,6 +435,8 @@ function FoodMapWorkbench({
         <div className="fm-citybar">
           <CityTabs state={routeState} counts={cityCounts} onSelect={handleSelectCity} />
         </div>
+        <div className="project-workflow-actions"><label>Restaurant collection <select className="c97-field" value={personalFilter} onChange={event => setPersonalFilter(event.target.value)}><option value="all">All restaurants</option><option value="saved">Saved restaurants</option><option value="visited">Visited restaurants</option></select></label></div>
+        {personal.status === "memory-only" && <p role="status">Restaurant saves and notes last only while this tab is open because browser storage is unavailable.</p>}
 
         <p className="fm-status c97-tabular" role="status" aria-live="polite">
           <span className="fm-status-dot" aria-hidden="true" />
@@ -503,7 +518,7 @@ function FoodMapWorkbench({
 
           <aside aria-label="Food map side panel" className="fm-rail">
             {selectedPlace ? (
-              <PlaceDossier place={selectedPlace} onClear={handleClearPick} headingRef={dossierHeadingRef} />
+              <PlaceDossier place={selectedPlace} onClear={handleClearPick} headingRef={dossierHeadingRef} personal={personal.value[selectedPlace.id] ?? EMPTY_FOOD_RECORD} onPersonalChange={patch => personal.update(latest => ({ ...latest, [selectedPlace.id]: { ...(latest[selectedPlace.id] ?? EMPTY_FOOD_RECORD), ...patch } }))} />
             ) : (
               <>
                 <h2 className="fm-rail-title">The curators</h2>

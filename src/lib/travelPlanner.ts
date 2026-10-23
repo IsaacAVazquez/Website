@@ -1,6 +1,6 @@
 import { normalizeActivityCost } from "./travelExtras";
 import {
-  getBrowserStorageSnapshot,
+  readBrowserStorageString,
   writeBrowserStorageString,
 } from "@/lib/browserStorage";
 import type {
@@ -326,7 +326,7 @@ export function loadTrips(storage?: Pick<Storage, "getItem">): Trip[] {
   if (typeof window === "undefined") return [];
   // Read through the shared memory-mirrored store so a trip still reads back
   // even when a prior durable write failed (Safari private mode / quota).
-  return parseTrips(getBrowserStorageSnapshot(TRAVEL_PLANNER_STORAGE_KEY, "[]"));
+  return parseTrips(readBrowserStorageString(TRAVEL_PLANNER_STORAGE_KEY).value);
 }
 
 export function saveTrips(trips: Trip[], storage?: Pick<Storage, "setItem">) {
