@@ -1,8 +1,8 @@
 ---
-title: "How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)"
+title: "How I'd Evaluate an Agentic AI Product (Interview-Ready Framework)"
 excerpt: "I evaluate an AI agent product by whether the task fits, what actions the system can take, how failures reach a human, and whether the result can be measured. In a PM interview, those are the questions I would work through first."
 publishedAt: "2026-04-10"
-updatedAt: "2026-10-01"
+updatedAt: "2026-10-23"
 category: "Agentic AI"
 tags: ["Product Management", "AI", "Agentic AI", "PM Interviews", "Career"]
 featured: false
@@ -16,24 +16,24 @@ cta:
   href: "/resume"
   actionLabel: "Open the resume"
 seo:
-  title: "Evaluating AI Agent Products as a PM"
+  title: "Evaluating AI Agents in a PM Interview"
   description: "I evaluate an AI agent product by task fit, trust, failure handling, and measurable outcomes. Here is how I would work through those in a PM interview."
   keywords: ["evaluate agentic AI product", "PM interview AI framework", "product manager agentic AI evaluation", "AI product evaluation framework", "PM interview agentic AI", "agentic AI PM skills", "evaluate AI product PM"]
 ---
 
-# How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)
+# How I'd Evaluate an Agentic AI Product (Interview-Ready Framework)
 
-When a PM interview turns to agentic AI, the candidates who struggle usually make the same mistake. They reach for a general product framework and start talking about growth, retention, engagement, and competitive landscape as if the product were just another SaaS surface with a language model inside it. None of those things are irrelevant. They just are not the first things I care about.
+When a PM interview turns to agentic AI, the candidates who struggle usually make the same mistake. They reach for a general product framework and start talking about growth, retention, engagement, and competition as if the product were just another SaaS surface with a language model inside it. None of those things are irrelevant, but they are not the first things I care about.
 
-If I am evaluating a candidate on an agentic AI question, I want to know whether they understand what is uniquely fragile about products that can act, not just talk. I want to hear whether they question the task fit, whether they understand trust as a design problem, and whether they know how to talk about failure without getting vague. Those are the signals that tell me the person has actually thought about this category and is not just swapping AI terminology into a standard PM answer.
+When I think about an agentic AI question in an interview, what I want to show is that I understand what is uniquely fragile about products that can act, not just talk. That means questioning the task fit, treating trust as a design problem, and talking about failure without getting vague. Those are the signals that show an interviewer I have actually thought about this category and am not just swapping AI terminology into a standard PM answer.
 
 ## The first questions I would ask
 
-The first question is whether the task even deserves an agentic product shape. That is the simplest test and the one people skip most often. Does the job require multiple steps, tool use, longer-running execution, or action on the user's behalf. Or is it really just a conversational assistance problem wearing more ambitious language. Candidates who ask that question early usually understand scope better than candidates who take the agentic premise as given.
+The first question is whether the task even deserves an agentic product shape. That is the simplest test and the one people skip most often. Does the job require multiple steps, tool use, longer-running execution, or action on the user's behalf, or is it really just a conversational assistance problem described in more ambitious language? Candidates who ask that question early usually understand scope better than candidates who take the agentic premise as given.
 
-The second question is what the user is being asked to trust. I think this is the center of the evaluation. If the system can act, then predictability, transparency, and control matter immediately. Can the user tell what the system is doing. Can they stop it. Can they understand why a result happened. Can they recover when the agent took the wrong branch. If a candidate cannot talk concretely about that, the rest of the analysis usually sounds polished but hollow.
+The second question is what the user is being asked to trust. I think this is the center of the evaluation. If the system can act, then predictability, transparency, and control matter immediately. Can the user tell what the system is doing, can they stop it, can they understand why a result happened, and can they recover when the agent took the wrong branch? If a candidate cannot talk concretely about that, the rest of the analysis usually sounds polished without saying much about how the product would actually behave.
 
-The third question is how the product fails. I care a lot less about whether someone can recite a metrics stack than whether they understand the difference between an obvious failure and a silent one. An agent that visibly fails is annoying. An agent that quietly makes the wrong move and leaves the user thinking it succeeded is much more dangerous. When a candidate starts talking about loops, bad actions, weak escalations, invisible errors, and audit trails, I pay attention. That person is closer to the actual problem.
+The third question is how the product fails. I care a lot less about whether someone can recite a metrics stack than whether they understand the difference between an obvious failure and a silent one. An agent that visibly fails is annoying, but an agent that makes the wrong move without any sign and leaves the user thinking it succeeded is much more dangerous. An answer that gets into loops, bad actions, weak escalations, invisible errors, and audit trails is closer to the actual problem.
 
 ## What I would listen for in a strong answer
 
@@ -41,18 +41,18 @@ A strong answer usually gets more specific as it goes. On metrics, for example, 
 
 I also want to hear a view on differentiation that is more durable than "the model is strong." That answer was weak a year ago and it is weaker now. What matters more is workflow context, proprietary data, tool access, integration depth, and whether the product is learning from repeated use in a way a generic agent cannot. Candidates who say that plainly usually understand that the product moat is not the same thing as the model vendor's moat.
 
-The interview-ready version of all of this is not a memorized checklist. It is a way of showing how you think. Start by questioning task fit. Move quickly into trust and failure design. Use metrics that actually reflect agent behavior. End with what the product owns that is hard to copy. If I heard that shape from a candidate, I would take it seriously, because it tells me they know where these products succeed and where they get exposed.
+The interview-ready version of all of this is a way of showing how you think. Start by questioning task fit. Move quickly into trust and failure design. Use metrics that actually reflect agent behavior. End with what the product owns that is hard to copy. That is the shape I would aim for, because it shows I know where these products succeed and where they get exposed.
 
-### 4-Pillar Agentic Evaluation Rubric
+### Four-pillar agentic evaluation rubric
 
 | Evaluation Pillar | Core PM Evaluation Question | Green Flags (Ready to Scale) | Red Flags (High Risk of Failure) |
 | :--- | :--- | :--- | :--- |
 | 1. Task Boundedness | Does the workflow require autonomous tool use, intermediate verification, and bounded state changes? | Closed-loop state space, deterministic check steps, scoped API permissions | Open-ended creative tasks with unbounded search spaces |
 | 2. Trust & Control Surface | Can the operator inspect the thought-trace, interrupt execution, and undo mutations? | Explicit preview states, granular approval gates, continuous audit trail | Black-box execution, silent irreversible writes, all-or-nothing autonomy |
-| 3. Failure & Recovery | What happens when an external tool fails or the agent branches off course? | Fast escalation timeouts, explicit fallback modes, deterministic schema guards | Silent hall-of-mirrors hallucination, runaway loop spend, unmonitored completions |
+| 3. Failure & Recovery | What happens when an external tool fails or the agent branches off course? | Fast escalation timeouts, explicit fallback modes, deterministic schema guards | Silent hallucination that compounds across steps, runaway loop spend, unmonitored completions |
 | 4. Defensibility & Moat | Where does long-term competitive advantage accrue as foundation models improve? | Proprietary context stores, domain-specific evaluation testbeds, low-latency tooling | Pure wrapper over public LLM APIs without unique state or feedback |
 
-That is also more or less how I evaluate real agentic products. The interview framing is different, but the substance is the same. I am not looking for a clever framework name. I am looking for evidence that the person understands the product surface, the failure surface, and the human trust problem well enough to make good decisions once the product leaves the demo. For scoring product bets on impact, confidence, effort, and reversibility, I built the [Decision Lab](/decision-lab).
+That is also more or less how I evaluate real agentic products. The interview framing is different, but the substance is the same. What I want to show is that I understand the product surface, the failure surface, and the human trust problem well enough to make good decisions once the product leaves the demo. For scoring product bets on impact, confidence, effort, and reversibility, I built the [Decision Lab](/decision-lab).
 
 
 If you want the pieces that sit around this framework, [Agentic AI in Plain English: What It Is and Why Product Managers Should Care](/writing/agentic-ai-explained-for-product-managers) is the cleaner category primer, [What an AI Agent Actually Costs in Production](/writing/what-an-ai-agent-actually-costs-in-production) breaks down the unit economics, and [AI Agents for Customer Support: What Actually Works in 2026](/writing/ai-agents-customer-support-what-works) is a concrete example of how the trust and failure questions change once the workflow gets real.

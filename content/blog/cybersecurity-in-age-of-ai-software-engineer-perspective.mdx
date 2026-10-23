@@ -1,8 +1,8 @@
 ---
 title: "Cybersecurity in the Age of AI: A Software Engineer's Perspective"
-excerpt: "AI is changing both sides of the cybersecurity equation at the same time. Attackers and defenders are both getting more capable. Here's what that means for software engineers building and testing systems in 2025."
+excerpt: "AI is changing both sides of the cybersecurity equation at the same time, and attackers and defenders are both getting more capable. Here's what that means for software engineers building and testing systems."
 publishedAt: "2025-01-24"
-updatedAt: "2026-10-01"
+updatedAt: "2026-10-23"
 category: "Cybersecurity"
 tags: ["Cybersecurity", "Artificial Intelligence", "Software Security", "AI Security", "Machine Learning", "Threat Detection", "Security Engineering", "Software Development", "Austin Tech", "Bay Area Security", "Enterprise Security", "AI Ethics"]
 featured: true
@@ -18,13 +18,13 @@ seo:
 
 What makes AI and cybersecurity an interesting intersection is that they're moving in opposite directions at the same time. AI is making attacks more scalable, more convincing, and harder to detect with traditional signature-based defenses. It's also making detection and response faster, more adaptive, and capable of catching anomalies that no human analyst could spot in the volume of data modern systems produce. The practical implication for software engineers is that both the threat model and the defensive toolkit are changing simultaneously, and staying current with one while ignoring the other is a mistake.
 
-I've worked on systems where security isn't just a technical requirement, like civic tech platforms where a security failure has direct implications for democratic participation, and that kind of context sharpens the thinking. When the stakes are concrete, you take threat modeling seriously instead of treating it as a compliance checkbox.
+I've worked on systems where security is a civic requirement as much as a technical one, like the civic tech platforms at Civitech, where a security failure has direct implications for democratic participation, and that kind of context sharpens the thinking. When the stakes are concrete, you take threat modeling seriously instead of treating it as a compliance checkbox.
 
-## How AI Has Changed the Attack Surface
+## How AI has changed the attack surface
 
-The most visible change is in social engineering. AI-generated phishing campaigns can now produce personalized, contextually accurate emails at scale that are genuinely difficult to distinguish from legitimate communications. The old heuristics (look for typos, check for suspicious grammar, verify the sender domain) don't hold up against a well-prompted language model with access to your LinkedIn profile and recent company announcements.
+The most visible change is in social engineering. AI-generated phishing campaigns can now produce personalized, contextually accurate emails at scale that are really difficult to distinguish from legitimate communications. The old heuristics (look for typos, check for suspicious grammar, verify the sender domain) don't hold up against a well-prompted language model with access to your LinkedIn profile and recent company announcements.
 
-Deepfake attacks are the evolution of this into audio and video. These scenarios are already real, not hypothetical: AI-generated audio of a CFO authorizing a wire transfer, real-time voice cloning during a video call to impersonate an executive, or biometric authentication bypass using synthesized video. Financial fraud using voice cloning of executives has already happened at several organizations.
+Deepfake attacks are the evolution of this into audio and video. These scenarios are already real, not hypothetical: AI-generated audio of a CFO authorizing a wire transfer, real-time voice cloning during a video call to impersonate an executive, or biometric authentication bypass using synthesized video. Financial fraud using voice cloning of executives has already happened.
 
 Detecting these requires a different approach than detecting traditional phishing:
 
@@ -54,7 +54,7 @@ class AIPhishingDetector:
 
 The key there is the composite scoring. Language analysis alone is not sufficient because legitimate automated systems also produce text that looks AI-generated. You need behavioral context and content authenticity signals together.
 
-## Adversarial Machine Learning
+## Adversarial machine learning
 
 This is the category I find most technically interesting from a QA perspective, attacks that target AI systems specifically by exploiting properties of machine learning models rather than conventional software vulnerabilities.
 
@@ -121,7 +121,7 @@ class AdversarialRobustnessTester:
         return self.generate_robustness_report(robustness_results)
 ```
 
-## AI as a Defensive Tool
+## AI as a defensive tool
 
 The same capabilities that make AI-powered attacks more effective also make AI-powered defenses more capable. Anomaly detection at the scale and speed that modern systems require is essentially impossible without ML. No human team can manually review the volume of events a large system produces.
 
@@ -180,7 +180,7 @@ class PredictiveThreatIntelligence:
         }
 ```
 
-## Securing AI Systems
+## Securing AI systems
 
 AI systems have their own security surface that conventional application security doesn't fully cover. The model itself is an asset with intellectual property value and the potential to be exploited if extracted. The training pipeline is a potential attack vector. The inference endpoint has unusual characteristics. It's essentially a black box that accepts arbitrary input and returns confidence scores.
 
@@ -233,13 +233,13 @@ class DifferentialPrivacyManager:
         }
 ```
 
-## Privacy, Ethics, and Compliance
+## Privacy, ethics, and compliance
 
-GDPR and similar regulations have real teeth for AI applications that process personal data. The requirements aren't just about data storage. They extend to algorithmic decision-making, model transparency, and the right to explanation for automated decisions. Organizations building AI systems that affect individuals in meaningful ways need consent management, data minimization, purpose limitation, and documented processes for handling data subject rights requests.
+GDPR and similar regulations have real teeth for AI applications that process personal data. The requirements cover data storage and extend to algorithmic decision-making, model transparency, and the right to explanation for automated decisions. Organizations building AI systems that affect individuals in meaningful ways need consent management, data minimization, purpose limitation, and documented processes for handling data subject rights requests.
 
 Algorithmic bias is where ethics and legal risk overlap. A model that systematically produces worse outcomes for protected demographic groups may violate anti-discrimination law regardless of whether the discrimination was intentional. Testing for bias isn't optional for systems used in lending, hiring, healthcare, or other regulated domains. What's worth being honest about is that there's no single definition of "fair" and different fairness metrics can be mathematically incompatible. The right constraints depend on the specific harm you're trying to prevent.
 
-## What This Means for Software Engineers
+## What this means for software engineers
 
 I think the practical takeaway is that security can't be a separate discipline that's consulted at the end of a development cycle. The threat model for AI systems is more complex than for conventional software, and the security implications of design choices made early in development are harder to fix later.
 
@@ -247,6 +247,6 @@ Threat modeling at the start of a project, thinking explicitly about what an att
 
 The financial argument for this investment is becoming easier to make. Average data breach costs have climbed significantly, and AI-related security incidents tend to be more expensive than conventional breaches. Every dollar spent on security engineering during development avoids substantially more than a dollar in incident response later. That's not a guarantee, but it's a defensible expectation.
 
-What I find genuinely challenging about this space is the pace. The attack capabilities and the defensive capabilities are both improving faster than any individual engineer can track. The answer to that isn't to read every paper. It's to build security practices that don't depend on predicting exactly what the next attack looks like, things like defense in depth, least privilege, input validation, anomaly detection, and a fast incident response capability, because those hold up even when the specifics change.
+What I find really challenging about this space is the pace. The attack capabilities and the defensive capabilities are both improving faster than any individual engineer can track. The better answer than trying to read every paper is to build security practices that don't depend on predicting exactly what the next attack looks like, things like defense in depth, least privilege, input validation, anomaly detection, and a fast incident response capability, because those hold up even when the specifics change.
 
-I wrote about limiting what an agent can do, and why least privilege matters there, in [When an Agent Touches Money, Autonomy Is the Wrong Default](/writing/agents-in-high-stakes-workflows). For keeping systems reliable under pressure, see [Building Reliable Software Systems: Architectural Principles for Scale](/writing/building-reliable-software-systems) and [Testing AI Systems: A QA Engineer's Guide](/writing/qa-engineer-guide-testing-ai-systems).
+I wrote about limiting what an agent can do, and why least privilege matters there, in [When an Agent Touches Money, Autonomy Is the Wrong Default](/writing/agents-in-high-stakes-workflows). For keeping systems reliable under pressure, see [Building Reliable Software Systems: What Actually Holds Up at Scale](/writing/building-reliable-software-systems) and [The QA Engineer's Guide to Testing AI Systems](/writing/qa-engineer-guide-testing-ai-systems).

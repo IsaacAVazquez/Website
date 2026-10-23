@@ -1,8 +1,8 @@
 ---
 title: "Building Reliable Software Systems: What Actually Holds Up at Scale"
-excerpt: "Reliability isn't something you bolt on after the fact. It's a product of the decisions you make throughout development. Here's what I've learned about the patterns that actually hold up at scale."
+excerpt: "Reliability is a product of the decisions you make throughout development. Here's what I've learned about the patterns that actually hold up at scale."
 publishedAt: "2025-01-24"
-updatedAt: "2026-07-05"
+updatedAt: "2026-10-23"
 category: "Software Quality"
 tags: ["Software Quality", "System Architecture", "Testing", "Best Practices", "Reliability", "Maintainability", "Performance", "Austin Software Development", "Bay Area Engineering", "Business Strategy", "Product Management", "UC Berkeley MBA"]
 featured: true
@@ -23,11 +23,11 @@ seo:
 
 # Building Reliable Software Systems: What Actually Holds Up at Scale
 
-Reliability isn't something you add at the end of a development cycle. I've built systems at pretty different scales, from civic tech platforms serving tens of millions of voters in Austin to applications designed for Bay Area levels of traffic and iteration speed. The pattern I keep seeing is the same. Reliability is a product of hundreds of small decisions made throughout development, not a layer you can add on top once the feature is done.
+Reliability isn't something you add at the end of a development cycle. I've built systems at pretty different scales, from civic tech platforms at Civitech in Austin that served tens of millions of voters, to applications designed for Bay Area levels of traffic and iteration speed. The pattern I keep seeing is the same. Reliability is a product of hundreds of small decisions made throughout development.
 
 Pursuing an MBA at UC Berkeley has given me another lens on this. Reliability has a business argument that's worth making explicitly, because it's the argument that actually moves resource conversations with non-engineers. An hour of downtime on a high-traffic application can cost tens of thousands of dollars in direct revenue. A critical bug fix costs engineering time plus support overhead plus whatever reputation damage is harder to quantify. Teams that treat reliability as a cost center tend to underfund it until they experience a crisis that makes the math obvious. The organizations that build reliably over time treat it as risk management, not overhead.
 
-## What Reliability Actually Means
+## What reliability actually means
 
 Reliability is the probability that a system performs correctly under specific conditions over a specific time period. But that's a narrow definition. In practice, I think about it across three dimensions.
 
@@ -52,11 +52,11 @@ interface ReliabilityMetrics {
 }
 ```
 
-What's interesting about that list is that most teams track uptime and maybe error rate, and ignore the rest. Mean time to recovery is one I care about a lot. It's not just whether your system fails, but how quickly you can fix it when it does. Teams with good observability and clear rollback procedures recover faster, which means a given failure has lower total impact.
+What's interesting about that list is that most teams track uptime and maybe error rate, and ignore the rest. Mean time to recovery is one I care about a lot. It measures how quickly you can fix your system when it fails, which matters as much as whether it fails. Teams with good observability and clear rollback procedures recover faster, which means a given failure has lower total impact.
 
-## Code-Level Reliability Principles
+## Code-level reliability principles
 
-The SOLID principles get mentioned so often they start to sound like platitudes, but I've seen what actually happens when they're violated at scale. The Single Responsibility Principle isn't a style guideline. It's the thing that determines whether a bug in your email service takes down your user registration flow.
+The SOLID principles get mentioned so often they start to sound like platitudes, but I've seen what actually happens when they're violated at scale. The Single Responsibility Principle is what determines whether a bug in your email service takes down your user registration flow.
 
 ```typescript
 // This class does too many things. Any change to one concern
@@ -131,7 +131,7 @@ class PaymentService {
 
 With this structure, adding a new payment method doesn't touch existing processor code. Without it, every addition is a modification that could break existing behavior.
 
-## Error Handling
+## Error handling
 
 Failing fast and failing clearly is one of the highest-leverage things you can do for reliability. Errors that propagate silently are vastly more expensive than errors that fail immediately with useful context.
 
@@ -173,9 +173,9 @@ class OrderService {
 }
 ```
 
-The defensive validation before the database transaction isn't redundant. It's the difference between a fast, clear failure and an exception thrown from inside a transaction that might leave state inconsistent.
+The defensive validation before the database transaction is the difference between a fast, clear failure and an exception thrown from inside a transaction that might leave state inconsistent.
 
-## Architecture for Reliability
+## Architecture for reliability
 
 The structure I keep coming back to is clean architecture, code organized into layers that can change independently. The domain layer holds business logic and has no external dependencies, the application layer orchestrates use cases, and the infrastructure layer handles external concerns like databases and email services. What I like about it is that when each layer is testable in isolation and the dependencies point inward, you end up with code that's easier to change and easier to verify.
 
@@ -219,7 +219,7 @@ export class UpdateUserEmailUseCase {
 }
 ```
 
-## Resilience Patterns
+## Resilience patterns
 
 Microservices architectures introduce failure modes that monoliths don't have. When you're calling external services, you need patterns that handle those failures gracefully. The three I reach for most are circuit breakers, retry with exponential backoff, and resource pools.
 
@@ -321,7 +321,7 @@ export class RetryPolicy {
 
 The jitter is important. Without it, multiple clients retrying simultaneously create thundering herd problems.
 
-## Testing for Reliability
+## Testing for reliability
 
 The testing pyramid I described in my QA engineering post applies here too: unit tests at the base (fast, isolated, focused), integration tests in the middle (component interactions, API contracts), E2E tests at the top (complete user journeys, expensive to maintain). The specific question for reliability is what to test at each level.
 
@@ -377,13 +377,13 @@ it('should handle database transaction rollback on email failure', async () => {
 
 The rollback test is one I see omitted frequently. Developers often test the happy path for transactions but not what happens when a later step fails. That's where data gets left in an inconsistent state.
 
-## Monitoring and Observability
+## Monitoring and observability
 
 A system that's reliable without being observable will eventually fail in ways you can't diagnose. The three pillars (logs, metrics, traces) each give you different information. Logs tell you what happened. Metrics tell you how the system is performing over time. Distributed traces tell you where time is being spent across service calls.
 
 What I've found matters most in practice is making sure your metrics are measuring the right things. Availability (uptime percentage), error rate (failed requests as a percentage of total), and response time at the 95th and 99th percentiles are the starting point. Add business metrics that reflect actual impact: orders per minute, successful payment rate, user sign-up rate. Technical metrics alone don't tell you when a performance degradation has crossed a threshold that users actually notice.
 
-## The Business Argument
+## The business argument
 
 When I'm making the case for investing in reliability work, I try to put it in terms that translate across the engineering/business boundary. The cost of a reliability failure includes the direct revenue loss, the engineer time to fix it, the customer support volume spike, and the harder-to-quantify reputational damage. The cost of reliability investment is the time to build it well in the first place. In most cases, the math favors upfront investment by a meaningful margin, and the question is whether the organization can see it clearly enough to act before a failure makes it obvious.
 

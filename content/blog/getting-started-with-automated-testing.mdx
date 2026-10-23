@@ -2,7 +2,7 @@
 title: "Getting Started with Automated Testing: A QA Engineer's Strategic Guide"
 excerpt: "Where to start with automated testing, what the testing pyramid actually means in practice, which tools hold up, and why flaky tests are the fastest way to destroy trust in a test suite."
 publishedAt: "2025-01-24"
-updatedAt: "2026-10-01"
+updatedAt: "2026-10-23"
 category: "QA Engineering"
 tags: ["Testing", "Automation", "QA", "Best Practices", "Software Quality", "Austin QA", "Bay Area Testing", "Business Strategy", "Product Management", "UC Berkeley MBA"]
 featured: true
@@ -18,7 +18,7 @@ seo:
 
 Automated testing is one of those topics where the advice is almost universally correct and almost universally unhelpful at the same time. Everyone knows you should write tests. The harder question is where to start, what to test first, and how to build something you will actually maintain.
 
-The pattern I keep coming back to is the testing pyramid. Not because it is a law of nature, but because it reflects something true about tradeoffs. Unit tests are cheap to write and fast to run, so you should have a lot of them. End-to-end tests are expensive and slow, so you should use them sparingly on the workflows that actually matter. Integration tests sit in the middle and cover the boundaries between components, which is where a surprising number of real bugs live.
+The pattern I keep coming back to is the testing pyramid, because it reflects something true about tradeoffs even though it is not a law of nature. Unit tests are cheap to write and fast to run, so you should have a lot of them. End-to-end tests are expensive and slow, so you should use them sparingly on the workflows that actually matter. Integration tests sit in the middle and cover the boundaries between components, which is where a surprising number of real bugs live.
 
 In practice, I aim for roughly 70% unit tests, 20% integration tests, and 10% end-to-end. The specific numbers matter less than the underlying logic, which is that most of your feedback should come from fast, isolated tests, with E2E coverage reserved for critical paths.
 
@@ -26,7 +26,7 @@ In practice, I aim for roughly 70% unit tests, 20% integration tests, and 10% en
 
 For JavaScript and TypeScript projects, I use Jest for unit testing, Testing Library for component testing, and Playwright for end-to-end. Playwright has become my default over Cypress for new projects because of its cross-browser support and better handling of async behavior. For API testing within the Node ecosystem, Supertest is the straightforward choice.
 
-## What Makes Tests Actually Maintainable
+## What makes tests actually maintainable
 
 The most common failure mode I see is tests that are tightly coupled to implementation details. When you refactor code, those tests break even though the behavior has not changed, and then people start treating the test suite as noise rather than signal.
 
@@ -64,11 +64,11 @@ expect(response.body).toEqual({
 });
 ```
 
-## Flaky Tests Are the Biggest Drain on a Test Suite
+## Flaky tests are the biggest drain on a test suite
 
-A test that sometimes passes and sometimes fails is often worse than no test at all. It conditions people to ignore failures. Most flakiness traces back to a few things: missing waits in async flows, test data bleeding between runs, or dependencies on external services that are not reliably available. The answer is to find the root cause rather than adding retries. Retries mask the problem and make the suite slower.
+A test that sometimes passes and sometimes fails is often worse than no test at all, because it conditions people to ignore failures. Most flakiness traces back to a few things: missing waits in async flows, test data bleeding between runs, or dependencies on external services that are not reliably available. The answer is to find the root cause rather than adding retries. Retries mask the problem and make the suite slower.
 
-## Beyond Functional Testing
+## Beyond functional testing
 
 Visual regression testing is worth adding for any UI that is stable enough to capture. Playwright makes this relatively low-friction:
 
@@ -89,8 +89,8 @@ test('API response time under 500ms', async () => {
 });
 ```
 
-## The Real Goal Is Confidence
+## The real goal is confidence
 
-100% code coverage is not the goal. The goal is a test suite you trust, that runs fast enough to stay out of your way, and that catches the things that actually matter. Start with your most critical user paths, write tests that focus on behavior, and treat flakiness as a bug to fix rather than a cost of doing business.
+The goal is a test suite you trust, that runs fast enough to stay out of your way, and that catches the things that actually matter, whatever the coverage number says. Start with your most critical user paths, write tests that focus on behavior, and treat flakiness as a bug to fix rather than a cost of doing business.
 
-For scaling test architecture across a team, I wrote [The Complete Guide to Modern QA Engineering](/writing/complete-guide-qa-engineering) and [How QA Automation Enables Daily Deploys](/writing/qa-automation-daily-deploys). If you are testing models or other systems that don't return the same answer twice, see [Testing AI Systems: A QA Engineer's Guide](/writing/qa-engineer-guide-testing-ai-systems) and [Building Reliable Software Systems: Architectural Principles for Scale](/writing/building-reliable-software-systems).
+For scaling test architecture across a team, I wrote [QA Engineering: Building Quality into Software Development](/writing/complete-guide-qa-engineering) and [Moving to Biweekly Releases by Treating QA as a Reusable System](/writing/qa-automation-daily-deploys). If you are testing models or other systems that don't return the same answer twice, see [The QA Engineer's Guide to Testing AI Systems: Quality Assurance for Machine Learning](/writing/qa-engineer-guide-testing-ai-systems) and [Building Reliable Software Systems: What Actually Holds Up at Scale](/writing/building-reliable-software-systems).

@@ -2,6 +2,7 @@
 title: "Building a Formula 1 Dashboard That Compresses the Season Into One Screen"
 excerpt: "I built Formula 1 Pulse to put the next Grand Prix, the championship tables, and race-by-race context in one place, built on a checked-in OpenF1 snapshot."
 publishedAt: "2026-06-08"
+updatedAt: "2026-10-23"
 category: "Sports Analytics"
 tags: ["Formula 1", "Motorsport", "Sports Analytics", "OpenF1", "Snapshot Driven", "Next.js", "Dashboard"]
 featured: false
@@ -24,11 +25,11 @@ seo:
 
 If you want to see the product before reading the breakdown, open [Formula 1 Pulse](/formula-1).
 
-A Formula 1 season is a story told in two registers at once. There is the week-to-week register of which race is next and who is quick right now, and there is the season-long register of the championship math that all of it is feeding into. The strange thing is how rarely you can see both at the same time. To follow F1 properly I would find myself with the calendar open in one tab, the driver standings in another, the constructor standings in a third, and a results page somewhere behind all of them. I built Formula 1 Pulse to collapse those tabs into one screen, because a championship is genuinely easier to read when the next race and the points picture sit next to each other.
+A Formula 1 season is a story told in two registers at once. There is the week-to-week register of which race is next and who is quick right now, and there is the season-long register of the championship math that all of it is feeding into. The strange thing is how rarely you can see both at the same time. To follow F1 properly I would find myself with the calendar open in one tab, the driver standings in another, the constructor standings in a third, and a results page somewhere behind all of them. I built Formula 1 Pulse to collapse those tabs into one screen, because a championship is easier to read when the next race and the points picture sit next to each other.
 
 ## The sport is legible, the interfaces are not
 
-What frustrated me was not the data. F1 results are clean, structured, and unambiguous in a way most sports cannot manage. The frustration was that the pieces lived in separate places, each one perfectly fine on its own and useless for the question I actually had, which was almost always some version of "given where the championship stands, how much does the next race matter." Answering that meant holding the standings in my head while I looked at the calendar, then holding the calendar in my head while I looked at recent results. The information was all available and none of it was assembled.
+F1 results are clean, structured, and unambiguous in a way most sports cannot manage, so what frustrated me was that the pieces lived in separate places, each one perfectly fine on its own and useless for the question I actually had, which was almost always some version of "given where the championship stands, how much does the next race matter." Answering that meant holding the standings in my head while I looked at the calendar, then holding the calendar in my head while I looked at recent results. The information was all available and none of it was assembled.
 
 That fragmentation is the real problem a dashboard like this solves. Standings, driver form, and the race calendar are typically scattered across separate sites with no unified, deep-linkable view, so the synthesis that would make the season readable is left entirely to the reader. I wanted the synthesis built in. The next Grand Prix sits at the top as the immediate thing, the driver and constructor tables carry the season-long stakes, and race-by-race context connects the two so you can see how the last few rounds moved the math rather than treating the standings as a number that appeared from nowhere.
 
@@ -40,9 +41,9 @@ Race-by-race context is the connective tissue. A standings table is a snapshot o
 
 ## Built on a checked-in OpenF1 snapshot
 
-The data comes from the OpenF1 API, but the live site never calls it. A scheduled GitHub Action fetches from OpenF1 daily, regenerates a plain TypeScript snapshot committed at src/data/formula1Snapshot.ts, and the running dashboard reads that file with no third-party call at request time. This is the same pattern I lean on across all of these sports surfaces, and the reasons are the same every time. The page renders instantly because the data is already in the bundle, it cannot get rate limited mid-session, and a flaky upstream cannot take the surface down while people are looking at it.
+The data comes from the OpenF1 API, but the live site never calls it. A scheduled GitHub Action fetches from OpenF1 every three hours from Thursday through Sunday and once a day Monday through Wednesday, regenerates a JSON snapshot committed at src/data/formula1Snapshot.json, and the running dashboard reads that file with no third-party call at request time. This is the same pattern I lean on across all of these sports surfaces, and the reasons are the same every time. The page renders instantly because the data is already in the bundle, it cannot get rate limited mid-session, and a flaky upstream cannot take the surface down while people are looking at it.
 
-The refresh is conservative in the way that matters. If a fetch fails, the script keeps the previous snapshot instead of overwriting good data with an empty result, so the dashboard prefers stale-but-correct over fresh-but-broken. For something people check around a Grand Prix, a blank standings table caused by thirty bad seconds upstream would be the worst possible outcome, and the pipeline is specifically built to avoid it. The daily cadence also fits the sport. F1 changes once a week at most, so a once-a-day refresh is plenty, and there is no reason to pay the cost and fragility of live fetching for data that only moves on race day.
+The refresh is conservative in the way that matters. If a fetch fails, the script keeps the previous snapshot instead of overwriting good data with an empty result, so the dashboard prefers stale-but-correct over fresh-but-broken. For something people check around a Grand Prix, a blank standings table caused by thirty bad seconds upstream would be the worst possible outcome, and the pipeline is specifically built to avoid it. The cadence also fits the sport. F1 changes once a week at most, so a refresh every three hours across a race weekend and once a day between them is plenty, and there is no reason to pay the cost and fragility of live fetching for data that only moves on race day.
 
 ## What it confirmed for me
 
