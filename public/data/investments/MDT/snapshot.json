@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 23.5,
-      "pegRatio": 0.57,
-      "marketCap": 122180476605,
-      "psRatio": 3.25,
-      "pbRatio": 2.43
+      "ttmPe": 22.9,
+      "pegRatio": 0.55,
+      "marketCap": 119082763107,
+      "psRatio": 3.17,
+      "pbRatio": 2.37
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.04,
-      "costOfEquity": 9.77,
+      "wacc": 8.02,
+      "costOfEquity": 9.78,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.6004,
-      "marketCap": 122180476605
+      "beta": 0.6009,
+      "marketCap": 119082763107
     },
     "beta": {
-      "beta5y": 0.6004
+      "beta5y": 0.6009
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 96.09,
-        "high": 96.6,
-        "low": 94.93,
-        "close": 95.92,
-        "volume": 5137800
-      },
       {
         "date": "2025-10-21",
         "open": 95.62,
@@ -7972,23 +7964,31 @@
         "low": 93.42,
         "close": 94.63,
         "volume": 14847500
+      },
+      {
+        "date": "2026-10-21",
+        "open": 93.25,
+        "high": 95.3,
+        "low": 92.71,
+        "close": 93.03,
+        "volume": 11506400
       }
     ],
     "news": [
-      {
-        "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
-        "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
-        "type": "STORY"
-      },
       {
         "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
         "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
+        "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
         "type": "STORY"
       },
       {
@@ -8040,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
-        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
         "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
+        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
         "type": "STORY"
       }
     ],
@@ -8117,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.5,
-        "industryAvg": 25.7
+        "value": 22.9,
+        "industryAvg": 25.35
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.25,
-        "industryAvg": 3.1
+        "value": 3.17,
+        "industryAvg": 3.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.43,
-        "industryAvg": 3.02
+        "value": 2.37,
+        "industryAvg": 2.99
       },
       {
         "metric": "ROE",

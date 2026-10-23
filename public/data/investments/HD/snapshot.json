@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 21.68,
-      "marketCap": 309260240000,
-      "psRatio": 1.83,
-      "pbRatio": 18.61,
-      "pegRatio": 4.81
+      "ttmPe": 21.98,
+      "marketCap": 313511720000,
+      "psRatio": 1.85,
+      "pbRatio": 18.87,
+      "pegRatio": 4.87
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,25 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.459999999999999,
-      "costOfEquity": 12.43,
+      "wacc": 10.52,
+      "costOfEquity": 12.479999999999999,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9426,
-      "marketCap": 309260240000
+      "beta": 0.9497,
+      "marketCap": 313511720000
     },
     "beta": {
-      "beta5y": 0.9426
+      "beta5y": 0.9497
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 391.41,
-        "high": 393.18,
-        "low": 388.09,
-        "close": 388.89,
-        "volume": 2761100
-      },
       {
         "date": "2025-10-21",
         "open": 387.56,
@@ -7452,6 +7444,14 @@
         "low": 310.64,
         "close": 315.11,
         "volume": 4016200
+      },
+      {
+        "date": "2026-10-21",
+        "open": 316.39,
+        "high": 316.46,
+        "low": 311.15,
+        "close": 314.14,
+        "volume": 2909200
       }
     ],
     "news": [
@@ -7528,11 +7528,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
-        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
+        "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
+        "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
+        "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
         "type": "VIDEO"
       }
     ],
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.68,
-        "industryAvg": 20.1
+        "value": 21.98,
+        "industryAvg": 20.33
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.83,
-        "industryAvg": 1.59
+        "value": 1.85,
+        "industryAvg": 1.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.61,
-        "industryAvg": 15.84
+        "value": 18.87,
+        "industryAvg": 16.06
       },
       {
         "metric": "ROE",

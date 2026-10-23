@@ -1,14 +1,11 @@
 {
   "symbol": "ROP",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-21"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 24.1307,
-      "ttmPe": 15.89,
-      "marketCap": 37928150000,
-      "psRatio": 4.58,
-      "pbRatio": 2.03,
+      "ttmPe": 16.48,
+      "marketCap": 39318684000,
+      "psRatio": 4.75,
+      "pbRatio": 2.1,
       "pegRatio": 0.07
     },
     "profitability": {
@@ -5901,25 +5898,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.42,
-      "costOfEquity": 10.67,
+      "wacc": 8.53,
+      "costOfEquity": 10.73,
       "costOfDebt": 0.98,
       "taxRate": 11,
-      "beta": 0.7154,
-      "marketCap": 37928150000
+      "beta": 0.724,
+      "marketCap": 39318684000
     },
     "beta": {
-      "beta5y": 0.7154
+      "beta5y": 0.724
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 504.51,
-        "high": 506.97,
-        "low": 501.52,
-        "close": 505.89,
-        "volume": 887200
-      },
       {
         "date": "2025-10-21",
         "open": 507.28,
@@ -7927,6 +7916,14 @@
         "low": 386.06,
         "close": 398.21,
         "volume": 637300
+      },
+      {
+        "date": "2026-10-21",
+        "open": 395.28,
+        "high": 398.92,
+        "low": 393.01,
+        "close": 397.56,
+        "volume": 852900
       }
     ],
     "news": [
@@ -7955,6 +7952,22 @@
         "type": "STORY"
       },
       {
+        "uuid": "1f91cd02-a180-39fe-a2f7-ddc9aa3fb029",
+        "title": "JPMorgan Adjusts Price Target on Roper Technologies to $470 From $465, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-roper-094652421.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
+        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
         "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
         "publisher": "MT Newswires",
@@ -7971,27 +7984,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
-        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
         "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1f91cd02-a180-39fe-a2f7-ddc9aa3fb029",
-        "title": "JPMorgan Adjusts Price Target on Roper Technologies to $470 From $465, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-roper-094652421.html",
         "type": "STORY"
       },
       {
@@ -8073,18 +8070,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.85,
-        "industryAvg": 27.38
+        "value": 16.48,
+        "industryAvg": 27.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.57,
-        "industryAvg": 5.2
+        "value": 4.75,
+        "industryAvg": 5.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.02,
-        "industryAvg": 5.83
+        "value": 2.1,
+        "industryAvg": 5.87
       },
       {
         "metric": "ROE",

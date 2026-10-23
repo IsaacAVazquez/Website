@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 16.57,
-      "marketCap": 109911120000,
+      "ttmPe": 16.62,
+      "marketCap": 110270160000,
       "psRatio": 1.22,
-      "pbRatio": -14.78,
-      "pegRatio": 414.25
+      "pbRatio": -14.83,
+      "pegRatio": 415.5
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,25 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.469999999999999,
-      "costOfEquity": 11.44,
+      "wacc": 8.5,
+      "costOfEquity": 11.469999999999999,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.8143,
-      "marketCap": 109911120000
+      "beta": 0.8191,
+      "marketCap": 110270160000
     },
     "beta": {
-      "beta5y": 0.8143
+      "beta5y": 0.8191
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 244.98,
-        "high": 246.1,
-        "low": 242.26,
-        "close": 242.27,
-        "volume": 2110500
-      },
       {
         "date": "2025-10-21",
         "open": 241.88,
@@ -7842,6 +7834,14 @@
         "low": 196.5,
         "close": 198.53,
         "volume": 3242100
+      },
+      {
+        "date": "2026-10-21",
+        "open": 198,
+        "high": 198,
+        "low": 194.43,
+        "close": 196.56,
+        "volume": 2707200
       }
     ],
     "news": [
@@ -7902,20 +7902,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
-        "title": "Homeowners are feeling especially stressed about home repairs",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
         "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
+        "title": "Homeowners are feeling especially stressed about home repairs",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "aff55959-70ca-319c-bee0-b6838ba8d029",
@@ -7991,18 +7991,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.57,
-        "industryAvg": 20.1
+        "value": 16.62,
+        "industryAvg": 20.33
       },
       {
         "metric": "P/S Ratio",
         "value": 1.22,
-        "industryAvg": 1.59
+        "industryAvg": 1.61
       },
       {
         "metric": "P/B Ratio",
-        "value": -14.78,
-        "industryAvg": 15.84
+        "value": -14.83,
+        "industryAvg": 16.06
       },
       {
         "metric": "ROE",

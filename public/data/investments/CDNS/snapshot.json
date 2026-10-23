@@ -1,14 +1,11 @@
 {
   "symbol": "CDNS",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-21"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 5.0263,
-      "ttmPe": 64.83,
-      "marketCap": 89739562980,
-      "psRatio": 15.37,
+      "ttmPe": 64.87,
+      "marketCap": 89797395510,
+      "psRatio": 15.38,
       "pbRatio": 13.09,
       "pegRatio": 0.51
     },
@@ -5987,25 +5984,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.16,
-      "costOfEquity": 13.52,
+      "wacc": 13.15,
+      "costOfEquity": 13.51,
       "costOfDebt": 1.3299999999999998,
       "taxRate": 28.000000000000004,
-      "beta": 1.0843,
-      "marketCap": 89739562980
+      "beta": 1.0824,
+      "marketCap": 89797395510
     },
     "beta": {
-      "beta5y": 1.0843
+      "beta5y": 1.0824
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 327.79,
-        "high": 331.12,
-        "low": 326.39,
-        "close": 329.64,
-        "volume": 1458300
-      },
       {
         "date": "2025-10-21",
         "open": 327.53,
@@ -8013,6 +8002,14 @@
         "low": 316.72,
         "close": 319.87,
         "volume": 1739900
+      },
+      {
+        "date": "2026-10-21",
+        "open": 324.5,
+        "high": 331.5,
+        "low": 322.84,
+        "close": 326.07,
+        "volume": 2172400
       }
     ],
     "news": [
@@ -8089,11 +8086,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f8fe7d94-d06a-3bb5-8035-a550a0b80cc1",
-        "title": "Cadence Design Systems, Inc.'s (NASDAQ:CDNS) recent 9.1% pullback adds to one-year year losses, institutional owners may take drastic measures",
-        "publisher": "Simply Wall St.",
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-design-systems-inc-nasdaq-130018859.html",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       }
     ],
@@ -8162,18 +8159,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 69.78,
-        "industryAvg": 25.56
+        "value": 64.87,
+        "industryAvg": 27.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.55,
-        "industryAvg": 4.89
+        "value": 15.38,
+        "industryAvg": 5.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.08,
-        "industryAvg": 5.45
+        "value": 13.09,
+        "industryAvg": 5.87
       },
       {
         "metric": "ROE",

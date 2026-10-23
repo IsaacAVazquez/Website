@@ -10,7 +10,7 @@ export const MUSEUM_SNAPSHOT_VERIFIED = false;
  * lives in browser localStorage via useMuseumLog.
  */
 const baseMuseumSnapshot: MuseumSnapshot = {
-  generatedAt: "2026-09-28T06:00:00Z",
+  generatedAt: "2026-10-22T06:00:00Z",
   sourceLabel: "Curated by Isaac Vazquez",
   curatorName: "Isaac Vazquez",
   curatorBio:
@@ -38,23 +38,31 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       admissionUSD: 30,
       exhibits: [
         {
-          id: "m-met-x1",
-          title: "Sargent and Paris",
-          // Dates from https://www.metmuseum.org/press-releases/sargent-and-paris, read 2026-09-28.
-          startDate: "2025-04-27",
-          endDate: "2025-08-03",
-          blurb:
-            "Early Sargent in Paris before Madame X — drawings, oils, and the studio years.",
-          ticketed: true,
+          id: "m-met-x3",
+          title: "Krasner and Pollock: Past Continuous",
+          // Dates from https://www.metmuseum.org/press-releases/krasner-pollock-past-continuous, read 2026-10-22.
+          startDate: "2026-10-04",
+          endDate: "2027-01-31",
+          blurb: "More than 120 works that follow Lee Krasner's and Jackson Pollock's careers side by side.",
+          ticketed: false,
         },
         {
-          id: "m-met-x2",
-          title: "Siena: The Rise of Painting, 1300–1350",
-          // Dates from https://www.metmuseum.org/exhibitions/siena-the-rise-of-painting-1300-1350, read 2026-09-28.
-          startDate: "2024-10-13",
-          endDate: "2025-01-26",
-          blurb: "Duccio, Simone Martini, and the Lorenzetti brothers reunited.",
-          ticketed: true,
+          id: "m-met-x4",
+          title: "Costume Art",
+          // Dates from https://www.metmuseum.org/press-releases/costume-institute-spring-2026, read 2026-10-22.
+          startDate: "2026-05-10",
+          endDate: "2027-01-10",
+          blurb: "The Costume Institute pairs garments with works from across the Met, in new galleries off the Great Hall.",
+          ticketed: false,
+        },
+        {
+          id: "m-met-x5",
+          title: "Across Wine-Dark Seas: Art and Identity beyond Ancient Greece",
+          // Dates from https://www.metmuseum.org/exhibitions/across-wine-dark-seas-art-and-identity-beyond-ancient-greece, read 2026-10-22.
+          startDate: "2026-12-20",
+          endDate: "2027-04-11",
+          blurb: "More than 180 Mediterranean works from the eighth to early fifth century BCE on Greek contact with other cultures.",
+          ticketed: false,
         },
       ],
     },
@@ -79,12 +87,30 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       admissionUSD: 30,
       exhibits: [
         {
-          id: "m-moma-x1",
-          title: "An-My Lê: Between Two Rivers",
-          // Dates from https://www.moma.org/calendar/exhibitions/5467, read 2026-09-28.
-          startDate: "2023-11-05",
-          endDate: "2024-03-16",
-          blurb: "Photographs of military landscape and migration as topography.",
+          id: "m-moma-x2",
+          title: "Brancusi: The Artist and His Studio",
+          // Dates from https://www.moma.org/calendar/exhibitions/5910, read 2026-10-22.
+          startDate: "2026-10-25",
+          endDate: "2027-02-27",
+          blurb: "Sculpture, photographs, film, furniture, and tools from Brancusi's Paris studio, lent by the Centre Pompidou.",
+          ticketed: false,
+        },
+        {
+          id: "m-moma-x3",
+          title: "Architects of Liberation: Modernism in Western Africa",
+          // Dates from https://press.moma.org/exhibition/architects-of-liberation-modernism-in-western-africa/, read 2026-10-22.
+          startDate: "2026-07-05",
+          endDate: "2027-01-02",
+          blurb: "About 400 objects on the modern architecture of seven West African countries after independence.",
+          ticketed: false,
+        },
+        {
+          id: "m-moma-x4",
+          title: "Na Mira: NO SMOKING",
+          // Dates from https://www.moma.org/calendar/exhibitions/5869, read 2026-10-22.
+          startDate: "2026-11-14",
+          endDate: "2027-02-15",
+          blurb: "A commissioned video, hologram, and sound installation on the military origins of imaging technology.",
           ticketed: false,
         },
       ],
@@ -118,6 +144,33 @@ const baseMuseumSnapshot: MuseumSnapshot = {
           blurb: "The 82nd edition of the survey of contemporary American art.",
           ticketed: false,
         },
+        {
+          id: "m-whit-x2",
+          title: "Roy Lichtenstein: Like New",
+          // Dates from https://whitney.org/exhibitions/lichtenstein, read 2026-10-22.
+          startDate: "2026-10-11",
+          endDate: "2027-05-10",
+          blurb: "A six-decade Lichtenstein retrospective that includes four re-created murals.",
+          ticketed: false,
+        },
+        {
+          id: "m-whit-x3",
+          title: "The Lost World: The Art of Minnie Evans",
+          // Dates from https://whitney.org/exhibitions/the-lost-world, read 2026-10-22.
+          startDate: "2026-08-22",
+          endDate: "2027-01-10",
+          blurb: "Minnie Evans's drawings, paintings, and collages, drawn from religion, myth, and coastal North Carolina.",
+          ticketed: false,
+        },
+        {
+          id: "m-whit-x4",
+          title: "Coumba Samba: Stars and Stripes",
+          // Dates from https://whitney.org/exhibitions/coumba-samba, read 2026-10-22.
+          startDate: "2026-09-19",
+          endDate: "2027-01-18",
+          blurb: "Sculptures in flag colors that connect mineral extraction, colonialism, and military power.",
+          ticketed: false,
+        },
       ],
     },
     {
@@ -138,7 +191,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 74,
       visitMinutesAvg: 120,
       admissionUSD: 30,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-gugg-x1",
+          title: "Taryn Simon / Father Country / I Do Love You",
+          // Dates from https://www.guggenheim.org/exhibition/taryn-simon, read 2026-10-22.
+          startDate: "2026-09-18",
+          endDate: "2027-03-14",
+          blurb: "An interactive installation of unseen photographs, text, video, and sculpture by Taryn Simon.",
+          ticketed: false,
+        },
+        {
+          id: "m-gugg-x2",
+          title: "Guggenheim Pop: 1960 to Now",
+          // Dates from https://www.guggenheim.org/exhibition/guggenheim-pop, read 2026-10-22.
+          startDate: "2026-06-05",
+          endDate: "2027-01-10",
+          blurb: "Pop art from the collection, Warhol through Cattelan, and what later artists took from it.",
+          ticketed: false,
+        },
+        {
+          id: "m-gugg-x3",
+          title: "Collection in Focus | Modern European Currents",
+          // Dates from https://www.guggenheim.org/exhibition/collection-in-focus-modern-european-currents, read 2026-10-22.
+          startDate: "2025-07-15",
+          endDate: "2027-01-10",
+          blurb: "Early twentieth-century European painting from the collection, including Goncharova, Kandinsky, and Marc.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-frick",
@@ -158,7 +239,26 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 68,
       visitMinutesAvg: 90,
       admissionUSD: 30,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-frick-x1",
+          title: "Siena: The Art of Bronze, 1450–1500",
+          // Dates from https://www.frick.org/exhibitions/siena, read 2026-10-22.
+          startDate: "2026-10-15",
+          endDate: "2027-01-18",
+          blurb: "Nearly forty Renaissance bronzes by Donatello, Vecchietta, Francesco di Giorgio, and others.",
+          ticketed: false,
+        },
+        {
+          id: "m-frick-x2",
+          title: "Kent Monkman: Officer and Laughing Girl",
+          // Dates from https://www.frick.org/exhibitions/monkman, read 2026-10-22.
+          startDate: "2026-11-12",
+          endDate: "2027-02-22",
+          blurb: "New Monkman paintings that answer the Frick's Vermeer from an Indigenous point of view.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-aic",
@@ -181,13 +281,31 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       admissionUSD: 32,
       exhibits: [
         {
-          id: "m-aic-x1",
-          title: "Frida Kahlo's Month in Paris",
-          // Dates from https://www.artic.edu/press/press-releases/380/frida-kahlo-s-month-in-paris-a-friendship-with-mary-reynolds, read 2026-09-28.
-          startDate: "2025-03-29",
-          endDate: "2025-07-13",
-          blurb: "1939 sojourn, Surrealist orbit, and the works that came out of it.",
+          id: "m-aic-x2",
+          title: "Mary Cassatt: After Impressionism",
+          // Dates from https://www.artic.edu/exhibitions/10487/mary-cassatt-after-impressionism, read 2026-10-22.
+          startDate: "2026-09-06",
+          endDate: "2027-01-03",
+          blurb: "Cassatt's paintings, pastels, and prints from after the last Impressionist group show in 1886.",
           ticketed: true,
+        },
+        {
+          id: "m-aic-x3",
+          title: "Lee Miller: Fearless",
+          // Dates from https://www.artic.edu/exhibitions/10521/lee-miller-fearless, read 2026-10-22.
+          startDate: "2026-08-29",
+          endDate: "2026-12-07",
+          blurb: "Lee Miller's photographs across fashion, Surrealism, portraiture, and her work as a war correspondent.",
+          ticketed: false,
+        },
+        {
+          id: "m-aic-x4",
+          title: "Zurbarán: Divine Light",
+          // Dates from https://www.artic.edu/exhibitions/10208/zurbaran-divine-light, read 2026-10-22.
+          startDate: "2027-02-28",
+          endDate: "2027-06-20",
+          blurb: "About 50 works by the seventeenth-century Spanish painter, borrowed from about 30 lenders.",
+          ticketed: false,
         },
       ],
     },
@@ -210,7 +328,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 60,
       visitMinutesAvg: 180,
       admissionUSD: 25,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-mfah-x1",
+          title: "American Modernism from the Charles Butt Collection",
+          // Dates from https://www.mfah.org/art/exhibitions/american-modernism-from-the-charles-butt-collection, read 2026-10-22.
+          startDate: "2026-10-25",
+          endDate: "2027-01-18",
+          blurb: "More than 90 American modernist works from a Texas collection, including Benton, O'Keeffe, and Pollock.",
+          ticketed: false,
+        },
+        {
+          id: "m-mfah-x2",
+          title: "Of Light and Air: Winslow Homer from the Museum of Fine Arts, Boston",
+          // Dates from https://www.mfah.org/art/exhibitions/of-light-and-air-winslow-homer-from-the-mfa-boston, read 2026-10-22.
+          startDate: "2026-11-01",
+          endDate: "2027-02-07",
+          blurb: "More than 45 Homer watercolors lent by MFA Boston, with some of his oils, drawings, and prints.",
+          ticketed: false,
+        },
+        {
+          id: "m-mfah-x3",
+          title: "David Hockney: Bigger & Closer (not smaller & further away)",
+          // Dates from https://www.mfah.org/art/exhibitions/david-hockney-bigger-closer-not-smaller-and-further-away, read 2026-10-22.
+          startDate: "2027-03-07",
+          endDate: "2027-09-06",
+          blurb: "The first US showing of a David Hockney exhibition, opening in Houston.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-menil",
@@ -231,7 +377,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 55,
       visitMinutesAvg: 150,
       admissionUSD: null,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-menil-x1",
+          title: "Terry Winters: Vitalized Geometry",
+          // Dates from https://www.menil.org/exhibition/terry-winters-vitalized-geometry, read 2026-10-22.
+          startDate: "2026-09-25",
+          endDate: "2027-04-04",
+          blurb: "44 prints and works on paper by Terry Winters, whose work draws on math and natural structures.",
+          ticketed: false,
+        },
+        {
+          id: "m-menil-x2",
+          title: "Fragility",
+          // Dates from https://www.menil.org/exhibition/fragility, read 2026-10-22.
+          startDate: "2026-09-10",
+          endDate: "2027-01-24",
+          blurb: "Work by 24 artists who treat paper as the material itself, at the Menil Drawing Institute.",
+          ticketed: false,
+        },
+        {
+          id: "m-menil-x3",
+          title: "How to Make an Exhibition: The Story of Jermayne MacAgy",
+          // Dates from https://www.menil.org/exhibition/how-to-make-an-exhibition-the-story-of-jermayne-macagy, read 2026-10-22.
+          startDate: "2026-12-11",
+          endDate: "2027-07-18",
+          blurb: "The curator Jermayne MacAgy, her installations, and her work with the de Menils.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-getty",
@@ -252,7 +426,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 84,
       visitMinutesAvg: 240,
       admissionUSD: null,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-getty-x1",
+          title: "Instante/revelación: Moments in Mexican Photography",
+          // Dates from https://www.getty.edu/exhibitions/mexican-photography, read 2026-10-22.
+          startDate: "2026-09-01",
+          endDate: "2027-01-03",
+          blurb: "Thirteen Mexican photographers, including Lola and Manuel Álvarez Bravo and Graciela Iturbide, from one gift.",
+          ticketed: false,
+        },
+        {
+          id: "m-getty-x2",
+          title: "A Light in the Dark: Joseph Wright of Derby",
+          // Dates from https://www.getty.edu/exhibitions/wright-of-derby, read 2026-10-22.
+          startDate: "2026-11-24",
+          endDate: "2027-03-14",
+          blurb: "Wright of Derby's paintings of scenes lit by a single candle or lamp.",
+          ticketed: false,
+        },
+        {
+          id: "m-getty-x3",
+          title: "Paul R. Williams: Architecture Across the Color Line",
+          // Dates from https://www.getty.edu/exhibitions/paul-r-williams, read 2026-10-22.
+          startDate: "2026-12-15",
+          endDate: "2027-03-14",
+          blurb: "The first public showing of the archive of the first Black architect licensed in the western US.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-broad",
@@ -273,7 +475,17 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 81,
       visitMinutesAvg: 90,
       admissionUSD: null,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-broad-x1",
+          title: "Has the myth been shattered",
+          // Dates from https://www.thebroad.org/art/collection-exhibitions/has-myth-been-shattered, read 2026-10-22.
+          startDate: "2026-11-21",
+          endDate: "2027-04-04",
+          blurb: "Six decades of the Broad's collection on how media shapes history and memory.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-sfmoma",
@@ -294,7 +506,26 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 72,
       visitMinutesAvg: 180,
       admissionUSD: 30,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-sfmoma-x1",
+          title: "RM x SFMOMA: Between You and Me",
+          // Dates from https://www.sfmoma.org/exhibition/rm-x-sfmoma/, read 2026-10-22.
+          startDate: "2026-10-03",
+          endDate: "2027-02-07",
+          blurb: "Nearly 150 works from RM's own collection, mostly modern and contemporary Korean art, beside SFMOMA's.",
+          ticketed: true,
+        },
+        {
+          id: "m-sfmoma-x2",
+          title: "Graciela Iturbide: Between Two Worlds",
+          // Dates from https://www.sfmoma.org/exhibition/graciela-iturbide-between-two-worlds/, read 2026-10-22.
+          startDate: "2026-07-11",
+          endDate: "2026-11-29",
+          blurb: "More than fifty years of Iturbide's photographs, mostly black and white and mostly made in Mexico.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-deyoung",
@@ -314,7 +545,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 65,
       visitMinutesAvg: 150,
       admissionUSD: 20,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-dey-x1",
+          title: "Treasures of the Pharaohs",
+          // Dates from https://www.famsf.org/exhibitions/treasures-pharaohs, read 2026-10-22.
+          startDate: "2026-08-01",
+          endDate: "2027-01-31",
+          blurb: "About 130 Egyptian objects across 3,000 years, including the first US showing of finds from near Luxor.",
+          ticketed: true,
+        },
+        {
+          id: "m-dey-x2",
+          title: "Rose B. Simpson: LEXICON",
+          // Dates from https://www.famsf.org/exhibitions/rose-b-simpson, read 2026-10-22.
+          startDate: "2025-08-30",
+          endDate: "2027-02-07",
+          blurb: "Two cars Rose B. Simpson customized with Pueblo pottery designs, in Wilsey Court.",
+          ticketed: false,
+        },
+        {
+          id: "m-dey-x3",
+          title: "Spectacular Freedom: Andrew Wyeth and the Modern American Watercolor",
+          // Dates from https://www.famsf.org/exhibitions/andrew-wyeth-watercolor, read 2026-10-22.
+          startDate: "2027-02-13",
+          endDate: "2027-07-18",
+          blurb: "Nearly 80 works in the first exhibition about Wyeth's watercolors.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-natlgallery",
@@ -335,7 +594,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 86,
       visitMinutesAvg: 210,
       admissionUSD: null,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-nga-x1",
+          title: "American Icon: The US Flag in Art",
+          // Dates from https://www.nga.gov/exhibitions/american-icon, read 2026-10-22.
+          startDate: "2026-06-06",
+          endDate: "2026-12-06",
+          blurb: "About 30 works from the late 1800s to now on how artists have used the US flag.",
+          ticketed: false,
+        },
+        {
+          id: "m-nga-x2",
+          title: "Remember Me: Picturing African Americans in Early Photography",
+          // Dates from https://www.nga.gov/exhibitions/remember-me, read 2026-10-22.
+          startDate: "2026-11-07",
+          endDate: "2027-03-14",
+          blurb: "About 70 early photographs of and by Black Americans from the collection, many shown for the first time.",
+          ticketed: false,
+        },
+        {
+          id: "m-nga-x3",
+          title: "Broken: The Power of the Fragment in Sculpture",
+          // Dates from https://www.nga.gov/exhibitions/broken, read 2026-10-22.
+          startDate: "2027-03-13",
+          endDate: "2027-06-27",
+          blurb: "Some 75 damaged or fragmentary sculptures from 2,500 BCE to now, on loss, war, and restitution.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-amnh",
@@ -356,7 +643,17 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 89,
       visitMinutesAvg: 240,
       admissionUSD: 28,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-amnh-x1",
+          title: "For the Win: Objects of Sports Excellence",
+          // Dates from https://www.amnh.org/exhibitions/for-the-win, read 2026-10-22.
+          startDate: "2026-05-18",
+          endDate: "2027-01-03",
+          blurb: "About 70 trophies, medals, and other objects from more than 15 sports.",
+          ticketed: false,
+        },
+      ],
     },
     {
       id: "m-tate-modern",
@@ -377,7 +674,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 90,
       visitMinutesAvg: 180,
       admissionUSD: null,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-tate-x1",
+          title: "Hyundai Commission Tarek Atoui",
+          // Dates from https://www.tate.org.uk/whats-on/tate-modern/tarek-atoui, read 2026-10-22.
+          startDate: "2026-10-13",
+          endDate: "2027-04-11",
+          blurb: "A sound installation in the Turbine Hall built from instruments, electronics, and textiles moved by air.",
+          ticketed: false,
+        },
+        {
+          id: "m-tate-x2",
+          title: "Frida: The Making of an Icon",
+          // Dates from https://www.tate.org.uk/whats-on/tate-modern/frida-kahlo-the-making-of-an-icon, read 2026-10-22.
+          startDate: "2026-06-25",
+          endDate: "2027-01-03",
+          blurb: "How Frida Kahlo became both an artist and a global commercial image, with more than 30 of her paintings.",
+          ticketed: true,
+        },
+        {
+          id: "m-tate-x3",
+          title: "Monet: Painting Time",
+          // Dates from https://www.tate.org.uk/whats-on/tate-modern/monet, read 2026-10-22.
+          startDate: "2027-02-25",
+          endDate: "2027-06-27",
+          blurb: "Tate Modern's first exhibition given only to Monet, organized around how his work treats time.",
+          ticketed: true,
+        },
+      ],
     },
     {
       id: "m-rijks",
@@ -398,7 +723,35 @@ const baseMuseumSnapshot: MuseumSnapshot = {
       popularity: 87,
       visitMinutesAvg: 210,
       admissionUSD: 25,
-      exhibits: [],
+      exhibits: [
+        {
+          id: "m-rijks-x1",
+          title: "Willem de Kooning at work",
+          // Dates from https://www.rijksmuseum.nl/en/whats-on/exhibitions/willem-de-kooning-at-work, read 2026-10-22.
+          startDate: "2026-10-09",
+          endDate: "2027-01-17",
+          blurb: "De Kooning's drawings, with some paintings and sculpture, a century after he left for New York.",
+          ticketed: false,
+        },
+        {
+          id: "m-rijks-x2",
+          title: "Document Netherlands: New Energy",
+          // Dates from https://www.rijksmuseum.nl/en/whats-on/exhibitions/document-netherlands-new-energy, read 2026-10-22.
+          startDate: "2026-10-09",
+          endDate: "2027-01-17",
+          blurb: "Kadir van Lohuizen's photographs of the energy transition around the North Sea.",
+          ticketed: false,
+        },
+        {
+          id: "m-rijks-x3",
+          title: "Drawing!",
+          // Dates from https://www.rijksmuseum.nl/en/whats-on/exhibitions/draw, read 2026-10-22.
+          startDate: "2027-02-12",
+          endDate: "2027-05-23",
+          blurb: "More than 100 drawings on how Northern Netherlandish artists around 1600 changed drawing.",
+          ticketed: false,
+        },
+      ],
     },
   ],
 

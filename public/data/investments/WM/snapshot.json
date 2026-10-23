@@ -1,10 +1,10 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.0645,
-      "ttmPe": 32.05,
-      "marketCap": 90556686957,
-      "psRatio": 3.53,
-      "pbRatio": 9.12,
-      "pegRatio": 3.71
+      "ttmPe": 32.5,
+      "marketCap": 91824584566,
+      "psRatio": 3.58,
+      "pbRatio": 9.25,
+      "pegRatio": 3.76
     },
     "profitability": {
       "roe": 7.870000000000001,
@@ -5504,25 +5504,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.7,
-      "costOfEquity": 8.23,
+      "wacc": 6.76,
+      "costOfEquity": 8.290000000000001,
       "costOfDebt": 1,
       "taxRate": 23,
-      "beta": 0.3996,
-      "marketCap": 90556686957
+      "beta": 0.4077,
+      "marketCap": 91824584566
     },
     "beta": {
-      "beta5y": 0.3996
+      "beta5y": 0.4077
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 215.85,
-        "high": 216.29,
-        "low": 214.21,
-        "close": 215.4,
-        "volume": 941200
-      },
       {
         "date": "2025-10-21",
         "open": 215.15,
@@ -7530,6 +7522,14 @@
         "low": 227,
         "close": 231.73,
         "volume": 3155100
+      },
+      {
+        "date": "2026-10-21",
+        "open": 230.26,
+        "high": 230.94,
+        "low": 229.29,
+        "close": 229.58,
+        "volume": 2246200
       }
     ],
     "news": [
@@ -7574,19 +7574,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
-        "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/wm-q1-earnings-call-margin-182355199.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2ff0690d-bca8-31dc-b369-1aa6c786077c",
         "title": "WM Announces Cash Dividend",
         "publisher": "Business Wire",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/wm-announces-cash-dividend-213300031.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
+        "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/wm-q1-earnings-call-margin-182355199.html",
         "type": "STORY"
       },
       {
@@ -7680,18 +7680,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.05,
-        "industryAvg": 33.19
+        "value": 32.5,
+        "industryAvg": 33.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.53,
-        "industryAvg": 3.55
+        "value": 3.58,
+        "industryAvg": 3.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.12,
-        "industryAvg": 5.91
+        "value": 9.25,
+        "industryAvg": 5.96
       },
       {
         "metric": "ROE",

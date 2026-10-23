@@ -4,9 +4,16 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-23
+
+- Re-read the museum exhibition calendars so on-view counts work again ([#638](https://github.com/IsaacAVazquez/Website/pull/638)).
+
+---
+
 ## 2026-10-22
 
 - Before You Buy rework, back room easter eggs, and draft event fix ([#635](https://github.com/IsaacAVazquez/Website/pull/635)).
+- Improve six project tools with saved plans and comparable fees ([#637](https://github.com/IsaacAVazquez/Website/pull/637)).
 
 ---
 

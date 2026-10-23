@@ -1,14 +1,11 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-21"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.9274,
-      "ttmPe": 39.62,
-      "marketCap": 47043200000,
-      "psRatio": 4.63,
-      "pbRatio": 7.28,
-      "pegRatio": 0.19
+      "ttmPe": 41.19,
+      "marketCap": 48913360000,
+      "psRatio": 4.82,
+      "pbRatio": 7.57,
+      "pegRatio": 0.2
     },
     "profitability": {
       "roe": 9.62,
@@ -5795,25 +5792,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.07,
-      "costOfEquity": 13,
+      "wacc": 12.13,
+      "costOfEquity": 13.03,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.0168,
-      "marketCap": 47043200000
+      "beta": 1.0201,
+      "marketCap": 48913360000
     },
     "beta": {
-      "beta5y": 1.0168
+      "beta5y": 1.0201
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 235.56,
-        "high": 242.22,
-        "low": 233.13,
-        "close": 241.2,
-        "volume": 2080900
-      },
       {
         "date": "2025-10-21",
         "open": 240.12,
@@ -7821,6 +7810,14 @@
         "low": 197.14,
         "close": 203.98,
         "volume": 2358200
+      },
+      {
+        "date": "2026-10-21",
+        "open": 203.66,
+        "high": 206.03,
+        "low": 201.15,
+        "close": 202.96,
+        "volume": 1676200
       }
     ],
     "news": [
@@ -7897,12 +7894,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "3cde1379-a5ed-38e8-912f-564b5cfa411a",
-        "title": "Quantum stocks, MNTN IPO, Workday earnings: Trending tickers",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "a8a7c6bc-d151-3b29-bb14-3b60f20774ca",
+        "title": "Workday Q1 Earnings Beat Estimates on Solid Revenue Growth",
+        "publisher": "Zacks",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/video/quantum-stocks-mntn-ipo-workday-144923004.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/news/workday-q1-earnings-beat-estimates-154200149.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7971,18 +7968,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.91,
-        "industryAvg": 27.38
+        "value": 41.19,
+        "industryAvg": 27.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.67,
-        "industryAvg": 5.2
+        "value": 4.82,
+        "industryAvg": 5.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.34,
-        "industryAvg": 5.83
+        "value": 7.57,
+        "industryAvg": 5.87
       },
       {
         "metric": "ROE",

@@ -1,8 +1,8 @@
 {
   "season": "2026/27",
-  "matchday": 9,
-  "generatedAt": "2026-10-22T05:07:17.915Z",
-  "updatedAt": "2026-10-22",
+  "matchday": 10,
+  "generatedAt": "2026-10-23T05:06:57.529Z",
+  "updatedAt": "2026-10-23",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
     "standings": "https://www.football-data.org/documentation/api",
@@ -1346,9 +1346,8 @@
         },
         {
           "id": "564753",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -1414,7 +1413,7 @@
         "goalsFor": 12,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "fcb": {
       "team": {
@@ -1642,9 +1641,8 @@
         },
         {
           "id": "564749",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T13:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -1710,7 +1708,7 @@
         "goalsFor": 22,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "cel": {
       "team": {
@@ -1938,9 +1936,8 @@
         },
         {
           "id": "564754",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -2006,7 +2003,7 @@
         "goalsFor": 9,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "elc": {
       "team": {
@@ -2234,9 +2231,8 @@
         },
         {
           "id": "564757",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-23T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -2302,7 +2298,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "esp": {
       "team": {
@@ -2530,9 +2526,8 @@
         },
         {
           "id": "564748",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-20T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -2598,7 +2593,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "get": {
       "team": {
@@ -2826,9 +2821,8 @@
         },
         {
           "id": "564753",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -2894,7 +2888,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "lev": {
       "team": {
@@ -3122,9 +3116,8 @@
         },
         {
           "id": "564757",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-23T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -3190,7 +3183,7 @@
         "goalsFor": 10,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "mal": {
       "team": {
@@ -3418,9 +3411,8 @@
         },
         {
           "id": "564752",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T17:30:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -3486,7 +3478,7 @@
         "goalsFor": 5,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "osa": {
       "team": {
@@ -3714,9 +3706,8 @@
         },
         {
           "id": "564752",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T17:30:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -3782,7 +3773,7 @@
         "goalsFor": 5,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "ray": {
       "team": {
@@ -4010,9 +4001,8 @@
         },
         {
           "id": "564751",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T15:15:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4078,7 +4068,7 @@
         "goalsFor": 8,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "bet": {
       "team": {
@@ -4306,9 +4296,8 @@
         },
         {
           "id": "564756",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T17:30:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4374,7 +4363,7 @@
         "goalsFor": 11,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "rma": {
       "team": {
@@ -4602,9 +4591,8 @@
         },
         {
           "id": "564754",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4670,7 +4658,7 @@
         "goalsFor": 13,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "rso": {
       "team": {
@@ -4898,9 +4886,8 @@
         },
         {
           "id": "564750",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T15:15:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -4966,7 +4953,7 @@
         "goalsFor": 14,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "sev": {
       "team": {
@@ -5194,9 +5181,8 @@
         },
         {
           "id": "564756",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T17:30:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -5262,7 +5248,7 @@
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "val": {
       "team": {
@@ -5490,9 +5476,8 @@
         },
         {
           "id": "564751",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T15:15:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -5558,7 +5543,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "vil": {
       "team": {
@@ -5786,9 +5771,8 @@
         },
         {
           "id": "564749",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T13:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -5854,7 +5838,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "ala": {
       "team": {
@@ -6082,9 +6066,8 @@
         },
         {
           "id": "564755",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T13:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -6150,7 +6133,7 @@
         "goalsFor": 3,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "ath": {
       "team": {
@@ -6378,9 +6361,8 @@
         },
         {
           "id": "564748",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-20T20:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -6446,7 +6428,7 @@
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "dep": {
       "team": {
@@ -6674,9 +6656,8 @@
         },
         {
           "id": "564755",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-21T13:00:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -6742,7 +6723,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     },
     "san": {
       "team": {
@@ -6970,9 +6951,8 @@
         },
         {
           "id": "564750",
-          "utcDate": "2026-11-22T00:00:00Z",
-          "status": "SCHEDULED",
-          "startTimeTbd": true,
+          "utcDate": "2026-11-22T15:15:00Z",
+          "status": "TIMED",
           "matchday": 13,
           "stage": "REGULAR_SEASON",
           "homeTeam": {
@@ -7038,7 +7018,7 @@
         "goalsFor": 6,
         "goalsAgainst": 17
       },
-      "generatedAt": "2026-10-22T05:07:17.915Z"
+      "generatedAt": "2026-10-23T05:06:57.529Z"
     }
   }
 }

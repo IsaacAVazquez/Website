@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3516,
-      "ttmPe": 16.17,
-      "pegRatio": 0.98,
-      "marketCap": 31776060855,
-      "psRatio": 1.49,
-      "pbRatio": 2.9
+      "ttmPe": 15.86,
+      "pegRatio": 0.96,
+      "marketCap": 31170802553,
+      "psRatio": 1.47,
+      "pbRatio": 2.84
     },
     "profitability": {
       "roe": 5.18,
@@ -6205,25 +6205,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.870000000000001,
-      "costOfEquity": 11.51,
+      "wacc": 8.85,
+      "costOfEquity": 11.540000000000001,
       "costOfDebt": 1.08,
       "taxRate": 17,
-      "beta": 0.8249,
-      "marketCap": 31776060855
+      "beta": 0.8279,
+      "marketCap": 31170802553
     },
     "beta": {
-      "beta5y": 0.8249
+      "beta5y": 0.8279
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 74.35,
-        "high": 75.913,
-        "low": 74.06,
-        "close": 75.48,
-        "volume": 2050900
-      },
       {
         "date": "2025-10-21",
         "open": 75.25,
@@ -8231,6 +8223,14 @@
         "low": 69.63,
         "close": 70.23,
         "volume": 2260500
+      },
+      {
+        "date": "2026-10-21",
+        "open": 69.02,
+        "high": 70.26,
+        "low": 68.7,
+        "close": 69.01,
+        "volume": 2182500
       }
     ],
     "news": [
@@ -8251,14 +8251,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
-        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
         "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
         "publisher": "Yahoo Finance Video",
@@ -8275,12 +8267,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
-        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
-        "type": "STORY"
+        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
+        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
@@ -8288,6 +8280,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
+        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
         "type": "STORY"
       },
       {
@@ -8380,18 +8380,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.17,
-        "industryAvg": 25.7
+        "value": 15.86,
+        "industryAvg": 25.35
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.49,
-        "industryAvg": 3.1
+        "value": 1.47,
+        "industryAvg": 3.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.9,
-        "industryAvg": 3.02
+        "value": 2.84,
+        "industryAvg": 2.99
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "industry"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6961,
-      "ttmPe": 36.14,
-      "marketCap": 75947950000,
-      "psRatio": 6.21,
-      "pbRatio": 28.42,
-      "pegRatio": 3.76
+      "ttmPe": 36.82,
+      "marketCap": 77371250000,
+      "psRatio": 6.32,
+      "pbRatio": 28.96,
+      "pegRatio": 3.83
     },
     "profitability": {
       "roe": 21.36,
@@ -6665,25 +6665,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.68,
-      "costOfEquity": 11.92,
+      "wacc": 10.7,
+      "costOfEquity": 11.93,
       "costOfDebt": 1.13,
       "taxRate": 25,
-      "beta": 0.8768,
-      "marketCap": 75947950000
+      "beta": 0.8787,
+      "marketCap": 77371250000
     },
     "beta": {
-      "beta5y": 0.8768
+      "beta5y": 0.8787
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 445,
-        "high": 448.84,
-        "low": 444.7,
-        "close": 448.44,
-        "volume": 410700
-      },
       {
         "date": "2025-10-21",
         "open": 450.29,
@@ -8691,6 +8683,14 @@
         "low": 459.13,
         "close": 463.46,
         "volume": 452900
+      },
+      {
+        "date": "2026-10-21",
+        "open": 465.25,
+        "high": 468.99,
+        "low": 464.45,
+        "close": 467.5,
+        "volume": 579900
       }
     ],
     "news": [
@@ -8703,19 +8703,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
         "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
         "publisher": "Reuters",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
+        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
+        "publisher": "ACCESS Newswire",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8727,11 +8727,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
-        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
-        "publisher": "ACCESS Newswire",
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
         "type": "STORY"
       },
       {
@@ -8751,11 +8751,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
-        "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
-        "publisher": "MT Newswires",
+        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
+        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-204457398.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
         "type": "STORY"
       },
       {
@@ -8767,11 +8767,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
-        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
-        "publisher": "Business Wire",
+        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
+        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
+        "publisher": "Reuters",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
         "type": "STORY"
       }
     ],

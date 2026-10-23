@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4841,
-      "ttmPe": 36.69,
-      "marketCap": 322972455000,
-      "psRatio": 6.38,
-      "pbRatio": 18.31,
-      "pegRatio": 1.88
+      "ttmPe": 34.87,
+      "marketCap": 306993992500,
+      "psRatio": 6.06,
+      "pbRatio": 17.4,
+      "pegRatio": 1.78
     },
     "profitability": {
       "roe": 13.28,
@@ -6864,25 +6864,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.340000000000002,
-      "costOfEquity": 16.189999999999998,
+      "wacc": 15.27,
+      "costOfEquity": 16.16,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 15,
-      "beta": 1.4298,
-      "marketCap": 322972455000
+      "beta": 1.4257,
+      "marketCap": 306993992500
     },
     "beta": {
-      "beta5y": 1.4298
+      "beta5y": 1.4257
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 303.86,
-        "high": 305.43,
-        "low": 301.67,
-        "close": 302.68,
-        "volume": 5058700
-      },
       {
         "date": "2025-10-21",
         "open": 307.3,
@@ -8890,6 +8882,14 @@
         "low": 294.22,
         "close": 299.87,
         "volume": 9217600
+      },
+      {
+        "date": "2026-10-21",
+        "open": 302.48,
+        "high": 308.69,
+        "low": 293.51,
+        "close": 295.88,
+        "volume": 7453500
       }
     ],
     "news": [
@@ -8966,11 +8966,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f65ee8ef-b157-3570-9098-5413b7773f9f",
-        "title": "3 Market-Beating Stocks to Target This Week",
-        "publisher": "StockStory",
+        "uuid": "d134cc19-fe13-3ca1-af10-ebf5dc460470",
+        "title": "Jim Cramer Says GE Vernova (GEV) Has “Four Secular Trends Going for It”",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/3-market-beating-stocks-target-043626728.html",
+        "link": "https://finance.yahoo.com/news/jim-cramer-says-ge-vernova-181249654.html",
         "type": "STORY"
       }
     ],
@@ -9040,18 +9040,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.69,
-        "industryAvg": 32.41
+        "value": 34.87,
+        "industryAvg": 32.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.38,
-        "industryAvg": 2.87
+        "value": 6.06,
+        "industryAvg": 2.84
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.31,
-        "industryAvg": 8.5
+        "value": 17.4,
+        "industryAvg": 8.77
       },
       {
         "metric": "ROE",

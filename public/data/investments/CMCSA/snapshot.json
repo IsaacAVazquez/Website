@@ -1,10 +1,10 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 3.0882,
-      "ttmPe": 7.09,
-      "marketCap": 77666245410,
-      "psRatio": 0.62,
+      "ttmPe": 7.15,
+      "marketCap": 78304598112,
+      "psRatio": 0.63,
       "pbRatio": 0.87,
       "pegRatio": 0.02
     },
@@ -5584,25 +5584,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.43,
-      "costOfEquity": 10.75,
+      "wacc": 5.45,
+      "costOfEquity": 10.76,
       "costOfDebt": 1.16,
       "taxRate": 26,
-      "beta": 0.7256,
-      "marketCap": 77666245410
+      "beta": 0.7272,
+      "marketCap": 78304598112
     },
     "beta": {
-      "beta5y": 0.7256
+      "beta5y": 0.7272
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 27.6945,
-        "high": 27.7694,
-        "low": 27.4789,
-        "close": 27.7132,
-        "volume": 18012454
-      },
       {
         "date": "2025-10-21",
         "open": 27.7882,
@@ -7610,6 +7602,14 @@
         "low": 22.04,
         "close": 22.36,
         "volume": 34295300
+      },
+      {
+        "date": "2026-10-21",
+        "open": 21.94,
+        "high": 22.13,
+        "low": 21.58,
+        "close": 22.08,
+        "volume": 40188100
       }
     ],
     "news": [
@@ -7638,14 +7638,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
         "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
         "publisher": "TipRanks",
@@ -7654,11 +7646,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
-        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
         "publisher": "TipRanks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -7667,6 +7659,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
+        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
         "type": "STORY"
       },
       {
@@ -7761,18 +7761,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.09,
-        "industryAvg": 10.64
+        "value": 7.15,
+        "industryAvg": 10.57
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.62,
+        "value": 0.63,
         "industryAvg": 1.08
       },
       {
         "metric": "P/B Ratio",
         "value": 0.87,
-        "industryAvg": 1.58
+        "industryAvg": 1.57
       },
       {
         "metric": "ROE",

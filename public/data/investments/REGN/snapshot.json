@@ -1,10 +1,10 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 40.4631,
-      "ttmPe": 19.68,
+      "ttmPe": 19.91,
       "pegRatio": 1.03,
-      "marketCap": 82341556000,
-      "psRatio": 5.3,
-      "pbRatio": 2.6
+      "marketCap": 83306278000,
+      "psRatio": 5.36,
+      "pbRatio": 2.63
     },
     "profitability": {
       "roe": 4.109999999999999,
@@ -5712,25 +5712,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.970000000000001,
-      "costOfEquity": 6.15,
+      "wacc": 6,
+      "costOfEquity": 6.18,
       "costOfDebt": 0.41000000000000003,
       "taxRate": 15,
-      "beta": 0.1345,
-      "marketCap": 82341556000
+      "beta": 0.1355,
+      "marketCap": 83306278000
     },
     "beta": {
-      "beta5y": 0.1345
+      "beta5y": 0.1355
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 579.41,
-        "high": 582.65,
-        "low": 574.23,
-        "close": 576.77,
-        "volume": 639100
-      },
       {
         "date": "2025-10-21",
         "open": 574.6,
@@ -7738,23 +7730,31 @@
         "low": 789.69,
         "close": 807.48,
         "volume": 623400
+      },
+      {
+        "date": "2026-10-21",
+        "open": 806.74,
+        "high": 813.86,
+        "low": 800.24,
+        "close": 805.67,
+        "volume": 581000
       }
     ],
     "news": [
-      {
-        "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
-        "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-15",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
-        "type": "STORY"
-      },
       {
         "uuid": "a1261d76-bd14-306c-8ca0-f1dd4ac1adaf",
         "title": "Sector Update: Health Care Stocks Rise in Late Afternoon Trading",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-15",
         "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-195050024.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "aeaafdcd-7d73-3a09-a3c2-004f2810e27a",
+        "title": "Sector Update: Health Care Stocks Rise in Afternoon Trading",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-15",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-rise-175408390.html",
         "type": "STORY"
       },
       {
@@ -7885,18 +7885,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.68,
-        "industryAvg": 22.89
+        "value": 19.91,
+        "industryAvg": 23.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.3,
-        "industryAvg": 10.9
+        "value": 5.36,
+        "industryAvg": 11.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.6,
-        "industryAvg": 4.51
+        "value": 2.63,
+        "industryAvg": 4.63
       },
       {
         "metric": "ROE",

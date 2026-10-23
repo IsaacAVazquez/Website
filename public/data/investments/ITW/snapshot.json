@@ -1,10 +1,10 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.033,
-      "ttmPe": 24.49,
-      "marketCap": 76944416000,
-      "psRatio": 4.67,
-      "pbRatio": 26.59,
-      "pegRatio": 2.41
+      "ttmPe": 25.09,
+      "marketCap": 78832640000,
+      "psRatio": 4.79,
+      "pbRatio": 27.24,
+      "pegRatio": 2.47
     },
     "profitability": {
       "roe": 26.619999999999997,
@@ -6134,25 +6134,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.09,
-      "costOfEquity": 12.41,
+      "wacc": 11.15,
+      "costOfEquity": 12.44,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 24,
-      "beta": 0.9408,
-      "marketCap": 76944416000
+      "beta": 0.945,
+      "marketCap": 78832640000
     },
     "beta": {
-      "beta5y": 0.9408
+      "beta5y": 0.945
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 249.17,
-        "high": 252.83,
-        "low": 249.17,
-        "close": 252.38,
-        "volume": 1001400
-      },
       {
         "date": "2025-10-21",
         "open": 251.68,
@@ -8160,6 +8152,14 @@
         "low": 269.66,
         "close": 274.97,
         "volume": 1195100
+      },
+      {
+        "date": "2026-10-21",
+        "open": 275.65,
+        "high": 278.02,
+        "low": 274.1,
+        "close": 276.8,
+        "volume": 1020300
       }
     ],
     "news": [
@@ -8204,19 +8204,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d4dcfc3a-dd7b-30fd-bd95-f92a9a333c07",
-        "title": "ITW Board of Directors Declares Quarterly Dividend",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/itw-board-directors-declares-quarterly-151300939.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "807b67ac-aa01-344a-8dc8-66df6e282df5",
         "title": "Illinois Tool Works First Quarter 2025 Earnings: In Line With Expectations",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/illinois-tool-works-first-quarter-104349017.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d4dcfc3a-dd7b-30fd-bd95-f92a9a333c07",
+        "title": "ITW Board of Directors Declares Quarterly Dividend",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/itw-board-directors-declares-quarterly-151300939.html",
         "type": "STORY"
       },
       {
@@ -8228,19 +8228,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
+        "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
         "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1771a0f3-2da7-3f95-84dc-bf2313156b30",
-        "title": "BofA Downgrades Illinois Tool Works to Underperform From Neutral, Price Target is $220",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/bofa-downgrades-illinois-tool-works-113704841.html",
         "type": "STORY"
       }
     ],
@@ -8312,18 +8312,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.49,
-        "industryAvg": 30.26
+        "value": 25.09,
+        "industryAvg": 30.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.67,
-        "industryAvg": 3.44
+        "value": 4.79,
+        "industryAvg": 3.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.59,
-        "industryAvg": 6.23
+        "value": 27.24,
+        "industryAvg": 6.28
       },
       {
         "metric": "ROE",

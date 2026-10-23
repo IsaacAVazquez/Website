@@ -1,10 +1,10 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4022,
-      "ttmPe": 20.82,
-      "marketCap": 92376344796,
-      "psRatio": 1.68,
-      "pbRatio": 3.44,
-      "pegRatio": 1.56
+      "ttmPe": 21.02,
+      "marketCap": 93263772412,
+      "psRatio": 1.7,
+      "pbRatio": 3.48,
+      "pegRatio": 1.58
     },
     "profitability": {
       "roe": 4.390000000000001,
@@ -5151,21 +5151,13 @@
       "costOfEquity": 7.6499999999999995,
       "costOfDebt": 0.52,
       "taxRate": 18,
-      "beta": 0.3243,
-      "marketCap": 92376344796
+      "beta": 0.326,
+      "marketCap": 93263772412
     },
     "beta": {
-      "beta5y": 0.3243
+      "beta5y": 0.326
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 333,
-        "high": 337.94,
-        "low": 331.76,
-        "close": 337.19,
-        "volume": 823600
-      },
       {
         "date": "2025-10-21",
         "open": 337.91,
@@ -7173,6 +7165,14 @@
         "low": 341.95,
         "close": 344.44,
         "volume": 1005200
+      },
+      {
+        "date": "2026-10-21",
+        "open": 345.39,
+        "high": 347.45,
+        "low": 343.01,
+        "close": 344.71,
+        "volume": 1370000
       }
     ],
     "news": [
@@ -7201,19 +7201,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
-        "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
         "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
+        "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
         "type": "STORY"
       },
       {
@@ -7249,11 +7249,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1d128de7-3263-3e78-b95b-a2df852a3d02",
-        "title": "Trump to make Golden Dome announcement Tuesday, Reuters reports",
-        "publisher": "TipRanks",
+        "uuid": "6842be06-cb66-36b9-9b89-805d5cda23bc",
+        "title": "Northrop Grumman Rewards Shareholders With 12% Dividend Hike",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/1d128de7-3263-3e78-b95b-a2df852a3d02/trump-to-make-golden-dome.html",
+        "link": "https://finance.yahoo.com/news/northrop-grumman-rewards-shareholders-12-152200138.html",
         "type": "STORY"
       }
     ],
@@ -7327,18 +7327,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.82,
-        "industryAvg": 32.41
+        "value": 21.02,
+        "industryAvg": 32.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.68,
-        "industryAvg": 2.87
+        "value": 1.7,
+        "industryAvg": 2.84
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.44,
-        "industryAvg": 8.5
+        "value": 3.48,
+        "industryAvg": 8.77
       },
       {
         "metric": "ROE",

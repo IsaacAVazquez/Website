@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.9774,
-      "ttmPe": 34.64,
-      "marketCap": 63142983010,
-      "psRatio": 6.31,
-      "pbRatio": -6.44,
-      "pegRatio": 3.18
+      "ttmPe": 34.25,
+      "marketCap": 62420606724,
+      "psRatio": 6.24,
+      "pbRatio": -6.36,
+      "pegRatio": 3.15
     },
     "profitability": {
       "roe": -5.609999999999999,
@@ -6079,25 +6079,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.62,
-      "costOfEquity": 12.57,
+      "wacc": 8.6,
+      "costOfEquity": 12.590000000000002,
       "costOfDebt": 1.54,
       "taxRate": 24,
-      "beta": 0.9613,
-      "marketCap": 63142983010
+      "beta": 0.964,
+      "marketCap": 62420606724
     },
     "beta": {
-      "beta5y": 0.9613
+      "beta5y": 0.964
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 1270,
-        "high": 1311.16,
-        "low": 1269.53,
-        "close": 1301.6801,
-        "volume": 383300
-      },
       {
         "date": "2025-10-21",
         "open": 1313.54,
@@ -8105,6 +8097,14 @@
         "low": 1127.53,
         "close": 1143.0601,
         "volume": 348000
+      },
+      {
+        "date": "2026-10-21",
+        "open": 1148.9399,
+        "high": 1154.85,
+        "low": 1122.51,
+        "close": 1129.38,
+        "volume": 346800
       }
     ],
     "news": [
@@ -8149,14 +8149,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
-        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
         "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
@@ -8165,11 +8157,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
-        "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
+        "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
+        "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
         "type": "STORY"
       },
       {
@@ -8178,6 +8170,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/alembic-global-advisory-adjusts-transdigm-113010660.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "28cf1455-f3f5-3322-b721-77dafa9041c3",
+        "title": "TransDigm Agrees to Buy Servotronics for $110M, Expands Portfolio",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/transdigm-agrees-buy-servotronics-110m-154100080.html",
         "type": "STORY"
       },
       {
@@ -8248,18 +8248,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.64,
-        "industryAvg": 32.41
+        "value": 34.25,
+        "industryAvg": 32.07
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.31,
-        "industryAvg": 2.87
+        "value": 6.24,
+        "industryAvg": 2.84
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.44,
-        "industryAvg": 8.5
+        "value": -6.36,
+        "industryAvg": 8.77
       },
       {
         "metric": "ROE",

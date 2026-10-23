@@ -1,10 +1,10 @@
 {
   "symbol": "KO",
-  "lastUpdated": "2026-10-17T12:42:11.412004+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-17T12:42:11.412004+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.3191,
-      "ttmPe": 27.72,
-      "pegRatio": 1.71,
-      "marketCap": 395876000000,
-      "psRatio": 7.9,
-      "pbRatio": 10.95
+      "ttmPe": 27.92,
+      "pegRatio": 1.72,
+      "marketCap": 398802040000,
+      "psRatio": 7.96,
+      "pbRatio": 11.03
     },
     "profitability": {
       "roe": 12.68,
@@ -6103,25 +6103,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.75,
-      "costOfEquity": 7.42,
+      "wacc": 6.78,
+      "costOfEquity": 7.449999999999999,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 19,
-      "beta": 0.2983,
-      "marketCap": 395876000000
+      "beta": 0.2994,
+      "marketCap": 398802040000
     },
     "beta": {
-      "beta5y": 0.2983
+      "beta5y": 0.2994
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 68.43,
-        "high": 68.64,
-        "low": 67.92,
-        "close": 68.44,
-        "volume": 17786800
-      },
       {
         "date": "2025-10-21",
         "open": 70.57,
@@ -8128,24 +8120,32 @@
         "high": 93.96,
         "low": 92.64,
         "close": 93.49,
-        "volume": 15964300
+        "volume": 15994100
+      },
+      {
+        "date": "2026-10-21",
+        "open": 93.11,
+        "high": 93.46,
+        "low": 92.55,
+        "close": 92.68,
+        "volume": 15137400
       }
     ],
     "news": [
-      {
-        "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
-        "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
-        "type": "STORY"
-      },
       {
         "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
         "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
         "publisher": "Zacks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
+        "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
         "type": "STORY"
       },
       {
@@ -8279,18 +8279,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.72,
-        "industryAvg": 23.55
+        "value": 27.92,
+        "industryAvg": 24.04
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.9,
-        "industryAvg": 3.18
+        "value": 7.96,
+        "industryAvg": 3.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.95,
-        "industryAvg": 6.22
+        "value": 11.03,
+        "industryAvg": 6.34
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 17.29,
-      "marketCap": 4209321400000,
-      "psRatio": 9.44,
-      "pbRatio": 6.57,
+      "ttmPe": 16.82,
+      "marketCap": 4094114800000,
+      "psRatio": 9.18,
+      "pbRatio": 6.39,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5800,25 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.000000000000002,
-      "costOfEquity": 14.35,
+      "wacc": 13.98,
+      "costOfEquity": 14.34,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.192,
-      "marketCap": 4209321400000
+      "beta": 1.1899,
+      "marketCap": 4094114800000
     },
     "beta": {
-      "beta5y": 1.192
+      "beta5y": 1.1899
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 254.69,
-        "high": 257.33,
-        "low": 254.23,
-        "close": 256.55,
-        "volume": 22350200
-      },
       {
         "date": "2025-10-21",
         "open": 254.74,
@@ -7825,7 +7817,15 @@
         "high": 344.77,
         "low": 338.36,
         "close": 340.28,
-        "volume": 18215400
+        "volume": 18316900
+      },
+      {
+        "date": "2026-10-21",
+        "open": 336.98,
+        "high": 337.27,
+        "low": 330.38,
+        "close": 334.76,
+        "volume": 29081200
       }
     ],
     "news": [
@@ -7838,19 +7838,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
         "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
         "type": "STORY"
       },
       {
@@ -7862,11 +7862,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-        "publisher": "Motley Fool",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -7894,19 +7894,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
-        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
+        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
+        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
+        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
         "type": "STORY"
       },
       {
-        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
-        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-        "publisher": "Motley Fool",
+        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
+        "title": "Magnificent 7 May Need to Make Room for Broadcom",
+        "publisher": "The Daily Upside",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
         "type": "STORY"
       }
     ],
@@ -7980,18 +7980,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.29,
-        "industryAvg": 18.4
+        "value": 16.82,
+        "industryAvg": 17.97
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.44,
-        "industryAvg": 8.42
+        "value": 9.18,
+        "industryAvg": 8.23
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.57,
-        "industryAvg": 6.13
+        "value": 6.39,
+        "industryAvg": 5.99
       },
       {
         "metric": "ROE",

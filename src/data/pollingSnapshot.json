@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T10:38:14.104Z",
-  "sourceAsOf": "2026-10-19",
+  "generatedAt": "2026-10-22T10:41:29.335Z",
+  "sourceAsOf": "2026-10-20",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
     "approve": 40,
@@ -10,8 +10,8 @@
   "approvalTrend": [
     {
       "date": "2025-10-15",
-      "approve": 43,
-      "disapprove": 54.1
+      "approve": 42.9,
+      "disapprove": 54.4
     },
     {
       "date": "2025-11-15",
@@ -980,17 +980,37 @@
       "candidates": [
         {
           "name": "Dan Sullivan",
-          "support": 47.9
+          "support": 48.2
         },
         {
           "name": "Mary Peltola",
-          "support": 47.1
+          "support": 48.1
         }
       ],
-      "margin": 0.8,
-      "pollCount": 3,
-      "lastPolled": "2026-10-15",
+      "margin": 0.1,
+      "pollCount": 4,
+      "lastPolled": "2026-10-16",
       "polls": [
+        {
+          "id": "us-202data959fae6",
+          "pollster": "Data for Progress",
+          "startDate": "2026-10-08",
+          "endDate": "2026-10-16",
+          "sampleSize": 671,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Mary Peltola",
+              "support": 51
+            },
+            {
+              "name": "Dan Sullivan",
+              "support": 49
+            }
+          ]
+        },
         {
           "id": "us-202pub53b72052",
           "pollster": "Public Policy Polling",
@@ -1157,17 +1177,37 @@
       "candidates": [
         {
           "name": "Ashley Moody",
-          "support": 48.8
+          "support": 49.2
         },
         {
           "name": "Angie Nixon",
-          "support": 43.2
+          "support": 43.3
         }
       ],
-      "margin": 5.6,
-      "pollCount": 8,
-      "lastPolled": "2026-10-10",
+      "margin": 5.9,
+      "pollCount": 7,
+      "lastPolled": "2026-10-19",
       "polls": [
+        {
+          "id": "us-202unif780f058",
+          "pollster": "University of North Florida",
+          "startDate": "2026-10-12",
+          "endDate": "2026-10-19",
+          "sampleSize": 1414,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Ashley Moody",
+              "support": 49
+            },
+            {
+              "name": "Angie Nixon",
+              "support": 45
+            }
+          ]
+        },
         {
           "id": "us-202mdwe9967dcc",
           "pollster": "MDW",
@@ -1295,47 +1335,6 @@
               "support": 40
             }
           ]
-        },
-        {
-          "id": "us-202st.73c64f89",
-          "pollster": "St. Pete Polls",
-          "sponsor": "Florida Politics",
-          "startDate": "2026-09-15",
-          "endDate": "2026-09-17",
-          "sampleSize": 913,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Ashley Moody",
-              "support": 45.2
-            },
-            {
-              "name": "Angie Nixon",
-              "support": 44.8
-            }
-          ]
-        },
-        {
-          "id": "us-202qua2b8ed3cb",
-          "pollster": "Quantus Insights",
-          "startDate": "2026-09-08",
-          "endDate": "2026-09-10",
-          "sampleSize": 733,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Ashley Moody",
-              "support": 50.1
-            },
-            {
-              "name": "Angie Nixon",
-              "support": 42.7
-            }
-          ]
         }
       ]
     },
@@ -1348,17 +1347,37 @@
       "candidates": [
         {
           "name": "Jon Ossoff",
-          "support": 53.1
+          "support": 52.4
         },
         {
           "name": "Mike Collins",
-          "support": 44.1
+          "support": 43.8
         }
       ],
-      "margin": 9,
-      "pollCount": 4,
-      "lastPolled": "2026-10-17",
+      "margin": 8.6,
+      "pollCount": 6,
+      "lastPolled": "2026-10-20",
       "polls": [
+        {
+          "id": "us-202act204154cb",
+          "pollster": "ActiVote",
+          "startDate": "2026-10-06",
+          "endDate": "2026-10-20",
+          "sampleSize": 400,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jon Ossoff",
+              "support": 54
+            },
+            {
+              "name": "Mike Collins",
+              "support": 46
+            }
+          ]
+        },
         {
           "id": "us-202quae590b629",
           "pollster": "Quantus Insights",
@@ -1376,6 +1395,27 @@
             {
               "name": "Mike Collins",
               "support": 44.9
+            }
+          ]
+        },
+        {
+          "id": "us-202uni278821c4",
+          "pollster": "University of Georgia School of Public and International Affairs",
+          "sponsor": "The Atlanta Journal-Constitution",
+          "startDate": "2026-10-07",
+          "endDate": "2026-10-15",
+          "sampleSize": 1000,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jon Ossoff",
+              "support": 48
+            },
+            {
+              "name": "Mike Collins",
+              "support": 40
             }
           ]
         },
@@ -1497,17 +1537,37 @@
       "candidates": [
         {
           "name": "Juliana Stratton",
-          "support": 49
+          "support": 54
         },
         {
           "name": "Don Tracy",
-          "support": 36
+          "support": 39
         }
       ],
-      "margin": 13,
-      "pollCount": 1,
-      "lastPolled": "2026-10-01",
+      "margin": 15,
+      "pollCount": 2,
+      "lastPolled": "2026-10-20",
       "polls": [
+        {
+          "id": "us-202act5e47e608",
+          "pollster": "ActiVote",
+          "startDate": "2026-09-26",
+          "endDate": "2026-10-20",
+          "sampleSize": 400,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Juliana Stratton",
+              "support": 59
+            },
+            {
+              "name": "Don Tracy",
+              "support": 42
+            }
+          ]
+        },
         {
           "id": "us-202pub12c802d5",
           "pollster": "Public Policy Polling",
@@ -3290,17 +3350,37 @@
       "candidates": [
         {
           "name": "Roy Cooper",
-          "support": 50.9
+          "support": 52.8
         },
         {
           "name": "Michael Whatley",
-          "support": 40.3
+          "support": 41.2
         }
       ],
-      "margin": 10.6,
-      "pollCount": 8,
-      "lastPolled": "2026-10-11",
+      "margin": 11.6,
+      "pollCount": 6,
+      "lastPolled": "2026-10-20",
       "polls": [
+        {
+          "id": "us-202act3e915bba",
+          "pollster": "ActiVote",
+          "startDate": "2026-10-08",
+          "endDate": "2026-10-20",
+          "sampleSize": 400,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Roy Cooper",
+              "support": 56.9
+            },
+            {
+              "name": "Michael Whatley",
+              "support": 43.1
+            }
+          ]
+        },
         {
           "id": "us-202surbcf9e1be",
           "pollster": "SurveyUSA",
@@ -3433,83 +3513,6 @@
             {
               "name": "Michael Dublin",
               "support": 4
-            }
-          ]
-        },
-        {
-          "id": "us-202insf80352ad",
-          "pollster": "InsiderAdvantage",
-          "startDate": "2026-09-16",
-          "endDate": "2026-09-17",
-          "sampleSize": 1200,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Roy Cooper",
-              "support": 48.4
-            },
-            {
-              "name": "Michael Whatley",
-              "support": 42.5
-            },
-            {
-              "name": "Shannon Bray",
-              "support": 1.6
-            },
-            {
-              "name": "Michael Dublin",
-              "support": 1.1
-            }
-          ]
-        },
-        {
-          "id": "us-202higae3d1182",
-          "pollster": "High Point University Survey Research Center",
-          "startDate": "2026-09-09",
-          "endDate": "2026-09-16",
-          "sampleSize": 706,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Roy Cooper",
-              "support": 50
-            },
-            {
-              "name": "Michael Whatley",
-              "support": 42
-            }
-          ]
-        },
-        {
-          "id": "us-202harfc1499b8",
-          "pollster": "Harper Polling",
-          "sponsor": "Carolina Journal",
-          "startDate": "2026-09-13",
-          "endDate": "2026-09-15",
-          "sampleSize": 608,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Roy Cooper",
-              "support": 49
-            },
-            {
-              "name": "Michael Whatley",
-              "support": 34
-            },
-            {
-              "name": "Shannon Bray",
-              "support": 3
-            },
-            {
-              "name": "Michael Dublin",
-              "support": 2
             }
           ]
         }
@@ -3723,15 +3726,15 @@
       "candidates": [
         {
           "name": "Jack Reed",
-          "support": 52.8
+          "support": 53
         },
         {
           "name": "Raymond McKay",
-          "support": 32.5
+          "support": 32
         }
       ],
-      "margin": 20.3,
-      "pollCount": 4,
+      "margin": 21,
+      "pollCount": 3,
       "lastPolled": "2026-10-08",
       "polls": [
         {
@@ -3804,26 +3807,6 @@
             {
               "name": "Michael Bahry",
               "support": 2
-            }
-          ]
-        },
-        {
-          "id": "us-202uni56d3ce46",
-          "pollster": "University of New Hampshire",
-          "startDate": "2026-06-18",
-          "endDate": "2026-06-23",
-          "sampleSize": 664,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jack Reed",
-              "support": 52
-            },
-            {
-              "name": "Raymond McKay",
-              "support": 34
             }
           ]
         }
@@ -4286,15 +4269,15 @@
       "candidates": [
         {
           "name": "Jonathan Kreiss-Tomkins",
-          "support": 50.3
+          "support": 51
         },
         {
           "name": "Bernadette Wilson",
-          "support": 39
+          "support": 41
         }
       ],
-      "margin": 11.3,
-      "pollCount": 3,
+      "margin": 10,
+      "pollCount": 4,
       "lastPolled": "2026-10-18",
       "polls": [
         {
@@ -4314,6 +4297,26 @@
             {
               "name": "Bernadette Wilson",
               "support": 45
+            }
+          ]
+        },
+        {
+          "id": "gov202dat0dccd670",
+          "pollster": "Data for Progress",
+          "startDate": "2026-10-08",
+          "endDate": "2026-10-16",
+          "sampleSize": 629,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jonathan Kreiss-Tomkins",
+              "support": 53
+            },
+            {
+              "name": "Bernadette Wilson",
+              "support": 47
             }
           ]
         },
@@ -4605,17 +4608,58 @@
       "candidates": [
         {
           "name": "Xavier Becerra",
-          "support": 55.7
+          "support": 58
         },
         {
           "name": "Steve Hilton",
-          "support": 34
+          "support": 34.3
         }
       ],
-      "margin": 21.7,
-      "pollCount": 3,
-      "lastPolled": "2026-09-20",
+      "margin": 23.7,
+      "pollCount": 4,
+      "lastPolled": "2026-10-19",
       "polls": [
+        {
+          "id": "gov202eme545ba1d8",
+          "pollster": "Emerson College",
+          "startDate": "2026-10-17",
+          "endDate": "2026-10-19",
+          "sampleSize": 1000,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Xavier Becerra",
+              "support": 64
+            },
+            {
+              "name": "Steve Hilton",
+              "support": 36
+            }
+          ]
+        },
+        {
+          "id": "gov202uni78d0c8fb",
+          "pollster": "University of California Berkeley Jack Citrin Center for Public Opinion Research/Verasight/TrueDot",
+          "sponsor": "Politico",
+          "startDate": "2026-10-09",
+          "endDate": "2026-10-14",
+          "sampleSize": 909,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Xavier Becerra",
+              "support": 55
+            },
+            {
+              "name": "Steve Hilton",
+              "support": 35
+            }
+          ]
+        },
         {
           "id": "gov202surd1c462e5",
           "pollster": "SurveyUSA",
@@ -4655,27 +4699,6 @@
             {
               "name": "Steve Hilton",
               "support": 33
-            }
-          ]
-        },
-        {
-          "id": "gov202uni2551add5",
-          "pollster": "University of California Berkeley Jack Citrin Center for Public Opinion Research/Verasight/TrueDot",
-          "sponsor": "Politico",
-          "startDate": "2026-09-11",
-          "endDate": "2026-09-16",
-          "sampleSize": 1983,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Xavier Becerra",
-              "support": 54
-            },
-            {
-              "name": "Steve Hilton",
-              "support": 36
             }
           ]
         }
@@ -4798,11 +4821,11 @@
         },
         {
           "name": "David Jolly",
-          "support": 44.4
+          "support": 44.7
         }
       ],
-      "margin": 4.2,
-      "pollCount": 8,
+      "margin": 3.9,
+      "pollCount": 9,
       "lastPolled": "2026-10-19",
       "polls": [
         {
@@ -4822,6 +4845,26 @@
             {
               "name": "David Jolly",
               "support": 48.3
+            }
+          ]
+        },
+        {
+          "id": "gov202uni6ec2ef24",
+          "pollster": "University of North Florida",
+          "startDate": "2026-10-12",
+          "endDate": "2026-10-19",
+          "sampleSize": 1378,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Byron Donalds",
+              "support": 49
+            },
+            {
+              "name": "David Jolly",
+              "support": 47
             }
           ]
         },
@@ -4982,17 +5025,37 @@
       "candidates": [
         {
           "name": "Rick Jackson",
-          "support": 48.8
+          "support": 49.2
         },
         {
           "name": "Keisha Lance Bottoms",
-          "support": 47.2
+          "support": 47.4
         }
       ],
-      "margin": 1.6,
-      "pollCount": 6,
-      "lastPolled": "2026-10-17",
+      "margin": 1.8,
+      "pollCount": 7,
+      "lastPolled": "2026-10-20",
       "polls": [
+        {
+          "id": "gov202actab967fe7",
+          "pollster": "ActiVote",
+          "startDate": "2026-10-06",
+          "endDate": "2026-10-20",
+          "sampleSize": 400,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Rick Jackson",
+              "support": 51.5
+            },
+            {
+              "name": "Keisha Lance Bottoms",
+              "support": 48.5
+            }
+          ]
+        },
         {
           "id": "gov202qua2fa31d0f",
           "pollster": "Quantus Insights",
@@ -6933,15 +6996,15 @@
       "candidates": [
         {
           "name": "Helena Foulkes",
-          "support": 40.8
+          "support": 41.7
         },
         {
           "name": "Ken Block",
-          "support": 22.5
+          "support": 23.7
         }
       ],
-      "margin": 18.3,
-      "pollCount": 4,
+      "margin": 18,
+      "pollCount": 3,
       "lastPolled": "2026-10-08",
       "polls": [
         {
@@ -7040,30 +7103,6 @@
               "support": 1
             }
           ]
-        },
-        {
-          "id": "gov202unic0306a25",
-          "pollster": "University of New Hampshire",
-          "startDate": "2026-06-18",
-          "endDate": "2026-06-23",
-          "sampleSize": 664,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Helena Foulkes",
-              "support": 38
-            },
-            {
-              "name": "Rep",
-              "support": 22
-            },
-            {
-              "name": "Ken Block",
-              "support": 19
-            }
-          ]
         }
       ]
     },
@@ -7076,17 +7115,45 @@
       "candidates": [
         {
           "name": "Alan Wilson",
-          "support": 45
+          "support": 48.8
         },
         {
           "name": "Jermaine Johnson",
-          "support": 37
+          "support": 36.8
         }
       ],
-      "margin": 8,
-      "pollCount": 1,
-      "lastPolled": "2026-07-17",
+      "margin": 12,
+      "pollCount": 2,
+      "lastPolled": "2026-10-18",
       "polls": [
+        {
+          "id": "gov202tra179819af",
+          "pollster": "Trafalgar Group",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-18",
+          "sampleSize": 1095,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Alan Wilson",
+              "support": 52.5
+            },
+            {
+              "name": "Jermaine Johnson",
+              "support": 36.5
+            },
+            {
+              "name": "Michael Addison",
+              "support": 4.2
+            },
+            {
+              "name": "Walid Hakim",
+              "support": 1.6
+            }
+          ]
+        },
         {
           "id": "gov202puba947cc79",
           "pollster": "Public Policy Polling",
@@ -7449,15 +7516,15 @@
       "candidates": [
         {
           "name": "Phil Scott",
-          "support": 43
+          "support": 43.5
         },
         {
           "name": "Amanda Janoo",
-          "support": 36.3
+          "support": 41
         }
       ],
-      "margin": 6.7,
-      "pollCount": 3,
+      "margin": 2.5,
+      "pollCount": 2,
       "lastPolled": "2026-09-21",
       "polls": [
         {
@@ -7513,26 +7580,6 @@
             {
               "name": "June Goodband",
               "support": 2
-            }
-          ]
-        },
-        {
-          "id": "gov202unidce17b5b",
-          "pollster": "University of New Hampshire",
-          "startDate": "2026-06-18",
-          "endDate": "2026-06-23",
-          "sampleSize": 511,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Phil Scott",
-              "support": 42
-            },
-            {
-              "name": "Amanda Janoo",
-              "support": 27
             }
           ]
         }

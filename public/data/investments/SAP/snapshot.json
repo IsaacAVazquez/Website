@@ -1,14 +1,11 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-21"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9544,
-      "ttmPe": 28.42,
-      "marketCap": 260883826000,
-      "psRatio": 5.99,
-      "pbRatio": 5.11,
-      "pegRatio": 0.85
+      "ttmPe": 29.26,
+      "marketCap": 268616966000,
+      "psRatio": 6.16,
+      "pbRatio": 5.26,
+      "pegRatio": 0.88
     },
     "profitability": {
       "roe": 4.87,
@@ -6084,25 +6081,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.22,
-      "costOfEquity": 13.719999999999999,
+      "wacc": 13.28,
+      "costOfEquity": 13.77,
       "costOfDebt": 3.0700000000000003,
       "taxRate": 27,
-      "beta": 1.1098,
-      "marketCap": 260883826000
+      "beta": 1.1163,
+      "marketCap": 268616966000
     },
     "beta": {
-      "beta5y": 1.1098
+      "beta5y": 1.1163
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 274.94,
-        "high": 279.38,
-        "low": 274.94,
-        "close": 277.91,
-        "volume": 1464800
-      },
       {
         "date": "2025-10-21",
         "open": 276.59,
@@ -8110,6 +8099,14 @@
         "low": 225.79,
         "close": 228.98,
         "volume": 2666400
+      },
+      {
+        "date": "2026-10-21",
+        "open": 231.57,
+        "high": 234.72,
+        "low": 229.67,
+        "close": 232.73,
+        "volume": 4341700
       }
     ],
     "news": [
@@ -8162,14 +8159,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
-        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
         "title": "SAP Reimagines How Enterprises Run With Business AI",
         "publisher": "PR Newswire",
@@ -8186,11 +8175,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
-        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
+        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
+        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7f6fe3a9-58be-3b3b-b6ab-8f6850d4fd81",
+        "title": "SAP & Accenture Unveil ADVANCE to Boost Cloud-First Transformation",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
+        "link": "https://finance.yahoo.com/news/sap-accenture-unveil-advance-boost-111200942.html",
         "type": "STORY"
       }
     ],
@@ -8200,87 +8197,87 @@
         "title": "Demand Manager & Works Council Europe Representative Member of Supervisory Board",
         "age": 43,
         "yearBorn": 1982,
-        "totalPay": 263783
+        "totalPay": 263809
       },
       {
         "name": "Mr. Andreas Hahn",
         "title": "Chairperson of Works Council Europe & Works Council Europe Rep Member of Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 263783
+        "totalPay": 263809
       },
       {
         "name": "Mr. Christian Klein",
         "title": "CEO & Member of Executive Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 5907612
+        "totalPay": 5908191
       },
       {
         "name": "Mr. Dominik Asam",
         "title": "CFO & Member of Executive Board",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2839874
+        "totalPay": 2840153
       },
       {
         "name": "Mr. Lars Lamade",
         "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 325519
+        "totalPay": 325551
       },
       {
         "name": "Mr. Muhammad Alam",
         "title": "Lead Product Engineering & Member of Executive Board",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2519968
+        "totalPay": 2520215
       },
       {
         "name": "Mr. Pascal Demat",
         "title": "Solution Advisor HCM & Works Council Europe Representative Member of Supervisory Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 263783
+        "totalPay": 263809
       },
       {
         "name": "Mr. Sebastian Steinhaeuser",
         "title": "Chief Strategy Officer & COO and Member of Executive Board",
         "age": 39,
         "yearBorn": 1986,
-        "totalPay": 2390882
+        "totalPay": 2391117
       },
       {
         "name": "Mr. Thomas Saueressig",
         "title": "Member of Executive Board",
         "age": 40,
         "yearBorn": 1985,
-        "totalPay": 2800588
+        "totalPay": 2800862
       },
       {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 2834262
+        "totalPay": 2834540
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.29,
-        "industryAvg": 27.38
+        "value": 29.26,
+        "industryAvg": 27.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.96,
-        "industryAvg": 5.2
+        "value": 6.16,
+        "industryAvg": 5.25
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.09,
-        "industryAvg": 5.83
+        "value": 5.26,
+        "industryAvg": 5.87
       },
       {
         "metric": "ROE",

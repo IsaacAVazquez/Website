@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3487,
-      "ttmPe": 23.24,
-      "marketCap": 170471598570,
-      "psRatio": 6.71,
-      "pbRatio": 8.25,
-      "pegRatio": 3.64
+      "ttmPe": 23.31,
+      "marketCap": 170982401590,
+      "psRatio": 6.73,
+      "pbRatio": 8.27,
+      "pegRatio": 3.65
     },
     "profitability": {
       "roe": 9.94,
@@ -4999,25 +4999,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.08,
-      "costOfEquity": 11.78,
+      "wacc": 10.11,
+      "costOfEquity": 11.81,
       "costOfDebt": 1,
       "taxRate": 22,
-      "beta": 0.859,
-      "marketCap": 170471598570
+      "beta": 0.8628,
+      "marketCap": 170982401590
     },
     "beta": {
-      "beta5y": 0.859
+      "beta5y": 0.8628
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 226.66,
-        "high": 229.21,
-        "low": 225.8,
-        "close": 227.3,
-        "volume": 2922100
-      },
       {
         "date": "2025-10-21",
         "open": 226.29,
@@ -7025,6 +7017,14 @@
         "low": 286.99,
         "close": 287.61,
         "volume": 2254300
+      },
+      {
+        "date": "2026-10-21",
+        "open": 287.54,
+        "high": 290.2,
+        "low": 286.53,
+        "close": 287.87,
+        "volume": 2815800
       }
     ],
     "news": [
@@ -7053,19 +7053,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
-        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dbb50989-5ece-3897-80fa-8dc913bc3bc2",
         "title": "Why Railroad Stocks Are Moving Higher Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/m/dbb50989-5ece-3897-80fa-8dc913bc3bc2/why-railroad-stocks-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
+        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
         "type": "STORY"
       },
       {
@@ -7085,11 +7085,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
-        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
-        "publisher": "Zacks",
+        "uuid": "c60edc5e-6f41-3a85-8023-3a659ec26fe8",
+        "title": "BofA Securities Adjusts Price Target on Union Pacific to $262 From $256, Maintains Buy Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
+        "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
         "type": "STORY"
       },
       {
@@ -7101,11 +7101,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c60edc5e-6f41-3a85-8023-3a659ec26fe8",
-        "title": "BofA Securities Adjusts Price Target on Union Pacific to $262 From $256, Maintains Buy Rating",
-        "publisher": "MT Newswires",
+        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
+        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
+        "publisher": "Zacks",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       }
     ],
@@ -7176,18 +7176,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.24,
-        "industryAvg": 25.37
+        "value": 23.31,
+        "industryAvg": 25.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.71,
-        "industryAvg": 5.7
+        "value": 6.73,
+        "industryAvg": 5.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.25,
-        "industryAvg": 4.26
+        "value": 8.27,
+        "industryAvg": 4.3
       },
       {
         "metric": "ROE",

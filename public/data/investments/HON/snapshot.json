@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-10-20T14:08:39.025758+00:00",
+  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-20T14:08:39.025758+00:00",
+    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
     "sections": {
-      "price": "2026-10-20"
+      "price": "2026-10-21"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.0441,
-      "ttmPe": 7.76,
-      "marketCap": 66551061200,
-      "psRatio": 1.84,
-      "pbRatio": 3.59,
-      "pegRatio": 0.09
+      "ttmPe": 7.94,
+      "marketCap": 68056526200,
+      "psRatio": 1.88,
+      "pbRatio": 3.67,
+      "pegRatio": 0.1
     },
     "profitability": {
       "roe": 35.370000000000005,
@@ -6494,25 +6494,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.9,
+      "wacc": 7.95,
       "costOfEquity": 11.5,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 21,
-      "beta": 0.8222,
-      "marketCap": 66551061200
+      "beta": 0.8226,
+      "marketCap": 68056526200
     },
     "beta": {
-      "beta5y": 0.8222
+      "beta5y": 0.8226
     },
     "price": [
-      {
-        "date": "2025-10-20",
-        "open": 201.9842,
-        "high": 203.8128,
-        "low": 201.9644,
-        "close": 203.6547,
-        "volume": 3954795
-      },
       {
         "date": "2025-10-21",
         "open": 203.7634,
@@ -8520,23 +8512,31 @@
         "low": 209.73,
         "close": 213.32,
         "volume": 2238000
+      },
+      {
+        "date": "2026-10-21",
+        "open": 214.93,
+        "high": 215.84,
+        "low": 211.51,
+        "close": 214.73,
+        "volume": 3685000
       }
     ],
     "news": [
-      {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
       {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8596,11 +8596,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "75d38bd4-ebde-3496-88f8-9b8ccd44f07d",
-        "title": "Honeywell International (HON) Up 6.7% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
+        "uuid": "7c53ca89-6899-3d5f-a8b1-a1ed469f6f47",
+        "title": "Argus Research Adjusts Honeywell International Price Target to $250 From $240",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/honeywell-international-hon-6-7-153052103.html",
+        "link": "https://finance.yahoo.com/news/argus-research-adjusts-honeywell-international-120140450.html",
         "type": "STORY"
       }
     ],
@@ -8665,18 +8665,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.76,
-        "industryAvg": 13.17
+        "value": 7.94,
+        "industryAvg": 13.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.84,
-        "industryAvg": 1.54
+        "value": 1.88,
+        "industryAvg": 1.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.59,
-        "industryAvg": 2.91
+        "value": 3.67,
+        "industryAvg": 2.94
       },
       {
         "metric": "ROE",
