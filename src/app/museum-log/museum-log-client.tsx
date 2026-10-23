@@ -1014,7 +1014,7 @@ function MuseumDetailView({
                       {formatShortDate(ex.startDate)} – {ex.endDate ? formatShortDate(ex.endDate) : "Permanent"}
                     </span>
                   </div>
-                  <p className="mlog-small">{ex.blurb}</p>
+                  {ex.blurb && <p className="mlog-small">{ex.blurb}</p>}
                   {ex.sourceUrl && ex.checkedAt && <p className="mlog-meta"><a href={ex.sourceUrl} target="_blank" rel="noopener noreferrer">Museum source</a> · checked {formatDate(ex.checkedAt)}</p>}
                   {ex.ticketed && (
                     <span className="c97-chip mlog-chip-start">
@@ -1391,7 +1391,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             <p className="mlog-meta">
               Curated by {snapshot.curatorName} · updated {lastUpdated}
             </p>
-            <p className="mlog-meta">Selected exhibitions checked {formatDate(MUSEUM_EXHIBITIONS_CHECKED_AT)}.</p>
+            <p className="mlog-meta">Listed exhibitions checked {formatDate(MUSEUM_EXHIBITIONS_CHECKED_AT)}.</p>
           </div>
           {stripBesideTitle && <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />}
         </header>

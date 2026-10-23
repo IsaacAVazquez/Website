@@ -35,7 +35,7 @@ export const selectedMuseumExhibitions: Record<string, MuseumExhibit[]> = {
       startDate: "2026-10-25",
       endDate: "2027-02-27",
       ticketed: false,
-      blurb: "An exhibition on Brancusi and his studio.",
+      blurb: "",
       sourceUrl: "https://press.moma.org/exhibitions/index.html",
       checkedAt: MUSEUM_EXHIBITIONS_CHECKED_AT,
     },

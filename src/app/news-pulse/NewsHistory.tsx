@@ -90,16 +90,16 @@ export function NewsHistory({
       totalCount: 1,
     }));
   const clusters = [...grouped, ...singles];
-  const matching = clusters.filter(
-    (cluster) =>
-      !onlyNew ||
-      cluster.articles.some((article) => {
-        const item = lookup.get(newsArticleKey(article));
-        return item && changed(item);
-      }),
-  );
+  const hasChange = (cluster: (typeof clusters)[number]) =>
+    cluster.articles.some((article) => {
+      const item = lookup.get(newsArticleKey(article));
+      return item && changed(item);
+    });
+  const matching = clusters.filter((cluster) => !onlyNew || hasChange(cluster));
   const shown = matching.slice(0, visibleCount);
-  const newCount = history.filter(changed).length;
+  const newCount = clusters.filter(hasChange).length;
+  const plural = (count: number, word: string) =>
+    `${count} ${word}${count === 1 ? "" : "s"}`;
   return (
     <section
       className="np-section np-history"
@@ -121,10 +121,11 @@ export function NewsHistory({
         )}
       </div>
       <p className="np-muted np-small">
-        Up to {NEWS_HISTORY_DAYS} days of observed headlines. Related stories
-        are grouped by title similarity. Times show when this site observed a
-        headline, and the feeds are checked when someone opens or refreshes this
-        page.
+        This keeps up to {NEWS_HISTORY_DAYS} days of the headlines this site has
+        seen, with related stories grouped by how similar their titles are. The
+        feeds are only checked when someone opens or refreshes this page, so the
+        times show when the site saw a headline and not when the outlet
+        published it.
       </p>
       {previousVisit ? (
         <p className="np-muted np-small">
@@ -149,8 +150,8 @@ export function NewsHistory({
                 <summary>
                   <span>{cluster.representative.title}</span>
                   <span className="np-muted np-small">
-                    {Object.keys(cluster.sources).length} outlets ·{" "}
-                    {cluster.totalCount} headlines
+                    {plural(Object.keys(cluster.sources).length, "outlet")} ·{" "}
+                    {plural(cluster.totalCount, "headline")}
                   </span>
                 </summary>
                 <ol className="np-observations">

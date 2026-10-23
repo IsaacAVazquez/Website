@@ -137,7 +137,7 @@ export function BudgetRepeatingCosts({
                   day {bill.day}
                   {month.expenses.some((e) => e.recurringId === bill.id)
                     ? " · recorded"
-                    : " · unrecorded"}
+                    : " · not recorded yet"}
                 </span>
                 <button
                   className="bp-link"

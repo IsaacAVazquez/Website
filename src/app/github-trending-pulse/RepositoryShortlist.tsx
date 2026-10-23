@@ -72,13 +72,15 @@ export function RepositoryShortlist({
           </ul>
           {missing.map((id) => (
             <p className="gt-muted" key={id}>
-              Repository {id} is outside this snapshot.{" "}
+              A saved repository is no longer in this snapshot, so its details
+              can’t be shown.{" "}
               <button
                 type="button"
                 className="gt-link"
+                aria-label={`Remove saved repository ${id}`}
                 onClick={() => onRemove(id)}
               >
-                Remove saved repository {id}
+                Remove it
               </button>
             </p>
           ))}
@@ -127,8 +129,8 @@ export function RepositoryShortlist({
             <p>Check a saved repository to include it in the comparison.</p>
           )}
           <p className="gt-muted">
-            Activity is the last push recorded in the snapshot. A listed license
-            still needs to be read for your intended use.
+            Last pushed is the most recent push in the snapshot. Read the
+            license itself before relying on it for your use.
           </p>
         </>
       )}

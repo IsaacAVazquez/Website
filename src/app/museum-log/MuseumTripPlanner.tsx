@@ -72,7 +72,7 @@ export function MuseumTripPlanner({
     const updated = addMuseumToTrip(current, museum, day);
     if (museumExhibitsDuring(museum, day, day).length === 0) {
       setMessage(
-        "The selected exhibition is outside that visit date. Choose a date when it is listed as open.",
+        "None of this museum’s listed exhibitions are open on that date. Choose a date when one is open.",
       );
       return;
     }
@@ -100,8 +100,8 @@ export function MuseumTripPlanner({
       {expanded && (
         <div id="museum-trip-fields" className="mlog-trip-body">
           <p className="mlog-meta">
-            These are selected exhibitions with published dates. A missing
-            result means this catalog has no matching listing. Check the
+            This only searches the exhibitions I’ve listed with published
+            dates, so a museum missing here may still have a show on. Check the
             museum’s calendar before booking.
           </p>
           <div className="mlog-trip-fields">
@@ -125,7 +125,7 @@ export function MuseumTripPlanner({
               </select>
             </label>
             <label>
-              Exhibition start date
+              Trip start date
               <input
                 className="c97-field"
                 type="date"
@@ -135,7 +135,7 @@ export function MuseumTripPlanner({
               />
             </label>
             <label>
-              Exhibition end date
+              Trip end date
               <input
                 className="c97-field"
                 type="date"
@@ -179,7 +179,7 @@ export function MuseumTripPlanner({
               Choose a valid start and end date to see matching exhibitions.
             </p>
           ) : matches.length === 0 ? (
-            <p>No selected exhibitions match these dates and this search.</p>
+            <p>None of the listed exhibitions match these dates and this search.</p>
           ) : (
             <ul className="mlog-trip-results">
               {matches.map(({ museum, exhibits }) => (

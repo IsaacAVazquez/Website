@@ -158,7 +158,7 @@ export function WineInventory({
                 <button
                   className="c97-btn-ghost"
                   type="button"
-                  aria-label={`Remove inventory ${bottle.name}`}
+                  aria-label={`Remove ${bottle.name} from inventory`}
                   onClick={() =>
                     saveWineInventory(
                       loadWineInventory().filter(
@@ -178,9 +178,9 @@ export function WineInventory({
         <summary>
           Add {wishlist ? "a wine to the wishlist" : "bottles to the shelf"}
         </summary>
-        <form className="wc-stock-form" onSubmit={add}>
+        <form className="wc-stock-form" aria-label={wishlist ? "New wishlist wine" : "New bottles"} onSubmit={add}>
           <label>
-            Inventory wine name
+            Name
             <input
               className="c97-field"
               required
@@ -190,7 +190,7 @@ export function WineInventory({
             />
           </label>
           <label>
-            Inventory producer
+            Producer
             <input
               className="c97-field"
               maxLength={200}
@@ -199,7 +199,7 @@ export function WineInventory({
             />
           </label>
           <label>
-            Inventory region
+            Region
             <input
               className="c97-field"
               maxLength={200}
@@ -208,7 +208,7 @@ export function WineInventory({
             />
           </label>
           <label>
-            Inventory vintage
+            Vintage
             <input
               className="c97-field"
               type="number"
@@ -219,7 +219,7 @@ export function WineInventory({
             />
           </label>
           <label>
-            Inventory type
+            Type
             <select
               className="c97-field"
               value={type}
