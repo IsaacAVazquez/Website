@@ -1,7 +1,7 @@
 {
   "season": "2026/27",
   "matchday": 10,
-  "generatedAt": "2026-10-23T13:39:37.061Z",
+  "generatedAt": "2026-10-23T20:06:38.786Z",
   "updatedAt": "2026-10-23",
   "sourceLabel": "football-data.org",
   "sourceUrls": {
@@ -107,27 +107,11 @@
       "accentColor": "#D2001C"
     },
     {
-      "id": "ala",
-      "code": "ALA",
-      "name": "Deportivo Alavés",
-      "shortName": "Alavés",
-      "position": 7,
-      "points": 11,
-      "played": 9,
-      "won": 3,
-      "drawn": 2,
-      "lost": 4,
-      "goalsFor": 13,
-      "goalsAgainst": 10,
-      "goalDifference": 3,
-      "accentColor": "#0066B3"
-    },
-    {
       "id": "cel",
       "code": "CEL",
       "name": "RC Celta de Vigo",
       "shortName": "Celta",
-      "position": 8,
+      "position": 7,
       "points": 11,
       "played": 9,
       "won": 2,
@@ -137,6 +121,22 @@
       "goalsAgainst": 7,
       "goalDifference": 3,
       "accentColor": "#8AC3EE"
+    },
+    {
+      "id": "ala",
+      "code": "ALA",
+      "name": "Deportivo Alavés",
+      "shortName": "Alavés",
+      "position": 8,
+      "points": 11,
+      "played": 10,
+      "won": 3,
+      "drawn": 2,
+      "lost": 5,
+      "goalsFor": 13,
+      "goalsAgainst": 11,
+      "goalDifference": 2,
+      "accentColor": "#0066B3"
     },
     {
       "id": "dep",
@@ -299,11 +299,27 @@
       "accentColor": "#00A650"
     },
     {
+      "id": "mal",
+      "code": "MAL",
+      "name": "Málaga CF",
+      "shortName": "Málaga",
+      "position": 19,
+      "points": 7,
+      "played": 10,
+      "won": 1,
+      "drawn": 4,
+      "lost": 5,
+      "goalsFor": 7,
+      "goalsAgainst": 18,
+      "goalDifference": -11,
+      "accentColor": "#0A5EB3"
+    },
+    {
       "id": "val",
       "code": "VAL",
       "name": "Valencia CF",
       "shortName": "Valencia",
-      "position": 19,
+      "position": 20,
       "points": 6,
       "played": 9,
       "won": 1,
@@ -313,22 +329,6 @@
       "goalsAgainst": 15,
       "goalDifference": -9,
       "accentColor": "#EE3524"
-    },
-    {
-      "id": "mal",
-      "code": "MAL",
-      "name": "Málaga CF",
-      "shortName": "Málaga",
-      "position": 20,
-      "points": 4,
-      "played": 9,
-      "won": 0,
-      "drawn": 4,
-      "lost": 5,
-      "goalsFor": 6,
-      "goalsAgainst": 18,
-      "goalDifference": -12,
-      "accentColor": "#0A5EB3"
     }
   ],
   "scorers": [
@@ -729,32 +729,6 @@
   ],
   "upcomingFixtures": [
     {
-      "id": "564719",
-      "utcDate": "2026-10-23T19:00:00Z",
-      "status": "TIMED",
-      "matchday": 10,
-      "stage": "REGULAR_SEASON",
-      "homeTeam": {
-        "id": "263",
-        "name": "Deportivo Alavés",
-        "shortName": "Alavés",
-        "tla": "ALA",
-        "crest": "https://crests.football-data.org/263.png"
-      },
-      "awayTeam": {
-        "id": "84",
-        "name": "Málaga CF",
-        "shortName": "Málaga",
-        "tla": "MAL",
-        "crest": "https://crests.football-data.org/84.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
-    {
       "id": "564718",
       "utcDate": "2026-10-24T12:00:00Z",
       "status": "TIMED",
@@ -929,6 +903,32 @@
         "shortName": "Levante",
         "tla": "LEV",
         "crest": "https://crests.football-data.org/88.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "564723",
+      "utcDate": "2026-10-25T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 10,
+      "stage": "REGULAR_SEASON",
+      "homeTeam": {
+        "id": "81",
+        "name": "FC Barcelona",
+        "shortName": "Barça",
+        "tla": "FCB",
+        "crest": "https://crests.football-data.org/81.png"
+      },
+      "awayTeam": {
+        "id": "86",
+        "name": "Real Madrid CF",
+        "shortName": "Real Madrid",
+        "tla": "RMA",
+        "crest": "https://crests.football-data.org/86.png"
       },
       "score": {
         "winner": null,
@@ -1413,7 +1413,7 @@
         "goalsFor": 12,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "fcb": {
       "team": {
@@ -1708,7 +1708,7 @@
         "goalsFor": 22,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "cel": {
       "team": {
@@ -2003,7 +2003,7 @@
         "goalsFor": 9,
         "goalsAgainst": 3
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "elc": {
       "team": {
@@ -2298,7 +2298,7 @@
         "goalsFor": 6,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "esp": {
       "team": {
@@ -2593,7 +2593,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "get": {
       "team": {
@@ -2888,7 +2888,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "lev": {
       "team": {
@@ -3183,7 +3183,7 @@
         "goalsFor": 10,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "mal": {
       "team": {
@@ -3332,32 +3332,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "564719",
-          "utcDate": "2026-10-23T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 10,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "263",
-            "name": "Deportivo Alavés",
-            "shortName": "Alavés",
-            "tla": "ALA",
-            "crest": "https://crests.football-data.org/263.png"
-          },
-          "awayTeam": {
-            "id": "84",
-            "name": "Málaga CF",
-            "shortName": "Málaga",
-            "tla": "MAL",
-            "crest": "https://crests.football-data.org/84.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "564736",
           "utcDate": "2026-10-31T17:30:00Z",
           "status": "TIMED",
@@ -3461,6 +3435,33 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564769",
+          "utcDate": "2026-12-06T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 15,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "559",
+            "name": "Sevilla FC",
+            "shortName": "Sevilla FC",
+            "tla": "SEV",
+            "crest": "https://crests.football-data.org/559.png"
+          },
+          "awayTeam": {
+            "id": "84",
+            "name": "Málaga CF",
+            "shortName": "Málaga",
+            "tla": "MAL",
+            "crest": "https://crests.football-data.org/84.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -3478,7 +3479,7 @@
         "goalsFor": 5,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "osa": {
       "team": {
@@ -3773,7 +3774,7 @@
         "goalsFor": 5,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "ray": {
       "team": {
@@ -4068,7 +4069,7 @@
         "goalsFor": 8,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "bet": {
       "team": {
@@ -4363,7 +4364,7 @@
         "goalsFor": 11,
         "goalsAgainst": 9
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "rma": {
       "team": {
@@ -4658,7 +4659,7 @@
         "goalsFor": 13,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "rso": {
       "team": {
@@ -4953,7 +4954,7 @@
         "goalsFor": 14,
         "goalsAgainst": 11
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "sev": {
       "team": {
@@ -5248,7 +5249,7 @@
         "goalsFor": 7,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "val": {
       "team": {
@@ -5543,7 +5544,7 @@
         "goalsFor": 5,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "vil": {
       "team": {
@@ -5838,7 +5839,7 @@
         "goalsFor": 7,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "ala": {
       "team": {
@@ -5987,32 +5988,6 @@
       ],
       "upcomingFixtures": [
         {
-          "id": "564719",
-          "utcDate": "2026-10-23T19:00:00Z",
-          "status": "TIMED",
-          "matchday": 10,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "263",
-            "name": "Deportivo Alavés",
-            "shortName": "Alavés",
-            "tla": "ALA",
-            "crest": "https://crests.football-data.org/263.png"
-          },
-          "awayTeam": {
-            "id": "84",
-            "name": "Málaga CF",
-            "shortName": "Málaga",
-            "tla": "MAL",
-            "crest": "https://crests.football-data.org/84.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
-        {
           "id": "564732",
           "utcDate": "2026-10-31T20:00:00Z",
           "status": "TIMED",
@@ -6116,6 +6091,33 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "564770",
+          "utcDate": "2026-12-06T00:00:00Z",
+          "status": "SCHEDULED",
+          "startTimeTbd": true,
+          "matchday": 15,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "263",
+            "name": "Deportivo Alavés",
+            "shortName": "Alavés",
+            "tla": "ALA",
+            "crest": "https://crests.football-data.org/263.png"
+          },
+          "awayTeam": {
+            "id": "80",
+            "name": "RCD Espanyol de Barcelona",
+            "shortName": "Espanyol",
+            "tla": "ESP",
+            "crest": "https://crests.football-data.org/80.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -6133,7 +6135,7 @@
         "goalsFor": 3,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "ath": {
       "team": {
@@ -6428,7 +6430,7 @@
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "dep": {
       "team": {
@@ -6723,7 +6725,7 @@
         "goalsFor": 5,
         "goalsAgainst": 7
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     },
     "san": {
       "team": {
@@ -7018,7 +7020,7 @@
         "goalsFor": 6,
         "goalsAgainst": 17
       },
-      "generatedAt": "2026-10-23T13:39:37.061Z"
+      "generatedAt": "2026-10-23T20:06:38.786Z"
     }
   }
 }
