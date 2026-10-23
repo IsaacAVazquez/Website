@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-10-23T14:18:40.056Z",
+  "generatedAt": "2026-10-23T23:53:42.057Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
-      "name": "Starlink Group 15-15",
-      "flightNumber": 741,
+      "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
+      "name": "Starlink Group 15-16",
+      "flightNumber": 742,
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-23T22:28:53Z",
-      "dateUnix": 1792794533,
-      "dateLocal": "2026-10-23T22:28:53Z",
+      "dateUtc": "2026-10-27T04:45:00Z",
+      "dateUnix": 1793076300,
+      "dateLocal": "2026-10-27T04:45:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -43,15 +43,15 @@
       }
     },
     "nextLaunch": {
-      "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
-      "name": "Starlink Group 15-15",
-      "flightNumber": 741,
+      "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
+      "name": "Starlink Group 15-16",
+      "flightNumber": 742,
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-23T22:28:53Z",
-      "dateUnix": 1792794533,
-      "dateLocal": "2026-10-23T22:28:53Z",
+      "dateUtc": "2026-10-27T04:45:00Z",
+      "dateUnix": 1793076300,
+      "dateLocal": "2026-10-27T04:45:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -83,86 +83,15 @@
       }
     },
     "fallbackLaunch": {
-      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
-      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
-      "flightNumber": 740,
-      "upcoming": false,
-      "success": true,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
-      "dateUtc": "2026-10-20T11:04:00Z",
-      "dateUnix": 1792494240,
-      "dateLocal": "2026-10-20T11:04:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/6337115b056501f2.jpg"
-        ]
-      }
-    },
-    "heroMode": "next",
-    "heroMessage": null,
-    "insights": [
-      {
-        "id": "upcoming",
-        "label": "Upcoming queue",
-        "value": "136",
-        "description": "currently published future SpaceX missions from Launch Library 2"
-      },
-      {
-        "id": "past",
-        "label": "Completed archive",
-        "value": "740",
-        "description": "historical SpaceX launches available from the active provider"
-      },
-      {
-        "id": "success-rate",
-        "label": "Historical success",
-        "value": "98%",
-        "description": "successful SpaceX launches across the published completed record"
-      },
-      {
-        "id": "rocket-families",
-        "label": "Active rockets",
-        "value": "2",
-        "description": "rocket families with pending SpaceX missions in the current feed"
-      }
-    ],
-    "generatedAt": "2026-10-23T14:18:35.719Z"
-  },
-  "upcomingLaunches": [
-    {
       "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
       "name": "Starlink Group 15-15",
       "flightNumber": 741,
-      "upcoming": true,
+      "upcoming": false,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-23T22:28:53Z",
-      "dateUnix": 1792794533,
-      "dateLocal": "2026-10-23T22:28:53Z",
+      "dateUtc": "2026-10-23T22:48:44Z",
+      "dateUnix": 1792795724,
+      "dateLocal": "2026-10-23T22:48:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -193,6 +122,37 @@
         ]
       }
     },
+    "heroMode": "next",
+    "heroMessage": null,
+    "insights": [
+      {
+        "id": "upcoming",
+        "label": "Upcoming queue",
+        "value": "135",
+        "description": "currently published future SpaceX missions from Launch Library 2"
+      },
+      {
+        "id": "past",
+        "label": "Completed archive",
+        "value": "741",
+        "description": "historical SpaceX launches available from the active provider"
+      },
+      {
+        "id": "success-rate",
+        "label": "Historical success",
+        "value": "98%",
+        "description": "successful SpaceX launches across the published completed record"
+      },
+      {
+        "id": "rocket-families",
+        "label": "Active rockets",
+        "value": "2",
+        "description": "rocket families with pending SpaceX missions in the current feed"
+      }
+    ],
+    "generatedAt": "2026-10-23T23:53:35.337Z"
+  },
+  "upcomingLaunches": [
     {
       "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
       "name": "Starlink Group 15-16",
@@ -1112,9 +1072,89 @@
           "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
+    },
+    {
+      "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
+      "name": "Rivada 9",
+      "flightNumber": 785,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
     }
   ],
   "pastLaunches": [
+    {
+      "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+      "name": "Starlink Group 15-15",
+      "flightNumber": 741,
+      "upcoming": false,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-10-23T22:48:44Z",
+      "dateUnix": 1792795724,
+      "dateLocal": "2026-10-23T22:48:44Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://starlink.com",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      }
+    },
     {
       "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
       "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
@@ -2034,59 +2074,19 @@
           "/data/spacex/images/11492e0a09c1640e.jpg"
         ]
       }
-    },
-    {
-      "id": "be8b4b0d-1989-48a5-a96d-e8e4d59ed8b3",
-      "name": "Globalstar 2-R Mission 1 (x 8)",
-      "flightNumber": 717,
-      "upcoming": false,
-      "success": true,
-      "details": "The Globalstar global mobile communications network offers global, digital real time voice, data and fax services via its Low Earth Orbit satellite constellation. The constellation operates in a 1410 km orbit inclined at 52 degrees.\r\n\r\nIn early 2022, Globalstar contracted with MDA for the construction of 17 new 2nd generation refresh satellites to replenish the existing constellation. Rocket Lab is sub-contracted to build the satellites' buses and the launch dispensers.",
-      "dateUtc": "2026-08-16T01:12:14Z",
-      "dateUnix": 1786842734,
-      "dateLocal": "2026-08-16T01:12:14Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Globalstar",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
     }
   ],
   "launchDetails": {
-    "f6af629d-39b5-4f86-bc0c-f8776444a858": {
-      "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
-      "name": "Starlink Group 15-15",
-      "flightNumber": 741,
+    "e2886a96-5ce9-4f45-872f-4e25a00be837": {
+      "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
+      "name": "Starlink Group 15-16",
+      "flightNumber": 742,
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-23T22:28:53Z",
-      "dateUnix": 1792794533,
-      "dateLocal": "2026-10-23T22:28:53Z",
+      "dateUtc": "2026-10-27T04:45:00Z",
+      "dateUnix": 1793076300,
+      "dateLocal": "2026-10-27T04:45:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2102,8 +2102,8 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1qKDzWkEraoJV",
-        "article": "https://www.spacex.com/launches/sl-15-15",
+        "webcast": "https://x.com/i/broadcasts/1mGPaZgYgLDJN",
+        "article": "https://www.spacex.com/launches/sl-15-16",
         "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
         "presskit": null,
         "redditLaunch": null,
@@ -2156,8 +2156,8 @@
       "crew": [],
       "payloads": [
         {
-          "id": "7870",
-          "name": "Starlink Group 15-15",
+          "id": "7872",
+          "name": "Starlink Group 15-16",
           "type": "Communications",
           "customers": [
             "SpaceX"
@@ -2375,116 +2375,16 @@
       "capsules": [],
       "cores": []
     },
-    "3b430f81-0ff1-4d85-8a1a-cef0de326198": {
-      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
-      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
-      "flightNumber": 740,
+    "f6af629d-39b5-4f86-bc0c-f8776444a858": {
+      "id": "f6af629d-39b5-4f86-bc0c-f8776444a858",
+      "name": "Starlink Group 15-15",
+      "flightNumber": 741,
       "upcoming": false,
-      "success": true,
-      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
-      "dateUtc": "2026-10-20T11:04:00Z",
-      "dateUnix": 1792494240,
-      "dateLocal": "2026-10-20T11:04:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/bandwagon25205_mission_patch_20261017042118.png",
-      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1nxeLMddZlEJX",
-        "article": "https://www.spacex.com/launches/bandwagon5",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/bandwagon25205_mission_patch_20261017042118.png",
-        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/bandwagon25205_mission_patch_20261017042118.png",
-        "flickrOriginal": [
-          "/data/spacex/images/6337115b056501f2.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 3600,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/6337115b056501f2.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7715",
-          "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
-          "type": "Dedicated Rideshare",
-          "customers": [
-            "SpaceX"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
-    "e2886a96-5ce9-4f45-872f-4e25a00be837": {
-      "id": "e2886a96-5ce9-4f45-872f-4e25a00be837",
-      "name": "Starlink Group 15-16",
-      "flightNumber": 742,
-      "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-27T04:45:00Z",
-      "dateUnix": 1793076300,
-      "dateLocal": "2026-10-27T04:45:00Z",
+      "dateUtc": "2026-10-23T22:48:44Z",
+      "dateUnix": 1792795724,
+      "dateLocal": "2026-10-23T22:48:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2500,8 +2400,8 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1mGPaZgYgLDJN",
-        "article": "https://www.spacex.com/launches/sl-15-16",
+        "webcast": "https://x.com/i/broadcasts/1qKDzWkEraoJV",
+        "article": "https://www.spacex.com/launches/sl-15-15",
         "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
         "presskit": null,
         "redditLaunch": null,
@@ -2554,8 +2454,8 @@
       "crew": [],
       "payloads": [
         {
-          "id": "7872",
-          "name": "Starlink Group 15-16",
+          "id": "7870",
+          "name": "Starlink Group 15-15",
           "type": "Communications",
           "customers": [
             "SpaceX"
@@ -2675,6 +2575,206 @@
       "capsules": [],
       "cores": []
     },
+    "3cdb9dee-b5cb-406c-bbd1-06a219930fb7": {
+      "id": "3cdb9dee-b5cb-406c-bbd1-06a219930fb7",
+      "name": "Starlink Group 15-21",
+      "flightNumber": 744,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-11-05T05:14:00Z",
+      "dateUnix": 1793855640,
+      "dateLocal": "2026-11-05T05:14:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1aJbdEgvmWaKX",
+        "article": "https://www.spacex.com/launches/sl-15-21",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7881",
+          "name": "Starlink Group 15-21",
+          "type": "Communications",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "3b430f81-0ff1-4d85-8a1a-cef0de326198": {
+      "id": "3b430f81-0ff1-4d85-8a1a-cef0de326198",
+      "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+      "flightNumber": 740,
+      "upcoming": false,
+      "success": true,
+      "details": "Dedicated rideshare flight to a mid-inclination orbit with dozens of small microsatellites and nanosatellites for commercial and government customers.\r\n\r\nThis launch also carries the second demonstration mission for SpaceX’s Project Starfall, which aims to mass-produce reentry capsules designed to autonomously transport valuable customer experiments and other payloads safely back from space to Earth, including for in-orbit manufacturing. \r\n\r\nStarfall is a cylindrical shaped capsule approximately 0.75 meters tall with a diameter of 3.1 meters, weighing approximately 2100 kilograms, and capable of carrying 1000 kilograms of payload. It is designed to be carried on Starship flights.",
+      "dateUtc": "2026-10-20T11:04:00Z",
+      "dateUnix": 1792494240,
+      "dateLocal": "2026-10-20T11:04:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 40",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/bandwagon25205_mission_patch_20261017042118.png",
+      "vehicleImage": "/data/spacex/images/6337115b056501f2.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1nxeLMddZlEJX",
+        "article": "https://www.spacex.com/launches/bandwagon5",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/bandwagon25205_mission_patch_20261017042118.png",
+        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/bandwagon25205_mission_patch_20261017042118.png",
+        "flickrOriginal": [
+          "/data/spacex/images/6337115b056501f2.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 3600,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/6337115b056501f2.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "80",
+        "name": "Space Launch Complex 40",
+        "fullName": "Space Launch Complex 40",
+        "locality": "Cape Canaveral SFS, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7715",
+          "name": "Bandwagon 5 (Dedicated Mid-Inclination Rideshare)",
+          "type": "Dedicated Rideshare",
+          "customers": [
+            "SpaceX"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
     "df88cfbf-f504-4e11-8370-e33dd6280b5b": {
       "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
       "name": "USSF-481",
@@ -2774,106 +2874,6 @@
       ],
       "capsules": [],
       "cores": []
-    },
-    "bf2c3027-a314-403e-a416-2bfd5d165ad1": {
-      "id": "bf2c3027-a314-403e-a416-2bfd5d165ad1",
-      "name": "Dragon CRS-2 SpX-35",
-      "flightNumber": 738,
-      "upcoming": false,
-      "success": true,
-      "details": "35th commercial resupply services mission to the International Space Station operated by SpaceX. The flight will be conducted under the second Commercial Resupply Services contract with NASA.\r\n\r\nCargo Dragon 2 brings supplies and payloads, including critical materials to directly support science and research investigations that occur onboard the orbiting laboratory.",
-      "dateUtc": "2026-10-13T10:33:44Z",
-      "dateUnix": 1791887624,
-      "dateLocal": "2026-10-13T10:33:44Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/5efabdd13dfdeda1.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://www.youtube.com/watch?v=_gdbS1AAkq0",
-        "article": "https://www.spacex.com/launches/crs35",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Resupply_Services#Commercial_Resupply_Services",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": "_gdbS1AAkq0",
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 0,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/5efabdd13dfdeda1.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "6266",
-          "name": "Dragon CRS-2 SpX-35",
-          "type": "Resupply",
-          "customers": [
-            "National Aeronautics and Space Administration"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
     }
   },
   "cadence": {
@@ -2936,10 +2936,10 @@
       {
         "monthKey": "2026-10",
         "label": "Oct 26",
-        "count": 8
+        "count": 9
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-23T14:18:39.678Z"
+    "generatedAt": "2026-10-23T23:53:41.597Z"
   }
 }
