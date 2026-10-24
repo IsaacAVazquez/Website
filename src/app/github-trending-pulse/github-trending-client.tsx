@@ -31,6 +31,10 @@ import { SHORT_DATE_FORMATTER, DATE_ONLY_TIME_ZONE, formatDateTime } from "@/lib
 import "./github-trending-pulse.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useKeepPressedInView } from "@/components/football/useKeepPressedInView";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
+import { REPO_SHORTLIST_KEY, REPO_SHORTLIST_LIMIT, parseRepoShortlist, toggleRepoShortlist } from "./repoShortlist";
+import { RepositoryShortlist } from "./RepositoryShortlist";
 
 interface GitHubTrendingClientProps {
   initialState: GitHubTrendingRouteState;
@@ -160,6 +164,12 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
   }
 
   const segments = getSegments(snapshot, resolvedState.kind);
+  const shortlistRaw = useLocalStorageString(REPO_SHORTLIST_KEY, "[]");
+  const savedIds = parseRepoShortlist(shortlistRaw);
+  function toggleSaved(id: number) {
+    const latest = parseRepoShortlist(readBrowserStorageString(REPO_SHORTLIST_KEY).value);
+    writeBrowserStorageJson(REPO_SHORTLIST_KEY, toggleRepoShortlist(latest, id));
+  }
   const segmentLookup = buildSegmentLookup(snapshot);
   const filteredRepos = sortGitHubTrendingRepositories(
     getReposForSegment(snapshot, resolvedState.kind, resolvedState.segment),
@@ -280,6 +290,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
             </div>
           </div>
 
+          <RepositoryShortlist repositories={snapshot.repositories} ids={savedIds} onRemove={toggleSaved} windowDays={snapshot.windowDays} />
           <LanguageStrip repos={filteredRepos} windowDays={snapshot.windowDays} />
 
           {filteredRepos.length === 0 ? (
@@ -295,6 +306,8 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
               segmentLookup={segmentLookup}
               windowDays={snapshot.windowDays}
               onToggleRepo={toggleRepo}
+              savedIds={savedIds}
+              onToggleSaved={toggleSaved}
             />
           )}
         </div>
@@ -384,6 +397,8 @@ function LanguageStrip({
 }
 
 interface RepositoryTableProps {
+  savedIds: number[];
+  onToggleSaved: (id: number) => void;
   repositories: GitHubTrendingClientRepository[];
   selectedRepoId: number | null;
   segmentLookup: Map<string, GitHubTrendingSegment>;
@@ -398,6 +413,8 @@ interface RepositoryTableProps {
 const TABLE_LIMIT = 25;
 
 function RepositoryTable({
+  savedIds,
+  onToggleSaved,
   repositories,
   selectedRepoId,
   segmentLookup,
@@ -456,6 +473,9 @@ function RepositoryTable({
                   matchedSegments={matchedSegments}
                   windowDays={windowDays}
                   onToggle={() => onToggleRepo(repo.id)}
+                  saved={savedIds.includes(repo.id)}
+                  saveDisabled={!savedIds.includes(repo.id) && savedIds.length >= REPO_SHORTLIST_LIMIT}
+                  onToggleSaved={() => onToggleSaved(repo.id)}
                 />
               );
             })}
@@ -472,6 +492,9 @@ function RepositoryTable({
 }
 
 interface RepoRowProps {
+  saved: boolean;
+  saveDisabled: boolean;
+  onToggleSaved: () => void;
   repo: GitHubTrendingClientRepository;
   rank: number;
   share: number;
@@ -490,7 +513,7 @@ function StarBar({ status, share, className }: { status: string; share: number; 
   );
 }
 
-function RepoRow({ repo, rank, share, isExpanded, matchedSegments, windowDays, onToggle }: RepoRowProps) {
+function RepoRow({ repo, rank, share, isExpanded, matchedSegments, windowDays, onToggle, saved, saveDisabled, onToggleSaved }: RepoRowProps) {
   const detailId = `github-trending-row-${repo.id}`;
 
   return (
@@ -516,6 +539,9 @@ function RepoRow({ repo, rank, share, isExpanded, matchedSegments, windowDays, o
               {repo.fullName}
             </button>
             <p className="gt-desc">{repo.description ?? "No repository description provided."}</p>
+            <button type="button" className="gt-save" aria-label={`Save ${repo.fullName}`} aria-pressed={saved} disabled={saveDisabled}
+              title={saveDisabled ? `The shortlist holds ${REPO_SHORTLIST_LIMIT} repositories` : undefined}
+              onClick={event => { event.stopPropagation(); onToggleSaved(); }}>{saved ? "Saved" : "Save to shortlist"}</button>
             <StarBar status={repo.weeklyStarsStatus} share={share} className="gt-track--inline" />
           </div>
           </div>

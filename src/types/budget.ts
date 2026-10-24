@@ -2,6 +2,8 @@ export interface BudgetCategory {
   id: string;
   name: string;
   budgetedAmount: number;
+  carryForward?: boolean;
+  carriedAmount?: number;
 }
 
 export interface BudgetExpense {
@@ -9,6 +11,15 @@ export interface BudgetExpense {
   categoryId: string;
   amount: number;
   date: string;
+  note: string;
+  recurringId?: string;
+}
+
+export interface BudgetRecurringExpense {
+  id: string;
+  categoryId: string;
+  amount: number;
+  day: number;
   note: string;
 }
 
@@ -18,6 +29,7 @@ export interface BudgetMonth {
   savingsTarget: number;
   categories: BudgetCategory[];
   expenses: BudgetExpense[];
+  recurringExpenses?: BudgetRecurringExpense[];
 }
 
 export type BudgetMonthMap = Record<string, BudgetMonth>;
@@ -27,6 +39,7 @@ export interface BudgetExpenseLine extends BudgetExpense {
 }
 
 export interface BudgetCategorySummary extends BudgetCategory {
+  availableAmount: number;
   spent: number;
   remaining: number;
   utilization: number;

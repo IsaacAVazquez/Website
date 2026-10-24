@@ -25,6 +25,8 @@ export interface MuseumExhibit {
   endDate: string | null; // null = permanent
   blurb: string;
   ticketed: boolean;
+  sourceUrl?: string;
+  checkedAt?: string;
 }
 
 export interface Museum {

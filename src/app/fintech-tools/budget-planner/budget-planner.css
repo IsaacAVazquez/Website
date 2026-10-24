@@ -81,6 +81,18 @@
   gap: var(--c97-sp-1);
 }
 
+.bp-repeat { border-block: 1px solid var(--bp-rule); padding-block: 0.5rem; }
+.bp-repeat summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 700; }
+.bp-repeat-body { display: grid; gap: 0.75rem; padding-block: 0.5rem 1rem; }
+.bp-repeat-body > p { color: var(--bp-ink-2); max-width: 75ch; }
+.bp-repeat-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 0.75rem; align-items: end; }
+.bp-repeat-form label { display: grid; gap: 0.25rem; min-width: 0; }
+.bp-repeat-form .bp-field { width: 100%; min-width: 0; }
+.bp-repeat-list { display: grid; gap: 0.25rem; }
+.bp-repeat-list li { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.bp-carry { display: flex; gap: 0.5rem; align-items: center; min-height: 44px; font-size: 0.8125rem; }
+.bp-carry input { flex: 0 0 auto; width: 18px; height: 18px; }
+
 .bp-title h1 {
   font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
   font-weight: 800;

@@ -4,6 +4,7 @@ import type { NewsArticle } from "@/lib/news-pulse-utils";
 import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
 import { isTimeoutError } from "@/lib/fetchRetry";
 import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
+import { observeNews, parseNewsHistory, newsArticleKey, NEWS_HISTORY_DAYS, type NewsObservation } from "@/lib/newsHistory";
 
 const FETCH_TIMEOUT_MS = 8_000;
 const SUCCESS_TTL_MS = 5 * 60 * 1000;
@@ -21,6 +22,7 @@ export interface NewsPulseFeedResponse {
   dataStatus: "fresh" | "degraded" | "stale-fallback" | "unavailable";
   staleSources?: string[];
   message?: string;
+  history?: NewsObservation[];
 }
 
 interface NewsPulseDataResult {
@@ -60,13 +62,16 @@ interface LastGoodFeed {
 // the feeds that responded without deleting healthy data for a failed feed.
 const lastGoodByFeed = new Map<NewsFeedId, LastGoodFeed>();
 let durableHydrationPromise: Promise<void> | null = null;
+let observationHistory: NewsObservation[] = [];
 
 function hydrateDurableLastGood(): Promise<void> {
   if (durableHydrationPromise) return durableHydrationPromise;
   durableHydrationPromise = (async () => {
-    const saved = await readDurableJson<
-      Partial<Record<NewsFeedId, LastGoodFeed>>
-    >("news-pulse/feeds", DURABLE_LAST_GOOD_MAX_AGE_MS);
+    const [history, saved] = await Promise.all([
+      readDurableJson<unknown>("news-pulse/history", NEWS_HISTORY_DAYS * 24 * 60 * 60 * 1000),
+      readDurableJson<Partial<Record<NewsFeedId, LastGoodFeed>>>("news-pulse/feeds", DURABLE_LAST_GOOD_MAX_AGE_MS),
+    ]);
+    observationHistory = parseNewsHistory(history);
     if (!saved) return;
     for (const feed of NEWS_FEEDS) {
       const value = saved[feed.id];
@@ -138,7 +143,15 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
       // and reach back years, so each feed is cut to its newest items. An
       // undated item has no age to judge, so it stays and sorts last.
       const oldestAllowed = Date.now() - MAX_ARTICLE_AGE_MS;
+      const seenLinks = new Set<string>();
       const recent = articles
+        .sort(byNewest)
+        .filter(article => {
+          const key = newsArticleKey(article);
+          if (seenLinks.has(key)) return false;
+          seenLinks.add(key);
+          return true;
+        })
         .filter(
           (article) =>
             !article.pubDate || getPublishedTime(article) >= oldestAllowed
@@ -154,12 +167,14 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
   );
 
   const articles: NewsArticle[] = [];
+  const observedArticles: NewsArticle[] = [];
   let successfulFeedCount = 0;
   for (const [index, result] of results.entries()) {
     const feed = NEWS_FEEDS[index];
     if (result.status === "fulfilled") {
       successfulFeedCount += 1;
       articles.push(...result.value);
+      observedArticles.push(...result.value);
       lastGoodByFeed.set(feed.id, {
         articles: result.value,
         fetchedAt,
@@ -180,12 +195,11 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
   }
 
   if (successfulFeedCount > 0) {
-    await writeDurableJson(
-      "news-pulse/feeds",
-      Object.fromEntries(lastGoodByFeed) as Partial<
-        Record<NewsFeedId, LastGoodFeed>
-      >
-    );
+    observationHistory = observeNews(observationHistory, observedArticles, fetchedAt);
+    await Promise.all([
+      writeDurableJson("news-pulse/history", observationHistory),
+      writeDurableJson("news-pulse/feeds", Object.fromEntries(lastGoodByFeed) as Partial<Record<NewsFeedId, LastGoodFeed>>),
+    ]);
   }
 
   articles.sort(byNewest);
@@ -195,6 +209,7 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
     fetchedAt,
     errors,
     dataStatus: errors.length > 0 ? "degraded" : "fresh",
+    history: observationHistory,
     ...(staleSources.length > 0 ? { staleSources } : {}),
   };
 
@@ -311,4 +326,5 @@ export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
   cached = null;
   lastGoodByFeed.clear();
   durableHydrationPromise = null;
+  observationHistory = [];
 };
