@@ -10,7 +10,7 @@
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11388"
   },
   "season": 2026,
-  "generatedAt": "2026-10-23T16:58:39.637Z",
+  "generatedAt": "2026-10-24T10:49:15.663Z",
   "defaultMeetingKey": "1297",
   "standingsMeetingKey": "1296",
   "meetings": [
@@ -7883,7 +7883,7 @@
       "gmtOffset": "-05:00:00",
       "startAt": "2026-10-23T17:30:00+00:00",
       "endAt": "2026-10-25T22:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11396",
       "raceStartsAt": "2026-10-25T20:00:00+00:00",
@@ -8658,7 +8658,7 @@
     "season": 2026,
     "totalRaces": 23,
     "completedRaces": 17,
-    "upcomingRaces": 6,
+    "upcomingRaces": 5,
     "sprintWeekends": 6
   },
   "nextMeeting": {
@@ -8676,7 +8676,7 @@
     "gmtOffset": "-05:00:00",
     "startAt": "2026-10-23T17:30:00+00:00",
     "endAt": "2026-10-25T22:00:00+00:00",
-    "status": "upcoming",
+    "status": "live",
     "hasSprint": false,
     "raceSessionKey": "11396",
     "raceStartsAt": "2026-10-25T20:00:00+00:00",
