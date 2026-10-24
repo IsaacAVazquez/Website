@@ -20,7 +20,7 @@ const accessibilityFeatures = [
   },
   {
     title: "Screen reader support",
-    detail: "Compatible with NVDA, JAWS, and VoiceOver. ARIA is used where semantic HTML isn't enough.",
+    detail: "Built for screen readers like NVDA, JAWS, and VoiceOver, with ARIA used where semantic HTML isn't enough. Broader testing across those readers is still in the known limitations on this page.",
   },
   {
     title: "High contrast",
@@ -67,7 +67,7 @@ const assessmentApproach = [
 
 const knownLimitations = [
   "Broader screen reader testing with multiple assistive technologies",
-  "AAA contrast (7:1) for every text element. Primary and secondary meet AAA today, tertiary meets AA",
+  "AAA contrast (7:1) for every text element. Primary and secondary text meet AAA, and tertiary meets AA",
   "More public-facing keyboard shortcut documentation",
 ];
 

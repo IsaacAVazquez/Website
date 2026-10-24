@@ -4,7 +4,7 @@ import { AI_DEV_TOOLS_GENERATED_AT, aiDevTools } from "./ai-dev-tools-data";
 import { AiDevToolsClient } from "./ai-dev-tools-client";
 
 export const metadata = constructMetadata({
-  title: "AI Dev Tool Ecosystem",
+  title: "AI Dev Tool Directory",
   description:
     "Directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and deep-linkable filters.",
   canonicalUrl: "/ai-dev-tools",
@@ -28,7 +28,7 @@ export default async function AiDevToolsPage({ searchParams }: AiDevToolsPagePro
   await searchParams;
   const breadcrumbs = [
     { name: "Home", url: "/" },
-    { name: "AI Dev Tool Ecosystem", url: "/ai-dev-tools" },
+    { name: "AI Dev Tool Directory", url: "/ai-dev-tools" },
   ];
 
   return (
@@ -43,7 +43,7 @@ export default async function AiDevToolsPage({ searchParams }: AiDevToolsPagePro
       <StructuredData
         type="SoftwareApplication"
         data={{
-          name: "AI Dev Tool Ecosystem",
+          name: "AI Dev Tool Directory",
           description:
             "Filterable directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, and release cadence.",
           url: "https://isaacvazquez.com/ai-dev-tools",

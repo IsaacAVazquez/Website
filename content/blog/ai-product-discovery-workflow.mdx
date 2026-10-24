@@ -1,7 +1,8 @@
 ---
 title: "The AI Workflow I Use for Product Discovery, From Weak Signal to Working Spec"
-excerpt: "The parts of product discovery that take the longest are not the hardest ones. Synthesis takes forever not because the analysis is difficult but because you are usually doing it manually across a dozen artifacts. AI compresses that part dramatically, if you use it at the right stages."
+excerpt: "The parts of product discovery that take the longest are not the hardest ones. Synthesis takes forever because you are usually doing it manually across a dozen artifacts. AI compresses that part dramatically, if you use it at the right stages."
 publishedAt: "2026-04-07"
+updatedAt: "2026-10-23"
 category: "Technology"
 tags: ["Product Management", "AI", "Productivity", "Product Discovery", "Workflow"]
 featured: false
@@ -22,9 +23,9 @@ seo:
 
 # The AI Workflow I Use for Product Discovery, From Weak Signal to Working Spec
 
-The parts of product discovery that take the longest are not the hardest ones. Synthesis is slow not because the analysis is difficult but because you are usually doing it manually, reading through interview transcripts, support tickets, usage data, and stakeholder feedback that live in different places and have no common structure. AI compresses that part dramatically, if you use it at the right stages.
+The parts of product discovery that take the longest are not the hardest ones. Synthesis is slow because you are usually doing it manually, reading through interview transcripts, support tickets, usage data, and stakeholder feedback that live in different places and have no common structure. AI compresses that part dramatically, if you use it at the right stages.
 
-What follows is how I actually integrate AI into discovery work. Not as a replacement for the judgment calls that matter, but as a tool that handles the volume and structure so I can spend time on the parts that require genuine thinking.
+What follows is how I actually integrate AI into discovery work. I use it as a tool that handles the volume and structure so I can spend time on the parts that require real thinking, and the judgment calls that matter stay with me.
 
 ## Where AI belongs and where it does not
 
@@ -58,7 +59,7 @@ A useful format I have found is the "job to be done" structure: when someone is 
 
 Once I have a framing I believe, I ask Claude to generate counterarguments. The prompt is: "Here is my problem framing: [framing]. Generate five reasons this framing might be wrong, incomplete, or missing an important part of the picture." The counterarguments are almost always partially right, which means there is almost always refinement to do.
 
-I also ask it to generate alternative framings of the same signal. If the same pattern of user behavior could indicate two different underlying problems, I want to know that before I have committed to a direction. Switching costs in discovery are low. Switching costs after you have built something based on the wrong framing are high.
+I also ask it to generate alternative framings of the same signal. If the same pattern of user behavior could indicate two different underlying problems, I want to know that before I have committed to a direction. Switching costs in discovery are low, and switching costs after you have built something based on the wrong framing are high.
 
 ## Opportunity sizing
 
@@ -70,14 +71,14 @@ Where I do use it is for structuring the analysis and filling in publicly availa
 
 By the time I get to spec drafting, I have a well-defined problem, a point of view on why solving it is worth the investment, and usually some early thinking on what a solution might look like. The drafting work is translating that into a format that engineers, designers, and stakeholders can work from.
 
-AI is genuinely good at this translation. The prompt I use is something like: "Here is my problem framing, opportunity summary, and rough solution direction: [content]. Draft a product spec that covers the problem statement, success metrics, proposed solution, out-of-scope items, and open questions. Write it for an audience of engineers and designers who have not been in the discovery process."
+AI is really good at this translation. The prompt I use is something like: "Here is my problem framing, opportunity summary, and rough solution direction: [content]. Draft a product spec that covers the problem statement, success metrics, proposed solution, out-of-scope items, and open questions. Write it for an audience of engineers and designers who have not been in the discovery process."
 
 The output is never a final spec, but it is a solid structural starting point. I rewrite the problem statement almost every time because the language AI uses is too generic and I want language that reflects what I actually learned from users. The success metrics section usually needs significant work because AI tends toward generic metrics rather than the specific ones that would tell you whether this particular problem is solved for this particular user population.
 
 ## What the workflow actually changes
 
-The honest accounting is that AI has compressed the time I spend on mechanical synthesis from days to hours and from hours to minutes. What it has not changed is how long I spend on the parts that require genuine judgment: deciding which user signals to trust, deciding which problem framing is most accurate, deciding which opportunity is worth the investment, and deciding whether the spec actually captures what we learned.
+The honest accounting is that AI has compressed the time I spend on mechanical synthesis from days to hours and from hours to minutes. What it has not changed is how long I spend on the parts that require real judgment: deciding which user signals to trust, deciding which problem framing is most accurate, deciding which opportunity is worth the investment, and deciding whether the spec actually captures what we learned.
 
-In my experience, those judgment parts are about half the work. AI has made the other half dramatically faster. The result is not that discovery takes half as long. It is that I can do more discovery in the same amount of time, which means decisions get made on better evidence. That is the actual value. It is less glamorous than the productivity narrative but more honest about what changes and what does not.
+In my experience, those judgment parts are about half the work. AI has made the other half dramatically faster. The result is that I can do more discovery in the same amount of time, which means decisions get made on better evidence. That is the actual value. It is less glamorous than the productivity narrative but more honest about what changes and what does not.
 
 If you want the pieces that plug directly into this workflow, [AI-Powered User Research: Turning 10 Interviews into Themes in One Evening](/writing/ai-user-research-synthesis-workflow) covers the synthesis step in more detail, and [Writing Better PRDs with AI: Prompts, Structure, and Common Failure Modes](/writing/ai-prd-writing-prompts-structure) picks up once the discovery signal is strong enough to turn into a spec.

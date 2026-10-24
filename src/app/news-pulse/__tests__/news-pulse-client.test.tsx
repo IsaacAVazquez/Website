@@ -256,7 +256,7 @@ describe("NewsPulseClient", () => {
     }
     expect(within(table).getByRole("rowheader", { name: SOURCE_META.atlantic.name })).toBeInTheDocument();
     expect(
-      screen.getByText(/I read this as directional framing pressure, not article-level sentiment\./),
+      screen.getByText(/I read this as a rough lean in how each outlet frames its headlines, and it doesn't measure the sentiment of whole articles\./),
     ).toBeVisible();
   });
 

@@ -267,7 +267,8 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
               <div className="np-section-head">
                 <h2 id="np-tone-title" className="np-section-title">Tone and density</h2>
                 <p className="np-muted np-small">
-                  I read this as directional framing pressure, not article-level sentiment.
+                  I read this as a rough lean in how each outlet frames its headlines, and it
+                  doesn&apos;t measure the sentiment of whole articles.
                   Higher readability scans faster.
                 </p>
               </div>

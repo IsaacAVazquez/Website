@@ -375,7 +375,7 @@ export const aiDevTools: AiDevTool[] = [
     releaseSummary: "v1.18.33 shipped Sep 28, 2026, a week after v1.18.32.",
     status: "active",
     bestFor: "Terminal-first developers who want open tooling and the widest model surface.",
-    watchOut: "The ecosystem is moving fast, so pin versions for team workflows.",
+    watchOut: "The project is moving fast, so pin versions for team workflows.",
     website: "https://opencode.ai",
     sourceUrls: [
       { label: "Website", url: "https://opencode.ai" },

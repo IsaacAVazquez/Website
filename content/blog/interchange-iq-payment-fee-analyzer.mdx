@@ -2,7 +2,7 @@
 title: "Interchange IQ: Building a Payment Fee Analyzer Around Real Processor Economics"
 excerpt: "I built Interchange IQ to make payment processor comparisons actually legible. It models flat-rate vs. interchange-plus pricing using published interchange data, card mix, and breakeven logic."
 publishedAt: "2026-04-02"
-updatedAt: "2026-10-01"
+updatedAt: "2026-10-23"
 category: "Payments"
 tags: ["Payments", "Interchange", "Fintech Product", "Pricing", "Processor Economics", "Product Strategy", "Next.js"]
 featured: false
@@ -31,41 +31,41 @@ That confusion is not accidental. Processor pricing is full of blended rates, fl
 
 I built Interchange IQ to make that comparison more concrete. The product is designed to answer a practical question. Given your monthly volume, average ticket size, and card mix, how different do processor economics actually look?
 
-## The Problem
+## The problem
 
 For many businesses, processor choice is treated as a branding or convenience decision when it is really a margin decision. The challenge is that the headline price rarely tells the whole story. Flat-rate pricing is easy to understand but can hide meaningful overpayment at scale. Interchange-plus pricing can be cheaper, but it is harder to reason about without the underlying rate structure. Ticket size changes the impact of fixed per-transaction fees, and a debit-heavy business does not behave the same way economically as an Amex-heavy one.
 
-A merchant does not need a theory lecture on payments. They need a model they can manipulate.
+What a merchant needs is a model they can manipulate.
 
-## Why The Tool Starts With Published Interchange Data
+## Why the tool starts with published interchange data
 
 The core product decision was to make the calculator legible from first principles. Interchange IQ uses representative published interchange values and public processor pricing assumptions to show where the costs actually come from. That matters because a comparison tool is much more useful when you can see the difference between network economics, processor markup, volume sensitivity, and ticket-size sensitivity in the same view.
 
 This keeps the product grounded in real payments structure instead of turning it into a black-box recommendation engine. It does not try to predict every custom contract. It gives you a way to understand the shape of the decision and the conditions that change it.
 
-## The Key Product Decisions
+## The product decisions that shaped it
 
 Card mix is where processor comparisons start to become real. A business with a heavy debit profile behaves very differently from one with a premium credit and Amex-heavy mix. Showing only a headline rate would flatten that difference and make the tool less honest. That is why Interchange IQ lets you adjust monthly processing volume, average transaction size, credit-card share, and Amex share within the credit mix. Those inputs turn the product from a static comparison table into a working model.
 
 I also wanted to compare flat-rate and interchange-plus on the same surface rather than implicitly arguing for one before showing the math. Interchange IQ places both options side by side so you can see when simplicity is worth paying for and when it becomes too expensive. A smaller operator may decide flat rate is still the right answer. A larger operator may realize the markup on interchange-plus becomes compelling once volume rises or average ticket size increases.
 
-The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is at what point does the economic logic flip. Breakeven analysis teaches you how the market works, not just what the calculator currently outputs. For how I think about pricing as product work more broadly, see [Treating Pricing as Product Work, Not a Finance-Only Exercise](/writing/pricing-strategy-initiative).
+The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is at what point the economic logic flips. Breakeven analysis teaches you how the market works, which is more useful than any one output from the calculator. For how I think about pricing as product work more broadly, see [Treating Pricing as Product Work, Not a Finance-Only Exercise](/writing/pricing-strategy-initiative).
 
-## How The Experience Works
+## How the experience works
 
-The interface is intentionally direct. Inputs define the business profile. Summary stats show the cheapest current option and monthly fee impact. A ranked comparison table surfaces effective rates and fee outcomes. And explanatory copy clarifies what card mix and pricing models actually mean, because payments products can become abstract very quickly. The structure keeps you oriented around real operating questions. What happens if my volume doubles, what happens if my average ticket falls, how much is flat-rate convenience costing me, when does interchange-plus start to win.
+The interface is intentionally direct. Inputs define the business profile. Summary stats show the cheapest current option and monthly fee impact. A ranked comparison table surfaces effective rates and fee outcomes. And explanatory copy clarifies what card mix and pricing models actually mean, because payments products can become abstract very quickly. The structure keeps you oriented around real operating questions. What happens if my volume doubles, what happens if my average ticket falls, how much is flat-rate convenience costing me, and when does interchange-plus start to win?
 
-## Tradeoffs I Chose On Purpose
+## Tradeoffs I chose on purpose
 
 I made a deliberate call to cover major processors and representative rate assumptions rather than model every private contract or every network nuance. That keeps the experience readable and useful for decision framing without trying to be exhaustive. I also chose to show the math drivers instead of dressing them up as a mysterious score, because in payments a product builds more trust when users can understand the model underneath it. And I included explanations for why debit, credit, and Amex matter differently, because a calculator without explanation only helps people who already know the answer.
 
-## What This Project Taught Me
+## What this project taught me
 
-Payments is a strong product-design domain because so much of the value comes from making complexity legible. The most important lesson here was that comparison products work best when they help users build intuition, not just produce outputs. The breakeven model, the card-mix controls, and the flat-rate versus interchange-plus framing all push in that direction.
+Payments is a strong product-design domain because so much of the value comes from making complexity legible. The most important lesson here was that comparison products work best when they help users build intuition as well as produce outputs. The breakeven model, the card-mix controls, and the flat-rate versus interchange-plus framing all push in that direction.
 
-I came away with a more durable belief about fintech products: users do not always need every edge case modeled. They need enough structure to see how the economics behave and enough clarity to make a better decision than they would have made with marketing pages alone.
+I came away believing that users of fintech products do not always need every edge case modeled. They need enough structure to see how the economics behave and enough clarity to make a better decision than they would have made with marketing pages alone.
 
-## Try The Live Product
+## Try the live product
 
 You can run your own scenarios in [Interchange IQ](/fintech-tools/interchange-iq). The fastest way to understand the product is to keep volume constant, then move average ticket size and card mix around. That exposes how quickly processor economics change once you stop treating the headline rate as the whole story.
 

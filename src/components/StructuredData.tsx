@@ -190,7 +190,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...contactPageData,
           "@type": "ContactPage",
           "name": data.name || `Contact ${siteConfig.name}`,
-          "description": data.description || `Get in touch with ${siteConfig.name} for product management opportunities and consulting engagements.`,
+          "description": data.description || `Get in touch with ${siteConfig.name} about full-time product roles that start after he graduates from Berkeley Haas in May 2027.`,
           "url": data.url || `${siteConfig.url}/contact`,
           "mainEntity": normalizePerson(
             mainEntity || {
