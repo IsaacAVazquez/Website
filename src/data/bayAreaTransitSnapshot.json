@@ -4,8 +4,8 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "10/23/2026 09:57:48 PM PDT",
-      "generatedAt": "2026-10-24T04:57:59.992Z",
+      "feedTime": "10/24/2026 04:31:16 AM PDT",
+      "generatedAt": "2026-10-24T11:31:25.353Z",
       "seed": false
     },
     "heroStats": {
@@ -824,14 +824,14 @@
     "elevator": [
       {
         "id": "elevator-0",
-        "description": "There are 2 elevators out of service at this time: DELN: Station - SF/Berryessa; DUBL: Station",
+        "description": "There are 3 elevators out of service at this time: COLS: Station - Tunnel; DELN: Station - SF/Berryessa; RICH: Station",
         "posted": ""
       }
     ],
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
-      "departures": "fresh"
+      "departures": "stale-fallback"
     },
     "defaultStation": "embr"
   },
