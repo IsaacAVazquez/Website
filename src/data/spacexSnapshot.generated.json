@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T23:26:11.035Z",
+  "generatedAt": "2026-10-25T13:47:19.798Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "135",
+        "value": "136",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-24T23:26:05.649Z"
+    "generatedAt": "2026-10-25T13:47:10.853Z"
   },
   "upcomingLaunches": [
     {
@@ -434,6 +434,46 @@
       }
     },
     {
+      "id": "a9ee8337-127d-4f17-9e3a-a07999f80099",
+      "name": "SDA Tranche 1 Tracking Layer D",
+      "flightNumber": 778,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Tracking Layer D is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
       "name": "Rivada 12",
       "flightNumber": 778,
@@ -474,42 +514,42 @@
       }
     },
     {
-      "id": "fcbc4550-e69e-4458-a9e6-4a5b6b6b15a5",
-      "name": "SDA Tranche 1 Tracking Layer E",
+      "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
+      "name": "Flight 15",
       "flightNumber": 778,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Tracking Layer E is one of five missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Tracking Layer constellation, which will provide global indications, warning, tracking, and targeting of advanced missile threats, including hypersonic missile systems.",
+      "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
       "datePrecision": "quarter",
       "tbd": true,
       "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "rocketName": "Starship V3",
+      "launchpadName": "Orbital Launch Pad 2",
+      "launchpadLocation": "SpaceX Starbase, TX, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 1,
+      "coreCount": 2,
       "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "article": "https://www.spacex.com/vehicles/starship/",
+        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/4bf502ff63e8fce9.jpg"
         ]
       }
     },
@@ -594,42 +634,82 @@
       }
     },
     {
-      "id": "0f867f0c-5422-4d44-93b8-d7faaae7019b",
-      "name": "Flight 15",
+      "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
+      "name": "Rivada 9",
       "flightNumber": 778,
       "upcoming": true,
       "success": null,
-      "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3.",
+      "details": "24 satellites for Rivada's internet constellation.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
+      "datePrecision": "year",
       "tbd": true,
       "net": true,
-      "rocketName": "Starship V3",
-      "launchpadName": "Orbital Launch Pad 2",
-      "launchpadLocation": "SpaceX Starbase, TX, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/4bf502ff63e8fce9.jpg",
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 1,
+      "payloadCount": 24,
       "capsuleCount": 0,
-      "coreCount": 2,
+      "coreCount": 1,
       "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": "https://www.spacex.com/vehicles/starship/",
-        "wikipedia": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "patchSmall": null,
+        "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/4bf502ff63e8fce9.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "7d77bd89-af23-4a5a-b632-de0034003a64",
+      "name": "Rivada 8",
+      "flightNumber": 778,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -834,46 +914,6 @@
       }
     },
     {
-      "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
-      "name": "Rivada 9",
-      "flightNumber": 778,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
       "name": "USSF-75",
       "flightNumber": 778,
@@ -910,46 +950,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      }
-    },
-    {
-      "id": "7d77bd89-af23-4a5a-b632-de0034003a64",
-      "name": "Rivada 8",
-      "flightNumber": 778,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     },
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-24T23:26:10.466Z"
+    "generatedAt": "2026-10-25T13:47:19.231Z"
   }
 }
