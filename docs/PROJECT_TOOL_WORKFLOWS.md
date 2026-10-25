@@ -35,6 +35,18 @@ The trip search reads the exhibition calendar that was read again on October 22,
 
 Repository comparisons use the published snapshot, including its measured, partial, and new-baseline growth labels. A saved repository stays saved if it drops out of the snapshot, and the shortlist says so and has a control to remove it. The comparison reports the snapshot's last push and listed license.
 
+## Frontier workload comparisons on October 24, 2026
+
+I added a workload calculator to Frontier Model Tracker. A visitor enters monthly requests and input and output tokens per request, selects up to four models, and compares their monthly text-token costs. The table shows the monthly total beside the model, followed by the input and output costs and the capability checks. Vision, audio, and reasoning requirements are optional, and the calculator also checks input plus output against the context window and output against its published limit. Missing prices and unpublished limits remain unknown.
+
+The visitor can save up to 20 named comparisons under `frontier-workload-comparisons-v1`. Each record keeps the inputs, model identifiers, save time, and dataset build time. Loading recalculates against the displayed dataset. A model removed from that dataset remains visible as unavailable. The shared browser adapter preserves other tabs' saved records and reports when writes can only remain in memory.
+
+The estimate uses the dataset's dated text-token prices and keeps the page's existing review disclosure. It excludes image and audio charges, tools, caching, batch discounts, usage tiers, taxes, and retries. Entered output includes billed reasoning tokens. Listed modalities describe the catalog's capabilities, so the provider documentation is still needed to confirm a particular input or output format.
+
+The Node 22 full Jest run covered 522 suites and 4,968 tests. Its only failure was the new saved-date formatter missing the required annotation for using the visitor's calendar after hydration. After that was corrected, all 11 focused suites and 78 tests passed, including the date and sitemap checks. Lint, standalone TypeScript, and the production build passed. A deliberately broken missing-price check failed two regression tests, and the original implementation was restored and checked again.
+
+Chromium verified saving and reloading comparisons, capability checks, invalid inputs, the four-model limit, and keyboard navigation. The populated page kept one page heading, one main landmark, and no page-wide overflow at 320, 768, 1024, and 1440 pixels in both themes. The production browser pass reported no application errors, and the contrast sweep found no failures in either theme. The browser retained two framework CSS preload warnings. Firefox and WebKit were not part of this pass.
+
 ## Payment assumptions
 
 I checked the US pricing pages for [Stripe](https://stripe.com/pricing), [Square](https://squareup.com/us/en/payments/our-fees), [Shopify](https://www.shopify.com/pricing), and [PayPal](https://www.paypal.com/us/business/paypal-business-fees) on October 22, 2026. Each flat-rate row links to its source. Square uses the Free plan's checkout and card-present rates. Shopify uses Basic's standard card rates and includes its $29 monthly equivalent when billed annually. PayPal compares Checkout online with Point of Sale card-present payments.

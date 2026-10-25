@@ -31,7 +31,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/enablement-assistant": "2026-10-12",
   "/formula-1": latestIso(readFormula1Lastmod(), "2026-10-12"),
   "/fantasy-formula-1": latestIso(readFormula1Lastmod(), "2026-10-12"),
-  "/frontier-models": latestIso(readFrontierModelsLastmod(), "2026-10-12"),
+  "/frontier-models": latestIso(readFrontierModelsLastmod(), "2026-10-24"),
   "/mba-internship-notifications": "2026-10-12",
   "/mlb": latestIso(readMlbLastmod(), "2026-10-12"),
   "/museum-log": "2026-10-12",
