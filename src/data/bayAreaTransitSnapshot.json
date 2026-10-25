@@ -4,8 +4,8 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "10/24/2026 10:12:18 PM PDT",
-      "generatedAt": "2026-10-25T05:12:18.375Z",
+      "feedTime": "10/25/2026 01:58:47 AM PDT",
+      "generatedAt": "2026-10-25T11:56:44.858Z",
       "seed": false
     },
     "heroStats": {
@@ -52,27 +52,10 @@
         "name": "Daly City to Berryessa/North San Jose",
         "colorName": "Green",
         "hexColor": "#339933",
-        "origin": "DALY",
+        "origin": "UCTY",
         "destination": "BERY",
-        "stationCount": 22,
+        "stationCount": 5,
         "stationSequence": [
-          "DALY",
-          "BALB",
-          "GLEN",
-          "24TH",
-          "16TH",
-          "CIVC",
-          "POWL",
-          "MONT",
-          "EMBR",
-          "WOAK",
-          "LAKE",
-          "FTVL",
-          "COLS",
-          "SANL",
-          "BAYF",
-          "HAYW",
-          "SHAY",
           "UCTY",
           "FRMT",
           "WARM",
@@ -831,7 +814,7 @@
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
-      "departures": "fresh"
+      "departures": "stale-fallback"
     },
     "defaultStation": "embr"
   },
