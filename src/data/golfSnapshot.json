@@ -9,14 +9,14 @@
       "location": "Southampton Parish, Bermuda",
       "startDate": "2026-10-22",
       "endDate": "2026-10-25",
-      "roundLabel": "Round 3",
-      "status": "Round 3 - Play Complete",
+      "roundLabel": "Round 4",
+      "status": "Round 4 - Suspended",
       "completed": true,
       "fieldSize": 120,
       "cutLine": -5,
       "cutState": "made",
       "cutCount": 72,
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "heroStats": {
       "leaderName": "Austin Smotherman",
@@ -42,7 +42,7 @@
           66,
           66
         ],
-        "movement": -7
+        "movement": 0
       },
       {
         "playerId": "seamus-power",
@@ -58,7 +58,7 @@
           64,
           67
         ],
-        "movement": -2
+        "movement": 0
       },
       {
         "playerId": "taylor-moore",
@@ -74,7 +74,7 @@
           68,
           66
         ],
-        "movement": -10
+        "movement": 0
       },
       {
         "playerId": "ben-silverman",
@@ -122,7 +122,7 @@
           67,
           67
         ],
-        "movement": -7
+        "movement": 0
       },
       {
         "playerId": "danny-walker",
@@ -138,7 +138,7 @@
           67,
           70
         ],
-        "movement": 3
+        "movement": 0
       },
       {
         "playerId": "chandler-blanchet",
@@ -154,7 +154,7 @@
           67,
           71
         ],
-        "movement": 5
+        "movement": 0
       },
       {
         "playerId": "chan-kim",
@@ -170,7 +170,7 @@
           72,
           64
         ],
-        "movement": -39
+        "movement": 0
       },
       {
         "playerId": "tom-hoge",
@@ -186,7 +186,7 @@
           67,
           65
         ],
-        "movement": -28
+        "movement": 0
       },
       {
         "playerId": "cam-davis",
@@ -202,7 +202,7 @@
           64,
           67
         ],
-        "movement": -12
+        "movement": 0
       },
       {
         "playerId": "greyson-sigg",
@@ -218,7 +218,7 @@
           64,
           70
         ],
-        "movement": 3
+        "movement": 0
       },
       {
         "playerId": "isaiah-salinda",
@@ -234,7 +234,7 @@
           65,
           67
         ],
-        "movement": -12
+        "movement": 0
       },
       {
         "playerId": "luke-clanton",
@@ -250,7 +250,7 @@
           68,
           66
         ],
-        "movement": -23
+        "movement": 0
       },
       {
         "playerId": "denny-mccarthy",
@@ -266,7 +266,7 @@
           64,
           71
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "david-skinns",
@@ -282,7 +282,7 @@
           63,
           71
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "brice-garnett",
@@ -298,7 +298,7 @@
           70,
           68
         ],
-        "movement": -17
+        "movement": 0
       },
       {
         "playerId": "s-y-noh",
@@ -314,7 +314,7 @@
           67,
           69
         ],
-        "movement": -6
+        "movement": 0
       },
       {
         "playerId": "dylan-wu",
@@ -330,7 +330,7 @@
           68,
           68
         ],
-        "movement": -17
+        "movement": 0
       },
       {
         "playerId": "adrien-dumont-de-chassart",
@@ -346,7 +346,7 @@
           67,
           66
         ],
-        "movement": -46
+        "movement": 0
       },
       {
         "playerId": "kihei-akina",
@@ -362,7 +362,7 @@
           67,
           70
         ],
-        "movement": 4
+        "movement": 0
       },
       {
         "playerId": "rudy-sautron",
@@ -378,7 +378,7 @@
           67,
           67
         ],
-        "movement": -28
+        "movement": 0
       },
       {
         "playerId": "adam-hadwin",
@@ -394,7 +394,7 @@
           64,
           68
         ],
-        "movement": -17
+        "movement": 0
       },
       {
         "playerId": "ben-kohles",
@@ -410,7 +410,7 @@
           68,
           72
         ],
-        "movement": 9
+        "movement": 0
       },
       {
         "playerId": "eric-cole",
@@ -426,7 +426,7 @@
           65,
           74
         ],
-        "movement": 22
+        "movement": 0
       },
       {
         "playerId": "martin-laird",
@@ -442,7 +442,7 @@
           68,
           69
         ],
-        "movement": -9
+        "movement": 0
       },
       {
         "playerId": "jesper-svensson",
@@ -458,7 +458,7 @@
           64,
           71
         ],
-        "movement": 12
+        "movement": 0
       },
       {
         "playerId": "nick-dunlap",
@@ -474,7 +474,7 @@
           66,
           69
         ],
-        "movement": -9
+        "movement": 0
       },
       {
         "playerId": "a-j-ewart",
@@ -490,7 +490,7 @@
           65,
           69
         ],
-        "movement": -9
+        "movement": 0
       },
       {
         "playerId": "david-ford",
@@ -506,7 +506,7 @@
           64,
           68
         ],
-        "movement": -20
+        "movement": 0
       },
       {
         "playerId": "peter-malnati",
@@ -522,7 +522,7 @@
           66,
           68
         ],
-        "movement": -20
+        "movement": 0
       },
       {
         "playerId": "mackenzie-hughes",
@@ -538,7 +538,7 @@
           69,
           71
         ],
-        "movement": 12
+        "movement": 0
       },
       {
         "playerId": "zac-blair",
@@ -554,7 +554,7 @@
           69,
           70
         ],
-        "movement": 2
+        "movement": 0
       },
       {
         "playerId": "hayden-springer",
@@ -570,7 +570,7 @@
           68,
           71
         ],
-        "movement": 11
+        "movement": 0
       },
       {
         "playerId": "trace-crowe",
@@ -586,7 +586,7 @@
           67,
           72
         ],
-        "movement": 21
+        "movement": 0
       },
       {
         "playerId": "kristoffer-ventura",
@@ -602,7 +602,7 @@
           68,
           71
         ],
-        "movement": 11
+        "movement": 0
       },
       {
         "playerId": "davis-thompson",
@@ -618,7 +618,7 @@
           65,
           68
         ],
-        "movement": -29
+        "movement": 0
       },
       {
         "playerId": "ben-martin",
@@ -634,7 +634,7 @@
           70,
           69
         ],
-        "movement": -11
+        "movement": 0
       },
       {
         "playerId": "kensei-hirata",
@@ -650,7 +650,7 @@
           64,
           76
         ],
-        "movement": 33
+        "movement": 0
       },
       {
         "playerId": "neal-shipley",
@@ -666,7 +666,7 @@
           66,
           71
         ],
-        "movement": 11
+        "movement": 0
       },
       {
         "playerId": "lucas-glover",
@@ -698,7 +698,7 @@
           69,
           69
         ],
-        "movement": -11
+        "movement": 0
       },
       {
         "playerId": "mark-hubbard",
@@ -714,7 +714,7 @@
           66,
           72
         ],
-        "movement": 21
+        "movement": 0
       },
       {
         "playerId": "andrew-novak",
@@ -730,7 +730,7 @@
           70,
           72
         ],
-        "movement": 21
+        "movement": 0
       },
       {
         "playerId": "max-mcgreevy",
@@ -746,7 +746,7 @@
           67,
           70
         ],
-        "movement": -1
+        "movement": 0
       },
       {
         "playerId": "rafael-campos",
@@ -762,7 +762,7 @@
           65,
           72
         ],
-        "movement": 21
+        "movement": 0
       },
       {
         "playerId": "willie-mack-iii",
@@ -778,7 +778,7 @@
           66,
           72
         ],
-        "movement": 21
+        "movement": 0
       },
       {
         "playerId": "lee-hodges",
@@ -794,7 +794,7 @@
           70,
           70
         ],
-        "movement": -1
+        "movement": 0
       },
       {
         "playerId": "takumi-kanaya",
@@ -810,7 +810,7 @@
           69,
           69
         ],
-        "movement": -19
+        "movement": 0
       },
       {
         "playerId": "ren-yonezawa",
@@ -826,7 +826,7 @@
           68,
           73
         ],
-        "movement": 31
+        "movement": 0
       },
       {
         "playerId": "joel-dahmen",
@@ -842,7 +842,7 @@
           71,
           70
         ],
-        "movement": -1
+        "movement": 0
       },
       {
         "playerId": "davis-riley",
@@ -858,7 +858,7 @@
           71,
           71
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "rico-hoey",
@@ -874,7 +874,7 @@
           67,
           71
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "davis-chatfield",
@@ -890,7 +890,7 @@
           70,
           71
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "robert-streb",
@@ -906,7 +906,7 @@
           67,
           71
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "emiliano-grillo",
@@ -922,7 +922,7 @@
           69,
           74
         ],
-        "movement": 39
+        "movement": 0
       },
       {
         "playerId": "vince-whaley",
@@ -938,7 +938,7 @@
           69,
           71
         ],
-        "movement": -6
+        "movement": 0
       },
       {
         "playerId": "austin-eckroat",
@@ -954,7 +954,7 @@
           66,
           72
         ],
-        "movement": 12
+        "movement": 0
       },
       {
         "playerId": "chad-ramey",
@@ -970,7 +970,7 @@
           66,
           75
         ],
-        "movement": 36
+        "movement": 0
       },
       {
         "playerId": "jeffrey-kang",
@@ -986,7 +986,7 @@
           68,
           73
         ],
-        "movement": 14
+        "movement": 0
       },
       {
         "playerId": "adam-svensson",
@@ -1002,7 +1002,7 @@
           69,
           73
         ],
-        "movement": 14
+        "movement": 0
       },
       {
         "playerId": "erik-van-rooyen",
@@ -1018,7 +1018,7 @@
           70,
           72
         ],
-        "movement": -4
+        "movement": 0
       },
       {
         "playerId": "paul-peterson",
@@ -1034,7 +1034,7 @@
           65,
           76
         ],
-        "movement": 46
+        "movement": 0
       },
       {
         "playerId": "hank-lebioda",
@@ -1050,7 +1050,7 @@
           68,
           74
         ],
-        "movement": 19
+        "movement": 0
       },
       {
         "playerId": "brendon-todd",
@@ -1066,7 +1066,7 @@
           67,
           73
         ],
-        "movement": 1
+        "movement": 0
       },
       {
         "playerId": "kevin-roy",
@@ -1082,7 +1082,7 @@
           68,
           73
         ],
-        "movement": 1
+        "movement": 0
       },
       {
         "playerId": "jonathan-byrd",
@@ -1098,7 +1098,7 @@
           71,
           75
         ],
-        "movement": 30
+        "movement": 0
       },
       {
         "playerId": "miles-russell",
@@ -1114,7 +1114,7 @@
           70,
           73
         ],
-        "movement": 1
+        "movement": 0
       },
       {
         "playerId": "henrik-norlander",
@@ -1130,7 +1130,7 @@
           69,
           73
         ],
-        "movement": 1
+        "movement": 0
       },
       {
         "playerId": "jeremy-paul",
@@ -1146,7 +1146,7 @@
           67,
           74
         ],
-        "movement": 7
+        "movement": 0
       },
       {
         "playerId": "nick-hardy",
@@ -1162,7 +1162,7 @@
           66,
           77
         ],
-        "movement": 37
+        "movement": 0
       },
       {
         "playerId": "dylan-frittelli",
@@ -1178,7 +1178,7 @@
           66,
           76
         ],
-        "movement": 26
+        "movement": 0
       },
       {
         "playerId": "jimmy-stanger",
@@ -2637,7 +2637,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 37,
+        "movement": 0,
         "nextTeeTime": "8:46 AM EDT"
       },
       "roundByRound": [
@@ -2664,7 +2664,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "denny-mccarthy": {
       "player": {
@@ -2678,7 +2678,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "7:51 AM EDT"
       },
       "roundByRound": [
@@ -2705,7 +2705,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "chad-ramey": {
       "player": {
@@ -2719,7 +2719,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 36,
+        "movement": 0,
         "nextTeeTime": "8:02 AM EDT"
       },
       "roundByRound": [
@@ -2746,7 +2746,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "davis-riley": {
       "player": {
@@ -2760,7 +2760,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "7:40 AM EDT"
       },
       "roundByRound": [
@@ -2787,7 +2787,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "adam-schenk": {
       "player": {
@@ -2823,7 +2823,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "eric-cole": {
       "player": {
@@ -2837,7 +2837,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 22,
+        "movement": 0,
         "nextTeeTime": "6:56 AM EDT"
       },
       "roundByRound": [
@@ -2864,7 +2864,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "hayden-springer": {
       "player": {
@@ -2878,7 +2878,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 11,
+        "movement": 0,
         "nextTeeTime": "6:45 AM EDT"
       },
       "roundByRound": [
@@ -2905,7 +2905,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "aaron-wise": {
       "player": {
@@ -2941,7 +2941,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "jeremy-paul": {
       "player": {
@@ -2955,7 +2955,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "8:46 AM EDT"
       },
       "roundByRound": [
@@ -2982,7 +2982,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "luke-list": {
       "player": {
@@ -3018,7 +3018,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "matthieu-pavon": {
       "player": {
@@ -3054,7 +3054,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "taylor-moore": {
       "player": {
@@ -3068,7 +3068,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -10,
+        "movement": 0,
         "nextTeeTime": "8:46 AM EDT"
       },
       "roundByRound": [
@@ -3095,7 +3095,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "kevin-streelman": {
       "player": {
@@ -3131,7 +3131,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "cam-davis": {
       "player": {
@@ -3145,7 +3145,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -12,
+        "movement": 0,
         "nextTeeTime": "8:13 AM EDT"
       },
       "roundByRound": [
@@ -3172,7 +3172,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "jimmy-stanger": {
       "player": {
@@ -3208,7 +3208,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "austin-smotherman": {
       "player": {
@@ -3222,7 +3222,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -7,
+        "movement": 0,
         "nextTeeTime": "8:46 AM EDT"
       },
       "roundByRound": [
@@ -3249,7 +3249,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "cameron-champ": {
       "player": {
@@ -3285,7 +3285,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "max-greyserman": {
       "player": {
@@ -3321,7 +3321,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "trace-crowe": {
       "player": {
@@ -3335,7 +3335,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 21,
+        "movement": 0,
         "nextTeeTime": "6:45 AM EDT"
       },
       "roundByRound": [
@@ -3362,7 +3362,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "andrew-novak": {
       "player": {
@@ -3376,7 +3376,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 21,
+        "movement": 0,
         "nextTeeTime": "7:18 AM EDT"
       },
       "roundByRound": [
@@ -3403,7 +3403,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "greyson-sigg": {
       "player": {
@@ -3417,7 +3417,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 3,
+        "movement": 0,
         "nextTeeTime": "8:02 AM EDT"
       },
       "roundByRound": [
@@ -3444,7 +3444,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "max-mcgreevy": {
       "player": {
@@ -3458,7 +3458,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -1,
+        "movement": 0,
         "nextTeeTime": "7:18 AM EDT"
       },
       "roundByRound": [
@@ -3485,7 +3485,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "rico-hoey": {
       "player": {
@@ -3499,7 +3499,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "7:40 AM EDT"
       },
       "roundByRound": [
@@ -3526,7 +3526,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "hank-lebioda": {
       "player": {
@@ -3540,7 +3540,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 19,
+        "movement": 0,
         "nextTeeTime": "8:24 AM EDT"
       },
       "roundByRound": [
@@ -3567,7 +3567,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "christo-lamprecht": {
       "player": {
@@ -3603,7 +3603,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "camilo-villegas": {
       "player": {
@@ -3639,7 +3639,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "ryan-brehm": {
       "player": {
@@ -3675,7 +3675,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "aaron-baddeley": {
       "player": {
@@ -3711,7 +3711,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "charley-hoffman": {
       "player": {
@@ -3747,7 +3747,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "brice-garnett": {
       "player": {
@@ -3761,7 +3761,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -17,
+        "movement": 0,
         "nextTeeTime": "7:40 AM EDT"
       },
       "roundByRound": [
@@ -3788,7 +3788,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "martin-laird": {
       "player": {
@@ -3802,7 +3802,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -9,
+        "movement": 0,
         "nextTeeTime": "7:18 AM EDT"
       },
       "roundByRound": [
@@ -3829,7 +3829,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "david-skinns": {
       "player": {
@@ -3843,7 +3843,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "8:02 AM EDT"
       },
       "roundByRound": [
@@ -3870,7 +3870,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "chris-kirk": {
       "player": {
@@ -3884,7 +3884,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -7,
+        "movement": 0,
         "nextTeeTime": "8:24 AM EDT"
       },
       "roundByRound": [
@@ -3911,7 +3911,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "brendon-todd": {
       "player": {
@@ -3925,7 +3925,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 1,
+        "movement": 0,
         "nextTeeTime": "8:35 AM EDT"
       },
       "roundByRound": [
@@ -3952,7 +3952,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "william-mcgirt": {
       "player": {
@@ -3988,7 +3988,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "rafael-campos": {
       "player": {
@@ -4002,7 +4002,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 21,
+        "movement": 0,
         "nextTeeTime": "7:07 AM EDT"
       },
       "roundByRound": [
@@ -4029,7 +4029,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "troy-merritt": {
       "player": {
@@ -4065,7 +4065,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "patton-kizzire": {
       "player": {
@@ -4101,7 +4101,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "s-y-noh": {
       "player": {
@@ -4115,7 +4115,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -6,
+        "movement": 0,
         "nextTeeTime": "7:40 AM EDT"
       },
       "roundByRound": [
@@ -4142,7 +4142,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "kevin-yu": {
       "player": {
@@ -4178,7 +4178,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "kristoffer-ventura": {
       "player": {
@@ -4192,7 +4192,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 11,
+        "movement": 0,
         "nextTeeTime": "6:45 AM EDT"
       },
       "roundByRound": [
@@ -4219,7 +4219,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "willie-mack-iii": {
       "player": {
@@ -4233,7 +4233,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 21,
+        "movement": 0,
         "nextTeeTime": "7:07 AM EDT"
       },
       "roundByRound": [
@@ -4260,7 +4260,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "alejandro-tosti": {
       "player": {
@@ -4296,7 +4296,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "patrick-fishburn": {
       "player": {
@@ -4332,7 +4332,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "john-vanderlaan": {
       "player": {
@@ -4368,7 +4368,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "taylor-montgomery": {
       "player": {
@@ -4404,7 +4404,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "pontus-nyholm": {
       "player": {
@@ -4440,7 +4440,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "lee-hodges": {
       "player": {
@@ -4454,7 +4454,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -1,
+        "movement": 0,
         "nextTeeTime": "7:29 AM EDT"
       },
       "roundByRound": [
@@ -4481,7 +4481,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "vince-whaley": {
       "player": {
@@ -4495,7 +4495,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -6,
+        "movement": 0,
         "nextTeeTime": "8:02 AM EDT"
       },
       "roundByRound": [
@@ -4522,7 +4522,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "jeffrey-kang": {
       "player": {
@@ -4536,7 +4536,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 14,
+        "movement": 0,
         "nextTeeTime": "8:02 AM EDT"
       },
       "roundByRound": [
@@ -4563,7 +4563,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "danny-walker": {
       "player": {
@@ -4577,7 +4577,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 3,
+        "movement": 0,
         "nextTeeTime": "8:24 AM EDT"
       },
       "roundByRound": [
@@ -4604,7 +4604,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "kevin-roy": {
       "player": {
@@ -4618,7 +4618,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 1,
+        "movement": 0,
         "nextTeeTime": "8:35 AM EDT"
       },
       "roundByRound": [
@@ -4645,7 +4645,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "takumi-kanaya": {
       "player": {
@@ -4659,7 +4659,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -19,
+        "movement": 0,
         "nextTeeTime": "7:29 AM EDT"
       },
       "roundByRound": [
@@ -4686,7 +4686,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "dylan-wu": {
       "player": {
@@ -4700,7 +4700,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -17,
+        "movement": 0,
         "nextTeeTime": "7:51 AM EDT"
       },
       "roundByRound": [
@@ -4727,7 +4727,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "matthew-anderson": {
       "player": {
@@ -4763,7 +4763,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "austin-eckroat": {
       "player": {
@@ -4777,7 +4777,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 12,
+        "movement": 0,
         "nextTeeTime": "7:51 AM EDT"
       },
       "roundByRound": [
@@ -4804,7 +4804,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "will-gordon": {
       "player": {
@@ -4840,7 +4840,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "chandler-phillips": {
       "player": {
@@ -4876,7 +4876,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "isaiah-salinda": {
       "player": {
@@ -4890,7 +4890,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -12,
+        "movement": 0,
         "nextTeeTime": "8:02 AM EDT"
       },
       "roundByRound": [
@@ -4917,7 +4917,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "davis-thompson": {
       "player": {
@@ -4931,7 +4931,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -29,
+        "movement": 0,
         "nextTeeTime": "6:56 AM EDT"
       },
       "roundByRound": [
@@ -4958,7 +4958,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "chandler-blanchet": {
       "player": {
@@ -4972,7 +4972,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 5,
+        "movement": 0,
         "nextTeeTime": "8:13 AM EDT"
       },
       "roundByRound": [
@@ -4999,7 +4999,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "ben-martin": {
       "player": {
@@ -5013,7 +5013,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -11,
+        "movement": 0,
         "nextTeeTime": "6:45 AM EDT"
       },
       "roundByRound": [
@@ -5040,7 +5040,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "john-parry": {
       "player": {
@@ -5076,7 +5076,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "ren-yonezawa": {
       "player": {
@@ -5090,7 +5090,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 31,
+        "movement": 0,
         "nextTeeTime": "7:29 AM EDT"
       },
       "roundByRound": [
@@ -5117,7 +5117,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "jesper-svensson": {
       "player": {
@@ -5131,7 +5131,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 12,
+        "movement": 0,
         "nextTeeTime": "6:56 AM EDT"
       },
       "roundByRound": [
@@ -5158,7 +5158,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "camiko-smith": {
       "player": {
@@ -5194,7 +5194,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "nick-dunlap": {
       "player": {
@@ -5208,7 +5208,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -9,
+        "movement": 0,
         "nextTeeTime": "7:18 AM EDT"
       },
       "roundByRound": [
@@ -5235,7 +5235,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "harry-higgs": {
       "player": {
@@ -5271,7 +5271,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "greg-koch": {
       "player": {
@@ -5307,7 +5307,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "kensei-hirata": {
       "player": {
@@ -5321,7 +5321,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 33,
+        "movement": 0,
         "nextTeeTime": "7:07 AM EDT"
       },
       "roundByRound": [
@@ -5348,7 +5348,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "a-j-ewart": {
       "player": {
@@ -5362,7 +5362,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -9,
+        "movement": 0,
         "nextTeeTime": "7:18 AM EDT"
       },
       "roundByRound": [
@@ -5389,7 +5389,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "adrien-dumont-de-chassart": {
       "player": {
@@ -5403,7 +5403,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -46,
+        "movement": 0,
         "nextTeeTime": "7:29 AM EDT"
       },
       "roundByRound": [
@@ -5430,7 +5430,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "ben-james": {
       "player": {
@@ -5466,7 +5466,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "jonathan-byrd": {
       "player": {
@@ -5480,7 +5480,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 30,
+        "movement": 0,
         "nextTeeTime": "8:24 AM EDT"
       },
       "roundByRound": [
@@ -5507,7 +5507,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "aldrich-potgieter": {
       "player": {
@@ -5543,7 +5543,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "nick-jones": {
       "player": {
@@ -5579,7 +5579,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "davis-chatfield": {
       "player": {
@@ -5593,7 +5593,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "7:51 AM EDT"
       },
       "roundByRound": [
@@ -5620,7 +5620,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "david-ford": {
       "player": {
@@ -5634,7 +5634,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -20,
+        "movement": 0,
         "nextTeeTime": "7:07 AM EDT"
       },
       "roundByRound": [
@@ -5661,7 +5661,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "dylan-frittelli": {
       "player": {
@@ -5675,7 +5675,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 26,
+        "movement": 0,
         "nextTeeTime": "8:46 AM EDT"
       },
       "roundByRound": [
@@ -5702,7 +5702,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "neal-shipley": {
       "player": {
@@ -5716,7 +5716,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 11,
+        "movement": 0,
         "nextTeeTime": "6:45 AM EDT"
       },
       "roundByRound": [
@@ -5743,7 +5743,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "miles-russell": {
       "player": {
@@ -5757,7 +5757,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 1,
+        "movement": 0,
         "nextTeeTime": "8:35 AM EDT"
       },
       "roundByRound": [
@@ -5784,7 +5784,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "austin-lemieux": {
       "player": {
@@ -5820,7 +5820,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "luke-clanton": {
       "player": {
@@ -5834,7 +5834,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -23,
+        "movement": 0,
         "nextTeeTime": "8:13 AM EDT"
       },
       "roundByRound": [
@@ -5861,7 +5861,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "kihei-akina": {
       "player": {
@@ -5875,7 +5875,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 4,
+        "movement": 0,
         "nextTeeTime": "7:40 AM EDT"
       },
       "roundByRound": [
@@ -5902,7 +5902,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "mason-howell": {
       "player": {
@@ -5938,7 +5938,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "rudy-sautron": {
       "player": {
@@ -5952,7 +5952,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -28,
+        "movement": 0,
         "nextTeeTime": "7:29 AM EDT"
       },
       "roundByRound": [
@@ -5979,7 +5979,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "virgilio-paz": {
       "player": {
@@ -6015,7 +6015,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "jay-leng": {
       "player": {
@@ -6051,7 +6051,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "nixon-lauritzen": {
       "player": {
@@ -6087,7 +6087,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "adam-hadwin": {
       "player": {
@@ -6101,7 +6101,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -17,
+        "movement": 0,
         "nextTeeTime": "7:51 AM EDT"
       },
       "roundByRound": [
@@ -6128,7 +6128,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "henrik-norlander": {
       "player": {
@@ -6142,7 +6142,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 1,
+        "movement": 0,
         "nextTeeTime": "8:24 AM EDT"
       },
       "roundByRound": [
@@ -6169,7 +6169,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "david-lingmerth": {
       "player": {
@@ -6205,7 +6205,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "robert-streb": {
       "player": {
@@ -6219,7 +6219,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 7,
+        "movement": 0,
         "nextTeeTime": "7:40 AM EDT"
       },
       "roundByRound": [
@@ -6246,7 +6246,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "peter-malnati": {
       "player": {
@@ -6260,7 +6260,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -20,
+        "movement": 0,
         "nextTeeTime": "7:07 AM EDT"
       },
       "roundByRound": [
@@ -6287,7 +6287,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "chan-kim": {
       "player": {
@@ -6301,7 +6301,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -39,
+        "movement": 0,
         "nextTeeTime": "8:24 AM EDT"
       },
       "roundByRound": [
@@ -6328,7 +6328,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "emiliano-grillo": {
       "player": {
@@ -6342,7 +6342,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 39,
+        "movement": 0,
         "nextTeeTime": "7:51 AM EDT"
       },
       "roundByRound": [
@@ -6369,7 +6369,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "seamus-power": {
       "player": {
@@ -6383,7 +6383,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -2,
+        "movement": 0,
         "nextTeeTime": "8:46 AM EDT"
       },
       "roundByRound": [
@@ -6410,7 +6410,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "adam-long": {
       "player": {
@@ -6446,7 +6446,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "c-t-pan": {
       "player": {
@@ -6482,7 +6482,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "tom-hoge": {
       "player": {
@@ -6496,7 +6496,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -28,
+        "movement": 0,
         "nextTeeTime": "8:35 AM EDT"
       },
       "roundByRound": [
@@ -6523,7 +6523,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "joel-dahmen": {
       "player": {
@@ -6537,7 +6537,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -1,
+        "movement": 0,
         "nextTeeTime": "7:18 AM EDT"
       },
       "roundByRound": [
@@ -6564,7 +6564,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "lucas-glover": {
       "player": {
@@ -6605,7 +6605,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "ben-kohles": {
       "player": {
@@ -6619,7 +6619,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 9,
+        "movement": 0,
         "nextTeeTime": "7:29 AM EDT"
       },
       "roundByRound": [
@@ -6646,7 +6646,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "mackenzie-hughes": {
       "player": {
@@ -6660,7 +6660,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 12,
+        "movement": 0,
         "nextTeeTime": "6:56 AM EDT"
       },
       "roundByRound": [
@@ -6687,7 +6687,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "marcelo-rozo": {
       "player": {
@@ -6723,7 +6723,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "chez-reavie": {
       "player": {
@@ -6759,7 +6759,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "bill-haas": {
       "player": {
@@ -6795,7 +6795,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "zecheng-dou": {
       "player": {
@@ -6809,7 +6809,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -11,
+        "movement": 0,
         "nextTeeTime": "6:56 AM EDT"
       },
       "roundByRound": [
@@ -6836,7 +6836,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "ben-silverman": {
       "player": {
@@ -6877,7 +6877,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "zac-blair": {
       "player": {
@@ -6891,7 +6891,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 2,
+        "movement": 0,
         "nextTeeTime": "7:07 AM EDT"
       },
       "roundByRound": [
@@ -6918,7 +6918,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "corey-conners": {
       "player": {
@@ -6959,7 +6959,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "adam-svensson": {
       "player": {
@@ -6973,7 +6973,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 14,
+        "movement": 0,
         "nextTeeTime": "8:13 AM EDT"
       },
       "roundByRound": [
@@ -7000,7 +7000,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "mark-hubbard": {
       "player": {
@@ -7014,7 +7014,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 21,
+        "movement": 0,
         "nextTeeTime": "6:56 AM EDT"
       },
       "roundByRound": [
@@ -7041,7 +7041,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "justin-lower": {
       "player": {
@@ -7077,7 +7077,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "haotong-li": {
       "player": {
@@ -7113,7 +7113,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "erik-van-rooyen": {
       "player": {
@@ -7127,7 +7127,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": -4,
+        "movement": 0,
         "nextTeeTime": "8:13 AM EDT"
       },
       "roundByRound": [
@@ -7154,7 +7154,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "austin-cook": {
       "player": {
@@ -7190,7 +7190,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "tyler-duncan": {
       "player": {
@@ -7226,7 +7226,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "paul-peterson": {
       "player": {
@@ -7240,7 +7240,7 @@
         "today": null,
         "thru": "—",
         "status": "Scheduled",
-        "movement": 46,
+        "movement": 0,
         "nextTeeTime": "8:13 AM EDT"
       },
       "roundByRound": [
@@ -7267,7 +7267,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     },
     "taylor-pendrith": {
       "player": {
@@ -7303,7 +7303,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-25T05:11:49.638Z"
+      "generatedAt": "2026-10-25T11:56:42.524Z"
     }
   }
 }
