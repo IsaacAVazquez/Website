@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-25T19:43:08.083Z",
+  "generatedAt": "2026-10-26T21:40:11.285Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-25T19:43:08.966Z",
+        "accessedAt": "2026-10-26T21:40:11.915Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -4960,7 +4960,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-25T19:43:09.828Z",
+        "accessedAt": "2026-10-26T21:40:12.556Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -10322,7 +10322,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-25T19:43:10.632Z",
+        "accessedAt": "2026-10-26T21:40:13.260Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -15684,7 +15684,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-25T19:43:11.495Z",
+        "accessedAt": "2026-10-26T21:40:14.140Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -20823,7 +20823,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 122,
             "rank": 526,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-25T19:43:11.978Z",
+        "accessedAt": "2026-10-26T21:40:14.754Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -26374,7 +26374,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 122,
             "rank": 547,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-25T19:43:12.721Z",
+        "accessedAt": "2026-10-26T21:40:15.405Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -31754,7 +31754,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 122,
             "rank": 549,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-25T19:43:13.686Z",
+        "accessedAt": "2026-10-26T21:40:16.219Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -37028,7 +37028,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 122,
             "rank": 539,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-25T19:43:14.078Z",
+        "accessedAt": "2026-10-26T21:40:16.823Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42381,7 +42381,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 122,
             "rank": 538,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-25T19:43:14.566Z",
+        "accessedAt": "2026-10-26T21:40:17.237Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -47815,7 +47815,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "CLE",
+            "team": "FA",
             "position": "TE",
             "positionRank": 122,
             "rank": 546,
