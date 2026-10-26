@@ -2,6 +2,7 @@
 title: "Building News Pulse to Compare How Major Outlets Cover the Same Story"
 excerpt: "I built News Pulse because it's surprisingly tedious to compare coverage across outlets in a structured way. Here's the product thinking behind the RSS foundation, the analysis layer, and the deliberate tradeoffs."
 publishedAt: "2026-04-02"
+updatedAt: "2026-10-23"
 category: "Media Analytics"
 tags: ["Media Analytics", "News Product", "RSS", "Sentiment Analysis", "Topic Extraction", "Product Strategy", "Next.js"]
 featured: false
@@ -19,34 +20,34 @@ seo:
 
 If you want to explore the product before reading the breakdown, open [News Pulse Dashboard](/news-pulse).
 
-Reading one publication tells you what happened. Reading several publications tells you how the story is being framed. The gap between those two things is where News Pulse lives.
+Reading one publication tells you what happened. Reading several publications tells you how the story is being framed. News Pulse is built to show the difference between those two things.
 
 I built this project because it is surprisingly tedious to compare coverage across outlets in a structured way. Opening a half-dozen homepages gives you raw exposure, but not much synthesis. You can feel the differences in framing, frequency, and tone, but it takes effort to turn that into something legible. The goal of News Pulse was to make that comparison easier without overengineering the stack.
 
-## The Problem Behind The Product
+## The problem behind the product
 
 People who follow the news closely often want to answer questions that consumer news products are not really designed to answer. They want to know which outlets are covering a story heavily right now, whether the headlines are converging on the same terms or splitting into different frames, whether the tone is mostly urgent or negative or neutral, and how fast a theme spreads across sources. Most consumer news products are designed to deliver articles, not help people analyze editorial patterns. Enterprise media intelligence tools exist, but they are often heavier and more specialized than what this use case needs. That left a good product gap, a lightweight dashboard for comparing how several major outlets are talking about the same news cycle.
 
-## Why RSS Was The Right Foundation
+## Why RSS was the right foundation
 
-The product starts with RSS because RSS is still one of the cleanest ways to capture headline-level editorial output across publishers. That choice shaped the entire build. It kept the data model focused on headlines and feed metadata, avoided a much more fragile scraping workflow, and made update timing easier to reason about. It also allowed the product to stay legible as a portfolio project instead of turning into an infrastructure project. RSS is not glamorous, but it is reliable enough for this problem. That is often the right product decision.
+The product starts with RSS because RSS is still one of the cleanest ways to capture headline-level editorial output across publishers. That choice shaped the entire build. It kept the data model focused on headlines and feed metadata, avoided a much more fragile scraping workflow, and made update timing easier to reason about. It also allowed the product to stay legible as a portfolio project instead of turning into an infrastructure project. RSS is not glamorous, but it is reliable enough for this problem, and picking the reliable option is often the right product decision.
 
-## The Core Decisions And Tradeoffs
+## The core decisions and tradeoffs
 
-News Pulse is not trying to be another article reader. It is organized around three higher-level views (headlines, coverage, and analysis) because the value of the product is comparative, not archival. The user should feel like they are seeing patterns across sources rather than just skimming a merged list of links.
+News Pulse is organized around three higher-level views (headlines, coverage, and analysis) because the value of the product is comparative, not archival, which keeps it from becoming another article reader. The user should feel like they are seeing patterns across sources rather than just skimming a merged list of links.
 
 One of the most deliberate choices in the product was to keep the analysis layer lightweight. The dashboard extracts topics, summarizes source behavior, and performs headline-level sentiment without introducing a large external dependency chain. Headlines are short and structured enough for lightweight heuristics to be useful, the goal is directional media intelligence rather than perfect semantic classification, and keeping the stack lighter makes the product easier to maintain and reason about. This is a case where "good enough and understandable" is better than "technically impressive but hard to trust."
 
 Live feeds are messy. Publishers change formats, feeds fail, and partial outages happen. The product handles that reality by surfacing feed errors without collapsing the whole experience. If one source is unavailable, the dashboard should still tell the truth about what it can show rather than fail silently or imply complete coverage. That is a small but important product choice.
 
-## Why A Dependency-Light Stack Was Worth Protecting
+## Why a dependency-light stack was worth protecting
 
 There is always pressure to make media-analysis products feel more "AI-native" than they need to be. This project pushed me in the opposite direction. I wanted the product to feel sharp, timely, and interpretable without becoming dependent on a chain of external services that would add cost, complexity, and brittleness. For this use case, a lighter stack offered real advantages: faster iteration, clearer system behavior, easier debugging, and a tighter connection between the visible output and the underlying logic. That tradeoff made the project more useful as a product surface and more durable as a codebase.
 
-## What This Project Taught Me
+## What this project taught me
 
-News products become more interesting when they move one step up the abstraction ladder. A feed is useful. A comparative view of editorial patterns is often more useful. This project reinforced a product principle I keep coming back to, which is that if users are already doing synthesis manually, there is probably room to build a better intermediate layer. In this case, that layer is not a full newsroom platform. It is a clean dashboard that makes coverage differences easier to spot. It also reminded me that "lightweight" is not the same as "thin." A product can do meaningful analytical work without pretending every problem requires a giant model stack.
+News products become more interesting when they move one step up the abstraction ladder. A feed is useful. A comparative view of editorial patterns is often more useful. This project reinforced a product principle I keep coming back to, which is that if users are already doing synthesis manually, there is probably room to build a better intermediate layer. In this case, that layer is a clean dashboard that makes coverage differences easier to spot, well short of a full newsroom platform. It also reminded me that "lightweight" is not the same as "thin." A product can do meaningful analytical work without pretending every problem requires a giant model stack.
 
-## Try The Live Product
+## Try the live product
 
 You can explore the full experience at [News Pulse Dashboard](/news-pulse). The easiest way to understand the product is to start on headlines, pick a source, then switch back to the all-sources coverage and analysis views. That transition shows the core point of the project, which is turning separate feeds into a clearer picture of the news cycle.

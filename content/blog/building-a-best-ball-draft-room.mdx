@@ -2,6 +2,7 @@
 title: "Best Ball Is a Different Game, So I Built It a Different Board"
 excerpt: "Best ball looks like redraft with the lineup decisions removed, and building tools for both taught me that resemblance is a trap. The draft is the entire season, Week 17 is the only week that pays, and a board that imports redraft logic will lose politely all summer."
 publishedAt: "2026-08-19"
+updatedAt: "2026-10-23"
 category: "Fantasy Football Analytics"
 tags: ["Best Ball", "Fantasy Football", "Underdog", "Draft Strategy", "ADP", "Week 17", "Fantasy Football 2026"]
 featured: false
@@ -24,7 +25,7 @@ seo:
 
 The tool is live at [the best ball room](/fantasy-football/best-ball) if you want to look before reading.
 
-After I built the [redraft rankings platform](/writing/building-a-fantasy-football-rankings-platform), best ball looked like a small extension. Same players, same scoring families, just no waivers and no lineup setting, so surely the same board with a toggle. I started building it that way, and the further I got the clearer it became that the resemblance is where the mistakes come from. Best ball is a format where the draft is the entire season. Every mistake you would normally fix on the waiver wire in October is instead permanent in August, your roster fills lineups by itself with your best scores each week, and in the big tournaments the season funnels into Week 17, where only the advancing teams are playing for the real money. A board that treats any of that as a footnote is a redraft board wearing a costume.
+After I built the [redraft rankings platform](/writing/building-a-fantasy-football-rankings-platform), best ball looked like a small extension. Same players, same scoring families, just no waivers and no lineup setting, so surely the same board with a toggle. I started building it that way, and the further I got the clearer it became that the resemblance is where the mistakes come from. Best ball is a format where the draft is the entire season. Every mistake you would normally fix on the waiver wire in October is instead permanent in August, your roster fills lineups by itself with your best scores each week, and in the big tournaments the season funnels into Week 17, where only the advancing teams are playing for the real money. A board that treats any of that as a footnote is a redraft board with a best ball label on it.
 
 So best ball got its own snapshot rather than a view over the redraft one, and the differences in what it carries are the argument for the split. It ships consensus rankings alongside Underdog ADP rather than a home-league market, because tournament price discovery happens in that lobby and nowhere else. It carries bye weeks as a first-class field, because in best ball a bye is a guaranteed zero you drafted on purpose, and stacking three receivers on the same bye quietly spends one of your season's weeks before kickoff. And it carries each team's Week 17 opponent, which no redraft tool bothers with, because playoff-week correlation, meaning drafting the quarterback and the opposing receiver who will be in the same building for the week that decides the tournament, is a real edge in large fields and simply is not legible from a generic schedule.
 

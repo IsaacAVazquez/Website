@@ -128,7 +128,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
     description:
-      "Fantasy football platform with snapshot-backed consensus rankings, tier views, scoring toggles, and a manual draft assistant fed by an automated weekly data pipeline.",
+      "Fantasy football platform with snapshot-backed consensus rankings, tier views, scoring toggles, and a manual draft assistant, fed by an automated data pipeline that runs daily from July into early January and weekly the rest of the year.",
     role: "Solo Builder",
     timeline: "2024–2026",
     tools: ["Next.js", "TypeScript", "React", "GitHub Actions"],
@@ -140,7 +140,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a fantasy football platform that combines consensus rankings, tier views, and an automated weekly data refresh into a single workflow.",
+        "I built a fantasy football platform that combines consensus rankings, tier views, and an automated data refresh into a single workflow, with the refresh running daily from July into early January and weekly the rest of the year.",
       impact:
         "Gives players one place to move from raw rankings to draft decisions with less tab-hopping, and keeps data freshness explicit instead of implied.",
     },
@@ -228,7 +228,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "rent-vs-buy-calculator",
     title: "Rent vs. Buy Calculator",
     description:
-      "I built a rent-vs-buy calculator that runs a month-by-month net-worth model, credits the renter the opportunity cost of a buyer's down payment and closing costs, and reports the exact year buying pulls ahead instead of stopping at the monthly payment.",
+      "I built a rent-vs-buy calculator that runs a month-by-month net-worth model, credits the renter the opportunity cost of a buyer's down payment and closing costs, and reports about how many years and months it takes buying to pull ahead, past the point where a monthly payment comparison stops.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "React", "Financial Modeling"],
@@ -239,7 +239,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I created a housing-decision tool that models the full net-worth tradeoff between renting and buying rather than just comparing monthly payments.",
+        "I created a housing-decision tool that models the full net-worth tradeoff between renting and buying, which goes further than comparing monthly payments.",
       impact:
         "Turns one of the most-searched personal finance questions into a transparent break-even year you can pressure-test against your own assumptions.",
     },
@@ -261,7 +261,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "news-pulse-dashboard",
     title: "News Pulse Dashboard",
     description:
-      "Live news media analytics tool aggregating RSS feeds from 6 major outlets. Visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis, all without external dependencies.",
+      "Live news media analytics tool aggregating RSS feeds from 6 major outlets. Visualizes coverage patterns, extracts trending topics, and performs lightweight sentiment analysis, all without an outside NLP service.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "RSS", "Tailwind CSS"],
@@ -360,7 +360,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "food-map",
     title: "Food Map",
     description:
-      "Curated Austin restaurant map for sending friends to the right neighborhood, cuisine, and meal with a single deep-linkable shortlist.",
+      "Curated restaurant map across ten cities, from Austin to Tokyo, filterable by city, curator, and cuisine, for sending friends a single deep-linkable shortlist.",
     role: "Product Builder & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "SVG", "Editorial UX"],
@@ -371,7 +371,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a curated Austin food map that turns my actual go-to restaurant shortlist into a single deep-linkable product surface.",
+        "I built a curated food map across ten cities, from Austin to Tokyo, that puts the restaurants I actually send people to next to Anthony Bourdain's picks and the top-rated spots on Google, all on one deep-linkable map.",
       impact:
         "Replaces the same restaurant text-thread I keep retyping with one shareable link that already filters by neighborhood, cuisine, and meal.",
     },
@@ -536,7 +536,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a Premier League dashboard that packages a checked-in competition snapshot into a deep-linkable product surface for standings, fixtures, and club-level recent-form exploration.",
+        "I built a Premier League dashboard that packages a checked-in competition snapshot into a deep-linkable page for standings, fixtures, and club-level recent form.",
       impact:
         "Turns a scheduled snapshot pipeline into a fast, shareable league exploration tool without a live runtime dependency.",
     },
@@ -558,7 +558,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "frontier-model-tracker",
     title: "Frontier Model Tracker",
     description:
-      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes, built to make AI tier-collapse readable in seconds.",
+      "Curated dashboard of leading large language models with context windows, pricing, modality coverage, and editorial notes, built to show quickly how close the price and capability tiers between models have gotten.",
     role: "Product Designer & Developer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
@@ -588,7 +588,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
   "ai-dev-tool-ecosystem": {
     slug: "ai-dev-tool-ecosystem",
-    title: "AI Dev Tool Ecosystem",
+    title: "AI Dev Tool Directory",
     description:
       "Filterable directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and source links.",
     role: "Product Designer & Developer",
@@ -666,7 +666,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a startup-landscape dashboard that organizes notable private tech companies by sector and funding stage, with valuations, total raised, and a momentum score from a curated snapshot.",
+        "I built a startup dashboard that organizes notable private tech companies by sector and funding stage, with valuations, total raised, and a momentum score from a curated snapshot.",
       impact:
         "Turns scattered funding headlines into a single deep-linkable view, with a transparent as-of date and disclosure rather than implied precision.",
     },
@@ -699,7 +699,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a Formula 1 dashboard that compresses the next Grand Prix, championship tables, and race-by-race context into a single snapshot-driven surface.",
+        "I built a Formula 1 dashboard that puts the next Grand Prix, championship tables, and race-by-race context on a single snapshot-driven page.",
       impact:
         "Turns OpenF1 history into a fast season-state view without forcing fans across separate F1 sites and spreadsheets.",
     },
@@ -732,7 +732,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a Fantasy Formula 1 optimizer that turns the existing OpenF1 snapshot into a practical team-building surface with transparent pricing and projection assumptions.",
+        "I built a Fantasy Formula 1 optimizer that turns the existing OpenF1 snapshot into a practical team-building tool with transparent pricing and projection assumptions.",
       impact:
         "Gives F1 fantasy players a faster way to compare lineup tradeoffs before a race weekend without pretending unofficial model data is official scoring.",
     },
@@ -765,7 +765,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a PGA Tour tournament dashboard that turns a checked-in tournament snapshot into a clean, deep-linkable product surface.",
+        "I built a PGA Tour tournament dashboard that turns a checked-in tournament snapshot into a deep-linkable page.",
       impact:
         "Makes weekend leaderboard scanning, round-by-round movement, and cut-line context legible without juggling separate live sites.",
     },
@@ -798,7 +798,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a global earthquake dashboard that polls the USGS GeoJSON feed every five minutes, falls back to a checked-in snapshot when the feed is down, and turns it into one calm, deep-linkable surface for recent activity, significant events, and regional breakdowns.",
+        "I built a global earthquake dashboard that polls the USGS GeoJSON feed every five minutes, falls back to a checked-in snapshot when the feed is down, and turns that data into one deep-linkable page for recent activity, significant events, and regional breakdowns.",
       impact:
         "Makes the planet's last day of seismic activity legible at a glance, what just moved, what was big enough to matter, and where the ground is busiest, without juggling separate live feeds.",
     },
@@ -831,7 +831,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a 2026 FIFA World Cup dashboard that turns a curated ESPN snapshot into one deep-linkable surface for group standings, the new 32-team knockout bracket, and the full three-country schedule.",
+        "I built a 2026 FIFA World Cup dashboard that turns an ESPN snapshot into one deep-linkable page for group standings, the new 32-team knockout bracket, and the full three-country schedule.",
       impact:
         "Makes the largest World Cup ever legible on a single screen, from group qualifying math to the bracket, without juggling separate live sites.",
     },
@@ -853,7 +853,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "bay-area-transit-pulse",
     title: "Bay Area Transit Pulse",
     description:
-      "Snapshot-backed BART dashboard for the Bay Area with the line map, per-station departure boards, and active service alerts on one deep-linkable screen.",
+      "BART dashboard for the Bay Area that reads the BART public API about once a minute and falls back to a checked-in snapshot, with the line map, per-station departure boards, and active service alerts on one deep-linkable screen.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "BART API", "Snapshot pipeline"],
@@ -864,7 +864,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built a BART dashboard that turns a checked-in snapshot of the BART public API into one page for the line map, the next trains at any station, and live service alerts.",
+        "I built a BART dashboard that reads the BART public API about once a minute while the page is open, falls back to a checked-in snapshot when it can't, and puts the line map, the next trains at any station, and live service alerts on one page.",
       impact:
         "Puts the line map, station departures, and service alerts on a single screen instead of three separate apps.",
     },
@@ -897,7 +897,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built an MLB dashboard that combines division standings, league splits, wild card pressure, and league-wide stat leaders into one snapshot-driven surface.",
+        "I built an MLB dashboard that combines division standings, league splits, wild card pressure, and league-wide stat leaders into one snapshot-driven view.",
       impact:
         "Compresses scattered baseball data into a faster decision surface for tracking races, recent form, and league leaders.",
     },
@@ -963,7 +963,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 
     overview: {
       summary:
-        "I built an NFL dashboard that packages conference standings, division context, playoff pressure, and stat leaders into one snapshot-driven surface.",
+        "I built an NFL dashboard that packages conference standings, division context, playoff pressure, and stat leaders into one snapshot-driven view.",
       impact:
         "Turns NFLverse data into a faster season-state view without forcing fans across standings pages, box scores, and stat tables.",
     },

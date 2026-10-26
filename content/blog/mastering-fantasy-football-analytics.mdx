@@ -2,7 +2,7 @@
 title: "Mastering Fantasy Football Analytics: A Data-Driven Approach to Winning"
 excerpt: "How I think about building analytics into fantasy football decisions. What the useful metrics actually are, where the data comes from, and how to apply it without overcomplicating the process."
 publishedAt: "2025-01-24"
-updatedAt: "2026-10-01"
+updatedAt: "2026-10-23"
 category: "Fantasy Football Analytics"
 tags: ["Fantasy Football", "Data Analytics", "Data Visualization", "Machine Learning", "Sports Analytics", "D3.js", "React", "TypeScript", "Austin Fantasy Football"]
 featured: true
@@ -16,11 +16,11 @@ seo:
 
 # Mastering Fantasy Football Analytics: A Data-Driven Approach to Winning
 
-As a software engineer who's spent years building tools around NFL data, I've had a front-row seat to how analytics has changed fantasy football. When I started playing seriously, the edge you could get from data was mostly about having access to it at all. Now the data is everywhere. The edge is knowing what to do with it.
+As someone who's spent years building tools around NFL data, I've had a front-row seat to how analytics has changed fantasy football. When I started playing seriously, the edge you could get from data was mostly about having access to it at all. Now the data is everywhere, and the edge is knowing what to do with it.
 
-What I've found is that most fantasy analytics fails in one of two directions. Either it stays too shallow (just using box score totals and expert rankings) or it goes too deep into complexity that doesn't actually help you make better decisions. Neither one is useful. The useful stuff lives in the middle, in a handful of metrics that are genuinely predictive, applied consistently, adjusted for context.
+What I've found is that most fantasy analytics fails in one of two directions. Either it stays too shallow (just using box score totals and expert rankings) or it goes too deep into complexity that doesn't actually help you make better decisions. Neither one is useful. The useful stuff lives in the middle, in a handful of metrics that are really predictive, applied consistently and adjusted for context.
 
-## What the Data Actually Tells You
+## What the data actually tells you
 
 The distinction I keep coming back to is opportunity versus efficiency. Opportunity is how many chances a player gets (targets, carries, red zone looks, snap counts). Efficiency is what they do with those chances (catch rate, yards per touch, success rate). Both matter, but they matter differently.
 
@@ -28,7 +28,7 @@ Opportunity metrics tend to be more stable and more predictive of future perform
 
 What this means practically is that I trust opportunity data more than production data when they diverge. A receiver who saw 10 targets and caught 5 for 60 yards is more interesting to me than a receiver who caught 5 for 100 yards on 6 targets, because the first player has a more durable role. The second player's efficiency might regress toward the mean while the first player keeps getting opportunities.
 
-## The Metrics Worth Tracking
+## The metrics worth tracking
 
 Target share is the most reliable metric I've found for evaluating receivers and tight ends. It tells you what percentage of a team's passing attempts go to a specific player. A player with 22 to 25 percent target share on a pass-heavy offense has a floor that most box score analysis misses. In my experience, target share is a better predictor of next week's production than last week's fantasy points.
 
@@ -38,15 +38,15 @@ Snap count percentage is my first screen for any running back or receiver I'm co
 
 Red zone usage is where touchdowns come from, and touchdowns are worth six points. A tight end who draws three or more red zone targets per game is a legitimate weekly option even if his other numbers are unremarkable. I pay particular attention to goal line carries for running backs, the percentage of a team's carries inside the five-yard line. That's where touchdowns get scored, and coaches tend to be consistent about who they trust in that situation.
 
-## Predictive vs. Descriptive Thinking
+## Predictive vs. descriptive thinking
 
 The shift that made the most difference in my analysis was learning to distinguish between metrics that describe what happened and metrics that predict what will happen. They're not the same thing, and treating them as equivalent is one of the more common mistakes in fantasy football analysis.
 
 Touchdowns are largely descriptive. A player who scored four touchdowns in three weeks had a great three weeks. That doesn't tell you much about what happens next, because touchdown rate is highly variable and regresses toward the mean. Target share is predictive. A player who commanded 28 percent of his team's targets for six consecutive weeks is telling you something durable about his role.
 
-Positive regression candidates are players whose predictive numbers are better than their results. A receiver with a 24 percent target share and a 55 percent catch rate but only 9 fantasy points per game is likely outperforming his opportunity on the negative side. He's probably due for better results as long as the opportunity stays stable. Negative regression candidates are the mirror image: players with good results built on unsustainable efficiency or high touchdown rates with modest opportunity numbers. These are the players you want to trade away when their points total looks impressive.
+Positive regression candidates are players whose predictive numbers are better than their results. A receiver with a 24 percent target share and a 55 percent catch rate but only 9 fantasy points per game is likely underperforming his opportunity. He's probably due for better results as long as the opportunity stays stable. Negative regression candidates are the mirror image, meaning players with good results built on unsustainable efficiency or high touchdown rates with modest opportunity numbers. These are the players you want to trade away when their points total looks impressive.
 
-## Consistency and Variance
+## Consistency and variance
 
 I've spent a lot of time thinking about consistency versus ceiling in roster construction, and here is where I've landed. I want consistent players in my core lineup spots and high-variance players in my flex and speculative roster spots.
 
@@ -54,20 +54,20 @@ What I measure as consistency is coefficient of variation, the ratio of a player
 
 For a lineup that needs to beat a specific opponent each week, consistency compounds over time. The team that puts up a reliable 110 points every week will win more matchups than the team that alternates between 80 and 140.
 
-## Applying This in Practice
+## Applying this in practice
 
 The way I've built my process is to track a core set of metrics each week rather than trying to look at everything. On Tuesday, I pull snap count percentages and target distribution from the previous week's games. I'm looking for changes from established patterns, a back who suddenly lost 15 percent of his snaps, or a receiver who saw a jump in red zone targets. Changes in usage pattern are early signals worth investigating.
 
-On Wednesday and Thursday I look at injury reports and update my projections for the coming week. I adjust for matchup (which defenses have been strong against which positions) but I don't let matchup override the underlying opportunity data unless the adjustment is extreme. A defender giving up 30 points per game to running backs this year is a real matchup advantage. A defender ranked 18th versus receivers instead of 12th is noise.
+On Wednesday and Thursday I look at injury reports and update my projections for the coming week. I adjust for matchup (which defenses have been strong against which positions) but I don't let matchup override the underlying opportunity data unless the adjustment is extreme. A defense giving up 30 points per game to running backs this year is a real matchup advantage, while a defense ranked 18th versus receivers instead of 12th is noise.
 
-The data is more available now than it's ever been. NFL Next Gen Stats, Pro Football Reference, and tools like FantasyPros all surface tracking data that used to require a subscription or a scraper. What separates the managers who benefit from this data from those who don't isn't access. It's the discipline to apply it consistently rather than just reaching for it when they feel uncertain about a decision.
+The data is more available now than it's ever been. NFL Next Gen Stats, Pro Football Reference, and tools like FantasyPros all surface tracking data that used to require a subscription or a scraper. What separates the managers who benefit from this data from those who don't is the discipline to apply it consistently rather than just reaching for it when they feel uncertain about a decision.
 
-## What I've Built
+## What I've built
 
-A lot of what drives the analytics features on this site came out of my own frustration with existing tools. I wanted to see tier visualizations that reflected actual value clusters rather than arbitrary rankings, and I wanted them to update as news broke rather than reflecting last week's consensus. Building my [fantasy football board](/fantasy-football), the [draft tracker](/fantasy-football/draft-tracker), and the [weekly rankings board](/fantasy-football/weekly) as a software engineer taught me a lot about what the data can and can't support.
+A lot of what drives the analytics features on this site came out of my own frustration with existing tools. I wanted to see tier visualizations that reflected actual value clusters rather than arbitrary rankings, and I wanted them to update as news broke rather than reflecting last week's consensus. Building my [fantasy football board](/fantasy-football), the [draft tracker](/fantasy-football/draft-tracker), and the [weekly rankings board](/fantasy-football/weekly) taught me a lot about what the data can and can't support.
 
-The tiers I lean on come from FantasyPros expert consensus, which already groups players of roughly interchangeable value into the same tier rather than pretending every ranking slot is a meaningful step down. What I built on top of that is the part I actually care about, which is making the tier breaks obvious, the places on the board where the value genuinely drops. When you can see the tiers clearly, draft decisions become simpler. You're not agonizing over whether the 8th-ranked receiver is better than the 9th-ranked; you're asking whether both of them are in the same tier or a different one, because that is the difference that actually changes what you should do.
+The tiers I lean on come from FantasyPros expert consensus, which already groups players of roughly interchangeable value into the same tier rather than pretending every ranking slot is a meaningful step down. What I built on top of that is the part I actually care about, which is making the tier breaks obvious, the places on the board where the value really drops. When you can see the tiers clearly, draft decisions become simpler. Instead of agonizing over whether the 8th-ranked receiver is better than the 9th-ranked, you're asking whether both of them are in the same tier or a different one, because that is the difference that actually changes what you should do.
 
-That's the application I find most useful: not replacing judgment, but giving judgment a better structure to work within.
+The application I find most useful is giving judgment a better structure to work within, and not replacing it.
 
-I wrote more about the data side of this in [Building AI-Powered Analytics: Lessons from Fantasy Football to Enterprise](/writing/building-ai-powered-analytics-fantasy-football-to-enterprise), and about how scoring format moves positional value in [RB vs WR Draft Strategy: Modeling Positional Value](/writing/rb-vs-wr-draft-strategy-modeling-positional-value).
+I wrote more about the data side of this in [Building AI-Powered Analytics: Lessons from Fantasy Football to Enterprise](/writing/building-ai-powered-analytics-fantasy-football-to-enterprise), and about how scoring format moves positional value in [Fantasy Football Draft Strategy: Modeling RB vs WR Value Across Scoring Systems](/writing/rb-vs-wr-draft-strategy-modeling-positional-value).

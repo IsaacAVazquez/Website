@@ -2,7 +2,7 @@
 title: "2026 March Madness Bracket Analysis: Best Upset Picks, Final Four, and Time Zone Traps"
 excerpt: "My bracket picks for 2026, driven by a model that layers KenPom rankings, seed errors, and time-zone travel penalties to find edges the consensus misses."
 publishedAt: "2026-03-17"
-updatedAt: "2026-04-02"
+updatedAt: "2026-10-23"
 category: "Sports Analytics"
 tags: ["March Madness", "NCAA Tournament", "Sports Analytics", "Bracket Analysis", "KenPom", "Final Four", "Upset Picks"]
 featured: false
@@ -21,13 +21,13 @@ If you want the shortest possible version of this bracket, here it is. Duke is t
 
 You can explore the full interactive bracket here: [March Madness 2026 Bracket Analysis](/march-madness-2026). If you want to skip straight to the strongest calls, open the [best upset picks view](/march-madness-2026?view=picks) or the [time-zone model](/march-madness-2026?view=time-zones).
 
-## Why This Project Exists
+## Why this project exists
 
-Most March Madness content falls into one of two buckets: generic bracket advice that mostly repeats seed-line history, or highly technical analytics that don't translate into an actual picking workflow. I wanted something in between, a product that helps you build a bracket by showing the strongest calls, but also explains the structure underneath those calls.
+Most March Madness content falls into one of two buckets, either generic bracket advice that mostly repeats seed-line history or highly technical analytics that don't translate into an actual picking workflow. I wanted something in between, a product that helps you build a bracket by showing the strongest calls, but also explains the structure underneath those calls.
 
-The key premise is simple. Seed lines are useful, but they are not the answer, because the committee misses teams every year, injuries shift matchups, and travel matters, and in a one-and-done format those small structural edges can matter more than broad brand perception.
+The premise is simple. Seed lines are useful, but they are not the answer, because the committee misses teams every year, injuries shift matchups, and travel matters, and in a one-and-done format those small structural edges can matter more than broad brand perception.
 
-## Best Upset Picks In This Bracket
+## Best upset picks in this bracket
 
 I think UCF over UCLA is the best first-round upset on the board. UCLA takes a full three-time-zone jump from Pacific to Eastern time, which carries a 9% penalty inside this model. The betting spread is already tight enough that the travel hit flips the game cleanly. This is exactly the kind of matchup where the public still sees the brand name and misses the structural disadvantage.
 
@@ -37,36 +37,26 @@ The later-round swing I keep coming back to is Houston over Florida. Houston get
 
 For the full breakdown behind those calls, open the [interactive picks board](/march-madness-2026?view=picks#analysis-workspace).
 
-## Final Four And Champion
+## Final Four and champion
 
 The Final Four is Duke, Michigan, Arizona, and Houston. The champion is Duke.
 
 Duke combines the best blended ranking set across the major public analytics systems, a 0% total travel penalty through its path, and the strongest defensive profile in the field. Arizona reaches the Final Four on a clean Pacific path, then gets hit with a major Pacific-to-Eastern travel penalty in Indianapolis. The short version is that Duke has the best profile with the least friction.
 
-## How The Model Works
+## How the model works
 
 This bracket is built from four inputs layered together. The rankings blend KenPom with BPI, Evan Miya, KPI, NET, SOR, T-Rank, and WAB, which keeps the bracket from overreacting to one system. On top of that sits seed-error analysis. The committee misses every year, and Vanderbilt and St. John's look meaningfully better than their seed lines, while teams like Kansas and Alabama get more credit than the underlying numbers support. Injury context matters most in coin-flip games, where a missing starter or thin rotation can shift the actual signal. And then there is the time-zone layer, which is where this model diverges from most bracket tools.
 
 The time-zone model applies penalties for east-west travel and final-slot games. That is why UCF over UCLA and Gonzaga over Purdue show up as real edges instead of novelty picks. You can inspect each layer directly in the interactive route: [Rankings](/march-madness-2026?view=analytics&analytics=rankings#analysis-workspace), [S-curve seed errors](/march-madness-2026?view=analytics&analytics=s-curve#analysis-workspace), [Injury notes](/march-madness-2026?view=analytics&analytics=injuries#analysis-workspace), and the [Time-zone model](/march-madness-2026?view=time-zones#analysis-workspace).
 
-## Why Time Zones Matter More Than People Admit
+## Why time zones matter more than people admit
 
 A lot of bracket analysis is really ranking analysis in disguise. This project gets more interesting where the rankings are close and the travel burden is not. That is where the time-zone layer earns its place. It does not replace the consensus metrics, but it changes how narrow matchups should be interpreted. In the 2026 field, that shift is large enough to produce cleaner upset logic than seed lines alone would suggest.
 
-## Region Notes
+## Region notes
 
 Duke has the cleanest path in the field and St. John's is the team most likely to ruin a conventional bracket in the East. In the West, Arizona owns the best regional path but Gonzaga over Purdue is the sharpest late-round call because Purdue pays the travel bill in a bad slot. Houston gets the strongest structural edge in the entire bracket because of geography, and Vanderbilt is the underseeded team worth trusting in the South. Michigan has the best defensive route through the Midwest, and Alabama's defense is too weak to survive deep into the bracket.
 
-## FAQ
-
-**What is the best first-round upset pick?** UCF over UCLA. The travel penalty is large enough to change the game rather than merely tighten it.
-
-**Who wins the championship?** Duke wins the title because the team combines the best metrics with the cleanest travel path.
-
-**Why does this bracket look different from chalk?** Because it treats seed lines as one input, not the answer. The committee can miss, injuries matter, and travel changes real game conditions.
-
-**What should I open first in the interactive page?** Start with the [picks view](/march-madness-2026?view=picks#analysis-workspace) if you want actionable calls, or the [time-zone view](/march-madness-2026?view=time-zones#analysis-workspace) if you want to understand why the bracket diverges from consensus.
-
-## Try The Interactive Bracket
+## Try the interactive bracket
 
 You can explore the full project at [March Madness 2026 Bracket Analysis](/march-madness-2026). If you only have a minute, open the [picks view](/march-madness-2026?view=picks#analysis-workspace) for the strongest bracket calls. If you want to understand what makes this project different from standard bracket content, go straight to the [time-zone model](/march-madness-2026?view=time-zones#analysis-workspace).

@@ -96,14 +96,15 @@ export function pointsLadder(
     mark.labelY = labelYs[i];
   });
 
-  const byPosition = new Map(sorted.map((row) => [row.position, row] as const));
   const afterPositions = [...new Set([4, 5, 6, clubCount - 3])]
     .filter((afterPosition) => afterPosition >= 1 && afterPosition < clubCount)
     .sort((a, b) => a - b);
 
+  // Zone lines sit between table slots by rank, since a published table can
+  // share a position between tied clubs (two at 16th, none at 17th).
   const lines: PointsLadderZoneLine[] = afterPositions.map((afterPosition) => {
-    const above = byPosition.get(afterPosition)!;
-    const below = byPosition.get(afterPosition + 1)!;
+    const above = sorted[afterPosition - 1];
+    const below = sorted[afterPosition];
     return {
       afterPosition,
       y: (yFor(above.points) + yFor(below.points)) / 2,

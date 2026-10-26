@@ -5,7 +5,7 @@ import { SearchInterfaceClient } from "@/components/search/SearchInterface.clien
 
 export const metadata: Metadata = constructMetadata({
   title: "Search",
-  description: "Search across case studies, writing, and tools covering product strategy, QA engineering, fantasy football analytics, and fintech tooling.",
+  description: "Search across the pages, writing, and tools on this site, covering product strategy, QA engineering, fantasy football analytics, and fintech tooling.",
   canonicalUrl: "/search",
   dateModified: "2025-02-05",
   noIndex: true,
@@ -44,7 +44,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             Search my portfolio, writing, and tools.
           </h1>
           <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxWidth: "var(--c97-measure-wide)" }}>
-            This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a full site index.
+            This is a lightweight search over the main pages, the writing, and the tools. It is useful for getting around the site, though it doesn&apos;t index every page.
           </p>
         </div>
       </section>

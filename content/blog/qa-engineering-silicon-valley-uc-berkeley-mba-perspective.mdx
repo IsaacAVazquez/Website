@@ -2,7 +2,7 @@
 title: "QA Engineering in Silicon Valley: Insights from a UC Berkeley MBA Perspective"
 excerpt: "What changes about QA engineering when you work in Silicon Valley and go to business school at the same time. On moving from Austin civic tech to Bay Area speed, what the MBA actually changed about how I argue for quality work, and why the stakeholder problem is harder than the technical one."
 publishedAt: "2025-01-24"
-updatedAt: "2026-10-01"
+updatedAt: "2026-10-23"
 category: "QA Engineering"
 tags: ["QA Engineering", "Silicon Valley", "UC Berkeley", "MBA", "Bay Area", "Software Testing", "Quality Assurance", "Business Strategy", "Innovation", "Tech Culture"]
 featured: true
@@ -18,7 +18,7 @@ seo:
 
 # QA Engineering in Silicon Valley: Insights from a UC Berkeley MBA Perspective
 
-Silicon Valley companies don't just move faster than most tech markets. They move fast in a way that changes what quality assurance actually means. When deployments happen multiple times a day, when A/B tests run continuously across millions of users, when page load time is treated as a product feature rather than an engineering footnote, QA stops being a gatekeeper function and becomes part of how the organization learns.
+Silicon Valley companies move faster than most tech markets, and they move fast in a way that changes what quality assurance actually means. When deployments happen multiple times a day, when A/B tests run continuously across millions of users, when page load time is treated as a product feature rather than an engineering footnote, QA stops being a gatekeeper function and becomes part of how the organization learns.
 
 I've been thinking about this intersection a lot, working as a QA engineer while pursuing an MBA at UC Berkeley's Haas School of Business. The two experiences inform each other in ways I didn't fully anticipate going in.
 
@@ -26,34 +26,34 @@ I've been thinking about this intersection a lot, working as a QA engineer while
 
 Before the Bay Area, I spent time in Austin's civic tech scene. The contrast between the two environments is real, and it shaped how I think about where QA fits inside an organization.
 
-Austin's tech culture tends to be collaborative and community-oriented. Quality in that context means something close to stewardship. The work exists in service of the people using it, and the pace reflects that. There's something genuinely sustainable about it.
+Austin's tech culture tends to be collaborative and community-oriented. Quality in that context means something close to stewardship. The work exists in service of the people using it, and the pace reflects that. There's something really sustainable about it.
 
-Silicon Valley compresses time. The competitive pressure to ship faster means testing strategies that feel thorough in another context can feel like a bottleneck here. As I wrote in [How QA Automation Enables Daily Deploys](/writing/qa-automation-daily-deploys), the most effective QA engineers I've seen in the Bay Area don't just catch bugs. They make it safe to move fast, which is a meaningfully different skill than finding defects.
+Silicon Valley compresses time. The competitive pressure to ship faster means testing strategies that feel thorough in another context can feel like a bottleneck here. As I wrote in [Moving to Biweekly Releases by Treating QA as a Reusable System](/writing/qa-automation-daily-deploys), the most effective QA engineers I've seen in the Bay Area catch bugs and also make it safe to move fast, which is a meaningfully different skill than finding defects.
 
 What I've carried from Austin is the orientation toward the end user. What Silicon Valley pushed me to develop is the ability to operate at speed without sacrificing signal for noise.
 
-## What the MBA Changed
+## What the MBA changed
 
-Business school gave me a different vocabulary for something I already believed, that quality engineering is a business function, not just a technical one.
+Business school gave me a different vocabulary for something I already believed, that quality engineering is a business function as much as a technical one.
 
 Before Haas, I could explain why finding a bug before production was better than finding it after. After Haas, I can build the financial case for a QA investment and present it to someone who doesn't care about testing frameworks. The argument looks different depending on the audience. Direct cost savings from prevented bugs are the easy part to quantify. The more compelling case involves revenue protection through customer retention, faster feature delivery as a competitive lever, and the strategic value of having reliable infrastructure when you want to move quickly.
 
 That shift in framing has made me more effective at getting buy-in for QA work. Engineers already understand why tests matter. Product managers and executives need a different argument, and it helps to speak their language.
 
-## How Bay Area Companies Actually Approach QA
+## How Bay Area companies actually approach QA
 
-The practices that have spread outward from the largest tech companies here reflect their specific constraints. Google treats test engineers as software engineers first. Meta built continuous deployment with automated rollback as a default assumption. Netflix took chaos engineering seriously enough to turn it into a discipline. These aren't arbitrary choices. They're adaptations to enormous scale, extremely high deployment frequency, and the organizational reality that manual testing can't keep pace.
+The practices that have spread outward from the largest tech companies here reflect their specific constraints. Google treats test engineers as software engineers first. Meta built continuous deployment with automated rollback as a default assumption. Netflix took chaos engineering seriously enough to turn it into a discipline. These are adaptations to enormous scale, extremely high deployment frequency, and the organizational reality that manual testing can't keep pace.
 
 For smaller companies, the translation isn't always direct. The most useful things to absorb are the underlying principles. Shift testing left in the development process. Automate the high-frequency checks. Use real data to decide what to test and when. Treat performance and reliability as first-class product attributes, not afterthoughts.
 
-AI tooling is becoming a meaningful part of the picture in the Bay Area. Visual regression testing powered by image comparison, test case generation that uses ML to surface scenario gaps, bug prediction models that analyze code changes before tests even run. As I wrote in [AI in Software Testing: The Future of Quality Assurance](/writing/ai-in-software-testing-future-of-qa), these aren't fully mature yet, but they're no longer experimental either. Knowing how to evaluate and integrate these tools is increasingly part of what it means to be a senior QA engineer here.
+AI tooling is becoming a meaningful part of the picture in the Bay Area. That includes visual regression testing powered by image comparison, test case generation that uses ML to surface scenario gaps, and bug prediction models that analyze code changes before tests even run. As I wrote in [AI in Software Testing: The Future of Quality Assurance](/writing/ai-in-software-testing-future-of-qa), these aren't fully mature yet, but they're no longer experimental either. Knowing how to evaluate and integrate these tools is increasingly part of what it means to be a senior QA engineer here.
 
-## The Stakeholder Problem
+## The stakeholder problem
 
 One of the skills I underestimated before the MBA is stakeholder management in a QA leadership context.
 
-Engineering teams are generally the easier audience. If you can show them that a test caught a real bug, you've made the case. The harder conversation is with leadership, which needs to understand why quality initiatives deserve funding over other investments. That conversation requires translating test coverage and defect rates into business outcomes, presenting risk in terms that resonate at a strategic level, and making the case that QA is not a tax on velocity but a precondition for it.
+Engineering teams are generally the easier audience. If you can show them that a test caught a real bug, you've made the case. The harder conversation is with leadership, which needs to understand why quality initiatives deserve funding over other investments. That conversation requires translating test coverage and defect rates into business outcomes, presenting risk in terms that matter at a strategic level, and making the case that QA is a precondition for velocity.
 
-I think the QA professionals who will thrive in the Bay Area over the next decade are the ones who can hold both of those conversations at the same time. Technical depth that earns trust from engineers, and business fluency that earns investment from leadership. The two aren't in conflict. They're just different muscles, and most people only develop one of them.
+I think the QA professionals who will thrive in the Bay Area over the next decade are the ones who can hold both of those conversations at the same time. That means technical depth that earns trust from engineers and business fluency that earns investment from leadership, and the two aren't in conflict, since they're different muscles and most people only develop one of them.
 
-I wrote up how I build a QA practice in [The Complete Guide to Modern QA Engineering](/writing/complete-guide-qa-engineering), and my background from Civitech onward is on the [about page](/about) and my [résumé](/resume).
+I wrote up how I build a QA practice in [QA Engineering: Building Quality into Software Development](/writing/complete-guide-qa-engineering), and my background from Civitech onward is on the [about page](/about) and my [résumé](/resume).

@@ -2,6 +2,7 @@
 title: "Building a Polling Aggregator That Shows Where the Cycle Actually Sits"
 excerpt: "I built a polling aggregator to combine presidential approval, the generic ballot, and the competitive 2026 races into one deep-linkable view instead of scattered single-state pages."
 publishedAt: "2026-06-17"
+updatedAt: "2026-10-23"
 category: "Politics"
 tags: ["Polling", "Politics", "Elections 2026", "Data Product", "Snapshot Driven", "Next.js"]
 featured: false
@@ -28,9 +29,9 @@ I have spent a meaningful part of my career working on civic and election techno
 
 ## The context is fragmented by design
 
-Polling fragmentation is not anyone's fault exactly, it is just how the ecosystem grew. National toplines like presidential approval and the generic ballot tend to get their own trackers, individual races get covered locally or by interest groups, and the aggregators that do exist are often optimized for a particular kind of reader rather than for someone who just wants the overall picture. The result is that holding the cycle in your head means assembling it yourself from half a dozen sources, each with its own framing, its own time window, and its own implicit lean. That assembly work is exactly the part I think a good product should absorb, because the moment you have to gather the pieces by hand, your read of the cycle is shaped as much by which sources you happened to open as by the underlying numbers.
+Polling fragmentation is not anyone's fault exactly, and it is just how the field grew. National toplines like presidential approval and the generic ballot tend to get their own trackers, individual races get covered locally or by interest groups, and the aggregators that do exist are often optimized for a particular kind of reader rather than for someone who just wants the overall picture. The result is that holding the cycle in your head means assembling it yourself from half a dozen sources, each with its own framing, its own time window, and its own implicit lean. That assembly work is exactly the part I think a good product should absorb, because the moment you have to gather the pieces by hand, your read of the cycle is shaped as much by which sources you happened to open as by the underlying numbers.
 
-So the aggregator brings the three layers that actually define a cycle's shape into one view. It tracks presidential approval, which is the gravitational backdrop for everything else, the generic congressional ballot, which is the cleanest national read on the House environment, and the key competitive 2026 Senate and governor races, which is where control actually gets decided. Seeing those together is the point, because approval, the generic ballot, and the marquee races are not independent stories, they move with and against each other, and you only notice that when they sit side by side instead of on three different sites.
+So the aggregator brings the three layers that actually define a cycle's shape into one view. It tracks presidential approval, which is the gravitational backdrop for everything else, the generic congressional ballot, which is the cleanest national read on the House environment, and the key competitive 2026 Senate and governor races, which is where control actually gets decided. Seeing those together is the point, because approval, the generic ballot, and the marquee races move with and against each other, and you only notice that when they sit side by side instead of on three different sites.
 
 ## Even-handed by construction
 

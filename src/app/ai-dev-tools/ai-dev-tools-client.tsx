@@ -293,7 +293,7 @@ export function AiDevToolsClient() {
     <div className="adt-root">
       <div className="c97-shell c97-frame adt-page">
         <header className="adt-head">
-          <h1 className="adt-title">AI Dev Tool Ecosystem</h1>
+          <h1 className="adt-title">AI Dev Tool Directory</h1>
           <p className="adt-lede">
             A hand-kept directory of the coding assistants and agents people argue about, with
             pricing, model access, GitHub traction, and release cadence side by side.
