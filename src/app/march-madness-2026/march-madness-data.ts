@@ -6,8 +6,9 @@ export const MARCH_MADNESS_DESCRIPTION =
 // The day the picks were locked, which is the page's published date.
 export const MARCH_MADNESS_UPDATED_AT = "2026-03-17";
 // The page's last change. The tournament results were added below on
-// 2026-09-28, and the page took its own design on 2026-10-12.
-export const MARCH_MADNESS_MODIFIED_AT = "2026-10-12";
+// 2026-09-28, the page took its own design on 2026-10-12, and Avg and Rk
+// were derived from the eight system columns on 2026-10-26.
+export const MARCH_MADNESS_MODIFIED_AT = "2026-10-26";
 export const MARCH_MADNESS_UPDATED_LABEL = "Picks made March 17, 2026";
 export const MARCH_MADNESS_THESIS =
   "The edge in this bracket is time zones plus seed errors, not just chalk.";
@@ -120,23 +121,38 @@ export interface FAQEntry {
   answer: string;
 }
 
-export const RANKINGS: RankingEntry[] = [
-  { rank: 1, team: "Duke", conf: "ACC", record: "32-2", avg: 1.3, bpi: 1, em: 1, kpi: 1, net: 1, pom: 1, sor: 3, tr: 1, wab: 2, trap: "Trapezoid", odds: "+300", seed: 1 },
-  { rank: 2, team: "Michigan", conf: "B10", record: "31-3", avg: 2.0, bpi: 2, em: 2, kpi: 3, net: 2, pom: 3, sor: 2, tr: 2, wab: 1, trap: "Trapezoid", odds: "+360", seed: 1 },
-  { rank: 3, team: "Arizona", conf: "B12", record: "32-2", avg: 2.7, bpi: 3, em: 3, kpi: 2, net: 3, pom: 2, sor: 1, tr: 3, wab: 3, trap: "Trapezoid", odds: "+390", seed: 1 },
-  { rank: 4, team: "Florida", conf: "SEC", record: "26-7", avg: 4.6, bpi: 5, em: 4, kpi: 4, net: 4, pom: 4, sor: 5, tr: 4, wab: 7, trap: "Fringe (fast)", odds: "+750", seed: 1 },
-  { rank: 5, team: "Houston", conf: "B12", record: "28-6", avg: 5.0, bpi: 4, em: 5, kpi: 5, net: 5, pom: 5, sor: 6, tr: 5, wab: 5, trap: "Slowest", odds: "+1000", seed: 2 },
-  { rank: 6, team: "Purdue", conf: "B10", record: "27-8", avg: 6.9, bpi: 9, em: 6, kpi: 6, net: 9, pom: 8, sor: 7, tr: 8, wab: 4, trap: "—", odds: "+2500", seed: 2 },
-  { rank: 7, team: "UConn", conf: "BE", record: "29-5", avg: 8.3, bpi: 10, em: 9, kpi: 7, net: 10, pom: 11, sor: 4, tr: 9, wab: 6, trap: "Fringe (slow)", odds: "+2500", seed: 2 },
-  { rank: 8, team: "Iowa St.", conf: "B12", record: "27-7", avg: 8.7, bpi: 6, em: 7, kpi: 14, net: 6, pom: 6, sor: 14, tr: 7, wab: 12, trap: "Trapezoid", odds: "+1500", seed: 2 },
-  { rank: 9, team: "Virginia", conf: "ACC", record: "29-5", avg: 11.0, bpi: 20, em: 13, kpi: 8, net: 12, pom: 13, sor: 9, tr: 14, wab: 8, trap: "Fringe (slow)", odds: "+7500", seed: 3 },
-  { rank: 10, team: "Gonzaga", conf: "WCC", record: "30-3", avg: 11.4, bpi: 8, em: 10, kpi: 18, net: 7, pom: 10, sor: 11, tr: 11, wab: 13, trap: "Trapezoid", odds: "+4000", seed: 3 },
-  { rank: 11, team: "Illinois", conf: "B10", record: "24-8", avg: 11.6, bpi: 7, em: 8, kpi: 19, net: 8, pom: 7, sor: 17, tr: 6, wab: 16, trap: "Fringe (slow)", odds: "+1900", seed: 3 },
-  { rank: 12, team: "Michigan St.", conf: "B10", record: "25-7", avg: 12.1, bpi: 13, em: 12, kpi: 13, net: 11, pom: 9, sor: 13, tr: 13, wab: 11, trap: "Fringe (net)", odds: "+4000", seed: 3 },
-  { rank: 13, team: "Vanderbilt", conf: "SEC", record: "26-8", avg: 12.1, bpi: 14, em: 14, kpi: 9, net: 13, pom: 12, sor: 12, tr: 10, wab: 14, trap: "—", odds: "+7500", seed: 5 },
-  { rank: 14, team: "Arkansas", conf: "SEC", record: "26-8", avg: 14.1, bpi: 17, em: 15, kpi: 17, net: 15, pom: 15, sor: 8, tr: 19, wab: 9, trap: "—", odds: "+6000", seed: 4 },
-  { rank: 15, team: "St. John's", conf: "BE", record: "28-6", avg: 14.7, bpi: 16, em: 11, kpi: 10, net: 16, pom: 17, sor: 16, tr: 15, wab: 15, trap: "—", odds: "+6000", seed: 5 },
+const SYSTEM_RANKINGS: Omit<RankingEntry, "rank" | "avg">[] = [
+  { team: "Duke", conf: "ACC", record: "32-2", bpi: 1, em: 1, kpi: 1, net: 1, pom: 1, sor: 3, tr: 1, wab: 2, trap: "Trapezoid", odds: "+300", seed: 1 },
+  { team: "Michigan", conf: "B10", record: "31-3", bpi: 2, em: 2, kpi: 3, net: 2, pom: 3, sor: 2, tr: 2, wab: 1, trap: "Trapezoid", odds: "+360", seed: 1 },
+  { team: "Arizona", conf: "B12", record: "32-2", bpi: 3, em: 3, kpi: 2, net: 3, pom: 2, sor: 1, tr: 3, wab: 3, trap: "Trapezoid", odds: "+390", seed: 1 },
+  { team: "Florida", conf: "SEC", record: "26-7", bpi: 5, em: 4, kpi: 4, net: 4, pom: 4, sor: 5, tr: 4, wab: 7, trap: "Fringe (fast)", odds: "+750", seed: 1 },
+  { team: "Houston", conf: "B12", record: "28-6", bpi: 4, em: 5, kpi: 5, net: 5, pom: 5, sor: 6, tr: 5, wab: 5, trap: "Slowest", odds: "+1000", seed: 2 },
+  { team: "Purdue", conf: "B10", record: "27-8", bpi: 9, em: 6, kpi: 6, net: 9, pom: 8, sor: 7, tr: 8, wab: 4, trap: "—", odds: "+2500", seed: 2 },
+  { team: "UConn", conf: "BE", record: "29-5", bpi: 10, em: 9, kpi: 7, net: 10, pom: 11, sor: 4, tr: 9, wab: 6, trap: "Fringe (slow)", odds: "+2500", seed: 2 },
+  { team: "Iowa St.", conf: "B12", record: "27-7", bpi: 6, em: 7, kpi: 14, net: 6, pom: 6, sor: 14, tr: 7, wab: 12, trap: "Trapezoid", odds: "+1500", seed: 2 },
+  { team: "Virginia", conf: "ACC", record: "29-5", bpi: 20, em: 13, kpi: 8, net: 12, pom: 13, sor: 9, tr: 14, wab: 8, trap: "Fringe (slow)", odds: "+7500", seed: 3 },
+  { team: "Gonzaga", conf: "WCC", record: "30-3", bpi: 8, em: 10, kpi: 18, net: 7, pom: 10, sor: 11, tr: 11, wab: 13, trap: "Trapezoid", odds: "+4000", seed: 3 },
+  { team: "Illinois", conf: "B10", record: "24-8", bpi: 7, em: 8, kpi: 19, net: 8, pom: 7, sor: 17, tr: 6, wab: 16, trap: "Fringe (slow)", odds: "+1900", seed: 3 },
+  { team: "Michigan St.", conf: "B10", record: "25-7", bpi: 13, em: 12, kpi: 13, net: 11, pom: 9, sor: 13, tr: 13, wab: 11, trap: "Fringe (net)", odds: "+4000", seed: 3 },
+  { team: "Vanderbilt", conf: "SEC", record: "26-8", bpi: 14, em: 14, kpi: 9, net: 13, pom: 12, sor: 12, tr: 10, wab: 14, trap: "—", odds: "+7500", seed: 5 },
+  { team: "Arkansas", conf: "SEC", record: "26-8", bpi: 17, em: 15, kpi: 17, net: 15, pom: 15, sor: 8, tr: 19, wab: 9, trap: "—", odds: "+6000", seed: 4 },
+  { team: "St. John's", conf: "BE", record: "28-6", bpi: 16, em: 11, kpi: 10, net: 16, pom: 17, sor: 16, tr: 15, wab: 15, trap: "—", odds: "+6000", seed: 5 },
 ];
+
+// Avg drops each team's best and worst system rank and averages the other six,
+// which is the rule the table states. Rk follows Avg, and tied teams share a rank.
+const trimmedAverage = (entry: Omit<RankingEntry, "rank" | "avg">) => {
+  const ranks = [entry.bpi, entry.em, entry.kpi, entry.net, entry.pom, entry.sor, entry.tr, entry.wab]
+    .sort((a, b) => a - b)
+    .slice(1, -1);
+  return Math.round((ranks.reduce((sum, value) => sum + value, 0) / ranks.length) * 10) / 10;
+};
+
+const averaged = SYSTEM_RANKINGS.map((entry) => ({ ...entry, avg: trimmedAverage(entry) }));
+
+export const RANKINGS: RankingEntry[] = averaged
+  .map((entry) => ({ ...entry, rank: 1 + averaged.filter((other) => other.avg < entry.avg).length }))
+  .sort((a, b) => a.rank - b.rank);
 
 export const SCURVE: { under: SCurveEntry[]; over: SCurveEntry[] } = {
   under: [
