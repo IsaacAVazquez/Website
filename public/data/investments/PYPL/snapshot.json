@@ -1,10 +1,10 @@
 {
   "symbol": "PYPL",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.2919,
-      "ttmPe": 10.81,
-      "marketCap": 49306400000,
-      "psRatio": 1.44,
-      "pbRatio": 2.49,
+      "ttmPe": 10.39,
+      "marketCap": 47401380000,
+      "psRatio": 1.39,
+      "pbRatio": 2.39,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -5728,33 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.36,
-      "costOfEquity": 15.509999999999998,
+      "wacc": 12.26,
+      "costOfEquity": 15.5,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 16,
-      "beta": 1.3417,
-      "marketCap": 49306400000
+      "beta": 1.3346,
+      "marketCap": 47401380000
     },
     "beta": {
-      "beta5y": 1.3417
+      "beta5y": 1.3346
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 69.17,
-        "high": 69.37,
-        "low": 67.91,
-        "close": 68.07,
-        "volume": 8173400
-      },
-      {
-        "date": "2025-10-23",
-        "open": 68.07,
-        "high": 70.06,
-        "low": 68.05,
-        "close": 69.66,
-        "volume": 8199000
-      },
       {
         "date": "2025-10-24",
         "open": 70.15,
@@ -7754,6 +7738,22 @@
         "low": 56.81,
         "close": 57.535,
         "volume": 7498600
+      },
+      {
+        "date": "2026-10-23",
+        "open": 56.91,
+        "high": 57.57,
+        "low": 56.84,
+        "close": 57.02,
+        "volume": 8469100
+      },
+      {
+        "date": "2026-10-26",
+        "open": 56.79,
+        "high": 56.81,
+        "low": 54.47,
+        "close": 54.99,
+        "volume": 12105800
       }
     ],
     "news": [
@@ -7798,19 +7798,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dd249649-9658-3812-8958-99484302c249",
-        "title": "This Week In Digital Payment - Africa's Fintech Surge Fuels Financial Inclusion Growth",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-06-02",
-        "link": "https://finance.yahoo.com/news/week-digital-payment-africas-fintech-123737084.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6e21c432-40d9-32e7-b141-7c9c78c408a7",
         "title": "Boeing upgraded, PayPal initiated: Wall Street's top analyst calls",
         "publisher": "The Fly",
         "reportDate": "2025-06-02",
         "link": "https://finance.yahoo.com/news/boeing-upgraded-paypal-initiated-wall-134407712.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dd249649-9658-3812-8958-99484302c249",
+        "title": "This Week In Digital Payment - Africa's Fintech Surge Fuels Financial Inclusion Growth",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-06-02",
+        "link": "https://finance.yahoo.com/news/week-digital-payment-africas-fintech-123737084.html",
         "type": "STORY"
       },
       {
@@ -7901,43 +7901,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.81,
-        "industryAvg": 23.26
+        "value": 10.39,
+        "industryAvg": 22.93
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.44,
-        "industryAvg": 5.44
+        "value": 1.39,
+        "industryAvg": 5.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.49,
-        "industryAvg": 5.8
+        "value": 2.39,
+        "industryAvg": 5.73
       },
       {
         "metric": "ROE",
         "value": 5.54,
-        "industryAvg": 14.63
+        "industryAvg": 14.540000000000001
       },
       {
         "metric": "ROA",
         "value": 1.35,
-        "industryAvg": 2.3800000000000003
+        "industryAvg": 2.37
       },
       {
         "metric": "Gross Margin",
         "value": 44.92,
-        "industryAvg": 65.23
+        "industryAvg": 65.34
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.37,
-        "industryAvg": 43.730000000000004
+        "industryAvg": 43.63
       },
       {
         "metric": "Net Margin",
         "value": 12.72,
-        "industryAvg": 20.119999999999997
+        "industryAvg": 19.99
       }
     ]
   }

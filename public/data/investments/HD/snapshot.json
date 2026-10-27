@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 21.98,
-      "marketCap": 313511720000,
-      "psRatio": 1.85,
-      "pbRatio": 18.87,
-      "pegRatio": 4.87
+      "ttmPe": 22.35,
+      "marketCap": 318741240000,
+      "psRatio": 1.88,
+      "pbRatio": 19.18,
+      "pegRatio": 4.96
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,33 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.52,
-      "costOfEquity": 12.479999999999999,
+      "wacc": 10.48,
+      "costOfEquity": 12.4,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9497,
-      "marketCap": 313511720000
+      "beta": 0.9398,
+      "marketCap": 318741240000
     },
     "beta": {
-      "beta5y": 0.9497
+      "beta5y": 0.9398
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 391.25,
-        "high": 393.05,
-        "low": 388.17,
-        "close": 388.97,
-        "volume": 2857000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 387.13,
-        "high": 388.72,
-        "low": 381.3,
-        "close": 385.03,
-        "volume": 2767300
-      },
       {
         "date": "2025-10-24",
         "open": 389.7,
@@ -7452,6 +7436,22 @@
         "low": 313.56,
         "close": 327.73,
         "volume": 5466900
+      },
+      {
+        "date": "2026-10-23",
+        "open": 325,
+        "high": 325.91,
+        "low": 317.55,
+        "close": 319.83,
+        "volume": 3656000
+      },
+      {
+        "date": "2026-10-26",
+        "open": 319.83,
+        "high": 321.79,
+        "low": 316.35,
+        "close": 319.38,
+        "volume": 3642700
       }
     ],
     "news": [
@@ -7512,28 +7512,28 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f2764b1-3a4c-3f9f-8251-57e17cb449eb",
-        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500728.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3af9c020-af6f-39f0-bb96-5f4046687d0b",
-        "title": "Stock Market Today: Dow Jones Falls, S&P 500 Ends Win Streak; Coffee Kiosks Stock Sinks",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/m/3af9c020-af6f-39f0-bb96-5f4046687d0b/stock-market-today%3A-dow-jones.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
         "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "6de80f5d-3e1e-354a-a33e-7414775e46a2",
+        "title": "Jefferies Adjusts Home Depot Price Target to $456 From $461",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/jefferies-adjusts-home-depot-price-155048144.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
+        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
+        "publisher": "CNW Group",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.98,
-        "industryAvg": 20.33
+        "value": 22.35,
+        "industryAvg": 20.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.85,
-        "industryAvg": 1.61
+        "value": 1.88,
+        "industryAvg": 1.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.87,
-        "industryAvg": 16.06
+        "value": 19.18,
+        "industryAvg": 16.34
       },
       {
         "metric": "ROE",

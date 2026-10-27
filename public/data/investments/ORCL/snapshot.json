@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 20.25,
-      "marketCap": 390489120000,
-      "psRatio": 5.44,
-      "pbRatio": 5.85,
-      "pegRatio": 0.37
+      "ttmPe": 19.76,
+      "marketCap": 381205440000,
+      "psRatio": 5.31,
+      "pbRatio": 5.71,
+      "pegRatio": 0.36
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,33 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.569999999999999,
-      "costOfEquity": 18.68,
+      "wacc": 13.59,
+      "costOfEquity": 18.83,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7504,
-      "marketCap": 390489120000
+      "beta": 1.7575,
+      "marketCap": 381205440000
     },
     "beta": {
-      "beta5y": 1.7504
+      "beta5y": 1.7575
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 274.82,
-        "high": 277.2,
-        "low": 269.25,
-        "close": 272.66,
-        "volume": 16474000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 272.96,
-        "high": 283.1,
-        "low": 272.39,
-        "close": 280.07,
-        "volume": 16872200
-      },
       {
         "date": "2025-10-24",
         "open": 285.92,
@@ -8207,7 +8191,23 @@
         "high": 127.94,
         "low": 122.76,
         "close": 125.54,
-        "volume": 36565200
+        "volume": 36620100
+      },
+      {
+        "date": "2026-10-23",
+        "open": 124.87,
+        "high": 128.33,
+        "low": 124.39,
+        "close": 126.16,
+        "volume": 19223400
+      },
+      {
+        "date": "2026-10-26",
+        "open": 126.06,
+        "high": 127.99,
+        "low": 123.75,
+        "close": 126.06,
+        "volume": 22937700
       }
     ],
     "news": [
@@ -8260,19 +8260,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
-        "title": "Olo jumps after Bloomberg says company exploring possible sale",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
         "title": "Why Oracle Stock Was on Fire Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
+        "title": "Olo jumps after Bloomberg says company exploring possible sale",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html",
         "type": "STORY"
       },
       {
@@ -8367,18 +8367,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.25,
-        "industryAvg": 33.92
+        "value": 19.76,
+        "industryAvg": 34.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.44,
-        "industryAvg": 7.76
+        "value": 5.31,
+        "industryAvg": 7.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.85,
-        "industryAvg": 8.63
+        "value": 5.71,
+        "industryAvg": 8.72
       },
       {
         "metric": "ROE",
@@ -8388,7 +8388,7 @@
       {
         "metric": "ROA",
         "value": 1.66,
-        "industryAvg": 10.16
+        "industryAvg": 10.15
       },
       {
         "metric": "Gross Margin",
@@ -8398,12 +8398,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 53.72,
-        "industryAvg": 36.05
+        "industryAvg": 36.04
       },
       {
         "metric": "Net Margin",
         "value": 24.19,
-        "industryAvg": 19.830000000000002
+        "industryAvg": 19.82
       }
     ]
   }

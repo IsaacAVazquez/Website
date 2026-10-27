@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 24.1804,
-      "ttmPe": 12.59,
+      "ttmPe": 12.65,
       "pegRatio": 1.25,
-      "marketCap": 80262369000,
+      "marketCap": 80634186000,
       "psRatio": 0.29,
-      "pbRatio": 1.88
+      "pbRatio": 1.89
     },
     "profitability": {
       "roe": 3.91,
@@ -848,7 +848,7 @@
         {
           "Breakdown": "Normalized Income",
           "TTM": "5486442180.81",
-          "2026-06-30": "1486373504.65",
+          "2026-06-30": "1486321000.0",
           "2026-03-31": "1267780000.0",
           "2025-12-31": "1112700055.04",
           "2025-09-30": "1612580000.0",
@@ -1058,7 +1058,7 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "TTM": "220442180.81",
-          "2026-06-30": "35373504.65",
+          "2026-06-30": "35321000.0",
           "2026-03-31": "84780000.0",
           "2025-12-31": "51700055.04",
           "2025-09-30": "41580000.0",
@@ -5901,33 +5901,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.45,
-      "costOfEquity": 7.249999999999999,
+      "wacc": 5.34,
+      "costOfEquity": 7.08,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 17,
-      "beta": 0.2735,
-      "marketCap": 80262369000
+      "beta": 0.2638,
+      "marketCap": 80634186000
     },
     "beta": {
-      "beta5y": 0.2735
+      "beta5y": 0.2638
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 307.54,
-        "high": 311.05,
-        "low": 303.68,
-        "close": 307.87,
-        "volume": 923300
-      },
-      {
-        "date": "2025-10-23",
-        "open": 306,
-        "high": 306,
-        "low": 300.5,
-        "close": 305.07,
-        "volume": 1214000
-      },
       {
         "date": "2025-10-24",
         "open": 306.43,
@@ -7927,6 +7911,22 @@
         "low": 304.68,
         "close": 315.88,
         "volume": 1575600
+      },
+      {
+        "date": "2026-10-23",
+        "open": 314.75,
+        "high": 315.86,
+        "low": 305.51,
+        "close": 306.95,
+        "volume": 1780300
+      },
+      {
+        "date": "2026-10-26",
+        "open": 307.09,
+        "high": 310.95,
+        "low": 304.45,
+        "close": 305.78,
+        "volume": 1785400
       }
     ],
     "news": [
@@ -7979,19 +7979,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
-        "title": "Top Research Reports for Costco, Chubb & Cigna",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d519243-cdb3-3011-b8a2-fbc3145f3e38",
         "title": "CI's Unit Unveils Offering to Expand Access to GLP-1 Medications",
         "publisher": "Zacks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
+        "title": "Top Research Reports for Costco, Chubb & Cigna",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
         "type": "STORY"
       },
       {
@@ -8073,8 +8073,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.59,
-        "industryAvg": 22.77
+        "value": 12.65,
+        "industryAvg": 22.36
       },
       {
         "metric": "P/S Ratio",
@@ -8083,18 +8083,18 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.88,
-        "industryAvg": 2.49
+        "value": 1.89,
+        "industryAvg": 2.46
       },
       {
         "metric": "ROE",
         "value": 3.91,
-        "industryAvg": 8.85
+        "industryAvg": 8.9
       },
       {
         "metric": "ROA",
         "value": 1.0699999999999998,
-        "industryAvg": 2.69
+        "industryAvg": 2.7
       },
       {
         "metric": "Gross Margin",
@@ -8109,7 +8109,7 @@
       {
         "metric": "Net Margin",
         "value": 2.33,
-        "industryAvg": 1.54
+        "industryAvg": 1.55
       }
     ]
   }

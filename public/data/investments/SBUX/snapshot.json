@@ -1,10 +1,10 @@
 {
   "symbol": "SBUX",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.7343,
-      "ttmPe": 57.13,
-      "marketCap": 112931384000,
-      "psRatio": 2.95,
-      "pbRatio": -14.72,
-      "pegRatio": 0.66
+      "ttmPe": 59.21,
+      "marketCap": 117046062000,
+      "psRatio": 3.05,
+      "pbRatio": -15.25,
+      "pegRatio": 0.68
     },
     "profitability": {
       "roe": -12.950000000000001,
@@ -868,7 +868,7 @@
           "TTM": "2391650497.37",
           "2026-06-30": "873248192.77",
           "2026-03-31": "528508954.81",
-          "2025-12-31": "362899000.0",
+          "2025-12-31": "358872830.0",
           "2025-09-30": "746781452.1",
           "2025-06-30": "572485859.08",
           "2025-03-31": "473091495.72",
@@ -1120,7 +1120,7 @@
           "TTM": "0.36",
           "2026-06-30": "0.26",
           "2026-03-31": "0.3",
-          "2025-12-31": "0.21",
+          "2025-12-31": "0.26",
           "2025-09-30": "0.19",
           "2025-06-30": "0.32",
           "2025-03-31": "0.24",
@@ -1141,7 +1141,7 @@
           "TTM": "-225649502.63",
           "2026-06-30": "61648192.77",
           "2026-03-31": "-7491045.19",
-          "2025-12-31": "-18501000.0",
+          "2025-12-31": "-22527170.0",
           "2025-09-30": "-141418547.9",
           "2025-06-30": "-6614140.92",
           "2025-03-31": "-27308504.28",
@@ -6187,33 +6187,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.95,
-      "costOfEquity": 13.04,
+      "wacc": 10.97,
+      "costOfEquity": 12.989999999999998,
       "costOfDebt": 0.6,
       "taxRate": 26,
-      "beta": 1.0215,
-      "marketCap": 112931384000
+      "beta": 1.015,
+      "marketCap": 117046062000
     },
     "beta": {
-      "beta5y": 1.0215
+      "beta5y": 1.015
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 85.76,
-        "high": 86,
-        "low": 84.9,
-        "close": 85.5,
-        "volume": 5286300
-      },
-      {
-        "date": "2025-10-23",
-        "open": 85.48,
-        "high": 85.9,
-        "low": 84.98,
-        "close": 85.44,
-        "volume": 4565500
-      },
       {
         "date": "2025-10-24",
         "open": 86.1,
@@ -8213,6 +8197,22 @@
         "low": 98.63,
         "close": 101.91,
         "volume": 9589700
+      },
+      {
+        "date": "2026-10-23",
+        "open": 101.38,
+        "high": 102.2,
+        "low": 100.43,
+        "close": 100.8,
+        "volume": 5917900
+      },
+      {
+        "date": "2026-10-26",
+        "open": 101.15,
+        "high": 103.4,
+        "low": 101.04,
+        "close": 102.69,
+        "volume": 6332300
       }
     ],
     "news": [
@@ -8273,19 +8273,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
-        "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/why-yum-yum-down-3-153112989.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "35f8c5ea-ecf8-396f-9f08-6fb9ef01e1a2",
         "title": "SBUX vs. BROS: Which Coffee Stock Has the Stronger Brew for 2025?",
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/sbux-vs-bros-coffee-stock-124200778.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
+        "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/why-yum-yum-down-3-153112989.html",
         "type": "STORY"
       },
       {
@@ -8362,43 +8362,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 57.13,
-        "industryAvg": 24.31
+        "value": 59.21,
+        "industryAvg": 24.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.95,
-        "industryAvg": 2.82
+        "value": 3.05,
+        "industryAvg": 2.84
       },
       {
         "metric": "P/B Ratio",
-        "value": -14.72,
-        "industryAvg": 5.66
+        "value": -15.25,
+        "industryAvg": 4.9
       },
       {
         "metric": "ROE",
         "value": -12.950000000000001,
-        "industryAvg": 318.40999999999997
+        "industryAvg": 249.71
       },
       {
         "metric": "ROA",
         "value": 3.55,
-        "industryAvg": 7.380000000000001
+        "industryAvg": 7.33
       },
       {
         "metric": "Gross Margin",
         "value": 24.64,
-        "industryAvg": 30.570000000000004
+        "industryAvg": 31.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.849999999999998,
-        "industryAvg": 20.44
+        "industryAvg": 19.919999999999998
       },
       {
         "metric": "Net Margin",
         "value": 11.21,
-        "industryAvg": 9.16
+        "industryAvg": 8.959999999999999
       }
     ]
   }

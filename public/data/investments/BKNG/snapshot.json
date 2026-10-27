@@ -1,10 +1,10 @@
 {
   "symbol": "BKNG",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.0414,
-      "ttmPe": 17.52,
-      "marketCap": 120052040000,
-      "psRatio": 4.25,
-      "pbRatio": -11.13,
+      "ttmPe": 16.94,
+      "marketCap": 116080120000,
+      "psRatio": 4.11,
+      "pbRatio": -10.77,
       "pegRatio": 0.13
     },
     "profitability": {
@@ -5570,33 +5570,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.1,
-      "costOfEquity": 13.99,
+      "wacc": 12.09,
+      "costOfEquity": 14.05,
       "costOfDebt": 1.4500000000000002,
       "taxRate": 24,
-      "beta": 1.1447,
-      "marketCap": 120052040000
+      "beta": 1.1495,
+      "marketCap": 116080120000
     },
     "beta": {
-      "beta5y": 1.1447
+      "beta5y": 1.1495
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 213.1184,
-        "high": 213.1184,
-        "low": 208.2664,
-        "close": 209.2236,
-        "volume": 4895000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 210.32,
-        "high": 210.32,
-        "low": 203.22,
-        "close": 203.7388,
-        "volume": 7767500
-      },
       {
         "date": "2025-10-24",
         "open": 205.2,
@@ -7596,6 +7580,22 @@
         "low": 157.39,
         "close": 161.1,
         "volume": 7063800
+      },
+      {
+        "date": "2026-10-23",
+        "open": 159.36,
+        "high": 159.81,
+        "low": 155.58,
+        "close": 155.83,
+        "volume": 5931100
+      },
+      {
+        "date": "2026-10-26",
+        "open": 155.84,
+        "high": 155.85,
+        "low": 151.35,
+        "close": 153.14,
+        "volume": 5573400
       }
     ],
     "news": [
@@ -7656,6 +7656,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
+        "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/why-booking-holdings-bkng-top-134507660.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "f9d36917-6c20-368c-92bf-d17a00b1dd8c",
         "title": "KAYAK and Affirm expand exclusive partnership into Canada",
         "publisher": "Business Wire",
@@ -7669,14 +7677,6 @@
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/ff6c2457-0f15-3617-85ab-08dd2d4b0dcc/makemytrip-projected-to-have.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
-        "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/why-booking-holdings-bkng-top-134507660.html",
         "type": "STORY"
       }
     ],
@@ -7741,32 +7741,32 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.52,
-        "industryAvg": 17.73
+        "value": 16.94,
+        "industryAvg": 17.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.25,
-        "industryAvg": 3.32
+        "value": 4.11,
+        "industryAvg": 3.25
       },
       {
         "metric": "P/B Ratio",
-        "value": -11.13,
-        "industryAvg": 5.32
+        "value": -10.77,
+        "industryAvg": 5.13
       },
       {
         "metric": "ROE",
         "value": -19.99,
-        "industryAvg": 35.17
+        "industryAvg": 34.97
       },
       {
         "metric": "ROA",
         "value": 6.79,
-        "industryAvg": 8.6
+        "industryAvg": 8.62
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 52.6
+        "industryAvg": 52.54
       },
       {
         "metric": "EBITDA Margin",
@@ -7776,7 +7776,7 @@
       {
         "metric": "Net Margin",
         "value": 26.52,
-        "industryAvg": 17.31
+        "industryAvg": 17.32
       }
     ]
   }

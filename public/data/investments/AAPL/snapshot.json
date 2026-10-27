@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.7233,
-      "ttmPe": 39.43,
-      "marketCap": 5025337182370,
+      "ttmPe": 39.42,
+      "marketCap": 5024168465330,
       "psRatio": 10.76,
-      "pbRatio": 46.74,
+      "pbRatio": 46.73,
       "pegRatio": 1.35
     },
     "profitability": {
@@ -5109,29 +5109,13 @@
       "costOfEquity": 13.420000000000002,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0717,
-      "marketCap": 5025337182370
+      "beta": 1.0701,
+      "marketCap": 5024168465330
     },
     "beta": {
-      "beta5y": 1.0717
+      "beta5y": 1.0701
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 262.65,
-        "high": 262.85,
-        "low": 255.43,
-        "close": 258.45,
-        "volume": 45015300
-      },
-      {
-        "date": "2025-10-23",
-        "open": 259.94,
-        "high": 260.62,
-        "low": 258.01,
-        "close": 259.58,
-        "volume": 32754900
-      },
       {
         "date": "2025-10-24",
         "open": 261.19,
@@ -7130,16 +7114,32 @@
         "high": 348.36,
         "low": 342.28,
         "close": 348.22,
-        "volume": 46718600
+        "volume": 46898900
+      },
+      {
+        "date": "2026-10-23",
+        "open": 349.12,
+        "high": 351.73,
+        "low": 345.75,
+        "close": 347.73,
+        "volume": 39539700
+      },
+      {
+        "date": "2026-10-26",
+        "open": 343.92,
+        "high": 347.09,
+        "low": 341.03,
+        "close": 343.91,
+        "volume": 42667300
       }
     ],
     "news": [
       {
-        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
-        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
-        "publisher": "TipRanks",
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
         "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7151,11 +7151,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
+        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+        "publisher": "TipRanks",
         "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
         "type": "STORY"
       },
       {
@@ -7281,28 +7281,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.43,
-        "industryAvg": 38.98
+        "value": 39.42,
+        "industryAvg": 38.97
       },
       {
         "metric": "P/S Ratio",
         "value": 10.76,
-        "industryAvg": 8.3
+        "industryAvg": 8.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 46.74,
-        "industryAvg": 24.17
+        "value": 46.73,
+        "industryAvg": 24.19
       },
       {
         "metric": "ROE",
         "value": 27.839999999999996,
-        "industryAvg": 64.31
+        "industryAvg": 64.3
       },
       {
         "metric": "ROA",
         "value": 7.9,
-        "industryAvg": 17.549999999999997
+        "industryAvg": 17.54
       },
       {
         "metric": "Gross Margin",
@@ -7312,12 +7312,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 35.66,
-        "industryAvg": 31.71
+        "industryAvg": 31.7
       },
       {
         "metric": "Net Margin",
         "value": 27.229999999999997,
-        "industryAvg": 19.470000000000002
+        "industryAvg": 19.46
       }
     ]
   }

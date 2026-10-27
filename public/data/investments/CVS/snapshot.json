@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7879,
-      "ttmPe": 24.67,
+      "ttmPe": 24.43,
       "pegRatio": 0.13,
-      "marketCap": 119429100000,
-      "psRatio": 0.29,
-      "pbRatio": 1.5
+      "marketCap": 118253340000,
+      "psRatio": 0.28,
+      "pbRatio": 1.48
     },
     "profitability": {
       "roe": 3.7900000000000005,
@@ -637,7 +637,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "2.3",
+          "TTM": "3.82",
           "2026-06-30": "2.33",
           "2026-03-31": "2.31",
           "2025-12-31": "2.32",
@@ -658,7 +658,7 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "2.28",
+          "TTM": "3.79",
           "2026-06-30": "2.31",
           "2026-03-31": "2.3",
           "2025-12-31": "2.3",
@@ -679,7 +679,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "1270000000.0",
+          "TTM": "1273000000.0",
           "2026-06-30": "1279000000.0",
           "2026-03-31": "1273000000.0",
           "2025-12-31": "1270000000.0",
@@ -700,7 +700,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "1274750000.0",
+          "TTM": "1279000000.0",
           "2026-06-30": "1287000000.0",
           "2026-03-31": "1279000000.0",
           "2025-12-31": "1277000000.0",
@@ -788,7 +788,7 @@
           "2026-06-30": "2979000000.0",
           "2026-03-31": "2943000000.0",
           "2025-12-31": "2943000000.0",
-          "2025-09-30": "166180000.0",
+          "2025-09-30": "-73379400.0",
           "2025-06-30": "1021000000.0",
           "2025-03-31": "1779000000.0",
           "2024-12-31": "1353142521.17",
@@ -1018,8 +1018,8 @@
           "TTM": "0.16",
           "2026-06-30": "0.25",
           "2026-03-31": "0.25",
-          "2025-12-31": "0.21",
-          "2025-09-30": "0.21",
+          "2025-12-31": "0.26",
+          "2025-09-30": "0.26",
           "2025-06-30": "0.39",
           "2025-03-31": "0.32",
           "2024-12-31": "0.24",
@@ -1040,7 +1040,7 @@
           "2026-06-30": "0.0",
           "2026-03-31": "0.0",
           "2025-12-31": "0.0",
-          "2025-09-30": "-1100820000.0",
+          "2025-09-30": "-1340379400.0",
           "2025-06-30": "0.0",
           "2025-03-31": "0.0",
           "2024-12-31": "90142521.17",
@@ -5618,33 +5618,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.15,
-      "costOfEquity": 9.6,
+      "wacc": 6.0600000000000005,
+      "costOfEquity": 9.49,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 25,
-      "beta": 0.5778,
-      "marketCap": 119429100000
+      "beta": 0.5709,
+      "marketCap": 118253340000
     },
     "beta": {
-      "beta5y": 0.5778
+      "beta5y": 0.5709
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 82.96,
-        "high": 83.03,
-        "low": 81.74,
-        "close": 82.01,
-        "volume": 6361100
-      },
-      {
-        "date": "2025-10-23",
-        "open": 81.24,
-        "high": 81.63,
-        "low": 80.51,
-        "close": 81.07,
-        "volume": 6025900
-      },
       {
         "date": "2025-10-24",
         "open": 81.52,
@@ -7644,15 +7628,31 @@
         "low": 92.49,
         "close": 94.48,
         "volume": 7224800
+      },
+      {
+        "date": "2026-10-23",
+        "open": 94,
+        "high": 94.4,
+        "low": 93.22,
+        "close": 93.47,
+        "volume": 4601600
+      },
+      {
+        "date": "2026-10-26",
+        "open": 93.65,
+        "high": 94.77,
+        "low": 92.04,
+        "close": 92.53,
+        "volume": 4255400
       }
     ],
     "news": [
       {
-        "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
-        "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
-        "publisher": "Motley Fool",
+        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
+        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
+        "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
+        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
         "type": "STORY"
       },
       {
@@ -7664,11 +7664,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
-        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
-        "publisher": "The Wall Street Journal",
+        "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
+        "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
+        "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
         "type": "STORY"
       },
       {
@@ -7688,14 +7688,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
-        "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/masi-stock-slips-despite-q1-162700258.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
         "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
         "publisher": "Zacks",
@@ -7704,11 +7696,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "72fc7b97-1dc2-33b1-8fef-05e1bcd2ecb9",
-        "title": "INGN Stock Gains Following Q1 Earnings Beat, Revenues Up Y/Y",
+        "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
+        "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
         "publisher": "Zacks",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/ingn-stock-gains-following-q1-160600707.html",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/masi-stock-slips-despite-q1-162700258.html",
         "type": "STORY"
       },
       {
@@ -7717,6 +7709,14 @@
         "publisher": "Yahoo Finance",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "72fc7b97-1dc2-33b1-8fef-05e1bcd2ecb9",
+        "title": "INGN Stock Gains Following Q1 Earnings Beat, Revenues Up Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/ingn-stock-gains-following-q1-160600707.html",
         "type": "STORY"
       },
       {
@@ -7798,28 +7798,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.67,
-        "industryAvg": 22.77
+        "value": 24.43,
+        "industryAvg": 22.36
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.29,
+        "value": 0.28,
         "industryAvg": 0.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.5,
-        "industryAvg": 2.49
+        "value": 1.48,
+        "industryAvg": 2.46
       },
       {
         "metric": "ROE",
         "value": 3.7900000000000005,
-        "industryAvg": 8.85
+        "industryAvg": 8.9
       },
       {
         "metric": "ROA",
         "value": 1.18,
-        "industryAvg": 2.69
+        "industryAvg": 2.7
       },
       {
         "metric": "Gross Margin",
@@ -7834,7 +7834,7 @@
       {
         "metric": "Net Margin",
         "value": 2.81,
-        "industryAvg": 1.54
+        "industryAvg": 1.55
       }
     ]
   }

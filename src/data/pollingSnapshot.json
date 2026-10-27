@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-26T11:35:10.561Z",
-  "sourceAsOf": "2026-10-22",
+  "generatedAt": "2026-10-27T11:05:56.771Z",
+  "sourceAsOf": "2026-10-27",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
     "approve": 40,
@@ -2275,15 +2275,15 @@
       "candidates": [
         {
           "name": "Abdul El-Sayed",
-          "support": 47.4
+          "support": 47.5
         },
         {
           "name": "Mike Rogers",
-          "support": 44.9
+          "support": 45
         }
       ],
       "margin": 2.5,
-      "pollCount": 10,
+      "pollCount": 11,
       "lastPolled": "2026-10-22",
       "polls": [
         {
@@ -2303,6 +2303,26 @@
             {
               "name": "Mike Rogers",
               "support": 46
+            }
+          ]
+        },
+        {
+          "id": "us-202mic57c88db3",
+          "pollster": "Michigan State University Institute for Public Policy and Social Research/YouGov",
+          "startDate": "2026-10-02",
+          "endDate": "2026-10-19",
+          "sampleSize": 836,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Abdul El-Sayed",
+              "support": 48
+            },
+            {
+              "name": "Mike Rogers",
+              "support": 45.5
             }
           ]
         },
@@ -3186,17 +3206,45 @@
       "candidates": [
         {
           "name": "Roy Cooper",
-          "support": 52.3
+          "support": 52.2
         },
         {
           "name": "Michael Whatley",
-          "support": 40.9
+          "support": 41.1
         }
       ],
-      "margin": 11.4,
-      "pollCount": 7,
-      "lastPolled": "2026-10-20",
+      "margin": 11.1,
+      "pollCount": 8,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "us-202qua525d8d11",
+          "pollster": "Quantus Insights",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-25",
+          "sampleSize": 722,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Roy Cooper",
+              "support": 51.4
+            },
+            {
+              "name": "Michael Whatley",
+              "support": 42.8
+            },
+            {
+              "name": "Shannon Bray",
+              "support": 1.3
+            },
+            {
+              "name": "Michael Dublin",
+              "support": 0.7
+            }
+          ]
+        },
         {
           "id": "us-202act3e915bba",
           "pollster": "ActiVote",
@@ -3785,17 +3833,46 @@
       "candidates": [
         {
           "name": "Darline Graham",
-          "support": 45.6
+          "support": 46
         },
         {
           "name": "Annie Andrews",
-          "support": 44.1
+          "support": 44.7
         }
       ],
-      "margin": 1.5,
-      "pollCount": 2,
-      "lastPolled": "2026-09-29",
+      "margin": 1.3,
+      "pollCount": 3,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "us-202tarbd5d9c4c",
+          "pollster": "Targoz Market Research",
+          "sponsor": "South Carolina Policy Council",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-25",
+          "sampleSize": 895,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Darline Graham",
+              "support": 47
+            },
+            {
+              "name": "Annie Andrews",
+              "support": 46
+            },
+            {
+              "name": "Kasie Whitener",
+              "support": 2
+            },
+            {
+              "name": "Mark Hackett",
+              "support": 1
+            }
+          ]
+        },
         {
           "id": "us-202ins4236730d",
           "pollster": "InsiderAdvantage",
@@ -4404,17 +4481,37 @@
       "candidates": [
         {
           "name": "Jonathan Kreiss-Tomkins",
-          "support": 51
+          "support": 51.5
         },
         {
           "name": "Bernadette Wilson",
-          "support": 41
+          "support": 42.1
         }
       ],
-      "margin": 10,
-      "pollCount": 4,
-      "lastPolled": "2026-10-18",
+      "margin": 9.4,
+      "pollCount": 5,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "gov202ala46ff7ca4",
+          "pollster": "Alaska Survey Research",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-25",
+          "sampleSize": 1068,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jonathan Kreiss-Tomkins",
+              "support": 53.4
+            },
+            {
+              "name": "Bernadette Wilson",
+              "support": 46.6
+            }
+          ]
+        },
         {
           "id": "gov202ala7c90a5de",
           "pollster": "Alaska Survey Research",
@@ -6128,17 +6225,58 @@
       "candidates": [
         {
           "name": "Jocelyn Benson",
-          "support": 49.6
+          "support": 51.8
         },
         {
           "name": "John James",
-          "support": 40.9
+          "support": 42.7
         }
       ],
-      "margin": 8.7,
-      "pollCount": 8,
-      "lastPolled": "2026-10-01",
+      "margin": 9.1,
+      "pollCount": 4,
+      "lastPolled": "2026-10-27",
       "polls": [
+        {
+          "id": "gov202gui12b1fe0d",
+          "pollster": "Guidant Polling and Strategy",
+          "sponsor": "Public First Action",
+          "startDate": "2026-09-20",
+          "endDate": "2026-10-27",
+          "sampleSize": 800,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jocelyn Benson",
+              "support": 50
+            },
+            {
+              "name": "John James",
+              "support": 45
+            }
+          ]
+        },
+        {
+          "id": "gov202mic9eb10e12",
+          "pollster": "Michigan State University Institute for Public Policy and Social Research/YouGov",
+          "startDate": "2026-10-02",
+          "endDate": "2026-10-19",
+          "sampleSize": 836,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jocelyn Benson",
+              "support": 53.3
+            },
+            {
+              "name": "John James",
+              "support": 40.9
+            }
+          ]
+        },
         {
           "id": "gov202z t4d86dfd0",
           "pollster": "Z to A Research",
@@ -6186,164 +6324,6 @@
             {
               "name": "John James",
               "support": 45
-            }
-          ]
-        },
-        {
-          "id": "gov202co/08a815fe",
-          "pollster": "co/efficient",
-          "startDate": "2026-09-21",
-          "endDate": "2026-09-23",
-          "sampleSize": 843,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jocelyn Benson",
-              "support": 47
-            },
-            {
-              "name": "John James",
-              "support": 44
-            }
-          ]
-        },
-        {
-          "id": "gov202the033a69e6",
-          "pollster": "The New York Times/Siena University",
-          "startDate": "2026-09-15",
-          "endDate": "2026-09-22",
-          "sampleSize": 605,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jocelyn Benson",
-              "support": 48
-            },
-            {
-              "name": "John James",
-              "support": 43
-            }
-          ]
-        },
-        {
-          "id": "gov202cygf2c3fb04",
-          "pollster": "Cygnal/Beacon Research",
-          "sponsor": "Michigan Enjoyer",
-          "startDate": "2026-09-18",
-          "endDate": "2026-09-21",
-          "sampleSize": 600,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jocelyn Benson",
-              "support": 45
-            },
-            {
-              "name": "John James",
-              "support": 38
-            },
-            {
-              "name": "Anthony Hudson",
-              "support": 3
-            },
-            {
-              "name": "Douglas Campbell",
-              "support": 1
-            },
-            {
-              "name": "Donna Brandenburg",
-              "support": 0
-            }
-          ]
-        },
-        {
-          "id": "gov202suf29857b9c",
-          "pollster": "Suffolk University",
-          "startDate": "2026-09-16",
-          "endDate": "2026-09-20",
-          "sampleSize": 500,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jocelyn Benson",
-              "support": 51
-            },
-            {
-              "name": "John James",
-              "support": 34
-            },
-            {
-              "name": "Douglas Campbell",
-              "support": 2
-            },
-            {
-              "name": "Anthony Hudson",
-              "support": 1
-            },
-            {
-              "name": "Donna Brandenburg",
-              "support": 0
-            }
-          ]
-        },
-        {
-          "id": "gov202the9aa47f37",
-          "pollster": "The Washington Post/George Mason University School of Policy and Government",
-          "startDate": "2026-09-10",
-          "endDate": "2026-09-14",
-          "sampleSize": 803,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jocelyn Benson",
-              "support": 53
-            },
-            {
-              "name": "John James",
-              "support": 41
-            }
-          ]
-        },
-        {
-          "id": "gov202emeadcf7c77",
-          "pollster": "Emerson College",
-          "sponsor": "Nexstar Media",
-          "startDate": "2026-09-12",
-          "endDate": "2026-09-14",
-          "sampleSize": 1000,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Jocelyn Benson",
-              "support": 48.6
-            },
-            {
-              "name": "John James",
-              "support": 41.9
-            },
-            {
-              "name": "Anthony Hudson",
-              "support": 1.8
-            },
-            {
-              "name": "Donna Brandenburg",
-              "support": 0.7
-            },
-            {
-              "name": "Douglas Campbell",
-              "support": 0.7
             }
           ]
         }
@@ -7439,17 +7419,46 @@
       "candidates": [
         {
           "name": "Alan Wilson",
-          "support": 48.8
+          "support": 49.5
         },
         {
           "name": "Jermaine Johnson",
-          "support": 36.8
+          "support": 38.2
         }
       ],
-      "margin": 12,
-      "pollCount": 2,
-      "lastPolled": "2026-10-18",
+      "margin": 11.3,
+      "pollCount": 3,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "gov202tarb23f26cd",
+          "pollster": "Targoz Market Research",
+          "sponsor": "South Carolina Policy Council",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-25",
+          "sampleSize": 895,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Alan Wilson",
+              "support": 51
+            },
+            {
+              "name": "Jermaine Johnson",
+              "support": 41
+            },
+            {
+              "name": "Michael Addison",
+              "support": 1
+            },
+            {
+              "name": "Walid Hakim",
+              "support": 1
+            }
+          ]
+        },
         {
           "id": "gov202tra179819af",
           "pollster": "Trafalgar Group",

@@ -1,13 +1,14 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
-      "fundamentals"
+      "fundamentals",
+      "industry"
     ]
   },
   "source": "prefetched",
@@ -43,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 40.4631,
-      "ttmPe": 19.91,
+      "ttmPe": 19.96,
       "pegRatio": 1.03,
-      "marketCap": 83306278000,
-      "psRatio": 5.36,
+      "marketCap": 83513078000,
+      "psRatio": 5.38,
       "pbRatio": 2.63
     },
     "profitability": {
@@ -5712,33 +5713,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6,
-      "costOfEquity": 6.18,
+      "wacc": 5.8500000000000005,
+      "costOfEquity": 6.03,
       "costOfDebt": 0.41000000000000003,
       "taxRate": 15,
-      "beta": 0.1355,
-      "marketCap": 83306278000
+      "beta": 0.1307,
+      "marketCap": 83513078000
     },
     "beta": {
-      "beta5y": 0.1355
+      "beta5y": 0.1307
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 580.21,
-        "high": 588.71,
-        "low": 578.6,
-        "close": 584.74,
-        "volume": 691200
-      },
-      {
-        "date": "2025-10-23",
-        "open": 579.68,
-        "high": 584,
-        "low": 572.75,
-        "close": 575.69,
-        "volume": 778800
-      },
       {
         "date": "2025-10-24",
         "open": 579.65,
@@ -7738,6 +7723,22 @@
         "low": 800,
         "close": 819.09,
         "volume": 852300
+      },
+      {
+        "date": "2026-10-23",
+        "open": 819.09,
+        "high": 819.09,
+        "low": 801.22,
+        "close": 805.02,
+        "volume": 527700
+      },
+      {
+        "date": "2026-10-26",
+        "open": 812.31,
+        "high": 817.17,
+        "low": 796.61,
+        "close": 807.67,
+        "volume": 423900
       }
     ],
     "news": [
@@ -7790,19 +7791,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
-        "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
         "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
+        "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
         "type": "STORY"
       },
       {

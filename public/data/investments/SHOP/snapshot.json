@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4823,
-      "ttmPe": 117.58,
-      "marketCap": 224695818314,
-      "psRatio": 16.93,
-      "pbRatio": 17.71,
-      "pegRatio": 1.75
+      "ttmPe": 113.46,
+      "marketCap": 216818765988,
+      "psRatio": 16.34,
+      "pbRatio": 17.09,
+      "pegRatio": 1.69
     },
     "profitability": {
       "roe": 11.93,
@@ -5803,33 +5803,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.509999999999998,
-      "costOfEquity": 25.650000000000002,
+      "wacc": 25.629999999999995,
+      "costOfEquity": 25.77,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6513,
-      "marketCap": 224695818314
+      "beta": 2.6395,
+      "marketCap": 216818765988
     },
     "beta": {
-      "beta5y": 2.6513
+      "beta5y": 2.6395
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 162.49,
-        "high": 163.35,
-        "low": 159.234,
-        "close": 162.01,
-        "volume": 6207000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 162.5,
-        "high": 167.67,
-        "low": 162.141,
-        "close": 167.03,
-        "volume": 6171500
-      },
       {
         "date": "2025-10-24",
         "open": 168.5,
@@ -7829,6 +7813,22 @@
         "low": 165.405,
         "close": 168.81,
         "volume": 10934800
+      },
+      {
+        "date": "2026-10-23",
+        "open": 167.25,
+        "high": 170.3,
+        "low": 166.09,
+        "close": 168.68,
+        "volume": 4101800
+      },
+      {
+        "date": "2026-10-26",
+        "open": 168.495,
+        "high": 171.41,
+        "low": 167.59,
+        "close": 168.18,
+        "volume": 5222200
       }
     ],
     "news": [
@@ -7849,19 +7849,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
-        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7705bb-7fc7-3f89-919a-6f977813128a",
         "title": "Shopify Inc to Join the Nasdaq-100 Index® Beginning May 19, 2025",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/shopify-inc-join-nasdaq-100-000000866.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
         "type": "STORY"
       },
       {
@@ -7973,43 +7973,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 117.58,
-        "industryAvg": 27.72
+        "value": 113.46,
+        "industryAvg": 27.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.93,
-        "industryAvg": 5.25
+        "value": 16.34,
+        "industryAvg": 5.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.71,
+        "value": 17.09,
         "industryAvg": 5.87
       },
       {
         "metric": "ROE",
         "value": 11.93,
-        "industryAvg": -12.46
+        "industryAvg": -12.35
       },
       {
         "metric": "ROA",
         "value": 10.51,
-        "industryAvg": -6.890000000000001
+        "industryAvg": -6.8500000000000005
       },
       {
         "metric": "Gross Margin",
         "value": 47.67,
-        "industryAvg": 63.370000000000005
+        "industryAvg": 63.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.75,
-        "industryAvg": 1.2
+        "industryAvg": 1.28
       },
       {
         "metric": "Net Margin",
         "value": 41.92,
-        "industryAvg": -16.17
+        "industryAvg": -16.02
       }
     ]
   }

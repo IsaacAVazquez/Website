@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3516,
-      "ttmPe": 15.86,
-      "pegRatio": 0.96,
-      "marketCap": 31170802553,
-      "psRatio": 1.47,
-      "pbRatio": 2.84
+      "ttmPe": 16.54,
+      "pegRatio": 1.01,
+      "marketCap": 32512307894,
+      "psRatio": 1.53,
+      "pbRatio": 2.96
     },
     "profitability": {
       "roe": 5.18,
@@ -6205,33 +6205,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.85,
-      "costOfEquity": 11.540000000000001,
+      "wacc": 8.799999999999999,
+      "costOfEquity": 11.360000000000001,
       "costOfDebt": 1.08,
       "taxRate": 17,
-      "beta": 0.8279,
-      "marketCap": 31170802553
+      "beta": 0.8077,
+      "marketCap": 32512307894
     },
     "beta": {
-      "beta5y": 0.8279
+      "beta5y": 0.8077
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 76.02,
-        "high": 77.14,
-        "low": 75.7,
-        "close": 76.14,
-        "volume": 2547300
-      },
-      {
-        "date": "2025-10-23",
-        "open": 76.32,
-        "high": 77.4,
-        "low": 75.88,
-        "close": 77.26,
-        "volume": 2235200
-      },
       {
         "date": "2025-10-24",
         "open": 77.58,
@@ -8231,6 +8215,22 @@
         "low": 69.31,
         "close": 71.42,
         "volume": 3130300
+      },
+      {
+        "date": "2026-10-23",
+        "open": 70.74,
+        "high": 71.86,
+        "low": 70.095,
+        "close": 71.45,
+        "volume": 2976100
+      },
+      {
+        "date": "2026-10-26",
+        "open": 71.19,
+        "high": 72.3,
+        "low": 71,
+        "close": 71.98,
+        "volume": 2868600
       }
     ],
     "news": [
@@ -8251,11 +8251,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
-        "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
+        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
+        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
+        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
         "type": "VIDEO"
       },
       {
@@ -8267,20 +8267,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
-        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
+        "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
+        "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
+        "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
         "type": "VIDEO"
-      },
-      {
-        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
-        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
-        "type": "STORY"
       },
       {
         "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
@@ -8288,6 +8280,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
+        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
         "type": "STORY"
       },
       {
@@ -8380,28 +8380,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.86,
-        "industryAvg": 25.35
+        "value": 16.54,
+        "industryAvg": 26.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.47,
-        "industryAvg": 3.07
+        "value": 1.53,
+        "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.84,
-        "industryAvg": 2.99
+        "value": 2.96,
+        "industryAvg": 3.07
       },
       {
         "metric": "ROE",
         "value": 5.18,
-        "industryAvg": 8.48
+        "industryAvg": 8.459999999999999
       },
       {
         "metric": "ROA",
         "value": 1.51,
-        "industryAvg": 4.2700000000000005
+        "industryAvg": 4.26
       },
       {
         "metric": "Gross Margin",
@@ -8411,12 +8411,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 18.27,
-        "industryAvg": 19.96
+        "industryAvg": 19.939999999999998
       },
       {
         "metric": "Net Margin",
         "value": 10.6,
-        "industryAvg": 8.36
+        "industryAvg": 8.34
       }
     ]
   }
