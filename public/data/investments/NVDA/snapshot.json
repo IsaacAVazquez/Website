@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9107,
-      "ttmPe": 28.06,
-      "marketCap": 5359909590000,
-      "psRatio": 17.69,
-      "pbRatio": 23.41,
-      "pegRatio": 0.22
+      "ttmPe": 27.3,
+      "marketCap": 5215752000000,
+      "psRatio": 17.22,
+      "pbRatio": 22.78,
+      "pegRatio": 0.21
     },
     "profitability": {
       "roe": 28.12,
@@ -1351,7 +1351,7 @@
           "2026-01-31": "120067000000.0",
           "2025-01-31": "72880000000.0",
           "2024-01-31": "29760000000.0",
-          "2023-01-31": "5436870000.0",
+          "2023-01-31": "5372331900.0",
           "2022-01-31": "9752000000.0",
           "2021-01-31": "4332000000.0",
           "2020-01-31": "2796000000.0"
@@ -1471,7 +1471,7 @@
           "2026-01-31": "0.15",
           "2025-01-31": "0.13",
           "2024-01-31": "0.12",
-          "2023-01-31": "0.21",
+          "2023-01-31": "0.26",
           "2022-01-31": "0.02",
           "2021-01-31": "0.02",
           "2020-01-31": "0.06"
@@ -1481,7 +1481,7 @@
           "2026-01-31": "0.0",
           "2025-01-31": "0.0",
           "2024-01-31": "0.0",
-          "2023-01-31": "-284130000.0",
+          "2023-01-31": "-348668100.0",
           "2022-01-31": "0.0",
           "2021-01-31": "0.0",
           "2020-01-31": "0.0"
@@ -5893,33 +5893,17 @@
       ]
     },
     "wacc": {
-      "wacc": 21.84,
-      "costOfEquity": 21.990000000000002,
+      "wacc": 22.040000000000003,
+      "costOfEquity": 22.2,
       "costOfDebt": 0.59,
       "taxRate": 17,
-      "beta": 2.1777,
-      "marketCap": 5359909590000
+      "beta": 2.185,
+      "marketCap": 5215752000000
     },
     "beta": {
-      "beta5y": 2.1777
+      "beta5y": 2.185
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 181.14,
-        "high": 183.44,
-        "low": 176.76,
-        "close": 180.28,
-        "volume": 162249600
-      },
-      {
-        "date": "2025-10-23",
-        "open": 180.42,
-        "high": 183.03,
-        "low": 179.79,
-        "close": 182.16,
-        "volume": 111363700
-      },
       {
         "date": "2025-10-24",
         "open": 183.84,
@@ -7918,7 +7902,23 @@
         "high": 218.88,
         "low": 211.26,
         "close": 212.21,
-        "volume": 124816000
+        "volume": 125407600
+      },
+      {
+        "date": "2026-10-23",
+        "open": 210.99,
+        "high": 213.85,
+        "low": 210.18,
+        "close": 210.96,
+        "volume": 80189800
+      },
+      {
+        "date": "2026-10-26",
+        "open": 213.11,
+        "high": 217.75,
+        "low": 212.61,
+        "close": 216,
+        "volume": 90493500
       }
     ],
     "news": [
@@ -7955,14 +7955,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
-        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-22",
-        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6847b701-a805-3273-8363-1f5569a55995",
         "title": "Stereotaxis Jumps 15% on NVIDIA's AI-Driven Collaboration: Is It a Buy Now?",
         "publisher": "Zacks",
@@ -7971,11 +7963,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
-        "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-24",
-        "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html",
+        "uuid": "9fa0933e-573c-36a8-8e69-eacfa956fa70",
+        "title": "Accenture reports Q2 beat, Apple TV+ losing $1B annually: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-22",
+        "link": "https://finance.yahoo.com/news/accenture-reports-q2-beat-apple-161626223.html",
         "type": "STORY"
       },
       {
@@ -7987,11 +7979,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
+        "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html",
         "type": "STORY"
       },
       {
@@ -8000,6 +7992,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
         "type": "STORY"
       }
     ],
@@ -8067,38 +8067,38 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.06,
-        "industryAvg": 28.12
+        "value": 27.3,
+        "industryAvg": 24.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.69,
-        "industryAvg": 13.39
+        "value": 17.22,
+        "industryAvg": 12.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 23.41,
-        "industryAvg": 11.64
+        "value": 22.78,
+        "industryAvg": 10.9
       },
       {
         "metric": "ROE",
         "value": 28.12,
-        "industryAvg": 59.62
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 20.59,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 74.98,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 75.72,
-        "industryAvg": 81.55
+        "industryAvg": 81.54
       },
       {
         "metric": "Net Margin",

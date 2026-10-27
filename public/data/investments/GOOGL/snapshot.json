@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 16.82,
-      "marketCap": 4094114800000,
-      "psRatio": 9.18,
-      "pbRatio": 6.39,
-      "pegRatio": 0.06
+      "ttmPe": 15.92,
+      "marketCap": 3874464000000,
+      "psRatio": 8.69,
+      "pbRatio": 6.05,
+      "pegRatio": 0.05
     },
     "profitability": {
       "roe": 20.03,
@@ -5800,33 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.98,
-      "costOfEquity": 14.34,
+      "wacc": 14.030000000000001,
+      "costOfEquity": 14.41,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.1899,
-      "marketCap": 4094114800000
+      "beta": 1.1961,
+      "marketCap": 3874464000000
     },
     "beta": {
-      "beta5y": 1.1899
+      "beta5y": 1.1961
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 254.37,
-        "high": 256.36,
-        "low": 249.29,
-        "close": 251.69,
-        "volume": 35029400
-      },
-      {
-        "date": "2025-10-23",
-        "open": 252.98,
-        "high": 255.04,
-        "low": 251.85,
-        "close": 253.08,
-        "volume": 19901400
-      },
       {
         "date": "2025-10-24",
         "open": 256.58,
@@ -7825,7 +7809,23 @@
         "high": 331.43,
         "low": 322,
         "close": 324.22,
-        "volume": 27586400
+        "volume": 27748100
+      },
+      {
+        "date": "2026-10-23",
+        "open": 321.15,
+        "high": 324.53,
+        "low": 320.18,
+        "close": 320.21,
+        "volume": 17569600
+      },
+      {
+        "date": "2026-10-26",
+        "open": 320.89,
+        "high": 321.48,
+        "low": 316.6,
+        "close": 316.8,
+        "volume": 23918300
       }
     ],
     "news": [
@@ -7838,27 +7838,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
         "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7870,19 +7862,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
-        "publisher": "Zacks",
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
-        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-        "title": "Sector Update: Consumer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
         "type": "STORY"
       },
       {
@@ -7894,19 +7886,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "39f83f45-7225-377c-98bd-298bd43e5330",
-        "title": "2 Ad Tech Stocks That Could Help Make You a Fortune",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/39f83f45-7225-377c-98bd-298bd43e5330/2-ad-tech-stocks-that-could.html",
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
         "type": "STORY"
       },
       {
-        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
-        "title": "Magnificent 7 May Need to Make Room for Broadcom",
-        "publisher": "The Daily Upside",
+        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
+        "title": "3 Growth Stocks to Buy and Forget About",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
+        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
+        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
+        "publisher": "Reuters",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
         "type": "STORY"
       }
     ],
@@ -7980,43 +7980,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.82,
-        "industryAvg": 17.97
+        "value": 15.92,
+        "industryAvg": 16.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.18,
-        "industryAvg": 8.23
+        "value": 8.69,
+        "industryAvg": 7.67
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.39,
-        "industryAvg": 5.99
+        "value": 6.05,
+        "industryAvg": 5.61
       },
       {
         "metric": "ROE",
         "value": 20.03,
-        "industryAvg": 38.71
+        "industryAvg": 38.68
       },
       {
         "metric": "ROA",
         "value": 13.79,
-        "industryAvg": 25.86
+        "industryAvg": 25.580000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 61.650000000000006,
-        "industryAvg": 63.56
+        "industryAvg": 63.61
       },
       {
         "metric": "EBITDA Margin",
         "value": 122.82,
-        "industryAvg": 61.760000000000005
+        "industryAvg": 60.589999999999996
       },
       {
         "metric": "Net Margin",
         "value": 93.58,
-        "industryAvg": 44.48
+        "industryAvg": 44.47
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "KO",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,9 +43,9 @@
     },
     "fundamentals": {
       "ttmEps": 3.3191,
-      "ttmPe": 27.92,
-      "pegRatio": 1.72,
-      "marketCap": 398802040000,
+      "ttmPe": 27.93,
+      "pegRatio": 1.73,
+      "marketCap": 398888100000,
       "psRatio": 7.96,
       "pbRatio": 11.03
     },
@@ -6103,33 +6103,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.78,
-      "costOfEquity": 7.449999999999999,
+      "wacc": 6.660000000000001,
+      "costOfEquity": 7.31,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 19,
-      "beta": 0.2994,
-      "marketCap": 398802040000
+      "beta": 0.2936,
+      "marketCap": 398888100000
     },
     "beta": {
-      "beta5y": 0.2994
+      "beta5y": 0.2936
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 71.36,
-        "high": 71.62,
-        "low": 70.51,
-        "close": 70.81,
-        "volume": 18293000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 70.81,
-        "high": 70.93,
-        "low": 69.72,
-        "close": 69.94,
-        "volume": 13989400
-      },
       {
         "date": "2025-10-24",
         "open": 69.91,
@@ -8128,24 +8112,40 @@
         "high": 95.37,
         "low": 93.6,
         "close": 95.34,
-        "volume": 17106700
+        "volume": 17149100
+      },
+      {
+        "date": "2026-10-23",
+        "open": 95.01,
+        "high": 95.05,
+        "low": 92.64,
+        "close": 92.71,
+        "volume": 18890100
+      },
+      {
+        "date": "2026-10-26",
+        "open": 92.69,
+        "high": 92.88,
+        "low": 91.94,
+        "close": 92.7,
+        "volume": 20491300
       }
     ],
     "news": [
-      {
-        "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
-        "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
         "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
         "publisher": "Zacks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
+        "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
         "type": "STORY"
       },
       {
@@ -8189,19 +8189,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
-        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "51f1a256-8110-3900-a4ff-8424a1cdb869",
         "title": "Here Are All the Dividend Kings Beating the S&P 500 in 2025 -- and the 2 That Are the Best Stocks to Buy Now",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/m/51f1a256-8110-3900-a4ff-8424a1cdb869/here-are-all-the-dividend.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc689217-74aa-3d3e-897b-7803cef00137",
+        "title": "Take the Zacks Approach to Beat the Markets: ADMA Biologics, Limbach, Quest Diagnostics in Focus",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/zacks-approach-beat-markets-adma-122500943.html",
         "type": "STORY"
       },
       {
@@ -8279,13 +8279,13 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.92,
-        "industryAvg": 24.04
+        "value": 27.93,
+        "industryAvg": 23.72
       },
       {
         "metric": "P/S Ratio",
         "value": 7.96,
-        "industryAvg": 3.24
+        "industryAvg": 3.23
       },
       {
         "metric": "P/B Ratio",
@@ -8295,27 +8295,27 @@
       {
         "metric": "ROE",
         "value": 12.68,
-        "industryAvg": 28.060000000000002
+        "industryAvg": 28.299999999999997
       },
       {
         "metric": "ROA",
         "value": 4.17,
-        "industryAvg": 8.77
+        "industryAvg": 8.89
       },
       {
         "metric": "Gross Margin",
         "value": 62.89,
-        "industryAvg": 51.81
+        "industryAvg": 51.9
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.67,
-        "industryAvg": 22.830000000000002
+        "industryAvg": 22.96
       },
       {
         "metric": "Net Margin",
         "value": 33.07,
-        "industryAvg": 13.4
+        "industryAvg": 13.51
       }
     ]
   }

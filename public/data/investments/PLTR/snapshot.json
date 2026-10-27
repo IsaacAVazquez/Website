@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.1735,
-      "ttmPe": 171.9,
-      "marketCap": 484712382840,
-      "psRatio": 78.74,
-      "pbRatio": 49.59,
-      "pegRatio": 0.77
+      "ttmPe": 169.44,
+      "marketCap": 477792039480,
+      "psRatio": 77.61,
+      "pbRatio": 48.88,
+      "pegRatio": 0.76
     },
     "profitability": {
       "roe": 11.65,
@@ -5142,33 +5142,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.740000000000002,
-      "costOfEquity": 17.75,
+      "wacc": 17.810000000000002,
+      "costOfEquity": 17.82,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.6311,
-      "marketCap": 484712382840
+      "beta": 1.6296,
+      "marketCap": 477792039480
     },
     "beta": {
-      "beta5y": 1.6311
+      "beta5y": 1.6296
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 181.93,
-        "high": 182.21,
-        "low": 169.42,
-        "close": 175.49,
-        "volume": 58263100
-      },
-      {
-        "date": "2025-10-23",
-        "open": 175.445,
-        "high": 181.56,
-        "low": 175.01,
-        "close": 180.48,
-        "volume": 35812300
-      },
       {
         "date": "2025-10-24",
         "open": 182.88,
@@ -7167,7 +7151,23 @@
         "high": 202.63,
         "low": 194.535,
         "close": 196.19,
-        "volume": 22853700
+        "volume": 22933600
+      },
+      {
+        "date": "2026-10-23",
+        "open": 195.02,
+        "high": 197.49,
+        "low": 190.57,
+        "close": 196.75,
+        "volume": 17668400
+      },
+      {
+        "date": "2026-10-26",
+        "open": 197.9,
+        "high": 200.05,
+        "low": 192.91,
+        "close": 198.84,
+        "volume": 16352300
       }
     ],
     "news": [
@@ -7236,20 +7236,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
-        "title": "Nebius Group Stock Earns 84 RS Rating",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
         "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
+        "title": "Nebius Group Stock Earns 84 RS Rating",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7320,18 +7320,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 171.9,
-        "industryAvg": 33.92
+        "value": 169.44,
+        "industryAvg": 34.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 78.74,
-        "industryAvg": 7.76
+        "value": 77.61,
+        "industryAvg": 7.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 49.59,
-        "industryAvg": 8.63
+        "value": 48.88,
+        "industryAvg": 8.72
       },
       {
         "metric": "ROE",
@@ -7341,7 +7341,7 @@
       {
         "metric": "ROA",
         "value": 9.71,
-        "industryAvg": 10.16
+        "industryAvg": 10.15
       },
       {
         "metric": "Gross Margin",
@@ -7351,12 +7351,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 47.55,
-        "industryAvg": 36.05
+        "industryAvg": 36.04
       },
       {
         "metric": "Net Margin",
         "value": 54.86,
-        "industryAvg": 19.830000000000002
+        "industryAvg": 19.82
       }
     ]
   }

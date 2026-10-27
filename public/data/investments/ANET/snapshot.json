@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1718,
-      "ttmPe": 58.12,
-      "marketCap": 232476996000,
-      "psRatio": 22.05,
-      "pbRatio": 15.71,
-      "pegRatio": 1.62
+      "ttmPe": 55.88,
+      "marketCap": 223535088000,
+      "psRatio": 21.21,
+      "pbRatio": 15.11,
+      "pegRatio": 1.55
     },
     "profitability": {
       "roe": 8.58,
@@ -5320,25 +5320,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.5491
+      "beta5y": 1.562
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 145.865,
-        "high": 147.49,
-        "low": 141.68,
-        "close": 146.59,
-        "volume": 7349200
-      },
-      {
-        "date": "2025-10-23",
-        "open": 146.78,
-        "high": 153.95,
-        "low": 146.64,
-        "close": 152.76,
-        "volume": 7327400
-      },
       {
         "date": "2025-10-24",
         "open": 155,
@@ -7337,7 +7321,23 @@
         "high": 178.72,
         "low": 169.87,
         "close": 171.07,
-        "volume": 8284200
+        "volume": 8307000
+      },
+      {
+        "date": "2026-10-23",
+        "open": 169.06,
+        "high": 175.88,
+        "low": 168.245,
+        "close": 172.37,
+        "volume": 5008400
+      },
+      {
+        "date": "2026-10-26",
+        "open": 174.21,
+        "high": 179.56,
+        "low": 172.687,
+        "close": 177.24,
+        "volume": 4256800
       }
     ],
     "news": [
@@ -7414,11 +7414,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c5387320-7e0a-3c5c-98ce-eec930f7dbc2",
-        "title": "The New York Times Company Leverages Digital Subscriptions for Growth",
+        "uuid": "f090691f-d60d-31b4-8801-b74f7623f74f",
+        "title": "Buy 5 Internet-Centric AI Stocks on the Dip to Boost Portfolio Returns",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/york-times-company-leverages-digital-144500877.html",
+        "link": "https://finance.yahoo.com/news/buy-5-internet-centric-ai-120200754.html",
         "type": "STORY"
       }
     ],
@@ -7481,43 +7481,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 58.12,
-        "industryAvg": 25.52
+        "value": 55.88,
+        "industryAvg": 23.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.05,
-        "industryAvg": 3.69
+        "value": 21.21,
+        "industryAvg": 3.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.71,
-        "industryAvg": 7.69
+        "value": 15.11,
+        "industryAvg": 7.27
       },
       {
         "metric": "ROE",
         "value": 8.58,
-        "industryAvg": 66.43
+        "industryAvg": 45.25
       },
       {
         "metric": "ROA",
         "value": 5.35,
-        "industryAvg": 15.7
+        "industryAvg": 13.56
       },
       {
         "metric": "Gross Margin",
         "value": 62.93,
-        "industryAvg": 25.53
+        "industryAvg": 28.599999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 46.160000000000004,
-        "industryAvg": 16.91
+        "industryAvg": 16.830000000000002
       },
       {
         "metric": "Net Margin",
         "value": 39.95,
-        "industryAvg": 12.34
+        "industryAvg": 11.65
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.4325,
-      "ttmPe": 21.1,
-      "marketCap": 2829135710000,
-      "psRatio": 3.81,
-      "pbRatio": 6.4,
-      "pegRatio": 0.09
+      "ttmPe": 20.04,
+      "marketCap": 2685937470000,
+      "psRatio": 3.62,
+      "pbRatio": 6.08,
+      "pegRatio": 0.08
     },
     "profitability": {
       "roe": 7.090000000000001,
@@ -1389,7 +1389,7 @@
           "2025-12-31": "65354930994.44",
           "2024-12-31": "60836083539.8",
           "2023-12-31": "29574057432.7",
-          "2022-12-31": "10128140000.0",
+          "2022-12-31": "9345745400.0",
           "2021-12-31": "20551997169.14",
           "2020-12-31": "19189626230.46",
           "2019-12-31": "*"
@@ -1509,7 +1509,7 @@
           "2025-12-31": "0.2",
           "2024-12-31": "0.14",
           "2023-12-31": "0.19",
-          "2022-12-31": "0.21",
+          "2022-12-31": "0.26",
           "2021-12-31": "0.13",
           "2020-12-31": "0.12",
           "2019-12-31": "*"
@@ -1519,7 +1519,7 @@
           "2025-12-31": "3004930994.44",
           "2024-12-31": "-247916460.2",
           "2023-12-31": "199057432.7",
-          "2022-12-31": "-3415860000.0",
+          "2022-12-31": "-4198254600.0",
           "2021-12-31": "1839997169.14",
           "2020-12-31": "287626230.46",
           "2019-12-31": "*"
@@ -4937,33 +4937,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.47,
-      "costOfEquity": 16.6,
+      "wacc": 15.459999999999999,
+      "costOfEquity": 16.650000000000002,
       "costOfDebt": 0.38,
       "taxRate": 24,
-      "beta": 1.4816,
-      "marketCap": 2829135710000
+      "beta": 1.4805,
+      "marketCap": 2685937470000
     },
     "beta": {
-      "beta5y": 1.4816
+      "beta5y": 1.4805
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 219.3,
-        "high": 220.01,
-        "low": 216.52,
-        "close": 217.95,
-        "volume": 44308500
-      },
-      {
-        "date": "2025-10-23",
-        "open": 219,
-        "high": 221.3,
-        "low": 218.18,
-        "close": 221.09,
-        "volume": 31540000
-      },
       {
         "date": "2025-10-24",
         "open": 221.97,
@@ -6962,7 +6946,23 @@
         "high": 258.41,
         "low": 248,
         "close": 250.38,
-        "volume": 48658900
+        "volume": 48814000
+      },
+      {
+        "date": "2026-10-23",
+        "open": 248.85,
+        "high": 250.01,
+        "low": 246.45,
+        "close": 248,
+        "volume": 25569000
+      },
+      {
+        "date": "2026-10-26",
+        "open": 249.47,
+        "high": 250.79,
+        "low": 247.23,
+        "close": 249.09,
+        "volume": 32613300
       }
     ],
     "news": [
@@ -6975,20 +6975,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
         "title": "Game On: Discord reportedly in talks for IPO in 2025",
         "publisher": "TipRanks",
         "reportDate": "2025-03-13",
         "link": "https://finance.yahoo.com/news/game-discord-reportedly-talks-ipo-163531942.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-03-13",
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
@@ -7113,18 +7113,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.1,
-        "industryAvg": 27.44
+        "value": 20.04,
+        "industryAvg": 26.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.81,
-        "industryAvg": 2.29
+        "value": 3.62,
+        "industryAvg": 2.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.4,
-        "industryAvg": 4.1
+        "value": 6.08,
+        "industryAvg": 3.89
       },
       {
         "metric": "ROE",
@@ -7139,17 +7139,17 @@
       {
         "metric": "Gross Margin",
         "value": 51.82,
-        "industryAvg": 17.43
+        "industryAvg": 17.45
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.82,
-        "industryAvg": 1.08
+        "industryAvg": 1.09
       },
       {
         "metric": "Net Margin",
         "value": 16.669999999999998,
-        "industryAvg": -2.91
+        "industryAvg": -2.9000000000000004
       }
     ]
   }

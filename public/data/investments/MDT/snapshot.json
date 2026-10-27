@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 22.9,
-      "pegRatio": 0.55,
-      "marketCap": 119082763107,
-      "psRatio": 3.17,
-      "pbRatio": 2.37
+      "ttmPe": 23.34,
+      "pegRatio": 0.56,
+      "marketCap": 121335645651,
+      "psRatio": 3.23,
+      "pbRatio": 2.42
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -2672,7 +2672,7 @@
         },
         {
           "Breakdown": "Long Term Debt",
-          "2026-07-31": "25565000000.0",
+          "2026-07-31": "25617000000.0",
           "2026-04-30": "26119000000.0",
           "2026-01-31": "27822000000.0",
           "2025-10-31": "27625000000.0",
@@ -2693,7 +2693,7 @@
         },
         {
           "Breakdown": "Long Term Capital Lease Obligation",
-          "2026-07-31": "52000000.0",
+          "2026-07-31": "0.0",
           "2026-04-30": "54000000.0",
           "2026-01-31": "58000000.0",
           "2025-10-31": "55000000.0",
@@ -3029,7 +3029,7 @@
         },
         {
           "Breakdown": "Total Capitalization",
-          "2026-07-31": "75797000000.0",
+          "2026-07-31": "75849000000.0",
           "2026-04-30": "75582000000.0",
           "2026-01-31": "76807000000.0",
           "2025-10-31": "76277000000.0",
@@ -3071,7 +3071,7 @@
         },
         {
           "Breakdown": "Capital Lease Obligations",
-          "2026-07-31": "52000000.0",
+          "2026-07-31": "0.0",
           "2026-04-30": "60000000.0",
           "2026-01-31": "58000000.0",
           "2025-10-31": "55000000.0",
@@ -3134,7 +3134,7 @@
         },
         {
           "Breakdown": "Invested Capital",
-          "2026-07-31": "78333000000.0",
+          "2026-07-31": "78385000000.0",
           "2026-04-30": "77364000000.0",
           "2026-01-31": "76998000000.0",
           "2025-10-31": "77697000000.0",
@@ -3197,7 +3197,7 @@
         },
         {
           "Breakdown": "Net Debt",
-          "2026-07-31": "26410000000.0",
+          "2026-07-31": "26462000000.0",
           "2026-04-30": "25952000000.0",
           "2026-01-31": "26866000000.0",
           "2025-10-31": "27763000000.0",
@@ -5946,33 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.02,
-      "costOfEquity": 9.78,
+      "wacc": 7.95,
+      "costOfEquity": 9.67,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.6009,
-      "marketCap": 119082763107
+      "beta": 0.593,
+      "marketCap": 121335645651
     },
     "beta": {
-      "beta5y": 0.6009
+      "beta5y": 0.593
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 96.59,
-        "high": 97.24,
-        "low": 95.55,
-        "close": 95.9,
-        "volume": 6651700
-      },
-      {
-        "date": "2025-10-23",
-        "open": 96.15,
-        "high": 96.24,
-        "low": 91.87,
-        "close": 94.21,
-        "volume": 9122200
-      },
       {
         "date": "2025-10-24",
         "open": 94.42,
@@ -7972,23 +7956,39 @@
         "low": 93.12,
         "close": 96.59,
         "volume": 8876800
+      },
+      {
+        "date": "2026-10-23",
+        "open": 96.1,
+        "high": 96.89,
+        "low": 95.38,
+        "close": 95.41,
+        "volume": 6009000
+      },
+      {
+        "date": "2026-10-26",
+        "open": 95,
+        "high": 95.7,
+        "low": 94.09,
+        "close": 94.79,
+        "volume": 8464500
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -8058,6 +8058,10 @@
     ],
     "officers": [
       {
+        "name": "Dave Moeller",
+        "title": "Senior VP & President of the Peripheral Vascular Health Operating Unit"
+      },
+      {
         "name": "Dr. Laura Mauri M.D., M.Sc.",
         "title": "Senior VP and Chief Scientific & Medical Officer",
         "age": 55,
@@ -8066,6 +8070,10 @@
       {
         "name": "Mr. Alex Gu",
         "title": "Senior VP & President of Greater China Region"
+      },
+      {
+        "name": "Mr. Dave Anderson",
+        "title": "Senior Vice President of Portfolio Management"
       },
       {
         "name": "Mr. Geoffrey Straub Martha",
@@ -8081,22 +8089,8 @@
         "yearBorn": 1979
       },
       {
-        "name": "Mr. Michael Marinaro",
-        "title": "Executive VP and President of Medical Surgical Portfolio & Americas",
-        "age": 54,
-        "yearBorn": 1971,
-        "totalPay": 1915981
-      },
-      {
         "name": "Mr. Rogerio Branco",
         "title": "SVP & Chief Operations and Supply Chain Officer"
-      },
-      {
-        "name": "Mr. Thierry Pieton",
-        "title": "Executive VP & CFO",
-        "age": 55,
-        "yearBorn": 1970,
-        "totalPay": 4216777
       },
       {
         "name": "Ms. Denise L. Blomquist",
@@ -8107,38 +8101,35 @@
         "title": "Vice President & Head of Investor Relations"
       },
       {
-        "name": "Ms. Michelle Quinn",
-        "title": "Executive VP, General Counsel & Secretary",
-        "age": 56,
-        "yearBorn": 1969,
-        "totalPay": 2487488
+        "name": "Ms. Sally Saba M.D.",
+        "title": "Chief Inclusion & Diversity Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.9,
-        "industryAvg": 25.35
+        "value": 23.34,
+        "industryAvg": 26.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.17,
-        "industryAvg": 3.07
+        "value": 3.23,
+        "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.37,
-        "industryAvg": 2.99
+        "value": 2.42,
+        "industryAvg": 3.07
       },
       {
         "metric": "ROE",
         "value": 2.9499999999999997,
-        "industryAvg": 8.48
+        "industryAvg": 8.459999999999999
       },
       {
         "metric": "ROA",
         "value": 1.58,
-        "industryAvg": 4.2700000000000005
+        "industryAvg": 4.26
       },
       {
         "metric": "Gross Margin",
@@ -8148,12 +8139,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.51,
-        "industryAvg": 19.96
+        "industryAvg": 19.939999999999998
       },
       {
         "metric": "Net Margin",
         "value": 15.07,
-        "industryAvg": 8.36
+        "industryAvg": 8.34
       }
     ]
   }

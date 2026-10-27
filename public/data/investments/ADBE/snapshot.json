@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9251,
-      "ttmPe": 14.23,
-      "marketCap": 99728460000,
-      "psRatio": 3.84,
-      "pbRatio": 8.48,
-      "pegRatio": 1.35
+      "ttmPe": 14.43,
+      "marketCap": 101120420000,
+      "psRatio": 3.89,
+      "pbRatio": 8.6,
+      "pegRatio": 1.37
     },
     "profitability": {
       "roe": 15.690000000000001,
@@ -6061,32 +6061,16 @@
     },
     "wacc": {
       "wacc": 14.89,
-      "costOfEquity": 15.85,
+      "costOfEquity": 15.840000000000002,
       "costOfDebt": 0.98,
       "taxRate": 22,
-      "beta": 1.3846,
-      "marketCap": 99728460000
+      "beta": 1.3774,
+      "marketCap": 101120420000
     },
     "beta": {
-      "beta5y": 1.3846
+      "beta5y": 1.3774
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 355.48,
-        "high": 360.19,
-        "low": 352.87,
-        "close": 354.09,
-        "volume": 3436000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 352.51,
-        "high": 354.35,
-        "low": 348.71,
-        "close": 354.12,
-        "volume": 2408100
-      },
       {
         "date": "2025-10-24",
         "open": 357.21,
@@ -8086,6 +8070,22 @@
         "low": 256.7,
         "close": 270.55,
         "volume": 6847300
+      },
+      {
+        "date": "2026-10-23",
+        "open": 269.11,
+        "high": 271.5,
+        "low": 262.78,
+        "close": 263.82,
+        "volume": 3130800
+      },
+      {
+        "date": "2026-10-26",
+        "open": 262.88,
+        "high": 263.35,
+        "low": 254.06,
+        "close": 258.62,
+        "volume": 3335700
       }
     ],
     "news": [
@@ -8138,6 +8138,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
         "title": "2 Cheap Tech Stocks to Buy Right Now",
         "publisher": "Motley Fool",
@@ -8151,14 +8159,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
         "type": "STORY"
       },
       {
@@ -8232,43 +8232,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.23,
-        "industryAvg": 27.72
+        "value": 14.43,
+        "industryAvg": 27.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.84,
-        "industryAvg": 5.25
+        "value": 3.89,
+        "industryAvg": 5.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.48,
+        "value": 8.6,
         "industryAvg": 5.87
       },
       {
         "metric": "ROE",
         "value": 15.690000000000001,
-        "industryAvg": -12.46
+        "industryAvg": -12.35
       },
       {
         "metric": "ROA",
         "value": 6.1,
-        "industryAvg": -6.890000000000001
+        "industryAvg": -6.8500000000000005
       },
       {
         "metric": "Gross Margin",
         "value": 88.71,
-        "industryAvg": 63.370000000000005
+        "industryAvg": 63.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.019999999999996,
-        "industryAvg": 1.2
+        "industryAvg": 1.28
       },
       {
         "metric": "Net Margin",
         "value": 27.029999999999998,
-        "industryAvg": -16.17
+        "industryAvg": -16.02
       }
     ]
   }

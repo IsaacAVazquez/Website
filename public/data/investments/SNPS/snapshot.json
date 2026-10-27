@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 79.71,
-      "marketCap": 86450259950,
-      "psRatio": 9.18,
-      "pbRatio": 2.78,
-      "pegRatio": 0.89
+      "ttmPe": 80.26,
+      "marketCap": 87051899650,
+      "psRatio": 9.24,
+      "pbRatio": 2.79,
+      "pegRatio": 0.9
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,33 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.889999999999999,
+      "wacc": 12.9,
       "costOfEquity": 14.38,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1953,
-      "marketCap": 86450259950
+      "beta": 1.1924,
+      "marketCap": 87051899650
     },
     "beta": {
-      "beta5y": 1.1953
+      "beta5y": 1.1924
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 456.48,
-        "high": 465.75,
-        "low": 444.36,
-        "close": 454.3,
-        "volume": 2755300
-      },
-      {
-        "date": "2025-10-23",
-        "open": 452,
-        "high": 460.41,
-        "low": 450.5,
-        "close": 456.09,
-        "volume": 1384100
-      },
       {
         "date": "2025-10-24",
         "open": 461.65,
@@ -8308,6 +8292,22 @@
         "low": 422.1,
         "close": 422.48,
         "volume": 2587200
+      },
+      {
+        "date": "2026-10-23",
+        "open": 419.42,
+        "high": 433.71,
+        "low": 417.6,
+        "close": 430.14,
+        "volume": 1362500
+      },
+      {
+        "date": "2026-10-26",
+        "open": 431.15,
+        "high": 457.64,
+        "low": 431.15,
+        "close": 454.33,
+        "volume": 2810200
       }
     ],
     "news": [
@@ -8336,11 +8336,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
+        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
+        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
+        "publisher": "Investing.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
         "type": "STORY"
       },
       {
@@ -8368,11 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
-        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
-        "publisher": "Investing.com",
+        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
+        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
         "type": "STORY"
       },
       {
@@ -8384,11 +8384,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
-        "title": "US Tightens China Chip Curbs by Targeting Design Software",
-        "publisher": "Bloomberg",
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       }
     ],
@@ -8453,18 +8453,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 79.71,
-        "industryAvg": 33.92
+        "value": 80.26,
+        "industryAvg": 34.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.18,
-        "industryAvg": 7.76
+        "value": 9.24,
+        "industryAvg": 7.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.78,
-        "industryAvg": 8.63
+        "value": 2.79,
+        "industryAvg": 8.72
       },
       {
         "metric": "ROE",
@@ -8474,7 +8474,7 @@
       {
         "metric": "ROA",
         "value": 1.15,
-        "industryAvg": 10.16
+        "industryAvg": 10.15
       },
       {
         "metric": "Gross Margin",
@@ -8484,12 +8484,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 51.35999999999999,
-        "industryAvg": 36.05
+        "industryAvg": 36.04
       },
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 19.830000000000002
+        "industryAvg": 19.82
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Software-Application",
       "sector": "Technology",
-      "longBusinessSummary": "Intuit Inc. provides financial management, payments and capital, compliance, and marketing products and services in the United States. The company operates in two segments: Global Business Solutions and Consumer. Its Global Business Solutions segment provides QuickBooks services, which include financial and business management online services, desktop software, payroll solutions, time tracking, merchant payment processing and bill pay solutions, checking accounts, and financing services for small and mid-market businesses; and Mailchimp, a marketing automation and customer relationship management. The Consumer segment provides TurboTax, a do-it-yourself and assisted income tax preparation products and services; Credit Karma, a personal finance solution that provides recommendations for credit card, home, auto, and personal loan, and insurance products; online savings and checking accounts; and access to its credit scores and reports, credit and identity monitoring, credit report dispute, credit building tools, debt pay-down assistance, credit card rewards optimization, and connected account capabilities. This segment also offers ProTax offerings which include Lacerte, ProSeries, and ProFile desktop tax-preparation software products; and ProConnect Tax Online, electronic tax filing service, and bank products and related services. It sells products and services through direct sales channels, multichannel shop-and-buy experiences, online application stores, and partner and other channels. Intuit Inc. was founded in 1983 and is headquartered in Mountain View, California.",
+      "longBusinessSummary": "Intuit Inc. provides financial management, payments and capital, compliance, and marketing products and services in the United States. The company operates in two segments: Global Business Solutions and Consumer. Its Global Business Solutions segment provides QuickBooks services, which include financial and business management online services, desktop software, payroll solutions, time tracking, merchant payment processing and bill pay solutions, checking accounts, and financing services for small and mid-market businesses; and Mailchimp, a marketing automation and customer relationship management. The Consumer segment provides TurboTax, a do-it-yourself and assisted income tax preparation products and services; Credit Karma, a personal finance solution that provides recommendations for credit card, home, auto, and personal loan, and insurance products; online savings and checking accounts; and access to its credit scores and reports, credit and identity monitoring, credit report dispute, credit building tools, debt pay-down assistance, credit card rewards optimization, and connected account capabilities. This segment also offers ProTax offerings which include Lacerte, ProSeries, and ProFile desktop tax-preparation software products; and ProConnect Tax Online, electronic tax filing service, and bank products and related services. It sells products and services through direct sales channels, multichannel shop-and-buy experiences, online application stores, and partner and other channels. Intuit Inc. has a strategic collaboration with Aprio, LLP to develop AI-powered solutions designed to help identify tax planning opportunities, benchmark business performance, improve financial visibility, and support more informed decision-making across industries, including construction, dental, wealth management, and tax. Intuit Inc. was founded in 1983 and is headquartered in Mountain View, California.",
       "fullTimeEmployees": 18600,
       "website": "https://www.intuit.com",
       "shortName": "Intuit Inc.",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 20.34,
-      "marketCap": 90072354240,
-      "psRatio": 4.2,
-      "pbRatio": 4.74,
+      "ttmPe": 20.6,
+      "marketCap": 91221037760,
+      "psRatio": 4.25,
+      "pbRatio": 4.8,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6595,33 +6595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.43,
-      "costOfEquity": 12.45,
+      "wacc": 11.3,
+      "costOfEquity": 12.29,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.9459,
-      "marketCap": 90072354240
+      "beta": 0.926,
+      "marketCap": 91221037760
     },
     "beta": {
-      "beta5y": 0.9459
+      "beta5y": 0.926
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 674.2,
-        "high": 682.47,
-        "low": 670.43,
-        "close": 670.77,
-        "volume": 1272000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 671.46,
-        "high": 680.98,
-        "low": 669.56,
-        "close": 677.72,
-        "volume": 1474300
-      },
       {
         "date": "2025-10-24",
         "open": 684.26,
@@ -8621,6 +8605,22 @@
         "low": 337.44,
         "close": 354.9,
         "volume": 4815200
+      },
+      {
+        "date": "2026-10-23",
+        "open": 351.42,
+        "high": 356.11,
+        "low": 342.8,
+        "close": 343.39,
+        "volume": 2533600
+      },
+      {
+        "date": "2026-10-26",
+        "open": 343.39,
+        "high": 345.93,
+        "low": 333.49,
+        "close": 339.89,
+        "volume": 2671600
       }
     ],
     "news": [
@@ -8657,12 +8657,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
-        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
-        "publisher": "Investor's Business Daily",
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
@@ -8673,14 +8673,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
-        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
         "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
         "publisher": "The Wall Street Journal",
@@ -8689,11 +8681,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
-        "title": "US High Growth Tech Stocks to Watch in May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
+        "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
+        "title": "A Nuclear Power Play And TurboTax Stock Reach New Highs",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/319684ea-ed04-3cd3-abf1-dde606bed5e9/a-nuclear-power-play-and.html",
         "type": "STORY"
       },
       {
@@ -8702,6 +8694,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
+        "title": "US High Growth Tech Stocks to Watch in May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
         "type": "STORY"
       }
     ],
@@ -8771,43 +8771,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.34,
-        "industryAvg": 27.72
+        "value": 20.6,
+        "industryAvg": 27.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.2,
-        "industryAvg": 5.25
+        "value": 4.25,
+        "industryAvg": 5.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.74,
+        "value": 4.8,
         "industryAvg": 5.87
       },
       {
         "metric": "ROE",
         "value": 1.83,
-        "industryAvg": -12.46
+        "industryAvg": -12.35
       },
       {
         "metric": "ROA",
         "value": 0.95,
-        "industryAvg": -6.890000000000001
+        "industryAvg": -6.8500000000000005
       },
       {
         "metric": "Gross Margin",
         "value": 78.11,
-        "industryAvg": 63.370000000000005
+        "industryAvg": 63.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.02,
-        "industryAvg": 1.2
+        "industryAvg": 1.28
       },
       {
         "metric": "Net Margin",
         "value": 8.34,
-        "industryAvg": -16.17
+        "industryAvg": -16.02
       }
     ]
   }

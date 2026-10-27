@@ -1,10 +1,10 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 17.9453,
-      "ttmPe": 29.7,
-      "marketCap": 3958219650000,
-      "psRatio": 11.93,
-      "pbRatio": 8.95,
+      "ttmPe": 29.68,
+      "marketCap": 3955620200000,
+      "psRatio": 11.92,
+      "pbRatio": 8.94,
       "pegRatio": 0.94
     },
     "profitability": {
@@ -3149,7 +3149,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2026-03-31": "7429000000.0",
           "2025-12-31": "7428838066.0",
           "2025-09-30": "7433087554.0",
@@ -3169,7 +3169,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2026-03-31": "7429000000.0",
           "2025-12-31": "7428838066.0",
           "2025-09-30": "7433087554.0",
@@ -3961,7 +3961,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2025-06-30": "7434158655.0",
           "2024-06-30": "7434138859.0",
           "2023-06-30": "7432000000.0",
@@ -3971,7 +3971,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2025-06-30": "7434158655.0",
           "2024-06-30": "7434138859.0",
           "2023-06-30": "7432000000.0",
@@ -5929,33 +5929,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.03,
-      "costOfEquity": 13.200000000000001,
+      "wacc": 13.01,
+      "costOfEquity": 13.18,
       "costOfDebt": 1.48,
       "taxRate": 19,
-      "beta": 1.042,
-      "marketCap": 3958219650000
+      "beta": 1.0394,
+      "marketCap": 3955620200000
     },
     "beta": {
-      "beta5y": 1.042
+      "beta5y": 1.0394
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 521.15,
-        "high": 525.23,
-        "low": 517.71,
-        "close": 520.54,
-        "volume": 18962700
-      },
-      {
-        "date": "2025-10-23",
-        "open": 522.46,
-        "high": 523.95,
-        "low": 518.61,
-        "close": 520.56,
-        "volume": 14023500
-      },
       {
         "date": "2025-10-24",
         "open": 522.79,
@@ -7954,7 +7938,23 @@
         "high": 533.6,
         "low": 520.3,
         "close": 521.08,
-        "volume": 21104500
+        "volume": 21266600
+      },
+      {
+        "date": "2026-10-23",
+        "open": 517.75,
+        "high": 525.77,
+        "low": 515.7,
+        "close": 524.51,
+        "volume": 13671500
+      },
+      {
+        "date": "2026-10-26",
+        "open": 527.4,
+        "high": 533.25,
+        "low": 521.69,
+        "close": 532.6,
+        "volume": 18814100
       }
     ],
     "news": [
@@ -8049,7 +8049,7 @@
         "title": "President & Vice Chairman",
         "age": 66,
         "yearBorn": 1959,
-        "totalPay": 4532750
+        "totalPay": 4603755
       },
       {
         "name": "Mr. Jonathan M. Palmer",
@@ -8060,7 +8060,7 @@
         "title": "Executive VP & CEO of Commercial Business",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4490115
+        "totalPay": 4589467
       },
       {
         "name": "Mr. Matthew Kerner",
@@ -8071,14 +8071,14 @@
         "title": "Chairman & CEO",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 12251294
+        "totalPay": 13058203
       },
       {
         "name": "Mr. Takeshi Numoto",
         "title": "Executive VP & Chief Marketing Officer",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 2871250
+        "totalPay": 3403890
       },
       {
         "name": "Ms. Alice L. Jolla",
@@ -8091,7 +8091,7 @@
         "title": "Executive VP & CFO",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 4444191
+        "totalPay": 4580399
       },
       {
         "name": "Ms. Carolina Dybeck Happe",
@@ -8103,18 +8103,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.7,
-        "industryAvg": 33.92
+        "value": 29.68,
+        "industryAvg": 34.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.93,
-        "industryAvg": 7.76
+        "value": 11.92,
+        "industryAvg": 7.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.95,
-        "industryAvg": 8.63
+        "value": 8.94,
+        "industryAvg": 8.72
       },
       {
         "metric": "ROE",
@@ -8124,7 +8124,7 @@
       {
         "metric": "ROA",
         "value": 4.92,
-        "industryAvg": 10.16
+        "industryAvg": 10.15
       },
       {
         "metric": "Gross Margin",
@@ -8134,12 +8134,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 62.12,
-        "industryAvg": 36.05
+        "industryAvg": 36.04
       },
       {
         "metric": "Net Margin",
         "value": 39.739999999999995,
-        "industryAvg": 19.830000000000002
+        "industryAvg": 19.82
       }
     ]
   }

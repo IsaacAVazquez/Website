@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.9721,
-      "ttmPe": 22.04,
-      "marketCap": 198984940000,
-      "psRatio": 4.53,
-      "pbRatio": 5.18,
+      "ttmPe": 22.57,
+      "marketCap": 203783030000,
+      "psRatio": 4.64,
+      "pbRatio": 5.31,
       "pegRatio": 0.19
     },
     "profitability": {
@@ -1585,7 +1585,7 @@
           "2026-01-31": "7118665000.0",
           "2025-01-31": "6681806000.0",
           "2024-01-31": "5193540000.0",
-          "2023-01-31": "1050930000.0",
+          "2023-01-31": "1000034100.0",
           "2022-01-31": "302561357.7",
           "2021-01-31": "2487900000.0",
           "2020-01-31": "*"
@@ -1675,7 +1675,7 @@
           "2026-01-31": "0.22",
           "2025-01-31": "0.17",
           "2024-01-31": "0.16",
-          "2023-01-31": "0.21",
+          "2023-01-31": "0.26",
           "2022-01-31": "0.06",
           "2021-01-31": "0.27",
           "2020-01-31": "*"
@@ -1685,7 +1685,7 @@
           "2026-01-31": "92665000.0",
           "2025-01-31": "-97194000.0",
           "2024-01-31": "-207460000.0",
-          "2023-01-31": "-224070000.0",
+          "2023-01-31": "-274965900.0",
           "2022-01-31": "69561357.7",
           "2021-01-31": "585900000.0",
           "2020-01-31": "*"
@@ -5557,33 +5557,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.280000000000001,
-      "costOfEquity": 14.67,
+      "wacc": 12.31,
+      "costOfEquity": 14.649999999999999,
       "costOfDebt": 1.13,
       "taxRate": 23,
-      "beta": 1.2322,
-      "marketCap": 198984940000
+      "beta": 1.2265,
+      "marketCap": 203783030000
     },
     "beta": {
-      "beta5y": 1.2322
+      "beta5y": 1.2265
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 262.2,
-        "high": 262.4,
-        "low": 256.51,
-        "close": 256.64,
-        "volume": 9370000
-      },
-      {
-        "date": "2025-10-23",
-        "open": 257.6,
-        "high": 258.56,
-        "low": 254.12,
-        "close": 255.05,
-        "volume": 6110100
-      },
       {
         "date": "2025-10-24",
         "open": 257.42,
@@ -7583,6 +7567,22 @@
         "low": 242.7,
         "close": 250.29,
         "volume": 9741300
+      },
+      {
+        "date": "2026-10-23",
+        "open": 248.59,
+        "high": 249.41,
+        "low": 242.3,
+        "close": 248.57,
+        "volume": 5841700
+      },
+      {
+        "date": "2026-10-26",
+        "open": 247.76,
+        "high": 250.99,
+        "low": 243.43,
+        "close": 247.61,
+        "volume": 5690100
       }
     ],
     "news": [
@@ -7669,6 +7669,20 @@
     ],
     "officers": [
       {
+        "name": "Dr. Paula Goldman Ph.D.",
+        "title": "VP and Chief Ethical & Humane Use Officer"
+      },
+      {
+        "name": "Mr. Bill Patterson",
+        "title": "Executive VP & GM of CRM Applications"
+      },
+      {
+        "name": "Mr. Kendall Collins",
+        "title": "President & CEO of Government Cloud",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
         "name": "Mr. Marc R. Benioff",
         "title": "Co-Founder, Chairman & CEO",
         "age": 60,
@@ -7690,10 +7704,6 @@
         "totalPay": 2291250
       },
       {
-        "name": "Mr. Rohan Kumar",
-        "title": "President & Chief Platform and Engineering Officer"
-      },
-      {
         "name": "Mr. Sabastian V. Niles",
         "title": "President, Chief Legal Officer & Corporate Secretary",
         "age": 45,
@@ -7708,65 +7718,57 @@
         "totalPay": 3139934
       },
       {
-        "name": "Ms. Alexa Vignone",
-        "title": "President & Chief Revenue Officer"
+        "name": "Mr. Vala Afshar",
+        "title": "Chief Digital Evangelist"
       },
       {
-        "name": "Ms. Erin Oles",
-        "title": "President & Chief Marketing Officer"
-      },
-      {
-        "name": "Ms. Nathalie Scardino",
-        "title": "President & Chief People Officer"
-      },
-      {
-        "name": "Ms. Robin L. Washington CPA",
-        "title": "President, Chief Operating & Financial Officer and Director",
-        "age": 62,
-        "yearBorn": 1963,
-        "totalPay": 11668529
+        "name": "Ms. Polly A. Sumner",
+        "title": "Chief Adoption Officer",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 630000
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.04,
-        "industryAvg": 27.72
+        "value": 22.57,
+        "industryAvg": 27.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.53,
-        "industryAvg": 5.25
+        "value": 4.64,
+        "industryAvg": 5.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.18,
+        "value": 5.31,
         "industryAvg": 5.87
       },
       {
         "metric": "ROE",
         "value": 9.71,
-        "industryAvg": -12.46
+        "industryAvg": -12.35
       },
       {
         "metric": "ROA",
         "value": 3.26,
-        "industryAvg": -6.890000000000001
+        "industryAvg": -6.8500000000000005
       },
       {
         "metric": "Gross Margin",
         "value": 76.64999999999999,
-        "industryAvg": 63.370000000000005
+        "industryAvg": 63.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.81,
-        "industryAvg": 1.2
+        "industryAvg": 1.28
       },
       {
         "metric": "Net Margin",
         "value": 31.080000000000002,
-        "industryAvg": -16.17
+        "industryAvg": -16.02
       }
     ]
   }

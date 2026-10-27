@@ -1,10 +1,10 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.5496,
-      "ttmPe": 14.86,
-      "marketCap": 137944394280,
-      "psRatio": 2.5,
-      "pbRatio": 5.05,
+      "ttmPe": 14.54,
+      "marketCap": 134904803220,
+      "psRatio": 2.44,
+      "pbRatio": 4.94,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6310,33 +6310,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.84,
-      "costOfEquity": 15.25,
+      "wacc": 13.88,
+      "costOfEquity": 15.32,
       "costOfDebt": 0.86,
       "taxRate": 26,
-      "beta": 1.308,
-      "marketCap": 137944394280
+      "beta": 1.3111,
+      "marketCap": 134904803220
     },
     "beta": {
-      "beta5y": 1.308
+      "beta5y": 1.3111
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 92.77,
-        "high": 93.415,
-        "low": 91.421,
-        "close": 92.21,
-        "volume": 11351400
-      },
-      {
-        "date": "2025-10-23",
-        "open": 92.5,
-        "high": 95.7,
-        "low": 92.4,
-        "close": 94.61,
-        "volume": 17121600
-      },
       {
         "date": "2025-10-24",
         "open": 95.15,
@@ -8335,24 +8319,40 @@
         "high": 69.15,
         "low": 67.33,
         "close": 69.07,
-        "volume": 19308600
+        "volume": 19328900
+      },
+      {
+        "date": "2026-10-23",
+        "open": 68.47,
+        "high": 68.9,
+        "low": 66.43,
+        "close": 66.7,
+        "volume": 18778200
+      },
+      {
+        "date": "2026-10-26",
+        "open": 66.62,
+        "high": 67,
+        "low": 65.68,
+        "close": 66.13,
+        "volume": 22041700
       }
     ],
     "news": [
-      {
-        "uuid": "0def18d7-3d06-37f9-bff5-e0daf4d38d99",
-        "title": "Top Analyst Reports for Shell, Uber & TotalEnergies",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-20",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-shell-uber-223100107.html",
-        "type": "STORY"
-      },
       {
         "uuid": "c2e34397-295e-3abc-9815-85c23901bc88",
         "title": "The Zacks Analyst Blog Highlights Shell, Uber, TotalEnergies, Geospace and Natural Health Trends",
         "publisher": "Zacks",
         "reportDate": "2025-03-20",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-shell-090000565.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0def18d7-3d06-37f9-bff5-e0daf4d38d99",
+        "title": "Top Analyst Reports for Shell, Uber & TotalEnergies",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-shell-uber-223100107.html",
         "type": "STORY"
       },
       {
@@ -8486,43 +8486,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.86,
-        "industryAvg": 27.72
+        "value": 14.54,
+        "industryAvg": 27.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.5,
-        "industryAvg": 5.25
+        "value": 2.44,
+        "industryAvg": 5.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.05,
+        "value": 4.94,
         "industryAvg": 5.87
       },
       {
         "metric": "ROE",
         "value": 9.2,
-        "industryAvg": -12.46
+        "industryAvg": -12.35
       },
       {
         "metric": "ROA",
         "value": 3.81,
-        "industryAvg": -6.890000000000001
+        "industryAvg": -6.8500000000000005
       },
       {
         "metric": "Gross Margin",
         "value": 44.93,
-        "industryAvg": 63.370000000000005
+        "industryAvg": 63.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.36,
-        "industryAvg": 1.2
+        "industryAvg": 1.28
       },
       {
         "metric": "Net Margin",
         "value": 16.869999999999997,
-        "industryAvg": -16.17
+        "industryAvg": -16.02
       }
     ]
   }

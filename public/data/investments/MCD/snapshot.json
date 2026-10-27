@@ -1,10 +1,10 @@
 {
   "symbol": "MCD",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3129,
-      "ttmPe": 20,
-      "pegRatio": 3.45,
-      "marketCap": 174246500000,
-      "psRatio": 6.29,
-      "pbRatio": -170.5
+      "ttmPe": 20.37,
+      "pegRatio": 3.51,
+      "marketCap": 177487308000,
+      "psRatio": 6.41,
+      "pbRatio": -173.67
     },
     "profitability": {
       "roe": -204.76999999999998,
@@ -5534,33 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.710000000000001,
-      "costOfEquity": 8.62,
+      "wacc": 6.64,
+      "costOfEquity": 8.5,
       "costOfDebt": 0.75,
       "taxRate": 20,
-      "beta": 0.4508,
-      "marketCap": 174246500000
+      "beta": 0.4442,
+      "marketCap": 177487308000
     },
     "beta": {
-      "beta5y": 0.4508
+      "beta5y": 0.4442
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 308.22,
-        "high": 312.79,
-        "low": 307.15,
-        "close": 310.11,
-        "volume": 2735700
-      },
-      {
-        "date": "2025-10-23",
-        "open": 311.97,
-        "high": 311.97,
-        "low": 306.22,
-        "close": 306.97,
-        "volume": 2081500
-      },
       {
         "date": "2025-10-24",
         "open": 307.63,
@@ -7559,7 +7543,23 @@
         "high": 252.88,
         "low": 246.47,
         "close": 252.63,
-        "volume": 5071400
+        "volume": 5084800
+      },
+      {
+        "date": "2026-10-23",
+        "open": 250.53,
+        "high": 251.75,
+        "low": 246.67,
+        "close": 248.46,
+        "volume": 4158500
+      },
+      {
+        "date": "2026-10-26",
+        "open": 248.44,
+        "high": 252.88,
+        "low": 247.98,
+        "close": 250.83,
+        "volume": 4736500
       }
     ],
     "news": [
@@ -7612,19 +7612,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7246e8dc-19a9-38b1-8bc0-6386734eeff6",
-        "title": "Starbucks Is Said to Start Process to Revamp Vast China Business",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/starbucks-said-kick-off-process-020939123.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6f7dd108-9650-3481-a29d-b130526e037a",
         "title": "JPMorgan downgrades Krispy Kreme on strategy reset, execution risk",
         "publisher": "TipRanks",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/jpmorgan-downgrades-krispy-kreme-strategy-144608670.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7246e8dc-19a9-38b1-8bc0-6386734eeff6",
+        "title": "Starbucks Is Said to Start Process to Revamp Vast China Business",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/starbucks-said-kick-off-process-020939123.html",
         "type": "STORY"
       },
       {
@@ -7714,43 +7714,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20,
-        "industryAvg": 24.31
+        "value": 20.37,
+        "industryAvg": 24.59
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.29,
-        "industryAvg": 2.82
+        "value": 6.41,
+        "industryAvg": 2.84
       },
       {
         "metric": "P/B Ratio",
-        "value": -170.5,
-        "industryAvg": 5.66
+        "value": -173.67,
+        "industryAvg": 4.9
       },
       {
         "metric": "ROE",
         "value": -204.76999999999998,
-        "industryAvg": 318.40999999999997
+        "industryAvg": 249.71
       },
       {
         "metric": "ROA",
         "value": 3.94,
-        "industryAvg": 7.380000000000001
+        "industryAvg": 7.33
       },
       {
         "metric": "Gross Margin",
         "value": 58.01,
-        "industryAvg": 30.570000000000004
+        "industryAvg": 31.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 55.06999999999999,
-        "industryAvg": 20.44
+        "industryAvg": 19.919999999999998
       },
       {
         "metric": "Net Margin",
         "value": 33.269999999999996,
-        "industryAvg": 9.16
+        "industryAvg": 8.959999999999999
       }
     ]
   }

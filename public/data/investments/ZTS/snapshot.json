@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
     "sections": {
-      "price": "2026-10-22"
+      "price": "2026-10-26"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.0787,
-      "ttmPe": 13.1,
-      "pegRatio": 8.62,
-      "marketCap": 32974941480,
-      "psRatio": 3.46,
-      "pbRatio": 10.47
+      "ttmPe": 13.32,
+      "pegRatio": 8.76,
+      "marketCap": 33534049380,
+      "psRatio": 3.52,
+      "pbRatio": 10.65
     },
     "profitability": {
       "roe": 21.66,
@@ -6002,33 +6002,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.33,
-      "costOfEquity": 10.52,
+      "wacc": 8.24,
+      "costOfEquity": 10.37,
       "costOfDebt": 0.66,
       "taxRate": 20,
-      "beta": 0.696,
-      "marketCap": 32974941480
+      "beta": 0.6819,
+      "marketCap": 33534049380
     },
     "beta": {
-      "beta5y": 0.696
+      "beta5y": 0.6819
     },
     "price": [
-      {
-        "date": "2025-10-22",
-        "open": 146.4,
-        "high": 148.3,
-        "low": 145.73,
-        "close": 147.11,
-        "volume": 2875400
-      },
-      {
-        "date": "2025-10-23",
-        "open": 146,
-        "high": 147.51,
-        "low": 145.18,
-        "close": 146.39,
-        "volume": 1566300
-      },
       {
         "date": "2025-10-24",
         "open": 147.12,
@@ -8028,6 +8012,22 @@
         "low": 79.9,
         "close": 82,
         "volume": 4827200
+      },
+      {
+        "date": "2026-10-23",
+        "open": 81.14,
+        "high": 81.86,
+        "low": 80.6,
+        "close": 81.03,
+        "volume": 2860100
+      },
+      {
+        "date": "2026-10-26",
+        "open": 80.95,
+        "high": 81.19,
+        "low": 80.1,
+        "close": 80.97,
+        "volume": 2903900
       }
     ],
     "news": [
@@ -8056,14 +8056,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
-        "title": "Zoetis Declares Third Quarter 2025 Dividend",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
         "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
         "publisher": "Zacks",
@@ -8080,11 +8072,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
+        "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
+        "title": "Zoetis Declares Third Quarter 2025 Dividend",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
         "type": "STORY"
       },
       {
@@ -8101,6 +8093,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/dr-mark-stetter-elected-zoetis-201500469.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8180,43 +8180,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.1,
-        "industryAvg": 23.13
+        "value": 13.32,
+        "industryAvg": 23.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.46,
-        "industryAvg": 2.37
+        "value": 3.52,
+        "industryAvg": 2.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.47,
-        "industryAvg": 2.46
+        "value": 10.65,
+        "industryAvg": 2.56
       },
       {
         "metric": "ROE",
         "value": 21.66,
-        "industryAvg": -1.27
+        "industryAvg": -1.32
       },
       {
         "metric": "ROA",
         "value": 4.569999999999999,
-        "industryAvg": -0.48
+        "industryAvg": -0.5
       },
       {
         "metric": "Gross Margin",
         "value": 72.72999999999999,
-        "industryAvg": 58.93000000000001
+        "industryAvg": 58.91
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.38,
-        "industryAvg": 15.72
+        "industryAvg": 15.67
       },
       {
         "metric": "Net Margin",
         "value": 28.000000000000004,
-        "industryAvg": -0.2
+        "industryAvg": -0.25
       }
     ]
   }
