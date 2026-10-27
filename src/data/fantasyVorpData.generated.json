@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-26T21:40:11.285Z",
+  "generatedAt": "2026-10-27T21:22:39.466Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-26T21:40:11.915Z",
+        "accessedAt": "2026-10-27T21:22:40.166Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-26T21:40:12.556Z",
+        "accessedAt": "2026-10-27T21:22:41.425Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-26T21:40:13.260Z",
+        "accessedAt": "2026-10-27T21:22:42.136Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-26T21:40:14.140Z",
+        "accessedAt": "2026-10-27T21:22:42.749Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-26T21:40:14.754Z",
+        "accessedAt": "2026-10-27T21:22:43.592Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-26T21:40:15.405Z",
+        "accessedAt": "2026-10-27T21:22:44.414Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-26T21:40:16.219Z",
+        "accessedAt": "2026-10-27T21:22:45.067Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-26T21:40:16.823Z",
+        "accessedAt": "2026-10-27T21:22:45.738Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-26T21:40:17.237Z",
+        "accessedAt": "2026-10-27T21:22:46.415Z",
         "players": [
           {
             "playerId": "fp-22968",
