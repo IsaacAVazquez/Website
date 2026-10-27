@@ -21,7 +21,7 @@ interface SearchableContent {
 const STATIC_PAGES: [string, string, string, string, 'project'?][] = [
   ['/', 'Isaac Vazquez', 'My background, selected work, newest writing, and the dashboards I built.', 'Site'],
   ['/about', 'About Isaac Vazquez', 'How I got from campaign data and QA to Berkeley Haas, and the habits I work by.', 'Site'],
-  ['/portfolio', 'Portfolio & Case Studies', 'Portfolio of product case studies, fintech tools, analytics products, and decision-support interfaces.', 'Projects'],
+  ['/portfolio', 'Portfolio & Case Studies', 'The four projects I\'d show first and the two jobs the product work came from, with the decisions behind them.', 'Projects'],
   ['/dashboards', 'Dashboards', 'The instruments I built and keep running, from football ledgers to markets and spaceflight.', 'Projects'],
   ['/resume', 'Resume - Isaac Vazquez', 'My résumé, covering Open Progress, Civitech, my 2026 growth internship at Juno, and my Berkeley Haas MBA.', 'Professional'],
   ['/contact', 'Contact Isaac Vazquez', 'How to reach me about full-time product roles, Haas, or anything on this site.', 'Contact'],
@@ -34,7 +34,7 @@ const STATIC_PAGES: [string, string, string, string, 'project'?][] = [
   ['/agent-build-index', 'Agent Build Index', 'Weekly ranking of active public AI agent repositories by measured GitHub star movement.', 'AI & dev tools', 'project'],
   ['/score-pools', 'Score Pools', 'Exact-score prediction engine for pool play, with market-calibrated scoreline distributions, expected-points pick rankings, and leaderboard-aware recommendations from a checked-in odds snapshot.', 'Sports', 'project'],
   ['/score-pools/tracker', 'Score Pools Tracker', 'Running score tracker for exact-score prediction pools, with submitted picks scored against results, cumulative totals, and rival comparisons.', 'Sports', 'project'],
-  ['/fantasy-football/trade-calculator', 'Fantasy Football Trade Calculator', 'A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.', 'Sports', 'project'],
+  ['/fantasy-football/trade-calculator', 'Fantasy Football Trade Calculator', 'A one-QB redraft trade estimate using expert consensus and league settings, priced on mock-draft ADP before the season and on rest-of-season rankings and this season\'s scoring once it starts.', 'Sports', 'project'],
   ['/fantasy-football/mock-draft', 'Fantasy Football Mock Draft Simulator', 'A practice draft room against simulated opponents built on the published consensus board and mock-draft ADP.', 'Sports', 'project'],
   ['/fantasy-football/draft-tracker', 'Fantasy Football Draft Assistant', 'Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.', 'Sports', 'project'],
   ['/fantasy-football/best-ball', 'Best Ball Rankings and Draft Assistant', 'Best ball rankings, room-relative draft value, contest economics, and draft help for Best Ball Mania and other Underdog-style formats.', 'Sports', 'project'],
@@ -47,11 +47,11 @@ const STATIC_PAGES: [string, string, string, string, 'project'?][] = [
 // model and provider names, what people actually type). Keyed by route and
 // appended to that route's indexed text.
 const SEARCH_KEYWORDS: Record<string, string> = {
-  '/': 'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
-  '/about': 'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
+  '/': 'home portfolio Isaac Vazquez product analytics fintech builder Berkeley Bay Area',
+  '/about': 'about Isaac Vazquez background bio product analytics civic tech fintech Berkeley',
   '/portfolio': 'Portfolio case studies product management fintech product analytics decision support AI workflows product tools projects',
-  '/resume': 'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
-  '/contact': 'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
+  '/resume': 'Resume product QA analytics civic tech fintech product work Berkeley Bay Area',
+  '/contact': 'Contact product analytics AI workflows fintech product collaboration Berkeley Bay Area',
   '/writing': 'Writing blog articles product management agentic AI fintech product reliability systems design',
   '/accessibility': 'accessibility WCAG conformance contrast keyboard screen reader inclusive design',
   '/investments': 'Investment research platform fintech product valuation dashboard portfolio tracking equity analysis stocks Investments Fintech Product Portfolio Tracking Equity Analysis',

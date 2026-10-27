@@ -10,9 +10,9 @@ import { Catalog97Dashboards } from "@/components/catalog97/Catalog97Dashboards"
 import { formatPtTime, getSnapshotReadouts } from "@/lib/catalog97Readouts";
 
 export const metadata = constructMetadata({
-  title: "Isaac Vazquez Dashboards | Live Data Tools",
+  title: "Isaac Vazquez Dashboards | Data Tools",
   description:
-    "The instruments I built and keep running, from football ledgers to markets and spaceflight. Most dashboards read a committed snapshot that a scheduled job refreshes, some every few hours and some only weekly or in season, a few trackers are curated by hand, and the lifestyle tools and calculators keep their state in your browser.",
+    "The instruments I built and keep running, from football ledgers to markets and spaceflight. Most dashboards read a committed snapshot that a scheduled job refreshes, some every few hours and some only weekly or in season. A few trackers are curated by hand, and the lifestyle tools and calculators keep their state in your browser.",
   canonicalUrl: "/dashboards",
   dateModified: "2026-10-05",
 });
@@ -51,7 +51,7 @@ export default async function DashboardsPage() {
           data: {
             name: "Isaac Vazquez Dashboards",
             description:
-              "Live data dashboards built by Isaac Vazquez, each backed by a committed snapshot.",
+              "Dashboards and tools built by Isaac Vazquez, most of them reading a committed snapshot that a scheduled job refreshes.",
             url: "https://isaacvazquez.com/dashboards",
             items: tools.map((tool) => ({
               name: tool.title,

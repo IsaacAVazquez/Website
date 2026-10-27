@@ -103,6 +103,16 @@ describe("pointsLadder", () => {
       expect(labelYs[i] - labelYs[i - 1]).toBeGreaterThanOrEqual(LABEL_HEIGHT - 1e-9);
     }
   });
+
+  it("draws the drop line when tied clubs share a published position", () => {
+    // Two clubs share 16th and nobody is 17th, which is how the source
+    // publishes a tie, so the line above the drop has no club "at 17".
+    const positions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 16, 18, 19, 20];
+    const rows: PointsLadderRow[] = positions.map((pos, i) => row(`club-${i}`, pos, 60 - i * 2));
+    const { lines } = pointsLadder(rows, { labelHeight: LABEL_HEIGHT });
+    expect(lines.map((l) => l.afterPosition)).toEqual([4, 5, 6, 17]);
+    expect(lines[3].gap).toBeCloseTo(2);
+  });
 });
 
 describe("formatPointsGap", () => {

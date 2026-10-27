@@ -53,7 +53,7 @@ export default async function NflPage({ searchParams }: NflPageProps) {
         data={{
           name: "NFL Pulse",
           description:
-            "Interactive NFL standings dashboard with conference, division, playoff, and stat-leader views backed by a curated NFLverse snapshot.",
+            "Interactive NFL standings dashboard with conference, division, playoff, and stat-leader views backed by an NFLverse snapshot that refreshes on a schedule.",
           url: "https://isaacvazquez.com/nfl",
           applicationCategory: "SportsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

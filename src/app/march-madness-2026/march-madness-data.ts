@@ -11,7 +11,7 @@ export const MARCH_MADNESS_UPDATED_AT = "2026-03-17";
 export const MARCH_MADNESS_MODIFIED_AT = "2026-10-26";
 export const MARCH_MADNESS_UPDATED_LABEL = "Picks made March 17, 2026";
 export const MARCH_MADNESS_THESIS =
-  "The edge in this bracket is time zones plus seed errors, not just chalk.";
+  "The edge in this bracket comes from time zones and seed errors on top of the chalk.";
 export const MARCH_MADNESS_ARTICLE_SLUG = "2026-march-madness-bracket-analysis";
 export const MARCH_MADNESS_POSTMORTEM_SLUG = "2026-march-madness-postmortem";
 // The picks on this page were made before the tournament and stay as written.

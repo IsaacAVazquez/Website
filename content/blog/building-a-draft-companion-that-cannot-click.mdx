@@ -1,8 +1,8 @@
 ---
-title: "The Draft Companion I Built Cannot Touch the Draft Room, and That Is the Feature"
-excerpt: "I built a private browser side panel that keeps my draft board next to an ESPN or Underdog draft room. It records picks only when I type them, because the version that watches the room for me fails a legal test, a terms-of-service test, and an engineering test all at once."
+title: "The Draft Companion I Built to Stay Out of the Draft Room, and Why I Changed It"
+excerpt: "I built a private browser side panel that keeps my draft board next to an ESPN or Underdog draft room. For its first month it recorded picks only when I typed them, because the version that watches the room for me failed a legal test, a terms-of-service test, and an engineering test all at once, and the September update explains why I built the sync anyway."
 publishedAt: "2026-08-30"
-updatedAt: "2026-09-07"
+updatedAt: "2026-10-23"
 category: "Software Development"
 tags: ["Browser Extension", "Chrome Extension", "Fantasy Football", "Side Projects", "Web Scraping", "Engineering Judgment", "Product Decisions"]
 featured: false
@@ -16,11 +16,11 @@ cta:
   actionLabel: "Open the hub"
 seo:
   title: "A Draft Companion With No Room Access"
-  description: "Why my fantasy draft side panel records picks manually instead of scraping the draft room, and how its snapshot fallback chain keeps it honest when sources go stale."
+  description: "Why my fantasy draft side panel started out recording picks by hand instead of reading the draft room, why I later added sync, and how its snapshot fallback chain keeps it honest when sources go stale."
   keywords: ["fantasy draft companion", "chrome side panel extension", "draft assistant extension", "web scraping terms of service", "browser extension design", "fantasy draft tools"]
 ---
 
-# The Draft Companion I Built Cannot Touch the Draft Room, and That Is the Feature
+# The Draft Companion I Built to Stay Out of the Draft Room, and Why I Changed It
 
 The most recent tool in the fantasy stack is the one I cannot link you to, because it is a private Chrome and Edge extension rather than a page on this site. It is a side panel that sits next to an ESPN or Underdog draft room and keeps my draft board, tiers, roster targets, and Draft Outlook visible while the draft happens, sharing its logic with [the public rankings platform](/writing/building-a-fantasy-football-rankings-platform) so the two surfaces never disagree about a player. You record each pick in the panel by hand as it happens, and I want to write about that one design choice, because everyone who has seen the panel asks the same question. Why doesn't it just read the picks off the page?
 

@@ -2,6 +2,7 @@
 title: "Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl"
 excerpt: "I built an investment research workspace because my own research workflow was scattered across too many tabs. Here's what I decided to include, what I left out, and why."
 publishedAt: "2026-04-02"
+updatedAt: "2026-10-23"
 category: "Fintech Product"
 tags: ["Investment Research", "Fintech Product", "Portfolio Tracking", "Equity Analysis", "Financial Data", "Next.js", "Product Design"]
 featured: false
@@ -24,35 +25,35 @@ seo:
 
 If you want to see the product before reading the breakdown, open the [Investment Research Platform](/investments).
 
-Most personal investing workflows break down in the same place, which is that the analysis is scattered. Price charts live in one tab, financial statements in another, notes in a spreadsheet, and portfolio tracking in a tool that has no idea why you bought the stock in the first place. I built this project because I wanted a research workflow that felt more like a decision workspace than a collection of disconnected utilities. The goal was not to recreate a full institutional terminal. The goal was to make the most important parts of equity research easier to review, compare, and revisit without adding more friction.
+Most personal investing workflows break down in the same place, which is that the analysis is scattered. Price charts live in one tab, financial statements in another, notes in a spreadsheet, and portfolio tracking in a tool that has no idea why you bought the stock in the first place. I built this project because I wanted a research workflow that felt more like a decision workspace than a collection of disconnected utilities. The goal was to make the most important parts of equity research easier to review, compare, and revisit without adding more friction, and a full institutional terminal was never the target.
 
-## The Problem This Product Tries To Solve
+## The problem this product tries to solve
 
 Retail research tools often force a tradeoff between breadth and clarity. Broad platforms surface a huge number of metrics, but they bury the signal under dense tables and too many navigation layers. Simpler trackers make portfolio monitoring easy, but they stop short of helping you understand the business behind the position. Spreadsheet-based workflows are flexible, but they are tedious to maintain and hard to keep consistent over time.
 
-That combination creates a quiet failure mode, which is that you can gather plenty of information without actually improving the decision. I wanted a workspace that answered three practical questions quickly. What does this company look like right now, how does the valuation compare with the operating profile, and what does this mean for the positions I already hold?
+That combination creates a failure mode that is easy to miss, which is that you can gather plenty of information without actually improving the decision. I wanted a workspace that answered three practical questions quickly. What does this company look like right now, how does the valuation compare with the operating profile, and what does this mean for the positions I already hold?
 
-## Why The Product Uses Curated Snapshots
+## Why the product uses curated snapshots
 
 One of the earliest product decisions was to avoid pretending this needed to be a tick-by-tick trading terminal. The platform is built around curated company snapshots, valuation panels, price history, and financial statement views. That structure matters because the highest-value research questions usually do not require every possible data point in real time. They require trustworthy context with clear fallbacks.
 
-That is why the product leans on a curated symbol set and snapshot-backed research rather than an unlimited search surface. It narrows the scope enough to keep the experience reliable while still giving the user a strong research loop. The research experience is more stable because every symbol can be shaped into the same interface, the UI can emphasize interpretation instead of raw data dumping, and the system can degrade more gracefully when a data source is incomplete. In other words, curation is not a limitation here. It is part of the product strategy.
+That is why the product leans on a curated symbol set and snapshot-backed research rather than an unlimited search surface. It narrows the scope enough to keep the experience reliable while still giving the user a strong research loop. The research experience is more stable because every symbol can be shaped into the same interface, the UI can emphasize interpretation instead of raw data dumping, and the system can degrade more gracefully when a data source is incomplete. In other words, curation is part of the product strategy here.
 
-## The Core Product Decisions
+## The core product decisions
 
-The route is organized around two tabs: research and portfolio. That sounds simple, but it changes the product meaningfully. Instead of treating research as a separate activity from portfolio management, the platform lets both workflows share the same mental model. You can move from a holding to a deeper review of the underlying company without changing tools or losing context. That matters because investing decisions are rarely isolated. The useful question is not just "Is this stock interesting?" It is "Is this stock interesting relative to what I already own?"
+The route is organized around research and portfolio views, with a retirement planner as a third view beside them. That sounds simple, but it changes the product meaningfully. Instead of treating research as a separate activity from portfolio management, the platform lets both workflows share the same mental model. You can move from a holding to a deeper review of the underlying company without changing tools or losing context. That matters because investing decisions are rarely isolated. The useful question is "Is this stock interesting relative to what I already own?" more than "Is this stock interesting?" on its own.
 
 I chose browser-local persistence for portfolio tracking instead of building a full account system. For this project, that was the right call. The value of the portfolio tab is fast iteration, not multi-user infrastructure. Local persistence keeps the workflow immediate and private, removes sign-in friction, and lets the product behave more like a personal research notebook than a brokerage dashboard. Adding authentication would have made the product feel more complete on paper, but it would not have made the core research loop materially better.
 
 A ratio by itself rarely helps. A low multiple can signal value, but it can also reflect deteriorating fundamentals. A premium multiple may be justified if growth, margins, and balance-sheet quality support it. That is why the experience is organized around adjacent panels instead of isolated numbers. The user can move across valuation, growth, profitability, financial statements, industry context, and price history without reorienting every time. If a metric invites interpretation, the supporting context should be close by.
 
-## Tradeoffs I Would Make Again
+## Tradeoffs I would make again
 
 A smaller but cleaner research universe is better than a giant index with uneven quality. The product is intentionally framed as a workspace, not a brokerage clone, and that keeps the experience centered on research and portfolio understanding instead of trying to imitate execution platforms. There are plenty of finance products that use metric density as a stand-in for usefulness. I would rather show fewer things, arranged with more intent, than turn the page into a wall of numbers that looks impressive but slows down judgment.
 
 Building finance products is often an exercise in restraint. The temptation is to add more coverage, more models, more feeds, and more technical sophistication. But most of the user value comes from making it easier to move from raw information to a coherent point of view. This project reinforced a product lesson I trust across domains, which is that good tools reduce decision fatigue before they add decision power.
 
-## Try The Live Product
+## Try the live product
 
 You can explore the full product at [Investment Research Platform](/investments). The quickest way to understand the experience is to move between the research and portfolio views and notice how the product keeps analysis and position management in the same frame. That integration is the point of the project.
 

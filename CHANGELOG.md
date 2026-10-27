@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-26
+
+- Voice and accuracy pass on all writing and site copy ([#641](https://github.com/IsaacAVazquez/Website/pull/641)).
+
+---
+
 ## 2026-10-23
 
 - Re-read the museum exhibition calendars so on-view counts work again ([#638](https://github.com/IsaacAVazquez/Website/pull/638)).

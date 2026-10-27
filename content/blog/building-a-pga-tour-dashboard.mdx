@@ -2,6 +2,7 @@
 title: "Building a PGA Tour Dashboard That Follows Whatever Event Is Live"
 excerpt: "I built PGA Tour Pulse to make weekend leaderboard scanning, round-by-round movement, and cut-line pressure legible on one screen. Here is why it auto-tracks the featured event."
 publishedAt: "2026-06-07"
+updatedAt: "2026-10-23"
 category: "Sports Analytics"
 tags: ["Golf", "PGA Tour", "Sports Analytics", "ESPN API", "Snapshot Driven", "Next.js", "Dashboard"]
 featured: false
@@ -43,9 +44,9 @@ That auto-tracking is what makes it a tool rather than a one-off page. It means 
 
 ## The snapshot underneath it
 
-None of this fetches live at request time. The data comes from ESPN's public golf leaderboard endpoint with no auth token required, and a GitHub Action runs the builder in src/lib/golfData.ts daily at 08:40 UTC, which writes the result into a committed snapshot at src/data/golfSnapshot.ts. The running site reads that file and makes no third-party call when you load the page. Like the other dashboards in this family, a failed fetch keeps the previous snapshot rather than wiping it, so a bad response from ESPN never blanks a leaderboard that people are actively watching.
+None of this fetches live at request time. The data comes from ESPN's public golf leaderboard endpoint with no auth token required, and a GitHub Action runs the builder in src/lib/golfData.ts every three hours from Thursday through Sunday and at 08:40 UTC Monday through Wednesday, which writes the result into a committed snapshot at src/data/golfSnapshot.json. The running site reads that file and makes no third-party call when you load the page. Like the other dashboards in this family, a failed fetch keeps the previous snapshot rather than wiping it, so a bad response from ESPN never blanks a leaderboard that people are actively watching.
 
-On top of the snapshot sit two thin read APIs, /api/golf/summary for the leaderboard slate and /api/golf/players/[playerId] for an individual drilldown. I cared enough about those behaving correctly to be specific about the error contract. A malformed player id returns a 400, a well-formed id that does not match a real player returns a 404, and crucially those error responses are never cached at the CDN. That last detail matters more than it sounds, because a cached 404 is the kind of bug that quietly persists long after the underlying data is fine, and golf data turns over fast enough that I did not want a stale error pinned in front of a player who is now very much on the leaderboard.
+On top of the snapshot sits a thin read API, /api/golf/players/[playerId], for an individual drilldown, and the /api/golf/summary route that served the leaderboard slate was removed on August 11, 2026. The error contract is specific. A malformed player id returns a 400, a well-formed id that does not match a real player returns a 404, and those error responses are never cached at the CDN. That last detail matters more than it sounds, because a cached 404 is the kind of bug that quietly persists long after the underlying data is fine, and golf data turns over fast enough that I did not want a stale error pinned in front of a player who is now very much on the leaderboard.
 
 ## What the build clarified
 

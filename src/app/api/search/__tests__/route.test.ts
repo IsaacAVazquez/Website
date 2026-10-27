@@ -340,7 +340,7 @@ describe("GET /api/search", () => {
     );
   });
 
-  it("indexes the preseason trade calculator as a distinct page", async () => {
+  it("indexes the trade calculator as a distinct page", async () => {
     const response = await GET(
       makeRequest("?q=fantasy%20trade%20calculator&type=project")
     );
@@ -356,7 +356,7 @@ describe("GET /api/search", () => {
           type: "project",
           category: "Sports",
           excerpt:
-            "A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.",
+            "A one-QB redraft trade estimate using expert consensus and league settings, priced on mock-draft ADP before the season and on rest-of-season rankings and this season's scoring once it starts.",
         }),
       ])
     );

@@ -420,7 +420,7 @@ function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) 
       <div className="dl-page c97-shell c97-frame">
         <header className="dl-title">
           <h1>Decision Lab</h1>
-          <p>I built this to pressure-test product bets before a confident story outruns the actual tradeoff.</p>
+          <p>I built this to pressure-test product bets before the confidence in a pitch gets ahead of the actual tradeoff.</p>
         </header>
 
         <section className="dl-presets" aria-labelledby={`${ids}-presets`}>

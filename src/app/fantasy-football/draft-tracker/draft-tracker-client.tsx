@@ -980,8 +980,8 @@ export function DraftTrackerClient() {
           <h1 className="ffb-title">Draft Tracker</h1>
           {showSetup ? (
             <p className="ffb-lede">
-              Settings lock when the draft starts. The board logs every pick in the room, not just
-              yours.
+              Settings lock when the draft starts. The board logs every pick in the room, yours and
+              everyone else&apos;s.
             </p>
           ) : (
             <p className="ffb-lede">

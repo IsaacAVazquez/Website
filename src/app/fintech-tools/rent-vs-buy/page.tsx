@@ -5,7 +5,7 @@ import { RentVsBuyClient } from "./rent-vs-buy-client";
 export const metadata = constructMetadata({
   title: "Rent vs. Buy Calculator",
   description:
-    "I built a rent-vs-buy calculator that runs a month-by-month net-worth model, credits the renter the opportunity cost of a buyer's down payment, and finds the exact year buying pulls ahead.",
+    "I built a rent-vs-buy calculator that runs a month-by-month net-worth model, credits the renter the opportunity cost of a buyer's down payment, and finds about how many years and months it takes buying to pull ahead.",
   canonicalUrl: "/fintech-tools/rent-vs-buy",
   dateModified: "2026-10-11",
   image: "/fintech-tools/rent-vs-buy/opengraph-image",

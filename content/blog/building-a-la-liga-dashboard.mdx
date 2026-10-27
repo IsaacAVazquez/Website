@@ -2,6 +2,7 @@
 title: "Building a La Liga Dashboard Around the Three Races That Matter"
 excerpt: "I built La Liga Pulse to track the title race, European qualification, and relegation on one screen, with scorer and assist leaderboards alongside. Here is the product thinking."
 publishedAt: "2026-06-09"
+updatedAt: "2026-10-23"
 category: "Sports Analytics"
 tags: ["La Liga", "Football", "Soccer", "Sports Analytics", "Snapshot Driven", "Next.js", "Dashboard"]
 featured: false
@@ -24,7 +25,7 @@ seo:
 
 If you want to see the product before reading the breakdown, open [La Liga Pulse](/la-liga).
 
-A league table is one of the most honest objects in sports, and also one of the most misleading. It tells you exactly who is first and who is last, and it tells you almost nothing about where the season is being decided. By matchday 30, a Spanish league season is not one competition. It is three of them happening in the same standings at once, and the gap between second and third place can carry more tension than the gap between first and second. I built La Liga Pulse because I kept finding myself doing the same mental arithmetic every weekend, counting points to the Champions League cutoff and points above the drop, and I wanted a screen that did that counting for me.
+A league table is one of the most honest objects in sports, and also one of the most misleading. It tells you exactly who is first and who is last, and it tells you almost nothing about where the season is being decided. By matchday 30, a Spanish league season is three competitions happening in the same standings at once, and the gap between second and third place can carry more tension than the gap between first and second. I built La Liga Pulse because I kept finding myself doing the same mental arithmetic every weekend, counting points to the Champions League cutoff and points above the drop, and I wanted a screen that did that counting for me.
 
 ## A table tells you rank, not pressure
 
@@ -34,13 +35,13 @@ What I wanted to make explicit is that pressure lives at the boundaries, not in 
 
 ## Three races on one screen
 
-In practice that means the table is not presented as one undifferentiated list. The top of the standings reads as a title-race surface, with the points context that tells you whether the lead is real or whether one bad weekend reopens it. The middle bands surface the European qualification picture, which in La Liga is genuinely the most crowded and most volatile part of the table most years, with several clubs separated by a couple of points all chasing the same handful of continental spots. The bottom is its own relegation tracker, because the math down there is the math people actually feel, and a single result can swing a club from safe to in trouble.
+In practice that means the table is not presented as one undifferentiated list. The top of the standings reads as a title-race surface, with the points context that tells you whether the lead is real or whether one bad weekend reopens it. The middle bands surface the European qualification picture, which in La Liga is the most crowded and most volatile part of the table most years, with several clubs separated by a couple of points all chasing the same handful of continental spots. The bottom is its own relegation tracker, because the math down there is the math people actually feel, and a single result can swing a club from safe to in trouble.
 
 Alongside the races, the dashboard carries top-ten scorer and assist leaderboards. I think those belong on the same screen rather than a separate stats page, because the individual story and the team story are not really separable in a league like this. The player driving a European push and the table position that push is producing are the same narrative, and putting them next to each other lets you see cause and effect instead of looking them up independently. Club-level form is there too, so when a team is climbing or sliding you can see whether the recent run supports it or whether the standings are lagging behind reality.
 
 ## Why it reads from a checked-in snapshot
 
-The data comes from football-data.org, but the running site never calls football-data.org. Instead the dashboard reads from a TypeScript snapshot committed into the repository at src/data/laLigaSnapshot.ts, which is the same build-time snapshot pattern I already use for the Premier League dashboard. A scheduled job fetches the standings, fixtures, scorers, and form, regenerates that file, and commits it. At request time there is no third-party call at all, so the page renders instantly and cannot be taken down by a rate limit or a slow upstream during a Sunday slate when the most people are looking.
+The data comes from football-data.org, but the running site never calls football-data.org. Instead the dashboard reads from a JSON snapshot committed into the repository at src/data/laLigaSnapshot.json, which is the same build-time snapshot pattern I already use for the Premier League dashboard. A scheduled job fetches the standings, fixtures, scorers, and form, regenerates that file, and commits it. At request time there is no third-party call at all, so the page renders instantly and cannot be taken down by a rate limit or a slow upstream during a Sunday slate when the most people are looking.
 
 The free tier I am pulling from is capped at ten requests a minute, which would be a real constraint if I were fetching live on every page view, and is a complete non-issue when the fetching happens once on a schedule and the result is just a file in the repo. The refresh is also deliberately conservative. If a fetch fails or comes back thin, the script keeps the previous snapshot rather than overwriting good data with nothing, because the worst failure mode for a tool people check during matchweek is a blank board caused by thirty bad seconds upstream. Stale but correct beats fresh but broken every time for a surface like this.
 

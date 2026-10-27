@@ -125,7 +125,7 @@ export function MissionLaunchBoard({
           </p>
           <p>
             {status === "upcoming"
-              ? "The live provider does not currently list a future SpaceX mission. The masthead falls back to the latest completed launch when possible."
+              ? "The latest Launch Library 2 snapshot lists no future SpaceX mission, so the masthead falls back to the latest completed launch when it can."
               : "The published archive came back empty."}
           </p>
         </div>
