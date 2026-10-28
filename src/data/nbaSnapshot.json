@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-28T05:55:20.868Z",
+  "generatedAt": "2026-10-28T15:12:40.673Z",
   "updatedAt": "2026-10-28",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -409,10 +409,10 @@
         "lastTen": "4-0"
       },
       {
-        "id": "lal",
-        "abbreviation": "LAL",
-        "name": "Los Angeles Lakers",
-        "shortName": "Lakers",
+        "id": "por",
+        "abbreviation": "POR",
+        "name": "Portland Trail Blazers",
+        "shortName": "Trail Blazers",
         "conference": "west",
         "division": null,
         "conferenceSeed": 4,
@@ -422,35 +422,35 @@
         "winPercent": 1,
         "gamesBack": 0.5,
         "gamesPlayed": 3,
-        "pointsFor": 128,
-        "pointsAgainst": 115,
-        "pointDifferential": 39,
+        "pointsFor": 129.33333,
+        "pointsAgainst": 110.666664,
+        "pointDifferential": 56,
         "streak": "W3",
-        "homeRecord": "2-0",
-        "awayRecord": "1-0",
+        "homeRecord": "1-0",
+        "awayRecord": "2-0",
         "lastTen": "3-0"
       },
       {
-        "id": "por",
-        "abbreviation": "POR",
-        "name": "Portland Trail Blazers",
-        "shortName": "Trail Blazers",
+        "id": "lal",
+        "abbreviation": "LAL",
+        "name": "Los Angeles Lakers",
+        "shortName": "Lakers",
         "conference": "west",
         "division": null,
         "conferenceSeed": 5,
         "position": 5,
-        "wins": 2,
-        "losses": 0,
-        "winPercent": 1,
+        "wins": 3,
+        "losses": 1,
+        "winPercent": 0.75,
         "gamesBack": 1,
-        "gamesPlayed": 2,
-        "pointsFor": 126,
-        "pointsAgainst": 101.5,
-        "pointDifferential": 49,
-        "streak": "W2",
-        "homeRecord": "1-0",
+        "gamesPlayed": 4,
+        "pointsFor": 128.25,
+        "pointsAgainst": 120.25,
+        "pointDifferential": 32,
+        "streak": "L1",
+        "homeRecord": "2-1",
         "awayRecord": "1-0",
-        "lastTen": "2-0"
+        "lastTen": "3-1"
       },
       {
         "id": "min",
@@ -680,9 +680,9 @@
       "name": "Luka Doncic",
       "teamId": "lal",
       "teamAbbreviation": "LAL",
-      "total": 103,
-      "appearances": 3,
-      "perGame": 34.333332
+      "total": 144,
+      "appearances": 4,
+      "perGame": 36
     },
     {
       "rank": 2,
@@ -704,15 +704,6 @@
     },
     {
       "rank": 4,
-      "name": "Zach LaVine",
-      "teamId": "sac",
-      "teamAbbreviation": "SAC",
-      "total": 87,
-      "appearances": 3,
-      "perGame": 29
-    },
-    {
-      "rank": 5,
       "name": "Tyrese Maxey",
       "teamId": "phi",
       "teamAbbreviation": "PHI",
@@ -721,7 +712,7 @@
       "perGame": 28.75
     },
     {
-      "rank": 6,
+      "rank": 5,
       "name": "Giannis Antetokounmpo",
       "teamId": "mia",
       "teamAbbreviation": "MIA",
@@ -730,7 +721,25 @@
       "perGame": 28.5
     },
     {
+      "rank": 6,
+      "name": "Jayson Tatum",
+      "teamId": "bos",
+      "teamAbbreviation": "BOS",
+      "total": 112,
+      "appearances": 4,
+      "perGame": 28
+    },
+    {
       "rank": 7,
+      "name": "Zach LaVine",
+      "teamId": "sac",
+      "teamAbbreviation": "SAC",
+      "total": 109,
+      "appearances": 4,
+      "perGame": 27.25
+    },
+    {
+      "rank": 8,
       "name": "Shai Gilgeous-Alexander",
       "teamId": "okc",
       "teamAbbreviation": "OKC",
@@ -739,7 +748,7 @@
       "perGame": 27.25
     },
     {
-      "rank": 8,
+      "rank": 9,
       "name": "Donovan Mitchell",
       "teamId": "cle",
       "teamAbbreviation": "CLE",
@@ -748,22 +757,13 @@
       "perGame": 26.666666
     },
     {
-      "rank": 9,
+      "rank": 10,
       "name": "Austin Reaves",
       "teamId": "lal",
       "teamAbbreviation": "LAL",
-      "total": 80,
-      "appearances": 3,
-      "perGame": 26.666666
-    },
-    {
-      "rank": 10,
-      "name": "Cooper Flagg",
-      "teamId": "dal",
-      "teamAbbreviation": "DAL",
-      "total": 75,
-      "appearances": 3,
-      "perGame": 25
+      "total": 106,
+      "appearances": 4,
+      "perGame": 26.5
     }
   ],
   "rebounders": [
@@ -772,9 +772,9 @@
       "name": "Domantas Sabonis",
       "teamId": "sac",
       "teamAbbreviation": "SAC",
-      "total": 52,
-      "appearances": 3,
-      "perGame": 17.333334
+      "total": 66,
+      "appearances": 4,
+      "perGame": 16.5
     },
     {
       "rank": 2,
@@ -790,18 +790,18 @@
       "name": "Karl-Anthony Towns",
       "teamId": "ny",
       "teamAbbreviation": "NY",
-      "total": 36,
-      "appearances": 3,
-      "perGame": 12
+      "total": 56,
+      "appearances": 4,
+      "perGame": 14
     },
     {
       "rank": 4,
       "name": "Victor Wembanyama",
       "teamId": "sa",
       "teamAbbreviation": "SA",
-      "total": 33,
-      "appearances": 3,
-      "perGame": 11
+      "total": 43,
+      "appearances": 4,
+      "perGame": 10.75
     },
     {
       "rank": 5,
@@ -888,12 +888,12 @@
     },
     {
       "rank": 4,
-      "name": "De'Aaron Fox",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 25,
-      "appearances": 3,
-      "perGame": 8.333333
+      "name": "Luka Doncic",
+      "teamId": "lal",
+      "teamAbbreviation": "LAL",
+      "total": 33,
+      "appearances": 4,
+      "perGame": 8.25
     },
     {
       "rank": 5,
@@ -906,33 +906,24 @@
     },
     {
       "rank": 6,
-      "name": "Luka Doncic",
-      "teamId": "lal",
-      "teamAbbreviation": "LAL",
-      "total": 24,
-      "appearances": 3,
+      "name": "Jayson Tatum",
+      "teamId": "bos",
+      "teamAbbreviation": "BOS",
+      "total": 32,
+      "appearances": 4,
       "perGame": 8
     },
     {
       "rank": 7,
-      "name": "Jayson Tatum",
-      "teamId": "bos",
-      "teamAbbreviation": "BOS",
-      "total": 24,
-      "appearances": 3,
+      "name": "Cade Cunningham",
+      "teamId": "det",
+      "teamAbbreviation": "DET",
+      "total": 32,
+      "appearances": 4,
       "perGame": 8
     },
     {
       "rank": 8,
-      "name": "Cade Cunningham",
-      "teamId": "det",
-      "teamAbbreviation": "DET",
-      "total": 24,
-      "appearances": 3,
-      "perGame": 8
-    },
-    {
-      "rank": 9,
       "name": "Keyonte George",
       "teamId": "utah",
       "teamAbbreviation": "UTAH",
@@ -941,13 +932,22 @@
       "perGame": 7.75
     },
     {
+      "rank": 9,
+      "name": "De'Aaron Fox",
+      "teamId": "sa",
+      "teamAbbreviation": "SA",
+      "total": 31,
+      "appearances": 4,
+      "perGame": 7.75
+    },
+    {
       "rank": 10,
-      "name": "Ja Morant",
-      "teamId": "por",
-      "teamAbbreviation": "POR",
-      "total": 15,
-      "appearances": 2,
-      "perGame": 7.5
+      "name": "Domantas Sabonis",
+      "teamId": "sac",
+      "teamAbbreviation": "SAC",
+      "total": 29,
+      "appearances": 4,
+      "perGame": 7.25
     }
   ],
   "recentFixtures": [
@@ -2040,7 +2040,7 @@
         "pointsFor": 440,
         "pointsAgainst": 428
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "mil": {
       "team": {
@@ -2305,7 +2305,7 @@
         "pointsFor": 467,
         "pointsAgainst": 489
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "chi": {
       "team": {
@@ -2570,7 +2570,7 @@
         "pointsFor": 443,
         "pointsAgainst": 518
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "cle": {
       "team": {
@@ -2808,7 +2808,7 @@
         "pointsFor": 358,
         "pointsAgainst": 360
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "bos": {
       "team": {
@@ -3073,7 +3073,7 @@
         "pointsFor": 479,
         "pointsAgainst": 447
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "lac": {
       "team": {
@@ -3311,7 +3311,7 @@
         "pointsFor": 339,
         "pointsAgainst": 329
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "mem": {
       "team": {
@@ -3576,7 +3576,7 @@
         "pointsFor": 467,
         "pointsAgainst": 428
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "atl": {
       "team": {
@@ -3841,7 +3841,7 @@
         "pointsFor": 484,
         "pointsAgainst": 447
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "mia": {
       "team": {
@@ -4106,7 +4106,7 @@
         "pointsFor": 436,
         "pointsAgainst": 487
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "cha": {
       "team": {
@@ -4371,7 +4371,7 @@
         "pointsFor": 416,
         "pointsAgainst": 444
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "utah": {
       "team": {
@@ -4636,7 +4636,7 @@
         "pointsFor": 451,
         "pointsAgainst": 484
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "sac": {
       "team": {
@@ -4901,7 +4901,7 @@
         "pointsFor": 431,
         "pointsAgainst": 502
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "ny": {
       "team": {
@@ -5166,7 +5166,7 @@
         "pointsFor": 416,
         "pointsAgainst": 421
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "lal": {
       "team": {
@@ -5182,6 +5182,32 @@
         "primaryColor": "552583"
       },
       "recentFixtures": [
+        {
+          "id": "401909880",
+          "utcDate": "2026-10-28T03:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "lal",
+            "name": "Los Angeles Lakers",
+            "shortName": "Lakers",
+            "abbreviation": "LAL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
+          },
+          "awayTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 129,
+            "away": 136
+          }
+        },
         {
           "id": "401909861",
           "utcDate": "2026-10-25T21:00Z",
@@ -5262,32 +5288,6 @@
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909880",
-          "utcDate": "2026-10-28T03:00Z",
-          "status": "STATUS_IN_PROGRESS",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "lal",
-            "name": "Los Angeles Lakers",
-            "shortName": "Lakers",
-            "abbreviation": "LAL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
-          },
-          "awayTeam": {
-            "id": "por",
-            "name": "Portland Trail Blazers",
-            "shortName": "Trail Blazers",
-            "abbreviation": "POR",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909892",
           "utcDate": "2026-10-29T02:30Z",
@@ -5391,20 +5391,47 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909934",
+          "utcDate": "2026-11-05T03:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sac",
+            "name": "Sacramento Kings",
+            "shortName": "Kings",
+            "abbreviation": "SAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
+          },
+          "awayTeam": {
+            "id": "lal",
+            "name": "Los Angeles Lakers",
+            "shortName": "Lakers",
+            "abbreviation": "LAL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "W",
           "W"
         ],
         "wins": 3,
-        "losses": 0,
-        "pointsFor": 384,
-        "pointsAgainst": 345
+        "losses": 1,
+        "pointsFor": 513,
+        "pointsAgainst": 481
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "orl": {
       "team": {
@@ -5642,7 +5669,7 @@
         "pointsFor": 329,
         "pointsAgainst": 349
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "dal": {
       "team": {
@@ -5907,7 +5934,7 @@
         "pointsFor": 450,
         "pointsAgainst": 464
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "bkn": {
       "team": {
@@ -6172,7 +6199,7 @@
         "pointsFor": 457,
         "pointsAgainst": 496
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "den": {
       "team": {
@@ -6410,7 +6437,7 @@
         "pointsFor": 339,
         "pointsAgainst": 365
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "ind": {
       "team": {
@@ -6675,7 +6702,7 @@
         "pointsFor": 466,
         "pointsAgainst": 460
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "no": {
       "team": {
@@ -6913,7 +6940,7 @@
         "pointsFor": 374,
         "pointsAgainst": 384
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "det": {
       "team": {
@@ -7178,7 +7205,7 @@
         "pointsFor": 452,
         "pointsAgainst": 428
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "tor": {
       "team": {
@@ -7416,7 +7443,7 @@
         "pointsFor": 341,
         "pointsAgainst": 311
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "hou": {
       "team": {
@@ -7681,7 +7708,7 @@
         "pointsFor": 483,
         "pointsAgainst": 444
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "sa": {
       "team": {
@@ -7946,7 +7973,7 @@
         "pointsFor": 466,
         "pointsAgainst": 439
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "phx": {
       "team": {
@@ -8184,7 +8211,7 @@
         "pointsFor": 328,
         "pointsAgainst": 371
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "okc": {
       "team": {
@@ -8449,7 +8476,7 @@
         "pointsFor": 445,
         "pointsAgainst": 403
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "min": {
       "team": {
@@ -8714,7 +8741,7 @@
         "pointsFor": 488,
         "pointsAgainst": 420
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "por": {
       "team": {
@@ -8730,6 +8757,32 @@
         "primaryColor": "e03a3e"
       },
       "recentFixtures": [
+        {
+          "id": "401909880",
+          "utcDate": "2026-10-28T03:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "lal",
+            "name": "Los Angeles Lakers",
+            "shortName": "Lakers",
+            "abbreviation": "LAL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
+          },
+          "awayTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 129,
+            "away": 136
+          }
+        },
         {
           "id": "401909852",
           "utcDate": "2026-10-24T02:00Z",
@@ -8784,32 +8837,6 @@
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909880",
-          "utcDate": "2026-10-28T03:00Z",
-          "status": "STATUS_IN_PROGRESS",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "lal",
-            "name": "Los Angeles Lakers",
-            "shortName": "Lakers",
-            "abbreviation": "LAL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
-          },
-          "awayTeam": {
-            "id": "por",
-            "name": "Portland Trail Blazers",
-            "shortName": "Trail Blazers",
-            "abbreviation": "POR",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909895",
           "utcDate": "2026-10-30T02:00Z",
@@ -8913,19 +8940,46 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909294",
+          "utcDate": "2026-11-07T03:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "lal",
+            "name": "Los Angeles Lakers",
+            "shortName": "Lakers",
+            "abbreviation": "LAL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
+          },
+          "awayTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
+          "W",
           "W"
         ],
-        "wins": 2,
+        "wins": 3,
         "losses": 0,
-        "pointsFor": 252,
-        "pointsAgainst": 203
+        "pointsFor": 388,
+        "pointsAgainst": 332
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "gs": {
       "team": {
@@ -9190,7 +9244,7 @@
         "pointsFor": 469,
         "pointsAgainst": 483
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     },
     "wsh": {
       "team": {
@@ -9455,7 +9509,7 @@
         "pointsFor": 457,
         "pointsAgainst": 458
       },
-      "generatedAt": "2026-10-28T05:55:20.868Z"
+      "generatedAt": "2026-10-28T15:12:40.673Z"
     }
   }
 }
