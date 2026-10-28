@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -0.5498,
       "ttmPe": 141.68,
-      "marketCap": 170667334800,
-      "psRatio": 14.73,
-      "pbRatio": 3.9,
+      "marketCap": 162989461440,
+      "psRatio": 14.07,
+      "pbRatio": 3.72,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5381,25 +5381,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.12,
-      "costOfEquity": 11.200000000000001,
+      "wacc": 10.100000000000001,
+      "costOfEquity": 11.219999999999999,
       "costOfDebt": 0.96,
       "taxRate": 3,
-      "beta": 0.789,
-      "marketCap": 170667334800
+      "beta": 0.7902,
+      "marketCap": 162989461440
     },
     "beta": {
-      "beta5y": 0.789
+      "beta5y": 0.7902
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 176.79,
-        "high": 179.62,
-        "low": 176.35,
-        "close": 177.94,
-        "volume": 1893800
-      },
       {
         "date": "2025-10-27",
         "open": 178.33,
@@ -7407,23 +7399,31 @@
         "low": 237.17,
         "close": 240.61,
         "volume": 2281500
+      },
+      {
+        "date": "2026-10-27",
+        "open": 233.28,
+        "high": 237.93,
+        "low": 224.73,
+        "close": 226.72,
+        "volume": 6000100
       }
     ],
     "news": [
-      {
-        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
-        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
-        "type": "STORY"
-      },
       {
         "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
         "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
+        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
         "type": "STORY"
       },
       {
@@ -7443,19 +7443,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
-        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
         "title": "Why Camden Property Remains a Solid Hold in the Current Market",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
+        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
         "type": "STORY"
       },
       {
@@ -7475,19 +7475,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
+        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "98c1c2e2-dea3-3751-bd49-8afb96bc5212",
         "title": "Welltower (NYSE:WELL) Increases Dividend And Raises 2025 Earnings Guidance",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/welltower-nyse-well-increases-dividend-174407979.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "4f40111d-551f-37eb-97c5-15cf5acf2705",
-        "title": "Welltower's Q1 FFO & Revenues Beat Estimates, Same Store NOI Rises",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/welltowers-q1-ffo-revenues-beat-162300193.html",
         "type": "STORY"
       }
     ],
@@ -7554,17 +7554,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 74.09
+        "industryAvg": 71.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.73,
-        "industryAvg": 9.07
+        "value": 14.07,
+        "industryAvg": 8.73
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.9,
-        "industryAvg": 2.9
+        "value": 3.72,
+        "industryAvg": 2.79
       },
       {
         "metric": "ROE",

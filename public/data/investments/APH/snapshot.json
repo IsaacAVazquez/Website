@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.9972,
-      "ttmPe": 36.59,
-      "marketCap": 180132164000,
-      "psRatio": 6.95,
-      "pbRatio": 12.89,
-      "pegRatio": 0.61
+      "ttmPe": 39.16,
+      "marketCap": 192803292000,
+      "psRatio": 7.44,
+      "pbRatio": 13.79,
+      "pegRatio": 0.65
     },
     "profitability": {
       "roe": 6.81,
@@ -550,12 +550,12 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "4.2",
-          "2026-06-30": "1.44",
-          "2026-03-31": "0.76",
-          "2025-12-31": "0.98",
-          "2025-09-30": "1.02",
-          "2025-06-30": "0.9",
+          "TTM": "2.1",
+          "2026-06-30": "0.72",
+          "2026-03-31": "0.38",
+          "2025-12-31": "0.49",
+          "2025-09-30": "0.51",
+          "2025-06-30": "0.45",
           "2025-03-31": "0.61",
           "2024-12-31": "0.62",
           "2024-09-30": "0.5",
@@ -571,12 +571,12 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "4.0",
-          "2026-06-30": "1.37",
-          "2026-03-31": "0.72",
-          "2025-12-31": "0.93",
-          "2025-09-30": "0.97",
-          "2025-06-30": "0.86",
+          "TTM": "2.0",
+          "2026-06-30": "0.69",
+          "2026-03-31": "0.36",
+          "2025-12-31": "0.47",
+          "2025-09-30": "0.49",
+          "2025-06-30": "0.43",
           "2025-03-31": "0.58",
           "2024-12-31": "0.59",
           "2024-09-30": "0.48",
@@ -592,12 +592,12 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "1226800000.0",
-          "2026-06-30": "1230400000.0",
-          "2026-03-31": "1228900000.0",
-          "2025-12-31": "1225600000.0",
-          "2025-09-30": "1221800000.0",
-          "2025-06-30": "1215300000.0",
+          "TTM": "2453600000.0",
+          "2026-06-30": "2460800000.0",
+          "2026-03-31": "2457800000.0",
+          "2025-12-31": "2451200000.0",
+          "2025-09-30": "2443600000.0",
+          "2025-06-30": "2430600000.0",
           "2025-03-31": "1209800000.0",
           "2024-12-31": "1207800000.0",
           "2024-09-30": "1204900000.0",
@@ -613,12 +613,12 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "1287600000.0",
-          "2026-06-30": "1289200000.0",
-          "2026-03-31": "1289700000.0",
-          "2025-12-31": "1288700000.0",
-          "2025-09-30": "1282800000.0",
-          "2025-06-30": "1272200000.0",
+          "TTM": "2575200000.0",
+          "2026-06-30": "2578400000.0",
+          "2026-03-31": "2579400000.0",
+          "2025-12-31": "2577400000.0",
+          "2025-09-30": "2565600000.0",
+          "2025-06-30": "2544400000.0",
           "2025-03-31": "1266200000.0",
           "2024-12-31": "1268100000.0",
           "2024-09-30": "1265500000.0",
@@ -1202,40 +1202,40 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "3.51",
-          "2024-12-31": "2.01",
-          "2023-12-31": "1.62",
-          "2022-12-31": "1.6",
+          "2025-12-31": "1.76",
+          "2024-12-31": "1.01",
+          "2023-12-31": "0.81",
+          "2022-12-31": "0.8",
           "2021-12-31": "1.33",
           "2020-12-31": "1.01",
           "2019-12-31": "*"
         },
         {
           "Breakdown": "Diluted EPS",
-          "2025-12-31": "3.34",
-          "2024-12-31": "1.92",
-          "2023-12-31": "1.56",
-          "2022-12-31": "1.53",
+          "2025-12-31": "1.67",
+          "2024-12-31": "0.96",
+          "2023-12-31": "0.78",
+          "2022-12-31": "0.77",
           "2021-12-31": "1.27",
           "2020-12-31": "0.98",
           "2019-12-31": "*"
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "1218200000.0",
-          "2024-12-31": "1203800000.0",
-          "2023-12-31": "1193000000.0",
-          "2022-12-31": "1192400000.0",
+          "2025-12-31": "2436400000.0",
+          "2024-12-31": "2407600000.0",
+          "2023-12-31": "2386000000.0",
+          "2022-12-31": "2384800000.0",
           "2021-12-31": "1195800000.0",
           "2020-12-31": "1192000000.0",
           "2019-12-31": "*"
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "1277500000.0",
-          "2024-12-31": "1263600000.0",
-          "2023-12-31": "1241200000.0",
-          "2022-12-31": "1242000000.0",
+          "2025-12-31": "2555000000.0",
+          "2024-12-31": "2527200000.0",
+          "2023-12-31": "2482400000.0",
+          "2022-12-31": "2484000000.0",
           "2021-12-31": "1251000000.0",
           "2020-12-31": "1230000000.0",
           "2019-12-31": "*"
@@ -5305,25 +5305,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.530000000000001,
-      "costOfEquity": 14.87,
+      "wacc": 13.54,
+      "costOfEquity": 14.790000000000001,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.2529,
-      "marketCap": 180132164000
+      "beta": 1.2434,
+      "marketCap": 192803292000
     },
     "beta": {
-      "beta5y": 1.2529
+      "beta5y": 1.2434
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 68.595,
-        "high": 68.825,
-        "low": 66.65,
-        "close": 66.91,
-        "volume": 18148000
-      },
       {
         "date": "2025-10-27",
         "open": 67.845,
@@ -7331,23 +7323,31 @@
         "low": 73.91,
         "close": 75.27,
         "volume": 11681700
+      },
+      {
+        "date": "2026-10-27",
+        "open": 76.35,
+        "high": 78.68,
+        "low": 76.1,
+        "close": 78.21,
+        "volume": 17398500
       }
     ],
     "news": [
-      {
-        "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
-        "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
-        "publisher": "StockStory",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
         "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
+        "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
+        "publisher": "StockStory",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
         "type": "STORY"
       },
       {
@@ -7367,6 +7367,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
         "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
         "publisher": "Zacks",
@@ -7375,11 +7383,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
+        "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
         "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
         "type": "STORY"
       },
       {
@@ -7396,14 +7404,6 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
-        "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
         "type": "STORY"
       },
       {
@@ -7482,43 +7482,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.59,
-        "industryAvg": 36.24
+        "value": 39.16,
+        "industryAvg": 37.66
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.95,
-        "industryAvg": 3.09
+        "value": 7.44,
+        "industryAvg": 3.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.89,
-        "industryAvg": 5.97
+        "value": 13.79,
+        "industryAvg": 6.08
       },
       {
         "metric": "ROE",
         "value": 6.81,
-        "industryAvg": 16.36
+        "industryAvg": 15.49
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": 7.06
+        "industryAvg": 6.800000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 36.75,
-        "industryAvg": 22.95
+        "industryAvg": 22.46
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.7,
-        "industryAvg": 14.81
+        "industryAvg": 14.430000000000001
       },
       {
         "metric": "Net Margin",
         "value": 12.24,
-        "industryAvg": 7.51
+        "industryAvg": 7.380000000000001
       }
     ]
   }

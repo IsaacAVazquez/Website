@@ -1,10 +1,10 @@
 {
   "symbol": "DE",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Farm & Heavy Construction Machinery",
       "sector": "Industrials",
-      "longBusinessSummary": "Deere & Company engages in the manufacture and distribution of various equipment worldwide. The company operates through four segments: Production and Precision Agriculture, Small Agriculture and Turf, Construction and Forestry, and Financial Services. The Production and Precision Agriculture segment provides four-wheel-drive track and row crop tractors, harvesters, cotton pickers and strippers, sugarcane harvesters and loaders, soil preparation, tillage, seeding, and crop care equipment, as well as application equipment, including sprayers and nutrient management, soil preparation machinery, and related attachments and service parts. The Small Agriculture and Turf segment offers specialty, utility, and compact tractors; self-propelled forage harvesters and attachments; rotary mowers, hay and forage equipment, and utility vehicles; turf and utility equipment, including riding lawn, commercial mowing, and golf course equipment, and utility vehicles, as well as implements for mowing, tilling, snow and debris handling, aerating, residential, commercial, golf, and sports turf care applications. The Construction and Forestry segment provides backhoe loaders, crawler dozers and loaders, four-wheel-drive loaders, excavators, motor graders, articulated dump trucks, skid-steer loaders, milling machines, recyclers, slipform and asphalt pavers, surface miners, compactors, tandem, static rollers, mobile crushers and screens, mobile and stationary asphalt plants, and log harvesters; and road building and rehabilitation equipment. The Financial Services segment finances sales and leases agriculture and turf, and construction and forestry equipment. It also offers wholesale financing to dealers of the foregoing equipment; and extended equipment warranties. Deere & Company has a strategic partnership with Tarter USA to develop and produce flex wing rotary cutters. It also has strategic partnership with Yamaha Motor Corporation, Usa to co-develop future side-by-side vehicles. The company was founded in 1837 and is headquartered in Moline, Illinois.",
+      "longBusinessSummary": "Deere & Company manufactures and distributes various equipment worldwide. It operates through four segments: Production and Precision Agriculture, Small Agriculture and Turf, Construction and Forestry, and Financial Services. The Production and Precision Agriculture segment provides track and row crop tractors, harvesters, cotton pickers and strippers, sugarcane harvesters and loaders, soil preparation, tillage, seeding, and crop care equipment; and application equipment, such as sprayers and nutrient management, soil preparation machinery, and related attachments and service parts. The Small Agriculture and Turf segment offers specialty, utility, and compact tractors; self-propelled forage harvesters and attachments; rotary mowers, hay and forage equipment, and utility vehicles; turf and utility equipment, including riding lawn, commercial mowing, and golf course equipment, and utility vehicles, as well as implements for mowing, tilling, snow and debris handling, aerating, residential, commercial, golf, and sports turf care applications. The Construction and Forestry segment provides backhoe loaders, crawler dozers and loaders, loaders, excavators, motor graders, articulated dump trucks, skid-steer loaders, milling machines, recyclers, slipform and asphalt pavers, surface miners, compactors, tandem, static rollers, mobile crushers and screens, mobile and stationary asphalt plants, and log harvesters; and road building and rehabilitation equipment. The Financial Services segment finances sales and leases agriculture and turf, and construction and forestry equipment. It also offers wholesale financing to dealers of the foregoing equipment; and extended equipment warranties. It has a strategic partnership with Tarter USA to develop and produce flex wing rotary cutters. It also has strategic partnership with Yamaha Motor Corporation, Usa to co-develop future side-by-side vehicles. The company was founded in 1837 and is headquartered in Moline, Illinois.",
       "fullTimeEmployees": 73100,
       "website": "https://www.deere.com",
       "shortName": "Deere & Company",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9915,
-      "ttmPe": 35.38,
-      "marketCap": 171627352116,
-      "psRatio": 3.66,
-      "pbRatio": 6.13,
-      "pegRatio": 4.87
+      "ttmPe": 35.55,
+      "marketCap": 172447013332,
+      "psRatio": 3.68,
+      "pbRatio": 6.16,
+      "pegRatio": 4.9
     },
     "profitability": {
       "roe": 4.97,
@@ -6785,25 +6785,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.88,
+      "wacc": 8.89,
       "costOfEquity": 11.899999999999999,
       "costOfDebt": 1.11,
       "taxRate": 28.000000000000004,
-      "beta": 0.8746,
-      "marketCap": 171627352116
+      "beta": 0.8772,
+      "marketCap": 172447013332
     },
     "beta": {
-      "beta5y": 0.8746
+      "beta5y": 0.8772
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 473.45,
-        "high": 477.6,
-        "low": 470.55,
-        "close": 472.76,
-        "volume": 1187200
-      },
       {
         "date": "2025-10-27",
         "open": 480.56,
@@ -8811,6 +8803,14 @@
         "low": 625.81,
         "close": 641.25,
         "volume": 865400
+      },
+      {
+        "date": "2026-10-27",
+        "open": 647.09,
+        "high": 654.91,
+        "low": 636.01,
+        "close": 639.58,
+        "volume": 772200
       }
     ],
     "news": [
@@ -8887,11 +8887,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "eb1c925a-7dc4-3517-af71-a95b66837f2b",
-        "title": "Deere Q2 Earnings Top Estimates, Dip Y/Y on Lower Shipment Volumes",
+        "uuid": "e2172edb-fe3c-3850-92bd-2d27a0683b0d",
+        "title": "Company News for May 16, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/deere-q2-earnings-top-estimates-164200944.html",
+        "link": "https://finance.yahoo.com/news/company-news-may-16-2025-132700526.html",
         "type": "STORY"
       }
     ],
@@ -8955,28 +8955,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.38,
-        "industryAvg": 30.16
+        "value": 35.55,
+        "industryAvg": 29.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.66,
-        "industryAvg": 2.88
+        "value": 3.68,
+        "industryAvg": 2.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.13,
-        "industryAvg": 6.33
+        "value": 6.16,
+        "industryAvg": 6.17
       },
       {
         "metric": "ROE",
         "value": 4.97,
-        "industryAvg": 20.29
+        "industryAvg": 20.48
       },
       {
         "metric": "ROA",
         "value": 1.28,
-        "industryAvg": 5.7
+        "industryAvg": 5.75
       },
       {
         "metric": "Gross Margin",
@@ -8986,12 +8986,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 25.869999999999997,
-        "industryAvg": 17.86
+        "industryAvg": 17.73
       },
       {
         "metric": "Net Margin",
         "value": 11.15,
-        "industryAvg": 8.94
+        "industryAvg": 9.01
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.2477,
-      "ttmPe": 31.84,
-      "marketCap": 340255957729,
-      "psRatio": 4.55,
-      "pbRatio": 17.54,
-      "pegRatio": 0.47
+      "ttmPe": 30.68,
+      "marketCap": 327890702919,
+      "psRatio": 4.39,
+      "pbRatio": 16.91,
+      "pegRatio": 0.45
     },
     "profitability": {
       "roe": 18.88,
@@ -5527,25 +5527,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.299999999999999,
-      "costOfEquity": 17.299999999999997,
+      "wacc": 15.329999999999998,
+      "costOfEquity": 17.41,
       "costOfDebt": 0.3,
       "taxRate": 23,
-      "beta": 1.572,
-      "marketCap": 340255957729
+      "beta": 1.5767,
+      "marketCap": 327890702919
     },
     "beta": {
-      "beta5y": 1.572
+      "beta5y": 1.5767
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 522.86,
-        "high": 527.23,
-        "low": 521.02,
-        "close": 522.73,
-        "volume": 2392000
-      },
       {
         "date": "2025-10-27",
         "open": 527.05,
@@ -7553,6 +7545,14 @@
         "low": 679.5,
         "close": 692.13,
         "volume": 2312900
+      },
+      {
+        "date": "2026-10-27",
+        "open": 703.76,
+        "high": 716,
+        "low": 699.44,
+        "close": 713.31,
+        "volume": 2492000
       }
     ],
     "news": [
@@ -7597,19 +7597,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b9d2a8d3-3cf0-32f2-8da6-9ba442fc5cfa",
-        "title": "Construction Machinery Stocks Q1 Teardown: Caterpillar (NYSE:CAT) Vs The Rest",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/construction-machinery-stocks-q1-teardown-033232238.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
         "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b9d2a8d3-3cf0-32f2-8da6-9ba442fc5cfa",
+        "title": "Construction Machinery Stocks Q1 Teardown: Caterpillar (NYSE:CAT) Vs The Rest",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/construction-machinery-stocks-q1-teardown-033232238.html",
         "type": "STORY"
       },
       {
@@ -7629,11 +7629,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
-        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
+        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
+        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
         "type": "STORY"
       }
     ],
@@ -7702,28 +7702,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.84,
-        "industryAvg": 30.16
+        "value": 30.68,
+        "industryAvg": 29.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.55,
-        "industryAvg": 2.88
+        "value": 4.39,
+        "industryAvg": 2.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.54,
-        "industryAvg": 6.33
+        "value": 16.91,
+        "industryAvg": 6.17
       },
       {
         "metric": "ROE",
         "value": 18.88,
-        "industryAvg": 20.29
+        "industryAvg": 20.48
       },
       {
         "metric": "ROA",
         "value": 3.63,
-        "industryAvg": 5.7
+        "industryAvg": 5.75
       },
       {
         "metric": "Gross Margin",
@@ -7733,12 +7733,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 25.840000000000003,
-        "industryAvg": 17.86
+        "industryAvg": 17.73
       },
       {
         "metric": "Net Margin",
         "value": 17.49,
-        "industryAvg": 8.94
+        "industryAvg": 9.01
       }
     ]
   }

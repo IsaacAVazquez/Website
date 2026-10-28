@@ -1,10 +1,10 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.6404,
-      "ttmPe": 20,
-      "marketCap": 182681310000,
-      "psRatio": 4.15,
-      "pbRatio": 6.61,
+      "ttmPe": 21.31,
+      "marketCap": 194667690000,
+      "psRatio": 4.42,
+      "pbRatio": 7.04,
       "pegRatio": 0.12
     },
     "profitability": {
@@ -827,7 +827,7 @@
           "2026-06-30": "1433380000.0",
           "2026-03-31": "7347800000.0",
           "2025-12-31": "2859177896.81",
-          "2025-09-30": "-3100410000.0",
+          "2025-09-30": "-3101369700.0",
           "2025-06-30": "2559432249.32",
           "2025-03-31": "2798415458.94",
           "2024-12-31": "3128385144.43",
@@ -1079,7 +1079,7 @@
           "2026-06-30": "0.19",
           "2026-03-31": "0.4",
           "2025-12-31": "0.15",
-          "2025-09-30": "0.21",
+          "2025-09-30": "0.26",
           "2025-06-30": "0.1",
           "2025-03-31": "0.09",
           "2024-12-31": "0.13",
@@ -1100,7 +1100,7 @@
           "2026-06-30": "133380000.0",
           "2026-03-31": "14800000.0",
           "2025-12-31": "26177896.81",
-          "2025-09-30": "-4410000.0",
+          "2025-09-30": "-5369700.0",
           "2025-06-30": "11432249.32",
           "2025-03-31": "1415458.94",
           "2024-12-31": "7385144.43",
@@ -1469,7 +1469,7 @@
         },
         {
           "Breakdown": "Normalized Income",
-          "2025-09-30": "5409070000.0",
+          "2025-09-30": "5416701900.0",
           "2024-09-30": "10201140000.0",
           "2023-09-30": "8241880000.0",
           "2022-09-30": "13266140000.0",
@@ -1589,7 +1589,7 @@
         },
         {
           "Breakdown": "Tax Rate for Calcs",
-          "2025-09-30": "0.21",
+          "2025-09-30": "0.26",
           "2024-09-30": "0.02",
           "2023-09-30": "0.01",
           "2022-09-30": "0.13",
@@ -1599,7 +1599,7 @@
         },
         {
           "Breakdown": "Tax Effect of Unusual Items",
-          "2025-09-30": "35070000.0",
+          "2025-09-30": "42701900.0",
           "2024-09-30": "-1860000.0",
           "2023-09-30": "-9120000.0",
           "2022-09-30": "-41860000.0",
@@ -5804,25 +5804,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.939999999999998,
-      "costOfEquity": 18.279999999999998,
+      "wacc": 16.97,
+      "costOfEquity": 18.23,
       "costOfDebt": 1.17,
       "taxRate": 19,
-      "beta": 1.6835,
-      "marketCap": 182681310000
+      "beta": 1.6796,
+      "marketCap": 194667690000
     },
     "beta": {
-      "beta5y": 1.6835
+      "beta5y": 1.6796
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 171.69,
-        "high": 172.42,
-        "low": 168.47,
-        "close": 168.94,
-        "volume": 6256000
-      },
       {
         "date": "2025-10-27",
         "open": 168.95,
@@ -7829,7 +7821,15 @@
         "high": 181,
         "low": 175.48,
         "close": 179.6,
-        "volume": 9656900
+        "volume": 9668300
+      },
+      {
+        "date": "2026-10-27",
+        "open": 180.97,
+        "high": 184.42,
+        "low": 179.29,
+        "close": 184.17,
+        "volume": 12267900
       }
     ],
     "news": [
@@ -7850,19 +7850,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "24997f10-d503-364e-97df-c293ed247214",
-        "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d986859-8b62-3e6a-b14b-1ad89eb1e3c6",
         "title": "Visteon and Qualcomm partner on AI-driven cockpit system",
         "publisher": "Just Auto",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/m/0d986859-8b62-3e6a-b14b-1ad89eb1e3c6/visteon-and-qualcomm-partner.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "24997f10-d503-364e-97df-c293ed247214",
+        "title": "Buy These 3 Stocks That Declared Dividend Hikes Amid Market Volatility",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/buy-3-stocks-declared-dividend-124200168.html",
         "type": "STORY"
       },
       {
@@ -7981,38 +7981,38 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20,
-        "industryAvg": 26.63
+        "value": 21.31,
+        "industryAvg": 25.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.15,
-        "industryAvg": 12.66
+        "value": 4.42,
+        "industryAvg": 12.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.61,
-        "industryAvg": 10.98
+        "value": 7.04,
+        "industryAvg": 11.25
       },
       {
         "metric": "ROE",
         "value": 7.290000000000001,
-        "industryAvg": 59.62
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 3.5000000000000004,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 53.05,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.520000000000003,
-        "industryAvg": 81.55
+        "industryAvg": 81.54
       },
       {
         "metric": "Net Margin",

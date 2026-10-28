@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 45.78,
-      "marketCap": 186925987280,
-      "psRatio": 13.47,
-      "pbRatio": 5.57,
-      "pegRatio": 0.28
+      "ttmPe": 50.48,
+      "marketCap": 206109935425,
+      "psRatio": 14.85,
+      "pbRatio": 6.14,
+      "pegRatio": 0.31
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,25 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.24,
-      "costOfEquity": 14.89,
+      "wacc": 14.27,
+      "costOfEquity": 14.860000000000001,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2548,
-      "marketCap": 186925987280
+      "beta": 1.2523,
+      "marketCap": 206109935425
     },
     "beta": {
-      "beta5y": 1.2548
+      "beta5y": 1.2523
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 245.45,
-        "high": 245.51,
-        "low": 236.63,
-        "close": 238.01,
-        "volume": 3489000
-      },
       {
         "date": "2025-10-27",
         "open": 239.7,
@@ -8128,6 +8120,14 @@
         "low": 393.08,
         "close": 407.93,
         "volume": 3810700
+      },
+      {
+        "date": "2026-10-27",
+        "open": 412.31,
+        "high": 427.27,
+        "low": 411.12,
+        "close": 425.35,
+        "volume": 4082500
       }
     ],
     "news": [
@@ -8180,19 +8180,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "e475f2ac-cd94-38a1-812b-ee573876a8ee",
-        "title": "JPMorgan Reaffirms $300 Price Target for Analog Devices After Strong Q2",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/jpmorgan-reaffirms-300-price-target-082801242.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "65e9ae31-50a3-3afc-be78-09c46be08d27",
         "title": "Analog Devices to Participate in Bernstein Strategic Decisions Conference",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/analog-devices-participate-bernstein-strategic-200000274.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e475f2ac-cd94-38a1-812b-ee573876a8ee",
+        "title": "JPMorgan Reaffirms $300 Price Target for Analog Devices After Strong Q2",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/jpmorgan-reaffirms-300-price-target-082801242.html",
         "type": "STORY"
       },
       {
@@ -8281,38 +8281,38 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.78,
-        "industryAvg": 26.63
+        "value": 50.48,
+        "industryAvg": 25.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.47,
-        "industryAvg": 12.66
+        "value": 14.85,
+        "industryAvg": 12.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.57,
-        "industryAvg": 10.98
+        "value": 6.14,
+        "industryAvg": 11.25
       },
       {
         "metric": "ROE",
         "value": 3.9800000000000004,
-        "industryAvg": 59.62
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 2.78,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 67.32000000000001,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.93,
-        "industryAvg": 81.55
+        "industryAvg": 81.54
       },
       {
         "metric": "Net Margin",

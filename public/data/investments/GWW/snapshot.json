@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.3978,
-      "ttmPe": 34.31,
-      "marketCap": 63673752935,
-      "psRatio": 3.38,
-      "pbRatio": 15.41,
-      "pegRatio": 1.67
+      "ttmPe": 34.08,
+      "marketCap": 63242783360,
+      "psRatio": 3.36,
+      "pbRatio": 15.31,
+      "pegRatio": 1.66
     },
     "profitability": {
       "roe": 14.14,
@@ -5156,25 +5156,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.01,
-      "costOfEquity": 12.509999999999998,
+      "wacc": 11.98,
+      "costOfEquity": 12.49,
       "costOfDebt": 0.72,
       "taxRate": 25,
-      "beta": 0.9538,
-      "marketCap": 63673752935
+      "beta": 0.9515,
+      "marketCap": 63242783360
     },
     "beta": {
-      "beta5y": 0.9538
+      "beta5y": 0.9515
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 968.26,
-        "high": 978.21,
-        "low": 964.54,
-        "close": 968.41,
-        "volume": 303200
-      },
       {
         "date": "2025-10-27",
         "open": 971.24,
@@ -7182,6 +7174,14 @@
         "low": 1349.9,
         "close": 1357.6,
         "volume": 191600
+      },
+      {
+        "date": "2026-10-27",
+        "open": 1357.09,
+        "high": 1365.11,
+        "low": 1332.5601,
+        "close": 1342.72,
+        "volume": 221600
       }
     ],
     "news": [
@@ -7202,19 +7202,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
-        "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d6a8168f-b467-332a-9d8a-d9cb4a0fd2ba",
         "title": "Are You a Growth Investor? This 1 Stock Could Be the Perfect Pick",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/growth-investor-1-stock-could-134509593.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "89866829-8ca7-38ea-aa5f-807b6996e60a",
+        "title": "Redburn Atlantic Adjusts Price Target on W.W. Grainger to $978 From $932, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/redburn-atlantic-adjusts-price-target-152951269.html",
         "type": "STORY"
       },
       {
@@ -7334,43 +7334,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.31,
-        "industryAvg": 27.46
+        "value": 34.08,
+        "industryAvg": 26.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.38,
-        "industryAvg": 1.69
+        "value": 3.36,
+        "industryAvg": 1.67
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.41,
-        "industryAvg": 5.24
+        "value": 15.31,
+        "industryAvg": 5.07
       },
       {
         "metric": "ROE",
         "value": 14.14,
-        "industryAvg": 16.49
+        "industryAvg": 16.57
       },
       {
         "metric": "ROA",
         "value": 5.970000000000001,
-        "industryAvg": 6.950000000000001
+        "industryAvg": 6.99
       },
       {
         "metric": "Gross Margin",
         "value": 39.51,
-        "industryAvg": 29.26
+        "industryAvg": 29.29
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.61,
-        "industryAvg": 10.41
+        "industryAvg": 10.43
       },
       {
         "metric": "Net Margin",
         "value": 11.35,
-        "industryAvg": 5.16
+        "industryAvg": 5.18
       }
     ]
   }

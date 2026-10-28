@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.1769,
-      "ttmPe": 34.84,
-      "marketCap": 555958380000,
-      "psRatio": 15.85,
-      "pbRatio": 99.08,
-      "pegRatio": 1.58
+      "ttmPe": 33.55,
+      "marketCap": 535448300000,
+      "psRatio": 15.26,
+      "pbRatio": 95.43,
+      "pegRatio": 1.52
     },
     "profitability": {
       "roe": 71.17999999999999,
@@ -5467,25 +5467,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.780000000000001,
-      "costOfEquity": 11.23,
+      "wacc": 10.84,
+      "costOfEquity": 11.31,
       "costOfDebt": 0.88,
       "taxRate": 20,
-      "beta": 0.7925,
-      "marketCap": 555958380000
+      "beta": 0.8016,
+      "marketCap": 535448300000
     },
     "beta": {
-      "beta5y": 0.7925
+      "beta5y": 0.8016
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 577.24,
-        "high": 580.82,
-        "low": 573.08,
-        "close": 573.67,
-        "volume": 1839600
-      },
       {
         "date": "2025-10-27",
         "open": 575.72,
@@ -7493,6 +7485,14 @@
         "low": 611.37,
         "close": 613.5,
         "volume": 2793600
+      },
+      {
+        "date": "2026-10-27",
+        "open": 611.49,
+        "high": 613.21,
+        "low": 605.81,
+        "close": 609.85,
+        "volume": 3457600
       }
     ],
     "news": [
@@ -7521,19 +7521,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
-        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
+        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
         "type": "STORY"
       },
       {
@@ -7646,43 +7646,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.84,
-        "industryAvg": 23.5
+        "value": 33.55,
+        "industryAvg": 22.9
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.85,
-        "industryAvg": 5.52
+        "value": 15.26,
+        "industryAvg": 5.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 99.08,
-        "industryAvg": 5.88
+        "value": 95.43,
+        "industryAvg": 5.72
       },
       {
         "metric": "ROE",
         "value": 71.17999999999999,
-        "industryAvg": 14.63
+        "industryAvg": 14.540000000000001
       },
       {
         "metric": "ROA",
         "value": 7.969999999999999,
-        "industryAvg": 2.3800000000000003
+        "industryAvg": 2.37
       },
       {
         "metric": "Gross Margin",
         "value": 79.01,
-        "industryAvg": 65.23
+        "industryAvg": 65.34
       },
       {
         "metric": "EBITDA Margin",
         "value": 64.82,
-        "industryAvg": 43.730000000000004
+        "industryAvg": 43.63
       },
       {
         "metric": "Net Margin",
         "value": 47.3,
-        "industryAvg": 20.119999999999997
+        "industryAvg": 19.99
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.4543,
-      "ttmPe": 39.21,
-      "marketCap": 81940049780,
-      "psRatio": 4.87,
-      "pbRatio": 8.15,
-      "pegRatio": 12.25
+      "ttmPe": 39.07,
+      "marketCap": 81651311322,
+      "psRatio": 4.85,
+      "pbRatio": 8.12,
+      "pegRatio": 12.21
     },
     "profitability": {
       "roe": 5.33,
@@ -6120,25 +6120,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.13,
-      "costOfEquity": 11.77,
+      "wacc": 10.16,
+      "costOfEquity": 11.81,
       "costOfDebt": 0.64,
       "taxRate": 22,
-      "beta": 0.861,
-      "marketCap": 81940049780
+      "beta": 0.8651,
+      "marketCap": 81651311322
     },
     "beta": {
-      "beta5y": 0.861
+      "beta5y": 0.8651
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 276.64,
-        "high": 277.9,
-        "low": 274.67,
-        "close": 277.23,
-        "volume": 1516600
-      },
       {
         "date": "2025-10-27",
         "open": 276.9,
@@ -8146,6 +8138,14 @@
         "low": 287.11,
         "close": 288.89,
         "volume": 1361600
+      },
+      {
+        "date": "2026-10-27",
+        "open": 284.16,
+        "high": 294.75,
+        "low": 283.99,
+        "close": 291.27,
+        "volume": 1570400
       }
     ],
     "news": [
@@ -8182,19 +8182,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
-        "title": "Was Jim Cramer Right About Ecolab (ECL)?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/jim-cramer-ecolab-ecl-190549111.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f0394ffa-d549-3b83-ac6f-126c1cc09a61",
         "title": "Ecolab (NYSE:ECL) Declares US$0.65 Dividend & Amends Bylaws To Limit Officer Liability",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-10",
         "link": "https://finance.yahoo.com/news/ecolab-nyse-ecl-declares-us-172855930.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "246309a3-9f13-31f2-8024-c99756857b08",
+        "title": "Was Jim Cramer Right About Ecolab (ECL)?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/jim-cramer-ecolab-ecl-190549111.html",
         "type": "STORY"
       },
       {
@@ -8214,19 +8214,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
-        "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7f8fe418-4d71-3d61-ad8f-70b39b60400b",
         "title": "Ecolab Opens New Bioprocessing Lab in Pennsylvania",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/ecolab-opens-bioprocessing-lab-pennsylvania-130414090.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "025a58bd-f587-3a4b-9c8e-c9f103ed0054",
+        "title": "Ecolab Life Sciences Opens New State-of-the-Art Bioprocessing Applications Laboratory in Pennsylvania, US",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/ecolab-life-sciences-opens-state-100000161.html",
         "type": "STORY"
       }
     ],
@@ -8296,43 +8296,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.21,
-        "industryAvg": 30.29
+        "value": 39.07,
+        "industryAvg": 28.97
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.87,
-        "industryAvg": 2.64
+        "value": 4.85,
+        "industryAvg": 2.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.15,
-        "industryAvg": 3.4
+        "value": 8.12,
+        "industryAvg": 3.39
       },
       {
         "metric": "ROE",
         "value": 5.33,
-        "industryAvg": 7.26
+        "industryAvg": 7.19
       },
       {
         "metric": "ROA",
         "value": 1.95,
-        "industryAvg": 2.93
+        "industryAvg": 2.9000000000000004
       },
       {
         "metric": "Gross Margin",
         "value": 44.07,
-        "industryAvg": 30
+        "industryAvg": 30.3
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.799999999999997,
-        "industryAvg": 17.130000000000003
+        "industryAvg": 16.36
       },
       {
         "metric": "Net Margin",
         "value": 12.11,
-        "industryAvg": 5.13
+        "industryAvg": 4.96
       }
     ]
   }

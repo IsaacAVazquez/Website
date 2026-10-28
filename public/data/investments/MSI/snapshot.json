@@ -1,14 +1,11 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-27"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6961,
-      "ttmPe": 36.82,
-      "marketCap": 77371250000,
-      "psRatio": 6.32,
-      "pbRatio": 28.96,
-      "pegRatio": 3.83
+      "ttmPe": 38.09,
+      "marketCap": 80037455000,
+      "psRatio": 6.54,
+      "pbRatio": 29.95,
+      "pegRatio": 3.96
     },
     "profitability": {
       "roe": 21.36,
@@ -6665,25 +6662,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.7,
-      "costOfEquity": 11.93,
+      "wacc": 10.71,
+      "costOfEquity": 11.899999999999999,
       "costOfDebt": 1.13,
       "taxRate": 25,
-      "beta": 0.8787,
-      "marketCap": 77371250000
+      "beta": 0.8774,
+      "marketCap": 80037455000
     },
     "beta": {
-      "beta5y": 0.8787
+      "beta5y": 0.8774
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 445.3,
-        "high": 445.3,
-        "low": 438.62,
-        "close": 438.98,
-        "volume": 1069900
-      },
       {
         "date": "2025-10-27",
         "open": 439.55,
@@ -8691,6 +8680,14 @@
         "low": 478.68,
         "close": 485.62,
         "volume": 958100
+      },
+      {
+        "date": "2026-10-27",
+        "open": 483.27,
+        "high": 485.88,
+        "low": 479.7,
+        "close": 483.61,
+        "volume": 712900
       }
     ],
     "news": [
@@ -8703,22 +8700,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
-        "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
-        "publisher": "Reuters",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
-        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
-        "publisher": "ACCESS Newswire",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f603d4c0-9c31-31dd-a858-dbb715dcdfd7",
         "title": "Market Chatter: Motorola Solutions Reportedly in Advanced Talks to Acquire Silvus for $4.5 Billion",
         "publisher": "MT Newswires",
@@ -8727,11 +8708,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
+        "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
+        "publisher": "Reuters",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
         "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3c05c150-f971-3199-a3ff-0338d2fdaa96",
+        "title": "National Law Enforcement Community Engagement Training Conference To Take Place in Chicago, June 4–8, 2025",
+        "publisher": "ACCESS Newswire",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
         "type": "STORY"
       },
       {
@@ -8751,11 +8748,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
-        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
-        "publisher": "Business Wire",
+        "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
+        "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-204457398.html",
         "type": "STORY"
       },
       {
@@ -8767,12 +8764,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
-        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
-        "publisher": "Reuters",
+        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
+        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -8843,43 +8840,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.95,
-        "industryAvg": 25.48
+        "value": 38.09,
+        "industryAvg": 26.52
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.17,
-        "industryAvg": 4.08
+        "value": 6.54,
+        "industryAvg": 4.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.27,
-        "industryAvg": 5.54
+        "value": 29.95,
+        "industryAvg": 5.56
       },
       {
         "metric": "ROE",
         "value": 21.36,
-        "industryAvg": 16.09
+        "industryAvg": 15.27
       },
       {
         "metric": "ROA",
         "value": 2.91,
-        "industryAvg": 6.09
+        "industryAvg": 5.84
       },
       {
         "metric": "Gross Margin",
         "value": 53.559999999999995,
-        "industryAvg": 48.9
+        "industryAvg": 48.82
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.89,
-        "industryAvg": 17.080000000000002
+        "industryAvg": 16.36
       },
       {
         "metric": "Net Margin",
         "value": 17.78,
-        "industryAvg": 10.79
+        "industryAvg": 10.39
       }
     ]
   }

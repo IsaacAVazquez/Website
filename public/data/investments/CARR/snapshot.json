@@ -1,10 +1,10 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.4191,
-      "ttmPe": 39.79,
-      "marketCap": 46589223867,
-      "psRatio": 2.11,
-      "pbRatio": 3.54,
+      "ttmPe": 40.75,
+      "marketCap": 47711259363,
+      "psRatio": 2.16,
+      "pbRatio": 3.63,
       "pegRatio": 1.14
     },
     "profitability": {
@@ -1141,8 +1141,8 @@
           "TTM": "0.04",
           "2026-06-30": "0.25",
           "2026-03-31": "0.4",
-          "2025-12-31": "0.21",
-          "2025-09-30": "0.21",
+          "2025-12-31": "0.26",
+          "2025-09-30": "0.26",
           "2025-06-30": "0.2",
           "2025-03-31": "0.2",
           "2024-12-31": "0.21",
@@ -1573,7 +1573,7 @@
         {
           "Breakdown": "Normalized Income",
           "2025-12-31": "1443735261.4",
-          "2024-12-31": "888380000.0",
+          "2024-12-31": "901251400.0",
           "2023-12-31": "1463856000.0",
           "2022-12-31": "1638410000.0",
           "2021-12-31": "1665418000.0",
@@ -1693,7 +1693,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "2025-12-31": "0.13",
-          "2024-12-31": "0.21",
+          "2024-12-31": "0.26",
           "2023-12-31": "0.26",
           "2022-12-31": "0.16",
           "2021-12-31": "0.29",
@@ -1703,7 +1703,7 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "2025-12-31": "1735261.4",
-          "2024-12-31": "58380000.0",
+          "2024-12-31": "71251400.0",
           "2023-12-31": "-27144000.0",
           "2022-12-31": "291410000.0",
           "2021-12-31": "-582000.0",
@@ -6016,25 +6016,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.2,
-      "costOfEquity": 15.24,
+      "wacc": 12.280000000000001,
+      "costOfEquity": 15.27,
       "costOfDebt": 1.02,
       "taxRate": 25,
-      "beta": 1.3056,
-      "marketCap": 46589223867
+      "beta": 1.3048,
+      "marketCap": 47711259363
     },
     "beta": {
-      "beta5y": 1.3056
+      "beta5y": 1.3048
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 57.91,
-        "high": 58.39,
-        "low": 57.65,
-        "close": 57.84,
-        "volume": 4292700
-      },
       {
         "date": "2025-10-27",
         "open": 58.44,
@@ -8042,6 +8034,14 @@
         "low": 56.145,
         "close": 56.44,
         "volume": 4005000
+      },
+      {
+        "date": "2026-10-27",
+        "open": 57.04,
+        "high": 57.995,
+        "low": 56.103,
+        "close": 57.83,
+        "volume": 4851700
       }
     ],
     "news": [
@@ -8110,19 +8110,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ce4bb8f1-5b90-36fe-99e1-fe15757eab25",
-        "title": "Mizuho Adjusts Price Target on Carrier Global to $88 From $80, Keeps Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-carrier-103753974.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e5f2ad23-e548-354a-8b1a-ba2a8fe46513",
         "title": "RBC Raises Price Target on Carrier Global to $86 From $82, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/rbc-raises-price-target-carrier-110913885.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e1161bd2-7ca5-31b9-8518-8d1bbf011da7",
+        "title": "Stephens Adjusts Price Target on Carrier Global to $75 From $70, Maintains Equalweight Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/stephens-adjusts-price-target-carrier-103713052.html",
         "type": "STORY"
       }
     ],
@@ -8195,18 +8195,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.79,
-        "industryAvg": 28.1
+        "value": 40.75,
+        "industryAvg": 28.35
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.11,
-        "industryAvg": 2.49
+        "value": 2.16,
+        "industryAvg": 2.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.54,
-        "industryAvg": 3.71
+        "value": 3.63,
+        "industryAvg": 3.75
       },
       {
         "metric": "ROE",
@@ -8216,7 +8216,7 @@
       {
         "metric": "ROA",
         "value": 1.34,
-        "industryAvg": 5.6899999999999995
+        "industryAvg": 5.7
       },
       {
         "metric": "Gross Margin",
@@ -8231,7 +8231,7 @@
       {
         "metric": "Net Margin",
         "value": 7.89,
-        "industryAvg": 6.950000000000001
+        "industryAvg": 6.959999999999999
       }
     ]
   }

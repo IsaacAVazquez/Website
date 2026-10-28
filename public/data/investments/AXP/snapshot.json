@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "American Express Company"
     },
     "fundamentals": {
-      "ttmEps": 16.482,
-      "ttmPe": 19.73,
-      "marketCap": 219489750000,
-      "psRatio": 2.89,
-      "pbRatio": 6.4,
-      "pegRatio": 1.79
+      "ttmEps": 17.7575,
+      "ttmPe": 17.62,
+      "marketCap": 209962610000,
+      "psRatio": 2.76,
+      "pbRatio": 6.12,
+      "pegRatio": 0.57
     },
     "profitability": {
       "roe": 9.01,
@@ -73,7 +73,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 11.03
+        "yoyGrowth": 30.819999999999997
       }
     ],
     "income_statement": {
@@ -5795,25 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.27,
-      "costOfEquity": 13.62,
+      "wacc": 11.21,
+      "costOfEquity": 13.65,
       "costOfDebt": 3.32,
       "taxRate": 24,
-      "beta": 1.0948,
-      "marketCap": 219489750000
+      "beta": 1.099,
+      "marketCap": 209962610000
     },
     "beta": {
-      "beta5y": 1.0948
+      "beta5y": 1.099
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 358.4,
-        "high": 362.32,
-        "low": 356.87,
-        "close": 357.56,
-        "volume": 2397500
-      },
       {
         "date": "2025-10-27",
         "open": 362,
@@ -7821,6 +7813,14 @@
         "low": 312.03,
         "close": 315.05,
         "volume": 3477900
+      },
+      {
+        "date": "2026-10-27",
+        "open": 317.48,
+        "high": 317.81,
+        "low": 312.66,
+        "close": 312.91,
+        "volume": 2309700
       }
     ],
     "news": [
@@ -7865,14 +7865,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "5cb5d8a8-80a8-36da-b95e-575adcad8fb8",
-        "title": "Stock Market Turmoil: Buy These 3 Dividend Stocks for Less Than $1,000 Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/m/5cb5d8a8-80a8-36da-b95e-575adcad8fb8/stock-market-turmoil%3A-buy.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0672dd26-9686-35f8-a29e-b98a620ba84b",
         "title": "West Japan Railway and a.k.a. Brands have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
@@ -7881,11 +7873,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
-        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
+        "uuid": "5cb5d8a8-80a8-36da-b95e-575adcad8fb8",
+        "title": "Stock Market Turmoil: Buy These 3 Dividend Stocks for Less Than $1,000 Right Now",
         "publisher": "Motley Fool",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/m/5cb5d8a8-80a8-36da-b95e-575adcad8fb8/stock-market-turmoil%3A-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
+        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
+        "publisher": "Zacks",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
+        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
         "type": "STORY"
       },
       {
@@ -7897,11 +7897,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
-        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
-        "publisher": "Zacks",
+        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
+        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
+        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
         "type": "STORY"
       }
     ],
@@ -7974,41 +7974,41 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.73,
-        "industryAvg": 23.5
+        "value": 17.62,
+        "industryAvg": 22.9
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.89,
-        "industryAvg": 5.52
+        "value": 2.76,
+        "industryAvg": 5.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.4,
-        "industryAvg": 5.88
+        "value": 6.12,
+        "industryAvg": 5.72
       },
       {
         "metric": "ROE",
         "value": 9.01,
-        "industryAvg": 14.63
+        "industryAvg": 14.540000000000001
       },
       {
         "metric": "ROA",
         "value": 1,
-        "industryAvg": 2.3800000000000003
+        "industryAvg": 2.37
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 65.23
+        "industryAvg": 65.34
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 43.730000000000004
+        "industryAvg": 43.63
       },
       {
         "metric": "Net Margin",
         "value": 15.659999999999998,
-        "industryAvg": 20.119999999999997
+        "industryAvg": 19.99
       }
     ]
   }

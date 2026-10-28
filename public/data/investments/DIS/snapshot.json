@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 23.07,
-      "marketCap": 193465900000,
-      "psRatio": 1.96,
-      "pbRatio": 1.76,
+      "ttmPe": 22.74,
+      "marketCap": 190697900000,
+      "psRatio": 1.93,
+      "pbRatio": 1.73,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -891,7 +891,7 @@
           "2026-03-31": "2421948000.0",
           "2025-12-31": "2402000000.0",
           "2025-09-30": "1582548166.26",
-          "2025-06-30": "5408150000.0",
+          "2025-06-30": "5399695500.0",
           "2025-03-31": "3361110000.0",
           "2024-12-31": "2657303825.14",
           "2024-09-30": "1678970000.0",
@@ -1143,7 +1143,7 @@
           "2026-03-31": "0.27",
           "2025-12-31": "0.33",
           "2025-09-30": "0.29",
-          "2025-06-30": "0.21",
+          "2025-06-30": "0.26",
           "2025-03-31": "0.21",
           "2024-12-31": "0.28",
           "2024-09-30": "0.21",
@@ -1164,7 +1164,7 @@
           "2026-03-31": "-64052000.0",
           "2025-12-31": "0.0",
           "2025-09-30": "-112451833.74",
-          "2025-06-30": "-38850000.0",
+          "2025-06-30": "-47304500.0",
           "2025-03-31": "-22890000.0",
           "2024-12-31": "-39696174.86",
           "2024-09-30": "-324030000.0",
@@ -1572,7 +1572,7 @@
         },
         {
           "Breakdown": "Normalized Income",
-          "2025-09-30": "13051010000.0",
+          "2025-09-30": "13013581700.0",
           "2024-09-30": "7764580000.0",
           "2023-09-30": "5072864000.0",
           "2022-09-30": "3797800000.0",
@@ -1692,7 +1692,7 @@
         },
         {
           "Breakdown": "Tax Rate for Calcs",
-          "2025-09-30": "0.21",
+          "2025-09-30": "0.26",
           "2024-09-30": "0.24",
           "2023-09-30": "0.29",
           "2022-09-30": "0.33",
@@ -1702,7 +1702,7 @@
         },
         {
           "Breakdown": "Tax Effect of Unusual Items",
-          "2025-09-30": "-171990000.0",
+          "2025-09-30": "-209418300.0",
           "2024-09-30": "-867420000.0",
           "2023-09-30": "-1105136000.0",
           "2022-09-30": "-295200000.0",
@@ -3176,7 +3176,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-06-30": "1752000000.0",
+          "2026-06-30": "1730000000.0",
           "2026-03-31": "1868519851.0",
           "2025-12-31": "1873000000.0",
           "2025-09-30": "1870000000.0",
@@ -3196,7 +3196,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-06-30": "1752000000.0",
+          "2026-06-30": "1730000000.0",
           "2026-03-31": "1738519851.0",
           "2025-12-31": "1776000000.0",
           "2025-09-30": "1791000000.0",
@@ -6071,25 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.38,
-      "costOfEquity": 16.37,
+      "wacc": 13.370000000000001,
+      "costOfEquity": 16.41,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4522,
-      "marketCap": 193465900000
+      "beta": 1.4498,
+      "marketCap": 190697900000
     },
     "beta": {
-      "beta5y": 1.4522
+      "beta5y": 1.4498
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 113.23,
-        "high": 113.65,
-        "low": 111.59,
-        "close": 111.68,
-        "volume": 6235200
-      },
       {
         "date": "2025-10-27",
         "open": 111.94,
@@ -8097,6 +8089,14 @@
         "low": 110,
         "close": 110.4,
         "volume": 7239500
+      },
+      {
+        "date": "2026-10-27",
+        "open": 110.24,
+        "high": 110.44,
+        "low": 109.43,
+        "close": 110.23,
+        "volume": 6590700
       }
     ],
     "news": [
@@ -8117,14 +8117,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
-        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
         "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
         "publisher": "StockStory",
@@ -8133,19 +8125,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
+        "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
+        "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/media-stocks-q4-review-fubotv-090639393.html",
         "type": "STORY"
       },
       {
-        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
-        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
-        "publisher": "Investor's Business Daily",
+        "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
+        "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
+        "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
         "type": "STORY"
       },
       {
@@ -8157,11 +8149,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
-        "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
+        "uuid": "0dc1ef64-366b-330a-b84e-ad03743a8224",
+        "title": "Trump Threat To Tax Foreign-Made Movies Hits Netflix; How Would It Work?",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/0dc1ef64-366b-330a-b84e-ad03743a8224/trump-threat-to-tax.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8242,43 +8242,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.07,
-        "industryAvg": 23.45
+        "value": 22.74,
+        "industryAvg": 21.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.96,
-        "industryAvg": 2.67
+        "value": 1.93,
+        "industryAvg": 2.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.76,
-        "industryAvg": 3.04
+        "value": 1.73,
+        "industryAvg": 2.96
       },
       {
         "metric": "ROE",
         "value": 2.41,
-        "industryAvg": 8.66
+        "industryAvg": 9.06
       },
       {
         "metric": "ROA",
         "value": 1.29,
-        "industryAvg": 3.66
+        "industryAvg": 3.82
       },
       {
         "metric": "Gross Margin",
         "value": 40.17,
-        "industryAvg": 40.67
+        "industryAvg": 40.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 21.87,
-        "industryAvg": 26.08
+        "industryAvg": 26.38
       },
       {
         "metric": "Net Margin",
         "value": 10.45,
-        "industryAvg": 6.75
+        "industryAvg": 7.03
       }
     ]
   }

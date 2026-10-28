@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5762,
-      "ttmPe": 35.64,
-      "marketCap": 90982758000,
-      "psRatio": 4.88,
-      "pbRatio": 4.46,
-      "pegRatio": 1.53
+      "ttmPe": 36.33,
+      "marketCap": 92745406000,
+      "psRatio": 4.98,
+      "pbRatio": 4.55,
+      "pegRatio": 1.56
     },
     "profitability": {
       "roe": 3.53,
@@ -824,7 +824,7 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "4.59",
-          "2026-06-30": "1.28",
+          "2026-06-30": "1.29",
           "2026-03-31": "1.1",
           "2025-12-31": "1.08",
           "2025-09-30": "1.13",
@@ -866,7 +866,7 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "560925000.0",
-          "2026-06-30": "558800000.0",
+          "2026-06-30": "557800000.0",
           "2026-03-31": "560100000.0",
           "2025-12-31": "561800000.0",
           "2025-09-30": "562800000.0",
@@ -887,7 +887,7 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "563400000.0",
-          "2026-06-30": "561100000.0",
+          "2026-06-30": "562500000.0",
           "2026-03-31": "563000000.0",
           "2025-12-31": "564100000.0",
           "2025-09-30": "565500000.0",
@@ -6095,25 +6095,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.790000000000001,
-      "costOfEquity": 14.56,
+      "wacc": 12.839999999999998,
+      "costOfEquity": 14.580000000000002,
       "costOfDebt": 0.83,
       "taxRate": 21,
-      "beta": 1.218,
-      "marketCap": 90982758000
+      "beta": 1.2166,
+      "marketCap": 92745406000
     },
     "beta": {
-      "beta5y": 1.218
+      "beta5y": 1.2166
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 134.21,
-        "high": 134.57,
-        "low": 132.66,
-        "close": 132.68,
-        "volume": 1251200
-      },
       {
         "date": "2025-10-27",
         "open": 133.69,
@@ -8121,6 +8113,14 @@
         "low": 160.81,
         "close": 161.7,
         "volume": 2974400
+      },
+      {
+        "date": "2026-10-27",
+        "open": 163.26,
+        "high": 166.6,
+        "low": 161.91,
+        "close": 166.27,
+        "volume": 2339700
       }
     ],
     "news": [
@@ -8157,14 +8157,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
-        "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
         "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
         "publisher": "MT Newswires",
@@ -8178,6 +8170,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/rbc-raises-price-target-emerson-111804220.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
+        "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
         "type": "STORY"
       },
       {
@@ -8197,11 +8197,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f6a1359b-cb8a-30d0-a8d1-682ec7309443",
-        "title": "Emerson's 'Project Beyond' to Modernize and Seamlessly Integrate the Industrial Automation Technology Stack",
-        "publisher": "PR Newswire",
+        "uuid": "56b05011-a182-3513-8c8f-bee1946466a1",
+        "title": "3 Large-Cap Stocks in Hot Water",
+        "publisher": "StockStory",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/emersons-project-beyond-modernize-seamlessly-130000736.html",
+        "link": "https://finance.yahoo.com/news/3-large-cap-stocks-hot-043310857.html",
         "type": "STORY"
       }
     ],
@@ -8271,43 +8271,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.64,
-        "industryAvg": 30.64
+        "value": 36.33,
+        "industryAvg": 29.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.88,
-        "industryAvg": 3.48
+        "value": 4.98,
+        "industryAvg": 3.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.46,
-        "industryAvg": 6.28
+        "value": 4.55,
+        "industryAvg": 5.95
       },
       {
         "metric": "ROE",
         "value": 3.53,
-        "industryAvg": 18.87
+        "industryAvg": 18.57
       },
       {
         "metric": "ROA",
         "value": 1.7000000000000002,
-        "industryAvg": 6.1899999999999995
+        "industryAvg": 6.3
       },
       {
         "metric": "Gross Margin",
         "value": 54.48,
-        "industryAvg": 28.96
+        "industryAvg": 29.020000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.79,
-        "industryAvg": 15.58
+        "industryAvg": 15.7
       },
       {
         "metric": "Net Margin",
         "value": 14.729999999999999,
-        "industryAvg": 9.790000000000001
+        "industryAvg": 9.92
       }
     ]
   }

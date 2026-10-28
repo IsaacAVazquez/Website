@@ -1,10 +1,10 @@
 {
   "symbol": "FDX",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 18.537,
-      "ttmPe": 16.09,
-      "marketCap": 71575200000,
-      "psRatio": 0.76,
-      "pbRatio": 2.26,
+      "ttmPe": 16.57,
+      "marketCap": 73704000000,
+      "psRatio": 0.78,
+      "pbRatio": 2.33,
       "pegRatio": 1.01
     },
     "profitability": {
@@ -5411,17 +5411,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.289
+      "beta5y": 1.2878
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 193.1426,
-        "high": 195.1894,
-        "low": 192.1354,
-        "close": 194.3191,
-        "volume": 1371677
-      },
       {
         "date": "2025-10-27",
         "open": 197.2361,
@@ -7429,6 +7421,14 @@
         "low": 299.56,
         "close": 300.58,
         "volume": 1077800
+      },
+      {
+        "date": "2026-10-27",
+        "open": 302.02,
+        "high": 307.94,
+        "low": 299.13,
+        "close": 307.1,
+        "volume": 1701400
       }
     ],
     "news": [
@@ -7581,43 +7581,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.09,
-        "industryAvg": 18.52
+        "value": 16.57,
+        "industryAvg": 19.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.76,
-        "industryAvg": 0.95
+        "value": 0.78,
+        "industryAvg": 0.98
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.26,
-        "industryAvg": 3.52
+        "value": 2.33,
+        "industryAvg": 3.64
       },
       {
         "metric": "ROE",
         "value": 5.19,
-        "industryAvg": 18.21
+        "industryAvg": 17.380000000000003
       },
       {
         "metric": "ROA",
         "value": 1.6500000000000001,
-        "industryAvg": 3
+        "industryAvg": 2.94
       },
       {
         "metric": "Gross Margin",
         "value": 22.689999999999998,
-        "industryAvg": 19.6
+        "industryAvg": 19.06
       },
       {
         "metric": "EBITDA Margin",
         "value": 13.3,
-        "industryAvg": 12
+        "industryAvg": 11.81
       },
       {
         "metric": "Net Margin",
         "value": 6.38,
-        "industryAvg": 5.62
+        "industryAvg": 5.36
       }
     ]
   }
