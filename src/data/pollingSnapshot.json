@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T11:05:56.771Z",
+  "generatedAt": "2026-10-28T11:41:36.628Z",
   "sourceAsOf": "2026-10-27",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
@@ -10,8 +10,8 @@
   "approvalTrend": [
     {
       "date": "2025-10-15",
-      "approve": 43,
-      "disapprove": 53.9
+      "approve": 42.6,
+      "disapprove": 54.3
     },
     {
       "date": "2025-11-15",
@@ -1178,17 +1178,62 @@
       "candidates": [
         {
           "name": "Ashley Moody",
-          "support": 49
+          "support": 49.5
         },
         {
           "name": "Angie Nixon",
-          "support": 42.9
+          "support": 43.9
         }
       ],
-      "margin": 6.1,
+      "margin": 5.6,
       "pollCount": 8,
-      "lastPolled": "2026-10-20",
+      "lastPolled": "2026-10-27",
       "polls": [
+        {
+          "id": "us-202actc8c031ff",
+          "pollster": "ActiVote",
+          "startDate": "2026-10-17",
+          "endDate": "2026-10-27",
+          "sampleSize": 400,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Ashley Moody",
+              "support": 53
+            },
+            {
+              "name": "Angie Nixon",
+              "support": 47
+            }
+          ]
+        },
+        {
+          "id": "us-202ech9cca8dca",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 515,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Ashley Moody",
+              "support": 51
+            },
+            {
+              "name": "Angie Nixon",
+              "support": 43
+            },
+            {
+              "name": "Neil Gillespie",
+              "support": 3
+            }
+          ]
+        },
         {
           "id": "us-202co/bf7a2617",
           "pollster": "co/efficient",
@@ -1316,50 +1361,6 @@
               "support": 47
             }
           ]
-        },
-        {
-          "id": "us-202insad41796a",
-          "pollster": "InsiderAdvantage",
-          "startDate": "2026-09-20",
-          "endDate": "2026-09-21",
-          "sampleSize": 600,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Ashley Moody",
-              "support": 49.3
-            },
-            {
-              "name": "Angie Nixon",
-              "support": 41.8
-            },
-            {
-              "name": "Neil Gillespie",
-              "support": 2.4
-            }
-          ]
-        },
-        {
-          "id": "us-202ste67ef4e2d",
-          "pollster": "Stetson University Center for Public Opinion Research",
-          "startDate": "2026-09-14",
-          "endDate": "2026-09-21",
-          "sampleSize": 830,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Ashley Moody",
-              "support": 51
-            },
-            {
-              "name": "Angie Nixon",
-              "support": 40
-            }
-          ]
         }
       ]
     },
@@ -1372,17 +1373,42 @@
       "candidates": [
         {
           "name": "Jon Ossoff",
-          "support": 52.4
+          "support": 52.7
         },
         {
           "name": "Mike Collins",
-          "support": 43.8
+          "support": 43.2
         }
       ],
-      "margin": 8.6,
-      "pollCount": 6,
-      "lastPolled": "2026-10-20",
+      "margin": 9.5,
+      "pollCount": 7,
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "us-202echc0a48602",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 508,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jon Ossoff",
+              "support": 55
+            },
+            {
+              "name": "Mike Collins",
+              "support": 40
+            },
+            {
+              "name": "Allen Buckley",
+              "support": 3
+            }
+          ]
+        },
         {
           "id": "us-202act204154cb",
           "pollster": "ActiVote",
@@ -1625,17 +1651,42 @@
       "candidates": [
         {
           "name": "Ashley Hinson",
-          "support": 46.2
+          "support": 45.9
         },
         {
           "name": "Josh Turek",
-          "support": 45.8
+          "support": 45.7
         }
       ],
-      "margin": 0.4,
-      "pollCount": 9,
-      "lastPolled": "2026-10-22",
+      "margin": 0.2,
+      "pollCount": 10,
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "us-202echbc68f468",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 403,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Josh Turek",
+              "support": 45
+            },
+            {
+              "name": "Ashley Hinson",
+              "support": 43
+            },
+            {
+              "name": "Thomas Laehn",
+              "support": 7
+            }
+          ]
+        },
         {
           "id": "us-202ins750c2821",
           "pollster": "InsiderAdvantage",
@@ -1937,17 +1988,58 @@
       "candidates": [
         {
           "name": "Troy Jackson",
-          "support": 49.3
+          "support": 49.6
         },
         {
           "name": "Susan Collins",
-          "support": 47.4
+          "support": 46.9
         }
       ],
-      "margin": 1.9,
-      "pollCount": 9,
-      "lastPolled": "2026-10-20",
+      "margin": 2.7,
+      "pollCount": 8,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "us-202mar84640418",
+          "pollster": "Marist University",
+          "startDate": "2026-10-22",
+          "endDate": "2026-10-25",
+          "sampleSize": 1449,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Troy Jackson",
+              "support": 49
+            },
+            {
+              "name": "Susan Collins",
+              "support": 47
+            }
+          ]
+        },
+        {
+          "id": "us-202ech31fe342b",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 413,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Troy Jackson",
+              "support": 51
+            },
+            {
+              "name": "Susan Collins",
+              "support": 44
+            }
+          ]
+        },
         {
           "id": "us-202bea00f453c2",
           "pollster": "Beacon Research/Shaw & Co. Research",
@@ -2066,68 +2158,6 @@
             {
               "name": "Troy Jackson",
               "support": 46
-            }
-          ]
-        },
-        {
-          "id": "us-202the9a68a494",
-          "pollster": "The New York Times/Siena University",
-          "sponsor": "Portland Press Herald",
-          "startDate": "2026-09-15",
-          "endDate": "2026-09-22",
-          "sampleSize": 619,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Susan Collins",
-              "support": 49
-            },
-            {
-              "name": "Troy Jackson",
-              "support": 46
-            }
-          ]
-        },
-        {
-          "id": "us-202fabe2bcab70",
-          "pollster": "Fabrizio, Lee & Associates/Impact Research",
-          "sponsor": "AARP",
-          "startDate": "2026-09-20",
-          "endDate": "2026-09-22",
-          "sampleSize": 982,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Troy Jackson",
-              "support": 50
-            },
-            {
-              "name": "Susan Collins",
-              "support": 47
-            }
-          ]
-        },
-        {
-          "id": "us-202uni51f1c418",
-          "pollster": "University of New Hampshire",
-          "startDate": "2026-09-17",
-          "endDate": "2026-09-21",
-          "sampleSize": 1312,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Troy Jackson",
-              "support": 51
-            },
-            {
-              "name": "Susan Collins",
-              "support": 47
             }
           ]
         }
@@ -2275,15 +2305,15 @@
       "candidates": [
         {
           "name": "Abdul El-Sayed",
-          "support": 47.5
+          "support": 47.8
         },
         {
           "name": "Mike Rogers",
           "support": 45
         }
       ],
-      "margin": 2.5,
-      "pollCount": 11,
+      "margin": 2.8,
+      "pollCount": 12,
       "lastPolled": "2026-10-22",
       "polls": [
         {
@@ -2303,6 +2333,27 @@
             {
               "name": "Mike Rogers",
               "support": 46
+            }
+          ]
+        },
+        {
+          "id": "us-202gle5c572e3a",
+          "pollster": "Glengariff Group, Inc.",
+          "sponsor": "The Detroit News / WDIV-TV",
+          "startDate": "2026-10-19",
+          "endDate": "2026-10-22",
+          "sampleSize": 600,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Abdul El-Sayed",
+              "support": 51.4
+            },
+            {
+              "name": "Mike Rogers",
+              "support": 45.1
             }
           ]
         },
@@ -2973,17 +3024,46 @@
       "candidates": [
         {
           "name": "Pete Ricketts",
-          "support": 48.3
+          "support": 48.7
         },
         {
           "name": "Dan Osborn",
-          "support": 46.7
+          "support": 46.3
         }
       ],
-      "margin": 1.6,
+      "margin": 2.4,
       "pollCount": 3,
-      "lastPolled": "2026-10-18",
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "us-202ech8ce34abf",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 407,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Pete Ricketts",
+              "support": 47
+            },
+            {
+              "name": "Dan Osborn",
+              "support": 46
+            },
+            {
+              "name": "Robin Richards",
+              "support": 2
+            },
+            {
+              "name": "Chuck Conboy",
+              "support": 1
+            }
+          ]
+        },
         {
           "id": "us-202natd1a93c5a",
           "pollster": "National Public Affairs",
@@ -3020,27 +3100,6 @@
             },
             {
               "name": "Dan Osborn",
-              "support": 46
-            }
-          ]
-        },
-        {
-          "id": "us-202gba71e992b6",
-          "pollster": "GBAO Strategies",
-          "sponsor": "Working Class Majority PAC",
-          "startDate": "2026-09-03",
-          "endDate": "2026-09-08",
-          "sampleSize": 800,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Dan Osborn",
-              "support": 47
-            },
-            {
-              "name": "Pete Ricketts",
               "support": 46
             }
           ]
@@ -3440,17 +3499,46 @@
       "candidates": [
         {
           "name": "Sherrod Brown",
-          "support": 47.9
+          "support": 47.8
         },
         {
           "name": "Jon Husted",
-          "support": 44
+          "support": 44.3
         }
       ],
-      "margin": 3.9,
-      "pollCount": 12,
-      "lastPolled": "2026-10-22",
+      "margin": 3.5,
+      "pollCount": 13,
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "us-202ech01f06c61",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 508,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Sherrod Brown",
+              "support": 47
+            },
+            {
+              "name": "Jon Husted",
+              "support": 47
+            },
+            {
+              "name": "Greg Levy",
+              "support": 2
+            },
+            {
+              "name": "Bill Redpath",
+              "support": 1
+            }
+          ]
+        },
         {
           "id": "us-202ins6e5f29f2",
           "pollster": "InsiderAdvantage",
@@ -4059,15 +4147,15 @@
       "candidates": [
         {
           "name": "James Talarico",
-          "support": 48.7
+          "support": 48.8
         },
         {
           "name": "Ken Paxton",
-          "support": 46.6
+          "support": 46.4
         }
       ],
-      "margin": 2.1,
-      "pollCount": 14,
+      "margin": 2.4,
+      "pollCount": 15,
       "lastPolled": "2026-10-21",
       "polls": [
         {
@@ -4087,6 +4175,27 @@
             {
               "name": "Ken Paxton",
               "support": 49
+            }
+          ]
+        },
+        {
+          "id": "us-202youe49ed5b8",
+          "pollster": "YouGov",
+          "sponsor": "N+ Univision",
+          "startDate": "2026-10-13",
+          "endDate": "2026-10-21",
+          "sampleSize": 1000,
+          "sampleType": "RV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "James Talarico",
+              "support": 50
+            },
+            {
+              "name": "Ken Paxton",
+              "support": 45
             }
           ]
         },
@@ -4868,17 +4977,38 @@
       "candidates": [
         {
           "name": "Xavier Becerra",
-          "support": 58
+          "support": 57.7
         },
         {
           "name": "Steve Hilton",
           "support": 34.3
         }
       ],
-      "margin": 23.7,
-      "pollCount": 4,
-      "lastPolled": "2026-10-19",
+      "margin": 23.4,
+      "pollCount": 3,
+      "lastPolled": "2026-10-24",
       "polls": [
+        {
+          "id": "gov202surafe1b671",
+          "pollster": "SurveyUSA",
+          "sponsor": "KGTV (San Diego) / The San Diego Union Tribune",
+          "startDate": "2026-10-19",
+          "endDate": "2026-10-24",
+          "sampleSize": 799,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Xavier Becerra",
+              "support": 54
+            },
+            {
+              "name": "Steve Hilton",
+              "support": 32
+            }
+          ]
+        },
         {
           "id": "gov202eme545ba1d8",
           "pollster": "Emerson College",
@@ -4917,48 +5047,6 @@
             {
               "name": "Steve Hilton",
               "support": 35
-            }
-          ]
-        },
-        {
-          "id": "gov202surd1c462e5",
-          "pollster": "SurveyUSA",
-          "sponsor": "KGTV (San Diego) / The San Diego Union Tribune",
-          "startDate": "2026-09-15",
-          "endDate": "2026-09-20",
-          "sampleSize": 742,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Xavier Becerra",
-              "support": 55
-            },
-            {
-              "name": "Steve Hilton",
-              "support": 33
-            }
-          ]
-        },
-        {
-          "id": "gov202uc 6d968dc2",
-          "pollster": "UC Berkeley Institute of Governmental Studies",
-          "sponsor": "Los Angeles Times",
-          "startDate": "2026-09-15",
-          "endDate": "2026-09-20",
-          "sampleSize": 4512,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Xavier Becerra",
-              "support": 58
-            },
-            {
-              "name": "Steve Hilton",
-              "support": 33
             }
           ]
         }
@@ -5077,17 +5165,42 @@
       "candidates": [
         {
           "name": "Byron Donalds",
-          "support": 48.7
+          "support": 48.6
         },
         {
           "name": "David Jolly",
-          "support": 44.2
+          "support": 44.7
         }
       ],
-      "margin": 4.5,
+      "margin": 3.9,
       "pollCount": 10,
-      "lastPolled": "2026-10-20",
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "gov202ech7ccc86ed",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 515,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Byron Donalds",
+              "support": 50
+            },
+            {
+              "name": "David Jolly",
+              "support": 44
+            },
+            {
+              "name": "Scott Jewett",
+              "support": 1
+            }
+          ]
+        },
         {
           "id": "gov202co/bb858b1c",
           "pollster": "co/efficient",
@@ -5273,26 +5386,6 @@
               "support": 46
             }
           ]
-        },
-        {
-          "id": "gov202steb5a21bdb",
-          "pollster": "Stetson University Center for Public Opinion Research",
-          "startDate": "2026-09-14",
-          "endDate": "2026-09-21",
-          "sampleSize": 830,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Byron Donalds",
-              "support": 51
-            },
-            {
-              "name": "David Jolly",
-              "support": 39
-            }
-          ]
         }
       ]
     },
@@ -5305,17 +5398,38 @@
       "candidates": [
         {
           "name": "Rick Jackson",
-          "support": 49.2
+          "support": 49
         },
         {
           "name": "Keisha Lance Bottoms",
-          "support": 47.4
+          "support": 47.6
         }
       ],
-      "margin": 1.8,
-      "pollCount": 7,
-      "lastPolled": "2026-10-20",
+      "margin": 1.4,
+      "pollCount": 8,
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "gov202ech45428865",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 508,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Keisha Lance Bottoms",
+              "support": 49
+            },
+            {
+              "name": "Rick Jackson",
+              "support": 48
+            }
+          ]
+        },
         {
           "id": "gov202actab967fe7",
           "pollster": "ActiVote",
@@ -5536,17 +5650,38 @@
       "candidates": [
         {
           "name": "Rob Sand",
-          "support": 51.4
+          "support": 51
         },
         {
           "name": "Zach Lahn",
-          "support": 43.6
+          "support": 44
         }
       ],
-      "margin": 7.8,
+      "margin": 7,
       "pollCount": 10,
-      "lastPolled": "2026-10-19",
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "gov202ech60c386d1",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 403,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Rob Sand",
+              "support": 50
+            },
+            {
+              "name": "Zach Lahn",
+              "support": 46
+            }
+          ]
+        },
         {
           "id": "gov202co/923c9460",
           "pollster": "co/efficient",
@@ -5729,26 +5864,6 @@
               "support": 44
             }
           ]
-        },
-        {
-          "id": "gov202marf9ae66ed",
-          "pollster": "Marist University",
-          "startDate": "2026-09-17",
-          "endDate": "2026-09-20",
-          "sampleSize": 1050,
-          "sampleType": "RV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Rob Sand",
-              "support": 54
-            },
-            {
-              "name": "Zach Lahn",
-              "support": 42
-            }
-          ]
         }
       ]
     },
@@ -5844,17 +5959,66 @@
       "candidates": [
         {
           "name": "Hannah Pingree",
-          "support": 49.1
+          "support": 48.7
         },
         {
           "name": "Bobby Charles",
-          "support": 38
+          "support": 39.2
         }
       ],
-      "margin": 11.1,
-      "pollCount": 7,
-      "lastPolled": "2026-10-20",
+      "margin": 9.5,
+      "pollCount": 6,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "gov202mare4c178b5",
+          "pollster": "Marist University",
+          "startDate": "2026-10-22",
+          "endDate": "2026-10-25",
+          "sampleSize": 1449,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Hannah Pingree",
+              "support": 44
+            },
+            {
+              "name": "Bobby Charles",
+              "support": 44
+            },
+            {
+              "name": "Rick Bennett",
+              "support": 6
+            }
+          ]
+        },
+        {
+          "id": "gov202ech161b28e4",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 413,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Hannah Pingree",
+              "support": 51
+            },
+            {
+              "name": "Bobby Charles",
+              "support": 38
+            },
+            {
+              "name": "Rick Bennett",
+              "support": 7
+            }
+          ]
+        },
         {
           "id": "gov202bea65109344",
           "pollster": "Beacon Research/Shaw & Co. Research",
@@ -5949,80 +6113,6 @@
             {
               "name": "Rick Bennett",
               "support": 6
-            }
-          ]
-        },
-        {
-          "id": "gov202theb70a3a4b",
-          "pollster": "The New York Times/Siena University",
-          "sponsor": "Portland Press Herald / Maine Trust for Local News",
-          "startDate": "2026-09-15",
-          "endDate": "2026-09-22",
-          "sampleSize": 619,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Hannah Pingree",
-              "support": 47
-            },
-            {
-              "name": "Bobby Charles",
-              "support": 34
-            },
-            {
-              "name": "Rick Bennett",
-              "support": 8
-            }
-          ]
-        },
-        {
-          "id": "gov202fab355ac62e",
-          "pollster": "Fabrizio, Lee & Associates/Impact Research",
-          "sponsor": "AARP",
-          "startDate": "2026-09-20",
-          "endDate": "2026-09-22",
-          "sampleSize": 982,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Hannah Pingree",
-              "support": 52
-            },
-            {
-              "name": "Bobby Charles",
-              "support": 39
-            },
-            {
-              "name": "Rick Bennett",
-              "support": 6
-            }
-          ]
-        },
-        {
-          "id": "gov202uniab68595a",
-          "pollster": "University of New Hampshire",
-          "startDate": "2026-09-17",
-          "endDate": "2026-09-21",
-          "sampleSize": 1312,
-          "sampleType": "LV",
-          "moe": null,
-          "methodology": "unknown",
-          "candidates": [
-            {
-              "name": "Hannah Pingree",
-              "support": 48
-            },
-            {
-              "name": "Bobby Charles",
-              "support": 40
-            },
-            {
-              "name": "Rick Bennett",
-              "support": 5
             }
           ]
         }
@@ -6225,15 +6315,15 @@
       "candidates": [
         {
           "name": "Jocelyn Benson",
-          "support": 51.8
+          "support": 51.7
         },
         {
           "name": "John James",
-          "support": 42.7
+          "support": 43.1
         }
       ],
-      "margin": 9.1,
-      "pollCount": 4,
+      "margin": 8.6,
+      "pollCount": 5,
       "lastPolled": "2026-10-27",
       "polls": [
         {
@@ -6254,6 +6344,27 @@
             {
               "name": "John James",
               "support": 45
+            }
+          ]
+        },
+        {
+          "id": "gov202gle26998710",
+          "pollster": "Glengariff Group, Inc.",
+          "sponsor": "The Detroit News / WDIV-TV",
+          "startDate": "2026-10-19",
+          "endDate": "2026-10-22",
+          "sampleSize": 600,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jocelyn Benson",
+              "support": 51.4
+            },
+            {
+              "name": "John James",
+              "support": 44.5
             }
           ]
         },
@@ -6431,17 +6542,46 @@
       "candidates": [
         {
           "name": "Jim Pillen",
-          "support": 45.5
+          "support": 46
         },
         {
           "name": "Lynne Walz",
-          "support": 40.5
+          "support": 40.3
         }
       ],
-      "margin": 5,
-      "pollCount": 2,
-      "lastPolled": "2026-10-18",
+      "margin": 5.7,
+      "pollCount": 3,
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "gov202ech6a54009b",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 407,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Jim Pillen",
+              "support": 47
+            },
+            {
+              "name": "Lynne Walz",
+              "support": 40
+            },
+            {
+              "name": "Rick Beard",
+              "support": 7
+            },
+            {
+              "name": "Brett Lindstrom",
+              "support": 4
+            }
+          ]
+        },
         {
           "id": "gov202natbac56f44",
           "pollster": "National Public Affairs",
@@ -6509,17 +6649,38 @@
       "candidates": [
         {
           "name": "Aaron Ford",
-          "support": 40.6
+          "support": 43.4
         },
         {
           "name": "Joe Lombardo",
-          "support": 40
+          "support": 41.7
         }
       ],
-      "margin": 0.6,
-      "pollCount": 2,
-      "lastPolled": "2026-09-26",
+      "margin": 1.7,
+      "pollCount": 3,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "gov202harb5888037",
+          "pollster": "Hart Research Associates",
+          "sponsor": "A More Affordable Nevada",
+          "startDate": "2026-10-20",
+          "endDate": "2026-10-25",
+          "sampleSize": 950,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Aaron Ford",
+              "support": 49
+            },
+            {
+              "name": "Joe Lombardo",
+              "support": 45
+            }
+          ]
+        },
         {
           "id": "gov202nob7ac2c1a0",
           "pollster": "Noble Predictive Insights",
@@ -6833,17 +6994,42 @@
       "candidates": [
         {
           "name": "Amy Acton",
-          "support": 48.5
+          "support": 48.3
         },
         {
           "name": "Vivek Ramaswamy",
-          "support": 45.1
+          "support": 45.2
         }
       ],
-      "margin": 3.4,
-      "pollCount": 12,
-      "lastPolled": "2026-10-20",
+      "margin": 3.1,
+      "pollCount": 13,
+      "lastPolled": "2026-10-23",
       "polls": [
+        {
+          "id": "gov202ech0acb366e",
+          "pollster": "Echelon Insights",
+          "sponsor": "NetChoice",
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-23",
+          "sampleSize": 508,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Vivek Ramaswamy",
+              "support": 47
+            },
+            {
+              "name": "Amy Acton",
+              "support": 45
+            },
+            {
+              "name": "Don Kissick",
+              "support": 2
+            }
+          ]
+        },
         {
           "id": "gov202vot834ec374",
           "pollster": "VoteHub/Verasight",
@@ -7666,15 +7852,15 @@
       "candidates": [
         {
           "name": "Greg Abbott",
-          "support": 49.3
+          "support": 49.2
         },
         {
           "name": "Gina Hinojosa",
           "support": 46.6
         }
       ],
-      "margin": 2.7,
-      "pollCount": 13,
+      "margin": 2.6,
+      "pollCount": 14,
       "lastPolled": "2026-10-21",
       "polls": [
         {
@@ -7694,6 +7880,27 @@
             {
               "name": "Gina Hinojosa",
               "support": 47.5
+            }
+          ]
+        },
+        {
+          "id": "gov202you88baa506",
+          "pollster": "YouGov",
+          "sponsor": "N+ Univision",
+          "startDate": "2026-10-13",
+          "endDate": "2026-10-21",
+          "sampleSize": 1000,
+          "sampleType": "RV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Greg Abbott",
+              "support": 48
+            },
+            {
+              "name": "Gina Hinojosa",
+              "support": 46
             }
           ]
         },
@@ -7979,17 +8186,37 @@
       "candidates": [
         {
           "name": "Phil Scott",
-          "support": 43.5
+          "support": 45.3
         },
         {
           "name": "Amanda Janoo",
-          "support": 41
+          "support": 42.7
         }
       ],
-      "margin": 2.5,
-      "pollCount": 2,
-      "lastPolled": "2026-09-21",
+      "margin": 2.6,
+      "pollCount": 3,
+      "lastPolled": "2026-10-25",
       "polls": [
+        {
+          "id": "gov202sta2b5cca98",
+          "pollster": "State Navigate",
+          "startDate": "2026-10-23",
+          "endDate": "2026-10-25",
+          "sampleSize": 1752,
+          "sampleType": "LV",
+          "moe": null,
+          "methodology": "unknown",
+          "candidates": [
+            {
+              "name": "Phil Scott",
+              "support": 49
+            },
+            {
+              "name": "Amanda Janoo",
+              "support": 46
+            }
+          ]
+        },
         {
           "id": "gov202uni39c6b60e",
           "pollster": "University of New Hampshire",
