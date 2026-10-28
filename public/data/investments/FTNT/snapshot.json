@@ -1,10 +1,10 @@
 {
   "symbol": "FTNT",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.8381,
-      "ttmPe": 60.95,
-      "marketCap": 126898128000,
-      "psRatio": 16.86,
-      "pbRatio": 81.81,
-      "pegRatio": 1.39
+      "ttmPe": 65.18,
+      "marketCap": 135716000000,
+      "psRatio": 18.03,
+      "pbRatio": 87.5,
+      "pegRatio": 1.49
     },
     "profitability": {
       "roe": 47.73,
@@ -5721,25 +5721,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.709999999999999,
-      "costOfEquity": 12.76,
+      "wacc": 12.7,
+      "costOfEquity": 12.740000000000002,
       "costOfDebt": 0.64,
       "taxRate": 16,
-      "beta": 0.9866,
-      "marketCap": 126898128000
+      "beta": 0.9834,
+      "marketCap": 135716000000
     },
     "beta": {
-      "beta5y": 0.9866
+      "beta5y": 0.9834
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 85.77,
-        "high": 85.86,
-        "low": 84.98,
-        "close": 85.56,
-        "volume": 3367500
-      },
       {
         "date": "2025-10-27",
         "open": 86.13,
@@ -7747,6 +7739,14 @@
         "low": 178.29,
         "close": 183.33,
         "volume": 3226400
+      },
+      {
+        "date": "2026-10-27",
+        "open": 181.41,
+        "high": 186.32,
+        "low": 180.82,
+        "close": 185,
+        "volume": 3583200
       }
     ],
     "news": [
@@ -7767,19 +7767,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "eed47d1e-34f8-3033-86b2-82909f127cad",
-        "title": "Dow Jones Futures Rise As Trump To Unveil 'Major Trade Deal' With U.K.; MercadoLibre, AppLovin Soar",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/m/eed47d1e-34f8-3033-86b2-82909f127cad/dow-jones-futures-rise-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4a311f79-4b04-3e67-9e21-fe4c2e7072d4",
         "title": "Fortinet Q1 Non-GAAP Earnings, Revenue Rise; Full-Year Non-GAAP Earnings Outlook Lifted",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/fortinet-q1-non-gaap-earnings-202117731.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "eed47d1e-34f8-3033-86b2-82909f127cad",
+        "title": "Dow Jones Futures Rise As Trump To Unveil 'Major Trade Deal' With U.K.; MercadoLibre, AppLovin Soar",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/m/eed47d1e-34f8-3033-86b2-82909f127cad/dow-jones-futures-rise-as.html",
         "type": "STORY"
       },
       {
@@ -7888,18 +7888,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 60.95,
-        "industryAvg": 33.28
+        "value": 65.18,
+        "industryAvg": 34.5
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.86,
-        "industryAvg": 7.62
+        "value": 18.03,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 81.81,
-        "industryAvg": 8.46
+        "value": 87.5,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",
@@ -7909,7 +7909,7 @@
       {
         "metric": "ROA",
         "value": 5.8500000000000005,
-        "industryAvg": 10.16
+        "industryAvg": 10.15
       },
       {
         "metric": "Gross Margin",
@@ -7919,12 +7919,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 37.35,
-        "industryAvg": 36.05
+        "industryAvg": 36.04
       },
       {
         "metric": "Net Margin",
         "value": 29.609999999999996,
-        "industryAvg": 19.830000000000002
+        "industryAvg": 19.82
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.033,
-      "ttmPe": 25.09,
-      "marketCap": 78832640000,
-      "psRatio": 4.79,
-      "pbRatio": 27.24,
-      "pegRatio": 2.47
+      "ttmPe": 25.01,
+      "marketCap": 78584864000,
+      "psRatio": 4.77,
+      "pbRatio": 27.15,
+      "pegRatio": 2.46
     },
     "profitability": {
       "roe": 26.619999999999997,
@@ -6134,25 +6134,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.15,
-      "costOfEquity": 12.44,
+      "wacc": 11.12,
+      "costOfEquity": 12.42,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 24,
-      "beta": 0.945,
-      "marketCap": 78832640000
+      "beta": 0.9424,
+      "marketCap": 78584864000
     },
     "beta": {
-      "beta5y": 0.945
+      "beta5y": 0.9424
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 249,
-        "high": 250.71,
-        "low": 242.8,
-        "close": 245.75,
-        "volume": 3222700
-      },
       {
         "date": "2025-10-27",
         "open": 248.77,
@@ -8160,6 +8152,14 @@
         "low": 275.94,
         "close": 276.22,
         "volume": 1597800
+      },
+      {
+        "date": "2026-10-27",
+        "open": 272.3,
+        "high": 280.46,
+        "low": 267.9,
+        "close": 275.93,
+        "volume": 2263500
       }
     ],
     "news": [
@@ -8188,14 +8188,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "884ed253-b5ca-32ef-bff6-8ce35782c6f2",
-        "title": "Goldman Sachs Adjusts Price Target on Illinois Tool Works to $253 From $257",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-144344318.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f6581e87-f1ee-3e5e-96fd-d911447ff624",
         "title": "Citigroup Adjusts Price Target on Illinois Tool Works to $254 From $253",
         "publisher": "MT Newswires",
@@ -8204,11 +8196,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "807b67ac-aa01-344a-8dc8-66df6e282df5",
-        "title": "Illinois Tool Works First Quarter 2025 Earnings: In Line With Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/illinois-tool-works-first-quarter-104349017.html",
+        "uuid": "884ed253-b5ca-32ef-bff6-8ce35782c6f2",
+        "title": "Goldman Sachs Adjusts Price Target on Illinois Tool Works to $253 From $257",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-144344318.html",
         "type": "STORY"
       },
       {
@@ -8217,6 +8209,14 @@
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/itw-board-directors-declares-quarterly-151300939.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "807b67ac-aa01-344a-8dc8-66df6e282df5",
+        "title": "Illinois Tool Works First Quarter 2025 Earnings: In Line With Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/illinois-tool-works-first-quarter-104349017.html",
         "type": "STORY"
       },
       {
@@ -8236,11 +8236,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
-        "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
-        "publisher": "Zacks",
+        "uuid": "1771a0f3-2da7-3f95-84dc-bf2313156b30",
+        "title": "BofA Downgrades Illinois Tool Works to Underperform From Neutral, Price Target is $220",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
+        "link": "https://finance.yahoo.com/news/bofa-downgrades-illinois-tool-works-113704841.html",
         "type": "STORY"
       }
     ],
@@ -8312,43 +8312,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.09,
-        "industryAvg": 30.64
+        "value": 25.01,
+        "industryAvg": 29.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.79,
-        "industryAvg": 3.48
+        "value": 4.77,
+        "industryAvg": 3.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.24,
-        "industryAvg": 6.28
+        "value": 27.15,
+        "industryAvg": 5.95
       },
       {
         "metric": "ROE",
         "value": 26.619999999999997,
-        "industryAvg": 18.87
+        "industryAvg": 18.57
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 6.1899999999999995
+        "industryAvg": 6.3
       },
       {
         "metric": "Gross Margin",
         "value": 44.13,
-        "industryAvg": 28.96
+        "industryAvg": 29.020000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.23,
-        "industryAvg": 15.58
+        "industryAvg": 15.7
       },
       {
         "metric": "Net Margin",
         "value": 18.95,
-        "industryAvg": 9.790000000000001
+        "industryAvg": 9.92
       }
     ]
   }

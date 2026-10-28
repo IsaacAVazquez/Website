@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 73.58,
-      "marketCap": 195938496000,
-      "psRatio": 20.73,
-      "pbRatio": 10.57,
-      "pegRatio": 1.49
+      "ttmPe": 80.2,
+      "marketCap": 213562176000,
+      "psRatio": 22.6,
+      "pbRatio": 11.52,
+      "pegRatio": 1.62
     },
     "profitability": {
       "roe": 1.68,
@@ -1412,8 +1412,8 @@
           "Breakdown": "Normalized Income",
           "2026-01-31": "2683678000.0",
           "2025-01-31": "-534936850.34",
-          "2024-01-31": "-829831000.0",
-          "2023-01-31": "-67436000.0",
+          "2024-01-31": "-835900930.0",
+          "2023-01-31": "-73236320.0",
           "2022-01-31": "-392788210.96",
           "2021-01-31": "-99318497.83",
           "2020-01-31": "*"
@@ -1532,8 +1532,8 @@
           "Breakdown": "Tax Rate for Calcs",
           "2026-01-31": "0.12",
           "2025-01-31": "0.01",
-          "2024-01-31": "0.21",
-          "2023-01-31": "0.21",
+          "2024-01-31": "0.26",
+          "2023-01-31": "0.26",
           "2022-01-31": "0.13",
           "2021-01-31": "0.14",
           "2020-01-31": "*"
@@ -1542,8 +1542,8 @@
           "Breakdown": "Tax Effect of Unusual Items",
           "2026-01-31": "-1922000.0",
           "2025-01-31": "-3836850.34",
-          "2024-01-31": "-27531000.0",
-          "2023-01-31": "-25536000.0",
+          "2024-01-31": "-33600930.0",
+          "2023-01-31": "-31336320.0",
           "2022-01-31": "-4188210.96",
           "2021-01-31": "-28818497.83",
           "2020-01-31": "*"
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.2,
-      "costOfEquity": 22.770000000000003,
+      "wacc": 22.13,
+      "costOfEquity": 22.650000000000002,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2516,
-      "marketCap": 195938496000
+      "beta": 2.2405,
+      "marketCap": 213562176000
     },
     "beta": {
-      "beta5y": 2.2516
+      "beta5y": 2.2405
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 83.88,
-        "high": 85.79,
-        "low": 82.7,
-        "close": 84.13,
-        "volume": 11661400
-      },
       {
         "date": "2025-10-27",
         "open": 86.04,
@@ -7980,7 +7972,15 @@
         "high": 238.58,
         "low": 223.69,
         "close": 233.78,
-        "volume": 14424200
+        "volume": 14543600
+      },
+      {
+        "date": "2026-10-27",
+        "open": 237.05,
+        "high": 245.87,
+        "low": 235.23,
+        "close": 243.57,
+        "volume": 15403200
       }
     ],
     "news": [
@@ -8025,19 +8025,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
-        "title": "3 Hyped Up  Stocks with Mounting Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
         "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
+        "title": "3 Hyped Up  Stocks with Mounting Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
         "type": "STORY"
       },
       {
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
-        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
-        "publisher": "The Fly",
+        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
+        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
+        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
         "type": "STORY"
       }
     ],
@@ -8130,38 +8130,38 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 73.58,
-        "industryAvg": 26.63
+        "value": 80.2,
+        "industryAvg": 25.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 20.73,
-        "industryAvg": 12.66
+        "value": 22.6,
+        "industryAvg": 12.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.57,
-        "industryAvg": 10.98
+        "value": 11.52,
+        "industryAvg": 11.25
       },
       {
         "metric": "ROE",
         "value": 1.68,
-        "industryAvg": 59.62
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 1.13,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 53.14,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.03,
-        "industryAvg": 81.55
+        "industryAvg": 81.54
       },
       {
         "metric": "Net Margin",

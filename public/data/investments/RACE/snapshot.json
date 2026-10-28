@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 36.97,
-      "marketCap": 69954955390,
-      "psRatio": 8.34,
-      "pbRatio": 16.75,
-      "pegRatio": 2.84
+      "ttmPe": 36.24,
+      "marketCap": 68577529195,
+      "psRatio": 8.17,
+      "pbRatio": 16.42,
+      "pegRatio": 2.78
     },
     "profitability": {
       "roe": 12,
@@ -6042,24 +6042,16 @@
     },
     "wacc": {
       "wacc": 11.360000000000001,
-      "costOfEquity": 11.940000000000001,
+      "costOfEquity": 11.95,
       "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.883,
-      "marketCap": 69954955390
+      "beta": 0.8835,
+      "marketCap": 68577529195
     },
     "beta": {
-      "beta5y": 0.883
+      "beta5y": 0.8835
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 408.97,
-        "high": 411.391,
-        "low": 407.55,
-        "close": 408.31,
-        "volume": 710200
-      },
       {
         "date": "2025-10-27",
         "open": 408.16,
@@ -8067,6 +8059,14 @@
         "low": 392.93,
         "close": 392.94,
         "volume": 270900
+      },
+      {
+        "date": "2026-10-27",
+        "open": 392.03,
+        "high": 392.18,
+        "low": 389.07,
+        "close": 389.83,
+        "volume": 269100
       }
     ],
     "news": [
@@ -8135,19 +8135,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e4b46a0d-e375-352e-a0ea-f191583bf366",
-        "title": "Are Business Services Stocks Lagging  GORILLA TECH GP (GRRR) This Year?",
+        "uuid": "b310c041-b391-3fda-b664-048a835d90db",
+        "title": "Is Air Lease (AL) Stock Outpacing Its Transportation Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/business-services-stocks-lagging-gorilla-134006668.html",
+        "link": "https://finance.yahoo.com/news/air-lease-al-stock-outpacing-134005698.html",
         "type": "STORY"
       },
       {
-        "uuid": "1bd401d7-9a6f-3b96-9a23-0b650ba3477d",
-        "title": "Are Basic Materials Stocks Lagging  CF Industries (CF) This Year?",
+        "uuid": "c796803b-a3a1-3476-bacc-b8126594a359",
+        "title": "Are Consumer Discretionary Stocks Lagging  Atour Lifestyle Holdings Limited Sponsored ADR (ATAT) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/basic-materials-stocks-lagging-cf-134003198.html",
+        "link": "https://finance.yahoo.com/news/consumer-discretionary-stocks-lagging-atour-134003456.html",
         "type": "STORY"
       }
     ],
@@ -8214,43 +8214,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.97,
-        "industryAvg": 28.91
+        "value": 36.24,
+        "industryAvg": 29.95
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.34,
-        "industryAvg": 1.38
+        "value": 8.17,
+        "industryAvg": 1.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.75,
-        "industryAvg": 2.29
+        "value": 16.42,
+        "industryAvg": 2.39
       },
       {
         "metric": "ROE",
         "value": 12,
-        "industryAvg": 4.5600000000000005
+        "industryAvg": 4.74
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": 1.49
+        "industryAvg": 1.55
       },
       {
         "metric": "Gross Margin",
         "value": 52.59,
-        "industryAvg": 14.71
+        "industryAvg": 14.81
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.18,
-        "industryAvg": 9.569999999999999
+        "industryAvg": 9.28
       },
       {
         "metric": "Net Margin",
         "value": 23.849999999999998,
-        "industryAvg": 2.45
+        "industryAvg": 2.55
       }
     ]
   }

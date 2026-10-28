@@ -1,10 +1,10 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 32.9774,
-      "ttmPe": 34.25,
-      "marketCap": 62420606724,
+      "ttmPe": 34.27,
+      "marketCap": 62467586054,
       "psRatio": 6.24,
-      "pbRatio": -6.36,
+      "pbRatio": -6.37,
       "pegRatio": 3.15
     },
     "profitability": {
@@ -6080,24 +6080,16 @@
     },
     "wacc": {
       "wacc": 8.6,
-      "costOfEquity": 12.590000000000002,
+      "costOfEquity": 12.58,
       "costOfDebt": 1.54,
       "taxRate": 24,
-      "beta": 0.964,
-      "marketCap": 62420606724
+      "beta": 0.963,
+      "marketCap": 62467586054
     },
     "beta": {
-      "beta5y": 0.964
+      "beta5y": 0.963
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 1353.5,
-        "high": 1361.51,
-        "low": 1347.51,
-        "close": 1359.3,
-        "volume": 203500
-      },
       {
         "date": "2025-10-27",
         "open": 1354.76,
@@ -8105,6 +8097,14 @@
         "low": 1106.78,
         "close": 1129.7,
         "volume": 384900
+      },
+      {
+        "date": "2026-10-27",
+        "open": 1126.3,
+        "high": 1134.4301,
+        "low": 1119.12,
+        "close": 1130.23,
+        "volume": 323900
       }
     ],
     "news": [
@@ -8117,19 +8117,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
-        "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/transdigm-group-acquire-servotronics-cash-124829708.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eb4ff7d6-48e9-3d51-9a5c-b34eb59b0dd2",
         "title": "TransDigm Group and Servotronics, Inc. Announce Acquisition Agreement",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/transdigm-group-servotronics-inc-announce-123000757.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
+        "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/transdigm-group-acquire-servotronics-cash-124829708.html",
         "type": "STORY"
       },
       {
@@ -8149,19 +8149,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
-        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "117a91d7-5980-3f5f-a1b0-2be180327bfa",
         "title": "TransDigm Group's (NYSE:TDG) investors will be pleased with their splendid 299% return over the last five years",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-groups-nyse-tdg-investors-110024365.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
+        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
         "type": "STORY"
       },
       {
@@ -8248,43 +8248,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.25,
-        "industryAvg": 32.07
+        "value": 34.27,
+        "industryAvg": 31.7
       },
       {
         "metric": "P/S Ratio",
         "value": 6.24,
-        "industryAvg": 2.84
+        "industryAvg": 5.86
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.36,
-        "industryAvg": 8.77
+        "value": -6.37,
+        "industryAvg": 7.66
       },
       {
         "metric": "ROE",
         "value": -5.609999999999999,
-        "industryAvg": 17.32
+        "industryAvg": 12.3
       },
       {
         "metric": "ROA",
         "value": 2.07,
-        "industryAvg": 4.51
+        "industryAvg": 3.7800000000000002
       },
       {
         "metric": "Gross Margin",
         "value": 59.39,
-        "industryAvg": 18.759999999999998
+        "industryAvg": 20.330000000000002
       },
       {
         "metric": "EBITDA Margin",
         "value": 49.11,
-        "industryAvg": 14.35
+        "industryAvg": 15.07
       },
       {
         "metric": "Net Margin",
         "value": 19.66,
-        "industryAvg": 7.06
+        "industryAvg": 6.4799999999999995
       }
     ]
   }

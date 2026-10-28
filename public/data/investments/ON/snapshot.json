@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.5529,
-      "ttmPe": 47.16,
-      "marketCap": 28507779930,
-      "psRatio": 4.6,
-      "pbRatio": 3.95,
-      "pegRatio": 1.29
+      "ttmPe": 50.66,
+      "marketCap": 30625522970,
+      "psRatio": 4.94,
+      "pbRatio": 4.24,
+      "pegRatio": 1.39
     },
     "profitability": {
       "roe": 3.1199999999999997,
@@ -5897,25 +5897,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.62,
-      "costOfEquity": 21.51,
+      "wacc": 18.740000000000002,
+      "costOfEquity": 21.45,
       "costOfDebt": 0.31,
       "taxRate": 16,
-      "beta": 2.0921,
-      "marketCap": 28507779930
+      "beta": 2.0888,
+      "marketCap": 30625522970
     },
     "beta": {
-      "beta5y": 2.0921
+      "beta5y": 2.0888
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 52.5,
-        "high": 52.62,
-        "low": 50.67,
-        "close": 50.71,
-        "volume": 8634400
-      },
       {
         "date": "2025-10-27",
         "open": 51.84,
@@ -7923,6 +7915,14 @@
         "low": 72.22,
         "close": 74.06,
         "volume": 8537100
+      },
+      {
+        "date": "2026-10-27",
+        "open": 75.37,
+        "high": 79.29,
+        "low": 74.95,
+        "close": 78.67,
+        "volume": 9466400
       }
     ],
     "news": [
@@ -7975,19 +7975,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
-        "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
         "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
+        "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
         "type": "STORY"
       },
       {
@@ -8063,38 +8063,38 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.16,
-        "industryAvg": 26.63
+        "value": 50.66,
+        "industryAvg": 25.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.6,
-        "industryAvg": 12.66
+        "value": 4.94,
+        "industryAvg": 12.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.95,
-        "industryAvg": 10.98
+        "value": 4.24,
+        "industryAvg": 11.25
       },
       {
         "metric": "ROE",
         "value": 3.1199999999999997,
-        "industryAvg": 59.62
+        "industryAvg": 59.64
       },
       {
         "metric": "ROA",
         "value": 1.78,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 38.43,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 26.56,
-        "industryAvg": 81.55
+        "industryAvg": 81.54
       },
       {
         "metric": "Net Margin",

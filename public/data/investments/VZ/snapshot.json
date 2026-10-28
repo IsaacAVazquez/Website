@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-10-22T14:23:03.967088+00:00",
+  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-22T14:23:03.967088+00:00",
+    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
     "sections": {
-      "price": "2026-10-26"
+      "price": "2026-10-27"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Telecom Services",
       "sector": "Communication Services",
       "longBusinessSummary": "Verizon Communications Inc., through its subsidiaries, engages in the provision of communications, technology, information, and streaming products and services to consumers, businesses, and governmental entities worldwide. It operates in two segments, Verizon Consumer Group (Consumer) and Verizon Business Group (Business). The Consumer segment provides wireless services across the wireless networks in the United States under the Verizon and TracFone brands and through wholesale and other arrangements; and fixed wireless access (FWA) broadband through its wireless networks, as well as related equipment and devices, such as smartphones, tablets, smartwatches, and other wireless-enabled connected devices. The segment also offers wireline services in the Mid-Atlantic and Northeastern United States, as well as Washington D.C. through its fiber-optic network, Verizon Fios product portfolio, and a copper-based network. The Business segment provides wireless and wireline communications services and products, including FWA and wireline broadband, advanced communication services, corporate networking, security and managed network, local and long-distance voice, and network access services to deliver various IoT services and products to businesses, government customers, and wireless and wireline carriers in the United States and internationally. The company distributes its products and services through direct channels, company-operated stores, digital and omnichannel platforms, indirect agents, business solution resellers, and national retailers. The company was formerly known as Bell Atlantic Corporation and changed its name to Verizon Communications Inc. in June 2000. Verizon Communications Inc. was incorporated in 1983 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 97600,
+      "fullTimeEmployees": 89900,
       "website": "https://www.verizon.com",
       "shortName": "Verizon Communications Inc.",
       "longName": "Verizon Communications Inc."
     },
     "fundamentals": {
-      "ttmEps": 3.84,
-      "ttmPe": 11.34,
-      "marketCap": 180982007712,
-      "psRatio": 1.3,
-      "pbRatio": 1.74,
-      "pegRatio": 2.84
+      "ttmEps": 3.9198,
+      "ttmPe": 11.21,
+      "marketCap": 182089850000,
+      "psRatio": 1.31,
+      "pbRatio": 1.75,
+      "pegRatio": 1.64
     },
     "profitability": {
       "roe": 3.6999999999999997,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": -22.3
+        "yoyGrowth": 6.819999999999999
       }
     ],
     "income_statement": {
@@ -4263,25 +4263,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.93,
-      "costOfEquity": 7.199999999999999,
+      "wacc": 3.8899999999999997,
+      "costOfEquity": 7.109999999999999,
       "costOfDebt": 1.05,
       "taxRate": 25,
-      "beta": 0.2671,
-      "marketCap": 180982007712
+      "beta": 0.269,
+      "marketCap": 182089850000
     },
     "beta": {
-      "beta5y": 0.2671
+      "beta5y": 0.269
     },
     "price": [
-      {
-        "date": "2025-10-24",
-        "open": 38.6,
-        "high": 38.92,
-        "low": 38.54,
-        "close": 38.82,
-        "volume": 27485700
-      },
       {
         "date": "2025-10-27",
         "open": 38.81,
@@ -6288,7 +6280,15 @@
         "high": 43.84,
         "low": 42.47,
         "close": 43.1,
-        "volume": 45212900
+        "volume": 45245300
+      },
+      {
+        "date": "2026-10-27",
+        "open": 43,
+        "high": 44.06,
+        "low": 42.91,
+        "close": 43.93,
+        "volume": 28178000
       }
     ],
     "news": [
@@ -6301,19 +6301,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
-        "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b4401fae-303e-3049-8618-fe2694977919",
         "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
+        "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
         "type": "STORY"
       },
       {
@@ -6341,6 +6341,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
         "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
         "publisher": "GuruFocus.com",
@@ -6354,14 +6362,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-communications-212400011.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
         "type": "STORY"
       },
       {
@@ -6434,43 +6434,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.34,
-        "industryAvg": 10.57
+        "value": 11.21,
+        "industryAvg": 11.9
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.3,
-        "industryAvg": 1.08
+        "value": 1.31,
+        "industryAvg": 1.07
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.74,
-        "industryAvg": 1.57
+        "value": 1.75,
+        "industryAvg": 1.54
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 9.1
+        "industryAvg": 7.870000000000001
       },
       {
         "metric": "ROA",
         "value": 0.9299999999999999,
-        "industryAvg": 2.3
+        "industryAvg": 1.96
       },
       {
         "metric": "Gross Margin",
         "value": 61.8,
-        "industryAvg": 61.24000000000001
+        "industryAvg": 61.22
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.809999999999995,
-        "industryAvg": 35.19
+        "industryAvg": 34.08
       },
       {
         "metric": "Net Margin",
         "value": 11.200000000000001,
-        "industryAvg": 6.43
+        "industryAvg": 5.46
       }
     ]
   }
