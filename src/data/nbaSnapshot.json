@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-10-28T15:12:40.673Z",
+  "generatedAt": "2026-10-28T21:10:29.845Z",
   "updatedAt": "2026-10-28",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -952,6 +952,110 @@
   ],
   "recentFixtures": [
     {
+      "id": "401909880",
+      "utcDate": "2026-10-28T03:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "lal",
+        "name": "Los Angeles Lakers",
+        "shortName": "Lakers",
+        "abbreviation": "LAL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png"
+      },
+      "awayTeam": {
+        "id": "por",
+        "name": "Portland Trail Blazers",
+        "shortName": "Trail Blazers",
+        "abbreviation": "POR",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 129,
+        "away": 136
+      }
+    },
+    {
+      "id": "401909878",
+      "utcDate": "2026-10-28T00:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "ny",
+        "name": "New York Knicks",
+        "shortName": "Knicks",
+        "abbreviation": "NY",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png"
+      },
+      "awayTeam": {
+        "id": "det",
+        "name": "Detroit Pistons",
+        "shortName": "Pistons",
+        "abbreviation": "DET",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 111,
+        "away": 97
+      }
+    },
+    {
+      "id": "401909879",
+      "utcDate": "2026-10-28T00:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "sa",
+        "name": "San Antonio Spurs",
+        "shortName": "Spurs",
+        "abbreviation": "SA",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png"
+      },
+      "awayTeam": {
+        "id": "sac",
+        "name": "Sacramento Kings",
+        "shortName": "Kings",
+        "abbreviation": "SAC",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 130,
+        "away": 103
+      }
+    },
+    {
+      "id": "401909877",
+      "utcDate": "2026-10-27T23:30Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "bos",
+        "name": "Boston Celtics",
+        "shortName": "Celtics",
+        "abbreviation": "BOS",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png"
+      },
+      "awayTeam": {
+        "id": "bkn",
+        "name": "Brooklyn Nets",
+        "shortName": "Nets",
+        "abbreviation": "BKN",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 125,
+        "away": 124
+      }
+    },
+    {
       "id": "401909876",
       "utcDate": "2026-10-27T02:00Z",
       "status": "FINISHED",
@@ -1105,110 +1209,6 @@
         "winner": "HOME_TEAM",
         "home": 134,
         "away": 99
-      }
-    },
-    {
-      "id": "401909871",
-      "utcDate": "2026-10-26T23:30Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "mia",
-        "name": "Miami Heat",
-        "shortName": "Heat",
-        "abbreviation": "MIA",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png"
-      },
-      "awayTeam": {
-        "id": "dal",
-        "name": "Dallas Mavericks",
-        "shortName": "Mavericks",
-        "abbreviation": "DAL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 109,
-        "away": 113
-      }
-    },
-    {
-      "id": "401909868",
-      "utcDate": "2026-10-26T23:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "cha",
-        "name": "Charlotte Hornets",
-        "shortName": "Hornets",
-        "abbreviation": "CHA",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png"
-      },
-      "awayTeam": {
-        "id": "wsh",
-        "name": "Washington Wizards",
-        "shortName": "Wizards",
-        "abbreviation": "WSH",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 110,
-        "away": 103
-      }
-    },
-    {
-      "id": "401909869",
-      "utcDate": "2026-10-26T23:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "cle",
-        "name": "Cleveland Cavaliers",
-        "shortName": "Cavaliers",
-        "abbreviation": "CLE",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png"
-      },
-      "awayTeam": {
-        "id": "min",
-        "name": "Minnesota Timberwolves",
-        "shortName": "Timberwolves",
-        "abbreviation": "MIN",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 127,
-        "away": 125
-      }
-    },
-    {
-      "id": "401909867",
-      "utcDate": "2026-10-26T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "sac",
-        "name": "Sacramento Kings",
-        "shortName": "Kings",
-        "abbreviation": "SAC",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png"
-      },
-      "awayTeam": {
-        "id": "mem",
-        "name": "Memphis Grizzlies",
-        "shortName": "Grizzlies",
-        "abbreviation": "MEM",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 112,
-        "away": 123
       }
     }
   ],
@@ -2040,7 +2040,7 @@
         "pointsFor": 440,
         "pointsAgainst": 428
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "mil": {
       "team": {
@@ -2305,7 +2305,7 @@
         "pointsFor": 467,
         "pointsAgainst": 489
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "chi": {
       "team": {
@@ -2570,7 +2570,7 @@
         "pointsFor": 443,
         "pointsAgainst": 518
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "cle": {
       "team": {
@@ -2808,7 +2808,7 @@
         "pointsFor": 358,
         "pointsAgainst": 360
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "bos": {
       "team": {
@@ -3073,7 +3073,7 @@
         "pointsFor": 479,
         "pointsAgainst": 447
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "lac": {
       "team": {
@@ -3311,7 +3311,7 @@
         "pointsFor": 339,
         "pointsAgainst": 329
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "mem": {
       "team": {
@@ -3576,7 +3576,7 @@
         "pointsFor": 467,
         "pointsAgainst": 428
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "atl": {
       "team": {
@@ -3841,7 +3841,7 @@
         "pointsFor": 484,
         "pointsAgainst": 447
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "mia": {
       "team": {
@@ -4106,7 +4106,7 @@
         "pointsFor": 436,
         "pointsAgainst": 487
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "cha": {
       "team": {
@@ -4371,7 +4371,7 @@
         "pointsFor": 416,
         "pointsAgainst": 444
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "utah": {
       "team": {
@@ -4636,7 +4636,7 @@
         "pointsFor": 451,
         "pointsAgainst": 484
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "sac": {
       "team": {
@@ -4901,7 +4901,7 @@
         "pointsFor": 431,
         "pointsAgainst": 502
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "ny": {
       "team": {
@@ -5166,7 +5166,7 @@
         "pointsFor": 416,
         "pointsAgainst": 421
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "lal": {
       "team": {
@@ -5431,7 +5431,7 @@
         "pointsFor": 513,
         "pointsAgainst": 481
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "orl": {
       "team": {
@@ -5669,7 +5669,7 @@
         "pointsFor": 329,
         "pointsAgainst": 349
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "dal": {
       "team": {
@@ -5934,7 +5934,7 @@
         "pointsFor": 450,
         "pointsAgainst": 464
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "bkn": {
       "team": {
@@ -6199,7 +6199,7 @@
         "pointsFor": 457,
         "pointsAgainst": 496
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "den": {
       "team": {
@@ -6437,7 +6437,7 @@
         "pointsFor": 339,
         "pointsAgainst": 365
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "ind": {
       "team": {
@@ -6702,7 +6702,7 @@
         "pointsFor": 466,
         "pointsAgainst": 460
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "no": {
       "team": {
@@ -6940,7 +6940,7 @@
         "pointsFor": 374,
         "pointsAgainst": 384
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "det": {
       "team": {
@@ -7205,7 +7205,7 @@
         "pointsFor": 452,
         "pointsAgainst": 428
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "tor": {
       "team": {
@@ -7443,7 +7443,7 @@
         "pointsFor": 341,
         "pointsAgainst": 311
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "hou": {
       "team": {
@@ -7708,7 +7708,7 @@
         "pointsFor": 483,
         "pointsAgainst": 444
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "sa": {
       "team": {
@@ -7973,7 +7973,7 @@
         "pointsFor": 466,
         "pointsAgainst": 439
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "phx": {
       "team": {
@@ -8211,7 +8211,7 @@
         "pointsFor": 328,
         "pointsAgainst": 371
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "okc": {
       "team": {
@@ -8476,7 +8476,7 @@
         "pointsFor": 445,
         "pointsAgainst": 403
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "min": {
       "team": {
@@ -8741,7 +8741,7 @@
         "pointsFor": 488,
         "pointsAgainst": 420
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "por": {
       "team": {
@@ -8979,7 +8979,7 @@
         "pointsFor": 388,
         "pointsAgainst": 332
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "gs": {
       "team": {
@@ -9244,7 +9244,7 @@
         "pointsFor": 469,
         "pointsAgainst": 483
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     },
     "wsh": {
       "team": {
@@ -9509,7 +9509,7 @@
         "pointsFor": 457,
         "pointsAgainst": 458
       },
-      "generatedAt": "2026-10-28T15:12:40.673Z"
+      "generatedAt": "2026-10-28T21:10:29.845Z"
     }
   }
 }
