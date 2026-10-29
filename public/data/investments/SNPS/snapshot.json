@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 80.26,
-      "marketCap": 87051899650,
-      "psRatio": 9.24,
-      "pbRatio": 2.79,
-      "pegRatio": 0.9
+      "ttmPe": 85.13,
+      "marketCap": 92332533450,
+      "psRatio": 9.81,
+      "pbRatio": 2.96,
+      "pegRatio": 0.95
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,25 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.9,
-      "costOfEquity": 14.38,
+      "wacc": 13.03,
+      "costOfEquity": 14.45,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1924,
-      "marketCap": 87051899650
+      "beta": 1.2021,
+      "marketCap": 92332533450
     },
     "beta": {
-      "beta5y": 1.1924
+      "beta5y": 1.2021
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 471.28,
-        "high": 475.42,
-        "low": 461.49,
-        "close": 465.41,
-        "volume": 1720500
-      },
       {
         "date": "2025-10-28",
         "open": 461.68,
@@ -8308,6 +8300,14 @@
         "low": 455.82,
         "close": 474.42,
         "volume": 2153600
+      },
+      {
+        "date": "2026-10-28",
+        "open": 477.3,
+        "high": 487.36,
+        "low": 467.24,
+        "close": 481.89,
+        "volume": 2249000
       }
     ],
     "news": [
@@ -8336,35 +8336,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
-        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
-        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
         "title": "Trump Blocks Chip Design Software Firms From Selling In China",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       },
       {
@@ -8384,11 +8368,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
+        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
+        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+        "title": "US Tightens China Chip Curbs by Targeting Design Software",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
         "type": "STORY"
       }
     ],
@@ -8453,18 +8453,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 80.26,
-        "industryAvg": 34.19
+        "value": 85.13,
+        "industryAvg": 34.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.24,
-        "industryAvg": 7.85
+        "value": 9.81,
+        "industryAvg": 7.89
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.79,
-        "industryAvg": 8.72
+        "value": 2.96,
+        "industryAvg": 8.76
       },
       {
         "metric": "ROE",

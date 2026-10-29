@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 15.92,
-      "marketCap": 3874464000000,
-      "psRatio": 8.69,
-      "pbRatio": 6.05,
-      "pegRatio": 0.05
+      "ttmPe": 16.32,
+      "marketCap": 3973404700000,
+      "psRatio": 8.91,
+      "pbRatio": 6.2,
+      "pegRatio": 0.06
     },
     "profitability": {
       "roe": 20.03,
@@ -5800,25 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.030000000000001,
-      "costOfEquity": 14.41,
+      "wacc": 13.94,
+      "costOfEquity": 14.31,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.1961,
-      "marketCap": 3874464000000
+      "beta": 1.1839,
+      "marketCap": 3973404700000
     },
     "beta": {
-      "beta5y": 1.1961
+      "beta5y": 1.1839
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 264.82,
-        "high": 270.14,
-        "low": 264.28,
-        "close": 269.27,
-        "volume": 35235200
-      },
       {
         "date": "2025-10-28",
         "open": 269.69,
@@ -7825,7 +7817,15 @@
         "high": 323.88,
         "low": 316.86,
         "close": 320.58,
-        "volume": 28527400
+        "volume": 28633100
+      },
+      {
+        "date": "2026-10-28",
+        "open": 323.77,
+        "high": 326.41,
+        "low": 322.66,
+        "close": 324.89,
+        "volume": 60294600
       }
     ],
     "news": [
@@ -7838,11 +7838,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
-        "publisher": "Zacks",
+        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
+        "title": "3 Cheap Tech Stocks to Buy Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
@@ -7854,19 +7854,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "343df9a5-0920-3bee-8ef5-51237a31223f",
-        "title": "3 Cheap Tech Stocks to Buy Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/343df9a5-0920-3bee-8ef5-51237a31223f/3-cheap-tech-stocks-to-buy.html",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
         "type": "STORY"
       },
       {
@@ -7878,11 +7870,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
-        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -7894,11 +7886,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
-        "title": "3 Growth Stocks to Buy and Forget About",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
+        "uuid": "31850e85-b8d2-37c3-962b-d509fb5b370d",
+        "title": "Sector Update: Consumer Stocks Decline Late Afternoon",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-stocks-decline-afternoon-194457472.html",
         "type": "STORY"
       },
       {
@@ -7907,6 +7899,14 @@
         "publisher": "Reuters",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4d7fe1de-6ce8-3bad-a565-20d668edb258",
+        "title": "3 Growth Stocks to Buy and Forget About",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/m/4d7fe1de-6ce8-3bad-a565-20d668edb258/3-growth-stocks-to-buy-and.html",
         "type": "STORY"
       }
     ],
@@ -7980,18 +7980,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.92,
-        "industryAvg": 16.73
+        "value": 16.32,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.69,
-        "industryAvg": 7.67
+        "value": 8.91,
+        "industryAvg": 7.78
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.05,
-        "industryAvg": 5.61
+        "value": 6.2,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",

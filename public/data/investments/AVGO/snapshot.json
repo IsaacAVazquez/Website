@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.8333,
-      "ttmPe": 42.02,
-      "marketCap": 1571457580000,
-      "psRatio": 17.64,
-      "pbRatio": 15.76,
-      "pegRatio": 0.2
+      "ttmPe": 44.91,
+      "marketCap": 1679540940000,
+      "psRatio": 18.85,
+      "pbRatio": 16.85,
+      "pegRatio": 0.21
     },
     "profitability": {
       "roe": 13.969999999999999,
@@ -6216,24 +6216,16 @@
     },
     "wacc": {
       "wacc": 16,
-      "costOfEquity": 16.56,
+      "costOfEquity": 16.53,
       "costOfDebt": 1.31,
       "taxRate": 14.000000000000002,
-      "beta": 1.4693,
-      "marketCap": 1571457580000
+      "beta": 1.468,
+      "marketCap": 1679540940000
     },
     "beta": {
-      "beta5y": 1.4693
+      "beta5y": 1.468
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 361.54,
-        "high": 362.75,
-        "low": 355.08,
-        "close": 362.05,
-        "volume": 20065800
-      },
       {
         "date": "2025-10-28",
         "open": 362.62,
@@ -8240,7 +8232,15 @@
         "high": 345.67,
         "low": 336.87,
         "close": 342.33,
-        "volume": 25526200
+        "volume": 25567200
+      },
+      {
+        "date": "2026-10-28",
+        "open": 349.22,
+        "high": 352.4,
+        "low": 344.35,
+        "close": 351.81,
+        "volume": 22629700
       }
     ],
     "news": [
@@ -8384,18 +8384,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.02,
-        "industryAvg": 24.81
+        "value": 44.91,
+        "industryAvg": 25.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.64,
-        "industryAvg": 12.08
+        "value": 18.85,
+        "industryAvg": 12.61
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.76,
-        "industryAvg": 10.9
+        "value": 16.85,
+        "industryAvg": 11.42
       },
       {
         "metric": "ROE",

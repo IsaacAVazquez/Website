@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3516,
-      "ttmPe": 16.54,
-      "pegRatio": 1.01,
-      "marketCap": 32512307894,
-      "psRatio": 1.53,
-      "pbRatio": 2.96
+      "ttmPe": 17.42,
+      "pegRatio": 1.06,
+      "marketCap": 34246779446,
+      "psRatio": 1.61,
+      "pbRatio": 3.12
     },
     "profitability": {
       "roe": 5.18,
@@ -6205,25 +6205,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.799999999999999,
-      "costOfEquity": 11.360000000000001,
+      "wacc": 8.98,
+      "costOfEquity": 11.469999999999999,
       "costOfDebt": 1.08,
       "taxRate": 17,
-      "beta": 0.8077,
-      "marketCap": 32512307894
+      "beta": 0.821,
+      "marketCap": 34246779446
     },
     "beta": {
-      "beta5y": 0.8077
+      "beta5y": 0.821
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 78.62,
-        "high": 79.15,
-        "low": 78.28,
-        "close": 78.35,
-        "volume": 4093600
-      },
       {
         "date": "2025-10-28",
         "open": 78.12,
@@ -8231,6 +8223,14 @@
         "low": 70.17,
         "close": 71.11,
         "volume": 5055200
+      },
+      {
+        "date": "2026-10-28",
+        "open": 76,
+        "high": 77.88,
+        "low": 74.64,
+        "close": 75.82,
+        "volume": 9569300
       }
     ],
     "news": [
@@ -8251,14 +8251,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
-        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "d868eb89-e2b7-3144-a275-167379eaed5b",
         "title": "Etsy's tariff concerns, GE HealthCare earnings, Seagate Q3 results",
         "publisher": "Yahoo Finance Video",
@@ -8272,6 +8264,14 @@
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "3538ad62-7b45-367c-b32d-4ae897f66f6c",
+        "title": "Earnings updates: Ford, Stellantis, GE Healthcare, & more",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/earnings-updates-ford-stellantis-ge-202654421.html",
         "type": "VIDEO"
       },
       {
@@ -8380,23 +8380,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.54,
-        "industryAvg": 26.05
+        "value": 17.42,
+        "industryAvg": 25.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.53,
-        "industryAvg": 3.15
+        "value": 1.61,
+        "industryAvg": 3.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.96,
-        "industryAvg": 3.07
+        "value": 3.12,
+        "industryAvg": 3.04
       },
       {
         "metric": "ROE",
         "value": 5.18,
-        "industryAvg": 8.459999999999999
+        "industryAvg": 8.450000000000001
       },
       {
         "metric": "ROA",
@@ -8416,7 +8416,7 @@
       {
         "metric": "Net Margin",
         "value": 10.6,
-        "industryAvg": 8.34
+        "industryAvg": 8.35
       }
     ]
   }

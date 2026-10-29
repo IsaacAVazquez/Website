@@ -1,14 +1,13 @@
 {
   "symbol": "REGN",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
-      "fundamentals",
-      "industry"
+      "fundamentals"
     ]
   },
   "source": "prefetched",
@@ -44,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 40.4631,
-      "ttmPe": 19.96,
+      "ttmPe": 20.1,
       "pegRatio": 1.03,
-      "marketCap": 83513078000,
-      "psRatio": 5.38,
-      "pbRatio": 2.63
+      "marketCap": 84092118000,
+      "psRatio": 5.41,
+      "pbRatio": 2.65
     },
     "profitability": {
       "roe": 4.109999999999999,
@@ -5713,25 +5712,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.8500000000000005,
-      "costOfEquity": 6.03,
+      "wacc": 5.92,
+      "costOfEquity": 6.1,
       "costOfDebt": 0.41000000000000003,
       "taxRate": 15,
-      "beta": 0.1307,
-      "marketCap": 83513078000
+      "beta": 0.1337,
+      "marketCap": 84092118000
     },
     "beta": {
-      "beta5y": 0.1307
+      "beta5y": 0.1337
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 580.5,
-        "high": 586.15,
-        "low": 575.93,
-        "close": 585.31,
-        "volume": 1246100
-      },
       {
         "date": "2025-10-28",
         "open": 612.02,
@@ -7739,6 +7730,14 @@
         "low": 804.05,
         "close": 816.1,
         "volume": 726100
+      },
+      {
+        "date": "2026-10-28",
+        "open": 807.06,
+        "high": 821.16,
+        "low": 802.2,
+        "close": 813.27,
+        "volume": 536300
       }
     ],
     "news": [
@@ -7791,19 +7790,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
-        "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a15e3647-b6c1-34e2-86ad-b1f5d1a28efb",
         "title": "Alnylam Q1 Earnings Beat Estimates, Product Revenues Rise Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/alnylam-q1-earnings-beat-estimates-145100032.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f33622c-258b-3263-82b6-5b6151f9d673",
+        "title": "Jim Cramer on Regeneron Pharmaceuticals, Inc. (REGN): ‘Arguably The Most Innovative Biopharma Company I’ve Seen In The Last Two Decades’",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/jim-cramer-regeneron-pharmaceuticals-inc-194014134.html",
         "type": "STORY"
       },
       {
@@ -7886,43 +7885,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.91,
-        "industryAvg": 23.39
+        "value": 20.1,
+        "industryAvg": 24.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.36,
-        "industryAvg": 11.14
+        "value": 5.41,
+        "industryAvg": 11.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.63,
-        "industryAvg": 4.63
+        "value": 2.65,
+        "industryAvg": 4.71
       },
       {
         "metric": "ROE",
         "value": 4.109999999999999,
-        "industryAvg": -18.34
+        "industryAvg": -17.96
       },
       {
         "metric": "ROA",
         "value": 3.1399999999999997,
-        "industryAvg": -11.26
+        "industryAvg": -11.03
       },
       {
         "metric": "Gross Margin",
         "value": 86.56,
-        "industryAvg": 81.91000000000001
+        "industryAvg": 81.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.75,
-        "industryAvg": -27.589999999999996
+        "industryAvg": -26.55
       },
       {
         "metric": "Net Margin",
         "value": 30.23,
-        "industryAvg": -33.61
+        "industryAvg": -32.5
       }
     ]
   }

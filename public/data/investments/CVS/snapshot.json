@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7879,
-      "ttmPe": 24.43,
+      "ttmPe": 23.75,
       "pegRatio": 0.13,
-      "marketCap": 118253340000,
+      "marketCap": 114956100000,
       "psRatio": 0.28,
-      "pbRatio": 1.48
+      "pbRatio": 1.44
     },
     "profitability": {
       "roe": 3.7900000000000005,
@@ -5618,25 +5618,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.0600000000000005,
-      "costOfEquity": 9.49,
+      "wacc": 6.04,
+      "costOfEquity": 9.56,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 25,
-      "beta": 0.5709,
-      "marketCap": 118253340000
+      "beta": 0.5766,
+      "marketCap": 114956100000
     },
     "beta": {
-      "beta5y": 0.5709
+      "beta5y": 0.5766
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 81.35,
-        "high": 82.56,
-        "low": 80.88,
-        "close": 82.45,
-        "volume": 6129000
-      },
       {
         "date": "2025-10-28",
         "open": 83.74,
@@ -7644,17 +7636,17 @@
         "low": 90.95,
         "close": 91.13,
         "volume": 4589200
+      },
+      {
+        "date": "2026-10-28",
+        "open": 90.58,
+        "high": 91.53,
+        "low": 89.89,
+        "close": 89.95,
+        "volume": 5575600
       }
     ],
     "news": [
-      {
-        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
-        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
-        "type": "STORY"
-      },
       {
         "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
         "title": "3 things we've learned from healthcare earnings",
@@ -7662,6 +7654,14 @@
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
+        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
+        "type": "STORY"
       },
       {
         "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
@@ -7720,11 +7720,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2ae57d9c-b9b9-376d-bf2b-539f1d358547",
-        "title": "PacBio Stock Down Despite Q1 Earnings & Revenue Beat Estimates",
+        "uuid": "cf7dda7f-04f4-38a3-8e64-6923ae47ece8",
+        "title": "AMN Stock Gains Following Q1 Earnings & Revenue Beat, Margins Down",
         "publisher": "Zacks",
         "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/pacbio-stock-down-despite-q1-160000954.html",
+        "link": "https://finance.yahoo.com/news/amn-stock-gains-following-q1-160100419.html",
         "type": "STORY"
       }
     ],
@@ -7798,43 +7798,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.43,
-        "industryAvg": 22.36
+        "value": 23.75,
+        "industryAvg": 21.97
       },
       {
         "metric": "P/S Ratio",
         "value": 0.28,
-        "industryAvg": 0.44
+        "industryAvg": 0.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.48,
-        "industryAvg": 2.46
+        "value": 1.44,
+        "industryAvg": 2.42
       },
       {
         "metric": "ROE",
         "value": 3.7900000000000005,
-        "industryAvg": 8.9
+        "industryAvg": 11.06
       },
       {
         "metric": "ROA",
         "value": 1.18,
-        "industryAvg": 2.7
+        "industryAvg": 3.37
       },
       {
         "metric": "Gross Margin",
         "value": 14.84,
-        "industryAvg": 13.700000000000001
+        "industryAvg": 13.69
       },
       {
         "metric": "EBITDA Margin",
         "value": 5.52,
-        "industryAvg": 3.54
+        "industryAvg": 4
       },
       {
         "metric": "Net Margin",
         "value": 2.81,
-        "industryAvg": 1.55
+        "industryAvg": 1.92
       }
     ]
   }

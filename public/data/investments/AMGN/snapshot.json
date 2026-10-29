@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-10-23T14:04:54.298240+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-23T14:04:54.298240+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.0981,
-      "ttmPe": 27.78,
+      "ttmPe": 28.07,
       "pegRatio": 0.43,
-      "marketCap": 241799568000,
-      "psRatio": 6.35,
-      "pbRatio": 20.69
+      "marketCap": 244259298000,
+      "psRatio": 6.41,
+      "pbRatio": 20.9
     },
     "profitability": {
       "roe": 22.75,
@@ -5336,25 +5336,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.01,
-      "costOfEquity": 8.43,
+      "wacc": 7.049999999999999,
+      "costOfEquity": 8.469999999999999,
       "costOfDebt": 1.17,
       "taxRate": 14.000000000000002,
-      "beta": 0.4393,
-      "marketCap": 241799568000
+      "beta": 0.4369,
+      "marketCap": 244259298000
     },
     "beta": {
-      "beta5y": 0.4393
+      "beta5y": 0.4369
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 291.21,
-        "high": 292,
-        "low": 288.26,
-        "close": 291.16,
-        "volume": 1794300
-      },
       {
         "date": "2025-10-28",
         "open": 288.93,
@@ -7362,6 +7354,14 @@
         "low": 439.28,
         "close": 447.95,
         "volume": 1732800
+      },
+      {
+        "date": "2026-10-28",
+        "open": 441.03,
+        "high": 454.66,
+        "low": 439.57,
+        "close": 451.83,
+        "volume": 2910500
       }
     ],
     "news": [
@@ -7414,19 +7414,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0dc4812d-09f8-322e-b873-8f766a7f20f3",
-        "title": "Sanofi Inks A $470 Million Alzheimer's Deal, Sending This Dollar Stock Flying",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/0dc4812d-09f8-322e-b873-8f766a7f20f3/sanofi-inks-a-%24470-million.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
         "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0dc4812d-09f8-322e-b873-8f766a7f20f3",
+        "title": "Sanofi Inks A $470 Million Alzheimer's Deal, Sending This Dollar Stock Flying",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/0dc4812d-09f8-322e-b873-8f766a7f20f3/sanofi-inks-a-%24470-million.html",
         "type": "STORY"
       },
       {
@@ -7510,43 +7510,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.78,
-        "industryAvg": 27.85
+        "value": 28.07,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.35,
-        "industryAvg": 5.03
+        "value": 6.41,
+        "industryAvg": 4.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.69,
-        "industryAvg": 6.19
+        "value": 20.9,
+        "industryAvg": 6.26
       },
       {
         "metric": "ROE",
         "value": 22.75,
-        "industryAvg": 23.86
+        "industryAvg": 22.57
       },
       {
         "metric": "ROA",
         "value": 2.52,
-        "industryAvg": 8.35
+        "industryAvg": 7.86
       },
       {
         "metric": "Gross Margin",
         "value": 72.04,
-        "industryAvg": 73.8
+        "industryAvg": 73.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.29,
-        "industryAvg": 32.67
+        "industryAvg": 31.830000000000002
       },
       {
         "metric": "Net Margin",
         "value": 23.62,
-        "industryAvg": 16.91
+        "industryAvg": 15.9
       }
     ]
   }
