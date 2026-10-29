@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-27T21:22:39.466Z",
+  "generatedAt": "2026-10-28T21:43:29.794Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-27T21:22:40.166Z",
+        "accessedAt": "2026-10-28T21:43:30.960Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3106,7 +3106,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 89,
             "rank": 345,
@@ -4780,7 +4780,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 194,
             "rank": 531,
@@ -4852,7 +4852,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 539,
@@ -4879,7 +4879,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 542,
@@ -4960,7 +4960,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-27T21:22:41.425Z",
+        "accessedAt": "2026-10-28T21:43:31.385Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8117,7 +8117,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 89,
             "rank": 306,
@@ -9845,7 +9845,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 194,
             "rank": 498,
@@ -9953,7 +9953,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 510,
@@ -10241,7 +10241,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 542,
@@ -10322,7 +10322,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-27T21:22:42.136Z",
+        "accessedAt": "2026-10-28T21:43:32.034Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13308,7 +13308,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 89,
             "rank": 287,
@@ -15378,7 +15378,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 194,
             "rank": 517,
@@ -15513,7 +15513,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 532,
@@ -15603,7 +15603,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 542,
@@ -15684,7 +15684,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 123,
             "rank": 551,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-27T21:22:42.749Z",
+        "accessedAt": "2026-10-28T21:43:32.853Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18834,7 +18834,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 88,
             "rank": 305,
@@ -20724,7 +20724,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 515,
@@ -20823,7 +20823,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 526,
@@ -20976,7 +20976,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 194,
             "rank": 543,
@@ -21039,7 +21039,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 550,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-27T21:22:43.592Z",
+        "accessedAt": "2026-10-28T21:43:33.656Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24376,7 +24376,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 88,
             "rank": 325,
@@ -25987,7 +25987,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 194,
             "rank": 504,
@@ -26077,7 +26077,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 514,
@@ -26302,7 +26302,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 539,
@@ -26374,7 +26374,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 547,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-27T21:22:44.414Z",
+        "accessedAt": "2026-10-28T21:43:34.360Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29297,7 +29297,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 88,
             "rank": 276,
@@ -31421,7 +31421,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 194,
             "rank": 512,
@@ -31547,7 +31547,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 526,
@@ -31682,7 +31682,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 541,
@@ -31754,7 +31754,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 549,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-27T21:22:45.067Z",
+        "accessedAt": "2026-10-28T21:43:34.961Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35084,7 +35084,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 87,
             "rank": 323,
@@ -36902,7 +36902,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 525,
@@ -37028,7 +37028,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 539,
@@ -37055,7 +37055,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 195,
             "rank": 542,
@@ -37109,7 +37109,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 548,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-27T21:22:45.738Z",
+        "accessedAt": "2026-10-28T21:43:35.316Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40365,7 +40365,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 87,
             "rank": 314,
@@ -42201,7 +42201,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 518,
@@ -42381,7 +42381,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 538,
@@ -42408,7 +42408,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 195,
             "rank": 541,
@@ -42462,7 +42462,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 547,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-27T21:22:46.415Z",
+        "accessedAt": "2026-10-28T21:43:35.736Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45484,7 +45484,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "HOU",
             "position": "RB",
             "positionRank": 87,
             "rank": 287,
@@ -47500,7 +47500,7 @@
           {
             "playerId": "fp-18168",
             "name": "Malik Turner",
-            "team": "SF",
+            "team": "FA",
             "position": "WR",
             "positionRank": 195,
             "rank": 511,
@@ -47581,7 +47581,7 @@
           {
             "playerId": "fp-26411",
             "name": "Tejhaun Palmer",
-            "team": "FA",
+            "team": "LAC",
             "position": "WR",
             "positionRank": 200,
             "rank": 520,
@@ -47743,7 +47743,7 @@
           {
             "playerId": "fp-25349",
             "name": "Ben Sims",
-            "team": "FA",
+            "team": "SEA",
             "position": "TE",
             "positionRank": 114,
             "rank": 538,
@@ -47815,7 +47815,7 @@
           {
             "playerId": "fp-28399",
             "name": "Carsen Ryan",
-            "team": "FA",
+            "team": "CLE",
             "position": "TE",
             "positionRank": 122,
             "rank": 546,
