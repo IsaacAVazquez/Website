@@ -1,10 +1,10 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": 8.7233,
       "ttmPe": 39.42,
-      "marketCap": 5024168465330,
+      "marketCap": 5022999748290,
       "psRatio": 10.76,
-      "pbRatio": 46.73,
+      "pbRatio": 46.72,
       "pegRatio": 1.35
     },
     "profitability": {
@@ -5105,25 +5105,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.15,
-      "costOfEquity": 13.420000000000002,
+      "wacc": 13.28,
+      "costOfEquity": 13.56,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0701,
-      "marketCap": 5024168465330
+      "beta": 1.0877,
+      "marketCap": 5022999748290
     },
     "beta": {
-      "beta5y": 1.0701
+      "beta5y": 1.0877
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 264.88,
-        "high": 269.12,
-        "low": 264.65,
-        "close": 268.81,
-        "volume": 44888200
-      },
       {
         "date": "2025-10-28",
         "open": 268.99,
@@ -7130,7 +7122,15 @@
         "high": 347.78,
         "low": 342.39,
         "close": 347.1,
-        "volume": 39949500
+        "volume": 39984400
+      },
+      {
+        "date": "2026-10-28",
+        "open": 346.92,
+        "high": 347.18,
+        "low": 343.52,
+        "close": 343.83,
+        "volume": 35595700
       }
     ],
     "news": [
@@ -7282,17 +7282,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 39.42,
-        "industryAvg": 38.97
+        "industryAvg": 38.96
       },
       {
         "metric": "P/S Ratio",
         "value": 10.76,
-        "industryAvg": 8.31
+        "industryAvg": 8.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 46.73,
-        "industryAvg": 24.19
+        "value": 46.72,
+        "industryAvg": 24.11
       },
       {
         "metric": "ROE",

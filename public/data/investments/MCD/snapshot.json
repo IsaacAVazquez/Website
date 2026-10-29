@@ -1,10 +1,10 @@
 {
   "symbol": "MCD",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3129,
-      "ttmPe": 20.37,
+      "ttmPe": 20.34,
       "pegRatio": 3.51,
-      "marketCap": 177487308000,
-      "psRatio": 6.41,
-      "pbRatio": -173.67
+      "marketCap": 177253800000,
+      "psRatio": 6.4,
+      "pbRatio": -173.44
     },
     "profitability": {
       "roe": -204.76999999999998,
@@ -5534,25 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.64,
-      "costOfEquity": 8.5,
+      "wacc": 6.7,
+      "costOfEquity": 8.58,
       "costOfDebt": 0.75,
       "taxRate": 20,
-      "beta": 0.4442,
-      "marketCap": 177487308000
+      "beta": 0.4511,
+      "marketCap": 177253800000
     },
     "beta": {
-      "beta5y": 0.4442
+      "beta5y": 0.4511
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 305.9,
-        "high": 310.09,
-        "low": 305.34,
-        "close": 310,
-        "volume": 2139700
-      },
       {
         "date": "2025-10-28",
         "open": 308.54,
@@ -7560,6 +7552,14 @@
         "low": 248.35,
         "close": 249.47,
         "volume": 3799000
+      },
+      {
+        "date": "2026-10-28",
+        "open": 248.42,
+        "high": 252.39,
+        "low": 248,
+        "close": 250.5,
+        "volume": 3385000
       }
     ],
     "news": [
@@ -7588,19 +7588,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
-        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f5df691a-39e5-31d7-bcb8-7d2f48d17b70",
         "title": "Wendy's (WEN) Upgraded on Rebound Potential Despite Industry Slump",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/wendys-wen-upgraded-rebound-potential-201625694.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
+        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
         "type": "STORY"
       },
       {
@@ -7612,19 +7612,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6f7dd108-9650-3481-a29d-b130526e037a",
-        "title": "JPMorgan downgrades Krispy Kreme on strategy reset, execution risk",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/jpmorgan-downgrades-krispy-kreme-strategy-144608670.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7246e8dc-19a9-38b1-8bc0-6386734eeff6",
         "title": "Starbucks Is Said to Start Process to Revamp Vast China Business",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/starbucks-said-kick-off-process-020939123.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6f7dd108-9650-3481-a29d-b130526e037a",
+        "title": "JPMorgan downgrades Krispy Kreme on strategy reset, execution risk",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/jpmorgan-downgrades-krispy-kreme-strategy-144608670.html",
         "type": "STORY"
       },
       {
@@ -7714,18 +7714,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.37,
-        "industryAvg": 24.59
+        "value": 20.34,
+        "industryAvg": 24.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.41,
-        "industryAvg": 2.84
+        "value": 6.4,
+        "industryAvg": 2.86
       },
       {
         "metric": "P/B Ratio",
-        "value": -173.67,
-        "industryAvg": 4.9
+        "value": -173.44,
+        "industryAvg": 4.98
       },
       {
         "metric": "ROE",

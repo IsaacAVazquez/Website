@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.0787,
-      "ttmPe": 13.32,
-      "pegRatio": 8.76,
-      "marketCap": 33534049380,
-      "psRatio": 3.52,
-      "pbRatio": 10.65
+      "ttmPe": 12.8,
+      "pegRatio": 8.42,
+      "marketCap": 32221181200,
+      "psRatio": 3.39,
+      "pbRatio": 10.24
     },
     "profitability": {
       "roe": 21.66,
@@ -6002,25 +6002,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.24,
-      "costOfEquity": 10.37,
+      "wacc": 8.309999999999999,
+      "costOfEquity": 10.54,
       "costOfDebt": 0.66,
       "taxRate": 20,
-      "beta": 0.6819,
-      "marketCap": 33534049380
+      "beta": 0.7021,
+      "marketCap": 32221181200
     },
     "beta": {
-      "beta5y": 0.6819
+      "beta5y": 0.7021
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 146.53,
-        "high": 147.93,
-        "low": 145.41,
-        "close": 147.53,
-        "volume": 2317400
-      },
       {
         "date": "2025-10-28",
         "open": 146.82,
@@ -8028,6 +8020,14 @@
         "low": 78.07,
         "close": 78.23,
         "volume": 2833900
+      },
+      {
+        "date": "2026-10-28",
+        "open": 77.36,
+        "high": 78.56,
+        "low": 77.03,
+        "close": 77.8,
+        "volume": 2617600
       }
     ],
     "news": [
@@ -8056,6 +8056,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
+        "title": "Zoetis Declares Third Quarter 2025 Dividend",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
         "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
         "publisher": "Zacks",
@@ -8072,19 +8080,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "33b88da3-053c-3f00-8490-f6db6222238d",
-        "title": "Zoetis Declares Third Quarter 2025 Dividend",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zoetis-declares-third-quarter-2025-201500766.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "87bc08fc-4245-34c6-8dbb-7c847ba5d004",
-        "title": "Zoetis (NYSE:ZTS) Declares US$0.50 Dividend Per Share For Q3 2025",
-        "publisher": "Simply Wall St.",
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/zoetis-nyse-zts-declares-us-174943464.html",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8096,11 +8096,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
+        "uuid": "87bc08fc-4245-34c6-8dbb-7c847ba5d004",
+        "title": "Zoetis (NYSE:ZTS) Declares US$0.50 Dividend Per Share For Q3 2025",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
+        "link": "https://finance.yahoo.com/news/zoetis-nyse-zts-declares-us-174943464.html",
         "type": "STORY"
       },
       {
@@ -8180,43 +8180,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.32,
+        "value": 12.8,
         "industryAvg": 23.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.52,
-        "industryAvg": 2.4
+        "value": 3.39,
+        "industryAvg": 2.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.65,
-        "industryAvg": 2.56
+        "value": 10.24,
+        "industryAvg": 2.5
       },
       {
         "metric": "ROE",
         "value": 21.66,
-        "industryAvg": -1.32
+        "industryAvg": 0.18
       },
       {
         "metric": "ROA",
         "value": 4.569999999999999,
-        "industryAvg": -0.5
+        "industryAvg": 0.06999999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 72.72999999999999,
-        "industryAvg": 58.91
+        "industryAvg": 60.199999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.38,
-        "industryAvg": 15.67
+        "industryAvg": 16.36
       },
       {
         "metric": "Net Margin",
         "value": 28.000000000000004,
-        "industryAvg": -0.25
+        "industryAvg": 1.02
       }
     ]
   }

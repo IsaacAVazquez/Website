@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.0918,
-      "ttmPe": 9.56,
+      "ttmPe": 9.36,
       "pegRatio": 0.13,
-      "marketCap": 130924225705,
-      "psRatio": 2.6,
-      "pbRatio": 3.87
+      "marketCap": 128113687765,
+      "psRatio": 2.55,
+      "pbRatio": 3.79
     },
     "profitability": {
       "roe": 9.89,
@@ -6161,25 +6161,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.29,
-      "costOfEquity": 10.67,
+      "wacc": 9.27,
+      "costOfEquity": 10.68,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 22,
-      "beta": 0.7203,
-      "marketCap": 130924225705
+      "beta": 0.7196,
+      "marketCap": 128113687765
     },
     "beta": {
-      "beta5y": 0.7203
+      "beta5y": 0.7196
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 52.78,
-        "high": 53.23,
-        "low": 52.64,
-        "close": 52.89,
-        "volume": 10310000
-      },
       {
         "date": "2025-10-28",
         "open": 52.81,
@@ -8187,6 +8179,14 @@
         "low": 38.54,
         "close": 38.67,
         "volume": 6768700
+      },
+      {
+        "date": "2026-10-28",
+        "open": 38.11,
+        "high": 38.54,
+        "low": 37.96,
+        "close": 38.29,
+        "volume": 11336000
       }
     ],
     "news": [
@@ -8247,19 +8247,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9c58c7ad-37f3-34e6-b08e-047ba5eb4c67",
-        "title": "LXRX Stock Moves Up 30% in a Week: What is Driving This Rally?",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/news/lxrx-stock-moves-30-week-141800883.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
         "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9c58c7ad-37f3-34e6-b08e-047ba5eb4c67",
+        "title": "LXRX Stock Moves Up 30% in a Week: What is Driving This Rally?",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/news/lxrx-stock-moves-30-week-141800883.html",
         "type": "STORY"
       },
       {
@@ -8338,43 +8338,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.56,
-        "industryAvg": 28.4
+        "value": 9.36,
+        "industryAvg": 29.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.6,
-        "industryAvg": 4.98
+        "value": 2.55,
+        "industryAvg": 4.99
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.87,
-        "industryAvg": 6.5
+        "value": 3.79,
+        "industryAvg": 6.26
       },
       {
         "metric": "ROE",
         "value": 9.89,
-        "industryAvg": 23.22
+        "industryAvg": 22.57
       },
       {
         "metric": "ROA",
         "value": 3.64,
-        "industryAvg": 8.110000000000001
+        "industryAvg": 7.86
       },
       {
         "metric": "Gross Margin",
         "value": 78.21000000000001,
-        "industryAvg": 73.76
+        "industryAvg": 73.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.15,
-        "industryAvg": 31.96
+        "industryAvg": 31.830000000000002
       },
       {
         "metric": "Net Margin",
         "value": 26.740000000000002,
-        "industryAvg": 16.42
+        "industryAvg": 15.9
       }
     ]
   }

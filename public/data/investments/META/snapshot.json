@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
     "sections": {
-      "price": "2026-10-27"
+      "price": "2026-10-28"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 29.3266,
-      "ttmPe": 21.5,
-      "marketCap": 1611863514128,
-      "psRatio": 6.67,
-      "pbRatio": 5.92,
+      "ttmPe": 20.89,
+      "marketCap": 1565672233837,
+      "psRatio": 6.48,
+      "pbRatio": 5.75,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5806,25 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.81,
-      "costOfEquity": 14.75,
+      "wacc": 13.69,
+      "costOfEquity": 14.649999999999999,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 24,
-      "beta": 1.2391,
-      "marketCap": 1611863514128
+      "beta": 1.2282,
+      "marketCap": 1565672233837
     },
     "beta": {
-      "beta5y": 1.2391
+      "beta5y": 1.2282
     },
     "price": [
-      {
-        "date": "2025-10-27",
-        "open": 749.73,
-        "high": 755.75,
-        "low": 748.01,
-        "close": 750.82,
-        "volume": 11321100
-      },
       {
         "date": "2025-10-28",
         "open": 752.63,
@@ -7831,7 +7823,15 @@
         "high": 628.46,
         "low": 619.21,
         "close": 620.19,
-        "volume": 51263800
+        "volume": 51334100
+      },
+      {
+        "date": "2026-10-28",
+        "open": 621.85,
+        "high": 624.42,
+        "low": 609,
+        "close": 612.49,
+        "volume": 35004200
       }
     ],
     "news": [
@@ -7852,19 +7852,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
-        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
         "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
+        "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
         "type": "STORY"
       },
       {
@@ -7918,21 +7918,11 @@
     ],
     "officers": [
       {
-        "name": "Mr. Aaron A. Anderson",
-        "title": "Chief Accounting Officer"
-      },
-      {
         "name": "Mr. Andrew Bosworth",
         "title": "Chief Technology Officer",
         "age": 43,
         "yearBorn": 1982,
         "totalPay": 3572302
-      },
-      {
-        "name": "Mr. Atish Banerjea",
-        "title": "Chief Information Officer",
-        "age": 59,
-        "yearBorn": 1966
       },
       {
         "name": "Mr. Christopher K. Cox",
@@ -7947,12 +7937,6 @@
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 68105
-      },
-      {
-        "name": "Mr. Henry T. A. Moniz",
-        "title": "Chief Compliance Officer",
-        "age": 60,
-        "yearBorn": 1965
       },
       {
         "name": "Mr. Javier Olivan",
@@ -7986,18 +7970,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.5,
-        "industryAvg": 16.73
+        "value": 20.89,
+        "industryAvg": 16.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.67,
-        "industryAvg": 7.67
+        "value": 6.48,
+        "industryAvg": 7.78
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.92,
-        "industryAvg": 5.61
+        "value": 5.75,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",
