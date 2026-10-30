@@ -1,10 +1,10 @@
 {
   "symbol": "ORLY",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "O'Reilly Automotive, Inc."
     },
     "fundamentals": {
-      "ttmEps": 3.1445,
-      "ttmPe": 28.96,
-      "marketCap": 74311896090,
-      "psRatio": 4,
-      "pbRatio": -40.48,
-      "pegRatio": 2.69
+      "ttmEps": 3.2605,
+      "ttmPe": 27.01,
+      "marketCap": 70861782525,
+      "psRatio": 3.82,
+      "pbRatio": -38.6,
+      "pegRatio": 1.98
     },
     "profitability": {
       "roe": -49.27,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 10.77
+        "yoyGrowth": 13.63
       }
     ],
     "income_statement": {
@@ -5047,25 +5047,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.290000000000001,
-      "costOfEquity": 9.29,
+      "wacc": 8.28,
+      "costOfEquity": 9.32,
       "costOfDebt": 0.73,
       "taxRate": 23,
-      "beta": 0.5448,
-      "marketCap": 74311896090
+      "beta": 0.5506,
+      "marketCap": 70861782525
     },
     "beta": {
-      "beta5y": 0.5448
+      "beta5y": 0.5506
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 95.67,
-        "high": 97.92,
-        "low": 95.62,
-        "close": 96.3,
-        "volume": 5797600
-      },
       {
         "date": "2025-10-29",
         "open": 95.58,
@@ -7073,6 +7065,14 @@
         "low": 88.62,
         "close": 90.44,
         "volume": 9007900
+      },
+      {
+        "date": "2026-10-29",
+        "open": 91.09,
+        "high": 92.59,
+        "low": 86.7,
+        "close": 88.07,
+        "volume": 11995800
       }
     ],
     "news": [
@@ -7227,43 +7227,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.96,
-        "industryAvg": 20.25
+        "value": 27.01,
+        "industryAvg": 19.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 4,
-        "industryAvg": 0.87
+        "value": 3.82,
+        "industryAvg": 0.86
       },
       {
         "metric": "P/B Ratio",
-        "value": -40.48,
-        "industryAvg": 1.79
+        "value": -38.6,
+        "industryAvg": 1.82
       },
       {
         "metric": "ROE",
         "value": -49.27,
-        "industryAvg": 1.43
+        "industryAvg": 1.39
       },
       {
         "metric": "ROA",
         "value": 4.17,
-        "industryAvg": 0.44999999999999996
+        "industryAvg": 0.44
       },
       {
         "metric": "Gross Margin",
         "value": 51.449999999999996,
-        "industryAvg": 23.9
+        "industryAvg": 23.95
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.14,
-        "industryAvg": 8.92
+        "industryAvg": 8.94
       },
       {
         "metric": "Net Margin",
         "value": 14.62,
-        "industryAvg": 0.44999999999999996
+        "industryAvg": 0.45999999999999996
       }
     ]
   }

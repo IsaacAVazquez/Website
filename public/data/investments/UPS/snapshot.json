@@ -1,10 +1,10 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.3719,
-      "ttmPe": 19.75,
-      "marketCap": 90271981000,
-      "psRatio": 1,
-      "pbRatio": 5.99,
+      "ttmPe": 19.98,
+      "marketCap": 91327097000,
+      "psRatio": 1.02,
+      "pbRatio": 6.06,
       "pegRatio": 3.46
     },
     "profitability": {
@@ -5439,25 +5439,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.8,
-      "costOfEquity": 12.68,
+      "wacc": 9.78,
+      "costOfEquity": 12.620000000000001,
       "costOfDebt": 0.95,
       "taxRate": 21,
-      "beta": 0.976,
-      "marketCap": 90271981000
+      "beta": 0.9686,
+      "marketCap": 91327097000
     },
     "beta": {
-      "beta5y": 0.976
+      "beta5y": 0.9686
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 98.45,
-        "high": 100.57,
-        "low": 95,
-        "close": 96.36,
-        "volume": 30027000
-      },
       {
         "date": "2025-10-29",
         "open": 96.9,
@@ -7465,6 +7457,14 @@
         "low": 104,
         "close": 105.62,
         "volume": 5893400
+      },
+      {
+        "date": "2026-10-29",
+        "open": 106.2,
+        "high": 107.35,
+        "low": 105.05,
+        "close": 107.33,
+        "volume": 4411600
       }
     ],
     "news": [
@@ -7541,11 +7541,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1aeb326d-bd7e-31e3-8c71-1560136cb176",
-        "title": "Freight industry layoffs surge across California, Texas",
-        "publisher": "FreightWaves",
+        "uuid": "958f31f1-005a-3f1c-8476-e0abfa3f81f3",
+        "title": "Here's Why UPS Should Cut Its Dividend",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/1aeb326d-bd7e-31e3-8c71-1560136cb176/freight-industry-layoffs.html",
+        "link": "https://finance.yahoo.com/m/958f31f1-005a-3f1c-8476-e0abfa3f81f3/here%27s-why-ups-should-cut-its.html",
         "type": "STORY"
       }
     ],
@@ -7613,43 +7613,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.75,
-        "industryAvg": 19.2
+        "value": 19.98,
+        "industryAvg": 19.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 1,
-        "industryAvg": 0.98
+        "value": 1.02,
+        "industryAvg": 0.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.99,
-        "industryAvg": 3.64
+        "value": 6.06,
+        "industryAvg": 3.46
       },
       {
         "metric": "ROE",
         "value": 3.92,
-        "industryAvg": 17.380000000000003
+        "industryAvg": 16.57
       },
       {
         "metric": "ROA",
         "value": 0.84,
-        "industryAvg": 2.94
+        "industryAvg": 2.86
       },
       {
         "metric": "Gross Margin",
         "value": 13.01,
-        "industryAvg": 19.06
+        "industryAvg": 19.009999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 8.82,
-        "industryAvg": 11.81
+        "industryAvg": 11.35
       },
       {
         "metric": "Net Margin",
         "value": 2.65,
-        "industryAvg": 5.36
+        "industryAvg": 5.18
       }
     ]
   }

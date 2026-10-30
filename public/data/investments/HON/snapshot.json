@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.4105,
-      "ttmPe": 9.35,
-      "marketCap": 69441213385,
-      "psRatio": 2.26,
-      "pbRatio": 3.1,
+      "ttmPe": 9.49,
+      "marketCap": 70498017190,
+      "psRatio": 2.3,
+      "pbRatio": 3.14,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -6703,25 +6703,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.41,
-      "costOfEquity": 11.469999999999999,
+      "wacc": 9.370000000000001,
+      "costOfEquity": 11.39,
       "costOfDebt": 0.86,
       "taxRate": 6,
-      "beta": 0.822,
-      "marketCap": 69441213385
+      "beta": 0.8122,
+      "marketCap": 70498017190
     },
     "beta": {
-      "beta5y": 0.822
+      "beta5y": 0.8122
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 212.3335,
-        "high": 212.9957,
-        "low": 210.7124,
-        "close": 211.9381,
-        "volume": 4290971
-      },
       {
         "date": "2025-10-29",
         "open": 210.9199,
@@ -8729,23 +8721,31 @@
         "low": 216.92,
         "close": 219.26,
         "volume": 2394600
+      },
+      {
+        "date": "2026-10-29",
+        "open": 222.29,
+        "high": 222.98,
+        "low": 217.3,
+        "close": 222.14,
+        "volume": 2749600
       }
     ],
     "news": [
-      {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
       {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8781,19 +8781,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
-        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
         "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
         "publisher": "Investopedia",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
+        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
         "type": "STORY"
       },
       {
@@ -8805,11 +8805,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "7c53ca89-6899-3d5f-a8b1-a1ed469f6f47",
-        "title": "Argus Research Adjusts Honeywell International Price Target to $250 From $240",
-        "publisher": "MT Newswires",
+        "uuid": "8f56767b-647b-39f8-bdb1-a18c334b5a17",
+        "title": "Honeywell Stock Is Rising. An Activist Is Joining the Board.",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/argus-research-adjusts-honeywell-international-120140450.html",
+        "link": "https://finance.yahoo.com/m/8f56767b-647b-39f8-bdb1-a18c334b5a17/honeywell-stock-is-rising.-an.html",
         "type": "STORY"
       }
     ],
@@ -8874,23 +8874,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.35,
-        "industryAvg": 22.4
+        "value": 9.49,
+        "industryAvg": 21.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.26,
-        "industryAvg": 1.91
+        "value": 2.3,
+        "industryAvg": 1.83
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.1,
-        "industryAvg": 2.88
+        "value": 3.14,
+        "industryAvg": 2.78
       },
       {
         "metric": "ROE",
         "value": 3.2399999999999998,
-        "industryAvg": -11.48
+        "industryAvg": -11.469999999999999
       },
       {
         "metric": "ROA",
@@ -8910,7 +8910,7 @@
       {
         "metric": "Net Margin",
         "value": 13.3,
-        "industryAvg": -7.7
+        "industryAvg": -7.6899999999999995
       }
     ]
   }

@@ -1,14 +1,11 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-29"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.4608,
-      "ttmPe": 18.46,
-      "marketCap": 262394225010,
-      "psRatio": 5.28,
-      "pbRatio": 8.96,
-      "pegRatio": 0.38
+      "ttmPe": 17.93,
+      "marketCap": 254797522095,
+      "psRatio": 5.12,
+      "pbRatio": 8.7,
+      "pegRatio": 0.37
     },
     "profitability": {
       "roe": 12.33,
@@ -5087,25 +5084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.63,
-      "costOfEquity": 17.53,
+      "wacc": 16.53,
+      "costOfEquity": 17.45,
       "costOfDebt": 1.22,
       "taxRate": 15,
-      "beta": 1.5917,
-      "marketCap": 262394225010
+      "beta": 1.5808,
+      "marketCap": 254797522095
     },
     "beta": {
-      "beta5y": 1.5917
+      "beta5y": 1.5808
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 109.4,
-        "high": 111.698,
-        "low": 109.301,
-        "close": 110.25,
-        "volume": 40209000
-      },
       {
         "date": "2025-10-29",
         "open": 109.984,
@@ -7112,7 +7101,15 @@
         "high": 62.65,
         "low": 61.51,
         "close": 61.99,
-        "volume": 41761800
+        "volume": 41893800
+      },
+      {
+        "date": "2026-10-29",
+        "open": 62.48,
+        "high": 62.59,
+        "low": 61.39,
+        "close": 62.05,
+        "volume": 45050900
       }
     ],
     "news": [
@@ -7173,14 +7170,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
         "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
         "publisher": "TipRanks",
@@ -7194,6 +7183,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
         "type": "STORY"
       }
     ],
@@ -7259,43 +7256,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.81,
-        "industryAvg": 23.45
+        "value": 17.93,
+        "industryAvg": 21.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.6,
-        "industryAvg": 2.67
+        "value": 5.12,
+        "industryAvg": 2.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.98,
-        "industryAvg": 3.04
+        "value": 8.7,
+        "industryAvg": 2.97
       },
       {
         "metric": "ROE",
-        "value": 11.1,
-        "industryAvg": 8.66
+        "value": 12.33,
+        "industryAvg": 9.06
       },
       {
         "metric": "ROA",
-        "value": 5.6899999999999995,
-        "industryAvg": 3.66
+        "value": 6.260000000000001,
+        "industryAvg": 3.82
       },
       {
         "metric": "Gross Margin",
-        "value": 51.93,
-        "industryAvg": 40.67
+        "value": 52.78,
+        "industryAvg": 40.96
       },
       {
         "metric": "EBITDA Margin",
-        "value": 68.92,
-        "industryAvg": 26.08
+        "value": 68.7,
+        "industryAvg": 26.38
       },
       {
         "metric": "Net Margin",
-        "value": 27.08,
-        "industryAvg": 6.75
+        "value": 28.46,
+        "industryAvg": 7.03
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4823,
-      "ttmPe": 113.46,
-      "marketCap": 216818765988,
-      "psRatio": 16.34,
-      "pbRatio": 17.09,
-      "pegRatio": 1.69
+      "ttmPe": 112.59,
+      "marketCap": 215155689474,
+      "psRatio": 16.21,
+      "pbRatio": 16.96,
+      "pegRatio": 1.68
     },
     "profitability": {
       "roe": 11.93,
@@ -5803,25 +5803,17 @@
       ]
     },
     "wacc": {
-      "wacc": 25.629999999999995,
-      "costOfEquity": 25.77,
+      "wacc": 25.8,
+      "costOfEquity": 25.94,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6395,
-      "marketCap": 216818765988
+      "beta": 2.6559,
+      "marketCap": 215155689474
     },
     "beta": {
-      "beta5y": 2.6395
+      "beta5y": 2.6559
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 173.425,
-        "high": 179.6,
-        "low": 172.8,
-        "close": 178.96,
-        "volume": 7167800
-      },
       {
         "date": "2025-10-29",
         "open": 180,
@@ -7829,6 +7821,14 @@
         "low": 164.42,
         "close": 168.22,
         "volume": 5685400
+      },
+      {
+        "date": "2026-10-29",
+        "open": 165.22,
+        "high": 168.55,
+        "low": 162.52,
+        "close": 166.89,
+        "volume": 4538100
       }
     ],
     "news": [
@@ -7865,19 +7865,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
-        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "66866936-5cb5-36c2-84ed-a79cc17df6da",
         "title": "Exploring High Growth US Tech Stocks for May 2025",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/exploring-high-growth-us-tech-113900064.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c7534cd2-6874-332c-b15b-f41ab84cd81f",
+        "title": "Shopify vs. Etsy: Which E-Commerce Stock Has More Fuel for Growth?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/shopify-vs-etsy-e-commerce-174500079.html",
         "type": "STORY"
       },
       {
@@ -7973,23 +7973,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 113.46,
-        "industryAvg": 27.81
+        "value": 112.59,
+        "industryAvg": 26.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.34,
-        "industryAvg": 5.27
+        "value": 16.21,
+        "industryAvg": 5.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.09,
-        "industryAvg": 5.87
+        "value": 16.96,
+        "industryAvg": 5.63
       },
       {
         "metric": "ROE",
         "value": 11.93,
-        "industryAvg": -12.35
+        "industryAvg": -12.36
       },
       {
         "metric": "ROA",
@@ -7999,17 +7999,17 @@
       {
         "metric": "Gross Margin",
         "value": 47.67,
-        "industryAvg": 63.4
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.75,
-        "industryAvg": 1.28
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",
         "value": 41.92,
-        "industryAvg": -16.02
+        "industryAvg": -15.790000000000001
       }
     ]
   }

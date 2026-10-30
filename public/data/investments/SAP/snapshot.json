@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1792,
-      "ttmPe": 28.83,
-      "marketCap": 266216785200,
-      "psRatio": 5.97,
-      "pbRatio": 5.11,
-      "pegRatio": 2.56
+      "ttmPe": 28.62,
+      "marketCap": 264263625580,
+      "psRatio": 5.92,
+      "pbRatio": 5.08,
+      "pegRatio": 2.54
     },
     "profitability": {
       "roe": 4.96,
@@ -6276,25 +6276,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.26,
-      "costOfEquity": 13.76,
+      "wacc": 13.13,
+      "costOfEquity": 13.63,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.1124,
-      "marketCap": 266216785200
+      "beta": 1.0962,
+      "marketCap": 264263625580
     },
     "beta": {
-      "beta5y": 1.1124
+      "beta5y": 1.0962
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 271.91,
-        "high": 273.4,
-        "low": 270.04,
-        "close": 270.06,
-        "volume": 1463700
-      },
       {
         "date": "2025-10-29",
         "open": 264.62,
@@ -8302,6 +8294,14 @@
         "low": 234.56,
         "close": 236.93,
         "volume": 1805800
+      },
+      {
+        "date": "2026-10-29",
+        "open": 232.77,
+        "high": 235.39,
+        "low": 230.48,
+        "close": 234.07,
+        "volume": 2151400
       }
     ],
     "news": [
@@ -8346,27 +8346,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
-        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
         "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
         "publisher": "Investing.com",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
-        "title": "SAP Reimagines How Enterprises Run With Business AI",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/sap-reimagines-enterprises-run-business-131600231.html",
         "type": "STORY"
       },
       {
@@ -8378,11 +8362,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "7f6fe3a9-58be-3b3b-b6ab-8f6850d4fd81",
-        "title": "SAP & Accenture Unveil ADVANCE to Boost Cloud-First Transformation",
+        "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
+        "title": "SAP Reimagines How Enterprises Run With Business AI",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/sap-reimagines-enterprises-run-business-131600231.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
+        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
+        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/sap-accenture-unveil-advance-boost-111200942.html",
+        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
         "type": "STORY"
       }
     ],
@@ -8461,23 +8461,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.83,
-        "industryAvg": 27.45
+        "value": 28.62,
+        "industryAvg": 26.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.97,
-        "industryAvg": 5.23
+        "value": 5.92,
+        "industryAvg": 5.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.11,
-        "industryAvg": 5.8
+        "value": 5.08,
+        "industryAvg": 5.63
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -12.35
+        "industryAvg": -12.36
       },
       {
         "metric": "ROA",
@@ -8487,12 +8487,12 @@
       {
         "metric": "Gross Margin",
         "value": 73.13,
-        "industryAvg": 63.44
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.27,
-        "industryAvg": 1.49
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",

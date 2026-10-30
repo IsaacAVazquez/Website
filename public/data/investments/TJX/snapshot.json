@@ -1,10 +1,10 @@
 {
   "symbol": "TJX",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4067,
-      "ttmPe": 26.58,
-      "marketCap": 158237798490,
-      "psRatio": 2.54,
-      "pbRatio": 14.86,
-      "pegRatio": 1.13
+      "ttmPe": 26.15,
+      "marketCap": 155694101103,
+      "psRatio": 2.5,
+      "pbRatio": 14.62,
+      "pegRatio": 1.11
     },
     "profitability": {
       "roe": 14.44,
@@ -5504,25 +5504,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.77,
-      "costOfEquity": 9.55,
+      "wacc": 8.84,
+      "costOfEquity": 9.64,
       "costOfDebt": 0.13,
       "taxRate": 25,
-      "beta": 0.5786,
-      "marketCap": 158237798490
+      "beta": 0.5904,
+      "marketCap": 155694101103
     },
     "beta": {
-      "beta5y": 0.5786
+      "beta5y": 0.5904
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 142.82,
-        "high": 144.05,
-        "low": 142.27,
-        "close": 144.03,
-        "volume": 3628100
-      },
       {
         "date": "2025-10-29",
         "open": 143.57,
@@ -7530,23 +7522,31 @@
         "low": 138.01,
         "close": 138.39,
         "volume": 4067200
+      },
+      {
+        "date": "2026-10-29",
+        "open": 139.93,
+        "high": 141.63,
+        "low": 139.5,
+        "close": 141.39,
+        "volume": 4327000
       }
     ],
     "news": [
-      {
-        "uuid": "bc384cdc-c2a8-3c40-8561-b2d2746f3a9e",
-        "title": "Block upgraded, Nvidia downgraded: Wall Street’s top analyst calls",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/block-upgraded-nvidia-downgraded-wall-134047763.html",
-        "type": "STORY"
-      },
       {
         "uuid": "165f6e57-3343-3dd2-a85b-a91349831079",
         "title": "5 Stocks That Recently Hiked Their Dividend Amid Market Mayhem",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/5-stocks-recently-hiked-dividend-120800238.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc384cdc-c2a8-3c40-8561-b2d2746f3a9e",
+        "title": "Block upgraded, Nvidia downgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/block-upgraded-nvidia-downgraded-wall-134047763.html",
         "type": "STORY"
       },
       {
@@ -7598,19 +7598,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e678c910-efc6-3e2e-b7d7-30f7395f728e",
-        "title": "TJX Earnings and Sales Surpass Estimates in Q1, Comp Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/tjx-earnings-sales-surpass-estimates-145700362.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a33e6f17-9cf5-3ecd-b2ea-0a29b462994a",
         "title": "NYSE Content Advisory: Pre-Market update + Retailers report earnings",
         "publisher": "CNW Group",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500529.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "13938a79-8fd7-324f-becb-ec38238bc7db",
+        "title": "Earnings Data Deluge",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/earnings-data-deluge-145600062.html",
         "type": "STORY"
       }
     ],
@@ -7679,23 +7679,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.58,
-        "industryAvg": 22.82
+        "value": 26.15,
+        "industryAvg": 22.75
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.54,
-        "industryAvg": 2.32
+        "value": 2.5,
+        "industryAvg": 2.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.86,
-        "industryAvg": 8.07
+        "value": 14.62,
+        "industryAvg": 8.04
       },
       {
         "metric": "ROE",
         "value": 14.44,
-        "industryAvg": 35.15
+        "industryAvg": 35.14
       },
       {
         "metric": "ROA",

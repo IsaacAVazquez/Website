@@ -1,10 +1,10 @@
 {
   "symbol": "ROP",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 25.3345,
-      "ttmPe": 17.15,
-      "marketCap": 43013520000,
-      "psRatio": 5.19,
-      "pbRatio": 2.3,
-      "pegRatio": 0.52
+      "ttmPe": 17.75,
+      "marketCap": 44515350000,
+      "psRatio": 5.38,
+      "pbRatio": 2.38,
+      "pegRatio": 0.54
     },
     "profitability": {
       "roe": 6.23,
@@ -5940,25 +5940,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.61,
-      "costOfEquity": 10.65,
+      "wacc": 8.63,
+      "costOfEquity": 10.6,
       "costOfDebt": 0.98,
       "taxRate": 11,
-      "beta": 0.7185,
-      "marketCap": 43013520000
+      "beta": 0.7117,
+      "marketCap": 44515350000
     },
     "beta": {
-      "beta5y": 0.7185
+      "beta5y": 0.7117
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 463.73,
-        "high": 464.98,
-        "low": 455.71,
-        "close": 456.16,
-        "volume": 1500200
-      },
       {
         "date": "2025-10-29",
         "open": 451.58,
@@ -7966,6 +7958,14 @@
         "low": 430.1,
         "close": 440.66,
         "volume": 1169600
+      },
+      {
+        "date": "2026-10-29",
+        "open": 443.02,
+        "high": 450.21,
+        "low": 436.34,
+        "close": 449.65,
+        "volume": 1160700
       }
     ],
     "news": [
@@ -7986,27 +7986,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
-        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1f91cd02-a180-39fe-a2f7-ddc9aa3fb029",
-        "title": "JPMorgan Adjusts Price Target on Roper Technologies to $470 From $465, Maintains Neutral Rating",
+        "uuid": "928928c5-6cc3-3dc6-9264-28ec07580766",
+        "title": "Stifel Adjusts Price Target on Roper Technologies to $650 From $685, Maintains Buy Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-roper-094652421.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
-        "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
+        "link": "https://finance.yahoo.com/news/stifel-adjusts-price-target-roper-095800472.html",
         "type": "STORY"
       },
       {
@@ -8018,19 +8002,35 @@
         "type": "STORY"
       },
       {
-        "uuid": "928928c5-6cc3-3dc6-9264-28ec07580766",
-        "title": "Stifel Adjusts Price Target on Roper Technologies to $650 From $685, Maintains Buy Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/stifel-adjusts-price-target-roper-095800472.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
         "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6c48de61-cf56-3d9d-9784-3311f3d15240",
+        "title": "Goldman Sachs Adjusts Price Target on Roper Technologies to $621 From $611, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/goldman-sachs-adjusts-price-target-095753803.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1f91cd02-a180-39fe-a2f7-ddc9aa3fb029",
+        "title": "JPMorgan Adjusts Price Target on Roper Technologies to $470 From $465, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-roper-094652421.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
+        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
         "type": "STORY"
       },
       {
@@ -8112,23 +8112,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.15,
-        "industryAvg": 27.45
+        "value": 17.75,
+        "industryAvg": 26.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.19,
-        "industryAvg": 5.23
+        "value": 5.38,
+        "industryAvg": 5.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.3,
-        "industryAvg": 5.8
+        "value": 2.38,
+        "industryAvg": 5.63
       },
       {
         "metric": "ROE",
         "value": 6.23,
-        "industryAvg": -12.35
+        "industryAvg": -12.36
       },
       {
         "metric": "ROA",
@@ -8138,12 +8138,12 @@
       {
         "metric": "Gross Margin",
         "value": 69.71000000000001,
-        "industryAvg": 63.44
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 78.24,
-        "industryAvg": 1.49
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",

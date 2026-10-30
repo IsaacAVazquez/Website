@@ -1,10 +1,10 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.4306,
-      "ttmPe": 21.88,
-      "marketCap": 450930283799,
-      "psRatio": 2.16,
-      "pbRatio": 2.37,
+      "ttmPe": 22.19,
+      "marketCap": 457312025098,
+      "psRatio": 2.19,
+      "pbRatio": 2.41,
       "pegRatio": 0.07
     },
     "profitability": {
@@ -5447,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.219999999999999,
-      "costOfEquity": 8.84,
+      "wacc": 8.19,
+      "costOfEquity": 8.799999999999999,
       "costOfDebt": 0.95,
       "taxRate": 27,
-      "beta": 0.4883,
-      "marketCap": 450930283799
+      "beta": 0.4847,
+      "marketCap": 457312025098
     },
     "beta": {
-      "beta5y": 0.4883
+      "beta5y": 0.4847
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 154.9,
-        "high": 156.23,
-        "low": 153.89,
-        "close": 154.13,
-        "volume": 5066500
-      },
       {
         "date": "2025-10-29",
         "open": 153.86,
@@ -7473,6 +7465,14 @@
         "low": 228.34,
         "close": 229.2,
         "volume": 6342700
+      },
+      {
+        "date": "2026-10-29",
+        "open": 232.25,
+        "high": 232.95,
+        "low": 229.01,
+        "close": 231.46,
+        "volume": 5635300
       }
     ],
     "news": [
@@ -7493,19 +7493,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7627,43 +7627,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.88,
-        "industryAvg": 12.8
+        "value": 22.19,
+        "industryAvg": 12.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.16,
-        "industryAvg": 1.1
+        "value": 2.19,
+        "industryAvg": 1.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.37,
-        "industryAvg": 1.74
+        "value": 2.41,
+        "industryAvg": 1.77
       },
       {
         "metric": "ROE",
         "value": 6.460000000000001,
-        "industryAvg": 14.71
+        "industryAvg": 15.379999999999999
       },
       {
         "metric": "ROA",
         "value": 3.66,
-        "industryAvg": 6.23
+        "industryAvg": 6.529999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 36.47,
-        "industryAvg": 25.019999999999996
+        "industryAvg": 25.290000000000003
       },
       {
         "metric": "EBITDA Margin",
         "value": 34.28,
-        "industryAvg": 24.14
+        "industryAvg": 24.21
       },
       {
         "metric": "Net Margin",
         "value": 17.96,
-        "industryAvg": 8.58
+        "industryAvg": 8.89
       }
     ]
   }

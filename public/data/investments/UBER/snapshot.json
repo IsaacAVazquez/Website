@@ -1,10 +1,10 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.5496,
-      "ttmPe": 14.54,
-      "marketCap": 134904803220,
-      "psRatio": 2.44,
-      "pbRatio": 4.94,
+      "ttmPe": 14.45,
+      "marketCap": 134109205560,
+      "psRatio": 2.43,
+      "pbRatio": 4.91,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6310,25 +6310,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.88,
-      "costOfEquity": 15.32,
+      "wacc": 13.73,
+      "costOfEquity": 15.17,
       "costOfDebt": 0.86,
       "taxRate": 26,
-      "beta": 1.3111,
-      "marketCap": 134904803220
+      "beta": 1.2909,
+      "marketCap": 134109205560
     },
     "beta": {
-      "beta5y": 1.3111
+      "beta5y": 1.2909
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 96.77,
-        "high": 97.73,
-        "low": 95.41,
-        "close": 95.43,
-        "volume": 17138300
-      },
       {
         "date": "2025-10-29",
         "open": 96.24,
@@ -8335,7 +8327,15 @@
         "high": 65.88,
         "low": 64.69,
         "close": 65.27,
-        "volume": 18274300
+        "volume": 18324900
+      },
+      {
+        "date": "2026-10-29",
+        "open": 65.28,
+        "high": 65.8,
+        "low": 64.04,
+        "close": 65.74,
+        "volume": 16244900
       }
     ],
     "news": [
@@ -8364,19 +8364,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
-        "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "647a03ed-7d8c-3cc5-94cd-83f3d801bdd6",
         "title": "Serve Robotics Saddles Up for Autonomous Delivery in Dallas-Fort Worth Via Uber Eats",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/serve-robotics-saddles-autonomous-delivery-113000233.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
+        "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
         "type": "STORY"
       },
       {
@@ -8486,23 +8486,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.54,
-        "industryAvg": 27.81
+        "value": 14.45,
+        "industryAvg": 26.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.44,
-        "industryAvg": 5.27
+        "value": 2.43,
+        "industryAvg": 5.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.94,
-        "industryAvg": 5.87
+        "value": 4.91,
+        "industryAvg": 5.63
       },
       {
         "metric": "ROE",
         "value": 9.2,
-        "industryAvg": -12.35
+        "industryAvg": -12.36
       },
       {
         "metric": "ROA",
@@ -8512,17 +8512,17 @@
       {
         "metric": "Gross Margin",
         "value": 44.93,
-        "industryAvg": 63.4
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.36,
-        "industryAvg": 1.28
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",
         "value": 16.869999999999997,
-        "industryAvg": -16.02
+        "industryAvg": -15.790000000000001
       }
     ]
   }
