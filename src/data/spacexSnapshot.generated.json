@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T01:10:34.259Z",
+  "generatedAt": "2026-10-30T16:02:52.105Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-31T03:48:00Z",
-      "dateUnix": 1793418480,
-      "dateLocal": "2026-10-31T03:48:00Z",
+      "dateUtc": "2026-10-31T04:02:22Z",
+      "dateUnix": 1793419342,
+      "dateLocal": "2026-10-31T04:02:22Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-31T03:48:00Z",
-      "dateUnix": 1793418480,
-      "dateLocal": "2026-10-31T03:48:00Z",
+      "dateUtc": "2026-10-31T04:02:22Z",
+      "dateUnix": 1793419342,
+      "dateLocal": "2026-10-31T04:02:22Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-30T01:10:25.902Z"
+    "generatedAt": "2026-10-30T16:02:48.398Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-31T03:48:00Z",
-      "dateUnix": 1793418480,
-      "dateLocal": "2026-10-31T03:48:00Z",
+      "dateUtc": "2026-10-31T04:02:22Z",
+      "dateUnix": 1793419342,
+      "dateLocal": "2026-10-31T04:02:22Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -1050,7 +1050,7 @@
       "launchpadName": "Space Launch Complex 40",
       "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
-      "vehicleImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/f9_on_slc-40_2_image_20240919072420.jpg",
+      "vehicleImage": "/data/spacex/images/fcff0e91470c97ae.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
@@ -1069,7 +1069,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/f9_on_slc-40_2_image_20240919072420.jpg"
+          "/data/spacex/images/fcff0e91470c97ae.jpg"
         ]
       }
     },
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-31T03:48:00Z",
-      "dateUnix": 1793418480,
-      "dateLocal": "2026-10-31T03:48:00Z",
+      "dateUtc": "2026-10-31T04:02:22Z",
+      "dateUnix": 1793419342,
+      "dateLocal": "2026-10-31T04:02:22Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-30T01:10:33.186Z"
+    "generatedAt": "2026-10-30T16:02:51.823Z"
   }
 }
