@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -33,18 +33,18 @@
       "industry": "Telecom Services",
       "sector": "Communication Services",
       "longBusinessSummary": "Verizon Communications Inc., through its subsidiaries, engages in the provision of communications, technology, information, and streaming products and services to consumers, businesses, and governmental entities worldwide. It operates in two segments, Verizon Consumer Group (Consumer) and Verizon Business Group (Business). The Consumer segment provides wireless services across the wireless networks in the United States under the Verizon and TracFone brands and through wholesale and other arrangements; and fixed wireless access (FWA) broadband through its wireless networks, as well as related equipment and devices, such as smartphones, tablets, smartwatches, and other wireless-enabled connected devices. The segment also offers wireline services in the Mid-Atlantic and Northeastern United States, as well as Washington D.C. through its fiber-optic network, Verizon Fios product portfolio, and a copper-based network. The Business segment provides wireless and wireline communications services and products, including FWA and wireline broadband, advanced communication services, corporate networking, security and managed network, local and long-distance voice, and network access services to deliver various IoT services and products to businesses, government customers, and wireless and wireline carriers in the United States and internationally. The company distributes its products and services through direct channels, company-operated stores, digital and omnichannel platforms, indirect agents, business solution resellers, and national retailers. The company was formerly known as Bell Atlantic Corporation and changed its name to Verizon Communications Inc. in June 2000. Verizon Communications Inc. was incorporated in 1983 and is headquartered in New York, New York.",
-      "fullTimeEmployees": 89900,
+      "fullTimeEmployees": 93300,
       "website": "https://www.verizon.com",
       "shortName": "Verizon Communications Inc.",
       "longName": "Verizon Communications Inc."
     },
     "fundamentals": {
       "ttmEps": 3.9198,
-      "ttmPe": 11.21,
-      "marketCap": 182089850000,
-      "psRatio": 1.31,
-      "pbRatio": 1.75,
-      "pegRatio": 1.64
+      "ttmPe": 11.14,
+      "marketCap": 180970700000,
+      "psRatio": 1.3,
+      "pbRatio": 1.74,
+      "pegRatio": 1.63
     },
     "profitability": {
       "roe": 3.6999999999999997,
@@ -88,7 +88,8 @@
       "quarterly": [
         {
           "Breakdown": "Total Revenue",
-          "TTM": "138895000000.0",
+          "TTM": "139387000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "34253000000.0",
           "2026-03-31": "34440000000.0",
           "2025-12-31": "36381000000.0",
@@ -103,7 +104,8 @@
         },
         {
           "Breakdown": "Operating Revenue",
-          "TTM": "138895000000.0",
+          "TTM": "139387000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "34253000000.0",
           "2026-03-31": "34440000000.0",
           "2025-12-31": "36381000000.0",
@@ -118,7 +120,8 @@
         },
         {
           "Breakdown": "Cost of Revenue",
-          "TTM": "56581000000.0",
+          "TTM": "56323000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "13084000000.0",
           "2026-03-31": "13673000000.0",
           "2025-12-31": "16478000000.0",
@@ -133,7 +136,8 @@
         },
         {
           "Breakdown": "Gross Profit",
-          "TTM": "82314000000.0",
+          "TTM": "83064000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "21169000000.0",
           "2026-03-31": "20767000000.0",
           "2025-12-31": "19903000000.0",
@@ -148,7 +152,8 @@
         },
         {
           "Breakdown": "Operating Expense",
-          "TTM": "53784000000.0",
+          "TTM": "53989000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "13990000000.0",
           "2026-03-31": "12525000000.0",
           "2025-12-31": "14899000000.0",
@@ -163,7 +168,8 @@
         },
         {
           "Breakdown": "Selling General and Administrative",
-          "TTM": "34747000000.0",
+          "TTM": "34475000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "8982000000.0",
           "2026-03-31": "7633000000.0",
           "2025-12-31": "10380000000.0",
@@ -178,7 +184,8 @@
         },
         {
           "Breakdown": "Depreciation Amortization Depletion",
-          "TTM": "19037000000.0",
+          "TTM": "19514000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "5008000000.0",
           "2026-03-31": "4892000000.0",
           "2025-12-31": "4519000000.0",
@@ -193,7 +200,8 @@
         },
         {
           "Breakdown": "Depreciation & Amortization",
-          "TTM": "19037000000.0",
+          "TTM": "19514000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "5008000000.0",
           "2026-03-31": "4892000000.0",
           "2025-12-31": "4519000000.0",
@@ -208,7 +216,8 @@
         },
         {
           "Breakdown": "Operating Income",
-          "TTM": "28530000000.0",
+          "TTM": "29075000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "7179000000.0",
           "2026-03-31": "8242000000.0",
           "2025-12-31": "5004000000.0",
@@ -223,7 +232,8 @@
         },
         {
           "Breakdown": "Net Non-Operating Interest Income Expense",
-          "TTM": "-6918000000.0",
+          "TTM": "-7491000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "-1913000000.0",
           "2026-03-31": "-1793000000.0",
           "2025-12-31": "-1616000000.0",
@@ -238,7 +248,8 @@
         },
         {
           "Breakdown": "Non-Operating Interest Income",
-          "TTM": "430000000.0",
+          "TTM": "293000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "72000000.0",
           "2026-03-31": "147000000.0",
           "2025-12-31": "143000000.0",
@@ -253,7 +264,8 @@
         },
         {
           "Breakdown": "Non-Operating Interest Expense",
-          "TTM": "7348000000.0",
+          "TTM": "7634000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "1985000000.0",
           "2026-03-31": "1940000000.0",
           "2025-12-31": "1759000000.0",
@@ -268,7 +280,8 @@
         },
         {
           "Breakdown": "Other Income Expense",
-          "TTM": "36000000.0",
+          "TTM": "354000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "8000000.0",
           "2026-03-31": "335000000.0",
           "2025-12-31": "-325000000.0",
@@ -283,7 +296,8 @@
         },
         {
           "Breakdown": "Earnings from Equity Interest",
-          "TTM": "46000000.0",
+          "TTM": "49000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "44000000.0",
           "2026-03-31": "5000000.0",
           "2025-12-31": "3000000.0",
@@ -298,7 +312,8 @@
         },
         {
           "Breakdown": "Special Income Charges",
-          "TTM": "437000000.0",
+          "TTM": "364000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "152000000.0",
           "2026-03-31": "95000000.0",
           "2025-12-31": "96000000.0",
@@ -314,6 +329,7 @@
         {
           "Breakdown": "Impairment of Capital Assets",
           "TTM": "0.0",
+          "2026-09-30": "*",
           "2026-06-30": "*",
           "2026-03-31": "*",
           "2025-12-31": "*",
@@ -328,7 +344,8 @@
         },
         {
           "Breakdown": "Other Special Charges",
-          "TTM": "-437000000.0",
+          "TTM": "-364000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "-152000000.0",
           "2026-03-31": "-95000000.0",
           "2025-12-31": "-96000000.0",
@@ -343,7 +360,8 @@
         },
         {
           "Breakdown": "Other Non Operating Income Expenses",
-          "TTM": "-447000000.0",
+          "TTM": "209000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "-188000000.0",
           "2026-03-31": "235000000.0",
           "2025-12-31": "-424000000.0",
@@ -358,7 +376,8 @@
         },
         {
           "Breakdown": "Pretax Income",
-          "TTM": "21648000000.0",
+          "TTM": "21938000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "5274000000.0",
           "2026-03-31": "6784000000.0",
           "2025-12-31": "3063000000.0",
@@ -373,7 +392,8 @@
         },
         {
           "Breakdown": "Tax Provision",
-          "TTM": "5049000000.0",
+          "TTM": "5075000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "1325000000.0",
           "2026-03-31": "1638000000.0",
           "2025-12-31": "615000000.0",
@@ -388,7 +408,8 @@
         },
         {
           "Breakdown": "Net Income Common Stockholders",
-          "TTM": "16172000000.0",
+          "TTM": "16420000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3835000000.0",
           "2026-03-31": "5045000000.0",
           "2025-12-31": "2342000000.0",
@@ -403,7 +424,8 @@
         },
         {
           "Breakdown": "Net Income(Attributable to Parent Company Shareholders)",
-          "TTM": "16172000000.0",
+          "TTM": "16420000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3835000000.0",
           "2026-03-31": "5045000000.0",
           "2025-12-31": "2342000000.0",
@@ -418,7 +440,8 @@
         },
         {
           "Breakdown": "Net Income Including Non-Controlling Interests",
-          "TTM": "16599000000.0",
+          "TTM": "16863000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3949000000.0",
           "2026-03-31": "5146000000.0",
           "2025-12-31": "2448000000.0",
@@ -433,7 +456,8 @@
         },
         {
           "Breakdown": "Net Income Continuous Operations",
-          "TTM": "16599000000.0",
+          "TTM": "16863000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3949000000.0",
           "2026-03-31": "5146000000.0",
           "2025-12-31": "2448000000.0",
@@ -448,7 +472,8 @@
         },
         {
           "Breakdown": "Minority Interests",
-          "TTM": "-427000000.0",
+          "TTM": "-443000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "-114000000.0",
           "2026-03-31": "-101000000.0",
           "2025-12-31": "-106000000.0",
@@ -463,7 +488,8 @@
         },
         {
           "Breakdown": "Diluted NI Available to Com Stockholders",
-          "TTM": "16172000000.0",
+          "TTM": "16420000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3835000000.0",
           "2026-03-31": "5045000000.0",
           "2025-12-31": "2342000000.0",
@@ -478,7 +504,8 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "3.84",
+          "TTM": "3.92",
+          "2026-09-30": "1.25",
           "2026-06-30": "0.92",
           "2026-03-31": "1.2",
           "2025-12-31": "0.55",
@@ -493,7 +520,8 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "3.84",
+          "TTM": "3.92",
+          "2026-09-30": "1.25",
           "2026-06-30": "0.92",
           "2026-03-31": "1.2",
           "2025-12-31": "0.55",
@@ -508,7 +536,8 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "4207500000.0",
+          "TTM": "4189250000.0",
+          "2026-09-30": "4157000000.0",
           "2026-06-30": "4168000000.0",
           "2026-03-31": "4205000000.0",
           "2025-12-31": "4230000000.0",
@@ -523,7 +552,8 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "4212500000.0",
+          "TTM": "4194250000.0",
+          "2026-09-30": "4161000000.0",
           "2026-06-30": "4171000000.0",
           "2026-03-31": "4210000000.0",
           "2025-12-31": "4236000000.0",
@@ -538,7 +568,8 @@
         },
         {
           "Breakdown": "Total Operating Income as Reported",
-          "TTM": "28530000000.0",
+          "TTM": "29075000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "7179000000.0",
           "2026-03-31": "8242000000.0",
           "2025-12-31": "5004000000.0",
@@ -553,7 +584,8 @@
         },
         {
           "Breakdown": "Total Expenses",
-          "TTM": "110365000000.0",
+          "TTM": "110312000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "27074000000.0",
           "2026-03-31": "26198000000.0",
           "2025-12-31": "31377000000.0",
@@ -568,7 +600,8 @@
         },
         {
           "Breakdown": "Net Income from Continuing & Discontinued Operation",
-          "TTM": "16172000000.0",
+          "TTM": "16420000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3835000000.0",
           "2026-03-31": "5045000000.0",
           "2025-12-31": "2342000000.0",
@@ -583,7 +616,8 @@
         },
         {
           "Breakdown": "Normalized Income",
-          "TTM": "15836922256.1",
+          "TTM": "16346208040.84",
+          "2026-09-30": "*",
           "2026-06-30": "3721152000.0",
           "2026-03-31": "4972895000.0",
           "2025-12-31": "2265275220.37",
@@ -598,7 +632,8 @@
         },
         {
           "Breakdown": "Interest Income",
-          "TTM": "430000000.0",
+          "TTM": "293000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "72000000.0",
           "2026-03-31": "147000000.0",
           "2025-12-31": "143000000.0",
@@ -613,7 +648,8 @@
         },
         {
           "Breakdown": "Interest Expense",
-          "TTM": "7348000000.0",
+          "TTM": "7634000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "1985000000.0",
           "2026-03-31": "1940000000.0",
           "2025-12-31": "1759000000.0",
@@ -628,7 +664,8 @@
         },
         {
           "Breakdown": "Net Interest Income",
-          "TTM": "-6918000000.0",
+          "TTM": "-7491000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "-1913000000.0",
           "2026-03-31": "-1793000000.0",
           "2025-12-31": "-1616000000.0",
@@ -643,7 +680,8 @@
         },
         {
           "Breakdown": "EBIT",
-          "TTM": "28996000000.0",
+          "TTM": "29572000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "7259000000.0",
           "2026-03-31": "8724000000.0",
           "2025-12-31": "4822000000.0",
@@ -658,7 +696,8 @@
         },
         {
           "Breakdown": "EBITDA",
-          "TTM": "48033000000.0",
+          "TTM": "49086000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "12267000000.0",
           "2026-03-31": "13616000000.0",
           "2025-12-31": "9341000000.0",
@@ -673,7 +712,8 @@
         },
         {
           "Breakdown": "Reconciled Cost of Revenue",
-          "TTM": "56581000000.0",
+          "TTM": "56323000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "13084000000.0",
           "2026-03-31": "13673000000.0",
           "2025-12-31": "16478000000.0",
@@ -688,7 +728,8 @@
         },
         {
           "Breakdown": "Reconciled Depreciation",
-          "TTM": "19037000000.0",
+          "TTM": "19514000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "5008000000.0",
           "2026-03-31": "4892000000.0",
           "2025-12-31": "4519000000.0",
@@ -703,7 +744,8 @@
         },
         {
           "Breakdown": "Net Income from Continuing Operation Net Minority Interest",
-          "TTM": "16172000000.0",
+          "TTM": "16420000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "3835000000.0",
           "2026-03-31": "5045000000.0",
           "2025-12-31": "2342000000.0",
@@ -718,7 +760,8 @@
         },
         {
           "Breakdown": "Total Unusual Items Excluding Goodwill",
-          "TTM": "437000000.0",
+          "TTM": "96000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "152000000.0",
           "2026-03-31": "95000000.0",
           "2025-12-31": "96000000.0",
@@ -733,7 +776,8 @@
         },
         {
           "Breakdown": "Total Unusual Items",
-          "TTM": "437000000.0",
+          "TTM": "96000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "152000000.0",
           "2026-03-31": "95000000.0",
           "2025-12-31": "96000000.0",
@@ -748,7 +792,8 @@
         },
         {
           "Breakdown": "Normalized EBITDA",
-          "TTM": "47596000000.0",
+          "TTM": "48990000000.0",
+          "2026-09-30": "*",
           "2026-06-30": "12115000000.0",
           "2026-03-31": "13521000000.0",
           "2025-12-31": "9245000000.0",
@@ -764,6 +809,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "TTM": "0.23",
+          "2026-09-30": "*",
           "2026-06-30": "0.25",
           "2026-03-31": "0.24",
           "2025-12-31": "0.2",
@@ -778,7 +824,8 @@
         },
         {
           "Breakdown": "Tax Effect of Unusual Items",
-          "TTM": "101922256.1",
+          "TTM": "22208040.84",
+          "2026-09-30": "*",
           "2026-06-30": "38152000.0",
           "2026-03-31": "22895000.0",
           "2025-12-31": "19275220.37",
@@ -2957,7 +3004,7 @@
       "quarterly": [
         {
           "Breakdown": "Operating Cash Flow",
-          "TTM": "38799000000.0",
+          "TTM": "39050000000.0",
           "2026-06-30": "10435000000.0",
           "2026-03-31": "7984000000.0",
           "2025-12-31": "9114000000.0",
@@ -2972,7 +3019,7 @@
         },
         {
           "Breakdown": "Cash Flow from Continuing Operating Activities",
-          "TTM": "38799000000.0",
+          "TTM": "39050000000.0",
           "2026-06-30": "10435000000.0",
           "2026-03-31": "7984000000.0",
           "2025-12-31": "9114000000.0",
@@ -2987,7 +3034,7 @@
         },
         {
           "Breakdown": "Net Income from Continuing Operations",
-          "TTM": "16599000000.0",
+          "TTM": "16863000000.0",
           "2026-06-30": "3949000000.0",
           "2026-03-31": "5146000000.0",
           "2025-12-31": "2448000000.0",
@@ -3002,7 +3049,7 @@
         },
         {
           "Breakdown": "Operating Gains Losses",
-          "TTM": "-4000000.0",
+          "TTM": "742000000.0",
           "2026-06-30": "*",
           "2026-03-31": "-114000000.0",
           "2025-12-31": "582000000.0",
@@ -3017,7 +3064,7 @@
         },
         {
           "Breakdown": "Earnings Losses from Equity Investments",
-          "TTM": "-22000000.0",
+          "TTM": "-26000000.0",
           "2026-06-30": "-38000000.0",
           "2026-03-31": "3000000.0",
           "2025-12-31": "1000000.0",
@@ -3032,7 +3079,7 @@
         },
         {
           "Breakdown": "Pension And Employee Benefit Expense",
-          "TTM": "729000000.0",
+          "TTM": "768000000.0",
           "2026-06-30": "152000000.0",
           "2026-03-31": "-117000000.0",
           "2025-12-31": "581000000.0",
@@ -3047,7 +3094,7 @@
         },
         {
           "Breakdown": "Depreciation Amortization Depletion",
-          "TTM": "19037000000.0",
+          "TTM": "19514000000.0",
           "2026-06-30": "5008000000.0",
           "2026-03-31": "4892000000.0",
           "2025-12-31": "4519000000.0",
@@ -3062,7 +3109,7 @@
         },
         {
           "Breakdown": "Depreciation & Amortization",
-          "TTM": "19037000000.0",
+          "TTM": "19514000000.0",
           "2026-06-30": "5008000000.0",
           "2026-03-31": "4892000000.0",
           "2025-12-31": "4519000000.0",
@@ -3122,7 +3169,7 @@
         },
         {
           "Breakdown": "Deferred Tax",
-          "TTM": "3678000000.0",
+          "TTM": "2644000000.0",
           "2026-06-30": "730000000.0",
           "2026-03-31": "703000000.0",
           "2025-12-31": "531000000.0",
@@ -3137,7 +3184,7 @@
         },
         {
           "Breakdown": "Deferred Income Tax",
-          "TTM": "3678000000.0",
+          "TTM": "2644000000.0",
           "2026-06-30": "730000000.0",
           "2026-03-31": "703000000.0",
           "2025-12-31": "531000000.0",
@@ -3152,7 +3199,7 @@
         },
         {
           "Breakdown": "Other Non-Cash Items",
-          "TTM": "-1059000000.0",
+          "TTM": "-1248000000.0",
           "2026-06-30": "508000000.0",
           "2026-03-31": "-142000000.0",
           "2025-12-31": "-1436000000.0",
@@ -3182,7 +3229,7 @@
         },
         {
           "Breakdown": "Provision & Write Off of Assets",
-          "TTM": "2257000000.0",
+          "TTM": "2239000000.0",
           "2026-06-30": "462000000.0",
           "2026-03-31": "581000000.0",
           "2025-12-31": "736000000.0",
@@ -3197,7 +3244,7 @@
         },
         {
           "Breakdown": "Change In Working Capital",
-          "TTM": "-2420000000.0",
+          "TTM": "-1704000000.0",
           "2026-06-30": "-336000000.0",
           "2026-03-31": "-3082000000.0",
           "2025-12-31": "1734000000.0",
@@ -3317,7 +3364,7 @@
         },
         {
           "Breakdown": "Investing Cash Flow",
-          "TTM": "-27970000000.0",
+          "TTM": "-30451000000.0",
           "2026-06-30": "-4927000000.0",
           "2026-03-31": "-13573000000.0",
           "2025-12-31": "-4980000000.0",
@@ -3332,7 +3379,7 @@
         },
         {
           "Breakdown": "Cash Flow from Continuing Investing Activities",
-          "TTM": "-27970000000.0",
+          "TTM": "-30451000000.0",
           "2026-06-30": "-4927000000.0",
           "2026-03-31": "-13573000000.0",
           "2025-12-31": "-4980000000.0",
@@ -3347,7 +3394,7 @@
         },
         {
           "Breakdown": "Capital Expenditure Reported（CapEx）",
-          "TTM": "-17268000000.0",
+          "TTM": "-16674000000.0",
           "2026-06-30": "-4009000000.0",
           "2026-03-31": "-4201000000.0",
           "2025-12-31": "-4748000000.0",
@@ -3377,7 +3424,7 @@
         },
         {
           "Breakdown": "Net Intangibles Purchase And Sale",
-          "TTM": "-1371000000.0",
+          "TTM": "-4494000000.0",
           "2026-06-30": "-1072000000.0",
           "2026-03-31": "-83000000.0",
           "2025-12-31": "-110000000.0",
@@ -3392,7 +3439,7 @@
         },
         {
           "Breakdown": "Purchase of Intangibles",
-          "TTM": "-1371000000.0",
+          "TTM": "-4494000000.0",
           "2026-06-30": "-1072000000.0",
           "2026-03-31": "-83000000.0",
           "2025-12-31": "-110000000.0",
@@ -3452,7 +3499,7 @@
         },
         {
           "Breakdown": "Net Other Investing Changes",
-          "TTM": "149000000.0",
+          "TTM": "197000000.0",
           "2026-06-30": "154000000.0",
           "2026-03-31": "191000000.0",
           "2025-12-31": "-122000000.0",
@@ -3467,7 +3514,7 @@
         },
         {
           "Breakdown": "Financing Cash Flow",
-          "TTM": "-12456000000.0",
+          "TTM": "-11691000000.0",
           "2026-06-30": "-11836000000.0",
           "2026-03-31": "-5278000000.0",
           "2025-12-31": "7209000000.0",
@@ -3482,7 +3529,7 @@
         },
         {
           "Breakdown": "Cash Flow from Continuing Financing Activities",
-          "TTM": "-12456000000.0",
+          "TTM": "-11691000000.0",
           "2026-06-30": "-11836000000.0",
           "2026-03-31": "-5278000000.0",
           "2025-12-31": "7209000000.0",
@@ -3497,7 +3544,7 @@
         },
         {
           "Breakdown": "Net Issuance Payments of Debt",
-          "TTM": "4851000000.0",
+          "TTM": "6288000000.0",
           "2026-06-30": "-7413000000.0",
           "2026-03-31": "1043000000.0",
           "2025-12-31": "10491000000.0",
@@ -3512,7 +3559,7 @@
         },
         {
           "Breakdown": "Net Long Term Debt Issuance",
-          "TTM": "4851000000.0",
+          "TTM": "6288000000.0",
           "2026-06-30": "-7413000000.0",
           "2026-03-31": "1043000000.0",
           "2025-12-31": "10491000000.0",
@@ -3527,7 +3574,7 @@
         },
         {
           "Breakdown": "Long Term Debt Issuance",
-          "TTM": "42936000000.0",
+          "TTM": "43745000000.0",
           "2026-06-30": "9839000000.0",
           "2026-03-31": "12129000000.0",
           "2025-12-31": "16314000000.0",
@@ -3542,7 +3589,7 @@
         },
         {
           "Breakdown": "Long Term Debt Payments",
-          "TTM": "-38085000000.0",
+          "TTM": "-37457000000.0",
           "2026-06-30": "-17252000000.0",
           "2026-03-31": "-11086000000.0",
           "2025-12-31": "-5823000000.0",
@@ -3617,7 +3664,7 @@
         },
         {
           "Breakdown": "Cash Dividends Paid",
-          "TTM": "-11633000000.0",
+          "TTM": "-11716000000.0",
           "2026-06-30": "-2954000000.0",
           "2026-03-31": "-2910000000.0",
           "2025-12-31": "-2912000000.0",
@@ -3632,7 +3679,7 @@
         },
         {
           "Breakdown": "Common Stock Dividend Paid",
-          "TTM": "-11633000000.0",
+          "TTM": "-11716000000.0",
           "2026-06-30": "-2954000000.0",
           "2026-03-31": "-2910000000.0",
           "2025-12-31": "-2912000000.0",
@@ -3647,7 +3694,7 @@
         },
         {
           "Breakdown": "Net Other Financing Charges",
-          "TTM": "-2174000000.0",
+          "TTM": "-2263000000.0",
           "2026-06-30": "-469000000.0",
           "2026-03-31": "-911000000.0",
           "2025-12-31": "-370000000.0",
@@ -3662,7 +3709,7 @@
         },
         {
           "Breakdown": "End Cash Position",
-          "TTM": "2304000000.0",
+          "TTM": "5064000000.0",
           "2026-06-30": "2304000000.0",
           "2026-03-31": "8632000000.0",
           "2025-12-31": "19499000000.0",
@@ -3677,7 +3724,7 @@
         },
         {
           "Breakdown": "Changes in Cash",
-          "TTM": "-1627000000.0",
+          "TTM": "-3092000000.0",
           "2026-06-30": "-6328000000.0",
           "2026-03-31": "-10867000000.0",
           "2025-12-31": "11343000000.0",
@@ -3692,7 +3739,7 @@
         },
         {
           "Breakdown": "Beginning Cash Position",
-          "TTM": "3931000000.0",
+          "TTM": "8156000000.0",
           "2026-06-30": "8632000000.0",
           "2026-03-31": "19499000000.0",
           "2025-12-31": "8156000000.0",
@@ -3737,7 +3784,7 @@
         },
         {
           "Breakdown": "Capital Expenditure (CapEx)",
-          "TTM": "-18639000000.0",
+          "TTM": "-21168000000.0",
           "2026-06-30": "-5081000000.0",
           "2026-03-31": "-4284000000.0",
           "2025-12-31": "-4858000000.0",
@@ -3752,7 +3799,7 @@
         },
         {
           "Breakdown": "Issuance of Debt",
-          "TTM": "42936000000.0",
+          "TTM": "43745000000.0",
           "2026-06-30": "9839000000.0",
           "2026-03-31": "12129000000.0",
           "2025-12-31": "16314000000.0",
@@ -3767,7 +3814,7 @@
         },
         {
           "Breakdown": "Repayment of Debt",
-          "TTM": "-38085000000.0",
+          "TTM": "-37457000000.0",
           "2026-06-30": "-17252000000.0",
           "2026-03-31": "-11086000000.0",
           "2025-12-31": "-5823000000.0",
@@ -3797,7 +3844,7 @@
         },
         {
           "Breakdown": "Free Cash Flow",
-          "TTM": "20160000000.0",
+          "TTM": "17882000000.0",
           "2026-06-30": "5354000000.0",
           "2026-03-31": "3700000000.0",
           "2025-12-31": "4256000000.0",
@@ -4263,25 +4310,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.8899999999999997,
-      "costOfEquity": 7.109999999999999,
+      "wacc": 3.8600000000000003,
+      "costOfEquity": 7.049999999999999,
       "costOfDebt": 1.05,
       "taxRate": 25,
-      "beta": 0.269,
-      "marketCap": 182089850000
+      "beta": 0.2623,
+      "marketCap": 180970700000
     },
     "beta": {
-      "beta5y": 0.269
+      "beta5y": 0.2623
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 39.15,
-        "high": 39.52,
-        "low": 38.95,
-        "close": 39.32,
-        "volume": 30719200
-      },
       {
         "date": "2025-10-29",
         "open": 40.93,
@@ -6289,6 +6328,14 @@
         "low": 43.07,
         "close": 43.18,
         "volume": 25377700
+      },
+      {
+        "date": "2026-10-29",
+        "open": 43.86,
+        "high": 44.46,
+        "low": 43.61,
+        "close": 43.66,
+        "volume": 22221900
       }
     ],
     "news": [
@@ -6301,19 +6348,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
         "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
         "type": "STORY"
       },
       {
@@ -6349,19 +6396,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
-        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5c1d73cc-606a-3af4-8404-18be018b6c71",
         "title": "Top Research Reports for Verizon Communications, Bristol-Myers Squibb & Canadian Pacific",
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-communications-212400011.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
+        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
         "type": "STORY"
       },
       {
@@ -6434,43 +6481,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.21,
-        "industryAvg": 11.9
+        "value": 11.14,
+        "industryAvg": 11.65
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.31,
-        "industryAvg": 1.07
+        "value": 1.3,
+        "industryAvg": 1.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.75,
-        "industryAvg": 1.54
+        "value": 1.74,
+        "industryAvg": 1.56
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 7.870000000000001
+        "industryAvg": 8.110000000000001
       },
       {
         "metric": "ROA",
         "value": 0.9299999999999999,
-        "industryAvg": 1.96
+        "industryAvg": 2.02
       },
       {
         "metric": "Gross Margin",
         "value": 61.8,
-        "industryAvg": 61.22
+        "industryAvg": 61.21
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.809999999999995,
-        "industryAvg": 34.08
+        "industryAvg": 34.260000000000005
       },
       {
         "metric": "Net Margin",
         "value": 11.200000000000001,
-        "industryAvg": 5.46
+        "industryAvg": 5.609999999999999
       }
     ]
   }

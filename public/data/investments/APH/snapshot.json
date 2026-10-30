@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "Amphenol Corporation"
     },
     "fundamentals": {
-      "ttmEps": 1.9972,
-      "ttmPe": 39.16,
-      "marketCap": 192803292000,
-      "psRatio": 7.44,
-      "pbRatio": 13.79,
-      "pegRatio": 0.65
+      "ttmEps": 2.3017,
+      "ttmPe": 35.66,
+      "marketCap": 202343616000,
+      "psRatio": 7.81,
+      "pbRatio": 14.48,
+      "pegRatio": 0.57
     },
     "profitability": {
       "roe": 6.81,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 59.99
+        "yoyGrowth": 62.72
       }
     ],
     "income_statement": {
@@ -5305,25 +5305,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.54,
-      "costOfEquity": 14.790000000000001,
+      "wacc": 13.639999999999999,
+      "costOfEquity": 14.84,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.2434,
-      "marketCap": 192803292000
+      "beta": 1.25,
+      "marketCap": 202343616000
     },
     "beta": {
-      "beta5y": 1.2434
+      "beta5y": 1.25
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 67.995,
-        "high": 68.775,
-        "low": 67.34,
-        "close": 68.645,
-        "volume": 13400400
-      },
       {
         "date": "2025-10-29",
         "open": 69.6,
@@ -7331,6 +7323,14 @@
         "low": 79.3,
         "close": 80.96,
         "volume": 20411300
+      },
+      {
+        "date": "2026-10-29",
+        "open": 81.49,
+        "high": 83.87,
+        "low": 81.06,
+        "close": 82.08,
+        "volume": 15692900
       }
     ],
     "news": [
@@ -7367,19 +7367,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
         "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/comm-stock-surges-378-2-180800505.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -7391,19 +7391,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
-        "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
-        "publisher": "MarketWatch",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2b8730c7-db2e-35cd-9838-28d50f21a239",
         "title": "Electronic Components & Manufacturing Stocks Q1 In Review: Plexus (NASDAQ:PLXS) Vs Peers",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/electronic-components-manufacturing-stocks-q1-033103132.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
+        "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
+        "publisher": "MarketWatch",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
         "type": "STORY"
       },
       {
@@ -7482,43 +7482,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.16,
-        "industryAvg": 37.66
+        "value": 35.66,
+        "industryAvg": 39.63
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.44,
-        "industryAvg": 3.18
+        "value": 7.81,
+        "industryAvg": 3.32
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.79,
-        "industryAvg": 6.08
+        "value": 14.48,
+        "industryAvg": 6.34
       },
       {
         "metric": "ROE",
         "value": 6.81,
-        "industryAvg": 15.49
+        "industryAvg": 15.659999999999998
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": 6.800000000000001
+        "industryAvg": 6.859999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 36.75,
-        "industryAvg": 22.46
+        "industryAvg": 22.54
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.7,
-        "industryAvg": 14.430000000000001
+        "industryAvg": 14.499999999999998
       },
       {
         "metric": "Net Margin",
         "value": 12.24,
-        "industryAvg": 7.380000000000001
+        "industryAvg": 7.4399999999999995
       }
     ]
   }

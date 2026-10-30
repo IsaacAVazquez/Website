@@ -1,10 +1,10 @@
 {
   "symbol": "ABNB",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3996,
-      "ttmPe": 38.88,
-      "marketCap": 100919500000,
-      "psRatio": 7.67,
-      "pbRatio": 12.94,
-      "pegRatio": 1.18
+      "ttmPe": 37.83,
+      "marketCap": 98205500000,
+      "psRatio": 7.46,
+      "pbRatio": 12.59,
+      "pegRatio": 1.14
     },
     "profitability": {
       "roe": 10.57,
@@ -5538,25 +5538,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.510000000000002,
-      "costOfEquity": 14.829999999999998,
+      "wacc": 14.549999999999999,
+      "costOfEquity": 14.89,
       "costOfDebt": 1.48,
       "taxRate": 9,
-      "beta": 1.2485,
-      "marketCap": 100919500000
+      "beta": 1.2559,
+      "marketCap": 98205500000
     },
     "beta": {
-      "beta5y": 1.2485
+      "beta5y": 1.2559
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 129.59,
-        "high": 130.05,
-        "low": 127.67,
-        "close": 128.01,
-        "volume": 4463200
-      },
       {
         "date": "2025-10-29",
         "open": 127.87,
@@ -7564,6 +7556,14 @@
         "low": 164.83,
         "close": 166.045,
         "volume": 2680300
+      },
+      {
+        "date": "2026-10-29",
+        "open": 167.19,
+        "high": 168.525,
+        "low": 165.76,
+        "close": 166.45,
+        "volume": 2557500
       }
     ],
     "news": [
@@ -7584,19 +7584,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c9f32a90-1596-32fd-ae3e-2aa7c7b77417",
-        "title": "1 Cash-Heavy Stock That Stand Out and 2 to Question",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/1-cash-heavy-stock-stand-043422120.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0f845723-da1a-38d7-86f0-b68559ac2540",
         "title": "Cathie Wood Just Bought These 2 Stocks Down 42% and 87%. Should You?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/0f845723-da1a-38d7-86f0-b68559ac2540/cathie-wood-just-bought-these.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c9f32a90-1596-32fd-ae3e-2aa7c7b77417",
+        "title": "1 Cash-Heavy Stock That Stand Out and 2 to Question",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/1-cash-heavy-stock-stand-043422120.html",
         "type": "STORY"
       },
       {
@@ -7632,20 +7632,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "16c32cc9-5059-3e73-a151-ddeade7598cc",
-        "title": "Equity Markets Drop as S&P 500 Snaps 6-Day Winning Streak",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/equity-markets-drop-p-500-205908788.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8889024b-212d-3bfa-9863-6cc7b5c693a6",
         "title": "Airbnb vs. Spain, Victoria's Secret, Uber stock hits record high",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/video/airbnb-vs-spain-victorias-secret-181015112.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "16c32cc9-5059-3e73-a151-ddeade7598cc",
+        "title": "Equity Markets Drop as S&P 500 Snaps 6-Day Winning Streak",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/equity-markets-drop-p-500-205908788.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -7709,28 +7709,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.88,
-        "industryAvg": 17.32
+        "value": 37.83,
+        "industryAvg": 17.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.67,
-        "industryAvg": 3.25
+        "value": 7.46,
+        "industryAvg": 3.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.94,
-        "industryAvg": 5.13
+        "value": 12.59,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 10.57,
-        "industryAvg": 34.97
+        "industryAvg": 34.910000000000004
       },
       {
         "metric": "ROA",
         "value": 2.94,
-        "industryAvg": 8.62
+        "industryAvg": 8.64
       },
       {
         "metric": "Gross Margin",
@@ -7740,12 +7740,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 25.89,
-        "industryAvg": 29.04
+        "industryAvg": 29.099999999999998
       },
       {
         "metric": "Net Margin",
         "value": 22.62,
-        "industryAvg": 17.32
+        "industryAvg": 17.36
       }
     ]
   }

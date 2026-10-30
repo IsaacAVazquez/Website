@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.8245,
-      "ttmPe": 23.38,
-      "marketCap": 178115825160,
-      "psRatio": 6.76,
-      "pbRatio": 8.09,
-      "pegRatio": 1.48
+      "ttmPe": 23.54,
+      "marketCap": 179333437010,
+      "psRatio": 6.8,
+      "pbRatio": 8.14,
+      "pegRatio": 1.49
     },
     "profitability": {
       "roe": 9.73,
@@ -5160,24 +5160,16 @@
     },
     "wacc": {
       "wacc": 10.13,
-      "costOfEquity": 11.77,
+      "costOfEquity": 11.75,
       "costOfDebt": 1,
       "taxRate": 24,
-      "beta": 0.8608,
-      "marketCap": 178115825160
+      "beta": 0.8582,
+      "marketCap": 179333437010
     },
     "beta": {
-      "beta5y": 0.8608
+      "beta5y": 0.8582
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 218.36,
-        "high": 220.91,
-        "low": 217.56,
-        "close": 217.59,
-        "volume": 2782500
-      },
       {
         "date": "2025-10-29",
         "open": 216.64,
@@ -7185,6 +7177,14 @@
         "low": 297.02,
         "close": 297.8,
         "volume": 2876000
+      },
+      {
+        "date": "2026-10-29",
+        "open": 299.42,
+        "high": 303.37,
+        "low": 298.36,
+        "close": 301.93,
+        "volume": 1985200
       }
     ],
     "news": [
@@ -7213,11 +7213,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
-        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
-        "publisher": "Barrons.com",
+        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
+        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
+        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
         "type": "STORY"
       },
       {
@@ -7229,11 +7229,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
-        "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
-        "publisher": "Insider Monkey",
+        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
+        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
+        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
         "type": "STORY"
       },
       {
@@ -7253,19 +7253,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
-        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
         "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
+        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       }
     ],
@@ -7336,23 +7336,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.38,
-        "industryAvg": 25.62
+        "value": 23.54,
+        "industryAvg": 25.61
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.76,
-        "industryAvg": 5.84
+        "value": 6.8,
+        "industryAvg": 5.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.09,
-        "industryAvg": 4.36
+        "value": 8.14,
+        "industryAvg": 4.4
       },
       {
         "metric": "ROE",
         "value": 9.73,
-        "industryAvg": 12
+        "industryAvg": 12.02
       },
       {
         "metric": "ROA",
@@ -7362,17 +7362,17 @@
       {
         "metric": "Gross Margin",
         "value": 45.82,
-        "industryAvg": 36.86
+        "industryAvg": 36.82
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.15,
-        "industryAvg": 45.25
+        "industryAvg": 45.21
       },
       {
         "metric": "Net Margin",
         "value": 28.849999999999998,
-        "industryAvg": 17.549999999999997
+        "industryAvg": 17.49
       }
     ]
   }

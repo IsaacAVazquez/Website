@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 19.76,
-      "marketCap": 381205440000,
-      "psRatio": 5.31,
-      "pbRatio": 5.71,
-      "pegRatio": 0.36
+      "ttmPe": 21.88,
+      "marketCap": 422029440000,
+      "psRatio": 5.88,
+      "pbRatio": 6.32,
+      "pegRatio": 0.4
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,25 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.59,
-      "costOfEquity": 18.83,
+      "wacc": 13.919999999999998,
+      "costOfEquity": 18.77,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7575,
-      "marketCap": 381205440000
+      "beta": 1.7474,
+      "marketCap": 422029440000
     },
     "beta": {
-      "beta5y": 1.7575
+      "beta5y": 1.7474
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 283,
-        "high": 285.46,
-        "low": 280.54,
-        "close": 280.83,
-        "volume": 12448500
-      },
       {
         "date": "2025-10-29",
         "open": 281.46,
@@ -8207,7 +8199,15 @@
         "high": 148.48,
         "low": 128.38,
         "close": 144.54,
-        "volume": 81418100
+        "volume": 81933800
+      },
+      {
+        "date": "2026-10-29",
+        "open": 144.14,
+        "high": 144.61,
+        "low": 136.59,
+        "close": 139.56,
+        "volume": 39067500
       }
     ],
     "news": [
@@ -8276,19 +8276,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
         "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
       }
     ],
@@ -8367,23 +8367,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.76,
-        "industryAvg": 34.19
+        "value": 21.88,
+        "industryAvg": 34.04
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.31,
-        "industryAvg": 7.85
+        "value": 5.88,
+        "industryAvg": 7.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.71,
-        "industryAvg": 8.72
+        "value": 6.32,
+        "industryAvg": 8.67
       },
       {
         "metric": "ROE",
         "value": 8.559999999999999,
-        "industryAvg": 25.900000000000002
+        "industryAvg": 25.89
       },
       {
         "metric": "ROA",

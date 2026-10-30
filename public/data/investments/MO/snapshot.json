@@ -1,10 +1,10 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.7487,
-      "ttmPe": 15.5,
-      "marketCap": 122926545918,
-      "psRatio": 6.01,
-      "pbRatio": -46.07,
+      "ttmPe": 16.16,
+      "marketCap": 128152844325,
+      "psRatio": 6.27,
+      "pbRatio": -48.03,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6013,25 +6013,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.61,
-      "costOfEquity": 8.94,
+      "wacc": 7.630000000000001,
+      "costOfEquity": 8.91,
       "costOfDebt": 1.2,
       "taxRate": 22,
-      "beta": 0.5004,
-      "marketCap": 122926545918
+      "beta": 0.4984,
+      "marketCap": 128152844325
     },
     "beta": {
-      "beta5y": 0.5004
+      "beta5y": 0.4984
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 63.7,
-        "high": 63.98,
-        "low": 63.21,
-        "close": 63.28,
-        "volume": 6000600
-      },
       {
         "date": "2025-10-29",
         "open": 63.02,
@@ -8039,6 +8031,14 @@
         "low": 72.75,
         "close": 72.99,
         "volume": 8055300
+      },
+      {
+        "date": "2026-10-29",
+        "open": 75.29,
+        "high": 76.81,
+        "low": 74.48,
+        "close": 76.75,
+        "volume": 12501400
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
-        "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
         "title": "Needham Initiates Altria Group at Hold",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
+        "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
         "type": "STORY"
       },
       {
@@ -8188,43 +8188,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.5,
-        "industryAvg": 23.2
+        "value": 16.16,
+        "industryAvg": 24.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.01,
-        "industryAvg": 6.35
+        "value": 6.27,
+        "industryAvg": 6.52
       },
       {
         "metric": "P/B Ratio",
-        "value": -46.07,
-        "industryAvg": 2
+        "value": -48.03,
+        "industryAvg": 2.01
       },
       {
         "metric": "ROE",
         "value": -77.97,
-        "industryAvg": -233.84
+        "industryAvg": -256.84
       },
       {
         "metric": "ROA",
         "value": 6.75,
-        "industryAvg": 17
+        "industryAvg": 16.81
       },
       {
         "metric": "Gross Margin",
         "value": 71.32,
-        "industryAvg": 64.53
+        "industryAvg": 64.69
       },
       {
         "metric": "EBITDA Margin",
         "value": 61.24000000000001,
-        "industryAvg": 44.42
+        "industryAvg": 44.82
       },
       {
         "metric": "Net Margin",
         "value": 42.79,
-        "industryAvg": 27.01
+        "industryAvg": 26.55
       }
     ]
   }

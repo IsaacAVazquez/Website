@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9251,
-      "ttmPe": 14.43,
-      "marketCap": 101120420000,
-      "psRatio": 3.89,
-      "pbRatio": 8.6,
-      "pegRatio": 1.37
+      "ttmPe": 13.84,
+      "marketCap": 97014920000,
+      "psRatio": 3.74,
+      "pbRatio": 8.25,
+      "pegRatio": 1.31
     },
     "profitability": {
       "roe": 15.690000000000001,
@@ -6060,25 +6060,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.89,
-      "costOfEquity": 15.840000000000002,
+      "wacc": 14.97,
+      "costOfEquity": 15.959999999999999,
       "costOfDebt": 0.98,
       "taxRate": 22,
-      "beta": 1.3774,
-      "marketCap": 101120420000
+      "beta": 1.3917,
+      "marketCap": 97014920000
     },
     "beta": {
-      "beta5y": 1.3774
+      "beta5y": 1.3917
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 360,
-        "high": 363.7,
-        "low": 357.8,
-        "close": 359.91,
-        "volume": 3005600
-      },
       {
         "date": "2025-10-29",
         "open": 355.52,
@@ -8085,7 +8077,15 @@
         "high": 250.54,
         "low": 244.25,
         "close": 249.76,
-        "volume": 3419500
+        "volume": 3429800
+      },
+      {
+        "date": "2026-10-29",
+        "open": 245.1,
+        "high": 248.75,
+        "low": 241.5,
+        "close": 248.12,
+        "volume": 3323900
       }
     ],
     "news": [
@@ -8138,14 +8138,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
         "title": "2 Cheap Tech Stocks to Buy Right Now",
         "publisher": "Motley Fool",
@@ -8162,11 +8154,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
-        "title": "5 Brilliant Stocks to Buy in June",
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
         "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "99b5f820-1ff1-32d4-a77d-7c54708c0fc8",
+        "title": "Why The 39% Return On Capital At Adobe (NASDAQ:ADBE) Should Have Your Attention",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
+        "link": "https://finance.yahoo.com/news/why-39-return-capital-adobe-130012134.html",
         "type": "STORY"
       }
     ],
@@ -8232,23 +8232,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.43,
-        "industryAvg": 27.81
+        "value": 13.84,
+        "industryAvg": 26.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.89,
-        "industryAvg": 5.27
+        "value": 3.74,
+        "industryAvg": 5.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.6,
-        "industryAvg": 5.87
+        "value": 8.25,
+        "industryAvg": 5.63
       },
       {
         "metric": "ROE",
         "value": 15.690000000000001,
-        "industryAvg": -12.35
+        "industryAvg": -12.36
       },
       {
         "metric": "ROA",
@@ -8258,17 +8258,17 @@
       {
         "metric": "Gross Margin",
         "value": 88.71,
-        "industryAvg": 63.4
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.019999999999996,
-        "industryAvg": 1.28
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",
         "value": 27.029999999999998,
-        "industryAvg": -16.02
+        "industryAvg": -15.790000000000001
       }
     ]
   }

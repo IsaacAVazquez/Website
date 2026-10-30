@@ -1,10 +1,10 @@
 {
   "symbol": "PH",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.4885,
-      "ttmPe": 31.62,
-      "marketCap": 113491980000,
-      "psRatio": 5.28,
-      "pbRatio": 7.37,
-      "pegRatio": 1.64
+      "ttmPe": 32.59,
+      "marketCap": 116984700000,
+      "psRatio": 5.44,
+      "pbRatio": 7.59,
+      "pegRatio": 1.69
     },
     "profitability": {
       "roe": 7.2700000000000005,
@@ -6311,25 +6311,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.94,
-      "costOfEquity": 13.84,
+      "wacc": 12.98,
+      "costOfEquity": 13.86,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 1.1226,
-      "marketCap": 113491980000
+      "beta": 1.1251,
+      "marketCap": 116984700000
     },
     "beta": {
-      "beta5y": 1.1226
+      "beta5y": 1.1251
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 773.92,
-        "high": 780,
-        "low": 764.45,
-        "close": 767.01,
-        "volume": 465300
-      },
       {
         "date": "2025-10-29",
         "open": 767.43,
@@ -8337,6 +8329,14 @@
         "low": 906.86,
         "close": 911.92,
         "volume": 497100
+      },
+      {
+        "date": "2026-10-29",
+        "open": 912.22,
+        "high": 930.84,
+        "low": 911.58,
+        "close": 928.45,
+        "volume": 554100
       }
     ],
     "news": [
@@ -8365,19 +8365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
-        "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
         "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
+        "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
         "type": "STORY"
       },
       {
@@ -8485,18 +8485,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.62,
-        "industryAvg": 29.79
+        "value": 32.59,
+        "industryAvg": 29.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.28,
-        "industryAvg": 3.41
+        "value": 5.44,
+        "industryAvg": 3.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.37,
-        "industryAvg": 5.95
+        "value": 7.59,
+        "industryAvg": 6.09
       },
       {
         "metric": "ROE",
@@ -8506,22 +8506,22 @@
       {
         "metric": "ROA",
         "value": 3.54,
-        "industryAvg": 6.3
+        "industryAvg": 6.329999999999999
       },
       {
         "metric": "Gross Margin",
         "value": 39.04,
-        "industryAvg": 29.020000000000003
+        "industryAvg": 29.13
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.049999999999997,
-        "industryAvg": 15.7
+        "industryAvg": 15.82
       },
       {
         "metric": "Net Margin",
         "value": 18.96,
-        "industryAvg": 9.92
+        "industryAvg": 10
       }
     ]
   }

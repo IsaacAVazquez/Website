@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 761.87,
-      "marketCap": 318224900000,
-      "psRatio": 27.72,
-      "pbRatio": 11.58,
+      "ttmPe": 742.58,
+      "marketCap": 310164550000,
+      "psRatio": 27.02,
+      "pbRatio": 11.28,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,25 +5904,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.32,
-      "costOfEquity": 12.42,
+      "wacc": 12.379999999999999,
+      "costOfEquity": 12.479999999999999,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9433,
-      "marketCap": 318224900000
+      "beta": 0.9505,
+      "marketCap": 310164550000
     },
     "beta": {
-      "beta5y": 0.9433
+      "beta5y": 0.9505
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 221.18,
-        "high": 223.61,
-        "low": 219.68,
-        "close": 221.38,
-        "volume": 4608900
-      },
       {
         "date": "2025-10-29",
         "open": 219.31,
@@ -7929,7 +7921,15 @@
         "high": 406.88,
         "low": 393.49,
         "close": 394.49,
-        "volume": 4545200
+        "volume": 4575900
+      },
+      {
+        "date": "2026-10-29",
+        "open": 368.83,
+        "high": 389.62,
+        "low": 367.5,
+        "close": 380.57,
+        "volume": 7365700
       }
     ],
     "news": [
@@ -7958,20 +7958,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
-        "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d123023-ccd7-31dc-bff4-466420d33097",
         "title": "Home Depot earnings, Fedspeak, Google I/O: What to Watch",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/video/home-depot-earnings-fedspeak-google-230018667.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "903b328c-0aa3-377c-bff1-9b907a104577",
+        "title": "Alphabet Traders Look to Developer Event to Shift AI Narrative",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/alphabet-traders-look-developer-event-093534219.html",
+        "type": "STORY"
       },
       {
         "uuid": "f5b81787-2ebe-34d1-92b0-5caff846147b",
@@ -8024,7 +8024,7 @@
         "title": "Executive VP & CFO",
         "age": 51,
         "yearBorn": 1974,
-        "totalPay": 1321720
+        "totalPay": 1202106
       },
       {
         "name": "Mr. Hamza Fodderwala",
@@ -8041,21 +8041,21 @@
         "title": "Executive VP, Chief Product Officer, CTO & Director",
         "age": 50,
         "yearBorn": 1975,
-        "totalPay": 1316720
+        "totalPay": 1206720
       },
       {
         "name": "Mr. Nikesh Arora C.F.A.",
         "title": "Chairman & CEO",
         "age": 57,
         "yearBorn": 1968,
-        "totalPay": 4878498
+        "totalPay": 4332713
       },
       {
         "name": "Mr. William D. Jenkins Jr.",
         "title": "President",
         "age": 59,
         "yearBorn": 1966,
-        "totalPay": 1667655
+        "totalPay": 1508453
       },
       {
         "name": "Mr. Yuming Mao",
@@ -8066,32 +8066,28 @@
         "title": "Chief Information Officer",
         "age": 53,
         "yearBorn": 1972
-      },
-      {
-        "name": "Nicole Hockin",
-        "title": "Vice President of Global Communications"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 761.87,
-        "industryAvg": 34.19
+        "value": 742.58,
+        "industryAvg": 34.04
       },
       {
         "metric": "P/S Ratio",
-        "value": 27.72,
-        "industryAvg": 7.85
+        "value": 27.02,
+        "industryAvg": 7.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.58,
-        "industryAvg": 8.72
+        "value": 11.28,
+        "industryAvg": 8.67
       },
       {
         "metric": "ROE",
         "value": -1.02,
-        "industryAvg": 25.900000000000002
+        "industryAvg": 25.89
       },
       {
         "metric": "ROA",

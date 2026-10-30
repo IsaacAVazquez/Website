@@ -1,10 +1,10 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.2477,
-      "ttmPe": 30.68,
-      "marketCap": 327890702919,
-      "psRatio": 4.39,
-      "pbRatio": 16.91,
-      "pegRatio": 0.45
+      "ttmPe": 27.85,
+      "marketCap": 297588933511,
+      "psRatio": 3.98,
+      "pbRatio": 15.34,
+      "pegRatio": 0.41
     },
     "profitability": {
       "roe": 18.88,
@@ -634,7 +634,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "20.18",
+          "TTM": "23.34",
           "2026-06-30": "7.8",
           "2026-03-31": "5.5",
           "2025-12-31": "5.15",
@@ -655,7 +655,7 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "20.08",
+          "TTM": "23.22",
           "2026-06-30": "7.77",
           "2026-03-31": "5.47",
           "2025-12-31": "5.12",
@@ -676,7 +676,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "467125000.0",
+          "TTM": "464800000.0",
           "2026-06-30": "460400000.0",
           "2026-03-31": "463400000.0",
           "2025-12-31": "466500000.0",
@@ -697,7 +697,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "469475000.0",
+          "TTM": "467200000.0",
           "2026-06-30": "462500000.0",
           "2026-03-31": "465800000.0",
           "2025-12-31": "469000000.0",
@@ -5527,25 +5527,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.329999999999998,
-      "costOfEquity": 17.41,
+      "wacc": 15.110000000000001,
+      "costOfEquity": 17.37,
       "costOfDebt": 0.3,
       "taxRate": 23,
-      "beta": 1.5767,
-      "marketCap": 327890702919
+      "beta": 1.5701,
+      "marketCap": 297588933511
     },
     "beta": {
-      "beta5y": 1.5767
+      "beta5y": 1.5701
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 525.96,
-        "high": 530.29,
-        "low": 521.67,
-        "close": 524.47,
-        "volume": 2775400
-      },
       {
         "date": "2025-10-29",
         "open": 558.18,
@@ -7552,7 +7544,15 @@
         "high": 732.73,
         "low": 707.63,
         "close": 713.38,
-        "volume": 3406400
+        "volume": 3422300
+      },
+      {
+        "date": "2026-10-29",
+        "open": 636.33,
+        "high": 664.47,
+        "low": 631.01,
+        "close": 647.39,
+        "volume": 8154500
       }
     ],
     "news": [
@@ -7597,19 +7597,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
-        "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b9d2a8d3-3cf0-32f2-8da6-9ba442fc5cfa",
         "title": "Construction Machinery Stocks Q1 Teardown: Caterpillar (NYSE:CAT) Vs The Rest",
         "publisher": "StockStory",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/construction-machinery-stocks-q1-teardown-033232238.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
+        "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
         "type": "STORY"
       },
       {
@@ -7629,11 +7629,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
-        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
-        "publisher": "MT Newswires",
+        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
+        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
+        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
         "type": "STORY"
       }
     ],
@@ -7702,18 +7702,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.68,
-        "industryAvg": 29.38
+        "value": 27.85,
+        "industryAvg": 28.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.39,
-        "industryAvg": 2.8
+        "value": 3.98,
+        "industryAvg": 2.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.91,
-        "industryAvg": 6.17
+        "value": 15.34,
+        "industryAvg": 5.92
       },
       {
         "metric": "ROE",

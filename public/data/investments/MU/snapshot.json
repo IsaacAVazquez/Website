@@ -1,10 +1,10 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 12.52,
-      "marketCap": 1050427560000,
-      "psRatio": 7.89,
-      "pbRatio": 7.59,
+      "ttmPe": 12.59,
+      "marketCap": 1056659370000,
+      "psRatio": 7.93,
+      "pbRatio": 7.64,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5964,25 +5964,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.13,
-      "costOfEquity": 23.24,
+      "wacc": 23.369999999999997,
+      "costOfEquity": 23.49,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.3162,
-      "marketCap": 1050427560000
+      "beta": 2.3465,
+      "marketCap": 1056659370000
     },
     "beta": {
-      "beta5y": 2.3162
+      "beta5y": 2.3465
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 218.93,
-        "high": 222.9,
-        "low": 217.56,
-        "close": 221.91,
-        "volume": 14957500
-      },
       {
         "date": "2025-10-29",
         "open": 229.06,
@@ -7989,7 +7981,15 @@
         "high": 990,
         "low": 959.34,
         "close": 983.23,
-        "volume": 30518000
+        "volume": 30711300
+      },
+      {
+        "date": "2026-10-29",
+        "open": 967.94,
+        "high": 971.01,
+        "low": 927.24,
+        "close": 934.27,
+        "volume": 22064900
       }
     ],
     "news": [
@@ -8026,14 +8026,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
-        "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-103900131.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f9f8f9a3-3f03-3f30-87b2-8899197b3e99",
         "title": "Micron Ships World’s First 1γ (1-Gamma)-Based LPDDR5X, Enabling Rich Mobile AI Experiences",
         "publisher": "GlobeNewswire",
@@ -8042,19 +8034,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
-        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
+        "uuid": "792df1c6-501c-30ea-a2f4-b6631c2bb7db",
+        "title": "The Zacks Analyst Blog Highlights NVIDIA, Advanced Micro Devices, Micron Technology and Broadcom",
         "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
-        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-103900131.html",
         "type": "STORY"
       },
       {
@@ -8063,6 +8047,22 @@
         "publisher": "Motley Fool",
         "reportDate": "2025-06-05",
         "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
+        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
+        "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
         "type": "STORY"
       },
       {
@@ -8140,18 +8140,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.52,
-        "industryAvg": 25.58
+        "value": 12.59,
+        "industryAvg": 25.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.89,
-        "industryAvg": 12.52
+        "value": 7.93,
+        "industryAvg": 12.49
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.59,
-        "industryAvg": 11.25
+        "value": 7.64,
+        "industryAvg": 11.09
       },
       {
         "metric": "ROE",
@@ -8171,7 +8171,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 86.45,
-        "industryAvg": 81.54
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "COP",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.548,
-      "ttmPe": 19.6,
-      "marketCap": 177749896500,
-      "psRatio": 2.81,
-      "pbRatio": 2.72,
-      "pegRatio": 0.18
+      "ttmPe": 19.88,
+      "marketCap": 180236665125,
+      "psRatio": 2.85,
+      "pbRatio": 2.76,
+      "pegRatio": 0.19
     },
     "profitability": {
       "roe": 6.03,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.05,
-      "costOfEquity": 6.74,
+      "wacc": 5.970000000000001,
+      "costOfEquity": 6.64,
       "costOfDebt": 1.21,
       "taxRate": 35,
-      "beta": 0.222,
-      "marketCap": 177749896500
+      "beta": 0.2107,
+      "marketCap": 180236665125
     },
     "beta": {
-      "beta5y": 0.222
+      "beta5y": 0.2107
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 88.3,
-        "high": 88.36,
-        "low": 86.69,
-        "close": 86.79,
-        "volume": 5234800
-      },
       {
         "date": "2025-10-29",
         "open": 86.85,
@@ -7637,6 +7629,14 @@
         "low": 148.23,
         "close": 149.06,
         "volume": 5425300
+      },
+      {
+        "date": "2026-10-29",
+        "open": 149.91,
+        "high": 150.58,
+        "low": 148.36,
+        "close": 150.03,
+        "volume": 5130700
       }
     ],
     "news": [
@@ -7681,19 +7681,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
-        "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dc3a8355-96fa-385e-96a5-a14c75515cf4",
         "title": "Coterra Energy to Report Q1 Earnings: Key Metrics to Watch",
         "publisher": "Zacks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/coterra-energy-report-q1-earnings-134800445.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
+        "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
         "type": "STORY"
       },
       {
@@ -7713,11 +7713,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a734f233-b3a7-39f9-a01b-aefeb5a637c3",
-        "title": "OPEC Shifts To Oil Price-War Stance Ahead Of Trump Saudi Visit; These Stocks Rally",
-        "publisher": "Investor's Business Daily",
+        "uuid": "164bdc7b-1cbb-3adb-b047-5a86a1dcef5c",
+        "title": "Why Frontline Stock Popped, but Exxon and ConocoPhillips Dropped",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/m/a734f233-b3a7-39f9-a01b-aefeb5a637c3/opec-shifts-to-oil-price-war.html",
+        "link": "https://finance.yahoo.com/m/164bdc7b-1cbb-3adb-b047-5a86a1dcef5c/why-frontline-stock-popped%2C.html",
         "type": "STORY"
       }
     ],
@@ -7786,43 +7786,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.6,
-        "industryAvg": 14.78
+        "value": 19.88,
+        "industryAvg": 14.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.81,
-        "industryAvg": 2.82
+        "value": 2.85,
+        "industryAvg": 2.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.72,
+        "value": 2.76,
         "industryAvg": 1.86
       },
       {
         "metric": "ROE",
         "value": 6.03,
-        "industryAvg": 12.68
+        "industryAvg": 12.76
       },
       {
         "metric": "ROA",
         "value": 3.17,
-        "industryAvg": 6.4
+        "industryAvg": 6.4399999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 36.720000000000006,
-        "industryAvg": 41.27
+        "industryAvg": 41.64
       },
       {
         "metric": "EBITDA Margin",
         "value": 48.78,
-        "industryAvg": 51.06
+        "industryAvg": 50.89
       },
       {
         "metric": "Net Margin",
         "value": 20.45,
-        "industryAvg": 16.54
+        "industryAvg": 16.509999999999998
       }
     ]
   }

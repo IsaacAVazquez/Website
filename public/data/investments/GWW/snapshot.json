@@ -1,10 +1,10 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.3978,
-      "ttmPe": 34.08,
-      "marketCap": 63242783360,
-      "psRatio": 3.36,
-      "pbRatio": 15.31,
-      "pegRatio": 1.66
+      "ttmPe": 34.82,
+      "marketCap": 64615291930,
+      "psRatio": 3.43,
+      "pbRatio": 15.64,
+      "pegRatio": 1.7
     },
     "profitability": {
       "roe": 14.14,
@@ -5156,25 +5156,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.98,
-      "costOfEquity": 12.49,
+      "wacc": 12.030000000000001,
+      "costOfEquity": 12.53,
       "costOfDebt": 0.72,
       "taxRate": 25,
-      "beta": 0.9515,
-      "marketCap": 63242783360
+      "beta": 0.9565,
+      "marketCap": 64615291930
     },
     "beta": {
-      "beta5y": 0.9515
+      "beta5y": 0.9565
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 974.93,
-        "high": 981.41,
-        "low": 962.41,
-        "close": 963.48,
-        "volume": 314700
-      },
       {
         "date": "2025-10-29",
         "open": 960.75,
@@ -7182,6 +7174,14 @@
         "low": 1332.71,
         "close": 1340.76,
         "volume": 121500
+      },
+      {
+        "date": "2026-10-29",
+        "open": 1352.48,
+        "high": 1374.67,
+        "low": 1347.95,
+        "close": 1371.86,
+        "volume": 176200
       }
     ],
     "news": [
@@ -7226,19 +7226,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
-        "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
         "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
+        "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
         "type": "STORY"
       },
       {
@@ -7334,33 +7334,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.08,
-        "industryAvg": 26.92
+        "value": 34.82,
+        "industryAvg": 27.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.36,
-        "industryAvg": 1.67
+        "value": 3.43,
+        "industryAvg": 1.72
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.31,
-        "industryAvg": 5.07
+        "value": 15.64,
+        "industryAvg": 5.22
       },
       {
         "metric": "ROE",
         "value": 14.14,
-        "industryAvg": 16.57
+        "industryAvg": 16.63
       },
       {
         "metric": "ROA",
         "value": 5.970000000000001,
-        "industryAvg": 6.99
+        "industryAvg": 7.01
       },
       {
         "metric": "Gross Margin",
         "value": 39.51,
-        "industryAvg": 29.29
+        "industryAvg": 29.299999999999997
       },
       {
         "metric": "EBITDA Margin",

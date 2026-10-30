@@ -1,10 +1,10 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -2.12,
       "ttmPe": 3518.87,
-      "marketCap": 472730820000,
-      "psRatio": 8.29,
-      "pbRatio": 5.4,
+      "marketCap": 464309010000,
+      "psRatio": 8.14,
+      "pbRatio": 5.3,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6011,24 +6011,16 @@
     },
     "wacc": {
       "wacc": 21,
-      "costOfEquity": 23.200000000000003,
+      "costOfEquity": 23.24,
       "costOfDebt": 0.64,
       "taxRate": 40,
-      "beta": 2.3106,
-      "marketCap": 472730820000
+      "beta": 2.314,
+      "marketCap": 464309010000
     },
     "beta": {
-      "beta5y": 2.3106
+      "beta5y": 2.314
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 39.59,
-        "high": 42.48,
-        "low": 39.54,
-        "close": 41.53,
-        "volume": 181256400
-      },
       {
         "date": "2025-10-29",
         "open": 41.6,
@@ -8035,7 +8027,15 @@
         "high": 95.68,
         "low": 93,
         "close": 95.53,
-        "volume": 81862000
+        "volume": 82592400
+      },
+      {
+        "date": "2026-10-29",
+        "open": 92.97,
+        "high": 93.5,
+        "low": 90.84,
+        "close": 92.07,
+        "volume": 125467300
       }
     ],
     "news": [
@@ -8112,11 +8112,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
-        "title": "Why Arm Holdings Stock Was Moving Higher Today",
+        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
+        "title": "Why Intel Stock Is Sinking Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
+        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
         "type": "STORY"
       }
     ],
@@ -8135,18 +8135,8 @@
         "totalPay": 4218200
       },
       {
-        "name": "Mr. Dean E. Jarnac Jr.",
-        "title": "Executive VP & Chief Sales Officer",
-        "age": 52,
-        "yearBorn": 1973
-      },
-      {
-        "name": "Mr. James A. Murray",
-        "title": "Chief Antitrust Counsel and VP of Law & Policy Group"
-      },
-      {
-        "name": "Mr. John William Pitzer",
-        "title": "Corporate Vice President of Corporate Planning & Investor Relations"
+        "name": "Mr. Jason L. Grebe",
+        "title": "Senior VP & GM of Corporate Planning Group and Operations Group"
       },
       {
         "name": "Mr. Lip-Bu Tan",
@@ -8156,6 +8146,10 @@
         "totalPay": 3828200
       },
       {
+        "name": "Mr. Mark H. Henninger",
+        "title": "Chief Financial Officer of Intel Products"
+      },
+      {
         "name": "Mr. Nagasubramaniyan Chandrasekaran",
         "title": "Executive VP, Chief Technology and Operations Officer & GM of Intel Foundry",
         "age": 50,
@@ -8163,37 +8157,27 @@
         "totalPay": 3473100
       },
       {
-        "name": "Ms. Annie Shea Weckesser",
-        "title": "Senior VP and Chief Marketing & Communications Officer"
-      },
-      {
-        "name": "Ms. Aparna Bawa Esq.",
-        "title": "Executive VP and Chief Legal & People Officer",
-        "age": 46,
-        "yearBorn": 1979
-      },
-      {
-        "name": "Ms. Cynthia A. Stoddard",
-        "title": "Senior VP & Chief Information Officer",
-        "age": 68,
-        "yearBorn": 1957
+        "name": "Ms. Christina S. Min",
+        "title": "Corporate VP & CFO of Data Center Group",
+        "age": 60,
+        "yearBorn": 1965
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
         "value": 3518.87,
-        "industryAvg": 25.58
+        "industryAvg": 25.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.29,
-        "industryAvg": 12.52
+        "value": 8.14,
+        "industryAvg": 12.49
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.4,
-        "industryAvg": 11.25
+        "value": 5.3,
+        "industryAvg": 11.09
       },
       {
         "metric": "ROE",
@@ -8213,7 +8197,7 @@
       {
         "metric": "EBITDA Margin",
         "value": -45.1,
-        "industryAvg": 81.54
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",

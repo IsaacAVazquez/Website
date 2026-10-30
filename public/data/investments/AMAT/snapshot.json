@@ -1,10 +1,10 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.5973,
-      "ttmPe": 34.14,
-      "marketCap": 314209018582,
-      "psRatio": 10.19,
-      "pbRatio": 12.26,
-      "pegRatio": 0.79
+      "ttmPe": 36.36,
+      "marketCap": 334628279684,
+      "psRatio": 10.85,
+      "pbRatio": 13.06,
+      "pegRatio": 0.85
     },
     "profitability": {
       "roe": 10.25,
@@ -6309,25 +6309,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.16,
-      "costOfEquity": 17.51,
+      "wacc": 17.28,
+      "costOfEquity": 17.62,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.5894,
-      "marketCap": 314209018582
+      "beta": 1.6015,
+      "marketCap": 334628279684
     },
     "beta": {
-      "beta5y": 1.5894
+      "beta5y": 1.6015
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 229.68,
-        "high": 231.02,
-        "low": 227.08,
-        "close": 227.64,
-        "volume": 6118500
-      },
       {
         "date": "2025-10-29",
         "open": 232.9,
@@ -8334,7 +8326,15 @@
         "high": 421.83,
         "low": 401.44,
         "close": 416,
-        "volume": 7069700
+        "volume": 7099600
+      },
+      {
+        "date": "2026-10-29",
+        "open": 411.85,
+        "high": 426.52,
+        "low": 409.89,
+        "close": 421.66,
+        "volume": 6673500
       }
     ],
     "news": [
@@ -8371,19 +8371,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
-        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
-        "publisher": "Zacks",
+        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
+        "title": "3 Cash-Heavy Stocks with Exciting Potential",
+        "publisher": "StockStory",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
-        "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
+        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
         "type": "STORY"
       },
       {
@@ -8395,11 +8387,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
-        "title": "3 Cash-Heavy Stocks with Exciting Potential",
-        "publisher": "StockStory",
+        "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
+        "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
+        "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
+        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
         "type": "STORY"
       },
       {
@@ -8488,43 +8488,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.14,
-        "industryAvg": 40.69
+        "value": 36.36,
+        "industryAvg": 42.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.19,
-        "industryAvg": 12.01
+        "value": 10.85,
+        "industryAvg": 12.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.26,
-        "industryAvg": 16.77
+        "value": 13.06,
+        "industryAvg": 17.46
       },
       {
         "metric": "ROE",
         "value": 10.25,
-        "industryAvg": 43.29
+        "industryAvg": 42.92
       },
       {
         "metric": "ROA",
         "value": 6.0600000000000005,
-        "industryAvg": 20.84
+        "industryAvg": 20.86
       },
       {
         "metric": "Gross Margin",
         "value": 50.31,
-        "industryAvg": 50.31
+        "industryAvg": 50.339999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.39,
-        "industryAvg": 37.830000000000005
+        "industryAvg": 37.9
       },
       {
         "metric": "Net Margin",
         "value": 27.839999999999996,
-        "industryAvg": 28.78
+        "industryAvg": 28.810000000000002
       }
     ]
   }

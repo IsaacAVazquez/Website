@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 22.35,
-      "marketCap": 318741240000,
-      "psRatio": 1.88,
-      "pbRatio": 19.18,
-      "pegRatio": 4.96
+      "ttmPe": 23.02,
+      "marketCap": 328322040000,
+      "psRatio": 1.94,
+      "pbRatio": 19.76,
+      "pegRatio": 5.1
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,25 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.48,
-      "costOfEquity": 12.4,
+      "wacc": 10.65,
+      "costOfEquity": 12.55,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9398,
-      "marketCap": 318741240000
+      "beta": 0.9594,
+      "marketCap": 328322040000
     },
     "beta": {
-      "beta5y": 0.9398
+      "beta5y": 0.9594
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 384.42,
-        "high": 390.01,
-        "low": 382.83,
-        "close": 385.75,
-        "volume": 2372800
-      },
       {
         "date": "2025-10-29",
         "open": 383,
@@ -7452,6 +7444,14 @@
         "low": 316.15,
         "close": 317.56,
         "volume": 3136400
+      },
+      {
+        "date": "2026-10-29",
+        "open": 324.27,
+        "high": 329.01,
+        "low": 322.68,
+        "close": 328.98,
+        "volume": 4022200
       }
     ],
     "news": [
@@ -7528,12 +7528,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
-        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
-        "publisher": "CNW Group",
+        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
+        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.35,
-        "industryAvg": 20.63
+        "value": 23.02,
+        "industryAvg": 21.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.88,
-        "industryAvg": 1.64
+        "value": 1.94,
+        "industryAvg": 1.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.18,
-        "industryAvg": 16.34
+        "value": 19.76,
+        "industryAvg": 16.84
       },
       {
         "metric": "ROE",

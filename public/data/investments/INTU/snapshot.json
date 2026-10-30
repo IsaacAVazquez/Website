@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 20.6,
-      "marketCap": 91221037760,
-      "psRatio": 4.25,
-      "pbRatio": 4.8,
+      "ttmPe": 20.07,
+      "marketCap": 88886096960,
+      "psRatio": 4.14,
+      "pbRatio": 4.68,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6595,25 +6595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.3,
-      "costOfEquity": 12.29,
+      "wacc": 11.42,
+      "costOfEquity": 12.45,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.926,
-      "marketCap": 91221037760
+      "beta": 0.9466,
+      "marketCap": 88886096960
     },
     "beta": {
-      "beta5y": 0.926
+      "beta5y": 0.9466
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 684.73,
-        "high": 688.9,
-        "low": 678.25,
-        "close": 678.93,
-        "volume": 1103300
-      },
       {
         "date": "2025-10-29",
         "open": 667.58,
@@ -8621,6 +8613,14 @@
         "low": 324.18,
         "close": 328.19,
         "volume": 2022800
+      },
+      {
+        "date": "2026-10-29",
+        "open": 320.97,
+        "high": 332.86,
+        "low": 319.02,
+        "close": 331.19,
+        "volume": 2621200
       }
     ],
     "news": [
@@ -8657,20 +8657,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
-        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "22e9d305-bd7c-306e-820a-25234c2b03d9",
         "title": "Morning Movers: Apple slips following President Trump tariff threat",
         "publisher": "TipRanks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/morning-movers-apple-slips-following-131522487.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
@@ -8689,19 +8689,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
-        "title": "Company News for May 27, 2025",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-27",
-        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3024a26e-773e-3ff1-9165-4dedc0d118e5",
         "title": "US High Growth Tech Stocks to Watch in May 2025",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-27",
         "link": "https://finance.yahoo.com/news/us-high-growth-tech-stocks-113809175.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a0c5cbe2-b276-3715-afc5-cb59b6cbeb14",
+        "title": "Company News for May 27, 2025",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-27",
+        "link": "https://finance.yahoo.com/news/company-news-may-27-2025-132300202.html",
         "type": "STORY"
       }
     ],
@@ -8771,23 +8771,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.6,
-        "industryAvg": 27.81
+        "value": 20.07,
+        "industryAvg": 26.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.25,
-        "industryAvg": 5.27
+        "value": 4.14,
+        "industryAvg": 5.06
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.8,
-        "industryAvg": 5.87
+        "value": 4.68,
+        "industryAvg": 5.63
       },
       {
         "metric": "ROE",
         "value": 1.83,
-        "industryAvg": -12.35
+        "industryAvg": -12.36
       },
       {
         "metric": "ROA",
@@ -8797,17 +8797,17 @@
       {
         "metric": "Gross Margin",
         "value": 78.11,
-        "industryAvg": 63.4
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.02,
-        "industryAvg": 1.28
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",
         "value": 8.34,
-        "industryAvg": -16.02
+        "industryAvg": -15.790000000000001
       }
     ]
   }

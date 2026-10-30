@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 22.74,
-      "marketCap": 190697900000,
-      "psRatio": 1.93,
-      "pbRatio": 1.73,
+      "ttmPe": 22.88,
+      "marketCap": 191874300000,
+      "psRatio": 1.94,
+      "pbRatio": 1.74,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6071,25 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.370000000000001,
-      "costOfEquity": 16.41,
+      "wacc": 13.28,
+      "costOfEquity": 16.28,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4498,
-      "marketCap": 190697900000
+      "beta": 1.4322,
+      "marketCap": 191874300000
     },
     "beta": {
-      "beta5y": 1.4498
+      "beta5y": 1.4322
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 111.91,
-        "high": 112.48,
-        "low": 111.46,
-        "close": 111.65,
-        "volume": 6839400
-      },
       {
         "date": "2025-10-29",
         "open": 111.18,
@@ -8097,6 +8089,14 @@
         "low": 108.75,
         "close": 109.04,
         "volume": 6228500
+      },
+      {
+        "date": "2026-10-29",
+        "open": 110.01,
+        "high": 111.05,
+        "low": 109.55,
+        "close": 110.91,
+        "volume": 6066500
       }
     ],
     "news": [
@@ -8133,19 +8133,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
-        "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
         "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8157,11 +8157,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
+        "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
+        "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
         "type": "STORY"
       },
       {
@@ -8242,18 +8242,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.74,
-        "industryAvg": 21.85
+        "value": 22.88,
+        "industryAvg": 21.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.93,
-        "industryAvg": 2.58
+        "value": 1.94,
+        "industryAvg": 2.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.73,
-        "industryAvg": 2.96
+        "value": 1.74,
+        "industryAvg": 2.97
       },
       {
         "metric": "ROE",

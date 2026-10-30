@@ -1,10 +1,10 @@
 {
   "symbol": "BKNG",
-  "lastUpdated": "2026-10-27T15:11:24.615389+00:00",
+  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-27T15:11:24.615389+00:00",
+    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
     "sections": {
-      "price": "2026-10-28"
+      "price": "2026-10-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.0414,
-      "ttmPe": 16.94,
-      "marketCap": 116080120000,
-      "psRatio": 4.11,
-      "pbRatio": -10.77,
+      "ttmPe": 16.64,
+      "marketCap": 114025940000,
+      "psRatio": 4.04,
+      "pbRatio": -10.57,
       "pegRatio": 0.13
     },
     "profitability": {
@@ -5570,25 +5570,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.09,
-      "costOfEquity": 14.05,
+      "wacc": 11.92,
+      "costOfEquity": 13.88,
       "costOfDebt": 1.4500000000000002,
       "taxRate": 24,
-      "beta": 1.1495,
-      "marketCap": 116080120000
+      "beta": 1.1282,
+      "marketCap": 114025940000
     },
     "beta": {
-      "beta5y": 1.1495
+      "beta5y": 1.1282
     },
     "price": [
-      {
-        "date": "2025-10-28",
-        "open": 209.6232,
-        "high": 211,
-        "low": 204.8228,
-        "close": 204.8228,
-        "volume": 10177500
-      },
       {
         "date": "2025-10-29",
         "open": 208.0004,
@@ -7596,6 +7588,14 @@
         "low": 146.28,
         "close": 147.94,
         "volume": 8563400
+      },
+      {
+        "date": "2026-10-29",
+        "open": 150.6,
+        "high": 151.84,
+        "low": 147.53,
+        "close": 150.43,
+        "volume": 5896000
       }
     ],
     "news": [
@@ -7656,14 +7656,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
-        "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/why-booking-holdings-bkng-top-134507660.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f9d36917-6c20-368c-92bf-d17a00b1dd8c",
         "title": "KAYAK and Affirm expand exclusive partnership into Canada",
         "publisher": "Business Wire",
@@ -7677,6 +7669,14 @@
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/ff6c2457-0f15-3617-85ab-08dd2d4b0dcc/makemytrip-projected-to-have.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
+        "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/why-booking-holdings-bkng-top-134507660.html",
         "type": "STORY"
       }
     ],
@@ -7741,28 +7741,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.94,
-        "industryAvg": 17.32
+        "value": 16.64,
+        "industryAvg": 17.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.11,
-        "industryAvg": 3.25
+        "value": 4.04,
+        "industryAvg": 3.3
       },
       {
         "metric": "P/B Ratio",
-        "value": -10.77,
-        "industryAvg": 5.13
+        "value": -10.57,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": -19.99,
-        "industryAvg": 34.97
+        "industryAvg": 34.910000000000004
       },
       {
         "metric": "ROA",
         "value": 6.79,
-        "industryAvg": 8.62
+        "industryAvg": 8.64
       },
       {
         "metric": "Gross Margin",
@@ -7771,12 +7771,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 41.099999999999994,
-        "industryAvg": 29.04
+        "industryAvg": 29.099999999999998
       },
       {
         "metric": "Net Margin",
         "value": 26.52,
-        "industryAvg": 17.32
+        "industryAvg": 17.36
       }
     ]
   }
