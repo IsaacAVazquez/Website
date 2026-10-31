@@ -1,10 +1,10 @@
 {
   "symbol": "JNJ",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5922,
-      "ttmPe": 41.12,
+      "ttmPe": 41.44,
       "pegRatio": 0.45,
-      "marketCap": 652425262720,
-      "psRatio": 6.57,
-      "pbRatio": 8
+      "marketCap": 657624637600,
+      "psRatio": 6.62,
+      "pbRatio": 8.07
     },
     "profitability": {
       "roe": 0.25,
@@ -6077,25 +6077,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.2,
-      "costOfEquity": 6.6000000000000005,
+      "wacc": 6.09,
+      "costOfEquity": 6.4799999999999995,
       "costOfDebt": 0.49,
       "taxRate": 40,
-      "beta": 0.1988,
-      "marketCap": 652425262720
+      "beta": 0.1946,
+      "marketCap": 657624637600
     },
     "beta": {
-      "beta5y": 0.1988
+      "beta5y": 0.1946
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 186.7,
-        "high": 187.1,
-        "low": 184.66,
-        "close": 186.6,
-        "volume": 10551100
-      },
       {
         "date": "2025-10-30",
         "open": 187.08,
@@ -8102,7 +8094,15 @@
         "high": 278.05,
         "low": 273.6,
         "close": 275.2,
-        "volume": 6013200
+        "volume": 6023600
+      },
+      {
+        "date": "2026-10-30",
+        "open": 280,
+        "high": 282.02,
+        "low": 273.13,
+        "close": 273.2,
+        "volume": 8969000
       }
     ],
     "news": [
@@ -8163,19 +8163,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
-        "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "805043bf-ab7d-346e-b3c8-0163ff94cf2f",
         "title": "Top Stock Reports for Amazon.com, Johnson & Johnson & Cisco Systems",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/top-stock-reports-amazon-com-210200739.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bef36d82-18df-3b8a-b1d3-cbe5aec53f90",
+        "title": "The Zacks Analyst Blog Highlights Amazon, Johnson & Johnson, Cisco Systems and NeurAxis",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-amazon-084900432.html",
         "type": "STORY"
       },
       {
@@ -8252,43 +8252,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.12,
-        "industryAvg": 29.44
+        "value": 41.44,
+        "industryAvg": 31.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.57,
-        "industryAvg": 4.99
+        "value": 6.62,
+        "industryAvg": 5.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 8,
-        "industryAvg": 6.26
+        "value": 8.07,
+        "industryAvg": 6.52
       },
       {
         "metric": "ROE",
         "value": 0.25,
-        "industryAvg": 22.57
+        "industryAvg": 22.32
       },
       {
         "metric": "ROA",
         "value": 0.11,
-        "industryAvg": 7.86
+        "industryAvg": 7.8
       },
       {
         "metric": "Gross Margin",
         "value": 68.12,
-        "industryAvg": 73.78
+        "industryAvg": 73.8
       },
       {
         "metric": "EBITDA Margin",
         "value": 9.32,
-        "industryAvg": 31.830000000000002
+        "industryAvg": 31.91
       },
       {
         "metric": "Net Margin",
         "value": 0.83,
-        "industryAvg": 15.9
+        "industryAvg": 15.740000000000002
       }
     ]
   }

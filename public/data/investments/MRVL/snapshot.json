@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 80.2,
-      "marketCap": 213562176000,
-      "psRatio": 22.6,
-      "pbRatio": 11.52,
-      "pegRatio": 1.62
+      "ttmPe": 64.67,
+      "marketCap": 172203520000,
+      "psRatio": 18.22,
+      "pbRatio": 9.29,
+      "pegRatio": 1.31
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.13,
-      "costOfEquity": 22.650000000000002,
+      "wacc": 22.42,
+      "costOfEquity": 23.07,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2405,
-      "marketCap": 213562176000
+      "beta": 2.2858,
+      "marketCap": 172203520000
     },
     "beta": {
-      "beta5y": 2.2405
+      "beta5y": 2.2858
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 90.76,
-        "high": 91.51,
-        "low": 89.05,
-        "close": 90.15,
-        "volume": 13399900
-      },
       {
         "date": "2025-10-30",
         "open": 89.28,
@@ -7980,7 +7972,15 @@
         "high": 225.68,
         "low": 214.56,
         "close": 218.34,
-        "volume": 41756000
+        "volume": 42028000
+      },
+      {
+        "date": "2026-10-30",
+        "open": 205.78,
+        "high": 207.61,
+        "low": 190.15,
+        "close": 196.4,
+        "volume": 43099300
       }
     ],
     "news": [
@@ -8025,19 +8025,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
-        "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
         "title": "3 Hyped Up  Stocks with Mounting Challenges",
         "publisher": "StockStory",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
+        "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
         "type": "STORY"
       },
       {
@@ -8049,19 +8049,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
-        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
         "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
+        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
         "type": "STORY"
       }
     ],
@@ -8130,33 +8130,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 80.2,
-        "industryAvg": 25.58
+        "value": 64.67,
+        "industryAvg": 24.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 22.6,
-        "industryAvg": 12.52
+        "value": 18.22,
+        "industryAvg": 11.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.52,
-        "industryAvg": 11.25
+        "value": 9.29,
+        "industryAvg": 10.35
       },
       {
         "metric": "ROE",
         "value": 1.68,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 1.13,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 53.14,
-        "industryAvg": 68.31
+        "industryAvg": 68.30000000000001
       },
       {
         "metric": "EBITDA Margin",

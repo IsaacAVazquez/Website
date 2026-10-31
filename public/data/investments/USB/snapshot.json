@@ -1,14 +1,11 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-30"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.1397,
-      "ttmPe": 11.6,
-      "marketCap": 92856800000,
-      "psRatio": 3.14,
-      "pbRatio": 1.38,
+      "ttmPe": 11.57,
+      "marketCap": 92623100000,
+      "psRatio": 3.13,
+      "pbRatio": 1.37,
       "pegRatio": 1.1
     },
     "profitability": {
@@ -5712,25 +5709,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.82,
-      "costOfEquity": 13.120000000000001,
+      "wacc": 7.79,
+      "costOfEquity": 13.07,
       "costOfDebt": 3.37,
       "taxRate": 20,
-      "beta": 1.0326,
-      "marketCap": 92856800000
+      "beta": 1.0251,
+      "marketCap": 92623100000
     },
     "beta": {
-      "beta5y": 1.0326
+      "beta5y": 1.0251
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 46.91,
-        "high": 47.49,
-        "low": 46.37,
-        "close": 46.64,
-        "volume": 8829500
-      },
       {
         "date": "2025-10-30",
         "open": 46.65,
@@ -7738,6 +7727,14 @@
         "low": 60.23,
         "close": 60.64,
         "volume": 5829400
+      },
+      {
+        "date": "2026-10-30",
+        "open": 61.05,
+        "high": 61.05,
+        "low": 59.15,
+        "close": 59.45,
+        "volume": 7351800
       }
     ],
     "news": [
@@ -7774,19 +7771,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cc727297-8486-3bd9-9bf8-af6740bca428",
-        "title": "Elavon and Jscrambler Partner to Strengthen PCI DSS Compliance for Merchants",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/elavon-jscrambler-partner-strengthen-pci-080000015.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d2d1ca3e-3f65-3b97-a4be-6a57660dda6f",
         "title": "Elavon Offers Innovative One-Stop Payment Solution for Small and Medium-Sized Businesses",
         "publisher": "Business Wire",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/elavon-offers-innovative-one-stop-121500667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cc727297-8486-3bd9-9bf8-af6740bca428",
+        "title": "Elavon and Jscrambler Partner to Strengthen PCI DSS Compliance for Merchants",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/elavon-jscrambler-partner-strengthen-pci-080000015.html",
         "type": "STORY"
       },
       {
@@ -7806,39 +7803,23 @@
         "type": "STORY"
       },
       {
-        "uuid": "1c4ace91-bde0-3d00-ad69-392883db971c",
-        "title": "Oppenheimer Adjusts Price Target on U.S. Bancorp to $63 From $59, Maintains Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/oppenheimer-adjusts-price-target-u-104520418.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d31b2fb1-3c25-3cf4-ab04-90ffb7d23d8d",
         "title": "TD Cowen Initiates U.S. Bancorp at Buy With $60 Price Target",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/td-cowen-initiates-u-bancorp-100544819.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "1c4ace91-bde0-3d00-ad69-392883db971c",
+        "title": "Oppenheimer Adjusts Price Target on U.S. Bancorp to $63 From $59, Maintains Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/oppenheimer-adjusts-price-target-u-104520418.html",
+        "type": "STORY"
       }
     ],
     "officers": [
-      {
-        "name": "Mr. Adam C. Graves",
-        "title": "Senior EVP and Head of Enterprise Strategy & Administration",
-        "age": 46,
-        "yearBorn": 1979
-      },
-      {
-        "name": "Mr. Alan Flanagan",
-        "title": "Head of Global Investment Services"
-      },
-      {
-        "name": "Mr. Dilip Venkatachari",
-        "title": "Senior EVP and Chief Information & Technology Officer",
-        "age": 65,
-        "yearBorn": 1960
-      },
       {
         "name": "Mr. Elcio R. T. Barcelos",
         "title": "Senior EVP & Chief Human Resources Officer",
@@ -7861,58 +7842,43 @@
         "totalPay": 2472720
       },
       {
-        "name": "Mr. Toby Clements",
-        "title": "Senior EVP & Chief Operations Officer"
-      },
-      {
         "name": "Ms. Gunjan Kedia",
         "title": "President, CEO & Chairman",
         "age": 54,
         "yearBorn": 1971,
         "totalPay": 4721311
-      },
-      {
-        "name": "Ms. Jennifer Ann Thompson C.F.A.",
-        "title": "EVP & Head of Corporate Finance"
-      },
-      {
-        "name": "Ms. Jodi L. Richard",
-        "title": "Vice Chair & Chief Risk Officer",
-        "age": 56,
-        "yearBorn": 1969,
-        "totalPay": 2745357
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.68,
-        "industryAvg": 11.74
+        "value": 11.57,
+        "industryAvg": 11.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.16,
-        "industryAvg": 2.95
+        "value": 3.13,
+        "industryAvg": 2.9
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.39,
-        "industryAvg": 1.24
+        "value": 1.37,
+        "industryAvg": 1.23
       },
       {
         "metric": "ROE",
         "value": 3.15,
-        "industryAvg": 10.280000000000001
+        "industryAvg": 10.209999999999999
       },
       {
         "metric": "ROA",
         "value": 0.29,
-        "industryAvg": 0.91
+        "industryAvg": 0.86
       },
       {
         "metric": "Net Margin",
         "value": 27.3,
-        "industryAvg": 25.72
+        "industryAvg": 24.59
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.0981,
-      "ttmPe": 28.07,
-      "pegRatio": 0.43,
-      "marketCap": 244259298000,
-      "psRatio": 6.41,
-      "pbRatio": 20.9
+      "ttmPe": 28.95,
+      "pegRatio": 0.45,
+      "marketCap": 251925006000,
+      "psRatio": 6.61,
+      "pbRatio": 21.55
     },
     "profitability": {
       "roe": 22.75,
@@ -5336,25 +5336,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.049999999999999,
-      "costOfEquity": 8.469999999999999,
+      "wacc": 6.92,
+      "costOfEquity": 8.27,
       "costOfDebt": 1.17,
       "taxRate": 14.000000000000002,
-      "beta": 0.4369,
-      "marketCap": 244259298000
+      "beta": 0.4202,
+      "marketCap": 251925006000
     },
     "beta": {
-      "beta5y": 0.4369
+      "beta5y": 0.4202
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 291.76,
-        "high": 294.81,
-        "low": 289.44,
-        "close": 291.77,
-        "volume": 2824300
-      },
       {
         "date": "2025-10-30",
         "open": 290.58,
@@ -7362,6 +7354,14 @@
         "low": 457.36,
         "close": 460.73,
         "volume": 2978500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 470.15,
+        "high": 475.65,
+        "low": 465.33,
+        "close": 466.01,
+        "volume": 3290400
       }
     ],
     "news": [
@@ -7414,19 +7414,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
-        "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0dc4812d-09f8-322e-b873-8f766a7f20f3",
         "title": "Sanofi Inks A $470 Million Alzheimer's Deal, Sending This Dollar Stock Flying",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/0dc4812d-09f8-322e-b873-8f766a7f20f3/sanofi-inks-a-%24470-million.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
+        "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
         "type": "STORY"
       },
       {
@@ -7438,11 +7438,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a5c3d64b-cace-3675-a8fc-06676a70e152",
-        "title": "The Smartest High-Yielding Dividend Stocks in the Nasdaq Composite Index to Buy With $1,500 Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "2ae33d5c-c3e6-3385-bf18-c31dafc8863f",
+        "title": "With 81% institutional ownership, Amgen Inc. (NASDAQ:AMGN) is a favorite amongst the big guns",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/a5c3d64b-cace-3675-a8fc-06676a70e152/the-smartest-high-yielding.html",
+        "link": "https://finance.yahoo.com/news/81-institutional-ownership-amgen-inc-140011063.html",
         "type": "STORY"
       }
     ],
@@ -7510,43 +7510,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.07,
-        "industryAvg": 29.44
+        "value": 28.95,
+        "industryAvg": 31.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.41,
-        "industryAvg": 4.99
+        "value": 6.61,
+        "industryAvg": 5.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.9,
-        "industryAvg": 6.26
+        "value": 21.55,
+        "industryAvg": 6.52
       },
       {
         "metric": "ROE",
         "value": 22.75,
-        "industryAvg": 22.57
+        "industryAvg": 22.32
       },
       {
         "metric": "ROA",
         "value": 2.52,
-        "industryAvg": 7.86
+        "industryAvg": 7.8
       },
       {
         "metric": "Gross Margin",
         "value": 72.04,
-        "industryAvg": 73.78
+        "industryAvg": 73.8
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.29,
-        "industryAvg": 31.830000000000002
+        "industryAvg": 31.91
       },
       {
         "metric": "Net Margin",
         "value": 23.62,
-        "industryAvg": 15.9
+        "industryAvg": 15.740000000000002
       }
     ]
   }

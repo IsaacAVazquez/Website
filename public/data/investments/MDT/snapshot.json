@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 23.33,
-      "pegRatio": 0.56,
-      "marketCap": 121322845182,
-      "psRatio": 3.23,
-      "pbRatio": 2.42
+      "ttmPe": 23.77,
+      "pegRatio": 0.57,
+      "marketCap": 123575727726,
+      "psRatio": 3.29,
+      "pbRatio": 2.46
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.920000000000001,
-      "costOfEquity": 9.629999999999999,
+      "wacc": 7.7700000000000005,
+      "costOfEquity": 9.41,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5859,
-      "marketCap": 121322845182
+      "beta": 0.5631,
+      "marketCap": 123575727726
     },
     "beta": {
-      "beta5y": 0.5859
+      "beta5y": 0.5631
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 92.78,
-        "high": 92.81,
-        "low": 91.38,
-        "close": 91.73,
-        "volume": 6963600
-      },
       {
         "date": "2025-10-30",
         "open": 91.77,
@@ -7972,23 +7964,31 @@
         "low": 95.17,
         "close": 97.11,
         "volume": 9373500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 98,
+        "high": 98.09,
+        "low": 96.46,
+        "close": 96.54,
+        "volume": 8680700
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -8040,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
-        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
         "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
+        "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
         "type": "STORY"
       }
     ],
@@ -8108,43 +8108,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.33,
-        "industryAvg": 25.86
+        "value": 23.77,
+        "industryAvg": 25.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.23,
-        "industryAvg": 3.14
+        "value": 3.29,
+        "industryAvg": 3.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.42,
+        "value": 2.46,
         "industryAvg": 3.04
       },
       {
         "metric": "ROE",
         "value": 2.9499999999999997,
-        "industryAvg": 8.450000000000001
+        "industryAvg": 8.52
       },
       {
         "metric": "ROA",
         "value": 1.58,
-        "industryAvg": 4.26
+        "industryAvg": 4.3
       },
       {
         "metric": "Gross Margin",
         "value": 64.99000000000001,
-        "industryAvg": 56.85
+        "industryAvg": 56.89999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.51,
-        "industryAvg": 19.939999999999998
+        "industryAvg": 20.02
       },
       {
         "metric": "Net Margin",
         "value": 15.07,
-        "industryAvg": 8.35
+        "industryAvg": 8.41
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "PEP",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9572,
-      "ttmPe": 16.67,
-      "pegRatio": 0.95,
-      "marketCap": 180907320000,
-      "psRatio": 1.84,
-      "pbRatio": 8.12
+      "ttmPe": 17.26,
+      "pegRatio": 0.98,
+      "marketCap": 187331760000,
+      "psRatio": 1.91,
+      "pbRatio": 8.4
     },
     "profitability": {
       "roe": 13.73,
@@ -6068,25 +6068,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.069999999999999,
-      "costOfEquity": 7.71,
+      "wacc": 5.96,
+      "costOfEquity": 7.51,
       "costOfDebt": 0.47000000000000003,
       "taxRate": 21,
-      "beta": 0.3405,
-      "marketCap": 180907320000
+      "beta": 0.3247,
+      "marketCap": 187331760000
     },
     "beta": {
-      "beta5y": 0.3405
+      "beta5y": 0.3247
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 148.05,
-        "high": 148.66,
-        "low": 143.67,
-        "close": 146.16,
-        "volume": 7767600
-      },
       {
         "date": "2025-10-30",
         "open": 146.34,
@@ -8093,7 +8085,15 @@
         "high": 134.96,
         "low": 132.73,
         "close": 133.79,
-        "volume": 6156000
+        "volume": 6201400
+      },
+      {
+        "date": "2026-10-30",
+        "open": 136.58,
+        "high": 138.59,
+        "low": 135.8,
+        "close": 137.34,
+        "volume": 19503900
       }
     ],
     "news": [
@@ -8106,19 +8106,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
-        "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
         "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
+        "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
         "type": "STORY"
       },
       {
@@ -8221,18 +8221,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.67,
-        "industryAvg": 23.45
+        "value": 17.26,
+        "industryAvg": 24.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.84,
-        "industryAvg": 3.19
+        "value": 1.91,
+        "industryAvg": 3.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.12,
-        "industryAvg": 6.24
+        "value": 8.4,
+        "industryAvg": 6.41
       },
       {
         "metric": "ROE",
@@ -8247,7 +8247,7 @@
       {
         "metric": "Gross Margin",
         "value": 54.42,
-        "industryAvg": 51.949999999999996
+        "industryAvg": 51.970000000000006
       },
       {
         "metric": "EBITDA Margin",

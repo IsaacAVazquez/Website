@@ -1,10 +1,10 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 12.08,
-      "marketCap": 350842197804,
-      "psRatio": 3,
-      "pbRatio": 1.17,
+      "ttmPe": 11.92,
+      "marketCap": 346203991953,
+      "psRatio": 2.96,
+      "pbRatio": 1.15,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5632,25 +5632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.86,
-      "costOfEquity": 14.38,
+      "wacc": 8.83,
+      "costOfEquity": 14.399999999999999,
       "costOfDebt": 4.590000000000001,
       "taxRate": 17,
-      "beta": 1.1915,
-      "marketCap": 350842197804
+      "beta": 1.1934,
+      "marketCap": 346203991953
     },
     "beta": {
-      "beta5y": 1.1915
+      "beta5y": 1.1934
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 52.66,
-        "high": 53.01,
-        "low": 52.32,
-        "close": 52.58,
-        "volume": 29158800
-      },
       {
         "date": "2025-10-30",
         "open": 52.67,
@@ -7657,7 +7649,15 @@
         "high": 52.04,
         "low": 51.12,
         "close": 51.14,
-        "volume": 32424100
+        "volume": 32437300
+      },
+      {
+        "date": "2026-10-30",
+        "open": 51.03,
+        "high": 51.34,
+        "low": 49.78,
+        "close": 50.01,
+        "volume": 43055300
       }
     ],
     "news": [
@@ -7702,19 +7702,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
-        "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
         "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
         "publisher": "Financial Times",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
+        "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
         "type": "STORY"
       },
       {
@@ -7810,23 +7810,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.08,
-        "industryAvg": 13.22
+        "value": 11.92,
+        "industryAvg": 12.84
       },
       {
         "metric": "P/S Ratio",
-        "value": 3,
-        "industryAvg": 3.64
+        "value": 2.96,
+        "industryAvg": 3.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.17,
-        "industryAvg": 1.65
+        "value": 1.15,
+        "industryAvg": 1.61
       },
       {
         "metric": "ROE",
         "value": 2.7,
-        "industryAvg": 12.479999999999999
+        "industryAvg": 12.540000000000001
       },
       {
         "metric": "ROA",
@@ -7836,7 +7836,7 @@
       {
         "metric": "Net Margin",
         "value": 26.939999999999998,
-        "industryAvg": 27.79
+        "industryAvg": 27.839999999999996
       }
     ]
   }

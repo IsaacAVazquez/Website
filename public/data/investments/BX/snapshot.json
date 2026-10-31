@@ -1,10 +1,10 @@
 {
   "symbol": "BX",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4872,
-      "ttmPe": 26.09,
-      "marketCap": 145553024418,
-      "psRatio": 10.69,
-      "pbRatio": 16.15,
-      "pegRatio": 7.03
+      "ttmPe": 26.41,
+      "marketCap": 147355962103,
+      "psRatio": 10.82,
+      "pbRatio": 16.35,
+      "pegRatio": 7.12
     },
     "profitability": {
       "roe": 14.14,
@@ -2505,25 +2505,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.68,
-      "costOfEquity": 17.11,
+      "wacc": 15.65,
+      "costOfEquity": 17.06,
       "costOfDebt": 1.03,
       "taxRate": 16,
-      "beta": 1.5421,
-      "marketCap": 145553024418
+      "beta": 1.528,
+      "marketCap": 147355962103
     },
     "beta": {
-      "beta5y": 1.5421
+      "beta5y": 1.528
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 151,
-        "high": 152.25,
-        "low": 148.4,
-        "close": 148.92,
-        "volume": 3836800
-      },
       {
         "date": "2025-10-30",
         "open": 147.5,
@@ -4531,6 +4523,14 @@
         "low": 117.49,
         "close": 120.6,
         "volume": 4154500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 119.44,
+        "high": 120.53,
+        "low": 117.65,
+        "close": 118.51,
+        "volume": 5183800
       }
     ],
     "news": [
@@ -4559,19 +4559,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
-        "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b4401fae-303e-3049-8618-fe2694977919",
         "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
+        "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
         "type": "STORY"
       },
       {
@@ -4677,41 +4677,41 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.09,
-        "industryAvg": 23.43
+        "value": 26.41,
+        "industryAvg": 23.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.69,
+        "value": 10.82,
         "industryAvg": 3.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.15,
+        "value": 16.35,
         "industryAvg": 2.69
       },
       {
         "metric": "ROE",
         "value": 14.14,
-        "industryAvg": 5.76
+        "industryAvg": 5.89
       },
       {
         "metric": "ROA",
         "value": 2.5,
-        "industryAvg": 0.52
+        "industryAvg": 0.54
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 33.21
+        "industryAvg": 33.22
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 38.97
+        "industryAvg": 39
       },
       {
         "metric": "Net Margin",
         "value": 29.349999999999998,
-        "industryAvg": 5.1
+        "industryAvg": 5.21
       }
     ]
   }

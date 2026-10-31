@@ -1,14 +1,11 @@
 {
   "symbol": "PNC",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-30"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 18.803,
-      "ttmPe": 12.1,
-      "marketCap": 90388581204,
-      "psRatio": 3.68,
+      "ttmPe": 12.12,
+      "marketCap": 90515698836,
+      "psRatio": 3.69,
       "pbRatio": 1.41,
       "pegRatio": 0.85
     },
@@ -5651,25 +5648,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.42,
-      "costOfEquity": 12.19,
+      "wacc": 7.359999999999999,
+      "costOfEquity": 12.08,
       "costOfDebt": 3.02,
       "taxRate": 21,
-      "beta": 0.9139,
-      "marketCap": 90388581204
+      "beta": 0.8999,
+      "marketCap": 90515698836
     },
     "beta": {
-      "beta5y": 0.9139
+      "beta5y": 0.8999
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 181.32,
-        "high": 183.59,
-        "low": 180.03,
-        "close": 181.02,
-        "volume": 2592800
-      },
       {
         "date": "2025-10-30",
         "open": 181.33,
@@ -7677,6 +7666,14 @@
         "low": 230.01,
         "close": 231.83,
         "volume": 1882300
+      },
+      {
+        "date": "2026-10-30",
+        "open": 232.74,
+        "high": 233,
+        "low": 226.75,
+        "close": 227.86,
+        "volume": 1506300
       }
     ],
     "news": [
@@ -7697,19 +7694,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "458f776f-5b18-3e37-9a8a-2eaf853cf0ed",
         "title": "Company News for Apr 16, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/company-news-apr-16-2025-131000143.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -7753,11 +7750,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d501b543-8a7b-30e2-a6ea-7ee6a98823b0",
-        "title": "PNC Bank Agrees to Acquire Aqueduct Capital Group to Complement Harris Williams Capabilities",
-        "publisher": "PR Newswire",
+        "uuid": "808e1989-20d7-31bc-a90a-c9e60cbf69d7",
+        "title": "PNC Financial Services' PNC Bank to Buy Aqueduct Capital",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/pnc-bank-agrees-acquire-aqueduct-202800063.html",
+        "link": "https://finance.yahoo.com/news/pnc-financial-services-apos-pnc-204926054.html",
         "type": "STORY"
       }
     ],
@@ -7827,33 +7824,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.99,
-        "industryAvg": 11.74
+        "value": 12.12,
+        "industryAvg": 11.31
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.65,
-        "industryAvg": 2.94
+        "value": 3.69,
+        "industryAvg": 2.9
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.4,
-        "industryAvg": 1.24
+        "value": 1.41,
+        "industryAvg": 1.23
       },
       {
         "metric": "ROE",
         "value": 3.04,
-        "industryAvg": 10.280000000000001
+        "industryAvg": 10.209999999999999
       },
       {
         "metric": "ROA",
         "value": 0.32,
-        "industryAvg": 0.91
+        "industryAvg": 0.86
       },
       {
         "metric": "Net Margin",
         "value": 30.159999999999997,
-        "industryAvg": 25.72
+        "industryAvg": 24.59
       }
     ]
   }

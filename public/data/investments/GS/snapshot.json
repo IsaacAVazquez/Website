@@ -1,10 +1,10 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 69.5502,
-      "ttmPe": 13.11,
-      "marketCap": 269519212000,
-      "psRatio": 4.07,
-      "pbRatio": 2.2,
-      "pegRatio": 0.34
+      "ttmPe": 12.86,
+      "marketCap": 264428980000,
+      "psRatio": 3.99,
+      "pbRatio": 2.15,
+      "pegRatio": 0.33
     },
     "profitability": {
       "roe": 5.2,
@@ -6398,25 +6398,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.33,
-      "costOfEquity": 15.09,
+      "wacc": 7.26,
+      "costOfEquity": 15.02,
       "costOfDebt": 3.81,
       "taxRate": 23,
-      "beta": 1.2823,
-      "marketCap": 269519212000
+      "beta": 1.2714,
+      "marketCap": 264428980000
     },
     "beta": {
-      "beta5y": 1.2823
+      "beta5y": 1.2714
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 788,
-        "high": 800.49,
-        "low": 778.82,
-        "close": 783.06,
-        "volume": 2251500
-      },
       {
         "date": "2025-10-30",
         "open": 783.56,
@@ -8424,6 +8416,14 @@
         "low": 924.27,
         "close": 927.73,
         "volume": 1485500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 905.1,
+        "high": 906.89,
+        "low": 879.5,
+        "close": 894.55,
+        "volume": 2153100
       }
     ],
     "news": [
@@ -8452,19 +8452,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
-        "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
-        "publisher": "CorpGov.com",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5993ebe9-4760-34f1-805f-60ebd30f6f39",
         "title": "Wall Street Sees Higher China Growth, Less Stimulus on US Truce",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/wall-street-sees-higher-china-032012202.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
+        "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
+        "publisher": "CorpGov.com",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
         "type": "STORY"
       },
       {
@@ -8567,18 +8567,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.11,
-        "industryAvg": 15.62
+        "value": 12.86,
+        "industryAvg": 15.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.07,
-        "industryAvg": 2
+        "value": 3.99,
+        "industryAvg": 1.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.2,
-        "industryAvg": 2.5
+        "value": 2.15,
+        "industryAvg": 2.43
       },
       {
         "metric": "ROE",
@@ -8592,16 +8592,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 13.19
+        "industryAvg": 13.3
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 4.14
+        "industryAvg": 4.29
       },
       {
         "metric": "Net Margin",
         "value": 31.380000000000003,
-        "industryAvg": 19.56
+        "industryAvg": 19.57
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 42.7592,
-      "ttmPe": 26.57,
-      "marketCap": 184267310000,
-      "psRatio": 6.75,
-      "pbRatio": 3.2,
-      "pegRatio": 0.83
+      "ttmPe": 26.84,
+      "marketCap": 186130988000,
+      "psRatio": 6.82,
+      "pbRatio": 3.23,
+      "pegRatio": 0.84
     },
     "profitability": {
       "roe": 3.35,
@@ -5539,25 +5539,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.81,
-      "costOfEquity": 15.959999999999999,
+      "wacc": 14.69,
+      "costOfEquity": 15.82,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 25,
-      "beta": 1.392,
-      "marketCap": 184267310000
+      "beta": 1.3725,
+      "marketCap": 186130988000
     },
     "beta": {
-      "beta5y": 1.392
+      "beta5y": 1.3725
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 1117.62,
-        "high": 1121.8101,
-        "low": 1096.99,
-        "close": 1098,
-        "volume": 861700
-      },
       {
         "date": "2025-10-30",
         "open": 1097.4,
@@ -7565,6 +7557,14 @@
         "low": 1165.29,
         "close": 1176.24,
         "volume": 591500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 1165.15,
+        "high": 1169.04,
+        "low": 1136.9,
+        "close": 1147.54,
+        "volume": 644700
       }
     ],
     "news": [
@@ -7585,19 +7585,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
-        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
         "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
         "publisher": "CoinDesk",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
+        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
         "type": "STORY"
       },
       {
@@ -7714,43 +7714,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.57,
-        "industryAvg": 23.19
+        "value": 26.84,
+        "industryAvg": 23.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.75,
-        "industryAvg": 3.21
+        "value": 6.82,
+        "industryAvg": 3.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.2,
-        "industryAvg": 2.67
+        "value": 3.23,
+        "industryAvg": 2.69
       },
       {
         "metric": "ROE",
         "value": 3.35,
-        "industryAvg": 5.7700000000000005
+        "industryAvg": 5.89
       },
       {
         "metric": "ROA",
         "value": 1.11,
-        "industryAvg": 0.52
+        "industryAvg": 0.54
       },
       {
         "metric": "Gross Margin",
         "value": 48.96,
-        "industryAvg": 33.21
+        "industryAvg": 33.22
       },
       {
         "metric": "EBITDA Margin",
         "value": 45.71,
-        "industryAvg": 38.97
+        "industryAvg": 39
       },
       {
         "metric": "Net Margin",
         "value": 27.02,
-        "industryAvg": 5.1
+        "industryAvg": 5.21
       }
     ]
   }

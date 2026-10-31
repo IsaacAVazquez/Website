@@ -1,10 +1,10 @@
 {
   "symbol": "TMO",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.9551,
-      "ttmPe": 37.15,
-      "pegRatio": 4.35,
-      "marketCap": 260357561295,
-      "psRatio": 5.62,
-      "pbRatio": 4.94
+      "ttmPe": 36.77,
+      "pegRatio": 4.31,
+      "marketCap": 257713868100,
+      "psRatio": 5.56,
+      "pbRatio": 4.89
     },
     "profitability": {
       "roe": 3.32,
@@ -5663,25 +5663,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.13,
-      "costOfEquity": 11.65,
+      "wacc": 10.05,
+      "costOfEquity": 11.57,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 9,
-      "beta": 0.8441,
-      "marketCap": 260357561295
+      "beta": 0.8362,
+      "marketCap": 257713868100
     },
     "beta": {
-      "beta5y": 0.8441
+      "beta5y": 0.8362
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 558.31,
-        "high": 571.57,
-        "low": 555.06,
-        "close": 558.31,
-        "volume": 1953600
-      },
       {
         "date": "2025-10-30",
         "open": 551.6,
@@ -7689,6 +7681,14 @@
         "low": 699.9,
         "close": 709.18,
         "volume": 1472500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 710.69,
+        "high": 711.79,
+        "low": 691.74,
+        "close": 697,
+        "volume": 2091700
       }
     ],
     "news": [
@@ -7749,19 +7749,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6474059a-fb5c-368d-9798-b6635a4de69a",
-        "title": "Thermo Fisher Scientific Inc. (TMO): Among Billionaire Quants’ Two Sigma’s Stock Picks with Huge Upside Potential",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/thermo-fisher-scientific-inc-tmo-073441075.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "58ff33dd-c95d-3b8e-8100-f5eda7e8caff",
         "title": "Spotting Winners: Sotera Health Company (NASDAQ:SHC) And Research Tools & Consumables Stocks In Q1",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/spotting-winners-sotera-health-company-033323533.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6474059a-fb5c-368d-9798-b6635a4de69a",
+        "title": "Thermo Fisher Scientific Inc. (TMO): Among Billionaire Quants’ Two Sigma’s Stock Picks with Huge Upside Potential",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/thermo-fisher-scientific-inc-tmo-073441075.html",
         "type": "STORY"
       },
       {
@@ -7831,28 +7831,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.15,
-        "industryAvg": 39.3
+        "value": 36.77,
+        "industryAvg": 38.37
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.62,
-        "industryAvg": 5.53
+        "value": 5.56,
+        "industryAvg": 5.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.94,
-        "industryAvg": 4.87
+        "value": 4.89,
+        "industryAvg": 4.75
       },
       {
         "metric": "ROE",
         "value": 3.32,
-        "industryAvg": 9.98
+        "industryAvg": 9.99
       },
       {
         "metric": "ROA",
         "value": 1.53,
-        "industryAvg": 4.89
+        "industryAvg": 4.9
       },
       {
         "metric": "Gross Margin",
@@ -7862,12 +7862,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 26.200000000000003,
-        "industryAvg": 21.34
+        "industryAvg": 21.349999999999998
       },
       {
         "metric": "Net Margin",
         "value": 14.469999999999999,
-        "industryAvg": 10.4
+        "industryAvg": 10.41
       }
     ]
   }

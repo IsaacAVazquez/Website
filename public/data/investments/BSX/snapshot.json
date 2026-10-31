@@ -1,10 +1,10 @@
 {
   "symbol": "BSX",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -42,12 +42,12 @@
       "longName": "Boston Scientific Corporation"
     },
     "fundamentals": {
-      "ttmEps": 2.4661,
-      "ttmPe": 17.21,
-      "pegRatio": 1.13,
-      "marketCap": 61383722851,
-      "psRatio": 2.92,
-      "pbRatio": 2.46
+      "ttmEps": 2.3613,
+      "ttmPe": 17.78,
+      "pegRatio": 1.17,
+      "marketCap": 60732705286,
+      "psRatio": 2.89,
+      "pbRatio": 2.44
     },
     "profitability": {
       "roe": 3.5700000000000003,
@@ -84,7 +84,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 15.25
+        "yoyGrowth": -20.76
       }
     ],
     "income_statement": {
@@ -135,7 +135,7 @@
         },
         {
           "Breakdown": "Cost of Revenue",
-          "TTM": "6539000000.0",
+          "TTM": "6502000000.0",
           "2026-09-30": "*",
           "2026-06-30": "1594000000.0",
           "2026-03-31": "1590000000.0",
@@ -157,7 +157,7 @@
         },
         {
           "Breakdown": "Gross Profit",
-          "TTM": "14531000000.0",
+          "TTM": "14568000000.0",
           "2026-09-30": "*",
           "2026-06-30": "3848000000.0",
           "2026-03-31": "3613000000.0",
@@ -179,7 +179,7 @@
         },
         {
           "Breakdown": "Operating Expense",
-          "TTM": "10191000000.0",
+          "TTM": "10228000000.0",
           "2026-09-30": "*",
           "2026-06-30": "2602000000.0",
           "2026-03-31": "2541000000.0",
@@ -333,7 +333,7 @@
         },
         {
           "Breakdown": "Other Operating Expenses",
-          "TTM": "44000000.0",
+          "TTM": "43000000.0",
           "2026-09-30": "*",
           "2026-06-30": "12000000.0",
           "2026-03-31": "12000000.0",
@@ -1103,7 +1103,7 @@
         },
         {
           "Breakdown": "Reconciled Cost of Revenue",
-          "TTM": "6539000000.0",
+          "TTM": "6502000000.0",
           "2026-09-30": "*",
           "2026-06-30": "1472000000.0",
           "2026-03-31": "1471000000.0",
@@ -6693,25 +6693,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.06,
+      "wacc": 8.04,
       "costOfEquity": 9.58,
       "costOfDebt": 0.76,
       "taxRate": 15,
-      "beta": 0.5797,
-      "marketCap": 61383722851
+      "beta": 0.5855,
+      "marketCap": 60732705286
     },
     "beta": {
-      "beta5y": 0.5797
+      "beta5y": 0.5855
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 100.62,
-        "high": 100.94,
-        "low": 99.72,
-        "close": 100.3,
-        "volume": 6969100
-      },
       {
         "date": "2025-10-30",
         "open": 100.76,
@@ -8719,6 +8711,14 @@
         "low": 41.68,
         "close": 42.69,
         "volume": 31750500
+      },
+      {
+        "date": "2026-10-30",
+        "open": 42.95,
+        "high": 43.29,
+        "low": 41.73,
+        "close": 41.98,
+        "volume": 22466100
       }
     ],
     "news": [
@@ -8739,19 +8739,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
-        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a042a14e-e4f0-3fab-bde6-907c05b8f8ff",
         "title": "Intelligent Bio Solutions Stock Drops Despite Key U.S. Patent Win",
         "publisher": "Zacks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/intelligent-bio-solutions-stock-drops-144800234.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d78ee080-3dfe-3cef-a098-70895a1e8223",
+        "title": "The Zacks Analyst Blog Highlights Tesla, The Home Depot, Boston Scientific, Frequency Electronics and Bridger Aerospace",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-tesla-090000244.html",
         "type": "STORY"
       },
       {
@@ -8871,43 +8871,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.21,
-        "industryAvg": 25.86
+        "value": 17.78,
+        "industryAvg": 25.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.92,
-        "industryAvg": 3.14
+        "value": 2.89,
+        "industryAvg": 3.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.46,
+        "value": 2.44,
         "industryAvg": 3.04
       },
       {
         "metric": "ROE",
         "value": 3.5700000000000003,
-        "industryAvg": 8.450000000000001
+        "industryAvg": 8.52
       },
       {
         "metric": "ROA",
         "value": 2.03,
-        "industryAvg": 4.26
+        "industryAvg": 4.3
       },
       {
         "metric": "Gross Margin",
         "value": 70.71,
-        "industryAvg": 56.85
+        "industryAvg": 56.89999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.77,
-        "industryAvg": 19.939999999999998
+        "industryAvg": 20.02
       },
       {
         "metric": "Net Margin",
         "value": 16.669999999999998,
-        "industryAvg": 8.35
+        "industryAvg": 8.41
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2651,
-      "ttmPe": 53.74,
+      "ttmPe": 52.27,
       "pegRatio": 1.77,
-      "marketCap": 153952788000,
-      "psRatio": 13.3,
-      "pbRatio": 9.63
+      "marketCap": 149734666000,
+      "psRatio": 12.93,
+      "pbRatio": 9.37
     },
     "profitability": {
       "roe": 3.06,
@@ -5242,17 +5242,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4346
+      "beta5y": 1.4201
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 543,
-        "high": 544.95,
-        "low": 534.45,
-        "close": 537.59,
-        "volume": 1721800
-      },
       {
         "date": "2025-10-30",
         "open": 534.37,
@@ -7260,6 +7252,14 @@
         "low": 443.48,
         "close": 448.76,
         "volume": 1889100
+      },
+      {
+        "date": "2026-10-30",
+        "open": 453.6,
+        "high": 453.6,
+        "low": 431.19,
+        "close": 432.01,
+        "volume": 3480900
       }
     ],
     "news": [
@@ -7304,19 +7304,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0c543466-ad8e-305f-a9de-837e5ccce4d0",
-        "title": "Q1 Earnings Highs And Lows: LeMaitre (NASDAQ:LMAT) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/q1-earnings-highs-lows-lemaitre-033104898.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e2a6e0e5-9c5e-3765-857d-f01059b77bae",
         "title": "Q1 Earnings Highlights: Teleflex (NYSE:TFX) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/q1-earnings-highlights-teleflex-nyse-033148019.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0c543466-ad8e-305f-a9de-837e5ccce4d0",
+        "title": "Q1 Earnings Highs And Lows: LeMaitre (NASDAQ:LMAT) Vs The Rest Of The Surgical Equipment & Consumables - Specialty Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/q1-earnings-highs-lows-lemaitre-033104898.html",
         "type": "STORY"
       },
       {
@@ -7336,11 +7336,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "63b9f8af-133d-3653-91c4-a1722b33de46",
-        "title": "Intuitive Surgical, Inc. (ISRG) is Attracting Investor Attention: Here is What You Should Know",
-        "publisher": "Zacks",
+        "uuid": "ff42a39e-bc52-373b-996d-47249d04e6d3",
+        "title": "Intuitive Surgical (NASDAQ:ISRG): Strongest Q1 Results from the Surgical Equipment & Consumables - Specialty Group",
+        "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/intuitive-surgical-inc-isrg-attracting-130009154.html",
+        "link": "https://finance.yahoo.com/news/intuitive-surgical-nasdaq-isrg-strongest-033505396.html",
         "type": "STORY"
       }
     ],
@@ -7404,43 +7404,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 53.74,
-        "industryAvg": 39.47
+        "value": 52.27,
+        "industryAvg": 38.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.3,
-        "industryAvg": 3.8
+        "value": 12.93,
+        "industryAvg": 3.73
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.63,
-        "industryAvg": 3.31
+        "value": 9.37,
+        "industryAvg": 3.25
       },
       {
         "metric": "ROE",
         "value": 3.06,
-        "industryAvg": 5.6000000000000005
+        "industryAvg": 6.2700000000000005
       },
       {
         "metric": "ROA",
         "value": 2.6,
-        "industryAvg": 3.0700000000000003
+        "industryAvg": 3.44
       },
       {
         "metric": "Gross Margin",
         "value": 68.37,
-        "industryAvg": 50.739999999999995
+        "industryAvg": 50.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.18,
-        "industryAvg": 21.34
+        "industryAvg": 21.98
       },
       {
         "metric": "Net Margin",
         "value": 17.150000000000002,
-        "industryAvg": 6.36
+        "industryAvg": 7.109999999999999
       }
     ]
   }
