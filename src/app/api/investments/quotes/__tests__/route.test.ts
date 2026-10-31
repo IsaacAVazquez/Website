@@ -222,7 +222,16 @@ describe("GET /api/investments/quotes", () => {
       () => new Promise(() => undefined),
     );
 
-    const quotes = await fetchQuotesWithConcurrency(symbols, 5);
+    // A frozen clock keeps a slow runner from spending the 5ms budget before every worker starts.
+    jest.useFakeTimers();
+    let quotes: Awaited<ReturnType<typeof fetchQuotesWithConcurrency>>;
+    try {
+      const pending = fetchQuotesWithConcurrency(symbols, 5);
+      await jest.advanceTimersByTimeAsync(5);
+      quotes = await pending;
+    } finally {
+      jest.useRealTimers();
+    }
 
     expect(quotes).toHaveLength(10);
     expect(quotes).toEqual(

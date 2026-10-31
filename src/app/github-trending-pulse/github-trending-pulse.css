@@ -6,6 +6,21 @@
  * keeps each language's own colour.
  */
 
+.gt-shortlist { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 0.75rem; padding-block: 1rem; border-block: 1px solid var(--gt-rule); }
+.gt-shortlist .gt-muted { white-space: normal; overflow-wrap: anywhere; }
+.gt-shortlist .gt-link { margin: 0; padding: 0.25rem; border: 0; background: transparent; cursor: pointer; }
+.gt-shortlist .gt-scroll { min-width: 0; max-width: 100%; }
+.gt-shortlist h2 { margin: 0; font-size: 1.25rem; }
+.gt-saved-list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; list-style: none; padding: 0; margin: 0; }
+.gt-saved-list li, .gt-saved-list label { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; min-width: 0; overflow-wrap: anywhere; }
+.gt-saved-list li { flex-wrap: wrap; }
+.gt-save { min-height: 44px; padding-inline: 0; background: transparent; border: 0; color: var(--gt-add); font: inherit; font-size: 0.75rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.gt-save[aria-pressed="true"] { font-weight: 700; }
+.gt-save:disabled { color: var(--gt-ink-2); cursor: default; }
+.gt-compare-table { min-width: 700px; }
+.gt-compare-table th { text-align: left; }
+.gt-compare-table td, .gt-compare-table th { padding: 0.75rem; }
+
 .gt-root {
   --gt-bg: #fbfbf9;
   --gt-raise: #f0f1ee;

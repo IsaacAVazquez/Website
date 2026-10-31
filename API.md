@@ -59,7 +59,7 @@ Current API route inventory for the app.
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/newsletter/subscribe` | POST | Validates public email signup and JSON object shape, creating an opted-in Resend contact with `RESEND_CONTACTS_API_KEY` (legacy fallback to `RESEND_API_KEY`), optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
-| `/api/news-pulse` | GET | News Pulse article summary data |
+| `/api/news-pulse` | GET | News Pulse article summary data and bounded public headline observation history |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
 | `/api/spacex/launches` | GET | SpaceX launch list payload |
 | `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |

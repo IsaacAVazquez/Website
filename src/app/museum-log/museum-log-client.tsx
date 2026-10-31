@@ -61,6 +61,8 @@ import {
 } from "./museum-log-helpers";
 import { toLocalDateKey } from "@/lib/date-formatters";
 import "./museum-log.css";
+import { MuseumTripPlanner } from "./MuseumTripPlanner";
+import { MUSEUM_EXHIBITIONS_CHECKED_AT } from "@/data/museumExhibitions";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -1012,7 +1014,8 @@ function MuseumDetailView({
                       {formatShortDate(ex.startDate)} – {ex.endDate ? formatShortDate(ex.endDate) : "Permanent"}
                     </span>
                   </div>
-                  <p className="mlog-small">{ex.blurb}</p>
+                  {ex.blurb && <p className="mlog-small">{ex.blurb}</p>}
+                  {ex.sourceUrl && ex.checkedAt && <p className="mlog-meta"><a href={ex.sourceUrl} target="_blank" rel="noopener noreferrer">Museum source</a> · checked {formatDate(ex.checkedAt)}</p>}
                   {ex.ticketed && (
                     <span className="c97-chip mlog-chip-start">
                       <Ticket size={12} aria-hidden="true" /> Separate ticket
@@ -1388,6 +1391,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             <p className="mlog-meta">
               Curated by {snapshot.curatorName} · updated {lastUpdated}
             </p>
+            <p className="mlog-meta">Listed exhibitions checked {formatDate(MUSEUM_EXHIBITIONS_CHECKED_AT)}.</p>
           </div>
           {stripBesideTitle && <VisitStrip museums={heroVisits} today={today} onOpen={handleOpenMuseum} />}
         </header>
@@ -1430,6 +1434,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             after you close it.
           </p>
         ) : null}
+
+        <MuseumTripPlanner museums={snapshot.museums} onOpenMuseum={handleOpenMuseum} />
 
         <div className="mlog-body">
           <div className="mlog-main">

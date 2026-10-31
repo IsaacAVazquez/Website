@@ -29,6 +29,8 @@ import { DATE_TIME_FORMATTER, formatStableDateTime } from "@/lib/date-formatters
 import { useClientNow } from "@/hooks/useClientNow";
 import "./news-pulse.css";
 import { groupBy, relativeAge } from "@/lib/utils";
+import { parseNewsHistory } from "@/lib/newsHistory";
+import { NewsHistory } from "./NewsHistory";
 
 interface NewsPulseClientProps {
   initialFeed?: NewsPulseFeedResponse;
@@ -119,6 +121,7 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
     initialFeed?.errors ?? []
   );
   const [fetchedAt, setFetchedAt] = useState(initialFeed?.fetchedAt ?? "");
+  const [history, setHistory] = useState(() => parseNewsHistory(initialFeed?.history));
   const [reloadKey, setReloadKey] = useState(0);
   const hasCompletedInitialRefresh = useRef(false);
 
@@ -154,6 +157,7 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
         }
 
         setArticles(Array.isArray(payload?.articles) ? payload.articles : []);
+        setHistory(parseNewsHistory(payload?.history));
         setFetchedAt(payload?.fetchedAt ?? "");
         setFeedErrors(Array.isArray(payload?.errors) ? payload.errors : []);
       } catch (fetchError) {
@@ -254,6 +258,7 @@ export function NewsPulseClient({ initialFeed }: NewsPulseClientProps) {
         ) : (
           <>
             <NewsFrontPage clusters={storyClusters} topics={topicClusters} outlets={sourceIds} />
+            <NewsHistory history={history} fetchedAt={fetchedAt} />
 
             <section className="np-section" aria-labelledby="np-headlines-title">
               <div className="np-section-head">
