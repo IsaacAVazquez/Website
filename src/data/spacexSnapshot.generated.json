@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T16:02:52.105Z",
+  "generatedAt": "2026-10-31T00:53:53.747Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-30T16:02:48.398Z"
+    "generatedAt": "2026-10-31T00:53:45.683Z"
   },
   "upcomingLaunches": [
     {
@@ -714,46 +714,6 @@
       }
     },
     {
-      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-      "name": "Griffin Mission One",
-      "flightNumber": 780,
-      "upcoming": true,
-      "success": null,
-      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Voyager_Technologies",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      }
-    },
-    {
       "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
       "name": "SDA Tranche 2 Transport Layer A",
       "flightNumber": 780,
@@ -794,33 +754,33 @@
       }
     },
     {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
+      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
+      "name": "Griffin Mission One",
       "flightNumber": 780,
       "upcoming": true,
       "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
+      "datePrecision": "month",
       "tbd": true,
       "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Unknown Pad",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
       "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
       "crewCount": 0,
       "payloadCount": 1,
       "capsuleCount": 0,
-      "coreCount": 1,
+      "coreCount": 3,
       "hasExactTime": false,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "wikipedia": "https://en.wikipedia.org/wiki/Voyager_Technologies",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -829,7 +789,7 @@
         "patchSmall": null,
         "patchLarge": null,
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       }
     },
@@ -914,6 +874,46 @@
       }
     },
     {
+      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
+      "name": "SDA Tranche 2 Tracking Layer B",
+      "flightNumber": 780,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
       "name": "USSF-75",
       "flightNumber": 780,
@@ -956,6 +956,46 @@
     {
       "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
       "name": "Rivada 9",
+      "flightNumber": 780,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
+      "name": "Rivada 5",
       "flightNumber": 780,
       "upcoming": true,
       "success": null,
@@ -1070,46 +1110,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/fcff0e91470c97ae.jpg"
-        ]
-      }
-    },
-    {
-      "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
-      "name": "Rivada 5",
-      "flightNumber": 780,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       }
     }
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-30T16:02:51.823Z"
+    "generatedAt": "2026-10-31T00:53:53.379Z"
   }
 }
