@@ -676,7 +676,7 @@ function RecommendationSection({
           Ask a setup or integration question
         </h2>
         <p className="ea-lede">
-          The search retrieves from a small committed knowledge base, reports its confidence, and
+          The search retrieves from a small committed knowledge base, reports a match score out of 100, and
           gives up when the question does not match the material it has.
         </p>
 
@@ -719,14 +719,14 @@ function RecommendationSection({
             {match ? (
               <>
                 <div className="ea-card-head">
-                  <p className="ea-label">Retrieval confidence</p>
+                  <p className="ea-label">Match score</p>
                   <span
                     className="ea-num"
                     style={{
                       color: match.shouldEscalate ? "var(--c97-negative)" : "var(--c97-positive)",
                     }}
                   >
-                    {Math.round(match.confidence * 100)}%
+                    {Math.round(match.confidence * 100)}/100
                   </span>
                 </div>
                 {match.article ? (
@@ -754,7 +754,7 @@ function RecommendationSection({
                 <h3 className="ea-h3">No question searched yet</h3>
                 <p className="ea-body">
                   Try a known setup problem or one of the deliberately unsupported questions to see
-                  the confidence boundary.
+                  where the match score gives up.
                 </p>
               </>
             )}

@@ -274,7 +274,7 @@ describe("EnablementAssistantClient", () => {
 
     const match = matchTroubleshootingQuestion(prompt.question, recommendToolchains(intake()).primary.toolchain.id);
     expect(match.article).not.toBeNull();
-    expect(within(desk).getByText(`${Math.round(match.confidence * 100)}%`)).toBeInTheDocument();
+    expect(within(desk).getByText(`${Math.round(match.confidence * 100)}/100`)).toBeInTheDocument();
     expect(within(desk).getByRole("heading", { name: match.article!.title })).toBeInTheDocument();
     expect(within(desk).getByText(`Matched terms · ${match.matchedTerms.join(", ")}`)).toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Give the central team the context up front." })).toBeNull();

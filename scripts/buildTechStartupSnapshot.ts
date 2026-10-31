@@ -26,8 +26,11 @@ import { writeFileAtomic } from "./snapshotFallback";
  *   nothing to it.
  * - Euro amounts are converted at the ECB reference rate for the announcement
  *   date (1.1744 on 2025-09-09, 1.1614 on 2026-09-08).
- * - An entry with no `sourceUrl` (Perplexity, Canva) had no primary source for
- *   a newer round, so it keeps its earlier figures and its earlier round date.
+ * - Perplexity and Canva published no announcement of their own, so their rows
+ *   were read on 2026-10-26 from press reports instead. Perplexity's round is
+ *   TechCrunch's account of The Information's report, which Perplexity did not
+ *   confirm. Canva's is Fortune's report of an employee share sale, which
+ *   gives no total size and moves no new money, so `totalRaised` stays put.
  *
  * Removed in that review, since the tracker covers private companies:
  * - xAI, acquired by SpaceX (announced 2026-02-02, https://x.ai/news/xai-joins-spacex)
@@ -46,7 +49,7 @@ const AS_OF = "2026-09-28";
 const SOURCE_LABEL = "Curated from company announcements";
 const SOURCE_URL = "https://news.crunchbase.com";
 const DISCLAIMER =
-  "Valuations and round details come from each company's own announcement where one exists, and each entry links to the page it was read from. Total raised is a floor, since it adds the rounds I could confirm to an earlier total and a round I did not find is missing from it. These are editorial figures for illustration and research, not verified financials or investment advice.";
+  "Valuations and round details come from each company's own announcement where one exists, or from a press report where the company published none, and each entry links to the page it was read from. Total raised is a floor, since it adds the rounds I could confirm to an earlier total and a round I did not find is missing from it. These are editorial figures for illustration and research, not verified financials or investment advice.";
 
 const SEED: TechStartupSeedEntry[] = [
   // ---- AI & ML ---------------------------------------------------------------
@@ -137,14 +140,17 @@ const SEED: TechStartupSeedEntry[] = [
     country: "United States",
     founded: 2022,
     website: "https://www.perplexity.ai",
-    totalRaised: 1_000_000_000,
-    valuation: 9_000_000_000,
+    // PitchBook's total as TechCrunch reported it on 2025-09-10, which already
+    // counts the 2025 rounds.
+    totalRaised: 1_500_000_000,
+    valuation: 20_000_000_000,
     employees: "201-500",
     lastRound: {
       stage: "Growth round",
-      amount: 500_000_000,
-      date: "2024-12",
-      leadInvestors: ["Institutional Venture Partners"],
+      amount: 200_000_000,
+      date: "2025-09",
+      leadInvestors: [],
+      sourceUrl: "https://techcrunch.com/2025/09/10/perplexity-reportedly-raised-200m-at-20b-valuation/",
     },
     notableInvestors: ["IVP", "NEA", "Nvidia", "Jeff Bezos"],
     tags: ["answer engine", "search", "RAG"],
@@ -444,13 +450,15 @@ const SEED: TechStartupSeedEntry[] = [
     founded: 2013,
     website: "https://www.canva.com",
     totalRaised: 580_000_000,
-    valuation: 32_000_000_000,
+    valuation: 42_000_000_000,
     employees: "5,001-10,000",
     lastRound: {
-      stage: "Tender offer",
-      amount: 1_500_000_000,
-      date: "2024-08",
-      leadInvestors: ["ICONIQ Growth"],
+      stage: "Employee share sale",
+      amount: null,
+      date: "2025-08",
+      leadInvestors: ["Fidelity Management and Research"],
+      sourceUrl:
+        "https://fortune.com/2025/08/22/canva-billionaire-founders-minting-overnight-millionaires-employee-share-sale",
     },
     notableInvestors: ["Sequoia", "Blackbird Ventures", "Bessemer"],
     tags: ["design platform", "creative SaaS"],
