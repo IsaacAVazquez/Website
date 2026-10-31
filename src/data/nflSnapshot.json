@@ -1,8 +1,8 @@
 {
   "season": "2026",
   "week": 7,
-  "updatedAt": "2026-10-29",
-  "generatedAt": "2026-10-29T17:03:40.331Z",
+  "updatedAt": "2026-10-30",
+  "generatedAt": "2026-10-30T16:48:15.032Z",
   "sourceLabel": "NFLverse",
   "sourceUrls": {
     "standings": "https://github.com/nflverse/nfldata/raw/master/data/standings.csv",
@@ -382,12 +382,12 @@
       "divisionRank": 1,
       "conferenceRank": 4,
       "wins": 3,
-      "losses": 3,
+      "losses": 4,
       "ties": 0,
-      "winPct": 0.5,
-      "pointsFor": 159,
-      "pointsAgainst": 166,
-      "pointDifferential": -7,
+      "winPct": 0.428571,
+      "pointsFor": 178,
+      "pointsAgainst": 193,
+      "pointDifferential": -15,
       "seed": 4,
       "playoffResult": null
     },
@@ -438,13 +438,13 @@
       "division": "NFC North",
       "divisionRank": 4,
       "conferenceRank": 7,
-      "wins": 4,
+      "wins": 5,
       "losses": 3,
       "ties": 0,
-      "winPct": 0.571429,
-      "pointsFor": 144,
-      "pointsAgainst": 145,
-      "pointDifferential": -1,
+      "winPct": 0.625,
+      "pointsFor": 171,
+      "pointsAgainst": 164,
+      "pointDifferential": 7,
       "seed": 7,
       "playoffResult": null
     },
@@ -624,6 +624,16 @@
     "passing": [
       {
         "rank": 1,
+        "name": "Jordan Love",
+        "teamId": "gb",
+        "teamCode": "GB",
+        "position": "QB",
+        "total": 2246,
+        "games": 8,
+        "perGame": 280.75
+      },
+      {
+        "rank": 2,
         "name": "Matthew Stafford",
         "teamId": "la",
         "teamCode": "LA",
@@ -633,17 +643,17 @@
         "perGame": 284.14285714285717
       },
       {
-        "rank": 2,
-        "name": "Jordan Love",
-        "teamId": "gb",
-        "teamCode": "GB",
+        "rank": 3,
+        "name": "Bryce Young",
+        "teamId": "car",
+        "teamCode": "CAR",
         "position": "QB",
-        "total": 1958,
+        "total": 1921,
         "games": 7,
-        "perGame": 279.7142857142857
+        "perGame": 274.42857142857144
       },
       {
-        "rank": 3,
+        "rank": 4,
         "name": "Kirk Cousins",
         "teamId": "lv",
         "teamCode": "LV",
@@ -653,7 +663,7 @@
         "perGame": 268.14285714285717
       },
       {
-        "rank": 4,
+        "rank": 5,
         "name": "C.J. Stroud",
         "teamId": "hou",
         "teamCode": "HOU",
@@ -663,7 +673,7 @@
         "perGame": 266.7142857142857
       },
       {
-        "rank": 5,
+        "rank": 6,
         "name": "Dak Prescott",
         "teamId": "dal",
         "teamCode": "DAL",
@@ -673,7 +683,7 @@
         "perGame": 264.42857142857144
       },
       {
-        "rank": 6,
+        "rank": 7,
         "name": "Jared Goff",
         "teamId": "det",
         "teamCode": "DET",
@@ -683,7 +693,7 @@
         "perGame": 298
       },
       {
-        "rank": 7,
+        "rank": 8,
         "name": "Drake Maye",
         "teamId": "ne",
         "teamCode": "NE",
@@ -693,7 +703,7 @@
         "perGame": 254.85714285714286
       },
       {
-        "rank": 8,
+        "rank": 9,
         "name": "Brock Purdy",
         "teamId": "sf",
         "teamCode": "SF",
@@ -703,7 +713,7 @@
         "perGame": 249.71428571428572
       },
       {
-        "rank": 9,
+        "rank": 10,
         "name": "Tyler Shough",
         "teamId": "no",
         "teamCode": "NO",
@@ -711,16 +721,6 @@
         "total": 1721,
         "games": 7,
         "perGame": 245.85714285714286
-      },
-      {
-        "rank": 10,
-        "name": "Bryce Young",
-        "teamId": "car",
-        "teamCode": "CAR",
-        "position": "QB",
-        "total": 1712,
-        "games": 6,
-        "perGame": 285.3333333333333
       }
     ],
     "rushing": [
@@ -806,6 +806,16 @@
       },
       {
         "rank": 9,
+        "name": "Chuba Hubbard",
+        "teamId": "car",
+        "teamCode": "CAR",
+        "position": "RB",
+        "total": 540,
+        "games": 7,
+        "perGame": 77.14285714285714
+      },
+      {
+        "rank": 10,
         "name": "Kyren Williams",
         "teamId": "la",
         "teamCode": "LA",
@@ -813,16 +823,6 @@
         "total": 492,
         "games": 7,
         "perGame": 70.28571428571429
-      },
-      {
-        "rank": 10,
-        "name": "Tony Pollard",
-        "teamId": "ten",
-        "teamCode": "TEN",
-        "position": "RB",
-        "total": 478,
-        "games": 7,
-        "perGame": 68.28571428571429
       }
     ],
     "receiving": [
@@ -838,6 +838,16 @@
       },
       {
         "rank": 2,
+        "name": "Christian Watson",
+        "teamId": "gb",
+        "teamCode": "GB",
+        "position": "WR",
+        "total": 708,
+        "games": 8,
+        "perGame": 88.5
+      },
+      {
+        "rank": 3,
         "name": "CeeDee Lamb",
         "teamId": "dal",
         "teamCode": "DAL",
@@ -847,7 +857,7 @@
         "perGame": 93
       },
       {
-        "rank": 3,
+        "rank": 4,
         "name": "Chris Olave",
         "teamId": "no",
         "teamCode": "NO",
@@ -857,7 +867,17 @@
         "perGame": 90.85714285714286
       },
       {
-        "rank": 4,
+        "rank": 5,
+        "name": "Matthew Golden",
+        "teamId": "gb",
+        "teamCode": "GB",
+        "position": "WR",
+        "total": 619,
+        "games": 8,
+        "perGame": 77.375
+      },
+      {
+        "rank": 6,
         "name": "Drake London",
         "teamId": "atl",
         "teamCode": "ATL",
@@ -867,7 +887,7 @@
         "perGame": 88
       },
       {
-        "rank": 5,
+        "rank": 7,
         "name": "Zay Flowers",
         "teamId": "bal",
         "teamCode": "BAL",
@@ -877,7 +897,7 @@
         "perGame": 101.33333333333333
       },
       {
-        "rank": 6,
+        "rank": 8,
         "name": "Malik Nabers",
         "teamId": "nyg",
         "teamCode": "NYG",
@@ -887,17 +907,7 @@
         "perGame": 86.42857142857143
       },
       {
-        "rank": 7,
-        "name": "Christian Watson",
-        "teamId": "gb",
-        "teamCode": "GB",
-        "position": "WR",
-        "total": 595,
-        "games": 7,
-        "perGame": 85
-      },
-      {
-        "rank": 8,
+        "rank": 9,
         "name": "Tee Higgins",
         "teamId": "cin",
         "teamCode": "CIN",
@@ -907,24 +917,14 @@
         "perGame": 95.16666666666667
       },
       {
-        "rank": 9,
-        "name": "Matthew Golden",
-        "teamId": "gb",
-        "teamCode": "GB",
-        "position": "WR",
-        "total": 540,
-        "games": 7,
-        "perGame": 77.14285714285714
-      },
-      {
         "rank": 10,
-        "name": "Amon-Ra St. Brown",
-        "teamId": "det",
-        "teamCode": "DET",
+        "name": "Tetairoa McMillan",
+        "teamId": "car",
+        "teamCode": "CAR",
         "position": "WR",
-        "total": 525,
-        "games": 6,
-        "perGame": 87.5
+        "total": 569,
+        "games": 7,
+        "perGame": 81.28571428571429
       }
     ],
     "sacks": [
@@ -1031,6 +1031,31 @@
     ]
   },
   "recentFixtures": [
+    {
+      "id": "2026_08_CAR_GB",
+      "utcDate": "2026-10-30T00:15:00Z",
+      "status": "FINISHED",
+      "week": 8,
+      "matchday": 8,
+      "gameType": "REG",
+      "homeTeam": {
+        "id": "gb",
+        "abbr": "GB",
+        "shortName": "Packers",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
+      },
+      "awayTeam": {
+        "id": "car",
+        "abbr": "CAR",
+        "shortName": "Panthers",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 27,
+        "away": 19
+      }
+    },
     {
       "id": "2026_07_DAL_PHI",
       "utcDate": "2026-10-27T00:15:00Z",
@@ -1205,59 +1230,9 @@
         "home": 13,
         "away": 35
       }
-    },
-    {
-      "id": "2026_07_TB_CAR",
-      "utcDate": "2026-10-25T17:00:00Z",
-      "status": "FINISHED",
-      "week": 7,
-      "matchday": 7,
-      "gameType": "REG",
-      "homeTeam": {
-        "id": "car",
-        "abbr": "CAR",
-        "shortName": "Panthers",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
-      },
-      "awayTeam": {
-        "id": "tb",
-        "abbr": "TB",
-        "shortName": "Buccaneers",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 13,
-        "away": 43
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "2026_08_CAR_GB",
-      "utcDate": "2026-10-30T00:15:00Z",
-      "status": "SCHEDULED",
-      "week": 8,
-      "matchday": 8,
-      "gameType": "REG",
-      "homeTeam": {
-        "id": "gb",
-        "abbr": "GB",
-        "shortName": "Packers",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
-      },
-      "awayTeam": {
-        "id": "car",
-        "abbr": "CAR",
-        "shortName": "Panthers",
-        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
-      },
-      "score": {
-        "winner": null,
-        "home": null,
-        "away": null
-      }
-    },
     {
       "id": "2026_08_BAL_BUF",
       "utcDate": "2026-11-01T18:00:00Z",
@@ -1426,6 +1401,31 @@
         "abbr": "CLE",
         "shortName": "Browns",
         "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png"
+      },
+      "score": {
+        "winner": null,
+        "home": null,
+        "away": null
+      }
+    },
+    {
+      "id": "2026_08_ATL_TB",
+      "utcDate": "2026-11-01T18:00:00Z",
+      "status": "SCHEDULED",
+      "week": 8,
+      "matchday": 8,
+      "gameType": "REG",
+      "homeTeam": {
+        "id": "tb",
+        "abbr": "TB",
+        "shortName": "Buccaneers",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png"
+      },
+      "awayTeam": {
+        "id": "atl",
+        "abbr": "ATL",
+        "shortName": "Falcons",
+        "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png"
       },
       "score": {
         "winner": null,
@@ -2136,7 +2136,7 @@
         "pointsFor": 112,
         "pointsAgainst": 93
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "buf": {
       "team": {
@@ -2421,7 +2421,7 @@
         "pointsFor": 161,
         "pointsAgainst": 140
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "cle": {
       "team": {
@@ -2706,7 +2706,7 @@
         "pointsFor": 100,
         "pointsAgainst": 93
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "jax": {
       "team": {
@@ -2991,7 +2991,7 @@
         "pointsFor": 120,
         "pointsAgainst": 94
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "den": {
       "team": {
@@ -3276,7 +3276,7 @@
         "pointsFor": 114,
         "pointsAgainst": 97
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "pit": {
       "team": {
@@ -3561,7 +3561,7 @@
         "pointsFor": 130,
         "pointsAgainst": 105
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "cin": {
       "team": {
@@ -3846,7 +3846,7 @@
         "pointsFor": 130,
         "pointsAgainst": 95
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "ne": {
       "team": {
@@ -4131,7 +4131,7 @@
         "pointsFor": 130,
         "pointsAgainst": 127
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "bal": {
       "team": {
@@ -4416,7 +4416,7 @@
         "pointsFor": 111,
         "pointsAgainst": 120
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "lv": {
       "team": {
@@ -4701,7 +4701,7 @@
         "pointsFor": 130,
         "pointsAgainst": 170
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "hou": {
       "team": {
@@ -4986,7 +4986,7 @@
         "pointsFor": 128,
         "pointsAgainst": 114
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "nyj": {
       "team": {
@@ -5271,7 +5271,7 @@
         "pointsFor": 97,
         "pointsAgainst": 120
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "ind": {
       "team": {
@@ -5556,7 +5556,7 @@
         "pointsFor": 101,
         "pointsAgainst": 106
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "mia": {
       "team": {
@@ -5841,7 +5841,7 @@
         "pointsFor": 85,
         "pointsAgainst": 130
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "ten": {
       "team": {
@@ -6126,7 +6126,7 @@
         "pointsFor": 78,
         "pointsAgainst": 109
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "lac": {
       "team": {
@@ -6411,7 +6411,7 @@
         "pointsFor": 76,
         "pointsAgainst": 125
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "min": {
       "team": {
@@ -6696,7 +6696,7 @@
         "pointsFor": 86,
         "pointsAgainst": 52
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "sf": {
       "team": {
@@ -6981,7 +6981,7 @@
         "pointsFor": 135,
         "pointsAgainst": 119
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "nyg": {
       "team": {
@@ -7266,7 +7266,7 @@
         "pointsFor": 129,
         "pointsAgainst": 113
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "car": {
       "team": {
@@ -7284,6 +7284,31 @@
         "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/CAR.png"
       },
       "recentFixtures": [
+        {
+          "id": "2026_08_CAR_GB",
+          "utcDate": "2026-10-30T00:15:00Z",
+          "status": "FINISHED",
+          "week": 8,
+          "matchday": 8,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "gb",
+            "abbr": "GB",
+            "shortName": "Packers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
+          },
+          "awayTeam": {
+            "id": "car",
+            "abbr": "CAR",
+            "shortName": "Panthers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 27,
+            "away": 19
+          }
+        },
         {
           "id": "2026_07_TB_CAR",
           "utcDate": "2026-10-25T17:00:00Z",
@@ -7383,59 +7408,9 @@
             "home": 21,
             "away": 18
           }
-        },
-        {
-          "id": "2026_02_CAR_ATL",
-          "utcDate": "2026-09-20T17:00:00Z",
-          "status": "FINISHED",
-          "week": 2,
-          "matchday": 2,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "atl",
-            "abbr": "ATL",
-            "shortName": "Falcons",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png"
-          },
-          "awayTeam": {
-            "id": "car",
-            "abbr": "CAR",
-            "shortName": "Panthers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 3,
-            "away": 34
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "2026_08_CAR_GB",
-          "utcDate": "2026-10-30T00:15:00Z",
-          "status": "SCHEDULED",
-          "week": 8,
-          "matchday": 8,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "gb",
-            "abbr": "GB",
-            "shortName": "Packers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
-          },
-          "awayTeam": {
-            "id": "car",
-            "abbr": "CAR",
-            "shortName": "Panthers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "2026_09_DEN_CAR",
           "utcDate": "2026-11-08T18:00:00Z",
@@ -7535,23 +7510,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "2026_13_CAR_MIN",
+          "utcDate": "2026-12-06T21:25:00Z",
+          "status": "SCHEDULED",
+          "week": 13,
+          "matchday": 13,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "min",
+            "abbr": "MIN",
+            "shortName": "Vikings",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/min.png"
+          },
+          "awayTeam": {
+            "id": "car",
+            "abbr": "CAR",
+            "shortName": "Panthers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
-          "W",
-          "W",
           "L",
-          "W"
+          "W",
+          "W",
+          "L"
         ],
-        "wins": 3,
+        "wins": 2,
         "ties": 0,
-        "losses": 2,
-        "pointsFor": 122,
-        "pointsAgainst": 107
+        "losses": 3,
+        "pointsFor": 107,
+        "pointsAgainst": 131
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "chi": {
       "team": {
@@ -7836,7 +7836,7 @@
         "pointsFor": 118,
         "pointsAgainst": 97
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "det": {
       "team": {
@@ -8121,7 +8121,7 @@
         "pointsFor": 153,
         "pointsAgainst": 135
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "gb": {
       "team": {
@@ -8139,6 +8139,31 @@
         "wordmark": "https://github.com/nflverse/nflverse-pbp/raw/master/wordmarks/GB.png"
       },
       "recentFixtures": [
+        {
+          "id": "2026_08_CAR_GB",
+          "utcDate": "2026-10-30T00:15:00Z",
+          "status": "FINISHED",
+          "week": 8,
+          "matchday": 8,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "gb",
+            "abbr": "GB",
+            "shortName": "Packers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
+          },
+          "awayTeam": {
+            "id": "car",
+            "abbr": "CAR",
+            "shortName": "Panthers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 27,
+            "away": 19
+          }
+        },
         {
           "id": "2026_07_GB_DET",
           "utcDate": "2026-10-25T20:25:00Z",
@@ -8238,59 +8263,9 @@
             "home": 14,
             "away": 17
           }
-        },
-        {
-          "id": "2026_03_ATL_GB",
-          "utcDate": "2026-09-25T00:15:00Z",
-          "status": "FINISHED",
-          "week": 3,
-          "matchday": 3,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "gb",
-            "abbr": "GB",
-            "shortName": "Packers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
-          },
-          "awayTeam": {
-            "id": "atl",
-            "abbr": "ATL",
-            "shortName": "Falcons",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 14,
-            "away": 35
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "2026_08_CAR_GB",
-          "utcDate": "2026-10-30T00:15:00Z",
-          "status": "SCHEDULED",
-          "week": 8,
-          "matchday": 8,
-          "gameType": "REG",
-          "homeTeam": {
-            "id": "gb",
-            "abbr": "GB",
-            "shortName": "Packers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
-          },
-          "awayTeam": {
-            "id": "car",
-            "abbr": "CAR",
-            "shortName": "Panthers",
-            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "2026_09_GB_NE",
           "utcDate": "2026-11-08T21:25:00Z",
@@ -8390,23 +8365,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "2026_14_BUF_GB",
+          "utcDate": "2026-12-14T01:20:00Z",
+          "status": "SCHEDULED",
+          "week": 14,
+          "matchday": 14,
+          "gameType": "REG",
+          "homeTeam": {
+            "id": "gb",
+            "abbr": "GB",
+            "shortName": "Packers",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
+          },
+          "awayTeam": {
+            "id": "buf",
+            "abbr": "BUF",
+            "shortName": "Bills",
+            "crest": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "W",
           "W",
-          "W",
-          "L"
+          "W"
         ],
-        "wins": 3,
+        "wins": 4,
         "ties": 0,
-        "losses": 2,
-        "pointsFor": 102,
-        "pointsAgainst": 89
+        "losses": 1,
+        "pointsFor": 115,
+        "pointsAgainst": 73
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "sea": {
       "team": {
@@ -8691,7 +8691,7 @@
         "pointsFor": 124,
         "pointsAgainst": 108
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "la": {
       "team": {
@@ -8976,7 +8976,7 @@
         "pointsFor": 135,
         "pointsAgainst": 126
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "dal": {
       "team": {
@@ -9261,7 +9261,7 @@
         "pointsFor": 132,
         "pointsAgainst": 132
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "atl": {
       "team": {
@@ -9546,7 +9546,7 @@
         "pointsFor": 155,
         "pointsAgainst": 119
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "tb": {
       "team": {
@@ -9831,7 +9831,7 @@
         "pointsFor": 116,
         "pointsAgainst": 95
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "no": {
       "team": {
@@ -10116,7 +10116,7 @@
         "pointsFor": 108,
         "pointsAgainst": 146
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "phi": {
       "team": {
@@ -10401,7 +10401,7 @@
         "pointsFor": 79,
         "pointsAgainst": 133
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "ari": {
       "team": {
@@ -10686,7 +10686,7 @@
         "pointsFor": 109,
         "pointsAgainst": 163
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     },
     "was": {
       "team": {
@@ -10971,7 +10971,7 @@
         "pointsFor": 110,
         "pointsAgainst": 148
       },
-      "generatedAt": "2026-10-29T17:03:40.331Z"
+      "generatedAt": "2026-10-30T16:48:15.032Z"
     }
   }
 }
