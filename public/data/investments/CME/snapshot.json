@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,16 +40,16 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 24.07,
-      "marketCap": 105440936788,
-      "psRatio": 15.12,
-      "pbRatio": 3.97,
-      "pegRatio": 1.48
+      "ttmPe": 24.86,
+      "marketCap": 108911563234,
+      "psRatio": 15.62,
+      "pbRatio": 4.1,
+      "pegRatio": 1.53
     },
     "profitability": {
       "roe": 3.91,
       "roa": 0.54,
-      "roic": 3.5900000000000003,
+      "roic": 3.55,
       "equityMultiplier": 7.24,
       "assetTurnover": 0.01
     },
@@ -947,11 +947,11 @@
         {
           "Breakdown": "Normalized Income",
           "TTM": "-185149831.94",
-          "2026-09-30": "-48446833.48",
+          "2026-09-30": "-47946500.0",
           "2026-06-30": "-80514500.0",
           "2026-03-31": "92874800.0",
           "2025-12-31": "-148611929.8",
-          "2025-09-30": "-286749022.94",
+          "2025-09-30": "-286047700.0",
           "2025-06-30": "-144945734.04",
           "2025-03-31": "270606400.0",
           "2024-12-31": "127688728.8",
@@ -1189,7 +1189,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "TTM": "0.23",
-          "2026-09-30": "0.23",
+          "2026-09-30": "0.24",
           "2026-06-30": "0.22",
           "2026-03-31": "0.24",
           "2025-12-31": "0.25",
@@ -1211,11 +1211,11 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "TTM": "1412750168.06",
-          "2026-09-30": "332753166.52",
+          "2026-09-30": "333253500.0",
           "2026-06-30": "307385500.0",
           "2026-03-31": "327874800.0",
           "2025-12-31": "445188070.2",
-          "2025-09-30": "353950977.06",
+          "2025-09-30": "354652300.0",
           "2025-06-30": "348354265.96",
           "2025-03-31": "207106400.0",
           "2024-12-31": "189588728.8",
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.529999999999999,
-      "costOfEquity": 6.710000000000001,
+      "wacc": 6.3100000000000005,
+      "costOfEquity": 6.4799999999999995,
       "costOfDebt": 1.27,
-      "taxRate": 23,
-      "beta": 0.2179,
-      "marketCap": 105440936788
+      "taxRate": 24,
+      "beta": 0.1936,
+      "marketCap": 108911563234
     },
     "beta": {
-      "beta5y": 0.2179
+      "beta5y": 0.1936
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 264.89,
-        "high": 264.89,
-        "low": 257.17,
-        "close": 261.53,
-        "volume": 2926000
-      },
       {
         "date": "2025-10-30",
         "open": 263.92,
@@ -7637,6 +7629,14 @@
         "low": 292.37,
         "close": 296.42,
         "volume": 2199100
+      },
+      {
+        "date": "2026-10-30",
+        "open": 302.84,
+        "high": 306.7,
+        "low": 301.66,
+        "close": 303.14,
+        "volume": 1955900
       }
     ],
     "news": [
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
-        "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
         "title": "XRP futures bag $19M on launch day",
         "publisher": "TheStreet",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
+        "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
         "type": "STORY"
       },
       {
@@ -7787,43 +7787,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.07,
-        "industryAvg": 25.28
+        "value": 24.86,
+        "industryAvg": 26.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.12,
-        "industryAvg": 7.83
+        "value": 15.62,
+        "industryAvg": 8.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.97,
-        "industryAvg": 4.09
+        "value": 4.1,
+        "industryAvg": 4.48
       },
       {
         "metric": "ROE",
         "value": 3.91,
-        "industryAvg": 16.79
+        "industryAvg": 18.13
       },
       {
         "metric": "ROA",
         "value": 0.54,
-        "industryAvg": 4.17
+        "industryAvg": 4.31
       },
       {
         "metric": "Gross Margin",
         "value": 86.50999999999999,
-        "industryAvg": 64.31
+        "industryAvg": 64.14999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 85.28999999999999,
-        "industryAvg": 47.17
+        "industryAvg": 48.43
       },
       {
         "metric": "Net Margin",
         "value": 59.68,
-        "industryAvg": 27.62
+        "industryAvg": 28.4
       }
     ]
   }

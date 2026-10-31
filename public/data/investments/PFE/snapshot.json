@@ -1,10 +1,10 @@
 {
   "symbol": "PFE",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.7552,
-      "ttmPe": 39,
+      "ttmPe": 40.41,
       "pegRatio": 0,
-      "marketCap": 167835550000,
-      "psRatio": 2.63,
-      "pbRatio": 1.97
+      "marketCap": 173933480000,
+      "psRatio": 2.73,
+      "pbRatio": 2.04
     },
     "profitability": {
       "roe": -0.27999999999999997,
@@ -6451,25 +6451,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.59,
-      "costOfEquity": 7.449999999999999,
+      "wacc": 5.489999999999999,
+      "costOfEquity": 7.26,
       "costOfDebt": 1.06,
       "taxRate": 40,
-      "beta": 0.3074,
-      "marketCap": 167835550000
+      "beta": 0.2931,
+      "marketCap": 173933480000
     },
     "beta": {
-      "beta5y": 0.3074
+      "beta5y": 0.2931
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 24.53,
-        "high": 24.63,
-        "low": 24.23,
-        "close": 24.29,
-        "volume": 65438400
-      },
       {
         "date": "2025-10-30",
         "open": 24.31,
@@ -8476,7 +8468,15 @@
         "high": 30.18,
         "low": 29.61,
         "close": 29.95,
-        "volume": 34178800
+        "volume": 34259400
+      },
+      {
+        "date": "2026-10-30",
+        "open": 30.51,
+        "high": 30.67,
+        "low": 30.14,
+        "close": 30.52,
+        "volume": 45476900
       }
     ],
     "news": [
@@ -8497,19 +8497,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "1152f165-8c48-32c4-a775-4f515c152ef7",
+        "title": "Pfizer to sell entire Haleon stake",
+        "publisher": "Reuters",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/pfizer-sell-entire-haleon-stake-165448665.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "af863e42-7898-396f-9797-62a0d3789ed3",
         "title": "Top Midday Stories: EC Notifies Alphabet of DMA Noncompliance, Adopts Requirements for Apple; Boeing Expects Less Q1 Cash Outflow",
         "publisher": "MT Newswires",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/top-midday-stories-ec-notifies-155033951.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "4e0619a4-32d0-31f0-bba8-f2ae620ff519",
-        "title": "Pfizer to Reportedly Offload Remaining Stake in Haleon via Share Sale",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/pfizer-reportedly-offload-remaining-stake-180725984.html",
         "type": "STORY"
       },
       {
@@ -8521,6 +8521,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "84700e1b-87b4-372d-b5f1-19e96ff72fbe",
+        "title": "Pfizer Sells Final Haleon Shares for $3.2B, Ends Stake in Consumer Healthcare Giant",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/pfizer-sells-final-haleon-shares-133919948.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "418d9b30-a2ae-3a5c-bbba-20acae3495a0",
         "title": "Haleon Agrees to Buy Back Over 44 Million Shares From Pfizer",
         "publisher": "MT Newswires",
@@ -8529,19 +8537,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1152f165-8c48-32c4-a775-4f515c152ef7",
-        "title": "Pfizer to sell entire Haleon stake",
-        "publisher": "Reuters",
+        "uuid": "4e0619a4-32d0-31f0-bba8-f2ae620ff519",
+        "title": "Pfizer to Reportedly Offload Remaining Stake in Haleon via Share Sale",
+        "publisher": "MT Newswires",
         "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/pfizer-sell-entire-haleon-stake-165448665.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "84700e1b-87b4-372d-b5f1-19e96ff72fbe",
-        "title": "Pfizer Sells Final Haleon Shares for $3.2B, Ends Stake in Consumer Healthcare Giant",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/pfizer-sells-final-haleon-shares-133919948.html",
+        "link": "https://finance.yahoo.com/news/pfizer-reportedly-offload-remaining-stake-180725984.html",
         "type": "STORY"
       },
       {
@@ -8553,11 +8553,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e841ce48-7c32-3ca8-b63e-53c4bb7fcf57",
-        "title": "Pfizer Sells Remaining 7.3% Stake in Haleon for Around 3.3B",
-        "publisher": "Zacks",
+        "uuid": "5c370e40-7e16-3e2a-b93b-b48b50d34db4",
+        "title": "Pfizer sells 7.3% stake in Haleon for $3.3bn",
+        "publisher": "Pharmaceutical Technology",
         "reportDate": "2025-03-20",
-        "link": "https://finance.yahoo.com/news/pfizer-sells-remaining-7-3-124500233.html",
+        "link": "https://finance.yahoo.com/m/5c370e40-7e16-3e2a-b93b-b48b50d34db4/pfizer-sells-7.3%25-stake-in.html",
         "type": "STORY"
       }
     ],
@@ -8624,43 +8624,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39,
-        "industryAvg": 29.44
+        "value": 40.41,
+        "industryAvg": 31.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.63,
-        "industryAvg": 4.99
+        "value": 2.73,
+        "industryAvg": 5.21
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.97,
-        "industryAvg": 6.26
+        "value": 2.04,
+        "industryAvg": 6.52
       },
       {
         "metric": "ROE",
         "value": -0.27999999999999997,
-        "industryAvg": 22.57
+        "industryAvg": 22.32
       },
       {
         "metric": "ROA",
         "value": -0.12,
-        "industryAvg": 7.86
+        "industryAvg": 7.8
       },
       {
         "metric": "Gross Margin",
         "value": 72.78,
-        "industryAvg": 73.78
+        "industryAvg": 73.8
       },
       {
         "metric": "EBITDA Margin",
         "value": 10.879999999999999,
-        "industryAvg": 31.830000000000002
+        "industryAvg": 31.91
       },
       {
         "metric": "Net Margin",
         "value": -1.6500000000000001,
-        "industryAvg": 15.9
+        "industryAvg": 15.740000000000002
       }
     ]
   }

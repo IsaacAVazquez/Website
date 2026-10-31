@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.7575,
-      "ttmPe": 17.62,
-      "marketCap": 209962610000,
-      "psRatio": 2.76,
-      "pbRatio": 6.12,
-      "pegRatio": 0.57
+      "ttmPe": 17.97,
+      "marketCap": 214122810000,
+      "psRatio": 2.82,
+      "pbRatio": 6.25,
+      "pegRatio": 0.58
     },
     "profitability": {
       "roe": 9.01,
@@ -5795,25 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.21,
-      "costOfEquity": 13.65,
+      "wacc": 11.09,
+      "costOfEquity": 13.450000000000001,
       "costOfDebt": 3.32,
       "taxRate": 24,
-      "beta": 1.099,
-      "marketCap": 209962610000
+      "beta": 1.0727,
+      "marketCap": 214122810000
     },
     "beta": {
-      "beta5y": 1.099
+      "beta5y": 1.0727
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 359,
-        "high": 362,
-        "low": 355.88,
-        "close": 358.22,
-        "volume": 1840500
-      },
       {
         "date": "2025-10-30",
         "open": 358.59,
@@ -7821,6 +7813,14 @@
         "low": 320.95,
         "close": 323.71,
         "volume": 2882400
+      },
+      {
+        "date": "2026-10-30",
+        "open": 323.8,
+        "high": 324.93,
+        "low": 316.68,
+        "close": 319.11,
+        "volume": 2565000
       }
     ],
     "news": [
@@ -7881,11 +7881,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
-        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
-        "publisher": "Zacks",
+        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
+        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
+        "publisher": "Motley Fool",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
+        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
         "type": "STORY"
       },
       {
@@ -7897,11 +7897,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d3e213e5-f786-3a18-91b3-576f61e9df0d",
-        "title": "The Smartest Dividend Stocks to Buy With $1,000 Right Now",
-        "publisher": "Motley Fool",
+        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
+        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
+        "publisher": "Zacks",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/m/d3e213e5-f786-3a18-91b3-576f61e9df0d/the-smartest-dividend-stocks.html",
+        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
         "type": "STORY"
       }
     ],
@@ -7974,23 +7974,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.62,
-        "industryAvg": 22.9
+        "value": 17.97,
+        "industryAvg": 23.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.76,
-        "industryAvg": 5.35
+        "value": 2.82,
+        "industryAvg": 5.51
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.12,
-        "industryAvg": 5.72
+        "value": 6.25,
+        "industryAvg": 5.9
       },
       {
         "metric": "ROE",
         "value": 9.01,
-        "industryAvg": 14.540000000000001
+        "industryAvg": 14.580000000000002
       },
       {
         "metric": "ROA",
@@ -7999,16 +7999,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 65.34
+        "industryAvg": 65.51
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 43.63
+        "industryAvg": 43.7
       },
       {
         "metric": "Net Margin",
         "value": 15.659999999999998,
-        "industryAvg": 19.99
+        "industryAvg": 20.01
       }
     ]
   }

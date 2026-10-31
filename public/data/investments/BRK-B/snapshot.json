@@ -1,10 +1,10 @@
 {
   "symbol": "BRK-B",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 39.7715,
-      "ttmPe": 13.65,
-      "marketCap": 1166092201610,
-      "psRatio": 2.94,
+      "ttmPe": 13.64,
+      "marketCap": 1165018432110,
+      "psRatio": 2.93,
       "pbRatio": 1.56,
       "pegRatio": 0.13
     },
@@ -4542,25 +4542,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.82,
-      "costOfEquity": 9.700000000000001,
+      "wacc": 8.67,
+      "costOfEquity": 9.53,
       "costOfDebt": 1.04,
       "taxRate": 20,
-      "beta": 0.598,
-      "marketCap": 1166092201610
+      "beta": 0.5788,
+      "marketCap": 1165018432110
     },
     "beta": {
-      "beta5y": 0.598
+      "beta5y": 0.5788
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 477.32,
-        "high": 478.8,
-        "low": 473.72,
-        "close": 475.76,
-        "volume": 6204500
-      },
       {
         "date": "2025-10-30",
         "open": 474.84,
@@ -6568,23 +6560,31 @@
         "low": 541.8,
         "close": 541.96,
         "volume": 4157100
+      },
+      {
+        "date": "2026-10-30",
+        "open": 549.88,
+        "high": 550.47,
+        "low": 542.32,
+        "close": 542.49,
+        "volume": 4487100
       }
     ],
     "news": [
-      {
-        "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
-        "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
-        "type": "STORY"
-      },
       {
         "uuid": "8643fa56-7879-3ab3-9ce8-e818efe35e7a",
         "title": "The Zacks Analyst Blog Highlights NVIDIA, Alphabet, Berkshire Hathaway, BK Technologies and Aware",
         "publisher": "Zacks",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-nvidia-131400052.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e639ac18-fd5d-3ca1-8153-f24518c68b25",
+        "title": "Q1 Earnings Season Scorecard and Analyst Reports for NVIDIA, Alphabet & Berkshire Hathaway",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/q1-earnings-season-scorecard-analyst-174200345.html",
         "type": "STORY"
       },
       {
@@ -6612,19 +6612,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
-        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "03a69758-d01e-4cb7-bb25-47b066e8c7ef",
         "title": "Bill Ackman on his move to recreate Warren Buffett's Berkshire Hathaway",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/bill-ackman-on-his-move-to-recreate-warren-buffetts-berkshire-hathaway-185906487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
+        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
         "type": "STORY"
       },
       {
@@ -6712,13 +6712,13 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.65,
-        "industryAvg": 17.75
+        "value": 13.64,
+        "industryAvg": 17.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.94,
-        "industryAvg": 2.73
+        "value": 2.93,
+        "industryAvg": 2.74
       },
       {
         "metric": "P/B Ratio",
@@ -6728,12 +6728,12 @@
       {
         "metric": "ROE",
         "value": 3.4799999999999995,
-        "industryAvg": 10.48
+        "industryAvg": 10.52
       },
       {
         "metric": "ROA",
         "value": 2.04,
-        "industryAvg": 4.02
+        "industryAvg": 4.03
       },
       {
         "metric": "Gross Margin",
@@ -6746,7 +6746,7 @@
       {
         "metric": "Net Margin",
         "value": 21.77,
-        "industryAvg": 15.32
+        "industryAvg": 15.370000000000001
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 28.89,
-      "marketCap": 81729023400,
-      "psRatio": 10,
-      "pbRatio": 25.01,
-      "pegRatio": 1.63
+      "ttmPe": 30.1,
+      "marketCap": 85161987231,
+      "psRatio": 10.42,
+      "pbRatio": 26.06,
+      "pegRatio": 1.7
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,25 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.08,
-      "costOfEquity": 15.310000000000002,
+      "wacc": 13.99,
+      "costOfEquity": 15.17,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.3092,
-      "marketCap": 81729023400
+      "beta": 1.2903,
+      "marketCap": 85161987231
     },
     "beta": {
-      "beta5y": 1.3092
+      "beta5y": 1.2903
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 487,
-        "high": 488.55,
-        "low": 469.11,
-        "close": 471.7,
-        "volume": 1223200
-      },
       {
         "date": "2025-10-30",
         "open": 474.27,
@@ -8658,6 +8650,14 @@
         "low": 481.85,
         "close": 488.83,
         "volume": 864600
+      },
+      {
+        "date": "2026-10-30",
+        "open": 491.93,
+        "high": 497.23,
+        "low": 489.14,
+        "close": 493.91,
+        "volume": 1630400
       }
     ],
     "news": [
@@ -8686,6 +8686,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
+        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
         "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
         "publisher": "Bloomberg",
@@ -8702,27 +8710,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
-        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aab9c808-d77b-38ff-b78c-c75c081d23b2",
         "title": "Bond Investors Detect Trouble in US Debt Stripped of AAA Rating",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/bond-investors-detect-trouble-us-083108491.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
-        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
         "type": "STORY"
       },
       {
@@ -8734,11 +8726,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
-        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
+        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
+        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
+        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
+        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
         "type": "STORY"
       }
     ],
@@ -8803,43 +8803,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.89,
-        "industryAvg": 25.28
+        "value": 30.1,
+        "industryAvg": 26.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 10,
-        "industryAvg": 7.83
+        "value": 10.42,
+        "industryAvg": 8.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.01,
-        "industryAvg": 4.09
+        "value": 26.06,
+        "industryAvg": 4.48
       },
       {
         "metric": "ROE",
         "value": 23.330000000000002,
-        "industryAvg": 16.79
+        "industryAvg": 18.13
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 4.17
+        "industryAvg": 4.31
       },
       {
         "metric": "Gross Margin",
         "value": 74.1,
-        "industryAvg": 64.31
+        "industryAvg": 64.14999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 57.089999999999996,
-        "industryAvg": 47.17
+        "industryAvg": 48.43
       },
       {
         "metric": "Net Margin",
         "value": 36.28,
-        "industryAvg": 27.62
+        "industryAvg": 28.4
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.8619,
-      "ttmPe": 15.23,
-      "marketCap": 154321044560,
-      "psRatio": 5.93,
-      "pbRatio": 3.08,
-      "pegRatio": 0.53
+      "ttmPe": 15.02,
+      "marketCap": 152160895560,
+      "psRatio": 5.85,
+      "pbRatio": 3.03,
+      "pegRatio": 0.52
     },
     "profitability": {
       "roe": 5.4,
@@ -6103,25 +6103,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.06,
-      "costOfEquity": 10.870000000000001,
+      "wacc": 9.08,
+      "costOfEquity": 10.91,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7465,
-      "marketCap": 154321044560
+      "beta": 0.7531,
+      "marketCap": 152160895560
     },
     "beta": {
-      "beta5y": 0.7465
+      "beta5y": 0.7531
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 93.49,
-        "high": 95.11,
-        "low": 93.25,
-        "close": 94.61,
-        "volume": 11773900
-      },
       {
         "date": "2025-10-30",
         "open": 94.69,
@@ -8129,23 +8121,31 @@
         "low": 89.06,
         "close": 89.47,
         "volume": 5893900
+      },
+      {
+        "date": "2026-10-30",
+        "open": 89.71,
+        "high": 89.71,
+        "low": 87.37,
+        "close": 88.05,
+        "volume": 11474100
       }
     ],
     "news": [
-      {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -8197,19 +8197,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
-        "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
         "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "55850a15-58e4-37d9-8fbb-42d6dfddc03b",
+        "title": "TD Bank Quarterly Earnings Buoyed by Sale of Schwab Stake",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/55850a15-58e4-37d9-8fbb-42d6dfddc03b/td-bank-quarterly-earnings.html",
         "type": "STORY"
       }
     ],
@@ -8276,18 +8276,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.23,
-        "industryAvg": 15.62
+        "value": 15.02,
+        "industryAvg": 15.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.93,
-        "industryAvg": 2
+        "value": 5.85,
+        "industryAvg": 1.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.08,
-        "industryAvg": 2.5
+        "value": 3.03,
+        "industryAvg": 2.43
       },
       {
         "metric": "ROE",
@@ -8301,16 +8301,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 13.19
+        "industryAvg": 13.3
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 4.14
+        "industryAvg": 4.29
       },
       {
         "metric": "Net Margin",
         "value": 37.91,
-        "industryAvg": 19.56
+        "industryAvg": 19.57
       }
     ]
   }

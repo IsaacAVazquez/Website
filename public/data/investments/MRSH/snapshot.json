@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -34,17 +34,17 @@
       "sector": "Financial Services",
       "longBusinessSummary": "Marsh & McLennan Companies, Inc., a professional services company, provides advisory services and insurance solutions to clients in the areas of risk, strategy, and people worldwide. The company operates through Risk and Insurance Services, and Consulting segments. The Risk and Insurance Services segment offers risk management services, such as risk management, insurance broking, insurance program management, risk consulting, analytical modeling, and alternative risk financing services. This segment also offers insurance and reinsurance broking, strategic advisory and actuarial services, and analytics solutions. It serves businesses, public entities, insurance companies, associations, professional services organizations, and private clients. The Consulting segment provides health, wealth and career advice, solutions and products; and specialized management, strategic, economic, and brand consulting services. Marsh & McLennan Companies, Inc. was founded in 1871 and is headquartered in New York, New York.",
       "fullTimeEmployees": 95000,
-      "website": "https://www.corporate.marsh.com",
+      "website": "https://www.marsh.com",
       "shortName": "Marsh & McLennan Companies, Inc.",
       "longName": "Marsh & McLennan Companies, Inc."
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 22.84,
-      "marketCap": 90646634437,
-      "psRatio": 3.19,
-      "pbRatio": 6.18,
-      "pegRatio": 1.98
+      "ttmPe": 24.04,
+      "marketCap": 95376974882,
+      "psRatio": 3.35,
+      "pbRatio": 6.5,
+      "pegRatio": 2.08
     },
     "profitability": {
       "roe": 5.41,
@@ -3678,25 +3678,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.670000000000001,
-      "costOfEquity": 9.35,
+      "wacc": 7.53,
+      "costOfEquity": 9.09,
       "costOfDebt": 1.11,
       "taxRate": 21,
-      "beta": 0.5533,
-      "marketCap": 90646634437
+      "beta": 0.5235,
+      "marketCap": 95376974882
     },
     "beta": {
-      "beta5y": 0.5533
+      "beta5y": 0.5235
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 180.99,
-        "high": 182.8,
-        "low": 179.26,
-        "close": 179.99,
-        "volume": 3850800
-      },
       {
         "date": "2025-10-30",
         "open": 180.72,
@@ -5704,6 +5696,14 @@
         "low": 194,
         "close": 197.03,
         "volume": 2414200
+      },
+      {
+        "date": "2026-10-30",
+        "open": 201.95,
+        "high": 202.7,
+        "low": 199.22,
+        "close": 200.62,
+        "volume": 2916800
       }
     ],
     "news": [
@@ -5724,11 +5724,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
-        "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
+        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
+        "title": "Davos CEO Brief for Monday, January 19, 2026",
         "publisher": "WSJ",
         "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/marsh-mclennan-ceo-john-doyle-212200870.html",
+        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
         "type": "VIDEO"
       },
       {
@@ -5740,11 +5740,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
-        "title": "Davos CEO Brief for Monday, January 19, 2026",
+        "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
+        "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
         "publisher": "WSJ",
         "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
+        "link": "https://finance.yahoo.com/video/marsh-mclennan-ceo-john-doyle-212200870.html",
         "type": "VIDEO"
       },
       {
@@ -5856,43 +5856,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.84,
-        "industryAvg": 22.42
+        "value": 24.04,
+        "industryAvg": 23.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.19,
-        "industryAvg": 3.19
+        "value": 3.35,
+        "industryAvg": 3.33
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.18,
-        "industryAvg": 4.05
+        "value": 6.5,
+        "industryAvg": 4.21
       },
       {
         "metric": "ROE",
         "value": 5.41,
-        "industryAvg": 17.330000000000002
+        "industryAvg": 17.130000000000003
       },
       {
         "metric": "ROA",
         "value": 1.35,
-        "industryAvg": 4.46
+        "industryAvg": 4.390000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 40.58,
-        "industryAvg": 43.84
+        "industryAvg": 43.88
       },
       {
         "metric": "EBITDA Margin",
         "value": 22.03,
-        "industryAvg": 26.43
+        "industryAvg": 26.400000000000002
       },
       {
         "metric": "Net Margin",
         "value": 11.77,
-        "industryAvg": 12.33
+        "industryAvg": 12.32
       }
     ]
   }

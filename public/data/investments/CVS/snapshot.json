@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7879,
-      "ttmPe": 23.75,
+      "ttmPe": 23.83,
       "pegRatio": 0.13,
-      "marketCap": 114956100000,
+      "marketCap": 115339500000,
       "psRatio": 0.28,
-      "pbRatio": 1.44
+      "pbRatio": 1.45
     },
     "profitability": {
       "roe": 3.7900000000000005,
@@ -5618,25 +5618,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.04,
-      "costOfEquity": 9.56,
+      "wacc": 5.970000000000001,
+      "costOfEquity": 9.43,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 25,
-      "beta": 0.5766,
-      "marketCap": 114956100000
+      "beta": 0.5661,
+      "marketCap": 115339500000
     },
     "beta": {
-      "beta5y": 0.5766
+      "beta5y": 0.5661
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 82.5,
-        "high": 85.15,
-        "low": 80.33,
-        "close": 80.6,
-        "volume": 14783500
-      },
       {
         "date": "2025-10-30",
         "open": 76.08,
@@ -7644,6 +7636,14 @@
         "low": 89.55,
         "close": 90.33,
         "volume": 10226800
+      },
+      {
+        "date": "2026-10-30",
+        "open": 91.95,
+        "high": 91.95,
+        "low": 89.9,
+        "close": 90.25,
+        "volume": 8187500
       }
     ],
     "news": [
@@ -7656,19 +7656,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
-        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "51553283-f460-34be-9ced-b04dec0abc5b",
         "title": "Why Eli Lilly, Viking Therapeutics, and Novo Nordisk Stocks All Popped Friday",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
+        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
         "type": "STORY"
       },
       {
@@ -7688,19 +7688,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
-        "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/avns-stock-gains-post-q1-165000634.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
         "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/masi-stock-slips-despite-q1-162700258.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
+        "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/avns-stock-gains-post-q1-165000634.html",
         "type": "STORY"
       },
       {
@@ -7720,11 +7720,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf7dda7f-04f4-38a3-8e64-6923ae47ece8",
-        "title": "AMN Stock Gains Following Q1 Earnings & Revenue Beat, Margins Down",
+        "uuid": "05c0ea41-f713-3abc-bac5-4735abe28c53",
+        "title": "TMDX Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
         "publisher": "Zacks",
         "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/amn-stock-gains-following-q1-160100419.html",
+        "link": "https://finance.yahoo.com/news/tmdx-stock-gains-post-q1-160300345.html",
         "type": "STORY"
       }
     ],
@@ -7798,8 +7798,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.75,
-        "industryAvg": 21.97
+        "value": 23.83,
+        "industryAvg": 22.07
       },
       {
         "metric": "P/S Ratio",
@@ -7808,8 +7808,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.44,
-        "industryAvg": 2.42
+        "value": 1.45,
+        "industryAvg": 2.43
       },
       {
         "metric": "ROE",

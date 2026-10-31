@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.5529,
-      "ttmPe": 50.66,
-      "marketCap": 30625522970,
-      "psRatio": 4.94,
-      "pbRatio": 4.24,
-      "pegRatio": 1.39
+      "ttmPe": 46.15,
+      "marketCap": 27900485970,
+      "psRatio": 4.5,
+      "pbRatio": 3.87,
+      "pegRatio": 1.26
     },
     "profitability": {
       "roe": 3.1199999999999997,
@@ -5897,25 +5897,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.740000000000002,
-      "costOfEquity": 21.45,
+      "wacc": 18.91,
+      "costOfEquity": 21.91,
       "costOfDebt": 0.31,
       "taxRate": 16,
-      "beta": 2.0888,
-      "marketCap": 30625522970
+      "beta": 2.1403,
+      "marketCap": 27900485970
     },
     "beta": {
-      "beta5y": 2.0888
+      "beta5y": 2.1403
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 52.3,
-        "high": 52.55,
-        "low": 51.03,
-        "close": 51.4,
-        "volume": 9858200
-      },
       {
         "date": "2025-10-30",
         "open": 51.18,
@@ -7922,7 +7914,15 @@
         "high": 75.96,
         "low": 73.8,
         "close": 75.24,
-        "volume": 8511200
+        "volume": 8525700
+      },
+      {
+        "date": "2026-10-30",
+        "open": 72.67,
+        "high": 72.77,
+        "low": 69.64,
+        "close": 71.67,
+        "volume": 16564100
       }
     ],
     "news": [
@@ -7951,6 +7951,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
+        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
         "title": "ON Semiconductor negativity priced in says Morgan Stanley",
         "publisher": "Investing.com",
@@ -7964,14 +7972,6 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/semiconductor-among-billionaire-glenn-russell-203717214.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
-        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
         "type": "STORY"
       },
       {
@@ -8063,33 +8063,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 50.66,
-        "industryAvg": 25.58
+        "value": 46.15,
+        "industryAvg": 24.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.94,
-        "industryAvg": 12.52
+        "value": 4.5,
+        "industryAvg": 11.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.24,
-        "industryAvg": 11.25
+        "value": 3.87,
+        "industryAvg": 10.35
       },
       {
         "metric": "ROE",
         "value": 3.1199999999999997,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
         "value": 1.78,
-        "industryAvg": 42.55
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 38.43,
-        "industryAvg": 68.31
+        "industryAvg": 68.30000000000001
       },
       {
         "metric": "EBITDA Margin",

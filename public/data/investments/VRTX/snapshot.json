@@ -1,10 +1,10 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.1885,
-      "ttmPe": 30.82,
-      "pegRatio": 3.84,
-      "marketCap": 134195690244,
-      "psRatio": 10.66,
-      "pbRatio": 6.63
+      "ttmPe": 32.51,
+      "pegRatio": 4.05,
+      "marketCap": 141590906688,
+      "psRatio": 11.25,
+      "pbRatio": 6.99
     },
     "profitability": {
       "roe": 5.55,
@@ -5447,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.1,
-      "costOfEquity": 7.21,
+      "wacc": 6.97,
+      "costOfEquity": 7.07,
       "costOfDebt": 0.16,
       "taxRate": 11,
-      "beta": 0.2763,
-      "marketCap": 134195690244
+      "beta": 0.268,
+      "marketCap": 141590906688
     },
     "beta": {
-      "beta5y": 0.2763
+      "beta5y": 0.268
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 418.02,
-        "high": 422.98,
-        "low": 415.77,
-        "close": 417.21,
-        "volume": 1324900
-      },
       {
         "date": "2025-10-30",
         "open": 417.19,
@@ -7473,6 +7465,14 @@
         "low": 534.01,
         "close": 540,
         "volume": 1539100
+      },
+      {
+        "date": "2026-10-30",
+        "open": 550.73,
+        "high": 563.8,
+        "low": 549.89,
+        "close": 558.88,
+        "volume": 3030000
       }
     ],
     "news": [
@@ -7501,20 +7501,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
-        "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
         "title": "Stock Market Today: Dow Jones, S&P 500 Fall Again; Gold Stocks Rally While Palantir Tumbles (Live Coverage)",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/m/2a52960f-5f7d-319d-8850-8de18c4df34b/stock-market-today%3A-dow.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
+        "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "f9f53c24-fd35-3af4-8128-7145d69de473",
@@ -7541,19 +7541,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7be64abc-d894-3368-9968-85cc2abfad1c",
-        "title": "Are Investors Making a Big Mistake Dumping Shares of CRISPR Therapeutics?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/m/7be64abc-d894-3368-9968-85cc2abfad1c/are-investors-making-a-big.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b88d9a71-83ce-358a-bdb1-e45f3812d482",
         "title": "Q1 Therapeutics Earnings: United Therapeutics (NASDAQ:UTHR) Impresses",
         "publisher": "StockStory",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/q1-therapeutics-earnings-united-therapeutics-033105869.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7be64abc-d894-3368-9968-85cc2abfad1c",
+        "title": "Are Investors Making a Big Mistake Dumping Shares of CRISPR Therapeutics?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/m/7be64abc-d894-3368-9968-85cc2abfad1c/are-investors-making-a-big.html",
         "type": "STORY"
       }
     ],
@@ -7625,43 +7625,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.82,
-        "industryAvg": 24.4
+        "value": 32.51,
+        "industryAvg": 24.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.66,
-        "industryAvg": 11.3
+        "value": 11.25,
+        "industryAvg": 11.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.63,
-        "industryAvg": 4.71
+        "value": 6.99,
+        "industryAvg": 4.7
       },
       {
         "metric": "ROE",
         "value": 5.55,
-        "industryAvg": -17.96
+        "industryAvg": -17.43
       },
       {
         "metric": "ROA",
         "value": 4.08,
-        "industryAvg": -11.03
+        "industryAvg": -10.73
       },
       {
         "metric": "Gross Margin",
         "value": 85.33,
-        "industryAvg": 81.96
+        "industryAvg": 81.91000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.75,
-        "industryAvg": -26.55
+        "industryAvg": -27.01
       },
       {
         "metric": "Net Margin",
         "value": 32.99,
-        "industryAvg": -32.5
+        "industryAvg": -31.52
       }
     ]
   }

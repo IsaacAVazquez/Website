@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 24.1804,
-      "ttmPe": 12.2,
-      "pegRatio": 1.21,
-      "marketCap": 77791500000,
+      "ttmPe": 12.33,
+      "pegRatio": 1.22,
+      "marketCap": 78643251000,
       "psRatio": 0.28,
-      "pbRatio": 1.83
+      "pbRatio": 1.85
     },
     "profitability": {
       "roe": 3.91,
@@ -5901,25 +5901,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.27,
-      "costOfEquity": 7.049999999999999,
+      "wacc": 5.140000000000001,
+      "costOfEquity": 6.84,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 17,
-      "beta": 0.2557,
-      "marketCap": 77791500000
+      "beta": 0.2394,
+      "marketCap": 78643251000
     },
     "beta": {
-      "beta5y": 0.2557
+      "beta5y": 0.2394
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 305.92,
-        "high": 306.01,
-        "low": 298.22,
-        "close": 299.12,
-        "volume": 1992400
-      },
       {
         "date": "2025-10-30",
         "open": 265,
@@ -7927,6 +7919,14 @@
         "low": 295.44,
         "close": 298.41,
         "volume": 1269300
+      },
+      {
+        "date": "2026-10-30",
+        "open": 302.79,
+        "high": 303.43,
+        "low": 297.38,
+        "close": 298.23,
+        "volume": 1862100
       }
     ],
     "news": [
@@ -7979,19 +7979,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
-        "title": "Top Research Reports for Costco, Chubb & Cigna",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6d519243-cdb3-3011-b8a2-fbc3145f3e38",
         "title": "CI's Unit Unveils Offering to Expand Access to GLP-1 Medications",
         "publisher": "Zacks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
+        "title": "Top Research Reports for Costco, Chubb & Cigna",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
         "type": "STORY"
       },
       {
@@ -8073,8 +8073,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.2,
-        "industryAvg": 21.97
+        "value": 12.33,
+        "industryAvg": 22.07
       },
       {
         "metric": "P/S Ratio",
@@ -8083,8 +8083,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.83,
-        "industryAvg": 2.42
+        "value": 1.85,
+        "industryAvg": 2.43
       },
       {
         "metric": "ROE",

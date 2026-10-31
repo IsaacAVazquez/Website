@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 36.24,
-      "marketCap": 68577529195,
-      "psRatio": 8.17,
-      "pbRatio": 16.42,
-      "pegRatio": 2.78
+      "ttmPe": 36.82,
+      "marketCap": 69661174835,
+      "psRatio": 8.3,
+      "pbRatio": 16.68,
+      "pegRatio": 2.83
     },
     "profitability": {
       "roe": 12,
@@ -6041,25 +6041,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.360000000000001,
-      "costOfEquity": 11.95,
+      "wacc": 11.469999999999999,
+      "costOfEquity": 12.049999999999999,
       "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.8835,
-      "marketCap": 68577529195
+      "beta": 0.8966,
+      "marketCap": 69661174835
     },
     "beta": {
-      "beta5y": 0.8835
+      "beta5y": 0.8966
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 398.07,
-        "high": 398.68,
-        "low": 389.153,
-        "close": 391.44,
-        "volume": 1046900
-      },
       {
         "date": "2025-10-30",
         "open": 388,
@@ -8067,6 +8059,14 @@
         "low": 393.97,
         "close": 399.77,
         "volume": 369400
+      },
+      {
+        "date": "2026-10-30",
+        "open": 399.29,
+        "high": 399.52,
+        "low": 394.91,
+        "close": 395.99,
+        "volume": 552600
       }
     ],
     "news": [
@@ -8135,19 +8135,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b310c041-b391-3fda-b664-048a835d90db",
-        "title": "Is Air Lease (AL) Stock Outpacing Its Transportation Peers This Year?",
+        "uuid": "91855b6c-81ee-3f12-b7d7-e20a4bcd97c8",
+        "title": "Is Douglas Dynamics (PLOW) Outperforming Other Auto-Tires-Trucks Stocks This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/air-lease-al-stock-outpacing-134005698.html",
+        "link": "https://finance.yahoo.com/news/douglas-dynamics-plow-outperforming-other-134003262.html",
         "type": "STORY"
       },
       {
-        "uuid": "c796803b-a3a1-3476-bacc-b8126594a359",
-        "title": "Are Consumer Discretionary Stocks Lagging  Atour Lifestyle Holdings Limited Sponsored ADR (ATAT) This Year?",
+        "uuid": "e4b46a0d-e375-352e-a0ea-f191583bf366",
+        "title": "Are Business Services Stocks Lagging  GORILLA TECH GP (GRRR) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/consumer-discretionary-stocks-lagging-atour-134003456.html",
+        "link": "https://finance.yahoo.com/news/business-services-stocks-lagging-gorilla-134006668.html",
         "type": "STORY"
       }
     ],
@@ -8214,43 +8214,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.24,
-        "industryAvg": 29.95
+        "value": 36.82,
+        "industryAvg": 30.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.17,
-        "industryAvg": 1.44
+        "value": 8.3,
+        "industryAvg": 1.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.42,
-        "industryAvg": 2.39
+        "value": 16.68,
+        "industryAvg": 2.36
       },
       {
         "metric": "ROE",
         "value": 12,
-        "industryAvg": 4.74
+        "industryAvg": 4.44
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": 1.55
+        "industryAvg": 1.46
       },
       {
         "metric": "Gross Margin",
         "value": 52.59,
-        "industryAvg": 14.81
+        "industryAvg": 14.7
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.18,
-        "industryAvg": 9.28
+        "industryAvg": 9.16
       },
       {
         "metric": "Net Margin",
         "value": 23.849999999999998,
-        "industryAvg": 2.55
+        "industryAvg": 2.42
       }
     ]
   }

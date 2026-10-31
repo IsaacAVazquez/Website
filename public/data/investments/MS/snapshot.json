@@ -1,10 +1,10 @@
 {
   "symbol": "MS",
-  "lastUpdated": "2026-10-28T15:42:59.512043+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-28T15:42:59.512043+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6077,
-      "ttmPe": 14.83,
-      "marketCap": 293822520000,
-      "psRatio": 4.02,
-      "pbRatio": 2.53,
-      "pegRatio": 1.8
+      "ttmPe": 14.62,
+      "marketCap": 289719600000,
+      "psRatio": 3.97,
+      "pbRatio": 2.49,
+      "pegRatio": 1.77
     },
     "profitability": {
       "roe": 4.71,
@@ -5971,25 +5971,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.41,
-      "costOfEquity": 14.62,
+      "wacc": 7.340000000000001,
+      "costOfEquity": 14.56,
       "costOfDebt": 3.11,
       "taxRate": 23,
-      "beta": 1.2219,
-      "marketCap": 293822520000
+      "beta": 1.2132,
+      "marketCap": 289719600000
     },
     "beta": {
-      "beta5y": 1.2219
+      "beta5y": 1.2132
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 164.31,
-        "high": 166.02,
-        "low": 163.12,
-        "close": 164.03,
-        "volume": 4963500
-      },
       {
         "date": "2025-10-30",
         "open": 163.82,
@@ -7997,6 +7989,14 @@
         "low": 189.59,
         "close": 190,
         "volume": 5547200
+      },
+      {
+        "date": "2026-10-30",
+        "open": 185.85,
+        "high": 186.99,
+        "low": 182.19,
+        "close": 184.3,
+        "volume": 7940800
       }
     ],
     "news": [
@@ -8057,14 +8057,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b98f630-680d-374d-aa9d-38ab2c73390f",
-        "title": "Traders Wager $10 Billion on Chevron-Hess Deal Beating Exxon Case",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/traders-wager-10-billion-chevron-100001931.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3666397c-e7c8-30e3-aeaf-dd0102f07b1e",
         "title": "Hinge Health Jumps 17% After Top-Priced $437 Million IPO",
         "publisher": "Bloomberg",
@@ -8078,6 +8070,14 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/ryan-reynolds-mntn-shares-rise-164200595.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b98f630-680d-374d-aa9d-38ab2c73390f",
+        "title": "Traders Wager $10 Billion on Chevron-Hess Deal Beating Exxon Case",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/traders-wager-10-billion-chevron-100001931.html",
         "type": "STORY"
       }
     ],
@@ -8143,18 +8143,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.83,
-        "industryAvg": 15.62
+        "value": 14.62,
+        "industryAvg": 15.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.02,
-        "industryAvg": 2
+        "value": 3.97,
+        "industryAvg": 1.93
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.53,
-        "industryAvg": 2.5
+        "value": 2.49,
+        "industryAvg": 2.43
       },
       {
         "metric": "ROE",
@@ -8168,16 +8168,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 13.19
+        "industryAvg": 13.3
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 4.14
+        "industryAvg": 4.29
       },
       {
         "metric": "Net Margin",
         "value": 27.339999999999996,
-        "industryAvg": 19.56
+        "industryAvg": 19.57
       }
     ]
   }

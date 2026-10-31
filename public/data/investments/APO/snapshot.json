@@ -1,10 +1,10 @@
 {
   "symbol": "APO",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
     "sections": {
-      "price": "2026-10-29"
+      "price": "2026-10-30"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.6438,
-      "ttmPe": 42.91,
-      "pegRatio": 0.38,
-      "marketCap": 65344000710,
-      "psRatio": 1.82,
-      "pbRatio": 3.11
+      "ttmPe": 43.82,
+      "pegRatio": 0.39,
+      "marketCap": 66720573312,
+      "psRatio": 1.86,
+      "pbRatio": 3.18
     },
     "profitability": {
       "roe": 4.71,
@@ -5647,25 +5647,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.01,
-      "costOfEquity": 16.75,
+      "wacc": 14.09,
+      "costOfEquity": 16.79,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 16,
-      "beta": 1.4958,
-      "marketCap": 65344000710
+      "beta": 1.4948,
+      "marketCap": 66720573312
     },
     "beta": {
-      "beta5y": 1.4958
+      "beta5y": 1.4948
     },
     "price": [
-      {
-        "date": "2025-10-29",
-        "open": 123.88,
-        "high": 125.56,
-        "low": 122.83,
-        "close": 124.88,
-        "volume": 2991300
-      },
       {
         "date": "2025-10-30",
         "open": 124.74,
@@ -7673,6 +7665,14 @@
         "low": 114.66,
         "close": 118.56,
         "volume": 3326300
+      },
+      {
+        "date": "2026-10-30",
+        "open": 118.43,
+        "high": 118.49,
+        "low": 115.37,
+        "close": 115.84,
+        "volume": 5278800
       }
     ],
     "news": [
@@ -7733,19 +7733,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
-        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6bc6fa76-dff5-3f25-af7e-62b726704292",
         "title": "Private Credit Has a Problem: Too Much Money",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/6bc6fa76-dff5-3f25-af7e-62b726704292/private-credit-has-a-problem%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
+        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
         "type": "STORY"
       },
       {
@@ -7822,43 +7822,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.91,
-        "industryAvg": 23.43
+        "value": 43.82,
+        "industryAvg": 23.18
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.82,
+        "value": 1.86,
         "industryAvg": 3.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.11,
+        "value": 3.18,
         "industryAvg": 2.69
       },
       {
         "metric": "ROE",
         "value": 4.71,
-        "industryAvg": 5.76
+        "industryAvg": 5.89
       },
       {
         "metric": "ROA",
         "value": 0.2,
-        "industryAvg": 0.52
+        "industryAvg": 0.54
       },
       {
         "metric": "Gross Margin",
         "value": 96.1,
-        "industryAvg": 33.21
+        "industryAvg": 33.22
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.37,
-        "industryAvg": 38.97
+        "industryAvg": 39
       },
       {
         "metric": "Net Margin",
         "value": 8.649999999999999,
-        "industryAvg": 5.1
+        "industryAvg": 5.21
       }
     ]
   }
