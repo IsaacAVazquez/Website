@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T00:13:29.812Z",
+  "generatedAt": "2026-11-01T16:09:21.519Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-01T00:13:11.459Z"
+    "generatedAt": "2026-11-01T16:09:15.263Z"
   },
   "upcomingLaunches": [
     {
@@ -714,46 +714,6 @@
       }
     },
     {
-      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-      "name": "Griffin Mission One",
-      "flightNumber": 780,
-      "upcoming": true,
-      "success": null,
-      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Voyager_Technologies",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      }
-    },
-    {
       "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
       "name": "Rivada 1",
       "flightNumber": 780,
@@ -796,7 +756,7 @@
     {
       "id": "fc1bd321-e502-4d0f-81f4-1926dece81c6",
       "name": "VICTUS SURGO",
-      "flightNumber": 780,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "A new Tactically Responsive Space (TacRS) mission by the United States Space Force Space Systems Command to deliver responsive space delivery. The mission consists of an Impulse Space Mira orbital transfer vehicle that will operate in Geosynchronous Transfer Orbit (GTO), which would be transferred from Low Earth Orbit (LEO) on an Impulse Space Helios kick stage. A Helios rideshare payload will also be delivered to GEO.",
@@ -956,7 +916,7 @@
     {
       "id": "fa895702-687b-4ba3-95fb-9462a2c9844b",
       "name": "Rivada 5",
-      "flightNumber": 780,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -1089,6 +1049,46 @@
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "71df1dd0-d658-4762-b0bc-0fca6886aea7",
+      "name": "SDA Tranche 2 Transport Layer D",
+      "flightNumber": 780,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
@@ -2276,17 +2276,17 @@
       "capsules": [],
       "cores": []
     },
-    "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67": {
-      "id": "d3bd7fb2-fac6-49fc-ae52-cee07d2fde67",
-      "name": "Griffin Mission One",
+    "c1bd775a-2fff-45bb-9726-765b69817c19": {
+      "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
+      "name": "USSF-75",
       "flightNumber": 780,
       "upcoming": true,
       "success": null,
-      "details": "Demonstration flight of the Astrobotic Griffin lander and its engines, initially contracted for the NASA VIPER (Volatiles Investigating Polar Exploration Rover) mission. The vacated payload spot will now host the FLIP (FLEX Lunar Innovation Platform) lunar rover from Astrolab.",
+      "details": "Classified payload for the United States Space Force",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "month",
+      "datePrecision": "year",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon Heavy",
@@ -2303,7 +2303,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Voyager_Technologies",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2354,11 +2354,11 @@
       "crew": [],
       "payloads": [
         {
-          "id": "1267",
-          "name": "Griffin Mission One",
-          "type": "Lunar Exploration",
+          "id": "6630",
+          "name": "USSF-75",
+          "type": "Government/Top Secret",
           "customers": [
-            "Voyager Technologies"
+            "United States Space Force"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2366,8 +2366,8 @@
           "nationalities": [
             "USA"
           ],
-          "orbit": "Lunar Orbit",
-          "regime": "LO",
+          "orbit": "Geostationary Orbit",
+          "regime": "Direct-GEO",
           "massKg": null,
           "massLbs": null
         }
@@ -2940,6 +2940,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-01T00:13:29.471Z"
+    "generatedAt": "2026-11-01T16:09:20.984Z"
   }
 }
