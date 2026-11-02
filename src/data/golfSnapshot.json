@@ -10,17 +10,17 @@
       "startDate": "2026-10-29",
       "endDate": "2026-11-01",
       "roundLabel": "Round 4",
-      "status": "Round 4 - In Progress",
-      "completed": false,
+      "status": "Final",
+      "completed": true,
       "fieldSize": 120,
       "cutLine": -4,
       "cutState": "made",
       "cutCount": 68,
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "heroStats": {
       "leaderName": "Andrew Novak",
-      "leaderScore": -26,
+      "leaderScore": -25,
       "playersUnderPar": 95,
       "cutLine": -4,
       "cutState": "made",
@@ -33,34 +33,17 @@
         "playerName": "Andrew Novak",
         "country": "USA",
         "position": "1",
-        "totalToPar": -26,
-        "today": -3,
-        "thru": "15",
-        "status": "In Progress",
+        "totalToPar": -25,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           67,
           61,
           62,
-          57
+          69
         ],
         "movement": 0
-      },
-      {
-        "playerId": "doug-ghim",
-        "playerName": "Doug Ghim",
-        "country": "USA",
-        "position": "T2",
-        "totalToPar": -20,
-        "today": -4,
-        "thru": "15",
-        "status": "In Progress",
-        "roundScores": [
-          65,
-          68,
-          64,
-          56
-        ],
-        "movement": -1
       },
       {
         "playerId": "kristoffer-ventura",
@@ -69,13 +52,13 @@
         "position": "T2",
         "totalToPar": -20,
         "today": -8,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           69,
           66,
           66,
-          59
+          63
         ],
         "movement": -11
       },
@@ -97,72 +80,55 @@
         "movement": -11
       },
       {
-        "playerId": "mackenzie-hughes",
-        "playerName": "Mackenzie Hughes",
-        "country": "Canada",
-        "position": "5",
-        "totalToPar": -19,
-        "today": -5,
-        "thru": "16",
-        "status": "In Progress",
-        "roundScores": [
-          65,
-          67,
-          67,
-          59
-        ],
-        "movement": -2
-      },
-      {
-        "playerId": "matthieu-pavon",
-        "playerName": "Matthieu Pavon",
-        "country": "France",
-        "position": "T6",
-        "totalToPar": -18,
-        "today": -1,
-        "thru": "15",
-        "status": "In Progress",
-        "roundScores": [
-          65,
-          66,
-          65,
-          59
-        ],
-        "movement": 4
-      },
-      {
-        "playerId": "max-greyserman",
-        "playerName": "Max Greyserman",
-        "country": "USA",
-        "position": "T6",
-        "totalToPar": -18,
-        "today": -3,
-        "thru": "15",
-        "status": "In Progress",
-        "roundScores": [
-          65,
-          67,
-          66,
-          57
-        ],
-        "movement": 2
-      },
-      {
         "playerId": "ben-griffin",
         "playerName": "Ben Griffin",
         "country": "USA",
-        "position": "T6",
-        "totalToPar": -18,
-        "today": -3,
-        "thru": "15",
-        "status": "In Progress",
+        "position": "T4",
+        "totalToPar": -19,
+        "today": -4,
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           64,
           67,
           67,
-          57
+          67
         ],
-        "movement": 2
+        "movement": 0
+      },
+      {
+        "playerId": "mackenzie-hughes",
+        "playerName": "Mackenzie Hughes",
+        "country": "Canada",
+        "position": "T4",
+        "totalToPar": -19,
+        "today": -5,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          65,
+          67,
+          67,
+          66
+        ],
+        "movement": -3
+      },
+      {
+        "playerId": "doug-ghim",
+        "playerName": "Doug Ghim",
+        "country": "USA",
+        "position": "T6",
+        "totalToPar": -18,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          65,
+          68,
+          64,
+          69
+        ],
+        "movement": 3
       },
       {
         "playerId": "tom-kim",
@@ -171,13 +137,13 @@
         "position": "T6",
         "totalToPar": -18,
         "today": -5,
-        "thru": "16",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           67,
           68,
           65,
-          59
+          66
         ],
         "movement": -3
       },
@@ -188,13 +154,13 @@
         "position": "T6",
         "totalToPar": -18,
         "today": -3,
-        "thru": "15",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           65,
           69,
           64,
-          57
+          68
         ],
         "movement": 2
       },
@@ -222,21 +188,55 @@
         "position": "T6",
         "totalToPar": -18,
         "today": -5,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           67,
           68,
           65,
-          62
+          66
         ],
         "movement": -3
+      },
+      {
+        "playerId": "matthieu-pavon",
+        "playerName": "Matthieu Pavon",
+        "country": "France",
+        "position": "T11",
+        "totalToPar": -17,
+        "today": 0,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          65,
+          66,
+          65,
+          71
+        ],
+        "movement": 9
+      },
+      {
+        "playerId": "max-greyserman",
+        "playerName": "Max Greyserman",
+        "country": "USA",
+        "position": "T11",
+        "totalToPar": -17,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          65,
+          67,
+          66,
+          69
+        ],
+        "movement": 7
       },
       {
         "playerId": "trace-crowe",
         "playerName": "Trace Crowe",
         "country": "USA",
-        "position": "T13",
+        "position": "T11",
         "totalToPar": -17,
         "today": -8,
         "thru": "F",
@@ -247,41 +247,41 @@
           70,
           63
         ],
-        "movement": -13
-      },
-      {
-        "playerId": "kihei-akina",
-        "playerName": "Kihei Akina",
-        "country": "USA",
-        "position": "T13",
-        "totalToPar": -17,
-        "today": -3,
-        "thru": "16",
-        "status": "In Progress",
-        "roundScores": [
-          67,
-          64,
-          68,
-          61
-        ],
-        "movement": 6
+        "movement": -15
       },
       {
         "playerId": "kensei-hirata",
         "playerName": "Kensei Hirata",
         "country": "Japan",
-        "position": "15",
-        "totalToPar": -16,
-        "today": -3,
-        "thru": "17",
-        "status": "In Progress",
+        "position": "T11",
+        "totalToPar": -17,
+        "today": -4,
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           63,
           68,
           69,
-          64
+          67
         ],
-        "movement": 6
+        "movement": 2
+      },
+      {
+        "playerId": "kihei-akina",
+        "playerName": "Kihei Akina",
+        "country": "USA",
+        "position": "15",
+        "totalToPar": -16,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          67,
+          64,
+          68,
+          69
+        ],
+        "movement": 8
       },
       {
         "playerId": "ben-james",
@@ -358,13 +358,13 @@
         "position": "T19",
         "totalToPar": -14,
         "today": -1,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           68,
           65,
           67,
-          66
+          70
         ],
         "movement": 10
       },
@@ -437,6 +437,23 @@
         "movement": -3
       },
       {
+        "playerId": "chandler-phillips",
+        "playerName": "Chandler Phillips",
+        "country": "USA",
+        "position": "T23",
+        "totalToPar": -13,
+        "today": -1,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          69,
+          66,
+          66,
+          70
+        ],
+        "movement": 10
+      },
+      {
         "playerId": "harry-hall",
         "playerName": "Harry Hall",
         "country": "England",
@@ -491,7 +508,7 @@
         "playerId": "max-mcgreevy",
         "playerName": "Max McGreevy",
         "country": "USA",
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -5,
         "thru": "F",
@@ -502,13 +519,13 @@
           70,
           66
         ],
-        "movement": -13
+        "movement": -12
       },
       {
         "playerId": "garrick-higgo",
         "playerName": "Garrick Higgo",
         "country": "South Africa",
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -3,
         "thru": "F",
@@ -519,30 +536,13 @@
           71,
           68
         ],
-        "movement": 2
-      },
-      {
-        "playerId": "chandler-phillips",
-        "playerName": "Chandler Phillips",
-        "country": "USA",
-        "position": "T28",
-        "totalToPar": -12,
-        "today": 0,
-        "thru": "17",
-        "status": "In Progress",
-        "roundScores": [
-          69,
-          66,
-          66,
-          67
-        ],
-        "movement": 15
+        "movement": 3
       },
       {
         "playerId": "jesper-svensson",
         "playerName": "Jesper Svensson",
         "country": "Sweden",
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -4,
         "thru": "F",
@@ -553,13 +553,13 @@
           69,
           67
         ],
-        "movement": -8
+        "movement": -7
       },
       {
         "playerId": "luke-clanton",
         "playerName": "Luke Clanton",
         "country": "USA",
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -1,
         "thru": "F",
@@ -570,13 +570,13 @@
           69,
           70
         ],
-        "movement": 11
+        "movement": 12
       },
       {
         "playerId": "haotong-li",
         "playerName": "Haotong Li",
         "country": "China",
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -5,
         "thru": "F",
@@ -587,7 +587,7 @@
           70,
           66
         ],
-        "movement": -13
+        "movement": -12
       },
       {
         "playerId": "alvaro-ortiz",
@@ -1086,7 +1086,7 @@
         "playerId": "tyler-duncan",
         "playerName": "Tyler Duncan",
         "country": "USA",
-        "position": "T63",
+        "position": "63",
         "totalToPar": -4,
         "today": 3,
         "thru": "F",
@@ -1100,27 +1100,10 @@
         "movement": 22
       },
       {
-        "playerId": "paul-peterson",
-        "playerName": "Paul Peterson",
-        "country": "USA",
-        "position": "T63",
-        "totalToPar": -4,
-        "today": -2,
-        "thru": "17",
-        "status": "In Progress",
-        "roundScores": [
-          71,
-          67,
-          73,
-          65
-        ],
-        "movement": -2
-      },
-      {
         "playerId": "david-skinns",
         "playerName": "David Skinns",
         "country": "England",
-        "position": "65",
+        "position": "T64",
         "totalToPar": -3,
         "today": 4,
         "thru": "F",
@@ -1131,7 +1114,24 @@
           68,
           75
         ],
-        "movement": 24
+        "movement": 23
+      },
+      {
+        "playerId": "paul-peterson",
+        "playerName": "Paul Peterson",
+        "country": "USA",
+        "position": "T64",
+        "totalToPar": -3,
+        "today": -1,
+        "thru": "F",
+        "status": "Finish",
+        "roundScores": [
+          71,
+          67,
+          73,
+          70
+        ],
+        "movement": -1
       },
       {
         "playerId": "max-homa",
@@ -1140,13 +1140,13 @@
         "position": "66",
         "totalToPar": -2,
         "today": -5,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           66,
           71,
           79,
-          62
+          66
         ],
         "movement": -2
       },
@@ -1157,13 +1157,13 @@
         "position": "67",
         "totalToPar": -1,
         "today": 0,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "roundScores": [
           67,
           67,
           78,
-          67
+          71
         ],
         "movement": 0
       },
@@ -2021,7 +2021,7 @@
         "id": "matthieu-pavon",
         "name": "Matthieu Pavon",
         "country": "France",
-        "position": "T6"
+        "position": "T11"
       },
       {
         "id": "kevin-streelman",
@@ -2045,7 +2045,7 @@
         "id": "max-greyserman",
         "name": "Max Greyserman",
         "country": "USA",
-        "position": "T6"
+        "position": "T11"
       },
       {
         "id": "wyndham-clark",
@@ -2057,7 +2057,7 @@
         "id": "trace-crowe",
         "name": "Trace Crowe",
         "country": "USA",
-        "position": "T13"
+        "position": "T11"
       },
       {
         "id": "tayler-termeer",
@@ -2081,7 +2081,7 @@
         "id": "max-mcgreevy",
         "name": "Max McGreevy",
         "country": "USA",
-        "position": "T28"
+        "position": "T29"
       },
       {
         "id": "rico-hoey",
@@ -2099,7 +2099,7 @@
         "id": "garrick-higgo",
         "name": "Garrick Higgo",
         "country": "South Africa",
-        "position": "T28"
+        "position": "T29"
       },
       {
         "id": "christo-lamprecht",
@@ -2111,7 +2111,7 @@
         "id": "doug-ghim",
         "name": "Doug Ghim",
         "country": "USA",
-        "position": "T2"
+        "position": "T6"
       },
       {
         "id": "camilo-villegas",
@@ -2141,7 +2141,7 @@
         "id": "david-skinns",
         "name": "David Skinns",
         "country": "England",
-        "position": "65"
+        "position": "T64"
       },
       {
         "id": "rafael-campos",
@@ -2201,7 +2201,7 @@
         "id": "ben-griffin",
         "name": "Ben Griffin",
         "country": "USA",
-        "position": "T6"
+        "position": "T4"
       },
       {
         "id": "vince-whaley",
@@ -2267,7 +2267,7 @@
         "id": "chandler-phillips",
         "name": "Chandler Phillips",
         "country": "USA",
-        "position": "T28"
+        "position": "T23"
       },
       {
         "id": "isaiah-salinda",
@@ -2309,7 +2309,7 @@
         "id": "jesper-svensson",
         "name": "Jesper Svensson",
         "country": "Sweden",
-        "position": "T28"
+        "position": "T29"
       },
       {
         "id": "keita-nakajima",
@@ -2381,7 +2381,7 @@
         "id": "kensei-hirata",
         "name": "Kensei Hirata",
         "country": "Japan",
-        "position": "15"
+        "position": "T11"
       },
       {
         "id": "a-j-ewart",
@@ -2465,7 +2465,7 @@
         "id": "luke-clanton",
         "name": "Luke Clanton",
         "country": "USA",
-        "position": "T28"
+        "position": "T29"
       },
       {
         "id": "john-daly-ii",
@@ -2483,7 +2483,7 @@
         "id": "kihei-akina",
         "name": "Kihei Akina",
         "country": "USA",
-        "position": "T13"
+        "position": "15"
       },
       {
         "id": "gerardo-gomez",
@@ -2579,7 +2579,7 @@
         "id": "mackenzie-hughes",
         "name": "Mackenzie Hughes",
         "country": "Canada",
-        "position": "5"
+        "position": "T4"
       },
       {
         "id": "marcelo-rozo",
@@ -2639,7 +2639,7 @@
         "id": "haotong-li",
         "name": "Haotong Li",
         "country": "China",
-        "position": "T28"
+        "position": "T29"
       },
       {
         "id": "christiaan-bezuidenhout",
@@ -2669,13 +2669,13 @@
         "id": "tyler-duncan",
         "name": "Tyler Duncan",
         "country": "USA",
-        "position": "T63"
+        "position": "63"
       },
       {
         "id": "paul-peterson",
         "name": "Paul Peterson",
         "country": "USA",
-        "position": "T63"
+        "position": "T64"
       },
       {
         "id": "taylor-pendrith",
@@ -2720,7 +2720,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "nick-hardy": {
       "player": {
@@ -2766,7 +2766,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "denny-mccarthy": {
       "player": {
@@ -2812,7 +2812,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "chad-ramey": {
       "player": {
@@ -2858,7 +2858,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "davis-riley": {
       "player": {
@@ -2894,7 +2894,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "alvaro-ortiz": {
       "player": {
@@ -2940,7 +2940,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "hayden-springer": {
       "player": {
@@ -2986,7 +2986,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "aaron-wise": {
       "player": {
@@ -3022,7 +3022,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "jeremy-paul": {
       "player": {
@@ -3034,8 +3034,8 @@
         "position": "67",
         "totalToPar": -1,
         "today": 0,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": 0,
         "nextTeeTime": "12:40 PM EST"
       },
@@ -3057,7 +3057,7 @@
         },
         {
           "round": 4,
-          "score": 67,
+          "score": 71,
           "relativeToPar": 0
         }
       ],
@@ -3068,7 +3068,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "matthieu-pavon": {
       "player": {
@@ -3077,12 +3077,12 @@
         "country": "France"
       },
       "tournamentStatus": {
-        "position": "T6",
-        "totalToPar": -18,
-        "today": -1,
-        "thru": "15",
-        "status": "In Progress",
-        "movement": 4,
+        "position": "T11",
+        "totalToPar": -17,
+        "today": 0,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 9,
         "nextTeeTime": "12:51 PM EST"
       },
       "roundByRound": [
@@ -3103,8 +3103,8 @@
         },
         {
           "round": 4,
-          "score": 59,
-          "relativeToPar": -1
+          "score": 71,
+          "relativeToPar": 0
         }
       ],
       "scoring": {
@@ -3114,7 +3114,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "kevin-streelman": {
       "player": {
@@ -3150,7 +3150,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "cam-davis": {
       "player": {
@@ -3196,7 +3196,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "jimmy-stanger": {
       "player": {
@@ -3232,7 +3232,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "max-greyserman": {
       "player": {
@@ -3241,12 +3241,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T6",
-        "totalToPar": -18,
-        "today": -3,
-        "thru": "15",
-        "status": "In Progress",
-        "movement": 2,
+        "position": "T11",
+        "totalToPar": -17,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 7,
         "nextTeeTime": "12:40 PM EST"
       },
       "roundByRound": [
@@ -3267,8 +3267,8 @@
         },
         {
           "round": 4,
-          "score": 57,
-          "relativeToPar": -3
+          "score": 69,
+          "relativeToPar": -2
         }
       ],
       "scoring": {
@@ -3278,7 +3278,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "wyndham-clark": {
       "player": {
@@ -3314,7 +3314,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "trace-crowe": {
       "player": {
@@ -3323,12 +3323,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T13",
+        "position": "T11",
         "totalToPar": -17,
         "today": -8,
         "thru": "F",
         "status": "Finish",
-        "movement": -13,
+        "movement": -15,
         "nextTeeTime": "11:23 AM EST"
       },
       "roundByRound": [
@@ -3360,7 +3360,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "tayler-termeer": {
       "player": {
@@ -3396,7 +3396,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "rasmus-h-jgaard": {
       "player": {
@@ -3432,7 +3432,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "andrew-novak": {
       "player": {
@@ -3442,10 +3442,10 @@
       },
       "tournamentStatus": {
         "position": "1",
-        "totalToPar": -26,
-        "today": -3,
-        "thru": "15",
-        "status": "In Progress",
+        "totalToPar": -25,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
         "movement": 0,
         "nextTeeTime": "12:51 PM EST"
       },
@@ -3467,8 +3467,8 @@
         },
         {
           "round": 4,
-          "score": 57,
-          "relativeToPar": -3
+          "score": 69,
+          "relativeToPar": -2
         }
       ],
       "scoring": {
@@ -3478,7 +3478,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "max-mcgreevy": {
       "player": {
@@ -3487,12 +3487,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -5,
         "thru": "F",
         "status": "Finish",
-        "movement": -13,
+        "movement": -12,
         "nextTeeTime": "11:01 AM EST"
       },
       "roundByRound": [
@@ -3524,7 +3524,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "rico-hoey": {
       "player": {
@@ -3560,7 +3560,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "hank-lebioda": {
       "player": {
@@ -3596,7 +3596,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "garrick-higgo": {
       "player": {
@@ -3605,12 +3605,12 @@
         "country": "South Africa"
       },
       "tournamentStatus": {
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -3,
         "thru": "F",
         "status": "Finish",
-        "movement": 2,
+        "movement": 3,
         "nextTeeTime": "11:01 AM EST"
       },
       "roundByRound": [
@@ -3642,7 +3642,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "christo-lamprecht": {
       "player": {
@@ -3678,7 +3678,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "doug-ghim": {
       "player": {
@@ -3687,12 +3687,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T2",
-        "totalToPar": -20,
-        "today": -4,
-        "thru": "15",
-        "status": "In Progress",
-        "movement": -1,
+        "position": "T6",
+        "totalToPar": -18,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 3,
         "nextTeeTime": "12:51 PM EST"
       },
       "roundByRound": [
@@ -3713,8 +3713,8 @@
         },
         {
           "round": 4,
-          "score": 56,
-          "relativeToPar": -4
+          "score": 69,
+          "relativeToPar": -2
         }
       ],
       "scoring": {
@@ -3724,7 +3724,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "camilo-villegas": {
       "player": {
@@ -3760,7 +3760,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "billy-horschel": {
       "player": {
@@ -3785,7 +3785,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "tony-finau": {
       "player": {
@@ -3821,7 +3821,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "brice-garnett": {
       "player": {
@@ -3867,7 +3867,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "david-skinns": {
       "player": {
@@ -3876,12 +3876,12 @@
         "country": "England"
       },
       "tournamentStatus": {
-        "position": "65",
+        "position": "T64",
         "totalToPar": -3,
         "today": 4,
         "thru": "F",
         "status": "Finish",
-        "movement": 24,
+        "movement": 23,
         "nextTeeTime": "11:45 AM EST"
       },
       "roundByRound": [
@@ -3913,7 +3913,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "rafael-campos": {
       "player": {
@@ -3959,7 +3959,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "patton-kizzire": {
       "player": {
@@ -3995,7 +3995,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "kevin-yu": {
       "player": {
@@ -4031,7 +4031,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "kristoffer-ventura": {
       "player": {
@@ -4043,8 +4043,8 @@
         "position": "T2",
         "totalToPar": -20,
         "today": -8,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": -11,
         "nextTeeTime": "12:07 PM EST"
       },
@@ -4066,7 +4066,7 @@
         },
         {
           "round": 4,
-          "score": 59,
+          "score": 63,
           "relativeToPar": -8
         }
       ],
@@ -4077,7 +4077,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "alejandro-tosti": {
       "player": {
@@ -4113,7 +4113,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "patrick-fishburn": {
       "player": {
@@ -4159,7 +4159,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "john-vanderlaan": {
       "player": {
@@ -4195,7 +4195,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "pontus-nyholm": {
       "player": {
@@ -4231,7 +4231,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "lee-hodges": {
       "player": {
@@ -4267,7 +4267,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "ben-griffin": {
       "player": {
@@ -4276,12 +4276,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T6",
-        "totalToPar": -18,
-        "today": -3,
-        "thru": "15",
-        "status": "In Progress",
-        "movement": 2,
+        "position": "T4",
+        "totalToPar": -19,
+        "today": -4,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 0,
         "nextTeeTime": "12:40 PM EST"
       },
       "roundByRound": [
@@ -4302,8 +4302,8 @@
         },
         {
           "round": 4,
-          "score": 57,
-          "relativeToPar": -3
+          "score": 67,
+          "relativeToPar": -4
         }
       ],
       "scoring": {
@@ -4313,7 +4313,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "vince-whaley": {
       "player": {
@@ -4359,7 +4359,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "jeffrey-kang": {
       "player": {
@@ -4405,7 +4405,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "danny-walker": {
       "player": {
@@ -4441,7 +4441,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "kevin-roy": {
       "player": {
@@ -4477,7 +4477,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "takumi-kanaya": {
       "player": {
@@ -4513,7 +4513,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "dylan-wu": {
       "player": {
@@ -4559,7 +4559,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "austin-eckroat": {
       "player": {
@@ -4605,7 +4605,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "steven-fisk": {
       "player": {
@@ -4651,7 +4651,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "will-gordon": {
       "player": {
@@ -4687,7 +4687,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "marco-penge": {
       "player": {
@@ -4733,7 +4733,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "chandler-phillips": {
       "player": {
@@ -4742,12 +4742,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T28",
-        "totalToPar": -12,
-        "today": 0,
-        "thru": "17",
-        "status": "In Progress",
-        "movement": 15,
+        "position": "T23",
+        "totalToPar": -13,
+        "today": -1,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 10,
         "nextTeeTime": "12:07 PM EST"
       },
       "roundByRound": [
@@ -4768,8 +4768,8 @@
         },
         {
           "round": 4,
-          "score": 67,
-          "relativeToPar": 0
+          "score": 70,
+          "relativeToPar": -1
         }
       ],
       "scoring": {
@@ -4779,7 +4779,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "isaiah-salinda": {
       "player": {
@@ -4815,7 +4815,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "harry-hall": {
       "player": {
@@ -4861,7 +4861,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "tom-kim": {
       "player": {
@@ -4873,8 +4873,8 @@
         "position": "T6",
         "totalToPar": -18,
         "today": -5,
-        "thru": "16",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": -3,
         "nextTeeTime": "12:29 PM EST"
       },
@@ -4896,7 +4896,7 @@
         },
         {
           "round": 4,
-          "score": 59,
+          "score": 66,
           "relativeToPar": -5
         }
       ],
@@ -4907,7 +4907,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "chandler-blanchet": {
       "player": {
@@ -4953,7 +4953,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "ben-martin": {
       "player": {
@@ -4989,7 +4989,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "john-parry": {
       "player": {
@@ -5025,7 +5025,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "jesper-svensson": {
       "player": {
@@ -5034,12 +5034,12 @@
         "country": "Sweden"
       },
       "tournamentStatus": {
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -4,
         "thru": "F",
         "status": "Finish",
-        "movement": -8,
+        "movement": -7,
         "nextTeeTime": "10:50 AM EST"
       },
       "roundByRound": [
@@ -5071,7 +5071,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "keita-nakajima": {
       "player": {
@@ -5117,7 +5117,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "mac-meissner": {
       "player": {
@@ -5163,7 +5163,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "cameron-tankersley": {
       "player": {
@@ -5209,7 +5209,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "nick-dunlap": {
       "player": {
@@ -5245,7 +5245,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "pierceson-coody": {
       "player": {
@@ -5257,8 +5257,8 @@
         "position": "T6",
         "totalToPar": -18,
         "today": -3,
-        "thru": "15",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": 2,
         "nextTeeTime": "12:40 PM EST"
       },
@@ -5280,7 +5280,7 @@
         },
         {
           "round": 4,
-          "score": 57,
+          "score": 68,
           "relativeToPar": -3
         }
       ],
@@ -5291,7 +5291,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "harry-higgs": {
       "player": {
@@ -5327,7 +5327,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "rasmus-neergaard-petersen": {
       "player": {
@@ -5373,7 +5373,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "joe-highsmith": {
       "player": {
@@ -5409,7 +5409,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "jackson-suber": {
       "player": {
@@ -5455,7 +5455,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "santiago-de-la-fuente": {
       "player": {
@@ -5491,7 +5491,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "trent-phillips": {
       "player": {
@@ -5527,7 +5527,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "kensei-hirata": {
       "player": {
@@ -5536,12 +5536,12 @@
         "country": "Japan"
       },
       "tournamentStatus": {
-        "position": "15",
-        "totalToPar": -16,
-        "today": -3,
-        "thru": "17",
-        "status": "In Progress",
-        "movement": 6,
+        "position": "T11",
+        "totalToPar": -17,
+        "today": -4,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 2,
         "nextTeeTime": "12:18 PM EST"
       },
       "roundByRound": [
@@ -5562,8 +5562,8 @@
         },
         {
           "round": 4,
-          "score": 64,
-          "relativeToPar": -3
+          "score": 67,
+          "relativeToPar": -4
         }
       ],
       "scoring": {
@@ -5573,7 +5573,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "a-j-ewart": {
       "player": {
@@ -5619,7 +5619,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "adrien-dumont-de-chassart": {
       "player": {
@@ -5665,7 +5665,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "william-mouw": {
       "player": {
@@ -5701,7 +5701,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "ben-james": {
       "player": {
@@ -5747,7 +5747,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "aldrich-potgieter": {
       "player": {
@@ -5783,7 +5783,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "davis-chatfield": {
       "player": {
@@ -5819,7 +5819,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "gordon-sargent": {
       "player": {
@@ -5865,7 +5865,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "sudarshan-yellamaraju": {
       "player": {
@@ -5911,7 +5911,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "omar-morales": {
       "player": {
@@ -5947,7 +5947,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "karl-vilips": {
       "player": {
@@ -5993,7 +5993,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "david-ford": {
       "player": {
@@ -6029,7 +6029,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "neal-shipley": {
       "player": {
@@ -6075,7 +6075,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "blades-brown": {
       "player": {
@@ -6087,8 +6087,8 @@
         "position": "T19",
         "totalToPar": -14,
         "today": -1,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": 10,
         "nextTeeTime": "12:18 PM EST"
       },
@@ -6110,7 +6110,7 @@
         },
         {
           "round": 4,
-          "score": 66,
+          "score": 70,
           "relativeToPar": -1
         }
       ],
@@ -6121,7 +6121,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "luke-clanton": {
       "player": {
@@ -6130,12 +6130,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -1,
         "thru": "F",
         "status": "Finish",
-        "movement": 11,
+        "movement": 12,
         "nextTeeTime": "11:45 AM EST"
       },
       "roundByRound": [
@@ -6167,7 +6167,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "john-daly-ii": {
       "player": {
@@ -6213,7 +6213,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "johnny-keefer": {
       "player": {
@@ -6249,7 +6249,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "kihei-akina": {
       "player": {
@@ -6258,12 +6258,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T13",
-        "totalToPar": -17,
-        "today": -3,
-        "thru": "16",
-        "status": "In Progress",
-        "movement": 6,
+        "position": "15",
+        "totalToPar": -16,
+        "today": -2,
+        "thru": "F",
+        "status": "Finish",
+        "movement": 8,
         "nextTeeTime": "12:29 PM EST"
       },
       "roundByRound": [
@@ -6284,8 +6284,8 @@
         },
         {
           "round": 4,
-          "score": 61,
-          "relativeToPar": -3
+          "score": 69,
+          "relativeToPar": -2
         }
       ],
       "scoring": {
@@ -6295,7 +6295,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "gerardo-gomez": {
       "player": {
@@ -6331,7 +6331,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "ryder-cowan": {
       "player": {
@@ -6367,7 +6367,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "garrett-endicott": {
       "player": {
@@ -6413,7 +6413,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "alejandro-fierro": {
       "player": {
@@ -6449,7 +6449,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "eli-ortego": {
       "player": {
@@ -6485,7 +6485,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "mauricio-figueroa-ramirez": {
       "player": {
@@ -6521,7 +6521,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "andrew-putnam": {
       "player": {
@@ -6557,7 +6557,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "adam-hadwin": {
       "player": {
@@ -6603,7 +6603,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "peter-malnati": {
       "player": {
@@ -6639,7 +6639,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "chan-kim": {
       "player": {
@@ -6675,7 +6675,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "emiliano-grillo": {
       "player": {
@@ -6721,7 +6721,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "beau-hossler": {
       "player": {
@@ -6767,7 +6767,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "joel-dahmen": {
       "player": {
@@ -6813,7 +6813,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "david-lipsky": {
       "player": {
@@ -6849,7 +6849,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "patrick-rodgers": {
       "player": {
@@ -6885,7 +6885,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "mackenzie-hughes": {
       "player": {
@@ -6894,12 +6894,12 @@
         "country": "Canada"
       },
       "tournamentStatus": {
-        "position": "5",
+        "position": "T4",
         "totalToPar": -19,
         "today": -5,
-        "thru": "16",
-        "status": "In Progress",
-        "movement": -2,
+        "thru": "F",
+        "status": "Finish",
+        "movement": -3,
         "nextTeeTime": "12:29 PM EST"
       },
       "roundByRound": [
@@ -6920,7 +6920,7 @@
         },
         {
           "round": 4,
-          "score": 59,
+          "score": 66,
           "relativeToPar": -5
         }
       ],
@@ -6931,7 +6931,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "marcelo-rozo": {
       "player": {
@@ -6977,7 +6977,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "zecheng-dou": {
       "player": {
@@ -7023,7 +7023,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "ben-silverman": {
       "player": {
@@ -7069,7 +7069,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "max-homa": {
       "player": {
@@ -7081,8 +7081,8 @@
         "position": "66",
         "totalToPar": -2,
         "today": -5,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": -2,
         "nextTeeTime": "12:40 PM EST"
       },
@@ -7104,7 +7104,7 @@
         },
         {
           "round": 4,
-          "score": 62,
+          "score": 66,
           "relativeToPar": -5
         }
       ],
@@ -7115,7 +7115,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "zac-blair": {
       "player": {
@@ -7151,7 +7151,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "corey-conners": {
       "player": {
@@ -7197,7 +7197,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "adam-svensson": {
       "player": {
@@ -7233,7 +7233,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "mark-hubbard": {
       "player": {
@@ -7269,7 +7269,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "justin-lower": {
       "player": {
@@ -7315,7 +7315,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "haotong-li": {
       "player": {
@@ -7324,12 +7324,12 @@
         "country": "China"
       },
       "tournamentStatus": {
-        "position": "T28",
+        "position": "T29",
         "totalToPar": -12,
         "today": -5,
         "thru": "F",
         "status": "Finish",
-        "movement": -13,
+        "movement": -12,
         "nextTeeTime": "11:12 AM EST"
       },
       "roundByRound": [
@@ -7361,7 +7361,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "christiaan-bezuidenhout": {
       "player": {
@@ -7407,7 +7407,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "erik-van-rooyen": {
       "player": {
@@ -7453,7 +7453,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "jordan-smith": {
       "player": {
@@ -7499,7 +7499,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "brian-campbell": {
       "player": {
@@ -7511,8 +7511,8 @@
         "position": "T6",
         "totalToPar": -18,
         "today": -5,
-        "thru": "17",
-        "status": "In Progress",
+        "thru": "F",
+        "status": "Finish",
         "movement": -3,
         "nextTeeTime": "12:18 PM EST"
       },
@@ -7534,7 +7534,7 @@
         },
         {
           "round": 4,
-          "score": 62,
+          "score": 66,
           "relativeToPar": -5
         }
       ],
@@ -7545,7 +7545,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "tyler-duncan": {
       "player": {
@@ -7554,7 +7554,7 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T63",
+        "position": "63",
         "totalToPar": -4,
         "today": 3,
         "thru": "F",
@@ -7591,7 +7591,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "paul-peterson": {
       "player": {
@@ -7600,12 +7600,12 @@
         "country": "USA"
       },
       "tournamentStatus": {
-        "position": "T63",
-        "totalToPar": -4,
-        "today": -2,
-        "thru": "17",
-        "status": "In Progress",
-        "movement": -2,
+        "position": "T64",
+        "totalToPar": -3,
+        "today": -1,
+        "thru": "F",
+        "status": "Finish",
+        "movement": -1,
         "nextTeeTime": "12:29 PM EST"
       },
       "roundByRound": [
@@ -7626,8 +7626,8 @@
         },
         {
           "round": 4,
-          "score": 65,
-          "relativeToPar": -2
+          "score": 70,
+          "relativeToPar": -1
         }
       ],
       "scoring": {
@@ -7637,7 +7637,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     },
     "taylor-pendrith": {
       "player": {
@@ -7673,7 +7673,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-11-01T22:18:49.709Z"
+      "generatedAt": "2026-11-02T18:46:04.314Z"
     }
   }
 }
