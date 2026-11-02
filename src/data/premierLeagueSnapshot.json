@@ -20,6 +20,26 @@
       {
         "position": 1,
         "playedGames": 9,
+        "won": 8,
+        "draw": 0,
+        "lost": 1,
+        "points": 24,
+        "goalsFor": 14,
+        "goalsAgainst": 5,
+        "goalDifference": 9,
+        "team": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png",
+          "venue": null,
+          "accentColor": "#EF0107"
+        }
+      },
+      {
+        "position": 2,
+        "playedGames": 9,
         "won": 7,
         "draw": 0,
         "lost": 2,
@@ -35,26 +55,6 @@
           "crest": "https://crests.football-data.org/65.png",
           "venue": null,
           "accentColor": "#6CABDD"
-        }
-      },
-      {
-        "position": 2,
-        "playedGames": 8,
-        "won": 7,
-        "draw": 0,
-        "lost": 1,
-        "points": 21,
-        "goalsFor": 13,
-        "goalsAgainst": 5,
-        "goalDifference": 8,
-        "team": {
-          "id": "57",
-          "name": "Arsenal FC",
-          "shortName": "Arsenal",
-          "tla": "ARS",
-          "crest": "https://crests.football-data.org/57.png",
-          "venue": null,
-          "accentColor": "#EF0107"
         }
       },
       {
@@ -99,14 +99,14 @@
       },
       {
         "position": 5,
-        "playedGames": 8,
+        "playedGames": 9,
         "won": 4,
         "draw": 3,
-        "lost": 1,
+        "lost": 2,
         "points": 15,
         "goalsFor": 11,
-        "goalsAgainst": 8,
-        "goalDifference": 3,
+        "goalsAgainst": 9,
+        "goalDifference": 2,
         "team": {
           "id": "64",
           "name": "Liverpool FC",
@@ -420,6 +420,32 @@
     ],
     "recentFixtures": [
       {
+        "id": "560631",
+        "utcDate": "2026-11-01T16:30:00Z",
+        "status": "FINISHED",
+        "matchday": 9,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "64",
+          "name": "Liverpool FC",
+          "shortName": "Liverpool",
+          "tla": "LIV",
+          "crest": "https://crests.football-data.org/64.png"
+        },
+        "awayTeam": {
+          "id": "57",
+          "name": "Arsenal FC",
+          "shortName": "Arsenal",
+          "tla": "ARS",
+          "crest": "https://crests.football-data.org/57.png"
+        },
+        "score": {
+          "winner": "AWAY_TEAM",
+          "home": 0,
+          "away": 1
+        }
+      },
+      {
         "id": "560628",
         "utcDate": "2026-10-31T20:00:00Z",
         "status": "FINISHED",
@@ -600,61 +626,9 @@
           "home": 2,
           "away": 0
         }
-      },
-      {
-        "id": "560626",
-        "utcDate": "2026-10-31T12:30:00Z",
-        "status": "FINISHED",
-        "matchday": 9,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "61",
-          "name": "Chelsea FC",
-          "shortName": "Chelsea",
-          "tla": "CHE",
-          "crest": "https://crests.football-data.org/61.png"
-        },
-        "awayTeam": {
-          "id": "66",
-          "name": "Manchester United FC",
-          "shortName": "Man United",
-          "tla": "MUN",
-          "crest": "https://crests.football-data.org/66.png"
-        },
-        "score": {
-          "winner": "HOME_TEAM",
-          "home": 2,
-          "away": 0
-        }
       }
     ],
     "upcomingFixtures": [
-      {
-        "id": "560631",
-        "utcDate": "2026-11-01T16:30:00Z",
-        "status": "TIMED",
-        "matchday": 9,
-        "stage": "REGULAR_SEASON",
-        "homeTeam": {
-          "id": "64",
-          "name": "Liverpool FC",
-          "shortName": "Liverpool",
-          "tla": "LIV",
-          "crest": "https://crests.football-data.org/64.png"
-        },
-        "awayTeam": {
-          "id": "57",
-          "name": "Arsenal FC",
-          "shortName": "Arsenal",
-          "tla": "ARS",
-          "crest": "https://crests.football-data.org/57.png"
-        },
-        "score": {
-          "winner": null,
-          "home": null,
-          "away": null
-        }
-      },
       {
         "id": "560622",
         "utcDate": "2026-11-02T20:00:00Z",
@@ -830,6 +804,32 @@
           "shortName": "Liverpool",
           "tla": "LIV",
           "crest": "https://crests.football-data.org/64.png"
+        },
+        "score": {
+          "winner": null,
+          "home": null,
+          "away": null
+        }
+      },
+      {
+        "id": "560636",
+        "utcDate": "2026-11-08T14:00:00Z",
+        "status": "TIMED",
+        "matchday": 10,
+        "stage": "REGULAR_SEASON",
+        "homeTeam": {
+          "id": "71",
+          "name": "Sunderland AFC",
+          "shortName": "Sunderland",
+          "tla": "SUN",
+          "crest": "https://crests.football-data.org/71.png"
+        },
+        "awayTeam": {
+          "id": "61",
+          "name": "Chelsea FC",
+          "shortName": "Chelsea",
+          "tla": "CHE",
+          "crest": "https://crests.football-data.org/61.png"
         },
         "score": {
           "winner": null,
@@ -1037,7 +1037,7 @@
         "teamName": "Liverpool",
         "goals": 6,
         "assists": 0,
-        "appearances": 7
+        "appearances": 8
       },
       {
         "rank": 3,
@@ -1104,12 +1104,12 @@
       },
       {
         "rank": 10,
-        "name": "Bukayo Saka",
+        "name": "Kai Havertz",
         "teamId": "57",
         "teamName": "Arsenal",
         "goals": 3,
         "assists": 0,
-        "appearances": 7
+        "appearances": 9
       }
     ],
     "goalsPerMatchday": [
@@ -1147,10 +1147,10 @@
       },
       {
         "matchday": 9,
-        "totalGoals": 19
+        "totalGoals": 20
       }
     ],
-    "generatedAt": "2026-11-01T15:13:02.288Z"
+    "generatedAt": "2026-11-01T20:31:23.314Z"
   },
   "teamSnapshots": {
     "57": {
@@ -1169,6 +1169,32 @@
         "manager": "Mikel Arteta"
       },
       "recentFixtures": [
+        {
+          "id": "560631",
+          "utcDate": "2026-11-01T16:30:00Z",
+          "status": "FINISHED",
+          "matchday": 9,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "awayTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        },
         {
           "id": "560616",
           "utcDate": "2026-10-24T14:00:00Z",
@@ -1272,61 +1298,9 @@
             "home": 3,
             "away": 0
           }
-        },
-        {
-          "id": "560577",
-          "utcDate": "2026-09-12T19:00:00Z",
-          "status": "FINISHED",
-          "matchday": 4,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "71",
-            "name": "Sunderland AFC",
-            "shortName": "Sunderland",
-            "tla": "SUN",
-            "crest": "https://crests.football-data.org/71.png"
-          },
-          "awayTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 0,
-            "away": 2
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560631",
-          "utcDate": "2026-11-01T16:30:00Z",
-          "status": "TIMED",
-          "matchday": 9,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "awayTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560640",
           "utcDate": "2026-11-07T15:00:00Z",
@@ -1430,6 +1404,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560672",
+          "utcDate": "2026-12-06T16:30:00Z",
+          "status": "TIMED",
+          "matchday": 14,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "73",
+            "name": "Tottenham Hotspur FC",
+            "shortName": "Tottenham",
+            "tla": "TOT",
+            "crest": "https://crests.football-data.org/73.png"
+          },
+          "awayTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -1437,17 +1437,17 @@
           "W",
           "W",
           "W",
-          "L",
-          "W"
+          "W",
+          "L"
         ],
         "wins": 4,
         "draws": 0,
         "losses": 1,
         "points": 12,
-        "goalsFor": 7,
+        "goalsFor": 6,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "58": {
       "team": {
@@ -1743,7 +1743,7 @@
         "goalsFor": 9,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "61": {
       "team": {
@@ -2039,7 +2039,7 @@
         "goalsFor": 9,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "62": {
       "team": {
@@ -2335,7 +2335,7 @@
         "goalsFor": 3,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "63": {
       "team": {
@@ -2631,7 +2631,7 @@
         "goalsFor": 5,
         "goalsAgainst": 4
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "64": {
       "team": {
@@ -2649,6 +2649,32 @@
         "manager": "Andoni Iraola"
       },
       "recentFixtures": [
+        {
+          "id": "560631",
+          "utcDate": "2026-11-01T16:30:00Z",
+          "status": "FINISHED",
+          "matchday": 9,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "awayTeam": {
+            "id": "57",
+            "name": "Arsenal FC",
+            "shortName": "Arsenal",
+            "tla": "ARS",
+            "crest": "https://crests.football-data.org/57.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 0,
+            "away": 1
+          }
+        },
         {
           "id": "560612",
           "utcDate": "2026-10-25T14:00:00Z",
@@ -2752,61 +2778,9 @@
             "home": 0,
             "away": 1
           }
-        },
-        {
-          "id": "560573",
-          "utcDate": "2026-09-12T14:00:00Z",
-          "status": "FINISHED",
-          "matchday": 4,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "awayTeam": {
-            "id": "63",
-            "name": "Fulham FC",
-            "shortName": "Fulham",
-            "tla": "FUL",
-            "crest": "https://crests.football-data.org/63.png"
-          },
-          "score": {
-            "winner": "DRAW",
-            "home": 0,
-            "away": 0
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "560631",
-          "utcDate": "2026-11-01T16:30:00Z",
-          "status": "TIMED",
-          "matchday": 9,
-          "stage": "REGULAR_SEASON",
-          "homeTeam": {
-            "id": "64",
-            "name": "Liverpool FC",
-            "shortName": "Liverpool",
-            "tla": "LIV",
-            "crest": "https://crests.football-data.org/64.png"
-          },
-          "awayTeam": {
-            "id": "57",
-            "name": "Arsenal FC",
-            "shortName": "Arsenal",
-            "tla": "ARS",
-            "crest": "https://crests.football-data.org/57.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "560635",
           "utcDate": "2026-11-08T14:00:00Z",
@@ -2910,24 +2884,50 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "560676",
+          "utcDate": "2026-12-05T12:30:00Z",
+          "status": "TIMED",
+          "matchday": 14,
+          "stage": "REGULAR_SEASON",
+          "homeTeam": {
+            "id": "61",
+            "name": "Chelsea FC",
+            "shortName": "Chelsea",
+            "tla": "CHE",
+            "crest": "https://crests.football-data.org/61.png"
+          },
+          "awayTeam": {
+            "id": "64",
+            "name": "Liverpool FC",
+            "shortName": "Liverpool",
+            "tla": "LIV",
+            "crest": "https://crests.football-data.org/64.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "W",
           "L",
-          "W",
-          "D"
+          "W"
         ],
         "wins": 3,
-        "draws": 1,
-        "losses": 1,
-        "points": 10,
+        "draws": 0,
+        "losses": 2,
+        "points": 9,
         "goalsFor": 5,
-        "goalsAgainst": 4
+        "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "65": {
       "team": {
@@ -3223,7 +3223,7 @@
         "goalsFor": 12,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "66": {
       "team": {
@@ -3519,7 +3519,7 @@
         "goalsFor": 3,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "67": {
       "team": {
@@ -3815,7 +3815,7 @@
         "goalsFor": 6,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "71": {
       "team": {
@@ -4111,7 +4111,7 @@
         "goalsFor": 4,
         "goalsAgainst": 12
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "73": {
       "team": {
@@ -4407,7 +4407,7 @@
         "goalsFor": 10,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "322": {
       "team": {
@@ -4703,7 +4703,7 @@
         "goalsFor": 6,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "341": {
       "team": {
@@ -4999,7 +4999,7 @@
         "goalsFor": 2,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "349": {
       "team": {
@@ -5295,7 +5295,7 @@
         "goalsFor": 7,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "351": {
       "team": {
@@ -5591,7 +5591,7 @@
         "goalsFor": 2,
         "goalsAgainst": 8
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "354": {
       "team": {
@@ -5887,7 +5887,7 @@
         "goalsFor": 3,
         "goalsAgainst": 10
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "397": {
       "team": {
@@ -6183,7 +6183,7 @@
         "goalsFor": 11,
         "goalsAgainst": 2
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "402": {
       "team": {
@@ -6479,7 +6479,7 @@
         "goalsFor": 9,
         "goalsAgainst": 5
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "1044": {
       "team": {
@@ -6775,7 +6775,7 @@
         "goalsFor": 8,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     },
     "1076": {
       "team": {
@@ -7071,7 +7071,7 @@
         "goalsFor": 9,
         "goalsAgainst": 6
       },
-      "generatedAt": "2026-11-01T15:13:02.288Z"
+      "generatedAt": "2026-11-01T20:31:23.314Z"
     }
   }
 }
