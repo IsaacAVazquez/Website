@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-11-02
 
 ---
 
@@ -525,5 +525,5 @@ const minutes = calculateReadingTime(post.content); // e.g. 4
 | `src/app/writing/[slug]/page.tsx` | Article pattern reference |
 | `scripts/generatePublicSitemap.mjs` | Writes `public/sitemap.xml` from `src/lib/sitemap.js` |
 | `src/lib/sitemap.js` | Builds the allowlisted sitemap entries (`loc` + `lastmod`) |
-| `public/robots.txt` | Crawl directives (manually maintained) |
+| `public/robots.txt` | Crawl directives (manually maintained). Cloudflare prepends its managed AI crawler block when it serves the file, so the live robots.txt is longer than this one, and `crawler-policy.test.ts` can't see the difference. See `docs/seo-aeo-audit-2026-11-02.md`. |
 | `WRITING_VOICE.md` | Voice and tone rules for all user-facing text including meta content |
