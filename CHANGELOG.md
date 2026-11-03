@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-11-03
+
+- Correct three project accuracy gaps ([#644](https://github.com/IsaacAVazquez/Website/pull/644)).
+
+---
+
 ## 2026-10-26
 
 - Voice and accuracy pass on all writing and site copy ([#641](https://github.com/IsaacAVazquez/Website/pull/641)).
