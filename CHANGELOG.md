@@ -12,6 +12,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump @netlify/plugin-nextjs from 5.16.1 to 5.16.4 ([#647](https://github.com/IsaacAVazquez/Website/pull/647)).
 - Bump typescript-eslint from 8.71.0 to 8.72.1 ([#648](https://github.com/IsaacAVazquez/Website/pull/648)).
 - Bump wcwidth from 0.9.1 to 0.9.3 in /scripts ([#649](https://github.com/IsaacAVazquez/Website/pull/649)).
+- Plain wording for the enablement assistant's no-answer copy ([#650](https://github.com/IsaacAVazquez/Website/pull/650)).
 
 ---
 
