@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-11-03
 
 - Correct three project accuracy gaps ([#644](https://github.com/IsaacAVazquez/Website/pull/644)).
+- Bump typescript from 6.0.2 to 7.0.2 ([#603](https://github.com/IsaacAVazquez/Website/pull/603)).
 
 ---
 
