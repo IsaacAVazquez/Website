@@ -34,7 +34,7 @@ export default function DraftTrackerPage() {
           name: "Fantasy Football Draft Assistant",
           description: "Manual fantasy football draft tracker with sourced rankings, snake-order awareness, room-relative draft value, and expected return math",
           url: "https://isaacvazquez.com/fantasy-football/draft-tracker",
-          applicationCategory: "Sports",
+          applicationCategory: "SportsApplication",
           operatingSystem: "Web Browser",
         }}
       />

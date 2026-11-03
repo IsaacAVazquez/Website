@@ -43,7 +43,7 @@ export default function TradeCalculatorPage() {
           description:
             "A one-quarterback redraft trade estimator using expert consensus and league settings, priced on mock-draft ADP before the season and on rest-of-season rankings and this season's scoring after kickoff",
           url: "https://isaacvazquez.com/fantasy-football/trade-calculator",
-          applicationCategory: "Sports",
+          applicationCategory: "SportsApplication",
           operatingSystem: "Web Browser",
         }}
       />

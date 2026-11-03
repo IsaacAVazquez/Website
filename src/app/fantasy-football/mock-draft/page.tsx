@@ -36,7 +36,7 @@ export default function MockDraftPage() {
           description:
             "A practice draft room against simulated opponents built on the published consensus board and mock-draft ADP",
           url: "https://isaacvazquez.com/fantasy-football/mock-draft",
-          applicationCategory: "Sports",
+          applicationCategory: "SportsApplication",
           operatingSystem: "Web Browser",
         }}
       />
