@@ -677,7 +677,7 @@ function RecommendationSection({
         </h2>
         <p className="ea-lede">
           The search retrieves from a small committed knowledge base, reports a match score out of 100, and
-          gives up when the question does not match the material it has.
+          declines to answer when the question does not match the material it has.
         </p>
 
         <div className="ea-pair">
@@ -754,7 +754,7 @@ function RecommendationSection({
                 <h3 className="ea-h3">No question searched yet</h3>
                 <p className="ea-body">
                   Try a known setup problem or one of the deliberately unsupported questions to see
-                  where the match score gives up.
+                  where the match score falls too low to answer.
                 </p>
               </>
             )}
