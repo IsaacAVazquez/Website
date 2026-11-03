@@ -6,6 +6,7 @@ import type {
   BudgetMonth,
   BudgetMonthMap,
   BudgetSummary,
+  BudgetRecurringExpense,
 } from "@/types/budget";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { toLocalDateKey } from "@/lib/date-formatters";
@@ -33,7 +34,7 @@ function sanitizeNonNegativeAmount(value: unknown) {
 }
 
 export function isBudgetMonthKey(value: string) {
-  return /^\d{4}-\d{2}$/.test(value);
+  return /^\d{4}-(0[1-9]|1[0-2])$/.test(value);
 }
 
 /**
@@ -85,7 +86,8 @@ export function getDefaultExpenseDate(monthKey: string, now = new Date()) {
 
 /** An expense is filed under one month, so its `YYYY-MM-DD` date has to fall inside that month. */
 export function isDateInBudgetMonth(date: string, monthKey: string) {
-  return isBudgetMonthKey(monthKey) && date.startsWith(`${monthKey}-`);
+  return isBudgetMonthKey(monthKey) && /^\d{4}-\d{2}-\d{2}$/.test(date) && date.startsWith(`${monthKey}-`) &&
+    date >= `${monthKey}-01` && date <= getBudgetMonthLastDate(monthKey);
 }
 
 /** A month's last day as `YYYY-MM-DD`, the upper bound of its expense dates. */
@@ -138,6 +140,8 @@ function sanitizeBudgetCategory(input: unknown): BudgetCategory | null {
     id: typeof input.id === "string" && input.id ? input.id : prefixedId("cat"),
     name: rawName || "Untitled",
     budgetedAmount: sanitizeNonNegativeAmount(input.budgetedAmount),
+    carryForward: input.carryForward === true,
+    carriedAmount: sanitizeNonNegativeAmount(input.carriedAmount),
   };
 }
 
@@ -152,6 +156,7 @@ function sanitizeBudgetExpense(input: unknown): BudgetExpense | null {
     amount: sanitizeNonNegativeAmount(input.amount),
     date: input.date,
     note: typeof input.note === "string" ? input.note.trim().slice(0, 140) : "",
+    ...(typeof input.recurringId === "string" ? { recurringId: input.recurringId.slice(0, 100) } : {}),
   };
 }
 
@@ -181,7 +186,50 @@ function sanitizeBudgetMonth(input: unknown, fallbackMonthKey?: string): BudgetM
     savingsTarget: sanitizeNonNegativeAmount(input.savingsTarget),
     categories: categories.length > 0 || hasEmptyCategories ? categories : getDefaultBudgetCategories(),
     expenses,
+    recurringExpenses: Array.isArray(input.recurringExpenses)
+      ? input.recurringExpenses.flatMap((bill): BudgetRecurringExpense[] => {
+          if (!isRecord(bill) || typeof bill.id !== "string" || !bill.id ||
+            typeof bill.categoryId !== "string" || !categories.some(c => c.id === bill.categoryId) ||
+            typeof bill.day !== "number" || !Number.isInteger(bill.day) || bill.day < 1 || bill.day > 31 ||
+            typeof bill.amount !== "number" || !Number.isFinite(bill.amount) || bill.amount <= 0) return [];
+          return [{ id: bill.id.slice(0, 100), categoryId: bill.categoryId,
+            amount: sanitizeNonNegativeAmount(bill.amount), day: bill.day,
+            note: typeof bill.note === "string" ? bill.note.trim().slice(0, 140) : "" }];
+        }).slice(0, 100)
+      : [],
   };
+}
+
+export function isBudgetPlanEmpty(month: BudgetMonth): boolean {
+  return month.income === 0 && month.savingsTarget === 0 && month.expenses.length === 0 &&
+    !(month.recurringExpenses?.length) && month.categories.every(c => c.budgetedAmount === 0 && !c.carriedAmount);
+}
+
+export function copyBudgetPlan(previous: BudgetMonth, monthKey: string): BudgetMonth {
+  const summary = calculateBudgetSummary(previous);
+  return {
+    monthKey, income: previous.income, savingsTarget: previous.savingsTarget, expenses: [],
+    categories: previous.categories.map(category => ({
+      ...category,
+      carriedAmount: category.carryForward
+        ? Math.max(0, summary.categorySummaries.find(c => c.id === category.id)?.remaining ?? 0) : 0,
+    })),
+    recurringExpenses: (previous.recurringExpenses ?? []).map(bill => ({ ...bill })),
+  };
+}
+
+export function recordRecurringExpenses(month: BudgetMonth): BudgetMonth {
+  if (!isBudgetMonthKey(month.monthKey)) return month;
+  const lastDay = Number(getBudgetMonthLastDate(month.monthKey).slice(-2));
+  const recorded = new Set(month.expenses.map(expense => expense.recurringId));
+  const additions = (month.recurringExpenses ?? []).flatMap(bill => {
+    if (recorded.has(bill.id) || !month.categories.some(c => c.id === bill.categoryId)) return [];
+    recorded.add(bill.id);
+    return [{ ...createBudgetExpense({ categoryId: bill.categoryId, amount: bill.amount,
+      date: `${month.monthKey}-${String(Math.min(lastDay, bill.day)).padStart(2, "0")}`, note: bill.note }),
+      recurringId: bill.id }];
+  });
+  return { ...month, expenses: [...month.expenses, ...additions] };
 }
 
 export function parseBudgetMonths(raw: string | null): BudgetMonthMap {
@@ -264,21 +312,23 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
   const categorySummaries: BudgetCategorySummary[] = month.categories
     .map((category) => {
       const spent = roundCurrency(expenseTotals.get(category.id) ?? 0);
-      const remaining = roundCurrency(category.budgetedAmount - spent);
+      const availableAmount = roundCurrency(category.budgetedAmount + (category.carriedAmount ?? 0));
+      const remaining = roundCurrency(availableAmount - spent);
       const utilization =
-        category.budgetedAmount > 0
-          ? spent / category.budgetedAmount
+        availableAmount > 0
+          ? spent / availableAmount
           : spent > 0
             ? 1
             : 0;
 
       return {
         ...category,
+        availableAmount,
         spent,
         remaining,
         utilization,
         expenseCount: expenseCounts.get(category.id) ?? 0,
-        overBudget: spent > category.budgetedAmount,
+        overBudget: spent > availableAmount,
       };
     })
     .sort((left, right) => {
@@ -290,10 +340,11 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
     });
 
   const budgetedTotal = roundCurrency(
-    month.categories.reduce((sum, category) => sum + category.budgetedAmount, 0)
+    month.categories.reduce((sum, category) => sum + category.budgetedAmount + (category.carriedAmount ?? 0), 0)
   );
   const spentTotal = roundCurrency(month.expenses.reduce((sum, expense) => sum + expense.amount, 0));
-  const availableToBudget = roundCurrency(month.income - month.savingsTarget);
+  const carriedTotal = month.categories.reduce((sum, category) => sum + (category.carriedAmount ?? 0), 0);
+  const availableToBudget = roundCurrency(month.income - month.savingsTarget + carriedTotal);
 
   return {
     availableToBudget,
@@ -324,6 +375,7 @@ export function buildBudgetCsv(month: BudgetMonth, summary: BudgetSummary): stri
   lines.push("");
   lines.push(["summary", "amount"].join(","));
   lines.push(["Income", month.income].map(escapeCsvValue).join(","));
+  lines.push(["Carried in", month.categories.reduce((sum, category) => sum + (category.carriedAmount ?? 0), 0)].map(escapeCsvValue).join(","));
   lines.push(["Budgeted", summary.budgetedTotal].map(escapeCsvValue).join(","));
   lines.push(["Spent", summary.spentTotal].map(escapeCsvValue).join(","));
   lines.push(

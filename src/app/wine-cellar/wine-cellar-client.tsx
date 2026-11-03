@@ -20,6 +20,8 @@ import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
 import "./wine-cellar.css";
 import { formatDollars } from "@/lib/utils";
 import { WineCork } from "@/components/discoveries/WineCork";
+import { WineInventory } from "./WineInventory";
+import { openInventoryBottle, type InventoryBottle } from "@/lib/wineInventory";
 
 interface WineFormDraft {
   name: string;
@@ -278,6 +280,8 @@ export function WineCellarClient() {
   const reduceMotion = useReducedMotion();
   const persistenceStatus = useLocalStoragePersistenceStatus(WINE_CELLAR_STORAGE_KEY);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [openingId, setOpeningId] = useState<string | null>(null);
+  const [openingError, setOpeningError] = useState("");
   const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft(""));
   const [nameMissing, setNameMissing] = useState(false);
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -292,6 +296,8 @@ export function WineCellarClient() {
 
   function resetForm() {
     setEditingId(null);
+    setOpeningId(null);
+    setOpeningError("");
     setNameMissing(false);
     setFormDraft(createEmptyFormDraft());
   }
@@ -304,7 +310,12 @@ export function WineCellarClient() {
       return;
     }
     const wineDraft = formDraftToWineDraft(formDraft);
-    if (editingId) {
+    if (openingId) {
+      if (!openInventoryBottle(openingId, wineDraft)) {
+        setOpeningError("This bottle is no longer on the shelf. Cancel this opening or log it as a separate tasting.");
+        return;
+      }
+    } else if (editingId) {
       updateEntry(editingId, wineDraft);
     } else {
       addEntry(wineDraft);
@@ -316,6 +327,8 @@ export function WineCellarClient() {
     const entry = findEntry(id);
     if (!entry) return;
     setEditingId(id);
+    setOpeningId(null);
+    setOpeningError("");
     setNameMissing(false);
     setFormDraft(entryToFormDraft(entry));
     nameInputRef.current?.focus({ preventScroll: true });
@@ -327,6 +340,15 @@ export function WineCellarClient() {
   function handleDelete(id: string) {
     removeEntry(id);
     if (editingId === id) resetForm();
+  }
+
+  function beginOpening(bottle: InventoryBottle) {
+    setOpeningId(bottle.id);
+    setEditingId(null);
+    setOpeningError("");
+    setFormDraft(entryToFormDraft({ ...bottle, rating: 4, notes: "", tastedOn: getTodayIsoDate(), createdAt: "" }));
+    nameInputRef.current?.focus({ preventScroll: true });
+    document.getElementById("add-tasting")?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   }
 
   const hasEntries = entries.length > 0;
@@ -370,6 +392,7 @@ export function WineCellarClient() {
           ) : null}
         </header>
 
+        <WineInventory onOpen={beginOpening} />
         <div className="wc-book">
           <div className="wc-list-col">
             <div className="wc-list-head">
@@ -529,6 +552,8 @@ export function WineCellarClient() {
           >
             <div id="add-tasting">
               <h2>{formHeading}</h2>
+              {openingId && <p className="wc-note">Saving this tasting opens one bottle from your shelf.</p>}
+              {openingError && <p role="alert" className="wc-error">{openingError}</p>}
               <form onSubmit={handleSubmit} className="wc-form">
                 <label className="wc-field wc-wide">
                   <span className="wc-label">Wine name</span>
@@ -680,7 +705,7 @@ export function WineCellarClient() {
                     <Plus className="h-4 w-4" aria-hidden="true" />
                     {editingId ? "Save tasting" : "Add tasting"}
                   </button>
-                  {editingId ? (
+                  {editingId || openingId ? (
                     <button type="button" onClick={resetForm} className="c97-btn-ghost">
                       <X className="h-3.5 w-3.5" aria-hidden="true" />
                       Cancel

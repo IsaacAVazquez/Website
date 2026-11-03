@@ -1,4 +1,5 @@
 import type { MuseumSnapshot } from "@/types/museum";
+import { selectedMuseumExhibitions } from "./museumExhibitions";
 
 export const MUSEUM_SNAPSHOT_VERIFIED = false;
 
@@ -8,7 +9,7 @@ export const MUSEUM_SNAPSHOT_VERIFIED = false;
  * inline; user-side state (visited / watchlist / liked / personal ratings)
  * lives in browser localStorage via useMuseumLog.
  */
-export const museumSnapshot: MuseumSnapshot = {
+const baseMuseumSnapshot: MuseumSnapshot = {
   generatedAt: "2026-10-22T06:00:00Z",
   sourceLabel: "Curated by Isaac Vazquez",
   curatorName: "Isaac Vazquez",
@@ -962,4 +963,12 @@ export const museumSnapshot: MuseumSnapshot = {
       updatedAt: "2026-01-12",
     },
   ],
+};
+
+export const museumSnapshot: MuseumSnapshot = {
+  ...baseMuseumSnapshot,
+  museums: baseMuseumSnapshot.museums.map(museum => ({
+    ...museum,
+    exhibits: [...(Object.hasOwn(selectedMuseumExhibitions, museum.id) ? selectedMuseumExhibitions[museum.id] : []), ...museum.exhibits],
+  })),
 };

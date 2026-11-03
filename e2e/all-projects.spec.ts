@@ -58,7 +58,7 @@ test.describe("Every page and portfolio project", () => {
 test("wine cellar adds, edits, reloads, and deletes a tasting", async ({ page }) => {
   await openTool(page, "/wine-cellar");
   await page.getByLabel("Wine name", { exact: true }).fill("Browser test wine");
-  await page.getByLabel("Producer", { exact: true }).fill("Test vineyard");
+  await page.locator("#add-tasting").getByLabel("Producer", { exact: true }).fill("Test vineyard");
   await page.getByRole("button", { name: "Add tasting", exact: true }).click();
   await expect(page.getByRole("button", { name: "Edit Browser test wine", exact: true })).toBeVisible();
   await reloadTool(page);

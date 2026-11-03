@@ -85,9 +85,22 @@ const snapshot: GitHubTrendingSnapshot = {
 
 describe("GitHubTrendingClient", () => {
   beforeEach(() => {
+    localStorage.clear();
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
     mockReplace.mockReset();
+  });
+
+  it("saves a repository, restores its comparison, and removes it", () => {
+    const { unmount } = render(<GitHubTrendingClient initialState={DEFAULT_GITHUB_TRENDING_STATE} snapshot={snapshot} />);
+    fireEvent.click(screen.getByRole("button", { name: "Save openai/fixture" }));
+    expect(screen.getByRole("region", { name: "Repository comparison (scrolls sideways)" })).toHaveTextContent("MIT");
+    expect(screen.getByRole("region", { name: "Repository comparison (scrolls sideways)" })).toHaveTextContent("+120 over 7 days");
+    unmount();
+    render(<GitHubTrendingClient initialState={DEFAULT_GITHUB_TRENDING_STATE} snapshot={snapshot} />);
+    expect(screen.getByRole("checkbox", { name: "Compare openai/fixture" })).toBeChecked();
+    fireEvent.click(screen.getByRole("button", { name: "Remove saved openai/fixture" }));
+    expect(screen.queryByRole("checkbox", { name: "Compare openai/fixture" })).not.toBeInTheDocument();
   });
 
   it("renders trend filters and navigates segment type, segment, and sort changes", () => {

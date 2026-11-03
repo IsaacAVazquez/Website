@@ -12,9 +12,13 @@ import {
   loadBudgetMonths,
   parseBudgetMonths,
   saveBudgetMonths,
+  copyBudgetPlan,
+  getAdjacentBudgetMonthKey,
+  isBudgetPlanEmpty,
+  recordRecurringExpenses,
 } from "@/lib/budgetPlanner";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
-import { roundTo } from "@/lib/utils";
+import { prefixedId, roundTo } from "@/lib/utils";
 import type { BudgetExpense, BudgetMonth, BudgetMonthMap } from "@/types/budget";
 
 interface ExpenseDraftInput {
@@ -126,10 +130,11 @@ export function useBudgetPlanner(currentMonthKey: string) {
   }
 
   function removeCategory(categoryId: string) {
-    updateActiveMonth((month) => ({
-      ...month,
-      categories: month.categories.filter((category) => category.id !== categoryId),
-    }));
+    updateActiveMonth((month) => {
+      if (month.expenses.some(expense => expense.categoryId === categoryId) ||
+        month.recurringExpenses?.some(bill => bill.categoryId === categoryId)) return month;
+      return { ...month, categories: month.categories.filter(category => category.id !== categoryId) };
+    });
   }
 
   // An expense dated outside the active month would count against this
@@ -177,6 +182,32 @@ export function useBudgetPlanner(currentMonthKey: string) {
     updateActiveMonth(() => createBudgetMonth(activeMonthKey));
   }
 
+  const previousMonthKey = getAdjacentBudgetMonthKey(activeMonthKey, -1);
+  const canCopyPrevious = Boolean(months[previousMonthKey]) && isBudgetPlanEmpty(activeMonth);
+
+  function copyPreviousPlan() {
+    const latest = loadBudgetMonths();
+    const previous = latest[previousMonthKey];
+    if (!previous) return;
+    updateActiveMonth(month => isBudgetPlanEmpty(month) ? copyBudgetPlan(previous, activeMonthKey) : month);
+  }
+
+  function toggleCarryForward(categoryId: string) {
+    updateActiveMonth(month => ({ ...month, categories: month.categories.map(category =>
+      category.id === categoryId ? { ...category, carryForward: !category.carryForward } : category) }));
+  }
+
+  function addRecurringBill(draft: { categoryId: string; amount: number; day: number; note: string }) {
+    if (!Number.isFinite(draft.amount) || draft.amount <= 0 || !Number.isInteger(draft.day) || draft.day < 1 || draft.day > 31) return;
+    updateActiveMonth(month => !month.categories.some(c => c.id === draft.categoryId) ? month : ({ ...month,
+      recurringExpenses: [...(month.recurringExpenses ?? []), { ...draft, amount: roundAmount(draft.amount),
+        note: draft.note.trim().slice(0, 140), id: prefixedId("bill") }] }));
+  }
+
+  function removeRecurringBill(id: string) {
+    updateActiveMonth(month => ({ ...month, recurringExpenses: month.recurringExpenses?.filter(bill => bill.id !== id) }));
+  }
+
   return {
     activeMonth,
     activeMonthKey,
@@ -193,5 +224,8 @@ export function useBudgetPlanner(currentMonthKey: string) {
     removeExpense,
     findExpense,
     clearMonth,
+    canCopyPrevious, copyPreviousPlan, toggleCarryForward,
+    addRecurringBill, removeRecurringBill,
+    recordMonthlyBills: () => updateActiveMonth(recordRecurringExpenses),
   };
 }

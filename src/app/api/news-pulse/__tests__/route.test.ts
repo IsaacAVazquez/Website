@@ -216,6 +216,8 @@ describe("GET /api/news-pulse", () => {
     expect(response.status).toBe(200);
     expect(body.errors).toEqual([]);
     expect(body.articles).toHaveLength(6);
+    expect(body.history).toHaveLength(6);
+    expect(body.history.every((item: { firstSeen: string; lastSeen: string }) => item.firstSeen === body.fetchedAt && item.lastSeen === body.fetchedAt)).toBe(true);
     expect(body.articles).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
@@ -242,7 +244,8 @@ describe("GET /api/news-pulse", () => {
       installFetchMock(buildFeedMap());
       const first = await GET();
       expect(first.status).toBe(200);
-      expect((await first.json()).articles).toHaveLength(6);
+      const firstBody = await first.json();
+      expect(firstBody.articles).toHaveLength(6);
 
       // Advance past the 5-minute success TTL so the next request re-fetches.
       jest.advanceTimersByTime(6 * 60 * 1000);
@@ -260,6 +263,7 @@ describe("GET /api/news-pulse", () => {
       expect(second.status).toBe(200);
       expect(body.articles).toHaveLength(6);
       expect(body.dataStatus).toBe("stale-fallback");
+      expect(body.history).toEqual(firstBody.history);
       expect(body.staleSources).toHaveLength(NEWS_FEEDS.length);
       expect(body.message).toMatch(/last good headlines/i);
       expect(second.headers.get("Cache-Control")).toBe("no-store");
@@ -299,6 +303,7 @@ describe("GET /api/news-pulse", () => {
       );
       expect(partialBody.dataStatus).toBe("degraded");
       expect(partialBody.staleSources).toEqual(["BBC"]);
+      expect(partialBody.history.find((item: { source: string }) => item.source === "bbc").lastSeen).not.toBe(partialBody.fetchedAt);
       expect(partialBody.errors).toEqual([
         expect.stringMatching(
           /^BBC: network down \(showing headlines fetched \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC\)$/,
@@ -418,6 +423,17 @@ describe("GET /api/news-pulse", () => {
     expect(body.errors).toEqual([]);
     expect(guardianTitles).toEqual(recent.slice(0, 30).map((item) => item.title));
     expect(body.articles).toHaveLength(35);
+  });
+
+  it("keeps one observed article when a provider repeats its link", async () => {
+    const link = "https://www.bbc.com/news/repeated-story";
+    installFetchMock(buildFeedMap({ [FEED_URLS.bbc]: makeRssItems([
+      { title: "Updated duplicate", link, pubDate: hoursAgo(1).toUTCString() },
+      { title: "Older duplicate", link, pubDate: hoursAgo(2).toUTCString() },
+    ]) }));
+    const body = await (await GET()).json();
+    expect(body.articles.filter((article: { link: string }) => article.link === link)).toHaveLength(1);
+    expect(body.history.filter((article: { link: string }) => article.link === link)).toHaveLength(1);
   });
 
   it("reports a feed whose items are all older than 7 days", async () => {

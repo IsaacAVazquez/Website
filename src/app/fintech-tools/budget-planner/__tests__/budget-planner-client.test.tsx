@@ -35,6 +35,26 @@ describe("BudgetPlannerClient", () => {
     expect(months["2026-04"].categories.length).toBeGreaterThan(1);
   });
 
+  it("copies a saved plan and records recurring bills only once", () => {
+    localStorage.setItem(BUDGET_PLANNER_STORAGE_KEY, JSON.stringify({ "2026-03": {
+      monthKey: "2026-03", income: 2000, savingsTarget: 200,
+      categories: [{ id: "housing", name: "Housing", budgetedAmount: 1000, carryForward: true }],
+      expenses: [{ id: "paid", categoryId: "housing", amount: 900, date: "2026-03-01", note: "Rent" }],
+      recurringExpenses: [{ id: "rent", categoryId: "housing", amount: 900, day: 1, note: "Rent" }],
+    } }));
+    render(<BudgetPlannerClient />);
+    fireEvent.click(screen.getByText("Reuse a plan and recurring bills"));
+    fireEvent.click(screen.getByRole("button", { name: "Copy previous month’s plan" }));
+    expect(screen.getByLabelText("Monthly income")).toHaveValue(2000);
+    expect(screen.getByText(/Includes \$100 carried in/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Record this month’s bills/ }));
+    expect(screen.getByRole("button", { name: /Record this month’s bills/ })).toBeDisabled();
+    const saved = JSON.parse(localStorage.getItem(BUDGET_PLANNER_STORAGE_KEY) ?? "{}")["2026-04"];
+    expect(saved.expenses).toHaveLength(1);
+    expect(saved.expenses[0]).toMatchObject({ date: "2026-04-01", amount: 900 });
+    expect(screen.getByRole("button", { name: "Copy previous month’s plan" })).toBeDisabled();
+  });
+
   it("ends the check register on the same amount the month bar calls left to spend", async () => {
     localStorage.setItem(
       BUDGET_PLANNER_STORAGE_KEY,
@@ -136,7 +156,7 @@ describe("BudgetPlannerClient", () => {
 
     await user.selectOptions(
       screen.getByLabelText("Expense category"),
-      screen.getByRole("option", { name: "Groceries" })
+      within(screen.getByLabelText("Expense category")).getByRole("option", { name: "Groceries" })
     );
     await user.type(screen.getByLabelText("Expense amount"), "125.45");
     fireEvent.change(screen.getByLabelText("Expense date"), {

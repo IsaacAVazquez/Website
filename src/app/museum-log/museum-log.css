@@ -8,6 +8,15 @@
  * button, and label classes read.
  */
 
+.mlog-trip { border-block: 1px solid var(--c97-rule); padding-block: 0.5rem; }
+.mlog-trip-toggle { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; cursor: pointer; padding: 0.75rem 0; border: 0; background: transparent; color: inherit; font: inherit; font-weight: 700; text-align: left; }
+.mlog-trip-body { display: grid; gap: 0.75rem; padding-block: 0.75rem; }
+.mlog-trip-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 0.75rem; }
+.mlog-trip-fields label { display: grid; gap: 0.25rem; min-width: 0; }
+.mlog-trip-fields .c97-field { width: 100%; min-width: 0; }
+.mlog-trip-results { list-style: none; margin: 0; padding: 0; }
+.mlog-trip-results > li { padding-block: 0.75rem; border-bottom: 1px solid var(--c97-rule); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+
 .mlog-root {
   --mlog-wall: #f3f1ec;
   --mlog-ticket: #fbfaf7;

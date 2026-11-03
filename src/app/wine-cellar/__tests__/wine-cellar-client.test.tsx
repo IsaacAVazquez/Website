@@ -2,6 +2,8 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { WINE_CELLAR_STORAGE_KEY } from "@/lib/wineCellar";
 import { WineCellarClient } from "../wine-cellar-client";
 
+const tastingForm = () => within(document.getElementById("add-tasting") as HTMLElement);
+
 describe("WineCellarClient", () => {
   beforeEach(() => {
     window.localStorage.clear();
@@ -20,10 +22,10 @@ describe("WineCellarClient", () => {
     fireEvent.change(screen.getByLabelText("Wine name"), {
       target: { value: "Barolo" },
     });
-    fireEvent.change(screen.getByLabelText("Producer"), {
+    fireEvent.change(tastingForm().getByLabelText("Producer"), {
       target: { value: "Producer A" },
     });
-    fireEvent.change(screen.getByLabelText("Region"), {
+    fireEvent.change(tastingForm().getByLabelText("Region"), {
       target: { value: "Piedmont" },
     });
     fireEvent.change(screen.getByLabelText("Varietal / grape"), {
@@ -47,6 +49,23 @@ describe("WineCellarClient", () => {
     expect(screen.getByRole("searchbox", { name: "Search wines" })).toBeVisible();
     expect(screen.getByLabelText("Wine cellar side panel")).not.toHaveClass("order-first");
     expect(window.localStorage.getItem(WINE_CELLAR_STORAGE_KEY)).toContain("Barolo");
+  });
+
+  it("moves a wishlist wine onto the shelf and opens it through the tasting form", () => {
+    render(<WineCellarClient />);
+    fireEvent.click(screen.getByRole("button", { name: "Wishlist" }));
+    fireEvent.click(screen.getByText("Add a wine to the wishlist"));
+    fireEvent.change(within(screen.getByRole("form", { name: "New wishlist wine" })).getByLabelText("Name"), { target: { value: "Chenin" } });
+    fireEvent.click(screen.getByRole("button", { name: "Save to wishlist" }));
+    fireEvent.click(screen.getByRole("button", { name: "Bought a bottle" }));
+    fireEvent.click(screen.getByRole("button", { name: "Owned bottles" }));
+    expect(screen.getByLabelText("Quantity of Chenin")).toHaveValue(1);
+    fireEvent.click(screen.getByRole("button", { name: "Open bottle of Chenin" }));
+    expect(screen.getByLabelText("Wine name")).toHaveValue("Chenin");
+    fireEvent.click(screen.getByRole("button", { name: "Add tasting" }));
+    expect(screen.getByLabelText("Quantity of Chenin")).toHaveValue(0);
+    expect(within(screen.getByRole("region", { name: "Tasting log" })).getByText("Chenin")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Open bottle of Chenin" })).toBeDisabled();
   });
 
   it("filters, resets, edits, and deletes an existing bottle", () => {
@@ -148,7 +167,7 @@ describe("WineCellarClient", () => {
 
   it("notes a vintage from the future while it is typed", () => {
     render(<WineCellarClient />);
-    const vintage = screen.getByLabelText("Vintage");
+    const vintage = tastingForm().getByLabelText("Vintage");
     const nextYear = new Date().getFullYear() + 1;
 
     fireEvent.change(vintage, { target: { value: String(nextYear) } });

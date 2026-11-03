@@ -151,3 +151,9 @@ Travel activities now carry an optional planned cost in US dollars. A missing co
 Recipe Finder saves favorite recipe IDs and dated meals separately from the pantry. Its shopping list groups missing ingredients for the selected seven calendar dates, keeps quantities per meal, and excludes pantry ingredients and recipe staples. The catalog's ingredient text does not support reliable conversion between units.
 
 The other saved project workflows and their storage contracts are in `docs/PROJECT_TOOL_WORKFLOWS.md`.
+
+## Changes on October 23, 2026
+
+Wine Cellar now keeps owned quantities and a wishlist under `wine_cellar_inventory_v1`, alongside the existing tasting journal. Choosing Open bottle fills the tasting form. Saving the tasting reduces the latest quantity by one, while a depleted bottle leaves the form open with an explanation.
+
+Museum Log reads saved trip dates from Travel Planner, finds selected exhibitions that overlap those dates, and writes a museum stop into the chosen itinerary. The visitor chooses the visit date. The stop keeps its cost unpriced and includes the museum's website and the catalog admission note. The new exhibition selections have a source URL and an October 23, 2026 check date, while the base catalog retains its own review date.
