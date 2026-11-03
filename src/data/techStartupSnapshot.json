@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-28T08:01:12.184Z",
+  "generatedAt": "2026-10-26T20:59:43.848Z",
   "asOf": "2026-09-28",
   "verified": false,
   "sourceLabel": "Curated from company announcements",
   "sourceUrl": "https://news.crunchbase.com",
-  "disclaimer": "Valuations and round details come from each company's own announcement where one exists, and each entry links to the page it was read from. Total raised is a floor, since it adds the rounds I could confirm to an earlier total and a round I did not find is missing from it. These are editorial figures for illustration and research, not verified financials or investment advice.",
+  "disclaimer": "Valuations and round details come from each company's own announcement where one exists, or from a press report where the company published none, and each entry links to the page it was read from. Total raised is a floor, since it adds the rounds I could confirm to an earlier total and a round I did not find is missing from it. These are editorial figures for illustration and research, not verified financials or investment advice.",
   "currency": "USD",
   "startups": [
     {
@@ -129,16 +129,15 @@
       "country": "United States",
       "founded": 2022,
       "website": "https://www.perplexity.ai",
-      "totalRaised": 1000000000,
-      "valuation": 9000000000,
+      "totalRaised": 1500000000,
+      "valuation": 20000000000,
       "employees": "201-500",
       "lastRound": {
         "stage": "Growth round",
-        "amount": 500000000,
-        "date": "2024-12",
-        "leadInvestors": [
-          "Institutional Venture Partners"
-        ]
+        "amount": 200000000,
+        "date": "2025-09",
+        "leadInvestors": [],
+        "sourceUrl": "https://techcrunch.com/2025/09/10/perplexity-reportedly-raised-200m-at-20b-valuation/"
       },
       "notableInvestors": [
         "IVP",
@@ -151,7 +150,7 @@
         "search",
         "RAG"
       ],
-      "momentumScore": 48.5
+      "momentumScore": 70.4
     },
     {
       "id": "scale-ai",
@@ -536,15 +535,16 @@
       "founded": 2013,
       "website": "https://www.canva.com",
       "totalRaised": 580000000,
-      "valuation": 32000000000,
+      "valuation": 42000000000,
       "employees": "5,001-10,000",
       "lastRound": {
-        "stage": "Tender offer",
-        "amount": 1500000000,
-        "date": "2024-08",
+        "stage": "Employee share sale",
+        "amount": null,
+        "date": "2025-08",
         "leadInvestors": [
-          "ICONIQ Growth"
-        ]
+          "Fidelity Management and Research"
+        ],
+        "sourceUrl": "https://fortune.com/2025/08/22/canva-billionaire-founders-minting-overnight-millionaires-employee-share-sale"
       },
       "notableInvestors": [
         "Sequoia",
@@ -555,7 +555,7 @@
         "design platform",
         "creative SaaS"
       ],
-      "momentumScore": 43.3
+      "momentumScore": 43.4
     },
     {
       "id": "rippling",
@@ -838,8 +838,8 @@
         "skild-ai"
       ],
       "startupCount": 9,
-      "totalRaised": 334980000000,
-      "totalValuation": 1928119300000,
+      "totalRaised": 335480000000,
+      "totalValuation": 1939119300000,
       "topStartupId": "hugging-face"
     },
     {
@@ -882,7 +882,7 @@
       ],
       "startupCount": 4,
       "totalRaised": 3603000000,
-      "totalValuation": 77100000000,
+      "totalValuation": 87100000000,
       "topStartupId": "notion"
     },
     {
@@ -935,7 +935,7 @@
       ],
       "startupCount": 13,
       "totalRaised": 366093000000,
-      "totalValuation": 2446600000000,
+      "totalValuation": 2456600000000,
       "topStartupId": "anthropic"
     },
     {
@@ -956,8 +956,8 @@
         "commonwealth-fusion"
       ],
       "startupCount": 11,
-      "totalRaised": 21107000000,
-      "totalValuation": 136419300000,
+      "totalRaised": 21607000000,
+      "totalValuation": 147419300000,
       "topStartupId": "hugging-face"
     }
   ],
@@ -965,8 +965,8 @@
     "startups": 24,
     "sectors": 6,
     "stages": 2,
-    "totalRaised": 387200000000,
-    "totalValuation": 2583019300000,
+    "totalRaised": 387700000000,
+    "totalValuation": 2604019300000,
     "unicornCount": 22
   }
 }

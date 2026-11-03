@@ -142,7 +142,8 @@ describe("PollingAggregatorClient", () => {
     );
     // Days to the election moved into the source line, so no third figure is printed.
     expect(screen.queryByText("Days to election", { selector: "dt" })).toBeNull();
-    expect(screen.getByRole("note")).toHaveTextContent(/midterms/);
+    // Every branch of that line names the date, whatever day the suite runs.
+    expect(screen.getByRole("note")).toHaveTextContent(/Nov 3/);
   });
 
   it("attributes the polling source and explains the race-data limit", () => {
