@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump typescript from 6.0.2 to 7.0.2 ([#603](https://github.com/IsaacAVazquez/Website/pull/603)).
 - Bump the react group across 1 directory with 2 updates ([#646](https://github.com/IsaacAVazquez/Website/pull/646)).
 - Bump @netlify/plugin-nextjs from 5.16.1 to 5.16.4 ([#647](https://github.com/IsaacAVazquez/Website/pull/647)).
+- Bump typescript-eslint from 8.71.0 to 8.72.1 ([#648](https://github.com/IsaacAVazquez/Website/pull/648)).
 
 ---
 
