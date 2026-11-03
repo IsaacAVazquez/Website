@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Correct three project accuracy gaps ([#644](https://github.com/IsaacAVazquez/Website/pull/644)).
 - Bump typescript from 6.0.2 to 7.0.2 ([#603](https://github.com/IsaacAVazquez/Website/pull/603)).
+- Bump the react group across 1 directory with 2 updates ([#646](https://github.com/IsaacAVazquez/Website/pull/646)).
 
 ---
 
