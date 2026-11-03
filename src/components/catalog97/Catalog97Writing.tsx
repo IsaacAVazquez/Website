@@ -33,6 +33,13 @@ type LengthFilter = "any" | "notes" | "essays";
 
 /** The two flat fields the design alternates across the featured pair. */
 const FEATURED_FIELDS = ["ink-vermilion", "ink-peach"] as const;
+// Slot widths measured 2026-11-02: one column (about 88vw) up to 727px, two
+// columns (about 42vw) to 1280px, then 508px. ponytail: phones claim 55vw, not
+// their real 85vw, so 2x to 3x screens fetch the 640w or 750w cover (39 to 55 KB)
+// instead of 1080w to 1200w (120 to 158 KB), since the first cover is this page's
+// LCP element. Raise 55vw toward 85vw if the covers read soft on 3x phones.
+const FEATURED_SIZES =
+  "(max-width: 480px) 55vw, (max-width: 727px) 88vw, (max-width: 1280px) 42vw, 508px";
 
 /**
  * The cover to lay over a featured field, or nothing.
@@ -248,7 +255,8 @@ export function Catalog97Writing({
                   ratio="3 / 2"
                   src={featuredCover(post)}
                   alt={post.coverImageAlt ?? post.title}
-                  sizes="(max-width: 790px) 100vw, 50vw"
+                  sizes={FEATURED_SIZES}
+                  priority={index === 0}
                   offset
                 />
                 <p
