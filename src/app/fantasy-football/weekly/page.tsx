@@ -75,7 +75,7 @@ export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageP
           name: "Fantasy Football Weekly Rankings",
           description: "In-season weekly flex and quarterback consensus rankings",
           url: "https://isaacvazquez.com/fantasy-football/weekly",
-          applicationCategory: "Sports",
+          applicationCategory: "SportsApplication",
           operatingSystem: "Web Browser",
         }}
       />

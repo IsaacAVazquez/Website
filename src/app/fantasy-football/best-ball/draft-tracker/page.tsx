@@ -44,7 +44,7 @@ export default async function BestBallDraftTrackerPage({
           description:
             "Manual best ball room tracker with exact player cards for supported rooms, reference boards for other presets, roster construction signals, draft value, and expected return math",
           url: "https://isaacvazquez.com/fantasy-football/best-ball/draft-tracker",
-          applicationCategory: "Sports",
+          applicationCategory: "SportsApplication",
           operatingSystem: "Web Browser",
         }}
       />

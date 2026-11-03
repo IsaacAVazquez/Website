@@ -43,7 +43,7 @@ export default function ScorePoolsTrackerPage() {
             scorePoolsSnapshot.generatedAt
           ),
           isPartOf: {
-            "@type": "SportsApplication",
+            "@type": "SoftwareApplication",
             "@id": "https://isaacvazquez.com/score-pools#application",
             name: "Score Pools",
             url: "https://isaacvazquez.com/score-pools",

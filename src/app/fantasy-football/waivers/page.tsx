@@ -72,7 +72,7 @@ export default async function WaiverTargetsPage({
           description:
             "In-season waiver adds ranked by the gap between weekly consensus percentile and rostered percentage",
           url: "https://isaacvazquez.com/fantasy-football/waivers",
-          applicationCategory: "Sports",
+          applicationCategory: "SportsApplication",
           operatingSystem: "Web Browser",
         }}
       />
