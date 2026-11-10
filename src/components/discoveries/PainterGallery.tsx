@@ -13,7 +13,7 @@ const LABELS = [
 export function PainterGallery() {
   return <>
     <div className={styles.gallery}>{PAINTERS.map((painter, index) => <figure className={styles.painting} key={painter}>
-      <Image src={`/images/home/headshot-${painter}.webp`} alt={`Isaac's portrait in a style inspired by ${LABELS[index][1].slice(6)}`} width={480} height={600} sizes="(max-width: 640px) 90vw, 320px" loading={index < 3 ? "eager" : "lazy"} />
+      <Image src={`/images/home/headshot-${painter}.webp`} alt={`Isaac's portrait in a style inspired by ${LABELS[index][1].slice(6)}`} width={720} height={1080} sizes="(max-width: 640px) 90vw, 320px" loading={index < 3 ? "eager" : "lazy"} />
       <figcaption><h2>{LABELS[index][0]}</h2><p className={styles.note}>{LABELS[index][1]} · Digital study</p><p>{LABELS[index][2]}</p></figcaption>
     </figure>)}</div>
     <p className={styles.note}>Five interpretations of the same headshot. These are styled portraits, and the labels are part of the joke.</p>
