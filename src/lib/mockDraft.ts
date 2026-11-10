@@ -145,7 +145,15 @@ export function pickForTeam(
     (sum, position) => sum + required[position] - (counts[position] ?? 0),
     0
   );
-  const mustFill = missingTotal > 0 && remainingPicks <= missingTotal;
+  // A room shorter than the starting lineup is a slice of the early rounds, so
+  // no roster can be held to a full lineup. Forcing one anyway put every team
+  // on need from pick 1 (no third RB or WR, a QB on every roster).
+  const requiredTotal = (Object.keys(required) as CountedPosition[]).reduce(
+    (sum, position) => sum + required[position],
+    0
+  );
+  const mustFill =
+    config.rounds >= requiredTotal && missingTotal > 0 && remainingPicks <= missingTotal;
 
   const hasCountedPosition = (player: Player): boolean => player.position in counts;
 
