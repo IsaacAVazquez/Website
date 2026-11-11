@@ -65,8 +65,8 @@
 .bj-page {
   display: flex;
   flex-direction: column;
-  gap: var(--c97-sp-3);
-  padding-block: var(--c97-sp-4) var(--c97-sp-5);
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
 }
 
 /* Title row: the name, one sentence, and the table's rules. */
@@ -133,7 +133,8 @@
 .bj-table {
   display: flex;
   flex-direction: column;
-  gap: var(--c97-sp-3);
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-1);
 }
 
 .bj-seat {

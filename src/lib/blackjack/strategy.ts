@@ -186,12 +186,12 @@ export function buildStrategyChart(rules: TableRules): StrategyChart {
     plays: DEALER_UPCARDS.map(play),
   });
 
-  const hard: ChartRow[] = [row("8 or less", (up) => hardPlay(8, up, rules))];
+  const hard: ChartRow[] = [row("5 to 8", (up) => hardPlay(8, up, rules))];
   for (let total = 9; total <= 16; total += 1) {
     hard.push(row(String(total), (up) => hardPlay(total, up, rules)));
   }
   hard.push(row("17", (up) => hardPlay(17, up, rules)));
-  hard.push(row("18 or more", (up) => hardPlay(18, up, rules)));
+  hard.push(row("18+", (up) => hardPlay(18, up, rules)));
 
   const soft: ChartRow[] = [];
   for (let total = 13; total <= 20; total += 1) {

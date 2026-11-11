@@ -43,4 +43,6 @@ The shortcut keys are H, S, D, P, R for the five actions, N to deal, and ? for t
 
 ## Verified state, 2026-11-10
 
-Recorded in the pull request that added the route.
+Against a production build (`next build --webpack`, served locally) in Chrome, at 1440x900, 390x844, and 320x740 in both themes. The page has one `h1` and one `main`, no console errors, and no horizontal overflow in the empty, dealt, settled, chart, counting, and progress states. `measurePage` from `scripts/contrastSweep.mjs` found no contrast failures in any of those states in either theme. The Deal button sits at y746 at 1440x900, y936 at 390x844, and y1014 at 320x740, page coordinates with the header included. A reload kept the record. A run of 1,500 random shortcut keys with tab switches every 50 produced no errors.
+
+I did not run `scripts/layoutSweep.mjs` or the Playwright suite, and I did not check Safari's or Firefox's engines, touch devices, or a screen reader.
