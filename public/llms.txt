@@ -85,6 +85,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - [Travel Planner](https://isaacvazquez.com/travel)
 - [Travel Deals](https://isaacvazquez.com/travel-deals)
 - [Wine Cellar](https://isaacvazquez.com/wine-cellar)
+- [Blackjack Trainer](https://isaacvazquez.com/blackjack-trainer)
 - [Museum Log](https://isaacvazquez.com/museum-log)
 - [Arcade](https://isaacvazquez.com/arcade): Retro web games built with React and HTML5 Canvas.
 

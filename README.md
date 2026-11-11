@@ -73,6 +73,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/food-map` | Food map |
 | `/recipe-finder` | Recipe finder |
 | `/wine-cellar` | Wine cellar |
+| `/blackjack-trainer` | Blackjack basic strategy trainer |
 | `/news-pulse` | News Pulse dashboard |
 | `/spacex-mission-control` | SpaceX Mission Control dashboard |
 | `/fintech-tools/budget-planner` | Budget planner |

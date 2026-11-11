@@ -37,6 +37,7 @@ Current hook inventory and state ownership.
 | `useTrackedListingSearch` | `src/hooks/useTrackedListingSearch.ts` | Client-side tokenized search state for directories and listings |
 | `useTravelPlanner` | `src/hooks/useTravelPlanner.ts` | Browser-local trip, itinerary, and journal state for `/travel` |
 | `useWineCellar` | `src/hooks/useWineCellar.ts` | Browser-local wine cellar state for `/wine-cellar` |
+| `useBlackjackProgress` | `src/hooks/useBlackjackProgress.ts` | Browser-local decision, hand, and counting record for `/blackjack-trainer` |
 
 Hooks that no longer exist (do not reference as live): `useAllFantasyData`, `useOverallFantasyData`, `useUnifiedFantasyData`, `usePlayerImageCache`.
 
@@ -127,6 +128,7 @@ These hooks follow the same browser-local pattern (localStorage, no account) and
 
 - `useTravelPlanner` — trips, day-by-day itineraries, and journal entries for `/travel`
 - `useWineCellar` — bottle inventory state for `/wine-cellar`
+- `useBlackjackProgress` — graded decisions, hand results, and the chosen table for `/blackjack-trainer`
 - `useMuseumLog` — visit log state for `/museum-log` (key `museum_log_user_state_v1`)
 - `useBudgetPlanner` — client-side state and calculations for `/fintech-tools/budget-planner`
 

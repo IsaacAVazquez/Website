@@ -88,6 +88,7 @@ const SEARCH_KEYWORDS: Record<string, string> = {
   '/ai-dev-tools': 'AI dev tools coding agents Cursor Claude Code GitHub Copilot Devin Cline OpenCode Kilo Code pricing models GitHub stars release cadence developer tools directory AI Dev Tools Coding Agents Developer Tools Dashboard',
   '/food-map': 'Food map restaurants curated city guide Austin San Francisco New York New Orleans Los Angeles Miami Atlanta Tokyo Copenhagen San Sebastian curator cuisine filters deep-linkable Austin Food Restaurants City Guide',
   '/recipe-finder': 'Recipe finder cooking recipes cuisine diet meal ingredients kitchen pantry browser local storage personal Recipes Cooking Food Personal',
+  '/blackjack-trainer': 'Blackjack trainer basic strategy chart practice table hit stand double split surrender card counting Hi-Lo REKO running count dealer soft 17 browser local storage Blackjack Basic Strategy Card Counting Practice Personal',
   '/wine-cellar': 'Wine cellar bottles tracker regions varietals vintages tasting notes ratings personal collection browser local storage Wine Cellar Tasting Notes Personal',
   '/frontier-models': 'Frontier models AI LLM tracker OpenAI Anthropic Google Meta context window pricing modality benchmarks providers release dates AI LLMs Frontier Models Dashboard',
   '/decision-lab': 'Decision lab decision making weighted scoring criteria options tradeoffs analysis framework presets decision support tool Decision Support Analysis Frameworks Tool',

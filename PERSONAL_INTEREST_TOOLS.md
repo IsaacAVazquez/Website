@@ -1,12 +1,13 @@
 # Personal-Interest Tools
 
 The browser-persisted lifestyle surfaces: `/travel`, `/travel-deals`,
-`/wine-cellar`, `/museum-log`, `/recipe-finder`, and `/food-map`. They have no
+`/wine-cellar`, `/museum-log`, `/recipe-finder`, `/food-map`, and
+`/blackjack-trainer`. They have no
 server, no API, and no snapshot pipeline — state lives in the user's browser.
 This doc captures the shared pattern and the per-tool specifics so the next one
 is easy to add.
 
-**Last updated:** 2026-07-07
+**Last updated:** 2026-11-10
 
 ---
 
@@ -118,6 +119,27 @@ receives changes from other tabs and other hook instances in the same tab.
   `TRAVEL_DEALS_AS_OF` date and disclosed on-page as estimates, following the
   curated-unverified convention. The tactics and recommended tools are a
   hand-authored playbook. A companion to the `/travel` planner, not a replacement.
+
+### `/blackjack-trainer` — basic strategy trainer *(pure engine + one saved record)*
+
+- Files: `src/lib/blackjack/` (`cards.ts`, `tableRules.ts`, `strategy.ts`, `round.ts`,
+  `counting.ts`, `progress.ts`), `src/hooks/useBlackjackProgress.ts`; client
+  `src/app/blackjack-trainer/blackjack-trainer-client.tsx` with `TableView`,
+  `StrategyChartView`, `CountingView`, and `ProgressView` beside it.
+- Key: `blackjack_trainer_progress_v1`, holding the graded decisions, the hand record in
+  betting units, the thirty most repeated mistakes, the counting checks, and the chosen
+  table. A reset clears the record and keeps the table.
+- The engine is framework-free and unit-tested (`src/lib/blackjack/__tests__/`). A round is
+  a pure state transition over a shoe that carries between rounds, the dealer peeks for
+  blackjack, and results come back in units. `basicStrategyAction` is the one reader of the
+  chart, and both the grader at the table and the printed chart call it.
+- The chart is basic strategy for shoe games of four to eight decks where the dealer peeks,
+  and every rule set in `tableRules.ts` stays inside that. Single-deck, double-deck, and
+  no-hole-card games change a few plays, so adding one of those tables means adding its
+  chart too. The page says this once, in its footer, next to the storage note.
+- Ported on 2026-11-10 from the private `blackjack-mastery` repo, a Vite and React app. The
+  port left out the named casino presets (their table rules were claims with no source),
+  the house edge estimate, achievements, the session history charts, and export and import.
 
 ### `/food-map` — curated map *(no persistence)*
 
