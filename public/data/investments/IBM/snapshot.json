@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7248,
-      "ttmPe": 22.03,
-      "marketCap": 244074600000,
-      "psRatio": 3.49,
-      "pbRatio": 6.87,
-      "pegRatio": 0.88
+      "ttmPe": 21.17,
+      "marketCap": 234567900000,
+      "psRatio": 3.36,
+      "pbRatio": 6.6,
+      "pegRatio": 0.85
     },
     "profitability": {
       "roe": 6.260000000000001,
@@ -925,8 +925,8 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "940156508.0",
-          "2026-09-30": "944400458.0",
-          "2026-06-30": "941192024.0",
+          "2026-09-30": "944400000.0",
+          "2026-06-30": "941200000.0",
           "2026-03-31": "938500000.0",
           "2025-12-31": "936500000.0",
           "2025-09-30": "933900000.0",
@@ -947,8 +947,8 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "952839454.0",
-          "2026-09-30": "953523487.0",
-          "2026-06-30": "953263534.0",
+          "2026-09-30": "953500000.0",
+          "2026-06-30": "953300000.0",
           "2026-03-31": "952100000.0",
           "2025-12-31": "952400000.0",
           "2025-09-30": "948900000.0",
@@ -6771,81 +6771,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.84,
-      "costOfEquity": 11.1,
+      "wacc": 8.63,
+      "costOfEquity": 10.91,
       "costOfDebt": 0.73,
       "taxRate": 12,
-      "beta": 0.7754,
-      "marketCap": 244074600000
+      "beta": 0.7516,
+      "marketCap": 234567900000
     },
     "beta": {
-      "beta5y": 0.7754
+      "beta5y": 0.7516
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 306.65,
-        "high": 313.75,
-        "low": 305.02,
-        "close": 310.06,
-        "volume": 4694300
-      },
-      {
-        "date": "2025-10-31",
-        "open": 312,
-        "high": 313.5,
-        "low": 301.63,
-        "close": 307.41,
-        "volume": 7697500
-      },
-      {
-        "date": "2025-11-03",
-        "open": 308,
-        "high": 312.14,
-        "low": 304.23,
-        "close": 304.73,
-        "volume": 4958000
-      },
-      {
-        "date": "2025-11-04",
-        "open": 300,
-        "high": 303.17,
-        "low": 296,
-        "close": 300.85,
-        "volume": 5677300
-      },
-      {
-        "date": "2025-11-05",
-        "open": 301.38,
-        "high": 307.2,
-        "low": 299.71,
-        "close": 306.77,
-        "volume": 4650400
-      },
-      {
-        "date": "2025-11-06",
-        "open": 306.75,
-        "high": 315.44,
-        "low": 301.09,
-        "close": 312.42,
-        "volume": 6818500
-      },
-      {
-        "date": "2025-11-07",
-        "open": 309.68,
-        "high": 310,
-        "low": 302.63,
-        "close": 306.38,
-        "volume": 5070800
-      },
-      {
-        "date": "2025-11-10",
-        "open": 306.82,
-        "high": 309.94,
-        "low": 304.23,
-        "close": 309.13,
-        "volume": 2975200
-      },
       {
         "date": "2025-11-11",
         "open": 309,
@@ -8797,6 +8733,70 @@
         "low": 254.71,
         "close": 257.81,
         "volume": 5738100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 258.12,
+        "high": 259.87,
+        "low": 252.36,
+        "close": 252.51,
+        "volume": 5583900
+      },
+      {
+        "date": "2026-11-03",
+        "open": 249.56,
+        "high": 250.95,
+        "low": 244.61,
+        "close": 250.04,
+        "volume": 3451200
+      },
+      {
+        "date": "2026-11-04",
+        "open": 255,
+        "high": 258.59,
+        "low": 253.51,
+        "close": 254.32,
+        "volume": 3761100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 255.92,
+        "high": 256.18,
+        "low": 245.72,
+        "close": 247.11,
+        "volume": 5339500
+      },
+      {
+        "date": "2026-11-06",
+        "open": 242.92,
+        "high": 246.34,
+        "low": 240.35,
+        "close": 245,
+        "volume": 3491900
+      },
+      {
+        "date": "2026-11-09",
+        "open": 246,
+        "high": 248.81,
+        "low": 245.2,
+        "close": 246.11,
+        "volume": 4625900
+      },
+      {
+        "date": "2026-11-10",
+        "open": 244.38,
+        "high": 246,
+        "low": 242.7,
+        "close": 244.53,
+        "volume": 2967900
+      },
+      {
+        "date": "2026-11-11",
+        "open": 244.72,
+        "high": 249.31,
+        "low": 242.88,
+        "close": 248.22,
+        "volume": 3462300
       }
     ],
     "news": [
@@ -8849,19 +8849,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
-        "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6dd67bf6-faa3-387e-93bc-b081fa3a14da",
         "title": "Herbalife and Abercrombie and Fitch have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/herbalife-abercrombie-fitch-highlighted-zacks-133500305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4108daec-5933-31f7-9e1f-5d8cb6c5e76b",
+        "title": "Rigetti vs. IBM: Which Quantum Computing Stock Has Better Prospects?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/rigetti-vs-ibm-quantum-computing-161500616.html",
         "type": "STORY"
       },
       {
@@ -8945,43 +8945,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.03,
-        "industryAvg": 16.95
+        "value": 21.17,
+        "industryAvg": 16.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.49,
-        "industryAvg": 1.6
+        "value": 3.36,
+        "industryAvg": 1.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.87,
-        "industryAvg": 3.7
+        "value": 6.6,
+        "industryAvg": 3.66
       },
       {
         "metric": "ROE",
         "value": 6.260000000000001,
-        "industryAvg": 17.32
+        "industryAvg": 17.669999999999998
       },
       {
         "metric": "ROA",
         "value": 1.43,
-        "industryAvg": 5.93
+        "industryAvg": 6
       },
       {
         "metric": "Gross Margin",
         "value": 56.79,
-        "industryAvg": 31.8
+        "industryAvg": 31.64
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.53,
-        "industryAvg": 16.05
+        "industryAvg": 16.07
       },
       {
         "metric": "Net Margin",
         "value": 12.8,
-        "industryAvg": 7.91
+        "industryAvg": 8.01
       }
     ]
   }

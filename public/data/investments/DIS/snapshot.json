@@ -1,10 +1,10 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "Entertainment",
       "sector": "Communication Services",
-      "longBusinessSummary": "The Walt Disney Company operates as an entertainment company in Americas, Europe, and the Asia Pacific. It operates in three segments: Entertainment, Sports, and Experiences. The company produces and distributes film and television content under the ABC Television Network, Disney, Freeform, FX, Fox, National Geographic, and Star brand television channels, as well as ABC television stations and A+E television networks; and produces original content under the Disney Branded Television, FX Productions, Lucasfilm, Marvel, National Geographic Studios, Pixar, Searchlight Pictures, Twentieth Century Studios, 20th Television, and Walt Disney Pictures banners. It also provides direct-to-consumer streaming services through Disney+, Disney+ Hotstar, and Hulu; sports-related video streaming content through ESPN, ESPN on ABC, ESPN+ DTC, and Star; sale/licensing of film and episodic content to television and video-on-demand services; theatrical, home entertainment, and music distribution services; DVD and Blu-ray discs, electronic home video licenses, and VOD rental services; staging and licensing of live entertainment events; and post-production services. In addition, the company operates theme parks and resorts, such as Walt Disney World Resort, Disneyland Resort, Disneyland Paris, Hong Kong Disneyland Resort, Shanghai Disney Resort, Disney Cruise Line, Disney Vacation Club, National Geographic Expeditions, and Adventures by Disney, as well as Aulani, a Disney resort and spa in Hawaii. Further, it licenses its intellectual property (IP) to a third party that owns and operates Tokyo Disney Resort; licenses trade names, characters, visual, literary, and other IP for use on merchandise, published materials, and games; operates a direct-to-home satellite distribution platform; sells branded merchandise through retail, online, and wholesale businesses; and develops and publishes books, comic books, and magazines. The company was founded in 1923 and is based in Burbank, California.",
+      "longBusinessSummary": "The Walt Disney Company operates as an entertainment company in Americas, Europe, and the Asia Pacific. It operates in three segments: Entertainment, Sports, and Experiences. It produces and distributes film and television content under the ABC Television Network, Disney, Freeform, FX, Fox, National Geographic, and Star brand television channels, as well as ABC television stations and A+E television networks; and produces original content under the Disney Branded Television, FX Productions, Lucasfilm, Marvel, National Geographic Studios, Pixar, Searchlight Pictures, Twentieth Century Studios, 20th Television, and Walt Disney Pictures banners. It provides consumer streaming services through Disney+, Disney+ Hotstar, and Hulu; sports-related video streaming content through ESPN, ESPN on ABC, ESPN+ DTC, and Star; sale/licensing of film and episodic content to television and video-on-demand services; theatrical, home entertainment, and music distribution services; DVD and Blu-ray discs, electronic home video licenses, and VOD rental services; staging and licensing of live entertainment events; and post-production services. Further, it licenses its intellectual property (IP) to a third party that owns and operates Tokyo Disney Resort; licenses trade names, characters, visual, literary, and other IP for use on merchandise, published materials, and games; operates a direct-to-home satellite distribution platform; sells branded merchandise through retail, online, and wholesale businesses; and publishes books, comic books, and magazines. The company has strategic alliance with Adobe to support Disney innovation with new AI-powered tools. The company was founded in 1923 and is based in Burbank, California.",
       "fullTimeEmployees": 175560,
       "website": "https://thewaltdisneycompany.com",
       "shortName": "Walt Disney Company",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 22.88,
-      "marketCap": 191874300000,
-      "psRatio": 1.94,
-      "pbRatio": 1.74,
+      "ttmPe": 24.68,
+      "marketCap": 206994500000,
+      "psRatio": 2.09,
+      "pbRatio": 1.88,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6071,81 +6071,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.28,
-      "costOfEquity": 16.28,
+      "wacc": 13.350000000000001,
+      "costOfEquity": 16.150000000000002,
       "costOfDebt": 1.01,
       "taxRate": 22,
-      "beta": 1.4322,
-      "marketCap": 191874300000
+      "beta": 1.4163,
+      "marketCap": 206994500000
     },
     "beta": {
-      "beta5y": 1.4322
+      "beta5y": 1.4163
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 110.13,
-        "high": 113.58,
-        "low": 109.55,
-        "close": 111.84,
-        "volume": 8311300
-      },
-      {
-        "date": "2025-10-31",
-        "open": 111.58,
-        "high": 113.1,
-        "low": 110.53,
-        "close": 112.62,
-        "volume": 8700600
-      },
-      {
-        "date": "2025-11-03",
-        "open": 112.55,
-        "high": 112.81,
-        "low": 111.03,
-        "close": 112.12,
-        "volume": 8542300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 110.97,
-        "high": 111.79,
-        "low": 110.64,
-        "close": 111.47,
-        "volume": 7950100
-      },
-      {
-        "date": "2025-11-05",
-        "open": 111.35,
-        "high": 111.97,
-        "low": 110.6,
-        "close": 111.36,
-        "volume": 5746000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 111.17,
-        "high": 111.71,
-        "low": 109.18,
-        "close": 110.49,
-        "volume": 10291800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 110.26,
-        "high": 111.43,
-        "low": 110.04,
-        "close": 110.74,
-        "volume": 8782100
-      },
-      {
-        "date": "2025-11-10",
-        "open": 111.15,
-        "high": 112.79,
-        "low": 111.03,
-        "close": 112.24,
-        "volume": 9158700
-      },
       {
         "date": "2025-11-11",
         "open": 112.65,
@@ -8097,6 +8033,70 @@
         "low": 110.76,
         "close": 110.94,
         "volume": 6341200
+      },
+      {
+        "date": "2026-11-02",
+        "open": 111.78,
+        "high": 113.79,
+        "low": 111.77,
+        "close": 113.11,
+        "volume": 7437700
+      },
+      {
+        "date": "2026-11-03",
+        "open": 112.98,
+        "high": 114.46,
+        "low": 111.94,
+        "close": 114.18,
+        "volume": 11568600
+      },
+      {
+        "date": "2026-11-04",
+        "open": 116.3,
+        "high": 119.96,
+        "low": 116.3,
+        "close": 118.95,
+        "volume": 13404900
+      },
+      {
+        "date": "2026-11-05",
+        "open": 119.87,
+        "high": 120.8,
+        "low": 116.85,
+        "close": 117.22,
+        "volume": 11748100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 114.44,
+        "high": 117.81,
+        "low": 113.79,
+        "close": 116.75,
+        "volume": 8576900
+      },
+      {
+        "date": "2026-11-09",
+        "open": 117.94,
+        "high": 119.38,
+        "low": 117.23,
+        "close": 119.12,
+        "volume": 7583300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 118.69,
+        "high": 119.5,
+        "low": 117.42,
+        "close": 119.21,
+        "volume": 8000200
+      },
+      {
+        "date": "2026-11-11",
+        "open": 118.29,
+        "high": 119.79,
+        "low": 118.25,
+        "close": 119.65,
+        "volume": 5283200
       }
     ],
     "news": [
@@ -8117,14 +8117,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
-        "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/look-back-media-stocks-q4-090350655.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2e19c401-f4d2-3786-b01e-eaa6f4669d92",
         "title": "Media Stocks Q4 In Review: fuboTV (NYSE:FUBO) Vs Peers",
         "publisher": "StockStory",
@@ -8133,19 +8125,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "666c9e9e-97f8-3e6f-9139-9dab41a1dd62",
+        "title": "A Look Back at Media Stocks’ Q4 Earnings: Warner Bros. Discovery (NASDAQ:WBD) Vs The Rest Of The Pack",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/look-back-media-stocks-q4-090350655.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "2117434c-d7a7-3049-9d57-f8e0e668065f",
         "title": "Morgan Stanley says tariff on movies could reduce companies’ earnings power",
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8162,6 +8154,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/movie-studio-stocks-slide-trump-142058995.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8242,43 +8242,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.88,
-        "industryAvg": 21.91
+        "value": 24.68,
+        "industryAvg": 21.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.94,
-        "industryAvg": 2.59
+        "value": 2.09,
+        "industryAvg": 2.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.74,
-        "industryAvg": 2.97
+        "value": 1.88,
+        "industryAvg": 3.08
       },
       {
         "metric": "ROE",
         "value": 2.41,
-        "industryAvg": 9.06
+        "industryAvg": 9.9
       },
       {
         "metric": "ROA",
         "value": 1.29,
-        "industryAvg": 3.82
+        "industryAvg": 4.22
       },
       {
         "metric": "Gross Margin",
         "value": 40.17,
-        "industryAvg": 40.96
+        "industryAvg": 41.099999999999994
       },
       {
         "metric": "EBITDA Margin",
         "value": 21.87,
-        "industryAvg": 26.38
+        "industryAvg": 26.8
       },
       {
         "metric": "Net Margin",
         "value": 10.45,
-        "industryAvg": 7.03
+        "industryAvg": 7.62
       }
     ]
   }

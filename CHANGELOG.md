@@ -4,6 +4,14 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-11-12
+
+- Put typescript back on 6 so npm ci resolves again ([#677](https://github.com/IsaacAVazquez/Website/pull/677)).
+- Add 2026 F1 race posts from Monza to Mexico City ([#674](https://github.com/IsaacAVazquez/Website/pull/674)).
+- Bump @playwright/test from 1.64.1 to 1.65.0 in the testing group ([#668](https://github.com/IsaacAVazquez/Website/pull/668)).
+
+---
+
 ## 2026-11-03
 
 - Correct three project accuracy gaps ([#644](https://github.com/IsaacAVazquez/Website/pull/644)).

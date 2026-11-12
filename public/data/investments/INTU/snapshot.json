@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 20.07,
-      "marketCap": 88886096960,
-      "psRatio": 4.14,
-      "pbRatio": 4.68,
+      "ttmPe": 20.77,
+      "marketCap": 91959093760,
+      "psRatio": 4.29,
+      "pbRatio": 4.84,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6595,81 +6595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.42,
-      "costOfEquity": 12.45,
+      "wacc": 11.16,
+      "costOfEquity": 12.13,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.9466,
-      "marketCap": 88886096960
+      "beta": 0.9065,
+      "marketCap": 91959093760
     },
     "beta": {
-      "beta5y": 0.9466
+      "beta5y": 0.9065
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 653.08,
-        "high": 665.93,
-        "low": 652.5,
-        "close": 656.18,
-        "volume": 1435200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 656,
-        "high": 671.89,
-        "low": 653.79,
-        "close": 667.55,
-        "volume": 1585500
-      },
-      {
-        "date": "2025-11-03",
-        "open": 669.27,
-        "high": 677.12,
-        "low": 660.57,
-        "close": 676.19,
-        "volume": 1270500
-      },
-      {
-        "date": "2025-11-04",
-        "open": 676.19,
-        "high": 676.19,
-        "low": 653.54,
-        "close": 660.42,
-        "volume": 1542700
-      },
-      {
-        "date": "2025-11-05",
-        "open": 656.85,
-        "high": 662.59,
-        "low": 653.72,
-        "close": 655.33,
-        "volume": 1467100
-      },
-      {
-        "date": "2025-11-06",
-        "open": 649,
-        "high": 659.36,
-        "low": 640.57,
-        "close": 653.64,
-        "volume": 1866300
-      },
-      {
-        "date": "2025-11-07",
-        "open": 653.75,
-        "high": 654.61,
-        "low": 633.47,
-        "close": 648.85,
-        "volume": 1697700
-      },
-      {
-        "date": "2025-11-10",
-        "open": 649.54,
-        "high": 654.29,
-        "low": 645.42,
-        "close": 653.27,
-        "volume": 1530500
-      },
       {
         "date": "2025-11-11",
         "open": 653.02,
@@ -8621,6 +8557,70 @@
         "low": 333,
         "close": 341.09,
         "volume": 3992100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 340.25,
+        "high": 356.56,
+        "low": 336.93,
+        "close": 352.1,
+        "volume": 3539000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 350.48,
+        "high": 350.73,
+        "low": 339.21,
+        "close": 344.72,
+        "volume": 2277900
+      },
+      {
+        "date": "2026-11-04",
+        "open": 354.25,
+        "high": 366.47,
+        "low": 351.59,
+        "close": 356.64,
+        "volume": 3409000
+      },
+      {
+        "date": "2026-11-05",
+        "open": 362.61,
+        "high": 364.34,
+        "low": 348.22,
+        "close": 354.84,
+        "volume": 4301400
+      },
+      {
+        "date": "2026-11-06",
+        "open": 345.69,
+        "high": 348.54,
+        "low": 334.9,
+        "close": 341.5,
+        "volume": 3615500
+      },
+      {
+        "date": "2026-11-09",
+        "open": 340.14,
+        "high": 343.87,
+        "low": 334.42,
+        "close": 338.23,
+        "volume": 2375100
+      },
+      {
+        "date": "2026-11-10",
+        "open": 336.6,
+        "high": 340.66,
+        "low": 333.72,
+        "close": 340.44,
+        "volume": 2515900
+      },
+      {
+        "date": "2026-11-11",
+        "open": 338.56,
+        "high": 345.41,
+        "low": 334.49,
+        "close": 342.64,
+        "volume": 2569800
       }
     ],
     "news": [
@@ -8665,20 +8665,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
-        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
         "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
+        "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
@@ -8771,43 +8771,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.07,
-        "industryAvg": 26.7
+        "value": 20.77,
+        "industryAvg": 28.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.14,
-        "industryAvg": 5.06
+        "value": 4.29,
+        "industryAvg": 4.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.68,
-        "industryAvg": 5.63
+        "value": 4.84,
+        "industryAvg": 5.21
       },
       {
         "metric": "ROE",
         "value": 1.83,
-        "industryAvg": -12.36
+        "industryAvg": -0.7100000000000001
       },
       {
         "metric": "ROA",
         "value": 0.95,
-        "industryAvg": -6.8500000000000005
+        "industryAvg": -0.4
       },
       {
         "metric": "Gross Margin",
         "value": 78.11,
-        "industryAvg": 63.42
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.02,
-        "industryAvg": 1.5
+        "industryAvg": 17.51
       },
       {
         "metric": "Net Margin",
         "value": 8.34,
-        "industryAvg": -15.790000000000001
+        "industryAvg": -0.97
       }
     ]
   }

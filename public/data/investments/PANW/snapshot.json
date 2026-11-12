@@ -1,10 +1,10 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 742.58,
-      "marketCap": 310164550000,
-      "psRatio": 27.02,
-      "pbRatio": 11.28,
+      "ttmPe": 652.62,
+      "marketCap": 272593050000,
+      "psRatio": 23.75,
+      "pbRatio": 9.92,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,81 +5904,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.379999999999999,
-      "costOfEquity": 12.479999999999999,
+      "wacc": 12.509999999999998,
+      "costOfEquity": 12.620000000000001,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9505,
-      "marketCap": 310164550000
+      "beta": 0.9684,
+      "marketCap": 272593050000
     },
     "beta": {
-      "beta5y": 0.9505
+      "beta5y": 0.9684
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 217.54,
-        "high": 221.27,
-        "low": 216.61,
-        "close": 218.27,
-        "volume": 3759900
-      },
-      {
-        "date": "2025-10-31",
-        "open": 219.94,
-        "high": 221.17,
-        "low": 217.75,
-        "close": 220.24,
-        "volume": 3958700
-      },
-      {
-        "date": "2025-11-03",
-        "open": 219.97,
-        "high": 220.47,
-        "low": 215.33,
-        "close": 219.23,
-        "volume": 5011600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 215.72,
-        "high": 218,
-        "low": 212.35,
-        "close": 214.52,
-        "volume": 6361800
-      },
-      {
-        "date": "2025-11-05",
-        "open": 215.2,
-        "high": 215.6,
-        "low": 212.42,
-        "close": 213.18,
-        "volume": 4309300
-      },
-      {
-        "date": "2025-11-06",
-        "open": 209.87,
-        "high": 213.41,
-        "low": 207.35,
-        "close": 211.37,
-        "volume": 5444800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 208.23,
-        "high": 212.64,
-        "low": 207.83,
-        "close": 212.29,
-        "volume": 5046400
-      },
-      {
-        "date": "2025-11-10",
-        "open": 214.22,
-        "high": 216.82,
-        "low": 212.72,
-        "close": 216.54,
-        "volume": 4917100
-      },
       {
         "date": "2025-11-11",
         "open": 216.94,
@@ -7930,6 +7866,70 @@
         "low": 359.76,
         "close": 365.87,
         "volume": 7567000
+      },
+      {
+        "date": "2026-11-02",
+        "open": 368.07,
+        "high": 368.5,
+        "low": 350.39,
+        "close": 351.72,
+        "volume": 6648200
+      },
+      {
+        "date": "2026-11-03",
+        "open": 351.37,
+        "high": 360.41,
+        "low": 347.28,
+        "close": 350.2,
+        "volume": 5452000
+      },
+      {
+        "date": "2026-11-04",
+        "open": 347.19,
+        "high": 361.91,
+        "low": 341.45,
+        "close": 348.04,
+        "volume": 5729200
+      },
+      {
+        "date": "2026-11-05",
+        "open": 337.55,
+        "high": 339,
+        "low": 312.12,
+        "close": 314.67,
+        "volume": 13346600
+      },
+      {
+        "date": "2026-11-06",
+        "open": 331.5,
+        "high": 331.9,
+        "low": 312.7,
+        "close": 313.84,
+        "volume": 6287000
+      },
+      {
+        "date": "2026-11-09",
+        "open": 319.42,
+        "high": 332.89,
+        "low": 314.1,
+        "close": 330.89,
+        "volume": 5839200
+      },
+      {
+        "date": "2026-11-10",
+        "open": 324.66,
+        "high": 331.09,
+        "low": 315.44,
+        "close": 326.36,
+        "volume": 4672300
+      },
+      {
+        "date": "2026-11-11",
+        "open": 337.83,
+        "high": 341.8,
+        "low": 329.88,
+        "close": 334.47,
+        "volume": 5024700
       }
     ],
     "news": [
@@ -8037,6 +8037,10 @@
         "yearBorn": 1976
       },
       {
+        "name": "Mr. Kelly Waldher",
+        "title": "Chief Marketing Officer"
+      },
+      {
         "name": "Mr. Lee Klarich",
         "title": "Executive VP, Chief Product Officer, CTO & Director",
         "age": 50,
@@ -8071,43 +8075,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 742.58,
-        "industryAvg": 34.04
+        "value": 652.62,
+        "industryAvg": 31.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 27.02,
-        "industryAvg": 7.8
+        "value": 23.75,
+        "industryAvg": 7.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.28,
-        "industryAvg": 8.67
+        "value": 9.92,
+        "industryAvg": 7.93
       },
       {
         "metric": "ROE",
         "value": -1.02,
-        "industryAvg": 25.89
+        "industryAvg": 26.279999999999998
       },
       {
         "metric": "ROA",
         "value": -0.6,
-        "industryAvg": 10.15
+        "industryAvg": 10.36
       },
       {
         "metric": "Gross Margin",
         "value": 67.57,
-        "industryAvg": 51.12
+        "industryAvg": 50.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 2.11,
-        "industryAvg": 36.04
+        "industryAvg": 36.57
       },
       {
         "metric": "Net Margin",
         "value": -8.27,
-        "industryAvg": 19.82
+        "industryAvg": 20.53
       }
     ]
   }

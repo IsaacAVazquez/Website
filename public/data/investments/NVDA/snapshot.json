@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9107,
-      "ttmPe": 27.23,
-      "marketCap": 5200780860000,
-      "psRatio": 17.17,
-      "pbRatio": 22.71,
-      "pegRatio": 0.21
+      "ttmPe": 21.96,
+      "marketCap": 4195058310000,
+      "psRatio": 13.85,
+      "pbRatio": 18.32,
+      "pegRatio": 0.17
     },
     "profitability": {
       "roe": 28.12,
@@ -5893,81 +5893,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.24,
-      "costOfEquity": 22.400000000000002,
+      "wacc": 22.49,
+      "costOfEquity": 22.689999999999998,
       "costOfDebt": 0.59,
       "taxRate": 17,
-      "beta": 2.2189,
-      "marketCap": 5200780860000
+      "beta": 2.2443,
+      "marketCap": 4195058310000
     },
     "beta": {
-      "beta5y": 2.2189
+      "beta5y": 2.2443
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 205.15,
-        "high": 206.16,
-        "low": 201.41,
-        "close": 202.89,
-        "volume": 178864400
-      },
-      {
-        "date": "2025-10-31",
-        "open": 206.45,
-        "high": 207.97,
-        "low": 202.07,
-        "close": 202.49,
-        "volume": 179802200
-      },
-      {
-        "date": "2025-11-03",
-        "open": 208.08,
-        "high": 211.34,
-        "low": 205.56,
-        "close": 206.88,
-        "volume": 180267300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 203,
-        "high": 203.97,
-        "low": 197.93,
-        "close": 198.69,
-        "volume": 188919300
-      },
-      {
-        "date": "2025-11-05",
-        "open": 198.77,
-        "high": 202.92,
-        "low": 194.65,
-        "close": 195.21,
-        "volume": 171350300
-      },
-      {
-        "date": "2025-11-06",
-        "open": 196.42,
-        "high": 197.62,
-        "low": 186.38,
-        "close": 188.08,
-        "volume": 223029800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 184.9,
-        "high": 188.32,
-        "low": 178.91,
-        "close": 188.15,
-        "volume": 264942300
-      },
-      {
-        "date": "2025-11-10",
-        "open": 195.11,
-        "high": 199.94,
-        "low": 193.79,
-        "close": 199.05,
-        "volume": 198897100
-      },
       {
         "date": "2025-11-11",
         "open": 195.16,
@@ -7918,7 +7854,71 @@
         "high": 209.06,
         "low": 200.92,
         "close": 204.64,
-        "volume": 168039400
+        "volume": 168386400
+      },
+      {
+        "date": "2026-11-02",
+        "open": 207.53,
+        "high": 209.98,
+        "low": 201.66,
+        "close": 202.06,
+        "volume": 119272200
+      },
+      {
+        "date": "2026-11-03",
+        "open": 207.96,
+        "high": 209.14,
+        "low": 205.93,
+        "close": 206.69,
+        "volume": 91943400
+      },
+      {
+        "date": "2026-11-04",
+        "open": 203.5,
+        "high": 206.79,
+        "low": 199.68,
+        "close": 200.13,
+        "volume": 149033300
+      },
+      {
+        "date": "2026-11-05",
+        "open": 196.07,
+        "high": 196.25,
+        "low": 181.46,
+        "close": 181.6,
+        "volume": 306127800
+      },
+      {
+        "date": "2026-11-06",
+        "open": 191.1,
+        "high": 194.9,
+        "low": 185.22,
+        "close": 186.64,
+        "volume": 180212300
+      },
+      {
+        "date": "2026-11-09",
+        "open": 173.07,
+        "high": 179.92,
+        "low": 170.24,
+        "close": 178.67,
+        "volume": 462719300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 173.97,
+        "high": 174.69,
+        "low": 165.89,
+        "close": 168.89,
+        "volume": 429273200
+      },
+      {
+        "date": "2026-11-11",
+        "open": 172.8,
+        "high": 177.54,
+        "low": 170.77,
+        "close": 173.73,
+        "volume": 313417400
       }
     ],
     "news": [
@@ -7971,19 +7971,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
-        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-03-24",
-        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9c9222ce-74c7-3222-a9d9-ab586c63ce81",
         "title": "Nvidia’s Support Boosts Stereotaxis (STXS) in Advancing Robotic Surgery",
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-24",
         "link": "https://finance.yahoo.com/news/nvidia-support-boosts-stereotaxis-stxs-213924601.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9603d02d-962a-36da-ac81-d16892a33a25",
+        "title": "Lumentum Stock, Coherent Upgraded On View Nvidia Threat Overblown",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-03-24",
+        "link": "https://finance.yahoo.com/m/9603d02d-962a-36da-ac81-d16892a33a25/lumentum-stock%2C-coherent.html",
         "type": "STORY"
       },
       {
@@ -8067,23 +8067,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.23,
-        "industryAvg": 25.87
+        "value": 21.96,
+        "industryAvg": 22.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.17,
-        "industryAvg": 12.61
+        "value": 13.85,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 22.71,
-        "industryAvg": 11.42
+        "value": 18.32,
+        "industryAvg": 9.57
       },
       {
         "metric": "ROE",
         "value": 28.12,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
@@ -8098,7 +8098,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 75.72,
-        "industryAvg": 81.54
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

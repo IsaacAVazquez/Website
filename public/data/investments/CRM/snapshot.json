@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.9721,
-      "ttmPe": 21.04,
-      "marketCap": 190030700000,
-      "psRatio": 4.32,
-      "pbRatio": 4.95,
-      "pegRatio": 0.18
+      "ttmPe": 19.87,
+      "marketCap": 179422230000,
+      "psRatio": 4.08,
+      "pbRatio": 4.68,
+      "pegRatio": 0.17
     },
     "profitability": {
       "roe": 9.71,
@@ -134,7 +134,7 @@
           "Breakdown": "Cost of Revenue",
           "TTM": "9982000000.0",
           "2026-07-31": "2649000000.0",
-          "2026-04-30": "5140000000.0",
+          "2026-04-30": "2570000000.0",
           "2026-01-31": "2508000000.0",
           "2025-10-31": "2255000000.0",
           "2025-07-31": "2242000000.0",
@@ -882,7 +882,7 @@
           "Breakdown": "Total Expenses",
           "TTM": "34483000000.0",
           "2026-07-31": "8920000000.0",
-          "2026-04-30": "11276000000.0",
+          "2026-04-30": "8706000000.0",
           "2026-01-31": "9046000000.0",
           "2025-10-31": "7811000000.0",
           "2025-07-31": "7900000000.0",
@@ -1036,7 +1036,7 @@
           "Breakdown": "Reconciled Cost of Revenue",
           "TTM": "9982000000.0",
           "2026-07-31": "2649000000.0",
-          "2026-04-30": "4472000000.0",
+          "2026-04-30": "1902000000.0",
           "2026-01-31": "2508000000.0",
           "2025-10-31": "2255000000.0",
           "2025-07-31": "2242000000.0",
@@ -5557,81 +5557,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.17,
-      "costOfEquity": 14.649999999999999,
+      "wacc": 12.04,
+      "costOfEquity": 14.64,
       "costOfDebt": 1.13,
       "taxRate": 23,
-      "beta": 1.2262,
-      "marketCap": 190030700000
+      "beta": 1.2249,
+      "marketCap": 179422230000
     },
     "beta": {
-      "beta5y": 1.2262
+      "beta5y": 1.2249
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 250.5,
-        "high": 259.28,
-        "low": 250,
-        "close": 256.65,
-        "volume": 7767800
-      },
-      {
-        "date": "2025-10-31",
-        "open": 254.8,
-        "high": 261.82,
-        "low": 252.63,
-        "close": 260.41,
-        "volume": 6878300
-      },
-      {
-        "date": "2025-11-03",
-        "open": 260,
-        "high": 261.56,
-        "low": 255.1,
-        "close": 261.34,
-        "volume": 7054300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 258.15,
-        "high": 259.26,
-        "low": 253.46,
-        "close": 254.44,
-        "volume": 6792200
-      },
-      {
-        "date": "2025-11-05",
-        "open": 254.7,
-        "high": 256.83,
-        "low": 252.01,
-        "close": 252.68,
-        "volume": 5241200
-      },
-      {
-        "date": "2025-11-06",
-        "open": 250.54,
-        "high": 250.54,
-        "low": 234.48,
-        "close": 239.27,
-        "volume": 11041800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 236.15,
-        "high": 240.97,
-        "low": 235.79,
-        "close": 239.88,
-        "volume": 5741500
-      },
-      {
-        "date": "2025-11-10",
-        "open": 240,
-        "high": 241.91,
-        "low": 235.08,
-        "close": 241.71,
-        "volume": 6486600
-      },
       {
         "date": "2025-11-11",
         "open": 241.9,
@@ -7583,6 +7519,70 @@
         "low": 227.68,
         "close": 229.17,
         "volume": 7893200
+      },
+      {
+        "date": "2026-11-02",
+        "open": 229.75,
+        "high": 232.95,
+        "low": 225.15,
+        "close": 226.18,
+        "volume": 6614900
+      },
+      {
+        "date": "2026-11-03",
+        "open": 222.4,
+        "high": 223.5,
+        "low": 214.67,
+        "close": 222.2,
+        "volume": 6704000
+      },
+      {
+        "date": "2026-11-04",
+        "open": 229,
+        "high": 234.36,
+        "low": 225.02,
+        "close": 227.11,
+        "volume": 6505600
+      },
+      {
+        "date": "2026-11-05",
+        "open": 229.06,
+        "high": 229.39,
+        "low": 220.08,
+        "close": 222.41,
+        "volume": 8182900
+      },
+      {
+        "date": "2026-11-06",
+        "open": 216.71,
+        "high": 218.77,
+        "low": 211,
+        "close": 213.65,
+        "volume": 6710100
+      },
+      {
+        "date": "2026-11-09",
+        "open": 214.75,
+        "high": 217.45,
+        "low": 213.79,
+        "close": 214.94,
+        "volume": 6664800
+      },
+      {
+        "date": "2026-11-10",
+        "open": 214.57,
+        "high": 214.89,
+        "low": 208.88,
+        "close": 213.48,
+        "volume": 7874400
+      },
+      {
+        "date": "2026-11-11",
+        "open": 214.91,
+        "high": 218.23,
+        "low": 213.5,
+        "close": 218.01,
+        "volume": 6208000
       }
     ],
     "news": [
@@ -7669,18 +7669,14 @@
     ],
     "officers": [
       {
-        "name": "Dr. Paula Goldman Ph.D.",
-        "title": "VP and Chief Ethical & Humane Use Officer"
+        "name": "Mr. Andy White",
+        "title": "Senior Vice President of Technology"
       },
       {
-        "name": "Mr. Bill Patterson",
-        "title": "Executive VP & GM of CRM Applications"
-      },
-      {
-        "name": "Mr. Kendall Collins",
-        "title": "President & CEO of Government Cloud",
-        "age": 50,
-        "yearBorn": 1975
+        "name": "Mr. Guy Wanger",
+        "title": "Chief Accounting Officer",
+        "age": 62,
+        "yearBorn": 1963
       },
       {
         "name": "Mr. Marc R. Benioff",
@@ -7704,6 +7700,10 @@
         "totalPay": 2291250
       },
       {
+        "name": "Mr. Rohan Kumar",
+        "title": "President & Chief Platform and Engineering Officer"
+      },
+      {
         "name": "Mr. Sabastian V. Niles",
         "title": "President, Chief Legal Officer & Corporate Secretary",
         "age": 45,
@@ -7718,57 +7718,54 @@
         "totalPay": 3139934
       },
       {
-        "name": "Mr. Vala Afshar",
-        "title": "Chief Digital Evangelist"
+        "name": "Ms. Alexa Vignone",
+        "title": "President & Chief Revenue Officer"
       },
       {
-        "name": "Ms. Polly A. Sumner",
-        "title": "Chief Adoption Officer",
-        "age": 48,
-        "yearBorn": 1977,
-        "totalPay": 630000
+        "name": "Ms. Erin Oles",
+        "title": "President & Chief Marketing Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.04,
-        "industryAvg": 26.7
+        "value": 19.87,
+        "industryAvg": 28.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.32,
-        "industryAvg": 5.06
+        "value": 4.08,
+        "industryAvg": 4.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.95,
-        "industryAvg": 5.63
+        "value": 4.68,
+        "industryAvg": 5.21
       },
       {
         "metric": "ROE",
         "value": 9.71,
-        "industryAvg": -12.36
+        "industryAvg": -0.7100000000000001
       },
       {
         "metric": "ROA",
         "value": 3.26,
-        "industryAvg": -6.8500000000000005
+        "industryAvg": -0.4
       },
       {
         "metric": "Gross Margin",
         "value": 76.64999999999999,
-        "industryAvg": 63.42
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.81,
-        "industryAvg": 1.5
+        "industryAvg": 17.51
       },
       {
         "metric": "Net Margin",
         "value": 31.080000000000002,
-        "industryAvg": -15.790000000000001
+        "industryAvg": -0.97
       }
     ]
   }

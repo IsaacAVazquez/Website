@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 17.53,
-      "marketCap": 116284080000,
-      "psRatio": 1.29,
-      "pbRatio": -15.64,
-      "pegRatio": 438.25
+      "ttmPe": 19.58,
+      "marketCap": 129927600000,
+      "psRatio": 1.44,
+      "pbRatio": -17.47,
+      "pegRatio": 489.5
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,81 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.63,
-      "costOfEquity": 11.49,
+      "wacc": 8.7,
+      "costOfEquity": 11.28,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.8252,
-      "marketCap": 116284080000
+      "beta": 0.7985,
+      "marketCap": 129927600000
     },
     "beta": {
-      "beta5y": 0.8252
+      "beta5y": 0.7985
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 238.07,
-        "high": 243.32,
-        "low": 237.01,
-        "close": 239.82,
-        "volume": 2076700
-      },
-      {
-        "date": "2025-10-31",
-        "open": 238.08,
-        "high": 239.34,
-        "low": 236.45,
-        "close": 238.13,
-        "volume": 2404700
-      },
-      {
-        "date": "2025-11-03",
-        "open": 236.41,
-        "high": 237.32,
-        "low": 232.98,
-        "close": 235.64,
-        "volume": 2333700
-      },
-      {
-        "date": "2025-11-04",
-        "open": 235.52,
-        "high": 238.01,
-        "low": 233.47,
-        "close": 237.76,
-        "volume": 2632600
-      },
-      {
-        "date": "2025-11-05",
-        "open": 236.55,
-        "high": 238.13,
-        "low": 231.62,
-        "close": 234.35,
-        "volume": 2749600
-      },
-      {
-        "date": "2025-11-06",
-        "open": 233.08,
-        "high": 234.97,
-        "low": 231.12,
-        "close": 231.35,
-        "volume": 3272700
-      },
-      {
-        "date": "2025-11-07",
-        "open": 231.84,
-        "high": 234.18,
-        "low": 231.12,
-        "close": 233.16,
-        "volume": 3053800
-      },
-      {
-        "date": "2025-11-10",
-        "open": 232.61,
-        "high": 234.11,
-        "low": 229.18,
-        "close": 233.03,
-        "volume": 2588000
-      },
       {
         "date": "2025-11-11",
         "open": 233.75,
@@ -7842,6 +7778,70 @@
         "low": 207.83,
         "close": 209.07,
         "volume": 4249100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 212,
+        "high": 218.25,
+        "low": 212,
+        "close": 218.15,
+        "volume": 3695500
+      },
+      {
+        "date": "2026-11-03",
+        "open": 215.8,
+        "high": 216.25,
+        "low": 212.51,
+        "close": 213.38,
+        "volume": 3058800
+      },
+      {
+        "date": "2026-11-04",
+        "open": 222.9,
+        "high": 229.79,
+        "low": 221.1,
+        "close": 229.38,
+        "volume": 4877300
+      },
+      {
+        "date": "2026-11-05",
+        "open": 233.51,
+        "high": 234.75,
+        "low": 226.19,
+        "close": 227.24,
+        "volume": 5275700
+      },
+      {
+        "date": "2026-11-06",
+        "open": 220.34,
+        "high": 226.23,
+        "low": 220.32,
+        "close": 224.55,
+        "volume": 3530500
+      },
+      {
+        "date": "2026-11-09",
+        "open": 231.76,
+        "high": 234.43,
+        "low": 227.23,
+        "close": 232.1,
+        "volume": 3072900
+      },
+      {
+        "date": "2026-11-10",
+        "open": 228.5,
+        "high": 232.46,
+        "low": 227.33,
+        "close": 231.87,
+        "volume": 2516100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 228.87,
+        "high": 231.69,
+        "low": 227.33,
+        "close": 231.6,
+        "volume": 2746500
       }
     ],
     "news": [
@@ -7862,19 +7862,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
-        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
         "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
+        "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-advanced-110800675.html",
         "type": "STORY"
       },
       {
@@ -7902,20 +7902,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
-        "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
         "title": "Homeowners are feeling especially stressed about home repairs",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "a5be009f-e52b-3ac7-95ad-512d273b64e1",
+        "title": "Lowe's Just Issued a Warning About Its Coming Quarters. Should You Consider Buying the Stock Anyway?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
+        "type": "STORY"
       },
       {
         "uuid": "aff55959-70ca-319c-bee0-b6838ba8d029",
@@ -7991,23 +7991,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.53,
-        "industryAvg": 21.34
+        "value": 19.58,
+        "industryAvg": 23.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.29,
-        "industryAvg": 1.69
+        "value": 1.44,
+        "industryAvg": 1.83
       },
       {
         "metric": "P/B Ratio",
-        "value": -15.64,
-        "industryAvg": 16.84
+        "value": -17.47,
+        "industryAvg": 17.96
       },
       {
         "metric": "ROE",
         "value": -28.63,
-        "industryAvg": 243.57000000000002
+        "industryAvg": 243.01
       },
       {
         "metric": "ROA",
@@ -8017,7 +8017,7 @@
       {
         "metric": "Gross Margin",
         "value": 33.040000000000006,
-        "industryAvg": 33.56
+        "industryAvg": 33.57
       },
       {
         "metric": "EBITDA Margin",

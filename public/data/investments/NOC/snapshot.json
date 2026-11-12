@@ -1,10 +1,10 @@
 {
   "symbol": "NOC",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 31.7658,
-      "ttmPe": 17.7,
-      "marketCap": 79891167276,
-      "psRatio": 1.83,
-      "pbRatio": 4.28,
-      "pegRatio": 5.96
+      "ttmPe": 17.34,
+      "marketCap": 78271636536,
+      "psRatio": 1.8,
+      "pbRatio": 4.19,
+      "pegRatio": 5.84
     },
     "profitability": {
       "roe": 6.15,
@@ -2951,7 +2951,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "142062680.0",
+          "2026-09-30": "142064132.0",
           "2026-06-30": "142062680.0",
           "2026-03-31": "142033476.0",
           "2025-12-31": "141997194.0",
@@ -2972,7 +2972,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "142062680.0",
+          "2026-09-30": "142064132.0",
           "2026-06-30": "142062680.0",
           "2026-03-31": "142033476.0",
           "2025-12-31": "141997194.0",
@@ -5565,81 +5565,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.55,
-      "costOfEquity": 4.12,
+      "wacc": 3.42,
+      "costOfEquity": 3.9699999999999998,
       "costOfDebt": 0.95,
       "taxRate": 13,
-      "beta": -0.1084,
-      "marketCap": 79891167276
+      "beta": -0.1286,
+      "marketCap": 78271636536
     },
     "beta": {
-      "beta5y": -0.1084
+      "beta5y": -0.1286
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 585.94,
-        "high": 591.73,
-        "low": 577.74,
-        "close": 578.6,
-        "volume": 1102800
-      },
-      {
-        "date": "2025-10-31",
-        "open": 579.15,
-        "high": 586.63,
-        "low": 575.82,
-        "close": 583.45,
-        "volume": 840200
-      },
-      {
-        "date": "2025-11-03",
-        "open": 580.44,
-        "high": 581.19,
-        "low": 571.68,
-        "close": 575.41,
-        "volume": 657800
-      },
-      {
-        "date": "2025-11-04",
-        "open": 574.49,
-        "high": 579.59,
-        "low": 568.4,
-        "close": 577.14,
-        "volume": 494200
-      },
-      {
-        "date": "2025-11-05",
-        "open": 572.77,
-        "high": 579.53,
-        "low": 569.74,
-        "close": 570.5,
-        "volume": 535800
-      },
-      {
-        "date": "2025-11-06",
-        "open": 570,
-        "high": 578.04,
-        "low": 569.95,
-        "close": 571.96,
-        "volume": 610700
-      },
-      {
-        "date": "2025-11-07",
-        "open": 571.97,
-        "high": 571.97,
-        "low": 562.44,
-        "close": 568.61,
-        "volume": 646000
-      },
-      {
-        "date": "2025-11-10",
-        "open": 564.8,
-        "high": 567.06,
-        "low": 557.39,
-        "close": 562.98,
-        "volume": 1075600
-      },
       {
         "date": "2025-11-11",
         "open": 564.48,
@@ -7591,6 +7527,70 @@
         "low": 556.59,
         "close": 557.54,
         "volume": 987600
+      },
+      {
+        "date": "2026-11-02",
+        "open": 558.09,
+        "high": 559.37,
+        "low": 552.3,
+        "close": 555.32,
+        "volume": 779600
+      },
+      {
+        "date": "2026-11-03",
+        "open": 551.68,
+        "high": 555.54,
+        "low": 547.78,
+        "close": 550.3,
+        "volume": 788500
+      },
+      {
+        "date": "2026-11-04",
+        "open": 530,
+        "high": 540.44,
+        "low": 520,
+        "close": 525.35,
+        "volume": 1735200
+      },
+      {
+        "date": "2026-11-05",
+        "open": 522.16,
+        "high": 539.72,
+        "low": 518.24,
+        "close": 525.25,
+        "volume": 1346200
+      },
+      {
+        "date": "2026-11-06",
+        "open": 515.38,
+        "high": 531.2,
+        "low": 510.3,
+        "close": 525.01,
+        "volume": 1192200
+      },
+      {
+        "date": "2026-11-09",
+        "open": 530,
+        "high": 543.92,
+        "low": 523.16,
+        "close": 539.07,
+        "volume": 811500
+      },
+      {
+        "date": "2026-11-10",
+        "open": 537.58,
+        "high": 553.47,
+        "low": 534.16,
+        "close": 548.61,
+        "volume": 546600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 543.65,
+        "high": 552,
+        "low": 543.65,
+        "close": 550.96,
+        "volume": 640400
       }
     ],
     "news": [
@@ -7627,19 +7627,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
-        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
+        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
         "type": "STORY"
       },
       {
@@ -7706,6 +7706,10 @@
         "yearBorn": 1949
       },
       {
+        "name": "Mr. Randy Sinclair",
+        "title": "Vice President of Investor Relations"
+      },
+      {
         "name": "Mr. Thomas H. Jones",
         "title": "Corporate VP & President of Aeronautics Systems Sector",
         "age": 58,
@@ -7715,12 +7719,6 @@
       {
         "name": "Mr. Travis Garriss",
         "title": "VP & Chief Information and Digital Officer"
-      },
-      {
-        "name": "Ms. Kathryn G. Simpson",
-        "title": "Corporate VP & General Counsel",
-        "age": 61,
-        "yearBorn": 1964
       },
       {
         "name": "Ms. Kathy J. Warden",
@@ -7740,43 +7738,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.7,
-        "industryAvg": 33.32
+        "value": 17.34,
+        "industryAvg": 33.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.83,
+        "value": 1.8,
         "industryAvg": 5.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.28,
-        "industryAvg": 7.59
+        "value": 4.19,
+        "industryAvg": 7.47
       },
       {
         "metric": "ROE",
         "value": 6.15,
-        "industryAvg": 12.45
+        "industryAvg": 12.53
       },
       {
         "metric": "ROA",
         "value": 2.18,
-        "industryAvg": 3.7900000000000005
+        "industryAvg": 3.8600000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 21.15,
-        "industryAvg": 20.64
+        "industryAvg": 20.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 16.5,
-        "industryAvg": 15.15
+        "industryAvg": 15.22
       },
       {
         "metric": "Net Margin",
         "value": 10.11,
-        "industryAvg": 6.45
+        "industryAvg": 6.569999999999999
       }
     ]
   }

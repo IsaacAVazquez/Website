@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 85.13,
-      "marketCap": 92332533450,
-      "psRatio": 9.81,
-      "pbRatio": 2.96,
-      "pegRatio": 0.95
+      "ttmPe": 81.64,
+      "marketCap": 88544502600,
+      "psRatio": 9.4,
+      "pbRatio": 2.84,
+      "pegRatio": 0.92
     },
     "profitability": {
       "roe": 1.77,
@@ -1039,7 +1039,7 @@
           "2026-04-30": "119861500.0",
           "2026-01-31": "166120090.0",
           "2025-10-31": "-28510487.65",
-          "2025-07-31": "242492410.0",
+          "2025-07-31": "242493369.7",
           "2025-04-30": "306268086.84",
           "2025-01-31": "295633230.0",
           "2024-10-31": "276974158.99",
@@ -1303,7 +1303,7 @@
           "2026-04-30": "0.13",
           "2026-01-31": "0.18",
           "2025-10-31": "0.13",
-          "2025-07-31": "0.21",
+          "2025-07-31": "0.26",
           "2025-04-30": "0.12",
           "2025-01-31": "0.21",
           "2024-10-31": "0.19",
@@ -1325,7 +1325,7 @@
           "2026-04-30": "-14679500.0",
           "2026-01-31": "-22463910.0",
           "2025-10-31": "72435512.35",
-          "2025-07-31": "4410.0",
+          "2025-07-31": "5369.7",
           "2025-04-30": "5808086.84",
           "2025-01-31": "13230.0",
           "2024-10-31": "549158.99",
@@ -3494,7 +3494,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-07-31": "191172000.0",
+          "2026-07-31": "191639325.0",
           "2026-04-30": "192037000.0",
           "2026-01-31": "192038000.0",
           "2025-10-31": "187216000.0",
@@ -3515,7 +3515,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-07-31": "191172000.0",
+          "2026-07-31": "191639325.0",
           "2026-04-30": "191444000.0",
           "2026-01-31": "191449000.0",
           "2025-10-31": "185994000.0",
@@ -6282,81 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.03,
-      "costOfEquity": 14.45,
+      "wacc": 12.879999999999999,
+      "costOfEquity": 14.34,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.2021,
-      "marketCap": 92332533450
+      "beta": 1.1865,
+      "marketCap": 88544502600
     },
     "beta": {
-      "beta5y": 1.2021
+      "beta5y": 1.1865
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 450,
-        "high": 452.77,
-        "low": 438.55,
-        "close": 442.93,
-        "volume": 1717000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 445.3,
-        "high": 456.24,
-        "low": 442.69,
-        "close": 453.82,
-        "volume": 1699200
-      },
-      {
-        "date": "2025-11-03",
-        "open": 451.84,
-        "high": 452.51,
-        "low": 437.57,
-        "close": 445.72,
-        "volume": 1944000
-      },
-      {
-        "date": "2025-11-04",
-        "open": 435,
-        "high": 437.11,
-        "low": 415.21,
-        "close": 416.35,
-        "volume": 4353400
-      },
-      {
-        "date": "2025-11-05",
-        "open": 416.5,
-        "high": 416.92,
-        "low": 402.7,
-        "close": 409.11,
-        "volume": 4292500
-      },
-      {
-        "date": "2025-11-06",
-        "open": 411,
-        "high": 411.56,
-        "low": 391.54,
-        "close": 396.14,
-        "volume": 4046800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 394.32,
-        "high": 400.31,
-        "low": 386.91,
-        "close": 393.43,
-        "volume": 2641900
-      },
-      {
-        "date": "2025-11-10",
-        "open": 398.87,
-        "high": 401.28,
-        "low": 388.44,
-        "close": 400.77,
-        "volume": 1886600
-      },
       {
         "date": "2025-11-11",
         "open": 398.12,
@@ -8308,6 +8244,70 @@
         "low": 460.14,
         "close": 467.61,
         "volume": 2623000
+      },
+      {
+        "date": "2026-11-02",
+        "open": 470.28,
+        "high": 476.01,
+        "low": 463.54,
+        "close": 466.08,
+        "volume": 1694200
+      },
+      {
+        "date": "2026-11-03",
+        "open": 461.31,
+        "high": 464.51,
+        "low": 445.56,
+        "close": 462.88,
+        "volume": 1542800
+      },
+      {
+        "date": "2026-11-04",
+        "open": 463.58,
+        "high": 465.86,
+        "low": 451.7,
+        "close": 462.95,
+        "volume": 1808700
+      },
+      {
+        "date": "2026-11-05",
+        "open": 454.54,
+        "high": 455,
+        "low": 436.5,
+        "close": 440.31,
+        "volume": 2777300
+      },
+      {
+        "date": "2026-11-06",
+        "open": 449.78,
+        "high": 453.6,
+        "low": 438.01,
+        "close": 450.46,
+        "volume": 2317800
+      },
+      {
+        "date": "2026-11-09",
+        "open": 454.54,
+        "high": 470.35,
+        "low": 451.06,
+        "close": 466.97,
+        "volume": 1738100
+      },
+      {
+        "date": "2026-11-10",
+        "open": 460.77,
+        "high": 466.3,
+        "low": 451.14,
+        "close": 459.95,
+        "volume": 1040800
+      },
+      {
+        "date": "2026-11-11",
+        "open": 468.62,
+        "high": 470.21,
+        "low": 460,
+        "close": 462.12,
+        "volume": 950600
       }
     ],
     "news": [
@@ -8336,22 +8336,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
-        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
         "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
         "publisher": "MT Newswires",
@@ -8360,11 +8344,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-        "publisher": "MT Newswires",
+        "uuid": "9c46ac3e-a0bd-3c36-abfa-7e5382addab8",
+        "title": "Trump Blocks Chip Design Software Firms From Selling In China",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
+        "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
         "type": "STORY"
       },
       {
@@ -8376,6 +8360,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
         "title": "US Tightens China Chip Curbs by Targeting Design Software",
         "publisher": "Bloomberg",
@@ -8384,11 +8376,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
+        "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
+        "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
+        "publisher": "Investing.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
+        "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
         "type": "STORY"
       }
     ],
@@ -8453,43 +8453,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 85.13,
-        "industryAvg": 34.4
+        "value": 81.64,
+        "industryAvg": 31.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.81,
-        "industryAvg": 7.89
+        "value": 9.4,
+        "industryAvg": 7.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.96,
-        "industryAvg": 8.76
+        "value": 2.84,
+        "industryAvg": 7.93
       },
       {
         "metric": "ROE",
         "value": 1.77,
-        "industryAvg": 25.900000000000002
+        "industryAvg": 26.279999999999998
       },
       {
         "metric": "ROA",
         "value": 1.15,
-        "industryAvg": 10.15
+        "industryAvg": 10.36
       },
       {
         "metric": "Gross Margin",
         "value": 72.57000000000001,
-        "industryAvg": 51.12
+        "industryAvg": 50.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.35999999999999,
-        "industryAvg": 36.04
+        "industryAvg": 36.57
       },
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 19.82
+        "industryAvg": 20.53
       }
     ]
   }
