@@ -75,6 +75,8 @@ const NO_PINNED_PHOTO = "No Commons photograph was pinned for this post in the 2
 // Set on 2026-09-28 for the monthly company series.
 const COMPANY_SERIES = "Monthly company commentary; the only real subject is the company's own brand, which is not ours to use.";
 
+const NEW_RACE_POST = "Race write-up added 2026-11-02 while the image hosts were blocked in the sandbox; it keeps the editorial card until a photo is pinned.";
+
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "building-before-you-buy", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-travel-deal-lab", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
@@ -395,4 +397,13 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "xbox-reset-studios-subscription-platform", strategy: "editorial-card", reason: COMPANY_SERIES },
   { slug: "microsoft-copilot-app-merger-front-door-to-m365", strategy: "editorial-card", reason: COMPANY_SERIES },
   { slug: "microsoft-copilot-seat-plus-meter-pricing", strategy: "editorial-card", reason: COMPANY_SERIES },
+
+  // 2026 Formula 1 catch-up, Monza to Mexico City
+  { slug: "2026-italian-grand-prix-antonelli-monza-from-19th", strategy: "editorial-card", reason: NEW_RACE_POST },
+  { slug: "2026-spanish-grand-prix-antonelli-madrid", strategy: "editorial-card", reason: NEW_RACE_POST },
+  { slug: "2026-azerbaijan-grand-prix-russell-baku", strategy: "editorial-card", reason: NEW_RACE_POST },
+  { slug: "2026-bahrain-grand-prix-malaysia-verstappen-sepang", strategy: "editorial-card", reason: NEW_RACE_POST },
+  { slug: "2026-singapore-grand-prix-verstappen-sprint-double", strategy: "editorial-card", reason: NEW_RACE_POST },
+  { slug: "2026-united-states-grand-prix-antonelli-austin", strategy: "editorial-card", reason: NEW_RACE_POST },
+  { slug: "2026-mexico-city-grand-prix-antonelli-champion", strategy: "editorial-card", reason: NEW_RACE_POST },
 ];
