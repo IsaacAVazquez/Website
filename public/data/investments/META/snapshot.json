@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-10-29T15:47:46.352324+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-29T15:47:46.352324+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 29.3266,
-      "ttmPe": 20.89,
-      "marketCap": 1565672233837,
-      "psRatio": 6.48,
-      "pbRatio": 5.75,
+      "ttmPe": 21.44,
+      "marketCap": 1607287842201,
+      "psRatio": 6.65,
+      "pbRatio": 5.9,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -3130,7 +3130,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "2548377716.0",
+          "2026-09-30": "2556833034.0",
           "2026-06-30": "2548377716.0",
           "2026-03-31": "2538377716.0",
           "2025-12-31": "2529638328.0",
@@ -3151,7 +3151,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "2548377716.0",
+          "2026-09-30": "2556833034.0",
           "2026-06-30": "2548377716.0",
           "2026-03-31": "2538377716.0",
           "2025-12-31": "2529638328.0",
@@ -5806,81 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.69,
-      "costOfEquity": 14.649999999999999,
+      "wacc": 13.94,
+      "costOfEquity": 14.89,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 24,
-      "beta": 1.2282,
-      "marketCap": 1565672233837
+      "beta": 1.2557,
+      "marketCap": 1607287842201
     },
     "beta": {
-      "beta5y": 1.2282
+      "beta5y": 1.2557
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 669.15,
-        "high": 680.96,
-        "low": 650.17,
-        "close": 666.47,
-        "volume": 88440100
-      },
-      {
-        "date": "2025-10-31",
-        "open": 674.51,
-        "high": 674.89,
-        "low": 645.57,
-        "close": 648.35,
-        "volume": 56953200
-      },
-      {
-        "date": "2025-11-03",
-        "open": 656,
-        "high": 659.33,
-        "low": 636.18,
-        "close": 637.71,
-        "volume": 33003600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 628.04,
-        "high": 641.74,
-        "low": 626.01,
-        "close": 627.32,
-        "volume": 27356600
-      },
-      {
-        "date": "2025-11-05",
-        "open": 632.31,
-        "high": 642.23,
-        "low": 626.54,
-        "close": 635.95,
-        "volume": 20219900
-      },
-      {
-        "date": "2025-11-06",
-        "open": 635.85,
-        "high": 636,
-        "low": 618,
-        "close": 618.94,
-        "volume": 23628800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 616.49,
-        "high": 622.13,
-        "low": 601.2,
-        "close": 621.71,
-        "volume": 29946800
-      },
-      {
-        "date": "2025-11-10",
-        "open": 631.09,
-        "high": 635,
-        "low": 618.11,
-        "close": 631.76,
-        "volume": 19245000
-      },
       {
         "date": "2025-11-11",
         "open": 628,
@@ -7831,7 +7767,71 @@
         "high": 626.37,
         "low": 610.13,
         "close": 614.99,
-        "volume": 25295900
+        "volume": 25364700
+      },
+      {
+        "date": "2026-11-02",
+        "open": 614.44,
+        "high": 621.69,
+        "low": 606.41,
+        "close": 606.73,
+        "volume": 19496500
+      },
+      {
+        "date": "2026-11-03",
+        "open": 610.76,
+        "high": 624.84,
+        "low": 610.1,
+        "close": 621.03,
+        "volume": 13731300
+      },
+      {
+        "date": "2026-11-04",
+        "open": 641.15,
+        "high": 643.09,
+        "low": 624.5,
+        "close": 630,
+        "volume": 32441800
+      },
+      {
+        "date": "2026-11-05",
+        "open": 632.3,
+        "high": 634.99,
+        "low": 583.8,
+        "close": 605.08,
+        "volume": 28676200
+      },
+      {
+        "date": "2026-11-06",
+        "open": 607.33,
+        "high": 625.6,
+        "low": 606.66,
+        "close": 610.15,
+        "volume": 15705500
+      },
+      {
+        "date": "2026-11-09",
+        "open": 631.05,
+        "high": 647.25,
+        "low": 630,
+        "close": 641.37,
+        "volume": 19143300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 637.98,
+        "high": 647.28,
+        "low": 635.5,
+        "close": 641.39,
+        "volume": 13030600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 646.74,
+        "high": 648.45,
+        "low": 627.97,
+        "close": 628.77,
+        "volume": 15533900
       }
     ],
     "news": [
@@ -7852,19 +7852,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-apple-085500208.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7932,13 +7932,6 @@
         "totalPay": 3308578
       },
       {
-        "name": "Mr. Dana White",
-        "title": "Independent Director",
-        "age": 55,
-        "yearBorn": 1970,
-        "totalPay": 68105
-      },
-      {
         "name": "Mr. Javier Olivan",
         "title": "Chief Operating Officer",
         "age": 48,
@@ -7970,43 +7963,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.89,
-        "industryAvg": 16.98
+        "value": 21.44,
+        "industryAvg": 16.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.48,
-        "industryAvg": 7.78
+        "value": 6.65,
+        "industryAvg": 6.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.75,
-        "industryAvg": 5.69
+        "value": 5.9,
+        "industryAvg": 5.07
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 38.68
+        "industryAvg": 37.730000000000004
       },
       {
         "metric": "ROA",
         "value": 2.12,
-        "industryAvg": 25.580000000000002
+        "industryAvg": 24.84
       },
       {
         "metric": "Gross Margin",
         "value": 79.31,
-        "industryAvg": 63.61
+        "industryAvg": 62.81
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.71,
-        "industryAvg": 60.589999999999996
+        "industryAvg": 59.72
       },
       {
         "metric": "Net Margin",
         "value": 15.260000000000002,
-        "industryAvg": 44.47
+        "industryAvg": 43.57
       }
     ]
   }

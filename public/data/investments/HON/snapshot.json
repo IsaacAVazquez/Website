@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.4105,
-      "ttmPe": 9.49,
-      "marketCap": 70498017190,
-      "psRatio": 2.3,
-      "pbRatio": 3.14,
+      "ttmPe": 9.72,
+      "marketCap": 72243488940,
+      "psRatio": 2.35,
+      "pbRatio": 3.22,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -863,7 +863,7 @@
           "2026-06-30": "17.83",
           "2026-03-31": "2.58",
           "2025-12-31": "0.92",
-          "2025-09-30": "5.71",
+          "2025-09-30": "5.72",
           "2025-06-30": "4.9",
           "2025-03-31": "4.44",
           "2024-12-31": "1.96",
@@ -885,7 +885,7 @@
           "2026-06-30": "317100000.0",
           "2026-03-31": "317350000.0",
           "2025-12-31": "317600000.0",
-          "2025-09-30": "317700000.0",
+          "2025-09-30": "317650000.0",
           "2025-06-30": "318800000.0",
           "2025-03-31": "324100000.0",
           "2024-12-31": "650600000.0",
@@ -1598,7 +1598,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "14.8",
+          "2025-12-31": "16.08",
           "2024-12-31": "17.52",
           "2023-12-31": "17.06",
           "2022-12-31": "14.66",
@@ -1608,7 +1608,7 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "2025-12-31": "14.72",
+          "2025-12-31": "15.98",
           "2024-12-31": "17.42",
           "2023-12-31": "16.94",
           "2022-12-31": "14.54",
@@ -6703,81 +6703,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.370000000000001,
-      "costOfEquity": 11.39,
+      "wacc": 9.36,
+      "costOfEquity": 11.32,
       "costOfDebt": 0.86,
       "taxRate": 6,
-      "beta": 0.8122,
-      "marketCap": 70498017190
+      "beta": 0.8038,
+      "marketCap": 72243488940
     },
     "beta": {
-      "beta5y": 0.8122
+      "beta5y": 0.8038
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 211.6413,
-        "high": 215.2281,
-        "low": 209.5438,
-        "close": 209.8689,
-        "volume": 6208429
-      },
-      {
-        "date": "2025-10-31",
-        "open": 208.495,
-        "high": 211.7147,
-        "low": 208.3377,
-        "close": 211.1484,
-        "volume": 3878647
-      },
-      {
-        "date": "2025-11-03",
-        "open": 211.1484,
-        "high": 211.2742,
-        "low": 206.7121,
-        "close": 207.4148,
-        "volume": 4732602
-      },
-      {
-        "date": "2025-11-04",
-        "open": 207.2994,
-        "high": 207.6665,
-        "low": 204.1741,
-        "close": 206.0409,
-        "volume": 5460695
-      },
-      {
-        "date": "2025-11-05",
-        "open": 205.6843,
-        "high": 209.4704,
-        "low": 204.8348,
-        "close": 206.6597,
-        "volume": 4010802
-      },
-      {
-        "date": "2025-11-06",
-        "open": 205.548,
-        "high": 206.8694,
-        "low": 204.7404,
-        "close": 205.4641,
-        "volume": 2890345
-      },
-      {
-        "date": "2025-11-07",
-        "open": 205.6109,
-        "high": 206.0199,
-        "low": 203.1463,
-        "close": 203.5343,
-        "volume": 3534529
-      },
-      {
-        "date": "2025-11-10",
-        "open": 204.4992,
-        "high": 206.0619,
-        "low": 203.0624,
-        "close": 205.6319,
-        "volume": 3643037
-      },
       {
         "date": "2025-11-11",
         "open": 206.0619,
@@ -8729,6 +8665,70 @@
         "low": 217.89,
         "close": 218.33,
         "volume": 3106200
+      },
+      {
+        "date": "2026-11-02",
+        "open": 222.66,
+        "high": 225.55,
+        "low": 221.4,
+        "close": 223.77,
+        "volume": 1939100
+      },
+      {
+        "date": "2026-11-03",
+        "open": 223.44,
+        "high": 225.65,
+        "low": 222.36,
+        "close": 224.05,
+        "volume": 3253100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 229.37,
+        "high": 232.58,
+        "low": 222.65,
+        "close": 228.47,
+        "volume": 3696500
+      },
+      {
+        "date": "2026-11-05",
+        "open": 228.09,
+        "high": 229.11,
+        "low": 215.24,
+        "close": 215.78,
+        "volume": 3352900
+      },
+      {
+        "date": "2026-11-06",
+        "open": 211.94,
+        "high": 220.62,
+        "low": 211.94,
+        "close": 220.05,
+        "volume": 2509000
+      },
+      {
+        "date": "2026-11-09",
+        "open": 222.73,
+        "high": 231.06,
+        "low": 222.6,
+        "close": 229,
+        "volume": 3242500
+      },
+      {
+        "date": "2026-11-10",
+        "open": 227.78,
+        "high": 229.36,
+        "low": 226.41,
+        "close": 228.22,
+        "volume": 1686100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 228.73,
+        "high": 229.06,
+        "low": 226.58,
+        "close": 227.64,
+        "volume": 1581800
       }
     ],
     "news": [
@@ -8781,12 +8781,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
-        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
-        "publisher": "Investopedia",
+        "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
+        "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
@@ -8797,19 +8797,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
-        "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
+        "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
+        "publisher": "Investopedia",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/m/eae5f931-de46-349a-97b9-b42260f80e74/honeywell-strikes-deal-with.html",
+        "type": "STORY"
       },
       {
-        "uuid": "8f56767b-647b-39f8-bdb1-a18c334b5a17",
-        "title": "Honeywell Stock Is Rising. An Activist Is Joining the Board.",
-        "publisher": "Barrons.com",
+        "uuid": "75d38bd4-ebde-3496-88f8-9b8ccd44f07d",
+        "title": "Honeywell International (HON) Up 6.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/8f56767b-647b-39f8-bdb1-a18c334b5a17/honeywell-stock-is-rising.-an.html",
+        "link": "https://finance.yahoo.com/news/honeywell-international-hon-6-7-153052103.html",
         "type": "STORY"
       }
     ],
@@ -8874,43 +8874,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.49,
-        "industryAvg": 21.44
+        "value": 9.72,
+        "industryAvg": 19.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.3,
-        "industryAvg": 1.83
+        "value": 2.35,
+        "industryAvg": 1.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.14,
-        "industryAvg": 2.78
+        "value": 3.22,
+        "industryAvg": 2.55
       },
       {
         "metric": "ROE",
         "value": 3.2399999999999998,
-        "industryAvg": -11.469999999999999
+        "industryAvg": -9.68
       },
       {
         "metric": "ROA",
         "value": 1.02,
-        "industryAvg": -3.58
+        "industryAvg": -3.0700000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 40.410000000000004,
-        "industryAvg": 28.68
+        "industryAvg": 27.800000000000004
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.189999999999998,
-        "industryAvg": 24.490000000000002
+        "industryAvg": 23.119999999999997
       },
       {
         "metric": "Net Margin",
         "value": 13.3,
-        "industryAvg": -7.6899999999999995
+        "industryAvg": -6.3100000000000005
       }
     ]
   }

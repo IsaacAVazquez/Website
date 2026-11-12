@@ -1,10 +1,10 @@
 {
   "symbol": "NKE",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0864,
-      "ttmPe": 18.41,
-      "marketCap": 56976860000,
+      "ttmPe": 18.37,
+      "marketCap": 56828560000,
       "psRatio": 1.24,
-      "pbRatio": 3.74,
+      "pbRatio": 3.73,
       "pegRatio": 0.05
     },
     "profitability": {
@@ -5597,73 +5597,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.0525
+      "beta5y": 1.0318
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 65.18,
-        "high": 66,
-        "low": 64.57,
-        "close": 64.9,
-        "volume": 13895200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 65,
-        "high": 65.25,
-        "low": 64.25,
-        "close": 64.59,
-        "volume": 17822500
-      },
-      {
-        "date": "2025-11-03",
-        "open": 64.72,
-        "high": 64.85,
-        "low": 62.34,
-        "close": 62.65,
-        "volume": 22633300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 62.42,
-        "high": 62.59,
-        "low": 61.12,
-        "close": 61.23,
-        "volume": 13725400
-      },
-      {
-        "date": "2025-11-05",
-        "open": 61.28,
-        "high": 62.85,
-        "low": 60.86,
-        "close": 62.11,
-        "volume": 20979800
-      },
-      {
-        "date": "2025-11-06",
-        "open": 61.88,
-        "high": 62.48,
-        "low": 61.67,
-        "close": 61.89,
-        "volume": 15164600
-      },
-      {
-        "date": "2025-11-07",
-        "open": 61.74,
-        "high": 62.18,
-        "low": 60.29,
-        "close": 61.09,
-        "volume": 15504800
-      },
-      {
-        "date": "2025-11-10",
-        "open": 61.75,
-        "high": 62.09,
-        "low": 60.49,
-        "close": 60.8,
-        "volume": 13063100
-      },
       {
         "date": "2025-11-11",
         "open": 61.73,
@@ -7614,7 +7550,71 @@
         "high": 39.24,
         "low": 38.48,
         "close": 38.67,
-        "volume": 26969400
+        "volume": 26989000
+      },
+      {
+        "date": "2026-11-02",
+        "open": 39,
+        "high": 39.57,
+        "low": 38.95,
+        "close": 39.12,
+        "volume": 22960000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 38.71,
+        "high": 38.97,
+        "low": 37.94,
+        "close": 38.48,
+        "volume": 18073900
+      },
+      {
+        "date": "2026-11-04",
+        "open": 39.62,
+        "high": 41.1,
+        "low": 39.48,
+        "close": 40.49,
+        "volume": 34495200
+      },
+      {
+        "date": "2026-11-05",
+        "open": 40.38,
+        "high": 40.88,
+        "low": 39.08,
+        "close": 39.56,
+        "volume": 28307100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 38.27,
+        "high": 39.18,
+        "low": 37.96,
+        "close": 38.59,
+        "volume": 20452800
+      },
+      {
+        "date": "2026-11-09",
+        "open": 38.84,
+        "high": 40.17,
+        "low": 38.6,
+        "close": 39.88,
+        "volume": 20645000
+      },
+      {
+        "date": "2026-11-10",
+        "open": 39.4,
+        "high": 39.51,
+        "low": 38.44,
+        "close": 38.67,
+        "volume": 16203200
+      },
+      {
+        "date": "2026-11-11",
+        "open": 38.42,
+        "high": 38.49,
+        "low": 37.74,
+        "close": 38.32,
+        "volume": 19062000
       }
     ],
     "news": [
@@ -7643,19 +7643,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
-        "title": "Brunswick (BC) Q1 Earnings: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
         "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
+        "title": "Brunswick (BC) Q1 Earnings: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
         "type": "STORY"
       },
       {
@@ -7701,19 +7701,6 @@
     ],
     "officers": [
       {
-        "name": "Dr. Thomas E. Clarke Ph.D.",
-        "title": "Chief Growth Initiatives Officer",
-        "age": 73,
-        "yearBorn": 1952,
-        "totalPay": 1277458
-      },
-      {
-        "name": "Mr. David M. Denton",
-        "title": "Executive VP, CFO, Interim Corporate Controller & Principal Accounting Officer",
-        "age": 60,
-        "yearBorn": 1965
-      },
-      {
         "name": "Mr. Elliott J. Hill",
         "title": "CEO, President & Director",
         "age": 61,
@@ -7721,14 +7708,16 @@
         "totalPay": 4235965
       },
       {
+        "name": "Mr. Keith Houlemard",
+        "title": "VP & GM of Olympics, VP & GM of EMEA Running and Merchandising Director",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
         "name": "Mr. Mark G. Parker",
         "title": "Executive Chairman",
         "age": 69,
         "yearBorn": 1956
-      },
-      {
-        "name": "Mr. Michael Gonda",
-        "title": "EVP & Chief Communications and Strategy Officer"
       },
       {
         "name": "Mr. Philip H. Knight",
@@ -7750,10 +7739,6 @@
         "totalPay": 1878496
       },
       {
-        "name": "Ms. Nicole Hubbard Graham",
-        "title": "Executive VP & Chief Marketing Officer"
-      },
-      {
         "name": "Ms. Treasure Heinle",
         "title": "Executive VP and Chief Human Resources & People Officer",
         "totalPay": 1938115
@@ -7762,43 +7747,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.41,
-        "industryAvg": 16.7
+        "value": 18.37,
+        "industryAvg": 16.51
       },
       {
         "metric": "P/S Ratio",
         "value": 1.24,
-        "industryAvg": 1.38
+        "industryAvg": 1.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.74,
-        "industryAvg": 3.45
+        "value": 3.73,
+        "industryAvg": 3.51
       },
       {
         "metric": "ROE",
         "value": 4.73,
-        "industryAvg": 21.029999999999998
+        "industryAvg": 21.59
       },
       {
         "metric": "ROA",
         "value": 1.87,
-        "industryAvg": 8.82
+        "industryAvg": 9.08
       },
       {
         "metric": "Gross Margin",
         "value": 42.79,
-        "industryAvg": 47.28
+        "industryAvg": 47.65
       },
       {
         "metric": "EBITDA Margin",
         "value": 9.719999999999999,
-        "industryAvg": 12.42
+        "industryAvg": 12.790000000000001
       },
       {
         "metric": "Net Margin",
         "value": 6.35,
-        "industryAvg": 7.86
+        "industryAvg": 8.1
       }
     ]
   }

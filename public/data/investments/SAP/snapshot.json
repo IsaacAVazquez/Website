@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -41,7 +41,7 @@
     "fundamentals": {
       "ttmEps": 8.1792,
       "ttmPe": 28.62,
-      "marketCap": 264263625580,
+      "marketCap": 264297495400,
       "psRatio": 5.92,
       "pbRatio": 5.08,
       "pegRatio": 2.54
@@ -6276,81 +6276,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.13,
-      "costOfEquity": 13.63,
+      "wacc": 12.97,
+      "costOfEquity": 13.469999999999999,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.0962,
-      "marketCap": 264263625580
+      "beta": 1.0763,
+      "marketCap": 264297495400
     },
     "beta": {
-      "beta5y": 1.0962
+      "beta5y": 1.0763
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 259.06,
-        "high": 263.27,
-        "low": 258.88,
-        "close": 259.19,
-        "volume": 1445500
-      },
-      {
-        "date": "2025-10-31",
-        "open": 259.04,
-        "high": 260.97,
-        "low": 258.14,
-        "close": 260.01,
-        "volume": 1972100
-      },
-      {
-        "date": "2025-11-03",
-        "open": 264.02,
-        "high": 265.88,
-        "low": 261.85,
-        "close": 263.96,
-        "volume": 1171900
-      },
-      {
-        "date": "2025-11-04",
-        "open": 258.68,
-        "high": 260.36,
-        "low": 258.32,
-        "close": 259.64,
-        "volume": 1327500
-      },
-      {
-        "date": "2025-11-05",
-        "open": 259.46,
-        "high": 264.1,
-        "low": 259.23,
-        "close": 261.06,
-        "volume": 983600
-      },
-      {
-        "date": "2025-11-06",
-        "open": 257.85,
-        "high": 258.5,
-        "low": 250.99,
-        "close": 253.88,
-        "volume": 1290800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 250.21,
-        "high": 251.97,
-        "low": 249.02,
-        "close": 251.96,
-        "volume": 1127900
-      },
-      {
-        "date": "2025-11-10",
-        "open": 251.53,
-        "high": 251.83,
-        "low": 249.44,
-        "close": 251.76,
-        "volume": 1028000
-      },
       {
         "date": "2025-11-11",
         "open": 252.11,
@@ -8302,6 +8238,70 @@
         "low": 234.17,
         "close": 235.02,
         "volume": 2221700
+      },
+      {
+        "date": "2026-11-02",
+        "open": 234.4,
+        "high": 236.68,
+        "low": 233.18,
+        "close": 233.62,
+        "volume": 1466400
+      },
+      {
+        "date": "2026-11-03",
+        "open": 228.62,
+        "high": 232.06,
+        "low": 227.11,
+        "close": 230.31,
+        "volume": 1592200
+      },
+      {
+        "date": "2026-11-04",
+        "open": 238.32,
+        "high": 242.99,
+        "low": 238.07,
+        "close": 240.04,
+        "volume": 2942800
+      },
+      {
+        "date": "2026-11-05",
+        "open": 245.02,
+        "high": 245.23,
+        "low": 241.3,
+        "close": 243.53,
+        "volume": 4915200
+      },
+      {
+        "date": "2026-11-06",
+        "open": 233.48,
+        "high": 236.23,
+        "low": 232.64,
+        "close": 233.45,
+        "volume": 2404300
+      },
+      {
+        "date": "2026-11-09",
+        "open": 238.33,
+        "high": 239.07,
+        "low": 236.75,
+        "close": 237.42,
+        "volume": 1716800
+      },
+      {
+        "date": "2026-11-10",
+        "open": 236.41,
+        "high": 236.64,
+        "low": 231.79,
+        "close": 233.74,
+        "volume": 2230600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 233.5,
+        "high": 234.96,
+        "low": 232.87,
+        "close": 234.1,
+        "volume": 1688800
       }
     ],
     "news": [
@@ -8354,14 +8354,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
-        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
         "title": "SAP Reimagines How Enterprises Run With Business AI",
         "publisher": "PR Newswire",
@@ -8378,11 +8370,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "07739d8e-52a4-3a1d-aded-54246d8f3c40",
-        "title": "Nebius' Q1 Loss Widens Y/Y, Revenues Rise on Strong Core AI Growth",
-        "publisher": "Zacks",
+        "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
+        "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dc7431e9-96a0-3d51-92a5-36d5bd27848d",
+        "title": "SAP SE (SAP) Earns Bullish Call From Wells Fargo, Cited as ‘Defensive Horizontal Story’",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/nebius-q1-loss-widens-y-140200681.html",
+        "link": "https://finance.yahoo.com/news/sap-se-sap-earns-bullish-040315005.html",
         "type": "STORY"
       }
     ],
@@ -8462,42 +8462,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 28.62,
-        "industryAvg": 26.7
+        "industryAvg": 28.25
       },
       {
         "metric": "P/S Ratio",
         "value": 5.92,
-        "industryAvg": 5.06
+        "industryAvg": 4.87
       },
       {
         "metric": "P/B Ratio",
         "value": 5.08,
-        "industryAvg": 5.63
+        "industryAvg": 5.21
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -12.36
+        "industryAvg": -0.7100000000000001
       },
       {
         "metric": "ROA",
         "value": 2.96,
-        "industryAvg": -6.8500000000000005
+        "industryAvg": -0.4
       },
       {
         "metric": "Gross Margin",
         "value": 73.13,
-        "industryAvg": 63.42
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.27,
-        "industryAvg": 1.5
+        "industryAvg": 17.51
       },
       {
         "metric": "Net Margin",
         "value": 21.9,
-        "industryAvg": -15.790000000000001
+        "industryAvg": -0.97
       }
     ]
   }

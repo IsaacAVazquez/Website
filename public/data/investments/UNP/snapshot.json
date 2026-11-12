@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.8245,
-      "ttmPe": 23.54,
-      "marketCap": 179333437010,
-      "psRatio": 6.8,
-      "pbRatio": 8.14,
+      "ttmPe": 23.56,
+      "marketCap": 179440349270,
+      "psRatio": 6.81,
+      "pbRatio": 8.15,
       "pegRatio": 1.49
     },
     "profitability": {
@@ -5159,81 +5159,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.13,
-      "costOfEquity": 11.75,
+      "wacc": 10,
+      "costOfEquity": 11.600000000000001,
       "costOfDebt": 1,
       "taxRate": 24,
-      "beta": 0.8582,
-      "marketCap": 179333437010
+      "beta": 0.8392,
+      "marketCap": 179440349270
     },
     "beta": {
-      "beta5y": 0.8582
+      "beta5y": 0.8392
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 216.05,
-        "high": 220.3,
-        "low": 215.7,
-        "close": 218.83,
-        "volume": 2806900
-      },
-      {
-        "date": "2025-10-31",
-        "open": 217.5,
-        "high": 220.99,
-        "low": 216.34,
-        "close": 220.37,
-        "volume": 2586300
-      },
-      {
-        "date": "2025-11-03",
-        "open": 219.94,
-        "high": 221,
-        "low": 218.03,
-        "close": 218.82,
-        "volume": 3552700
-      },
-      {
-        "date": "2025-11-04",
-        "open": 218.61,
-        "high": 221.13,
-        "low": 217.46,
-        "close": 220.91,
-        "volume": 2737800
-      },
-      {
-        "date": "2025-11-05",
-        "open": 219.75,
-        "high": 221.34,
-        "low": 217.28,
-        "close": 217.38,
-        "volume": 2707600
-      },
-      {
-        "date": "2025-11-06",
-        "open": 216.93,
-        "high": 218.56,
-        "low": 216.32,
-        "close": 217.99,
-        "volume": 3429800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 219.22,
-        "high": 221.68,
-        "low": 218.2,
-        "close": 221.48,
-        "volume": 3735400
-      },
-      {
-        "date": "2025-11-10",
-        "open": 221.06,
-        "high": 224.64,
-        "low": 220.74,
-        "close": 223.88,
-        "volume": 4095300
-      },
       {
         "date": "2025-11-11",
         "open": 224.5,
@@ -7185,6 +7121,70 @@
         "low": 301.3,
         "close": 304,
         "volume": 2774100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 304.96,
+        "high": 307.89,
+        "low": 304.04,
+        "close": 307,
+        "volume": 3351900
+      },
+      {
+        "date": "2026-11-03",
+        "open": 307.2,
+        "high": 307.2,
+        "low": 301.69,
+        "close": 303.43,
+        "volume": 2374600
+      },
+      {
+        "date": "2026-11-04",
+        "open": 306.4,
+        "high": 309.86,
+        "low": 300.86,
+        "close": 308.53,
+        "volume": 2876500
+      },
+      {
+        "date": "2026-11-05",
+        "open": 300.81,
+        "high": 309.5,
+        "low": 294.48,
+        "close": 297.95,
+        "volume": 5820800
+      },
+      {
+        "date": "2026-11-06",
+        "open": 292.31,
+        "high": 294.39,
+        "low": 289.41,
+        "close": 290.16,
+        "volume": 3034200
+      },
+      {
+        "date": "2026-11-09",
+        "open": 292.6,
+        "high": 297.42,
+        "low": 290.49,
+        "close": 297.01,
+        "volume": 2441700
+      },
+      {
+        "date": "2026-11-10",
+        "open": 297.62,
+        "high": 301.37,
+        "low": 294.84,
+        "close": 300.62,
+        "volume": 2075400
+      },
+      {
+        "date": "2026-11-11",
+        "open": 299.96,
+        "high": 302.18,
+        "low": 299.28,
+        "close": 302.11,
+        "volume": 2471400
       }
     ],
     "news": [
@@ -7213,6 +7213,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
+        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
         "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
         "publisher": "Insider Monkey",
@@ -7229,14 +7237,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
-        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "55e29cc4-a1c7-3570-a4d4-4e9fb736b1a2",
         "title": "Some Class I railroads take fresh look at mergers",
         "publisher": "FreightWaves",
@@ -7245,19 +7245,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c60edc5e-6f41-3a85-8023-3a659ec26fe8",
-        "title": "BofA Securities Adjusts Price Target on Union Pacific to $262 From $256, Maintains Buy Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
         "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c60edc5e-6f41-3a85-8023-3a659ec26fe8",
+        "title": "BofA Securities Adjusts Price Target on Union Pacific to $262 From $256, Maintains Buy Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
         "type": "STORY"
       },
       {
@@ -7336,43 +7336,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.54,
-        "industryAvg": 25.61
+        "value": 23.56,
+        "industryAvg": 25.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.8,
-        "industryAvg": 5.82
+        "value": 6.81,
+        "industryAvg": 5.86
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.14,
-        "industryAvg": 4.4
+        "value": 8.15,
+        "industryAvg": 4.41
       },
       {
         "metric": "ROE",
         "value": 9.73,
-        "industryAvg": 12.02
+        "industryAvg": 11.84
       },
       {
         "metric": "ROA",
         "value": 2.8899999999999997,
-        "industryAvg": 3.29
+        "industryAvg": 3.3099999999999996
       },
       {
         "metric": "Gross Margin",
         "value": 45.82,
-        "industryAvg": 36.82
+        "industryAvg": 36.32
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.15,
-        "industryAvg": 45.21
+        "industryAvg": 43.59
       },
       {
         "metric": "Net Margin",
         "value": 28.849999999999998,
-        "industryAvg": 17.49
+        "industryAvg": 17.19
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9251,
-      "ttmPe": 13.84,
-      "marketCap": 97014920000,
-      "psRatio": 3.74,
-      "pbRatio": 8.25,
-      "pegRatio": 1.31
+      "ttmPe": 13.26,
+      "marketCap": 92901600000,
+      "psRatio": 3.58,
+      "pbRatio": 7.9,
+      "pegRatio": 1.26
     },
     "profitability": {
       "roe": 15.690000000000001,
@@ -3344,7 +3344,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-08-31": "399000000.0",
+          "2026-08-31": "391000000.0",
           "2026-05-31": "601000000.0",
           "2026-02-28": "601000000.0",
           "2025-11-30": "601000000.0",
@@ -3365,7 +3365,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-08-31": "399000000.0",
+          "2026-08-31": "391000000.0",
           "2026-05-31": "399000000.0",
           "2026-02-28": "406000000.0",
           "2025-11-30": "413000000.0",
@@ -6060,81 +6060,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.97,
-      "costOfEquity": 15.959999999999999,
+      "wacc": 14.85,
+      "costOfEquity": 15.870000000000001,
       "costOfDebt": 0.98,
       "taxRate": 22,
-      "beta": 1.3917,
-      "marketCap": 97014920000
+      "beta": 1.3807,
+      "marketCap": 92901600000
     },
     "beta": {
-      "beta5y": 1.3917
+      "beta5y": 1.3807
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 338.2,
-        "high": 344.7,
-        "low": 333.1,
-        "close": 339.24,
-        "volume": 4373200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 338.7,
-        "high": 341.26,
-        "low": 336.8,
-        "close": 340.31,
-        "volume": 3763400
-      },
-      {
-        "date": "2025-11-03",
-        "open": 340.31,
-        "high": 342.46,
-        "low": 332.88,
-        "close": 337.47,
-        "volume": 3916600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 335.02,
-        "high": 340.55,
-        "low": 332.81,
-        "close": 335.35,
-        "volume": 3694300
-      },
-      {
-        "date": "2025-11-05",
-        "open": 332.61,
-        "high": 336.84,
-        "low": 331.24,
-        "close": 335.53,
-        "volume": 2646700
-      },
-      {
-        "date": "2025-11-06",
-        "open": 333,
-        "high": 333.2,
-        "low": 324.55,
-        "close": 327.35,
-        "volume": 3888700
-      },
-      {
-        "date": "2025-11-07",
-        "open": 325.83,
-        "high": 331.01,
-        "low": 323.03,
-        "close": 326.95,
-        "volume": 4112600
-      },
-      {
-        "date": "2025-11-10",
-        "open": 328,
-        "high": 329.96,
-        "low": 325,
-        "close": 328.85,
-        "volume": 3087000
-      },
       {
         "date": "2025-11-11",
         "open": 329.5,
@@ -8086,6 +8022,70 @@
         "low": 248.8,
         "close": 250.23,
         "volume": 5822000
+      },
+      {
+        "date": "2026-11-02",
+        "open": 249.96,
+        "high": 255.43,
+        "low": 248.62,
+        "close": 251.47,
+        "volume": 3878600
+      },
+      {
+        "date": "2026-11-03",
+        "open": 248.8,
+        "high": 248.8,
+        "low": 241.01,
+        "close": 246.14,
+        "volume": 3207600
+      },
+      {
+        "date": "2026-11-04",
+        "open": 248.3,
+        "high": 256.8,
+        "low": 246.09,
+        "close": 248.48,
+        "volume": 4378000
+      },
+      {
+        "date": "2026-11-05",
+        "open": 250.59,
+        "high": 252.1,
+        "low": 243.28,
+        "close": 246.44,
+        "volume": 5908100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 239,
+        "high": 243.38,
+        "low": 236.84,
+        "close": 239.3,
+        "volume": 3295500
+      },
+      {
+        "date": "2026-11-09",
+        "open": 237.4,
+        "high": 240.5,
+        "low": 236.08,
+        "close": 237.32,
+        "volume": 3497400
+      },
+      {
+        "date": "2026-11-10",
+        "open": 237.82,
+        "high": 237.82,
+        "low": 231.82,
+        "close": 236.7,
+        "volume": 2947600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 235.56,
+        "high": 240.36,
+        "low": 234.84,
+        "close": 237.6,
+        "volume": 4097100
       }
     ],
     "news": [
@@ -8138,11 +8138,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
-        "title": "2 Cheap Tech Stocks to Buy Right Now",
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/bc3d4456-aa33-362d-8cac-8dbf5605d6c3/2-cheap-tech-stocks-to-buy.html",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
         "type": "STORY"
       },
       {
@@ -8154,19 +8154,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "uuid": "bc3d4456-aa33-362d-8cac-8dbf5605d6c3",
+        "title": "2 Cheap Tech Stocks to Buy Right Now",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
+        "link": "https://finance.yahoo.com/m/bc3d4456-aa33-362d-8cac-8dbf5605d6c3/2-cheap-tech-stocks-to-buy.html",
         "type": "STORY"
       },
       {
-        "uuid": "99b5f820-1ff1-32d4-a77d-7c54708c0fc8",
-        "title": "Why The 39% Return On Capital At Adobe (NASDAQ:ADBE) Should Have Your Attention",
-        "publisher": "Simply Wall St.",
+        "uuid": "55c8b36c-2510-38f3-854f-062fb0af6334",
+        "title": "5 Brilliant Stocks to Buy in June",
+        "publisher": "Motley Fool",
         "reportDate": "2025-06-01",
-        "link": "https://finance.yahoo.com/news/why-39-return-capital-adobe-130012134.html",
+        "link": "https://finance.yahoo.com/m/55c8b36c-2510-38f3-854f-062fb0af6334/5-brilliant-stocks-to-buy-in.html",
         "type": "STORY"
       }
     ],
@@ -8232,43 +8232,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.84,
-        "industryAvg": 26.7
+        "value": 13.26,
+        "industryAvg": 28.25
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.74,
-        "industryAvg": 5.06
+        "value": 3.58,
+        "industryAvg": 4.87
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.25,
-        "industryAvg": 5.63
+        "value": 7.9,
+        "industryAvg": 5.21
       },
       {
         "metric": "ROE",
         "value": 15.690000000000001,
-        "industryAvg": -12.36
+        "industryAvg": -0.7100000000000001
       },
       {
         "metric": "ROA",
         "value": 6.1,
-        "industryAvg": -6.8500000000000005
+        "industryAvg": -0.4
       },
       {
         "metric": "Gross Margin",
         "value": 88.71,
-        "industryAvg": 63.42
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.019999999999996,
-        "industryAvg": 1.5
+        "industryAvg": 17.51
       },
       {
         "metric": "Net Margin",
         "value": 27.029999999999998,
-        "industryAvg": -15.790000000000001
+        "industryAvg": -0.97
       }
     ]
   }
