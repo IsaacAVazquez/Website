@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-12T09:59:06.667Z",
+  "generatedAt": "2026-11-12T22:45:58.200Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-12T09:59:07.396Z",
+        "accessedAt": "2026-11-12T22:45:58.855Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -1279,7 +1279,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 142,
@@ -1882,7 +1882,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 209,
@@ -4798,7 +4798,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 196,
             "rank": 533,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-12T09:59:08.291Z",
+        "accessedAt": "2026-11-12T22:45:59.579Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -6803,7 +6803,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 160,
@@ -7442,7 +7442,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 231,
@@ -9863,7 +9863,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 196,
             "rank": 500,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-12T09:59:08.953Z",
+        "accessedAt": "2026-11-12T22:46:00.199Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -12399,7 +12399,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 186,
@@ -13137,7 +13137,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 268,
@@ -15396,7 +15396,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 196,
             "rank": 519,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-12T09:59:10.058Z",
+        "accessedAt": "2026-11-12T22:46:00.490Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -17250,7 +17250,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 129,
@@ -17988,7 +17988,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 211,
@@ -20994,7 +20994,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 196,
             "rank": 545,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-12T09:59:10.964Z",
+        "accessedAt": "2026-11-12T22:46:01.093Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -22909,7 +22909,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 162,
@@ -23566,7 +23566,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 235,
@@ -26005,7 +26005,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 196,
             "rank": 506,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-12T09:59:12.019Z",
+        "accessedAt": "2026-11-12T22:46:01.737Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -28496,7 +28496,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 187,
@@ -29207,7 +29207,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 266,
@@ -31439,7 +31439,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 196,
             "rank": 514,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-12T09:59:13.323Z",
+        "accessedAt": "2026-11-12T22:46:02.801Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -33410,7 +33410,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 137,
@@ -34184,7 +34184,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 223,
@@ -37073,7 +37073,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 197,
             "rank": 544,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-12T09:59:14.534Z",
+        "accessedAt": "2026-11-12T22:46:03.403Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -38979,7 +38979,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 160,
@@ -39708,7 +39708,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 241,
@@ -42426,7 +42426,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 197,
             "rank": 543,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-12T09:59:15.394Z",
+        "accessedAt": "2026-11-12T22:46:03.987Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -44584,7 +44584,7 @@
           {
             "playerId": "fp-26638",
             "name": "Harrison Mevis",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 6,
             "rank": 187,
@@ -45565,7 +45565,7 @@
           {
             "playerId": "fp-23370",
             "name": "Riley Patterson",
-            "team": "FA",
+            "team": "BAL",
             "position": "K",
             "positionRank": 25,
             "rank": 296,
@@ -47518,7 +47518,7 @@
           {
             "playerId": "fp-25772",
             "name": "Nikko Remigio",
-            "team": "FA",
+            "team": "HOU",
             "position": "WR",
             "positionRank": 197,
             "rank": 513,
