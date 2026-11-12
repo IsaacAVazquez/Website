@@ -1,8 +1,8 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 12.59,
-      "marketCap": 1056659370000,
-      "psRatio": 7.93,
-      "pbRatio": 7.64,
+      "ttmPe": 10.93,
+      "marketCap": 917580300000,
+      "psRatio": 6.89,
+      "pbRatio": 6.63,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5964,15 +5964,15 @@
       ]
     },
     "wacc": {
-      "wacc": 23.369999999999997,
-      "costOfEquity": 23.49,
+      "wacc": 23.62,
+      "costOfEquity": 23.75,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.3465,
-      "marketCap": 1056659370000
+      "beta": 2.3785,
+      "marketCap": 917580300000
     },
     "beta": {
-      "beta5y": 2.3465
+      "beta5y": 2.3785
     },
     "price": [
       {
@@ -8042,14 +8042,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
-        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
         "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
         "publisher": "MT Newswires",
@@ -8063,6 +8055,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-06-05",
         "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2597d508-c469-363d-9fcf-1a336c3d42b1",
+        "title": "Micron (MU) Beats Stock Market Upswing: What Investors Need to Know",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/news/micron-mu-beats-stock-market-214515197.html",
         "type": "STORY"
       },
       {
@@ -8140,23 +8140,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.59,
-        "industryAvg": 25.55
+        "value": 10.93,
+        "industryAvg": 22.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.93,
-        "industryAvg": 12.49
+        "value": 6.89,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.64,
-        "industryAvg": 11.09
+        "value": 6.63,
+        "industryAvg": 9.55
       },
       {
         "metric": "ROE",
         "value": 31.540000000000003,
-        "industryAvg": 59.64
+        "industryAvg": 59.63
       },
       {
         "metric": "ROA",
@@ -8171,7 +8171,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 86.45,
-        "industryAvg": 81.55
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

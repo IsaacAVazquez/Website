@@ -1,8 +1,8 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 30.1,
-      "marketCap": 85161987231,
-      "psRatio": 10.42,
-      "pbRatio": 26.06,
-      "pegRatio": 1.7
+      "ttmPe": 31.38,
+      "marketCap": 88786341813,
+      "psRatio": 10.86,
+      "pbRatio": 27.17,
+      "pegRatio": 1.77
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,15 +6632,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.99,
-      "costOfEquity": 15.17,
+      "wacc": 14.02,
+      "costOfEquity": 15.15,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.2903,
-      "marketCap": 85161987231
+      "beta": 1.2888,
+      "marketCap": 88786341813
     },
     "beta": {
-      "beta5y": 1.2903
+      "beta5y": 1.2888
     },
     "price": [
       {
@@ -8670,19 +8670,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
-        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
         "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-17",
         "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
+        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
         "type": "STORY"
       },
       {
@@ -8694,14 +8694,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
-        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
         "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
         "publisher": "Bloomberg",
@@ -8710,11 +8702,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
+        "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "aab9c808-d77b-38ff-b78c-c75c081d23b2",
         "title": "Bond Investors Detect Trouble in US Debt Stripped of AAA Rating",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/bond-investors-detect-trouble-us-083108491.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
+        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
         "type": "STORY"
       },
       {
@@ -8731,14 +8739,6 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
-        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
         "type": "STORY"
       }
     ],
@@ -8803,43 +8803,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.1,
-        "industryAvg": 26.06
+        "value": 31.38,
+        "industryAvg": 26.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.42,
-        "industryAvg": 8.12
+        "value": 10.86,
+        "industryAvg": 8.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.06,
-        "industryAvg": 4.48
+        "value": 27.17,
+        "industryAvg": 4.67
       },
       {
         "metric": "ROE",
         "value": 23.330000000000002,
-        "industryAvg": 18.13
+        "industryAvg": 18.23
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 4.31
+        "industryAvg": 4.36
       },
       {
         "metric": "Gross Margin",
         "value": 74.1,
-        "industryAvg": 64.14999999999999
+        "industryAvg": 63.949999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 57.089999999999996,
-        "industryAvg": 48.43
+        "industryAvg": 48.309999999999995
       },
       {
         "metric": "Net Margin",
         "value": 36.28,
-        "industryAvg": 28.4
+        "industryAvg": 28.389999999999997
       }
     ]
   }

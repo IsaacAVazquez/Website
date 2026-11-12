@@ -1,8 +1,8 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -32,7 +32,7 @@
       "country": "United States",
       "industry": "REIT-Specialty",
       "sector": "Real Estate",
-      "longBusinessSummary": "American Tower Corporation one of the largest global REITs, is a leading independent owner, operator and developer of multitenant communications real estate with a portfolio of over 148,000 communications sites and a highly interconnected footprint of U.S. data center facilities. American Tower Corporation was incorporated in 1995 in Delaware and is based in Massachusetts, Boston.",
+      "longBusinessSummary": "American Tower Corporation one of the largest global REITs, is a leading independent owner, operator and developer of multitenant communications real estate with a portfolio of over 147,000 communications sites and a highly interconnected footprint of U.S. data center facilities. American Tower Corporation was incorporated in 1995 in Delaware and is based in Massachusetts, Boston.",
       "fullTimeEmployees": 4866,
       "website": "https://www.americantower.com",
       "shortName": "American Tower Corporation",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 26.19,
-      "marketCap": 86280291360,
-      "psRatio": 7.84,
-      "pbRatio": 24.54,
+      "ttmPe": 26.8,
+      "marketCap": 88304081280,
+      "psRatio": 8.02,
+      "pbRatio": 25.11,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,15 +6462,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.969999999999999,
-      "costOfEquity": 11.78,
+      "wacc": 7.89,
+      "costOfEquity": 11.57,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.8615,
-      "marketCap": 86280291360
+      "beta": 0.8357,
+      "marketCap": 88304081280
     },
     "beta": {
-      "beta5y": 0.8615
+      "beta5y": 0.8357
     },
     "price": [
       {
@@ -8633,43 +8633,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.19,
-        "industryAvg": 33.9
+        "value": 26.8,
+        "industryAvg": 36.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.84,
-        "industryAvg": 6.86
+        "value": 8.02,
+        "industryAvg": 6.81
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.54,
-        "industryAvg": 4.59
+        "value": 25.11,
+        "industryAvg": 4.38
       },
       {
         "metric": "ROE",
         "value": 21.17,
-        "industryAvg": 11.62
+        "industryAvg": 10.56
       },
       {
         "metric": "ROA",
         "value": 1.21,
-        "industryAvg": 3.55
+        "industryAvg": 3.19
       },
       {
         "metric": "Gross Margin",
         "value": 72.83,
-        "industryAvg": 57.199999999999996
+        "industryAvg": 57.02
       },
       {
         "metric": "EBITDA Margin",
         "value": 64.03999999999999,
-        "industryAvg": 53.68000000000001
+        "industryAvg": 51.65
       },
       {
         "metric": "Net Margin",
         "value": 27.49,
-        "industryAvg": 19.42
+        "industryAvg": 17.32
       }
     ]
   }

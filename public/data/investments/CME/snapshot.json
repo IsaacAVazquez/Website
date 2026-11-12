@@ -1,8 +1,8 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 24.86,
-      "marketCap": 108911563234,
-      "psRatio": 15.62,
-      "pbRatio": 4.1,
-      "pegRatio": 1.53
+      "ttmPe": 25.9,
+      "marketCap": 113485173447,
+      "psRatio": 16.28,
+      "pbRatio": 4.27,
+      "pegRatio": 1.6
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,15 +5611,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.3100000000000005,
-      "costOfEquity": 6.4799999999999995,
+      "wacc": 6.34,
+      "costOfEquity": 6.5,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.1936,
-      "marketCap": 108911563234
+      "beta": 0.1924,
+      "marketCap": 113485173447
     },
     "beta": {
-      "beta5y": 0.1936
+      "beta5y": 0.1924
     },
     "price": [
       {
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
-        "title": "XRP futures bag $19M on launch day",
-        "publisher": "TheStreet",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
         "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
         "publisher": "CoinDesk",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
+        "title": "XRP futures bag $19M on launch day",
+        "publisher": "TheStreet",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
         "type": "STORY"
       },
       {
@@ -7681,19 +7681,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
-        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
         "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/market-chatter-cme-group-talks-172140861.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
+        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
         "type": "STORY"
       },
       {
@@ -7734,12 +7734,6 @@
         "totalPay": 1583658
       },
       {
-        "name": "Mr. Jack Tobin",
-        "title": "MD & Chief Accounting Officer",
-        "age": 61,
-        "yearBorn": 1964
-      },
-      {
         "name": "Mr. John Clifford Marchese",
         "title": "General Counsel",
         "age": 57,
@@ -7766,6 +7760,12 @@
         "yearBorn": 1965
       },
       {
+        "name": "Ms. Hilda Harris Piell J.D.",
+        "title": "Senior MD & Chief Human Resources Officer",
+        "age": 57,
+        "yearBorn": 1968
+      },
+      {
         "name": "Ms. Julie M. Winkler",
         "title": "Senior MD & Chief Commercial Officer",
         "age": 50,
@@ -7787,43 +7787,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.86,
-        "industryAvg": 26.06
+        "value": 25.9,
+        "industryAvg": 26.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.62,
-        "industryAvg": 8.12
+        "value": 16.28,
+        "industryAvg": 8.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.1,
-        "industryAvg": 4.48
+        "value": 4.27,
+        "industryAvg": 4.67
       },
       {
         "metric": "ROE",
         "value": 3.91,
-        "industryAvg": 18.13
+        "industryAvg": 18.23
       },
       {
         "metric": "ROA",
         "value": 0.54,
-        "industryAvg": 4.31
+        "industryAvg": 4.36
       },
       {
         "metric": "Gross Margin",
         "value": 86.50999999999999,
-        "industryAvg": 64.14999999999999
+        "industryAvg": 63.949999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 85.28999999999999,
-        "industryAvg": 48.43
+        "industryAvg": 48.309999999999995
       },
       {
         "metric": "Net Margin",
         "value": 59.68,
-        "industryAvg": 28.4
+        "industryAvg": 28.389999999999997
       }
     ]
   }

@@ -1,8 +1,8 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 49.5,
-      "marketCap": 202117115705,
-      "psRatio": 14.56,
-      "pbRatio": 6.02,
+      "ttmPe": 48.55,
+      "marketCap": 198226054740,
+      "psRatio": 14.28,
+      "pbRatio": 5.91,
       "pegRatio": 0.3
     },
     "profitability": {
@@ -6102,15 +6102,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.24,
+      "wacc": 14.23,
       "costOfEquity": 14.85,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.2499,
-      "marketCap": 202117115705
+      "beta": 1.251,
+      "marketCap": 198226054740
     },
     "beta": {
-      "beta5y": 1.2499
+      "beta5y": 1.251
     },
     "price": [
       {
@@ -8196,19 +8196,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
-        "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
         "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4fbba8b0-da15-3c03-ab7c-5e1942f29f06",
+        "title": "UBS Lowers Analog Devices (ADI) Price Target, Keeps Buy Rating",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/news/ubs-lowers-analog-devices-adi-194048708.html",
         "type": "STORY"
       }
     ],
@@ -8226,10 +8226,6 @@
         "age": 91,
         "yearBorn": 1934,
         "totalPay": 111163
-      },
-      {
-        "name": "Jeff Ambrosi",
-        "title": "Senior Director of Investor Relations"
       },
       {
         "name": "Mr. Martin Cotter",
@@ -8250,6 +8246,12 @@
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 2119759
+      },
+      {
+        "name": "Mr. Rob Oshana",
+        "title": "Chief of Software, Digital & AI Technologies",
+        "age": 64,
+        "yearBorn": 1961
       },
       {
         "name": "Mr. Vincent T. Roche",
@@ -8281,18 +8283,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 49.5,
-        "industryAvg": 24.02
+        "value": 48.55,
+        "industryAvg": 22.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.56,
-        "industryAvg": 11.64
+        "value": 14.28,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.02,
-        "industryAvg": 10.35
+        "value": 5.91,
+        "industryAvg": 9.55
       },
       {
         "metric": "ROE",
@@ -8302,17 +8304,17 @@
       {
         "metric": "ROA",
         "value": 2.78,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 67.32000000000001,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 52.93,
-        "industryAvg": 81.54
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

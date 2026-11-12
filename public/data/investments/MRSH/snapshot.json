@@ -1,8 +1,8 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 24.04,
-      "marketCap": 95376974882,
-      "psRatio": 3.35,
-      "pbRatio": 6.5,
-      "pegRatio": 2.08
+      "ttmPe": 24.86,
+      "marketCap": 98657311472,
+      "psRatio": 3.47,
+      "pbRatio": 6.72,
+      "pegRatio": 2.15
     },
     "profitability": {
       "roe": 5.41,
@@ -1820,7 +1820,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "477922456.0",
+          "2026-09-30": "475411125.0",
           "2026-06-30": "477922456.0",
           "2026-03-31": "560641640.0",
           "2025-12-31": "560641640.0",
@@ -1832,7 +1832,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "477922456.0",
+          "2026-09-30": "475411125.0",
           "2026-06-30": "477922456.0",
           "2026-03-31": "482173698.0",
           "2025-12-31": "484858577.0",
@@ -3678,15 +3678,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.53,
-      "costOfEquity": 9.09,
+      "wacc": 7.580000000000001,
+      "costOfEquity": 9.1,
       "costOfDebt": 1.11,
       "taxRate": 21,
-      "beta": 0.5235,
-      "marketCap": 95376974882
+      "beta": 0.5224,
+      "marketCap": 98657311472
     },
     "beta": {
-      "beta5y": 0.5235
+      "beta5y": 0.5224
     },
     "price": [
       {
@@ -5708,14 +5708,6 @@
     ],
     "news": [
       {
-        "uuid": "dbc13d65-21f1-3f0b-ad2a-366e91da0177",
-        "title": "Marsh & McLennan Companies' (NYSE:MRSH) investors will be pleased with their decent 75% return over the last five years",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-19",
-        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-nyse-mrsh-110019060.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cb38c028-4465-3a17-b3b6-be65defe0342",
         "title": "2 Oversold Stocks Primed to Rebound and 1 Facing Challenges",
         "publisher": "StockStory",
@@ -5724,12 +5716,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
-        "title": "Davos CEO Brief for Monday, January 19, 2026",
-        "publisher": "WSJ",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
-        "type": "VIDEO"
+        "uuid": "dbc13d65-21f1-3f0b-ad2a-366e91da0177",
+        "title": "Marsh & McLennan Companies' (NYSE:MRSH) investors will be pleased with their decent 75% return over the last five years",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-19",
+        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-nyse-mrsh-110019060.html",
+        "type": "STORY"
       },
       {
         "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
@@ -5748,12 +5740,12 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
-        "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
-        "type": "STORY"
+        "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
+        "title": "Davos CEO Brief for Monday, January 19, 2026",
+        "publisher": "WSJ",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "171d5505-dc56-3308-a908-b956a0833613",
@@ -5761,6 +5753,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
+        "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
         "type": "STORY"
       },
       {
@@ -5856,43 +5856,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.04,
-        "industryAvg": 23.49
+        "value": 24.86,
+        "industryAvg": 24.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.35,
-        "industryAvg": 3.33
+        "value": 3.47,
+        "industryAvg": 3.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.5,
-        "industryAvg": 4.21
+        "value": 6.72,
+        "industryAvg": 4.33
       },
       {
         "metric": "ROE",
         "value": 5.41,
-        "industryAvg": 17.130000000000003
+        "industryAvg": 17.080000000000002
       },
       {
         "metric": "ROA",
         "value": 1.35,
-        "industryAvg": 4.390000000000001
+        "industryAvg": 4.45
       },
       {
         "metric": "Gross Margin",
         "value": 40.58,
-        "industryAvg": 43.88
+        "industryAvg": 44.04
       },
       {
         "metric": "EBITDA Margin",
         "value": 22.03,
-        "industryAvg": 26.400000000000002
+        "industryAvg": 26.31
       },
       {
         "metric": "Net Margin",
         "value": 11.77,
-        "industryAvg": 12.32
+        "industryAvg": 12.23
       }
     ]
   }

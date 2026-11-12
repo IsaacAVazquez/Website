@@ -1,8 +1,8 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.5973,
-      "ttmPe": 36.36,
-      "marketCap": 334628279684,
-      "psRatio": 10.85,
-      "pbRatio": 13.06,
-      "pegRatio": 0.85
+      "ttmPe": 34.07,
+      "marketCap": 313534460792,
+      "psRatio": 10.17,
+      "pbRatio": 12.24,
+      "pegRatio": 0.79
     },
     "profitability": {
       "roe": 10.25,
@@ -6309,15 +6309,15 @@
       ]
     },
     "wacc": {
-      "wacc": 17.28,
-      "costOfEquity": 17.62,
+      "wacc": 17.54,
+      "costOfEquity": 17.9,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.6015,
-      "marketCap": 334628279684
+      "beta": 1.6373,
+      "marketCap": 313534460792
     },
     "beta": {
-      "beta5y": 1.6015
+      "beta5y": 1.6373
     },
     "price": [
       {
@@ -8371,6 +8371,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
+        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
         "title": "3 Cash-Heavy Stocks with Exciting Potential",
         "publisher": "StockStory",
@@ -8392,14 +8400,6 @@
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "1240d72c-3206-3a07-af7d-a9d81c958fbc",
-        "title": "Unlocking Applied Materials (AMAT) International Revenues: Trends, Surprises, and Prospects",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/unlocking-applied-materials-amat-international-131507193.html",
         "type": "STORY"
       },
       {
@@ -8488,43 +8488,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.36,
-        "industryAvg": 42.41
+        "value": 34.07,
+        "industryAvg": 38.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.85,
-        "industryAvg": 12.51
+        "value": 10.17,
+        "industryAvg": 11.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.06,
-        "industryAvg": 17.46
+        "value": 12.24,
+        "industryAvg": 15.4
       },
       {
         "metric": "ROE",
         "value": 10.25,
-        "industryAvg": 42.92
+        "industryAvg": 42.49
       },
       {
         "metric": "ROA",
         "value": 6.0600000000000005,
-        "industryAvg": 20.86
+        "industryAvg": 20.78
       },
       {
         "metric": "Gross Margin",
         "value": 50.31,
-        "industryAvg": 50.339999999999996
+        "industryAvg": 49.95
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.39,
-        "industryAvg": 37.9
+        "industryAvg": 37.43
       },
       {
         "metric": "Net Margin",
         "value": 27.839999999999996,
-        "industryAvg": 28.810000000000002
+        "industryAvg": 28.4
       }
     ]
   }

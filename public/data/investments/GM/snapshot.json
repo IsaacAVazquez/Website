@@ -1,8 +1,8 @@
 {
   "symbol": "GM",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3632,
-      "ttmPe": 20.03,
-      "marketCap": 74202600000,
+      "ttmPe": 20.37,
+      "marketCap": 75476100000,
       "psRatio": 0.4,
-      "pbRatio": 1.18,
-      "pegRatio": 0.11
+      "pbRatio": 1.2,
+      "pegRatio": 0.12
     },
     "profitability": {
       "roe": 5.3,
@@ -3129,7 +3129,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "877451541.0",
+          "2026-09-30": "849000000.0",
           "2026-06-30": "877451541.0",
           "2026-03-31": "902000000.0",
           "2025-12-31": "904000000.0",
@@ -3150,7 +3150,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "877451541.0",
+          "2026-09-30": "849000000.0",
           "2026-06-30": "877451541.0",
           "2026-03-31": "902000000.0",
           "2025-12-31": "904000000.0",
@@ -5859,15 +5859,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.9799999999999995,
-      "costOfEquity": 16.150000000000002,
+      "wacc": 6.03,
+      "costOfEquity": 16.13,
       "costOfDebt": 0.13,
       "taxRate": 14.000000000000002,
-      "beta": 1.413,
-      "marketCap": 74202600000
+      "beta": 1.4126,
+      "marketCap": 75476100000
     },
     "beta": {
-      "beta5y": 1.413
+      "beta5y": 1.4126
     },
     "price": [
       {
@@ -7977,10 +7977,10 @@
         "yearBorn": 1969
       },
       {
-        "name": "Mr. Duncan Aldred",
-        "title": "Senior VP and President of North America",
-        "age": 53,
-        "yearBorn": 1972
+        "name": "Mr. Christopher T. Hatto",
+        "title": "VP of Global Business Solutions & Chief Accounting Officer",
+        "age": 54,
+        "yearBorn": 1971
       },
       {
         "name": "Mr. Grant M. Dixton",
@@ -8039,43 +8039,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.03,
-        "industryAvg": 30.77
+        "value": 20.37,
+        "industryAvg": 30.65
       },
       {
         "metric": "P/S Ratio",
         "value": 0.4,
-        "industryAvg": 1.31
+        "industryAvg": 1.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.18,
-        "industryAvg": 2.36
+        "value": 1.2,
+        "industryAvg": 2.34
       },
       {
         "metric": "ROE",
         "value": 5.3,
-        "industryAvg": 4.44
+        "industryAvg": 4.34
       },
       {
         "metric": "ROA",
         "value": 1.16,
-        "industryAvg": 1.46
+        "industryAvg": 1.43
       },
       {
         "metric": "Gross Margin",
         "value": 11.25,
-        "industryAvg": 14.7
+        "industryAvg": 14.89
       },
       {
         "metric": "EBITDA Margin",
         "value": 8.21,
-        "industryAvg": 9.16
+        "industryAvg": 9.049999999999999
       },
       {
         "metric": "Net Margin",
         "value": 6.61,
-        "industryAvg": 2.42
+        "industryAvg": 2.36
       }
     ]
   }

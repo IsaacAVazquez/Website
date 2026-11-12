@@ -1,8 +1,8 @@
 {
   "symbol": "ACN",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -27,7 +27,7 @@
   },
   "sections": {
     "info": {
-      "address": "Grand Canal Harbour, 1 Grand Canal Square",
+      "address": "Grand Canal Harbour Dublin 2, 1 Grand Canal Square",
       "city": "Dublin",
       "country": "Ireland",
       "industry": "Information Technology Services",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 13.5663,
-      "ttmPe": 19.04,
-      "marketCap": 153790467744,
-      "psRatio": 2.07,
-      "pbRatio": 4.87,
-      "pegRatio": 0.41
+      "ttmPe": 18.7,
+      "marketCap": 151062926146,
+      "psRatio": 2.04,
+      "pbRatio": 4.79,
+      "pegRatio": 0.4
     },
     "profitability": {
       "roe": 6.279999999999999,
@@ -3286,7 +3286,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2026-05-31": "667466373.0",
           "2026-02-28": "665095184.0",
           "2025-11-30": "660352923.0",
@@ -3307,7 +3307,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2026-05-31": "611861944.0",
           "2026-02-28": "614841122.0",
           "2025-11-30": "615355540.0",
@@ -4154,7 +4154,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2025-08-31": "657964764.0",
           "2024-08-31": "672484852.0",
           "2023-08-31": "664616285.0",
@@ -4165,7 +4165,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-08-31": "614841122.0",
+          "2026-08-31": "595533079.0",
           "2025-08-31": "621855922.0",
           "2024-08-31": "625280287.0",
           "2023-08-31": "628265148.0",
@@ -6020,15 +6020,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.899999999999999,
-      "costOfEquity": 12.889999999999999,
+      "wacc": 11.89,
+      "costOfEquity": 12.9,
       "costOfDebt": 0.77,
       "taxRate": 27,
-      "beta": 1.0029,
-      "marketCap": 153790467744
+      "beta": 1.0034,
+      "marketCap": 151062926146
     },
     "beta": {
-      "beta5y": 1.0029
+      "beta5y": 1.0034
     },
     "price": [
       {
@@ -8143,6 +8143,13 @@
         "totalPay": 3078144
       },
       {
+        "name": "Mr. Manish Sharma",
+        "title": "Chief Strategy & Reinvention Services Officer",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 3208848
+      },
+      {
         "name": "Mr. Mauro Macchi",
         "title": "Chief Executive Officer of EMEA",
         "age": 59,
@@ -8163,12 +8170,6 @@
         "age": 52,
         "yearBorn": 1973,
         "totalPay": 2031116
-      },
-      {
-        "name": "Ms. Emma Chalwin",
-        "title": "Chief Marketing Officer",
-        "age": 51,
-        "yearBorn": 1974
       },
       {
         "name": "Ms. Julie T. Spellman Sweet J.D.",
@@ -8193,43 +8194,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.04,
-        "industryAvg": 17
+        "value": 18.7,
+        "industryAvg": 16.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.07,
-        "industryAvg": 1.62
+        "value": 2.04,
+        "industryAvg": 1.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.87,
-        "industryAvg": 3.73
+        "value": 4.79,
+        "industryAvg": 3.66
       },
       {
         "metric": "ROE",
         "value": 6.279999999999999,
-        "industryAvg": 17.47
+        "industryAvg": 17.669999999999998
       },
       {
         "metric": "ROA",
         "value": 2.8000000000000003,
-        "industryAvg": 5.9799999999999995
+        "industryAvg": 6
       },
       {
         "metric": "Gross Margin",
         "value": 32.04,
-        "industryAvg": 31.8
+        "industryAvg": 31.64
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.25,
-        "industryAvg": 16.04
+        "industryAvg": 16.07
       },
       {
         "metric": "Net Margin",
         "value": 10.66,
-        "industryAvg": 7.9799999999999995
+        "industryAvg": 8.01
       }
     ]
   }

@@ -1,8 +1,8 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.3545,
-      "ttmPe": 41.2,
-      "marketCap": 84933959228,
-      "psRatio": 4.89,
-      "pbRatio": 8.15,
+      "ttmPe": 41.86,
+      "marketCap": 86301962796,
+      "psRatio": 4.97,
+      "pbRatio": 8.28,
       "pegRatio": 11.65
     },
     "profitability": {
@@ -6315,15 +6315,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.13,
+      "wacc": 10.15,
       "costOfEquity": 11.67,
       "costOfDebt": 0.97,
       "taxRate": 20,
-      "beta": 0.8483,
-      "marketCap": 84933959228
+      "beta": 0.8479,
+      "marketCap": 86301962796
     },
     "beta": {
-      "beta5y": 0.8483
+      "beta5y": 0.8479
     },
     "price": [
       {
@@ -8393,19 +8393,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
-        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
         "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
+        "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
         "type": "STORY"
       },
       {
@@ -8491,43 +8491,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.2,
-        "industryAvg": 29.53
+        "value": 41.86,
+        "industryAvg": 28.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.89,
-        "industryAvg": 2.5
+        "value": 4.97,
+        "industryAvg": 2.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.15,
-        "industryAvg": 3.41
+        "value": 8.28,
+        "industryAvg": 3.47
       },
       {
         "metric": "ROE",
         "value": 5.38,
-        "industryAvg": 7.06
+        "industryAvg": 9.01
       },
       {
         "metric": "ROA",
         "value": 1.81,
-        "industryAvg": 2.85
+        "industryAvg": 3.65
       },
       {
         "metric": "Gross Margin",
         "value": 44.080000000000005,
-        "industryAvg": 30.31
+        "industryAvg": 29.99
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.810000000000002,
-        "industryAvg": 16.25
+        "industryAvg": 16.88
       },
       {
         "metric": "Net Margin",
         "value": 11.74,
-        "industryAvg": 4.8500000000000005
+        "industryAvg": 5.949999999999999
       }
     ]
   }

@@ -1,8 +1,8 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     },
@@ -45,9 +45,9 @@
     "fundamentals": {
       "ttmEps": -0.5799,
       "ttmPe": 141.68,
-      "marketCap": 170679367418,
-      "psRatio": 14.73,
-      "pbRatio": 3.51,
+      "marketCap": 181059062190,
+      "psRatio": 15.63,
+      "pbRatio": 3.73,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5559,15 +5559,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.05,
-      "costOfEquity": 11.19,
+      "wacc": 10.09,
+      "costOfEquity": 11.17,
       "costOfDebt": 0.91,
       "taxRate": 2,
-      "beta": 0.7877,
-      "marketCap": 170679367418
+      "beta": 0.7843,
+      "marketCap": 181059062190
     },
     "beta": {
-      "beta5y": 0.7877
+      "beta5y": 0.7843
     },
     "price": [
       {
@@ -7589,19 +7589,19 @@
     ],
     "news": [
       {
-        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
-        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
         "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
+        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
         "type": "STORY"
       },
       {
@@ -7637,14 +7637,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
-        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
         "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
         "publisher": "Zacks",
@@ -7653,11 +7645,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
-        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
+        "uuid": "38661467-0228-3efb-9cde-3e5a584d6535",
+        "title": "Welltower (WELL) Q1 FFO and Revenues Surpass Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/welltower-well-q1-ffo-revenues-211506976.html",
         "type": "STORY"
       },
       {
@@ -7666,6 +7658,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/welltower-nyse-well-increases-dividend-174407979.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
+        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
         "type": "STORY"
       }
     ],
@@ -7732,42 +7732,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 73.95
+        "industryAvg": 60.71
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.73,
-        "industryAvg": 8.95
+        "value": 15.63,
+        "industryAvg": 9.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.51,
-        "industryAvg": 2.73
+        "value": 3.73,
+        "industryAvg": 2.83
       },
       {
         "metric": "ROE",
         "value": 1.7000000000000002,
-        "industryAvg": 2.4699999999999998
+        "industryAvg": 3.73
       },
       {
         "metric": "ROA",
         "value": 1.08,
-        "industryAvg": 1.25
+        "industryAvg": 1.9
       },
       {
         "metric": "Gross Margin",
         "value": 39.18,
-        "industryAvg": 48.89
+        "industryAvg": 48.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.77,
-        "industryAvg": 46.81
+        "industryAvg": 49.97
       },
       {
         "metric": "Net Margin",
         "value": 10.74,
-        "industryAvg": 7.42
+        "industryAvg": 11.29
       }
     ]
   }

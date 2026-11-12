@@ -1,8 +1,8 @@
 {
   "symbol": "PLD",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5335,
-      "ttmPe": 28.24,
-      "marketCap": 119443428120,
-      "psRatio": 12.76,
-      "pbRatio": 2.14,
-      "pegRatio": 5.43
+      "ttmPe": 28.68,
+      "marketCap": 121318770180,
+      "psRatio": 12.96,
+      "pbRatio": 2.17,
+      "pegRatio": 5.52
     },
     "profitability": {
       "roe": 1.49,
@@ -5711,15 +5711,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.73,
-      "costOfEquity": 15.129999999999999,
+      "wacc": 11.76,
+      "costOfEquity": 15.120000000000001,
       "costOfDebt": 0.7799999999999999,
       "taxRate": 10,
-      "beta": 1.287,
-      "marketCap": 119443428120
+      "beta": 1.2847,
+      "marketCap": 121318770180
     },
     "beta": {
-      "beta5y": 1.287
+      "beta5y": 1.2847
     },
     "price": [
       {
@@ -7844,12 +7844,12 @@
         "totalPay": 1630001
       },
       {
-        "name": "Mr. Jan Kneisel",
-        "title": "Chief Compliance Officer"
-      },
-      {
         "name": "Mr. Justin Meng",
         "title": "Senior VP & Head of Investor Relations"
+      },
+      {
+        "name": "Mr. Sineesh Keshav",
+        "title": "Chief Technical Officer"
       },
       {
         "name": "Mr. Timothy D. Arndt",
@@ -7883,43 +7883,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.24,
-        "industryAvg": 29.3
+        "value": 28.68,
+        "industryAvg": 30.06
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.76,
-        "industryAvg": 8.68
+        "value": 12.96,
+        "industryAvg": 8.92
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.14,
-        "industryAvg": 2.26
+        "value": 2.17,
+        "industryAvg": 2.34
       },
       {
         "metric": "ROE",
         "value": 1.49,
-        "industryAvg": 9.87
+        "industryAvg": 10.02
       },
       {
         "metric": "ROA",
         "value": 0.8,
-        "industryAvg": 4.9399999999999995
+        "industryAvg": 5.0200000000000005
       },
       {
         "metric": "Gross Margin",
         "value": 75.03999999999999,
-        "industryAvg": 70.16
+        "industryAvg": 70.14
       },
       {
         "metric": "EBITDA Margin",
         "value": 82.73,
-        "industryAvg": 68.51
+        "industryAvg": 69.04
       },
       {
         "metric": "Net Margin",
         "value": 34.17,
-        "industryAvg": 30.520000000000003
+        "industryAvg": 30.990000000000002
       }
     ]
   }

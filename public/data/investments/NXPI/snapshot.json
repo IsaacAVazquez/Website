@@ -1,8 +1,8 @@
 {
   "symbol": "NXPI",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -39,12 +39,12 @@
       "longName": "NXP Semiconductors N.V."
     },
     "fundamentals": {
-      "ttmEps": 11.717,
-      "ttmPe": 22.16,
-      "marketCap": 65489997430,
-      "psRatio": 4.75,
-      "pbRatio": 5.42,
-      "pegRatio": 0.31
+      "ttmEps": 12.7184,
+      "ttmPe": 21.19,
+      "marketCap": 67930534520,
+      "psRatio": 4.92,
+      "pbRatio": 5.62,
+      "pegRatio": 0.53
     },
     "profitability": {
       "roe": 7.53,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 72.23
+        "yoyGrowth": 40.36
       }
     ],
     "income_statement": {
@@ -6139,15 +6139,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16.86,
-      "costOfEquity": 19.56,
+      "wacc": 16.91,
+      "costOfEquity": 19.509999999999998,
       "costOfDebt": 0.98,
       "taxRate": 20,
-      "beta": 1.8435,
-      "marketCap": 65489997430
+      "beta": 1.8422,
+      "marketCap": 67930534520
     },
     "beta": {
-      "beta5y": 1.8435
+      "beta5y": 1.8422
     },
     "price": [
       {
@@ -8177,14 +8177,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
-        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bf516d5d-637d-3db5-978c-5163ffd50ea1",
         "title": "S&P 500 Gains and Losses Today: NXP Semiconductors Stock Falls as CEO Plans Departure",
         "publisher": "Investopedia",
@@ -8193,11 +8185,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1cccdaf0-90b3-3e43-85e1-78e2bfdf80cd",
-        "title": "NXP Unveils Next-Gen Radar Chip To Boost Autonomous Driving Systems",
-        "publisher": "Benzinga",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/nxp-unveils-next-gen-radar-150939114.html",
+        "uuid": "56967fcf-b27d-3760-9b88-11540dff348b",
+        "title": "Closing Bell Movers: NXP Semi slips 7% after earnings",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-nxp-semi-224521310.html",
         "type": "STORY"
       },
       {
@@ -8206,6 +8198,14 @@
         "publisher": "GlobeNewswire",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/nxp-unveils-third-generation-imaging-070000540.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1cccdaf0-90b3-3e43-85e1-78e2bfdf80cd",
+        "title": "NXP Unveils Next-Gen Radar Chip To Boost Autonomous Driving Systems",
+        "publisher": "Benzinga",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/nxp-unveils-next-gen-radar-150939114.html",
         "type": "STORY"
       },
       {
@@ -8313,18 +8313,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.16,
-        "industryAvg": 24.02
+        "value": 21.19,
+        "industryAvg": 22.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.75,
-        "industryAvg": 11.64
+        "value": 4.92,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.42,
-        "industryAvg": 10.35
+        "value": 5.62,
+        "industryAvg": 9.55
       },
       {
         "metric": "ROE",
@@ -8334,17 +8334,17 @@
       {
         "metric": "ROA",
         "value": 3.26,
-        "industryAvg": 42.54
+        "industryAvg": 42.55
       },
       {
         "metric": "Gross Margin",
         "value": 57.82000000000001,
-        "industryAvg": 68.30000000000001
+        "industryAvg": 68.31
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.8,
-        "industryAvg": 81.54
+        "industryAvg": 81.53
       },
       {
         "metric": "Net Margin",

@@ -1,8 +1,8 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7183,
-      "ttmPe": 37.87,
-      "marketCap": 317769996550,
-      "psRatio": 12.16,
-      "pbRatio": 22.85,
-      "pegRatio": 0.49
+      "ttmPe": 35.11,
+      "marketCap": 294648322600,
+      "psRatio": 11.28,
+      "pbRatio": 21.18,
+      "pegRatio": 0.45
     },
     "profitability": {
       "roe": 20.87,
@@ -5781,15 +5781,15 @@
       ]
     },
     "wacc": {
-      "wacc": 20.02,
-      "costOfEquity": 20.25,
+      "wacc": 20.330000000000002,
+      "costOfEquity": 20.580000000000002,
       "costOfDebt": 0.98,
       "taxRate": 17,
-      "beta": 1.9357,
-      "marketCap": 317769996550
+      "beta": 1.9774,
+      "marketCap": 294648322600
     },
     "beta": {
-      "beta5y": 1.9357
+      "beta5y": 1.9774
     },
     "price": [
       {
@@ -7859,14 +7859,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3fd416d3-44c0-32de-a211-5ceed23a66c3",
-        "title": "Zacks Investment Ideas feature highlights: CyberArk, Lam Research and monday.com",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-091900222.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "af0d9419-10be-3fc3-95c2-7602b7866c4f",
         "title": "3 Reasons Growth Investors Will Love Lam Research (LRCX)",
         "publisher": "Zacks",
@@ -7875,11 +7867,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
-        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "uuid": "3fd416d3-44c0-32de-a211-5ceed23a66c3",
+        "title": "Zacks Investment Ideas feature highlights: CyberArk, Lam Research and monday.com",
         "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-091900222.html",
         "type": "STORY"
       },
       {
@@ -7888,6 +7880,14 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-205147649.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b5f70bd-96be-3f94-85ec-502e0fce0baa",
+        "title": "Qualcomm (QCOM) Up 9.7% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/qualcomm-qcom-9-7-since-153116338.html",
         "type": "STORY"
       }
     ],
@@ -7958,43 +7958,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.87,
-        "industryAvg": 42.41
+        "value": 35.11,
+        "industryAvg": 38.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.16,
-        "industryAvg": 12.51
+        "value": 11.28,
+        "industryAvg": 11.14
       },
       {
         "metric": "P/B Ratio",
-        "value": 22.85,
-        "industryAvg": 17.46
+        "value": 21.18,
+        "industryAvg": 15.4
       },
       {
         "metric": "ROE",
         "value": 20.87,
-        "industryAvg": 42.92
+        "industryAvg": 42.49
       },
       {
         "metric": "ROA",
         "value": 11.04,
-        "industryAvg": 20.86
+        "industryAvg": 20.78
       },
       {
         "metric": "Gross Margin",
         "value": 52.300000000000004,
-        "industryAvg": 50.339999999999996
+        "industryAvg": 49.95
       },
       {
         "metric": "EBITDA Margin",
         "value": 42.230000000000004,
-        "industryAvg": 37.9
+        "industryAvg": 37.43
       },
       {
         "metric": "Net Margin",
         "value": 33.5,
-        "industryAvg": 28.810000000000002
+        "industryAvg": 28.4
       }
     ]
   }

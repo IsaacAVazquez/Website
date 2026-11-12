@@ -1,8 +1,8 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.812,
-      "ttmPe": 27.75,
-      "marketCap": 135252845000,
-      "psRatio": 8.5,
-      "pbRatio": 6.86,
-      "pegRatio": 2.74
+      "ttmPe": 28.26,
+      "marketCap": 137734389000,
+      "psRatio": 8.66,
+      "pbRatio": 6.99,
+      "pegRatio": 2.8
     },
     "profitability": {
       "roe": 4.84,
@@ -3217,7 +3217,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "294800000.0",
+          "2026-09-30": "289900000.0",
           "2026-06-30": "294800000.0",
           "2026-03-31": "415000000.0",
           "2025-12-31": "415000000.0",
@@ -3238,7 +3238,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "294800000.0",
+          "2026-09-30": "289900000.0",
           "2026-06-30": "294800000.0",
           "2026-03-31": "296000000.0",
           "2025-12-31": "298800000.0",
@@ -5935,15 +5935,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.899999999999999,
-      "costOfEquity": 13.04,
+      "wacc": 11.91,
+      "costOfEquity": 13.03,
       "costOfDebt": 0.65,
       "taxRate": 25,
-      "beta": 1.0215,
-      "marketCap": 135252845000
+      "beta": 1.0208,
+      "marketCap": 137734389000
     },
     "beta": {
-      "beta5y": 1.0215
+      "beta5y": 1.0208
     },
     "price": [
       {
@@ -8047,53 +8047,107 @@
     ],
     "officers": [
       {
+        "name": "Mr. Christopher Craig",
+        "title": "Senior VP, Controller & Chief Accounting Officer",
+        "age": 52,
+        "yearBorn": 1973,
+        "totalPay": 1458735
+      },
+      {
+        "name": "Mr. David Ernsberger",
+        "title": "President of S&P Global Energy",
+        "age": 50,
+        "yearBorn": 1975
+      },
+      {
+        "name": "Mr. Eric Walter Aboaf",
+        "title": "CFO & Executive VP",
+        "totalPay": 4905668
+      },
+      {
+        "name": "Mr. Girish Ganesan",
+        "title": "Executive VP & Chief People Officer",
+        "age": 44,
+        "yearBorn": 1981
+      },
+      {
+        "name": "Mr. Steven Kemps CPA",
+        "title": "Special Advisor",
+        "age": 60,
+        "yearBorn": 1965,
+        "totalPay": 1941260
+      },
+      {
+        "name": "Mr. Yann Le Pallec",
+        "title": "President of S&P Global Ratings"
+      },
+      {
+        "name": "Ms. Catherine R. Clay",
+        "title": "Chief Executive Officer of S&P Dow Jones Indices",
+        "age": 58,
+        "yearBorn": 1967
+      },
+      {
+        "name": "Ms. Christina Twomey",
+        "title": "Chief Communications Officer",
+        "age": 44,
+        "yearBorn": 1981
+      },
+      {
         "name": "Ms. Martina L. Cheung",
         "title": "President, CEO & Director",
         "age": 49,
         "yearBorn": 1976,
         "totalPay": 3850628
+      },
+      {
+        "name": "Ms. Sally Moore",
+        "title": "Executive VP, Chief Client Officer & Co-Head of Market Intelligence Kensho Data & Platforms",
+        "age": 49,
+        "yearBorn": 1976,
+        "totalPay": 2093472
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.75,
-        "industryAvg": 26.06
+        "value": 28.26,
+        "industryAvg": 26.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.5,
-        "industryAvg": 8.12
+        "value": 8.66,
+        "industryAvg": 8.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.86,
-        "industryAvg": 4.48
+        "value": 6.99,
+        "industryAvg": 4.67
       },
       {
         "metric": "ROE",
         "value": 4.84,
-        "industryAvg": 18.13
+        "industryAvg": 18.23
       },
       {
         "metric": "ROA",
         "value": 2.2399999999999998,
-        "industryAvg": 4.31
+        "industryAvg": 4.36
       },
       {
         "metric": "Gross Margin",
         "value": 71.89,
-        "industryAvg": 64.14999999999999
+        "industryAvg": 63.949999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 59.489999999999995,
-        "industryAvg": 48.43
+        "industryAvg": 48.309999999999995
       },
       {
         "metric": "Net Margin",
         "value": 33.71,
-        "industryAvg": 28.4
+        "industryAvg": 28.389999999999997
       }
     ]
   }

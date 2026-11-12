@@ -1,8 +1,8 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.8377,
-      "ttmPe": 46.11,
-      "marketCap": 556982730000,
-      "psRatio": 15.35,
-      "pbRatio": 82.48,
+      "ttmPe": 47.75,
+      "marketCap": 576817290000,
+      "psRatio": 15.9,
+      "pbRatio": 85.42,
       "pegRatio": 1.41
     },
     "profitability": {
@@ -5641,15 +5641,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.61,
+      "wacc": 10.620000000000001,
       "costOfEquity": 11.03,
       "costOfDebt": 1.04,
       "taxRate": 19,
-      "beta": 0.768,
-      "marketCap": 556982730000
+      "beta": 0.7671,
+      "marketCap": 576817290000
     },
     "beta": {
-      "beta5y": 0.768
+      "beta5y": 0.7671
     },
     "price": [
       {
@@ -7735,128 +7735,71 @@
         "type": "STORY"
       },
       {
-        "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
-        "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
         "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
+        "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
+        "type": "STORY"
       }
     ],
     "officers": [
-      {
-        "name": "Mr. Chris Mullett",
-        "title": "Corporate Controller & Principal Accounting Officer",
-        "age": 51,
-        "yearBorn": 1974
-      },
-      {
-        "name": "Mr. Craig E. Vosburg",
-        "title": "Vice Chair",
-        "age": 58,
-        "yearBorn": 1967,
-        "totalPay": 2694403
-      },
-      {
-        "name": "Mr. Devin Corr",
-        "title": "Executive Vice President of Investor Relations"
-      },
-      {
-        "name": "Mr. Edward Grunde McLaughlin",
-        "title": "President & CTO of Mastercard Technology",
-        "age": 59,
-        "yearBorn": 1966,
-        "totalPay": 2064752
-      },
-      {
-        "name": "Mr. Ling Hai",
-        "title": "Chief Financial Officer",
-        "age": 54,
-        "yearBorn": 1971
-      },
       {
         "name": "Mr. Michael Miebach",
         "title": "CEO, President & Director",
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 9761053
-      },
-      {
-        "name": "Mr. Richard R. Verma Ph.D.",
-        "title": "Chief Administrative Officer",
-        "age": 52,
-        "yearBorn": 1973
-      },
-      {
-        "name": "Mr. Sachin Mehra",
-        "title": "Chief Business Officer",
-        "age": 54,
-        "yearBorn": 1971,
-        "totalPay": 3326275
-      },
-      {
-        "name": "Mr. Timothy Henry Murphy J.D.",
-        "title": "Vice Chair",
-        "age": 57,
-        "yearBorn": 1968,
-        "totalPay": 2399628
-      },
-      {
-        "name": "Ms. Linda Pistecchia Kirkpatrick",
-        "title": "Chief Services Officer",
-        "age": 48,
-        "yearBorn": 1977,
-        "totalPay": 2297718
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 46.11,
-        "industryAvg": 23.6
+        "value": 47.75,
+        "industryAvg": 23.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.35,
-        "industryAvg": 5.51
+        "value": 15.9,
+        "industryAvg": 5.53
       },
       {
         "metric": "P/B Ratio",
-        "value": 82.48,
-        "industryAvg": 5.9
+        "value": 85.42,
+        "industryAvg": 6.05
       },
       {
         "metric": "ROE",
         "value": 74.86,
-        "industryAvg": 14.580000000000002
+        "industryAvg": 15.190000000000001
       },
       {
         "metric": "ROA",
         "value": 7.99,
-        "industryAvg": 2.37
+        "industryAvg": 2.4299999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 79.32000000000001,
-        "industryAvg": 65.51
+        "industryAvg": 65.69
       },
       {
         "metric": "EBITDA Margin",
         "value": 64.41,
-        "industryAvg": 43.7
+        "industryAvg": 44.15
       },
       {
         "metric": "Net Margin",
         "value": 47.19,
-        "industryAvg": 20.01
+        "industryAvg": 20.29
       }
     ]
   }

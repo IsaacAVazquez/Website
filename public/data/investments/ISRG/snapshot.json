@@ -1,8 +1,8 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     },
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.2651,
-      "ttmPe": 52.27,
+      "ttmPe": 54.39,
       "pegRatio": 1.77,
-      "marketCap": 149734666000,
-      "psRatio": 12.93,
-      "pbRatio": 9.37
+      "marketCap": 155807098000,
+      "psRatio": 13.46,
+      "pbRatio": 9.75
     },
     "profitability": {
       "roe": 3.06,
@@ -5242,7 +5242,7 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4201
+      "beta5y": 1.4188
     },
     "price": [
       {
@@ -7336,11 +7336,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ff42a39e-bc52-373b-996d-47249d04e6d3",
-        "title": "Intuitive Surgical (NASDAQ:ISRG): Strongest Q1 Results from the Surgical Equipment & Consumables - Specialty Group",
-        "publisher": "StockStory",
+        "uuid": "63b9f8af-133d-3653-91c4-a1722b33de46",
+        "title": "Intuitive Surgical, Inc. (ISRG) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/intuitive-surgical-nasdaq-isrg-strongest-033505396.html",
+        "link": "https://finance.yahoo.com/news/intuitive-surgical-inc-isrg-attracting-130009154.html",
         "type": "STORY"
       }
     ],
@@ -7393,54 +7393,57 @@
         "totalPay": 1481816
       },
       {
-        "name": "Mr. Milind Wagle",
-        "title": "Chief Information Officer"
+        "name": "Mr. Mark P. Brosius",
+        "title": "EVP, Chief Manufacturing & Supply Chain Officer",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 1018593
       },
       {
-        "name": "Mr. Taylor Patton",
-        "title": "Chief Commercial and Marketing Officer"
+        "name": "Mr. Milind Wagle",
+        "title": "Chief Information Officer"
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 52.27,
-        "industryAvg": 38.48
+        "value": 54.39,
+        "industryAvg": 41.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.93,
-        "industryAvg": 3.73
+        "value": 13.46,
+        "industryAvg": 3.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.37,
-        "industryAvg": 3.25
+        "value": 9.75,
+        "industryAvg": 3.42
       },
       {
         "metric": "ROE",
         "value": 3.06,
-        "industryAvg": 6.2700000000000005
+        "industryAvg": 7.17
       },
       {
         "metric": "ROA",
         "value": 2.6,
-        "industryAvg": 3.44
+        "industryAvg": 3.6999999999999997
       },
       {
         "metric": "Gross Margin",
         "value": 68.37,
-        "industryAvg": 50.78
+        "industryAvg": 46.39
       },
       {
         "metric": "EBITDA Margin",
         "value": 41.18,
-        "industryAvg": 21.98
+        "industryAvg": 19.78
       },
       {
         "metric": "Net Margin",
         "value": 17.150000000000002,
-        "industryAvg": 7.109999999999999
+        "industryAvg": 7.1
       }
     ]
   }

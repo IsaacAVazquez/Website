@@ -1,8 +1,8 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
     "sections": {
       "price": "2026-11-11"
     }
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 12.74,
-      "marketCap": 140417052080,
-      "psRatio": 2.25,
-      "pbRatio": 1.92,
-      "pegRatio": 2.81
+      "ttmPe": 12.96,
+      "marketCap": 142811839220,
+      "psRatio": 2.29,
+      "pbRatio": 1.95,
+      "pegRatio": 2.86
     },
     "profitability": {
       "roe": 3.83,
@@ -962,11 +962,11 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "28.83",
-          "2026-09-30": "7.38",
-          "2026-06-30": "7.37",
-          "2026-03-31": "5.94",
+          "2026-09-30": "7.43",
+          "2026-06-30": "7.4",
+          "2026-03-31": "5.97",
           "2025-12-31": "8.21",
-          "2025-09-30": "7.05",
+          "2025-09-30": "7.1",
           "2025-06-30": "7.44",
           "2025-03-31": "3.32",
           "2024-12-31": "6.33",
@@ -1006,11 +1006,11 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "388994874.0",
-          "2026-09-30": "385554748.0",
-          "2026-06-30": "387413573.0",
-          "2026-03-31": "390485934.0",
+          "2026-09-30": "382530069.0",
+          "2026-06-30": "385634049.0",
+          "2026-03-31": "388495580.0",
           "2025-12-31": "391101227.0",
-          "2025-09-30": "397336568.0",
+          "2025-09-30": "394324438.0",
           "2025-06-30": "398660788.0",
           "2025-03-31": "400748485.0",
           "2024-12-31": "406900000.0",
@@ -1028,11 +1028,11 @@
         {
           "Breakdown": "Diluted Average Shares",
           "TTM": "392994860.0",
-          "2026-09-30": "389371023.0",
-          "2026-06-30": "391250616.0",
-          "2026-03-31": "394599504.0",
+          "2026-09-30": "389400000.0",
+          "2026-06-30": "391300000.0",
+          "2026-03-31": "394600000.0",
           "2025-12-31": "396500000.0",
-          "2025-09-30": "400868891.0",
+          "2025-09-30": "400900000.0",
           "2025-06-30": "403800000.0",
           "2025-03-31": "404700000.0",
           "2024-12-31": "427740864.0",
@@ -1715,7 +1715,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "25.93",
+          "2025-12-31": "26.36",
           "2024-12-31": "22.7",
           "2023-12-31": "21.98",
           "2022-12-31": "12.81",
@@ -1735,7 +1735,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "397611884.0",
+          "2025-12-31": "391101227.0",
           "2024-12-31": "408500000.0",
           "2023-12-31": "410800000.0",
           "2022-12-31": "414594856.0",
@@ -1745,7 +1745,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "401513338.0",
+          "2025-12-31": "401500000.0",
           "2024-12-31": "411905820.0",
           "2023-12-31": "414200000.0",
           "2022-12-31": "423500000.0",
@@ -5728,15 +5728,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.4799999999999995,
-      "costOfEquity": 7.23,
+      "wacc": 6.510000000000001,
+      "costOfEquity": 7.249999999999999,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.2882,
-      "marketCap": 140417052080
+      "beta": 0.288,
+      "marketCap": 142811839220
     },
     "beta": {
-      "beta5y": 0.2882
+      "beta5y": 0.288
     },
     "price": [
       {
@@ -7798,19 +7798,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c50f9178-bc22-3ab0-a07c-8cb31d7541f4",
-        "title": "Zacks Industry Outlook Highlights Berkshire Hathaway, The Progressive, Chubb, The Travelers Companies and The Allstate",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-berkshire-132800117.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7157263e-9335-325f-9342-9023ba098971",
         "title": "5 Stocks to Watch From the Prospering P&C Insurance Industry",
         "publisher": "Zacks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/5-stocks-watch-prospering-p-192300678.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c50f9178-bc22-3ab0-a07c-8cb31d7541f4",
+        "title": "Zacks Industry Outlook Highlights Berkshire Hathaway, The Progressive, Chubb, The Travelers Companies and The Allstate",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-berkshire-132800117.html",
         "type": "STORY"
       },
       {
@@ -7830,11 +7830,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
-        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
-        "publisher": "Investing.com",
+        "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
+        "title": "Chubb rejigs investment and asset management leadership",
+        "publisher": "Life Insurance International",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
+        "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
         "type": "STORY"
       }
     ],
@@ -7902,32 +7902,32 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.74,
-        "industryAvg": 30.94
+        "value": 12.96,
+        "industryAvg": 32.79
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.25,
-        "industryAvg": 3.97
+        "value": 2.29,
+        "industryAvg": 4.04
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.92,
-        "industryAvg": 5.29
+        "value": 1.95,
+        "industryAvg": 5.42
       },
       {
         "metric": "ROE",
         "value": 3.83,
-        "industryAvg": 21.94
+        "industryAvg": 20.380000000000003
       },
       {
         "metric": "ROA",
         "value": 1.01,
-        "industryAvg": 5.18
+        "industryAvg": 4.81
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 29.57
+        "industryAvg": 29.470000000000002
       },
       {
         "metric": "EBITDA Margin",
@@ -7936,7 +7936,7 @@
       {
         "metric": "Net Margin",
         "value": 17.41,
-        "industryAvg": 14.35
+        "industryAvg": 13.38
       }
     ]
   }
