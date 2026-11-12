@@ -1,10 +1,10 @@
 {
   "symbol": "DE",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9915,
-      "ttmPe": 36.68,
-      "marketCap": 177952764000,
-      "psRatio": 3.8,
-      "pbRatio": 6.36,
-      "pegRatio": 5.05
+      "ttmPe": 38.45,
+      "marketCap": 186513370450,
+      "psRatio": 3.98,
+      "pbRatio": 6.66,
+      "pegRatio": 5.3
     },
     "profitability": {
       "roe": 4.97,
@@ -6785,81 +6785,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.959999999999999,
-      "costOfEquity": 11.91,
+      "wacc": 9.06,
+      "costOfEquity": 11.899999999999999,
       "costOfDebt": 1.11,
       "taxRate": 28.000000000000004,
-      "beta": 0.8788,
-      "marketCap": 177952764000
+      "beta": 0.8769,
+      "marketCap": 186513370450
     },
     "beta": {
-      "beta5y": 0.8788
+      "beta5y": 0.8769
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 472.14,
-        "high": 479.81,
-        "low": 465.22,
-        "close": 465.41,
-        "volume": 1035000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 463.57,
-        "high": 464.54,
-        "low": 458.72,
-        "close": 461.63,
-        "volume": 1116400
-      },
-      {
-        "date": "2025-11-03",
-        "open": 459.8,
-        "high": 463.8,
-        "low": 454.5,
-        "close": 461.94,
-        "volume": 957500
-      },
-      {
-        "date": "2025-11-04",
-        "open": 457.29,
-        "high": 469.67,
-        "low": 456,
-        "close": 468.3,
-        "volume": 1576900
-      },
-      {
-        "date": "2025-11-05",
-        "open": 468,
-        "high": 476.29,
-        "low": 466.4,
-        "close": 473.69,
-        "volume": 891600
-      },
-      {
-        "date": "2025-11-06",
-        "open": 475.14,
-        "high": 481.28,
-        "low": 469.52,
-        "close": 475.38,
-        "volume": 1258600
-      },
-      {
-        "date": "2025-11-07",
-        "open": 463.92,
-        "high": 471.25,
-        "low": 457.65,
-        "close": 467.79,
-        "volume": 1912500
-      },
-      {
-        "date": "2025-11-10",
-        "open": 468.9,
-        "high": 476.55,
-        "low": 463.68,
-        "close": 474.39,
-        "volume": 922900
-      },
       {
         "date": "2025-11-11",
         "open": 474.56,
@@ -8811,6 +8747,70 @@
         "low": 659.48,
         "close": 675.48,
         "volume": 1254100
+      },
+      {
+        "date": "2026-11-02",
+        "open": 669.34,
+        "high": 679.23,
+        "low": 658.99,
+        "close": 667.6,
+        "volume": 1344900
+      },
+      {
+        "date": "2026-11-03",
+        "open": 669.99,
+        "high": 674.16,
+        "low": 659.46,
+        "close": 665.83,
+        "volume": 899700
+      },
+      {
+        "date": "2026-11-04",
+        "open": 675,
+        "high": 677.32,
+        "low": 656.99,
+        "close": 676.5,
+        "volume": 1246200
+      },
+      {
+        "date": "2026-11-05",
+        "open": 680.26,
+        "high": 687.07,
+        "low": 659.35,
+        "close": 663.31,
+        "volume": 1721400
+      },
+      {
+        "date": "2026-11-06",
+        "open": 660,
+        "high": 678.36,
+        "low": 658,
+        "close": 671.65,
+        "volume": 1216000
+      },
+      {
+        "date": "2026-11-09",
+        "open": 685.51,
+        "high": 697,
+        "low": 681.4,
+        "close": 691.28,
+        "volume": 1629600
+      },
+      {
+        "date": "2026-11-10",
+        "open": 687.7,
+        "high": 696.97,
+        "low": 673.8,
+        "close": 687.64,
+        "volume": 1031700
+      },
+      {
+        "date": "2026-11-11",
+        "open": 686.48,
+        "high": 693.25,
+        "low": 680.66,
+        "close": 691.75,
+        "volume": 863900
       }
     ],
     "news": [
@@ -8887,11 +8887,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e2172edb-fe3c-3850-92bd-2d27a0683b0d",
-        "title": "Company News for May 16, 2025",
+        "uuid": "eb1c925a-7dc4-3517-af71-a95b66837f2b",
+        "title": "Deere Q2 Earnings Top Estimates, Dip Y/Y on Lower Shipment Volumes",
         "publisher": "Zacks",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/company-news-may-16-2025-132700526.html",
+        "link": "https://finance.yahoo.com/news/deere-q2-earnings-top-estimates-164200944.html",
         "type": "STORY"
       }
     ],
@@ -8955,43 +8955,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.68,
-        "industryAvg": 28.2
+        "value": 38.45,
+        "industryAvg": 26.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.8,
-        "industryAvg": 2.69
+        "value": 3.98,
+        "industryAvg": 2.6
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.36,
-        "industryAvg": 5.92
+        "value": 6.66,
+        "industryAvg": 5.69
       },
       {
         "metric": "ROE",
         "value": 4.97,
-        "industryAvg": 20.48
+        "industryAvg": 19.689999999999998
       },
       {
         "metric": "ROA",
         "value": 1.28,
-        "industryAvg": 5.75
+        "industryAvg": 5.86
       },
       {
         "metric": "Gross Margin",
         "value": 35.730000000000004,
-        "industryAvg": 27.76
+        "industryAvg": 27.939999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.869999999999997,
-        "industryAvg": 17.73
+        "industryAvg": 17.5
       },
       {
         "metric": "Net Margin",
         "value": 11.15,
-        "industryAvg": 9.01
+        "industryAvg": 9.17
       }
     ]
   }

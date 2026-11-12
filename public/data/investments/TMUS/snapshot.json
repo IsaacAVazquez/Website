@@ -1,10 +1,10 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -39,12 +39,12 @@
       "longName": "T-Mobile US, Inc."
     },
     "fundamentals": {
-      "ttmEps": 9.5556,
-      "ttmPe": 15.41,
-      "marketCap": 158309884304,
-      "psRatio": 1.69,
-      "pbRatio": 2.81,
-      "pegRatio": 2.85
+      "ttmEps": 10.3707,
+      "ttmPe": 16.6,
+      "marketCap": 182979446848,
+      "psRatio": 1.95,
+      "pbRatio": 3.25,
+      "pegRatio": 0.49
     },
     "profitability": {
       "roe": 6.140000000000001,
@@ -81,7 +81,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 5.4
+        "yoyGrowth": 33.839999999999996
       }
     ],
     "income_statement": {
@@ -5899,81 +5899,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.87,
-      "costOfEquity": 8.01,
+      "wacc": 5.140000000000001,
+      "costOfEquity": 8.03,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 24,
-      "beta": 0.3837,
-      "marketCap": 158309884304
+      "beta": 0.3861,
+      "marketCap": 182979446848
     },
     "beta": {
-      "beta5y": 0.3837
+      "beta5y": 0.3861
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 215.22,
-        "high": 215.98,
-        "low": 209.58,
-        "close": 210.65,
-        "volume": 6235200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 209.29,
-        "high": 211.85,
-        "low": 207.64,
-        "close": 210.05,
-        "volume": 4956500
-      },
-      {
-        "date": "2025-11-03",
-        "open": 209.31,
-        "high": 209.4,
-        "low": 202.73,
-        "close": 203.32,
-        "volume": 7093300
-      },
-      {
-        "date": "2025-11-04",
-        "open": 204.23,
-        "high": 206.85,
-        "low": 203.49,
-        "close": 206.29,
-        "volume": 4937400
-      },
-      {
-        "date": "2025-11-05",
-        "open": 205.61,
-        "high": 207.26,
-        "low": 204.11,
-        "close": 204.74,
-        "volume": 3463900
-      },
-      {
-        "date": "2025-11-06",
-        "open": 202.21,
-        "high": 203.48,
-        "low": 199.41,
-        "close": 201.01,
-        "volume": 5909700
-      },
-      {
-        "date": "2025-11-07",
-        "open": 202.67,
-        "high": 208.58,
-        "low": 201.58,
-        "close": 207,
-        "volume": 6464100
-      },
-      {
-        "date": "2025-11-10",
-        "open": 206.19,
-        "high": 207.19,
-        "low": 204.47,
-        "close": 205.87,
-        "volume": 4079700
-      },
       {
         "date": "2025-11-11",
         "open": 208.1,
@@ -7925,6 +7861,70 @@
         "low": 149.71,
         "close": 156.44,
         "volume": 11495300
+      },
+      {
+        "date": "2026-11-02",
+        "open": 153.66,
+        "high": 160.48,
+        "low": 153.66,
+        "close": 160.15,
+        "volume": 7255800
+      },
+      {
+        "date": "2026-11-03",
+        "open": 159.6,
+        "high": 160,
+        "low": 154.04,
+        "close": 154.41,
+        "volume": 5654500
+      },
+      {
+        "date": "2026-11-04",
+        "open": 157.5,
+        "high": 161.8,
+        "low": 156.06,
+        "close": 159.17,
+        "volume": 5564400
+      },
+      {
+        "date": "2026-11-05",
+        "open": 160.74,
+        "high": 163.35,
+        "low": 158.51,
+        "close": 160.59,
+        "volume": 7645400
+      },
+      {
+        "date": "2026-11-06",
+        "open": 155.61,
+        "high": 163.3,
+        "low": 155.58,
+        "close": 162.01,
+        "volume": 5615300
+      },
+      {
+        "date": "2026-11-09",
+        "open": 162.81,
+        "high": 169.26,
+        "low": 161.55,
+        "close": 168.71,
+        "volume": 7257600
+      },
+      {
+        "date": "2026-11-10",
+        "open": 169.67,
+        "high": 169.74,
+        "low": 165.08,
+        "close": 169.08,
+        "volume": 3874300
+      },
+      {
+        "date": "2026-11-11",
+        "open": 169.08,
+        "high": 172.22,
+        "low": 167.38,
+        "close": 172.16,
+        "volume": 5264200
       }
     ],
     "news": [
@@ -7953,19 +7953,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "aaaad415-2eec-4b3b-9dfa-5e6b2a2aaa4b",
-        "title": "4 of your biggest Trump tariff questions answered",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-04-27",
-        "link": "https://finance.yahoo.com/news/4-of-your-biggest-trump-tariff-questions-answered-100003282.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad7da136-7e59-3da1-80ea-bf69c9f9a814",
         "title": "China weighs U.S. tariff exemptions, Alphabet reports Q1 beat: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-27",
         "link": "https://finance.yahoo.com/news/china-weighs-u-tariff-exemptions-162055045.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "aaaad415-2eec-4b3b-9dfa-5e6b2a2aaa4b",
+        "title": "4 of your biggest Trump tariff questions answered",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-04-27",
+        "link": "https://finance.yahoo.com/news/4-of-your-biggest-trump-tariff-questions-answered-100003282.html",
         "type": "STORY"
       },
       {
@@ -8017,6 +8017,13 @@
         "yearBorn": 1962
       },
       {
+        "name": "Mr. André Almeida",
+        "title": "Chief Marketing, Brand & Broadband Officer",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 117301
+      },
+      {
         "name": "Mr. Daniel J. Drobac",
         "title": "VP & Chief Accounting Officer",
         "age": 49,
@@ -8062,10 +8069,6 @@
         "totalPay": 8325344
       },
       {
-        "name": "Ms. Lucy McLellan",
-        "title": "Executive VP and Chief Brand & Communications Officer"
-      },
-      {
         "name": "Ms. Quan Yao C.F.A.",
         "title": "Senior Vice President of Investor Relations"
       }
@@ -8073,43 +8076,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.41,
-        "industryAvg": 11.65
+        "value": 16.6,
+        "industryAvg": 12.69
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.69,
-        "industryAvg": 1.08
+        "value": 1.95,
+        "industryAvg": 1.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.81,
-        "industryAvg": 1.56
+        "value": 3.25,
+        "industryAvg": 1.58
       },
       {
         "metric": "ROE",
         "value": 6.140000000000001,
-        "industryAvg": 8.110000000000001
+        "industryAvg": 8.09
       },
       {
         "metric": "ROA",
         "value": 1.6199999999999999,
-        "industryAvg": 2.02
+        "industryAvg": 1.96
       },
       {
         "metric": "Gross Margin",
         "value": 64.17,
-        "industryAvg": 61.21
+        "industryAvg": 63.29
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.26,
-        "industryAvg": 34.260000000000005
+        "industryAvg": 33.31
       },
       {
         "metric": "Net Margin",
         "value": 14.649999999999999,
-        "industryAvg": 5.609999999999999
+        "industryAvg": 5.57
       }
     ]
   }

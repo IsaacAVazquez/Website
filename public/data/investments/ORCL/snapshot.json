@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 21.88,
-      "marketCap": 422029440000,
-      "psRatio": 5.88,
-      "pbRatio": 6.32,
-      "pegRatio": 0.4
+      "ttmPe": 20.13,
+      "marketCap": 388221120000,
+      "psRatio": 5.41,
+      "pbRatio": 5.81,
+      "pegRatio": 0.37
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,81 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.919999999999998,
-      "costOfEquity": 18.77,
+      "wacc": 13.639999999999999,
+      "costOfEquity": 18.81,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7474,
-      "marketCap": 422029440000
+      "beta": 1.7532,
+      "marketCap": 388221120000
     },
     "beta": {
-      "beta5y": 1.7474
+      "beta5y": 1.7532
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 268.74,
-        "high": 269.76,
-        "low": 256.28,
-        "close": 256.89,
-        "volume": 27954200
-      },
-      {
-        "date": "2025-10-31",
-        "open": 259.51,
-        "high": 265.81,
-        "low": 256.71,
-        "close": 262.61,
-        "volume": 16898700
-      },
-      {
-        "date": "2025-11-03",
-        "open": 265.24,
-        "high": 265.62,
-        "low": 255.23,
-        "close": 257.85,
-        "volume": 15709200
-      },
-      {
-        "date": "2025-11-04",
-        "open": 249.98,
-        "high": 255.28,
-        "low": 245.19,
-        "close": 248.17,
-        "volume": 19772600
-      },
-      {
-        "date": "2025-11-05",
-        "open": 247.91,
-        "high": 252.4,
-        "low": 247.03,
-        "close": 250.31,
-        "volume": 11991500
-      },
-      {
-        "date": "2025-11-06",
-        "open": 247.94,
-        "high": 249.07,
-        "low": 239.29,
-        "close": 243.8,
-        "volume": 18678300
-      },
-      {
-        "date": "2025-11-07",
-        "open": 239,
-        "high": 240.4,
-        "low": 232.35,
-        "close": 239.26,
-        "volume": 20969300
-      },
-      {
-        "date": "2025-11-10",
-        "open": 245.95,
-        "high": 247.24,
-        "low": 237.07,
-        "close": 240.83,
-        "volume": 16698700
-      },
       {
         "date": "2025-11-11",
         "open": 236.23,
@@ -8207,7 +8143,71 @@
         "high": 135.2,
         "low": 129,
         "close": 130.67,
-        "volume": 40976300
+        "volume": 41052900
+      },
+      {
+        "date": "2026-11-02",
+        "open": 125.88,
+        "high": 126.5,
+        "low": 118.43,
+        "close": 119.22,
+        "volume": 58749300
+      },
+      {
+        "date": "2026-11-03",
+        "open": 122,
+        "high": 128.14,
+        "low": 121.35,
+        "close": 126.19,
+        "volume": 84295400
+      },
+      {
+        "date": "2026-11-04",
+        "open": 121.78,
+        "high": 129.85,
+        "low": 121.78,
+        "close": 123.73,
+        "volume": 111828100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 123,
+        "high": 124.24,
+        "low": 111.66,
+        "close": 115.16,
+        "volume": 56875900
+      },
+      {
+        "date": "2026-11-06",
+        "open": 119.54,
+        "high": 119.7,
+        "low": 109.21,
+        "close": 116.1,
+        "volume": 47603100
+      },
+      {
+        "date": "2026-11-09",
+        "open": 117.03,
+        "high": 120.26,
+        "low": 114.91,
+        "close": 119.79,
+        "volume": 27724800
+      },
+      {
+        "date": "2026-11-10",
+        "open": 117.91,
+        "high": 120.23,
+        "low": 115.5,
+        "close": 117.98,
+        "volume": 23394400
+      },
+      {
+        "date": "2026-11-11",
+        "open": 124.28,
+        "high": 130.77,
+        "low": 124.15,
+        "close": 128.38,
+        "volume": 38489200
       }
     ],
     "news": [
@@ -8260,19 +8260,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
-        "title": "Why Oracle Stock Was on Fire Today",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
         "title": "Olo jumps after Bloomberg says company exploring possible sale",
         "publisher": "TipRanks",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/olo-jumps-bloomberg-says-company-155559972.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
+        "title": "Why Oracle Stock Was on Fire Today",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
         "type": "STORY"
       },
       {
@@ -8350,11 +8350,8 @@
         "totalPay": 1388349
       },
       {
-        "name": "Ms. Maria Smith",
-        "title": "Executive VP & Chief Accounting Officer",
-        "age": 58,
-        "yearBorn": 1967,
-        "totalPay": 639362
+        "name": "Ms. Jae Evans",
+        "title": "Global Chief Information Officer & Executive VP"
       },
       {
         "name": "Ms. Safra Ada Catz",
@@ -8367,43 +8364,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.88,
-        "industryAvg": 34.04
+        "value": 20.13,
+        "industryAvg": 31.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.88,
-        "industryAvg": 7.8
+        "value": 5.41,
+        "industryAvg": 7.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.32,
-        "industryAvg": 8.67
+        "value": 5.81,
+        "industryAvg": 7.93
       },
       {
         "metric": "ROE",
         "value": 8.559999999999999,
-        "industryAvg": 25.89
+        "industryAvg": 26.279999999999998
       },
       {
         "metric": "ROA",
         "value": 1.66,
-        "industryAvg": 10.15
+        "industryAvg": 10.36
       },
       {
         "metric": "Gross Margin",
         "value": 60.029999999999994,
-        "industryAvg": 51.12
+        "industryAvg": 50.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 53.72,
-        "industryAvg": 36.04
+        "industryAvg": 36.57
       },
       {
         "metric": "Net Margin",
         "value": 24.19,
-        "industryAvg": 19.82
+        "industryAvg": 20.53
       }
     ]
   }

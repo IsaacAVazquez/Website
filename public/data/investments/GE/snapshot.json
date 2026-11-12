@@ -1,10 +1,10 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.6566,
-      "ttmPe": 36.16,
-      "marketCap": 323490811981.95,
-      "psRatio": 6.15,
-      "pbRatio": 18.46,
-      "pegRatio": 4.24
+      "ttmPe": 39.59,
+      "marketCap": 354181363382.25,
+      "psRatio": 6.74,
+      "pbRatio": 20.21,
+      "pegRatio": 4.65
     },
     "profitability": {
       "roe": 13.01,
@@ -1682,7 +1682,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-12-31": "1061000000.0",
+          "2025-12-31": "1061463415.0",
           "2024-12-31": "1085430464.0",
           "2023-12-31": "1089000000.0",
           "2022-12-31": "1096000000.0",
@@ -1692,7 +1692,7 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "2025-12-31": "1068000000.0",
+          "2025-12-31": "1069287469.0",
           "2024-12-31": "1094490818.0",
           "2023-12-31": "1099000000.0",
           "2022-12-31": "1096000000.0",
@@ -7105,81 +7105,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.28,
-      "costOfEquity": 16.13,
+      "wacc": 15.370000000000001,
+      "costOfEquity": 16.150000000000002,
       "costOfDebt": 1.2,
       "taxRate": 14.000000000000002,
-      "beta": 1.4137,
-      "marketCap": 323490811981.95
+      "beta": 1.416,
+      "marketCap": 354181363382.25
     },
     "beta": {
-      "beta5y": 1.4137
+      "beta5y": 1.416
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 310.41,
-        "high": 314.84,
-        "low": 308.5,
-        "close": 310.75,
-        "volume": 3782000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 311.74,
-        "high": 314.92,
-        "low": 307.18,
-        "close": 308.95,
-        "volume": 4023800
-      },
-      {
-        "date": "2025-11-03",
-        "open": 309.1,
-        "high": 311.69,
-        "low": 306.28,
-        "close": 308.62,
-        "volume": 3297600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 305.82,
-        "high": 309.23,
-        "low": 303.07,
-        "close": 304.2,
-        "volume": 3938200
-      },
-      {
-        "date": "2025-11-05",
-        "open": 303.45,
-        "high": 308.54,
-        "low": 302.5,
-        "close": 305.11,
-        "volume": 4711100
-      },
-      {
-        "date": "2025-11-06",
-        "open": 303.73,
-        "high": 308.03,
-        "low": 301.44,
-        "close": 305.27,
-        "volume": 3467800
-      },
-      {
-        "date": "2025-11-07",
-        "open": 304.03,
-        "high": 308.92,
-        "low": 297.7,
-        "close": 307.27,
-        "volume": 4766500
-      },
-      {
-        "date": "2025-11-10",
-        "open": 309.94,
-        "high": 313.76,
-        "low": 308.92,
-        "close": 311.94,
-        "volume": 3716400
-      },
       {
         "date": "2025-11-11",
         "open": 310.5,
@@ -9131,6 +9067,70 @@
         "low": 299.98,
         "close": 301.8,
         "volume": 5101600
+      },
+      {
+        "date": "2026-11-02",
+        "open": 309.2,
+        "high": 316.79,
+        "low": 308.17,
+        "close": 315.78,
+        "volume": 4830000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 318.2,
+        "high": 323,
+        "low": 316.24,
+        "close": 320.67,
+        "volume": 5423000
+      },
+      {
+        "date": "2026-11-04",
+        "open": 326.63,
+        "high": 333.75,
+        "low": 318,
+        "close": 329.45,
+        "volume": 6487900
+      },
+      {
+        "date": "2026-11-05",
+        "open": 328.56,
+        "high": 333.32,
+        "low": 312.3,
+        "close": 314.73,
+        "volume": 6546500
+      },
+      {
+        "date": "2026-11-06",
+        "open": 317.07,
+        "high": 325.18,
+        "low": 315.06,
+        "close": 323.24,
+        "volume": 5308600
+      },
+      {
+        "date": "2026-11-09",
+        "open": 331.93,
+        "high": 337.55,
+        "low": 328.26,
+        "close": 335.54,
+        "volume": 4133300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 335,
+        "high": 340.53,
+        "low": 330.75,
+        "close": 337.91,
+        "volume": 3375500
+      },
+      {
+        "date": "2026-11-11",
+        "open": 339,
+        "high": 342.9,
+        "low": 336.78,
+        "close": 342.75,
+        "volume": 3387800
       }
     ],
     "news": [
@@ -9159,19 +9159,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
-        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
         "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
+        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
         "type": "STORY"
       },
       {
@@ -9207,11 +9207,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d134cc19-fe13-3ca1-af10-ebf5dc460470",
-        "title": "Jim Cramer Says GE Vernova (GEV) Has “Four Secular Trends Going for It”",
-        "publisher": "Insider Monkey",
+        "uuid": "f65ee8ef-b157-3570-9098-5413b7773f9f",
+        "title": "3 Market-Beating Stocks to Target This Week",
+        "publisher": "StockStory",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/jim-cramer-says-ge-vernova-181249654.html",
+        "link": "https://finance.yahoo.com/news/3-market-beating-stocks-target-043626728.html",
         "type": "STORY"
       }
     ],
@@ -9281,43 +9281,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.16,
-        "industryAvg": 33.32
+        "value": 39.59,
+        "industryAvg": 33.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.15,
+        "value": 6.74,
         "industryAvg": 5.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 18.46,
-        "industryAvg": 7.59
+        "value": 20.21,
+        "industryAvg": 7.47
       },
       {
         "metric": "ROE",
         "value": 13.01,
-        "industryAvg": 12.45
+        "industryAvg": 12.53
       },
       {
         "metric": "ROA",
         "value": 1.7999999999999998,
-        "industryAvg": 3.7900000000000005
+        "industryAvg": 3.8600000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 28.349999999999998,
-        "industryAvg": 20.64
+        "industryAvg": 20.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 23.880000000000003,
-        "industryAvg": 15.15
+        "industryAvg": 15.22
       },
       {
         "metric": "Net Margin",
         "value": 16.21,
-        "industryAvg": 6.45
+        "industryAvg": 6.569999999999999
       }
     ]
   }

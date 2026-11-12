@@ -1,10 +1,10 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0536,
-      "ttmPe": 26.2,
-      "marketCap": 79423560000,
-      "psRatio": 2.15,
-      "pbRatio": 3.05,
+      "ttmPe": 24.81,
+      "marketCap": 75216960000,
+      "psRatio": 2.04,
+      "pbRatio": 2.89,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -863,7 +863,7 @@
           "2026-06-30": "841186457.31",
           "2026-03-31": "784800000.0",
           "2025-12-31": "1215940615.06",
-          "2025-09-30": "933040000.0",
+          "2025-09-30": "934048000.0",
           "2025-06-30": "1152645914.4",
           "2025-03-31": "957680000.0",
           "2024-12-31": "1306186733.96",
@@ -1149,7 +1149,7 @@
           "2026-06-30": "-13813542.69",
           "2026-03-31": "-8200000.0",
           "2025-12-31": "-70059384.94",
-          "2025-09-30": "-57960000.0",
+          "2025-09-30": "-56952000.0",
           "2025-06-30": "-31354085.6",
           "2025-03-31": "-45320000.0",
           "2024-12-31": "-50813266.04",
@@ -1488,7 +1488,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-12-31": "2.38",
+          "2025-12-31": "2.37",
           "2024-12-31": "3.14",
           "2023-12-31": "2.95",
           "2022-12-31": "2.43",
@@ -6210,81 +6210,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.94,
-      "costOfEquity": 11.41,
+      "wacc": 9.77,
+      "costOfEquity": 11.3,
       "costOfDebt": 1.04,
       "taxRate": 23,
-      "beta": 0.8145,
-      "marketCap": 79423560000
+      "beta": 0.8014,
+      "marketCap": 75216960000
     },
     "beta": {
-      "beta5y": 0.8145
+      "beta5y": 0.8014
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 36.68,
-        "high": 37.05,
-        "low": 36.28,
-        "close": 36.32,
-        "volume": 15557600
-      },
-      {
-        "date": "2025-10-31",
-        "open": 36.26,
-        "high": 36.53,
-        "low": 35.78,
-        "close": 36.06,
-        "volume": 15188200
-      },
-      {
-        "date": "2025-11-03",
-        "open": 36.1,
-        "high": 37.31,
-        "low": 36.03,
-        "close": 37.02,
-        "volume": 19349000
-      },
-      {
-        "date": "2025-11-04",
-        "open": 36.32,
-        "high": 36.46,
-        "low": 35.79,
-        "close": 36.12,
-        "volume": 18718800
-      },
-      {
-        "date": "2025-11-05",
-        "open": 36.25,
-        "high": 37.03,
-        "low": 35.96,
-        "close": 36.55,
-        "volume": 14655300
-      },
-      {
-        "date": "2025-11-06",
-        "open": 36.66,
-        "high": 37.21,
-        "low": 36.34,
-        "close": 36.36,
-        "volume": 14651300
-      },
-      {
-        "date": "2025-11-07",
-        "open": 36.48,
-        "high": 36.8,
-        "low": 35.89,
-        "close": 36.66,
-        "volume": 11074700
-      },
-      {
-        "date": "2025-11-10",
-        "open": 36.88,
-        "high": 37.05,
-        "low": 36.11,
-        "close": 36.91,
-        "volume": 12276000
-      },
       {
         "date": "2025-11-11",
         "open": 37.2,
@@ -8236,6 +8172,70 @@
         "low": 53.02,
         "close": 53.74,
         "volume": 12755900
+      },
+      {
+        "date": "2026-11-02",
+        "open": 52.3,
+        "high": 53.83,
+        "low": 52.23,
+        "close": 52.31,
+        "volume": 11945800
+      },
+      {
+        "date": "2026-11-03",
+        "open": 51.92,
+        "high": 52.69,
+        "low": 51.73,
+        "close": 52.13,
+        "volume": 8756100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 52.2,
+        "high": 52.34,
+        "low": 49.34,
+        "close": 51.56,
+        "volume": 19991100
+      },
+      {
+        "date": "2026-11-05",
+        "open": 52.51,
+        "high": 52.51,
+        "low": 49.57,
+        "close": 49.64,
+        "volume": 18779900
+      },
+      {
+        "date": "2026-11-06",
+        "open": 49.46,
+        "high": 51.31,
+        "low": 49.45,
+        "close": 49.92,
+        "volume": 14547900
+      },
+      {
+        "date": "2026-11-09",
+        "open": 50.11,
+        "high": 50.81,
+        "low": 49.4,
+        "close": 50.38,
+        "volume": 9652500
+      },
+      {
+        "date": "2026-11-10",
+        "open": 49.24,
+        "high": 50.35,
+        "low": 48.5,
+        "close": 49.9,
+        "volume": 9370600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 50.87,
+        "high": 51.27,
+        "low": 49.9,
+        "close": 50.96,
+        "volume": 7037600
       }
     ],
     "news": [
@@ -8256,19 +8256,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
-        "title": "Why Schlumberger Stock Slumped on Friday",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-26",
-        "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d7aa2e46-6844-32d4-9e99-1b31a3887eed",
         "title": "Schlumberger Ltd (SLB) Q1 2025 Earnings Call Highlights: Navigating Challenges with Digital ...",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-04-26",
         "link": "https://finance.yahoo.com/news/schlumberger-ltd-slb-q1-2025-070452790.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
+        "title": "Why Schlumberger Stock Slumped on Friday",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-26",
+        "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
         "type": "STORY"
       },
       {
@@ -8296,19 +8296,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
-        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
         "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
+        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
         "type": "STORY"
       },
       {
@@ -8359,12 +8359,6 @@
         "totalPay": 4058208
       },
       {
-        "name": "Mr. Rakesh Jaggi",
-        "title": "President of Digital",
-        "age": 55,
-        "yearBorn": 1970
-      },
-      {
         "name": "Mr. Sebastien Lehnherr",
         "title": "Chief Information Officer"
       },
@@ -8374,6 +8368,12 @@
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 1837839
+      },
+      {
+        "name": "Ms. Agnieszka Kmieciak",
+        "title": "Chief People Officer",
+        "age": 51,
+        "yearBorn": 1974
       },
       {
         "name": "Ms. Dianne B. Ralston J.D.",
@@ -8386,43 +8386,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.2,
-        "industryAvg": 21.18
+        "value": 24.81,
+        "industryAvg": 19.45
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.15,
-        "industryAvg": 1.83
+        "value": 2.04,
+        "industryAvg": 1.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.05,
-        "industryAvg": 2.61
+        "value": 2.89,
+        "industryAvg": 2.43
       },
       {
         "metric": "ROE",
         "value": 2.82,
-        "industryAvg": 11.16
+        "industryAvg": 11.58
       },
       {
         "metric": "ROA",
         "value": 1.32,
-        "industryAvg": 5.16
+        "industryAvg": 5.27
       },
       {
         "metric": "Gross Margin",
         "value": 16.57,
-        "industryAvg": 21.93
+        "industryAvg": 22.06
       },
       {
         "metric": "EBITDA Margin",
         "value": 19.580000000000002,
-        "industryAvg": 18.759999999999998
+        "industryAvg": 19.29
       },
       {
         "metric": "Net Margin",
         "value": 7.779999999999999,
-        "industryAvg": 7.9799999999999995
+        "industryAvg": 8.18
       }
     ]
   }

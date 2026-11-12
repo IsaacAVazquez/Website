@@ -1,10 +1,10 @@
 {
   "symbol": "LMT",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.149,
-      "ttmPe": 22.86,
-      "marketCap": 148025700000,
-      "psRatio": 1.87,
-      "pbRatio": 14.71,
-      "pegRatio": 1.57
+      "ttmPe": 21.67,
+      "marketCap": 140311500000,
+      "psRatio": 1.77,
+      "pbRatio": 13.94,
+      "pegRatio": 1.48
     },
     "profitability": {
       "roe": 19.6,
@@ -5003,81 +5003,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.37,
-      "costOfEquity": 5.96,
+      "wacc": 5.11,
+      "costOfEquity": 5.7,
       "costOfDebt": 1.29,
       "taxRate": 15,
-      "beta": 0.1248,
-      "marketCap": 148025700000
+      "beta": 0.091,
+      "marketCap": 140311500000
     },
     "beta": {
-      "beta5y": 0.1248
+      "beta5y": 0.091
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 485.57,
-        "high": 494.46,
-        "low": 485.5,
-        "close": 489.72,
-        "volume": 1081000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 489,
-        "high": 493.61,
-        "low": 486.05,
-        "close": 491.88,
-        "volume": 1185000
-      },
-      {
-        "date": "2025-11-03",
-        "open": 491,
-        "high": 491.51,
-        "low": 484.75,
-        "close": 487.94,
-        "volume": 846600
-      },
-      {
-        "date": "2025-11-04",
-        "open": 484.46,
-        "high": 488.5,
-        "low": 481,
-        "close": 484.98,
-        "volume": 1169300
-      },
-      {
-        "date": "2025-11-05",
-        "open": 483.02,
-        "high": 485.85,
-        "low": 473.14,
-        "close": 473.14,
-        "volume": 1708000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 473.11,
-        "high": 474.18,
-        "low": 466.11,
-        "close": 468.92,
-        "volume": 1093600
-      },
-      {
-        "date": "2025-11-07",
-        "open": 468.9,
-        "high": 469.41,
-        "low": 456.2,
-        "close": 458.35,
-        "volume": 2514500
-      },
-      {
-        "date": "2025-11-10",
-        "open": 456,
-        "high": 457.1,
-        "low": 448.48,
-        "close": 452.1,
-        "volume": 1630100
-      },
       {
         "date": "2025-11-11",
         "open": 451.77,
@@ -7029,6 +6965,70 @@
         "low": 636.28,
         "close": 636.95,
         "volume": 1872300
+      },
+      {
+        "date": "2026-11-02",
+        "open": 633.19,
+        "high": 644.25,
+        "low": 631.04,
+        "close": 643.15,
+        "volume": 1558000
+      },
+      {
+        "date": "2026-11-03",
+        "open": 638.59,
+        "high": 647.24,
+        "low": 634.21,
+        "close": 639,
+        "volume": 1269100
+      },
+      {
+        "date": "2026-11-04",
+        "open": 614.65,
+        "high": 620.35,
+        "low": 591.12,
+        "close": 595.04,
+        "volume": 3056800
+      },
+      {
+        "date": "2026-11-05",
+        "open": 588.8,
+        "high": 604.46,
+        "low": 575.71,
+        "close": 576.16,
+        "volume": 1778100
+      },
+      {
+        "date": "2026-11-06",
+        "open": 569,
+        "high": 572.5,
+        "low": 561.85,
+        "close": 567.08,
+        "volume": 1387400
+      },
+      {
+        "date": "2026-11-09",
+        "open": 572.55,
+        "high": 589.81,
+        "low": 566.27,
+        "close": 588.19,
+        "volume": 1212300
+      },
+      {
+        "date": "2026-11-10",
+        "open": 587.11,
+        "high": 605.81,
+        "low": 587.11,
+        "close": 603.12,
+        "volume": 910100
+      },
+      {
+        "date": "2026-11-11",
+        "open": 597.67,
+        "high": 610.08,
+        "low": 597.49,
+        "close": 610.05,
+        "volume": 743900
       }
     ],
     "news": [
@@ -7148,6 +7148,13 @@
         "totalPay": 9785663
       },
       {
+        "name": "Mr. Kevin James O'Connor J.D.",
+        "title": "Senior VP, Chief Legal Officer & Corporate Secretary",
+        "age": 57,
+        "yearBorn": 1968,
+        "totalPay": 2496841
+      },
+      {
         "name": "Mr. Timothy S. Cahill",
         "title": "President of Missiles & Fire Control",
         "age": 59,
@@ -7163,55 +7170,48 @@
         "title": "Senior VP of Enterprise Business & Digital Transformation and Chief information Officer",
         "age": 56,
         "yearBorn": 1969
-      },
-      {
-        "name": "Ms. Stephanie C. Hill",
-        "title": "President of Rotary & Mission Systems",
-        "age": 60,
-        "yearBorn": 1965,
-        "totalPay": 3210198
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.86,
-        "industryAvg": 33.32
+        "value": 21.67,
+        "industryAvg": 33.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.87,
+        "value": 1.77,
         "industryAvg": 5.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.71,
-        "industryAvg": 7.59
+        "value": 13.94,
+        "industryAvg": 7.47
       },
       {
         "metric": "ROE",
         "value": 19.6,
-        "industryAvg": 12.45
+        "industryAvg": 12.53
       },
       {
         "metric": "ROA",
         "value": 2.91,
-        "industryAvg": 3.7900000000000005
+        "industryAvg": 3.8600000000000003
       },
       {
         "metric": "Gross Margin",
         "value": 11.76,
-        "industryAvg": 20.64
+        "industryAvg": 20.78
       },
       {
         "metric": "EBITDA Margin",
         "value": 13.81,
-        "industryAvg": 15.15
+        "industryAvg": 15.22
       },
       {
         "metric": "Net Margin",
         "value": 8.91,
-        "industryAvg": 6.45
+        "industryAvg": 6.569999999999999
       }
     ]
   }

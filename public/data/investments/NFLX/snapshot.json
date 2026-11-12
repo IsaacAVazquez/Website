@@ -1,10 +1,10 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-10-30T15:33:43.114545+00:00",
+  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-30T15:33:43.114545+00:00",
+    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
     "sections": {
-      "price": "2026-10-30"
+      "price": "2026-11-11"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.4608,
-      "ttmPe": 17.93,
-      "marketCap": 254797522095,
-      "psRatio": 5.12,
-      "pbRatio": 8.7,
-      "pegRatio": 0.37
+      "ttmPe": 18.65,
+      "marketCap": 265022273586,
+      "psRatio": 5.33,
+      "pbRatio": 9.05,
+      "pegRatio": 0.38
     },
     "profitability": {
       "roe": 12.33,
@@ -599,7 +599,7 @@
           "2026-06-30": "4189303000.0",
           "2026-03-31": "4222787000.0",
           "2025-12-31": "4229221000.0",
-          "2025-09-30": "4244553000.0",
+          "2025-09-30": "4244550000.0",
           "2025-06-30": "4252110000.0",
           "2025-03-31": "4272700000.0",
           "2024-12-31": "4277160000.0",
@@ -621,7 +621,7 @@
           "2026-06-30": "4261300000.0",
           "2026-03-31": "4298437000.0",
           "2025-12-31": "4317144000.0",
-          "2025-09-30": "4340392000.0",
+          "2025-09-30": "4340390000.0",
           "2025-06-30": "4348830000.0",
           "2025-03-31": "4369620000.0",
           "2024-12-31": "4377860000.0",
@@ -2676,7 +2676,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "4163939676.0",
+          "2026-09-30": "4106325903.0",
           "2026-06-30": "4163939676.0",
           "2026-03-31": "4573161230.0",
           "2025-12-31": "4568703295.0",
@@ -2697,7 +2697,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "4163939676.0",
+          "2026-09-30": "4106325903.0",
           "2026-06-30": "4163939676.0",
           "2026-03-31": "4212794271.0",
           "2025-12-31": "4222162150.0",
@@ -5084,81 +5084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.53,
-      "costOfEquity": 17.45,
+      "wacc": 16.650000000000002,
+      "costOfEquity": 17.54,
       "costOfDebt": 1.22,
       "taxRate": 15,
-      "beta": 1.5808,
-      "marketCap": 254797522095
+      "beta": 1.5924,
+      "marketCap": 265022273586
     },
     "beta": {
-      "beta5y": 1.5808
+      "beta5y": 1.5924
     },
     "price": [
-      {
-        "date": "2025-10-30",
-        "open": 109.44,
-        "high": 110.616,
-        "low": 108.811,
-        "close": 108.9,
-        "volume": 41581000
-      },
-      {
-        "date": "2025-10-31",
-        "open": 110.539,
-        "high": 113.488,
-        "low": 110.198,
-        "close": 111.886,
-        "volume": 68665000
-      },
-      {
-        "date": "2025-11-03",
-        "open": 113.324,
-        "high": 113.35,
-        "low": 107.515,
-        "close": 110.009,
-        "volume": 58634000
-      },
-      {
-        "date": "2025-11-04",
-        "open": 109.999,
-        "high": 110.46,
-        "low": 108.668,
-        "close": 109.296,
-        "volume": 38718000
-      },
-      {
-        "date": "2025-11-05",
-        "open": 108.5,
-        "high": 110.085,
-        "low": 107.337,
-        "close": 109.846,
-        "volume": 35539000
-      },
-      {
-        "date": "2025-11-06",
-        "open": 109.458,
-        "high": 110.37,
-        "low": 108.513,
-        "close": 109.702,
-        "volume": 36532000
-      },
-      {
-        "date": "2025-11-07",
-        "open": 109.418,
-        "high": 110.822,
-        "low": 108.75,
-        "close": 110.366,
-        "volume": 44125000
-      },
-      {
-        "date": "2025-11-10",
-        "open": 110.672,
-        "high": 112.82,
-        "low": 110.405,
-        "close": 112.007,
-        "volume": 36929000
-      },
       {
         "date": "2025-11-11",
         "open": 111.76,
@@ -7109,24 +7045,88 @@
         "high": 63.05,
         "low": 61.64,
         "close": 62.08,
-        "volume": 52266200
+        "volume": 52331700
+      },
+      {
+        "date": "2026-11-02",
+        "open": 62.2,
+        "high": 62.89,
+        "low": 61.71,
+        "close": 62.34,
+        "volume": 40917300
+      },
+      {
+        "date": "2026-11-03",
+        "open": 62.68,
+        "high": 63.47,
+        "low": 61.9,
+        "close": 63.42,
+        "volume": 36659200
+      },
+      {
+        "date": "2026-11-04",
+        "open": 64.55,
+        "high": 66.78,
+        "low": 64.02,
+        "close": 66.39,
+        "volume": 49790700
+      },
+      {
+        "date": "2026-11-05",
+        "open": 67.29,
+        "high": 67.49,
+        "low": 64.67,
+        "close": 65.56,
+        "volume": 50055600
+      },
+      {
+        "date": "2026-11-06",
+        "open": 63.86,
+        "high": 64.35,
+        "low": 63.31,
+        "close": 63.41,
+        "volume": 35529500
+      },
+      {
+        "date": "2026-11-09",
+        "open": 63.3,
+        "high": 64.13,
+        "low": 62.95,
+        "close": 63.95,
+        "volume": 35645800
+      },
+      {
+        "date": "2026-11-10",
+        "open": 63.46,
+        "high": 63.75,
+        "low": 62.6,
+        "close": 63.26,
+        "volume": 27295600
+      },
+      {
+        "date": "2026-11-11",
+        "open": 62.84,
+        "high": 64.56,
+        "low": 62.75,
+        "close": 64.54,
+        "volume": 29441400
       }
     ],
     "news": [
-      {
-        "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
-        "type": "STORY"
-      },
       {
         "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
         "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
         "type": "STORY"
       },
       {
@@ -7170,19 +7170,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
         "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
         "publisher": "StockStory",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -7256,43 +7256,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.93,
-        "industryAvg": 21.91
+        "value": 18.65,
+        "industryAvg": 21.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.12,
-        "industryAvg": 2.59
+        "value": 5.33,
+        "industryAvg": 2.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.7,
-        "industryAvg": 2.97
+        "value": 9.05,
+        "industryAvg": 3.08
       },
       {
         "metric": "ROE",
         "value": 12.33,
-        "industryAvg": 9.06
+        "industryAvg": 9.9
       },
       {
         "metric": "ROA",
         "value": 6.260000000000001,
-        "industryAvg": 3.82
+        "industryAvg": 4.22
       },
       {
         "metric": "Gross Margin",
         "value": 52.78,
-        "industryAvg": 40.96
+        "industryAvg": 41.099999999999994
       },
       {
         "metric": "EBITDA Margin",
         "value": 68.7,
-        "industryAvg": 26.38
+        "industryAvg": 26.8
       },
       {
         "metric": "Net Margin",
         "value": 28.46,
-        "industryAvg": 7.03
+        "industryAvg": 7.62
       }
     ]
   }
