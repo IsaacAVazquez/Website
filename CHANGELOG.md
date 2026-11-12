@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Add 2026 F1 race posts from Monza to Mexico City ([#674](https://github.com/IsaacAVazquez/Website/pull/674)).
 - Bump @playwright/test from 1.64.1 to 1.65.0 in the testing group ([#668](https://github.com/IsaacAVazquez/Website/pull/668)).
 - Add retirement planner and weekly tiers write-ups, fix short mock rooms and the guardrails gauge ([#675](https://github.com/IsaacAVazquez/Website/pull/675)).
+- Bump next from 16.4.3 to 16.4.5 in the next group ([#667](https://github.com/IsaacAVazquez/Website/pull/667)).
 
 ---
 
