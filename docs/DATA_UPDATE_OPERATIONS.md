@@ -142,6 +142,7 @@ new poll, so the age of the newest poll fails nothing and the page prints it.
 | `API_FOOTBALL_KEY` (needed for live data; the scheduled workflow skips with a notice without it) | `update:score-pools` |
 | `SPACEDEVS_API_TOKEN` (optional; the anonymous tier is rate limited) | `update:spacex`, `update:spacex-images` |
 | `GITHUB_TOKEN` / `GH_TOKEN` (optional, higher rate limit) | `update:github-trending` |
+| `SNAPSHOT_DEPLOY_KEY` (write deploy key; the ruleset on `main` requires Lint, Unit Tests, and Build and exempts deploy keys only) | every workflow that pushes to `main` through `commit-and-push-snapshot.sh` |
 | `BART_API_KEY` (optional; falls back to the published demo key) | request-time transit refresh, `update:bay-area-transit` |
 | Python `.venv` (`.venv/bin/python3`, packages from `scripts/requirements-investments.txt`) | `update:investments` |
 | *No token* | MLB, NBA, NFL, golf, Formula 1, World Cup, BART (demo-key fallback), USGS, SpaceX, VoteHub polling |
