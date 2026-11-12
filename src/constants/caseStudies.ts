@@ -1177,6 +1177,38 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     tradeoffs: [],
     retrospective: "",
   },
+  "blackjack-trainer": {
+    slug: "blackjack-trainer",
+    title: "Blackjack Trainer",
+    description:
+      "A basic strategy trainer that deals hands, grades every decision against the chart for the table's rules, and drills card counting one deck at a time.",
+    role: "Product Builder & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "Pure engine", "Local persistence"],
+    metrics: "Graded decisions · Rule-aware strategy chart · Hi-Lo and REKO counting drill",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/blackjack-trainer",
+    featured: true,
+
+    overview: {
+      summary:
+        "I built a blackjack trainer that deals from a shoe, grades each hit, stand, double, split, and surrender against basic strategy, and keeps a record of the plays I miss most.",
+      impact:
+        "Puts the practice table, the chart it grades against, and a counting drill on one surface, with the chart and the grader reading the same pure, unit-tested function so they cannot disagree.",
+    },
+    problem: {
+      context:
+        "A printed basic strategy chart is easy to read and hard to remember at the table, and most charts do not say which plays change when the dealer hits soft 17 or surrender is off.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
 };
 
 export const HOMEPAGE_FEATURED_SLUGS = [
@@ -1202,6 +1234,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "recipe-finder",
   "travel-planner",
   "travel-deal-lab",
+  "blackjack-trainer",
   "budget-planner",
   "rent-vs-buy-calculator",
   "mba-role-tracker",

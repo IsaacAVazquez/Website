@@ -70,6 +70,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/food-map": "2026-10-12",
   "/travel": "2026-10-12",
   "/travel-deals": "2026-10-12",
+  "/blackjack-trainer": "2026-11-10",
 };
 
 // --- Priority + changefreq classification -------------------------------
@@ -161,6 +162,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/wine-cellar": "monthly",
   "/travel": "monthly",
   "/travel-deals": "monthly",
+  "/blackjack-trainer": "monthly",
   "/museum-log": "monthly",
 };
 

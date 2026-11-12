@@ -1,0 +1,637 @@
+/*
+ * Blackjack Trainer, drawn as a card table. The route keeps its felt in both
+ * themes, a mid green by day and a deeper green by night, and redeclares the
+ * Catalog 97 tokens the borrowed button, field, and tab classes read, so they
+ * print in the table's palette. Nothing is boxed but the cards and the chart
+ * cells, which are the objects.
+ */
+
+.bj-root {
+  --bj-felt: #1f5a41;
+  --bj-felt-deep: #163f2d;
+  --bj-ink: #f6f1e4;
+  --bj-ink-2: #d5e3d6;
+  --bj-rule: rgba(246, 241, 228, 0.3);
+  --bj-gold: #f3cf6b;
+  --bj-card: #fbf8f0;
+  --bj-card-ink: #17110d;
+  --bj-card-red: #a8201a;
+  --bj-good: #c4efcf;
+  --bj-bad: #ffd3cb;
+  --bj-split: #cfe0f5;
+  --bj-give: #f6c3b9;
+
+  --c97-surface: var(--bj-felt);
+  --c97-field: var(--bj-felt-deep);
+  --c97-ink: var(--bj-ink);
+  --c97-ink-2: var(--bj-ink-2);
+  --c97-label: var(--bj-ink-2);
+  --c97-rule: var(--bj-rule);
+  --c97-accent: var(--bj-gold);
+  --c97-action: var(--bj-gold);
+
+  background: var(--bj-felt);
+  color: var(--bj-ink);
+  font-family: var(--c97-font-body);
+}
+
+.dark .bj-root {
+  --bj-felt: #0f2c20;
+  --bj-felt-deep: #081b13;
+}
+
+/* The frame's base layer puts the body face on headings and a measure and margin on paragraphs and lists. */
+.bj-root h1,
+.bj-root h2 {
+  font-family: var(--c97-font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--bj-ink);
+  margin: 0;
+}
+
+/* :where keeps this reset at one class of weight, so every route class below outranks it. */
+.bj-root :where(p, ul, ol, li, dl, dd, dt) {
+  margin: 0;
+  padding: 0;
+  max-inline-size: none;
+  line-height: 1.5;
+}
+
+.bj-root :where(ul, ol) {
+  list-style: none;
+}
+
+.bj-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+/* Title row: the name, one sentence, and the table's rules. */
+.bj-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+}
+
+.bj-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  flex: 1 1 22rem;
+}
+
+.bj-root h1 {
+  font-size: var(--c97-fs-h1);
+  line-height: 1.05;
+}
+
+.bj-root h2 {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.2;
+}
+
+.bj-lede {
+  max-inline-size: 56ch;
+  font-size: var(--c97-fs-body);
+  color: var(--bj-ink-2);
+}
+
+.bj-control {
+  display: grid;
+  gap: var(--c97-sp-0);
+  min-width: 0;
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+.bj-rules {
+  flex: 0 1 22rem;
+}
+
+.bj-rules-summary {
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+.bj-tabs {
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 1px solid var(--bj-rule);
+}
+
+.bj-note {
+  max-inline-size: 68ch;
+  font-size: var(--c97-fs-body);
+  color: var(--bj-ink-2);
+}
+
+/* The table: dealer above, the player's hands below, then the verdict and the actions. */
+.bj-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  padding-top: var(--c97-sp-1);
+}
+
+.bj-seat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.bj-seat-label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bj-ink-2);
+}
+
+.bj-total {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-body);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--bj-ink);
+}
+
+.bj-tag {
+  padding-inline: var(--c97-sp-0);
+  border: 1px solid var(--bj-gold);
+  color: var(--bj-gold);
+  font-size: var(--c97-fs-label);
+}
+
+.bj-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  min-height: 5.75rem;
+}
+
+.bj-hands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-3) var(--c97-sp-4);
+}
+
+.bj-hand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-bottom: var(--c97-sp-1);
+  border-bottom: 3px solid transparent;
+}
+
+.bj-hand[data-active="true"] {
+  border-bottom-color: var(--bj-gold);
+}
+
+.bj-prompt {
+  max-inline-size: 44ch;
+  min-height: 5.75rem;
+  font-size: var(--c97-fs-body);
+  color: var(--bj-ink);
+}
+
+/* A card is the one boxed object on the table. */
+.bj-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 4rem;
+  height: 5.75rem;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid var(--bj-card-ink);
+  border-radius: 6px;
+  background: var(--bj-card);
+  color: var(--bj-card-ink);
+  font-family: var(--c97-font-display);
+  line-height: 1;
+}
+
+.bj-card[data-red="true"] {
+  color: var(--bj-card-red);
+}
+
+.bj-card-rank {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.bj-card-suit {
+  align-self: flex-end;
+  font-size: 1.75rem;
+}
+
+.bj-card-back {
+  border-color: var(--bj-ink);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 5px, var(--bj-rule) 5px 6px),
+    repeating-linear-gradient(-45deg, transparent 0 5px, var(--bj-rule) 5px 6px),
+    var(--bj-felt-deep);
+}
+
+.bj-card[data-large="true"],
+.bj-drill-card .bj-card {
+  width: 6.5rem;
+  height: 9.25rem;
+  padding: 0.625rem 0.75rem;
+}
+
+.bj-card[data-large="true"] .bj-card-rank {
+  font-size: 2.5rem;
+}
+
+.bj-card[data-large="true"] .bj-card-suit {
+  font-size: 2.75rem;
+}
+
+.bj-status {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+  min-height: 3.25rem;
+  font-size: var(--c97-fs-body);
+}
+
+.bj-verdict[data-correct="true"] {
+  color: var(--bj-good);
+}
+
+.bj-verdict[data-correct="false"] {
+  color: var(--bj-bad);
+}
+
+.bj-result {
+  color: var(--bj-ink);
+}
+
+.bj-hint {
+  color: var(--bj-gold);
+}
+
+.bj-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+}
+
+.bj-actions .c97-btn {
+  gap: var(--c97-sp-1);
+}
+
+/* The shortcut key, printed on the button it presses. */
+.bj-key {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0;
+  opacity: 1;
+  padding-inline: 0.25rem;
+  border: 1px solid currentColor;
+}
+
+.bj-root .bj-ghost {
+  margin-inline-start: 0;
+}
+
+.bj-session {
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+/* Strategy chart. The cells are the objects, and the letter carries the play as well as the colour. */
+.bj-chart-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+}
+
+.bj-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink);
+}
+
+.bj-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.bj-legend-mark {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2rem;
+  height: 1.75rem;
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+}
+
+.bj-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: var(--c97-sp-4);
+  align-items: start;
+}
+
+.bj-chart {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  table-layout: fixed;
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+}
+
+.bj-chart caption {
+  padding-bottom: var(--c97-sp-1);
+  text-align: left;
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-h3);
+  color: var(--bj-ink);
+}
+
+.bj-chart th {
+  font-weight: 400;
+  color: var(--bj-ink-2);
+  text-align: center;
+}
+
+.bj-chart th:first-child {
+  width: 4.75rem;
+  padding-right: var(--c97-sp-0);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.bj-chart td {
+  height: 1.75rem;
+  padding: 0;
+  text-align: center;
+}
+
+.bj-chart abbr {
+  text-decoration: none;
+  cursor: help;
+}
+
+.bj-chart td[data-play="H"],
+.bj-legend-mark[data-play="H"] {
+  background: var(--bj-card);
+  color: var(--bj-card-ink);
+}
+
+.bj-chart td[data-play="S"],
+.bj-legend-mark[data-play="S"] {
+  background: var(--bj-felt-deep);
+  color: var(--bj-ink);
+  box-shadow: inset 0 0 0 1px var(--bj-rule);
+}
+
+.bj-chart td[data-play="D"],
+.bj-chart td[data-play="Ds"],
+.bj-legend-mark[data-play="D"],
+.bj-legend-mark[data-play="Ds"] {
+  background: var(--bj-gold);
+  color: var(--bj-card-ink);
+}
+
+.bj-chart td[data-play="P"],
+.bj-legend-mark[data-play="P"] {
+  background: var(--bj-split);
+  color: var(--bj-card-ink);
+}
+
+.bj-chart td[data-play="R"],
+.bj-chart td[data-play="Rs"],
+.bj-legend-mark[data-play="R"],
+.bj-legend-mark[data-play="Rs"] {
+  background: var(--bj-give);
+  color: var(--bj-card-ink);
+}
+
+/* Counting drill. */
+.bj-counting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+}
+
+.bj-counting-setup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 18rem));
+  gap: var(--c97-sp-2) var(--c97-sp-3);
+}
+
+.bj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1) var(--c97-sp-4);
+  font-size: var(--c97-fs-body);
+  color: var(--bj-ink);
+}
+
+.bj-tags li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--c97-sp-1);
+}
+
+.bj-tag-value {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-lead);
+  color: var(--bj-gold);
+}
+
+.bj-drill {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-3) var(--c97-sp-5);
+  align-items: flex-start;
+}
+
+.bj-drill-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+}
+
+.bj-drill-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.bj-guess {
+  display: grid;
+  gap: var(--c97-sp-0);
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+.bj-guess-row {
+  display: flex;
+  align-items: stretch;
+  gap: var(--c97-sp-1);
+}
+
+.bj-root .bj-step {
+  justify-content: center;
+  min-width: 48px;
+  padding: 0;
+  font-size: var(--c97-fs-lead);
+  letter-spacing: 0;
+}
+
+.bj-root .bj-guess-input {
+  width: 6rem;
+  text-align: center;
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-lead);
+}
+
+/* Progress. The figures are a ruled line of readouts, and the missed plays are a ledger. */
+.bj-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-4);
+}
+
+.bj-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: var(--c97-sp-2) var(--c97-sp-3);
+  padding-block: var(--c97-sp-2);
+  border-block: 1px solid var(--bj-rule);
+}
+
+.bj-figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-0);
+}
+
+.bj-figure dt {
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+.bj-figure dd {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-lead);
+  color: var(--bj-ink);
+}
+
+.bj-mistakes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+}
+
+.bj-mistake-list > li {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr) auto;
+  gap: var(--c97-sp-0) var(--c97-sp-3);
+  align-items: baseline;
+  padding-block: var(--c97-sp-1);
+  border-bottom: 1px solid var(--bj-rule);
+  font-size: var(--c97-fs-body);
+}
+
+.bj-mistake-hand {
+  font-family: var(--c97-font-display);
+  font-size: var(--c97-fs-lead);
+  color: var(--bj-ink);
+}
+
+.bj-mistake-play {
+  color: var(--bj-ink-2);
+}
+
+.bj-mistake-count {
+  font-family: var(--c97-font-mono);
+  color: var(--bj-gold);
+  white-space: nowrap;
+}
+
+.bj-reset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+.bj-foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  padding-top: var(--c97-sp-2);
+  border-top: 1px solid var(--bj-rule);
+  font-size: var(--c97-fs-small);
+  color: var(--bj-ink-2);
+}
+
+.bj-foot p {
+  max-inline-size: 76ch;
+}
+
+@media (max-width: 640px) {
+  .bj-card {
+    width: 3.25rem;
+    height: 4.75rem;
+  }
+
+  .bj-cards,
+  .bj-prompt {
+    min-height: 4.75rem;
+  }
+
+  .bj-card-rank {
+    font-size: 1.25rem;
+  }
+
+  .bj-card-suit {
+    font-size: 1.375rem;
+  }
+
+  .bj-actions .c97-btn {
+    padding-inline: var(--c97-sp-2);
+  }
+
+  .bj-mistake-list > li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .bj-mistake-play {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .bj-chart th:first-child {
+    width: 4rem;
+  }
+}
+
+@media print {
+  .bj-actions,
+  .bj-tabs,
+  .bj-reset {
+    display: none;
+  }
+}

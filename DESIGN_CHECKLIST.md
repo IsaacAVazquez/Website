@@ -157,7 +157,7 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
 
 ## Project routes
 
-Since 2026-10-11 a project route (the 34 in `DASHBOARD_ROUTES`, the fantasy sub-routes, Score Pools, and
+Since 2026-10-11 a project route (the 35 in `DASHBOARD_ROUTES`, the fantasy sub-routes, Score Pools, and
 `/agent-build-index`) owns its design inside the site frame. The spec is
 `docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, and its brief for the route names the
 genre, the first screen, what is cut, and what is pinned. Before merging a redesigned project route:

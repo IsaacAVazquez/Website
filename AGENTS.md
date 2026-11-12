@@ -15,7 +15,7 @@ This repo is a Next.js 16 personal site with several live product surfaces:
 - fantasy football analytics
 - investments and seasonal analysis experiments
 - standalone sports, political, space, news, transit, and fintech data tools
-- personal-interest tools such as travel planning, food, recipes, wine, and museums
+- personal-interest tools such as travel planning, food, recipes, wine, museums, and a blackjack trainer
 
 Primary live routes:
 
@@ -65,6 +65,7 @@ Primary live routes:
 - `/mba-internship-notifications`
 - `/museum-log`
 - `/arcade`
+- `/blackjack-trainer`
 - `/now`
 - `/changelog`
 - `/search`
