@@ -1,0 +1,44 @@
+---
+title: "A Retirement Planner Should Show the Spread, Not One Line"
+excerpt: "Most retirement calculators grow your savings at one average return and draw a single line. Mine runs a thousand seeded markets, reports how many of them fund the plan, and shows which dial moves that count the most."
+publishedAt: "2026-11-02"
+category: "Fintech Product"
+tags: ["Fintech", "Retirement Planning", "Monte Carlo", "Personal Finance", "Financial Modeling", "Calculators"]
+featured: false
+cluster: "Fintech Product & Pricing"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-monte-carlo-retirement-planner/opengraph-image"
+coverImageAlt: "Editorial card for an article about building a Monte Carlo retirement planner"
+cta:
+  eyebrow: "Related tool"
+  title: "Open the Retirement Planner"
+  description: "Run a plan through a thousand simulated markets and see the success count, the spread of balances, and the four dials that move it."
+  href: "/investments#retirement"
+  actionLabel: "Open the planner"
+seo:
+  title: "Building a Monte Carlo Retirement Planner"
+  description: "How I built a retirement planner on seeded Monte Carlo paths, dated capital market assumptions, and a success count tied to your own threshold."
+  keywords: ["monte carlo retirement calculator", "retirement planner", "retirement success rate", "sequence of returns risk", "capital market assumptions", "safe withdrawal rate"]
+---
+
+# A Retirement Planner Should Show the Spread, Not One Line
+
+If you want to try the tool first, the [retirement planner](/investments#retirement) sits inside the investments dashboard.
+
+Most retirement calculators I have used draw one line. You type in your age, your savings, and what you plan to spend, the calculator grows the balance at an average return every year, and the line either clears the finish or it doesn't. I think that line answers the wrong question. It describes the one market where every year delivers exactly the expected return, which is a market nobody has ever retired into, and it says nothing about how far a real outcome can land from it. So when I added a planner to the [investments dashboard](/writing/building-an-investment-research-platform), the single line became the supporting view and a thousand simulated markets became the main one.
+
+The default plan shows why better than an argument would. It describes someone who is 35 with $50,000 saved, adding $10,000 a year, retiring at 65, spending $60,000 a year in today's dollars, and collecting $24,000 a year of Social Security from 67. On the single line, that plan's money runs out at 89. Across the thousand simulated paths, the middle one runs out at 88, so the line and the median basically agree, and I set it up that way on purpose. What the line can't tell you is that the 10th percentile path is empty by 73 and the 25th by 78, while the top quarter of paths never runs out at all. The balance at retirement ranges from about $400,000 on a weak path to about $1.5 million on a strong one, in today's dollars, around a single-line figure of about $760,000. All of those outcomes come from the same plan and the same assumptions, and only the order the good and bad years arrive in changes between them.
+
+The agreement in the middle took a deliberate choice about how the random returns get drawn. The obvious way is to draw each year's return from a normal distribution centered on the expected return, but the return assumptions I use are compound figures, and treating them as a simple average quietly pulls the median path below the headline every year, and it can even draw a year where you lose more than everything. So the engine draws multiplicative returns centered on the compound rate, which keeps the middle simulated path consistent with the line and keeps every draw physically possible. If the median and the line had disagreed, I would have spent the whole page explaining a gap my own sampling had created.
+
+The headline is a count of scenarios. The default plan reads 41 of 100, meaning 41 of every 100 simulated paths still have money at 95. I prefer that framing to "41% chance of success" because it says what was actually computed, a set of scenarios counted up, and it invites the right follow-up question about the other 59. The simulations are seeded, so the same plan always produces the same count, which keeps the page stable and lets the tests check the engine to the exact figure. The seed also shows how much precision the count really has. Trying two other seeds on the default plan gave 41.7 and 42.1 against the default seed's 40.5, so a plan that reads 41 and one that reads 42 should be treated as the same plan.
+
+The verdict next to the count is tied to a threshold you set yourself, which defaults to 85 of 100. A plan at or above it reads on track, within ten points reads good, within twenty five reads fair, and anything below that reads at risk. I went back and forth on this, because a fixed ladder is simpler, but a fixed ladder would call 82 of 100 "looking good" for someone who told the tool they wanted 95, and a badge that disagrees with the user's own bar is worse than no badge.
+
+The return assumptions are built from the allocation, and there is no single "stocks do 10%" constant anywhere in the engine. The four buckets you enter are spread across six asset classes, each with a dated expected return and volatility, and the portfolio figure is blended from those. The US large cap and emerging market returns, 6.7% and 7.8%, come from J.P. Morgan Asset Management's 2026 long-term capital market assumptions release dated October 20, 2025. The rest are estimates I have not pinned to one publication, and the page prints that beside the source and the date, along with a note that the set is unverified. The default 80/15/5 mix of stocks, bonds, and cash blends to about 6.7% a year with about 13% volatility, which is lower than the long-run history most people carry in their heads, and I think that is the honest starting point with US stocks priced where they are.
+
+The part I find most useful is the set of four dials under the verdict. Each one reruns the plan with a single change and reports where the count lands. On the default plan, saving $5,000 more a year moves it from 41 to 60 of 100, retiring at 67 moves it to 52, spending 10% less moves it to 50, and moving 15 points from cash and bonds into stocks moves it to 47. For the first three, the planner also works out how far you would have to push the dial to reach your threshold, which for this plan is $14,500 more a year, retiring at 75, or spending about $39,600 instead of $60,000. The allocation dial gets no such answer, because pushing it changes risk and return together, and even an all-stock portfolio only gets this plan to 49 of 100. The dial rows run at the same thousand simulations as the headline so their counts agree with it, and only the search for how far to push uses a smaller run of 250, since it only has to find a dial position.
+
+The withdrawal strategy setting is where I would be most careful reading the count, because each strategy defines success differently. The default spends a fixed amount adjusted for inflation, and a path fails when the money runs out. Spending a fixed percent of whatever is left can never run the balance to zero, so for that strategy a path counts as failing once the yearly draw falls below 80% of the spending you asked for, which puts the default plan at 8 of 100. The guardrails strategy cuts spending by 10% whenever withdrawals run hot against the balance and raises it when they run cold, and a path counts as funded as long as the balance survives, however many cuts it took to get there. That is why the same default plan reads 99 of 100 under guardrails. That count measures whether the money lasts to 95, and the spending cuts that kept it alive go uncounted, so under guardrails the gauge line reads "keep money in the portfolio" and a note beneath it says the cuts are left out. Fixed percent gets its own line too, saying the scenarios pay at least 80% of your spending every year.
+
+All of it stays educational, with the disclaimer and the assumption disclosure kept on the page, for the same reason the [rent versus buy calculator](/writing/building-a-rent-vs-buy-calculator) keeps them. The planner can't know your tax situation beyond a few flat rates, what your Social Security record actually supports, or whether you would really cut spending in a bad year. What it can do is show that a plan with one comfortable-looking line underneath it has a wide spread of outcomes in both directions, and that on this plan the dial you control most directly, how much you save, moves the count further than the one people often reach for first, which is taking more risk.

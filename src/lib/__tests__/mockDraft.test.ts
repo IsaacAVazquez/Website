@@ -211,6 +211,15 @@ describe("pickForTeam", () => {
     }
   });
 
+  it("drafts a room shorter than the lineup off the board instead of by need", () => {
+    for (const seed of [3, 19, 77]) {
+      const { rosters } = simulateDraft(seed, { totalTeams: 10, rounds: 6 });
+      expect(
+        rosters.some((roster) => roster.positionCounts.RB >= 3 || roster.positionCounts.WR >= 3)
+      ).toBe(true);
+    }
+  });
+
   it("goes strictly best-available once the board is down to rankless players", () => {
     const deep = [
       makePlayer({ position: "WR", rankEcr: undefined, averageRank: Number.NaN }),

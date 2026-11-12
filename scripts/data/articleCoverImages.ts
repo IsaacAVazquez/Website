@@ -78,6 +78,8 @@ const COMPANY_SERIES = "Monthly company commentary; the only real subject is the
 const NEW_RACE_POST = "Race write-up added 2026-11-02 while the image hosts were blocked in the sandbox; it keeps the editorial card until a photo is pinned.";
 
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
+  { slug: "building-a-monte-carlo-retirement-planner", strategy: "editorial-card", reason: ABSTRACT_FINTECH },
+  { slug: "building-weekly-fantasy-tiers-and-waivers", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
   { slug: "building-before-you-buy", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-travel-deal-lab", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
   { slug: "building-a-march-madness-bracket-workspace", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },

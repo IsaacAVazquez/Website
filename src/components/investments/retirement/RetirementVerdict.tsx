@@ -3,6 +3,7 @@
 import React from "react";
 import type { RetirementResult, Verdict } from "@/lib/retirement";
 import { formatCompactCurrency, formatPercent, formatScenarioCount } from "@/lib/retirement";
+import { FIXED_PERCENT_SPEND_FLOOR } from "@/lib/retirement/defaults";
 
 const VERDICT_COPY: Record<Verdict, { label: string; tone: string }> = {
   "on-track": { label: "On track", tone: "var(--c97-positive)" },
@@ -25,6 +26,9 @@ export function RetirementVerdict({ result, isSampleScenario = false }: Props) {
   // Fixed-percent never runs the balance to zero; its "shortfall" is the year
   // the draw stops funding the target lifestyle, so the labels read differently.
   const isFixedPercent = input.assumptions.withdrawalStrategy === "fixed-percent";
+  // Guardrails count a path as funded however many spending cuts it took, so
+  // the count is about the money lasting, not the full spend.
+  const isGuardrails = input.assumptions.withdrawalStrategy === "guardrails";
 
   const projected = monteCarlo.balanceAtRetirement.p50;
   const surplus = projected - targetNestEgg;
@@ -67,9 +71,21 @@ export function RetirementVerdict({ result, isSampleScenario = false }: Props) {
             {copy.label}
           </span>
           <p className="invest-retire-verdict-line">
-            About <strong>{formatScenarioCount(monteCarlo.successRate)}</strong> simulated scenarios
-            fund your spending through age <strong>{input.horizonAge}</strong>.
+            About <strong>{formatScenarioCount(monteCarlo.successRate)}</strong> simulated scenarios{" "}
+            {isGuardrails
+              ? "keep money in the portfolio"
+              : isFixedPercent
+                ? `pay at least ${formatPercent(FIXED_PERCENT_SPEND_FLOOR, 0)} of your spending every year`
+                : "fund your spending"}{" "}
+            through age <strong>{input.horizonAge}</strong>.
           </p>
+          {isGuardrails ? (
+            <p className="invest-retire-verdict-sub">
+              Guardrails cut spending by 10% when withdrawals run high against the balance, and a
+              scenario still counts here after those cuts, so this number measures whether the money
+              lasts and leaves out how much spending it took to get there.
+            </p>
+          ) : null}
           <p className="invest-retire-verdict-sub">
             Your target is {formatPercent(input.assumptions.successThreshold, 0)}.{" "}
             {meetsThreshold
