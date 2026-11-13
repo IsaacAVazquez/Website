@@ -1,10 +1,10 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.4608,
-      "ttmPe": 18.65,
-      "marketCap": 265022273586,
-      "psRatio": 5.33,
-      "pbRatio": 9.05,
-      "pegRatio": 0.38
+      "ttmPe": 18.11,
+      "marketCap": 257425570671,
+      "psRatio": 5.18,
+      "pbRatio": 8.79,
+      "pegRatio": 0.37
     },
     "profitability": {
       "roe": 12.33,
@@ -5084,25 +5084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.650000000000002,
-      "costOfEquity": 17.54,
+      "wacc": 16.57,
+      "costOfEquity": 17.48,
       "costOfDebt": 1.22,
       "taxRate": 15,
-      "beta": 1.5924,
-      "marketCap": 265022273586
+      "beta": 1.5928,
+      "marketCap": 257425570671
     },
     "beta": {
-      "beta5y": 1.5924
+      "beta5y": 1.5928
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 111.76,
-        "high": 113.922,
-        "low": 111.28,
-        "close": 113.644,
-        "volume": 27966000
-      },
       {
         "date": "2025-11-12",
         "open": 113.817,
@@ -7109,24 +7101,32 @@
         "high": 64.56,
         "low": 62.75,
         "close": 64.54,
-        "volume": 29441400
+        "volume": 29564000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 64.27,
+        "high": 64.3,
+        "low": 62.55,
+        "close": 62.69,
+        "volume": 31363500
       }
     ],
     "news": [
-      {
-        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
-        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
-        "type": "STORY"
-      },
       {
         "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
+        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
         "type": "STORY"
       },
       {
@@ -7256,18 +7256,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.65,
-        "industryAvg": 21.32
+        "value": 18.11,
+        "industryAvg": 20.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.33,
-        "industryAvg": 2.62
+        "value": 5.18,
+        "industryAvg": 2.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.05,
-        "industryAvg": 3.08
+        "value": 8.79,
+        "industryAvg": 3.02
       },
       {
         "metric": "ROE",

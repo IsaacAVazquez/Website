@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 24.58,
-      "marketCap": 350607380000,
-      "psRatio": 2.07,
-      "pbRatio": 21.1,
-      "pegRatio": 5.45
+      "ttmPe": 24.37,
+      "marketCap": 347563480000,
+      "psRatio": 2.05,
+      "pbRatio": 20.92,
+      "pegRatio": 5.4
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,25 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.56,
+      "wacc": 10.549999999999999,
       "costOfEquity": 12.32,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9303,
-      "marketCap": 350607380000
+      "beta": 0.9286,
+      "marketCap": 347563480000
     },
     "beta": {
-      "beta5y": 0.9303
+      "beta5y": 0.9286
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 371.99,
-        "high": 376,
-        "low": 370.91,
-        "close": 374.24,
-        "volume": 2407300
-      },
       {
         "date": "2025-11-12",
         "open": 372.06,
@@ -7452,6 +7444,14 @@
         "low": 344.31,
         "close": 351.31,
         "volume": 3221900
+      },
+      {
+        "date": "2026-11-12",
+        "open": 355.07,
+        "high": 356.46,
+        "low": 347.6,
+        "close": 348.26,
+        "volume": 3674700
       }
     ],
     "news": [
@@ -7512,11 +7512,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6de80f5d-3e1e-354a-a33e-7414775e46a2",
-        "title": "Jefferies Adjusts Home Depot Price Target to $456 From $461",
-        "publisher": "MT Newswires",
+        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
+        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
+        "publisher": "CNW Group",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/jefferies-adjusts-home-depot-price-155048144.html",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
         "type": "STORY"
       },
       {
@@ -7528,11 +7528,11 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
-        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
-        "publisher": "CNW Group",
+        "uuid": "6de80f5d-3e1e-354a-a33e-7414775e46a2",
+        "title": "Jefferies Adjusts Home Depot Price Target to $456 From $461",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
+        "link": "https://finance.yahoo.com/news/jefferies-adjusts-home-depot-price-155048144.html",
         "type": "STORY"
       }
     ],
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.58,
-        "industryAvg": 23.03
+        "value": 24.37,
+        "industryAvg": 24.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.07,
-        "industryAvg": 1.83
+        "value": 2.05,
+        "industryAvg": 1.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.1,
-        "industryAvg": 17.96
+        "value": 20.92,
+        "industryAvg": 17.79
       },
       {
         "metric": "ROE",

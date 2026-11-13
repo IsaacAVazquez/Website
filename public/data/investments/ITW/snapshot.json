@@ -1,10 +1,10 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.2185,
-      "ttmPe": 25.74,
-      "marketCap": 82227456000,
-      "psRatio": 4.94,
-      "pbRatio": 26.18,
-      "pegRatio": 3.91
+      "ttmPe": 25.56,
+      "marketCap": 81666400000,
+      "psRatio": 4.91,
+      "pbRatio": 26,
+      "pegRatio": 3.88
     },
     "profitability": {
       "roe": 28.33,
@@ -6330,25 +6330,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.14,
+      "wacc": 11.129999999999999,
       "costOfEquity": 12.33,
       "costOfDebt": 0.89,
       "taxRate": 24,
-      "beta": 0.931,
-      "marketCap": 82227456000
+      "beta": 0.9302,
+      "marketCap": 81666400000
     },
     "beta": {
-      "beta5y": 0.931
+      "beta5y": 0.9302
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 245.5,
-        "high": 246.36,
-        "low": 244.64,
-        "close": 245.36,
-        "volume": 662700
-      },
       {
         "date": "2025-11-12",
         "open": 245.64,
@@ -8356,6 +8348,14 @@
         "low": 286.17,
         "close": 288.72,
         "volume": 860000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 290.05,
+        "high": 291.97,
+        "low": 286.58,
+        "close": 286.75,
+        "volume": 658700
       }
     ],
     "news": [
@@ -8424,19 +8424,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
-        "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
-        "publisher": "The Fly",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
         "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
+        "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
+        "publisher": "The Fly",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
         "type": "STORY"
       }
     ],
@@ -8508,18 +8508,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.74,
-        "industryAvg": 27.2
+        "value": 25.56,
+        "industryAvg": 26.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.94,
-        "industryAvg": 3.28
+        "value": 4.91,
+        "industryAvg": 3.22
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.18,
-        "industryAvg": 5.89
+        "value": 26,
+        "industryAvg": 5.74
       },
       {
         "metric": "ROE",

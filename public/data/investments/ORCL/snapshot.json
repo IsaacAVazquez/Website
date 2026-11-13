@@ -1,10 +1,10 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 20.13,
-      "marketCap": 388221120000,
-      "psRatio": 5.41,
-      "pbRatio": 5.81,
-      "pegRatio": 0.37
+      "ttmPe": 19.93,
+      "marketCap": 384380640000,
+      "psRatio": 5.36,
+      "pbRatio": 5.76,
+      "pegRatio": 0.36
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,25 +6182,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.639999999999999,
-      "costOfEquity": 18.81,
+      "wacc": 13.55,
+      "costOfEquity": 18.73,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7532,
-      "marketCap": 388221120000
+      "beta": 1.7541,
+      "marketCap": 384380640000
     },
     "beta": {
-      "beta5y": 1.7532
+      "beta5y": 1.7541
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 236.23,
-        "high": 237.45,
-        "low": 228.89,
-        "close": 236.15,
-        "volume": 20686600
-      },
       {
         "date": "2025-11-12",
         "open": 236.74,
@@ -8207,7 +8199,15 @@
         "high": 130.77,
         "low": 124.15,
         "close": 128.38,
-        "volume": 38489200
+        "volume": 38796200
+      },
+      {
+        "date": "2026-11-12",
+        "open": 123.33,
+        "high": 129.06,
+        "low": 123.05,
+        "close": 127.11,
+        "volume": 22500500
       }
     ],
     "news": [
@@ -8350,8 +8350,11 @@
         "totalPay": 1388349
       },
       {
-        "name": "Ms. Jae Evans",
-        "title": "Global Chief Information Officer & Executive VP"
+        "name": "Ms. Maria Smith",
+        "title": "Executive VP & Chief Accounting Officer",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 639362
       },
       {
         "name": "Ms. Safra Ada Catz",
@@ -8364,18 +8367,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.13,
-        "industryAvg": 31.05
+        "value": 19.93,
+        "industryAvg": 31.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.41,
-        "industryAvg": 7.29
+        "value": 5.36,
+        "industryAvg": 7.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.81,
-        "industryAvg": 7.93
+        "value": 5.76,
+        "industryAvg": 7.92
       },
       {
         "metric": "ROE",
@@ -8390,17 +8393,17 @@
       {
         "metric": "Gross Margin",
         "value": 60.029999999999994,
-        "industryAvg": 50.92
+        "industryAvg": 51.129999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 53.72,
-        "industryAvg": 36.57
+        "industryAvg": 36.78
       },
       {
         "metric": "Net Margin",
         "value": 24.19,
-        "industryAvg": 20.53
+        "industryAvg": 20.52
       }
     ]
   }

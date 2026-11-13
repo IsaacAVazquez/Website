@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 3.9198,
-      "ttmPe": 11.89,
-      "marketCap": 193157000000,
-      "psRatio": 1.39,
+      "ttmPe": 11.88,
+      "marketCap": 192949750000,
+      "psRatio": 1.38,
       "pbRatio": 1.82,
       "pegRatio": 1.74
     },
@@ -4447,25 +4447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.9699999999999998,
-      "costOfEquity": 7.06,
+      "wacc": 4,
+      "costOfEquity": 7.140000000000001,
       "costOfDebt": 1.03,
       "taxRate": 22,
-      "beta": 0.2635,
-      "marketCap": 193157000000
+      "beta": 0.2623,
+      "marketCap": 192949750000
     },
     "beta": {
-      "beta5y": 0.2635
+      "beta5y": 0.2623
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 40.05,
-        "high": 40.78,
-        "low": 40.04,
-        "close": 40.7,
-        "volume": 25360900
-      },
       {
         "date": "2025-11-12",
         "open": 40.78,
@@ -6473,6 +6465,14 @@
         "low": 45.85,
         "close": 46.6,
         "volume": 15032700
+      },
+      {
+        "date": "2026-11-12",
+        "open": 46.96,
+        "high": 47.15,
+        "low": 46.32,
+        "close": 46.55,
+        "volume": 15014200
       }
     ],
     "news": [
@@ -6485,19 +6485,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
-        "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b4401fae-303e-3049-8618-fe2694977919",
         "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
+        "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
         "type": "STORY"
       },
       {
@@ -6525,19 +6525,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
-        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
         "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
         "publisher": "Zacks",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
+        "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
         "type": "STORY"
       },
       {
@@ -6580,12 +6580,12 @@
         "totalPay": 3007531
       },
       {
-        "name": "Mr. Sanjiv Gossain",
-        "title": "Group VP & Head of EMEA"
-      },
-      {
         "name": "Mr. Santiago Tenorio",
         "title": "CTO & Senior VP of Strategy and Technology Enablement"
+      },
+      {
+        "name": "Ms. Christina Schelling",
+        "title": "Executive VP & Chief People Officer"
       },
       {
         "name": "Ms. Colleen Ostrowski",
@@ -6594,8 +6594,8 @@
         "yearBorn": 1974
       },
       {
-        "name": "Ms. Iris Meijer",
-        "title": "Senior Vice President of Business Marketing & Revenue Operations"
+        "name": "Ms. Kathleen Grillo",
+        "title": "Senior VP and Deputy General Counsel of Public Policy & Government Affairs"
       },
       {
         "name": "Ms. Leslie Berland",
@@ -6618,43 +6618,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.89,
-        "industryAvg": 12.69
+        "value": 11.88,
+        "industryAvg": 12.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.39,
+        "value": 1.38,
         "industryAvg": 1.12
       },
       {
         "metric": "P/B Ratio",
         "value": 1.82,
-        "industryAvg": 1.58
+        "industryAvg": 1.57
       },
       {
         "metric": "ROE",
         "value": 4.95,
-        "industryAvg": 8.09
+        "industryAvg": 8.12
       },
       {
         "metric": "ROA",
         "value": 1.26,
-        "industryAvg": 1.96
+        "industryAvg": 1.97
       },
       {
         "metric": "Gross Margin",
         "value": 61.86000000000001,
-        "industryAvg": 63.29
+        "industryAvg": 63.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 40.400000000000006,
-        "industryAvg": 33.31
+        "industryAvg": 33.379999999999995
       },
       {
         "metric": "Net Margin",
         "value": 15.15,
-        "industryAvg": 5.57
+        "industryAvg": 5.59
       }
     ]
   }

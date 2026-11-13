@@ -1,10 +1,10 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.0061,
-      "ttmPe": 36.04,
-      "marketCap": 140100870000,
-      "psRatio": 4.38,
-      "pbRatio": 6.68,
-      "pegRatio": 5.25
+      "ttmPe": 35.88,
+      "marketCap": 139487040000,
+      "psRatio": 4.36,
+      "pbRatio": 6.65,
+      "pegRatio": 5.22
     },
     "profitability": {
       "roe": 5.2299999999999995,
@@ -5430,25 +5430,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.17,
-      "costOfEquity": 13.87,
+      "wacc": 12.15,
+      "costOfEquity": 13.86,
       "costOfDebt": 0.95,
       "taxRate": 21,
-      "beta": 1.1264,
-      "marketCap": 140100870000
+      "beta": 1.1275,
+      "marketCap": 139487040000
     },
     "beta": {
-      "beta5y": 1.1264
+      "beta5y": 1.1275
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 377.23,
-        "high": 380,
-        "low": 366.75,
-        "close": 367.91,
-        "volume": 3103300
-      },
       {
         "date": "2025-11-12",
         "open": 368.01,
@@ -7456,9 +7448,25 @@
         "low": 357.24,
         "close": 360.62,
         "volume": 2429100
+      },
+      {
+        "date": "2026-11-12",
+        "open": 351,
+        "high": 363.64,
+        "low": 349.57,
+        "close": 359.04,
+        "volume": 2697900
       }
     ],
     "news": [
+      {
+        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
+        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
+        "type": "STORY"
+      },
       {
         "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
         "title": "Top Analyst Reports for Roche, Comcast & Eaton",
@@ -7468,11 +7476,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
-        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
+        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
+        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
         "type": "STORY"
       },
       {
@@ -7484,11 +7492,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
-        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
+        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
+        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-03",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
         "type": "STORY"
       },
       {
@@ -7506,14 +7514,6 @@
         "reportDate": "2025-05-03",
         "link": "https://finance.yahoo.com/video/latest-companies-warning-tariffs-204022408.html",
         "type": "VIDEO"
-      },
-      {
-        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
-        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
-        "type": "STORY"
       },
       {
         "uuid": "f5675682-9157-39e7-9a91-2a6739ec90d0",
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.04,
-        "industryAvg": 27.2
+        "value": 35.88,
+        "industryAvg": 26.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.38,
-        "industryAvg": 3.28
+        "value": 4.36,
+        "industryAvg": 3.22
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.68,
-        "industryAvg": 5.89
+        "value": 6.65,
+        "industryAvg": 5.74
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "UPS",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.1909,
-      "ttmPe": 21.66,
-      "marketCap": 95683705000,
-      "psRatio": 1.05,
-      "pbRatio": 6.38,
+      "ttmPe": 21.26,
+      "marketCap": 93922342000,
+      "psRatio": 1.03,
+      "pbRatio": 6.26,
       "pegRatio": 3.46
     },
     "profitability": {
@@ -5612,25 +5612,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.58,
+      "wacc": 9.54,
       "costOfEquity": 12.389999999999999,
       "costOfDebt": 0.95,
       "taxRate": 26,
-      "beta": 0.939,
-      "marketCap": 95683705000
+      "beta": 0.9385,
+      "marketCap": 93922342000
     },
     "beta": {
-      "beta5y": 0.939
+      "beta5y": 0.9385
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 93.81,
-        "high": 95.5,
-        "low": 92.86,
-        "close": 95.03,
-        "volume": 6859200
-      },
       {
         "date": "2025-11-12",
         "open": 95.55,
@@ -7638,6 +7630,14 @@
         "low": 111.13,
         "close": 112.45,
         "volume": 3332000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 112.88,
+        "high": 113.24,
+        "low": 110.26,
+        "close": 110.38,
+        "volume": 4073800
       }
     ],
     "news": [
@@ -7674,19 +7674,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
-        "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "17c8d947-2259-3485-b41a-e6455664458e",
         "title": "Air Freight and Logistics Stocks Q1 Teardown: FedEx (NYSE:FDX) Vs The Rest",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/air-freight-logistics-stocks-q1-033330345.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2d203bb-6147-3876-b73d-1fbab2cd4d11",
+        "title": "3 Beaten-Down Dividend Stocks With Yields Over 5% to Buy in May for Passive Income",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/b2d203bb-6147-3876-b73d-1fbab2cd4d11/3-beaten-down-dividend-stocks.html",
         "type": "STORY"
       },
       {
@@ -7706,19 +7706,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1aeb326d-bd7e-31e3-8c71-1560136cb176",
-        "title": "Freight industry layoffs surge across California, Texas",
-        "publisher": "FreightWaves",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/1aeb326d-bd7e-31e3-8c71-1560136cb176/freight-industry-layoffs.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0fba0a98-39a0-3601-a7ee-58e518cda02b",
         "title": "Argus Cuts Price Target on United Parcel Service to $120 From $150",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/argus-cuts-price-target-united-183911996.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "958f31f1-005a-3f1c-8476-e0abfa3f81f3",
+        "title": "Here's Why UPS Should Cut Its Dividend",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/958f31f1-005a-3f1c-8476-e0abfa3f81f3/here%27s-why-ups-should-cut-its.html",
         "type": "STORY"
       }
     ],
@@ -7786,18 +7786,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.66,
-        "industryAvg": 20.32
+        "value": 21.26,
+        "industryAvg": 20.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.05,
-        "industryAvg": 0.99
+        "value": 1.03,
+        "industryAvg": 0.98
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.38,
-        "industryAvg": 3.52
+        "value": 6.26,
+        "industryAvg": 3.48
       },
       {
         "metric": "ROE",

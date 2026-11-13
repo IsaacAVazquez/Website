@@ -1,10 +1,10 @@
 {
   "symbol": "BA",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.0775,
-      "ttmPe": 19.23,
-      "marketCap": 138217580202,
-      "psRatio": 1.5,
-      "pbRatio": 21.11,
+      "ttmPe": 18.9,
+      "marketCap": 135849810265,
+      "psRatio": 1.47,
+      "pbRatio": 20.75,
       "pegRatio": 0.2
     },
     "profitability": {
@@ -6070,25 +6070,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.87,
-      "costOfEquity": 15.42,
+      "wacc": 11.799999999999999,
+      "costOfEquity": 15.39,
       "costOfDebt": 1.25,
       "taxRate": 6,
-      "beta": 1.3235,
-      "marketCap": 138217580202
+      "beta": 1.3237,
+      "marketCap": 135849810265
     },
     "beta": {
-      "beta5y": 1.3235
+      "beta5y": 1.3237
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 194.74,
-        "high": 196.4,
-        "low": 194.35,
-        "close": 195.21,
-        "volume": 5783400
-      },
       {
         "date": "2025-11-12",
         "open": 195.75,
@@ -8095,7 +8087,15 @@
         "high": 174.82,
         "low": 172.18,
         "close": 174.54,
-        "volume": 5611700
+        "volume": 5638100
+      },
+      {
+        "date": "2026-11-12",
+        "open": 173.47,
+        "high": 175.16,
+        "low": 171.3,
+        "close": 171.55,
+        "volume": 6012800
       }
     ],
     "news": [
@@ -8140,19 +8140,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "19ccc5df-2651-3aab-9365-7eb3d83b9965",
         "title": "Trump says will ‘protect our farmers’ amid tariff negotiation with China",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/trump-says-protect-farmers-amid-145834613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {
@@ -8242,33 +8242,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.23,
-        "industryAvg": 33.67
+        "value": 18.9,
+        "industryAvg": 33
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.5,
-        "industryAvg": 5.75
+        "value": 1.47,
+        "industryAvg": 5.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.11,
-        "industryAvg": 7.47
+        "value": 20.75,
+        "industryAvg": 7.41
       },
       {
         "metric": "ROE",
         "value": -1.5699999999999998,
-        "industryAvg": 12.53
+        "industryAvg": 12.520000000000001
       },
       {
         "metric": "ROA",
         "value": -0.05,
-        "industryAvg": 3.8600000000000003
+        "industryAvg": 3.85
       },
       {
         "metric": "Gross Margin",
         "value": 8.959999999999999,
-        "industryAvg": 20.78
+        "industryAvg": 20.79
       },
       {
         "metric": "EBITDA Margin",

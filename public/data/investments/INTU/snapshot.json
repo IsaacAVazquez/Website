@@ -1,10 +1,10 @@
 {
   "symbol": "INTU",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 16.4982,
-      "ttmPe": 20.77,
-      "marketCap": 91959093760,
-      "psRatio": 4.29,
-      "pbRatio": 4.84,
+      "ttmPe": 20.62,
+      "marketCap": 91296185280,
+      "psRatio": 4.26,
+      "pbRatio": 4.81,
       "pegRatio": 1.73
     },
     "profitability": {
@@ -6596,24 +6596,16 @@
     },
     "wacc": {
       "wacc": 11.16,
-      "costOfEquity": 12.13,
+      "costOfEquity": 12.139999999999999,
       "costOfDebt": 0.83,
       "taxRate": 33,
-      "beta": 0.9065,
-      "marketCap": 91959093760
+      "beta": 0.9064,
+      "marketCap": 91296185280
     },
     "beta": {
-      "beta5y": 0.9065
+      "beta5y": 0.9064
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 653.02,
-        "high": 657.48,
-        "low": 648.8,
-        "close": 654.32,
-        "volume": 1150100
-      },
       {
         "date": "2025-11-12",
         "open": 655.49,
@@ -8621,6 +8613,14 @@
         "low": 334.49,
         "close": 342.64,
         "volume": 2569800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 343.92,
+        "high": 345.5,
+        "low": 337.44,
+        "close": 340.17,
+        "volume": 1707100
       }
     ],
     "news": [
@@ -8665,20 +8665,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
-        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "99a5b781-cc62-3939-ae81-f87ab95339fa",
         "title": "Nuclear rally, Deckers Outdoor, Intuit gains: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/video/nuclear-rally-deckers-outdoor-intuit-195330148.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "c3246dd1-b5ee-35cf-a98e-0a19e0048374",
+        "title": "Stocks to Watch: Apple, Booz Allen,  Constellation Energy, Intuit",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/m/c3246dd1-b5ee-35cf-a98e-0a19e0048374/stocks-to-watch%3A-apple%2C-booz.html",
+        "type": "STORY"
       },
       {
         "uuid": "319684ea-ed04-3cd3-abf1-dde606bed5e9",
@@ -8771,23 +8771,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.77,
-        "industryAvg": 28.25
+        "value": 20.62,
+        "industryAvg": 28.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.29,
-        "industryAvg": 4.87
+        "value": 4.26,
+        "industryAvg": 4.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.84,
-        "industryAvg": 5.21
+        "value": 4.81,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 1.83,
-        "industryAvg": -0.7100000000000001
+        "industryAvg": -0.72
       },
       {
         "metric": "ROA",
@@ -8802,12 +8802,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 19.02,
-        "industryAvg": 17.51
+        "industryAvg": 17.299999999999997
       },
       {
         "metric": "Net Margin",
         "value": 8.34,
-        "industryAvg": -0.97
+        "industryAvg": -0.98
       }
     ]
   }

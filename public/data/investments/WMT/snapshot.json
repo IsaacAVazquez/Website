@@ -1,10 +1,10 @@
 {
   "symbol": "WMT",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.76,
-      "ttmPe": 44.75,
+      "ttmPe": 45.72,
       "pegRatio": 2,
-      "marketCap": 980916420000,
-      "psRatio": 1.33,
-      "pbRatio": 9.99
+      "marketCap": 1002200980000,
+      "psRatio": 1.36,
+      "pbRatio": 10.2
     },
     "profitability": {
       "roe": 6.61,
@@ -5422,25 +5422,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.44,
-      "costOfEquity": 9.049999999999999,
+      "wacc": 8.52,
+      "costOfEquity": 9.120000000000001,
       "costOfDebt": 0.36,
       "taxRate": 19,
-      "beta": 0.5181,
-      "marketCap": 980916420000
+      "beta": 0.5176,
+      "marketCap": 1002200980000
     },
     "beta": {
-      "beta5y": 0.5181
+      "beta5y": 0.5176
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 102.5,
-        "high": 103.74,
-        "low": 102.32,
-        "close": 103.44,
-        "volume": 13182100
-      },
       {
         "date": "2025-11-12",
         "open": 103.35,
@@ -7447,7 +7439,15 @@
         "high": 126.07,
         "low": 123.83,
         "close": 125.67,
-        "volume": 20726000
+        "volume": 20742500
+      },
+      {
+        "date": "2026-11-12",
+        "open": 126.8,
+        "high": 127.66,
+        "low": 125.48,
+        "close": 126.19,
+        "volume": 17199100
       }
     ],
     "news": [
@@ -7484,19 +7484,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
-        "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-09",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cc9c84eb-0edf-300d-a59e-9b3e157e3bd3",
         "title": "The Zacks Analyst Blog Highlights Walmart, Coca-Cola, HSBC and Friedman Industries",
         "publisher": "Zacks",
         "reportDate": "2025-04-09",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-walmart-105900588.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1bbc894c-6864-3966-9b1b-1fbfb23a4223",
+        "title": "Top Stock Reports for Walmart, Coca-Cola & HSBC",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-09",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-walmart-coca-203100481.html",
         "type": "STORY"
       },
       {
@@ -7598,28 +7598,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 44.75,
-        "industryAvg": 39.45
+        "value": 45.72,
+        "industryAvg": 41.01
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.33,
-        "industryAvg": 1.3
+        "value": 1.36,
+        "industryAvg": 1.35
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.99,
-        "industryAvg": 9.4
+        "value": 10.2,
+        "industryAvg": 9.78
       },
       {
         "metric": "ROE",
         "value": 6.61,
-        "industryAvg": 25.069999999999997
+        "industryAvg": 25.11
       },
       {
         "metric": "ROA",
         "value": 2.18,
-        "industryAvg": 8.200000000000001
+        "industryAvg": 8.21
       },
       {
         "metric": "Gross Margin",
@@ -7629,12 +7629,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 6.49,
-        "industryAvg": 6.61
+        "industryAvg": 6.619999999999999
       },
       {
         "metric": "Net Margin",
         "value": 3.39,
-        "industryAvg": 3.32
+        "industryAvg": 3.3300000000000005
       }
     ]
   }

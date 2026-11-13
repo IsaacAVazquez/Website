@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.6361,
-      "ttmPe": 24.35,
-      "pegRatio": 29.34,
-      "marketCap": 375456366000,
-      "psRatio": 4.27,
-      "pbRatio": 6.81
+      "ttmPe": 25.32,
+      "pegRatio": 30.51,
+      "marketCap": 390468114000,
+      "psRatio": 4.44,
+      "pbRatio": 7.09
     },
     "profitability": {
       "roe": 8.53,
@@ -664,11 +664,11 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "2329100000.0",
-          "2026-09-30": "2323700000.0",
+          "2026-09-30": "2365500000.0",
           "2026-06-30": "2378125000.0",
-          "2026-03-31": "2328500000.0",
-          "2025-12-31": "2335300000.0",
-          "2025-09-30": "2342100000.0",
+          "2026-03-31": "2368674699.0",
+          "2025-12-31": "2373076923.0",
+          "2025-09-30": "2375000000.0",
           "2025-06-30": "2394039735.0",
           "2025-03-31": "2385443038.0",
           "2024-12-31": "2386597938.0",
@@ -1380,8 +1380,8 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2026-06-30": "2333700000.0",
-          "2025-06-30": "2350100000.0",
+          "2026-06-30": "2377185185.0",
+          "2025-06-30": "2394902549.0",
           "2024-06-30": "2407605178.0",
           "2023-06-30": "2414003295.0",
           "2022-06-30": "2457000000.0",
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.109999999999999,
-      "costOfEquity": 7.8,
+      "wacc": 7.21,
+      "costOfEquity": 7.88,
       "costOfDebt": 0.5700000000000001,
       "taxRate": 21,
-      "beta": 0.3602,
-      "marketCap": 375456366000
+      "beta": 0.3576,
+      "marketCap": 390468114000
     },
     "beta": {
-      "beta5y": 0.3602
+      "beta5y": 0.3576
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 145.96,
-        "high": 148.65,
-        "low": 145.67,
-        "close": 148.54,
-        "volume": 7332500
-      },
       {
         "date": "2025-11-12",
         "open": 148.53,
@@ -7981,6 +7973,14 @@
         "low": 165.88,
         "close": 167.67,
         "volume": 7535800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 169.04,
+        "high": 169.95,
+        "low": 167.96,
+        "close": 168.03,
+        "volume": 7172800
       }
     ],
     "news": [
@@ -8057,11 +8057,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d648ba01-435f-3d01-ae5d-c4060f97a638",
-        "title": "How Trump Inspired One Law Firm to Blitz Brands With ‘Made in USA’ Challenges",
-        "publisher": "The Wall Street Journal",
+        "uuid": "648c87cc-233c-3f92-938d-b8793ce7d880",
+        "title": "Clorox (CLX) Down 3.7% Since Last Earnings Report: Can It Rebound?",
+        "publisher": "Zacks",
         "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/m/d648ba01-435f-3d01-ae5d-c4060f97a638/how-trump-inspired-one-law.html",
+        "link": "https://finance.yahoo.com/news/clorox-clx-down-3-7-153027205.html",
         "type": "STORY"
       }
     ],
@@ -8130,43 +8130,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.35,
-        "industryAvg": 26.43
+        "value": 25.32,
+        "industryAvg": 25.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.27,
-        "industryAvg": 3.14
+        "value": 4.44,
+        "industryAvg": 3.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.81,
-        "industryAvg": 6.77
+        "value": 7.09,
+        "industryAvg": 7.04
       },
       {
         "metric": "ROE",
         "value": 8.53,
-        "industryAvg": 24.27
+        "industryAvg": 25.729999999999997
       },
       {
         "metric": "ROA",
         "value": 3.5900000000000003,
-        "industryAvg": 8.06
+        "industryAvg": 8.7
       },
       {
         "metric": "Gross Margin",
         "value": 49.830000000000005,
-        "industryAvg": 51.72
+        "industryAvg": 51.970000000000006
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.31,
-        "industryAvg": 20.4
+        "industryAvg": 20.31
       },
       {
         "metric": "Net Margin",
         "value": 20.01,
-        "industryAvg": 10.96
+        "industryAvg": 11.67
       }
     ]
   }

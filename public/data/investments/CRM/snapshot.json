@@ -1,10 +1,10 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.9721,
-      "ttmPe": 19.87,
-      "marketCap": 179422230000,
+      "ttmPe": 19.83,
+      "marketCap": 179060110000,
       "psRatio": 4.08,
-      "pbRatio": 4.68,
+      "pbRatio": 4.67,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -5557,25 +5557,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.04,
-      "costOfEquity": 14.64,
+      "wacc": 12.030000000000001,
+      "costOfEquity": 14.63,
       "costOfDebt": 1.13,
       "taxRate": 23,
-      "beta": 1.2249,
-      "marketCap": 179422230000
+      "beta": 1.2261,
+      "marketCap": 179060110000
     },
     "beta": {
-      "beta5y": 1.2249
+      "beta5y": 1.2261
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 241.9,
-        "high": 245.7,
-        "low": 241.16,
-        "close": 244.5,
-        "volume": 5762800
-      },
       {
         "date": "2025-11-12",
         "open": 245.74,
@@ -7583,6 +7575,14 @@
         "low": 213.5,
         "close": 218.01,
         "volume": 6208000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 218.53,
+        "high": 219.35,
+        "low": 213.77,
+        "close": 217.57,
+        "volume": 3640400
       }
     ],
     "news": [
@@ -7619,19 +7619,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
-        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
         "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
         "publisher": "TipRanks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
+        "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
         "type": "STORY"
       },
       {
@@ -7668,10 +7668,6 @@
       }
     ],
     "officers": [
-      {
-        "name": "Mr. Andy White",
-        "title": "Senior Vice President of Technology"
-      },
       {
         "name": "Mr. Guy Wanger",
         "title": "Chief Accounting Officer",
@@ -7724,28 +7720,35 @@
       {
         "name": "Ms. Erin Oles",
         "title": "President & Chief Marketing Officer"
+      },
+      {
+        "name": "Ms. Robin L. Washington C.P.A.",
+        "title": "President, Chief Operating & Financial Officer and Director",
+        "age": 62,
+        "yearBorn": 1963,
+        "totalPay": 11668529
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.87,
-        "industryAvg": 28.25
+        "value": 19.83,
+        "industryAvg": 28.15
       },
       {
         "metric": "P/S Ratio",
         "value": 4.08,
-        "industryAvg": 4.87
+        "industryAvg": 4.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.68,
-        "industryAvg": 5.21
+        "value": 4.67,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 9.71,
-        "industryAvg": -0.7100000000000001
+        "industryAvg": -0.72
       },
       {
         "metric": "ROA",
@@ -7760,12 +7763,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 52.81,
-        "industryAvg": 17.51
+        "industryAvg": 17.299999999999997
       },
       {
         "metric": "Net Margin",
         "value": 31.080000000000002,
-        "industryAvg": -0.97
+        "industryAvg": -0.98
       }
     ]
   }

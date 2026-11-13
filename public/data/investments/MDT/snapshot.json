@@ -1,10 +1,10 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 23.77,
-      "pegRatio": 0.57,
-      "marketCap": 123575727726,
-      "psRatio": 3.29,
-      "pbRatio": 2.46
+      "ttmPe": 24.86,
+      "pegRatio": 0.6,
+      "marketCap": 129271936431,
+      "psRatio": 3.44,
+      "pbRatio": 2.57
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5946,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.7700000000000005,
-      "costOfEquity": 9.41,
+      "wacc": 7.86,
+      "costOfEquity": 9.45,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5631,
-      "marketCap": 123575727726
+      "beta": 0.5599,
+      "marketCap": 129271936431
     },
     "beta": {
-      "beta5y": 0.5631
+      "beta5y": 0.5599
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 92.97,
-        "high": 95.4,
-        "low": 92.8,
-        "close": 95.4,
-        "volume": 8555500
-      },
       {
         "date": "2025-11-12",
         "open": 95,
@@ -7972,23 +7964,31 @@
         "low": 100.02,
         "close": 101.61,
         "volume": 4389200
+      },
+      {
+        "date": "2026-11-12",
+        "open": 102.45,
+        "high": 102.9,
+        "low": 100.92,
+        "close": 100.99,
+        "volume": 6102600
       }
     ],
     "news": [
-      {
-        "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
-        "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
-        "type": "STORY"
-      },
       {
         "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
         "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
+        "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
         "type": "STORY"
       },
       {
@@ -8058,10 +8058,6 @@
     ],
     "officers": [
       {
-        "name": "Dave Moeller",
-        "title": "Senior VP & President of the Peripheral Vascular Health Operating Unit"
-      },
-      {
         "name": "Dr. Laura Mauri M.D., M.Sc.",
         "title": "Senior VP and Chief Scientific & Medical Officer",
         "age": 55,
@@ -8070,10 +8066,6 @@
       {
         "name": "Mr. Alex Gu",
         "title": "Senior VP & President of Greater China Region"
-      },
-      {
-        "name": "Mr. Dave Anderson",
-        "title": "Senior Vice President of Portfolio Management"
       },
       {
         "name": "Mr. Geoffrey Straub Martha",
@@ -8089,8 +8081,22 @@
         "yearBorn": 1979
       },
       {
+        "name": "Mr. Michael Marinaro",
+        "title": "President and President of Medical Surgical Portfolio, Americas & Global Commercial Ops",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 1915981
+      },
+      {
         "name": "Mr. Rogerio Branco",
         "title": "SVP & Chief Operations and Supply Chain Officer"
+      },
+      {
+        "name": "Mr. Thierry Pieton",
+        "title": "Executive VP & CFO",
+        "age": 55,
+        "yearBorn": 1970,
+        "totalPay": 4216777
       },
       {
         "name": "Ms. Denise L. Blomquist",
@@ -8101,50 +8107,53 @@
         "title": "Vice President & Head of Investor Relations"
       },
       {
-        "name": "Ms. Sally Saba M.D.",
-        "title": "Chief Inclusion & Diversity Officer"
+        "name": "Ms. Michelle Quinn",
+        "title": "Executive VP, General Counsel & Secretary",
+        "age": 56,
+        "yearBorn": 1969,
+        "totalPay": 2487488
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.77,
-        "industryAvg": 25.83
+        "value": 24.86,
+        "industryAvg": 26.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.29,
-        "industryAvg": 3.12
+        "value": 3.44,
+        "industryAvg": 3.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.46,
-        "industryAvg": 3.04
+        "value": 2.57,
+        "industryAvg": 3.18
       },
       {
         "metric": "ROE",
         "value": 2.9499999999999997,
-        "industryAvg": 8.52
+        "industryAvg": 9.5
       },
       {
         "metric": "ROA",
         "value": 1.58,
-        "industryAvg": 4.3
+        "industryAvg": 4.68
       },
       {
         "metric": "Gross Margin",
         "value": 64.99000000000001,
-        "industryAvg": 56.89999999999999
+        "industryAvg": 54.08
       },
       {
         "metric": "EBITDA Margin",
         "value": 27.51,
-        "industryAvg": 20.02
+        "industryAvg": 20.48
       },
       {
         "metric": "Net Margin",
         "value": 15.07,
-        "industryAvg": 8.41
+        "industryAvg": 9.15
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7236,
-      "ttmPe": 52.82,
-      "marketCap": 248052816000,
-      "psRatio": 20.86,
-      "pbRatio": 15.08,
-      "pegRatio": 0.64
+      "ttmPe": 55.49,
+      "marketCap": 260601756000,
+      "psRatio": 21.92,
+      "pbRatio": 15.85,
+      "pegRatio": 0.67
     },
     "profitability": {
       "roe": 9.99,
@@ -5487,17 +5487,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.6072
+      "beta5y": 1.5991
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 134.87,
-        "high": 136.375,
-        "low": 132.41,
-        "close": 134.93,
-        "volume": 7189300
-      },
       {
         "date": "2025-11-12",
         "open": 136.22,
@@ -7504,7 +7496,15 @@
         "high": 199.46,
         "low": 193.88,
         "close": 196.68,
-        "volume": 8401800
+        "volume": 8417300
+      },
+      {
+        "date": "2026-11-12",
+        "open": 193.145,
+        "high": 207.17,
+        "low": 190.82,
+        "close": 206.63,
+        "volume": 9758100
       }
     ],
     "news": [
@@ -7648,18 +7648,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 52.82,
-        "industryAvg": 16.73
+        "value": 55.49,
+        "industryAvg": 16.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 20.86,
+        "value": 21.92,
         "industryAvg": 2.57
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.08,
-        "industryAvg": 6.23
+        "value": 15.85,
+        "industryAvg": 6.24
       },
       {
         "metric": "ROE",

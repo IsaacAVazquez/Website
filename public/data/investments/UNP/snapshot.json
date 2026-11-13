@@ -1,10 +1,10 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.8245,
-      "ttmPe": 23.56,
-      "marketCap": 179440349270,
-      "psRatio": 6.81,
-      "pbRatio": 8.15,
-      "pegRatio": 1.49
+      "ttmPe": 23.72,
+      "marketCap": 180681719400,
+      "psRatio": 6.85,
+      "pbRatio": 8.21,
+      "pegRatio": 1.5
     },
     "profitability": {
       "roe": 9.73,
@@ -5159,25 +5159,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10,
-      "costOfEquity": 11.600000000000001,
+      "wacc": 10.02,
+      "costOfEquity": 11.62,
       "costOfDebt": 1,
       "taxRate": 24,
-      "beta": 0.8392,
-      "marketCap": 179440349270
+      "beta": 0.8389,
+      "marketCap": 180681719400
     },
     "beta": {
-      "beta5y": 0.8392
+      "beta5y": 0.8389
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 224.5,
-        "high": 224.9,
-        "low": 223.44,
-        "close": 224.8,
-        "volume": 2698000
-      },
       {
         "date": "2025-11-12",
         "open": 224.8,
@@ -7185,6 +7177,14 @@
         "low": 299.28,
         "close": 302.11,
         "volume": 2471400
+      },
+      {
+        "date": "2026-11-12",
+        "open": 304.92,
+        "high": 306.52,
+        "low": 302.5,
+        "close": 304.2,
+        "volume": 1609200
       }
     ],
     "news": [
@@ -7213,19 +7213,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
-        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
         "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
+        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
         "type": "STORY"
       },
       {
@@ -7245,19 +7245,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
-        "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c60edc5e-6f41-3a85-8023-3a659ec26fe8",
         "title": "BofA Securities Adjusts Price Target on Union Pacific to $262 From $256, Maintains Buy Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
+        "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
         "type": "STORY"
       },
       {
@@ -7336,18 +7336,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.56,
-        "industryAvg": 25.86
+        "value": 23.72,
+        "industryAvg": 26
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.81,
-        "industryAvg": 5.86
+        "value": 6.85,
+        "industryAvg": 5.89
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.15,
-        "industryAvg": 4.41
+        "value": 8.21,
+        "industryAvg": 4.45
       },
       {
         "metric": "ROE",

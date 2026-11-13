@@ -1,10 +1,10 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.007,
-      "ttmPe": 21.59,
-      "marketCap": 99354014984,
-      "psRatio": 1.76,
-      "pbRatio": 3.64,
-      "pegRatio": 1.39
+      "ttmPe": 21.35,
+      "marketCap": 98231202604,
+      "psRatio": 1.74,
+      "pbRatio": 3.6,
+      "pegRatio": 1.37
     },
     "profitability": {
       "roe": 4.54,
@@ -5311,25 +5311,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.74,
-      "costOfEquity": 7.32,
+      "wacc": 6.83,
+      "costOfEquity": 7.42,
       "costOfDebt": 0.5,
       "taxRate": 17,
-      "beta": 0.2965,
-      "marketCap": 99354014984
+      "beta": 0.298,
+      "marketCap": 98231202604
     },
     "beta": {
-      "beta5y": 0.2965
+      "beta5y": 0.298
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 349.46,
-        "high": 353.49,
-        "low": 348.09,
-        "close": 352.42,
-        "volume": 670600
-      },
       {
         "date": "2025-11-12",
         "open": 351.9,
@@ -7337,6 +7329,14 @@
         "low": 364.48,
         "close": 367.22,
         "volume": 794000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 369.23,
+        "high": 371.94,
+        "low": 361.28,
+        "close": 363.07,
+        "volume": 1139300
       }
     ],
     "news": [
@@ -7365,19 +7365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
-        "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f3e2f4a8-aa5d-3425-823a-26f4af03befd",
         "title": "General Dynamics Corporation (GD): An Undervalued Dividend Aristocrat to Buy Now",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/general-dynamics-corporation-gd-undervalued-121923392.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "da7a4e0b-6089-37e9-9dff-9f0f3f65089e",
+        "title": "Q1 Earnings Outperformers: General Dynamics (NYSE:GD) And The Rest Of The Defense Contractors Stocks",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-general-dynamics-033410705.html",
         "type": "STORY"
       },
       {
@@ -7413,11 +7413,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1d128de7-3263-3e78-b95b-a2df852a3d02",
-        "title": "Trump to make Golden Dome announcement Tuesday, Reuters reports",
-        "publisher": "TipRanks",
+        "uuid": "6842be06-cb66-36b9-9b89-805d5cda23bc",
+        "title": "Northrop Grumman Rewards Shareholders With 12% Dividend Hike",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/1d128de7-3263-3e78-b95b-a2df852a3d02/trump-to-make-golden-dome.html",
+        "link": "https://finance.yahoo.com/news/northrop-grumman-rewards-shareholders-12-152200138.html",
         "type": "STORY"
       }
     ],
@@ -7464,6 +7464,10 @@
         "yearBorn": 1972
       },
       {
+        "name": "Ms. Amy Johnson",
+        "title": "President of GDIT"
+      },
+      {
         "name": "Ms. Kimberly A. Kuryea",
         "title": "Senior VP & CFO",
         "age": 58,
@@ -7485,33 +7489,33 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.59,
-        "industryAvg": 33.67
+        "value": 21.35,
+        "industryAvg": 33
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.76,
-        "industryAvg": 5.75
+        "value": 1.74,
+        "industryAvg": 5.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.64,
-        "industryAvg": 7.47
+        "value": 3.6,
+        "industryAvg": 7.41
       },
       {
         "metric": "ROE",
         "value": 4.54,
-        "industryAvg": 12.53
+        "industryAvg": 12.520000000000001
       },
       {
         "metric": "ROA",
         "value": 2.04,
-        "industryAvg": 3.8600000000000003
+        "industryAvg": 3.85
       },
       {
         "metric": "Gross Margin",
         "value": 15.440000000000001,
-        "industryAvg": 20.78
+        "industryAvg": 20.79
       },
       {
         "metric": "EBITDA Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.6864,
-      "ttmPe": 41.91,
-      "marketCap": 144136663800,
-      "psRatio": 2.55,
-      "pbRatio": 5.21,
+      "ttmPe": 40.99,
+      "marketCap": 140955379200,
+      "psRatio": 2.49,
+      "pbRatio": 5.1,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -6507,25 +6507,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.59,
-      "costOfEquity": 15.190000000000001,
+      "wacc": 13.52,
+      "costOfEquity": 15.15,
       "costOfDebt": 0.86,
       "taxRate": 28.999999999999996,
-      "beta": 1.294,
-      "marketCap": 144136663800
+      "beta": 1.2931,
+      "marketCap": 140955379200
     },
     "beta": {
-      "beta5y": 1.294
+      "beta5y": 1.2931
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 93.65,
-        "high": 94.16,
-        "low": 92.97,
-        "close": 93.6,
-        "volume": 13276300
-      },
       {
         "date": "2025-11-12",
         "open": 94.11,
@@ -8532,7 +8524,15 @@
         "high": 71.09,
         "low": 69.011,
         "close": 70.68,
-        "volume": 15588000
+        "volume": 15632700
+      },
+      {
+        "date": "2026-11-12",
+        "open": 70.65,
+        "high": 70.8,
+        "low": 68.915,
+        "close": 69.12,
+        "volume": 13843500
       }
     ],
     "news": [
@@ -8561,19 +8561,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
-        "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "647a03ed-7d8c-3cc5-94cd-83f3d801bdd6",
         "title": "Serve Robotics Saddles Up for Autonomous Delivery in Dallas-Fort Worth Via Uber Eats",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/serve-robotics-saddles-autonomous-delivery-113000233.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
+        "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
         "type": "STORY"
       },
       {
@@ -8683,23 +8683,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.91,
-        "industryAvg": 28.25
+        "value": 40.99,
+        "industryAvg": 28.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.55,
-        "industryAvg": 4.87
+        "value": 2.49,
+        "industryAvg": 4.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.21,
-        "industryAvg": 5.21
+        "value": 5.1,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 1.8599999999999999,
-        "industryAvg": -0.7100000000000001
+        "industryAvg": -0.72
       },
       {
         "metric": "ROA",
@@ -8714,12 +8714,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 8.3,
-        "industryAvg": 17.51
+        "industryAvg": 17.299999999999997
       },
       {
         "metric": "Net Margin",
         "value": 3.47,
-        "industryAvg": -0.97
+        "industryAvg": -0.98
       }
     ]
   }

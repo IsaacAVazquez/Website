@@ -1,10 +1,10 @@
 {
   "symbol": "TSLA",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.9091,
-      "ttmPe": 429.92,
-      "marketCap": 1544990520000,
-      "psRatio": 14.92,
-      "pbRatio": 17.3,
+      "ttmPe": 437.19,
+      "marketCap": 1571119850000,
+      "psRatio": 15.17,
+      "pbRatio": 17.6,
       "pegRatio": 23.5
     },
     "profitability": {
@@ -6208,25 +6208,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.27,
-      "costOfEquity": 18.459999999999997,
+      "wacc": 18.18,
+      "costOfEquity": 18.37,
       "costOfDebt": 0.5499999999999999,
       "taxRate": 16,
-      "beta": 1.709,
-      "marketCap": 1544990520000
+      "beta": 1.7084,
+      "marketCap": 1571119850000
     },
     "beta": {
-      "beta5y": 1.709
+      "beta5y": 1.7084
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 439.4,
-        "high": 442.49,
-        "low": 432.36,
-        "close": 439.62,
-        "volume": 60533200
-      },
       {
         "date": "2025-11-12",
         "open": 442.15,
@@ -8233,7 +8225,15 @@
         "high": 395.43,
         "low": 386.35,
         "close": 390.84,
-        "volume": 27735900
+        "volume": 27872700
+      },
+      {
+        "date": "2026-11-12",
+        "open": 386.36,
+        "high": 401.22,
+        "low": 385.2,
+        "close": 397.45,
+        "volume": 28925100
       }
     ],
     "news": [
@@ -8270,19 +8270,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
-        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0f7139d3-271d-3e22-b37b-14abca6b8855",
         "title": "These Stocks Moved the Most Today: Nvidia, Tesla, Rivian, Accenture, Carvana, D-Wave Quantum, and More",
         "publisher": "Barrons.com",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/m/0f7139d3-271d-3e22-b37b-14abca6b8855/these-stocks-moved-the-most.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
+        "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
         "type": "STORY"
       },
       {
@@ -8374,17 +8374,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 429.92,
-        "industryAvg": 30.65
+        "value": 437.19,
+        "industryAvg": 30.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.92,
-        "industryAvg": 1.27
+        "value": 15.17,
+        "industryAvg": 1.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.3,
+        "value": 17.6,
         "industryAvg": 2.34
       },
       {

@@ -1,14 +1,11 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
-    },
-    "retainedSections": [
-      "info"
-    ]
+      "price": "2026-11-12"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -35,16 +32,16 @@
       "country": "United States",
       "industry": "Specialty Industrial Machinery",
       "sector": "Industrials",
-      "longBusinessSummary": "Emerson Electric Co., an automation company, provides various solutions in the Americas, Asia, the Middle East, Africa, and Europe. It operates through five segments: Control Systems & Software; Test & Measurement; Sensors; Final Control; and Safety & Productivity. The Control Systems & Software segment provides automation systems, intelligent software, and industrial AI solutions for industrial organizations under the DeltaV and Ovation brands, as well as Aspentech's asset optimization software; and programmable automation controllers. The Test & Measurement segment offers intelligent test platforms, modular hardware, and software which enables customers to connect data and automation, optimize testing processes, and assist in reliable performance. The Sensors segment delivers sensing and measurement solutions that provide real-time data to monitor critical parameters, optimize operations, and support performance. This segment's portfolio includes secure, wireless, and non-intrusive instrumentation to detect, analyze and respond to changing conditions in even the harshest environments. The Final Control segment offers control, isolation and pressure relief valves, solenoid and pneumatic valves, valve position indicators, cylinders, air preparation equipment, and electric linear motion, as well as engages in the fluid and motion control business. The Safety & Productivity segment offers mechanical, electrical and diagnostic solutions to professionals that support infrastructure, promote safety, and enhance productivity across construction, maintenance, and industrial environments; and electrical equipment and materials. The company was incorporated in 1890 and is headquartered in Saint Louis, Missouri.",
-      "fullTimeEmployees": 71000,
+      "longBusinessSummary": "Emerson Electric Co., a technology and software company, provides various solutions in the Americas, Asia, the Middle East, Africa, and Europe. It operates through Final Control, Measurement & Analytical, Discrete Automation, Safety & Productivity, Control Systems & Software, and Test & Measurement segments. The Final Control segment provides control valves, isolation valves, shutoff valves, pressure relief valves, pressure safety valves, actuators, and regulators for process and hybrid industries under Anderson Greenwood, Bettis, Crosby, Fisher, Keystone, KTM, and Vanessa brands. The Measurement & Analytical segment supplies intelligent instrumentation measuring the physical properties of liquids or gases, such as pressure, temperature, level, flow, acoustics, corrosion, pH, conductivity, water quality, toxic gases, and flame under the Flexim, Micro Motion, and Rosemount brands. The Discrete Automation segment includes solenoid valves, pneumatic valves, valve position indicators, pneumatic cylinders and actuators, air preparation equipment, pressure and temperature switches, electric linear motion solutions, programmable automation control systems and software, electrical distribution equipment, and materials joining solutions used primarily in discrete industries under the Afag, Appleton, ASCO, Aventics, Branson, Movicon, PACSystems, SolaHD, TESCOM, and TopWorx brands. The Safety & Productivity segment delivers tools for professionals and homeowners that support infrastructure, promote safety, and enhance productivity under the Greenlee, Klauke, ProTeam, and RIDGID brands. The Control Systems & Software segment provides control systems and software that control plant processes by collecting and analyzing information from measurement devices in the plant under the DeltaV and Ovation brands. The Test & Measurement offers software-connected automated test and measurement systems. The company was incorporated in 1890 and is headquartered in Saint Louis, Missouri.",
+      "fullTimeEmployees": 70000,
       "website": "https://www.emerson.com",
       "shortName": "Emerson Electric Co.",
       "longName": "Emerson Electric Co."
     },
     "fundamentals": {
       "ttmEps": 4.7791,
-      "ttmPe": 34.96,
-      "marketCap": 93186068000,
+      "ttmPe": 34.93,
+      "marketCap": 93107976000,
       "psRatio": 4.91,
       "pbRatio": 4.49,
       "pegRatio": 1.94
@@ -4804,7 +4801,7 @@
         },
         {
           "Breakdown": "Depreciation",
-          "TTM": "349000000.0",
+          "TTM": "331000000.0",
           "2026-09-30": "*",
           "2026-06-30": "96000000.0",
           "2026-03-31": "87000000.0",
@@ -4826,7 +4823,7 @@
         },
         {
           "Breakdown": "Amortization",
-          "TTM": "1130000000.0",
+          "TTM": "1234000000.0",
           "2026-09-30": "*",
           "2026-06-30": "281000000.0",
           "2026-03-31": "282000000.0",
@@ -4848,7 +4845,7 @@
         },
         {
           "Breakdown": "Amortization of Intangibles",
-          "TTM": "1130000000.0",
+          "TTM": "1234000000.0",
           "2026-09-30": "*",
           "2026-06-30": "281000000.0",
           "2026-03-31": "282000000.0",
@@ -6490,25 +6487,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.72,
-      "costOfEquity": 14.39,
+      "wacc": 12.690000000000001,
+      "costOfEquity": 14.360000000000001,
       "costOfDebt": 0.8,
       "taxRate": 25,
-      "beta": 1.1924,
-      "marketCap": 93186068000
+      "beta": 1.192,
+      "marketCap": 93107976000
     },
     "beta": {
-      "beta5y": 1.1924
+      "beta5y": 1.192
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 130.23,
-        "high": 131,
-        "low": 129.26,
-        "close": 129.53,
-        "volume": 1689900
-      },
       {
         "date": "2025-11-12",
         "open": 130.62,
@@ -8516,6 +8505,14 @@
         "low": 166.97,
         "close": 167.06,
         "volume": 1902500
+      },
+      {
+        "date": "2026-11-12",
+        "open": 166.2,
+        "high": 169.88,
+        "low": 165.52,
+        "close": 166.92,
+        "volume": 1525300
       }
     ],
     "news": [
@@ -8560,19 +8557,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
-        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
         "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
+        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
         "type": "STORY"
       },
       {
@@ -8627,10 +8624,10 @@
         "totalPay": 2353975
       },
       {
-        "name": "Mr. Peter Zornio",
-        "title": "Senior Vice President",
-        "age": 61,
-        "yearBorn": 1964
+        "name": "Mr. Nick J. Piazza",
+        "title": "Senior VP & Chief People Officer",
+        "age": 47,
+        "yearBorn": 1978
       },
       {
         "name": "Mr. Ram R. Krishnan",
@@ -8638,6 +8635,10 @@
         "age": 54,
         "yearBorn": 1971,
         "totalPay": 2839564
+      },
+      {
+        "name": "Mr. Rudy Sengupta",
+        "title": "Senior VP and Chief Technology & AI Officer"
       },
       {
         "name": "Mr. Surendralal Lanca Karsanbhai",
@@ -8651,23 +8652,29 @@
         "title": "Senior VP, Chief Transformation & Chief Compliance Officer",
         "age": 60,
         "yearBorn": 1965
+      },
+      {
+        "name": "Ms. Vidya Ramnath",
+        "title": "Senior VP & Chief Marketing Officer",
+        "age": 58,
+        "yearBorn": 1967
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.96,
-        "industryAvg": 27.2
+        "value": 34.93,
+        "industryAvg": 26.78
       },
       {
         "metric": "P/S Ratio",
         "value": 4.91,
-        "industryAvg": 3.28
+        "industryAvg": 3.22
       },
       {
         "metric": "P/B Ratio",
         "value": 4.49,
-        "industryAvg": 5.89
+        "industryAvg": 5.74
       },
       {
         "metric": "ROE",

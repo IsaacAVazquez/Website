@@ -1,10 +1,10 @@
 {
   "symbol": "SBUX",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.2092,
-      "ttmPe": 49.74,
-      "marketCap": 125285589000,
-      "psRatio": 3.27,
-      "pbRatio": -16.33,
+      "ttmPe": 48.55,
+      "marketCap": 122287126000,
+      "psRatio": 3.19,
+      "pbRatio": -15.93,
       "pegRatio": 0.12
     },
     "profitability": {
@@ -6292,25 +6292,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.020000000000001,
+      "wacc": 10.99,
       "costOfEquity": 12.920000000000002,
       "costOfDebt": 0.6,
       "taxRate": 26,
-      "beta": 1.0062,
-      "marketCap": 125285589000
+      "beta": 1.0058,
+      "marketCap": 122287126000
     },
     "beta": {
-      "beta5y": 1.0062
+      "beta5y": 1.0058
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 84.98,
-        "high": 87.04,
-        "low": 84.9,
-        "close": 86.42,
-        "volume": 9575800
-      },
       {
         "date": "2025-11-12",
         "open": 87.63,
@@ -8318,6 +8310,14 @@
         "low": 108.63,
         "close": 109.89,
         "volume": 5254200
+      },
+      {
+        "date": "2026-11-12",
+        "open": 109.49,
+        "high": 110.55,
+        "low": 107.18,
+        "close": 107.26,
+        "volume": 5462200
       }
     ],
     "news": [
@@ -8378,14 +8378,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
-        "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/news/why-yum-yum-down-3-153112989.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "35f8c5ea-ecf8-396f-9f08-6fb9ef01e1a2",
         "title": "SBUX vs. BROS: Which Coffee Stock Has the Stronger Brew for 2025?",
         "publisher": "Zacks",
@@ -8394,11 +8386,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b34f0011-f284-3cc7-aae0-417e841264f0",
-        "title": "3 Magnificent Dividend Stocks Down 15% to 64% to Buy and Hold for 20 Years",
-        "publisher": "Motley Fool",
+        "uuid": "04ecb63a-87e5-3cc2-8fff-ef2645b90608",
+        "title": "Why Is Yum (YUM) Down 3.1% Since Last Earnings Report?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/why-yum-yum-down-3-153112989.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "37a0ba7a-0d07-31b4-b9de-0adb0e7334c8",
+        "title": "Is Realty Income’s (O) 9-Year Low a Golden Opportunity for Dividend Investors?",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-31",
-        "link": "https://finance.yahoo.com/m/b34f0011-f284-3cc7-aae0-417e841264f0/3-magnificent-dividend-stocks.html",
+        "link": "https://finance.yahoo.com/news/realty-income-o-9-low-182100233.html",
         "type": "STORY"
       }
     ],
@@ -8467,18 +8467,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 49.74,
-        "industryAvg": 23.65
+        "value": 48.55,
+        "industryAvg": 23.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.27,
-        "industryAvg": 3.01
+        "value": 3.19,
+        "industryAvg": 2.97
       },
       {
         "metric": "P/B Ratio",
-        "value": -16.33,
-        "industryAvg": 5.75
+        "value": -15.93,
+        "industryAvg": 5.64
       },
       {
         "metric": "ROE",

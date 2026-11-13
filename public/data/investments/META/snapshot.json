@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 29.3266,
-      "ttmPe": 21.44,
-      "marketCap": 1607287842201,
-      "psRatio": 6.65,
-      "pbRatio": 5.9,
+      "ttmPe": 21.26,
+      "marketCap": 1594097637093,
+      "psRatio": 6.6,
+      "pbRatio": 5.85,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -5806,25 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.94,
-      "costOfEquity": 14.89,
+      "wacc": 13.900000000000002,
+      "costOfEquity": 14.860000000000001,
       "costOfDebt": 0.8500000000000001,
       "taxRate": 24,
       "beta": 1.2557,
-      "marketCap": 1607287842201
+      "marketCap": 1594097637093
     },
     "beta": {
       "beta5y": 1.2557
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 628,
-        "high": 629.56,
-        "low": 619.39,
-        "close": 627.08,
-        "volume": 13302200
-      },
       {
         "date": "2025-11-12",
         "open": 628.13,
@@ -7831,7 +7823,15 @@
         "high": 648.45,
         "low": 627.97,
         "close": 628.77,
-        "volume": 15533900
+        "volume": 15628600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 625.35,
+        "high": 630.32,
+        "low": 618.92,
+        "close": 623.61,
+        "volume": 10282600
       }
     ],
     "news": [
@@ -7868,19 +7868,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
-        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
-        "publisher": "TipRanks",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
         "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0b443ff0-85a6-3c59-b7be-44fe4724309f",
+        "title": "Closing Bell Movers: GameStop gains 7% on earnings, bitcoin announcement",
+        "publisher": "TipRanks",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
         "type": "STORY"
       },
       {
@@ -7918,6 +7918,12 @@
     ],
     "officers": [
       {
+        "name": "Mr. Aaron A. Anderson",
+        "title": "Chief Accounting Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
         "name": "Mr. Andrew Bosworth",
         "title": "Chief Technology Officer",
         "age": 43,
@@ -7932,6 +7938,18 @@
         "totalPay": 3308578
       },
       {
+        "name": "Mr. Curtis J. Mahoney",
+        "title": "Chief Legal Officer",
+        "age": 47,
+        "yearBorn": 1978
+      },
+      {
+        "name": "Mr. Henry T. A. Moniz",
+        "title": "Chief Compliance Officer",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
         "name": "Mr. Javier Olivan",
         "title": "Chief Operating Officer",
         "age": 48,
@@ -7944,6 +7962,10 @@
         "age": 41,
         "yearBorn": 1984,
         "totalPay": 25125904
+      },
+      {
+        "name": "Mr. Rob Bevegni",
+        "title": "Head of Investor Relations"
       },
       {
         "name": "Ms. Dina Powell McCormick",
@@ -7963,43 +7985,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.44,
-        "industryAvg": 16.26
+        "value": 21.26,
+        "industryAvg": 16.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.65,
-        "industryAvg": 6.96
+        "value": 6.6,
+        "industryAvg": 7.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.9,
-        "industryAvg": 5.07
+        "value": 5.85,
+        "industryAvg": 5.13
       },
       {
         "metric": "ROE",
         "value": 3.6999999999999997,
-        "industryAvg": 37.730000000000004
+        "industryAvg": 38.84
       },
       {
         "metric": "ROA",
         "value": 2.12,
-        "industryAvg": 24.84
+        "industryAvg": 25.77
       },
       {
         "metric": "Gross Margin",
         "value": 79.31,
-        "industryAvg": 62.81
+        "industryAvg": 62.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.71,
-        "industryAvg": 59.72
+        "industryAvg": 61.370000000000005
       },
       {
         "metric": "Net Margin",
         "value": 15.260000000000002,
-        "industryAvg": 43.57
+        "industryAvg": 44.89
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "ELV",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.4569,
-      "ttmPe": 17.91,
-      "pegRatio": 0.99,
-      "marketCap": 90782965973,
-      "psRatio": 0.45,
-      "pbRatio": 2.03
+      "ttmPe": 18.33,
+      "pegRatio": 1.02,
+      "marketCap": 92907365610,
+      "psRatio": 0.46,
+      "pbRatio": 2.08
     },
     "profitability": {
       "roe": 3.05,
@@ -767,9 +767,9 @@
         {
           "Breakdown": "Basic EPS",
           "TTM": "23.63",
-          "2026-09-30": "6.3",
-          "2026-06-30": "6.74",
-          "2026-03-31": "8.03",
+          "2026-09-30": "6.29",
+          "2026-06-30": "6.75",
+          "2026-03-31": "8.12",
           "2025-12-31": "2.48",
           "2025-09-30": "5.35",
           "2025-06-30": "7.75",
@@ -811,9 +811,9 @@
         {
           "Breakdown": "Basic Average Shares",
           "TTM": "218600000.0",
-          "2026-09-30": "216600000.0",
-          "2026-06-30": "217000000.0",
-          "2026-03-31": "219800000.0",
+          "2026-09-30": "216869290.0",
+          "2026-06-30": "216841146.0",
+          "2026-03-31": "217368494.0",
           "2025-12-31": "220723898.0",
           "2025-09-30": "222036187.0",
           "2025-06-30": "224835508.0",
@@ -835,7 +835,7 @@
           "TTM": "219350000.0",
           "2026-09-30": "217600000.0",
           "2026-06-30": "217900000.0",
-          "2026-03-31": "220400000.0",
+          "2026-03-31": "220500000.0",
           "2025-12-31": "221800000.0",
           "2025-09-30": "223700000.0",
           "2025-06-30": "225800000.0",
@@ -2675,7 +2675,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-09-30": "216841146.0",
+          "2026-09-30": "216113946.0",
           "2026-06-30": "216841146.0",
           "2026-03-31": "217368494.0",
           "2025-12-31": "220723898.0",
@@ -2696,7 +2696,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-09-30": "216841146.0",
+          "2026-09-30": "216113946.0",
           "2026-06-30": "216841146.0",
           "2026-03-31": "217368494.0",
           "2025-12-31": "220723898.0",
@@ -5210,25 +5210,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.580000000000001,
-      "costOfEquity": 9.86,
+      "wacc": 7.66,
+      "costOfEquity": 9.91,
       "costOfDebt": 1.16,
       "taxRate": 25,
-      "beta": 0.6202,
-      "marketCap": 90782965973
+      "beta": 0.6187,
+      "marketCap": 92907365610
     },
     "beta": {
-      "beta5y": 0.6202
+      "beta5y": 0.6187
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 306.76,
-        "high": 317.35,
-        "low": 303.6,
-        "close": 315.25,
-        "volume": 1449600
-      },
       {
         "date": "2025-11-12",
         "open": 314.94,
@@ -7236,6 +7228,14 @@
         "low": 422,
         "close": 429.48,
         "volume": 698300
+      },
+      {
+        "date": "2026-11-12",
+        "open": 433.78,
+        "high": 435,
+        "low": 427.13,
+        "close": 429.9,
+        "volume": 942900
       }
     ],
     "news": [
@@ -7304,19 +7304,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a762e27-ea8c-35f7-b55f-93be8e209562",
-        "title": "1 S&P 500 Stock to Own for Decades and 2 to Ignore",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/1-p-500-stock-own-043936277.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6b9d1eaf-da89-3f7d-9300-45c919f0806f",
         "title": "Top Analyst Reports for Walmart, Palantir & Uber",
         "publisher": "Zacks",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-walmart-palantir-210700298.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a762e27-ea8c-35f7-b55f-93be8e209562",
+        "title": "1 S&P 500 Stock to Own for Decades and 2 to Ignore",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/1-p-500-stock-own-043936277.html",
         "type": "STORY"
       }
     ],
@@ -7384,41 +7384,41 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.91,
-        "industryAvg": 22.07
+        "value": 18.33,
+        "industryAvg": 18.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.45,
+        "value": 0.46,
         "industryAvg": 0.43
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.03,
-        "industryAvg": 2.43
+        "value": 2.08,
+        "industryAvg": 2.44
       },
       {
         "metric": "ROE",
         "value": 3.05,
-        "industryAvg": 11.06
+        "industryAvg": 13.59
       },
       {
         "metric": "ROA",
         "value": 1.0699999999999998,
-        "industryAvg": 3.37
+        "industryAvg": 4.14
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 13.69
+        "industryAvg": 13.79
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 4
+        "industryAvg": 4.569999999999999
       },
       {
         "metric": "Net Margin",
         "value": 2.65,
-        "industryAvg": 1.92
+        "industryAvg": 2.33
       }
     ]
   }

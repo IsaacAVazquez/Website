@@ -1,10 +1,10 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 81.64,
-      "marketCap": 88544502600,
-      "psRatio": 9.4,
-      "pbRatio": 2.84,
+      "ttmPe": 81.74,
+      "marketCap": 88653717450,
+      "psRatio": 9.41,
+      "pbRatio": 2.85,
       "pegRatio": 0.92
     },
     "profitability": {
@@ -6282,25 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.879999999999999,
-      "costOfEquity": 14.34,
+      "wacc": 12.870000000000001,
+      "costOfEquity": 14.32,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1865,
-      "marketCap": 88544502600
+      "beta": 1.1866,
+      "marketCap": 88653717450
     },
     "beta": {
-      "beta5y": 1.1865
+      "beta5y": 1.1866
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 398.12,
-        "high": 399.69,
-        "low": 390.02,
-        "close": 395.6,
-        "volume": 1718400
-      },
       {
         "date": "2025-11-12",
         "open": 400.62,
@@ -8308,6 +8300,14 @@
         "low": 460,
         "close": 462.12,
         "volume": 950600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 455.26,
+        "high": 469.07,
+        "low": 452.63,
+        "close": 462.69,
+        "volume": 1608200
       }
     ],
     "news": [
@@ -8336,11 +8336,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
-        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
+        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
+        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
+        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
         "type": "STORY"
       },
       {
@@ -8349,14 +8357,6 @@
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/m/9c46ac3e-a0bd-3c36-abfa-7e5382addab8/trump-blocks-chip-design.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9d8cf0c1-0787-3365-9274-7ce14e18b6aa",
-        "title": "FTC will Require Synopsys and ANSYS to Divest Assets to Resolve Merger Concerns",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
         "type": "STORY"
       },
       {
@@ -8384,11 +8384,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
+        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
+        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
         "type": "STORY"
       }
     ],
@@ -8405,6 +8405,10 @@
         "title": "Chief Strategy Officer"
       },
       {
+        "name": "Mr. Raja Tabet",
+        "title": "SVP of Strategic Missions & Technologies"
+      },
+      {
         "name": "Mr. Sassine Ghazi",
         "title": "CEO, President & Director",
         "age": 55,
@@ -8416,10 +8420,6 @@
         "title": "Chief Accounting Officer",
         "age": 54,
         "yearBorn": 1971
-      },
-      {
-        "name": "Mr. Tushar Jain",
-        "title": "Head of Investor Relations"
       },
       {
         "name": "Ms. Alessandra Costa",
@@ -8453,18 +8453,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 81.64,
-        "industryAvg": 31.05
+        "value": 81.74,
+        "industryAvg": 31.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.4,
-        "industryAvg": 7.29
+        "value": 9.41,
+        "industryAvg": 7.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.84,
-        "industryAvg": 7.93
+        "value": 2.85,
+        "industryAvg": 7.92
       },
       {
         "metric": "ROE",
@@ -8479,17 +8479,17 @@
       {
         "metric": "Gross Margin",
         "value": 72.57000000000001,
-        "industryAvg": 50.92
+        "industryAvg": 51.129999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.35999999999999,
-        "industryAvg": 36.57
+        "industryAvg": 36.78
       },
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 20.53
+        "industryAvg": 20.52
       }
     ]
   }

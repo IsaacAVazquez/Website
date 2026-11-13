@@ -1,10 +1,10 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 18.3624,
-      "ttmPe": 32.76,
-      "marketCap": 276545016589,
-      "psRatio": 3.56,
-      "pbRatio": 12.87,
+      "ttmPe": 32.96,
+      "marketCap": 278232023472,
+      "psRatio": 3.58,
+      "pbRatio": 12.95,
       "pegRatio": 0.52
     },
     "profitability": {
@@ -5704,25 +5704,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.21,
-      "costOfEquity": 17.66,
+      "wacc": 15.160000000000002,
+      "costOfEquity": 17.59,
       "costOfDebt": 0.29,
       "taxRate": 23,
-      "beta": 1.6065,
-      "marketCap": 276545016589
+      "beta": 1.6073,
+      "marketCap": 278232023472
     },
     "beta": {
-      "beta5y": 1.6065
+      "beta5y": 1.6073
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 568.72,
-        "high": 570.45,
-        "low": 560.26,
-        "close": 567.93,
-        "volume": 1517400
-      },
       {
         "date": "2025-11-12",
         "open": 570.5,
@@ -7730,6 +7722,14 @@
         "low": 588.5,
         "close": 601.61,
         "volume": 3673000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 592.91,
+        "high": 613.57,
+        "low": 590.7,
+        "close": 605.28,
+        "volume": 2508700
       }
     ],
     "news": [
@@ -7774,19 +7774,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
-        "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b9d2a8d3-3cf0-32f2-8da6-9ba442fc5cfa",
         "title": "Construction Machinery Stocks Q1 Teardown: Caterpillar (NYSE:CAT) Vs The Rest",
         "publisher": "StockStory",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/construction-machinery-stocks-q1-teardown-033232238.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "51d5bce2-4ffb-38b7-bc4d-a544e60fda11",
+        "title": "Terex Q1 Earnings & Revenues Beat Estimates, Decline Y/Y on Low Volumes",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/terex-q1-earnings-revenues-beat-164100155.html",
         "type": "STORY"
       },
       {
@@ -7806,11 +7806,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
-        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
-        "publisher": "MT Newswires",
+        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
+        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
+        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
         "type": "STORY"
       }
     ],
@@ -7818,6 +7818,10 @@
       {
         "name": "Alex Kapper",
         "title": "Vice President of Investor Relations"
+      },
+      {
+        "name": "Erick W. Lee",
+        "title": "Chief Compliance Officer"
       },
       {
         "name": "Mr. Bob De Lange",
@@ -7859,13 +7863,6 @@
         "totalPay": 2075625
       },
       {
-        "name": "Ms. Denise C. Johnson",
-        "title": "Group President of Resource Industries",
-        "age": 59,
-        "yearBorn": 1966,
-        "totalPay": 2492993
-      },
-      {
         "name": "Ms. Jaime Mineart",
         "title": "Senior VP & CTO"
       },
@@ -7879,18 +7876,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.76,
-        "industryAvg": 26.64
+        "value": 32.96,
+        "industryAvg": 26.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.56,
-        "industryAvg": 2.6
+        "value": 3.58,
+        "industryAvg": 2.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.87,
-        "industryAvg": 5.69
+        "value": 12.95,
+        "industryAvg": 5.67
       },
       {
         "metric": "ROE",

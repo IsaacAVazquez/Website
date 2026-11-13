@@ -1,10 +1,10 @@
 {
   "symbol": "NET",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "fundamentals",
@@ -44,9 +44,9 @@
     },
     "fundamentals": {
       "ttmEps": -0.6745,
-      "marketCap": 112845600000,
-      "psRatio": 41.29,
-      "pbRatio": 77.04,
+      "marketCap": 114099440000,
+      "psRatio": 41.75,
+      "pbRatio": 77.89,
       "ttmPe": -1118.24
     },
     "profitability": {
@@ -5824,25 +5824,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.07,
-      "costOfEquity": 15.7,
+      "wacc": 15.010000000000002,
+      "costOfEquity": 15.629999999999999,
       "costOfDebt": 0.08,
       "taxRate": 40,
-      "beta": 1.3592,
-      "marketCap": 112845600000
+      "beta": 1.3549,
+      "marketCap": 114099440000
     },
     "beta": {
-      "beta5y": 1.3592
+      "beta5y": 1.3549
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 238.58,
-        "high": 241.058,
-        "low": 234.73,
-        "close": 234.95,
-        "volume": 1977000
-      },
       {
         "date": "2025-11-12",
         "open": 235.835,
@@ -7850,6 +7842,14 @@
         "low": 311.12,
         "close": 315,
         "volume": 4685700
+      },
+      {
+        "date": "2026-11-12",
+        "open": 306.28,
+        "high": 322.61,
+        "low": 305,
+        "close": 318.5,
+        "volume": 3460600
       }
     ],
     "news": [
@@ -7944,8 +7944,11 @@
         "title": "Senior Vice President of Emerging Technology & Incubation"
       },
       {
-        "name": "Mr. Isaac Specter",
-        "title": "Head of Product Strategy Operations"
+        "name": "Mr. Mark F. Anderson",
+        "title": "President of Revenue",
+        "age": 63,
+        "yearBorn": 1962,
+        "totalPay": 7665
       },
       {
         "name": "Mr. Matthew Prince J.D.",
@@ -7992,18 +7995,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "industryAvg": 31.05,
+        "industryAvg": 31.02,
         "value": -1118.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 41.29,
-        "industryAvg": 7.29
+        "value": 41.75,
+        "industryAvg": 7.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 77.04,
-        "industryAvg": 7.93
+        "value": 77.89,
+        "industryAvg": 7.92
       },
       {
         "metric": "ROE",
@@ -8018,17 +8021,17 @@
       {
         "metric": "Gross Margin",
         "value": 71.21,
-        "industryAvg": 50.92
+        "industryAvg": 51.129999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 5.57,
-        "industryAvg": 36.57
+        "industryAvg": 36.78
       },
       {
         "metric": "Net Margin",
         "value": -4.35,
-        "industryAvg": 20.53
+        "industryAvg": 20.52
       }
     ]
   }

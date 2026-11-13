@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.1588,
-      "ttmPe": 15.32,
-      "marketCap": 3607674300000,
-      "psRatio": 7.66,
-      "pbRatio": 5.32,
+      "ttmPe": 15.59,
+      "marketCap": 3672217800000,
+      "psRatio": 7.8,
+      "pbRatio": 5.42,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -6098,25 +6098,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.02,
-      "costOfEquity": 14.549999999999999,
+      "wacc": 13.99,
+      "costOfEquity": 14.510000000000002,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 18,
-      "beta": 1.2132,
-      "marketCap": 3607674300000
+      "beta": 1.2106,
+      "marketCap": 3672217800000
     },
     "beta": {
-      "beta5y": 1.2132
+      "beta5y": 1.2106
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 287.75,
-        "high": 291.92,
-        "low": 287.32,
-        "close": 291.31,
-        "volume": 19842100
-      },
       {
         "date": "2025-11-12",
         "open": 291.68,
@@ -8123,7 +8115,15 @@
         "high": 295.74,
         "low": 289.48,
         "close": 293.45,
-        "volume": 25668800
+        "volume": 26122800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 293.77,
+        "high": 302.56,
+        "low": 293.69,
+        "close": 298.7,
+        "volume": 35346300
       }
     ],
     "news": [
@@ -8136,27 +8136,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
-        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
         "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
         "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
         "type": "STORY"
       },
       {
@@ -8176,11 +8160,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
-        "title": "Sector Update: Consumer",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
+        "uuid": "239097ec-365f-3453-b91e-0c08a6414799",
+        "title": "3 Top Quantum Computing Stocks to Buy in 2025",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/m/239097ec-365f-3453-b91e-0c08a6414799/3-top-quantum-computing.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-17",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
         "type": "STORY"
       },
       {
@@ -8192,19 +8184,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
-        "title": "Magnificent 7 May Need to Make Room for Broadcom",
-        "publisher": "The Daily Upside",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
+        "uuid": "677e87f7-6d9d-30bd-a846-ca2e9cd5608e",
+        "title": "Sector Update: Consumer",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-18",
+        "link": "https://finance.yahoo.com/news/sector-consumer-192818246.html",
         "type": "STORY"
       },
       {
-        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
-        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
+        "uuid": "4d96e147-0572-3919-abe2-9e78a89c6f88",
+        "title": "Got $5,000? 3 Tech Stocks to Buy and Hold for the Long Term.",
         "publisher": "Motley Fool",
         "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
+        "link": "https://finance.yahoo.com/m/4d96e147-0572-3919-abe2-9e78a89c6f88/got-%245%2C000%3F-3-tech-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
+        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
+        "publisher": "Reuters",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
         "type": "STORY"
       }
     ],
@@ -8278,43 +8278,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.32,
-        "industryAvg": 16.26
+        "value": 15.59,
+        "industryAvg": 16.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.66,
-        "industryAvg": 6.96
+        "value": 7.8,
+        "industryAvg": 7.03
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.32,
-        "industryAvg": 5.07
+        "value": 5.42,
+        "industryAvg": 5.13
       },
       {
         "metric": "ROE",
         "value": 3.9699999999999998,
-        "industryAvg": 37.730000000000004
+        "industryAvg": 38.84
       },
       {
         "metric": "ROA",
         "value": 2.7199999999999998,
-        "industryAvg": 24.84
+        "industryAvg": 25.77
       },
       {
         "metric": "Gross Margin",
         "value": 59.699999999999996,
-        "industryAvg": 62.81
+        "industryAvg": 62.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 32.68,
-        "industryAvg": 59.72
+        "industryAvg": 61.370000000000005
       },
       {
         "metric": "Net Margin",
         "value": 20.51,
-        "industryAvg": 43.57
+        "industryAvg": 44.89
       }
     ]
   }

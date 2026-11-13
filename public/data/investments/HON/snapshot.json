@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 23.4105,
-      "ttmPe": 9.72,
-      "marketCap": 72243488940,
-      "psRatio": 2.35,
-      "pbRatio": 3.22,
+      "ttmPe": 9.54,
+      "marketCap": 70913756825,
+      "psRatio": 2.31,
+      "pbRatio": 3.16,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -6703,25 +6703,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.36,
-      "costOfEquity": 11.32,
+      "wacc": 9.34,
+      "costOfEquity": 11.34,
       "costOfDebt": 0.86,
       "taxRate": 6,
-      "beta": 0.8038,
-      "marketCap": 72243488940
+      "beta": 0.8036,
+      "marketCap": 70913756825
     },
     "beta": {
-      "beta5y": 0.8038
+      "beta5y": 0.8036
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 206.0619,
-        "high": 211.3372,
-        "low": 205.3277,
-        "close": 210.1835,
-        "volume": 4001363
-      },
       {
         "date": "2025-11-12",
         "open": 210.7813,
@@ -8729,6 +8721,14 @@
         "low": 226.58,
         "close": 227.64,
         "volume": 1581800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 226.41,
+        "high": 228.19,
+        "low": 223.35,
+        "close": 223.45,
+        "volume": 1524800
       }
     ],
     "news": [
@@ -8789,14 +8789,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
-        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
         "title": "Honeywell Strikes Deal With Activist Investor Elliott, Adds Partner to Board",
         "publisher": "Investopedia",
@@ -8805,11 +8797,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "75d38bd4-ebde-3496-88f8-9b8ccd44f07d",
-        "title": "Honeywell International (HON) Up 6.7% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
+        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
+        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8f56767b-647b-39f8-bdb1-a18c334b5a17",
+        "title": "Honeywell Stock Is Rising. An Activist Is Joining the Board.",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/honeywell-international-hon-6-7-153052103.html",
+        "link": "https://finance.yahoo.com/m/8f56767b-647b-39f8-bdb1-a18c334b5a17/honeywell-stock-is-rising.-an.html",
         "type": "STORY"
       }
     ],
@@ -8874,23 +8874,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.72,
-        "industryAvg": 19.86
+        "value": 9.54,
+        "industryAvg": 20.03
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.35,
-        "industryAvg": 1.56
+        "value": 2.31,
+        "industryAvg": 1.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.22,
-        "industryAvg": 2.55
+        "value": 3.16,
+        "industryAvg": 2.6
       },
       {
         "metric": "ROE",
         "value": 3.2399999999999998,
-        "industryAvg": -9.68
+        "industryAvg": -9.67
       },
       {
         "metric": "ROA",

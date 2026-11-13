@@ -1,10 +1,10 @@
 {
   "symbol": "MSFT",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.1482,
-      "ttmPe": 27.22,
-      "marketCap": 3870432510000,
-      "psRatio": 11.17,
-      "pbRatio": 8.23,
+      "ttmPe": 27.31,
+      "marketCap": 3884321000000,
+      "psRatio": 11.21,
+      "pbRatio": 8.26,
       "pegRatio": 0.84
     },
     "profitability": {
@@ -3274,7 +3274,7 @@
         {
           "Breakdown": "Share Issued",
           "2026-09-30": "7427000000.0",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2026-03-31": "7429000000.0",
           "2025-12-31": "7428838066.0",
           "2025-09-30": "7433087554.0",
@@ -3295,7 +3295,7 @@
         {
           "Breakdown": "Ordinary Shares Number",
           "2026-09-30": "7427000000.0",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2026-03-31": "7429000000.0",
           "2025-12-31": "7428838066.0",
           "2025-09-30": "7433087554.0",
@@ -4087,7 +4087,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2025-06-30": "7434158655.0",
           "2024-06-30": "7434138859.0",
           "2023-06-30": "7432000000.0",
@@ -4097,7 +4097,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-06-30": "7428434704.0",
+          "2026-06-30": "7427000000.0",
           "2025-06-30": "7434158655.0",
           "2024-06-30": "7434138859.0",
           "2023-06-30": "7432000000.0",
@@ -6116,25 +6116,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13,
-      "costOfEquity": 13.170000000000002,
+      "wacc": 12.989999999999998,
+      "costOfEquity": 13.16,
       "costOfDebt": 1.52,
       "taxRate": 20,
-      "beta": 1.0379,
-      "marketCap": 3870432510000
+      "beta": 1.0377,
+      "marketCap": 3884321000000
     },
     "beta": {
-      "beta5y": 1.0379
+      "beta5y": 1.0377
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 504.8,
-        "high": 509.6,
-        "low": 502.35,
-        "close": 508.68,
-        "volume": 17980000
-      },
       {
         "date": "2025-11-12",
         "open": 509.36,
@@ -8141,7 +8133,15 @@
         "high": 534.76,
         "low": 518.45,
         "close": 521.13,
-        "volume": 28990100
+        "volume": 29076800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 521.1,
+        "high": 529.66,
+        "low": 520,
+        "close": 523,
+        "volume": 18586800
       }
     ],
     "news": [
@@ -8178,19 +8178,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
-        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ad5ec0a2-bfd3-335a-9331-f25c38ccafe5",
         "title": "The Zacks Analyst Blog Highlights Microsoft, NVIDIA, Alphabet and Cooper-Standard",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-144500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8f4eb3b-6cfb-3bc7-9dd5-91c82b5bacff",
+        "title": "Top Research Reports for Microsoft, NVIDIA & Alphabet",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/top-research-reports-microsoft-nvidia-210900965.html",
         "type": "STORY"
       },
       {
@@ -8290,18 +8290,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 27.22,
-        "industryAvg": 31.05
+        "value": 27.31,
+        "industryAvg": 31.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.17,
-        "industryAvg": 7.29
+        "value": 11.21,
+        "industryAvg": 7.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.23,
-        "industryAvg": 7.93
+        "value": 8.26,
+        "industryAvg": 7.92
       },
       {
         "metric": "ROE",
@@ -8316,17 +8316,17 @@
       {
         "metric": "Gross Margin",
         "value": 67.78999999999999,
-        "industryAvg": 50.92
+        "industryAvg": 51.129999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 63.470000000000006,
-        "industryAvg": 36.57
+        "industryAvg": 36.78
       },
       {
         "metric": "Net Margin",
         "value": 39.69,
-        "industryAvg": 20.53
+        "industryAvg": 20.52
       }
     ]
   }

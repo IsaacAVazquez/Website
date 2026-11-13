@@ -1,10 +1,10 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.3877,
-      "ttmPe": 74.05,
-      "marketCap": 106656350817.24,
-      "psRatio": 6.91,
-      "pbRatio": 8.14,
+      "ttmPe": 72.54,
+      "marketCap": 104476725119.34,
+      "psRatio": 6.77,
+      "pbRatio": 7.98,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5624,24 +5624,16 @@
     },
     "wacc": {
       "wacc": 11.83,
-      "costOfEquity": 12.709999999999999,
+      "costOfEquity": 12.72,
       "costOfDebt": 0.96,
       "taxRate": 25,
-      "beta": 0.9794,
-      "marketCap": 106656350817.24
+      "beta": 0.9811,
+      "marketCap": 104476725119.34
     },
     "beta": {
-      "beta5y": 0.9794
+      "beta5y": 0.9811
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 172.686,
-        "high": 174.13,
-        "low": 171.866,
-        "close": 172.134,
-        "volume": 5177000
-      },
       {
         "date": "2025-11-12",
         "open": 173.742,
@@ -7648,7 +7640,15 @@
         "high": 103.65,
         "low": 100.39,
         "close": 102.76,
-        "volume": 14481600
+        "volume": 14600000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 101.42,
+        "high": 102.5,
+        "low": 99.63,
+        "close": 100.66,
+        "volume": 10865300
       }
     ],
     "news": [
@@ -7717,19 +7717,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
-        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
         "title": "High Growth Tech Stocks in the US To Watch This May 2025",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
+        "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
         "type": "STORY"
       }
     ],
@@ -7796,23 +7796,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 74.05,
-        "industryAvg": 28.25
+        "value": 72.54,
+        "industryAvg": 28.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.91,
-        "industryAvg": 4.87
+        "value": 6.77,
+        "industryAvg": 4.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.14,
-        "industryAvg": 5.21
+        "value": 7.98,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 2.16,
-        "industryAvg": -0.7100000000000001
+        "industryAvg": -0.72
       },
       {
         "metric": "ROA",
@@ -7827,12 +7827,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 20.48,
-        "industryAvg": 17.51
+        "industryAvg": 17.299999999999997
       },
       {
         "metric": "Net Margin",
         "value": 6.75,
-        "industryAvg": -0.97
+        "industryAvg": -0.98
       }
     ]
   }

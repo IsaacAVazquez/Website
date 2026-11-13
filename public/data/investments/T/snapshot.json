@@ -1,10 +1,10 @@
 {
   "symbol": "T",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.8546,
-      "ttmPe": 12,
-      "marketCap": 150509649948,
-      "psRatio": 1.17,
-      "pbRatio": 1.41,
+      "ttmPe": 11.96,
+      "marketCap": 149968734764,
+      "psRatio": 1.16,
+      "pbRatio": 1.4,
       "pegRatio": 1.17
     },
     "profitability": {
@@ -6549,25 +6549,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.65,
-      "costOfEquity": 7.19,
+      "wacc": 3.6799999999999997,
+      "costOfEquity": 7.2700000000000005,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 0.2797,
-      "marketCap": 150509649948
+      "beta": 0.2788,
+      "marketCap": 149968734764
     },
     "beta": {
-      "beta5y": 0.2797
+      "beta5y": 0.2788
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 24.93,
-        "high": 25.3,
-        "low": 24.88,
-        "close": 25.18,
-        "volume": 40962700
-      },
       {
         "date": "2025-11-12",
         "open": 25.44,
@@ -8574,7 +8566,15 @@
         "high": 22.27,
         "low": 21.85,
         "close": 22.26,
-        "volume": 32061100
+        "volume": 32080100
+      },
+      {
+        "date": "2026-11-12",
+        "open": 22.39,
+        "high": 22.55,
+        "low": 22.08,
+        "close": 22.18,
+        "volume": 43610400
       }
     ],
     "news": [
@@ -8643,19 +8643,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
-        "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
         "title": "Charter is in talks to combine with rival Cox Communications",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
+        "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
         "type": "STORY"
       }
     ],
@@ -8725,43 +8725,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12,
-        "industryAvg": 12.69
+        "value": 11.96,
+        "industryAvg": 12.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.17,
+        "value": 1.16,
         "industryAvg": 1.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.41,
-        "industryAvg": 1.58
+        "value": 1.4,
+        "industryAvg": 1.57
       },
       {
         "metric": "ROE",
         "value": 0.79,
-        "industryAvg": 8.09
+        "industryAvg": 8.12
       },
       {
         "metric": "ROA",
         "value": 0.2,
-        "industryAvg": 1.96
+        "industryAvg": 1.97
       },
       {
         "metric": "Gross Margin",
         "value": 61.51,
-        "industryAvg": 63.29
+        "industryAvg": 63.27
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.87,
-        "industryAvg": 33.31
+        "industryAvg": 33.379999999999995
       },
       {
         "metric": "Net Margin",
         "value": 2.65,
-        "industryAvg": 5.57
+        "industryAvg": 5.59
       }
     ]
   }

@@ -1,14 +1,11 @@
 {
   "symbol": "CDNS",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-11-12"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.0302,
-      "ttmPe": 65.18,
-      "marketCap": 89966130310,
-      "psRatio": 14.67,
-      "pbRatio": 13.09,
-      "pegRatio": 176.16
+      "ttmPe": 66.26,
+      "marketCap": 91456008280,
+      "psRatio": 14.91,
+      "pbRatio": 13.3,
+      "pegRatio": 179.08
     },
     "profitability": {
       "roe": 4.22,
@@ -950,7 +947,7 @@
         {
           "Breakdown": "Normalized Income",
           "TTM": "1314876417.43",
-          "2026-09-30": "318898031.03",
+          "2026-09-30": "318915220.0",
           "2026-06-30": "306260104.0",
           "2026-03-31": "327300208.0",
           "2025-12-31": "361810738.65",
@@ -1236,7 +1233,7 @@
         {
           "Breakdown": "Tax Effect of Unusual Items",
           "TTM": "21857417.43",
-          "2026-09-30": "-11930968.97",
+          "2026-09-30": "-11913780.0",
           "2026-06-30": "23768104.0",
           "2026-03-31": "2303208.0",
           "2025-12-31": "7109738.65",
@@ -6181,25 +6178,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.18,
-      "costOfEquity": 13.569999999999999,
+      "wacc": 13.170000000000002,
+      "costOfEquity": 13.55,
       "costOfDebt": 1.08,
       "taxRate": 28.999999999999996,
-      "beta": 1.0881,
-      "marketCap": 89966130310
+      "beta": 1.0874,
+      "marketCap": 91456008280
     },
     "beta": {
-      "beta5y": 1.0881
+      "beta5y": 1.0874
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 326.53,
-        "high": 326.79,
-        "low": 316.22,
-        "close": 318.51,
-        "volume": 1905500
-      },
       {
         "date": "2025-11-12",
         "open": 320.93,
@@ -8207,6 +8196,14 @@
         "low": 328.23,
         "close": 329.26,
         "volume": 1933200
+      },
+      {
+        "date": "2026-11-12",
+        "open": 325.9,
+        "high": 334.55,
+        "low": 324.35,
+        "close": 333.32,
+        "volume": 1682100
       }
     ],
     "news": [
@@ -8356,43 +8353,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 68.13,
-        "industryAvg": 27.36
+        "value": 66.26,
+        "industryAvg": 28.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.38,
-        "industryAvg": 5.21
+        "value": 14.91,
+        "industryAvg": 4.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.72,
-        "industryAvg": 5.79
+        "value": 13.3,
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 4.22,
-        "industryAvg": -12.35
+        "industryAvg": -0.72
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": -6.8500000000000005
+        "industryAvg": -0.4
       },
       {
         "metric": "Gross Margin",
         "value": 85.57000000000001,
-        "industryAvg": 63.449999999999996
+        "industryAvg": 63.51
       },
       {
         "metric": "EBITDA Margin",
         "value": 33.92,
-        "industryAvg": 1.5
+        "industryAvg": 17.299999999999997
       },
       {
         "metric": "Net Margin",
         "value": 17.740000000000002,
-        "industryAvg": -15.78
+        "industryAvg": -0.98
       }
     ]
   }

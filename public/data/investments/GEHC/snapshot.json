@@ -1,10 +1,10 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-10-31T15:02:27.720319+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-10-31T15:02:27.720319+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.7333,
-      "ttmPe": 16.18,
-      "pegRatio": 0.41,
-      "marketCap": 34619976950,
-      "psRatio": 1.6,
-      "pbRatio": 2.98
+      "ttmPe": 17.29,
+      "pegRatio": 0.44,
+      "marketCap": 37002728400,
+      "psRatio": 1.71,
+      "pbRatio": 3.19
     },
     "profitability": {
       "roe": 5.45,
@@ -6441,25 +6441,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.61,
-      "costOfEquity": 10.9,
+      "wacc": 8.66,
+      "costOfEquity": 10.82,
       "costOfDebt": 1.17,
       "taxRate": 17,
-      "beta": 0.7516,
-      "marketCap": 34619976950
+      "beta": 0.7358,
+      "marketCap": 37002728400
     },
     "beta": {
-      "beta5y": 0.7516
+      "beta5y": 0.7358
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 73.5,
-        "high": 74.39,
-        "low": 72.82,
-        "close": 73.41,
-        "volume": 3672900
-      },
       {
         "date": "2025-11-12",
         "open": 73.7,
@@ -8467,23 +8459,31 @@
         "low": 82.35,
         "close": 82.6,
         "volume": 3487000
+      },
+      {
+        "date": "2026-11-12",
+        "open": 82.01,
+        "high": 83.22,
+        "low": 81.42,
+        "close": 81.84,
+        "volume": 2672800
       }
     ],
     "news": [
-      {
-        "uuid": "3a8a0cd7-61db-3a85-96ee-ff05c2acb719",
-        "title": "GE HealthCare reports first quarter 2025 financial results",
-        "publisher": "Business Wire",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/ge-healthcare-reports-first-quarter-102000941.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1d6650b7-877d-3eb1-9d7a-65084f0cea49",
         "title": "GE Healthcare Hit by Tariffs, But Stock Still Rises",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/m/1d6650b7-877d-3eb1-9d7a-65084f0cea49/ge-healthcare-hit-by-tariffs%2C.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3a8a0cd7-61db-3a85-96ee-ff05c2acb719",
+        "title": "GE HealthCare reports first quarter 2025 financial results",
+        "publisher": "Business Wire",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/ge-healthcare-reports-first-quarter-102000941.html",
         "type": "STORY"
       },
       {
@@ -8511,19 +8511,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
-        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
         "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
         "publisher": "Business Wire",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
+        "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
         "type": "STORY"
       },
       {
@@ -8616,43 +8616,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.18,
-        "industryAvg": 25.83
+        "value": 17.29,
+        "industryAvg": 26.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.6,
-        "industryAvg": 3.12
+        "value": 1.71,
+        "industryAvg": 3.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.98,
-        "industryAvg": 3.04
+        "value": 3.19,
+        "industryAvg": 3.18
       },
       {
         "metric": "ROE",
         "value": 5.45,
-        "industryAvg": 8.52
+        "industryAvg": 9.5
       },
       {
         "metric": "ROA",
         "value": 1.63,
-        "industryAvg": 4.3
+        "industryAvg": 4.68
       },
       {
         "metric": "Gross Margin",
         "value": 40.339999999999996,
-        "industryAvg": 56.89999999999999
+        "industryAvg": 54.08
       },
       {
         "metric": "EBITDA Margin",
         "value": 18.81,
-        "industryAvg": 20.02
+        "industryAvg": 20.48
       },
       {
         "metric": "Net Margin",
         "value": 11.16,
-        "industryAvg": 8.41
+        "industryAvg": 9.15
       }
     ]
   }

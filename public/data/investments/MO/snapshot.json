@@ -1,10 +1,10 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.3386,
-      "ttmPe": 23.18,
-      "marketCap": 128769855598,
-      "psRatio": 6.24,
-      "pbRatio": -57.87,
+      "ttmPe": 23.34,
+      "marketCap": 129651726944,
+      "psRatio": 6.28,
+      "pbRatio": -58.27,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6205,25 +6205,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.489999999999999,
-      "costOfEquity": 8.73,
+      "wacc": 7.55,
+      "costOfEquity": 8.790000000000001,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
       "beta": 0.4755,
-      "marketCap": 128769855598
+      "marketCap": 129651726944
     },
     "beta": {
       "beta5y": 0.4755
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 57.8,
-        "high": 58.74,
-        "low": 57.77,
-        "close": 58.41,
-        "volume": 6974800
-      },
       {
         "date": "2025-11-12",
         "open": 58.4,
@@ -8231,6 +8223,14 @@
         "low": 75.53,
         "close": 77.39,
         "volume": 7310600
+      },
+      {
+        "date": "2026-11-12",
+        "open": 78.15,
+        "high": 78.72,
+        "low": 77.64,
+        "close": 77.92,
+        "volume": 7560100
       }
     ],
     "news": [
@@ -8283,19 +8283,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
-        "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
         "title": "Needham Initiates Altria Group at Hold",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
+        "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
         "type": "STORY"
       },
       {
@@ -8380,18 +8380,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.18,
-        "industryAvg": 23.04
+        "value": 23.34,
+        "industryAvg": 23.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.24,
-        "industryAvg": 6.24
+        "value": 6.28,
+        "industryAvg": 6.26
       },
       {
         "metric": "P/B Ratio",
-        "value": -57.87,
-        "industryAvg": 2.02
+        "value": -58.27,
+        "industryAvg": 2.01
       },
       {
         "metric": "ROE",

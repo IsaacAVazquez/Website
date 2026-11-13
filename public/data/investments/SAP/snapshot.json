@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -41,7 +41,7 @@
     "fundamentals": {
       "ttmEps": 8.1792,
       "ttmPe": 28.62,
-      "marketCap": 264297495400,
+      "marketCap": 264252335640,
       "psRatio": 5.92,
       "pbRatio": 5.08,
       "pegRatio": 2.54
@@ -6277,24 +6277,16 @@
     },
     "wacc": {
       "wacc": 12.97,
-      "costOfEquity": 13.469999999999999,
+      "costOfEquity": 13.459999999999999,
       "costOfDebt": 2.71,
       "taxRate": 24,
-      "beta": 1.0763,
-      "marketCap": 264297495400
+      "beta": 1.0764,
+      "marketCap": 264252335640
     },
     "beta": {
-      "beta5y": 1.0763
+      "beta5y": 1.0764
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 252.11,
-        "high": 254.61,
-        "low": 251.27,
-        "close": 254.38,
-        "volume": 940700
-      },
       {
         "date": "2025-11-12",
         "open": 253.18,
@@ -8302,6 +8294,14 @@
         "low": 232.87,
         "close": 234.1,
         "volume": 1688800
+      },
+      {
+        "date": "2026-11-12",
+        "open": 234.09,
+        "high": 235.9,
+        "low": 230.6,
+        "close": 234.06,
+        "volume": 1635100
       }
     ],
     "news": [
@@ -8346,11 +8346,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
-        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
-        "publisher": "Investing.com",
+        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
+        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
+        "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
+        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
         "type": "STORY"
       },
       {
@@ -8362,11 +8362,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
-        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
-        "publisher": "Bloomberg",
+        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
+        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
+        "publisher": "Investing.com",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
+        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
         "type": "STORY"
       },
       {
@@ -8462,22 +8462,22 @@
       {
         "metric": "P/E (TTM)",
         "value": 28.62,
-        "industryAvg": 28.25
+        "industryAvg": 28.15
       },
       {
         "metric": "P/S Ratio",
         "value": 5.92,
-        "industryAvg": 4.87
+        "industryAvg": 4.85
       },
       {
         "metric": "P/B Ratio",
         "value": 5.08,
-        "industryAvg": 5.21
+        "industryAvg": 5.18
       },
       {
         "metric": "ROE",
         "value": 4.96,
-        "industryAvg": -0.7100000000000001
+        "industryAvg": -0.72
       },
       {
         "metric": "ROA",
@@ -8492,12 +8492,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 35.27,
-        "industryAvg": 17.51
+        "industryAvg": 17.299999999999997
       },
       {
         "metric": "Net Margin",
         "value": 21.9,
-        "industryAvg": -0.97
+        "industryAvg": -0.98
       }
     ]
   }

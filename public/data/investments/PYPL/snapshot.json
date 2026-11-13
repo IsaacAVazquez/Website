@@ -1,10 +1,10 @@
 {
   "symbol": "PYPL",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.2425,
-      "ttmPe": 11.35,
-      "marketCap": 49784760000,
-      "psRatio": 1.45,
-      "pbRatio": 2.56,
+      "ttmPe": 11.12,
+      "marketCap": 48797100000,
+      "psRatio": 1.42,
+      "pbRatio": 2.5,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -5912,25 +5912,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.11,
-      "costOfEquity": 15.17,
+      "wacc": 12.030000000000001,
+      "costOfEquity": 15.129999999999999,
       "costOfDebt": 1.02,
       "taxRate": 22,
-      "beta": 1.2917,
-      "marketCap": 49784760000
+      "beta": 1.2909,
+      "marketCap": 48797100000
     },
     "beta": {
-      "beta5y": 1.2917
+      "beta5y": 1.2909
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 66.25,
-        "high": 67.95,
-        "low": 66.23,
-        "close": 67.4,
-        "volume": 10032500
-      },
       {
         "date": "2025-11-12",
         "open": 67.53,
@@ -7937,7 +7929,15 @@
         "high": 59.49,
         "low": 57.85,
         "close": 59.48,
-        "volume": 6260200
+        "volume": 6279200
+      },
+      {
+        "date": "2026-11-12",
+        "open": 59.2,
+        "high": 59.35,
+        "low": 58.27,
+        "close": 58.3,
+        "volume": 6150300
       }
     ],
     "news": [
@@ -7982,19 +7982,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "dd249649-9658-3812-8958-99484302c249",
-        "title": "This Week In Digital Payment - Africa's Fintech Surge Fuels Financial Inclusion Growth",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-06-02",
-        "link": "https://finance.yahoo.com/news/week-digital-payment-africas-fintech-123737084.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6e21c432-40d9-32e7-b141-7c9c78c408a7",
         "title": "Boeing upgraded, PayPal initiated: Wall Street's top analyst calls",
         "publisher": "The Fly",
         "reportDate": "2025-06-02",
         "link": "https://finance.yahoo.com/news/boeing-upgraded-paypal-initiated-wall-134407712.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "dd249649-9658-3812-8958-99484302c249",
+        "title": "This Week In Digital Payment - Africa's Fintech Surge Fuels Financial Inclusion Growth",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-06-02",
+        "link": "https://finance.yahoo.com/news/week-digital-payment-africas-fintech-123737084.html",
         "type": "STORY"
       },
       {
@@ -8085,18 +8085,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.35,
-        "industryAvg": 23.47
+        "value": 11.12,
+        "industryAvg": 23.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.45,
-        "industryAvg": 5.53
+        "value": 1.42,
+        "industryAvg": 5.46
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.56,
-        "industryAvg": 6.05
+        "value": 2.5,
+        "industryAvg": 5.97
       },
       {
         "metric": "ROE",

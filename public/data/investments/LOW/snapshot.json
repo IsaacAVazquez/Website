@@ -1,10 +1,10 @@
 {
   "symbol": "LOW",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.8254,
-      "ttmPe": 19.58,
-      "marketCap": 129927600000,
-      "psRatio": 1.44,
-      "pbRatio": -17.47,
-      "pegRatio": 489.5
+      "ttmPe": 19.23,
+      "marketCap": 127605060000,
+      "psRatio": 1.41,
+      "pbRatio": -17.16,
+      "pegRatio": 480.75
     },
     "profitability": {
       "roe": -28.63,
@@ -5816,25 +5816,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.7,
-      "costOfEquity": 11.28,
+      "wacc": 8.67,
+      "costOfEquity": 11.29,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 24,
-      "beta": 0.7985,
-      "marketCap": 129927600000
+      "beta": 0.7963,
+      "marketCap": 127605060000
     },
     "beta": {
-      "beta5y": 0.7985
+      "beta5y": 0.7963
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 233.75,
-        "high": 236.86,
-        "low": 233.68,
-        "close": 235.34,
-        "volume": 1968100
-      },
       {
         "date": "2025-11-12",
         "open": 234.39,
@@ -7842,6 +7834,14 @@
         "low": 227.33,
         "close": 231.6,
         "volume": 2746500
+      },
+      {
+        "date": "2026-11-12",
+        "open": 233.7,
+        "high": 235,
+        "low": 227.39,
+        "close": 227.46,
+        "volume": 3819500
       }
     ],
     "news": [
@@ -7886,14 +7886,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
-        "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "a33e6f17-9cf5-3ecd-b2ea-0a29b462994a",
         "title": "NYSE Content Advisory: Pre-Market update + Retailers report earnings",
         "publisher": "CNW Group",
@@ -7902,11 +7894,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
-        "title": "Homeowners are feeling especially stressed about home repairs",
+        "uuid": "02f10c9f-69b5-35e4-bd1a-e7cc2b039c87",
+        "title": "Nvidia CEO, VFC Vans prices, Lowe's earnings: Trending Tickers",
         "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/video/nvidia-ceo-vfc-vans-prices-134946247.html",
         "type": "VIDEO"
       },
       {
@@ -7916,6 +7908,14 @@
         "reportDate": "2025-05-25",
         "link": "https://finance.yahoo.com/m/a5be009f-e52b-3ac7-95ad-512d273b64e1/lowe%27s-just-issued-a-warning.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "4f3736bb-b565-3e3d-b39f-5e2cdc6636e3",
+        "title": "Homeowners are feeling especially stressed about home repairs",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-25",
+        "link": "https://finance.yahoo.com/video/homeowners-feeling-especially-stressed-home-140025695.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "aff55959-70ca-319c-bee0-b6838ba8d029",
@@ -7991,18 +7991,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.58,
-        "industryAvg": 23.03
+        "value": 19.23,
+        "industryAvg": 24.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.44,
-        "industryAvg": 1.83
+        "value": 1.41,
+        "industryAvg": 1.8
       },
       {
         "metric": "P/B Ratio",
-        "value": -17.47,
-        "industryAvg": 17.96
+        "value": -17.16,
+        "industryAvg": 17.79
       },
       {
         "metric": "ROE",

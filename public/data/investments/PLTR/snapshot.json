@@ -1,10 +1,10 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-13T17:02:56.057218+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-11"
+      "price": "2026-11-12"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.4267,
-      "ttmPe": 120.84,
-      "marketCap": 415337977200,
-      "psRatio": 56.99,
-      "pbRatio": 36.99,
+      "ttmPe": 120.26,
+      "marketCap": 413362471740,
+      "psRatio": 56.72,
+      "pbRatio": 36.82,
       "pegRatio": 0.88
     },
     "profitability": {
@@ -5301,25 +5301,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.65,
-      "costOfEquity": 17.66,
+      "wacc": 17.599999999999998,
+      "costOfEquity": 17.61,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.6069,
-      "marketCap": 415337977200
+      "beta": 1.6102,
+      "marketCap": 413362471740
     },
     "beta": {
-      "beta5y": 1.6069
+      "beta5y": 1.6102
     },
     "price": [
-      {
-        "date": "2025-11-11",
-        "open": 190.335,
-        "high": 192.925,
-        "low": 187.13,
-        "close": 190.96,
-        "volume": 49819700
-      },
       {
         "date": "2025-11-12",
         "open": 190.58,
@@ -7326,16 +7318,24 @@
         "high": 175.41,
         "low": 170.8,
         "close": 172.4,
-        "volume": 16017600
+        "volume": 16119500
+      },
+      {
+        "date": "2026-11-12",
+        "open": 170.2,
+        "high": 173.052,
+        "low": 168.25,
+        "close": 171.58,
+        "volume": 12406100
       }
     ],
     "news": [
       {
-        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
-        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
-        "publisher": "Insider Monkey",
+        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
+        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
+        "publisher": "MT Newswires",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
         "type": "STORY"
       },
       {
@@ -7347,11 +7347,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
-        "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
-        "publisher": "MT Newswires",
+        "uuid": "944b24c7-5dc1-3bf4-a1c9-ea3e0b527d80",
+        "title": "Palantir (PLTR) Joins Forces with Ondas to Elevate AI-Powered Autonomous Drones",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/palantir-strikes-ai-partnerships-archer-192210992.html",
+        "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
         "type": "STORY"
       },
       {
@@ -7395,20 +7395,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
         "title": "Nebius Group Stock Earns 84 RS Rating",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7479,18 +7479,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 120.84,
-        "industryAvg": 31.05
+        "value": 120.26,
+        "industryAvg": 31.02
       },
       {
         "metric": "P/S Ratio",
-        "value": 56.99,
-        "industryAvg": 7.29
+        "value": 56.72,
+        "industryAvg": 7.28
       },
       {
         "metric": "P/B Ratio",
-        "value": 36.99,
-        "industryAvg": 7.93
+        "value": 36.82,
+        "industryAvg": 7.92
       },
       {
         "metric": "ROE",
@@ -7505,17 +7505,17 @@
       {
         "metric": "Gross Margin",
         "value": 83.43,
-        "industryAvg": 50.92
+        "industryAvg": 51.129999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 47.199999999999996,
-        "industryAvg": 36.57
+        "industryAvg": 36.78
       },
       {
         "metric": "Net Margin",
         "value": 48.76,
-        "industryAvg": 20.53
+        "industryAvg": 20.52
       }
     ]
   }
