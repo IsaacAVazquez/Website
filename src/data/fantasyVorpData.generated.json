@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-12T22:45:58.200Z",
+  "generatedAt": "2026-11-13T22:42:27.760Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-12T22:45:58.855Z",
+        "accessedAt": "2026-11-13T22:42:28.587Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2782,7 +2782,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 106,
             "rank": 309,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-11-12T22:45:59.579Z",
+        "accessedAt": "2026-11-13T22:42:29.160Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8261,7 +8261,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 106,
             "rank": 322,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-12T22:46:00.199Z",
+        "accessedAt": "2026-11-13T22:42:29.764Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13866,7 +13866,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 106,
             "rank": 349,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-11-12T22:46:00.490Z",
+        "accessedAt": "2026-11-13T22:42:30.722Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19185,7 +19185,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 106,
             "rank": 344,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-11-12T22:46:01.093Z",
+        "accessedAt": "2026-11-13T22:42:31.240Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24196,7 +24196,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 106,
             "rank": 305,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-11-12T22:46:01.737Z",
+        "accessedAt": "2026-11-13T22:42:32.086Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29999,7 +29999,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 106,
             "rank": 354,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-11-12T22:46:02.801Z",
+        "accessedAt": "2026-11-13T22:42:32.924Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -34967,7 +34967,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 104,
             "rank": 310,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-11-12T22:46:03.403Z",
+        "accessedAt": "2026-11-13T22:42:33.440Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40401,7 +40401,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 104,
             "rank": 318,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-11-12T22:46:03.987Z",
+        "accessedAt": "2026-11-13T22:42:34.183Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45754,7 +45754,7 @@
           {
             "playerId": "fp-18226",
             "name": "Hollywood Brown",
-            "team": "PHI",
+            "team": "FA",
             "position": "WR",
             "positionRank": 104,
             "rank": 317,
