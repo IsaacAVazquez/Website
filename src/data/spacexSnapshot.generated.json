@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T01:58:51.884Z",
+  "generatedAt": "2026-11-13T17:17:08.731Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-13T01:58:43.380Z"
+    "generatedAt": "2026-11-13T17:16:55.916Z"
   },
   "upcomingLaunches": [
     {
@@ -320,9 +320,9 @@
       "upcoming": true,
       "success": null,
       "details": "This is the 25th flight of the Orbital ATK's uncrewed resupply spacecraft Cygnus and its 24th flight to the International Space Station under the Commercial Resupply Services contract with NASA.",
-      "dateUtc": "2026-11-29T15:49:00Z",
-      "dateUnix": 1795967340,
-      "dateLocal": "2026-11-29T15:49:00Z",
+      "dateUtc": "2026-11-29T15:47:00Z",
+      "dateUnix": 1795967220,
+      "dateLocal": "2026-11-29T15:47:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2840,6 +2840,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-13T01:58:51.461Z"
+    "generatedAt": "2026-11-13T17:17:07.958Z"
   }
 }
