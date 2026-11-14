@@ -1478,6 +1478,31 @@
       "crew": []
     }
   },
+  "e61d353c-db55-4a57-8184-0fab187231e6": {
+    "launchId": "e61d353c-db55-4a57-8184-0fab187231e6",
+    "launchName": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 9)",
+    "window": "upcoming",
+    "images": {
+      "launch": [
+        {
+          "label": "Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 9)",
+          "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        }
+      ],
+      "patch": [],
+      "rocket": [],
+      "spacecraft": [],
+      "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        }
+      ],
+      "crew": []
+    }
+  },
   "f6af629d-39b5-4f86-bc0c-f8776444a858": {
     "launchId": "f6af629d-39b5-4f86-bc0c-f8776444a858",
     "launchName": "Falcon 9 Block 5 | Starlink Group 15-15",
