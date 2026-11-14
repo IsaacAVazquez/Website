@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-11-14T06:43:16.579Z",
+  "generatedAt": "2026-11-14T15:11:09.668Z",
   "updatedAt": "2026-11-14",
   "sourceLabel": "ESPN",
   "sourceUrls": {
@@ -409,14 +409,36 @@
         "lastTen": "7-3"
       },
       {
+        "id": "por",
+        "abbreviation": "POR",
+        "name": "Portland Trail Blazers",
+        "shortName": "Trail Blazers",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 4,
+        "position": 4,
+        "wins": 9,
+        "losses": 3,
+        "winPercent": 0.75,
+        "gamesBack": 1.5,
+        "gamesPlayed": 12,
+        "pointsFor": 119.583336,
+        "pointsAgainst": 111.833336,
+        "pointDifferential": 93,
+        "streak": "W3",
+        "homeRecord": "3-2",
+        "awayRecord": "6-1",
+        "lastTen": "7-3"
+      },
+      {
         "id": "min",
         "abbreviation": "MIN",
         "name": "Minnesota Timberwolves",
         "shortName": "Timberwolves",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 4,
-        "position": 4,
+        "conferenceSeed": 5,
+        "position": 5,
         "wins": 9,
         "losses": 3,
         "winPercent": 0.75,
@@ -431,58 +453,14 @@
         "lastTen": "7-3"
       },
       {
-        "id": "por",
-        "abbreviation": "POR",
-        "name": "Portland Trail Blazers",
-        "shortName": "Trail Blazers",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 5,
-        "position": 5,
-        "wins": 8,
-        "losses": 3,
-        "winPercent": 0.72727275,
-        "gamesBack": 2,
-        "gamesPlayed": 11,
-        "pointsFor": 119.545456,
-        "pointsAgainst": 112.27273,
-        "pointDifferential": 80,
-        "streak": "W2",
-        "homeRecord": "3-2",
-        "awayRecord": "5-1",
-        "lastTen": "7-3"
-      },
-      {
-        "id": "okc",
-        "abbreviation": "OKC",
-        "name": "Oklahoma City Thunder",
-        "shortName": "Thunder",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 6,
-        "position": 6,
-        "wins": 8,
-        "losses": 4,
-        "winPercent": 0.6666667,
-        "gamesBack": 2.5,
-        "gamesPlayed": 12,
-        "pointsFor": 111.083336,
-        "pointsAgainst": 106.916664,
-        "pointDifferential": 50,
-        "streak": "L2",
-        "homeRecord": "5-0",
-        "awayRecord": "3-4",
-        "lastTen": "6-4"
-      },
-      {
         "id": "mem",
         "abbreviation": "MEM",
         "name": "Memphis Grizzlies",
         "shortName": "Grizzlies",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 7,
-        "position": 7,
+        "conferenceSeed": 6,
+        "position": 6,
         "wins": 8,
         "losses": 4,
         "winPercent": 0.6666667,
@@ -503,8 +481,8 @@
         "shortName": "Warriors",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 8,
-        "position": 8,
+        "conferenceSeed": 7,
+        "position": 7,
         "wins": 8,
         "losses": 5,
         "winPercent": 0.61538464,
@@ -517,6 +495,28 @@
         "homeRecord": "6-1",
         "awayRecord": "2-4",
         "lastTen": "8-2"
+      },
+      {
+        "id": "okc",
+        "abbreviation": "OKC",
+        "name": "Oklahoma City Thunder",
+        "shortName": "Thunder",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 8,
+        "position": 8,
+        "wins": 8,
+        "losses": 5,
+        "winPercent": 0.61538464,
+        "gamesBack": 3,
+        "gamesPlayed": 13,
+        "pointsFor": 111.15385,
+        "pointsAgainst": 107.38461,
+        "pointDifferential": 49,
+        "streak": "L3",
+        "homeRecord": "5-0",
+        "awayRecord": "3-5",
+        "lastTen": "5-5"
       },
       {
         "id": "den",
@@ -615,16 +615,16 @@
         "division": null,
         "conferenceSeed": 13,
         "position": 13,
-        "wins": 2,
+        "wins": 3,
         "losses": 8,
-        "winPercent": 0.2,
-        "gamesBack": 7.5,
-        "gamesPlayed": 10,
-        "pointsFor": 112.2,
-        "pointsAgainst": 118.1,
-        "pointDifferential": -59,
-        "streak": "L1",
-        "homeRecord": "2-3",
+        "winPercent": 0.27272728,
+        "gamesBack": 7,
+        "gamesPlayed": 11,
+        "pointsFor": 112.27273,
+        "pointsAgainst": 117.545456,
+        "pointDifferential": -58,
+        "streak": "W1",
+        "homeRecord": "3-3",
         "awayRecord": "0-5",
         "lastTen": "2-8"
       },
@@ -638,15 +638,15 @@
         "conferenceSeed": 14,
         "position": 14,
         "wins": 1,
-        "losses": 10,
-        "winPercent": 0.09090909,
-        "gamesBack": 9,
-        "gamesPlayed": 11,
-        "pointsFor": 108.27273,
-        "pointsAgainst": 121,
-        "pointDifferential": -140,
-        "streak": "L4",
-        "homeRecord": "0-6",
+        "losses": 11,
+        "winPercent": 0.083333336,
+        "gamesBack": 9.5,
+        "gamesPlayed": 12,
+        "pointsFor": 108.166664,
+        "pointsAgainst": 120.916664,
+        "pointDifferential": -153,
+        "streak": "L5",
+        "homeRecord": "0-7",
         "awayRecord": "1-4",
         "lastTen": "1-9"
       },
@@ -686,39 +686,39 @@
     },
     {
       "rank": 2,
-      "name": "Victor Wembanyama",
-      "teamId": "sa",
-      "teamAbbreviation": "SA",
-      "total": 363,
-      "appearances": 12,
-      "perGame": 30.25
-    },
-    {
-      "rank": 3,
       "name": "Shai Gilgeous-Alexander",
       "teamId": "okc",
       "teamAbbreviation": "OKC",
-      "total": 356,
-      "appearances": 12,
-      "perGame": 29.666666
+      "total": 396,
+      "appearances": 13,
+      "perGame": 30.461538
+    },
+    {
+      "rank": 3,
+      "name": "Victor Wembanyama",
+      "teamId": "sa",
+      "teamAbbreviation": "SA",
+      "total": 375,
+      "appearances": 13,
+      "perGame": 28.846153
     },
     {
       "rank": 4,
+      "name": "Giannis Antetokounmpo",
+      "teamId": "mia",
+      "teamAbbreviation": "MIA",
+      "total": 342,
+      "appearances": 12,
+      "perGame": 28.5
+    },
+    {
+      "rank": 5,
       "name": "Stephen Curry",
       "teamId": "gs",
       "teamAbbreviation": "GS",
       "total": 278,
       "appearances": 10,
       "perGame": 27.8
-    },
-    {
-      "rank": 5,
-      "name": "Giannis Antetokounmpo",
-      "teamId": "mia",
-      "teamAbbreviation": "MIA",
-      "total": 305,
-      "appearances": 11,
-      "perGame": 27.727272
     },
     {
       "rank": 6,
@@ -731,6 +731,15 @@
     },
     {
       "rank": 7,
+      "name": "Jalen Brunson",
+      "teamId": "ny",
+      "teamAbbreviation": "NY",
+      "total": 319,
+      "appearances": 12,
+      "perGame": 26.583334
+    },
+    {
+      "rank": 8,
       "name": "Jayson Tatum",
       "teamId": "bos",
       "teamAbbreviation": "BOS",
@@ -739,7 +748,7 @@
       "perGame": 26.272728
     },
     {
-      "rank": 8,
+      "rank": 9,
       "name": "Jamal Murray",
       "teamId": "den",
       "teamAbbreviation": "DEN",
@@ -748,22 +757,13 @@
       "perGame": 26.2
     },
     {
-      "rank": 9,
-      "name": "Ty Jerome",
-      "teamId": "mem",
-      "teamAbbreviation": "MEM",
-      "total": 262,
-      "appearances": 10,
-      "perGame": 26.2
-    },
-    {
       "rank": 10,
-      "name": "Darius Acuff Jr.",
-      "teamId": "sac",
-      "teamAbbreviation": "SAC",
-      "total": 288,
+      "name": "Anthony Davis",
+      "teamId": "wsh",
+      "teamAbbreviation": "WSH",
+      "total": 282,
       "appearances": 11,
-      "perGame": 26.181818
+      "perGame": 25.636364
     }
   ],
   "rebounders": [
@@ -772,36 +772,36 @@
       "name": "Karl-Anthony Towns",
       "teamId": "ny",
       "teamAbbreviation": "NY",
-      "total": 149,
-      "appearances": 11,
-      "perGame": 13.545455
+      "total": 164,
+      "appearances": 12,
+      "perGame": 13.666667
     },
     {
       "rank": 2,
       "name": "Domantas Sabonis",
       "teamId": "sac",
       "teamAbbreviation": "SAC",
-      "total": 133,
-      "appearances": 10,
-      "perGame": 13.3
+      "total": 145,
+      "appearances": 11,
+      "perGame": 13.181818
     },
     {
       "rank": 3,
       "name": "Giannis Antetokounmpo",
       "teamId": "mia",
       "teamAbbreviation": "MIA",
-      "total": 139,
-      "appearances": 11,
-      "perGame": 12.636364
+      "total": 148,
+      "appearances": 12,
+      "perGame": 12.333333
     },
     {
       "rank": 4,
       "name": "Victor Wembanyama",
       "teamId": "sa",
       "teamAbbreviation": "SA",
-      "total": 140,
-      "appearances": 12,
-      "perGame": 11.666667
+      "total": 152,
+      "appearances": 13,
+      "perGame": 11.692307
     },
     {
       "rank": 5,
@@ -832,35 +832,44 @@
     },
     {
       "rank": 8,
-      "name": "Anthony Davis",
-      "teamId": "wsh",
-      "teamAbbreviation": "WSH",
-      "total": 115,
-      "appearances": 11,
-      "perGame": 10.454545
+      "name": "Isaiah Hartenstein",
+      "teamId": "okc",
+      "teamAbbreviation": "OKC",
+      "total": 137,
+      "appearances": 13,
+      "perGame": 10.538462
     },
     {
       "rank": 9,
       "name": "Donovan Clingan",
       "teamId": "por",
       "teamAbbreviation": "POR",
-      "total": 115,
-      "appearances": 11,
-      "perGame": 10.454545
+      "total": 126,
+      "appearances": 12,
+      "perGame": 10.5
     },
     {
       "rank": 10,
-      "name": "Isaiah Hartenstein",
-      "teamId": "okc",
-      "teamAbbreviation": "OKC",
-      "total": 121,
-      "appearances": 12,
-      "perGame": 10.083333
+      "name": "Anthony Davis",
+      "teamId": "wsh",
+      "teamAbbreviation": "WSH",
+      "total": 115,
+      "appearances": 11,
+      "perGame": 10.454545
     }
   ],
   "assistLeaders": [
     {
       "rank": 1,
+      "name": "Davion Mitchell",
+      "teamId": "mia",
+      "teamAbbreviation": "MIA",
+      "total": 110,
+      "appearances": 12,
+      "perGame": 9.166667
+    },
+    {
+      "rank": 2,
       "name": "Nikola Jokic",
       "teamId": "den",
       "teamAbbreviation": "DEN",
@@ -869,7 +878,16 @@
       "perGame": 9
     },
     {
-      "rank": 2,
+      "rank": 3,
+      "name": "Josh Giddey",
+      "teamId": "chi",
+      "teamAbbreviation": "CHI",
+      "total": 97,
+      "appearances": 11,
+      "perGame": 8.818182
+    },
+    {
+      "rank": 4,
       "name": "Trae Young",
       "teamId": "wsh",
       "teamAbbreviation": "WSH",
@@ -878,25 +896,16 @@
       "perGame": 8.769231
     },
     {
-      "rank": 3,
-      "name": "Davion Mitchell",
-      "teamId": "mia",
-      "teamAbbreviation": "MIA",
-      "total": 93,
-      "appearances": 11,
-      "perGame": 8.454545
-    },
-    {
-      "rank": 4,
-      "name": "Josh Giddey",
-      "teamId": "chi",
-      "teamAbbreviation": "CHI",
-      "total": 83,
-      "appearances": 10,
-      "perGame": 8.3
-    },
-    {
       "rank": 5,
+      "name": "Franz Wagner",
+      "teamId": "orl",
+      "teamAbbreviation": "ORL",
+      "total": 99,
+      "appearances": 12,
+      "perGame": 8.25
+    },
+    {
+      "rank": 6,
       "name": "Cade Cunningham",
       "teamId": "det",
       "teamAbbreviation": "DET",
@@ -905,34 +914,7 @@
       "perGame": 7.909091
     },
     {
-      "rank": 6,
-      "name": "Franz Wagner",
-      "teamId": "orl",
-      "teamAbbreviation": "ORL",
-      "total": 87,
-      "appearances": 11,
-      "perGame": 7.909091
-    },
-    {
       "rank": 7,
-      "name": "Alperen Sengun",
-      "teamId": "hou",
-      "teamAbbreviation": "HOU",
-      "total": 79,
-      "appearances": 10,
-      "perGame": 7.9
-    },
-    {
-      "rank": 8,
-      "name": "Andrew Nembhard",
-      "teamId": "ind",
-      "teamAbbreviation": "IND",
-      "total": 78,
-      "appearances": 10,
-      "perGame": 7.8
-    },
-    {
-      "rank": 9,
       "name": "Luka Doncic",
       "teamId": "lal",
       "teamAbbreviation": "LAL",
@@ -941,10 +923,28 @@
       "perGame": 7.6363635
     },
     {
+      "rank": 8,
+      "name": "Alperen Sengun",
+      "teamId": "hou",
+      "teamAbbreviation": "HOU",
+      "total": 84,
+      "appearances": 11,
+      "perGame": 7.6363635
+    },
+    {
+      "rank": 9,
+      "name": "Andrew Nembhard",
+      "teamId": "ind",
+      "teamAbbreviation": "IND",
+      "total": 84,
+      "appearances": 11,
+      "perGame": 7.6363635
+    },
+    {
       "rank": 10,
-      "name": "Draymond Green",
-      "teamId": "gs",
-      "teamAbbreviation": "GS",
+      "name": "Jalen Johnson",
+      "teamId": "atl",
+      "teamAbbreviation": "ATL",
       "total": 75,
       "appearances": 10,
       "perGame": 7.5
@@ -2067,7 +2067,7 @@
         "pointsFor": 558,
         "pointsAgainst": 581
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "mil": {
       "team": {
@@ -2359,7 +2359,7 @@
         "pointsFor": 500,
         "pointsAgainst": 585
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "chi": {
       "team": {
@@ -2651,7 +2651,7 @@
         "pointsFor": 577,
         "pointsAgainst": 629
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "cle": {
       "team": {
@@ -2943,7 +2943,7 @@
         "pointsFor": 564,
         "pointsAgainst": 568
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "bos": {
       "team": {
@@ -3235,7 +3235,7 @@
         "pointsFor": 566,
         "pointsAgainst": 473
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "lac": {
       "team": {
@@ -3527,7 +3527,7 @@
         "pointsFor": 596,
         "pointsAgainst": 610
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "mem": {
       "team": {
@@ -3819,7 +3819,7 @@
         "pointsFor": 578,
         "pointsAgainst": 571
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "atl": {
       "team": {
@@ -4111,7 +4111,7 @@
         "pointsFor": 614,
         "pointsAgainst": 607
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "mia": {
       "team": {
@@ -4403,7 +4403,7 @@
         "pointsFor": 579,
         "pointsAgainst": 574
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "cha": {
       "team": {
@@ -4695,7 +4695,7 @@
         "pointsFor": 495,
         "pointsAgainst": 570
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "utah": {
       "team": {
@@ -4987,7 +4987,7 @@
         "pointsFor": 535,
         "pointsAgainst": 590
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "sac": {
       "team": {
@@ -5279,7 +5279,7 @@
         "pointsFor": 527,
         "pointsAgainst": 581
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "ny": {
       "team": {
@@ -5571,7 +5571,7 @@
         "pointsFor": 572,
         "pointsAgainst": 508
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "lal": {
       "team": {
@@ -5863,7 +5863,7 @@
         "pointsFor": 608,
         "pointsAgainst": 563
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "orl": {
       "team": {
@@ -6155,7 +6155,7 @@
         "pointsFor": 560,
         "pointsAgainst": 550
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "dal": {
       "team": {
@@ -6447,7 +6447,7 @@
         "pointsFor": 572,
         "pointsAgainst": 560
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "bkn": {
       "team": {
@@ -6739,7 +6739,7 @@
         "pointsFor": 563,
         "pointsAgainst": 572
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "den": {
       "team": {
@@ -7031,7 +7031,7 @@
         "pointsFor": 575,
         "pointsAgainst": 557
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "ind": {
       "team": {
@@ -7323,7 +7323,7 @@
         "pointsFor": 551,
         "pointsAgainst": 547
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "no": {
       "team": {
@@ -7615,7 +7615,7 @@
         "pointsFor": 541,
         "pointsAgainst": 679
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "det": {
       "team": {
@@ -7907,7 +7907,7 @@
         "pointsFor": 612,
         "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "tor": {
       "team": {
@@ -8199,7 +8199,7 @@
         "pointsFor": 537,
         "pointsAgainst": 574
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "hou": {
       "team": {
@@ -8491,7 +8491,7 @@
         "pointsFor": 556,
         "pointsAgainst": 545
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "sa": {
       "team": {
@@ -8783,7 +8783,7 @@
         "pointsFor": 618,
         "pointsAgainst": 512
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "phx": {
       "team": {
@@ -9075,7 +9075,7 @@
         "pointsFor": 549,
         "pointsAgainst": 531
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "okc": {
       "team": {
@@ -9367,7 +9367,7 @@
         "pointsFor": 565,
         "pointsAgainst": 526
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "min": {
       "team": {
@@ -9659,7 +9659,7 @@
         "pointsFor": 592,
         "pointsAgainst": 510
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "por": {
       "team": {
@@ -9951,7 +9951,7 @@
         "pointsFor": 582,
         "pointsAgainst": 567
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "gs": {
       "team": {
@@ -10243,7 +10243,7 @@
         "pointsFor": 577,
         "pointsAgainst": 544
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     },
     "wsh": {
       "team": {
@@ -10535,7 +10535,7 @@
         "pointsFor": 559,
         "pointsAgainst": 633
       },
-      "generatedAt": "2026-11-14T06:43:16.579Z"
+      "generatedAt": "2026-11-14T15:11:09.668Z"
     }
   }
 }
