@@ -1,10 +1,10 @@
 {
   "symbol": "ADI",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4268,
-      "ttmPe": 48.55,
-      "marketCap": 198226054740,
-      "psRatio": 14.28,
-      "pbRatio": 5.91,
-      "pegRatio": 0.3
+      "ttmPe": 47.23,
+      "marketCap": 192842532035,
+      "psRatio": 13.89,
+      "pbRatio": 5.75,
+      "pegRatio": 0.29
     },
     "profitability": {
       "roe": 3.9800000000000004,
@@ -6102,25 +6102,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.23,
-      "costOfEquity": 14.85,
+      "wacc": 14.21,
+      "costOfEquity": 14.84,
       "costOfDebt": 0.97,
       "taxRate": 13,
-      "beta": 1.251,
-      "marketCap": 198226054740
+      "beta": 1.2546,
+      "marketCap": 192842532035
     },
     "beta": {
-      "beta5y": 1.251
+      "beta5y": 1.2546
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 236.92,
-        "high": 242,
-        "low": 235.84,
-        "close": 241.44,
-        "volume": 4677300
-      },
       {
         "date": "2025-11-13",
         "open": 239.64,
@@ -8128,6 +8120,14 @@
         "low": 402,
         "close": 409.29,
         "volume": 2943000
+      },
+      {
+        "date": "2026-11-13",
+        "open": 408.65,
+        "high": 410.09,
+        "low": 388.87,
+        "close": 397.97,
+        "volume": 3114600
       }
     ],
     "news": [
@@ -8196,11 +8196,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5ead9e7d-2158-3a29-857d-bd0cb801f5f4",
-        "title": "Morgan Stanley Maintains a Buy Rating on Analog Devices (ADI), Cuts PT",
+        "uuid": "085bc294-f540-37b5-964f-89e6999abb75",
+        "title": "Susquehanna Reiterates Buy Rating on Analog Devices (ADI) After Q2 Report",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-25",
-        "link": "https://finance.yahoo.com/news/morgan-stanley-maintains-buy-rating-094831412.html",
+        "link": "https://finance.yahoo.com/news/susquehanna-reiterates-buy-rating-analog-130044155.html",
         "type": "STORY"
       },
       {
@@ -8228,6 +8228,10 @@
         "totalPay": 111163
       },
       {
+        "name": "Jeff Ambrosi",
+        "title": "Head of Investor Relations"
+      },
+      {
         "name": "Mr. Martin Cotter",
         "title": "Chief Business Units Officer & EMEA President",
         "age": 60,
@@ -8246,12 +8250,6 @@
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 2119759
-      },
-      {
-        "name": "Mr. Rob Oshana",
-        "title": "Chief of Software, Digital & AI Technologies",
-        "age": 64,
-        "yearBorn": 1961
       },
       {
         "name": "Mr. Vincent T. Roche",
@@ -8283,18 +8281,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.55,
-        "industryAvg": 22.22
+        "value": 47.23,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.28,
-        "industryAvg": 10.88
+        "value": 13.89,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.91,
-        "industryAvg": 9.55
+        "value": 5.75,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

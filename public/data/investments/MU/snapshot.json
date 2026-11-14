@@ -1,10 +1,10 @@
 {
   "symbol": "MU",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 74.2111,
-      "ttmPe": 10.93,
-      "marketCap": 917580300000,
-      "psRatio": 6.89,
-      "pbRatio": 6.63,
+      "ttmPe": 10.49,
+      "marketCap": 880268610000,
+      "psRatio": 6.61,
+      "pbRatio": 6.36,
       "pegRatio": 0.01
     },
     "profitability": {
@@ -5964,25 +5964,17 @@
       ]
     },
     "wacc": {
-      "wacc": 23.62,
-      "costOfEquity": 23.75,
+      "wacc": 23.45,
+      "costOfEquity": 23.59,
       "costOfDebt": 0,
       "taxRate": 15,
-      "beta": 2.3785,
-      "marketCap": 917580300000
+      "beta": 2.3882,
+      "marketCap": 880268610000
     },
     "beta": {
-      "beta5y": 2.3785
+      "beta5y": 2.3882
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 244.9,
-        "high": 249.19,
-        "low": 240.84,
-        "close": 244.9,
-        "volume": 17263100
-      },
       {
         "date": "2025-11-13",
         "open": 243.6,
@@ -7989,7 +7981,15 @@
         "high": 799.7,
         "low": 764.57,
         "close": 798.44,
-        "volume": 27122300
+        "volume": 27638400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 782.69,
+        "high": 796.18,
+        "low": 750.25,
+        "close": 778.31,
+        "volume": 27792200
       }
     ],
     "news": [
@@ -8042,19 +8042,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
-        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b4a81ac4-d05c-3f12-9400-520f57e38b19",
         "title": "Why Micron (MU) is a Top Momentum Stock for the Long-Term",
         "publisher": "Zacks",
         "reportDate": "2025-06-05",
         "link": "https://finance.yahoo.com/news/why-micron-mu-top-momentum-135009027.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "afe5011f-cf74-3c69-8069-3feb8d628358",
+        "title": "Micron Technology: Smart Investment or Risky Bet in 2025?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-06-05",
+        "link": "https://finance.yahoo.com/m/afe5011f-cf74-3c69-8069-3feb8d628358/micron-technology%3A-smart.html",
         "type": "STORY"
       },
       {
@@ -8066,11 +8066,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "29a5977c-32e7-3ab0-8167-d6a7447ca16d",
-        "title": "Mizuho Adjusts Price Target on Micron Technology to $130 From $124, Maintains Outperform Rating",
+        "uuid": "3586c61d-c3b7-314a-b5c1-0def620b8629",
+        "title": "UBS Adjusts Price Target on Micron Technology to $120 From $92, Maintains Buy Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-06-05",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-micron-095539930.html",
+        "link": "https://finance.yahoo.com/news/ubs-adjusts-price-target-micron-143845185.html",
         "type": "STORY"
       }
     ],
@@ -8140,18 +8140,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 10.93,
-        "industryAvg": 22.22
+        "value": 10.49,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.89,
-        "industryAvg": 10.88
+        "value": 6.61,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.63,
-        "industryAvg": 9.55
+        "value": 6.36,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

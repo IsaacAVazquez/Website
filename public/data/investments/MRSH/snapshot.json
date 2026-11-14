@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.3469,
-      "ttmPe": 24.86,
-      "marketCap": 98657311472,
+      "ttmPe": 24.89,
+      "marketCap": 98780918358,
       "psRatio": 3.47,
-      "pbRatio": 6.72,
+      "pbRatio": 6.73,
       "pegRatio": 2.15
     },
     "profitability": {
@@ -3678,25 +3678,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.580000000000001,
-      "costOfEquity": 9.1,
+      "wacc": 7.64,
+      "costOfEquity": 9.17,
       "costOfDebt": 1.11,
       "taxRate": 21,
-      "beta": 0.5224,
-      "marketCap": 98657311472
+      "beta": 0.5201,
+      "marketCap": 98780918358
     },
     "beta": {
-      "beta5y": 0.5224
+      "beta5y": 0.5201
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 181.47,
-        "high": 183.33,
-        "low": 181.07,
-        "close": 182.79,
-        "volume": 1901000
-      },
       {
         "date": "2025-11-13",
         "open": 182.89,
@@ -5704,6 +5696,14 @@
         "low": 205.62,
         "close": 205.69,
         "volume": 1350400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 207.72,
+        "high": 209.89,
+        "low": 206.76,
+        "close": 207.78,
+        "volume": 1824000
       }
     ],
     "news": [
@@ -5724,14 +5724,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
-        "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
-        "publisher": "Insider Monkey",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-inc-mmc-221719641.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
         "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
         "publisher": "WSJ",
@@ -5740,12 +5732,28 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "1b73dc6d-96c0-3aea-ad80-1fcdfc702642",
+        "title": "Marsh & McLennan Companies, Inc. (MMC): A Bull Case Theory",
+        "publisher": "Insider Monkey",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/news/marsh-mclennan-companies-inc-mmc-221719641.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
         "title": "Davos CEO Brief for Monday, January 19, 2026",
         "publisher": "WSJ",
         "reportDate": "2026-01-20",
         "link": "https://finance.yahoo.com/video/davos-ceo-brief-monday-january-224600583.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
+        "title": "Deep Shifts in Human Sentiment Are Redefining Economic, Health, and Workplace Norms, Oliver Wyman Forum Report Finds",
+        "publisher": "Business Wire",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
+        "type": "STORY"
       },
       {
         "uuid": "171d5505-dc56-3308-a908-b956a0833613",
@@ -5761,14 +5769,6 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "38d5cad9-749a-3c03-b859-a8c0721b6a96",
-        "title": "Deep Shifts in Human Sentiment Are Redefining Economic, Health, and Workplace Norms, Oliver Wyman Forum Report Finds",
-        "publisher": "Business Wire",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/deep-shifts-human-sentiment-redefining-174300915.html",
         "type": "STORY"
       },
       {
@@ -5856,28 +5856,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.86,
-        "industryAvg": 24.17
+        "value": 24.89,
+        "industryAvg": 24.47
       },
       {
         "metric": "P/S Ratio",
         "value": 3.47,
-        "industryAvg": 3.4
+        "industryAvg": 3.41
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.72,
-        "industryAvg": 4.33
+        "value": 6.73,
+        "industryAvg": 4.34
       },
       {
         "metric": "ROE",
         "value": 5.41,
-        "industryAvg": 17.080000000000002
+        "industryAvg": 18.66
       },
       {
         "metric": "ROA",
         "value": 1.35,
-        "industryAvg": 4.45
+        "industryAvg": 4.859999999999999
       },
       {
         "metric": "Gross Margin",
@@ -5892,7 +5892,7 @@
       {
         "metric": "Net Margin",
         "value": 11.77,
-        "industryAvg": 12.23
+        "industryAvg": 13.36
       }
     ]
   }

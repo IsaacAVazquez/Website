@@ -1,14 +1,11 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-11-13"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -43,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.3707,
-      "ttmPe": 57.12,
-      "marketCap": 88578910000,
-      "psRatio": 7.03,
-      "pbRatio": 28.86,
+      "ttmPe": 56.69,
+      "marketCap": 87913600000,
+      "psRatio": 6.98,
+      "pbRatio": 28.65,
       "pegRatio": 3.66
     },
     "profitability": {
@@ -6880,25 +6877,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.6,
-      "costOfEquity": 11.78,
+      "wacc": 10.59,
+      "costOfEquity": 11.77,
       "costOfDebt": 1.09,
       "taxRate": 24,
-      "beta": 0.8614,
-      "marketCap": 88578910000
+      "beta": 0.8569,
+      "marketCap": 87913600000
     },
     "beta": {
-      "beta5y": 0.8614
+      "beta5y": 0.8569
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 394.03,
-        "high": 397.54,
-        "low": 391.04,
-        "close": 391.97,
-        "volume": 1128000
-      },
       {
         "date": "2025-11-13",
         "open": 390.72,
@@ -8906,6 +8895,14 @@
         "low": 529.95,
         "close": 530.4,
         "volume": 794200
+      },
+      {
+        "date": "2026-11-13",
+        "open": 534.28,
+        "high": 534.95,
+        "low": 527.76,
+        "close": 531.2,
+        "volume": 662100
       }
     ],
     "news": [
@@ -8915,6 +8912,22 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/motorola-launches-smart-radio-mission-130500875.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
+        "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
+        "publisher": "Reuters",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
         "type": "STORY"
       },
       {
@@ -8934,22 +8947,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "e2752269-21b6-3f3c-afe2-664884f6f81e",
-        "title": "Motorola Solutions nears $4.5 billion deal to buy Silvus, Bloomberg News reports",
-        "publisher": "Reuters",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-131952240.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "823920c6-c317-3961-b6f6-26992c43e545",
         "title": "Motorola Solutions Close to $4.5 Billion Deal to Buy Silvus",
         "publisher": "Insider Monkey",
@@ -8966,14 +8963,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
-        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
-        "publisher": "Reuters",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
         "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
         "publisher": "MT Newswires",
@@ -8982,12 +8971,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "6bb9845e-f29b-3d36-ab46-22c4f8fce1b7",
-        "title": "Motorola to acquire wireless-radio maker Silvus for $4.4bn",
-        "publisher": "Verdict",
+        "uuid": "9a003668-8e19-382f-b2db-8eccdea595a0",
+        "title": "Motorola Solutions bolsters communications segment with $4.4 billion deal for Silvus",
+        "publisher": "Reuters",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/6bb9845e-f29b-3d36-ab46-22c4f8fce1b7/motorola-to-acquire.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-buy-silvus-technologies-202403265.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
+        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -9058,43 +9055,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.76,
-        "industryAvg": 26.3
+        "value": 56.69,
+        "industryAvg": 23.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.66,
-        "industryAvg": 4.1
+        "value": 6.98,
+        "industryAvg": 3.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 30.48,
-        "industryAvg": 5.56
+        "value": 28.65,
+        "industryAvg": 4.85
       },
       {
         "metric": "ROE",
-        "value": 21.36,
-        "industryAvg": 15.27
+        "value": 17.84,
+        "industryAvg": 22.770000000000003
       },
       {
         "metric": "ROA",
-        "value": 2.91,
-        "industryAvg": 5.84
+        "value": 2.54,
+        "industryAvg": 9.87
       },
       {
         "metric": "Gross Margin",
-        "value": 53.559999999999995,
-        "industryAvg": 48.82
+        "value": 52.370000000000005,
+        "industryAvg": 48.18
       },
       {
         "metric": "EBITDA Margin",
-        "value": 31.89,
-        "industryAvg": 16.36
+        "value": 27.96,
+        "industryAvg": 22.12
       },
       {
         "metric": "Net Margin",
-        "value": 17.78,
-        "industryAvg": 10.39
+        "value": 15.17,
+        "industryAvg": 15.939999999999998
       }
     ]
   }

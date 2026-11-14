@@ -1,10 +1,10 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.7074,
-      "ttmPe": 40.2,
-      "marketCap": 283166340000,
-      "psRatio": 13.64,
-      "pbRatio": 14.76,
-      "pegRatio": 0.53
+      "ttmPe": 39.39,
+      "marketCap": 277490400000,
+      "psRatio": 13.36,
+      "pbRatio": 14.46,
+      "pegRatio": 0.52
     },
     "profitability": {
       "roe": 12.97,
@@ -5771,25 +5771,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.17,
-      "costOfEquity": 15.85,
+      "wacc": 15.1,
+      "costOfEquity": 15.790000000000001,
       "costOfDebt": 1.04,
       "taxRate": 14.000000000000002,
-      "beta": 1.3782,
-      "marketCap": 283166340000
+      "beta": 1.3778,
+      "marketCap": 277490400000
     },
     "beta": {
-      "beta5y": 1.3782
+      "beta5y": 1.3778
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 160.85,
-        "high": 164.53,
-        "low": 160.4,
-        "close": 163.09,
-        "volume": 6241200
-      },
       {
         "date": "2025-11-13",
         "open": 162.53,
@@ -7797,6 +7789,14 @@
         "low": 305.77,
         "close": 312.48,
         "volume": 6171400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 311.78,
+        "high": 312,
+        "low": 294.73,
+        "close": 303.6,
+        "volume": 5229700
       }
     ],
     "news": [
@@ -7809,11 +7809,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
-        "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
+        "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
+        "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
+        "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
         "type": "STORY"
       },
       {
@@ -7825,11 +7825,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
-        "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
+        "uuid": "2f3891c5-ce20-3ab3-bdbd-5bf03d080942",
+        "title": "Sensata Technologies (ST) Q1 Earnings: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
+        "link": "https://finance.yahoo.com/news/sensata-technologies-st-q1-earnings-103422596.html",
         "type": "STORY"
       },
       {
@@ -7873,11 +7873,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b2cc4bf-9dd6-3dd1-8f5f-d7f25e81db45",
-        "title": "Texas Instruments Insiders Sell US$5.5m Of Stock, Possibly Signalling Caution",
-        "publisher": "Simply Wall St.",
+        "uuid": "aef3881f-6223-3d99-9975-d3c24cfd8228",
+        "title": "Why the Market Dipped But Texas Instruments (TXN) Gained Today",
+        "publisher": "Zacks",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/texas-instruments-insiders-sell-us-130022300.html",
+        "link": "https://finance.yahoo.com/news/why-market-dipped-texas-instruments-215009732.html",
         "type": "STORY"
       }
     ],
@@ -7944,18 +7944,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.2,
-        "industryAvg": 22.22
+        "value": 39.39,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.64,
-        "industryAvg": 10.88
+        "value": 13.36,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.76,
-        "industryAvg": 9.55
+        "value": 14.46,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

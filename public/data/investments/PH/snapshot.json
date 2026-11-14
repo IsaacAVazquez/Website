@@ -1,10 +1,10 @@
 {
   "symbol": "PH",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 22.1957,
-      "ttmPe": 43.83,
-      "marketCap": 122585400000,
-      "psRatio": 5.47,
-      "pbRatio": 7.68,
+      "ttmPe": 43.06,
+      "marketCap": 120415680000,
+      "psRatio": 5.37,
+      "pbRatio": 7.54,
       "pegRatio": 1.76
     },
     "profitability": {
@@ -6531,25 +6531,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.26,
-      "costOfEquity": 13.91,
+      "wacc": 12.2,
+      "costOfEquity": 13.87,
       "costOfDebt": 0.84,
       "taxRate": 22,
-      "beta": 1.1318,
-      "marketCap": 122585400000
+      "beta": 1.129,
+      "marketCap": 120415680000
     },
     "beta": {
-      "beta5y": 1.1318
+      "beta5y": 1.129
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 860.96,
-        "high": 869.36,
-        "low": 845.4,
-        "close": 854.32,
-        "volume": 904400
-      },
       {
         "date": "2025-11-13",
         "open": 849.32,
@@ -8557,6 +8549,14 @@
         "low": 955.96,
         "close": 957.98,
         "volume": 395500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 964.05,
+        "high": 970.49,
+        "low": 944.8,
+        "close": 955.68,
+        "volume": 491400
       }
     ],
     "news": [
@@ -8585,19 +8585,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
-        "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
         "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
+        "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
         "type": "STORY"
       },
       {
@@ -8705,43 +8705,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.83,
-        "industryAvg": 27.2
+        "value": 43.06,
+        "industryAvg": 26.49
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.47,
-        "industryAvg": 3.28
+        "value": 5.37,
+        "industryAvg": 3.2
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.68,
-        "industryAvg": 5.89
+        "value": 7.54,
+        "industryAvg": 5.7
       },
       {
         "metric": "ROE",
         "value": 5.64,
-        "industryAvg": 19.650000000000002
+        "industryAvg": 19.71
       },
       {
         "metric": "ROA",
         "value": 2.4299999999999997,
-        "industryAvg": 6.72
+        "industryAvg": 6.74
       },
       {
         "metric": "Gross Margin",
         "value": 37.730000000000004,
-        "industryAvg": 29.470000000000002
+        "industryAvg": 29.4
       },
       {
         "metric": "EBITDA Margin",
         "value": 26.179999999999996,
-        "industryAvg": 16.580000000000002
+        "industryAvg": 16.64
       },
       {
         "metric": "Net Margin",
         "value": 14.75,
-        "industryAvg": 10.59
+        "industryAvg": 10.63
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.0597,
-      "ttmPe": 37.59,
-      "marketCap": 72931164040,
-      "psRatio": 8.6,
-      "pbRatio": 16.46,
-      "pegRatio": 3.09
+      "ttmPe": 37.17,
+      "marketCap": 72118985645,
+      "psRatio": 8.51,
+      "pbRatio": 16.28,
+      "pegRatio": 3.06
     },
     "profitability": {
       "roe": 11.360000000000001,
@@ -6240,21 +6240,13 @@
       "costOfEquity": 12.04,
       "costOfDebt": 0.27999999999999997,
       "taxRate": 23,
-      "beta": 0.8951,
-      "marketCap": 72931164040
+      "beta": 0.893,
+      "marketCap": 72118985645
     },
     "beta": {
-      "beta5y": 0.8951
+      "beta5y": 0.893
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 430,
-        "high": 432.36,
-        "low": 418.43,
-        "close": 419.52,
-        "volume": 977600
-      },
       {
         "date": "2025-11-13",
         "open": 420,
@@ -8262,6 +8254,14 @@
         "low": 405.43,
         "close": 405.49,
         "volume": 268400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 406.35,
+        "high": 412.1,
+        "low": 406.35,
+        "close": 411.13,
+        "volume": 400600
       }
     ],
     "news": [
@@ -8330,19 +8330,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e1d1e38a-ad1b-36e5-963c-bb0bfe3a7bb8",
-        "title": "Is GRINDR INC (GRND) Stock Outpacing Its Computer and Technology Peers This Year?",
+        "uuid": "e4b46a0d-e375-352e-a0ea-f191583bf366",
+        "title": "Are Business Services Stocks Lagging  GORILLA TECH GP (GRRR) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/grindr-inc-grnd-stock-outpacing-134004098.html",
+        "link": "https://finance.yahoo.com/news/business-services-stocks-lagging-gorilla-134006668.html",
         "type": "STORY"
       },
       {
-        "uuid": "f68fd351-a8c1-3faa-a47e-d132f2b08f3f",
-        "title": "Is Axos Financial (AX) Stock Outpacing Its Finance Peers This Year?",
+        "uuid": "af5baeca-6bbc-32dc-b0d0-cfcdf1ea283f",
+        "title": "Is DXP Enterprises (DXPE) Outperforming Other Industrial Products Stocks This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/axos-financial-ax-stock-outpacing-134004384.html",
+        "link": "https://finance.yahoo.com/news/dxp-enterprises-dxpe-outperforming-other-134003274.html",
         "type": "STORY"
       }
     ],
@@ -8409,18 +8409,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.59,
-        "industryAvg": 30.65
+        "value": 37.17,
+        "industryAvg": 30.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.6,
-        "industryAvg": 1.27
+        "value": 8.51,
+        "industryAvg": 1.26
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.46,
-        "industryAvg": 2.34
+        "value": 16.28,
+        "industryAvg": 2.32
       },
       {
         "metric": "ROE",

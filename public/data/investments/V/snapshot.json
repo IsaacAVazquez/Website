@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.0196,
-      "ttmPe": 35.4,
-      "marketCap": 815212262070,
-      "psRatio": 17.76,
-      "pbRatio": 22.58,
+      "ttmPe": 35.42,
+      "marketCap": 815614552224,
+      "psRatio": 17.77,
+      "pbRatio": 22.59,
       "pegRatio": 2.5
     },
     "profitability": {
@@ -5785,25 +5785,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.870000000000001,
-      "costOfEquity": 11.15,
+      "wacc": 10.9,
+      "costOfEquity": 11.18,
       "costOfDebt": 0.8699999999999999,
       "taxRate": 18,
-      "beta": 0.7821,
-      "marketCap": 815212262070
+      "beta": 0.7805,
+      "marketCap": 815614552224
     },
     "beta": {
-      "beta5y": 0.7821
+      "beta5y": 0.7805
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 338.25,
-        "high": 344.26,
-        "low": 337.4,
-        "close": 338.88,
-        "volume": 6389600
-      },
       {
         "date": "2025-11-13",
         "open": 339.04,
@@ -7811,6 +7803,14 @@
         "low": 420.02,
         "close": 420.31,
         "volume": 5636100
+      },
+      {
+        "date": "2026-11-13",
+        "open": 423.67,
+        "high": 427.46,
+        "low": 422.59,
+        "close": 425.76,
+        "volume": 4641200
       }
     ],
     "news": [
@@ -7887,11 +7887,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
-        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
+        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
+        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
         "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
         "type": "STORY"
       }
     ],
@@ -7963,18 +7963,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.4,
-        "industryAvg": 23.47
+        "value": 35.42,
+        "industryAvg": 23.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.76,
-        "industryAvg": 5.53
+        "value": 17.77,
+        "industryAvg": 5.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 22.58,
-        "industryAvg": 6.05
+        "value": 22.59,
+        "industryAvg": 6.04
       },
       {
         "metric": "ROE",
@@ -7989,12 +7989,12 @@
       {
         "metric": "Gross Margin",
         "value": 82.17,
-        "industryAvg": 65.69
+        "industryAvg": 65.68
       },
       {
         "metric": "EBITDA Margin",
         "value": 65.32,
-        "industryAvg": 44.15
+        "industryAvg": 44.13
       },
       {
         "metric": "Net Margin",

@@ -1,10 +1,10 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.5733,
-      "ttmPe": 12.96,
-      "marketCap": 142811839220,
-      "psRatio": 2.29,
-      "pbRatio": 1.95,
-      "pegRatio": 2.86
+      "ttmPe": 13.15,
+      "marketCap": 144898119160,
+      "psRatio": 2.32,
+      "pbRatio": 1.98,
+      "pegRatio": 2.9
     },
     "profitability": {
       "roe": 3.83,
@@ -5728,25 +5728,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.510000000000001,
-      "costOfEquity": 7.249999999999999,
+      "wacc": 6.619999999999999,
+      "costOfEquity": 7.359999999999999,
       "costOfDebt": 1.09,
       "taxRate": 20,
-      "beta": 0.288,
-      "marketCap": 142811839220
+      "beta": 0.2861,
+      "marketCap": 144898119160
     },
     "beta": {
-      "beta5y": 0.288
+      "beta5y": 0.2861
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 292.57,
-        "high": 295.47,
-        "low": 291.8,
-        "close": 294.93,
-        "volume": 1336000
-      },
       {
         "date": "2025-11-13",
         "open": 294.97,
@@ -7754,6 +7746,14 @@
         "low": 371.02,
         "close": 371.76,
         "volume": 887100
+      },
+      {
+        "date": "2026-11-13",
+        "open": 375.32,
+        "high": 377.93,
+        "low": 373.8,
+        "close": 375.74,
+        "volume": 1516400
       }
     ],
     "news": [
@@ -7774,19 +7774,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
-        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
         "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "620c0335-ead1-3f65-9f49-8c719c4cef3f",
+        "title": "First American Q1 Earnings Surpass Estimates on Higher Revenues",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
         "type": "STORY"
       },
       {
@@ -7822,19 +7822,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
+        "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "8e43ad91-9211-34f7-9c0d-ee98cb851263",
         "title": "CB Raises Dividend, Okays Buyback: Is the Stock a Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/cb-raises-dividend-okays-buyback-182400982.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
-        "title": "Chubb rejigs investment and asset management leadership",
-        "publisher": "Life Insurance International",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
         "type": "STORY"
       }
     ],
@@ -7902,18 +7902,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.96,
-        "industryAvg": 32.79
+        "value": 13.15,
+        "industryAvg": 33.12
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.29,
-        "industryAvg": 4.04
+        "value": 2.32,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.95,
-        "industryAvg": 5.42
+        "value": 1.98,
+        "industryAvg": 5.47
       },
       {
         "metric": "ROE",
@@ -7936,7 +7936,7 @@
       {
         "metric": "Net Margin",
         "value": 17.41,
-        "industryAvg": 13.38
+        "industryAvg": 13.389999999999999
       }
     ]
   }

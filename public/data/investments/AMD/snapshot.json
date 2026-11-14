@@ -1,10 +1,10 @@
 {
   "symbol": "AMD",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5991,
-      "ttmPe": 120.22,
-      "marketCap": 902332800000,
-      "psRatio": 19.86,
-      "pbRatio": 13.19,
-      "pegRatio": 1.3
+      "ttmPe": 116.12,
+      "marketCap": 871585920000,
+      "psRatio": 19.18,
+      "pbRatio": 12.74,
+      "pegRatio": 1.25
     },
     "profitability": {
       "roe": 3.58,
@@ -6209,25 +6209,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.67,
-      "costOfEquity": 24.91,
+      "wacc": 24.39,
+      "costOfEquity": 24.63,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 40,
-      "beta": 2.5254,
-      "marketCap": 902332800000
+      "beta": 2.5231,
+      "marketCap": 871585920000
     },
     "beta": {
-      "beta5y": 2.5254
+      "beta5y": 2.5231
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 253.13,
-        "high": 263.51,
-        "low": 250,
-        "close": 258.89,
-        "volume": 108942000
-      },
       {
         "date": "2025-11-13",
         "open": 251.9,
@@ -8234,7 +8226,15 @@
         "high": 594,
         "low": 554.9,
         "close": 585.3,
-        "volume": 55161000
+        "volume": 55411500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 566.79,
+        "high": 571.14,
+        "low": 520.01,
+        "close": 534.06,
+        "volume": 49163200
       }
     ],
     "news": [
@@ -8303,19 +8303,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
-        "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "e4a8656b-f91a-33d9-aa1d-34b42cc5cd85",
         "title": "Howard Hughes stake, Tyson Foods declines, AMD earnings preview",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/video/howard-hughes-stake-tyson-foods-161138167.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "d7508ced-74ae-3726-bec2-6d547fe0b90b",
+        "title": "AMD earnings preview, Datadog, Ferrari profits: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/amd-earnings-preview-datadog-ferrari-145641441.html",
         "type": "VIDEO"
       }
     ],
@@ -8381,18 +8381,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 120.22,
-        "industryAvg": 22.22
+        "value": 116.12,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 19.86,
-        "industryAvg": 10.88
+        "value": 19.18,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.19,
-        "industryAvg": 9.55
+        "value": 12.74,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

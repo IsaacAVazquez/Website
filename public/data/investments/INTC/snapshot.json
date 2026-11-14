@@ -1,10 +1,10 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -2.3911,
       "ttmPe": 3518.87,
-      "marketCap": 331875000000,
-      "psRatio": 5.54,
-      "pbRatio": 2.89,
+      "marketCap": 316794600000,
+      "psRatio": 5.29,
+      "pbRatio": 2.76,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6198,25 +6198,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.74,
-      "costOfEquity": 23.78,
+      "wacc": 20.45,
+      "costOfEquity": 23.599999999999998,
       "costOfDebt": 0.65,
       "taxRate": 12,
-      "beta": 2.3833,
-      "marketCap": 331875000000
+      "beta": 2.3896,
+      "marketCap": 316794600000
     },
     "beta": {
-      "beta5y": 2.3833
+      "beta5y": 2.3896
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 38.06,
-        "high": 38.2,
-        "low": 37.35,
-        "close": 37.89,
-        "volume": 53876000
-      },
       {
         "date": "2025-11-13",
         "open": 37.27,
@@ -8223,7 +8215,15 @@
         "high": 62.76,
         "low": 59.41,
         "close": 61.2,
-        "volume": 79987700
+        "volume": 80687500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 60.66,
+        "high": 61.34,
+        "low": 57,
+        "close": 59.66,
+        "volume": 102322800
       }
     ],
     "news": [
@@ -8300,11 +8300,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
-        "title": "Why Intel Stock Is Sinking Today",
+        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
+        "title": "Why Arm Holdings Stock Was Moving Higher Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
+        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
         "type": "STORY"
       }
     ],
@@ -8369,17 +8369,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 3518.87,
-        "industryAvg": 22.22
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.54,
-        "industryAvg": 10.88
+        "value": 5.29,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.89,
-        "industryAvg": 9.55
+        "value": 2.76,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

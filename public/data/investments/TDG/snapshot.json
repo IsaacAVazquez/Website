@@ -1,14 +1,11 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
-    },
-    "retainedSections": [
-      "info"
-    ]
+      "price": "2026-11-13"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -35,19 +32,19 @@
       "country": "United States",
       "industry": "Aerospace & Defense",
       "sector": "Industrials",
-      "longBusinessSummary": "TransDigm Group Incorporated designs, produces, and supplies aircraft components in the United States and internationally. The Power & Control segment offers mechanical/electro-mechanical actuators and controls, ignition systems and engine technology, specialized pumps and valves, power conditioning devices, specialized AC/DC electric motors and generators, batteries and chargers, databus and power controls, sensor products, switches and relay panels, hoists, winches and lifting devices, cargo loading and handling and delivery systems, and electronic components. Its Airframe segment provides engineered latching and locking devices, engineered rods, engineered connectors and elastomer sealing solutions, cockpit security components and systems, cockpit displays, lavatory components, seat belts and safety restraints, engineered and customized interior surfaces and related components, thermal protection and insulation products, lighting and control technology, parachutes, specialized flight, wind tunnel and jet engine testing services and equipment, and testing and instrumentation solutions, as well as engineered audio, radio, and antenna systems. The Non-Aviation segment offers seat belts and safety restraints; mechanical/electromechanical actuators and controls; hydraulic/electromechanical actuators and fuel valves; refueling systems; and turbine controls. It serves engine and power system and subsystem suppliers, airlines, third party maintenance suppliers, military buying agencies, and repair depots; airframe manufacturers, cabin system and subsystem suppliers, airlines, and maintenance suppliers; and off-road vehicle and subsystem suppliers, child restraint system suppliers, and satellite and space system suppliers, as well as manufacturers of heavy equipment. The company was formerly known as TD Holding Corporation and changed its name to TransDigm Group Incorporated in January 2006. The company was founded in 1993 and is headquartered in Cleveland, Ohio.",
-      "fullTimeEmployees": 16500,
+      "longBusinessSummary": "TransDigm Group Incorporated designs, produces, and supplies aircraft components in the United States and internationally. The Power & Control segment offers mechanical/electro-mechanical actuators and controls, ignition systems and engine technology, specialized pumps and valves, power conditioning devices, specialized AC/DC electric motors and generators, batteries and chargers, databus and power controls, sensor products, switches and relay panels, hoists, winches and lifting devices, cargo loading and handling systems, delivery systems, and electronic components. Its Airframe segment provides engineered latching and locking devices, engineered rods, engineered connectors and elastomer sealing solutions, cockpit security components and systems, cockpit displays, lavatory components, seat belts and safety restraints, engineered and customized interior surfaces and related components, thermal protection and insulation products, lighting and control technology, parachutes, specialized flight, wind tunnel and jet engine testing services and equipment, and testing and instrumentation solutions, as well as engineered audio, radio, and antenna systems. The Non-Aviation segment offers seat belts and safety restraints; mechanical/electromechanical actuators and controls; hydraulic/electromechanical actuators and fuel valves; refueling systems; and turbine controls. It serves engine and power system and subsystem suppliers, airlines, third party maintenance suppliers, military buying agencies, and repair depots; airframe manufacturers, cabin system and subsystem suppliers, airlines, and third party maintenance suppliers; and off-road vehicle and subsystem suppliers, child restraint system suppliers, and satellite and space system suppliers, as well as manufacturers of heavy equipment. The company was formerly known as TD Holding Corporation and changed its name to TransDigm Group Incorporated in 2006. The company was founded in 1993 and is headquartered in Cleveland, Ohio.",
+      "fullTimeEmployees": 19100,
       "website": "https://www.transdigm.com",
       "shortName": "TransDigm Group Incorporated",
       "longName": "TransDigm Group Incorporated"
     },
     "fundamentals": {
       "ttmEps": 35.55,
-      "ttmPe": 35.02,
-      "marketCap": 67949859000,
-      "psRatio": 6.44,
-      "pbRatio": -6.79,
-      "pegRatio": 1.06
+      "ttmPe": 34.24,
+      "marketCap": 66436951296,
+      "psRatio": 6.29,
+      "pbRatio": -6.64,
+      "pegRatio": 1.03
     },
     "profitability": {
       "roe": -5.94,
@@ -6474,25 +6471,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.59,
-      "costOfEquity": 12.4,
+      "wacc": 8.53,
+      "costOfEquity": 12.389999999999999,
       "costOfDebt": 1.54,
       "taxRate": 25,
-      "beta": 0.9401,
-      "marketCap": 67949859000
+      "beta": 0.9372,
+      "marketCap": 66436951296
     },
     "beta": {
-      "beta5y": 0.9401
+      "beta5y": 0.9372
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 1279.13,
-        "high": 1341.61,
-        "low": 1279.13,
-        "close": 1307.97,
-        "volume": 569200
-      },
       {
         "date": "2025-11-13",
         "open": 1322.53,
@@ -8500,6 +8489,14 @@
         "low": 1201.8199,
         "close": 1203,
         "volume": 540200
+      },
+      {
+        "date": "2026-11-13",
+        "open": 1214.9301,
+        "high": 1225.91,
+        "low": 1206.52,
+        "close": 1217.28,
+        "volume": 523000
       }
     ],
     "news": [
@@ -8536,11 +8533,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
-        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
+        "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
+        "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204345034.html",
         "type": "STORY"
       },
       {
@@ -8552,11 +8549,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
-        "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
+        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
+        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204345034.html",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
         "type": "STORY"
       },
       {
@@ -8643,28 +8640,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.02,
-        "industryAvg": 33.67
+        "value": 34.24,
+        "industryAvg": 33.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.44,
-        "industryAvg": 5.75
+        "value": 6.29,
+        "industryAvg": 5.63
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.79,
-        "industryAvg": 7.47
+        "value": -6.64,
+        "industryAvg": 7.38
       },
       {
         "metric": "ROE",
         "value": -5.94,
-        "industryAvg": 12.53
+        "industryAvg": 12.520000000000001
       },
       {
         "metric": "ROA",
         "value": 2.15,
-        "industryAvg": 3.8600000000000003
+        "industryAvg": 3.85
       },
       {
         "metric": "Gross Margin",
@@ -8674,12 +8671,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 48.06,
-        "industryAvg": 15.22
+        "industryAvg": 15.17
       },
       {
         "metric": "Net Margin",
         "value": 19.68,
-        "industryAvg": 6.569999999999999
+        "industryAvg": 6.5600000000000005
       }
     ]
   }

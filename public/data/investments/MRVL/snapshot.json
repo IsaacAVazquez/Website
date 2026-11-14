@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 55.58,
-      "marketCap": 148003840000,
-      "psRatio": 15.66,
-      "pbRatio": 7.99,
-      "pegRatio": 1.12
+      "ttmPe": 51.62,
+      "marketCap": 137447168000,
+      "psRatio": 14.54,
+      "pbRatio": 7.42,
+      "pegRatio": 1.04
     },
     "profitability": {
       "roe": 1.68,
@@ -5955,25 +5955,17 @@
       ]
     },
     "wacc": {
-      "wacc": 22.31,
-      "costOfEquity": 23.06,
+      "wacc": 22.15,
+      "costOfEquity": 22.95,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2916,
-      "marketCap": 148003840000
+      "beta": 2.3057,
+      "marketCap": 137447168000
     },
     "beta": {
-      "beta5y": 2.2916
+      "beta5y": 2.3057
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 90.56,
-        "high": 92.87,
-        "low": 88.87,
-        "close": 89.33,
-        "volume": 11846700
-      },
       {
         "date": "2025-11-13",
         "open": 87.59,
@@ -7980,7 +7972,15 @@
         "high": 169.58,
         "low": 155.97,
         "close": 164.45,
-        "volume": 21465700
+        "volume": 21641200
+      },
+      {
+        "date": "2026-11-13",
+        "open": 161.6,
+        "high": 163.89,
+        "low": 149.17,
+        "close": 156.76,
+        "volume": 23688400
       }
     ],
     "news": [
@@ -8025,14 +8025,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
-        "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
         "title": "3 Hyped Up  Stocks with Mounting Challenges",
         "publisher": "StockStory",
@@ -8041,19 +8033,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
-        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
+        "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
+        "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
         "type": "STORY"
       },
       {
-        "uuid": "fac7e9c9-3a42-306d-9540-0d8c745c0113",
-        "title": "Broadcom, Arista Networks initiated: Wall Street's top analyst calls",
-        "publisher": "The Fly",
+        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
+        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
+        "publisher": "StockStory",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/broadcom-arista-networks-initiated-wall-133658404.html",
+        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
         "type": "STORY"
       },
       {
@@ -8062,6 +8054,14 @@
         "publisher": "StockStory",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/expect-marvell-technology-mrvl-q1-070050529.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
+        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
         "type": "STORY"
       }
     ],
@@ -8130,18 +8130,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 55.58,
-        "industryAvg": 22.22
+        "value": 51.62,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.66,
-        "industryAvg": 10.88
+        "value": 14.54,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.99,
-        "industryAvg": 9.55
+        "value": 7.42,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

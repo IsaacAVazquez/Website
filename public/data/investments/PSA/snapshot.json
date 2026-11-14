@@ -1,10 +1,10 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.5547,
-      "ttmPe": 35.14,
-      "marketCap": 62728867536,
-      "psRatio": 12.46,
-      "pbRatio": 4.33,
+      "ttmPe": 34.81,
+      "marketCap": 62142179888,
+      "psRatio": 12.35,
+      "pbRatio": 4.28,
       "pegRatio": 0.6
     },
     "profitability": {
@@ -5199,24 +5199,16 @@
     },
     "wacc": {
       "wacc": 9.91,
-      "costOfEquity": 11.74,
+      "costOfEquity": 11.75,
       "costOfDebt": 0.84,
       "taxRate": 40,
-      "beta": 0.8565,
-      "marketCap": 62728867536
+      "beta": 0.8547,
+      "marketCap": 62142179888
     },
     "beta": {
-      "beta5y": 0.8565
+      "beta5y": 0.8547
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 276.6,
-        "high": 278.15,
-        "low": 273.93,
-        "close": 275.15,
-        "volume": 706400
-      },
       {
         "date": "2025-11-13",
         "open": 273.9,
@@ -7224,6 +7216,14 @@
         "low": 332.17,
         "close": 333.33,
         "volume": 1044500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 334.92,
+        "high": 336.42,
+        "low": 331.99,
+        "close": 332.59,
+        "volume": 1051800
       }
     ],
     "news": [
@@ -7233,6 +7233,22 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-07",
         "link": "https://finance.yahoo.com/news/psa-eyes-australian-market-offers-145600036.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
+        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
+        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
         "type": "STORY"
       },
       {
@@ -7249,22 +7265,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
-        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "f952f447-6617-385c-befb-c9e098554a3f",
-        "title": "Public Storage (PSA) Q1 Earnings: How Key Metrics Compare to Wall Street Estimates",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-earnings-220010141.html",
         "type": "STORY"
       },
       {
@@ -7366,18 +7366,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.14,
-        "industryAvg": 30.06
+        "value": 34.81,
+        "industryAvg": 29.38
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.46,
-        "industryAvg": 8.92
+        "value": 12.35,
+        "industryAvg": 8.84
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.33,
-        "industryAvg": 2.34
+        "value": 4.28,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",

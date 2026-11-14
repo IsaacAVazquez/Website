@@ -1,10 +1,10 @@
 {
   "symbol": "WFC",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 7.0962,
-      "ttmPe": 12.09,
-      "marketCap": 257540617620,
-      "psRatio": 2.95,
+      "ttmPe": 12.13,
+      "marketCap": 258291027345,
+      "psRatio": 2.96,
       "pbRatio": 1.47,
       "pegRatio": 0.94
     },
@@ -6679,24 +6679,16 @@
     },
     "wacc": {
       "wacc": 8.59,
-      "costOfEquity": 12.25,
+      "costOfEquity": 12.24,
       "costOfDebt": 5.1499999999999995,
       "taxRate": 16,
-      "beta": 0.921,
-      "marketCap": 257540617620
+      "beta": 0.9189,
+      "marketCap": 258291027345
     },
     "beta": {
-      "beta5y": 0.921
+      "beta5y": 0.9189
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 86.31,
-        "high": 88.64,
-        "low": 85.94,
-        "close": 86.26,
-        "volume": 16775200
-      },
       {
         "date": "2025-11-13",
         "open": 86.16,
@@ -8704,6 +8696,14 @@
         "low": 85.61,
         "close": 85.76,
         "volume": 7677900
+      },
+      {
+        "date": "2026-11-13",
+        "open": 86.47,
+        "high": 86.86,
+        "low": 85.33,
+        "close": 86.05,
+        "volume": 11801600
       }
     ],
     "news": [
@@ -8856,18 +8856,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.09,
-        "industryAvg": 13.37
+        "value": 12.13,
+        "industryAvg": 13.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.95,
-        "industryAvg": 3.65
+        "value": 2.96,
+        "industryAvg": 3.64
       },
       {
         "metric": "P/B Ratio",
         "value": 1.47,
-        "industryAvg": 1.67
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 13.8377,
-      "ttmPe": 47.75,
-      "marketCap": 576817290000,
-      "psRatio": 15.9,
-      "pbRatio": 85.42,
+      "ttmPe": 47.78,
+      "marketCap": 577218870000,
+      "psRatio": 15.91,
+      "pbRatio": 85.48,
       "pegRatio": 1.41
     },
     "profitability": {
@@ -5641,25 +5641,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.620000000000001,
-      "costOfEquity": 11.03,
+      "wacc": 10.65,
+      "costOfEquity": 11.06,
       "costOfDebt": 1.04,
       "taxRate": 19,
-      "beta": 0.7671,
-      "marketCap": 576817290000
+      "beta": 0.765,
+      "marketCap": 577218870000
     },
     "beta": {
-      "beta5y": 0.7671
+      "beta5y": 0.765
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 560,
-        "high": 565.91,
-        "low": 558.41,
-        "close": 561.23,
-        "volume": 1761500
-      },
       {
         "date": "2025-11-13",
         "open": 559.88,
@@ -7667,6 +7659,14 @@
         "low": 652.08,
         "close": 652.6,
         "volume": 1965400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 655.9,
+        "high": 662.75,
+        "low": 655,
+        "close": 661.19,
+        "volume": 1936300
       }
     ],
     "news": [
@@ -7695,19 +7695,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
-        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "484110ff-a690-397a-aa34-0318000b0bcc",
         "title": "The Zacks Analyst Blog Highlights Microsoft, Amazon.com, Mastercard and CBL & Associates",
         "publisher": "Zacks",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-130600270.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5b9dcc4b-b056-3ada-bc95-f86c8ba1a7bd",
+        "title": "Top Stock Reports for Microsoft, Amazon.com & Mastercard",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-microsoft-amazon-204300431.html",
         "type": "STORY"
       },
       {
@@ -7735,46 +7735,100 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
-        "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
         "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
+        "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
+        "type": "STORY"
       }
     ],
     "officers": [
+      {
+        "name": "Mr. Chris Mullett",
+        "title": "Corporate Controller & Principal Accounting Officer",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
+        "name": "Mr. Craig E. Vosburg",
+        "title": "Vice Chair",
+        "age": 58,
+        "yearBorn": 1967,
+        "totalPay": 2694403
+      },
+      {
+        "name": "Mr. Devin Corr",
+        "title": "Executive Vice President of Investor Relations"
+      },
+      {
+        "name": "Mr. Edward Grunde McLaughlin",
+        "title": "President & CTO of Mastercard Technology",
+        "age": 59,
+        "yearBorn": 1966,
+        "totalPay": 2064752
+      },
+      {
+        "name": "Mr. Ling Hai",
+        "title": "Chief Financial Officer",
+        "age": 54,
+        "yearBorn": 1971
+      },
       {
         "name": "Mr. Michael Miebach",
         "title": "CEO, President & Director",
         "age": 57,
         "yearBorn": 1968,
         "totalPay": 9761053
+      },
+      {
+        "name": "Mr. Otto Chan",
+        "title": "CTO, Chief Infrastructure?& Operations Mastercard??"
+      },
+      {
+        "name": "Mr. Richard R. Verma Ph.D.",
+        "title": "Chief Administrative Officer",
+        "age": 52,
+        "yearBorn": 1973
+      },
+      {
+        "name": "Mr. Sachin Mehra",
+        "title": "Chief Business Officer",
+        "age": 54,
+        "yearBorn": 1971,
+        "totalPay": 3326275
+      },
+      {
+        "name": "Ms. Linda Pistecchia Kirkpatrick",
+        "title": "Chief Services Officer",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 2297718
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.75,
-        "industryAvg": 23.47
+        "value": 47.78,
+        "industryAvg": 23.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.9,
-        "industryAvg": 5.53
+        "value": 15.91,
+        "industryAvg": 5.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 85.42,
-        "industryAvg": 6.05
+        "value": 85.48,
+        "industryAvg": 6.04
       },
       {
         "metric": "ROE",
@@ -7789,12 +7843,12 @@
       {
         "metric": "Gross Margin",
         "value": 79.32000000000001,
-        "industryAvg": 65.69
+        "industryAvg": 65.68
       },
       {
         "metric": "EBITDA Margin",
         "value": 64.41,
-        "industryAvg": 44.15
+        "industryAvg": 44.13
       },
       {
         "metric": "Net Margin",

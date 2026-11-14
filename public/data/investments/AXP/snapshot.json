@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 17.7575,
-      "ttmPe": 18.2,
-      "marketCap": 216806810000,
-      "psRatio": 2.79,
-      "pbRatio": 6.06,
+      "ttmPe": 18.05,
+      "marketCap": 215122600000,
+      "psRatio": 2.77,
+      "pbRatio": 6.01,
       "pegRatio": 0.59
     },
     "profitability": {
@@ -5979,25 +5979,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.1,
-      "costOfEquity": 13.44,
+      "wacc": 11.07,
+      "costOfEquity": 13.43,
       "costOfDebt": 3.2,
       "taxRate": 18,
-      "beta": 1.0726,
-      "marketCap": 216806810000
+      "beta": 1.0725,
+      "marketCap": 215122600000
     },
     "beta": {
-      "beta5y": 1.0726
+      "beta5y": 1.0725
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 371.11,
-        "high": 377.23,
-        "low": 370.51,
-        "close": 372.77,
-        "volume": 2961500
-      },
       {
         "date": "2025-11-13",
         "open": 371.09,
@@ -8005,6 +7997,14 @@
         "low": 318.02,
         "close": 318.06,
         "volume": 2428600
+      },
+      {
+        "date": "2026-11-13",
+        "open": 320.7,
+        "high": 321.94,
+        "low": 318.55,
+        "close": 320.6,
+        "volume": 1714800
       }
     ],
     "news": [
@@ -8049,19 +8049,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0672dd26-9686-35f8-a29e-b98a620ba84b",
-        "title": "West Japan Railway and a.k.a. Brands have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/west-japan-railway-k-brands-122200264.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5cb5d8a8-80a8-36da-b95e-575adcad8fb8",
         "title": "Stock Market Turmoil: Buy These 3 Dividend Stocks for Less Than $1,000 Right Now",
         "publisher": "Motley Fool",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/m/5cb5d8a8-80a8-36da-b95e-575adcad8fb8/stock-market-turmoil%3A-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0672dd26-9686-35f8-a29e-b98a620ba84b",
+        "title": "West Japan Railway and a.k.a. Brands have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/west-japan-railway-k-brands-122200264.html",
         "type": "STORY"
       },
       {
@@ -8073,19 +8073,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
-        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
         "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
         "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
+        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
         "type": "STORY"
       }
     ],
@@ -8158,18 +8158,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.2,
-        "industryAvg": 23.47
+        "value": 18.05,
+        "industryAvg": 23.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.79,
-        "industryAvg": 5.53
+        "value": 2.77,
+        "industryAvg": 5.52
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.06,
-        "industryAvg": 6.05
+        "value": 6.01,
+        "industryAvg": 6.04
       },
       {
         "metric": "ROE",
@@ -8183,11 +8183,11 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 65.69
+        "industryAvg": 65.68
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 44.15
+        "industryAvg": 44.13
       },
       {
         "metric": "Net Margin",

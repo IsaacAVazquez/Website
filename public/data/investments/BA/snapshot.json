@@ -4,7 +4,7 @@
   "freshness": {
     "snapshotBuiltAt": "2026-11-13T17:02:56.057218+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "profitability",
@@ -6082,14 +6082,6 @@
     },
     "price": [
       {
-        "date": "2025-11-12",
-        "open": 195.75,
-        "high": 196.66,
-        "low": 193.8,
-        "close": 195.5,
-        "volume": 8288300
-      },
-      {
         "date": "2025-11-13",
         "open": 195.63,
         "high": 196.2,
@@ -8095,7 +8087,15 @@
         "high": 175.16,
         "low": 171.3,
         "close": 171.55,
-        "volume": 6012800
+        "volume": 6028800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 171.49,
+        "high": 171.75,
+        "low": 169.56,
+        "close": 171.5,
+        "volume": 5293800
       }
     ],
     "news": [

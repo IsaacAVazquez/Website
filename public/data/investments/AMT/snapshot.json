@@ -1,10 +1,10 @@
 {
   "symbol": "AMT",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.0978,
-      "ttmPe": 26.8,
-      "marketCap": 88304081280,
-      "psRatio": 8.02,
-      "pbRatio": 25.11,
+      "ttmPe": 27,
+      "marketCap": 88953922080,
+      "psRatio": 8.08,
+      "pbRatio": 25.3,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -6462,25 +6462,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.89,
-      "costOfEquity": 11.57,
+      "wacc": 7.91,
+      "costOfEquity": 11.58,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 13,
-      "beta": 0.8357,
-      "marketCap": 88304081280
+      "beta": 0.8332,
+      "marketCap": 88953922080
     },
     "beta": {
-      "beta5y": 0.8357
+      "beta5y": 0.8332
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 184,
-        "high": 185.38,
-        "low": 181.93,
-        "close": 183.35,
-        "volume": 2947600
-      },
       {
         "date": "2025-11-13",
         "open": 183.02,
@@ -8488,6 +8480,14 @@
         "low": 188.81,
         "close": 189.79,
         "volume": 2013800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 190.1,
+        "high": 191.88,
+        "low": 189.27,
+        "close": 191.64,
+        "volume": 1384300
       }
     ],
     "news": [
@@ -8524,19 +8524,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8633,18 +8633,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.8,
+        "value": 27,
         "industryAvg": 36.77
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.02,
-        "industryAvg": 6.81
+        "value": 8.08,
+        "industryAvg": 6.82
       },
       {
         "metric": "P/B Ratio",
-        "value": 25.11,
-        "industryAvg": 4.38
+        "value": 25.3,
+        "industryAvg": 4.37
       },
       {
         "metric": "ROE",

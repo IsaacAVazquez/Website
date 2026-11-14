@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,9 +40,9 @@
     },
     "fundamentals": {
       "ttmEps": 5.8619,
-      "ttmPe": 15.83,
-      "marketCap": 160334899376,
-      "psRatio": 5.92,
+      "ttmPe": 15.86,
+      "marketCap": 160680523216,
+      "psRatio": 5.94,
       "pbRatio": 3.12,
       "pegRatio": 0.55
     },
@@ -6240,25 +6240,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.08,
-      "costOfEquity": 10.91,
+      "wacc": 9.09,
+      "costOfEquity": 10.92,
       "costOfDebt": 2.45,
       "taxRate": 23,
-      "beta": 0.7514,
-      "marketCap": 160334899376
+      "beta": 0.7477,
+      "marketCap": 160680523216
     },
     "beta": {
-      "beta5y": 0.7514
+      "beta5y": 0.7477
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 96.28,
-        "high": 98.5,
-        "low": 96.13,
-        "close": 97.71,
-        "volume": 10610500
-      },
       {
         "date": "2025-11-13",
         "open": 97.87,
@@ -8266,15 +8258,23 @@
         "low": 91.54,
         "close": 91.72,
         "volume": 6253900
+      },
+      {
+        "date": "2026-11-13",
+        "open": 91.08,
+        "high": 93.05,
+        "low": 89.76,
+        "close": 92.98,
+        "volume": 10086700
       }
     ],
     "news": [
       {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "uuid": "2e71adf6-2659-3496-ae55-cea7be85c88a",
+        "title": "Subdued AUM Performance on Weak Markets to Hurt Invesco's Q1 Earnings",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
         "type": "STORY"
       },
       {
@@ -8286,19 +8286,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
         "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "2e71adf6-2659-3496-ae55-cea7be85c88a",
-        "title": "Subdued AUM Performance on Weak Markets to Hurt Invesco's Q1 Earnings",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/subdued-aum-performance-weak-markets-111500357.html",
         "type": "STORY"
       },
       {
@@ -8310,19 +8310,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
-        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
         "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
         "publisher": "CNW Group",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
+        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
         "type": "STORY"
       },
       {
@@ -8334,19 +8334,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "55850a15-58e4-37d9-8fbb-42d6dfddc03b",
+        "title": "TD Bank Quarterly Earnings Buoyed by Sale of Schwab Stake",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/55850a15-58e4-37d9-8fbb-42d6dfddc03b/td-bank-quarterly-earnings.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "28deb7de-8bbe-3905-a439-9d725a84c8db",
         "title": "TD Plans to Cut About 2% of Workforce Amid Restructuring",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/td-plans-cut-2-workforce-153043644.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
-        "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
         "type": "STORY"
       }
     ],
@@ -8411,23 +8411,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.83,
-        "industryAvg": 15.04
+        "value": 15.86,
+        "industryAvg": 14.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.92,
-        "industryAvg": 2.08
+        "value": 5.94,
+        "industryAvg": 2.05
       },
       {
         "metric": "P/B Ratio",
         "value": 3.12,
-        "industryAvg": 2.44
+        "industryAvg": 2.4
       },
       {
         "metric": "ROE",
         "value": 5.53,
-        "industryAvg": 15.85
+        "industryAvg": 15.840000000000002
       },
       {
         "metric": "ROA",
@@ -8436,16 +8436,16 @@
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 14.95
+        "industryAvg": 15.07
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 5.92
+        "industryAvg": 5.9799999999999995
       },
       {
         "metric": "Net Margin",
         "value": 39.2,
-        "industryAvg": 20.19
+        "industryAvg": 20.22
       }
     ]
   }

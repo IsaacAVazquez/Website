@@ -1,10 +1,10 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-11-12T10:18:06.583628+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T10:18:06.583628+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.9451,
-      "ttmPe": 57.75,
-      "marketCap": 45029924538,
-      "psRatio": 1.98,
-      "pbRatio": 4.48,
+      "ttmPe": 57.35,
+      "marketCap": 44716414620,
+      "psRatio": 1.96,
+      "pbRatio": 4.45,
       "pegRatio": 1.14
     },
     "profitability": {
@@ -6228,25 +6228,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.26,
-      "costOfEquity": 15.340000000000002,
+      "wacc": 12.19,
+      "costOfEquity": 15.27,
       "costOfDebt": 0.98,
       "taxRate": 40,
-      "beta": 1.3128,
-      "marketCap": 45029924538
+      "beta": 1.3114,
+      "marketCap": 44716414620
     },
     "beta": {
-      "beta5y": 1.3128
+      "beta5y": 1.3114
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 57.16,
-        "high": 57.75,
-        "low": 54.99,
-        "close": 55.99,
-        "volume": 7253700
-      },
       {
         "date": "2025-11-13",
         "open": 55.95,
@@ -8254,6 +8246,14 @@
         "low": 54.05,
         "close": 54.37,
         "volume": 4942800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 55.12,
+        "high": 55.12,
+        "low": 54.02,
+        "close": 54.2,
+        "volume": 4733800
       }
     ],
     "news": [
@@ -8306,19 +8306,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2158636e-973f-35ce-bece-3ab607a5fb46",
-        "title": "Carrier Global (NYSE:CARR) Invests Additional US$1 Billion in U.S. Expansion and Innovation",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/carrier-global-nyse-carr-invests-173856948.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2e03d6dc-17dd-3dc4-b5c4-68367a0607c4",
         "title": "CARR Q1 Earnings Call: Management Prioritizes Product Innovation, Cost Controls, and Tariff Mitigation",
         "publisher": "StockStory",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/carr-q1-earnings-call-management-220747338.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2158636e-973f-35ce-bece-3ab607a5fb46",
+        "title": "Carrier Global (NYSE:CARR) Invests Additional US$1 Billion in U.S. Expansion and Innovation",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/carrier-global-nyse-carr-invests-173856948.html",
         "type": "STORY"
       },
       {
@@ -8330,11 +8330,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e5f2ad23-e548-354a-8b1a-ba2a8fe46513",
-        "title": "RBC Raises Price Target on Carrier Global to $86 From $82, Keeps Outperform Rating",
+        "uuid": "e1161bd2-7ca5-31b9-8518-8d1bbf011da7",
+        "title": "Stephens Adjusts Price Target on Carrier Global to $75 From $70, Maintains Equalweight Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-carrier-110913885.html",
+        "link": "https://finance.yahoo.com/news/stephens-adjusts-price-target-carrier-103713052.html",
         "type": "STORY"
       }
     ],
@@ -8407,43 +8407,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 57.75,
-        "industryAvg": 26.08
+        "value": 57.35,
+        "industryAvg": 27.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.98,
-        "industryAvg": 2.16
+        "value": 1.96,
+        "industryAvg": 2.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.48,
-        "industryAvg": 3.85
+        "value": 4.45,
+        "industryAvg": 3.75
       },
       {
         "metric": "ROE",
         "value": -22.35,
-        "industryAvg": 11.78
+        "industryAvg": 10.93
       },
       {
         "metric": "ROA",
         "value": -7.31,
-        "industryAvg": 4.62
+        "industryAvg": 4.29
       },
       {
         "metric": "Gross Margin",
         "value": 26.87,
-        "industryAvg": 32.940000000000005
+        "industryAvg": 33.01
       },
       {
         "metric": "EBITDA Margin",
         "value": -30.7,
-        "industryAvg": 13.170000000000002
+        "industryAvg": 13.44
       },
       {
         "metric": "Net Margin",
         "value": -41.4,
-        "industryAvg": 5.4399999999999995
+        "industryAvg": 5.04
       }
     ]
   }

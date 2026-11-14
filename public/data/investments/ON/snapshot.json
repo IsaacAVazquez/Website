@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.718,
-      "ttmPe": 42.85,
-      "marketCap": 28657210770,
-      "psRatio": 4.5,
-      "pbRatio": 3.79,
-      "pegRatio": 1.62
+      "ttmPe": 41.36,
+      "marketCap": 27660709010,
+      "psRatio": 4.34,
+      "pbRatio": 3.66,
+      "pegRatio": 1.57
     },
     "profitability": {
       "roe": 4.25,
@@ -6084,25 +6084,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.94,
-      "costOfEquity": 21.86,
+      "wacc": 18.68,
+      "costOfEquity": 21.67,
       "costOfDebt": 0.31,
       "taxRate": 21,
-      "beta": 2.1395,
-      "marketCap": 28657210770
+      "beta": 2.14,
+      "marketCap": 27660709010
     },
     "beta": {
-      "beta5y": 2.1395
+      "beta5y": 2.14
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 49.24,
-        "high": 50.01,
-        "low": 48.56,
-        "close": 49.27,
-        "volume": 6493400
-      },
       {
         "date": "2025-11-13",
         "open": 48.86,
@@ -8110,6 +8102,14 @@
         "low": 71.01,
         "close": 73.73,
         "volume": 6029300
+      },
+      {
+        "date": "2026-11-13",
+        "open": 73.34,
+        "high": 73.88,
+        "low": 68.84,
+        "close": 71.06,
+        "volume": 7371700
       }
     ],
     "news": [
@@ -8146,14 +8146,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
-        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a79de45e-e9c8-34bd-9beb-42c39aa07557",
         "title": "ON Semiconductor negativity priced in says Morgan Stanley",
         "publisher": "Investing.com",
@@ -8162,11 +8154,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
-        "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
+        "uuid": "a4599899-8a99-374c-aab0-f8c7baab98e7",
+        "title": "Some May Be Optimistic About ON Semiconductor's (NASDAQ:ON) Earnings",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/may-optimistic-semiconductors-nasdaq-earnings-103833748.html",
         "type": "STORY"
       },
       {
@@ -8175,6 +8167,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
+        "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
         "type": "STORY"
       },
       {
@@ -8196,10 +8196,6 @@
     ],
     "officers": [
       {
-        "name": "Dr. Marcus Kneifel Ph.D.",
-        "title": "Senior Vice President of Systems Engineering"
-      },
-      {
         "name": "Dr. Wei-Chung Wang Ph.D.",
         "title": "Executive Vice President of Operations"
       },
@@ -8217,6 +8213,16 @@
         "age": 45,
         "yearBorn": 1980,
         "totalPay": 1242399
+      },
+      {
+        "name": "Mr. Jon Imperato",
+        "title": "Senior Vice President of Sales & Applications",
+        "age": 53,
+        "yearBorn": 1972
+      },
+      {
+        "name": "Mr. Parag Agarwal",
+        "title": "VP of Investor Relations & Corporate Development"
       },
       {
         "name": "Mr. Paul Dutton",
@@ -8237,10 +8243,6 @@
         "totalPay": 1007662
       },
       {
-        "name": "Ms. Catherine Cote",
-        "title": "VP, Chief of Staff & Head of Office of the CEO"
-      },
-      {
         "name": "Ms. Felicity Carson",
         "title": "Senior VP & Chief Marketing Officer"
       }
@@ -8248,18 +8250,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.85,
-        "industryAvg": 22.22
+        "value": 41.36,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.5,
-        "industryAvg": 10.88
+        "value": 4.34,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.79,
-        "industryAvg": 9.55
+        "value": 3.66,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

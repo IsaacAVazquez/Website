@@ -1,10 +1,10 @@
 {
   "symbol": "QCOM",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.6978,
-      "ttmPe": 13.91,
-      "marketCap": 189283040000,
-      "psRatio": 4.39,
-      "pbRatio": 6.23,
+      "ttmPe": 13.58,
+      "marketCap": 184887840000,
+      "psRatio": 4.29,
+      "pbRatio": 6.08,
       "pegRatio": 0.1
     },
     "profitability": {
@@ -6188,25 +6188,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.419999999999998,
-      "costOfEquity": 18.759999999999998,
+      "wacc": 17.25,
+      "costOfEquity": 18.61,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 40,
-      "beta": 1.7461,
-      "marketCap": 189283040000
+      "beta": 1.7429,
+      "marketCap": 184887840000
     },
     "beta": {
-      "beta5y": 1.7461
+      "beta5y": 1.7429
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 175,
-        "high": 177.42,
-        "low": 174.88,
-        "close": 176.67,
-        "volume": 8785800
-      },
       {
         "date": "2025-11-13",
         "open": 176.63,
@@ -8213,7 +8205,15 @@
         "high": 183.4,
         "low": 175,
         "close": 177.14,
-        "volume": 8969600
+        "volume": 8983200
+      },
+      {
+        "date": "2026-11-13",
+        "open": 176.4,
+        "high": 177.53,
+        "low": 167.2,
+        "close": 172.47,
+        "volume": 10420900
       }
     ],
     "news": [
@@ -8300,6 +8300,20 @@
     ],
     "officers": [
       {
+        "name": "Dr. Baaziz Achour",
+        "title": "Executive VP & Chief Technology Officer of Qualcomm Technologies, Inc.",
+        "age": 64,
+        "yearBorn": 1961,
+        "totalPay": 2707484
+      },
+      {
+        "name": "Mr. Akash Palkhiwala",
+        "title": "Executive VP, CFO & COO",
+        "age": 50,
+        "yearBorn": 1975,
+        "totalPay": 2629426
+      },
+      {
         "name": "Mr. Alexander H. Rogers J.D.",
         "title": "Executive VP, President of Qualcomm Technology Licensing (QTL) & Global Affairs",
         "age": 68,
@@ -8328,14 +8342,6 @@
         "title": "Executive VP & Chief Marketing Officer"
       },
       {
-        "name": "Mr. Luiz Tonisi",
-        "title": "President of Qualcomm Latin America & VP of Qualcomm Servicos de Telecomunicacões Ltda"
-      },
-      {
-        "name": "Mr. Nakul Duggal",
-        "title": "EVP, Group GM of Automotive, Industrial, Embedded IoT, & Robotics - Qualcomm Technologies"
-      },
-      {
         "name": "Ms. Ann N. Cathcart Chaplin",
         "title": "Executive VP, General Counsel & Corporate Secretary",
         "age": 52,
@@ -8359,18 +8365,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 13.91,
-        "industryAvg": 22.22
+        "value": 13.58,
+        "industryAvg": 20.8
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.39,
-        "industryAvg": 10.88
+        "value": 4.29,
+        "industryAvg": 10.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.23,
-        "industryAvg": 9.55
+        "value": 6.08,
+        "industryAvg": 9.1
       },
       {
         "metric": "ROE",

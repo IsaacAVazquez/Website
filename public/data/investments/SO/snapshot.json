@@ -1,10 +1,10 @@
 {
   "symbol": "SO",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.6029,
-      "ttmPe": 36.05,
-      "marketCap": 107950063920,
-      "psRatio": 3.46,
-      "pbRatio": 2.57,
+      "ttmPe": 35.96,
+      "marketCap": 107662473170,
+      "psRatio": 3.45,
+      "pbRatio": 2.56,
       "pegRatio": 0.68
     },
     "profitability": {
@@ -6527,25 +6527,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.62,
-      "costOfEquity": 7.21,
+      "wacc": 4.6899999999999995,
+      "costOfEquity": 7.340000000000001,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 0.2827,
-      "marketCap": 107950063920
+      "beta": 0.2831,
+      "marketCap": 107662473170
     },
     "beta": {
-      "beta5y": 0.2827
+      "beta5y": 0.2831
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 91.17,
-        "high": 92.02,
-        "low": 90.88,
-        "close": 91.89,
-        "volume": 5588400
-      },
       {
         "date": "2025-11-13",
         "open": 92,
@@ -8553,23 +8545,31 @@
         "low": 92.17,
         "close": 92.47,
         "volume": 15954500
+      },
+      {
+        "date": "2026-11-13",
+        "open": 92.47,
+        "high": 94.55,
+        "low": 92.18,
+        "close": 93.59,
+        "volume": 22081900
       }
     ],
     "news": [
-      {
-        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
-        "type": "STORY"
-      },
       {
         "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
         "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
         "type": "STORY"
       },
       {
@@ -8589,11 +8589,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
-        "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
+        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
+        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
+        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
         "type": "STORY"
       },
       {
@@ -8613,19 +8613,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
-        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
+        "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
+        "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "d289f937-4760-3f28-b6c2-8291514b6567",
-        "title": "Southern Company Prices $1.45 Billion of 2028 Notes in Upsized Private Placement",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/southern-company-prices-1-45-085601322.html",
+        "link": "https://finance.yahoo.com/news/southern-company-announces-offering-1-103000778.html",
         "type": "STORY"
       },
       {
@@ -8634,6 +8626,14 @@
         "publisher": "PR Newswire",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/southern-company-announces-upsize-pricing-003300450.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d289f937-4760-3f28-b6c2-8291514b6567",
+        "title": "Southern Company Prices $1.45 Billion of 2028 Notes in Upsized Private Placement",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/southern-company-prices-1-45-085601322.html",
         "type": "STORY"
       }
     ],
@@ -8704,17 +8704,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.05,
-        "industryAvg": 17.03
+        "value": 35.96,
+        "industryAvg": 17.21
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.46,
-        "industryAvg": 2.46
+        "value": 3.45,
+        "industryAvg": 2.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.57,
+        "value": 2.56,
         "industryAvg": 1.87
       },
       {
@@ -8735,12 +8735,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 56.779999999999994,
-        "industryAvg": 44.32
+        "industryAvg": 43.53
       },
       {
         "metric": "Net Margin",
         "value": 23.14,
-        "industryAvg": 17.150000000000002
+        "industryAvg": 16.830000000000002
       }
     ]
   }

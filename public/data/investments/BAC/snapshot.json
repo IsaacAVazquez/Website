@@ -1,10 +1,10 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     },
     "retainedSections": [
       "profitability",
@@ -44,10 +44,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.1938,
-      "ttmPe": 12.08,
-      "marketCap": 350772970851,
-      "psRatio": 2.97,
-      "pbRatio": 1.18,
+      "ttmPe": 12.17,
+      "marketCap": 353195914206,
+      "psRatio": 2.99,
+      "pbRatio": 1.19,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5758,24 +5758,16 @@
     },
     "wacc": {
       "wacc": 8.77,
-      "costOfEquity": 14.39,
+      "costOfEquity": 14.34,
       "costOfDebt": 4.68,
       "taxRate": 23,
-      "beta": 1.1929,
-      "marketCap": 350772970851
+      "beta": 1.1907,
+      "marketCap": 353195914206
     },
     "beta": {
-      "beta5y": 1.1929
+      "beta5y": 1.1907
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 53.89,
-        "high": 54.69,
-        "low": 53.77,
-        "close": 54.11,
-        "volume": 40536700
-      },
       {
         "date": "2025-11-13",
         "open": 53.79,
@@ -7783,23 +7775,31 @@
         "low": 50.38,
         "close": 50.51,
         "volume": 19603800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 50.89,
+        "high": 51.05,
+        "low": 50.43,
+        "close": 51.02,
+        "volume": 19994700
       }
     ],
     "news": [
-      {
-        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
-        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
-        "type": "STORY"
-      },
       {
         "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
         "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
+        "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
         "type": "STORY"
       },
       {
@@ -7827,19 +7827,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
-        "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
-        "publisher": "Financial Times",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "46082d20-9f72-44a8-b3e9-8b0dc789da8e",
         "title": "Co-founder says eToro IPO is a testament to market recovery as it aims to become a go-to investment app",
         "publisher": "Yahoo Finance",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/co-founder-says-etoro-ipo-is-a-testament-to-market-recovery-as-it-aims-to-become-a-go-to-investment-app-214008749.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4e27cf5d-8ea1-3868-b871-e12a607b1996",
+        "title": "US poised to dial back bank rules imposed in wake of 2008 crisis",
+        "publisher": "Financial Times",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/us-poised-dial-back-bank-040116725.html",
         "type": "STORY"
       },
       {
@@ -7935,18 +7935,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.08,
-        "industryAvg": 13.22
+        "value": 12.17,
+        "industryAvg": 13.17
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.97,
-        "industryAvg": 3.65
+        "value": 2.99,
+        "industryAvg": 3.64
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.18,
-        "industryAvg": 1.67
+        "value": 1.19,
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",

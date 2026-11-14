@@ -1,10 +1,10 @@
 {
   "symbol": "DUK",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8569,
-      "ttmPe": 26.51,
-      "marketCap": 100440600000,
-      "psRatio": 2.97,
-      "pbRatio": 1.81,
+      "ttmPe": 26.59,
+      "marketCap": 100744800000,
+      "psRatio": 2.98,
+      "pbRatio": 1.82,
       "pegRatio": 1.61
     },
     "profitability": {
@@ -6551,25 +6551,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.24,
-      "costOfEquity": 7.380000000000001,
+      "wacc": 4.3,
+      "costOfEquity": 7.489999999999999,
       "costOfDebt": 1.03,
       "taxRate": 15,
-      "beta": 0.3045,
-      "marketCap": 100440600000
+      "beta": 0.3036,
+      "marketCap": 100744800000
     },
     "beta": {
-      "beta5y": 0.3045
+      "beta5y": 0.3036
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 123.66,
-        "high": 124.29,
-        "low": 123.43,
-        "close": 123.9,
-        "volume": 3238900
-      },
       {
         "date": "2025-11-13",
         "open": 123.76,
@@ -8577,6 +8569,14 @@
         "low": 128.49,
         "close": 128.59,
         "volume": 3514900
+      },
+      {
+        "date": "2026-11-13",
+        "open": 128,
+        "high": 129.78,
+        "low": 127.94,
+        "close": 129.16,
+        "volume": 7585400
       }
     ],
     "news": [
@@ -8653,11 +8653,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5e5e28bc-e1ed-34fa-a0e4-5f19ec49d58d",
-        "title": "Duke Energy Indiana agrees to Cayuga coal unit feasibility study in addition to building new gas units on-site",
-        "publisher": "PR Newswire",
+        "uuid": "5079d3be-0540-34cc-832b-08bff2082c50",
+        "title": "Morgan Stanley Adjusts Price Target on Duke Energy to $124 From $125, Maintains Equalweight Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-18",
-        "link": "https://finance.yahoo.com/news/duke-energy-indiana-agrees-cayuga-185500767.html",
+        "link": "https://finance.yahoo.com/news/morgan-stanley-adjusts-price-target-102559479.html",
         "type": "STORY"
       }
     ],
@@ -8727,17 +8727,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.51,
-        "industryAvg": 17.03
+        "value": 26.59,
+        "industryAvg": 17.21
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.97,
-        "industryAvg": 2.46
+        "value": 2.98,
+        "industryAvg": 2.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.81,
+        "value": 1.82,
         "industryAvg": 1.87
       },
       {
@@ -8758,12 +8758,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 52.129999999999995,
-        "industryAvg": 44.32
+        "industryAvg": 43.53
       },
       {
         "metric": "Net Margin",
         "value": 17.04,
-        "industryAvg": 17.150000000000002
+        "industryAvg": 16.830000000000002
       }
     ]
   }

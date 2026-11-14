@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4085,
-      "ttmPe": 31.38,
-      "marketCap": 88786341813,
-      "psRatio": 10.86,
-      "pbRatio": 27.17,
-      "pegRatio": 1.77
+      "ttmPe": 30.97,
+      "marketCap": 87625927620,
+      "psRatio": 10.72,
+      "pbRatio": 26.81,
+      "pegRatio": 1.74
     },
     "profitability": {
       "roe": 23.330000000000002,
@@ -6632,25 +6632,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.02,
-      "costOfEquity": 15.15,
+      "wacc": 13.94,
+      "costOfEquity": 15.079999999999998,
       "costOfDebt": 0.84,
       "taxRate": 24,
-      "beta": 1.2888,
-      "marketCap": 88786341813
+      "beta": 1.2868,
+      "marketCap": 87625927620
     },
     "beta": {
-      "beta5y": 1.2888
+      "beta5y": 1.2868
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 494.4,
-        "high": 499,
-        "low": 490.41,
-        "close": 490.84,
-        "volume": 904100
-      },
       {
         "date": "2025-11-13",
         "open": 490.27,
@@ -8658,6 +8650,14 @@
         "low": 506.27,
         "close": 506.56,
         "volume": 451300
+      },
+      {
+        "date": "2026-11-13",
+        "open": 506.84,
+        "high": 512.66,
+        "low": 505.67,
+        "close": 508.2,
+        "volume": 545300
       }
     ],
     "news": [
@@ -8694,19 +8694,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
-        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4b34ed1d-99e1-39e4-97d1-f5f7740d71d7",
         "title": "Wall Street Banks Bet on Emerging Markets After Wasted Years",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/wall-street-banks-emerging-markets-123000350.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
+        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
         "type": "STORY"
       },
       {
@@ -8734,11 +8734,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f0a958f-b5f6-3545-bc25-ee6da6d07ef3",
-        "title": "Stock Market Ignoring Trump’s Trade War After Wild April Ride",
+        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
+        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/stock-market-ignoring-trump-trade-093000260.html",
+        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       }
     ],
@@ -8803,43 +8803,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.38,
-        "industryAvg": 26.96
+        "value": 30.97,
+        "industryAvg": 26.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.86,
-        "industryAvg": 8.36
+        "value": 10.72,
+        "industryAvg": 8.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.17,
-        "industryAvg": 4.67
+        "value": 26.81,
+        "industryAvg": 4.64
       },
       {
         "metric": "ROE",
         "value": 23.330000000000002,
-        "industryAvg": 18.23
+        "industryAvg": 19.139999999999997
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 4.36
+        "industryAvg": 4.29
       },
       {
         "metric": "Gross Margin",
         "value": 74.1,
-        "industryAvg": 63.949999999999996
+        "industryAvg": 64.75
       },
       {
         "metric": "EBITDA Margin",
         "value": 57.089999999999996,
-        "industryAvg": 48.309999999999995
+        "industryAvg": 51.41
       },
       {
         "metric": "Net Margin",
         "value": 36.28,
-        "industryAvg": 28.389999999999997
+        "industryAvg": 30.270000000000003
       }
     ]
   }

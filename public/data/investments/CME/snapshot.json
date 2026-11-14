@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.1953,
-      "ttmPe": 25.9,
-      "marketCap": 113485173447,
-      "psRatio": 16.28,
-      "pbRatio": 4.27,
-      "pegRatio": 1.6
+      "ttmPe": 26.07,
+      "marketCap": 114239657457,
+      "psRatio": 16.38,
+      "pbRatio": 4.3,
+      "pegRatio": 1.61
     },
     "profitability": {
       "roe": 3.91,
@@ -5611,25 +5611,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.34,
-      "costOfEquity": 6.5,
+      "wacc": 6.45,
+      "costOfEquity": 6.61,
       "costOfDebt": 1.27,
       "taxRate": 24,
-      "beta": 0.1924,
-      "marketCap": 113485173447
+      "beta": 0.1895,
+      "marketCap": 114239657457
     },
     "beta": {
-      "beta5y": 0.1924
+      "beta5y": 0.1895
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 278.17,
-        "high": 281.42,
-        "low": 278.17,
-        "close": 279.58,
-        "volume": 1100200
-      },
       {
         "date": "2025-11-13",
         "open": 281.55,
@@ -7637,6 +7629,14 @@
         "low": 314.9,
         "close": 315.5,
         "volume": 1991300
+      },
+      {
+        "date": "2026-11-13",
+        "open": 316.31,
+        "high": 320.26,
+        "low": 316.31,
+        "close": 317.97,
+        "volume": 1579900
       }
     ],
     "news": [
@@ -7657,19 +7657,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
-        "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cf97f164-4dda-30e2-a6f8-936336ee902f",
         "title": "XRP futures bag $19M on launch day",
         "publisher": "TheStreet",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/cf97f164-4dda-30e2-a6f8-936336ee902f/xrp-futures-bag-%2419m-on.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d0293bd-a346-3599-9053-cd40e908fe56",
+        "title": "CME's XRP Futures Have Pulled In Nearly $30M Since Debut, Fueling XRP ETF Hopes",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/3d0293bd-a346-3599-9053-cd40e908fe56/cme%27s-xrp-futures-have-pulled.html",
         "type": "STORY"
       },
       {
@@ -7740,6 +7740,12 @@
         "yearBorn": 1968
       },
       {
+        "name": "Mr. Matthew Render",
+        "title": "Managing Director & Chief Accounting Officer",
+        "age": 46,
+        "yearBorn": 1979
+      },
+      {
         "name": "Mr. Sunil Cutinho",
         "title": "Chief Information Officer",
         "age": 53,
@@ -7758,12 +7764,6 @@
         "title": "Senior Managing Director of Corporate Marketing & Communications",
         "age": 60,
         "yearBorn": 1965
-      },
-      {
-        "name": "Ms. Hilda Harris Piell J.D.",
-        "title": "Senior MD & Chief Human Resources Officer",
-        "age": 57,
-        "yearBorn": 1968
       },
       {
         "name": "Ms. Julie M. Winkler",
@@ -7787,43 +7787,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.9,
-        "industryAvg": 26.96
+        "value": 26.07,
+        "industryAvg": 26.85
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.28,
-        "industryAvg": 8.36
+        "value": 16.38,
+        "industryAvg": 8.29
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.27,
-        "industryAvg": 4.67
+        "value": 4.3,
+        "industryAvg": 4.64
       },
       {
         "metric": "ROE",
         "value": 3.91,
-        "industryAvg": 18.23
+        "industryAvg": 19.139999999999997
       },
       {
         "metric": "ROA",
         "value": 0.54,
-        "industryAvg": 4.36
+        "industryAvg": 4.29
       },
       {
         "metric": "Gross Margin",
         "value": 86.50999999999999,
-        "industryAvg": 63.949999999999996
+        "industryAvg": 64.75
       },
       {
         "metric": "EBITDA Margin",
         "value": 85.28999999999999,
-        "industryAvg": 48.309999999999995
+        "industryAvg": 51.41
       },
       {
         "metric": "Net Margin",
         "value": 59.68,
-        "industryAvg": 28.389999999999997
+        "industryAvg": 30.270000000000003
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.7183,
-      "ttmPe": 35.11,
-      "marketCap": 294648322600,
-      "psRatio": 11.28,
-      "pbRatio": 21.18,
-      "pegRatio": 0.45
+      "ttmPe": 33.63,
+      "marketCap": 282206838400,
+      "psRatio": 10.8,
+      "pbRatio": 20.29,
+      "pegRatio": 0.44
     },
     "profitability": {
       "roe": 20.87,
@@ -5781,25 +5781,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.330000000000002,
-      "costOfEquity": 20.580000000000002,
+      "wacc": 20.19,
+      "costOfEquity": 20.45,
       "costOfDebt": 0.98,
       "taxRate": 17,
-      "beta": 1.9774,
-      "marketCap": 294648322600
+      "beta": 1.9822,
+      "marketCap": 282206838400
     },
     "beta": {
-      "beta5y": 1.9774
+      "beta5y": 1.9822
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 161.31,
-        "high": 162.16,
-        "low": 158.48,
-        "close": 161.42,
-        "volume": 8950000
-      },
       {
         "date": "2025-11-13",
         "open": 158.89,
@@ -7806,7 +7798,15 @@
         "high": 239.67,
         "low": 227.64,
         "close": 233.78,
-        "volume": 8223700
+        "volume": 8252400
+      },
+      {
+        "date": "2026-11-13",
+        "open": 230,
+        "high": 233.75,
+        "low": 218.9,
+        "close": 225.92,
+        "volume": 11025600
       }
     ],
     "news": [
@@ -7843,19 +7843,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
-        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "80a8b8d3-1495-3996-94b8-9b578be74ba9",
         "title": "3 Nasdaq-Listed Tech Stocks Flying-High in 2025 Signaling More Upside",
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/3-nasdaq-listed-tech-stocks-112100288.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
+        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
         "type": "STORY"
       },
       {
@@ -7958,18 +7958,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.11,
-        "industryAvg": 38.08
+        "value": 33.63,
+        "industryAvg": 36.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 11.28,
-        "industryAvg": 11.14
+        "value": 10.8,
+        "industryAvg": 10.84
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.18,
-        "industryAvg": 15.4
+        "value": 20.29,
+        "industryAvg": 14.97
       },
       {
         "metric": "ROE",

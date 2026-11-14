@@ -1,10 +1,10 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-11-12T17:21:35.322365+00:00",
+  "lastUpdated": "2026-11-14T15:39:03.164742+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-11-12T17:21:35.322365+00:00",
+    "snapshotBuiltAt": "2026-11-14T15:39:03.164742+00:00",
     "sections": {
-      "price": "2026-11-12"
+      "price": "2026-11-13"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.7294,
-      "ttmPe": 17.13,
-      "marketCap": 685511520000,
-      "psRatio": 1.77,
-      "pbRatio": 2.58,
-      "pegRatio": 0.15
+      "ttmPe": 17.53,
+      "marketCap": 701466080000,
+      "psRatio": 1.81,
+      "pbRatio": 2.64,
+      "pegRatio": 0.16
     },
     "profitability": {
       "roe": 5.87,
@@ -5374,25 +5374,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.92,
-      "costOfEquity": 6.2,
+      "wacc": 6.1,
+      "costOfEquity": 6.38,
       "costOfDebt": 0.53,
       "taxRate": 25,
-      "beta": 0.1541,
-      "marketCap": 685511520000
+      "beta": 0.1598,
+      "marketCap": 701466080000
     },
     "beta": {
-      "beta5y": 0.1541
+      "beta5y": 0.1598
     },
     "price": [
-      {
-        "date": "2025-11-12",
-        "open": 119.1,
-        "high": 119.28,
-        "low": 117.79,
-        "close": 118.12,
-        "volume": 13790900
-      },
       {
         "date": "2025-11-13",
         "open": 118.63,
@@ -7399,24 +7391,32 @@
         "high": 170.92,
         "low": 167.34,
         "close": 169.78,
-        "volume": 12228700
+        "volume": 12243800
+      },
+      {
+        "date": "2026-11-13",
+        "open": 171.43,
+        "high": 171.71,
+        "low": 169.21,
+        "close": 170.59,
+        "volume": 11474700
       }
     ],
     "news": [
-      {
-        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
-        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
-        "type": "STORY"
-      },
       {
         "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
+        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
         "type": "STORY"
       },
       {
@@ -7436,19 +7436,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
-        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
+        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
         "type": "STORY"
       },
       {
@@ -7460,19 +7460,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
-        "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
         "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
+        "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
         "type": "STORY"
       },
       {
@@ -7536,6 +7536,12 @@
         "yearBorn": 1975
       },
       {
+        "name": "Mr. Staale Gjervik",
+        "title": "President of ExxonMobil Global Projects Company",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
         "name": "Ms. Susan E. Buchanan",
         "title": "VP, Chief Accounting Officer & Controller",
         "age": 43,
@@ -7545,18 +7551,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.13,
-        "industryAvg": 9.62
+        "value": 17.53,
+        "industryAvg": 9.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.77,
-        "industryAvg": 0.95
+        "value": 1.81,
+        "industryAvg": 0.96
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.58,
-        "industryAvg": 1.56
+        "value": 2.64,
+        "industryAvg": 1.6
       },
       {
         "metric": "ROE",
@@ -7571,17 +7577,17 @@
       {
         "metric": "Gross Margin",
         "value": 24.21,
-        "industryAvg": 26.040000000000003
+        "industryAvg": 26.279999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.540000000000003,
-        "industryAvg": 24.97
+        "industryAvg": 24.759999999999998
       },
       {
         "metric": "Net Margin",
         "value": 13.950000000000001,
-        "industryAvg": 9.78
+        "industryAvg": 9.83
       }
     ]
   }
