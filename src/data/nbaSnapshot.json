@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
-  "generatedAt": "2026-11-13T22:01:29.394Z",
-  "updatedAt": "2026-11-13",
+  "generatedAt": "2026-11-14T06:43:16.579Z",
+  "updatedAt": "2026-11-14",
   "sourceLabel": "ESPN",
   "sourceUrls": {
     "standings": "https://www.espn.com/nba/standings",
@@ -86,60 +86,16 @@
         "conferenceSeed": 4,
         "position": 4,
         "wins": 7,
-        "losses": 5,
-        "winPercent": 0.5833333,
-        "gamesBack": 3,
-        "gamesPlayed": 12,
-        "pointsFor": 118.25,
-        "pointsAgainst": 116.166664,
-        "pointDifferential": 25,
-        "streak": "L1",
-        "homeRecord": "3-3",
-        "awayRecord": "4-2",
-        "lastTen": "5-5"
-      },
-      {
-        "id": "ny",
-        "abbreviation": "NY",
-        "name": "New York Knicks",
-        "shortName": "Knicks",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 5,
-        "position": 5,
-        "wins": 6,
-        "losses": 5,
-        "winPercent": 0.54545456,
-        "gamesBack": 3.5,
-        "gamesPlayed": 11,
-        "pointsFor": 110.27273,
-        "pointsAgainst": 103.454544,
-        "pointDifferential": 75,
-        "streak": "L1",
-        "homeRecord": "4-3",
-        "awayRecord": "2-2",
-        "lastTen": "6-4"
-      },
-      {
-        "id": "cle",
-        "abbreviation": "CLE",
-        "name": "Cleveland Cavaliers",
-        "shortName": "Cavaliers",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 6,
-        "position": 6,
-        "wins": 6,
         "losses": 6,
-        "winPercent": 0.5,
-        "gamesBack": 4,
-        "gamesPlayed": 12,
-        "pointsFor": 116.416664,
-        "pointsAgainst": 114.333336,
-        "pointDifferential": 25,
-        "streak": "W1",
-        "homeRecord": "4-2",
-        "awayRecord": "2-4",
+        "winPercent": 0.53846157,
+        "gamesBack": 3.5,
+        "gamesPlayed": 13,
+        "pointsFor": 118.15385,
+        "pointsAgainst": 116.84615,
+        "pointDifferential": 17,
+        "streak": "L2",
+        "homeRecord": "3-3",
+        "awayRecord": "4-3",
         "lastTen": "5-5"
       },
       {
@@ -149,20 +105,64 @@
         "shortName": "Heat",
         "conference": "east",
         "division": null,
+        "conferenceSeed": 5,
+        "position": 5,
+        "wins": 6,
+        "losses": 6,
+        "winPercent": 0.5,
+        "gamesBack": 4,
+        "gamesPlayed": 12,
+        "pointsFor": 117.166664,
+        "pointsAgainst": 120.083336,
+        "pointDifferential": -35,
+        "streak": "W3",
+        "homeRecord": "2-3",
+        "awayRecord": "4-3",
+        "lastTen": "6-4"
+      },
+      {
+        "id": "ny",
+        "abbreviation": "NY",
+        "name": "New York Knicks",
+        "shortName": "Knicks",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 6,
+        "position": 6,
+        "wins": 6,
+        "losses": 6,
+        "winPercent": 0.5,
+        "gamesBack": 4,
+        "gamesPlayed": 12,
+        "pointsFor": 109.75,
+        "pointsAgainst": 103.666664,
+        "pointDifferential": 73,
+        "streak": "L2",
+        "homeRecord": "4-3",
+        "awayRecord": "2-3",
+        "lastTen": "6-4"
+      },
+      {
+        "id": "cle",
+        "abbreviation": "CLE",
+        "name": "Cleveland Cavaliers",
+        "shortName": "Cavaliers",
+        "conference": "east",
+        "division": null,
         "conferenceSeed": 7,
         "position": 7,
-        "wins": 5,
-        "losses": 6,
-        "winPercent": 0.45454547,
+        "wins": 6,
+        "losses": 7,
+        "winPercent": 0.46153846,
         "gamesBack": 4.5,
-        "gamesPlayed": 11,
-        "pointsFor": 115.72727,
-        "pointsAgainst": 120,
-        "pointDifferential": -47,
-        "streak": "W2",
-        "homeRecord": "1-3",
-        "awayRecord": "4-3",
-        "lastTen": "5-5"
+        "gamesPlayed": 13,
+        "pointsFor": 116.76923,
+        "pointsAgainst": 115.76923,
+        "pointDifferential": 13,
+        "streak": "L1",
+        "homeRecord": "4-2",
+        "awayRecord": "2-5",
+        "lastTen": "4-6"
       },
       {
         "id": "tor",
@@ -195,18 +195,40 @@
         "division": null,
         "conferenceSeed": 9,
         "position": 9,
-        "wins": 4,
+        "wins": 5,
         "losses": 7,
-        "winPercent": 0.36363637,
-        "gamesBack": 5.5,
-        "gamesPlayed": 11,
-        "pointsFor": 108.454544,
-        "pointsAgainst": 114,
-        "pointDifferential": -61,
-        "streak": "W2",
-        "homeRecord": "0-4",
+        "winPercent": 0.41666666,
+        "gamesBack": 5,
+        "gamesPlayed": 12,
+        "pointsFor": 108.333336,
+        "pointsAgainst": 112.75,
+        "pointDifferential": -53,
+        "streak": "W3",
+        "homeRecord": "1-4",
         "awayRecord": "4-3",
-        "lastTen": "4-6"
+        "lastTen": "5-5"
+      },
+      {
+        "id": "ind",
+        "abbreviation": "IND",
+        "name": "Indiana Pacers",
+        "shortName": "Pacers",
+        "conference": "east",
+        "division": null,
+        "conferenceSeed": 10,
+        "position": 10,
+        "wins": 5,
+        "losses": 8,
+        "winPercent": 0.3846154,
+        "gamesBack": 5.5,
+        "gamesPlayed": 13,
+        "pointsFor": 111.15385,
+        "pointsAgainst": 113.23077,
+        "pointDifferential": -27,
+        "streak": "W2",
+        "homeRecord": "2-4",
+        "awayRecord": "3-3",
+        "lastTen": "3-7"
       },
       {
         "id": "cha",
@@ -215,8 +237,8 @@
         "shortName": "Hornets",
         "conference": "east",
         "division": null,
-        "conferenceSeed": 10,
-        "position": 10,
+        "conferenceSeed": 11,
+        "position": 11,
         "wins": 4,
         "losses": 8,
         "winPercent": 0.33333334,
@@ -228,28 +250,6 @@
         "streak": "L1",
         "homeRecord": "3-4",
         "awayRecord": "1-4",
-        "lastTen": "3-7"
-      },
-      {
-        "id": "ind",
-        "abbreviation": "IND",
-        "name": "Indiana Pacers",
-        "shortName": "Pacers",
-        "conference": "east",
-        "division": null,
-        "conferenceSeed": 11,
-        "position": 11,
-        "wins": 4,
-        "losses": 8,
-        "winPercent": 0.33333334,
-        "gamesBack": 6,
-        "gamesPlayed": 12,
-        "pointsFor": 111.583336,
-        "pointsAgainst": 114,
-        "pointDifferential": -29,
-        "streak": "W1",
-        "homeRecord": "1-4",
-        "awayRecord": "3-3",
         "lastTen": "3-7"
       },
       {
@@ -305,18 +305,18 @@
         "division": null,
         "conferenceSeed": 14,
         "position": 14,
-        "wins": 1,
+        "wins": 2,
         "losses": 9,
-        "winPercent": 0.1,
-        "gamesBack": 8,
-        "gamesPlayed": 10,
-        "pointsFor": 113.3,
-        "pointsAgainst": 128.8,
-        "pointDifferential": -155,
-        "streak": "L8",
-        "homeRecord": "0-4",
+        "winPercent": 0.18181819,
+        "gamesBack": 7.5,
+        "gamesPlayed": 11,
+        "pointsFor": 114.36364,
+        "pointsAgainst": 127.72727,
+        "pointDifferential": -147,
+        "streak": "W1",
+        "homeRecord": "1-4",
         "awayRecord": "1-5",
-        "lastTen": "1-9"
+        "lastTen": "2-8"
       },
       {
         "id": "mil",
@@ -328,20 +328,42 @@
         "conferenceSeed": 15,
         "position": 15,
         "wins": 1,
-        "losses": 11,
-        "winPercent": 0.083333336,
-        "gamesBack": 9,
-        "gamesPlayed": 12,
-        "pointsFor": 106.75,
-        "pointsAgainst": 121.333336,
-        "pointDifferential": -175,
-        "streak": "L8",
+        "losses": 12,
+        "winPercent": 0.07692308,
+        "gamesBack": 9.5,
+        "gamesPlayed": 13,
+        "pointsFor": 106.15385,
+        "pointsAgainst": 120.23077,
+        "pointDifferential": -183,
+        "streak": "L9",
         "homeRecord": "1-6",
-        "awayRecord": "0-5",
+        "awayRecord": "0-6",
         "lastTen": "1-9"
       }
     ],
     "west": [
+      {
+        "id": "sa",
+        "abbreviation": "SA",
+        "name": "San Antonio Spurs",
+        "shortName": "Spurs",
+        "conference": "west",
+        "division": null,
+        "conferenceSeed": 1,
+        "position": 1,
+        "wins": 11,
+        "losses": 2,
+        "winPercent": 0.84615386,
+        "gamesBack": 0,
+        "gamesPlayed": 13,
+        "pointsFor": 119.46154,
+        "pointsAgainst": 106.23077,
+        "pointDifferential": 172,
+        "streak": "W11",
+        "homeRecord": "5-2",
+        "awayRecord": "6-0",
+        "lastTen": "10-0"
+      },
       {
         "id": "lal",
         "abbreviation": "LAL",
@@ -349,8 +371,8 @@
         "shortName": "Lakers",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 1,
-        "position": 1,
+        "conferenceSeed": 2,
+        "position": 2,
         "wins": 11,
         "losses": 2,
         "winPercent": 0.84615386,
@@ -365,26 +387,26 @@
         "lastTen": "8-2"
       },
       {
-        "id": "sa",
-        "abbreviation": "SA",
-        "name": "San Antonio Spurs",
-        "shortName": "Spurs",
+        "id": "hou",
+        "abbreviation": "HOU",
+        "name": "Houston Rockets",
+        "shortName": "Rockets",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 2,
-        "position": 2,
+        "conferenceSeed": 3,
+        "position": 3,
         "wins": 10,
-        "losses": 2,
-        "winPercent": 0.8333333,
-        "gamesBack": 0.5,
-        "gamesPlayed": 12,
-        "pointsFor": 119.166664,
-        "pointsAgainst": 108,
-        "pointDifferential": 134,
-        "streak": "W10",
-        "homeRecord": "4-2",
-        "awayRecord": "6-0",
-        "lastTen": "10-0"
+        "losses": 3,
+        "winPercent": 0.7692308,
+        "gamesBack": 1,
+        "gamesPlayed": 13,
+        "pointsFor": 116.15385,
+        "pointsAgainst": 107.38461,
+        "pointDifferential": 114,
+        "streak": "W3",
+        "homeRecord": "7-1",
+        "awayRecord": "3-2",
+        "lastTen": "7-3"
       },
       {
         "id": "min",
@@ -393,8 +415,8 @@
         "shortName": "Timberwolves",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 3,
-        "position": 3,
+        "conferenceSeed": 4,
+        "position": 4,
         "wins": 9,
         "losses": 3,
         "winPercent": 0.75,
@@ -406,28 +428,6 @@
         "streak": "W5",
         "homeRecord": "5-1",
         "awayRecord": "4-2",
-        "lastTen": "7-3"
-      },
-      {
-        "id": "hou",
-        "abbreviation": "HOU",
-        "name": "Houston Rockets",
-        "shortName": "Rockets",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 4,
-        "position": 4,
-        "wins": 9,
-        "losses": 3,
-        "winPercent": 0.75,
-        "gamesBack": 1.5,
-        "gamesPlayed": 12,
-        "pointsFor": 115.416664,
-        "pointsAgainst": 106.5,
-        "pointDifferential": 107,
-        "streak": "W2",
-        "homeRecord": "6-1",
-        "awayRecord": "3-2",
         "lastTen": "7-3"
       },
       {
@@ -453,36 +453,14 @@
         "lastTen": "7-3"
       },
       {
-        "id": "gs",
-        "abbreviation": "GS",
-        "name": "Golden State Warriors",
-        "shortName": "Warriors",
-        "conference": "west",
-        "division": null,
-        "conferenceSeed": 6,
-        "position": 6,
-        "wins": 8,
-        "losses": 4,
-        "winPercent": 0.6666667,
-        "gamesBack": 2.5,
-        "gamesPlayed": 12,
-        "pointsFor": 119.333336,
-        "pointsAgainst": 111.5,
-        "pointDifferential": 94,
-        "streak": "L1",
-        "homeRecord": "6-1",
-        "awayRecord": "2-3",
-        "lastTen": "8-2"
-      },
-      {
         "id": "okc",
         "abbreviation": "OKC",
         "name": "Oklahoma City Thunder",
         "shortName": "Thunder",
         "conference": "west",
         "division": null,
-        "conferenceSeed": 7,
-        "position": 7,
+        "conferenceSeed": 6,
+        "position": 6,
         "wins": 8,
         "losses": 4,
         "winPercent": 0.6666667,
@@ -503,20 +481,42 @@
         "shortName": "Grizzlies",
         "conference": "west",
         "division": null,
+        "conferenceSeed": 7,
+        "position": 7,
+        "wins": 8,
+        "losses": 4,
+        "winPercent": 0.6666667,
+        "gamesBack": 2.5,
+        "gamesPlayed": 12,
+        "pointsFor": 119.916664,
+        "pointsAgainst": 111.833336,
+        "pointDifferential": 97,
+        "streak": "W1",
+        "homeRecord": "2-4",
+        "awayRecord": "6-0",
+        "lastTen": "6-4"
+      },
+      {
+        "id": "gs",
+        "abbreviation": "GS",
+        "name": "Golden State Warriors",
+        "shortName": "Warriors",
+        "conference": "west",
+        "division": null,
         "conferenceSeed": 8,
         "position": 8,
-        "wins": 7,
-        "losses": 4,
-        "winPercent": 0.6363636,
+        "wins": 8,
+        "losses": 5,
+        "winPercent": 0.61538464,
         "gamesBack": 3,
-        "gamesPlayed": 11,
-        "pointsFor": 117.90909,
-        "pointsAgainst": 111.90909,
-        "pointDifferential": 66,
-        "streak": "L1",
-        "homeRecord": "2-4",
-        "awayRecord": "5-0",
-        "lastTen": "6-4"
+        "gamesPlayed": 13,
+        "pointsFor": 116.69231,
+        "pointsAgainst": 112.38461,
+        "pointDifferential": 56,
+        "streak": "L2",
+        "homeRecord": "6-1",
+        "awayRecord": "2-4",
+        "lastTen": "8-2"
       },
       {
         "id": "den",
@@ -594,15 +594,15 @@
         "conferenceSeed": 12,
         "position": 12,
         "wins": 4,
-        "losses": 8,
-        "winPercent": 0.33333334,
-        "gamesBack": 6.5,
-        "gamesPlayed": 12,
-        "pointsFor": 116.916664,
-        "pointsAgainst": 124.25,
-        "pointDifferential": -88,
-        "streak": "L4",
-        "homeRecord": "3-4",
+        "losses": 9,
+        "winPercent": 0.30769232,
+        "gamesBack": 7,
+        "gamesPlayed": 13,
+        "pointsFor": 116.46154,
+        "pointsAgainst": 125.61539,
+        "pointDifferential": -119,
+        "streak": "L5",
+        "homeRecord": "3-5",
         "awayRecord": "1-4",
         "lastTen": "4-6"
       },
@@ -660,16 +660,16 @@
         "conferenceSeed": 15,
         "position": 15,
         "wins": 1,
-        "losses": 11,
-        "winPercent": 0.083333336,
-        "gamesBack": 9.5,
-        "gamesPlayed": 12,
-        "pointsFor": 106.583336,
-        "pointsAgainst": 118.083336,
-        "pointDifferential": -138,
-        "streak": "L10",
+        "losses": 12,
+        "winPercent": 0.07692308,
+        "gamesBack": 10,
+        "gamesPlayed": 13,
+        "pointsFor": 107.46154,
+        "pointsAgainst": 118.61539,
+        "pointDifferential": -145,
+        "streak": "L11",
         "homeRecord": "1-6",
-        "awayRecord": "0-5",
+        "awayRecord": "0-6",
         "lastTen": "0-10"
       }
     ]
@@ -952,6 +952,240 @@
   ],
   "recentFixtures": [
     {
+      "id": "401909304",
+      "utcDate": "2026-11-14T03:30Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "lac",
+        "name": "LA Clippers",
+        "shortName": "Clippers",
+        "abbreviation": "LAC",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png"
+      },
+      "awayTeam": {
+        "id": "okc",
+        "name": "Oklahoma City Thunder",
+        "shortName": "Thunder",
+        "abbreviation": "OKC",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 113,
+        "away": 112
+      }
+    },
+    {
+      "id": "401909303",
+      "utcDate": "2026-11-14T03:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "sac",
+        "name": "Sacramento Kings",
+        "shortName": "Kings",
+        "abbreviation": "SAC",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png"
+      },
+      "awayTeam": {
+        "id": "por",
+        "name": "Portland Trail Blazers",
+        "shortName": "Trail Blazers",
+        "abbreviation": "POR",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 107,
+        "away": 120
+      }
+    },
+    {
+      "id": "401909302",
+      "utcDate": "2026-11-14T02:30Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "sa",
+        "name": "San Antonio Spurs",
+        "shortName": "Spurs",
+        "abbreviation": "SA",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png"
+      },
+      "awayTeam": {
+        "id": "gs",
+        "name": "Golden State Warriors",
+        "shortName": "Warriors",
+        "abbreviation": "GS",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 123,
+        "away": 85
+      }
+    },
+    {
+      "id": "401909301",
+      "utcDate": "2026-11-14T01:30Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "hou",
+        "name": "Houston Rockets",
+        "shortName": "Rockets",
+        "abbreviation": "HOU",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png"
+      },
+      "awayTeam": {
+        "id": "utah",
+        "name": "Utah Jazz",
+        "shortName": "Jazz",
+        "abbreviation": "UTAH",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 125,
+        "away": 118
+      }
+    },
+    {
+      "id": "401909298",
+      "utcDate": "2026-11-14T01:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "mia",
+        "name": "Miami Heat",
+        "shortName": "Heat",
+        "abbreviation": "MIA",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png"
+      },
+      "awayTeam": {
+        "id": "cle",
+        "name": "Cleveland Cavaliers",
+        "shortName": "Cavaliers",
+        "abbreviation": "CLE",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 133,
+        "away": 121
+      }
+    },
+    {
+      "id": "401909299",
+      "utcDate": "2026-11-14T01:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "chi",
+        "name": "Chicago Bulls",
+        "shortName": "Bulls",
+        "abbreviation": "CHI",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png"
+      },
+      "awayTeam": {
+        "id": "atl",
+        "name": "Atlanta Hawks",
+        "shortName": "Hawks",
+        "abbreviation": "ATL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 125,
+        "away": 117
+      }
+    },
+    {
+      "id": "401909300",
+      "utcDate": "2026-11-14T01:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "no",
+        "name": "New Orleans Pelicans",
+        "shortName": "Pelicans",
+        "abbreviation": "NO",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png"
+      },
+      "awayTeam": {
+        "id": "mem",
+        "name": "Memphis Grizzlies",
+        "shortName": "Grizzlies",
+        "abbreviation": "MEM",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "home": 111,
+        "away": 142
+      }
+    },
+    {
+      "id": "401909296",
+      "utcDate": "2026-11-14T00:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "ind",
+        "name": "Indiana Pacers",
+        "shortName": "Pacers",
+        "abbreviation": "IND",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png"
+      },
+      "awayTeam": {
+        "id": "ny",
+        "name": "New York Knicks",
+        "shortName": "Knicks",
+        "abbreviation": "NY",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 106,
+        "away": 104
+      }
+    },
+    {
+      "id": "401909297",
+      "utcDate": "2026-11-14T00:00Z",
+      "status": "FINISHED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "orl",
+        "name": "Orlando Magic",
+        "shortName": "Magic",
+        "abbreviation": "ORL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png"
+      },
+      "awayTeam": {
+        "id": "mil",
+        "name": "Milwaukee Bucks",
+        "shortName": "Bucks",
+        "abbreviation": "MIL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png"
+      },
+      "score": {
+        "winner": "HOME_TEAM",
+        "home": 107,
+        "away": 99
+      }
+    },
+    {
       "id": "401909979",
       "utcDate": "2026-11-13T02:00Z",
       "status": "FINISHED",
@@ -976,477 +1210,9 @@
         "home": 101,
         "away": 96
       }
-    },
-    {
-      "id": "401909978",
-      "utcDate": "2026-11-13T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "min",
-        "name": "Minnesota Timberwolves",
-        "shortName": "Timberwolves",
-        "abbreviation": "MIN",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png"
-      },
-      "awayTeam": {
-        "id": "dal",
-        "name": "Dallas Mavericks",
-        "shortName": "Mavericks",
-        "abbreviation": "DAL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 133,
-        "away": 94
-      }
-    },
-    {
-      "id": "401909976",
-      "utcDate": "2026-11-13T00:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "phi",
-        "name": "Philadelphia 76ers",
-        "shortName": "76ers",
-        "abbreviation": "PHI",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png"
-      },
-      "awayTeam": {
-        "id": "tor",
-        "name": "Toronto Raptors",
-        "shortName": "Raptors",
-        "abbreviation": "TOR",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 123,
-        "away": 112
-      }
-    },
-    {
-      "id": "401909977",
-      "utcDate": "2026-11-13T00:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "wsh",
-        "name": "Washington Wizards",
-        "shortName": "Wizards",
-        "abbreviation": "WSH",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png"
-      },
-      "awayTeam": {
-        "id": "det",
-        "name": "Detroit Pistons",
-        "shortName": "Pistons",
-        "abbreviation": "DET",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 140,
-        "away": 144
-      }
-    },
-    {
-      "id": "401909975",
-      "utcDate": "2026-11-12T03:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "por",
-        "name": "Portland Trail Blazers",
-        "shortName": "Trail Blazers",
-        "abbreviation": "POR",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png"
-      },
-      "awayTeam": {
-        "id": "okc",
-        "name": "Oklahoma City Thunder",
-        "shortName": "Thunder",
-        "abbreviation": "OKC",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 118,
-        "away": 108
-      }
-    },
-    {
-      "id": "401909974",
-      "utcDate": "2026-11-12T02:30Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "hou",
-        "name": "Houston Rockets",
-        "shortName": "Rockets",
-        "abbreviation": "HOU",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png"
-      },
-      "awayTeam": {
-        "id": "gs",
-        "name": "Golden State Warriors",
-        "shortName": "Warriors",
-        "abbreviation": "GS",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png"
-      },
-      "score": {
-        "winner": "HOME_TEAM",
-        "home": 115,
-        "away": 108
-      }
-    },
-    {
-      "id": "401909973",
-      "utcDate": "2026-11-12T02:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "utah",
-        "name": "Utah Jazz",
-        "shortName": "Jazz",
-        "abbreviation": "UTAH",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png"
-      },
-      "awayTeam": {
-        "id": "orl",
-        "name": "Orlando Magic",
-        "shortName": "Magic",
-        "abbreviation": "ORL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 108,
-        "away": 123
-      }
-    },
-    {
-      "id": "401909969",
-      "utcDate": "2026-11-12T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "chi",
-        "name": "Chicago Bulls",
-        "shortName": "Bulls",
-        "abbreviation": "CHI",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png"
-      },
-      "awayTeam": {
-        "id": "sa",
-        "name": "San Antonio Spurs",
-        "shortName": "Spurs",
-        "abbreviation": "SA",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 119,
-        "away": 124
-      }
-    },
-    {
-      "id": "401909970",
-      "utcDate": "2026-11-12T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "mem",
-        "name": "Memphis Grizzlies",
-        "shortName": "Grizzlies",
-        "abbreviation": "MEM",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png"
-      },
-      "awayTeam": {
-        "id": "den",
-        "name": "Denver Nuggets",
-        "shortName": "Nuggets",
-        "abbreviation": "DEN",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/den.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 118,
-        "away": 123
-      }
-    },
-    {
-      "id": "401909971",
-      "utcDate": "2026-11-12T01:00Z",
-      "status": "FINISHED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "mil",
-        "name": "Milwaukee Bucks",
-        "shortName": "Bucks",
-        "abbreviation": "MIL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png"
-      },
-      "awayTeam": {
-        "id": "lal",
-        "name": "Los Angeles Lakers",
-        "shortName": "Lakers",
-        "abbreviation": "LAL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png"
-      },
-      "score": {
-        "winner": "AWAY_TEAM",
-        "home": 112,
-        "away": 123
-      }
     }
   ],
   "upcomingFixtures": [
-    {
-      "id": "401909296",
-      "utcDate": "2026-11-14T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "ind",
-        "name": "Indiana Pacers",
-        "shortName": "Pacers",
-        "abbreviation": "IND",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png"
-      },
-      "awayTeam": {
-        "id": "ny",
-        "name": "New York Knicks",
-        "shortName": "Knicks",
-        "abbreviation": "NY",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909297",
-      "utcDate": "2026-11-14T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "orl",
-        "name": "Orlando Magic",
-        "shortName": "Magic",
-        "abbreviation": "ORL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/orl.png"
-      },
-      "awayTeam": {
-        "id": "mil",
-        "name": "Milwaukee Bucks",
-        "shortName": "Bucks",
-        "abbreviation": "MIL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mil.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909298",
-      "utcDate": "2026-11-14T01:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "mia",
-        "name": "Miami Heat",
-        "shortName": "Heat",
-        "abbreviation": "MIA",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png"
-      },
-      "awayTeam": {
-        "id": "cle",
-        "name": "Cleveland Cavaliers",
-        "shortName": "Cavaliers",
-        "abbreviation": "CLE",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909299",
-      "utcDate": "2026-11-14T01:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "chi",
-        "name": "Chicago Bulls",
-        "shortName": "Bulls",
-        "abbreviation": "CHI",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png"
-      },
-      "awayTeam": {
-        "id": "atl",
-        "name": "Atlanta Hawks",
-        "shortName": "Hawks",
-        "abbreviation": "ATL",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/atl.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909300",
-      "utcDate": "2026-11-14T01:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "no",
-        "name": "New Orleans Pelicans",
-        "shortName": "Pelicans",
-        "abbreviation": "NO",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/no.png"
-      },
-      "awayTeam": {
-        "id": "mem",
-        "name": "Memphis Grizzlies",
-        "shortName": "Grizzlies",
-        "abbreviation": "MEM",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909301",
-      "utcDate": "2026-11-14T01:30Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "hou",
-        "name": "Houston Rockets",
-        "shortName": "Rockets",
-        "abbreviation": "HOU",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/hou.png"
-      },
-      "awayTeam": {
-        "id": "utah",
-        "name": "Utah Jazz",
-        "shortName": "Jazz",
-        "abbreviation": "UTAH",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909302",
-      "utcDate": "2026-11-14T02:30Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "sa",
-        "name": "San Antonio Spurs",
-        "shortName": "Spurs",
-        "abbreviation": "SA",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png"
-      },
-      "awayTeam": {
-        "id": "gs",
-        "name": "Golden State Warriors",
-        "shortName": "Warriors",
-        "abbreviation": "GS",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/gs.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909303",
-      "utcDate": "2026-11-14T03:00Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "sac",
-        "name": "Sacramento Kings",
-        "shortName": "Kings",
-        "abbreviation": "SAC",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png"
-      },
-      "awayTeam": {
-        "id": "por",
-        "name": "Portland Trail Blazers",
-        "shortName": "Trail Blazers",
-        "abbreviation": "POR",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
-    {
-      "id": "401909304",
-      "utcDate": "2026-11-14T03:30Z",
-      "status": "STATUS_SCHEDULED",
-      "matchday": null,
-      "stage": "Regular Season",
-      "homeTeam": {
-        "id": "lac",
-        "name": "LA Clippers",
-        "shortName": "Clippers",
-        "abbreviation": "LAC",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png"
-      },
-      "awayTeam": {
-        "id": "okc",
-        "name": "Oklahoma City Thunder",
-        "shortName": "Thunder",
-        "abbreviation": "OKC",
-        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/okc.png"
-      },
-      "score": {
-        "winner": null,
-        "home": 0,
-        "away": 0
-      }
-    },
     {
       "id": "401909980",
       "utcDate": "2026-11-15T00:00Z",
@@ -1466,6 +1232,240 @@
         "shortName": "Nuggets",
         "abbreviation": "DEN",
         "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/den.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909981",
+      "utcDate": "2026-11-15T00:30Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "cle",
+        "name": "Cleveland Cavaliers",
+        "shortName": "Cavaliers",
+        "abbreviation": "CLE",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cle.png"
+      },
+      "awayTeam": {
+        "id": "dal",
+        "name": "Dallas Mavericks",
+        "shortName": "Mavericks",
+        "abbreviation": "DAL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909982",
+      "utcDate": "2026-11-15T01:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "mia",
+        "name": "Miami Heat",
+        "shortName": "Heat",
+        "abbreviation": "MIA",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mia.png"
+      },
+      "awayTeam": {
+        "id": "det",
+        "name": "Detroit Pistons",
+        "shortName": "Pistons",
+        "abbreviation": "DET",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/det.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909983",
+      "utcDate": "2026-11-15T01:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "mem",
+        "name": "Memphis Grizzlies",
+        "shortName": "Grizzlies",
+        "abbreviation": "MEM",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/mem.png"
+      },
+      "awayTeam": {
+        "id": "bkn",
+        "name": "Brooklyn Nets",
+        "shortName": "Nets",
+        "abbreviation": "BKN",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909984",
+      "utcDate": "2026-11-15T01:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "min",
+        "name": "Minnesota Timberwolves",
+        "shortName": "Timberwolves",
+        "abbreviation": "MIN",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png"
+      },
+      "awayTeam": {
+        "id": "chi",
+        "name": "Chicago Bulls",
+        "shortName": "Bulls",
+        "abbreviation": "CHI",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/chi.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909985",
+      "utcDate": "2026-11-15T18:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "phi",
+        "name": "Philadelphia 76ers",
+        "shortName": "76ers",
+        "abbreviation": "PHI",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phi.png"
+      },
+      "awayTeam": {
+        "id": "ind",
+        "name": "Indiana Pacers",
+        "shortName": "Pacers",
+        "abbreviation": "IND",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ind.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909986",
+      "utcDate": "2026-11-15T21:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "phx",
+        "name": "Phoenix Suns",
+        "shortName": "Suns",
+        "abbreviation": "PHX",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png"
+      },
+      "awayTeam": {
+        "id": "lal",
+        "name": "Los Angeles Lakers",
+        "shortName": "Lakers",
+        "abbreviation": "LAL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lal.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909987",
+      "utcDate": "2026-11-15T21:30Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "lac",
+        "name": "LA Clippers",
+        "shortName": "Clippers",
+        "abbreviation": "LAC",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/lac.png"
+      },
+      "awayTeam": {
+        "id": "cha",
+        "name": "Charlotte Hornets",
+        "shortName": "Hornets",
+        "abbreviation": "CHA",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/cha.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909988",
+      "utcDate": "2026-11-15T22:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "utah",
+        "name": "Utah Jazz",
+        "shortName": "Jazz",
+        "abbreviation": "UTAH",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/utah.png"
+      },
+      "awayTeam": {
+        "id": "sa",
+        "name": "San Antonio Spurs",
+        "shortName": "Spurs",
+        "abbreviation": "SA",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sa.png"
+      },
+      "score": {
+        "winner": null,
+        "home": 0,
+        "away": 0
+      }
+    },
+    {
+      "id": "401909989",
+      "utcDate": "2026-11-15T23:00Z",
+      "status": "STATUS_SCHEDULED",
+      "matchday": null,
+      "stage": "Regular Season",
+      "homeTeam": {
+        "id": "bos",
+        "name": "Boston Celtics",
+        "shortName": "Celtics",
+        "abbreviation": "BOS",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png"
+      },
+      "awayTeam": {
+        "id": "dal",
+        "name": "Dallas Mavericks",
+        "shortName": "Mavericks",
+        "abbreviation": "DAL",
+        "crest": "https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/dal.png"
       },
       "score": {
         "winner": null,
@@ -2067,7 +2067,7 @@
         "pointsFor": 558,
         "pointsAgainst": 581
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "mil": {
       "team": {
@@ -2083,6 +2083,32 @@
         "primaryColor": "00471b"
       },
       "recentFixtures": [
+        {
+          "id": "401909297",
+          "utcDate": "2026-11-14T00:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "orl",
+            "name": "Orlando Magic",
+            "shortName": "Magic",
+            "abbreviation": "ORL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
+          },
+          "awayTeam": {
+            "id": "mil",
+            "name": "Milwaukee Bucks",
+            "shortName": "Bucks",
+            "abbreviation": "MIL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 107,
+            "away": 99
+          }
+        },
         {
           "id": "401909971",
           "utcDate": "2026-11-12T01:00Z",
@@ -2186,61 +2212,9 @@
             "home": 107,
             "away": 121
           }
-        },
-        {
-          "id": "401909924",
-          "utcDate": "2026-11-05T00:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "bos",
-            "name": "Boston Celtics",
-            "shortName": "Celtics",
-            "abbreviation": "BOS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
-          },
-          "awayTeam": {
-            "id": "mil",
-            "name": "Milwaukee Bucks",
-            "shortName": "Bucks",
-            "abbreviation": "MIL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 109,
-            "away": 102
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909297",
-          "utcDate": "2026-11-14T00:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "orl",
-            "name": "Orlando Magic",
-            "shortName": "Magic",
-            "abbreviation": "ORL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
-          },
-          "awayTeam": {
-            "id": "mil",
-            "name": "Milwaukee Bucks",
-            "shortName": "Bucks",
-            "abbreviation": "MIL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909992",
           "utcDate": "2026-11-16T01:00Z",
@@ -2344,6 +2318,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910039",
+          "utcDate": "2026-11-24T00:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "tor",
+            "name": "Toronto Raptors",
+            "shortName": "Raptors",
+            "abbreviation": "TOR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png"
+          },
+          "awayTeam": {
+            "id": "mil",
+            "name": "Milwaukee Bucks",
+            "shortName": "Bucks",
+            "abbreviation": "MIL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -2356,10 +2356,10 @@
         ],
         "wins": 0,
         "losses": 5,
-        "pointsFor": 503,
-        "pointsAgainst": 587
+        "pointsFor": 500,
+        "pointsAgainst": 585
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "chi": {
       "team": {
@@ -2375,6 +2375,32 @@
         "primaryColor": "ce1141"
       },
       "recentFixtures": [
+        {
+          "id": "401909299",
+          "utcDate": "2026-11-14T01:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "chi",
+            "name": "Chicago Bulls",
+            "shortName": "Bulls",
+            "abbreviation": "CHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
+          },
+          "awayTeam": {
+            "id": "atl",
+            "name": "Atlanta Hawks",
+            "shortName": "Hawks",
+            "abbreviation": "ATL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 125,
+            "away": 117
+          }
+        },
         {
           "id": "401909969",
           "utcDate": "2026-11-12T01:00Z",
@@ -2478,61 +2504,9 @@
             "home": 126,
             "away": 107
           }
-        },
-        {
-          "id": "401909278",
-          "utcDate": "2026-10-30T23:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "bos",
-            "name": "Boston Celtics",
-            "shortName": "Celtics",
-            "abbreviation": "BOS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
-          },
-          "awayTeam": {
-            "id": "chi",
-            "name": "Chicago Bulls",
-            "shortName": "Bulls",
-            "abbreviation": "CHI",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 125,
-            "away": 111
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909299",
-          "utcDate": "2026-11-14T01:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "chi",
-            "name": "Chicago Bulls",
-            "shortName": "Bulls",
-            "abbreviation": "CHI",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
-          },
-          "awayTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909984",
           "utcDate": "2026-11-15T01:00Z",
@@ -2636,22 +2610,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910032",
+          "utcDate": "2026-11-23T00:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "chi",
+            "name": "Chicago Bulls",
+            "shortName": "Bulls",
+            "abbreviation": "CHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
+          },
+          "awayTeam": {
+            "id": "den",
+            "name": "Denver Nuggets",
+            "shortName": "Nuggets",
+            "abbreviation": "DEN",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/den.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
-          "L",
+          "W",
           "L",
           "L",
           "L",
           "L"
         ],
-        "wins": 0,
-        "losses": 5,
-        "pointsFor": 563,
-        "pointsAgainst": 637
+        "wins": 1,
+        "losses": 4,
+        "pointsFor": 577,
+        "pointsAgainst": 629
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "cle": {
       "team": {
@@ -2667,6 +2667,32 @@
         "primaryColor": "860038"
       },
       "recentFixtures": [
+        {
+          "id": "401909298",
+          "utcDate": "2026-11-14T01:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "mia",
+            "name": "Miami Heat",
+            "shortName": "Heat",
+            "abbreviation": "MIA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
+          },
+          "awayTeam": {
+            "id": "cle",
+            "name": "Cleveland Cavaliers",
+            "shortName": "Cavaliers",
+            "abbreviation": "CLE",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 133,
+            "away": 121
+          }
+        },
         {
           "id": "401909967",
           "utcDate": "2026-11-12T00:00Z",
@@ -2770,61 +2796,9 @@
             "home": 119,
             "away": 95
           }
-        },
-        {
-          "id": "401909929",
-          "utcDate": "2026-11-05T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "okc",
-            "name": "Oklahoma City Thunder",
-            "shortName": "Thunder",
-            "abbreviation": "OKC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
-          },
-          "awayTeam": {
-            "id": "cle",
-            "name": "Cleveland Cavaliers",
-            "shortName": "Cavaliers",
-            "abbreviation": "CLE",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 124,
-            "away": 116
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909298",
-          "utcDate": "2026-11-14T01:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "mia",
-            "name": "Miami Heat",
-            "shortName": "Heat",
-            "abbreviation": "MIA",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
-          },
-          "awayTeam": {
-            "id": "cle",
-            "name": "Cleveland Cavaliers",
-            "shortName": "Cavaliers",
-            "abbreviation": "CLE",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909981",
           "utcDate": "2026-11-15T00:30Z",
@@ -2928,22 +2902,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910041",
+          "utcDate": "2026-11-24T01:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "chi",
+            "name": "Chicago Bulls",
+            "shortName": "Bulls",
+            "abbreviation": "CHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
+          },
+          "awayTeam": {
+            "id": "cle",
+            "name": "Cleveland Cavaliers",
+            "shortName": "Cavaliers",
+            "abbreviation": "CLE",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "L",
           "W",
           "L",
           "L",
-          "W",
-          "L"
+          "W"
         ],
         "wins": 2,
         "losses": 3,
-        "pointsFor": 559,
-        "pointsAgainst": 559
+        "pointsFor": 564,
+        "pointsAgainst": 568
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "bos": {
       "team": {
@@ -3235,7 +3235,7 @@
         "pointsFor": 566,
         "pointsAgainst": 473
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "lac": {
       "team": {
@@ -3251,6 +3251,32 @@
         "primaryColor": "12173f"
       },
       "recentFixtures": [
+        {
+          "id": "401909304",
+          "utcDate": "2026-11-14T03:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "lac",
+            "name": "LA Clippers",
+            "shortName": "Clippers",
+            "abbreviation": "LAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
+          },
+          "awayTeam": {
+            "id": "okc",
+            "name": "Oklahoma City Thunder",
+            "shortName": "Thunder",
+            "abbreviation": "OKC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 113,
+            "away": 112
+          }
+        },
         {
           "id": "401909962",
           "utcDate": "2026-11-11T02:00Z",
@@ -3354,61 +3380,9 @@
             "home": 118,
             "away": 125
           }
-        },
-        {
-          "id": "401909905",
-          "utcDate": "2026-11-02T01:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "gs",
-            "name": "Golden State Warriors",
-            "shortName": "Warriors",
-            "abbreviation": "GS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
-          },
-          "awayTeam": {
-            "id": "lac",
-            "name": "LA Clippers",
-            "shortName": "Clippers",
-            "abbreviation": "LAC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 124,
-            "away": 112
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909304",
-          "utcDate": "2026-11-14T03:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "lac",
-            "name": "LA Clippers",
-            "shortName": "Clippers",
-            "abbreviation": "LAC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
-          },
-          "awayTeam": {
-            "id": "okc",
-            "name": "Oklahoma City Thunder",
-            "shortName": "Thunder",
-            "abbreviation": "OKC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909987",
           "utcDate": "2026-11-15T21:30Z",
@@ -3512,22 +3486,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910043",
+          "utcDate": "2026-11-24T01:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "hou",
+            "name": "Houston Rockets",
+            "shortName": "Rockets",
+            "abbreviation": "HOU",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "lac",
+            "name": "LA Clippers",
+            "shortName": "Clippers",
+            "abbreviation": "LAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "W",
           "L",
-          "L",
           "L"
         ],
-        "wins": 1,
-        "losses": 4,
-        "pointsFor": 595,
-        "pointsAgainst": 622
+        "wins": 2,
+        "losses": 3,
+        "pointsFor": 596,
+        "pointsAgainst": 610
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "mem": {
       "team": {
@@ -3543,6 +3543,32 @@
         "primaryColor": "5d76a9"
       },
       "recentFixtures": [
+        {
+          "id": "401909300",
+          "utcDate": "2026-11-14T01:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "no",
+            "name": "New Orleans Pelicans",
+            "shortName": "Pelicans",
+            "abbreviation": "NO",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
+          },
+          "awayTeam": {
+            "id": "mem",
+            "name": "Memphis Grizzlies",
+            "shortName": "Grizzlies",
+            "abbreviation": "MEM",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 111,
+            "away": 142
+          }
+        },
         {
           "id": "401909970",
           "utcDate": "2026-11-12T01:00Z",
@@ -3646,61 +3672,9 @@
             "home": 103,
             "away": 107
           }
-        },
-        {
-          "id": "401909914",
-          "utcDate": "2026-11-03T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "mem",
-            "name": "Memphis Grizzlies",
-            "shortName": "Grizzlies",
-            "abbreviation": "MEM",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
-          },
-          "awayTeam": {
-            "id": "no",
-            "name": "New Orleans Pelicans",
-            "shortName": "Pelicans",
-            "abbreviation": "NO",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 134,
-            "away": 135
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909300",
-          "utcDate": "2026-11-14T01:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "no",
-            "name": "New Orleans Pelicans",
-            "shortName": "Pelicans",
-            "abbreviation": "NO",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
-          },
-          "awayTeam": {
-            "id": "mem",
-            "name": "Memphis Grizzlies",
-            "shortName": "Grizzlies",
-            "abbreviation": "MEM",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909983",
           "utcDate": "2026-11-15T01:00Z",
@@ -3804,22 +3778,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910026",
+          "utcDate": "2026-11-22T01:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "min",
+            "name": "Minnesota Timberwolves",
+            "shortName": "Timberwolves",
+            "abbreviation": "MIN",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/min.png"
+          },
+          "awayTeam": {
+            "id": "mem",
+            "name": "Memphis Grizzlies",
+            "shortName": "Grizzlies",
+            "abbreviation": "MEM",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
+          "W",
           "L",
           "W",
           "L",
-          "L",
           "L"
         ],
-        "wins": 1,
-        "losses": 4,
-        "pointsFor": 570,
-        "pointsAgainst": 595
+        "wins": 2,
+        "losses": 3,
+        "pointsFor": 578,
+        "pointsAgainst": 571
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "atl": {
       "team": {
@@ -3835,6 +3835,32 @@
         "primaryColor": "c8102e"
       },
       "recentFixtures": [
+        {
+          "id": "401909299",
+          "utcDate": "2026-11-14T01:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "chi",
+            "name": "Chicago Bulls",
+            "shortName": "Bulls",
+            "abbreviation": "CHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
+          },
+          "awayTeam": {
+            "id": "atl",
+            "name": "Atlanta Hawks",
+            "shortName": "Hawks",
+            "abbreviation": "ATL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 125,
+            "away": 117
+          }
+        },
         {
           "id": "401909952",
           "utcDate": "2026-11-10T00:00Z",
@@ -3938,61 +3964,9 @@
             "home": 105,
             "away": 120
           }
-        },
-        {
-          "id": "401909909",
-          "utcDate": "2026-11-03T00:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "awayTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 104,
-            "away": 108
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909299",
-          "utcDate": "2026-11-14T01:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "chi",
-            "name": "Chicago Bulls",
-            "shortName": "Bulls",
-            "abbreviation": "CHI",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png"
-          },
-          "awayTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909992",
           "utcDate": "2026-11-16T01:00Z",
@@ -4096,22 +4070,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909330",
+          "utcDate": "2026-11-28T01:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "bos",
+            "name": "Boston Celtics",
+            "shortName": "Celtics",
+            "abbreviation": "BOS",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
+          },
+          "awayTeam": {
+            "id": "atl",
+            "name": "Atlanta Hawks",
+            "shortName": "Hawks",
+            "abbreviation": "ATL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
-          "W",
+          "L",
           "W",
           "W",
           "W"
         ],
-        "wins": 4,
-        "losses": 1,
-        "pointsFor": 605,
-        "pointsAgainst": 586
+        "wins": 3,
+        "losses": 2,
+        "pointsFor": 614,
+        "pointsAgainst": 607
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "mia": {
       "team": {
@@ -4127,6 +4127,32 @@
         "primaryColor": "98002e"
       },
       "recentFixtures": [
+        {
+          "id": "401909298",
+          "utcDate": "2026-11-14T01:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "mia",
+            "name": "Miami Heat",
+            "shortName": "Heat",
+            "abbreviation": "MIA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
+          },
+          "awayTeam": {
+            "id": "cle",
+            "name": "Cleveland Cavaliers",
+            "shortName": "Cavaliers",
+            "abbreviation": "CLE",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 133,
+            "away": 121
+          }
+        },
         {
           "id": "401909963",
           "utcDate": "2026-11-11T02:00Z",
@@ -4230,61 +4256,9 @@
             "home": 116,
             "away": 117
           }
-        },
-        {
-          "id": "401909921",
-          "utcDate": "2026-11-03T03:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "lal",
-            "name": "Los Angeles Lakers",
-            "shortName": "Lakers",
-            "abbreviation": "LAL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png"
-          },
-          "awayTeam": {
-            "id": "mia",
-            "name": "Miami Heat",
-            "shortName": "Heat",
-            "abbreviation": "MIA",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 138,
-            "away": 117
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909298",
-          "utcDate": "2026-11-14T01:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "mia",
-            "name": "Miami Heat",
-            "shortName": "Heat",
-            "abbreviation": "MIA",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
-          },
-          "awayTeam": {
-            "id": "cle",
-            "name": "Cleveland Cavaliers",
-            "shortName": "Cavaliers",
-            "abbreviation": "CLE",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909982",
           "utcDate": "2026-11-15T01:00Z",
@@ -4388,22 +4362,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909317",
+          "utcDate": "2026-11-25T22:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "phi",
+            "name": "Philadelphia 76ers",
+            "shortName": "76ers",
+            "abbreviation": "PHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+          },
+          "awayTeam": {
+            "id": "mia",
+            "name": "Miami Heat",
+            "shortName": "Heat",
+            "abbreviation": "MIA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
           "W",
-          "L",
           "W",
-          "L"
+          "L",
+          "W"
         ],
-        "wins": 3,
-        "losses": 2,
-        "pointsFor": 563,
-        "pointsAgainst": 591
+        "wins": 4,
+        "losses": 1,
+        "pointsFor": 579,
+        "pointsAgainst": 574
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "cha": {
       "team": {
@@ -4695,7 +4695,7 @@
         "pointsFor": 495,
         "pointsAgainst": 570
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "utah": {
       "team": {
@@ -4711,6 +4711,32 @@
         "primaryColor": "4e008e"
       },
       "recentFixtures": [
+        {
+          "id": "401909301",
+          "utcDate": "2026-11-14T01:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "hou",
+            "name": "Houston Rockets",
+            "shortName": "Rockets",
+            "abbreviation": "HOU",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "utah",
+            "name": "Utah Jazz",
+            "shortName": "Jazz",
+            "abbreviation": "UTAH",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 125,
+            "away": 118
+          }
+        },
         {
           "id": "401909973",
           "utcDate": "2026-11-12T02:00Z",
@@ -4814,61 +4840,9 @@
             "home": 112,
             "away": 100
           }
-        },
-        {
-          "id": "401909928",
-          "utcDate": "2026-11-05T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "no",
-            "name": "New Orleans Pelicans",
-            "shortName": "Pelicans",
-            "abbreviation": "NO",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
-          },
-          "awayTeam": {
-            "id": "utah",
-            "name": "Utah Jazz",
-            "shortName": "Jazz",
-            "abbreviation": "UTAH",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 120,
-            "away": 113
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909301",
-          "utcDate": "2026-11-14T01:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "hou",
-            "name": "Houston Rockets",
-            "shortName": "Rockets",
-            "abbreviation": "HOU",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "utah",
-            "name": "Utah Jazz",
-            "shortName": "Jazz",
-            "abbreviation": "UTAH",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909988",
           "utcDate": "2026-11-15T22:00Z",
@@ -4972,6 +4946,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910033",
+          "utcDate": "2026-11-23T00:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "utah",
+            "name": "Utah Jazz",
+            "shortName": "Jazz",
+            "abbreviation": "UTAH",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
+          },
+          "awayTeam": {
+            "id": "dal",
+            "name": "Dallas Mavericks",
+            "shortName": "Mavericks",
+            "abbreviation": "DAL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -4984,10 +4984,10 @@
         ],
         "wins": 0,
         "losses": 5,
-        "pointsFor": 530,
-        "pointsAgainst": 585
+        "pointsFor": 535,
+        "pointsAgainst": 590
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "sac": {
       "team": {
@@ -5003,6 +5003,32 @@
         "primaryColor": "5a2d81"
       },
       "recentFixtures": [
+        {
+          "id": "401909303",
+          "utcDate": "2026-11-14T03:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sac",
+            "name": "Sacramento Kings",
+            "shortName": "Kings",
+            "abbreviation": "SAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
+          },
+          "awayTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 107,
+            "away": 120
+          }
+        },
         {
           "id": "401909964",
           "utcDate": "2026-11-11T03:00Z",
@@ -5106,61 +5132,9 @@
             "home": 103,
             "away": 116
           }
-        },
-        {
-          "id": "401909913",
-          "utcDate": "2026-11-03T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "dal",
-            "name": "Dallas Mavericks",
-            "shortName": "Mavericks",
-            "abbreviation": "DAL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png"
-          },
-          "awayTeam": {
-            "id": "sac",
-            "name": "Sacramento Kings",
-            "shortName": "Kings",
-            "abbreviation": "SAC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 100,
-            "away": 115
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909303",
-          "utcDate": "2026-11-14T03:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "sac",
-            "name": "Sacramento Kings",
-            "shortName": "Kings",
-            "abbreviation": "SAC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
-          },
-          "awayTeam": {
-            "id": "por",
-            "name": "Portland Trail Blazers",
-            "shortName": "Trail Blazers",
-            "abbreviation": "POR",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909993",
           "utcDate": "2026-11-16T02:00Z",
@@ -5264,6 +5238,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910045",
+          "utcDate": "2026-11-24T03:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sac",
+            "name": "Sacramento Kings",
+            "shortName": "Kings",
+            "abbreviation": "SAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
+          },
+          "awayTeam": {
+            "id": "sa",
+            "name": "San Antonio Spurs",
+            "shortName": "Spurs",
+            "abbreviation": "SA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -5272,14 +5272,14 @@
           "L",
           "L",
           "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
-        "losses": 4,
-        "pointsFor": 535,
-        "pointsAgainst": 561
+        "wins": 0,
+        "losses": 5,
+        "pointsFor": 527,
+        "pointsAgainst": 581
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "ny": {
       "team": {
@@ -5295,6 +5295,32 @@
         "primaryColor": "1d428a"
       },
       "recentFixtures": [
+        {
+          "id": "401909296",
+          "utcDate": "2026-11-14T00:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "awayTeam": {
+            "id": "ny",
+            "name": "New York Knicks",
+            "shortName": "Knicks",
+            "abbreviation": "NY",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 106,
+            "away": 104
+          }
+        },
         {
           "id": "401909967",
           "utcDate": "2026-11-12T00:00Z",
@@ -5398,61 +5424,9 @@
             "home": 135,
             "away": 105
           }
-        },
-        {
-          "id": "401909910",
-          "utcDate": "2026-11-03T00:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "ny",
-            "name": "New York Knicks",
-            "shortName": "Knicks",
-            "abbreviation": "NY",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png"
-          },
-          "awayTeam": {
-            "id": "bkn",
-            "name": "Brooklyn Nets",
-            "shortName": "Nets",
-            "abbreviation": "BKN",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 103,
-            "away": 90
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909296",
-          "utcDate": "2026-11-14T00:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "awayTeam": {
-            "id": "ny",
-            "name": "New York Knicks",
-            "shortName": "Knicks",
-            "abbreviation": "NY",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909990",
           "utcDate": "2026-11-15T23:00Z",
@@ -5556,22 +5530,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910034",
+          "utcDate": "2026-11-23T01:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "ny",
+            "name": "New York Knicks",
+            "shortName": "Knicks",
+            "abbreviation": "NY",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png"
+          },
+          "awayTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
-          "W",
+          "L",
           "W",
           "W",
           "W"
         ],
-        "wins": 4,
-        "losses": 1,
-        "pointsFor": 571,
-        "pointsAgainst": 492
+        "wins": 3,
+        "losses": 2,
+        "pointsFor": 572,
+        "pointsAgainst": 508
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "lal": {
       "team": {
@@ -5863,7 +5863,7 @@
         "pointsFor": 608,
         "pointsAgainst": 563
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "orl": {
       "team": {
@@ -5879,6 +5879,32 @@
         "primaryColor": "0150b5"
       },
       "recentFixtures": [
+        {
+          "id": "401909297",
+          "utcDate": "2026-11-14T00:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "orl",
+            "name": "Orlando Magic",
+            "shortName": "Magic",
+            "abbreviation": "ORL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
+          },
+          "awayTeam": {
+            "id": "mil",
+            "name": "Milwaukee Bucks",
+            "shortName": "Bucks",
+            "abbreviation": "MIL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 107,
+            "away": 99
+          }
+        },
         {
           "id": "401909973",
           "utcDate": "2026-11-12T02:00Z",
@@ -5982,61 +6008,9 @@
             "home": 117,
             "away": 104
           }
-        },
-        {
-          "id": "401909911",
-          "utcDate": "2026-11-03T00:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "orl",
-            "name": "Orlando Magic",
-            "shortName": "Magic",
-            "abbreviation": "ORL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
-          },
-          "awayTeam": {
-            "id": "wsh",
-            "name": "Washington Wizards",
-            "shortName": "Wizards",
-            "abbreviation": "WSH",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 94,
-            "away": 103
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909297",
-          "utcDate": "2026-11-14T00:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "orl",
-            "name": "Orlando Magic",
-            "shortName": "Magic",
-            "abbreviation": "ORL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
-          },
-          "awayTeam": {
-            "id": "mil",
-            "name": "Milwaukee Bucks",
-            "shortName": "Bucks",
-            "abbreviation": "MIL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909994",
           "utcDate": "2026-11-17T00:00Z",
@@ -6140,22 +6114,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909314",
+          "utcDate": "2026-11-25T00:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "orl",
+            "name": "Orlando Magic",
+            "shortName": "Magic",
+            "abbreviation": "ORL",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png"
+          },
+          "awayTeam": {
+            "id": "det",
+            "name": "Detroit Pistons",
+            "shortName": "Pistons",
+            "abbreviation": "DET",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/det.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
           "W",
-          "L",
+          "W",
           "L",
           "L"
         ],
-        "wins": 2,
-        "losses": 3,
-        "pointsFor": 547,
-        "pointsAgainst": 554
+        "wins": 3,
+        "losses": 2,
+        "pointsFor": 560,
+        "pointsAgainst": 550
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "dal": {
       "team": {
@@ -6447,7 +6447,7 @@
         "pointsFor": 572,
         "pointsAgainst": 560
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "bkn": {
       "team": {
@@ -6739,7 +6739,7 @@
         "pointsFor": 563,
         "pointsAgainst": 572
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "den": {
       "team": {
@@ -7031,7 +7031,7 @@
         "pointsFor": 575,
         "pointsAgainst": 557
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "ind": {
       "team": {
@@ -7047,6 +7047,32 @@
         "primaryColor": "0c2340"
       },
       "recentFixtures": [
+        {
+          "id": "401909296",
+          "utcDate": "2026-11-14T00:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "awayTeam": {
+            "id": "ny",
+            "name": "New York Knicks",
+            "shortName": "Knicks",
+            "abbreviation": "NY",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 106,
+            "away": 104
+          }
+        },
         {
           "id": "401909966",
           "utcDate": "2026-11-12T00:00Z",
@@ -7150,61 +7176,9 @@
             "home": 103,
             "away": 107
           }
-        },
-        {
-          "id": "401909909",
-          "utcDate": "2026-11-03T00:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "awayTeam": {
-            "id": "atl",
-            "name": "Atlanta Hawks",
-            "shortName": "Hawks",
-            "abbreviation": "ATL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 104,
-            "away": 108
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909296",
-          "utcDate": "2026-11-14T00:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "ind",
-            "name": "Indiana Pacers",
-            "shortName": "Pacers",
-            "abbreviation": "IND",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
-          },
-          "awayTeam": {
-            "id": "ny",
-            "name": "New York Knicks",
-            "shortName": "Knicks",
-            "abbreviation": "NY",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909985",
           "utcDate": "2026-11-15T18:00Z",
@@ -7308,22 +7282,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910038",
+          "utcDate": "2026-11-24T00:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "awayTeam": {
+            "id": "okc",
+            "name": "Oklahoma City Thunder",
+            "shortName": "Thunder",
+            "abbreviation": "OKC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
-          "L",
-          "L",
           "W",
-          "L"
+          "L",
+          "L",
+          "W"
         ],
-        "wins": 2,
-        "losses": 3,
-        "pointsFor": 549,
-        "pointsAgainst": 551
+        "wins": 3,
+        "losses": 2,
+        "pointsFor": 551,
+        "pointsAgainst": 547
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "no": {
       "team": {
@@ -7339,6 +7339,32 @@
         "primaryColor": "0a2240"
       },
       "recentFixtures": [
+        {
+          "id": "401909300",
+          "utcDate": "2026-11-14T01:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "no",
+            "name": "New Orleans Pelicans",
+            "shortName": "Pelicans",
+            "abbreviation": "NO",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
+          },
+          "awayTeam": {
+            "id": "mem",
+            "name": "Memphis Grizzlies",
+            "shortName": "Grizzlies",
+            "abbreviation": "MEM",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 111,
+            "away": 142
+          }
+        },
         {
           "id": "401909972",
           "utcDate": "2026-11-12T01:00Z",
@@ -7442,61 +7468,9 @@
             "home": 109,
             "away": 115
           }
-        },
-        {
-          "id": "401909928",
-          "utcDate": "2026-11-05T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "no",
-            "name": "New Orleans Pelicans",
-            "shortName": "Pelicans",
-            "abbreviation": "NO",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
-          },
-          "awayTeam": {
-            "id": "utah",
-            "name": "Utah Jazz",
-            "shortName": "Jazz",
-            "abbreviation": "UTAH",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 120,
-            "away": 113
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909300",
-          "utcDate": "2026-11-14T01:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "no",
-            "name": "New Orleans Pelicans",
-            "shortName": "Pelicans",
-            "abbreviation": "NO",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
-          },
-          "awayTeam": {
-            "id": "mem",
-            "name": "Memphis Grizzlies",
-            "shortName": "Grizzlies",
-            "abbreviation": "MEM",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909980",
           "utcDate": "2026-11-15T00:00Z",
@@ -7600,6 +7574,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910027",
+          "utcDate": "2026-11-22T01:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sa",
+            "name": "San Antonio Spurs",
+            "shortName": "Spurs",
+            "abbreviation": "SA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
+          },
+          "awayTeam": {
+            "id": "no",
+            "name": "New Orleans Pelicans",
+            "shortName": "Pelicans",
+            "abbreviation": "NO",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/no.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -7608,14 +7608,14 @@
           "L",
           "L",
           "L",
-          "W"
+          "L"
         ],
-        "wins": 1,
-        "losses": 4,
-        "pointsFor": 550,
-        "pointsAgainst": 650
+        "wins": 0,
+        "losses": 5,
+        "pointsFor": 541,
+        "pointsAgainst": 679
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "det": {
       "team": {
@@ -7907,7 +7907,7 @@
         "pointsFor": 612,
         "pointsAgainst": 575
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "tor": {
       "team": {
@@ -8199,7 +8199,7 @@
         "pointsFor": 537,
         "pointsAgainst": 574
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "hou": {
       "team": {
@@ -8215,6 +8215,32 @@
         "primaryColor": "ce0e2d"
       },
       "recentFixtures": [
+        {
+          "id": "401909301",
+          "utcDate": "2026-11-14T01:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "hou",
+            "name": "Houston Rockets",
+            "shortName": "Rockets",
+            "abbreviation": "HOU",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "utah",
+            "name": "Utah Jazz",
+            "shortName": "Jazz",
+            "abbreviation": "UTAH",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 125,
+            "away": 118
+          }
+        },
         {
           "id": "401909974",
           "utcDate": "2026-11-12T02:30Z",
@@ -8318,61 +8344,9 @@
             "home": 107,
             "away": 117
           }
-        },
-        {
-          "id": "401909916",
-          "utcDate": "2026-11-03T01:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "hou",
-            "name": "Houston Rockets",
-            "shortName": "Rockets",
-            "abbreviation": "HOU",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "bos",
-            "name": "Boston Celtics",
-            "shortName": "Celtics",
-            "abbreviation": "BOS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 109,
-            "away": 93
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909301",
-          "utcDate": "2026-11-14T01:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "hou",
-            "name": "Houston Rockets",
-            "shortName": "Rockets",
-            "abbreviation": "HOU",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
-          },
-          "awayTeam": {
-            "id": "utah",
-            "name": "Utah Jazz",
-            "shortName": "Jazz",
-            "abbreviation": "UTAH",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909991",
           "utcDate": "2026-11-16T00:00Z",
@@ -8476,22 +8450,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910043",
+          "utcDate": "2026-11-24T01:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "hou",
+            "name": "Houston Rockets",
+            "shortName": "Rockets",
+            "abbreviation": "HOU",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png"
+          },
+          "awayTeam": {
+            "id": "lac",
+            "name": "LA Clippers",
+            "shortName": "Clippers",
+            "abbreviation": "LAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
           "W",
+          "W",
           "L",
-          "L",
-          "W"
+          "L"
         ],
         "wins": 3,
         "losses": 2,
-        "pointsFor": 540,
-        "pointsAgainst": 520
+        "pointsFor": 556,
+        "pointsAgainst": 545
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "sa": {
       "team": {
@@ -8507,6 +8507,32 @@
         "primaryColor": "000000"
       },
       "recentFixtures": [
+        {
+          "id": "401909302",
+          "utcDate": "2026-11-14T02:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sa",
+            "name": "San Antonio Spurs",
+            "shortName": "Spurs",
+            "abbreviation": "SA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
+          },
+          "awayTeam": {
+            "id": "gs",
+            "name": "Golden State Warriors",
+            "shortName": "Warriors",
+            "abbreviation": "GS",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 123,
+            "away": 85
+          }
+        },
         {
           "id": "401909969",
           "utcDate": "2026-11-12T01:00Z",
@@ -8610,61 +8636,9 @@
             "home": 109,
             "away": 124
           }
-        },
-        {
-          "id": "401909933",
-          "utcDate": "2026-11-05T02:30Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "sa",
-            "name": "San Antonio Spurs",
-            "shortName": "Spurs",
-            "abbreviation": "SA",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
-          },
-          "awayTeam": {
-            "id": "dal",
-            "name": "Dallas Mavericks",
-            "shortName": "Mavericks",
-            "abbreviation": "DAL",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 112,
-            "away": 111
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909302",
-          "utcDate": "2026-11-14T02:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "sa",
-            "name": "San Antonio Spurs",
-            "shortName": "Spurs",
-            "abbreviation": "SA",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
-          },
-          "awayTeam": {
-            "id": "gs",
-            "name": "Golden State Warriors",
-            "shortName": "Warriors",
-            "abbreviation": "GS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909988",
           "utcDate": "2026-11-15T22:00Z",
@@ -8768,6 +8742,32 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910045",
+          "utcDate": "2026-11-24T03:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sac",
+            "name": "Sacramento Kings",
+            "shortName": "Kings",
+            "abbreviation": "SAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
+          },
+          "awayTeam": {
+            "id": "sa",
+            "name": "San Antonio Spurs",
+            "shortName": "Spurs",
+            "abbreviation": "SA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
@@ -8780,10 +8780,10 @@
         ],
         "wins": 5,
         "losses": 0,
-        "pointsFor": 607,
-        "pointsAgainst": 538
+        "pointsFor": 618,
+        "pointsAgainst": 512
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "phx": {
       "team": {
@@ -9075,7 +9075,7 @@
         "pointsFor": 549,
         "pointsAgainst": 531
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "okc": {
       "team": {
@@ -9091,6 +9091,32 @@
         "primaryColor": "007ac1"
       },
       "recentFixtures": [
+        {
+          "id": "401909304",
+          "utcDate": "2026-11-14T03:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "lac",
+            "name": "LA Clippers",
+            "shortName": "Clippers",
+            "abbreviation": "LAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
+          },
+          "awayTeam": {
+            "id": "okc",
+            "name": "Oklahoma City Thunder",
+            "shortName": "Thunder",
+            "abbreviation": "OKC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 113,
+            "away": 112
+          }
+        },
         {
           "id": "401909975",
           "utcDate": "2026-11-12T03:00Z",
@@ -9194,61 +9220,9 @@
             "home": 97,
             "away": 128
           }
-        },
-        {
-          "id": "401909929",
-          "utcDate": "2026-11-05T01:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "okc",
-            "name": "Oklahoma City Thunder",
-            "shortName": "Thunder",
-            "abbreviation": "OKC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
-          },
-          "awayTeam": {
-            "id": "cle",
-            "name": "Cleveland Cavaliers",
-            "shortName": "Cavaliers",
-            "abbreviation": "CLE",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 124,
-            "away": 116
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909304",
-          "utcDate": "2026-11-14T03:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "lac",
-            "name": "LA Clippers",
-            "shortName": "Clippers",
-            "abbreviation": "LAC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
-          },
-          "awayTeam": {
-            "id": "okc",
-            "name": "Oklahoma City Thunder",
-            "shortName": "Thunder",
-            "abbreviation": "OKC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909993",
           "utcDate": "2026-11-16T02:00Z",
@@ -9352,22 +9326,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910038",
+          "utcDate": "2026-11-24T00:30Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "ind",
+            "name": "Indiana Pacers",
+            "shortName": "Pacers",
+            "abbreviation": "IND",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png"
+          },
+          "awayTeam": {
+            "id": "okc",
+            "name": "Oklahoma City Thunder",
+            "shortName": "Thunder",
+            "abbreviation": "OKC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
           "L",
-          "W",
+          "L",
           "W",
           "W"
         ],
-        "wins": 3,
-        "losses": 2,
-        "pointsFor": 577,
-        "pointsAgainst": 529
+        "wins": 2,
+        "losses": 3,
+        "pointsFor": 565,
+        "pointsAgainst": 526
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "min": {
       "team": {
@@ -9659,7 +9659,7 @@
         "pointsFor": 592,
         "pointsAgainst": 510
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "por": {
       "team": {
@@ -9675,6 +9675,32 @@
         "primaryColor": "e03a3e"
       },
       "recentFixtures": [
+        {
+          "id": "401909303",
+          "utcDate": "2026-11-14T03:00Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sac",
+            "name": "Sacramento Kings",
+            "shortName": "Kings",
+            "abbreviation": "SAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
+          },
+          "awayTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "score": {
+            "winner": "AWAY_TEAM",
+            "home": 107,
+            "away": 120
+          }
+        },
         {
           "id": "401909975",
           "utcDate": "2026-11-12T03:00Z",
@@ -9778,61 +9804,9 @@
             "home": 124,
             "away": 118
           }
-        },
-        {
-          "id": "401909932",
-          "utcDate": "2026-11-05T02:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "phx",
-            "name": "Phoenix Suns",
-            "shortName": "Suns",
-            "abbreviation": "PHX",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png"
-          },
-          "awayTeam": {
-            "id": "por",
-            "name": "Portland Trail Blazers",
-            "shortName": "Trail Blazers",
-            "abbreviation": "POR",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
-          },
-          "score": {
-            "winner": "AWAY_TEAM",
-            "home": 119,
-            "away": 132
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909303",
-          "utcDate": "2026-11-14T03:00Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "sac",
-            "name": "Sacramento Kings",
-            "shortName": "Kings",
-            "abbreviation": "SAC",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
-          },
-          "awayTeam": {
-            "id": "por",
-            "name": "Portland Trail Blazers",
-            "shortName": "Trail Blazers",
-            "abbreviation": "POR",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401909999",
           "utcDate": "2026-11-17T01:00Z",
@@ -9936,22 +9910,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401910037",
+          "utcDate": "2026-11-24T00:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "phi",
+            "name": "Philadelphia 76ers",
+            "shortName": "76ers",
+            "abbreviation": "PHI",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+          },
+          "awayTeam": {
+            "id": "por",
+            "name": "Portland Trail Blazers",
+            "shortName": "Trail Blazers",
+            "abbreviation": "POR",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/por.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "W",
           "W",
+          "W",
           "L",
-          "L",
-          "W"
+          "L"
         ],
         "wins": 3,
         "losses": 2,
-        "pointsFor": 594,
-        "pointsAgainst": 579
+        "pointsFor": 582,
+        "pointsAgainst": 567
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "gs": {
       "team": {
@@ -9967,6 +9967,32 @@
         "primaryColor": "fdb927"
       },
       "recentFixtures": [
+        {
+          "id": "401909302",
+          "utcDate": "2026-11-14T02:30Z",
+          "status": "FINISHED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "sa",
+            "name": "San Antonio Spurs",
+            "shortName": "Spurs",
+            "abbreviation": "SA",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
+          },
+          "awayTeam": {
+            "id": "gs",
+            "name": "Golden State Warriors",
+            "shortName": "Warriors",
+            "abbreviation": "GS",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
+          },
+          "score": {
+            "winner": "HOME_TEAM",
+            "home": 123,
+            "away": 85
+          }
+        },
         {
           "id": "401909974",
           "utcDate": "2026-11-12T02:30Z",
@@ -10070,61 +10096,9 @@
             "home": 120,
             "away": 100
           }
-        },
-        {
-          "id": "401909919",
-          "utcDate": "2026-11-03T03:00Z",
-          "status": "FINISHED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "gs",
-            "name": "Golden State Warriors",
-            "shortName": "Warriors",
-            "abbreviation": "GS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
-          },
-          "awayTeam": {
-            "id": "phx",
-            "name": "Phoenix Suns",
-            "shortName": "Suns",
-            "abbreviation": "PHX",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png"
-          },
-          "score": {
-            "winner": "HOME_TEAM",
-            "home": 116,
-            "away": 113
-          }
         }
       ],
       "upcomingFixtures": [
-        {
-          "id": "401909302",
-          "utcDate": "2026-11-14T02:30Z",
-          "status": "STATUS_SCHEDULED",
-          "matchday": null,
-          "stage": "Regular Season",
-          "homeTeam": {
-            "id": "sa",
-            "name": "San Antonio Spurs",
-            "shortName": "Spurs",
-            "abbreviation": "SA",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png"
-          },
-          "awayTeam": {
-            "id": "gs",
-            "name": "Golden State Warriors",
-            "shortName": "Warriors",
-            "abbreviation": "GS",
-            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
-          },
-          "score": {
-            "winner": null,
-            "home": null,
-            "away": null
-          }
-        },
         {
           "id": "401910000",
           "utcDate": "2026-11-17T01:00Z",
@@ -10228,22 +10202,48 @@
             "home": null,
             "away": null
           }
+        },
+        {
+          "id": "401909324",
+          "utcDate": "2026-11-26T03:00Z",
+          "status": "STATUS_SCHEDULED",
+          "matchday": null,
+          "stage": "Regular Season",
+          "homeTeam": {
+            "id": "gs",
+            "name": "Golden State Warriors",
+            "shortName": "Warriors",
+            "abbreviation": "GS",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png"
+          },
+          "awayTeam": {
+            "id": "sac",
+            "name": "Sacramento Kings",
+            "shortName": "Kings",
+            "abbreviation": "SAC",
+            "crest": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png"
+          },
+          "score": {
+            "winner": null,
+            "home": null,
+            "away": null
+          }
         }
       ],
       "form": {
         "sequence": [
           "L",
-          "W",
+          "L",
           "W",
           "W",
           "W"
         ],
-        "wins": 4,
-        "losses": 1,
-        "pointsFor": 608,
-        "pointsAgainst": 534
+        "wins": 3,
+        "losses": 2,
+        "pointsFor": 577,
+        "pointsAgainst": 544
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     },
     "wsh": {
       "team": {
@@ -10535,7 +10535,7 @@
         "pointsFor": 559,
         "pointsAgainst": 633
       },
-      "generatedAt": "2026-11-13T22:01:29.394Z"
+      "generatedAt": "2026-11-14T06:43:16.579Z"
     }
   }
 }
