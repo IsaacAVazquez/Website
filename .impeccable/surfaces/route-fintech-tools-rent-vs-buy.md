@@ -7,6 +7,8 @@ related_targets: ["src/app/fintech-tools/rent-vs-buy/rent-vs-buy-client.tsx","sr
 
 # Rent vs buy surface brief
 
+Checked against the code on 2026-11-02.
+
 Scope. The `/fintech-tools/rent-vs-buy` route, rendered by `src/app/fintech-tools/rent-vs-buy/rent-vs-buy-client.tsx` over the engine in `src/lib/rentVsBuy/engine.ts`, with dated tax assumptions in `src/lib/rentVsBuy/defaults.ts`.
 
 Visitor mode. Operate. The visitor is testing a real decision against their own numbers.
@@ -17,7 +19,7 @@ Visual world. Since 2026-10-11 the route owns its design inside the site frame (
 
 ## Loop, 2026-09-14
 
-The pre-fix snapshot is `2026-09-14T21-35-55Z__route-fintech-tools-rent-vs-buy.md` at 23/40 (57.5%, Acceptable) with 0 P0 and 5 P1, all ten heuristics scored. It is closed now. The fixes landed in `83807a4f`, and a plural chart label followed in `972f3ac2`. No post-fix critique snapshot was taken, so the evidence below is the post-fix computed-value sweep, where 22 of 24 checks across the four group 3 surfaces passed on the first run and all eight checks on this route passed.
+The pre-fix snapshot is `2026-09-14T21-35-55Z__route-fintech-tools-rent-vs-buy.md` at 23/40 (57.5%, Acceptable) with 0 P0 and 5 P1, all ten heuristics scored. It is closed now. As of 2026-11-02 the file is no longer tracked. `.impeccable/critique/` has been gitignored since `15d032051` on 2026-10-02, `c6ee4f4ed` untracked the file the same day, and git keeps it at `.impeccable/critique/2026-09-14T21-35-55Z__route-fintech-tools-rent-vs-buy.md` in `97a335c16`. The fixes landed in `83807a4f`, and a plural chart label followed in `972f3ac2`. No post-fix critique snapshot was taken, so the evidence below is the post-fix computed-value sweep, where 22 of 24 checks across the four group 3 surfaces passed on the first run and all eight checks on this route passed.
 
 ### What was fixed, with measured evidence
 
@@ -37,7 +39,7 @@ The tool meta chip "·" dividers measure 2.06:1 light and 2.46:1 dark, but they 
 
 ### Still open
 
-The assumptions still print "SALT cap $40,000," and the dated 2026-07 figures in `defaults.ts` were not checked against IRS numbers in this loop. The "close to a wash" band of the larger of $5,000 or 2% of price, no PMI below 20% down, and the missing validation messages behind silent clamps were not addressed. Reset still wipes the saved scenario with no confirm or undo. The assumptions summary control is 19.2px tall. Touch devices, a production build and a screen reader were not checked this loop.
+The assumptions still print "SALT cap $40,000," and the dated 2026-07 figures in `defaults.ts` were not checked against IRS numbers in this loop. The "close to a wash" band of the larger of $5,000 or 2% of price, no PMI below 20% down, and the missing validation messages behind silent clamps were not addressed. Reset still wipes the saved scenario with no confirm or undo. The assumptions summary control is 19.2px tall. Touch devices, a production build and a screen reader were not checked this loop. As of 2026-11-02 three of these are closed. The tax note prints the 2026 SALT cap of $40,400 and the law's schedule after it, from IRS and statute sources read on 2026-09-27 (`fd51a460a`, 2026-09-28) and still flagged as not independently reviewed. Since 2026-10-02 a value typed outside a field's range prints its bounds under the field while it shows, and the field snaps to the clamped value on blur. The "Assumptions & limits" summary left the page on 2026-09-26 (`fb9546b05`), and the assumptions are a paragraph, `#assumptions-and-limits`, reached through a 44px "Assumptions and limits" link. PMI, the wash band, and Reset without a confirm are unchanged.
 
 ## Redesign, 2026-10-11
 
@@ -47,7 +49,7 @@ The route left Catalog 97's print shop layout in the project-sovereign pilot (br
 
 The page is a title row (the h1 in Newsreader, one orienting sentence, and the "Assumptions and limits" link) and then the calculator. At 960px and wider the inputs sit in a 23rem column on the left and the result on the right, sticky at the top of the screen. Below 960px and on paper it is one column with the result first, the inputs next, and the fine print last. The DOM keeps the five headline inputs, then the result, then the other inputs, because the route test pins that order. The phone order is CSS `order`, and the wrapper holding the result and the fine print turns into `display: contents` below 960px so the fine print can follow the inputs there without printing twice.
 
-The five headline inputs are large ruled rows. The other thirteen sit under three native disclosures ("The home you'd buy", "The rent you'd pay", "Returns and taxes"), closed by default. A `beforeprint` listener opens them so a print carries every input. "Itemize deductions" now comes before "Marginal tax rate", since the checkbox is what enables the rate.
+The five headline inputs are large ruled rows under the "Your numbers" h2, with Reset at its right. The other fourteen, thirteen number fields and the "Itemize deductions" checkbox, sit under the "The rest of the model" h2 in three native disclosures ("The home you'd buy" with 8, "The rent you'd pay" with 2, "Returns and taxes" with 4), closed by default. A `beforeprint` listener opens them so a print carries every input. "Itemize deductions" now comes before "Marginal tax rate", since the checkbox is what enables the rate.
 
 Inputs are typed in blue and outputs in black, the financial-model convention, and each input is a tinted cell with no border, its ring drawn around the whole cell. The result is the verdict sentence in Newsreader with the break-even and the lead at the horizon under it, the net-worth chart unframed, and a buyer versus renter table (cash at the start, monthly cost in year 1, mortgage payment, net worth at the horizon) closing on a totals row with a rule above and a double rule below. The table's column heads carry the two line swatches, which replaced the separate legend. The fine print is one paragraph under the table, word for word, printed once.
 

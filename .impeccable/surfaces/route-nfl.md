@@ -7,11 +7,13 @@ related_targets: ["src/app/nfl/nfl-client.tsx","src/app/nfl/NflDivisionGrid.tsx"
 
 # NFL Pulse surface brief
 
+Checked against the code on 2026-11-02.
+
 Written on 2026-10-12 in stage 2 of the project sovereign design (archetype Board, group G1).
 
 ## What the page is
 
-The playoff picture as it would stand if the season ended today, the same genre as NBA with seven seeds and one line. The status strip leads with "If the season ended today", or with "Regular season over" from the end of week 18 through the playoffs, and prints the source, season, "through week N of 18" or "week 1 in progress", and the snapshot date, with a second line saying the seeds come from each team's division and conference rank in the snapshot. That line makes no claim about whether the feed publishes seeds, and the committed snapshot of 2026-10-12 carries one on 14 of the 32 teams. The board is a toolbar (Both conferences, AFC, NFC, Playoff field) over AFC and NFC ladders side by side, all sixteen teams each, the In band (seeds one to seven) and the Out band (a dash for the seed, in tiebreak order), with "Playoff line, N games clear" on the dashed line. The division grid follows as the second screen, eight ruled lists striped in each team's primary and secondary colours with the leader marked "Leads", every row a button into the drawer. Then the Schedule and Stat leaders tabs and one source line.
+The playoff picture as it would stand if the season ended today, the same genre as NBA with seven seeds and one line. The status strip leads with "If the season ended today", or with "Regular season over" from the end of week 18 through the playoffs, and prints the source, season, "through week N of 18" or "week 1 in progress", and the snapshot date, with a second line saying the seeds come from each team's division and conference rank in the snapshot. That line makes no claim about whether the feed publishes seeds, and the committed snapshot of 2026-10-12 carries one on 14 of the 32 teams. The board is a toolbar (Both conferences, AFC, NFC, Playoff field) over AFC and NFC ladders, side by side from 1100px, all sixteen teams each, the In band (seeds one to seven) and the Out band (a dash for the seed, in tiebreak order), with "Playoff line, N games clear" on the dashed line. Columns are seed, team (a chip in team colour and the name), W-L, and point differential, and from 640px win percentage, points for, and points against. The division grid follows as the second screen, eight ruled lists striped in each team's primary and secondary colours with the leader marked "Leads", every row a button into the drawer. Then the Schedule and Stat leaders tabs and one source line.
 
 ## Decisions
 
@@ -19,11 +21,11 @@ The hero sheet, the readouts, the separate table, the Performance cards, Pressur
 
 A ladder row or a division row is marked as pressed only while that team's drawer is open. The Team detail tab that the mark used to point at is cut, so a mark on a plain visit pointed at nothing. A view switch drops the team the drawer was holding, so a drawer that Back closed stays closed when the next view selects the same team. The client reads the view and the team from the URL alone, and the server's `initialState` only names the team whose snapshot it loaded, so Back to plain `/nfl` shuts the drawer and leaves the URL bare. On a phone the pressed view pill is kept in the switch row by `useKeepPressedInView`.
 
-The palette is `--sb-*` on `.nfl-root`, a cool sheet with navy rules, blue for the In band and grey for out. No added typeface.
+The palette is `--sb-*` on `.nfl-root`, a cool sheet with navy rules, blue for the In band and grey for out. No added typeface. On paper the toolbar is static, only the pressed or selected button in each switch prints, as ink text with no fill, the ladders print one above the other with all their columns, and no row breaks across sheets.
 
 ## Pinned, and kept
 
-The h1; the region "NFL standings" and the region "Divisions"; the AFC and NFC switches in the group "Conference and seeding view"; "/snapshot <date>/" and "· week 1 in progress ·"; "Regular season over"; "division rank and conference rank"; the tablist with Schedule and Stat leaders, and the heading "Top passing yards"; "Show <team> details"; the dialog with "Points against"; Escape returning focus; `nfl-selected-team`; the `view` and `team` parameters; and a link that names only a view fetching `/api/nfl/teams/` for that view's first team. The division grid's buttons are named by their visible text, not "Show ... details", so they never collide with the ladder's buttons in tests or for a screen reader.
+The h1; the region "NFL standings" and the region "Divisions"; the AFC and NFC switches in the group "Conference and seeding view"; "/snapshot <date>/" and "· week 1 in progress ·"; "Regular season over"; "division rank and conference rank"; the tablist with Schedule and Stat leaders, and the heading "Top passing yards"; "Show <team> details"; the dialog with "Points against"; Escape returning focus; `nfl-selected-team`; the `view` and `team` parameters; and a link that names only a view fetching `/api/nfl/teams/` for that view's first team. The division grid's buttons are named by their visible text, not "Show ... details", so they never collide with the ladder's buttons in tests or for a screen reader. A test added on 2026-10-14 also pins Back to a view's own link, which names that view's first team, leaving the drawer shut.
 
 ## Verified state on 2026-10-12
 
