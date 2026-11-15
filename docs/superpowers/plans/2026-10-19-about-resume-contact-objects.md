@@ -1,5 +1,7 @@
 # About, Résumé, and Contact as three objects. Implementation plan
 
+**Status, 2026-11-02.** Executed on `design/about-resume-contact` and merged in #613 (`d14ec2632`) on 2026-10-19. Tasks 1 to 4 are the commits `5349a0292`, `739bfe725`, `2fb68cb24`, and `e10a0abe3`, and #613 carries the title Task 5 gives it. The checkboxes below were never ticked. The spec's status line records what changed on the three pages after the merge.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Rebuild `/about` as a proofread document, `/resume` as a letter sheet on a press bed, and `/contact` as a reply card, replacing the 2026-10-18 build on `design/about-resume-contact`.

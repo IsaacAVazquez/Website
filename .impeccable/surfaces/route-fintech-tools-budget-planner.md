@@ -9,17 +9,19 @@ Updated on 2026-09-28 by the responsive pass. Envelope names hyphenate, so "Ente
 
 # Budget planner surface brief
 
+Checked against the code on 2026-11-02.
+
 Scope. The `/fintech-tools/budget-planner` route, rendered by `src/app/fintech-tools/budget-planner/budget-planner-client.tsx` over the arithmetic in `src/lib/budgetPlanner.ts`. State lives in the browser.
 
 Visitor mode. Operate. The visitor is entering a month of income, categories and expenses and needs the totals to mean what they say.
 
-Audience. Someone setting up a personal monthly budget who reads the chip and stats panel as the answer, so every label has to describe the number beside it.
+Audience. Someone setting up a personal monthly budget who reads the month bar's Spent and Left to spend figures and each envelope's reading as the answer, so every label has to describe the number beside it. Until 2026-09-26 this line named the chip and the stats panel, which left the page when the planner was rebuilt around envelopes (`1f8ef16b5`).
 
-Visual world. Since 2026-10-12 the route owns its design inside the site frame (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Log and Calculator), so judge it against the "Project routes" section of `DESIGN_CHECKLIST.md` and the redesign section at the end of this brief, not against Catalog 97. The header, the footer, and the build-note strip are still the shell's. The 2026-09-14 loop below predates the redesign, so its colours, token names, and contrast figures are history.
+Visual world. Since 2026-10-12 the route owns its design inside the site frame (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Log and Calculator), so judge it against the "Project routes" section of `DESIGN_CHECKLIST.md` and the redesign section at the end of this brief, not against Catalog 97. The header, the footer, and the build-note strip are still the shell's. The 2026-09-14 loop below predates the redesign, so its colours, token names, and contrast figures are history. So is the 2026-09-28 line above the title, since the redesign made an envelope's name an input, `.bp-envelope-name` with `text-overflow: ellipsis`, and an input does not hyphenate.
 
 ## Loop, 2026-09-14
 
-The pre-fix snapshot is `2026-09-14T21-35-57Z__route-fintech-tools-budget-planner.md` at 21/40 (52.5%, Acceptable) with 0 P0 and 2 P1, all ten heuristics scored. It is closed now. The fixes landed in `83807a4f`. No post-fix critique snapshot was taken, so the evidence below is the post-fix computed-value sweep, where 22 of 24 checks across the four group 3 surfaces passed on the first run and all four checks on this route passed.
+The pre-fix snapshot is `2026-09-14T21-35-57Z__route-fintech-tools-budget-planner.md` at 21/40 (52.5%, Acceptable) with 0 P0 and 2 P1, all ten heuristics scored. It is closed now. As of 2026-11-02 the file is no longer tracked. `.impeccable/critique/` has been gitignored since `15d032051` on 2026-10-02, `c6ee4f4ed` untracked the file the same day, and git keeps it at `.impeccable/critique/2026-09-14T21-35-57Z__route-fintech-tools-budget-planner.md` in `97a335c16`. The fixes landed in `83807a4f`. No post-fix critique snapshot was taken, so the evidence below is the post-fix computed-value sweep, where 22 of 24 checks across the four group 3 surfaces passed on the first run and all four checks on this route passed.
 
 ### What was fixed, with measured evidence
 
@@ -37,7 +39,7 @@ The disabled "Add expense" button measures 3.33:1 in dark mode, and disabled con
 
 ### Still open
 
-With the green rule gone, input borders measure 1.33:1 in light and 1.52:1 in dark against the surround, and the category name fields measure 1.00:1. Every field has a visible label, which is why this was left for now, but it sits under the 3:1 non-text contrast bar. The planner has no educational disclaimer anywhere in its code. The Budget month control is 19.2px tall. Off-month expense dates, a negative expense and the disabled Add expense button still fail without a message, deleting an expense has no undo, and every new month starts from seven $0 categories. Touch devices, a production build and a screen reader were not checked this loop.
+With the green rule gone, input borders measure 1.33:1 in light and 1.52:1 in dark against the surround, and the category name fields measure 1.00:1. Every field has a visible label, which is why this was left for now, but it sits under the 3:1 non-text contrast bar. The planner has no educational disclaimer anywhere in its code. The Budget month control is 19.2px tall. Off-month expense dates, a negative expense and the disabled Add expense button still fail without a message, deleting an expense has no undo, and every new month starts from seven $0 categories. Touch devices, a production build and a screen reader were not checked this loop. As of 2026-11-02 some of this has moved. The Budget month field is a `.bp-field`, which has a 44px minimum height. Since 2026-10-02 an amount at or under zero prints "Enter an amount above zero." under its field, and with no category the disabled Add expense button points at "Add a category above before logging expenses." Since 2026-10-12 an off-month date prints "Pick a date in" with the month on screen. An empty amount still disables Add expense with no message, an envelope's name field still draws a transparent underline until hover or focus, deleting an expense still has no undo, every new month still starts from the seven $0 categories in `DEFAULT_BUDGET_CATEGORY_NAMES` (`src/lib/budgetPlanner.ts`), and the route still has no educational disclaimer.
 
 ## Redesign, 2026-10-12
 

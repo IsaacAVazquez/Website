@@ -1,5 +1,7 @@
 > [!IMPORTANT]
 > Historical reference only. This asset note reflects an older screenshots plan and is not a current source of truth by itself. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `PAGES.md`, `COMPONENTS.md`, and `docs/README.md` for current documentation.
+>
+> As of 2026-11-02 this folder holds only this README. None of the six files listed below exists, nothing else in the repository references those file names, and only `docs/README.md` names this folder. The case-study images that Home and `/portfolio` print are the riso plates listed in `src/components/catalog97/projectPlates.ts`. The detailed case study pages that the Usage section mentions no longer exist. Since 2026-10-02 `/portfolio/<slug>` permanently redirects to each project's live tool.
 
 # Project Screenshots
 

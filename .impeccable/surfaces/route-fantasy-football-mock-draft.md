@@ -13,6 +13,8 @@ Updated on 2026-09-28 by the responsive pass. The page uses the site gutter thro
 
 # Fantasy Football Mock Draft
 
+Checked against the code on 2026-11-02.
+
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Mode
@@ -25,11 +27,13 @@ Isaac, plus fantasy players arriving from search who want reps before a real dra
 
 ## What the surface is
 
-A client-driven simulator at `/fantasy-football/mock-draft` (`mock-draft-client.tsx`, state in `hooks/useMockDraftState.ts`, engine in `src/lib/mockDraft.ts`). Opponents pick from the published consensus board and market ADP with visible source dates. Setup, an in-draft view with a fascia strip, quick picks, a room tape, and a sim-to-end board grid plus value report are all one route with three top-level states.
+A client-driven simulator at `/fantasy-football/mock-draft` (`mock-draft-client.tsx`, state in `hooks/useMockDraftState.ts`, engine in `src/lib/mockDraft.ts`). Opponents pick from the published consensus board, and from market ADP when a current sample is published, with visible source dates. The route has three top-level states. Setup holds Start mock and the room's settings. The live room has a pinned scorebug (`DraftScorebug`), quick picks, a tape of the picks since the visitor's last turn, the available board, and a rail with the visitor's roster and the pick grid. The recap, which Sim to end or the room's last pick opens, has the value report, the haul, and the full board grid.
 
 ## Decisions not to re-litigate
 
 Simulated picks pause when the ranking source is stale; that gate is honesty machinery, keep it. Opponent behavior comes from the published board and ADP, never from an invented projection. The room is explicitly a rehearsal aid, so copy must keep saying "simulated" and "seeded room" rather than implying prediction.
+
+As of 2026-11-02 the gate has one explicit way past it, which #564 added on 2026-10-04. Once the season has started and the stale board is the dated preseason board (`canPracticeWithArchivedDraftBoard` in `fantasyUtils.ts` decides that), the seasonal note shows a "Practice with the dated preseason board" checkbox. The room runs on that board only while the box is ticked, the consent is tied to that exact board, and the head adds "Dated preseason practice" in the warning tone, so the pause is still the default.
 
 ## Verified state, 2026-08-22
 
@@ -95,11 +99,15 @@ consumed after the on-the-clock section mounts moves focus there (Sim to end goe
 report) and a transition sentence feeds the status region, with Take back describing the
 restored turn. The running-state h1 sits on the DESIGN.md title ramp now.
 
+As of 2026-11-02 the fascia and that deferral are both superseded. Since the kit landed on 2026-10-13 (3e423f3d8), the live room pins the shared scorebug, `DraftScorebug` from `src/components/fantasy/DraftRoomParts.tsx`, with four cells (Pick, On the clock, Between turns, and Pool) and Take back, New mock, and Sim to end as its actions. Below 1024px it takes its short forms and drops Pool, which `fantasy-mock.css` says holds it to one row down to 768px, and on a phone it is two rows (three under 360px, per the same sheet, and I did not measure either). Under it the board's bar (`ffb-mk-boardbar`) pins the position filter, the search, the count, and the column heads while the list scrolls, so the sticky header row has shipped, and below 768px that bar scrolls with the list because the scorebug already pins two rows there. The ADP values keep their sr-only labels, and a phone row shows only the gap at the pick, under a `ffb-only-phone` "±ADP" label in place of the `md:hidden` one.
+
 Verified after in both themes at 390, 768, 1024 and 1440, setup and running: zero AA contrast
 failures, zero horizontal overflow, zero sub-44px targets, one `main`, one `h1`, zero unnamed
 sections, 38 of 38 focus rings. Still open: `getFantasyAdpFreshness` hides the ADP columns on
 the same four-day rule (shared `fantasyUtils.ts`), and the "Sim to end" fill in light is nearly
 the same tone as the signal wash beside it (P2).
+
+As of 2026-11-02 the first of those still holds, since `getFantasyAdpFreshness` still applies the four-day window from July through December. The second no longer applies, because the kit draws Sim to end as an outlined scorebug button with no fill, set apart from Take back and New mock by a rule and its "no take back" line.
 
 ## Frame removal, 2026-10-12
 
@@ -108,3 +116,5 @@ Part of the project sovereign design's fantasy group (G3), frame removal only, a
 Verified on a production build on 2026-10-12. The first setup input is at y450 at 1440 (from y680) and y682 at 390 (from 816). No contrast failures in either theme, 0 layout fails, the consent checkbox, Start mock, and the live strip all work from the keyboard, nothing infinite runs under reduced motion, and a Chromium print kept the header and the setup card. The three `project-workflows.spec.ts` mock draft tests pass against the dev server and the production build.
 
 Correction after that pass, 2026-10-12. The lead grew by 41 characters so it holds when the ADP sample is stale, which can add a 24px line above the setup card, and I did not measure the positions above again.
+
+As of 2026-11-02 those three tests drive the room by its accessible names and copy, which are "Start mock", "Your slot", "Rounds · early rep", the "Draft <name>" buttons, "Take back your last pick" and "Take back (no picks yet)", "Sim to end, which finishes the room with no take back", the "Practice with the dated preseason board" checkbox, "Run it back", the "Your haul" group, and the lines "past its freshness window", "Dated preseason practice", and "Choose dated preseason practice above to resume". A pass that renames one of them changes `e2e/project-workflows.spec.ts` with it.

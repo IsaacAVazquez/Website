@@ -7,6 +7,8 @@ related_targets: ["src/app/spacex-mission-control/spacex-mission-control-client.
 
 # SpaceX Mission Control surface brief
 
+Checked against the code on 2026-11-02.
+
 Written on 2026-10-12 by the project sovereign stage 2 (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Board, group G5).
 
 ## What the page is
@@ -25,9 +27,11 @@ The route has its own palette as `--sx-*` on `.sx-root`, a cool white (#f5f6f8) 
 
 ## Pinned, and kept
 
-The test ids `mission-hero`, `mission-board`, `mission-card-*`, `mission-board-visual-*`, `mission-hero-visual`, `mission-detail-panel`, `mission-countdown`, `mission-liftoff-note`, and `mission-vehicle-photo`; the `status`, `launch`, and `panel` parameters; the "Past" button with `aria-pressed`; "Refresh data"; the degraded line with "Countdown timers are intentionally suppressed"; "Scheduled for"; the countdown's format; the T-0 liftoff (`MissionLiftoff.module.css`, the status line, gone under reduced motion and in print); the drawer loaded through `DeferredMissionDrawer`; no opacity 0 in the server markup; the refresh backoff and the launch-time precision rule.
+The test ids `mission-hero`, `mission-board`, `mission-card-*`, `mission-board-visual-*`, `mission-hero-visual`, `mission-detail-panel`, `mission-countdown`, `mission-liftoff-note`, and `mission-vehicle-photo`; the `status`, `launch`, and `panel` parameters; the "Past" button with `aria-pressed`; "Refresh data"; the degraded line with "Countdown timers are intentionally suppressed"; "Scheduled for"; the countdown's format; the T-0 liftoff (`MissionLiftoff.module.css`, the status line, gone under reduced motion and in print); the drawer loaded through `DeferredMissionDrawer`; no opacity 0 in the server markup; the refresh backoff and the launch-time precision rule. Since 2026-10-21 (b4c3b9c65) the Konami code flies that liftoff as a drill, once each time it is typed, with the `mission-drill-note` status line under the schedule label, which `MissionControlHero.liftoff.test.tsx` holds, and the site-wide handler in `Catalog97EasterEggs` leaves the code to this route (`docs/EASTER_EGGS.md`).
 
 One client test case changed. The quick-actions case became a check that the masthead, the tape, and the manifest come in that order, that the fascia is gone, that there is no Recovery tab without recovery records, and that Inspect mission in the masthead pushes the launch.
+
+`__tests__/spacex-mission-control-css.test.ts` holds what a unit render cannot see, which is `screen` or `print` on every width query, the element resets inside `@layer base`, the status switch's inset ring, every display band token remapped for paper, the filled button and the pressed switch drawn with no fill on paper, and the card's scroll margin inside the query that makes the board tools sticky. In `src/components/spacex/__tests__`, `MissionLaunchBoard.test.tsx` holds the vehicle filter falling back to All, and `MissionImageFrame.test.tsx` holds the masthead photo loading lazily.
 
 ## Verified state on 2026-10-12
 

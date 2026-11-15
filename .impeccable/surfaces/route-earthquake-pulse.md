@@ -7,11 +7,13 @@ related_targets: ["src/app/earthquake-pulse/earthquake-client.tsx","src/app/eart
 
 # Earthquake Pulse surface brief
 
+Checked against the code on 2026-11-02.
+
 Written on 2026-10-12 by the project sovereign stage 2 (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Board, group G5).
 
 ## What the page is
 
-USGS Latest Earthquakes read as a seismograph record. The first screen is a title row, then the 24-hour trace as a full-width strip between two rules, with the kicker on its left corner, the USGS source and feed time (and the last-saved-snapshot flag) in mono on its right corner, the day's strongest quake labelled on its spike, and one caption line with the 24-hour and 7-day M2.5+ counts and the felt count. Under it the epicentre plot (sticky from 1024px) and the log sit side by side, the log's Recent, Significant, and Regions tabs as its own sticky toolbar. A picked quake opens its detail right under its row as a definition list, and a pick made on the trace or the plot scrolls that detail into view when it opens off screen. A tab pressed from the stuck toolbar brings the top of the log back, so a shorter view does not leave the page at its foot. One source line at the foot says the page reads USGS on each load and every five minutes after, falls back to a daily snapshot, and is not an emergency alert feed.
+USGS Latest Earthquakes read as a seismograph record. The first screen is a title row, then the 24-hour trace as a full-width strip between two rules, with the kicker on its left corner, the USGS source and feed time (and the last-saved-snapshot flag) in mono on its right corner, the day's strongest quake labelled on its spike, and one caption line with the 24-hour and 7-day M2.5+ counts and the felt count. Under it the epicentre plot (sticky from 1024px) and the log sit side by side, the log's Recent, Significant, and Regions tabs as its own toolbar, sticky from 640px. A picked quake opens its detail right under its row as a definition list, and a pick made on the trace or the plot scrolls that detail into view when it opens off screen. A tab pressed from the stuck toolbar brings the top of the log back, so a shorter view does not leave the page at its foot. One source line at the foot says the page reads USGS on each load and every five minutes after, falls back to a daily snapshot, and is not an emergency alert feed.
 
 ## Decisions
 
@@ -27,7 +29,7 @@ The `view` and `quake` parameters; `role="tab"` tabs with `aria-selected` and a 
 
 Four client test cases changed. The feed-time case reads the row's 13:30 UTC clock, since the full date opens with a picked quake's detail now. The counts case reads the trace's caption sentence. The live-read case drops the "Data note" heading and keeps both phrases, which the source line carries. The jump-group case, which queried `.c97-project-hero-readouts`, became a check that the tabs follow the trace and push their view. The signature test reads `.eq-trace-label`.
 
-`__tests__/earthquake-pulse-css.test.ts` holds what a unit render cannot see, which is the width queries, the plot's label sizes, and the attribute the selected row's bar keys on. The client suite now draws a quake inside the window, so the trace and the plot render in Jest.
+`__tests__/earthquake-pulse-css.test.ts` holds what a unit render cannot see, which is the width queries, with no media query nested inside another, the plot's label sizes, the sticky toolbar's `--c97-z-sticky`, and the attribute the selected row's bar keys on. The client suite now draws a quake inside the window, so the trace and the plot render in Jest.
 
 The build-note write-up in `src/constants/caseStudies.ts` called the page "snapshot-backed", built on "checked-in USGS GeoJSON snapshots", while the page polls USGS every five minutes. The close-out (98e7032b2) corrected it, and it now says the page polls the feed every five minutes and falls back to a checked-in snapshot.
 

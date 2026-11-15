@@ -4,6 +4,7 @@
 
 **Compiled:** 2026-06-08 (tournament kicks off June 11, 2026; final July 19 at MetLife Stadium).
 **Author/owner:** Isaac Vazquez.
+**Status on 2026-11-02:** The countdown this dossier backed was published. `content/blog/world-cup-2026-top-ten-contenders.mdx` and the ten `world-cup-2026-contenders-*` posts were all added on 2026-06-08, and the final recap (`world-cup-2026-final-spain-champions.mdx`) is dated 2026-07-19, so every odds figure, ranking, and projected path below is a pre-tournament reading.
 
 This dossier supports a countdown article series ranking the ten teams most likely to win the 2026 World Cup. Every figure here is time-sensitive. Odds move hourly this close to kickoff, the next FIFA ranking lands June 11, and knockout opponents are projections until the group stage ends June 27. Re-verify anything before publishing a hard claim.
 

@@ -1,8 +1,8 @@
 # Easter eggs
 
-This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-10-02, and the Konami code and stamp knock entries were checked again on 2026-10-12. The Konami code, humans.txt, and the two kicker note entries were checked again on 2026-10-13, after the fantasy football redesign took the poster type off the two draft trackers' setup titles, so on a fantasy page the code moves only the footer and the build-note strip, where the page has one. Seven more were added on 2026-10-21, the 404 note, the end mark, the homer note, the drill launch, the worn-in stamp, four search answers, and the future vintage.
+This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Two header components hold most of the site-wide ones, the back room additions mostly live in `src/components/discoveries/`, and the rest are spread across the dashboards and other pages, so without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-10-02, and the Konami code and stamp knock entries were checked again on 2026-10-12. The Konami code, humans.txt, and the two kicker note entries were checked again on 2026-10-13, after the fantasy football redesign took the poster type off the two draft trackers' setup titles, so on a fantasy page the code moves only the footer and the build-note strip, where the page has one. Seven more were added on 2026-10-21, the 404 note, the end mark, the homer note, the drill launch, the worn-in stamp, four search answers, and the future vintage. Every entry was checked against the code again on 2026-11-02.
 
-Most of them mount from the header, which is on every route. `src/components/catalog97/Catalog97Header.tsx` renders `Catalog97Monet` (the painted hovers) and `Catalog97EasterEggs` (the Konami code, the console note, the stamp and its knock, the proof marks, the safelight, and the tab title). The reduced-motion guard at the end of `src/app/catalog97.css` cuts every transition and animation inside `.c97-page` to 0.01ms, so each entry below says what's left when motion is reduced.
+Most of the site-wide ones mount from the header, which is on every route. `src/components/catalog97/Catalog97Header.tsx` renders `Catalog97Monet` (the painted hovers) and `Catalog97EasterEggs` (the Konami code, the console note, the stamp with its knock and its worn-in count, the proof marks, the safelight, and the tab title). The reduced-motion guard under the Motion heading near the end of `src/app/catalog97.css` cuts every transition and animation inside `.c97-page` to 0.01ms, so each entry below says what's left when motion is reduced.
 
 ## At a glance
 
@@ -16,7 +16,7 @@ Most of them mount from the header, which is on every route. `src/components/cat
 | 1997 homepage | Site search | Search 1997 | Yes | `discoveries/RetroHome.tsx` |
 | Registration puzzle | Footer, every route | Activate the printer registration mark | Yes | `discoveries/RegistrationGame.tsx` |
 | Website tasting note | Wine Cellar | Inspect the cork three times | Yes | `discoveries/WineCork.tsx` |
-| Portrait painters | `/`, `/about` | Hover the portrait's section, click the portrait or Another painter to change painter | Yes, through the button | `Catalog97Monet.tsx`, paint reveal block in `catalog97.css` |
+| Portrait painters | `/`, `/about` | Hover the portrait's section, click the portrait or Another painter to change painter | Yes, by tapping the portrait or the button | `Catalog97Monet.tsx`, paint reveal block in `catalog97.css` |
 | Monet name by time of day | Header, every route | Hover or focus the name | Only as a stuck hover on `/` | `Catalog97Monet.tsx`, Monet block in `catalog97.css` |
 | Painted collage plates | `/` | Hover a dashboard plate | No | `Catalog97Collage.tsx`, `Catalog97Home.tsx` |
 | Konami code | Every route but `/arcade` and `/spacex-mission-control` | ↑ ↑ ↓ ↓ ← → ← → B A | No, it needs a keyboard | `Catalog97EasterEggs.tsx`, `konami.ts` |
@@ -39,15 +39,15 @@ Most of them mount from the header, which is on every route. `src/components/cat
 | Second kicker note | `/fantasy-football/draft-tracker` | Draft a second kicker or a second defense | Yes | `src/lib/draftEarlySpecialistNote.ts` |
 | Homer note | `/fantasy-football/draft-tracker` | Draft four players from one NFL team | Yes | `src/lib/draftEarlySpecialistNote.ts` |
 | The "-30-" end mark | `/writing/[slug]` | Read to the end of a post, then press the mark | Yes | `ArticleEndMark.tsx`, `catalog97.css` |
-| The 404 note | 404 page | Visit `/coffee`, `/admin`, `/dashboard`, `/cv`, or a few others | Yes | `src/components/NotFoundNote.tsx` |
+| The 404 note | 404 page | Visit `/coffee`, `/admin`, `/dashboard`, `/secret`, or a few others | Yes | `src/components/NotFoundNote.tsx` |
 | Future vintage | `/wine-cellar` | Type a vintage later than this year | Yes | `wine-cellar-client.tsx` |
 | Halftone split | 404 page, some `/writing` cards | Hover a halftone field | No | `catalog97.css` |
 
 ## Portrait painters
 
-Hovering anywhere in the portrait's section on the home page or /about shows a 150px circle of a painted version of the headshot that follows the pointer. Clicking the portrait hands it to the next painter, from Monet (the default), to Van Gogh, to Seurat, to Hopper, to Lichtenstein, and back to Monet. The choice lives on the element, so a reload or a navigation resets it to Monet, and each painting downloads the first time someone hovers it. The pointer-following reveal runs only where hover is real and motion is welcome. The explicit Another painter control shows a still full painting, which also works on touch screens and with reduced motion. Seeing all five painters opens the after-hours gallery link.
+Hovering anywhere in the portrait's section on the home page or /about shows a 150px circle of a painted version of the headshot that follows the pointer. Clicking the portrait hands it to the next painter, from Monet (the default), to Van Gogh, to Seurat, to Hopper, to Lichtenstein, and back to Monet. The choice lives on the element, so a reload or a navigation resets it to Monet, and each painting downloads the first time someone hovers it. The pointer-following reveal runs only where hover is real and motion is welcome. The explicit Another painter control shows a still full painting on any screen, and on a touch screen or with reduced motion a tap or click on the portrait itself does the same. Seeing all five painters opens the after-hours gallery link.
 
-The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Both renderers were removed on 2026-10-01 and can be restored from git history (commit fa4849574). Adding a painter means a render, an entry in `PAINTERS` in `Catalog97Monet.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
+The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Both renderers were removed on 2026-10-01 and can be restored from git history (commit fa4849574). Adding a painter means a render, an entry in `PAINTERS` in `src/lib/siteDiscoveries.ts` (which `Catalog97Monet.tsx`, `PortraitControls.tsx`, and `PainterGallery.tsx` all read), a museum label in `LABELS` in `PainterGallery.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
 
 ## Monet name by time of day
 
@@ -59,7 +59,7 @@ The three dashboard plates in the home collage each reveal a painted version und
 
 ## Konami code
 
-Typing ↑ ↑ ↓ ↓ ← → ← → B A anywhere except /arcade and /spacex-mission-control, which answer the code themselves (see 30 lives and the drill launch below), throws the page out of register for six seconds. On the pages still printed with the poster classes, meaning the seven designed routes and the 404, the poster type jitters off its overprint, the offset shadows jump, the halftone dots swell, and the sheets shift a few pixels and tilt. The utility pages, the topic pages, and the articles set their titles in display type and carry none of those classes, so there the sheets and bands shift and tilt, the footer with them, and nothing else moves. A project route owns its design and for the most part prints without those classes, so there the footer and the build-note strip, where the route has one, slip and tilt, and little else moves. A saffron toast in the bottom left reads "Out of register" and "You found the code. The press needs a few seconds to line back up, and the arcade is open in the meantime.", with a button to the arcade and a close button. Esc closes it, and it closes itself after 12 seconds unless it's hovered or focused. Keys typed into form fields, modifier combos, and held-down repeats don't count, and /arcade is skipped because the arcade answers the code itself (see 30 lives below). With reduced motion it becomes a still misprint with no movement, which shows on the poster type, the offsets, and the halftone, so on a utility page, a topic page, an article, or a project route that has none of them only the toast shows. The styles are in `Catalog97EasterEggs.module.css`, and they reach `.c97-poster`, `.c97-poster-sm`, `.c97-offset`, `.c97-halftone`, the sheets and bands inside `main`, and the footer.
+Typing ↑ ↑ ↓ ↓ ← → ← → B A anywhere except /arcade and /spacex-mission-control, which answer the code themselves (see 30 lives and the drill launch below), throws the page out of register for six seconds. On the pages still printed with the poster classes, meaning the seven designed routes and the 404, the poster type jitters off its overprint, the offset shadows jump, the halftone dots swell, and the sheets shift a few pixels and tilt. The utility pages, the topic pages, and the articles set their titles in display type and carry none of those classes, so there the sheets and bands shift and tilt, the footer with them, and nothing else moves. A project route owns its design and for the most part prints without those classes, so there the footer and the build-note strip, where the route has one, slip and tilt, and little else moves. A saffron toast in the bottom left reads "Out of register" and "You found the code. The press needs a few seconds to line back up, and the arcade is open in the meantime.", with a button to the arcade and a close button. Esc closes it, and it closes itself after 12 seconds unless it's hovered or focused. Keys typed into form fields, modifier combos, held-down repeats, and keys the page has already handled don't count, and /arcade is skipped because the arcade answers the code itself (see 30 lives below). With reduced motion it becomes a still misprint with no movement, which shows on the poster type, the offsets, and the halftone, so on a utility page, a topic page, an article, or a project route that has none of them only the toast shows. The styles are in `Catalog97EasterEggs.module.css`, and they reach `.c97-poster`, `.c97-poster-sm`, `.c97-offset`, `.c97-halftone`, the sheets and bands inside `main`, and the footer.
 
 ## Console note
 
@@ -115,12 +115,14 @@ A few exact searches in the header search (`/` or Cmd or Ctrl+K) and on /search 
 | hello, hey, howdy | Hello | `/contact` |
 | 404, misprint | The misprint | `/404`, which is itself a 404 |
 | now, what is isaac doing now, what are you doing now | What I'm doing now | `/now` |
+| take me somewhere | The Site Transit Authority | `/back-room/transit` |
+| 1997 | Greetings From 1997 | `/back-room/1997` |
 
-The "Easter eggs" answer promises "a few hidden around the site, from something on the home page, to a note in the browser console, to a couple I'll leave for you to find", so it should stay roughly true as this list changes. The last six rows each hint at one easter egg without giving the whole trigger away, and the Konami answer says the code is worth trying inside the arcade too.
+The "Easter eggs" answer promises "a few hidden around the site, from something on the home page, to a note in the browser console, to a couple I'll leave for you to find", so it should stay roughly true as this list changes. The darkroom, stamp, night shift, 30 lives, teapot, and colophon rows each hint at one easter egg without giving the whole trigger away, and the Konami answer says the code is worth trying inside the arcade too.
 
 ## The arcade
 
-/arcade is Reactor, a standalone neon reflex game with a boot sequence ending "> ready player one.", an insert-coin screen, and a high score kept in localStorage under `arcade-reactor-hiscore-v1`. It isn't in the header, the footer, /dashboards, or /portfolio, so the ways in are the Konami toast, the stamp knock's toast, the Konami and 30 lives search answers, its normal search entry, the June 25 changelog entry, and the sitemap. Its neon palette lives in its own `src/app/arcade/arcade.module.css`, outside the Catalog 97 tokens. It works on touch, and with reduced motion the boot typing is skipped.
+/arcade is Reactor, a standalone neon reflex game with a boot sequence ending "> ready player one.", an insert-coin screen, and a high score kept in localStorage under `arcade-reactor-hiscore-v1`. It isn't in the header, the footer, /dashboards, or /portfolio, so the ways in are the Konami toast, the stamp knock's toast, the Konami and 30 lives search answers, its normal search entry, the June 25 changelog entry, the "Building Reactor Arcade Around Timing and Feedback" article, `public/llms.txt`, and the sitemap. Its neon palette lives in its own `src/app/arcade/arcade.module.css`, outside the Catalog 97 tokens. It works on touch, and with reduced motion the boot typing is skipped.
 
 ## 30 lives
 
@@ -128,11 +130,11 @@ Typing the Konami code on /arcade gives 30 lives, which is what it gave in Contr
 
 ## Teapot
 
-/teapot answers with HTTP 418 and a short plain text note, which says the address is a teapot and can't brew coffee, and that the status code comes from RFC 2324, an April Fools' joke from 1998. It's a route handler (`src/app/teapot/route.ts`), so it has no page and no layout, and it stays out of the sitemap, which walks `page.tsx` files only. Nothing links to it except its hidden search answer.
+/teapot answers with HTTP 418 and a short plain text note, which says the address is a teapot and can't brew coffee, and that the status code comes from RFC 2324, an April Fools' joke from 1998. It's a route handler (`src/app/teapot/route.ts`), so it has no page and no layout, and it stays out of the sitemap, which walks `page.tsx` files only. Nothing links to it except the teapot and coffee search answers and the 404 note on the coffee addresses.
 
 ## humans.txt
 
-/humans.txt is a plain text colophon with the stack, the typefaces, the seven riso inks, the host, and the repo, plus a note pointing to the console note. It states facts about the build, so `src/lib/__tests__/humans-txt.test.ts` holds each one to the file it came from, meaning the major versions to `package.json`, the typefaces to the `next/font` imports in `src/app/layout.tsx`, and the inks to the `--c97-riso-*` tokens in `catalog97.css`. A major version bump or a new ink fails that test until the file is brought back in line. It names the five Catalog 97 typefaces and leaves out Instrument Sans, which still loads as a holdover.
+/humans.txt is a plain text colophon with the stack, the typefaces, the seven riso inks, the host, and the repo, plus a note pointing to the console note. It states facts about the build, so `src/lib/__tests__/humans-txt.test.ts` holds every one but the host to its source, meaning the major versions to `package.json`, the typefaces to the `next/font` imports in `src/app/layout.tsx`, the inks to the `--c97-riso-*` tokens in `catalog97.css`, and the source line to the repo's GitHub address. A major version bump or a new ink fails that test until the file is brought back in line. It names the five Catalog 97 typefaces and leaves out Instrument Sans, which still loads as a holdover.
 
 ## SpaceX liftoff
 
@@ -160,27 +162,27 @@ Every post under /writing but the three with commentary ends with "-30-", the ol
 
 ## The 404 note
 
-The misprint reads the address it failed on, and a few addresses get a line under the lead (`src/components/NotFoundNote.tsx`, matched on the lower-cased pathname). /coffee, /cafe, /espresso, and /latte say the press can't brew coffee either and link to the teapot. Anything ending in .php, and /admin, /administrator, /login, /signin, /xmlrpc, and any /wp- address, which are what scanners try, say there is no back room to log in to. /dashboard without the s points at /dashboards, /home, /index, and /index.html point at the root, /cv and /resume.pdf point at /resume, /secret, /hidden, and /easter-eggs say the eggs don't have an address and link to a search for them, and /404 admits it is a real one. Everything else gets the ordinary misprint.
+The misprint reads the address it failed on, and a few addresses get a line under the lead (`src/components/NotFoundNote.tsx`, matched on the lower-cased pathname). /coffee, /cafe, /espresso, and /latte say the press can't brew coffee either and link to the teapot. Anything ending in .php, and any address that starts with /admin, /login, /signin, /xmlrpc, or /wp-, which are what scanners try, say there is no back room to log in to. /dashboard without the s points at /dashboards, /home, /index, /index.htm, and /index.html point at the root, /resume/download points at /resume, /secret, /secrets, /hidden, /eggs, and /easter-eggs (with or without the hyphen and the final s) say the eggs don't have an address and link to a search for them, and /404 admits it is a real one. The note also has the résumé line for /cv and /resume.pdf, but nobody sees it there, since the redirects in `next.config.mjs` send /cv to /resume and /resume.pdf to `/Isaac_Vazquez_Resume.pdf` before either address can miss. Everything else gets the ordinary misprint.
 
 ## Future vintage
 
-In /wine-cellar, typing a vintage later than the current year into the form prints "A bottle from the future. I'd open it before the paradox does." under the field while it stays that way. The year is read from the visitor's clock on each keystroke, never on the server, since the draft is empty there. The field still accepts the bottle, since the cap on the input is 2100.
+In /wine-cellar, typing a vintage later than the current year into the form prints "A bottle from the future. I'd open it before the paradox does." under the field while it stays that way. The note can never print in the server render, since the draft is empty there, so the year that counts is the one on the visitor's clock as they type. The field still accepts the bottle, since the cap on the input is 2100.
 
 ## Halftone split
 
-Hovering a halftone field splits it into blue, vermilion, and saffron dots slightly off register, like a print under a loupe. It shows today on the 404 misprint sheet and on /writing featured cards whose cover isn't a local image. Hover only.
+Hovering a halftone field splits it into blue, vermilion, and saffron dots slightly off register, like a print under a loupe. As of 2026-11-02 it shows on the 404 misprint sheet and on /writing featured cards whose cover isn't a local image. Hover only.
 
 ## Close calls that aren't on the list
 
-Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/score-pools/settings` is unlinked and noindexed, but it's a utility page with nothing playful in it. There's nothing playful in robots.txt, llms.txt, or security.txt.
+Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/score-pools/settings` is noindexed and left out of the sitemap, but the score pools pages link to it, and it's a utility page with nothing playful in it. There's nothing playful in robots.txt, llms.txt, or security.txt.
 
 ## The back room additions
 
-Added on 2026-10-21. The receipt, map, gallery, retro homepage, and puzzle live under `/back-room/[discovery]`. Each destination is noindexed and absent from the sitemap. They use the normal site shell, and their components load on their own routes.
+Added on 2026-10-21. The receipt, map, gallery, retro homepage, and puzzle live under `/back-room/[discovery]`. Each destination is noindexed and absent from the sitemap. They use the normal site shell, and their components load on their own routes. Their shared rules live in `src/lib/siteDiscoveries.ts`, meaning the receipt's route names and storage key, the guestbook parser, the scouting report's search match, the painter order, and the registration check.
 
 ### Visit receipt
 
-The footer's Print receipt link opens `/back-room/receipt`. `VisitLedger` records visits to known public tools and main pages in this tab's session storage, under `site-visit-receipt-v1`. The receipt combines repeat visits into quantities, lists every item at $0.00, and has a PNG download and a clear button. The list has at most 40 destinations, with quantities capped at 999. Search queries, article addresses, private tools, unknown routes, and back-room routes are excluded. Restored entries are validated against the public route dictionary. Storage failures use memory, and the receipt never sends the list to a server.
+The footer's Print receipt link opens `/back-room/receipt`. `VisitLedger` records visits to the routes named in `VISIT_NAMES` in `src/lib/siteDiscoveries.ts`, which are the main pages and most of the public tools, in this tab's session storage under `site-visit-receipt-v1`. The receipt combines repeat visits into quantities, lists every item at $0.00, and has a PNG download and a clear button. The list has at most 40 destinations, with quantities capped at 999. Search queries, article addresses, private tools, unknown routes, and back-room routes are excluded. Restored entries are validated against the public route dictionary. Storage failures use memory, and the receipt never sends the list to a server.
 
 ### Site transit map
 
@@ -192,7 +194,7 @@ Searching exactly `Isaac` or `Isaac Vazquez`, ignoring case and repeated spaces,
 
 ### After-hours portrait gallery
 
-The Another painter button beside the Home and About portraits cycles the same five painters as clicking the image. After all five have appeared, The gallery is open links to `/back-room/gallery`, which shows all five existing paintings with fictional museum labels. The button shows a still painting on touch screens and with reduced motion, and works with a keyboard. Discovery resets when the portrait controls unmount. The original pointer-following reveal stays available on hover-capable devices without reduced motion.
+The Another painter button beside the Home and About portraits cycles the same five painters as clicking the image. After all five have appeared, The gallery is open links to `/back-room/gallery`, which shows all five existing paintings with fictional museum labels. The button shows a still painting on every screen, touch screens and reduced motion included, and works with a keyboard. Discovery resets when the portrait controls unmount. The original pointer-following reveal stays available on hover-capable devices without reduced motion until the button is pressed, since the button leaves the full still painting on the portrait until the page is left.
 
 ### Article commentary
 

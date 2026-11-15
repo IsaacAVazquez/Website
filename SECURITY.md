@@ -2,7 +2,7 @@
 
 Thanks for taking the time to look at the security of this site. This repository powers [isaacvazquez.com](https://isaacvazquez.com) — a personal portfolio, writing surface, and a few standalone analytics tools. It is not a multi-tenant product, but the live site is publicly indexed and I take responsible disclosure seriously.
 
-For day-to-day operational notes (secrets, admin gate, deployment hygiene), see [`docs/SECURITY.md`](docs/SECURITY.md).
+For day-to-day operational notes (secrets, the API surface, deployment hygiene), see [`docs/SECURITY.md`](docs/SECURITY.md).
 
 ---
 
@@ -55,7 +55,7 @@ In scope:
 
 Out of scope:
 
-- third-party services this site reads from (Finnhub, football-data.org, Resend, FantasyPros public cheatsheets, SpaceX public APIs) — please report those upstream
+- third-party services this site reads from, such as Finnhub, football-data.org, Resend, the FantasyPros public rankings pages, and The Space Devs' Launch Library 2 (please report those upstream)
 - denial-of-service or volumetric attacks
 - social engineering, phishing of the site owner, or physical attacks
 - findings that depend on already-compromised end-user devices, browser extensions, or stolen credentials
@@ -85,7 +85,7 @@ If you are sending a pull request, please:
 - never commit secrets, `.env*` files, or live API keys (use `.env.example` as the template)
 - avoid introducing new authenticated surfaces without discussing the threat model first
 - prefer well-maintained dependencies with active releases
-- run `npm run lint`, `npm test`, and `npm run build` before opening a PR that touches auth, API routes, or `netlify.toml`
+- run `npm run lint`, `npm test`, and `npm run build` before opening a PR that touches API routes, `src/proxy.ts`, `next.config.mjs`, or `netlify.toml`
 - review [`docs/SECURITY.md`](docs/SECURITY.md) for the operational guardrails
 
 Thanks for helping keep the site safe.

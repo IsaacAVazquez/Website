@@ -7,17 +7,19 @@ related_targets: ["src/app/wine-cellar/wine-cellar-client.tsx","src/app/wine-cel
 
 # Wine Cellar surface brief
 
+Checked against the code on 2026-11-02.
+
 Written on 2026-10-11 by the project sovereign pilot (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Log).
 
 Scope. The `/wine-cellar` route, rendered by `src/app/wine-cellar/wine-cellar-client.tsx` with its own stylesheet `wine-cellar.css`. Bottles live in `localStorage` under `wine_cellar_entries_v1`, read and written through `useWineCellar` and `src/lib/wineCellar.ts`, which this redesign did not touch.
 
 Visitor mode. Operate. The visitor logs a bottle, then comes back to read, filter, and correct the log.
 
-Genre. A cellar book, the ledger a collector keeps beside the rack, with Vivino's and Delectable's bottle lists as the app references. Each bottle is one ruled line, read left to right, with the vintage large in the margin (NV when there is none), the producer in small caps over the wine's name, region, grape, and type under it, tasting notes in italic, and the rating as stars with the number, the date tasted, the price, and the Edit and Delete actions at the right edge. On phones the right edge drops under the wine.
+Genre. A cellar book, the ledger a collector keeps beside the rack, with Vivino's and Delectable's bottle lists as the app references. Each bottle is one ruled line, read left to right, with the vintage large in the margin (NV when there is none), the producer in small caps over the wine's name, region, grape, and type under it, tasting notes in italic, and the rating as stars with the number, the date tasted, the price, and the Edit and Delete actions at the right edge. Under 1100px the right edge drops under the wine.
 
 ## Decisions
 
-The route paints its own paper inside the site frame. `.wc-root` declares `--wc-paper`, `--wc-field`, `--wc-ink`, `--wc-ink-2`, `--wc-wine`, `--wc-rule`, and `--wc-rule-strong`, with a light story (label-stock ivory `#f7f2e8`, oxblood `#74233a`) and a dark one under `.dark .wc-root` (cellar black `#161012`, rosé `#e3949f`). It redeclares `--c97-surface`, `--c97-field`, `--c97-ink`, `--c97-ink-2`, `--c97-label`, `--c97-rule`, and `--c97-accent` from those so the borrowed `c97-field`, `c97-range`, `c97-btn`, and `c97-btn-ghost` read the book's palette, and the focus ring paints the wine colour.
+The route paints its own paper inside the site frame. `.wc-root` declares `--wc-paper`, `--wc-field`, `--wc-ink`, `--wc-ink-2`, `--wc-wine`, `--wc-rule`, and `--wc-rule-strong`, with a light story (label-stock ivory `#f7f2e8`, oxblood `#74233a`) and a dark one under `.dark .wc-root` (cellar black `#161012`, rosé `#e3949f`). It redeclares `--c97-surface`, `--c97-field`, `--c97-ink`, `--c97-ink-2`, `--c97-label`, `--c97-rule`, and `--c97-accent` from those so the borrowed `c97-field`, `c97-range`, `c97-btn`, and `c97-btn-ghost` read the book's palette, and the focus ring paints the wine colour. The wine colour also marks the vintages, the stars, the double rule under the title row, the rule over the first line, the filled Add tasting button, the error line, the rating slider's thumb, and a bar on the left of the line being edited.
 
 The root handles the frame's base layer itself. Headings take Newsreader explicitly, and `.wc-root :where(p, ul, li, figure)` resets the paragraph measure, margins, and list padding at one class of weight, so every route class still outranks it. An earlier draft reset with `.wc-root li`, which outranked `.wc-line` and silently removed the row padding.
 
@@ -25,7 +27,7 @@ Type is Newsreader for the title, the wine names, the vintages, and the notes, A
 
 The first screen is a title row (h1 and one sentence) and the book under it, the log on the left and the form on the right from 900px up, with a single vertical rule between them. The form is sticky only when the window is also at least 820px tall, since it measures about 750px with the error line showing, and on a shorter window (1366x700, a tablet on its side) it scrolls with the page so Add tasting is never pinned below the fold. Under 900px the form comes first while the cellar is empty (the `order-first` class the route test pins) and after the list once bottles exist.
 
-The rack is a compact visual in the title row, six cells to a strip, one strip per region, and it renders only once there are bottles. Its legend lists only the types in the cellar. The type marks keep `WINE_TYPE_MARK` (the chart ramp, filled and hollow), which `wineRack.test.ts` pins.
+The rack is a compact visual in the title row, with each region's bottles in strips of six cells (one strip up to six bottles, two up to twelve), busiest region first with ties in alphabetical order and bottles with no region under "Unknown region", and it renders only once there are bottles. Its legend lists only the types in the cellar. The type marks keep `WINE_TYPE_MARK` (the chart ramp, filled and hollow), which `wineRack.test.ts` pins along with the region order and the "Unknown region" label.
 
 The empty state is one sample line, captioned above as a sample and ruled in dashes, drawn with the same `BottleLine` markup but with no actions, outside the log list, and never counted. The form heading reads "Log your first bottle" while the cellar is empty, "Log a bottle" after, and "Edit bottle" while editing.
 
@@ -37,11 +39,13 @@ Print depends on the state. An empty cellar prints the title row, the sample lin
 
 Long unbroken text wraps anywhere in the wine name, producer, region line, notes, and the rack's region labels, so a region like "Languedoc-Roussillon/Occitanie" or a pasted URL in the notes stays inside 320px.
 
+Two easter eggs came after the pilot, on 2026-10-21, and `docs/EASTER_EGGS.md` lists both. The title row holds the cork from `src/components/discoveries/WineCork.tsx` between the h1 and the sentence (`950c480ef`), a 44px button that opens a "Château Side Project" label after three presses and stays off paper. The form prints "A bottle from the future. I'd open it before the paradox does." as a status line under Vintage while the typed year is later than the current one (`b4c3b9c65`). The cork sits above the book, so the first-field and first-row coordinates under Verified state predate it.
+
 ## Pinned, and kept
 
-`src/app/wine-cellar/__tests__/wine-cellar-client.test.tsx` holds unchanged, covering the h1 "Wine Cellar", "Log your first bottle" visible while empty, no "Search wines" searchbox and no "Filter by wine type" select while empty, "Wine cellar side panel" with `order-first` only while empty, the "Tasting log" region, "Edit Barolo" moving focus to "Wine name", "Save tasting", "Delete Updated Barolo", "Reset filters", and the alert "Give the bottle a name to log it." with `aria-invalid`. The region renders as its own span so `getAllByText("Piedmont")` still finds it now that the readouts are gone.
+`src/app/wine-cellar/__tests__/wine-cellar-client.test.tsx` holds unchanged, covering the h1 "Wine Cellar", "Log your first bottle" visible while empty, no "Search wines" searchbox and no "Filter by wine type" select while empty, "Wine cellar side panel" with `order-first` only while empty, the "Tasting log" region, "Edit Barolo" moving focus to "Wine name", "Save tasting", "Delete Updated Barolo", "Reset filters", and the alert "Give the bottle a name to log it." with `aria-invalid`. The region renders as its own span so `getAllByText("Piedmont")` still finds it now that the readouts are gone. As of 2026-11-02 the file also covers the future-vintage note, added with the easter egg on 2026-10-21 (`b4c3b9c65`), and every assertion listed here is still in it.
 
-`e2e/all-projects.spec.ts:58-71` holds unchanged, covering the labels "Wine name" and "Producer", and the buttons "Add tasting", "Save tasting", "Edit X", and "Delete X". Also kept are `#add-tasting`, every form label, the half-step rating range, the sort direction toggle, and the storage key.
+`e2e/all-projects.spec.ts:58-71` holds unchanged, covering the labels "Wine name" and "Producer", and the buttons "Add tasting", "Save tasting", "Edit X", and "Delete X". Also kept are `#add-tasting`, every form label, the half-step rating range, the sort direction toggle, and the storage key. Since 2026-10-21 (`950c480ef`) `src/components/discoveries/__tests__/Discoveries.test.tsx` pins the cork, named "Inspect the cork", opening the "Château Side Project" label on the third press, and "Put the cork back" returning focus to the cork.
 
 ## Verified state, 2026-10-11 (re-run after the PR #583 review)
 
@@ -49,4 +53,4 @@ Against a production build (`next build --webpack`, served on 3720) in Chromium.
 
 First field and first row, page coordinates including the header. At 1440x900 the first field sits at y414 empty and y448 filled, and the first row at y582. At 390x844 the first field sits at y447 empty, and the first row at y838 filled, against a 1266 budget. Before the redesign those were y996, y1130, and y1314 at 1440, and y957 and y1573 at 390.
 
-The keyboard order from the page top runs through the header, the toolbar (search, type, minimum rating, sort, direction), each row's Edit and Delete, the form fields in reading order, Add tasting, the build note, and the footer. Edit by Enter moved focus to Wine name, Enter in the field saved, and Space on Delete removed the row. A reload kept the bottles. Two tabs adding a bottle each and one editing a third ended with all five changes in storage and on both pages. Under `prefers-reduced-motion` the submit button's transition collapsed to 1e-05s and Edit jumped to the form. I did not check Safari's and Firefox's engines, touch devices, and a screen reader.
+The keyboard order from the page top runs through the header, the toolbar (search, type, minimum rating, sort, direction), each row's Edit and Delete, the form fields in reading order, Add tasting, the build note, and the footer. Edit by Enter moved focus to Wine name, Enter in the field saved, and Space on Delete removed the row. A reload kept the bottles. Two tabs adding a bottle each and one editing a third ended with all five changes in storage and on both pages. Under `prefers-reduced-motion` the submit button's transition collapsed to 1e-05s and Edit jumped to the form. I did not check Safari's and Firefox's engines, touch devices, and a screen reader. As of 2026-11-02 the cork button added on 2026-10-21 sits between the header and the toolbar in the tab order, so this walk predates it.
