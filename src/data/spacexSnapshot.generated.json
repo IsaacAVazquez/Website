@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T01:08:04.153Z",
+  "generatedAt": "2026-11-15T16:28:43.298Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-15T01:07:53.364Z"
+    "generatedAt": "2026-11-15T16:28:34.290Z"
   },
   "upcomingLaunches": [
     {
@@ -434,6 +434,126 @@
       }
     },
     {
+      "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
+      "name": "Rivada 12",
+      "flightNumber": 781,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
+      "name": "SDA Tranche 1 Transport Layer F",
+      "flightNumber": 781,
+      "upcoming": true,
+      "success": null,
+      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "quarter",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
+      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
+      "name": "SDA Tranche 2 Transport Layer A",
+      "flightNumber": 781,
+      "upcoming": true,
+      "success": null,
+      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
       "name": "SDA Tranche 2 Tracking Layer B",
       "flightNumber": 781,
@@ -634,46 +754,6 @@
       }
     },
     {
-      "id": "c5783e2b-d458-4b99-9936-4043c236190b",
-      "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 781,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
       "id": "a9ee8337-127d-4f17-9e3a-a07999f80099",
       "name": "SDA Tranche 1 Tracking Layer D",
       "flightNumber": 781,
@@ -684,86 +764,6 @@
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
       "datePrecision": "quarter",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
-      "name": "Rivada 12",
-      "flightNumber": 781,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
-      "name": "SDA Tranche 2 Transport Layer A",
-      "flightNumber": 781,
-      "upcoming": true,
-      "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
@@ -2840,6 +2840,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-15T01:08:03.494Z"
+    "generatedAt": "2026-11-15T16:28:42.621Z"
   }
 }
