@@ -23,7 +23,8 @@ These tools split into two shapes:
    curated dataset; the browser only remembers small preferences. →
    `/recipe-finder` (curated recipes; persisted pantry, saved recipes, and meal
    plan), `/travel-deals` (curated fare bands and tactics; persisted trip setup),
-   `/food-map` (curated places, in-memory + URL filters, nothing persisted).
+   `/food-map` (curated places, in-memory + URL filters, persisted saved and
+   visited flags and a note per place).
 
 Three of the curated datasets, the museum catalog, the travel deal data, and
 the food map, carry a verified flag set to `false` beside their review date
@@ -173,17 +174,19 @@ receives changes from other tabs and other hook instances in the same tab.
   port left out the named casino presets (their table rules were claims with no source),
   the house edge estimate, achievements, the session history charts, and export and import.
 
-### `/food-map` — curated map *(no persistence)*
+### `/food-map` — curated map with per-place records
 
 - Files: `src/app/food-map/food-map-data.ts` (curated places),
   `food-map-leaflet.tsx` (the map) on the shared `src/lib/leaflet.ts` loader,
   which fetches Leaflet from a pinned CDN on demand,
   `food-map-state.ts` (deep-link/filter state), `food-map-client.tsx`.
-- Stores nothing in `localStorage`. The city, curator, and cuisine filters and
-  the selected place live in the URL (`city`, `curator`, `cuisine`, `pick`), and
-  the search box text stays in memory. It is the odd one out, included here
-  because it's a personal-interest surface even though it is a curated-data map
-  and not a user store.
+- The city, curator, and cuisine filters and the selected place live in the URL
+  (`city`, `curator`, `cuisine`, `pick`), and the search box text stays in memory.
+- Each place can carry a saved flag, a visited flag, and a note, stored under
+  `food-map-records-v1` through `useBrowserRecord` and validated by
+  `parseFoodRecords` in `foodPersonal.ts`. Records for places that have left the
+  catalog are kept, up to 200 of them. `RestaurantRecord.tsx` can also add a
+  place to a trip in the travel planner's own store.
 
 ---
 
