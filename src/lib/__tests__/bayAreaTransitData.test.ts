@@ -794,6 +794,8 @@ describe("buildBayAreaTransitLiveSnapshotData", () => {
     expect(summary.advisories).toHaveLength(1);
     expect(summary.advisories[0].description).toContain("Union City");
     expect(summary.elevator[0].description).toContain("2 elevators");
+    // One notice names both elevators, so the count is read from it.
+    expect(summary.heroStats.elevatorOutages).toBe(2);
     expect(summary.sectionStatus).toEqual({
       advisories: "fresh",
       elevator: "fresh",

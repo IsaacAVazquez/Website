@@ -2,7 +2,10 @@ import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { renderToString } from "react-dom/server";
 
 import { WeeklyBoardClient } from "../weekly-client";
-import { FANTASY_WEEKLY_STARTABLE_DEPTH } from "@/lib/fantasyWeeklySnapshot";
+import {
+  FANTASY_WEEKLY_STARTABLE_DEPTH,
+  getFantasyWeeklyWaiverCandidates,
+} from "@/lib/fantasyWeeklySnapshot";
 import { getSnapshotStalenessLabel } from "@/lib/fantasyUtils";
 
 const mockReplace = jest.fn();
@@ -477,6 +480,21 @@ describe("WeeklyBoardClient waivers view", () => {
     renderClient("waivers", buildSnapshot({ quarterbackAsOf: STALE_AS_OF }));
     expect(screen.getByText(getSnapshotStalenessLabel("stale"))).toBeInTheDocument();
     expect(screen.queryByText(getSnapshotStalenessLabel("fresh"))).not.toBeInTheDocument();
+  });
+
+  it("counts every player who clears the gap and says the list is the widest 20", () => {
+    const snapshot = buildSnapshot();
+    snapshot.boards.ppr.flex.slice(0, 30).forEach((player) => {
+      player.ownership = 1;
+    });
+    const total = getFantasyWeeklyWaiverCandidates(snapshot.boards.ppr, Infinity).length;
+    expect(total).toBeGreaterThan(20);
+
+    renderClient("waivers", snapshot);
+
+    expect(screen.getByRole("status")).toHaveTextContent(
+      `${total} players clear the gap in PPR scoring, and the 20 widest gaps are listed`,
+    );
   });
 
   it("puts the gap beside the player, labels the scroller, and announces the count", () => {

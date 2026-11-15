@@ -590,7 +590,16 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
       : findStat(competitor.statistics, ["scoretopar", "topar"]);
     const cumulativeStrokes =
       competitor.score != null ? parseToPar(competitor.score) : null;
-    const roundsPlayed = roundScores.length;
+    // ESPN's stroke total covers finished rounds only. When it equals the line
+    // scores without the last one, that last one is a round the player left
+    // partway through (a 73 and a 41 against a total of 73), and it is not a
+    // round played.
+    const lineTotal = roundScores.reduce((sum, score) => sum + score, 0);
+    const leftLastRound =
+      roundScores.length > 1 &&
+      cumulativeStrokes != null &&
+      lineTotal - roundScores[roundScores.length - 1] === cumulativeStrokes;
+    const roundsPlayed = roundScores.length - (leftLastRound ? 1 : 0);
     const totalToPar =
       explicitToPar ??
       (cumulativeStrokes != null && roundsPlayed > 0
@@ -671,9 +680,11 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
         score,
         // A round in progress is a stroke count so far, so it takes the live figure.
         relativeToPar:
-          index === roundScores.length - 1 && thru !== "F" && thru !== "—"
-            ? today
-            : score - coursePar,
+          index === roundScores.length - 1 && leftLastRound
+            ? null
+            : index === roundScores.length - 1 && thru !== "F" && thru !== "—"
+              ? today
+              : score - coursePar,
       })),
       scoring,
       generatedAt,

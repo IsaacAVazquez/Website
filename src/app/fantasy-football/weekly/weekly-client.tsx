@@ -54,6 +54,8 @@ import { fitRowsScale, type SpreadScale } from "@/components/fantasy/spreadScale
 import { positionClass } from "@/components/fantasy/positionClass";
 import "@/components/fantasy/fantasy-weekly.css";
 
+const WAIVER_LIST_LENGTH = 20;
+
 export type WeeklyView = "rankings" | "waivers";
 
 /** The two in-season pages share one snapshot and one client; this is what differs. */
@@ -328,10 +330,12 @@ export function WeeklyBoardClient({
       ? activeBoard.flexSource
       : activeBoard.quarterbackSource
     : null;
-  const waivers = useMemo(
-    () => (activeBoard ? getFantasyWeeklyWaiverCandidates(activeBoard) : []),
+  // Every player who clears the gap is counted, and the list prints the widest.
+  const allWaivers = useMemo(
+    () => (activeBoard ? getFantasyWeeklyWaiverCandidates(activeBoard, Infinity) : []),
     [activeBoard],
   );
+  const waivers = useMemo(() => allWaivers.slice(0, WAIVER_LIST_LENGTH), [allWaivers]);
   // The rankings view shows one board, so one stamp. The waiver list draws on
   // both boards at once, so its chip is the worse of the two readings and the
   // header prints both stamps rather than describing six quarterback rows
@@ -664,9 +668,12 @@ export function WeeklyBoardClient({
                       well as seen. */}
                   {waivers.length > 0 ? (
                     <p role="status" className="ffb-sechead-note">
-                      {waivers.length}{" "}
-                      {waivers.length === 1 ? "player clears" : "players clear"}{" "}
+                      {allWaivers.length}{" "}
+                      {allWaivers.length === 1 ? "player clears" : "players clear"}{" "}
                       the gap in {FANTASY_SCORING_LABELS[scoring]} scoring
+                      {allWaivers.length > waivers.length
+                        ? `, and the ${waivers.length} widest gaps are listed`
+                        : null}
                     </p>
                   ) : null}
                 </div>
@@ -776,7 +783,8 @@ export function WeeklyBoardClient({
                   count as startable, rostered in under{" "}
                   {FANTASY_WEEKLY_WIDELY_ROSTERED_PERCENT}% of leagues to count
                   as available, and clear a gap of at least{" "}
-                  {FANTASY_WEEKLY_MIN_WAIVER_GAP} to be listed at all. There is
+                  {FANTASY_WEEKLY_MIN_WAIVER_GAP} to count, and the list prints the{" "}
+                  {WAIVER_LIST_LENGTH} widest gaps among them. There is
                   no bid figure here, because the source carries none and I am
                   not inventing one.
                 </p>
