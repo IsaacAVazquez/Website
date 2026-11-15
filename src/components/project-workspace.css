@@ -79,8 +79,7 @@
   min-height: 6rem;
   resize: vertical;
 }
-.pw-root button,
-.pw-root .pw-link {
+.pw-root button {
   min-height: 44px;
   padding: var(--c97-sp-1);
   border: 1px solid var(--c97-rule);
@@ -92,8 +91,7 @@
   cursor: pointer;
   overflow-wrap: anywhere;
 }
-.pw-root button:hover,
-.pw-root .pw-link:hover {
+.pw-root button:hover {
   background: var(--c97-field);
 }
 .pw-root button:disabled {

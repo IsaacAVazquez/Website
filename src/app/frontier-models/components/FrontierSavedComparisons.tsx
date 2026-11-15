@@ -112,8 +112,9 @@ export function FrontierSavedComparisons({
                 <span className="frm-workload-model">{item.name}</span>
                 <span className="frm-workload-meta">
                   Saved {savedDate(item.savedAt)} · {item.modelIds.length}{" "}
-                  models · {item.input.monthlyRequests.toLocaleString("en-US")}{" "}
-                  requests / month
+                  {item.modelIds.length === 1 ? "model" : "models"} ·{" "}
+                  {item.input.monthlyRequests.toLocaleString("en-US")} requests
+                  / month
                 </span>
               </div>
               <div className="frm-workload-actions">

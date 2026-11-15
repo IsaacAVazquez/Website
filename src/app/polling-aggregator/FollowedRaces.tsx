@@ -100,7 +100,8 @@ export function FollowedRaces({
                   {change.marginChange > 0 ? "+" : ""}
                   {change.marginChange.toFixed(1)} percentage points since
                   snapshot {formatUpdatedAt(before.sourceAt)} (newest field end{" "}
-                  {before.lastPolled}). {change.newPolls} poll IDs are new to
+                  {before.lastPolled}). {change.newPolls}{" "}
+                  {change.newPolls === 1 ? "poll ID is" : "poll IDs are"} new to
                   this comparison.
                 </p>
               ) : (

@@ -49,7 +49,7 @@ export function raceReading(race: Formula1RaceRow, id: string) {
       (row) => row.teamName && constructorFollowId(row.teamName) === id,
     );
     return results.length
-      ? `${results.reduce((total, row) => total + row.points, 0)} pts · ${results.length} drivers`
+      ? `${results.reduce((total, row) => total + row.points, 0)} pts · ${results.length} ${results.length === 1 ? "driver" : "drivers"}`
       : "Unreported";
   }
   const row = race.results.find((item) => `driver-${item.driverNumber}` === id);
