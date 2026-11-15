@@ -4,16 +4,16 @@
       "name": "Bay Area Rapid Transit",
       "abbr": "BART",
       "source": "BART public API (api.bart.gov)",
-      "feedTime": "11/14/2026 02:42:17 PM PST",
-      "generatedAt": "2026-11-14T22:42:36.512Z",
+      "feedTime": "11/14/2026 11:05:47 PM PST",
+      "generatedAt": "2026-11-15T07:05:54.781Z",
       "seed": false
     },
     "heroStats": {
       "lineCount": 6,
       "stationCount": 50,
       "activeAdvisories": 1,
-      "elevatorOutages": 0,
-      "trainsTracked": 401
+      "elevatorOutages": 1,
+      "trainsTracked": 333
     },
     "lines": [
       {
@@ -735,10 +735,16 @@
         "type": "DELAY",
         "description": "Weekend Trackwork: Buses replace trains between 24th St Mission and Daly City stations with 30-minute delays Saturday and Sunday. The Green Line is not running. All train times need to shift by 3 minutes. Use the Trip Planner or special timetables on bart.gov",
         "station": "BART",
-        "posted": "Sat Nov 14 2026 08:16 AM PST"
+        "posted": "Sat Nov 14 2026 07:06 PM PST"
       }
     ],
-    "elevator": [],
+    "elevator": [
+      {
+        "id": "elevator-0",
+        "description": "There is 1 elevator out of service at this time: 24TH: Station",
+        "posted": ""
+      }
+    ],
     "sectionStatus": {
       "advisories": "fresh",
       "elevator": "fresh",
@@ -753,9 +759,81 @@
       "name": "Lake Merritt",
       "departures": [
         {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 7,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 8,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 102,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 17,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 1,
+          "minutes": 23,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 399,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 26,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 27,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 37,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -767,12 +845,768 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 1,
+          "minutes": 37,
           "platform": "1",
           "direction": "North",
           "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 46,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 47,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 57,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 57,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "ftvl": {
+      "id": "ftvl",
+      "abbr": "FTVL",
+      "name": "Fruitvale",
+      "departures": [
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 2,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 4,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 126,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 11,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 19,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 412,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 21,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 22,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 31,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 32,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 41,
+          "platform": "1",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 42,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 51,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 52,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "cols": {
+      "id": "cols",
+      "abbr": "COLS",
+      "name": "Coliseum",
+      "departures": [
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": null,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 136,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 5,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 14,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 16,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 422,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 18,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 24,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 29,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 34,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 38,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 44,
+          "platform": "1",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 49,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 54,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "sanl": {
+      "id": "sanl",
+      "abbr": "SANL",
+      "name": "San Leandro",
+      "departures": [
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 8,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 12,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 423,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 14,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 19,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 25,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 28,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 34,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 39,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 45,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 48,
+          "platform": "1",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 54,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 59,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "bayf": {
+      "id": "bayf",
+      "abbr": "BAYF",
+      "name": "Bay Fair",
+      "departures": [
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 3,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 9,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 451,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 10,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 12,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 21,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 23,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 30,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 32,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 41,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 43,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 50,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 52,
+          "platform": "1",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "hayw": {
+      "id": "hayw",
+      "abbr": "HAYW",
+      "name": "Hayward",
+      "departures": [
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 6,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 7,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 26,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 27,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 46,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 47,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "shay": {
+      "id": "shay",
+      "abbr": "SHAY",
+      "name": "South Hayward",
+      "departures": [
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 3,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -791,43 +1625,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 13,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 182,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 20,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 20,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 30,
+          "minutes": 22,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -849,33 +1647,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 40,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 40,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 50,
+          "minutes": 42,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -897,775 +1671,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "ftvl": {
-      "id": "ftvl",
-      "abbr": "FTVL",
-      "name": "Fruitvale",
-      "departures": [
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 4,
-          "platform": "1",
-          "direction": "North",
-          "length": 10,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 8,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 195,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 15,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 16,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 24,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 25,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 35,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 36,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 44,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 45,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 55,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 56,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "cols": {
-      "id": "cols",
-      "abbr": "COLS",
-      "name": "Coliseum",
-      "departures": [
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": null,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 156,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 5,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 205,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 8,
-          "platform": "1",
-          "direction": "North",
-          "length": 10,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 13,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 18,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 22,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 28,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 33,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 38,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 42,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 48,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 53,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "sanl": {
-      "id": "sanl",
-      "abbr": "SANL",
-      "name": "San Leandro",
-      "departures": [
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 1,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 233,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 4,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 132,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 8,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 12,
-          "platform": "1",
-          "direction": "North",
-          "length": 10,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 18,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 22,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 28,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 32,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 38,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 42,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 48,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 52,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "bayf": {
-      "id": "bayf",
-      "abbr": "BAYF",
-      "name": "Bay Fair",
-      "departures": [
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 4,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 8,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 123,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 14,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 16,
-          "platform": "1",
-          "direction": "North",
-          "length": 10,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 24,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 26,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 34,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 36,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 44,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 46,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 54,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 56,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "hayw": {
-      "id": "hayw",
-      "abbr": "HAYW",
-      "name": "Hayward",
-      "departures": [
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 10,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 12,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 95,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 30,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 30,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 50,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 50,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "shay": {
-      "id": "shay",
-      "abbr": "SHAY",
-      "name": "South Hayward",
-      "departures": [
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 6,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 16,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 96,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 26,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 34,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 46,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 54,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "ucty": {
       "id": "ucty",
@@ -1675,7 +1681,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": null,
+          "minutes": 16,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -1687,7 +1693,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": null,
+          "minutes": 17,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -1699,19 +1705,19 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 21,
+          "minutes": 36,
           "platform": "1",
           "direction": "South",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 90,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 21,
+          "minutes": 37,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -1723,7 +1729,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 40,
+          "minutes": 56,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -1735,7 +1741,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 41,
+          "minutes": 58,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -1745,7 +1751,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "frmt": {
       "id": "frmt",
@@ -1755,7 +1761,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 4,
+          "minutes": 1,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -1767,7 +1773,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 16,
+          "minutes": 13,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -1779,19 +1785,19 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 25,
+          "minutes": 21,
           "platform": "1",
           "direction": "South",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 63,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 36,
+          "minutes": 33,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -1803,7 +1809,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 44,
+          "minutes": 41,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -1815,7 +1821,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 56,
+          "minutes": 54,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -1825,7 +1831,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "rock": {
       "id": "rock",
@@ -1835,247 +1841,19 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 3,
+          "minutes": 2,
           "platform": "1",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 130,
+          "delaySeconds": 285,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 16,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 21,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 36,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 41,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 56,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "orin": {
-      "id": "orin",
-      "abbr": "ORIN",
-      "name": "Orinda",
-      "departures": [
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 9,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 130,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 10,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 26,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 30,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 46,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 50,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "lafy": {
-      "id": "lafy",
-      "abbr": "LAFY",
-      "name": "Lafayette",
-      "departures": [
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 5,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
           "minutes": 13,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 127,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 25,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 31,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 45,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 51,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "wcrk": {
-      "id": "wcrk",
-      "abbr": "WCRK",
-      "name": "Walnut Creek",
-      "departures": [
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 1,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2093,13 +1871,13 @@
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 125,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 21,
+          "minutes": 33,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2111,7 +1889,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 36,
+          "minutes": 38,
           "platform": "1",
           "direction": "North",
           "length": 9,
@@ -2123,7 +1901,39 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 41,
+          "minutes": 53,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "orin": {
+      "id": "orin",
+      "abbr": "ORIN",
+      "name": "Orinda",
+      "departures": [
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 7,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 256,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 7,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2135,7 +1945,123 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 56,
+          "minutes": 23,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 27,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 43,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 47,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "lafy": {
+      "id": "lafy",
+      "abbr": "LAFY",
+      "name": "Lafayette",
+      "departures": [
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 2,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 12,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 253,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 22,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 28,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 42,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 48,
           "platform": "1",
           "direction": "North",
           "length": 9,
@@ -2145,7 +2071,87 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "wcrk": {
+      "id": "wcrk",
+      "abbr": "WCRK",
+      "name": "Walnut Creek",
+      "departures": [
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 16,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 251,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 17,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 32,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 37,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 52,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 57,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "phil": {
       "id": "phil",
@@ -2161,13 +2167,13 @@
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 105,
+          "delaySeconds": 318,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 18,
+          "minutes": 14,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2179,19 +2185,19 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 20,
+          "minutes": 19,
           "platform": "1",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 97,
+          "delaySeconds": 259,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 38,
+          "minutes": 34,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2203,7 +2209,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 39,
+          "minutes": 35,
           "platform": "1",
           "direction": "North",
           "length": 9,
@@ -2215,7 +2221,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 58,
+          "minutes": 54,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2225,7 +2231,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "conc": {
       "id": "conc",
@@ -2241,87 +2247,7 @@
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 96,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 13,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 25,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 98,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 33,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 44,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 53,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "ncon": {
-      "id": "ncon",
-      "abbr": "NCON",
-      "name": "North Concord/Martinez",
-      "departures": [
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 9,
-          "platform": "1",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 62,
+          "delaySeconds": 288,
           "bikesAllowed": true
         },
         {
@@ -2339,13 +2265,13 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 29,
+          "minutes": 24,
           "platform": "1",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 91,
+          "delaySeconds": 235,
           "bikesAllowed": true
         },
         {
@@ -2363,7 +2289,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 48,
+          "minutes": 40,
           "platform": "1",
           "direction": "North",
           "length": 9,
@@ -2385,17 +2311,17 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
-    "pitt": {
-      "id": "pitt",
-      "abbr": "PITT",
-      "name": "Pittsburg/Bay Point",
+    "ncon": {
+      "id": "ncon",
+      "abbr": "NCON",
+      "name": "North Concord/Martinez",
       "departures": [
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 3,
+          "minutes": 6,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2404,6 +2330,74 @@
           "delaySeconds": 0,
           "bikesAllowed": true
         },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 9,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 279,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 25,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 28,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 233,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 44,
+          "platform": "1",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 45,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "pitt": {
+      "id": "pitt",
+      "abbr": "PITT",
+      "name": "Pittsburg/Bay Point",
+      "departures": [
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
@@ -2413,13 +2407,13 @@
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 0,
+          "delaySeconds": 250,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 22,
+          "minutes": 19,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2431,19 +2425,19 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 38,
+          "minutes": 37,
           "platform": "1",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 0,
+          "delaySeconds": 191,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 42,
+          "minutes": 39,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2455,7 +2449,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 57,
+          "minutes": 51,
           "platform": "1",
           "direction": "North",
           "length": 9,
@@ -2465,7 +2459,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "pctr": {
       "id": "pctr",
@@ -2475,7 +2469,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 6,
+          "minutes": 3,
           "platform": "1",
           "direction": "North",
           "length": 1,
@@ -2487,7 +2481,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 10,
+          "minutes": 7,
           "platform": "2",
           "direction": "South",
           "length": 1,
@@ -2499,7 +2493,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 26,
+          "minutes": 23,
           "platform": "1",
           "direction": "North",
           "length": 2,
@@ -2511,10 +2505,10 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 30,
+          "minutes": 27,
           "platform": "2",
           "direction": "South",
-          "length": 2,
+          "length": 1,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
           "delaySeconds": 0,
@@ -2523,7 +2517,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 46,
+          "minutes": 43,
           "platform": "1",
           "direction": "North",
           "length": 2,
@@ -2545,7 +2539,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "antc": {
       "id": "antc",
@@ -2555,7 +2549,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 2,
+          "minutes": null,
           "platform": "2",
           "direction": "South",
           "length": 1,
@@ -2567,10 +2561,10 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 22,
+          "minutes": 19,
           "platform": "2",
           "direction": "South",
-          "length": 2,
+          "length": 1,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
           "delaySeconds": 0,
@@ -2589,7 +2583,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "12th": {
       "id": "12th",
@@ -2597,21 +2591,9 @@
       "name": "12th St. Oakland City Center",
       "departures": [
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
           "minutes": 2,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 79,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 5,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2623,7 +2605,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 8,
+          "minutes": 4,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -2635,55 +2617,79 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 13,
+          "minutes": 9,
           "platform": "3",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 15,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 15,
+          "minutes": 10,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 161,
+          "delaySeconds": 66,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 22,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 24,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 29,
+          "platform": "3",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 21,
+          "minutes": 29,
           "platform": "1",
           "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 25,
+          "minutes": 42,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2695,7 +2701,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 28,
+          "minutes": 44,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -2707,7 +2713,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 33,
+          "minutes": 49,
           "platform": "3",
           "direction": "North",
           "length": 9,
@@ -2717,67 +2723,19 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 35,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 45,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 48,
-          "platform": "2",
-          "direction": "South",
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 49,
+          "platform": "1",
+          "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 53,
-          "platform": "3",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 55,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "19th": {
       "id": "19th",
@@ -2787,7 +2745,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 3,
+          "minutes": null,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2797,21 +2755,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 4,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 78,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 6,
+          "minutes": 2,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -2821,21 +2767,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 13,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 15,
+          "minutes": 11,
           "platform": "3",
           "direction": "North",
           "length": 9,
@@ -2847,31 +2781,67 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 17,
+          "minutes": 12,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 161,
+          "delaySeconds": 67,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 20,
+          "platform": "2",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 22,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 31,
+          "platform": "3",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 23,
+          "minutes": 31,
           "platform": "1",
           "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 23,
+          "minutes": 40,
           "platform": "2",
           "direction": "South",
           "length": 9,
@@ -2883,7 +2853,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 26,
+          "minutes": 42,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -2893,21 +2863,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 33,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 35,
+          "minutes": 51,
           "platform": "3",
           "direction": "North",
           "length": 9,
@@ -2917,55 +2875,19 @@
           "bikesAllowed": true
         },
         {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 43,
-          "platform": "2",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 46,
-          "platform": "2",
-          "direction": "South",
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 51,
+          "platform": "1",
+          "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 53,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 55,
-          "platform": "3",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "mcar": {
       "id": "mcar",
@@ -2975,31 +2897,31 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": null,
+          "minutes": 15,
           "platform": "3",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 159,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": null,
+          "minutes": 15,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 170,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": null,
+          "minutes": 16,
           "platform": "4",
           "direction": "South",
           "length": 9,
@@ -3011,57 +2933,21 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 3,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 8,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 9,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
           "minutes": 18,
-          "platform": "3",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 19,
-          "platform": "4",
-          "direction": "South",
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 35,
+          "platform": "3",
+          "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
@@ -3071,55 +2957,19 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 20,
+          "minutes": 35,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 121,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 22,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 29,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 38,
-          "platform": "3",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 39,
+          "minutes": 36,
           "platform": "4",
           "direction": "South",
           "length": 9,
@@ -3131,7 +2981,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 42,
+          "minutes": 38,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3141,19 +2991,55 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 49,
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 54,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 55,
+          "platform": "3",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 56,
+          "platform": "4",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 58,
           "platform": "2",
           "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "cast": {
       "id": "cast",
@@ -3161,21 +3047,21 @@
       "name": "Castro Valley",
       "departures": [
         {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 2,
-          "platform": "1",
-          "direction": "North",
-          "length": 10,
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 4,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 113,
+          "delaySeconds": 471,
           "bikesAllowed": true
         },
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 20,
+          "minutes": 16,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3187,10 +3073,10 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 20,
+          "minutes": 17,
           "platform": "1",
           "direction": "North",
-          "length": 10,
+          "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
           "delaySeconds": 0,
@@ -3199,7 +3085,7 @@
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 40,
+          "minutes": 36,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3211,17 +3097,29 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 40,
+          "minutes": 37,
           "platform": "1",
           "direction": "North",
           "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 57,
+          "platform": "1",
+          "direction": "North",
+          "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "wdub": {
       "id": "wdub",
@@ -3231,7 +3129,7 @@
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 10,
+          "minutes": 6,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3243,19 +3141,19 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 11,
+          "minutes": 7,
           "platform": "1",
           "direction": "North",
-          "length": 10,
+          "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 102,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 30,
+          "minutes": 26,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3267,10 +3165,22 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 30,
+          "minutes": 26,
           "platform": "1",
           "direction": "North",
-          "length": 10,
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 46,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
           "delaySeconds": 0,
@@ -3279,7 +3189,7 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 50,
+          "minutes": 46,
           "platform": "1",
           "direction": "North",
           "length": 8,
@@ -3289,7 +3199,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "dubl": {
       "id": "dubl",
@@ -3299,7 +3209,7 @@
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 6,
+          "minutes": 3,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3311,7 +3221,19 @@
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 26,
+          "minutes": 23,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 43,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -3321,7 +3243,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "woak": {
       "id": "woak",
@@ -3329,23 +3251,47 @@
       "name": "West Oakland",
       "departures": [
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": null,
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 3,
           "platform": "1",
           "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 64,
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 5,
+          "platform": "2",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
           "minutes": 6,
           "platform": "1",
           "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 11,
+          "platform": "2",
+          "direction": "North",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
@@ -3355,7 +3301,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 8,
+          "minutes": 25,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -3367,127 +3313,43 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 10,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 15,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 17,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 20,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
           "minutes": 26,
           "platform": "1",
           "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 28,
-          "platform": "2",
-          "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 30,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 35,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 37,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 40,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 46,
+          "minutes": 29,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 391,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 31,
+          "platform": "2",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 42,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -3499,7 +3361,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 48,
+          "minutes": 45,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -3511,7 +3373,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 50,
+          "minutes": 46,
           "platform": "1",
           "direction": "South",
           "length": 9,
@@ -3523,29 +3385,17 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 55,
+          "minutes": 51,
           "platform": "2",
           "direction": "North",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 57,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "embr": {
       "id": "embr",
@@ -3553,9 +3403,45 @@
       "name": "Embarcadero",
       "departures": [
         {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 4,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 9,
+          "platform": "1",
+          "direction": "South",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 13,
+          "platform": "1",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 1,
+          "minutes": 17,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -3565,38 +3451,246 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 7,
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 24,
+          "platform": "2",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 33,
           "platform": "1",
           "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 36,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 370,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 37,
+          "platform": "2",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 9,
+          "minutes": 44,
           "platform": "2",
           "direction": "North",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 68,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 10,
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 49,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 53,
+          "platform": "1",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "mont": {
+      "id": "mont",
+      "abbr": "MONT",
+      "name": "Montgomery St.",
+      "departures": [
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 2,
           "platform": "2",
           "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 11,
+          "platform": "1",
+          "direction": "South",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 15,
+          "platform": "1",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 16,
+          "platform": "2",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 22,
+          "platform": "2",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 35,
+          "platform": "1",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 36,
+          "platform": "2",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 37,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 355,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 42,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 51,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 55,
+          "platform": "1",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "powl": {
+      "id": "powl",
+      "abbr": "POWL",
+      "name": "Powell St.",
+      "departures": [
+        {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 1,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -3606,9 +3700,21 @@
           "minutes": 13,
           "platform": "1",
           "direction": "South",
-          "length": 8,
+          "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 14,
+          "platform": "2",
+          "direction": "North",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -3625,62 +3731,26 @@
           "bikesAllowed": true
         },
         {
+          "destination": "Dublin/Pleasanton",
+          "destinationAbbr": "DUBL",
+          "minutes": 21,
+          "platform": "2",
+          "direction": "North",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 21,
+          "minutes": 34,
           "platform": "2",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 27,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 28,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 30,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 33,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -3697,50 +3767,26 @@
           "bikesAllowed": true
         },
         {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 41,
-          "platform": "2",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 47,
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 38,
           "platform": "1",
           "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 338,
           "bikesAllowed": true
         },
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 48,
+          "minutes": 41,
           "platform": "2",
           "direction": "North",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 50,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -3769,431 +3815,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "mont": {
-      "id": "mont",
-      "abbr": "MONT",
-      "name": "Montgomery St.",
-      "departures": [
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 7,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 68,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 8,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 9,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 14,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 18,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 19,
-          "platform": "2",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 26,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 28,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 29,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 34,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 38,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 39,
-          "platform": "2",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 46,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 48,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 49,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 54,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 58,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "powl": {
-      "id": "powl",
-      "abbr": "POWL",
-      "name": "Powell St.",
-      "departures": [
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": null,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 6,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 94,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 7,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 10,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 16,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 18,
-          "platform": "2",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 20,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 24,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 27,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 30,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 36,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 38,
-          "platform": "2",
-          "direction": "North",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 40,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 44,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 47,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 50,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 56,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "civc": {
       "id": "civc",
@@ -4201,57 +3823,9 @@
       "name": "Civic Center/UN Plaza",
       "departures": [
         {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 2,
-          "platform": "1",
-          "direction": "South",
-          "length": 9,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 4,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 101,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 5,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 12,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 16,
+          "minutes": 12,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -4263,21 +3837,21 @@
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
+          "minutes": 14,
+          "platform": "1",
+          "direction": "South",
+          "length": 10,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
           "minutes": 18,
           "platform": "1",
           "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 22,
-          "platform": "1",
-          "direction": "South",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
@@ -4287,43 +3861,19 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 23,
+          "minutes": 19,
           "platform": "2",
           "direction": "North",
-          "length": 8,
+          "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 25,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 32,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 36,
+          "minutes": 32,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -4333,21 +3883,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 38,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 42,
+          "minutes": 38,
           "platform": "1",
           "direction": "South",
           "length": 9,
@@ -4359,53 +3897,53 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 43,
+          "minutes": 39,
           "platform": "2",
           "direction": "North",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 45,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 52,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 58,
+          "minutes": 40,
           "platform": "1",
           "direction": "South",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
+          "delaySeconds": 334,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 54,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 58,
+          "platform": "1",
+          "direction": "South",
+          "length": 9,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "16th": {
       "id": "16th",
@@ -4413,45 +3951,9 @@
       "name": "16th St. Mission",
       "departures": [
         {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": null,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Dublin/Pleasanton",
-          "destinationAbbr": "DUBL",
-          "minutes": 2,
-          "platform": "2",
-          "direction": "North",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
-          "delaySeconds": 108,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 3,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 4,
+          "minutes": 1,
           "platform": "1",
           "direction": "South",
           "length": 9,
@@ -4463,7 +3965,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 13,
+          "minutes": 10,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -4473,24 +3975,12 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 14,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Daly City",
           "destinationAbbr": "DALY",
-          "minutes": 20,
+          "minutes": 17,
           "platform": "1",
           "direction": "South",
-          "length": 8,
+          "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
           "delaySeconds": 0,
@@ -4499,31 +3989,19 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 20,
+          "minutes": 17,
           "platform": "2",
           "direction": "North",
-          "length": 8,
+          "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 23,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 24,
+          "minutes": 21,
           "platform": "1",
           "direction": "South",
           "length": 9,
@@ -4535,43 +4013,19 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 33,
+          "minutes": 30,
           "platform": "2",
           "direction": "North",
           "length": 9,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 34,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Daly City",
-          "destinationAbbr": "DALY",
-          "minutes": 40,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "BLUE",
-          "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 40,
+          "minutes": 37,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -4581,21 +4035,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 43,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 44,
+          "minutes": 41,
           "platform": "1",
           "direction": "South",
           "length": 9,
@@ -4605,19 +4047,31 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 54,
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 42,
           "platform": "1",
           "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
+          "delaySeconds": 315,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Daly City",
+          "destinationAbbr": "DALY",
+          "minutes": 57,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "BLUE",
+          "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "24th": {
       "id": "24th",
@@ -4625,21 +4079,9 @@
       "name": "24th St. Mission",
       "departures": [
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": null,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 11,
+          "minutes": 8,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -4651,31 +4093,19 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 18,
+          "minutes": 14,
           "platform": "1",
           "direction": "North",
-          "length": 8,
+          "length": 10,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 21,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 31,
+          "minutes": 28,
           "platform": "2",
           "direction": "North",
           "length": 9,
@@ -4687,29 +4117,17 @@
         {
           "destination": "Dublin/Pleasanton",
           "destinationAbbr": "DUBL",
-          "minutes": 38,
+          "minutes": 34,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "BLUE",
           "hexColor": "#0099cc",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 41,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "daly": {
       "id": "daly",
@@ -4719,7 +4137,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 4,
+          "minutes": 11,
           "platform": "2",
           "direction": "South",
           "length": 5,
@@ -4731,7 +4149,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 19,
+          "minutes": 26,
           "platform": "2",
           "direction": "South",
           "length": 5,
@@ -4743,7 +4161,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 34,
+          "minutes": 41,
           "platform": "2",
           "direction": "South",
           "length": 5,
@@ -4753,7 +4171,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "ashb": {
       "id": "ashb",
@@ -4761,45 +4179,9 @@
       "name": "Ashby",
       "departures": [
         {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 4,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 135,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 6,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 10,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 16,
+          "minutes": 13,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -4811,31 +4193,19 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 23,
+          "minutes": 19,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 96,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 26,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 36,
+          "minutes": 32,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -4845,23 +4215,35 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 46,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 38,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 56,
+          "minutes": 52,
           "platform": "2",
           "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 58,
+          "platform": "1",
+          "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
@@ -4869,7 +4251,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "dbrk": {
       "id": "dbrk",
@@ -4877,143 +4259,15 @@
       "name": "Downtown Berkeley",
       "departures": [
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 3,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 6,
+          "minutes": 1,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 129,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 13,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 14,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 23,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 26,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 95,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 34,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 43,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 54,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "nbrk": {
-      "id": "nbrk",
-      "abbr": "NBRK",
-      "name": "North Berkeley",
-      "departures": [
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 2,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 8,
-          "platform": "1",
-          "direction": "North",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 134,
           "bikesAllowed": true
         },
         {
@@ -5031,67 +4285,43 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 15,
+          "minutes": 21,
           "platform": "1",
           "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 21,
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 30,
           "platform": "2",
           "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 28,
+          "minutes": 40,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 95,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 31,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 41,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 51,
+          "minutes": 50,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -5101,13 +4331,25 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
-    "plza": {
-      "id": "plza",
-      "abbr": "PLZA",
-      "name": "El Cerrito Plaza",
+    "nbrk": {
+      "id": "nbrk",
+      "abbr": "NBRK",
+      "name": "North Berkeley",
       "departures": [
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 3,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
@@ -5123,36 +4365,12 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 12,
+          "minutes": 23,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 144,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 17,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 18,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -5171,24 +4389,12 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 32,
+          "minutes": 43,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 105,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 37,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -5205,29 +4411,17 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
-    "deln": {
-      "id": "deln",
-      "abbr": "DELN",
-      "name": "El Cerrito del Norte",
+    "plza": {
+      "id": "plza",
+      "abbr": "PLZA",
+      "name": "El Cerrito Plaza",
       "departures": [
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 3,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 66,
-          "bikesAllowed": true
-        },
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 4,
+          "minutes": 5,
           "platform": "2",
           "direction": "South",
           "length": 8,
@@ -5237,39 +4431,15 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 14,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 15,
+          "minutes": 7,
           "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
-          "delaySeconds": 100,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 22,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
+          "delaySeconds": 63,
           "bikesAllowed": true
         },
         {
@@ -5285,14 +4455,14 @@
           "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 34,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 27,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
         },
@@ -5307,69 +4477,13 @@
           "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "rich": {
-      "id": "rich",
-      "abbr": "RICH",
-      "name": "Richmond",
-      "departures": [
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": null,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
         },
         {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 10,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 20,
-          "platform": "2",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "24th Street",
-          "destinationAbbr": "24TH",
-          "minutes": 30,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "RED",
-          "hexColor": "#ff0000",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
-          "minutes": 40,
-          "platform": "2",
-          "direction": "South",
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 46,
+          "platform": "1",
+          "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
@@ -5377,18 +4491,30 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
-    "warm": {
-      "id": "warm",
-      "abbr": "WARM",
-      "name": "Warm Springs/South Fremont",
+    "deln": {
+      "id": "deln",
+      "abbr": "DELN",
+      "name": "El Cerrito del Norte",
       "departures": [
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 2,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
           "minutes": 10,
-          "platform": "2",
+          "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
@@ -5399,8 +4525,8 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 11,
-          "platform": "1",
+          "minutes": 21,
+          "platform": "2",
           "direction": "South",
           "length": 8,
           "colorName": "ORANGE",
@@ -5412,7 +4538,7 @@
           "destination": "Richmond",
           "destinationAbbr": "RICH",
           "minutes": 30,
-          "platform": "2",
+          "platform": "1",
           "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
@@ -5423,8 +4549,8 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 31,
-          "platform": "1",
+          "minutes": 41,
+          "platform": "2",
           "direction": "South",
           "length": 8,
           "colorName": "ORANGE",
@@ -5436,6 +4562,70 @@
           "destination": "Richmond",
           "destinationAbbr": "RICH",
           "minutes": 50,
+          "platform": "1",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "rich": {
+      "id": "rich",
+      "abbr": "RICH",
+      "name": "Richmond",
+      "departures": [
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 17,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 37,
+          "platform": "2",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "warm": {
+      "id": "warm",
+      "abbr": "WARM",
+      "name": "Warm Springs/South Fremont",
+      "departures": [
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 7,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 7,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -5447,7 +4637,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 51,
+          "minutes": 27,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -5455,9 +4645,45 @@
           "hexColor": "#ff9933",
           "delaySeconds": 0,
           "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 27,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 47,
+          "platform": "1",
+          "direction": "South",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
+          "minutes": 48,
+          "platform": "2",
+          "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "mlpt": {
       "id": "mlpt",
@@ -5467,21 +4693,9 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": null,
+          "minutes": 15,
           "platform": "1",
           "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 145,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 3,
-          "platform": "2",
-          "direction": "North",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
@@ -5489,21 +4703,9 @@
           "bikesAllowed": true
         },
         {
-          "destination": "Berryessa",
-          "destinationAbbr": "BERY",
+          "destination": "Richmond",
+          "destinationAbbr": "RICH",
           "minutes": 19,
-          "platform": "1",
-          "direction": "South",
-          "length": 8,
-          "colorName": "ORANGE",
-          "hexColor": "#ff9933",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Richmond",
-          "destinationAbbr": "RICH",
-          "minutes": 23,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -5515,7 +4717,7 @@
         {
           "destination": "Berryessa",
           "destinationAbbr": "BERY",
-          "minutes": 39,
+          "minutes": 35,
           "platform": "1",
           "direction": "South",
           "length": 8,
@@ -5527,9 +4729,21 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 43,
+          "minutes": 40,
           "platform": "2",
           "direction": "North",
+          "length": 8,
+          "colorName": "ORANGE",
+          "hexColor": "#ff9933",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Berryessa",
+          "destinationAbbr": "BERY",
+          "minutes": 55,
+          "platform": "1",
+          "direction": "South",
           "length": 8,
           "colorName": "ORANGE",
           "hexColor": "#ff9933",
@@ -5537,7 +4751,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "bery": {
       "id": "bery",
@@ -5547,7 +4761,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 18,
+          "minutes": 15,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -5559,7 +4773,7 @@
         {
           "destination": "Richmond",
           "destinationAbbr": "RICH",
-          "minutes": 38,
+          "minutes": 36,
           "platform": "2",
           "direction": "North",
           "length": 8,
@@ -5569,7 +4783,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
     "colm": {
       "id": "colm",
@@ -5577,21 +4791,193 @@
       "name": "Colma",
       "departures": [
         {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": null,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 8,
+          "minutes": 13,
           "platform": "2",
           "direction": "North",
           "length": 5,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 93,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 8,
+          "minutes": 15,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 28,
+          "platform": "2",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 30,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 44,
+          "platform": "2",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "ssan": {
+      "id": "ssan",
+      "abbr": "SSAN",
+      "name": "South San Francisco",
+      "departures": [
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 3,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 10,
+          "platform": "2",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 18,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 25,
+          "platform": "2",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 33,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 41,
+          "platform": "2",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "sbrn": {
+      "id": "sbrn",
+      "abbr": "SBRN",
+      "name": "San Bruno",
+      "departures": [
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 6,
+          "platform": "1",
+          "direction": "South",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 7,
+          "platform": "2",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "SFO/Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 21,
           "platform": "1",
           "direction": "South",
           "length": 5,
@@ -5615,7 +5001,7 @@
         {
           "destination": "SFO/Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 23,
+          "minutes": 36,
           "platform": "1",
           "direction": "South",
           "length": 5,
@@ -5627,21 +5013,9 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 37,
+          "minutes": 38,
           "platform": "2",
           "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 38,
-          "platform": "1",
-          "direction": "South",
           "length": 5,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
@@ -5649,30 +5023,62 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     },
-    "ssan": {
-      "id": "ssan",
-      "abbr": "SSAN",
-      "name": "South San Francisco",
+    "mlbr": {
+      "id": "mlbr",
+      "abbr": "MLBR",
+      "name": "Millbrae",
       "departures": [
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 5,
-          "platform": "2",
+          "minutes": 11,
+          "platform": "3",
           "direction": "North",
           "length": 5,
           "colorName": "YELLOW",
           "hexColor": "#ffff33",
-          "delaySeconds": 99,
+          "delaySeconds": 0,
           "bikesAllowed": true
         },
         {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 11,
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 27,
+          "platform": "3",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        }
+      ],
+      "generatedAt": "2026-11-15T07:05:54.781Z"
+    },
+    "sfia": {
+      "id": "sfia",
+      "abbr": "SFIA",
+      "name": "San Francisco Int'l Airport",
+      "departures": [
+        {
+          "destination": "Antioch",
+          "destinationAbbr": "ANTC",
+          "minutes": 3,
           "platform": "1",
+          "direction": "North",
+          "length": 5,
+          "colorName": "YELLOW",
+          "hexColor": "#ffff33",
+          "delaySeconds": 0,
+          "bikesAllowed": true
+        },
+        {
+          "destination": "Millbrae",
+          "destinationAbbr": "MLBR",
+          "minutes": 12,
+          "platform": "2",
           "direction": "South",
           "length": 5,
           "colorName": "YELLOW",
@@ -5684,198 +5090,6 @@
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
           "minutes": 18,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 26,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 33,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 41,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "sbrn": {
-      "id": "sbrn",
-      "abbr": "SBRN",
-      "name": "San Bruno",
-      "departures": [
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 1,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 114,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 2,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 113,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 14,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 15,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "SFO/Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 29,
-          "platform": "1",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 30,
-          "platform": "2",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "mlbr": {
-      "id": "mlbr",
-      "abbr": "MLBR",
-      "name": "Millbrae",
-      "departures": [
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 5,
-          "platform": "3",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 20,
-          "platform": "3",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 35,
-          "platform": "3",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        }
-      ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
-    },
-    "sfia": {
-      "id": "sfia",
-      "abbr": "SFIA",
-      "name": "San Francisco Int'l Airport",
-      "departures": [
-        {
-          "destination": "Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 6,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 11,
           "platform": "1",
           "direction": "North",
           "length": 5,
@@ -5887,7 +5101,7 @@
         {
           "destination": "Millbrae",
           "destinationAbbr": "MLBR",
-          "minutes": 21,
+          "minutes": 27,
           "platform": "2",
           "direction": "South",
           "length": 5,
@@ -5899,31 +5113,7 @@
         {
           "destination": "Antioch",
           "destinationAbbr": "ANTC",
-          "minutes": 26,
-          "platform": "1",
-          "direction": "North",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Millbrae",
-          "destinationAbbr": "MLBR",
-          "minutes": 36,
-          "platform": "2",
-          "direction": "South",
-          "length": 5,
-          "colorName": "YELLOW",
-          "hexColor": "#ffff33",
-          "delaySeconds": 0,
-          "bikesAllowed": true
-        },
-        {
-          "destination": "Antioch",
-          "destinationAbbr": "ANTC",
-          "minutes": 41,
+          "minutes": 34,
           "platform": "1",
           "direction": "North",
           "length": 5,
@@ -5933,7 +5123,7 @@
           "bikesAllowed": true
         }
       ],
-      "generatedAt": "2026-11-14T22:42:36.512Z"
+      "generatedAt": "2026-11-15T07:05:54.781Z"
     }
   }
 }
