@@ -15,6 +15,8 @@ Updated on 2026-09-28 by the responsive pass. The trade calculator is a wide too
 
 # Fantasy Football Trade Calculator
 
+Checked against the code on 2026-11-02.
+
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Scope and mode
@@ -30,18 +32,22 @@ The main action is to add players to You give and You get, then read a plain ver
 
 ## Proof and constraints
 
-- Every source has an as-of date and a visible coverage state.
+- Every source has an as-of date and a visible coverage state. On the in-season basis, since 2026-10-16, the scoring leg has no feed date and prints the week its scoring runs through instead.
 - The result is withheld when a required input is stale, unsupported, or materially incomplete.
 - Player selection is keyboard operable and prevents duplicates across both sides.
-- Private player selections persist as IDs in versioned browser storage. League settings live in the URL.
-- The page uses the shipped Catalog 97 system, one page-level `h1`, no nested `main`, 44px controls, dark mode, and no required motion.
+- Player selections persist as IDs in versioned browser storage, and since 2026-09-01 they also mirror into the `give` and `get` URL parameters so a deal can be sent as a link. League settings live in the URL.
+- The page uses the fantasy kit (`fantasy.css` with `fantasy-trade.css`), one page-level `h1`, no nested `main`, dark mode, and no required motion. Controls hold 44px on a phone and for a touch pointer, per rule 8 in `docs/FANTASY_FOOTBALL_KIT.md`, and the kit's `--ffb-control` height is 36px with a mouse from 768px up.
 - The first version supports PPR, Half PPR, and Standard managed redraft. Unsupported formats are stated plainly.
 
 ## Approved direction
 
 The approved composition is the operational deal desk in `.impeccable/mocks/trade-calculator-comp-c-deal-desk.png`, approved August 13, 2026.
 
+As of 2026-11-02 that image is not in the repository, and git has no record of it in any commit, so the description below and the shipped page are the record of the composition.
+
 A narrow settings rail sits left, the Give and Get ledger owns the center, and a pinned verdict rail sits right on large screens. Mobile stacks settings, Give, Get, then verdict. The memorable moment is the calibrated balance scale moving as a player is added while the source mix and roster-cut cost remain visible beside it.
+
+As of 2026-11-02 that order holds, and below 1200px the league settings fold behind a button named "Change league settings" (it prints "Change", or "Hide" once open), with a one-line summary of the scoring, teams, roster spots, and lineup in their place. #574 added the fold below 1024px on 2026-10-05, and the kit moved it to 1200px on 2026-10-13 (902bd0470). `e2e/fantasy-trade-calculator.spec.ts` presses that button when it is visible before it changes the scoring.
 
 ## Implementation inventory
 
@@ -68,15 +74,18 @@ The first view contains the breadcrumb, one `h1`, the preseason scope, dated sou
 
 The source decision is closed. This route is a preseason one-quarterback redraft estimate built from overall expert consensus and current mock-draft ADP, with league-specific replacement lines. It does not claim rest-of-season projections, completed-trade market data, named creator values, win probability, dynasty value, or injury advice.
 
+As of 2026-11-02 that closes the preseason basis only. From Week 1 the route can also price an in-season basis, recorded under "In-season basis, 2026-10-16" below.
+
 ## Route-specific invariants
 
-- Keep expert consensus, draft market, and league fit visible as separate evidence rows with dates or a plain unavailable state.
-- Withhold exact values and the verdict unless both required sources cover every selected player with usable data. Keep sensitivity ranges and coverage warnings next to the verdict.
+- Keep expert consensus, draft market, and league fit visible as separate evidence rows with dates or a plain unavailable state. On the in-season basis, since 2026-10-16, the second row is "Season scoring" and prints the week its scoring runs through in place of a date.
+- Withhold exact values and the verdict unless both required sources cover every selected player with usable data. Keep sensitivity ranges and coverage warnings next to the verdict. On the in-season basis, since 2026-10-16, the rest-of-season expert board is the one required source, so a player with no scoring log of at least four games is priced on the experts alone at limited coverage, and a stale rest-of-season board still withholds.
 - Keep the balance scale, both package values, roster-slot effect, evidence mix, and model limits together in the evaluation rail.
-- Keep league settings in the URL and player IDs in versioned browser storage. A scoring change selects the saved trade for that scoring model instead of copying a calculated result.
+- Keep league settings in the URL and player IDs in versioned browser storage. Since 2026-09-01 the IDs also mirror into the `give` and `get` URL parameters, and a shared link's players replace the stored deal on the first load unless none of them is on the board. A scoring change selects the saved trade for that scoring model instead of copying a calculated result.
 - Keep player search keyboard operable, prevent duplicates across both sides, cap each side at six players, and preserve swap plus confirm-to-clear controls.
 - Keep the package-fit table below the desk and describe only the assets in the offer against league-specific starter and roster lines. Do not present it as a projection of either full roster.
-- Keep the balance marker's short transition behind the reduced-motion guard, and keep the methodology disclaimer as the surface's single Instrument Serif italic gesture.
+- Keep the balance marker's short transition behind the reduced-motion guard, and keep the method disclaimer in the open beside the verdict. The serif italic it wore, Newsreader since the page moved onto Catalog 97 on 2026-09-27, went with the kit on 2026-10-13, and since 2026-10-16 its first sentence names the basis, "This is a preseason one-QB redraft estimate." or "This is an in-season one-QB redraft estimate."
+- As of 2026-11-02, since the kit landed on 2026-10-13 (902bd0470 and 3ca0cea07), an idle desk shows the scale at rest, the "Build both sides" line, the disclaimer, and the evidence mix, and the two package values, the roster-slot effect, and the package-fit table appear once both sides hold a player, as the verdict strip below 1200px has since 2026-09-11. `trade-calculator-client.test.tsx` asserts that an idle desk prints no value readouts and no verdict strip.
 
 ## Finish review
 
@@ -132,6 +141,10 @@ to the other side" to "You are giving more". Four engine tests and three client 
 and the client suite now fakes the date because a real-date snapshot silently flipped to
 in-season on 2026-09-09.
 
+As of 2026-11-02 that cap holds on the preseason basis only, which stays the fallback in season
+for any week the weekly file has no rest-of-season board. The in-season basis that landed on
+2026-10-16 can issue a clear edge again (see "In-season basis, 2026-10-16" below).
+
 The two P1s were routing and the scale. This was the only scope note in the group without the
 weekly-board link, so the sibling sentence and links to weekly and waivers are in the note and
 "View rankings" stays the header action. The balance scale marker sat at 0px for a 3.9% gap
@@ -163,8 +176,22 @@ sibling notes on the other surfaces keep their inline links under the 2.5.8 pros
 because their specs do not hold anchors to the floor and their briefs recorded the exemption;
 this route's brief says 44px controls, so here the floor wins.
 
+As of 2026-11-02 the floor no longer wins for those two links. On 2026-10-13 the kit exempted a
+link that runs inside a sentence from the 44px box (rule 8 in `docs/FANTASY_FOOTBALL_KIT.md`,
+commit 933f9529c), the scope note's links lost theirs, and the narrow-screen test now skips an
+`a` inside a `p` (710dbd359). The kit also lays each scoring radio over its whole 44px plate
+(`.ffb-choice input` in `fantasy.css`), so the radio input is no longer 16 by 16.
+
 ## Frame removal, 2026-10-12
 
 Part of the project sovereign design's fantasy group (G3), frame removal only, so the deal desk, its rails, the balance scale, and every invariant above stand. The green lead-ink hero with the Anton h1, its torn seam, and the paper plate that held the source line came off. The breadcrumb now sits over the shared compact header (`src/components/fantasy/FantasyRouteHeader.tsx`), with "Build a Trade Offer" on the title ramp, the existing orienting sentence, the expert board and draft market dates as one muted line, and the "Preseason redraft · Model v1" tag with the View rankings link to the right from md up. The line turns "stale sources" in the negative colour in place, so the plate that used to rescue it from the green sheet is gone, and `trade-calculator-client.test.tsx` now asserts that colour, a header ancestor, and no plate or surface wrapper, where it used to assert the paper plate.
 
 Verified on a production build on 2026-10-12. The first input is at y724 at 1440 (from y1040, which was off screen) and y1068 at 390 (from 1337, past a screen and a half). No contrast failures in either theme, 0 layout fails at every width, the first combobox takes a typed search and Enter adds the player, and `e2e/fantasy-trade-calculator.spec.ts` passes against the dev server and the production build.
+
+As of 2026-11-02 that spec drives the page through `data-testid="fantasy-trade-calculator-shell"` and its `data-hydrated` flag, the h1 "Build a Trade Offer", the "Add a player to you give" and "Add a player to you get" comboboxes with their "Players for you give" and "Players for you get" listboxes, the "You give players" and "You get players" lists, the "Trade evaluation" rail with its "Build both sides" line, the "Half PPR" radio, the "players available in PPR" count line, and the empty side's "Search the overall board and add the first player." A pass that renames one of them changes the spec with it.
+
+## In-season basis, 2026-10-16
+
+PR #610 and its follow-up #611, both merged on 2026-10-16, gave the calculator a second basis. From Week 1, when `public/data/fantasy/weekly.json` carries FantasyPros' rest-of-season board for the season and scoring format, the two legs are that board and this season's points per game above replacement, weighted by games played, as model `in-season-redraft-v1`. Before Week 1, or in any week the weekly file has no rest-of-season board, the page stays on the preseason basis described above. `docs/FANTASY_DRAFT_MODEL.md` has the model under "The in-season basis".
+
+The basis changes the page in several places. The lead names rest-of-season expert consensus and this season's scoring, the muted line prints the rest-of-season board's stamp and expert count and a part such as "2026 scoring through Week 5" ahead of the source state, the tag reads "In-season redraft · Model v1", and the supported-format line reads "In-season managed redraft with one starting QB". The second evidence row is "Season scoring", a package row prints points per game where it printed ADP, and the disclaimer reads "This is an in-season one-QB redraft estimate." The season note gains a third branch that explains the basis, prints how many experts the rest-of-season board averages, and says a player with fewer than four games is priced on the experts alone at limited coverage. That case lowers coverage where the preseason basis would withhold the verdict, and on this basis a clear edge can appear again, which `trade-calculator-client.test.tsx` pins. I checked this against the code and the unit tests and did not run the in-season state in a browser.

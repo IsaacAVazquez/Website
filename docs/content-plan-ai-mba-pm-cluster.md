@@ -3,7 +3,7 @@
 > [!NOTE]
 > Planning reference only. This is a content strategy plan, not a current implementation source of truth. Use `AGENTS.md`, `CLAUDE.md`, `README.md`, `SEO.md`, `WRITING_VOICE.md`, and `docs/README.md` for current documentation.
 
-**Last updated:** 2026-04-10
+**Last updated:** 2026-11-02
 **Cadence:** 2 posts/week — 1 flagship (2–3k words) + 1 lighter tactical (800–1200 words)
 **Goal:** Build topical authority across 3 clusters; set up talks, courses, or paid products
 
@@ -87,6 +87,8 @@ Positioning: Blend of accounting/finance background with PM and AI.
 ## Backlog Reference Table (SEO-Optimized)
 
 All 24 posts with finalized slugs, personas, and funnel stage. Status: **Written** = published MDX file exists, **Covered** = topic addressed in a related article, **Pending** = not yet written, **Future** = intentionally deferred.
+
+As of 2026-11-02 the statuses below still match `content/blog`. Each of the 14 Written posts exists under its slug, or under the slug in parentheses where the row gives one, and both posts named in the Covered rows exist. None of the five Pending posts (#17, #18, #20, #21, #22) or the two Future posts (#23, #24) exists, either under its planned slug or under its planned title. The 14 Written posts carry `publishedAt` dates from 2026-04-07 to 2026-04-10. Apart from this note and the date at the top, the file has not changed since 2026-04-10, so the plan is still the 2026-04-10 version.
 
 | # | Cluster | SEO Title | Slug | Persona | Funnel | Status |
 |---|---------|-----------|------|---------|--------|--------|

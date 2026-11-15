@@ -4,6 +4,8 @@ I checked 37 project surfaces across 46 tool routes against the current source a
 
 The shared match ledger date fix and MLB wild card explanation are correct. The soccer club drawers have a separate fixture renderer that still needs dates.
 
+Status on November 2, 2026. All ten verified issues are fixed. Nine were fixed in PR #596 on October 14, as the status section at the end records, and PR #637, merged on October 22, compares Interchange IQ's processors within one payment channel. The same PR made the assumed custom contracts an opt-in comparison for online checkout and relabeled the Enablement Assistant score as a fit score out of 100. As of November 2 the committed investment price histories run through October 30 for all 151 symbols.
+
 ## Verified issues
 
 ### P2. Compare the same payment channel in Interchange IQ
