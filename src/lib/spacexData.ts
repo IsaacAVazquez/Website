@@ -191,6 +191,8 @@ interface RawLl2LauncherConfiguration {
 interface RawLl2Rocket {
   id?: number | null;
   configuration?: RawLl2LauncherConfiguration | null;
+  launcher_stage?: RawLl2LauncherStage[] | null;
+  spacecraft_stage?: RawLl2SpacecraftStage | null;
 }
 
 interface RawLl2Launcher {
@@ -661,7 +663,7 @@ function pickMissionPatch(launch: RawLl2Launch): string | null {
 }
 
 function pickSpacecraftImage(launch: RawLl2Launch): string | null {
-  return launch.spacecraft_stage?.spacecraft?.spacecraft_config?.image_url ?? null;
+  return getSpacecraftStage(launch)?.spacecraft?.spacecraft_config?.image_url ?? null;
 }
 
 function pickVehicleImage(launch: RawLl2Launch): string | null {
@@ -755,9 +757,22 @@ function normalizeLocationName(location?: RawLl2Location | null): string | null 
   return location?.name ?? null;
 }
 
+/**
+ * Launch Library 2.2.0 nests both stages under `rocket` (read from a launch
+ * detail on 2026-11-15). The launch root is kept as a fallback only.
+ */
+export function getLauncherStages(launch: RawLl2Launch): RawLl2LauncherStage[] {
+  return launch.rocket?.launcher_stage ?? launch.launcher_stage ?? [];
+}
+
+export function getSpacecraftStage(launch: RawLl2Launch): RawLl2SpacecraftStage | null {
+  return launch.rocket?.spacecraft_stage ?? launch.spacecraft_stage ?? null;
+}
+
 function deriveCoreCount(launch: RawLl2Launch): number {
-  if (launch.launcher_stage?.length) {
-    return launch.launcher_stage.length;
+  const stages = getLauncherStages(launch);
+  if (stages.length) {
+    return stages.length;
   }
 
   const rocketName = launch.rocket?.configuration?.full_name ?? launch.rocket?.configuration?.name ?? "";
@@ -778,7 +793,7 @@ function deriveCoreCount(launch: RawLl2Launch): number {
 }
 
 function derivePayloadCount(launch: RawLl2Launch): number {
-  const crewCount = launch.spacecraft_stage?.launch_crew?.length ?? 0;
+  const crewCount = getSpacecraftStage(launch)?.launch_crew?.length ?? 0;
   if (crewCount > 0) {
     return crewCount;
   }
@@ -832,9 +847,9 @@ function normalizeLaunchCard(
     launchpadLocation: normalizeLocationName(launch.pad?.location),
     patchImage,
     vehicleImage: resolveSpaceXImageUrl(pickVehicleImage(launch)),
-    crewCount: launch.spacecraft_stage?.launch_crew?.length ?? 0,
+    crewCount: getSpacecraftStage(launch)?.launch_crew?.length ?? 0,
     payloadCount: derivePayloadCount(launch),
-    capsuleCount: launch.spacecraft_stage?.spacecraft ? 1 : 0,
+    capsuleCount: getSpacecraftStage(launch)?.spacecraft ? 1 : 0,
     coreCount: deriveCoreCount(launch),
     hasExactTime: datePrecision === "hour" && !tbd && !staleSchedule,
     isStaleSchedule: staleSchedule,
@@ -844,8 +859,8 @@ function normalizeLaunchCard(
 
 function normalizeCrewMembers(launch: RawLl2Launch): MissionCrewMember[] {
   const entries = [
-    ...(launch.spacecraft_stage?.launch_crew ?? []),
-    ...(launch.spacecraft_stage?.onboard_crew ?? []),
+    ...(getSpacecraftStage(launch)?.launch_crew ?? []),
+    ...(getSpacecraftStage(launch)?.onboard_crew ?? []),
   ];
   const deduped = new Map<number, MissionCrewMember>();
 
@@ -878,7 +893,7 @@ function normalizePayloads(launch: RawLl2Launch): MissionPayload[] {
   }
 
   const spacecraftPayloadCapacity =
-    launch.spacecraft_stage?.spacecraft?.spacecraft_config?.payload_capacity ?? null;
+    getSpacecraftStage(launch)?.spacecraft?.spacecraft_config?.payload_capacity ?? null;
 
   return [
     {
@@ -901,7 +916,7 @@ function normalizePayloads(launch: RawLl2Launch): MissionPayload[] {
 }
 
 function normalizeCapsules(launch: RawLl2Launch): MissionCapsule[] {
-  const spacecraft = launch.spacecraft_stage?.spacecraft;
+  const spacecraft = getSpacecraftStage(launch)?.spacecraft;
   if (!spacecraft) {
     return [];
   }
@@ -916,13 +931,13 @@ function normalizeCapsules(launch: RawLl2Launch): MissionCapsule[] {
         typeof spacecraft.flights_count === "number" ? Math.max(spacecraft.flights_count - 1, 0) : null,
       waterLandings: null,
       landLandings: null,
-      lastUpdate: launch.spacecraft_stage?.mission_end ?? null,
+      lastUpdate: getSpacecraftStage(launch)?.mission_end ?? null,
     },
   ];
 }
 
 function normalizeCores(launch: RawLl2Launch): MissionCore[] {
-  return (launch.launcher_stage ?? []).map((stage) => ({
+  return getLauncherStages(launch).map((stage) => ({
     id: stage.launcher?.id ? `${stage.launcher.id}` : null,
     serial: stage.launcher?.serial_number ?? null,
     flight: stage.launcher_flight_number ?? null,

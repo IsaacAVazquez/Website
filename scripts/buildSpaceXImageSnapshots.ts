@@ -10,6 +10,7 @@ import {
   REQUEST_TIMEOUT_MS,
   sortByPriority,
   type LaunchCollectionMode,
+  getSpacecraftStage,
   type RawLl2Launch,
   type RawLl2ListResponse,
 } from "../src/lib/spacexData";
@@ -310,9 +311,9 @@ function collectLaunchImageDraft(
   pushDraftEntry(
     images,
     "spacecraft",
-    normalizeRemoteImageUrl(launch.spacecraft_stage?.spacecraft?.spacecraft_config?.image_url),
-    launch.spacecraft_stage?.spacecraft?.spacecraft_config?.name?.trim() ||
-      launch.spacecraft_stage?.spacecraft?.name?.trim() ||
+    normalizeRemoteImageUrl(getSpacecraftStage(launch)?.spacecraft?.spacecraft_config?.image_url),
+    getSpacecraftStage(launch)?.spacecraft?.spacecraft_config?.name?.trim() ||
+      getSpacecraftStage(launch)?.spacecraft?.name?.trim() ||
       `${launchName} spacecraft`
   );
 
@@ -324,9 +325,9 @@ function collectLaunchImageDraft(
   );
 
   const crewAssignments = [
-    ...(launch.spacecraft_stage?.launch_crew ?? []),
-    ...(launch.spacecraft_stage?.onboard_crew ?? []),
-    ...(launch.spacecraft_stage?.landing_crew ?? []),
+    ...(getSpacecraftStage(launch)?.launch_crew ?? []),
+    ...(getSpacecraftStage(launch)?.onboard_crew ?? []),
+    ...(getSpacecraftStage(launch)?.landing_crew ?? []),
   ];
 
   for (const crewAssignment of crewAssignments) {

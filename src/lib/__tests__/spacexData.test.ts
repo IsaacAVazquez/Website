@@ -1297,6 +1297,22 @@ describe("spacexData launch normalization", () => {
     expect(card.capsuleCount).toBe(1);
   });
 
+  it("reads cores and crew from under rocket, where Launch Library 2.2.0 puts them", async () => {
+    const crew = [1, 2, 3, 4].map((id) => ({ id, astronaut: { id, name: `Astronaut ${id}` } }));
+    const card = await cardFor({
+      launcher_stage: undefined,
+      spacecraft_stage: undefined,
+      rocket: {
+        ...baseLaunch.rocket,
+        launcher_stage: [{}, {}],
+        spacecraft_stage: { ...baseLaunch.spacecraft_stage, launch_crew: crew },
+      },
+    });
+    expect(card.coreCount).toBe(2);
+    expect(card.crewCount).toBe(4);
+    expect(card.capsuleCount).toBe(1);
+  });
+
   it("prefers official webcasts and mission articles and finds press kits and program art", async () => {
     const card = await cardFor({
       mission_patches: [],

@@ -139,7 +139,12 @@ export function WineInventory({
                         value={bottle.quantity}
                         onChange={(e) =>
                           update(bottle.id, {
-                            quantity: Number(e.target.value),
+                            // The save path drops a bottle whose count is out of range, so
+                            // a typo is clamped here and never reaches it.
+                            quantity: Math.min(
+                              999,
+                              Math.max(0, Math.trunc(Number(e.target.value)) || 0),
+                            ),
                           })
                         }
                       />

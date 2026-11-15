@@ -302,6 +302,33 @@ describe("buildGolfSnapshotData", () => {
     ]);
   });
 
+  it("leaves a round the player walked off out of a withdrawal's total", async () => {
+    // ESPN's stroke total covers the finished 73 only; the 41 is a partial round.
+    const withdrawn = makeCompetitor({
+      id: "9",
+      name: "Max Partial",
+      position: "-",
+      state: "post",
+      statusText: "Withdrawn",
+      score: { value: 73, displayValue: "+2" },
+      rounds: [73, 41],
+      statistics: [{ name: "scoreToPar", value: 75 }],
+    });
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([withdrawn, ...fiveCompetitors()], {
+          courses: [{ name: "Black Desert Resort", par: 71 }],
+        })
+      )
+    );
+
+    const { playerSnapshots } = await buildGolfSnapshotData();
+
+    const snapshot = playerSnapshots["max-partial"];
+    expect(snapshot.tournamentStatus.totalToPar).toBe(2);
+    expect(snapshot.roundByRound.map((round) => round.relativeToPar)).toEqual([2, null]);
+  });
+
   it("throws when the leaderboard returns no events", async () => {
     jest
       .spyOn(global, "fetch")

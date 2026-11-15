@@ -186,6 +186,19 @@ function parseElevator(
     .filter((entry) => !isPlaceholderNotice(entry.description));
 }
 
+/**
+ * BART answers with one notice that lists every elevator out of service
+ * ("There are 2 elevators out of service at this time: ..."), so the number
+ * of notices is not the number of elevators. A notice without that wording
+ * counts as one.
+ */
+export function countElevatorOutages(elevator: TransitElevatorStatus[]): number {
+  return elevator.reduce((sum, notice) => {
+    const match = /There (?:are|is) (\d+) elevators?/i.exec(notice.description);
+    return sum + (match ? Number(match[1]) : 1);
+  }, 0);
+}
+
 function parseDepartures(etdStation: BartEtdStation): TransitDeparture[] {
   const departures: TransitDeparture[] = [];
   for (const etd of asArray(etdStation.etd)) {
@@ -461,7 +474,7 @@ export async function buildBayAreaTransitSnapshotData(
       lineCount: lines.length,
       stationCount: stations.length,
       activeAdvisories: advisories.length,
-      elevatorOutages: elevator.length,
+      elevatorOutages: countElevatorOutages(elevator),
       trainsTracked,
     },
     lines,
@@ -550,7 +563,7 @@ export async function buildBayAreaTransitLiveSnapshotData(
       heroStats: {
         ...fallback.summary.heroStats,
         activeAdvisories: advisories.length,
-        elevatorOutages: elevator.length,
+        elevatorOutages: countElevatorOutages(elevator),
         trainsTracked,
       },
       advisories,
