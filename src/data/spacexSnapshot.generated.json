@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T15:54:20.228Z",
+  "generatedAt": "2026-11-15T01:08:04.153Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -87,7 +87,7 @@
       "name": "Starlink Group 31-2 (Starship Flight 15)",
       "flightNumber": 746,
       "upcoming": false,
-      "success": null,
+      "success": true,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3. Second Starship flight to deploy satellites (a group of Starlink satellites known as Starlink Group 31-2) into stable Low Earth Orbit and first ever to attempt returning the Starship 2nd stage back to the launch site.\r\n\r\nThe ship is expected to fly at an altitude approximately 275 km above Earth and complete approximately 14 orbits around the planet for more than 22 hours, with the ship expected to attempt returning back to Starbase, Texas on its launch pad by pad arms catching.\r\n\r\nThe booster’s primary test objective on Flight 15 will be executing a successful launch, ascent, stage separation, boostback burn, and landing by pad arms catching. This will also be the 1st Starship V3 booster to attempt returning to its launch site.\r\n\r\nStarship will deliver 26 Starlink V3 satellites to orbit for the second time, which aim to greatly expand the network's capacity and user speeds. Each Starlink V3 satellite will add 1 Tbps of capacity to the constellation. 3 of the satellites have been modified with a suite of cameras to scan Starship’s heatshield and transmit imagery down to operators.",
       "dateUtc": "2026-11-13T22:47:36Z",
       "dateUnix": 1794610056,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-11-14T15:54:15.497Z"
+    "generatedAt": "2026-11-15T01:07:53.364Z"
   },
   "upcomingLaunches": [
     {
@@ -594,6 +594,46 @@
       }
     },
     {
+      "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
+      "name": "Rivada 1",
+      "flightNumber": 781,
+      "upcoming": true,
+      "success": null,
+      "details": "24 satellites for Rivada's internet constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "year",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 24,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "c5783e2b-d458-4b99-9936-4043c236190b",
       "name": "SDA Tranche 1 Transport Layer F",
       "flightNumber": 781,
@@ -754,8 +794,8 @@
       }
     },
     {
-      "id": "dfd444f9-ddda-4b35-8f51-cda7cd801809",
-      "name": "Rivada 1",
+      "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
+      "name": "Rivada 9",
       "flightNumber": 781,
       "upcoming": true,
       "success": null,
@@ -876,46 +916,6 @@
     {
       "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
       "name": "Rivada 3",
-      "flightNumber": 781,
-      "upcoming": true,
-      "success": null,
-      "details": "24 satellites for Rivada's internet constellation.",
-      "dateUtc": "2026-12-31T00:00:00Z",
-      "dateUnix": 1798675200,
-      "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
-      "tbd": true,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 24,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": false,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Rivada_Networks",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    {
-      "id": "5ce7e9b6-b471-4a88-891f-2a6f21cb369f",
-      "name": "Rivada 9",
       "flightNumber": 781,
       "upcoming": true,
       "success": null,
@@ -1120,7 +1120,7 @@
       "name": "Starlink Group 31-2 (Starship Flight 15)",
       "flightNumber": 746,
       "upcoming": false,
-      "success": null,
+      "success": true,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3. Second Starship flight to deploy satellites (a group of Starlink satellites known as Starlink Group 31-2) into stable Low Earth Orbit and first ever to attempt returning the Starship 2nd stage back to the launch site.\r\n\r\nThe ship is expected to fly at an altitude approximately 275 km above Earth and complete approximately 14 orbits around the planet for more than 22 hours, with the ship expected to attempt returning back to Starbase, Texas on its launch pad by pad arms catching.\r\n\r\nThe booster’s primary test objective on Flight 15 will be executing a successful launch, ascent, stage separation, boostback burn, and landing by pad arms catching. This will also be the 1st Starship V3 booster to attempt returning to its launch site.\r\n\r\nStarship will deliver 26 Starlink V3 satellites to orbit for the second time, which aim to greatly expand the network's capacity and user speeds. Each Starlink V3 satellite will add 1 Tbps of capacity to the constellation. 3 of the satellites have been modified with a suite of cameras to scan Starship’s heatshield and transmit imagery down to operators.",
       "dateUtc": "2026-11-13T22:47:36Z",
       "dateUnix": 1794610056,
@@ -2281,7 +2281,7 @@
       "name": "Starlink Group 31-2 (Starship Flight 15)",
       "flightNumber": 746,
       "upcoming": false,
-      "success": null,
+      "success": true,
       "details": "15th test flight of the two-stage Starship launch vehicle and 4th flight of Starship V3. Second Starship flight to deploy satellites (a group of Starlink satellites known as Starlink Group 31-2) into stable Low Earth Orbit and first ever to attempt returning the Starship 2nd stage back to the launch site.\r\n\r\nThe ship is expected to fly at an altitude approximately 275 km above Earth and complete approximately 14 orbits around the planet for more than 22 hours, with the ship expected to attempt returning back to Starbase, Texas on its launch pad by pad arms catching.\r\n\r\nThe booster’s primary test objective on Flight 15 will be executing a successful launch, ascent, stage separation, boostback burn, and landing by pad arms catching. This will also be the 1st Starship V3 booster to attempt returning to its launch site.\r\n\r\nStarship will deliver 26 Starlink V3 satellites to orbit for the second time, which aim to greatly expand the network's capacity and user speeds. Each Starlink V3 satellite will add 1 Tbps of capacity to the constellation. 3 of the satellites have been modified with a suite of cameras to scan Starship’s heatshield and transmit imagery down to operators.",
       "dateUtc": "2026-11-13T22:47:36Z",
       "dateUnix": 1794610056,
@@ -2840,6 +2840,6 @@
       }
     ],
     "rangeLabel": "Dec 25 – Nov 26",
-    "generatedAt": "2026-11-14T15:54:19.917Z"
+    "generatedAt": "2026-11-15T01:08:03.494Z"
   }
 }
