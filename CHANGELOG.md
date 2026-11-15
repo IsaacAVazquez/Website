@@ -11,6 +11,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Add the November 3 repository audit ([#685](https://github.com/IsaacAVazquez/Website/pull/685)).
 - Add an offer comparison calculator to the fintech tools ([#682](https://github.com/IsaacAVazquez/Website/pull/682)).
 - Saved comparisons and following across the project tools ([#684](https://github.com/IsaacAVazquez/Website/pull/684)).
+- Ignore WebKit's report-only CSP message in the project following spec ([#687](https://github.com/IsaacAVazquez/Website/pull/687)).
 
 ---
 
