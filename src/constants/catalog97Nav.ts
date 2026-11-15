@@ -58,6 +58,7 @@ export const DASHBOARD_ROUTES: readonly string[] = [
   "/fantasy-formula-1",
   "/fintech-tools/budget-planner",
   "/fintech-tools/interchange-iq",
+  "/fintech-tools/offer-comparison",
   "/fintech-tools/rent-vs-buy",
   "/food-map",
   "/formula-1",

@@ -257,6 +257,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     retrospective: "",
   },
 
+  "offer-comparison": {
+    slug: "offer-comparison",
+    title: "Offer Comparison Calculator",
+    description:
+      "I built an offer comparison calculator that lines up two or three job offers year by year across a four year equity vest, so a large signing bonus or a back loaded grant counts in the year it actually pays and the offer that wins year one can differ from the one that wins over four years.",
+    role: "Full-Stack Developer & Designer",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "React", "Financial Modeling"],
+    metrics: "Four year view · Vesting schedules · Browser persistence",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/fintech-tools/offer-comparison",
+    featured: true,
+
+    overview: {
+      summary:
+        "I created a job offer calculator that compares base, target bonus, signing bonus, equity vesting, and retirement match one year at a time instead of as a single headline number.",
+      impact:
+        "Shows when the offer that looks bigger in year one falls behind once a grant's later years vest, before any of it gets negotiated.",
+    },
+    problem: {
+      context:
+        "Offers usually get compared on a first-year total compensation figure, which hides a back loaded vesting schedule and treats a one-time signing bonus as if it repeats.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "news-pulse-dashboard": {
     slug: "news-pulse-dashboard",
     title: "News Pulse Dashboard",
@@ -1237,6 +1270,7 @@ const PORTFOLIO_PROJECT_ORDER = [
   "blackjack-trainer",
   "budget-planner",
   "rent-vs-buy-calculator",
+  "offer-comparison",
   "mba-role-tracker",
   "polling-aggregator",
   "spacex-mission-control",

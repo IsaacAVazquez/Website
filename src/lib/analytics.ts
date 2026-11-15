@@ -156,6 +156,7 @@ type ToolName =
   | "trade_calculator"
   | "retirement_planner"
   | "rent_vs_buy"
+  | "offer_comparison"
   | "score_pools"
   | "investments";
 

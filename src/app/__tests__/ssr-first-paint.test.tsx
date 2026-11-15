@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { DecisionLabClient } from "@/app/decision-lab/decision-lab-client";
 import { BudgetPlannerClient } from "@/app/fintech-tools/budget-planner/budget-planner-client";
 import { RentVsBuyClient } from "@/app/fintech-tools/rent-vs-buy/rent-vs-buy-client";
+import { OfferComparisonClient } from "@/app/fintech-tools/offer-comparison/offer-comparison-client";
 import { TravelPlannerClient } from "@/app/travel/travel-planner-client";
 import { MBAJobsClient } from "@/app/mba-internship-notifications/mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "@/app/mba-internship-notifications/mba-jobs-state";
@@ -43,6 +44,7 @@ describe("server-rendered first paint", () => {
     ["Decision Lab", <DecisionLabClient key="d" />],
     ["Budget Planner", <BudgetPlannerClient key="b" />],
     ["Rent vs. Buy", <RentVsBuyClient key="r" />],
+    ["Offer Comparison", <OfferComparisonClient key="o" />],
     ["Travel Planner", <TravelPlannerClient key="t" />],
     ["Job Search", <MBAJobsClient key="j" initialState={DEFAULT_MBA_JOBS_STATE} />],
     ["Food Map", <FoodMapClient key="f" />],
