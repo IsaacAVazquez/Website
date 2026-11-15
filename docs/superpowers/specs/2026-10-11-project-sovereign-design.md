@@ -2,6 +2,7 @@
 
 **Date:** 2026-10-11
 **Status:** Direction, scope, the contract, and the archetypes were approved in conversation on 2026-10-10. The foundation PR carries this spec and the two test changes it needs. The four pilot routes come next, Isaac reviews them, and the remaining eight groups run against the bar he sets. Stage 1 merged in #582 on 2026-10-11, stage 2 (the eight groups, PRs #587 to #594, merged through #595) on 2026-10-12, and the close-out deleted the hero, the press rows, and the overprint the same day.
+**Status, 2026-11-02.** The close-out commit (`98e7032b2`) is dated 2026-10-12 but reached main in #596 (`9aad2a129`) on 2026-10-14, together with the stage 2 review fixes, so `Catalog97ProjectHero` and `src/constants/projectPress.ts` stayed on main until then. The fantasy football redesign that went past this spec's frame removal (`docs/superpowers/specs/2026-10-13-fantasy-football-redesign-design.md`) merged in #598 on 2026-10-14.
 
 ## What this is
 

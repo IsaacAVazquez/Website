@@ -2,6 +2,8 @@
 
 **Internal. Not a published page.** This is the format for the follow-up articles that continue the countdown as the tournament plays out. The original countdown ranks the field before kickoff. These updates re-rank the survivors after each round, owning what the first list got right and wrong.
 
+**Status on 2026-11-02:** The tournament is over and no post used this scaffold. The follow-ups ran as round-by-round recaps instead, from the four group pieces dated 2026-06-25 to the two final pieces dated 2026-07-19, and none carries the scaffold's "Power Rankings" title, tag, or ranking sections.
+
 The body below is a copy-paste MDX scaffold. Do not leave it in `content/blog/` unfilled, because anything in that folder is picked up as a live post. When you are ready to write an update, copy the scaffold into a new file under `content/blog/`, fill in every `[BRACKET]` and delete every `{/* guidance */}` comment, then set the real `publishedAt`. The `{/* */}` comments are valid MDX and will not render if you forget one, but clear them out anyway.
 
 ---

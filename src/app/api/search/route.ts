@@ -81,6 +81,7 @@ const SEARCH_KEYWORDS: Record<string, string> = {
   '/fintech-tools/interchange-iq': 'Interchange IQ payments pricing interchange economics processor comparison fintech tool fees Payments Interchange Pricing Fintech Product',
   '/fintech-tools/budget-planner': 'Budget planner monthly personal finance savings expenses categories income browser local storage Budget Personal Finance Fintech Product',
   '/fintech-tools/rent-vs-buy': 'Rent vs buy calculator break-even year home affordability mortgage opportunity cost down payment net worth fintech tool personal finance Rent vs Buy Personal Finance Housing Fintech Product',
+  '/fintech-tools/offer-comparison': 'Offer comparison calculator job offer total compensation base salary bonus signing bonus equity grant RSU vesting schedule retirement match four year comparison fintech tool personal finance Job Offers Compensation Fintech Product',
   '/golf': 'PGA Tour golf dashboard leaderboard golfer drilldown cut line round movement sports data Next.js TypeScript Golf PGA Tour Sports Data Dashboard Next.js',
   '/earthquake-pulse': 'earthquake pulse USGS seismic monitor magnitude depth tsunami significant quakes regions distribution global geojson dashboard Next.js TypeScript Earthquakes USGS Data Visualization Dashboard Next.js',
   '/travel': 'Travel planner trip itinerary vacation planning trip tracker travel journal day-by-day activities browser local storage no account Next.js TypeScript Travel Itinerary Journal Personal Productivity Next.js',

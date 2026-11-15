@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-10-13
+**Last updated:** 2026-11-02
 
 ---
 
@@ -13,7 +13,7 @@ Current route inventory and page ownership for the live app.
 
 | Route | File | Notes |
 |------|------|-------|
-| `/` | `src/app/page.tsx` | Server shell passing featured projects, recent posts, live tool groups, and the live feed to `Catalog97Home` |
+| `/` | `src/app/page.tsx` | Async server shell passing the featured projects (`getHomepageFeaturedCaseStudies`), the pinned job write-ups (`getHomepageProofOfWorkBlogPostPreviews`), and the snapshot readouts (`getSnapshotReadouts`) to `Catalog97Home` |
 | `/about` | `src/app/about/page.tsx` | Renders `Catalog97About` |
 | `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which renders the four lead projects and the two career write-ups and links to `/dashboards` for the full inventory |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Redirect stub. It generates a static param per case study and permanent-redirects each to its live tool, and any other slug is a 404. No case study template renders any more |
@@ -36,6 +36,7 @@ Current route inventory and page ownership for the live app.
 | Route | File | Notes |
 |------|------|-------|
 | `/investments` | `src/app/investments/page.tsx` | Public investment research platform |
+| `/investments/before-you-buy` | `src/app/investments/before-you-buy/page.tsx` | Before You Buy, a product concept that compares two stock purchases of the same amount against an editable portfolio (`BeforeYouBuyClient`, see `docs/BEFORE_YOU_BUY.md`) |
 | `/march-madness-2026` | `src/app/march-madness-2026/page.tsx` | Metadata-driven bracket analysis with client UI |
 | `/formula-1` | `src/app/formula-1/page.tsx` | Snapshot-backed Formula 1 season dashboard |
 | `/fantasy-formula-1` | `src/app/fantasy-formula-1/page.tsx` | Snapshot-backed Fantasy Formula 1 team optimizer |
@@ -48,19 +49,20 @@ Current route inventory and page ownership for the live app.
 | `/mlb` | `src/app/mlb/page.tsx` | Snapshot-backed MLB dashboard |
 | `/nba` | `src/app/nba/page.tsx` | Snapshot-backed NBA dashboard |
 | `/nfl` | `src/app/nfl/page.tsx` | Snapshot-backed NFL dashboard |
-| `/golf` | `src/app/golf/page.tsx` | Snapshot-backed PGA Tour leaderboard dashboard (`npm run update:golf`, daily GitHub Actions refresh) |
+| `/golf` | `src/app/golf/page.tsx` | Snapshot-backed PGA Tour leaderboard dashboard (`npm run update:golf`, refreshed by `update-golf.yml` every three hours Thursday through Sunday and once a day Monday through Wednesday) |
 | `/earthquake-pulse` | `src/app/earthquake-pulse/page.tsx` | Global earthquake monitor that polls the USGS feed every five minutes through its summary route and falls back to the checked-in snapshot |
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
 | `/score-pools` (+ `/tracker`, `/settings`) | `src/app/score-pools/page.tsx` | Exact-score prediction pool engine: market-calibrated scoreline model, expected-points pick sheet, tracker, and settings (`npm run update:score-pools`, 6-hourly refresh) |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
-| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (street map of every line, station departures, advisories) |
+| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | BART dashboard (street map of every line, station departures, advisories) that polls BART every minute through its summary route while the tab is visible and falls back to the checked-in snapshot |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
 | `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Rent vs buy calculator over a month-by-month net-worth model (`src/lib/rentVsBuy/*`, educational only) |
-| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Full-time and internship job search tracker polling 59 tracked tech companies for business and tech PM roles (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev file sync) |
+| `/fintech-tools/offer-comparison` | `src/app/fintech-tools/offer-comparison/page.tsx` | Offer comparison calculator for two or three job offers over a four year vest (`src/lib/offerComparison.ts`, pre-tax, saved in the browser under `offer_comparison_v1`) |
+| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Full-time and internship job search tracker polling the public job boards of the tech companies in `src/constants/mba-companies.ts` for business and tech PM roles, with a career page link for the companies marked `manual` (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev file sync) |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Automation platform enablement assistant and program dashboard |
 | `/food-map` | `src/app/food-map/page.tsx` | Food map |
@@ -84,18 +86,20 @@ All eight routes render inside `src/app/fantasy-football/layout.tsx`, which sets
 | `/fantasy-football/tiers/[position]` | `next.config.mjs` | Redirects to the canonical fantasy board with query parameters |
 | `/fantasy-football/rb-tiers` | `next.config.mjs` | Redirects to the canonical RB board with query parameters |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Redraft room tracker with roster pressure, room-relative Draft Outlook, draft-slot context, and user-entered expected return math |
-| `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | Preseason one-QB redraft trade estimate using overall expert consensus, reliable mock-draft ADP, league-size replacement lines, and browser-local player selections |
+| `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | One-QB redraft trade estimate with league-size replacement lines and browser-local player selections. Before the season it prices players on overall expert consensus and reliable mock-draft ADP, and from Week 1, when the weekly snapshot carries a rest-of-season board, on that board and this season's points-over-replacement rank |
 | `/fantasy-football/mock-draft` | `src/app/fantasy-football/mock-draft/page.tsx` | Mock draft simulator: rehearse the early rounds of a one-QB draft against a seeded room that picks from the consensus board and market ADP, then sim to the end for the board grid and value report |
-| `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board; reports a not-published state until Week 1 |
+| `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board, printed in tiers computed from the published averages; reports a not-published state until Week 1 |
 | `/fantasy-football/waivers` | `src/app/fantasy-football/waivers/page.tsx` | In-season waiver targets (rank percentile minus rostered percentage) read from the same weekly snapshot through the shared weekly client |
 
 ### Utility
 
 | Route | File | Notes |
 |------|------|-------|
-| `/search` | `src/app/search/page.tsx` | Search UI backed by limited `/api/search` |
+| `/search` | `src/app/search/page.tsx` | Noindexed search UI over `/api/search`, which indexes the articles, the case studies, and a hand-listed set of pages but no dashboard data |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
-| `/changelog` | `src/app/changelog/page.tsx` | Site changelog |
+| `/changelog` | `src/app/changelog/page.tsx` | Site changelog built from the dated MDX entries in `content/changelog/` (`src/lib/changelog.ts`), which are separate from the root `CHANGELOG.md`, where `changelog-on-merge.yml` appends a dated bullet for each merged pull request without the `skip-changelog` label |
+| `/back-room/[discovery]` | `src/app/back-room/[discovery]/page.tsx` | Five noindexed easter egg pages (`receipt`, `transit`, `gallery`, `1997`, `registration`) from `generateStaticParams`, with any other slug a 404. The footer links the receipt and the registration mark, and `docs/EASTER_EGGS.md` covers how each is found |
+| `/teapot` | `src/app/teapot/route.ts` | Easter egg route handler that answers HTTP 418 with a short plain text note. It has no page, so the sitemap, which walks `page.tsx` files, leaves it out (`docs/EASTER_EGGS.md`) |
 
 ---
 
@@ -108,7 +112,7 @@ Do not create these as real app routes:
 - `/blog` -> `/writing`
 - `/blog/:slug` -> `/writing/:slug`
 
-Fantasy shortcut and typo redirects also live in `next.config.mjs`.
+Fantasy shortcut and typo redirects also live in `next.config.mjs`, along with the retired portfolio slugs, `/fintech-tools` -> `/dashboards` (the fintech tools have no index page), and the feed, contact, and résumé aliases. `docs/ai-context/REDIRECTS-AND-NAVIGATION.md` lists them all.
 
 ---
 
@@ -136,18 +140,20 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 - `/fantasy-formula-1` is a live off-nav Fantasy Formula 1 optimizer
 - `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, and `/world-cup-2026` are live off-nav sports data dashboards
 - `/bay-area-transit` is the live off-nav Bay Area civic transit dashboard, `/earthquake-pulse` is the live USGS earthquake monitor, and `/tech-startup-tracker` is a live curated startup funding tracker
-- `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/enablement-assistant`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
-- `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
-- `/search` exists, but its data quality is limited by the current hardcoded search API
+- `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/enablement-assistant`, `/news-pulse`, `/github-trending-pulse`, `/agent-build-index`, `/spacex-mission-control`, `/polling-aggregator`, `/score-pools`, `/investments/before-you-buy`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
+- `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/travel-deals`, `/now`, and `/changelog` are live personal or utility surfaces
+- `/search` exists, and since 2026-10-09 `/api/search` indexes the full text of every published article, every case study, and a hand-listed set of pages, but it indexes no dashboard data, so it is not full site search
+- `/back-room/[discovery]` holds the five easter egg pages, which are noindexed and left out of the sitemap
 - there is no `/admin` page; it and NextAuth were removed on 2026-10-02
 
 ---
 
 ## Metadata Pattern
 
-Most routes use helpers from `src/lib/seo.ts`:
+Most routes build their metadata with `constructMetadata(...)` from `src/lib/seo.ts`:
 
-- `constructMetadata(...)` for static pages
-- `generateMetadata(...)` for slug or query-driven routes
+- static and query-driven pages export its result as `metadata`
+- `/writing/[slug]`, `/writing/topics/[topic]`, and `/changelog` export a Next.js `generateMetadata` function that returns it, and `/back-room/[discovery]` returns a plain noindexed object from its own `generateMetadata`
+- `/about` uses `generateAIOptimizedMetadata(...)` from the same file
 
 Structured data is added route-by-route with `StructuredData` and `AIStructuredData`.

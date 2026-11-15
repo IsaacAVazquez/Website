@@ -46,7 +46,11 @@ test.describe("Before You Buy", () => {
     await page.goto(ROUTE);
     await expect(status(page)).toContainText("NVDA");
     await page.getByText(/View and edit/).click();
-    await page.getByRole("combobox", { name: "Add holding symbol" }).fill("KO");
+    // WebKit does not scroll an input into view on fill, and the suggestion
+    // list is fixed to the input's position, so click it first as a visitor would.
+    const symbol = page.getByRole("combobox", { name: "Add holding symbol" });
+    await symbol.click();
+    await symbol.fill("KO");
     await page.getByRole("option", { name: /^KO/ }).click();
     await page.getByLabel("New holding value in dollars").fill("10000");
     await page.getByRole("button", { name: "Add holding", exact: true }).click();

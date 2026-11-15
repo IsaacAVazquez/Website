@@ -2,6 +2,8 @@
 
 The 12 numbered findings are now repaired. [The repair record](#repairs-on-october-2-2026) includes the changes, an additional repeated-build cache fix, verification results, and remaining limits. The original audit follows.
 
+Status on November 2, 2026. The repairs merged in PR #552 (`686a3bde8`) on October 2, in the same commit as this report (`8c5930586`), so the repair record's line that the repairs "remain uncommitted in the workspace" describes the workspace just before that commit.
+
 I found 12 issues worth fixing, including three high priority issues in imported investment data and automatic draft controls. The existing verification passes, but it does not cover these failure cases. I would fix the three high priority issues first, then the saved data loss and fantasy publication problems.
 
 I audited commit `14c9072b9e299d740a3ca99548f466ffb899bdab`. The repository had 2,389 tracked files, including 1,198 code files across the application, builders, functions, extension, and root configuration, with 62 page files and 26 API handlers. This was a repository wide review of the major subsystems, supported by automated checks and focused reproductions. It was not a manual line by line examination of every generated snapshot, article, asset, or source file.

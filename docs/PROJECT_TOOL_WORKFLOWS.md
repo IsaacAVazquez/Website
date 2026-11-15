@@ -53,17 +53,17 @@ Chromium verified saving and reloading comparisons, capability checks, invalid i
 
 I checked the US pricing pages for [Stripe](https://stripe.com/pricing), [Square](https://squareup.com/us/en/payments/our-fees), [Shopify](https://www.shopify.com/pricing), and [PayPal](https://www.paypal.com/us/business/paypal-business-fees) on October 22, 2026. Each flat-rate row links to its source. Square uses the Free plan's checkout and card-present rates. Shopify uses Basic's standard card rates and includes its $29 monthly equivalent when billed annually. PayPal compares Checkout online with Point of Sale card-present payments.
 
-The interchange-plus markups are illustrative assumptions, and the card mix uses the existing representative interchange estimates. Enabling those estimates changes the comparison's wording to say that the result depends on those assumptions. The interchange estimates are not split by payment channel, so the assumed contracts and the Stripe breakeven are priced for online checkout only, and the page says so when card present is selected. The tool excludes network and assessment fees from interchange-plus totals and excludes hardware, optional add-ons, international cards, and refunds from the published-rate comparison.
+The interchange-plus markups are illustrative assumptions, and the card mix uses the existing representative interchange estimates. Including the assumed contracts changes the verdict's closing words from "on published rates" to "under these assumptions." The interchange estimates are not split by payment channel, so the assumed contracts and the Stripe breakeven are priced for online checkout only, and the page says so when card present is selected with the contracts option on. The tool excludes network and assessment fees from interchange-plus totals and excludes hardware, optional add-ons, international cards, and refunds from the published-rate comparison.
 
 ## Limits of the outputs
 
 Decision Lab reports the thresholds in its own rubric. Its scores and verdicts depend on the visitor's estimates and have no probability calibration. Enablement recommendations use fit scores out of 100 in both the page and the copied support request. The example program stays separate from saved team records.
 
-The shopping list combines ingredient names and lists the quantities for each meal. It does not add quantities written in different units. Planning the same recipe twice includes its ingredients twice.
+The shopping list combines ingredient names and lists the quantities for each meal. It never adds quantities together, even when two meals give the same unit. Planning the same recipe twice includes its ingredients twice.
 
 An unpriced travel stop stays unknown, while a zero cost means free. The spending summary is the subtotal of priced stops. Calendar events use floating local times, so the visitor must choose the destination time zone when importing. Untimed stops are all-day events with an exclusive next-day end. Calendar text escapes reserved characters and folds lines by UTF-8 bytes.
 
-The commute view filters BART's reported North or South direction at the selected station. It does not calculate connections or assert that a train reaches the saved destination. It keeps endpoint advisories and unscoped system advisories. Elevator notices lack structured station identifiers, so all notices remain visible. Bus connections still need a 511 key.
+The commute view filters BART's reported North or South direction at the selected station. It does not calculate connections or assert that a train reaches the saved destination. It keeps endpoint advisories and unscoped system advisories. Elevator notices lack structured station identifiers, so all notices remain visible. The view covers BART only. Bus connections are not built, and adding them waits on a decision and a 511.org key, both tracked in `docs/TODO.md`.
 
 ## Verification
 

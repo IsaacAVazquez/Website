@@ -4,6 +4,7 @@
 **Status:** Approved, in implementation
 **Route:** `/food-map` (unchanged)
 **Status, 2026-09-21.** Shipped on 2026-06-08 with deviations. The data grew to ten cities and 54 places the same day, the page metadata still names six, and the 2026-07-20 restyle moved the map onto its own `--fm-*` tokens rather than `--home-*`. This is the only description of the data and state model, so it stays current for the family 8 migration.
+**Status, 2026-11-02.** Three parts of the 2026-09-21 line are out of date. The page metadata has named ten cities since 2026-09-28 (`fd51a460a`, merged in #497). The family 8 migration shipped in #477 on 2026-09-27, and since then the page reads the Catalog 97 paper tokens and keeps only `--fm-accent`, an inline variable that carries each curator's color. Stage 2 of the project sovereign design then set the page as a city bar over a full-width map (#593, merged through #595 on 2026-10-12). The data still holds ten cities and 54 places, and the state model below still matches `food-map-state.ts` in its fields, URL keys, and mutator names, though `setCity` also clears the selected cuisines and `resetFoodMapFilters` keeps the active pick. Where the data model differs from `food-map-data.ts`, the code wins. Curator accents are chart tokens (`var(--c97-chart-1)` to `var(--c97-chart-3)`) where this spec has hex, Leaflet loads through the shared `src/lib/leaflet.ts` where this spec has `food-map/leaflet.ts`, and no `getFoodMapPlace` helper exists.
 
 
 ## Problem

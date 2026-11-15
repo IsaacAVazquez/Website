@@ -83,8 +83,8 @@ function routeSources(route: string): Map<string, string> {
 const liveProjects = Object.values(caseStudiesData).filter((study) => study.link?.startsWith("/"));
 
 describe("project route inventory", () => {
-  it("covers all 35 portfolio projects with a live route", () => {
-    expect(liveProjects).toHaveLength(35);
+  it("covers all 36 portfolio projects with a live route", () => {
+    expect(liveProjects).toHaveLength(36);
   });
 
   it.each(liveProjects.map((study) => [study.slug, study.link as string]))("%s (%s)", (_slug, link) => {

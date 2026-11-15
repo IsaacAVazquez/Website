@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-10-13
+**Last updated:** 2026-11-02
 
 ---
 
@@ -12,17 +12,18 @@ Fast route reference for the current app.
 |------|------|----------------|
 | `/` | `src/app/page.tsx` | Server page -> `Catalog97Home` |
 | `/about` | `src/app/about/page.tsx` | Server page -> `Catalog97About` |
-| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` client with project search, sorting, and category filters |
+| `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` (four lead projects and the two career write-ups) |
 | `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Redirect stub, `permanentRedirect` to each case study's live tool, `notFound` otherwise |
 | `/resume` | `src/app/resume/page.tsx` | Server page -> `Catalog97Resume` |
 | `/contact` | `src/app/contact/page.tsx` | Server page -> `Catalog97Contact` |
-| `/dashboards` | `src/app/dashboards/page.tsx` | Server page -> `Catalog97Dashboards` |
+| `/dashboards` | `src/app/dashboards/page.tsx` | Async server page -> `Catalog97Dashboards` client with the category filter and name search |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Server page |
 | `/privacy` | `src/app/privacy/page.tsx` | Server page |
-| `/writing` | `src/app/writing/page.tsx` | Async server page -> `Catalog97Writing` client with search, sorting, filters, and topic links |
+| `/writing` | `src/app/writing/page.tsx` | Server page -> `Catalog97Writing` client with search, sorting, filters, and topic links |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/writing/topics/[topic]` | `src/app/writing/topics/[topic]/page.tsx` | Async server topic hub page |
 | `/investments` | `src/app/investments/page.tsx` | Server page -> `InvestmentsClient` |
+| `/investments/before-you-buy` | `src/app/investments/before-you-buy/page.tsx` | Server page -> `BeforeYouBuyClient` |
 | `/formula-1` | `src/app/formula-1/page.tsx` | Server page -> `Formula1Client` |
 | `/fantasy-formula-1` | `src/app/fantasy-formula-1/page.tsx` | Server page -> `FantasyFormula1Client` |
 | `/ai-dev-tools` | `src/app/ai-dev-tools/page.tsx` | Server page with filterable AI tool directory |
@@ -73,6 +74,8 @@ Fast route reference for the current app.
 | `/search` | `src/app/search/page.tsx` | Search UI page |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
 | `/changelog` | `src/app/changelog/page.tsx` | Site changelog page |
+| `/back-room/[discovery]` | `src/app/back-room/[discovery]/page.tsx` | Async server page for the five noindexed easter egg slugs in its `DISCOVERIES` map (`dynamicParams = false`, so any other slug is a 404) |
+| `/teapot` | `src/app/teapot/route.ts` | Route handler (`GET`) that answers 418 with a plain text easter egg note, with no page or layout |
 
 There is no `/admin` route; it and NextAuth were removed on 2026-10-02.
 
@@ -101,9 +104,9 @@ Footer behavior:
 
 ### `/portfolio`
 
-- server page calls `getPortfolioProjects()` and hands the project index to the `Catalog97Portfolio` client (`src/components/catalog97/Catalog97Portfolio.tsx`)
-- `Catalog97Portfolio` adds project search, sorting, and a button group built from `TOOL_CATEGORY_DEFS`, leads with four full-weight entries on the camel band, and drops the remainder into the pine ledger below
-- every slug in `caseStudies.ts` is bucketed by `classifyToolSlug`, so no project disappears when a filter is on
+- server page calls `getPortfolioProjects()` and hands the project index to `Catalog97Portfolio` (`src/components/catalog97/Catalog97Portfolio.tsx`), a server component
+- `Catalog97Portfolio` prints the first `WORK_LEAD_COUNT` (four) projects in `PORTFOLIO_PROJECT_ORDER` on a saffron band, the Juno and Civitech write-ups on a blue band, and one hero line pointing to `/dashboards` for the full inventory
+- the project search, sort, and category filter left this route on 2026-10-19, and `/dashboards` is the only index now, where `classifyToolSlug` buckets every slug in `caseStudies.ts` so no project disappears when a filter is on
 - entries should make role, problem space, and impact scannable before click-through
 - `ProjectsContent.tsx` no longer exists, so do not document it
 
@@ -122,6 +125,7 @@ Footer behavior:
 
 - route metadata presents it as a public investment research platform
 - client shell lives in `src/app/investments/investments-client.tsx`
+- the sibling route `/investments/before-you-buy` renders `BeforeYouBuyClient`, which compares two stock purchases of the same amount against an editable portfolio; `docs/BEFORE_YOU_BUY.md` covers it
 
 ### `/march-madness-2026`
 
@@ -131,23 +135,23 @@ Footer behavior:
 ### `/premier-league`
 
 - server entry provides metadata plus breadcrumb and sports-application structured data
-- client route supports deep-linked `overview`, `fixtures`, and `team` views through query params
+- client route deep-links the table view (`?view=` `table`, `title-race`, `europe`, or `relegation`), the selected club (`?team=`), and the fixtures or scorers tab (`?detail=`) through `premier-league-state.ts`
 
 ### `/formula-1`
 
-- server entry provides metadata plus breadcrumb and software-application structured data
-- client route supports deep-linked `overview`, `drivers`, `constructors`, and `calendar` views through query params
+- server entry provides metadata plus breadcrumb and sports-application structured data
+- client route supports deep-linked `overview`, `drivers`, `constructors`, and `calendar` views (`?view=`) and a selected race weekend (`?meeting=`) through query params
 
 ### `/fantasy-formula-1`
 
-- server entry provides metadata plus breadcrumb and software-application structured data
-- client route supports deep-linked `builder`, `assets`, and `rules` views through query params
+- server entry provides metadata plus breadcrumb and sports-application structured data
+- client route deep-links the slate's sort (`?sort=` `value`, `projection`, `price`, or `form`) and focus (`?focus=` `drivers` or `constructors`); the `builder`, `assets`, and `rules` views were folded into one list on 2026-10-12, and an old `?view=` param is dropped
 - lineup state is browser-local and scoped by season
 
 ### `/la-liga`
 
 - server entry provides metadata plus breadcrumb and sports-application structured data
-- client route supports deep-linked `overview`, `fixtures`, `europe`, `relegation`, and club views through query params
+- client route deep-links the table view (`?view=` `table`, `title-race`, `europe`, or `relegation`), the selected club (`?club=`), and the fixtures or scorers tab (`?detail=`) through `la-liga-state.core.ts`
 
 ### `/fantasy-football`
 
@@ -164,21 +168,21 @@ Footer behavior:
 
 - `/news-pulse` is a live route backed by `/api/news-pulse`
 - `/spacex-mission-control` is a live route backed by `/api/spacex/*`
-- `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.json`
-- `/mlb`, `/nba`, and `/nfl` are live sports dashboards backed by committed TypeScript snapshots and matching `/api/{league}/*` routes
+- `/polling-aggregator` is a live route that reads `getPollingSnapshot`, which serves the Netlify Blobs copy that `netlify/functions/refresh-polling.ts` writes every six hours, for up to 36 hours, and otherwise the committed `src/data/pollingSnapshot.json` that `update-polling.yml` refreshes daily
+- `/mlb`, `/nba`, and `/nfl` are live sports dashboards backed by committed JSON snapshots (`src/data/{league}Snapshot.json`, read through a typed `.ts` wrapper beside each one since 2026-10-02) and matching `/api/{league}/*` routes
 - `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf`
 - `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.json` and `/api/world-cup/*`
 - `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.json` and `/api/bay-area-transit/*`
 - `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.json` and `/api/earthquake-pulse/summary`
 - `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.json`
-- `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
-- `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
-- `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
-- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards across 59 tracked companies for full-time and internship tech PM and business roles (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev-mode file sync), with the route name kept for its inbound links
+- `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces, and `/frontier-models` reads `getFrontierModelsSnapshot`, which serves the Netlify Blobs copy that `netlify/functions/refresh-frontier-models.ts` writes daily, for up to three days, and otherwise the committed `src/data/frontierModelsSnapshot.json`
+- `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/travel-deals`, `/now`, and `/changelog` are live personal or utility surfaces
+- `/fintech-tools/budget-planner`, `/fintech-tools/interchange-iq`, and `/fintech-tools/rent-vs-buy` are live fintech tool routes, and `/fintech-tools` itself redirects to `/dashboards`
+- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls the Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards of the companies in `src/constants/mba-companies.ts` (companies marked `manual` are skipped and get a career page link instead) for full-time and internship tech PM and business roles (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev-mode file sync), with the route name kept for its inbound links
 
 ### `/search`
 
-- search UI exists, but its backing API is limited and mostly hardcoded
+- since 2026-10-09 the backing `/api/search` indexes the full text of every published article, every case study, and a hand-listed set of pages in its route file, but no dashboard data, so it is not full site search
 
 ---
 

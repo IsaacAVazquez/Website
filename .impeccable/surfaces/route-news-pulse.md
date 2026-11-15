@@ -7,6 +7,8 @@ related_targets: ["src/app/news-pulse/news-pulse-client.tsx","src/app/news-pulse
 
 # News Pulse surface brief
 
+Checked against the code on 2026-11-02.
+
 Written on 2026-10-12 by the project sovereign stage 2 (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Board, group G5).
 
 ## What the page is
@@ -17,15 +19,15 @@ A broadsheet front page over a media-monitoring desk, borrowing from a newspaper
 
 The hero sheet, its three readouts, "Jump to the desk", "The desk" band, the Headlines, Coverage map, and Analysis tabs, the Coverage map view (its story clusters are the front page's right column and its topic list repeated the matrix), the Analysis view's three boxed panels, the cluster-by-outlet comparison table, and the bottom "Last fetched" line are cut. With the tabs gone, `view` is no longer a parameter and the state module keeps only `source`; an old `?view=coverage` link lands on the page with its source filter intact. Under 1024px the banner's outlet headlines and the topic coverage open in place, and print follows that narrow layout. The wide blocks are off by default and one `screen and (min-width: 1024px)` query swaps them in, so paper takes the narrow page from every engine and no fractional width shows both. The story links are block links padded to 44px.
 
-The source filter only narrows headlines the page already holds, so picking an outlet writes a plain history entry (`window.history.pushState`) and the client reads `source` from the address alone. The page still awaits `searchParams`, which is what keeps it rendered per request. The words-per-headline bar is set in rem by the client, 4rem for the outlet with the longest headlines and the others to scale. The tone note is the sentence the page carried before the redesign, word for word.
+The source filter only narrows headlines the page already holds, so picking an outlet writes a plain history entry (`window.history.pushState`) and the client reads `source` from the address alone. The page still awaits `searchParams`, which is what keeps it rendered per request. The words-per-headline bar is set in rem by the client, 4rem for the outlet with the longest headlines and the others to scale. The tone note kept the sentence the page carried before the redesign, word for word, until #641 rewrote it on 2026-10-26 (the new sentence is pinned below).
 
 The route has its own palette as `--np-*` on `.np-root`, a newsprint (#f6f3ec) with near-black ink in light and #141312 in dark, Newsreader for the nameplate, headlines, and section titles, the body face for kickers and tables, and hairline column rules. Outlet colours and the tone colours stay data on swatches and bars, with every figure in ink. On the dark paper a swatch carries a 1px ring inside its edge, since the NYT and Guardian fills are as dark as the paper. No typeface was added.
 
 ## Pinned, and kept
 
-`data-testid="news-pulse-shell"` and `news-headlines-grid`; the `source` parameter and the "Source" combobox; the h1 "News Pulse"; article titles as h3; the "Refreshing live feeds" status; "Some feeds did not come through on this refresh." with the error list; the route error state and "Try again"; "No headlines match this filter."; "Show N headlines from N outlets" and the "Coverage by topic" list; "Show more"; "I read this as directional framing pressure, not article-level sentiment."; the "NYT 1 · NPR 1" outlet counts under a right-column story.
+`data-testid="news-pulse-shell"` and `news-headlines-grid`; the `source` parameter and the "Source" combobox; the h1 "News Pulse"; article titles as h3; the "Refreshing live feeds" status; "Some feeds did not come through on this refresh." with the error list; the route error state and "Try again"; "No headlines match this filter."; "Show N headlines from N outlets" and the "Coverage by topic" list; "Show more"; "I read this as a rough lean in how each outlet frames its headlines, and it doesn't measure the sentiment of whole articles." (since 2026-10-26, when #641 replaced "I read this as directional framing pressure, not article-level sentiment."); the "NYT 1 · NPR 1" outlet counts under a right-column story.
 
-The client test's tab cases became section cases (no tabs, an old view link keeps its filter, the tone table, the right column's stories), and the shell case reads the new standfirst and dateline. `e2e/product-surfaces.spec.ts` checks the front page, the Headlines heading, and the source filter instead of clicking the Coverage Map tab.
+The client test's tab cases became section cases (no tabs, an old view link keeps its filter, the tone table, the right column's stories), and the shell case reads the new standfirst and dateline. `e2e/product-surfaces.spec.ts` checks the front page, the Headlines heading, and the source filter instead of clicking the Coverage Map tab. `__tests__/news-pulse-css.test.ts` holds what a unit render cannot see, which is `screen` or `print` on every width query, the `.np-lg-only` and `.np-sm-only` blocks swapping at the one `screen and (min-width: 1024px)` query, and the swatch's ring on the dark paper. The client test also holds the source filter's pushed history entry and the words-per-headline bars drawn to scale.
 
 ## Verified state on 2026-10-12
 
