@@ -1,6 +1,6 @@
 # SEO Content Map
 
-**Last updated:** 2026-06-22
+**Last updated:** 2026-11-02
 
 This map assigns one primary search intent to each writing cluster and identifies the pages that should receive the strongest internal links. It is a guardrail against publishing multiple articles that compete for the same query.
 
@@ -14,7 +14,7 @@ This map assigns one primary search intent to each writing cluster and identifie
 | `/writing/topics/systems-quality` | Software reliability and quality engineering | `/writing/building-reliable-software-systems`, `/writing/complete-guide-qa-engineering`, `/writing/qa-engineer-guide-testing-ai-systems`, `/writing/evals-are-the-new-test-suite` |
 | `/writing/topics/sports-fantasy` | Sports analytics and fantasy strategy | `/writing/2025-fantasy-football-draft-strategy`, `/writing/rb-vs-wr-draft-strategy-modeling-positional-value`, `/writing/world-cup-2026-top-ten-contenders`, `/writing/2026-march-madness-bracket-analysis` |
 | `/writing/topics/signals-commentary` | Technology, market, and policy commentary | Time-bound commentary articles; avoid treating weekly pieces as evergreen canonical explainers |
-| `/writing/topics/space-experiments` | Space technology and product experiments | `/writing/artemis-ii-first-crewed-lunar-mission`, `/writing/building-spacex-mission-control`, `/writing/spacex-ipo-case-for-going-public` |
+| `/writing/topics/space-experiments` | Space technology and product experiments | `/writing/artemis-ii-first-crewed-lunar-mission`, `/writing/building-spacex-mission-control`, `/writing/spacex-ipo-case-for-going-public` (filed under Signals & Commentary through its `archiveBucket` as of 2026-11-02, so this hub's page does not list it) |
 
 ## Cannibalization guardrails
 
@@ -28,9 +28,9 @@ This map assigns one primary search intent to each writing cluster and identifie
 
 Before adding an article:
 
-1. Assign it to one topic hub.
+1. Assign it to one topic hub with either a `cluster` (one of the four lead pillars) or an `archiveBucket` (one of the three archive buckets) in its frontmatter. `src/lib/__tests__/blog-taxonomy.test.ts` fails a published post with neither or both.
 2. Name the primary query and the existing page closest to that query.
 3. Narrow or merge the article if the search intent is already owned.
 4. Add at least two contextual internal links.
 5. Link claims that depend on external facts to primary sources.
-6. Keep the search title within 60 characters and the description within 160 characters.
+6. Keep `seo.title` to 44 characters or fewer, so the title stays within 60 once ` | Isaac Vazquez` is added, and keep `seo.description` within 160 characters, ending in a period, question mark, or exclamation point. For a post with a `cluster`, `src/lib/__tests__/blog-seo-content.test.ts` fails a title or description that breaks these rules, or a title another clustered post already uses, and on every other post `fitSearchTitle` and `fitMetaDescription` clip the text without a warning.

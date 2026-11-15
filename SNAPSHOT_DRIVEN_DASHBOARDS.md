@@ -4,12 +4,15 @@ How the site's data dashboards work. This is the single most-repeated
 architecture in the repo — 15+ public surfaces share it — so it gets one
 reference instead of being re-explained per route.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-11-02
 
 The short version is that most dashboards call no external API at request time.
 The exceptions are the earthquake summary route, the bay-area-transit summary
 route, and the bay-area-transit station route, which pass `preferLive: true` to
-their accessors and keep the committed snapshot as the fallback. A
+their accessors and keep the committed snapshot as the fallback. The SpaceX
+summary route also fetches Launch Library at request time when the committed
+snapshot has no summary, and the SpaceX launch-list route does when the snapshot
+is empty. A
 local script fetches data, transforms it, and writes a committed snapshot file. A
 GitHub Action re-runs that script on a schedule and commits the refreshed
 snapshot. The app reads the committed file. This keeps pages fast, keeps runtime
@@ -26,7 +29,7 @@ For a dashboard `x`:
 |------|------|------|
 | **Seed snapshot** | `src/data/<x>Snapshot.json` + `src/data/<x>Snapshot.ts` | Committed JSON data plus a four-line typed re-export (`export const <x>Snapshot = raw as <Type>`). Ships with a seed (empty or hand-authored) so the page works before the first refresh. |
 | **Builder** | `scripts/build<X>Snapshot.ts` (often via a `src/lib/<x>Data.ts` fetch/transform) | Fetches the upstream source, shapes it, writes the snapshot file. Run by `npm run update:<x>`. |
-| **GitHub Action** | `.github/workflows/update-<x>.yml` | Runs the builder on a schedule (+ manual dispatch) and commits the snapshot only when it changes, via the shared `scripts/ci/commit-and-push-snapshot.sh`. |
+| **GitHub Action** | `.github/workflows/update-<x>.yml` | Runs the builder on a schedule (+ manual dispatch), checks the result with `scripts/verifyDataRefresh.ts` against the surface's freshness target in `src/lib/dataFreshnessPolicy.ts` and its minimum counts in `scripts/dataRefreshRegistry.ts`, and commits the snapshot only when it changes, via the shared `scripts/ci/commit-and-push-snapshot.sh`. |
 | **Accessors** | `src/lib/<x>Snapshot.ts` | Pure read helpers the app and API routes call (`get<X>Summary()`, per-entity getters, id validation, empty-state factories). |
 | **API route(s)** | optional, usually a per-entity detail route such as `src/app/api/<x>/teams/[teamId]/route.ts` | Thin handlers that return accessor output for data the client fetches on selection. Most pages call the accessor directly in the server component, so only bay-area-transit, earthquake-pulse, and spacex have a `summary` route. |
 
@@ -49,7 +52,8 @@ It `JSON.parse`s the committed `.json` file. It returns `null` for a missing or
 non-JSON file, so the caller can surface the original fetch error instead of
 masking it behind data that may not exist.
 
-Builders use it like this (from `scripts/buildGolfSnapshot.ts`):
+Builders use it like this (simplified from `scripts/buildGolfSnapshot.ts`, which
+also re-stamps a recent final board between tournaments):
 
 ```ts
 try {
@@ -67,16 +71,24 @@ try {
 Builders also **write atomically** (`writeFileAtomic`: write `.tmp`, then
 `renameSync`) so the snapshot is never observed half-written.
 
-A builder that fans out across **many independent upstream calls** (e.g.
+A builder that fans out across many independent upstream calls (e.g.
 `buildGitHubTrendingSnapshot.ts` hits the GitHub Search API once per tracked
 language/topic) wraps each call in `withRetry` (`src/lib/fetchRetry.ts`) so a
 transient blip on one segment doesn't discard the whole refresh. It tolerates a
-few segments failing outright — skipping them and writing the rest fresh — but
-aborts (keeping the previous snapshot) once `MAX_FAILED_SEGMENTS` is exceeded,
-so a broad outage never gets written as a gutted snapshot. The two football
-builders (`buildPremierLeagueSnapshot.ts`, `updateLaLigaSnapshot.ts`) both honor
-the contract identically: a thrown fetch **or** a successful-but-empty standings
-response falls back to the committed snapshot.
+few segments failing outright, carrying a failed segment over from the committed
+snapshot when that snapshot has it and skipping it when it does not, and writes
+the rest fresh. It aborts (keeping the previous snapshot) once more than
+`MAX_FAILED_SEGMENTS` (three) fail, so a broad outage never gets written as a
+gutted snapshot.
+
+`buildOrKeepExisting`, in the same `scripts/snapshotFallback.ts`, wraps the
+contract for builders that also have to reject a build that succeeds but comes
+back unusable. It returns `null` when it kept the committed file and still
+throws when there is nothing usable to keep. The Premier League, La Liga, MLB,
+NBA, and NFL builders use it, and the two football builders
+(`buildPremierLeagueSnapshot.ts`, `updateLaLigaSnapshot.ts`) count a table with
+no rows or no games played, the zeroed table a rolled-over season can return, as
+unusable.
 
 ---
 
@@ -97,21 +109,31 @@ git plumbing:
 
 Usage is `commit-and-push-snapshot.sh <commit-message> <pathspec...>`. The script:
 
-1. Sets the `github-actions[bot]` git identity.
-2. Stages the given pathspecs and **exits 0 cleanly on a no-op refresh** — if
-   `git diff --cached --quiet` finds nothing staged, there's no commit to make.
-3. Commits, then pushes to `HEAD:main` with a **retry loop** (default 8 attempts,
+1. Exits 0 with no commit when `git status --porcelain` shows no change under the
+   given pathspecs, which is what a no-op refresh looks like.
+2. Sets the `github-actions[bot]` git identity.
+3. Regenerates `public/sitemap.xml` with `scripts/generatePublicSitemap.mjs` and
+   stages it with the pathspecs, because snapshot timestamps feed the sitemap's
+   freshness dates. It does this only when the site's dependencies are installed,
+   which every refresh lane does before it reaches the helper. If
+   `git diff --cached --quiet` then finds nothing staged, it exits 0.
+4. Commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts,
    override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
-   `git fetch origin main` and `git rebase --autostash origin/main`, then retries
-   with capped exponential backoff (`attempt² × 2`, capped at 30s) plus `RANDOM`
-   jitter.
+   `git fetch origin main` and `git rebase --autostash origin/main`, regenerates
+   the sitemap and amends the commit when that changes it, then retries
+   after a quadratic backoff (`attempt² × 2` seconds, capped at 30s) plus up to
+   four seconds of `RANDOM` jitter.
 
 The retry loop exists because `main` moves constantly. Many snapshot bots
 (the football leagues every four hours, transit, and the rest) push to the same branch and collide.
-A refresh commit only touches its own snapshot files, so a rebase never truly
-conflicts; the failure mode is just losing the race repeatedly. The script bails
-(exit 1) only on a **genuine rebase conflict** (it aborts the rebase) or after
-exhausting all attempts. Tests in
+A refresh commit touches its own snapshot files and the shared sitemap, so the
+only conflict two refreshes can meet is in `public/sitemap.xml`. The script
+resolves that one by regenerating the sitemap from the rebased snapshots and
+continuing the rebase, and otherwise the failure mode is just losing the race
+repeatedly. The script bails (exit 1) only on a conflict in any other file (it
+aborts the rebase) or after exhausting all attempts. `changelog-on-merge.yml`
+commits through the same helper without installing dependencies, so its
+commits leave the sitemap alone. Tests in
 `.github/workflows/__tests__/snapshot-workflows.test.ts` and
 `update-investments.test.ts` assert every workflow uses it.
 
@@ -124,11 +146,13 @@ exhausting all attempts. Tests in
    from `src/lib/golfData.ts`, JSON-stringifies the result into
    `src/data/golfSnapshot.json`, with the `readGeneratedSnapshot` fallback above.
 3. **Action:** `.github/workflows/update-golf.yml` runs every three hours Thursday
-   through Sunday and daily at 08:40 UTC Monday through Wednesday, and
-   commits `src/data/golfSnapshot.json` when it changes, via
+   through Sunday and daily at 08:40 UTC Monday through Wednesday as a short
+   caller of `.github/workflows/refresh-snapshot.yml`, which runs
+   `npm run update:golf`, verifies the result, and commits
+   `src/data/golfSnapshot.json` when it changes, via
    `scripts/ci/commit-and-push-snapshot.sh`.
 4. **Accessors:** `src/lib/golfSnapshot.ts` exposes `getGolfSummary()`,
-   `getGolfPlayerSnapshot(id)`, `createEmptyGolfSummary()`, and id validation.
+   `getGolfPlayerSnapshot(id)`, `createEmptyGolfPlayerSnapshot()`, and id validation.
 5. **API:** `/api/golf/players/[playerId]` only. The page calls `getGolfSummary()`
    directly, so there is no summary route.
 
@@ -145,9 +169,12 @@ isGolfPlayerIdShape(id)   // → 400 when false (bad input)
 isValidGolfPlayerId(id)   // shape AND id in golfSnapshot.playerSnapshots → else 404
 ```
 
-The same idea keys other detail surfaces by a **lowercased identifier**: NBA/NFL/
-MLB/soccer `/teams/[teamId]` by team abbr, bay-area-transit `/stations/[stationId]`
-by BART abbr, world-cup `/teams/[teamId]` by team slug.
+The other detail surfaces use the same shape-then-membership check. NBA and NFL
+`/teams/[teamId]` take a lowercased team abbreviation, La Liga takes one too with
+a numeric fallback, MLB and Premier League take the provider's numeric team id,
+bay-area-transit `/stations/[stationId]` takes a lowercased BART station
+abbreviation, world-cup `/teams/[teamId]` takes a team slug, and formula-1
+`/meetings/[meetingId]` takes OpenF1's numeric meeting key.
 
 ---
 
@@ -164,18 +191,28 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 | `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.json` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | every 3h Thu–Sun, daily 08:10 UTC Mon–Wed |
 | `/world-cup-2026` | `src/data/worldCupSnapshot.json` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | no schedule, manual dispatch only (the tournament ended) |
 | `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.json` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football + manual/CSV | every 6h, and the run skips the refresh with a notice until both provider keys are set |
-| `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.json` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (demo key) | every 6h, year-round |
+| `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.json` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (`BART_API_KEY`, else the published demo key) | every 6h, year-round |
 | `/earthquake-pulse` | `src/data/earthquakeSnapshot.json` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | daily 06:20 UTC (fallback seed; the API serves live USGS at request time) |
-| `/github-trending-pulse` | `src/data/githubTrendingSnapshot.json` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
-| `/spacex-mission-control` | `src/data/spacexSnapshot.generated.json` (+ image manifest) | `buildSpaceXSnapshot.ts` · `update:spacex` | `update-spacex.yml` | Launch Library / SpaceDevs | daily 09:25 + 21:25 UTC |
-| `/tech-startup-tracker` | `src/data/techStartupSnapshot.json` | `buildTechStartupSnapshot.ts` · `update:tech-startups` | none (curated) | hand-maintained seed | manual |
+| `/github-trending-pulse` (+ `/agent-build-index`, a static page built from the same snapshot) | `src/data/githubTrendingSnapshot.json` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
+| `/spacex-mission-control` | `src/data/spacexSnapshot.generated.json` (+ image manifest) | `buildSpaceXSnapshot.ts` · `update:spacex`, then `buildSpaceXImageSnapshots.ts` · `update:spacex-images` | `update-spacex.yml` | Launch Library / SpaceDevs | daily 09:25 + 21:25 UTC |
+| `/tech-startup-tracker` | `src/data/techStartupSnapshot.json` | `buildTechStartupSnapshot.ts` · `update:tech-startups` | none (curated; `audit-curated-data.yml` reviews it weekly) | hand-maintained seed | manual |
 | `/frontier-models` | `src/data/frontierModelsSnapshot.json` (seed) + `dashboard-snapshots` blob | `buildFrontierModelsSnapshot.ts` · `update:frontier-models` (seed) | `netlify/functions/refresh-frontier-models.ts` (scheduled function, not an Action) | curated seed + models.dev/OpenRouter fact check | seed manual; facts daily 07:30 UTC |
+| `/polling-aggregator` | `src/data/pollingSnapshot.json` (seed) + `dashboard-snapshots` blob | `buildPollingSnapshot.ts` · `update:polling` (seed) | `update-polling.yml` (seed) + `netlify/functions/refresh-polling.ts` (scheduled function) | VoteHub Polling API (keyless, CC BY 4.0) | seed daily 05:55 UTC; blob every 6h |
 
-**Curated surfaces** (`tech-startup-tracker`, `frontier-models`) have no Action
-because there's no live source to poll — figures are approximate, tagged with an
-`asOf` date and a `verified: false` flag, and disclosed on-page. Refresh by
-editing the seed and re-running the builder. Frontier-models additionally runs
-the blob-backed fact check described below; the curated seed and editorial
+Fantasy football (`public/data/fantasy/`, plus generated inputs under
+`src/data/`) and investments (`public/data/investments/`) refresh through
+standalone workflows (`update-fantasy.yml`, `update-investments.yml`) that call
+the same commit helper. `docs/DATA_UPDATE_OPERATIONS.md` lists their commands,
+artifacts, and schedules.
+
+Curated surfaces (`tech-startup-tracker`, `frontier-models`) have no refresh
+Action because there's no live source to poll. Their figures are approximate,
+tagged with an `asOf` date and a `verified: false` flag, and disclosed on-page,
+and the weekly `audit-curated-data.yml` run fails either one once its `asOf`
+date is older than its review window in `src/lib/dataFreshnessPolicy.ts` (90 days
+for tech startups, 45 for frontier models). Refresh by editing the seed and
+re-running the builder. Frontier-models also runs the blob-backed fact check
+described below; the curated seed and editorial
 notes remain the source of truth for what is listed.
 
 ---
@@ -237,8 +274,11 @@ curated value.
   governor); a race row is the two leading names from the race's newest poll,
   averaged over the recent polls that asked about both, with no party, since
   VoteHub publishes none.
-- `/news-pulse` is **API-backed at request time** (`/api/news-pulse` →
-  `src/lib/news-pulse-utils.ts`), not a build-time snapshot.
+- `/news-pulse` is API-backed at request time, not a build-time snapshot.
+  `/api/news-pulse` and the page's server render both call `getNewsPulseData()`
+  in `src/lib/newsPulseServer.ts`, which keeps each feed's last good result in
+  Netlify Blobs, and `src/lib/news-pulse-utils.ts` holds the client-side story
+  clustering and sentiment helpers.
 
 For the operational view (command → artifact → schedule in one table) see
 `docs/DATA_UPDATE_OPERATIONS.md`.
@@ -247,11 +287,11 @@ For the operational view (command → artifact → schedule in one table) see
 
 ## Edge caching for dashboard pages
 
-A dashboard page that reads `searchParams` renders on every request, even when its data only changes with a deploy. `next.config.mjs` holds a list, `cdnCachedPages`, of the pages whose HTML depends on the deploy and the query string and nothing else, and it sends two headers on each one. `Netlify-CDN-Cache-Control` lets Netlify's CDN keep a copy for six hours, which is the interval of the scheduled production deploy, and `Netlify-Vary: query` makes the whole query string part of the cache key. Browsers still receive `private, no-store`, so only the CDN caches.
+A dashboard page that reads `searchParams` renders on every request, even when its data only changes with a deploy. `next.config.mjs` holds a list, `cdnCachedPages`, of the pages whose HTML depends on the deploy and the query string and nothing else, and it sends two headers on each one. `Netlify-CDN-Cache-Control` (`public, durable, s-maxage=21600, stale-while-revalidate=86400`) lets Netlify's CDN keep a copy for six hours, which is the interval of the scheduled production deploy, and answer from that copy for up to a day past the six hours while it renders a fresh one. `Netlify-Vary: query` makes the whole query string part of the cache key. Browsers still receive `private, no-store`, so only the CDN caches.
 
 A page belongs on the list only if nothing in its server render reads the clock, a random number, live data, or Netlify Blobs. A countdown or an age label is fine when it is computed in an effect or read through `useClientNow()`, since the server HTML then carries no time. `src/lib/__tests__/edge-cache-policy.test.ts` spells out the list and the nine pages that stay off it, so adding a page means editing that test too.
 
-One consequence to know about. Twenty of the 23 pages have a `loading.tsx`, so a page that throws after its loading screen has gone out still answers 200 with its error screen, and the CDN would keep that copy until the next deploy or a purge through `netlify/functions/purge-cache.ts`. `/food-map`, `/museum-log`, and `/search` have no `loading.tsx`, so a throw there answers 500. The two headers go out with every status. On the deploy preview for this change, on 2026-09-28, a 404 under them was not stored, and I have not seen what Netlify does with a 500.
+One consequence to know about. Twenty of the 23 pages have a `loading.tsx`, so a page that throws after its loading screen has gone out still answers 200 with its error screen, and the CDN would keep that copy until the next deploy. Nothing in the repository purges the CDN, since `netlify/functions/purge-cache.ts` was deleted on 2026-09-28. `/food-map`, `/museum-log`, and `/search` have no `loading.tsx`, so a throw there answers 500. The two headers go out with every status. On the deploy preview for this change, on 2026-09-28, a 404 under them was not stored, and I have not seen what Netlify does with a 500.
 
 What the preview showed for a cached page is a copy kept for the six hours the header asks for. The first request renders the page and stores it, a later request to an edge node that has no copy is answered from Netlify's durable cache, and a request to an edge node that has one is answered from that node. On `/mlb` those took 0.72 s, 0.21 to 0.41 s, and 0.04 s, against 0.36 to 0.57 s for the same page rendered on every request in production, eight requests each from one machine.
 
@@ -265,7 +305,8 @@ needs no `error.tsx` of its own unless it has something specific to say. The 36
 per-route copies differed only in their `surfaceName`, and they were removed on 2026-10-01.
 
 Every snapshot dashboard still ships a `loading.tsx` (`RouteLoadingState`) so the first
-paint isn't blank. A single root `loading.tsx` would cover them too, but it would also
+paint isn't blank. The static `/agent-build-index`, which renders at build time, has
+none. A single root `loading.tsx` would cover them too, but it would also
 wrap the Catalog 97 routes, and `/writing/[slug]` and `/portfolio/[slug]` would then
 stream before `notFound()` runs and answer 200 instead of 404.
 
@@ -282,7 +323,7 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
    `src/data/<x>Snapshot.ts` re-exporting it as the snapshot type.
 3. **Fetch/transform** — `src/lib/<x>Data.ts` (`build<X>SnapshotData()`).
 4. **Builder** — `scripts/build<X>Snapshot.ts`: call the fetcher, write
-   atomically, fall back via `readGeneratedSnapshot` on failure.
+   atomically, fall back via `buildOrKeepExisting` or `readGeneratedSnapshot` on failure.
 5. **Script** — add `"update:<x>": "tsx scripts/build<X>Snapshot.ts"` to
    `package.json`.
 6. **Accessors** — `src/lib/<x>Snapshot.ts` (`get<X>Summary()`, id validation,
@@ -294,14 +335,32 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
 8. **Route** — `src/app/<x>/page.tsx` server shell + client component with
    deep-linkable state; add `src/app/<x>/loading.tsx`
    (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).
-9. **Action** — `.github/workflows/update-<x>.yml` on a sensible cron + manual
-   dispatch, committing the snapshot only when it changes via the shared
-   `scripts/ci/commit-and-push-snapshot.sh`.
+9. Action. Add `.github/workflows/update-<x>.yml` as a short caller of
+   `.github/workflows/refresh-snapshot.yml` (`id`, `snapshot-path`, `label`,
+   `title`) on a sensible cron plus manual dispatch. The reusable workflow
+   refreshes, verifies, and commits the snapshot only when it changes, via the
+   shared `scripts/ci/commit-and-push-snapshot.sh`. Its verify step needs a
+   target in `src/lib/dataFreshnessPolicy.ts` and an artifact entry in
+   `scripts/dataRefreshRegistry.ts`, and `src/app/api/data-revisions/route.ts`
+   needs a ledger entry too, since its test fails when a surface in the policy
+   has none.
 10. **Docs** — add a row to the table above and to
     `docs/DATA_UPDATE_OPERATIONS.md`; register in `AGENTS.md` Automation Surfaces.
 11. Edge cache. If the page's server render reads no clock, random number, live
     data, or Blobs, add its path to `cdnCachedPages` in `next.config.mjs` and to
     `src/lib/__tests__/edge-cache-policy.test.ts`.
+12. Route registry. Give the route a project entry in
+    `src/constants/caseStudies.ts` whose `link` is the route, and add the path to
+    `DASHBOARD_ROUTES` in `src/constants/catalog97Nav.ts`, then raise the project
+    count that `src/constants/__tests__/project-routes-complete.test.ts` asserts.
+    A page that is not a portfolio project goes in that test's `UTILITY_ROUTES`
+    instead, and the test fails on any page route that is not a designed,
+    project, or utility route.
+13. Sitemap. Add the route to `STATIC_ROUTE_LASTMOD` in `src/lib/sitemap.js`,
+    reading the snapshot's timestamp the way the `/golf` row does, and run
+    `npm run generate:sitemap`. A route with no row carries the build date, which
+    changes on every run, so the committed `public/sitemap.xml` can never match
+    what `src/lib/__tests__/sitemap-consistency.test.ts` expects.
 
 Reuse the shared football components in `src/components/football/`
 (FixtureLedgerSection, LeaderLedger, DetailDrawer, CrestAvatar, …) wherever the

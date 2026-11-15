@@ -7,6 +7,8 @@ related_targets: ["src/app/agent-build-index/page.tsx","src/lib/agentBuildIndex.
 
 # Agent Build Index
 
+Checked against the code on 2026-11-02.
+
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Mode
@@ -23,7 +25,7 @@ A server-rendered route at `/agent-build-index` (`page.tsx`, view model in `src/
 
 ## Decisions not to re-litigate
 
-The page is a filtered view of an existing dashboard on purpose, as a focused entry point rather than a second copy of the data; that duplication is the point, not an oversight. Stars measure attention and nothing else, and the snapshot-notes card says so in the visitor's language, so keep it. Every figure carries its window and its measurement status (`measured`, `partial`, `baseline`) rather than presenting a bare number. The list shows the top ten and states the total, so the tile count and the list length can never silently disagree. `SoftwareApplication` is the house schema type for tool and dashboard routes across 34 pages here; this route follows that convention, and changing it is a site-wide decision rather than a fix to this page.
+The page is a filtered view of an existing dashboard on purpose, as a focused entry point rather than a second copy of the data; that duplication is the point, not an oversight. Stars measure attention and nothing else, and the "What the number does and does not mean" note says so in the visitor's language, so keep it. Every figure carries its window and its measurement status (`measured`, `partial`, `baseline`) rather than presenting a bare number. The list shows the top ten and states the total, so the source line's count and the list length can never silently disagree. `SoftwareApplication` is the house schema type for the tool and dashboard routes here, including the sports routes, which reach it through the `SportsApplication` case in `src/components/StructuredData.tsx`; this route follows that convention, and changing it is a site-wide decision rather than a fix to this page.
 
 ## Verified state, 2026-08-23
 
@@ -37,9 +39,13 @@ Fixed here but shared shell, so it landed for roughly forty routes at once: `Con
 
 Still open and not this route's code: the site footer's "Now" link measures 35x44, which clears WCAG 2.5.8 at 24x24 but misses the 44px floor this project sets for itself. The global reduced-motion rule is the blanket `0.01ms` kill on `*`, which costs nothing here because every transition on this page is color or border, but it is indiscriminate site-wide. The focus ring still depends on `--color-primary` and `--border-accent`, two legacy aliases marked for retirement.
 
+As of 2026-11-02, the route has no `error.tsx` of its own, since the root boundary has covered every route from 2026-10-01 (12aa27d76). Of the open items, the footer measured above was deleted on 2026-09-16 (9b4ae676b), so the 35x44 figure describes a footer that no longer exists, and the two legacy aliases were deleted on 2026-09-27 (486ea70cb), so the frame's focus ring reads `--c97-accent`, which `.abi-root` points at its blue. The blanket `0.01ms` reduced-motion rule on `*` is still in `src/app/globals.css`.
+
 ## Commands worth running
 
 No full critique has scored this surface yet, so `critique` is the natural next evaluate step if it gets real investment. Skip `audit` for now, since the findings above are closed and re-running it would only re-derive them. The bundled `detect.mjs` returns `[]` on this route's files; that is the Tailwind blind spot rather than a clean result, so do not read it as a pass.
+
+As of 2026-11-02 the installed skill (4.7.0) ships no `detect.mjs` and runs its detector as `impeccable detect`, and this route's styles have lived in `agent-build-index.css` since 2026-10-12, so the Tailwind reason above no longer holds. On a stylesheet the detector says it is matching by regex only (`~/.claude/impeccable/OPERATING-NOTES.md`), so an empty result there is still not a pass.
 
 ## Status, 2026-09-22
 
@@ -49,7 +55,7 @@ This route moved off the bridge. It is composed from Catalog 97 bands inside `Ca
 
 Written by the stage 2 G6 agent (`docs/superpowers/specs/2026-10-11-project-sovereign-design.md`, archetype Reference, light). The decisions above that this pass did not reopen are the filtered view on purpose, stars as attention only, every figure carrying its window and status, the top ten with the total stated, and the `SoftwareApplication` schema. The status notes of 2026-09-22 and 2026-09-27 and the 2026-08-23 contrast figures describe the page before this date.
 
-The page reads as a weekly index, like an almanac's top ten. It paints its own paper with `--abi-*` properties on `.abi-root` in the same graphite family as `/github-trending-pulse`, since it is a view of the same data, and redeclares the `--c97-*` tokens the newsletter form's `c97-field`, `c97-btn`, `c97-kicker`, and `c97-prose` read. The title and the repository names are Newsreader, figures are Fragment Mono, and the rest is Archivo. The movement figures print in the diff-addition green, and the agents bar is the only green bar in the topic comparison.
+The page reads as a weekly index, like an almanac's top ten. It paints its own paper with `--abi-*` properties on `.abi-root` in the same graphite family as `/github-trending-pulse`, since it is a view of the same data, and redeclares the `--c97-*` tokens the newsletter form's `c97-field`, `c97-btn`, `c97-kicker`, and `c97-prose` read. Every heading is Newsreader, the title and the repository names included. The figures, their status labels, and the source line are Fragment Mono, and the rest is Archivo. The movement figures print in the diff-addition green, and the agents bar is the only green bar in the topic comparison.
 
 The first screen is the display title, the intro, one source line (source, snapshot time in Pacific, activity window, and how many of the repositories are measured over the full window), the links to the full agent table and to the AI dev tools directory, and the ranked list. The topic comparison and the "What the number does and does not mean" note sit side by side under a rule after the list, and the signup sits at the foot under another rule, two columns from 900px. The topic sentence now carries the agents' total stars. Print leaves the signup out.
 

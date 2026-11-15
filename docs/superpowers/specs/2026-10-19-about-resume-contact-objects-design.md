@@ -2,6 +2,7 @@
 
 **Date:** 2026-10-19
 **Status:** Isaac approved the three mockups in the brainstorming companion on 2026-10-19 ("Looks good"), then answered the two open questions the same day (the accent for the proof's marks, and the sheet runs as long as the résumé is). This supersedes `2026-10-18-about-resume-contact-design.md`, whose build is the commit on `design/about-resume-contact` and PR #613. That build is replaced on the same branch.
+**Status, 2026-11-02.** Shipped in #613 (`d14ec2632`) on 2026-10-19, and `/about`, `/resume`, and `/contact` still render the three objects on 2026-11-02. #620, merged on 2026-10-21, changed copy this spec quotes. It dropped the "Plate 1 · portrait" caption and the "Specimen" line over the FAQ, retitled the résumé's download rail "The full record" with the sentence "Every role, set in Berkeley. The PDF is the one-page version.", and the sentence under the contact card names the "Work page" where this spec has "work index".
 
 ## What this is and why
 

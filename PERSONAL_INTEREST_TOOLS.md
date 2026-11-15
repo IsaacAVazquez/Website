@@ -21,14 +21,25 @@ These tools split into two shapes:
    `/wine-cellar`, `/museum-log`.
 2. **Curated catalog + light client state** — the *content* is shipped as a
    curated dataset; the browser only remembers small preferences. →
-   `/recipe-finder` (curated recipes, persisted pantry), `/food-map` (curated
-   places, in-memory + URL filters, nothing persisted).
+   `/recipe-finder` (curated recipes; persisted pantry, saved recipes, and meal
+   plan), `/travel-deals` (curated fare bands and tactics; persisted trip setup),
+   `/food-map` (curated places, in-memory + URL filters, nothing persisted).
+
+Three of the curated datasets, the museum catalog, the travel deal data, and
+the food map, carry a verified flag set to `false` beside their review date
+(`MUSEUM_SNAPSHOT_VERIFIED` with the catalog's `generatedAt`,
+`TRAVEL_DEALS_VERIFIED` with `TRAVEL_DEALS_AS_OF`, and `FOOD_MAP_VERIFIED` with
+`FOOD_MAP_AS_OF`). The weekly curated-data audit
+(`scripts/auditCuratedData.ts`) fails any of them on age or structure, and the
+museum catalog also on an exhibition that closed after its `generatedAt` date. The
+recipe catalog carries neither a flag nor a date and is not audited.
 
 ---
 
 ## The user-authored store pattern
 
-Each store is three files plus a hook:
+A store is three files (the museum log has no `src/lib` module and keeps its
+decoder in the hook):
 
 | Piece | Example (`/travel`) | Role |
 |------|---------------------|------|
@@ -42,18 +53,27 @@ Conventions that hold across the stores:
   than corrupt (e.g. `travel_planner_trips_v1`).
 - **Defensive parsing** — `load*`/`parse*` validate every field coming out of
   `localStorage` (type guards like `isIsoDate`, `clampString` length caps,
-  array-shape checks) and fall back to an empty state on anything malformed.
-  Never trust persisted JSON.
+  array-shape checks). Stored text that does not parse into the expected shape
+  falls back to an empty state, and a malformed entry is repaired or dropped
+  field by field. The trip planner repairs a bad date to today so a stop is
+  never deleted, while the cellar drops an entry with no name or an unknown wine
+  type. Never trust persisted JSON.
 - **Ids** — `crypto.randomUUID()` when available, with a `Math.random` fallback,
-  prefixed per entity (`trip-…`, `wine-…`).
+  prefixed per entity (`trip-…`, `act-…`, `jrn-…`, `wine-…`) by the shared
+  `prefixedId` in `src/lib/utils.ts`.
 - **SSR-safe** — every `window`/`localStorage` access is guarded
   (`typeof window === "undefined"`), so the hook returns an empty snapshot during
   server render and hydrates on the client.
 
-Two hook patterns are in use. `useTravelPlanner` uses `useSyncExternalStore`, a
-module level listener set, and a `storage` event handler to keep multiple tabs
-consistent and give React a stable external store. I would use this pattern for
-new stores.
+Two hook patterns are in use, and both sit on the shared
+`src/lib/browserStorage.ts` helper. It mirrors each write in memory, reports a
+`memory-only` status when `localStorage` refuses a write, and keeps a listener
+set per key plus one `storage` event handler. `useTravelPlanner` and
+`useWineCellar` read their key through `useLocalStorageString`, which wraps
+`useSyncExternalStore` around that helper to keep multiple tabs consistent and
+give React a stable external store. I would use this pattern for new stores, and
+`useBrowserRecord` packages it for one key and one parser, rereading the latest
+save before each edit.
 
 `useMuseumLog` uses `useState` and `useEffect`, subscribes to the shared browser
 storage helper, and applies each edit to the latest validated save. It also
@@ -66,10 +86,13 @@ receives changes from other tabs and other hook instances in the same tab.
 ### `/travel` — trip planner *(the blueprint; most complex)*
 
 - Files: `src/hooks/useTravelPlanner.ts`, `src/lib/travelPlanner.ts`,
-  `src/types/travel.ts`; client `src/app/travel/travel-planner-client.tsx`.
+  `src/lib/travelExtras.ts` (activity costs and the calendar export),
+  `src/types/travel.ts`; client `src/app/travel/travel-planner-client.tsx` with
+  `itinerary.ts` (the timeline columns and the boarding pass).
 - Key: `travel_planner_trips_v1`.
-- Model: trips → day-bucketed activities (categories: transit/lodging/food/
-  sight/activity/other) → per-trip journal entries (moods:
+- Model: trips → day-bucketed activities, each with an optional planned cost
+  (categories: transit/lodging/food/sight/activity/other) → per-trip journal
+  entries (moods:
   amazing/good/neutral/rough/tired). Derived `TripSummary` via
   `calculateTripSummary`.
 - Cross-tab sync via `useSyncExternalStore`. Offers the richest validation
@@ -77,28 +100,36 @@ receives changes from other tabs and other hook instances in the same tab.
 
 ### `/wine-cellar` — tasting log
 
-- Files: `src/hooks/useWineCellar.ts`, `src/lib/wineCellar.ts`, `src/types/wine.ts`.
+- Files: `src/hooks/useWineCellar.ts`, `src/lib/wineCellar.ts`, `src/types/wine.ts`;
+  client `src/app/wine-cellar/wine-cellar-client.tsx` with `wineRack.ts` (one
+  rack row per region).
 - Key: `wine_cellar_entries_v1`.
-- Model: wine entries typed by `WineType` (red/white/rosé/sparkling/dessert/
+- Model: wine entries typed by `WineType` (red/white/rose/sparkling/dessert/
   fortified/orange), 0.5–5 star ratings (`MIN_RATING`/`MAX_RATING`/`RATING_STEP`),
   with a derived `WineSummary` / per-type breakdown.
 
 ### `/museum-log` — visit tracker
 
 - Files: `src/hooks/useMuseumLog.ts`, `src/types/museum.ts`; catalog
-  `src/data/museumSnapshot.ts`.
+  `src/data/museumSnapshot.ts`; client `src/app/museum-log/museum-log-client.tsx`.
 - Key: `museum_log_user_state_v1`.
-- Model: a curated museum catalog (snapshot) + the user's `visited` / `watchlist`
-  / `liked` id lists persisted locally. Uses the `useState` + `useEffect` flavor.
+- Model: a curated museum catalog (snapshot) + the user's `visited` records (one
+  per museum, with its date and an optional note) and `watchlist` / `liked` id
+  lists persisted locally. Uses the `useState` + `useEffect` flavor.
   A visit's `rating` is optional, since a quick visit records only the museum
   and the date, and the validator still drops a visit whose rating is present
-  and invalid.
+  and invalid. Logging a visit takes the museum off the watchlist.
+- The view, the sort, the type and region filters, and the open museum or list
+  live in the URL (`view`, `sort`, `type`, `region`, `museum`, `list`), read and
+  written by `src/app/museum-log/museum-log-state.ts`.
 
 ### `/recipe-finder` — curated catalog + pantry
 
 - Files: `src/lib/recipes.ts` (types, ingredient normalizer, match scoring),
+  `src/lib/recipePlan.ts` (plan parser, the seven-date week, shopping list),
   catalog `src/data/recipesSnapshot.ts`; client
-  `src/app/recipe-finder/recipe-finder-client.tsx`.
+  `src/app/recipe-finder/recipe-finder-client.tsx` with `RecipeMealPlan.tsx` and
+  `indexCard.ts` (each card's ingredient ticks, taken from the shared matcher).
 - Persisted: the pantry under `recipe-finder:pantry:v1`, and saved recipe IDs and dated meals under `recipe-finder-plan-v1`. The recipe
   corpus is curated and read-only; the client scores recipes against the pantry
   (staple pantry items don't count against a "missing ingredients" score).
@@ -107,7 +138,8 @@ receives changes from other tabs and other hook instances in the same tab.
 
 - Files: `src/lib/travelDeals.ts` (pure engine), `src/types/travelDeals.ts`,
   curated dataset `src/data/travelDealsSnapshot.ts`; client
-  `src/app/travel-deals/travel-deal-lab-client.tsx`.
+  `src/app/travel-deals/travel-deal-lab-client.tsx` with `fareGauge.ts` (the
+  fare gauge and booking strip that `FareGaugeSignature.tsx` draws).
 - Persisted: the trip setup (region, departure date, nights, travelers, budget),
   the quoted fare (clamped 0 to 100,000 on read), and the "applied" tactic ids,
   under `travel-deals:v1`. The points award inputs are ephemeral component
@@ -144,11 +176,14 @@ receives changes from other tabs and other hook instances in the same tab.
 ### `/food-map` — curated map *(no persistence)*
 
 - Files: `src/app/food-map/food-map-data.ts` (curated places),
-  `food-map-leaflet.tsx` + `leaflet.ts` (Leaflet map, lazy-loaded),
+  `food-map-leaflet.tsx` (the map) on the shared `src/lib/leaflet.ts` loader,
+  which fetches Leaflet from a pinned CDN on demand,
   `food-map-state.ts` (deep-link/filter state), `food-map-client.tsx`.
-- Stores nothing in `localStorage`: search/filter state is in-memory and
-  reflected in the URL. The odd one out — included here because it's a
-  personal-interest surface, but it is a curated-data map, not a user store.
+- Stores nothing in `localStorage`. The city, curator, and cuisine filters and
+  the selected place live in the URL (`city`, `curator`, `cuisine`, `pick`), and
+  the search box text stays in memory. It is the odd one out, included here
+  because it's a personal-interest surface even though it is a curated-data map
+  and not a user store.
 
 ---
 
@@ -161,7 +196,8 @@ receives changes from other tabs and other hook instances in the same tab.
 - **Testing:** because there's no server state, cover the pure
   `src/lib/<tool>.ts` helpers (parse/validate/derive) with Jest; the hooks and
   clients are thin. Malformed-JSON and version-bump cases are the high-value
-  tests.
+  tests. The three store hooks also have tests in `src/hooks/__tests__/`, which
+  is where the museum log's decoder is covered, since it lives in the hook.
 - **Privacy:** nothing here leaves the browser. Keep it that way — don't add an
   API or analytics call that ships a user's trips/cellar/log off-device without a
   deliberate decision.
